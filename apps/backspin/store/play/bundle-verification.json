@@ -1,6 +1,7 @@
 {
   "status": "PASS_SIGNED_BUNDLE_STATIC_AUDIT",
   "package": "com.jared797.backspin",
+  "versionName": "1.0.0",
   "versionCode": 1,
   "targetSdk": 36,
   "permissions": [
@@ -21,8 +22,19 @@
   "allElfLoadAlignmentsAtLeast16384": true,
   "embeddedJs": true,
   "otaUpdates": false,
-  "sha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
+  "playBillingVersion": "9.1.0",
+  "certificateSha256": "1e87ec4c603a4b12721add35c75d2753a37a5fc6edc59357e226ce4f03bb3db8",
+  "sha256": "b2ef0b9caf5b215cd9ad7e3c809ff556fd714b3af3b0df79d88ee6bda1b129ff",
+  "bytes": 45515212,
+  "unsignedPayloadEntriesVerifiedUnchanged": 1675,
+  "runtimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
+  "buildSource": "b643f1bd14decc2c7327d4cf12822c368c80e204",
+  "nativeSimulationRun": 41740093949,
+  "inputScope": "Official300HzRanchuHALtone; human/host/physical voice not qualified",
+  "productionReplayRun": 41743446116,
+  "productionReplayStatus": "RUNNING",
+  "actualPlayBilling": "NOT_TESTED",
   "playSubmission": false,
-  "releaseDisposition": "SUPERSEDED_DO_NOT_UPLOAD",
-  "reason": "Later Android pending-payment acceptance and acknowledgement repair requires a fresh verified binary."
+  "releaseDisposition": "CURRENT_SIGNED_CANDIDATE_STORE_GATES_PENDING",
+  "priorCandidateSha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa"
 }

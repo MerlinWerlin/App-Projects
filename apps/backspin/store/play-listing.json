@@ -33,7 +33,7 @@
     "run": 41701424210,
     "gameplay4KB": "PASS",
     "nativeDecoderTests": 2,
-    "signedProductionAabSha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
+    "signedProductionAabSha256": "b2ef0b9caf5b215cd9ad7e3c809ff556fd714b3af3b0df79d88ee6bda1b129ff",
     "storeSubmission": false,
     "runtime16KB": {
       "api35_decoder_tests": "2 PASS",
@@ -51,7 +51,7 @@
     "replacement": {
       "runtimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
       "buildRun": 41728527170,
-      "status": "NATIVE_16KB_TONE_SIMULATION_PASS_PRODUCTION_AAB_COMPILING",
+      "status": "SIGNED_STATIC_AUDIT_PASS_PRODUCTION_REPLAY_RUNNING",
       "appTests": 40,
       "typecheck": "PASS",
       "iosExport": "PASS",
@@ -59,7 +59,12 @@
       "next4KBRun": 41731776160,
       "next16KBRun": 41731111761,
       "nativeSimulationRun": 41740093949,
-      "productionBundleRun": 41740093949
-    }
+      "productionBundleRun": 41740093949,
+      "signedProductionAabSha256": "b2ef0b9caf5b215cd9ad7e3c809ff556fd714b3af3b0df79d88ee6bda1b129ff",
+      "signedProductionAabBytes": 45515212,
+      "productionReplayRun": 41743446116
+    },
+    "priorSignedProductionAabSha256": "e70cd5f5b92b0ae4be8acf417629f808a5ccb83160700464e592357e0c1216aa",
+    "signedProductionRuntimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8"
   }
 }
