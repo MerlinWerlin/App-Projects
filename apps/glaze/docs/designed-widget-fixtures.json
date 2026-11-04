@@ -11204,6 +11204,518 @@
       ]
     },
     {
+      "id": "space-cartwheel",
+      "name": "Cartwheel Galaxy",
+      "palette": {
+        "bg": "#070A1A",
+        "surface": "#141A33",
+        "accent": "#7FB8FF",
+        "ink": "#EEF5FF",
+        "glyph": "#D8E8FF"
+      },
+      "designs": [
+        {
+          "v": 1,
+          "kind": "clock",
+          "background": [
+            "#1A2948",
+            "#804D2A"
+          ],
+          "ink": "#EAF3FF",
+          "secondary": "#C8D1DE",
+          "accent": "#7FB8FF",
+          "onAccent": "#003F93",
+          "line": "#CBD5E4",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "battery",
+          "background": [
+            "#1A2948",
+            "#804D2A"
+          ],
+          "ink": "#EAF3FF",
+          "secondary": "#C8D1DE",
+          "accent": "#7FB8FF",
+          "onAccent": "#003F93",
+          "line": "#CBD5E4",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "calendar",
+          "background": [
+            "#1A2948",
+            "#804D2A"
+          ],
+          "ink": "#EAF3FF",
+          "secondary": "#C8D1DE",
+          "accent": "#7FB8FF",
+          "onAccent": "#003F93",
+          "line": "#CBD5E4",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        }
+      ]
+    },
+    {
+      "id": "space-cas-a",
+      "name": "Cassiopeia A",
+      "palette": {
+        "bg": "#0C0B1C",
+        "surface": "#1C1A36",
+        "accent": "#FF9E6B",
+        "ink": "#FFF0E6",
+        "glyph": "#FFD8C2"
+      },
+      "designs": [
+        {
+          "v": 1,
+          "kind": "clock",
+          "background": [
+            "#602E3E",
+            "#3B3A7A"
+          ],
+          "ink": "#FFD8C2",
+          "secondary": "#DCB3A5",
+          "accent": "#FF9E6B",
+          "onAccent": "#7E2D00",
+          "line": "#E7BFAE",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "battery",
+          "background": [
+            "#602E3E",
+            "#3B3A7A"
+          ],
+          "ink": "#FFD8C2",
+          "secondary": "#DCB3A5",
+          "accent": "#FF9E6B",
+          "onAccent": "#7E2D00",
+          "line": "#E7BFAE",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "calendar",
+          "background": [
+            "#602E3E",
+            "#3B3A7A"
+          ],
+          "ink": "#FFD8C2",
+          "secondary": "#DCB3A5",
+          "accent": "#FF9E6B",
+          "onAccent": "#7E2D00",
+          "line": "#E7BFAE",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        }
+      ]
+    },
+    {
+      "id": "space-cas-a-infrared",
+      "name": "Infrared Remnant",
+      "palette": {
+        "bg": "#0D0A18",
+        "surface": "#1F1730",
+        "accent": "#FF6F61",
+        "ink": "#FFEDEA",
+        "glyph": "#FFD3CC"
+      },
+      "designs": [
+        {
+          "v": 1,
+          "kind": "clock",
+          "background": [
+            "#62212D",
+            "#1E4F5C"
+          ],
+          "ink": "#FFD3CC",
+          "secondary": "#DCACA9",
+          "accent": "#FF6F61",
+          "onAccent": "#650E00",
+          "line": "#E7B8B4",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "battery",
+          "background": [
+            "#62212D",
+            "#1E4F5C"
+          ],
+          "ink": "#FFD3CC",
+          "secondary": "#DCACA9",
+          "accent": "#FF6F61",
+          "onAccent": "#650E00",
+          "line": "#E7B8B4",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "calendar",
+          "background": [
+            "#62212D",
+            "#1E4F5C"
+          ],
+          "ink": "#FFD3CC",
+          "secondary": "#DCACA9",
+          "accent": "#FF6F61",
+          "onAccent": "#650E00",
+          "line": "#E7B8B4",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        }
+      ]
+    },
+    {
+      "id": "space-cosmic-cliffs",
+      "name": "Cosmic Cliffs",
+      "palette": {
+        "bg": "#0A0E24",
+        "surface": "#18203F",
+        "accent": "#F0A35E",
+        "ink": "#FDF1E2",
+        "glyph": "#FFE2C0"
+      },
+      "designs": [
+        {
+          "v": 1,
+          "kind": "clock",
+          "background": [
+            "#25263A",
+            "#7B5434"
+          ],
+          "ink": "#FFF6EB",
+          "secondary": "#DAD4D1",
+          "accent": "#F0A35E",
+          "onAccent": "#623600",
+          "line": "#DED7D0",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "battery",
+          "background": [
+            "#25263A",
+            "#7B5434"
+          ],
+          "ink": "#FFF6EB",
+          "secondary": "#DAD4D1",
+          "accent": "#F0A35E",
+          "onAccent": "#623600",
+          "line": "#DED7D0",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "calendar",
+          "background": [
+            "#25263A",
+            "#7B5434"
+          ],
+          "ink": "#FFF6EB",
+          "secondary": "#DAD4D1",
+          "accent": "#F0A35E",
+          "onAccent": "#623600",
+          "line": "#DED7D0",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        }
+      ]
+    },
+    {
+      "id": "space-pillars",
+      "name": "Pillars of Creation",
+      "palette": {
+        "bg": "#0B0A1F",
+        "surface": "#1A1638",
+        "accent": "#F2B45C",
+        "ink": "#FFF4E0",
+        "glyph": "#FFE7B8"
+      },
+      "designs": [
+        {
+          "v": 1,
+          "kind": "clock",
+          "background": [
+            "#503042",
+            "#1D2350"
+          ],
+          "ink": "#FFE7B8",
+          "secondary": "#D9BF9E",
+          "accent": "#F2B45C",
+          "onAccent": "#694600",
+          "line": "#E5CCA6",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "battery",
+          "background": [
+            "#503042",
+            "#1D2350"
+          ],
+          "ink": "#FFE7B8",
+          "secondary": "#D9BF9E",
+          "accent": "#F2B45C",
+          "onAccent": "#694600",
+          "line": "#E5CCA6",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "calendar",
+          "background": [
+            "#503042",
+            "#1D2350"
+          ],
+          "ink": "#FFE7B8",
+          "secondary": "#D9BF9E",
+          "accent": "#F2B45C",
+          "onAccent": "#694600",
+          "line": "#E5CCA6",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        }
+      ]
+    },
+    {
+      "id": "space-pillars-infrared",
+      "name": "Ghostly Pillars",
+      "palette": {
+        "bg": "#0E0B1A",
+        "surface": "#1E1A30",
+        "accent": "#D9B99B",
+        "ink": "#F6EFE8",
+        "glyph": "#EDE0D2"
+      },
+      "designs": [
+        {
+          "v": 1,
+          "kind": "clock",
+          "background": [
+            "#3F3544",
+            "#2F3B52"
+          ],
+          "ink": "#EDE0D2",
+          "secondary": "#C7BAB3",
+          "accent": "#D9B99B",
+          "onAccent": "#604426",
+          "line": "#D3C6BD",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "battery",
+          "background": [
+            "#3F3544",
+            "#2F3B52"
+          ],
+          "ink": "#EDE0D2",
+          "secondary": "#C7BAB3",
+          "accent": "#D9B99B",
+          "onAccent": "#604426",
+          "line": "#D3C6BD",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "calendar",
+          "background": [
+            "#3F3544",
+            "#2F3B52"
+          ],
+          "ink": "#EDE0D2",
+          "secondary": "#C7BAB3",
+          "accent": "#D9B99B",
+          "onAccent": "#604426",
+          "line": "#D3C6BD",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        }
+      ]
+    },
+    {
+      "id": "space-rho-ophiuchi",
+      "name": "Rho Ophiuchi",
+      "palette": {
+        "bg": "#0A0C1E",
+        "surface": "#191D3A",
+        "accent": "#FFC861",
+        "ink": "#FFF7E3",
+        "glyph": "#FFEBB5"
+      },
+      "designs": [
+        {
+          "v": 1,
+          "kind": "clock",
+          "background": [
+            "#31293C",
+            "#80582D"
+          ],
+          "ink": "#FFFCF3",
+          "secondary": "#DDDAD7",
+          "accent": "#FFC861",
+          "onAccent": "#6E5200",
+          "line": "#E0DCD8",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "battery",
+          "background": [
+            "#31293C",
+            "#80582D"
+          ],
+          "ink": "#FFFCF3",
+          "secondary": "#DDDAD7",
+          "accent": "#FFC861",
+          "onAccent": "#6E5200",
+          "line": "#E0DCD8",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "calendar",
+          "background": [
+            "#31293C",
+            "#80582D"
+          ],
+          "ink": "#FFFCF3",
+          "secondary": "#DDDAD7",
+          "accent": "#FFC861",
+          "onAccent": "#6E5200",
+          "line": "#E0DCD8",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        }
+      ]
+    },
+    {
+      "id": "space-tarantula",
+      "name": "Tarantula Nebula",
+      "palette": {
+        "bg": "#120A26",
+        "surface": "#231544",
+        "accent": "#C78BFF",
+        "ink": "#F7EEFF",
+        "glyph": "#F1DDFF"
+      },
+      "designs": [
+        {
+          "v": 1,
+          "kind": "clock",
+          "background": [
+            "#4C2A76",
+            "#2A1F5C"
+          ],
+          "ink": "#F1DDFF",
+          "secondary": "#CDB6E1",
+          "accent": "#C78BFF",
+          "onAccent": "#5A0098",
+          "line": "#D8C2EA",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "battery",
+          "background": [
+            "#4C2A76",
+            "#2A1F5C"
+          ],
+          "ink": "#F1DDFF",
+          "secondary": "#CDB6E1",
+          "accent": "#C78BFF",
+          "onAccent": "#5A0098",
+          "line": "#D8C2EA",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        },
+        {
+          "v": 1,
+          "kind": "calendar",
+          "background": [
+            "#4C2A76",
+            "#2A1F5C"
+          ],
+          "ink": "#F1DDFF",
+          "secondary": "#CDB6E1",
+          "accent": "#C78BFF",
+          "onAccent": "#5A0098",
+          "line": "#D8C2EA",
+          "motif": "orbit",
+          "font": "rounded",
+          "clock": "dial",
+          "battery": "ring"
+        }
+      ]
+    },
+    {
       "id": "spare-time",
       "name": "Spare Time",
       "palette": {

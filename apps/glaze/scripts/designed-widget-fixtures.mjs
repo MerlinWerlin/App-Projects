@@ -3,6 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { ALL_THEMES } from '../src/core/plusThemes.ts';
 import { ART_PACK_THEMES } from '../src/core/artPackThemes.ts';
+import { SPACE_THEMES } from '../src/core/spacePack.ts';
 import { parseCatalog } from '../src/core/packCatalog.ts';
 import { remoteArtTheme } from '../src/core/remoteCatalog.ts';
 import { DESIGNED_KINDS, designedWidget } from '../src/core/designedWidgets.ts';
@@ -12,7 +13,7 @@ if (!path) throw Error('Usage: node scripts/designed-widget-fixtures.mjs <curren
 const source = readFileSync(path), parsed = parseCatalog(JSON.parse(source));
 if (!parsed.ok) throw Error(parsed.error);
 const unique = new Map();
-for (const theme of [...ALL_THEMES, ...ART_PACK_THEMES, ...parsed.value.packs.map(p => remoteArtTheme(p, null))]) {
+for (const theme of [...ALL_THEMES, ...ART_PACK_THEMES, ...SPACE_THEMES, ...parsed.value.packs.map(p => remoteArtTheme(p, null))]) {
   if (!unique.has(theme.id)) unique.set(theme.id, theme);
 }
 const themes = [...unique.values()].map(theme => ({
