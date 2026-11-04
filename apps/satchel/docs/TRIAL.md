@@ -11,6 +11,8 @@ Satchel is tested in **TestFlight** only. Changes without new native code arrive
 Nothing here is confirmed on a real phone until you say so. Older entries below that mention Expo Go are history; everything now applies to TestFlight.
 
 ## New since your last test
+- 4 Nov (dark city maps, waiting on publishing): a downloaded city can also get a dark version of its offline map, used when your phone is in dark mode. The app part comes as an update to your current TestFlight build; the dark map files themselves are not published yet, so until they are there is no "Dark map" button and nothing looks different.
+  - **DR. Dark offline map (only once dark maps are published).** With your phone in dark mode and Sydney downloaded, tap Map > Offline city maps > Sydney > Dark map, then Show on map. Is the offline Sydney map dark instead of a bright square, and does it go back to the light map when you switch the phone to light mode? (yes/no)
 - 4 Nov (maps are live): the offline city maps for Kyoto, central Tokyo and Sydney are now published, and the Map no longer mixes in made-up sample places unless you tap "Show sample places". Comes as an update to your current TestFlight build: open Satchel while online, then close and reopen it twice.
   - **DO. Download a city.** Online: Map > Offline city maps > Sydney (16 MB) > Download, then Show on map. Did it download without an error, and do you see real streets, labels and nearby places (toilets, food, chemists) for central Sydney? (yes/no; say roughly how long it took)
   - **DP. Works in flight mode.** With Sydney downloaded, turn on flight mode, close Satchel fully and reopen it. Does the Sydney map still draw when you zoom in, and does Toilets > Find toilets near me still list toilets there? (yes/no)

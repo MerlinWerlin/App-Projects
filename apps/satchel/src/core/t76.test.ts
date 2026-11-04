@@ -35,7 +35,8 @@ test('position picker draws the downloaded city tiles the Map tab uses, picked b
   assert.match(src, /onRegionChange=/);
   assert.match(src, /cityMapsChanged\.subscribe\(load\)/, 'a city downloaded or deleted meanwhile is picked up');
   // the map adapter is what turns offlineTiles into a LocalTile overlay
-  assert.match(read('../native/maps.tsx'), /<LocalTile pathTemplate=\{tiles\.pathTemplate\}/);
+  // (T166: the light or, in dark mode when installed, the dark tiles' path)
+  assert.match(read('../native/maps.tsx'), /<LocalTile key=\{tilePath\} pathTemplate=\{tilePath\}/);
   assert.ok(en['f88.position.offlineCity'].includes('{city}'));
 });
 

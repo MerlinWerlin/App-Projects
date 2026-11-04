@@ -130,6 +130,17 @@ way the phone unpacks it (plus the same pack from the in-repo tar writer, for ma
 | tar layout | uncompressed ustar (`--format=ustar --owner=0 --group=0 --numeric-owner --no-recursion`), regular files only, in order `meta.json`, `pois.json`, then sorted `tiles/{z}/{x}/{y}.png` | `parseTarHeader` + `packEntryPath`: keeps only those three kinds of path (z 0-20, x/y inside the grid), skips anything else |
 | Tiles | XYZ (y from the north, OSM scheme), 256-pt PNG rendered @2x (512 px), z10-16, count = `tiles` | LocalTile `tileSize={256}`, `tilePathTemplate` `…/maps/<id>/tiles/{z}/{x}/{y}.png`; `tileCountEstimate` gives the same count (Kyoto 811, Tokyo 985, Sydney 381) |
 | pois.json | `toPois` (format 2) | `parsePackToilets` (Toilets), `parsePackHelp` (Nearest help), Map search |
+| Dark tiles (T166, optional) | `node build.mjs --flavor dark` after the light build, same `--out`: Protomaps `namedFlavor('dark')` + `sprites/v4/dark`, writes `<id>-dark.tar` (same layout; meta.json adds `"flavor":"dark"`) and merges `dark: { file, bytes, sha256, tiles }` into that city's entry in the existing `out/catalog.json` (still `version: 1`); `upload-1-packs.txt` lists the dark tars too; `verify.mjs` checks each dark tar when present | `parseDarkPack` (file a plain `[a-z0-9._-]+-dark.tar` name, bytes 1 B-4 GB, hex sha256; a bad `dark` is dropped, the city still lists), `darkPackUrl`; installs into `maps/<id>/dark/` keeping only `meta.json` (must be `flavor: dark` for this id, `darkPackMetaOk`) and `tiles/` (`darkPackEntryPath`), `.complete` last; `tilePathForScheme` picks `…/maps/<id>/dark/tiles/{z}/{x}/{y}.png` in dark mode when installed |
+
+**Dark tiles (T166).** All additive, so older app builds and the published `satchel-maps-v1` release are unchanged:
+older builds ignore the `dark` field and never ask for `<id>-dark.tar`. In the app, a downloaded city whose catalog
+entry has `dark` shows **Dark map (size)** in Map > Offline city maps (same download / progress / cancel / space check
+as the city), then **Remove dark map**. In dark mode the map draws the dark tiles for that city when they are installed,
+otherwise the light ones. The dark tiles live inside the city folder, so deleting or re-downloading the city removes
+them too. With no `dark` in the catalog nothing in the app changes. To ship them the App Factory adds a
+`node build.mjs --flavor dark` step after the light build in the publish workflow (packs still uploaded before
+`catalog.json`) and publishes; this task built and tested the code only and published nothing. The dark build reuses
+the light build's `pois.json` and pmtiles extract, so it makes no extra Overpass requests.
 
 **Mismatch found and fixed (T153).** build.mjs never wrote `bytes` into meta.json (it can't: it is the size of the tar
 the meta sits in), but the phone validated the unpacked meta.json with `parseCity`, which requires `bytes`. So every
@@ -168,7 +179,8 @@ honest note that police, numbers and hours need a connection. The catalog stays 
 city from older app builds, which reject other versions); older builds ignore the new fields and the police rows.
 
 **Not yet verified on a phone** (owner checks in TestFlight): download + unpack time for a ~40 MB city, LocalTile
-drawing in flight mode, dark mode look (tiles are the light style).
+drawing in flight mode, dark mode look (the published tiles are the light style; dark tiles need the App Factory to build
+and publish them, TRIAL DR).
 
 ### Build-page check, 4 November 2026 (run 170)
 
