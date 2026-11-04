@@ -147,4 +147,28 @@ final class CloudCoreTests: XCTestCase {
         forecast = .demo(at: now); forecast.days?[0].lowC = 100
         XCTAssertFalse(forecast.isValid)
     }
+    func testWidgetCityIdentifierRoundTripAndInvalidInput() {
+        let place = Place(name: "Tokyo | 東京", latitude: 35.6762, longitude: 139.6503, timeZoneIdentifier: "Asia/Tokyo")
+        XCTAssertEqual(Place.from(widgetIdentifier: place.widgetIdentifier), place)
+        XCTAssertEqual(place.widgetIdentifier, place.widgetIdentifier)
+        XCTAssertNil(Place.from(widgetIdentifier: "not base64"))
+        let invalid = Place(name: "Bad", latitude: 100, longitude: 0)
+        XCTAssertNil(Place.from(widgetIdentifier: invalid.widgetIdentifier))
+    }
+    func testIndependentWidgetsSaveDifferentCitiesWithoutHostPreferences() {
+        let suite = "cloud-companion-widget-cities-\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: suite)!
+        defer { defaults.removePersistentDomain(forName: suite) }
+        let store = SkyStore(defaults: defaults)
+        let sydney = Forecast.demo(at: now)
+        var tokyo = sydney; tokyo.place = Place.suggestions[2]; tokyo.temperatureC = 12
+        store.save(sydney, requireSelectedPlace: false)
+        store.save(tokyo, requireSelectedPlace: false)
+        XCTAssertNil(store.preferences.place)
+        XCTAssertEqual(store.cached(for: .sydney)?.temperatureC, 23)
+        XCTAssertEqual(store.cached(for: tokyo.place)?.temperatureC, 12)
+        var older = tokyo; older.fetchedAt = now.addingTimeInterval(-60); older.temperatureC = 9
+        store.save(older, requireSelectedPlace: false)
+        XCTAssertEqual(store.cached(for: tokyo.place)?.temperatureC, 12)
+    }
 }

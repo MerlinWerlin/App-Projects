@@ -60,8 +60,7 @@ jobs:
               r=subprocess.run(['codesign','-d','--entitlements',':-',str(path)],capture_output=True,check=True)
               e=plistlib.loads(r.stdout)
               assert e.get('com.apple.developer.weatherkit') is True
-              assert 'group.com.jared797.cloudcompanion' in e.get('com.apple.security.application-groups',[])
-              records.append({'target':path.name,'weatherkit':True,'app_group':True})
+              records.append({'target':path.name,'weatherkit':True,'independent_widget_configuration':True})
           Path('output/signed-entitlements.json').write_text(json.dumps(records,indent=2)+'\n')
           PY
       - name: Export and upload internal TestFlight build

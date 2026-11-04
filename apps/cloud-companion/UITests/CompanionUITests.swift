@@ -34,10 +34,13 @@ final class CompanionUITests: XCTestCase {
         let app = XCUIApplication(); app.launchArguments = ["--demo"]; app.launch()
         XCTAssertTrue(app.buttons["Cloud settings"].waitForExistence(timeout: 12))
         app.buttons["Cloud settings"].tap()
-        let motion = app.switches["motion-toggle"]
+        let motion = app.switches["motion-toggle"].firstMatch
         XCTAssertTrue(motion.waitForExistence(timeout: 4))
-        motion.tap()
-        XCTAssertEqual(motion.value as? String, "0")
+        motion.coordinate(withNormalizedOffset: CGVector(dx: 0.93, dy: 0.5)).tap()
+        XCTAssertTrue(app.staticTexts["Cloud motion is off"].waitForExistence(timeout: 4))
+        let disabled = NSPredicate(format: "value == %@", "0")
+        expectation(for: disabled, evaluatedWith: motion)
+        waitForExpectations(timeout: 4)
         app.buttons["Done"].tap()
         XCTAssertTrue(app.buttons["Cloud settings"].waitForExistence(timeout: 4))
     }

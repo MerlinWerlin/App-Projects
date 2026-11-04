@@ -34,6 +34,14 @@ struct Place: Codable, Equatable, Identifiable {
     var longitude: Double
     var timeZoneIdentifier: String = TimeZone.current.identifier
     var id: String { "\(latitude),\(longitude)" }
+    var widgetIdentifier: String {
+        let encoder = JSONEncoder(); encoder.outputFormatting = .sortedKeys
+        return (try? encoder.encode(self).base64EncodedString()) ?? ""
+    }
+    static func from(widgetIdentifier: String) -> Self? {
+        guard let data = Data(base64Encoded: widgetIdentifier), let place = try? JSONDecoder().decode(Self.self, from: data), place.isValid else { return nil }
+        return place
+    }
     var isValid: Bool { latitude.isFinite && longitude.isFinite && (-90...90).contains(latitude) && (-180...180).contains(longitude) }
     func timeLabel(_ date: Date) -> String {
         let formatter = DateFormatter()
@@ -210,10 +218,9 @@ struct Preferences: Codable, Equatable {
 }
 
 final class SkyStore {
-    static let group = "group.com.jared797.cloudcompanion"
     private let defaults: UserDefaults
     init(defaults: UserDefaults) { self.defaults = defaults }
-    static var shared: SkyStore { SkyStore(defaults: UserDefaults(suiteName: group) ?? .standard) }
+    static var shared: SkyStore { SkyStore(defaults: .standard) }
     var preferences: Preferences {
         get { decode(Preferences.self, key: "preferences.v1") ?? Preferences() }
         set { encode(newValue, key: "preferences.v1") }
@@ -222,9 +229,9 @@ final class SkyStore {
         guard let data = decode(Forecast.self, key: "forecast.v2.\(place.id)") ?? decode(Forecast.self, key: "forecast.v1"), data.place == place, data.isValid else { return nil }
         return data
     }
-    func save(_ forecast: Forecast) {
+    func save(_ forecast: Forecast, requireSelectedPlace: Bool = true) {
         // A late response for a previously selected city cannot replace the active cache.
-        guard forecast.isValid, preferences.place == forecast.place else { return }
+        guard forecast.isValid, !requireSelectedPlace || preferences.place == forecast.place else { return }
         if let existing = cached(for: forecast.place), existing.fetchedAt > forecast.fetchedAt { return }
         encode(forecast, key: "forecast.v2.\(forecast.place.id)")
     }

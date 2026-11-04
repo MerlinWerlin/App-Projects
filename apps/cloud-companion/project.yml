@@ -25,6 +25,7 @@ targets:
     info:
       path: Generated/App-Info.plist
       properties:
+        ITSAppUsesNonExemptEncryption: false
         NSLocationWhenInUseUsageDescription: Choose your current city for the weather. Your widget then uses that saved location.
         CFBundleURLTypes:
           - CFBundleURLSchemes: [cloudcompanion]
@@ -32,7 +33,6 @@ targets:
       path: Generated/App.entitlements
       properties:
         com.apple.developer.weatherkit: true
-        com.apple.security.application-groups: [group.com.jared797.cloudcompanion]
     dependencies:
       - target: CloudCompanionWidget
         embed: true
@@ -56,7 +56,6 @@ targets:
       path: Generated/Widget.entitlements
       properties:
         com.apple.developer.weatherkit: true
-        com.apple.security.application-groups: [group.com.jared797.cloudcompanion]
   CloudCompanionUITests:
     type: bundle.ui-testing
     platform: iOS

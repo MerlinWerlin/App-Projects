@@ -110,6 +110,7 @@ struct CloudSettings: View {
                     TextField("Cloud's name", text: $name).submitLabel(.done).onSubmit { model.setName(name) }
                     Toggle("Cloud animations", isOn: Binding(get: { model.preferences.motionEnabled }, set: model.setMotion))
                         .accessibilityIdentifier("motion-toggle")
+                    Text(model.preferences.motionEnabled ? "Cloud motion is on" : "Cloud motion is off").font(.caption).foregroundStyle(.secondary)
                     Text("Animations also respect your iPhone's Reduce Motion setting.").font(.caption).foregroundStyle(.secondary)
                 }
                 Section("Weather") {
@@ -117,7 +118,7 @@ struct CloudSettings: View {
                         ForEach(TemperatureUnit.allCases, id: \.self) { Text($0.label).tag($0) }
                     }
                     if let place = model.preferences.place { LabeledContent("Saved city", value: place.name) }
-                    Text("The widget checks your saved city's weather automatically. iOS chooses the exact refresh time.").font(.caption).foregroundStyle(.secondary)
+                    Text("Each widget has its own city and temperature settings. Hold a home-screen widget and choose Edit Widget to change them.").font(.caption).foregroundStyle(.secondary)
                 }
                 if !model.preferences.savedPlaces.isEmpty {
                     Section("Saved places") {

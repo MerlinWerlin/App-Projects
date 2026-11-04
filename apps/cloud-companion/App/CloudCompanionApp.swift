@@ -190,7 +190,7 @@ struct SkyHome: View {
                     } else if model.preferences.place == nil {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("A tiny companion for your everyday weather.").font(.system(.title3, design: .rounded, weight: .medium))
-                            Text("Choose a city once. Your home-screen widget will check the weather for you.").font(.subheadline).foregroundStyle(.secondary)
+                            Text("Choose your city, then give your home screen a little cloud. Each widget can have its own city.").font(.subheadline).foregroundStyle(.secondary)
                             Button("Choose a city") { showCities = true }.buttonStyle(.borderedProminent).tint(SkyPalette.ink)
                         }.padding(20).frame(maxWidth: .infinity, alignment: .leading).background(.white, in: RoundedRectangle(cornerRadius: 24))
                     }
@@ -376,9 +376,11 @@ struct WidgetGallery: View {
                         .padding(15).frame(height: 170).background(SkyPalette.sky(moment.mood), in: RoundedRectangle(cornerRadius: 24))
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Make room for a little cloud").font(.system(.headline, design: .rounded))
-                        Text("1. Touch and hold your home screen.\n2. Choose Edit, then Add Widget.\n3. Find Cloud Companion and choose a size.")
+                        Text("1. Touch and hold your home screen.\n2. Choose Edit, then Add Widget.\n3. Find Cloud Companion and choose a size.\n4. Hold the widget, choose Edit Widget and pick its city.")
                             .font(.subheadline).lineSpacing(7)
                         Text("Weather refreshes automatically when iOS allows. Forecast changes are scheduled ahead; an exact update time isn't guaranteed.")
+                            .font(.caption).foregroundStyle(.secondary)
+                        Text("These layouts preview your app's city. Each home-screen widget has its own city and temperature settings.")
                             .font(.caption).foregroundStyle(.secondary)
                     }
                 }.padding(24)

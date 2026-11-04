@@ -48,6 +48,7 @@ jobs:
           set -o pipefail
           xcodebuild -project CloudCompanion.xcodeproj -scheme CloudCompanion -sdk iphonesimulator -configuration Debug -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build 2>&1 | tee native-build.log
       - name: Boot simulator
+        id: boot
         timeout-minutes: 8
         run: |
           DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); a=[x for v in d["devices"].values() for x in v if "iPhone" in x["name"]]; print(next((x["udid"] for x in a if x["name"]=="iPhone 16 Pro"),a[0]["udid"]))')
@@ -62,6 +63,7 @@ jobs:
           xcodebuild -project CloudCompanion.xcodeproj -scheme CloudCompanion -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath DerivedData -resultBundlePath "$RUNNER_TEMP/cloud-uitests.xcresult" -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test 2>&1 | tee ui-tests.log
       - name: Capture and verify animated native screens
         id: render
+        if: (success() || failure()) && steps.build.outcome == 'success' && steps.boot.outcome == 'success'
         timeout-minutes: 6
         run: |
           python3 -m pip install --quiet pillow

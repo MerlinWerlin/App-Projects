@@ -98,19 +98,20 @@ def main():
         decoded = plistlib.loads(security('cms','-D','-i',provision))
         entitlements = decoded['Entitlements']
         assert entitlements.get('com.apple.developer.weatherkit') is True, 'WeatherKit is absent from the generated profile'
-        assert 'group.com.jared797.cloudcompanion' in entitlements.get('com.apple.security.application-groups',[]), 'Shared App Group is absent from the generated profile'
+        wanted_groups = project['targets'][target]['entitlements']['properties'].get('com.apple.security.application-groups', [])
+        assert set(wanted_groups).issubset(entitlements.get('com.apple.security.application-groups',[])), 'Required App Group is absent from the generated profile'
         profile_dir = Path.home()/'Library/MobileDevice/Provisioning Profiles'; profile_dir.mkdir(parents=True,exist_ok=True)
         (profile_dir/(attrs['uuid']+'.mobileprovision')).write_bytes(provision.read_bytes())
         settings = project['targets'][target]['settings']['base']
         settings.update({'CODE_SIGN_STYLE':'Manual','DEVELOPMENT_TEAM':team,'CODE_SIGN_IDENTITY':'Apple Distribution',
                          'PROVISIONING_PROFILE_SPECIFIER':name})
         profiles[bid] = name
-        receipts.append({'target':target,'weatherkit':True,'app_group':True,'profile_type':'IOS_APP_STORE','certificate_reused':True})
+        receipts.append({'target':target,'weatherkit':True,'required_app_groups':wanted_groups,'profile_type':'IOS_APP_STORE','certificate_reused':True})
     Path('project-signing.yml').write_text(yaml.safe_dump(project,sort_keys=False))
     (directory/'profiles.json').write_text(json.dumps(profiles))
     with open(os.environ['GITHUB_ENV'],'a') as env: env.write(f'CLOUD_PROFILES_PATH={directory / "profiles.json"}\n')
     Path('output/profile-capabilities.json').write_text(json.dumps(receipts,indent=2)+'\n')
-    print('App Store profiles verified for both targets; WeatherKit and the shared App Group are present.')
+    print('App Store profiles verified for both targets; required WeatherKit capability is present.')
 
 
 if __name__ == "__main__":
