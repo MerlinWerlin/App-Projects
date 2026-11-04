@@ -15,5 +15,25 @@
     "full_history": "history/repo-full-2026-11-01b.bundle.b64.txt (plus the older history/repo-full-2026-11-01.bundle.b64.txt)"
   },
   "size_note": "run 240: bundle base64 ~15.05 MB; trial kit not rebuilt (16.7 MB base64, over the 16 MB file limit; owner tests on TestFlight)",
-  "assistant_remaining": "Design and visually qualify dedicated functional theme widgets. The publisher holds unready automatic overlays; technical test passes do not count as design approval."
+  "assistant_remaining": "Design and visually qualify dedicated functional theme widgets. The publisher holds unready automatic overlays; technical test passes do not count as design approval.",
+  "designed_widgets": {
+    "state": "native-layouts-verified; installed-save verification and native TestFlight delivery pending",
+    "candidate": "1.0.3",
+    "catalogueThemes": 141,
+    "allThemeEntries": 215,
+    "functions": [
+      "clock",
+      "battery",
+      "calendar"
+    ],
+    "sizeLayouts": 1935,
+    "nativeRenders": 2727,
+    "nativeAssertions": 58263,
+    "corePassed": 1908,
+    "coreFailed": 0,
+    "nativeRenderRun": 41794617629,
+    "fullNativeAppRun": 41793155698,
+    "physicalDeviceTested": false,
+    "source": "codex/glaze-designed-widgets-20261104 / PR218"
+  }
 }

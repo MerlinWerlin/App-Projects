@@ -148,3 +148,7 @@
 "Tick a habit" = "習慣をチェック";
 "Streak habit" = "連続記録の習慣";
 "Choose the habit this streak widget follows." = "この連続記録ウィジェットで追う習慣を選びます。";
+
+"Unavailable" = "取得できません";
+"Full" = "満充電";
+"Remaining" = "残量";

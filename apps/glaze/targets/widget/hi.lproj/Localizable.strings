@@ -148,3 +148,7 @@
 "Tick a habit" = "आदत टिक करें";
 "Streak habit" = "सिलसिले की आदत";
 "Choose the habit this streak widget follows." = "वह आदत चुनें जिसे यह सिलसिला विजेट दिखाए।";
+
+"Unavailable" = "उपलब्ध नहीं";
+"Full" = "पूर्ण";
+"Remaining" = "शेष";

@@ -140,6 +140,24 @@ async function themeArtStep(arg: unknown): Promise<void> {
 
 registerDeferred(DEFERRED_STEPS.themeArt, { priority: 30, run: themeArtStep });
 
+/** Metadata-only upgrade of already configured functional pieces; called in the deferred queue. */
+export async function upgradeActiveDesignedWidgets(): Promise<void> {
+  if (await nativeWidgets.designVersion() < 5) return;
+  const library = await nativeWidgets.artLibrary();
+  if (!library.available || !library.ok) return;
+  // A person can save Nebula widgets without putting Nebula's icons in use. Migrate the themes
+  // actually represented by saved widgets as well as the globally applied theme.
+  const ids = new Set(library.pieces.filter(p => p.source !== 'photo' && p.themeId).map(p => p.themeId!));
+  const active = await loadActiveThemeId();
+  if (active) ids.add(active);
+  for (const id of ids) {
+    const theme = await findAnyThemeById(id);
+    if (!theme) continue;
+    const result = await nativeWidgets.upgradeDesignedWidgets(theme);
+    if (result.available && !result.ok) throw new Error('Designed widget migration failed');
+  }
+}
+
 /** The theme in use for a screen: read on mount and on every focus, and on each change. */
 export function useActiveThemeId(): string | null {
   const [id, setId] = useState<string | null>(null);

@@ -14,7 +14,7 @@ for folder in base.glob('*'):
 report={'group':'group.com.jared797.glaze','containersFound':len(matches),'runtimeQualification':False,'files':[]}
 if len(matches)==1:
     folder=matches[0]
-    for name in ['theme.json','widgets.json','Library/Preferences/group.com.jared797.glaze.plist']:
+    for name in ['theme.json','widgets.json','widget-art/index.json','Library/Preferences/group.com.jared797.glaze.plist']:
         source=folder/name
         if source.is_file():
             shutil.copy2(source,out/source.name);report['files'].append(source.name)

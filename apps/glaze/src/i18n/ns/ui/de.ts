@@ -2,6 +2,17 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const de: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "Für dieses Thema gestaltet",
+      "body": "Gut lesbare Live-Widgets in den Farben deiner Symbole.",
+      "clock": "Uhr",
+      "battery": "Batterie",
+      "calendar": "Kalender",
+      "setup": "Füge das Glaze Seamless-Widget hinzu und wähle dieses Design unter Widget bearbeiten → Kunst.",
+      "update": "Installiere den neuesten Glaze-Build über TestFlight, um diese Widgets zu nutzen.",
+      "batteryNote": "Batteriewerte werden regelmäßig aktualisiert. Ein Strich bedeutet, dass iOS keinen Wert liefert.",
+      "unavailable": "Nicht verfügbar"
+  },
   error: {
     body: 'Auf diesem Bildschirm ist ein Problem aufgetreten. Deine Symbole, Themes und Schleifen sind auf deinem Telefon gespeichert und nicht betroffen. Versuch es noch einmal und schick uns die Notiz unten, wenn es wieder passiert.',
     retryHint: 'Lädt diesen Bildschirm neu',

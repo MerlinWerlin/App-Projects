@@ -2,6 +2,17 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const fr: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "Conçus pour ce thème",
+      "body": "Des widgets lisibles et actualisés, aux couleurs de vos icônes.",
+      "clock": "Horloge",
+      "battery": "Batterie",
+      "calendar": "Calendrier",
+      "setup": "Ajoutez le widget Glaze Seamless, puis choisissez ce modèle dans Modifier le widget → Art.",
+      "update": "Installez la dernière version de Glaze depuis TestFlight pour utiliser ces widgets.",
+      "batteryNote": "La batterie est actualisée régulièrement. Un tiret signifie que le niveau est indisponible dans iOS.",
+      "unavailable": "Indisponible"
+  },
   error: {
     body: 'Cet écran a rencontré un problème et s’est arrêté. Vos icônes, thèmes et boucles sont enregistrés sur votre téléphone et ne sont pas touchés. Réessayez et, si cela se reproduit, envoyez-nous la note ci-dessous.',
     retryHint: 'Recharge cet écran',

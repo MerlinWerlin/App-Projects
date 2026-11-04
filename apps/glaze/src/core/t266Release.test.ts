@@ -36,7 +36,7 @@ test('T266: no native piece turns non-exempt encryption on', () => {
   }
 });
 
-test('T266: version decision - App Store release keeps the TestFlight train 1.0.1', () => {
+test('T266: release checklist names the configured native TestFlight train', () => {
   const app = JSON.parse(read('app.json')) as AppJson;
   const checklist = read('docs/RELEASE_CHECKLIST.md');
   assert.match(checklist, /## 0\. Version decision/);

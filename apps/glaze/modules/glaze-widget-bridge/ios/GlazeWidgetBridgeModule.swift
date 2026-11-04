@@ -38,7 +38,35 @@ public class GlazeWidgetBridgeModule: Module {
     Name("GlazeWidgetBridge")
 
     // Version handshake: old installed binaries must not claim that v2 designs were applied.
-    AsyncFunction("widgetDesignVersion") { () -> Int in 4 }
+    AsyncFunction("widgetDesignVersion") { () -> Int in 5 }
+
+    // Functional designs need no source artwork. A small solid thumbnail keeps library/file
+    // invariants intact; the extension renders the live semantic design, never this placeholder.
+    AsyncFunction("composeDesignedWidgetPiece") { (id: String, colour: String) -> Bool in
+      guard GlazeWidgetBridgeModule.validArtId(id), colour.range(of: "^#[0-9a-fA-F]{6}$", options: .regularExpression) != nil,
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
+      else { return false }
+      let dir = container.appendingPathComponent(artDir, isDirectory: true)
+      do {
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        let format = UIGraphicsImageRendererFormat(); format.scale = 1; format.opaque = true
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 16, height: 16), format: format).image { context in
+          let hex = UInt32(colour.dropFirst(), radix: 16) ?? 0
+          UIColor(red: CGFloat((hex >> 16) & 255) / 255, green: CGFloat((hex >> 8) & 255) / 255, blue: CGFloat(hex & 255) / 255, alpha: 1).setFill()
+          context.fill(CGRect(x: 0, y: 0, width: 16, height: 16))
+        }
+        guard let data = image.jpegData(compressionQuality: 0.9) else { return false }
+        try data.write(to: dir.appendingPathComponent("\(id).jpg"), options: .atomic)
+        return true
+      } catch { return false }
+    }
+
+    AsyncFunction("designedWidgetBattery") { () -> Int? in
+      UIDevice.current.isBatteryMonitoringEnabled = true
+      let level = UIDevice.current.batteryLevel
+      guard level.isFinite, level >= 0, level <= 1 else { return nil }
+      return Int((Double(level) * 100).rounded())
+    }
 
     AsyncFunction("setTheme") { (json: String) -> Bool in
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
