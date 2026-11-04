@@ -26,5 +26,18 @@
     "sharing": "Check applicable service-provider exception/terms instead of assuming no sharing.",
     "audio": "App-side processing/storage is local; user-initiated Android share remains distinct. No audio is passed to the billing API in app source.",
     "submitted": false
+  },
+  "currentRuntimeObservation": {
+    "runtimeSource": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+    "productionReplayRun": 41753165406,
+    "appPids": [
+      "3264",
+      "4297",
+      "4848"
+    ],
+    "appProcessCctRequestObserved": true,
+    "response200Observed": true,
+    "rawLogSha256": "47c5829bef2864269be502f9b508d8bfb034b1d9c6411dfd4a13688cd4071f0e",
+    "scope": "Process-attributed logs only; exact payload and individual SDK caller not decoded. Prior provider/source findings remain separately recorded."
   }
 }

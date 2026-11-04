@@ -1,6 +1,6 @@
 {
-  "checkedUtc": "2026-11-04T00:21:00Z",
-  "source": "Signed-in Google Play Console Home, directly read through browser UI",
+  "checkedUtc": "2026-11-04T01:22:15.084823+00:00",
+  "source": "Signed-in Google Play Console Home, explicitly reloaded for the final release follow-up",
   "identity": "Google is verifying your identity",
   "documents": "Uploaded; Google will email the account owner when verification completes",
   "phoneVerification": "Unavailable until organization and identity documents are approved",
@@ -10,5 +10,6 @@
   "action": "Wait for Google decision; no duplicate identity upload or replacement ABN letter unless requested",
   "appCreated": false,
   "appSubmittedForReview": false,
-  "publicRelease": false
+  "publicRelease": false,
+  "priorCheckedUtc": "2026-11-04T00:21:00Z"
 }

@@ -60,7 +60,18 @@
       "originalActiveSeconds": 5.18,
       "copyActiveSeconds": 4.44,
       "reason": "Complete native UI/signal/decoder gates passed before production AAB generation."
+    },
+    {
+      "run": 41748574006,
+      "runtimeSource": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+      "status": "SUCCESS_NATIVE16KB_AND_PRODUCTION_AAB",
+      "nativeDecoderTests": "2 PASS",
+      "bootProperty": "1",
+      "activeSeconds": [
+        4.92,
+        4.4
+      ]
     }
   ],
-  "production_bundle_replay": "PASS in41747258218: production-derived16KB gameplay, sustained tone, unavailable-store/Restore UI and no fake Plus. Actual Play transactions untested."
+  "production_bundle_replay": "PASS 41753165406: production16KB gameplay, sustained HAL tone, clean unavailable-store/Restore guidance and no fake Plus. Actual Play payments/real voice untested."
 }
