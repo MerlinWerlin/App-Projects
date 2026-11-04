@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Satchel: sample trips no longer offer Plan this trip again, and removing the samples brings back Include demo trips",
+  "note": "Satchel: real downloaded city places on the map; fictional sample places are opt-in, with the verified city-map publishing workflow installed",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

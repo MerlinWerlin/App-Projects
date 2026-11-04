@@ -32,5 +32,5 @@ export type PackToilet = { id: string; lat: number; lon: number } & Record<strin
 
 export type PoisFile = { format: number; built: string; attribution: string; toilets: PackToilet[]; places: PackPlace[] };
 
-export declare function overpassQuery(bbox: [number, number, number, number]): string;
+export declare function overpassQuery(bbox: [number, number, number, number], timeout?: number): string;
 export declare function toPois(elements: readonly OverpassElement[] | unknown, built: string): PoisFile;

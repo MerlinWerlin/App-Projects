@@ -1,5 +1,63 @@
 # Offline city map packs (T47, owner-1031 A)
 
+## Owner feedback, 3 November 2026
+
+Jared reports Satchel looks good with no issues found in his phone check. PDF import is still untested because
+he had no PDF; a clearly fictional sample booking is supplied by this lane. The next priority is real maps,
+because the existing map still shows demo places. This is not confirmation of map download or flight-mode rendering.
+
+The publisher was only a template under `ops/github/`, so GitHub never offered it as an Actions workflow.
+It is now also installed at `.github/workflows/satchel-maps-publish.yml`. Branch pushes build real Kyoto,
+central Tokyo and Sydney packs as review artifacts, with checks using the phone's actual catalog, tar and POI
+parsers, PNG dimensions, complete tile coverage, archive hashes and a downtown preview mosaic per city.
+These are build checks; actual iPhone installation and offline drawing still need the test below.
+
+Sample POIs now require **Show sample places**; they are off on every fresh Map screen. Search follows the same
+choice. Downloaded POIs automatically follow the visible downloaded city instead of falling back to the first
+pack stored on the phone. Bookings and saved places remain available.
+
+### Shipping and publishing
+
+1. Review the branch artifacts and merge the scoped pull request (the existing release approval mechanism).
+2. In GitHub Actions, run **satchel-maps-publish** on **main**, leave the tag `satchel-maps-v1` and ratio `2`,
+   and enable **Publish verified packs**. This builds and verifies every city before uploading packs and the catalog last.
+   Branch runs and dispatches with Publish off only make review artifacts. No hosting account or map key is needed.
+3. On TestFlight, update if offered; close and reopen Satchel twice for the JS update. Sample places should be off.
+4. Online: Map > Offline city maps > Kyoto > Download > Show on map. Turn on flight mode, close and reopen
+   Satchel, then zoom into Kyoto. Check streets and labels, and real toilets/places. Repeat with Sydney if useful.
+   Report download time, errors and missing labels. The three packs cover the configured city areas, not whole countries.
+
+Run results are linked in the pull request. No downloaded-city or real-phone success is claimed until evidenced.
+
+### Build repair, 4 November 2026
+
+The second preview built Kyoto (811 tiles, 34.3 MB) and rendered Tokyo, then failed while collecting Tokyo places.
+`tools/maps/overpass.mjs` now collects each city's places in four sequential geographic cells, deduplicated by
+OSM type and ID. Each query has a 60-second server budget and a 90-second client timeout, including its response
+body. Transient failures retry up to three times with a cooldown; HTTP 429 honors `Retry-After`. A runtime
+`remark`, malformed response or failed cell rejects the city instead of packaging partial results.
+The build artifact includes per-city `*-poi-source.json` request bounds, counts and OSM base timestamps.
+Six offline collector checks cover coverage/deduplication, retry behavior, partial results, malformed responses
+and stalled bodies. This follows the [Overpass resource and rate-limit guidance](https://dev.overpass-api.de/overpass-doc/en/preface/commons.html).
+
+**Third preview passed:** [Actions run 41722754832](https://github.com/MerlinWerlin/App-Projects/actions/runs/41722754832),
+source `1076eb9`, passed all 1,850 app tests, six collector checks and the all-city pack verifier.
+All 12 source requests succeeded on their first attempt. Downloaded archives independently match their catalog
+hashes and sizes; all 2,177 PNG structures and metadata/POI counts passed local checks. The three downtown
+mosaics were visually reviewed: roads, water, parks and labels present, with no obvious blank tile or alignment gap
+in those samples. The strict UI stub typecheck also passed; this is not a full Expo/native build or iPhone test.
+
+| City | Download size (decimal MB) | Tiles | Places, including toilets |
+| --- | ---: | ---: | ---: |
+| Kyoto | 34.3 | 811 | 5,411 |
+| Tokyo (central) | 56.6 | 985 | 20,019 |
+| Sydney (city) | 16.4 | 381 | 4,075 |
+
+The run artifact `satchel-city-maps-41722754832` contains the packs, catalog, request receipts, previews and
+`verification.json`. It is retained for 14 days; the owner checkout also retains the downloaded artifact and
+local validation under `output/map-build-attempt-3`. These packs are review artifacts, not published downloads.
+Approved merge/publication and the iPhone flight-mode check above remain required.
+
 **What the app does.** Map tab > Offline city maps lists the cities in
 `https://github.com/MerlinWerlin/App-Projects/releases/download/satchel-maps-v1/catalog.json`.
 Download fetches `<city>.tar`, unpacks it into the app's documents folder (`maps/<id>/meta.json`, `pois.json`,

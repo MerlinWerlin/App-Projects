@@ -14,16 +14,18 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import mbgl from '@maplibre/maplibre-gl-native';
 import { layers, namedFlavor } from '@protomaps/basemaps';
 import { PMTiles } from 'pmtiles';
 import sharp from 'sharp';
-import { overpassQuery, POIS_FORMAT, toPois } from './pois.mjs';
+import { POIS_FORMAT, toPois } from './pois.mjs';
+import { fetchCityElements } from './overpass.mjs';
 
 const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => (a.startsWith('--') ? [...acc, [a.slice(2), all[i + 1] ?? '']] : acc), []),
 );
-const here = resolve(new URL('.', import.meta.url).pathname);
+const here = fileURLToPath(new URL('.', import.meta.url));
 const cfg = JSON.parse(readFileSync(join(here, 'cities.json'), 'utf8'));
 const OUT = resolve(args.out || join(here, 'out'));
 const RATIO = Number(args.ratio || 2);
@@ -131,22 +133,6 @@ function makeRenderer(pm) {
   };
 }
 
-// ---------------------------------------------------------------- POIs (Overpass)
-// The query and the pois.json shaping live in ./pois.mjs (pure, fixture-tested by `npm test` in the app).
-async function overpass(bbox) {
-  const q = overpassQuery(bbox);
-  for (let attempt = 0; attempt < 4; attempt++) {
-    const r = await fetch('https://overpass-api.de/api/interpreter', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': UA },
-      body: 'data=' + encodeURIComponent(q),
-    }).catch(() => null);
-    if (r && r.ok) return (await r.json()).elements ?? [];
-    await new Promise((ok) => setTimeout(ok, 15000 * (attempt + 1)));
-  }
-  throw new Error('Overpass failed');
-}
-
 // ---------------------------------------------------------------- main
 const only = args.only ? new Set(args.only.split(',')) : null;
 const source = await latestBuildUrl();
@@ -177,7 +163,9 @@ for (const city of cfg.cities) {
   }
   r.release();
   src.close();
-  const pois = toPois(await overpass(city.bbox), BUILT);
+  const collected = await fetchCityElements(city.bbox, { label: city.id });
+  writeFileSync(join(OUT, `${city.id}-poi-source.json`), JSON.stringify({ city: city.id, requests: collected.receipts }, null, 2));
+  const pois = toPois(collected.elements, BUILT);
   const center = [+((w + e) / 2).toFixed(5), +((s + n) / 2).toFixed(5)];
   const file = `${city.id}.tar`;
   // meta.json has no bytes/sha256 (they describe the tar it goes into); the app takes them from the catalog entry
