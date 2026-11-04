@@ -102,12 +102,16 @@ struct Forecast: Codable, Equatable {
 
     static func demo(at date: Date = Date()) -> Self {
         let start = Calendar.current.dateInterval(of: .hour, for: date)!.start
+        let hours: [ForecastHour] = (1...8).map { (n: Int) in
+            let hourDate = start.addingTimeInterval(Double(n) * 3600)
+            let symbol = n >= 4 ? "cloud.rain.fill" : "cloud.sun.fill"
+            return ForecastHour(date: hourDate, temperatureC: Double(25 - n),
+                                rainChance: n >= 4 ? 0.6 : 0.1, symbol: symbol, daylight: n < 7)
+        }
         return Forecast(place: .sydney, fetchedAt: date, observedAt: date,
             temperatureC: 23, feelsLikeC: 24, highC: 25, lowC: 17,
             condition: "Partly cloudy", symbol: "cloud.sun.fill", daylight: true,
-            hours: (1...8).map { n in ForecastHour(date: start.addingTimeInterval(Double(n) * 3600),
-                temperatureC: Double(25 - n), rainChance: n >= 4 ? 0.6 : 0.1,
-                symbol: n >= 4 ? "cloud.rain.fill" : "cloud.sun.fill", daylight: n < 7) },
+            hours: hours,
             attributionURL: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
     }
 }

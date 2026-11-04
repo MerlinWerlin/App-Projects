@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct WidgetCard: View {
     var moment: SkyMoment

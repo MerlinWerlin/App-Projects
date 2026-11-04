@@ -18,6 +18,8 @@ final class SkyModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let store = SkyStore.shared
     private let location = CLLocationManager()
     private var requestID = UUID()
+    private var wantsLocation = false
+    private var loadingPlace: Place?
 
     override init() {
         preferences = SkyStore.shared.preferences
@@ -45,11 +47,13 @@ final class SkyModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     func refresh() async {
         guard !demo, let place = preferences.place else { return }
+        guard !loading || loadingPlace != place else { return }
         let id = UUID()
         requestID = id
         loading = true
+        loadingPlace = place
         message = nil
-        defer { if requestID == id { loading = false } }
+        defer { if requestID == id { loading = false; loadingPlace = nil } }
         do {
             let updated = try await WeatherClient().fetch(for: place)
             guard requestID == id, preferences.place == place else { return }
@@ -63,19 +67,25 @@ final class SkyModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     func locate() {
         guard !demo else { return }
+        wantsLocation = true
         switch location.authorizationStatus {
         case .notDetermined: location.requestWhenInUseAuthorization()
         case .authorizedAlways, .authorizedWhenInUse: location.requestLocation()
-        default: message = "Location access is off. You can choose a city instead."
+        default: wantsLocation = false; message = "Location access is off. You can choose a city instead."
         }
     }
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        guard wantsLocation else { return }
         if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
             manager.requestLocation()
+        } else if manager.authorizationStatus == .denied || manager.authorizationStatus == .restricted {
+            wantsLocation = false
+            message = "Location access is off. You can choose a city instead."
         }
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let point = locations.last, point.horizontalAccuracy >= 0 else { return }
+        guard wantsLocation, let point = locations.last, point.horizontalAccuracy >= 0 else { return }
+        wantsLocation = false
         Task {
             let names = try? await CLGeocoder().reverseGeocodeLocation(point)
             choose(Place(name: names?.first?.locality ?? "Current location",
@@ -84,6 +94,7 @@ final class SkyModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        wantsLocation = false
         message = "Couldn't find your location. Choose a city or try again."
     }
 }

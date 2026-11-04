@@ -6,7 +6,7 @@ let package = Package(
     platforms: [.macOS(.v13)],
     products: [.library(name: "CloudCore", targets: ["CloudCore"])],
     targets: [
-        .target(name: "CloudCore", path: "Shared", exclude: ["WeatherClient.swift", "CloudArt.swift", "WidgetCard.swift"], sources: ["Core.swift"]),
+        .target(name: "CloudCore", path: "Shared", exclude: ["WeatherClient.swift", "CloudArt.swift", "WidgetCard.swift", "PrivacyInfo.xcprivacy"], sources: ["Core.swift"]),
         .testTarget(name: "CloudCoreTests", dependencies: ["CloudCore"], path: "Tests")
     ]
 )
