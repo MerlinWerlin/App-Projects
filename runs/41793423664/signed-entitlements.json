@@ -1,0 +1,12 @@
+[
+  {
+    "target": "CloudCompanion.app",
+    "weatherkit": true,
+    "independent_widget_configuration": true
+  },
+  {
+    "target": "CloudCompanionWidget.appex",
+    "weatherkit": true,
+    "independent_widget_configuration": true
+  }
+]

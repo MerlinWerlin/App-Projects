@@ -1,0 +1,16 @@
+[
+  {
+    "target": "CloudCompanion",
+    "weatherkit": true,
+    "required_app_groups": [],
+    "profile_type": "IOS_APP_STORE",
+    "certificate_reused": true
+  },
+  {
+    "target": "CloudCompanionWidget",
+    "weatherkit": true,
+    "required_app_groups": [],
+    "profile_type": "IOS_APP_STORE",
+    "certificate_reused": true
+  }
+]
