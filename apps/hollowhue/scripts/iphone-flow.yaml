@@ -1,0 +1,88 @@
+appId: com.jared797.hollowhue
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: November colour & discovery update
+    timeout: 60000
+- takeScreenshot: 01-gallery
+- tapOn: Settings
+- scrollUntilVisible:
+    element:
+      text: App updates
+    direction: DOWN
+    timeout: 15000
+- assertVisible: App updates
+- takeScreenshot: 02-settings
+- scrollUntilVisible:
+    element:
+      text: Back
+    direction: UP
+    timeout: 15000
+- tapOn: Back
+- scrollUntilVisible:
+    element:
+      text: Open Hidden Library
+    direction: DOWN
+    timeout: 20000
+- tapOn: Open Hidden Library
+- assertVisible: Mix a colour
+- tapOn: Mix a colour
+- assertVisible: Hex colour
+- tapOn:
+    id: colour-hex
+- eraseText: 7
+- inputText: '#3388DD'
+- pressKey: Enter
+- takeScreenshot: 03-colour-picker
+- scrollUntilVisible:
+    element:
+      text: Use this colour
+    direction: DOWN
+    timeout: 15000
+- tapOn: Use this colour
+- assertVisible: 'Recent colour #3388DD'
+- takeScreenshot: 03-custom-colour
+- tapOn:
+    point: '30%,40%'
+- tapOn: Undo
+- tapOn: Redo
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: 04-library-story
+- tapOn: Back to scenes
+- scrollUntilVisible:
+    element:
+      text: Open Owlwood Forest
+    direction: DOWN
+    timeout: 20000
+- tapOn: Open Owlwood Forest
+- tapOn: Draw
+- swipe:
+    start: '30%,30%'
+    end: '55%,35%'
+    duration: 500
+- tapOn: Undo
+- tapOn: Redo
+- takeScreenshot: 05-phone-draw-tools
+- assertVisible: 'Recent colour #3388DD'
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: 06-owl-hollow
+- tapOn: Back to scenes
+- stopApp
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: November colour & discovery update
+    timeout: 60000
+- scrollUntilVisible:
+    element:
+      text: Open Hidden Library
+    direction: DOWN
+    timeout: 20000
+- tapOn: Open Hidden Library
+- assertVisible: 'Recent colour #3388DD'
+- takeScreenshot: 07-recent-colour-after-relaunch

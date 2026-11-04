@@ -6,6 +6,7 @@ import { currentLanguage, languageName, t } from '../src/i18n';
 import { updateSettings, useSettings } from '../src/store/settings';
 import { space, type as ty, useColors } from '../src/theme/tokens';
 import { Card, IconButton } from '../src/ui/kit';
+import { UpdateCard } from '../src/ui/UpdateCard';
 
 export default function Settings() {
   const s = useSettings();
@@ -47,6 +48,13 @@ export default function Settings() {
           <Text style={[ty.small, { color: c.ink3 }]}>{t('settings.insideHint')}</Text>
         </View>
       </Card>
+
+      <Card style={{ gap: space.sm }}>
+        <Text style={[ty.bodyBold, { color: c.ink }]}>{t('release.title')}</Text>
+        <Text style={[ty.body, { color: c.ink2 }]}>{t('release.body')}</Text>
+      </Card>
+
+      <UpdateCard />
 
       <Card style={{ gap: space.sm }}>
         <Text style={[ty.bodyBold, { color: c.ink }]}>{t('settings.about')}</Text>
