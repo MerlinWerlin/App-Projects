@@ -172,9 +172,9 @@ try:
         assert 'package:com.android.vending' not in enabled, 'Refusing Buy while a real Play Store remains enabled'
         click('Play')
         wait('Quick play')
-        click('Settings')
-        click('Unlock Backspin Plus')
+        click('9 free goes left')
         wait('One payment. Yours for life.')
+        capture('10-plus-offer')
         click('Unlock Backspin Plus')
         until=time.monotonic()+45
         while not (d(text='Google Play is not reachable. Try again later.').exists or
@@ -188,7 +188,6 @@ try:
         click('Restore purchase')
         wait('No completed Plus purchase found for this Google Play account.')
         capture('11-google-play-restore-unavailable')
-        d.press('back')
         d.press('back')
         wait('Quick play')
         assert d(description='9 free goes left').exists or d(textContains='9 free goes left').exists, 'Unavailable billing granted Plus or changed free goes'
