@@ -393,11 +393,6 @@ appId: com.jared797.hollowhue
     id: collection-zoom
 - waitForAnimationToEnd:
     timeout: 10000
-- scrollUntilVisible:
-    element:
-      id: category-sealife
-    direction: UP
-    timeout: 30000
 - swipe:
     from:
       id: category-sealife
