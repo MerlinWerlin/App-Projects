@@ -1,5 +1,7 @@
 # Build process and evidence — 4 November 2026
 
+**Later owner correction (M03):** Jared set aside the basic dashboard and clarified the iOS product as a full-screen professional kitty that approaches, greets, listens, talks and remains present behind menus. The corrected brief is `IOS_CHARACTER_EXPERIENCE.md`. A static three-view concept was produced with built-in imagegen and copied into `character-direction` with the exact prompt. Source and previous verification remain preserved; this revision adds design records only. No character model, rig, animation, native phone build or new assistant capability was implemented in M03.
+
 This is a record of what was done and verified. The single project roadmap is `C:/BTB/_ATLAS/MASTER_ROADMAP.md`, APPS / Meow Manager. Codex performed this build solo, without agents or new scheduled workers.
 
 ## Source and setup

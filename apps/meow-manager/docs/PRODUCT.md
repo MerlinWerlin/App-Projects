@@ -1,10 +1,12 @@
 # Product record — 4 November 2026
 
+**Owner correction, 4 November:** iOS is the current target. Set aside the dashboard interface. The app should open into a professional full-screen kitty that comes to the user, interacts and speaks, with menus around that character experience. The current experience definition is [iOS character experience](IOS_CHARACTER_EXPERIENCE.md); its static visual concept is a proposal. The earlier implementation below is retained as a reference and possible source of reusable core logic.
+
 Jared asked for a little cat personal assistant that both organises the day and helps get things done, using the current app infrastructure and documenting the process. His partner liked the concept. He suggested Japan as a possible market and thought the character would be easy to market. These are the starting hypothesis and owner direction; demand and acquisition costs have not been measured. **Meow Manager** is a working title.
 
 The experience should feel like a small, capable friend: warm, useful and easy to return to. Missed days never harm the cat or trigger guilt. Task completion earns a happy expression and encouragement; it does not gate basic help. An original illustrated cat is the centre of the product. Users can name it and choose gentle or cheeky wording.
 
-## What the first implementation does
+## What the parked prototype does
 
 | Area | Current behaviour |
 |---|---|

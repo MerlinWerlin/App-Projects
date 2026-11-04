@@ -1,5 +1,7 @@
 # Meow Manager
 
+**Current direction:** iOS character experience. Jared set aside the planner interface on 4 November: the professional kitty should inhabit the screen, approach/greet the user and remain present while menus open. Start with [the corrected experience brief](docs/IOS_CHARACTER_EXPERIENCE.md). The running prototype and its tests below are preserved as earlier work; they are not the accepted interface direction. No iOS TestFlight build has been delivered.
+
 A little cat personal assistant that helps organise a day, remember things and take the next step. Started for Jared on 4 November 2026. This is a real Expo app in the existing App Factory release repository, with an original vector cat called Mochi. Codex owns this first implementation. It serves the **Meow Manager** row of `C:/BTB/_ATLAS/MASTER_ROADMAP.md`, the only project roadmap.
 
 ## Run and check

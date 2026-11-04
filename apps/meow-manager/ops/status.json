@@ -1,7 +1,12 @@
 {
   "app": "meow-manager",
-  "stage": "build",
-  "headline": "First working foundation built 4 November 2026: original cat, day planner, local assistant, reminders/calendar adapters and English/Japanese.",
+  "stage": "design-revision",
+  "targetPlatform": "iOS",
+  "headline": "Owner set aside the dashboard prototype. Define a full-screen professional kitty that approaches, greets and assists, with discreet menus.",
+  "prototypeInterface": "parked; source and historical verification retained",
+  "currentBrief": "docs/IOS_CHARACTER_EXPERIENCE.md",
+  "concept": "docs/character-direction/ios-character-concept.png (static AI-generated visual proposal)",
+  "characterAnimationImplemented": false,
   "source": "apps/meow-manager",
   "branch": "codex/meow-manager-20261104",
   "baseCommit": "44448898badfae0cf312fafc29aacd4dd9e2c0ad",
@@ -21,7 +26,7 @@
   ],
   "storeSubmitted": false,
   "next_for_owner": [
-    "Try the first browser preview and comment on the cat and daily flow."
+    "Review the proposed full-screen professional-kitty direction."
   ],
   "roadmap": "C:/BTB/_ATLAS/MASTER_ROADMAP.md#project-apps",
   "expoDoctor": "21/21 passed locally",

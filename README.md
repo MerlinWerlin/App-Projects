@@ -9,4 +9,4 @@ is where releases are approved. Apps with an `EXPO_GO_PREVIEW` file publish an E
 **To ship:** merge the "Ship …" pull request in the GitHub app. See [docs/SHIPPING.md](docs/SHIPPING.md)
 (including the one-time setup).
 
-Meow Manager is being built in `apps/meow-manager`. Start with its README and `docs/BUILD_PROCESS.md`. This checkout is the owned development copy for `codex/meow-manager-20261104`; GitHub main remains the release authority.
+Meow Manager's current direction is an iOS character experience: a full-screen professional kitty that approaches, greets and assists, with discreet menus. The dashboard prototype is parked. Start with `apps/meow-manager/docs/IOS_CHARACTER_EXPERIENCE.md`; the visual concept and exact prompt are saved beside it. This checkout is the owned development copy for `codex/meow-manager-20261104`; GitHub main remains the release authority.
