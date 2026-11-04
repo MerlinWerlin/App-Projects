@@ -21,7 +21,7 @@
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { basename, dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 process.removeAllListeners('warning');
@@ -126,7 +126,7 @@ export function rebuild({ cache, fix, out, encoder = 'pillow', versionsFile = ''
       const fixes = new Map();
       for (const s of srcs) {
         const { width, height } = pngSize(readFileSync(s));
-        fixes.set(imageStem(s.split('/').pop()), { ...enc.get(s), width, height });
+        fixes.set(imageStem(basename(s)), { ...enc.get(s), width, height });
       }
       const r = nextManifest(manifest, fixes);
       if (!r) continue;
