@@ -10,6 +10,9 @@
 
 import { CATALOGUE_KIND_SIZES } from './widgetKinds.ts';
 
+/** Retired clean-face clock export; working designed clocks use themed-live-clock. */
+export const LEGACY_FALLBACK_CLOCK_ID = 'live-clock';
+
 /** What an option is. `art` is a picture; the others are pictures for a widget that can also be live. */
 /** T237: `focus` is a focus-timer piece (the Seamless widget can run it: liveArt.ts). */
 export type WidgetOptionKind = 'art' | 'clock' | 'date' | 'calendar' | 'habits' | 'battery' | 'countdown' | 'photo' | 'quote' | 'focus';

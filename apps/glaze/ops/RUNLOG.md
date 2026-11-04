@@ -705,3 +705,9 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - Apple GET receipt41798413254 at08:18:03UTC confirms1.0.2(27), build056428bb-3094-4a24-9ed4-25608e3d7af8, VALID / IN_BETA_TESTING, existing internal Team(Expo) all-build group. The local replacement IPA was not retained; do not call the initial25 independent signature/App Group audit proof for27.
 - All141 themes and original metadata remain.1505new immutable files onv11/v12/v13 match SHA256; production fresh-request helper reads the current v5catalogue. Original v1catalogue and2008v2/v3/v4assets remain unchanged.103automatic tiny clocks withdrawn;315repeated component editions withheld;2existing dedicated art clocks and other original choices remain.
 - 1903core tests/full app+NodeTypeScript pass;27pack-script pass/2optional skips. Dedicated themed-layout redesign and actual iPhone behavior remain unfinished. Existing placed widgets may retain old artwork; check/reselect/re-save as needed. Final evidence: ops/TESTFLIGHT_DELIVERY_20261104.json.
+
+
+## 4 Nov 2026: owner prefers no fallback clock
+- Removed legacy live-clock from remote theme menus, automatic art sync and future pack builders. Existing library cleanup runs through the deferred launch upgrade; retired IDs map to the working clock slot, and saved photos/art plus valid designed widgets remain. No native/layout/version changes.
+- 1909 core tests, 27 pack-script tests (2 optional encoder skips), full app/Node TypeScript pass. Focused regression covers all sizes, inactive-theme cleanup, pinned/unpinned remaps, preserved photos/retired metadata and idempotence.
+- RELEASE requests a compatible production update for runtime 1.0.3 / existing TestFlight31. Publication and phone activation are not claimed here. Previous build27 status is superseded by docs/DESIGNED_WIDGET_DELIVERY_20261104.json, which independently records all215theme designed-widget delivery in31.

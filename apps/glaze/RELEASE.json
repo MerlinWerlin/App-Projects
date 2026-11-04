@@ -1,6 +1,6 @@
 {
-  "mode": "build",
-  "note": "Glaze 1.0.3: readable theme-matched clocks, battery gauges and full month calendars for every theme; fresh catalogue requests. Existing functional widgets upgrade in place; original artwork and personal photos are preserved.",
+  "mode": "update",
+  "note": "Glaze 1.0.3: remove the legacy fallback clock from theme choices and saved widget art; preserve the working designed clocks, battery widgets, calendars and personal photos.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

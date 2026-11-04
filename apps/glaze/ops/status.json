@@ -1,24 +1,24 @@
 {
-  "tests": "1903/1903 core pass;27pack-script pass,2optional encoder cases skipped",
+  "tests": "1909/1909 core pass; 27 pack-script pass, 2 optional encoder cases skipped",
   "typecheck": "Full installed-dependency app + Node TypeScript PASS",
-  "last_run": "2026-11-04T19:19:53.011727+11:00",
+  "last_run": "2026-11-04T10:02:37.468289+00:00",
   "stage": "testflight",
   "oversight_seen": "v233 (1793558948-7f71): no new directives; no patches (rechecked run 240).",
-  "headline": "Glaze 1.0.2 (27) is available in internal TestFlight with native habit controls, photo albums and fresh catalogue requests. All 141 themes remain; 103 automatic clock overlays and 315 repeated component editions are held. Dedicated themed layouts remain unfinished.",
-  "next_for_owner": "Update to 1.0.2 (27) in TestFlight, refresh Themes and test native habits/photo albums/widgets on iPhone when convenient. Dedicated themed-layout redesign remains assistant work. Weather licensing and Plus decisions still belong before a public release.",
+  "headline": "Glaze 1.0.3 (31) has designed clock, battery and calendar widgets for all 215 themes. Owner-requested legacy fallback clock removal is validated and awaiting the compatible production update.",
+  "next_for_owner": "Use TestFlight 1.0.3 (31). After the fallback-removal update publishes, fully close and reopen Glaze twice while online to download and activate it; test the designed Clock.",
   "trial_kit": true,
   "trial_kit_commit": "cbe1f96",
-  "native_build": "1.0.2 (27), source d5a6f03c, existing Mac run41795214159 archive/upload success; Apple VALID / IN_BETA_TESTING observed2026-11-04T08:18:03Z. No independent retained-IPA preflight for27; actual signed/group audit applies to initial25 only. Phone behavior unverified.",
+  "native_build": "1.0.3 (31), source 06c59b5650779a461d9edbfd889a29942937b75c; Apple VALID / IN_BETA_TESTING observed 2026-11-04T09:02:37Z. Signed app and extension App Groups verified. See docs/DESIGNED_WIDGET_DELIVERY_20261104.json.",
   "slim_candidate": {
     "state": "swapped run 220",
     "root": "859241058f433be25f35ec1c618396837158dbf2",
     "full_history": "history/repo-full-2026-11-01b.bundle.b64.txt (plus the older history/repo-full-2026-11-01.bundle.b64.txt)"
   },
   "size_note": "run 240: bundle base64 ~15.05 MB; trial kit not rebuilt (16.7 MB base64, over the 16 MB file limit; owner tests on TestFlight)",
-  "assistant_remaining": "Design and visually qualify dedicated functional theme widgets. The publisher holds unready automatic overlays; technical test passes do not count as design approval.",
+  "assistant_remaining": "Publish and verify the compatible fallback-removal update. Physical iPhone/Home Screen behavior remains owner testing; weather licensing and Plus decisions remain before public release.",
   "designed_widgets": {
-    "state": "native-layouts-verified; installed-save verification and native TestFlight delivery pending",
-    "candidate": "1.0.3",
+    "state": "delivered to internal TestFlight 1.0.3 (31); installed simulator save/restart/shared specs verified",
+    "candidate": "1.0.3 (31)",
     "catalogueThemes": 141,
     "allThemeEntries": 215,
     "functions": [
@@ -34,6 +34,13 @@
     "nativeRenderRun": 41794617629,
     "fullNativeAppRun": 41793155698,
     "physicalDeviceTested": false,
-    "source": "codex/glaze-designed-widgets-20261104 / PR218"
+    "source": "06c59b56 / PR218,220,222,223; delivery PR225"
+  },
+  "fallback_removal": {
+    "state": "validated; production update pending",
+    "runtimeVersion": "1.0.3",
+    "preservesNativeBuild": "31",
+    "scope": "Remove live-clock from theme choices, saved theme art and future pack generation; preserve designed clocks, battery, calendar, photos and selections.",
+    "validation": "1909 core; 27 pack-script plus 2 optional skips; full app/Node TypeScript; migration/remap/idempotence regression."
   }
 }
