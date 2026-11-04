@@ -13,12 +13,16 @@ appId: com.jared797.hollowhue
     timeout: 20000
 - tapOn: Open Storybook Places
 - assertVisible: '.*Zoom 0 of 6.*'
-- takeScreenshot: 02-realistic-cottage
 - tapOn: Look closer
 - waitForAnimationToEnd:
     timeout: 5000
 - assertVisible: '.*Zoom 1 of 6.*'
 - takeScreenshot: 03-realistic-cafe
+- tapOn: Whole scene
+- waitForAnimationToEnd:
+    timeout: 15000
+- assertVisible: '.*Zoom 0 of 6.*'
+- takeScreenshot: 02-realistic-cottage
 - tapOn: Back to scenes
 - scrollUntilVisible:
     element:
