@@ -1,5 +1,7 @@
 # iOS character experience — 4 November 2026
 
+**M05 implementation:** the first articulated 3D motion pass is now built, with nap/chips entrances, no-repeat session selection, shared ready state, idle/wave/listening/speaking, menu interruptions and reduced-motion/lifecycle handling. A six-clip GLB and editable Blender file are saved. [Animation build and evidence](ANIMATION_BUILD.md) describes the prototype and its limits. The artwork below remains the higher-fidelity art target; physical iPhone verification is still required. Earlier “not implemented” statements below describe the design checkpoint before M05.
+
 Jared corrected the first implementation: the app should open into a highly professional kitty that comes to the user, occupies the screen and feels like a living companion with menus. The dashboard prototype is set aside. **iOS is the current product target.** Jared liked the visual direction, then specified a different activity on each fresh opening, including waking curled up and eating chips. This brief records the experience; the master atlas Meow Manager row remains the only roadmap. The general direction is accepted; the exact production model and room remain to be developed.
 
 ![Static visual concept: corrected four-paw greeting, conversation and a menu](character-direction/ios-character-concept-v2-four-paws.png)

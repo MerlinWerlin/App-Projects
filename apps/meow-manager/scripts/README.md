@@ -1,0 +1,1 @@
+Meow Manager asset and verification scripts, maintained by Codex for the APPS character-animation stage. export-character.ts reproduces the original GLB animation asset from the app's articulated rig and authored timelines. Scripts process local project data; they do not call image, model or video generation services.

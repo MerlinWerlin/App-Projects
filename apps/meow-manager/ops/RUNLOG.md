@@ -1,5 +1,7 @@
 # Run record
 
+- 2026-11-04 Codex M05: implemented first 3D motion pass, native/web renderer adapters, two persisted non-repeating entrances, shared ready state, wave/listening/speaking/menu interruption, reduced motion and lifecycle pause. Exported six GLB clips and an editable Blender4.4.3 file; independent126 exported frames/six clips/four paws and Blender import pass.39 tests, app/script types, SDK check, doctor21/21 and iOS/web exports pass locally. Captured real browser canvas clips; first contact sheets drove nap framing/camera fixes. Physical iPhone and final-art quality remain unverified. CI receipt follows.
+
 - 2026-11-04 Codex M04: recorded Jared's positive direction feedback and varied-startup requirement. Built-in imagegen edited the left arrival pose to an unambiguous four-paw seated greeting; v1 preserved and v2/prompt saved. Experience brief now covers nap/chips/proposed alternatives, repeat avoidance, interruption, common ready state and anatomy review. Documentation/art only; no native animation or runtime feature added.
 
 - 2026-11-04 Codex M03: after Jared's correction, parked the dashboard interface and recorded iOS as the current target. Produced a static original professional-kitty concept with arrival/conversation/menu views using built-in imagegen; exact prompt retained. Added IOS_CHARACTER_EXPERIENCE.md covering character acting, interaction, continuity, real assistant outcomes and required model/rig/rendering proof. No runtime, TestFlight, notification or AI capability added this turn.

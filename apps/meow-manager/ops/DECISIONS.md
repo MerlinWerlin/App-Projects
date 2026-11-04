@@ -1,5 +1,8 @@
 # Decisions
 
+- 2026-11-04 Jared: start building the kitty animations.
+- 2026-11-04 Codex M05: build an original articulated procedural 3D rig and authored nap/chips timelines as the first executable motion proof in the existing Expo app. Preserve planner source at planner-reference. Reuse one director on web/iOS GL, export six editable GLB clips and a Blender source file; current art is a timing rig requiring further refinement toward the accepted concept. No real microphone capture, cloud AI or TestFlight delivery added.
+
 - 2026-11-04 Jared follow-up: likes the professional-kitty visual direction. Each app startup should show a different activity, including waking curled up or eating a bag of chips. Flagged the extra paw in the original arrival image.
 - 2026-11-04 Codex design refinement: retain the original as superseded reference, use the corrected four-paw v2, and define varied authored opening scenes with a persisted no-repeat selector, immediate interruption and one assistant-ready state. First scene proof should include nap and chips; selector/rig/animation remain unimplemented.
 

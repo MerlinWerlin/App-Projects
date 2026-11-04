@@ -1,23 +1,23 @@
 {
   "app": "meow-manager",
-  "stage": "design-revision",
+  "stage": "animation-prototype",
   "targetPlatform": "iOS",
-  "headline": "Owner likes the professional kitty direction. Each fresh iOS opening should reveal a different activity, including curled-up sleep or chips, then transition into assistance.",
+  "headline": "First articulated 3D motion pass built: nap/chips into ready, idle, wave, listening/speaking and menu interaction. Art refinement and physical iPhone verification remain.",
   "prototypeInterface": "parked; source and historical verification retained",
   "currentBrief": "docs/IOS_CHARACTER_EXPERIENCE.md",
   "concept": "docs/character-direction/ios-character-concept-v2-four-paws.png (static AI-generated visual direction)",
   "ownerDirectionFeedback": "General visual direction liked; varied startup activities required; original extra-paw error corrected in v2.",
-  "openingScenesImplemented": false,
-  "characterAnimationImplemented": false,
+  "openingScenesImplemented": true,
+  "characterAnimationImplemented": true,
   "source": "apps/meow-manager",
   "branch": "codex/meow-manager-20261104",
   "baseCommit": "44448898badfae0cf312fafc29aacd4dd9e2c0ad",
-  "tests": 26,
+  "tests": 39,
   "typecheck": "passed locally",
   "exports": {
-    "ios": "passed locally",
-    "android": "passed locally",
-    "web": "passed locally; browser flow and Japanese phone-size layout checked"
+    "ios": "animation build exported locally",
+    "web": "animation build exported and reviewed locally",
+    "android": "historical planner only; not current target"
   },
   "nativeDeviceVerified": false,
   "cloudAIConnected": false,
@@ -30,22 +30,30 @@
   "next_for_owner": [],
   "roadmap": "C:/BTB/_ATLAS/MASTER_ROADMAP.md#project-apps",
   "expoDoctor": "21/21 passed locally",
-  "verifiedCodeCommit": "6a2f459ae8c5ba6e43f91b7152a0c1db5542bc20",
+  "verifiedCodeCommit": null,
   "githubChecks": {
-    "initialRun": "https://github.com/MerlinWerlin/App-Projects/actions/runs/41787852572",
-    "initialCodeCommit": "36460148f5fc640231537cda57662f442ba05499",
-    "initialResult": "passed",
-    "postAccessibilityFix": "Two dispatch requests returned HTTP403 API rate limit at workflows/check.yml. No second run was created.",
-    "finalLocalResult": "26 tests, strict TypeScript and iOS/Android/web exports passed; fixed ARIA states verified in browser."
+    "currentAnimationBuild": "not yet run",
+    "historicalPlannerRun": "41787852572 passed at36460148"
   },
   "preview": "http://127.0.0.1:8102/ (this PC only)",
   "pullRequest": "https://github.com/MerlinWerlin/App-Projects/pull/216",
   "browserVerified": [
-    "capture/edit/save/reload",
-    "completion/checklist",
-    "assistant guidance",
-    "ritual creation",
-    "English/Japanese phone layout",
-    "explicit ARIA state"
-  ]
+    "3D renderer",
+    "nap/chips replay",
+    "canvas clip recording",
+    "listening pose",
+    "menu interruption",
+    "390x844 framing"
+  ],
+  "currentBuild": "docs/ANIMATION_BUILD.md",
+  "animationAsset": "assets/character/mochi-motion-proof.glb",
+  "animationSource": "assets/character/mochi-motion-proof.blend",
+  "animationVerification": {
+    "clips": 6,
+    "exportedFramesChecked": 126,
+    "pawJoints": 4,
+    "blenderVersion": "4.4.3",
+    "physicalIPhoneVerified": false,
+    "finalArtQuality": false
+  }
 }
