@@ -2,7 +2,7 @@ name: Glaze designed widgets
 on:
   push:
     branches: ['codex/glaze-designed-widgets-20261104']
-    paths: ['apps/glaze/**', '.github/workflows/glaze-designed-widgets.yml']
+    paths: ['apps/glaze/targets/widget/DesignedWidget.swift', 'apps/glaze/targets/widget/LiveArtOverlay.swift', 'apps/glaze/targets/widget/SeamlessWidget.swift', 'apps/glaze/docs/designed-widget-fixtures.json', 'apps/glaze/scripts/designed-widget-review.swift']
   workflow_dispatch:
 permissions:
   contents: read
