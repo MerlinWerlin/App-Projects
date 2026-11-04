@@ -9,7 +9,7 @@ struct CloudCompanionApp: App {
 }
 
 @MainActor
-final class SkyModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+final class SkyModel: NSObject, ObservableObject, @preconcurrency CLLocationManagerDelegate {
     @Published var preferences: Preferences
     @Published var forecast: Forecast?
     @Published var loading = false
@@ -30,6 +30,10 @@ final class SkyModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     func choose(_ place: Place) {
         guard place.isValid else { return }
+        if preferences.place == place {
+            Task { await refresh() }
+            return
+        }
         requestID = UUID()
         preferences.place = place
         forecast = demo ? .demo() : store.cached(for: place)
@@ -289,7 +293,7 @@ struct CityPicker: View {
             }
             if results.isEmpty { error = "No city found. Try a city and country." }
         } catch {
-            if !Task.isCancelled { error = "City search is unavailable. Choose a suggested city or try again." }
+            if !Task.isCancelled { self.error = "City search is unavailable. Choose a suggested city or try again." }
         }
         if !Task.isCancelled { searching = false }
     }
