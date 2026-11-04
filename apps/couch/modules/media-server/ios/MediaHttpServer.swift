@@ -60,6 +60,7 @@ private final class MediaHttpConnection: @unchecked Sendable {
   var entryId: String?
   var file: FileHandle?
   var remaining: UInt64 = 0
+  var corsHeaders: [(String, String)] = []
 
   init(number: Int, connection: NWConnection) {
     self.number = number
@@ -331,16 +332,20 @@ final class MediaHttpServer: @unchecked Sendable {
     let target = String(parts[1])
 
     var rangeHeader: String? = nil
+    var origin: String? = nil
     for line in lines.dropFirst() {
       guard let colon = line.firstIndex(of: ":") else { continue }
       let name = line[line.startIndex..<colon].trimmingCharacters(in: .whitespaces).lowercased()
+      if name == "origin" && origin == nil {
+        origin = line[line.index(after: colon)...].trimmingCharacters(in: .whitespaces)
+      }
       if name == "range" && rangeHeader == nil {
         rangeHeader = line[line.index(after: colon)...].trimmingCharacters(in: .whitespaces)
       }
     }
 
-    if method != "GET" && method != "HEAD" {
-      let allow: [(String, String)] = [("Allow", "GET, HEAD")]
+    if method != "GET" && method != "HEAD" && method != "OPTIONS" {
+      let allow: [(String, String)] = [("Allow", "GET, HEAD, OPTIONS")]
       sendEmpty(c, status: 405, reason: "Method Not Allowed", extra: allow)
       return
     }
@@ -349,6 +354,11 @@ final class MediaHttpServer: @unchecked Sendable {
       return
     }
     c.entryId = entry.id
+    c.corsHeaders = mediaCorsHeaders(origin: origin)
+    if method == "OPTIONS" {
+      sendEmpty(c, status: 204, reason: "No Content", extra: [])
+      return
+    }
 
     let size = entry.size
     var range = MediaRangeResult.full
@@ -382,6 +392,7 @@ final class MediaHttpServer: @unchecked Sendable {
     headers.append(("Cache-Control", "no-store"))
     headers.append(("Connection", "close"))
     headers.append(contentsOf: mediaDlnaHeaders(streaming: entry.streaming))
+    headers.append(contentsOf: c.corsHeaders)
 
     let head = mediaResponseHead(status: status, reason: reason, headers: headers)
     if method == "HEAD" || length == 0 {
@@ -447,7 +458,7 @@ final class MediaHttpServer: @unchecked Sendable {
 
   /// Response with no body, then close.
   private func sendEmpty(_ c: MediaHttpConnection, status: Int, reason: String, extra: [(String, String)]) {
-    var headers: [(String, String)] = extra
+    var headers: [(String, String)] = extra + c.corsHeaders
     headers.append(("Content-Length", "0"))
     headers.append(("Connection", "close"))
     sendFinal(c, data: mediaResponseHead(status: status, reason: reason, headers: headers))
@@ -578,4 +589,24 @@ private func mediaResponseHead(status: Int, reason: String, headers: [(String, S
   }
   text += "\r\n"
   return Data(text.utf8)
+}
+
+/// Cast receivers fetch phone URLs from their own web origin. Token validation still precedes
+/// preflight handling; neither preflight nor CORS grants access to an unregistered file.
+private func mediaCorsHeaders(origin: String?) -> [(String, String)] {
+  guard let origin = origin, origin.count <= 512,
+        origin.unicodeScalars.allSatisfy({ $0.value >= 0x21 && $0.value <= 0x7E }),
+        let url = URLComponents(string: origin),
+        url.scheme == "https" || url.scheme == "http",
+        let host = url.host, !host.isEmpty,
+        url.user == nil, url.password == nil, url.query == nil, url.fragment == nil,
+        url.path.isEmpty else { return [] }
+  return [
+    ("Access-Control-Allow-Origin", origin),
+    ("Vary", "Origin"),
+    ("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS"),
+    ("Access-Control-Allow-Headers", "Content-Type, Range, Accept, Origin, Cache-Control, If-Modified-Since, If-None-Match, X-Requested-With"),
+    ("Access-Control-Expose-Headers", "Content-Type, Content-Length, Accept-Ranges, Content-Range, transferMode.dlna.org, contentFeatures.dlna.org"),
+    ("Access-Control-Allow-Private-Network", "true")
+  ]
 }

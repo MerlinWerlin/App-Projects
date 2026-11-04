@@ -4,13 +4,13 @@
  * - Physical left/right styles only inside controls that must never mirror (or allowlisted with a reason).
  * - The remote's physical-direction controls render with direction 'ltr' (the d-pad is NOT mirrored in Arabic).
  */
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { findHardcodedStrings, findPhysicalDirections, usesNeverMirror } from '../src/i18n/scan';
 
 const root = join(__dirname, '..');
-const files = execSync("git ls-files 'app/*.tsx' 'src/ui/*.tsx'", { cwd: root }).toString().trim().split('\n').filter(Boolean);
+const files = execFileSync("git", ["ls-files", "app/*.tsx", "src/ui/*.tsx"], { cwd: root }).toString().trim().split('\n').filter(Boolean);
 const read = (f: string) => readFileSync(join(root, f), 'utf8');
 
 /** Files whose physical left/right is intentional: they keep the TV's physical directions. */

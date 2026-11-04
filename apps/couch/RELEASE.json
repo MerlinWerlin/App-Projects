@@ -1,5 +1,5 @@
 {
-  "mode": "update",
-  "note": "Couch: remote screen header and sheets now use the new Design v2 look (d-pad and keys unchanged)",
+  "mode": "build",
+  "note": "Couch 1.0.3: repair photo and video Cast delivery, native media preflight and range headers",
   "ascAppId": "6826135134"
 }

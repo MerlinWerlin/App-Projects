@@ -81,7 +81,7 @@ export function QueueList({
               }}
               style={styles.main}
             >
-              <Image source={{ uri: item.uri }} resizeMode="cover" style={[styles.thumb, continuous, { backgroundColor: p.fill }]} />
+              <Image source={{ uri: item.uri }} resizeMode="cover" style={[styles.thumb, { backgroundColor: p.fill }]} />
               <View style={styles.copy}>
                 <Text style={[textStyle('subheadline'), { color: p.label }]}>
                   {item.title}
