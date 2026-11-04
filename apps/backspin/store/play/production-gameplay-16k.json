@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "package": "com.jared797.backspin",
+  "steps": [
+    "Next",
+    "Next",
+    "Let's play",
+    "Allow microphone",
+    "Quick play",
+    "Recorder prepared after 0.24s",
+    "Explicit Ranchu HAL 300Hz test input; host/physical speech not qualified",
+    "Play",
+    "Now copy it",
+    "Recorder prepared after 0.27s",
+    "Explicit Ranchu HAL 300Hz test input; host/physical speech not qualified",
+    "Save take",
+    "Share clip",
+    "Takes",
+    "Play",
+    "9 free goes left",
+    "Unlock Backspin Plus",
+    "Restore purchase",
+    "Production native unavailable-store/Restore messages verified; no payment or Plus unlock"
+  ],
+  "audio": "Ranchu HAL 300Hz test tone through real Android recording; host/physical speech not qualified",
+  "checked": [
+    "onboarding",
+    "microphone permission",
+    "record original",
+    "AAC to PCM",
+    "reverse playback",
+    "record copy",
+    "score",
+    "save",
+    "share sheet",
+    "free-go consumption",
+    "process-restart persistence"
+  ],
+  "device_page_size": 16384,
+  "device_api_level": 36,
+  "device_memory_kib": 6072512,
+  "not_checked": [
+    "human voice quality",
+    "physical phone routes and interruptions",
+    "Play Billing transaction and restore"
+  ]
+}

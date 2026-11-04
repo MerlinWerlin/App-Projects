@@ -1,0 +1,24 @@
+{
+  "source": "apps\\backspin\\assets\\icon.png",
+  "source_sha256": "6d0c1787aaf0935a63eac1d9694e9e6d4b2aaed2f11ccfaa3b3f9f1437652dac",
+  "assets": {
+    "feature-1024x500.png": {
+      "size": [
+        1024,
+        500
+      ],
+      "mode": "RGB",
+      "sha256": "0ed55b43fc16c87737885513c62bcc87eb498c6f19e55b2f91ea6306f1d1753d"
+    },
+    "icon-512.png": {
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "bd561ac63ad6850bb777d97438daf43f83706fef282acaeb817550b9effd57e8"
+    }
+  },
+  "status": "prepared_not_uploaded",
+  "screenshots": "Only actual Android emulator captures may populate the phone screenshot set"
+}

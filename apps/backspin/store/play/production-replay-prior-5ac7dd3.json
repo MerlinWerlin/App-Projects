@@ -1,0 +1,80 @@
+{
+  "scope": "APK derived from the production AAB with an ephemeral CI test signature; never upload replay APKs",
+  "bundleRun": 41740093949,
+  "unsignedAabSha256": "b7907de14882bdde448683cb8a13d80ec882f31261ffee0e5c611d497219ba26",
+  "signedAabSha256": "b2ef0b9caf5b215cd9ad7e3c809ff556fd714b3af3b0df79d88ee6bda1b129ff",
+  "runtimeSource": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
+  "attempts": [
+    {
+      "run": 41743446116,
+      "status": "STOPPED_BEFORE_BILLING_CHECK",
+      "coreGameplay": "Reached saved take and exact9 free goes after process restart",
+      "sustainedNativeTone": "PASS",
+      "reason": "Safety assertion found Play Store in the google_apis image. No Buy click or unavailable-store claim."
+    },
+    {
+      "run": 41744426441,
+      "status": "STOPPED_BEFORE_BILLING_CHECK",
+      "coreGameplay": "Reached saved take and exact9 free goes after process restart",
+      "sustainedNativeTone": "PASS:4.38/3.94-second active spans",
+      "fixture": "Fresh CI emulator, zero accounts; Play Store disabled before any Buy click",
+      "reason": "Harness sought Settings on Takes instead of Home. Navigation repaired; app and AAB unchanged."
+    },
+    {
+      "run": 41745380369,
+      "status": "STOPPED_BEFORE_BILLING_CHECK",
+      "coreGameplay": "Reached saved take and exact9 free goes after process restart",
+      "fixture": "Fresh CI emulator, zero accounts; Play Store disabled before any Buy click",
+      "reason": "Settings navigation succeeded but the harness exhausted its scroll limit just above Plus. Screenshot/XML retained. The test now opens the same Plus offer through Home's persisted free-go counter; app/AAB unchanged."
+    },
+    {
+      "run": 41746169965,
+      "status": "STOPPED_BEFORE_APP_INSTALL",
+      "reason": "API35 emulator failed to create its default12GB userdata partition with only6.67GB free on that CI runner. No emulator boot or app result; exact binary and failed infrastructure evidence retained."
+    },
+    {
+      "run": 41746336008,
+      "status": "PASS_PRODUCTION16KB_GAMEPLAY_AND_UNAVAILABLE_STORE_UI",
+      "apiLevel": 36,
+      "pageSize": 16384,
+      "sustainedNativeTone": "PASS:3.44/4.06-second active spans",
+      "billingScope": "Fresh zero-account emulator with Play Store disabled; native Google Play failure/Restore messages and no fake Plus verified. No actual payment.",
+      "visualScope": "Message text asserted through UIAutomator; retained frames show its beginning near the bottom edge. A later capture refinement scrolls the body fully into view."
+    }
+  ],
+  "currentRun": 41747258218,
+  "currentStatus": "PASS",
+  "visualCaptureRefinementRun": 41747258218,
+  "visualCaptureRefinementStatus": "PASS",
+  "notProven": [
+    "Actual Play-installed purchase, cancellation, pending payment and restore",
+    "Human/host/physical microphone quality",
+    "Google app creation, review submission or public release"
+  ],
+  "apiLevel": 36,
+  "pageSize": 16384,
+  "input": "Official Ranchu HAL300Hz native fixture; no human/host/physical voice qualification",
+  "verified": [
+    "Production package recording/reverse/copy/score/save/share",
+    "One free go consumed and persisted after process restart",
+    "Sustained independently decoded native AAC input",
+    "Google Play unavailable and Restore messages in zero-account unavailable-store fixture",
+    "No fake Plus unlock; exactly9 free goes remain"
+  ],
+  "activeSeconds": [
+    3.36,
+    4.2
+  ],
+  "signatureScope": "APK uses ephemeral CI signature; the separately owner-signed AAB payload matches the source unsigned bundle",
+  "visualFinding": "Fully readable run41747258218 exposed raw service-disconnected/[object Object] in old failure copy.14-language Android copy repaired in7ce6f25; fresh native/AAB qualification required.",
+  "pendingReplacement": {
+    "runtimeSource": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+    "buildRun": 41748574006,
+    "status": "RUNNING_NOT_YET_QUALIFIED",
+    "change": "Remove raw native diagnostics from Android purchase failure text in14 languages; payment/audio logic unchanged",
+    "appTests": 40,
+    "configurationChecks": 5,
+    "typecheck": "PASS",
+    "iosExport": "PASS"
+  }
+}

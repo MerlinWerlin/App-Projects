@@ -209,5 +209,9 @@
 "home.freeLeft": "Pozostało darmowych rund: {n}",
 "home.freeDone": "Darmowe rundy się skończyły. Odblokuj Backspin na zawsze.",
 "round.outOfGoes": "To już wszystkie 10 darmowych rund! Odblokuj Backspin na zawsze i graj dalej.",
-"settings.look": "Styl"
+"settings.look": "Styl",
+"plus.pendingAndroid": "Płatność oczekuje w Google Play. Dokończ ją tam, a następnie wybierz Przywróć zakup.",
+"plus.unavailableAndroid": "Nie można połączyć się z Google Play. Spróbuj ponownie później.",
+"plus.failedAndroid": "Nie udało się potwierdzić tego zakupu. Sprawdź Google Play przed ponowną próbą.",
+"settings.nothingToRestoreAndroid": "Nie znaleziono ukończonego zakupu Plus dla tego konta Google Play."
 }

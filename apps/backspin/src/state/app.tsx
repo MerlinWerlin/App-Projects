@@ -1,7 +1,7 @@
 // One provider for everything the screens share: settings, play stats and streak, saved takes, Plus, language
 // and theme. Loads once at startup; the splash stays up until it has (no "index" flash, App Factory lesson).
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { AccessibilityInfo, useColorScheme } from 'react-native';
+import { AccessibilityInfo, AppState, Platform, useColorScheme } from 'react-native';
 import { freeGoesLeft, hasAccess, NO_STREAK, playDaily, type Streak } from '../core/game.ts';
 import { makeT, matchLang, type Catalog, type Lang } from '../i18n/core.ts';
 import { CATALOGS } from '../i18n/catalogs.ts';
@@ -96,7 +96,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [plusPrice, setPlusPrice] = useState<string | null>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [langHint, setLangHint] = useState(false);
-  const store = useRef<PlusStore>(guardTestStore(createStore(storage), storage, isExpoGo())).current;
+  const store = useRef<PlusStore>(guardTestStore(createStore(storage, undefined, Platform.OS), storage, isExpoGo())).current;
   const scheme = useColorScheme();
 
   useEffect(() => {
@@ -126,6 +126,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
       sub.remove();
     };
   }, [store]);
+
+  useEffect(() => {
+    if (Platform.OS !== 'android' || !ready) return;
+    let alive = true;
+    const sub = AppState.addEventListener('change', (state) => {
+      if (state === 'active') store.owned().then((owned) => { if (alive) setPlus(owned); }).catch(() => {});
+    });
+    return () => { alive = false; sub.remove(); };
+  }, [store, ready]);
 
   const setPref = useCallback(<K extends keyof Prefs>(k: K, v: Prefs[K]) => {
     setPrefs((old) => {

@@ -1,0 +1,26 @@
+{
+  "status": "ARCHIVED_UNQUALIFIED_TEST_ROUTE",
+  "app_result": "NOT_RUN: emulator segfaulted before app installation",
+  "same_apk_artifact_run": 41701424210,
+  "prototype_location": "scripts/play/archive_20261104_grpc_emulator_segfault",
+  "release_workflow_integration": "Removed",
+  "trials": [
+    {
+      "run": 41717696727,
+      "authenticated_loopback": true,
+      "packets_attempted": 2353,
+      "rpc_end_code": "UNAVAILABLE",
+      "delivery": "unpaced mono",
+      "emulator_result": "Segmentation fault before adb install"
+    },
+    {
+      "run": 41718822479,
+      "authenticated_loopback": true,
+      "packets_attempted": 772,
+      "rpc_end_code": "UNAVAILABLE",
+      "delivery": "paced stereo",
+      "emulator_result": "Segmentation fault before adb install"
+    }
+  ],
+  "emulator_version": "INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)"
+}

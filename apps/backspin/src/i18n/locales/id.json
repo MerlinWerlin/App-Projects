@@ -209,5 +209,9 @@
 "home.freeLeft": "Sisa {n} ronde gratis",
 "home.freeDone": "Ronde gratis sudah habis. Buka Backspin selamanya.",
 "round.outOfGoes": "10 ronde gratis kamu sudah habis! Buka Backspin selamanya untuk terus bermain.",
-"settings.look": "Gaya"
+"settings.look": "Gaya",
+"plus.pendingAndroid": "Pembayaran tertunda di Google Play. Selesaikan di sana, lalu ketuk Pulihkan pembelian.",
+"plus.unavailableAndroid": "Google Play tidak dapat dihubungi. Coba lagi nanti.",
+"plus.failedAndroid": "Kami tidak dapat mengonfirmasi pembelian ini. Periksa Google Play sebelum mencoba lagi.",
+"settings.nothingToRestoreAndroid": "Tidak ditemukan pembelian Plus yang selesai untuk akun Google Play ini."
 }

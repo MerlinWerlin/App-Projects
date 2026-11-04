@@ -209,5 +209,9 @@
 "home.freeLeft": "{n} ücretsiz turun kaldı",
 "home.freeDone": "Ücretsiz turların bitti. Backspin'i sonsuza kadar aç.",
 "round.outOfGoes": "10 ücretsiz turun da bitti! Backspin'i sonsuza kadar aç ve oynamaya devam et.",
-"settings.look": "Stil"
+"settings.look": "Stil",
+"plus.pendingAndroid": "Google Play’de ödeme bekliyor. Ödemeyi orada tamamlayın, ardından Satın almayı geri yükle’ye dokunun.",
+"plus.unavailableAndroid": "Google Play’e ulaşılamıyor. Daha sonra tekrar deneyin.",
+"plus.failedAndroid": "Bu satın alma doğrulanamadı. Tekrar denemeden önce Google Play’i kontrol edin.",
+"settings.nothingToRestoreAndroid": "Bu Google Play hesabında tamamlanmış bir Plus satın alımı bulunamadı."
 }

@@ -1,0 +1,282 @@
+{
+  "scope": "Exact byte comparison of native ELF entries in previously qualified and copy-repair preview APKs; does not substitute for new runtime tests",
+  "priorRuntime": "5ac7dd36acc5a7d11745bc442f759928cc6f6fa8",
+  "currentRuntime": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+  "priorApkSha256": "53ddb029be0f3d0a057acaac5bc1e54d33736117af0457d493d3a3be084b5bd5",
+  "currentApkSha256": "747f299b3599907f96ed854250ff10fdc931ccc432f339431485a2d79d835a2c",
+  "nativeLibraries": 54,
+  "identicalLibraries": 54,
+  "differentLibraries": 0,
+  "files": [
+    {
+      "file": "lib/arm64-v8a/libandroidx.graphics.path.so",
+      "priorSha256": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6",
+      "currentSha256": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6"
+    },
+    {
+      "file": "lib/arm64-v8a/libappmodules.so",
+      "priorSha256": "3d3c7b7200d7f929d8f5b915eb772c01d9c5d40e6ef858a2ec1d9c1da35c2506",
+      "currentSha256": "3d3c7b7200d7f929d8f5b915eb772c01d9c5d40e6ef858a2ec1d9c1da35c2506"
+    },
+    {
+      "file": "lib/arm64-v8a/libc++_shared.so",
+      "priorSha256": "3e852764502d06e0cf1080d532ae7c608b7649d946a3a9d7e84e3d4b7d683214",
+      "currentSha256": "3e852764502d06e0cf1080d532ae7c608b7649d946a3a9d7e84e3d4b7d683214"
+    },
+    {
+      "file": "lib/arm64-v8a/libexpo-modules-core.so",
+      "priorSha256": "602daa85e4f8c7503e398fbb7288904919876a804ae53f687b9ecf41f5ea2798",
+      "currentSha256": "602daa85e4f8c7503e398fbb7288904919876a804ae53f687b9ecf41f5ea2798"
+    },
+    {
+      "file": "lib/arm64-v8a/libexpo-modules-jsi.so",
+      "priorSha256": "7c555680e8abe5fa6c6820f5976830b0309a5189dfe2f089aebdcf592e9744c5",
+      "currentSha256": "7c555680e8abe5fa6c6820f5976830b0309a5189dfe2f089aebdcf592e9744c5"
+    },
+    {
+      "file": "lib/arm64-v8a/libexpo-modules-v2.so",
+      "priorSha256": "33fbe4bf3994a6f32c8d6a87612f18cb3038ba091ee9e111166667440102aecc",
+      "currentSha256": "33fbe4bf3994a6f32c8d6a87612f18cb3038ba091ee9e111166667440102aecc"
+    },
+    {
+      "file": "lib/arm64-v8a/libexpo-modules-worklets.so",
+      "priorSha256": "4969ebe9c604ef9d7b21e461ca2bb92a038f47f1e360f70d0d4a7e1a181f1ec6",
+      "currentSha256": "4969ebe9c604ef9d7b21e461ca2bb92a038f47f1e360f70d0d4a7e1a181f1ec6"
+    },
+    {
+      "file": "lib/arm64-v8a/libexpo-updates.so",
+      "priorSha256": "07b8379350d4550b2d7dab47e1411740d47fb0b454fbabd7160d8dd245c8d4cb",
+      "currentSha256": "07b8379350d4550b2d7dab47e1411740d47fb0b454fbabd7160d8dd245c8d4cb"
+    },
+    {
+      "file": "lib/arm64-v8a/libfbjni.so",
+      "priorSha256": "a9e35ba55d3f956920281f519385f8a72475ee24819799cb08375fdd4cce2b22",
+      "currentSha256": "a9e35ba55d3f956920281f519385f8a72475ee24819799cb08375fdd4cce2b22"
+    },
+    {
+      "file": "lib/arm64-v8a/libgesturehandler.so",
+      "priorSha256": "e84d58e1ad2aee80a54c2290a1e505d7c48ba95ccdd9250e03f480f8a9409516",
+      "currentSha256": "e84d58e1ad2aee80a54c2290a1e505d7c48ba95ccdd9250e03f480f8a9409516"
+    },
+    {
+      "file": "lib/arm64-v8a/libgifimage.so",
+      "priorSha256": "cfbb51d1fe58ba985ad1f06d4ac0afa70e5323d25517642881f4833d7020e44f",
+      "currentSha256": "cfbb51d1fe58ba985ad1f06d4ac0afa70e5323d25517642881f4833d7020e44f"
+    },
+    {
+      "file": "lib/arm64-v8a/libhermestooling.so",
+      "priorSha256": "52607cec46d60dbd4d46f41dc9870c55a87051b6d412f02ff71242d97fc45ec6",
+      "currentSha256": "52607cec46d60dbd4d46f41dc9870c55a87051b6d412f02ff71242d97fc45ec6"
+    },
+    {
+      "file": "lib/arm64-v8a/libhermesvm.so",
+      "priorSha256": "d4ccaf2523cd3b938e295646a5bcf927e134cbd6e4c4f9e3a6fd26d8d85e8217",
+      "currentSha256": "d4ccaf2523cd3b938e295646a5bcf927e134cbd6e4c4f9e3a6fd26d8d85e8217"
+    },
+    {
+      "file": "lib/arm64-v8a/libimagepipeline.so",
+      "priorSha256": "1b377992e4256fa9398ec057722f84a359c7d588e570c8a41f51d930c19ece7d",
+      "currentSha256": "1b377992e4256fa9398ec057722f84a359c7d588e570c8a41f51d930c19ece7d"
+    },
+    {
+      "file": "lib/arm64-v8a/libjsi.so",
+      "priorSha256": "5fdfbabeee20b300fc084bc9bddfa55b7a3e46dafc1464a4309cf0c906f6b0eb",
+      "currentSha256": "5fdfbabeee20b300fc084bc9bddfa55b7a3e46dafc1464a4309cf0c906f6b0eb"
+    },
+    {
+      "file": "lib/arm64-v8a/libnative-filters.so",
+      "priorSha256": "bb82aec5ab2a8ac4e1968f41c6477824f1f3fff90c0eeb2c90cdeb1923d69833",
+      "currentSha256": "bb82aec5ab2a8ac4e1968f41c6477824f1f3fff90c0eeb2c90cdeb1923d69833"
+    },
+    {
+      "file": "lib/arm64-v8a/libnative-imagetranscoder.so",
+      "priorSha256": "2aed28298a25afd52ac670cf9682398c6c7ba42a57195c01efd565e7ddfe17ca",
+      "currentSha256": "2aed28298a25afd52ac670cf9682398c6c7ba42a57195c01efd565e7ddfe17ca"
+    },
+    {
+      "file": "lib/arm64-v8a/libreact_codegen_rngesturehandler_codegen.so",
+      "priorSha256": "3dd0cc24027f6454e400ea0fc28bcee64ea6d236573117c2779241eb062c6441",
+      "currentSha256": "3dd0cc24027f6454e400ea0fc28bcee64ea6d236573117c2779241eb062c6441"
+    },
+    {
+      "file": "lib/arm64-v8a/libreact_codegen_rnscreens.so",
+      "priorSha256": "5344fba6b29ee2f54035e17e73b85439f439a3cef40f228e9bb164c41f50ab15",
+      "currentSha256": "5344fba6b29ee2f54035e17e73b85439f439a3cef40f228e9bb164c41f50ab15"
+    },
+    {
+      "file": "lib/arm64-v8a/libreact_codegen_rnsvg.so",
+      "priorSha256": "7bd98bace8db5dcf896165348c0882b7211f473a1f0ccdfed6ddf89e063f41fb",
+      "currentSha256": "7bd98bace8db5dcf896165348c0882b7211f473a1f0ccdfed6ddf89e063f41fb"
+    },
+    {
+      "file": "lib/arm64-v8a/libreact_codegen_safeareacontext.so",
+      "priorSha256": "2d97f63e5cf3abf020f72415824cdeb93d6259a32e405de5ef2a4ab00a0a5ba0",
+      "currentSha256": "2d97f63e5cf3abf020f72415824cdeb93d6259a32e405de5ef2a4ab00a0a5ba0"
+    },
+    {
+      "file": "lib/arm64-v8a/libreactnative.so",
+      "priorSha256": "0a108cd36ab33974758ff4a1391cb278ceb8e1ed3710abb0a873271120fff52b",
+      "currentSha256": "0a108cd36ab33974758ff4a1391cb278ceb8e1ed3710abb0a873271120fff52b"
+    },
+    {
+      "file": "lib/arm64-v8a/libreanimated.so",
+      "priorSha256": "ec7c53769a61aab93d84cabafe9976e150a0f16155880ad78a84e5c5eefcdbc6",
+      "currentSha256": "ec7c53769a61aab93d84cabafe9976e150a0f16155880ad78a84e5c5eefcdbc6"
+    },
+    {
+      "file": "lib/arm64-v8a/librnscreens.so",
+      "priorSha256": "e624edd6c20479548f8b14d2927058d209613f69a2bc3fec3c3afce3652877ce",
+      "currentSha256": "e624edd6c20479548f8b14d2927058d209613f69a2bc3fec3c3afce3652877ce"
+    },
+    {
+      "file": "lib/arm64-v8a/libstatic-webp.so",
+      "priorSha256": "bfce3139342fad716d25623b559d9901fc795d6b7622ebe21a417b4c84e3a92a",
+      "currentSha256": "bfce3139342fad716d25623b559d9901fc795d6b7622ebe21a417b4c84e3a92a"
+    },
+    {
+      "file": "lib/arm64-v8a/libworklets.so",
+      "priorSha256": "6d32eeb0e36971c1d866b0ab8682d6c4bb12c202b42f90de96255f8ebc4ad319",
+      "currentSha256": "6d32eeb0e36971c1d866b0ab8682d6c4bb12c202b42f90de96255f8ebc4ad319"
+    },
+    {
+      "file": "lib/arm64-v8a/libzstd-kmp.so",
+      "priorSha256": "10ec47f13bee884450b0911066019ba7aa6b4164a4c1f8c33c9d30dd3fd8868a",
+      "currentSha256": "10ec47f13bee884450b0911066019ba7aa6b4164a4c1f8c33c9d30dd3fd8868a"
+    },
+    {
+      "file": "lib/x86_64/libandroidx.graphics.path.so",
+      "priorSha256": "4e56c996f13670e70082658de7880c4020eabf4f25e43387f88ed78a713fc9f0",
+      "currentSha256": "4e56c996f13670e70082658de7880c4020eabf4f25e43387f88ed78a713fc9f0"
+    },
+    {
+      "file": "lib/x86_64/libappmodules.so",
+      "priorSha256": "b4e2864b55fa61e9003c7cc61dacbd7c9174b62bccac3dc85eecbcb03f32aa1e",
+      "currentSha256": "b4e2864b55fa61e9003c7cc61dacbd7c9174b62bccac3dc85eecbcb03f32aa1e"
+    },
+    {
+      "file": "lib/x86_64/libc++_shared.so",
+      "priorSha256": "0a2c7afa35b183fdd5a3cb20e2080ad54cbea06c2a4f0bc8f122cb7d1e9e0b9f",
+      "currentSha256": "0a2c7afa35b183fdd5a3cb20e2080ad54cbea06c2a4f0bc8f122cb7d1e9e0b9f"
+    },
+    {
+      "file": "lib/x86_64/libexpo-modules-core.so",
+      "priorSha256": "bf388e026d204740800f609efe1edbddafe8ec44139a8135a3f2416062cd9d6e",
+      "currentSha256": "bf388e026d204740800f609efe1edbddafe8ec44139a8135a3f2416062cd9d6e"
+    },
+    {
+      "file": "lib/x86_64/libexpo-modules-jsi.so",
+      "priorSha256": "1861615f9d614196cb8347f5f4e4c60018918b7381c7e4804624a4fadbf4cd74",
+      "currentSha256": "1861615f9d614196cb8347f5f4e4c60018918b7381c7e4804624a4fadbf4cd74"
+    },
+    {
+      "file": "lib/x86_64/libexpo-modules-v2.so",
+      "priorSha256": "c1acea44beb24838bd10b0f3f31dafc1c0a82ca326d877114c6daf1a48d5c964",
+      "currentSha256": "c1acea44beb24838bd10b0f3f31dafc1c0a82ca326d877114c6daf1a48d5c964"
+    },
+    {
+      "file": "lib/x86_64/libexpo-modules-worklets.so",
+      "priorSha256": "acd6c88b87557019da9a558aa627a1e69c09a5db571ffb57c99a09c05334f1d8",
+      "currentSha256": "acd6c88b87557019da9a558aa627a1e69c09a5db571ffb57c99a09c05334f1d8"
+    },
+    {
+      "file": "lib/x86_64/libexpo-updates.so",
+      "priorSha256": "2bbc1bbc1ea58aa7930b204795aa9a6d77f3390c343fbcc8e762e143834e19f4",
+      "currentSha256": "2bbc1bbc1ea58aa7930b204795aa9a6d77f3390c343fbcc8e762e143834e19f4"
+    },
+    {
+      "file": "lib/x86_64/libfbjni.so",
+      "priorSha256": "a51410366a0394e05bc04052cfb237c70dcf7d4d53a56e1d00a041436cb0b653",
+      "currentSha256": "a51410366a0394e05bc04052cfb237c70dcf7d4d53a56e1d00a041436cb0b653"
+    },
+    {
+      "file": "lib/x86_64/libgesturehandler.so",
+      "priorSha256": "d65e40f69e060587f6c25277925996c0aaefe5dfe7cabb92c70021cf6ac33838",
+      "currentSha256": "d65e40f69e060587f6c25277925996c0aaefe5dfe7cabb92c70021cf6ac33838"
+    },
+    {
+      "file": "lib/x86_64/libgifimage.so",
+      "priorSha256": "4e85a5d783c589339504481797cef97878d064884f86ed94fa7663743d479fd6",
+      "currentSha256": "4e85a5d783c589339504481797cef97878d064884f86ed94fa7663743d479fd6"
+    },
+    {
+      "file": "lib/x86_64/libhermestooling.so",
+      "priorSha256": "90efcd36b7d771cab2d66db8b1855810f482ea713ecc68b6aa1fa14c69bc547c",
+      "currentSha256": "90efcd36b7d771cab2d66db8b1855810f482ea713ecc68b6aa1fa14c69bc547c"
+    },
+    {
+      "file": "lib/x86_64/libhermesvm.so",
+      "priorSha256": "0f3fd50e8182ee616fe1825bc477112c13df964d47071c0bab6c3a41e85b6025",
+      "currentSha256": "0f3fd50e8182ee616fe1825bc477112c13df964d47071c0bab6c3a41e85b6025"
+    },
+    {
+      "file": "lib/x86_64/libimagepipeline.so",
+      "priorSha256": "2e596f4955f65abaa93c891b49eb58b5416581806a04bde0097cc369ae4dbfb3",
+      "currentSha256": "2e596f4955f65abaa93c891b49eb58b5416581806a04bde0097cc369ae4dbfb3"
+    },
+    {
+      "file": "lib/x86_64/libjsi.so",
+      "priorSha256": "47939f14d73c2fe82b4f9ab65349a08aeef1f880ba837f26ad3baf6d5116ac2f",
+      "currentSha256": "47939f14d73c2fe82b4f9ab65349a08aeef1f880ba837f26ad3baf6d5116ac2f"
+    },
+    {
+      "file": "lib/x86_64/libnative-filters.so",
+      "priorSha256": "9bbab21c6c696d06b0e1da6347e871152cb7e26e0c111a6aaf8805cfac58762f",
+      "currentSha256": "9bbab21c6c696d06b0e1da6347e871152cb7e26e0c111a6aaf8805cfac58762f"
+    },
+    {
+      "file": "lib/x86_64/libnative-imagetranscoder.so",
+      "priorSha256": "f6b92ad7f1c30973f40704c46987504757c3d079c7f4ace6efc8b318dd9c22f3",
+      "currentSha256": "f6b92ad7f1c30973f40704c46987504757c3d079c7f4ace6efc8b318dd9c22f3"
+    },
+    {
+      "file": "lib/x86_64/libreact_codegen_rngesturehandler_codegen.so",
+      "priorSha256": "26dd02028a1a43542c32b3c73265df6f612952c4e923f789b3d35f450c58a7ce",
+      "currentSha256": "26dd02028a1a43542c32b3c73265df6f612952c4e923f789b3d35f450c58a7ce"
+    },
+    {
+      "file": "lib/x86_64/libreact_codegen_rnscreens.so",
+      "priorSha256": "bc2d1db7e41cc137e8fed4d8a1b08ef7f70dcb280a23c6c76e9aa4c2a01b9561",
+      "currentSha256": "bc2d1db7e41cc137e8fed4d8a1b08ef7f70dcb280a23c6c76e9aa4c2a01b9561"
+    },
+    {
+      "file": "lib/x86_64/libreact_codegen_rnsvg.so",
+      "priorSha256": "7b45bef9786052e200f4f06c8c31adddabb2216aad1b8dfff90dbbe5550d6b80",
+      "currentSha256": "7b45bef9786052e200f4f06c8c31adddabb2216aad1b8dfff90dbbe5550d6b80"
+    },
+    {
+      "file": "lib/x86_64/libreact_codegen_safeareacontext.so",
+      "priorSha256": "db1debb59adc04b104aa349efef5b030cc60e162e0135c4ce4c5eb369cd70834",
+      "currentSha256": "db1debb59adc04b104aa349efef5b030cc60e162e0135c4ce4c5eb369cd70834"
+    },
+    {
+      "file": "lib/x86_64/libreactnative.so",
+      "priorSha256": "e38670ce4e62f668a6bde4292c5cbaa19ddd2247a905c9c6d7b1508a74da0e26",
+      "currentSha256": "e38670ce4e62f668a6bde4292c5cbaa19ddd2247a905c9c6d7b1508a74da0e26"
+    },
+    {
+      "file": "lib/x86_64/libreanimated.so",
+      "priorSha256": "fe48199e4dd27d76a11cd3b22791347e7ead6b06ae06725dbd4241201a47592c",
+      "currentSha256": "fe48199e4dd27d76a11cd3b22791347e7ead6b06ae06725dbd4241201a47592c"
+    },
+    {
+      "file": "lib/x86_64/librnscreens.so",
+      "priorSha256": "a9aec333bc0402869e52cffe8b76bafff2d87806772c90e907a9c6313bb56e56",
+      "currentSha256": "a9aec333bc0402869e52cffe8b76bafff2d87806772c90e907a9c6313bb56e56"
+    },
+    {
+      "file": "lib/x86_64/libstatic-webp.so",
+      "priorSha256": "6cadccaf9b124cc4ce7025752839c85752fe09f9333441b83f1153c8f1083d06",
+      "currentSha256": "6cadccaf9b124cc4ce7025752839c85752fe09f9333441b83f1153c8f1083d06"
+    },
+    {
+      "file": "lib/x86_64/libworklets.so",
+      "priorSha256": "1e066cc2439da2ccffb6e73f5b50f4002124c1e70e54c017a2d222084c20406f",
+      "currentSha256": "1e066cc2439da2ccffb6e73f5b50f4002124c1e70e54c017a2d222084c20406f"
+    },
+    {
+      "file": "lib/x86_64/libzstd-kmp.so",
+      "priorSha256": "fefcbdcd59580a3043c62380a83d92f13c031c278481e22591a2c75112296e28",
+      "currentSha256": "fefcbdcd59580a3043c62380a83d92f13c031c278481e22591a2c75112296e28"
+    }
+  ]
+}

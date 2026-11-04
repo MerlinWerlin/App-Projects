@@ -1,4 +1,4 @@
-"""Inspect the actual test APK; no credentials or production signing involved."""
+"""Inspect embedded-code APKs; production Backspin requires explicit CI replay scope."""
 import hashlib
 import json
 from pathlib import Path
@@ -6,18 +6,31 @@ import re
 import struct
 import sys
 import zipfile
+from backspin_test_scope import production_replay_enabled
 from apk_permissions import verify_permissions
 
 apk, output = Path(sys.argv[1]), Path(sys.argv[2])
 config = json.loads((output / "config.json").read_text())
 badging = (output / "badging.txt").read_text()
 package = re.search(r"package: name='([^']+)'", badging).group(1)
-assert package == config["android"]["package"] and package.endswith(".playtest"), package
+is_backspin = package in ('com.jared797.backspin', 'com.jared797.backspin.playtest')
+production_replay = package == 'com.jared797.backspin' and production_replay_enabled()
+assert package == config["android"]["package"] and (package.endswith(".playtest") or production_replay), package
 assert "application-debuggable" not in badging, "Release build must not require Metro"
 target = int(re.search(r"targetSdkVersion:'(\d+)'", badging).group(1))
 assert target >= 36, target
 assert config["updates"]["enabled"] is False
-verify_permissions((output / "manifest.txt").read_text(), badging)
+manifest = (output / "manifest.txt").read_text()
+# Preserve main's declaration checks, including Cue's capped legacy WRITE pair.
+verify_permissions(manifest, badging)
+permissions = re.findall(r"uses-permission: name='([^']+)'", badging)
+if is_backspin:
+    for blocked in config['android'].get('blockedPermissions', []):
+        assert blocked not in permissions, f"Blocked permission leaked into compiled APK: {blocked}"
+    audio = next((p[1] for p in config.get('plugins', []) if isinstance(p, list) and p[0] == 'expo-audio'), {})
+    if audio.get('enableBackgroundPlayback') is False:
+        assert 'android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK' not in permissions
+        assert 'expo.modules.audio.service.AudioControlsService' not in manifest
 libraries = []
 with zipfile.ZipFile(apk) as archive:
     assert archive.getinfo("assets/index.android.bundle").file_size > 100_000, "Missing embedded JS"
@@ -46,10 +59,14 @@ receipt = {
     "sha256": hashlib.sha256(apk.read_bytes()).hexdigest(),
     "bytes": apk.stat().st_size,
     "sourceCommit": (output / "source-commit.txt").read_text().strip(),
-    "signing": "Expo generated Android test key; not a Google Play upload key",
+    "signing": ("Production bundle-derived APK with ephemeral CI test signature; never upload this APK" if production_replay
+                else "Expo generated Android test key; not a Google Play upload key"),
     "embeddedBundle": True,
     "nativeLibraries": libraries,
-    "deviceTest": "Recorded separately by cue-simulate.sh; static checks alone do not prove runtime behavior",
+    "deviceTest": ("Recorded separately by smoke-apk.sh; static checks alone do not prove runtime behavior" if is_backspin
+                   else "Recorded separately by cue-simulate.sh; static checks alone do not prove runtime behavior"),
 }
+if is_backspin:
+    receipt['permissions'] = permissions
 (output / "verification.json").write_text(json.dumps(receipt, indent=2) + "\n")
 print(f"Verified {package}: {len(libraries)} native libraries, target {target}, {receipt['sha256']}")

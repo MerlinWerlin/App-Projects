@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "mainBase": "2a52f8f",
+  "runtimeSource": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+  "scope": "Shared verifier integration only; runtime inputs and signed AAB unchanged. Main permission unit cases5PASS and Backspin scope self-test PASS.",
+  "tests": [
+    {
+      "case": "preview",
+      "status": "PASS",
+      "package": "com.jared797.backspin.playtest",
+      "sha256": "747f299b3599907f96ed854250ff10fdc931ccc432f339431485a2d79d835a2c",
+      "nativeLibraries": 54
+    },
+    {
+      "case": "production",
+      "status": "PASS",
+      "package": "com.jared797.backspin",
+      "sha256": "8ed80f308d2784abaf2831210451cb198c41818b00aee1a81abd262fc67a758a",
+      "nativeLibraries": 54
+    },
+    {
+      "case": "production_without_replay_scope",
+      "status": "REJECTED_AS_REQUIRED_NO_OUTPUT_CHANGE"
+    }
+  ],
+  "signedAabSha256": "b473dfefa649a9a74d13830d15beea515a4a9c0dcfe9a239376ed6ff991b1d66"
+}

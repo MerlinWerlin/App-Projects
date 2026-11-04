@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import * as Localization from 'expo-localization';
 import * as Sharing from 'expo-sharing';
-import { Linking, Share } from 'react-native';
+import { Linking, Platform, Share } from 'react-native';
 
 let hapticsOn = true;
 export const setHapticsEnabled = (on: boolean) => {
@@ -80,5 +80,9 @@ export function phoneLanguages(): string[] {
 }
 
 export const openSettings = () => Linking.openSettings().catch(() => {});
+export const openPrivacy = () => Linking.openURL(
+  'https://merlinwerlin.github.io/App-Projects/backspin/' +
+  (Platform.OS === 'android' ? 'privacy-android.html' : 'privacy.html'),
+).catch(() => {});
 export const openMail = (subject: string, body: string) =>
   Linking.openURL(`mailto:jaredbradley272@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`).catch(() => {});

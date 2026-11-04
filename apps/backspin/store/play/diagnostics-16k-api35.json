@@ -1,0 +1,24 @@
+{
+  "run": 41711341099,
+  "apk_artifact_run": 41701424210,
+  "runtime_source": "155a67047b63dcc4655c5de65963145c75dba951",
+  "device_api_level": 35,
+  "device_page_size": 16384,
+  "native_decoder_tests": {
+    "count": 2,
+    "status": "PASS",
+    "gradle": "BUILD SUCCESSFUL"
+  },
+  "gameplay": {
+    "status": "FAIL",
+    "missing_state": "Closeness after copy recording",
+    "observed": "Android system-service restart; failure screenshot shows launcher and log reports DeadSystemException",
+    "root_cause": "Unresolved; no full gameplay qualification claimed"
+  },
+  "next_environment_trial": {
+    "run": 41713732204,
+    "api_level": 36,
+    "page_size": 16384,
+    "same_apk": true
+  }
+}

@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { Platform, Text, View } from 'react-native';
 import { LANG_NAMES, SUPPORTED, type Lang } from '../src/i18n/core.ts';
-import { openMail } from '../src/native/device.ts';
+import { openMail, openPrivacy } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
 import { Button, Card, Chip, Divider, Press, Screen, SectionTitle, T, Toastish, ToggleRow } from '../src/ui/kit.tsx';
 import { fam, SKINS, SP } from '../src/ui/theme.ts';
@@ -78,7 +78,7 @@ export default function Settings() {
           small
           title={t('settings.restore')}
           style={{ marginTop: SP(3) }}
-          onPress={async () => setMsg((await restorePlus()) ? t('settings.restored') : t('settings.nothingToRestore'))}
+          onPress={async () => setMsg((await restorePlus()) ? t('settings.restored') : t(Platform.OS === 'android' ? 'settings.nothingToRestoreAndroid' : 'settings.nothingToRestore'))}
         />
         <Toastish text={msg} />
       </Card>
@@ -87,9 +87,11 @@ export default function Settings() {
         <Button kind="quiet" icon="✉️" title={t('settings.feedback')} onPress={() => openMail(t('feedback.subject'), `\n\n—\nBackspin ${version} · ${Platform.OS} ${Platform.Version} · ${stats.rounds} rounds`)} />
         <Button kind="quiet" icon="❓" title={t('settings.replayIntro')} onPress={() => router.push('/intro')} />
       </View>
-      <T kind="small" color={theme.sub} style={{ marginTop: SP(6) }}>
-        {t('settings.privacy')}
-      </T>
+      <Press label={t('settings.privacy')} onPress={openPrivacy} style={{ marginTop: SP(6) }}>
+        <T kind="small" color={theme.sub} style={{ textDecorationLine: 'underline' }}>
+          {t('settings.privacy')}
+        </T>
+      </Press>
       <T kind="small" color={theme.faint} style={{ marginTop: SP(2) }}>
         {t('settings.version', { v: version })}
       </T>

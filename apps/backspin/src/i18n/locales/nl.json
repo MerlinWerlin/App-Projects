@@ -209,5 +209,9 @@
 "home.freeLeft": "Je hebt nog {n} gratis rondes",
 "home.freeDone": "Je gratis rondes zijn op. Ontgrendel Backspin voor altijd.",
 "round.outOfGoes": "Dat waren je 10 gratis rondes! Ontgrendel Backspin voor altijd en speel verder.",
-"settings.look": "Stijl"
+"settings.look": "Stijl",
+"plus.pendingAndroid": "De betaling staat nog open in Google Play. Rond die daar af en tik daarna op Aankoop herstellen.",
+"plus.unavailableAndroid": "Google Play is niet bereikbaar. Probeer het later opnieuw.",
+"plus.failedAndroid": "We konden deze aankoop niet bevestigen. Controleer Google Play voordat je het opnieuw probeert.",
+"settings.nothingToRestoreAndroid": "Geen voltooide Plus-aankoop gevonden voor dit Google Play-account."
 }

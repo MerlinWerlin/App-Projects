@@ -1,0 +1,80 @@
+{
+  "run": 41726474225,
+  "url": "https://github.com/MerlinWerlin/App-Projects/actions/runs/41726474225",
+  "runtime_source": "155a67047b63dcc4655c5de65963145c75dba951",
+  "apk_sha256": "12aa3f6af825c425b22cefac0097c59e268719c0221bcef68d11cf13843a6d01",
+  "api": 36,
+  "page_size": 16384,
+  "guest_memory": "MemTotal:        6072512 kB",
+  "gameplay": "FAILED_ORIGINAL_EFFECTIVELY_SILENT",
+  "host_source_probe": {
+    "samples": 135068,
+    "rms_pcm16": 2931.521920841445,
+    "source": "synthetic tone monitor"
+  },
+  "recordings": [
+    {
+      "file": "00.m4a",
+      "app_cache_path": "/data/user/0/com.jared797.backspin.playtest/cache/Audio/recording-7a8efeb1-d716-40e7-a877-38c9803447c3.m4a",
+      "sha256": "84c5a9c50e1201671fe70c6cff49c150b13a2a4c73f1dcc22378d4f39f341915",
+      "bytes": 56452,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "aac",
+            "sample_rate": "44100",
+            "channels": 1,
+            "bit_rate": "95437"
+          }
+        ],
+        "format": {
+          "duration": "4.461134"
+        }
+      },
+      "independent_pcm": {
+        "samples": 195584,
+        "duration_seconds": 4.435011337868481,
+        "peak": 6.822636350989342e-05,
+        "rms": 1.9290401033991808e-06,
+        "active_windows": 0,
+        "total_windows": 222,
+        "active_span_seconds": 0
+      }
+    },
+    {
+      "file": "01.wav",
+      "app_cache_path": "/data/user/0/com.jared797.backspin.playtest/cache/round/recording-3576208905076112697.wav",
+      "sha256": "8f6145babf96d20ea0e361546e3e6dc6c35b5d559a27926621046a09d51b2258",
+      "bytes": 391212,
+      "metadata": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "pcm_s16le",
+            "sample_rate": "44100",
+            "channels": 1,
+            "bit_rate": "705600"
+          }
+        ],
+        "format": {
+          "duration": "4.435011"
+        }
+      },
+      "independent_pcm": {
+        "samples": 195584,
+        "duration_seconds": 4.435011337868481,
+        "peak": 6.103515625e-05,
+        "rms": 2.0862026895503723e-06,
+        "active_windows": 0,
+        "total_windows": 222,
+        "active_span_seconds": 0
+      }
+    }
+  ],
+  "hal_pcm_read_errors": 42,
+  "hal_silence_insertions": 277,
+  "native_decoder_tests": "2 PASS",
+  "interpretation": "Captured AAC is already effectively silent; conversion preserves all195584 frames. Emulator capture-path failure precedes app PCM/DSP. Exact HAL/host root cause not yet established; no physical-device or complete16KB gameplay claim.",
+  "source_metrics_sha256": "41641e5882cab19ea1dbe252906ddd87ea2db8c1341856bbd217ec3f1c8c54bd"
+}

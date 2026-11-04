@@ -1,0 +1,48 @@
+{
+  "source_run": 41701424210,
+  "source_commit": "155a67047b63dcc4655c5de65963145c75dba951",
+  "package": "com.jared797.backspin.playtest",
+  "capture": "Unmodified actual emulator screenshots, synthetic microphone",
+  "files": [
+    {
+      "file": "03-home.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "019fd2c37e6b51137a8dcacd84ca119b8c0b2b8980bdcce61e81ba1eab8b3b3e"
+    },
+    {
+      "file": "04-record-original.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "035669ac8fce39562788350cb12ca71dad2b982c3b0dbebf0d3f9965a8649cd3"
+    },
+    {
+      "file": "05-reversed-playback.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "8146c481eeaf159a47f658005537d9f5153a8078aa514dbfa071ebb578daa2f3"
+    },
+    {
+      "file": "06-score.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "0c1019a339be749f5c81a825d716c81aaede3c3dda78cea6d3fd345adafce0ff"
+    },
+    {
+      "file": "09-persisted-takes.png",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "sha256": "8ad67cf0706672d1d9af143a7a13ce477711a0d5ee14129a13f5ebbc390de3e0"
+    }
+  ]
+}

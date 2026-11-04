@@ -1,0 +1,36 @@
+{
+  "run": 41713732204,
+  "apk_artifact_run": 41701424210,
+  "runtime_source": "155a67047b63dcc4655c5de65963145c75dba951",
+  "device_api_level": 36,
+  "device_page_size": 16384,
+  "guest_memory_requested_mib": 3072,
+  "native_decoder_tests": {
+    "count": 2,
+    "status": "PASS",
+    "gradle": "BUILD SUCCESSFUL"
+  },
+  "gameplay": {
+    "status": "FAIL_TEST_CAPTURE",
+    "original_recording_and_decode": "Reached reversed playback state",
+    "failure": "UIAutomator screenshot RPC disconnected",
+    "observed_low_memory_process_kills": 52,
+    "full_round_qualified": false
+  },
+  "followup_trial_configuration": {
+    "run": 41715297715,
+    "guest_memory_requested_mib": 6144,
+    "screenshots": "ADB screencap",
+    "same_apk": true
+  },
+  "followup_6gb_result": {
+    "run": 41715297715,
+    "guest_memory_kib": 6072516,
+    "native_decoder_tests": "2 PASS",
+    "full_gameplay": "FAIL: original take rejected as too short",
+    "low_memory_process_kills": 3,
+    "backspin_fatal_process_lines": 0,
+    "dead_system_exception_lines": 0,
+    "signal_cause": "Unresolved"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "scope": "Official Ranchu HAL continuous300Hz fixture; no physical/host voice qualification",
+  "source": "https://android.googlesource.com/device/generic/goldfish/+/refs/heads/android14-dev/audio/device_port_source.cpp",
+  "mandatory_checks": [
+    "actual ro.boot.audio.tinyalsa.simulate_input=1",
+    "two sustained AAC captures",
+    "measured positive zero-crossing frequency300Hz within10Hz",
+    "native gameplay UI flow",
+    "unchanged product audio guards"
+  ],
+  "attempts": [
+    {
+      "run": 41732843656,
+      "status": "STOPPED_BEFORE_APP_INSTALL",
+      "reason": "-prop supports only qemu.* names; mandatory boot property remained absent"
+    },
+    {
+      "run": 41733830358,
+      "status": "STOPPED_BEFORE_APP_INSTALL",
+      "reason": "Optional /proc/cmdline read denied; actual boot-property check not reached. No native/app result inferred."
+    },
+    {
+      "run": 41734690127,
+      "status": "APP_FLOW_AND_NATIVE_TESTS_PASS_DIAGNOSTIC_ERROR",
+      "method": "Launcher-preserved kernel append androidboot.audio.tinyalsa.simulate_input=1; optional command-line diagnostics cannot mask mandatory property and signal checks.",
+      "bootProperty": "1",
+      "nativeDecoderTests": "2 PASS",
+      "originalActiveSeconds": 4.74,
+      "copyActiveSeconds": 4.44,
+      "measuredHz": [
+        297.7017597087379,
+        298.3408557318653
+      ],
+      "reason": "Original/shared WAV diagnostic stat mishandled the space in Backspin80 share filename; job FAILED/no AAB. Raw AAC checks independently satisfy the unchanged sustained-tone criteria."
+    },
+    {
+      "run": 41736838929,
+      "status": "UI_AND_SUSTAINED_TONE_PASS_NDK_INFRA_FAILURE",
+      "method": "Same verified native tone input with correctly quoted remote filenames; all qualification gates unchanged.",
+      "bootProperty": "1",
+      "originalActiveSeconds": 5.62,
+      "copyActiveSeconds": 4.32,
+      "measuredHz": [
+        298.1113121157787,
+        297.3414644281915
+      ],
+      "reason": "Complete raw/derived/shared WAV evidence captured after quoting repair. SDK NDK27.1 download was not a ZIP; separate codec build could not start, no AAB generated. Prior exact-runtime16KB codec fixture run41734690127 passed2tests."
+    },
+    {
+      "run": 41738283318,
+      "status": "NDK_PREFLIGHT_PASS_LAUNCH_TIMEOUT",
+      "reason": "NDK27.1 and clang verified before QA. am start timed out, but captured screenshot/XML show actual Next onboarding and launch crash audit is empty. No gameplay result inferred."
+    },
+    {
+      "run": 41740093949,
+      "status": "SUCCESS_NATIVE16KB_AND_PRODUCTION_AAB",
+      "method": "Verified NDK setup and one bounded launch retry, with full UI/audio gates unchanged.",
+      "bootProperty": "1",
+      "nativeDecoderTests": "2 PASS",
+      "originalActiveSeconds": 5.18,
+      "copyActiveSeconds": 4.44,
+      "reason": "Complete native UI/signal/decoder gates passed before production AAB generation."
+    },
+    {
+      "run": 41748574006,
+      "runtimeSource": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+      "status": "SUCCESS_NATIVE16KB_AND_PRODUCTION_AAB",
+      "nativeDecoderTests": "2 PASS",
+      "bootProperty": "1",
+      "activeSeconds": [
+        4.92,
+        4.4
+      ]
+    }
+  ],
+  "production_bundle_replay": "PASS 41753165406: production16KB gameplay, sustained HAL tone, clean unavailable-store/Restore guidance and no fake Plus. Actual Play payments/real voice untested."
+}

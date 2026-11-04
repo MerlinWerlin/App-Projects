@@ -1,0 +1,17 @@
+{
+  "run": 41728835831,
+  "runtime_source": "155a67047b63dcc4655c5de65963145c75dba951",
+  "workflow_result": "PASS",
+  "sustained_microphone_audio": "UNQUALIFIED_FRAGMENTED",
+  "page_size": 16384,
+  "api_level": 36,
+  "emulator": "36.6.11.0/build15507667",
+  "native_decoder_tests": "2 PASS",
+  "original_active_span_seconds": 0.24,
+  "copy_active_span_seconds": 0.26,
+  "original_trimmed_seconds": 0.4,
+  "copy_trimmed_seconds": 0.38,
+  "hal_pcm_read_errors": 209,
+  "hal_silence_insertions": 1428,
+  "limitation": "Complete UI round passed using only short captured fragments. This is not a sustained speech or human voice quality pass; do not use the UI result alone to qualify microphone input. Guards were unchanged."
+}

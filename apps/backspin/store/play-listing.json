@@ -1,0 +1,66 @@
+{
+  "status": "draft_not_uploaded",
+  "locale": "en-AU",
+  "title": "Backspin: Reverse Your Voice",
+  "shortDescription": "Record a line, hear it backwards, copy it and reveal the result.",
+  "fullDescription": "Your voice, with a twist.\n\nSay a short line, hear it backwards, then try copying that sound. Backspin flips your attempt forwards and scores its sound, rhythm and length.\n\nPlay a quick round, pick a daily challenge, try freestyle or pass one phone between friends in party mode. Loop or slow down the backwards clip while you practise. Save takes on your phone and share a four-part clip: original, backwards, your copy and flipped.\n\nYour first 10 scored rounds are free with all packs, effects and party sizes available. Backspin Plus is one optional lifetime purchase for unlimited rounds. No subscription or ads. Saved takes remain playable and shareable.\n\nNo account is needed. Recording and audio processing happen on your phone. Backspin does not upload your recordings; you choose when to share them. Android device backups follow your device settings.",
+  "releaseBlockers": [
+    "Organization/identity approval, then phone verification and app creation",
+    "Actual Play Billing purchase/cancellation/restore using a Play-installed build",
+    "Native and production16KB test-tone simulations pass; host/human/physical voice quality remains unqualified.",
+    "Final Data safety, app access, target audience and content rating declarations"
+  ],
+  "assets": "512px icon and 1024x500 feature graphic verified; five unmodified actual emulator screenshots exported from passing run41701424210.",
+  "privacy": "Android privacy policy published with explicit Google Billing diagnostics; HTTPS200, browser text and canonical source hash verified. Data safety form remains unsubmitted.",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/backspin/privacy-android.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/backspin/support-android.html",
+  "reviewerInstructionsDraft": "No Backspin account, login or access code is needed. Complete onboarding, allow microphone access when prompted and choose Quick play. Hold the record button while saying a short phrase, release it, listen to the backwards clip, choose Now copy it and record your attempt. The app flips and scores the attempt. Save take stores it in Takes; Share clip opens the Android share sheet. The first 10 scored rounds include all packs, effects and party sizes. Plus is an optional one-time lifetime purchase for unlimited rounds; actual Play purchase and Restore must be checked using the configured Play product before submission.",
+  "releaseNotesDraft": "First Android release: record a line, hear it backwards, copy it and reveal the result. Includes quick play, daily challenges, freestyle, party mode, saved takes and sharing.",
+  "monetization": {
+    "app": "free",
+    "freeScoredRounds": 10,
+    "productId": "com.jared797.backspin.plus",
+    "productType": "one_time_non_consumable",
+    "authorizedAustraliaPrice": "1.99",
+    "playProductConfigured": false
+  },
+  "artwork": {
+    "icon": "store/play/icon-512.png",
+    "featureGraphic": "store/play/feature-1024x500.png",
+    "phoneScreenshots": "store/play/screenshots"
+  },
+  "accountStatus": "4 Nov00:21UTC direct signed-in Console readback: documents uploaded/Google verifying identity, Create app disabled and phone verification requires approval. Prior detailed checkpoint: Organization Submitted; representative In review. Website ownership verified. No duplicate ABN letter/upload unless Google requests it.",
+  "buildEvidence": {
+    "runtimeSource": "7ce6f25fdb7be15738b270f81f5fa54938c7d4ed",
+    "run": 41748574006,
+    "appTests": 40,
+    "configurationChecks": 5,
+    "typecheck": "PASS",
+    "iosExport": "PASS",
+    "nativeDecoderTests": 2,
+    "native16KBToneSimulation": "PASS",
+    "productionReplayRun": 41753165406,
+    "productionReplay": "PASS",
+    "signedProductionAabSha256": "b473dfefa649a9a74d13830d15beea515a4a9c0dcfe9a239376ed6ff991b1d66",
+    "signedProductionAabBytes": 45515173,
+    "targetSdk": 36,
+    "nativeAlignedLibraries": 54,
+    "playBillingVersion": "9.1.0",
+    "historicalScreenshotRun": 41701424210,
+    "historicalScreenshotRuntimeSource": "155a67047b63dcc4655c5de65963145c75dba951",
+    "priorBuildEvidence": "play/build-evidence-prior-5ac7dd3.json",
+    "storeSubmission": false,
+    "hostHumanPhysicalVoice": "UNQUALIFIED",
+    "actualPlayBilling": "NOT_TESTED",
+    "previewApkSha256": "747f299b3599907f96ed854250ff10fdc931ccc432f339431485a2d79d835a2c",
+    "nativeByteComparison": "54/54 libraries byte-identical to5ac7dd3; native-copy-comparison.json"
+  },
+  "dataSafetyDraft": {
+    "diagnostics": "SDK collection; billing functionality/performance/error support. Confirm actual Console categories/purposes.",
+    "deviceOrOtherIds": "Review random billing-client session identifier under the actual form definitions; do not omit solely because Backspin has no user account.",
+    "paymentDetails": "Google processes card details directly; do not extend that payment-provider exemption to SDK diagnostics or all transaction data.",
+    "sharing": "Check applicable service-provider exception/terms instead of assuming no sharing.",
+    "audio": "App-side processing/storage is local; user-initiated Android share remains distinct. No audio is passed to the billing API in app source.",
+    "submitted": false
+  }
+}
