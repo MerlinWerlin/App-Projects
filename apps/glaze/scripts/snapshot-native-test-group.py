@@ -1,6 +1,6 @@
 """CI-only, read-only capture of this fresh simulator's Glaze test Group after a UI run."""
 from pathlib import Path
-import json,os,plistlib,re,shutil,sys
+import hashlib,json,os,plistlib,re,shutil,sys
 assert os.environ.get('GITHUB_ACTIONS')=='true','Only isolated Actions simulators'
 device=sys.argv[1];assert re.fullmatch(r'[A-Fa-f0-9-]{36}',device)
 out=Path(sys.argv[2]);out.mkdir(parents=True,exist_ok=True)
@@ -22,5 +22,17 @@ if len(matches)==1:
     if prefs.is_file():
         values=plistlib.loads(prefs.read_bytes())
         report['habitKeysPresent']=[key for key in ['glaze.habits.v1','glaze.habitLog.v1'] if key in values]
+    manifest=folder/'widgets.json'
+    if manifest.is_file():
+        values=json.loads(manifest.read_text())
+        refs={r for spec in values.get('catalogue',{}).get('specs',[]) if spec.get('kind')=='photoAlbum' for r in spec.get('photoRefs',[]) if isinstance(r,str) and re.fullmatch(r'album-[a-f0-9]{40}\.jpg',r)}
+        images=[]
+        for ref in sorted(refs):
+            image=folder/ref
+            if not image.is_file():continue
+            raw=image.read_bytes();digest=hashlib.sha256(raw).hexdigest()
+            images.append({'file':ref,'bytes':len(raw),'contentHashMatches':ref=='album-'+digest[:40]+'.jpg','jpeg':raw[:2]==b'\xff\xd8'})
+            target=out/'native-images';target.mkdir(exist_ok=True);shutil.copy2(image,target/ref)
+        report['albumImages']=images
 (out/'group-capture.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print('Preserved test-only Group files; capture alone is not a passing UI test')

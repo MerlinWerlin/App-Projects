@@ -5,7 +5,7 @@ root = File.expand_path(ARGV.fetch(0))
 FileUtils.mkdir_p(root)
 FileUtils.cp(File.join(__dir__, 'native-link-test-host.swift'), File.join(root, 'NativeLinkHost.swift'))
 fixture = ARGV[1] || 'native-link-ui-tests.swift'
-abort 'Unexpected UI fixture' unless ['native-link-ui-tests.swift', 'native-widget-tap-tests.swift'].include?(fixture)
+abort 'Unexpected UI fixture' unless ['native-link-ui-tests.swift', 'native-widget-tap-tests.swift', 'native-album-ui-tests.swift'].include?(fixture)
 FileUtils.cp(File.join(__dir__, fixture), File.join(root, 'GlazeDeepLinkTests.swift'))
 project_path = File.join(root, 'GlazeLinkCheck.xcodeproj')
 project = Xcodeproj::Project.new(project_path)
