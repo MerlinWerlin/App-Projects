@@ -20,7 +20,8 @@ import Darwin
     let album = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", "Photo album")).firstMatch
     for _ in 0..<14 { if album.exists && album.isHittable { break }; app.swipeUp() }
     XCTAssertTrue(album.exists && album.isHittable, app.debugDescription); album.tap()
-    let medium = app.buttons["Medium"].firstMatch
+    // Studio size chips expose the radio role as XCUI Other, rather than Button.
+    let medium = app.otherElements["Medium"].firstMatch
     for _ in 0..<8 { if medium.exists && medium.isHittable { break }; app.swipeUp() }
     XCTAssertTrue(medium.exists && medium.isHittable, app.debugDescription); medium.tap()
     let choose = app.buttons["Choose photos"].firstMatch
