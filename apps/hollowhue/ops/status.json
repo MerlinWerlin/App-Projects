@@ -71,7 +71,7 @@
   "correction": {
     "date": "2026-11-05",
     "branch": "codex/hollowhue-individual-zooms-20261105",
-    "state": "native verification pending; not published",
+    "state": "Four regular journeys and standalone artwork reviewed in partial native run; remaining recovery41907753409 active; not published",
     "original_single_artworks": 42,
     "nested_standard_editions": 6,
     "standard_discoveries_each": 6,
@@ -81,6 +81,14 @@
     "prompts": "scripts/art/nested-generation.json",
     "evidence": "docs/qa-nested-20261105",
     "saves": "all thirteen previously shipped scenes preserved; first-use painted art copied to independent edition without overwriting a single save",
-    "runtime": "0.1.0; unchanged native dependencies"
+    "runtime": "0.1.0; unchanged native dependencies",
+    "native_partial": {
+      "run": "41900538055",
+      "source": "af7c64ba799b77c04f702540b2d1af7b61a2740f",
+      "result": "partial;4 regular six-step journeys verified;wrong-target Turtle frame excluded;Rose gallery scroll timed out",
+      "recovery": "41907753409",
+      "recovery_capture_source": "94212b400af26b0a125ac7659156ec6deef1a12c",
+      "receipt": "docs/qa-nested-20261105/attempt-1.json"
+    }
   }
 }
