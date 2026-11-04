@@ -1,0 +1,10 @@
+{
+  "source_sha": "6892c7bfd10c03e0ce54b78723fbb1710c7955ca",
+  "run_id": "41793399032",
+  "results": {
+    "CORE_RESULT": "success",
+    "BUILD_RESULT": "success",
+    "UI_RESULT": "failure",
+    "RENDER_RESULT": "success"
+  }
+}
