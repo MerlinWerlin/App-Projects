@@ -72,17 +72,28 @@ import Vision
   }
   let title = spring.staticTexts["Photo album"].firstMatch
   let next = spring.buttons["Next photo"].firstMatch
+  var selected = false, albumPages = 0
   for _ in 0..<65 {
-    let f = next.exists ? next.frame : .zero
-    let visibleNext = next.exists && f.width > 1 && f.minX >= 0 && f.maxX <= spring.frame.width
-      && f.minY > 0 && f.maxY < spring.frame.height
-    if title.exists && (visibleNext || dominantPhoto() != nil) { break }
+    if title.exists {
+      albumPages += 1
+      // The title arrives before WidgetKit replaces its redacted placeholder with the snapshot.
+      // Wait for the actual saved image/control before advancing to the next size.
+      for _ in 0..<30 {
+        let f = next.exists ? next.frame : .zero
+        let visibleNext = next.exists && f.width > 1 && f.minX >= 0 && f.maxX <= spring.frame.width
+          && f.minY > 0 && f.maxY < spring.frame.height
+        if visibleNext || dominantPhoto() != nil { selected = true; break }
+        RunLoop.current.run(until: Date().addingTimeInterval(0.4))
+      }
+      if selected || albumPages >= 3 { break }
+    }
     spring.swipeLeft()
     RunLoop.current.run(until: Date().addingTimeInterval(0.7)) // Gallery page transition, separate from animation idleness.
   }
   XCTAssertTrue(title.exists, spring.debugDescription)
   print("GLAZE_ALBUM_SELECTED_GALLERY_TREE\n" + spring.debugDescription); fflush(stdout)
   capture("native-album-selected-gallery")
+  XCTAssertTrue(selected, "Wait for the saved medium album to finish rendering, not its redacted placeholder")
   stage("medium-album-gallery-selected"); capture("native-album-gallery")
   let addControl = spring.buttons["Add Widget"].firstMatch
   if addControl.exists && addControl.isHittable { addControl.tap() }
