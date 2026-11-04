@@ -32,7 +32,7 @@ the first run, this covers all six regular editions. `receipt.json` records scop
 No app/src/assets/config/package runtime files changed after the compiled source; subsequent changes
 are capture tooling and evidence. Offline validation:159 tests,full/stub strict types,Expo doctor21/21,
 and iOS/Hermes export. Original artwork and prior-scene geometry hashes match. Physical iPhone uptake
-is not independently verified. Production OTA and Apple delivery receipts are added after publication.
+is not independently verified. Production OTA and Apple delivery receipts below record the released state.
 
 ## Production OTA live
 
@@ -41,4 +41,22 @@ production update group `9dd44b9b-efec-4f06-b36d-0c75cfcdaa78` at `2026-11-04T21
 `production-update.json` verifies the served manifest, runtime0.1.0 and the actual downloaded bundle:
 42,000,780 bytes, SHA256 `d2ad60a17afad742272ed054145119c580e4f1a46679da54ee37e9c11e4b5ab9`.
 Existing installations can apply it through Settings → App updates → Check → Save & apply.
-Fresh signed TestFlight build run `41912245091` is in progress; no installable new binary is claimed yet.
+
+## TestFlight 0.1.0 (5) ready
+
+Signed build/upload run `41912245091` succeeded from release source `df0c24a7`. Submission
+`7ee27d85-e2eb-48a4-88a6-67bfe429db55` uploaded build 5. Apple probe `41919622598` confirms
+upload `0c7ab517-0f62-42c1-9fff-8a0f03afb51e` is COMPLETE, the same build is VALID, and
+its internal state is IN_BETA_TESTING, with no upload errors or warnings. The actual response is
+`apple-complete-status.json`; the earlier PROCESSING snapshot remains in `apple-upload-status.json`.
+That probe also reverified the production OTA bundle hash in `production-update.json`.
+
+Update Hollowhue in TestFlight to **0.1.0 (5)**. Open **Zoom artworks → Rose Cottage: Inside**
+for six nested discoveries, or **Mega Zoom → Mega Rose Engraving** for twenty. The 42 approved
+pictures remain in **Single artwork**. Prior scene saves and geometry are retained. A new Single
+can receive paint from the latest saved source-scene timestamp on first use; an existing Single save
+is never overwritten. Physical phone installation and uptake remain unverified.
+
+The 47 detail illustrations were generated using the built-in image generation tool, saved in
+`scripts/art/illustrations`, and compiled into the app. Full prompts and reference provenance are in
+`scripts/art/nested-generation.json`.

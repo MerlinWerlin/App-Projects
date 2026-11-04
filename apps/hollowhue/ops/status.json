@@ -1,10 +1,10 @@
 {
   "app": "hollowhue",
   "stage": "testflight",
-  "headline": "Nested artwork update LIVE in production OTA:42 separate Single artworks,6 coherent six-discovery editions,20 Mega tiers;47 new detail illustrations.159 tests and complete reviewed native coverage pass. Fresh TestFlight binary building.",
+  "headline": "Nested artwork update delivered: TestFlight 0.1.0 (5) ready and production OTA verified. 42 separate Single artworks, six Zoom editions with six nested discoveries each, and twenty Mega tiers. 47 new drawings; 159 tests and complete reviewed native coverage pass.",
   "next_for_owner": [
-    "In existing Hollowhue, Settings > App updates > Check for updates > Save & apply update.",
-    "Look for Hidden detail inside each artwork. Fresh TestFlight refresh is still building."
+    "Open TestFlight and update Hollowhue to 0.1.0 (5). Choose Zoom artworks > Rose Cottage: Inside for six discoveries; Mega Zoom > Mega Rose Engraving has twenty.",
+    "The 42 approved pictures remain in Single artwork. Existing installations can also apply the content through Settings > App updates > Check for updates > Save & apply update."
   ],
   "tests": 159,
   "typecheck": "159 tests, full/stub strict types, Expo doctor21/21 and iOS/Hermes export pass. Exact prior geometry retained. Native all6x6 and20 stops,deep paint/drawing and restart save verified across2 reviewed captures of identical compiled runtime.",
@@ -55,7 +55,7 @@
     "apple_receipt": "docs/qa-art-20261104/apple-complete-status.json"
   },
   "delivery": {
-    "state": "Production iOS OTA live and downloaded bundle verified;fresh TestFlight binary building",
+    "state": "Production iOS OTA live; TestFlight 0.1.0 (5) COMPLETE / VALID / IN_BETA_TESTING, with no upload errors or warnings",
     "release_pr": 234,
     "release_source": "df0c24a7f908ed3cbd4129665c7b4a2e2426b0a9",
     "ota_run": "41912203479",
@@ -73,13 +73,20 @@
       "phoneUptakeVerified": false
     },
     "testflight_build_run": "41912245091",
-    "testflight_version": "pending",
-    "physical_phone_uptake": "unverified"
+    "testflight_version": "0.1.0 (5)",
+    "physical_phone_uptake": "unverified",
+    "testflight_submission": "7ee27d85-e2eb-48a4-88a6-67bfe429db55",
+    "upload_id": "0c7ab517-0f62-42c1-9fff-8a0f03afb51e",
+    "apple_probe_run": "41919622598",
+    "apple_state": "COMPLETE; VALID; IN_BETA_TESTING; no errors or warnings",
+    "apple_receipt": "docs/qa-nested-20261105/apple-complete-status.json",
+    "delivery_records_pr": 237,
+    "build_id": "0c7ab517-0f62-42c1-9fff-8a0f03afb51e"
   },
   "correction": {
     "date": "2026-11-05",
     "branch": "codex/hollowhue-individual-zooms-20261105",
-    "state": "Production OTA live and bundle verified;fresh native TestFlight build41912245091 in progress",
+    "state": "Production iOS OTA live; TestFlight 0.1.0 (5) COMPLETE / VALID / IN_BETA_TESTING, with no upload errors or warnings",
     "original_single_artworks": 42,
     "nested_standard_editions": 6,
     "standard_discoveries_each": 6,
@@ -88,7 +95,7 @@
     "source": "scripts/art/nested-source.json",
     "prompts": "scripts/art/nested-generation.json",
     "evidence": "docs/qa-nested-20261105",
-    "saves": "all thirteen previously shipped scenes preserved; first-use painted art copied to independent edition without overwriting a single save",
+    "saves": "All thirteen previously shipped scenes preserved. On first use, paint from the latest saved source-scene timestamp is copied to a new Single edition only if that Single has no save; existing Single saves are never overwritten.",
     "runtime": "0.1.0; unchanged native dependencies",
     "native_partial": {
       "run": "41900538055",
