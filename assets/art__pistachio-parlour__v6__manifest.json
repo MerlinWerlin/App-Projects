@@ -1,0 +1,294 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "pistachio-parlour",
+  "packVersion": 6,
+  "name": "Pistachio Parlour",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#DFE1C8",
+    "tile": "#C4C5AF",
+    "glyph": "#1C1816",
+    "accent": "#946531",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Pistachio Parlour",
+    "mood": "Pistachio, cream and cocoa, miniature pastry atelier, croissant study and porcelain clock.",
+    "tags": [
+      "pistachio",
+      "parlour",
+      "cream",
+      "cocoa",
+      "miniature",
+      "pastry",
+      "atelier",
+      "croissant",
+      "study",
+      "porcelain",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for PISTACHIO PARLOUR. Upper76percent quiet almost uniform pale pistachio matte paper #E4E9D5, extremely subtle soft grain, no objects folds blossoms steam labels crumbs or patterns behind future app icons. Bottom24percent refined patisserie still life on pale pistachio ground: one small golden flaky butter croissant on a low ivory scalloped porcelain saucer, two tiny pistachio macarons stacked beside it, one neatly folded muted blush linen corner and three shelled pistachio kernels. Soft warm morning light, exquisite tactile pastry crumb/cream porcelain/linen editorial product photography, pale pistachio/ivory/cocoa/muted blush palette, restrained delicate luxury with clear silhouettes. Entire objects contained LOW, plenty of clean usable space above. No coffee cup, people, animals, text, logos, UI, phone, border, stars or floral patterns. Full bleed portrait wallpaper.",
+    "addedAt": "2026-11-01",
+    "category": "Sweets & Treats"
+  },
+  "thumbhash": "MQkKEwSpb0aId4uzV4B7Bqg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d800efd5.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 98572,
+      "sha256": "d800efd52e1aa716aa502619dae6bb911a803c98b51b1a26eb2219b0acf17398",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.9166c6f8.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 87594,
+      "sha256": "9166c6f8cb7ce0ba5e28c27551ea2f34d0606610392b31ed4183246f8ef660d8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.2640776c.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 43720,
+      "sha256": "2640776c95fb0a9d06aee2fa40fc5c16a1b1fadd2813c2acbddde33973b859b8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.ed8a0c7e.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 16972,
+      "sha256": "ed8a0c7eda16445a1c112b75dec670657829d87a370df15f3ca18aa4b4fe92bb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.801a78bb.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 68622,
+      "sha256": "801a78bb740a764ab80281a93c0da5a11fba478e5c960c39b6dfdc4da7229a0b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.cb228a29.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 98102,
+      "sha256": "cb228a2928bffaad11c12cce90fd1d18a1a76e37b1ef83d6aa44f2c17649620b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.379833e4.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7626,
+      "sha256": "379833e4b6e1a570f7ace547d2e1b523b911602635cae6aa869442fd94c26066",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.4d6bef4d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 40004,
+      "sha256": "4d6bef4d1183dbabec9cda5ce35ae3aa828bb5c25b4527bbc5322239c4a0499d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-parlour-date.af2a6994.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 82242,
+      "sha256": "af2a6994843303f26136271b122124a2440bf485be6204b88391395abaf0fc56",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pistachio-sundae.7ca4fa13.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84916,
+      "sha256": "7ca4fa13cb36786a481e7e63e0a74a6b6aa41805b06c18a9b5355f08f0919c96",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.f8e3f011.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6048,
+      "sha256": "f8e3f0110d584aba85cd52026598e93236a8216bb542c7b085c6c579371ed87d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.eaaf4956.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3076,
+      "sha256": "eaaf495682205d27539bd60b71c7870251905dbeeb1d8960f9cbf61ce95d6e13",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.0373816c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5914,
+      "sha256": "0373816c8fd52622e8ce63317c03625f85582ce3d932fd484c81066add48ad7d",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 643408,
+  "widgets": [
+    {
+      "id": "parlour-date",
+      "kind": "calendar",
+      "image": "widget-parlour-date.af2a6994.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Parlour date"
+    },
+    {
+      "id": "pistachio-sundae",
+      "kind": "art",
+      "image": "widget-pistachio-sundae.7ca4fa13.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pistachio sundae"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.f8e3f011.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.eaaf4956.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.0373816c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.ed8a0c7e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.801a78bb.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.cb228a29.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

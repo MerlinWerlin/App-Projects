@@ -1,0 +1,3442 @@
+{
+  "tag": "glaze-packs-v12",
+  "assets": [
+    {
+      "name": "art__juniper-mist__v6__manifest.json",
+      "bytes": 8280,
+      "sha256": "b547fc3cbf7104bd9375a6a7dc8d35b5e0b2a7cdf538aff88a2363dff0dfcccf"
+    },
+    {
+      "name": "art__juniper-mist__v6__thumb.74e15c85.webp",
+      "bytes": 9700,
+      "sha256": "74e15c856f44a92f6eaf3fd192ecd236c050b7ee9602b330d7258db74d257277"
+    },
+    {
+      "name": "art__juniper-mist__v6__wallpaper-1334.535dcd78.webp",
+      "bytes": 49748,
+      "sha256": "535dcd78aaae65280b39a2a16fafa843a985e095737dbb3815862bcb2b0c4af9"
+    },
+    {
+      "name": "art__juniper-mist__v6__wallpaper-2556.98bda801.webp",
+      "bytes": 85784,
+      "sha256": "98bda8014acdf007dfcb34340627b8688adbbccb3366dca3a5544c3954150165"
+    },
+    {
+      "name": "art__juniper-mist__v6__wallpaper-2796.ae5e3209.webp",
+      "bytes": 94102,
+      "sha256": "ae5e3209ea1a08e53f97d45f326eedb0ad9ef29d6c73fbcb531ad51f677340a4"
+    },
+    {
+      "name": "art__juniper-mist__v6__widget-large.48b95598.webp",
+      "bytes": 44034,
+      "sha256": "48b955988adebe4771e4312a527c97c40dbf1d5ac536c6c7c93485c70ab79e02"
+    },
+    {
+      "name": "art__juniper-mist__v6__widget-live-battery.7d68d305.webp",
+      "bytes": 2640,
+      "sha256": "7d68d3058970a4dd00dfba2a07694bb6804f91fbb770526011a2b8b4ae288812"
+    },
+    {
+      "name": "art__juniper-mist__v6__widget-live-clock.832fd006.webp",
+      "bytes": 6286,
+      "sha256": "832fd006174a005988b774378882c27edd1c97db55328f28c0c19007cbf4600b"
+    },
+    {
+      "name": "art__juniper-mist__v6__widget-live-date.91cf9035.webp",
+      "bytes": 3120,
+      "sha256": "91cf90359e8545b370e4907997c60d6437b81814e1808a622c2049f1685b6be4"
+    },
+    {
+      "name": "art__juniper-mist__v6__widget-live-focus.cc04e181.webp",
+      "bytes": 6188,
+      "sha256": "cc04e181b5557dcd4258ad690a7e25ae7b9ddc7385d7a26a440384ffc89864fd"
+    },
+    {
+      "name": "art__juniper-mist__v6__widget-medium.f00f0e93.webp",
+      "bytes": 4802,
+      "sha256": "f00f0e9324753aa73c18963a6214145f920a39832b4cc471bc222f2531650aa6"
+    },
+    {
+      "name": "art__juniper-mist__v6__widget-production-20261101-needle-study.35091594.webp",
+      "bytes": 90702,
+      "sha256": "350915945b0e1ea58abb0302e7c980638005be852114184ab2cb626c075f7e93"
+    },
+    {
+      "name": "art__juniper-mist__v6__widget-small.edff3aac.webp",
+      "bytes": 20436,
+      "sha256": "edff3aac3fb5dd4cc05919b6d0ea378c1bd229ac082930447e97661790b1bb81"
+    },
+    {
+      "name": "art__juniper-mist__v6__widget-themed-live-clock.3a6f34fa.webp",
+      "bytes": 102898,
+      "sha256": "3a6f34fa4dd10187188a11af9c3510d63fbbecf96f8b4ad9368cb6a65db52bd8"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__manifest.json",
+      "bytes": 8389,
+      "sha256": "621098ecc8f2254880d3c02f00679383f1cd329d14877499f54bedc6dc10ff88"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__thumb.00589bcb.webp",
+      "bytes": 5898,
+      "sha256": "00589bcbc3cd2c149a89a9b009805fe5d8b25f52981e6b46a2adfacf82c4141b"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__wallpaper-1334.16a394c0.webp",
+      "bytes": 30936,
+      "sha256": "16a394c0e18da967078dc5837b7fe43ba127987d96058e09972d5cc3d09b03c4"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__wallpaper-2556.d902ff51.webp",
+      "bytes": 62586,
+      "sha256": "d902ff513dfc26f418f5ba1b8f352b0d8009e2d53d39fe1884957881bf1e3e27"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__wallpaper-2796.3036e191.webp",
+      "bytes": 69512,
+      "sha256": "3036e19126e4b68a61eefe9c6d9adf3625649f3fef6e83cd7faa6239e246a03f"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__widget-large.7e737e3c.webp",
+      "bytes": 29136,
+      "sha256": "7e737e3ccf575a7737b85f1b487913ec4bdf8137dca293f5c24045c5a587b9d0"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__widget-live-battery.07ff351c.webp",
+      "bytes": 2932,
+      "sha256": "07ff351cb86a09ddb90b9129d95e3a90c7f34076cd226421eda908df80bc2109"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__widget-live-clock.e3028d08.webp",
+      "bytes": 6868,
+      "sha256": "e3028d08a590eb14dca4d3234fa7694973e6a9651e0a5786241438c7568a0ea2"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__widget-live-date.47ecb490.webp",
+      "bytes": 3346,
+      "sha256": "47ecb4901e6c76d34a7d127769aedd25910a2214f6b8b5da1f65b265c8b7cd66"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__widget-live-focus.18de7c6e.webp",
+      "bytes": 6746,
+      "sha256": "18de7c6e2214f4cfac5d82075a06f7f197ac1505fd83e5f93d585578e1dcf83b"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__widget-medium.65309c60.webp",
+      "bytes": 1974,
+      "sha256": "65309c605d190adb0c1f3d6a58a097384b323e2bff411967007d0055e0fb62a3"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__widget-production-20261101-reed-perch.5ff8cbc5.webp",
+      "bytes": 70944,
+      "sha256": "5ff8cbc5e76461d824f539e76ab4d61597436f0dc1a05dea9aa6f282ba671eb3"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__widget-small.a8a7097b.webp",
+      "bytes": 7938,
+      "sha256": "a8a7097ba696318ad4f03fb2d0e6e81b7aca148494e0581957cf23f2cddccfd4"
+    },
+    {
+      "name": "art__kingfisher-blue__v6__widget-themed-live-clock.1126f811.webp",
+      "bytes": 252392,
+      "sha256": "1126f811b40eeb8930a5644bb20a94ca6e28228f0a182304bd45bedc7020abb8"
+    },
+    {
+      "name": "art__labradorite-hush__v4__manifest.json",
+      "bytes": 8190,
+      "sha256": "858b1bdd6a76b640e4028379cc097969088a9546ceddca91e802878a9636e625"
+    },
+    {
+      "name": "art__labradorite-hush__v4__thumb.043252a3.webp",
+      "bytes": 6724,
+      "sha256": "043252a3c9425c72cc58f9eb61fd81651bca0e184a98a6944b7ce9717d7a4610"
+    },
+    {
+      "name": "art__labradorite-hush__v4__wallpaper-1334.23484c7d.webp",
+      "bytes": 47464,
+      "sha256": "23484c7d5d4f13b35ffb6c7916a392c58545bf0f848083b463309beb82bdccf8"
+    },
+    {
+      "name": "art__labradorite-hush__v4__wallpaper-2556.ec9040e0.webp",
+      "bytes": 92330,
+      "sha256": "ec9040e0a86baff72ec2e4e23c6707893315e1f6ded25d413200dd10cc44df3e"
+    },
+    {
+      "name": "art__labradorite-hush__v4__wallpaper-2796.2c6d9107.webp",
+      "bytes": 102504,
+      "sha256": "2c6d9107a9705e43e4b5870ab91adac6e4f9fa3f36557a3d5ebb9dc8868f63db"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-cleavage-lines.bd104ad5.webp",
+      "bytes": 364292,
+      "sha256": "bd104ad5583a3568603c01b137fc20b9f0d5b5d2eab25d40791a628b5b2a8aba"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-large.b5992e0d.webp",
+      "bytes": 220022,
+      "sha256": "b5992e0d130336ec3a6c7cedc1412a963aeece9413b2b477c4496e958a5aea6f"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-live-clock.c94838de.webp",
+      "bytes": 6674,
+      "sha256": "c94838de4a9ce893f37ea4ee0319489086874853d5e173b07d767432f56f517a"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-medium.3dfeb121.webp",
+      "bytes": 198714,
+      "sha256": "3dfeb121800faa95239178367bb37c65416bf4d771fdfe23193f83484ec472c7"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-mineral-clock.b2357ff2.webp",
+      "bytes": 97686,
+      "sha256": "b2357ff2b51c4e16ddb893c06806ee624b3dee204e3f2e85d2db48c0528d1534"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-quiet-focus.2bf6e826.webp",
+      "bytes": 21380,
+      "sha256": "2bf6e826ca39af5fbc6b06df90044a026dd2e73b8d8e667e33b0cae0469c97b2"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-slate-date.803c23a5.webp",
+      "bytes": 50002,
+      "sha256": "803c23a50df2d7eec4fe547e1f2fb43053477cce3a63919192a86ad031fdd123"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-small.c983374f.webp",
+      "bytes": 67252,
+      "sha256": "c983374f579166f3b6ec5077dc538d9e8e00939c79e8c3b17fffbbd60c2c1f0d"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-stone-pair.f8478e24.webp",
+      "bytes": 149224,
+      "sha256": "f8478e240ce3e0ff1f769d28e946353c61f2972dbfd9ebbcc3fe3660c6045796"
+    },
+    {
+      "name": "art__labradorite-hush__v4__widget-themed-live-clock.6762fe80.webp",
+      "bytes": 224582,
+      "sha256": "6762fe80963811ff2093407759bb7e35542298c575630403d08d8730e9a7e49f"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__manifest.json",
+      "bytes": 6792,
+      "sha256": "72db182afc747b10754765fe639a983272be9a90b27a46970725a6b227714964"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__thumb.d2c4c266.webp",
+      "bytes": 27672,
+      "sha256": "d2c4c266a6d518dcf6174fbec924d84ced3858c10cc9ef327fa0c99b1b12d5a3"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__wallpaper-1334.2607be3c.webp",
+      "bytes": 283584,
+      "sha256": "2607be3cb2b332e30849c4e3323670e60cafc91dca6362788300248382c0d045"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__wallpaper-2556.1b0995d7.webp",
+      "bytes": 563902,
+      "sha256": "1b0995d7c0001ffc0b0c38a63ed1da1a1249db82df7456871fb3a803ddc8f55b"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__wallpaper-2796.51187683.webp",
+      "bytes": 633802,
+      "sha256": "511876834878fdaa358a07e5ed947d9895e563c022eadef96096a62cdb265510"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__widget-large.e4744c1c.webp",
+      "bytes": 333428,
+      "sha256": "e4744c1cccb975896a267b50528807418d766a466eebec3bbe03b4df92c228d4"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__widget-lavender-butterfly.4b103393.webp",
+      "bytes": 304544,
+      "sha256": "4b103393d7b0f147b896feb7e5fcf0d53f52611d63650385c2e1181e41709768"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__widget-lavender-dream-jar.b985f1be.webp",
+      "bytes": 308384,
+      "sha256": "b985f1bec8f9fe3e67c592fa9987d720854840341415977deb9f3776ae298d83"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__widget-live-clock.e3387923.webp",
+      "bytes": 7348,
+      "sha256": "e33879233ef65682ff2cb1a7b0ef1a7abcd7e0baf734b6c90dc20aaeab1dae21"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__widget-medium.6a5b779e.webp",
+      "bytes": 188308,
+      "sha256": "6a5b779ea9a87fe089cb4fd6f37a185495571fc3e4668864804ed4efc2f70bf5"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__widget-nocturne-habits.eb2fca24.webp",
+      "bytes": 280468,
+      "sha256": "eb2fca2473c1400ab603aa78e7899480e0ed8a385a81c33a7c1b927f7c5372b9"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__widget-small.366b1f2a.webp",
+      "bytes": 80966,
+      "sha256": "366b1f2a4b3c16b9266f3175540de899245124f07b8ba08382e6716e6605ad6b"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__widget-teacup-village.6ccf6e75.webp",
+      "bytes": 334824,
+      "sha256": "6ccf6e75e43f0702ba52abf568f2f232e2528364601a79b46f93cd28157e7d83"
+    },
+    {
+      "name": "art__lavender-nocturne__v6__widget-themed-live-clock.17187ace.webp",
+      "bytes": 310730,
+      "sha256": "17187ace5d722823644c4b331a2afdf3857dc808c22aea21e80bfbd74149a91c"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__manifest.json",
+      "bytes": 7980,
+      "sha256": "669b20d14c1f69620cb267d781b7156189a7ce60b2da2c106e709b7d0cf31a7d"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__thumb.c61e4048.webp",
+      "bytes": 13762,
+      "sha256": "c61e4048735b1fc7c69f606b8f8b205c944c7e78afe4674ed4f27b6ccf8a6763"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__wallpaper-1334.7c0ae841.webp",
+      "bytes": 70778,
+      "sha256": "7c0ae8413a4242c2190da6e4c7e12661677c6023dd3126242e825d79d83a56a2"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__wallpaper-2556.cc5bc146.webp",
+      "bytes": 176502,
+      "sha256": "cc5bc146d2255921e15e8661befa915a039ece5742809bb107aec12ea2139c43"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__wallpaper-2796.d9e83761.webp",
+      "bytes": 190096,
+      "sha256": "d9e8376141e1d11842dc696b3d30db745efa94437e68b1d0ed84c84892e88ccb"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__widget-large.dfbdff1e.webp",
+      "bytes": 88152,
+      "sha256": "dfbdff1ee766bfbe370075777b982fdf0117799b5e35683bc5351ec04a00ffa1"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__widget-lemon-sailboat.b0b902b8.webp",
+      "bytes": 84960,
+      "sha256": "b0b902b8e99531c239d91b7fd522ebc365a10df946633976a8b80c9d197d1de4"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__widget-live-clock.147a1022.webp",
+      "bytes": 9164,
+      "sha256": "147a1022375a6f4f803b463f7728387cc5af40ecc9101a88abdcc982f8bde10c"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__widget-live-date.f59d641c.webp",
+      "bytes": 3666,
+      "sha256": "f59d641cf4c3740c9750db6bdc60c223deca5ff7b7e49289af93c0300e4924d1"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__widget-live-focus.91502e33.webp",
+      "bytes": 8918,
+      "sha256": "91502e336af3f5b49bdcc62b22fb588e418d4550960b36f840843b606804bbbe"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__widget-medium.a3fe11e5.webp",
+      "bytes": 79736,
+      "sha256": "a3fe11e50cc700c7955ea068cdbecd432c78310f87845c03b87b61ffde17cfbb"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__widget-pool-day-countdown.07a5235e.webp",
+      "bytes": 101894,
+      "sha256": "07a5235ea4eef9f7270177092ff14bbd6d217323a3c7701ca40cfc2ad97116f2"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__widget-small.f203c3c9.webp",
+      "bytes": 29892,
+      "sha256": "f203c3c93bb6cac1114707236ca3da571c6aed65b3a7bbc43026a60c392bfc47"
+    },
+    {
+      "name": "art__lemon-lagoon__v6__widget-themed-live-clock.9e165f01.webp",
+      "bytes": 68190,
+      "sha256": "9e165f010d0cab758d526b8ffebc39681f85a9666c0b2fb2ed33aefd357049ca"
+    },
+    {
+      "name": "art__lotus-drift__v6__manifest.json",
+      "bytes": 8119,
+      "sha256": "2399261a682c334b935db94be0e2496471d0b384a49c4198f24e40ebe35b2415"
+    },
+    {
+      "name": "art__lotus-drift__v6__thumb.cf8bec5d.webp",
+      "bytes": 4614,
+      "sha256": "cf8bec5db03e1d83638da6c17aa07944c1cc54322b0f420c5737c9327844b8f7"
+    },
+    {
+      "name": "art__lotus-drift__v6__wallpaper-1334.3e7c5f03.webp",
+      "bytes": 23870,
+      "sha256": "3e7c5f03187ab27e89970f1193a5f950b3ad840b8a42c07c709087b621738e43"
+    },
+    {
+      "name": "art__lotus-drift__v6__wallpaper-2556.3178c8e9.webp",
+      "bytes": 46422,
+      "sha256": "3178c8e9837708ce087aadfaafa4503ed64d234a338f1817d35b990c01fc7947"
+    },
+    {
+      "name": "art__lotus-drift__v6__wallpaper-2796.93332657.webp",
+      "bytes": 52022,
+      "sha256": "933326571b9d73237ac500addcebec669ba9579ac36ef4ae5e6414fd4f587b81"
+    },
+    {
+      "name": "art__lotus-drift__v6__widget-large.71527caa.webp",
+      "bytes": 82230,
+      "sha256": "71527caaa7589c3436af574dc81a20f8d4b8e5f43bcb3f1a699641096e8d90a2"
+    },
+    {
+      "name": "art__lotus-drift__v6__widget-live-clock.20b788cd.webp",
+      "bytes": 7390,
+      "sha256": "20b788cdf04f2c29120f09e3fa81237d482d218735945856d9f608e390b5eb33"
+    },
+    {
+      "name": "art__lotus-drift__v6__widget-live-date.2c0d4960.webp",
+      "bytes": 3348,
+      "sha256": "2c0d49602032b42a3e99fc1f883659b85ef5b03b33cedc49543857eb3804b4ab"
+    },
+    {
+      "name": "art__lotus-drift__v6__widget-live-focus.31bd5a46.webp",
+      "bytes": 7220,
+      "sha256": "31bd5a463e8ea9f5a5e949b057adf94aa8be120ed6ecb725622f5bc7d28a0d11"
+    },
+    {
+      "name": "art__lotus-drift__v6__widget-lotus-focus.6074b1c6.webp",
+      "bytes": 46974,
+      "sha256": "6074b1c6537b62b284e810349ee995038c7770438db98a1bee5e0519b3725bbd"
+    },
+    {
+      "name": "art__lotus-drift__v6__widget-medium.47a66981.webp",
+      "bytes": 55870,
+      "sha256": "47a66981378aadb217109cb7509742501f6ddf4a611e2b3d2f4e59d8c16bd02a"
+    },
+    {
+      "name": "art__lotus-drift__v6__widget-pond-dragonfly.63d8b43c.webp",
+      "bytes": 67406,
+      "sha256": "63d8b43c320afa7ded4286cde3f0b0c458d9d5e8d873317cb80d11f47ce883e2"
+    },
+    {
+      "name": "art__lotus-drift__v6__widget-small.6584b5c5.webp",
+      "bytes": 23322,
+      "sha256": "6584b5c518b2830821beae78a3d66ca7e2f295d080f4ab1f544fdda4b7d09ed0"
+    },
+    {
+      "name": "art__lotus-drift__v6__widget-themed-live-clock.affa2b0e.webp",
+      "bytes": 53032,
+      "sha256": "affa2b0e844096a6c0b453764e839129bd30ee61098d0652abe96293f3838257"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__manifest.json",
+      "bytes": 8370,
+      "sha256": "0953434fbe62088f1a50d5d5a5b878f50e8f9016c46318db37673957392c30b8"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__thumb.c8e57494.webp",
+      "bytes": 14180,
+      "sha256": "c8e574941a88f6909493ab99cc8895a6e167e6537760ac8a5c62b75787df467e"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__wallpaper-1334.e4c306c8.webp",
+      "bytes": 96298,
+      "sha256": "e4c306c82a027cc9021b3b43555dd8fba3079d80f81b33ea615fc61a46c14fc1"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__wallpaper-2556.075d8e94.webp",
+      "bytes": 206542,
+      "sha256": "075d8e94e7cb36948487abf2cb7113577fb8a0e286792bf67a47d70face2cc73"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__wallpaper-2796.a6617ccb.webp",
+      "bytes": 232544,
+      "sha256": "a6617ccbe5039f105a0d6b110ee1e827fcc985009276b300d1135a618f687a0a"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__widget-large.80ed240b.webp",
+      "bytes": 172366,
+      "sha256": "80ed240be675177bdac0cae7e8fe161bdc7777fdf994e9f043ca1a637c4453b2"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__widget-live-clock.e42e2fec.webp",
+      "bytes": 7272,
+      "sha256": "e42e2fec37dff16228f4698789c94043b126b0a1dcda6aca48bbe1f9d8d7ed5b"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__widget-live-date.066766c9.webp",
+      "bytes": 3348,
+      "sha256": "066766c9e49f2b5a299ffb701ebe14cc1be97e3d75e8b3db8c8e97dfac53fe53"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__widget-live-focus.c259e9ad.webp",
+      "bytes": 7056,
+      "sha256": "c259e9ad769adc2aaef1fd44b158897388b854e47e28cec79c7c9ac78ffd0c9a"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__widget-medium.e05845f2.webp",
+      "bytes": 119618,
+      "sha256": "e05845f28c3393d98d0f7cb57ea7cf9d25fab9f9fdca26c71030e02c83dfe7f2"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__widget-mosaic-date.afdf66db.webp",
+      "bytes": 114898,
+      "sha256": "afdf66dbc1bdf385b9bfeba0ab04d24b2179cdc1d8ed672c4f66a0b8517ef03d"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__widget-small.a0d46a3f.webp",
+      "bytes": 42470,
+      "sha256": "a0d46a3faab58da3e2cf75b520423ff846e8a8fda0ee3a35e4770d26c8c2003e"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__widget-tessellated-sunbird.81d4eab9.webp",
+      "bytes": 145212,
+      "sha256": "81d4eab99cc1ad6482949706585c38f7511070afb1990d416716b27b1a2b239c"
+    },
+    {
+      "name": "art__lumen-mosaic__v6__widget-themed-live-clock.7297dfed.webp",
+      "bytes": 122622,
+      "sha256": "7297dfed82fe7f860310bf3be143b7dc989bb844381da53faeeef787f941f6db"
+    },
+    {
+      "name": "art__magnolia-veil__v4__manifest.json",
+      "bytes": 8124,
+      "sha256": "fea26b4d80d6d166feeee1bfe9a0c88d07be19bf563b820967ed43af9671cf26"
+    },
+    {
+      "name": "art__magnolia-veil__v4__thumb.2463424b.webp",
+      "bytes": 4826,
+      "sha256": "2463424b94a750f30a050fda2f1a9dd44ec0f5abe47ff53744d6f2a142d24415"
+    },
+    {
+      "name": "art__magnolia-veil__v4__wallpaper-1334.278645ee.webp",
+      "bytes": 25236,
+      "sha256": "278645eec269b532e9d354a409077ae73ad1c98e0fa71a3c433342b0de56acdb"
+    },
+    {
+      "name": "art__magnolia-veil__v4__wallpaper-2556.99d74714.webp",
+      "bytes": 49272,
+      "sha256": "99d7471476ae602809da23a9cdb09750c1593b3ec6f756f9e0fcfa6a55194670"
+    },
+    {
+      "name": "art__magnolia-veil__v4__wallpaper-2796.1bb8bd19.webp",
+      "bytes": 54974,
+      "sha256": "1bb8bd194dacaae5b9528aeafce5d910c9a4a4a08645122cbf412abd783d64e4"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-blossom-clock.5df06b73.webp",
+      "bytes": 34736,
+      "sha256": "5df06b73052c86343e23b468a0e5b401cd3695294ddc848c4d3890490c2baf08"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-gentle-progress.1be403fa.webp",
+      "bytes": 16572,
+      "sha256": "1be403fa5b8f9968885fde0c49af84889ac7136aaf46bafc014b2f79351d89a6"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-ivory-bloom.f9e3d957.webp",
+      "bytes": 55914,
+      "sha256": "f9e3d957d6074fb780ffffe86ee85574bf7a2665a80bb284b69f9d193d08957c"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-large.a14c2e31.webp",
+      "bytes": 126504,
+      "sha256": "a14c2e31e237934e7aea16665e2795cfeece1f929de2e1d5a26994f991aef8bd"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-live-clock.e4b5b71b.webp",
+      "bytes": 5910,
+      "sha256": "e4b5b71b4f4c74799df01b7a322c3800a24f75a402a157839112d0e4ab942a83"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-medium.4df37028.webp",
+      "bytes": 11584,
+      "sha256": "4df37028813e2333493568b1949509a007223c740e323351c8d096ab4812a0a0"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-petal-fold.54a18c30.webp",
+      "bytes": 51036,
+      "sha256": "54a18c30160087c5cc79c2a4330bcd4ff78b23d53d3ff2ba78d38055b60c4345"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-small.adc2e953.webp",
+      "bytes": 17420,
+      "sha256": "adc2e953a59b1e4958a0453531bbdc2cdf5fa2f0ef41b580910fdba0faf7ed37"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-sunday-date.da4c979b.webp",
+      "bytes": 22098,
+      "sha256": "da4c979b5036282c138b743886f9878b73add46aec38fd92c0fe5e597c6467f7"
+    },
+    {
+      "name": "art__magnolia-veil__v4__widget-themed-live-clock.dc870eb1.webp",
+      "bytes": 58136,
+      "sha256": "dc870eb1f148edb05fc47548d2202dbec35c9818f4926cf9d987c07c6c58455a"
+    },
+    {
+      "name": "art__manta-silk__v4__manifest.json",
+      "bytes": 8122,
+      "sha256": "0069553bf56fd64e8982dda846b103c71e4c5cf88d46d2d00f7a8445b458338a"
+    },
+    {
+      "name": "art__manta-silk__v4__thumb.563b5afb.webp",
+      "bytes": 5960,
+      "sha256": "563b5afb9fc2d0f84a25b0bd1fdaeb1664479a590b73ea5b7d4c51936810b699"
+    },
+    {
+      "name": "art__manta-silk__v4__wallpaper-1334.d18aec97.webp",
+      "bytes": 23126,
+      "sha256": "d18aec97370a6ee47fb0797f6adb86330ab9ab7ef46611ad85edd3d56b68ee2a"
+    },
+    {
+      "name": "art__manta-silk__v4__wallpaper-2556.3309d73c.webp",
+      "bytes": 58498,
+      "sha256": "3309d73c33b788bc65d30cb60ae9a551a8de64fd61bdf5275d4b5e8a1fd0bf40"
+    },
+    {
+      "name": "art__manta-silk__v4__wallpaper-2796.d976c42a.webp",
+      "bytes": 65700,
+      "sha256": "d976c42ab66f2f80104802e67520b5ac56bcee8b26cf7fd549d0883851008d04"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-current-clock.e9ee7be0.webp",
+      "bytes": 24670,
+      "sha256": "e9ee7be03106b586b73612a4450bed4999c824ad79741d528954709ff24619a9"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-drift-timer.a0deac4d.webp",
+      "bytes": 24832,
+      "sha256": "a0deac4d04765515fb125a271e80927a4f9fb15b664c6a9583ef0b75e3a67165"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-large.a71d5b09.webp",
+      "bytes": 149274,
+      "sha256": "a71d5b098eadbed953986709dc2a0ec13b3382e6e919d53666c49331641416e9"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-live-clock.c616aa52.webp",
+      "bytes": 6512,
+      "sha256": "c616aa5255cdd25ee7d2d83bd4810a463a0c36661fc7a281f261b18103403e35"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-medium.9ecef6e9.webp",
+      "bytes": 75258,
+      "sha256": "9ecef6e96d135613a91da2047486141812e2c3a3a5ef7ff02ba2158f988774d5"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-ripple-caustic.5cd69043.webp",
+      "bytes": 77026,
+      "sha256": "5cd690431ecaa623ca8f39804f75d34b4fead0723865b3af720835e5d014b9df"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-sand-rays.7c3ad97d.webp",
+      "bytes": 162728,
+      "sha256": "7c3ad97d869573fe45d090c3907d8e1ee4d9432dadaed738e7cbd36443d1d459"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-small.666b3680.webp",
+      "bytes": 10878,
+      "sha256": "666b3680e51ecc4159260e3e834e39e53fc60485b089096784d15d46a0977368"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-themed-live-clock.08ec55e7.webp",
+      "bytes": 111716,
+      "sha256": "08ec55e7b92d6b44bfb5d2250f174cf01d478dc84da456a6a805370879539931"
+    },
+    {
+      "name": "art__manta-silk__v4__widget-tide-date.3299c885.webp",
+      "bytes": 74368,
+      "sha256": "3299c885114751054885a34123f639f437a7cd984c96804651e7a1054bee3f90"
+    },
+    {
+      "name": "art__match-point__v6__manifest.json",
+      "bytes": 6767,
+      "sha256": "e9cb33b1e75cb248135ead17d8ed49fdeb3e8e549868f519f87a02657e3585f1"
+    },
+    {
+      "name": "art__match-point__v6__thumb.2ddbccee.webp",
+      "bytes": 20886,
+      "sha256": "2ddbccee15c6af57875208b6670705a5652452892febbb1c7198e3a759845016"
+    },
+    {
+      "name": "art__match-point__v6__wallpaper-1334.d29ce245.webp",
+      "bytes": 256340,
+      "sha256": "d29ce24522bab4c446cdce134903c4c376723a2271ab93530650f3c7a758851c"
+    },
+    {
+      "name": "art__match-point__v6__wallpaper-2556.90d770c9.webp",
+      "bytes": 578630,
+      "sha256": "90d770c92d6b113b69dc0d45502594e36d3894161d870925c15a635fe166c091"
+    },
+    {
+      "name": "art__match-point__v6__wallpaper-2796.0d94eeb2.webp",
+      "bytes": 649594,
+      "sha256": "0d94eeb2293df93d8e47c8aee203f357ffecae9e59586835416a43c5be9cd0d1"
+    },
+    {
+      "name": "art__match-point__v6__widget-large.fe1f857b.webp",
+      "bytes": 463392,
+      "sha256": "fe1f857b1abe3a6b74360cf8d1c72dac331e6a905daec5de811181f6910a1b85"
+    },
+    {
+      "name": "art__match-point__v6__widget-live-clock.f425827c.webp",
+      "bytes": 8158,
+      "sha256": "f425827cba569809827419ea82596cd7f5bdfcaaf5d0870eeb08197c8979e972"
+    },
+    {
+      "name": "art__match-point__v6__widget-match-countdown.87a135e6.webp",
+      "bytes": 314792,
+      "sha256": "87a135e6cfe5adae4ee77da930b93f4264af2737cdbb6760867d6b5798488ac0"
+    },
+    {
+      "name": "art__match-point__v6__widget-medium.5ed1bd92.webp",
+      "bytes": 184836,
+      "sha256": "5ed1bd9288cfd0ffefee31ace537d7871f3ff0d2a1973e9beb7512c57a5f3867"
+    },
+    {
+      "name": "art__match-point__v6__widget-racket-butterfly.ad8137a3.webp",
+      "bytes": 311154,
+      "sha256": "ad8137a3d5a365a0798b2bd52d3891db9584aa97f574b6058b5c56d9708c93f2"
+    },
+    {
+      "name": "art__match-point__v6__widget-racket-study.d1a11295.webp",
+      "bytes": 366750,
+      "sha256": "d1a112952ec1487512e100f061dd3b6429d3be66544cca073d1992a17e336fd5"
+    },
+    {
+      "name": "art__match-point__v6__widget-small.0c8af7cf.webp",
+      "bytes": 89614,
+      "sha256": "0c8af7cf39a2db53969459c6d3560db8cb94f7c9d301fef63e842062e1be5412"
+    },
+    {
+      "name": "art__match-point__v6__widget-tennis-planter.32ebd7db.webp",
+      "bytes": 198408,
+      "sha256": "32ebd7db7605d81735e31dee9bc701a7de31382fc062c5ed8c7cd3a24ae8c2ec"
+    },
+    {
+      "name": "art__match-point__v6__widget-themed-live-clock.ddd255f4.webp",
+      "bytes": 316526,
+      "sha256": "ddd255f4fe5f8bcdb215eb17bb95111d9a58535e41a9bbd9228edccd0f645b7f"
+    },
+    {
+      "name": "art__matcha-mews__v6__manifest.json",
+      "bytes": 8481,
+      "sha256": "6bcd51aaa48df213155801ffe29afb9647bd69eaa47f1177c1eea49c956c1ed1"
+    },
+    {
+      "name": "art__matcha-mews__v6__thumb.df1c3e97.webp",
+      "bytes": 7434,
+      "sha256": "df1c3e9738f1aa3591597b30238dd681809f2ba2e7dade67083c2e5b72864bda"
+    },
+    {
+      "name": "art__matcha-mews__v6__wallpaper-1334.2df1907e.webp",
+      "bytes": 53890,
+      "sha256": "2df1907e303b7c475af21f89141eca9ae5e39b28830fdd1b31921ce996697f84"
+    },
+    {
+      "name": "art__matcha-mews__v6__wallpaper-2556.e53498c7.webp",
+      "bytes": 97876,
+      "sha256": "e53498c7ee35bb7b3e3fd87f49bf39af946306bb812de4ff85fcec6b5652f2fb"
+    },
+    {
+      "name": "art__matcha-mews__v6__wallpaper-2796.6194c177.webp",
+      "bytes": 108186,
+      "sha256": "6194c177d66b87765004fa51f58b7cd2326d76de98f9556e8900ee5dcd25c994"
+    },
+    {
+      "name": "art__matcha-mews__v6__widget-large.d8dfb10f.webp",
+      "bytes": 109512,
+      "sha256": "d8dfb10f32334a56bb23e9c502b22b0356628150d5e8613643ef61a75e8ec52b"
+    },
+    {
+      "name": "art__matcha-mews__v6__widget-live-clock.3647be4b.webp",
+      "bytes": 6418,
+      "sha256": "3647be4b376715338c0bf4f1c9e7f8032887abfddb626a348aa673c8fb76705a"
+    },
+    {
+      "name": "art__matcha-mews__v6__widget-live-date.bbf84748.webp",
+      "bytes": 3118,
+      "sha256": "bbf84748a25e7994d5e703803a1b2401f96c48f74f4b1ec2f58410bb89157e91"
+    },
+    {
+      "name": "art__matcha-mews__v6__widget-live-focus.e5bf925b.webp",
+      "bytes": 6280,
+      "sha256": "e5bf925b353e3999fe72fcd2dc02ed7efd87109c0be0626deafb43e8db6622f5"
+    },
+    {
+      "name": "art__matcha-mews__v6__widget-matcha-date.69487760.webp",
+      "bytes": 90456,
+      "sha256": "69487760f7c2f35fd01500726a76daeb909a52089177b5c7d6457bd539b41edc"
+    },
+    {
+      "name": "art__matcha-mews__v6__widget-medium.bceec222.webp",
+      "bytes": 96644,
+      "sha256": "bceec222a00b9ad9827b24af29c760edff723ed01d1d188cca746d60148f1dcf"
+    },
+    {
+      "name": "art__matcha-mews__v6__widget-small.e172118c.webp",
+      "bytes": 20608,
+      "sha256": "e172118c878e0e5b635170ec751050c1446657e1cbb4e3f6f46d18201cac473c"
+    },
+    {
+      "name": "art__matcha-mews__v6__widget-teacup-fern.d19da77f.webp",
+      "bytes": 76678,
+      "sha256": "d19da77f576555abc69dc29e8b9e4038db610c2466a4a9e88daa5d10836cd87f"
+    },
+    {
+      "name": "art__matcha-mews__v6__widget-themed-live-clock.03ae8e2f.webp",
+      "bytes": 71292,
+      "sha256": "03ae8e2fedfdd9ace6dcc42b3368df67acf516c5e8c18fb457c153e2510e2472"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__manifest.json",
+      "bytes": 8372,
+      "sha256": "2af8b85e9c6ab7d55579af6da9db206fab3176d8f7d002289c6fdaa3c474c965"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__thumb.79d00c4c.webp",
+      "bytes": 13310,
+      "sha256": "79d00c4cadd778950d14e7308c3d0f70a644070414e38145438a70485fd83243"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__wallpaper-1334.b0edc2e9.webp",
+      "bytes": 105166,
+      "sha256": "b0edc2e9ef7d6a42ee39099e5bd0513c9d3e2a044709a806258eb324405e69e9"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__wallpaper-2556.a9d1e04e.webp",
+      "bytes": 218780,
+      "sha256": "a9d1e04ef8abc1835c6f5270ba609dd2c32f1e79af42c4ecd48d03cbb2ccc2a3"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__wallpaper-2796.10c4ae68.webp",
+      "bytes": 243290,
+      "sha256": "10c4ae68431f6525c961354be34c1be458e1ccbbf1fb5154e17e314033e2c261"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__widget-large.88c352f6.webp",
+      "bytes": 283888,
+      "sha256": "88c352f6f22ceeead40cb0053daf938fbcad4576b9570251b0a0d9da6e056b93"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__widget-live-clock.19ef4f55.webp",
+      "bytes": 6480,
+      "sha256": "19ef4f557b820c4479ae9ea75b726cfd94af7e926918deef78074a2e79e13f81"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__widget-live-date.ff636d75.webp",
+      "bytes": 3246,
+      "sha256": "ff636d758f581771ed2428d2f5cf9618ac01f67ca8bfd6f6394c4c3894aa060e"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__widget-live-focus.5d3f358e.webp",
+      "bytes": 6320,
+      "sha256": "5d3f358ef97c2dbdd1413a0f2165bdeabe28b616832d9e26d61b04e7da84737f"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__widget-medium.629a61c6.webp",
+      "bytes": 102462,
+      "sha256": "629a61c650ab8fb9b9967030982262b449cab3748cea46fd6ae831d7df37244a"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__widget-riso-butterfly.f87b5650.webp",
+      "bytes": 130206,
+      "sha256": "f87b56503fe18f937dfd40c12fe90f6e987f264c4bfabbda12c9ea38fdeb7c6e"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__widget-riso-date.f951185e.webp",
+      "bytes": 190024,
+      "sha256": "f951185e056949d74d0d620ec0a97ae782d2b0e21149d8eaa6d738426b6da9aa"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__widget-small.49c06d90.webp",
+      "bytes": 66710,
+      "sha256": "49c06d905ec9a49fbdd5d5d558736931dabd800fb712e663eed39bf5cb3ad613"
+    },
+    {
+      "name": "art__matcha-riso-garden__v6__widget-themed-live-clock.f283d156.webp",
+      "bytes": 155054,
+      "sha256": "f283d1562e9acf8dbdb41edaa77f94980307ca4534f76c7f98939b0a43d74c25"
+    },
+    {
+      "name": "art__meadowglow__v6__manifest.json",
+      "bytes": 6539,
+      "sha256": "397496588debb898f4fda451bfb4e395c7f5d2ec81496d1ec673001ea75b95c9"
+    },
+    {
+      "name": "art__meadowglow__v6__thumb.98e8601f.webp",
+      "bytes": 16644,
+      "sha256": "98e8601fe784bd15a546a602cf194080d6774b05932c7797bb33955068948ff0"
+    },
+    {
+      "name": "art__meadowglow__v6__wallpaper-1334.57fa0d4e.webp",
+      "bytes": 59850,
+      "sha256": "57fa0d4e309ab48a34ca0cce17afa6442b56e86a5d38a4cf4741c3d5c1a3212d"
+    },
+    {
+      "name": "art__meadowglow__v6__wallpaper-2556.fc2f5be1.webp",
+      "bytes": 136476,
+      "sha256": "fc2f5be103a79b09c0b16acb01f13642706b7b63cddd70716fe59eef31acfed1"
+    },
+    {
+      "name": "art__meadowglow__v6__wallpaper-2796.c9ab9ffa.webp",
+      "bytes": 150108,
+      "sha256": "c9ab9ffae8d3c67a0822df6364ef0a74b6dca2269a3c6ed26e7807ffb9f3740f"
+    },
+    {
+      "name": "art__meadowglow__v6__widget-dew-grass-orb.ab598b91.webp",
+      "bytes": 103612,
+      "sha256": "ab598b9169e5dfb508dd8446fd1aca74ef61d1f7dd8c4a4feb0647f45a265f1c"
+    },
+    {
+      "name": "art__meadowglow__v6__widget-large.41469b52.webp",
+      "bytes": 150312,
+      "sha256": "41469b5225b6b01af8623f1be27a28d492ad425ef63ab725264ec53cc1cdf43b"
+    },
+    {
+      "name": "art__meadowglow__v6__widget-live-clock.cedc6ce2.webp",
+      "bytes": 6496,
+      "sha256": "cedc6ce2e6c05c88fbb441c12786e5b8492d48ec8d616bc1d601f6ae2625e163"
+    },
+    {
+      "name": "art__meadowglow__v6__widget-meadow-date.679785f6.webp",
+      "bytes": 74134,
+      "sha256": "679785f679c8dcaabbd8ed069e0185c4ecd18ff20a8c5406b57ae513047be85f"
+    },
+    {
+      "name": "art__meadowglow__v6__widget-medium.d5d4f22d.webp",
+      "bytes": 58330,
+      "sha256": "d5d4f22dc98c24102057b44fd675fd53cd64e836bd9c3dfa05e79827435f64b5"
+    },
+    {
+      "name": "art__meadowglow__v6__widget-morning-grass.aed4e109.webp",
+      "bytes": 78784,
+      "sha256": "aed4e109fc75ec127b6743414a028b5f5336a3c4dbb8fcbeb099e92c4b06df1a"
+    },
+    {
+      "name": "art__meadowglow__v6__widget-small.6e971e17.webp",
+      "bytes": 25020,
+      "sha256": "6e971e17ad8ddfb30432c2243733dac48c5479aaaf49348f8510ec7756a2eaa6"
+    },
+    {
+      "name": "art__meadowglow__v6__widget-sunlit-dandelion.d099e95f.webp",
+      "bytes": 110172,
+      "sha256": "d099e95f864c456f491ac36e54572d10ca8c4b4578401c63f5e15d99da1195f7"
+    },
+    {
+      "name": "art__meadowglow__v6__widget-themed-live-clock.14655691.webp",
+      "bytes": 51932,
+      "sha256": "14655691d524c0ca42e9ca0b88b89df51a2c8f1287e55014d81588c8d68f837f"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__manifest.json",
+      "bytes": 7296,
+      "sha256": "bd7f621cfeb8c1da86d88536fa05811d88a981225f5bf707cfab608633524c25"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__thumb.44ebedfd.webp",
+      "bytes": 26436,
+      "sha256": "44ebedfd65c991d3508069692a9d1636eca1350a94885a2f258f0ff538a0cbf8"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__wallpaper-1334.be87942b.webp",
+      "bytes": 149640,
+      "sha256": "be87942b330c7574502e70465d0478a261f314570e474be2fde077239d4c97f6"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__wallpaper-2556.23c661e3.webp",
+      "bytes": 293312,
+      "sha256": "23c661e314e97939a831639e06399713f7998aa82f305e7f96655dff05e9b2ce"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__wallpaper-2796.87ae23d8.webp",
+      "bytes": 319810,
+      "sha256": "87ae23d85b20d19f02dd509998de545dc4742c54761ee95c602d1df67567223e"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-audit-20261101-water-clock.83ab17bb.webp",
+      "bytes": 207658,
+      "sha256": "83ab17bb5c4d822935e0f7448cfdb111dd471bb37b8ce105e60ba30206c08bc1"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-conservatory-focus.8c9a2c05.webp",
+      "bytes": 138956,
+      "sha256": "8c9a2c05b4c6457ea12765ebd26358418c299093800e545b62c132eaa19c054d"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-dew-capsule.eee37a31.webp",
+      "bytes": 127506,
+      "sha256": "eee37a31d42ceab6818a361b8d81be135a5f5774fc1684d46b6ef1347975b507"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-hanging-garden.3dd7fa50.webp",
+      "bytes": 217474,
+      "sha256": "3dd7fa500a4ad582bb94f45bcb41861f0d7f21eb5fe8087c921db265ff9796cb"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-large.13108fde.webp",
+      "bytes": 160892,
+      "sha256": "13108fde338aab2d6d3287ef80f64b3db98f1941e71ace2c38324c089c7bab67"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-live-clock.b4a2c4b8.webp",
+      "bytes": 6822,
+      "sha256": "b4a2c4b833082524048629bb0e3a879f6aeffdb8744ebf00a5dd789a6ed9ba60"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-medium.add205de.webp",
+      "bytes": 154278,
+      "sha256": "add205de0e2a7736bf86a5991c6d88cf1e781fc9777f85de46f0cdc7f4d4cf87"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-night-orchid.d8e5c85c.webp",
+      "bytes": 187626,
+      "sha256": "d8e5c85c7f575af3afee8e838b343011f692a78e9f3a83a981fc6721dc3bf97a"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-small.f60d8251.webp",
+      "bytes": 81122,
+      "sha256": "f60d82513b80836dcd773f26be67f1b436b23d23aae5dcff3262e6ac502e880b"
+    },
+    {
+      "name": "art__midnight-conservatory__v6__widget-themed-live-clock.5be1b610.webp",
+      "bytes": 224144,
+      "sha256": "5be1b6107d535e6df070846f9495d520b993830827934a3ccdc168d6ba911106"
+    },
+    {
+      "name": "art__midnight-matinee__v6__manifest.json",
+      "bytes": 6702,
+      "sha256": "f8369dbe48bccbc950e790ddb98e8a2fa849da5580910db8486018102aaa2f8e"
+    },
+    {
+      "name": "art__midnight-matinee__v6__thumb.15241117.webp",
+      "bytes": 8272,
+      "sha256": "15241117561c0b064c36b55906cd6caef243f4b834a250914339fa04bc01d12a"
+    },
+    {
+      "name": "art__midnight-matinee__v6__wallpaper-1334.fb56b52e.webp",
+      "bytes": 45396,
+      "sha256": "fb56b52ebfe296c931332d63a29df0939933c7cd957a0ca32e98ff09a4319905"
+    },
+    {
+      "name": "art__midnight-matinee__v6__wallpaper-2556.a8f4110a.webp",
+      "bytes": 87744,
+      "sha256": "a8f4110a9827629f6a2ee5c135be89c7c54bcef9776646b8b2ba63a44b33eb8f"
+    },
+    {
+      "name": "art__midnight-matinee__v6__wallpaper-2796.da95e36c.webp",
+      "bytes": 98608,
+      "sha256": "da95e36cb564779f432808e3b065428a3fcfa4cd3ac9853015563f8e9c9e421e"
+    },
+    {
+      "name": "art__midnight-matinee__v6__widget-large.6c3260cd.webp",
+      "bytes": 128774,
+      "sha256": "6c3260cd584cacaedfd07658aa369b8adc5726f3efc144fe57d971fe7504e60b"
+    },
+    {
+      "name": "art__midnight-matinee__v6__widget-live-clock.f32911bc.webp",
+      "bytes": 8044,
+      "sha256": "f32911bc8a9e74ce22bf1aaf99e7e802193bbf3783e913e5fd837c9021dc4b10"
+    },
+    {
+      "name": "art__midnight-matinee__v6__widget-matinee-countdown.82efd13d.webp",
+      "bytes": 107704,
+      "sha256": "82efd13d4551a9fe7b328506353b68114b22d2fe05f3067a427e024a74009aa3"
+    },
+    {
+      "name": "art__midnight-matinee__v6__widget-medium.e77f5467.webp",
+      "bytes": 105506,
+      "sha256": "e77f5467aa9d07d985982d587266f62d77ddc707a1d92c064766c618d6c1e8ba"
+    },
+    {
+      "name": "art__midnight-matinee__v6__widget-popcorn-planet.aa23ec72.webp",
+      "bytes": 111734,
+      "sha256": "aa23ec72ac791b1ecff68043785140cb4332181b8be1f06f577a9704575a09eb"
+    },
+    {
+      "name": "art__midnight-matinee__v6__widget-small.5b3cb4cf.webp",
+      "bytes": 44392,
+      "sha256": "5b3cb4cf69a7bdfed2bbf73821f3c21574ccbdc4ddea4c09e8e6f32a2e08730f"
+    },
+    {
+      "name": "art__midnight-matinee__v6__widget-themed-live-clock.db34b9f5.webp",
+      "bytes": 127294,
+      "sha256": "db34b9f5e2f1506dd25b441a95bcb5d5acefae2d6a12916b91be2dc51b9645ea"
+    },
+    {
+      "name": "art__midnight-matinee__v6__widget-velvet-cinema-bat.07ddad2d.webp",
+      "bytes": 124618,
+      "sha256": "07ddad2d5d06563a2fc55e604fd5a4a81248d3fb0244b5b6e86afe3031d05ac5"
+    },
+    {
+      "name": "art__midnight-matinee__v6__widget-velvet-moth.a3e004ad.webp",
+      "bytes": 137396,
+      "sha256": "a3e004ade3cc62035e7bdd059bf9c129faf71574478e833cf49db374a8e82208"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__manifest.json",
+      "bytes": 8622,
+      "sha256": "ba22c7ae5ca4a8de991e58c0d9cd116e046eebee2a674f3392181c9bd6870611"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__thumb.91843d6f.webp",
+      "bytes": 5600,
+      "sha256": "91843d6fc4f04b96dbae1d267ea5900d8e06fe5cb235a09ccff963ecc7c8dea8"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__wallpaper-1334.4a49400e.webp",
+      "bytes": 27092,
+      "sha256": "4a49400e78e5e44b7fad66968a12dba2b8c1beb2b50ca61a1086f8ef0b84d02d"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__wallpaper-2556.d990629b.webp",
+      "bytes": 57756,
+      "sha256": "d990629b6c6094151c1454a8816072d72b032c83dae461aab7e324d71bf864b8"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__wallpaper-2796.9f81d70c.webp",
+      "bytes": 66058,
+      "sha256": "9f81d70cd4e75a2226f89873d7e1425b2a0ea8254c04ccf5207575c14a1704f9"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__widget-large.95c7082a.webp",
+      "bytes": 70396,
+      "sha256": "95c7082a86b3c20cc52d92916738f5b29dc326a28e81c13ab0fca39d6cf9a5c0"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__widget-live-clock.3a0e9b35.webp",
+      "bytes": 6050,
+      "sha256": "3a0e9b35c81309156b0792e0d21353248844c7dfe72c98977f3edabfcf57779d"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__widget-live-date.c9d9fe07.webp",
+      "bytes": 3078,
+      "sha256": "c9d9fe07cadbbbd0ee8fe658eb0d34a59d8fe72870740d55141e9bace7e9b84b"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__widget-live-focus.5992c06b.webp",
+      "bytes": 5944,
+      "sha256": "5992c06beef42033e135b545c7bc641d4dca0c1bae252efcd02e660ba8fa2867"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__widget-medium.17346590.webp",
+      "bytes": 43412,
+      "sha256": "17346590cd05f6b85c44c473f0b6781a19e6a3891521557f3c7ae87979a2e9c1"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__widget-sleepover-habits.42952e43.webp",
+      "bytes": 43782,
+      "sha256": "42952e4379f13737dc581a0fda85fe309b595d3e68eb406f1b4477480ad0d3cc"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__widget-small.6a5e342c.webp",
+      "bytes": 13372,
+      "sha256": "6a5e342c50b80d2032aa4a4c5ab4b9fa6007d9540b3a1a87110a8e365c031dee"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__widget-star-hot-water-bottle.0c51b022.webp",
+      "bytes": 42252,
+      "sha256": "0c51b0227afa3780d62cb29e3f79ead6f3721a6081b15b34bad7ff32db3c1e3b"
+    },
+    {
+      "name": "art__mochi-sleepover__v6__widget-themed-live-clock.8e31472c.webp",
+      "bytes": 31856,
+      "sha256": "8e31472c1489f465dc80fe7d8e26d3cc1ec397587fcb8ea3e9c2c9e01a9610a7"
+    },
+    {
+      "name": "art__moonmallow__v6__manifest.json",
+      "bytes": 8260,
+      "sha256": "3d4a5cac344ed1845df3958e0d234643f1d563f52bcd9bbd155df68a1e3f42d4"
+    },
+    {
+      "name": "art__moonmallow__v6__thumb.188d1f38.webp",
+      "bytes": 11814,
+      "sha256": "188d1f382e4148765bca2d96f9fa473761617fcfda80c54e8e606e2cc0557d1c"
+    },
+    {
+      "name": "art__moonmallow__v6__wallpaper-1334.6c46405e.webp",
+      "bytes": 120564,
+      "sha256": "6c46405e0d2f9fb761e40c0ed8971de87c6bdc447ad8900c62a7ea238f18699e"
+    },
+    {
+      "name": "art__moonmallow__v6__wallpaper-2556.abc84183.webp",
+      "bytes": 245948,
+      "sha256": "abc84183271217efc516c87d11d6910230acdea5dd1356bd2abaf8cb38a557a7"
+    },
+    {
+      "name": "art__moonmallow__v6__wallpaper-2796.7631dd74.webp",
+      "bytes": 272726,
+      "sha256": "7631dd7423016f0b0f89a72c8548710056b0603b2f6d7539b782d3b45acd3bdd"
+    },
+    {
+      "name": "art__moonmallow__v6__widget-large.845475c7.webp",
+      "bytes": 253670,
+      "sha256": "845475c7228608d4e22d57b3c567a4f65a9cd366c3610e78d0a9028d23a2ed2d"
+    },
+    {
+      "name": "art__moonmallow__v6__widget-live-clock.2022c348.webp",
+      "bytes": 7346,
+      "sha256": "2022c348cf2450122dc6994980e74094da9b741f88039eccc210f598c11eaed1"
+    },
+    {
+      "name": "art__moonmallow__v6__widget-live-date.225186af.webp",
+      "bytes": 3262,
+      "sha256": "225186af77d58bf3dfb065546fd74c1cd4f1244d12fc38b9d961604e94dd2831"
+    },
+    {
+      "name": "art__moonmallow__v6__widget-live-focus.b7871eb6.webp",
+      "bytes": 7204,
+      "sha256": "b7871eb628bbde82c19e308afbde8eb31798fb7a9b24b2510eab500d44365701"
+    },
+    {
+      "name": "art__moonmallow__v6__widget-medium.6590360e.webp",
+      "bytes": 132738,
+      "sha256": "6590360eeff039ed34422bc2d5494cc6f77ca59f87c2eaa96e839bd4f5965be0"
+    },
+    {
+      "name": "art__moonmallow__v6__widget-moonmallow-date.ccec02b0.webp",
+      "bytes": 184532,
+      "sha256": "ccec02b0c718f6a95167b3ae03200be32efc675aaa7b1b53dd239fd9462485c0"
+    },
+    {
+      "name": "art__moonmallow__v6__widget-small.b830aa83.webp",
+      "bytes": 35972,
+      "sha256": "b830aa83f68e09bb4443491f47c3d8c0034b27adb9df9a6e09d8ffd1b5fdf49c"
+    },
+    {
+      "name": "art__moonmallow__v6__widget-themed-live-clock.6d8f612b.webp",
+      "bytes": 132584,
+      "sha256": "6d8f612bc86ca287ba81acec64c657ffc820079d272d15be8e477aaa61084a89"
+    },
+    {
+      "name": "art__moonmallow__v6__widget-wool-cloud-swing.a410e4ec.webp",
+      "bytes": 166260,
+      "sha256": "a410e4ec624817db42c8d8f8f2613aa43d050cba5026fe0312fabd531e7c7126"
+    },
+    {
+      "name": "art__moonpatch__v6__manifest.json",
+      "bytes": 6560,
+      "sha256": "82843e8d9e176f486aad71561cbf989d11aae9f7e051de583a5fd809a1427800"
+    },
+    {
+      "name": "art__moonpatch__v6__thumb.c40a80dd.webp",
+      "bytes": 31784,
+      "sha256": "c40a80dd4b0f407d2c1f6d5dbba78d6d6483eec34be10fe93cb9db0a8ff8766d"
+    },
+    {
+      "name": "art__moonpatch__v6__wallpaper-1334.81570331.webp",
+      "bytes": 277052,
+      "sha256": "81570331986d513391e24c639e0911841681d4afb0dc9f9b8d0fe83ced61d21a"
+    },
+    {
+      "name": "art__moonpatch__v6__wallpaper-2556.1a3ad881.webp",
+      "bytes": 582510,
+      "sha256": "1a3ad881b1724aeda81b0beebb2a62b7a1c94b93cb4ac8ce3eb68f7fa2bf1fae"
+    },
+    {
+      "name": "art__moonpatch__v6__wallpaper-2796.3fb93b60.webp",
+      "bytes": 610984,
+      "sha256": "3fb93b607f05b0e9d696264f01ab52aaf24a9d55b91284f1f18c1874c3e3c55b"
+    },
+    {
+      "name": "art__moonpatch__v6__widget-large.fbc62e70.webp",
+      "bytes": 322676,
+      "sha256": "fbc62e70c39a554615e4bc7d999c5ab364fe8339debc21e8b0caf470f4756923"
+    },
+    {
+      "name": "art__moonpatch__v6__widget-live-clock.a1d5a16e.webp",
+      "bytes": 7970,
+      "sha256": "a1d5a16edf160029bf9ddddb213d5c18fb4be4d771e19973ae7eed085513e8cf"
+    },
+    {
+      "name": "art__moonpatch__v6__widget-medium.69901093.webp",
+      "bytes": 179586,
+      "sha256": "699010936fa9fb3acc6228a0c5ce2ed488a1c09f5c5de622a5c001af2d645245"
+    },
+    {
+      "name": "art__moonpatch__v6__widget-moonpatch-habits.979177ac.webp",
+      "bytes": 265316,
+      "sha256": "979177acbc4997d5400c3404be4b45ecb01f35768db99f53a9b0891239058d0d"
+    },
+    {
+      "name": "art__moonpatch__v6__widget-patchwork-kite.647a4340.webp",
+      "bytes": 295618,
+      "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac"
+    },
+    {
+      "name": "art__moonpatch__v6__widget-quilted-rocket.bd026b99.webp",
+      "bytes": 293698,
+      "sha256": "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657"
+    },
+    {
+      "name": "art__moonpatch__v6__widget-small.fad8004e.webp",
+      "bytes": 76640,
+      "sha256": "fad8004e8a8406ebdfc9c99cc1252f88946176000c20c123b58d4bcf7ae04848"
+    },
+    {
+      "name": "art__moonpatch__v6__widget-star-catcher.b7b5d2a9.webp",
+      "bytes": 310570,
+      "sha256": "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8"
+    },
+    {
+      "name": "art__moonpatch__v6__widget-themed-live-clock.4ba97b5b.webp",
+      "bytes": 286872,
+      "sha256": "4ba97b5be97d1eea1851268b833df49b8791234a8511717b87eb00decebcafe6"
+    },
+    {
+      "name": "art__mosswick__v6__manifest.json",
+      "bytes": 6614,
+      "sha256": "d170dd9a42c5f6d02a5c649e24d92a5bb6ac043b537a594cd98fc2d7b374517a"
+    },
+    {
+      "name": "art__mosswick__v6__thumb.22d7162b.webp",
+      "bytes": 21298,
+      "sha256": "22d7162b0f6cd0d854f4f845eb1de6546985b21e02b64d7fea545db434c2cea3"
+    },
+    {
+      "name": "art__mosswick__v6__wallpaper-1334.3c713185.webp",
+      "bytes": 176000,
+      "sha256": "3c7131851793cf769965e74fea1a5244e3601966a46f6e12dfa1c089d336a2d1"
+    },
+    {
+      "name": "art__mosswick__v6__wallpaper-2556.c2133b7e.webp",
+      "bytes": 388398,
+      "sha256": "c2133b7eb78c16d8429cec2241faa99623be9984dd111aebaa858c8f87341fe1"
+    },
+    {
+      "name": "art__mosswick__v6__wallpaper-2796.92d0dc34.webp",
+      "bytes": 427956,
+      "sha256": "92d0dc343bd96bd7514fddf0c823d9aeabd01d713bb74a0f4604a50887dfa937"
+    },
+    {
+      "name": "art__mosswick__v6__widget-bark-snail.06eb2ab1.webp",
+      "bytes": 234824,
+      "sha256": "06eb2ab1889f8778f84c7fdd9a9762303b64f80fd196fd91555d45aa747026bc"
+    },
+    {
+      "name": "art__mosswick__v6__widget-large.40dac4cc.webp",
+      "bytes": 318812,
+      "sha256": "40dac4ccbe468bb66a8890c19e660bd90ff059b39baefbad37046f6ef6afa12f"
+    },
+    {
+      "name": "art__mosswick__v6__widget-live-clock.5d26fdf0.webp",
+      "bytes": 5576,
+      "sha256": "5d26fdf0a007f453f50113bb2f5c9c0f1a43d8ee8ae3c486d3c25dbc5a559f67"
+    },
+    {
+      "name": "art__mosswick__v6__widget-medium.d9496215.webp",
+      "bytes": 149194,
+      "sha256": "d9496215a21d1ec67c3d0c7da7d1d90e4619fb455794902af05488a61601eb35"
+    },
+    {
+      "name": "art__mosswick__v6__widget-moss-habits.fe8272ab.webp",
+      "bytes": 258394,
+      "sha256": "fe8272abed0590b81d8ac5c207f31daab9d82f821ef9f367a8f7ec8fc9db9ebd"
+    },
+    {
+      "name": "art__mosswick__v6__widget-moss-tower.462a4a4b.webp",
+      "bytes": 188804,
+      "sha256": "462a4a4b03dce6059bb4dce3b33644ef2dd8c6ff19e65504ba233c83de87887a"
+    },
+    {
+      "name": "art__mosswick__v6__widget-small.d11ebbc6.webp",
+      "bytes": 54990,
+      "sha256": "d11ebbc63971c7de9fcb262f794b36a2b1d0c7e39abc6ba4badffc91a59f831b"
+    },
+    {
+      "name": "art__mosswick__v6__widget-themed-live-clock.738e9239.webp",
+      "bytes": 224288,
+      "sha256": "738e9239e29668f304966678bef77636fa2d2db862556997bc2cff4a9388c6f7"
+    },
+    {
+      "name": "art__mosswick__v6__widget-travelling-cottage.8f26df1d.webp",
+      "bytes": 226858,
+      "sha256": "8f26df1d8a1a583e4ab535dc7f9225ff8a2c8613ecf9d46da924c6ad2d6dcec0"
+    },
+    {
+      "name": "art__nebula-veil__v6__manifest.json",
+      "bytes": 6578,
+      "sha256": "d80ee06d4168a51421b8b2973c9241a4412bd435c22487626f76ae82aa3fc256"
+    },
+    {
+      "name": "art__nebula-veil__v6__thumb.d0e7278c.webp",
+      "bytes": 21734,
+      "sha256": "d0e7278cf4ee484b26ba7346c1b1efc8c08e2a4226e8c9335909cbbd623d797e"
+    },
+    {
+      "name": "art__nebula-veil__v6__wallpaper-1334.3a628053.webp",
+      "bytes": 130708,
+      "sha256": "3a62805301dd268b12c34bdc96b098e3bb4798755849492bb5fe53b33388456f"
+    },
+    {
+      "name": "art__nebula-veil__v6__wallpaper-2556.930d47bf.webp",
+      "bytes": 261370,
+      "sha256": "930d47bf8cc69d7fe7331c58d8fd29ed2da9b66e08c333659de4c556cb98922f"
+    },
+    {
+      "name": "art__nebula-veil__v6__wallpaper-2796.db358dcc.webp",
+      "bytes": 285268,
+      "sha256": "db358dcc1084dabe658c321ca3280408fe3bfbf7fc98a04012c9ddd0471c122b"
+    },
+    {
+      "name": "art__nebula-veil__v6__widget-glass-satellite.cdebc99e.webp",
+      "bytes": 193264,
+      "sha256": "cdebc99e78e3fbaa5c03d0fe0ef27e9cdfe84b1b23de1c60c07abcddb4ed971b"
+    },
+    {
+      "name": "art__nebula-veil__v6__widget-large.7b026d55.webp",
+      "bytes": 271682,
+      "sha256": "7b026d55b132c19a73a8a40705400f3d2f52dd61be78b47df7144740a925778a"
+    },
+    {
+      "name": "art__nebula-veil__v6__widget-live-clock.5b88911e.webp",
+      "bytes": 7072,
+      "sha256": "5b88911e49725b5072716323a15f6289e4b91d247a10fb5bcc6fd24e84340f9e"
+    },
+    {
+      "name": "art__nebula-veil__v6__widget-medium.614fdd04.webp",
+      "bytes": 153558,
+      "sha256": "614fdd0427833eb1527fa948d984a842b49429abf1f2ca81357b8d378f90d370"
+    },
+    {
+      "name": "art__nebula-veil__v6__widget-nebula-aperture.325cb7d7.webp",
+      "bytes": 242090,
+      "sha256": "325cb7d7265dfb323ea4187b63a0b6bd3b0fe674910ff6544b11f0edc9e265d4"
+    },
+    {
+      "name": "art__nebula-veil__v6__widget-nebula-habits.3774fa15.webp",
+      "bytes": 202296,
+      "sha256": "3774fa15b3596e673210d16ecee25f3bc705a545505773072a1a809f950af194"
+    },
+    {
+      "name": "art__nebula-veil__v6__widget-nebula-quill.7320aa7d.webp",
+      "bytes": 208430,
+      "sha256": "7320aa7dca87fb3fd520c3b781395cb94fafcf87fb3c03305879ac4db4fbf417"
+    },
+    {
+      "name": "art__nebula-veil__v6__widget-small.78a38b9f.webp",
+      "bytes": 62386,
+      "sha256": "78a38b9ff75d915a98575d944b925c77306e0444713213df8312e5ade54cceb8"
+    },
+    {
+      "name": "art__nebula-veil__v6__widget-themed-live-clock.641d18b9.webp",
+      "bytes": 230480,
+      "sha256": "641d18b9d512c77b1fd3d5a97addf8419fad61fe8d68e1727b7d7064f2266703"
+    },
+    {
+      "name": "art__neon-monsoon__v6__manifest.json",
+      "bytes": 7235,
+      "sha256": "b3dd9bb0a094852f9e923414370f5468c5070a4cfc6a7ba5db74a345a53d5d66"
+    },
+    {
+      "name": "art__neon-monsoon__v6__thumb.7983814f.webp",
+      "bytes": 20420,
+      "sha256": "7983814ffd22226c401a41523d7350dede65bf5b43f30a942a864a06f7c70e09"
+    },
+    {
+      "name": "art__neon-monsoon__v6__wallpaper-1334.1035c485.webp",
+      "bytes": 114866,
+      "sha256": "1035c48568302447eaaf439651f9bc4dde8e5e53d7f596ee6d5019b85fa8d02e"
+    },
+    {
+      "name": "art__neon-monsoon__v6__wallpaper-2556.bfad2505.webp",
+      "bytes": 226216,
+      "sha256": "bfad250568839ad4870109792733edb1d368062c7763c765c7ba08bc3d3b1c66"
+    },
+    {
+      "name": "art__neon-monsoon__v6__wallpaper-2796.b6fdf8a8.webp",
+      "bytes": 249960,
+      "sha256": "b6fdf8a8ffc35baae8ab00a662e6094e73de93e2ed59c5518a0867a446ee6014"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-audit-20261101-rain-flip-clock.3b8a1ea0.webp",
+      "bytes": 191332,
+      "sha256": "3b8a1ea0ade6d6a6a3dfc9ae5d08c56891d15898c02d1a9e53c807ce20e37724"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-large.a19468c2.webp",
+      "bytes": 213412,
+      "sha256": "a19468c29bd6f4f93ea6830b54652731eb5492bf905676304852b896360b023a"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-live-clock.b173bab1.webp",
+      "bytes": 7546,
+      "sha256": "b173bab139d4e391aa11df3e0449c97f1d5e33b871e933ba0f7c8915ddd03797"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-medium.4e509823.webp",
+      "bytes": 127676,
+      "sha256": "4e509823def8b5f2419fd9fe9bd16a7af5186063bd563febaddbfdf3f067cd84"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-midnight-ramen.c3c850cb.webp",
+      "bytes": 215724,
+      "sha256": "c3c850cb11176dfdf15f0f2c80490dfc8b9570815722b5706f2c266cf874ab69"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-monsoon-date.ae586857.webp",
+      "bytes": 257408,
+      "sha256": "ae586857c7e1c5923c84183da8530880e59f89239acf2d805446dceb13121e51"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-neon-paper-fish.a2fb26fa.webp",
+      "bytes": 186272,
+      "sha256": "a2fb26fa3bee10648139f6a9a6df58a8e1d57f92a42c94f26b8b5f5b512db4eb"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-rain-capsule.e16cd9ab.webp",
+      "bytes": 192648,
+      "sha256": "e16cd9ab084f256c9fba7993237234d72320273dfd887a94e3a1a2767c651a13"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-small.a9dfac6d.webp",
+      "bytes": 64096,
+      "sha256": "a9dfac6da4be90f3a75ff16d23d8657a2b0a76ef45ea9c0eed783503f2804016"
+    },
+    {
+      "name": "art__neon-monsoon__v6__widget-themed-live-clock.a1f8b8d2.webp",
+      "bytes": 169458,
+      "sha256": "a1f8b8d2f9739c27ee1fae10496a5790a79425e093780cb2261158d1d97c0ad6"
+    },
+    {
+      "name": "art__obsidian-tide__v6__manifest.json",
+      "bytes": 8439,
+      "sha256": "5a8def6f5f54d6c90e7b0f07d81ec2852122dd001a244321cee1a8c548678f0e"
+    },
+    {
+      "name": "art__obsidian-tide__v6__thumb.24bc89fe.webp",
+      "bytes": 29048,
+      "sha256": "24bc89fe032d4747906330104a7732fa0461698213039731b77063a19165e602"
+    },
+    {
+      "name": "art__obsidian-tide__v6__wallpaper-1334.976750bb.webp",
+      "bytes": 205122,
+      "sha256": "976750bbcd3e467d67db9f8b730fd441787e43d9b6cb2e78ac11a27039d1c0ee"
+    },
+    {
+      "name": "art__obsidian-tide__v6__wallpaper-2556.7cb7a11d.webp",
+      "bytes": 413040,
+      "sha256": "7cb7a11da7a090a4bb04f88faf9ea5ab632987ed66bdfbae0d5a0b182bc7250f"
+    },
+    {
+      "name": "art__obsidian-tide__v6__wallpaper-2796.420561b6.webp",
+      "bytes": 450408,
+      "sha256": "420561b6f2dd6144f9b9d945d648fc8f4e7c87d03a9abc754113e2b596c9d902"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-audit-20261101-shoreline-shell.2f651da2.webp",
+      "bytes": 284358,
+      "sha256": "2f651da2f1b7410611a3fd6e2186b235091e4536ff29b0782fd7bea8108d63bf"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-audit-20261101-tidal-eye.ceda0c08.webp",
+      "bytes": 292260,
+      "sha256": "ceda0c08d9a1d999839cb1eea530331b5a13a08bdfc6afe9ff0d7a5b4dc379c4"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-foam-pebble-garden.cc81b622.webp",
+      "bytes": 296972,
+      "sha256": "cc81b6224a6f9179d61ba1759e0bc127e095046ee1d0588ab42576cbc1f93a8f"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-large.be525c60.webp",
+      "bytes": 452822,
+      "sha256": "be525c600ce965ae8ae8775c7b7125d4cb528c1c5ce5774da7a51622f20aa3af"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-live-clock.28970f68.webp",
+      "bytes": 7036,
+      "sha256": "28970f6881f68f7d2716c8cbcb1b30f255d9e831d1633475ebf95e513cb65ebc"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-medium.73b69950.webp",
+      "bytes": 144946,
+      "sha256": "73b69950db2a337b732a28897d744f1d35fd9fd40299c11554334e84c71ece87"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-sea-glass-wave-sculpture.a61fce4c.webp",
+      "bytes": 250852,
+      "sha256": "a61fce4c0664688e7fc2bb3b2777e9ffd5e995472896e646dbf5793400075ab8"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-small.98e7a96b.webp",
+      "bytes": 100938,
+      "sha256": "98e7a96bb50cfaf3e12a24a0e435aaf1d62f6d454bcc829cd5f64064a30f1e72"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-themed-live-clock.a6eea020.webp",
+      "bytes": 276652,
+      "sha256": "a6eea0209e15eeee04514cfed4f2bdeff37d2212be9efbe369a128614d06a893"
+    },
+    {
+      "name": "art__obsidian-tide__v6__widget-tide-focus.17ce15c8.webp",
+      "bytes": 238002,
+      "sha256": "17ce15c82caba1d5e4f7b2873de9f3073afba9aa0c3e3a7ed0ef1c853f2a8fc5"
+    },
+    {
+      "name": "art__ochre-bend__v6__manifest.json",
+      "bytes": 6723,
+      "sha256": "86e757ed4d20e63d9cce8ae6592bc9e16a667c29ace75784100bad1755925e99"
+    },
+    {
+      "name": "art__ochre-bend__v6__thumb.7a0c915e.webp",
+      "bytes": 20602,
+      "sha256": "7a0c915e0cee67dbf487d03a804d4c1404efae222f5573f98e3bdd68cd037d44"
+    },
+    {
+      "name": "art__ochre-bend__v6__wallpaper-1334.bfcd3e9f.webp",
+      "bytes": 134178,
+      "sha256": "bfcd3e9f54d06d21237f0b1a5fa8488861015f92dd31a57ae74a8134cda2fa18"
+    },
+    {
+      "name": "art__ochre-bend__v6__wallpaper-2556.61b97943.webp",
+      "bytes": 292914,
+      "sha256": "61b97943d7954ddf658856718be59ac1394be083a90a87bb9ceef1e8d2cef048"
+    },
+    {
+      "name": "art__ochre-bend__v6__wallpaper-2796.636fb616.webp",
+      "bytes": 325050,
+      "sha256": "636fb616e0ae4e9b7642f54a7642e764cb1f17ab6700a3a25405b401f0e9f13f"
+    },
+    {
+      "name": "art__ochre-bend__v6__widget-creek-date.5b2ef34b.webp",
+      "bytes": 121126,
+      "sha256": "5b2ef34b91747bb775b96e755e6deee1e045a40e72e431e05f5e463d81c8abeb"
+    },
+    {
+      "name": "art__ochre-bend__v6__widget-eucalyptus-capsule.24f5d9de.webp",
+      "bytes": 73046,
+      "sha256": "24f5d9de3182f90643c86796bd381909af97861d2bb455b082fe7fc85f5352c2"
+    },
+    {
+      "name": "art__ochre-bend__v6__widget-large.85460a2f.webp",
+      "bytes": 99800,
+      "sha256": "85460a2f3aa4f0f292966641a1aaad15b405fb0ca35486cffdbc605517e7eff9"
+    },
+    {
+      "name": "art__ochre-bend__v6__widget-live-clock.9be9ed74.webp",
+      "bytes": 6590,
+      "sha256": "9be9ed74a834b9e446ec8b0b9562ebb095eedcd5bed5a15e42f745a436723cbd"
+    },
+    {
+      "name": "art__ochre-bend__v6__widget-medium.b6bea5e7.webp",
+      "bytes": 155136,
+      "sha256": "b6bea5e7038b91d485ae2625e2231a90719acb9bc5df8c0780fb172aedf38398"
+    },
+    {
+      "name": "art__ochre-bend__v6__widget-ochre-stone.9735cff1.webp",
+      "bytes": 146686,
+      "sha256": "9735cff14f4b63e6e31840f89c448b2a720f6665ac4598e0de38adc2412984eb"
+    },
+    {
+      "name": "art__ochre-bend__v6__widget-sandstone-kingfisher.ef39382a.webp",
+      "bytes": 135778,
+      "sha256": "ef39382a48df9ce4686280adeeb55102e8b49adf2361eb413886c9960af35956"
+    },
+    {
+      "name": "art__ochre-bend__v6__widget-small.56e63546.webp",
+      "bytes": 26826,
+      "sha256": "56e63546eff3b027f0c893e1bebf75e13bd9467f36dadc80442bad77f3d4e60e"
+    },
+    {
+      "name": "art__ochre-bend__v6__widget-themed-live-clock.6ab40ae7.webp",
+      "bytes": 84120,
+      "sha256": "6ab40ae79cca506c51ee8ff405b28c8945948eca4515ec715ffc06348f57e347"
+    },
+    {
+      "name": "art__olive-outpost__v6__manifest.json",
+      "bytes": 8001,
+      "sha256": "86a40b9c116ddd57e3d1825e44f81f90683a0d8443d8666f74ac0841fbf111bf"
+    },
+    {
+      "name": "art__olive-outpost__v6__thumb.6c39935a.webp",
+      "bytes": 4938,
+      "sha256": "6c39935aa8789f0fbc3645a0263a47665e60fd9b7ba1c5082a49371026d59dcf"
+    },
+    {
+      "name": "art__olive-outpost__v6__wallpaper-1334.61cfa67e.webp",
+      "bytes": 39196,
+      "sha256": "61cfa67e9e3660cae9b7f9577661ea2259fbeb24fe2f2c0acc8c2bf0fdc5674b"
+    },
+    {
+      "name": "art__olive-outpost__v6__wallpaper-2556.6a6753fa.webp",
+      "bytes": 94870,
+      "sha256": "6a6753fad646c9cf4987230b10ce292fae0a5de96ecde45b128f5bddf7982806"
+    },
+    {
+      "name": "art__olive-outpost__v6__wallpaper-2796.e52c30c2.webp",
+      "bytes": 111306,
+      "sha256": "e52c30c2b8abced695b985ea22d58de9b6c36a100bf9cb7b888a2fae411b75e0"
+    },
+    {
+      "name": "art__olive-outpost__v6__widget-large.852ec4ba.webp",
+      "bytes": 170688,
+      "sha256": "852ec4ba9b0b5aecec1e4908cf07a35b108371fae5470aca49317b2f5af27439"
+    },
+    {
+      "name": "art__olive-outpost__v6__widget-live-clock.7b72df46.webp",
+      "bytes": 7146,
+      "sha256": "7b72df46703acbc75e8202b57f42473b4716c9a05ce2822bf71d14eea2ebecd9"
+    },
+    {
+      "name": "art__olive-outpost__v6__widget-live-date.a6379ec3.webp",
+      "bytes": 3100,
+      "sha256": "a6379ec39a93aefbb7c7009a57d08b389937f43921bfc9da7dbaf1abd12fe8f8"
+    },
+    {
+      "name": "art__olive-outpost__v6__widget-live-focus.5f7d346b.webp",
+      "bytes": 7002,
+      "sha256": "5f7d346b2600a7150da439a00df68d102c68658cf71d7cd601d6c4b52192c002"
+    },
+    {
+      "name": "art__olive-outpost__v6__widget-medium.56760cea.webp",
+      "bytes": 88936,
+      "sha256": "56760cead7816992ce0995c6ff246a1a0fd719ed76ead6c8c006c5f1291f0690"
+    },
+    {
+      "name": "art__olive-outpost__v6__widget-olive-field-radio.f70b3b2a.webp",
+      "bytes": 107518,
+      "sha256": "f70b3b2abda080a9423093e38c46b596c9e07b74edbd84b9a557161f4bc4d0b3"
+    },
+    {
+      "name": "art__olive-outpost__v6__widget-outpost-date.28bbf7ed.webp",
+      "bytes": 92056,
+      "sha256": "28bbf7ed234cfd44fd55ef144086f16bcaa217e9a81ced67ded66ebf80ad0d30"
+    },
+    {
+      "name": "art__olive-outpost__v6__widget-small.487f1ce6.webp",
+      "bytes": 56194,
+      "sha256": "487f1ce6e7572d71b6934b34937b81311d4e58bbb5786818ff3d837fabd59419"
+    },
+    {
+      "name": "art__olive-outpost__v6__widget-themed-live-clock.b2f31d97.webp",
+      "bytes": 122670,
+      "sha256": "b2f31d97b85001c11954a1b04baee6cf90dff66f5a329d7ff65b9d06df57f6ca"
+    },
+    {
+      "name": "art__opal-abyss__v6__manifest.json",
+      "bytes": 7230,
+      "sha256": "b87cba80014257359428fe463bcfc690f955cb17e9d72b00eb6048eb8025f889"
+    },
+    {
+      "name": "art__opal-abyss__v6__thumb.b14bea31.webp",
+      "bytes": 14852,
+      "sha256": "b14bea31fc116e425d1de37058fdd62c14d27f3434cb48646da6d820a8e6b8f7"
+    },
+    {
+      "name": "art__opal-abyss__v6__wallpaper-1334.1cb64ab8.webp",
+      "bytes": 82222,
+      "sha256": "1cb64ab8d82eed4c3cf7bb369c7cc3eaae0682b4cefa9632c71ba4d7057086d9"
+    },
+    {
+      "name": "art__opal-abyss__v6__wallpaper-2556.c460a24b.webp",
+      "bytes": 161688,
+      "sha256": "c460a24bdc86454e07a089e7d0d35d6545ae98409ec6b7594af3abcf66e1d321"
+    },
+    {
+      "name": "art__opal-abyss__v6__wallpaper-2796.018fbde1.webp",
+      "bytes": 178314,
+      "sha256": "018fbde163159e1b1a06b32810430e9e814658d1c72dfcffd82d822f1327aec2"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-abyss-battery.a350cc03.webp",
+      "bytes": 130862,
+      "sha256": "a350cc033a3fddcb37c84481dc887d1016920a23e4989338002d18da17ef3fb8"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-audit-20261101-tidal-clock.84323201.webp",
+      "bytes": 200362,
+      "sha256": "84323201ca4343b743482537e0466ae1e921dfc4aa6e9de228c60c2319983dbd"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-large.3bd25a22.webp",
+      "bytes": 259364,
+      "sha256": "3bd25a2270c8b2feaa0cbf8bffc30aa8052b9be0c1b2ab8c273b900c016fa713"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-live-clock.694a1d7d.webp",
+      "bytes": 7432,
+      "sha256": "694a1d7def5a431c906365026c6b900cf18e8a7d3da4dbf7f805bc2868d8ac60"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-medium.944ff0eb.webp",
+      "bytes": 127514,
+      "sha256": "944ff0ebeda7550b9c2e3bcfdf8d5ca4a0080f0c1c595d2c6eb23842e8b285ec"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-moon-jelly-window.5717c9c6.webp",
+      "bytes": 178998,
+      "sha256": "5717c9c61a8a9908fa36c4460572fbf7f6f59b09eeabe3504a153f1ffdac8ab3"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-nautilus.7e22e68c.webp",
+      "bytes": 216212,
+      "sha256": "7e22e68cdb0c72c70b3ed186908a87b853a0563a910bc8f75e25e43eead18fa7"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-pearl-shell.4f3e2b0c.webp",
+      "bytes": 164624,
+      "sha256": "4f3e2b0cb9495248e698a128e70cc91250293736bcdf179edd788627a51f0c48"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-small.0069ba04.webp",
+      "bytes": 65846,
+      "sha256": "0069ba0482e4ce5979014d6bc4c3042c609f478659c429bda463b94e30b6d043"
+    },
+    {
+      "name": "art__opal-abyss__v6__widget-themed-live-clock.0187e107.webp",
+      "bytes": 147912,
+      "sha256": "0187e107d3bae1700d013f3ec989d3322e6f2a87e9347c17d940a5e857222380"
+    },
+    {
+      "name": "art__paper-carnival__v6__manifest.json",
+      "bytes": 6789,
+      "sha256": "416ec361cae21d6eeedc9a94e874fa6171f536e1f7ee74d2bc1bb2a7c1fbfb33"
+    },
+    {
+      "name": "art__paper-carnival__v6__thumb.f092aa86.webp",
+      "bytes": 12486,
+      "sha256": "f092aa86417d251275900bbae04827beffbdf190b4dbaa694aa514042612104e"
+    },
+    {
+      "name": "art__paper-carnival__v6__wallpaper-1334.21c9d125.webp",
+      "bytes": 132654,
+      "sha256": "21c9d125b604423e73a8b44ada152cc2eb84fa547f8890ca42472ed19d917269"
+    },
+    {
+      "name": "art__paper-carnival__v6__wallpaper-2556.5d37b31e.webp",
+      "bytes": 258570,
+      "sha256": "5d37b31e0fe2bd2c18f7d109c530eb790ee8401870ec1d4a5e216362f13ed997"
+    },
+    {
+      "name": "art__paper-carnival__v6__wallpaper-2796.7364f254.webp",
+      "bytes": 287788,
+      "sha256": "7364f254911ff659a1457df349d4d936d771a5ae15a5b8c4670006ed29117a15"
+    },
+    {
+      "name": "art__paper-carnival__v6__widget-carnival-countdown.a8b9ea3f.webp",
+      "bytes": 141252,
+      "sha256": "a8b9ea3f304b8ddd86c831dd626b59c680ffbc1d5abdebbc421d6b1472b0a23f"
+    },
+    {
+      "name": "art__paper-carnival__v6__widget-confetti-snail.dd3b1238.webp",
+      "bytes": 147038,
+      "sha256": "dd3b1238cc61215ba1d78588cbd37aae8882e2fcc6c107dd3048e24d4388a7fc"
+    },
+    {
+      "name": "art__paper-carnival__v6__widget-large.ff37b73b.webp",
+      "bytes": 155240,
+      "sha256": "ff37b73b7aeb28949e7a11e056855ba9c67f59ee7d02eaa96979c171858539bf"
+    },
+    {
+      "name": "art__paper-carnival__v6__widget-live-clock.dfddb0c1.webp",
+      "bytes": 6992,
+      "sha256": "dfddb0c1c090605099fa3d0c87a5d8983ed3858f1d10852dba04fb83b98d1a76"
+    },
+    {
+      "name": "art__paper-carnival__v6__widget-medium.59deec31.webp",
+      "bytes": 95948,
+      "sha256": "59deec318c7b68b33208c03ccfd5df1a3666a8832bae0161654d095e627c12c1"
+    },
+    {
+      "name": "art__paper-carnival__v6__widget-paper-dragon-kite.980cf85e.webp",
+      "bytes": 129314,
+      "sha256": "980cf85ef4abbb33c5a0d199a5a1f1b7ddfdd5303e9cdbbb1db99f95d714e503"
+    },
+    {
+      "name": "art__paper-carnival__v6__widget-pinwheel-trio.d4ea7b9c.webp",
+      "bytes": 101864,
+      "sha256": "d4ea7b9c10f94216a9bff5325e81e4b3f430a87c7e7ffc3e380a1066dc52de0c"
+    },
+    {
+      "name": "art__paper-carnival__v6__widget-small.2b91da39.webp",
+      "bytes": 36312,
+      "sha256": "2b91da39c453375575464c02a7aa1fedee19351bdc5958d9f48e09bb9159362d"
+    },
+    {
+      "name": "art__paper-carnival__v6__widget-themed-live-clock.dceef9f8.webp",
+      "bytes": 111708,
+      "sha256": "dceef9f86820fe6b9cc77b1ecaef17558dd039f214b6fad0005f4c9d030bdbe4"
+    },
+    {
+      "name": "art__peach-puddle__v6__manifest.json",
+      "bytes": 8206,
+      "sha256": "866daa5722c855433ff7787113aac9138837f5ac1c61d70caf791137e14afb26"
+    },
+    {
+      "name": "art__peach-puddle__v6__thumb.7f3817b2.webp",
+      "bytes": 4028,
+      "sha256": "7f3817b2716897d4dae84b259d0721dc01c8fc0bd15dda4157f3464b3ca5e4fb"
+    },
+    {
+      "name": "art__peach-puddle__v6__wallpaper-1334.f2ffcecd.webp",
+      "bytes": 31456,
+      "sha256": "f2ffcecd3fa707ee50be0d2f5bfd5e50d57ff9b683d6bc4ab734e35a490cfac4"
+    },
+    {
+      "name": "art__peach-puddle__v6__wallpaper-2556.673e9be8.webp",
+      "bytes": 75036,
+      "sha256": "673e9be8a11b6fd4a8c5c0298c3ba8fbfd37d8d54f92f877374ab250f4ad35ec"
+    },
+    {
+      "name": "art__peach-puddle__v6__wallpaper-2796.29a5e941.webp",
+      "bytes": 87088,
+      "sha256": "29a5e941c8eff18fea0825443c1c275ed0dd6e2f0a30b18f751e5b552a70c859"
+    },
+    {
+      "name": "art__peach-puddle__v6__widget-large.1e8d72a6.webp",
+      "bytes": 185852,
+      "sha256": "1e8d72a683bf2327dca4e711be092565c8415657ef9becbc7d5ccc462bda45b5"
+    },
+    {
+      "name": "art__peach-puddle__v6__widget-live-clock.ed58ea89.webp",
+      "bytes": 6742,
+      "sha256": "ed58ea8977e75313e197c475cf25abe51e96de8a4f964495b4b622a9a4d791c3"
+    },
+    {
+      "name": "art__peach-puddle__v6__widget-live-date.dc84614a.webp",
+      "bytes": 3422,
+      "sha256": "dc84614a793c4eb91cb0f3473d68e2c53cb39960a3ff2c340f252f2f1469a926"
+    },
+    {
+      "name": "art__peach-puddle__v6__widget-live-focus.6ec0f303.webp",
+      "bytes": 6572,
+      "sha256": "6ec0f3030825e9c0ead694d0cfad01deea05a4eeae6c8a7ee0ff0a61c1039900"
+    },
+    {
+      "name": "art__peach-puddle__v6__widget-medium.572f1653.webp",
+      "bytes": 65036,
+      "sha256": "572f1653a05e5ff60cd6873b62c1724fd293fc06d87b0d1fe7d36d34bee3a3eb"
+    },
+    {
+      "name": "art__peach-puddle__v6__widget-peach-umbrella-snail.44a1b298.webp",
+      "bytes": 79876,
+      "sha256": "44a1b298dad448b8087862b76ce2fa0000cb66769800079b457c03580d41a84f"
+    },
+    {
+      "name": "art__peach-puddle__v6__widget-puddle-date.0f9e46a5.webp",
+      "bytes": 102890,
+      "sha256": "0f9e46a508f367f2057e122f4030385c86152ac4beb45a809ec8d5ca12f361c1"
+    },
+    {
+      "name": "art__peach-puddle__v6__widget-small.c2bce4f1.webp",
+      "bytes": 24824,
+      "sha256": "c2bce4f1eca8a7682b2d55808a855cb9473f2c23487f0ede3c35ee082215e778"
+    },
+    {
+      "name": "art__peach-puddle__v6__widget-themed-live-clock.cebb76a8.webp",
+      "bytes": 85796,
+      "sha256": "cebb76a81520f26bc511c97d82be6bc9de41ee4b1ae0853a50a5f45d8fda402f"
+    },
+    {
+      "name": "art__peachskin__v6__manifest.json",
+      "bytes": 8312,
+      "sha256": "5afbbd59a204ce6dd4d36ef06839a62e2c03873790fd14f3d9b42f711ca3ef94"
+    },
+    {
+      "name": "art__peachskin__v6__thumb.05e8d3fd.webp",
+      "bytes": 6326,
+      "sha256": "05e8d3fdf25fa993962fe9e8a2edaf6f945f4649a6e2fcb6a5ccffd445fe792a"
+    },
+    {
+      "name": "art__peachskin__v6__wallpaper-1334.71dd816a.webp",
+      "bytes": 34498,
+      "sha256": "71dd816a6195f6fcedbf1b05cb3ea41eb4c414db74844871fb228720e4481c01"
+    },
+    {
+      "name": "art__peachskin__v6__wallpaper-2556.6e5ea95b.webp",
+      "bytes": 66782,
+      "sha256": "6e5ea95bb60f4ced8b7f4ead0e7afc1a60b8973b28a10b3c678b6d6707fa369c"
+    },
+    {
+      "name": "art__peachskin__v6__wallpaper-2796.00418452.webp",
+      "bytes": 75040,
+      "sha256": "00418452fc1ce4770877f108efd6e8b91d5ee313db838aa3879bc4ab00bd68a7"
+    },
+    {
+      "name": "art__peachskin__v6__widget-large.60fe6fee.webp",
+      "bytes": 31790,
+      "sha256": "60fe6feea3143ca1f964a317b89aabc1270fc3fa4d6d329e5dabb36f16c7bebe"
+    },
+    {
+      "name": "art__peachskin__v6__widget-live-battery.d034713d.webp",
+      "bytes": 2958,
+      "sha256": "d034713d996a5c7f596112f426bb1da2ce13f22ca653d2dd915ffdfe33fdc5fb"
+    },
+    {
+      "name": "art__peachskin__v6__widget-live-clock.0026826e.webp",
+      "bytes": 6966,
+      "sha256": "0026826ec53a69d73ca0d3e82dfedb10479fafaefd3f566249b531d7438e50bf"
+    },
+    {
+      "name": "art__peachskin__v6__widget-live-date.36e9c29d.webp",
+      "bytes": 3570,
+      "sha256": "36e9c29dee732d7cb903e7d11dc453741bbef8fa2ae7745dec7fc2bd5b849426"
+    },
+    {
+      "name": "art__peachskin__v6__widget-live-focus.78c225b8.webp",
+      "bytes": 6804,
+      "sha256": "78c225b8728ef6adc181d9c5a810cab7e766addc2618ee166d3c727734ee6bb4"
+    },
+    {
+      "name": "art__peachskin__v6__widget-medium.a17b4578.webp",
+      "bytes": 4398,
+      "sha256": "a17b4578562888d287b7d71fe364c2d2beaf02110f353195c9e5a34246846074"
+    },
+    {
+      "name": "art__peachskin__v6__widget-production-20261101-velvet-peach.ca35d047.webp",
+      "bytes": 82990,
+      "sha256": "ca35d047f2595788dc57debecbf6eb3dce24c4b463c4705a9f8d3b530388b5dd"
+    },
+    {
+      "name": "art__peachskin__v6__widget-small.cbd56563.webp",
+      "bytes": 9852,
+      "sha256": "cbd5656376a4db35a14b15a621240571bd0d121c282ee9d16f4b6f65a379a31b"
+    },
+    {
+      "name": "art__peachskin__v6__widget-themed-live-clock.33a57239.webp",
+      "bytes": 61164,
+      "sha256": "33a57239bb99a29129624dc4fbe329400c7908a0b568f836051fdcf911546db2"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__manifest.json",
+      "bytes": 6654,
+      "sha256": "d57e6d270cf5c1487d2d7c327d4e30626b7ead5fcb84e500fae80445962d4fc9"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__thumb.5db841e9.webp",
+      "bytes": 14480,
+      "sha256": "5db841e9491d9b17e737e297357cb023333dac10fc99d31b3b5e4987f93aafa4"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__wallpaper-1334.1a8181b8.webp",
+      "bytes": 121026,
+      "sha256": "1a8181b83d409f700ca88f2fee2b2bb8e595318528703070ae98768e5f1d4083"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__wallpaper-2556.3e28644c.webp",
+      "bytes": 232972,
+      "sha256": "3e28644ce55ba332156b06da632130040b00adcf4a641b3d57e2eeecd7a3074b"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__wallpaper-2796.7cf45929.webp",
+      "bytes": 259068,
+      "sha256": "7cf4592923fe2961a9fb96835065a9036b53e0afb751ded3d721b5e94e116226"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__widget-fern-altar.9011bc9d.webp",
+      "bytes": 194874,
+      "sha256": "9011bc9d38846d33a3d9733b6cc2478a034c7c23e23fd1307f2bf6864a95ea52"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__widget-grove-habits.4411b6eb.webp",
+      "bytes": 198736,
+      "sha256": "4411b6eb501bf9e82ca6b983f4f3621bfb07c57db163b841c9e50a2ebc2e84dd"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__widget-large.5e6747b0.webp",
+      "bytes": 234422,
+      "sha256": "5e6747b062d464e5ba2219cf7710198e515df58308550d7a85b32dfa67909129"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__widget-live-clock.664160b1.webp",
+      "bytes": 5390,
+      "sha256": "664160b1a645b50512a42b0c8301aa1341182fcfa35d1681ea651f13ba677f0c"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__widget-medium.fef06793.webp",
+      "bytes": 81214,
+      "sha256": "fef06793e79005f6f49f63dbc91e113b0d97ab86f323e1fa22c6806437d02cef"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__widget-pebble-moth.58194985.webp",
+      "bytes": 160828,
+      "sha256": "581949858ce75027e0d495c659b838910deca9933d5efeffd57cbb68cf0e1320"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__widget-small.8fc11f95.webp",
+      "bytes": 35780,
+      "sha256": "8fc11f9547cf600207c60209261d456dc82fb01b911d99c7bed07d23788261dc"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__widget-sprout-keeper.b72f099a.webp",
+      "bytes": 153552,
+      "sha256": "b72f099a8f1f717c71ed233f23cea7439a20a898bda6199504fc67d9c050cc6a"
+    },
+    {
+      "name": "art__pebblekin-grove__v6__widget-themed-live-clock.d75c6d45.webp",
+      "bytes": 167316,
+      "sha256": "d75c6d4527312fb5a00b007cf37154c0e652ac0ef028dd8fef02d99168ec9329"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__manifest.json",
+      "bytes": 7970,
+      "sha256": "2cc3a781ce16545f22aa5e4eaf683a0e91394ea731cfe5fcdfc1324d665ccedf"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__thumb.379833e4.webp",
+      "bytes": 7626,
+      "sha256": "379833e4b6e1a570f7ace547d2e1b523b911602635cae6aa869442fd94c26066"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__wallpaper-1334.2640776c.webp",
+      "bytes": 43720,
+      "sha256": "2640776c95fb0a9d06aee2fa40fc5c16a1b1fadd2813c2acbddde33973b859b8"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__wallpaper-2556.9166c6f8.webp",
+      "bytes": 87594,
+      "sha256": "9166c6f8cb7ce0ba5e28c27551ea2f34d0606610392b31ed4183246f8ef660d8"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__wallpaper-2796.d800efd5.webp",
+      "bytes": 98572,
+      "sha256": "d800efd52e1aa716aa502619dae6bb911a803c98b51b1a26eb2219b0acf17398"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__widget-large.cb228a29.webp",
+      "bytes": 98102,
+      "sha256": "cb228a2928bffaad11c12cce90fd1d18a1a76e37b1ef83d6aa44f2c17649620b"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__widget-live-clock.f8e3f011.webp",
+      "bytes": 6048,
+      "sha256": "f8e3f0110d584aba85cd52026598e93236a8216bb542c7b085c6c579371ed87d"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__widget-live-date.eaaf4956.webp",
+      "bytes": 3076,
+      "sha256": "eaaf495682205d27539bd60b71c7870251905dbeeb1d8960f9cbf61ce95d6e13"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__widget-live-focus.0373816c.webp",
+      "bytes": 5914,
+      "sha256": "0373816c8fd52622e8ce63317c03625f85582ce3d932fd484c81066add48ad7d"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__widget-medium.801a78bb.webp",
+      "bytes": 68622,
+      "sha256": "801a78bb740a764ab80281a93c0da5a11fba478e5c960c39b6dfdc4da7229a0b"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__widget-parlour-date.af2a6994.webp",
+      "bytes": 82242,
+      "sha256": "af2a6994843303f26136271b122124a2440bf485be6204b88391395abaf0fc56"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__widget-pistachio-sundae.7ca4fa13.webp",
+      "bytes": 84916,
+      "sha256": "7ca4fa13cb36786a481e7e63e0a74a6b6aa41805b06c18a9b5355f08f0919c96"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__widget-small.ed8a0c7e.webp",
+      "bytes": 16972,
+      "sha256": "ed8a0c7eda16445a1c112b75dec670657829d87a370df15f3ca18aa4b4fe92bb"
+    },
+    {
+      "name": "art__pistachio-parlour__v6__widget-themed-live-clock.4d6bef4d.webp",
+      "bytes": 40004,
+      "sha256": "4d6bef4d1183dbabec9cda5ce35ae3aa828bb5c25b4527bbc5322239c4a0499d"
+    },
+    {
+      "name": "art__plume-court__v6__manifest.json",
+      "bytes": 8297,
+      "sha256": "2d1c3e75eaaf367e80b17be72bace3b947bcde17b5085d572546fa45c7895620"
+    },
+    {
+      "name": "art__plume-court__v6__thumb.09ab5af4.webp",
+      "bytes": 18596,
+      "sha256": "09ab5af49f989a3ece0dd1028308113195561ccdad6ee1d70ca4f69bb12b6443"
+    },
+    {
+      "name": "art__plume-court__v6__wallpaper-1334.3349fca6.webp",
+      "bytes": 130684,
+      "sha256": "3349fca6833ad752773f8598301dd331fb1d3adc66cbc50e8dab477cdfb29dfb"
+    },
+    {
+      "name": "art__plume-court__v6__wallpaper-2556.d4212d8a.webp",
+      "bytes": 248336,
+      "sha256": "d4212d8a4e48f8320b82d236ac7109e939f4c949b9c94251d668e00ffb6fc32b"
+    },
+    {
+      "name": "art__plume-court__v6__wallpaper-2796.22748553.webp",
+      "bytes": 272290,
+      "sha256": "2274855303da5147ac394345a254f88898212b44d1c9ca4367f7e08469c4a57d"
+    },
+    {
+      "name": "art__plume-court__v6__widget-large.594ae974.webp",
+      "bytes": 284062,
+      "sha256": "594ae974b89acd5b67444c83c262931f1e6a4850703284abd1bb082114b0aedf"
+    },
+    {
+      "name": "art__plume-court__v6__widget-live-clock.f9277bf5.webp",
+      "bytes": 6888,
+      "sha256": "f9277bf570f77be34534bbb5d0dc5965baf22e17d36c1d9652b73575defface4"
+    },
+    {
+      "name": "art__plume-court__v6__widget-live-date.27c3a643.webp",
+      "bytes": 3400,
+      "sha256": "27c3a64392e2386131e074275f5942c9cea88c0e5476cc89f97c781988c331d5"
+    },
+    {
+      "name": "art__plume-court__v6__widget-live-focus.d183be0d.webp",
+      "bytes": 6750,
+      "sha256": "d183be0d450610a4ec52aedb1c57f7258e384db8f1eb98ac7b252360fc38a0a2"
+    },
+    {
+      "name": "art__plume-court__v6__widget-medium.0af207ff.webp",
+      "bytes": 83584,
+      "sha256": "0af207ffd4a61b8236e790c15e53194e2e0c2763962a58502ab8bbeb01c54090"
+    },
+    {
+      "name": "art__plume-court__v6__widget-plume-habits.fcffff1e.webp",
+      "bytes": 149330,
+      "sha256": "fcffff1e2833b7a48bbf324f583f071f4a54f015b27b955dac6a1364d5a4c670"
+    },
+    {
+      "name": "art__plume-court__v6__widget-porcelain-quail.ae5d0161.webp",
+      "bytes": 119256,
+      "sha256": "ae5d01615da65ab483e5f1db808e6e899b0025c5e722fd6daf4585d39a64ff1e"
+    },
+    {
+      "name": "art__plume-court__v6__widget-small.126c7ee0.webp",
+      "bytes": 62016,
+      "sha256": "126c7ee05c528687718df74f69353e53cc3738946d651bad5560aee0ba4e6015"
+    },
+    {
+      "name": "art__plume-court__v6__widget-themed-live-clock.59b4e742.webp",
+      "bytes": 161688,
+      "sha256": "59b4e742f11870c88fdaf7c7a43ea04b41327316bf46940b2122684db527c81e"
+    },
+    {
+      "name": "art__pocket-pup__v6__manifest.json",
+      "bytes": 8175,
+      "sha256": "48273bfbac1cb279de0a5ab5b8aba2ef71d7927d9cb0f2197a2f6b65f4cc8ff7"
+    },
+    {
+      "name": "art__pocket-pup__v6__thumb.07a08583.webp",
+      "bytes": 3506,
+      "sha256": "07a0858341b817033201b26fe4f6ccd49bb91d18576de0e026bb40e56960f84a"
+    },
+    {
+      "name": "art__pocket-pup__v6__wallpaper-1334.24ab129e.webp",
+      "bytes": 21034,
+      "sha256": "24ab129e2c772fe896d994f545cb444f8b97015560af35f4ccd0a1896ce79692"
+    },
+    {
+      "name": "art__pocket-pup__v6__wallpaper-2556.1282c2b2.webp",
+      "bytes": 46598,
+      "sha256": "1282c2b2b653aac884812416a625318600236f82db541edb208653a882a02f15"
+    },
+    {
+      "name": "art__pocket-pup__v6__wallpaper-2796.ffab743a.webp",
+      "bytes": 54100,
+      "sha256": "ffab743aa3e8cd3fa7e6ae009a55e74a2ccd05815f9d44eb61aa270a871599db"
+    },
+    {
+      "name": "art__pocket-pup__v6__widget-large.98136f09.webp",
+      "bytes": 37130,
+      "sha256": "98136f09b267c30750ade83267cd9bc55f0aef806857c76baa0ea4fcf27e957b"
+    },
+    {
+      "name": "art__pocket-pup__v6__widget-live-clock.46323372.webp",
+      "bytes": 7480,
+      "sha256": "4632337271fe36ef879119f72618bd2883781684719a55a28bcf4b29c9104f8a"
+    },
+    {
+      "name": "art__pocket-pup__v6__widget-live-date.face69c9.webp",
+      "bytes": 3414,
+      "sha256": "face69c9566298354bdecf9c715bd89678adfc070809eee7946d19b251df00fb"
+    },
+    {
+      "name": "art__pocket-pup__v6__widget-live-focus.791d0f5e.webp",
+      "bytes": 7288,
+      "sha256": "791d0f5e6199725b5e982272dac91806c1af2575aee686d6a7fb95358968908c"
+    },
+    {
+      "name": "art__pocket-pup__v6__widget-medium.6a9e4613.webp",
+      "bytes": 34554,
+      "sha256": "6a9e46138800ce40e09def3962850ebf5a30cd9acaf37a0a03180839f5be0f1e"
+    },
+    {
+      "name": "art__pocket-pup__v6__widget-pocket-mailbox.0a0b59ef.webp",
+      "bytes": 33292,
+      "sha256": "0a0b59ef7344da26a6fe75cd5ad91788f53a106ea0d2a4b3eaa48ef9b689e930"
+    },
+    {
+      "name": "art__pocket-pup__v6__widget-pup-habits.92020abb.webp",
+      "bytes": 36688,
+      "sha256": "92020abb5d3fd22ab5873ed61534322d725cf959f3b4bf9ebf808931a1e970fc"
+    },
+    {
+      "name": "art__pocket-pup__v6__widget-small.7a10a7b9.webp",
+      "bytes": 8818,
+      "sha256": "7a10a7b9ff61452fa10db72ffec9fac6a44f6072443f2709f97bcaad3ee071e7"
+    },
+    {
+      "name": "art__pocket-pup__v6__widget-themed-live-clock.9d7b534d.webp",
+      "bytes": 22988,
+      "sha256": "9d7b534d90f186c4f4c3cfcd55eca1049634c1f19bc098521dfc8b9b0c97a9ec"
+    },
+    {
+      "name": "art__porcelain-tide__v6__manifest.json",
+      "bytes": 8249,
+      "sha256": "49785d1b78c3fc65c2ebdb29556be267b6877d4faf9acb6be52e4340eca9d6ad"
+    },
+    {
+      "name": "art__porcelain-tide__v6__thumb.1716a59d.webp",
+      "bytes": 16986,
+      "sha256": "1716a59dd561893ba418bf58463ebbde700fa887bb326d851dc1133266e02577"
+    },
+    {
+      "name": "art__porcelain-tide__v6__wallpaper-1334.075da71a.webp",
+      "bytes": 110944,
+      "sha256": "075da71ae30c3ef735beadea10ce199f726edacd74e8dd2d3bca380e16fee6eb"
+    },
+    {
+      "name": "art__porcelain-tide__v6__wallpaper-2556.44713221.webp",
+      "bytes": 246774,
+      "sha256": "44713221c5485903002c0e64a3501fe971ca998b6b7f4d5b4bdfafb2a1c01171"
+    },
+    {
+      "name": "art__porcelain-tide__v6__wallpaper-2796.c7f25ef0.webp",
+      "bytes": 273880,
+      "sha256": "c7f25ef067368c3b8497fd7a5f467cab99bd991b919fb2937648b6fffef3bc87"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-audit-20261101-porcelain-clock.d766f408.webp",
+      "bytes": 127394,
+      "sha256": "d766f408a8c9c53d691a47c5bd113487b07b786e2e15e9ea5d93861315f652da"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-blue-lotus-bowl.fa9e3a09.webp",
+      "bytes": 124894,
+      "sha256": "fa9e3a0901526e94ed9d0f4a951040f6924a8560ba4f82bda3108e141c1f516b"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-koi-medallion.8d9dfc8a.webp",
+      "bytes": 141368,
+      "sha256": "8d9dfc8a14c612040536e79e7a6cca41cd004ad07656646ae50b01a8f3340d8a"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-large.b53c6d2a.webp",
+      "bytes": 212848,
+      "sha256": "b53c6d2ace10c04283e8b99ce6f7c10032731fb21076281a90fafc9f6de4ee6f"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-live-clock.8aea6742.webp",
+      "bytes": 8034,
+      "sha256": "8aea6742493d6fe6be55d4f2d04e916a0cdbd9d3ac8f4f8e866abf452d7716ed"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-medium.825fd87c.webp",
+      "bytes": 91434,
+      "sha256": "825fd87c88826223029bd5dc294c24df1929ca6e2726d3d91f023702bc6f7b42"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-porcelain-crane.7d0ad798.webp",
+      "bytes": 118506,
+      "sha256": "7d0ad79844adf8ecba2d3614d606370284507c64ecdd78561c070fd5e7b8558f"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-porcelain-date.7459cf4a.webp",
+      "bytes": 154402,
+      "sha256": "7459cf4acd17c1b8b583d5d577d173a09b4421746dec1d774145cf3c57149821"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-small.69bf45d6.webp",
+      "bytes": 65002,
+      "sha256": "69bf45d6786261a772d28af2dda32e1632aead57842b27e7464cd9e03422de79"
+    },
+    {
+      "name": "art__porcelain-tide__v6__widget-themed-live-clock.188fe901.webp",
+      "bytes": 192778,
+      "sha256": "188fe9013a9300f7fdd379f88392d53f01b6fd845997ae5a0c31583cdbc9bf2f"
+    },
+    {
+      "name": "art__prism-orchard__v6__manifest.json",
+      "bytes": 7239,
+      "sha256": "5b67bb01ed60a03120304a4ae6bda0a7519154b788e04e14647811c719d61dd8"
+    },
+    {
+      "name": "art__prism-orchard__v6__thumb.e791d81b.webp",
+      "bytes": 20138,
+      "sha256": "e791d81b812666ad2e910438aea6c6942d9c3dfb09543c0cc83787a1d970419c"
+    },
+    {
+      "name": "art__prism-orchard__v6__wallpaper-1334.c98212c8.webp",
+      "bytes": 107464,
+      "sha256": "c98212c84cd5a62db7bb0e36d5e42c0de96bffb0c4c18fcaba527de565cf1f07"
+    },
+    {
+      "name": "art__prism-orchard__v6__wallpaper-2556.67547ca5.webp",
+      "bytes": 208534,
+      "sha256": "67547ca5de43b6b8a946a09ab37c08e3f5a285ec7148c6bb1826dc86848706a5"
+    },
+    {
+      "name": "art__prism-orchard__v6__wallpaper-2796.2de89fc2.webp",
+      "bytes": 228872,
+      "sha256": "2de89fc23ce5da4b333bf88c4067754d246ba826f8474357c7e50d243224ee4d"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-audit-20261101-quartz-sundial.156463f4.webp",
+      "bytes": 186058,
+      "sha256": "156463f4e4b189bfdb991c4bb1677d1a1edd12fa9a5cc6c92d63c1c4541860c4"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-glass-plum.df948b64.webp",
+      "bytes": 149628,
+      "sha256": "df948b647b05e17044f06ca92bbab84594235cbdd28704213e3e6dfeb297d51f"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-large.dac3e94b.webp",
+      "bytes": 197974,
+      "sha256": "dac3e94b699bcc4d438ca8d5e12cd4bf43ac978d917f7052d6180d45c24fb14b"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-live-clock.ead4fdcd.webp",
+      "bytes": 5542,
+      "sha256": "ead4fdcde65fcafb0e3671e6bba158ee2f6cab1897183f1d725a277d5fe943ce"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-medium.5153effa.webp",
+      "bytes": 94416,
+      "sha256": "5153effaf3b466bb04e9befb4e698136c710d206e8b89679432538e58c6122a7"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-opal-tree-frog.87be490c.webp",
+      "bytes": 104126,
+      "sha256": "87be490cd80633af054b45a06aa8ceb6a32fdb525ceff5160ff388e0ad9407a3"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-orchard-habits.856578e1.webp",
+      "bytes": 114844,
+      "sha256": "856578e150bb2d9451de61286ea429e59717272a3c98ac2d60947d89f0573337"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-petal-hummingbird.2e0c34fc.webp",
+      "bytes": 130454,
+      "sha256": "2e0c34fc637a1eedad6ca0f7a77c4e067ced252725b4e9a1a99b78f1a08cd085"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-small.f909d144.webp",
+      "bytes": 70338,
+      "sha256": "f909d1442ccc4efbae53946274a26c33bc99b538da67099eeee19df8ffa06f7d"
+    },
+    {
+      "name": "art__prism-orchard__v6__widget-themed-live-clock.09603efc.webp",
+      "bytes": 183084,
+      "sha256": "09603efc1b075d524abeb850f412443c1a5f024bbd8aff7415c9712fa256271d"
+    },
+    {
+      "name": "art__protea-blush__v4__manifest.json",
+      "bytes": 7763,
+      "sha256": "eade6f662679edce46e8c7162509da547ad685f1cec09041554fed57fdb3037b"
+    },
+    {
+      "name": "art__protea-blush__v4__thumb.15e3223e.webp",
+      "bytes": 12834,
+      "sha256": "15e3223efb2b14bb215205c487e3d3fc95b1bf0d541bfa91bf934fd55488f20e"
+    },
+    {
+      "name": "art__protea-blush__v4__wallpaper-1334.c2353215.webp",
+      "bytes": 73474,
+      "sha256": "c2353215135222a34101743d98db5328e7036ff1478286bd8a63945d8bfaa82c"
+    },
+    {
+      "name": "art__protea-blush__v4__wallpaper-2556.1604b1a4.webp",
+      "bytes": 135144,
+      "sha256": "1604b1a48854f76ebacbd255ae06e29ad97b6942d155358b18c742ab0f16fe7f"
+    },
+    {
+      "name": "art__protea-blush__v4__wallpaper-2796.12521f19.webp",
+      "bytes": 147896,
+      "sha256": "12521f199db0bb3d70fe3449d539c659ab1640af0b1e107e85cc7aa7353e48ba"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-bloom-progress.c0a80b98.webp",
+      "bytes": 23942,
+      "sha256": "c0a80b988bbce3721637efae0e0f1ddae2b88aebf4780723c93eecda2fd063fa"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-blush-date.64edb377.webp",
+      "bytes": 76984,
+      "sha256": "64edb377aa12e6acb05b978831f1ba4d9f4ffe6b4def19b76504de186c187c9a"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-crown-clock.3dbede9f.webp",
+      "bytes": 59150,
+      "sha256": "3dbede9f87e74632f40c5be4870e852fae4e731026bf0897fbc0d979e0311356"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-king-protea.2782c4e4.webp",
+      "bytes": 174080,
+      "sha256": "2782c4e41ec7e39907cbcee479a3ff212d22de2d7b1b5646025add648f5b1180"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-large.0a3601bd.webp",
+      "bytes": 223430,
+      "sha256": "0a3601bd26410209086c149809ab66235be1ee77eb40c923e09fced4883af736"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-live-clock.7097e26e.webp",
+      "bytes": 6830,
+      "sha256": "7097e26e01efee59b3017cc2ba742cf05a4cb1decd1373c8b09bd61b7029ad85"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-medium.4a83c5f3.webp",
+      "bytes": 100438,
+      "sha256": "4a83c5f3594825e2f92e79c58fb5934469ac5beae0712140378fc22ee42cf066"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-silver-leaf.168f32d6.webp",
+      "bytes": 143288,
+      "sha256": "168f32d64e001606ab9488c6b831a42038ea4f470c68411c54cf55cad9fc5685"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-small.7e6ca04f.webp",
+      "bytes": 10524,
+      "sha256": "7e6ca04f37f6ec2809bba96d29afbb5bd63dee4bac9c730339e89499e4fcd5a4"
+    },
+    {
+      "name": "art__protea-blush__v4__widget-themed-live-clock.04c185ac.webp",
+      "bytes": 166768,
+      "sha256": "04c185ac060e15041a38771db2bdd9608ce286e4a54803da29bf7e60e5052fef"
+    },
+    {
+      "name": "art__rainleaf__v6__manifest.json",
+      "bytes": 6679,
+      "sha256": "a4baa21416b28567af2da3e636bc031e05f0c7a29e1cd7fc3040f696dbf61eb8"
+    },
+    {
+      "name": "art__rainleaf__v6__thumb.66110054.webp",
+      "bytes": 12604,
+      "sha256": "66110054b70c9a1fc76457d57f1933f35f6d13c8e36cd88f213f032f44bb63c2"
+    },
+    {
+      "name": "art__rainleaf__v6__wallpaper-1334.65cd6117.webp",
+      "bytes": 77524,
+      "sha256": "65cd6117e4ccfa5fa3ea21c19a3677003b697c79cabc6995b97d0d7547fbeaab"
+    },
+    {
+      "name": "art__rainleaf__v6__wallpaper-2556.9fe210ad.webp",
+      "bytes": 144888,
+      "sha256": "9fe210adffa7b004f9895e11ac17966a1fa6a498d0d0f64e9d4b55e843d450c1"
+    },
+    {
+      "name": "art__rainleaf__v6__wallpaper-2796.948ad7f1.webp",
+      "bytes": 156844,
+      "sha256": "948ad7f163d8e0528a364e880b59e8990aec19afcce13c93b73863c8da20af24"
+    },
+    {
+      "name": "art__rainleaf__v6__widget-fern-unfurl.b500c090.webp",
+      "bytes": 75066,
+      "sha256": "b500c0900699bf1b998a5a4cd0b2d5433c1d15b324d766cc0b0bc9b391f45766"
+    },
+    {
+      "name": "art__rainleaf__v6__widget-jade-rain-frog.ba8d48f9.webp",
+      "bytes": 105480,
+      "sha256": "ba8d48f9a6a4939d774ba34f9090619580ff0e2679596c1fac64a13e61d98eed"
+    },
+    {
+      "name": "art__rainleaf__v6__widget-large.4793343d.webp",
+      "bytes": 137614,
+      "sha256": "4793343d5e77e63dbd50a154517f0b8fae1e8e8daff863a436d82c01b513ad3e"
+    },
+    {
+      "name": "art__rainleaf__v6__widget-live-clock.3c48e9e7.webp",
+      "bytes": 7212,
+      "sha256": "3c48e9e736cb2ec073fb56d8e0cbc7e5d543629bd54a2e8d4239daf924151776"
+    },
+    {
+      "name": "art__rainleaf__v6__widget-medium.cc07d860.webp",
+      "bytes": 61814,
+      "sha256": "cc07d8600c06753907b2a58e24330178059e1a7f44d560efb47e611b62e4af34"
+    },
+    {
+      "name": "art__rainleaf__v6__widget-rain-bamboo.19b64eec.webp",
+      "bytes": 93540,
+      "sha256": "19b64eec77391383ec948e341ce49cacd96305b78d64cf9927ae420157dd4722"
+    },
+    {
+      "name": "art__rainleaf__v6__widget-rainleaf-focus.1841d82d.webp",
+      "bytes": 74264,
+      "sha256": "1841d82ddb186b7b02a6c561b47fac86dc03c48f7c3672b89f2e78a62a2bb169"
+    },
+    {
+      "name": "art__rainleaf__v6__widget-small.3276089c.webp",
+      "bytes": 55944,
+      "sha256": "3276089cbda7c42b92780b071ddaf6e3966f965d9743e875c9e258fd2076c68b"
+    },
+    {
+      "name": "art__rainleaf__v6__widget-themed-live-clock.ac226ea1.webp",
+      "bytes": 134900,
+      "sha256": "ac226ea177b6793e7ea4cd7ccf62439650077f431c46f7f0089b2575dceb536b"
+    },
+    {
+      "name": "art__rainlight__v6__manifest.json",
+      "bytes": 9298,
+      "sha256": "378104d8489e5780a314783b568306379082fb35c4c5b42162efd20fa3f6b0ac"
+    },
+    {
+      "name": "art__rainlight__v6__thumb.6cc0713f.webp",
+      "bytes": 25032,
+      "sha256": "6cc0713fd5a97eda1bbca530032ff8b9442a09d4c3c41b04de713a1a08c89eae"
+    },
+    {
+      "name": "art__rainlight__v6__wallpaper-1334.d414ee77.webp",
+      "bytes": 185020,
+      "sha256": "d414ee77739e1d057421029f7a0772d6a731cf69603d4245142f1584f160b814"
+    },
+    {
+      "name": "art__rainlight__v6__wallpaper-2556.1b868baf.webp",
+      "bytes": 337370,
+      "sha256": "1b868baf07f55f831b51f13b029a9be09510a645aeef520f3e48229e1631a945"
+    },
+    {
+      "name": "art__rainlight__v6__wallpaper-2796.fe0b76b6.webp",
+      "bytes": 368426,
+      "sha256": "fe0b76b65d01af25785554f5a11afef8d160ad28b3d8ea1f84129f524c1987a5"
+    },
+    {
+      "name": "art__rainlight__v6__widget-audit-20261101-after-hours.753111aa.webp",
+      "bytes": 250942,
+      "sha256": "753111aa844f9ae02cef418d207dc23d0d4af27d685c5faeea1783da73236281"
+    },
+    {
+      "name": "art__rainlight__v6__widget-audit-20261101-rain-window.9e53aca4.webp",
+      "bytes": 277694,
+      "sha256": "9e53aca4693aacfb9127f99cbdbf48191652af40b767eb9a92a414887d7762cc"
+    },
+    {
+      "name": "art__rainlight__v6__widget-glass-umbrella.4fc714e5.webp",
+      "bytes": 243856,
+      "sha256": "4fc714e508cc49edf203f9e7af3ec294e053bb9bc806cc552764901474ce154c"
+    },
+    {
+      "name": "art__rainlight__v6__widget-koi.3736d776.webp",
+      "bytes": 227332,
+      "sha256": "3736d776b2888eeae84905ede92fa0d48e896abbdccbb1c4229682287e637fbc"
+    },
+    {
+      "name": "art__rainlight__v6__widget-large.73cea125.webp",
+      "bytes": 199592,
+      "sha256": "73cea1259300ef1ee6f8d0e889d383bec8c222d42ee797c745f37f7a49d465a0"
+    },
+    {
+      "name": "art__rainlight__v6__widget-live-clock.3ffe46e1.webp",
+      "bytes": 7700,
+      "sha256": "3ffe46e1f8e945d775ab306ea8328fe85fe57dbe536fb36d54bb07615c59af92"
+    },
+    {
+      "name": "art__rainlight__v6__widget-medium.ed78c3d6.webp",
+      "bytes": 166790,
+      "sha256": "ed78c3d6d748295eb5968e51d4ce3c6175c5c859c06c266e0cf94c916a268b81"
+    },
+    {
+      "name": "art__rainlight__v6__widget-rain-leaf.761fc7df.webp",
+      "bytes": 169358,
+      "sha256": "761fc7df8a20a8806bc9d287e3b8986c49cdf8d14ed09765d88b0fbd0cd8d212"
+    },
+    {
+      "name": "art__rainlight__v6__widget-rainlight-date.bed38cc0.webp",
+      "bytes": 222992,
+      "sha256": "bed38cc001e8782181eb2c18a323359fbc400cff9111b6ed704a594d855887ad"
+    },
+    {
+      "name": "art__rainlight__v6__widget-small.837d5c63.webp",
+      "bytes": 94934,
+      "sha256": "837d5c63c978d092c0d3b01f8ff4dc63a0a67f951091105d5d41511a14991be1"
+    },
+    {
+      "name": "art__rainlight__v6__widget-themed-live-clock.2f4ec841.webp",
+      "bytes": 227400,
+      "sha256": "2f4ec841f39b37938b1b2e8cb1cd42a95fe2a52fdd8737964579d69d983be203"
+    },
+    {
+      "name": "art__regatta-blue__v6__manifest.json",
+      "bytes": 8295,
+      "sha256": "9c44727a59ccebb1e73d5a6ef12cf70c594a17cb7783b032e7a3ea977104bd8b"
+    },
+    {
+      "name": "art__regatta-blue__v6__thumb.5e4280af.webp",
+      "bytes": 9104,
+      "sha256": "5e4280af0ab9fbfb0767b4b29b41067a7b10a810792dd7267b01b9cfa9c55b7e"
+    },
+    {
+      "name": "art__regatta-blue__v6__wallpaper-1334.da0ecd2b.webp",
+      "bytes": 54304,
+      "sha256": "da0ecd2be496b8d6c5fa0ea6f765ac87f326851442a7edf0d33441f64e62259e"
+    },
+    {
+      "name": "art__regatta-blue__v6__wallpaper-2556.58b8d6ca.webp",
+      "bytes": 122992,
+      "sha256": "58b8d6ca19ceb49249530c6fa58537be2935a649f3ff980a4d47e89e255109d6"
+    },
+    {
+      "name": "art__regatta-blue__v6__wallpaper-2796.2786eb44.webp",
+      "bytes": 136530,
+      "sha256": "2786eb44ca4927251ccb9db46f33417ef37d76f1b5e721bdca0ec9bb2b57b4ba"
+    },
+    {
+      "name": "art__regatta-blue__v6__widget-large.97ddd36b.webp",
+      "bytes": 91876,
+      "sha256": "97ddd36b507f14b00ef68ea72fda40f9d49f11a8011ab3a1f7a2187764328c32"
+    },
+    {
+      "name": "art__regatta-blue__v6__widget-live-clock.8e5cd3ed.webp",
+      "bytes": 8180,
+      "sha256": "8e5cd3ed257a6be3250cf581983bd7ca33cbc1cc1615b20c5a97324dcb6a92fd"
+    },
+    {
+      "name": "art__regatta-blue__v6__widget-live-date.de731754.webp",
+      "bytes": 3386,
+      "sha256": "de7317548c477e49da199cabf18c81b8728739f35a6e9523570e6a82de640452"
+    },
+    {
+      "name": "art__regatta-blue__v6__widget-live-focus.6e25ed27.webp",
+      "bytes": 7974,
+      "sha256": "6e25ed27cde62e21141883c21579318960873995907cbe99b4ba59b121b8b299"
+    },
+    {
+      "name": "art__regatta-blue__v6__widget-medium.db29cd31.webp",
+      "bytes": 75082,
+      "sha256": "db29cd31375a8ba70d7978f0eef9da4c11035d33278d273151ba2f68d65cdfa8"
+    },
+    {
+      "name": "art__regatta-blue__v6__widget-regatta-date.7825dfa8.webp",
+      "bytes": 84118,
+      "sha256": "7825dfa8104fea1b72993cdc22b7c299385a66729cddcb04c043f0f3169d0eed"
+    },
+    {
+      "name": "art__regatta-blue__v6__widget-sail-glass-bottle.a4380d22.webp",
+      "bytes": 74432,
+      "sha256": "a4380d22e60d6d019066427570a63a613630f126b2dc8bec7923d116af696682"
+    },
+    {
+      "name": "art__regatta-blue__v6__widget-small.5325c72c.webp",
+      "bytes": 25818,
+      "sha256": "5325c72c683894dfb7bfd373020555c457bda23444da152a042faa943e7c9b2a"
+    },
+    {
+      "name": "art__regatta-blue__v6__widget-themed-live-clock.e2930402.webp",
+      "bytes": 70432,
+      "sha256": "e2930402f9312dd09add1ae93ab6502a35eee1b2d9b45ebe1901fb072dc299f2"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__manifest.json",
+      "bytes": 7282,
+      "sha256": "2c57cae7e4a1fc74bc9689d94239d52235f45cd4277c592b8fabc5fa0876fc72"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__thumb.203e0eb4.webp",
+      "bytes": 6568,
+      "sha256": "203e0eb4f7ca9e3051a9b3ac0886b593310fd47ade40dfe8e773317ab87eb530"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__wallpaper-1334.e2b26417.webp",
+      "bytes": 50202,
+      "sha256": "e2b2641721fd378d003803e72182bb97a5fc6dee260da485024516f687135f1e"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__wallpaper-2556.db0b4456.webp",
+      "bytes": 139944,
+      "sha256": "db0b44560e39be1c0664d3d2d58dc70105a89e44ac9ea2d3f9123d2dfa80695e"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__wallpaper-2796.bbb0961d.webp",
+      "bytes": 159894,
+      "sha256": "bbb0961d660a66c9b4a532f7c4c45b327c47c7ece841cbd4598999d14b5c03dd"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-audit-20261101-pearl-pendulum.6df4365d.webp",
+      "bytes": 99236,
+      "sha256": "6df4365d98c76679d2a2f4de715a84efe0aabb0ee82287a20eb77ba6329550c9"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-glass-rose.fff58ab0.webp",
+      "bytes": 128356,
+      "sha256": "fff58ab0f179a0a54f05ec5bbf5877539880e468e05ab0c7dd2aff08f059d116"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-large.d794d22e.webp",
+      "bytes": 210498,
+      "sha256": "d794d22e57ad339e23f3d41f7007083ae95ca11a1a5f3dd6feb1b017f6989a0c"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-live-clock.2708a619.webp",
+      "bytes": 5558,
+      "sha256": "2708a61919adcb88df33a949409b4b4efc5acd5e9289b655c6c39be0b7b15e76"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-medium.a237e3b0.webp",
+      "bytes": 110896,
+      "sha256": "a237e3b0e3baa0d0033c6bc149dc796af3a7a65fd76d2672d7930ea1a1a89ff4"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-pearl-ballet-brooch.6dfadda6.webp",
+      "bytes": 140600,
+      "sha256": "6dfadda6d978ac65491075b23245d212c02df20ceeb6ff4f7142dc2adcba89c8"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-rehearsal-countdown.4eff6fe3.webp",
+      "bytes": 89896,
+      "sha256": "4eff6fe3350ef0edacfcfe373e7645799f6253d92c466dc4a8cfb41b673b71e2"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-satin-swan.15bca733.webp",
+      "bytes": 126900,
+      "sha256": "15bca7331b9b80525ac751a0db902fb8537c311f523009e2ae35ac5044823299"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-small.66b748a9.webp",
+      "bytes": 54912,
+      "sha256": "66b748a9a3344c961f74bd8bc1d1dd45a4a28e1ce5624026f0a14b18e41fe215"
+    },
+    {
+      "name": "art__rosewater-reverie__v6__widget-themed-live-clock.c47a7c6c.webp",
+      "bytes": 154458,
+      "sha256": "c47a7c6ce94eb3bd6fac3631be482ad698a1202bb1d3c1ddbe11372638e58da8"
+    },
+    {
+      "name": "art__saddlewood__v6__manifest.json",
+      "bytes": 8209,
+      "sha256": "89f81578570173ce9975f639bdf22e6dbe0188826d250bdd7c91f0381492147a"
+    },
+    {
+      "name": "art__saddlewood__v6__thumb.82ae9434.webp",
+      "bytes": 14604,
+      "sha256": "82ae9434a27dcb2319a2452408a4eb99cddddf41ec461f7d52d9467a65fa573c"
+    },
+    {
+      "name": "art__saddlewood__v6__wallpaper-1334.975f8433.webp",
+      "bytes": 71310,
+      "sha256": "975f8433c29bdb76ef77406a0166bc531d2faa924cf079b6a0f801751f89b56d"
+    },
+    {
+      "name": "art__saddlewood__v6__wallpaper-2556.1d8cbb51.webp",
+      "bytes": 148960,
+      "sha256": "1d8cbb51f36f4ea47f355d1ef67ee8187aa802d3b148db2920a0f15dc6e3c46a"
+    },
+    {
+      "name": "art__saddlewood__v6__wallpaper-2796.3180e3c6.webp",
+      "bytes": 165492,
+      "sha256": "3180e3c6e795930c592e7e39d37465e6520bc0aad1b66e91ff448a355afbd2f2"
+    },
+    {
+      "name": "art__saddlewood__v6__widget-large.7559562d.webp",
+      "bytes": 191290,
+      "sha256": "7559562d38fa08ba7c6c40de48257ae0e026f39e5af7af7eb76ccf4e08aadbdd"
+    },
+    {
+      "name": "art__saddlewood__v6__widget-leather-compass.df12997d.webp",
+      "bytes": 80080,
+      "sha256": "df12997d4a1ae815bdd6802995d4feab3680480acc967d4ffc0099a474c64127"
+    },
+    {
+      "name": "art__saddlewood__v6__widget-live-clock.f1d7f1ba.webp",
+      "bytes": 6204,
+      "sha256": "f1d7f1ba385b56aed243ed102a51cf92fe5401d15bbab5685aa65dedb452211b"
+    },
+    {
+      "name": "art__saddlewood__v6__widget-live-date.3179308b.webp",
+      "bytes": 3120,
+      "sha256": "3179308b88c90f1b04a6a00e005f4aec836bb71a3c952ae3f24fa6890196435b"
+    },
+    {
+      "name": "art__saddlewood__v6__widget-live-focus.92a55cf5.webp",
+      "bytes": 6128,
+      "sha256": "92a55cf5761ef430d984ede74a49d6eb546002bea1689032ec930679e2605817"
+    },
+    {
+      "name": "art__saddlewood__v6__widget-medium.05c11022.webp",
+      "bytes": 66364,
+      "sha256": "05c11022adfc26480ad472b1fdcf215ee62f5bb82da1f3bc7ea84515e9b1b881"
+    },
+    {
+      "name": "art__saddlewood__v6__widget-small.c57ce4f3.webp",
+      "bytes": 50548,
+      "sha256": "c57ce4f344e5290f537d4b5dbff9e6375f5b1318ed8ca9206163f6023a9017b4"
+    },
+    {
+      "name": "art__saddlewood__v6__widget-themed-live-clock.3618fb97.webp",
+      "bytes": 148992,
+      "sha256": "3618fb97beaa92693efd6e782f60302cd1cbeec838be2a49b16fc7123221e0eb"
+    },
+    {
+      "name": "art__saddlewood__v6__widget-trail-countdown.8c8946db.webp",
+      "bytes": 118240,
+      "sha256": "8c8946dbd9e5600d54259881b33f7c196fcecc04695a1b8ede21f6dac0385a1c"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__manifest.json",
+      "bytes": 7293,
+      "sha256": "81c7fba2534a635078630a9504ba18989f667482b858f2afc101328e9560ddc5"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__thumb.44141cc1.webp",
+      "bytes": 18488,
+      "sha256": "44141cc171662e7bf75974fd689291848ebe05856aeaf14915e4d17880c91f08"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__wallpaper-1334.29353376.webp",
+      "bytes": 119974,
+      "sha256": "29353376682973f8d74fd96826328f56ead4f9bf0228d72a4c96b03b44012825"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__wallpaper-2556.7788e746.webp",
+      "bytes": 241754,
+      "sha256": "7788e746f4305e6b800ff2519c2c896207e65ff56b48b336d4e6e37693e71e33"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__wallpaper-2796.e769e6a6.webp",
+      "bytes": 270260,
+      "sha256": "e769e6a6dd1cf06a217d4060319ab30959ad0c93a898d6e59d06cbf8c5fb6ed4"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-audit-20261101-sun-tile-clock.6e0cca6b.webp",
+      "bytes": 140730,
+      "sha256": "6e0cca6ba96fe765b655bec1865505268b56e8d36335e5df98196c625e97544a"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-courtyard-date.c7a91778.webp",
+      "bytes": 127222,
+      "sha256": "c7a91778c8acb774adf664a457f2ed78d05b39bef2ab2fa778a5ba9e3c056912"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-glazed-lemons.408010c8.webp",
+      "bytes": 98778,
+      "sha256": "408010c8d45878880761ffcd0c45245774e4b8f86df547451e0f140dcd2841d1"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-large.2adf5aa1.webp",
+      "bytes": 187074,
+      "sha256": "2adf5aa1058f7c7a73a90bcc08a36318c8e0a07bc1ee806e17804d6d39a77945"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-live-clock.13e1dbb3.webp",
+      "bytes": 6278,
+      "sha256": "13e1dbb31f12c2bb8d071d93f537a045bda747a307dd6bbd0715187135f83a4f"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-medium.9d25458e.webp",
+      "bytes": 125310,
+      "sha256": "9d25458ea432ab1664f8fec34582d73f474568bdff02a0ae0c2746dc9b00b83a"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-mosaic-sunbird.1cdd845f.webp",
+      "bytes": 88112,
+      "sha256": "1cdd845f5fb065408b92824ec1ccb1156f2f1994426548cdfecb542b0e7bdc96"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-pomegranate-court.07ac6777.webp",
+      "bytes": 159856,
+      "sha256": "07ac6777aa2afc6b2257aca389aea795fc595c5025e34cb43cc3555b744d5de0"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-small.fa3df649.webp",
+      "bytes": 47750,
+      "sha256": "fa3df649d48ad94333db045035d6b3756e2151748a26b26961fe44a6a024e088"
+    },
+    {
+      "name": "art__saffron-courtyard__v6__widget-themed-live-clock.67da9cb2.webp",
+      "bytes": 121494,
+      "sha256": "67da9cb25ac37488aab3b79467190b8aaeff3a8020a22738315c86c3bb135675"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__manifest.json",
+      "bytes": 8261,
+      "sha256": "31aeaf4884874b334bf963ee12297dabea8830b34047677265efa625424cbefd"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__thumb.2c50fc92.webp",
+      "bytes": 12080,
+      "sha256": "2c50fc921d11c5f38e65484b5297414a4c95f761e663178c69f8f2804e334e01"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__wallpaper-1334.e0a05e2f.webp",
+      "bytes": 61578,
+      "sha256": "e0a05e2fd77378a1ef120bd043f3f38c1640ff519044dab848a86a3ce634ab49"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__wallpaper-2556.a85c0c6a.webp",
+      "bytes": 162072,
+      "sha256": "a85c0c6ab8a304b2d9b09824b032dc244c2962c9a6878b158939a68b08a59b0d"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__wallpaper-2796.6612bbda.webp",
+      "bytes": 177820,
+      "sha256": "6612bbda24173e12b1ed47ddfcb8e852ee71cb482803f99591e02fd668aef502"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__widget-large.8d087d5b.webp",
+      "bytes": 88208,
+      "sha256": "8d087d5b121427c0098ff118b5143ab8e5fa6b088720b9b28e07eef6f84fcfb9"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__widget-live-clock.73e27add.webp",
+      "bytes": 6296,
+      "sha256": "73e27add50dc5b3c83a773cbac82c712bbe399585547293620c3e0618b1e8b06"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__widget-live-date.65333822.webp",
+      "bytes": 3088,
+      "sha256": "653338229ad0a370d0e74082b919d70e3af78a8bd164005a7e4175170c359d30"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__widget-live-focus.783fb03b.webp",
+      "bytes": 6142,
+      "sha256": "783fb03b5c32bd77c5436d29297fdd254a88ee3510c0559f16090559efcb65f0"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__widget-medium.1d1996d6.webp",
+      "bytes": 59890,
+      "sha256": "1d1996d66fbae5410f9f1216a73d6e3d3a446575bda359defdcdde129e613383"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__widget-siesta-focus.f7298eeb.webp",
+      "bytes": 95580,
+      "sha256": "f7298eeb684534f6564a4193555c9ba773495aaaf5ac3bc183e1ec500c5ee14d"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__widget-small.dfb799dd.webp",
+      "bytes": 22932,
+      "sha256": "dfb799ddfc91757e96a8759223c495636290348b360f4b561c24c464a52f33ed"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__widget-terracotta-snake.e0eb8f4e.webp",
+      "bytes": 87548,
+      "sha256": "e0eb8f4e64d7f26c8674ad79578d2e30be728c5e55b60679232537497938d43f"
+    },
+    {
+      "name": "art__saguaro-siesta__v6__widget-themed-live-clock.5a3047c0.webp",
+      "bytes": 64484,
+      "sha256": "5a3047c0f54fe659c3bd3893859b1e7caca7fa98a4ca907c6b5bdea4ee5b5ad2"
+    },
+    {
+      "name": "art__saltveil__v6__manifest.json",
+      "bytes": 7191,
+      "sha256": "67c2d0960c65c6a1dd12955ce1bd0760c6f69bddd69b807ba2b787e845981480"
+    },
+    {
+      "name": "art__saltveil__v6__thumb.bfc24321.webp",
+      "bytes": 11026,
+      "sha256": "bfc243217a35bf01c0d58a6b8e7da769b6236ed54ab1aacbae579d1b2fbcb46d"
+    },
+    {
+      "name": "art__saltveil__v6__wallpaper-1334.37660905.webp",
+      "bytes": 71704,
+      "sha256": "37660905e7b514c2ce93f7cb1ae0d5e67f1f2e7f32197035b5b23b0f9d6656f3"
+    },
+    {
+      "name": "art__saltveil__v6__wallpaper-2556.57dcdc65.webp",
+      "bytes": 146500,
+      "sha256": "57dcdc65b35b1034f76933bbfba4932b6127b05665bd31aca9bd2e897503556d"
+    },
+    {
+      "name": "art__saltveil__v6__wallpaper-2796.7563b760.webp",
+      "bytes": 162570,
+      "sha256": "7563b76003038dc8f9106d3b1b13c771d267eabc718403a4fdda6e8cbe2f1316"
+    },
+    {
+      "name": "art__saltveil__v6__widget-large.28aa5bf9.webp",
+      "bytes": 205632,
+      "sha256": "28aa5bf9731a81487aa14f05482a82e33297c4698c6ae7c68664e432f01fd1c5"
+    },
+    {
+      "name": "art__saltveil__v6__widget-live-battery.bd261317.webp",
+      "bytes": 2618,
+      "sha256": "bd261317e004df6a1e8c6949c1814ea03fe885ce23116897549b1011d7054595"
+    },
+    {
+      "name": "art__saltveil__v6__widget-live-clock.e3200b0e.webp",
+      "bytes": 5578,
+      "sha256": "e3200b0e2729233f13352cba886fbeb4da0799970ad39c24cb550d66206d78df"
+    },
+    {
+      "name": "art__saltveil__v6__widget-live-date.53f82f30.webp",
+      "bytes": 3128,
+      "sha256": "53f82f30e9fdbe160f092af7808ba3c0e0f96a95993a9c55774d02c8d58bf8b0"
+    },
+    {
+      "name": "art__saltveil__v6__widget-live-focus.645b806e.webp",
+      "bytes": 5492,
+      "sha256": "645b806ecc03d19aa8ec213af1d4d103fb8f1ebc5eea1b52a98a3190c2c18226"
+    },
+    {
+      "name": "art__saltveil__v6__widget-medium.9ae9158d.webp",
+      "bytes": 100906,
+      "sha256": "9ae9158dc9b607817e9c8e433be7f695b6e681f146a1ea9f10b2212a22fbf4a7"
+    },
+    {
+      "name": "art__saltveil__v6__widget-salt-crystal.a68920a7.webp",
+      "bytes": 97336,
+      "sha256": "a68920a735e352dcc6ece702a74820b64021c794f3c1a6c4fc2650fffd2ea66f"
+    },
+    {
+      "name": "art__saltveil__v6__widget-small.c09f7282.webp",
+      "bytes": 50658,
+      "sha256": "c09f7282eddfb3fab8870637a436c9ba8c07931037d83d2819a76206130cd476"
+    },
+    {
+      "name": "art__saltveil__v6__widget-themed-live-clock.ad16bbc9.webp",
+      "bytes": 124328,
+      "sha256": "ad16bbc929c6b03f2af3e21f1f0cf358141957b600ec285588544d63c698785d"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__manifest.json",
+      "bytes": 8152,
+      "sha256": "fc12f8ad6eaf202f1cf92db96eccafecebce41d8f63c1b0941dd2ea28b711d1c"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__thumb.509024f5.webp",
+      "bytes": 8178,
+      "sha256": "509024f5bd7841c8e45e2006100390adef8eab3aecbd8350e3cd86132a4466ee"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__wallpaper-1334.2c927e55.webp",
+      "bytes": 54412,
+      "sha256": "2c927e553d23fc6abcf0b171f51438b8df7e823facdbe1516b4165e204bc7aca"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__wallpaper-2556.b5e0b3c4.webp",
+      "bytes": 107658,
+      "sha256": "b5e0b3c4e2d944075c3f7d01a9259f749d2bcb4579426c85df0c9db645ad7682"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__wallpaper-2796.6c3511f6.webp",
+      "bytes": 120806,
+      "sha256": "6c3511f64a8a8763adb4b8fd12f980802e7866893ce7c3825cd3e577976da878"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__widget-coastal-countdown.30176c4b.webp",
+      "bytes": 90234,
+      "sha256": "30176c4b2b58c913785c72bb66c0be33ac6c9e37cf4ffb44fb36296184899720"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__widget-large.7c8fe5f9.webp",
+      "bytes": 159168,
+      "sha256": "7c8fe5f9261f23f383ed52417375f568f730adecf026e839d5832dc5ff02e183"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__widget-live-clock.b6407aba.webp",
+      "bytes": 6974,
+      "sha256": "b6407aba11f62c9e185e6e6daaffe1c706a33d8f3b48d46a180e3942d8797548"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__widget-live-date.c34a8550.webp",
+      "bytes": 3540,
+      "sha256": "c34a8550328d0f33fb01160d4477c98127314e7f031a810c55d28c0cda3363af"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__widget-live-focus.129bd826.webp",
+      "bytes": 6830,
+      "sha256": "129bd8260376e34a19fd32677f45f6a19cb3be964bc86605aaec48f2bdb04420"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__widget-medium.0018f08f.webp",
+      "bytes": 39662,
+      "sha256": "0018f08f1c95af4c8c27e3d7e6dda6c276a1316fcdc539389985ef9c3fd04b67"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__widget-sea-glass-bottle.72804a7b.webp",
+      "bytes": 104046,
+      "sha256": "72804a7b9f6e16e4021d4b6bb87a92b61c3d8b630d1e9daf03a91c674a3194a3"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__widget-small.68634812.webp",
+      "bytes": 37104,
+      "sha256": "68634812599ee2824a39f0e443e41ae824b2ce3f839e436f5f931473d898f313"
+    },
+    {
+      "name": "art__sea-glass-sunday__v6__widget-themed-live-clock.de220988.webp",
+      "bytes": 117618,
+      "sha256": "de220988eef9f3f2f8c598d2105d5f3b9f48847246fb6bfd0b6eb561cc4e4606"
+    },
+    {
+      "name": "art__signal-yellow__v6__manifest.json",
+      "bytes": 6751,
+      "sha256": "0914879730352f16bbf150730f98f4f0e311b19cbf9ffd0730627b7f220f49a6"
+    },
+    {
+      "name": "art__signal-yellow__v6__thumb.d316d195.webp",
+      "bytes": 11778,
+      "sha256": "d316d195aa00a5f68cc31f3132f3bc1e0b70ab94ed456d28c7cf93b41aa1ac26"
+    },
+    {
+      "name": "art__signal-yellow__v6__wallpaper-1334.3ad6cc88.webp",
+      "bytes": 136268,
+      "sha256": "3ad6cc8881286e82404987c56b5d9926e61fb504f3a1af69324ef81b1dfd026d"
+    },
+    {
+      "name": "art__signal-yellow__v6__wallpaper-2556.b10ff389.webp",
+      "bytes": 309922,
+      "sha256": "b10ff38940c4240bd808acdb004f206081a1177d4959afe9d6431b2b6465359c"
+    },
+    {
+      "name": "art__signal-yellow__v6__wallpaper-2796.fdbda710.webp",
+      "bytes": 341430,
+      "sha256": "fdbda710ae3cfa456358095bfb5ec4d56d0e96b38baa48391a57f49b60cc66d1"
+    },
+    {
+      "name": "art__signal-yellow__v6__widget-large.ffa55735.webp",
+      "bytes": 290706,
+      "sha256": "ffa55735a0c51192efa4ece1cb8ec0e60f644ec274597e2079578244a578bbe4"
+    },
+    {
+      "name": "art__signal-yellow__v6__widget-live-clock.c9e6cf4d.webp",
+      "bytes": 5908,
+      "sha256": "c9e6cf4d747807de32fc4b02a404b8a3deac9e931d6e2559441f4680915d1c58"
+    },
+    {
+      "name": "art__signal-yellow__v6__widget-medium.95dbff12.webp",
+      "bytes": 141070,
+      "sha256": "95dbff12d632817f2e401bb406895c36b6ec0355514bac6b880ee23a999c9c94"
+    },
+    {
+      "name": "art__signal-yellow__v6__widget-platform-focus.1ee20e0a.webp",
+      "bytes": 216708,
+      "sha256": "1ee20e0add1e6e798235c50f85ede69b75376c3d14983a5c4de6d373b5c313ae"
+    },
+    {
+      "name": "art__signal-yellow__v6__widget-platform-slice.8c78d32f.webp",
+      "bytes": 197066,
+      "sha256": "8c78d32f1b97961f68f3df16699840551d88033aa42db59e1b70160f2f96f15d"
+    },
+    {
+      "name": "art__signal-yellow__v6__widget-signal-lantern.4ca883f4.webp",
+      "bytes": 253268,
+      "sha256": "4ca883f4a345916034e55c143f8c4534ff455f1f3414e0e4929fb7525031212e"
+    },
+    {
+      "name": "art__signal-yellow__v6__widget-small.d0cb2226.webp",
+      "bytes": 42142,
+      "sha256": "d0cb2226575902eb9df921b3564bf921de0944a1c934788badba5a4ccf15e0d0"
+    },
+    {
+      "name": "art__signal-yellow__v6__widget-themed-live-clock.1df2eee6.webp",
+      "bytes": 188734,
+      "sha256": "1df2eee63218ec7197590ecbeb38280956b786a4061a31da16d79a7694a6c8fa"
+    },
+    {
+      "name": "art__signal-yellow__v6__widget-transit-ticket-fold.60eb656b.webp",
+      "bytes": 196410,
+      "sha256": "60eb656b9ebb12b53b5a3748f381dca01d5ca65fbd3942ee8d3dd8bfacbe28f9"
+    },
+    {
+      "name": "art__silver-orchard__v6__manifest.json",
+      "bytes": 6833,
+      "sha256": "362c68c2e293fd4a5388a96f360d6eb719bb7b677e22750c5bd844fce73d829f"
+    },
+    {
+      "name": "art__silver-orchard__v6__thumb.76032c6e.webp",
+      "bytes": 9812,
+      "sha256": "76032c6ef9b152373bbc7fab77ec5ad6d82fb546fb53d32ef6d7b9f600b5dd73"
+    },
+    {
+      "name": "art__silver-orchard__v6__wallpaper-1334.c32541f6.webp",
+      "bytes": 77616,
+      "sha256": "c32541f6518163f6fd6448d07e0b03999e55ab53a411f6fba94d37d6851551ec"
+    },
+    {
+      "name": "art__silver-orchard__v6__wallpaper-2556.5bee130b.webp",
+      "bytes": 157122,
+      "sha256": "5bee130bbc9231972063bf449569176e29b15dd71fd2a6f892c01254178f121f"
+    },
+    {
+      "name": "art__silver-orchard__v6__wallpaper-2796.ef50c64b.webp",
+      "bytes": 174892,
+      "sha256": "ef50c64b31a973a25c1ee758947206d78b4e055b17a4d2006eadd3e0b7b7432e"
+    },
+    {
+      "name": "art__silver-orchard__v6__widget-glass-orchard-snail.10df11be.webp",
+      "bytes": 112104,
+      "sha256": "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025"
+    },
+    {
+      "name": "art__silver-orchard__v6__widget-large.5c2a549a.webp",
+      "bytes": 176334,
+      "sha256": "5c2a549a7f4b1f0fcc13f86253763db6d2be05faea3e83e9e80fd86f693f1111"
+    },
+    {
+      "name": "art__silver-orchard__v6__widget-live-clock.5dead846.webp",
+      "bytes": 6676,
+      "sha256": "5dead846685c5ad1ceb1644f1cdc6156c99ec53bb8e078cb0a82332b52951fd6"
+    },
+    {
+      "name": "art__silver-orchard__v6__widget-medium.99d355db.webp",
+      "bytes": 112018,
+      "sha256": "99d355dbc5ccb3a75767f81ad59b7c30c273749d02bb39347a69f07eaf37af64"
+    },
+    {
+      "name": "art__silver-orchard__v6__widget-orchard-date.1fa6fd06.webp",
+      "bytes": 126340,
+      "sha256": "1fa6fd060c1e00b9b0b140f6dfdb91d6bb9e0b27051a9e9aae94161c02b6e40c"
+    },
+    {
+      "name": "art__silver-orchard__v6__widget-silver-dormouse.9881d967.webp",
+      "bytes": 118360,
+      "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694"
+    },
+    {
+      "name": "art__silver-orchard__v6__widget-silver-leaf-lantern.0e3e56b7.webp",
+      "bytes": 96254,
+      "sha256": "0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c"
+    },
+    {
+      "name": "art__silver-orchard__v6__widget-small.089da6c1.webp",
+      "bytes": 44636,
+      "sha256": "089da6c1648f56007ef17d84b1d59d34a31738957331be428ac2cb782df42ad4"
+    },
+    {
+      "name": "art__silver-orchard__v6__widget-themed-live-clock.1fe0b254.webp",
+      "bytes": 147092,
+      "sha256": "1fe0b254ae57196ecdffda04471e60fc2302434dbedece1734cf97b7fb0cd609"
+    },
+    {
+      "name": "art__sonata-house__v6__manifest.json",
+      "bytes": 8259,
+      "sha256": "23903f3c00c95fad5f6700d8364fc62c9aa85649fac125e9c3329ae6af2ac074"
+    },
+    {
+      "name": "art__sonata-house__v6__thumb.f35310ca.webp",
+      "bytes": 9898,
+      "sha256": "f35310ca010ea4809921e304594a18c2db2343f809cd9f16efeeb5c1a882637c"
+    },
+    {
+      "name": "art__sonata-house__v6__wallpaper-1334.326a4f29.webp",
+      "bytes": 59042,
+      "sha256": "326a4f29c6b310cfb0cb551e1df8ade72597a73fcd249940db4355061dc5c369"
+    },
+    {
+      "name": "art__sonata-house__v6__wallpaper-2556.44e7a72f.webp",
+      "bytes": 125278,
+      "sha256": "44e7a72f9728b5b5977342b203a001212b8099d7b854348c12ea11a8c830b263"
+    },
+    {
+      "name": "art__sonata-house__v6__wallpaper-2796.e5a69ecf.webp",
+      "bytes": 145676,
+      "sha256": "e5a69ecf85fd905f83bd60a8b084fc949f39c66cc8187dccc31503fd6c0a333a"
+    },
+    {
+      "name": "art__sonata-house__v6__widget-large.c7a03e79.webp",
+      "bytes": 115248,
+      "sha256": "c7a03e79130a7f14fd7a378a3dd30fd42e3bea38f2c1b92f35da92620b8622be"
+    },
+    {
+      "name": "art__sonata-house__v6__widget-live-clock.30a9e7ce.webp",
+      "bytes": 5830,
+      "sha256": "30a9e7ce693690fe13dbdb464e97bd759d95d7da12848119703cb89caaaffea2"
+    },
+    {
+      "name": "art__sonata-house__v6__widget-live-date.db022399.webp",
+      "bytes": 2940,
+      "sha256": "db022399bf26cf3992cb747e22519f2497cc819ee2ef1fa47b02eacb72c09e51"
+    },
+    {
+      "name": "art__sonata-house__v6__widget-live-focus.2da095bc.webp",
+      "bytes": 5718,
+      "sha256": "2da095bcad0baf5883750948cc38a576d53b99f608e785c48ec24b725e8b74ae"
+    },
+    {
+      "name": "art__sonata-house__v6__widget-medium.447106e6.webp",
+      "bytes": 35476,
+      "sha256": "447106e6d0843d3c2a0ac6ad9a07451bab572f2fa22d1f774dc053c88f0b6624"
+    },
+    {
+      "name": "art__sonata-house__v6__widget-practice-chapters.1090c2b9.webp",
+      "bytes": 57818,
+      "sha256": "1090c2b9aae19d102e0a4937f0573bfd3ca9f5770a82d06108f9eabab7f83a30"
+    },
+    {
+      "name": "art__sonata-house__v6__widget-small.20939f9b.webp",
+      "bytes": 40482,
+      "sha256": "20939f9be022ba266c42988c312c9fca44428d52c8b5510042d636d88624bf5b"
+    },
+    {
+      "name": "art__sonata-house__v6__widget-string-butterfly.7ef3bab5.webp",
+      "bytes": 81710,
+      "sha256": "7ef3bab57cc57f52fce734b6b120c517ae9bf8fb578f2b9367a308d36604bf38"
+    },
+    {
+      "name": "art__sonata-house__v6__widget-themed-live-clock.444d2484.webp",
+      "bytes": 104666,
+      "sha256": "444d24846d2ab62b9107259da8c2f240aab5341c4b17578901fa84349c6d3cd1"
+    },
+    {
+      "name": "art__spare-time__v6__manifest.json",
+      "bytes": 8285,
+      "sha256": "058c8863ffd62a23bbecdd14c3c7f34847aa059b088e1872db6e19ec605223b2"
+    },
+    {
+      "name": "art__spare-time__v6__thumb.9ecd0905.webp",
+      "bytes": 10280,
+      "sha256": "9ecd0905bfc39b6b4452919f3f55828de252ab44a633ccffbb929be939c150ea"
+    },
+    {
+      "name": "art__spare-time__v6__wallpaper-1334.b4e6ff64.webp",
+      "bytes": 56654,
+      "sha256": "b4e6ff643372651dcea3167a7b25e19eb8982410498dcfc76388a4702c0d786f"
+    },
+    {
+      "name": "art__spare-time__v6__wallpaper-2556.85a7d872.webp",
+      "bytes": 97468,
+      "sha256": "85a7d872086f2615c07d9375c1696772a2c7d39c9120409a6de93c889e8812fa"
+    },
+    {
+      "name": "art__spare-time__v6__wallpaper-2796.ecb4c37f.webp",
+      "bytes": 107508,
+      "sha256": "ecb4c37f35972d4ac1bb3baa28f69d63a724b960366971ecada6755302de07ba"
+    },
+    {
+      "name": "art__spare-time__v6__widget-bowling-satellite.026a2933.webp",
+      "bytes": 42178,
+      "sha256": "026a2933d175cc549bd423d74d2bdd4adda880a4e05e25966ba52b73963a2b24"
+    },
+    {
+      "name": "art__spare-time__v6__widget-large.452884fe.webp",
+      "bytes": 75778,
+      "sha256": "452884fe534f4882d0b121ee250e22662f5ecbecc0728a3155cd9d16422c39fd"
+    },
+    {
+      "name": "art__spare-time__v6__widget-live-clock.2f3b7c1e.webp",
+      "bytes": 6354,
+      "sha256": "2f3b7c1e1551128878bba5f1fddfcd84c303bc63dd3c6fa31873d00f66f00a81"
+    },
+    {
+      "name": "art__spare-time__v6__widget-live-date.c0f069ff.webp",
+      "bytes": 3254,
+      "sha256": "c0f069ffe4749b13c45d16579e56e82b7e753b106d0e60dd452f0d99d5f3ef7a"
+    },
+    {
+      "name": "art__spare-time__v6__widget-live-focus.c29f666a.webp",
+      "bytes": 6188,
+      "sha256": "c29f666a16d2dc5f6ca04ab20ce6a92e97abe6230ac8cb79fd92ba530a0d4d7f"
+    },
+    {
+      "name": "art__spare-time__v6__widget-medium.c076e9c7.webp",
+      "bytes": 44894,
+      "sha256": "c076e9c7997139aad7467b2fdbc8f0310fd8b2e96f98baef6213335c4386b20a"
+    },
+    {
+      "name": "art__spare-time__v6__widget-small.b84af80a.webp",
+      "bytes": 7524,
+      "sha256": "b84af80ae897cb14c4417085513b76fb72b6f0120e987b5daec278fe42bd2759"
+    },
+    {
+      "name": "art__spare-time__v6__widget-spare-goals.3393b2db.webp",
+      "bytes": 46034,
+      "sha256": "3393b2db3ebbb080eb11afc7296d2961c39a1258e637b88aeb3cb55b9644eaeb"
+    },
+    {
+      "name": "art__spare-time__v6__widget-themed-live-clock.c6a23de4.webp",
+      "bytes": 18096,
+      "sha256": "c6a23de4b397b5c99f087e2008b60a7158325d312530b9ac4b07b0539e37817a"
+    },
+    {
+      "name": "catalog.json",
+      "bytes": 117627,
+      "sha256": "948bc573b1a41c16fd8a1160f2905cc772a11f19ad3b9bef7db179ac4430c46c"
+    }
+  ],
+  "count": 687,
+  "bytes": 71140834
+}

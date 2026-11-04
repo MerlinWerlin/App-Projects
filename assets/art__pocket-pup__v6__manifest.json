@@ -1,0 +1,290 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "pocket-pup",
+  "packVersion": 6,
+  "name": "Pocket Pup",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#D9EAFC",
+    "tile": "#BFCDDC",
+    "glyph": "#1C1816",
+    "accent": "#DAEAFD",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Pocket Pup",
+    "mood": "A tiny eraser-style corgi in soft pastels.",
+    "tags": [
+      "pocket",
+      "tiny",
+      "eraser",
+      "style",
+      "corgi",
+      "soft",
+      "pastels",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 POCKET PUP. Adorably cute miniature CORGI made in the style of a hand-carved JAPANESE NOVELTY ERASER: velvety MATTE RUBBER, faint micro-porous texture, clean simplified softly rounded molded shapes, no gloss no fur no yarn no ceramic no resin. Powder BLUE background #E5EDF7, UPPER68percent EMPTY quiet blue, subtle fine paper texture only, no pattern lettering objects. Bottom30percent ONE tiny round warm-cream CORGI PUPPY with biscuit-tan ears/back, huge short rounded ears, cocoa dot eyes, tiny black nose and tiny smiling mouth, pale peach blush, stumpy paws. Puppy tucked snugly into ONE oversized soft PERIWINKLE SLIPPER shaped eraser with pale cream lining, front paws resting over rounded slipper rim, tiny peach collar with cream heart tag. A small pastel peach rubber ball with one simple cream star beside slipper, two tiny cream daisy flowers. Entire scene small around55percent canvas width, corgi about13percent canvas height, centered LOW, full safe margins. Sweet cozy kawaii stationery collectible, beautifully restrained tiny still life, diffused light and soft contact shadows. Powderblue/cream/biscuit tan/periwinkle/peach palette. No strawberry rabbit yarn crochet dragon beeswax lantern axolotl capybara duck tea or clocks. No logos lettering packaging phoneframes UI watermark.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "eOcFCwLmj5RocY6EGWOgECY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.ffab743a.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 54100,
+      "sha256": "ffab743aa3e8cd3fa7e6ae009a55e74a2ccd05815f9d44eb61aa270a871599db",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1282c2b2.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 46598,
+      "sha256": "1282c2b2b653aac884812416a625318600236f82db541edb208653a882a02f15",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.24ab129e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 21034,
+      "sha256": "24ab129e2c772fe896d994f545cb444f8b97015560af35f4ccd0a1896ce79692",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.7a10a7b9.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 8818,
+      "sha256": "7a10a7b9ff61452fa10db72ffec9fac6a44f6072443f2709f97bcaad3ee071e7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.6a9e4613.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 34554,
+      "sha256": "6a9e46138800ce40e09def3962850ebf5a30cd9acaf37a0a03180839f5be0f1e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.98136f09.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 37130,
+      "sha256": "98136f09b267c30750ade83267cd9bc55f0aef806857c76baa0ea4fcf27e957b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.07a08583.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 3506,
+      "sha256": "07a0858341b817033201b26fe4f6ccd49bb91d18576de0e026bb40e56960f84a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.9d7b534d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 22988,
+      "sha256": "9d7b534d90f186c4f4c3cfcd55eca1049634c1f19bc098521dfc8b9b0c97a9ec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pocket-mailbox.0a0b59ef.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 33292,
+      "sha256": "0a0b59ef7344da26a6fe75cd5ad91788f53a106ea0d2a4b3eaa48ef9b689e930",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pup-habits.92020abb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 36688,
+      "sha256": "92020abb5d3fd22ab5873ed61534322d725cf959f3b4bf9ebf808931a1e970fc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.46323372.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7480,
+      "sha256": "4632337271fe36ef879119f72618bd2883781684719a55a28bcf4b29c9104f8a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.face69c9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3414,
+      "sha256": "face69c9566298354bdecf9c715bd89678adfc070809eee7946d19b251df00fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.791d0f5e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7288,
+      "sha256": "791d0f5e6199725b5e982272dac91806c1af2575aee686d6a7fb95358968908c",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 316890,
+  "widgets": [
+    {
+      "id": "pocket-mailbox",
+      "kind": "art",
+      "image": "widget-pocket-mailbox.0a0b59ef.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pocket mailbox"
+    },
+    {
+      "id": "pup-habits",
+      "kind": "habits",
+      "image": "widget-pup-habits.92020abb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pup habits"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.46323372.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.face69c9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.791d0f5e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.7a10a7b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.6a9e4613.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.98136f09.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
