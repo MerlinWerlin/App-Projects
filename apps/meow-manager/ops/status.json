@@ -30,11 +30,12 @@
   "exports": {
     "ios": "2D build exported locally",
     "web": "2D build exported and reviewed locally",
-    "android": "current CI pending; iOS is the target"
+    "android": "current 2D CI bundle passed; iOS is the target"
   },
-  "verifiedCodeCommit": null,
+  "verifiedCodeCommit": "c804d6cc96565d1ff1c8dce86de3a52f36781fb3",
   "githubChecks": {
-    "current2DBuild": "pending",
+    "current2DBuild": "41807871646 passed at c804d6cc; types, 47 tests and asset verification, iOS/Android bundles",
+    "current2DBuildURL": "https://github.com/MerlinWerlin/App-Projects/actions/runs/41807871646",
     "historical3DRig": "41802532126 passed at caa95176; visual movement subsequently rejected"
   },
   "nativeDeviceVerified": false,
@@ -68,7 +69,8 @@
     "quiet wake-up",
     "listening caption keeps microphone off",
     "menu and recording",
-    "390x844 composition"
+    "390x844 composition",
+    "English and Japanese menus/layout"
   ],
   "remaining": [
     "More authored in-between drawings for larger movement",
