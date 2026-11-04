@@ -4,7 +4,7 @@
 import { ensureContrast, isHex, minContrast, mix, normalizeHex, relativeLuminance } from './colour.ts';
 import { iconStyleForLook, type LookTheme } from './iconLook.ts';
 import type { LiveArtSpec } from './liveArt.ts';
-import type { HomeOptionSize, WidgetOption } from './widgetOptions.ts';
+import { LEGACY_FALLBACK_CLOCK_ID, type HomeOptionSize, type WidgetOption } from './widgetOptions.ts';
 
 export const DESIGNED_WIDGET_VERSION = 1;
 export const DESIGNED_WIDGET_CAPABILITY = 5;
@@ -101,7 +101,7 @@ export function designedLiveSpec(theme: LookTheme, kind: DesignedKind): LiveArtS
 
 /** Old generated editions are replaced, while all original standalone artwork is retained. */
 export function isReplacedArtEdition(option: Pick<WidgetOption, 'id'>): boolean {
-  return ['themed-live-clock', 'themed-live-date', 'themed-live-battery'].includes(option.id);
+  return [LEGACY_FALLBACK_CLOCK_ID, 'themed-live-clock', 'themed-live-date', 'themed-live-battery'].includes(option.id);
 }
 
 /** Keep the old stable ids: installed widgets upgrade in place after theme sync. */

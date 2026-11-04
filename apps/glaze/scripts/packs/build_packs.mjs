@@ -216,15 +216,14 @@ function sortedObject(o) {
 //   widgets/runtime-options-<date>.json  export-reviewed-themes.mjs clean faces: { widgets: [option + sha256] }
 //   widgets/widget-options.json          themes 101-146: [option] or { widgets: [option] } (kind aliases)
 // Any of them turns the pack into a remote-art v2 manifest whose `widgets` list is: the themed live
-// clock first, then widget-options.json, then the clean runtime faces (the plain clock labelled as
-// the fallback), then the v1 hero pieces so nothing the pack had disappears. No `widgets/` folder (or
+// clock first, then widget-options.json, then the remaining clean runtime faces (the legacy fallback clock
+// is excluded), then the v1 hero pieces so nothing the pack had disappears. No `widgets/` folder (or
 // none of these files): nothing changes, the manifest stays byte-identical v1.
 
 /** Widget-art long edge cap (as prepare-reviewed-packs.mjs). */
 export const WIDGET_ART_MAX = 1024;
 /** Fields of a v2 widget option a pack carries (everything else in the export files is dropped). */
 const OPTION_FIELDS = ['id', 'kind', 'image', 'sizes', 'fit', 'background', 'label', 'numberFree', 'liveFrame'];
-const PLAIN_CLOCK_LABEL = 'Plain clock (fallback)';
 
 /** A theme folder name -> its pack id: Codex review folders are `NNN-<id>`. */
 export function packIdOfFolder(name) {
@@ -277,6 +276,7 @@ export function readWidgetEditions(dir, themesDir) {
     if (!isObj(raw)) return void errors.push(`${where}: not an object`);
     const nk = wopt.normalizeWidgetKind(raw.kind);
     if (!nk) return void errors.push(`${where} (${raw.id}): unknown kind ${String(raw.kind)}`);
+    if (raw.id === wopt.LEGACY_FALLBACK_CLOCK_ID) return;
     const option = { ...pickOption(raw), ...extra, kind: nk.kind };
     if (nk.clockStyle && isObj(option.liveFrame) && option.liveFrame.clockStyle === undefined) {
       option.liveFrame = { ...option.liveFrame, clockStyle: nk.clockStyle };
@@ -324,7 +324,7 @@ export function readWidgetEditions(dir, themesDir) {
       add(o, src, `widgets/${listName}[${i}]`, isObj(o) ? o.sha256 : undefined);
     });
   }
-  // 3. The clean runtime faces: live (numberFree + liveFrame); the plain clock is the fallback.
+  // 3. Keep other runtime faces; the retired plain fallback clock is not offered.
   if (runtimeName) {
     const r = readList(runtimeName);
     const list = isObj(r) && Array.isArray(r.widgets) ? r.widgets : null;
@@ -333,7 +333,8 @@ export function readWidgetEditions(dir, themesDir) {
       const img = isObj(o) ? o.image : undefined;
       const src = typeof img === 'string' ? findFile([join(wdir, baseOf(img)), join(dir, baseOf(img))]) : null;
       const isClock = isObj(o) && wopt.normalizeWidgetKind(o.kind)?.kind === 'clock';
-      add(o, src, `widgets/${runtimeName}[${i}]`, isObj(o) ? o.sha256 : undefined, { numberFree: true, ...(isClock ? { label: PLAIN_CLOCK_LABEL } : {}) });
+      if (isClock) return;
+      add(o, src, `widgets/${runtimeName}[${i}]`, isObj(o) ? o.sha256 : undefined, { numberFree: true });
     });
   }
   return { items, errors, warnings };
