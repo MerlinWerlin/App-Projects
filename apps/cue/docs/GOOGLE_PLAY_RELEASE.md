@@ -3,49 +3,63 @@
 ## 5 November Android continuation
 
 The existing iOS App Store submission is outside this work. No Apple action or
-RELEASE.json change is authorised by the Android continuation. The seven iOS
-release-policy checks still pass.
+RELEASE.json change was made. The seven iOS release-policy checks still pass.
+The Console still has8of11 saved setup tasks; no production review submission.
 
-Android candidate source `d87a013daa35e8a1ba61fcf49f9b41114dbd565e` adds a
-visible Settings > Access code screen. A reusable complimentary code grants
-all Plus features without an account, payment or trial, with no expiry or
-location restriction. Its digest is in source; the actual code is held outside
-Git and supplied to CI as CUE_PLAY_REVIEW_CODE. The code field is masked, and
-CI redacts it from text reports before artifact upload. This is complimentary
-feature access, not a store transaction or proof of paid ownership. Store
-refresh/revocation and the original trial remain independent. The same code
-can be re-entered after clearing data or reinstalling. Removing it preserves
-actual purchases and the original trial. iOS cannot activate this access.
+The owner has created the merchant profile. Cue Plus is now active as
+`com.jared797.cue.plus`, purchase option `lifetime`, Buy, backwards compatible,
+available in174regions. Australia is verified atAUD2.99; other prices use
+Google's conversion from that base. No subscription or Android trial product
+was created. The existing owner-only1tester list is selected and saved for
+account-wide License testing, responseRESPOND_NORMALLY. Neither eligibility
+nor an active product proves an actual purchase. Payout bank verification is
+pending; no release block has been established from that status alone.
+
+PR233 adds visible Settings > Access code on Android. A reusable complimentary
+code grants all Plus features with no account, payment, trial, expiry or
+location restriction. It stores a code digest locally, separate from paid
+ownership and trial records. Removing it preserves purchases and the original
+trial. The same code can be re-entered after clearing data or reinstalling.
+iOS cannot activate it. The actual code is outside Git and supplied to CI as
+CUE_PLAY_REVIEW_CODE; the field is masked and text reports are redacted before
+artifact upload. This is complimentary access, not a store transaction.
 
 Google's [review-access requirements](https://support.google.com/googleplay/android-developer/answer/15748846?hl=en)
-permit additional access resources and require them to be reusable and valid
-at all times. The current Console prohibits relying on reviewer payment or a
-free trial. Do not save full-access certification until the candidate is
-verified and uploaded; internal build2 does not contain this screen.
+require reusable access and permit additional access resources. The current
+Console prohibits relying on reviewer payment or a free trial. Full-access
+certification must wait for a verified uploaded candidate; internal build2
+has no access-code screen. Target audience remains blocked on that declaration.
 
-The Android-only overlay also excludes both unused Expo Camera scanner
-modules: barcodeScannerEnabled=false plus the supported Gradle property
-expo.camera.document-scanner-enabled=false. Camera/video/audio remain enabled;
-ordinary profiles retain the original configuration. This removes unused SDK
-surface, not a claim about Billing's separate diagnostics.
+The attempted d87a013d scanner exclusions did NOT remove ML Kit. Its actual
+72,320,983-byte preview APK (SHA256f7610e788d0222063d7b18d125148dd8f55e1384808ea6d9654b94fadd15a803)
+still contains both scanner providers/libraries. Build job41893758645 passed,
+but its original simulations were cancelled after securing the APK. Reuse
+41897180445 was rejected by the stronger SDK packaging guard before runtime.
+Keep those outcomes; no new native pass was obtained from that binary.
 
-Local checks: 95 Jest tests, TypeScript, three native speech privacy guards,
-two Play configuration checks and seven iOS shipping-policy checks pass.
-Twenty Python inspection tests pass, including rejection of superseded build2
-and unused ML Kit manifest components. New production inspection is pinned to
-EAS build `fc348389-4fde-4dd9-b8ab-5d438454592f`, version1.0.0/code3 and the exact
-d87a013d source. Queue run41893764540 succeeded; the queue receipt itself does
-not prove build completion. Native run41893758645 and production inspection
-41894234330 were started; results must be read before claiming a pass. The
-initial superseded native run41893557395 was cancelled while preparing the
-separate document-scanner exclusion, not relabeled as a successful validation.
+Root cause: Expo58 linked a precompiled Camera AAR, bypassing the Gradle scanner
+flags. Corrected source `49c8992756fd505ce14710c81c3e719ae5d99d0c` forces only
+Android expo-camera to build from source, so barcodeScannerEnabled=false and
+expo.camera.document-scanner-enabled=false can take effect. An actual
+platform-options test confirms Apple buildFromSource remains unset. The next
+binary must prove absence of ML Kit/scanner libraries and pass video capture.
 
-On 5 November the merchant page still offers Create payments profile. Owner
-handoff is pending; no financial profile was created. Google Play SDK Index
-lists Billing9.1.0 but supplies no data-collection guidance in that entry.
-Final Billing/SDK data handling, Data safety, target audience and licensed
-billing remain open. The Console still has8of11 saved setup tasks at this
-checkpoint. No production submission or public Android release is claimed.
+Current production request: EAS`f4821a5c-945c-4a22-8662-84c0c95ea8f7`, version1.0.0/
+code4, exact49c89927source, queued41897841206. Native41897835294 and inspection
+41898340369 are running, not yet qualified. Obsolete EASbuild3 cancellation was
+requested in41897828384; its immediate receipt isPENDING_CANCEL. Do not queue
+or upload another copy of that obsolete candidate. Original signed build2 and
+all older failure receipts remain separate in the archive.
+
+95Jest tests, TypeScript and both mobile exports pass41897823643. Six native
+privacy/Play-configuration checks, seven iOS release-policy checks and20Python
+inspection tests pass. Compiled SDK absence, reviewer-code native checks,
+final Data safety, licensed billing and speech/interruption QA remain open.
+An official local Google Play emulator is prepared for SDK-license approval;
+no SDK installation or new license acceptance has occurred at this checkpoint.
+
+The sections below retain the4November baseline. Their build2/c809ffd runtime
+evidence is not proof for the replacement source.
 
 Jared requested that Cue be simulated and pushed toward Google Play release.
 Work started from App-Projects main at dc444372ca15ba1c88d9badca11d67e0d20b56b7,
@@ -68,10 +82,10 @@ A later explicit owner decision is required to enable iOS shipping again.
 The owner subsequently clarified that the existing iOS App Store submission
 must remain in review. Only accidental TestFlight build14 was expired in
 run41783651780. Independent read41783879096 confirmed the older App Store
-submission still WAITING_FOR_REVIEW. Do not withdraw or delete it. The validated
-Android AAB remains the Google Play candidate.
+submission still WAITING_FOR_REVIEW. Do not withdraw or delete it. The original
+Android AAB remains the internal-test baseline; the replacement needs separate validation.
 
-## Verified so far
+## Verified 4 November baseline
 
 - Latest candidate is c809ffd, which adds bounded Android acknowledgement
   recovery to the previously built SDK-aligned source.
@@ -256,8 +270,8 @@ Remaining Console gates:
   Cue's supplied content and functionality; user-authored local scripts are not
   a hosted content feed. Ratings are saved pending Publishing overview review.
 - Data safety still needs the final SDK/network review.
-- Google requires a merchant payments profile before Plus monetization. The
-  Payments profile page currently offers Create payments profile; none was created.
+- The merchant profile is now created by the owner. Plus/lifetime is active at
+  AUD2.99 and the owner license list is saved; actual transactions are untested.
 
 Screenshots and operation evidence are in the local Cue release archive under
 `Apps/outputs/cue-google-play-20261104`.
@@ -294,7 +308,7 @@ itself has not been installed through Play or used for licensed billing.
 The workflow can inspect the existing UUID without queueing another build.
 
 The account/app creation and initial bundle upload are complete. Finish the
-remaining Console gates, merchant/Plus setup, content rating and Data safety
+remaining Console gates, actual Plus transactions and Data safety
 from the final binary and SDK behaviour before production submission.
 
 The English listing assets are now prepared and visually inspected in

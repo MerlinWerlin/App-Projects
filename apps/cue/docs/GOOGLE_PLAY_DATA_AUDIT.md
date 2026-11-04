@@ -2,13 +2,17 @@
 
 ## 5 November replacement candidate
 
-Candidate d87a013d excludes both unused Expo Camera scanners on Android only.
+The attempted d87a013d source flags did not exclude scanners from its actual APK.
+Native reuse41897180445 correctly failed the new scanner-packaging gate.
+The build log shows precompiled expo-camera; that bypassed the source Gradle flags.
+Corrected49c89927 forces only Android Camera to compile from source, with
+Apple autolinking unchanged. New compiled absence still needs verification.
 Expo Camera58.0.14's build.gradle independently enables barcode and document
 scanning by default; disabling barcode alone does not exclude the document
 scanner. The Play overlay disables barcode via its plugin option and document
 scanning via the supported expo.camera.document-scanner-enabled Gradle property.
 The original iOS configuration is preserved. Compiled SDK absence must still
-be verified in build3; do not apply this source claim to uploaded build2.
+be verified in build4; neither build2 nor the rejected d87 APK proves it.
 
 Complimentary Plus access uses only local storage of a code digest, without
 network requests, account creation, payment or trial mutation. No raw code is
@@ -82,3 +86,14 @@ descriptions and adds these Android qualifications:
 
 No Data safety answers were submitted. Publication of the policy does not
 establish that all SDK/network behaviour has been tested.
+
+Exact CCT3.1.8 source was retrieved from Google's official Maven source JAR,
+matching the transport-backend-cct.properties in both the original production
+AAB2 and rejected d87 preview APK. Its decorator/request builder includes
+Android API/build/model/manufacturer/fingerprint, app build, language/region
+settings, timezone, network type/subtype and SIM operator. The build fingerprint
+is an OS-build identifier; do not relabel it as a demonstrated unique device ID.
+The opaque Billing payload and full licensed-transaction path still need
+inspection. Exact source JAR/hash receipt is retained in the local release
+archive. A new Android privacy paragraph is prepared for this technical store
+traffic; it is not a submitted Data safety form or proof of complete SDK audit.
