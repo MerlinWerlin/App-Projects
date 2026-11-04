@@ -100,6 +100,9 @@ import CryptoKit
           let view = PhotoAlbumWidgetView(entry: entry, reviewImage: image).frame(width: width, height: height)
             .environment(\.locale, Locale(identifier: language))
             .environment(\.layoutDirection, language == "ar" ? .rightToLeft : .leftToRight)
+            // containerBackground is installed by WidgetKit in production; this isolated host
+            // must supply the same actual background when rendering an empty/missing image.
+            .background { GlazeBackground(theme: theme) }
           let renderer = ImageRenderer(content: view); renderer.scale = 2
           guard let rendered = renderer.uiImage, let data = rendered.pngData() else { throw NSError(domain: "AlbumContract", code: 3) }
           let file = "\(c["id"]!)_\(state).png"
