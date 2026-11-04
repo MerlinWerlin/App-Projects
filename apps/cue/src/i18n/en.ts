@@ -9,6 +9,13 @@ export const en = {
   'common.plus': 'Plus',
   'common.on': 'On',
   'common.off': 'Off',
+  'access.title': 'Access code',
+  'access.body': 'If you were given a complimentary Cue Plus code, enter it here. No account, payment or trial is needed.',
+  'access.redeem': 'Activate access code',
+  'access.active': 'Complimentary Plus is active',
+  'access.activeBody': 'All Plus features are available on this device with no expiry. Removing this code leaves purchases and your original trial unchanged. After reinstalling, you can enter the same code again.',
+  'access.remove': 'Remove access code',
+  'access.failed': 'The code was not accepted or could not be saved. Check the code and try again.',
 
   'library.title': 'Scripts',
   'library.search': 'Search scripts',

@@ -59,17 +59,22 @@ jobs:
             npm install --no-save --no-audit --no-fund "@react-native/jest-preset@$(node -p 'require("react-native/package.json").version')"
           fi
           npx jest --runInBand
-          node --test scripts/patch-speech.test.cjs
+          node --test scripts/patch-speech.test.cjs scripts/play-variant.test.cjs
       - name: Generate offline Android test variant
         working-directory: apps/cue
         run: |
           npx expo prebuild --platform android --no-install
           mkdir -p ../../cue-android-output
+          cp android/gradle.properties ../../cue-android-output/gradle.properties
+          npx expo-modules-autolinking resolve --platform android --json > ../../cue-android-output/autolinking.json
           npx expo config --type public --json > ../../cue-android-output/config.json
           node -e 'const c=require("../../cue-android-output/config.json");if(c.android.package!=="com.jared797.cue.playtest"||c.updates.enabled!==false)throw Error("Expected isolated offline test variant")'
       - name: Build actual standalone test APK
         working-directory: apps/cue/android
         run: ./gradlew :app:assembleRelease --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a,x86_64 -Dorg.gradle.jvmargs=-Xmx4g
+      - name: Capture final runtime dependency resolution
+        working-directory: apps/cue/android
+        run: ./gradlew :app:dependencies --configuration releaseRuntimeClasspath --console=plain > ../../../cue-android-output/runtime-dependencies.txt
       - name: Inspect actual APK
         run: |
           cp apps/cue/android/app/build/outputs/apk/release/app-release.apk cue-android-output/cue-play-test.apk
@@ -146,6 +151,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         env:
           EXPECTED_PAGE_SIZE: ${{ matrix.page }}
+          REVIEW_CODE: ${{ secrets.CUE_PLAY_REVIEW_CODE }}
         with:
           api-level: 35
           target: ${{ matrix.target }}
@@ -157,12 +163,18 @@ jobs:
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back emulated -camera-front emulated
           script: ${{ inputs.store_captures && 'bash scripts/play/cue-store-capture.sh' || 'bash scripts/play/cue-simulate.sh' }}
+      - name: Redact complimentary access code from test reports
+        if: always()
+        env:
+          REVIEW_CODE: ${{ secrets.CUE_PLAY_REVIEW_CODE }}
+        run: python scripts/play/redact_review_code.py cue-android-output
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ${{ inputs.store_captures && 'cue-android-store-captures' || format('cue-android-simulation-{0}', matrix.page) }}
           path: |
             cue-android-output/captures/
+            cue-android-output/sdk-audit/
             cue-android-output/*.txt
             cue-android-output/*.json
             cue-android-output/*.png

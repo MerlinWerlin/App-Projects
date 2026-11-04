@@ -1,5 +1,52 @@
 # Cue Android data review — draft, not submitted
 
+## 5 November replacement candidate
+
+The attempted d87a013d source flags did not exclude scanners from its actual APK.
+Native reuse41897180445 correctly failed the new scanner-packaging gate.
+The build log shows precompiled expo-camera; that bypassed the source Gradle flags.
+Corrected49c89927 forces only Android Camera to compile from source, with
+Apple autolinking unchanged. Actual source49 APK41897835294 and full signed
+source1290 AAB41904947064 exclude scanner providers, native libraries and models.
+Expo Camera58.0.14's build.gradle independently enables barcode and document
+scanning by default; disabling barcode alone does not exclude the document
+scanner. The Play overlay disables barcode via its plugin option and document
+scanning via the supported expo.camera.document-scanner-enabled Gradle property.
+The original iOS configuration is preserved. Camera's bare manifest
+barcode_ui download marker remains and is explicitly recorded; absence of
+packaged scanners is not a claim that the platform cannot download a module.
+
+Complimentary Plus access uses only local storage of a code digest, without
+network requests, account creation, payment or trial mutation. No raw code is
+stored by the app. Source network-call review finds only the user-opened privacy
+URL and mail composer; this does not rule out native SDK network activity.
+
+The official [Billing SDK Index entry](https://play.google.com/sdks/details/com-android-billingclient-billing)
+was inspected on5November, including version9.1.0. It does not provide a
+data-collection guide. Its “No permissions found” text explicitly warns that
+undetected permissions may exist and is not evidence of no collection.
+Google's [Data safety instructions](https://support.google.com/googleplay/android-developer/answer/10787469?hl=en)
+require native SDK collection to be included. Payment-card information handled
+directly by Play is a separate exception; it does not automatically exempt
+SDK diagnostic traffic. No new Data safety declaration has been saved.
+
+Both repaired4KB/16KB flows41906973573 captured the synthetic preview app's
+own Data Transport queue after its complete UI flow. SQLite integrity is OK.
+There are24/20 PLAY_BILLING_LIBRARY events and360/300 metadata rows respectively,
+using the cct backend with an HTTPS firebase logging endpoint. The payloads
+include operation failures, Billing9.1.0, package, app version, Android version,
+manufacturer/model/build and per-session numbers. Transport metadata contains
+language/country settings, timezone, network type and SIM operator. These
+observations support technical-diagnostics disclosure. The build fingerprint
+is not a demonstrated unique device ID, and undecoded session numbers must not
+be labelled persistent device identifiers without evidence. Local queues do
+not establish successful upload; the official source describes their network
+transport. Licensed purchase payloads remain unobserved. The signed AAB has
+Expo updates disabled and no advertising-ID or broad media-read permission.
+
+The remaining table and production-build2 inspection below are historical
+baseline evidence; new candidate results must be recorded separately.
+
 This review describes the Play overlay and repairs through candidate c809ffd. It is preparation
 for the Console forms, not a completed Data safety declaration or a network
 capture. Recheck against the signed production AAB before submission.
@@ -55,3 +102,14 @@ descriptions and adds these Android qualifications:
 
 No Data safety answers were submitted. Publication of the policy does not
 establish that all SDK/network behaviour has been tested.
+
+Exact CCT3.1.8 source was retrieved from Google's official Maven source JAR,
+matching the transport-backend-cct.properties in both the original production
+AAB2 and rejected d87 preview APK. Its decorator/request builder includes
+Android API/build/model/manufacturer/fingerprint, app build, language/region
+settings, timezone, network type/subtype and SIM operator. The build fingerprint
+is an OS-build identifier; do not relabel it as a demonstrated unique device ID.
+The opaque Billing payload and full licensed-transaction path still need
+inspection. Exact source JAR/hash receipt is retained in the local release
+archive. A new Android privacy paragraph is prepared for this technical store
+traffic; it is not a submitted Data safety form or proof of complete SDK audit.

@@ -1,5 +1,5 @@
 {
-  "status": "visually_reviewed_draft_not_uploaded",
+  "status": "visually_reviewed_uploaded_saved_pending_review_not_public",
   "sourceCommit": "c809ffd86b5e30014e798409c2f5d996ca3a9d0b",
   "apkSha256": "7b2205a5920af4fb26d4c05ee6a3a2c01ebaae157d4990a356aa58ee1b3b98ec",
   "captureRun": "https://github.com/MerlinWerlin/App-Projects/actions/runs/41732019758",
@@ -91,5 +91,7 @@
       "sha256": "d24739feb2735e96168f85d24cf8c3c8221957e73eef33ca9b7bc262a3bedc7b"
     }
   ],
-  "visualReview": "VISUAL_REVIEW.md"
+  "visualReview": "VISUAL_REVIEW.md",
+  "playAppId": "4974377533213924164",
+  "uploadedSydneyDate": "2026-11-04"
 }

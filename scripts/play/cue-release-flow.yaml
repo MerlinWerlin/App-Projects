@@ -6,3 +6,4 @@ appId: com.jared797.cue.playtest
 - runFlow: cue-trial-flow.yaml
 - runFlow: cue-permission-flow.yaml
 - runFlow: cue-record-flow.yaml
+- runFlow: cue-access-code-flow.yaml

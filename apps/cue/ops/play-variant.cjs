@@ -17,13 +17,15 @@ module.exports = function withPlayVariant(config, env = process.env) {
     scheme: preview ? String(config.scheme || config.slug) + '-play-test' : config.scheme,
     platforms: ['android'],
     runtimeVersion: String(config.version) + '-play-v1',
-    plugins: (config.plugins || []).map(plugin => {
+    plugins: [...(config.plugins || []).map(plugin => {
       const name = Array.isArray(plugin) ? plugin[0] : plugin;
       const options = Array.isArray(plugin) ? plugin[1] : {};
       return name === 'expo-audio'
         ? [name, { ...options, enableBackgroundPlayback: false, enableBackgroundRecording: false }]
-        : plugin;
-    }),
+        : name === 'expo-camera'
+          ? [name, { ...options, barcodeScannerEnabled: false }]
+          : plugin;
+    }), './ops/with-play-camera.cjs'],
     android: {
       ...config.android,
       package: config.android.package + (preview ? '.playtest' : ''),

@@ -13,6 +13,10 @@ on:
         description: Wait up to twelve minutes for the existing build before inspecting its bundle
         type: boolean
         default: false
+      cancel_superseded:
+        description: Cancel only the two known obsolete Android requests after checking exact source and profile
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -40,7 +44,11 @@ jobs:
           distribution: temurin
           java-version: '17'
       - name: Check existing Expo connection
-        run: test -n "$EXPO_TOKEN"
+        run: |
+          test -n "$EXPO_TOKEN"
+          if [[ '${{ inputs.cancel_superseded }}' == 'true' ]]; then
+            [[ "$BUILD_ID" == 'fc348389-4fde-4dd9-b8ab-5d438454592f' || "$BUILD_ID" == 'f4821a5c-945c-4a22-8662-84c0c95ea8f7' ]]
+          fi
       - uses: expo/expo-github-action@v8
         with:
           eas-version: latest
@@ -62,6 +70,20 @@ jobs:
         run: |
           [[ "$BUILD_ID" =~ ^[0-9a-fA-F-]{36}$ ]]
           eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
+          if [[ '${{ inputs.cancel_superseded }}' == 'true' ]]; then
+            node -e 'const b=require("../../cue-play-production-output/build.json");const known={"fc348389-4fde-4dd9-b8ab-5d438454592f":"d87a013daa35e8a1ba61fcf49f9b41114dbd565e","f4821a5c-945c-4a22-8662-84c0c95ea8f7":"49c8992756fd505ce14710c81c3e719ae5d99d0c"};if(!known[b.id]||b.gitCommitHash!==known[b.id]||b.platform!=="ANDROID"||b.buildProfile!=="play-production")throw Error("Refusing unknown build cancellation")'
+            status=$(node -p 'require("../../cue-play-production-output/build.json").status')
+            case "$status" in
+              NEW|IN_QUEUE|IN_PROGRESS) eas build:cancel "$BUILD_ID" --non-interactive;;
+              *) echo "Existing build state $status; no repeated cancellation issued";;
+            esac
+            for attempt in $(seq 1 6); do
+              eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
+              status=$(node -p 'require("../../cue-play-production-output/build.json").status')
+              case "$status" in CANCELED|FINISHED|ERRORED) break;; esac
+              sleep 3
+            done
+          fi
           if [[ "$WAIT_FOR_BUILD" == 'true' ]]; then
             for attempt in $(seq 1 24); do
               status=$(node -p 'require("../../cue-play-production-output/build.json").status')
@@ -80,7 +102,7 @@ jobs:
         if: inputs.build_id == ''
         run: eas build --platform android --profile play-production --non-interactive --no-wait --json --message "Cue Android production candidate; no store submission" > ../../cue-play-production-output/build.json
       - name: Validate finished production bundle
-        if: inputs.build_id != ''
+        if: inputs.build_id != '' && !inputs.cancel_superseded
         run: python ../../scripts/play/verify_aab.py ../../cue-play-production-output
       - uses: actions/upload-artifact@v4
         if: always()
