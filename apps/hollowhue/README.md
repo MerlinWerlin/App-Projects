@@ -13,7 +13,7 @@ Colour by tapping a shape (fill) or freehand with finger / Apple Pencil (pencil,
 ## Current iPhone update (4 November 2026)
 
 The active isolated checkout is `C:/Users/jared/Documents/ChatGPT/Apps/hollowhue-update`,
-branch `codex/hollowhue-update-20261104`. App Store Connect: **6829399355**; bundle ID:
+branch `codex/hollowhue-art-categories-20261104`. App Store Connect: **6829399355**; bundle ID:
 `com.jared797.hollowhue`; Expo project: `@jared797/hollowhue`, UUID
 `2f10e62c-2086-4e7d-9437-649fc240e82d`.
 
@@ -24,8 +24,9 @@ A failed save keeps the app open so the user can retry. Applying never interrupt
 Existing scenes and their progress keys remain compatible with runtime 0.1.0; SDK 57 is unchanged.
 
 Delivery status is in `ops/status.json` and `ops/SHIP_NOTES.md`. `scripts/iphone-flow.yaml` exercises
-the native iPhone app, colour entry, fill/undo/redo, both new worlds, drawing controls and recent colours
-after relaunch. The capture workflow disables OTA only in its isolated simulator build to keep screenshots
+the native illustrated cottage/cafe, category/difficulty selection, colour entry, all six regular and twenty
+Mega stops, fill/draw undo/redo and saved colours after relaunch. The capture workflow disables OTA only
+in its isolated simulator build to keep screenshots
 on the tested source. It does not prove physical-device uptake or production update networking.
 
 `RELEASE.json` requests the compatible production OTA. Changing `TESTFLIGHT_REQUEST.json` on main
@@ -38,3 +39,20 @@ that the current runtime source matches the captured commit.
 the downloaded launch bundle. The read-only **Hollowhue release status** workflow also reports Apple's
 latest build/processing/internal-beta state using existing CI credentials. Never treat a successful build
 queue or upload as proof the owner can install it: check the Apple beta state too.
+
+## Artwork and depth revision
+
+Owner feedback on4November requests better art, Linework-style categories/difficulties, six normal zooms
+and twenty in Mega Zoom. The owner also rejected the first Linework-based art preview and requested more
+realistic, detailed pictures. The final replacement contains42original newly illustrated pictures across
+six standard worlds and one Mega world. Beginner flowers have larger clear shapes; higher difficulties
+add realistic botanical, wildlife, architectural and ornamental detail. Selected source pixels and built-in
+image generation prompts are preserved in `scripts/art`; cubic ink sits above closed tappable regions.
+Pure-JS fflate packs the vectors to keep the compatible update smaller; no native module was added.
+`My colouring` keeps all previously saved scenes accessible without changing their shapes or region IDs.
+
+The opening picture counts as zoom0. Standard worlds have7pictures/6transitions; Mega has21pictures/20
+transitions, each a distinct illustration. `scripts/art/README.md` explains the preserved source and build
+process. 57 tests include every Mega stop, deepest-level painting/persistence, ink excluded from saved fills,
+and an exact legacy-art
+checksum. Native iPhone QA and this revision's release status are recorded in `ops/status.json`.

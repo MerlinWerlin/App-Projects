@@ -187,7 +187,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
             </Text>
             {depthTotal > 1 ? (
               <Text style={[ty.small, { color: c.ink3, textAlign: 'center', fontSize: wide ? 13 : 11 }]} numberOfLines={1}>
-                {t('level.where', { name: tx(`scene.${scene.id}.level.${focusLevel.id}`), i: focusLevel.depth + 1, n: depthTotal })}
+                {t('level.where', { name: tx(`scene.${scene.id}.level.${focusLevel.id}`), i: focusLevel.depth, n: depthTotal - 1 })}
               </Text>
             ) : null}
           </View>

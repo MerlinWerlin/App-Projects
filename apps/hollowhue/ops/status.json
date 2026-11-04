@@ -1,20 +1,33 @@
 {
   "app": "hollowhue",
   "stage": "build",
-  "headline": "November update is live over the air. Native 0.1.0 (3) uploaded successfully; Apple upload API confirms PROCESSING with no errors/warnings. Owner now confirms zoom movement improved and requests replacement art, Linework-style topic/difficulty filters, six standard zooms and twenty in Mega Zoom.",
+  "headline": "42 new realistic illustrations, five topic categories, three difficulty levels, six regular zooms and twenty in Mega. Full native iPhone flow passed; production OTA and fresh TestFlight publication requested.",
   "next_for_owner": [
-    "Replacement artwork, categories, Beginner/Intermediate/Advanced and 6/20 zoom transitions are being built from the 4 November feedback."
+    "Release is being prepared; delivery status below will distinguish the in-app update from Apple processing."
   ],
-  "tests": 38,
-  "typecheck": "38 tests pass; full SDK57 and offline UI strict types clean; native iPhone compile and interaction flow pass; all 8 screenshots preserved in docs/qa-20261104. Expo doctor 21/21.",
-  "native_qa": {
+  "tests": 57,
+  "typecheck": "57 tests and full/stub strict types pass. iOS/Hermes export passes; illustrated bundle packed to29MB. All old scene geometry/IDs/versions retain exact SHA. Expo doctor21/21pass.",
+  "previous_native_qa": {
     "run": "41788606169",
     "source": "774e53289c785914495d303f06729039c8f2fb10",
     "result": "pass",
     "screenshots": "docs/qa-20261104",
     "physical_phone_uptake": "unverified"
   },
-  "delivery": {
+  "native_qa": {
+    "result": "pass",
+    "run": "41812677928",
+    "source": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
+    "scope": "all six regular and twenty Mega stops, deep paint, drawing, undo/redo, saved work and recent colours after relaunch",
+    "capture_retake": {
+      "run": "41816934677",
+      "captureSource": "bda2943def38124c6dd5aa397c661aa6da2583ac",
+      "appSource": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
+      "reason": "Initial cottage screenshot preceded vector rendering; capture-only flow returns from the cafe to Whole scene. Same compiled app, runtime source unchanged."
+    },
+    "physical_phone_uptake": "unverified"
+  },
+  "previous_delivery": {
     "release_pr": 211,
     "release_source": "4cb96f4e495c1a38b2072fe6e4d258a41c73e26b",
     "ota": {
@@ -31,7 +44,10 @@
       "phoneUptakeVerified": false
     },
     "testflight_build_run": "41791367613",
-    "testflight_state": "0.1.0 (3) uploaded; Apple PROCESSING, no reported errors/warnings, beta availability pending",
+    "testflight_state": "0.1.0 (3) COMPLETE, VALID and IN_BETA_TESTING; Apple probe41801311385, no errors or warnings",
     "testflight_submission": "a9aee4e4-1f6a-44f1-8cc5-eb2bab86b3c2"
+  },
+  "delivery": {
+    "state": "new artwork/category revision not yet published"
   }
 }

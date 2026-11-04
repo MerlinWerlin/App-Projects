@@ -91,11 +91,12 @@ export function IconButton({
   );
 }
 
-export function Chip({ label, on, onPress }: { label: string; on: boolean; onPress: () => void }) {
+export function Chip({ label, on, onPress, testID }: { label: string; on: boolean; onPress: () => void; testID?: string }) {
   const { c } = useColors();
   const h = useHaptics();
   return (
     <Pressable
+      testID={testID}
       accessibilityRole="button"
       accessibilityState={{ selected: on }}
       accessibilityLabel={label}
@@ -104,7 +105,7 @@ export function Chip({ label, on, onPress }: { label: string; on: boolean; onPre
         onPress();
       }}
       style={{
-        minHeight: 40,
+        minHeight: 48,
         paddingHorizontal: space.lg,
         justifyContent: 'center',
         borderRadius: radius.pill,

@@ -4,6 +4,18 @@ Open Hollowhue from TestFlight on your iPhone or iPad.
 
 ## New since your last test
 
+Realistic artwork, categories and depth revision (publication status in `ops/status.json`):
+
+1. Look for **New art. Six zooms. Twenty in Mega.** at the top of the gallery. Choose Animals, Flowers,
+   Sea life, Places or Patterns, then Beginner, Intermediate or Advanced.
+2. For larger shapes, choose **Flowers → Beginner → Garden Blooms**. For detailed art, try Storybook Places,
+   Botanical Treasury, Wildwood Sanctuary, Ocean Wonders or Petals & Patterns.
+3. Regular worlds start at **Zoom 0 of 6**. Use **Look closer** or pinch into each discovery until **Zoom 6 of 6**.
+4. Choose **Mega Zoom → The Twentyfold Garden** for **Zoom 0 of 20** through **Zoom 20 of 20**. Colour at the
+   deepest stop, try Undo/Redo, then reopen the picture through **My colouring** after restarting the app.
+5. Custom colours, recent colours and the Settings update controls continue below. Saved older pictures
+   remain in **My colouring**.
+
 November colour & discovery update (4 Nov 2026; publication status in `ops/status.json`):
 1. Look for the **November colour & discovery update** banner at the top of the gallery.
 2. Open **Hidden Library** or **Owlwood Forest**. Each has four nested levels; use Look closer or pinch in.
