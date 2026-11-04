@@ -106,11 +106,13 @@ import Vision
       let button = try XCTUnwrap(observedText { $0.lowercased().contains("add widget") }, "Visible Add Widget control required")
       tapObserved(button)
     }
+    var leftEditing = false
     for _ in 0..<2 {
       let done = spring.buttons["Done"].firstMatch
-      if done.waitForExistence(timeout: 3) { done.tap() }
+      if done.waitForExistence(timeout: 3) { done.tap(); leftEditing = true }
     }
-    XCUIDevice.shared.press(.home)
+    // An extra Home press after Done jumps to page one, hiding a widget added on page two.
+    if !leftEditing { XCUIDevice.shared.press(.home) }
     let plus = spring.buttons["Add 150 ml"].firstMatch
     XCTAssertTrue(try displayedValue("150"), spring.debugDescription)
     stage("native-widget-shows-150")
