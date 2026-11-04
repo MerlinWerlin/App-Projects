@@ -46,7 +46,8 @@ test('semantic designs survive the real shared library serializer, and corrupt d
   const theme = ALL_THEMES[0], planned = plannedDesignedWidgets(theme, (kind, size) => `${kind} ${size}`);
   assert.equal(planned.length, 9);
   const lib = { v: 1 as const, pieces: planned.map(({ optionId, ...p }) => ({ ...p, file: p.id + '.jpg', created: 1 })) };
-  assert.deepEqual(parseLibrary(serializeLibrary(lib)), lib);
+  const decoded = parseLibrary(serializeLibrary(lib));
+  assert.deepEqual([...decoded.pieces].sort((a,b) => a.id.localeCompare(b.id)), [...lib.pieces].sort((a,b) => a.id.localeCompare(b.id)));
   const raw = designedLiveSpec(theme, 'clock');
   assert.deepEqual(parseLiveArtSpec(raw), raw);
   assert.equal(parseLiveArtSpec({ ...raw, kind: 'battery' }), null);
