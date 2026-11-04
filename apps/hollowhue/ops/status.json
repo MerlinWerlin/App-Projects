@@ -6,7 +6,7 @@
     "The selected realistic art is in docs/art-direction-realistic-20261104.png. Final native iPhone checks precede release."
   ],
   "tests": 57,
-  "typecheck": "57 tests and full/stub strict types pass. iOS/Hermes export passes; illustrated bundle packed to29MB. All old scene geometry/IDs/versions retain exact SHA.",
+  "typecheck": "57 tests and full/stub strict types pass. iOS/Hermes export passes; illustrated bundle packed to29MB. All old scene geometry/IDs/versions retain exact SHA. Expo doctor21/21pass.",
   "previous_native_qa": {
     "run": "41788606169",
     "source": "774e53289c785914495d303f06729039c8f2fb10",
@@ -16,7 +16,7 @@
   },
   "native_qa": {
     "result": "pending",
-    "scope": "final realistic illustration rendering, category/difficulty filters, all six standard and twenty Mega stops, deep paint and saved work; gallery scroll reset repaired after draft run41801065091"
+    "scope": "gallery covers improve cold launch; corrected overscrolling saved-card test. Previous illustrated run41807826539/source391f5ed8 reached6+20stops, painted at20 and passed undo/redo; final saved-card selector failed despite saved data visible. Fresh native capture required."
   },
   "previous_delivery": {
     "release_pr": 211,

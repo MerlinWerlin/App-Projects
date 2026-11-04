@@ -66,3 +66,9 @@
 - 57 tests, full/stub strict types and iOS/Hermes export pass. Packed vectors reduce the illustrated
   bundle from65MB to29MB. Pinned fflate is pure JS; native dependencies and runtime0.1.0 are unchanged.
 - Final native QA and publication are pending; see `ops/status.json` for current delivery evidence.
+- Illustrated run **41807826539**, source **391f5ed8**, reached all six regular and twenty Mega stops,
+  painted at twenty and completed undo/redo. Reviewed cottage/cafe/deep-paint screenshots show the new art.
+  Its final saved-card selector required100%visibility and overscrolled the card despite its saved data being
+  present. The test now centres partially visible cards with smaller scroll steps. Blank gallery cards also
+  use generated covers to avoid thousands of SVG views during cold launch; painted roots keep live previews.
+  A fresh native run is required for that gallery performance change. Earlier captures remain failed evidence.

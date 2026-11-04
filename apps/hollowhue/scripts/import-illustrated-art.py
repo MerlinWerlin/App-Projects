@@ -141,4 +141,23 @@ if __name__ == '__main__':
     (ROOT / 'src/i18n/catalog.ts').write_text('// Generated from scripts/art/catalog-source.json.\nexport const catalogWords = ' + json.dumps(words, indent=2, ensure_ascii=False) + ' as const;\n')
     (ROOT / 'src/scenes/catalog-data.ts').write_text('// Curated scene sequences from scripts/art/catalog-source.json.\nexport const catalogData = ' + json.dumps(request['scenes'], indent=2, ensure_ascii=False) + ' as const;\n')
     (ROOT / 'scripts/art/illustration-receipts.json').write_text(json.dumps(receipts, indent=2) + '\n')
+    # Empty gallery cards use lightweight pre-rendered covers. Full editable vectors are for the canvas
+    # and for cards that actually contain root-level paint, rather than thousands of native SVG views
+    # during every cold launch.
+    covers = ROOT / 'assets/art-covers'
+    covers.mkdir(exist_ok=True)
+    cover_map = {}
+    for scene in request['scenes']:
+        image = Image.open(ROOT / 'scripts/art/illustrations' / lookup[scene['art'][0]]['file']).convert('L')
+        mask = (np.asarray(image) < 190).astype(np.uint8) * 255
+        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((2, 2), np.uint8))
+        cover = Image.new('RGB', image.size, (255, 255, 255))
+        cover.paste((43, 38, 34), mask=Image.fromarray(mask))
+        cover.thumbnail((1000, 1000), Image.Resampling.LANCZOS)
+        filename = scene['id'] + '.png'
+        cover.save(covers / filename, optimize=True)
+        cover_map[scene['id']] = filename
+    (ROOT / 'src/scenes/art/covers.ts').write_text('// Generated gallery covers; editable vectors stay in the canvas.\n'
+        'export const SCENE_COVERS: Record<string, number> = {\n' + ''.join(
+            f'  "{ident}": require("../../../assets/art-covers/{filename}"),\n' for ident, filename in cover_map.items()) + '};\n')
     print('Baked', len(art), 'reviewed illustrations;', target.stat().st_size, 'vector bytes')

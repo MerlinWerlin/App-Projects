@@ -21,6 +21,8 @@ Mega portals use a 0.28 scale to retain precision through twenty levels.
 
 The generated vector data is gzip-packed in the JS bundle and decoded locally with pinned pure-JS
 `fflate`. It works offline and adds no native module or native dependency change. Runtime stays 0.1.0.
+Empty gallery cards use generated PNG covers; painted opening pictures retain their live vector preview.
+This avoids constructing thousands of native SVG paths just to open the gallery. The canvas stays editable.
 All earlier shipped scene geometry, versions and region IDs remain unchanged and accessible through
 My colouring when saved work exists.
 

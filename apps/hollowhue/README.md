@@ -24,8 +24,9 @@ A failed save keeps the app open so the user can retry. Applying never interrupt
 Existing scenes and their progress keys remain compatible with runtime 0.1.0; SDK 57 is unchanged.
 
 Delivery status is in `ops/status.json` and `ops/SHIP_NOTES.md`. `scripts/iphone-flow.yaml` exercises
-the native iPhone app, colour entry, fill/undo/redo, both new worlds, drawing controls and recent colours
-after relaunch. The capture workflow disables OTA only in its isolated simulator build to keep screenshots
+the native illustrated cottage/cafe, category/difficulty selection, colour entry, all six regular and twenty
+Mega stops, fill/draw undo/redo and saved colours after relaunch. The capture workflow disables OTA only
+in its isolated simulator build to keep screenshots
 on the tested source. It does not prove physical-device uptake or production update networking.
 
 `RELEASE.json` requests the compatible production OTA. Changing `TESTFLIGHT_REQUEST.json` on main
@@ -42,12 +43,16 @@ queue or upload as proof the owner can install it: check the Apple beta state to
 ## Artwork and depth revision
 
 Owner feedback on4November requests better art, Linework-style categories/difficulties, six normal zooms
-and twenty in Mega Zoom. The new default catalogue contains six standard worlds and one Mega world;
-all57 source illustrations are original vector art from this repo's Linework catalogue. Beginner pictures
-have larger simple regions; higher difficulties add botanical/architectural/ornamental detail.
+and twenty in Mega Zoom. The owner also rejected the first Linework-based art preview and requested more
+realistic, detailed pictures. The final replacement contains42original newly illustrated pictures across
+six standard worlds and one Mega world. Beginner flowers have larger clear shapes; higher difficulties
+add realistic botanical, wildlife, architectural and ornamental detail. Selected source pixels and built-in
+image generation prompts are preserved in `scripts/art`; cubic ink sits above closed tappable regions.
+Pure-JS fflate packs the vectors to keep the compatible update smaller; no native module was added.
 `My colouring` keeps all previously saved scenes accessible without changing their shapes or region IDs.
 
 The opening picture counts as zoom0. Standard worlds have7pictures/6transitions; Mega has21pictures/20
 transitions, each a distinct illustration. `scripts/art/README.md` explains the preserved source and build
-process. 56 tests include every Mega stop, deepest-level painting/persistence and an exact legacy-art
+process. 57 tests include every Mega stop, deepest-level painting/persistence, ink excluded from saved fills,
+and an exact legacy-art
 checksum. Native iPhone QA and this revision's release status are recorded in `ops/status.json`.

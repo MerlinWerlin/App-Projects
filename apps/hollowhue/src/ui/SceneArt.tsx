@@ -1,11 +1,13 @@
 // Draws a scene's levels with react-native-svg. Each level is memoised, so panning and zooming only changes
 // the viewBox; a level re-renders only when its own colours or drawings change.
 import { memo, useMemo } from 'react';
+import { Image } from 'react-native';
 import Svg, { ClipPath, Defs, Ellipse, G, Path, Rect } from 'react-native-svg';
 import { strokePath } from '../core/geom';
 import { type Progress, type Stroke, TOOL_STYLE } from '../core/progress';
 import { type Layout, type Placed, type Visible, detailStep, regionSizes, shapeOpacity } from '../core/scene';
 import { ART } from '../theme/tokens';
+import { SCENE_COVERS } from '../scenes/art/covers';
 
 type Fills = Record<string, string>;
 
@@ -220,6 +222,11 @@ export function SceneLevels({
 export const SceneThumb = memo(function SceneThumb({ L, progress, width }: { L: Layout; progress: Progress; width: number }) {
   const strokes = useStrokesByLevel(progress);
   const r = L.root;
+  const cover = SCENE_COVERS[L.scene.id];
+  const hasRootPaint = Object.keys(progress.fills[r.id] ?? {}).length > 0 || progress.strokes.some((s) => s.level === r.id);
+  if (cover && !hasRootPaint) {
+    return <Image source={cover} style={{ width, height: width * r.h / r.w }} resizeMode="contain" accessibilityIgnoresInvertColors />;
+  }
   return (
     <Svg width={width} height={(width * r.h) / r.w} viewBox={`0 0 ${r.w} ${r.h}`} pointerEvents="none">
       <SceneLevels vis={[{ level: r, frac: 1, step: detailStep(width / r.w) }]} base={ROOT_BASE} progress={progress} strokesByLevel={strokes} />

@@ -35,6 +35,9 @@ appId: com.jared797.hollowhue
       text: Open Garden Blooms
     direction: DOWN
     timeout: 20000
+    visibilityPercentage: 40
+    centerElement: true
+    speed: 20
 - tapOn: Open Garden Blooms
 - assertVisible: '.*Zoom 0 of 6.*'
 - tapOn: Mix a colour
@@ -205,6 +208,9 @@ appId: com.jared797.hollowhue
       text: Open Garden Blooms
     direction: DOWN
     timeout: 20000
+    visibilityPercentage: 40
+    centerElement: true
+    speed: 20
 - tapOn: Open Garden Blooms
 - assertVisible: 'Recent colour #3388DD'
 - takeScreenshot: 09-saved-colouring
