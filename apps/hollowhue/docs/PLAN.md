@@ -27,11 +27,11 @@ inspired it ("Infinity Coloring Book") has a single theme.
   flight to the next hidden level, "You found" toasts, first-launch language line, Settings.
 - No ads, no tracking, no account, no purchases.
 
-## Phase 2 (next)
+## Phase 2 (ongoing)
 - Pinch feel on device (Jared's TestFlight notes), Apple Pencil only drawing option (finger pans), pressure.
 - More scenes with depth: library (shelf -> book -> illustration in the book), forest (tree -> owl hollow -> owl),
   ocean reef, dragon's hoard, a café counter to a latte-art level, jungle with a hidden nest.
-- Custom colour picker + recent colours, gradient fills, texture brushes (crayon, watercolour).
+- Custom colour picker + recent colours shipped 4 November. Gradient fills and texture brushes remain later work.
 - Export / share a finished picture (whole scene or the current zoom), time-lapse replay.
 - Scene versioning: region ids are stable per scene `version`; restore trims ids that no longer exist.
 
@@ -52,9 +52,9 @@ inspired it ("Infinity Coloring Book") has a single theme.
   prompts/references are in `nested-generation.json`. Rebuild with `scripts/build-art-library.py`.
   Art decoding is per illustration with a bounded cache, and unpainted white cells avoid extra SVG views.
 - 159 offline checks and strict type checks pass, including all six/twenty stops, landscape framing,
-  deep colour persistence, and hashes of all approved/released geometry. Native iPhone checks and
-  delivery receipts are recorded in `docs/qa-nested-20261105` when complete. Current correction is
-  not yet published; production remains Beta4/OTA28b985e9 until verification finishes.
+  deep colour persistence, and hashes of all approved/released geometry. Native iPhone checks now pass across two reviewed captures of identical compiled app source: all six
+  regular journeys, Mega twenty, deep paint/drawing and restart persistence. Receipts and qualified
+  frames are in `docs/qa-nested-20261105`. Publication is pending; production remains Beta4/OTA28b985e9.
 
 ## Money (later, not in phase 1)
 Same factory model: free core forever, no ads, no tracking.

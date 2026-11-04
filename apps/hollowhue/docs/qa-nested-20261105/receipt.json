@@ -1,0 +1,67 @@
+{
+  "result": "pass across two reviewed native captures",
+  "appSource": "af7c64ba799b77c04f702540b2d1af7b61a2740f",
+  "runs": [
+    {
+      "run": "41900538055",
+      "result": "partial; reviewed Cottage/Camellia/Owl/Daisy and Single controls",
+      "receipt": "attempt-1.json"
+    },
+    {
+      "run": "41907753409",
+      "result": "success",
+      "captureSource": "94212b400af26b0a125ac7659156ec6deef1a12c",
+      "scope": "Correct scene-name assertions;Turtle/Rose six each;Mega all twenty;blue fill/undo/redo at twenty;blue Single fill and recent colour restored after restart"
+    }
+  ],
+  "runtimeDiffFromCompiledSource": [],
+  "offlineTests": 159,
+  "strictTypes": "full and UI-stub pass",
+  "expoDoctor": "21/21 pass",
+  "iosHermesExport": "pass;43MB",
+  "coverage": "All six regular editions have six discoveries;Mega twenty;independent artwork;custom blue fill;drawing;undo/redo;fitted return;restart persistence.",
+  "geometry": "All42 approved illustrations and7 shipped chains retain exact hashes;6 original authored scenes retain exact hash.",
+  "images": [
+    {
+      "file": "remaining-01-separated-collections.png",
+      "sha256": "9ba5e87a035a87c5570e91e7c0a32c4ebfdc4d1796c400bd6667f520cd57e93b"
+    },
+    {
+      "file": "remaining-02-independent-daisies.png",
+      "sha256": "4d31fc7700245b0227621b57078f32758ef3f05e3219eef05cf9a03da9dfe16e"
+    },
+    {
+      "file": "remaining-03-single-colour.png",
+      "sha256": "ba92442044f55f2fa5e6daf72f8570f5988d3099d1257ced6c6a94967220d9b9"
+    },
+    {
+      "file": "remaining-06-rose-sixth-discovery.png",
+      "sha256": "4bf533b73ccb28b8ff8652725ebd4eb8d70ff98e439e31a05c90ab0063842544"
+    },
+    {
+      "file": "remaining-06-turtle-sixth-discovery.png",
+      "sha256": "4e5f7c16a0da9b578d658afafd8a7ec61029c9a17219732055108ac284e56d98"
+    },
+    {
+      "file": "remaining-08-mega-detail-1.png",
+      "sha256": "306c2c7f6ee0df51efaf3003d635ef19454fdd4187bddaaa6db141499ca0a919"
+    },
+    {
+      "file": "remaining-08-mega-detail-10.png",
+      "sha256": "8c45fec3fa4fc90bd5807883c7217feb960dcec81075e6dd8c08ce144490a8c6"
+    },
+    {
+      "file": "remaining-08-mega-detail-20.png",
+      "sha256": "7e2c84069456d485f2fdc89a5e7a4849d09165170c4c51bea0a3021d8d31dc48"
+    },
+    {
+      "file": "remaining-09-painted-mega-heart.png",
+      "sha256": "7b855f039d176b11e93d24f56131a90d5363dd0a0eb7f2b9b811e2827e665304"
+    },
+    {
+      "file": "remaining-10-saved-single-after-restart.png",
+      "sha256": "6031cbab0a680b54250894e637b0a8c2a422503cf9f2901fe4507e5435225e58"
+    }
+  ],
+  "physicalPhoneUptakeVerified": false
+}

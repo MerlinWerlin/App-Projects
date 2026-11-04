@@ -20,4 +20,16 @@ endpoint is excluded too. Remaining checks use the exact same compiled app, with
 assertions, category selection and an element-anchored swipe of the topic rail. The capture repair follows
 [Maestro's swipe syntax](https://docs.maestro.dev/reference/commands-available/swipe) and
 [scroll visibility rules](https://docs.maestro.dev/reference/commands-available/scrolluntilvisible).
-Turtle, Rose, Mega twenty and restart persistence remain pending until the recovery run is reviewed.
+## Native coverage complete
+
+Recovery run `41907753409` succeeded using capture workflow `94212b40` and the identical compiled app
+source `af7c64ba`. Actual scene-name assertions confirm Turtle and Rose, both with six discoveries.
+All twenty Mega stops passed; blue paint at the twentieth is visible on the final rose engraving.
+The blue standalone daisy petal and recent colour survived a restart. All ten recovery frames were
+reviewed and are preserved with the `remaining-` prefix. Combined with the four verified journeys from
+the first run, this covers all six regular editions. `receipt.json` records scope and hashes.
+
+No app/src/assets/config/package runtime files changed after the compiled source; subsequent changes
+are capture tooling and evidence. Offline validation:159 tests,full/stub strict types,Expo doctor21/21,
+and iOS/Hermes export. Original artwork and prior-scene geometry hashes match. Physical iPhone uptake
+is not independently verified. Production OTA and Apple delivery receipts are added after publication.
