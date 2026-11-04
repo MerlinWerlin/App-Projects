@@ -1,0 +1,402 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "verdigris-voyage",
+  "packVersion": 4,
+  "name": "Verdigris Voyage",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#C6D0BC",
+    "tile": "#AEB6A5",
+    "glyph": "#1C1816",
+    "accent": "#AEAA8B",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Verdigris Voyage",
+    "mood": "Seafoam mist and aged copper botanical machines.",
+    "tags": [
+      "verdigris",
+      "voyage",
+      "seafoam",
+      "mist",
+      "aged",
+      "copper",
+      "botanical",
+      "machines",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Ocean & Water"
+  },
+  "thumbhash": "rPgJCwJ0nzh3epd3Z3BKBrc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.b43b28e0.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 190924,
+      "sha256": "b43b28e0cbaeebf06ee40c163fc55c5184a8ed93cb9eb221b207e3c782c542b2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.17b5aefb.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 172220,
+      "sha256": "17b5aefba0905e09d3789b6bf280231b7217abb6623b0574c62fc9cf1ab5c920",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.87069dee.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 71246,
+      "sha256": "87069dee9c3367ef0ab306e22598a1317c6195993fc9484601d726068d339da6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.82f16098.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 74570,
+      "sha256": "82f16098d1ada0b1c2b6d1accc6fa39f163453149fb51bc0ec236fc8c1dd0dda",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.7ed54366.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 150782,
+      "sha256": "7ed54366537330c9710c582bbbe483c5da158612afe4223ee2d76fcfa6a4eeef",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.41fb7f04.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 239302,
+      "sha256": "41fb7f0410745a46838c3b944307fae8c8fdb92eca643edf6aa0c607d788fe3c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.52d82148.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12462,
+      "sha256": "52d82148c629dec5f3394002b2152e2efe4ebff5e234d7b4c3391c43c0f4d197",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.0a3d503c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 173212,
+      "sha256": "0a3d503ced7e6dd95ec617ea4bc20743eb634c47959fbdb87bebf427d2673615",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-compass-clock.6a0d3210.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 198720,
+      "sha256": "6a0d32104221d55046a130812c097c2c1b6249645206b7241792ee83fdf83112",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-copper-seed-capsule.8fd67f50.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 160948,
+      "sha256": "8fd67f5047b41b40966aebf2b0d2ad888f08112f0382cef724ece61c3c174f8b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-terrarium-sailboat.05c1e006.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 163474,
+      "sha256": "05c1e00629d0dd500b84807f11d733cda91ae53e25fc8eb5364ded24f54cbd09",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-voyager-date.fcd75e05.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 180066,
+      "sha256": "fcd75e053c5bcab65de6a537168132038f630aba6df43ea8417c926891f488b0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-greenhouse-airship.4731de75.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 223814,
+      "sha256": "4731de75067ee0b80f95032e522d3765a5cebcb170b4925b194b355ac328d14b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.c96c6f8a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5816,
+      "sha256": "c96c6f8ad2fb1a88e5c3c95fd8ffd3ab6649b11dd66f823b28831aebaff80837",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-clockwork-hummingbird.d74dea0b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 187280,
+      "sha256": "d74dea0be722df558c4466f38f5104df1af35182dacc49a3f6e0359e3af2617a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2204836,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-clockwork-hummingbird.d74dea0b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-clockwork-hummingbird.d74dea0b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-clockwork-hummingbird.d74dea0b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-clockwork-hummingbird.d74dea0b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "audit-20261101-compass-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-compass-clock.6a0d3210.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 compass clock"
+    },
+    {
+      "id": "copper-seed-capsule",
+      "kind": "art",
+      "image": "widget-copper-seed-capsule.8fd67f50.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Copper seed capsule"
+    },
+    {
+      "id": "terrarium-sailboat",
+      "kind": "art",
+      "image": "widget-terrarium-sailboat.05c1e006.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Terrarium sailboat"
+    },
+    {
+      "id": "voyager-date",
+      "kind": "calendar",
+      "image": "widget-voyager-date.fcd75e05.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Voyager date"
+    },
+    {
+      "id": "greenhouse-airship",
+      "kind": "art",
+      "image": "widget-greenhouse-airship.4731de75.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Greenhouse airship"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.c96c6f8a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.82f16098.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.7ed54366.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.41fb7f04.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
