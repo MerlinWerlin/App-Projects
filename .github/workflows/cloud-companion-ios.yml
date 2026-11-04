@@ -3,9 +3,16 @@ on:
   push:
     branches: ['codex/cloud-companion-*']
     paths:
-      - 'apps/cloud-companion/**'
-      - '!apps/cloud-companion/docs/**'
-      - '!apps/cloud-companion/README.md'
+      - 'apps/cloud-companion/App/**'
+      - 'apps/cloud-companion/Shared/**'
+      - 'apps/cloud-companion/Widget/**'
+      - 'apps/cloud-companion/Tests/**'
+      - 'apps/cloud-companion/UITests/**'
+      - 'apps/cloud-companion/project.yml'
+      - 'apps/cloud-companion/Package.swift'
+      - 'apps/cloud-companion/tools/MakeIcon.swift'
+      - 'apps/cloud-companion/tools/capture.sh'
+      - 'apps/cloud-companion/tools/verify_motion.py'
       - '.github/workflows/cloud-companion-ios.yml'
   pull_request:
     paths: ['apps/cloud-companion/**', '.github/workflows/cloud-companion-ios.yml']
