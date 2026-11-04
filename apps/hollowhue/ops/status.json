@@ -1,9 +1,9 @@
 {
   "app": "hollowhue",
   "stage": "build",
-  "headline": "Realistic artwork revision: 42 original newly illustrated pictures replace the rejected Linework preview. Five topic categories, three difficulty levels, six regular zooms and twenty in Mega. 57 tests, strict types and iOS export pass; final native iPhone QA and publication pending.",
+  "headline": "42 new realistic illustrations, five topic categories, three difficulty levels, six regular zooms and twenty in Mega. Full native iPhone flow passed; production OTA and fresh TestFlight publication requested.",
   "next_for_owner": [
-    "The selected realistic art is in docs/art-direction-realistic-20261104.png. Final native iPhone checks precede release."
+    "Release is being prepared; delivery status below will distinguish the in-app update from Apple processing."
   ],
   "tests": 57,
   "typecheck": "57 tests and full/stub strict types pass. iOS/Hermes export passes; illustrated bundle packed to29MB. All old scene geometry/IDs/versions retain exact SHA. Expo doctor21/21pass.",
@@ -15,8 +15,17 @@
     "physical_phone_uptake": "unverified"
   },
   "native_qa": {
-    "result": "pending",
-    "scope": "gallery covers improve cold launch; corrected overscrolling saved-card test. Previous illustrated run41807826539/source391f5ed8 reached6+20stops, painted at20 and passed undo/redo; final saved-card selector failed despite saved data visible. Fresh native capture required."
+    "result": "pass",
+    "run": "41812677928",
+    "source": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
+    "scope": "all six regular and twenty Mega stops, deep paint, drawing, undo/redo, saved work and recent colours after relaunch",
+    "capture_retake": {
+      "run": "41816934677",
+      "captureSource": "bda2943def38124c6dd5aa397c661aa6da2583ac",
+      "appSource": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
+      "reason": "Initial cottage screenshot preceded vector rendering; capture-only flow returns from the cafe to Whole scene. Same compiled app, runtime source unchanged."
+    },
+    "physical_phone_uptake": "unverified"
   },
   "previous_delivery": {
     "release_pr": 211,
