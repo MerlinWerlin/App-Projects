@@ -48,7 +48,8 @@ jobs:
       - name: Align and sign only with the public Android test key
         run: |
           tools="$ANDROID_HOME/build-tools/36.0.0"
-          "$tools/zipalign" -f -P 16 4 "$RUNNER_TEMP/cue-repacked-unsigned.apk" "$RUNNER_TEMP/cue-repacked-aligned.apk"
+          python scripts/play/cue_exact_js_qa.py native-base/cue-play-test.apk "$RUNNER_TEMP/cue-repacked-unsigned.apk" "$RUNNER_TEMP/cue-exact-js-unsigned.apk" cue-android-output
+          "$tools/zipalign" -f -P 16 4 "$RUNNER_TEMP/cue-exact-js-unsigned.apk" "$RUNNER_TEMP/cue-repacked-aligned.apk"
           "$tools/apksigner" sign --ks candidate-source/apps/cue/android/app/debug.keystore --ks-key-alias androiddebugkey --ks-pass pass:android --key-pass pass:android --out cue-android-output/cue-play-test.apk "$RUNNER_TEMP/cue-repacked-aligned.apk"
           cp native-base/config.json cue-android-output/config.json
           cp native-base/runtime-dependencies.txt cue-android-output/runtime-dependencies.txt
