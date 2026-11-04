@@ -31,6 +31,14 @@ jobs:
         run: |
           python apps/hollowhue/scripts/verify-update.py ${EXPECTED_GROUP:+"$EXPECTED_GROUP"} > hollowhue-update-status.json
           cat hollowhue-update-status.json
+      - name: Read in-flight Apple upload state
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          python apps/hollowhue/scripts/upload-status.py > hollowhue-upload-status.json
+          cat hollowhue-upload-status.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -38,4 +46,5 @@ jobs:
           path: |
             hollowhue-asc-status.md
             hollowhue-update-status.json
+            hollowhue-upload-status.json
           retention-days: 30
