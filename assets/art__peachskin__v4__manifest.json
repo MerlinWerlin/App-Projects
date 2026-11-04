@@ -1,0 +1,409 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "peachskin",
+  "packVersion": 4,
+  "name": "Peachskin",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#F8E1D1",
+    "tile": "#D9C5B7",
+    "glyph": "#1C1816",
+    "accent": "#B9874E",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Peachskin",
+    "mood": "Velvety peach skin and soft fruit tones.",
+    "tags": [
+      "peachskin",
+      "velvety",
+      "peach",
+      "skin",
+      "soft",
+      "fruit",
+      "tones",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 PEACHSKIN. Fine-art BOTANICAL FRUIT STILL-LIFE PHOTOGRAPH aesthetic, warm pale PEACH-CREAM background #F6EBE2. UPPER70percent EMPTY quiet smooth peachcream with faint natural tonal softness only no patterns objects bokeh points or text. Bottom28percent a small graceful fruiting PEACH branch entering from lower-left, holding TWO small ripe natural peaches with velvety fine fuzz, warm pale-gold skin and muted dusty-coral blush, delicate central seams, a few slender fresh SAGE-GREEN peach leaves. One tiny pale-pink peach blossom on a shorter side twig. Compact low arrangement around55percent canvas width, peaches together about13percent image height, full bottom safe margin. Soft natural morning light, beautiful tactile fruit fuzz and subtle leaf veins, restrained authentic small imperfections, shallow natural depth of field and soft shadows, elegant serene botanical editorial photography. Peachcream/coral/palegold/sage palette, warm airy minimal composition. No faces characters animals ribbons embroidery toys craft plastic porcelain glass gems other fruit bottles text UI phoneframes logos watermark. Original generated photographic-style image, no external photograph.",
+    "addedAt": "2026-11-01",
+    "category": "Sweets & Treats"
+  },
+  "thumbhash": "NDkGEwKVr2eHdIyFWXCJA6c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.00418452.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 75040,
+      "sha256": "00418452fc1ce4770877f108efd6e8b91d5ee313db838aa3879bc4ab00bd68a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.6e5ea95b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 66782,
+      "sha256": "6e5ea95bb60f4ced8b7f4ead0e7afc1a60b8973b28a10b3c678b6d6707fa369c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.71dd816a.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 34498,
+      "sha256": "71dd816a6195f6fcedbf1b05cb3ea41eb4c414db74844871fb228720e4481c01",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.cbd56563.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 9852,
+      "sha256": "cbd5656376a4db35a14b15a621240571bd0d121c282ee9d16f4b6f65a379a31b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.a17b4578.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 4398,
+      "sha256": "a17b4578562888d287b7d71fe364c2d2beaf02110f353195c9e5a34246846074",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.60fe6fee.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 31790,
+      "sha256": "60fe6feea3143ca1f964a317b89aabc1270fc3fa4d6d329e5dabb36f16c7bebe",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.05e8d3fd.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6326,
+      "sha256": "05e8d3fdf25fa993962fe9e8a2edaf6f945f4649a6e2fcb6a5ccffd445fe792a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.33a57239.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 61164,
+      "sha256": "33a57239bb99a29129624dc4fbe329400c7908a0b568f836051fdcf911546db2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-production-20261101-velvet-peach.ca35d047.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 82990,
+      "sha256": "ca35d047f2595788dc57debecbf6eb3dce24c4b463c4705a9f8d3b530388b5dd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.0026826e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6966,
+      "sha256": "0026826ec53a69d73ca0d3e82dfedb10479fafaefd3f566249b531d7438e50bf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.36e9c29d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3570,
+      "sha256": "36e9c29dee732d7cb903e7d11dc453741bbef8fa2ae7745dec7fc2bd5b849426",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.78c225b8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6804,
+      "sha256": "78c225b8728ef6adc181d9c5a810cab7e766addc2618ee166d3c727734ee6bb4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-battery.d034713d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2958,
+      "sha256": "d034713d996a5c7f596112f426bb1da2ce13f22ca653d2dd915ffdfe33fdc5fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-blossom-study.98128a57.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 67348,
+      "sha256": "98128a5722ec0fd2f6e6d8b8d4d70d580b337c1da6aa6852569a530effd9f14d",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 460486,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-blossom-study.98128a57.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-blossom-study.98128a57.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-blossom-study.98128a57.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-blossom-study.98128a57.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "production-20261101-velvet-peach",
+      "kind": "art",
+      "image": "widget-production-20261101-velvet-peach.ca35d047.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Production 20261101 velvet peach"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.0026826e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.36e9c29d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.78c225b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-battery",
+      "kind": "battery",
+      "image": "widget-live-battery.d034713d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Battery level",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.22,
+          0.27,
+          0.56,
+          0.46
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.cbd56563.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.a17b4578.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.60fe6fee.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

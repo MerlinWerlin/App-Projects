@@ -1,0 +1,408 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "juniper-mist",
+  "packVersion": 4,
+  "name": "Juniper Mist",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#D7E0DA",
+    "tile": "#BDC4BF",
+    "glyph": "#1C1816",
+    "accent": "#DBE4DE",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Juniper Mist",
+    "mood": "Misty juniper branches and frosted berries.",
+    "tags": [
+      "juniper",
+      "mist",
+      "misty",
+      "branches",
+      "frosted",
+      "berries",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 JUNIPER MIST. Fine-art BOTANICAL STILL-LIFE PHOTOGRAPH aesthetic, pale cool SAGE-MIST background #E8EEEA. UPPER70percent EMPTY quiet smooth pale sage, only extremely subtle soft natural tonal depth, no objects pattern bokeh points text. Bottom28percent ONE small graceful natural JUNIPER SPRIG entering from lower-left, slender warm brown twig with fine short deep-green pointed needle clusters, FIVE small round dusty-blue juniper berries with delicate pale waxy bloom and tiny natural surface marks, two tiny clear dew beads on needles. Entire sprig compact around58percent canvas width, low centered with full margins, berry cluster only8percent total imageheight. Soft cool diffuse morning light, beautiful sharp fine needle tips and powdery berries, subtle natural imperfections, pale background separation and restrained gentle shadows. Calm winterlike botanical editorial photography, pale sage/evergreen/dustyblue/silver palette. No snow crystals ice cubes other fruits flowers animals faces characters ribbons craft toys sculpture jewelry glass UI phoneframes text branding watermark. Original generated photographic-style image, no external photo.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "MegJAwCEr3d3dJyFrFB2+Yk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.ae5e3209.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 94102,
+      "sha256": "ae5e3209ea1a08e53f97d45f326eedb0ad9ef29d6c73fbcb531ad51f677340a4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.98bda801.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 85784,
+      "sha256": "98bda8014acdf007dfcb34340627b8688adbbccb3366dca3a5544c3954150165",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.535dcd78.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 49748,
+      "sha256": "535dcd78aaae65280b39a2a16fafa843a985e095737dbb3815862bcb2b0c4af9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.edff3aac.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 20436,
+      "sha256": "edff3aac3fb5dd4cc05919b6d0ea378c1bd229ac082930447e97661790b1bb81",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.f00f0e93.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 4802,
+      "sha256": "f00f0e9324753aa73c18963a6214145f920a39832b4cc471bc222f2531650aa6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.48b95598.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 44034,
+      "sha256": "48b955988adebe4771e4312a527c97c40dbf1d5ac536c6c7c93485c70ab79e02",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.74e15c85.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9700,
+      "sha256": "74e15c856f44a92f6eaf3fd192ecd236c050b7ee9602b330d7258db74d257277",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.3a6f34fa.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 102898,
+      "sha256": "3a6f34fa4dd10187188a11af9c3510d63fbbecf96f8b4ad9368cb6a65db52bd8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-production-20261101-needle-study.35091594.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 90702,
+      "sha256": "350915945b0e1ea58abb0302e7c980638005be852114184ab2cb626c075f7e93",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.832fd006.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6286,
+      "sha256": "832fd006174a005988b774378882c27edd1c97db55328f28c0c19007cbf4600b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.91cf9035.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3120,
+      "sha256": "91cf90359e8545b370e4907997c60d6437b81814e1808a622c2049f1685b6be4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.cc04e181.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6188,
+      "sha256": "cc04e181b5557dcd4258ad690a7e25ae7b9ddc7385d7a26a440384ffc89864fd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-battery.7d68d305.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2640,
+      "sha256": "7d68d3058970a4dd00dfba2a07694bb6804f91fbb770526011a2b8b4ae288812",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-berry-sprig.68a015f7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 111156,
+      "sha256": "68a015f7e08a13c61f553443bdf3f5b608bde228352164f255f7682895ee0168",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 631596,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-berry-sprig.68a015f7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-berry-sprig.68a015f7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-berry-sprig.68a015f7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-berry-sprig.68a015f7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "production-20261101-needle-study",
+      "kind": "art",
+      "image": "widget-production-20261101-needle-study.35091594.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Production 20261101 needle study"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.832fd006.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.91cf9035.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.cc04e181.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-battery",
+      "kind": "battery",
+      "image": "widget-live-battery.7d68d305.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Battery level",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.22,
+          0.27,
+          0.56,
+          0.46
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.edff3aac.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.f00f0e93.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.48b95598.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,401 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "plume-court",
+  "packVersion": 4,
+  "name": "Plume Court",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#E0CCB3",
+    "tile": "#C5B39D",
+    "glyph": "#1C1816",
+    "accent": "#F1DABA",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Plume Court",
+    "mood": "Limestone, peacock-blue, jade and bronze garden theme.",
+    "tags": [
+      "plume",
+      "court",
+      "limestone",
+      "peacock",
+      "blue",
+      "jade",
+      "bronze",
+      "garden",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium editorial wildlife/garden artwork. Portrait iPhone wallpaper approx9:19.5 PLUME COURT. Upper60percent almost uniform warm pale limestone #E8E0CD, softly defocused matte stone wall, NO shapes lines arches objects leaves strong shadows colorful reflections or patterns there; calm space for future blue outline app icons. Lower40percent ONE beautiful anatomically coherent male peacock in full frontal display on a low pale limestone garden terrace: small elegant sapphire-blue neck/body at lower center, fully fanned jade/teal/blue tail with fine bronze eye markings forming a broad graceful low semicircle, all feathers and body/feet comfortably visible within portrait width; fan stays below59percent screen height and fills lower-middle, no feather reaches upper sky. Fine realistic individual feather texture, iridescent natural sheen, small cobalt crest. A very low carefully clipped dark jade hedge along distant bottom side edges, warm stone floor foreground, very soft gold afternoon side light, sophisticated tranquil private-courtyard atmosphere. Natural peacock photography aesthetic, rich but restrained blues greens bronze against warm stone. NO palace building arch columns people statues other birds flower clutter text labels logos icons phone frame borders or watermark, no jellyfish sea nebula stars or aurora. Full bleed and quiet very usable wallpaper.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "LBkKAwKHjqd3gH1H+XSNy/g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.22748553.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 272290,
+      "sha256": "2274855303da5147ac394345a254f88898212b44d1c9ca4367f7e08469c4a57d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.d4212d8a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 248336,
+      "sha256": "d4212d8a4e48f8320b82d236ac7109e939f4c949b9c94251d668e00ffb6fc32b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3349fca6.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 130684,
+      "sha256": "3349fca6833ad752773f8598301dd331fb1d3adc66cbc50e8dab477cdfb29dfb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.126c7ee0.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 62016,
+      "sha256": "126c7ee05c528687718df74f69353e53cc3738946d651bad5560aee0ba4e6015",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.0af207ff.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 83584,
+      "sha256": "0af207ffd4a61b8236e790c15e53194e2e0c2763962a58502ab8bbeb01c54090",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.594ae974.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 284062,
+      "sha256": "594ae974b89acd5b67444c83c262931f1e6a4850703284abd1bb082114b0aedf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.09ab5af4.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 18596,
+      "sha256": "09ab5af49f989a3ece0dd1028308113195561ccdad6ee1d70ca4f69bb12b6443",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.59b4e742.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 161688,
+      "sha256": "59b4e742f11870c88fdaf7c7a43ea04b41327316bf46940b2122684db527c81e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-plume-habits.fcffff1e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 149330,
+      "sha256": "fcffff1e2833b7a48bbf324f583f071f4a54f015b27b955dac6a1364d5a4c670",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-porcelain-quail.ae5d0161.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 119256,
+      "sha256": "ae5d01615da65ab483e5f1db808e6e899b0025c5e722fd6daf4585d39a64ff1e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.f9277bf5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6888,
+      "sha256": "f9277bf570f77be34534bbb5d0dc5965baf22e17d36c1d9652b73575defface4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.27c3a643.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3400,
+      "sha256": "27c3a64392e2386131e074275f5942c9cea88c0e5476cc89f97c781988c331d5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.d183be0d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6750,
+      "sha256": "d183be0d450610a4ec52aedb1c57f7258e384db8f1eb98ac7b252360fc38a0a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-feather-fan.3bd256d3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 176538,
+      "sha256": "3bd256d3618c390503ebb1fce58f69c01ec30cb93008f02bab2610f666bb9040",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1723418,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-feather-fan.3bd256d3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-feather-fan.3bd256d3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-feather-fan.3bd256d3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-feather-fan.3bd256d3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "plume-habits",
+      "kind": "habits",
+      "image": "widget-plume-habits.fcffff1e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Plume habits"
+    },
+    {
+      "id": "porcelain-quail",
+      "kind": "art",
+      "image": "widget-porcelain-quail.ae5d0161.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Porcelain quail"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.f9277bf5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.27c3a643.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.d183be0d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.126c7ee0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.0af207ff.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.594ae974.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

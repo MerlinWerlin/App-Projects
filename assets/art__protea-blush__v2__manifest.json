@@ -1,0 +1,399 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "protea-blush",
+  "packVersion": 2,
+  "name": "Protea Blush",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#EDE0E0",
+    "tile": "#D0C4C4",
+    "glyph": "#1C1816",
+    "accent": "#83584D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Protea Blush",
+    "mood": "One blush-pink king protea in soft light.",
+    "tags": [
+      "protea",
+      "blush",
+      "pink",
+      "king",
+      "soft",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original vertical iPhone wallpaper, Protea Blush. Sophisticated editorial botanical photography of ONE large pink king-protea flower, sculptural overlapping dusty rose pointed bracts around an ivory silky central crown, two muted silver-sage broad leaves and short stem. The entireflower sits in LOWER THIRD, slightly right ofcenter, with stem toward bottom edge. Upper TWO THIRDS almost uniform pale blush #EDE3E4 empty negative space for burgundy app glyphs. Soft diffuse natural studio light, detailed fine fibers and waxy bracts, photographic realism, restrained rosy color, no vases or pots. Full bleed portrait tall9:19.5, no text, no UI, no border, no other flowers. Original fictional studio scene, premium quiet lifestyle aesthetic.",
+    "addedAt": "2026-11-01",
+    "category": "Dreamy & Pastel"
+  },
+  "thumbhash": "cigKCwKab2aIhXqmVZBGBDk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.12521f19.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 147896,
+      "sha256": "12521f199db0bb3d70fe3449d539c659ab1640af0b1e107e85cc7aa7353e48ba",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1604b1a4.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 135144,
+      "sha256": "1604b1a48854f76ebacbd255ae06e29ad97b6942d155358b18c742ab0f16fe7f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.c2353215.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 73474,
+      "sha256": "c2353215135222a34101743d98db5328e7036ff1478286bd8a63945d8bfaa82c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.7e6ca04f.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 10524,
+      "sha256": "7e6ca04f37f6ec2809bba96d29afbb5bd63dee4bac9c730339e89499e4fcd5a4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.4a83c5f3.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 100438,
+      "sha256": "4a83c5f3594825e2f92e79c58fb5934469ac5beae0712140378fc22ee42cf066",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.0a3601bd.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 223430,
+      "sha256": "0a3601bd26410209086c149809ab66235be1ee77eb40c923e09fced4883af736",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.15e3223e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12834,
+      "sha256": "15e3223efb2b14bb215205c487e3d3fc95b1bf0d541bfa91bf934fd55488f20e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.04c185ac.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 166768,
+      "sha256": "04c185ac060e15041a38771db2bdd9608ce286e4a54803da29bf7e60e5052fef",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bloom-progress.c0a80b98.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 23942,
+      "sha256": "c0a80b988bbce3721637efae0e0f1ddae2b88aebf4780723c93eecda2fd063fa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-blush-date.64edb377.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 76984,
+      "sha256": "64edb377aa12e6acb05b978831f1ba4d9f4ffe6b4def19b76504de186c187c9a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-crown-clock.3dbede9f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 59150,
+      "sha256": "3dbede9f87e74632f40c5be4870e852fae4e731026bf0897fbc0d979e0311356",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-king-protea.2782c4e4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 174080,
+      "sha256": "2782c4e41ec7e39907cbcee479a3ff212d22de2d7b1b5646025add648f5b1180",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-silver-leaf.168f32d6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 143288,
+      "sha256": "168f32d64e001606ab9488c6b831a42038ea4f470c68411c54cf55cad9fc5685",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.7097e26e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6830,
+      "sha256": "7097e26e01efee59b3017cc2ba742cf05a4cb1decd1373c8b09bd61b7029ad85",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bract-rhythm.f4d2d439.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 181122,
+      "sha256": "f4d2d43991d3a4cc7eb84355800c3b537dbd56ffdeff07e6836996def9c974e8",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1535904,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-bract-rhythm.f4d2d439.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-bract-rhythm.f4d2d439.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-bract-rhythm.f4d2d439.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-bract-rhythm.f4d2d439.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "bloom-progress",
+      "kind": "art",
+      "image": "widget-bloom-progress.c0a80b98.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bloom progress"
+    },
+    {
+      "id": "blush-date",
+      "kind": "calendar",
+      "image": "widget-blush-date.64edb377.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Blush date"
+    },
+    {
+      "id": "crown-clock",
+      "kind": "clock",
+      "image": "widget-crown-clock.3dbede9f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Crown clock"
+    },
+    {
+      "id": "king-protea",
+      "kind": "art",
+      "image": "widget-king-protea.2782c4e4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "King protea"
+    },
+    {
+      "id": "silver-leaf",
+      "kind": "art",
+      "image": "widget-silver-leaf.168f32d6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Silver leaf"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.7097e26e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.7e6ca04f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.4a83c5f3.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.0a3601bd.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

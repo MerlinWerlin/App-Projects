@@ -1,0 +1,433 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "rainlight",
+  "packVersion": 4,
+  "name": "Rainlight",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#07070D",
+    "tile": "#29292D",
+    "glyph": "#FAF8F2",
+    "accent": "#78989E",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Rainlight",
+    "mood": "A rainy night in plum, cyan and lilac, with a quiet koi.",
+    "tags": [
+      "rainlight",
+      "rainy",
+      "night",
+      "plum",
+      "cyan",
+      "lilac",
+      "with",
+      "quiet",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Jahanzeb Ahsan (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create one portrait9:19.5 photographic iPhone wallpaper named Rainlight. Attached photo is material/mood reference: rain droplets on glass, coloured blurred city lights behind. Original composition: upper60% near-black ink-plum glass with restrained sparse tiny droplets and very subtle blue-violet gradients, calm enough for white glyphs; lower40% beautiful out-of-focus cyan, muted lilac and tiny amber urban lights streaking downward through sharp glass droplets, abstract wet city reflection, soft cinematic depth. Include one defocused red-orange circular traffic light low right, a gentle cyan vertical reflection lower left, no identifiable shops, buildings, people, signs or readable text. Moody contemporary rainy-night photograph, tactile glass, sophisticated controlled colours, no over-saturated cyberpunk, no neon landscape skyline, no stars, no moons, no terrain, no UI/frame. Main interest low in frame, upper field subtly alive but quiet, harmonious wallpaper for seamless smoked-plum icon tiles.",
+    "addedAt": "2026-10-31",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "xwcGCwSMQGiHnXZ4YNQIZnw=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.fe0b76b6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 368426,
+      "sha256": "fe0b76b65d01af25785554f5a11afef8d160ad28b3d8ea1f84129f524c1987a5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1b868baf.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 337370,
+      "sha256": "1b868baf07f55f831b51f13b029a9be09510a645aeef520f3e48229e1631a945",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.d414ee77.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 185020,
+      "sha256": "d414ee77739e1d057421029f7a0772d6a731cf69603d4245142f1584f160b814",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.837d5c63.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 94934,
+      "sha256": "837d5c63c978d092c0d3b01f8ff4dc63a0a67f951091105d5d41511a14991be1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.ed78c3d6.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 166790,
+      "sha256": "ed78c3d6d748295eb5968e51d4ce3c6175c5c859c06c266e0cf94c916a268b81",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.73cea125.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 199592,
+      "sha256": "73cea1259300ef1ee6f8d0e889d383bec8c222d42ee797c745f37f7a49d465a0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.6cc0713f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 25032,
+      "sha256": "6cc0713fd5a97eda1bbca530032ff8b9442a09d4c3c41b04de713a1a08c89eae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.2f4ec841.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 227400,
+      "sha256": "2f4ec841f39b37938b1b2e8cb1cd42a95fe2a52fdd8737964579d69d983be203",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-after-hours.753111aa.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 250942,
+      "sha256": "753111aa844f9ae02cef418d207dc23d0d4af27d685c5faeea1783da73236281",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-rain-window.9e53aca4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 277694,
+      "sha256": "9e53aca4693aacfb9127f99cbdbf48191652af40b767eb9a92a414887d7762cc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-glass-umbrella.4fc714e5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 243856,
+      "sha256": "4fc714e508cc49edf203f9e7af3ec294e053bb9bc806cc552764901474ce154c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rain-leaf.761fc7df.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 169358,
+      "sha256": "761fc7df8a20a8806bc9d287e3b8986c49cdf8d14ed09765d88b0fbd0cd8d212",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rainlight-date.bed38cc0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 222992,
+      "sha256": "bed38cc001e8782181eb2c18a323359fbc400cff9111b6ed704a594d855887ad",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-koi.3736d776.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 227332,
+      "sha256": "3736d776b2888eeae84905ede92fa0d48e896abbdccbb1c4229682287e637fbc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.3ffe46e1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7700,
+      "sha256": "3ffe46e1f8e945d775ab306ea8328fe85fe57dbe536fb36d54bb07615c59af92",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-native-clock-background-20261102.89bc568e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 246778,
+      "sha256": "89bc568ed5534c20a1b34a66192d0e712b30a39d1f5ff20909f53059d8266b08",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rain-window.2bf16fa5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 298928,
+      "sha256": "2bf16fa56b5bd660310162ee750ce94eb63df9dad307856145e8fb968196c747",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 3550144,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-native-clock-background-20261102.89bc568e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "After Hours Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.26,
+          0.18,
+          0.48,
+          0.53
+        ],
+        "shape": "plate",
+        "clockStyle": "stacked",
+        "ink": "#DCC5FF"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-rain-window.2bf16fa5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#DCC5FF"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-rain-window.2bf16fa5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#DCC5FF"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-rain-window.2bf16fa5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#DCC5FF"
+      }
+    },
+    {
+      "id": "audit-20261101-after-hours",
+      "kind": "art",
+      "image": "widget-audit-20261101-after-hours.753111aa.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 after hours"
+    },
+    {
+      "id": "audit-20261101-rain-window",
+      "kind": "art",
+      "image": "widget-audit-20261101-rain-window.9e53aca4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 rain window"
+    },
+    {
+      "id": "glass-umbrella",
+      "kind": "art",
+      "image": "widget-glass-umbrella.4fc714e5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Glass umbrella"
+    },
+    {
+      "id": "rain-leaf",
+      "kind": "art",
+      "image": "widget-rain-leaf.761fc7df.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rain leaf"
+    },
+    {
+      "id": "rainlight-date",
+      "kind": "calendar",
+      "image": "widget-rainlight-date.bed38cc0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rainlight date"
+    },
+    {
+      "id": "koi",
+      "kind": "art",
+      "image": "widget-koi.3736d776.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Koi"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.3ffe46e1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.837d5c63.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.ed78c3d6.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.73cea125.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

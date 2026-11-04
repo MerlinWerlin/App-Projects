@@ -1,0 +1,405 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "lemon-lagoon",
+  "packVersion": 4,
+  "name": "Lemon Lagoon",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#F6E8B5",
+    "tile": "#D7CB9F",
+    "glyph": "#1C1816",
+    "accent": "#72B3BE",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Lemon Lagoon",
+    "mood": "Pale lemon, cobalt icons, a bottled pool resort, blue ceramic octopus and pool-tile clock.",
+    "tags": [
+      "lemon",
+      "lagoon",
+      "pale",
+      "cobalt",
+      "icons",
+      "bottled",
+      "pool",
+      "resort",
+      "blue",
+      "ceramic",
+      "octopus",
+      "tile",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper 9:19.5 for LEMON LAGOON, a playful stylish Mediterranean poolside theme. Upper75percent completely quiet pale butter-lemon matte plaster background, nearly uniform #F6F0C9 with only very delicate sunlit paper grain, no objects or highlights behind future icons. Bottom25percent beautiful highly crafted miniature kidney-shaped cobalt blue swimming pool recessed in creamy terrazzo, a tiny coral parasol at lower-right, one small floating sliced lemon ring, soft pale-blue rippling water and intricate cobalt mosaic edge. High-end miniature ceramic resort photography, fresh summer daylight, sculptural playful restrained design, crisp cobalt blue, pale lemon, tiny coral accents. Pool is near bottom with curved terrace fully contained. No sea scene, no lettering, no UI, no text, no frame, no random decoration in upper area. Full bleed portrait wallpaper, serene useful negative space.",
+    "addedAt": "2026-11-01",
+    "category": "Ocean & Water"
+  },
+  "thumbhash": "8vgJKwZ3n1lnhXx1l49W+2o=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d9e83761.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 190096,
+      "sha256": "d9e8376141e1d11842dc696b3d30db745efa94437e68b1d0ed84c84892e88ccb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.cc5bc146.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 176502,
+      "sha256": "cc5bc146d2255921e15e8661befa915a039ece5742809bb107aec12ea2139c43",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.7c0ae841.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 70778,
+      "sha256": "7c0ae8413a4242c2190da6e4c7e12661677c6023dd3126242e825d79d83a56a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.f203c3c9.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 29892,
+      "sha256": "f203c3c93bb6cac1114707236ca3da571c6aed65b3a7bbc43026a60c392bfc47",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.a3fe11e5.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 79736,
+      "sha256": "a3fe11e50cc700c7955ea068cdbecd432c78310f87845c03b87b61ffde17cfbb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.dfbdff1e.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 88152,
+      "sha256": "dfbdff1ee766bfbe370075777b982fdf0117799b5e35683bc5351ec04a00ffa1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.c61e4048.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 13762,
+      "sha256": "c61e4048735b1fc7c69f606b8f8b205c944c7e78afe4674ed4f27b6ccf8a6763",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.9e165f01.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 68190,
+      "sha256": "9e165f010d0cab758d526b8ffebc39681f85a9666c0b2fb2ed33aefd357049ca",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lemon-sailboat.b0b902b8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84960,
+      "sha256": "b0b902b8e99531c239d91b7fd522ebc365a10df946633976a8b80c9d197d1de4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pool-day-countdown.07a5235e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 101894,
+      "sha256": "07a5235ea4eef9f7270177092ff14bbd6d217323a3c7701ca40cfc2ad97116f2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.147a1022.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 9164,
+      "sha256": "147a1022375a6f4f803b463f7728387cc5af40ecc9101a88abdcc982f8bde10c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.f59d641c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3666,
+      "sha256": "f59d641cf4c3740c9750db6bdc60c223deca5ff7b7e49289af93c0300e4924d1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.91502e33.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 8918,
+      "sha256": "91502e336af3f5b49bdcc62b22fb588e418d4550960b36f840843b606804bbbe",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coral-pool-float.f4a7f62c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75532,
+      "sha256": "f4a7f62cebc3cf9ba17724212e251445805b18d60af3d7ae40cac6b9c1539ebd",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1001242,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-coral-pool-float.f4a7f62c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-coral-pool-float.f4a7f62c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-coral-pool-float.f4a7f62c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-coral-pool-float.f4a7f62c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "lemon-sailboat",
+      "kind": "art",
+      "image": "widget-lemon-sailboat.b0b902b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lemon sailboat"
+    },
+    {
+      "id": "pool-day-countdown",
+      "kind": "countdown",
+      "image": "widget-pool-day-countdown.07a5235e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pool day countdown"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.147a1022.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.f59d641c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.91502e33.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.f203c3c9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.a3fe11e5.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.dfbdff1e.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
