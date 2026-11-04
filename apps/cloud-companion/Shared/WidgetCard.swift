@@ -19,9 +19,11 @@ struct WidgetCard: View {
             }
             HStack(spacing: 8) {
                 CloudArt(mood: moment.mood).frame(maxWidth: medium ? 120 : 65, maxHeight: medium ? 92 : 58)
+                    .id(moment.mood).transition(.scale(scale: 0.92).combined(with: .opacity))
                 VStack(alignment: .leading, spacing: 2) {
                     Text(moment.temperatureC.map(unit.display) ?? "—")
                         .font(.system(size: medium ? 44 : 35, weight: .medium, design: .rounded)).minimumScaleFactor(0.6).lineLimit(1)
+                        .contentTransition(.numericText())
                     Text(moment.isPrediction ? "Forecast" : moment.forecast?.condition ?? "Choose a city in the app")
                         .font(.system(size: 11, weight: .medium, design: .rounded)).lineLimit(2)
                 }
@@ -53,6 +55,7 @@ struct WidgetCard: View {
             }
         }
         .foregroundStyle(moment.mood == .sleepy ? .white : SkyPalette.ink)
+        .animation(.easeInOut(duration: 0.6), value: moment.mood)
         .accessibilityElement(children: .contain)
     }
 }
