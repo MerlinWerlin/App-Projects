@@ -42,7 +42,7 @@ export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChang
     if (busy) return;
     setBusy(true); setStatus(null);
     try {
-      const label = `${name(kind)} · ${t(`ui.seamless.sizes.${size}`)}`;
+      const label = [name(kind), t(`ui.seamless.sizes.${size}`)].join(' · ');
       const result = await widgets.saveDesignedWidget({
         id: themePieceId(theme.id, designedOptionId(kind), size), name: label, themeName: theme.name,
         themeId: theme.id, source: 'theme', created: Date.now(), aspect: DESIGNED_SIZE[size].w / DESIGNED_SIZE[size].h,
@@ -66,7 +66,7 @@ export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChang
         ))}
       </View>
       <View style={[styles.preview, continuous, { width: previewWidth, height: previewHeight, backgroundColor: design.background[0] }]}>
-        <SvgXml xml={xml} width={previewWidth} height={previewHeight} accessible accessibilityLabel={`${name(kind)}, ${theme.name}`} />
+        <SvgXml xml={xml} width={previewWidth} height={previewHeight} accessible accessibilityLabel={[name(kind), theme.name].join(', ')} />
       </View>
       <PillButton label={t('tabs.widgetsTab.art.use')} icon="check-circle" variant="filled" block busy={busy} onPress={() => { void save(); }} />
       <Text style={[textV2.footnote, { color: c.inkSecondary }]} maxFontSizeMultiplier={fontScaleCap('footnote')}>

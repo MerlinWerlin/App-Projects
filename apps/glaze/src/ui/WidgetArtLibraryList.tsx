@@ -205,7 +205,9 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
         const on = selected.has(p.id);
         const body = (
           <>
-          {p.live?.design ? <DesignedWidgetThumbnail design={p.live.design} size={p.size ?? 'small'} width={sizeV2.touch} /> : dir ? (
+          {p.live?.design ? (
+            <DesignedWidgetThumbnail design={p.live.design} size={p.size ?? 'small'} width={sizeV2.touch} />
+          ) : dir ? ( // i18n-ignore (conditional JSX; no literal text)
             <ExpoImage
               source={{ uri: `${base}${p.file}` }}
               recyclingKey={`${p.id}-${p.created}`}

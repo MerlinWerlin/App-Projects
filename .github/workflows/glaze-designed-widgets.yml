@@ -24,7 +24,17 @@ jobs:
           for FILE in targets/widget/*.swift; do
             if [[ "$FILE" != "targets/widget/GlazeWidgetsBundle.swift" ]]; then SOURCES+=("$FILE"); fi
           done
-          xcrun swiftc -parse-as-library -sdk "$SDK" -target "$ARCH-apple-ios17.0-simulator" "${SOURCES[@]}" scripts/designed-widget-review.swift -o "$APP/DesignedReview" > "$RUNNER_TEMP/compile.log" 2>&1 || { tail -120 "$RUNNER_TEMP/compile.log"; exit 1; }
+          if ! xcrun swiftc -parse-as-library -sdk "$SDK" -target "$ARCH-apple-ios17.0-simulator" "${SOURCES[@]}" scripts/designed-widget-review.swift -o "$APP/DesignedReview" > "$RUNNER_TEMP/compile.log" 2>&1; then
+            tail -120 "$RUNNER_TEMP/compile.log"
+            python3 - <<'PY'
+          import os,pathlib,re
+          s=(pathlib.Path(os.environ['RUNNER_TEMP'])/'compile.log').read_text()
+          for line in s.splitlines():
+              m=re.match(r'(.*?):(\d+):(\d+): error: (.*)',line)
+              if m: print(f'::error file=apps/glaze/{m[1]},line={m[2]},col={m[3]}::{m[4]}')
+          PY
+            exit 1
+          fi
           cp docs/designed-widget-fixtures.json "$APP/"
           python3 - <<'PY'
           import os,plistlib,pathlib

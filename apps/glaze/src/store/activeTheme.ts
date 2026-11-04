@@ -140,6 +140,16 @@ async function themeArtStep(arg: unknown): Promise<void> {
 
 registerDeferred(DEFERRED_STEPS.themeArt, { priority: 30, run: themeArtStep });
 
+/** Metadata-only upgrade of already configured functional pieces; called in the deferred queue. */
+export async function upgradeActiveDesignedWidgets(): Promise<void> {
+  if (await nativeWidgets.designVersion() < 5) return;
+  const id = await loadActiveThemeId();
+  const theme = await findAnyThemeById(id);
+  if (!theme) return;
+  const result = await nativeWidgets.upgradeDesignedWidgets(theme);
+  if (result.available && !result.ok) throw new Error('Designed widget migration failed');
+}
+
 /** The theme in use for a screen: read on mount and on every focus, and on each change. */
 export function useActiveThemeId(): string | null {
   const [id, setId] = useState<string | null>(null);

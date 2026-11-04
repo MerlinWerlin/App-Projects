@@ -24,7 +24,7 @@ test('older v2 builds keep Home Screen habits but require an update for new Lock
   }
   assert.equal(requiredNativeWidgetVersion('clock', 'small'), 2);
   const bridge = readFileSync('modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift', 'utf8');
-  assert.match(bridge, /AsyncFunction\("widgetDesignVersion"\)\s*\{\s*\(\)\s*->\s*Int\s+in\s+4\s*\}/);
+  assert.match(bridge, /AsyncFunction\("widgetDesignVersion"\)\s*\{\s*\(\)\s*->\s*Int\s+in\s+5\s*\}/);
   const studio = readFileSync('app/widget-studio.tsx', 'utf8');
   assert.match(studio, /await widgets\.designVersion\(\) < Math.max\(requiredNativeWidgetVersion\(/);
 });
