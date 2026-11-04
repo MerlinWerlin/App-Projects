@@ -1,0 +1,29 @@
+{
+  "app": "meow-manager",
+  "stage": "build",
+  "headline": "First working foundation built 4 November 2026: original cat, day planner, local assistant, reminders/calendar adapters and English/Japanese.",
+  "source": "apps/meow-manager",
+  "branch": "codex/meow-manager-20261104",
+  "baseCommit": "44448898badfae0cf312fafc29aacd4dd9e2c0ad",
+  "tests": 26,
+  "typecheck": "passed locally",
+  "exports": {
+    "ios": "passed locally",
+    "android": "passed locally",
+    "web": "passed locally; browser flow and Japanese phone-size layout checked"
+  },
+  "nativeDeviceVerified": false,
+  "cloudAIConnected": false,
+  "externalActions": [
+    "editable draft",
+    "explicit browser search",
+    "native system calendar editor"
+  ],
+  "storeSubmitted": false,
+  "next_for_owner": [
+    "Try the first browser preview and comment on the cat and daily flow."
+  ],
+  "roadmap": "C:/BTB/_ATLAS/MASTER_ROADMAP.md#project-apps",
+  "expoDoctor": "21/21 passed locally",
+  "githubChecks": "not yet run"
+}

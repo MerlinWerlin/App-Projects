@@ -8,3 +8,5 @@ is where releases are approved. Apps with an `EXPO_GO_PREVIEW` file publish an E
 
 **To ship:** merge the "Ship …" pull request in the GitHub app. See [docs/SHIPPING.md](docs/SHIPPING.md)
 (including the one-time setup).
+
+Meow Manager is being built in `apps/meow-manager`. Start with its README and `docs/BUILD_PROCESS.md`. This checkout is the owned development copy for `codex/meow-manager-20261104`; GitHub main remains the release authority.

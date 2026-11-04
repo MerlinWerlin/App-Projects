@@ -1,0 +1,1 @@
+Meow Manager decisions, run history and machine-readable build status, maintained by Codex for the APPS Meow Manager build. Start with status.json; this folder is an evidence record, not a second roadmap.

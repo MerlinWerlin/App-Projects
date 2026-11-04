@@ -1,0 +1,1 @@
+Reserved native visual-asset destination for Meow Manager, maintained by Codex for the APPS Meow Manager build. The original character currently lives as SVG code in src/components/Cat.tsx; native icon/splash exports are not yet supplied.
