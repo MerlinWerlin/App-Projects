@@ -66,7 +66,7 @@ struct CloudWidgetView: View {
                        Image(systemName: "arrow.clockwise").font(.system(size: 11, weight: .semibold)).frame(width: 28, height: 25)
                    }.buttonStyle(.plain).accessibilityLabel("Refresh weather without opening the app")))
             .containerBackground(SkyPalette.sky(entry.moment.mood), for: .widget)
-            .widgetURL(URL(string: "cloudcompanion://weather"))
+            .widgetURL(entry.preferences.place?.widgetLink)
     }
 }
 

@@ -223,6 +223,9 @@ struct SkyHome: View {
                 .sheet(isPresented: $showWidgets) { WidgetGallery(model: model) }
                 .sheet(isPresented: $showPlayground) { CloudPlayground(motionEnabled: model.preferences.motionEnabled, cloudName: model.preferences.cloudName) }
                 .sheet(isPresented: $showSettings) { CloudSettings(model: model) }
+                .onOpenURL { url in
+                    if let place = Place.from(widgetLink: url) { model.choose(place) }
+                }
         }.tint(SkyPalette.ink)
     }
     private var hero: some View {

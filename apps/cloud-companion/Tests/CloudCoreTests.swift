@@ -171,4 +171,12 @@ final class CloudCoreTests: XCTestCase {
         store.save(older, requireSelectedPlace: false)
         XCTAssertEqual(store.cached(for: tokyo.place)?.temperatureC, 12)
     }
+    func testWidgetTapOpensItsOwnCityIncludingUnicode() throws {
+        let place = Place(name: "東京 | Tokyo", latitude: 35.6762, longitude: 139.6503, timeZoneIdentifier: "Asia/Tokyo")
+        let link = try XCTUnwrap(place.widgetLink)
+        XCTAssertEqual(Place.from(widgetLink: link), place)
+        XCTAssertNil(Place.from(widgetLink: URL(string: "https://example.com/weather?city=\(place.widgetIdentifier)")!))
+        XCTAssertNil(Place.from(widgetLink: URL(string: "cloudcompanion://weather?city=broken")!))
+        XCTAssertNil(Place.from(widgetLink: URL(string: "cloudcompanion://other")!))
+    }
 }

@@ -42,6 +42,17 @@ struct Place: Codable, Equatable, Identifiable {
         guard let data = Data(base64Encoded: widgetIdentifier), let place = try? JSONDecoder().decode(Self.self, from: data), place.isValid else { return nil }
         return place
     }
+    var widgetLink: URL? {
+        var components = URLComponents()
+        components.scheme = "cloudcompanion"; components.host = "weather"
+        components.queryItems = [URLQueryItem(name: "city", value: widgetIdentifier)]
+        return components.url
+    }
+    static func from(widgetLink: URL) -> Self? {
+        guard widgetLink.scheme == "cloudcompanion", widgetLink.host == "weather",
+              let value = URLComponents(url: widgetLink, resolvingAgainstBaseURL: false)?.queryItems?.first(where: { $0.name == "city" })?.value else { return nil }
+        return from(widgetIdentifier: value)
+    }
     var isValid: Bool { latitude.isFinite && longitude.isFinite && (-90...90).contains(latitude) && (-180...180).contains(longitude) }
     func timeLabel(_ date: Date) -> String {
         let formatter = DateFormatter()

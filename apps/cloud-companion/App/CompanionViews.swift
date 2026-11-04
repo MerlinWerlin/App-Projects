@@ -49,6 +49,7 @@ struct CloudPlayground: View {
     var cloudName: String
     @State private var selected = CloudMood.launchChoice
     @State private var delighted = false
+    @State private var greeted = false
     private let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     var body: some View {
         NavigationStack {
@@ -63,11 +64,13 @@ struct CloudPlayground: View {
                         WeatherScene(mood: selected, motionEnabled: motionEnabled)
                         VStack(spacing: 12) {
                             Button {
+                                greeted = true
                                 delighted = true
-                                Task { try? await Task.sleep(for: .seconds(1.4)); delighted = false }
+                                Task { try? await Task.sleep(for: .seconds(3)); delighted = false }
                             } label: {
                                 CloudArt(mood: selected, animated: motionEnabled, delighted: delighted).frame(width: 270, height: 220)
                             }.buttonStyle(.plain).accessibilityLabel("Say hello to the cloud")
+                                .accessibilityValue(greeted ? "Greeting received" : "Tap to greet")
                             Text(delighted ? "Happy to see you, little human." : selected.greeting)
                                 .font(.system(.subheadline, design: .rounded, weight: .medium))
                             Text("Tap your cloud to say hello").font(.caption).opacity(0.6)
