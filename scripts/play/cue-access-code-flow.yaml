@@ -32,13 +32,28 @@ appId: com.jared797.cue.playtest
 - assertVisible: Complimentary Plus is active
 - takeScreenshot: 12-access-code-persisted
 - back
+- scrollUntilVisible:
+    element:
+      text: Paper
+    direction: DOWN
+    timeout: 20000
 - assertVisible: Paper
 - assertNotVisible: Paper, Plus
 - takeScreenshot: 12b-plus-colors-unlocked
+- scrollUntilVisible:
+    element:
+      text: Access code
+    direction: UP
+    timeout: 20000
 - tapOn: Access code
 - tapOn: Remove access code
 - assertVisible: Activate access code
 - takeScreenshot: 13-access-code-removed
 - back
+- scrollUntilVisible:
+    element:
+      text: Paper, Plus
+    direction: DOWN
+    timeout: 20000
 - assertVisible: Paper, Plus
 - takeScreenshot: 13b-plus-colors-locked
