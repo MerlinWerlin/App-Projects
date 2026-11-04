@@ -28,7 +28,21 @@ export const CATALOG_CACHE_FILE = 'catalog.json';
  * T178: part of the cache stamp. Bump it whenever the app's catalogue handling changes, so the
  * first launch of that code fetches a fresh catalogue instead of trusting a copy older code saved.
  */
-export const CATALOG_CLIENT_REV = 't178';
+export const CATALOG_CLIENT_REV = 'github-catalog-20261104';
+
+/** A replaced GitHub catalogue can retain a stale CDN redirect even after an ETag refresh.
+ * Give each actual catalogue request a fresh URL; versioned manifests and art stay immutable.
+ */
+export function catalogRequestUrl(url: string, requestedAt: number): string {
+  if (!Number.isFinite(requestedAt) || requestedAt < 0 || !/^https:\/\/github\.com\/[^/?#]+\/[^/?#]+\/releases\/download\/[^/?#]+\/catalog\.json(?:[?#]|$)/i.test(url)) return url;
+  const hashAt = url.indexOf('#');
+  const fragment = hashAt < 0 ? '' : url.slice(hashAt);
+  const beforeHash = hashAt < 0 ? url : url.slice(0, hashAt);
+  const queryAt = beforeHash.indexOf('?');
+  const pathname = queryAt < 0 ? beforeHash : beforeHash.slice(0, queryAt);
+  const query = queryAt < 0 ? [] : beforeHash.slice(queryAt + 1).split('&').filter((part) => part && part.split('=')[0] !== 'glazeCatalogRequest');
+  return `${pathname}?${[...query, `glazeCatalogRequest=${Math.floor(requestedAt)}`].join('&')}${fragment}`;
+}
 
 /**
  * The cached catalogue: when it was fetched (ms since epoch), its text exactly as served and

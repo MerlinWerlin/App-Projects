@@ -4,8 +4,11 @@ Glaze's downloadable theme packs are hosted as **release assets on the public re
 
 | | Release tag | Base URL the app uses (`src/config/packs.ts`) |
 |---|---|---|
-| Production | `glaze-packs-v1` | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1` |
+| Production (1.0.2+) | `glaze-packs-v5` | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5` |
+| Legacy (1.0.1 and earlier) | `glaze-packs-v1` | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1` |
 | Staging | `glaze-packs-staging` (pre-release) | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-staging` |
+
+The 1.0.2 catalogue lives on v5. Design-hold immutable packs on v11/v12/v13 preserve141themes while removing103 small automatic clock overlays and withholding315 repeated component editions;2dedicated art clocks and other original choices remain. Source branches `codex/glaze-packs-v11-20261104` through v13 contain exact assets and upload plans. Historical versioned files remain intact. The rebuild-template commands below describe the legacy v1 publisher: do not use that catalogue default for1.0.2 or replace older clients' catalogue. Current locks/digests are in `versions.json`, `releases.json` and `testflight-1.0.2.json`.
 
 The app picks staging only when the build has Expo extra `packEnv: "staging"`; otherwise production.
 
@@ -29,8 +32,8 @@ Release assets have no folders, so each file of the pack layout (`src/core/packC
 
 ## Publish with the workflow (auto-ship, or a Claude chat with repo access)
 
-1. **Place the workflow once.** In `MerlinWerlin/App-Projects`, copy `apps/glaze/scripts/packs/publish-packs.yml` to `.github/workflows/glaze-publish-packs.yml` and commit it to the default branch. It is manual-dispatch only and needs no secrets. It declares `permissions: contents: write` for the built-in token. If the repo's Settings â€º Actions â€º General â€º Workflow permissions is "Read repository contents", the job-level `permissions` block still grants write for this workflow, unless an organisation policy forbids it.
-2. **Dispatch it.** Use **Actions â€º Publish Glaze theme packs â€º Run workflow**, or the CLI:
+1. **Place the workflow once.** In `MerlinWerlin/App-Projects`, copy `apps/glaze/scripts/packs/publish-packs.yml` to `.github/workflows/glaze-publish-packs.yml` and commit it to the default branch. It is manual-dispatch only and needs no secrets. It declares `permissions: contents: write` for the built-in token. If the repo's Settings › Actions › General › Workflow permissions is "Read repository contents", the job-level `permissions` block still grants write for this workflow, unless an organisation policy forbids it.
+2. **Dispatch it.** Use **Actions › Publish Glaze theme packs › Run workflow**, or the CLI:
    ```sh
    gh workflow run glaze-publish-packs.yml -R MerlinWerlin/App-Projects -f target=staging -f dry_run=true
    gh workflow run glaze-publish-packs.yml -R MerlinWerlin/App-Projects -f target=staging
@@ -139,7 +142,7 @@ Other modes: `release_assets.mjs --tag <tag>` writes the old single-folder layou
 | File in `<theme>/widgets/` | Written by | Becomes |
 |---|---|---|
 | `themed-clock-20261102.json` + its source PNG | `scripts/prepare-themed-clocks.mjs` | the **first** option, `themed-live-clock` (live clock drawn over the original art, `liveFrame.clockStyle` / `ink` kept) |
-| `widget-options.json` (themes 101-146) | the theme exports | one option per entry; kind names `digitalClock`, `analogClock` / `analog clock` / `analog-clock`, `dateCalendar`, `focusTimer`, `countdown`, `battery` are written as Glaze's kinds (`clock` + clockStyle, `date`, `focus`, â€¦), so older app builds parse them too |
+| `widget-options.json` (themes 101-146) | the theme exports | one option per entry; kind names `digitalClock`, `analogClock` / `analog clock` / `analog-clock`, `dateCalendar`, `focusTimer`, `countdown`, `battery` are written as Glaze's kinds (`clock` + clockStyle, `date`, `focus`, …), so older app builds parse them too |
 | `runtime-options-20261101.json` + `runtime-<kind>-face-20261101.png` | `scripts/export-reviewed-themes.mjs` | live clean faces (`numberFree` + `liveFrame`); the plain clock face is labelled "Plain clock (fallback)" |
 
 - The theme's v1 hero art (`hero-small/medium/large`) is appended, so nothing it offered before disappears. A pack with any of these files becomes a **v2 manifest** (`widget-art` assets, max long edge 1024, WebP with sharp or Pillow).
@@ -150,7 +153,7 @@ Other modes: `release_assets.mjs --tag <tag>` writes the old single-folder layou
   - **Wallpaper:** `wallpapers/wallpaper.png`, cover-cropped to the three device classes.
   - **Palette:** `palette.json` if the folder has one; otherwise the theme's `background` / `foreground` in `<reviews root>/release-simulation/catalogue.json` (bg/tile = background, glyph/accent/text = foreground).
   - **Meta:** `meta.json` if present; otherwise generated from `source-and-prompts.json`. The name comes from `set` (or the folder name), credits from `source.photographer` / `page`, licence `openai-output-owned`, tags `review-candidate`, `addedAt` 2026-11-01.
-  - **Widget options:** hero files are optional. The options are the editions above, then every other `widgets/*.png` as `art`. Images are deduplicated by SHA-256, ids follow the `short()` rule, and a catalogue `originalFile` â†’ `file` override is applied.
+  - **Widget options:** hero files are optional. The options are the editions above, then every other `widgets/*.png` as `art`. Images are deduplicated by SHA-256, ids follow the `short()` rule, and a catalogue `originalFile` → `file` override is applied.
   - **Skipped files:** `runtime-*-face-*` and `native-clock-background-*` files are not repeated as art.
   - **Failures:** a review folder needs at least one option. A folder with no palette (or a palette below the contrast rules) is `FAILED`.
   - **Normal folders:** `release-simulation/` is skipped, and normal-layout folders are unchanged.
@@ -175,6 +178,8 @@ To use the workflow instead, the theme folders (with `widgets/`) must be committ
 - `scripts/packs/publish_r2.mjs` and `scripts/packs/sigv4.mjs` (S3/R2 uploader) stay in the repo, tested, in case the packs ever move to a bucket. A bucket would be a `folder` host, so only the base URL changes.
 - `docs/R2_SETUP.md`: reference only. Jared has nothing to do there.
 
-## 4 Nov 2026 TestFlight library
+## 4 Nov 2026 TestFlight design gate
 
-Glaze 1.0.2 reads `glaze-packs-v5/catalog.json`. Older builds keep v1. The new catalogue preserves all 141 published themes and their pricing, palettes and credits. Artwork-preserving native clock, date, focus and battery editions update 105 themes; existing options remain. Updated packs use immutable old-version-plus-one paths across v5/v6/v7, with minimum app version 1.0.2. The other 36 entries retain their published v2/v3/v4 assets. Prototype flat-icon and clean-face exports are not added. Publication evidence is retained in the owner workspace under `Apps/outputs/glaze-testflight-20261104`; physical iPhone checks remain TestFlight validation.
+Technical compilation and automated checks passed, but103/105 automatically generated themed clocks use small values above reused decorative artwork. The315 added date/focus/battery editions repeat that composition. They do not meet the intended dedicated functional widget design and must not be described as complete. The v11/v12/v13 design-hold packs restore original metadata/choices and omit those automatic variants; all141 themes keep their palettes, prices and credits. Existing installed widgets are not automatically removed or re-saved by a catalogue update. Native habits, photo albums and the general widget runtime are available for testing in1.0.2(25); dedicated themed layouts still require redesign, per-theme visual qualification and iPhone QA. Prototype flat icons remain excluded. Evidence: `ops/TESTFLIGHT_DELIVERY_20261104.json`.
+
+The canonical GitHub catalogue URL can retain an old redirect after replacement. The replacement1.0.2 build uses `catalogRequestUrl` to give each actual catalogue fetch a fresh URL, while retaining conditional ETag checks, the six-hour/offline policy, and unchanged immutable asset URLs. Publication readback uses that same production helper. A successful upload alone does not establish that an older client's cached redirect has refreshed.
