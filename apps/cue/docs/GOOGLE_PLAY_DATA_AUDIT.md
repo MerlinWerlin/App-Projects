@@ -21,6 +21,13 @@ storage read access. The absence of explicit read declarations does not prove
 the operating system enforces add-only access there. Cue's code saves its own
 takes and does not browse the collection; describe that behaviour precisely.
 
+The signed production AAB was inspected in run41745767651. Its manifest sets
+`allowBackup=true` and has no explicit `fullBackupContent` or
+`dataExtractionRules` attributes. The final backup-resource/SDK review remains
+open; do not claim that scripts or trial records are excluded from platform
+backup. Expo updates are disabled and no broad media-read or foreground-service
+permission is declared. Legacy write stops at API32.
+
 The installed package includes Billing and Google Android Data Transport
 components from dependencies. Their presence alone proves neither collection
 nor absence of collection. Audit resolved SDK behaviour and final network

@@ -160,28 +160,41 @@ It displays “To publish apps, finish setting up your developer account” and
 
 Outstanding items displayed by Google:
 
-1. Verify identity by uploading an official document.
+1. Google is verifying identity: the owner has uploaded documents and approval
+   is pending. Google says this may take a few days and it will email the owner.
 2. Verify phone numbers after organisation/identity documents are approved.
 
 The website verification task was visible earlier but is absent in the latest
 live Home view. Identity and phone verification still block Create app.
 
 The account exists; its existence and payment do not complete these checks.
-No identity document, phone code or legal agreement was submitted by this work.
+The owner completed the document upload; this agent did not upload identity
+documents, submit a phone code or accept a legal agreement.
 
 ## Remaining release checks
 
 Production EAS build `637caa56-f5d2-46d0-801e-6d644f26c359` was queued on
 4 November from `2a16e7fe1e5bf70a320ca44c8ae5549d51e140fd`: profile
 `play-production`, package `com.jared797.cue`, version 1.0.0/build 2,
-embedded JavaScript and Expo updates disabled. Queue run 41735078444 passed;
-inspection run 41737020536 confirmed `IN_QUEUE`. No finished AAB or production
-signature is claimed yet. The workflow can inspect this same UUID without
-queueing another build, and optionally wait up to twelve minutes. The pinned
-bundle validator checks manifest, signature/public certificate, embedded JS,
-64-bit ELF alignment and the bundle's 16 KB APK-packaging setting. Its seven
-regression tests pass. Early status-checker dependency/project-link failures
-were repaired; they were not production-build failures.
+embedded JavaScript and Expo updates disabled. The build is finished, and
+production validation run 41745767651 passed. The AAB is 83,006,582 bytes;
+SHA256 `e365915a9f9acdc518060929af9ae0471c2751d976659e2dcd491a00a1c60eb5`.
+Google bundletool 1.18.3 validated the bundle, target SDK36, package/version,
+embedded JS and `PAGE_ALIGNMENT_16K` packaging. All 58 arm64/x86_64 native
+libraries have at least 16 KB ELF segment alignment; 58 additional 32-bit
+libraries are recorded separately. JAR signature verification passed with no
+unsigned entries. The managed upload certificate is valid through March2054;
+its SHA256 fingerprint is
+`BD:CA:03:41:01:5C:37:B8:39:EA:74:69:B8:01:88:C1:EA:8C:07:00:23:43:05:8A:66:99:10:C9:83:53:AD:AB`.
+No private signing key was downloaded. Nineteen Python validator tests pass,
+including eight production-bundle/download cases. Original dependency/link
+and HTTP403 download-check failures remain failures; the finished binary was
+validated in the later successful run. The artifact endpoint accepts a
+CLI-style user agent without sending Expo credentials.
+
+The same app source passed preview runtime simulations; the production AAB
+itself has not been installed through Play or used for licensed billing.
+The workflow can inspect the existing UUID without queueing another build.
 
 After account verification enables app creation, create the Cue app record,
 configure Play App Signing against the verified upload certificate, and finish
