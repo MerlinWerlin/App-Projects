@@ -1,26 +1,40 @@
-# Hollowhue art sources
+# Hollowhue illustrated catalogue
 
-The new catalogue uses 57 original vector illustrations authored in this same repository for Linework.
-The source SVG commands are saved in `linework-source.json`; they are not fetched from an external art service.
-`catalog-source.json` defines seven worlds: six regular worlds with seven pictures (six actual zoom transitions),
-and one Mega world with 21 distinct pictures (twenty transitions). Every world has an explicit difficulty.
+The final replacement catalogue uses **42 original illustrations** created for Hollowhue with the
+built-in `image_gen` tool on 4 November 2026. The owner rejected the earlier geometric Linework preview
+and explicitly requested more realistic, detailed artwork. That draft was not published.
 
-`../import-linework-art.py` retains the original smooth ink curves and computes closed colourable regions
-under them. Region IDs are baked once and committed. A natural iris, flower centre or window is used as
-an entrance; Mega portals use a 0.28 scale to retain precision through twenty levels. Root art is 1200 square.
-New scenes have new IDs; all previously shipped artwork remains unchanged and appears in My colouring
-when it has saved work.
+`illustrations/` preserves the selected source pixels as lossless WebP files. `illustrations.json`
+records names, subjects, difficulty and prompt groups; `generation-prompts.json` contains the prompt
+templates used with those subjects. These source files are development assets, not app image downloads.
 
-Rebuild from the preserved source snapshot (no Linework runtime import and no native dependency):
+`catalog-source.json` defines six regular worlds with seven pictures (six actual zoom transitions),
+and one Mega world with 21 distinct illustrations (twenty transitions). Garden Blooms has seven simpler
+beginner pictures; botanical and sea worlds are intermediate; detailed places, wildlife and ornaments
+are advanced. Topic categories and difficulty filters can be combined.
+
+`../import-illustrated-art.py` finds enclosed paper areas and traces the actual illustrated ink with
+cubic curves. The closed fills and non-colourable ink silhouettes are baked together. Tiny areas are
+excluded from tapping; original ink remains visible above coloured regions. Receipts preserve source
+hashes and region counts. Root art is 1200 square. Natural interior shapes hold the regular portals;
+Mega portals use a 0.28 scale to retain precision through twenty levels.
+
+The generated vector data is gzip-packed in the JS bundle and decoded locally with pinned pure-JS
+`fflate`. It works offline and adds no native module or native dependency change. Runtime stays 0.1.0.
+All earlier shipped scene geometry, versions and region IDs remain unchanged and accessible through
+My colouring when saved work exists.
+
+Rebuild from the preserved source snapshot:
 
     python -m pip install --target .expo/art-tools -r scripts/art/requirements.txt
-    python scripts/import-linework-art.py
+    python scripts/import-illustrated-art.py
     npm test
     npm run typecheck
     npm run typecheck:ui
 
-The importer also rewrites the catalogue data and English artwork names. An optional development export
-at `.expo/linework-catalog.json` can supply additional repo-authored templates; the committed snapshot is
-the fallback for clean checkouts. Change an already shipped scene's art deliberately and bump its version;
-never silently rebake its region IDs. `docs/art-direction-20261104.png` is the initial art direction preview.
-Native iPhone validation and publication status are in `ops/status.json`.
+The importer also rewrites catalogue data and English artwork names. Change a shipped scene's region
+IDs only deliberately with a version bump. `docs/art-direction-realistic-20261104.png` shows the selected
+direction; native screenshots and reviewed-source receipts belong in `docs/qa-art-20261104`.
+
+Curve tracing: [VTracer](https://github.com/visioncortex/vtracer).
+Bundle decompression: [fflate](https://github.com/101arrowz/fflate).

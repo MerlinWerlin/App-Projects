@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { memo, useMemo, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { FlatList, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { percent, started } from '../src/core/progress';
@@ -85,6 +85,10 @@ export default function Gallery() {
   const version = useProgressVersion();
   const [filter, setFilter] = useState<Filter>('all');
   const [difficulty, setDifficulty] = useState<Difficulty | 'all'>('all');
+  const list = useRef<FlatList<Scene>>(null);
+  useEffect(() => {
+    list.current?.scrollToOffset({ offset: 0, animated: false });
+  }, [filter, difficulty]);
 
   const themes = useMemo(() => (['animals', 'flowers', 'sealife', 'places', 'patterns'] as Theme[]).filter((theme) => CATALOG_SCENES.some((scene) => scene.theme === theme)), []);
   const shown = browseScenes(SCENES, filter, difficulty, (scene) => started(getProgress(scene)));
@@ -145,6 +149,7 @@ export default function Gallery() {
   return (
     <View style={{ flex: 1, backgroundColor: c.bg }}>
       <FlatList
+        ref={list}
         key={cols}
         data={shown}
         keyExtractor={(s) => s.id}

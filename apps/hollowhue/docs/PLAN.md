@@ -11,7 +11,9 @@ inspired it ("Infinity Coloring Book") has a single theme.
   rectangle (or ellipse) of its parent. The child is drawn in place from when it is 10 px wide; each shape fades in
   as it grows from 1.5 to 5 px on screen, so detail emerges continuously. Once the child covers the screen the
   parent stops being drawn (invisible, since it is fully covered).
-- Regions are SVG paths; the same path draws the art and drives tap hit-testing (even-odd, topmost wins).
+- Regions are closed SVG paths for colour fills and hit-testing (even-odd, topmost wins). The illustrated
+  catalogue retains the original smooth ink curves above those regions; generated fill contours do not
+  add a second outline.
 - `from` links let a region show another level's colour until coloured itself (zoom into a wall you painted
   and it is still that colour; stand-ins match the detail).
 - Freehand strokes are stored in the level they were drawn in (level units), optionally clipped to the shape they
@@ -32,6 +34,23 @@ inspired it ("Infinity Coloring Book") has a single theme.
 - Custom colour picker + recent colours, gradient fills, texture brushes (crayon, watercolour).
 - Export / share a finished picture (whole scene or the current zoom), time-lapse replay.
 - Scene versioning: region ids are stable per scene `version`; restore trims ids that no longer exist.
+
+## Artwork and depth revision (4 November)
+
+- Owner feedback: keep the improved zoom motion; replace the starter artwork and add categories and
+  difficulty levels like Linework. A regular world needs six zooms and Mega Zoom needs twenty.
+- The owner rejected the first Linework-based art preview and requested more realistic, detailed art.
+  The final replacement uses 42 original newly illustrated pictures. Animals, Flowers, Sea life, Places
+  and Patterns combine with Beginner, Intermediate and Advanced filters. Garden Blooms has seven simpler
+  beginner pictures; botanicals and sea life are intermediate; wildlife, places and ornaments are advanced.
+- Six regular worlds each contain seven pictures: the opening picture plus six actual zoom transitions.
+  The separate Mega Zoom collection has one world with twenty-one distinct pictures and twenty transitions.
+- Earlier artwork remains available in My colouring when it has saved progress. Its geometry, versions
+  and region IDs remain unchanged. The custom colour picker, recent colours and update controls continue.
+- The importer, preserved source images and generation prompts live in `scripts/art` and
+  `scripts/import-illustrated-art.py`. Cubic ink curves sit above closed tappable regions; vector data is
+  compressed locally with pure-JS fflate, with no native module change.
+  Native iPhone verification and delivery evidence belong in `docs/qa-art-20261104` when complete.
 
 ## Money (later, not in phase 1)
 Same factory model: free core forever, no ads, no tracking.

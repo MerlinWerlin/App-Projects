@@ -6,6 +6,25 @@ appId: com.jared797.hollowhue
     visible: New art. Six zooms. Twenty in Mega.
     timeout: 60000
 - takeScreenshot: 01-categories
+- scrollUntilVisible:
+    element:
+      text: Open Storybook Places
+    direction: DOWN
+    timeout: 20000
+- tapOn: Open Storybook Places
+- assertVisible: '.*Zoom 0 of 6.*'
+- takeScreenshot: 02-realistic-cottage
+- tapOn: Look closer
+- waitForAnimationToEnd:
+    timeout: 5000
+- assertVisible: '.*Zoom 1 of 6.*'
+- takeScreenshot: 03-realistic-cafe
+- tapOn: Back to scenes
+- scrollUntilVisible:
+    element:
+      id: difficulty-beginner
+    direction: UP
+    timeout: 20000
 - tapOn:
     id: difficulty-beginner
 - tapOn:

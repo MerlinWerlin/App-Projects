@@ -55,7 +55,7 @@ export function restoreProgress(scene: Scene, raw: unknown): Progress {
   if (!raw || typeof raw !== 'object') return base;
   const r = raw as Partial<Progress>;
   const fills: Progress['fills'] = {};
-  const levelIds = new Map(scene.levels.map((l) => [l.id, new Set(l.regions.filter((x) => !x.line).map((x) => x.id))]));
+  const levelIds = new Map(scene.levels.map((l) => [l.id, new Set(l.regions.filter((x) => !x.line && !x.ink).map((x) => x.id))]));
   if (r.fills && typeof r.fills === 'object') {
     for (const [lv, m] of Object.entries(r.fills)) {
       const ids = levelIds.get(lv);

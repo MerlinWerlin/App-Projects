@@ -1,12 +1,12 @@
 {
   "app": "hollowhue",
   "stage": "build",
-  "headline": "Artwork and category revision in progress from owner feedback: seven curated worlds, six standard zoom transitions and twenty in Mega Zoom. 57 original vector illustrations, difficulty/topic filters and My colouring preserve existing work. 56 checks and strict types pass; native iPhone validation and publication pending.",
+  "headline": "Realistic artwork revision: 42 original newly illustrated pictures replace the rejected Linework preview. Five topic categories, three difficulty levels, six regular zooms and twenty in Mega. 57 tests, strict types and iOS export pass; final native iPhone QA and publication pending.",
   "next_for_owner": [
-    "The mixed art direction preview is in docs/art-direction-20261104.png. Native category/6/20-zoom tests are running before release."
+    "The selected realistic art is in docs/art-direction-realistic-20261104.png. Final native iPhone checks precede release."
   ],
-  "tests": 56,
-  "typecheck": "56 tests; strict installed SDK and offline UI types clean. Deepest-level paint/restore and every Mega focus stop pass; old scene SHA unchanged.",
+  "tests": 57,
+  "typecheck": "57 tests and full/stub strict types pass. iOS/Hermes export passes; illustrated bundle packed to29MB. All old scene geometry/IDs/versions retain exact SHA.",
   "previous_native_qa": {
     "run": "41788606169",
     "source": "774e53289c785914495d303f06729039c8f2fb10",
@@ -16,7 +16,7 @@
   },
   "native_qa": {
     "result": "pending",
-    "scope": "new artwork/category filters, all six standard and twenty Mega transitions, paint and saved work"
+    "scope": "final realistic illustration rendering, category/difficulty filters, all six standard and twenty Mega stops, deep paint and saved work; gallery scroll reset repaired after draft run41801065091"
   },
   "previous_delivery": {
     "release_pr": 211,
@@ -35,7 +35,7 @@
       "phoneUptakeVerified": false
     },
     "testflight_build_run": "41791367613",
-    "testflight_state": "0.1.0 (3) uploaded; Apple PROCESSING, no reported errors/warnings, beta availability pending",
+    "testflight_state": "0.1.0 (3) COMPLETE, VALID and IN_BETA_TESTING; Apple probe41801311385, no errors or warnings",
     "testflight_submission": "a9aee4e4-1f6a-44f1-8cc5-eb2bab86b3c2"
   },
   "delivery": {

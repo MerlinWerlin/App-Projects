@@ -1,0 +1,385 @@
+{
+  "origin": "Original artwork created for Hollowhue using the built-in image_gen tool; source pixels preserved losslessly.",
+  "date": "2026-11-04",
+  "promptTemplates": "generation-prompts.json",
+  "artworks": [
+    {
+      "id": "cottage",
+      "name": "Rose Cottage",
+      "category": "places",
+      "level": "advanced",
+      "file": "cottage.webp",
+      "promptGroup": "cottage",
+      "subject": "an English stone cottage with a pitched tiled roof, climbing roses framing an arched door, casement windows, a garden path and lush flower borders"
+    },
+    {
+      "id": "botanical",
+      "name": "Camellia & Honeybee",
+      "category": "flowers",
+      "level": "intermediate",
+      "file": "botanical.webp",
+      "promptGroup": "nature",
+      "subject": "a graceful branch of realistic camellia flowers, two fully open blooms and one bud, layered petals, serrated glossy leaves and a tiny honeybee approaching a flower; balanced botanical plate composition, anatomically convincing, no pot"
+    },
+    {
+      "id": "owl",
+      "name": "Barn Owl & Oak",
+      "category": "animals",
+      "level": "advanced",
+      "file": "owl.webp",
+      "promptGroup": "nature",
+      "subject": "a realistically proportioned barn owl resting on a twisting oak branch with acorns and oak leaves, full bird visible in three-quarter view; lovely facial disc, elegant feather groups made of enclosed contour regions, forest ferns below; no cartoon expressions"
+    },
+    {
+      "id": "reef",
+      "name": "Sea Turtle Reef",
+      "category": "sealife",
+      "level": "intermediate",
+      "file": "reef.webp",
+      "promptGroup": "nature",
+      "subject": "a realistic green sea turtle swimming above a coral garden, beautiful natural shell scutes, gently curving flippers, sea fans, brain coral and two small reef fish, balanced underwater composition"
+    },
+    {
+      "id": "rose",
+      "name": "Roses & Butterfly",
+      "category": "flowers",
+      "level": "intermediate",
+      "file": "rose.webp",
+      "promptGroup": "botanical",
+      "subject": "a botanically convincing cluster of two fully open garden roses and a rosebud on a graceful branch, beautifully layered spiralling petals, natural serrated leaves, a small butterfly, balanced botanical plate with organically varied petal shapes"
+    },
+    {
+      "id": "magnolia",
+      "name": "Magnolia Branch",
+      "category": "flowers",
+      "level": "intermediate",
+      "file": "magnolia.webp",
+      "promptGroup": "botanical",
+      "subject": "an elegant magnolia branch with three large naturally proportioned flowers, one bud and gracefully curling leaves, sweeping diagonal composition and fine botanical contour detail"
+    },
+    {
+      "id": "peony",
+      "name": "Peony Bouquet",
+      "category": "flowers",
+      "level": "intermediate",
+      "file": "peony.webp",
+      "promptGroup": "botanical",
+      "subject": "an abundant bouquet of realistic peonies in a simple glass vase, voluptuous organically layered ruffled petals, slender stems and natural leaves; beautifully balanced still life"
+    },
+    {
+      "id": "cafe",
+      "name": "Parisian Cafe",
+      "category": "places",
+      "level": "advanced",
+      "file": "cafe.webp",
+      "promptGroup": "botanical",
+      "subject": "a beautiful Parisian corner cafe with a striped awning, French windows, a carved door, outdoor bistro chairs and round tables, overflowing flower planters and cobblestones, coherent two-point architectural perspective"
+    },
+    {
+      "id": "fox",
+      "name": "Foxglove Fox",
+      "category": "animals",
+      "level": "advanced",
+      "file": "fox.webp",
+      "promptGroup": "wildlife",
+      "subject": "a realistically proportioned red fox sitting in a wild meadow, graceful long tail curving around its paws, natural alert face and ears, delicate grasses, ferns and wildflowers around it"
+    },
+    {
+      "id": "hare",
+      "name": "Meadow Hare",
+      "category": "animals",
+      "level": "advanced",
+      "file": "hare.webp",
+      "promptGroup": "wildlife",
+      "subject": "a realistic European hare nestled in a meadow of daisies and clover, elegant long ears and anatomically natural paws, soft fur indicated with restrained enclosed contour shapes rather than shading"
+    },
+    {
+      "id": "kingfisher",
+      "name": "Willow Kingfisher",
+      "category": "animals",
+      "level": "advanced",
+      "file": "kingfisher.webp",
+      "promptGroup": "wildlife",
+      "subject": "a realistically proportioned kingfisher perched on a willow branch above water, beautiful grouped wing feathers, river irises and reeds, a few lily pads and gentle closed water contours"
+    },
+    {
+      "id": "hummingbird",
+      "name": "Trumpet Vine Hummingbirds",
+      "category": "animals",
+      "level": "advanced",
+      "file": "hummingbird.webp",
+      "promptGroup": "wildlife",
+      "subject": "two anatomically convincing hummingbirds hovering among trumpet vine flowers, lovely individually outlined wing feathers and natural curving vines and leaves, an elegant balanced nature composition"
+    },
+    {
+      "id": "iris",
+      "name": "Bearded Irises",
+      "category": "flowers",
+      "level": "intermediate",
+      "file": "iris.webp",
+      "promptGroup": "detailed",
+      "subject": "a graceful cluster of realistic bearded iris flowers with ruffled falls and upright standards, slender stems and long sword-shaped leaves, an elegant botanical plate"
+    },
+    {
+      "id": "hydrangea",
+      "name": "Hydrangea Garden",
+      "category": "flowers",
+      "level": "intermediate",
+      "file": "hydrangea.webp",
+      "promptGroup": "detailed",
+      "subject": "two lush natural hydrangea flower heads made of many clearly outlined four-petalled florets, layered serrated leaves and an arching stem, intricate beautiful botanical composition"
+    },
+    {
+      "id": "orchid",
+      "name": "Moth Orchids",
+      "category": "flowers",
+      "level": "intermediate",
+      "file": "orchid.webp",
+      "promptGroup": "detailed",
+      "subject": "an elegant arching spray of realistic moth orchids, carefully observed orchid flower anatomy, gently folded petals, aerial roots and broad leaves, arranged in a simple ceramic pot"
+    },
+    {
+      "id": "canal",
+      "name": "Bruges Canal",
+      "category": "places",
+      "level": "advanced",
+      "file": "canal.webp",
+      "promptGroup": "detailed",
+      "subject": "a picturesque narrow canal in Bruges, a curved stone bridge over still water, old gabled brick houses and overflowing flower boxes, gentle coherent perspective and reflected outlines"
+    },
+    {
+      "id": "lighthouse",
+      "name": "Lighthouse Cove",
+      "category": "places",
+      "level": "advanced",
+      "file": "lighthouse.webp",
+      "promptGroup": "detailed",
+      "subject": "a realistic coastal lighthouse and keeper's stone cottage above a winding path, wild coastal flowers in the foreground, a rocky cove and calm sea beyond, beautifully composed architectural landscape"
+    },
+    {
+      "id": "conservatory",
+      "name": "Glasshouse Garden",
+      "category": "places",
+      "level": "advanced",
+      "file": "conservatory.webp",
+      "promptGroup": "detailed",
+      "subject": "a charming Victorian glass conservatory filled with potted ferns and flowering plants, elegant curved ironwork and clear perspective, a tiled path and garden borders"
+    },
+    {
+      "id": "bookshop",
+      "name": "Wisteria Bookshop",
+      "category": "places",
+      "level": "advanced",
+      "file": "bookshop.webp",
+      "promptGroup": "detailed",
+      "subject": "a delightful old bookshop exterior with a slightly open wooden door, elegant bay windows filled with individually outlined books, climbing wisteria and potted plants, beautifully believable architecture, no lettering"
+    },
+    {
+      "id": "teagarden",
+      "name": "Japanese Tea Garden",
+      "category": "places",
+      "level": "advanced",
+      "file": "teagarden.webp",
+      "promptGroup": "detailed",
+      "subject": "a serene Japanese tea garden with a small timber pavilion, a stone lantern, an arched wooden bridge, maple branches and iris flowers, coherent perspective and harmonious composition"
+    },
+    {
+      "id": "deer",
+      "name": "Birchwood Deer",
+      "category": "animals",
+      "level": "advanced",
+      "file": "deer.webp",
+      "promptGroup": "detailed",
+      "subject": "a realistic young roe deer standing in a clearing among ferns, foxgloves and birch trees, anatomically convincing slender legs, natural face and large ears, detailed but calm woodland scene"
+    },
+    {
+      "id": "redpanda",
+      "name": "Red Panda Rest",
+      "category": "animals",
+      "level": "advanced",
+      "file": "redpanda.webp",
+      "promptGroup": "detailed",
+      "subject": "a realistic red panda resting along a leafy tree branch, naturally proportioned face, fluffy ringed tail hanging gracefully, bamboo leaves and forest ferns, elegant detailed wildlife illustration"
+    },
+    {
+      "id": "seahorse",
+      "name": "Eelgrass Seahorse",
+      "category": "sealife",
+      "level": "intermediate",
+      "file": "seahorse.webp",
+      "promptGroup": "sea",
+      "subject": "a realistically proportioned seahorse curled gently around a strand of eelgrass, intricate natural bony rings and delicate dorsal fin, beautiful shells and branching coral below"
+    },
+    {
+      "id": "octopus",
+      "name": "Octopus Garden",
+      "category": "sealife",
+      "level": "intermediate",
+      "file": "octopus.webp",
+      "promptGroup": "sea",
+      "subject": "a natural realistic octopus moving gracefully among sea plants and rocks, exactly eight coherent curling arms with clean outlined suckers, a calm elegant underwater composition"
+    },
+    {
+      "id": "jellyfish",
+      "name": "Drifting Jellyfish",
+      "category": "sealife",
+      "level": "intermediate",
+      "file": "jellyfish.webp",
+      "promptGroup": "sea",
+      "subject": "three graceful realistically formed jellyfish drifting among flowing sea plants, beautiful domed bells, lacy oral arms and long elegant tentacles, spacious balanced underwater composition"
+    },
+    {
+      "id": "fish",
+      "name": "Coral Fish",
+      "category": "sealife",
+      "level": "intermediate",
+      "file": "fish.webp",
+      "promptGroup": "sea",
+      "subject": "two realistically proportioned butterflyfish and one angelfish among intricate coral and anemones, clearly enclosed stripe patterns, elegant fins and natural reef details"
+    },
+    {
+      "id": "seashells",
+      "name": "Shoreline Treasures",
+      "category": "sealife",
+      "level": "intermediate",
+      "file": "seashells.webp",
+      "promptGroup": "sea",
+      "subject": "a beautiful still life of real seashells on sand: one nautilus, a conch, a scallop, a spiral shell and a starfish, organic ridges and natural proportions, a little seaweed"
+    },
+    {
+      "id": "dolphins",
+      "name": "Dolphin Current",
+      "category": "sealife",
+      "level": "intermediate",
+      "file": "dolphins.webp",
+      "promptGroup": "sea",
+      "subject": "two realistic bottlenose dolphins gliding underwater, anatomically convincing streamlined bodies and natural faces, elegant sea grass and corals below, clean enclosed wave contours above"
+    },
+    {
+      "id": "begin-daisy",
+      "name": "Gentle Daisies",
+      "category": "flowers",
+      "level": "beginner",
+      "file": "begin-daisy.webp",
+      "promptGroup": "beginner",
+      "subject": "three beautifully observed daisies with naturally varying petals, smooth stems and a few simple leaves"
+    },
+    {
+      "id": "begin-tulip",
+      "name": "Spring Tulips",
+      "category": "flowers",
+      "level": "beginner",
+      "file": "begin-tulip.webp",
+      "promptGroup": "beginner",
+      "subject": "a graceful cluster of three realistic tulips with gently cupped petals and two flowing leaves"
+    },
+    {
+      "id": "begin-poppy",
+      "name": "Soft Poppies",
+      "category": "flowers",
+      "level": "beginner",
+      "file": "begin-poppy.webp",
+      "promptGroup": "beginner",
+      "subject": "two elegant naturally proportioned poppies with broad softly crumpled petals, a small seed pod and simple leaves"
+    },
+    {
+      "id": "begin-lily",
+      "name": "Water Lily",
+      "category": "flowers",
+      "level": "beginner",
+      "file": "begin-lily.webp",
+      "promptGroup": "beginner",
+      "subject": "one large realistic water lily on two gently curved lily pads with a small dragonfly"
+    },
+    {
+      "id": "begin-sunflower",
+      "name": "Sunflower",
+      "category": "flowers",
+      "level": "beginner",
+      "file": "begin-sunflower.webp",
+      "promptGroup": "beginner",
+      "subject": "one beautifully proportioned sunflower with a clean circular seed centre divided into a few larger curved sections, natural pointed petals and two leaves"
+    },
+    {
+      "id": "begin-hibiscus",
+      "name": "Hibiscus",
+      "category": "flowers",
+      "level": "beginner",
+      "file": "begin-hibiscus.webp",
+      "promptGroup": "beginner",
+      "subject": "one naturally formed hibiscus flower with five graceful folded petals, a clearly defined staminal column and two simple leaves"
+    },
+    {
+      "id": "begin-cosmos",
+      "name": "Cosmos & Butterfly",
+      "category": "flowers",
+      "level": "beginner",
+      "file": "begin-cosmos.webp",
+      "promptGroup": "beginner",
+      "subject": "three softly curved cosmos flowers with natural eight-petal forms and a few feathery leaves, one small butterfly"
+    },
+    {
+      "id": "orn-rose",
+      "name": "Rose & Acanthus",
+      "category": "patterns",
+      "level": "advanced",
+      "file": "orn-rose.webp",
+      "promptGroup": "ornament",
+      "subject": "an exquisitely detailed circular rose-and-acanthus ornament, natural rose blossoms woven through scrolling acanthus leaves, an open circular centre framed by petals, harmonious botanical symmetry"
+    },
+    {
+      "id": "orn-lotus",
+      "name": "Lotus & Fern",
+      "category": "patterns",
+      "level": "advanced",
+      "file": "orn-lotus.webp",
+      "promptGroup": "ornament",
+      "subject": "an elaborate graceful lotus rosette with realistic layered lotus petals, curling fern fronds and delicate Art Nouveau botanical ornament, a small clean circular centre and richly enclosed petal compartments"
+    },
+    {
+      "id": "orn-peacock",
+      "name": "Peacock Medallion",
+      "category": "patterns",
+      "level": "advanced",
+      "file": "orn-peacock.webp",
+      "promptGroup": "ornament",
+      "subject": "an ornate botanical medallion of two realistically proportioned peacocks facing inward among flowing pomegranate vines, lovely enclosed feather eye patterns and curling leaves, a small circular floral rosette at the centre"
+    },
+    {
+      "id": "orn-strawberry",
+      "name": "Strawberry Tapestry",
+      "category": "patterns",
+      "level": "advanced",
+      "file": "orn-strawberry.webp",
+      "promptGroup": "ornament",
+      "subject": "an intricate heirloom tapestry-like composition of natural strawberries, flowers, songbirds and intertwining curling leaves, professionally composed flowing botanical ornament with an open floral centre"
+    },
+    {
+      "id": "orn-willow",
+      "name": "Willow & Iris",
+      "category": "patterns",
+      "level": "advanced",
+      "file": "orn-willow.webp",
+      "promptGroup": "ornament",
+      "subject": "a graceful Art Nouveau circular botanical ornament of curling willow leaves, iris flowers and dragonflies, beautifully layered natural forms, a small open circular centre and intricate enclosed compartments"
+    },
+    {
+      "id": "orn-dahlia",
+      "name": "Dahlia Rosette",
+      "category": "patterns",
+      "level": "advanced",
+      "file": "orn-dahlia.webp",
+      "promptGroup": "ornament",
+      "subject": "a magnificent realistic dahlia blossom viewed from above, dozens of graceful curling layered petals arranged naturally rather than mechanically, leaves and small buds around the outer edges, lovely detailed botanical rosette"
+    },
+    {
+      "id": "orn-paisley",
+      "name": "Paisley Garden",
+      "category": "patterns",
+      "level": "advanced",
+      "file": "orn-paisley.webp",
+      "promptGroup": "ornament",
+      "subject": "a luxurious hand-drawn paisley garden of elegantly curving leaf-shaped ornaments filled with tiny natural flowers and curling foliage, delicate coherent traditional decorative craftsmanship, a small open circular floral centre"
+    }
+  ]
+}

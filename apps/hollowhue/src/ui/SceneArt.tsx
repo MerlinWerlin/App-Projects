@@ -104,10 +104,13 @@ const LevelArt = memo(
         </Defs>
         <G clipPath={clip ? `url(#${levelClip})` : undefined}>
           {level.regions.map((r, i) => {
-            const inside = r.line ? undefined : byRegion.get(r.id);
+            const inside = r.line || r.ink ? undefined : byRegion.get(r.id);
             // Detail fades in as it grows on screen; shapes holding the person's drawing always show.
             const op = inside ? 1 : shapeOpacity(sizes[i]!, step);
             if (op === 0) return null;
+            if (r.ink) {
+              return <Path key={r.id} opacity={op} d={r.d} fill={ART.ink} fillRule="evenodd" />;
+            }
             if (r.line) {
               return (
                 <Path

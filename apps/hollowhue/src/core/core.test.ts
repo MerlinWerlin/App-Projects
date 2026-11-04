@@ -11,6 +11,7 @@ import {
   cameraFor,
   clampCamera,
   fitCamera,
+  fillableCount,
   flight,
   hitTest,
   layout,
@@ -32,6 +33,19 @@ const tiny: Scene = {
   ],
 };
 const SC = { w: 1000, h: 750 };
+
+test('illustrator ink stays above paint and cannot become a saved fill or inflate completion', () => {
+  const scene: Scene = { ...tiny, id: 'ink', levels: [{ ...tiny.levels[0]!, regions: [
+    { id: 'paper', d: rect(0, 0, 100, 75), outline: false },
+    { id: 'petal', d: rect(10, 10, 30, 30), outline: false },
+    { id: '_ink', d: rect(10, 10, 30, 30), ink: true },
+  ] }] };
+  const L = layout(scene), cam = fitCamera(L, SC);
+  assert.deepEqual(hitTest(visibleLevels(L, cam, SC), 20, 20), { level: 'a', region: 'petal' });
+  assert.equal(fillableCount(scene), 2);
+  assert.deepEqual(restoreProgress(scene, { fills: { a: { petal: '#3388DD', _ink: '#FF0000' } } }).fills,
+    { a: { petal: '#3388DD' } });
+});
 
 test('flatten + even-odd hit test handles holes', () => {
   const rings = flatten(frame(0, 0, 100, 100, [[25, 25, 50, 50]]));

@@ -42,13 +42,13 @@
       "id": "H07",
       "phase": 2,
       "title": "Library scene (shelf -> open book -> illustration) and Forest scene (tree -> owl hollow)",
-      "status": "done; native QA passed, publication pending"
+      "status": "shipped in production OTA889daefd and TestFlight0.1.0(3), in beta testing"
     },
     {
       "id": "H08",
       "phase": 2,
       "title": "Custom colour picker and recent colours",
-      "status": "done; native QA passed, publication pending"
+      "status": "shipped in production OTA889daefd and TestFlight0.1.0(3), in beta testing"
     },
     {
       "id": "H09",
@@ -66,19 +66,19 @@
       "id": "H11",
       "phase": 2,
       "title": "Visible app update check/download/apply, awaiting all autosaves before restart",
-      "status": "done; native QA passed, publication pending"
+      "status": "shipped in production OTA889daefd and TestFlight0.1.0(3), in beta testing"
     },
     {
       "id": "H12",
       "phase": 2,
-      "title": "Replace placeholder catalogue with original Linework illustrations, topic categories and Beginner/Intermediate/Advanced filters",
-      "status": "implemented; native iPhone QA pending"
+      "title": "42 original realistic illustrations, five topic categories and Beginner/Intermediate/Advanced filters",
+      "status": "implemented after owner rejected geometric art; 57 tests/types/export pass; final native iPhone QA pending"
     },
     {
       "id": "H13",
       "phase": 2,
       "title": "Six actual zoom transitions in standard worlds; separate Mega Zoom collection with twenty transitions and reliable deepest-level painting",
-      "status": "56 tests pass including every Mega stop, deep persistence and legacy integrity; native iPhone QA pending"
+      "status": "57 tests pass; draft native flow reached6+20stops; final illustrated source requires native rerun"
     }
   ]
 }

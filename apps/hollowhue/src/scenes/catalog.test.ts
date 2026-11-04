@@ -48,7 +48,7 @@ test('every Mega stop is focusable and paintable through the deepest permitted z
 test('topic, difficulty, Mega and saved filters compose without losing existing colouring', () => {
   const empty = () => false;
   assert.equal(browseScenes(SCENES, 'all', 'all', empty).length, 7);
-  assert.equal(browseScenes(SCENES, 'all', 'beginner', empty).length, 3);
+  assert.equal(browseScenes(SCENES, 'all', 'beginner', empty).length, 1);
   assert.deepEqual(browseScenes(SCENES, 'flowers', 'beginner', empty).map((s) => s.id), ['garden-blooms']);
   assert.deepEqual(browseScenes(SCENES, 'mega', 'all', empty).map((s) => s.id), ['mega-ornament']);
   assert.equal(browseScenes(SCENES, 'mega', 'beginner', empty).length, 0);
