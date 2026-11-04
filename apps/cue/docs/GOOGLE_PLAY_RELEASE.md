@@ -149,8 +149,8 @@ later read. Both recovery and exclusion cases are unit-tested.
 Voice Pace now explicitly stops and deletes its temporary microphone cache.
 Leaving while permission or preparation is pending cannot start recording
 later. Cancellation, stop failure, denial and single cleanup are unit-tested.
-See GOOGLE_PLAY_DATA_AUDIT.md for the source/SDK review and privacy-page changes
-needed before the Android listing; this is not a submitted Data safety form.
+See GOOGLE_PLAY_DATA_AUDIT.md for the source/SDK review and published privacy
+copy; this is not a submitted Data safety form.
 
 ## Live Console blocker
 
@@ -172,6 +172,12 @@ The owner completed the document upload; this agent did not upload identity
 documents, submit a phone code or accept a legal agreement.
 
 ## Remaining release checks
+
+PR200 merged to main as `772b677abd1f0983627e7f8235e072f2c0570146` on
+4 November. Main's app source matches the validated production build.
+The Android-qualified privacy policy is live through GitHub Pages (HTTP200,
+deployment of that commit verified). Store listing and Data safety remain
+unsubmitted.
 
 Production EAS build `637caa56-f5d2-46d0-801e-6d644f26c359` was queued on
 4 November from `2a16e7fe1e5bf70a320ca44c8ae5549d51e140fd`: profile
