@@ -1,0 +1,295 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cherry-arcade",
+  "packVersion": 6,
+  "name": "Cherry Arcade",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#F5DDD5",
+    "tile": "#D7C1BA",
+    "glyph": "#1C1816",
+    "accent": "#AD2422",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Cherry Arcade",
+    "mood": "Blush, cherry-red icons, a miniature arcade cabinet, mint robot frog and retro digital clock.",
+    "tags": [
+      "cherry",
+      "arcade",
+      "blush",
+      "icons",
+      "miniature",
+      "cabinet",
+      "mint",
+      "robot",
+      "frog",
+      "retro",
+      "digital",
+      "clock",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper roughly9:19.5 for CHERRY ARCADE. Upper75percent completely quiet uniform warm pale blush #F6E5DF matte background with extremely subtle fine paper grain, no objects or bright pattern behind future icons. Bottom25percent a sculptural retro-futurist miniature arcade landscape: one sweeping glossy cherry-red ribbon track forms a gentle S through soft pale-blush stepped plinths, tiny translucent mint-green cubes and one small candy-red joystick sculpture low at right. Restrained miniature architectural model photography, elegant toy-design craftsmanship, glossy cherry enamel contrasts fine matte blush, tiny mint accents and soft warm shadows. Sophisticated playful adult design, not children clipart. Detail stays low. No text, logos, numbers, UI, phones or frame, full bleed, plenty of quiet negative space.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "8VgOEwiIfzeHiXd4d4B7Bsg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.b0baa546.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 86708,
+      "sha256": "b0baa546adefc9d0a5dd80ac44deed6878f997ca16e7800cfa24915605095ddf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.0d6f79b4.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 75292,
+      "sha256": "0d6f79b400faceb5c6826bb69c5358226d572a39faa89e3da69fa8df9dc5ea58",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e0e8c524.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 31402,
+      "sha256": "e0e8c5248ba60c223049982ca6c3701f4c72841a36627e271adef75e9f6e0399",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.30822b2c.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 22282,
+      "sha256": "30822b2c6c5072472bb69907cb3f214fb85fb9b2bc95f4edf58fdea3f37c0f72",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.b1606364.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 54584,
+      "sha256": "b16063643bf5b790d3a60b1d83e292ff4b47feac005bb3a990ab36b8e0c7cb84",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.c414c94b.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 59908,
+      "sha256": "c414c94bb8eee635ded90fddc4b9d8258b109fd596118bf435618ba8666527f4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.2a3aef76.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7872,
+      "sha256": "2a3aef763fecb31100523034bb1498e455355176c2105fc3b6f94db67daa12f1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.87f56ebb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 64526,
+      "sha256": "87f56ebb6a2ca99eb7601c43ab4e375d1dd07ad2bb1e487d658e0f1932ddc149",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-arcade-goals.b9fbe8b8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 52962,
+      "sha256": "b9fbe8b843eccd92a4848088b7c3ef434aa6ee52bd8517279629712c6667276f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pixel-cherry-star.91842c59.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 41342,
+      "sha256": "91842c590b0e6744b4f34cc5508f38aa208efdf9fc17acb91c728d39dd2ed785",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.8470a374.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7440,
+      "sha256": "8470a37485ffd1c87ba3f6ffd064d3888b9260f3c165a730c0970336f25610b4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.5caa5d9c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3520,
+      "sha256": "5caa5d9cdc843efd1fbdb12b5889d48863c5c3187ae2b871fe8771e730136127",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.870b23a2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7286,
+      "sha256": "870b23a241657fa26af240ace0559722a068d3674a29a921590a5973a3909343",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 515124,
+  "widgets": [
+    {
+      "id": "arcade-goals",
+      "kind": "art",
+      "image": "widget-arcade-goals.b9fbe8b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Arcade goals"
+    },
+    {
+      "id": "pixel-cherry-star",
+      "kind": "art",
+      "image": "widget-pixel-cherry-star.91842c59.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pixel cherry star"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.8470a374.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.5caa5d9c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.870b23a2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.30822b2c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.b1606364.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.c414c94b.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
