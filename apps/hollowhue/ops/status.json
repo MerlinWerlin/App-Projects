@@ -1,10 +1,17 @@
 {
   "app": "hollowhue",
   "stage": "build",
-  "headline": "Phase 2, 4 Nov 2026: iPhone beta update implemented; native QA and publishing pending. Last production update was PR188 on 1 Nov, runtime 0.1.0. First TestFlight already exists (ASC6829399355).",
+  "headline": "November iPhone update passed native QA and visual review (source774e5328, run41788606169). Release PR211 is ready to publish the production OTA and start a fresh TestFlight build. Neither publication nor physical-phone uptake is claimed yet.",
   "next_for_owner": [
-    "No input needed while the iPhone checks run. Delivery status will be recorded here after publishing."
+    "No input needed while release publishing and Apple processing are verified."
   ],
   "tests": 38,
-  "typecheck": "Full installed SDK57 types and offline UI stubs both clean; iOS export/native QA in progress."
+  "typecheck": "38 tests pass; full SDK57 and offline UI strict types clean; native iPhone compile and interaction flow pass; all 8 screenshots preserved in docs/qa-20261104. Expo doctor 21/21.",
+  "native_qa": {
+    "run": "41788606169",
+    "source": "774e53289c785914495d303f06729039c8f2fb10",
+    "result": "pass",
+    "screenshots": "docs/qa-20261104",
+    "physical_phone_uptake": "unverified"
+  }
 }

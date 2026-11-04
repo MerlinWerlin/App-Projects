@@ -17,10 +17,14 @@
   `d679a9f4-8624-4bbf-9628-4b3975d28565`, published 1 November 08:46 UTC. A public protocol request
   on 4 November still served iOS update `01a1964a-2a8a-7421-8ce5-d28fa1cb9f7c` from that group.
   There had been no newer Hollowhue source update; no broken channel/runtime mapping was found.
-- This update's iPhone QA and publication are **pending**. Do not infer delivery from implemented code.
+- Native iPhone QA **passed** on source `774e5328`, run **41788606169**. All eight screenshots are in
+  `docs/qa-20261104` and have been visually reviewed; the fitted canvas stays above the tray. Custom hex
+  entry, fill/draw undo-redo, both new worlds and recent colours after relaunch passed. Production OTA
+  networking is separately probed; the simulator capture disables OTA for reproducibility. Publication
+  and physical-phone uptake are still **pending**.
 - Existing builds check on launch with zero fallback wait; a downloaded update can need another cold
   launch before it runs. After publication, open Hollowhue online, allow the download, then fully close
   and reopen it. The new gallery says **November colour & discovery update**. Thereafter Settings
   exposes **Check for updates** and **Save & apply update** for explicit update handling.
-- A fresh TestFlight binary can also be built with `ship-mac` (`app=hollowhue`) to embed the same code;
+- The reviewed `TESTFLIGHT_REQUEST.json` change dispatches `ship-mac` (`app=hollowhue`) on main to embed the same code;
   verify Apple's processing state and internal tester availability before saying it is installable.

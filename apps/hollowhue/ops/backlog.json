@@ -42,13 +42,13 @@
       "id": "H07",
       "phase": 2,
       "title": "Library scene (shelf -> open book -> illustration) and Forest scene (tree -> owl hollow)",
-      "status": "implemented; iPhone QA and delivery pending"
+      "status": "done; native QA passed, publication pending"
     },
     {
       "id": "H08",
       "phase": 2,
       "title": "Custom colour picker and recent colours",
-      "status": "implemented; iPhone QA and delivery pending"
+      "status": "done; native QA passed, publication pending"
     },
     {
       "id": "H09",
@@ -66,7 +66,7 @@
       "id": "H11",
       "phase": 2,
       "title": "Visible app update check/download/apply, awaiting all autosaves before restart",
-      "status": "implemented; iPhone QA and delivery pending"
+      "status": "done; native QA passed, publication pending"
     }
   ]
 }

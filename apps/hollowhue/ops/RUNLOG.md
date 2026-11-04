@@ -16,3 +16,9 @@
   Offline: tests and strict stub typecheck clean; art checked with scripts/preview.py. Not yet on a device.
 - 2026-11-01 (same chat): PR #181 merged after a green check (typecheck, 24 tests, iOS + Android bundle, doctor 21/21). ship (dispatch, no RELEASE.json) linked the Expo project; ios-credentials (reference backspin, build off) registered the bundle id, made the App Store profile and linked it on Expo. Blocked: App Store Connect wasn't signed in in Chrome, so the app record needs Jared; then add RELEASE.json {mode build, ascAppId, ascKeyAuth true}.
 - 2026-11-01 round 1 (Jared's TestFlight notes: eraser, deeper zoom, visible pop): labelled Eraser tool in both modes (tap clears a fill; in Draw it rubs out strokes and a tap clears a fill). Bookshop Lane +2 levels (embroidered garden through the cushion motif, ladybird on a leaf) and Endless Mandala +2; max zoom x8 past the deepest level. Reveal rewritten: no stand-ins, child levels drawn in place from 10 px wide, each shape fades in between 1.5 and 5 px on screen (quarter-octave steps), parent hidden only when a child (rect or ellipse) covers the screen, nested backgrounds have no outline, drawing is relative to the outermost drawn level (no float loss at depth). Checked with scripts/zoom-frames.ts + zoom-preview.py: frame-to-frame differences stay flat across every level change. Shipped as an OTA update.
+
+- 2026-11-04: native iPhone rerun41788606169 passed at774e5328 after fitting the canvas above its measured
+  tray and preserving a deliberate zoom during tray changes. Actual drawn stroke/undo/redo, custom hex
+  picker, new scenes and recent colours after relaunch passed; all8screenshots reviewed and preserved
+  in docs/qa-20261104 with a runtime-source equality receipt. Release PR211 is prepared to publish OTA
+  and trigger a fresh signed TestFlight binary. Publication/Apple beta state still to verify.
