@@ -3,6 +3,7 @@ import json
 import os
 from pathlib import Path
 import sys
+from datetime import datetime, timezone
 
 import asc
 
@@ -12,7 +13,9 @@ APP_ID = "6826554677"
 def validate_target(build, prerelease, app):
     a = build["attributes"]
     assert app["id"] == APP_ID and app["attributes"]["bundleId"] == "com.jared797.cue"
-    assert a["version"] == "14" and a["uploadedDate"].startswith("2026-11-04"), "Unexpected upload"
+    uploaded = datetime.fromisoformat(a["uploadedDate"].replace("Z", "+00:00"))
+    assert uploaded.tzinfo is not None
+    assert a["version"] == "14" and uploaded.astimezone(timezone.utc).date().isoformat() == "2026-11-04", "Unexpected upload"
     assert prerelease["attributes"]["version"] == "1.0.0"
     assert prerelease["attributes"]["platform"] == "IOS"
 
