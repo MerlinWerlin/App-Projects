@@ -16,6 +16,7 @@ from apk_permissions import FORBIDDEN
 BUILD_ID = "f4821a5c-945c-4a22-8662-84c0c95ea8f7"
 SOURCE = "49c8992756fd505ce14710c81c3e719ae5d99d0c"
 VERSION_CODE = 4
+UPLOAD_CERT_SHA256 = "BD:CA:03:41:01:5C:37:B8:39:EA:74:69:B8:01:88:C1:EA:8C:07:00:23:43:05:8A:66:99:10:C9:83:53:AD:AB"
 BUNDLETOOL_URL = "https://github.com/google/bundletool/releases/download/1.18.3/bundletool-all-1.18.3.jar"
 BUNDLETOOL_SHA = "a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29"
 ANDROID = "{http://schemas.android.com/apk/res/android}"
@@ -106,6 +107,11 @@ def main(output):
     assert state["appVersion"] == "1.0.0" and str(state["appBuildVersion"]) == str(VERSION_CODE)
     bundle = output / "cue-production.aab"
     download(state["artifacts"]["buildUrl"], bundle, expo_artifact=True)
+    validate_bundle(output, bundle, BUILD_ID, SOURCE, "expo_cloud")
+
+
+def validate_bundle(output, bundle, build_id, source, origin):
+    """Common binary gates; cloud and local provenance remain explicitly separate."""
     tool = output / "bundletool.jar"
     download(BUNDLETOOL_URL, tool)
     assert hashlib.sha256(tool.read_bytes()).hexdigest() == BUNDLETOOL_SHA
@@ -128,6 +134,7 @@ def main(output):
     assert not re.search(r"CN\s*=\s*Android Debug", cert, re.I), "Debug key is not a production upload key"
     fingerprints = re.findall(r"SHA256:\s*([0-9A-F:]+)", cert)
     assert fingerprints, "Missing signing certificate fingerprint"
+    assert UPLOAD_CERT_SHA256 in fingerprints, "Upload certificate changed from accepted build2"
     libs = []
     with zipfile.ZipFile(bundle) as archive:
         assert archive.testzip() is None
@@ -139,7 +146,7 @@ def main(output):
                 libs.append(inspect_elf(name, archive.read(name)))
     assert any(lib["abi"] == "arm64-v8a" for lib in libs)
     receipt = {"status": "static_production_bundle_checks_passed_not_submitted",
-               "buildId": BUILD_ID, "sourceCommit": SOURCE, "package": "com.jared797.cue",
+               "buildId": build_id, "sourceCommit": source, "buildOrigin": origin, "package": "com.jared797.cue",
                "version": "1.0.0", "versionCode": VERSION_CODE, "targetSdk": target,
                "sha256": hashlib.sha256(bundle.read_bytes()).hexdigest(), "bytes": bundle.stat().st_size,
                "certificateSha256": fingerprints, "bundletoolVersion": "1.18.3",
