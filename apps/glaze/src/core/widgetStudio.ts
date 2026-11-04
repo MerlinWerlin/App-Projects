@@ -15,6 +15,7 @@
 
 import { isHex, mix, normalizeHex } from './colour.ts';
 import { parseDayKey } from './calendarMaths.ts';
+import { albumNames } from './widgetAlbum.ts';
 import { DISPLAY_FONTS, type DisplayFont } from './artwork.ts';
 import {
   applyWidgetEdits,
@@ -603,6 +604,9 @@ export type CatalogueDraft = {
   countdownTo: string | null;
   /** Photo album: minutes between photos (one of ALBUM_INTERVALS); null = the default. */
   rotateMinutes: number | null;
+  /** Durable private picks; only resized, hashed photoRefs enter the shared manifest. */
+  albumPhotos?: string[];
+  photoRefs?: string[];
   /** T85 look (catalogueLooksFor). Optional in saved drafts from before T85 (= 'theme'). */
   look?: WidgetLook;
 };
@@ -658,6 +662,7 @@ export function isCatalogueDraftEmpty(d: CatalogueDraft): boolean {
     d.textColour === null &&
     d.countdownTo === null &&
     d.rotateMinutes === null &&
+    !d.albumPhotos?.length && !d.photoRefs?.length &&
     (d.look ?? 'theme') === 'theme'
   );
 }
@@ -681,6 +686,8 @@ export function updateCatalogueDraft(
   const prev = state.catalogueDrafts?.[id] ?? emptyCatalogueDraft();
   const p = typeof patch === 'function' ? patch(prev) : patch;
   const next: CatalogueDraft = { ...prev, ...p, text: { ...(p.text ?? prev.text) } };
+  if (p.albumPhotos !== undefined) { next.albumPhotos = albumNames(p.albumPhotos); next.photoRefs = []; }
+  else if (p.photoRefs !== undefined) next.photoRefs = albumNames(p.photoRefs, true);
   if (next.rotateMinutes !== null && !(ALBUM_INTERVALS as readonly number[]).includes(next.rotateMinutes)) next.rotateMinutes = null;
   return { ...state, catalogueDrafts: { ...(state.catalogueDrafts ?? {}), [id]: next } };
 }
@@ -727,7 +734,7 @@ export function catalogueDraftEdits(spec: CatalogueSpec, d: CatalogueDraft): Cat
     };
   }
   if (spec.editable.countdown) edits.countdownTo = d.countdownTo;
-  if (spec.kind === 'photoAlbum') edits.rotateMinutes = d.rotateMinutes;
+  if (spec.kind === 'photoAlbum') { edits.rotateMinutes = d.rotateMinutes; edits.photoRefs = d.photoRefs ?? []; }
   if (d.look && d.look !== 'theme' && catalogueLooksFor(spec.family).includes(d.look)) edits.look = d.look;
   return edits;
 }
@@ -783,6 +790,8 @@ function parseCatalogueDraft(raw: unknown): CatalogueDraft | null {
     textColour: base.textColour,
     countdownTo: base.countdownTo,
     rotateMinutes: rotate,
+    albumPhotos: albumNames(o.albumPhotos),
+    photoRefs: albumNames(o.photoRefs, true),
     look: base.look ?? 'theme',
   };
 }

@@ -47,13 +47,14 @@ struct SavedWidgetFill: View {
 struct SavedWidgetView: View {
   let design: SavedWidgetDesign
   let date: Date
+  var albumImage: UIImage? = nil
 
   var body: some View {
     GeometryReader { geo in
       ZStack(alignment: .topLeading) {
         ForEach(Array(design.regions.enumerated()), id: \.offset) { _, region in
           let frame = object(region, "frame")
-          SavedWidgetRegion(region: region, design: design, date: date, scale: min(geo.size.width / design.width, geo.size.height / design.height))
+          SavedWidgetRegion(region: region, design: design, date: date, scale: min(geo.size.width / design.width, geo.size.height / design.height), albumImage: albumImage)
             .frame(width: max(0, number(frame, "w")) * geo.size.width, height: max(0, number(frame, "h")) * geo.size.height)
             .clipped()
             .offset(x: number(frame, "x") * geo.size.width, y: number(frame, "y") * geo.size.height)
@@ -79,6 +80,7 @@ private struct SavedWidgetRegion: View {
   let design: SavedWidgetDesign
   let date: Date
   let scale: Double
+  let albumImage: UIImage?
   private var colour: Color { Color(hex: string(region, "colour", design.accent)) }
   private var period: WidgetPeriod { WidgetPeriod.at(date, year: design.kind == "yearProgress") }
   private func textFont(_ text: [String: Any]) -> Font {
@@ -114,10 +116,20 @@ private struct SavedWidgetRegion: View {
     case "band", "scrim":
       SavedWidgetFill(fill: object(region, "fill")).opacity(number(region, "fillOpacity", 1))
     case "photo":
-      if string(design.raw, "photoRef") == GlazeShared.photoFile, let image = ThemeStore.loadPhoto() {
+      if design.kind == "photoAlbum", let image = albumImage {
+        Image(uiImage: image).resizable().scaledToFill()
+      } else if string(design.raw, "photoRef") == GlazeShared.photoFile, let image = ThemeStore.loadPhoto() {
         Image(uiImage: image).resizable().scaledToFill()
       } else {
         ZStack { SavedWidgetFill(fill: object(region, "fill")); Image(systemName: "photo").foregroundStyle(colour) }
+      }
+    case "action":
+      if design.kind == "photoAlbum", design.albumRefs.count > 1 {
+        Button(intent: NextAlbumPhotoIntent(size: string(design.raw, "size"))) {
+          Image(systemName: "forward.end.fill").font(.system(size: max(12, 16 * scale), weight: .semibold))
+            .foregroundStyle(.white).frame(maxWidth: .infinity, maxHeight: .infinity)
+        }.buttonStyle(.plain)
+          .accessibilityLabel(Text(design.texts["next.label"] ?? String(localized: "Next photo")))
       }
     case "dots":
       let dots = object(region, "dots")

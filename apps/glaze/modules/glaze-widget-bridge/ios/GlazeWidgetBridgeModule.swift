@@ -36,7 +36,7 @@ public class GlazeWidgetBridgeModule: Module {
     Name("GlazeWidgetBridge")
 
     // Version handshake: old installed binaries must not claim that v2 designs were applied.
-    AsyncFunction("widgetDesignVersion") { () -> Int in 3 }
+    AsyncFunction("widgetDesignVersion") { () -> Int in 4 }
 
     AsyncFunction("setTheme") { (json: String) -> Bool in
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
@@ -54,7 +54,8 @@ public class GlazeWidgetBridgeModule: Module {
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
             let data = json.data(using: .utf8), data.count < 512 * 1024,
             let payload = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
-            payload["v"] as? Int == 2, payload["specs"] is [[String: Any]] else { return false }
+            payload["v"] as? Int == 2, payload["specs"] is [[String: Any]],
+            AlbumPhotoImport.validDesigns(payload, container: container) else { return false }
       do { try data.write(to: container.appendingPathComponent("widgets.json"), options: .atomic) }
       catch { return false }
       UserDefaults(suiteName: appGroup)?.set(json, forKey: widgetSetKey)
@@ -64,10 +65,12 @@ public class GlazeWidgetBridgeModule: Module {
 
     /// T73: both habit keys as stored (JSON strings; a missing key is left out). The app merges them
     /// in JS (syncHabitStore) and writes the trackers back with setHabits. This never writes the log.
-    AsyncFunction("getHabits") { () -> [String: String] in
+    AsyncFunction("getHabits") { () throws -> [String: String] in
       var out: [String: String] = [:]
       guard FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) != nil,
-            let defaults = UserDefaults(suiteName: appGroup) else { return out }
+            let defaults = UserDefaults(suiteName: appGroup) else {
+        throw NSError(domain: "GlazeWidgetBridge", code: 1, userInfo: [NSLocalizedDescriptionKey: "Shared widget storage is unavailable"])
+      }
       if let habits = defaults.string(forKey: habitsKey) { out["habits"] = habits }
       if let log = defaults.string(forKey: habitLogKey) { out["log"] = log }
       return out
@@ -106,6 +109,11 @@ public class GlazeWidgetBridgeModule: Module {
       }
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
+    }
+
+    AsyncFunction("importAlbumPhotos") { (uris: [String]) -> [String] in
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return [] }
+      return AlbumPhotoImport.copy(uris, to: container)
     }
 
     /// T131 Seamless widget: crops (x, y, w, h) out of the wallpaper (wallpaper pixels of the
