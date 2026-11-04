@@ -409,3 +409,10 @@ declare module 'expo-localization' {
   export type Locale = { languageTag: string; languageCode: string | null; regionCode: string | null; textDirection: 'ltr' | 'rtl' | null; currencyCode: string | null };
   export function getLocales(): Locale[];
 }
+declare module 'expo-updates' {
+  export const isEnabled: boolean;
+  export function useUpdates(): { isUpdatePending: boolean; isChecking: boolean; isDownloading: boolean };
+  export function checkForUpdateAsync(): Promise<{ isAvailable: boolean; isRollBackToEmbedded: boolean }>;
+  export function fetchUpdateAsync(): Promise<{ isNew: boolean; isRollBackToEmbedded: boolean }>;
+  export function reloadAsync(): Promise<void>;
+}

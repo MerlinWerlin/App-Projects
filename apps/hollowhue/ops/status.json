@@ -1,11 +1,17 @@
 {
   "app": "hollowhue",
   "stage": "build",
-  "headline": "Phase 1 merged 1 Nov (PR #181). Expo project linked, bundle id com.jared797.hollowhue registered and signing set up on Expo. Waiting only on the App Store Connect app record.",
+  "headline": "November iPhone update passed native QA and visual review (source774e5328, run41788606169). Release PR211 is ready to publish the production OTA and start a fresh TestFlight build. Neither publication nor physical-phone uptake is claimed yet.",
   "next_for_owner": [
-    "In App Store Connect: Apps > + > New App: iOS, name Hollowhue, primary language English (Australia), bundle ID com.jared797.hollowhue, SKU hollowhue, Full access. Then tell Claude the app's Apple ID number (App Information > Apple ID) and the first TestFlight build ships straight away.",
-    "Then open the build in TestFlight on the iPad and answer docs/TRIAL.md"
+    "No input needed while release publishing and Apple processing are verified."
   ],
-  "tests": 24,
-  "typecheck": "real tsc on GitHub: clean; expo-doctor 21/21; iOS + Android bundle OK"
+  "tests": 38,
+  "typecheck": "38 tests pass; full SDK57 and offline UI strict types clean; native iPhone compile and interaction flow pass; all 8 screenshots preserved in docs/qa-20261104. Expo doctor 21/21.",
+  "native_qa": {
+    "run": "41788606169",
+    "source": "774e53289c785914495d303f06729039c8f2fb10",
+    "result": "pass",
+    "screenshots": "docs/qa-20261104",
+    "physical_phone_uptake": "unverified"
+  }
 }

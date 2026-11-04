@@ -6,7 +6,7 @@ import { AppState, Pressable, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { t } from '../src/i18n';
 import { flushProgress, loadAllProgress } from '../src/store/progress';
-import { loadSettings } from '../src/store/settings';
+import { flushSettings, loadSettings } from '../src/store/settings';
 import { type as ty, useColors } from '../src/theme/tokens';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -49,7 +49,7 @@ export default function RootLayout() {
     // Never an endless splash.
     const id = setTimeout(() => setReady(true), 3000);
     const sub = AppState.addEventListener('change', (s) => {
-      if (s !== 'active') flushProgress();
+      if (s !== 'active') void Promise.all([flushProgress(), flushSettings()]).catch(() => {});
     });
     return () => {
       clearTimeout(id);

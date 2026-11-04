@@ -3,9 +3,11 @@ import { bookshop } from './bookshop.ts';
 import { cafeScene } from './cafe.ts';
 import { jungleScene } from './jungle.ts';
 import { mandalaScene } from './mandala.ts';
+import { libraryScene } from './library.ts';
+import { forestScene } from './forest.ts';
 
 /** Gallery order. The flagship (deepest zoom) comes first. */
-export const SCENES: Scene[] = [bookshop, mandalaScene, cafeScene, jungleScene];
+export const SCENES: Scene[] = [bookshop, libraryScene, forestScene, mandalaScene, cafeScene, jungleScene];
 
 export function sceneById(id: string): Scene | undefined {
   return SCENES.find((s) => s.id === id);

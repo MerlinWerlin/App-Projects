@@ -4,11 +4,12 @@ import { useSyncExternalStore } from 'react';
 import { type Progress, emptyProgress, restoreProgress } from '../core/progress';
 import type { Scene } from '../core/scene';
 import { SCENES } from '../scenes';
+import { createSaveQueue } from '../core/saveQueue';
 
 const key = (id: string) => `hollowhue.scene.${id}.v1`;
 const cache = new Map<string, Progress>();
 const listeners = new Set<() => void>();
-const timers = new Map<string, ReturnType<typeof setTimeout>>();
+const saves = createSaveQueue((k, value) => AsyncStorage.setItem(k, value));
 let version = 0;
 
 function emit() {
@@ -47,25 +48,12 @@ export function setProgress(scene: Scene, p: Progress) {
   if (cache.get(scene.id) === p) return;
   cache.set(scene.id, p);
   emit();
-  const old = timers.get(scene.id);
-  if (old) clearTimeout(old);
-  timers.set(
-    scene.id,
-    setTimeout(() => {
-      timers.delete(scene.id);
-      AsyncStorage.setItem(key(scene.id), JSON.stringify(p)).catch(() => {});
-    }, 400),
-  );
+  saves.put(key(scene.id), JSON.stringify(p));
 }
 
 /** Write any pending saves now (app going to the background, leaving a scene). */
 export function flushProgress() {
-  for (const [id, tm] of timers) {
-    clearTimeout(tm);
-    const p = cache.get(id);
-    if (p) AsyncStorage.setItem(key(id), JSON.stringify(p)).catch(() => {});
-  }
-  timers.clear();
+  return saves.flush();
 }
 
 /** Re-renders when any scene's progress changes. */

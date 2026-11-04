@@ -104,6 +104,10 @@ export default function Gallery() {
           </Text>
         </Pressable>
       ) : null}
+      <View style={{ backgroundColor: c.accentSoft, padding: space.lg, borderRadius: radius.md, gap: space.xs }}>
+        <Text style={[ty.bodyBold, { color: c.accent }]}>{t('release.title')}</Text>
+        <Text style={[ty.small, { color: c.ink2 }]}>{t('release.body')}</Text>
+      </View>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.sm }}>
         <Chip label={t('gallery.filter.all')} on={filter === 'all'} onPress={() => setFilter('all')} />
         {themes.map((th) => (
