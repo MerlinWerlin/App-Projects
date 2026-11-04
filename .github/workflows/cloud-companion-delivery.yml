@@ -29,7 +29,7 @@ jobs:
           python-version: '3.12'
       - name: Verify reviewed runtime source
         run: |
-          EXPECTED=$(python3 -c 'import json;print(json.load(open("../../.github/cloud-companion-delivery.json"))["verifiedSource"])')
+          EXPECTED=$(python3 -c 'import json;print(json.load(open("../../.github/cloud-companion-delivery.json"))["reviewedSource"])')
           git diff --exit-code "$EXPECTED" HEAD -- App Shared Widget project.yml
           echo "CLOUD_BUILD_NUMBER=$(python3 -c 'import json;print(json.load(open("../../.github/cloud-companion-delivery.json"))["buildNumber"])')" >> "$GITHUB_ENV"
       - name: Prepare existing signing credentials
