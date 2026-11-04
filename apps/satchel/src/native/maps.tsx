@@ -10,10 +10,14 @@
 // T72: a numbered stop is a custom-view marker. It tracks view changes only long enough to draw its first frame
 // (and again briefly when its number, icon or colour changes), then stops, so a busy day doesn't redraw every pin
 // on each frame while the map pans (react-native-maps' advice for custom markers).
+// T166: when the city's dark tiles are installed (offlineTiles.darkPathTemplate) and the phone is in dark mode, the
+// LocalTile reads those instead of the light ones (src/core/citymaps.ts tilePathForScheme); keyed by path so the
+// overlay redraws when the appearance changes.
 import { Ionicons } from '@expo/vector-icons';
 import { Component, useCallback, useEffect, useRef, useState, type ComponentProps, type ReactNode } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import type MapViewType from 'react-native-maps';
+import { tilePathForScheme, type OfflineTiles } from '../core/citymaps.ts';
 import { validLatLon, type LatLon, type Region } from '../core/poi.ts';
 import { useApp } from '../state/app.tsx';
 import { duration, dur } from '../theme/motion.ts';
@@ -82,8 +86,8 @@ type Props = {
   fallbackBody: string;
   /** Tap on the map itself (not a pin): selects that spot (FLOWS §11.1). Not offered by the no-map fallback list. */
   onMapPress?: (at: LatLon) => void;
-  /** A downloaded city's raster tiles (plain file path with {z}/{x}/{y}), drawn over the system map. */
-  offlineTiles?: { pathTemplate: string; maxZoom: number; minZoom: number } | null;
+  /** A downloaded city's raster tiles (plain file path with {z}/{x}/{y}), drawn over the system map; T166: plus its dark tiles when installed. */
+  offlineTiles?: OfflineTiles | null;
   /** Stop zooming in past the offline tiles' deepest level (used while the phone is offline, where nothing else draws). */
   limitZoom?: boolean;
   /** Called after the user moves the map. */
@@ -277,6 +281,7 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
   const { Marker, LocalTile } = maps;
   const Polyline = typeof maps.Polyline === 'function' ? maps.Polyline : null;
   const tiles = offlineTiles && typeof LocalTile === 'function' ? offlineTiles : null;
+  const tilePath = tiles ? tilePathForScheme(tiles, theme.dark) : null;
   return (
     <Boundary fallback={fallback}>
       <View style={{ height, borderRadius: radius.m, overflow: 'hidden', borderWidth: 1, borderColor: theme.line }}>
@@ -308,7 +313,7 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
               : undefined
           }
         >
-          {tiles ? <LocalTile pathTemplate={tiles.pathTemplate} tileSize={256} /> : null}
+          {tiles && tilePath ? <LocalTile key={tilePath} pathTemplate={tilePath} tileSize={256} /> : null}
           {Polyline && lines
             ? lines.map((l) =>
                 l.points.length > 1 ? (

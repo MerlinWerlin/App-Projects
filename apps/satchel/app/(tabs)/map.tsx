@@ -8,6 +8,8 @@
 // Offline city maps (T47): a list of the city packs in the satchel-maps-v1 release (saved so it shows offline) with
 // Download / progress / Cancel / Delete. When the map is over a downloaded city its raster tiles are drawn from the
 // phone, so that city works in flight mode, and an "Offline map: <city>" chip says so.
+// T166: when the catalog offers a dark tile pack for a downloaded city, its row adds "Dark map (size)" (same download
+// / progress / cancel) and, once saved, "Remove dark map"; in dark mode the map then draws the dark tiles.
 // Trip on the map (T69): scoped to a trip, its bookings with a place position are numbered stops per day with a
 // dashed line, filtered by day chips under the map, with a summary card (src/ui/TripRouteLayer.tsx).
 // T73: "Find my way back" (the offline compass, app/wayback.tsx) under Where am I?, and for a selected saved place.
@@ -29,7 +31,7 @@ import kyotoData from '../../src/content/demo_pois_kyoto.json';
 import { availablePoiSets, poiSetKey as setKey, selectPoiSet } from '../../src/core/mapsets.ts';
 import tagData from '../../src/content/osm_poi_tags.json';
 import tokyoData from '../../src/content/demo_pois_tokyo.json';
-import { formatSize, overallProgress, pickCityFor, regionForCity, type CityCatalog, type CityMap } from '../../src/core/citymaps.ts';
+import { cityDiskBytes, formatSize, overallProgress, pickCityFor, regionForCity, type CityCatalog, type CityMap } from '../../src/core/citymaps.ts';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
 import { giftPins, giftPinTarget } from '../../src/core/gifts.ts';
 import type { PermissionState } from '../../src/core/permissions.ts';
@@ -52,7 +54,19 @@ import {
   type Region,
 } from '../../src/core/poi.ts';
 import type { Key } from '../../src/i18n/en.ts';
-import { deleteCity, downloadCity, fetchCatalog, listInstalled, offlineTilesFor, type CatalogFailure, type DownloadJob, type DownloadPhase } from '../../src/native/cityMaps.ts';
+import {
+  deleteCity,
+  deleteDarkTiles,
+  downloadCity,
+  downloadDarkTiles,
+  fetchCatalog,
+  listInstalled,
+  offlineTilesFor,
+  type CatalogFailure,
+  type DownloadJob,
+  type DownloadPhase,
+  type InstalledCity,
+} from '../../src/native/cityMaps.ts';
 import { locateOnce, type Coords } from '../../src/native/location.ts';
 import { mapAvailable, SatchelMap, type MapFocus, type MapLine, type MapPin } from '../../src/native/maps.tsx';
 import { useNetworkStatus } from '../../src/native/network.ts';
@@ -132,9 +146,9 @@ const NO_TOGGLES: unknown = null;
 // ---- Offline city maps (T47) ----
 
 type CatalogState = { s: 'loading' } | { s: 'ok'; catalog: CityCatalog; stale?: CatalogFailure } | { s: 'failed'; reason: CatalogFailure };
-type Job = { id: string; phase: DownloadPhase; pct: number };
+type Job = { id: string; phase: DownloadPhase; pct: number; dark?: boolean };
 
-function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { installed: CityMap[]; refreshInstalled: () => Promise<void>; onShow: (city: CityMap) => void; tripCount: number }) {
+function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { installed: InstalledCity[]; refreshInstalled: () => Promise<void>; onShow: (city: CityMap) => void; tripCount: number }) {
   const { t, theme } = useApp();
   // T16: one offline city per trip is free; more need Satchel Plus (unlocked while purchases are unavailable).
   const gate = useCityGate(installed.length, tripCount);
@@ -188,8 +202,36 @@ function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { insta
     else setMsg({ text: t(`citymaps.fail.${r.reason}`, { city: city.name, size: formatSize(city.bytes * 2) }), ok: r.reason === 'cancelled' });
   };
 
-  const confirmDelete = (city: CityMap) =>
-    Alert.alert(t('citymaps.deleteConfirm', { city: city.name }), t('citymaps.deleteBody', { size: size(city) }), [
+  // T166: the dark tiles of an installed city, from its catalog entry (the installed meta.json has no `dark`).
+  const startDark = async (city: CityMap, entry: CityMap) => {
+    if (jobRef.current || !entry.dark) return;
+    const dark = entry.dark;
+    setMsg(null);
+    setJob({ id: city.id, phase: 'download', pct: 0, dark: true });
+    const j = downloadDarkTiles(entry, (phase, f) => {
+      const pct = Math.floor(overallProgress(phase, f) * 100);
+      setJob((cur) => (cur && cur.id === city.id && (cur.pct !== pct || cur.phase !== phase) ? { id: city.id, phase, pct, dark: true } : cur));
+    });
+    jobRef.current = j;
+    const r = await j.promise;
+    jobRef.current = null;
+    if (!mounted.current) return;
+    setJob(null);
+    await refreshInstalled();
+    if (r.ok) setMsg({ text: t('citymaps.dark.done', { city: city.name }), ok: true });
+    else setMsg({ text: t(`citymaps.fail.${r.reason}`, { city: city.name, size: formatSize(dark.bytes * 2) }), ok: r.reason === 'cancelled' });
+  };
+
+  const removeDark = async (city: CityMap) => {
+    if (jobRef.current) return;
+    const r = await deleteDarkTiles(city.id);
+    await refreshInstalled();
+    if (!mounted.current) return;
+    setMsg(r.ok ? { text: t('citymaps.dark.removed', { city: city.name }), ok: true } : { text: t('citymaps.dark.removeFailed', { city: city.name }), ok: false });
+  };
+
+  const confirmDelete = (city: InstalledCity) =>
+    Alert.alert(t('citymaps.deleteConfirm', { city: city.name }), t(city.darkInstalled && city.dark ? 'citymaps.deleteBodyDark' : 'citymaps.deleteBody', { size: formatSize(cityDiskBytes(city, !!city.darkInstalled)) }), [
       { text: t('common.cancel'), style: 'cancel' },
       {
         text: t('citymaps.deleteAction'),
@@ -205,7 +247,7 @@ function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { insta
   // Catalog cities plus any downloaded city the list no longer has (it still works and can be deleted).
   const installedIds = new Set(installed.map((c) => c.id));
   const listed = cat.s === 'ok' ? cat.catalog.cities : [];
-  const rows: CityMap[] = [...listed.map((c) => installed.find((i) => i.id === c.id) ?? c), ...installed.filter((i) => !listed.some((c) => c.id === i.id))];
+  const rows: InstalledCity[] = [...listed.map((c) => installed.find((i) => i.id === c.id) ?? c), ...installed.filter((i) => !listed.some((c) => c.id === i.id))];
 
   let status: string | null = null;
   if (cat.s === 'loading' && rows.length === 0) status = t('citymaps.loading');
@@ -227,6 +269,10 @@ function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { insta
       {rows.map((city) => {
         const isInstalled = installedIds.has(city.id);
         const mine = job?.id === city.id ? job : null;
+        // T166: a dark pack is offered only by the catalog entry, and only for a downloaded city.
+        const entry = listed.find((c) => c.id === city.id);
+        const darkOffer = isInstalled && entry?.dark ? entry : null;
+        const darkSaved = isInstalled && !!city.darkInstalled;
         return (
           <View key={city.id} style={{ gap: space.s, paddingTop: space.m, borderTopWidth: 1, borderTopColor: theme.line }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.m }}>
@@ -238,7 +284,7 @@ function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { insta
             </View>
             {mine ? (
               <>
-                <ProgressBar progress={mine.pct / 100} tone="sea" label={t('citymaps.progressA11y', { city: city.name })} />
+                <ProgressBar progress={mine.pct / 100} tone="sea" label={t(mine.dark ? 'citymaps.dark.progressA11y' : 'citymaps.progressA11y', { city: city.name })} />
                 <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted, fontVariant: ['tabular-nums'] }}>
                   {t(mine.phase === 'download' ? 'citymaps.downloading' : 'citymaps.unpacking', { pct: mine.pct })}
                 </Text>
@@ -274,6 +320,30 @@ function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { insta
                     <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.danger }}>{t('citymaps.delete')}</Text>
                   </PressableScale>
                 </View>
+                {darkSaved ? (
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, flexWrap: 'wrap' }}>
+                    <Text style={[typeScale.small, { color: theme.muted }]}>{t('citymaps.dark.installed')}</Text>
+                    <PressableScale
+                      accessibilityRole="button"
+                      accessibilityLabel={t('citymaps.dark.removeA11y', { city: city.name })}
+                      accessibilityHint={t('citymaps.dark.removeHint')}
+                      onPress={() => removeDark(city)}
+                      style={{ paddingHorizontal: space.l, borderRadius: radius.pill, borderWidth: 1, borderColor: theme.line }}
+                    >
+                      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.ink }}>{t('citymaps.dark.remove')}</Text>
+                    </PressableScale>
+                  </View>
+                ) : darkOffer?.dark && !job ? (
+                  <PressableScale
+                    accessibilityRole="button"
+                    accessibilityLabel={t('citymaps.dark.downloadA11y', { city: city.name, size: formatSize(darkOffer.dark.bytes) })}
+                    accessibilityHint={t('citymaps.dark.downloadHint')}
+                    onPress={() => startDark(city, darkOffer)}
+                    style={{ paddingHorizontal: space.l, borderRadius: radius.pill, borderWidth: 1, borderColor: theme.line, alignSelf: 'flex-start' }}
+                  >
+                    <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: theme.ink }}>{t('citymaps.dark.download', { size: formatSize(darkOffer.dark.bytes) })}</Text>
+                  </PressableScale>
+                ) : null}
               </>
             ) : job ? (
               <Body muted>{t('citymaps.oneAtATime')}</Body>
@@ -325,7 +395,7 @@ export default function MapScreen() {
   const [layersOpen, setLayersOpen] = useState(false);
   const searchY = useRef(0);
   const net = useNetworkStatus();
-  const [installed, setInstalled] = useState<CityMap[]>([]);
+  const [installed, setInstalled] = useState<InstalledCity[]>([]);
   const refreshInstalled = useCallback(async () => setInstalled(await listInstalled()), []);
   useEffect(() => {
     refreshInstalled();

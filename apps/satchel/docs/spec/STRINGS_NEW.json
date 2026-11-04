@@ -6777,5 +6777,17 @@
  "packpois.showSamples": "Show sample places",
  "packpois.hideSamples": "Hide sample places",
  "packpois.samplesHint": "Fictional places for trying the map. These are not real destinations.",
- "packpois.noCityHere": "Download a city map, then tap Show on map to see its real places here. Your bookings and saved places stay on the map."
+ "packpois.noCityHere": "Download a city map, then tap Show on map to see its real places here. Your bookings and saved places stay on the map.",
+ "citymaps.dark.download": "Dark map ({size})",
+ "citymaps.dark.downloadA11y": "Download the dark {city} map, {size}",
+ "citymaps.dark.downloadHint": "Used when your phone is in dark mode, so the offline map isn’t bright",
+ "citymaps.dark.progressA11y": "Dark {city} map",
+ "citymaps.dark.done": "Dark {city} map downloaded. It shows when your phone is in dark mode.",
+ "citymaps.dark.installed": "Dark map saved",
+ "citymaps.dark.remove": "Remove dark map",
+ "citymaps.dark.removeA11y": "Remove the dark {city} map from this phone",
+ "citymaps.dark.removeHint": "Keeps the city map; dark mode shows the light map again",
+ "citymaps.dark.removed": "Dark {city} map removed.",
+ "citymaps.dark.removeFailed": "Couldn’t remove the dark {city} map. Try again.",
+ "citymaps.deleteBodyDark": "This frees about {size}, including the dark map. You can download them again while connected."
 }
