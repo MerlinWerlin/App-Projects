@@ -1,0 +1,41 @@
+name: Hollowhue release status
+on:
+  workflow_dispatch:
+    inputs:
+      expected_update_group:
+        description: Expected production iOS update group (optional)
+        type: string
+        required: false
+permissions:
+  contents: read
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --quiet pyjwt cryptography requests
+      - name: Read App Store Connect beta state
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          REPORT: hollowhue-asc-status.md
+        run: python scripts/asc/asc.py status hollowhue
+      - name: Verify production update and downloaded bundle
+        env:
+          EXPECTED_GROUP: ${{ inputs.expected_update_group }}
+        run: |
+          python apps/hollowhue/scripts/verify-update.py ${EXPECTED_GROUP:+"$EXPECTED_GROUP"} > hollowhue-update-status.json
+          cat hollowhue-update-status.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hollowhue-release-status
+          path: |
+            hollowhue-asc-status.md
+            hollowhue-update-status.json
+          retention-days: 30

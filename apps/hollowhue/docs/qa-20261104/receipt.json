@@ -1,0 +1,17 @@
+{
+  "run": "41788606169",
+  "source": "774e53289c785914495d303f06729039c8f2fb10",
+  "platform": "iPhone simulator",
+  "otaDisabledForCapture": true,
+  "images": [
+    "01-gallery.png",
+    "02-settings.png",
+    "03-colour-picker.png",
+    "03-custom-colour.png",
+    "04-library-story.png",
+    "05-phone-draw-tools.png",
+    "06-owl-hollow.png",
+    "07-recent-colour-after-relaunch.png"
+  ],
+  "physicalPhoneUptakeVerified": false
+}

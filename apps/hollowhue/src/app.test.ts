@@ -4,11 +4,12 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 import { PALETTES } from './core/palettes.ts';
 import { en } from './i18n/en.ts';
 import { SCENES } from './scenes/index.ts';
 
-const root = new URL('..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('..', import.meta.url));
 
 function files(dir: string): string[] {
   return readdirSync(dir).flatMap((n) => {
