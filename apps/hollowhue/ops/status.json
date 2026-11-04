@@ -1,9 +1,10 @@
 {
   "app": "hollowhue",
-  "stage": "build",
-  "headline": "42 new realistic illustrations, five topic categories, three difficulty levels, six regular zooms and twenty in Mega. Full native iPhone flow passed; production OTA and fresh TestFlight publication requested.",
+  "stage": "testflight",
+  "headline": "Illustrated update LIVE in production OTA and TestFlight0.1.0(4):42new realistic pictures, five topics, three difficulty levels, six regular zooms and twenty in Mega. Apple COMPLETE/VALID/IN_BETA_TESTING; no errors/warnings.",
   "next_for_owner": [
-    "Release is being prepared; delivery status below will distinguish the in-app update from Apple processing."
+    "Update Hollowhue to0.1.0(4) in TestFlight. Look for New art. Six zooms. Twenty in Mega.",
+    "Existing installations can also use Settings > App updates > Check for updates > Save & apply update."
   ],
   "tests": 57,
   "typecheck": "57 tests and full/stub strict types pass. iOS/Hermes export passes; illustrated bundle packed to29MB. All old scene geometry/IDs/versions retain exact SHA. Expo doctor21/21pass.",
@@ -18,13 +19,9 @@
     "result": "pass",
     "run": "41812677928",
     "source": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
-    "scope": "all six regular and twenty Mega stops, deep paint, drawing, undo/redo, saved work and recent colours after relaunch",
-    "capture_retake": {
-      "run": "41816934677",
-      "captureSource": "bda2943def38124c6dd5aa397c661aa6da2583ac",
-      "appSource": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
-      "reason": "Initial cottage screenshot preceded vector rendering; capture-only flow returns from the cafe to Whole scene. Same compiled app, runtime source unchanged."
-    },
+    "scope": "categories/difficulties, all six regular and twenty Mega stops, deep paint, drawing, undo/redo and saved work/recent colours after relaunch",
+    "evidence": "docs/qa-art-20261104/receipt.json",
+    "screenshotQualification": "10 usable current-source frames plus separately attributed earlier cottage reference with identical artwork data. Premature initial frame excluded; additional retakes ended in simulator accessibility-driver failures.",
     "physical_phone_uptake": "unverified"
   },
   "previous_delivery": {
@@ -48,6 +45,30 @@
     "testflight_submission": "a9aee4e4-1f6a-44f1-8cc5-eb2bab86b3c2"
   },
   "delivery": {
-    "state": "new artwork/category revision not yet published"
+    "state": "production OTA live; native0.1.0(4) COMPLETE/VALID/IN_BETA_TESTING",
+    "release_pr": 224,
+    "release_source": "94f119228f9259c8e77d67209c4e94e257edb286",
+    "ota_run": "41817626284",
+    "ota": {
+      "project": "2f10e62c-2086-4e7d-9437-649fc240e82d",
+      "platform": "ios",
+      "runtime": "0.1.0",
+      "channel": "production",
+      "group": "28b985e9-003d-4211-8cba-f73de9565c9f",
+      "update": "01a1a636-0322-7e89-aad8-4b780bee7e6e",
+      "createdAt": "2026-11-04T10:58:40.034Z",
+      "bundleBytes": 28726172,
+      "bundleSha256": "29ab81377870abd715a2af76d93f047a6b99be50b9026bd23aa07786367bdbcf",
+      "bundleHashMatches": true,
+      "phoneUptakeVerified": false
+    },
+    "testflight_build_run": "41817626016",
+    "testflight_version": "0.1.0 (4)",
+    "testflight_submission": "1c7e39ae-8994-489a-a718-6d8487c32996",
+    "apple_probe_run": "41821210892",
+    "apple_state": "COMPLETE; VALID; IN_BETA_TESTING; no errors or warnings",
+    "upload_id": "234f6929-1c10-4393-a8ae-08ecee0f1885",
+    "physical_phone_uptake": "unverified",
+    "apple_receipt": "docs/qa-art-20261104/apple-complete-status.json"
   }
 }

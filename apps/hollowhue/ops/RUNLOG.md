@@ -34,3 +34,16 @@
 - Illustrated native run41807826539/source391f5ed8: all6+20zoom stops, deep paint and undo/redo pass; cottage/cafe/deep screenshots reviewed. Final saved-card search overscrolled because it required100%visibility; the data was present. Centred40%-visible cards and reduced scroll speed in the test. Added lightweight generated gallery covers to avoid thousands of native SVG views on cold launch, retaining live previews for painted roots and full editable vectors in the canvas. 57tests and both strict typechecks pass; final native rerun required.
 
 - Final app source2c585f9b passed full native iPhone41812677928: all6+20stops, deep painting/drawing/undo-redo and saved picture/recent colours after relaunch. Gallery launch-to-banner assertion fell from31s in the prior capture to14s on relaunch in this simulator run (not a physical-device benchmark). One first cottage screenshot preceded SVG rendering; capture-only bda2943d returns from cafe to Whole scene and reuses the exact compiled app in41816934677. Runtime equality verified; production OTA/fresh TestFlight release requested.
+
+- 4 November10:58UTC: PR224 merged94f11922; OTA41817626284 published group28b985e9. Actual28,726,172-byte
+  iOS/runtime0.1.0 bundle SHA29ab81377870abd715a2af76d93f047a6b99be50b9026bd23aa07786367bdbcf matches.
+  Signed native0.1.0(4) uploaded11:13UTC in41817626016, submission1c7e39ae-8994-489a-a718-6d8487c32996.
+  Apple probe41819703539 reportsPROCESSING/no errors or warnings; prior3 remainsVALID/IN_BETA_TESTING.
+  GitHub outage delayed pushes, and the squash inherited skip-ci, so reviewed-main releases were dispatched
+  explicitly once each. Ten usable current-source native captures plus separately attributed cottage-art
+  reference retained in docs/qa-art-20261104. Raw premature frame remains in original capture archive.
+  Retakes41816934677/41819117906 ended in simulator accessibility-driver connection failures; no completed
+  Whole scene assertion is claimed. Full app qualification remains successful41812677928/source2c585f9b,
+  with merged runtime equality checked. No physical-phone uptake or new native install availability claim.
+
+- Final Apple probe41821210892 confirms build0.1.0(4) COMPLETE/VALID/IN_BETA_TESTING, no errors/warnings. Production group28b985e9 and actual bundle hash independently reverified in the same probe. Both OTA and fresh TestFlight are available; physical owner-phone uptake remains unverified. Complete and earlier in-flight receipts retained in docs/qa-art-20261104.

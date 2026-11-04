@@ -13,7 +13,8 @@ Colour by tapping a shape (fill) or freehand with finger / Apple Pencil (pencil,
 ## Current iPhone update (4 November 2026)
 
 The active isolated checkout is `C:/Users/jared/Documents/ChatGPT/Apps/hollowhue-update`,
-branch `codex/hollowhue-art-categories-20261104`. App Store Connect: **6829399355**; bundle ID:
+delivery branch `codex/hollowhue-art-delivery-20261104`; released app source is on main via PR224.
+App Store Connect: **6829399355**; bundle ID:
 `com.jared797.hollowhue`; Expo project: `@jared797/hollowhue`, UUID
 `2f10e62c-2086-4e7d-9437-649fc240e82d`.
 
@@ -56,3 +57,7 @@ transitions, each a distinct illustration. `scripts/art/README.md` explains the 
 process. 57 tests include every Mega stop, deepest-level painting/persistence, ink excluded from saved fills,
 and an exact legacy-art
 checksum. Native iPhone QA and this revision's release status are recorded in `ops/status.json`.
+
+The illustrated update is published as production OTA group `28b985e9-003d-4211-8cba-f73de9565c9f`.
+Signed TestFlight **0.1.0 (4)** is now **VALID / IN_BETA_TESTING**. Current delivery receipts and
+qualified native screenshots are in `docs/qa-art-20261104`; source images and prompts are in `scripts/art`.
