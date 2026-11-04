@@ -126,8 +126,10 @@ private struct SavedWidgetRegion: View {
     case "action":
       if design.kind == "photoAlbum", design.albumRefs.count > 1 {
         Button(intent: NextAlbumPhotoIntent(size: string(design.raw, "size"))) {
-          Image(systemName: "forward.end.fill").font(.system(size: max(12, 16 * scale), weight: .semibold))
-            .foregroundStyle(.white).frame(maxWidth: .infinity, maxHeight: .infinity)
+          Image(systemName: "forward.end.fill").font(.system(size: max(12, 24 * scale), weight: .semibold))
+            .foregroundStyle(colour).frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background { SavedWidgetFill(fill: object(region, "fill")) }
+            .clipShape(RoundedRectangle(cornerRadius: 18.33 * scale, style: .continuous))
         }.buttonStyle(.plain)
           .accessibilityLabel(Text(design.texts["next.label"] ?? String(localized: "Next photo")))
       }

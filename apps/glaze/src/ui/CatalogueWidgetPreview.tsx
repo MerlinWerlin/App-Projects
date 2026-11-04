@@ -375,6 +375,7 @@ export const CatalogueWidgetPreview = memo(function CatalogueWidgetPreview({ spe
   };
 
   const renderRegion = (m: CatalogueRegionModel): ReactNode => {
+    if (spec.kind === 'photoAlbum' && m.region.role === 'action' && (albumPhotoUris.length || spec.photoRefs.length) < 2) return null;
     if (m.region.role === 'photo' && spec.kind === 'photoAlbum' && albumPhotoUris.length) {
       const uri = albumPhotoUris[albumIndex(date, spec.rotateMinutes ?? 60, albumPhotoUris.length)];
       return <ExpoImage source={{ uri }} contentFit="cover" style={StyleSheet.absoluteFill} />;
