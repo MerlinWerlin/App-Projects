@@ -55,8 +55,8 @@ import XCTest
       spring.swipeLeft()
     }
     XCTAssertTrue(spring.staticTexts["Water"].firstMatch.exists, spring.debugDescription)
-    let add = spring.buttons["Add Widget"].firstMatch
-    XCTAssertTrue(add.exists); add.tap()
+    let addControl = spring.buttons["Add Widget"].firstMatch
+    XCTAssertTrue(addControl.exists); addControl.tap()
     for _ in 0..<2 {
       let done = spring.buttons["Done"].firstMatch
       if done.waitForExistence(timeout: 3) { done.tap() }
