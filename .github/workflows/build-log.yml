@@ -50,7 +50,9 @@ jobs:
             eas build:list --platform ios --limit 1 --json --non-interactive > "$RUNNER_TEMP/raw.txt" 2>"$RUNNER_TEMP/err.txt"
             sed -n '/^\[/,$p' "$RUNNER_TEMP/raw.txt" | jq '.[0]' > "$RUNNER_TEMP/b.json"
           fi
-          jq '{id, status, appVersion, appBuildVersion, error}' "$RUNNER_TEMP/b.json" > "$RUNNER_TEMP/sum.txt" 2>>"$RUNNER_TEMP/err.txt"
+          # Only the public archive filename is needed for signed-package verification.
+          # Keep presigned log URLs and credential-bearing metadata out of commit comments.
+          jq '{id, status, appVersion, appBuildVersion, error, artifactFilename: ((.artifacts.applicationArchiveUrl // .artifacts.buildUrl // "") | split("?")[0] | split("/")[-1])}' "$RUNNER_TEMP/b.json" > "$RUNNER_TEMP/sum.txt" 2>>"$RUNNER_TEMP/err.txt"
           : > "$RUNNER_TEMP/logs.txt"
           for u in $(jq -r '.logFiles[]? // empty' "$RUNNER_TEMP/b.json"); do curl -sL --compressed "$u" -o "$RUNNER_TEMP/one"; file "$RUNNER_TEMP/one" >> "$RUNNER_TEMP/err.txt"; (gunzip -c "$RUNNER_TEMP/one" 2>/dev/null || cat "$RUNNER_TEMP/one") >> "$RUNNER_TEMP/logs.txt"; echo >> "$RUNNER_TEMP/logs.txt"; done
           # EAS logs are JSON lines; keep the message text, then the lines around errors.
