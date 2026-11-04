@@ -1,5 +1,13 @@
 # Google Play release preparation
 
+## Linework Console release continuation, 5 November 2026
+
+The signed-in Astro Labs AU Console now permits **Create app**. The exact package `com.jared797.linework` is available. Prepared the owner-approved name **Linework: Trace & Sketch**, App, free download, English (United States). App creation remains unsubmitted pending explicit approval for Google's policy and US export-compliance declarations; no new app record or upload is claimed.
+
+Focused PR204 now includes current main. All360 inputs in the immutable version23 evidence index were independently rehashed successfully. Its actual runtime/configuration files match qualified sourceca471f0 exactly; only SHIP_BASE, the separate Apple privacy page, RUNLOG and final Play metadata differ. Apple app.json, RELEASE.json, SHIP_BASE and ASC_REQUEST remain identical to current main. Production export41908101088 passes on the integrated branch. The unrelated default-Cue check triggered by merging main was cancelled before its package-alignment writer could change another app.
+
+Reuse the already-qualified signed version23 rather than rebuilding a different artifact. Original android-prep and its evidence remain unchanged; isolated Apps/linework-play-delivery is the current focused integration checkout. Real Play Billing transactions, final Console forms and Google review remain separate release gates. The older dated sections below retain the then-current account blockers as history.
+
 ## Current Linework privacy repair and production candidate, 4 November 2026
 
 **Google identity review still blocks app creation; local preparation continues.** The signed-in Console still says **Google is verifying your identity** and disables **Create app**. Lane2 retains the submitted identity documents; phone verification follows approval. No duplicate document submission or Google app upload occurred.

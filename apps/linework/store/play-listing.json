@@ -1,11 +1,11 @@
 {
   "status": "draft_not_uploaded",
   "locale": "en-US",
-  "title": "Linework: Trace & Draw",
+  "title": "Linework: Trace & Sketch",
   "shortDescription": "Use a camera overlay or lightbox to practise drawing from your own images.",
   "fullDescription": "Trace photos and templates onto real paper with a camera overlay, or use your screen as a bright lightbox.\n\nChoose an image, stand your phone securely above your paper, and follow the lines with your own pencil. Resize, rotate, move and fade the picture, then lock it in place while you draw. Linework shows an overlay through your phone; it does not project an image onto your paper.\n\nMAKE IT YOURS\nImport a picture using the system photo picker. Turn it into an outline on your device, adjust the line style, or trace the original image. Browse built-in templates, lettering and Workshop layouts for drawing and craft projects.\n\nDRAW AT YOUR PACE\nUse opacity, grid, mirror and touch-lock controls. Lightbox mode works without camera access: place thin paper over the screen and trace. Record a drawing clip and save it to your Photos library when you choose.\n\nTRY PLUS FOR 14 DAYS\nStart an optional 14-day trial from the Plus screen. When it ends, tracing your own photos, every tracing tool and 24 starter templates stay free. Linework Plus unlocks the full template library and photo-to-outline with a one-time purchase. No subscription or automatic charge at the end of the trial. Google Play displays your local purchase price.\n\nNo ads or app account. Image processing happens on your device. Use a stable phone stand for camera tracing.",
   "releaseBlockers": [
-    "Google identity approval and phone verification currently disable Create app; account documents are already in review with Lane2",
+    "Linework Create app form prepared and package available; policy/export declarations await owner action-time confirmation",
     "Real Play Billing licence-test purchase, pending-to-completed payment, cancellation, acknowledgement retry, refund/revocation and restore",
     "Final Data safety/content-rating/store forms, focused main integration and Google review; the Android privacy policy is already published"
   ],
