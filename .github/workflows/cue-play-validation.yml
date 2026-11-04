@@ -59,7 +59,7 @@ jobs:
             npm install --no-save --no-audit --no-fund "@react-native/jest-preset@$(node -p 'require("react-native/package.json").version')"
           fi
           npx jest --runInBand
-          node --test scripts/patch-speech.test.cjs
+          node --test scripts/patch-speech.test.cjs scripts/play-variant.test.cjs
       - name: Generate offline Android test variant
         working-directory: apps/cue
         run: |
