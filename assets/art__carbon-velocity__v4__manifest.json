@@ -1,0 +1,400 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "carbon-velocity",
+  "packVersion": 4,
+  "name": "Carbon Velocity",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#141718",
+    "tile": "#343737",
+    "glyph": "#FAF8F2",
+    "accent": "#8D927F",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Carbon Velocity",
+    "mood": "Graphite, titanium and acid-lime racing garage.",
+    "tags": [
+      "carbon",
+      "velocity",
+      "graphite",
+      "titanium",
+      "acid",
+      "lime",
+      "racing",
+      "garage",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Create original premium portrait iPhone wallpaper, 9:19.5 composition, for CARBON VELOCITY theme. Upper 72 percent is an exquisitely quiet uniform near-black graphite field (#171B1B), extremely subtle matte mineral grain, no pattern or bright marks behind future icons. Lower 28 percent contains a minimalist brutalist banked racing circuit sculpted as one sweeping ribbon of brushed dark titanium, disappearing through a low arch, one single restrained acid-lime luminous line tracing the apex. Low viewpoint, macro architectural model photography, smoked grey atmosphere and soft silver grazing light. Tiny pale fog along ground, very sophisticated industrial design, high contrast detail confined to bottom. No vehicles, no buildings in upper portion. Charcoal, titanium, restrained acid lime. No text, no logos, no UI, no border, no icon placeholders. Full bleed beautiful quiet wallpaper.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "yfcFAwBngMh3iGVqZ4B99Dk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.3b9e8b9c.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 102580,
+      "sha256": "3b9e8b9cd308a6e09f9c00d8504c0156094fdc8d72582112108d7a38dcf60c9f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.505d6aee.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 91894,
+      "sha256": "505d6aee04bb3e7ffb8c3fba0d0a8abdc7ddf3fca3b9bdc0828f327adff7c0e6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.807b8422.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 47264,
+      "sha256": "807b8422ee45379628e1e3e453848460f368e83af416eb64c331df2a96f99df8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.6995b576.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 50450,
+      "sha256": "6995b57642b1492e25b7420344763951d2b5fd0ef22b514b0ea8bb893f552525",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.b67e4e67.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 76138,
+      "sha256": "b67e4e67e11cd1a77d34f8a2c3d5eab00205eedaa59eec25f49837a782d5bfa0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.062d23c5.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 166264,
+      "sha256": "062d23c597f9c5eaef337700e3ef66e7ba6937d66deb4eb06670007bca26ab30",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.0f0bdb2d.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6832,
+      "sha256": "0f0bdb2d40cb6508e82c47f9d9b8cb4cdbe54869cbb7d88486a376f73129b157",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.4f283b88.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 123836,
+      "sha256": "4f283b8831982c1bad7cce303b271c1af4b1d96de4eea99d666ae3f1fdd40be3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pit-stop-focus.654a8902.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 80098,
+      "sha256": "654a8902dd6e6964c0190d9f42f8a7307976a7aa166a0f8ea6767ac35f0a9238",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-titanium-turbine.74f960f1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 99196,
+      "sha256": "74f960f1e64e29d6fb2542827be83cc91f00308126989803adbb24604cc1acda",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.1d3d00bf.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7024,
+      "sha256": "1d3d00bf97e413dbabe81d384d72dbc1b27f1f47631e1dead1b19ed76aea0129",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.9e7f9dd8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2958,
+      "sha256": "9e7f9dd810c28d4a61184d3c01e9e449e8cd19e07a381dabc4f2ea889330b345",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.30db1028.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6842,
+      "sha256": "30db1028e55e4679c87483a1144638730fa73ec37d0a8d688d3bcb2fb4715094",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-carbon-helmet.da112bbd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 133268,
+      "sha256": "da112bbd2db04c770785e7cfd0fb54a9cfa7555fe42f1d7bcc74bdafd44f417b",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 994644,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-carbon-helmet.da112bbd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-carbon-helmet.da112bbd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-carbon-helmet.da112bbd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-carbon-helmet.da112bbd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "pit-stop-focus",
+      "kind": "focus",
+      "image": "widget-pit-stop-focus.654a8902.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pit stop focus"
+    },
+    {
+      "id": "titanium-turbine",
+      "kind": "art",
+      "image": "widget-titanium-turbine.74f960f1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Titanium turbine"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.1d3d00bf.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.9e7f9dd8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.30db1028.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.6995b576.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.b67e4e67.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.062d23c5.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

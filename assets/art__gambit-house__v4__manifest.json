@@ -1,0 +1,387 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "gambit-house",
+  "packVersion": 4,
+  "name": "Gambit House",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#EBDBC9",
+    "tile": "#CEC0B0",
+    "glyph": "#1C1816",
+    "accent": "#E9D1B6",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Gambit House",
+    "mood": "Ivory paper, black icons, oxblood knight, chessboard artwork and dual-window time/date concept.",
+    "tags": [
+      "gambit",
+      "house",
+      "ivory",
+      "paper",
+      "black",
+      "icons",
+      "oxblood",
+      "knight",
+      "chessboard",
+      "artwork",
+      "dual",
+      "window",
+      "time",
+      "date",
+      "concept",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Vlada Karpovich (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "7igOAwKLX0d4h3h4TCBqBJg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.0ea47944.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 145938,
+      "sha256": "0ea4794446a1277f35a115ba206b6e7079298397aca82063f84799a70c884bd9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.b16ccaa3.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 128062,
+      "sha256": "b16ccaa3679355bcab2d4679640ab384b1694afd5546aa600f3aea4a57a20c4c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ca0a6e61.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 48628,
+      "sha256": "ca0a6e61811ac56cce228dcba3488133fe2a5990167028cc07b71269360296ee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.54d87768.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 28718,
+      "sha256": "54d87768e3fda7438a916d7eccf6dde513d8c7edd31a45ee03c09e171d6ab679",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.4c52ac8d.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 39992,
+      "sha256": "4c52ac8db4bd71f7fc30ce0be4b05d21bdc8b8fc961cca25530567860d045168",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.51be91e0.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 95744,
+      "sha256": "51be91e087479fb36f40885bcd81923e0fb37907cd1992f618321c5c04977997",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.33cd7da7.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7408,
+      "sha256": "33cd7da7943bd892e13d339753fc61e3d26948816fd250d86e6bfed49294e924",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.cb10c734.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 83420,
+      "sha256": "cb10c734ebbc30a6d04052c6171089ad6e1c051fc31108cd999148c389acb7a4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-gambit-focus.33ddfc7f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 69762,
+      "sha256": "33ddfc7f89c43270cf1fe2ea3f876c1f62861f84b531f23b6f231294859add5d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-onyx-rook.69d0f856.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 62962,
+      "sha256": "69d0f85667d398f57365bc3f4196c1c847b19adba2b774b43c52a0515fedf87e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pawn-pair.61a51a48.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 64432,
+      "sha256": "61a51a48a143268ea1eaaf78af9571ba556d6eec9d80f775bf61745bb95d83d3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-oxblood-knight.d5dece21.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 43056,
+      "sha256": "d5dece2147872ad56ffa892d5ab06dbbea9a42ca0feaf19bf4a3d4dddf0952df",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.17feae70.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6306,
+      "sha256": "17feae70f0feffa10a82326736230cd05b449b8d7851da862759c93ece031b74",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-board-study.b05227f8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 96280,
+      "sha256": "b05227f8d95739e07f8fda2b2974cd7bab1e3b0b8f0e6905a12922013d7906df",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 920708,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-board-study.b05227f8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-board-study.b05227f8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-board-study.b05227f8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-board-study.b05227f8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "gambit-focus",
+      "kind": "focus",
+      "image": "widget-gambit-focus.33ddfc7f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Gambit focus"
+    },
+    {
+      "id": "onyx-rook",
+      "kind": "art",
+      "image": "widget-onyx-rook.69d0f856.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Onyx rook"
+    },
+    {
+      "id": "pawn-pair",
+      "kind": "art",
+      "image": "widget-pawn-pair.61a51a48.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pawn pair"
+    },
+    {
+      "id": "oxblood-knight",
+      "kind": "art",
+      "image": "widget-oxblood-knight.d5dece21.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Oxblood knight"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.17feae70.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.54d87768.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.4c52ac8d.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.51be91e0.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

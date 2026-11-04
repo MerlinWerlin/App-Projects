@@ -1,0 +1,404 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "espresso-hour",
+  "packVersion": 4,
+  "name": "Espresso Hour",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#311E13",
+    "tile": "#4D3D32",
+    "glyph": "#FAF8F2",
+    "accent": "#B5855A",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Espresso Hour",
+    "mood": "Coffee-brown, cream and copper, cutaway moka cafe, latte artwork and cafe clock.",
+    "tags": [
+      "espresso",
+      "hour",
+      "coffee",
+      "brown",
+      "cream",
+      "copper",
+      "cutaway",
+      "moka",
+      "cafe",
+      "latte",
+      "artwork",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for ESPRESSO HOUR. Upper75percent almost uniform deep espresso-brown matte paper #30241F, very subtle cocoa grain, no objects patterns steam highlights or text behind future app icons. Bottom25percent an exquisite restrained editorial still life: a small brushed-copper moka pot next to a low ivory ceramic espresso cup with thick golden crema, three coffee beans on a soft folded oatmeal linen corner, grounded on dark brown stone. Warm tiny amber rim light, soft realistic natural shadows, high-end quiet late-night coffee bar photography. Entire objects contained low with generous margins, copper/ivory/cocoa palette, no steam cloud reaching upper field. Realistic tactile metal, ceramic and linen, no miniature buildings in wallpaper. Full bleed portrait, no brands, lettering, UI, phones, frame, stars, neon or borders.",
+    "addedAt": "2026-11-01",
+    "category": "Sweets & Treats"
+  },
+  "thumbhash": "yigGCwJdQMmJd3RMS1DaA6U=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.a78a032a.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 137902,
+      "sha256": "a78a032ab7c6594e0fdf589479f970daae8c425fda8fa51bcb0d67f1b188db6a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.537dc639.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 121828,
+      "sha256": "537dc639b471f06bd4af4c323f9c8cd6606d5232663e501936d8aa6a3521b8ac",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.08858ad5.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 53554,
+      "sha256": "08858ad57cfd87eb5c495116b24f5448d5f185cad9c43c769f99534236e8d2af",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.e5b40e68.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 29012,
+      "sha256": "e5b40e68ecce38f83feba496b2dfadab6af178a063bd5e0803f23bf2e21b4cf0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.c3c8eda1.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 77620,
+      "sha256": "c3c8eda1cc13797cca2d5f26f78813526bc9dd48183b0bf1ddcc3d6a127483a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.df5d1c33.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 126298,
+      "sha256": "df5d1c33402da9bbeb9088106ed3c5bd582976e195adaf84c8cf92e9e47fd1a0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.38a7db3e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9008,
+      "sha256": "38a7db3e14be4462540d129a20a3a5d86ccafcb96b35ff08e028c8c36835814a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.b9655bd9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 89790,
+      "sha256": "b9655bd93c44b22d077031da29f0839a580e6e5d2b7b79a8b8b0ee2f1ef96caf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coffee-focus.a949be3f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 61026,
+      "sha256": "a949be3f795936ab3116085f46cbf0dfed9efcd7932820da1cb0d3b97d0877c4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coffee-plant-glass.a19df771.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 113238,
+      "sha256": "a19df7711121b2bb65e3cf50145548822b3b970f234233bf89db67e406b31c18",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.8282d6ab.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7010,
+      "sha256": "8282d6ab92864ff3a8b914781818d9168a01d8fe1592a8bdec693c5fe884f115",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.1ab54cf2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3302,
+      "sha256": "1ab54cf20940fe94868ca1328a883cdcff4802203e8f631e0300e42761d1d827",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.ab7bea46.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6840,
+      "sha256": "ab7bea46bd8a57ea045057957ab5e64f53e17ace507bb07b2be00172c26c8037",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bean-moon.035aa7d0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98730,
+      "sha256": "035aa7d050528f8dfd5f5bbec0a36b0c041a25f03b0cf46e6a07bc3bddd9114a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 935158,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-bean-moon.035aa7d0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-bean-moon.035aa7d0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-bean-moon.035aa7d0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-bean-moon.035aa7d0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "coffee-focus",
+      "kind": "focus",
+      "image": "widget-coffee-focus.a949be3f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coffee focus"
+    },
+    {
+      "id": "coffee-plant-glass",
+      "kind": "art",
+      "image": "widget-coffee-plant-glass.a19df771.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coffee plant glass"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.8282d6ab.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.1ab54cf2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.ab7bea46.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.e5b40e68.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.c3c8eda1.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.df5d1c33.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,405 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "ember-workshop",
+  "packVersion": 4,
+  "name": "Ember Workshop",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#161412",
+    "tile": "#363431",
+    "glyph": "#FAF8F2",
+    "accent": "#935631",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Ember Workshop",
+    "mood": "Soot-black paper, hammered copper and a railway inside a pocket watch.",
+    "tags": [
+      "ember",
+      "workshop",
+      "soot",
+      "black",
+      "paper",
+      "hammered",
+      "copper",
+      "railway",
+      "inside",
+      "pocket",
+      "watch",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Fabian Kleiser (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "hygGEwSWkKh3imWHlZBpCZg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d528d983.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 313506,
+      "sha256": "d528d98339b30022b9d6f027413ab2e3b80bc8c3b792478cbddf2f1f7e9b304e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c1c261fc.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 284642,
+      "sha256": "c1c261fce9533c717572da8925af1016fc505455dd8d2b81898edf0d6124e3ba",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.a1cbc4b2.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 136024,
+      "sha256": "a1cbc4b2d2203adb91945c1130a45dbf1775ff90612d628879ce71aa3b7a35f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.ad6ae303.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 69204,
+      "sha256": "ad6ae303eb95519a84aea5986a1ba44b96ec5bacf40b44d50db6b1f4a0b4da83",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.1d934e3b.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 135188,
+      "sha256": "1d934e3bd1c3e7304752b75f1a533b6f9fe904ffb9f1697979ab2f50a06ad10c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.2e0a620f.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 316548,
+      "sha256": "2e0a620fe351bc47f78bb956faf993502c3f6a43a815a9ec6b814e691eb66998",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.1004248e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 19278,
+      "sha256": "1004248e236ad891e4a185aa066b418e564c6778bf36b00183fbe717b0ff6140",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.5d6e86a6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 213628,
+      "sha256": "5d6e86a6db86b5a1e518f1e288b7fe72cb044809a3a43b7419facd23b0a75615",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-furnace-clock.d97e3536.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 231498,
+      "sha256": "d97e3536b347b3c67b71955295945513f8ce5839c906984109ef34d0342c9d9d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ember-lizard.7f4e27c2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 213822,
+      "sha256": "7f4e27c25b4612b12f7e3cf946bb85440f23c8e0978c3b42940bc522555987c6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tin-workshop-robot.f3ab8e48.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 176012,
+      "sha256": "f3ab8e48410011ee8da870488bde51d0079c024193b17cfdb8d8934d7a95374c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-workshop-focus.c3dac0fe.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 163368,
+      "sha256": "c3dac0fefdfdfee4d9372112e662e6e70228ba431abe1330932a11b57bc82488",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pocket-railway.532bda46.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 223022,
+      "sha256": "532bda464b3d643ede75679fb7ace7d5b2b9859ade64965a1fa319544b855772",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.4a818200.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 8070,
+      "sha256": "4a8182007ab702a77b6b5708c92612b47f9f1a0031d6f1691a3366b6363334ae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-copper-pangolin.2157f002.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 231202,
+      "sha256": "2157f0027f54deaff114c092c79ac12c9dc2404cfe2fbc94ef7ef03a5f4620cd",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2735012,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-copper-pangolin.2157f002.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-copper-pangolin.2157f002.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-copper-pangolin.2157f002.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-copper-pangolin.2157f002.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "audit-20261101-furnace-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-furnace-clock.d97e3536.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 furnace clock"
+    },
+    {
+      "id": "ember-lizard",
+      "kind": "art",
+      "image": "widget-ember-lizard.7f4e27c2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ember lizard"
+    },
+    {
+      "id": "tin-workshop-robot",
+      "kind": "art",
+      "image": "widget-tin-workshop-robot.f3ab8e48.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tin workshop robot"
+    },
+    {
+      "id": "workshop-focus",
+      "kind": "focus",
+      "image": "widget-workshop-focus.c3dac0fe.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Workshop focus"
+    },
+    {
+      "id": "pocket-railway",
+      "kind": "art",
+      "image": "widget-pocket-railway.532bda46.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pocket railway"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.4a818200.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.ad6ae303.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.1d934e3b.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.2e0a620f.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

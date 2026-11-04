@@ -1,0 +1,399 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cicada-linen",
+  "packVersion": 2,
+  "name": "Cicada Linen",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#DBDCCD",
+    "tile": "#C0C1B3",
+    "glyph": "#1C1816",
+    "accent": "#DDDCCC",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Cicada Linen",
+    "mood": "A delicate cicada resting on natural linen.",
+    "tags": [
+      "cicada",
+      "linen",
+      "delicate",
+      "resting",
+      "natural",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original Glaze CICADA LINEN iPhone wallpaper, tall9:19.5 portrait. Fine-art natural wildlife macro photography aesthetic. One small LIVING CICADA resting gently on a slender grey cedar twig across bottom-right, wings folded naturally along body, translucent pale olive/golden wing membranes with intricate plausible fine veins, olive-grey textured thorax and small dark eyes, all six natural legs holding branch. No exaggerated eyes or cartoon expression. Whole insect safely inside bottom27percent, compact about24percent canvas width; one small cedar bark tip low left balances composition. Upper73percent smooth uniform PALE OLIVE-LINEN #E1E2D5 background, absolutely quiet for icons, no additional branches or bokeh dots above. Soft diffuse morning daylight, exquisite delicate wing detail, muted forest olive #53634D and warm cream palette, restrained editorial natural history image. Living unrestrained insect, not pinned specimen; no labels, butterfly, moth, beetle, leaves filling upper area, flowers, humans, pot, text, UI, clock, phone frame, watermark or border. Original generated nature photographic-style artwork, no external photograph.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "cggGAwCIjzeGqUilV4CLB8c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.8e0de375.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 113258,
+      "sha256": "8e0de37542606be0d8b992a45cbed91432ec01f52605a34ec4f0b24e81ec381d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1ca47112.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 101870,
+      "sha256": "1ca4711278aebc0212cf6c78efadf7d4a522a4c0abef1d6754f86caca7587f13",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.87aea8b5.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 49268,
+      "sha256": "87aea8b53c97f16e88944301934f49b4f1f11f26acd5d6d1fb32a3df406e1418",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.582657b0.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 96320,
+      "sha256": "582657b0752f560ac0183dadb884613a7c10ca25f670533fe2685e68083c3908",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.8f79f6c9.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 127494,
+      "sha256": "8f79f6c98364b5962dc2541ac22aaae786e1765a3939998a0cdf3da4d4739cc1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.e5a1aa85.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 26980,
+      "sha256": "e5a1aa856dd4e02ee8691527136048097e558bea2d1aa17dd16502e7f5246bf6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.4cd8dced.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8646,
+      "sha256": "4cd8dced08f6a09b9a799505f4a2aec4c42b5ddb48c4d10542f904eb72b51983",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.3914eda4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 275890,
+      "sha256": "3914eda4ad832b729673ba916c05b493a05bf39ce5945bd7dcd058ee41242a07",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-canopy-clock.47e7599b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 72912,
+      "sha256": "47e7599bbe79fd46c62936a63781b32166d0f8362777b0851ac6bce2dd04974e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cicada-portrait.ab0db0ad.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 143316,
+      "sha256": "ab0db0ad9b2f8705320ea178298d237b6aa1adf51f6b593813b44fa617f6b6db",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-quiet-timer.0f368826.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 22312,
+      "sha256": "0f368826b5294957fff4a8a7c3faad3157e795195f67824f4625741df1b291e3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-season-date.ea4f5c6b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 27358,
+      "sha256": "ea4f5c6b38652fba17709da4eab1cf757bbcbd5187e9bec068ff1cf44340caa0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wing-venation.ba32f99f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 187852,
+      "sha256": "ba32f99f6d082a3aeb8a0c79aecd997a61ea5a834c987b6078bf3b6c5a98cf0e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.26bd11f0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6004,
+      "sha256": "26bd11f0c802455aa8bd4f5edca9f60dc9d99adabb76a66b1cd313655aa20cd5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cedar-bark.65a719dc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 295096,
+      "sha256": "65a719dcc9aa9e18fcad74c0b3bd10a3da1a415bcd9e38eceaa2eef5372ebd31",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1554576,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-cedar-bark.65a719dc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-cedar-bark.65a719dc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-cedar-bark.65a719dc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-cedar-bark.65a719dc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "canopy-clock",
+      "kind": "clock",
+      "image": "widget-canopy-clock.47e7599b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Canopy clock"
+    },
+    {
+      "id": "cicada-portrait",
+      "kind": "art",
+      "image": "widget-cicada-portrait.ab0db0ad.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cicada portrait"
+    },
+    {
+      "id": "quiet-timer",
+      "kind": "focus",
+      "image": "widget-quiet-timer.0f368826.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Quiet timer"
+    },
+    {
+      "id": "season-date",
+      "kind": "calendar",
+      "image": "widget-season-date.ea4f5c6b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Season date"
+    },
+    {
+      "id": "wing-venation",
+      "kind": "art",
+      "image": "widget-wing-venation.ba32f99f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wing venation"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.26bd11f0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.582657b0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.8f79f6c9.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.e5a1aa85.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

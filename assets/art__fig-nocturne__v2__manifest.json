@@ -1,0 +1,400 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "fig-nocturne",
+  "packVersion": 2,
+  "name": "Fig Nocturne",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#1D171F",
+    "tile": "#3C373D",
+    "glyph": "#FAF8F2",
+    "accent": "#9F7468",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Fig Nocturne",
+    "mood": "Ripe figs on deep plum in low light.",
+    "tags": [
+      "nocturne",
+      "ripe",
+      "figs",
+      "deep",
+      "plum",
+      "light",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall9:19.5 iPhone wallpaper FIG NOCTURNE. Editorial fineart stilllife photography, near-black plum #221E28 background upperTWO THIRDS EMPTY nearlyflatmatte no objects orpatterns, calm space for paleroseicons. In bottomthird three ripe purplefigs, onecutinhalftoexpose delicate rosyseedinterior, onewholefig uprightwithshortstem, onefig lowbehind, andone mutedolive lobedfigleaf. Softdirectionalleftlight,detailedvelvetyfigskin, subtlepowderybloom, roseinterior #D8BAC1, tactileluxuriousnotwet. Entirearrangementcontained lowwithbreathingroom, no plate,pot,cloth,tableedge,text,UI,phone,frame,watermark. Originalfictionalstudio scene.",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "yRcGCwJMUIp5fWCMV3DXA6Q=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.e7fa86df.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 87480,
+      "sha256": "e7fa86dfa2b9841a622a579bc669706f9ef403a4b4c245c1d900f970e90b53b3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.98331c7a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 78296,
+      "sha256": "98331c7afb712ccb5600fa9a10b566e02cdcadcda8070d983cee8f670def4600",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.68d1e331.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 42116,
+      "sha256": "68d1e3319372c1c12a2eda5411a9c15cae94cce670304ad3b54eb8fcb106d22b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.61e63ac0.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 66026,
+      "sha256": "61e63ac0bb36604f6583f9621bdd88f40b61c2470e28d9c0b26534d946c553b3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.a9ea0579.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 106210,
+      "sha256": "a9ea0579d374bbe71e08309614c7546e0047de4f86bf4ac40d5a13f7fc91d44c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.a9fdf025.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 169114,
+      "sha256": "a9fdf02580b2b879ecc9f65a91bb0930a0809a86348ceb8225ec5590eb541cb1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.3cceb633.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6470,
+      "sha256": "3cceb633c8cc1c9988e97379510f2de9494b0a3c1d5cc359b282355b3a3bbf29",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.90fc09ad.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 233216,
+      "sha256": "90fc09ad33bebcdefd77aa1b733b92b11bb504dc353a142ce216d4c9b82e0285",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fig-pair.d9998af2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 110552,
+      "sha256": "d9998af251867a15204fbf3f3c6c82b8713ab59874abefc58c2d4afe9097c5bd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nocturne-date.884caf6d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 35628,
+      "sha256": "884caf6d9ebfd4d3388354e5246f50d85dd043a1586386b712e8fd6803852e7d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rose-seeds.0c18f551.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 120886,
+      "sha256": "0c18f5515e4d6f753a31964e5ff3287d06315d8b52fff10f05ee7d988896a764",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-seed-clock.e87cab40.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 48262,
+      "sha256": "e87cab40e1b83e0137ccb9fb2421622a90a58c48b47e1c8892ce7e6ea5aff041",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-slow-focus.5b5fc0dd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 14324,
+      "sha256": "5b5fc0ddd1351cf7ff4e1192b875606d0a8bc05bfa6fdfd8795a511288aa1efe",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.ac80f328.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7086,
+      "sha256": "ac80f328c849c39805c09f0be8ed61eafc74066dc5725928e0b187b902b6d927",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fig-leaf.9c44eae8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 250628,
+      "sha256": "9c44eae8764a76a77d16fa67681333c7677dcebccd3086dcce664d2e8b4bf0a6",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1376294,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-fig-leaf.9c44eae8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-fig-leaf.9c44eae8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-fig-leaf.9c44eae8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-fig-leaf.9c44eae8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery Â· live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "fig-pair",
+      "kind": "art",
+      "image": "widget-fig-pair.d9998af2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fig pair"
+    },
+    {
+      "id": "nocturne-date",
+      "kind": "calendar",
+      "image": "widget-nocturne-date.884caf6d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nocturne date"
+    },
+    {
+      "id": "rose-seeds",
+      "kind": "art",
+      "image": "widget-rose-seeds.0c18f551.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rose seeds"
+    },
+    {
+      "id": "seed-clock",
+      "kind": "clock",
+      "image": "widget-seed-clock.e87cab40.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Seed clock"
+    },
+    {
+      "id": "slow-focus",
+      "kind": "focus",
+      "image": "widget-slow-focus.5b5fc0dd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Slow focus"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.ac80f328.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.61e63ac0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.a9ea0579.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.a9fdf025.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
