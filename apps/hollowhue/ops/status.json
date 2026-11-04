@@ -1,9 +1,9 @@
 {
   "app": "hollowhue",
   "stage": "build",
-  "headline": "November iPhone update LIVE over the air: production group889daefd-5069-47c7-aab4-7db47b71fb15 published4Nov07:19UTC, downloaded bundle hash verified. Fresh signed TestFlight binary is building in run41791367613; Apple availability and phone uptake remain unverified.",
+  "headline": "November update is live over the air. Native 0.1.0 (3) uploaded successfully; Apple upload API confirms PROCESSING with no errors/warnings. Owner now confirms zoom movement improved and requests replacement art, Linework-style topic/difficulty filters, six standard zooms and twenty in Mega Zoom.",
   "next_for_owner": [
-    "No input needed while release publishing and Apple processing are verified."
+    "Replacement artwork, categories, Beginner/Intermediate/Advanced and 6/20 zoom transitions are being built from the 4 November feedback."
   ],
   "tests": 38,
   "typecheck": "38 tests pass; full SDK57 and offline UI strict types clean; native iPhone compile and interaction flow pass; all 8 screenshots preserved in docs/qa-20261104. Expo doctor 21/21.",
@@ -31,6 +31,7 @@
       "phoneUptakeVerified": false
     },
     "testflight_build_run": "41791367613",
-    "testflight_state": "building; upload and Apple beta state pending"
+    "testflight_state": "0.1.0 (3) uploaded; Apple PROCESSING, no reported errors/warnings, beta availability pending",
+    "testflight_submission": "a9aee4e4-1f6a-44f1-8cc5-eb2bab86b3c2"
   }
 }

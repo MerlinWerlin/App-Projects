@@ -37,8 +37,14 @@
 - Public manifest and actual downloaded **2,604,624-byte** bundle verified. SHA256
   `25be239f6da76dbb5e8f5d7b2886eade7638a842fdd7fb55ea5fd31cac3b3f7f`; receipt
   `docs/qa-20261104/production-update.json`. This proves server delivery, not uptake on the owner's iPhone.
-- Fresh signed TestFlight build/upload run **41791367613** is **in progress**. Apple build/processing
-  and internal-beta availability have not yet been verified.
+- Fresh signed TestFlight build/upload run **41791367613** succeeded: **0.1.0 (3)** uploaded at
+  07:29UTC, submission `a9aee4e4-1f6a-44f1-8cc5-eb2bab86b3c2`. Apple upload probe41794648774
+  confirms **PROCESSING**, no errors or warnings; build3 is not yet in the processed build list.
+  `docs/qa-20261104/apple-upload-status.json` records the in-flight state. Beta availability is pending.
 - Existing build: fully close Hollowhue, reopen online for a minute to download, then close and reopen
   once more. Look for **November colour & discovery update**. The fresh TestFlight binary will embed
   this release directly.
+
+- New owner direction after trying the live update: zoom motion now looks good, artwork is rejected;
+  next revision needs topic categories and beginner/intermediate/advanced levels like Linework, six
+  actual standard zoom transitions and twenty in a separate Mega Zoom category.
