@@ -184,9 +184,15 @@ try:
             time.sleep(.3)
         assert not d(textContains='nothing was charged').exists
         assert not d(textContains='Test mode (Expo Go)').exists
+        # The message extends the ScrollView after it appears. Bring its full
+        # body above the navigation bar before retaining visual evidence.
+        d.swipe_ext('up', scale=.3)
+        time.sleep(.3)
         capture('10-google-play-unavailable')
         click('Restore purchase')
         wait('No completed Plus purchase found for this Google Play account.')
+        d.swipe_ext('up', scale=.3)
+        time.sleep(.3)
         capture('11-google-play-restore-unavailable')
         d.press('back')
         wait('Quick play')
