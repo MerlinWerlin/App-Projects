@@ -1,0 +1,169 @@
+{
+  "status": "draft_not_uploaded",
+  "locale": "en-US",
+  "title": "Linework: Trace & Sketch",
+  "shortDescription": "Use a camera overlay or lightbox to practise drawing from your own images.",
+  "fullDescription": "Trace photos and templates onto real paper with a camera overlay, or use your screen as a bright lightbox.\n\nChoose an image, stand your phone securely above your paper, and follow the lines with your own pencil. Resize, rotate, move and fade the picture, then lock it in place while you draw. Linework shows an overlay through your phone; it does not project an image onto your paper.\n\nMAKE IT YOURS\nImport a picture using the system photo picker. Turn it into an outline on your device, adjust the line style, or trace the original image. Browse built-in templates, lettering and Workshop layouts for drawing and craft projects.\n\nDRAW AT YOUR PACE\nUse opacity, grid, mirror and touch-lock controls. Lightbox mode works without camera access: place thin paper over the screen and trace. Record a drawing clip and save it to your Photos library when you choose.\n\nTRY PLUS FOR 14 DAYS\nStart an optional 14-day trial from the Plus screen. When it ends, tracing your own photos, every tracing tool and 24 starter templates stay free. Linework Plus unlocks the full template library and photo-to-outline with a one-time purchase. No subscription or automatic charge at the end of the trial. Google Play displays your local purchase price.\n\nNo ads or app account. Image processing happens on your device. Use a stable phone stand for camera tracing.",
+  "releaseBlockers": [
+    "Linework Create app form prepared and package available; policy/export declarations await owner action-time confirmation",
+    "Real Play Billing licence-test purchase, pending-to-completed payment, cancellation, acknowledgement retry, refund/revocation and restore",
+    "Final Data safety/content-rating/store forms, focused main integration and Google review; the Android privacy policy is already published"
+  ],
+  "assets": {
+    "manifest": "play/assets.json",
+    "icon": "play/icon.png",
+    "featureGraphic": "play/feature.png",
+    "phoneScreenshots": [
+      "play/01-home.png",
+      "play/02-lightbox.png"
+    ],
+    "status": "prepared_not_uploaded"
+  },
+  "privacy": "Dedicated Google Play policy is published at the appContent privacyPolicyUrl, via docs-only PR203/main ab2679101f09763507d148de5805c5b20b300094. It covers local images, backups, store purchases and Google billing diagnostics including random session identifiers. Android Settings links to it with localized disclosure in all11 languages. Provider-source audit and draft Data safety mapping are in apk-output/linework-billing-disclosure-20261104. Final Console forms and actual Play transaction checks remain pending; do not submit a blanket no-data declaration.",
+  "inAppProducts": [
+    {
+      "productId": "com.jared797.linework.plus",
+      "type": "one_time_non_consumable",
+      "title": "Linework Plus",
+      "description": "Unlock the full template library and photo-to-outline.",
+      "defaultPrice": {
+        "currency": "AUD",
+        "amount": "2.99"
+      },
+      "status": "not_created_in_console",
+      "trial": "Explicit device-local14-day evaluation; do not create or sell the Apple trial14 SKU on Play."
+    }
+  ],
+  "appContent": {
+    "status": "draft_not_submitted",
+    "category": "ART_AND_DESIGN",
+    "ads": false,
+    "appLoginRequired": false,
+    "audience": "General audience; not specifically designed or marketed for children or families, per owner clarification. Answer actual age/content questionnaires after artwork review.",
+    "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/linework/play-privacy.html",
+    "supportUrl": "https://merlinwerlin.github.io/App-Projects/linework/support.html",
+    "supportEmail": "jaredbradley272@gmail.com"
+  },
+  "reviewNotes": "No app account or credentials are required. Choose a template, or Trace a photo and select an image with the system picker. Place the phone on a stable stand above paper for camera tracing, or choose Lightbox without camera access. The Plus tab contains Start free trial, the one-time Plus unlock and Restore purchases. The trial is an explicitly started local14-day evaluation and does not charge automatically. Core drawing and image processing run on the device; Google Play handles optional purchases.",
+  "releaseNotes": "Initial Android release: trace your own photos, explore drawing templates, generate outlines and use the camera overlay or Lightbox.",
+  "qualifiedBundle": {
+    "versionCode": 23,
+    "source": "ca471f03f5f3032e452fbfa9e6d35003ee074746",
+    "aabSha256": "d38d5f640e8b66540965c8c8b9cd6d4bddaad9ad0cc2a1c8978de031a0a54279",
+    "aabBytes": 63366760,
+    "nativeRuns": [
+      41741592437,
+      41743659658
+    ],
+    "nativeChecksPerRun": 12,
+    "status": "signed_and_simulation_qualified_ready_for_play_testing_not_public_release_approval",
+    "evidenceIndex": "apk-output/LINEWORK_PRODUCTION_V23_VERIFICATION_20261104.json"
+  },
+  "dataSafetyDraft": {
+    "status": "prepared_not_submitted_actual_console_fields_and_live_transactions_pending",
+    "providerEvidence": "apk-output/linework-billing-disclosure-20261104/FINDINGS.json",
+    "collectsOrSharesRequiredDataTypes": true,
+    "technicalData": [
+      {
+        "category": "App info and performance / Diagnostics",
+        "collected": true,
+        "sharedWith": "Google",
+        "purposes": [
+          "App functionality",
+          "Analytics (SDK performance/error support)"
+        ],
+        "optional": false,
+        "encryptedInTransit": true,
+        "basis": "Automatic billing API/connection diagnostics and app/device metadata, including without a purchase."
+      },
+      {
+        "category": "Device or other IDs",
+        "collected": true,
+        "sharedWith": "Google",
+        "purposes": [
+          "App functionality",
+          "Analytics (SDK performance/error support)"
+        ],
+        "optional": false,
+        "encryptedInTransit": true,
+        "basis": "Random billing-client session ID correlates requests within an app client instance. It resets with a new client; not an advertising ID or hardware serial. Category mapping is a reasoned interpretation of the app-instance-ID definition."
+      }
+    ],
+    "sharingBasis": "Do not assume an exception for service-provider-only processing; Google documents its own SDK improvement purpose. Use the disclosed Google diagnostic transfer when completing the form.",
+    "purchaseData": "Google handles purchases under its own payment terms. App receives product/status/token information for acknowledgement and restoration, caching entitlement locally. Do not declare receipt of card details. Validate the limited purchase-history question against actual Play transactions before final form submission.",
+    "photosAndVideos": "No app/SDK upload path for user images or recordings; OS backups and user-chosen exports are explained separately.",
+    "deletion": "Developer holds no remote app-content or diagnostic database. Google controls its own records; do not promise developer deletion of Google SDK logs.",
+    "appAccountCreation": false,
+    "limits": "Draft classifications reflect source and runtime evidence; no Data safety form, purchase or provider-retention/deletion guarantee has been submitted."
+  },
+  "billingValidation": {
+    "status": "prepared_not_executed_in_google_play",
+    "prerequisites": [
+      "Approved developer account and Linework app record",
+      "Merchant profile if Google requires it, one-time com.jared797.linework.plus product active, and internal-test signed bundle available",
+      "Private Play-capable test environment with a configured licence-test Google account; do not sign the owner into disposable hosted CI"
+    ],
+    "reference": "https://developer.android.com/google/play/billing/test",
+    "cases": [
+      {
+        "id": "completed",
+        "method": "Google licence-test always-approves payment",
+        "expected": "Only PURCHASED grants Plus; acknowledge promptly, never consume the non-consumable; ownership survives process restart and restore."
+      },
+      {
+        "id": "cancelled_or_declined",
+        "method": "Cancel the payment sheet and use the always-declines test card separately",
+        "expected": "No Plus grant, no automatic local-trial start, recoverable UI; a later legitimate purchase still works."
+      },
+      {
+        "id": "pending_then_completed",
+        "method": "Google slow test card that approves after a few minutes",
+        "expected": "PENDING remains locked; completion grants and acknowledges once, including completion while backgrounded and later foreground/restore."
+      },
+      {
+        "id": "pending_then_cancelled",
+        "method": "Google slow test card that declines after a few minutes",
+        "expected": "Pending payment never grants Plus; cancellation leaves free access available."
+      },
+      {
+        "id": "acknowledgement_recovery",
+        "method": "Complete a test payment, interrupt connectivity before acknowledgement, restore connectivity and foreground/relaunch/restore",
+        "expected": "Unfinished completed purchase is acknowledged on recovery; preserve actual store acknowledgement evidence. Licence-test unacknowledged purchases are refunded after about3minutes, not the production3day window."
+      },
+      {
+        "id": "restore",
+        "method": "Restore existing acknowledged ownership and relaunch; clean-install restore when permitted by the test environment",
+        "expected": "Ownership restored without another charge or starting a trial. Already acknowledged purchases are not re-acknowledged or consumed."
+      },
+      {
+        "id": "refund_and_revoke",
+        "method": "Explicit test refund plus entitlement revocation in Console, then a successful ownership refresh",
+        "expected": "Cached Plus is removed after Google reports successful empty ownership. A failed/offline query alone must not revoke cached access."
+      },
+      {
+        "id": "non_consumable_repeat",
+        "method": "Try to buy while already owning Plus, then refund/revoke before a legitimate repurchase case",
+        "expected": "No duplicate consumable or recurring product; restore handles already-owned status."
+      },
+      {
+        "id": "local_trial_separation",
+        "method": "Start the app local14day trial explicitly; inspect Play purchase history; compare restart state",
+        "expected": "No Play subscription/trial SKU or automatic charge. Exact trial restart persistence already has simulation evidence; expiry boundary has software evidence, not a fabricated14day live-store wait."
+      }
+    ],
+    "evidenceRequired": "Keep actual store responses/order status, app entitlement and acknowledgement state, timestamps and screenshots. Record failed or unobserved paths; no test card, pending transaction or refund is claimed executed yet."
+  },
+  "supersededQualifiedBundles": [
+    {
+      "versionCode": 19,
+      "source": "2014ef0ccdcbb077cc9b59668ef257f95635d080",
+      "aabSha256": "35095cf0ae30b4738af18859ce1dc5bb5b230842efbe9755e961a69c55492b5d",
+      "nativeRuns": [
+        41730441054,
+        41733246748
+      ],
+      "nativeChecksPerRun": 11,
+      "status": "retained_native_qualification_superseded_for_upload_by_privacy_wording_repair"
+    }
+  ]
+}

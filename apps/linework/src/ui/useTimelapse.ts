@@ -5,7 +5,7 @@
 // overlay, grid and controls are separate React Native views drawn on top of it, so they are never in the file.
 // The camera is muted (CameraView `mute`), so no microphone permission is ever requested.
 import { useCallback, useEffect, useReducer, useRef, useState, type RefObject } from 'react';
-import { AccessibilityInfo } from 'react-native';
+import { AccessibilityInfo, Platform } from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import * as FileSystem from '../native/fs';
 import type { CameraView } from 'expo-camera';
@@ -90,7 +90,7 @@ export function useTimelapse(onMessage: (text: string) => void): TimelapseContro
         const t = setTimeout(() => {
           readyWaiter.current = null;
           resolve();
-        }, 1200);
+        }, Platform.OS === 'android' ? 5000 : 1200);
         readyWaiter.current = () => {
           clearTimeout(t);
           // Small settle delay after the session reports ready.
@@ -118,14 +118,17 @@ export function useTimelapse(onMessage: (text: string) => void): TimelapseContro
   const start = useCallback(async () => {
     if (busyRef.current || stateRef.current.phase !== 'idle') return;
     const cam = cameraRef.current;
-    if (!cam || !readyRef.current) {
+    // Android must be allowed to request its video session even if the
+    // picture-session ready event was missed/reset during navigation. The
+    // native OPEN event from that new session still gates recordAsync below.
+    if (!cam || (Platform.OS !== 'android' && !readyRef.current)) {
       msgRef.current(t('trace.timelapse.cameraStarting'));
       return;
     }
     busyRef.current = true;
     tap();
     const at = Date.now();
-    dispatch({ type: 'start', at });
+    dispatch({ type: 'start', at: Platform.OS === 'android' ? null : at });
     setNow(at);
     try {
       await switchToVideo();
@@ -135,6 +138,15 @@ export function useTimelapse(onMessage: (text: string) => void): TimelapseContro
         // Camera went away, or Stop was tapped before recording actually began.
         dispatch({ type: 'failed', message: t('trace.timelapse.didntStart') });
         return;
+      }
+      if (Platform.OS === 'android' && !readyRef.current) {
+        dispatch({ type: 'failed', message: t('trace.timelapse.cameraStarting') });
+        return;
+      }
+      if (Platform.OS === 'android') {
+        const captureAt = Date.now();
+        dispatch({ type: 'captureStarted', at: captureAt });
+        setNow(captureAt);
       }
       msgRef.current(t('trace.timelapse.recordingNotice'));
       // Resolves when stopRecording() is called or maxDuration is reached.
