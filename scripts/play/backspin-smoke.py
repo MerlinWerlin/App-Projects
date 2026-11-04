@@ -157,10 +157,19 @@ try:
     assert not d(text='No takes yet').exists, 'Saved take was lost on process restart'
     capture('09-persisted-takes')
     if os.environ.get('BACKSPIN_PRODUCTION_REPLAY') == '1':
-        # This is an unavailable-store check on a fresh google_apis image, not a
-        # simulated successful payment. Never tap Buy if the real store exists.
-        installed_store=subprocess.check_output(['adb','shell','pm','list','packages','com.android.vending'],timeout=20).decode().strip()
-        assert not installed_store, 'Unavailable-store check requires an image without Google Play Store'
+        # This is a controlled unavailable-store check, not a payment. Some
+        # current google_apis images include Play Store. Require a fresh empty CI
+        # account store and disable vending there before touching any Buy button.
+        account_dump=subprocess.check_output(['adb','shell','dumpsys','account'],timeout=20).decode()
+        import re
+        account_counts=[int(n) for n in re.findall(r'Accounts:\s*(\d+)',account_dump)]
+        assert account_counts and not any(account_counts), 'Unavailable-store fixture requires an empty CI emulator'
+        installed_store=subprocess.check_output(['adb','shell','pm','list','packages','com.android.vending'],timeout=20).decode().splitlines()
+        if 'package:com.android.vending' in installed_store:
+            disabled=subprocess.check_output(['adb','shell','pm','disable-user','--user','0','com.android.vending'],timeout=20).decode()
+            (out/'unavailable-store-fixture.txt').write_text('Fresh CI emulator, zero accounts. '+disabled)
+        enabled=subprocess.check_output(['adb','shell','pm','list','packages','-e','com.android.vending'],timeout=20).decode().splitlines()
+        assert 'package:com.android.vending' not in enabled, 'Refusing Buy while a real Play Store remains enabled'
         click('Settings')
         click('Unlock Backspin Plus')
         wait('One payment. Yours for life.')
@@ -169,6 +178,7 @@ try:
         while not (d(text='Google Play is not reachable. Try again later.').exists or
                    d(textStartsWith='We could not confirm this purchase. Check Google Play before trying again.').exists):
             assert time.monotonic()<until, 'Android purchase error did not show the Google Play message'
+            d.swipe_ext('up', scale=.3)
             time.sleep(.3)
         assert not d(textContains='nothing was charged').exists
         assert not d(textContains='Test mode (Expo Go)').exists
