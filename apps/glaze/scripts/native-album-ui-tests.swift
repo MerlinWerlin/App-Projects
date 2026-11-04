@@ -6,6 +6,29 @@ import Darwin
     continueAfterFailure = false
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    func revealStudioControl(_ element: XCUIElement) -> Bool {
+      for _ in 0..<24 {
+        if element.exists {
+          if element.isHittable { return true }
+          let f = element.frame, screen = app.frame
+          // Radio controls can omit an AX hit point. Only permit the observed frame inside
+          // the exposed controls area, below the pinned preview and above the screen edge.
+          if f.minY > screen.height * 0.58 && f.maxY < screen.height * 0.94 && f.minX >= 0 && f.maxX <= screen.width { return true }
+          if f.minY < screen.height * 0.58 {
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.70)).press(forDuration: 0.05,
+              thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.85)))
+            continue
+          }
+        }
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.85)).press(forDuration: 0.05,
+          thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.70)))
+      }
+      return false
+    }
+    func tapStudioControl(_ element: XCUIElement) {
+      if element.isHittable { element.tap() }
+      else { element.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap() }
+    }
     for target in [app, spring] where target.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) {
       target.setValue(false, forKey: "idleAnimationWaitEnabled") // Test runner only; see widget-tap fixture.
     }
@@ -20,16 +43,14 @@ import Darwin
     let album = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", "Photo album")).firstMatch
     for _ in 0..<14 { if album.exists && album.isHittable { break }; app.swipeUp() }
     XCTAssertTrue(album.exists && album.isHittable, app.debugDescription); album.tap()
+    XCTAssertTrue(app.staticTexts["Widget Studio"].firstMatch.waitForExistence(timeout: 10), app.debugDescription)
+    RunLoop.current.run(until: Date().addingTimeInterval(0.6)) // Native push transition, not app animation idleness.
     // Studio size chips expose the radio role as XCUI Other, rather than Button.
     let medium = app.otherElements["Medium"].firstMatch
-    for _ in 0..<8 { if medium.exists && medium.isHittable { break }; app.swipeUp() }
-    XCTAssertTrue(medium.exists && medium.isHittable, app.debugDescription); medium.tap()
+    XCTAssertTrue(revealStudioControl(medium), app.debugDescription); tapStudioControl(medium)
+    XCTAssertTrue(app.images["Preview: Photo album widget, Medium"].firstMatch.waitForExistence(timeout: 10), app.debugDescription)
     let choose = app.buttons["Choose photos"].firstMatch
-    for _ in 0..<12 {
-      if choose.exists && choose.isHittable { break }; app.swipeUp()
-    }
-    XCTAssertTrue(choose.exists && choose.isHittable, app.debugDescription)
-    choose.tap()
+    XCTAssertTrue(revealStudioControl(choose), app.debugDescription); tapStudioControl(choose)
     XCTAssertTrue(app.collectionViews.cells.firstMatch.waitForExistence(timeout: 20), app.debugDescription)
     print("GLAZE_PHOTO_PICKER_TREE\n" + app.debugDescription); fflush(stdout)
     let cells = app.collectionViews.cells.allElementsBoundByIndex.filter { $0.isHittable && $0.frame.height > 30 && $0.frame.width > 30 }
@@ -42,8 +63,7 @@ import Darwin
     else { XCTAssertTrue(countedAdd.exists && countedAdd.isHittable, app.debugDescription); countedAdd.tap() }
     XCTAssertTrue(app.staticTexts["2 / 12 photos"].waitForExistence(timeout: 20), app.debugDescription)
     let save = app.buttons["Add widget"].firstMatch
-    for _ in 0..<8 { if save.exists && save.isHittable { break }; app.swipeUp() }
-    XCTAssertTrue(save.exists && save.isHittable, app.debugDescription); save.tap()
+    XCTAssertTrue(revealStudioControl(save), app.debugDescription); tapStudioControl(save)
     XCTAssertTrue(app.staticTexts["Saved for your widgets"].waitForExistence(timeout: 25), app.debugDescription)
     print("GLAZE_ALBUM_PICKER_DELIVERED\n" + app.debugDescription); fflush(stdout)
   }
