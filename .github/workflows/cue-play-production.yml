@@ -14,7 +14,7 @@ on:
         type: boolean
         default: false
       cancel_superseded:
-        description: Cancel only the known obsolete build3 after checking its source and Android profile
+        description: Cancel only the two known obsolete Android requests after checking exact source and profile
         type: boolean
         default: false
 permissions:
@@ -47,7 +47,7 @@ jobs:
         run: |
           test -n "$EXPO_TOKEN"
           if [[ '${{ inputs.cancel_superseded }}' == 'true' ]]; then
-            [[ "$BUILD_ID" == 'fc348389-4fde-4dd9-b8ab-5d438454592f' ]]
+            [[ "$BUILD_ID" == 'fc348389-4fde-4dd9-b8ab-5d438454592f' || "$BUILD_ID" == 'f4821a5c-945c-4a22-8662-84c0c95ea8f7' ]]
           fi
       - uses: expo/expo-github-action@v8
         with:
@@ -71,7 +71,7 @@ jobs:
           [[ "$BUILD_ID" =~ ^[0-9a-fA-F-]{36}$ ]]
           eas build:view "$BUILD_ID" --json > ../../cue-play-production-output/build.json
           if [[ '${{ inputs.cancel_superseded }}' == 'true' ]]; then
-            node -e 'const b=require("../../cue-play-production-output/build.json");if(b.id!=="fc348389-4fde-4dd9-b8ab-5d438454592f"||b.gitCommitHash!=="d87a013daa35e8a1ba61fcf49f9b41114dbd565e"||b.platform!=="ANDROID"||b.buildProfile!=="play-production")throw Error("Refusing unknown build cancellation")'
+            node -e 'const b=require("../../cue-play-production-output/build.json");const known={"fc348389-4fde-4dd9-b8ab-5d438454592f":"d87a013daa35e8a1ba61fcf49f9b41114dbd565e","f4821a5c-945c-4a22-8662-84c0c95ea8f7":"49c8992756fd505ce14710c81c3e719ae5d99d0c"};if(!known[b.id]||b.gitCommitHash!==known[b.id]||b.platform!=="ANDROID"||b.buildProfile!=="play-production")throw Error("Refusing unknown build cancellation")'
             status=$(node -p 'require("../../cue-play-production-output/build.json").status')
             case "$status" in
               NEW|IN_QUEUE|IN_PROGRESS) eas build:cancel "$BUILD_ID" --non-interactive;;
