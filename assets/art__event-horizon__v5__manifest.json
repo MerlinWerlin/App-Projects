@@ -1,0 +1,384 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "event-horizon",
+  "packVersion": 5,
+  "name": "Event Horizon",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#000000",
+    "tile": "#232322",
+    "glyph": "#FAF8F2",
+    "accent": "#B95412",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Event Horizon",
+    "mood": "Black, platinum and amber accretion disc, lensing study, blended icons and horizon clock.",
+    "tags": [
+      "event",
+      "horizon",
+      "black",
+      "platinum",
+      "amber",
+      "accretion",
+      "disc",
+      "lensing",
+      "study",
+      "blended",
+      "icons",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Space & Night"
+  },
+  "thumbhash": "QxgGEwRrUWmHr1CqamCGBmc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.8bc1c69d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 73826,
+      "sha256": "8bc1c69d34999be8e66261552843da732282ce647019652972e34089480e2b0e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.706dfb79.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 66406,
+      "sha256": "706dfb79a297eba38f5890021b842efcd38f538290ef475c80a0174b01aa43b2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.4d852ea7.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 36622,
+      "sha256": "4d852ea7998fff4d68b4e668e4f1d72cf25e57d9b7e19abcf435cb4b1bd9d80a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.7f167591.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 21896,
+      "sha256": "7f167591ea7d99487f1359590ffbcde7cf7595ad97688b277207086efbfbfd26",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.8207a22b.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 31226,
+      "sha256": "8207a22b7581a3d44db5bb518a4aec7dbe32717ac39e7a358b8a07f16c370101",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.794ea117.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 124386,
+      "sha256": "794ea11778d1db74d614f04c03ee69c713e74392166aaaed53051012dcc9dcad",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.ad8a120c.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6144,
+      "sha256": "ad8a120c096fa344897d1067687265c3566a3e18cecf9f159f0732a2e718589f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.6473c35b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 65674,
+      "sha256": "6473c35bad8e5d0c9d3bfba9ae9bf330166fb1853039ce72cfe93c7cbcff35a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-gravity-hourglass.31652c4a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97770,
+      "sha256": "31652c4a649dea8f67b9c96b67b2500e61f29474bf6bbb0339e495c9a7551060",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-orbit-diamond.e06377b3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 56798,
+      "sha256": "e06377b3c8af0cb7133e2d24eb03d5f1352d0c839d84882a61eff589b447b4b9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-orbit-focus.9a00bb7a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 65892,
+      "sha256": "9a00bb7aaf6b99089c9214b10e79dafc1c23105d45b9887b71e2be09d1144e88",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lensing-study.8d533096.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 35960,
+      "sha256": "8d533096b43e96beac1f143f5166f8a1f6efc7728b96b1ccc13408b623d8d943",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.4d82d116.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 8394,
+      "sha256": "4d82d116ac4b3bb01eb55ac2b0d91527890d613bf92ad5d7972eabcff68d642f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-accretion.f4312208.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 70106,
+      "sha256": "f43122080b3d5bc150b79c78a59804154f04ffa060a05ae84b54dbd84b58f120",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 761100,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-accretion.f4312208.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-accretion.f4312208.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-accretion.f4312208.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-accretion.f4312208.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "gravity-hourglass",
+      "kind": "art",
+      "image": "widget-gravity-hourglass.31652c4a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Gravity hourglass"
+    },
+    {
+      "id": "orbit-diamond",
+      "kind": "art",
+      "image": "widget-orbit-diamond.e06377b3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Orbit diamond"
+    },
+    {
+      "id": "orbit-focus",
+      "kind": "focus",
+      "image": "widget-orbit-focus.9a00bb7a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Orbit focus"
+    },
+    {
+      "id": "lensing-study",
+      "kind": "art",
+      "image": "widget-lensing-study.8d533096.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lensing study"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.4d82d116.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.7f167591.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.8207a22b.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.794ea117.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

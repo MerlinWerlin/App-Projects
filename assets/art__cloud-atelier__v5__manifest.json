@@ -1,0 +1,403 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cloud-atelier",
+  "packVersion": 5,
+  "name": "Cloud Atelier",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#FEBEAA",
+    "tile": "#DEA795",
+    "glyph": "#1C1816",
+    "accent": "#FDB8AE",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Cloud Atelier",
+    "mood": "Peach skies, pearl clouds, a cloud whale and paper boats.",
+    "tags": [
+      "cloud",
+      "atelier",
+      "peach",
+      "skies",
+      "pearl",
+      "clouds",
+      "whale",
+      "paper",
+      "boats",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Jei Lee (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Create an exquisite original iPhone wallpaper for the full theme CLOUD ATELIER. Portrait 9:19.5 edge to edge, no text, no UI, no borders. Reference image is only a mood reference for pink sky and soft cloud materials; reinterpret substantially. Dreamlike pale peach upper sky, feathered lilac mist and pearl white voluminous cloud archipelagos in the bottom third. A tiny folded ivory paper sailboat catches a thin ribbon of golden light far down in the lower right clouds, small subtle discovery. Upper two thirds very calm pale apricot gradient for legible app icons. Editorial luxury miniature photography, tactile cotton clouds, physically convincing side lighting, pearlescent soft silver and muted lavender shadows. Sophisticated, airy, restrained, distinctly different from dark space or forest themes. No buildings, no stars, no cartoon faces, no extra objects.",
+    "addedAt": "2026-10-31",
+    "category": "Dreamy & Pastel"
+  },
+  "thumbhash": "MnkGCwJmfxl5e3RpZo+R+Io=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.fffbb309.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 64872,
+      "sha256": "fffbb309676de7ebf3f782df2fdac5f5bfaedd40e58ce26d7512872978e1b9f1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.6053302c.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 56354,
+      "sha256": "6053302cc4df917fb2e14c57ff3abaa2fb0149dffdfa3124a1561c84841678e0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.24baffb5.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 27132,
+      "sha256": "24baffb5b2ce6f9e85a33759e791c28596fff898b6be4eb6c43d7c4a29cdab56",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.ca139b9f.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 40022,
+      "sha256": "ca139b9ffb166fb0bc608d1a4db51100e2b7f573c3fd969dc90107f123630f14",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.fa53c452.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 71788,
+      "sha256": "fa53c452379fa03d8958d555396313a6168f60c373433053cc85fec667d8fb22",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.6610f89d.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 89442,
+      "sha256": "6610f89d9895b93abc9b8bf56eff3112d3d3258d9980f50f41842c65c8a66f7a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.a4d7c735.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6222,
+      "sha256": "a4d7c7350a683e4c5cb8fa8ef56efa87241b9d49161723f9db1f72c376be21c2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.c9457d7f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 87710,
+      "sha256": "c9457d7fa7e2c043507bef845acd8ee0824065aaa9b83ca8550f7bb1b9bced1b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-sun-clock.5654e5dc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75956,
+      "sha256": "5654e5dc534ce11f6244acc7b4acbd36bfb420ac79bc17d1010a84bfa303a5c2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-balloon-skiff.4784ae87.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 44692,
+      "sha256": "4784ae87b8f671208101c6cf44621c3d5784591d5b96bf858acafd059ecb8132",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cloud-date.b8ccf6b3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 53242,
+      "sha256": "b8ccf6b3b141dcf13bb65289bb3c662f7003b945cebed5f4ba32509cbfca926c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cloud-kite.27ce3e95.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 49718,
+      "sha256": "27ce3e95bd59c2a04ea8f040eb8979ef2135e6f6e0820dad4467d92bda68d6f3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-boat.27dcb9cd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 93342,
+      "sha256": "27dcb9cdfdd6e421ac4652464469c10213a8629be384330a0db85d7ac3ee110d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.26a0be7d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6710,
+      "sha256": "26a0be7dcf65f1efa693c503a2d51ee76903f54aedc38eb110a204c601b671bb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cloud-whale.56bcab0a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97668,
+      "sha256": "56bcab0af3a92242b673aa9ae656f2297f79b6b288373b9bd23d88fe8017407a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 864870,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-cloud-whale.56bcab0a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-cloud-whale.56bcab0a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-cloud-whale.56bcab0a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-cloud-whale.56bcab0a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "audit-20261101-sun-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-sun-clock.5654e5dc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 sun clock"
+    },
+    {
+      "id": "balloon-skiff",
+      "kind": "art",
+      "image": "widget-balloon-skiff.4784ae87.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Balloon skiff"
+    },
+    {
+      "id": "cloud-date",
+      "kind": "calendar",
+      "image": "widget-cloud-date.b8ccf6b3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cloud date"
+    },
+    {
+      "id": "cloud-kite",
+      "kind": "art",
+      "image": "widget-cloud-kite.27ce3e95.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cloud kite"
+    },
+    {
+      "id": "paper-boat",
+      "kind": "art",
+      "image": "widget-paper-boat.27dcb9cd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper boat"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.26a0be7d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.ca139b9f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.fa53c452.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.6610f89d.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cherry-ribbon",
+  "packVersion": 5,
+  "name": "Cherry Ribbon",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#EEE5D9",
+    "tile": "#D1C8BE",
+    "glyph": "#1C1816",
+    "accent": "#BD8E80",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Cherry Ribbon",
+    "mood": "Embroidered cherries and satin bows.",
+    "tags": [
+      "cherry",
+      "ribbon",
+      "embroidered",
+      "cherries",
+      "satin",
+      "bows",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 CHERRY RIBBON. Refined sweet kawaii textile still life: fine IVORY LINEN #F7F0E5, delicate slightly raised SATIN-STITCH EMBROIDERY combined with real-looking soft silk ribbon, soft natural studio light. UPPER70percent EMPTY quiet ivory linen with faint fine weave only; NO repeated pattern, no stars, no letters. Bottom28percent ONE small pair of ripe CHERRY-RED cherries embroidered with lustrous red thread, two thin joined olive-green embroidered stems and two small realistic stitched leaves. At joined stems a soft DUSTY-ROSE SATIN BOW with two gently looping ears and two short curling tails, fine woven silk texture and subdued sheen. A single tiny pale-pink satin blossom beside cherries. Full vignette only42percent canvas width, low centered with large quiet margins; cherries themselves8percent total canvas height. Original elegant cute ribbon-and-fruit motif, sophisticated delicate sewing sampler, tactile but minimal, no faces no characters. Ivory/cherry red/dusty rose/olive palette, calm clean restrained composition, not3D clay resin toys crochet or watercolor. No meadow daisies hedgehogs bunnies dogs koalas tea buildings clocks phones. No text branding packaging borders UI watermark.",
+    "addedAt": "2026-11-01",
+    "category": "Dreamy & Pastel"
+  },
+  "thumbhash": "thgGAwLnf3OIhH2kF4B4Aag=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.f62acaf9.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 439282,
+      "sha256": "f62acaf9b98e8db6cc0d144ab86a29e0e6882173b7968a6e2998735160f43a6a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.efec5b08.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 379648,
+      "sha256": "efec5b08b466d23f8f8a9ab6a929ac444ab98dacf02ce50e5d4cc71a3d9ed305",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.fe36a7cd.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 199490,
+      "sha256": "fe36a7cd49a92be008a9c24cd654371a56093b7cab6ca4a0519bddfd9cee50bf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.3ad8ea5d.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 96422,
+      "sha256": "3ad8ea5de950ed57414c2c666d710bcd9635178104ae91c9f73758dcf74d88ab",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.817cb7a0.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 233174,
+      "sha256": "817cb7a0315575953b7bab59e18851a766672e2e33950236dc3dab0620e4ce53",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.821e2846.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 373760,
+      "sha256": "821e2846908a258badba526cf3b2067bffd61cba6261585d3263187da2c740d7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.e90ce1a1.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12996,
+      "sha256": "e90ce1a1cc8d59f09362019c7e3fe0936a68721f9a54b6b973a19abee15951d6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.93444841.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 310720,
+      "sha256": "93444841b7921e124b84e38e0a3727dedd80df519bcd30d56b41cce8b5008140",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ribbon-countdown.6fd9e9a7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 332508,
+      "sha256": "6fd9e9a78a6313f63f8b0d861f2cf885fc366c7be008f1b67135cbf5827f4369",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ribbon-locket.e88c8d14.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 302306,
+      "sha256": "e88c8d14e59484298150a8aa3a90103a62471608070aec3704c745a83a01f8b7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.90a54385.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7112,
+      "sha256": "90a543858a69f5c2075b807fbda4682d92c8f3850b0edd3503403c2d92a51767",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.92900e88.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3224,
+      "sha256": "92900e883448bf338234ad15563ec472b939d44cee4d5ffc9ccc2b76fae9f943",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.ab898218.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6950,
+      "sha256": "ab898218c1f46958b0e659b1f36254b7ddb104c1c5ec0087652b3582ce7795b9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cherry-butterfly.bd6261b5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 344322,
+      "sha256": "bd6261b56247bad24f1aa7775dd549b8d39bfb120af7accd0f589d94c391a9db",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 3041914,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-cherry-butterfly.bd6261b5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-cherry-butterfly.bd6261b5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-cherry-butterfly.bd6261b5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-cherry-butterfly.bd6261b5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "ribbon-countdown",
+      "kind": "countdown",
+      "image": "widget-ribbon-countdown.6fd9e9a7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ribbon countdown"
+    },
+    {
+      "id": "ribbon-locket",
+      "kind": "art",
+      "image": "widget-ribbon-locket.e88c8d14.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ribbon locket"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.90a54385.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.92900e88.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.ab898218.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.3ad8ea5d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.817cb7a0.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.821e2846.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

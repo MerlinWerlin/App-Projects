@@ -1,0 +1,400 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "fern-and-brass",
+  "packVersion": 5,
+  "name": "Fern & Brass",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#040E0E",
+    "tile": "#262F2E",
+    "glyph": "#FAF8F2",
+    "accent": "#020C0A",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Fern & Brass",
+    "mood": "Lush ferns and warm antique brass.",
+    "tags": [
+      "fern",
+      "brass",
+      "lush",
+      "ferns",
+      "warm",
+      "antique",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Philipp Pilz (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Create portrait 9:19.5 iPhone wallpaper 'Fern & Brass' based on attached Philipp Pilz dark fern photograph as botanical material reference. Refine into exquisite realistic botanical photography: deep nearly-black forest green upper 55% calm shadow with faint barely visible fern silhouettes, lower half and lower side edges layered elegant fern fronds in moss green, sage highlights and one subtly bronzed autumn frond. Soft slanted warm natural light catches fine leaf edges and a few dew droplets, mostly dark. Real organic texture and premium restrained composition. Botanical fern, not tropical palm or monstera. No synthetic gold foil, no sparkles/stars, fantasy glow, text, icons, phone frame, logo or watermark. Keep useful quiet negative space for widgets/apps and rich foliage lower down. Photographic art, no interface.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "BegBCwBacDl1jpV3aIAFB64=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.c71a7cd8.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 218752,
+      "sha256": "c71a7cd8265a851165697a4d31c2536bb01e7e0258a2c8a34fbc150c9cbdacd2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.829bab12.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 197854,
+      "sha256": "829bab128180581cc7d8e9a33d886a0dbfb8097490963ea6caef5616caa761c4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ca936160.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 107394,
+      "sha256": "ca93616086805bdc91929a0b8f9bc1d7ddbdae68c167afe54fd855014d57c12b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.6dc4d990.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 60726,
+      "sha256": "6dc4d990f990894e8671b2868e2eccfa85b019ed2daa07783568b12bb5c6210e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.194496c5.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 104606,
+      "sha256": "194496c5063a4fb371e7210dface0e68ccfae550913cf307669d453c035c8dda",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.ce81b492.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 173182,
+      "sha256": "ce81b492eedc9e5d0042977112c378126f3e77b183af395929f2f7b02811ca0b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.5b8348c9.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 19358,
+      "sha256": "5b8348c97c177b9224fa97f6525d2d5ec4556c4bbb8b8302664174292dcdd563",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.07566cbd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 129786,
+      "sha256": "07566cbd401065346965366c6abb2b5777af934024e0a5021bcca5eb1313a2b4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-fern-clock.0468c416.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98688,
+      "sha256": "0468c416d676785d4151481ddfc298877c081283951e577782ed8573f50983a1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-fern-date.e1675e03.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97816,
+      "sha256": "e1675e03387cd89f1a240e2665b57db0cb55fedeac1d0269713492a4a6f3ee37",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-brass-leaf-beetle.78dc3cc0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 106548,
+      "sha256": "78dc3cc0a760dede45cd85e6d0985837dbb60c63bd6e348b44102eb2c78bcd21",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fern-glasshouse.25659d29.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 131120,
+      "sha256": "25659d294beac074d5dfc81f5272dfa3be31e2f3c12a376ee6ec6db02f545961",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-frond-habits.46321a5b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 87438,
+      "sha256": "46321a5b7d1541a355032c5e4c0cb31ec664456c65c3a715209de372188bd1fa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.6f6e726e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 8424,
+      "sha256": "6f6e726e68e7cd5984e9c2802f7fb0791f15312613cbb30615e78d013e2bac8e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fern-photo.94ac4340.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 139886,
+      "sha256": "94ac4340680f9e8110391adf4f58d4213f7ebf61e5e2c39833ff412f9feaffc5",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1681578,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-fern-photo.94ac4340.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-fern-photo.94ac4340.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-fern-photo.94ac4340.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-fern-photo.94ac4340.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "audit-20261101-fern-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-fern-clock.0468c416.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 fern clock"
+    },
+    {
+      "id": "audit-20261101-fern-date",
+      "kind": "calendar",
+      "image": "widget-audit-20261101-fern-date.e1675e03.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 fern date"
+    },
+    {
+      "id": "brass-leaf-beetle",
+      "kind": "art",
+      "image": "widget-brass-leaf-beetle.78dc3cc0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Brass leaf beetle"
+    },
+    {
+      "id": "fern-glasshouse",
+      "kind": "art",
+      "image": "widget-fern-glasshouse.25659d29.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fern glasshouse"
+    },
+    {
+      "id": "frond-habits",
+      "kind": "habits",
+      "image": "widget-frond-habits.46321a5b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Frond habits"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.6f6e726e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.6dc4d990.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.194496c5.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.ce81b492.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

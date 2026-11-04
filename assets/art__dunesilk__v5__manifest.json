@@ -1,0 +1,417 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "dunesilk",
+  "packVersion": 5,
+  "name": "Dunesilk",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#EEDEC9",
+    "tile": "#D1C2B0",
+    "glyph": "#1C1816",
+    "accent": "#EFC085",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Dunesilk",
+    "mood": "A photographic-style dune landscape with pale sand haze, umber icons, wind lines, desert rose.",
+    "tags": [
+      "dunesilk",
+      "photographic",
+      "style",
+      "dune",
+      "landscape",
+      "with",
+      "pale",
+      "sand",
+      "haze",
+      "umber",
+      "icons",
+      "wind",
+      "lines",
+      "desert",
+      "rose",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "bTkSEwR5f1h4hnloamCYBpY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.15f1ec83.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 127572,
+      "sha256": "15f1ec833ad3f255cba0abc75f3905460973a71e91139bf2cadbba41f8282220",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.94b11972.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 113794,
+      "sha256": "94b11972fc67d1404d908639fa5a2c7c8d5960965af401021011e609c24c040a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.a6afea8c.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 50292,
+      "sha256": "a6afea8c6466c70de7256a8096669b372ad54f467025dbc4f1fb3dd7b1c35ed0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.3df4841e.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 50570,
+      "sha256": "3df4841e4c3b04ddfb180e72d14171ddc82374fece1699951d58ec26eeff5323",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.144abdf3.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 182446,
+      "sha256": "144abdf350e493b3cfdc8ce1e22373b00ab259479df4a1b609070ba5c85df8fa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.e3144420.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 182798,
+      "sha256": "e31444208c86ad2cc8adbfa56154e70a4748578f28747ac5d5a216d11aa53a4f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.69585977.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9004,
+      "sha256": "695859772986c3fbaadfa6a1178975908e8a9d951ea82fe066a448e048829833",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.3c262e96.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 141784,
+      "sha256": "3c262e968e8f6b050c72dc53cfc32847cf93fca544e66d31871827160c6d632b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wind-lines.7ee03f14.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 224208,
+      "sha256": "7ee03f141291fc62a1e13f400b84ae47f12f24b3f368860c6d4bbb68bb824e9f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.473f2d2e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6100,
+      "sha256": "473f2d2ef7aea015b77b37c126c01cbbdf38750995236d3e55e7011d967842a5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.967dd01b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3068,
+      "sha256": "967dd01b44e39e1f3834900689fb9264c8a5b64c4767046612899b7c430ed1d1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.3bc2ee27.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5952,
+      "sha256": "3bc2ee273f41893a079f7bd6e3379dc184ed4790eca8cb72477b57b6da9cd8dd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-battery.bfa6d86c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2708,
+      "sha256": "bfa6d86c933d46eb2760a8bb063931feb257e9191f53f4b8ff2600bc36d72bd5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-desert-rose.a0f59b6a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 154216,
+      "sha256": "a0f59b6ac755158c45f65a71461029e8e2b36dc35e1eb36519a90f9bbf27d2c8",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1254512,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-desert-rose.a0f59b6a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-desert-rose.a0f59b6a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-desert-rose.a0f59b6a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-desert-rose.a0f59b6a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "wind-lines",
+      "kind": "art",
+      "image": "widget-wind-lines.7ee03f14.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wind lines"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.473f2d2e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.967dd01b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.3bc2ee27.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-battery",
+      "kind": "battery",
+      "image": "widget-live-battery.bfa6d86c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Battery level",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.22,
+          0.27,
+          0.56,
+          0.46
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.3df4841e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.144abdf3.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.e3144420.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

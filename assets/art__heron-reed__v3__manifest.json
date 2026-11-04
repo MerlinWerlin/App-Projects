@@ -1,0 +1,402 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "heron-reed",
+  "packVersion": 3,
+  "name": "Heron Reed",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#E7E6DF",
+    "tile": "#CBC9C3",
+    "glyph": "#1C1816",
+    "accent": "#B8A489",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Heron Reed",
+    "mood": "A grey heron among reeds in pale morning mist.",
+    "tags": [
+      "heron",
+      "reed",
+      "grey",
+      "among",
+      "reeds",
+      "pale",
+      "morning",
+      "mist",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tallportrait9:19.5 iPhone wallpaper HERON REED. Pale warm mist #E5E6DE fills upper70percent as nearlyuniformempty space, extremely subtle mattepaperlike atmosphere, no horizon there. Lower30percent ONE graceful grey heron standing in shallowstillwater near slender mutedgold reeds, wholebird visibleincluding longlegs and narrowbill, neck in naturalgentleSshape. Smallnearwaterreflection. Atmospheric wildlifephotographic-style art, exquisitegreyfeathers, softdiffusedawnlight, darkolive/grey/warmbeige restrainedpalette. Compositionlow andslightlyright, notdense. No text,logos,phone,UI,frames,otherbirds,boats,buildings. Fictionaloriginalquietnatural scene.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "sggKEwJ6X1h4hnmHh4B4CIg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.e07946a0.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 119512,
+      "sha256": "e07946a0fde80ba277d358f2875dd9406cd9153f53a2c3fc3d8903bbaef1c08d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.d1ec7ff4.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 107662,
+      "sha256": "d1ec7ff4f09df1ea0d269116e57de46290c90a5d3a555d2f7c3693959215a94b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.bbba75e5.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 55848,
+      "sha256": "bbba75e50e67cf39aa8f58ab3003f042730292b9ae80db4075ae23ae9a4f673c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.67227169.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 67540,
+      "sha256": "6722716948febf04324bde43e83102970ddce8ade1606e4fc9386a4e685c300a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.2f1ba051.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 81342,
+      "sha256": "2f1ba0519f885efaaa7b28052513bbc7306a390dfaf2a724a91df5f23647571a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.6c30f2f6.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 214466,
+      "sha256": "6c30f2f687c2dd62cf00dc58ce42a8d7e95c54b933c0b6ed76aa4dc214604e70",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.40c2d26e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 10230,
+      "sha256": "40c2d26e1d062f8dbd92bfca7c3a3356854c479717cad9fe531e964b611e006b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.e8ac3ab9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 252818,
+      "sha256": "e8ac3ab9e2556dde5f63dbbc60d49fecab33187cf98eb439411b16bdafbd9d97",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-heron-still.6324ab16.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 107032,
+      "sha256": "6324ab16b66ce91decd819b3de5d835f5ad2884995b18de1751ce0b1561260d9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-marsh-date.8e2fd162.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75922,
+      "sha256": "8e2fd162e384073ce297283e0dd7ab0d23d7f8bbf0aa43989e1fc02660c7c9ed",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-reed-clock.65860a19.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 46202,
+      "sha256": "65860a19a5386ef9cfba37c558a3a92ef18dfffc9c4213583577ecdc24df0586",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-reed-rhythm.004b8c07.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 114944,
+      "sha256": "004b8c079e4bc840b4a9eb532b8da6ab6671a0893b0b1d65af9097c18a3f2052",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stillness-timer.526bb901.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 36934,
+      "sha256": "526bb9011b81488fe5ae57f54c7c27458d41105cb12f2b02b4433760ac0cc468",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.88e6b0fc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6054,
+      "sha256": "88e6b0fc0b69a26a89d3d100b013dfb4a5ecec58d2de9b9f60f91bd0911cc0e3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-feather-study.d38bd596.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 275122,
+      "sha256": "d38bd596d6cecf4e6af3240682d32680dbfe20ec8d6359735716f7af299a5d03",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1571628,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-feather-study.d38bd596.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-feather-study.d38bd596.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-feather-study.d38bd596.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-feather-study.d38bd596.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "heron-still",
+      "kind": "art",
+      "image": "widget-heron-still.6324ab16.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Heron still"
+    },
+    {
+      "id": "marsh-date",
+      "kind": "calendar",
+      "image": "widget-marsh-date.8e2fd162.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Marsh date"
+    },
+    {
+      "id": "reed-clock",
+      "kind": "clock",
+      "image": "widget-reed-clock.65860a19.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Reed clock"
+    },
+    {
+      "id": "reed-rhythm",
+      "kind": "art",
+      "image": "widget-reed-rhythm.004b8c07.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Reed rhythm"
+    },
+    {
+      "id": "stillness-timer",
+      "kind": "focus",
+      "image": "widget-stillness-timer.526bb901.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stillness timer"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.88e6b0fc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.67227169.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.2f1ba051.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.6c30f2f6.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

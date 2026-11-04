@@ -1,0 +1,396 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "clover-nap",
+  "packVersion": 5,
+  "name": "Clover Nap",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#F7F0E3",
+    "tile": "#D8D2C6",
+    "glyph": "#1C1816",
+    "accent": "#9C9459",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Clover Nap",
+    "mood": "A watercolour hedgehog napping in clover.",
+    "tags": [
+      "clover",
+      "watercolour",
+      "hedgehog",
+      "napping",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 CLOVER NAP. Beautiful cute BOTANICAL WATERCOLOR and fine brown-pencil picture-book illustration on warm IVORY watercolor paper #F5F0E4. Clearly flat hand-painted2D, transparent pigment blooms and subtle wet edges, fine paper tooth, delicate pencil detail, not3D plastic clay plush yarn or photorealistic animal. UPPER68percent EMPTY quiet ivory paper, no objects lettering patterns. Bottom30percent a small tender meadow vignette: ONE tiny round baby HEDGEHOG curled asleep in a shallow nest made from two CLOVER LEAVES, creamy face/tummy, tiny cocoa nose, closed crescent eyes, pink cheeks, back covered with short soft cinnamon-brown painted spine dashes not frightening spikes. One gracefully arched DAISY stem bends above its head like a parasol, creamy white petals and butter-yellow center. A few small green clover sprigs around the nest, one tiny fallen yellow petal and dewdrop. Small full vignette only55percent canvas width, hedgehog12percent total image height, positioned LOW with full margins. Quiet botanical nature, soft spring morning, sweet almost-kawaii picturebook character but finely observed leaves and flowers. Ivory/clovergreen/sage/cinnamon/butteryellow palette. No koalas moon stars bats guardians cats hamsters rabbits seahorses corgis toy props buildings or food. No text branding UI phoneframes watermark.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "9wgGEwCmj1aHdYyzSHBKYFo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.82639d1c.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 177500,
+      "sha256": "82639d1c630d59bdd99dae934cf4d41edc13c398b893d23bfd30162c104fe473",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.0f9dbbba.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 158512,
+      "sha256": "0f9dbbbab9803bb2ccc328db9986cbbfbba5bf8d551ab94bfa0a55946b06706d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.39fd3b51.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 75746,
+      "sha256": "39fd3b51467533b33c2d616d2378bea9bcc3d8236ae72abc3033ce5848385954",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.fa370305.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 48120,
+      "sha256": "fa370305cadc8a87c077707615f950b7723a9974389667574dded123bda60a15",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.be72d9d9.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 94862,
+      "sha256": "be72d9d906bd9b8d79c08054f028915955ed7831c8cbc1ec09b0b3b014c8b59d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.a7ed870d.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 150064,
+      "sha256": "a7ed870d1406d10a90c57229401e3c5da5ac462243fad10a7c6db70d5249e885",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.9082f718.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8908,
+      "sha256": "9082f71849eb8b13003fdb7c3e6882d3e4ff1214b8661ad4b64f801cbf74be9e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.b6f2f626.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 126616,
+      "sha256": "b6f2f62698369a94ed0bfe34445a23ecb7c38adf30e62da58caf2a77a87c5fdb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-clover-habits.0ffe905b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 112608,
+      "sha256": "0ffe905b8854a81dbf6dc653c070e38ce5496c778ebf369a4d3e02353a35ac4b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-daisy-ladybird.c95b5f93.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 83136,
+      "sha256": "c95b5f93b962047c27f2ffa74adb27a2fdedef2d3ea515388883b634c6393cfd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.d1b0fb22.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6442,
+      "sha256": "d1b0fb2269e3123712b1bcd17d1518deb2eca3bc5f4e255b1b3a4e4b3d83b126",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.f60c42c4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3176,
+      "sha256": "f60c42c48f32a6b1f3fd3515da8837ded2bace5c9b639af30f2727aa05b646b5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.58e4c099.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6324,
+      "sha256": "58e4c099dfb8b4f352d7381d35d9336e758d6ef588c5b0fc219850c0079a7bf5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-acorn-teacup.0cbe4a06.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 143390,
+      "sha256": "0cbe4a06ca920a34280484323f97b873cd26f3af0c61466f08ffeaa40c73a7fa",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1195404,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-acorn-teacup.0cbe4a06.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-acorn-teacup.0cbe4a06.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-acorn-teacup.0cbe4a06.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-acorn-teacup.0cbe4a06.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "clover-habits",
+      "kind": "habits",
+      "image": "widget-clover-habits.0ffe905b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Clover habits"
+    },
+    {
+      "id": "daisy-ladybird",
+      "kind": "art",
+      "image": "widget-daisy-ladybird.c95b5f93.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Daisy ladybird"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.d1b0fb22.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.f60c42c4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.58e4c099.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.fa370305.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.be72d9d9.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.a7ed870d.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

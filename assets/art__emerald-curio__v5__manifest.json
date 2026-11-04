@@ -1,0 +1,400 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "emerald-curio",
+  "packVersion": 5,
+  "name": "Emerald Curio",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#201521",
+    "tile": "#3F353E",
+    "glyph": "#FAF8F2",
+    "accent": "#0B0205",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Emerald Curio",
+    "mood": "Dark aubergine, emerald enamel and antique-brass collector theme.",
+    "tags": [
+      "emerald",
+      "curio",
+      "dark",
+      "aubergine",
+      "enamel",
+      "antique",
+      "brass",
+      "collector",
+      "theme"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium still-life artwork. Portrait iPhone wallpaper approx9:19.5, EMERALD CURIO. Upper60percent quiet near-uniform very dark matte aubergine #27232E, extremely subtle studio falloff, no objects patterns bright flecks gold lines or shadows there. Lower40percent exquisite large jewelled SCARAB BROOCH posed on a small low dark-plum velvet cushion, angled three-quarter view, emerald-green translucent enamel wing cases, fine etched antique brass edges, six slender carefully arranged brass legs and two modest antennae, precious-object realism NOT actual living insect. Symmetric split emerald wing-case surface with beautiful luminous green guilloche beneath enamel, tiny restrained faceted green stones, not diamond clutter. Behind and to side of cushion one small aged brass botanical twig lies horizontally, whole composition at bottom with generous negative space. Brooch main body occupies18percent total image height, luxurious balanced macro product photography, tactile velvet, polished emerald enamel, gently aged warm brass, soft diffused warm sidelight, low dark plum shadow matching ground. No giant wreaths halos circles, no glass jars domes museums text labels pins people actual preserved animals galaxy nebula stars water jellyfish horses flowers skulls insects flying or extra beetles. Full-bleed portrait artwork, no phone UI logos borders or watermark.",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "BxgCCwI1izipf4fRZ4CFj8Y=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.be05ce03.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 170898,
+      "sha256": "be05ce030a7b5ce9a833b90c33828557561998322893791c3e7dc586520aeceb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.beeaf9c3.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 154076,
+      "sha256": "beeaf9c317b39b95cce4779d67b92d1b8ae7d60c92ee8c9b519082b57c205739",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e9d265e2.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 78550,
+      "sha256": "e9d265e2e1f6ebbf2accb6b9e4ed4d5c71b5a62dff5662a4f3ff1ab858008042",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.f6a53438.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 31116,
+      "sha256": "f6a53438f2506bb470b235c9c1baeaeef668ce74fca6fff069a184ec7ec9999a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.d195d5ce.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 79162,
+      "sha256": "d195d5ced3d166f6602d8db35edd7eac916deee3bb5f957013371d2d6ccde26c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.ce9322ba.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 195290,
+      "sha256": "ce9322ba0abbaf1ee10c889b5cca6a9c4cdc75954488210e22a7a9034961ebbd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.0f3f9b0e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12888,
+      "sha256": "0f3f9b0e153194ba9be8ba6bd00ecf6902e015e806f898cf2918cf0900e23559",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.401e3059.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 99290,
+      "sha256": "401e3059d1f7bc4ab5290a6c51c910058b1f38821ec379f74a1d61c2b28cd8c7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-curio-focus.8d432a3f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 124030,
+      "sha256": "8d432a3f801365ba2aeb4df3aa6ec2cde5ef685c1103d2dad825c644dbf7ca26",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fern-curio-orb.a47e0e84.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 119988,
+      "sha256": "a47e0e84c7ddac5d5d1ed6ff9dc65547f9eb163b3ef7d3a1c9e7df98336fbdfa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.49b6ebeb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7352,
+      "sha256": "49b6ebebe3f732c7e9017d83904e29596add09bd99439a82eaa79cc350bb629a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.68746c82.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3560,
+      "sha256": "68746c8233105d17f5c90194e867fa3932f9c297c85c656111f69136f40e67b8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.726d1461.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7164,
+      "sha256": "726d1461f065b85fe26d000f76bbd59d2801582148396588ec3f3276df58f482",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-emerald-beetle.78b55e68.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 109250,
+      "sha256": "78b55e689988ab0627504ffb5dbf0c12c689ddd646c3017c6b6a05e4fc5ca430",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1192614,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-emerald-beetle.78b55e68.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-emerald-beetle.78b55e68.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-emerald-beetle.78b55e68.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-emerald-beetle.78b55e68.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "curio-focus",
+      "kind": "focus",
+      "image": "widget-curio-focus.8d432a3f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Curio focus"
+    },
+    {
+      "id": "fern-curio-orb",
+      "kind": "art",
+      "image": "widget-fern-curio-orb.a47e0e84.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fern curio orb"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.49b6ebeb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.68746c82.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.726d1461.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.f6a53438.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.d195d5ce.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.ce9322ba.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

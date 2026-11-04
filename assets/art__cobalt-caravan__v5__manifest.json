@@ -1,0 +1,383 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cobalt-caravan",
+  "packVersion": 5,
+  "name": "Cobalt Caravan",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#00134C",
+    "tile": "#233363",
+    "glyph": "#FAF8F2",
+    "accent": "#975422",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Cobalt Caravan",
+    "mood": "Midnight blue, ivory icons, lantern oasis, sandstone cat and dune dial.",
+    "tags": [
+      "cobalt",
+      "caravan",
+      "midnight",
+      "blue",
+      "ivory",
+      "icons",
+      "lantern",
+      "oasis",
+      "sandstone",
+      "dune",
+      "dial",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Walid Ahmad (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Space & Night"
+  },
+  "thumbhash": "yPYFMwYqhmmInWBcd3B5Bpc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.8db420a5.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 192322,
+      "sha256": "8db420a5520f2f2e681be6962f76c60efe2df92bd735a58eb7f4d19532c6d433",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.f12c2191.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 168122,
+      "sha256": "f12c2191d79f8c2850b1ac6f8ca6507bbba52c94f6ce530225aa61538566746c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.83704236.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 67720,
+      "sha256": "837042360787ac794261e7407ccbd6cd4c4443dfab516e963c3e9172b53319d6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.c090a4cb.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 44416,
+      "sha256": "c090a4cb20ba8c1323de70c4f944212eafc37c3c51bc407a0fa22b8a33b98686",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.9d60b77a.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 116496,
+      "sha256": "9d60b77a569d7085ad37e2e3bf0801b69717c218d858b728ac99b296dc9b9a7f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.eb1eead7.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 204526,
+      "sha256": "eb1eead7ea3cde755da0dc7b8917aefcada658ce6805336792b9ec4984a13688",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.791acf04.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7948,
+      "sha256": "791acf04434b0428a3a18b576434275eaa50ec5a4d2f18ceabb24a4c9a7c344f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.cd565817.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 157400,
+      "sha256": "cd56581703a78e952c41e3c57d30813f4f850381ef95a05b9bbc9e07d6627023",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-caravan-date.a4088244.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 121496,
+      "sha256": "a4088244f1d5f39115f7b588bfc32703b48355e41d6b087f7d0e3b5a175575a4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lapis-compass.529ff43b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 153310,
+      "sha256": "529ff43b394eec6999d1e5d437482fea887a688b4ebf74c9b72d906634c9199a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-oasis-bird.6a06c2c3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 109752,
+      "sha256": "6a06c2c3b52cdb0ca1fc473a9578dff4a201d4c01132c04480c19829feea0292",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sand-cat.e189ed45.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 142606,
+      "sha256": "e189ed4579fb02d61af772fe723c56469a9994d3f1dbf98b7fd3310013743398",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.1644ddde.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 9302,
+      "sha256": "1644dddef423760be6f1f84ae3025aef5836ed37fe790fade087ed3cd7537053",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-lantern-oasis.81ac88e9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 175238,
+      "sha256": "81ac88e90d9fe36f9c08c08fde14558f7e1a74fd4ff83fe59fa4c33cf6fd250c",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1670654,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-lantern-oasis.81ac88e9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-lantern-oasis.81ac88e9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-lantern-oasis.81ac88e9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-lantern-oasis.81ac88e9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.81,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "caravan-date",
+      "kind": "calendar",
+      "image": "widget-caravan-date.a4088244.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Caravan date"
+    },
+    {
+      "id": "lapis-compass",
+      "kind": "art",
+      "image": "widget-lapis-compass.529ff43b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Lapis compass"
+    },
+    {
+      "id": "oasis-bird",
+      "kind": "art",
+      "image": "widget-oasis-bird.6a06c2c3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Oasis bird"
+    },
+    {
+      "id": "sand-cat",
+      "kind": "art",
+      "image": "widget-sand-cat.e189ed45.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sand cat"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.1644ddde.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.c090a4cb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.9d60b77a.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.eb1eead7.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

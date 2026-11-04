@@ -1,0 +1,399 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "crumbkin",
+  "packVersion": 5,
+  "name": "Crumbkin",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#F1E0CE",
+    "tile": "#D3C4B4",
+    "glyph": "#1C1816",
+    "accent": "#D69D64",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Crumbkin",
+    "mood": "A marzipan hamster with crumbs and sweet treats.",
+    "tags": [
+      "crumbkin",
+      "marzipan",
+      "hamster",
+      "with",
+      "crumbs",
+      "sweet",
+      "treats",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 CRUMBKIN. Very cute tiny handcrafted MARZIPAN CONFECTIONERY fantasy, fine sugar-dusted almond-paste texture, soft matte crumbly edges and delicate fondant-like colored details, no glossy plastic no ceramic no yarn no resin. Warm pale OAT background #F4EADC, UPPER68percent EMPTY quiet oat with faint papergrain, no patterns lettering decor. Bottom30percent ONE small pudgy APRICOT HAMSTER, round cheeks, tiny round ears with pink centers, cocoa dot eyes, tiny nose and smiling mouth, short cream muzzle/tummy, stubby paws. Hamster tucked into a plump split cream bread BUN BED, pale cinnamon crust and soft cream interior, paws resting over bun edge; tiny biscuit-brown sleeping cap with cream pompom. One little heart-shaped butter biscuit and a tiny pale apricot sugar flower beside bun. Full small scene only55percent width, hamster around13percent total image height, low centered with safe margins. Tactile hand-shaped novelty patisserie figurine, elegant restrained food-art miniature, soft diffuse light and gentle shadows, kawaii cozy adorable. Oat/cream/cinnamon/apricot/cocoa palette. No bunnies strawberries corgis slippers bats bellflowers dragons axolotl ducks capybara tea branding. No lettering packaging phoneframes UI watermark.",
+    "addedAt": "2026-11-01",
+    "category": "Sweets & Treats"
+  },
+  "thumbhash": "NSkGEwLKb3V3g36TN4BoA4g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.11d36b4d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 90564,
+      "sha256": "11d36b4df38ec8229e3bfeb44c0f57f352a4e2490beacfbf630076f492a8f39a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.54b28a7e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 80026,
+      "sha256": "54b28a7e09b24468ddc27b029ec1f6b0d15d2ca185499fb6604960a18f7ea780",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.9c2dab53.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 39026,
+      "sha256": "9c2dab53b5e59fcc369902a225884a16e11cf94cdcfc2eaf9d87449704a7b1f4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.8e85b5bb.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 26294,
+      "sha256": "8e85b5bb7077a438710228040a6cb71a9f6d5e72f87f28038fbb4adf13231db6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.4eae5137.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 72080,
+      "sha256": "4eae5137a2dd02bf8beb500cdbf3e5191bee4baa014e7b12e8d269f4b837626b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.82a683fe.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 97426,
+      "sha256": "82a683fe19bbe121d5ce7c396b9070e2750e99d446217b57f417aa9243c869e5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.989a46d5.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5168,
+      "sha256": "989a46d5fc3d9d01f228f86908256c9b245a6bbb4796ab7e0ef9a10753eba94d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.dc4db876.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75924,
+      "sha256": "dc4db876ffb43eff0015105c0fd20b469e0c4240b8b4cb59303264a8b377002e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-crumb-goals.d17e0f49.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 83692,
+      "sha256": "d17e0f4941c5a64f7284cbf8e15c1e5a6d9734b840f0810084ae82322a18abeb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nougat-flowerpot.cc66f541.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75820,
+      "sha256": "cc66f5411eb109d9e7eff0caeb6ff3acd4bcf4e807f5736c6790c65cc2a2071e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.076c35fd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6618,
+      "sha256": "076c35fdea41cc6116737d3f8147330134969079239be77803f6ce5f1815766c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.c75303ea.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3354,
+      "sha256": "c75303ea0d4c02225d5f2a63e1143b9ffebe929d4601d3a2e58b2ee5da14b393",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.4649cfd6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6468,
+      "sha256": "4649cfd67653b20de283bb37c80fb0bc300391846d4b72844046b195505332cf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-marzipan-snail.265ea4bd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84652,
+      "sha256": "265ea4bd0c3b91bb7e5a5c17056b64298936ce6d7349d55fdc8e368135cc60fd",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 747112,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-marzipan-snail.265ea4bd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-marzipan-snail.265ea4bd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-marzipan-snail.265ea4bd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-marzipan-snail.265ea4bd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#17201D"
+      }
+    },
+    {
+      "id": "crumb-goals",
+      "kind": "art",
+      "image": "widget-crumb-goals.d17e0f49.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Crumb goals"
+    },
+    {
+      "id": "nougat-flowerpot",
+      "kind": "art",
+      "image": "widget-nougat-flowerpot.cc66f541.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nougat flowerpot"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.076c35fd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.c75303ea.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.4649cfd6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.8e85b5bb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.4eae5137.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.82a683fe.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

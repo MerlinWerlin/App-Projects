@@ -1,0 +1,415 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "ember-rift",
+  "packVersion": 5,
+  "name": "Ember Rift",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#181E27",
+    "tile": "#383D43",
+    "glyph": "#FAF8F2",
+    "accent": "#753B24",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Ember Rift",
+    "mood": "A photographic-style lava stream with charcoal backgrounds, ash-white icons, basalt columns.",
+    "tags": [
+      "ember",
+      "rift",
+      "photographic",
+      "style",
+      "lava",
+      "stream",
+      "with",
+      "charcoal",
+      "backgrounds",
+      "white",
+      "icons",
+      "basalt",
+      "columns",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "CAgCEwYwwpqWXaM/dZBaB6k=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7a3d783d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 234814,
+      "sha256": "7a3d783d4f06f8bdf03ff4245e6e8d57a1ae1c4e924f6b7bea582e9ff3701dca",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.91e18bf3.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 212334,
+      "sha256": "91e18bf31198590982e2edfd0c6ec3af8757c1c71aa28c62cf6a0d6711e365f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.463e4404.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 95738,
+      "sha256": "463e4404cbb33ff84f37dcc3e0278e833cbf8c52fbf209029617ca707f6691d8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.a7bfd27e.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 78468,
+      "sha256": "a7bfd27eb1c5e9133f3fe8d69a00bc6233faf528292dc9c392799b6982b20a6d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.7c6a29b9.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 173928,
+      "sha256": "7c6a29b9f1e2949da4ac394affbba9906706468e16021c44034c119856c6bd11",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.682b0509.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 332918,
+      "sha256": "682b0509a3e5cf25fa472c63f2e2882ce5a285a33490cec33cd4c6433b62faf8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.813630e5.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 14610,
+      "sha256": "813630e5258e96b9b55e4ea8df5e151721ae86afb7ff4b904e9f6f14f784f8bb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.e4ae1f78.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 226744,
+      "sha256": "e4ae1f786e8c77281a8a0ad7704e8d235fea06aae41dd6daf907b87705ab3119",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cooling-lava.9ee0a84b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 230418,
+      "sha256": "9ee0a84bf2c3aae5b199df871492789aa1c63cc4674aece2a30d99d1580a157a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.e18682b5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6958,
+      "sha256": "e18682b5b37da07a4863d190c2152c385d061fe5528e089a22fc9824713bd554",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.e9217e0a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2956,
+      "sha256": "e9217e0abe64fbf8a78a794afeef2ff39513930f1ec7120bd0058868268542b8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.582246a7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6798,
+      "sha256": "582246a7c7987599f3c29cde1e2da65409843412147fd8d39d3d530730ad65c0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-battery.fa121a92.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2650,
+      "sha256": "fa121a9275e49938d2b6da3da4d6c377531bce5a30c7e5ca23b884ba072df2a6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-basalt-columns.b0c0ba35.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 244632,
+      "sha256": "b0c0ba351536a0523ad00dde2de43f5723339cef8586911719af49de094651f8",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1863966,
+  "widgets": [
+    {
+      "id": "themed-live-clock",
+      "kind": "clock",
+      "image": "widget-basalt-columns.b0c0ba35.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art clock · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "clockStyle": "digital",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-date",
+      "kind": "date",
+      "image": "widget-basalt-columns.b0c0ba35.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art date · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-focus",
+      "kind": "focus",
+      "image": "widget-basalt-columns.b0c0ba35.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art focus · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "themed-live-battery",
+      "kind": "battery",
+      "image": "widget-basalt-columns.b0c0ba35.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Art battery · live",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.12,
+          0.025,
+          0.76,
+          0.14
+        ],
+        "shape": "plate",
+        "valueStyle": "compact",
+        "ink": "#F5F3EC"
+      }
+    },
+    {
+      "id": "cooling-lava",
+      "kind": "art",
+      "image": "widget-cooling-lava.9ee0a84b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cooling lava"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.e18682b5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.e9217e0a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.582246a7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-battery",
+      "kind": "battery",
+      "image": "widget-live-battery.fa121a92.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Battery level",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.22,
+          0.27,
+          0.56,
+          0.46
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.a7bfd27e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.7c6a29b9.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.682b0509.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
