@@ -71,19 +71,16 @@ test('essentials nulls filled from IEC World Plugs keep their values, an IEC typ
   }
 });
 
-test('nulls left open after the run-100 re-check (no reliable IEC/ITU source reached) stay null, not guessed', () => {
+test('nulls left open after the run-100 and run-173 re-checks (no two public references agree) stay null, not guessed', () => {
   const open: Record<string, ('plugs' | 'voltage' | 'frequency' | 'driving' | 'calling_code')[]> = {
     BQ: ['plugs', 'voltage', 'frequency'],
     EH: ['plugs', 'voltage', 'frequency', 'calling_code'],
     GS: ['plugs', 'voltage', 'frequency', 'driving'],
-    MS: ['plugs', 'voltage', 'frequency'],
+    MS: ['plugs'],
     PF: ['plugs', 'voltage', 'frequency'],
-    PN: ['plugs', 'voltage', 'frequency', 'driving'],
+    PN: ['driving'],
     RW: ['plugs'],
-    SH: ['plugs', 'voltage', 'frequency'],
-    SO: ['plugs'],
     TK: ['driving'],
-    TV: ['voltage'],
     WF: ['plugs', 'voltage', 'frequency'],
   };
   const nullsNow = table.countries.flatMap((r) =>
@@ -91,4 +88,20 @@ test('nulls left open after the run-100 re-check (no reliable IEC/ITU source rea
   );
   const want = Object.entries(open).flatMap(([iso2, ks]) => ks.map((k) => `${iso2}.${k}`));
   assert.deepEqual(nullsNow.sort(), want.sort());
+});
+
+test('run 173: values filled only where two public references agree (mains-electricity table + world plug list)', () => {
+  const want: Record<string, { plugs?: string[]; voltage?: number[]; frequency?: number[] }> = {
+    PN: { plugs: ['I'], voltage: [230], frequency: [50] },
+    SH: { plugs: ['G'], voltage: [230], frequency: [50] },
+    TV: { voltage: [230] },
+    MS: { voltage: [230], frequency: [60] },
+    SO: { plugs: ['C', 'G'] },
+  };
+  for (const [iso2, v] of Object.entries(want)) {
+    const r = table.countries.find((c) => c.iso2 === iso2)!;
+    for (const [k, val] of Object.entries(v)) assert.deepEqual((r as any)[k], val, `${iso2}.${k}`);
+    assert.ok(r.sources.includes('https://www.worldstandards.eu/electricity/plug-voltage-by-country/'), iso2);
+    assert.equal(r.checked, '2026-11-04');
+  }
 });
