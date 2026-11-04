@@ -53,6 +53,8 @@ appId: com.jared797.cue.playtest
     text: Access code
     index: 1
 - tapOn: Remove access code
+- assertVisible:
+    id: access-code-input
 - assertVisible: Activate access code
 - takeScreenshot: 13-access-code-removed
 - back
@@ -63,3 +65,17 @@ appId: com.jared797.cue.playtest
     timeout: 20000
 - assertVisible: Paper, Plus
 - takeScreenshot: 13b-plus-colors-locked
+- stopApp
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Settings
+- scrollUntilVisible:
+    element:
+      text: Paper, Plus
+    direction: DOWN
+    timeout: 20000
+- assertVisible: Paper, Plus
+- takeScreenshot: 14-access-removal-persisted

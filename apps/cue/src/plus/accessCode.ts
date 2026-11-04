@@ -25,7 +25,9 @@ export function createCodeAccess(kv: KvStore, digest = ACCESS_CODE_DIGEST) {
     async remove(): Promise<boolean> {
       try {
         await kv.setItem(ACCESS_CODE_KEY, '');
-        return await kv.getItem(ACCESS_CODE_KEY) === '';
+        // AsyncStorage's native adapter normalizes an empty value to null.
+        const remaining = await kv.getItem(ACCESS_CODE_KEY);
+        return remaining === '' || remaining === null;
       } catch { return false; }
     },
   };

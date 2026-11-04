@@ -25,6 +25,15 @@ test('invalid, empty, corrupt and failed storage cannot grant access', async () 
   const broken = createCodeAccess({ getItem: async () => { throw Error('read'); }, setItem: async () => { throw Error('write'); } }, digest);
   expect(await broken.read()).toBe(false);
   expect(await broken.activate(code)).toBe(false);
+  expect(await broken.remove()).toBe(false);
+});
+test('native AsyncStorage empty-string normalization confirms removal and persists across restart', async () => {
+  const raw = new MemoryKv();
+  const native = { getItem: async (key: string) => (await raw.getItem(key)) || null, setItem: raw.setItem.bind(raw) };
+  const access = createCodeAccess(native, digest);
+  expect(await access.activate(code)).toBe(true);
+  expect(await access.remove()).toBe(true);
+  expect(await createCodeAccess(native, digest).read()).toBe(false);
 });
 test('removing complimentary access preserves paid ownership and trial; code remains reusable', async () => {
   const kv = new MemoryKv(), access = createCodeAccess(kv, digest);
