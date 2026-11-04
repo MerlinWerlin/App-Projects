@@ -1,0 +1,62 @@
+name: Glaze designed widgets
+on:
+  push:
+    branches: ['codex/glaze-designed-widgets-20261104']
+    paths: ['apps/glaze/**', '.github/workflows/glaze-designed-widgets.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: macos-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile actual WidgetKit sources and the review host
+        working-directory: apps/glaze
+        run: |
+          set -euo pipefail
+          APP="$RUNNER_TEMP/DesignedReview.app"
+          mkdir -p "$APP"
+          SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
+          ARCH=$(uname -m)
+          SOURCES=()
+          for FILE in targets/widget/*.swift; do
+            if [[ "$FILE" != "targets/widget/GlazeWidgetsBundle.swift" ]]; then SOURCES+=("$FILE"); fi
+          done
+          xcrun swiftc -parse-as-library -sdk "$SDK" -target "$ARCH-apple-ios17.0-simulator" "${SOURCES[@]}" scripts/designed-widget-review.swift -o "$APP/DesignedReview" > "$RUNNER_TEMP/compile.log" 2>&1 || { tail -120 "$RUNNER_TEMP/compile.log"; exit 1; }
+          cp docs/designed-widget-fixtures.json "$APP/"
+          python3 - <<'PY'
+          import os,plistlib,pathlib
+          app=pathlib.Path(os.environ['RUNNER_TEMP'])/'DesignedReview.app'
+          info={'CFBundleIdentifier':'com.glaze.designed-review','CFBundleExecutable':'DesignedReview','CFBundleName':'DesignedReview','CFBundlePackageType':'APPL','CFBundleVersion':'1','CFBundleShortVersionString':'1.0','MinimumOSVersion':'17.0','UIDeviceFamily':[1],'LSRequiresIPhoneOS':True,'UILaunchScreen':{},'UIApplicationSceneManifest':{'UIApplicationSupportsMultipleScenes':False},'ReviewSourceSHA':os.environ['GITHUB_SHA']}
+          (app/'Info.plist').write_bytes(plistlib.dumps(info))
+          PY
+          codesign --force --sign - "$APP"
+      - name: Render every theme, size and representative locale/state
+        run: |
+          set -euo pipefail
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["udid"] for xs in d["devices"].values() for x in xs if "iPhone" in x["name"]))')
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl install "$DEVICE" "$RUNNER_TEMP/DesignedReview.app"
+          xcrun simctl launch "$DEVICE" com.glaze.designed-review
+          DATA=$(xcrun simctl get_app_container "$DEVICE" com.glaze.designed-review data)
+          SOURCE="$DATA/Library/Caches/DesignedWidgetReview"
+          for TRY in $(seq 1 240); do
+            if [[ -f "$SOURCE/_SUCCESS.json" || -f "$SOURCE/_ERROR.txt" ]]; then break; fi
+            sleep 2
+          done
+          mkdir -p "$RUNNER_TEMP/designed-widget-review"
+          if [[ -d "$SOURCE" ]]; then cp -R "$SOURCE/." "$RUNNER_TEMP/designed-widget-review/"; fi
+          if [[ -f "$SOURCE/_ERROR.txt" ]]; then cat "$SOURCE/_ERROR.txt"; exit 1; fi
+          test -f "$SOURCE/_SUCCESS.json"
+          python3 -c 'import json,os,pathlib; p=pathlib.Path(os.environ["RUNNER_TEMP"])/"designed-widget-review/_SUCCESS.json";r=json.loads(p.read_text());assert r["catalogueThemes"]==141 and r["baselineLayouts"]==r["themes"]*9;print(r["themes"],"themes",r["renders"],"renders",r["assertions"],"assertions")'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glaze-designed-widget-review
+          path: |
+            ${{ runner.temp }}/designed-widget-review
+            ${{ runner.temp }}/compile.log
+          retention-days: 14

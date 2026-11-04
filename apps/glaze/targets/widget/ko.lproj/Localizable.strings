@@ -148,3 +148,7 @@
 "Tick a habit" = "습관 체크";
 "Streak habit" = "연속 기록 습관";
 "Choose the habit this streak widget follows." = "이 연속 기록 위젯이 따라갈 습관을 고르세요.";
+
+"Unavailable" = "사용할 수 없음";
+"Full" = "완충";
+"Remaining" = "남음";

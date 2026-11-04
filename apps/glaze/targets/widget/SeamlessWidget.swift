@@ -92,6 +92,17 @@ struct SeamlessWidgetView: View {
   var date: Date = Date()
 
   var body: some View {
+    if let design = LiveArtStore.spec(pieceID: pieceID, family: family)?.design {
+      DesignedWidgetContent(spec: design, date: date)
+        .containerBackground(for: .widget) {
+          LinearGradient(colors: design.background.map { Color(hex: $0) }, startPoint: .topLeading, endPoint: .bottomTrailing)
+        }
+    } else {
+      artBody
+    }
+  }
+
+  private var artBody: some View {
     let t = theme
     let image = WidgetArtStore.load(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.load(family)
     let fit = layout == .fit

@@ -205,7 +205,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
         const on = selected.has(p.id);
         const body = (
           <>
-          {dir ? (
+          {p.live?.design ? <DesignedWidgetThumbnail design={p.live.design} size={p.size ?? 'small'} width={sizeV2.touch} /> : dir ? (
             <ExpoImage
               source={{ uri: `${base}${p.file}` }}
               recyclingKey={`${p.id}-${p.created}`}
@@ -275,3 +275,4 @@ const styles = StyleSheet.create({
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
   text: { flex: 1, gap: spaceV2.xxs },
 });
+import { DesignedWidgetThumbnail } from './DesignedThemeWidgets';

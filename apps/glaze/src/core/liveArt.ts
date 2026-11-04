@@ -20,6 +20,7 @@
 // Pure TS (Node runs it directly), tested in liveArt.test.ts.
 
 import { fullBleedArt } from './widgetPreview.ts';
+import { parseDesignedWidget, type DesignedWidget } from './designedWidgets.ts';
 import { placeArt, type Box, type WidgetOption, type WidgetOptionFit, type WidgetOptionKind } from './widgetOptions.ts';
 
 /** What the widget can draw live over art. */
@@ -254,6 +255,8 @@ const clamp01 = (n: number): number => (n < 0 ? 0 : n > 1 ? 1 : n);
 
 /** Stored with the piece (widget-art/index.json `live`); read by LiveArtOverlay.swift. */
 export type LiveArtSpec = {
+  /** Purpose-designed native content; replaces image/overlay composition entirely. */
+  design?: DesignedWidget;
   valueStyle?: 'compact';
   clockStyle?: 'analog' | 'digital' | 'stacked';
   kind: LiveArtKind;
@@ -347,5 +350,10 @@ export function parseLiveArtSpec(raw: unknown): LiveArtSpec | null {
     spec.target = t;
   }
   if (kind === 'focus') spec.minutes = FOCUS_MINUTES;
+  if (r.design !== undefined) {
+    const design = parseDesignedWidget(r.design);
+    if (!design || (design.kind === 'calendar' ? 'date' : design.kind) !== kind) return null;
+    spec.design = design;
+  }
   return spec;
 }

@@ -33,6 +33,8 @@ import { widgets, type WidgetsResult } from '../native/widgets';
 import { artPackHero, artPackWallpaper } from '../ui/artPackSources';
 import { existingLocalFile, localAssetUri, seamlessDeviceHere } from '../ui/seamlessSetup';
 import { loadCountdownArtTargets } from './countdownArtTargets';
+import { isReplacedArtEdition } from '../core/designedWidgets';
+import { plannedDesignedWidgets } from '../core/designedWidgetLibrary';
 
 /** AsyncStorage: the theme whose art sync started and has not committed yet (cleared on commit). */
 export const THEME_ART_PENDING_KEY = 'glaze.themeArtSync.pending.v1';
@@ -108,7 +110,7 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
     // T245: countdown art pieces go live with the day the person chose (none = Art).
     const targets = await loadCountdownArtTargets();
     const art = await themeArt(theme, targets);
-    const planned = plan(theme, art.options, targets);
+    const planned = plan(theme, art.options, targets, await widgets.designVersion() >= 5);
     const lib: WidgetArtIndex = { v: 1, pieces: current.pieces };
     const todo = piecesToCompose(lib, planned);
     // 3. Compose the missing pieces, one at a time.
@@ -139,15 +141,17 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
   }
 }
 
-function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTargets): PlannedThemePiece[] {
+function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTargets, supportsDesign: boolean): PlannedThemePiece[] {
   const device = seamlessDeviceHere();
   const tr = t as unknown as (k: string, p?: Record<string, unknown>) => string;
   const sizeLabel = (s: HomeOptionSize) =>
     s === 'small' ? t('ui.seamless.sizes.small') : s === 'medium' ? t('ui.seamless.sizes.medium') : t('ui.seamless.sizes.large');
-  return planThemePieces({
+  const designed = supportsDesign ? plannedDesignedWidgets(theme, (kind, size) => `${t(`ui.designedWidgets.${kind}`)} · ${sizeLabel(size)}`) : [];
+  const art = planThemePieces({
     themeId: theme.id,
     themeName: theme.name,
-    options,
+    options: options.filter(o => !isReplacedArtEdition(o)),
+    cap: 40 - designed.length,
     name: (option, size) => {
       const n = optionName(option, options);
       return `${'text' in n ? n.text : tr(n.key, n.params)} · ${sizeLabel(size)}`;
@@ -167,6 +171,7 @@ function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTarget
       });
     },
   });
+  return [...designed, ...art.map(p => ({ ...p, slot: p.slot + (supportsDesign ? 3 : 0) }))];
 }
 
 /** Every widget option of the theme with its art source (same lists as ThemeWidgetArt). */
@@ -236,6 +241,10 @@ async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<The
 }
 
 async function composeOne(theme: Theme, art: ThemeArt, piece: PlannedThemePiece): Promise<'ok' | 'failed' | 'not-built'> {
+  if (piece.live?.design) {
+    const res = await widgets.composeArtPiece({ id: piece.id, kind: 'design', colour: piece.live.design.background[0] });
+    return !res.available && res.reason === 'not-built' ? 'not-built' : res.ok ? 'ok' : 'failed';
+  }
   const src = art.sources.get(piece.optionId);
   if (!src) return 'failed';
   const artUri = src.mod !== undefined ? await localAssetUri(src.mod, `${theme.id}-${src.option.id}.png`) : await existingLocalFile(src.uri ?? null);

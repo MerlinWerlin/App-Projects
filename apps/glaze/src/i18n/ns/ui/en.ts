@@ -1,6 +1,17 @@
 // English strings for the `ui` namespace (merged into src/i18n/locales/en.ts).
 // Add keys here first, then the same paths to every sibling locale file (docs/I18N.md).
 export const en = {
+  designedWidgets: {
+      "title": "Designed for this theme",
+      "body": "Readable live widgets, in the same colours as your icons.",
+      "clock": "Clock",
+      "battery": "Battery",
+      "calendar": "Calendar",
+      "setup": "Add the Glaze Seamless widget, then choose this design in Edit Widget → Art.",
+      "update": "Install the latest Glaze build from TestFlight to use these widgets.",
+      "batteryNote": "Battery readings refresh periodically. A dash means iOS has not supplied a level.",
+      "unavailable": "Unavailable"
+  },
   error: {
     body: 'This screen hit a problem and stopped. Your icons, themes and loops are saved on your phone and are not affected. Try again, and if it keeps happening, send us the note below.',
     retryHint: 'Reloads this screen',
