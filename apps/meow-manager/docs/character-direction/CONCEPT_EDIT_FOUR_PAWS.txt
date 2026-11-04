@@ -1,0 +1,10 @@
+Tool: built-in image_gen.imagegen edit
+Source: ios-character-concept.png
+Output: ios-character-concept-v2-four-paws.png
+Generated: 4 November 2026
+
+Use case: precise-object-edit.
+Edit target: the provided Meow Manager three-screen iOS visual concept.
+Primary request: correct the cat anatomy in the LEFT 'ARRIVE' screen only. The existing waving kitty appears to have an extra limb. Replace its body pose with one anatomically clear upright seated greeting pose: exactly TWO hind legs/paws resting on the desktop, exactly TWO forelegs/forepaws total, one forepaw lifted in a friendly wave and the other forepaw resting against its waistcoat/folio at its chest. The raised foreleg connects naturally to its shoulder. No separate foreleg extends down beneath the raised arm. There must be exactly FOUR paws total, no fifth paw, no duplicate leg or floating hand. Preserve the same original cream/caramel kitten's face, fur, professional waistcoat, tie, quality, warm office and welcoming personality.
+Invariants: keep the entire CENTRE 'TALK' and RIGHT 'OPEN A MENU' screens unchanged. Keep all phone screen framing, layout, typography, captions, controls, background, lighting, colours and all text in their existing positions. Keep the left cat's head character identity and friendly eye contact. Correct the left pose naturally at the same scale; do not redesign the interface.
+This remains a static visual concept, not a running app capture.

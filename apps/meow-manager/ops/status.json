@@ -2,10 +2,12 @@
   "app": "meow-manager",
   "stage": "design-revision",
   "targetPlatform": "iOS",
-  "headline": "Owner set aside the dashboard prototype. Define a full-screen professional kitty that approaches, greets and assists, with discreet menus.",
+  "headline": "Owner likes the professional kitty direction. Each fresh iOS opening should reveal a different activity, including curled-up sleep or chips, then transition into assistance.",
   "prototypeInterface": "parked; source and historical verification retained",
   "currentBrief": "docs/IOS_CHARACTER_EXPERIENCE.md",
-  "concept": "docs/character-direction/ios-character-concept.png (static AI-generated visual proposal)",
+  "concept": "docs/character-direction/ios-character-concept-v2-four-paws.png (static AI-generated visual direction)",
+  "ownerDirectionFeedback": "General visual direction liked; varied startup activities required; original extra-paw error corrected in v2.",
+  "openingScenesImplemented": false,
   "characterAnimationImplemented": false,
   "source": "apps/meow-manager",
   "branch": "codex/meow-manager-20261104",
@@ -25,9 +27,7 @@
     "native system calendar editor"
   ],
   "storeSubmitted": false,
-  "next_for_owner": [
-    "Review the proposed full-screen professional-kitty direction."
-  ],
+  "next_for_owner": [],
   "roadmap": "C:/BTB/_ATLAS/MASTER_ROADMAP.md#project-apps",
   "expoDoctor": "21/21 passed locally",
   "verifiedCodeCommit": "6a2f459ae8c5ba6e43f91b7152a0c1db5542bc20",

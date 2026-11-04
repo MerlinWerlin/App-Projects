@@ -1,5 +1,7 @@
 # Run record
 
+- 2026-11-04 Codex M04: recorded Jared's positive direction feedback and varied-startup requirement. Built-in imagegen edited the left arrival pose to an unambiguous four-paw seated greeting; v1 preserved and v2/prompt saved. Experience brief now covers nap/chips/proposed alternatives, repeat avoidance, interruption, common ready state and anatomy review. Documentation/art only; no native animation or runtime feature added.
+
 - 2026-11-04 Codex M03: after Jared's correction, parked the dashboard interface and recorded iOS as the current target. Produced a static original professional-kitty concept with arrival/conversation/menu views using built-in imagegen; exact prompt retained. Added IOS_CHARACTER_EXPERIENCE.md covering character acting, interaction, continuity, real assistant outcomes and required model/rig/rendering proof. No runtime, TestFlight, notification or AI capability added this turn.
 
 - 2026-11-04 Codex M01: owner-authorised first Meow Manager build started from main4444889 in isolated Apps/meow-manager / codex/meow-manager-20261104. Existing Glaze edits preserved. Atlas, guide and release conventions read; master row/owner decision recorded with backup.
