@@ -1,3 +1,6 @@
+// Model a missing native picker explicitly; jest-expo otherwise supplies a callable mock.
+jest.mock('expo-image-picker', () => ({}));
+
 /**
  * cast-1024 T91: Cast tab. The picker mapping (fake expo-image-picker), the CastController logic
  * with fake drivers / queue / media server, and static checks on the screen and config.
@@ -552,7 +555,7 @@ describe('Cast tab wiring (static)', () => {
   it('declares the expo-image-picker dependency and its config plugin (photos only)', () => {
     const pkg = JSON.parse(read('package.json')) as { dependencies: Record<string, string> };
     // Pinned to the same Expo SDK as `expo` itself (build page: SDK 55; App-Projects: SDK 57).
-    expect(pkg.dependencies['expo-image-picker'].split('.')[0]).toBe(pkg.dependencies['expo'].split('.')[0]);
+    expect(pkg.dependencies['expo-image-picker']!.split('.')[0]).toBe(pkg.dependencies['expo']!.split('.')[0]);
     const names = Object.keys(pkg.dependencies);
     expect(names).toEqual([...names].sort());
     const app = JSON.parse(read('app.json')) as { expo: { plugins: unknown[] } };

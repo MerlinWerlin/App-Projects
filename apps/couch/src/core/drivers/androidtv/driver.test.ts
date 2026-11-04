@@ -374,7 +374,7 @@ describe('commands', () => {
     await expect(d.sendText('hi')).rejects.toBeInstanceOf(DriverError);
     expect([...d.capabilities].sort()).toEqual(['colorKeys', 'keys', 'launch', 'numbers', 'powerOn']);
     expect(d.capabilities.has('voice')).toBe(false);
-    expect(d.beginVoice).toBeUndefined();
+    expect('beginVoice' in d).toBe(false);
   });
 });
 

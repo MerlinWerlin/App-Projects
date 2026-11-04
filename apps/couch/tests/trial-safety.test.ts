@@ -80,7 +80,7 @@ describe('infrared setup on iPhone', () => {
     expect(guard).toBeGreaterThan(-1);
     expect(rows.length).toBe(1);
     expect(rows[0]).toBeGreaterThan(guard);
-    expect(src.indexOf(') : null}', rows[0])).toBeGreaterThan(rows[0]);
+    expect(src.indexOf(') : null}', rows[0])).toBeGreaterThan(rows[0]!);
     // The only way into /add-tv-ir is that guarded row.
     for (const f of ['app/(tabs)/remote.tsx', 'app/(tabs)/tvs.tsx', 'app/settings.tsx', 'app/(tabs)/apps.tsx']) {
       expect({ f, links: read(f).includes('add-tv-ir') }).toEqual({ f, links: false });
