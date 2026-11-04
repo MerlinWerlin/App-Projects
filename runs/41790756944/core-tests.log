@@ -1,0 +1,15 @@
+Building for debugging...
+[0/7] Write sources
+[1/7] /Users/runner/work/App-Projects/App-Projects/apps/cloud-companion/.build/arm64-apple-macosx/debug/CloudCompanionPackageTests.derived/runner.swift
+[3/7] Write sources
+[4/7] Write swift-version--79AA4F9932D1E87A.txt
+[6/9] Emitting module CloudCore
+[7/9] Compiling CloudCore Core.swift
+/Users/runner/work/App-Projects/App-Projects/apps/cloud-companion/Shared/Core.swift:131:9: error: the compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
+129 |             hours: hours,
+130 |             attributionURL: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
+131 |         forecast.days = (0..<5).map { n in ForecastDay(date: start.addingTimeInterval(Double(n) * 86400),
+    |         `- error: the compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
+132 |             highC: Double(25 - n), lowC: Double(17 - n), rainChance: n == 2 ? 0.7 : 0.1,
+133 |             symbol: n == 2 ? "cloud.rain.fill" : "cloud.sun.fill") }
+error: fatalError
