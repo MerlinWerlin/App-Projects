@@ -1,0 +1,50 @@
+// Self-contained so each app's build-page bundle can import this without monorepo files.
+// Only explicit Play profiles activate this overlay. Existing iOS/Expo Go profiles stay unchanged.
+module.exports = function withPlayVariant(config, env = process.env) {
+  const variant = env.PLAY_VARIANT;
+  if (!variant) return config;
+  if (!['preview', 'production'].includes(variant)) throw new Error('Unknown PLAY_VARIANT: ' + variant);
+  if (env.EAS_BUILD_PLATFORM && env.EAS_BUILD_PLATFORM !== 'android') {
+    throw new Error('Play profiles are Android-only. Use the existing iOS profile.');
+  }
+  if (env.EXPO_GO_PREVIEW === '1') throw new Error('Play native builds cannot use EXPO_GO_PREVIEW.');
+  if (!config.android?.package) throw new Error('An explicit Android package is required.');
+  const preview = variant === 'preview';
+  const channel = 'play-' + variant;
+  const versionCode = !preview && env.LINEWORK_VERSION_CODE
+    ? Number(env.LINEWORK_VERSION_CODE) : config.android.versionCode || 1;
+  if (!Number.isSafeInteger(versionCode) || versionCode < 1 || versionCode > 2100000000) {
+    throw new Error('Invalid Play versionCode');
+  }
+  return {
+    ...config,
+    name: config.name + (preview ? ' Play Test' : ''),
+    scheme: preview ? String(config.scheme || config.slug) + '-play-test' : config.scheme,
+    platforms: ['android'],
+    // Linework does not scan barcodes. Exclude the optional ML Kit runtime
+    // and its automatic provider from Android; leave the base/iOS config intact.
+    plugins: (config.plugins || []).map((plugin) => {
+      if (plugin === 'expo-camera') return ['expo-camera', { barcodeScannerEnabled: false }];
+      if (Array.isArray(plugin) && plugin[0] === 'expo-camera') {
+        return [plugin[0], { ...plugin[1], barcodeScannerEnabled: false }];
+      }
+      return plugin;
+    }).concat(['./ops/play-android-manifest.cjs']),
+    runtimeVersion: String(config.version) + '-play-v1',
+    android: {
+      ...config.android,
+      package: config.android.package + (preview ? '.playtest' : ''),
+      versionCode,
+      // System photo picking and write-only clip saving need no broad modern
+      // media reads or overlay window permission. Keep the Apple config intact.
+      blockedPermissions: [...new Set([...(config.android.blockedPermissions || []),
+        'android.permission.SYSTEM_ALERT_WINDOW', 'android.permission.READ_MEDIA_AUDIO',
+        'android.permission.READ_MEDIA_IMAGES', 'android.permission.READ_MEDIA_VIDEO',
+        'android.permission.READ_MEDIA_VISUAL_USER_SELECTED'])],
+    },
+    // Keep initial builds embedded-only until Android runtime/update testing is complete.
+    updates: { ...config.updates, enabled: false,
+      requestHeaders: { ...config.updates?.requestHeaders, 'expo-channel-name': channel } },
+    extra: { ...config.extra, playVariant: variant },
+  };
+};

@@ -490,9 +490,15 @@ export const zhHans: Translation = {
   'settings.free.body': 'Linework 的所有描摹工具都是免费的：相机描摹、不透明度、锁定、手电筒、网格、镜像、触控锁定、拷贝台、线稿模式和你自己的照片。没有广告，没有试用期，也没有周订阅。',
   'settings.free.plusLink': 'Linework Plus 与打赏',
   'settings.free.plusHint': '可选的一次性附加内容，绝不会限制任何描摹工具。',
+  'settings.free.playBody': "相机描摹、自己的照片、描摹工具和 {count} 个入门模板持续免费。可选的 14 天试用包含完整模板库和照片转线稿。一次性购买 Plus 后可继续使用这些额外功能。",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "可选的一次性购买，解锁完整模板库和照片转线稿",
 
   'settings.privacy.title': '隐私',
   'settings.privacy.body': '未收集数据。Linework 没有账户、没有分析统计，也没有广告。你的照片只保存在这台手机上，绝不会上传；线稿在设备上生成。',
+  'settings.privacy.playBody': "图像在此设备上处理。Google 结算库会向 Google 发送技术诊断数据。没有广告或应用账户。点按可阅读隐私政策。",
+  'settings.privacy.openHint': "在浏览器中打开 Linework 隐私政策",
+  'settings.privacy.openFailed': "无法打开浏览器。隐私政策：{url}",
 
   'settings.about.title': '关于',
   'settings.about.body': 'Linework {version}。模板均为专为 Linework 创作的原创线稿。',

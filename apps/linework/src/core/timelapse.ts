@@ -38,7 +38,8 @@ export type TimelapseState = {
 };
 
 export type TimelapseAction =
-  | { type: 'start'; at: number }
+  | { type: 'start'; at: number | null }
+  | { type: 'captureStarted'; at: number }
   | { type: 'stop' }
   | { type: 'finished'; uri: string | null | undefined; at: number }
   | { type: 'failed'; message: string }
@@ -64,6 +65,11 @@ export function timelapseReducer(state: TimelapseState, action: TimelapseAction)
     case 'start':
       if (state.phase !== 'idle') return state;
       return { ...initialTimelapseState(), phase: 'recording', startedAt: action.at };
+    case 'captureStarted':
+      // Android arms its video session before capture starts. That setup time
+      // is not part of the clip, and a duplicate ready event cannot reset it.
+      if (state.phase !== 'recording' || state.startedAt !== null) return state;
+      return { ...state, startedAt: action.at };
     case 'stop':
       if (state.phase !== 'recording') return state;
       return { ...state, phase: 'stopping' };

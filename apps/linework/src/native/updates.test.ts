@@ -47,7 +47,9 @@ test('T39: updates.ts exports the adapter API and guards Expo Go / dev / reload'
   assert.match(src, /DevSettings\.reload\(\)/);
   // The quiet check downloads only; it must never reload mid-session.
   const start = src.indexOf('export async function checkForUpdateQuietly');
-  const body = src.slice(start, src.indexOf('\n}\n', start));
+  const end = /\r?\n}\r?\n/.exec(src.slice(start));
+  assert.ok(end, 'quiet update function has a closing brace');
+  const body = src.slice(start, start + end.index);
   assert.doesNotMatch(body, /reloadAsync|DevSettings/);
 });
 

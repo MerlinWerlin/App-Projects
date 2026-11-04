@@ -1,0 +1,52 @@
+{
+  "status": "prepared_not_uploaded",
+  "rules": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en",
+  "renderer": "@resvg/resvg-js2.6.2; Pillow format conversion",
+  "captureSource": "Signed v19/source2014ef0, run41730441054. Actual current-candidate Android UI captures.",
+  "assets": [
+    {
+      "file": "01-home.png",
+      "source": "apk-output/linework-v19-4kb-qualified-20261104/linework-home.png",
+      "sourceSha256": "35540a7778b9f00002bddfe4638f1a2a61e9c3e1cbfae0400fe36c30c469a320",
+      "alt": "Choose a photo or a built-in template from Linework Home.",
+      "conversion": "RGB PNG only; no UI retouch or pixel scaling",
+      "width": 320,
+      "height": 640,
+      "mode": "RGB",
+      "bytes": 46805,
+      "sha256": "aec5549217dccccb4d0a45381aab33602a5b7c14703e8ab9af2556c810a9e087"
+    },
+    {
+      "file": "02-lightbox.png",
+      "source": "apk-output/linework-v19-4kb-qualified-20261104/linework-lightbox-template.png",
+      "sourceSha256": "3d31569ea834e8ccf9484428fdd84db519af1b644bdd96256d1b68a458b04125",
+      "alt": "Trace a cat in Lightbox, with lock and reset controls.",
+      "conversion": "RGB PNG only; no UI retouch or pixel scaling",
+      "width": 320,
+      "height": 640,
+      "mode": "RGB",
+      "bytes": 35158,
+      "sha256": "9a5cb3ec3cb41a6de591af1b7f9b7e481f65076fd028559aaded440aa277bbeb"
+    },
+    {
+      "file": "icon.png",
+      "source": "apps/linework/assets/brand/icon.svg",
+      "alt": "A looping blue pencil stroke on warm paper.",
+      "width": 512,
+      "height": 512,
+      "mode": "RGBA",
+      "bytes": 9718,
+      "sha256": "00ab59aa4d13579bbc76cfe5ca721159f537d497b068bdb062ffe6dd75c81f44"
+    },
+    {
+      "file": "feature.png",
+      "source": "feature.svg and the original bot-sunflower-head.svg template",
+      "alt": "Find your own line, with a sunflower drawing on paper.",
+      "width": 1024,
+      "height": 500,
+      "mode": "RGB",
+      "bytes": 73291,
+      "sha256": "c8c101644bb0f37e33f12ea0f573f2676872a5c3c43e1e9fb1d281798e35ccf4"
+    }
+  ]
+}
