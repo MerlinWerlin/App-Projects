@@ -212,6 +212,6 @@
 "settings.look": "Style",
 "plus.pendingAndroid": "Le paiement est en attente dans Google Play. Terminez-le, puis touchez Restaurer l’achat.",
 "plus.unavailableAndroid": "Google Play est inaccessible. Réessayez plus tard.",
-"plus.failedAndroid": "Nous n’avons pas pu confirmer cet achat. Vérifiez Google Play avant de réessayer. ({detail})",
+"plus.failedAndroid": "Nous n’avons pas pu confirmer cet achat. Vérifiez Google Play avant de réessayer.",
 "settings.nothingToRestoreAndroid": "Aucun achat Plus finalisé trouvé pour ce compte Google Play."
 }

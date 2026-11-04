@@ -212,6 +212,6 @@
 "settings.look": "スタイル",
 "plus.pendingAndroid": "Google Playでのお支払いは保留中です。Google Playで完了してから「購入を復元」をタップしてください。",
 "plus.unavailableAndroid": "Google Playに接続できません。後でもう一度お試しください。",
-"plus.failedAndroid": "この購入を確認できませんでした。再試行する前にGoogle Playを確認してください。({detail})",
+"plus.failedAndroid": "この購入を確認できませんでした。再試行する前にGoogle Playを確認してください。",
 "settings.nothingToRestoreAndroid": "このGoogle Playアカウントに完了済みのPlus購入は見つかりませんでした。"
 }

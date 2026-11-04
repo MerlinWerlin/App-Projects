@@ -212,6 +212,6 @@
 "settings.look": "Estilo",
 "plus.pendingAndroid": "El pago está pendiente en Google Play. Complétalo allí y luego toca Restaurar compra.",
 "plus.unavailableAndroid": "No se puede conectar con Google Play. Inténtalo más tarde.",
-"plus.failedAndroid": "No pudimos confirmar esta compra. Consulta Google Play antes de intentarlo de nuevo. ({detail})",
+"plus.failedAndroid": "No pudimos confirmar esta compra. Consulta Google Play antes de intentarlo de nuevo.",
 "settings.nothingToRestoreAndroid": "No se encontró ninguna compra completada de Plus para esta cuenta de Google Play."
 }

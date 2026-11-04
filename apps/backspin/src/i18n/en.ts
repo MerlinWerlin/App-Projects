@@ -197,7 +197,7 @@ export const en = {
   'plus.cancelled': 'Purchase cancelled.',
   "plus.pendingAndroid": "Payment is pending in Google Play. Complete it there, then tap Restore purchase.",
   "plus.unavailableAndroid": "Google Play is not reachable. Try again later.",
-  "plus.failedAndroid": "We could not confirm this purchase. Check Google Play before trying again. ({detail})",
+  "plus.failedAndroid": "We could not confirm this purchase. Check Google Play before trying again.",
   "settings.nothingToRestoreAndroid": "No completed Plus purchase found for this Google Play account.",
   'plus.unavailable': "The App Store isn't reachable right now, so nothing was charged. Try again later.",
 

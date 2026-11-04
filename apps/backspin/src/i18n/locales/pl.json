@@ -212,6 +212,6 @@
 "settings.look": "Styl",
 "plus.pendingAndroid": "Płatność oczekuje w Google Play. Dokończ ją tam, a następnie wybierz Przywróć zakup.",
 "plus.unavailableAndroid": "Nie można połączyć się z Google Play. Spróbuj ponownie później.",
-"plus.failedAndroid": "Nie udało się potwierdzić tego zakupu. Sprawdź Google Play przed ponowną próbą. ({detail})",
+"plus.failedAndroid": "Nie udało się potwierdzić tego zakupu. Sprawdź Google Play przed ponowną próbą.",
 "settings.nothingToRestoreAndroid": "Nie znaleziono ukończonego zakupu Plus dla tego konta Google Play."
 }

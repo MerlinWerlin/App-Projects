@@ -212,6 +212,6 @@
 "settings.look": "लुक",
 "plus.pendingAndroid": "Google Play में भुगतान लंबित है। वहाँ भुगतान पूरा करें, फिर खरीद बहाल करें पर टैप करें।",
 "plus.unavailableAndroid": "Google Play से कनेक्ट नहीं हो पा रहा है। बाद में फिर कोशिश करें।",
-"plus.failedAndroid": "इस खरीद की पुष्टि नहीं हो सकी। फिर कोशिश करने से पहले Google Play में जाँचें। ({detail})",
+"plus.failedAndroid": "इस खरीद की पुष्टि नहीं हो सकी। फिर कोशिश करने से पहले Google Play में जाँचें।",
 "settings.nothingToRestoreAndroid": "इस Google Play खाते में Plus की कोई पूरी हुई खरीद नहीं मिली।"
 }

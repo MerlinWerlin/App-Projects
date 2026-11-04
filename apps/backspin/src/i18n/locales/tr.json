@@ -212,6 +212,6 @@
 "settings.look": "Stil",
 "plus.pendingAndroid": "Google Play’de ödeme bekliyor. Ödemeyi orada tamamlayın, ardından Satın almayı geri yükle’ye dokunun.",
 "plus.unavailableAndroid": "Google Play’e ulaşılamıyor. Daha sonra tekrar deneyin.",
-"plus.failedAndroid": "Bu satın alma doğrulanamadı. Tekrar denemeden önce Google Play’i kontrol edin. ({detail})",
+"plus.failedAndroid": "Bu satın alma doğrulanamadı. Tekrar denemeden önce Google Play’i kontrol edin.",
 "settings.nothingToRestoreAndroid": "Bu Google Play hesabında tamamlanmış bir Plus satın alımı bulunamadı."
 }

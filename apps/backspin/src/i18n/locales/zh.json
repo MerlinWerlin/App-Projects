@@ -212,6 +212,6 @@
 "settings.look": "风格",
 "plus.pendingAndroid": "付款在Google Play中处于待处理状态。请在那里完成付款，然后点击恢复购买。",
 "plus.unavailableAndroid": "无法连接Google Play。请稍后重试。",
-"plus.failedAndroid": "无法确认此次购买。重试前请先检查Google Play。({detail})",
+"plus.failedAndroid": "无法确认此次购买。重试前请先检查Google Play。",
 "settings.nothingToRestoreAndroid": "未找到此Google Play账号已完成的Plus购买。"
 }

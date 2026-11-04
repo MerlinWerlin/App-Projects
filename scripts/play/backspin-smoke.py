@@ -178,12 +178,13 @@ try:
         click('Unlock Backspin Plus')
         until=time.monotonic()+45
         while not (d(text='Google Play is not reachable. Try again later.').exists or
-                   d(textStartsWith='We could not confirm this purchase. Check Google Play before trying again.').exists):
+                   d(text='We could not confirm this purchase. Check Google Play before trying again.').exists):
             assert time.monotonic()<until, 'Android purchase error did not show the Google Play message'
             d.swipe_ext('up', scale=.3)
             time.sleep(.3)
         assert not d(textContains='nothing was charged').exists
         assert not d(textContains='Test mode (Expo Go)').exists
+        assert not d(textContains='[object Object]').exists
         # The message extends the ScrollView after it appears. Bring its full
         # body above the navigation bar before retaining visual evidence.
         d.swipe_ext('up', scale=.3)
