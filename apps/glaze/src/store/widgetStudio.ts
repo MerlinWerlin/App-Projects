@@ -13,6 +13,8 @@ import {
   type StudioState,
 } from '../core/widgetStudio';
 import { loadBackgrounds, removePhotoCopy } from './background';
+import { orphanedAlbumPhotos } from '../core/widgetAlbum';
+import * as FS from '../native/fs';
 
 let queue: Promise<unknown> = Promise.resolve();
 function serial<T>(fn: () => Promise<T>): Promise<T> {
@@ -59,6 +61,9 @@ export function saveStudio(state: StudioState): Promise<boolean> {
  */
 async function cleanUpPhotos(prev: Record<string, unknown>, next: Record<string, unknown>): Promise<void> {
   try {
+    if (FS.documentDirectory) for (const name of orphanedAlbumPhotos(prev, next)) {
+      await FS.deleteAsync(`${FS.documentDirectory}widget-album/${name}`, { idempotent: true }).catch(() => undefined);
+    }
     const orphans = orphanedStudioPhotos(prev, next);
     if (orphans.length === 0) return;
     const keep = referencedPhotoUris(await loadBackgrounds());

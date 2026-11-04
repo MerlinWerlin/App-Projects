@@ -80,13 +80,12 @@ import CryptoKit
         var replacement = raw; replacement["photoRefs"] = Array(refs.reversed())
         try check(PhotoAlbumStore.offset(SavedWidgetDesign(raw: replacement, texts: texts), in: scratch) == 0, "New selection gets independent cursor")
         let size = c["size"] as! String
-        let family: WidgetFamily = size == "small" ? .systemSmall : size == "medium" ? .systemMedium : .systemLarge
         let width: CGFloat = size == "small" ? 170 : 364, height: CGFloat = size == "large" ? 382 : 170
         for state in ["first", "next", "empty", "missing"] {
           let image = (state == "first" || state == "next") ? PhotoAlbumStore.image(refs[state == "first" ? 0 : 1], in: scratch) : nil
           let entry = PhotoAlbumEntry(date: date, theme: theme, design: state == "empty" ? nil : design, photoRef: state == "missing" ? "album-" + String(repeating: "f", count: 40) + ".jpg" : nil)
           let view = PhotoAlbumWidgetView(entry: entry, reviewImage: image).frame(width: width, height: height)
-            .environment(\.widgetFamily, family).environment(\.locale, Locale(identifier: language))
+            .environment(\.locale, Locale(identifier: language))
             .environment(\.layoutDirection, language == "ar" ? .rightToLeft : .leftToRight)
           let renderer = ImageRenderer(content: view); renderer.scale = 2
           guard let rendered = renderer.uiImage, let data = rendered.pngData() else { throw NSError(domain: "AlbumContract", code: 3) }

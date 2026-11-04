@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { albumNames, albumIndex } from './widgetAlbum.ts';
+import { albumNames, albumIndex, orphanedAlbumPhotos } from './widgetAlbum.ts';
 import { nativeWidgetSupported, requiredNativeWidgetVersion } from './widgetDelivery.ts';
 import { THEMES } from './themes.ts';
 import { generateWidgetSet } from './widgetSets.ts';
@@ -47,4 +47,10 @@ test('rotation changes at interval boundaries, wraps, and is independent of loca
     assert.equal(requiredNativeWidgetVersion('photoAlbum', size), 4);
   }
   assert.equal(nativeWidgetSupported('photoAlbum', 'accessoryCircular'), false);
+});
+test('album cleanup keeps copies used by other sizes or themes and ignores foreign filenames', () => {
+  const owned = {catalogueDrafts: {medium: {albumPhotos: [local, '../secret.jpg']}}};
+  assert.deepEqual(orphanedAlbumPhotos({one: owned}, {two: JSON.stringify(owned)}), []);
+  assert.deepEqual(orphanedAlbumPhotos({one: owned}, {}), [local]);
+  assert.deepEqual(orphanedAlbumPhotos({bad: 'invalid JSON'}, {}), []);
 });
