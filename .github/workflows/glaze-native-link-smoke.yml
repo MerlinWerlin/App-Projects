@@ -10,6 +10,11 @@ on:
         required: false
         default: ''
         type: string
+      scenario:
+        description: 'Installed route or actual Home Screen widget and shared-data round trip'
+        type: choice
+        options: [route, widget]
+        default: route
 permissions:
   contents: read
   actions: read
@@ -21,13 +26,16 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GLAZE_SIMULATOR_RUN: ${{ inputs.simulator_run }}
+      GLAZE_UI_SCENARIO: ${{ inputs.scenario || 'route' }}
     steps:
       - uses: actions/checkout@v4
       - name: Build a small XCTest runner without rebuilding Expo
         working-directory: apps/glaze
         run: |
           set -euo pipefail
-          ruby scripts/prepare-native-link-test.rb "$RUNNER_TEMP/GlazeLinkCheck"
+          FIXTURE=native-link-ui-tests.swift
+          if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then FIXTURE=native-widget-tap-tests.swift; fi
+          ruby scripts/prepare-native-link-test.rb "$RUNNER_TEMP/GlazeLinkCheck" "$FIXTURE"
           xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/link-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build-for-testing > "$RUNNER_TEMP/glaze-link-build.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-link-build.log"; exit 1; }
       - name: Retrieve the exact previously built simulator app
         if: inputs.simulator_run != ''
@@ -56,8 +64,16 @@ jobs:
           xcrun simctl boot "$DEVICE" || true
           xcrun simctl bootstatus "$DEVICE" -b
           xcrun simctl install "$DEVICE" "$APP"
-          xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath "$RUNNER_TEMP/link-build" -resultBundlePath "$RUNNER_TEMP/glaze-link.xcresult" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO -only-testing:GlazeLinkUITests/GlazeDeepLinkTests/testWidgetLinkReachesWidgets test-without-building > "$RUNNER_TEMP/glaze-link-test.log" 2>&1 &
+          TEST=GlazeLinkUITests/GlazeDeepLinkTests/testWidgetLinkReachesWidgets
+          if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then TEST=GlazeLinkUITests/GlazeWidgetTapTests/testWidgetTapRoundTripsThroughSharedStorage; fi
+          xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath "$RUNNER_TEMP/link-build" -parallel-testing-enabled NO -resultBundlePath "$RUNNER_TEMP/glaze-link.xcresult" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO "-only-testing:$TEST" test-without-building > "$RUNNER_TEMP/glaze-link-test.log" 2>&1 &
           LINK_PID=$!
+          if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then
+            if ! wait "$LINK_PID"; then tail -160 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
+            grep -F GLAZE_WIDGET_TAP_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+            grep -F '** TEST EXECUTE SUCCEEDED **' "$RUNNER_TEMP/glaze-link-test.log"
+            exit 0
+          fi
           READY=0
           for TRY in $(seq 1 180); do
             RUNNER_DATA=$(xcrun simctl get_app_container "$DEVICE" com.glaze.link-ui-tests.xctrunner data 2>/dev/null || true)
@@ -86,7 +102,8 @@ jobs:
           execute_ok=any(marker in text for marker in ['** TEST SUCCEEDED **','** TEST EXECUTE SUCCEEDED **'])
           routed='GLAZE_WIDGETS_ROUTE_VERIFIED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
           supplied=bool(os.environ.get('GLAZE_SIMULATOR_RUN',''))
-          receipt={'harnessSourceSHA':os.environ['GITHUB_SHA'],'simulatorRun':os.environ.get('GLAZE_SIMULATOR_RUN',''),'simulatorZipSHA256':hashlib.sha256(package.read_bytes()).hexdigest() if package.exists() else None,'runnerBuildOnly':not supplied,'routeTestPassed':supplied and routed,'installedWidgetTapTest':False,'physicalDeviceTest':False,'scope':'Real installed Expo app, URL open, system confirmation and unique Widgets subtitle. Not a SpringBoard widget tap or full habit bridge test.' if supplied else 'Compile-only XCTest runner; no installed app or route test performed.'}
+          widget='GLAZE_WIDGET_TAP_BRIDGE_VERIFIED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
+          receipt={'harnessSourceSHA':os.environ['GITHUB_SHA'],'simulatorRun':os.environ.get('GLAZE_SIMULATOR_RUN',''),'simulatorZipSHA256':hashlib.sha256(package.read_bytes()).hexdigest() if package.exists() else None,'runnerBuildOnly':not supplied,'scenario':os.environ.get('GLAZE_UI_SCENARIO','route'),'routeTestPassed':supplied and routed,'installedWidgetTapTest':supplied and widget,'fullExpoHabitBridgeQualifiedInSimulator':supplied and widget,'physicalDeviceTest':False,'scope':'Actual app/WidgetKit UI and shared-data round trip in simulator' if widget else ('Real installed Expo app URL test only; no widget tap/full habit bridge qualification' if supplied else 'Compile-only XCTest runner')}
           (root/'link-receipt.json').write_text(json.dumps(receipt,indent=2))
           PY
       - uses: actions/upload-artifact@v4
