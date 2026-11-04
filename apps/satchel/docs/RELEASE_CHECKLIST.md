@@ -14,7 +14,7 @@ Fixed values:
 - [x] TestFlight build pipeline: the hourly App Factory auto-ship builds a new TestFlight build when native code or app.json changes and sends an over-the-air update otherwise (docs/STARTER_STANDARD.md). Jared has tested TestFlight builds.
 - [x] Satchel Plus built (T16): guarded expo-iap 6.2.0 adapter, Unlock and Restore purchases in Settings > Satchel Plus (docs/PLUS.md). Still to prove with a sandbox purchase: step 19.
 - [x] Backup and restore (T17): one `.satchelbackup` file through the share sheet; restore on the new phone (docs/BACKUP.md). Trip files (`.satchel`) and Open in / Save to Satchel (T14) also done.
-- [x] Offline city maps (T47 / T153) with toilets and places, downloaded from the `satchel-maps-v1` GitHub release.
+- [x] Offline city packs published 4 November 2026: Kyoto, central Tokyo and Sydney in `satchel-maps-v1`; public downloads match the verified CI files (docs/MAP_PACKS.md). Native iPhone download/restart/flight-mode testing remains outstanding.
 - [x] Privacy and support pages refreshed against the code (T159): `docs/privacy.html`, `docs/support.html`. App Privacy and Data safety answers with reasons: `docs/APP_PRIVACY.md`. A test (src/core/privacyhosts.test.ts) fails if the code gains an online host the privacy page doesn't name.
 - [x] iOS permission purpose strings checked against what each feature does and fixed in app.json (T159; see "Next native build" below).
 - [x] Store text: `docs/STORE.md`. Paid Apps agreement, bank and tax: Active for the account (23 Oct).

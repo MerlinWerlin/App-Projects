@@ -10,7 +10,7 @@
     "Try: Settings > Sample past trips (add, open one: no 'Plan this trip again'; remove: Include demo trips goes back off); the largest text size on Trips, Wallet and Spending.",
     "Decide for release: the final name, a support email address, iPad yes/no (suggested: iPhone only) and whether Satchel Plus ships before city maps are live (see docs/RELEASE_CHECKLIST.md).",
     "App Store Connect: create the non-consumable in-app purchase com.jared797.satchel.plus (steps in docs/PLUS.md).",
-    "Map tab > Offline city maps: downloads start once the App Factory runs the map publishing workflow.",
+    "Maps are live (4 Nov): open Satchel online, close and reopen for the update; Map > Offline city maps > Sydney > Download > Show on map. Restart in flight mode and check streets, labels and places.",
     "Answer the yes/no questions DN, DL-DM (and DI-DK, DE-DH, DA-DD) in docs/TRIAL.md by commenting on this page.",
     "Full install + tsc + expo export needs PC verification."
   ],
