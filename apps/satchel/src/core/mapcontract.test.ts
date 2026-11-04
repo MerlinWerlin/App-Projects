@@ -7,7 +7,7 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
@@ -40,8 +40,11 @@ const build = read('../../tools/maps/build.mjs');
 const workflow = read('../../ops/github/satchel-maps-publish.yml');
 const REPO = 'MerlinWerlin/App-Projects';
 
-test('map publisher is installed as an Actions workflow, with preview builds separated from publishing', () => {
-  const installed = read('../../../../.github/workflows/satchel-maps-publish.yml');
+// The installed copy lives at the App-Projects root; the standalone build-page repo has no .github folder, so this
+// half only runs inside App-Projects (where CI runs it), and the workflow-text checks below run everywhere.
+const INSTALLED = new URL('../../../../.github/workflows/satchel-maps-publish.yml', import.meta.url);
+test('map publisher is installed as an Actions workflow, with preview builds separated from publishing', { skip: !existsSync(INSTALLED) && 'standalone repo: no App-Projects .github' }, () => {
+  const installed = readFileSync(INSTALLED, 'utf8');
   assert.equal(installed, workflow);
   assert.ok(installed.includes('node verify.mjs out'));
   assert.ok(installed.includes("github.ref == 'refs/heads/main' && inputs.publish"));
