@@ -46,15 +46,20 @@ inspired it ("Infinity Coloring Book") has a single theme.
 - Single artwork, Zoom artworks, Mega Zoom and My colouring are distinct collections; topic and
   difficulty filters compose with them. Singles have precision zoom without discovery controls.
 - The previous seven chained illustration scenes and six original authored scenes retain exact
-  geometry, region IDs and saves. Saved chains remain in My colouring. On first use only, the latest
-  painted occurrence can be copied into an independent Single edition; that edition is never overwritten.
+  geometry, region IDs and saves. Saved chains remain in My colouring. On first use only, paint from the latest
+  saved source-scene timestamp can be copied into a new Single edition; existing Single saves are never overwritten.
 - Canonical source/portals are in `scripts/art/nested-source.json`; full built-in image generation
   prompts/references are in `nested-generation.json`. Rebuild with `scripts/build-art-library.py`.
   Art decoding is per illustration with a bounded cache, and unpainted white cells avoid extra SVG views.
 - 159 offline checks and strict type checks pass, including all six/twenty stops, landscape framing,
-  deep colour persistence, and hashes of all approved/released geometry. Native iPhone checks now pass across two reviewed captures of identical compiled app source: all six
-  regular journeys, Mega twenty, deep paint/drawing and restart persistence. Receipts and qualified
-  frames are in `docs/qa-nested-20261105`. Publication is pending; production remains Beta4/OTA28b985e9.
+  deep colour persistence, and hashes of all approved/released geometry. Native iPhone checks pass
+  across two reviewed captures of identical compiled app source: all six regular journeys, Mega
+  twenty, deep paint/drawing and restart persistence. Receipts and qualified frames are in
+  `docs/qa-nested-20261105`.
+- PR234 is merged as `df0c24a7`. Production OTA `9dd44b9b` is live and its actual downloaded bundle
+  hash verifies. TestFlight **0.1.0 (5)** is COMPLETE / VALID / IN_BETA_TESTING with no upload errors
+  or warnings, verified by probe `41919622598`. Update through TestFlight, then open
+  **Zoom artworks → Rose Cottage: Inside**. Existing installations can also apply the OTA.
 
 ## Money (later, not in phase 1)
 Same factory model: free core forever, no ads, no tracking.
