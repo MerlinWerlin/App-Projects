@@ -1,0 +1,4 @@
+{
+  "type": "AssertionError",
+  "detail": "Shared App Group is absent from the generated profile"
+}
