@@ -51,15 +51,21 @@ import Darwin
     XCTAssertTrue(app.images["Preview: Photo album widget, Medium"].firstMatch.waitForExistence(timeout: 10), app.debugDescription)
     let choose = app.buttons["Choose photos"].firstMatch
     XCTAssertTrue(revealStudioControl(choose), app.debugDescription); tapStudioControl(choose)
-    XCTAssertTrue(app.collectionViews.cells.firstMatch.waitForExistence(timeout: 20), app.debugDescription)
+    // iOS26's Photos grid exposes image items, not UICollectionView cells.
+    let gridImages = app.images.matching(identifier: "PXGGridLayout-Info")
+    let imageGrid = gridImages.firstMatch.waitForExistence(timeout: 20)
+    if !imageGrid { XCTAssertTrue(app.collectionViews.cells.firstMatch.exists, app.debugDescription) }
     print("GLAZE_PHOTO_PICKER_TREE\n" + app.debugDescription); fflush(stdout)
-    let cells = app.collectionViews.cells.allElementsBoundByIndex.filter { $0.isHittable && $0.frame.height > 30 && $0.frame.width > 30 }
+    let cells = (imageGrid ? gridImages.allElementsBoundByIndex : app.collectionViews.cells.allElementsBoundByIndex)
+      .filter { $0.isHittable && $0.frame.height > 30 && $0.frame.width > 30 }
     XCTAssertGreaterThanOrEqual(cells.count, 2, app.debugDescription)
     cells[0].tap(); cells[1].tap()
     let selected = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); selected.name = "system-picker-two-selected"; selected.lifetime = .keepAlways; add(selected)
     let exactAdd = app.buttons["Add"].firstMatch
     let countedAdd = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Add (")).firstMatch
-    if exactAdd.exists && exactAdd.isHittable { exactAdd.tap() }
+    let done = app.buttons["Done"].firstMatch
+    if done.exists && done.isEnabled && done.isHittable { done.tap() }
+    else if exactAdd.exists && exactAdd.isHittable { exactAdd.tap() }
     else { XCTAssertTrue(countedAdd.exists && countedAdd.isHittable, app.debugDescription); countedAdd.tap() }
     XCTAssertTrue(app.staticTexts["2 / 12 photos"].waitForExistence(timeout: 20), app.debugDescription)
     let save = app.buttons["Add widget"].firstMatch
