@@ -13,9 +13,9 @@ import zipfile
 
 from apk_permissions import FORBIDDEN
 
-BUILD_ID = "fc348389-4fde-4dd9-b8ab-5d438454592f"
-SOURCE = "d87a013daa35e8a1ba61fcf49f9b41114dbd565e"
-VERSION_CODE = 3
+BUILD_ID = "f4821a5c-945c-4a22-8662-84c0c95ea8f7"
+SOURCE = "49c8992756fd505ce14710c81c3e719ae5d99d0c"
+VERSION_CODE = 4
 BUNDLETOOL_URL = "https://github.com/google/bundletool/releases/download/1.18.3/bundletool-all-1.18.3.jar"
 BUNDLETOOL_SHA = "a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29"
 ANDROID = "{http://schemas.android.com/apk/res/android}"
