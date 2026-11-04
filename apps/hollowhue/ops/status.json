@@ -1,11 +1,10 @@
 {
   "app": "hollowhue",
   "stage": "build",
-  "headline": "Phase 1 merged 1 Nov (PR #181). Expo project linked, bundle id com.jared797.hollowhue registered and signing set up on Expo. Waiting only on the App Store Connect app record.",
+  "headline": "Phase 2, 4 Nov 2026: iPhone beta update implemented; native QA and publishing pending. Last production update was PR188 on 1 Nov, runtime 0.1.0. First TestFlight already exists (ASC6829399355).",
   "next_for_owner": [
-    "In App Store Connect: Apps > + > New App: iOS, name Hollowhue, primary language English (Australia), bundle ID com.jared797.hollowhue, SKU hollowhue, Full access. Then tell Claude the app's Apple ID number (App Information > Apple ID) and the first TestFlight build ships straight away.",
-    "Then open the build in TestFlight on the iPad and answer docs/TRIAL.md"
+    "No input needed while the iPhone checks run. Delivery status will be recorded here after publishing."
   ],
-  "tests": 24,
-  "typecheck": "real tsc on GitHub: clean; expo-doctor 21/21; iOS + Android bundle OK"
+  "tests": 38,
+  "typecheck": "Full installed SDK57 types and offline UI stubs both clean; iOS export/native QA in progress."
 }

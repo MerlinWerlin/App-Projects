@@ -9,11 +9,12 @@ import { layout } from '../../src/core/scene';
 import { t, tx } from '../../src/i18n';
 import { sceneById } from '../../src/scenes';
 import { flushProgress, getProgress, setProgress } from '../../src/store/progress';
-import { updateSettings, useSettings } from '../../src/store/settings';
+import { rememberColor, updateSettings, useSettings } from '../../src/store/settings';
 import { radius, space, type as ty, useColors } from '../../src/theme/tokens';
 import { Canvas, type CanvasHandle, type DrawTool, type Mode } from '../../src/ui/Canvas';
 import { useHaptics } from '../../src/ui/haptics';
 import { Button, IconButton } from '../../src/ui/kit';
+import { ColourPicker } from '../../src/ui/ColourPicker';
 
 export default function SceneScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -53,6 +54,10 @@ function Colouring({ sceneId }: { sceneId: string }) {
   const [paletteId, setPaletteId] = useState(scene.palette);
   const palette = paletteById(paletteId);
   const [color, setColor] = useState<string>(palette.colors[0] ?? '#B5523B');
+  const [picking, setPicking] = useState(false);
+  function chooseColor(col: string) {
+    setColor(col); setErasing(false); rememberColor(col);
+  }
   const [focus, setFocus] = useState(L.root.id);
   const [toast, setToast] = useState<string | null>(null);
   const [hint, setHint] = useState(true);
@@ -106,7 +111,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
     return () => clearTimeout(id);
   }, [toast]);
 
-  useEffect(() => () => flushProgress(), []);
+  useEffect(() => () => { void flushProgress().catch(() => {}); }, []);
 
   const focusLevel = L.byId.get(focus) ?? L.root;
   const depthTotal = Math.max(...L.order.map((p) => p.depth)) + 1;
@@ -133,7 +138,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
 
   const wide = width >= 700;
   const panelW = Math.min(width - space.lg * 2, 760);
-  const swatchSize = wide ? 40 : 34;
+  const swatchSize = 40;
 
   return (
     <View style={{ flex: 1, backgroundColor: c.canvas }}>
@@ -161,7 +166,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
             icon="chevron-left"
             label={t('tool.back')}
             onPress={() => {
-              flushProgress();
+              void flushProgress().catch(() => {});
               router.back();
             }}
             size={28}
@@ -249,7 +254,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
                 setHint(true);
               }}
               style={{
-                minHeight: 44,
+                minHeight: 48,
                 paddingHorizontal: space.md,
                 borderRadius: radius.pill,
                 flexDirection: 'row',
@@ -276,7 +281,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
                         accessibilityLabel={t('tool.size', { n: i + 1 })}
                         accessibilityState={{ selected: sizeIndex === i }}
                         onPress={() => setSizeIndex(i)}
-                        style={{ width: 40, height: 48, alignItems: 'center', justifyContent: 'center' }}
+                        style={{ width: 48, height: 48, alignItems: 'center', justifyContent: 'center' }}
                       >
                         <View
                           style={{
@@ -309,10 +314,10 @@ function Colouring({ sceneId }: { sceneId: string }) {
                 accessibilityLabel={tx(`palette.${p.id}`)}
                 onPress={() => {
                   setPaletteId(p.id);
-                  setColor(p.colors[0] ?? color);
+                  chooseColor(p.colors[0] ?? color);
                 }}
                 style={{
-                  minHeight: 32,
+                  minHeight: 48,
                   paddingHorizontal: space.md,
                   borderRadius: radius.pill,
                   justifyContent: 'center',
@@ -324,6 +329,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
             ))}
           </ScrollView>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingHorizontal: 2, alignItems: 'center' }}>
+            <IconButton icon="palette-outline" label={t('colour.custom')} onPress={() => setPicking(true)} />
             {palette.colors.map((col, i) => {
               const on = !erasing && color === col;
               return (
@@ -333,8 +339,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
                   accessibilityLabel={t('colour.swatch', { n: i + 1 })}
                   accessibilityState={{ selected: on }}
                   onPress={() => {
-                    setColor(col);
-                    setErasing(false);
+                    chooseColor(col);
                   }}
                   style={{
                     width: swatchSize + 8,
@@ -351,8 +356,23 @@ function Colouring({ sceneId }: { sceneId: string }) {
               );
             })}
           </ScrollView>
+          {settings.recentColors.length ? (
+            <View style={{ gap: space.xs }}>
+              <Text style={[ty.small, { color: c.ink2, paddingHorizontal: space.sm }]}>{t('colour.recent')}</Text>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingHorizontal: 2 }}>
+                {settings.recentColors.map((col) => (
+                  <Pressable key={col} accessibilityRole="button" accessibilityLabel={t('colour.recentSwatch', { color: col })}
+                    accessibilityState={{ selected: !erasing && color.toUpperCase() === col }} onPress={() => chooseColor(col)}
+                    style={{ width: 48, height: 48, borderRadius: 24, borderWidth: 3, borderColor: !erasing && color.toUpperCase() === col ? c.accent : 'transparent', alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: col, borderWidth: 1, borderColor: c.line }} />
+                  </Pressable>
+                ))}
+              </ScrollView>
+            </View>
+          ) : null}
         </View>
       </View>
+      {picking ? <ColourPicker initial={color} onClose={() => setPicking(false)} onChoose={(col) => { chooseColor(col); setPicking(false); }} /> : null}
     </View>
   );
 }
@@ -384,7 +404,7 @@ function Segment({ items, value, onChange }: { items: { key: string; icon: strin
               onChange(it.key);
             }}
             style={{
-              minHeight: 44,
+              minHeight: 48,
               paddingHorizontal: space.md,
               borderRadius: radius.pill,
               flexDirection: 'row',

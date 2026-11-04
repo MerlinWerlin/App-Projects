@@ -15,13 +15,15 @@ export function Card({ children, style }: { children: ReactNode; style?: ViewSty
   );
 }
 
-export function Button({ label, onPress, kind = 'primary', style }: { label: string; onPress: () => void; kind?: 'primary' | 'soft'; style?: ViewStyle }) {
+export function Button({ label, onPress, kind = 'primary', style, disabled = false }: { label: string; onPress: () => void; kind?: 'primary' | 'soft'; style?: ViewStyle; disabled?: boolean }) {
   const { c } = useColors();
   const h = useHaptics();
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
+      accessibilityState={{ disabled }}
+      disabled={disabled}
       onPress={() => {
         h.tap();
         onPress();
@@ -34,7 +36,7 @@ export function Button({ label, onPress, kind = 'primary', style }: { label: str
           backgroundColor: kind === 'primary' ? c.accent : c.accentSoft,
           alignItems: 'center',
           justifyContent: 'center',
-          opacity: pressed ? 0.85 : 1,
+          opacity: disabled ? 0.45 : pressed ? 0.85 : 1,
           transform: [{ scale: pressed ? 0.97 : 1 }],
         },
         style,
