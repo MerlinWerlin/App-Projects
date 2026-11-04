@@ -41,22 +41,53 @@ Root cause: Expo58 linked a precompiled Camera AAR, bypassing the Gradle scanner
 flags. Corrected source `49c8992756fd505ce14710c81c3e719ae5d99d0c` forces only
 Android expo-camera to build from source, so barcodeScannerEnabled=false and
 expo.camera.document-scanner-enabled=false can take effect. An actual
-platform-options test confirms Apple buildFromSource remains unset. The next
-binary must prove absence of ML Kit/scanner libraries and pass video capture.
+platform-options test confirms Apple buildFromSource remains unset. The actual
+replacement binary and video evidence are recorded below.
 
-Current production request: EAS`f4821a5c-945c-4a22-8662-84c0c95ea8f7`, version1.0.0/
-code4, exact49c89927source, queued41897841206. Native41897835294 and inspection
-41898340369 are running, not yet qualified. Obsolete EASbuild3 cancellation was
-requested in41897828384; its immediate receipt isPENDING_CANCEL. Do not queue
-or upload another copy of that obsolete candidate. Original signed build2 and
-all older failure receipts remain separate in the archive.
+Actual source49 APK41897835294 excludes scanner providers, libraries and models,
+with56 aligned64-bit native libraries. Camera's bare barcode_ui download marker
+remains; this is explicitly recorded and does not establish no platform download.
+The original build's broad marker guard failure remains preserved. Runtime
+41902492942 then found a real complimentary-access removal bug: AsyncStorage
+returns null after storing an empty string. Source1290bdf4 fixes that adapter
+case while preserving paid and trial state; both old failures remain failures.
 
-95Jest tests, TypeScript and both mobile exports pass41897823643. Six native
-privacy/Play-configuration checks, seven iOS release-policy checks and20Python
-inspection tests pass. Compiled SDK absence, reviewer-code native checks,
-final Data safety, licensed billing and speech/interruption QA remain open.
-An official local Google Play emulator is prepared for SDK-license approval;
-no SDK installation or new license acceptance has occurred at this checkpoint.
+The repaired JavaScript1290bdf4 and unchanged source49 native payloads passed
+the full4KB and16KB flows in41906973573. QA packaging41906122748 checks equal
+native fingerprints and all1448 retained APK payloads; only the JavaScript
+bundle changes. The QA APK is test-signed and must never be uploaded to Play.
+Code activation, restart, Plus colour unlock, removal and persistent relocking
+passed, alongside the earlier script/trial/recording flows. Synthetic videos
+are8511/8515ms at1280x720. There are no Cue process failures; three external
+Google Services fatal events on the16KB guest are retained separately.
+
+The current full production AAB passed41904947064, compiled from exact source
+1290bdf42acaf5f2bd216f5443b4a83e31001d5f with existing Expo-managed upload
+credentials inside disposable CI. Package com.jared797.cue,1.0.0/code4,
+target36,72,686,741 bytes, SHA256
+51310e5424cff417bd725550b8e4c51579e21be6b51af85884c2ab1a1f998ca4.
+Bundletool/JAR signature, existing certificate pin, embedded JS/disabled OTA,
+scanner inventory and16KB packaging/ELF checks pass. This local EAS build has
+no Expo cloud UUID. Cloud builds3(fc348389) and4(f4821a5c) are both confirmed
+CANCELED in41902737684/41905350750; neither supplied this production binary.
+
+96Jest tests, TypeScript and both mobile exports pass41904460668. Six native
+privacy/Play-configuration checks, seven iOS release-policy checks and22Python
+inspection tests pass. Queued Billing diagnostics were captured from only the
+synthetic preview app:24events on4KB and20on16KB, with app/OS/model/build,
+language/country settings and network/carrier metadata. These are local queue
+observations, not proof of a successful network delivery or licensed purchase.
+Final Data safety, licensed billing and speech/interruption QA remain open.
+
+The owner approved the official Android SDK license and installation. Stable
+platform-tools37.0.1, emulator37.2.13 and Google Play API35/x86_64 revision9 are
+installed under the dedicated cue-android-sdk cache. WHPX is usable and the
+unique Cue emulator is running. Owner Google sign-in remains pending; the
+owner is remote and cannot currently complete that handoff. Do not treat
+license-testing eligibility or emulator installation as a transaction pass.
+
+Public listing and release-note copy describes Cue's product features; build,
+simulation and internal validation details belong only in these release records.
 
 The sections below retain the4November baseline. Their build2/c809ffd runtime
 evidence is not proof for the replacement source.
