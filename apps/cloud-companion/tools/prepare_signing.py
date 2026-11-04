@@ -41,14 +41,16 @@ def main():
     query = '''query($n: String!) { app { byFullName(fullName: $n) { iosAppCredentials {
      appleTeam { appleTeamIdentifier }
      iosAppBuildCredentialsList { iosDistributionType distributionCertificate {
-     certificateP12 certificatePassword serialNumber } } } } } }'''
+    certificateP12 certificatePassword serialNumber appleTeam { appleTeamIdentifier } } } } } } }'''
     response = requests.post('https://api.expo.dev/graphql', headers={'Authorization':'Bearer '+os.environ['EXPO_TOKEN']},
                              json={'query':query,'variables':{'n':'@jared797/backspin'}}, timeout=45)
     response.raise_for_status()
     payload = response.json()
     if payload.get('errors'): raise RuntimeError('Expo could not supply the existing distribution signing material')
     reference = None
-    for credentials in payload['data']['app']['byFullName']['iosAppCredentials']:
+    reference_app = payload.get('data', {}).get('app', {}).get('byFullName')
+    if not reference_app: raise RuntimeError('The existing reference Expo app could not be read')
+    for credentials in reference_app['iosAppCredentials']:
         for build in credentials['iosAppBuildCredentialsList']:
             cert = build.get('distributionCertificate')
             if build['iosDistributionType'] == 'APP_STORE' and cert and cert.get('certificateP12'):
@@ -56,7 +58,9 @@ def main():
         if reference: break
     if not reference: raise RuntimeError('The reference app has no reusable App Store certificate')
     credentials, certificate = reference
-    assert credentials['appleTeam']['appleTeamIdentifier'] == team, 'Existing distribution certificate belongs to another team'
+    reference_team = credentials.get('appleTeam') or certificate.get('appleTeam')
+    if reference_team:
+        assert reference_team['appleTeamIdentifier'] == team, 'Existing distribution certificate belongs to another team'
     directory = Path(os.environ['RUNNER_TEMP']) / 'cloud-private-signing'
     directory.mkdir(mode=0o700, exist_ok=True)
     p12 = directory/'distribution.p12'; p12.write_bytes(base64.b64decode(certificate['certificateP12'])); p12.chmod(0o600)
