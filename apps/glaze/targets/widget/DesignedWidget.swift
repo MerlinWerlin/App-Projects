@@ -119,10 +119,10 @@ struct DesignedDrawing {
   func text(_ value: String, x: CGFloat, y: CGFloat, font: CGFloat, width: CGFloat, color: Color? = nil, weight: Font.Weight = .medium, anchor: UnitPoint = .center) {
     var pointSize = font
     let minimum = font * 0.64
-    var resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink).lineLimit(1).fixedSize())
+    var resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink))
     while resolved.measure(in: CGSize(width: 10000, height: 1000)).width > width && pointSize > minimum {
       pointSize -= 0.5
-      resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink).lineLimit(1).fixedSize())
+      resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink))
     }
     context.draw(resolved, at: CGPoint(x: x, y: y), anchor: anchor)
   }
@@ -181,7 +181,7 @@ struct DesignedDrawing {
   }
 
   mutating func clock(date: Date, wide: Bool, large: Bool) {
-    let w=size.width, h=size.height
+    let w=size.width
     if spec.clock == "dial" {
       let cx:CGFloat = wide ? 84 : w/2, cy:CGFloat = large ? 159 : 79
       let r:CGFloat = large ? 126 : 61
@@ -238,7 +238,7 @@ struct DesignedDrawing {
 
   mutating func battery(percent: Int?, wide: Bool, large: Bool) {
     let w=size.width,h=size.height
-    let value=percent.map { number($0) } ?? "—"
+    let value=percent.map { number($0) } ?? "â€”"
     let label=NSLocalizedString("Battery",comment:"Battery widget")
     if spec.battery == "ring" {
       let cx:CGFloat=wide ? 88 : w/2,cy:CGFloat=large ? 161 : 78,r:CGFloat=large ? 118 : 57
