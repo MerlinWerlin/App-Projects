@@ -53,3 +53,27 @@ struct WidgetPeriod {
                         total: calendar.range(of: .day, in: component, for: date)?.count ?? (year ? 365 : 31))
   }
 }
+
+/// A stored YYYY-MM-DD is a Gregorian civil day, even when the user displays another calendar.
+/// Parse in the widget's time zone, not UTC; count calendar days rather than 24-hour intervals.
+enum WidgetDay {
+  static func parse(_ raw: String, timeZone: TimeZone = .current) -> Date? {
+    guard raw.utf8.count == 10, raw.range(of: "^[0-9]{4}-[0-9]{2}-[0-9]{2}$", options: .regularExpression) != nil else { return nil }
+    let parts = raw.split(separator: "-").compactMap { Int($0) }
+    guard parts.count == 3, parts[0] >= 1, (1...12).contains(parts[1]), (1...31).contains(parts[2]) else { return nil }
+    var calendar = Calendar(identifier: .gregorian); calendar.timeZone = timeZone
+    guard let date = calendar.date(from: DateComponents(year: parts[0], month: parts[1], day: parts[2])) else { return nil }
+    let back = calendar.dateComponents([.year, .month, .day], from: date)
+    guard back.year == parts[0], back.month == parts[1], back.day == parts[2] else { return nil }
+    return calendar.startOfDay(for: date)
+  }
+
+  static func remaining(to raw: String, from date: Date, calendar: Calendar = .current) -> Int? {
+    distance(to: raw, from: date, calendar: calendar).map { max(0, $0) }
+  }
+
+  static func distance(to raw: String, from date: Date, calendar: Calendar = .current) -> Int? {
+    guard let target = parse(raw, timeZone: calendar.timeZone) else { return nil }
+    return calendar.dateComponents([.day], from: calendar.startOfDay(for: date), to: calendar.startOfDay(for: target)).day
+  }
+}

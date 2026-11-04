@@ -72,6 +72,15 @@
 "Resume" = "계속";
 "Days" = "일";
 
+"Photo album" = "사진 앨범";
+
+"Choose album photos in Glaze" = "Glaze에서 앨범 사진을 선택하세요";
+
+"Your selected photos, changing through the day." = "선택한 사진이 하루 동안 바뀌어요.";
+
+"Next photo" = "다음 사진";
+
+"Widget size" = "위젯 크기";
 /* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
    The word clock's phrase is English only by design; other languages show a big digital time. */
 "widgets.moon.new" = "삭";

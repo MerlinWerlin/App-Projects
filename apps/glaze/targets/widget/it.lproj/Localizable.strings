@@ -72,6 +72,15 @@
 "Resume" = "Riprendi";
 "Days" = "Giorni";
 
+"Photo album" = "Album di foto";
+
+"Choose album photos in Glaze" = "Scegli le foto dell’album in Glaze";
+
+"Your selected photos, changing through the day." = "Le foto che scegli cambiano durante la giornata.";
+
+"Next photo" = "Foto successiva";
+
+"Widget size" = "Dimensione widget";
 /* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
    The word clock's phrase is English only by design; other languages show a big digital time. */
 "widgets.moon.new" = "Luna nuova";

@@ -15,8 +15,8 @@ const readme = readFileSync(join(root, 'store/README.md'), 'utf8');
 
 const shotsSrc = render.slice(render.indexOf('export const SHOTS = ['), render.indexOf('];', render.indexOf('export const SHOTS = [')));
 const shots = [...shotsSrc.matchAll(/\{ n: '(\d\d)', name: '([\w-]+)', key: '([\w.]+)'([^\n]*)\}/g)].map((m) => ({
-  n: m[1], name: m[2], key: m[3] as keyof typeof uiEn, rest: m[4],
-  view: /view: '(\w+)'/.exec(m[4])?.[1], seal: /seal: '([\w.]+)'/.exec(m[4])?.[1] as keyof typeof uiEn | undefined,
+  n: m[1], name: m[2], key: m[3] as keyof typeof uiEn, rest: m[4]!,
+  view: /view: '(\w+)'/.exec(m[4]!)?.[1], seal: /seal: '([\w.]+)'/.exec(m[4]!)?.[1] as keyof typeof uiEn | undefined,
 }));
 
 describe('store shots (T69, playbook order)', () => {

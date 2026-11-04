@@ -55,6 +55,7 @@ struct GlazeCatalogueWidgetsBundle: WidgetBundle {
     AnalogClockWidget()
     MonthCalendarWidget()
     CountdownWidget()
+    PhotoAlbumWidget()
   }
 }
 

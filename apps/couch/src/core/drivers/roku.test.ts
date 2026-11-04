@@ -123,7 +123,7 @@ describe('RokuDriver', () => {
     expect(states).toEqual(['connecting', 'connected']);
     expect(tv.info?.name).toBe('Living Room & Kitchen TV');
     expect([...tv.capabilities].sort()).toEqual(['appIcons', 'apps', 'inputs', 'keys', 'launch', 'powerOn', 'text']);
-    expect(tv.volume).toBeUndefined();
+    expect('volume' in tv).toBe(false);
   });
 
   it('reports off when a Roku TV is in standby', async () => {

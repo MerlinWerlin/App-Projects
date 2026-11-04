@@ -361,3 +361,12 @@ describe('helpers', () => {
     expect(buildLoadPayload(VIDEO)).toMatchObject({ media: { metadata: { metadataType: 0 } } });
   });
 });
+
+
+describe('photo receiver payload', () => {
+  it('uses a non-streaming photo and supplies the full image URL to the receiver', () => {
+    expect(buildLoadPayload(PHOTO)).toMatchObject({media:{streamType:'NONE',contentId:PHOTO.url,
+      metadata:{metadataType:4,images:[{url:PHOTO.url}]}}});
+    expect(buildLoadPayload(VIDEO)).toMatchObject({media:{streamType:'BUFFERED'}});
+  });
+});

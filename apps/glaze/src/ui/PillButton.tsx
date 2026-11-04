@@ -14,6 +14,7 @@ import { PressableScale, type PressableScaleProps } from './PressableScale';
 export type PillVariant = 'filled' | 'tinted' | 'plain' | 'glass' | 'destructive';
 
 type Props = {
+  testID?: string;
   label: string;
   onPress: () => void;
   /** filled: primary CTA · tinted: secondary · plain: text-only · glass: over photos · destructive. */
@@ -38,6 +39,7 @@ type Props = {
 };
 
 export function PillButton({
+  testID,
   label,
   onPress,
   variant = 'filled',
@@ -71,6 +73,7 @@ export function PillButton({
   const textStyle = size === 'small' ? textV2.subhead : textV2.button;
   return (
     <PressableScale
+      testID={testID}
       onPress={onPress}
       onLongPress={onLongPress}
       accessibilityActions={accessibilityActions}

@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 // T225: the pack-update retry wait survives an app restart (update-state.json format, pure), and
 // Settings › Storage gets a clear one-line update status ("Updated 2 packs" / "All packs up to date").
 // Decision recorded in packUpdates.ts: downloaded packs keep updating in the background whether or
@@ -139,7 +140,7 @@ test('T225 decision: background updates ignore Plus (a Plus pack on the phone up
     { id: 'free', from: 1, to: 2 },
     { id: 'plusPack', from: 1, to: 2 },
   ]);
-  const src = readFileSync(join(dirname(new URL(import.meta.url).pathname), 'packUpdates.ts'), 'utf8');
+  const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'packUpdates.ts'), 'utf8');
   assert.ok(!/from ['"][^'"]*plus\//.test(src), 'packUpdates.ts must not import from src/plus');
   assert.ok(/T225 DECISION/.test(src), 'the decision is recorded in a code comment');
 });

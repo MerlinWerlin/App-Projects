@@ -7,7 +7,7 @@ import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const root = process.cwd();
-const read = (rel: string): string => readFileSync(join(root, rel), 'utf8');
+const read = (rel: string): string => readFileSync(join(root, rel), 'utf8').replace(/\r\n/g, '\n');
 
 const BUNDLE_ID = 'com.jared797.glaze';
 const APP_GROUP = 'group.com.jared797.glaze';

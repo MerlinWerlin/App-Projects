@@ -216,3 +216,12 @@ test('no clock reads in the log core', () => {
   const src = readFileSync(new URL('./habitLog.ts', import.meta.url), 'utf8');
   assert.ok(!/Date\.now\(|new Date\(\)/.test(src));
 });
+
+
+test('tap log drops timestamps outside the supported Date range before merging', () => {
+  const event = { seq: 1, kind: 'water', op: 'add', amount: 150, off: 0 };
+  for (const timestamp of [1e300, Number.MAX_SAFE_INTEGER, -1]) {
+    assert.equal(parseHabitLog({ v: 1, logId: 'valid', seq: 1, events: [{ ...event, at: timestamp }] })?.events.length, 0);
+  }
+  assert.equal(parseHabitLog({ v: 1, logId: 'valid', seq: 1, events: [{ ...event, at: D1.getTime() + 0.6 }] })?.events[0].at, D1.getTime() + 1);
+});

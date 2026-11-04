@@ -2,6 +2,8 @@
  * Native modules that need a dev build (react-native-udp, react-native-zeroconf) must only be loaded
  * through a guarded require so Expo Go never crashes. Pure TS + Node built-ins.
  */
+jest.mock('expo-store-review', () => ({}));
+jest.mock('expo-image-picker', () => ({}));
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { nativeCapabilities, loadUdpFactory, loadZeroconf } from '../src/native';

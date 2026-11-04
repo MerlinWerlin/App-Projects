@@ -21,7 +21,11 @@ for(const t of catalogue.themes){
  const assets=[],widgets=[],sources=[],ids=new Set(),hashes=new Set();
  async function image(src,role,label,options){
   const {data,info}=await sharp(src).rotate().resize(options).webp({quality:84,effort:4}).toBuffer({resolveWithObject:true});
-  const digest=sha(data),file=label+'.'+digest.slice(0,8)+'.webp';writeFileSync(join(dest,file),data);
+  const digest=sha(data),existing=assets.find(a=>a.role===role&&a.sha256===digest);
+  // Live clock/date/focus/battery can share the same original art bytes. Keep one downloadable
+  // asset, with separate options/frames; do not make users download the same image repeatedly.
+  if(existing)return existing;
+  const file=label+'.'+digest.slice(0,8)+'.webp';writeFileSync(join(dest,file),data);
   const a={path:file,role,width:info.width,height:info.height,bytes:data.length,sha256:digest,mime:'image/webp'};assets.push(a);sources.push({asset:file,source:src,sourceSha256:sha(readFileSync(src))});return a;
  }
  const wallpaper=await image(join(folder,'wallpapers/wallpaper.png'),'wallpaper','wallpaper-2796',{height:2796,withoutEnlargement:true});
@@ -47,6 +51,13 @@ for(const t of catalogue.themes){
   const asset=await image(profile.option.image,'widget-art','widget-themed-live-clock',{width:1024,height:1024,fit:'inside',withoutEnlargement:true});
   widgets.unshift({...profile.option,image:asset.path});
  }
+ const componentProfile=join(folder,'widgets/themed-components-20261102.json');
+ if(existsSync(componentProfile)){
+  const profile=JSON.parse(readFileSync(componentProfile,'utf8'));
+  // One shared artwork asset backs all three live native values.
+  const asset=await image(profile.components[0].option.image,'widget-art','widget-themed-components',{width:1024,height:1024,fit:'inside',withoutEnlargement:true});
+  widgets.splice(1,0,...profile.components.map(c=>({...c.option,image:asset.path})));
+ }
  if(widgets.length<6)throw Error(id+' has fewer than six candidate designs');
  const palette={bg:t.background,tile:t.background,glyph:t.foreground,accent:t.foreground,text:t.foreground};
  const name=String(source.set??t.id).replace(/^\d{3}[- ]/,'').replaceAll('-',' ').slice(0,60);
@@ -64,6 +75,6 @@ for(const t of catalogue.themes){
 }
 const catalog={format:CATALOG_FORMAT,version:1,generatedAt:new Date().toISOString(),packs};const parsed=parseCatalog(catalog);if(!parsed.ok||parsed.value.packs.length!==catalogue.themes.length)throw Error('Candidate catalog did not round-trip');
 writeFileSync(join(out,'catalog.json'),JSON.stringify(catalog,null,2)+'\n');
-writeFileSync(join(out,'candidate-validation.json'),JSON.stringify({date:'2026-11-01',themes:audit.length,options:audit.reduce((s,r)=>s+r.options,0),liveOptions:audit.reduce((s,r)=>s+r.liveOptions,0),totalBytes:audit.reduce((s,r)=>s+r.bytes,0),minimumChoices:Math.min(...audit.map(r=>r.options)),nativePR:190,physicalDeviceValidated:false,published:false,pricingApproved:false,themesDetail:audit},null,2)+'\n');
+writeFileSync(join(out,'candidate-validation.json'),JSON.stringify({date:'2026-11-02',themes:audit.length,options:audit.reduce((s,r)=>s+r.options,0),liveOptions:audit.reduce((s,r)=>s+r.liveOptions,0),totalBytes:audit.reduce((s,r)=>s+r.bytes,0),minimumChoices:Math.min(...audit.map(r=>r.options)),nativePR:190,designApproved:false,releaseReady:false,physicalDeviceValidated:false,published:false,pricingApproved:false,themesDetail:audit},null,2)+'\n');
 writeFileSync(join(out,'README.md'),'Local Glaze remote-art v2 candidates prepared for APPS A2 release review. Every theme has at least six choices and a number-free native clock plan. These are additive WebP exports; no originals changed and nothing uploaded. Widgets require the native support in draft PR190. plus=false is local test metadata, not an approved retail tier. Original source/reference release notes remain applicable. candidate-validation.json records geometry, source and parser checks, not physical-device or rights approval.\n');
 console.log('PREPARED',audit.length,'local candidate packs; no upload performed');

@@ -4,9 +4,9 @@
 // Values come from HabitStore (the app's trackers + taps the app hasn't read yet).
 // T86: every name, unit and accessibility label comes from HabitText (Localizable.strings), and the
 // goal shown is the person's own daily goal when they set one in the app (Habit goals screen).
-// Lock Screen accessory habit widgets carry no buttons in the catalogue and are a follow-up here.
+// Lock Screen accessories show the same live values and open the app for logging.
 //
-// Not compiled or run on a device yet. VERIFY: button hit areas at small size, `.invalidatableContent()`
+// Native simulator rendering/storage checks pass. VERIFY on a phone: hit areas, `.invalidatableContent()`
 // look while a tap is pending, and mood faces in the tinted / StandBy rendering modes.
 import AppIntents
 import SwiftUI
@@ -59,25 +59,65 @@ struct HabitProvider: TimelineProvider {
 @available(iOS 17.0, *)
 struct HabitWidgetView: View {
   @Environment(\.widgetFamily) private var family
+  @Environment(\.widgetContentMargins) private var margins
   let entry: HabitEntry
 
+  var body: some View {
+    let design = ThemeStore.savedDesign(kind: entry.habit.designKind, family: family, theme: entry.theme)
+    if family == .accessoryCircular || family == .accessoryRectangular || family == .accessoryInline {
+      HabitAccessoryView(entry: entry, family: family, design: design)
+    } else {
+      HabitWidgetContent(entry: entry, family: family, design: design).padding(margins)
+    }
+  }
+}
+
+/// The actual widget content accepts its WidgetKit family explicitly for native layout review.
+@available(iOS 17.0, *)
+struct HabitWidgetContent: View {
+  let entry: HabitEntry
+  let family: WidgetFamily
+  var design: SavedWidgetDesign? = nil
+
+  private func field(_ raw: [String: Any], _ key: String) -> String { raw[key] as? String ?? "" }
+
+  private var validFill: [String: Any]? {
+    guard let raw = design?.background else { return nil }
+    if field(raw, "kind") == "gradient", Color.isHex(field(raw, "from")), Color.isHex(field(raw, "to")) { return raw }
+    if field(raw, "kind") == "colour", Color.isHex(field(raw, "colour")) { return raw }
+    return nil
+  }
+  private var stops: [String] {
+    guard let raw = validFill else { return entry.theme.backgroundHexes }
+    if field(raw, "kind") == "gradient" { return [field(raw, "from"), field(raw, "to")] }
+    let colour = field(raw, "colour")
+    return [colour, colour]
+  }
+  private var controlTheme: WidgetTheme {
+    var t = savedHabitTheme(entry.theme, design: design)
+    t.style = .solid
+    t.ink = HabitColours.resolve(t.ink, stops: stops, secondary: true)
+    t.accent = HabitColours.resolve(t.accent, stops: stops, secondary: false)
+    return t
+  }
+
   private var def: HabitDef { HabitDef.of(entry.habit) }
+  private var title: String { design?.habitTitle ?? def.name }
   private var stepText: String { HabitStore.format(entry.step, decimals: def.decimals) }
 
   var body: some View {
-    let t = savedHabitTheme(entry.theme, kind: entry.habit.designKind, family: family)
+    let t = controlTheme
     Group {
       if entry.habit == .mood {
-        MoodBody(entry: entry, medium: family == .systemMedium)
+        MoodBody(entry: entry, medium: family == .systemMedium, theme: t, title: title)
       } else {
         countBody(t)
       }
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
     .containerBackground(for: .widget) {
-      if let design = ThemeStore.savedDesign(kind: entry.habit.designKind, family: family, theme: entry.theme) {
-        SavedWidgetFill(fill: design.background)
-      } else { GlazeBackground(theme: t) }
+      if let fill = validFill { SavedWidgetFill(fill: fill) }
+      else { LinearGradient(colors: stops.map { Color(hex: $0) }, startPoint: .topLeading, endPoint: .bottomTrailing) }
     }
   }
 
@@ -86,11 +126,12 @@ struct HabitWidgetView: View {
     let fraction = goal > 0 ? min(1, entry.value / goal) : 0
     let valueText = HabitStore.format(entry.value, decimals: def.decimals)
     let goalText = HabitStore.format(goal, decimals: def.decimals)
-    return VStack(alignment: .leading, spacing: 6) {
-      Text(def.name.uppercased(with: .current))
+    return VStack(alignment: .leading, spacing: 4) {
+      Text(title.uppercased(with: .current))
         .font(t.typeface(size: 11, weight: .bold))
         .foregroundStyle(t.accentColor)
         .lineLimit(1)
+        .minimumScaleFactor(0.85)
       HStack(alignment: .firstTextBaseline, spacing: 4) {
         Text(valueText)
           .font(t.typeface(size: family == .systemMedium ? 34 : 28, weight: .bold))
@@ -101,12 +142,12 @@ struct HabitWidgetView: View {
           .invalidatableContent()
         Text(def.unit)
           .font(t.typeface(size: 13, weight: .medium))
-          .foregroundStyle(t.inkColor.opacity(0.75))
+          .foregroundStyle(t.inkColor.opacity(0.85))
           .lineLimit(1)
       }
       Text(HabitText.goalOf(goalText, unit: def.unit))
         .font(t.typeface(size: 12, weight: .medium))
-        .foregroundStyle(t.inkColor.opacity(0.75))
+        .foregroundStyle(t.inkColor.opacity(0.85))
         .lineLimit(1)
       ProgressMeter(fraction: fraction, theme: t)
       Spacer(minLength: 0)
@@ -128,17 +169,20 @@ struct HabitWidgetView: View {
 
 @available(iOS 17.0, *)
 private struct MoodBody: View {
-  @Environment(\.widgetFamily) private var family
   let entry: HabitEntry
   let medium: Bool
+  let theme: WidgetTheme
+  let title: String
 
   var body: some View {
-    let t = savedHabitTheme(entry.theme, kind: entry.habit.designKind, family: family)
+    let t = theme
     let level = Int(entry.value)
     VStack(alignment: .leading, spacing: 6) {
-      Text(HabitText.name(.mood).uppercased(with: .current))
+      Text(title.uppercased(with: .current))
         .font(t.typeface(size: 11, weight: .bold))
         .foregroundStyle(t.accentColor)
+        .lineLimit(1)
+        .minimumScaleFactor(0.85)
       if medium {
         Text(HabitText.mood(min(5, max(0, level))))
           .font(t.typeface(size: 20, weight: .bold))
@@ -159,7 +203,6 @@ private struct MoodBody: View {
         HStack {
           MoodFace(level: max(1, level), selected: level > 0, theme: t)
             .frame(width: 48, height: 48)
-            .opacity(level > 0 ? 1 : 0.5)
             .invalidatableContent()
           Text(HabitText.mood(min(5, max(0, level))))
             .font(t.typeface(size: 15, weight: .semibold))
@@ -196,7 +239,7 @@ private struct HabitButtonLabel: View {
       .foregroundStyle(theme.inkColor)
       .lineLimit(1)
       .minimumScaleFactor(0.6)
-      .frame(maxWidth: .infinity, minHeight: 36)
+      .frame(maxWidth: .infinity, minHeight: 44)
       .background(Capsule().fill(theme.inkColor.opacity(0.12)))
       .overlay(Capsule().strokeBorder(theme.inkColor.opacity(0.35), lineWidth: 1))
   }
@@ -221,18 +264,19 @@ private struct ProgressMeter: View {
 }
 
 /// Original line-drawn face: the mouth curves from a frown (1) to a wide smile (5).
-private struct MoodFace: View {
+struct MoodFace: View {
   let level: Int
   let selected: Bool
   let theme: WidgetTheme
+  var monochrome = false
 
   var body: some View {
     GeometryReader { geo in
       let s = min(geo.size.width, geo.size.height)
-      let colour = selected ? theme.accentColor : theme.inkColor.opacity(0.6)
+      let colour = monochrome ? Color.primary : (selected ? theme.accentColor : theme.inkColor.opacity(0.6))
       ZStack {
         Circle()
-          .fill(selected ? theme.accentColor.opacity(0.15) : Color.clear)
+          .fill(selected && !monochrome ? theme.accentColor.opacity(0.15) : Color.clear)
         Circle()
           .strokeBorder(colour, lineWidth: max(1.5, s * 0.06))
         Path { p in
@@ -265,7 +309,8 @@ private func habitConfiguration(_ habit: HabitKindID, name: String, description:
   }
   .configurationDisplayName(name)
   .description(description)
-  .supportedFamilies([.systemSmall, .systemMedium])
+  .supportedFamilies(habit.widgetFamilies)
+  .contentMarginsDisabled()
 }
 
 @available(iOS 17.0, *)

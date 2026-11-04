@@ -10,7 +10,7 @@ import { WIDGET_APP_GROUP, WIDGET_THEME_FILE, WIDGET_THEME_KEY } from './widgetT
 import { PROFILE_MIME, PROFILE_SERVER_PATH } from './profileServer.ts';
 
 const ROOT = process.cwd();
-const read = (rel: string): string => readFileSync(join(ROOT, rel), 'utf8');
+const read = (rel: string): string => readFileSync(join(ROOT, rel), 'utf8').replace(/\r\n/g, '\n');
 const WIDGET_DIR = 'targets/widget';
 const widgetSwift = (): string[] => readdirSync(join(ROOT, WIDGET_DIR)).filter((f) => f.endsWith('.swift'));
 const BRIDGE = 'modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift';
@@ -81,8 +81,7 @@ test('no duplicate top-level type names across the extension target', () => {
 test('extension imports only system frameworks (never ExpoModulesCore or a Glaze pod)', () => {
   for (const f of widgetSwift()) {
     for (const m of read(`${WIDGET_DIR}/${f}`).matchAll(/^import\s+(\w+)/gm)) {
-      // owner-1102b: EventKit (Next event, T280) and CoreLocation (Weather, T281) are linked in expo-target.config.js.
-      assert.ok(['SwiftUI', 'WidgetKit', 'Foundation', 'UIKit', 'AppIntents', 'EventKit', 'CoreLocation'].includes(m[1]), `${f} imports ${m[1]}`);
+      assert.ok(['SwiftUI', 'WidgetKit', 'Foundation', 'CoreFoundation', 'UIKit', 'AppIntents', 'CryptoKit', 'ImageIO', 'EventKit', 'CoreLocation'].includes(m[1]), `${f} imports ${m[1]}`);
     }
   }
 });

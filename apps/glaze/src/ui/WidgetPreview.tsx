@@ -15,7 +15,7 @@ import { StyleSheet, Text, View, type TextStyle } from 'react-native';
 import Svg, { Circle, Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import type { DisplayFont } from '../core/artwork';
 import type { WidgetFill, WidgetKind, WidgetRegion, WidgetSpec } from '../core/widgetSets';
-import { daysUntil } from '../core/widgetStudio';
+import { remainingCountdownDays } from '../core/widgetStudio';
 import { useT } from '../i18n';
 import { artFontsV2 as fonts, continuous } from '../theme/tokensV2';
 import type { FeatherName } from './featherName';
@@ -166,8 +166,10 @@ export const WidgetPreview = memo(function WidgetPreview({ spec, width, photoUri
         levelIndex += 1;
         return formatNumber(m?.meter?.sampleLevel ?? 0.72, { style: 'percent' });
       }
-      case 'countdown':
-        return formatNumber(Math.max(0, daysUntil(spec.countdownTo, date) ?? 12));
+      case 'countdown': {
+        const days = remainingCountdownDays(spec.countdownTo, date);
+        return days === null ? '—' : formatNumber(days);
+      }
       default:
         return '';
     }

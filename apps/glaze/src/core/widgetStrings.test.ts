@@ -77,8 +77,10 @@ test('every String(localized:) key and default in Swift matches English', () => 
 
 test('no hard-coded English left in the habit widget views', () => {
   const src = readFileSync(join(WIDGET_DIR, 'HabitWidget.swift'), 'utf8').replace(/\/\/.*$/gm, '');
-  // Only symbol-only literals (− + and "+\(n)" button faces) may stay.
+  // Saved-fill schema keys are not visible copy. All other words must be localized.
+  const schemaWords = new Set(['kind', 'gradient', 'from', 'to', 'colour']);
   for (const m of src.matchAll(/"((?:[^"\\]|\\.)*)"/g)) {
+    if (schemaWords.has(m[1])) continue;
     assert.ok(!/[A-Za-z]{2,}/.test(m[1].replace(/\\\([^)]*\)/g, '')), `hard-coded text in HabitWidget.swift: "${m[1]}"`);
   }
 });
