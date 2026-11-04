@@ -57,14 +57,19 @@ import Darwin
     if !imageGrid { XCTAssertTrue(app.collectionViews.cells.firstMatch.exists, app.debugDescription) }
     print("GLAZE_PHOTO_PICKER_TREE\n" + app.debugDescription); fflush(stdout)
     let cells = (imageGrid ? gridImages.allElementsBoundByIndex : app.collectionViews.cells.allElementsBoundByIndex)
-      .filter { $0.isHittable && $0.frame.height > 30 && $0.frame.width > 30 }
+      .filter {
+        // Remote Photos images have real visible frames but can omit AX hit points.
+        let f = $0.frame, screen = app.frame
+        return $0.exists && f.height > 30 && f.width > 30 && f.minX >= 0 && f.maxX <= screen.width
+          && f.minY > 180 && f.maxY < screen.height - 90
+      }
     XCTAssertGreaterThanOrEqual(cells.count, 2, app.debugDescription)
-    cells[0].tap(); cells[1].tap()
+    for item in cells.prefix(2) { item.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap() }
     let selected = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); selected.name = "system-picker-two-selected"; selected.lifetime = .keepAlways; add(selected)
     let exactAdd = app.buttons["Add"].firstMatch
     let countedAdd = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Add (")).firstMatch
     let done = app.buttons["Done"].firstMatch
-    if done.exists && done.isEnabled && done.isHittable { done.tap() }
+    if done.waitForExistence(timeout: 3) && done.isEnabled { done.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap() }
     else if exactAdd.exists && exactAdd.isHittable { exactAdd.tap() }
     else { XCTAssertTrue(countedAdd.exists && countedAdd.isHittable, app.debugDescription); countedAdd.tap() }
     XCTAssertTrue(app.staticTexts["2 / 12 photos"].waitForExistence(timeout: 20), app.debugDescription)
