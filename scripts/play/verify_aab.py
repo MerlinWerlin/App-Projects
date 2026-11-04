@@ -13,8 +13,9 @@ import zipfile
 
 from apk_permissions import FORBIDDEN
 
-BUILD_ID = "637caa56-f5d2-46d0-801e-6d644f26c359"
-SOURCE = "2a16e7fe1e5bf70a320ca44c8ae5549d51e140fd"
+BUILD_ID = "fc348389-4fde-4dd9-b8ab-5d438454592f"
+SOURCE = "d87a013daa35e8a1ba61fcf49f9b41114dbd565e"
+VERSION_CODE = 3
 BUNDLETOOL_URL = "https://github.com/google/bundletool/releases/download/1.18.3/bundletool-all-1.18.3.jar"
 BUNDLETOOL_SHA = "a099cfa1543f55593bc2ed16a70a7c67fe54b1747bb7301f37fdfd6d91028e29"
 ANDROID = "{http://schemas.android.com/apk/res/android}"
@@ -24,7 +25,8 @@ def inspect_manifest(text):
     root = ET.fromstring(text)
     assert root.attrib["package"] == "com.jared797.cue"
     assert root.attrib[ANDROID + "versionName"] == "1.0.0"
-    assert root.attrib[ANDROID + "versionCode"] == "2"
+    assert root.attrib[ANDROID + "versionCode"] == str(VERSION_CODE)
+    assert 'com.google.mlkit' not in text, 'Unused scanner components are still packaged'
     target = int(root.find("uses-sdk").attrib[ANDROID + "targetSdkVersion"])
     assert target >= 36
     app = root.find("application")
@@ -101,7 +103,7 @@ def main(output):
         print("Production build status: " + state["status"] + "; no binary validation claimed")
         assert state["status"] not in ("ERRORED", "CANCELED"), state.get("error", {}).get("message", "Build failed")
         return
-    assert state["appVersion"] == "1.0.0" and str(state["appBuildVersion"]) == "2"
+    assert state["appVersion"] == "1.0.0" and str(state["appBuildVersion"]) == str(VERSION_CODE)
     bundle = output / "cue-production.aab"
     download(state["artifacts"]["buildUrl"], bundle, expo_artifact=True)
     tool = output / "bundletool.jar"
@@ -132,12 +134,13 @@ def main(output):
         assert archive.getinfo("base/assets/index.android.bundle").file_size > 100_000
         assert "base/dex/classes.dex" in archive.namelist()
         for name in archive.namelist():
+            assert 'barhopper' not in name.lower(), 'Unused native barcode library remains'
             if name.startswith("base/lib/") and name.endswith(".so"):
                 libs.append(inspect_elf(name, archive.read(name)))
     assert any(lib["abi"] == "arm64-v8a" for lib in libs)
     receipt = {"status": "static_production_bundle_checks_passed_not_submitted",
                "buildId": BUILD_ID, "sourceCommit": SOURCE, "package": "com.jared797.cue",
-               "version": "1.0.0", "versionCode": 2, "targetSdk": target,
+               "version": "1.0.0", "versionCode": VERSION_CODE, "targetSdk": target,
                "sha256": hashlib.sha256(bundle.read_bytes()).hexdigest(), "bytes": bundle.stat().st_size,
                "certificateSha256": fingerprints, "bundletoolVersion": "1.18.3",
                "permissions": permissions, "nativeLibraries": libs,

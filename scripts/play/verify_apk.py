@@ -18,6 +18,9 @@ target = int(re.search(r"targetSdkVersion:'(\d+)'", badging).group(1))
 assert target >= 36, target
 assert config["updates"]["enabled"] is False
 verify_permissions((output / "manifest.txt").read_text(), badging)
+camera = next((p for p in config.get('plugins', []) if isinstance(p, list) and p[0] == 'expo-camera'), None)
+if camera and camera[1].get('barcodeScannerEnabled') is False:
+    assert 'com.google.mlkit' not in (output / 'manifest.txt').read_text(), 'Unused scanner components remain'
 libraries = []
 with zipfile.ZipFile(apk) as archive:
     assert archive.getinfo("assets/index.android.bundle").file_size > 100_000, "Missing embedded JS"

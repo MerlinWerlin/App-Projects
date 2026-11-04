@@ -5,7 +5,7 @@ import urllib.request
 from verify_aab import inspect_manifest, inspect_elf, StripAuthorizationRedirect
 
 MANIFEST = '''<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="com.jared797.cue" android:versionName="1.0.0" android:versionCode="2">
+package="com.jared797.cue" android:versionName="1.0.0" android:versionCode="3">
 <uses-sdk android:targetSdkVersion="36"/>
 <uses-permission android:name="android.permission.CAMERA"/>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
@@ -23,6 +23,12 @@ class ProductionGates(unittest.TestCase):
 
     def test_expected_manifest(self):
         self.assertEqual(inspect_manifest(MANIFEST)[0], 36)
+
+    def test_superseded_version_and_unused_scanner_rejected(self):
+        for text in (MANIFEST.replace('versionCode="3"', 'versionCode="2"'),
+                     MANIFEST.replace('<application>', '<application><provider android:name="com.google.mlkit.common.internal.MlKitInitProvider"/>')):
+            with self.subTest(text=text), self.assertRaises(AssertionError):
+                inspect_manifest(text)
 
     def test_preview_package_rejected(self):
         with self.assertRaises(AssertionError):
