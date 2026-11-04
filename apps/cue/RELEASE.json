@@ -1,5 +1,5 @@
 {
-  "mode": "update",
-  "note": "Cue: Australian Plus AUD 2.99 price display and compact script formatting toolbar",
+  "mode": "build",
+  "note": "Cue: voice recording stops cleanly when cancelled, purchase recovery fixes and Expo SDK 58 package updates",
   "ascAppId": "6826554677"
 }
