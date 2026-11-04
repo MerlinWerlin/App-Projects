@@ -277,7 +277,7 @@ test('bad manifests and old app versions are refused before any asset is fetched
 });
 
 test('base URL config: GitHub release in production (T169); empty = disabled, no request; https or loopback only', async () => {
-  assert.equal(PACK_BASE_URL, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1');
+  assert.equal(PACK_BASE_URL, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5');
   assert.equal(PACKS_DISABLED_MESSAGE, 'Theme packs arrive with the store release');
   assert.equal(packsEnabled(PACK_BASE_URL), true);
   assert.equal(packsEnabled(''), false);

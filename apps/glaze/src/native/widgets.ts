@@ -31,6 +31,7 @@ import {
   type WidgetArtSourceFile,
 } from '../core/widgetArtLibrary';
 import { commitThemeArt, type PlannedThemePiece } from '../core/themeArtSync';
+import { ALBUM_LIMIT, isAlbumSharedRef } from '../core/widgetAlbum';
 
 export type WidgetsReason = 'expo-go' | 'android' | 'not-built' | 'failed' | null;
 export type WidgetsResult = { available: boolean; ok: boolean; reason: WidgetsReason };
@@ -50,6 +51,7 @@ export interface WidgetsAdapter {
   /** Copy a local image (file:// URI) into the App Group for the Photo widget. */
   setPhoto(uri: string): Promise<WidgetsResult>;
   clearPhoto(): Promise<WidgetsResult>;
+  importAlbumPhotos(uris: string[]): Promise<WidgetsResult & { refs: string[] }>;
   /**
    * T59: write a widget-set payload (src/core/widgetStudio.ts `studioPayload`) to App Group key
    * `glaze.widgets.v2` and reload timelines. A build whose bridge predates T59 reports
@@ -203,6 +205,7 @@ type NativeBridge = {
   widgetDesignVersion?(): Promise<number>;
   setPhoto(uri: string): Promise<boolean>;
   clearPhoto?(): Promise<boolean>;
+  importAlbumPhotos?(uris: string[]): Promise<string[]>;
   setWidgetSet?(json: string): Promise<boolean>;
   getHabits?(): Promise<{ habits?: string | null; log?: string | null } | null>;
   setHabits?(json: string): Promise<boolean>;
@@ -339,6 +342,17 @@ export const widgets: WidgetsAdapter = {
   setTheme: (theme) => run((mod) => mod.setTheme(serializeWidgetTheme(theme))),
   setPhoto: (uri) => run((mod) => mod.setPhoto(uri)),
   clearPhoto: () => run((mod) => mod.clearPhoto?.()),
+  importAlbumPhotos: async (uris) => {
+    const status = await isAvailable();
+    const mod = status.available ? loadNative() : null;
+    if (!mod?.importAlbumPhotos) return { available: false, ok: false, reason: status.reason ?? 'not-built', refs: [] };
+    try {
+      if (!uris.length || uris.length > ALBUM_LIMIT || uris.some((u) => !u.startsWith('file://'))) throw new Error('Invalid album');
+      const refs = await mod.importAlbumPhotos(uris);
+      if (!Array.isArray(refs) || refs.length !== uris.length || !refs.every(isAlbumSharedRef)) throw new Error('Photo import failed');
+      return { available: true, ok: true, reason: null, refs: [...new Set(refs)] };
+    } catch { return { available: true, ok: false, reason: 'failed', refs: [] }; }
+  },
   setWidgetSet: async (json) => {
     const mod = (await isAvailable()).available ? loadNative() : null;
     if (mod && typeof mod.setWidgetSet !== 'function') return { available: false, ok: false, reason: 'not-built' };

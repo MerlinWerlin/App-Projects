@@ -482,18 +482,17 @@ function layout(kind: CatalogueKind, size: CatalogueSize): Tpl[] {
       return [tx('label', [0, 0, 1, 1], { source: src, sizePt: 15 })];
     }
     case 'photoAlbum': {
-      const caption = size === 'small' ? 0.26 : 0.24;
+      const points = CATALOGUE_SIZE_POINTS[size];
+      const caption = (size === 'small' ? 44 : 56) / points.height;
       const regions: Tpl[] = [
         { id: 'photo', role: 'photo', frame: [0, 0, 1, 1] },
         { id: 'scrim', role: 'scrim', frame: [0, 1 - caption, 1, caption], on: 'photo' },
-        tx('caption', [0.06, 1 - caption + 0.04, size === 'small' ? 0.88 : 0.66, caption - 0.08], {
+        tx('caption', [12 / points.width, 1 - caption + 6 / points.height, (points.width - 24 - (size === 'small' ? 0 : 52)) / points.width, caption - 12 / points.height], {
           source: 'text', key: `${S}.albumCaption`, editable: true, maxLength: size === 'small' ? 24 : 40, sizePt: 14, weight: 'medium',
         }, 'scrim'),
       ];
       if (size !== 'small') {
-        const h = caption - 0.06;
-        const w = (h * CATALOGUE_SIZE_POINTS[size].height) / CATALOGUE_SIZE_POINTS[size].width;
-        regions.push(btn('next', [0.94 - w, 1 - caption + 0.03, w, h], 'next', { intent: WIDGET_INTENTS.albumNext, params: {} }, 'scrim'));
+        regions.push(btn('next', [(points.width - 56) / points.width, 1 - caption + 6 / points.height, 44 / points.width, 44 / points.height], 'next', { intent: WIDGET_INTENTS.albumNext, params: {} }, 'scrim'));
       }
       return regions;
     }
@@ -708,6 +707,7 @@ function build(tokens0: WidgetTokens, kind: CatalogueKind, size: CatalogueSize, 
     };
     const graphicPrefs = family === 'standby' ? [t.accent, t.glyph, t.surface, t.bg[0], t.ink] : [t.glyph, t.accent, t.ink];
     const solveText = (tt: TextTpl, backdrop: string[], on: string): Solved | null => {
+      if (kind === 'photoAlbum') return { colour: '#FFFFFF', backdrop: ['#242424'], contrast: round3(contrastRatio('#FFFFFF', '#242424')) };
       // 4.5:1, or 3:1 for large numerals under a look (widgetLook.textMinContrast).
       const min = textMinContrast(look, tt.source, tt.sizePt, tt.weight ?? 'regular');
       if (userText) {
@@ -730,9 +730,9 @@ function build(tokens0: WidgetTokens, kind: CatalogueKind, size: CatalogueSize, 
         if (r.role === 'band' || r.role === 'scrim' || r.role === 'photo') {
           const fill: WidgetFill =
             r.role === 'band' ? { kind: 'solid', colour: t.accent }
-            : r.role === 'scrim' ? { kind: 'solid', colour: t.bg[0] }
+            : r.role === 'scrim' ? { kind: 'solid', colour: kind === 'photoAlbum' ? '#000000' : t.bg[0] }
             : { kind: 'gradient', from: t.accent, to: t.surface, angle: 135 };
-          const opacities = r.role === 'scrim' ? [SCRIM_OPACITY, ...OPACITY_STEPS] : [1];
+          const opacities = r.role === 'scrim' ? (kind === 'photoAlbum' ? [0.86] : [SCRIM_OPACITY, ...OPACITY_STEPS]) : [1];
           const kids = templates.filter((k) => k.on === r.id);
           let samples = widgetFillSamples(fill, opacities[0]);
           let opacity = opacities[0];

@@ -163,7 +163,7 @@ test('Swift guards: interactive focus, live timer, battery guard, no fake number
   assert.match(overlay, /Text\(timerInterval:/);
   assert.match(overlay, /Text\(date, style: \.time\)/);
   assert.match(overlay, /isBatteryMonitoringEnabled = true/);
-  assert.match(overlay, /guard level >= 0/);
+  assert.match(overlay, /guard level.isFinite, level >= 0/);
   assert.match(overlay, /@available\(iOS 17\.0, \*\)\s*struct LiveArtLayer/);
   // No value is hard-coded: digits only come from the date, the store or the battery.
   assert.doesNotMatch(overlay, /"\d+%"|"\d{1,2}:\d{2}"|"\d+ ?(days|DAYS)"/);
@@ -187,4 +187,13 @@ test('app: the menu labels every non-live card "Art" and saves the live spec wit
   assert.match(art, /withLiveArt\(theme\.id/);
   assert.match(art, /liveArtSpec\(plan/);
   assert.match(art, /\.\.\.\(live \? \{ live \} : \{\}\)/);
+});
+
+
+test('countdown civil days reject year zero and malformed separators', () => {
+  assert.equal(validTargetDay('0000-01-01'), null);
+  assert.equal(validTargetDay('2026--11-02'), null);
+  assert.equal(validTargetDay('2026-11-02\n'), null);
+  assert.equal(validTargetDay('2024-02-29'), '2024-02-29');
+  assert.equal(validTargetDay('2026-02-29'), null);
 });

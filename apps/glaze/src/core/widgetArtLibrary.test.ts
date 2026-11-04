@@ -20,6 +20,8 @@ import {
   type WidgetArtPiece,
 } from './widgetArtLibrary.ts';
 import { seamlessFileName } from './seamlessWidget.ts';
+import { liveArtPlan, liveArtSpec } from './liveArt.ts';
+import { parseWidgetOptions } from './widgetOptions.ts';
 
 const read = (...p: string[]): string => readFileSync(join(process.cwd(), ...p), 'utf8');
 
@@ -33,6 +35,20 @@ const piece = (id: string, created: number, extra: Partial<WidgetArtPiece> = {})
   aspect: 1,
   size: 'small' as const,
   ...extra,
+});
+
+test('compact native values survive pack parsing and the serialized shared widget library', () => {
+  let library=emptyLibrary();
+  for(const kind of ['date','focus','battery'] as const) {
+    const parsed=parseWidgetOptions([{id:'art-'+kind,kind,image:'original.webp',sizes:['small'],numberFree:true,liveFrame:{rect:[.12,.025,.76,.14],shape:'plate',valueStyle:'compact',ink:'#ABCDEF'}}],[{path:'original.webp',role:'widget-art',width:1024,height:1024}]);
+    assert.deepEqual(parsed.errors,[]);
+    const plan=liveArtPlan('theme',parsed.options[0]);assert.ok(plan);
+    const live=liveArtSpec(plan,{w:1024,h:1024},{w:170,h:170},'bleed',{bg:'#102030',ink:'#FFFFFF'});assert.ok(live);
+    library=addPiece(library,piece('art-'+kind,1,{live})).lib;
+  }
+  const restored=parseLibrary(serializeLibrary(library));
+  assert.equal(restored.pieces.length,3);
+  for(const item of restored.pieces){assert.equal(item.live?.valueStyle,'compact');assert.equal(item.live?.cleanFace,true);assert.equal(item.live?.ink,'#ABCDEF');assert.equal(item.live?.cover,false);}
 });
 
 test('add keeps every piece instead of overwriting (two pieces, same size)', () => {

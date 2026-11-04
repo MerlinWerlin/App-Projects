@@ -497,9 +497,9 @@ test('T132: the three starter packs ship and validate with no errors or warnings
 
 test('the generated library and asset map are in sync with themes/ (run node scripts/import-theme-packs.mjs --regenerate)', () => {
   const packs = SHIPPED.filter((p) => p.report.ok).map((p) => p.report.pack!);
-  assert.equal(readFileSync(join(root, ART_LIBRARY_PATH), 'utf8'), artPackLibrarySource(packs), `${ART_LIBRARY_PATH} is stale`);
+  assert.equal(readFileSync(join(root, ART_LIBRARY_PATH), 'utf8').replace(/\r\n/g, '\n'), artPackLibrarySource(packs), `${ART_LIBRARY_PATH} is stale`);
   assert.equal(
-    readFileSync(join(root, ART_ASSETS_PATH), 'utf8'),
+    readFileSync(join(root, ART_ASSETS_PATH), 'utf8').replace(/\r\n/g, '\n'),
     artPackAssetsSource(packs.map((p) => p.id)),
     `${ART_ASSETS_PATH} is stale`,
   );

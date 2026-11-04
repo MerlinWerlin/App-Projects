@@ -1,3 +1,5 @@
 *.cmd text eol=crlf
 *.sh text eol=lf
 KIT_VERSION.txt export-subst
+# Theme manifest byte counts are generated from canonical LF JSON on the release runner.
+themes/*/*.json text eol=lf

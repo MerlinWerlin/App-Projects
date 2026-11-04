@@ -685,3 +685,5 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - App-Projects: f59d663 (Jared chat ship of run 239) differs only in PC-only package pins: skipped. 79f0efd (pack versions + release tags for 141 themes, glaze-packs-v2..v4) 3-way applied (278514d). Oversight still v233. No page comments. Registry unreachable: core-only.
 - Gap fill (edab295): Widgets tab Lock note no longer says "not ready yet"; it says how to add the Glaze Lock Screen widgets (11 languages). STORE.md description lists the new widgets (1,865 chars).
 - 1888/1888 core tests green; 11 pack release tests green. Nothing device-tested; Swift not compiled.
+
+2026-11-04 Codex: Jared requested integration and TestFlight. Isolated release merges current main with PR190/capability4; retains both widget lines, calendar/weather/streak additions and localization. Core1900/1900 and app+Node TypeScript pass. New1.0.2 build uses separate v5 pack catalog so earlier builds retain existing library. Native SDK and signed upload receipts tracked separately in Apps/outputs/glaze-testflight-20261104.

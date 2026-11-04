@@ -72,6 +72,15 @@
 "Resume" = "استئناف";
 "Days" = "أيام";
 
+"Photo album" = "ألبوم صور";
+
+"Choose album photos in Glaze" = "اختر صور الألبوم في Glaze";
+
+"Your selected photos, changing through the day." = "صورك المختارة تتغير خلال اليوم.";
+
+"Next photo" = "الصورة التالية";
+
+"Widget size" = "حجم الأداة";
 /* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
    The word clock's phrase is English only by design; other languages show a big digital time. */
 "widgets.moon.new" = "محاق";

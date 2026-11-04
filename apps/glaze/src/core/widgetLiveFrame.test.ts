@@ -73,3 +73,17 @@ test('untrusted clock styles and non-hex colour expressions are rejected by the 
   const parsed = parseLiveArtSpec({kind:'clock',rect:[0,0,1,1],clockStyle:'html',ink:'#FFFFFF'});
   assert.ok(parsed); assert.equal(parsed.clockStyle,undefined);
 });
+
+test('compact date, focus and battery layouts retain artwork frames and colour', () => {
+  for(const kind of ['date','calendar','focus','battery'] as const) {
+    const parsed=parseWidgetOptions([{...option,kind,liveFrame:{...frame,shape:'plate',valueStyle:'compact',ink:'#EEDDCC'}}],assets);
+    assert.deepEqual(parsed.errors,[]);
+    const plan=liveArtPlan('theme',parsed.options[0]);assert.ok(plan);
+    const spec=liveArtSpec(plan,{w:1024,h:1024},{w:364,h:170},'bleed',{bg:'#111111',ink:'#FFFFFF'});assert.ok(spec);
+    assert.equal(spec.valueStyle,'compact');assert.equal(spec.ink,'#EEDDCC');assert.deepEqual(parseLiveArtSpec(spec),spec);
+  }
+  for(const kind of ['clock','art','habits','countdown']) {
+    const parsed=parseWidgetOptions([{...option,kind,liveFrame:{...frame,valueStyle:'compact'}}],assets);
+    assert.equal(parsed.options.length,0);
+  }
+});

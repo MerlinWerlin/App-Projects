@@ -31,6 +31,7 @@ import type { DisplayFont } from '../core/artwork';
 import { dotGrid, handAngles, monthProgress, yearProgress } from '../core/calendarMaths';
 import { catalogueWidgetModel, type CatalogueRegionDraw, type CatalogueRegionModel } from '../core/catalogueWidgetModel';
 import type { CatalogueSpec } from '../core/widgetKinds';
+import { albumIndex } from '../core/widgetAlbum';
 import type { WidgetFill } from '../core/widgetSets';
 import { useT } from '../i18n';
 import { artFontsV2 as fonts, continuous } from '../theme/tokensV2';
@@ -51,6 +52,7 @@ type Props = {
   accessibilityLabel?: string;
   /** T85: the user's wallpaper photo, drawn behind clear / tinted glass. Never uploaded. */
   wallpaperUri?: string | null;
+  albumPhotoUris?: string[];
 };
 
 /** Untyped key lookup for keys carried in data. */
@@ -153,7 +155,7 @@ function useNow(fixed: Date | undefined): Date {
   return fixed ?? tick;
 }
 
-export const CatalogueWidgetPreview = memo(function CatalogueWidgetPreview({ spec, width, now, habitValue, habitGoal, accessibilityLabel, wallpaperUri }: Props) {
+export const CatalogueWidgetPreview = memo(function CatalogueWidgetPreview({ spec, width, now, habitValue, habitGoal, accessibilityLabel, wallpaperUri, albumPhotoUris = [] }: Props) {
   const { t, script, formatDate, formatNumber } = useT();
   const tl = t as unknown as LooseT;
   const latin = script === 'latin';
@@ -373,6 +375,11 @@ export const CatalogueWidgetPreview = memo(function CatalogueWidgetPreview({ spe
   };
 
   const renderRegion = (m: CatalogueRegionModel): ReactNode => {
+    if (spec.kind === 'photoAlbum' && m.region.role === 'action' && (albumPhotoUris.length || spec.photoRefs.length) < 2) return null;
+    if (m.region.role === 'photo' && spec.kind === 'photoAlbum' && albumPhotoUris.length) {
+      const uri = albumPhotoUris[albumIndex(date, spec.rotateMinutes ?? 60, albumPhotoUris.length)];
+      return <ExpoImage source={{ uri }} contentFit="cover" style={StyleSheet.absoluteFill} />;
+    }
     const draw: CatalogueRegionDraw = m.draw;
     switch (draw) {
       case 'fill':

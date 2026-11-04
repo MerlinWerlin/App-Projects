@@ -1,4 +1,4 @@
-import { nativeWidgetSupported } from '../src/core/widgetDelivery';
+import { nativeWidgetSupported, requiredNativeWidgetVersion } from '../src/core/widgetDelivery';
 // Widget Studio (T59, M4b-ui; docs/WIDGETS.md "Widget Studio"). Edit one widget of a theme's
 // matching set: type and size, background (photo, colour, gradient or the theme's art), accent and
 // text colours, text, font and text size. The live preview stays pinned on top.
@@ -107,6 +107,7 @@ import type { FeatherName } from '../src/ui/featherName';
 import { haptic } from '../src/ui/haptics';
 import { textStyleFor } from '../src/ui/i18nLayout';
 import { pickBackgroundPhoto } from '../src/ui/pickBackgroundPhoto';
+import { albumPhotoUri, pickWidgetAlbumPhotos } from '../src/ui/pickWidgetAlbumPhotos';
 import { Swatches, type Swatch } from '../src/ui/Swatches';
 import { displayFontStyle } from '../src/ui/ThemeCard';
 import { InsetGroup, PillButton, SquircleCard } from '../src/ui/v2';
@@ -331,6 +332,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
     setBusy(true);
     setResult(null);
     let next: AddResult = 'failed';
+    let albumImportFailed = false;
     try {
       await saveStudio(state);
       const status = await widgets.isAvailable();
@@ -338,9 +340,24 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
         next = 'preview';
       } else if (!nativeWidgetSupported(catSpec?.kind ?? spec.kind, catSpec?.size ?? spec.size)) {
         next = 'unsupported';
-      } else if (await widgets.designVersion() < 2) {
+      } else if (await widgets.designVersion() < Math.max(requiredNativeWidgetVersion(catSpec?.kind ?? spec.kind, catSpec?.size ?? spec.size),
+        Object.values(state.catalogueDrafts ?? {}).some((d) => d.albumPhotos?.length) ? 4 : 2)) {
         next = 'updateRequired';
       } else {
+        // The payload contains every size's drafts. Import all album picks before publishing it.
+        let outgoing = state;
+        const catalogueDrafts = { ...state.catalogueDrafts };
+        for (const [id, draft] of Object.entries(catalogueDrafts)) {
+          if (!id.startsWith(`${state.themeId}:photoAlbum:`) || !draft.albumPhotos?.length) continue;
+          const uris = draft.albumPhotos.map(albumPhotoUri);
+          if (uris.some((uri) => !uri)) throw new Error('Album photo unavailable');
+          const imported = await widgets.importAlbumPhotos(uris as string[]);
+          if (!imported.ok) { albumImportFailed = true; throw new Error('Album import failed'); }
+          catalogueDrafts[id] = { ...draft, photoRefs: imported.refs };
+        }
+        outgoing = { ...state, catalogueDrafts };
+        await saveStudio(outgoing);
+        change(() => outgoing);
         const photo = state.catalogue ? null : needsPhotoCopy(set, state);
         const photoOk = photo ? (await widgets.setPhoto(photo)).ok : true;
         // T221: the copied photo (widget-photo.jpg) also joins "My widget art", so a Seamless widget
@@ -356,12 +373,12 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
         } else {
           if (!(await applyWidgetTheme(theme))) throw new Error('Widget theme could not reach the shared container');
           // The set plus the catalogue block, so a set-widget add never drops catalogue edits.
-          const r = await widgets.setWidgetSet(studioCataloguePayload(lookSet, cat, state, { translate: (k) => tl(k) }));
+          const r = await widgets.setWidgetSet(studioCataloguePayload(lookSet, cat, outgoing, { translate: (k) => tl(k) }));
           next = r.ok ? 'saved' : r.available ? 'failed' : 'preview';
         }
       }
     } catch {
-      next = 'failed';
+      next = albumImportFailed ? 'photoFailed' : 'failed';
     } finally {
       setBusy(false);
     }
@@ -415,6 +432,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
                   spec={catSpec}
                   width={previewW}
                   wallpaperUri={wallpaper.photoUri}
+                  albumPhotoUris={(catDraft.albumPhotos ?? []).map(albumPhotoUri).filter((uri): uri is string => !!uri)}
                   habitValue={widgetHabitValue(widgetHabits, catSpec.binding.habit)}
                   habitGoal={widgetHabitGoal(widgetHabits, catSpec.binding.habit)}
                   accessibilityLabel={t('themeUi.widgetStudio.previewA11y', { kind: kindName, size: sizeName })}
@@ -627,6 +645,17 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
 
         {catSpec?.kind === 'photoAlbum' ? (
           <InsetGroup header={t('tabs.widgetsTab.studio.rotate')}>
+            <PillButton label={t('tabs.widgetsTab.studio.chooseAlbumPhotos')} disabled={busy} onPress={() => void (async () => {
+              setPhotoProblem(null);
+              const picked = await pickWidgetAlbumPhotos();
+              if (picked.kind === 'picked') change((s) => updateCatalogueDraft(s, { albumPhotos: picked.names }));
+              else if (picked.kind !== 'cancelled') setPhotoProblem(picked.kind === 'denied' ? 'denied' : 'error');
+            })()} />
+            <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...body(textV2.footnote), { color: c.inkSecondary }]}>
+              {t('tabs.widgetsTab.studio.albumPhotoCount', { n: formatNumber(catDraft.albumPhotos?.length ?? 0) })}
+            </Text>
+            {catDraft.albumPhotos?.length ? <PillButton label={t('tabs.widgetsTab.studio.clearAlbumPhotos')} disabled={busy}
+              onPress={() => change((s) => updateCatalogueDraft(s, { albumPhotos: [] }))} /> : null}
             <ChipRow
               label={t('tabs.widgetsTab.studio.rotate')}
               options={rotateOptions().map((m): ChipOption => ({

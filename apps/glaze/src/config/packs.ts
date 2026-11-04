@@ -22,7 +22,7 @@ export const PACK_RELEASE_REPO = 'MerlinWerlin/App-Projects';
 /** Release tags: production packs, and a separate release for testing a pack set before it ships. */
 export const PACK_RELEASE_TAGS: Readonly<Record<PackEnv, string>> = Object.freeze({
   staging: 'glaze-packs-staging',
-  production: 'glaze-packs-v1',
+  production: 'glaze-packs-v5',
 });
 // T274: production packs may also live in glaze-packs-v2, -v3, ... (a catalogue entry's `release`);
 // catalog.json is always on PACK_RELEASE_TAGS.production. See packReleaseBase.

@@ -101,8 +101,8 @@ test('clock (legacy, analog, digital, stacked): live time from the entry date, o
 
 test('date / calendar and countdown: the timeline has an entry AT the next midnight', () => {
   const src = overlay();
-  assert.match(src, /case \.date, \.countdown:[\s\S]*?let tomorrow = cal\.date\(byAdding: \.day, value: 1, to: cal\.startOfDay\(for: now\)\)[\s\S]*?return \(\[now, tomorrow\], \.atEnd\)/);
-  assert.match(src, /date\.formatted\(\.dateTime\.day\(\)\)/);
+  assert.match(src, /case \.date, \.countdown:[\s\S]*?let tomorrow = nextMidnight\(from:now,calendar:cal\)[\s\S]*?return \(\[now, tomorrow\], \.atEnd\)/);
+  assert.match(src, /formattedDate\("d"\)/);
   // Countdown counts from the entry's day to the stored target (same rule as countdownArtDays).
   assert.match(src, /cal\.dateComponents\(\[\.day\], from: cal\.startOfDay\(for: date\), to: target\)/);
   // The catalogue Date widgets (DayProvider) roll over on time too.
@@ -115,7 +115,7 @@ test('battery: monitoring is enabled before the level is read, -1 is a dash, ref
   const on = src.indexOf('UIDevice.current.isBatteryMonitoringEnabled = true');
   const level = src.indexOf('UIDevice.current.batteryLevel');
   assert.ok(on > 0 && level > on, 'monitoring on before batteryLevel');
-  assert.match(src, /guard level >= 0, level <= 1 else \{ return nil \}/);
+  assert.match(src, /guard level\.isFinite, level >= 0, level <= 1 else \{ return nil \}/);
   assert.match(src, /case \.battery:\s*return \(\[now\], \.after\(now\.addingTimeInterval\(15 \* 60\)\)\)/);
   assert.match(src, /Text\(verbatim: "–"\)/);
 });
@@ -124,7 +124,7 @@ test('focus: Start / Pause AppIntent, App Group state, self-counting timer, paus
   const src = overlay();
   const intents = strip(read('targets/widget/FocusIntents.swift'));
   assert.match(src, /struct LiveFocusButton: View/);
-  assert.match(src, /case \.focus:\s*LiveFocusButton\(date: date, theme: theme, s: s\)/);
+  assert.match(src, /case \.focus:\s*LiveFocusButton\(date: date, theme: theme, s: s, compact: spec\.compact, phase: readings\.focus\(at: date\)\)/);
   assert.match(src, /Button\(intent: ToggleFocusIntent\(\)\)/);
   assert.match(src, /Text\(timerInterval: min\(date, end\)\.\.\.end, countsDown: true\)/);
   assert.match(src, /case \.paused\(let remaining\):\s*Text\(verbatim: FocusStore\.clock\(remaining\)\)/);

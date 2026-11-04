@@ -15,7 +15,7 @@ import {
 } from './weatherCodes.ts';
 
 const ROOT = process.cwd();
-const read = (rel: string): string => readFileSync(join(ROOT, rel), 'utf8');
+const read = (rel: string): string => readFileSync(join(ROOT, rel), 'utf8').replace(/\r\n/g, '\n');
 const code = (src: string): string => src.split('\n').map((l) => l.replace(/\/\/.*$/, '')).join('\n');
 
 // All WMO codes Open-Meteo documents.

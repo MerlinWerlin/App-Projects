@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 // T222 (owner-1101e): downloaded remote art packs update when the catalogue lists a newer
 // packVersion. Pure decisions (packUpdates.ts) plus the staged download + atomic swap in
 // packDownloader.ts against a local fixture server (node:http on 127.0.0.1, port 0). No external network.
@@ -25,7 +26,7 @@ import { manifestPath, parseCatalog, parseRemoteArtManifest } from './packCatalo
 import { remoteArtFiles } from './remoteCatalog.ts';
 import { cacheIndexAdd, cacheIndexSetPackVersion, parseCacheIndex, EMPTY_CACHE_INDEX } from './themePack.ts';
 
-const FIX = join(dirname(new URL(import.meta.url).pathname), 'fixtures');
+const FIX = join(dirname(fileURLToPath(import.meta.url)), 'fixtures');
 const fixture = (name: string) => JSON.parse(readFileSync(join(FIX, name), 'utf8')) as Record<string, unknown>;
 
 // ------------------------------------------------------------ pure decisions

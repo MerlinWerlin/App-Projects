@@ -116,7 +116,8 @@ test('names: the pack label; derived v1 pieces by shape; else "Art n" by pack pl
   assert.deepEqual(optionName(plain[0], plain), { key: 'tabs.widgetsTab.art.numbered', params: { n: 1 } });
   // A v2 option that happens to be called hero-small is not a derived piece.
   const fake: WidgetOption = { ...plain[0], id: 'hero-small' };
-  assert.equal('key' in optionName(fake, [fake]) && optionName(fake, [fake]).key, 'tabs.widgetsTab.art.numbered');
+  const fakeName = optionName(fake, [fake]);
+  assert.equal('key' in fakeName && fakeName.key, 'tabs.widgetsTab.art.numbered');
 });
 
 test('every locale has the new strings (hero names, live-instead button and hint, fixed-numbers note)', () => {

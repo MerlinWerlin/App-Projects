@@ -39,7 +39,7 @@ import { darkV2, lightV2 } from './designV2.ts';
 import { durations } from './motion.ts';
 
 const root = process.cwd();
-const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
+const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8').replace(/\r\n/g, '\n');
 const strip = (src: string) => src.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
 
 /** PNG header: width, height, bit depth, colour type (2 = RGB, 3 = palette, 6 = RGBA) and chunk names. */
