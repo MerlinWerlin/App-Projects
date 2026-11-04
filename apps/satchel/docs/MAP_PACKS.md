@@ -169,3 +169,11 @@ city from older app builds, which reject other versions); older builds ignore th
 
 **Not yet verified on a phone** (owner checks in TestFlight): download + unpack time for a ~40 MB city, LocalTile
 drawing in flight mode, dark mode look (tiles are the light style).
+
+### Build-page check, 4 November 2026 (run 170)
+
+The Satchel build run re-downloaded the public `catalog.json` and the three tars without signing in and walked them
+with the app's own parsers (`node tools/maps/check-release.mts . <download folder>`): sizes and SHA-256 match the
+catalog; Kyoto 811, Tokyo 985 and Sydney 381 PNG tiles (zoom 10-16) equal the catalog counts; `meta.json`,
+`pois.json` (5,412 / 20,021 / 4,082 places), toilets (463 / 1,220 / 384) and help places all parse. This is a
+file check, not an iPhone test (TRIAL.md DO-DQ).
