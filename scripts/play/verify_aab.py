@@ -1,12 +1,14 @@
 """Read-only production AAB inspection; never retrieves signing credentials."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import struct
 import subprocess
 import sys
 import urllib.request
+import urllib.parse
 import xml.etree.ElementTree as ET
 import zipfile
 
@@ -68,9 +70,26 @@ def inspect_elf(name, data):
     return {"name": name, "abi": abi, "bits": bits, "loadAlignments": aligns}
 
 
-def download(url, path):
+class StripAuthorizationRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        result = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if result is not None:
+            result.remove_header("Authorization")
+            assert urllib.parse.urlparse(newurl).scheme == "https", "HTTPS redirect required"
+        return result
+
+
+def download(url, path, expo_auth=False):
     assert url.startswith("https://"), "Expected HTTPS artifact"
-    with urllib.request.urlopen(url, timeout=120) as response, path.open("wb") as out:
+    request = urllib.request.Request(url)
+    if expo_auth:
+        origin = urllib.parse.urlparse(url)
+        assert origin.netloc == "expo.dev" and origin.path.startswith("/artifacts/eas/"), "Unexpected Expo artifact origin"
+        token = os.environ.get("EXPO_TOKEN")
+        assert token, "Existing Expo authentication required"
+        request.add_unredirected_header("Authorization", "Bearer " + token)
+    opener = urllib.request.build_opener(StripAuthorizationRedirect())
+    with opener.open(request, timeout=120) as response, path.open("wb") as out:
         while chunk := response.read(1024 * 1024):
             out.write(chunk)
 
@@ -86,7 +105,7 @@ def main(output):
         return
     assert state["appVersion"] == "1.0.0" and str(state["appBuildVersion"]) == "2"
     bundle = output / "cue-production.aab"
-    download(state["artifacts"]["buildUrl"], bundle)
+    download(state["artifacts"]["buildUrl"], bundle, expo_auth=True)
     tool = output / "bundletool.jar"
     download(BUNDLETOOL_URL, tool)
     assert hashlib.sha256(tool.read_bytes()).hexdigest() == BUNDLETOOL_SHA

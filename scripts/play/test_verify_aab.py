@@ -1,7 +1,8 @@
 """Regression cases for production-only manifest and 64-bit alignment gates."""
 import struct
 import unittest
-from verify_aab import inspect_manifest, inspect_elf
+import urllib.request
+from verify_aab import inspect_manifest, inspect_elf, StripAuthorizationRedirect
 
 MANIFEST = '''<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 package="com.jared797.cue" android:versionName="1.0.0" android:versionCode="2">
@@ -13,6 +14,13 @@ package="com.jared797.cue" android:versionName="1.0.0" android:versionCode="2">
 
 
 class ProductionGates(unittest.TestCase):
+    def test_expo_auth_not_forwarded_to_artifact_host(self):
+        request = urllib.request.Request('https://expo.dev/artifacts/eas/test.aab')
+        request.add_unredirected_header('Authorization', 'Bearer synthetic-test-value')
+        redirected = StripAuthorizationRedirect().redirect_request(
+            request, None, 302, 'Found', {}, 'https://storage.googleapis.com/test.aab')
+        self.assertIsNone(redirected.get_header('Authorization'))
+
     def test_expected_manifest(self):
         self.assertEqual(inspect_manifest(MANIFEST)[0], 36)
 
