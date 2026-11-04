@@ -72,13 +72,13 @@
       "id": "H12",
       "phase": 2,
       "title": "42 original realistic illustrations, five topic categories and Beginner/Intermediate/Advanced filters",
-      "status": "done; 57 tests/types/export/doctor and full native iPhone41812677928 pass; release requested"
+      "status": "shipped in verified production OTA28b985e9 and TestFlight0.1.0(4), VALID/IN_BETA_TESTING. Full native41812677928 and57tests pass."
     },
     {
       "id": "H13",
       "phase": 2,
       "title": "Six actual zoom transitions in standard worlds; separate Mega Zoom collection with twenty transitions and reliable deepest-level painting",
-      "status": "done; 57 tests/types/export/doctor and full native iPhone41812677928 pass; release requested"
+      "status": "shipped in verified production OTA28b985e9 and TestFlight0.1.0(4), VALID/IN_BETA_TESTING. Full native41812677928 and57tests pass."
     }
   ]
 }

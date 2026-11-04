@@ -72,3 +72,25 @@
   present. The test now centres partially visible cards with smaller scroll steps. Blank gallery cards also
   use generated covers to avoid thousands of SVG views during cold launch; painted roots keep live previews.
   A fresh native run is required for that gallery performance change. Earlier captures remain failed evidence.
+
+## Illustrated release delivered
+
+- PR224 merged as **94f11922**. Full native iPhone **41812677928 PASS** on app source **2c585f9b**;
+  merged runtime equality verified separately from capture-only YAML changes. All six regular and twenty
+  Mega stops, deep paint, drawing/undo/redo and saved work after relaunch pass. 57 tests, strict types,
+  iOS export and doctor21/21 pass. Evidence and frame qualifications: `docs/qa-art-20261104/README.md`.
+- OTA **41817626284 PASS**, published **10:58:40UTC**. Group **28b985e9-003d-4211-8cba-f73de9565c9f**,
+  update `01a1a636-0322-7e89-aad8-4b780bee7e6e`, iOS/runtime **0.1.0**. Actual **28,726,172-byte** bundle
+  matches SHA256 `29ab81377870abd715a2af76d93f047a6b99be50b9026bd23aa07786367bdbcf`.
+- Signed native **0.1.0 (4)** uploaded **11:13UTC** in **41817626016**, submission
+  `1c7e39ae-8994-489a-a718-6d8487c32996`. Probe **41819703539**: Apple **PROCESSING**, no errors/warnings;
+  build4 is not yet in the processed list. Build3 remains VALID/IN_BETA_TESTING. No new binary availability
+  or physical-phone uptake claim until verified.
+- Final probe **41821210892** confirms build4 **COMPLETE / VALID / IN_BETA_TESTING**, no errors/warnings.
+  `docs/qa-art-20261104/apple-complete-status.json` records availability; the earlier processing receipt is
+  retained separately. The same probe reverified the served production update and downloaded bundle hash.
+- In the existing TestFlight app: **Settings → App updates → Check for updates → Save & apply update**.
+  New banner: **New art. Six zooms. Twenty in Mega.** The compatible OTA is available independently of
+  Apple's processing of the fresh native binary.
+- GitHub's Git/PR/Actions incident delayed pushes. The squash inherited a skip-ci marker, so both release
+  workflows were dispatched explicitly on the reviewed main commit; no duplicate automatic builds ran.
