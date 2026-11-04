@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 import zipfile
 
 from apk_permissions import FORBIDDEN
+from unused_scanners import verify_scanner_manifest, verify_scanner_archive
 
 BUILD_ID = "f4821a5c-945c-4a22-8662-84c0c95ea8f7"
 SOURCE = "49c8992756fd505ce14710c81c3e719ae5d99d0c"
@@ -27,7 +28,7 @@ def inspect_manifest(text):
     assert root.attrib["package"] == "com.jared797.cue"
     assert root.attrib[ANDROID + "versionName"] == "1.0.0"
     assert root.attrib[ANDROID + "versionCode"] == str(VERSION_CODE)
-    assert 'com.google.mlkit' not in text, 'Unused scanner components are still packaged'
+    verify_scanner_manifest(text)
     target = int(root.find("uses-sdk").attrib[ANDROID + "targetSdkVersion"])
     assert target >= 36
     app = root.find("application")
@@ -137,6 +138,7 @@ def validate_bundle(output, bundle, build_id, source, origin):
     assert UPLOAD_CERT_SHA256 in fingerprints, "Upload certificate changed from accepted build2"
     libs = []
     with zipfile.ZipFile(bundle) as archive:
+        verify_scanner_archive(archive.namelist())
         assert archive.testzip() is None
         assert archive.getinfo("base/assets/index.android.bundle").file_size > 100_000
         assert "base/dex/classes.dex" in archive.namelist()
@@ -151,6 +153,7 @@ def validate_bundle(output, bundle, build_id, source, origin):
                "sha256": hashlib.sha256(bundle.read_bytes()).hexdigest(), "bytes": bundle.stat().st_size,
                "certificateSha256": fingerprints, "bundletoolVersion": "1.18.3",
                "permissions": permissions, "nativeLibraries": libs,
+               "scannerManifest": verify_scanner_manifest(manifest),
                "runtimeEvidence": "Separate preview APK full 4 KB/16 KB flows; this AAB not yet installed or submitted"}
     (output / "production-verification.json").write_text(json.dumps(receipt, indent=2) + "\n")
     print(f"Validated signed production AAB: {len(libs)} libraries; SHA256 {receipt['sha256']}")

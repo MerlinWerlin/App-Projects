@@ -7,6 +7,7 @@ import struct
 import sys
 import zipfile
 from apk_permissions import verify_permissions
+from unused_scanners import verify_scanner_manifest, verify_scanner_archive
 
 apk, output = Path(sys.argv[1]), Path(sys.argv[2])
 config = json.loads((output / "config.json").read_text())
@@ -20,9 +21,13 @@ assert config["updates"]["enabled"] is False
 verify_permissions((output / "manifest.txt").read_text(), badging)
 camera = next((p for p in config.get('plugins', []) if isinstance(p, list) and p[0] == 'expo-camera'), None)
 if camera and camera[1].get('barcodeScannerEnabled') is False:
-    assert 'com.google.mlkit' not in (output / 'manifest.txt').read_text(), 'Unused scanner components remain'
+    scanner_manifest = verify_scanner_manifest((output / 'manifest.txt').read_text())
+else:
+    scanner_manifest = None
 libraries = []
 with zipfile.ZipFile(apk) as archive:
+    if scanner_manifest is not None:
+        verify_scanner_archive(archive.namelist())
     assert archive.getinfo("assets/index.android.bundle").file_size > 100_000, "Missing embedded JS"
     assert "classes.dex" in archive.namelist()
     for name in archive.namelist():
@@ -52,6 +57,7 @@ receipt = {
     "signing": "Expo generated Android test key; not a Google Play upload key",
     "embeddedBundle": True,
     "nativeLibraries": libraries,
+    "scannerManifest": scanner_manifest,
     "deviceTest": "Recorded separately by cue-simulate.sh; static checks alone do not prove runtime behavior",
 }
 (output / "verification.json").write_text(json.dumps(receipt, indent=2) + "\n")
