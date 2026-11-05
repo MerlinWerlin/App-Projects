@@ -509,6 +509,11 @@ export const ptBR: Translation = {
   'settings.privacy.openHint': "Abrir a política de privacidade do Linework no navegador",
   'settings.privacy.openFailed': "Não foi possível abrir o navegador. Política de privacidade: {url}",
 
+  'settings.review.title': "Código de acesso ao Plus",
+  'settings.review.active': "O acesso ao Plus está ativo",
+  'settings.review.enter': "Inserir código de acesso",
+  'settings.review.apply': "Ativar acesso",
+  'settings.review.invalid': "Não foi possível ativar o código. Confira e tente novamente.",
   'settings.about.title': 'Sobre',
   'settings.about.body': 'Linework {version}. Os modelos são desenhos em linhas originais criados para o Linework.',
 

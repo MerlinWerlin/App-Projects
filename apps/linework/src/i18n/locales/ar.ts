@@ -535,6 +535,11 @@ export const ar: Translation = {
   'settings.privacy.openHint': "فتح سياسة خصوصية Linework في المتصفح",
   'settings.privacy.openFailed': "تعذر فتح المتصفح. سياسة الخصوصية: {url}",
 
+  'settings.review.title': "رمز الوصول إلى Plus",
+  'settings.review.active': "الوصول إلى Plus مفعّل",
+  'settings.review.enter': "أدخل رمز الوصول",
+  'settings.review.apply': "تفعيل الوصول",
+  'settings.review.invalid': "تعذّر تفعيل هذا الرمز. تحقّق منه وحاول مجددًا.",
   'settings.about.title': 'حول',
   'settings.about.body': 'Linework {version}. القوالب رسوم خطية أصلية صُمّمت خصيصًا لـ Linework.',
 

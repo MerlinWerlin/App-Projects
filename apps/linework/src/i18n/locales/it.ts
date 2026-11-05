@@ -516,6 +516,11 @@ export const it: Translation = {
   'settings.privacy.openHint': "Apri l’informativa sulla privacy di Linework nel browser",
   'settings.privacy.openFailed': "Impossibile aprire il browser. Informativa sulla privacy: {url}",
 
+  'settings.review.title': "Codice di accesso a Plus",
+  'settings.review.active': "L’accesso a Plus è attivo",
+  'settings.review.enter': "Inserisci il codice di accesso",
+  'settings.review.apply': "Attiva accesso",
+  'settings.review.invalid': "Impossibile attivare il codice. Controllalo e riprova.",
   'settings.about.title': 'Info',
   'settings.about.body': 'Linework {version}. I modelli sono disegni a tratto originali creati per Linework.',
 

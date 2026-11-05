@@ -500,6 +500,11 @@ export const ko: Translation = {
   'settings.privacy.openHint': "브라우저에서 Linework 개인정보처리방침 열기",
   'settings.privacy.openFailed': "브라우저를 열 수 없습니다. 개인정보처리방침: {url}",
 
+  'settings.review.title': "Plus 액세스 코드",
+  'settings.review.active': "Plus 액세스가 활성화되었습니다",
+  'settings.review.enter': "액세스 코드 입력",
+  'settings.review.apply': "액세스 활성화",
+  'settings.review.invalid': "코드를 활성화할 수 없습니다. 확인한 후 다시 시도하세요.",
   'settings.about.title': '정보',
   'settings.about.body': 'Linework {version}. 템플릿은 Linework를 위해 제작한 오리지널 선화입니다.',
 
