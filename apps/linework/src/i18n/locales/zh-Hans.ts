@@ -500,6 +500,11 @@ export const zhHans: Translation = {
   'settings.privacy.openHint': "在浏览器中打开 Linework 隐私政策",
   'settings.privacy.openFailed': "无法打开浏览器。隐私政策：{url}",
 
+  'settings.review.title': "Plus 访问码",
+  'settings.review.active': "Plus 访问权限已启用",
+  'settings.review.enter': "输入访问码",
+  'settings.review.apply': "启用访问权限",
+  'settings.review.invalid': "无法启用此访问码。请检查后重试。",
   'settings.about.title': '关于',
   'settings.about.body': 'Linework {version}。模板均为专为 Linework 创作的原创线稿。',
 

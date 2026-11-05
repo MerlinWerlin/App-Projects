@@ -516,6 +516,11 @@ export const fr: Translation = {
   'settings.privacy.openHint': "Ouvrir la politique de confidentialité de Linework dans le navigateur",
   'settings.privacy.openFailed': "Impossible d’ouvrir le navigateur. Politique de confidentialité : {url}",
 
+  'settings.review.title': "Code d’accès à Plus",
+  'settings.review.active': "L’accès à Plus est actif",
+  'settings.review.enter': "Saisir le code d’accès",
+  'settings.review.apply': "Activer l’accès",
+  'settings.review.invalid': "Ce code n’a pas pu être activé. Vérifiez-le et réessayez.",
   'settings.about.title': 'À propos',
   'settings.about.body': 'Linework {version}. Les modèles sont des dessins au trait originaux créés pour Linework.',
 
