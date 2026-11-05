@@ -1,4 +1,4 @@
 {
-  "mode": "status",
-  "run": "couch-cast-1.0.3-build13-20261104"
+  "mode": "submit",
+  "run": "couch-1.0.3-build13-review-20261105"
 }

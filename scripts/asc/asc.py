@@ -392,11 +392,19 @@ def apply(app):
                  "relationships": {"app": {"data": {"type": "apps", "id": app_id}}}}})
         step("Create version " + lst.get("version", "1.0"), mk)
         ver, _ = editable_version(app_id)
+    if ver and lst.get("version") and attrs(ver)["versionString"] != lst["version"]:
+        def rename(ver=ver):
+            call("PATCH", f"/v1/appStoreVersions/{ver['id']}", {"data": {"type": "appStoreVersions", "id": ver["id"],
+                 "attributes": {"versionString": lst["version"]}}})
+        step(f"Version {attrs(ver)['versionString']} renamed to {lst['version']}", rename)
+        ver, _ = editable_version(app_id)
     if ver:
         vf = {k: v for k, v in {"description": lst.get("description"), "keywords": lst.get("keywords"),
                                 "promotionalText": lst.get("promotionalText"), "supportUrl": lst.get("supportUrl"),
                                 "marketingUrl": lst.get("marketingUrl")}.items() if v}
-        if lst.get("whatsNew") and attrs(ver)["versionString"] not in ("1.0", "1.0.0"):
+        released = any(attrs(v)["appStoreState"] in ("READY_FOR_SALE", "REPLACED_WITH_NEW_VERSION", "REMOVED_FROM_SALE")
+                       for v in get(f"/v1/apps/{app_id}/appStoreVersions", **{"filter[platform]": "IOS", "limit": 10})["data"])
+        if lst.get("whatsNew") and released:
             vf["whatsNew"] = lst["whatsNew"]
         step("Description, keywords, promo text, URLs", lambda: upsert_ver_loc(ver["id"], locale, vf))
         if lst.get("copyright"):
@@ -469,6 +477,54 @@ def apply(app):
             step(f"[{extra}] Description, keywords, promo text, URLs", lambda extra=extra: upsert_ver_loc(ver["id"], extra, vf))
             for disp, folder in (lst.get("screenshots") or {}).items():
                 step(f"[{extra}] Screenshots {disp}", lambda disp=disp, folder=folder, extra=extra: upload_shots(ver["id"], extra, disp, folder))
+
+
+def submit(app):
+    """Owner-requested only (ASC_REQUEST mode "submit"): apply the listing, check the version is complete, then send
+    it to App Review. Stops before submitting if any listing step failed or the build/contact is missing."""
+    rel, lst = app_cfg(app)
+    app_id = rel["ascAppId"]
+    start = len(out)
+    apply(app)
+    if any("**failed**" in line for line in out[start:]):
+        say("")
+        say("**Not submitted:** a listing step above failed; fix it and request submit again.")
+        return
+    ver, _ = editable_version(app_id)
+    if not ver:
+        raise RuntimeError("no editable App Store version to submit")
+    vid = ver["id"]
+    b = get(f"/v1/appStoreVersions/{vid}/build")["data"]
+    if not b:
+        raise RuntimeError("no build attached to the version")
+    want = lst.get("version")
+    if want and attrs(ver)["versionString"] != want:
+        raise RuntimeError(f"version is {attrs(ver)['versionString']}, listing wants {want}")
+    d = get(f"/v1/appStoreVersions/{vid}/appStoreReviewDetail")["data"]
+    if not d or any(not attrs(d).get(k) for k in CONTACT_FIELDS):
+        raise RuntimeError("App Review contact is incomplete")
+    say(f"## Submitting {attrs(ver)['versionString']} (build {attrs(b)['version']}) for App Review")
+    subs = get("/v1/reviewSubmissions", **{"filter[app]": app_id, "filter[platform]": "IOS", "limit": 20})["data"]
+    busy = [x for x in subs if attrs(x).get("state") in ("WAITING_FOR_REVIEW", "IN_REVIEW", "UNRESOLVED_ISSUES")]
+    if busy:
+        say(f"- already with Apple: submission {busy[0]['id']} is {attrs(busy[0])['state']}; nothing sent")
+        return
+    open_ = [x for x in subs if attrs(x).get("state") == "READY_FOR_REVIEW"]
+    if open_:
+        sub = open_[0]
+        say("- reusing the open draft submission")
+    else:
+        sub = call("POST", "/v1/reviewSubmissions", {"data": {"type": "reviewSubmissions", "attributes": {"platform": "IOS"},
+                   "relationships": {"app": {"data": {"type": "apps", "id": app_id}}}}})["data"]
+    items = get(f"/v1/reviewSubmissions/{sub['id']}/items")["data"]
+    if not items:
+        call("POST", "/v1/reviewSubmissionItems", {"data": {"type": "reviewSubmissionItems", "relationships": {
+             "reviewSubmission": {"data": {"type": "reviewSubmissions", "id": sub["id"]}},
+             "appStoreVersion": {"data": {"type": "appStoreVersions", "id": vid}}}}})
+        say("- version added to the submission")
+    r = call("PATCH", f"/v1/reviewSubmissions/{sub['id']}", {"data": {"type": "reviewSubmissions", "id": sub["id"],
+             "attributes": {"submitted": True}}})["data"]
+    say(f"- **submitted**: state {attrs(r).get('state')}, submitted {attrs(r).get('submittedDate')}")
 
 
 def testflight(app):
@@ -775,9 +831,11 @@ if __name__ == "__main__":
             testflight(app)
         elif mode == "feedback":
             feedback(app)
+        elif mode == "submit":
+            submit(app)
         else:
             (status if mode == "status" else apply)(app)
-        if mode == "apply":
+        if mode in ("apply", "submit"):
             say("")
             status(app)
     except Exception as e:
