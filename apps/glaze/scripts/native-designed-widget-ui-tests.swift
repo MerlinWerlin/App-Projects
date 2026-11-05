@@ -120,7 +120,7 @@ import Darwin
     XCUIDevice.shared.press(.home)
     capture("home-before-adding-new-theme-widgets")
     try openGallery(spring, fromHomeScreen: true)
-    try installWidget("Theme Clock", in: spring, maxSwipes: 8)
+    try installWidget("Clock", in: spring, maxSwipes: 8)
     capture("theme-clock-installed")
     for name in ["Battery", "Calendar"] {
       try openGallery(spring, fromHomeScreen: true)
@@ -130,12 +130,83 @@ import Darwin
     print("GLAZE_THEME_GALLERY_INSTALLED\n" + spring.debugDescription); fflush(stdout)
   }
 
+  func testLegacyPickerVisibility() throws {
+    continueAfterFailure = false
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    app.launch()
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 30))
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    try openGallery(spring)
+    RunLoop.current.run(until: Date().addingTimeInterval(4))
+    capture("picker-main-first")
+    let names = ["Theme Clock", "Battery", "Calendar", "Other", "Seamless", "Clock", "Date", "Word clock", "Month progress"]
+    func visibleTitles() -> [String] {
+      names.filter { name in
+        spring.staticTexts[name].allElementsBoundByIndex.contains { $0.frame.width > 1 && spring.frame.contains($0.frame) }
+      }
+    }
+    for page in 0...10 {
+      let indicators = spring.pageIndicators.allElementsBoundByIndex.compactMap { $0.value as? String }
+      print("GLAZE_PICKER_AUDIT carousel \(page) \(indicators) \(visibleTitles())")
+      if [3, 6, 8, 10].contains(page) { capture("picker-main-after-\(page)-swipes") }
+      if page < 10 { spring.swipeLeft() }
+    }
+
+    XCUIDevice.shared.press(.home)
+    try openSystemPicker(spring, fromHomeScreen: true)
+    capture("picker-root-top")
+    var foundOther = false
+    for _ in 0..<12 {
+      let other = spring.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Other"))
+        .allElementsBoundByIndex.first { $0.frame.width > 1 && spring.frame.contains($0.frame) }
+      if let other = other {
+        foundOther = true
+        capture("picker-other-section")
+        if other.elementType == .button && other.isHittable {
+          other.tap(); capture("picker-other-opened")
+        }
+        break
+      }
+      spring.swipeUp()
+    }
+    capture("picker-root-lowest")
+    print("GLAZE_PICKER_AUDIT root-other-section \(foundOther)\n" + spring.debugDescription)
+
+    for term in ["Seamless", "Word clock"] {
+      XCUIDevice.shared.press(.home)
+      try openSystemPicker(spring, fromHomeScreen: true)
+      try searchPicker(term, in: spring)
+      RunLoop.current.run(until: Date().addingTimeInterval(3))
+      capture("picker-search-" + term)
+      print("GLAZE_PICKER_AUDIT search \(term)\n" + spring.debugDescription)
+    }
+    fflush(stdout)
+  }
+
   private func capture(_ name: String) {
     let screenshot = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
     screenshot.name = name; screenshot.lifetime = .keepAlways; add(screenshot)
   }
 
   private func openGallery(_ spring: XCUIApplication, fromHomeScreen: Bool = false) throws {
+    try openSystemPicker(spring, fromHomeScreen: fromHomeScreen)
+    let result = spring.buttons["Glaze"].firstMatch
+    let title = spring.staticTexts["Glaze"].firstMatch
+    for _ in 0..<3 {
+      try searchPicker("Glaze", in: spring)
+      if result.waitForExistence(timeout: 4) { result.tap(); return }
+      if title.waitForExistence(timeout: 6) && title.frame.width > 1 {
+        title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        return
+      }
+      let clear = spring.buttons["Clear text"].firstMatch
+      if clear.exists { clear.tap() }
+      RunLoop.current.run(until: Date().addingTimeInterval(3))
+    }
+    XCTFail("Glaze did not appear in the system widget picker.\n" + spring.debugDescription)
+  }
+
+  private func openSystemPicker(_ spring: XCUIApplication, fromHomeScreen: Bool) throws {
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
     if !fromHomeScreen { XCUIDevice.shared.press(.home) }
     RunLoop.current.run(until: Date().addingTimeInterval(0.8))
@@ -151,29 +222,18 @@ import Darwin
     let addWidget = spring.buttons["Add Widget"].firstMatch
     XCTAssertTrue(addWidget.waitForExistence(timeout: 10), spring.debugDescription)
     addWidget.tap()
+  }
+
+  private func searchPicker(_ term: String, in spring: XCUIApplication) throws {
     let search = spring.searchFields.firstMatch
     XCTAssertTrue(search.waitForExistence(timeout: 10), spring.debugDescription)
     search.tap()
     if !spring.keyboards.firstMatch.waitForExistence(timeout: 5) {
       search.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
     }
-    let result = spring.buttons["Glaze"].firstMatch
-    let title = spring.staticTexts["Glaze"].firstMatch
-    for _ in 0..<3 {
-      search.typeText("Glaze")
-      let searchKey = spring.keyboards.buttons["Search"].firstMatch
-      if searchKey.exists && searchKey.isHittable { searchKey.tap() }
-      if result.waitForExistence(timeout: 4) { result.tap(); return }
-      if title.waitForExistence(timeout: 6) && title.frame.width > 1 {
-        title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
-        return
-      }
-      let clear = spring.buttons["Clear text"].firstMatch
-      if clear.exists { clear.tap() }
-      search.tap()
-      RunLoop.current.run(until: Date().addingTimeInterval(3))
-    }
-    XCTFail("Glaze did not appear in the system widget picker.\n" + spring.debugDescription)
+    search.typeText(term)
+    let searchKey = spring.keyboards.buttons["Search"].firstMatch
+    if searchKey.exists && searchKey.isHittable { searchKey.tap() }
   }
 
   private func installWidget(_ name: String, in spring: XCUIApplication, maxSwipes: Int) throws {
