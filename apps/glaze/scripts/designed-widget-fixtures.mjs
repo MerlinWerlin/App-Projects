@@ -6,10 +6,16 @@ import { ART_PACK_THEMES } from '../src/core/artPackThemes.ts';
 import { SPACE_THEMES } from '../src/core/spacePack.ts';
 import { parseCatalog } from '../src/core/packCatalog.ts';
 import { remoteArtTheme } from '../src/core/remoteCatalog.ts';
-import { DESIGNED_KINDS, designedWidget } from '../src/core/designedWidgets.ts';
+import { DESIGNED_KINDS, designedWidget, withWidgetIdentity } from '../src/core/designedWidgets.ts';
 import { minContrast } from '../src/core/colour.ts';
 const path = process.argv[2];
 if (!path) throw Error('Usage: node scripts/designed-widget-fixtures.mjs <current catalog.json>');
+if (path === '--native-review') {
+  const fixture = JSON.parse(readFileSync('docs/designed-widget-fixtures.json', 'utf8'));
+  for (const theme of fixture.themes) theme.designs = theme.designs.map(design => withWidgetIdentity(theme.id, design));
+  writeFileSync(process.argv[3], JSON.stringify(fixture));
+  process.exit(0);
+}
 const source = readFileSync(path), parsed = parseCatalog(JSON.parse(source));
 if (!parsed.ok) throw Error(parsed.error);
 const unique = new Map();

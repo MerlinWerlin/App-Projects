@@ -1,21 +1,16 @@
 // Original vector compositions used by the app's live previews and complete-theme contact sheets.
 // WidgetKit draws the same semantic layouts in targets/widget/DesignedWidget.swift.
-import { calendarMonth, DESIGNED_SIZE, type DesignedWidget } from './designedWidgets.ts';
+import { calendarMonth, DESIGNED_SIZE, localeFirstWeekday, type DesignedWidget } from './designedWidgets.ts';
 import type { HomeOptionSize } from './widgetOptions.ts';
+import { themedWidgetSvg } from './themedWidgetPreview.ts';
 
 const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[c]!));
-export type DesignedReadings = { date: Date; battery: number | null; locale?: string; batteryLabel?: string; unavailableLabel?: string };
+export type DesignedReadings = { date: Date; battery: number | null; locale?: string; batteryLabel?: string; unavailableLabel?: string; originalArtwork?: string };
 
-export function localeFirstWeekday(locale: string): number {
-  try {
-    const value = new Intl.Locale(locale) as Intl.Locale & { weekInfo?: { firstDay: number }; getWeekInfo?: () => { firstDay: number } };
-    const first = value.getWeekInfo?.().firstDay ?? value.weekInfo?.firstDay;
-    if (first !== undefined) return first % 7;
-  } catch { /* Older Hermes: use the same common regional defaults. */ }
-  return /^(en-US|en-CA|ja|zh|ko|hi)/i.test(locale) ? 0 : 1;
-}
+export { localeFirstWeekday } from './designedWidgets.ts';
 
 export function designedWidgetSvg(d: DesignedWidget, size: HomeOptionSize, values: DesignedReadings): string {
+  if (d.identity) return themedWidgetSvg(d, d.identity, size, values);
   const { w, h } = DESIGNED_SIZE[size], wide = size === 'medium', large = size === 'large';
   const { date } = values, locale = values.locale ?? 'en-AU';
   const battery = values.battery !== null && Number.isInteger(values.battery) && values.battery >= 0 && values.battery <= 100 ? values.battery : null;

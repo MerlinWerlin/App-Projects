@@ -42,6 +42,7 @@ module.exports = (config) => ({
         APP_GROUP,
       ],
   },
+  images: { AlpineClockFace: '../../assets/widgets/alpine-clock-face.jpg' },
   colors: {
     // Special names: $accent -> AccentColor, $widgetBackground -> WidgetBackground asset.
     $accent: { light: '#7A2E6B', dark: '#E59AD3' },

@@ -33,7 +33,7 @@ import { widgets, type WidgetsResult } from '../native/widgets';
 import { artPackHero, artPackWallpaper } from '../ui/artPackSources';
 import { existingLocalFile, localAssetUri, seamlessDeviceHere } from '../ui/seamlessSetup';
 import { loadCountdownArtTargets } from './countdownArtTargets';
-import { isReplacedArtEdition } from '../core/designedWidgets';
+import { DESIGNED_WIDGET_CAPABILITY, isReplacedArtEdition } from '../core/designedWidgets';
 import { plannedDesignedWidgets } from '../core/designedWidgetLibrary';
 
 /** AsyncStorage: the theme whose art sync started and has not committed yet (cleared on commit). */
@@ -110,7 +110,7 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
     // T245: countdown art pieces go live with the day the person chose (none = Art).
     const targets = await loadCountdownArtTargets();
     const art = await themeArt(theme, targets);
-    const planned = plan(theme, art.options, targets, await widgets.designVersion() >= 5);
+    const planned = plan(theme, art.options, targets, await widgets.designVersion() >= DESIGNED_WIDGET_CAPABILITY);
     const lib: WidgetArtIndex = { v: 1, pieces: current.pieces };
     const todo = piecesToCompose(lib, planned);
     // 3. Compose the missing pieces, one at a time.

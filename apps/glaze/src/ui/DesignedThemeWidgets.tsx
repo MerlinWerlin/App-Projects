@@ -13,8 +13,16 @@ import { chromeRadiusV2, continuous, fontScaleCap, spaceV2, textV2 } from '../th
 import { useColorsV2 } from '../theme/useTokens';
 import { PillButton } from './PillButton';
 import { SectionHeader } from './SectionHeader';
+import { bundledArtUri } from './artPackSources';
 
 type Props = { theme: Theme; size: WidgetTabSize; width: number; style?: StyleProp<ViewStyle>; onLibraryChange?: () => void };
+
+const alpineClockFace = require('../../assets/widgets/alpine-clock-face.jpg');
+
+function originalClockArtwork(design: DesignedWidget): string | undefined {
+  if (design.kind === 'clock' && design.identity?.originalFace === 'alpine') return bundledArtUri(alpineClockFace) ?? undefined;
+  return undefined;
+}
 
 /** Every theme has all three functional pieces, including bundled themes and offline packs. */
 export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChange }: Props) {
@@ -37,7 +45,7 @@ export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChang
   const name = (value: DesignedKind) => t(`ui.designedWidgets.${value}`);
   const previewWidth = size === 'small' ? Math.min(220, width) : width;
   const previewHeight = previewWidth * DESIGNED_SIZE[size].h / DESIGNED_SIZE[size].w;
-  const xml = designedWidgetSvg(design, size, { date: now, battery, locale, batteryLabel: name('battery'), unavailableLabel: t('ui.designedWidgets.unavailable') });
+  const xml = designedWidgetSvg(design, size, { date: now, battery, locale, batteryLabel: name('battery'), unavailableLabel: t('ui.designedWidgets.unavailable'), originalArtwork: originalClockArtwork(design) });
   const save = async () => {
     if (busy) return;
     setBusy(true); setStatus(null);
@@ -80,7 +88,7 @@ export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChang
 /** Library thumbnails use the same functional composition, rather than a blank placeholder. */
 export function DesignedWidgetThumbnail({ design, size, width }: { design: DesignedWidget; size: HomeOptionSize; width: number }) {
   const { locale, t } = useT();
-  return <SvgXml xml={designedWidgetSvg(design, size, { date: new Date(), battery: null, locale, batteryLabel: t('ui.designedWidgets.battery'), unavailableLabel: t('ui.designedWidgets.unavailable') })} width={width} height={width * DESIGNED_SIZE[size].h / DESIGNED_SIZE[size].w} />;
+  return <SvgXml xml={designedWidgetSvg(design, size, { date: new Date(), battery: null, locale, batteryLabel: t('ui.designedWidgets.battery'), unavailableLabel: t('ui.designedWidgets.unavailable'), originalArtwork: originalClockArtwork(design) })} width={width} height={width * DESIGNED_SIZE[size].h / DESIGNED_SIZE[size].w} />;
 }
 
 const styles = StyleSheet.create({

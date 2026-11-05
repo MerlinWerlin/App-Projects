@@ -12,6 +12,9 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
       - name: Compile actual WidgetKit sources and the review host
         working-directory: apps/glaze
         run: |
@@ -35,7 +38,8 @@ jobs:
           PY
             exit 1
           fi
-          cp docs/designed-widget-fixtures.json "$APP/"
+          node scripts/designed-widget-fixtures.mjs --native-review "$APP/designed-widget-fixtures.json"
+          cp assets/widgets/alpine-clock-face.jpg "$APP/AlpineClockFace.jpg"
           python3 - <<'PY'
           import os,plistlib,pathlib
           app=pathlib.Path(os.environ['RUNNER_TEMP'])/'DesignedReview.app'

@@ -1,4 +1,4 @@
-import { DESIGNED_KINDS, DESIGNED_SIZE, designedLiveSpec, designedOptionId, type DesignedKind } from './designedWidgets.ts';
+import { DESIGNED_KINDS, DESIGNED_SIZE, designedLiveSpec, designedOptionId, withWidgetIdentity, type DesignedKind } from './designedWidgets.ts';
 import type { Theme } from './themes.ts';
 import type { PlannedThemePiece } from './themeArtSync.ts';
 import { themePieceId, type WidgetArtIndex, type WidgetArtSize } from './widgetArtLibrary.ts';
@@ -13,8 +13,8 @@ export function plannedDesignedWidgets(theme: Theme, name: (kind: DesignedKind, 
 }
 
 /** Existing stable ids upgrade without replacing personal photos, selections or original art. */
-export function upgradedDesignedLibrary(lib: WidgetArtIndex, theme: Theme, name: (kind: DesignedKind, size: WidgetArtSize) => string): WidgetArtIndex | null {
-  const planned = new Map(plannedDesignedWidgets(theme, name).map(p => [p.id, p]));
+export function upgradedDesignedLibrary(lib: WidgetArtIndex, theme: Theme | null, name: (kind: DesignedKind, size: WidgetArtSize) => string): WidgetArtIndex | null {
+  const planned = new Map(theme ? plannedDesignedWidgets(theme, name).map(p => [p.id, p]) : []);
   let changed = false;
   const removed = new Map<string, { size: WidgetArtSize; replacement: string }>();
   const pieces = lib.pieces.filter(p => {
@@ -23,8 +23,16 @@ export function upgradedDesignedLibrary(lib: WidgetArtIndex, theme: Theme, name:
     changed = true;
     return false;
   }).map(p => {
+    // A saved live design already carries its palette. The artwork upgrade can happen
+    // offline even if the remote catalogue has not loaded and its pack was never downloaded.
+    if (!theme && p.source === 'theme' && p.themeId && p.live?.design) {
+      const design = withWidgetIdentity(p.themeId, p.live.design);
+      if (JSON.stringify(design) === JSON.stringify(p.live.design)) return p;
+      changed = true;
+      return { ...p, live: { ...p.live, design } };
+    }
     const next = planned.get(p.id);
-    if (p.source === 'photo' || p.themeId !== theme.id || !next) return p;
+    if (p.source === 'photo' || p.themeId !== theme?.id || !next) return p;
     if (JSON.stringify(p.live) === JSON.stringify(next.live) && p.name === next.name) return p;
     changed = true;
     return { ...p, name: next.name, live: next.live };

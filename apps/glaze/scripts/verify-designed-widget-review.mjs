@@ -33,7 +33,7 @@ for(let start=0;start<themes.length;start+=12){
   const file=`native-contact-${String(sheets.length+1).padStart(2,'0')}.jpg`;
   await sharp(labels).composite(pieces).jpeg({quality:94}).toFile(join(output,file));sheets.push(file);
 }
-const chosen=['nebula-veil','rainlight','fern-and-brass','cherry-arcade','porcelain-tide','espresso-hour'];
+const chosen=['nebula-veil','alpine-starlight','blueprint-bureau','honeywood','paper-carnival','porcelain-tide'];
 const pieces=[],height=chosen.length*390+45;
 const labels=Buffer.from(`<svg width="1110" height="${height}"><rect width="1110" height="${height}" fill="#151a22"/><g font-family="sans-serif" fill="#e7e9ee" font-size="20">${chosen.map((t,i)=>`<text x="24" y="${28+i*390}">${esc(t)}</text>`).join('')}</g></svg>`);
 for(let i=0;i<chosen.length;i++)for(let j=0;j<3;j++){
@@ -42,5 +42,6 @@ for(let i=0;i<chosen.length;i++)for(let j=0;j<3;j++){
 }
 await sharp(labels).composite(pieces).jpeg({quality:95}).toFile(join(output,'native-selected-designs.jpg'));
 await sharp({create:{width:1110,height:390,channels:3,background:'#151a22'}}).composite(pieces.slice(0,3)).jpeg({quality:95}).toFile(join(output,'native-nebula-widgets.jpg'));
+await sharp({create:{width:1110,height:382,channels:3,background:'#151a22'}}).composite(pieces.slice(3,6).map(p=>({...p,top:21}))).jpeg({quality:95}).toFile(join(output,'native-alpine-widgets.jpg'));
 const verified={...Object.fromEntries(['sourceSHA','themes','baselineLayouts','renders','assertions','catalogueThemes','physicalDeviceTest'].map(k=>[k,r[k]])),allFileHashesAndDimensionsVerified:true,nativeContactSheets:sheets};
 writeFileSync(join(output,'native-verification.json'),JSON.stringify(verified,null,2)+'\n');console.log(JSON.stringify(verified));

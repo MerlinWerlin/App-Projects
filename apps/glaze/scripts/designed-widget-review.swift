@@ -23,6 +23,8 @@ enum DesignedWidgetReview {
       let sizes: [(String, CGFloat, CGFloat)] = [("small",170,170),("medium",364,170),("large",364,382)]
       var calendar = Calendar(identifier: .gregorian); calendar.timeZone = TimeZone(secondsFromGMT: 0)!; calendar.firstWeekday = 2
       let baseline = calendar.date(from: DateComponents(year: 2026, month: 11, day: 4, hour: 10, minute: 8))!
+      guard ThemedClockArtwork.alpine != nil else { throw fail("Missing original Alpine clock artwork") }
+      assertions += 1
 
       // Independent Foundation civil-month checks, including century/leap rules, every offset and
       // six-row layouts. These do not call the JS producer or reuse its computed month lengths.
@@ -40,7 +42,7 @@ enum DesignedWidgetReview {
       for theme in themes {
         guard let id = theme["id"] as? String, let designs = theme["designs"] as? [[String: Any]], designs.count == 3 else { throw fail("Theme data") }
         for raw in designs {
-          guard let spec = DesignedWidgetSpec.parse(raw) else { throw fail("Design parse \(id)") }
+          guard let spec = DesignedWidgetSpec.parse(raw), spec.identity != nil else { throw fail("Theme identity parse \(id)") }
           let live: [String: Any] = ["kind":spec.kind == "calendar" ? "date" : spec.kind,"rect":[0,0,1,1],"shape":"plate","cover":false,"plate":spec.background[0],"ink":spec.ink,"design":raw]
           guard LiveArtSpec.parse(live)?.design?.kind == spec.kind else { throw fail("Native shared spec parse \(id)") }; assertions += 1
           for (size,w,h) in sizes {
@@ -49,7 +51,7 @@ enum DesignedWidgetReview {
         }
       }
 
-      let subjects = ["nebula-veil","rainlight","fern-and-brass","cherry-arcade","porcelain-tide","espresso-hour"]
+      let subjects = ["alpine-starlight","nebula-veil","rainlight","fern-and-brass","cherry-arcade","porcelain-tide","espresso-hour"]
       for theme in themes where subjects.contains(where: { (theme["id"] as? String ?? "").contains($0) }) {
         let id=theme["id"] as! String
         for raw in theme["designs"] as! [[String:Any]] {
