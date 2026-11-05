@@ -152,3 +152,9 @@
 "Unavailable" = "Indisponível";
 "Full" = "Completa";
 "Remaining" = "Restante";
+
+/* Theme gallery */
+"Theme Clock" = "Relógio do tema";
+"Battery" = "Bateria";
+"Calendar" = "Calendário";
+"Matches the theme you choose in Glaze." = "Combina com o tema que você escolher no Glaze.";

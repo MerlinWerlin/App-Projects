@@ -5,7 +5,7 @@
 //                Blur OFF on the Home Screen choice, and an Open Photos button.
 //   2 Icons      "Install all icons" (app/install.tsx with auto=1 starts the existing bulk profile),
 //                then the Settings steps (a)-(e) with the T262 ProfileGuideArt mocks, Open Settings.
-//   3 Widgets    Home Screen edit mode > Add Widget > Glaze > size; Edit Widget > Art.
+//   3 Widgets    Home Screen edit mode > Add Widget > Glaze > designed widget and size.
 // Re-openable from the theme page's "Set it up" rows (ThemeSetupSection), which tick finished steps
 // (per theme, src/store/themeSetup.ts). Built on RN Modal (Expo Go safe); step rules live in
 // src/core/themeSetupFlow.ts.
@@ -50,7 +50,7 @@ const STEP_TITLE: Record<SetupStep, MessageKey> = {
 const STEP_LEAD: Record<SetupStep, MessageKey> = {
   wallpaper: 'theme.setup.wallpaper.lead',
   icons: 'theme.setup.icons.lead',
-  widgets: 'theme.setup.widgets.lead',
+  widgets: 'ui.designedWidgets.setup',
 };
 const STEP_ROW: Record<SetupStep, MessageKey> = {
   wallpaper: 'theme.setup.rowWallpaper',
@@ -410,9 +410,6 @@ export function ThemeSetupFlow({ setup, themeName, wallpaper, onInstallIcons }: 
               </Instruction>
               <Instruction n={2} text={t('theme.setup.widgets.s2')}>
                 <Art kind="widget-gallery" />
-              </Instruction>
-              <Instruction n={3} text={t('theme.setup.widgets.s3')}>
-                <Art kind="edit-widget" />
               </Instruction>
             </View>
           ) : null}

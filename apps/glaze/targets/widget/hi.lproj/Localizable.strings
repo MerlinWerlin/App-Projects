@@ -152,3 +152,9 @@
 "Unavailable" = "उपलब्ध नहीं";
 "Full" = "पूर्ण";
 "Remaining" = "शेष";
+
+/* Theme gallery */
+"Theme Clock" = "थीम की घड़ी";
+"Battery" = "बैटरी";
+"Calendar" = "कैलेंडर";
+"Matches the theme you choose in Glaze." = "Glaze में चुनी गई थीम से मेल खाता है।";

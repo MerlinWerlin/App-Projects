@@ -162,3 +162,9 @@
 "Unavailable" = "Unavailable";
 "Full" = "Full";
 "Remaining" = "Remaining";
+
+/* Theme gallery */
+"Theme Clock" = "Theme Clock";
+"Battery" = "Battery";
+"Calendar" = "Calendar";
+"Matches the theme you choose in Glaze." = "Matches the theme you choose in Glaze.";
