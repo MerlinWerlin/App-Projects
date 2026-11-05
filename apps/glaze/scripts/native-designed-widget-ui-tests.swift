@@ -119,11 +119,11 @@ import Darwin
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
     XCUIDevice.shared.press(.home)
     capture("home-before-adding-new-theme-widgets")
-    try openGallery(spring)
+    try openGallery(spring, fromHomeScreen: true)
     try installWidget("Theme Clock", in: spring, maxSwipes: 8)
     capture("theme-clock-installed")
     for name in ["Battery", "Calendar"] {
-      try openGallery(spring)
+      try openGallery(spring, fromHomeScreen: true)
       try installWidget(name, in: spring, maxSwipes: 8)
       capture("theme-\(name)-installed")
     }
@@ -135,12 +135,13 @@ import Darwin
     screenshot.name = name; screenshot.lifetime = .keepAlways; add(screenshot)
   }
 
-  private func openGallery(_ spring: XCUIApplication) throws {
+  private func openGallery(_ spring: XCUIApplication, fromHomeScreen: Bool = false) throws {
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
-    XCUIDevice.shared.press(.home)
-    let icon = spring.icons["Glaze"].firstMatch
-    if !icon.waitForExistence(timeout: 3) { spring.swipeLeft() }
-    XCTAssertTrue(icon.waitForExistence(timeout: 15), spring.debugDescription)
+    if !fromHomeScreen { XCUIDevice.shared.press(.home) }
+    RunLoop.current.run(until: Date().addingTimeInterval(0.8))
+    // SpringBoard also exposes icons from off-screen pages with zero-sized frames.
+    let visible = spring.icons.allElementsBoundByIndex.filter { $0.frame.width > 35 && $0.isHittable }
+    let icon = try XCTUnwrap(visible.first { $0.label == "Glaze" } ?? visible.first, spring.debugDescription)
     icon.press(forDuration: 1.5)
     let editHome = spring.buttons["Edit Home Screen"].firstMatch
     XCTAssertTrue(editHome.waitForExistence(timeout: 10), spring.debugDescription)
