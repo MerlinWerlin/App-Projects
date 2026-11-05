@@ -500,6 +500,11 @@ export const hi: Translation = {
   'settings.privacy.openHint': "ब्राउज़र में Linework की गोपनीयता नीति खोलें",
   'settings.privacy.openFailed': "ब्राउज़र नहीं खुल सका। गोपनीयता नीति: {url}",
 
+  'settings.review.title': "Plus ऐक्सेस कोड",
+  'settings.review.active': "Plus ऐक्सेस चालू है",
+  'settings.review.enter': "ऐक्सेस कोड डालें",
+  'settings.review.apply': "ऐक्सेस चालू करें",
+  'settings.review.invalid': "यह कोड चालू नहीं हो सका। इसे जाँचें और फिर कोशिश करें।",
   'settings.about.title': 'परिचय',
   'settings.about.body': 'Linework {version}। टेम्पलेट Linework के लिए बनाए गए मौलिक लाइन आर्ट हैं।',
 

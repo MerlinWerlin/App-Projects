@@ -7,6 +7,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AppState, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants';
+import { createReviewAccess } from './reviewAccess';
 import {
   NOT_OWNED,
   createMockStore,
@@ -22,6 +24,16 @@ const asyncStorage: PlusStorage = {
   get: (k) => AsyncStorage.getItem(k),
   set: (k, v) => AsyncStorage.setItem(k, v),
 };
+
+const reviewAccess = createReviewAccess(asyncStorage);
+export const reviewAccessAvailable = Platform.OS === 'android'
+  && ['preview', 'production'].includes(Constants.expoConfig?.extra?.playVariant);
+
+export async function activateReviewAccess(code: string): Promise<boolean> {
+  if (!reviewAccessAvailable || !(await reviewAccess.activate(code))) return false;
+  notify();
+  return true;
+}
 
 // Shared across every mounted usePlus: a change made on one screen reloads the others.
 const listeners = new Set<() => void>();
@@ -40,6 +52,7 @@ export type UsePlus = {
   resetMock: () => Promise<PlusState>;
   /** Loading / none (trial not started) / trial / owned / expired, recomputed on every load. */
   access: Access;
+  reviewActive: boolean;
   /** Real store purchase available (TestFlight / App Store build). */
   canBuy: boolean;
   /** Localised store price when the store has answered. */
@@ -67,6 +80,7 @@ export function usePlus(): UsePlus {
   const [offerSeen, setOfferSeen] = useState<boolean | null>(null);
   const [price, setPrice] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [reviewActive, setReviewActive] = useState(false);
   const [busy, setBusy] = useState(false);
   const [rev, setRev] = useState(0);
 
@@ -89,6 +103,11 @@ export function usePlus(): UsePlus {
   useEffect(() => {
     let alive = true;
     const now = Date.now();
+    if (reviewAccessAvailable) {
+      void reviewAccess.isActive().then((active) => {
+        if (alive) setReviewActive(active);
+      });
+    }
     AsyncStorage.getItem(TRIAL_KEY)
       .catch(() => null)
       .then((raw) => {
@@ -198,7 +217,7 @@ export function usePlus(): UsePlus {
     notify();
   }, []);
 
-  const access: Access = state.owned
+  const access: Access = state.owned || reviewActive
     ? accessFor(true, null, 0)
     : loading || trialStart === undefined
       ? LOADING_ACCESS
@@ -213,6 +232,7 @@ export function usePlus(): UsePlus {
     tip,
     resetMock,
     access,
+    reviewActive,
     canBuy: iap !== null,
     price,
     startTrial,

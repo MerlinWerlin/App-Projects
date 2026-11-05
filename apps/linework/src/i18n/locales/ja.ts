@@ -500,6 +500,11 @@ export const ja: Translation = {
   'settings.privacy.openHint': "Linework のプライバシーポリシーをブラウザで開く",
   'settings.privacy.openFailed': "ブラウザを開けませんでした。プライバシーポリシー：{url}",
 
+  'settings.review.title': "Plusアクセスコード",
+  'settings.review.active': "Plusアクセスは有効です",
+  'settings.review.enter': "アクセスコードを入力",
+  'settings.review.apply': "アクセスを有効にする",
+  'settings.review.invalid': "コードを有効にできませんでした。確認してもう一度お試しください。",
   'settings.about.title': '情報',
   'settings.about.body': 'Linework {version}。テンプレートはLineworkのために制作されたオリジナルの線画です。',
 

@@ -509,6 +509,11 @@ export const es: Translation = {
   'settings.privacy.openHint': "Abrir la política de privacidad de Linework en el navegador",
   'settings.privacy.openFailed': "No se pudo abrir el navegador. Política de privacidad: {url}",
 
+  'settings.review.title': "Código de acceso a Plus",
+  'settings.review.active': "El acceso a Plus está activo",
+  'settings.review.enter': "Introducir código de acceso",
+  'settings.review.apply': "Activar acceso",
+  'settings.review.invalid': "No se pudo activar el código. Compruébalo y vuelve a intentarlo.",
   'settings.about.title': 'Información',
   'settings.about.body': 'Linework {version}. Las plantillas son dibujos lineales originales creados para Linework.',
 

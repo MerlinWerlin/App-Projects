@@ -500,6 +500,11 @@ export const de: Translation = {
   'settings.privacy.openHint': "Lineworks Datenschutzerklärung im Browser öffnen",
   'settings.privacy.openFailed': "Der Browser konnte nicht geöffnet werden. Datenschutzerklärung: {url}",
 
+  'settings.review.title': "Plus-Zugangscode",
+  'settings.review.active': "Plus-Zugang ist aktiv",
+  'settings.review.enter': "Zugangscode eingeben",
+  'settings.review.apply': "Zugang aktivieren",
+  'settings.review.invalid': "Dieser Code konnte nicht aktiviert werden. Prüfe ihn und versuche es erneut.",
   'settings.about.title': 'Über',
   'settings.about.body': 'Linework {version}. Die Vorlagen sind eigens für Linework erstellte Strichzeichnungen.',
 
