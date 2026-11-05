@@ -5,13 +5,23 @@ import { TRIAL_PRODUCT_ID, trialStartFromPurchase } from './trial';
 export type StoreAccess = { plus: boolean; trialStart: number | null };
 export type PurchaseResult = { ok: true; access: StoreAccess } | { ok: false; reason: 'unavailable' | 'cancelled' | 'failed' | 'empty' | 'pending'; message: string };
 export type StorePurchase = { productId?: string; purchaseState?: string } & Record<string, unknown>;
-type StoreProduct = { id?: string; productId?: string; displayPrice?: string; currency?: string };
+type AndroidOffer = {
+  id?: string | null;
+  purchaseOptionIdAndroid?: string | null;
+  offerTokenAndroid?: string | null;
+  displayPrice: string;
+  currency: string;
+  rentalDetailsAndroid?: unknown;
+  preorderDetailsAndroid?: unknown;
+};
+type StoreProduct = { id?: string; productId?: string; displayPrice?: string; currency?: string; discountOffers?: AndroidOffer[] | null };
+type GooglePurchaseRequest = { skus: string[]; offerToken?: string };
 type Subscription = { remove(): void };
 export interface IapApi {
   initConnection(): Promise<boolean>;
   getStorefront?(): Promise<string>;
   fetchProducts(args: { skus: string[]; type: 'in-app' }): Promise<StoreProduct[]>;
-  requestPurchase(args: { request: { ios: { sku: string }; apple: { sku: string }; android: { skus: string[] }; google: { skus: string[] } }; type: 'in-app' }): Promise<StorePurchase | StorePurchase[] | null | undefined | void>;
+  requestPurchase(args: { request: { ios: { sku: string }; apple: { sku: string }; android: GooglePurchaseRequest; google: GooglePurchaseRequest }; type: 'in-app' }): Promise<StorePurchase | StorePurchase[] | null | undefined | void>;
   getAvailablePurchases(): Promise<StorePurchase[]>;
   restorePurchases(): Promise<unknown>;
   finishTransaction(args: { purchase: StorePurchase; isConsumable: false }): Promise<unknown>;
@@ -44,6 +54,14 @@ const matches = (p: StorePurchase, sku: string) => p.productId === sku && (!p.pu
 const codeOf = (e: unknown) => String((e as { code?: unknown })?.code ?? 'E_STORE').slice(0, 100);
 const failure = (code: string): PurchaseResult => ({ ok: false, reason: 'failed', message: t('plus.failed', { code }) });
 const unavailable = (): PurchaseResult => ({ ok: false, reason: 'unavailable', message: t('plus.unavailable') });
+
+function androidLifetimeOffer(product: StoreProduct): AndroidOffer | undefined {
+  return product.discountOffers?.find(offer =>
+    offer.purchaseOptionIdAndroid === 'lifetime' && !offer.id &&
+    !offer.rentalDetailsAndroid && !offer.preorderDetailsAndroid &&
+    offer.offerTokenAndroid?.trim() && offer.displayPrice.trim()
+  );
+}
 export function accessFromPurchases(list: StorePurchase[], now: number): StoreAccess {
   const dates = list.filter(p => matches(p, TRIAL_PRODUCT_ID)).map(p => trialStartFromPurchase(p, now)).filter((x): x is number => x !== null);
   return { plus: list.some(p => matches(p, PLUS_PRODUCT_ID)), trialStart: dates.length ? Math.min(...dates) : null };
@@ -100,7 +118,11 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
     }
     if (!skus.includes(sku)) return unavailable();
     const products = await bounded(iap.fetchProducts({ skus: [...skus], type: 'in-app' }), 15_000);
-    if (!products.some(p => p.id === sku || p.productId === sku)) return unavailable();
+    const product = products.find(p => p.id === sku || p.productId === sku);
+    if (!product) return unavailable();
+    const offerToken = platform === 'android' ? androidLifetimeOffer(product)?.offerTokenAndroid : undefined;
+    if (platform === 'android' && !offerToken) return unavailable();
+    const google: GooglePurchaseRequest = offerToken ? { skus: [sku], offerToken } : { skus: [sku] };
     return new Promise<PurchaseResult>(resolve => {
       let done = false, pendingRequest = true, polling = false, failureChecks = 0;
       let error: string | null = null;
@@ -148,7 +170,7 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
       } catch (e) { error = codeOf(e); }
       void (async () => {
         try {
-          const result = await iap.requestPurchase({ request: { ios: { sku }, apple: { sku }, android: { skus: [sku] }, google: { skus: [sku] } }, type: 'in-app' });
+          const result = await iap.requestPurchase({ request: { ios: { sku }, apple: { sku }, android: google, google }, type: 'in-app' });
           for (const purchase of Array.isArray(result) ? result : result ? [result] : []) {
             if (purchase.productId === sku && purchase.purchaseState === 'pending') onError({ code: 'pending' });
             else accept(purchase);
@@ -167,13 +189,14 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
           iap.getStorefront ? bounded(iap.getStorefront(), 5000).catch(() => null) : null,
         ]);
         const product = products.find(p => p.id === PLUS_PRODUCT_ID || p.productId === PLUS_PRODUCT_ID);
-        if (!product?.displayPrice?.trim()) return null;
-        const currency = product.currency?.toUpperCase();
+        const priced = platform === 'android' && product ? androidLifetimeOffer(product) : product;
+        if (!priced?.displayPrice?.trim()) return null;
+        const currency = priced.currency?.toUpperCase();
         // TestFlight may return USD metadata while its purchase sheet uses the Australian store.
         // Never infer the purchase country from the phone's language or convert a foreign price.
         if (platform === 'ios' && ['AU', 'AUS'].includes(storefront?.trim().toUpperCase() ?? '') && currency && currency !== 'AUD') return PLUS_AUSTRALIA_PRICE;
-        if (currency === 'AUD') return product.displayPrice.replace(/^\$/, 'A$');
-        return currency && !product.displayPrice.includes(currency) ? `${currency} ${product.displayPrice}` : product.displayPrice;
+        if (currency === 'AUD') return priced.displayPrice.replace(/^\$/, 'A$');
+        return currency && !priced.displayPrice.includes(currency) ? `${currency} ${priced.displayPrice}` : priced.displayPrice;
       } catch { return null; }
     },
     buy: () => exclusive(() => buy(PLUS_PRODUCT_ID)),
