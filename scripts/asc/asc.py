@@ -450,6 +450,8 @@ def apply(app):
     if lst.get("contentRights"):
         step("Content rights", lambda: call("PATCH", f"/v1/apps/{app_id}", {"data": {"type": "apps", "id": app_id,
              "attributes": {"contentRightsDeclaration": lst["contentRights"]}}}))
+    if lst.get("price") == "free":
+        step("Price: free (base territory AUS)", lambda: ensure_free_price(app_id))
     if lst.get("availability") == "all":
         step("Availability: all countries and regions", lambda: ensure_availability(app_id))
     for iap in lst.get("inAppPurchases", []):
@@ -647,6 +649,30 @@ def upload_shots(ver_id, locale, disp, folder):
         call("PATCH", f"/v1/appScreenshots/{shot['id']}", {"data": {"type": "appScreenshots", "id": shot["id"],
              "attributes": {"uploaded": True, "sourceFileChecksum": hashlib.md5(data).hexdigest()}}})
     say(f"  - {disp}: uploaded {len(files)}")
+
+
+def ensure_free_price(app_id):
+    """A manual free price from today, Australia as the base territory. Leaves an existing free schedule alone."""
+    try:
+        cur = get(f"/v1/appPriceSchedules/{app_id}/manualPrices", include="appPricePoint", limit=5)
+        pts = [attrs(x).get("customerPrice") for x in cur.get("included", []) if x.get("type") == "appPricePoints"]
+        if pts and all(str(p) in ("0", "0.0", "0.00") for p in pts):
+            say("  - already free")
+            return
+    except RuntimeError:
+        pass
+    pps = get(f"/v1/apps/{app_id}/appPricePoints", **{"filter[territory]": "AUS", "limit": 200})["data"]
+    free = next((x for x in pps if str(attrs(x).get("customerPrice")) in ("0", "0.0", "0.00")), None)
+    if not free:
+        raise RuntimeError("no free price point for AUS")
+    call("POST", "/v1/appPriceSchedules", {
+        "data": {"type": "appPriceSchedules", "relationships": {
+            "app": {"data": {"type": "apps", "id": app_id}},
+            "baseTerritory": {"data": {"type": "territories", "id": "AUS"}},
+            "manualPrices": {"data": [{"type": "appPrices", "id": "${p0}"}]}}},
+        "included": [{"type": "appPrices", "id": "${p0}", "attributes": {"startDate": None},
+                      "relationships": {"appPricePoint": {"data": {"type": "appPricePoints", "id": free["id"]}}}}]})
+    say("  - set to free")
 
 
 def ensure_availability(app_id):

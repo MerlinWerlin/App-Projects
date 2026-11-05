@@ -1,4 +1,4 @@
 {
-  "mode": "submit",
-  "run": "couch-1.0.3-build13-review-20261105-b"
+  "mode": "apply",
+  "run": "couch-price-free-20261105"
 }
