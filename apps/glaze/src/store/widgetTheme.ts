@@ -7,7 +7,8 @@
 // Never throws; every native call no-ops in Expo Go and on Android.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { THEMES, type Theme } from '../core/themes';
-import { ACTIVE_WIDGET_THEME_KEY, DEFAULT_WIDGET_THEME, parseWidgetTheme, serializeWidgetTheme, widgetGalleryTheme } from '../core/widgetTheme';
+import { parseWidgetGalleryTheme, widgetGalleryTheme } from '../core/widgetGalleryTheme';
+import { ACTIVE_WIDGET_THEME_KEY, DEFAULT_WIDGET_THEME, serializeWidgetTheme } from '../core/widgetTheme';
 import { widgets } from '../native/widgets';
 import { loadStudio } from './studio';
 import { findAnyThemeById } from './themeLookup';
@@ -67,7 +68,7 @@ export async function pushStoredWidgetTheme(): Promise<boolean> {
         studioThemeId = null;
       }
     }
-    const saved = parseWidgetTheme(stored);
+    const saved = parseWidgetGalleryTheme(stored);
     const theme = await findAnyThemeById(saved?.themeId ?? studioThemeId);
     const wt = theme ? widgetGalleryTheme(theme) : saved ?? {
       ...DEFAULT_WIDGET_THEME, designs: widgetGalleryTheme(THEMES[0]).designs,

@@ -1,11 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { THEMES } from './themes.ts';
+import { parseWidgetGalleryTheme, widgetGalleryTheme } from './widgetGalleryTheme.ts';
 import {
   DEFAULT_WIDGET_THEME,
   parseWidgetTheme,
   serializeWidgetTheme,
-  widgetGalleryTheme,
   widgetThemeFrom,
   type WidgetTheme,
 } from './widgetTheme.ts';
@@ -19,8 +19,8 @@ test('the gallery gets all three designs for the chosen theme through the saved 
   assert.deepEqual(starter.designs?.map(d => d.kind), ['clock', 'battery', 'calendar']);
   assert.ok(starter.designs?.every(d => d.identity));
   assert.notDeepEqual(starter.designs, another.designs);
-  assert.deepEqual(parseWidgetTheme(serializeWidgetTheme(starter)), starter);
-  assert.equal(parseWidgetTheme({ ...starter, designs: starter.designs?.slice(0, 1) })?.designs, undefined);
+  assert.deepEqual(parseWidgetGalleryTheme(serializeWidgetTheme(starter)), starter);
+  assert.equal(parseWidgetGalleryTheme(serializeWidgetTheme({ ...starter, designs: starter.designs?.slice(0, 1) }))?.designs, undefined);
 });
 
 test('widgetThemeFrom: every starter theme produces a valid widget theme', () => {

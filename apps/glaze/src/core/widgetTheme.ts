@@ -4,7 +4,7 @@
 // Pure TS (no React Native / Expo) so Node can run and test it directly.
 
 import { isHex, mix, normalizeHex, relativeLuminance } from './colour.ts';
-import { DESIGNED_KINDS, designedWidget, parseDesignedWidget, type DesignedWidget } from './designedWidgets.ts';
+import type { DesignedWidget } from './designedWidgets.ts';
 import type { Theme } from './themes.ts';
 
 export const WIDGET_THEME_VERSION = 1;
@@ -105,10 +105,6 @@ export function widgetThemeFrom(theme: Theme, now: Date = new Date()): WidgetThe
   };
 }
 
-export function widgetGalleryTheme(theme: Theme): WidgetTheme {
-  return { ...widgetThemeFrom(theme), designs: DESIGNED_KINDS.map(kind => designedWidget(theme, kind)) };
-}
-
 export function serializeWidgetTheme(t: WidgetTheme): string {
   // Fixed key order so the JSON is stable (and diff-friendly in tests).
   return JSON.stringify({
@@ -156,12 +152,6 @@ export function parseWidgetTheme(input: unknown): WidgetTheme | null {
   const style = typeof o.style === 'string' && (STYLES as readonly string[]).includes(o.style) ? (o.style as WidgetSurfaceStyle) : d.style;
   const font = typeof o.font === 'string' && (FONTS as readonly string[]).includes(o.font) ? (o.font as WidgetFont) : d.font;
   const updatedAt = typeof o.updatedAt === 'string' && !Number.isNaN(Date.parse(o.updatedAt)) ? o.updatedAt : d.updatedAt;
-  const storedDesigns: unknown[] = Array.isArray(o.designs) ? o.designs : [];
-  const designs = DESIGNED_KINDS.flatMap(kind => {
-    const design = parseDesignedWidget(storedDesigns.find(value =>
-      value && typeof value === 'object' && 'kind' in value && value.kind === kind));
-    return design ? [design] : [];
-  });
 
   return {
     v: 1,
@@ -174,7 +164,6 @@ export function parseWidgetTheme(input: unknown): WidgetTheme | null {
     style,
     font,
     updatedAt,
-    ...(designs.length === DESIGNED_KINDS.length ? { designs } : {}),
   };
 }
 
