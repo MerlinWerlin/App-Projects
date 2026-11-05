@@ -119,7 +119,12 @@ def call(method, path, body=None, params=None, ok=(200, 201, 204)):
     if r.status_code not in ok:
         detail = ""
         try:
-            detail = "; ".join(f"{e.get('title')}: {e.get('detail')}" for e in r.json().get("errors", []))
+            errs = r.json().get("errors", [])
+            detail = "; ".join(f"{e.get('title')}: {e.get('detail')}" for e in errs)
+            assoc = [f"{a.get('code')}: {a.get('detail')}" for e in errs
+                     for lst in ((e.get("meta") or {}).get("associatedErrors") or {}).values() for a in lst]
+            if assoc:
+                detail += " | Apple says: " + "; ".join(assoc)[:1500]
         except Exception:
             detail = r.text[:300]
         raise RuntimeError(f"{method} {path} -> {r.status_code} {detail}")
