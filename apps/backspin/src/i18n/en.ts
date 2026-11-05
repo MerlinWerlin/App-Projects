@@ -105,6 +105,8 @@ export const en = {
   'pack.party.sub': 'Silly announcements and dramatic declarations',
   'pack.animals': 'Animals & sound effects',
   'pack.animals.sub': 'Honks, quacks, pops and kerplunks',
+  'pack.easyReads': 'Easy reads',
+  'pack.easyReads.sub': 'Playful lines for a relaxed round',
   'pack.kids': 'Family & kids',
   'pack.kids.sub': 'Gentle and giggly, for all ages',
   'pack.twisters': 'Tongue twisters',

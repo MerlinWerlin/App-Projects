@@ -220,7 +220,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const lang: Lang = prefs.lang === 'system' ? matchLang(phoneLanguages()) : prefs.lang;
-  const t = useMemo(() => makeT((CATALOGS[lang] as Catalog | undefined) ?? null), [lang]);
+  const t = useMemo(() => {
+    const catalog = (CATALOGS[lang] as Catalog | undefined) ?? null;
+    const translate = makeT(catalog);
+    if (Platform.OS !== 'android') return translate;
+    return makeT({
+      ...catalog,
+      'pack.kids': translate('pack.easyReads'),
+      'pack.kids.sub': translate('pack.easyReads.sub'),
+    });
+  }, [lang]);
   const dark = prefs.theme === 'system' ? scheme !== 'light' : prefs.theme === 'dark';
   const theme = useMemo(() => makeTheme(prefs.skin ?? 'booth', dark), [prefs.skin, dark]);
 
