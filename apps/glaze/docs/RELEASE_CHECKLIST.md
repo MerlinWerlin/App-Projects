@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**6 November 2026 TestFlight follow-up: `1.0.6`.** The three primary Home Screen widget names are Clock, Battery and Calendar. Legacy configurations remain registered and disfavored for the Home Screen.
+
 **6 November 2026 TestFlight train: `1.0.5`.** The Home Screen gallery puts the selected theme's Clock, Battery and Calendar first. Existing widget kinds and configurations remain supported under Other. Alpine's clock uses the original artwork at the widget's rendered size.
 
 **5 November 2026 TestFlight train: `1.0.4`.** The themed widget correction restores Alpine's original live dial and draws a full-size clock, illustrated battery gauge and calendar for each theme. The renderer and clock asset are in the native extension, so the appVersion runtime and native TestFlight binary change together.
