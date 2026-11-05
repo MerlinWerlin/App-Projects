@@ -54,7 +54,12 @@ import Darwin
     let search = app.textFields["Search themes"]
     XCTAssertTrue(search.waitForExistence(timeout: 30), app.debugDescription)
     search.tap()
-    search.typeText("Alpine Starlight")
+    // Give React Native's controlled field time to echo each simulator key event.
+    for letter in "Alpine" {
+      search.typeText(String(letter))
+      RunLoop.current.run(until: Date().addingTimeInterval(0.18))
+    }
+    XCTAssertEqual(search.value as? String, "Alpine")
     let result = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Alpine Starlight")).firstMatch
     XCTAssertTrue(result.waitForExistence(timeout: 25), app.debugDescription)
     result.tap()
