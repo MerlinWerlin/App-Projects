@@ -16,6 +16,7 @@ struct DesignedWidgetSpec {
   let font: String
   let clock: String
   let battery: String
+  let identity: WidgetIdentity?
 
   static func parse(_ raw: Any?) -> DesignedWidgetSpec? {
     guard let r = raw as? [String: Any], r["v"] as? Int == 1,
@@ -32,7 +33,8 @@ struct DesignedWidgetSpec {
       let battery = r["battery"] as? String, ["ring", "cells", "meter"].contains(battery)
     else { return nil }
     return DesignedWidgetSpec(kind: kind, background: bg, ink: ink, secondary: secondary,
-      accent: accent, onAccent: onAccent, line: line, motif: motif, font: font, clock: clock, battery: battery)
+      accent: accent, onAccent: onAccent, line: line, motif: motif, font: font, clock: clock, battery: battery,
+      identity: WidgetIdentity.parse(r["identity"]))
   }
 
   var fontDesign: Font.Design { font == "serif" ? .serif : font == "mono" ? .monospaced : .rounded }
@@ -77,11 +79,19 @@ struct DesignedWidgetContent: View {
         var context = ctx
         context.scaleBy(x: actual.width / size.width, y: actual.height / size.height)
         var draw = DesignedDrawing(context: context, spec: spec, size: size, locale: locale, calendar: civilCalendar, timeZone: timeZone)
-        draw.ornament()
-        switch spec.kind {
-        case "clock": draw.clock(date: date, wide: wide, large: large)
-        case "battery": draw.battery(percent: readings.battery, wide: wide, large: large)
-        default: draw.month(date: date, wide: wide, large: large, rtl: direction == .rightToLeft)
+        if let identity = spec.identity {
+          switch spec.kind {
+          case "clock": draw.themedClock(identity, date: date, wide: wide, large: large)
+          case "battery": draw.themedBattery(identity, percent: readings.battery, wide: wide, large: large)
+          default: draw.themedCalendar(identity, date: date, wide: wide, large: large, rtl: direction == .rightToLeft)
+          }
+        } else {
+          draw.ornament()
+          switch spec.kind {
+          case "clock": draw.clock(date: date, wide: wide, large: large)
+          case "battery": draw.battery(percent: readings.battery, wide: wide, large: large)
+          default: draw.month(date: date, wide: wide, large: large, rtl: direction == .rightToLeft)
+          }
         }
       }
     }

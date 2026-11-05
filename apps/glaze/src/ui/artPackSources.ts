@@ -32,7 +32,11 @@ export function artPackHero(id: string | null | undefined, size: HeroSize): ArtI
 
 /** A URI for the wallpaper image (Save to Photos reads it like a downloaded photo). */
 export function artPackWallpaperUri(id: string | null | undefined): string | null {
-  const src = artPackWallpaper(id);
+  return bundledArtUri(artPackWallpaper(id));
+}
+
+/** Resolve a bundled image for a consumer that needs a URI instead of a Metro source number. */
+export function bundledArtUri(src: ArtImageSource | null): string | null {
   if (src == null) return null;
   try {
     return Image.resolveAssetSource(src)?.uri ?? null;

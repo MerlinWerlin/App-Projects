@@ -3,11 +3,12 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { createRequire } from 'node:module';
 import { designedWidgetSvg } from '../src/core/designedWidgetPreview.ts';
-import { DESIGNED_SIZE } from '../src/core/designedWidgets.ts';
+import { DESIGNED_SIZE, withWidgetIdentity } from '../src/core/designedWidgets.ts';
 const output = resolve(process.argv[2] ?? 'docs/designed-widget-review');
 const sharp = createRequire(import.meta.url)(process.argv[3] ?? 'sharp');
 mkdirSync(join(output, 'previews'), { recursive: true });
 const data = JSON.parse(readFileSync('docs/designed-widget-fixtures.json', 'utf8'));
+const originalArtwork = 'data:image/jpeg;base64,' + readFileSync('assets/widgets/alpine-clock-face.jpg').toString('base64');
 const escape = s => s.replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&apos;' }[c]));
 const now = new Date(2026, 10, 4, 10, 8);
 const rows = [], pngs = [];
@@ -15,7 +16,8 @@ for (const theme of data.themes) {
   let cards = '';
   for (const size of ['small', 'medium', 'large']) for (const d of theme.designs) {
     const file = `${theme.id}_${d.kind}_${size}.svg`;
-    const svg = designedWidgetSvg(d, size, { date: now, battery: 73, locale: 'en-AU' });
+    const design = withWidgetIdentity(theme.id, d);
+    const svg = designedWidgetSvg(design, size, { date: now, battery: 73, locale: 'en-AU', originalArtwork });
     writeFileSync(join(output, 'previews', file), svg);
     cards += `<figure data-size="${size}" data-kind="${d.kind}"><img loading="lazy" src="previews/${file}" width="${DESIGNED_SIZE[size].w}" height="${DESIGNED_SIZE[size].h}" alt="${escape(theme.name)} ${d.kind}"><figcaption>${d.kind} · ${size}</figcaption></figure>`;
     if (size === 'small') pngs.push({ theme: theme.id, name: theme.name, kind: d.kind, bytes: await sharp(Buffer.from(svg)).resize(170,170).png().toBuffer() });
@@ -34,7 +36,7 @@ for(let offset=0;offset<data.themes.length;offset+=12){
   const file=`contact-${String(sheetFiles.length+1).padStart(2,'0')}.png`;
   await sharp(label).composite(pieces).png().toFile(join(output,file));sheetFiles.push(file);
 }
-const selected=['nebula-veil','fern-and-brass','rainlight','porcelain-tide','cherry-arcade','espresso-hour'];
+const selected=['alpine-starlight','blueprint-bureau','honeywood','nebula-veil','paper-carnival','porcelain-tide'];
 const chosen=data.themes.filter(t=>selected.includes(t.id));
 const composites=[];
 for(let i=0;i<chosen.length;i++)for(let j=0;j<3;j++)composites.push({input:pngs.find(p=>p.theme===chosen[i].id&&p.kind===['clock','battery','calendar'][j]).bytes,left:24+j*190,top:52+i*214});

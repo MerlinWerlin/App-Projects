@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {nativeWidgetSupported, requiredNativeWidgetVersion} from './widgetDelivery.ts';
 import {CATALOGUE_KIND_SIZES} from './widgetKinds.ts';
+import { DESIGNED_WIDGET_CAPABILITY } from './designedWidgets.ts';
 
 test('habit native sizes match the editor, including only the supported Lock Screen formats', () => {
   for (const kind of ['habitWater', 'habitSleep', 'habitSteps', 'habitMood'] as const) {
@@ -24,7 +25,7 @@ test('older v2 builds keep Home Screen habits but require an update for new Lock
   }
   assert.equal(requiredNativeWidgetVersion('clock', 'small'), 2);
   const bridge = readFileSync('modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift', 'utf8');
-  assert.match(bridge, /AsyncFunction\("widgetDesignVersion"\)\s*\{\s*\(\)\s*->\s*Int\s+in\s+5\s*\}/);
+  assert.equal(Number(bridge.match(/AsyncFunction\("widgetDesignVersion"\)\s*\{\s*\(\)\s*->\s*Int\s+in\s+(\d+)\s*\}/)?.[1]), DESIGNED_WIDGET_CAPABILITY);
   const studio = readFileSync('app/widget-studio.tsx', 'utf8');
   assert.match(studio, /await widgets\.designVersion\(\) < Math.max\(requiredNativeWidgetVersion\(/);
 });
