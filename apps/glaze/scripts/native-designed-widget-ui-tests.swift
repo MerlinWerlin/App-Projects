@@ -93,10 +93,17 @@ import Darwin
   }
 
   func testAlpineOnHomeScreen() throws {
-    try testAlpineOriginalFaceFromTheme()
+    continueAfterFailure = false
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    app.launch()
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 30))
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
     try openGallery(spring)
     try installWidget("Seamless", in: spring, maxSwipes: 60)
+    capture("seamless-installed-before-alpine")
+    try testAlpineOriginalFaceFromTheme()
+    XCUIDevice.shared.press(.home)
+    RunLoop.current.run(until: Date().addingTimeInterval(10))
     capture("alpine-small-on-home-screen")
     print("GLAZE_ALPINE_INSTALLED\n" + spring.debugDescription); fflush(stdout)
   }
@@ -149,17 +156,23 @@ import Darwin
     if !spring.keyboards.firstMatch.waitForExistence(timeout: 5) {
       search.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
     }
-    search.typeText("Glaze")
-    let searchKey = spring.keyboards.buttons["Search"].firstMatch
-    if searchKey.exists && searchKey.isHittable { searchKey.tap() }
     let result = spring.buttons["Glaze"].firstMatch
-    if result.waitForExistence(timeout: 5) { result.tap() }
-    else {
-      let title = spring.staticTexts["Glaze"].firstMatch
-      XCTAssertTrue(title.waitForExistence(timeout: 10), spring.debugDescription)
-      XCTAssertGreaterThan(title.frame.width, 1)
-      title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+    let title = spring.staticTexts["Glaze"].firstMatch
+    for _ in 0..<3 {
+      search.typeText("Glaze")
+      let searchKey = spring.keyboards.buttons["Search"].firstMatch
+      if searchKey.exists && searchKey.isHittable { searchKey.tap() }
+      if result.waitForExistence(timeout: 4) { result.tap(); return }
+      if title.waitForExistence(timeout: 6) && title.frame.width > 1 {
+        title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        return
+      }
+      let clear = spring.buttons["Clear text"].firstMatch
+      if clear.exists { clear.tap() }
+      search.tap()
+      RunLoop.current.run(until: Date().addingTimeInterval(3))
     }
+    XCTFail("Glaze did not appear in the system widget picker.\n" + spring.debugDescription)
   }
 
   private func installWidget(_ name: String, in spring: XCUIApplication, maxSwipes: Int) throws {
