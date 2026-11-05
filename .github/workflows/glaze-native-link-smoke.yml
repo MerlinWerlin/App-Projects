@@ -13,7 +13,7 @@ on:
       scenario:
         description: 'Installed route or actual Home Screen widget and shared-data round trip'
         type: choice
-        options: [route, widget, album, album-widget, design, alpine]
+        options: [route, widget, album, album-widget, design, alpine, alpine-home]
         default: route
 permissions:
   contents: read
@@ -35,7 +35,7 @@ jobs:
           set -euo pipefail
           FIXTURE=native-link-ui-tests.swift
           if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then FIXTURE=native-widget-tap-tests.swift; fi
-          if [[ "$GLAZE_UI_SCENARIO" == design || "$GLAZE_UI_SCENARIO" == alpine ]]; then FIXTURE=native-designed-widget-ui-tests.swift; fi
+          if [[ "$GLAZE_UI_SCENARIO" == design || "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home ]]; then FIXTURE=native-designed-widget-ui-tests.swift; fi
           if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then FIXTURE=native-album-ui-tests.swift; fi
           ruby scripts/prepare-native-link-test.rb "$RUNNER_TEMP/GlazeLinkCheck" "$FIXTURE" "$GLAZE_UI_SCENARIO"
           xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/link-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build-for-testing > "$RUNNER_TEMP/glaze-link-build.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-link-build.log"; exit 1; }
@@ -81,18 +81,18 @@ jobs:
           TEST=GlazeLinkUITests/GlazeDeepLinkTests/testWidgetLinkReachesWidgets
           if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then TEST=GlazeLinkUITests/GlazeWidgetTapTests/testWidgetTapRoundTripsThroughSharedStorage; fi
           if [[ "$GLAZE_UI_SCENARIO" == design ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testThreeFunctionalDesignsReachSharedStorage; fi
-          if [[ "$GLAZE_UI_SCENARIO" == alpine ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOriginalFaceFromTheme; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOriginalFaceFromTheme; fi
           if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then TEST=GlazeLinkUITests/GlazeAlbumPickerTests/testSelectedPhotosReachNativeAlbum; fi
           xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath "$RUNNER_TEMP/link-build" -parallel-testing-enabled NO -resultBundlePath "$RUNNER_TEMP/glaze-link.xcresult" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO "-only-testing:$TEST" test-without-building > "$RUNNER_TEMP/glaze-link-test.log" 2>&1 &
           LINK_PID=$!
-          if [[ "$GLAZE_UI_SCENARIO" == widget || "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget || "$GLAZE_UI_SCENARIO" == design || "$GLAZE_UI_SCENARIO" == alpine ]]; then
+          if [[ "$GLAZE_UI_SCENARIO" == widget || "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget || "$GLAZE_UI_SCENARIO" == design || "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home ]]; then
             if ! wait "$LINK_PID"; then tail -160 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
             if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then
               grep -F GLAZE_ALBUM_PICKER_DELIVERED "$RUNNER_TEMP/glaze-link-test.log"
               if [[ "$GLAZE_UI_SCENARIO" == album-widget ]]; then grep -F GLAZE_ALBUM_INSTALLED_NEXT_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"; fi
             elif [[ "$GLAZE_UI_SCENARIO" == design ]]; then
               grep -F GLAZE_DESIGNED_WIDGETS_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
-            elif [[ "$GLAZE_UI_SCENARIO" == alpine ]]; then
+            elif [[ "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home ]]; then
               grep -F GLAZE_ALPINE_CLOCK_SAVED "$RUNNER_TEMP/glaze-link-test.log"
             else
               grep -F GLAZE_WIDGET_TAP_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
@@ -121,6 +121,7 @@ jobs:
           python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/shared-group" || true
           xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/glaze-native-link-review/last-screen.png" || true
           if [[ -d "$RUNNER_TEMP/glaze-link.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-link.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/attachments" > "$RUNNER_TEMP/glaze-native-link-review/attachment-export.log" 2>&1 || true; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine-home ]]; then xcrun simctl spawn "$DEVICE" log show --last 8m --style compact --predicate '(process CONTAINS[c] "GlazeWidget" OR subsystem CONTAINS[c] "WidgetKit") AND (eventMessage CONTAINS[c] "glaze" OR eventMessage CONTAINS[c] "image" OR eventMessage CONTAINS[c] "archiv")' > "$RUNNER_TEMP/glaze-native-link-review/widget-os.log" || true; fi
           cp "$RUNNER_TEMP/installable/simulator-app-source.json" "$RUNNER_TEMP/glaze-native-link-review/" || true
           python3 - <<'PY'
           import os,json,pathlib,hashlib

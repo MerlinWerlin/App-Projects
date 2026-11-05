@@ -84,4 +84,66 @@ import Darwin
     let screenshot = XCTAttachment(screenshot: app.screenshot()); screenshot.name = "alpine-original-clock-saved"; screenshot.lifetime = .keepAlways; add(screenshot)
     print("GLAZE_ALPINE_CLOCK_SAVED"); fflush(stdout)
   }
+
+  func testAlpineOnHomeScreen() throws {
+    try testAlpineOriginalFaceFromTheme()
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    try openGallery(spring)
+    try installWidget("Seamless", in: spring)
+    let installed = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+    installed.name = "alpine-small-on-home-screen"; installed.lifetime = .keepAlways; add(installed)
+    print("GLAZE_ALPINE_INSTALLED\n" + spring.debugDescription); fflush(stdout)
+  }
+
+  private func openGallery(_ spring: XCUIApplication) throws {
+    if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
+    XCUIDevice.shared.press(.home)
+    let icon = spring.icons["Glaze"].firstMatch
+    XCTAssertTrue(icon.waitForExistence(timeout: 15), spring.debugDescription)
+    icon.press(forDuration: 1.5)
+    let editHome = spring.buttons["Edit Home Screen"].firstMatch
+    XCTAssertTrue(editHome.waitForExistence(timeout: 10), spring.debugDescription)
+    editHome.tap()
+    let edit = spring.buttons["Edit"].firstMatch
+    if edit.waitForExistence(timeout: 5) { edit.tap() }
+    let addWidget = spring.buttons["Add Widget"].firstMatch
+    XCTAssertTrue(addWidget.waitForExistence(timeout: 10), spring.debugDescription)
+    addWidget.tap()
+    let search = spring.searchFields.firstMatch
+    XCTAssertTrue(search.waitForExistence(timeout: 10), spring.debugDescription)
+    search.tap()
+    if !spring.keyboards.firstMatch.waitForExistence(timeout: 5) {
+      search.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+    }
+    search.typeText("Glaze")
+    let searchKey = spring.keyboards.buttons["Search"].firstMatch
+    if searchKey.exists && searchKey.isHittable { searchKey.tap() }
+    let result = spring.buttons["Glaze"].firstMatch
+    if result.waitForExistence(timeout: 5) { result.tap() }
+    else {
+      let title = spring.staticTexts["Glaze"].firstMatch
+      XCTAssertTrue(title.waitForExistence(timeout: 10), spring.debugDescription)
+      XCTAssertGreaterThan(title.frame.width, 1)
+      title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+    }
+  }
+
+  private func installWidget(_ name: String, in spring: XCUIApplication) throws {
+    let label = spring.staticTexts[name].firstMatch
+    for _ in 0..<60 {
+      if label.exists { break }
+      spring.swipeLeft()
+    }
+    XCTAssertTrue(label.exists, spring.debugDescription)
+    let preview = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+    preview.name = "gallery-" + name; preview.lifetime = .keepAlways; add(preview)
+    let add = spring.buttons["Add Widget"].firstMatch
+    XCTAssertTrue(add.waitForExistence(timeout: 5), spring.debugDescription)
+    add.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+    for _ in 0..<2 {
+      let done = spring.buttons["Done"].firstMatch
+      if done.waitForExistence(timeout: 3) { done.tap() }
+    }
+    RunLoop.current.run(until: Date().addingTimeInterval(12))
+  }
 }
