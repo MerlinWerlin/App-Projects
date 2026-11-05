@@ -38,7 +38,7 @@ public class GlazeWidgetBridgeModule: Module {
     Name("GlazeWidgetBridge")
 
     // Version handshake: old installed binaries must not claim that v2 designs were applied.
-    AsyncFunction("widgetDesignVersion") { () -> Int in 5 }
+    AsyncFunction("widgetDesignVersion") { () -> Int in 6 }
 
     // Functional designs need no source artwork. A small solid thumbnail keeps library/file
     // invariants intact; the extension renders the live semantic design, never this placeholder.

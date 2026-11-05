@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { ALL_THEMES } from './plusThemes.ts';
-import { calendarMonth, DESIGNED_KINDS, designedWidget, designedLiveSpec, isReplacedArtEdition, parseDesignedWidget } from './designedWidgets.ts';
+import { calendarMonth, DESIGNED_KINDS, designedWidget, designedLiveSpec, isReplacedArtEdition, parseDesignedWidget, withWidgetIdentity } from './designedWidgets.ts';
 import { plannedDesignedWidgets, upgradedDesignedLibrary } from './designedWidgetLibrary.ts';
 import { parseLiveArtSpec } from './liveArt.ts';
 import { minContrast } from './colour.ts';
@@ -10,13 +10,15 @@ import { parseLibrary, resolveWidgetPiece, serializeLibrary, themePieceId } from
 import { designedWidgetSvg, localeFirstWeekday } from './designedWidgetPreview.ts';
 
 const fixture = JSON.parse(readFileSync(new URL('../../docs/designed-widget-fixtures.json', import.meta.url), 'utf8')) as { catalogueThemes: number; themes: { id: string; designs: ReturnType<typeof designedWidget>[] }[] };
+for (const theme of fixture.themes) theme.designs = theme.designs.map(design => withWidgetIdentity(theme.id, design));
 
-test('every catalogue and bundled theme has three readable, artwork-independent functional designs', () => {
+test('every catalogue and bundled theme has authored, readable clock, battery and calendar artwork', () => {
   assert.equal(fixture.catalogueThemes, 141);
   assert.ok(fixture.themes.length >= 141);
   for (const t of fixture.themes) {
     assert.deepEqual(t.designs.map(d => d.kind), [...DESIGNED_KINDS], t.id);
     for (const design of t.designs) {
+      assert.ok(design.identity, t.id);
       assert.deepEqual(parseDesignedWidget(design), design, t.id);
       assert.ok(minContrast(design.ink, design.background) >= 4.5, t.id);
       assert.ok(minContrast(design.secondary, design.background) >= 4.5, t.id);
@@ -90,11 +92,24 @@ test('legacy fallback clocks disappear from menus and saved art without losing w
   assert.deepEqual(plannedDesignedWidgets(theme, (kind, size) => `${kind} ${size}`).map(p => p.id), designs.map(p => p.id));
 });
 
-test('each preview draws the function at every size, includes six calendar rows, never embeds old art', () => {
+test('each preview draws the function at every size, including six calendar rows and Alpine original art', () => {
   const date = new Date(2026, 7, 31, 22, 48);
+  const identities = new Map<string, Map<string, string>>();
   for (const t of fixture.themes) for (const design of t.designs) for (const size of ['small', 'medium', 'large'] as const) {
-    const svg = designedWidgetSvg(design, size, { date, battery: 73, locale: 'en-AU' });
-    assert.ok(svg.startsWith('<svg'));assert.doesNotMatch(svg, /<image|NaN|undefined/);
+    const svg = designedWidgetSvg(design, size, { date, battery: 73, locale: 'en-AU', originalArtwork: 'alpine-clock-face.jpg' });
+    assert.ok(svg.startsWith('<svg'));
+    assert.doesNotMatch(svg, /NaN|undefined/);
+    const original = t.id === 'alpine-starlight' && design.kind === 'clock';
+    assert.equal(svg.includes('<image href="alpine-clock-face.jpg"'), original);
+    if (original) assert.notEqual(svg, designedWidgetSvg(design, size, { date: new Date(2026, 7, 31, 7, 25), battery: 73, locale: 'en-AU', originalArtwork: 'alpine-clock-face.jpg' }));
     if (design.kind === 'calendar') for (let day = 1; day <= 31; day++) assert.ok(svg.includes(`>${day}</text>`));
+    // Compare the render instructions with ink and font removed. Each theme must be
+    // visibly distinct at each function and size, even in the same colour palette.
+    const key = `${design.kind}/${size}`;
+    const seen = identities.get(key) ?? new Map();
+    const monochrome = svg.replace(/#[0-9a-fA-F]{6}/g, '#808080').replace(/font-family="[^"]*"/g, '');
+    assert.equal(seen.get(monochrome), undefined, `${key}: ${t.id} repeats ${seen.get(monochrome)}`);
+    seen.set(monochrome, t.id);
+    identities.set(key, seen);
   }
 });

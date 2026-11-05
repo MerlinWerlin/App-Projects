@@ -32,7 +32,7 @@ import {
 } from '../core/widgetArtLibrary';
 import { commitThemeArt, type PlannedThemePiece } from '../core/themeArtSync';
 import { ALBUM_LIMIT, isAlbumSharedRef } from '../core/widgetAlbum';
-import { parseDesignedWidget } from '../core/designedWidgets';
+import { DESIGNED_WIDGET_CAPABILITY, parseDesignedWidget } from '../core/designedWidgets';
 import { upgradedDesignedLibrary } from '../core/designedWidgetLibrary';
 import type { Theme } from '../core/themes';
 import { t } from '../i18n';
@@ -361,6 +361,7 @@ export const widgets: WidgetsAdapter = {
       if (!mod?.composeDesignedWidgetPiece) return { available: false, ok: false, reason: reason ?? 'not-built' };
       const design = parseDesignedWidget(piece.live?.design);
       if (!design || !isValidPieceId(piece.id) || !piece.size) return { available: true, ok: false, reason: 'failed' };
+      if (design.identity && (await mod.widgetDesignVersion?.() ?? 0) < DESIGNED_WIDGET_CAPABILITY) return { available: false, ok: false, reason: 'not-built' };
       if (!await mod.composeDesignedWidgetPiece(piece.id, design.background[0])) return { available: true, ok: false, reason: 'failed' };
       const { lib } = await readArtIndex(mod);
       const added = addPiece(lib, piece).lib;

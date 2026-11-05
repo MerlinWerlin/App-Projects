@@ -23,6 +23,7 @@ import {
   serializeSavedWallpapers,
 } from '../core/activeTheme';
 import { DEFERRED_STEPS } from '../core/deferredWork';
+import { DESIGNED_WIDGET_CAPABILITY } from '../core/designedWidgets';
 import { themeArtResumePlan } from '../core/themeArtResume';
 import type { Theme } from '../core/themes';
 import { averageColour } from '../core/wallpaper';
@@ -142,7 +143,7 @@ registerDeferred(DEFERRED_STEPS.themeArt, { priority: 30, run: themeArtStep });
 
 /** Metadata-only upgrade of already configured functional pieces; called in the deferred queue. */
 export async function upgradeActiveDesignedWidgets(): Promise<void> {
-  if (await nativeWidgets.designVersion() < 5) return;
+  if (await nativeWidgets.designVersion() < DESIGNED_WIDGET_CAPABILITY) return;
   const library = await nativeWidgets.artLibrary();
   if (!library.available || !library.ok) return;
   // A person can save Nebula widgets without putting Nebula's icons in use. Migrate the themes
