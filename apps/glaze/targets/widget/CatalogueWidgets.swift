@@ -61,6 +61,7 @@ struct MonthProgressWidget: Widget {
     StaticConfiguration(kind: kind, provider: DayProvider()) { CatalogueWidgetView(kind: "monthProgress", entry: $0) }
       .configurationDisplayName("Month progress").description("This month in dots and a percentage, in your chosen colours.")
       .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryInline]).contentMarginsDisabled()
+      .legacyGlazeGallery()
   }
 }
 struct YearProgressWidget: Widget {
@@ -69,6 +70,7 @@ struct YearProgressWidget: Widget {
     StaticConfiguration(kind: kind, provider: DayProvider()) { CatalogueWidgetView(kind: "yearProgress", entry: $0) }
       .configurationDisplayName("Year progress").description("The year in dots and a percentage.")
       .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular, .accessoryInline]).contentMarginsDisabled()
+      .legacyGlazeGallery()
   }
 }
 struct AnalogClockWidget: Widget {
@@ -77,6 +79,7 @@ struct AnalogClockWidget: Widget {
     StaticConfiguration(kind: kind, provider: MinuteProvider()) { CatalogueWidgetView(kind: "analogClock", entry: $0) }
       .configurationDisplayName("Analog clock").description("Clock hands in your Glaze colours.")
       .supportedFamilies([.systemSmall, .systemLarge, .accessoryCircular]).contentMarginsDisabled()
+      .legacyGlazeGallery()
   }
 }
 struct MonthCalendarWidget: Widget {
@@ -85,6 +88,7 @@ struct MonthCalendarWidget: Widget {
     StaticConfiguration(kind: kind, provider: DayProvider()) { CatalogueWidgetView(kind: "monthCalendar", entry: $0) }
       .configurationDisplayName("Month calendar").description("The month with today highlighted.")
       .supportedFamilies([.systemSmall, .systemMedium, .systemLarge]).contentMarginsDisabled()
+      .legacyGlazeGallery()
   }
 }
 struct CountdownWidget: Widget {
@@ -93,5 +97,6 @@ struct CountdownWidget: Widget {
     StaticConfiguration(kind: kind, provider: DayProvider()) { CatalogueWidgetView(kind: "countdown", entry: $0) }
       .configurationDisplayName("Countdown").description("Days until the date you choose in Glaze.")
       .supportedFamilies([.systemSmall, .systemMedium, .accessoryCircular, .accessoryRectangular, .accessoryInline]).contentMarginsDisabled()
+      .legacyGlazeGallery()
   }
 }

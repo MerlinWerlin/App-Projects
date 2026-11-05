@@ -144,5 +144,6 @@ struct QuoteWidget: Widget {
     .description("A short, gentle line that changes every day.")
     .contentMarginsDisabled()
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .legacyGlazeGallery()
   }
 }

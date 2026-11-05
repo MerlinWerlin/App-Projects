@@ -310,6 +310,7 @@ private func habitConfiguration(_ habit: HabitKindID, name: String, description:
   .configurationDisplayName(name)
   .description(description)
   .supportedFamilies(habit.widgetFamilies)
+  .legacyGlazeGallery()
   .contentMarginsDisabled()
 }
 

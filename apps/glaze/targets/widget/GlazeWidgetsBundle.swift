@@ -11,10 +11,8 @@ import WidgetKit
 struct GlazeWidgetsBundle: WidgetBundle {
   @WidgetBundleBuilder
   var body: some Widget {
-    ClockWidget()
-    DateWidget()
-    // T131: wallpaper-matched background + hero art (written by the bridge's setSeamless).
-    SeamlessWidget()
+    GlazeThemeGalleryBundle().body
+    GlazeLegacyArtBundle().body
     GlazeLockWidgetsBundle().body
     GlazeHabitWidgetsBundle().body
     GlazeCatalogueWidgetsBundle().body
@@ -29,6 +27,22 @@ struct GlazeWidgetsBundle: WidgetBundle {
     // via src/native/livelock.ts). The intent must run in the app process (openAppWhenRun or
     // a shared AppIntent target) because the extension can't drive the Lock Screen loop itself.
     // Add once T10's Swift module lands; gate with `if #available(iOS 18.0, *)`.
+  }
+}
+
+struct GlazeThemeGalleryBundle: WidgetBundle {
+  var body: some Widget {
+    ThemeGalleryWidget(kind: .clock)
+    ThemeGalleryWidget(kind: .battery)
+    ThemeGalleryWidget(kind: .calendar)
+  }
+}
+
+struct GlazeLegacyArtBundle: WidgetBundle {
+  var body: some Widget {
+    ClockWidget()
+    DateWidget()
+    SeamlessWidget()
   }
 }
 

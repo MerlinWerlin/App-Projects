@@ -322,5 +322,6 @@ struct HabitStreakWidget: Widget {
     .configurationDisplayName(HabitStreakText.name)
     .description(HabitStreakText.description)
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .legacyGlazeGallery()
   }
 }

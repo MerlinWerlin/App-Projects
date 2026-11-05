@@ -132,8 +132,12 @@ enum LiveArtSchedule {
   }
 
   static func plan(spec:LiveArtSpec?,from now:Date,calendar cal:Calendar = .current) -> (dates:[Date],policy:TimelineReloadPolicy) {
-    guard let spec=spec else {return ([now],.never)}
-    switch spec.kind {
+    plan(kind: spec?.kind, from: now, calendar: cal)
+  }
+
+  static func plan(kind: LiveArtSpec.Kind?, from now: Date, calendar cal: Calendar = .current) -> (dates: [Date], policy: TimelineReloadPolicy) {
+    guard let kind = kind else { return ([now], .never) }
+    switch kind {
     case .clock:
       // One entry per minute for the next hour, then a new timeline.
       let minuteStart = cal.dateInterval(of: .minute, for: now)?.start ?? now

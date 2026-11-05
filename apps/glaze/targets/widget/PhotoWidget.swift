@@ -129,6 +129,7 @@ struct PhotoWidget: Widget {
     .configurationDisplayName("Photo")
     .description("A photo you pick in Glaze.")
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .legacyGlazeGallery()
     .contentMarginsDisabled()
   }
 }

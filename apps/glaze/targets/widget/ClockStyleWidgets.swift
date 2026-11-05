@@ -71,6 +71,7 @@ struct WordClockWidget: Widget {
     .description("The time in words, in your Glaze theme.")
     .contentMarginsDisabled()
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .legacyGlazeGallery()
   }
 }
 
@@ -153,5 +154,6 @@ struct BigClockWidget: Widget {
     .description("Big, bold numerals in your Glaze theme. Made for StandBy.")
     .contentMarginsDisabled()
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .legacyGlazeGallery()
   }
 }

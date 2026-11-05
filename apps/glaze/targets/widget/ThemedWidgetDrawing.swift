@@ -73,7 +73,33 @@ struct WidgetIdentity {
 }
 
 enum ThemedClockArtwork {
-  static let alpine = UIImage(named: "AlpineClockFace") ?? Bundle.main.url(forResource: "AlpineClockFace", withExtension: "jpg").flatMap { UIImage(contentsOfFile: $0.path) }
+  private static let source = UIImage(named: "AlpineClockFace") ?? Bundle.main.url(forResource: "AlpineClockFace", withExtension: "jpg").flatMap { UIImage(contentsOfFile: $0.path) }
+  private static let thumbnails: NSCache<NSNumber, UIImage> = {
+    let cache = NSCache<NSNumber, UIImage>()
+    cache.totalCostLimit = 6 * 1024 * 1024
+    return cache
+  }()
+
+  static func alpine(maxPixels: Int) -> UIImage? {
+    guard let source = source else { return nil }
+    let pixels = min(maxPixels, Int(source.size.width * source.scale))
+    let key = NSNumber(value: pixels)
+    if let image = thumbnails.object(forKey: key) { return image }
+
+    // SwiftUI fitting changes the drawing bounds, but WidgetKit still archives the backing
+    // image. Bound that image to the clock face's rendered pixel size before drawing it.
+    let side = CGFloat(pixels)
+    let size = CGSize(width: side, height: side)
+    let format = UIGraphicsImageRendererFormat()
+    format.scale = 1
+    format.opaque = true
+    format.preferredRange = .standard
+    let image = UIGraphicsImageRenderer(size: size, format: format).image { _ in
+      source.draw(in: CGRect(origin: .zero, size: size))
+    }
+    thumbnails.setObject(image, forKey: key, cost: pixels * pixels * 4)
+    return image
+  }
 }
 
 private extension Path {
@@ -122,11 +148,11 @@ extension DesignedDrawing {
     return path
   }
 
-  mutating func themedClock(_ design: WidgetIdentity, date: Date, wide: Bool, large: Bool) {
+  mutating func themedClock(_ design: WidgetIdentity, date: Date, wide: Bool, large: Bool, facePixels: Int) {
     let side: CGFloat = large ? 364 : 170
     let box = themedBox(0, large ? 9 : 0, side)
     let background = Color(hex: spec.background[0])
-    let original = design.originalFace == "alpine" ? ThemedClockArtwork.alpine : nil
+    let original = design.originalFace == "alpine" ? ThemedClockArtwork.alpine(maxPixels: facePixels) : nil
     if let original = original {
       context.draw(Image(uiImage: original), in: box)
     } else {

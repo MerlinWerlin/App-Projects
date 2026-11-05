@@ -67,6 +67,7 @@ struct DesignedWidgetContent: View {
   @Environment(\.calendar) private var calendar
   @Environment(\.timeZone) private var timeZone
   @Environment(\.layoutDirection) private var direction
+  @Environment(\.displayScale) private var displayScale
 
   private var civilCalendar: Calendar { var c = calendar; c.timeZone = timeZone; return c }
   var body: some View {
@@ -81,7 +82,11 @@ struct DesignedWidgetContent: View {
         var draw = DesignedDrawing(context: context, spec: spec, size: size, locale: locale, calendar: civilCalendar, timeZone: timeZone)
         if let identity = spec.identity {
           switch spec.kind {
-          case "clock": draw.themedClock(identity, date: date, wide: wide, large: large)
+          case "clock":
+            let faceWidth = actual.width * (large ? 1 : 170 / size.width)
+            let faceHeight = actual.height * (large ? 364 / size.height : 170 / size.height)
+            let facePixels = max(1, Int((min(faceWidth, faceHeight) * displayScale).rounded(.down)))
+            draw.themedClock(identity, date: date, wide: wide, large: large, facePixels: facePixels)
           case "battery": draw.themedBattery(identity, percent: readings.battery, wide: wide, large: large)
           default: draw.themedCalendar(identity, date: date, wide: wide, large: large, rtl: direction == .rightToLeft)
           }
