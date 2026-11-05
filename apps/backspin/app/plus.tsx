@@ -9,7 +9,7 @@ import { Button, Card, Disc, Screen, T, Toastish } from '../src/ui/kit.tsx';
 import { SP } from '../src/ui/theme.ts';
 
 export default function Plus() {
-  const { t, theme, owned: plus, freeLeft, plusPrice, plusKind, buyPlus, restorePlus } = useApp();
+  const { t, theme, unlimited: plus, freeLeft, plusPrice, plusKind, buyPlus, restorePlus } = useApp();
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);

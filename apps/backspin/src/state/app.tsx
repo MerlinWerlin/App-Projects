@@ -9,6 +9,7 @@ import { deleteTakeFiles } from '../native/files.ts';
 import { loadJson, loadList, phoneLanguages, saveJson, setHapticsEnabled, storage } from '../native/device.ts';
 import Constants, { ExecutionEnvironment } from 'expo-constants';
 import { claimLangHint, dismissLangHint } from '../core/langHint.ts';
+import { createCodeAccess } from '../plus/accessCode.ts';
 import { guardTestStore } from '../plus/guard.ts';
 import { createStore, type BuyResult, type PlusStore } from '../plus/store.ts';
 import { makeTheme, type Theme } from '../ui/theme.ts';
@@ -53,8 +54,12 @@ type Ctx = {
   removeTake: (id: string) => void;
   /** Full access (bought, or still inside the 10 free goes). Gates every feature. */
   plus: boolean;
-  /** Bought the lifetime unlock. */
-  owned: boolean;
+  /** Unlimited access through a purchase or complimentary access code. */
+  unlimited: boolean;
+  codeAccess: boolean;
+  codeAccessAvailable: boolean;
+  activateCode: (code: string) => Promise<boolean>;
+  removeCode: () => Promise<boolean>;
   /** Free goes left, or null once bought. */
   freeLeft: number | null;
   plusKind: 'store' | 'test';
@@ -93,6 +98,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [stats, setStats] = useState<Stats>(DEFAULT_STATS);
   const [takes, setTakes] = useState<Take[]>([]);
   const [plus, setPlus] = useState(false);
+  const [codeAccess, setCodeAccess] = useState(false);
+  const [codeProvider] = useState(() => createCodeAccess(storage));
+  const playVariant = Constants.expoConfig?.extra?.playVariant;
+  const codeAccessAvailable = Platform.OS === 'android' && (playVariant === 'production' || playVariant === 'preview');
   const [plusPrice, setPlusPrice] = useState<string | null>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
   const [langHint, setLangHint] = useState(false);
@@ -102,11 +111,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let alive = true;
     (async () => {
-      const [p, s, tk, owned] = await Promise.all([
+      const [p, s, tk, owned, complimentary] = await Promise.all([
         loadJson('backspin.prefs.v1', DEFAULT_PREFS),
         loadJson('backspin.stats.v1', DEFAULT_STATS),
         loadList<Take>('backspin.takes.v1'),
         store.owned().catch(() => false),
+        codeAccessAvailable ? codeProvider.read() : false,
       ]);
       const hint = await claimLangHint(storage, !p.introSeen && s.rounds === 0);
       if (!alive) return;
@@ -116,6 +126,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       setStats(s);
       setTakes(tk);
       setPlus(owned);
+      setCodeAccess(complimentary);
       setReady(true);
       store.price().then((x) => alive && setPlusPrice(x)).catch(() => {});
     })();
@@ -125,7 +136,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       alive = false;
       sub.remove();
     };
-  }, [store]);
+  }, [codeAccessAvailable, codeProvider, store]);
 
   useEffect(() => {
     if (Platform.OS !== 'android' || !ready) return;
@@ -192,6 +203,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return ok;
   }, [store]);
 
+  const activateCode = useCallback(async (code: string) => {
+    if (!codeAccessAvailable || !(await codeProvider.activate(code))) return false;
+    setCodeAccess(true);
+    return true;
+  }, [codeAccessAvailable, codeProvider]);
+  const removeCode = useCallback(async () => {
+    if (!codeAccessAvailable || !(await codeProvider.remove())) return false;
+    setCodeAccess(false);
+    return true;
+  }, [codeAccessAvailable, codeProvider]);
+
   const hideLangHint = useCallback(() => {
     setLangHint(false);
     dismissLangHint(storage);
@@ -202,9 +224,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const dark = prefs.theme === 'system' ? scheme !== 'light' : prefs.theme === 'dark';
   const theme = useMemo(() => makeTheme(prefs.skin ?? 'booth', dark), [prefs.skin, dark]);
 
+  const unlimited = plus || codeAccess;
   const value: Ctx = {
     ready, prefs, setPref, stats, recordRound, takes, addTake, removeTake,
-    plus: hasAccess(plus, stats.rounds), owned: plus, freeLeft: freeGoesLeft(plus, stats.rounds), plusKind: store.kind, plusPrice, buyPlus, restorePlus,
+    plus: hasAccess(unlimited, stats.rounds), unlimited, freeLeft: freeGoesLeft(unlimited, stats.rounds),
+    plusKind: store.kind, plusPrice, buyPlus, restorePlus, codeAccess, codeAccessAvailable, activateCode, removeCode,
     t, lang, langHint, hideLangHint, theme, calm: prefs.calm || reduceMotion,
   };
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>;

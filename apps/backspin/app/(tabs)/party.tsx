@@ -8,7 +8,7 @@ import { Button, Card, Chip, Emoji, Press, Screen, SectionTitle, T, Toastish } f
 import { R, SP } from '../../src/ui/theme.ts';
 
 export default function PartySetup() {
-  const { t, theme, plus, owned } = useApp();
+  const { t, theme, plus, unlimited } = useApp();
   const router = useRouter();
   const [names, setNames] = useState<string[]>(partyStore.names());
   const [mode, setMode] = useState<PartyMode>('copy');
@@ -71,7 +71,7 @@ export default function PartySetup() {
       </View>
       {names.length < max ? (
         <Button kind="ghost" small icon="＋" title={t('party.addPlayer')} style={{ marginTop: SP(3), alignSelf: 'flex-start' }} onPress={() => setNames((x) => [...x, ''])} />
-      ) : !owned ? (
+      ) : !unlimited ? (
         <Press label={t('party.morePlus')} onPress={() => router.push('/plus')}>
           <T kind="small" color={theme.gold} style={{ marginTop: SP(3), fontWeight: '700' }}>
             🔒 {t('party.morePlus')}

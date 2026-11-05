@@ -1,17 +1,38 @@
 import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
-import { useState } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { useRef, useState } from 'react';
+import { Platform, Text, TextInput, View } from 'react-native';
 import { LANG_NAMES, SUPPORTED, type Lang } from '../src/i18n/core.ts';
 import { openMail, openPrivacy } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
 import { Button, Card, Chip, Divider, Press, Screen, SectionTitle, T, Toastish, ToggleRow } from '../src/ui/kit.tsx';
-import { fam, SKINS, SP } from '../src/ui/theme.ts';
+import { fam, R, SKINS, SP } from '../src/ui/theme.ts';
 
 export default function Settings() {
-  const { t, theme, prefs, setPref, owned: plus, restorePlus, stats, lang } = useApp();
+  const {
+    t, theme, prefs, setPref, unlimited: plus, restorePlus, stats, lang,
+    codeAccessAvailable, codeAccess, activateCode, removeCode,
+  } = useApp();
   const router = useRouter();
   const [msg, setMsg] = useState<string | null>(null);
+  const [code, setCode] = useState('');
+  const [codeError, setCodeError] = useState(false);
+  const [codeBusy, setCodeBusy] = useState(false);
+  const codeInFlight = useRef(false);
+
+  const updateCode = async () => {
+    if (codeInFlight.current) return;
+    codeInFlight.current = true;
+    setCodeBusy(true);
+    try {
+      const ok = await (codeAccess ? removeCode() : activateCode(code));
+      setCodeError(!ok);
+      if (ok) setCode('');
+    } finally {
+      codeInFlight.current = false;
+      setCodeBusy(false);
+    }
+  };
   const version = Constants.expoConfig?.version ?? '1.0.0';
   return (
     <Screen>
@@ -82,6 +103,37 @@ export default function Settings() {
         />
         <Toastish text={msg} />
       </Card>
+
+      {codeAccessAvailable ? (
+        <>
+          <SectionTitle>{t('access.title')}</SectionTitle>
+          <Card style={{ gap: SP(3) }}>
+            {codeAccess ? <T kind="bodyB">{t('access.active')}</T> : (
+              <TextInput
+                accessibilityLabel={t('access.title')}
+                placeholder={t('access.title')}
+                placeholderTextColor={theme.sub}
+                value={code}
+                onChangeText={setCode}
+                editable={!codeBusy}
+                autoCapitalize="characters"
+                autoCorrect={false}
+                maxLength={128}
+                style={{ borderWidth: 1, borderColor: theme.cardBorder, borderRadius: R.s, padding: SP(3), color: theme.ink }}
+              />
+            )}
+            <Button
+              small
+              kind="quiet"
+              title={t(codeAccess ? 'access.remove' : 'access.activate')}
+              disabled={!codeAccess && !code.trim()}
+              busy={codeBusy}
+              onPress={updateCode}
+            />
+            <Toastish text={codeError ? t('access.failed') : null} />
+          </Card>
+        </>
+      ) : null}
 
       <View style={{ gap: SP(3), marginTop: SP(6) }}>
         <Button kind="quiet" icon="✉️" title={t('settings.feedback')} onPress={() => openMail(t('feedback.subject'), `\n\n—\nBackspin ${version} · ${Platform.OS} ${Platform.Version} · ${stats.rounds} rounds`)} />

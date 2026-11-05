@@ -23,6 +23,7 @@ test('production keeps the stable package and uses the AAB profile', () => {
   const c = variant(app, { PLAY_VARIANT: 'production', EAS_BUILD_PLATFORM: 'android' });
   assert.equal(c.android.package, 'com.jared797.backspin');
   assert.equal(c.name, 'Backspin');
+  assert.equal(c.android.versionCode, 2);
   assert.equal(c.updates.enabled, false);
   assert.deepEqual(c.platforms, ['android']);
   assert.equal(profiles.build['play-production'].android.buildType, 'app-bundle');
