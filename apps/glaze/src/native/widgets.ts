@@ -54,7 +54,7 @@ export interface WidgetsAdapter {
   designVersion(): Promise<number>;
   designedBattery(): Promise<number | null>;
   saveDesignedWidget(piece: Omit<WidgetArtPiece, 'file'>): Promise<WidgetsResult>;
-  upgradeDesignedWidgets(theme: Theme): Promise<WidgetsResult>;
+  upgradeDesignedWidgets(theme: Theme | null): Promise<WidgetsResult>;
   /** Copy a local image (file:// URI) into the App Group for the Photo widget. */
   setPhoto(uri: string): Promise<WidgetsResult>;
   clearPhoto(): Promise<WidgetsResult>;

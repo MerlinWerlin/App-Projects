@@ -69,6 +69,16 @@ test('installed old ids migrate without losing personal photos, current choices,
   assert.deepEqual(upgraded.pieces.map(p => p.created), lib.pieces.map(p => p.created));
   assert.equal(upgraded.pieces.filter(p => p.live?.design).length, 9);
   assert.equal(upgradedDesignedLibrary(upgraded, theme, (kind, size) => `${kind} ${size}`), null);
+
+  const alpine = fixture.themes.find(t => t.id === 'alpine-starlight')!.designs[0];
+  const { identity: _identity, ...oldDial } = alpine;
+  const id = themePieceId('alpine-starlight', 'themed-live-clock', 'small');
+  const saved = { ...old[0], id, file: id + '.jpg', themeId: 'alpine-starlight', live: { ...old[0].live!, kind: 'clock' as const, design: oldDial } };
+  const offline = upgradedDesignedLibrary({ v: 1, pieces: [saved], unpinned: { small: id } }, null, (kind, size) => `${kind} ${size}`)!;
+  assert.equal(offline.pieces[0].id, id);
+  assert.equal(offline.unpinned?.small, id);
+  assert.equal(offline.pieces[0].live?.design?.identity?.originalFace, 'alpine');
+  assert.equal(upgradedDesignedLibrary(offline, null, (kind, size) => `${kind} ${size}`), null);
 });
 
 test('legacy fallback clocks disappear from menus and saved art without losing working designs or photos', () => {

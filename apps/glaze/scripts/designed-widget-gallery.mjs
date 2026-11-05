@@ -36,7 +36,7 @@ for(let offset=0;offset<data.themes.length;offset+=12){
   const file=`contact-${String(sheetFiles.length+1).padStart(2,'0')}.png`;
   await sharp(label).composite(pieces).png().toFile(join(output,file));sheetFiles.push(file);
 }
-const selected=['nebula-veil','fern-and-brass','rainlight','porcelain-tide','cherry-arcade','espresso-hour'];
+const selected=['alpine-starlight','blueprint-bureau','honeywood','nebula-veil','paper-carnival','porcelain-tide'];
 const chosen=data.themes.filter(t=>selected.includes(t.id));
 const composites=[];
 for(let i=0;i<chosen.length;i++)for(let j=0;j<3;j++)composites.push({input:pngs.find(p=>p.theme===chosen[i].id&&p.kind===['clock','battery','calendar'][j]).bytes,left:24+j*190,top:52+i*214});
