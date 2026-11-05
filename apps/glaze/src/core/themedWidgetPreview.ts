@@ -168,14 +168,19 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
     const gridX = wide ? 148 : large ? 25 : 12, gridW = wide ? 203 : large ? 314 : 146;
     const top = wide ? 34 : large ? 106 : 50, row = wide ? 17.4 : large ? 34 : 15, col = gridW / 7;
     const header = box(7, 7, wide ? 129 : w - 14, wide ? h - 14 : large ? 79 : 35);
-    const motifBox = wide ? box(26, 24, 91, 115) : large ? box(226, 5, 106, 78) : box(120, 5, 42, 36);
-    if (identity.calendar === 'band') rect(header, d.accent, .22, large ? 12 : 7);
+    const motifBox = wide ? box(37, 8, 70, 42) : large ? box(226, 5, 106, 78) : box(120, 5, 42, 36);
+    const paper = d.background[0];
+    if (identity.calendar === 'band') {
+      rect(header, paper, 1, large ? 12 : 7);
+      if (wide) line(137, 14, 137, h - 14, d.accent, .62, 1.5);
+      else line(14, header.y + header.h, w - 14, header.y + header.h, d.accent, .62, 1.5);
+    }
     if (identity.calendar === 'folio') {
-      rect(box(6, 6, w - 12, h - 12), d.ink, .047, large ? 22 : 11);
+      rect(box(6, 6, w - 12, h - 12), paper, 1, large ? 22 : 11);
       line(wide ? 139 : 8, 13, wide ? 139 : 8, h - 13, d.accent, .52, 1.5);
     }
     if (identity.calendar === 'ticket') {
-      rect(header, d.ink, .095, large ? 16 : 7);
+      rect(header, paper, 1, large ? 16 : 7);
       for (let i = 0; i < 13; i++) {
         const x = wide ? 138 : 13 + (w - 26) * i / 12;
         const y = wide ? 14 + (h - 28) * i / 12 : large ? 91 : 43;
@@ -186,13 +191,12 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
       for (let i = 0; i < 7; i++) line(gridX, top + row * (.65 + i), gridX + gridW, top + row * (.65 + i), d.secondary, identity.calendar === 'board' ? .24 : .30, .65);
       if (identity.calendar === 'board') for (let i = 0; i <= 7; i++) line(gridX + i * col, top - row * .47, gridX + i * col, top + row * 6.65, d.secondary, .21, .65);
     }
-    path(identity.detail, box(gridX + gridW * .11, top + row, gridW * .78, row * 5.4), d.accent, .16, 1.3);
-    path(identity.subject, motifBox, d.secondary, wide ? .39 : .60, wide ? 1.7 : 2.6);
+    path(identity.detail, motifBox, d.accent, .22, 1.3);
+    path(identity.subject, motifBox, d.secondary, .65, wide ? 2 : 2.6);
     if (wide) {
-      rect(box(19, 54, 108, 62), d.background[0], .72, 12);
-      text(fmt({ weekday: 'short' }), 72, 40, 15, 108, d.secondary);
-      text(number(month.today), 72, 84, 54, 102, d.ink, 700);
-      text(fmt({ month: 'short', year: 'numeric' }), 72, 131, 14, 114, d.secondary);
+      text(fmt({ weekday: 'short' }), 72, 60, 14, 108, d.secondary);
+      text(number(month.today), 72, 99, 49, 102, d.ink, 700);
+      text(fmt({ month: 'short', year: 'numeric' }), 72, 139, 14, 114, d.secondary);
     } else {
       text(fmt({ month: 'long' }), large ? 24 : 16, large ? 35 : 22, large ? 33 : 18, large ? 193 : 99, d.ink, 700, 'start');
       text(fmt({ year: 'numeric' }), large ? 25 : 17, large ? 69 : 37, large ? 16 : 10, 75, d.secondary, 600, 'start');

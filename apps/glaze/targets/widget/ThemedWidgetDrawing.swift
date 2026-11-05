@@ -262,14 +262,17 @@ extension DesignedDrawing {
     let row: CGFloat = wide ? 17.4 : large ? 34 : 15
     let col = gridW / 7
     let header = themedBox(7, 7, wide ? 129 : w - 14, wide ? h - 14 : large ? 79 : 35)
+    let paper = Color(hex: spec.background[0])
     switch design.calendar {
     case "band":
-      rect(header.minX, header.minY, header.width, header.height, radius: large ? 12 : 7, color: accent.opacity(0.22))
+      rect(header.minX, header.minY, header.width, header.height, radius: large ? 12 : 7, color: paper)
+      if wide { line(137, 14, 137, h - 14, color: accent.opacity(0.62), width: 1.5) }
+      else { line(14, header.maxY, w - 14, header.maxY, color: accent.opacity(0.62), width: 1.5) }
     case "folio":
-      rect(6, 6, w - 12, h - 12, radius: large ? 22 : 11, color: ink.opacity(0.047))
+      rect(6, 6, w - 12, h - 12, radius: large ? 22 : 11, color: paper)
       line(wide ? 139 : 8, 13, wide ? 139 : 8, h - 13, color: accent.opacity(0.52), width: 1.5)
     case "ticket":
-      rect(header.minX, header.minY, header.width, header.height, radius: large ? 16 : 7, color: ink.opacity(0.095))
+      rect(header.minX, header.minY, header.width, header.height, radius: large ? 16 : 7, color: paper)
       for i in 0..<13 {
         let x: CGFloat = wide ? 138 : 13 + (w - 26) * CGFloat(i) / 12
         let y: CGFloat = wide ? 14 + (h - 28) * CGFloat(i) / 12 : large ? 91 : 43
@@ -288,14 +291,13 @@ extension DesignedDrawing {
         }
       }
     }
-    let subject = wide ? themedBox(26, 24, 91, 115) : large ? themedBox(226, 5, 106, 78) : themedBox(120, 5, 42, 36)
-    shape(design.detail, in: themedBox(gridX + gridW * 0.11, top + row, gridW * 0.78, row * 5.4), color: accent.opacity(0.16), stroke: 1.3)
-    shape(design.subject, in: subject, color: secondary.opacity(wide ? 0.39 : 0.60), stroke: wide ? 1.7 : 2.6)
+    let subject = wide ? themedBox(37, 8, 70, 42) : large ? themedBox(226, 5, 106, 78) : themedBox(120, 5, 42, 36)
+    shape(design.detail, in: subject, color: accent.opacity(0.22), stroke: 1.3)
+    shape(design.subject, in: subject, color: secondary.opacity(0.65), stroke: wide ? 2 : 2.6)
     if wide {
-      rect(19, 54, 108, 62, radius: 12, color: Color(hex: spec.background[0]).opacity(0.72))
-      text(dateText(date, "EEE"), x: 72, y: 40, font: 15, width: 108, color: secondary)
-      text(number(month.today), x: 72, y: 84, font: 54, width: 102, weight: .bold)
-      text(dateText(date, "MMM y"), x: 72, y: 131, font: 14, width: 114, color: secondary)
+      text(dateText(date, "EEE"), x: 72, y: 60, font: 14, width: 108, color: secondary)
+      text(number(month.today), x: 72, y: 99, font: 49, width: 102, weight: .bold)
+      text(dateText(date, "MMM y"), x: 72, y: 139, font: 14, width: 114, color: secondary)
     } else {
       text(dateText(date, "LLLL"), x: large ? 24 : 16, y: large ? 35 : 22, font: large ? 33 : 18, width: large ? 193 : 99, weight: .bold, anchor: .leading)
       text(dateText(date, "y"), x: large ? 25 : 17, y: large ? 69 : 37, font: large ? 16 : 10, width: 75, color: secondary, weight: .semibold, anchor: .leading)
