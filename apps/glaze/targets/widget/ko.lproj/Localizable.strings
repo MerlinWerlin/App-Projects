@@ -152,3 +152,9 @@
 "Unavailable" = "사용할 수 없음";
 "Full" = "완충";
 "Remaining" = "남음";
+
+/* Theme gallery */
+"Theme Clock" = "테마 시계";
+"Battery" = "배터리";
+"Calendar" = "캘린더";
+"Matches the theme you choose in Glaze." = "Glaze에서 선택한 테마에 맞춰 표시됩니다.";

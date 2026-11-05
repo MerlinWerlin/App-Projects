@@ -6,22 +6,26 @@
 // step (pushStoredWidgetTheme, src/store/launchWork.ts), never on the launch path.
 // Never throws; every native call no-ops in Expo Go and on Android.
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getAnyTheme } from '../core/plusThemes';
-import type { Theme } from '../core/themes';
-import { ACTIVE_WIDGET_THEME_KEY, launchWidgetTheme, serializeWidgetTheme, widgetThemeFrom } from '../core/widgetTheme';
+import { THEMES, type Theme } from '../core/themes';
+import { parseWidgetGalleryTheme, widgetGalleryTheme } from '../core/widgetGalleryTheme';
+import { ACTIVE_WIDGET_THEME_KEY, DEFAULT_WIDGET_THEME, serializeWidgetTheme } from '../core/widgetTheme';
 import { widgets } from '../native/widgets';
 import { loadStudio } from './studio';
+import { findAnyThemeById } from './themeLookup';
+
+let themeRevision = 0;
 
 /** Write `theme` to the widgets and remember it as the active widget theme. True when the widgets got it. */
 export async function applyWidgetTheme(theme: Theme): Promise<boolean> {
+  const revision = ++themeRevision;
   try {
-    const wt = widgetThemeFrom(theme);
+    const wt = widgetGalleryTheme(theme);
     try {
       await AsyncStorage.setItem(ACTIVE_WIDGET_THEME_KEY, serializeWidgetTheme(wt));
     } catch {
       // Storage unavailable: the widgets still get this write.
     }
-    return (await widgets.setTheme(wt)).ok;
+    return revision === themeRevision && (await widgets.setTheme(wt)).ok;
   } catch {
     return false;
   }
@@ -34,8 +38,9 @@ export async function applyWidgetTheme(theme: Theme): Promise<boolean> {
  * True when stored.
  */
 export async function rememberWidgetTheme(theme: Theme): Promise<boolean> {
+  ++themeRevision;
   try {
-    await AsyncStorage.setItem(ACTIVE_WIDGET_THEME_KEY, serializeWidgetTheme(widgetThemeFrom(theme)));
+    await AsyncStorage.setItem(ACTIVE_WIDGET_THEME_KEY, serializeWidgetTheme(widgetGalleryTheme(theme)));
     return true;
   } catch {
     return false;
@@ -47,6 +52,7 @@ export async function rememberWidgetTheme(theme: Theme): Promise<boolean> {
  * same file is written again), never throws. True when the widgets got it.
  */
 export async function pushStoredWidgetTheme(): Promise<boolean> {
+  const revision = themeRevision;
   try {
     let stored: string | null = null;
     try {
@@ -62,9 +68,12 @@ export async function pushStoredWidgetTheme(): Promise<boolean> {
         studioThemeId = null;
       }
     }
-    const wt = launchWidgetTheme(stored, (id) => getAnyTheme(id), studioThemeId);
-    if (!wt) return false;
-    return (await widgets.setTheme(wt)).ok;
+    const saved = parseWidgetGalleryTheme(stored);
+    const theme = await findAnyThemeById(saved?.themeId ?? studioThemeId);
+    const wt = theme ? widgetGalleryTheme(theme) : saved ?? {
+      ...DEFAULT_WIDGET_THEME, designs: widgetGalleryTheme(THEMES[0]).designs,
+    };
+    return revision === themeRevision && (await widgets.setTheme(wt)).ok;
   } catch {
     return false;
   }

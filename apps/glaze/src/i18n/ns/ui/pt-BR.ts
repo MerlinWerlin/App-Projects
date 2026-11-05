@@ -8,7 +8,8 @@ export const ptBR: NonNullable<LocaleMessages['ui']> = {
       "clock": "Relógio",
       "battery": "Bateria",
       "calendar": "Calendário",
-      "setup": "Adicione o widget Glaze Seamless e escolha este design em Editar Widget → Arte.",
+      "setup": "Adicione um widget à tela inicial e escolha Glaze. Relógio, bateria e calendário seguem o tema que você escolher aqui.",
+      "save": "Salvar em Minhas artes de widget",
       "update": "Instale a versão mais recente do Glaze pelo TestFlight para usar estes widgets.",
       "batteryNote": "A bateria é atualizada periodicamente. Um traço indica que o iOS não forneceu o nível.",
       "unavailable": "Indisponível"

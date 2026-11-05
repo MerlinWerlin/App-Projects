@@ -4,6 +4,7 @@
 // Pure TS (no React Native / Expo) so Node can run and test it directly.
 
 import { isHex, mix, normalizeHex, relativeLuminance } from './colour.ts';
+import type { DesignedWidget } from './designedWidgets.ts';
 import type { Theme } from './themes.ts';
 
 export const WIDGET_THEME_VERSION = 1;
@@ -31,6 +32,7 @@ export type WidgetTheme = {
   font: WidgetFont;
   /** ISO-8601 timestamp of when the app wrote this theme. */
   updatedAt: string;
+  designs?: DesignedWidget[];
 };
 
 /**
@@ -116,6 +118,7 @@ export function serializeWidgetTheme(t: WidgetTheme): string {
     style: t.style,
     font: t.font,
     updatedAt: t.updatedAt,
+    designs: t.designs,
   });
 }
 

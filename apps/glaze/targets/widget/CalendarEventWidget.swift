@@ -311,5 +311,6 @@ struct CalendarEventWidget: Widget {
     .description("Your next calendar event, in your Glaze theme.")
     .contentMarginsDisabled()
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .legacyGlazeGallery()
   }
 }

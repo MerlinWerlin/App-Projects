@@ -303,6 +303,7 @@ struct MoodFace: View {
 // MARK: - Widgets
 
 @available(iOS 17.0, *)
+@MainActor
 private func habitConfiguration(_ habit: HabitKindID, name: String, description: String) -> some WidgetConfiguration {
   StaticConfiguration(kind: HabitWidgetKinds.kind(for: habit), provider: HabitProvider(habit: habit)) { entry in
     HabitWidgetView(entry: entry)
@@ -310,6 +311,7 @@ private func habitConfiguration(_ habit: HabitKindID, name: String, description:
   .configurationDisplayName(name)
   .description(description)
   .supportedFamilies(habit.widgetFamilies)
+  .legacyGlazeGallery()
   .contentMarginsDisabled()
 }
 

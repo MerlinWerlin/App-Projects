@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**6 November 2026 TestFlight train: `1.0.5`.** The Home Screen gallery puts the selected theme's Clock, Battery and Calendar first. Existing widget kinds and configurations remain supported under Other. Alpine's clock uses the original artwork at the widget's rendered size.
+
 **5 November 2026 TestFlight train: `1.0.4`.** The themed widget correction restores Alpine's original live dial and draws a full-size clock, illustrated battery gauge and calendar for each theme. The renderer and clock asset are in the native extension, so the appVersion runtime and native TestFlight binary change together.
 
 **4 November 2026 TestFlight correction:** `1.0.3` adds designed functional clock, battery and month-calendar widgets for every theme, with capability 5 and a separate appVersion runtime. This owner-requested native update supersedes the historical 1.0.1 train guidance below. **Build 31 is delivered:** Apple VALID / IN_BETA_TESTING in the existing internal TestFlight group, observed 4 November at 09:02 UTC. Native render, full app integration, three-function save/restart and signed shared Group checks pass; [delivery receipt](DESIGNED_WIDGET_DELIVERY_20261104.json). Open Glaze once after updating. Public App Review submission remains owner-controlled and has not been requested here.

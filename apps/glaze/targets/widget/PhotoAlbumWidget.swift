@@ -129,6 +129,7 @@ struct PhotoAlbumWidget: Widget {
       .configurationDisplayName("Photo album")
       .description("Your selected photos, changing through the day.")
       .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+      .legacyGlazeGallery()
       .contentMarginsDisabled()
   }
 }

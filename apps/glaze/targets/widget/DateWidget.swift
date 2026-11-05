@@ -71,5 +71,6 @@ struct DateWidget: Widget {
     .description("Today's date, in your Glaze theme.")
     .contentMarginsDisabled()
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .legacyGlazeGallery()
   }
 }

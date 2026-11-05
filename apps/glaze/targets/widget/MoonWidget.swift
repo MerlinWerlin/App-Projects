@@ -212,6 +212,7 @@ struct MoonWidget: Widget {
     .description("Tonight's moon phase, worked out on your phone, in your Glaze theme.")
     .contentMarginsDisabled()
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .legacyGlazeGallery()
   }
 }
 

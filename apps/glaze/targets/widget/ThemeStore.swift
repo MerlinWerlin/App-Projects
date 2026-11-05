@@ -127,14 +127,33 @@ enum ThemeStore {
     return found.theme
   }
 
+  static func loadGalleryDesign(kind: String) -> DesignedWidgetSpec {
+    let found = loadWithSource()
+    recordRead(themeId: found.theme.themeId, source: found.source)
+    if let data = found.data,
+       let payload = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+       let designs = payload["designs"] as? [[String: Any]],
+       let design = DesignedWidgetSpec.parse(designs.first { $0["kind"] as? String == kind }) {
+      return design
+    }
+    // Older App Group files contain only a palette. Keep the function available until Glaze
+    // opens and writes the full designs for the selected theme.
+    let theme = found.theme
+    let bg = theme.backgroundHexes[0]
+    let ink = GlazeHex.luminance(bg) > 0.179 ? "#000000" : "#FFFFFF"
+    return DesignedWidgetSpec(kind: kind, background: [bg, bg], ink: ink, secondary: ink,
+      accent: ink, onAccent: bg, line: GlazeHex.mix(bg, ink, 0.28), motif: "none",
+      font: "rounded", clock: "dial", battery: "ring", identity: nil)
+  }
+
   /// The theme plus where it came from: "defaults", "file" or "fallback".
-  private static func loadWithSource() -> (theme: WidgetTheme, source: String) {
+  private static func loadWithSource() -> (theme: WidgetTheme, source: String, data: Data?) {
     if
       let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup),
       let data = try? Data(contentsOf: container.appendingPathComponent(GlazeShared.themeFile)),
       let theme = decode(data)
     {
-      return (theme, "file")
+      return (theme, "file", data)
     }
     if
       let defaults = UserDefaults(suiteName: GlazeShared.appGroup),
@@ -142,9 +161,9 @@ enum ThemeStore {
       let data = json.data(using: .utf8),
       let theme = decode(data)
     {
-      return (theme, "defaults")
+      return (theme, "defaults", data)
     }
-    return (.fallback, "fallback")
+    return (.fallback, "fallback", nil)
   }
 
   /// T146: writes {at, themeId, source} as a JSON string to `glaze.widget.lastRead.v1` in the App

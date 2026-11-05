@@ -8,7 +8,8 @@ export const ko: NonNullable<LocaleMessages['ui']> = {
       "clock": "시계",
       "battery": "배터리",
       "calendar": "달력",
-      "setup": "Glaze Seamless 위젯을 추가하고 위젯 편집 → 아트에서 이 디자인을 선택하세요.",
+      "setup": "홈 화면에서 위젯을 추가하고 Glaze를 선택하세요. 시계, 배터리, 캘린더에 여기서 선택한 테마가 적용됩니다.",
+      "save": "내 위젯 아트에 저장",
       "update": "이 위젯을 사용하려면 TestFlight에서 최신 Glaze 빌드를 설치하세요.",
       "batteryNote": "배터리는 주기적으로 새로 고침됩니다. 대시는 iOS에서 잔량을 제공하지 않았음을 뜻합니다.",
       "unavailable": "사용할 수 없음"

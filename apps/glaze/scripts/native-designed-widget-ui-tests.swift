@@ -47,9 +47,27 @@ import Darwin
 
   func testAlpineOriginalFaceFromTheme() throws {
     continueAfterFailure = false
+    let app = try openAlpine()
+    defer { print("GLAZE_ALPINE_FINAL_TREE\n" + app.debugDescription) }
+
+    let part = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
+    reveal(part, in: app)
+    part.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.1)
+
+    let save = app.buttons["save-designed-widget"]
+    reveal(save, in: app)
+    let face = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Clock, Alpine Starlight")).firstMatch
+    XCTAssertTrue(face.exists, app.debugDescription)
+    save.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.1)
+    let saved = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Saved and added to My widget art.")).firstMatch
+    XCTAssertTrue(saved.waitForExistence(timeout: 15), app.debugDescription)
+    capture("alpine-original-clock-saved")
+    print("GLAZE_ALPINE_CLOCK_SAVED"); fflush(stdout)
+  }
+
+  private func openAlpine() throws -> XCUIApplication {
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
-    defer { print("GLAZE_ALPINE_FINAL_TREE\n" + app.debugDescription) }
     app.launch()
     let search = app.textFields["Search themes"]
     XCTAssertTrue(search.waitForExistence(timeout: 30), app.debugDescription)
@@ -71,17 +89,114 @@ import Darwin
       download.tap()
       XCTAssertTrue(part.waitForExistence(timeout: 75), app.debugDescription)
     }
-    reveal(part, in: app)
-    part.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.1)
+    return app
+  }
 
-    let save = app.buttons["save-designed-widget"]
-    reveal(save, in: app)
-    let face = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Clock, Alpine Starlight")).firstMatch
-    XCTAssertTrue(face.exists, app.debugDescription)
-    save.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.1)
-    let saved = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Saved and added to My widget art.")).firstMatch
-    XCTAssertTrue(saved.waitForExistence(timeout: 15), app.debugDescription)
-    let screenshot = XCTAttachment(screenshot: app.screenshot()); screenshot.name = "alpine-original-clock-saved"; screenshot.lifetime = .keepAlways; add(screenshot)
-    print("GLAZE_ALPINE_CLOCK_SAVED"); fflush(stdout)
+  func testAlpineOnHomeScreen() throws {
+    continueAfterFailure = false
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    app.launch()
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 30))
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    try openGallery(spring)
+    try installWidget("Seamless", in: spring, maxSwipes: 60)
+    capture("seamless-installed-before-alpine")
+    try testAlpineOriginalFaceFromTheme()
+    XCUIDevice.shared.press(.home)
+    RunLoop.current.run(until: Date().addingTimeInterval(10))
+    capture("alpine-small-on-home-screen")
+    print("GLAZE_ALPINE_INSTALLED\n" + spring.debugDescription); fflush(stdout)
+  }
+
+  func testThemeGalleryWithoutSavingIndividualWidgets() throws {
+    continueAfterFailure = false
+    defer { capture("gallery-final-screen") }
+    let app = try openAlpine()
+    let use = app.buttons["Use this theme"].firstMatch
+    XCTAssertTrue(use.waitForExistence(timeout: 15), app.debugDescription)
+    use.tap()
+    RunLoop.current.run(until: Date().addingTimeInterval(8))
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    XCUIDevice.shared.press(.home)
+    capture("home-before-adding-new-theme-widgets")
+    try openGallery(spring, fromHomeScreen: true)
+    try installWidget("Theme Clock", in: spring, maxSwipes: 8)
+    capture("theme-clock-installed")
+    for name in ["Battery", "Calendar"] {
+      try openGallery(spring, fromHomeScreen: true)
+      try installWidget(name, in: spring, maxSwipes: 8)
+      capture("theme-\(name)-installed")
+    }
+    print("GLAZE_THEME_GALLERY_INSTALLED\n" + spring.debugDescription); fflush(stdout)
+  }
+
+  private func capture(_ name: String) {
+    let screenshot = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+    screenshot.name = name; screenshot.lifetime = .keepAlways; add(screenshot)
+  }
+
+  private func openGallery(_ spring: XCUIApplication, fromHomeScreen: Bool = false) throws {
+    if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
+    if !fromHomeScreen { XCUIDevice.shared.press(.home) }
+    RunLoop.current.run(until: Date().addingTimeInterval(0.8))
+    // SpringBoard also exposes icons from off-screen pages with zero-sized frames.
+    let visible = spring.icons.allElementsBoundByIndex.filter { $0.frame.width > 35 && $0.isHittable }
+    let icon = try XCTUnwrap(visible.first { $0.label == "Glaze" } ?? visible.first, spring.debugDescription)
+    icon.press(forDuration: 1.5)
+    let editHome = spring.buttons["Edit Home Screen"].firstMatch
+    XCTAssertTrue(editHome.waitForExistence(timeout: 10), spring.debugDescription)
+    editHome.tap()
+    let edit = spring.buttons["Edit"].firstMatch
+    if edit.waitForExistence(timeout: 5) { edit.tap() }
+    let addWidget = spring.buttons["Add Widget"].firstMatch
+    XCTAssertTrue(addWidget.waitForExistence(timeout: 10), spring.debugDescription)
+    addWidget.tap()
+    let search = spring.searchFields.firstMatch
+    XCTAssertTrue(search.waitForExistence(timeout: 10), spring.debugDescription)
+    search.tap()
+    if !spring.keyboards.firstMatch.waitForExistence(timeout: 5) {
+      search.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+    }
+    let result = spring.buttons["Glaze"].firstMatch
+    let title = spring.staticTexts["Glaze"].firstMatch
+    for _ in 0..<3 {
+      search.typeText("Glaze")
+      let searchKey = spring.keyboards.buttons["Search"].firstMatch
+      if searchKey.exists && searchKey.isHittable { searchKey.tap() }
+      if result.waitForExistence(timeout: 4) { result.tap(); return }
+      if title.waitForExistence(timeout: 6) && title.frame.width > 1 {
+        title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        return
+      }
+      let clear = spring.buttons["Clear text"].firstMatch
+      if clear.exists { clear.tap() }
+      search.tap()
+      RunLoop.current.run(until: Date().addingTimeInterval(3))
+    }
+    XCTFail("Glaze did not appear in the system widget picker.\n" + spring.debugDescription)
+  }
+
+  private func installWidget(_ name: String, in spring: XCUIApplication, maxSwipes: Int) throws {
+    let label = spring.staticTexts[name].firstMatch
+    for _ in 0..<maxSwipes {
+      if label.exists { break }
+      if maxSwipes == 8 {
+        for legacy in ["Seamless", "Little Line", "Big Clock", "Word Clock", "Month Progress"] {
+          XCTAssertFalse(spring.staticTexts[legacy].firstMatch.exists, "\(legacy) appeared before \(name)")
+        }
+      }
+      spring.swipeLeft()
+    }
+    XCTAssertTrue(label.exists, spring.debugDescription)
+    capture("gallery-" + name)
+    // SpringBoard's remote gallery prepends whitespace to this button's accessibility label.
+    let add = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
+    XCTAssertTrue(add.waitForExistence(timeout: 5), spring.debugDescription)
+    add.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+    for _ in 0..<2 {
+      let done = spring.buttons["Done"].firstMatch
+      if done.waitForExistence(timeout: 3) { done.tap() }
+    }
+    RunLoop.current.run(until: Date().addingTimeInterval(12))
   }
 }

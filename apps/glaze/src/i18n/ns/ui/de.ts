@@ -8,7 +8,8 @@ export const de: NonNullable<LocaleMessages['ui']> = {
       "clock": "Uhr",
       "battery": "Batterie",
       "calendar": "Kalender",
-      "setup": "Füge das Glaze Seamless-Widget hinzu und wähle dieses Design unter Widget bearbeiten → Kunst.",
+      "setup": "Füge auf dem Home-Bildschirm ein Widget hinzu und wähle Glaze. Uhr, Batterie und Kalender folgen dem hier gewählten Thema.",
+      "save": "In meiner Widget-Kunst speichern",
       "update": "Installiere den neuesten Glaze-Build über TestFlight, um diese Widgets zu nutzen.",
       "batteryNote": "Batteriewerte werden regelmäßig aktualisiert. Ein Strich bedeutet, dass iOS keinen Wert liefert.",
       "unavailable": "Nicht verfügbar"

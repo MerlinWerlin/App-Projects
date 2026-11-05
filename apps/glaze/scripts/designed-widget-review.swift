@@ -23,7 +23,8 @@ enum DesignedWidgetReview {
       let sizes: [(String, CGFloat, CGFloat)] = [("small",170,170),("medium",364,170),("large",364,382)]
       var calendar = Calendar(identifier: .gregorian); calendar.timeZone = TimeZone(secondsFromGMT: 0)!; calendar.firstWeekday = 2
       let baseline = calendar.date(from: DateComponents(year: 2026, month: 11, day: 4, hour: 10, minute: 8))!
-      guard ThemedClockArtwork.alpine != nil else { throw fail("Missing original Alpine clock artwork") }
+      guard let alpine = ThemedClockArtwork.alpine(maxPixels: 510)?.cgImage,
+        alpine.width == 510 && alpine.height == 510 else { throw fail("Missing or oversized small Alpine clock artwork") }
       assertions += 1
 
       // Independent Foundation civil-month checks, including century/leap rules, every offset and
@@ -47,6 +48,12 @@ enum DesignedWidgetReview {
           guard LiveArtSpec.parse(live)?.design?.kind == spec.kind else { throw fail("Native shared spec parse \(id)") }; assertions += 1
           for (size,w,h) in sizes {
             try capture(spec, id: id, size: size, width: w, height: h, state: "default", locale: "en_AU", date: baseline, battery: 73, folder: folder, calendar: calendar, records: &records)
+            if spec.kind == "clock" && size == "small" {
+              let before = records.last?["sha256"] as? String
+              try capture(spec, id: id, size: size, width: w, height: h, state: "one-minute-later", locale: "en_AU", date: baseline.addingTimeInterval(60), battery: 73, folder: folder, calendar: calendar, records: &records)
+              guard before != records.last?["sha256"] as? String else { throw fail("Frozen small clock \(id)") }
+              assertions += 1
+            }
           }
         }
       }
