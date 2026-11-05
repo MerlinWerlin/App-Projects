@@ -44,6 +44,11 @@ export const settings = {
   'settings.privacy.openHint': 'Open the Linework privacy policy in your browser',
   'settings.privacy.openFailed': 'Could not open the browser. Privacy policy: {url}',
 
+  'settings.review.title': "Plus access code",
+  'settings.review.active': "Plus access is active",
+  'settings.review.enter': "Enter access code",
+  'settings.review.apply': "Activate access",
+  'settings.review.invalid': "This code could not be activated. Check it and try again.",
   'settings.about.title': 'About',
   'settings.about.body': 'Linework {version}. Templates are original line art made for Linework.',
 } as const;

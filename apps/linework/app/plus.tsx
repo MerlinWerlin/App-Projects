@@ -66,13 +66,13 @@ export default function PlusScreen() {
   const { t } = useT();
   const router = useRouter();
   const plus = usePlus();
-  const owned = plus.state.owned;
+  const owned = plus.state.owned || plus.reviewActive;
   const price = plus.price ?? PLUS_PRICE;
   const reason = plus.access.reason;
   const offerTrial = canStartTrial(plus.access);
   const trialLine =
     reason === 'owned'
-      ? t('plus.trial.owned')
+      ? (plus.reviewActive ? t('settings.review.active') : t('plus.trial.owned'))
       : reason === 'trial'
         ? t('plus.trial.left', { count: plus.access.daysLeft })
         : reason === 'none'

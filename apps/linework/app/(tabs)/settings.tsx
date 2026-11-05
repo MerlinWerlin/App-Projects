@@ -3,7 +3,7 @@
 // (haptics), Language (phone language or any shipped language) and About (free tools, Linework Plus + tip jar,
 // privacy, version). Defaults are persisted locally.
 import { useEffect, useState, type ReactNode } from 'react';
-import { Alert, Linking, Platform, StyleSheet, Text, View } from 'react-native';
+import { Alert, Linking, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import Constants from 'expo-constants';
 import { Stack, useRouter } from 'expo-router';
 import { useThemeV2 } from '../../src/theme/useTheme';
@@ -14,7 +14,8 @@ import { LabeledSlider } from '../../src/ui/LabeledSlider';
 import { STYLE_OPTIONS } from '../../src/core/outlineStyleParam';
 import { PRESETS } from '../../src/core/outlinePresets';
 import { SetupGuide } from '../../src/ui/SetupGuide';
-import { InsetGroup, InsetRow, ScreenV2 } from '../../src/ui/v2';
+import { InsetGroup, InsetRow, PillButton, ScreenV2 } from '../../src/ui/v2';
+import { activateReviewAccess, reviewAccessAvailable, usePlus } from '../../src/plus/usePlus';
 import { setLanguage, useT, type LanguageSetting } from '../../src/i18n';
 import { LOCALES, localeInfo } from '../../src/i18n/core';
 import { applyLayoutDirection } from '../../src/i18n/direction';
@@ -204,9 +205,58 @@ export default function SettingsScreen() {
             accessibilityHint={Platform.OS === 'android' ? t('settings.privacy.openHint') : undefined}
           />
         </InsetGroup>
+        {reviewAccessAvailable ? <ReviewAccessSection /> : null}
       </ScreenV2>
       <SetupGuide visible={showGuide} onDone={() => setShowGuide(false)} />
     </>
+  );
+}
+
+function ReviewAccessSection() {
+  const { c, text } = useThemeV2();
+  const { t } = useT();
+  const { reviewActive } = usePlus();
+  const [editing, setEditing] = useState(false);
+  const [code, setCode] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  const activate = async () => {
+    setBusy(true);
+    const accepted = await activateReviewAccess(code);
+    setBusy(false);
+    if (accepted) {
+      setEditing(false);
+      setCode('');
+    } else {
+      Alert.alert(t('settings.review.title'), t('settings.review.invalid'));
+    }
+  };
+
+  return (
+    <InsetGroup header={t('settings.review.title')}>
+      <InsetRow
+        title={t(reviewActive ? 'settings.review.active' : 'settings.review.enter')}
+        icon={reviewActive ? 'check' : 'key'}
+        onPress={reviewActive ? undefined : () => setEditing((shown) => !shown)}
+      />
+      {editing && !reviewActive ? (
+        <View style={{ padding: spaceV2.x4, gap: spaceV2.x3 }}>
+          <TextInput
+            accessibilityLabel={t('settings.review.title')}
+            placeholder={t('settings.review.title')}
+            placeholderTextColor={c.muted}
+            value={code}
+            onChangeText={setCode}
+            maxLength={64}
+            autoCapitalize="characters"
+            autoCorrect={false}
+            secureTextEntry
+            style={[text('body'), { color: c.ink, backgroundColor: c.inkSoft, padding: spaceV2.x3 }]}
+          />
+          <PillButton title={t('settings.review.apply')} disabled={busy || !code.trim()} onPress={() => { void activate(); }} />
+        </View>
+      ) : null}
+    </InsetGroup>
   );
 }
 
