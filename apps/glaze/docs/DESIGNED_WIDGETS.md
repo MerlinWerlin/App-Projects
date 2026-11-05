@@ -1,5 +1,9 @@
 # Designed clocks, batteries and calendars
 
+In **1.0.5**, choose a theme in Glaze, then add Theme Clock, Battery or Calendar from Glaze in the iPhone Home Screen widget picker. Each size uses the chosen theme as soon as its designs reach the shared App Group. The separate **Save to My widget art** action is for existing Seamless widgets with a custom piece. Legacy widget configurations stay registered and iOS places their Home Screen sizes in Other.
+
+`theme.json` keeps the v1 palette and optionally carries the three semantic designs. The theme gallery snapshots and timelines read these designs directly. Existing v1 files can still render from their palette until Glaze refreshes them. The `theme-gallery` simulator scenario adds all three from the system picker, with an option to install over a 1.0.4 app with an existing Home Screen widget.
+
 For **1.0.4**, `widgetIdentityRecipes.ts` assigns each of the 215 themes an outline, illustrated subject and detail, hour marks, hands, battery gauge and calendar treatment. Each analogue clock fills the largest square the family permits. The medium size uses the remaining width for a large time readout. Alpine Starlight's original mountain-and-constellation face is bundled with the app and extension, with live hands centred on the original dial. `assets/widgets/alpine-clock-face.jpg` is a size-optimised copy of the original Alpine clock artwork (source SHA-256 `cfca0ecfdf668928dacfd9dd4eae8707cc9323529ae903aadfb33a7267f17ef5`). Capability 6 upgrades saved designs in place from their existing theme ID and palette, including before the downloaded catalogue loads.
 
 The following delivery record covers the shared layouts in build 31.
