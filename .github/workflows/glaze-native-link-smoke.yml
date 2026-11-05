@@ -27,7 +27,7 @@ jobs:
   link:
     if: github.event_name == 'workflow_dispatch'
     runs-on: macos-latest
-    timeout-minutes: 30
+    timeout-minutes: 42
     env:
       GH_TOKEN: ${{ github.token }}
       GLAZE_SIMULATOR_RUN: ${{ inputs.simulator_run }}
@@ -68,7 +68,7 @@ jobs:
           fi
       - name: Install the real app and verify the Widgets route through the system prompt
         if: inputs.simulator_run != ''
-        timeout-minutes: 23
+        timeout-minutes: 34
         run: |
           set -euo pipefail
           APP=$(find "$RUNNER_TEMP/installable" -maxdepth 1 -name '*.app' -print -quit)

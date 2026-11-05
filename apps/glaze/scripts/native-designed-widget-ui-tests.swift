@@ -175,7 +175,8 @@ import Darwin
     }
     XCTAssertTrue(label.exists, spring.debugDescription)
     capture("gallery-" + name)
-    let add = spring.buttons["Add Widget"].firstMatch
+    // SpringBoard's remote gallery prepends whitespace to this button's accessibility label.
+    let add = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
     XCTAssertTrue(add.waitForExistence(timeout: 5), spring.debugDescription)
     add.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
     for _ in 0..<2 {
