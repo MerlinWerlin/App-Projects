@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.4 restores Alpine Starlight's original live dial and adds theme-specific full-size clocks, battery gauges and calendars across all 215 themes.",
+  "note": "Glaze 1.0.5 fixes the small Alpine Starlight clock and puts the chosen theme's Clock, Battery and Calendar first in the Home Screen picker. Existing widgets keep working.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

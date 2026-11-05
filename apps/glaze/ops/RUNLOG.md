@@ -713,3 +713,10 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - RELEASE requests a compatible production update for runtime 1.0.3 / existing TestFlight31. Publication and phone activation are not claimed here. Previous build27 status is superseded by docs/DESIGNED_WIDGET_DELIVERY_20261104.json, which independently records all215theme designed-widget delivery in31.
 
 - Delivery confirmed: PR229/source2e266cb7; ship41811848345 success at10:07:10UTC. Production/iOS/runtime1.0.3 update group5752b1bb-757a-4c63-93b6-1b123e350a19, update01a1a606-dae2-793a-980d-3e51452e84d2. Independent production manifest matched; downloaded7013488-byte launch asset matches SHA256cff6afcc1e2b077f0166e3d2667c127234e334d01e614f7c4823db0efecf0f10. TestFlight stays1.0.3(31); native binary/layouts unchanged. Close/reopen twice online to activate; physical phone not verified. Receipt docs/FALLBACK_REMOVAL_DELIVERY_20261104.json.
+
+## 6 November 2026 Glaze 1.0.5 TestFlight
+
+- Reproduced the Alpine Starlight small clock failure on 1.0.4. WidgetKit rejected the original 1080 by 1080 image during archiving (42094824765). The new renderer sizes that artwork to the widget before archiving.
+- The selected theme's Clock, Battery and Calendar are the nine main picker pages across three sizes. Legacy registrations remain in WidgetKit's Other section. No per-widget save is needed for the new kinds.
+- 1,910 core tests, app and Node TypeScript, and the WidgetKit contract pass. The native matrix covered all 215 small clocks at consecutive minutes (42094830614, 3,074 renders). Full app installation and launch passed (42095082325). The actual picker added the three themed widgets (42105442978). An existing small Alpine widget rendered after an in-place update in the same position (42104759152, pre-gallery screenshot and WidgetKit timeline).
+- PR 242 requests the production-native TestFlight build after the checks.
