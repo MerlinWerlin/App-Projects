@@ -1,10 +1,11 @@
 import { useRouter } from 'expo-router';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { dailyLine, dayKey, liveStreak, titleFor } from '../../src/core/game.ts';
 import { PACKS, QUIPS } from '../../src/content/index.ts';
 import { LANG_NAMES } from '../../src/i18n/core.ts';
+import { openPrivacy } from '../../src/native/device.ts';
 import { useApp } from '../../src/state/app.tsx';
-import { Card, Disc, Emoji, Press, Screen, T } from '../../src/ui/kit.tsx';
+import { Button, Card, Disc, Emoji, Press, Screen, T } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 export default function Home() {
@@ -28,6 +29,10 @@ export default function Home() {
           <T>⚙︎</T>
         </Press>
       </View>
+
+      {Platform.OS === 'android' ? (
+        <Button title={t('privacy.link')} kind="ghost" small onPress={openPrivacy} style={{ alignSelf: 'flex-start' }} />
+      ) : null}
 
       {/* First session only (release standard §1): which language we picked, with a way to change it. */}
       {langHint ? (

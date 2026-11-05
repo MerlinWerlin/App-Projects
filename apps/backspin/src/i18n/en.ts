@@ -180,6 +180,7 @@ export const en = {
   'settings.restored': 'Purchases restored',
   'settings.nothingToRestore': 'No purchases found for this Apple ID.',
   'settings.feedback': 'Send feedback or ideas',
+  'privacy.link': 'Privacy policy',
   'settings.privacy': 'Privacy: recordings never leave this phone unless you share them. No ads, no account, no tracking.',
   'settings.version': 'Version {v}',
   'settings.replayIntro': 'Show the how-to again',
@@ -217,6 +218,7 @@ export const en = {
   'intro.skip': 'Skip',
 
   'mic.title': 'Backspin needs the microphone',
+  'mic.bodyAndroid': 'Backspin uses the microphone during recording and processes your recording on this device.',
   'mic.body': "Backspin only listens while you hold the record button. Recordings stay on this phone and are never uploaded.",
   'mic.allow': 'Allow microphone',
   'mic.denied': 'Microphone access is off. Turn it on in Settings to play.',

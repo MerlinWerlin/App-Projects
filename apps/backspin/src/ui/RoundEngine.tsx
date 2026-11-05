@@ -12,7 +12,7 @@ import type { Pcm } from '../core/wav.ts';
 import { QUIPS } from '../content/index.ts';
 import type { Key } from '../i18n/en.ts';
 import { canReverseHere, play, stop } from '../native/audio.ts';
-import { haptic, openSettings, shareFile } from '../native/device.ts';
+import { haptic, openPrivacy, openSettings, shareFile } from '../native/device.ts';
 import { readPcm, writeScratch, writeShareFile } from '../native/files.ts';
 import { useApp } from '../state/app.tsx';
 import { Button, Card, Chip, Disc, Press, T, Toastish, Wave } from './kit.tsx';
@@ -232,6 +232,10 @@ export function RoundEngine(props: {
           ) : null}
         </Card>
       )}
+
+      {Platform.OS === 'android' && (step === 'say' || step === 'copy') ? (
+        <Button title={t('privacy.link')} kind="ghost" small onPress={openPrivacy} style={{ alignSelf: 'flex-start' }} />
+      ) : null}
 
       {step === 'say' && (
         <RecordArea

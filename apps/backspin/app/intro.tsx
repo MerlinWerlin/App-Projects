@@ -1,9 +1,9 @@
 // First-launch how-to: three cards, then a plain-words microphone screen before iOS asks.
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { micPermission, requestMic } from '../src/native/audio.ts';
-import { openSettings } from '../src/native/device.ts';
+import { openPrivacy, openSettings } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
 import { Button, Disc, Emoji, Screen, T } from '../src/ui/kit.tsx';
 import { SP } from '../src/ui/theme.ts';
@@ -39,8 +39,11 @@ export default function Intro() {
             {t('mic.title')}
           </T>
           <T color={theme.sub} center style={{ marginTop: SP(3) }}>
-            {denied ? t('mic.denied') : t('mic.body')}
+            {denied ? t('mic.denied') : t(Platform.OS === 'android' ? 'mic.bodyAndroid' : 'mic.body')}
           </T>
+          {Platform.OS === 'android' ? (
+            <Button title={t('privacy.link')} kind="ghost" small onPress={openPrivacy} style={{ marginTop: SP(2) }} />
+          ) : null}
           <Button title={denied ? t('mic.openSettings') : t('mic.allow')} style={{ marginTop: SP(8) }} onPress={denied ? openSettings : askMic} />
           <Button kind="ghost" small title={t('intro.skip')} style={{ marginTop: SP(3) }} onPress={done} />
         </View>

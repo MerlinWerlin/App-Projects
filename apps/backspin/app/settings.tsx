@@ -34,6 +34,7 @@ export default function Settings() {
     }
   };
   const version = Constants.expoConfig?.version ?? '1.0.0';
+  const privacy = t(Platform.OS === 'android' ? 'privacy.link' : 'settings.privacy');
   return (
     <Screen>
       {/* Language stays at the top of Settings (release standard §1); Home's first-launch line opens here. */}
@@ -139,9 +140,9 @@ export default function Settings() {
         <Button kind="quiet" icon="✉️" title={t('settings.feedback')} onPress={() => openMail(t('feedback.subject'), `\n\n—\nBackspin ${version} · ${Platform.OS} ${Platform.Version} · ${stats.rounds} rounds`)} />
         <Button kind="quiet" icon="❓" title={t('settings.replayIntro')} onPress={() => router.push('/intro')} />
       </View>
-      <Press label={t('settings.privacy')} onPress={openPrivacy} style={{ marginTop: SP(6) }}>
+      <Press label={privacy} onPress={openPrivacy} style={{ marginTop: SP(6) }}>
         <T kind="small" color={theme.sub} style={{ textDecorationLine: 'underline' }}>
-          {t('settings.privacy')}
+          {privacy}
         </T>
       </Press>
       <T kind="small" color={theme.faint} style={{ marginTop: SP(2) }}>

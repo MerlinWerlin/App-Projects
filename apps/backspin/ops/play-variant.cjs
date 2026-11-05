@@ -20,7 +20,7 @@ module.exports = function withPlayVariant(config, env = process.env) {
     android: {
       ...config.android,
       package: config.android.package + (preview ? '.playtest' : ''),
-      versionCode: Math.max(config.android.versionCode || 1, 2),
+      versionCode: Math.max(config.android.versionCode || 1, 3),
       // Audio remains in app-private files and is shared with a temporary URI grant.
       // Standalone Play builds never need Metro's overlay or broad media access.
       blockedPermissions: [...new Set([...(config.android.blockedPermissions || []),
