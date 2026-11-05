@@ -47,9 +47,27 @@ import Darwin
 
   func testAlpineOriginalFaceFromTheme() throws {
     continueAfterFailure = false
+    let app = try openAlpine()
+    defer { print("GLAZE_ALPINE_FINAL_TREE\n" + app.debugDescription) }
+
+    let part = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
+    reveal(part, in: app)
+    part.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.1)
+
+    let save = app.buttons["save-designed-widget"]
+    reveal(save, in: app)
+    let face = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Clock, Alpine Starlight")).firstMatch
+    XCTAssertTrue(face.exists, app.debugDescription)
+    save.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.1)
+    let saved = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Saved and added to My widget art.")).firstMatch
+    XCTAssertTrue(saved.waitForExistence(timeout: 15), app.debugDescription)
+    capture("alpine-original-clock-saved")
+    print("GLAZE_ALPINE_CLOCK_SAVED"); fflush(stdout)
+  }
+
+  private func openAlpine() throws -> XCUIApplication {
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
-    defer { print("GLAZE_ALPINE_FINAL_TREE\n" + app.debugDescription) }
     app.launch()
     let search = app.textFields["Search themes"]
     XCTAssertTrue(search.waitForExistence(timeout: 30), app.debugDescription)
@@ -71,34 +89,50 @@ import Darwin
       download.tap()
       XCTAssertTrue(part.waitForExistence(timeout: 75), app.debugDescription)
     }
-    reveal(part, in: app)
-    part.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.1)
-
-    let save = app.buttons["save-designed-widget"]
-    reveal(save, in: app)
-    let face = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Clock, Alpine Starlight")).firstMatch
-    XCTAssertTrue(face.exists, app.debugDescription)
-    save.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.1)
-    let saved = app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "Saved and added to My widget art.")).firstMatch
-    XCTAssertTrue(saved.waitForExistence(timeout: 15), app.debugDescription)
-    let screenshot = XCTAttachment(screenshot: app.screenshot()); screenshot.name = "alpine-original-clock-saved"; screenshot.lifetime = .keepAlways; add(screenshot)
-    print("GLAZE_ALPINE_CLOCK_SAVED"); fflush(stdout)
+    return app
   }
 
   func testAlpineOnHomeScreen() throws {
     try testAlpineOriginalFaceFromTheme()
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
     try openGallery(spring)
-    try installWidget("Seamless", in: spring)
-    let installed = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
-    installed.name = "alpine-small-on-home-screen"; installed.lifetime = .keepAlways; add(installed)
+    try installWidget("Seamless", in: spring, maxSwipes: 60)
+    capture("alpine-small-on-home-screen")
     print("GLAZE_ALPINE_INSTALLED\n" + spring.debugDescription); fflush(stdout)
+  }
+
+  func testThemeGalleryWithoutSavingIndividualWidgets() throws {
+    continueAfterFailure = false
+    defer { capture("gallery-final-screen") }
+    let app = try openAlpine()
+    let use = app.buttons["Use this theme"].firstMatch
+    XCTAssertTrue(use.waitForExistence(timeout: 15), app.debugDescription)
+    use.tap()
+    RunLoop.current.run(until: Date().addingTimeInterval(8))
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    XCUIDevice.shared.press(.home)
+    capture("home-before-adding-new-theme-widgets")
+    try openGallery(spring)
+    try installWidget("Theme Clock", in: spring, maxSwipes: 8)
+    capture("theme-clock-installed")
+    for name in ["Battery", "Calendar"] {
+      try openGallery(spring)
+      try installWidget(name, in: spring, maxSwipes: 8)
+      capture("theme-\(name)-installed")
+    }
+    print("GLAZE_THEME_GALLERY_INSTALLED\n" + spring.debugDescription); fflush(stdout)
+  }
+
+  private func capture(_ name: String) {
+    let screenshot = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
+    screenshot.name = name; screenshot.lifetime = .keepAlways; add(screenshot)
   }
 
   private func openGallery(_ spring: XCUIApplication) throws {
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
     XCUIDevice.shared.press(.home)
     let icon = spring.icons["Glaze"].firstMatch
+    if !icon.waitForExistence(timeout: 3) { spring.swipeLeft() }
     XCTAssertTrue(icon.waitForExistence(timeout: 15), spring.debugDescription)
     icon.press(forDuration: 1.5)
     let editHome = spring.buttons["Edit Home Screen"].firstMatch
@@ -128,15 +162,19 @@ import Darwin
     }
   }
 
-  private func installWidget(_ name: String, in spring: XCUIApplication) throws {
+  private func installWidget(_ name: String, in spring: XCUIApplication, maxSwipes: Int) throws {
     let label = spring.staticTexts[name].firstMatch
-    for _ in 0..<60 {
+    for _ in 0..<maxSwipes {
       if label.exists { break }
+      if maxSwipes == 8 {
+        for legacy in ["Seamless", "Little Line", "Big Clock", "Word Clock", "Month Progress"] {
+          XCTAssertFalse(spring.staticTexts[legacy].firstMatch.exists, "\(legacy) appeared before \(name)")
+        }
+      }
       spring.swipeLeft()
     }
     XCTAssertTrue(label.exists, spring.debugDescription)
-    let preview = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
-    preview.name = "gallery-" + name; preview.lifetime = .keepAlways; add(preview)
+    capture("gallery-" + name)
     let add = spring.buttons["Add Widget"].firstMatch
     XCTAssertTrue(add.waitForExistence(timeout: 5), spring.debugDescription)
     add.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
