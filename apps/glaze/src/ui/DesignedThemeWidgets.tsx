@@ -76,10 +76,13 @@ export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChang
       <View style={[styles.preview, continuous, { width: previewWidth, height: previewHeight, backgroundColor: design.background[0] }]}>
         <SvgXml xml={xml} width={previewWidth} height={previewHeight} accessible accessibilityLabel={[name(kind), theme.name].join(', ')} />
       </View>
-      <PillButton testID="save-designed-widget" label={t('tabs.widgetsTab.art.use')} icon="check-circle" variant="filled" block busy={busy} onPress={() => { void save(); }} />
       <Text style={[textV2.footnote, { color: c.inkSecondary }]} maxFontSizeMultiplier={fontScaleCap('footnote')}>
-        {status === 'saved' ? t('ui.seamless.library.added') : status === 'update' ? t('ui.designedWidgets.update') : status === 'failed' ? t('ui.seamless.failed') : t('ui.designedWidgets.setup')}
+        {t('ui.designedWidgets.setup')}
       </Text>
+      <PillButton testID="save-designed-widget" label={t('ui.designedWidgets.save')} icon="check-circle" variant="tinted" block busy={busy} onPress={() => { void save(); }} />
+      {status ? <Text style={[textV2.footnote, { color: c.inkSecondary }]} maxFontSizeMultiplier={fontScaleCap('footnote')}>
+        {status === 'saved' ? t('ui.seamless.library.added') : status === 'update' ? t('ui.designedWidgets.update') : t('ui.seamless.failed')}
+      </Text> : null}
       {kind === 'battery' ? <Text style={[textV2.footnote, { color: c.inkSecondary }]} maxFontSizeMultiplier={fontScaleCap('footnote')}>{t('ui.designedWidgets.batteryNote')}</Text> : null}
     </View>
   );

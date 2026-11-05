@@ -8,7 +8,8 @@ export const zhHans: NonNullable<LocaleMessages['ui']> = {
       "clock": "时钟",
       "battery": "电量",
       "calendar": "日历",
-      "setup": "添加 Glaze Seamless 小组件，然后在“编辑小组件”→“艺术”中选择此设计。",
+      "setup": "在主屏幕上添加小组件并选择 Glaze。时钟、电池和日历会使用你在此选择的主题。",
+      "save": "存入我的小组件艺术",
       "update": "请从 TestFlight 安装最新版本的 Glaze 以使用这些小组件。",
       "batteryNote": "电量会定期刷新。短横线表示 iOS 尚未提供电量。",
       "unavailable": "暂不可用"

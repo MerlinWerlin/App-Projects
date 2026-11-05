@@ -53,11 +53,9 @@ private struct ThemeGalleryProvider: TimelineProvider {
   }
 }
 
-struct ThemeGalleryWidget: Widget {
-  let kind: ThemeGalleryKind
-
-  var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind.widgetID, provider: ThemeGalleryProvider(kind: kind)) { entry in
+private extension ThemeGalleryKind {
+  @MainActor var configuration: some WidgetConfiguration {
+    StaticConfiguration(kind: widgetID, provider: ThemeGalleryProvider(kind: self)) { entry in
       DesignedWidgetContent(spec: entry.design, date: entry.date,
         readings: entry.preview ? .snapshot(focus: .idle, battery: 75) : .device)
         .containerBackground(for: .widget) {
@@ -65,11 +63,23 @@ struct ThemeGalleryWidget: Widget {
         }
         .widgetURL(URL(string: "glaze://widgets"))
     }
-    .configurationDisplayName(kind.title)
+    .configurationDisplayName(title)
     .description("Matches the theme you choose in Glaze.")
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     .contentMarginsDisabled()
   }
+}
+
+struct ThemeClockWidget: Widget {
+  var body: some WidgetConfiguration { ThemeGalleryKind.clock.configuration }
+}
+
+struct ThemeBatteryWidget: Widget {
+  var body: some WidgetConfiguration { ThemeGalleryKind.battery.configuration }
+}
+
+struct ThemeCalendarWidget: Widget {
+  var body: some WidgetConfiguration { ThemeGalleryKind.calendar.configuration }
 }
 
 extension WidgetConfiguration {

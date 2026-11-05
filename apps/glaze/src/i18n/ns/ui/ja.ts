@@ -8,7 +8,8 @@ export const ja: NonNullable<LocaleMessages['ui']> = {
       "clock": "時計",
       "battery": "バッテリー",
       "calendar": "カレンダー",
-      "setup": "Glaze Seamlessウィジェットを追加し、「ウィジェットを編集」→「アート」でこのデザインを選びます。",
+      "setup": "ホーム画面でウィジェットを追加し、Glazeを選択します。時計、バッテリー、カレンダーにはここで選んだテーマが反映されます。",
+      "save": "マイウィジェットアートに保存",
       "update": "このウィジェットを使うには、TestFlightからGlazeの最新ビルドをインストールしてください。",
       "batteryNote": "バッテリー残量は定期的に更新されます。ダッシュはiOSから残量が取得できないことを示します。",
       "unavailable": "取得できません"

@@ -81,7 +81,8 @@ jobs:
           TEST=GlazeLinkUITests/GlazeDeepLinkTests/testWidgetLinkReachesWidgets
           if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then TEST=GlazeLinkUITests/GlazeWidgetTapTests/testWidgetTapRoundTripsThroughSharedStorage; fi
           if [[ "$GLAZE_UI_SCENARIO" == design ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testThreeFunctionalDesignsReachSharedStorage; fi
-          if [[ "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOriginalFaceFromTheme; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOriginalFaceFromTheme; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine-home ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOnHomeScreen; fi
           if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then TEST=GlazeLinkUITests/GlazeAlbumPickerTests/testSelectedPhotosReachNativeAlbum; fi
           xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath "$RUNNER_TEMP/link-build" -parallel-testing-enabled NO -resultBundlePath "$RUNNER_TEMP/glaze-link.xcresult" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO "-only-testing:$TEST" test-without-building > "$RUNNER_TEMP/glaze-link-test.log" 2>&1 &
           LINK_PID=$!
@@ -92,7 +93,9 @@ jobs:
               if [[ "$GLAZE_UI_SCENARIO" == album-widget ]]; then grep -F GLAZE_ALBUM_INSTALLED_NEXT_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"; fi
             elif [[ "$GLAZE_UI_SCENARIO" == design ]]; then
               grep -F GLAZE_DESIGNED_WIDGETS_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
-            elif [[ "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home ]]; then
+            elif [[ "$GLAZE_UI_SCENARIO" == alpine-home ]]; then
+              grep -F GLAZE_ALPINE_INSTALLED "$RUNNER_TEMP/glaze-link-test.log"
+            elif [[ "$GLAZE_UI_SCENARIO" == alpine ]]; then
               grep -F GLAZE_ALPINE_CLOCK_SAVED "$RUNNER_TEMP/glaze-link-test.log"
             else
               grep -F GLAZE_WIDGET_TAP_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"

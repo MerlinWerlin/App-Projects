@@ -5,12 +5,23 @@ import {
   DEFAULT_WIDGET_THEME,
   parseWidgetTheme,
   serializeWidgetTheme,
+  widgetGalleryTheme,
   widgetThemeFrom,
   type WidgetTheme,
 } from './widgetTheme.ts';
 
 const HEX = /^#[0-9A-F]{6}$/;
 const NOW = new Date('2026-10-12T09:30:00.000Z');
+
+test('the gallery gets all three designs for the chosen theme through the saved theme payload', () => {
+  const starter = widgetGalleryTheme(THEMES[0]);
+  const another = widgetGalleryTheme(THEMES[1]);
+  assert.deepEqual(starter.designs?.map(d => d.kind), ['clock', 'battery', 'calendar']);
+  assert.ok(starter.designs?.every(d => d.identity));
+  assert.notDeepEqual(starter.designs, another.designs);
+  assert.deepEqual(parseWidgetTheme(serializeWidgetTheme(starter)), starter);
+  assert.equal(parseWidgetTheme({ ...starter, designs: starter.designs?.slice(0, 1) })?.designs, undefined);
+});
 
 test('widgetThemeFrom: every starter theme produces a valid widget theme', () => {
   for (const theme of THEMES) {

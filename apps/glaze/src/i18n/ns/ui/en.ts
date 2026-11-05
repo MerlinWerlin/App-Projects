@@ -7,7 +7,8 @@ export const en = {
       "clock": "Clock",
       "battery": "Battery",
       "calendar": "Calendar",
-      "setup": "Add the Glaze Seamless widget, then choose this design in Edit Widget → Art.",
+      "setup": "On your Home Screen, add a widget and choose Glaze. Clock, Battery and Calendar follow the theme you choose here.",
+      "save": "Save to My widget art",
       "update": "Install the latest Glaze build from TestFlight to use these widgets.",
       "batteryNote": "Battery readings refresh periodically. A dash means iOS has not supplied a level.",
       "unavailable": "Unavailable"

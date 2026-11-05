@@ -32,9 +32,9 @@ struct GlazeWidgetsBundle: WidgetBundle {
 
 struct GlazeThemeGalleryBundle: WidgetBundle {
   var body: some Widget {
-    ThemeGalleryWidget(kind: .clock)
-    ThemeGalleryWidget(kind: .battery)
-    ThemeGalleryWidget(kind: .calendar)
+    ThemeClockWidget()
+    ThemeBatteryWidget()
+    ThemeCalendarWidget()
   }
 }
 
