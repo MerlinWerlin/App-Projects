@@ -177,13 +177,13 @@ extension DesignedDrawing {
     let column = design.gauge == "column"
     let art: CGRect
     if column {
-      art = large ? themedBox(18, 54, 155, 268) : wide ? themedBox(15, 13, 124, 145) : themedBox(5, 20, 77, 125)
+      art = large ? themedBox(18, 54, 144, 268) : wide ? themedBox(15, 13, 124, 145) : themedBox(5, 20, 70, 125)
     } else {
       art = large ? themedBox(51, 18, 262, 235) : wide ? themedBox(8, 12, 138, 145) : themedBox(27, 5, 116, 111)
     }
-    let valueX: CGFloat = wide ? 250 : column ? (large ? 258 : 120) : size.width / 2
+    let valueX: CGFloat = wide ? 250 : column ? (large ? 258 : 122) : size.width / 2
     let valueY: CGFloat = large ? (column ? 170 : 132) : wide ? 67 : column ? 75 : 61
-    let valueWidth: CGFloat = wide ? 183 : column ? (large ? 165 : 89) : size.width - 23
+    let valueWidth: CGFloat = wide ? 183 : column ? (large ? 165 : 81) : size.width - 23
     shape(design.outline, in: art, color: ink.opacity(0.06))
     shape(design.detail, in: art, color: accent.opacity(0.24), stroke: 1.4)
     if column {

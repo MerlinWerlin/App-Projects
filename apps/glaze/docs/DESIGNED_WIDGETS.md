@@ -1,5 +1,9 @@
 # Designed clocks, batteries and calendars
 
+For **1.0.4**, `widgetIdentityRecipes.ts` assigns each of the 215 themes an outline, illustrated subject and detail, hour marks, hands, battery gauge and calendar treatment. Each analogue clock fills the largest square the family permits. The medium size uses the remaining width for a large time readout. Alpine Starlight's original mountain-and-constellation face is bundled with the app and extension, with live hands centred on the original dial. `assets/widgets/alpine-clock-face.jpg` is a size-optimised copy of the original Alpine clock artwork (source SHA-256 `cfca0ecfdf668928dacfd9dd4eae8707cc9323529ae903aadfb33a7267f17ef5`). Capability 6 upgrades saved designs in place from their existing theme ID and palette, including before the downloaded catalogue loads.
+
+The following delivery record covers the shared layouts in build 31.
+
 Jared's 4 November 2026 correction replaces the generated `themed-live-clock`, `themed-live-date` and `themed-live-battery` editions. Those editions reused decorative pictures with a small value overlaid. Original standalone artwork remains available separately.
 
 Every theme now has three functional designs in Small, Medium and Large. This includes all 141 current catalogue themes, 66 additional bundled entries and eight Space photo themes. The designs use the same palette treatment as the theme's default icons, checked for text contrast. Original vector orbital, botanical, wave, petal, geometric and stitched details stay outside the information area. Subject and material determine dial/digital/split clocks and ring/cell/meter batteries. A calendar is a complete month with the current day highlighted, including six-row months.

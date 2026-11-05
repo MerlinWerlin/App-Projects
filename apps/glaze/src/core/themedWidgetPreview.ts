@@ -1,4 +1,4 @@
-import { calendarMonth, DESIGNED_SIZE, type DesignedWidget } from './designedWidgets.ts';
+import { calendarMonth, DESIGNED_SIZE, localeFirstWeekday, type DesignedWidget } from './designedWidgets.ts';
 import type { DesignedReadings } from './designedWidgetPreview.ts';
 import type { HomeOptionSize } from './widgetOptions.ts';
 import type { WidgetIdentity } from './widgetIdentity.ts';
@@ -98,11 +98,11 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
     const value = level === null ? '\u2014' : new Intl.NumberFormat(locale, { style: 'percent', maximumFractionDigits: 0 }).format(level / 100);
     const label = values.batteryLabel ?? 'Battery';
     const isColumn = identity.gauge === 'column';
-    const artworkBox = isColumn ? (large ? box(18, 54, 155, 268) : wide ? box(15, 13, 124, 145) : box(5, 20, 77, 125)) :
+    const artworkBox = isColumn ? (large ? box(18, 54, 144, 268) : wide ? box(15, 13, 124, 145) : box(5, 20, 70, 125)) :
       (large ? box(51, 18, 262, 235) : wide ? box(8, 12, 138, 145) : box(27, 5, 116, 111));
-    const valueX = wide ? 250 : isColumn ? (large ? 258 : 120) : w / 2;
+    const valueX = wide ? 250 : isColumn ? (large ? 258 : 122) : w / 2;
     const valueY = large ? (isColumn ? 170 : 132) : wide ? 67 : isColumn ? 75 : 61;
-    const valueWidth = wide ? 183 : isColumn ? (large ? 165 : 89) : w - 23;
+    const valueWidth = wide ? 183 : isColumn ? (large ? 165 : 81) : w - 23;
     path(identity.outline, artworkBox, d.ink, .06);
     path(identity.detail, artworkBox, d.accent, .24, 1.4);
     if (isColumn) {
@@ -163,11 +163,7 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
     text(value, valueX, valueY, large ? 85 : wide ? 67 : isColumn ? 41 : 52, valueWidth, d.ink, 700);
     text(label, valueX, large ? (isColumn ? 234 : 327) : wide ? 144 : 148, large ? 23 : 13, valueWidth, d.secondary, 500);
   } else {
-    let first = /^(en-US|en-CA|ja|zh|ko|hi)/i.test(locale) ? 0 : 1;
-    try {
-      const intl = new Intl.Locale(locale) as Intl.Locale & { weekInfo?: { firstDay: number }; getWeekInfo?: () => { firstDay: number } };
-      first = (intl.getWeekInfo?.().firstDay ?? intl.weekInfo?.firstDay ?? (first || 7)) % 7;
-    } catch { /* The regional default above also supports older runtimes. */ }
+    const first = localeFirstWeekday(locale);
     const month = calendarMonth(date, first), rtl = /^(ar|he|fa|ur)/.test(locale);
     const gridX = wide ? 148 : large ? 25 : 12, gridW = wide ? 203 : large ? 314 : 146;
     const top = wide ? 34 : large ? 106 : 50, row = wide ? 17.4 : large ? 34 : 15, col = gridW / 7;

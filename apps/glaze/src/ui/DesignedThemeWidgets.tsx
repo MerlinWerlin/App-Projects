@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { AccessibilityInfo, Image, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { AccessibilityInfo, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { DESIGNED_KINDS, DESIGNED_SIZE, designedLiveSpec, designedOptionId, designedWidget, type DesignedKind, type DesignedWidget } from '../core/designedWidgets';
 import { designedWidgetSvg } from '../core/designedWidgetPreview';
@@ -13,13 +13,14 @@ import { chromeRadiusV2, continuous, fontScaleCap, spaceV2, textV2 } from '../th
 import { useColorsV2 } from '../theme/useTokens';
 import { PillButton } from './PillButton';
 import { SectionHeader } from './SectionHeader';
+import { bundledArtUri } from './artPackSources';
 
 type Props = { theme: Theme; size: WidgetTabSize; width: number; style?: StyleProp<ViewStyle>; onLibraryChange?: () => void };
 
 const alpineClockFace = require('../../assets/widgets/alpine-clock-face.jpg');
 
 function originalClockArtwork(design: DesignedWidget): string | undefined {
-  if (design.kind === 'clock' && design.identity?.originalFace === 'alpine') return Image.resolveAssetSource(alpineClockFace)?.uri;
+  if (design.kind === 'clock' && design.identity?.originalFace === 'alpine') return bundledArtUri(alpineClockFace) ?? undefined;
   return undefined;
 }
 

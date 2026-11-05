@@ -122,6 +122,15 @@ export const DESIGNED_SIZE: Record<HomeOptionSize, { w: number; h: number }> = {
   small: { w: 170, h: 170 }, medium: { w: 364, h: 170 }, large: { w: 364, h: 382 },
 };
 
+export function localeFirstWeekday(locale: string): number {
+  try {
+    const value = new Intl.Locale(locale) as Intl.Locale & { weekInfo?: { firstDay: number }; getWeekInfo?: () => { firstDay: number } };
+    const first = value.getWeekInfo?.().firstDay ?? value.weekInfo?.firstDay;
+    if (first !== undefined) return first % 7;
+  } catch { /* Older Hermes: use the same common regional defaults. */ }
+  return /^(en-US|en-CA|ja|zh|ko|hi)/i.test(locale) ? 0 : 1;
+}
+
 /** Civil dates only. Locale week-start is supplied explicitly; six rows always fit every month. */
 export function calendarMonth(date: Date, firstWeekday = 1): { year: number; month: number; today: number; offset: number; days: number; cells: (number | null)[] } {
   const year = date.getFullYear(), month = date.getMonth(), today = date.getDate();
