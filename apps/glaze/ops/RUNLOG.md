@@ -720,3 +720,9 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - The selected theme's Clock, Battery and Calendar are the nine main picker pages across three sizes. Legacy registrations remain in WidgetKit's Other section. No per-widget save is needed for the new kinds.
 - 1,910 core tests, app and Node TypeScript, and the WidgetKit contract pass. The native matrix covered all 215 small clocks at consecutive minutes (42094830614, 3,074 renders). Full app installation and launch passed (42095082325). The actual picker added the three themed widgets (42105442978). An existing small Alpine widget rendered after an in-place update in the same position (42104759152, pre-gallery screenshot and WidgetKit timeline).
 - PR 242 requests the production-native TestFlight build after the checks.
+
+## 6 November 2026 Glaze 1.0.6 TestFlight
+
+- Match the Home Screen labels Clock, Battery and Calendar. Reuse the localized Clock label and keep the widget kind ID.
+- Keep older Home Screen widgets registered with WidgetKit's Other preference. The public preference is the available gallery control that preserves installed widget configurations.
+- The owner requested normal code checks and direct TestFlight delivery. The 1,910 core tests and app and Node TypeScript checks passed.

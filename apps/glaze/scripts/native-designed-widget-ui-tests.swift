@@ -120,7 +120,7 @@ import Darwin
     XCUIDevice.shared.press(.home)
     capture("home-before-adding-new-theme-widgets")
     try openGallery(spring, fromHomeScreen: true)
-    try installWidget("Theme Clock", in: spring, maxSwipes: 8)
+    try installWidget("Clock", in: spring, maxSwipes: 8)
     capture("theme-clock-installed")
     for name in ["Battery", "Calendar"] {
       try openGallery(spring, fromHomeScreen: true)

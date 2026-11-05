@@ -1,6 +1,6 @@
 # Designed clocks, batteries and calendars
 
-In **1.0.5**, choose a theme in Glaze, then add Theme Clock, Battery or Calendar from Glaze in the iPhone Home Screen widget picker. Each size uses the chosen theme as soon as its designs reach the shared App Group. The separate **Save to My widget art** action is for existing Seamless widgets with a custom piece. Legacy widget configurations stay registered and iOS places their Home Screen sizes in Other.
+Choose a theme in Glaze, then add Clock, Battery or Calendar from Glaze in the iPhone Home Screen widget picker. Each size uses the chosen theme as soon as its designs reach the shared App Group. The separate **Save to My widget art** action is for existing Seamless widgets with a custom piece. Legacy widget configurations stay registered and iOS places their Home Screen sizes in Other.
 
 `theme.json` keeps the v1 palette and optionally carries the three semantic designs. The theme gallery snapshots and timelines read these designs directly. Existing v1 files can still render from their palette until Glaze refreshes them. The `theme-gallery` simulator scenario adds all three from the system picker, with an option to install over a 1.0.4 app with an existing Home Screen widget.
 

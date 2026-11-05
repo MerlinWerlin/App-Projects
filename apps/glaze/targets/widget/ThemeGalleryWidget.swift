@@ -14,7 +14,7 @@ enum ThemeGalleryKind: String {
 
   var title: LocalizedStringKey {
     switch self {
-    case .clock: return "Theme Clock"
+    case .clock: return "Clock"
     case .battery: return "Battery"
     case .calendar: return "Calendar"
     }
