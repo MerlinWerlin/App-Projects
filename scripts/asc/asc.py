@@ -516,6 +516,21 @@ def submit(app):
     if busy:
         say(f"- already with Apple: submission {busy[0]['id']} is {attrs(busy[0])['state']}; nothing sent")
         return
+    # In-app purchases named in listing.json that Apple has not reviewed yet go in with this version.
+    # (A first non-consumable must be submitted with a new app version; skipping this sent Linework 1.0 out without them.)
+    want_iaps = {i["productId"] for i in lst.get("inAppPurchases", [])}
+    for iap in get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]:
+        pid, st = attrs(iap)["productId"], attrs(iap).get("state")
+        if pid not in want_iaps:
+            continue
+        if st in ("WAITING_FOR_REVIEW", "IN_REVIEW", "APPROVED", "READY_FOR_SALE"):
+            say(f"- purchase `{pid}` already {st}")
+            continue
+        if st != "READY_TO_SUBMIT":
+            raise RuntimeError(f"purchase {pid} is {st}, not READY_TO_SUBMIT; version not submitted")
+        call("POST", "/v1/inAppPurchaseSubmissions", {"data": {"type": "inAppPurchaseSubmissions", "relationships": {
+             "inAppPurchaseV2": {"data": {"type": "inAppPurchases", "id": iap["id"]}}}}})
+        say(f"- purchase `{pid}` added for review with this version")
     open_ = [x for x in subs if attrs(x).get("state") == "READY_FOR_REVIEW"]
     if open_:
         sub = open_[0]
