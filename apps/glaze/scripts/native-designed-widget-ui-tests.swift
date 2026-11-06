@@ -159,9 +159,9 @@ import Darwin
     XCUIDevice.shared.press(.home)
     try openGallery(spring, fromHomeScreen: true)
     try installWidget("Seamless", in: spring, maxSwipes: 20)
-    let widgets = spring.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS[c] %@", "Seamless"))
+    let widgets = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
     let homeWidget = try XCTUnwrap(widgets.allElementsBoundByIndex.first {
-      $0.isHittable && (110...205).contains($0.frame.width) && (110...205).contains($0.frame.height)
+      $0.isHittable && (110...205).contains($0.frame.width) && (110...215).contains($0.frame.height)
     }, spring.debugDescription)
     homeWidget.press(forDuration: 1.4)
     let edit = spring.buttons["Edit Widget"].firstMatch
