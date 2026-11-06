@@ -23,10 +23,10 @@ import { liveArtPlan, liveArtSpec, withLiveArt, type CountdownArtTargets } from 
 import { pickWallpaper } from '../core/packCatalog';
 import { isRemoteArtTheme, remoteArtFiles } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, widgetSizePx } from '../core/seamlessWidget';
-import { piecesToCompose, planThemePieces, type PlannedThemePiece } from '../core/themeArtSync';
+import { piecesToCompose, planThemePieces, THEME_ART_SIZES, type PlannedThemePiece } from '../core/themeArtSync';
 import type { Theme } from '../core/themes';
 import type { WidgetArtIndex } from '../core/widgetArtLibrary';
-import { optionName, widgetOptionsFromV1, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
+import { optionName, widgetOptionsFromV1, withSeamlessHeroes, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
 import { t } from '../i18n';
 import { getPackState, loadPackIndex, remoteArtFileUri, remoteArtOnDevice } from '../native/packs';
 import { widgets, type WidgetsResult } from '../native/widgets';
@@ -68,6 +68,10 @@ type ThemeArt = {
 
 let generation = 0;
 let running: Promise<unknown> = Promise.resolve();
+
+export function supersedeThemeWidgetArt(): void {
+  generation++;
+}
 
 /**
  * T252: add every widget art piece of `theme` to My widget art and remove the previous theme's
@@ -134,8 +138,8 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
     if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
     // 4. The one index write; the bridge prunes unlisted files, then reloads every timeline.
     const res = await widgets.commitThemeArt(theme.id, planned, ready);
-    if (res.ok) await clearPending(theme.id);
-    return { available: res.available, ok: res.ok, composed: ready.length, failed };
+    if (res.ok && failed === 0) await clearPending(theme.id);
+    return { available: res.available, ok: res.ok && failed === 0, composed: ready.length, failed };
   } catch {
     return { available: true, ok: false, composed: 0, failed: 0 };
   }
@@ -151,7 +155,8 @@ function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTarget
     themeId: theme.id,
     themeName: theme.name,
     options: options.filter(o => !isReplacedArtEdition(o)),
-    cap: 40 - designed.length,
+    includeFittedSizes: true,
+    cap: THEME_ART_SIZES.length * options.length,
     name: (option, size) => {
       const n = optionName(option, options);
       return `${'text' in n ? n.text : tr(n.key, n.params)} · ${sizeLabel(size)}`;
@@ -184,7 +189,7 @@ async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<The
       if (!getPackState().index.packs.some((p) => p.id === theme.id)) return empty;
       const local = await remoteArtOnDevice(theme.id);
       if (!local) return empty;
-      const raw = local.widgets ?? [];
+      const raw = withSeamlessHeroes(local.widgets ?? [], local.assets);
       const live = withLiveArt(theme.id, raw, { targets });
       const sources = new Map<string, Source>();
       const options: WidgetOption[] = [];

@@ -119,7 +119,7 @@ test('theme page source: hero art, Apply end to end, success haptic only at the 
   assert.ok(d.includes('await downloadedRemoteWallpaper(remoteArt.id)'));
   assert.ok(d.includes("remoteMissing\n      ? { ok: false, why: 'unreadable' }"));
   // The Widgets step only previews; wallpaper and icon setup still update the widget theme.
-  assert.ok(d.includes('<DesignedThemeWidgets theme={theme}'));
+  assert.ok(d.includes('<ThemeWidgetArt theme={theme}'));
   assert.ok(d.includes('void applyWidgetTheme(theme)'));
   // Icons step: glyph icons in the palette, with a note for art packs.
   assert.ok(d.includes("t('theme.remote.iconsNote')"));

@@ -77,6 +77,7 @@ export function startLaunchWork(): void {
   try {
     requestDeferred(DEFERRED_STEPS.packRestore);
     requestDeferred(DEFERRED_STEPS.widgetTheme);
+    requestDeferred(DEFERRED_STEPS.themeArt);
     const reason: ProbeReason = 'launch';
     requestDeferred(DEFERRED_STEPS.installedProbe, reason);
     whenFirstScreen(() => {

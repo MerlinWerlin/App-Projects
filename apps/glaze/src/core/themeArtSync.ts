@@ -20,7 +20,7 @@ import type { WidgetOption, HomeOptionSize } from './widgetOptions.ts';
 import { shelfOptions } from './widgetOptions.ts';
 import {
   WIDGET_ART_LIBRARY_CAP,
-  followTheme,
+  unpinnedPlan,
   isUserPiece,
   listPieces,
   pieceFileName,
@@ -53,6 +53,7 @@ export type PlanInput = {
   /** T237: the live spec for a piece, or null (a picture only). */
   live?: (option: WidgetOption, size: HomeOptionSize) => WidgetArtPiece['live'] | null;
   cap?: number;
+  includeFittedSizes?: boolean;
 };
 
 /**
@@ -67,7 +68,7 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
   for (const size of THEME_ART_SIZES) {
     let slot = 0;
     for (const option of shelfOptions(input.options, size)) {
-      if (!option.sizes.includes(size)) continue;
+      if (!input.includeFittedSizes && !option.sizes.includes(size)) continue;
       const id = themePieceId(input.themeId, option.id, size);
       if (seen.has(id)) continue;
       seen.add(id);
@@ -139,5 +140,6 @@ export function commitThemeArt(
   if (retired) next.retired = retired;
   else delete next.retired;
   // T259: a swap makes widgets with no chosen piece follow the new theme (`unpinned`, per size).
-  return { lib: followTheme(lib, next), keep: pieces.map((p) => p.id), remove: gone.map((p) => p.id) };
+  next.unpinned = unpinnedPlan(next);
+  return { lib: next, keep: pieces.map((p) => p.id), remove: gone.map((p) => p.id) };
 }

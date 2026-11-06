@@ -441,15 +441,15 @@ test('docs/THEME_PACKS.md: the v2 example manifest parses and validates strictly
 
 const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 
-test('legacy widget art uses the original pack and native bridges', () => {
+test('widget previews and automatic setup use the same bundled and downloaded art', () => {
   const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
+  const sync = read('src', 'store', 'themeWidgetArt.ts');
+  const remote = read('src', 'native', 'useRemoteCatalog.ts');
   assert.match(art, /useRemoteArtTheme\(/);
-  assert.match(art, /widgetOptionsFromV1\(/, 'bundled art packs list their hero pieces as options');
-  assert.match(art, /widgets\.setWidgetArt\(/);
-  assert.match(art, /widgets\.setSeamless\(/);
-  // T251: every piece tries the wallpaper crop first; setWidgetArt only when there is no wallpaper file.
-  assert.match(art, /ok = preserveArtwork \? false : await seamless\(artUri\);\s*if \(ok === false && option\.background !== 'wallpaper'\)/);
-  assert.match(art, /option\.numberFree === true && !!option\.liveFrame/);
+  assert.match(art, /widgetOptionsFromV1\(/);
+  assert.match(sync, /widgetOptionsFromV1\(/);
+  assert.match(sync, /withSeamlessHeroes\(local\.widgets/);
+  assert.match(remote, /withSeamlessHeroes\(local\.widgets/);
 });
 
 test('menu previews fit the art (never crop): placeArt / fullBleedArt rectangle + contain; T251 no blurred copy', () => {
@@ -459,7 +459,7 @@ test('menu previews fit the art (never crop): placeArt / fullBleedArt rectangle 
   assert.match(menu, /<BlendedArt source=\{source\} rect=\{place\.rect\} blend=\{blend\} \/>/);
   assert.equal((menu.match(/contentFit="cover"/g) ?? []).length, 0);
   assert.doesNotMatch(menu, /strips\.map\(|styles\.strip|blurRadius/);
-  assert.match(menu, /accessibilityState=\{\{ selected \}\}/);
+  assert.doesNotMatch(menu, /accessibilityState=\{\{ selected \}\}/);
   assert.match(menu, /widgetOptionSections\(/);
   assert.doesNotMatch(menu, /withSpring|Animated\.spring|ActivityIndicator/);
 });

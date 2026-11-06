@@ -72,6 +72,9 @@ import { profileRoute } from '../src/core/profileServer';
 import { profileServer } from '../src/native/profileServer';
 import { PROFILE_INSTALL_ENABLED } from '../src/config/install';
 import { getTheme } from '../src/core/themes';
+import { applyThemeStyle, themeIconStyle } from '../src/core/studio';
+import { averageColour } from '../src/core/wallpaper';
+import { useAnyTheme } from '../src/native/useAnyTheme';
 import { t as tStatic, useT, type Script } from '../src/i18n';
 import {
   IconCanvas,
@@ -189,6 +192,8 @@ export default function InstallScreen() {
   const { t, script, isRTL, formatNumber, locale } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
   const router = useRouter();
+  const { auto, theme: requestedThemeId } = useLocalSearchParams<{ auto?: string; theme?: string }>();
+  const requestedTheme = useAnyTheme(requestedThemeId);
   const reduced = useMotionReduced();
   // T210 (PREMIUM_UI §1.6): every card lifts by surface, never a dark-mode hairline.
   const cardTone: CardTone = scheme === 'dark' ? 'raised' : 'surface';
@@ -228,10 +233,16 @@ export default function InstallScreen() {
   // T183: which app's single icon is being saved to Photos from its row (null = none / the whole set).
   const [savingOne, setSavingOne] = useState<string | null>(null);
 
+  const loadRevision = useRef(0);
   const load = useCallback(async () => {
+    const revision = ++loadRevision.current;
     setLoadError(null);
     try {
-      const s = await loadStudio();
+      if (requestedThemeId && !requestedTheme) return;
+      const saved = await loadStudio();
+      const s = requestedTheme
+        ? applyThemeStyle(saved, themeIconStyle(saved, requestedTheme), requestedTheme.id, averageColour(requestedTheme.wallpaper))
+        : saved;
       // Override images deleted from disk fall back to the theme artwork (never a blank icon).
       const gone = new Set<string>();
       for (const uri of overrideImageUris(s)) {
@@ -242,20 +253,22 @@ export default function InstallScreen() {
           // Can't tell: keep the image.
         }
       }
-      if (alive.current) {
+      if (alive.current && revision === loadRevision.current) {
         setMissing(gone);
         setStudio(s);
       }
     } catch (e) {
-      if (alive.current) setLoadError(errText(e));
+      if (alive.current && revision === loadRevision.current) setLoadError(errText(e));
     }
-  }, []);
+  }, [requestedTheme, requestedThemeId]);
 
   useEffect(() => {
     alive.current = true;
+    setStudio(null);
     load();
     return () => {
       alive.current = false;
+      loadRevision.current++;
       if (cancelToken.current) cancelToken.current.cancelled = true;
       profileServer.stop();
     };
@@ -270,7 +283,7 @@ export default function InstallScreen() {
   // T170: which apps get theme art and which fall back to a (theme-designed) monogram.
   const coverage = useMemo(() => coverageSummary(specs), [specs]);
   const monogramRows = useMemo(() => coverageRows(specs).filter((r) => r.coverage === 'monogram'), [specs]);
-  const themeName = profileThemeName(getTheme(studio?.themeId)?.name ?? null);
+  const themeName = profileThemeName(requestedTheme?.name ?? getTheme(studio?.themeId)?.name ?? null);
   const themeId = studio?.themeId ?? null;
   const backdrop = studio?.wallpaperColour ?? undefined;
   // T60: the profile method can be switched off in src/config/install.ts (App Review risk).
@@ -393,7 +406,6 @@ export default function InstallScreen() {
 
   // T265: "Install all icons" in the guided "Use this theme" flow opens this screen with auto=1,
   // which starts the same bulk profile install once (Install all at once only; nothing else changes).
-  const { auto } = useLocalSearchParams<{ auto?: string }>();
   const autoStarted = useRef(false);
   useEffect(() => {
     if (auto !== '1' || autoStarted.current || !studio || busy) return;
@@ -1127,7 +1139,7 @@ export default function InstallScreen() {
           state={live.state}
           update={updateStudio}
           themeKey={activeThemeKey(studio)}
-          themeName={getTheme(studio.themeId)?.name ?? t('icons.ownStyle')}
+          themeName={requestedTheme?.name ?? getTheme(studio.themeId)?.name ?? t('icons.ownStyle')}
           wallpaperColour={studio.wallpaperColour}
         />
       ) : null}

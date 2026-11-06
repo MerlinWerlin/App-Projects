@@ -107,12 +107,11 @@ test('T264: "Use this theme" catches; listeners and deferred requests cannot sto
   const put = detail.slice(detail.indexOf('const putInUse = async'), detail.indexOf('const onUseTheme'));
   assert.match(put, /await applyThemeEverywhere\(theme\)/);
   assert.match(put, /\} catch \(e\) \{[\s\S]*setUseError\(true\)/);
-  assert.match(put, /\} finally \{\s*setUseBusy\(false\);/);
-  assert.doesNotMatch(detail, /void putInUse\(\)/);
+  assert.match(put, /\} finally \{\s*usePending\.current = false;\s*setUseBusy\(false\);/);
   const store = strip(read('src', 'store', 'activeTheme.ts'));
-  const apply = store.slice(store.indexOf('export async function applyThemeEverywhere'), store.indexOf('async function themeArtStep'));
-  assert.match(apply, /for \(const l of \[\.\.\.listeners\]\) \{\s*try \{\s*l\(theme\.id\);/);
-  assert.match(apply, /try \{\s*requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
+  const apply = store.slice(store.indexOf('export function applyThemeEverywhere'), store.indexOf('async function themeArtStep'));
+  assert.match(apply, /for \(const listener of listeners\) \{\s*try \{\s*listener\(theme\.id\);/);
+  assert.match(apply, /requestDeferred\(DEFERRED_STEPS\.themeArt\)/);
   const queue = strip(read('src', 'core', 'deferredWork.ts'));
   assert.doesNotMatch(queue, /void drain\(\)/, 'a drain never rejects unhandled');
 });

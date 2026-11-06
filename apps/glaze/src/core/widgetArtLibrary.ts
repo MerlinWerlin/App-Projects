@@ -445,8 +445,11 @@ export function resolveWidgetPiece(lib: WidgetArtIndex, id: string | null | unde
 
 /** T259: per size, the current theme's first piece (byShelf) of that size, else null. */
 export function unpinnedPlan(lib: WidgetArtIndex): Record<WidgetArtSize, string | null> {
-  const mine = currentThemePieces(lib);
-  const first = (size: WidgetArtSize): string | null => mine.find((p) => p.size === size)?.id ?? null;
+  const art = currentThemePieces(lib).filter(piece => !piece.live?.design);
+  const first = (size: WidgetArtSize): string | null => {
+    const hero = lib.currentThemeId ? themePieceId(lib.currentThemeId, 'hero-' + size, size) : null;
+    return (art.find(piece => piece.id === hero) ?? art.find(piece => piece.size === size))?.id ?? null;
+  };
   return { small: first('small'), medium: first('medium'), large: first('large') };
 }
 

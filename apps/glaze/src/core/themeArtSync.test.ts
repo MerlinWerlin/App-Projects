@@ -19,7 +19,9 @@ import {
   type WidgetArtIndex,
   type WidgetArtPiece,
 } from './widgetArtLibrary.ts';
-import type { WidgetOption } from './widgetOptions.ts';
+import { withSeamlessHeroes, type WidgetOption } from './widgetOptions.ts';
+import { plannedDesignedWidgets } from './designedWidgetLibrary.ts';
+import { THEMES } from './themes.ts';
 
 const read = (...p: string[]): string => readFileSync(join(process.cwd(), ...p), 'utf8');
 const strip = (s: string): string => s.replace(/\/\/.*$/gm, '');
@@ -94,6 +96,27 @@ test('auto-add ALL: applying a theme lists every one of its pieces, current them
   // Library order (newest first) follows the plan order.
   assert.deepEqual(listPieces(r.lib).map((x) => x.id), plan('alpine', A).map((x) => x.id));
   assert.ok(r.lib.pieces.every((x) => x.file === `${x.id}.jpg`));
+});
+
+test('automatic setup keeps every fitted art edition and defaults Seamless to its size’s hero', () => {
+  const theme = THEMES[0];
+  const original = opt('original-art', ['small']);
+  const options = withSeamlessHeroes([original], [
+    { path: 'hero.png', role: 'widget-small', width: 510, height: 510 },
+  ]);
+  assert.deepEqual(options.map(o => o.id), ['original-art', 'hero-small']);
+  const art = planThemePieces({
+    themeId: theme.id, themeName: theme.name, options, name: o => o.id, includeFittedSizes: true,
+  });
+  assert.equal(art.length, 6);
+  const designed = plannedDesignedWidgets(theme, kind => kind);
+  const planned = [...designed, ...art.map(piece => ({ ...piece, slot: piece.slot + 3 }))];
+  const start = addPiece(emptyLibrary(), photo('p-1', 5)).lib;
+  const result = commitThemeArt(start, theme.id, planned, planned.map(p => p.id), 1000).lib;
+  assert.equal(result.pieces.length, 16);
+  assert.equal(result.unpinned?.small, themePieceId(theme.id, 'hero-small', 'small'));
+  assert.equal(result.unpinned?.medium, themePieceId(theme.id, 'hero-small', 'medium'));
+  assert.equal(resolveWidgetPiece(result, 'p-1', 'small'), 'p-1');
 });
 
 test('replace previous: the old theme\'s auto pieces go (retired with size + slot), own photos stay', () => {
@@ -261,8 +284,8 @@ test('wiring: theme apply calls syncThemeWidgetArt (non-blocking), the store mak
   assert.match(store, /if \(!current\.available\) return NONE;/, 'Expo Go / Android: nothing runs');
   assert.match(store, /if \(stale\(\)\)/, 'a newer apply supersedes before the index write');
   // T250 merge: the sync runs inside the deferred 'themeArt' step, never awaited by applyThemeEverywhere.
-  assert.match(apply, /requestDeferred\(DEFERRED_STEPS\.themeArt, theme\)/, 'never blocks the apply');
-  const applyFn = apply.slice(apply.indexOf('export async function applyThemeEverywhere('), apply.indexOf('async function themeArtStep('));
+  assert.match(apply, /requestDeferred\(DEFERRED_STEPS\.themeArt\)/, 'never blocks the apply');
+  const applyFn = apply.slice(apply.indexOf('export function applyThemeEverywhere('), apply.indexOf('async function themeArtStep('));
   assert.doesNotMatch(applyFn, /syncThemeWidgetArt\(/, 'not called inline in applyThemeEverywhere');
   const adapter = strip(read('src', 'native', 'widgets.ts'));
   assert.match(adapter, /typeof mod\.composeWidgetArtPiece !== 'function'/);
