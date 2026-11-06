@@ -528,8 +528,17 @@ def submit(app):
             continue
         if st != "READY_TO_SUBMIT":
             raise RuntimeError(f"purchase {pid} is {st}, not READY_TO_SUBMIT; version not submitted")
-        call("POST", "/v1/inAppPurchaseSubmissions", {"data": {"type": "inAppPurchaseSubmissions", "relationships": {
-             "inAppPurchaseV2": {"data": {"type": "inAppPurchases", "id": iap["id"]}}}}})
+        try:
+            call("POST", "/v1/inAppPurchaseSubmissions", {"data": {"type": "inAppPurchaseSubmissions", "relationships": {
+                 "inAppPurchaseV2": {"data": {"type": "inAppPurchases", "id": iap["id"]}}}}})
+        except RuntimeError as e:
+            if "FIRST_NON_CONSUMABLE_MUST_BE_SUBMITTED_ON_VERSION" not in str(e):
+                raise
+            # Apple's API refuses a first non-consumable; it has to go in the same submission through the website:
+            # each purchase page > Add for Review > Draft Submission, then the version page > Add for Review > Submit.
+            raise RuntimeError(f"purchase {pid} is a first non-consumable, which Apple only accepts through App Store "
+                               "Connect on the web (purchase page Add for Review, then version Add for Review, then "
+                               "Submit for Review); version not submitted so it cannot go out without its purchases")
         say(f"- purchase `{pid}` added for review with this version")
     open_ = [x for x in subs if attrs(x).get("state") == "READY_FOR_REVIEW"]
     if open_:
