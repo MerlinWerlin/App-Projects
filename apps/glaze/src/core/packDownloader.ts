@@ -26,6 +26,7 @@ import { remoteWidgetArtOptions, type RemoteWidgetArtRef } from './remoteWidgetA
 import {
   CATALOG_FILE,
   CATALOG_MAX_BYTES,
+  REMOTE_ART_MAX_BYTES,
   REMOTE_ART_MANIFEST,
   assetsForDevice,
   manifestPath,
@@ -37,12 +38,40 @@ import {
 import { packObjectUrl, packReleaseBase } from './packHost.ts';
 import { CLOCK_COMPANION_FOLDER, CLOCK_COMPANION_RELEASE, packClockFace, packClockFaceAsset, parseClockCompanion, pilotClockFace } from './packClockFace.ts';
 
+// Bound the whole response, including its body. The race also releases callers if the
+// underlying transport ignores AbortSignal.
+export async function packRequest<T>(
+  run: (signal: AbortSignal) => Promise<T>, signal?: AbortSignal, timeoutMs = 12_000,
+): Promise<T> {
+  if (signal?.aborted) throw new PackError('cancelled', 'download cancelled');
+  const controller = new AbortController();
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  let cancel = () => {};
+  const interrupted = new Promise<never>((_, reject) => {
+    cancel = () => {
+      reject(new PackError('cancelled', 'download cancelled'));
+      controller.abort();
+    };
+    signal?.addEventListener('abort', cancel);
+    timer = setTimeout(() => {
+      reject(new PackError('network', 'download timed out'));
+      controller.abort();
+    }, timeoutMs);
+  });
+  try {
+    return await Promise.race([interrupted, run(controller.signal)]);
+  } finally {
+    clearTimeout(timer);
+    signal?.removeEventListener('abort', cancel);
+  }
+}
+
 /** Result of a (possibly ranged) GET. `offset` is where the body starts: `start` for a 206, 0 when the server ignored Range. */
 export type RangeResponse = { offset: number; chunks: AsyncIterable<Uint8Array> };
 
 export interface Transport {
   /** GET `url` from byte `start` (sends `Range: bytes=start-` when start > 0). Rejects on HTTP errors. */
-  fetchRange(url: string, start: number): Promise<RangeResponse>;
+  fetchRange(url: string, start: number, signal?: AbortSignal): Promise<RangeResponse>;
   /** Append to a local file (created if missing). Paths are relative to the pack store root. */
   writeAppend(path: string, chunk: Uint8Array): Promise<void>;
   /** Whole local file, or null if it doesn't exist. */
@@ -474,6 +503,7 @@ export type RemoteWidgetArtDownload = {
   /** Verified files, relative to the pack store. Missing files are omitted. */
   files: Map<string, string>;
   missing: number;
+  lastError: string | null;
 };
 
 /** Fetch only widget art referenced by the pack, sharing the ordinary size/SHA and resume checks. */
@@ -481,6 +511,7 @@ export async function downloadRemoteWidgetArt(
   transport: Transport,
   baseUrl: string,
   ref: RemoteWidgetArtRef,
+  signal?: AbortSignal,
 ): Promise<RemoteWidgetArtDownload> {
   const base = resolvePackBaseUrl(baseUrl);
   const { id, packVersion, release } = ref;
@@ -492,26 +523,42 @@ export async function downloadRemoteWidgetArt(
   const folder = packFolder(id, packVersion);
   const local = 'widget-art-assets/' + id + '/v' + packVersion;
   const index = localPath(local, REMOTE_ART_MANIFEST);
+  const cancelled = cancelCheck(() => signal?.aborted === true);
+  const bounded: Transport = {
+    ...transport,
+    fetchRange: (url, start) => packRequest(async requestSignal => {
+      const response = await transport.fetchRange(url, start, requestSignal);
+      const bytes = await readAll(response, REMOTE_ART_MAX_BYTES);
+      return { offset: response.offset, chunks: (async function* () { yield bytes; })() };
+    }, signal),
+  };
+  cancelled();
   const cached = await transport.readFile(index);
   let manifest = cached ? parseManifestText(utf8Decode(cached), id) : null;
   if (manifest?.packVersion !== packVersion) {
-    manifest = await fetchRemoteArtManifest(transport, host, id, packVersion);
+    manifest = await fetchRemoteArtManifest(bounded, host, id, packVersion);
+    cancelled();
     await transport.remove(index);
     await transport.writeAppend(index, utf8Encode(JSON.stringify(manifest)));
   }
   const paths = new Set(remoteWidgetArtOptions(manifest).map(option => option.image));
   const files = new Map<string, string>();
   const urlFor = (path: string) => packObjectUrl(host, localPath(folder, path));
+  let lastError: string | null = null;
   for (const asset of manifest.assets) {
+    cancelled();
     if (!paths.has(asset.path)) continue;
     try {
-      await fetchAndVerifyAssets({ transport, localDir: local, assets: [asset], urlFor, retries: 1 });
+      await fetchAndVerifyAssets({ transport: bounded, localDir: local, assets: [asset], urlFor, retries: 1, isCancelled: () => signal?.aborted === true });
       files.set(asset.path, localPath(local, asset.path));
-    } catch {
+    } catch (error) {
+      cancelled();
+      lastError = asset.path + ': ' + (error instanceof Error ? error.message : String(error));
       // Keep verified siblings available while the missing or interrupted file waits for a retry.
     }
   }
-  return { manifest, files, missing: paths.size - files.size };
+  cancelled();
+  return { manifest, files, missing: paths.size - files.size, lastError };
 }
 
 /** The on-phone manifest: the remote one cut down to the files this phone downloaded. */
@@ -611,7 +658,7 @@ export async function downloadRemoteArtPack(opts: RemoteArtDownloadOptions): Pro
     isCancelled: opts.isCancelled,
     onProgress: opts.onProgress,
   });
-  const local = deviceManifest(manifest, assets);
+  const local = deviceManifest(opts.release ? { ...manifest, release: opts.release } : manifest, assets);
   await t.writeAppend(localPath(localDir, REMOTE_ART_MANIFEST), utf8Encode(JSON.stringify(local)));
   if (updating) {
     if (opts.isCancelled?.()) throw new PackError('cancelled', 'download cancelled');

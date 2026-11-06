@@ -54,7 +54,7 @@ test('bridge: linkStatus reports containerOk, themeStored, lastRead (read-only);
   const start = src.indexOf('AsyncFunction("linkStatus")');
   assert.ok(start > 0, 'linkStatus defined');
   const fn = src.slice(start, src.indexOf('AsyncFunction("clearPhoto")'));
-  assert.match(fn, /containerURL\(forSecurityApplicationGroupIdentifier: appGroup\) != nil/);
+  assert.match(fn, /containerURL\(forSecurityApplicationGroupIdentifier: appGroup\)/);
   assert.match(fn, /"containerOk":/);
   assert.match(fn, /"themeStored":/);
   assert.match(fn, /"lastRead":/);

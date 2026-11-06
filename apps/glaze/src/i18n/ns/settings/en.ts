@@ -71,6 +71,10 @@ export const en = {
     versionRow: 'Version',
     credits: 'Built with original art; app names belong to their owners.',
     // T257: the startup diagnostics line (timings stay on the phone).
+    widgetDiagnostics: "Widget diagnostics",
+    widgetThemes: "Active {active} · Shared {shared} · Widget read {read}",
+    widgetArtCounts: "Art [{theme}] planned {planned} · Ready {composed} · Failed {failed} · Missing {missing}",
+    widgetArtError: "Last art error {error}",
     startupRow: 'Startup',
     startupLine: 'Last launch: background work done in {total} · slowest step: {step}, {time}',
     startupFailed: 'Steps that didn’t finish: {n}',

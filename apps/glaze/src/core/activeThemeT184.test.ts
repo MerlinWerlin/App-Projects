@@ -88,11 +88,11 @@ test('theme page steps', () => {
   assert.equal(themeStepOf(['icons']), 'overview');
 });
 
-test('theme application orders the icon and widget writes before notifying screens', () => {
+test('theme application queues widget writes before notifying screens', () => {
   const store = strip(read('src', 'store', 'activeTheme.ts'));
   const fn = /export function applyThemeEverywhere[^]*?\n\}/.exec(store)?.[0] ?? '';
-  assert.match(fn, /return queueThemeWrite\(async \(\) =>/);
-  assert.match(fn, /await applyThemeIcons\(theme, /);
+  assert.match(fn, /const native = queueThemeWrite\(async \(\) =>/);
+  assert.match(fn, /applyThemeIcons\(theme, /);
   assert.match(fn, /await rememberWidgetTheme\(theme\)[\s\S]*listener\(theme\.id\)[\s\S]*requestDeferred\(DEFERRED_STEPS\.themeArt\)/);
   const widget = read('src', 'store', 'widgetTheme.ts');
   assert.match(widget, /AsyncStorage\.multiSet\(\[\s*\[ACTIVE_THEME_KEY,[\s\S]*?\[ACTIVE_WIDGET_THEME_KEY,/);

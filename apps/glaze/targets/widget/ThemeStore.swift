@@ -17,6 +17,7 @@ enum GlazeShared {
   static let photoFile = "widget-photo.jpg"
   static let themeFile = "theme.json"
   /// T146: what the extension last rendered (src/core/widgetLink.ts WIDGET_LAST_READ_KEY).
+  static let galleryLastReadFile = "gallery-last-read.json"
   static let lastReadKey = "glaze.widget.lastRead.v1"
 }
 
@@ -127,9 +128,9 @@ enum ThemeStore {
     return found.theme
   }
 
-  static func loadGalleryDesign(kind: String) -> DesignedWidgetSpec {
+  static func loadGalleryDesign(kind: String, recordTimeline: Bool = false) -> DesignedWidgetSpec {
     let found = loadWithSource()
-    recordRead(themeId: found.theme.themeId, source: found.source)
+    recordRead(themeId: found.theme.themeId, source: found.source, galleryTimeline: recordTimeline)
     if let data = found.data,
        let payload = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
        let designs = payload["designs"] as? [[String: Any]],
@@ -170,8 +171,7 @@ enum ThemeStore {
   /// Group UserDefaults. Cheap and silent: any failure just skips the write. Without the App Group
   /// entitlement the suite is private to the extension, so the app never sees the record (which is
   /// itself the answer the link check needs).
-  private static func recordRead(themeId: String, source: String) {
-    guard let defaults = UserDefaults(suiteName: GlazeShared.appGroup) else { return }
+  private static func recordRead(themeId: String, source: String, galleryTimeline: Bool = false) {
     let formatter = ISO8601DateFormatter()
     formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
     let payload: [String: String] = [
@@ -184,7 +184,11 @@ enum ThemeStore {
       let data = try? JSONSerialization.data(withJSONObject: payload, options: []),
       let json = String(data: data, encoding: .utf8)
     else { return }
-    defaults.set(json, forKey: GlazeShared.lastReadKey)
+    UserDefaults(suiteName: GlazeShared.appGroup)?.set(json, forKey: GlazeShared.lastReadKey)
+    if galleryTimeline,
+       let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup) {
+      try? data.write(to: container.appendingPathComponent(GlazeShared.galleryLastReadFile), options: .atomic)
+    }
   }
 
   private static func decode(_ data: Data) -> WidgetTheme? {

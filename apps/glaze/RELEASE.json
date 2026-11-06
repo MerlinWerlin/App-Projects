@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.10 fetches widget art independently and preserves Copper Eclipse’s moon texture.",
+  "note": "Glaze 1.0.11 separates widget theme updates from art downloads, adds widget diagnostics and restores pack release routing.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

@@ -142,7 +142,7 @@ export interface WidgetsAdapter {
    * art removed, current theme recorded. The bridge writes the index, prunes unlisted files and only
    * then reloads every timeline. Serialised with every other index edit. Never throws.
    */
-  commitThemeArt(themeId: string, planned: readonly PlannedThemePiece[], ready: readonly string[]): Promise<WidgetsResult>;
+  commitThemeArt(themeId: string, planned: readonly PlannedThemePiece[], ready: readonly string[], isCurrent?: () => boolean): Promise<WidgetsResult>;
 }
 
 /** T252: one piece for widgets.composeArtPiece (local file:// URIs; never uploaded anywhere). */
@@ -412,7 +412,8 @@ export const widgets: WidgetsAdapter = {
       return r.ran ? r.lib : null;
     }),
   composeArtPiece,
-  commitThemeArt: (themeId, planned, ready) => editArtIndex((lib) => commitThemeArt(lib, themeId, planned, ready, Date.now()).lib),
+  commitThemeArt: (themeId, planned, ready, isCurrent) => editArtIndex(lib =>
+    isCurrent?.() === false ? null : commitThemeArt(lib, themeId, planned, ready, Date.now()).lib),
 };
 
 /**
@@ -448,8 +449,8 @@ async function composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResu
       if (typeof input.artUri !== 'string' || !input.artUri || !/^#[0-9A-Fa-f]{6}$/.test(input.colour)) return { available: true, ok: false, reason: 'failed' };
       if (!finite(input.widthPx) || !finite(input.heightPx) || input.widthPx < 1 || input.heightPx < 1) return { available: true, ok: false, reason: 'failed' };
       if (input.preserveArtwork && typeof mod.composeClockArtPiece !== 'function') return { available: false, ok: false, reason: 'not-built' };
-      const compose = input.preserveArtwork ? mod.composeClockArtPiece : mod.composeWidgetArtPiece;
-      ok = (await compose?.(input.id, input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, skip)) === true;
+      const args = [input.id, input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, skip] as const;
+      ok = (input.preserveArtwork ? await mod.composeClockArtPiece?.(...args) : await mod.composeWidgetArtPiece(...args)) === true;
     } else {
       const c = input.cropPx;
       if (typeof input.wallpaperUri !== 'string' || !input.wallpaperUri || !c || ![c.x, c.y, c.w, c.h].every(finite) || c.w < 1 || c.h < 1) {

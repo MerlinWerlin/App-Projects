@@ -21,9 +21,13 @@ test('A → B → A keeps the selected theme, persisted theme and WidgetKit writ
       multiSet: async (pairs: [string, string][]) => { for (const pair of pairs) values.set(...pair); },
     },
     icons: async (theme: { id: string }) => {
-      if (theme.id === b.id) { announceB(); await wait; }
+      if (theme.id === b.id) await wait;
     },
-    write: async (theme: { themeId: string }) => { writes.push(theme.themeId); return { ok: true }; },
+    write: async (theme: { themeId: string }) => {
+      writes.push(theme.themeId);
+      if (theme.themeId === b.id) announceB();
+      return { available: true, ok: true };
+    },
   };
   const injected = globalThis as typeof globalThis & { glazeThemeTest?: typeof mock };
   injected.glazeThemeTest = mock;
@@ -66,9 +70,10 @@ test('A → B → A keeps the selected theme, persisted theme and WidgetKit writ
     const restore = pushStoredWidgetTheme();
     const lateWallpaper = applyWidgetTheme(a);
     const swapBackToA = applyThemeEverywhere(a);
+    await Promise.all([restore, lateWallpaper, swapBackToA]);
+    assert.deepEqual(writes, [a.id, b.id, b.id, a.id], 'native writes finish even while B icon work is blocked');
     releaseB();
-    await Promise.all([swapToB, restore, lateWallpaper, swapBackToA]);
-    assert.deepEqual(writes, [a.id, b.id, b.id, a.id]);
+    await swapToB;
     await Promise.all([applyThemeEverywhere(b), applyThemeEverywhere(a)]);
     assert.deepEqual(writes.slice(-2), [b.id, a.id]);
     assert.equal(await loadActiveThemeId(), a.id);

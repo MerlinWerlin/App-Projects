@@ -27,6 +27,7 @@ private let habitLogKey = "glaze.habitLog.v1"
 private let habitWidgetKinds = ["GlazeHabitWater", "GlazeHabitMood", "GlazeHabitSleep", "GlazeHabitSteps", "GlazeHabitStreak"]
 /// T146: written by the widget extension on every theme load (targets/widget/ThemeStore.swift,
 /// src/core/widgetLink.ts WIDGET_LAST_READ_KEY); the app only reads it.
+private let galleryLastReadFile = "gallery-last-read.json"
 private let lastReadKey = "glaze.widget.lastRead.v1"
 /// T221 "My widget art" library (src/core/widgetArtLibrary.ts WIDGET_ART_DIR / WIDGET_ART_INDEX_FILE /
 /// WIDGET_ART_SOURCES; read by targets/widget/WidgetArtLibrary.swift).
@@ -298,14 +299,21 @@ public class GlazeWidgetBridgeModule: Module {
     /// - lastRead: what the extension last rendered (JSON string) or "" when the app can't see it.
     /// - storedTheme: the stored theme JSON or "" (JS compares its updatedAt with lastRead.at).
     AsyncFunction("linkStatus") { () -> [String: Any] in
-      let containerOk = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) != nil
+      let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
       let defaults = UserDefaults(suiteName: appGroup)
-      let stored = defaults?.string(forKey: themeKey) ?? ""
+      let storedFile = container.flatMap { try? String(contentsOf: $0.appendingPathComponent(themeFile), encoding: .utf8) }
+      let stored = storedFile ?? defaults?.string(forKey: themeKey) ?? ""
       let lastRead = defaults?.string(forKey: lastReadKey) ?? ""
+      let galleryRead = container.flatMap { try? String(contentsOf: $0.appendingPathComponent(galleryLastReadFile), encoding: .utf8) }
+      let artData = container.flatMap { try? Data(contentsOf: $0.appendingPathComponent(artDir).appendingPathComponent(artIndexFile)) }
+      let art = artData.flatMap { (try? JSONSerialization.jsonObject(with: $0)) as? [String: Any] }
+      let artTheme = art?["currentThemeId"] as? String
       return [
-        "containerOk": containerOk,
+        "containerOk": container != nil,
         "themeStored": !stored.isEmpty,
         "lastRead": lastRead,
+        "galleryRead": galleryRead ?? "",
+        "artTheme": artTheme ?? "",
         "storedTheme": stored,
       ]
     }

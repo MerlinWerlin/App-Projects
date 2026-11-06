@@ -28,6 +28,8 @@ import { queueThemeWrite, rememberWidgetTheme } from './widgetTheme';
 type Listener = (id: string | null) => void;
 const listeners = new Set<Listener>();
 let selectedTheme: Theme | null = null;
+let selection = 0;
+let publishedSelection = 0;
 const sessionThemeId = () => selectedTheme?.id;
 
 /** The theme in use (the stored one, else the Icon Studio's theme). Never rejects. */
@@ -52,16 +54,12 @@ export type ApplyResult = { icons: boolean; widgets: boolean };
 
 /** Apply the displayed theme in tap order. Art composition stays off the navigation path. */
 export function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
-  return queueThemeWrite(async () => {
-    let icons = true;
-    try {
-      await applyThemeIcons(theme, averageColour(theme.wallpaper));
-    } catch {
-      icons = false;
-    }
-    supersedeThemeWidgetArt();
+  const request = ++selection;
+  supersedeThemeWidgetArt();
+  const native = queueThemeWrite(async () => {
     selectedTheme = theme;
     const widgets = await rememberWidgetTheme(theme);
+    publishedSelection = request;
     for (const listener of listeners) {
       try {
         listener(theme.id);
@@ -69,10 +67,14 @@ export function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
         if (typeof __DEV__ !== 'undefined' && __DEV__) console.warn('Glaze: theme listener failed', e);
       }
     }
-    requestDeferred(DEFERRED_STEPS.themeArt);
+    if (request === selection) requestDeferred(DEFERRED_STEPS.themeArt);
     requestDeferred(DEFERRED_STEPS.installedProbe, 'apply');
-    return { icons, widgets };
+    return widgets;
   });
+  const icons = Promise.resolve()
+    .then(() => applyThemeIcons(theme, averageColour(theme.wallpaper)))
+    .then(() => true, () => false);
+  return Promise.all([icons, native]).then(([icons, widgets]) => ({ icons, widgets }));
 }
 
 /**
@@ -88,6 +90,8 @@ export function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
  * try/catch per step), so nothing here touches launch.
  */
 async function themeArtStep(): Promise<void> {
+  const request = selection;
+  if (request !== publishedSelection) return;
   let theme = selectedTheme;
   let fallbackId: string | null = null;
   if (!theme) {
@@ -107,8 +111,8 @@ async function themeArtStep(): Promise<void> {
     if (plan.kind === 'sync') theme = plan.theme;
     else fallbackId = plan.themeId;
   }
+  if (request !== selection) return;
   let res;
-  theme = selectedTheme ?? theme;
   if (theme) {
     // T252 (owner-1101h #3): ALL of this theme's widget art is added to My widget art and the previous
     // theme's auto-added art goes (own photos stay), in one index write, then the widgets reload.
@@ -124,7 +128,7 @@ async function themeArtStep(): Promise<void> {
   if (res.available && !res.ok) throw new Error('widget art index write failed');
 }
 
-registerDeferred(DEFERRED_STEPS.themeArt, { priority: 30, run: themeArtStep });
+registerDeferred(DEFERRED_STEPS.themeArt, { priority: 30, persist: false, timeoutMs: 110_000, run: themeArtStep });
 
 /** Metadata-only upgrade of already configured functional pieces; called in the deferred queue. */
 export async function upgradeActiveDesignedWidgets(): Promise<void> {

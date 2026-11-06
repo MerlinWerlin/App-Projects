@@ -34,12 +34,12 @@ export function ThemeWidgetArt({ theme, size, width, style }: Props) {
   const latest = remote.theme ?? theme;
   useFocusEffect(useCallback(() => {
     if (!remoteTheme) return;
-    let focused = true;
-    remoteWidgetArtOnDevice(latest).then(
-      art => { if (focused) setLoaded({ id: theme.id, art }); },
-      () => { if (focused) setLoaded({ id: theme.id, art: null }); },
+    const controller = new AbortController();
+    remoteWidgetArtOnDevice(latest, controller.signal).then(
+      art => { if (!controller.signal.aborted) setLoaded({ id: theme.id, art }); },
+      () => { if (!controller.signal.aborted) setLoaded({ id: theme.id, art: null }); },
     );
-    return () => { focused = false; };
+    return () => controller.abort();
   }, [latest, remoteTheme, theme.id]));
   const verified = loaded?.id === theme.id ? loaded.art : null;
   const artId = isArtPackTheme(theme) ? theme.artPack.id : null;
