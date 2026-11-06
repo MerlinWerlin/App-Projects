@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.6 gives the three themed Home Screen widgets matching names: Clock, Battery and Calendar. Existing widget placements retain their configurations.",
+  "note": "Glaze 1.0.7 adds eight original illustrated clock faces from downloadable theme packs, with live hands drawn by WidgetKit.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

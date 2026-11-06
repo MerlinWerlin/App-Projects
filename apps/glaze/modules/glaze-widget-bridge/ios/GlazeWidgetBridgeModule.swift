@@ -8,6 +8,7 @@ import CoreLocation
 import EventKit
 import ExpoModulesCore
 import Foundation
+import ImageIO
 import UIKit
 import WidgetKit
 
@@ -77,6 +78,37 @@ public class GlazeWidgetBridgeModule: Module {
       catch { return false }
       if let defaults = UserDefaults(suiteName: appGroup) { defaults.set(json, forKey: themeKey) }
       GlazeWidgetBridgeModule.reloadWidgets()
+      return true
+    }
+
+    AsyncFunction("setPackClockFace") { (id: String, uri: String?) -> Bool in
+      guard id.range(of: "^[a-z0-9][a-z0-9-]{0,63}$", options: .regularExpression) != nil,
+        let group = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
+      else { return false }
+      let files = FileManager.default
+      let destination = group.appendingPathComponent("clock-face-\(id).png")
+      do {
+        if let uri = uri {
+          guard let url = URL(string: uri), url.isFileURL,
+            let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize,
+            (1...(1024 * 1024)).contains(size) else { return false }
+          if files.contentsEqual(atPath: url.path, andPath: destination.path) { return true }
+          let bytes = try Data(contentsOf: url)
+          guard bytes.count == size,
+            let source = CGImageSourceCreateWithData(bytes as CFData, [kCGImageSourceShouldCache: false] as CFDictionary),
+            CGImageSourceGetCount(source) == 1,
+            let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString: Any],
+            let width = properties[kCGImagePropertyPixelWidth] as? Int,
+            properties[kCGImagePropertyPixelHeight] as? Int == width, (510...1024).contains(width)
+          else { return false }
+          try bytes.write(to: destination, options: .atomic)
+        } else {
+          guard files.fileExists(atPath: destination.path) else { return true }
+          try files.removeItem(at: destination)
+        }
+      } catch { return false }
+      WidgetCenter.shared.reloadTimelines(ofKind: "GlazeThemeClock")
+      WidgetCenter.shared.reloadTimelines(ofKind: "GlazeSeamless")
       return true
     }
 

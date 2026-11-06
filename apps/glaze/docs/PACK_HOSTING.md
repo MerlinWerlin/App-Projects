@@ -12,6 +12,8 @@ The 1.0.2 catalogue lives on v5. Design-hold immutable packs on v11/v12/v13 pres
 
 The app picks staging only when the build has Expo extra `packEnv: "staging"`; otherwise production.
 
+The eight illustrated clock pilot packs on `glaze-packs-v14` add a single `clock-face.<sha8>.png` asset with the existing `widget-art` role. The asset stays outside the pack's decorative widget choices. Restore the published PNG as `clock-face.png` in that theme's source folder before rebuilding it. The version lock records the face digest and the builder catches a missing source so a rebuild keeps the illustrated clock.
+
 ## Flat asset names
 
 Release assets have no folders, so each file of the pack layout (`src/core/packCatalog.ts`) is uploaded under a flat name: every `/` becomes `__`.

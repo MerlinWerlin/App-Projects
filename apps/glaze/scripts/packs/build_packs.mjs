@@ -516,7 +516,7 @@ export function addReviewDecorative(editions, dir, themesDir, catalogueTheme) {
 
 // ------------------------------------------------------------------ one pack
 
-async function buildOne({ id, dir, report, encoder, plus, minAppVersion, editions }) {
+async function buildOne({ id, dir, report, encoder, plus, minAppVersion, editions, lockedClockFace }) {
   const pack = report.pack;
   // T275b: a review folder's report carries its wallpaper / hero paths (heroes may be absent).
   const wallSrc = pack.wallpaperFile ?? join(dir, art.WALLPAPER_FILE);
@@ -556,6 +556,21 @@ async function buildOne({ id, dir, report, encoder, plus, minAppVersion, edition
   const ed = editions && editions.items.length ? await encodeWidgetEditions(encoder, editions, outs.map((o) => ({ path: assetName(o.role, o.longEdge, o.bytes, o.ext), role: o.role, width: o.width, height: o.height }))) : null;
   if (ed) outs.push(...ed.outs);
 
+  const faceFile = join(dir, 'clock-face.png');
+  let clockFaceSha256;
+  if (existsSync(faceFile)) {
+    const bytes = readFileSync(faceFile);
+    const h = art.readPngHeader(bytes);
+    if (!h.ok || h.header.width !== h.header.height || h.header.width < 510 || h.header.width > 1024 || bytes.length > 1024 * 1024) {
+      throw new Error(`${id}: clock-face.png must be square, 510–1024 px and at most 1 MiB`);
+    }
+    clockFaceSha256 = sha256(bytes);
+    outs.push({ name: `clock-face.${clockFaceSha256.slice(0, 8)}.png`, role: 'widget-art',
+      width: h.header.width, height: h.header.height, bytes, ext: 'png', mime: 'image/png' });
+  } else if (lockedClockFace) {
+    throw new Error(`${id}: restore clock-face.png from the published pack before rebuilding`);
+  }
+
   const assets = outs.map((o) => ({
     path: o.name ?? assetName(o.role, o.longEdge, o.bytes, o.ext),
     role: o.role,
@@ -568,7 +583,7 @@ async function buildOne({ id, dir, report, encoder, plus, minAppVersion, edition
   const totalBytes = assets.reduce((a, b) => a + b.bytes, 0);
   const manifestNoVersion = {
     format: cat.REMOTE_ART_FORMAT,
-    version: ed ? cat.REMOTE_ART_VERSION_2 : cat.REMOTE_ART_VERSION,
+    version: ed || clockFaceSha256 ? cat.REMOTE_ART_VERSION_2 : cat.REMOTE_ART_VERSION,
     id,
     name: pack.meta.name,
     plus,
@@ -578,10 +593,10 @@ async function buildOne({ id, dir, report, encoder, plus, minAppVersion, edition
     thumbhash,
     assets,
     totalBytes,
-    ...(ed ? { widgets: ed.widgets } : {}),
+    ...(ed || clockFaceSha256 ? { widgets: ed?.widgets ?? [] } : {}),
   };
   const contentHash = sha256(JSON.stringify(manifestNoVersion));
-  return { outs, assets, manifestNoVersion, contentHash, pack };
+  return { outs, assets, manifestNoVersion, contentHash, pack, clockFaceSha256 };
 }
 
 // ------------------------------------------------------------------ the build
@@ -643,7 +658,7 @@ export async function buildPacks(opts = {}) {
       continue;
     }
     for (const w of editions?.warnings ?? []) log(`    warning: ${id}: ${w}`);
-    const b = await buildOne({ id, dir, report, encoder, plus: plusIds.has(id), minAppVersion, editions });
+    const b = await buildOne({ id, dir, report, encoder, plus: plusIds.has(id), minAppVersion, editions, lockedClockFace: lock[id]?.clockFaceSha256 });
     if (b.manifestNoVersion.widgets) {
       const errs = wopt.validateWidgetOptions(b.manifestNoVersion.widgets, b.assets);
       if (errs.length) {
@@ -656,7 +671,7 @@ export async function buildPacks(opts = {}) {
     const release = releaseFor(id, releases, lock, newRelease);
     releases[id] = release;
     const packVersion = nextVersion(lock[id], b.contentHash);
-    lock[id] = { packVersion, contentHash: b.contentHash };
+    lock[id] = { packVersion, contentHash: b.contentHash, ...(b.clockFaceSha256 ? { clockFaceSha256: b.clockFaceSha256 } : {}) };
     const { format, version, ...rest } = b.manifestNoVersion;
     const manifest = { format, version, id: rest.id, packVersion, ...rest };
     const parsed = cat.parseRemoteArtManifest(manifest, id);

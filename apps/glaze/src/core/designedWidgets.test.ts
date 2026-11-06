@@ -8,6 +8,7 @@ import { parseLiveArtSpec } from './liveArt.ts';
 import { minContrast } from './colour.ts';
 import { parseLibrary, resolveWidgetPiece, serializeLibrary, themePieceId } from './widgetArtLibrary.ts';
 import { designedWidgetSvg, localeFirstWeekday } from './designedWidgetPreview.ts';
+import { packClockFaceAsset } from './packClockFace.ts';
 
 const fixture = JSON.parse(readFileSync(new URL('../../docs/designed-widget-fixtures.json', import.meta.url), 'utf8')) as { catalogueThemes: number; themes: { id: string; designs: ReturnType<typeof designedWidget>[] }[] };
 for (const theme of fixture.themes) theme.designs = theme.designs.map(design => withWidgetIdentity(theme.id, design));
@@ -102,16 +103,17 @@ test('legacy fallback clocks disappear from menus and saved art without losing w
   assert.deepEqual(plannedDesignedWidgets(theme, (kind, size) => `${kind} ${size}`).map(p => p.id), designs.map(p => p.id));
 });
 
-test('each preview draws the function at every size, including six calendar rows and Alpine original art', () => {
+test('each preview draws the function at every size, including six calendar rows and original clock art', () => {
   const date = new Date(2026, 7, 31, 22, 48);
   const identities = new Map<string, Map<string, string>>();
   for (const t of fixture.themes) for (const design of t.designs) for (const size of ['small', 'medium', 'large'] as const) {
-    const svg = designedWidgetSvg(design, size, { date, battery: 73, locale: 'en-AU', originalArtwork: 'alpine-clock-face.jpg' });
+    const svg = designedWidgetSvg(design, size, { date, battery: 73, locale: 'en-AU' });
     assert.ok(svg.startsWith('<svg'));
     assert.doesNotMatch(svg, /NaN|undefined/);
-    const original = t.id === 'alpine-starlight' && design.kind === 'clock';
-    assert.equal(svg.includes('<image href="alpine-clock-face.jpg"'), original);
-    if (original) assert.notEqual(svg, designedWidgetSvg(design, size, { date: new Date(2026, 7, 31, 7, 25), battery: 73, locale: 'en-AU', originalArtwork: 'alpine-clock-face.jpg' }));
+    const original = design.kind === 'clock' && (t.id === 'alpine-starlight' || design.packFace !== undefined);
+    const withArt = designedWidgetSvg(design, size, { date, battery: 73, locale: 'en-AU', originalArtwork: 'clock-face.png' });
+    assert.equal(withArt.includes('<image href="clock-face.png"'), original);
+    if (original) assert.notEqual(withArt, designedWidgetSvg(design, size, { date: new Date(2026, 7, 31, 7, 25), battery: 73, locale: 'en-AU', originalArtwork: 'clock-face.png' }));
     if (design.kind === 'calendar') for (let day = 1; day <= 31; day++) assert.ok(svg.includes(`>${day}</text>`));
     // Compare the render instructions with ink and font removed. Each theme must be
     // visibly distinct at each function and size, even in the same colour palette.
@@ -121,5 +123,17 @@ test('each preview draws the function at every size, including six calendar rows
     assert.equal(seen.get(monochrome), undefined, `${key}: ${t.id} repeats ${seen.get(monochrome)}`);
     seen.set(monochrome, t.id);
     identities.set(key, seen);
+  }
+});
+
+test('only the eight pilot clocks use validated, content-addressed pack art', () => {
+  const pilot = fixture.themes.flatMap(t => t.designs.filter(d => d.packFace).map(d => [t.id, d.kind]));
+  assert.equal(pilot.length, 8);
+  assert.ok(pilot.every(([id, kind]) => id !== 'alpine-starlight' && kind === 'clock'));
+  const asset = { role: 'widget-art', mime: 'image/png', path: 'clock-face.01234567.png', width: 900, height: 900, bytes: 124_000,
+    sha256: '01234567'.repeat(8) } as const;
+  assert.equal(packClockFaceAsset([asset]), asset);
+  for (const bad of [{ path: 'other.png' }, { height: 1024 }, { bytes: 2_000_000 }, { width: 1080, height: 1080 }]) {
+    assert.equal(packClockFaceAsset([{ ...asset, ...bad }]), undefined);
   }
 });

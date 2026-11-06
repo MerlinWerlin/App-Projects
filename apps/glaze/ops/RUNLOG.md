@@ -726,3 +726,9 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - Match the Home Screen labels Clock, Battery and Calendar. Reuse the localized Clock label and keep the widget kind ID.
 - Keep older Home Screen widgets registered with WidgetKit's Other preference. The public preference is the available gallery control that preserves installed widget configurations.
 - The owner requested normal code checks and direct TestFlight delivery. The 1,910 core tests and app and Node TypeScript checks passed.
+
+## 6 November 2026 Glaze 1.0.7 illustrated clock pilot
+
+- Add original image-generated clock plates to eight existing GitHub theme packs. The new PNGs are remote assets and each pack keeps its prior wallpaper and widget choices.
+- The App Group bridge copies the verified pack file atomically. WidgetKit decodes at the rendered face size and draws live marks and hands. Clocks have a vector fallback when a pack image is absent.
+- Run 1,911 core tests, app and Node TypeScript, pack tests and the WidgetKit code check for the direct TestFlight delivery.

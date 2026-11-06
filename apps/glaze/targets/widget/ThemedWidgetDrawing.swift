@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import ImageIO
 
 struct WidgetIdentity {
   let outline: Path
@@ -74,8 +75,8 @@ struct WidgetIdentity {
 
 enum ThemedClockArtwork {
   private static let source = UIImage(named: "AlpineClockFace") ?? Bundle.main.url(forResource: "AlpineClockFace", withExtension: "jpg").flatMap { UIImage(contentsOfFile: $0.path) }
-  private static let thumbnails: NSCache<NSNumber, UIImage> = {
-    let cache = NSCache<NSNumber, UIImage>()
+  private static let thumbnails: NSCache<NSString, UIImage> = {
+    let cache = NSCache<NSString, UIImage>()
     cache.totalCostLimit = 6 * 1024 * 1024
     return cache
   }()
@@ -83,7 +84,7 @@ enum ThemedClockArtwork {
   static func alpine(maxPixels: Int) -> UIImage? {
     guard let source = source else { return nil }
     let pixels = min(maxPixels, Int(source.size.width * source.scale))
-    let key = NSNumber(value: pixels)
+    let key = "alpine-\(pixels)" as NSString
     if let image = thumbnails.object(forKey: key) { return image }
 
     // SwiftUI fitting changes the drawing bounds, but WidgetKit still archives the backing
@@ -98,6 +99,23 @@ enum ThemedClockArtwork {
       source.draw(in: CGRect(origin: .zero, size: size))
     }
     thumbnails.setObject(image, forKey: key, cost: pixels * pixels * 4)
+    return image
+  }
+
+  static func downloaded(_ face: WidgetPackClockFace, maxPixels: Int) -> UIImage? {
+    guard let group = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup) else { return nil }
+    let url = group.appendingPathComponent("clock-face-\(face.id).png")
+    guard let updated = (try? url.resourceValues(forKeys: [.contentModificationDateKey]))?.contentModificationDate else { return nil }
+    let key = "\(face.id)-\(updated.timeIntervalSinceReferenceDate)-\(maxPixels)" as NSString
+    if let image = thumbnails.object(forKey: key) { return image }
+    let read = [kCGImageSourceShouldCache: false] as CFDictionary
+    let options: [CFString: Any] = [kCGImageSourceCreateThumbnailFromImageAlways: true,
+      kCGImageSourceShouldCacheImmediately: true, kCGImageSourceThumbnailMaxPixelSize: maxPixels]
+    guard let source = CGImageSourceCreateWithURL(url as CFURL, read),
+      let thumbnail = CGImageSourceCreateThumbnailAtIndex(source, 0, options as CFDictionary),
+      thumbnail.width <= maxPixels, thumbnail.height <= maxPixels else { return nil }
+    let image = UIImage(cgImage: thumbnail)
+    thumbnails.setObject(image, forKey: key, cost: thumbnail.bytesPerRow * thumbnail.height)
     return image
   }
 }
@@ -153,8 +171,17 @@ extension DesignedDrawing {
     let box = themedBox(0, large ? 9 : 0, side)
     let background = Color(hex: spec.background[0])
     let original = design.originalFace == "alpine" ? ThemedClockArtwork.alpine(maxPixels: facePixels) : nil
+    let downloaded = spec.packFace.flatMap { ThemedClockArtwork.downloaded($0, maxPixels: facePixels) }
+    let artInk = Color(hex: spec.packFace?.darkInk == true ? "#182838" : "#FFF4DD")
+    let artShadow = Color(hex: spec.packFace?.darkInk == true ? "#FFF8E7" : "#131926")
     if let original = original {
       context.draw(Image(uiImage: original), in: box)
+    } else if let downloaded = downloaded {
+      context.draw(Image(uiImage: downloaded), in: box)
+      shape(design.minutes, in: box, color: artShadow.opacity(0.85), stroke: 1.35)
+      shape(design.minutes, in: box, color: artInk.opacity(0.85), stroke: 0.55)
+      shape(design.hours, in: box, color: artShadow, stroke: 2.4)
+      shape(design.hours, in: box, color: artInk, stroke: 1.25)
     } else {
       shape(design.outline, in: box, color: ink.opacity(0.045))
       clipped(to: design.inner, in: box) { face in
@@ -178,10 +205,11 @@ extension DesignedDrawing {
     let cy: CGFloat = original == nil ? 50 : 47.3
     let hourHand = hand(angle: (hour + minute / 60) * .pi / 6 - .pi / 2, length: 21, width: 1.85, style: design.hands, y: cy)
     let minuteHand = hand(angle: minute * .pi / 30 - .pi / 2, length: 32, width: 1.2, style: design.hands, y: cy)
-    shape(hourHand, in: box, color: background.opacity(0.9), stroke: 2.05)
-    shape(minuteHand, in: box, color: background.opacity(0.9), stroke: 2.05)
-    shape(hourHand, in: box, color: original == nil ? secondary : Color(hex: "#DFBA87"))
-    let minuteInk = original == nil ? ink : Color(hex: "#FFF4DC")
+    let handShadow = downloaded == nil ? background.opacity(0.9) : artShadow
+    shape(hourHand, in: box, color: handShadow, stroke: 2.05)
+    shape(minuteHand, in: box, color: handShadow, stroke: 2.05)
+    shape(hourHand, in: box, color: original != nil ? Color(hex: "#DFBA87") : downloaded != nil ? artInk : secondary)
+    let minuteInk = original != nil ? Color(hex: "#FFF4DC") : downloaded != nil ? artInk : ink
     shape(minuteHand, in: box, color: minuteInk)
     circle(box.midX, box.minY + side * cy / 100, side * 0.023, color: minuteInk)
     if wide {
