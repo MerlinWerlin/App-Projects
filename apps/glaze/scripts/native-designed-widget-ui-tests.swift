@@ -1,5 +1,7 @@
 import XCTest
 import Darwin
+import UIKit
+import Vision
 
 @MainActor final class GlazeDesignedWidgetUITests: XCTestCase {
   private func reveal(_ element: XCUIElement, in app: XCUIApplication) {
@@ -172,23 +174,42 @@ import Darwin
     let edit = spring.buttons["Edit Widget"].firstMatch
     XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription)
     edit.tap()
-    let art = spring.descendants(matching: .any).matching(NSPredicate(format: "label == %@ OR label BEGINSWITH %@", "Art", "Art,")).firstMatch
-    XCTAssertTrue(art.waitForExistence(timeout: 8), spring.debugDescription)
+    // SpringBoard labels both the static left-hand caption and the actionable right-hand button Art.
+    let art = spring.buttons["Art"].firstMatch
+    XCTAssertTrue(art.waitForExistence(timeout: 12), spring.debugDescription)
     art.tap()
+    RunLoop.current.run(until: Date().addingTimeInterval(2))
     capture("alpine-small-art-options")
     var seen = Set<String>()
     let names = ["Jupiter polar", "Silver moon", "Spiral galaxy", "Saturn rings", "Copper eclipse"]
-    for _ in 0..<14 {
+    for attempt in 0..<10 {
+      let visibleText = try screenText()
+      print("GLAZE_ALPINE_ART_SCREEN " + visibleText)
       for name in names {
         let item = spring.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
-        if item.exists { seen.insert(name) }
+        if item.exists || visibleText.localizedCaseInsensitiveContains(name) { seen.insert(name) }
       }
       if seen.count == names.count { break }
-      spring.swipeUp()
+      // Scroll the picker list, keeping the gesture inside the middle of the sheet.
+      if attempt == 0 && art.exists && art.isHittable && seen.isEmpty { art.tap() }
+      else if !seen.isEmpty {
+        spring.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.61))
+          .press(forDuration: 0.05, thenDragTo: spring.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.42)))
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
     }
     print("GLAZE_ALPINE_SMALL_ART_SEEN " + seen.sorted().joined(separator: ", ")); fflush(stdout)
     XCTAssertEqual(seen, Set(names), spring.debugDescription)
     print("GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED"); fflush(stdout)
+  }
+
+  private func screenText() throws -> String {
+    guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return "" }
+    let request = VNRecognizeTextRequest()
+    request.recognitionLevel = .accurate
+    request.recognitionLanguages = ["en-US"]
+    try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
+    return (request.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: " | ")
   }
 
   private func capture(_ name: String) {
