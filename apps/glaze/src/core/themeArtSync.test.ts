@@ -213,10 +213,12 @@ test('removed-piece fallback: same slot of the current theme, else same size, el
   assert.equal(resolveWidgetPiece(apply(lib, 'plain', [], 4000).lib, f('fern', 'small'), 'small'), null);
 });
 
-test('picker: current theme first (size, slot), then the rest newest first', () => {
+test('picker: one option per picture, with variants resolved by widget size', () => {
   const lib = apply(addPiece(emptyLibrary(), photo('p-1', 99999)).lib, 'alpine', A, 1000).lib;
   const order = pickerPieces(lib).map((x) => x.id);
-  assert.deepEqual(order, [...plan('alpine', A).map((x) => x.id), 'p-1']);
+  const unique = plan('alpine', A).filter((piece, index, all) => all.findIndex(other => other.optionId === piece.optionId) === index);
+  assert.deepEqual(order, [...unique.map(piece => piece.id), 'p-1']);
+  assert.equal(resolveWidgetPiece(lib, themePieceId('alpine', 'moon', 'small'), 'large'), themePieceId('alpine', 'moon', 'large'));
 });
 
 test('replaceThemeArt (the T238 path) also remembers what it removed', () => {

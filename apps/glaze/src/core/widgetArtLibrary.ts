@@ -390,7 +390,7 @@ export function clearAll(lib: WidgetArtIndex): CleanResult {
 export function fallbackPiece(lib: WidgetArtIndex, size: WidgetArtSize | null = null): WidgetArtPiece | null {
   const cur = lib.currentThemeId;
   if (!cur) return null;
-  const mine = listPieces(lib).filter((p) => !isUserPiece(p) && p.themeId === cur);
+  const mine = listPieces(lib).filter((p) => !isUserPiece(p) && p.themeId === cur && !p.hiddenFromPicker);
   return mine.find((p) => size !== null && p.size === size) ?? mine[0] ?? null;
 }
 
@@ -415,17 +415,27 @@ export function byShelf(a: WidgetArtPiece, b: WidgetArtPiece): number {
 export function currentThemePieces(lib: WidgetArtIndex): WidgetArtPiece[] {
   const cur = lib.currentThemeId;
   if (!cur) return [];
-  return lib.pieces.filter((p) => !isUserPiece(p) && p.themeId === cur).sort(byShelf);
+  return lib.pieces.filter((p) => !isUserPiece(p) && p.themeId === cur && !p.hiddenFromPicker).sort(byShelf);
 }
 
-/**
- * Edit Widget > Art order (suggestedEntities): the current theme's pieces first (byShelf), then
- * every other piece (own photos, art kept from elsewhere) newest first.
- */
+function pictureIdentity(piece: WidgetArtPiece): string {
+  if (piece.pictureId) return piece.pictureId;
+  const suffix = piece.size ? '-' + piece.size : '';
+  return piece.source === 'theme' && suffix && piece.id.startsWith('t-') && piece.id.endsWith(suffix)
+    ? piece.id.slice(0, -suffix.length)
+    : piece.id;
+}
+
+/** Edit Widget > Art order, with one choice per picture and the user's photos after theme art. */
 export function pickerPieces(lib: WidgetArtIndex): WidgetArtPiece[] {
-  const mine = currentThemePieces(lib);
-  const ids = new Set(mine.map((p) => p.id));
-  return [...mine, ...listPieces(lib).filter((p) => !ids.has(p.id))];
+  const other = listPieces(lib).filter(piece => isUserPiece(piece) || !lib.currentThemeId);
+  const seen = new Set<string>();
+  return [...currentThemePieces(lib), ...other].filter(piece => {
+    const picture = pictureIdentity(piece);
+    if (piece.hiddenFromPicker || piece.live?.design || seen.has(picture)) return false;
+    seen.add(picture);
+    return true;
+  });
 }
 
 /**
@@ -438,7 +448,12 @@ export function pickerPieces(lib: WidgetArtIndex): WidgetArtPiece[] {
  */
 export function resolveWidgetPiece(lib: WidgetArtIndex, id: string | null | undefined, size: WidgetArtSize | null): string | null {
   if (!isValidPieceId(id)) return null;
-  if (lib.pieces.some((p) => p.id === id)) return id;
+  const selected = lib.pieces.find(piece => piece.id === id);
+  if (selected) {
+    if (!size || selected.size === size) return id;
+    const picture = pictureIdentity(selected);
+    return lib.pieces.find(piece => piece.size === size && pictureIdentity(piece) === picture)?.id ?? id;
+  }
   const mine = currentThemePieces(lib);
   if (mine.length === 0) return null;
   const r = lib.retired?.[id];

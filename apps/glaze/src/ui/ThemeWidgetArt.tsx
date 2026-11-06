@@ -65,6 +65,7 @@ export function ThemeWidgetArt({ theme, size, width, style }: Props) {
   }, [remoteTheme, remote.widgetOptions, verified, artId, theme.id, targets]);
 
   const wallpaper = remote.wallpaperUri ? { uri: remote.wallpaperUri } : artId ? artPackWallpaper(artId) : null;
+  const seamlessWallpaper = wallpaper ?? (isRemoteArtTheme(latest) && latest.remoteArt.thumbUrl ? { uri: latest.remoteArt.thumbUrl } : null);
   const wallpaperPx = remote.wallpaperPx ?? { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height };
   const slot = normaliseSlot(size, null);
   const device = seamlessDeviceHere();
@@ -78,12 +79,12 @@ export function ThemeWidgetArt({ theme, size, width, style }: Props) {
       <DesignedThemeWidgets theme={theme} size={size} width={width} />
       <WidgetArtMenu options={options} size={size} width={width} themeColour={theme.palette.bg}
         wallpaper={menuWallpaper} themeId={theme.id} artTransparent={!remoteTheme} />
-      {seamless ? (
+      {seamlessWallpaper || seamless ? (
         <View style={styles.stack}>
           <SectionHeader title={t('ui.seamless.title')} flushTop />
-          <SeamlessWidgetPreview wallpaper={wallpaper} wallpaperPx={wallpaperPx}
+          <SeamlessWidgetPreview wallpaper={seamlessWallpaper} wallpaperPx={wallpaperPx}
             fallbackWallpaper={(width, height) => <View style={{ width, height, backgroundColor: theme.palette.bg }} />}
-            hero={seamless.source} heroPx={{ w: seamless.option.width, h: seamless.option.height }}
+            hero={remoteTheme ? null : seamless?.source ?? null} heroPx={seamless ? { w: seamless.option.width, h: seamless.option.height } : undefined}
             size={size} slot={slot} nudge={{ dx: 0, dy: 0 }} device={device} width={Math.min(width, 220)}
             style={styles.seamless} accessibilityLabel={t('ui.seamless.title')} />
         </View>

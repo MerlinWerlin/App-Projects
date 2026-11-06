@@ -5,6 +5,9 @@ import { join } from 'node:path';
 import { PACK_BASE_URL } from '../src/config/packs.ts';
 import { parseCatalog } from '../src/core/packCatalog.ts';
 import { downloadRemoteWidgetArt } from '../src/core/packDownloader.ts';
+import { isReplacedArtEdition } from '../src/core/designedWidgets.ts';
+import { WIDGET_ART_PICTURE_ALIASES } from '../src/core/widgetArtPictureAliases.ts';
+import { withSeamlessHeroes } from '../src/core/widgetOptions.ts';
 import { remoteWidgetArtOptions } from '../src/core/remoteWidgetArt.ts';
 import { commitThemeArt, planThemePieces, THEME_ART_SIZES } from '../src/core/themeArtSync.ts';
 import { emptyLibrary, serializeLibrary, themePieceId } from '../src/core/widgetArtLibrary.ts';
@@ -37,6 +40,15 @@ await Promise.all(Array.from({ length: 8 }, async () => {
     const art = await downloadRemoteWidgetArt(transport, PACK_BASE_URL, pack, AbortSignal.timeout(55_000));
     assert.equal(art.missing, 0, pack.id + ' ' + art.lastError);
     const options = remoteWidgetArtOptions(art.manifest);
+    const fingerprints = new Map(art.manifest.assets.map(a => [a.path, WIDGET_ART_PICTURE_ALIASES[a.sha256] ?? a.sha256]));
+    const advertised = withSeamlessHeroes(art.manifest.widgets, art.manifest.assets)
+      .filter(option => !isReplacedArtEdition(option));
+    for (const size of THEME_ART_SIZES) {
+      const input = new Set(advertised.filter(o => o.sizes.includes(size)).map(o => fingerprints.get(o.image)));
+      const output = options.filter(o => o.sizes.includes(size)).map(o => fingerprints.get(o.image));
+      assert.equal(output.length, new Set(output).size, pack.id + ': duplicate ' + size + ' choice');
+      assert.deepEqual(new Set(output), input, pack.id + ': missing pack art for ' + size);
+    }
     const assets = Object.fromEntries(await Promise.all(options.map(async option => {
       const asset = art.manifest.assets.find(a => a.path === option.image);
       const name = asset.sha256 + '.webp';

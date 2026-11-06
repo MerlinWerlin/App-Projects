@@ -63,6 +63,7 @@ import { OffscreenWallpaper, WallpaperView } from '../../src/render/WallpaperVie
 import { IconCanvas } from '../../src/render/IconCanvas';
 import { usePackTheme } from '../../src/render/usePackTheme';
 import { tickStoredChecklist } from '../../src/store/applyChecklist';
+import { useToast } from '../../src/ui/Toast';
 import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
 import { DEFERRED_STEPS, requestDeferred } from '../../src/store/deferredWork';
 import { loadBackground } from '../../src/store/background';
@@ -213,6 +214,7 @@ function ThemeDetail({
   const { c, scheme } = useColorsV2();
   const router = useRouter();
   const { t, script } = useT();
+  const toast = useToast();
   const insets = useSafeAreaInsets();
   const window = useWindowDimensions();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
@@ -422,7 +424,10 @@ function ThemeDetail({
     setUseBusy(true);
     setUseError(false);
     try {
-      if (!await onSaveWallpaper()) return;
+      if (!await onSaveWallpaper()) {
+        toast.show(t('theme.setup.wallpaper.saveError'), 'warning');
+        return;
+      }
       const res = await applyThemeEverywhere(theme);
       if (!res.icons || !res.widgets) {
         setUseError(true);
@@ -457,7 +462,10 @@ function ThemeDetail({
       setLockOpen(true);
       return;
     }
-    void onSaveWallpaper();
+    void onSaveWallpaper().then(
+      saved => toast.show(t(saved ? 'theme.save.savedBadge' : 'theme.setup.wallpaper.saveError'), saved ? 'success' : 'warning'),
+      () => toast.show(t('theme.setup.wallpaper.saveError'), 'warning'),
+    );
   };
 
   /** T265: a "Set it up" row opens the guided flow at that step (a locked theme asks for Plus first). */

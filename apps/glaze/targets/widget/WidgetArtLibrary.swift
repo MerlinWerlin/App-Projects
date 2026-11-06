@@ -49,6 +49,7 @@ struct WidgetArtRecord {
   /// Identifies one picture across its composed size variants.
   let pictureID: String
   let offered: Bool
+  let retainedEdition: Bool
 }
 
 /// T252: what a removed auto-added piece was, so its widgets can be remapped.
@@ -76,7 +77,7 @@ struct WidgetArtSnapshot {
   func currentThemeRecords() -> [WidgetArtRecord] {
     guard let current = currentThemeId, !current.isEmpty else { return [] }
     return records
-      .filter { $0.source != "photo" && $0.themeId == current }
+      .filter { $0.source != "photo" && $0.themeId == current && !$0.retainedEdition }
       .sorted(by: WidgetArtStore.shelfOrder)
   }
 
@@ -180,7 +181,8 @@ enum WidgetArtStore {
           size: size,
           slot: slotNumber(p["slot"]),
           pictureID: (p["pictureId"] as? String).flatMap { validID($0) ? $0 : nil } ?? legacyPicture,
-          offered: p["hiddenFromPicker"] as? Bool != true && live?["design"] == nil
+          offered: p["hiddenFromPicker"] as? Bool != true && live?["design"] == nil,
+          retainedEdition: p["hiddenFromPicker"] as? Bool == true
         )
       )
     }
@@ -339,7 +341,8 @@ struct WidgetArtEntity: AppEntity {
 struct WidgetArtQuery: EntityQuery {
   private let reviewDirectory: URL?
 
-  init(directory: URL? = nil) { reviewDirectory = directory }
+  init() { reviewDirectory = nil }
+  init(directory: URL) { reviewDirectory = directory }
 
   private func snapshot() -> WidgetArtSnapshot {
     WidgetArtStore.snapshot(in: reviewDirectory ?? WidgetArtStore.directory())
