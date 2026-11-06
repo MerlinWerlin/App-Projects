@@ -18,7 +18,7 @@ on:
       scenario:
         description: 'Installed route or actual Home Screen widget and shared-data round trip'
         type: choice
-        options: [route, widget, album, album-widget, design, alpine, alpine-home, theme-gallery]
+        options: [route, widget, album, album-widget, design, alpine, alpine-home, alpine-art, theme-gallery]
         default: route
 permissions:
   contents: read
@@ -41,7 +41,7 @@ jobs:
           set -euo pipefail
           FIXTURE=native-link-ui-tests.swift
           if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then FIXTURE=native-widget-tap-tests.swift; fi
-          if [[ "$GLAZE_UI_SCENARIO" == design || "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then FIXTURE=native-designed-widget-ui-tests.swift; fi
+          if [[ "$GLAZE_UI_SCENARIO" == design || "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == alpine-art || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then FIXTURE=native-designed-widget-ui-tests.swift; fi
           if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then FIXTURE=native-album-ui-tests.swift; fi
           ruby scripts/prepare-native-link-test.rb "$RUNNER_TEMP/GlazeLinkCheck" "$FIXTURE" "$GLAZE_UI_SCENARIO"
           xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/link-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build-for-testing > "$RUNNER_TEMP/glaze-link-build.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-link-build.log"; exit 1; }
@@ -109,6 +109,7 @@ jobs:
           if [[ "$GLAZE_UI_SCENARIO" == design ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testThreeFunctionalDesignsReachSharedStorage; fi
           if [[ "$GLAZE_UI_SCENARIO" == alpine ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOriginalFaceFromTheme; fi
           if [[ "$GLAZE_UI_SCENARIO" == alpine-home ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOnHomeScreen; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine-art ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineSmallEditWidgetArt; fi
           if [[ "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testThemeGalleryWithoutSavingIndividualWidgets; fi
           if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then TEST=GlazeLinkUITests/GlazeAlbumPickerTests/testSelectedPhotosReachNativeAlbum; fi
           xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-link.xcresult" "-only-testing:$TEST" test-without-building > "$RUNNER_TEMP/glaze-link-test.log" 2>&1 &
@@ -120,6 +121,8 @@ jobs:
               if [[ "$GLAZE_UI_SCENARIO" == album-widget ]]; then grep -F GLAZE_ALBUM_INSTALLED_NEXT_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"; fi
             elif [[ "$GLAZE_UI_SCENARIO" == design ]]; then
               grep -F GLAZE_DESIGNED_WIDGETS_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+            elif [[ "$GLAZE_UI_SCENARIO" == alpine-art ]]; then
+              grep -F GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
             elif [[ "$GLAZE_UI_SCENARIO" == alpine-home ]]; then
               grep -F GLAZE_ALPINE_INSTALLED "$RUNNER_TEMP/glaze-link-test.log"
             elif [[ "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then
@@ -154,7 +157,7 @@ jobs:
           xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/glaze-native-link-review/last-screen.png" || true
           if [[ -d "$RUNNER_TEMP/glaze-link.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-link.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/attachments" > "$RUNNER_TEMP/glaze-native-link-review/attachment-export.log" 2>&1 || true; fi
           if [[ -d "$RUNNER_TEMP/glaze-upgrade-before.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-upgrade-before.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/before-upgrade" || true; fi
-          if [[ "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then xcrun simctl spawn "$DEVICE" log show --last 12m --info --debug --style compact --predicate '(process CONTAINS[c] "GlazeWidget" OR subsystem CONTAINS[c] "WidgetKit") AND (eventMessage CONTAINS[c] "glaze" OR eventMessage CONTAINS[c] "image" OR eventMessage CONTAINS[c] "archiv")' > "$RUNNER_TEMP/glaze-native-link-review/widget-os.log" || true; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == alpine-art || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then xcrun simctl spawn "$DEVICE" log show --last 12m --info --debug --style compact --predicate '(process CONTAINS[c] "GlazeWidget" OR subsystem CONTAINS[c] "WidgetKit") AND (eventMessage CONTAINS[c] "glaze" OR eventMessage CONTAINS[c] "image" OR eventMessage CONTAINS[c] "archiv")' > "$RUNNER_TEMP/glaze-native-link-review/widget-os.log" || true; fi
           cp "$RUNNER_TEMP/installable/simulator-app-source.json" "$RUNNER_TEMP/glaze-native-link-review/" || true
           python3 - <<'PY'
           import os,json,pathlib,hashlib
@@ -180,6 +183,7 @@ jobs:
               receipt['scope']='Real installed Expo app selects and saves all three functional widget designs through the native bridge; shared semantic specs survive app restart. Home Screen interaction/physical phone not inferred.'
           alpine='GLAZE_ALPINE_CLOCK_SAVED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
           receipt['alpineClockSaveUITest']=supplied and alpine
+          receipt['alpineSmallEditWidgetArt']=supplied and execute_ok and 'GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED' in text
           receipt['alpineInstalledThroughPicker']=supplied and 'GLAZE_ALPINE_INSTALLED' in text and execute_ok
           receipt['themeGalleryInstalledThroughPicker']=supplied and 'GLAZE_THEME_GALLERY_INSTALLED' in text and execute_ok
           if receipt['themeGalleryInstalledThroughPicker']:

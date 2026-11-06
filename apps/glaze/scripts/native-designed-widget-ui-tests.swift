@@ -130,6 +130,59 @@ import Darwin
     print("GLAZE_THEME_GALLERY_INSTALLED\n" + spring.debugDescription); fflush(stdout)
   }
 
+  func testAlpineSmallEditWidgetArt() throws {
+    continueAfterFailure = false
+    let app = try openAlpine()
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    defer {
+      capture("alpine-art-final")
+      print("GLAZE_ART_APP_TREE\n" + app.debugDescription)
+      print("GLAZE_ART_SPRINGBOARD_TREE\n" + spring.debugDescription)
+    }
+
+    let use = app.buttons.matching(NSPredicate(format: "label == %@ OR label == %@", "Use this theme", "In use")).firstMatch
+    reveal(use, in: app)
+    use.tap()
+    let action = app.buttons.matching(NSPredicate(format: "label == %@ OR label == %@", "Use everything", "Use theme + add icons")).firstMatch
+    XCTAssertTrue(action.waitForExistence(timeout: 8), app.debugDescription)
+    action.tap()
+    // The explicit Use everything action can request add-only Photos access on a clean install.
+    let alert = spring.alerts.firstMatch
+    if alert.waitForExistence(timeout: 4) {
+      let allow = alert.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@ AND NOT label CONTAINS[c] %@", "Allow", "Don’t")).firstMatch
+      if allow.exists { allow.tap() }
+    }
+    capture("alpine-after-theme-apply")
+    XCUIDevice.shared.press(.home)
+    try openGallery(spring, fromHomeScreen: true)
+    try installWidget("Seamless", in: spring, maxSwipes: 20)
+    let widgets = spring.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS[c] %@", "Seamless"))
+    let homeWidget = try XCTUnwrap(widgets.allElementsBoundByIndex.first {
+      $0.isHittable && (110...205).contains($0.frame.width) && (110...205).contains($0.frame.height)
+    }, spring.debugDescription)
+    homeWidget.press(forDuration: 1.4)
+    let edit = spring.buttons["Edit Widget"].firstMatch
+    XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription)
+    edit.tap()
+    let art = spring.descendants(matching: .any).matching(NSPredicate(format: "label == %@ OR label BEGINSWITH %@", "Art", "Art,")).firstMatch
+    XCTAssertTrue(art.waitForExistence(timeout: 8), spring.debugDescription)
+    art.tap()
+    capture("alpine-small-art-options")
+    var seen = Set<String>()
+    let names = ["Jupiter polar", "Silver moon", "Spiral galaxy", "Saturn rings", "Copper eclipse"]
+    for _ in 0..<14 {
+      for name in names {
+        let item = spring.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
+        if item.exists { seen.insert(name) }
+      }
+      if seen.count == names.count { break }
+      spring.swipeUp()
+    }
+    print("GLAZE_ALPINE_SMALL_ART_SEEN " + seen.sorted().joined(separator: ", ")); fflush(stdout)
+    XCTAssertEqual(seen, Set(names), spring.debugDescription)
+    print("GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED"); fflush(stdout)
+  }
+
   private func capture(_ name: String) {
     let screenshot = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
     screenshot.name = name; screenshot.lifetime = .keepAlways; add(screenshot)
