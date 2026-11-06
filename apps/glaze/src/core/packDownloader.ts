@@ -33,6 +33,7 @@ import {
   type RemoteArtManifest,
 } from './packCatalog.ts';
 import { packObjectUrl, packReleaseBase } from './packHost.ts';
+import { CLOCK_COMPANION_FOLDER, CLOCK_COMPANION_RELEASE, packClockFace, packClockFaceAsset, parseClockCompanion, pilotClockFace } from './packClockFace.ts';
 
 /** Result of a (possibly ranged) GET. `offset` is where the body starts: `start` for a 206, 0 when the server ignored Range. */
 export type RangeResponse = { offset: number; chunks: AsyncIterable<Uint8Array> };
@@ -438,6 +439,32 @@ export async function fetchRemoteArtManifest(transport: Transport, baseUrl: stri
   if (!r.ok) throw new PackError('manifest', r.error);
   if (r.value.packVersion !== packVersion) throw new PackError('manifest', `manifest is v${r.value.packVersion}, expected v${packVersion}`);
   return r.value;
+}
+
+/** Cache just the selected face, separately from its wallpaper pack and its version. */
+export async function downloadClockCompanion(transport: Transport, baseUrl: string, id: string): Promise<string | null> {
+  const base = resolvePackBaseUrl(baseUrl);
+  if (!base || !packClockFace(id, false)) return null;
+  const local = `${CLOCK_COMPANION_FOLDER}/${id}`;
+  const index = `${local}/manifest.json`;
+  const cached = await transport.readFile(index);
+  let asset;
+  try { asset = cached ? parseClockCompanion(JSON.parse(utf8Decode(cached)), id) : undefined; } catch { /* Repair interrupted cache writes below. */ }
+  const needsIndex = !asset;
+  const pilot = !!pilotClockFace(id);
+  const host = packReleaseBase(base, pilot ? 'glaze-packs-v14' : CLOCK_COMPANION_RELEASE);
+  const folder = pilot ? packFolder(id, 7) : local;
+  if (!asset) {
+    if (pilot) asset = packClockFaceAsset((await fetchRemoteArtManifest(transport, host, id, 7)).assets);
+    else asset = parseClockCompanion(JSON.parse(await fetchText(transport, packObjectUrl(host, `${folder}/manifest.json`), 4096)), id);
+  }
+  if (!asset) return null;
+  await fetchAndVerifyAssets({ transport, localDir: local, assets: [asset], urlFor: p => packObjectUrl(host, `${folder}/${p}`), retries: 1 });
+  if (needsIndex) {
+    await transport.remove(index);
+    await transport.writeAppend(index, utf8Encode(JSON.stringify({ v: 1, id, asset })));
+  }
+  return `${local}/${asset.path}`;
 }
 
 /** The on-phone manifest: the remote one cut down to the files this phone downloaded. */

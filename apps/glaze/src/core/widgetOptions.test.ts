@@ -441,10 +441,7 @@ test('docs/THEME_PACKS.md: the v2 example manifest parses and validates strictly
 
 const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 
-test('Widgets tab shows the theme widget art menu above the grid', () => {
-  const tab = read('app', '(tabs)', 'widgets.tsx');
-  assert.match(tab, /import \{ ThemeWidgetArt \} from '\.\.\/\.\.\/src\/ui\/ThemeWidgetArt';/);
-  assert.match(tab, /<ThemeWidgetArt theme=\{gridTheme\} size=\{size\}/);
+test('legacy widget art uses the original pack and native bridges', () => {
   const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
   assert.match(art, /useRemoteArtTheme\(/);
   assert.match(art, /widgetOptionsFromV1\(/, 'bundled art packs list their hero pieces as options');

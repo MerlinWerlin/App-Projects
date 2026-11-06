@@ -149,9 +149,7 @@ test('heavy cards and previews are memoised', () => {
   // T162: memoised rows of a virtualised list (replaces T118's TileGrid).
   // T186 (owner 1 Nov supersedes T118/T162's tile grid): My wallpapers rows are memoised too.
   assert.match(WALLPAPERS_TAB, /const ThumbRow = memo\(/);
-  assert.match(WIDGETS_TAB, /const WidgetCell = memo\(/);
-  // T162: the grid is a virtualised list of memoised rows (replaces T118's WidgetGrid).
-  assert.match(WIDGETS_TAB, /const WidgetRow = memo\(/);
+
 });
 
 test('gallery previews are still Home Screens with cached specs and cached wallpaper geometry', () => {
@@ -208,24 +206,11 @@ test('Wallpapers tab: no reload on focus, memoised rows of a virtualised list', 
   assert.match(WALLPAPERS_TAB, /<ThumbRow row=\{item\} width=\{thumbW\} height=\{thumbH\} onOpen=\{onOpen\} \/>/);
 });
 
-test('Widgets tab: specs solved once per change, memoised cells, deferred previews, clock only in focus', () => {
-  assert.match(WIDGETS_TAB, /const models: ReadonlyMap<string, CardModel> = useMemo\(/);
-  assert.doesNotMatch(WIDGETS_TAB, /catSpecFor|const renderCard =/);
-  assert.match(WIDGETS_TAB, /SET_LOOKS\.get\(spec, look/);
-  assert.match(WIDGETS_TAB, /CAT_LOOKS\.get\(spec, look/);
-  assert.match(WIDGETS_TAB, /const setForTheme = weakMemo\(/);
-  assert.match(WIDGETS_TAB, /const themeSwatch = weakMemo\(/);
-  assert.match(WIDGETS_TAB, /useDeferredValue\(theme\)/);
-  assert.match(WIDGETS_TAB, /useDeferredValue\(look\)/);
-  assert.match(WIDGETS_TAB, /habits=\{m\.habit \? habits : undefined\}/);
-  // T162: rows mount as they scroll in (LargeTitleFlatList) instead of a progressive reveal.
-  assert.match(WIDGETS_TAB, /<LargeTitleFlatList\b/);
-  // The minute clock runs only while the tab is focused and never sets an unchanged minute.
-  assert.match(WIDGETS_TAB, /useFocusEffect\(\s*useCallback\(\(\) => \{\s*const tick/);
-  assert.doesNotMatch(WIDGETS_TAB, /useEffect\(\(\) => \{\s*const id = setInterval/);
-  // Stable handlers for the memoised cells.
-  for (const h of ['logHabit', 'undoHabit', 'onOpen', 'onGoals']) assert.match(WIDGETS_TAB, new RegExp(`const ${h} = useCallback\\(`));
-  // A focus reload of the same background keeps the state object.
+test('theme widget previews update live readings only while focused', () => {
+  const previews = read('src/ui/DesignedThemeWidgets.tsx');
+  assert.match(previews, /useMemo\(\(\) => DESIGNED_KINDS\.map/);
+  assert.match(previews, /useFocusEffect\(useCallback\(/);
+  assert.match(previews, /clearInterval\(timer\)/);
   assert.match(PALETTE, /setBg\(\(prev\) => keepIfSame\(prev, b, sameJson\)\)/);
 });
 

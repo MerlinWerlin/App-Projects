@@ -187,3 +187,7 @@ Technical compilation and automated checks passed, but103/105 automatically gene
 The canonical GitHub catalogue URL can retain an old redirect after replacement. TestFlight 1.0.2 (27) uses `catalogRequestUrl` to give each actual catalogue fetch a fresh URL, while retaining conditional ETag checks, the six-hour/offline policy, and unchanged immutable asset URLs. Publication readback uses that same production helper. A successful upload alone does not establish that an older client's cached redirect has refreshed.
 
 Final Apple observation on 4 Nov 2026 at08:18:03UTC:1.0.2(27) is VALID / IN_BETA_TESTING in the existing internal group. This is native-runtime delivery with a themed-design hold, not completion of the full themed widget suite.
+
+## Illustrated clock companions
+
+Glaze 1.0.8 fetches illustrated clock faces separately from the wallpaper pack when the theme is applied, when the active theme is restored at launch, or when its installed pack lacks the face. The original eight faces are read from their existing v7 manifests on `glaze-packs-v14`. New faces are published on `glaze-packs-v15` as `clock-faces__<theme-id>__manifest.json` and `clock-faces__<theme-id>__clock-face.<sha8>.png`. A companion manifest has `v: 1`, the theme `id`, and one `asset` descriptor with the same size and SHA-256 fields as remote pack art. Upload the PNG before its manifest. At two assets per face, the 206 new faces take 412 release slots. The app caches the verified file and the widget decodes it at the face’s actual pixel size. Live hands are drawn in code.

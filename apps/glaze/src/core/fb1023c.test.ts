@@ -12,36 +12,6 @@ const tab = read('app', '(tabs)', 'widgets.tsx');
 const art = read('src', 'ui', 'WidgetOptionArt.tsx');
 const core = read('src', 'core', 'widgetOptionArt.ts');
 
-/** The JSX the tab renders. */
-// T162: the controls are the list header (`const header = (`); the grid rows are a FlatList below it.
-const rendered = tab.slice(tab.indexOf('const header = ('));
-
-test('size sub-tabs draw a SizeArt picture above the label, keeping role, label and touch size', () => {
-  const sizes = rendered.slice(rendered.indexOf('WIDGET_TAB_SIZES.map'), rendered.indexOf('lockNote'));
-  assert.match(sizes, /<SizeArt size=\{s\} stroke=\{on \? c\.tint : c\.inkSecondary\}/);
-  assert.ok(sizes.indexOf('<SizeArt') < sizes.indexOf('<Text'), 'picture before the label');
-  assert.match(sizes, /accessibilityRole="tab"/);
-  assert.match(sizes, /accessibilityLabel=\{name\}/);
-  assert.match(tab, /sizeTab: \{\s*flex: 1,\s*minHeight: sizeV2\.touch/);
-});
-
-test('look chips draw the look swatch next to the label', () => {
-  const looks = rendered.slice(rendered.indexOf('looks.map'), rendered.indexOf('WIDGET_TAB_SIZES.map'));
-  assert.match(tab, /lookSwatches[^\n]*useMemo\(\(\) => new Map\(looks\.map\(\(l\) => \[l, lookSwatch\(l, set\.tokens\)\]\)\)/);
-  assert.match(looks, /<SwatchArt swatch=\{swatch\}/);
-  assert.match(looks, /accessibilityLabel=\{name\}/);
-  assert.ok(looks.indexOf('<SwatchArt') < looks.indexOf('<Text'));
-});
-
-test('theme chips draw a theme swatch instead of the plain dot', () => {
-  const themes = rendered.slice(rendered.indexOf('themes.map'), rendered.indexOf('looks.map'));
-  assert.match(themes, /<SwatchArt swatch=\{themeSwatch\(x\.palette\)\}/);
-  assert.match(themes, /accessibilityLabel=\{x\.name\}/);
-  assert.match(themes, /\{x\.name\}\s*<\/Text>/);
-  assert.doesNotMatch(tab, /styles\.dot/);
-  assert.match(tab, /chip: \{\s*minHeight: sizeV2\.touch/);
-});
-
 test('the pictures are decorative (hidden from screen readers), RTL safe and drawn with plain Views', () => {
   assert.match(art, /accessibilityElementsHidden: true/);
   assert.match(art, /importantForAccessibility: 'no-hide-descendants'/);

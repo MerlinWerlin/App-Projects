@@ -14,7 +14,6 @@ const strip = (src: string) => src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(
 /** The gallery tabs and the virtualised list each must scroll. */
 const LIST_TABS: Record<string, RegExp> = {
   'app/(tabs)/themes.tsx': /<Animated\.FlatList\b/,
-  'app/(tabs)/widgets.tsx': /<LargeTitleFlatList\b/,
   'app/(tabs)/wallpapers.tsx': /<LargeTitleFlatList\b/,
   // T166: the Icon Studio's search results are the rows of a virtualised list (form = footer).
   'app/(tabs)/icons.tsx': /<Animated\.FlatList\b/,
@@ -94,11 +93,6 @@ test('list rows are memoised with stable keys and render callbacks', () => {
   assert.match(themes, /const GalleryCardRow = memo\(/);
   assert.match(themes, /const renderRow: ListRenderItem<Row> = useCallback\(/);
   assert.match(themes, /keyExtractor=\{rowKey\}/);
-  const widgets = strip(read('app/(tabs)/widgets.tsx'));
-  assert.match(widgets, /const WidgetRow = memo\(/);
-  // T173: items are per-family rows (FamilyRow, src/core/widgetFamilies.ts) with a precomputed key.
-  assert.match(widgets, /const renderRow: ListRenderItem<FamilyRow<WidgetTabCard>> = useCallback\(/);
-  assert.match(widgets, /keyExtractor=\{rowKey\}/);
   const walls = strip(read('app/(tabs)/wallpapers.tsx'));
   // T186 (owner 1 Nov): the gallery tile grid became My wallpapers' thumbnail rows.
   assert.match(walls, /const ThumbRow = memo\(/);

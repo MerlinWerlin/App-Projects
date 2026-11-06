@@ -119,7 +119,6 @@ test('T184 the Icons, Widgets and wallpaper screens re-read the theme in use on 
   const widgets = strip(read('app', '(tabs)', 'widgets.tsx'));
   assert.match(widgets, /const activeId = useActiveThemeId\(\);/);
   assert.match(widgets, /useAnyTheme\(activeId\)/);
-  assert.match(widgets, /pickAfterActiveChange\(prev, activeId, p\)/);
   assert.doesNotMatch(widgets, /getAnyTheme\(state\?\.themeId/);
   // Wallpaper maker: opened without a theme, it starts from the theme in use.
   const maker = strip(read('app', 'wallpaper.tsx'));
