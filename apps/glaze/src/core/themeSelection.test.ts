@@ -10,8 +10,10 @@ test('A → B → A keeps the selected theme, persisted theme and WidgetKit writ
   const writes: string[] = [];
   const values = new Map<string, string>();
   const savedId = (key: string) => JSON.parse(values.get(key) ?? '{}').themeId;
-  const wait = Promise.withResolvers<void>();
-  const started = Promise.withResolvers<void>();
+  let releaseB!: () => void;
+  let announceB!: () => void;
+  const wait = new Promise<void>(resolve => { releaseB = resolve; });
+  const started = new Promise<void>(resolve => { announceB = resolve; });
   const mock = {
     storage: {
       getItem: async (key: string) => values.get(key) ?? null,
@@ -19,7 +21,7 @@ test('A → B → A keeps the selected theme, persisted theme and WidgetKit writ
       multiSet: async (pairs: [string, string][]) => { for (const pair of pairs) values.set(...pair); },
     },
     icons: async (theme: { id: string }) => {
-      if (theme.id === b.id) { started.resolve(); await wait.promise; }
+      if (theme.id === b.id) { announceB(); await wait; }
     },
     write: async (theme: { themeId: string }) => { writes.push(theme.themeId); return { ok: true }; },
   };
@@ -49,19 +51,22 @@ test('A → B → A keeps the selected theme, persisted theme and WidgetKit writ
     },
   });
   try {
-    const { applyThemeEverywhere, loadActiveThemeId } = await import('../store/activeTheme.ts');
-    const { applyWidgetTheme, pushStoredWidgetTheme } = await import('../store/widgetTheme.ts');
+    // Node resolves these with the hooks above; the Node-only TS project need not compile RN.
+    const activeStore = '../store/activeTheme.ts';
+    const widgetStore = '../store/widgetTheme.ts';
+    const { applyThemeEverywhere, loadActiveThemeId } = await import(activeStore);
+    const { applyWidgetTheme, pushStoredWidgetTheme } = await import(widgetStore);
     await applyThemeEverywhere(a);
     assert.equal(await loadActiveThemeId(), a.id);
     assert.equal(savedId(ACTIVE_THEME_KEY), a.id);
     assert.equal(savedId(ACTIVE_WIDGET_THEME_KEY), a.id);
 
     const swapToB = applyThemeEverywhere(b);
-    await started.promise;
+    await started;
     const restore = pushStoredWidgetTheme();
     const lateWallpaper = applyWidgetTheme(a);
     const swapBackToA = applyThemeEverywhere(a);
-    wait.resolve();
+    releaseB();
     await Promise.all([swapToB, restore, lateWallpaper, swapBackToA]);
     assert.deepEqual(writes, [a.id, b.id, b.id, a.id]);
     await Promise.all([applyThemeEverywhere(b), applyThemeEverywhere(a)]);
