@@ -76,7 +76,7 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, themeColo
         {/* The art itself: always whole (contain inside its fitted rectangle), blended (T251). */}
         {preserveArtwork ? (
           <ExpoImage source={source} style={{ position:'absolute',left:place.rect.x,top:place.rect.y,width:place.rect.w,height:place.rect.h }} contentFit="contain" cachePolicy="memory-disk" transition={0} />
-        ) : <BlendedArt source={source} rect={place.rect} blend={blend} />}
+        ) : <BlendedArt source={source} rect={place.rect} blend={blend} assetPath={option.image} />}
       </View>
       <View style={caption.stacked ? styles.captionStacked : styles.caption}>
         <Text

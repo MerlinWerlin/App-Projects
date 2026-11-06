@@ -21,14 +21,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, HERO_SIZES, isArtPackTheme } from '../core/artPack';
 import { liveArtPlan, liveArtSpec, withLiveArt, type CountdownArtTargets } from '../core/liveArt';
 import { pickWallpaper } from '../core/packCatalog';
-import { isRemoteArtTheme, remoteArtFiles } from '../core/remoteCatalog';
+import { isRemoteArtTheme } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, widgetSizePx } from '../core/seamlessWidget';
 import { piecesToCompose, planThemePieces, THEME_ART_SIZES, type PlannedThemePiece } from '../core/themeArtSync';
 import type { Theme } from '../core/themes';
 import type { WidgetArtIndex } from '../core/widgetArtLibrary';
-import { optionName, widgetOptionsFromV1, withSeamlessHeroes, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
+import { optionName, widgetOptionsFromV1, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
 import { t } from '../i18n';
-import { getPackState, loadPackIndex, remoteArtFileUri, remoteArtOnDevice } from '../native/packs';
+import { getPackState, remoteArtFileUri, remoteWidgetArtOnDevice } from '../native/packs';
 import { widgets, type WidgetsResult } from '../native/widgets';
 import { artPackHero, artPackWallpaper } from '../ui/artPackSources';
 import { existingLocalFile, localAssetUri, seamlessDeviceHere } from '../ui/seamlessSetup';
@@ -64,6 +64,9 @@ type ThemeArt = {
   /** Resolves the wallpaper to a local file (only wallpaper-backed pieces need it). */
   wallpaper: () => Promise<string | null>;
   wallpaperPx: { w: number; h: number };
+  missing?: number;
+  artworkRevision?: string;
+  hasWallpaper?: boolean;
 };
 
 let generation = 0;
@@ -114,12 +117,12 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
     // T245: countdown art pieces go live with the day the person chose (none = Art).
     const targets = await loadCountdownArtTargets();
     const art = await themeArt(theme, targets);
-    const planned = plan(theme, art.options, targets, await widgets.designVersion() >= DESIGNED_WIDGET_CAPABILITY);
+    const planned = plan(theme, art, targets, await widgets.designVersion() >= DESIGNED_WIDGET_CAPABILITY);
     const lib: WidgetArtIndex = { v: 1, pieces: current.pieces };
     const todo = piecesToCompose(lib, planned);
     // 3. Compose the missing pieces, one at a time.
     const ready: string[] = [];
-    let failed = 0;
+    let failed = art.missing ?? 0;
     let composeSupported = true;
     for (const piece of todo) {
       if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
@@ -134,7 +137,7 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
       else failed++;
       await pause();
     }
-    if (!composeSupported) failed += todo.length - ready.length - failed;
+    if (!composeSupported) failed += todo.length - ready.length;
     if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
     // 4. The one index write; the bridge prunes unlisted files, then reloads every timeline.
     const res = await widgets.commitThemeArt(theme.id, planned, ready);
@@ -145,12 +148,13 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
   }
 }
 
-function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTargets, supportsDesign: boolean): PlannedThemePiece[] {
+function plan(theme: Theme, source: ThemeArt, targets: CountdownArtTargets, supportsDesign: boolean): PlannedThemePiece[] {
   const device = seamlessDeviceHere();
   const tr = t as unknown as (k: string, p?: Record<string, unknown>) => string;
   const sizeLabel = (s: HomeOptionSize) =>
     s === 'small' ? t('ui.seamless.sizes.small') : s === 'medium' ? t('ui.seamless.sizes.medium') : t('ui.seamless.sizes.large');
   const designed = supportsDesign ? plannedDesignedWidgets(theme, (kind, size) => `${t(`ui.designedWidgets.${kind}`)} · ${sizeLabel(size)}`) : [];
+  const { options } = source;
   const art = planThemePieces({
     themeId: theme.id,
     themeName: theme.name,
@@ -170,45 +174,40 @@ function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTarget
       const p = liveArtPlan(theme.id, option, { targets });
       if (!p) return null;
       const px = widgetSizePx(device, size);
-      return liveArtSpec(p, { w: option.width, h: option.height }, px, option.background === 'wallpaper' ? 'fit' : 'bleed', {
+      return liveArtSpec(p, { w: option.width, h: option.height }, px, option.background === 'wallpaper' && source.hasWallpaper ? 'fit' : 'bleed', {
         bg: theme.palette.bg,
         ink: theme.palette.ink,
       });
     },
   });
-  return [...designed, ...art.map(p => ({ ...p, slot: p.slot + (supportsDesign ? 3 : 0) }))];
+  return [...designed, ...art.map(piece => ({
+    ...piece,
+    slot: piece.slot + (supportsDesign ? 3 : 0),
+    ...(source.artworkRevision ? { artRevision: source.artworkRevision + ':' + source.sources.get(piece.optionId)?.option.image } : {}),
+  }))];
 }
 
 /** Every widget option of the theme with its art source (same lists as ThemeWidgetArt). */
 async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<ThemeArt> {
   const empty: ThemeArt = { options: [], sources: new Map(), wallpaper: async () => null, wallpaperPx: { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height } };
+  if (isRemoteArtTheme(theme)) {
+    const downloaded = await remoteWidgetArtOnDevice(theme);
+    const options = withLiveArt(theme.id, downloaded.options.map(item => item.option), { targets });
+    const sources = new Map(options.map((option, i) => [option.id, { option, uri: downloaded.options[i].uri }]));
+    const pack = getPackState().remoteArt[theme.id];
+    const wall = pack ? pickWallpaper(pack, Number.MAX_SAFE_INTEGER) : null;
+    const wallUri = remoteArtFileUri(theme.id, wall?.path);
+    return {
+      options,
+      sources,
+      wallpaper: () => existingLocalFile(wallUri),
+      wallpaperPx: wall ? { w: wall.width, h: wall.height } : empty.wallpaperPx,
+      missing: downloaded.missing,
+      hasWallpaper: !!wallUri,
+      artworkRevision: 'widget-art-v1:' + (wall?.path ?? ''),
+    };
+  }
   try {
-    if (isRemoteArtTheme(theme)) {
-      // A downloaded remote pack: its v2 `widgets` list (or the options derived from v1).
-      await loadPackIndex();
-      if (!getPackState().index.packs.some((p) => p.id === theme.id)) return empty;
-      const local = await remoteArtOnDevice(theme.id);
-      if (!local) return empty;
-      const raw = withSeamlessHeroes(local.widgets ?? [], local.assets);
-      const live = withLiveArt(theme.id, raw, { targets });
-      const sources = new Map<string, Source>();
-      const options: WidgetOption[] = [];
-      live.forEach((option) => {
-        const uri = remoteArtFileUri(theme.id, option.image);
-        if (!uri) return;
-        options.push(option);
-        sources.set(option.id, { option, uri });
-      });
-      const files = remoteArtFiles(local);
-      const wallUri = remoteArtFileUri(theme.id, files.wallpaper);
-      const wall = pickWallpaper(local, Number.MAX_SAFE_INTEGER);
-      return {
-        options,
-        sources,
-        wallpaper: () => existingLocalFile(wallUri),
-        wallpaperPx: wall ? { w: wall.width, h: wall.height } : empty.wallpaperPx,
-      };
-    }
     if (isArtPackTheme(theme)) {
       // A bundled art pack: its hero pieces, as a v1 pack would list them.
       const artId = theme.artPack.id;
@@ -237,6 +236,7 @@ async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<The
           return wall;
         },
         wallpaperPx: empty.wallpaperPx,
+        hasWallpaper: true,
       };
     }
   } catch {
@@ -256,15 +256,15 @@ async function composeOne(theme: Theme, art: ThemeArt, piece: PlannedThemePiece)
   if (!artUri) return 'failed';
   const device = seamlessDeviceHere();
   let res: WidgetsResult;
-  if (src.option.background === 'wallpaper') {
-    const wallpaperUri = await art.wallpaper();
-    if (!wallpaperUri) return 'failed';
+  const wallpaperUri = src.option.background === 'wallpaper' ? await art.wallpaper() : null;
+  const skipIfPresent = !piece.artRevision;
+  if (wallpaperUri) {
     const crop = seamlessCrop({ device, wallpaper: art.wallpaperPx, size: piece.size, slot: normaliseSlot(piece.size, null), nudge: { dx: 0, dy: 0 } });
-    res = await widgets.composeArtPiece({ id: piece.id, kind: 'seamless', wallpaperUri, cropPx: crop.cropPx, heroUri: artUri });
+    res = await widgets.composeArtPiece({ id: piece.id, kind: 'seamless', wallpaperUri, cropPx: crop.cropPx, heroUri: artUri, skipIfPresent });
   } else {
     const px = widgetSizePx(device, piece.size);
     const preserveArtwork = src.option.numberFree === true && !!src.option.liveFrame && (src.option.kind === 'clock' && !!src.option.liveFrame.clockStyle || !!src.option.liveFrame.valueStyle);
-    res = await widgets.composeArtPiece({ id: piece.id, kind: 'art', artUri, widthPx: px.w, heightPx: px.h, colour: theme.palette.bg, preserveArtwork });
+    res = await widgets.composeArtPiece({ id: piece.id, kind: 'art', artUri, widthPx: px.w, heightPx: px.h, colour: theme.palette.bg, preserveArtwork, skipIfPresent });
   }
   if (!res.available && res.reason === 'not-built') return 'not-built';
   return res.ok ? 'ok' : 'failed';

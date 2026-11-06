@@ -17,6 +17,7 @@ import { DESIGNED_WIDGET_CAPABILITY } from '../core/designedWidgets';
 import { themeArtResumePlan } from '../core/themeArtResume';
 import type { Theme } from '../core/themes';
 import { averageColour } from '../core/wallpaper';
+import { refreshCatalog } from '../native/packs';
 import { widgets as nativeWidgets } from '../native/widgets';
 import { registerDeferred, requestDeferred } from './deferredWork';
 import { applyThemeIcons, loadStudio } from './studio';
@@ -94,6 +95,10 @@ async function themeArtStep(): Promise<void> {
     let found: Theme | null = null;
     try {
       found = await findAnyThemeById(id);
+      if (!found && id) {
+        await refreshCatalog(false);
+        found = await findAnyThemeById(id);
+      }
     } catch {
       found = null;
     }

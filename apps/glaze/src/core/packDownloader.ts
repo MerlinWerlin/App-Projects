@@ -21,6 +21,8 @@ import {
   type PackCacheEntry,
 } from './themePack.ts';
 import type { Theme } from './themes.ts';
+import { isArtPackId } from './artPack.ts';
+import { remoteWidgetArtOptions, type RemoteWidgetArtRef } from './remoteWidgetArt.ts';
 import {
   CATALOG_FILE,
   CATALOG_MAX_BYTES,
@@ -465,6 +467,51 @@ export async function downloadClockCompanion(transport: Transport, baseUrl: stri
     await transport.writeAppend(index, utf8Encode(JSON.stringify({ v: 1, id, asset })));
   }
   return `${local}/${asset.path}`;
+}
+
+export type RemoteWidgetArtDownload = {
+  manifest: RemoteArtManifest;
+  /** Verified files, relative to the pack store. Missing files are omitted. */
+  files: Map<string, string>;
+  missing: number;
+};
+
+/** Fetch only widget art referenced by the pack, sharing the ordinary size/SHA and resume checks. */
+export async function downloadRemoteWidgetArt(
+  transport: Transport,
+  baseUrl: string,
+  ref: RemoteWidgetArtRef,
+): Promise<RemoteWidgetArtDownload> {
+  const base = resolvePackBaseUrl(baseUrl);
+  const { id, packVersion, release } = ref;
+  if (!base) throw new PackError('disabled', 'packs are disabled');
+  if (!isArtPackId(id) || !Number.isSafeInteger(packVersion) || packVersion < 1) {
+    throw new PackError('manifest', 'invalid widget art pack reference');
+  }
+  const host = packReleaseBase(base, release);
+  const folder = packFolder(id, packVersion);
+  const local = 'widget-art-assets/' + id + '/v' + packVersion;
+  const index = localPath(local, REMOTE_ART_MANIFEST);
+  const cached = await transport.readFile(index);
+  let manifest = cached ? parseManifestText(utf8Decode(cached), id) : null;
+  if (manifest?.packVersion !== packVersion) {
+    manifest = await fetchRemoteArtManifest(transport, host, id, packVersion);
+    await transport.remove(index);
+    await transport.writeAppend(index, utf8Encode(JSON.stringify(manifest)));
+  }
+  const paths = new Set(remoteWidgetArtOptions(manifest).map(option => option.image));
+  const files = new Map<string, string>();
+  const urlFor = (path: string) => packObjectUrl(host, localPath(folder, path));
+  for (const asset of manifest.assets) {
+    if (!paths.has(asset.path)) continue;
+    try {
+      await fetchAndVerifyAssets({ transport, localDir: local, assets: [asset], urlFor, retries: 1 });
+      files.set(asset.path, localPath(local, asset.path));
+    } catch {
+      // Keep verified siblings available while the missing or interrupted file waits for a retry.
+    }
+  }
+  return { manifest, files, missing: paths.size - files.size };
 }
 
 /** The on-phone manifest: the remote one cut down to the files this phone downloaded. */

@@ -71,7 +71,7 @@ test('the legacy bridge continues supporting existing placed widgets', () => {
 test('no crop of art: JS previews contain; Swift widget pins both layers; the bridge fits (min scale)', () => {
   const menu = read('src', 'ui', 'WidgetArtMenu.tsx');
   // T251: the art is drawn by BlendedArt (contain / SVG meet: whole, never cropped).
-  assert.match(menu, /<BlendedArt source=\{source\} rect=\{place\.rect\} blend=\{blend\} \/>/);
+  assert.match(menu, /<BlendedArt source=\{source\} rect=\{place\.rect\} blend=\{blend\} assetPath=\{option\.image\} \/>/);
   const blended = read('src', 'ui', 'BlendedArt.tsx');
   assert.match(blended, /contentFit="contain"/);
   assert.match(blended, /preserveAspectRatio="xMidYMid meet"/);

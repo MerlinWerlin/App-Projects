@@ -1,13 +1,14 @@
-import { useEffect, useMemo, useSyncExternalStore } from 'react';
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, HERO_SIZES, isArtPackTheme } from '../core/artPack';
-import { isReplacedArtEdition } from '../core/designedWidgets';
 import { withLiveArt } from '../core/liveArt';
 import { isRemoteArtTheme } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop } from '../core/seamlessWidget';
 import type { Theme } from '../core/themes';
 import { shelfOptions, widgetOptionsFromV1, type HomeOptionSize } from '../core/widgetOptions';
 import { useT } from '../i18n';
+import { remoteWidgetArtOnDevice, type RemoteWidgetArtLocal } from '../native/packs';
 import { useRemoteArtTheme } from '../native/useRemoteCatalog';
 import { countdownArtTargetsNow, loadCountdownArtTargets, subscribeCountdownArtTargets } from '../store/countdownArtTargets';
 import { fontScaleCap, spaceV2, textV2 } from '../theme/tokensV2';
@@ -29,12 +30,24 @@ export function ThemeWidgetArt({ theme, size, width, style }: Props) {
   useEffect(() => { void loadCountdownArtTargets(); }, []);
   const remoteTheme = isRemoteArtTheme(theme);
   const remote = useRemoteArtTheme(remoteTheme ? theme.id : null);
+  const [loaded, setLoaded] = useState<{ id: string; art: RemoteWidgetArtLocal | null } | null>(null);
+  const latest = remote.theme ?? theme;
+  useFocusEffect(useCallback(() => {
+    if (!remoteTheme) return;
+    let focused = true;
+    remoteWidgetArtOnDevice(latest).then(
+      art => { if (focused) setLoaded({ id: theme.id, art }); },
+      () => { if (focused) setLoaded({ id: theme.id, art: null }); },
+    );
+    return () => { focused = false; };
+  }, [latest, remoteTheme, theme.id]));
+  const verified = loaded?.id === theme.id ? loaded.art : null;
   const artId = isArtPackTheme(theme) ? theme.artPack.id : null;
   const options = useMemo<readonly MenuOption[]>(() => {
     if (remoteTheme) {
-      const live = withLiveArt(theme.id, remote.widgetOptions.map(item => item.option), { targets });
-      return remote.widgetOptions.map((item, i) => ({ option: live[i], source: { uri: item.uri } }))
-        .filter(item => !isReplacedArtEdition(item.option));
+      const options = verified?.options ?? remote.widgetOptions;
+      const live = withLiveArt(theme.id, options.map(item => item.option), { targets });
+      return options.map((item, i) => ({ option: live[i], source: { uri: item.uri } }));
     }
     if (!artId) return [];
     const sources = new Map<string, number>();
@@ -49,7 +62,7 @@ export function ThemeWidgetArt({ theme, size, width, style }: Props) {
       const source = sources.get(option.image);
       return source === undefined ? [] : [{ option, source }];
     });
-  }, [remoteTheme, remote.widgetOptions, artId, theme.id, targets]);
+  }, [remoteTheme, remote.widgetOptions, verified, artId, theme.id, targets]);
 
   const wallpaper = remote.wallpaperUri ? { uri: remote.wallpaperUri } : artId ? artPackWallpaper(artId) : null;
   const wallpaperPx = remote.wallpaperPx ?? { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height };
@@ -65,18 +78,19 @@ export function ThemeWidgetArt({ theme, size, width, style }: Props) {
       <DesignedThemeWidgets theme={theme} size={size} width={width} />
       <WidgetArtMenu options={options} size={size} width={width} themeColour={theme.palette.bg}
         wallpaper={menuWallpaper} themeId={theme.id} artTransparent={!remoteTheme} />
-      {wallpaper && seamless ? (
+      {seamless ? (
         <View style={styles.stack}>
           <SectionHeader title={t('ui.seamless.title')} flushTop />
           <SeamlessWidgetPreview wallpaper={wallpaper} wallpaperPx={wallpaperPx}
+            fallbackWallpaper={(width, height) => <View style={{ width, height, backgroundColor: theme.palette.bg }} />}
             hero={seamless.source} heroPx={{ w: seamless.option.width, h: seamless.option.height }}
             size={size} slot={slot} nudge={{ dx: 0, dy: 0 }} device={device} width={Math.min(width, 220)}
             style={styles.seamless} accessibilityLabel={t('ui.seamless.title')} />
         </View>
       ) : null}
-      {remoteTheme && options.length === 0 ? (
+      {remoteTheme && (loaded?.id !== theme.id || !verified || verified.missing > 0) ? (
         <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[textV2.footnote, { color: c.inkSecondary }]}>
-          {t('tabs.widgetsTab.art.download')}
+          {loaded?.id !== theme.id ? t('common.loading') : t('theme.remote.offline')}
         </Text>
       ) : null}
     </View>

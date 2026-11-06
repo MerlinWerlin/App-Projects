@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**6 November 2026 TestFlight widget art fix: `1.0.10`.** Fetches verified widget art independently of the wallpaper pack and preserves Copper Eclipse’s moon texture.
+
 **6 November 2026 TestFlight widget and theme fix: `1.0.9`.** Restores automatic Seamless and art widget setup, orders theme selections and adds the three theme actions.
 
 **6 November 2026 TestFlight clock delivery fix: `1.0.8`.** Download and verify a selected clock face independently of the wallpaper pack. The Widgets screen previews Clock, Battery and Calendar. The theme selects the Home Screen designs.

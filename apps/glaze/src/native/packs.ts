@@ -17,6 +17,8 @@
 // (src/core/packUpdates.ts). The index records each pack's packVersion (older entries back-filled).
 // Only files under documentDirectory/packs/<id>/ are replaced: widget art and wallpapers already
 // applied were copied into the App Group / Photos, so they keep working.
+import { localWidgetArtOptions, remoteWidgetArtOptions, type LocalWidgetOption } from '../core/remoteWidgetArt';
+import { isRemoteArtTheme } from '../core/remoteCatalog';
 import Constants from 'expo-constants';
 import { Dimensions, PixelRatio, Platform } from 'react-native';
 import { buildFrom } from '../core/feedback';
@@ -27,6 +29,7 @@ import {
   PackError,
   downloadPack,
   downloadClockCompanion,
+  downloadRemoteWidgetArt,
   downloadRemoteArtPack,
   fetchCatalogConditional,
   loadPackContent,
@@ -581,6 +584,37 @@ function screenLongEdgePx(): number {
 /** file:// URI of a file in a downloaded remote art pack. */
 export function remoteArtFileUri(id: string, path: string | null | undefined): string | null {
   return ROOT && path ? `${ROOT}${id}/${path}` : null;
+}
+
+export type RemoteWidgetArtLocal = { options: LocalWidgetOption[]; missing: number };
+const widgetArtJobs = new Map<string, Promise<RemoteWidgetArtLocal>>();
+
+/** Installed packs are a cache hit. Other themes fetch just the artwork referenced by the manifest. */
+export async function remoteWidgetArtOnDevice(theme: Theme): Promise<RemoteWidgetArtLocal> {
+  if (!ROOT || !PACKS_ENABLED || !isRemoteArtTheme(theme)) return { options: [], missing: 0 };
+  const ref = catalogPack(theme.id) ?? { id: theme.id, ...theme.remoteArt };
+  const key = [ref.id, ref.packVersion, ref.release ?? ''].join(':');
+  const running = widgetArtJobs.get(key);
+  if (running) return running;
+  const task = (async () => {
+    try {
+      const installed = await remoteArtOnDevice(ref.id);
+      if (installed && installed.packVersion >= ref.packVersion) {
+        const options = localWidgetArtOptions(remoteWidgetArtOptions(installed), path => remoteArtFileUri(ref.id, path));
+        return { options, missing: 0 };
+      }
+      const art = await downloadRemoteWidgetArt(deviceTransport, PACK_BASE, ref);
+      const options = localWidgetArtOptions(remoteWidgetArtOptions(art.manifest), path => {
+        const file = art.files.get(path);
+        return file ? uri(file) : null;
+      });
+      return { options, missing: art.missing };
+    } finally {
+      widgetArtJobs.delete(key);
+    }
+  })();
+  widgetArtJobs.set(key, task);
+  return task;
 }
 
 export function packClockArtworkUri(id: string, manifest = state.remoteArt[id]): string | null {

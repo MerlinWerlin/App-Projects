@@ -72,7 +72,7 @@ test('bridge setWidgetArt: full bleed, no 6 % inset, no veil, edges extended, ra
   // T251 (owner-1101h #2): the blurred extended edges read as a light-grey frame: gone. The art is
   // blended (keyed / feathered) and drawn on the theme colour.
   assert.doesNotMatch(code, /clampedToExtent|CIGaussianBlur|CIFilter/);
-  assert.match(code, /let art = GlazeArtBlend\.blended\(loaded\)/);
+  assert.match(code, /let art = GlazeArtBlend\.blended\(loaded, assetUri: artUri\)/);
   assert.match(code, /art\.draw\(in: artRect\)/);
   assert.match(code, /"seamless-\\\(family\)-art\.png"/);
   assert.match(code, /downscale\(art, maxEdge: 1200\)\.pngData\(\)/);
@@ -81,7 +81,7 @@ test('bridge setWidgetArt: full bleed, no 6 % inset, no veil, edges extended, ra
   const setSeam = bridge.slice(bridge.indexOf('AsyncFunction("setSeamless")'), bridge.indexOf('AsyncFunction("setWidgetArt")')) +
     bridge.slice(bridge.indexOf('private static func composeSeamlessImage('), bridge.indexOf('private static func composeArtImage('));
   assert.match(setSeam, /\* 0\.06/);
-  assert.match(setSeam, /GlazeArtBlend\.blended\(\$0\)/);
+  assert.match(setSeam, /GlazeArtBlend\.blended\(\$0, assetUri: heroUri\)/);
   assert.match(setSeam, /let heroURL = container\.appendingPathComponent\("seamless-\\\(family\)-art\.png"\)/);
   assert.match(setSeam, /removeItem\(at: heroURL\)/);
 });

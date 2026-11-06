@@ -97,8 +97,11 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
 
 /** The planned pieces that still need an image (not in the index yet), in plan order. */
 export function piecesToCompose(lib: WidgetArtIndex, planned: readonly PlannedThemePiece[]): PlannedThemePiece[] {
-  const have = new Set(lib.pieces.map((p) => p.id));
-  return planned.filter((p) => !have.has(p.id));
+  const have = new Map(lib.pieces.map(piece => [piece.id, piece]));
+  return planned.filter(piece => {
+    const previous = have.get(piece.id);
+    return !previous || previous.artRevision !== piece.artRevision;
+  });
 }
 
 /**
@@ -123,7 +126,10 @@ export function commitThemeArt(
   const kept: WidgetArtPiece[] = [];
   planned.forEach((p, i) => {
     const prev = byId.get(p.id);
-    if (!prev && !readySet.has(p.id)) return; // its image could not be made: left out (file pruned)
+    if (!readySet.has(p.id)) {
+      if (!prev) return; // New piece with no verified image yet.
+      if (prev.artRevision !== p.artRevision) { kept.push(prev); return; }
+    }
     const { optionId: _optionId, ...rest } = p;
     kept.push({ ...rest, file: pieceFileName(p.id), created: prev ? prev.created : now - i });
   });

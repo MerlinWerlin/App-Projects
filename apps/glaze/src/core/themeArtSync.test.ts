@@ -119,6 +119,28 @@ test('automatic setup keeps every fitted art edition and defaults Seamless to it
   assert.equal(resolveWidgetPiece(result, 'p-1', 'small'), 'p-1');
 });
 
+test('a personal piece cannot evict the active theme’s automatically prepared art', () => {
+  const active = Array.from({ length: 45 }, (_, i) => opt('piece-' + i, ['small']));
+  const planned = planThemePieces({ themeId: 'alpine', themeName: 'Alpine', options: active, name: o => o.id, cap: active.length });
+  const lib = commitThemeArt(emptyLibrary(), 'alpine', planned, planned.map(p => p.id), 1000).lib;
+  const added = addPiece(lib, photo('p-1', 2000));
+  assert.equal(added.lib.pieces.length, 46);
+  assert.deepEqual(added.evicted, []);
+});
+
+test('a changed art revision replaces the image under its stable widget id after success', () => {
+  const planned = plan('alpine', [opt('moon', ['small'])]);
+  const id = planned[0].id;
+  const old = commitThemeArt(emptyLibrary(), 'alpine', planned, [id], 1000).lib;
+  const updated = [{ ...planned[0], artRevision: 'new-compositor' }];
+  assert.equal(piecesToCompose(old, updated).length, 1);
+  assert.equal(commitThemeArt(old, 'alpine', updated, [], 2000).lib.pieces[0].artRevision, undefined);
+  const next = commitThemeArt(old, 'alpine', updated, [id], 2000).lib;
+  assert.equal(next.pieces[0].id, id);
+  assert.equal(parseLibrary(serializeLibrary(next)).pieces[0].artRevision, 'new-compositor');
+  assert.equal(piecesToCompose(next, updated).length, 0);
+});
+
 test('replace previous: the old theme\'s auto pieces go (retired with size + slot), own photos stay', () => {
   const first = apply(addPiece(emptyLibrary(), photo('p-1', 5)).lib, 'alpine', A, 1000).lib;
   const r = apply(first, 'firefly', B, 2000);

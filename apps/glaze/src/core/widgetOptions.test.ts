@@ -448,15 +448,16 @@ test('widget previews and automatic setup use the same bundled and downloaded ar
   assert.match(art, /useRemoteArtTheme\(/);
   assert.match(art, /widgetOptionsFromV1\(/);
   assert.match(sync, /widgetOptionsFromV1\(/);
-  assert.match(sync, /withSeamlessHeroes\(local\.widgets/);
-  assert.match(remote, /withSeamlessHeroes\(local\.widgets/);
+  assert.match(sync, /remoteWidgetArtOnDevice\(theme\)/);
+  assert.match(art, /remoteWidgetArtOnDevice\(latest\)/);
+  assert.match(remote, /localWidgetArtOptions\(remoteWidgetArtOptions\(local\)/);
 });
 
 test('menu previews fit the art (never crop): placeArt / fullBleedArt rectangle + contain; T251 no blurred copy', () => {
   const menu = read('src', 'ui', 'WidgetArtMenu.tsx');
   assert.match(menu, /placeArt\(/); // over the wallpaper crop (inset hero, like setSeamless)
   assert.match(menu, /fullBleedArt\(/); // no wallpaper: theme colour, full bleed (like setWidgetArt)
-  assert.match(menu, /<BlendedArt source=\{source\} rect=\{place\.rect\} blend=\{blend\} \/>/);
+  assert.match(menu, /<BlendedArt source=\{source\} rect=\{place\.rect\} blend=\{blend\} assetPath=\{option\.image\} \/>/);
   assert.equal((menu.match(/contentFit="cover"/g) ?? []).length, 0);
   assert.doesNotMatch(menu, /strips\.map\(|styles\.strip|blurRadius/);
   assert.doesNotMatch(menu, /accessibilityState=\{\{ selected \}\}/);
