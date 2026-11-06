@@ -1,0 +1,3 @@
+# Linework "Hold it over the paper" screenshot (00-scan)
+
+First App Store screenshot added for 1.0.1 (6 Nov 2026, owner request): the phone held above a sheet of paper with a pencil tracing the rose underneath, so people see straight away how Linework is used. No hands, per the 24 Oct owner rule. `scan.html` is the source; `screen.png` is the phone screen cropped from `jpg/a/01-trace.jpg`. Render with headless Chrome at 1320x2868 (replace ROSE with the inner paths of `assets/templates/rose-bloom.svg`), save as `jpg/a/00-scan.jpg`, and scale/crop to 1284x2778 for `jpg/a-6.5/`. Written by Claude; serves the APPS roadmap Linework release row.
