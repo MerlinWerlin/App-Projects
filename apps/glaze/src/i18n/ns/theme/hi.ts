@@ -103,9 +103,10 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
     inUseNote: 'आपके आइकन, विजेट और वॉलपेपर इस थीम के साथ चलते हैं।',
     doneA11y: '{name} अब हर टैब में आपकी थीम है',
     error: 'इस थीम पर नहीं बदल सके। कृपया फिर से कोशिश करें।',
-    themeAndIcons: "थीम इस्तेमाल करें और आइकन जोड़ें",
-    iconsOnly: "सिर्फ़ आइकन जोड़ें",
+    useEverything: "सब कुछ इस्तेमाल करें",
+    viewIcons: "इस थीम के आइकन देखें",
     viewWidgets: "इस थीम के विजेट देखें",
+    addWallpaper: "वॉलपेपर जोड़ें",
   },
   parts: {
     title: 'सेट अप करें',

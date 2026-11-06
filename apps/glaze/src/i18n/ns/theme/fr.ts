@@ -103,9 +103,10 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
     inUseNote: 'Vos icônes, widgets et fond d’écran suivent ce thème.',
     doneA11y: '{name} est maintenant votre thème dans chaque onglet',
     error: 'Impossible de passer à ce thème. Réessayez.',
-    themeAndIcons: "Utiliser le thème et ajouter les icônes",
-    iconsOnly: "Ajouter les icônes uniquement",
-    viewWidgets: "Voir les widgets de ce thème",
+    useEverything: "Tout utiliser",
+    viewIcons: "Voir les icônes avec ce thème",
+    viewWidgets: "Voir les widgets avec ce thème",
+    addWallpaper: "Ajouter le fond d’écran",
   },
   parts: {
     title: 'Mise en place',

@@ -1,5 +1,7 @@
 import XCTest
 import Darwin
+import UIKit
+import Vision
 
 @MainActor final class GlazeDesignedWidgetUITests: XCTestCase {
   private func reveal(_ element: XCUIElement, in app: XCUIApplication) {
@@ -81,6 +83,7 @@ import Darwin
     let result = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Alpine Starlight")).firstMatch
     XCTAssertTrue(result.waitForExistence(timeout: 25), app.debugDescription)
     result.tap()
+    if app.buttons["Use everything"].firstMatch.waitForExistence(timeout: 3) { return app }
 
     let part = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
     if !part.waitForExistence(timeout: 4) {
@@ -130,6 +133,85 @@ import Darwin
     print("GLAZE_THEME_GALLERY_INSTALLED\n" + spring.debugDescription); fflush(stdout)
   }
 
+  func testAlpineSmallEditWidgetArt() throws {
+    continueAfterFailure = false
+    let app = try openAlpine()
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    defer {
+      capture("alpine-art-final")
+      print("GLAZE_ART_APP_TREE\n" + app.debugDescription)
+      print("GLAZE_ART_SPRINGBOARD_TREE\n" + spring.debugDescription)
+    }
+
+    let action = app.buttons.matching(NSPredicate(format: "label == %@ OR label == %@", "Use everything", "Use theme + add icons")).firstMatch
+    if !action.waitForExistence(timeout: 3) {
+      let use = app.buttons.matching(NSPredicate(format: "label == %@ OR label BEGINSWITH %@", "Use this theme", "In use")).firstMatch
+      reveal(use, in: app)
+      use.tap()
+    }
+    XCTAssertTrue(action.waitForExistence(timeout: 8), app.debugDescription)
+    action.tap()
+    // Wait for the explicit action to finish. No extra delay for widget art before going home.
+    let installed = app.navigationBars["Install icons"].firstMatch
+    for _ in 0..<55 {
+      if installed.exists { break }
+      for alert in [app.alerts.firstMatch, spring.alerts.firstMatch] where alert.exists {
+        let allow = alert.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@", "Allow")).firstMatch
+        if allow.exists { allow.tap() }
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    XCTAssertTrue(installed.exists, app.debugDescription)
+    capture("alpine-after-theme-apply")
+    XCUIDevice.shared.press(.home)
+    try openGallery(spring, fromHomeScreen: true)
+    try installWidget("Seamless", in: spring, maxSwipes: 20)
+    let widgets = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
+    let homeWidget = try XCTUnwrap(widgets.allElementsBoundByIndex.first {
+      $0.isHittable && (110...205).contains($0.frame.width) && (110...215).contains($0.frame.height)
+    }, spring.debugDescription)
+    homeWidget.press(forDuration: 1.4)
+    let edit = spring.buttons["Edit Widget"].firstMatch
+    XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription)
+    edit.tap()
+    // SpringBoard labels both the static left-hand caption and the actionable right-hand button Art.
+    let art = spring.buttons["Art"].firstMatch
+    XCTAssertTrue(art.waitForExistence(timeout: 12), spring.debugDescription)
+    art.tap()
+    RunLoop.current.run(until: Date().addingTimeInterval(2))
+    capture("alpine-small-art-options")
+    var seen = Set<String>()
+    let names = ["Jupiter polar", "Silver moon", "Spiral galaxy", "Saturn rings", "Copper eclipse"]
+    for attempt in 0..<10 {
+      let visibleText = try screenText()
+      print("GLAZE_ALPINE_ART_SCREEN " + visibleText)
+      for name in names {
+        let item = spring.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
+        if item.exists || visibleText.localizedCaseInsensitiveContains(name) { seen.insert(name) }
+      }
+      if seen.count == names.count { break }
+      // Scroll the picker list, keeping the gesture inside the middle of the sheet.
+      if attempt == 0 && art.exists && art.isHittable && seen.isEmpty { art.tap() }
+      else if !seen.isEmpty {
+        spring.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.61))
+          .press(forDuration: 0.05, thenDragTo: spring.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.42)))
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+    }
+    print("GLAZE_ALPINE_SMALL_ART_SEEN " + seen.sorted().joined(separator: ", ")); fflush(stdout)
+    XCTAssertEqual(seen, Set(names), spring.debugDescription)
+    print("GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED"); fflush(stdout)
+  }
+
+  private func screenText() throws -> String {
+    guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return "" }
+    let request = VNRecognizeTextRequest()
+    request.recognitionLevel = .accurate
+    request.recognitionLanguages = ["en-US"]
+    try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
+    return (request.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: " | ")
+  }
+
   private func capture(_ name: String) {
     let screenshot = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
     screenshot.name = name; screenshot.lifetime = .keepAlways; add(screenshot)
@@ -139,9 +221,13 @@ import Darwin
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
     if !fromHomeScreen { XCUIDevice.shared.press(.home) }
     RunLoop.current.run(until: Date().addingTimeInterval(0.8))
-    // SpringBoard also exposes icons from off-screen pages with zero-sized frames.
-    let visible = spring.icons.allElementsBoundByIndex.filter { $0.frame.width > 35 && $0.isHittable }
-    let icon = try XCTUnwrap(visible.first { $0.label == "Glaze" } ?? visible.first, spring.debugDescription)
+    let icon = spring.icons["Glaze"].firstMatch
+    for _ in 0..<4 {
+      if icon.exists && icon.isHittable { break }
+      spring.swipeLeft()
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    XCTAssertTrue(icon.exists && icon.isHittable, spring.debugDescription)
     icon.press(forDuration: 1.5)
     let editHome = spring.buttons["Edit Home Screen"].firstMatch
     XCTAssertTrue(editHome.waitForExistence(timeout: 10), spring.debugDescription)

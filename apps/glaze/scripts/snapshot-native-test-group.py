@@ -18,6 +18,18 @@ if len(matches)==1:
         source=folder/name
         if source.is_file():
             shutil.copy2(source,out/source.name);report['files'].append(source.name)
+    index=folder/'widget-art/index.json'
+    if index.is_file():
+        library=json.loads(index.read_text())
+        files=[]
+        for p in library.get('pieces',[]):
+            pid=p.get('id')
+            if not isinstance(pid,str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,64}',pid):continue
+            image=folder/'widget-art'/(pid+'.jpg')
+            size=image.stat().st_size if image.is_file() else 0
+            files.append({'id':pid,'size':p.get('size'),'name':p.get('name'),'bytes':size,'offered':not p.get('hiddenFromPicker',False) and not p.get('live',{}).get('design')})
+        report['artIndexTheme']=library.get('currentThemeId')
+        report['artFiles']=files
     prefs=folder/'Library/Preferences/group.com.jared797.glaze.plist'
     if prefs.is_file():
         values=plistlib.loads(prefs.read_bytes())

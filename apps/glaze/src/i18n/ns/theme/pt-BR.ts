@@ -103,9 +103,10 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
     inUseNote: 'Seus ícones, widgets e papel de parede seguem este tema.',
     doneA11y: '{name} agora é seu tema em todas as abas',
     error: 'Não foi possível mudar para este tema. Tente de novo.',
-    themeAndIcons: "Usar tema e adicionar ícones",
-    iconsOnly: "Adicionar apenas ícones",
-    viewWidgets: "Ver os widgets deste tema",
+    useEverything: "Usar tudo",
+    viewIcons: "Ver ícones com este tema",
+    viewWidgets: "Ver widgets com este tema",
+    addWallpaper: "Adicionar o papel de parede",
   },
   parts: {
     title: 'Configurar',

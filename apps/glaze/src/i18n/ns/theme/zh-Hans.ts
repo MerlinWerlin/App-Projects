@@ -103,9 +103,10 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
     inUseNote: '你的图标、小组件和墙纸跟随此主题。',
     doneA11y: '{name} 现在是所有标签页的主题',
     error: '无法切换到此主题，请重试。',
-    themeAndIcons: "使用主题并添加图标",
-    iconsOnly: "仅添加图标",
+    useEverything: "全部使用",
+    viewIcons: "查看此主题的图标",
     viewWidgets: "查看此主题的小组件",
+    addWallpaper: "添加壁纸",
   },
   parts: {
     title: '设置',

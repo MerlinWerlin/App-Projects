@@ -36,6 +36,8 @@ private let artIndexFile = "index.json"
 private let artSourceFiles: Set<String> = ["seamless-small.png", "seamless-medium.png", "seamless-large.png", "widget-photo.jpg"]
 
 public class GlazeWidgetBridgeModule: Module {
+  private var artUpdateTasks = Set<Int>()
+
   public func definition() -> ModuleDefinition {
     Name("GlazeWidgetBridge")
 
@@ -368,13 +370,16 @@ public class GlazeWidgetBridgeModule: Module {
 
     /// T221: { index: widget-art/index.json as stored ("" when missing), dir: file URL of widget-art/
     /// ("" when the container is missing) }. Read-only.
-    AsyncFunction("getWidgetArtLibrary") { () -> [String: String] in
+    AsyncFunction("getWidgetArtLibrary") { () -> [String: Any] in
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
         return ["index": "", "dir": ""]
       }
       let dir = container.appendingPathComponent(artDir, isDirectory: true)
       let raw = (try? String(contentsOf: dir.appendingPathComponent(artIndexFile), encoding: .utf8)) ?? ""
-      return ["index": raw, "dir": dir.absoluteString]
+      let index = (try? JSONSerialization.jsonObject(with: Data(raw.utf8))) as? [String: Any]
+      let ids = GlazeWidgetBridgeModule.artIDs(index)
+      let missing = ids.filter { !FileManager.default.fileExists(atPath: dir.appendingPathComponent("\($0).jpg").path) }
+      return ["index": raw, "dir": dir.absoluteString, "missing": Array(missing)]
     }
 
     /// T221: writes widget-art/index.json (built in JS by src/core/widgetArtLibrary.ts), deletes every
@@ -389,22 +394,29 @@ public class GlazeWidgetBridgeModule: Module {
         let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
       else { return false }
       let dir = container.appendingPathComponent(artDir, isDirectory: true)
+      let indexURL = dir.appendingPathComponent(artIndexFile)
+      let old = (try? Data(contentsOf: indexURL)).flatMap { (try? JSONSerialization.jsonObject(with: $0)) as? [String: Any] }
       do {
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
-        try data.write(to: dir.appendingPathComponent(artIndexFile), options: .atomic)
+        try data.write(to: indexURL, options: .atomic)
       } catch {
         return false
       }
-      var keep = Set<String>([artIndexFile])
-      for p in pieces {
-        if let id = p["id"] as? String, GlazeWidgetBridgeModule.validArtId(id) {
-          keep.insert("\(id).jpg")
-          keep.insert("\(id)-art.png") // T236 raw art for the widget's Fit layout (optional)
+      // Keep a concurrent compose's files until its own index write. Remove retired
+      // files and abandoned drafts old enough that no active compose can be writing them.
+      let keep = Set(pieces.compactMap { $0["id"] as? String })
+      let retired = GlazeWidgetBridgeModule.artIDs(old).subtracting(keep)
+      let properties: [URLResourceKey] = [.contentModificationDateKey]
+      let files = (try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: properties)) ?? []
+      for file in files {
+        let name = file.lastPathComponent
+        let id = name.hasSuffix("-art.png") ? String(name.dropLast(8)) :
+          name.hasSuffix(".jpg") ? String(name.dropLast(4)) : ""
+        guard GlazeWidgetBridgeModule.validArtId(id), !keep.contains(id) else { continue }
+        let modified = (try? file.resourceValues(forKeys: Set(properties)))?.contentModificationDate
+        if retired.contains(id) || (modified?.timeIntervalSinceNow ?? 0) < -86_400 {
+          try? FileManager.default.removeItem(at: file)
         }
-      }
-      let names = (try? FileManager.default.contentsOfDirectory(atPath: dir.path)) ?? []
-      for name in names where !keep.contains(name) {
-        try? FileManager.default.removeItem(at: dir.appendingPathComponent(name))
       }
       // T252 (owner-1101h #3): only now, with the new index on disk and the files it no longer lists
       // gone, tell WidgetKit: drop any cached configuration suggestions, then reload every timeline,
@@ -415,6 +427,20 @@ public class GlazeWidgetBridgeModule: Module {
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
+
+    AsyncFunction("beginWidgetArtUpdate") { () -> Int in
+      var task = UIBackgroundTaskIdentifier.invalid
+      task = UIApplication.shared.beginBackgroundTask(withName: "Prepare Glaze widget art") { [weak self] in
+        self?.endArtUpdate(task)
+      }
+      guard task != .invalid else { return -1 }
+      self.artUpdateTasks.insert(task.rawValue)
+      return task.rawValue
+    }.runOnQueue(.main)
+
+    AsyncFunction("endWidgetArtUpdate") { (token: Int) in
+      self.endArtUpdate(UIBackgroundTaskIdentifier(rawValue: token))
+    }.runOnQueue(.main)
 
     /// T252 (owner-1101h #3): composes one theme art piece straight into the library as
     /// widget-art/<id>.jpg (+ the raw art as <id>-art.png for the Fit layout), the same full-bleed
@@ -622,6 +648,15 @@ public class GlazeWidgetBridgeModule: Module {
     let digits = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex
     guard digits.count == 6, let v = UInt32(digits, radix: 16) else { return UIColor(white: 0.12, alpha: 1) }
     return UIColor(red: CGFloat((v >> 16) & 0xFF) / 255, green: CGFloat((v >> 8) & 0xFF) / 255, blue: CGFloat(v & 0xFF) / 255, alpha: 1)
+  }
+
+  private func endArtUpdate(_ task: UIBackgroundTaskIdentifier) {
+    if artUpdateTasks.remove(task.rawValue) != nil { UIApplication.shared.endBackgroundTask(task) }
+  }
+
+  private static func artIDs(_ index: [String: Any]?) -> Set<String> {
+    let pieces = index?["pieces"] as? [[String: Any]] ?? []
+    return Set(pieces.compactMap { $0["id"] as? String }.filter(validArtId))
   }
 
   /// T131: a local image from a file:// URI or a plain path.

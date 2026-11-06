@@ -103,9 +103,10 @@ export const de: NonNullable<LocaleMessages['theme']> = {
     inUseNote: 'Deine Symbole, Widgets und dein Hintergrund folgen diesem Theme.',
     doneA11y: '{name} ist jetzt dein Theme in jedem Tab',
     error: 'Wechsel zu diesem Theme fehlgeschlagen. Bitte versuch es erneut.',
-    themeAndIcons: "Theme verwenden und Icons hinzufügen",
-    iconsOnly: "Nur Icons hinzufügen",
-    viewWidgets: "Widgets dieses Themes ansehen",
+    useEverything: "Alles verwenden",
+    viewIcons: "Symbole mit diesem Design ansehen",
+    viewWidgets: "Widgets mit diesem Design ansehen",
+    addWallpaper: "Hintergrundbild hinzufügen",
   },
   parts: {
     title: 'Einrichten',

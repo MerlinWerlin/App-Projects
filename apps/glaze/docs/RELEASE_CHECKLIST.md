@@ -7,7 +7,7 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
-**6 November 2026 TestFlight widget recovery: `1.0.11`.** Publishes the selected widget theme before background art work, restores release routing and adds diagnostics in About.
+**7 November 2026 TestFlight widget picker update: `1.0.12`.** Gives the native art picker one entry per picture, makes theme actions explicit, and enlarges completion controls.
 
 **6 November 2026 TestFlight widget and theme fix: `1.0.9`.** Restores automatic Seamless and art widget setup, orders theme selections and adds the three theme actions.
 

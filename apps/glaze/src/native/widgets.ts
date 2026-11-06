@@ -135,6 +135,7 @@ export interface WidgetsAdapter {
    * the timelines; a piece already on disk is kept (skipIfPresent). A build whose bridge predates
    * T252: { available: false, reason: 'not-built' }. Never throws.
    */
+  beginArtUpdate(): Promise<(() => void) | undefined>;
   composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResult>;
   /**
    * T252: the ONE index write of a theme apply (src/core/themeArtSync.ts commitThemeArt): own photos
@@ -240,7 +241,9 @@ type NativeBridge = {
   /** T221: copy an App Group file into widget-art/<id>.jpg. */
   saveWidgetArtPiece?(id: string, from: string): Promise<boolean>;
   /** T221: { index, dir } (read-only). */
-  getWidgetArtLibrary?(): Promise<{ index?: string | null; dir?: string | null } | null>;
+  getWidgetArtLibrary?(): Promise<{ index?: string | null; dir?: string | null; missing?: string[] } | null>;
+  beginWidgetArtUpdate?(): Promise<number>;
+  endWidgetArtUpdate?(token: number): Promise<void>;
   /** T221: write widget-art/index.json, prune unlisted files, reload all timelines. */
   setWidgetArtIndex?(json: string): Promise<boolean>;
   /** T252: compose a theme piece into widget-art/<id>.jpg (no index write, no reload). */
@@ -411,6 +414,16 @@ export const widgets: WidgetsAdapter = {
       const r = migrateLibrary(lib, currentThemeId);
       return r.ran ? r.lib : null;
     }),
+  beginArtUpdate: async () => {
+    try {
+      const { mod } = await artBridge();
+      const token = await mod?.beginWidgetArtUpdate?.();
+      if (typeof token !== 'number' || token < 0) return undefined;
+      return () => { void mod?.endWidgetArtUpdate?.(token).catch(() => undefined); };
+    } catch {
+      return undefined;
+    }
+  },
   composeArtPiece,
   commitThemeArt: (themeId, planned, ready, isCurrent) => editArtIndex(lib =>
     isCurrent?.() === false ? null : commitThemeArt(lib, themeId, planned, ready, Date.now()).lib),
@@ -522,7 +535,9 @@ async function readArtIndex(mod: NativeBridge): Promise<{ lib: WidgetArtIndex; d
   const raw = await mod.getWidgetArtLibrary?.();
   const index = raw && typeof raw.index === 'string' ? raw.index : null;
   const dir = raw && typeof raw.dir === 'string' ? raw.dir : '';
-  return { lib: parseLibrary(index), dir };
+  const lib = parseLibrary(index);
+  const missing = new Set(raw?.missing ?? []);
+  return { lib: { ...lib, pieces: lib.pieces.filter(piece => !missing.has(piece.id)) }, dir };
 }
 
 function addToArtLibrary(piece: Omit<WidgetArtPiece, 'file'>, from: WidgetArtSourceFile): Promise<WidgetsResult> {

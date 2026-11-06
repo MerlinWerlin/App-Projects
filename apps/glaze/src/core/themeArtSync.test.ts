@@ -213,10 +213,12 @@ test('removed-piece fallback: same slot of the current theme, else same size, el
   assert.equal(resolveWidgetPiece(apply(lib, 'plain', [], 4000).lib, f('fern', 'small'), 'small'), null);
 });
 
-test('picker: current theme first (size, slot), then the rest newest first', () => {
+test('picker: one option per picture, with variants resolved by widget size', () => {
   const lib = apply(addPiece(emptyLibrary(), photo('p-1', 99999)).lib, 'alpine', A, 1000).lib;
   const order = pickerPieces(lib).map((x) => x.id);
-  assert.deepEqual(order, [...plan('alpine', A).map((x) => x.id), 'p-1']);
+  const unique = plan('alpine', A).filter((piece, index, all) => all.findIndex(other => other.optionId === piece.optionId) === index);
+  assert.deepEqual(order, [...unique.map(piece => piece.id), 'p-1']);
+  assert.equal(resolveWidgetPiece(lib, themePieceId('alpine', 'moon', 'small'), 'large'), themePieceId('alpine', 'moon', 'large'));
 });
 
 test('replaceThemeArt (the T238 path) also remembers what it removed', () => {
@@ -242,8 +244,8 @@ test('bridge: index written BEFORE reloadAllTimelines; compose functions never r
   const bridge = strip(read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift'));
   const at = bridge.indexOf('AsyncFunction("setWidgetArtIndex")');
   const fn = bridge.slice(at, bridge.indexOf('AsyncFunction(', at + 10) > 0 ? bridge.indexOf('AsyncFunction(', at + 10) : bridge.indexOf('private static func validArtId'));
-  const write = fn.indexOf('try data.write(to: dir.appendingPathComponent(artIndexFile), options: .atomic)');
-  const prune = fn.indexOf('removeItem(at: dir.appendingPathComponent(name))');
+  const write = fn.indexOf('try data.write(to: indexURL, options: .atomic)');
+  const prune = fn.indexOf('removeItem(at: file)');
   const invalidate = fn.indexOf('invalidateConfigurationRecommendations()');
   const reload = fn.indexOf('GlazeWidgetBridgeModule.reloadWidgets()');
   assert.ok(write > 0 && prune > write && invalidate > prune && reload > invalidate, `order write ${write} < prune ${prune} < invalidate ${invalidate} < reload ${reload}`);
@@ -278,7 +280,7 @@ test('extension: the entity query reads the fresh index from disk every time (no
   assert.match(store, /static func snapshot\(\) -> WidgetArtSnapshot \{/);
   assert.match(store, /Data\(contentsOf: dir\.appendingPathComponent\(indexName\)\)/);
   const query = lib.slice(lib.indexOf('struct WidgetArtQuery'), lib.indexOf('struct ChooseWidgetArtIntent'));
-  assert.equal((query.match(/WidgetArtStore\.snapshot\(\)/g) ?? []).length, 2, 'entities(for:) and suggestedEntities() each read the index');
+  assert.equal((query.match(/let snap = snapshot\(\)/g) ?? []).length, 2, 'entities(for:) and suggestedEntities() each read the index');
   assert.match(query, /snap\.resolve\(id, preferSize: nil\)/, 'a removed piece resolves to its replacement');
   assert.match(query, /snap\.pickerRecords\(\)/, 'current theme first');
   // The timeline uses the resolved piece for the widget's own size, read fresh per timeline.
@@ -305,10 +307,9 @@ test('wiring: theme apply calls syncThemeWidgetArt (non-blocking), the store mak
   assert.match(store, /r === 'not-built'/, 'older bridge without compose: the commit still replaces the old theme\'s art');
   assert.match(store, /if \(!current\.available\) return NONE;/, 'Expo Go / Android: nothing runs');
   assert.match(store, /if \(stale\(\)\)/, 'a newer apply supersedes before the index write');
-  // T250 merge: the sync runs inside the deferred 'themeArt' step, never awaited by applyThemeEverywhere.
-  assert.match(apply, /requestDeferred\(DEFERRED_STEPS\.themeArt\)/, 'never blocks the apply');
+  assert.match(apply, /void syncThemeWidgetArt\(theme\)/, 'never blocks the native apply');
   const applyFn = apply.slice(apply.indexOf('export function applyThemeEverywhere('), apply.indexOf('async function themeArtStep('));
-  assert.doesNotMatch(applyFn, /syncThemeWidgetArt\(/, 'not called inline in applyThemeEverywhere');
+  assert.doesNotMatch(applyFn, /await syncThemeWidgetArt\(/, 'the native apply never awaits composition');
   const adapter = strip(read('src', 'native', 'widgets.ts'));
   assert.match(adapter, /typeof mod\.composeWidgetArtPiece !== 'function'/);
   assert.match(adapter, /commitThemeArt\(lib, themeId, planned, ready, Date\.now\(\)\)/);

@@ -46,6 +46,10 @@ struct WidgetArtRecord {
   let size: String?
   /// T252: position among the theme's pieces of the same size, or nil (photos, older records).
   let slot: Int?
+  /// Identifies one picture across its composed size variants.
+  let pictureID: String
+  let offered: Bool
+  let retainedEdition: Bool
 }
 
 /// T252: what a removed auto-added piece was, so its widgets can be remapped.
@@ -73,15 +77,17 @@ struct WidgetArtSnapshot {
   func currentThemeRecords() -> [WidgetArtRecord] {
     guard let current = currentThemeId, !current.isEmpty else { return [] }
     return records
-      .filter { $0.source != "photo" && $0.themeId == current }
+      .filter { $0.source != "photo" && $0.themeId == current && !$0.retainedEdition }
       .sorted(by: WidgetArtStore.shelfOrder)
   }
 
-  /// Edit Widget > Art order: the current theme's pieces first, then the rest newest first.
+  /// AppIntents asks for choices without a family. Return each picture once, then select its
+  /// prepared size when WidgetKit calls the timeline with a family. Existing ids still resolve.
   func pickerRecords() -> [WidgetArtRecord] {
-    let mine = currentThemeRecords()
-    let ids = Set(mine.map { $0.id })
-    return mine + records.filter { !ids.contains($0.id) }
+    let themed = currentThemeRecords()
+    let other = records.filter { $0.source == "photo" || currentThemeId == nil }
+    var seen = Set<String>()
+    return (themed + other).filter { $0.offered && seen.insert($0.pictureID).inserted }
   }
 
   /// The piece a widget configured with `id` shows (mirrors resolveWidgetPiece in TS): `id` while
@@ -90,7 +96,13 @@ struct WidgetArtSnapshot {
   /// choice or nothing to map to (the view then shows the last applied image / theme background).
   func resolve(_ id: String?, preferSize: String?) -> String? {
     guard let id = id, WidgetArtStore.validID(id) else { return nil }
-    if has(id) { return id }
+    if let selected = records.first(where: { $0.id == id }) {
+      if let size = preferSize, selected.size != size,
+         let match = records.first(where: { $0.pictureID == selected.pictureID && $0.size == size }) {
+        return match.id
+      }
+      return id
+    }
     let mine = currentThemeRecords()
     guard let first = mine.first else { return nil }
     let gone = retired[id]
@@ -134,10 +146,12 @@ enum WidgetArtStore {
 
   /// T252: reads index.json from disk NOW (no cache). Tolerant: a missing or broken index is an
   /// empty library; pieces whose file is missing are left out.
-  static func snapshot() -> WidgetArtSnapshot {
+  static func snapshot() -> WidgetArtSnapshot { snapshot(in: directory()) }
+
+  static func snapshot(in directory: URL?) -> WidgetArtSnapshot {
     let none = WidgetArtSnapshot(records: [], currentThemeId: nil, retired: [:])
     guard
-      let dir = directory(),
+      let dir = directory,
       let data = try? Data(contentsOf: dir.appendingPathComponent(indexName)),
       let root = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
       root["v"] as? Int == 1,
@@ -149,6 +163,12 @@ enum WidgetArtStore {
       if out.contains(where: { $0.id == id }) { continue }
       let file = "\(id).jpg"
       guard FileManager.default.fileExists(atPath: dir.appendingPathComponent(file).path) else { continue }
+      let size = sizeName(p["size"])
+      let themed = p["source"] as? String != "photo"
+      let suffix = size.map { "-" + $0 } ?? ""
+      let legacyPicture = themed && id.hasPrefix("t-") && !suffix.isEmpty && id.hasSuffix(suffix)
+        ? String(id.dropLast(suffix.count)) : id
+      let live = p["live"] as? [String: Any]
       out.append(
         WidgetArtRecord(
           id: id,
@@ -158,8 +178,11 @@ enum WidgetArtStore {
           created: (p["created"] as? NSNumber)?.doubleValue ?? 0,
           source: (p["source"] as? String) == "photo" ? "photo" : "theme",
           themeId: p["themeId"] as? String,
-          size: sizeName(p["size"]),
-          slot: slotNumber(p["slot"])
+          size: size,
+          slot: slotNumber(p["slot"]),
+          pictureID: (p["pictureId"] as? String).flatMap { validID($0) ? $0 : nil } ?? legacyPicture,
+          offered: p["hiddenFromPicker"] as? Bool != true && live?["design"] == nil,
+          retainedEdition: p["hiddenFromPicker"] as? Bool == true
         )
       )
     }
@@ -316,13 +339,20 @@ struct WidgetArtEntity: AppEntity {
 /// current theme's pieces straight after a swap.
 @available(iOS 17.0, *)
 struct WidgetArtQuery: EntityQuery {
-  init() {}
+  private let reviewDirectory: URL?
+
+  init() { reviewDirectory = nil }
+  init(directory: URL) { reviewDirectory = directory }
+
+  private func snapshot() -> WidgetArtSnapshot {
+    WidgetArtStore.snapshot(in: reviewDirectory ?? WidgetArtStore.directory())
+  }
 
   /// A configured id that is still in the library is itself. One removed by a theme swap or Manage
   /// comes back under its own id (so the widget keeps its configuration) showing the replacement
   /// piece's name; the timeline then draws that replacement (ArtProvider → resolvedID).
   func entities(for identifiers: [WidgetArtEntity.ID]) async throws -> [WidgetArtEntity] {
-    let snap = WidgetArtStore.snapshot()
+    let snap = snapshot()
     return identifiers.compactMap { (id: String) -> WidgetArtEntity? in
       if let hit = snap.records.first(where: { $0.id == id }) { return hit.entity }
       guard let other = snap.resolve(id, preferSize: nil), let rec = snap.records.first(where: { $0.id == other }) else {
@@ -334,7 +364,7 @@ struct WidgetArtQuery: EntityQuery {
 
   /// "My widget art": the current theme's pieces first (size, slot), then the rest newest first.
   func suggestedEntities() async throws -> [WidgetArtEntity] {
-    let snap = WidgetArtStore.snapshot()
+    let snap = snapshot()
     return snap.pickerRecords().map { $0.entity }
   }
 }

@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.11 separates widget theme updates from art downloads, adds widget diagnostics and restores pack release routing.",
+  "note": "Glaze 1.0.12 repairs the native widget art picker, removes duplicate pictures, clarifies theme actions and enlarges the completion controls.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
