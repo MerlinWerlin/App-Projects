@@ -14,7 +14,7 @@ import { widgetOptionSections } from './widgetOptions.ts';
 
 const fixture = (file: string) => readFileSync(new URL('./__fixtures__/alpine-widget-art-v3/' + file, import.meta.url));
 const ref = { id: 'alpine-starlight', packVersion: 3, release: 'glaze-packs-v2' };
-const editionIds = ['copper-eclipse', 'hero-large', 'hero-medium', 'hero-small', 'jupiter-polar', 'saturn-rings', 'silver-moon', 'spiral-galaxy'];
+const editionIds = ['copper-eclipse', 'jupiter-polar', 'saturn-rings', 'silver-moon', 'spiral-galaxy'];
 const sizes = ['small', 'medium', 'large'] as const;
 const editionError = (requests: string[]) =>
   requests.find(url => url.includes('__widget-copper-eclipse.'))?.split('__').at(-1) + ': offline asset';
@@ -156,28 +156,28 @@ test('real Alpine v3 art previews and composes every size with an empty wallpape
     assert.equal(first.ok, false);
     assert.equal(first.failed, 1);
     assert.deepEqual(themeWidgetArtDiagnostics(ref.id), {
-      themeId: ref.id, planned: 24, composed: 21, failed: 0, missing: 3,
+      themeId: ref.id, planned: 15, composed: 12, failed: 0, missing: 3,
       lastError: editionError(requests),
     });
     assert.equal(await pendingThemeWidgetArt(), ref.id);
-    assert.equal(previews.length, 7);
-    assert.equal(composed.filter(p => p.kind === 'art').length, 21);
+    assert.equal(previews.length, 4);
+    assert.equal(composed.filter(p => p.kind === 'art').length, 12);
 
     requests.length = 0;
     moonOffline = false;
     const second = await syncThemeWidgetArt(theme, { yieldBetween: pause });
     assert.equal(second.ok, true);
     assert.deepEqual(themeWidgetArtDiagnostics(ref.id), {
-      themeId: ref.id, planned: 24, composed: 24, failed: 0, missing: 0, lastError: null,
+      themeId: ref.id, planned: 15, composed: 15, failed: 0, missing: 0, lastError: null,
     });
     assert.equal(await pendingThemeWidgetArt(), null);
     assert.equal(requests.length, 1, 'retry requests only the pending file');
     assert.match(requests[0], /__widget-copper-eclipse\./);
-    assert.equal(composed.filter(p => p.kind === 'art').length, 24);
+    assert.equal(composed.filter(p => p.kind === 'art').length, 15);
     for (const size of sizes) {
       const shown = widgetOptionSections(previews.map(item => item.option), size).flatMap(group => group.options.map(o => o.id));
       assert.deepEqual(shown.sort(), editionIds);
-      assert.equal(lib.pieces.filter(p => p.size === size && !p.live?.design).length, 8);
+      assert.equal(lib.pieces.filter(p => p.size === size && !p.live?.design).length, 5);
     }
   } finally {
     hooks.deregister();

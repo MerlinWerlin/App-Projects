@@ -67,7 +67,9 @@ export function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
         if (typeof __DEV__ !== 'undefined' && __DEV__) console.warn('Glaze: theme listener failed', e);
       }
     }
-    if (request === selection) requestDeferred(DEFERRED_STEPS.themeArt);
+    // Start preparing the art before a person can leave for the Home Screen. This path
+    // does not sit behind unrelated launch work and never delays the native theme write.
+    if (request === selection) void syncThemeWidgetArt(theme);
     requestDeferred(DEFERRED_STEPS.installedProbe, 'apply');
     return widgets;
   });
@@ -91,8 +93,8 @@ export function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
  */
 async function themeArtStep(): Promise<void> {
   const request = selection;
-  if (request !== publishedSelection) return;
-  let theme = selectedTheme;
+  if (request !== publishedSelection || selectedTheme) return;
+  let theme: Theme | null = null;
   let fallbackId: string | null = null;
   if (!theme) {
     const id = await loadActiveThemeId();

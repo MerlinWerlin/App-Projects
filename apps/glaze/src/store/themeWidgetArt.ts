@@ -128,12 +128,15 @@ const defaultYield = () => new Promise<void>((resolve) => setTimeout(resolve, 0)
 async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions, signal: AbortSignal): Promise<ThemeArtSyncResult> {
   const stale = () => gen !== generation;
   const pause = opts.yieldBetween ?? defaultYield;
+  let endBackgroundUpdate: (() => void) | undefined;
   try {
     if (stale()) return { ...NONE, available: true, superseded: true };
     diagnostics = { themeId: theme.id, planned: null, composed: 0, failed: 0, missing: 0, lastError: null };
     // 1. Nothing to do without the library bridge (Expo Go, Android, older build): no file work.
     const current = await widgets.artLibrary();
     if (!current.available) return NONE;
+    if (stale()) return { ...NONE, available: true, superseded: true };
+    endBackgroundUpdate = await widgets.beginArtUpdate?.();
     if (stale()) return { ...NONE, available: true, superseded: true };
     await setPending(theme.id);
     // 2. Plan.
@@ -143,7 +146,7 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions, sig
     if (stale()) return { ...NONE, available: true, superseded: true };
     const planned = plan(theme, art, targets, await widgets.designVersion() >= DESIGNED_WIDGET_CAPABILITY);
     const lib: WidgetArtIndex = { v: 1, pieces: current.pieces };
-    const todo = piecesToCompose(lib, planned);
+    const todo = piecesToCompose(lib, planned).sort((a, b) => Number(!!a.live?.design) - Number(!!b.live?.design));
     if (stale()) return { ...NONE, available: true, superseded: true };
     const plannedArt = planned.filter(piece => !piece.live?.design).length;
     const pendingArt = todo.filter(piece => !piece.live?.design).length;
@@ -197,6 +200,8 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions, sig
       diagnostics.lastError = (error instanceof Error ? error.message : String(error)).slice(0, 240);
     }
     return { available: true, ok: false, composed: 0, failed: 0 };
+  } finally {
+    endBackgroundUpdate?.();
   }
 }
 
@@ -213,9 +218,9 @@ function plan(theme: Theme, source: ThemeArt, targets: CountdownArtTargets, supp
     options: options.filter(o => !isReplacedArtEdition(o)),
     includeFittedSizes: true,
     cap: THEME_ART_SIZES.length * options.length,
-    name: (option, size) => {
+    name: option => {
       const n = optionName(option, options);
-      return `${'text' in n ? n.text : tr(n.key, n.params)} · ${sizeLabel(size)}`;
+      return 'text' in n ? n.text : tr(n.key, n.params);
     },
     aspect: (size) => {
       const px = widgetSizePx(device, size);

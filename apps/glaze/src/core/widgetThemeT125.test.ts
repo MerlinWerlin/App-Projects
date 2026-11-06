@@ -169,15 +169,20 @@ test('the app writes the theme on every apply path and once at launch', () => {
 
   const detail = read('app/theme/[id].tsx');
   const save = /const onSaveWallpaper = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(save, /applyWidgetTheme\(theme\)/, 'wallpaper save must apply the widget theme');
+  assert.doesNotMatch(save, /applyWidgetTheme|applyThemeEverywhere/, 'wallpaper-only is isolated');
   const useStyle = /const onUseStyle = async \([^)]*\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(useStyle, /applyWidgetTheme\(theme\)/);
+  assert.doesNotMatch(useStyle, /applyWidgetTheme|applyThemeEverywhere/);
   // T184 / T185: "Use this theme" (the old widgets step is gone) writes the widget theme through
   // applyThemeEverywhere, which remembers it and (T250) queues the App Group write.
-  const putInUse = /const putInUse = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(putInUse, /applyThemeEverywhere\(theme\)/);
+  const putInUse = /const putInUse = async \(checkLock = true\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
+  assert.match(putInUse, /onSaveWallpaper\(\)[\s\S]*applyThemeEverywhere\(theme\)[\s\S]*addThemeIcons\(\)/);
+  const choices = detail.slice(detail.indexOf('<Sheet visible={themeChoiceOpen}'), detail.indexOf('<PlusLockSheet'));
+  assert.match(choices, /use\.viewWidgets[\s\S]*openPart\('widgets', false\)/);
+  assert.match(choices, /use\.viewIcons[\s\S]*openPart\('icons', false\)/);
+  assert.match(choices, /use\.addWallpaper[\s\S]*onAddWallpaper\(\)/);
+  assert.match(choices, /use\.useEverything[\s\S]*putInUse\(\)/);
   assert.match(read('src/store/activeTheme.ts'), /const widgets = await rememberWidgetTheme\(theme\);/);
-  assert.match(read('src/store/activeTheme.ts'), /requestDeferred\(DEFERRED_STEPS\.themeArt\)/);
+  assert.match(read('src/store/activeTheme.ts'), /void syncThemeWidgetArt\(theme\)/);
 
   const maker = read('app/wallpaper.tsx');
   const onSave = /const onSave = async \(\) => \{[^]*?\n {2}\};/.exec(maker)?.[0] ?? '';

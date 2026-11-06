@@ -103,9 +103,10 @@ export const en = {
     inUseNote: 'Your icons, widgets and wallpaper follow this theme.',
     doneA11y: '{name} is now your theme in every tab',
     error: 'Couldn’t switch to this theme. Please try again.',
-    themeAndIcons: "Use theme + add icons",
-    iconsOnly: "Add icons only",
-    viewWidgets: "View this theme’s widgets",
+    useEverything: "Use everything",
+    viewIcons: "View icons with this theme",
+    viewWidgets: "View widgets with this theme",
+    addWallpaper: "Add the wallpaper",
   },
   parts: {
     title: 'Set it up',

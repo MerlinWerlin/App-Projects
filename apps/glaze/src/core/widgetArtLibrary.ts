@@ -59,6 +59,10 @@ export type WidgetArtPiece = {
    * piece in the same slot (resolveWidgetPiece). Absent on photos and older records.
    */
   slot?: number;
+  /** Stable picture identity across size variants, or absent for pre-1.0.12 pieces. */
+  pictureId?: string;
+  /** Kept so existing widget selections still resolve after the art catalogue removes a duplicate. */
+  hiddenFromPicker?: boolean;
 };
 
 /** T252: what a removed auto-added piece was (size + slot), so its widgets can be remapped. */
@@ -149,6 +153,8 @@ function normalisePiece(raw: unknown): WidgetArtPiece | null {
     // T237 (additive): keep a valid live spec, drop a broken one.
     ...liveField(r.live),
     ...(typeof r.artRevision === 'string' ? { artRevision: str(r.artRevision, 240) } : {}),
+    ...(isValidPieceId(r.pictureId) ? { pictureId: r.pictureId } : {}),
+    ...(r.hiddenFromPicker === true ? { hiddenFromPicker: true } : {}),
     // T252 (additive): slot of an auto-added theme piece.
     ...slotField(r.slot),
   };
@@ -453,7 +459,7 @@ export function resolveWidgetPiece(lib: WidgetArtIndex, id: string | null | unde
 
 /** T259: per size, the current theme's first piece (byShelf) of that size, else null. */
 export function unpinnedPlan(lib: WidgetArtIndex): Record<WidgetArtSize, string | null> {
-  const art = currentThemePieces(lib).filter(piece => !piece.live?.design);
+  const art = currentThemePieces(lib).filter(piece => !piece.live?.design && !piece.hiddenFromPicker);
   const first = (size: WidgetArtSize): string | null => {
     const hero = lib.currentThemeId ? themePieceId(lib.currentThemeId, 'hero-' + size, size) : null;
     return (art.find(piece => piece.id === hero) ?? art.find(piece => piece.size === size))?.id ?? null;

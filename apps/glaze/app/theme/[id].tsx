@@ -65,7 +65,6 @@ import { usePackTheme } from '../../src/render/usePackTheme';
 import { tickStoredChecklist } from '../../src/store/applyChecklist';
 import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
 import { DEFERRED_STEPS, requestDeferred } from '../../src/store/deferredWork';
-import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { loadBackground } from '../../src/store/background';
 import { setThemeLook, setThemeShape, studioApps, themeLookFor, themeShapeFor } from '../../src/core/studio';
 import { applyThemeIcons, useStudio } from '../../src/store/studio';
@@ -257,7 +256,7 @@ function ThemeDetail({
   const usePending = useRef(false);
   const themeFocus = useRef(0);
   useFocusEffect(useCallback(() => () => { themeFocus.current++; }, []));
-  const [themeChoiceOpen, setThemeChoiceOpen] = useState(false);
+  const [themeChoiceOpen, setThemeChoiceOpen] = useState(step === 'overview');
   const [useError, setUseError] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>('idle');
   /** T185: this theme's wallpaper was saved to Photos before (badge only; Save again always shows). */
@@ -269,7 +268,7 @@ function ThemeDetail({
   const locked = useLocked(theme.plus);
   const [lockOpen, setLockOpen] = useState(false);
   /** Why the Plus sheet is open: unlocking from Download shouldn't put the theme in use. */
-  const lockFor = useRef<'apply' | 'download' | ThemeStep | 'widgets'>('apply');
+  const lockFor = useRef<'apply' | 'download' | 'add-wallpaper' | 'use-everything' | ThemeStep>('apply');
   const reduced = useMotionReduced();
   // T265: the guided Wallpaper / Icons / Widgets flow that opens after "Use this theme".
   const setup = useThemeSetup(theme.id);
@@ -409,14 +408,21 @@ function ThemeDetail({
    * (Icons tab), the widget theme (Widgets tab + the Home Screen widgets) and the theme in use
    * (wallpaper maker, "In use ✓"). Saving wallpaper and installing icons stay separate screens.
    */
-  const putInUse = async () => {
+  const putInUse = async (checkLock = true) => {
     if (usePending.current) return;
+    if (checkLock && locked) {
+      lockFor.current = 'use-everything';
+      setThemeChoiceOpen(false);
+      setLockOpen(true);
+      return;
+    }
     usePending.current = true;
     const focus = themeFocus.current;
     setThemeChoiceOpen(false);
     setUseBusy(true);
     setUseError(false);
     try {
+      if (!await onSaveWallpaper()) return;
       const res = await applyThemeEverywhere(theme);
       if (!res.icons || !res.widgets) {
         setUseError(true);
@@ -443,13 +449,15 @@ function ThemeDetail({
     setThemeChoiceOpen(false);
     router.push({ pathname: '/install', params: { theme: theme.id } });
   };
-  const onUseTheme = () => {
-    if (locked) {
-      lockFor.current = 'apply';
+  const onUseTheme = () => setThemeChoiceOpen(true);
+  const onAddWallpaper = (checkLock = true) => {
+    setThemeChoiceOpen(false);
+    if (checkLock && locked) {
+      lockFor.current = 'add-wallpaper';
       setLockOpen(true);
       return;
     }
-    setThemeChoiceOpen(true);
+    void onSaveWallpaper();
   };
 
   /** T265: a "Set it up" row opens the guided flow at that step (a locked theme asks for Plus first). */
@@ -465,18 +473,8 @@ function ThemeDetail({
     }
     setup.openAt(part);
   };
-  /** T265: "Install all icons" puts this theme's icons in use if needed, then starts the bulk install. */
   const installFromSetup = () => {
-    setup.leaveFor('icons', () => {
-      const go = () => router.push({ pathname: '/install', params: { auto: '1' } });
-      if (inUse) {
-        go();
-        return;
-      }
-      applyThemeEverywhere(theme)
-        .catch(() => null)
-        .finally(go);
-    });
+    setup.leaveFor('icons', () => router.push({ pathname: '/install', params: { theme: theme.id, auto: '1' } }));
   };
 
   /** T185: the three separate entry points, each its own clean screen. */
@@ -539,7 +537,14 @@ function ThemeDetail({
     // resolved yet is read now; a remote pack whose file is gone reports it (never the drawn fallback).
     // The file is .webp: RN Image.getSize and the offscreen <Image> decode it (iOS 14+, Android), and
     // view-shot captures the cropped view as PNG, so Photos always gets a PNG.
-    const remoteFile = remoteArt && !photo ? (remoteWallpaperUri ?? (await downloadedRemoteWallpaper(remoteArt.id))) : null;
+    let remoteFile = remoteArt && !photo ? (remoteWallpaperUri ?? (await downloadedRemoteWallpaper(remoteArt.id))) : null;
+    if (remoteArt && !photo && !remoteFile && !artPackWallpaperUri(remoteArt.id)) {
+      try {
+        if (await pack.download() === 'ok') remoteFile = await downloadedRemoteWallpaper(remoteArt.id);
+      } catch {
+        // Report the unavailable wallpaper through the existing save result below.
+      }
+    }
     const artPackUri = artPack ? (artPackWallpaperUri(artPack.artPack.id) ?? remoteFile) : null;
     const remoteMissing = !!remoteArt && !photo && !artPackUri;
     const res: { ok: boolean; reason?: string; why?: SaveFailure; message?: string } = remoteMissing
@@ -560,13 +565,13 @@ function ThemeDetail({
       AccessibilityInfo.announceForAccessibility(t('theme.save.savedBadge'));
       void rememberWallpaperSaved(theme.id);
       void tickStoredChecklist(theme.id, 'wallpaper');
-      // T125: saving a theme's wallpaper applies it, so the widgets follow it too.
-      void applyWidgetTheme(theme); // no-op in Expo Go; never throws
+      return true;
     } else {
       const why: SaveFailure = res.why ?? (res.reason === 'denied' ? 'denied' : res.reason === 'unreadable' ? 'unreadable' : 'unknown');
       setSaveWhy({ why, detail: res.message });
       setSaveState(why === 'denied' ? 'denied' : 'error');
       haptic('warning');
+      return false;
     }
   };
 
@@ -578,7 +583,6 @@ function ThemeDetail({
       // The store applies the user's chosen shape for this theme, so it is baked into the exports.
       await applyThemeIcons(theme, averageColour(theme.wallpaper));
       await studio.reload();
-      void applyWidgetTheme(theme); // T125: also remembered for the launch re-write; never throws
       void tickStoredChecklist(theme.id, 'iconStyle');
       requestDeferred(DEFERRED_STEPS.installedProbe, 'apply'); // T229 / T250: queued, chunked; never throws
       // navigate, not push: push would stack a second copy of the tab navigator.
@@ -1086,7 +1090,7 @@ function ThemeDetail({
         setup={setup}
         themeName={theme.name}
         wallpaper={{
-          onSave: onSaveWallpaper,
+          onSave: async () => { await onSaveWallpaper(); },
           saving,
           saved: saveState === 'saved',
           error:
@@ -1101,12 +1105,16 @@ function ThemeDetail({
 
       <Sheet visible={themeChoiceOpen} onClose={() => setThemeChoiceOpen(false)} title={theme.name}>
         <View style={styles.themeChoices}>
-          <PillButton label={t('theme.use.themeAndIcons')} block onPress={() => void putInUse()} />
-          <PillButton label={t('theme.use.iconsOnly')} block variant="tinted" onPress={addThemeIcons} />
           <PillButton label={t('theme.use.viewWidgets')} block variant="plain" onPress={() => {
             setThemeChoiceOpen(false);
             openPart('widgets', false);
           }} />
+          <PillButton label={t('theme.use.viewIcons')} block variant="plain" onPress={() => {
+            setThemeChoiceOpen(false);
+            openPart('icons', false);
+          }} />
+          <PillButton label={t('theme.use.addWallpaper')} block variant="tinted" onPress={() => onAddWallpaper()} />
+          <PillButton label={t('theme.use.useEverything')} block onPress={() => void putInUse()} />
         </View>
       </Sheet>
 
@@ -1119,6 +1127,14 @@ function ThemeDetail({
           const why = lockFor.current;
           if (why === 'download') {
             onDownloadPack().catch(() => undefined);
+            return;
+          }
+          if (why === 'add-wallpaper') {
+            onAddWallpaper(false);
+            return;
+          }
+          if (why === 'use-everything') {
+            void putInUse(false);
             return;
           }
           if (why === 'apply' || why === 'overview') {

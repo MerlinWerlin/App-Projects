@@ -83,6 +83,7 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
         size,
         slot,
         optionId: option.id,
+        pictureId: themePieceId(input.themeId, option.id, 'small'),
         ...(live ? { live } : {}),
       });
       slot++;
@@ -137,8 +138,11 @@ export function commitThemeArt(
   const gone: WidgetArtPiece[] = [];
   for (const p of lib.pieces) {
     if (plannedIds.has(p.id)) continue;
-    if (isUserPiece(p) || p.themeId === theme) others.push(p);
-    else gone.push(p);
+    if (isUserPiece(p)) others.push(p);
+    else if (p.themeId === theme) {
+      // Keep old configured ids but remove superseded catalogue editions from new choices.
+      others.push(p.artRevision ? { ...p, hiddenFromPicker: true } : p);
+    } else gone.push(p);
   }
   const pieces = listPieces({ v: 1, pieces: [...kept, ...others] });
   const next: WidgetArtIndex = { ...lib, v: 1, pieces, currentThemeId: theme };

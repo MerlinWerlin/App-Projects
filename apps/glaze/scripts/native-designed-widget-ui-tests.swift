@@ -81,6 +81,7 @@ import Darwin
     let result = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Alpine Starlight")).firstMatch
     XCTAssertTrue(result.waitForExistence(timeout: 25), app.debugDescription)
     result.tap()
+    if app.buttons["Use everything"].firstMatch.waitForExistence(timeout: 3) { return app }
 
     let part = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
     if !part.waitForExistence(timeout: 4) {
@@ -140,10 +141,12 @@ import Darwin
       print("GLAZE_ART_SPRINGBOARD_TREE\n" + spring.debugDescription)
     }
 
-    let use = app.buttons.matching(NSPredicate(format: "label == %@ OR label == %@", "Use this theme", "In use")).firstMatch
-    reveal(use, in: app)
-    use.tap()
     let action = app.buttons.matching(NSPredicate(format: "label == %@ OR label == %@", "Use everything", "Use theme + add icons")).firstMatch
+    if !action.waitForExistence(timeout: 3) {
+      let use = app.buttons.matching(NSPredicate(format: "label == %@ OR label BEGINSWITH %@", "Use this theme", "In use")).firstMatch
+      reveal(use, in: app)
+      use.tap()
+    }
     XCTAssertTrue(action.waitForExistence(timeout: 8), app.debugDescription)
     action.tap()
     // The explicit Use everything action can request add-only Photos access on a clean install.

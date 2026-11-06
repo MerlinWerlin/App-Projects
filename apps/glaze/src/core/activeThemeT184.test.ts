@@ -93,7 +93,7 @@ test('theme application queues widget writes before notifying screens', () => {
   const fn = /export function applyThemeEverywhere[^]*?\n\}/.exec(store)?.[0] ?? '';
   assert.match(fn, /const native = queueThemeWrite\(async \(\) =>/);
   assert.match(fn, /applyThemeIcons\(theme, /);
-  assert.match(fn, /await rememberWidgetTheme\(theme\)[\s\S]*listener\(theme\.id\)[\s\S]*requestDeferred\(DEFERRED_STEPS\.themeArt\)/);
+  assert.match(fn, /await rememberWidgetTheme\(theme\)[\s\S]*listener\(theme\.id\)[\s\S]*void syncThemeWidgetArt\(theme\)/);
   const widget = read('src', 'store', 'widgetTheme.ts');
   assert.match(widget, /AsyncStorage\.multiSet\(\[\s*\[ACTIVE_THEME_KEY,[\s\S]*?\[ACTIVE_WIDGET_THEME_KEY,/);
   assert.match(widget, /widgets\.setTheme\(/);

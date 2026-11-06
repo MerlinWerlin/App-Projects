@@ -122,9 +122,9 @@ test('theme page source: hero art, Apply end to end, success haptic only at the 
   // Wallpaper step: the downloaded file (read now if needed), never the drawn fallback for a remote pack.
   assert.ok(d.includes('await downloadedRemoteWallpaper(remoteArt.id)'));
   assert.ok(d.includes("remoteMissing\n      ? { ok: false, why: 'unreadable' }"));
-  // The Widgets step only previews; wallpaper and icon setup still update the widget theme.
+  // Preview and wallpaper-only actions do not change the selected widget theme.
   assert.ok(d.includes('<ThemeWidgetArt theme={theme}'));
-  assert.ok(d.includes('void applyWidgetTheme(theme)'));
+  assert.doesNotMatch(d, /applyWidgetTheme\(/);
   // Icons step: glyph icons in the palette, with a note for art packs.
   assert.ok(d.includes("t('theme.remote.iconsNote')"));
   assert.equal((d.match(/haptic\('success'\)/g) ?? []).length, 1, 'only the end-of-flow moment (a finished download is light)');

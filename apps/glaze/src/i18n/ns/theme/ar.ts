@@ -103,9 +103,10 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
     inUseNote: 'تتبع أيقوناتك وأدواتك وخلفيتك هذه السمة.',
     doneA11y: 'أصبحت {name} سمتك في كل علامة تبويب',
     error: 'تعذّر التبديل إلى هذه السمة. حاول مرة أخرى.',
-    themeAndIcons: "استخدم المظهر وأضف الأيقونات",
-    iconsOnly: "أضف الأيقونات فقط",
-    viewWidgets: "اعرض أدوات هذا المظهر",
+    useEverything: "استخدام الكل",
+    viewIcons: "عرض الأيقونات بهذا المظهر",
+    viewWidgets: "عرض الأدوات بهذا المظهر",
+    addWallpaper: "إضافة الخلفية",
   },
   parts: {
     title: 'الإعداد',

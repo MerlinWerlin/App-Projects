@@ -103,9 +103,10 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
     inUseNote: 'アイコン、ウィジェット、壁紙はこのテーマに合わせて表示されます。',
     doneA11y: '{name}がすべてのタブのテーマになりました',
     error: 'このテーマに切り替えられませんでした。もう一度お試しください。',
-    themeAndIcons: "テーマを適用してアイコンを追加",
-    iconsOnly: "アイコンだけ追加",
+    useEverything: "すべて使う",
+    viewIcons: "このテーマのアイコンを見る",
     viewWidgets: "このテーマのウィジェットを見る",
+    addWallpaper: "壁紙を追加",
   },
   parts: {
     title: '設定',

@@ -103,9 +103,10 @@ export const it: NonNullable<LocaleMessages['theme']> = {
     inUseNote: 'Icone, widget e sfondo seguono questo tema.',
     doneA11y: '{name} è ora il tuo tema in ogni scheda',
     error: 'Impossibile passare a questo tema. Riprova.',
-    themeAndIcons: "Usa il tema e aggiungi le icone",
-    iconsOnly: "Aggiungi solo le icone",
-    viewWidgets: "Visualizza i widget di questo tema",
+    useEverything: "Usa tutto",
+    viewIcons: "Vedi le icone con questo tema",
+    viewWidgets: "Vedi i widget con questo tema",
+    addWallpaper: "Aggiungi lo sfondo",
   },
   parts: {
     title: 'Configura',

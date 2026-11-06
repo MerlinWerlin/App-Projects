@@ -103,9 +103,10 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
     inUseNote: '아이콘, 위젯, 배경화면이 이 테마를 따릅니다.',
     doneA11y: '이제 {name} 테마가 모든 탭에 적용됩니다',
     error: '이 테마로 바꾸지 못했습니다. 다시 시도해 주세요.',
-    themeAndIcons: "테마 적용 및 아이콘 추가",
-    iconsOnly: "아이콘만 추가",
+    useEverything: "모두 사용",
+    viewIcons: "이 테마의 아이콘 보기",
     viewWidgets: "이 테마의 위젯 보기",
+    addWallpaper: "배경화면 추가",
   },
   parts: {
     title: '설정하기',

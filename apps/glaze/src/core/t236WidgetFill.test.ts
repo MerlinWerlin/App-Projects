@@ -93,7 +93,7 @@ test('library: <id>-art.png copied beside <id>.jpg when present and kept by the 
   assert.match(save, /if FileManager\.default\.fileExists\(atPath: rawSource\.path\)/, 'optional: older sources still work');
   assert.match(save, /copyItem\(at: rawSource, to: rawDest\)/);
   const index = bridge.slice(bridge.indexOf('AsyncFunction("setWidgetArtIndex")'));
-  assert.match(index, /keep\.insert\("\\\(id\)-art\.png"\)/);
+  assert.match(index, /guard GlazeWidgetBridgeModule\.validArtId\(id\), !keep\.contains\(id\) else \{ continue \}/);
 });
 
 test('Seamless widget: Edit Widget Layout Fill (default) / Fit; Fill never shows the theme as a frame', () => {

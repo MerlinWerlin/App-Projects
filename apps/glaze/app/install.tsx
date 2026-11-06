@@ -1466,7 +1466,7 @@ function StepRow({
         accessibilityState={{ checked: done }}
         style={({ pressed }) => [styles.doneRow, { opacity: pressed ? 0.7 : 1 }]}
       >
-        <Feather name={done ? 'check-square' : 'square'} size={20} color={done ? c.ok : c.inkTertiary} />
+        <Feather name={done ? 'check-square' : 'square'} size={28} color={done ? c.ok : c.inkTertiary} />
         <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...typeFor(script, 'subhead'), styles.flex, { color: done ? c.ok : c.tint }]}>
           {done ? t('install.stepCard.done') : t('install.stepCard.markDone')}
         </Text>

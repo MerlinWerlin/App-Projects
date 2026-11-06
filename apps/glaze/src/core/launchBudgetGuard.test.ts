@@ -81,10 +81,9 @@ test('applyThemeEverywhere returns after the essential writes; heavy follow-ups 
   assert.match(fn, /await rememberWidgetTheme\(theme\)/);
   // Queued after the theme in use is stored (the steps read it back when resumed next launch).
   const stored = fn.indexOf('await rememberWidgetTheme');
-  for (const step of ['themeArt', 'installedProbe']) {
-    const at = fn.search(new RegExp(`requestDeferred\\(DEFERRED_STEPS\\.${step}\\b`));
-    assert.ok(at > stored, `${step} is requested after the essential write`);
-  }
+  assert.ok(fn.indexOf('void syncThemeWidgetArt(theme)') > stored, 'art starts after the native write');
+  assert.ok(fn.indexOf('requestDeferred(DEFERRED_STEPS.installedProbe') > stored);
+  assert.doesNotMatch(fn, /await syncThemeWidgetArt/);
   assert.doesNotMatch(fn, /await requestDeferred/);
   // The heavy art call lives in the step the queue runs.
   const step = fnBody(store, /async function themeArtStep\(\): Promise<void> \{/);
