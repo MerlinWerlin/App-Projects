@@ -63,7 +63,7 @@
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "Seamless";
-"Your Glaze art. Long-press and choose Edit Widget to pick a piece." = "Your Glaze art. Long-press and choose Edit Widget to pick a piece.";
+"Artwork from your current Glaze theme." = "Artwork from your current Glaze theme.";
 "Set up in Glaze" = "Set up in Glaze";
 
 /* My widget art picker (WidgetArtLibrary.swift, T221) */

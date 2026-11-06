@@ -209,9 +209,8 @@ struct SeamlessWidget: Widget {
       SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date)
     }
     .configurationDisplayName("Seamless")
-    .description("Your Glaze art. Long-press and choose Edit Widget to pick a piece.")
+    .description("Artwork from your current Glaze theme.")
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
-    .legacyGlazeGallery()
     .contentMarginsDisabled()
   }
 }

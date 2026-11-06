@@ -7,7 +7,7 @@ import { useT } from '../../src/i18n';
 import { useAnyTheme } from '../../src/native/useAnyTheme';
 import { useActiveThemeId } from '../../src/store/activeTheme';
 import { spaceV2 } from '../../src/theme/tokensV2';
-import { DesignedThemeWidgets } from '../../src/ui/DesignedThemeWidgets';
+import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
 import { LargeTitleScrollView } from '../../src/ui/LargeTitleHeader';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 import { Segmented } from '../../src/ui/Segmented';
@@ -27,7 +27,7 @@ function WidgetsTab() {
       <View style={styles.previews}>
         <Segmented<HomeOptionSize> label={t('tabs.widgetsTab.sizes')} value={size} onChange={setSize}
           options={SIZES.map(value => ({ value, label: tl(widgetTabSizeKey(value)) }))} />
-        <DesignedThemeWidgets theme={theme} size={size} width={width - spaceV2.lg * 2} />
+        <ThemeWidgetArt theme={theme} size={size} width={width - spaceV2.lg * 2} />
       </View>
     </LargeTitleScrollView>
   );

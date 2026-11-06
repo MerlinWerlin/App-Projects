@@ -20,33 +20,33 @@ test('the menu both screens share orders by widgetShelf (practical kinds, then a
   assert.match(menu, /widgetOptionSections\(/);
   const art = strip(read('src', 'ui', 'ThemeWidgetArt.tsx'));
   assert.match(art, /<WidgetArtMenu\b/);
-  assert.match(art, /selectedOption\(/);
+  assert.doesNotMatch(art, /selectedOption\(/);
 });
 
-test('both widget screens preview the theme clock, battery and calendar without saving a widget', () => {
+test('both widget screens show native widgets, the art shelf and the Seamless preview', () => {
   const detail = strip(read('app', 'theme', '[id].tsx'));
   const tab = strip(read('app', '(tabs)', 'widgets.tsx'));
   const preview = strip(read('src', 'ui', 'DesignedThemeWidgets.tsx'));
+  const shelf = strip(read('src', 'ui', 'ThemeWidgetArt.tsx'));
+  const menu = strip(read('src', 'ui', 'WidgetArtMenu.tsx'));
   assert.match(detail, /router\.push\(\{ pathname: '\/theme\/\[id\]', params: \{ id: theme\.id, step: part \} \}\)/);
   assert.match(detail, /step === 'widgets' \? <ThemeWidgetsShelf theme=\{theme\}/);
-  assert.match(detail, /<DesignedThemeWidgets theme=\{theme\}/);
+  assert.match(detail, /<ThemeWidgetArt theme=\{theme\}/);
   assert.match(detail, /overview \? \([\s\S]*?<WidgetPreviews theme=\{theme\}/);
   assert.match(tab, /useAnyTheme\(activeId\)/);
-  assert.match(tab, /<DesignedThemeWidgets theme=\{theme\}/);
+  assert.match(tab, /<ThemeWidgetArt theme=\{theme\}/);
   assert.match(preview, /DESIGNED_KINDS\.map/);
-  for (const src of [detail, tab, preview]) {
-    assert.doesNotMatch(src, /<ThemeWidgetArt\b|<SeamlessCard\b|widgets\.(setSeamless|setWidgetArt|setWidgetSet|saveDesign)\(/);
+  assert.match(shelf, /<DesignedThemeWidgets\b/);
+  assert.match(shelf, /<WidgetArtMenu\b/);
+  assert.match(shelf, /<SeamlessWidgetPreview\b/);
+  assert.doesNotMatch(menu, /onSelect|<Pressable/);
+  for (const src of [detail, tab, preview, shelf]) {
+    assert.doesNotMatch(src, /widgets\.(setSeamless|setWidgetArt|setWidgetSet|saveDesign)\(/);
   }
   assert.doesNotMatch(tab, /applyWidgetTheme\(/);
 });
 
-test('apply → App Group write → reload: ThemeWidgetArt → adapter → bridge → reloadAllTimelines', () => {
-  const art = strip(read('src', 'ui', 'ThemeWidgetArt.tsx'));
-  const onUse = art.slice(art.indexOf('const onUse = async'), art.indexOf('const liveHref'));
-  assert.match(onUse, /widgets\.isAvailable\(\)/);
-  assert.match(onUse, /widgets\.setWidgetArt\(/);
-  assert.match(onUse, /await seamless\(artUri\)/);
-  assert.match(art, /widgets\.setSeamless\(/);
+test('the legacy bridge continues supporting existing placed widgets', () => {
   const adapter = read('src', 'native', 'widgets.ts');
   assert.match(adapter, /m\.setWidgetArt\?\.\(input\.artUri,/);
   assert.match(adapter, /m\.setSeamless\?\.\(\s*input\.wallpaperUri,/);
@@ -77,8 +77,6 @@ test('no crop of art: JS previews contain; Swift widget pins both layers; the br
   assert.match(blended, /preserveAspectRatio="xMidYMid meet"/);
   const preview = read('src', 'ui', 'SeamlessWidgetPreview.tsx');
   assert.match(preview, /<ExpoImage source=\{hero\}[^>]*contentFit="contain"/);
-  const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
-  assert.match(art, /fit: placeArt\(\{ w: option\.width, h: option\.height \}, px, option\.fit\)\.mode/, 'fill only when placeArt allows it');
 
   const widget = read('targets', 'widget', 'SeamlessWidget.swift');
   // Every aspect-fill in the Seamless widget is pinned and clipped to the widget size; T251: no

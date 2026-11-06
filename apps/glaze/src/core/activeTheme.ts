@@ -129,3 +129,13 @@ export type ThemeStep = 'overview' | 'wallpaper' | 'icons' | 'widgets';
 export function themeStepOf(param: unknown): ThemeStep {
   return param === 'wallpaper' || param === 'icons' || param === 'widgets' ? param : 'overview';
 }
+
+/** Order selections, legacy widget writes and launch restores through one writer. */
+export function createThemeWriteQueue() {
+  let tail: Promise<unknown> = Promise.resolve();
+  return function enqueue<T>(work: () => Promise<T>): Promise<T> {
+    const job = tail.then(work);
+    tail = job.catch(() => undefined);
+    return job;
+  };
+}

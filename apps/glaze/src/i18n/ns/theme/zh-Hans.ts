@@ -97,12 +97,15 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
   use: {
     cta: '使用此主题',
     inUse: '使用中 ✓',
-    hint: '在所有标签页的图标、小组件和墙纸上使用此主题',
-    inUseHint: '已是所有标签页的主题。轻点可再次应用',
-    note: '将所有标签页的图标、小组件和墙纸设为此主题。',
+    hint: "轻点查看主题、图标和小组件选项",
+    inUseHint: "轻点查看主题、图标和小组件选项",
+    note: "选择如何使用此主题",
     inUseNote: '你的图标、小组件和墙纸跟随此主题。',
     doneA11y: '{name} 现在是所有标签页的主题',
     error: '无法切换到此主题，请重试。',
+    themeAndIcons: "使用主题并添加图标",
+    iconsOnly: "仅添加图标",
+    viewWidgets: "查看此主题的小组件",
   },
   parts: {
     title: '设置',

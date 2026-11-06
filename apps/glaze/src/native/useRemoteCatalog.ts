@@ -8,7 +8,7 @@ import { useEffect, useMemo, useSyncExternalStore } from 'react';
 import { AppState } from 'react-native';
 import type { HeroSize } from '../core/artPack';
 import { pickWallpaper, type Catalog } from '../core/packCatalog';
-import type { WidgetOption } from '../core/widgetOptions';
+import { withSeamlessHeroes, type WidgetOption } from '../core/widgetOptions';
 import { remoteHeroPx } from '../core/widgetPreview';
 import { getAnyTheme } from '../core/plusThemes';
 import { remoteArtFiles, remoteArtThemes, remoteThemeById, withDownloadedArt, type CatalogStatus, type RemoteArtTheme } from '../core/remoteCatalog';
@@ -139,7 +139,7 @@ export function useRemoteArtTheme(id: string | null | undefined): RemoteArtLocal
       if (uri) heroUris[s] = uri;
     }
     const widgetOptions: LocalWidgetOption[] = [];
-    for (const option of local.widgets ?? []) {
+    for (const option of withSeamlessHeroes(local.widgets ?? [], local.assets)) {
       if (!option || typeof option.image !== 'string') continue;
       const uri = remoteArtFileUri(base.id, option.image);
       if (uri) widgetOptions.push({ option, uri });

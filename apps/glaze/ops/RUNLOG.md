@@ -733,3 +733,4 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - The App Group bridge copies the verified pack file atomically. WidgetKit decodes at the rendered face size and draws live marks and hands. Clocks have a vector fallback when a pack image is absent.
 - Run 1,911 core tests, app and Node TypeScript, pack tests and the WidgetKit code check for the direct TestFlight delivery.
 - 2026-11-06 Codex: Glaze 1.0.8 loads the current illustrated clock from verified companion assets. Widget setup screens now preview the three theme widgets. TypeScript, 1,900 core tests and 27 pack checks passed.
+- 2026-11-06 Codex: Glaze 1.0.9 restores automatic art setup and previews, orders theme writes, and adds the three theme actions.

@@ -97,12 +97,15 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
   use: {
     cta: 'Utiliser ce thème',
     inUse: 'Utilisé ✓',
-    hint: 'Utilise ce thème pour vos icônes, widgets et fond d’écran dans chaque onglet',
-    inUseHint: 'Déjà votre thème dans chaque onglet. Touchez pour l’appliquer à nouveau',
-    note: 'Applique ce thème à vos icônes, widgets et fond d’écran dans chaque onglet.',
+    hint: "Touchez pour afficher les options du thème, des icônes et des widgets",
+    inUseHint: "Touchez pour afficher les options du thème, des icônes et des widgets",
+    note: "Choisissez comment utiliser ce thème",
     inUseNote: 'Vos icônes, widgets et fond d’écran suivent ce thème.',
     doneA11y: '{name} est maintenant votre thème dans chaque onglet',
     error: 'Impossible de passer à ce thème. Réessayez.',
+    themeAndIcons: "Utiliser le thème et ajouter les icônes",
+    iconsOnly: "Ajouter les icônes uniquement",
+    viewWidgets: "Voir les widgets de ce thème",
   },
   parts: {
     title: 'Mise en place',

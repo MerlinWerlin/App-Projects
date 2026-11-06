@@ -92,6 +92,7 @@ import { IconGridSkeleton, Skeleton } from '../../src/ui/Skeleton';
 import { IconLookPicker } from '../../src/ui/IconLookPicker';
 import { PreviewModeLabel, ShapePicker } from '../../src/ui/ShapePicker';
 import { Segmented } from '../../src/ui/Segmented';
+import { Sheet } from '../../src/ui/Sheet';
 import { SheenButton } from '../../src/ui/SheenButton';
 import { PHONE_ASPECT } from '../../src/ui/ThemeCard';
 import { ThemeOverrideRow } from '../../src/ui/ThemeOverrideRow';
@@ -116,7 +117,7 @@ import { Chevron, noMirror, textStyleFor } from '../../src/ui/i18nLayout';
 import { GlassBar, InsetGroup, InsetRow, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { ThemeSetupFlow, ThemeSetupSection, useThemeSetup } from '../../src/ui/ThemeSetupFlow';
-import { DesignedThemeWidgets } from '../../src/ui/DesignedThemeWidgets';
+import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
 import { widgetTabSizeKey } from '../../src/core/tabNav';
 import type { HomeOptionSize } from '../../src/core/widgetOptions';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
@@ -192,6 +193,7 @@ function ThemeDetailScreen() {
   const own = remote.theme === theme;
   return (
     <ThemeDetail
+      key={theme.id}
       theme={theme}
       step={themeStepOf(stepParam)}
       remoteWallpaperUri={own ? remote.wallpaperUri : null}
@@ -252,6 +254,10 @@ function ThemeDetail({
   const activeId = useActiveThemeId();
   const inUse = isThemeInUse(activeId, theme.id);
   const [useBusy, setUseBusy] = useState(false);
+  const usePending = useRef(false);
+  const themeFocus = useRef(0);
+  useFocusEffect(useCallback(() => () => { themeFocus.current++; }, []));
+  const [themeChoiceOpen, setThemeChoiceOpen] = useState(false);
   const [useError, setUseError] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>('idle');
   /** T185: this theme's wallpaper was saved to Photos before (badge only; Save again always shows). */
@@ -404,12 +410,15 @@ function ThemeDetail({
    * (wallpaper maker, "In use ✓"). Saving wallpaper and installing icons stay separate screens.
    */
   const putInUse = async () => {
-    if (useBusy) return;
+    if (usePending.current) return;
+    usePending.current = true;
+    const focus = themeFocus.current;
+    setThemeChoiceOpen(false);
     setUseBusy(true);
     setUseError(false);
     try {
       const res = await applyThemeEverywhere(theme);
-      if (!res.icons) {
+      if (!res.icons || !res.widgets) {
         setUseError(true);
         haptic('warning');
         return;
@@ -420,14 +429,19 @@ function ThemeDetail({
       } catch {
         // T264: the celebration is optional; the theme is already applied.
       }
-      setup.openAt('wallpaper'); // T265: straight into the guided setup
+      if (themeFocus.current === focus) addThemeIcons();
     } catch (e) {
       // T264 (owner-1101i #2): an apply that throws shows the calm "couldn't apply" note, never a crash.
       console.warn('[Theme] apply failed', e);
       setUseError(true);
     } finally {
+      usePending.current = false;
       setUseBusy(false);
     }
+  };
+  const addThemeIcons = () => {
+    setThemeChoiceOpen(false);
+    router.push({ pathname: '/install', params: { theme: theme.id } });
   };
   const onUseTheme = () => {
     if (locked) {
@@ -435,7 +449,7 @@ function ThemeDetail({
       setLockOpen(true);
       return;
     }
-    putInUse().catch(() => undefined);
+    setThemeChoiceOpen(true);
   };
 
   /** T265: a "Set it up" row opens the guided flow at that step (a locked theme asks for Plus first). */
@@ -443,6 +457,10 @@ function ThemeDetail({
     if (locked) {
       lockFor.current = 'apply';
       setLockOpen(true);
+      return;
+    }
+    if (part === 'widgets') {
+      openPart('widgets');
       return;
     }
     setup.openAt(part);
@@ -1076,18 +1094,30 @@ function ThemeDetail({
         onInstallIcons={installFromSetup}
       />
 
+      <Sheet visible={themeChoiceOpen} onClose={() => setThemeChoiceOpen(false)} title={theme.name}>
+        <View style={styles.themeChoices}>
+          <PillButton label={t('theme.use.themeAndIcons')} block onPress={() => void putInUse()} />
+          <PillButton label={t('theme.use.iconsOnly')} block variant="tinted" onPress={addThemeIcons} />
+          <PillButton label={t('theme.use.viewWidgets')} block variant="plain" onPress={() => {
+            setThemeChoiceOpen(false);
+            openPart('widgets', false);
+          }} />
+        </View>
+      </Sheet>
+
       <PlusLockSheet
         visible={lockOpen}
         onClose={() => setLockOpen(false)}
         subject={t('theme.lockSubject', { name: theme.name })}
         onUnlocked={() => {
+          setLockOpen(false);
           const why = lockFor.current;
           if (why === 'download') {
             onDownloadPack().catch(() => undefined);
             return;
           }
           if (why === 'apply' || why === 'overview') {
-            putInUse().catch(() => undefined);
+            setThemeChoiceOpen(true);
             return;
           }
           openPart(why, false);
@@ -1186,7 +1216,7 @@ function ThemeWidgetsShelf({ theme }: { theme: Theme }) {
         value={size}
         onChange={setSize}
       />
-      <DesignedThemeWidgets theme={theme} size={size} width={width} />
+      <ThemeWidgetArt theme={theme} size={size} width={width} />
     </View>
   );
 }
@@ -1494,6 +1524,7 @@ const styles = StyleSheet.create({
   content: { gap: spaceV2.lg },
   missing: { flex: 1, padding: spaceV2.inset, gap: spaceV2.md, justifyContent: 'center' },
   side: { marginHorizontal: spaceV2.lg },
+  themeChoices: { gap: spaceV2.sm },
   shelf: { gap: spaceV2.lg, paddingTop: spaceV2.lg },
   headWrap: {
     paddingHorizontal: spaceV2.inset,

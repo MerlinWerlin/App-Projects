@@ -74,7 +74,7 @@ test('a piece picked in Edit Widget keeps its pick; a removed pick uses the T252
   assert.equal(resolveWidgetPiece(withPhoto, 'p-1', 'small'), 'p-1');
 });
 
-test('same theme re-applied / resumed: following sizes refreshed, sizes showing the last applied image kept', () => {
+test('reapplying a theme sets the Seamless default in every size', () => {
   const a = apply(emptyLibrary(), 'a', A, 1000);
   // "Use on my widget" wrote seamless-medium.png: medium shows that image again.
   const pinned = pinLastApplied(a, 'medium');
@@ -82,9 +82,8 @@ test('same theme re-applied / resumed: following sizes refreshed, sizes showing 
   assert.deepEqual(pinned.unpinned, { small: themePieceId('a', 'moon', 'small'), large: null });
   assert.deepEqual(unpinnedChoice(pinned, 'medium'), { show: 'lastApplied' });
   const again = apply(pinned, 'a', A, 5000);
-  assert.deepEqual(again.unpinned, pinned.unpinned, 'a re-apply is not a swap');
-  // Nothing to change = no index write.
-  assert.equal(pinLastApplied(again, 'medium'), null);
+  assert.deepEqual(unpinnedChoice(again, 'medium'), { show: 'piece', id: themePieceId('a', 'moon', 'medium') });
+  assert.ok(pinLastApplied(again, 'medium'));
   assert.equal(pinLastApplied(emptyLibrary(), 'small'), null);
   assert.equal(pinLastApplied(again, null), null);
   // A later swap makes medium follow again.

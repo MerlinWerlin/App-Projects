@@ -97,12 +97,15 @@ export const de: NonNullable<LocaleMessages['theme']> = {
   use: {
     cta: 'Dieses Theme verwenden',
     inUse: 'Wird verwendet ✓',
-    hint: 'Verwendet dieses Theme für Symbole, Widgets und Hintergrund in jedem Tab',
-    inUseHint: 'Schon dein Theme in jedem Tab. Tippen, um es erneut anzuwenden',
-    note: 'Stellt Symbole, Widgets und Hintergrund in jedem Tab auf dieses Theme.',
+    hint: "Tippe für Theme-, Icon- und Widget-Optionen",
+    inUseHint: "Tippe für Theme-, Icon- und Widget-Optionen",
+    note: "Wähle, wie du dieses Theme verwenden möchtest",
     inUseNote: 'Deine Symbole, Widgets und dein Hintergrund folgen diesem Theme.',
     doneA11y: '{name} ist jetzt dein Theme in jedem Tab',
     error: 'Wechsel zu diesem Theme fehlgeschlagen. Bitte versuch es erneut.',
+    themeAndIcons: "Theme verwenden und Icons hinzufügen",
+    iconsOnly: "Nur Icons hinzufügen",
+    viewWidgets: "Widgets dieses Themes ansehen",
   },
   parts: {
     title: 'Einrichten',

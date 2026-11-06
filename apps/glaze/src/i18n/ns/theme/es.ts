@@ -97,12 +97,15 @@ export const es: NonNullable<LocaleMessages['theme']> = {
   use: {
     cta: 'Usar este tema',
     inUse: 'En uso ✓',
-    hint: 'Usa este tema para tus iconos, widgets y fondo en todas las pestañas',
-    inUseHint: 'Ya es tu tema en todas las pestañas. Toca para aplicarlo de nuevo',
-    note: 'Pone tus iconos, widgets y fondo de todas las pestañas con este tema.',
+    hint: "Toca para ver las opciones del tema, los iconos y los widgets",
+    inUseHint: "Toca para ver las opciones del tema, los iconos y los widgets",
+    note: "Elige cómo usar este tema",
     inUseNote: 'Tus iconos, widgets y fondo siguen este tema.',
     doneA11y: '{name} es ahora tu tema en todas las pestañas',
     error: 'No se pudo cambiar a este tema. Inténtalo de nuevo.',
+    themeAndIcons: "Usar el tema y añadir iconos",
+    iconsOnly: "Añadir solo iconos",
+    viewWidgets: "Ver los widgets de este tema",
   },
   parts: {
     title: 'Configurar',

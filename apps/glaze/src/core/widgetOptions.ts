@@ -265,6 +265,12 @@ export function widgetOptionsOfPack(input: { version: number; widgets?: unknown;
   return widgetOptionsFromV1(input.assets);
 }
 
+/** Keep a pack's original Seamless heroes alongside the v2 widget art editions. */
+export function withSeamlessHeroes(options: readonly WidgetOption[], assets: readonly OptionAsset[]): WidgetOption[] {
+  const ids = new Set(options.map(option => option.id));
+  return [...options, ...widgetOptionsFromV1(assets).filter(hero => !ids.has(hero.id))];
+}
+
 // ------------------------------------------------------------------ geometry
 
 export type Box = { w: number; h: number };

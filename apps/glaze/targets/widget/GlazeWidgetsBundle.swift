@@ -35,6 +35,7 @@ struct GlazeThemeGalleryBundle: WidgetBundle {
     ThemeClockWidget()
     ThemeBatteryWidget()
     ThemeCalendarWidget()
+    SeamlessWidget()
   }
 }
 
@@ -42,7 +43,6 @@ struct GlazeLegacyArtBundle: WidgetBundle {
   var body: some Widget {
     ClockWidget()
     DateWidget()
-    SeamlessWidget()
   }
 }
 
