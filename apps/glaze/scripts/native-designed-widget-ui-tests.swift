@@ -149,12 +149,17 @@ import Darwin
     }
     XCTAssertTrue(action.waitForExistence(timeout: 8), app.debugDescription)
     action.tap()
-    // The explicit Use everything action can request add-only Photos access on a clean install.
-    let alert = spring.alerts.firstMatch
-    if alert.waitForExistence(timeout: 4) {
-      let allow = alert.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@ AND NOT label CONTAINS[c] %@", "Allow", "Don’t")).firstMatch
-      if allow.exists { allow.tap() }
+    // Wait for the explicit action to finish. No extra delay for widget art before going home.
+    let installed = app.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] %@", "Your icon set")).firstMatch
+    for _ in 0..<55 {
+      if installed.exists { break }
+      for alert in [app.alerts.firstMatch, spring.alerts.firstMatch] where alert.exists {
+        let allow = alert.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@", "Allow")).firstMatch
+        if allow.exists { allow.tap() }
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
     }
+    XCTAssertTrue(installed.exists, app.debugDescription)
     capture("alpine-after-theme-apply")
     XCUIDevice.shared.press(.home)
     try openGallery(spring, fromHomeScreen: true)
@@ -195,9 +200,13 @@ import Darwin
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
     if !fromHomeScreen { XCUIDevice.shared.press(.home) }
     RunLoop.current.run(until: Date().addingTimeInterval(0.8))
-    // SpringBoard also exposes icons from off-screen pages with zero-sized frames.
-    let visible = spring.icons.allElementsBoundByIndex.filter { $0.frame.width > 35 && $0.isHittable }
-    let icon = try XCTUnwrap(visible.first { $0.label == "Glaze" } ?? visible.first, spring.debugDescription)
+    let icon = spring.icons["Glaze"].firstMatch
+    for _ in 0..<4 {
+      if icon.exists && icon.isHittable { break }
+      spring.swipeLeft()
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    XCTAssertTrue(icon.exists && icon.isHittable, spring.debugDescription)
     icon.press(forDuration: 1.5)
     let editHome = spring.buttons["Edit Home Screen"].firstMatch
     XCTAssertTrue(editHome.waitForExistence(timeout: 10), spring.debugDescription)
