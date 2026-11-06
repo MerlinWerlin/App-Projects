@@ -31,7 +31,7 @@ test('A → B → A keeps the selected theme, persisted theme and WidgetKit writ
     '@react-native-async-storage/async-storage': 'export default globalThis.glazeThemeTest.storage',
     'expo-router': 'export const useFocusEffect = () => {}',
     'react': 'export const useCallback = () => {}, useEffect = () => {}, useRef = () => {}, useState = () => {}',
-    '../native/packs': 'export const syncPackClockFace = () => {}',
+    '../native/packs': 'export const syncPackClockFace = () => {}, refreshCatalog = async () => {}',
     '../native/widgets': 'export const widgets = { setTheme: globalThis.glazeThemeTest.write }',
     './studio': 'export const applyThemeIcons = globalThis.glazeThemeTest.icons; export const loadStudio = async () => ({ themeId: null })',
     './themeLookup': 'export const findAnyThemeById = async () => null',

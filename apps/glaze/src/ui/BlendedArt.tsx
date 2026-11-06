@@ -10,17 +10,35 @@
 import { useId } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Image as ExpoImage } from 'expo-image';
-import Svg, { Defs, G, Image as SvgImage, LinearGradient, Mask, Rect, Stop } from 'react-native-svg';
-import { FEATHER_MASK_HIDE, FEATHER_MASK_SHOW, featherStops, type PreviewBlend } from '../core/artBlend';
+import Svg, { ClipPath, Defs, Ellipse, G, Image as SvgImage, LinearGradient, Mask, Rect, Stop } from 'react-native-svg';
+import { COPPER_ECLIPSE_ASSET, COPPER_ECLIPSE_DISK, FEATHER_MASK_HIDE, FEATHER_MASK_SHOW, featherStops, type PreviewBlend } from '../core/artBlend';
 import type { Rect as Box } from '../core/widgetOptions';
 import type { ArtSource } from './WidgetArtMenu';
 
-type Props = { source: ArtSource; rect: Box; blend: PreviewBlend };
+type Props = { source: ArtSource; rect: Box; blend: PreviewBlend; assetPath?: string };
 
-export function BlendedArt({ source, rect, blend }: Props) {
+export function BlendedArt({ source, rect, blend, assetPath }: Props) {
   const raw = useId();
   const id = raw.replace(/[^A-Za-z0-9]/g, '');
   const pos = { position: 'absolute' as const, left: rect.x, top: rect.y, width: rect.w, height: rect.h };
+  if (assetPath === COPPER_ECLIPSE_ASSET) {
+    const d = COPPER_ECLIPSE_DISK;
+    const side = Math.min(rect.w, rect.h);
+    const x = (rect.w - side) / 2, y = (rect.h - side) / 2;
+    return (
+      <View pointerEvents="none" style={pos}>
+        <Svg width={rect.w} height={rect.h}>
+          <Defs>
+            <ClipPath id={'moon' + id}>
+              <Ellipse cx={x + side * (d.left + d.width / 2)} cy={y + side * (d.top + d.height / 2)}
+                rx={side * d.width / 2} ry={side * d.height / 2} />
+            </ClipPath>
+          </Defs>
+          <SvgImage href={source} x={x} y={y} width={side} height={side} clipPath={'url(#moon' + id + ')'} />
+        </Svg>
+      </View>
+    );
+  }
   if (blend === 'feather') {
     const [a, b, c, d] = featherStops();
     return (

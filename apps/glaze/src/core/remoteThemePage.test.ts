@@ -91,14 +91,18 @@ test('remote theme icons are glyphs in the theme palette (no per-app icon art ne
   }
 });
 
-test('theme page source: one Download pill in its own glass bar, determinate progress, calm copy, no raw error', () => {
+test('theme page allows the theme action before wallpaper download and keeps download progress', () => {
   const d = strip(read('app', 'theme', '[id].tsx'));
   const at = d.indexOf('function RemoteDownloadBar(');
   assert.ok(at > 0, 'RemoteDownloadBar');
   const bar = d.slice(at, d.indexOf('\nfunction ', at + 10));
   assert.ok(bar.includes('<GlassBar material="chrome"'), 'its own chrome glass bar');
   const pills = [...bar.matchAll(/<PillButton\b[\s\S]*?\/>/g)].map((m) => m[0]);
-  assert.ok(pills.length >= 1 && pills.every((p) => !/variant=/.test(p)), 'each state has one filled pill');
+  const actions = pills.filter(pill => pill.includes('themeAction.label'));
+  assert.equal(actions.length, 1);
+  assert.match(actions[0], /variant="tinted"[\s\S]*onPress=\{themeAction\.onPress\}/);
+  assert.ok(pills.filter(pill => !pill.includes('themeAction.label')).every(pill => !/variant=/.test(pill)));
+  assert.match(d, /themeAction=\{!locked[\s\S]*onPress: onUseTheme/);
   assert.ok(bar.includes("t('theme.remote.downloadSize', { size: formatBytes(primary.bytes, locale) })"), 'Download pill shows the size');
   assert.ok(bar.includes('<ProgressBar progress={primary.percent / 100}'), 'determinate progress bar');
   assert.ok(bar.includes("t('theme.remote.offline')"), 'calm offline copy');

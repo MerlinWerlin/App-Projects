@@ -107,7 +107,7 @@ test('wiring: the resumed themeArt step looks the theme up and runs the full syn
   assert.match(step, /syncThemeWidgetArt\(theme\)/);
   assert.match(step, /nativeWidgets\.replaceThemeArt\(fallbackId\)/);
   // The lookup sits in try/catch (never throws at launch).
-  assert.match(step, /try \{\s*found = await findAnyThemeById\(id\);\s*\} catch \{/);
+  assert.match(step, /try \{\s*found = await findAnyThemeById\(id\);[\s\S]*?await refreshCatalog\(false\);[\s\S]*?found = await findAnyThemeById\(id\);[\s\S]*?\} catch \{/);
   // One sync call site: the found theme goes through the same path as an in-memory one.
   assert.equal(step.match(/syncThemeWidgetArt\(/g)?.length, 1);
 

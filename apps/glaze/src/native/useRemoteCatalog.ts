@@ -8,7 +8,7 @@ import { useEffect, useMemo, useSyncExternalStore } from 'react';
 import { AppState } from 'react-native';
 import type { HeroSize } from '../core/artPack';
 import { pickWallpaper, type Catalog } from '../core/packCatalog';
-import { withSeamlessHeroes, type WidgetOption } from '../core/widgetOptions';
+import { localWidgetArtOptions, remoteWidgetArtOptions, type LocalWidgetOption } from '../core/remoteWidgetArt';
 import { remoteHeroPx } from '../core/widgetPreview';
 import { getAnyTheme } from '../core/plusThemes';
 import { remoteArtFiles, remoteArtThemes, remoteThemeById, withDownloadedArt, type CatalogStatus, type RemoteArtTheme } from '../core/remoteCatalog';
@@ -112,7 +112,7 @@ export type RemoteArtLocal = {
 };
 
 /** T187: a widget option and the downloaded file that draws it. */
-export type LocalWidgetOption = { option: WidgetOption; uri: string };
+export type { LocalWidgetOption } from '../core/remoteWidgetArt';
 
 const NO_HERO_URIS: Partial<Record<HeroSize, string>> = Object.freeze({});
 const NO_HERO_PX: Partial<Record<HeroSize, { w: number; h: number }>> = Object.freeze({});
@@ -138,12 +138,7 @@ export function useRemoteArtTheme(id: string | null | undefined): RemoteArtLocal
       const uri = remoteArtFileUri(base.id, files.heroes[s]);
       if (uri) heroUris[s] = uri;
     }
-    const widgetOptions: LocalWidgetOption[] = [];
-    for (const option of withSeamlessHeroes(local.widgets ?? [], local.assets)) {
-      if (!option || typeof option.image !== 'string') continue;
-      const uri = remoteArtFileUri(base.id, option.image);
-      if (uri) widgetOptions.push({ option, uri });
-    }
+    const widgetOptions = localWidgetArtOptions(remoteWidgetArtOptions(local), path => remoteArtFileUri(base.id, path));
     const wall = pickWallpaper(local, Number.MAX_SAFE_INTEGER);
     return {
       theme: withDownloadedArt(base, local),

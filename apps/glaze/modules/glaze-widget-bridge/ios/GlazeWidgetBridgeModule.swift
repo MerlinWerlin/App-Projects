@@ -268,7 +268,7 @@ public class GlazeWidgetBridgeModule: Module {
         loaded.size.width > 0, loaded.size.height > 0
       else { return false }
       // T251: keyed / feathered first (unchanged when its edge is already transparent).
-      let art = GlazeArtBlend.blended(loaded)
+      let art = GlazeArtBlend.blended(loaded, assetUri: artUri)
       guard art.size.width > 0, art.size.height > 0 else { return false }
       // T252: the composition is shared with composeWidgetArtPiece (library pieces) below.
       let composed = GlazeWidgetBridgeModule.composeArtImage(art: art, w: w, h: h, colour: colour)
@@ -433,7 +433,7 @@ public class GlazeWidgetBridgeModule: Module {
           loaded.size.width > 0, loaded.size.height > 0
         else { return false }
         // T251: the same blend as setWidgetArt (no box, frame or halo).
-        let art = GlazeArtBlend.blended(loaded)
+        let art = GlazeArtBlend.blended(loaded, assetUri: artUri)
         guard art.size.width > 0, art.size.height > 0 else { return false }
         let composed = GlazeWidgetBridgeModule.composeArtImage(art: art, w: w, h: h, colour: colour)
         guard let data = composed.jpegData(compressionQuality: 0.88) else { return false }
@@ -542,7 +542,7 @@ public class GlazeWidgetBridgeModule: Module {
     let k: CGFloat = longest > 1200 ? 1200 / longest : 1
     let target = CGSize(width: max(1, floor(wanted.width * k)), height: max(1, floor(wanted.height * k)))
     // T251: keyed / feathered (returned unchanged when its edge is already transparent).
-    let hero: UIImage? = heroUri.isEmpty ? nil : GlazeWidgetBridgeModule.loadImage(heroUri).map { GlazeArtBlend.blended($0) }
+    let hero: UIImage? = heroUri.isEmpty ? nil : GlazeWidgetBridgeModule.loadImage(heroUri).map { GlazeArtBlend.blended($0, assetUri: heroUri) }
 
     let format = UIGraphicsImageRendererFormat.default()
     format.scale = 1
@@ -708,7 +708,21 @@ enum GlazeArtBlend {
   }
 
   /// The art ready to sit on the wallpaper (or the original when nothing needs doing / on failure).
-  static func blended(_ image: UIImage) -> UIImage {
+  static func blended(_ image: UIImage, assetUri: String) -> UIImage {
+    // Copper Eclipse's lunar shadows are close to the sky colour. Clip the measured
+    // source outline and keep the pixels inside it opaque (artBlend.ts).
+    if URL(string: assetUri)?.lastPathComponent == "widget-copper-eclipse.f9863caf.webp" {
+      let w = image.size.width
+      let h = image.size.height
+      let disk = CGRect(x: w * 127 / 1024, y: h * 109 / 1024, width: w * 763 / 1024, height: h * 759 / 1024)
+      let format = UIGraphicsImageRendererFormat()
+      format.scale = 1
+      return UIGraphicsImageRenderer(size: image.size, format: format).image { renderer in
+        renderer.cgContext.addEllipse(in: disk)
+        renderer.cgContext.clip()
+        image.draw(at: .zero)
+      }
+    }
     guard let ctx = bitmap(image), let data = ctx.data else { return image }
     let w = ctx.width
     let h = ctx.height

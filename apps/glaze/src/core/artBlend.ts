@@ -382,6 +382,11 @@ export function previewBlendFor(themeId: string, optionId: string, knownTranspar
   return KNOWN_ART_BLEND[`${themeId}/${optionId}`] ?? 'feather';
 }
 
+// The Copper Eclipse source has dark lunar detail close to the sky key. Keep the
+// disc opaque and mask its measured outline instead of amplifying the dark pixels.
+export const COPPER_ECLIPSE_ASSET = 'widget-copper-eclipse.f9863caf.webp';
+export const COPPER_ECLIPSE_DISK = { left: 127 / 1024, top: 109 / 1024, width: 763 / 1024, height: 759 / 1024 };
+
 /** Luminance-mask colours of the preview's feather (SVG masks: white shows, black hides). Not UI chrome. */
 export const FEATHER_MASK_SHOW = '#FFFFFF';
 export const FEATHER_MASK_HIDE = '#000000';

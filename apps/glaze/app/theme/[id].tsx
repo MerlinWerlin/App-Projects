@@ -1073,6 +1073,11 @@ function ThemeDetail({
           onLayout={(e: LayoutChangeEvent) => setBarH(e.nativeEvent.layout.height)}
           onDownload={() => void onDownloadPack()}
           onUnlock={onUnlockRemote}
+          themeAction={!locked && primary.kind !== 'unlock' && !(primary.kind === 'retry' && primary.reason === 'app-version') ? {
+            label: inUse ? t('theme.use.inUse') : t('theme.use.cta'),
+            onPress: onUseTheme,
+            busy: useBusy,
+          } : undefined}
         />
       ) : null}
 
@@ -1239,6 +1244,7 @@ function RemoteDownloadBar({
   onLayout,
   onDownload,
   onUnlock,
+  themeAction,
 }: {
   primary: RemotePrimary;
   name: string;
@@ -1248,6 +1254,7 @@ function RemoteDownloadBar({
   onLayout: (e: LayoutChangeEvent) => void;
   onDownload: () => void;
   onUnlock: () => void;
+  themeAction?: { label: string; onPress: () => void; busy: boolean };
 }) {
   const { t, locale } = useT();
   const note = (text: string, live = false) => <BarNote text={text} live={live} />; // i18n-ignore (code after a JSX element)
@@ -1289,6 +1296,10 @@ function RemoteDownloadBar({
             <PillButton label={t('theme.remote.unlock')} icon="lock" block onPress={onUnlock} accessibilityHint={t('theme.applyHintLocked')} />
             {note(t('theme.pack.locked'))}
           </>
+        ) : null}
+        {themeAction ? (
+          <PillButton label={themeAction.label} variant="tinted" block busy={themeAction.busy}
+            onPress={themeAction.onPress} accessibilityHint={t('theme.use.hint')} />
         ) : null}
       </View>
     </GlassBar>

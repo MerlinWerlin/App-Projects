@@ -51,6 +51,8 @@ export type WidgetArtPiece = {
   size: WidgetArtSize | null;
   /** T237: what the widget draws live over this piece; absent = a picture only. */
   live?: LiveArtSpec;
+  /** Identifies the composed remote source and wallpaper without changing the WidgetKit entity id. */
+  artRevision?: string;
   /**
    * T252: position of an auto-added theme piece among its theme's pieces of the same size (0 = the
    * first on the shelf). A widget whose piece was removed by a theme swap shows the new theme's
@@ -146,6 +148,7 @@ function normalisePiece(raw: unknown): WidgetArtPiece | null {
     size,
     // T237 (additive): keep a valid live spec, drop a broken one.
     ...liveField(r.live),
+    ...(typeof r.artRevision === 'string' ? { artRevision: str(r.artRevision, 240) } : {}),
     // T252 (additive): slot of an auto-added theme piece.
     ...slotField(r.slot),
   };
@@ -256,8 +259,13 @@ export function addPiece(lib: WidgetArtIndex, piece: Omit<WidgetArtPiece, 'file'
   const keep = Math.max(1, Math.floor(cap));
   // Never evict the piece just added, even if its clock is behind.
   const ordered = [p, ...merged.filter((q) => q.id !== p.id)];
-  const kept = ordered.slice(0, keep);
-  const evicted = ordered.slice(keep).map((q) => q.id);
+  let remaining = keep;
+  const kept = ordered.filter(q => {
+    if (q.source === 'theme' && q.themeId === lib.currentThemeId && q.slot !== undefined) return true;
+    return remaining-- > 0;
+  });
+  const ids = new Set(kept.map(q => q.id));
+  const evicted = ordered.filter(q => !ids.has(q.id)).map(q => q.id);
   return { lib: { ...lib, v: 1, pieces: listPieces({ v: 1, pieces: kept }) }, added: !existed, evicted };
 }
 
