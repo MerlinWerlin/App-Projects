@@ -150,7 +150,7 @@ import Darwin
     XCTAssertTrue(action.waitForExistence(timeout: 8), app.debugDescription)
     action.tap()
     // Wait for the explicit action to finish. No extra delay for widget art before going home.
-    let installed = app.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] %@", "Your icon set")).firstMatch
+    let installed = app.navigationBars["Install icons"].firstMatch
     for _ in 0..<55 {
       if installed.exists { break }
       for alert in [app.alerts.firstMatch, spring.alerts.firstMatch] where alert.exists {
