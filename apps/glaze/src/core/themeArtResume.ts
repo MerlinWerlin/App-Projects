@@ -60,6 +60,7 @@ export function remoteThemeFromManifest(m: RemoteArtManifest): RemoteArtTheme {
       id: m.id,
       name: m.name,
       packVersion: m.packVersion,
+      ...(m.release ? { release: m.release } : {}),
       plus: m.plus,
       bytes: m.totalBytes,
       manifest: '',

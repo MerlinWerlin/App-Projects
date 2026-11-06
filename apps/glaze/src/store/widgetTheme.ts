@@ -17,8 +17,9 @@ async function activeThemeKey(): Promise<string | undefined> {
 }
 
 function writeWidgetTheme(wt: ReturnType<typeof widgetGalleryTheme>) {
+  const published = widgets.setTheme(wt);
   void syncPackClockFace(wt.themeId);
-  return widgets.setTheme(wt);
+  return published;
 }
 
 /** Wallpaper and Studio writes can supply a fallback until an explicit theme is selected. */
@@ -36,18 +37,19 @@ export function applyWidgetTheme(theme: Theme): Promise<boolean> {
   });
 }
 
-/** Called inside the selection queue. Persist both theme keys together, then publish to WidgetKit. */
+/** Called inside the selection queue. Publish to WidgetKit and persist both theme keys together. */
 export async function rememberWidgetTheme(theme: Theme): Promise<boolean> {
   try {
     const wt = widgetGalleryTheme(theme);
     selectedWidgetTheme = wt;
-    const stored = await AsyncStorage.multiSet([
+    const sharedWrite = writeWidgetTheme(wt);
+    const storageWrite = AsyncStorage.multiSet([
       [ACTIVE_THEME_KEY, serializeActiveTheme({ themeId: theme.id, at: Date.now() })],
       [ACTIVE_WIDGET_THEME_KEY, serializeWidgetTheme(wt)],
     ]).then(() => true, () => false);
-    const shared = await writeWidgetTheme(wt);
+    const [shared, stored] = await Promise.all([sharedWrite, storageWrite]);
     if (shared.available && !shared.ok) requestDeferred(DEFERRED_STEPS.widgetTheme);
-    return shared.ok || stored;
+    return shared.available ? shared.ok : stored;
   } catch {
     return false;
   }

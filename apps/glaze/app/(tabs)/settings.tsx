@@ -7,13 +7,18 @@
 // T210 (owner-1101d screens): Help has a Clean up old icons row; the How icons work sheet says
 // Install all at once is the main way (T202) and shows the removal steps as a numbered sequence.
 import Constants from 'expo-constants';
-import { router } from 'expo-router';
-import { useEffect, useState, type ReactNode } from 'react';
+import { router, useFocusEffect } from 'expo-router';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { StyleSheet, Text, View, type TextStyle } from 'react-native';
 import type { IconShape } from '../../src/core/iconspec';
 import { PROBE_APPS } from '../../src/core/installedProbe';
 import { GLYPH_SIZES, setStyle, type StudioState } from '../../src/core/studio';
 import type { ReduceMotion } from '../../src/core/settings';
+import { parseWidgetLastRead } from '../../src/core/widgetLink';
+import { parseWidgetTheme } from '../../src/core/widgetTheme';
+import { widgets } from '../../src/native/widgets';
+import { loadActiveThemeId } from '../../src/store/activeTheme';
+import { themeWidgetArtDiagnostics } from '../../src/store/themeWidgetArt';
 import { PlusLockSheet } from '../../src/plus/PlusLockSheet';
 import { RestorePurchases } from '../../src/plus/RestorePurchases';
 import { TipJar } from '../../src/plus/TipJar';
@@ -298,6 +303,7 @@ function SettingsScreen() {
         />
         <UpdateRow />
         <StartupRow />
+        <WidgetDiagnosticsRow />
       </InsetGroup>
 
       <PlusLockSheet visible={plusOpen} onClose={() => setPlusOpen(false)} />
@@ -401,6 +407,53 @@ function StartupRow() {
     step: (key, raw) => (key ? t(STARTUP_STEP[key]) : raw),
   });
   const title = t('settings.about.startupRow');
+  return <InsetRow icon="activity" iconTone="sky" title={title} subtitle={line} accessibilityLabel={[title, line].join(', ')} />;
+}
+
+function WidgetDiagnosticsRow() {
+  const { t } = useT();
+  const [status, setStatus] = useState<{
+    active: string | null;
+    shared?: string;
+    read?: string;
+    artTheme?: string;
+    art: ReturnType<typeof themeWidgetArtDiagnostics>;
+  } | null>(null);
+  useFocusEffect(useCallback(() => {
+    let focused = true;
+    let pending = false;
+    const refresh = async () => {
+      if (pending) return;
+      pending = true;
+      try {
+        const [active, link] = await Promise.all([loadActiveThemeId(), widgets.linkStatus()]);
+        if (focused) setStatus({
+          active,
+          shared: link.storedTheme ? parseWidgetTheme(link.storedTheme)?.themeId : undefined,
+          read: parseWidgetLastRead(link.galleryRead)?.themeId,
+          artTheme: link.artTheme || undefined,
+          art: themeWidgetArtDiagnostics(active),
+        });
+      } finally {
+        pending = false;
+      }
+    };
+    const read = () => { void refresh().catch(() => undefined); };
+    read();
+    const timer = setInterval(read, 2_000);
+    return () => { focused = false; clearInterval(timer); };
+  }, []));
+  const empty = '—';
+  const art = status?.art;
+  const line = [
+    t('settings.about.widgetThemes', { active: status?.active ?? empty, shared: status?.shared ?? empty, read: status?.read ?? empty }),
+    t('settings.about.widgetArtCounts', {
+      theme: status?.artTheme ?? empty, planned: art?.planned ?? empty, composed: art?.composed ?? empty,
+      failed: art?.failed ?? empty, missing: art?.missing ?? empty,
+    }),
+    t('settings.about.widgetArtError', { error: art?.lastError?.slice(0, 160) ?? empty }),
+  ].join('\n');
+  const title = t('settings.about.widgetDiagnostics');
   return <InsetRow icon="activity" iconTone="sky" title={title} subtitle={line} accessibilityLabel={[title, line].join(', ')} />;
 }
 

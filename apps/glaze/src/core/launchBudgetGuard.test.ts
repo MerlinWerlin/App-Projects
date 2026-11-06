@@ -77,7 +77,7 @@ test('applyThemeEverywhere returns after the essential writes; heavy follow-ups 
   const fn = fnBody(store, /export function applyThemeEverywhere\(theme: Theme\): Promise<ApplyResult> \{/);
   for (const re of HEAVY) assert.doesNotMatch(fn, re, `applyThemeEverywhere must not call ${re}`);
   // The essential state: icon style, remembered widget theme, theme in use, listeners.
-  assert.match(fn, /await applyThemeIcons\(theme, /);
+  assert.match(fn, /applyThemeIcons\(theme, /);
   assert.match(fn, /await rememberWidgetTheme\(theme\)/);
   // Queued after the theme in use is stored (the steps read it back when resumed next launch).
   const stored = fn.indexOf('await rememberWidgetTheme');

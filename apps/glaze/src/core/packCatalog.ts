@@ -52,6 +52,7 @@ export type RemoteArtAsset = {
 };
 
 export type RemoteArtManifest = {
+  release?: string;
   format: typeof REMOTE_ART_FORMAT;
   version: 1 | 2;
   id: string;
@@ -244,6 +245,7 @@ export function parseRemoteArtManifest(raw: unknown, expectId?: string): ParseRe
       version,
       id: raw.id,
       packVersion: raw.packVersion,
+      ...(isPackReleaseTag(raw.release) ? { release: raw.release } : {}),
       name: raw.name,
       plus: raw.plus,
       minAppVersion: raw.minAppVersion,

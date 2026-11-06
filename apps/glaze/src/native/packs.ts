@@ -17,7 +17,7 @@
 // (src/core/packUpdates.ts). The index records each pack's packVersion (older entries back-filled).
 // Only files under documentDirectory/packs/<id>/ are replaced: widget art and wallpapers already
 // applied were copied into the App Group / Photos, so they keep working.
-import { localWidgetArtOptions, remoteWidgetArtOptions, type LocalWidgetOption } from '../core/remoteWidgetArt';
+import { localWidgetArtOptions, remoteWidgetArtOptions, resolveRemoteWidgetArtRef, type LocalWidgetOption } from '../core/remoteWidgetArt';
 import { isRemoteArtTheme } from '../core/remoteCatalog';
 import Constants from 'expo-constants';
 import { Dimensions, PixelRatio, Platform } from 'react-native';
@@ -34,11 +34,13 @@ import {
   fetchCatalogConditional,
   loadPackContent,
   loadRemoteArtQuick,
+  packRequest,
   packsEnabled,
   readLocalRemoteArt,
   remoteArtCacheEntry,
   removePack,
   resolvePackBaseUrl,
+  type ConditionalResponse,
   type Transport,
 } from '../core/packDownloader';
 import type { Catalog, RemoteArtManifest } from '../core/packCatalog';
@@ -123,8 +125,8 @@ function finalUrlOk(requested: string, final: unknown): boolean {
 }
 
 export const deviceTransport: Transport = {
-  async fetchRange(url, start) {
-    const res = await fetch(url, start > 0 ? { headers: { Range: `bytes=${start}-` } } : undefined);
+  async fetchRange(url, start, signal) {
+    const res = await fetch(url, { signal, headers: start > 0 ? { Range: `bytes=${start}-` } : undefined });
     if (res.status !== 200 && res.status !== 206) throw new Error(`HTTP ${res.status}`);
     if (!finalUrlOk(url, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
     const bytes = new Uint8Array(await res.arrayBuffer());
@@ -151,20 +153,22 @@ export const deviceTransport: Transport = {
   },
   // T254: catalog.json with If-None-Match, so an unchanged catalogue answers 304 with no body.
   async fetchConditional(url, etag, limit) {
-    const requestUrl = catalogRequestUrl(url, Date.now());
-    const res = await fetch(requestUrl, etag ? { headers: { 'If-None-Match': etag } } : undefined);
-    if (res.status === 304) return { status: 304 };
-    if (res.status !== 200) throw new Error(`HTTP ${res.status}`);
-    if (!finalUrlOk(requestUrl, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
-    const text = await res.text();
-    if (text.length > limit) throw new Error('response too large');
-    let tag: string | null = null;
-    try {
-      tag = res.headers?.get?.('etag') ?? null;
-    } catch {
-      tag = null;
-    }
-    return { status: 200, text, etag: tag };
+    return packRequest<ConditionalResponse>(async signal => {
+      const requestUrl = catalogRequestUrl(url, Date.now());
+      const res = await fetch(requestUrl, { signal, headers: etag ? { 'If-None-Match': etag } : undefined });
+      if (res.status === 304) return { status: 304 };
+      if (res.status !== 200) throw new Error(`HTTP ${res.status}`);
+      if (!finalUrlOk(requestUrl, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
+      const text = await res.text();
+      if (text.length > limit) throw new Error('response too large');
+      let tag: string | null = null;
+      try {
+        tag = res.headers?.get?.('etag') ?? null;
+      } catch {
+        tag = null;
+      }
+      return { status: 200, text, etag: tag };
+    });
   },
   // T222: swaps a staged pack update in (a folder rename inside documentDirectory/packs/).
   async move(from, to) {
@@ -586,35 +590,79 @@ export function remoteArtFileUri(id: string, path: string | null | undefined): s
   return ROOT && path ? `${ROOT}${id}/${path}` : null;
 }
 
-export type RemoteWidgetArtLocal = { options: LocalWidgetOption[]; missing: number };
-const widgetArtJobs = new Map<string, Promise<RemoteWidgetArtLocal>>();
+export type RemoteWidgetArtLocal = {
+  options: LocalWidgetOption[];
+  missing: number;
+  lastError: string | null;
+  expectedOptions: ReturnType<typeof remoteWidgetArtOptions>;
+};
+
+type WidgetArtJob = { controller: AbortController; promise: Promise<RemoteWidgetArtLocal>; users: number };
+const widgetArtJobs = new Map<string, WidgetArtJob>();
+
+function installedWidgetArt(manifest: RemoteArtManifest): RemoteWidgetArtLocal {
+  const expectedOptions = remoteWidgetArtOptions(manifest);
+  const options = localWidgetArtOptions(expectedOptions, path => remoteArtFileUri(manifest.id, path));
+  return { options, expectedOptions, missing: 0, lastError: null };
+}
 
 /** Installed packs are a cache hit. Other themes fetch just the artwork referenced by the manifest. */
-export async function remoteWidgetArtOnDevice(theme: Theme): Promise<RemoteWidgetArtLocal> {
-  if (!ROOT || !PACKS_ENABLED || !isRemoteArtTheme(theme)) return { options: [], missing: 0 };
-  const ref = catalogPack(theme.id) ?? { id: theme.id, ...theme.remoteArt };
-  const key = [ref.id, ref.packVersion, ref.release ?? ''].join(':');
-  const running = widgetArtJobs.get(key);
-  if (running) return running;
-  const task = (async () => {
-    try {
-      const installed = await remoteArtOnDevice(ref.id);
-      if (installed && installed.packVersion >= ref.packVersion) {
-        const options = localWidgetArtOptions(remoteWidgetArtOptions(installed), path => remoteArtFileUri(ref.id, path));
-        return { options, missing: 0 };
+export async function remoteWidgetArtOnDevice(theme: Theme, signal?: AbortSignal): Promise<RemoteWidgetArtLocal> {
+  if (!ROOT || !PACKS_ENABLED || !isRemoteArtTheme(theme)) {
+    return { options: [], expectedOptions: [], missing: 0, lastError: null };
+  }
+  const ref = await resolveRemoteWidgetArtRef(
+    () => catalogPack(theme.id),
+    { id: theme.id, ...theme.remoteArt },
+    () => packRequest(() => refreshCatalog(false), signal, 15_000),
+    /\/glaze-packs-v\d+\/?$/.test(PACK_BASE),
+  );
+  const installed = await packRequest(() => remoteArtOnDevice(theme.id), signal);
+  if (installed && installed.packVersion >= (ref?.packVersion ?? theme.remoteArt.packVersion)) {
+    return installedWidgetArt(installed);
+  }
+  if (!ref) throw new PackError('manifest', `Widget art release unavailable for ${theme.id}`);
+
+  // One writer per pack cache. A preview and the active theme can share its verified downloads.
+  const key = ref.id + ':' + ref.packVersion;
+  let job = widgetArtJobs.get(key);
+  if (job?.controller.signal.aborted) {
+    const stopping = job;
+    await packRequest(() => stopping.promise.catch(() => undefined), signal);
+    job = widgetArtJobs.get(key);
+  }
+  if (!job) {
+    const controller = new AbortController();
+    const promise = (async () => {
+      const timeout = setTimeout(() => controller.abort(), 60_000);
+      try {
+        const art = await downloadRemoteWidgetArt(deviceTransport, PACK_BASE, ref, controller.signal);
+        const expectedOptions = remoteWidgetArtOptions(art.manifest);
+        const options = localWidgetArtOptions(expectedOptions, path => {
+          const file = art.files.get(path);
+          return file ? uri(file) : null;
+        });
+        return { options, expectedOptions, missing: art.missing, lastError: art.lastError };
+      } catch (error) {
+        if (controller.signal.aborted && widgetArtJobs.get(key)?.users) {
+          throw new PackError('network', `Widget art timed out for ${ref.id}`);
+        }
+        throw error;
+      } finally {
+        clearTimeout(timeout);
+        widgetArtJobs.delete(key);
       }
-      const art = await downloadRemoteWidgetArt(deviceTransport, PACK_BASE, ref);
-      const options = localWidgetArtOptions(remoteWidgetArtOptions(art.manifest), path => {
-        const file = art.files.get(path);
-        return file ? uri(file) : null;
-      });
-      return { options, missing: art.missing };
-    } finally {
-      widgetArtJobs.delete(key);
-    }
-  })();
-  widgetArtJobs.set(key, task);
-  return task;
+    })();
+    job = { controller, promise, users: 0 };
+    widgetArtJobs.set(key, job);
+  }
+  job.users++;
+  try {
+    return await packRequest(() => job.promise, signal, 65_000);
+  } finally {
+    job.users--;
+    if (job.users === 0) job.controller.abort();
+  }
 }
 
 export function packClockArtworkUri(id: string, manifest = state.remoteArt[id]): string | null {

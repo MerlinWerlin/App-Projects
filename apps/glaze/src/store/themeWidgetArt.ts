@@ -65,15 +65,34 @@ type ThemeArt = {
   wallpaper: () => Promise<string | null>;
   wallpaperPx: { w: number; h: number };
   missing?: number;
+  lastError?: string | null;
+  expectedOptions?: WidgetOption[];
   artworkRevision?: string;
   hasWallpaper?: boolean;
 };
 
+type ArtDiagnostics = {
+  themeId: string;
+  planned: number | null;
+  composed: number;
+  failed: number;
+  missing: number;
+  lastError: string | null;
+};
+let diagnostics: ArtDiagnostics | null = null;
+
+export function themeWidgetArtDiagnostics(themeId: string | null): ArtDiagnostics | null {
+  return diagnostics?.themeId === themeId ? diagnostics : null;
+}
+
 let generation = 0;
+let activeDownload: AbortController | null = null;
 let running: Promise<unknown> = Promise.resolve();
 
 export function supersedeThemeWidgetArt(): void {
   generation++;
+  activeDownload?.abort();
+  activeDownload = null;
 }
 
 /**
@@ -82,11 +101,13 @@ export function supersedeThemeWidgetArt(): void {
  * supersedes this one. No-op { available: false } in Expo Go / Android. Never rejects.
  */
 export function syncThemeWidgetArt(theme: Theme, opts: ThemeArtSyncOptions = {}): Promise<ThemeArtSyncResult> {
-  const gen = ++generation;
-  const job = running.then(
-    () => runSync(theme, gen, opts),
-    () => runSync(theme, gen, opts),
-  );
+  supersedeThemeWidgetArt();
+  const gen = generation;
+  const controller = new AbortController();
+  activeDownload = controller;
+  const job = running.then(() => runSync(theme, gen, opts, controller.signal)).finally(() => {
+    if (activeDownload === controller) activeDownload = null;
+  });
   running = job.catch(() => undefined);
   return job;
 }
@@ -104,25 +125,38 @@ export async function pendingThemeWidgetArt(): Promise<string | null> {
 const NONE: ThemeArtSyncResult = { available: false, ok: false, composed: 0, failed: 0 };
 const defaultYield = () => new Promise<void>((resolve) => setTimeout(resolve, 0));
 
-async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Promise<ThemeArtSyncResult> {
+async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions, signal: AbortSignal): Promise<ThemeArtSyncResult> {
   const stale = () => gen !== generation;
   const pause = opts.yieldBetween ?? defaultYield;
   try {
     if (stale()) return { ...NONE, available: true, superseded: true };
+    diagnostics = { themeId: theme.id, planned: null, composed: 0, failed: 0, missing: 0, lastError: null };
     // 1. Nothing to do without the library bridge (Expo Go, Android, older build): no file work.
     const current = await widgets.artLibrary();
     if (!current.available) return NONE;
+    if (stale()) return { ...NONE, available: true, superseded: true };
     await setPending(theme.id);
     // 2. Plan.
     // T245: countdown art pieces go live with the day the person chose (none = Art).
     const targets = await loadCountdownArtTargets();
-    const art = await themeArt(theme, targets);
+    const art = await themeArt(theme, targets, signal);
+    if (stale()) return { ...NONE, available: true, superseded: true };
     const planned = plan(theme, art, targets, await widgets.designVersion() >= DESIGNED_WIDGET_CAPABILITY);
     const lib: WidgetArtIndex = { v: 1, pieces: current.pieces };
     const todo = piecesToCompose(lib, planned);
+    if (stale()) return { ...NONE, available: true, superseded: true };
+    const plannedArt = planned.filter(piece => !piece.live?.design).length;
+    const pendingArt = todo.filter(piece => !piece.live?.design).length;
+    const expectedArt = art.expectedOptions && art.missing
+      ? plan(theme, { ...art, options: art.expectedOptions }, targets, false).length
+      : plannedArt;
+    diagnostics = {
+      themeId: theme.id, planned: expectedArt, composed: plannedArt - pendingArt, failed: 0,
+      missing: expectedArt - plannedArt, lastError: art.lastError ?? null,
+    };
     // 3. Compose the missing pieces, one at a time.
     const ready: string[] = [];
-    let failed = art.missing ?? 0;
+    let failed = 0;
     let composeSupported = true;
     for (const piece of todo) {
       if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
@@ -133,17 +167,35 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
         composeSupported = false;
         break;
       }
+      if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
       if (r === 'ok') ready.push(piece.id);
       else failed++;
+      if (!piece.live?.design) {
+        if (r === 'ok') diagnostics.composed++;
+        else diagnostics.failed++;
+      }
       await pause();
     }
-    if (!composeSupported) failed += todo.length - ready.length;
+    if (!composeSupported) {
+      failed += todo.length - ready.length;
+      diagnostics.failed = plannedArt - diagnostics.composed;
+    }
     if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
     // 4. The one index write; the bridge prunes unlisted files, then reloads every timeline.
-    const res = await widgets.commitThemeArt(theme.id, planned, ready);
+    const res = await widgets.commitThemeArt(theme.id, planned, ready, () => !stale());
+    if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
+    if (!res.ok) {
+      diagnostics.failed += diagnostics.composed;
+      diagnostics.composed = 0;
+    }
+    failed += art.missing ?? 0;
     if (res.ok && failed === 0) await clearPending(theme.id);
     return { available: res.available, ok: res.ok && failed === 0, composed: ready.length, failed };
-  } catch {
+  } catch (error) {
+    if (stale()) return { ...NONE, available: true, superseded: true };
+    if (diagnostics?.themeId === theme.id) {
+      diagnostics.lastError = (error instanceof Error ? error.message : String(error)).slice(0, 240);
+    }
     return { available: true, ok: false, composed: 0, failed: 0 };
   }
 }
@@ -188,10 +240,10 @@ function plan(theme: Theme, source: ThemeArt, targets: CountdownArtTargets, supp
 }
 
 /** Every widget option of the theme with its art source (same lists as ThemeWidgetArt). */
-async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<ThemeArt> {
+async function themeArt(theme: Theme, targets: CountdownArtTargets, signal: AbortSignal): Promise<ThemeArt> {
   const empty: ThemeArt = { options: [], sources: new Map(), wallpaper: async () => null, wallpaperPx: { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height } };
   if (isRemoteArtTheme(theme)) {
-    const downloaded = await remoteWidgetArtOnDevice(theme);
+    const downloaded = await remoteWidgetArtOnDevice(theme, signal);
     const options = withLiveArt(theme.id, downloaded.options.map(item => item.option), { targets });
     const sources = new Map(options.map((option, i) => [option.id, { option, uri: downloaded.options[i].uri }]));
     const pack = getPackState().remoteArt[theme.id];
@@ -203,6 +255,8 @@ async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<The
       wallpaper: () => existingLocalFile(wallUri),
       wallpaperPx: wall ? { w: wall.width, h: wall.height } : empty.wallpaperPx,
       missing: downloaded.missing,
+      lastError: downloaded.lastError,
+      expectedOptions: downloaded.expectedOptions,
       hasWallpaper: !!wallUri,
       artworkRevision: 'widget-art-v1:' + (wall?.path ?? ''),
     };

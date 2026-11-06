@@ -448,8 +448,8 @@ test('widget previews and automatic setup use the same bundled and downloaded ar
   assert.match(art, /useRemoteArtTheme\(/);
   assert.match(art, /widgetOptionsFromV1\(/);
   assert.match(sync, /widgetOptionsFromV1\(/);
-  assert.match(sync, /remoteWidgetArtOnDevice\(theme\)/);
-  assert.match(art, /remoteWidgetArtOnDevice\(latest\)/);
+  assert.match(sync, /remoteWidgetArtOnDevice\(theme, signal\)/);
+  assert.match(art, /remoteWidgetArtOnDevice\(latest, controller\.signal\)/);
   assert.match(remote, /localWidgetArtOptions\(remoteWidgetArtOptions\(local\)/);
 });
 

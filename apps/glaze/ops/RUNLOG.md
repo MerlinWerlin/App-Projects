@@ -735,3 +735,4 @@ Apple SDK validation passed: runs 40310744314 and 40310737544 compile the full W
 - 2026-11-06 Codex: Glaze 1.0.8 loads the current illustrated clock from verified companion assets. Widget setup screens now preview the three theme widgets. TypeScript, 1,900 core tests and 27 pack checks passed.
 - 2026-11-06 Codex: Glaze 1.0.9 restores automatic art setup and previews, orders theme writes, and adds the three theme actions.
 - 2026-11-06 Codex: Glaze 1.0.10 downloads remote widget art independently. The real Alpine v3 fixture covers all eight pieces and three sizes. The live audit verified 141 packs and 1,093 artwork files. Copper Eclipse keeps its original moon texture.
+- 2026-11-06 Codex: Glaze 1.0.11 separates theme publication from cancellable art preparation. Verified Alpine and Aurora Haven widget assets against live GitHub pack releases and added an About diagnostics row.
