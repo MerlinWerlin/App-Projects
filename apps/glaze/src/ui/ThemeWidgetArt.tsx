@@ -71,7 +71,7 @@ const NONE: readonly MenuOption[] = Object.freeze([]) as readonly MenuOption[];
 
 export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: Props) {
   return <View style={style}>
-    <DesignedThemeWidgets theme={theme} size={size} width={width} onLibraryChange={onLibraryChange} />
+    <DesignedThemeWidgets theme={theme} size={size} width={width} />
     <ThemeDecorativeArt theme={theme} size={size} width={width} onLibraryChange={onLibraryChange} />
   </View>;
 }

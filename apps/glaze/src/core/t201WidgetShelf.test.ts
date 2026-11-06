@@ -23,28 +23,21 @@ test('the menu both screens share orders by widgetShelf (practical kinds, then a
   assert.match(art, /selectedOption\(/);
 });
 
-test('theme page > Widgets: practical + art (ThemeWidgetArt) first, then the standard set; overview keeps the standard teaser', () => {
-  const d = strip(read('app', 'theme', '[id].tsx'));
-  // The Widgets card opens the theme's own widgets step (it used to jump straight to Widget Studio,
-  // which only had the standard types, while the overview showed the art: no practical pieces).
-  assert.match(d, /router\.push\(\{ pathname: '\/theme\/\[id\]', params: \{ id: theme\.id, step: part \} \}\)/);
-  const shelf = d.indexOf("{step === 'widgets' ? <ThemeWidgetsShelf theme={theme} /> : null}");
-  const seamless = d.indexOf("{step === 'widgets' && artPack ? <SeamlessCard");
-  const standard = d.indexOf("{overview || step === 'widgets' ? (");
-  assert.ok(shelf > 0 && seamless > shelf && standard > seamless, 'practical + art, then seamless art, then standard');
-  assert.ok(d.slice(standard).indexOf('<WidgetPreviews theme={theme} palette={palette} />') > 0);
-  const fn = d.slice(d.indexOf('function ThemeWidgetsShelf('), d.indexOf('const WIDGET_PREVIEW_W'));
-  assert.match(fn, /<ThemeWidgetArt theme=\{theme\} size=\{size\} width=\{width\} \/>/);
-  assert.match(fn, /<Segmented<HomeOptionSize>/, 'pick the Home Screen size here');
-  assert.match(d, /step === 'widgets'\s*\? t\('theme\.parts\.widgets'\)/);
-});
-
-test('Widgets tab: the theme widget menu (practical, art) sits above the standard grid', () => {
+test('both widget screens preview the theme clock, battery and calendar without saving a widget', () => {
+  const detail = strip(read('app', 'theme', '[id].tsx'));
   const tab = strip(read('app', '(tabs)', 'widgets.tsx'));
-  const head = tab.slice(tab.indexOf('const header = ('), tab.indexOf('return (\n    <LargeTitleFlatList'));
-  assert.match(head, /<ThemeWidgetArt theme=\{gridTheme\} size=\{size\}/);
-  // The grid rows (standard widget types in the theme palette) are the list data, after the header.
-  assert.match(tab, /header=\{header\}\s*\n\s*data=\{rows\}/);
+  const preview = strip(read('src', 'ui', 'DesignedThemeWidgets.tsx'));
+  assert.match(detail, /router\.push\(\{ pathname: '\/theme\/\[id\]', params: \{ id: theme\.id, step: part \} \}\)/);
+  assert.match(detail, /step === 'widgets' \? <ThemeWidgetsShelf theme=\{theme\}/);
+  assert.match(detail, /<DesignedThemeWidgets theme=\{theme\}/);
+  assert.match(detail, /overview \? \([\s\S]*?<WidgetPreviews theme=\{theme\}/);
+  assert.match(tab, /useAnyTheme\(activeId\)/);
+  assert.match(tab, /<DesignedThemeWidgets theme=\{theme\}/);
+  assert.match(preview, /DESIGNED_KINDS\.map/);
+  for (const src of [detail, tab, preview]) {
+    assert.doesNotMatch(src, /<ThemeWidgetArt\b|<SeamlessCard\b|widgets\.(setSeamless|setWidgetArt|setWidgetSet|saveDesign)\(/);
+  }
+  assert.doesNotMatch(tab, /applyWidgetTheme\(/);
 });
 
 test('apply → App Group write → reload: ThemeWidgetArt → adapter → bridge → reloadAllTimelines', () => {

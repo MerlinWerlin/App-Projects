@@ -126,10 +126,10 @@ test('each preview draws the function at every size, including six calendar rows
   }
 });
 
-test('only the eight pilot clocks use validated, content-addressed pack art', () => {
-  const pilot = fixture.themes.flatMap(t => t.designs.filter(d => d.packFace).map(d => [t.id, d.kind]));
-  assert.equal(pilot.length, 8);
-  assert.ok(pilot.every(([id, kind]) => id !== 'alpine-starlight' && kind === 'clock'));
+test('every authored clock except Alpine can use validated, content-addressed pack art', () => {
+  const eligible = fixture.themes.flatMap(t => t.designs.filter(d => d.packFace).map(d => [t.id, d.kind]));
+  assert.equal(eligible.length, fixture.themes.length - 1);
+  assert.ok(eligible.every(([id, kind]) => id !== 'alpine-starlight' && kind === 'clock'));
   const asset = { role: 'widget-art', mime: 'image/png', path: 'clock-face.01234567.png', width: 900, height: 900, bytes: 124_000,
     sha256: '01234567'.repeat(8) } as const;
   assert.equal(packClockFaceAsset([asset]), asset);

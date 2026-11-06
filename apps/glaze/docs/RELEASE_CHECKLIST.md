@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**6 November 2026 TestFlight clock delivery fix: `1.0.8`.** Download and verify a selected clock face independently of the wallpaper pack. The Widgets screen previews Clock, Battery and Calendar. The theme selects the Home Screen designs.
+
 **6 November 2026 TestFlight pilot: `1.0.7`.** Eight downloadable theme packs add original illustrated clock plates. WidgetKit decodes the selected plate at the size it draws and overlays the live hands and marks.
 
 **6 November 2026 TestFlight follow-up: `1.0.6`.** The three primary Home Screen widget names are Clock, Battery and Calendar. Legacy configurations remain registered and disfavored for the Home Screen.

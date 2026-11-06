@@ -1,22 +1,21 @@
-import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
-import { AccessibilityInfo, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { useFocusEffect } from 'expo-router';
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
+import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import { DESIGNED_KINDS, DESIGNED_SIZE, designedLiveSpec, designedOptionId, designedWidget, type DesignedKind, type DesignedWidget } from '../core/designedWidgets';
+import { DESIGNED_KINDS, DESIGNED_SIZE, designedWidget, type DesignedWidget } from '../core/designedWidgets';
 import { designedWidgetSvg } from '../core/designedWidgetPreview';
 import type { Theme } from '../core/themes';
-import { themePieceId } from '../core/widgetArtLibrary';
 import type { HomeOptionSize } from '../core/widgetOptions';
 import type { WidgetTabSize } from '../core/tabNav';
 import { useT } from '../i18n';
 import { widgets } from '../native/widgets';
-import { packClockArtworkUri, remoteArtOnDevice, subscribePacks, syncPackClockFace } from '../native/packs';
+import { packClockArtworkUri, subscribePacks, syncPackClockFace } from '../native/packs';
 import { chromeRadiusV2, continuous, fontScaleCap, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
-import { PillButton } from './PillButton';
 import { SectionHeader } from './SectionHeader';
 import { bundledArtUri } from './artPackSources';
 
-type Props = { theme: Theme; size: WidgetTabSize; width: number; style?: StyleProp<ViewStyle>; onLibraryChange?: () => void };
+type Props = { theme: Theme; size: WidgetTabSize; width: number; style?: StyleProp<ViewStyle> };
 
 const alpineClockFace = require('../../assets/widgets/alpine-clock-face.jpg');
 
@@ -24,75 +23,54 @@ function useOriginalClockArtwork(design: DesignedWidget): string | undefined {
   const id = design.packFace?.id;
   const read = () => id ? packClockArtworkUri(id) : null;
   const local = useSyncExternalStore(subscribePacks, read, read);
-  useEffect(() => { if (id) void remoteArtOnDevice(id); }, [id]);
+  useEffect(() => { if (id) void syncPackClockFace(id); }, [id]);
   if (design.kind === 'clock' && design.identity?.originalFace === 'alpine') return bundledArtUri(alpineClockFace) ?? undefined;
   return local ?? undefined;
 }
 
 /** Every theme has all three functional pieces, including bundled themes and offline packs. */
-export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChange }: Props) {
-  const { t, locale } = useT();
+export function DesignedThemeWidgets({ theme, size, width, style }: Props) {
+  const { t } = useT();
   const { c } = useColorsV2();
-  const [kind, setKind] = useState<DesignedKind>('clock');
   const [now, setNow] = useState(() => new Date());
   const [battery, setBattery] = useState<number | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [status, setStatus] = useState<'saved' | 'update' | 'failed' | null>(null);
-  useEffect(() => {
+  const designs = useMemo(() => DESIGNED_KINDS.map(kind => designedWidget(theme, kind)), [theme]);
+  useFocusEffect(useCallback(() => {
     let alive = true;
     const refresh = () => { setNow(new Date()); widgets.designedBattery().then(v => { if (alive) setBattery(v); }).catch(() => undefined); };
     refresh(); const timer = setInterval(refresh, 30000);
     return () => { alive = false; clearInterval(timer); };
-  }, []);
-  useEffect(() => { setStatus(null); }, [theme.id, kind, size]);
-  const design = useMemo(() => designedWidget(theme, kind), [theme, kind]);
-  const originalArtwork = useOriginalClockArtwork(design);
+  }, []));
   if (size === 'lock') return null;
-  const name = (value: DesignedKind) => t(`ui.designedWidgets.${value}`);
   const previewWidth = size === 'small' ? Math.min(220, width) : width;
-  const previewHeight = previewWidth * DESIGNED_SIZE[size].h / DESIGNED_SIZE[size].w;
-  const xml = designedWidgetSvg(design, size, { date: now, battery, locale, batteryLabel: name('battery'), unavailableLabel: t('ui.designedWidgets.unavailable'), originalArtwork });
-  const save = async () => {
-    if (busy) return;
-    setBusy(true); setStatus(null);
-    try {
-      if (design.packFace) await syncPackClockFace(design.packFace.id);
-      const label = [name(kind), t(`ui.seamless.sizes.${size}`)].join(' · ');
-      const result = await widgets.saveDesignedWidget({
-        id: themePieceId(theme.id, designedOptionId(kind), size), name: label, themeName: theme.name,
-        themeId: theme.id, source: 'theme', created: Date.now(), aspect: DESIGNED_SIZE[size].w / DESIGNED_SIZE[size].h,
-        size, slot: DESIGNED_KINDS.indexOf(kind), live: designedLiveSpec(theme, kind),
-      });
-      const next = result.ok ? 'saved' : !result.available ? 'update' : 'failed';
-      setStatus(next);
-      AccessibilityInfo.announceForAccessibility(next === 'saved' ? t('ui.seamless.library.added') : next === 'update' ? t('ui.designedWidgets.update') : t('ui.seamless.failed'));
-      if (result.ok) onLibraryChange?.();
-    } catch { setStatus('failed'); }
-    finally { setBusy(false); }
-  };
   return (
     <View testID="designed-widgets" style={[styles.wrap, style]}>
       <SectionHeader title={t('ui.designedWidgets.title')} body={t('ui.designedWidgets.body')} flushTop />
-      <View style={styles.choices}>
-        {DESIGNED_KINDS.map(value => (
-          <PillButton key={value} testID={`designed-${value}`} label={name(value)} size="small" variant={value === kind ? 'filled' : 'tinted'}
-            accessibilityLabel={name(value)} accessibilityState={{ selected: value === kind }} disabled={busy}
-            onPress={() => setKind(value)} />
-        ))}
-      </View>
-      <View style={[styles.preview, continuous, { width: previewWidth, height: previewHeight, backgroundColor: design.background[0] }]}>
-        <SvgXml xml={xml} width={previewWidth} height={previewHeight} accessible accessibilityLabel={[name(kind), theme.name].join(', ')} />
-      </View>
+      {designs.map(design => <WidgetFacePreview key={design.kind} design={design} size={size}
+        width={previewWidth} themeName={theme.name} now={now} battery={battery} />)}
       <Text style={[textV2.footnote, { color: c.inkSecondary }]} maxFontSizeMultiplier={fontScaleCap('footnote')}>
         {t('ui.designedWidgets.setup')}
       </Text>
-      <PillButton testID="save-designed-widget" label={t('ui.designedWidgets.save')} icon="check-circle" variant="tinted" block busy={busy} onPress={() => { void save(); }} />
-      {status ? <Text style={[textV2.footnote, { color: c.inkSecondary }]} maxFontSizeMultiplier={fontScaleCap('footnote')}>
-        {status === 'saved' ? t('ui.seamless.library.added') : status === 'update' ? t('ui.designedWidgets.update') : t('ui.seamless.failed')}
-      </Text> : null}
-      {kind === 'battery' ? <Text style={[textV2.footnote, { color: c.inkSecondary }]} maxFontSizeMultiplier={fontScaleCap('footnote')}>{t('ui.designedWidgets.batteryNote')}</Text> : null}
     </View>
   );
+}
+
+function WidgetFacePreview({ design, size, width, themeName, now, battery }: {
+  design: DesignedWidget; size: HomeOptionSize; width: number; themeName: string; now: Date; battery: number | null;
+}) {
+  const { t, locale } = useT();
+  const { c } = useColorsV2();
+  const originalArtwork = useOriginalClockArtwork(design);
+  const name = t(`ui.designedWidgets.${design.kind}`);
+  const height = width * DESIGNED_SIZE[size].h / DESIGNED_SIZE[size].w;
+  const xml = designedWidgetSvg(design, size, { date: now, battery, locale, batteryLabel: t('ui.designedWidgets.battery'),
+    unavailableLabel: t('ui.designedWidgets.unavailable'), originalArtwork });
+  return <View style={styles.face}>
+    <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('subhead')} style={[textV2.subhead, { color: c.ink }]}>{name}</Text>
+    <View style={[styles.preview, continuous, { width, height, backgroundColor: design.background[0] }]}>
+      <SvgXml xml={xml} width={width} height={height} accessible accessibilityLabel={[name, themeName].join(', ')} />
+    </View>
+  </View>;
 }
 
 /** Library thumbnails use the same functional composition, rather than a blank placeholder. */
@@ -103,6 +81,6 @@ export function DesignedWidgetThumbnail({ design, size, width }: { design: Desig
 }
 
 const styles = StyleSheet.create({
-  wrap: { gap: spaceV2.md }, choices: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.xs },
+  wrap: { gap: spaceV2.md }, face: { alignItems: 'center', gap: spaceV2.xs },
   preview: { alignSelf: 'center', overflow: 'hidden', borderRadius: chromeRadiusV2.card },
 });
