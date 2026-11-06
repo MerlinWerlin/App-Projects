@@ -51,6 +51,7 @@ export interface WidgetsAdapter {
   isAvailable(): Promise<{ available: boolean; reason: WidgetsReason }>;
   /** Write the active theme to the App Group and reload widget timelines. */
   setTheme(theme: WidgetTheme): Promise<WidgetsResult>;
+  setPackClockFace(id: string, uri: string | null): Promise<WidgetsResult>;
   designVersion(): Promise<number>;
   designedBattery(): Promise<number | null>;
   saveDesignedWidget(piece: Omit<WidgetArtPiece, 'file'>): Promise<WidgetsResult>;
@@ -210,6 +211,7 @@ export function validSeamlessInput(input: SeamlessInput | null | undefined): boo
 /** Shape exposed by modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift. */
 type NativeBridge = {
   setTheme(json: string): Promise<boolean>;
+  setPackClockFace?(id: string, uri: string | null): Promise<boolean>;
   widgetDesignVersion?(): Promise<number>;
   setPhoto(uri: string): Promise<boolean>;
   clearPhoto?(): Promise<boolean>;
@@ -373,6 +375,7 @@ export const widgets: WidgetsAdapter = {
   }),
   upgradeDesignedWidgets: (theme) => editArtIndex(lib => upgradedDesignedLibrary(lib, theme, (kind, size) => `${t(`ui.designedWidgets.${kind}`)} · ${t(`ui.seamless.sizes.${size}`)}`)),
   setTheme: (theme) => run((mod) => mod.setTheme(serializeWidgetTheme(theme))),
+  setPackClockFace: (id, uri) => run(mod => mod.setPackClockFace?.(id, uri)),
   setPhoto: (uri) => run((mod) => mod.setPhoto(uri)),
   clearPhoto: () => run((mod) => mod.clearPhoto?.()),
   importAlbumPhotos: async (uris) => {

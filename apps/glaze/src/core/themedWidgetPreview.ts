@@ -53,8 +53,17 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
   if (d.kind === 'clock') {
     const b = originalFaceBox(size);
     const original = identity.originalFace === 'alpine' && art !== null;
-    if (original) {
+    const downloaded = d.packFace !== undefined && art !== null;
+    const artInk = d.packFace?.darkInk ? '#182838' : '#FFF4DD';
+    const artShadow = d.packFace?.darkInk ? '#FFF8E7' : '#131926';
+    if (original || downloaded) {
       elements.push(`<image href="${esc(art)}" x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}"/>`);
+      if (downloaded) {
+        path(identity.minutes, b, artShadow, .85, 1.35);
+        path(identity.minutes, b, artInk, .85, .55);
+        path(identity.hours, b, artShadow, 1, 2.4);
+        path(identity.hours, b, artInk, 1, 1.25);
+      }
     } else {
       path(identity.outline, b, d.ink, .045);
       insetClip('face', b);
@@ -78,10 +87,11 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
     const cy = original ? 47.3 : 50;
     const hourShape = hand((hour + minute / 60) * Math.PI / 6 - Math.PI / 2, 21, 1.85, identity.hands, cy);
     const minuteShape = hand(minute * Math.PI / 30 - Math.PI / 2, 32, 1.2, identity.hands, cy);
-    for (const p of [hourShape, minuteShape]) path(p, b, d.background[0], .9, 2.05);
-    path(hourShape, b, original ? '#DFBA87' : d.secondary);
-    path(minuteShape, b, original ? '#FFF4DC' : d.ink);
-    circle(b.x + b.w * .5, b.y + b.h * cy / 100, b.w * .023, original ? '#FFF4DC' : d.ink);
+    for (const p of [hourShape, minuteShape]) path(p, b, downloaded ? artShadow : d.background[0], downloaded ? 1 : .9, 2.05);
+    path(hourShape, b, original ? '#DFBA87' : downloaded ? artInk : d.secondary);
+    const minuteInk = original ? '#FFF4DC' : downloaded ? artInk : d.ink;
+    path(minuteShape, b, minuteInk);
+    circle(b.x + b.w * .5, b.y + b.h * cy / 100, b.w * .023, minuteInk);
     if (wide) {
       path(identity.outline, box(179, 13, 178, 144), d.ink, .052);
       path(identity.inner, box(179, 13, 178, 144), d.accent, .35, .6);

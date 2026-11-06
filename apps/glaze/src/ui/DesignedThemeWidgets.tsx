@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { AccessibilityInfo, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { DESIGNED_KINDS, DESIGNED_SIZE, designedLiveSpec, designedOptionId, designedWidget, type DesignedKind, type DesignedWidget } from '../core/designedWidgets';
@@ -9,6 +9,7 @@ import type { HomeOptionSize } from '../core/widgetOptions';
 import type { WidgetTabSize } from '../core/tabNav';
 import { useT } from '../i18n';
 import { widgets } from '../native/widgets';
+import { packClockArtworkUri, remoteArtOnDevice, subscribePacks, syncPackClockFace } from '../native/packs';
 import { chromeRadiusV2, continuous, fontScaleCap, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { PillButton } from './PillButton';
@@ -19,9 +20,13 @@ type Props = { theme: Theme; size: WidgetTabSize; width: number; style?: StylePr
 
 const alpineClockFace = require('../../assets/widgets/alpine-clock-face.jpg');
 
-function originalClockArtwork(design: DesignedWidget): string | undefined {
+function useOriginalClockArtwork(design: DesignedWidget): string | undefined {
+  const id = design.packFace?.id;
+  const read = () => id ? packClockArtworkUri(id) : null;
+  const local = useSyncExternalStore(subscribePacks, read, read);
+  useEffect(() => { if (id) void remoteArtOnDevice(id); }, [id]);
   if (design.kind === 'clock' && design.identity?.originalFace === 'alpine') return bundledArtUri(alpineClockFace) ?? undefined;
-  return undefined;
+  return local ?? undefined;
 }
 
 /** Every theme has all three functional pieces, including bundled themes and offline packs. */
@@ -41,15 +46,17 @@ export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChang
   }, []);
   useEffect(() => { setStatus(null); }, [theme.id, kind, size]);
   const design = useMemo(() => designedWidget(theme, kind), [theme, kind]);
+  const originalArtwork = useOriginalClockArtwork(design);
   if (size === 'lock') return null;
   const name = (value: DesignedKind) => t(`ui.designedWidgets.${value}`);
   const previewWidth = size === 'small' ? Math.min(220, width) : width;
   const previewHeight = previewWidth * DESIGNED_SIZE[size].h / DESIGNED_SIZE[size].w;
-  const xml = designedWidgetSvg(design, size, { date: now, battery, locale, batteryLabel: name('battery'), unavailableLabel: t('ui.designedWidgets.unavailable'), originalArtwork: originalClockArtwork(design) });
+  const xml = designedWidgetSvg(design, size, { date: now, battery, locale, batteryLabel: name('battery'), unavailableLabel: t('ui.designedWidgets.unavailable'), originalArtwork });
   const save = async () => {
     if (busy) return;
     setBusy(true); setStatus(null);
     try {
+      if (design.packFace) await syncPackClockFace(design.packFace.id);
       const label = [name(kind), t(`ui.seamless.sizes.${size}`)].join(' · ');
       const result = await widgets.saveDesignedWidget({
         id: themePieceId(theme.id, designedOptionId(kind), size), name: label, themeName: theme.name,
@@ -91,7 +98,8 @@ export function DesignedThemeWidgets({ theme, size, width, style, onLibraryChang
 /** Library thumbnails use the same functional composition, rather than a blank placeholder. */
 export function DesignedWidgetThumbnail({ design, size, width }: { design: DesignedWidget; size: HomeOptionSize; width: number }) {
   const { locale, t } = useT();
-  return <SvgXml xml={designedWidgetSvg(design, size, { date: new Date(), battery: null, locale, batteryLabel: t('ui.designedWidgets.battery'), unavailableLabel: t('ui.designedWidgets.unavailable'), originalArtwork: originalClockArtwork(design) })} width={width} height={width * DESIGNED_SIZE[size].h / DESIGNED_SIZE[size].w} />;
+  const originalArtwork = useOriginalClockArtwork(design);
+  return <SvgXml xml={designedWidgetSvg(design, size, { date: new Date(), battery: null, locale, batteryLabel: t('ui.designedWidgets.battery'), unavailableLabel: t('ui.designedWidgets.unavailable'), originalArtwork })} width={width} height={width * DESIGNED_SIZE[size].h / DESIGNED_SIZE[size].w} />;
 }
 
 const styles = StyleSheet.create({

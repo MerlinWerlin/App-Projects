@@ -10,6 +10,7 @@ import { THEMES, type Theme } from '../core/themes';
 import { parseWidgetGalleryTheme, widgetGalleryTheme } from '../core/widgetGalleryTheme';
 import { ACTIVE_WIDGET_THEME_KEY, DEFAULT_WIDGET_THEME, serializeWidgetTheme } from '../core/widgetTheme';
 import { widgets } from '../native/widgets';
+import { syncPackClockFace } from '../native/packs';
 import { loadStudio } from './studio';
 import { findAnyThemeById } from './themeLookup';
 
@@ -25,6 +26,7 @@ export async function applyWidgetTheme(theme: Theme): Promise<boolean> {
     } catch {
       // Storage unavailable: the widgets still get this write.
     }
+    await syncPackClockFace(theme.id);
     return revision === themeRevision && (await widgets.setTheme(wt)).ok;
   } catch {
     return false;
@@ -73,6 +75,7 @@ export async function pushStoredWidgetTheme(): Promise<boolean> {
     const wt = theme ? widgetGalleryTheme(theme) : saved ?? {
       ...DEFAULT_WIDGET_THEME, designs: widgetGalleryTheme(THEMES[0]).designs,
     };
+    await syncPackClockFace(wt.themeId);
     return revision === themeRevision && (await widgets.setTheme(wt)).ok;
   } catch {
     return false;

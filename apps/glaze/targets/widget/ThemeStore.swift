@@ -143,7 +143,7 @@ enum ThemeStore {
     let ink = GlazeHex.luminance(bg) > 0.179 ? "#000000" : "#FFFFFF"
     return DesignedWidgetSpec(kind: kind, background: [bg, bg], ink: ink, secondary: ink,
       accent: ink, onAccent: bg, line: GlazeHex.mix(bg, ink, 0.28), motif: "none",
-      font: "rounded", clock: "dial", battery: "ring", identity: nil)
+      font: "rounded", clock: "dial", battery: "ring", identity: nil, packFace: nil)
   }
 
   /// The theme plus where it came from: "defaults", "file" or "fallback".

@@ -38,6 +38,8 @@ import {
   type Transport,
 } from '../core/packDownloader';
 import type { Catalog, RemoteArtManifest } from '../core/packCatalog';
+import { packClockFaceAsset, pilotClockFace } from '../core/packClockFace';
+import { widgets } from './widgets';
 import {
   CATALOG_CACHE_FILE,
   catalogCacheStamp,
@@ -403,6 +405,7 @@ export async function removePackFromDevice(packId: string): Promise<void> {
   unregisterPackMotifs(packId);
   try {
     await removePack(deviceTransport, packId);
+    if (pilotClockFace(packId)) await widgets.setPackClockFace(packId, null);
   } finally {
     await saveIndex(cacheIndexRemove(state.index, packId));
   }
@@ -574,6 +577,18 @@ export function remoteArtFileUri(id: string, path: string | null | undefined): s
   return ROOT && path ? `${ROOT}${id}/${path}` : null;
 }
 
+export function packClockArtworkUri(id: string, manifest = state.remoteArt[id]): string | null {
+  return pilotClockFace(id) ? remoteArtFileUri(id, packClockFaceAsset(manifest?.assets)?.path) : null;
+}
+
+/** Publish only after pack validation and the staged directory swap. A missing pack uses the vector face. */
+export async function syncPackClockFace(id: string, manifest?: RemoteArtManifest): Promise<void> {
+  if (!pilotClockFace(id)) return;
+  const local = manifest ?? await remoteArtOnDevice(id);
+  const uri = local && packClockArtworkUri(id, local);
+  if (uri) await widgets.setPackClockFace(id, uri);
+}
+
 /** Read-once cache of verified downloaded remote art packs. */
 const remoteCache = new Map<string, Promise<RemoteArtManifest | null>>();
 
@@ -631,6 +646,7 @@ export async function downloadRemoteArtToDevice(id: string): Promise<string | nu
       screenLongEdgePx: screenLongEdgePx(),
       onProgress: (p) => set({ busy: { ...state.busy, [id]: p.totalBytes ? p.doneBytes / p.totalBytes : 0 } }),
     });
+    await syncPackClockFace(id, r.manifest);
     // Everything derived from the old manifest (widget art list, hero files, wallpaper URI,
     // credits) re-derives from this new object: useRemoteArtTheme memoises on it.
     remoteCache.set(id, Promise.resolve(r.manifest));

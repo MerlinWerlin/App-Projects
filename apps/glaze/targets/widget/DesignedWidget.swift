@@ -4,6 +4,18 @@ import SwiftUI
 import UIKit
 import WidgetKit
 
+struct WidgetPackClockFace {
+  let id: String
+  let darkInk: Bool
+
+  static func parse(_ raw: Any?) -> WidgetPackClockFace? {
+    guard let record = raw as? [String: Any], let id = record["id"] as? String,
+      id.range(of: "^[a-z0-9][a-z0-9-]{0,63}$", options: .regularExpression) != nil,
+      let darkInk = record["darkInk"] as? Bool else { return nil }
+    return WidgetPackClockFace(id: id, darkInk: darkInk)
+  }
+}
+
 struct DesignedWidgetSpec {
   let kind: String
   let background: [String]
@@ -17,6 +29,7 @@ struct DesignedWidgetSpec {
   let clock: String
   let battery: String
   let identity: WidgetIdentity?
+  let packFace: WidgetPackClockFace?
 
   static func parse(_ raw: Any?) -> DesignedWidgetSpec? {
     guard let r = raw as? [String: Any], r["v"] as? Int == 1,
@@ -34,7 +47,7 @@ struct DesignedWidgetSpec {
     else { return nil }
     return DesignedWidgetSpec(kind: kind, background: bg, ink: ink, secondary: secondary,
       accent: accent, onAccent: onAccent, line: line, motif: motif, font: font, clock: clock, battery: battery,
-      identity: WidgetIdentity.parse(r["identity"]))
+      identity: WidgetIdentity.parse(r["identity"]), packFace: kind == "clock" ? WidgetPackClockFace.parse(r["packFace"]) : nil)
   }
 
   var fontDesign: Font.Design { font == "serif" ? .serif : font == "mono" ? .monospaced : .rounded }

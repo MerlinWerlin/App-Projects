@@ -44,8 +44,9 @@
     "contentHash": "12ca8f77e6a3a65cad47d18db2925adbd2be388b48b71535fd8d7b6321450cef"
   },
   "blueprint-bureau": {
-    "packVersion": 6,
-    "contentHash": "d25cf5db101b706d246149670f2828f45d2711b7da1958b843ecd3188a79cc61"
+    "packVersion": 7,
+    "contentHash": "cebf0c1aaadae4fa062e3d0fe201a7d3360a995b2d81e738832670cffbde0322",
+    "clockFaceSha256": "803d85dd10abcde0c1752714ebec5cdcd935eaf907aea9417eb151c431995c22"
   },
   "bluewing": {
     "packVersion": 6,
@@ -80,8 +81,9 @@
     "contentHash": "ba33ecb9999fc3268eecb3d5b9fc7a62af79b66655afd474c4e3f688b51f3df4"
   },
   "cherry-arcade": {
-    "packVersion": 6,
-    "contentHash": "844aba6127425511f17d674e2bc46a62703572018fcfa65d3982c785d4a09dc5"
+    "packVersion": 7,
+    "contentHash": "3d972051066f50205e59878ad848c21f7ec639d4c62cdab580af03d19a735034",
+    "clockFaceSha256": "d8f27e175c8e2a55a86a702c826cdc4bd22eecebfba7ba1865c56974a185a5ae"
   },
   "cherry-ribbon": {
     "packVersion": 6,
@@ -168,16 +170,18 @@
     "contentHash": "caf0ee580b43c5b8adc676076a2e068e8be9129036c31a20fae60454f8cf207f"
   },
   "espresso-hour": {
-    "packVersion": 6,
-    "contentHash": "bc8a7769268b4b2982e6a0ea5fc19eed0058752991ee39ed2ea53dbbc09ad0b4"
+    "packVersion": 7,
+    "contentHash": "8a04e6cfd93e60d154150f428ed179eb8c0f056f5610701aead92c3e2031c927",
+    "clockFaceSha256": "1f5410e108aacacb9253bbc9a4aeaa35e8b1fc00436417ac80a71ff41cf8a222"
   },
   "event-horizon": {
     "packVersion": 6,
     "contentHash": "2e269a6579c0148e415e26e1cb697c3738ac96e7f10f1a7e3e5d8d4d41d6aabb"
   },
   "fern-and-brass": {
-    "packVersion": 6,
-    "contentHash": "5d9f9bb9e2701f8c223eaea03aeec24f71505b88d872359d4fbe493cfea92d0f"
+    "packVersion": 7,
+    "contentHash": "4c1eba7fe2ebf1e0de80cfba2871ac1cfd64e2257b524b79ec09f03e9dc848f7",
+    "clockFaceSha256": "7afd26b324f5479d233d320a48211e0412a068613dae07746f71ee9be6a196e8"
   },
   "fig-nocturne": {
     "packVersion": 4,
@@ -228,8 +232,9 @@
     "contentHash": "b4f11419d924ad6048f55107a5207a08650e0307bb825ab8b439b87766d24030"
   },
   "honeywood": {
-    "packVersion": 6,
-    "contentHash": "ed1ca762af38fd352b2f02f9297155ef01b0c6f44f548ddbec3607cf3f8a83c0"
+    "packVersion": 7,
+    "contentHash": "b397f083cf8f03f6448090313cee29dc13036f46924e8f70172694a66a943d16",
+    "clockFaceSha256": "ed171c250b971b3aa4e3b60cb0a7ba51a22755d41ba8e7f3e4c00190f5ae140b"
   },
   "indigo-current": {
     "packVersion": 6,
@@ -340,8 +345,9 @@
     "contentHash": "32c9e5f778b5363f2b40a2de907e0037970f424e026ffcfbff4ad9210d2a055c"
   },
   "nebula-veil": {
-    "packVersion": 6,
-    "contentHash": "a62e231e280bde2c50d4c444b4cfa051cd82590d568c711fbabaccec6c6689e4"
+    "packVersion": 7,
+    "contentHash": "d16ddbc3053928da65de0f735374bbd85524d3beeeaedf241ee6d23150d86944",
+    "clockFaceSha256": "367378ddae2c437f287cff3171845de12d59096689699393d5826718649baac7"
   },
   "neon-monsoon": {
     "packVersion": 6,
@@ -412,8 +418,9 @@
     "contentHash": "89864dd04488e04efcf75f78c1d0dbd74d01230c6bf656f8269de255d59c94a2"
   },
   "porcelain-tide": {
-    "packVersion": 6,
-    "contentHash": "13134f06aa82c87a9c55b3801e78ac01c55aa7ef34f10082be98e7016ab00270"
+    "packVersion": 7,
+    "contentHash": "1260a493be5331bbaf1de14986f96303278c283e92da3d3e8c81ae6cdc46d2da",
+    "clockFaceSha256": "0d361ecd2e228743107e6c0b673b6dca527e1b639a744911f89391ce5378ddde"
   },
   "portico-dawn": {
     "packVersion": 1,
@@ -440,8 +447,9 @@
     "contentHash": "121d599299a7f8d28b4ca7ba4d417d458a3a3e672685f9a72598aa6f6d5e6e5d"
   },
   "rainlight": {
-    "packVersion": 6,
-    "contentHash": "5b47a1fbac081253da8b26315316a78d0946ba917af21dd55f3c688dde1d83ae"
+    "packVersion": 7,
+    "contentHash": "794ce8e65a1a06e0a96415e0957b32ffe4649886aebbe1289991b27376f8e46e",
+    "clockFaceSha256": "c36dab69519cc269a285f319b60351d7fe58d14c2927ddb527cb9319ed9db317"
   },
   "regatta-blue": {
     "packVersion": 6,

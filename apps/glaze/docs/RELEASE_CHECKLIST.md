@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**6 November 2026 TestFlight pilot: `1.0.7`.** Eight downloadable theme packs add original illustrated clock plates. WidgetKit decodes the selected plate at the size it draws and overlays the live hands and marks.
+
 **6 November 2026 TestFlight follow-up: `1.0.6`.** The three primary Home Screen widget names are Clock, Battery and Calendar. Legacy configurations remain registered and disfavored for the Home Screen.
 
 **6 November 2026 TestFlight train: `1.0.5`.** The Home Screen gallery puts the selected theme's Clock, Battery and Calendar first. Existing widget kinds and configurations remain supported under Other. Alpine's clock uses the original artwork at the widget's rendered size.
