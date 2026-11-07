@@ -73,13 +73,19 @@ import Vision
 
   private func showMainTabs(in app: XCUIApplication) throws {
     for _ in 0..<6 {
+      // Settings draws an X but its accessibility label is Done. Dismiss the real
+      // overlay before looking for tabs behind it; a back swipe cannot close this panel.
+      let close = app.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@ OR label == %@", "Close", "Done"))
+        .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable })
+      if let close {
+        close.tap()
+        RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+        continue
+      }
       let settings = app.buttons["Settings"].firstMatch
       if settings.exists && settings.isHittable { return }
-      let close = app.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@", "Close"))
-        .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable })
       let back = app.navigationBars.buttons.firstMatch
-      if let close { close.tap() }
-      else if back.exists && back.isHittable { back.tap() }
+      if back.exists && back.isHittable { back.tap() }
       else {
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5)).press(forDuration: 0.05,
           thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.5)))
