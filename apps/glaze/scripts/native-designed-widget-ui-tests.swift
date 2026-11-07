@@ -229,6 +229,47 @@ import Vision
     print("GLAZE_UPGRADE_ALPINE_APPLIED"); fflush(stdout)
   }
 
+  func testPrimeAlpineArtWidgetBeforeUpgrade() throws {
+    continueAfterFailure = false
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    try openGallery(spring)
+    let title = spring.staticTexts["Seamless"].firstMatch
+    for _ in 0..<60 {
+      if title.exists { break }
+      spring.swipeLeft()
+    }
+    XCTAssertTrue(title.exists, spring.debugDescription)
+    let add = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
+    XCTAssertTrue(add.waitForExistence(timeout: 6), spring.debugDescription); add.tap()
+    for _ in 0..<2 { let done = spring.buttons["Done"].firstMatch; if done.waitForExistence(timeout: 2) { done.tap() } }
+    RunLoop.current.run(until: Date().addingTimeInterval(3))
+    let widget = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze")).allElementsBoundByIndex.first {
+      $0.exists && $0.isHittable && $0.frame.width > 110 && $0.frame.width < 220
+    }
+    try XCTUnwrap(widget, spring.debugDescription).press(forDuration: 1.4)
+    let edit = spring.buttons["Edit Widget"].firstMatch
+    XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription); edit.tap()
+    let art = spring.buttons["Art"].firstMatch
+    XCTAssertTrue(art.waitForExistence(timeout: 10), spring.debugDescription); art.tap()
+    var selected = false
+    for _ in 0..<26 {
+      if let point = try screenTextPoint(containing: ["Silver moon", "Small"]) {
+        capture("baseline-existing-art-choice")
+        spring.coordinate(withNormalizedOffset: point).tap()
+        selected = true
+        break
+      }
+      spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.66))
+        .press(forDuration: 0.05, thenDragTo: spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.40)))
+      RunLoop.current.run(until: Date().addingTimeInterval(0.4))
+    }
+    XCTAssertTrue(selected, spring.debugDescription)
+    XCUIDevice.shared.press(.home)
+    RunLoop.current.run(until: Date().addingTimeInterval(3))
+    capture("baseline-existing-silver-moon-widget")
+    print("GLAZE_UPGRADE_EXISTING_ART_WIDGET_PRIMED"); fflush(stdout)
+  }
+
   func testAlpineAllFamiliesAfterUpgrade() throws {
     continueAfterFailure = false
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
@@ -266,6 +307,7 @@ import Vision
     XCUIDevice.shared.press(.home)
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
     for (index, size) in ["small", "medium", "large"].enumerated() {
+      if index > 0 {
       try openGallery(spring, fromHomeScreen: true)
       let title = spring.staticTexts["Seamless"].firstMatch
       for _ in 0..<60 {
@@ -280,6 +322,7 @@ import Vision
       XCTAssertTrue(add.waitForExistence(timeout: 6), spring.debugDescription); add.tap()
       for _ in 0..<2 { let done = spring.buttons["Done"].firstMatch; if done.waitForExistence(timeout: 2) { done.tap() } }
       RunLoop.current.run(until: Date().addingTimeInterval(3))
+      }
       let matches = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
       let widget = try XCTUnwrap(matches.allElementsBoundByIndex.first { element in
         let f = element.frame
@@ -321,6 +364,19 @@ import Vision
     request.recognitionLanguages = ["en-US"]
     try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
     return (request.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: " | ")
+  }
+
+  private func screenTextPoint(containing terms: [String]) throws -> CGVector? {
+    guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return nil }
+    let request = VNRecognizeTextRequest()
+    request.recognitionLevel = .accurate
+    request.recognitionLanguages = ["en-US"]
+    try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
+    guard let line = (request.results ?? []).first(where: { observation in
+      guard let text = observation.topCandidates(1).first?.string else { return false }
+      return terms.allSatisfy { text.localizedCaseInsensitiveContains($0) }
+    }) else { return nil }
+    return CGVector(dx: line.boundingBox.midX, dy: 1 - line.boundingBox.midY)
   }
 
   private func capture(_ name: String) {
