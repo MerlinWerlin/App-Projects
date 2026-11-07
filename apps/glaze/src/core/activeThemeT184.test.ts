@@ -96,7 +96,9 @@ test('T184 "Use this theme" writes the icon style, the widget theme (bridge) and
   // T250: the widget theme is remembered here; the App Group write is the queued 'widgetTheme' step.
   assert.match(fn, /rememberWidgetTheme\(theme\)/);
   assert.match(fn, /requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
-  assert.match(fn, /AsyncStorage\.setItem\(ACTIVE_THEME_KEY/);
+  const writer = read('src', 'store', 'widgetTheme.ts');
+  assert.match(writer, /AsyncStorage\.multiSet\(/);
+  assert.match(writer, /ACTIVE_THEME_KEY, serializeActiveTheme/);
   // T264: each listener is try-wrapped (one throwing never stops the others).
   assert.match(fn, /for \(const l of \[\.\.\.listeners\]\) \{\s*try \{\s*l\(theme\.id\);/);
   // The bridge write itself stays in applyWidgetTheme (T125).

@@ -4,11 +4,8 @@
 // bridge write in applyWidgetTheme) and the theme in use (wallpaper maker's start, "In use ✓").
 // The tabs are lazy + freezeOnBlur, so screens re-read it on focus (useActiveThemeId) as well as
 // hearing the change through a listener. Never throws.
-// T250 (owner-1101h #1, freeze + crash after a theme swap): it now returns as soon as the essential
-// state is written (icon style, remembered widget theme, theme in use) and the screens are told;
-// the heavy follow-ups (App Group write + reloadAllTimelines, "My widget art" replace, installed-apps
-// check) are queued as deferred steps (src/store/deferredWork.ts): after interactions, one at a
-// time, crash-safe, retried on the next launch if the app was killed first.
+// Explicit selections publish to WidgetKit immediately through one ordered writer.
+// Art composition and installed-app checks remain deferred and retry on the next launch.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -19,7 +16,6 @@ import {
   markWallpaperSaved,
   parseActiveTheme,
   parseSavedWallpapers,
-  serializeActiveTheme,
   serializeSavedWallpapers,
 } from '../core/activeTheme';
 import { DEFERRED_STEPS } from '../core/deferredWork';
@@ -31,11 +27,15 @@ import { widgets as nativeWidgets } from '../native/widgets';
 import { registerDeferred, requestDeferred } from './deferredWork';
 import { applyThemeIcons, loadStudio } from './studio';
 import { findAnyThemeById } from './themeLookup';
-import { syncThemeWidgetArt } from './themeWidgetArt';
-import { rememberWidgetTheme } from './widgetTheme';
+import { supersedeThemeWidgetArt, syncThemeWidgetArt } from './themeWidgetArt';
+import { queueThemeWrite, rememberWidgetTheme } from './widgetTheme';
 
 type Listener = (id: string | null) => void;
 const listeners = new Set<Listener>();
+let selectedTheme: Theme | null = null;
+let selection = 0;
+let publishedSelection = 0;
+const sessionThemeId = () => selectedTheme?.id;
 
 /** The theme in use (the stored one, else the Icon Studio's theme). Never rejects. */
 export async function loadActiveThemeId(): Promise<string | null> {
@@ -45,9 +45,11 @@ export async function loadActiveThemeId(): Promise<string | null> {
   } catch {
     stored = null;
   }
+  if (selectedTheme) return selectedTheme.id;
   if (stored) return stored.themeId;
   try {
-    return activeThemeId(null, (await loadStudio()).themeId);
+    const studio = await loadStudio();
+    return sessionThemeId() ?? activeThemeId(null, studio.themeId);
   } catch {
     return null;
   }
@@ -55,44 +57,35 @@ export async function loadActiveThemeId(): Promise<string | null> {
 
 export type ApplyResult = { icons: boolean; widgets: boolean };
 
-/**
- * "Use this theme": the base for every tab. Writes the icon style (with the person's chosen shape),
- * remembers the widget theme and the theme in use, then tells every mounted screen. Each part is
- * independent: one failing never stops the others. `widgets` = the widget theme was remembered; the
- * App Group write itself is the deferred 'widgetTheme' step (T250).
- */
+/** Publish explicit selections in tap order; art remains a separate persisted follow-up. */
 export async function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
-  let icons = true;
-  try {
-    // T241: in the user's look for this theme (textured 'themed' by default).
-    await applyThemeIcons(theme, averageColour(theme.wallpaper));
-  } catch {
-    icons = false;
-  }
-  const widgets = await rememberWidgetTheme(theme); // never rejects (src/store/widgetTheme.ts)
-  try {
-    await AsyncStorage.setItem(ACTIVE_THEME_KEY, serializeActiveTheme({ themeId: theme.id, at: Date.now() }));
-  } catch {
-    // Storage unavailable: the screens still hear the change below.
-  }
-  // T264: one listener throwing (an unmounting screen) must not stop the others or the queue below.
-  for (const l of [...listeners]) {
-    try {
-      l(theme.id);
-    } catch (e) {
-      if (typeof __DEV__ !== 'undefined' && __DEV__) console.warn('Glaze: theme listener failed', e);
+  const request = ++selection;
+  supersedeThemeWidgetArt();
+  const native = queueThemeWrite(async () => {
+    selectedTheme = theme;
+    const widgets = await rememberWidgetTheme(theme);
+    publishedSelection = request;
+    for (const l of [...listeners]) {
+      try { l(theme.id); }
+      catch (e) {
+        if (typeof __DEV__ !== 'undefined' && __DEV__) console.warn('Glaze: theme listener failed', e);
+      }
     }
-  }
-  // T250: the heavy follow-ups, queued (never awaited here). Each works from the stored state above,
-  // so a run resumed on the next launch does the same thing.
-  try {
-    requestDeferred(DEFERRED_STEPS.widgetTheme); // App Group write + reloadAllTimelines (T125)
-    requestDeferred(DEFERRED_STEPS.themeArt, theme); // "My widget art" follows the theme (T238 / T252)
-    requestDeferred(DEFERRED_STEPS.installedProbe, 'apply'); // T229: tick the popular apps on this iPhone
-  } catch (e) {
-    if (typeof __DEV__ !== 'undefined' && __DEV__) console.warn('Glaze: deferred queue request failed', e);
-  }
-  return { icons, widgets };
+    try {
+      requestDeferred(DEFERRED_STEPS.widgetTheme);
+      requestDeferred(DEFERRED_STEPS.themeArt);
+      requestDeferred(DEFERRED_STEPS.installedProbe, 'apply');
+    } catch (e) {
+      if (typeof __DEV__ !== 'undefined' && __DEV__) console.warn('Glaze: deferred queue request failed', e);
+    }
+    return widgets;
+  });
+  // The icon store already serializes its writes. Slow icon work cannot delay WidgetKit.
+  const icons = Promise.resolve()
+    .then(() => applyThemeIcons(theme, averageColour(theme.wallpaper)))
+    .then(() => true, () => false);
+  const [iconsApplied, widgets] = await Promise.all([icons, native]);
+  return { icons: iconsApplied, widgets };
 }
 
 /**
@@ -107,8 +100,10 @@ export async function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
  * found nowhere falls back to replaceThemeArt by id. Runs in the queue (after the first screen,
  * try/catch per step), so nothing here touches launch.
  */
-async function themeArtStep(arg: unknown): Promise<void> {
-  let theme = arg && typeof arg === 'object' && typeof (arg as Theme).id === 'string' ? (arg as Theme) : null;
+async function themeArtStep(): Promise<void> {
+  const request = selection;
+  if (request !== publishedSelection) return;
+  let theme: Theme | null = selectedTheme;
   let fallbackId: string | null = null;
   if (!theme) {
     const id = await loadActiveThemeId();
@@ -123,6 +118,7 @@ async function themeArtStep(arg: unknown): Promise<void> {
     if (plan.kind === 'sync') theme = plan.theme;
     else fallbackId = plan.themeId;
   }
+  if (request !== selection) return;
   let res;
   if (theme) {
     // T252 (owner-1101h #3): ALL of this theme's widget art is added to My widget art and the previous
@@ -178,11 +174,13 @@ export function useActiveThemeId(): string | null {
   }, []);
   useFocusEffect(
     useCallback(() => {
+      let focused = true;
       loadActiveThemeId()
         .then((next) => {
-          if (alive.current) setId(next);
+          if (focused && alive.current) setId(selectedTheme?.id ?? next);
         })
         .catch(() => undefined);
+      return () => { focused = false; };
     }, []),
   );
   return id;

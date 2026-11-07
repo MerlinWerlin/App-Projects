@@ -7,7 +7,10 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
-**8 November 2026 TestFlight gallery art: `1.0.14`.** Adds six theme Art widgets to the Add Widget gallery and offers each piece only at the sizes it was drawn for.
+**8 November 2026 TestFlight gallery art: `1.0.14`.** Claude's PR252 adds six theme Art widget kinds and authored-size filtering.
+
+**8 November 2026 separate theme-swap build, version `1.0.14`.** After 1.0.13 build 51, restore ordered A to B to A selection with immediate native Clock/Battery/Calendar publication and deferred original art composition. Requires the same Alpine upgrade check, including an already-recovered 1.0.13 predecessor. Four theme actions, larger checkboxes, illustrated faces and duplicate removal remain excluded.
+
 **7 November 2026 TestFlight art recovery, version 1.0.13.** Restores the art pipeline to 1a12b3b and rebuilds accumulated theme art while preserving personal photos. Later features return only in separately verified builds.
 
 **6 November 2026 TestFlight widget and theme fix: `1.0.9`.** Restores automatic Seamless and art widget setup, orders theme selections and adds the three theme actions.
