@@ -283,19 +283,26 @@ import Vision
     XCTAssertTrue(art.waitForExistence(timeout: 10), spring.debugDescription); art.tap()
     var selected = false
     for _ in 0..<26 {
-      if let point = try screenTextPoint(containing: ["Silver moon", "Small"]) {
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+      if try screenTextPoint(containing: ["Silver moon", "Small"]) != nil {
         capture("baseline-existing-art-choice")
+        let point = try XCTUnwrap(try screenTextPoint(containing: ["Silver moon", "Small"]))
         spring.coordinate(withNormalizedOffset: point).tap()
         selected = true
         break
       }
       spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.66))
-        .press(forDuration: 0.05, thenDragTo: spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.40)))
+        .press(forDuration: 0.05, thenDragTo: spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.40)),
+          withVelocity: .slow, thenHoldForDuration: 0.5)
       RunLoop.current.run(until: Date().addingTimeInterval(0.4))
     }
     XCTAssertTrue(selected, spring.debugDescription)
+    RunLoop.current.run(until: Date().addingTimeInterval(1))
+    capture("baseline-existing-selected-art")
+    let selectedText = try screenText()
+    XCTAssertTrue(selectedText.localizedCaseInsensitiveContains("Silver moon") && selectedText.contains("Small") && selectedText.contains("Layout"), selectedText)
     XCUIDevice.shared.press(.home)
-    RunLoop.current.run(until: Date().addingTimeInterval(3))
+    RunLoop.current.run(until: Date().addingTimeInterval(6))
     capture("baseline-existing-silver-moon-widget")
     print("GLAZE_UPGRADE_EXISTING_ART_WIDGET_PRIMED"); fflush(stdout)
   }
@@ -342,8 +349,7 @@ import Vision
       widget.press(forDuration: 1.4)
       let edit = spring.buttons["Edit Widget"].firstMatch
       XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription); edit.tap()
-      let art = spring.buttons["Art"].firstMatch
-      XCTAssertTrue(art.waitForExistence(timeout: 10), spring.debugDescription); art.tap()
+      try openArtOptions(in: spring)
       RunLoop.current.run(until: Date().addingTimeInterval(1))
       var seen = Set<String>()
       for _ in 0..<26 {
@@ -375,7 +381,16 @@ import Vision
     return (request.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: " | ")
   }
 
-  private func screenTextPoint(containing terms: [String]) throws -> CGVector? {
+  private func openArtOptions(in spring: XCUIApplication) throws {
+    let art = spring.buttons["Art"].firstMatch
+    if art.waitForExistence(timeout: 3) { art.tap(); return }
+    // With an existing selected entity, the remote control can expose its value instead
+    // of Art. Locate the visible Art caption and tap the value side of that actual row.
+    let caption = try XCTUnwrap(try screenTextPoint(containing: ["Art"], exact: true), try screenText())
+    spring.coordinate(withNormalizedOffset: CGVector(dx: 0.72, dy: caption.dy)).tap()
+  }
+
+  private func screenTextPoint(containing terms: [String], exact: Bool = false) throws -> CGVector? {
     guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return nil }
     let request = VNRecognizeTextRequest()
     request.recognitionLevel = .accurate
@@ -383,7 +398,7 @@ import Vision
     try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
     guard let line = (request.results ?? []).first(where: { observation in
       guard let text = observation.topCandidates(1).first?.string else { return false }
-      return terms.allSatisfy { text.localizedCaseInsensitiveContains($0) }
+      return exact ? terms.contains(where: { text.caseInsensitiveCompare($0) == .orderedSame }) : terms.allSatisfy { text.localizedCaseInsensitiveContains($0) }
     }) else { return nil }
     return CGVector(dx: line.boundingBox.midX, dy: 1 - line.boundingBox.midY)
   }
