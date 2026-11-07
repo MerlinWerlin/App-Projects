@@ -40,7 +40,8 @@
         "territory": "AUS",
         "amount": "3.99"
       },
-      "reviewScreenshot": "apps/couch/store/iap/plus.jpg"
+      "reviewScreenshot": "apps/couch/store/iap/plus.jpg",
+      "availability": "all"
     },
     {
       "productId": "com.jared797.couch.trial7",
@@ -53,7 +54,8 @@
         "territory": "AUS",
         "amount": "0"
       },
-      "reviewScreenshot": "apps/couch/store/iap/plus.jpg"
+      "reviewScreenshot": "apps/couch/store/iap/plus.jpg",
+      "availability": "all"
     }
   ]
 }
