@@ -9,6 +9,7 @@
 // Pure TS (no React Native / Expo), Node-tested in widgetOptions.test.ts.
 
 import { CATALOGUE_KIND_SIZES } from './widgetKinds.ts';
+import { isHeroCopy } from './heroCopies.ts';
 
 /** Retired clean-face clock export; working designed clocks use themed-live-clock. */
 export const LEGACY_FALLBACK_CLOCK_ID = 'live-clock';
@@ -332,9 +333,14 @@ export function placeArt(art: Box, box: Box, fit: WidgetOptionFit = 'fit'): ArtP
  * wide Medium widget. Applies to previews, theme setup and therefore Edit Widget and the gallery.
  */
 export const DRAWN_FOR_MIN_MATCH = 0.8;
-export function drawnForSize(option: Pick<WidgetOption, 'id' | 'sizes' | 'width' | 'height'>, size: HomeOptionSize): boolean {
+export function drawnForSize(
+  option: Pick<WidgetOption, 'id' | 'sizes' | 'width' | 'height'> & { image?: string | null },
+  size: HomeOptionSize,
+): boolean {
   const hero = /^hero-(small|medium|large)$/.exec(option.id);
-  if (hero) return hero[1] === size;
+  // Owner 2026-11-08: a hero that is a copy of one of the pack's pieces is not offered twice
+  // (Alpine's small hero is also a damaged copy of copper-eclipse). heroCopies.ts.
+  if (hero) return hero[1] === size && !isHeroCopy(option.image);
   if (!option.sizes.includes(size)) return false;
   if (!(option.width > 0 && option.height > 0)) return true;
   return aspectMatch({ w: option.width, h: option.height }, OPTION_SIZE_POINTS[size]) >= DRAWN_FOR_MIN_MATCH;
