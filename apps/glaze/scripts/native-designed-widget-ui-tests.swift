@@ -67,19 +67,43 @@ import Vision
     print("GLAZE_ALPINE_CLOCK_SAVED"); fflush(stdout)
   }
 
-  private func openAlpine() throws -> XCUIApplication {
-    try openTheme(searchText: "Alpine", name: "Alpine Starlight")
+  private func openAlpine(preserveSession: Bool = false) throws -> XCUIApplication {
+    try openTheme(searchText: "Alpine", name: "Alpine Starlight", preserveSession: preserveSession)
   }
 
-  private func openTheme(searchText: String, name: String) throws -> XCUIApplication {
+  private func showMainTabs(in app: XCUIApplication) throws {
+    for _ in 0..<6 {
+      let settings = app.buttons["Settings"].firstMatch
+      if settings.exists && settings.isHittable { return }
+      let close = app.buttons["Close"].firstMatch
+      let back = app.navigationBars.buttons.firstMatch
+      if close.exists && close.isHittable { close.tap() }
+      else if back.exists && back.isHittable { back.tap() }
+      else {
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5)).press(forDuration: 0.05,
+          thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.5)))
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+    }
+    XCTFail("Return to the tabs through real navigation, without relaunching the app: " + app.debugDescription)
+  }
+
+  private func openTheme(searchText: String, name: String, preserveSession: Bool = false) throws -> XCUIApplication {
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
-    app.launch()
+    if preserveSession { app.activate(); try showMainTabs(in: app) }
+    else { app.launch() }
     let themes = app.buttons["Themes"].firstMatch
     if themes.exists { themes.tap() }
     let search = app.textFields["Search themes"]
     XCTAssertTrue(search.waitForExistence(timeout: 30), app.debugDescription)
     search.tap()
+    if let value = search.value as? String, value != "Search themes" {
+      for _ in value {
+        search.typeText(XCUIKeyboardKey.delete.rawValue)
+        RunLoop.current.run(until: Date().addingTimeInterval(0.12))
+      }
+    }
     // Give React Native's controlled field time to echo each simulator key event.
     for letter in searchText {
       search.typeText(String(letter))
@@ -242,6 +266,7 @@ import Vision
   private func verifyThemeDiagnostics(_ id: String) throws {
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     app.activate()
+    try showMainTabs(in: app)
     let settings = app.buttons["Settings"].firstMatch
     XCTAssertTrue(settings.waitForExistence(timeout: 12), app.debugDescription); settings.tap()
     let line = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", "Widget diagnostics,")).firstMatch
@@ -329,7 +354,7 @@ import Vision
     }
     let baseline = try nativeHomeSamples("A")
     try verifyThemeDiagnostics("alpine-starlight")
-    try applyDisplayedTheme(try openTheme(searchText: "Aurora", name: "Aurora Haven"))
+    try applyDisplayedTheme(try openTheme(searchText: "Aurora", name: "Aurora Haven", preserveSession: true))
     RunLoop.current.run(until: Date().addingTimeInterval(8))
     let changed = try nativeHomeSamples("B")
     try verifyThemeDiagnostics("aurora-haven")
@@ -340,7 +365,7 @@ import Vision
       print("GLAZE_SWAP_HOME_PIXEL_DISTANCE B " + key + " " + String(distance)); fflush(stdout)
       XCTAssertGreaterThan(distance, 0.02, "Each real native widget must visibly change on B")
     }
-    try applyDisplayedTheme(try openAlpine())
+    try applyDisplayedTheme(try openAlpine(preserveSession: true))
     RunLoop.current.run(until: Date().addingTimeInterval(8))
     let restored = try nativeHomeSamples("A-return")
     try verifyThemeDiagnostics("alpine-starlight")
