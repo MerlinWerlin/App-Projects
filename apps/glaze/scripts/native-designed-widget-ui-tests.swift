@@ -269,6 +269,9 @@ import Vision
     var samples: [String: [Double]] = [:]
     var removed = 0
     for page in 0..<8 {
+      var inspectAgain: Bool
+      repeat {
+      inspectAgain = false
       let candidates = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze")).allElementsBoundByIndex.filter {
         $0.exists && $0.isHittable && $0.frame.width > 110 && $0.frame.width < 220
       }
@@ -285,7 +288,9 @@ import Vision
           if confirm.waitForExistence(timeout: 3) { confirm.tap() }
           removed += 1
           RunLoop.current.run(until: Date().addingTimeInterval(0.6))
-          continue
+          // Removal reflows the icon grid. Re-query instead of using stale index-bound elements.
+          inspectAgain = true
+          break
         }
         spring.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.84)).tap()
         RunLoop.current.run(until: Date().addingTimeInterval(0.6))
@@ -303,6 +308,7 @@ import Vision
           }
         }
       }
+      } while inspectAgain
       capture("swap-" + name + "-home-page-\(page)")
       spring.swipeLeft()
       RunLoop.current.run(until: Date().addingTimeInterval(0.5))
