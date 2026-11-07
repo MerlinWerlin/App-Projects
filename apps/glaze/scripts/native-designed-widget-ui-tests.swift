@@ -294,9 +294,12 @@ import Vision
       XCTAssertTrue(art.waitForExistence(timeout: 10), spring.debugDescription); art.tap()
       RunLoop.current.run(until: Date().addingTimeInterval(1))
       var seen = Set<String>()
-      for _ in 0..<20 {
-        let text = try screenText()
-        for name in names where text.localizedCaseInsensitiveContains(name) { seen.insert(name) }
+      for _ in 0..<26 {
+        let lines = try screenText().components(separatedBy: " | ")
+        for name in names where lines.contains(where: {
+          $0.localizedCaseInsensitiveContains(name) && $0.localizedCaseInsensitiveContains(size)
+        }) { seen.insert(name) }
+        print("GLAZE_UPGRADE_PICKER_TEXT " + size + " " + lines.joined(separator: " | "))
         if seen.count == names.count { break }
         spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.66))
           .press(forDuration: 0.05, thenDragTo: spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.40)))
