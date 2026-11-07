@@ -18,7 +18,9 @@ enum GlazeWidgetArtRecovery {
     }
     do {
       try files.createDirectory(at: directory, withIntermediateDirectories: true)
-      let clean: [String: Any] = ["v": 1, "pieces": photos]
+      // This is the original cleanup's photo-only result, before any theme has been committed.
+      // A concurrently opened library must not migrate it again and claim the theme early.
+      let clean: [String: Any] = ["v": 1, "pieces": photos, "migrated": 1101]
       let bytes = try JSONSerialization.data(withJSONObject: clean, options: [.sortedKeys])
       // Publish the photo-only index first. An interrupted reset is safe to repeat.
       try bytes.write(to: indexURL, options: .atomic)

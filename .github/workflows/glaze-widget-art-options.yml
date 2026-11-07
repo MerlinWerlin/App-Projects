@@ -13,6 +13,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
       - name: Verify every restored production pipeline file
         working-directory: apps/glaze
         run: python3 scripts/verify-widget-art-restore.py
@@ -21,3 +24,6 @@ jobs:
         run: |
           swiftc -parse-as-library modules/glaze-widget-bridge/ios/WidgetArtRecovery.swift scripts/widget-art-recovery-check.swift -o "$RUNNER_TEMP/widget-art-recovery-check"
           "$RUNNER_TEMP/widget-art-recovery-check"
+      - name: Open the original library cleanup during a clean recovery and commit the theme
+        working-directory: apps/glaze
+        run: node --experimental-strip-types scripts/widget-art-recovery-migration-check.mjs

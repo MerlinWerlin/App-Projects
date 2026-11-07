@@ -26,7 +26,8 @@ import Foundation
     for _ in 0..<2 {
       guard GlazeWidgetArtRecovery.reset(container: root) else { throw fail("reset failed") }
       let reset = try JSONSerialization.jsonObject(with: Data(contentsOf: art.appendingPathComponent("index.json"))) as! [String: Any]
-      guard Set(reset.keys) == Set(["v", "pieces"]),
+      guard Set(reset.keys) == Set(["v", "pieces", "migrated"]),
+            reset["migrated"] as? Int == 1101,
             (reset["pieces"] as? [[String: Any]])?.count == 1,
             try Data(contentsOf: art.appendingPathComponent("p-personal.jpg")) == photo,
             try Data(contentsOf: art.appendingPathComponent("p-personal-art.png")) == rawPhoto,
