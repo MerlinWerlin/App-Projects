@@ -71,6 +71,8 @@ import Vision
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
     app.launch()
+    let themes = app.buttons["Themes"].firstMatch
+    if themes.exists { themes.tap() }
     let search = app.textFields["Search themes"]
     XCTAssertTrue(search.waitForExistence(timeout: 30), app.debugDescription)
     search.tap()
@@ -201,6 +203,108 @@ import Vision
     print("GLAZE_ALPINE_SMALL_ART_SEEN " + seen.sorted().joined(separator: ", ")); fflush(stdout)
     XCTAssertEqual(seen, Set(names), spring.debugDescription)
     print("GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED"); fflush(stdout)
+  }
+
+  func testApplyAlpineForUpgrade() throws {
+    continueAfterFailure = false
+    let app = try openAlpine()
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let everything = app.buttons["Use everything"].firstMatch
+    if everything.exists { everything.tap() }
+    else {
+      let use = app.buttons.matching(NSPredicate(format: "label == %@ OR label BEGINSWITH %@", "Use this theme", "In use")).firstMatch
+      XCTAssertTrue(use.waitForExistence(timeout: 12), app.debugDescription)
+      use.tap()
+    }
+    for _ in 0..<8 {
+      for alert in [app.alerts.firstMatch, spring.alerts.firstMatch] where alert.exists {
+        let allow = alert.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@", "Allow")).firstMatch
+        if allow.exists { allow.tap() }
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    let close = app.buttons["Close"].firstMatch
+    if close.exists && close.isHittable { close.tap() }
+    capture("upgrade-alpine-applied")
+    print("GLAZE_UPGRADE_ALPINE_APPLIED"); fflush(stdout)
+  }
+
+  func testAlpineAllFamiliesAfterUpgrade() throws {
+    continueAfterFailure = false
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
+    app.launch()
+    defer {
+      capture("upgrade-final")
+      print("GLAZE_UPGRADE_FINAL_APP_TREE\n" + app.debugDescription)
+    }
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
+    app.buttons["Widgets"].firstMatch.tap()
+    let names = ["Copper eclipse", "Jupiter polar", "Saturn rings", "Silver moon", "Spiral galaxy"]
+    for size in ["Small", "Medium", "Large"] {
+      let sizeButton = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", size)).firstMatch
+      reveal(sizeButton, in: app); sizeButton.tap()
+      for name in names {
+        let item = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
+        reveal(item, in: app)
+        capture("upgraded-widgets-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
+      }
+    }
+    app.terminate()
+    let theme = try openAlpine()
+    let part = theme.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
+    reveal(part, in: theme); part.tap()
+    for name in names {
+      let item = theme.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
+      reveal(item, in: theme)
+      capture("upgraded-theme-preview-" + name.replacingOccurrences(of: " ", with: "-"))
+    }
+    XCUIDevice.shared.press(.home)
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    for (index, size) in ["small", "medium", "large"].enumerated() {
+      try openGallery(spring, fromHomeScreen: true)
+      let title = spring.staticTexts["Seamless"].firstMatch
+      for _ in 0..<60 {
+        if title.exists { break }
+        spring.swipeLeft()
+      }
+      XCTAssertTrue(title.exists, spring.debugDescription)
+      if index > 0 {
+        for _ in 0..<index { spring.swipeLeft(); RunLoop.current.run(until: Date().addingTimeInterval(0.6)) }
+      }
+      let add = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
+      XCTAssertTrue(add.waitForExistence(timeout: 6), spring.debugDescription); add.tap()
+      for _ in 0..<2 { let done = spring.buttons["Done"].firstMatch; if done.waitForExistence(timeout: 2) { done.tap() } }
+      RunLoop.current.run(until: Date().addingTimeInterval(3))
+      let matches = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
+      let widget = try XCTUnwrap(matches.allElementsBoundByIndex.first { element in
+        let f = element.frame
+        guard element.exists && element.isHittable && f.width > 110 else { return false }
+        return size == "small" ? f.width < 220 : size == "medium" ? f.width > 250 && f.height < 230 : f.height > 250
+      }, spring.debugDescription)
+      capture("upgraded-home-" + size)
+      widget.press(forDuration: 1.4)
+      let edit = spring.buttons["Edit Widget"].firstMatch
+      XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription); edit.tap()
+      let art = spring.buttons["Art"].firstMatch
+      XCTAssertTrue(art.waitForExistence(timeout: 10), spring.debugDescription); art.tap()
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+      var seen = Set<String>()
+      for _ in 0..<20 {
+        let text = try screenText()
+        for name in names where text.localizedCaseInsensitiveContains(name) { seen.insert(name) }
+        if seen.count == names.count { break }
+        spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.66))
+          .press(forDuration: 0.05, thenDragTo: spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.40)))
+        RunLoop.current.run(until: Date().addingTimeInterval(0.4))
+      }
+      capture("upgraded-edit-art-" + size)
+      XCTAssertEqual(seen, Set(names), spring.debugDescription)
+      print("GLAZE_UPGRADE_ART_FAMILY_VERIFIED " + size); fflush(stdout)
+      XCUIDevice.shared.press(.home)
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+    }
+    print("GLAZE_UPGRADE_ALL_ALPINE_VERIFIED"); fflush(stdout)
   }
 
   private func screenText() throws -> String {

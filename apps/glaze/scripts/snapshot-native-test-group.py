@@ -27,6 +27,8 @@ if len(matches)==1:
             if not isinstance(pid,str) or not re.fullmatch(r'[A-Za-z0-9_-]{1,64}',pid):continue
             image=folder/'widget-art'/(pid+'.jpg')
             size=image.stat().st_size if image.is_file() else 0
+            if image.is_file():
+                target=out/'composed-art';target.mkdir(exist_ok=True);shutil.copy2(image,target/(pid+'.jpg'))
             files.append({'id':pid,'size':p.get('size'),'name':p.get('name'),'bytes':size,'offered':not p.get('hiddenFromPicker',False) and not p.get('live',{}).get('design')})
         report['artIndexTheme']=library.get('currentThemeId')
         report['artFiles']=files
