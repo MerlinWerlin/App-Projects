@@ -29,6 +29,11 @@ on:
         required: false
         default: ''
         type: string
+      recovered_predecessor_run:
+        description: 'Optional already-released 1.0.13+ app installed and recovered before the candidate; prevents migration from masking later feature regressions'
+        required: false
+        default: ''
+        type: string
       scenario:
         description: 'Installed route or actual Home Screen widget and shared-data round trip'
         type: choice
@@ -48,6 +53,7 @@ jobs:
       GLAZE_PREVIOUS_SIMULATOR_RUN: ${{ inputs.previous_simulator_run }}
       GLAZE_UPGRADE_BASE_RUN: ${{ inputs.upgrade_base_run }}
       GLAZE_UPGRADE_MIDDLE_RUN: ${{ inputs.upgrade_middle_run }}
+      GLAZE_RECOVERED_PREDECESSOR_RUN: ${{ inputs.recovered_predecessor_run }}
       GLAZE_UI_SCENARIO: ${{ inputs.scenario || 'route' }}
       GLAZE_ART_TRACE: ${{ inputs.diagnostic_art_trace && 'true' || 'false' }}
     steps:
@@ -103,6 +109,11 @@ jobs:
             gh run download "$RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/upgrade-$LABEL"
             ditto -x -k "$RUNNER_TEMP/upgrade-$LABEL/glaze-simulator-app.zip" "$RUNNER_TEMP/upgrade-$LABEL"
           done
+          if [[ -n "$GLAZE_RECOVERED_PREDECESSOR_RUN" ]]; then
+            [[ "$GLAZE_RECOVERED_PREDECESSOR_RUN" =~ ^[0-9]+$ ]]
+            gh run download "$GLAZE_RECOVERED_PREDECESSOR_RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/recovered-predecessor"
+            ditto -x -k "$RUNNER_TEMP/recovered-predecessor/glaze-simulator-app.zip" "$RUNNER_TEMP/recovered-predecessor"
+          fi
       - name: Install the real app and verify the Widgets route through the system prompt
         if: inputs.simulator_run != ''
         timeout-minutes: 50
@@ -152,6 +163,18 @@ jobs:
               fi
               python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/upgrade/$LABEL"
             done
+            if [[ -n "$GLAZE_RECOVERED_PREDECESSOR_RUN" ]]; then
+              PREDECESSOR=$(find "$RUNNER_TEMP/recovered-predecessor" -maxdepth 1 -name '*.app' -print -quit)
+              test -n "$PREDECESSOR"
+              python3 apps/glaze/scripts/prepare-simulator-release-identity.py "$PREDECESSOR" "$RUNNER_TEMP/glaze-native-link-review/install-identities/recovered-predecessor.json"
+              python3 apps/glaze/scripts/sign-native-simulator.py sign "$PREDECESSOR" "$RUNNER_TEMP/glaze-native-link-review/signing/recovered-predecessor.json"
+              xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
+              xcrun simctl install "$DEVICE" "$PREDECESSOR"
+              xcrun simctl launch "$DEVICE" com.jared797.glaze
+              python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/predecessor-recovery.json"
+              python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE"
+              python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/upgrade/recovered-predecessor"
+            fi
             xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
           fi
           xcrun simctl install "$DEVICE" "$APP"
@@ -265,6 +288,11 @@ jobs:
           receipt['releaseQualified']=receipt['upgradeAlpineAllFamilies'] and receipt['copperRenderedOnHomeScreenAllFamilies'] and not receipt['diagnosticExtensionRebuilt']
           receipt['upgradeBaseRun']=os.environ.get('GLAZE_UPGRADE_BASE_RUN')
           receipt['upgradeMiddleRun']=os.environ.get('GLAZE_UPGRADE_MIDDLE_RUN')
+          receipt['recoveredPredecessorRun']=os.environ.get('GLAZE_RECOVERED_PREDECESSOR_RUN')
+          if receipt['recoveredPredecessorRun']:
+              recovery=json.loads((root/'predecessor-recovery.json').read_text())
+              assert recovery['recoveryCompleteObserved'] and not recovery['appDataModifiedByHarness']
+              receipt['alreadyRecoveredPredecessorVerified']=True
           if receipt['scenario']=='recovery-upgrade':
               receipt['legacyWidgetSeedRun']=os.environ.get('GLAZE_PREVIOUS_SIMULATOR_RUN')
               existing=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-upgrade-existing.log'
