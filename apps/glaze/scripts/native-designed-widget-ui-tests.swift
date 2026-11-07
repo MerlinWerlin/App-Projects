@@ -677,7 +677,7 @@ import Vision
 
   private func dismissWidgetEditor(in spring: XCUIApplication) throws {
     // Commit edits by tapping the backdrop outside both the editor and widget preview.
-    for attempt in 0..<5 {
+    for _ in 0..<3 {
       let visible = try screenText()
       let editor = visible.contains("Seamless") && visible.contains("Layout")
       let context = visible.contains("Edit Widget") && visible.contains("Remove Widget")
@@ -792,7 +792,7 @@ import Vision
     }
     let result = spring.buttons["Glaze"].firstMatch
     let title = spring.staticTexts["Glaze"].firstMatch
-    for _ in 0..<3 {
+    for attempt in 0..<5 {
       search.typeText("Glaze")
       let searchKey = spring.keyboards.buttons["Search"].firstMatch
       if searchKey.exists && searchKey.isHittable { searchKey.tap() }
