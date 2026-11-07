@@ -386,7 +386,8 @@ import Vision
     if art.waitForExistence(timeout: 3) { art.tap(); return }
     // With an existing selected entity, the remote control can expose its value instead
     // of Art. Locate the visible Art caption and tap the value side of that actual row.
-    let caption = try XCTUnwrap(try screenTextPoint(containing: ["Art"], exact: true), try screenText())
+    let visible = try screenText()
+    let caption = try XCTUnwrap(try screenTextPoint(containing: ["Art"], exact: true), visible)
     spring.coordinate(withNormalizedOffset: CGVector(dx: 0.72, dy: caption.dy)).tap()
   }
 
