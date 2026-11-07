@@ -376,14 +376,49 @@ import Vision
       XCTAssertTrue(selected.localizedCaseInsensitiveContains("Copper eclipse") && selected.localizedCaseInsensitiveContains(size) && selected.contains("Layout"), selected)
       capture("upgraded-selected-copper-" + size)
       try dismissWidgetEditor(in: spring)
-      RunLoop.current.run(until: Date().addingTimeInterval(6))
-      _ = try findArtWidget(size, in: spring)
+      try waitForCopperOnHomeScreen(size, in: spring)
       capture("upgraded-copper-home-" + size)
     }
     print("GLAZE_UPGRADE_ALL_ALPINE_VERIFIED"); fflush(stdout)
   }
 
   private typealias ScreenLine = (text: String, box: CGRect)
+
+  private func waitForCopperOnHomeScreen(_ size: String, in spring: XCUIApplication) throws {
+    let deadline = Date().addingTimeInterval(90)
+    var fraction = 0.0
+    repeat {
+      RunLoop.current.run(until: Date().addingTimeInterval(3))
+      let widget = try findArtWidget(size, in: spring)
+      guard let screen = XCUIScreen.main.screenshot().image.cgImage else { continue }
+      let scale = CGFloat(screen.width) / spring.frame.width
+      let box = widget.frame.insetBy(dx: 4, dy: 4)
+      let pixels = CGRect(x: box.minX * scale, y: box.minY * scale,
+        width: box.width * scale, height: box.height * scale)
+      guard let crop = screen.cropping(to: pixels),
+        let sample = CGContext(data: nil, width: 64, height: 64, bitsPerComponent: 8,
+          bytesPerRow: 256, space: CGColorSpaceCreateDeviceRGB(),
+          bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)
+      else { continue }
+      sample.draw(crop, in: CGRect(x: 0, y: 0, width: 64, height: 64))
+      guard let data = sample.data?.assumingMemoryBound(to: UInt8.self) else { continue }
+      var warm = 0
+      for pixel in 0..<4096 {
+        let r = Double(data[pixel * 4]), g = Double(data[pixel * 4 + 1]), b = Double(data[pixel * 4 + 2])
+        if r > 35 && r > g * 1.6 && r > b * 1.6 { warm += 1 }
+      }
+      fraction = Double(warm) / 4096
+      print("GLAZE_COPPER_HOME_PIXELS " + size + " " + String(fraction)); fflush(stdout)
+      // The original copper moon occupies much more than this area at every size.
+      // The old clock's thin gold hands cannot satisfy this visible-art check.
+      if fraction > 0.06 {
+        print("GLAZE_COPPER_HOME_RENDER_VERIFIED " + size); fflush(stdout)
+        return
+      }
+    } while Date() < deadline
+    capture("copper-render-failed-" + size)
+    XCTFail("Copper Eclipse did not render on the actual Home Screen: " + size + " warm pixels " + String(fraction))
+  }
 
   private func recognizedScreenLines() throws -> [ScreenLine] {
     guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return [] }
