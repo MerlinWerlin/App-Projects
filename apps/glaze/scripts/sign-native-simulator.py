@@ -123,6 +123,10 @@ def align_embedded_entitlements(executable, team):
                     old = bytes(data[start:start + size])
                     changed = old.replace(b'GLAZETEST0', team.encode())
                     assert len(changed) == len(old)
+                    if name == b'__entitlements':
+                        embedded = plistlib.loads(changed)
+                        assert embedded['com.apple.developer.team-identifier'] == team
+                        assert embedded['com.apple.security.application-groups'] == ['group.com.jared797.glaze']
                     data[start:start + size] = changed
                     sections.append({'name': name.decode(), 'replacements': old.count(b'GLAZETEST0')})
             cursor += length
@@ -144,22 +148,15 @@ def sign(app, report):
         identifier = info['CFBundleIdentifier']
         assert identifier in ['com.jared797.glaze', 'com.jared797.glaze.widget']
         sections = align_embedded_entitlements(bundle / info['CFBundleExecutable'], team)
-        entitlements = {'application-identifier': team + '.' + identifier,
-            'com.apple.developer.team-identifier': team,
-            'com.apple.security.application-groups': ['group.com.jared797.glaze'], 'get-task-allow': True}
-        path = root / (identifier + '.plist')
-        path.write_bytes(plistlib.dumps(entitlements))
+        # Simulator entitlements live in the Mach-O sections above. Adding restricted device
+        # entitlements to the CMS signature can prevent a simulator process from launching.
         run(['codesign', '--force', '--sign', state['identity'], '--keychain', state['keychain'],
-            '--entitlements', str(path), '--generate-entitlement-der', str(bundle)])
+            str(bundle)])
         _, description = run(['codesign', '-dvv', str(bundle)])
         assert ('TeamIdentifier=' + team) in description.decode()
-        signed, _ = run(['codesign', '--display', '--entitlements', ':-', str(bundle)])
-        parsed = plistlib.loads(signed)
-        assert parsed['com.apple.developer.team-identifier'] == team
-        assert parsed['com.apple.security.application-groups'] == ['group.com.jared797.glaze']
         rows.append({'bundleId': identifier, 'team': team, 'version': info['CFBundleShortVersionString'],
             'build': info['CFBundleVersion'], 'embeddedSimulatorEntitlementSections': sections,
-            'realAppleSignature': True, 'groupEntitlementVerified': True})
+            'realAppleSignature': True, 'embeddedSimulatorGroupEntitlementVerified': True})
     run(['codesign', '--verify', '--deep', '--strict', str(app)])
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text(json.dumps({'simulatorOnly': True, 'createdCertificate': False,
