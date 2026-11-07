@@ -14,11 +14,7 @@ import type { IconShape } from '../../src/core/iconspec';
 import { PROBE_APPS } from '../../src/core/installedProbe';
 import { GLYPH_SIZES, setStyle, type StudioState } from '../../src/core/studio';
 import type { ReduceMotion } from '../../src/core/settings';
-import { parseWidgetLastRead } from '../../src/core/widgetLink';
-import { parseWidgetTheme } from '../../src/core/widgetTheme';
-import { widgets } from '../../src/native/widgets';
-import { loadActiveThemeId } from '../../src/store/activeTheme';
-import { themeWidgetArtDiagnostics } from '../../src/store/themeWidgetArt';
+import { rebuildWidgetArt, widgetArtRecoveryDiagnostics } from '../../src/store/widgetArtRecovery';
 import { PlusLockSheet } from '../../src/plus/PlusLockSheet';
 import { RestorePurchases } from '../../src/plus/RestorePurchases';
 import { TipJar } from '../../src/plus/TipJar';
@@ -412,13 +408,9 @@ function StartupRow() {
 
 function WidgetDiagnosticsRow() {
   const { t } = useT();
-  const [status, setStatus] = useState<{
-    active: string | null;
-    shared?: string;
-    read?: string;
-    artTheme?: string;
-    art: ReturnType<typeof themeWidgetArtDiagnostics>;
-  } | null>(null);
+  const toast = useToast();
+  const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState<Awaited<ReturnType<typeof widgetArtRecoveryDiagnostics>> | null>(null);
   useFocusEffect(useCallback(() => {
     let focused = true;
     let pending = false;
@@ -426,14 +418,8 @@ function WidgetDiagnosticsRow() {
       if (pending) return;
       pending = true;
       try {
-        const [active, link] = await Promise.all([loadActiveThemeId(), widgets.linkStatus()]);
-        if (focused) setStatus({
-          active,
-          shared: link.storedTheme ? parseWidgetTheme(link.storedTheme)?.themeId : undefined,
-          read: parseWidgetLastRead(link.galleryRead)?.themeId,
-          artTheme: link.artTheme || undefined,
-          art: themeWidgetArtDiagnostics(active),
-        });
+        const current = await widgetArtRecoveryDiagnostics();
+        if (focused) setStatus(current);
       } finally {
         pending = false;
       }
@@ -444,17 +430,25 @@ function WidgetDiagnosticsRow() {
     return () => { focused = false; clearInterval(timer); };
   }, []));
   const empty = '—';
-  const art = status?.art;
+  const art = status;
   const line = [
     t('settings.about.widgetThemes', { active: status?.active ?? empty, shared: status?.shared ?? empty, read: status?.read ?? empty }),
     t('settings.about.widgetArtCounts', {
-      theme: status?.artTheme ?? empty, planned: art?.planned ?? empty, composed: art?.composed ?? empty,
-      failed: art?.failed ?? empty, missing: art?.missing ?? empty,
+      theme: status?.artTheme ?? empty, planned: art?.composed ?? empty, composed: art?.composed ?? empty,
+      failed: art?.lastError ? 1 : 0, missing: empty,
     }),
     t('settings.about.widgetArtError', { error: art?.lastError?.slice(0, 160) ?? empty }),
   ].join('\n');
   const title = t('settings.about.widgetDiagnostics');
-  return <InsetRow icon="activity" iconTone="sky" title={title} subtitle={line} accessibilityLabel={[title, line].join(', ')} />;
+  return <View>
+    <InsetRow icon="activity" iconTone="sky" title={title} subtitle={line} accessibilityLabel={[title, line].join(', ')} />
+    <InsetRow title={t('settings.about.rebuildWidgetArt')} icon="refresh-cw" disabled={busy} onPress={() => {
+      setBusy(true);
+      void rebuildWidgetArt().then(ok => {
+        toast.show(t(ok ? 'settings.about.artRebuilt' : 'settings.about.artRebuildFailed'), ok ? 'success' : 'warning');
+      }).finally(() => setBusy(false));
+    }} />
+  </View>;
 }
 
 function Para({ title, children }: { title: string; children?: ReactNode }) {

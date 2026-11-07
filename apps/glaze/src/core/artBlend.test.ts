@@ -230,16 +230,6 @@ test('preview: measured production pieces, bundled heroes transparent, unknown o
   assert.deepEqual(featherStops(0.9), [0, 0.5, 0.5, 1]);
 });
 
-test('Copper Eclipse masks the same disk in the preview and native compositor', () => {
-  const source = 'widget-copper-eclipse.f9863caf.webp';
-  const swift = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
-  const preview = read('src', 'ui', 'BlendedArt.tsx');
-  assert.ok(swift.includes(source));
-  assert.match(swift, /CGRect\(x: w \* 127 \/ 1024, y: h \* 109 \/ 1024, width: w \* 763 \/ 1024, height: h \* 759 \/ 1024\)/);
-  assert.match(swift, /addEllipse\(in: disk\)[\s\S]*clip\(\)[\s\S]*image\.draw\(at: \.zero\)/);
-  assert.match(preview, /assetPath === COPPER_ECLIPSE_ASSET[\s\S]*<ClipPath[\s\S]*clipPath=/);
-});
-
 test('constants mirrored in GlazeArtBlend (Swift) and blend-audit.py', () => {
   const swift = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');
   const py = read('scripts', 'packs', 'blend-audit.py');

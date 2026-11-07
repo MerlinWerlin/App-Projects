@@ -53,7 +53,7 @@
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "سلسة";
-"Artwork from your current Glaze theme." = "رسوم من مظهر Glaze الحالي.";
+"Your Glaze art. Long-press and choose Edit Widget to pick a piece." = "رسومك من Glaze. اضغط مطولًا واختر ‘تعديل الأداة’ لاختيار قطعة.";
 "Set up in Glaze" = "اضبطه في Glaze";
 
 /* My widget art picker (WidgetArtLibrary.swift, T221) */

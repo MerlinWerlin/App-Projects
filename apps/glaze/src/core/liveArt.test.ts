@@ -185,9 +185,8 @@ test('app: the menu labels every non-live card "Art" and saves the live spec wit
   assert.match(menu, /tabs\.widgetsTab\.art\.artBadge/);
   const art = strip(read('src/ui/ThemeWidgetArt.tsx'));
   assert.match(art, /withLiveArt\(theme\.id/);
-  const setup = strip(read('src/store/themeWidgetArt.ts'));
-  assert.match(setup, /liveArtPlan\(theme\.id, option/);
-  assert.match(setup, /liveArtSpec\(p,/);
+  assert.match(art, /liveArtSpec\(plan/);
+  assert.match(art, /\.\.\.\(live \? \{ live \} : \{\}\)/);
 });
 
 

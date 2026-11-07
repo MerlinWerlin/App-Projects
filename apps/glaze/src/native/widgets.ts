@@ -51,7 +51,6 @@ export interface WidgetsAdapter {
   isAvailable(): Promise<{ available: boolean; reason: WidgetsReason }>;
   /** Write the active theme to the App Group and reload widget timelines. */
   setTheme(theme: WidgetTheme): Promise<WidgetsResult>;
-  setPackClockFace(id: string, uri: string | null): Promise<WidgetsResult>;
   designVersion(): Promise<number>;
   designedBattery(): Promise<number | null>;
   saveDesignedWidget(piece: Omit<WidgetArtPiece, 'file'>): Promise<WidgetsResult>;
@@ -135,7 +134,7 @@ export interface WidgetsAdapter {
    * the timelines; a piece already on disk is kept (skipIfPresent). A build whose bridge predates
    * T252: { available: false, reason: 'not-built' }. Never throws.
    */
-  beginArtUpdate(): Promise<(() => void) | undefined>;
+  resetArtForRecovery(): Promise<WidgetsResult>;
   composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResult>;
   /**
    * T252: the ONE index write of a theme apply (src/core/themeArtSync.ts commitThemeArt): own photos
@@ -143,7 +142,7 @@ export interface WidgetsAdapter {
    * art removed, current theme recorded. The bridge writes the index, prunes unlisted files and only
    * then reloads every timeline. Serialised with every other index edit. Never throws.
    */
-  commitThemeArt(themeId: string, planned: readonly PlannedThemePiece[], ready: readonly string[], isCurrent?: () => boolean): Promise<WidgetsResult>;
+  commitThemeArt(themeId: string, planned: readonly PlannedThemePiece[], ready: readonly string[]): Promise<WidgetsResult>;
 }
 
 /** T252: one piece for widgets.composeArtPiece (local file:// URIs; never uploaded anywhere). */
@@ -212,7 +211,6 @@ export function validSeamlessInput(input: SeamlessInput | null | undefined): boo
 /** Shape exposed by modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift. */
 type NativeBridge = {
   setTheme(json: string): Promise<boolean>;
-  setPackClockFace?(id: string, uri: string | null): Promise<boolean>;
   widgetDesignVersion?(): Promise<number>;
   setPhoto(uri: string): Promise<boolean>;
   clearPhoto?(): Promise<boolean>;
@@ -241,9 +239,8 @@ type NativeBridge = {
   /** T221: copy an App Group file into widget-art/<id>.jpg. */
   saveWidgetArtPiece?(id: string, from: string): Promise<boolean>;
   /** T221: { index, dir } (read-only). */
-  getWidgetArtLibrary?(): Promise<{ index?: string | null; dir?: string | null; missing?: string[] } | null>;
-  beginWidgetArtUpdate?(): Promise<number>;
-  endWidgetArtUpdate?(token: number): Promise<void>;
+  resetWidgetArtForRecovery?(): Promise<boolean>;
+  getWidgetArtLibrary?(): Promise<{ index?: string | null; dir?: string | null } | null>;
   /** T221: write widget-art/index.json, prune unlisted files, reload all timelines. */
   setWidgetArtIndex?(json: string): Promise<boolean>;
   /** T252: compose a theme piece into widget-art/<id>.jpg (no index write, no reload). */
@@ -378,7 +375,6 @@ export const widgets: WidgetsAdapter = {
   }),
   upgradeDesignedWidgets: (theme) => editArtIndex(lib => upgradedDesignedLibrary(lib, theme, (kind, size) => `${t(`ui.designedWidgets.${kind}`)} · ${t(`ui.seamless.sizes.${size}`)}`)),
   setTheme: (theme) => run((mod) => mod.setTheme(serializeWidgetTheme(theme))),
-  setPackClockFace: (id, uri) => run(mod => mod.setPackClockFace?.(id, uri)),
   setPhoto: (uri) => run((mod) => mod.setPhoto(uri)),
   clearPhoto: () => run((mod) => mod.clearPhoto?.()),
   importAlbumPhotos: async (uris) => {
@@ -414,19 +410,9 @@ export const widgets: WidgetsAdapter = {
       const r = migrateLibrary(lib, currentThemeId);
       return r.ran ? r.lib : null;
     }),
-  beginArtUpdate: async () => {
-    try {
-      const { mod } = await artBridge();
-      const token = await mod?.beginWidgetArtUpdate?.();
-      if (typeof token !== 'number' || token < 0) return undefined;
-      return () => { void mod?.endWidgetArtUpdate?.(token).catch(() => undefined); };
-    } catch {
-      return undefined;
-    }
-  },
+  resetArtForRecovery: () => serialArt(() => run(mod => mod.resetWidgetArtForRecovery?.())),
   composeArtPiece,
-  commitThemeArt: (themeId, planned, ready, isCurrent) => editArtIndex(lib =>
-    isCurrent?.() === false ? null : commitThemeArt(lib, themeId, planned, ready, Date.now()).lib),
+  commitThemeArt: (themeId, planned, ready) => editArtIndex((lib) => commitThemeArt(lib, themeId, planned, ready, Date.now()).lib),
 };
 
 /**
@@ -462,8 +448,8 @@ async function composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResu
       if (typeof input.artUri !== 'string' || !input.artUri || !/^#[0-9A-Fa-f]{6}$/.test(input.colour)) return { available: true, ok: false, reason: 'failed' };
       if (!finite(input.widthPx) || !finite(input.heightPx) || input.widthPx < 1 || input.heightPx < 1) return { available: true, ok: false, reason: 'failed' };
       if (input.preserveArtwork && typeof mod.composeClockArtPiece !== 'function') return { available: false, ok: false, reason: 'not-built' };
-      const args = [input.id, input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, skip] as const;
-      ok = (input.preserveArtwork ? await mod.composeClockArtPiece?.(...args) : await mod.composeWidgetArtPiece(...args)) === true;
+      const compose = input.preserveArtwork ? mod.composeClockArtPiece : mod.composeWidgetArtPiece;
+      ok = (await compose?.(input.id, input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, skip)) === true;
     } else {
       const c = input.cropPx;
       if (typeof input.wallpaperUri !== 'string' || !input.wallpaperUri || !c || ![c.x, c.y, c.w, c.h].every(finite) || c.w < 1 || c.h < 1) {
@@ -535,9 +521,7 @@ async function readArtIndex(mod: NativeBridge): Promise<{ lib: WidgetArtIndex; d
   const raw = await mod.getWidgetArtLibrary?.();
   const index = raw && typeof raw.index === 'string' ? raw.index : null;
   const dir = raw && typeof raw.dir === 'string' ? raw.dir : '';
-  const lib = parseLibrary(index);
-  const missing = new Set(raw?.missing ?? []);
-  return { lib: { ...lib, pieces: lib.pieces.filter(piece => !missing.has(piece.id)) }, dir };
+  return { lib: parseLibrary(index), dir };
 }
 
 function addToArtLibrary(piece: Omit<WidgetArtPiece, 'file'>, from: WidgetArtSourceFile): Promise<WidgetsResult> {

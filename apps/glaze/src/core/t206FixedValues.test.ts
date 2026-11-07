@@ -130,12 +130,16 @@ test('every locale has the new strings (hero names, live-instead button and hint
   }
 });
 
-test('UI wiring: the menu names via optionName and badges via showsLiveBadge', () => {
+test('UI wiring: the menu names via optionName and badges via showsLiveBadge; the theme widget art labels fixed pieces', () => {
   const menu = strip(read('src', 'ui', 'WidgetArtMenu.tsx'));
   assert.match(menu, /showsLiveBadge\(option\)/);
   assert.match(menu, /optionName\(o, all\)/);
   assert.doesNotMatch(menu, /liveKindOf\(/, 'the badge no longer follows the raw kind');
   assert.doesNotMatch(menu, /index \+ 1/, 'no per-size numbering');
+  const art = strip(read('src', 'ui', 'ThemeWidgetArt.tsx'));
+  assert.match(art, /const fixed = fixedValues\(pickedItem\.option\)/);
+  assert.match(art, /fixed \? t\('tabs\.widgetsTab\.art\.liveInstead'\)/);
+  assert.match(art, /tabs\.widgetsTab\.art\.fixedNote/);
   const sheet = read('scripts', 'widget-snapshots.mjs');
   assert.match(sheet, /showsLiveBadge\(o\)/, 'the render check measures the label with the same badge rule');
   assert.match(sheet, /optionName\(o, all\)/);
