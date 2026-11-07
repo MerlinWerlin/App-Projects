@@ -19,7 +19,7 @@ import Vision
 
   func testThreeFunctionalDesignsReachSharedStorage() throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     defer {
       print("GLAZE_DESIGNED_FINAL_TREE\n" + app.debugDescription)
       let screenshot = XCTAttachment(screenshot: app.screenshot()); screenshot.name = "designed-final-screen"; screenshot.lifetime = .keepAlways; add(screenshot)
@@ -67,22 +67,63 @@ import Vision
     print("GLAZE_ALPINE_CLOCK_SAVED"); fflush(stdout)
   }
 
-  private func openAlpine() throws -> XCUIApplication {
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+  private func openAlpine(preserveSession: Bool = false) throws -> XCUIApplication {
+    try openTheme(searchText: "Alpine", name: "Alpine Starlight", preserveSession: preserveSession)
+  }
+
+  private func showMainTabs(in app: XCUIApplication) throws {
+    for _ in 0..<6 {
+      // Settings draws an X but its accessibility label is Done. Dismiss the real
+      // overlay before looking for tabs behind it; a back swipe cannot close this panel.
+      let close = app.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@ OR label == %@", "Close", "Done"))
+        .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable })
+      if let close {
+        close.tap()
+        RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+        continue
+      }
+      // The Widgets tab does not have the Themes tab's Settings cog. Its visible
+      // bottom tabs already provide real navigation; no edge-pop is needed.
+      if ["Themes", "Widgets", "Icons"].allSatisfy({ label in
+        let tab = app.buttons[label].firstMatch
+        return tab.exists && tab.isHittable
+      }) { return }
+      let settings = app.buttons["Settings"].firstMatch
+      if settings.exists && settings.isHittable { return }
+      let back = app.navigationBars.buttons.firstMatch
+      if back.exists && back.isHittable { back.tap() }
+      else {
+        app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5)).press(forDuration: 0.05,
+          thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: 0.5)))
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+    }
+    XCTFail("Return to the tabs through real navigation, without relaunching the app: " + app.debugDescription)
+  }
+
+  private func openTheme(searchText: String, name: String, preserveSession: Bool = false) throws -> XCUIApplication {
+    let app = makeApp()
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
-    app.launch()
+    if preserveSession { app.activate(); try showMainTabs(in: app) }
+    else { app.launch() }
     let themes = app.buttons["Themes"].firstMatch
     if themes.exists { themes.tap() }
     let search = app.textFields["Search themes"]
     XCTAssertTrue(search.waitForExistence(timeout: 30), app.debugDescription)
     search.tap()
+    if let value = search.value as? String, value != "Search themes" {
+      for _ in value {
+        search.typeText(XCUIKeyboardKey.delete.rawValue)
+        RunLoop.current.run(until: Date().addingTimeInterval(0.12))
+      }
+    }
     // Give React Native's controlled field time to echo each simulator key event.
-    for letter in "Alpine" {
+    for letter in searchText {
       search.typeText(String(letter))
       RunLoop.current.run(until: Date().addingTimeInterval(0.18))
     }
-    XCTAssertEqual(search.value as? String, "Alpine")
-    let result = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Alpine Starlight")).firstMatch
+    XCTAssertEqual(search.value as? String, searchText)
+    let result = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", name)).firstMatch
     XCTAssertTrue(result.waitForExistence(timeout: 25), app.debugDescription)
     result.tap()
     if app.buttons["Use everything"].firstMatch.waitForExistence(timeout: 3) { return app }
@@ -99,7 +140,7 @@ import Vision
 
   func testAlpineOnHomeScreen() throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     app.launch()
     XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 30))
     let spring = makeSpringboard()
@@ -208,6 +249,12 @@ import Vision
   func testApplyAlpineForUpgrade() throws {
     continueAfterFailure = false
     let app = try openAlpine()
+    try applyDisplayedTheme(app)
+    capture("upgrade-alpine-applied")
+    print("GLAZE_UPGRADE_ALPINE_APPLIED"); fflush(stdout)
+  }
+
+  private func applyDisplayedTheme(_ app: XCUIApplication) throws {
     let spring = makeSpringboard()
     let everything = app.buttons["Use everything"].firstMatch
     if everything.exists { everything.tap() }
@@ -215,6 +262,8 @@ import Vision
       let use = app.buttons.matching(NSPredicate(format: "label == %@ OR label BEGINSWITH %@", "Use this theme", "In use")).firstMatch
       XCTAssertTrue(use.waitForExistence(timeout: 12), app.debugDescription)
       use.tap()
+      let all = app.buttons["Use everything"].firstMatch
+      if all.waitForExistence(timeout: 1) { all.tap() }
     }
     for _ in 0..<8 {
       for alert in [app.alerts.firstMatch, spring.alerts.firstMatch] where alert.exists {
@@ -223,17 +272,193 @@ import Vision
       }
       RunLoop.current.run(until: Date().addingTimeInterval(0.5))
     }
-    let close = app.buttons["Close"].firstMatch
-    if close.exists && close.isHittable { close.tap() }
-    capture("upgrade-alpine-applied")
-    print("GLAZE_UPGRADE_ALPINE_APPLIED"); fflush(stdout)
+    let close = app.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@", "Close"))
+      .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable })
+    close?.tap()
+  }
+
+  private func verifyThemeDiagnostics(_ id: String) throws {
+    let app = makeApp()
+    app.activate()
+    try showMainTabs(in: app)
+    let settings = app.buttons["Settings"].firstMatch
+    XCTAssertTrue(settings.waitForExistence(timeout: 12), app.debugDescription); settings.tap()
+    let line = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", "Widget diagnostics,")).firstMatch
+    reveal(line, in: app)
+    let deadline = Date().addingTimeInterval(100)
+    repeat {
+      let value = line.label
+      if value.contains("Active " + id) && value.contains("Shared " + id) && value.contains("Widget read " + id)
+        && value.contains("Art [" + id + "]") && value.contains("Failed 0") {
+        capture("swap-diagnostics-" + id)
+        print("GLAZE_SWAP_NATIVE_DIAGNOSTICS " + value); fflush(stdout)
+        return
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(2))
+    } while Date() < deadline
+    XCTFail("Theme selection, WidgetKit and art did not converge on " + id + ": " + line.label)
+  }
+
+  // A fixed Home Screen layout gives each installed native widget a stable page/frame key.
+  // The three static native widgets lack Edit Widget; the retained Seamless art widgets have it.
+  private func nativeHomeSamples(_ name: String, remove: Bool = false) throws -> [String: [Double]] {
+    XCUIDevice.shared.press(.home)
+    let spring = makeSpringboard()
+    for _ in 0..<8 { spring.swipeRight(); RunLoop.current.run(until: Date().addingTimeInterval(0.2)) }
+    var samples: [String: [Double]] = [:]
+    var removed = 0
+    for page in 0..<8 {
+      var inspectAgain: Bool
+      repeat {
+      inspectAgain = false
+      let candidates = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze")).allElementsBoundByIndex.filter {
+        $0.exists && $0.isHittable && $0.frame.width > 110 && $0.frame.width < 220
+      }
+      for widget in candidates where widget.exists && widget.isHittable {
+        let frame = widget.frame
+        widget.press(forDuration: 1.3)
+        RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+        let visible = try screenText()
+        let editable = spring.buttons["Edit Widget"].firstMatch.exists || visible.contains("Edit Widget")
+        if !editable && remove {
+          let button = spring.buttons["Remove Widget"].firstMatch
+          XCTAssertTrue(button.exists, spring.debugDescription); button.tap()
+          let confirm = spring.alerts.buttons["Remove"].firstMatch
+          if confirm.waitForExistence(timeout: 3) { confirm.tap() }
+          removed += 1
+          RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+          // Removal reflows the icon grid. Re-query instead of using stale index-bound elements.
+          inspectAgain = true
+          break
+        }
+        spring.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.84)).tap()
+        RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+        if editable { continue }
+        let key = "\(page)-\(Int(frame.minX.rounded()))-\(Int(frame.minY.rounded()))"
+        if let image = XCUIScreen.main.screenshot().image.cgImage {
+          let scale = CGFloat(image.width) / spring.frame.width
+          let inset = frame.insetBy(dx: 12, dy: 12)
+          if let crop = image.cropping(to: CGRect(x: inset.minX * scale, y: inset.minY * scale, width: inset.width * scale, height: inset.height * scale)),
+            let context = CGContext(data: nil, width: 20, height: 20, bitsPerComponent: 8, bytesPerRow: 80,
+              space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue) {
+            context.draw(crop, in: CGRect(x: 0, y: 0, width: 20, height: 20))
+            let bytes = context.data!.assumingMemoryBound(to: UInt8.self)
+            samples[key] = (0..<400).flatMap { pixel in (0..<3).map { Double(bytes[pixel * 4 + $0]) / 255 } }
+          }
+        }
+      }
+      } while inspectAgain
+      capture("swap-" + name + "-home-page-\(page)")
+      spring.swipeLeft()
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    if remove { XCTAssertEqual(removed, 3, "Remove only the three native widgets installed for this test") }
+    else { XCTAssertEqual(samples.count, 3, "Find all three separately installed native Clock/Battery/Calendar widgets") }
+    return samples
+  }
+
+  func testThemeSwapAfterRecoveredUpgrade() throws {
+    continueAfterFailure = false
+    try applyDisplayedTheme(try openAlpine())
+    let spring = makeSpringboard()
+    XCUIDevice.shared.press(.home)
+    for kind in ["Clock", "Battery", "Calendar"] {
+      try openGallery(spring, fromHomeScreen: true)
+      try installWidget(kind, in: spring, maxSwipes: 8)
+    }
+    let baseline = try nativeHomeSamples("A")
+    try verifyThemeDiagnostics("alpine-starlight")
+    try applyDisplayedTheme(try openTheme(searchText: "Aurora", name: "Aurora Haven", preserveSession: true))
+    RunLoop.current.run(until: Date().addingTimeInterval(8))
+    let changed = try nativeHomeSamples("B")
+    try verifyThemeDiagnostics("aurora-haven")
+    try verifyAuroraArtAfterSwap()
+    XCTAssertEqual(Set(baseline.keys), Set(changed.keys))
+    for (key, pixels) in baseline {
+      let next = try XCTUnwrap(changed[key])
+      let distance = zip(pixels, next).map { abs($0 - $1) }.reduce(0, +) / Double(pixels.count)
+      print("GLAZE_SWAP_HOME_PIXEL_DISTANCE B " + key + " " + String(distance)); fflush(stdout)
+      XCTAssertGreaterThan(distance, 0.02, "Each real native widget must visibly change on B")
+    }
+    try applyDisplayedTheme(try openAlpine(preserveSession: true))
+    RunLoop.current.run(until: Date().addingTimeInterval(8))
+    let restored = try nativeHomeSamples("A-return")
+    try verifyThemeDiagnostics("alpine-starlight")
+    XCTAssertEqual(Set(baseline.keys), Set(restored.keys))
+    for (key, pixels) in baseline {
+      let next = try XCTUnwrap(restored[key])
+      let distance = zip(pixels, next).map { abs($0 - $1) }.reduce(0, +) / Double(pixels.count)
+      print("GLAZE_SWAP_HOME_PIXEL_DISTANCE A " + key + " " + String(distance)); fflush(stdout)
+      // Live clock hands can move during the test; the theme must still return to Alpine.
+      XCTAssertLessThan(distance, 0.04, "Each real native widget must return to A")
+    }
+    _ = try nativeHomeSamples("remove-test-native", remove: true)
+    print("GLAZE_THEME_SWAP_A_B_A_VERIFIED"); fflush(stdout)
+  }
+
+  private func verifyAuroraArtAfterSwap() throws {
+    let app = makeApp()
+    app.activate()
+    try showMainTabs(in: app)
+    app.buttons["Widgets"].firstMatch.tap()
+    for size in ["Small", "Medium", "Large"] {
+      let sizeButton = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", size)).firstMatch
+      reveal(sizeButton, in: app); sizeButton.tap()
+      // In-app names are numbered after the replaced clock edition is filtered out;
+      // the stored Edit Widget label below uses the original manifest numbering.
+      let expected = size == "Medium" ? ["Art 6"] : ["Aurora date", "Snow mushrooms"]
+      for name in expected {
+        let item = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
+        reveal(item, in: app)
+        capture("swapped-aurora-preview-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
+      }
+    }
+    XCUIDevice.shared.press(.home)
+    let spring = makeSpringboard()
+    for size in ["small", "medium", "large"] {
+      let widget = try findArtWidget(size, in: spring, requireEditable: size == "small")
+      try enterWidgetEditor(widget, in: spring)
+      try openArtOptions(in: spring)
+      try resetArtOptionsToStart(in: spring, themeName: "Aurora Haven")
+      let expected = size == "medium" ? ["Art 7"] : ["Aurora date", "Snow mushrooms"]
+      let selectedName = size == "medium" ? "Art 7" : "Snow mushrooms"
+      var seen = Set<String>()
+      var chosen: CGVector?
+      for _ in 0..<26 {
+        let lines = try groupedScreenLines()
+        for name in expected {
+          if let row = lines.first(where: { $0.text.localizedCaseInsensitiveContains(name) && $0.text.localizedCaseInsensitiveContains(size) }) {
+            seen.insert(name)
+            if name == selectedName { chosen = CGVector(dx: row.box.midX, dy: 1 - row.box.midY) }
+          }
+        }
+        if seen.count == expected.count && chosen != nil { break }
+        scrollArtOptions(in: spring, towardsStart: false)
+      }
+      capture("swapped-aurora-edit-art-" + size)
+      XCTAssertEqual(seen, Set(expected))
+      let choice = try XCTUnwrap(chosen)
+      spring.coordinate(withNormalizedOffset: choice).tap()
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+      try dismissWidgetEditor(in: spring)
+      RunLoop.current.run(until: Date().addingTimeInterval(5))
+      capture("swapped-aurora-home-" + size)
+    }
+    print("GLAZE_UPGRADE_AURORA_ALL_FAMILIES_VERIFIED"); fflush(stdout)
   }
 
   func testInstallLegacyArtWidgetsForUpgrade() throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
-    app.launch()
-    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
+    let app = makeApp()
+    // The workflow cold-launches the archived app through SpringBoard first. Attach to that
+    // running app instead of restarting it inside XCTest's shorter launch handshake.
+    app.activate()
+    let widgetsTab = app.buttons["Widgets"].firstMatch
+    XCTAssertTrue(widgetsTab.waitForExistence(timeout: 90), app.debugDescription)
+    widgetsTab.tap()
+    // Let the archived app publish its initial native theme and register its widget extension,
+    // as an existing user has already done, before opening the system picker on this fresh VM.
+    RunLoop.current.run(until: Date().addingTimeInterval(5))
     let spring = makeSpringboard()
     for (index, size) in ["small", "medium", "large"].enumerated() {
       try openGallery(spring)
@@ -254,15 +479,31 @@ import Vision
     print("GLAZE_LEGACY_ART_WIDGETS_INSTALLED"); fflush(stdout)
   }
 
-  private func findArtWidget(_ size: String, in spring: XCUIApplication) throws -> XCUIElement {
+  private func findArtWidget(_ size: String, in spring: XCUIApplication, requireEditable: Bool = false) throws -> XCUIElement {
     for direction in ["left", "right"] {
       for _ in 0..<7 {
-        let matches = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
-        if let hit = matches.allElementsBoundByIndex.first(where: { element in
+        // SpringBoard exposes SBWidgetIcon as Icon or Other depending on the remote
+        // timeline snapshot. Match its actual accessibility identity, not a stale
+        // type/index binding, and check existence before requesting geometry.
+        let matches = spring.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Glaze"))
+        let candidates = matches.allElementsBoundByAccessibilityElement.filter { element in
+          guard element.exists && element.isHittable else { return false }
           let f = element.frame
-          guard element.exists && element.isHittable && f.width > 110 else { return false }
+          guard f.width > 110 else { return false }
           return size == "small" ? f.width < 220 : size == "medium" ? f.width > 250 && f.height < 230 : f.height > 250
-        }) { return hit }
+        }
+        for hit in candidates {
+          if !requireEditable { return hit }
+          // During A/B testing three static native Small widgets are present as well.
+          // Find the retained configurable art widget, rather than mistaking a clock for it.
+          hit.press(forDuration: 1.3)
+          RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+          let text = try screenText()
+          let editable = spring.buttons["Edit Widget"].firstMatch.exists || text.contains("Edit Widget")
+          spring.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.84)).tap()
+          RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+          if editable { return hit }
+        }
         if direction == "left" { spring.swipeLeft() } else { spring.swipeRight() }
         RunLoop.current.run(until: Date().addingTimeInterval(0.5))
       }
@@ -307,8 +548,16 @@ import Vision
   }
 
   func testAlpineAllFamiliesAfterUpgrade() throws {
+    try verifyAlpineAfterUpgrade(authoredSizes: false)
+  }
+
+  func testAlpineAuthoredFamiliesAfterUpgrade() throws {
+    try verifyAlpineAfterUpgrade(authoredSizes: true)
+  }
+
+  private func verifyAlpineAfterUpgrade(authoredSizes: Bool) throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
     app.launch()
     defer {
@@ -321,7 +570,8 @@ import Vision
     for size in ["Small", "Medium", "Large"] {
       let sizeButton = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", size)).firstMatch
       reveal(sizeButton, in: app); sizeButton.tap()
-      for name in names {
+      let expected = authoredSizes && size == "Medium" ? ["Art 7"] : names
+      for name in expected {
         let item = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
         reveal(item, in: app)
         capture("upgraded-widgets-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
@@ -329,12 +579,14 @@ import Vision
     }
     app.terminate()
     let theme = try openAlpine()
-    let part = theme.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
+    let choice = theme.buttons["View widgets with this theme"].firstMatch
+    let part = choice.exists ? choice : theme.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
     reveal(part, in: theme); part.tap()
     for size in ["Small", "Medium", "Large"] {
       let sizeButton = theme.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@ AND label ENDSWITH %@", "Widget size", size)).firstMatch
       reveal(sizeButton, in: theme); sizeButton.tap()
-      for name in names {
+      let expected = authoredSizes && size == "Medium" ? ["Art 7"] : names
+      for name in expected {
         let item = theme.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
         reveal(item, in: theme)
         capture("upgraded-theme-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
@@ -348,22 +600,24 @@ import Vision
       try enterWidgetEditor(widget, in: spring)
       try openArtOptions(in: spring)
       try resetArtOptionsToStart(in: spring)
+      let expected = authoredSizes && size == "medium" ? ["Art 9"] : names
+      let selectedName = authoredSizes && size == "medium" ? "Art 9" : "Copper eclipse"
       var seen = Set<String>()
       for _ in 0..<26 {
         let lines = try screenText().components(separatedBy: " | ")
-        for name in names where lines.contains(where: {
+        for name in expected where lines.contains(where: {
           $0.localizedCaseInsensitiveContains(name) && $0.localizedCaseInsensitiveContains(size)
         }) { seen.insert(name) }
         print("GLAZE_UPGRADE_PICKER_TEXT " + size + " " + lines.joined(separator: " | "))
-        if seen.count == names.count { break }
+        if seen.count == expected.count { break }
         scrollArtOptions(in: spring, towardsStart: false)
       }
       capture("upgraded-edit-art-" + size)
-      XCTAssertEqual(seen, Set(names), spring.debugDescription)
+      XCTAssertEqual(seen, Set(expected), spring.debugDescription)
       print("GLAZE_UPGRADE_ART_FAMILY_VERIFIED " + size); fflush(stdout)
       var chosen = false
       for _ in 0..<10 {
-        if let point = try screenTextPoint(containing: ["Copper eclipse", size]) {
+        if let point = try screenTextPoint(containing: [selectedName, size]) {
           spring.coordinate(withNormalizedOffset: point).tap()
           chosen = true
           break
@@ -373,12 +627,17 @@ import Vision
       XCTAssertTrue(chosen, spring.debugDescription)
       RunLoop.current.run(until: Date().addingTimeInterval(1))
       let selected = try screenText()
-      XCTAssertTrue(selected.localizedCaseInsensitiveContains("Copper eclipse") && selected.localizedCaseInsensitiveContains(size) && selected.contains("Layout"), selected)
+      XCTAssertTrue(selected.localizedCaseInsensitiveContains(selectedName) && selected.localizedCaseInsensitiveContains(size) && selected.contains("Layout"), selected)
       capture("upgraded-selected-copper-" + size)
       try dismissWidgetEditor(in: spring)
-      try waitForCopperOnHomeScreen(size, in: spring)
+      if !authoredSizes || size != "medium" { try waitForCopperOnHomeScreen(size, in: spring) }
+      else {
+        RunLoop.current.run(until: Date().addingTimeInterval(5))
+        print("GLAZE_AUTHORED_MEDIUM_HERO_SELECTED"); fflush(stdout)
+      }
       capture("upgraded-copper-home-" + size)
     }
+    if authoredSizes { print("GLAZE_AUTHORED_SIZE_UPGRADE_VERIFIED"); fflush(stdout) }
     print("GLAZE_UPGRADE_ALL_ALPINE_VERIFIED"); fflush(stdout)
   }
 
@@ -465,10 +724,10 @@ import Vision
     RunLoop.current.run(until: Date().addingTimeInterval(0.6))
   }
 
-  private func resetArtOptionsToStart(in spring: XCUIApplication) throws {
+  private func resetArtOptionsToStart(in spring: XCUIApplication, themeName: String = "Alpine Starlight") throws {
     var loaded = false
     for _ in 0..<20 {
-      if try screenText().localizedCaseInsensitiveContains("Alpine Starlight") { loaded = true; break }
+      if try screenText().localizedCaseInsensitiveContains(themeName) { loaded = true; break }
       RunLoop.current.run(until: Date().addingTimeInterval(0.5))
     }
     XCTAssertTrue(loaded, "The real art option menu did not finish loading")
@@ -479,6 +738,14 @@ import Vision
     }
     let visible = try screenText()
     XCTFail("Could not reach the start of the real art menu: " + visible)
+  }
+
+  private func makeApp() -> XCUIApplication {
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) {
+      app.setValue(false, forKey: "idleAnimationWaitEnabled")
+    }
+    return app
   }
 
   private func makeSpringboard() -> XCUIApplication {
@@ -548,7 +815,7 @@ import Vision
 
   func testInspectSystemArtGallery() throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     app.launch()
     XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
     try openGallery(makeSpringboard(), inspect: true)
@@ -559,13 +826,20 @@ import Vision
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
     if !fromHomeScreen { XCUIDevice.shared.press(.home) }
     RunLoop.current.run(until: Date().addingTimeInterval(0.8))
-    let icon = spring.icons["Glaze"].firstMatch
-    for _ in 0..<4 {
-      if icon.exists && icon.isHittable { break }
-      spring.swipeLeft()
-      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    // Existing widgets share the app's Glaze label. The first global match can be on an
+    // off-screen page; use any actually visible match and search both page directions.
+    var visibleIcon: XCUIElement?
+    for direction in ["right", "left"] {
+      for _ in 0..<7 {
+        visibleIcon = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
+          .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable })
+        if visibleIcon != nil { break }
+        if direction == "right" { spring.swipeRight() } else { spring.swipeLeft() }
+        RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+      }
+      if visibleIcon != nil { break }
     }
-    XCTAssertTrue(icon.exists && icon.isHittable, spring.debugDescription)
+    let icon = try XCTUnwrap(visibleIcon, spring.debugDescription)
     icon.press(forDuration: 1.5)
     let editHome = spring.buttons["Edit Home Screen"].firstMatch
     XCTAssertTrue(editHome.waitForExistence(timeout: 10), spring.debugDescription)
@@ -618,15 +892,37 @@ import Vision
     }
     let result = spring.buttons["Glaze"].firstMatch
     let title = spring.staticTexts["Glaze"].firstMatch
-    for _ in 0..<3 {
+    let galleryReady = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
+    for attempt in 0..<5 {
       search.typeText("Glaze")
       let searchKey = spring.keyboards.buttons["Search"].firstMatch
       if searchKey.exists && searchKey.isHittable { searchKey.tap() }
-      if result.waitForExistence(timeout: 4) { result.tap(); return }
-      if title.waitForExistence(timeout: 6) && title.frame.width > 1 {
-        title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+      // SpringBoard exposes the app result as a Cell on current iOS. Its child text can
+      // be visible while reporting non-hittable; tap the actual result row instead.
+      let resultCell = spring.cells.matching(NSPredicate(format: "label == %@", "Glaze")).firstMatch
+      if resultCell.waitForExistence(timeout: 5) {
+        resultCell.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        if galleryReady.waitForExistence(timeout: 10) { return }
+      }
+      if result.waitForExistence(timeout: 4),
+        let row = spring.buttons.matching(NSPredicate(format: "label == %@", "Glaze"))
+          .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable }) {
+        row.tap()
+        if galleryReady.waitForExistence(timeout: 10) { return }
+      }
+      if title.waitForExistence(timeout: 6),
+        let row = spring.staticTexts.matching(NSPredicate(format: "label == %@", "Glaze"))
+          .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable && $0.frame.width > 1 }) {
+        row.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        if galleryReady.waitForExistence(timeout: 10) { return }
+      }
+      if !search.exists {
+        XCTAssertTrue(galleryReady.waitForExistence(timeout: 20), spring.debugDescription)
         return
       }
+      capture("widget-picker-wait-\(attempt)")
+      print("GLAZE_PICKER_WAIT " + (try screenText())); fflush(stdout)
+      if attempt == 4 { break }
       let clear = spring.buttons["Clear text"].firstMatch
       if clear.exists { clear.tap() }
       search.tap()

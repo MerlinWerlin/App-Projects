@@ -123,7 +123,7 @@ struct HabitStreakWidgetView: View {
     let t = entry.theme
     Group {
       if family == .systemLarge {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 6) {
           ForEach(entry.rows, id: \.habit.rawValue) { row in
             StreakRowCompact(row: row, theme: t)
             if row.habit != entry.rows.last?.habit {
@@ -187,7 +187,7 @@ private struct StreakRowCompact: View {
   var body: some View {
     let t = theme
     let s = row.summary
-    VStack(alignment: .leading, spacing: 6) {
+    VStack(alignment: .leading, spacing: 3) {
       HStack(alignment: .firstTextBaseline) {
         Text(HabitText.name(row.habit).uppercased(with: .current))
           .font(t.typeface(size: 12, weight: .bold))
@@ -292,8 +292,8 @@ private struct TickButton: View {
   var body: some View {
     Button(intent: TickHabitIntent(habit: habit)) {
       HStack(spacing: 4) {
-        Image(systemName: done ? "checkmark.circle.fill" : "checkmark.circle")
-          .font(.system(size: 15, weight: .bold))
+        Image(systemName: done ? "checkmark.square.fill" : "square")
+          .font(.system(size: 25, weight: .semibold))
         if !compact {
           Text(done ? HabitStreakText.done : HabitStreakText.tick)
             .font(theme.typeface(size: 13, weight: .bold))
@@ -302,7 +302,8 @@ private struct TickButton: View {
         }
       }
       .foregroundStyle(done ? theme.accentColor : theme.inkColor)
-      .frame(maxWidth: .infinity, minHeight: 36)
+      .frame(maxWidth: .infinity, minHeight: 44)
+      .contentShape(Rectangle())
       .background(Capsule().fill(done ? theme.accentColor.opacity(0.18) : theme.inkColor.opacity(0.12)))
       .overlay(Capsule().strokeBorder(done ? theme.accentColor : theme.inkColor.opacity(0.35), lineWidth: 1))
     }

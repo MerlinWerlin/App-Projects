@@ -69,6 +69,9 @@ type ThemeArt = {
 let generation = 0;
 let running: Promise<unknown> = Promise.resolve();
 
+/** Stop an older theme's pending composition before the next index commit. */
+export function supersedeThemeWidgetArt(): void { generation++; }
+
 /**
  * T252: add every widget art piece of `theme` to My widget art and remove the previous theme's
  * auto-added art (own photos stay), in one index write. Runs after any earlier sync; a newer call

@@ -261,7 +261,7 @@ test('wiring: theme apply calls syncThemeWidgetArt (non-blocking), the store mak
   assert.match(store, /if \(!current\.available\) return NONE;/, 'Expo Go / Android: nothing runs');
   assert.match(store, /if \(stale\(\)\)/, 'a newer apply supersedes before the index write');
   // T250 merge: the sync runs inside the deferred 'themeArt' step, never awaited by applyThemeEverywhere.
-  assert.match(apply, /requestDeferred\(DEFERRED_STEPS\.themeArt, theme\)/, 'never blocks the apply');
+  assert.match(apply, /requestDeferred\(DEFERRED_STEPS\.themeArt\)/, 'never blocks the apply or retains a stale theme argument');
   const applyFn = apply.slice(apply.indexOf('export async function applyThemeEverywhere('), apply.indexOf('async function themeArtStep('));
   assert.doesNotMatch(applyFn, /syncThemeWidgetArt\(/, 'not called inline in applyThemeEverywhere');
   const adapter = strip(read('src', 'native', 'widgets.ts'));

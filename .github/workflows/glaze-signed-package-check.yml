@@ -81,7 +81,7 @@ jobs:
   testflight-status:
     if: github.event_name == 'workflow_dispatch' && inputs.check_mode != 'signatures'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -93,9 +93,11 @@ jobs:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+          EXPECTED_VERSION: ${{ inputs.expected_version }}
+          EXPECTED_BUILD: ${{ inputs.expected_build }}
         run: |
           python3 - <<'PY'
-          import datetime,importlib.util,json,pathlib
+          import datetime,importlib.util,json,os,pathlib,time
           spec=importlib.util.spec_from_file_location('asc','scripts/asc/asc.py')
           asc=importlib.util.module_from_spec(spec);spec.loader.exec_module(asc)
           original_call=asc.call
@@ -113,19 +115,33 @@ jobs:
           report={'schema':'GLAZE_TESTFLIGHT_READONLY_STATUS_V1','observedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
                   'appId':app_id,'bundleId':app['bundleId'],'groups':[group(g) for g in groups],
                   'builds':[],'appleMutations':False,'phoneInstalledBuildObserved':False,'explicitGroupMembershipQueried':False}
-          builds=asc.get('/v1/builds',**{'filter[app]':app_id,'sort':'-uploadedDate','limit':5})['data']
-          for b in builds:
-              a=asc.attrs(b);path='/v1/builds/'+b['id']
-              version=asc.attrs(asc.get(path+'/preReleaseVersion')['data'])
-              beta=asc.attrs(asc.get(path+'/buildBetaDetail')['data'] or {})
-              report['builds'].append({'id':b['id'],'version':version.get('version'),'build':a.get('version'),
-                  'uploadedAt':a.get('uploadedDate'),'processingState':a.get('processingState'),
-                  'expired':a.get('expired'),'expiresAt':a.get('expirationDate'),
-                  'internalBuildState':beta.get('internalBuildState'),'externalBuildState':beta.get('externalBuildState')})
-          pathlib.Path('glaze-testflight-status.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
-          print(json.dumps({'builds':report['builds'],'groups':report['groups']},indent=2))
+          report['expectedVersion']=os.environ['EXPECTED_VERSION']
+          report['expectedBuild']=os.environ['EXPECTED_BUILD']
+          deadline=time.monotonic()+8*60
+          while True:
+              report['observedAt']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+              report['builds']=[]
+              builds=asc.get('/v1/builds',**{'filter[app]':app_id,'sort':'-uploadedDate','limit':5})['data']
+              for b in builds:
+                  a=asc.attrs(b);path='/v1/builds/'+b['id']
+                  version=asc.attrs(asc.get(path+'/preReleaseVersion')['data'])
+                  beta=asc.attrs(asc.get(path+'/buildBetaDetail')['data'] or {})
+                  report['builds'].append({'id':b['id'],'version':version.get('version'),'build':a.get('version'),
+                      'uploadedAt':a.get('uploadedDate'),'processingState':a.get('processingState'),
+                      'expired':a.get('expired'),'expiresAt':a.get('expirationDate'),
+                      'internalBuildState':beta.get('internalBuildState'),'externalBuildState':beta.get('externalBuildState')})
+              target=next((b for b in report['builds'] if b['version']==report['expectedVersion'] and b['build']==report['expectedBuild']),None)
+              report['expectedBuildAvailable']=bool(target and target['processingState']=='VALID' and target['internalBuildState']=='IN_BETA_TESTING' and not target['expired'])
+              pathlib.Path('glaze-testflight-status.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+              print(json.dumps({'target':target,'available':report['expectedBuildAvailable']},indent=2),flush=True)
+              if report['expectedBuildAvailable']: break
+              if target and (target['expired'] or target['processingState'] in ['INVALID','FAILED']):
+                  raise SystemExit('Apple rejected or expired the requested build')
+              if time.monotonic()>=deadline: raise SystemExit('The requested build is not yet available in TestFlight')
+              time.sleep(30)
           PY
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: glaze-testflight-readonly-status
           path: glaze-testflight-status.json

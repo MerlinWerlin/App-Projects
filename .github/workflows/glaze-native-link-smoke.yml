@@ -9,6 +9,10 @@ on:
         description: 'Diagnostic only: log the decoded intent and actual view choice in a temporary extension build; never qualifies a release'
         type: boolean
         default: false
+      theme_swap_check:
+        description: 'Also apply Alpine to Aurora to Alpine and verify all three real native Home Screen widgets plus native diagnostics before the Alpine art gate'
+        type: boolean
+        default: false
       simulator_run:
         description: 'Full native run containing glaze-simulator-installable; blank compiles the test runner only'
         required: false
@@ -29,6 +33,11 @@ on:
         required: false
         default: ''
         type: string
+      recovered_predecessor_run:
+        description: 'Optional already-released 1.0.13+ app installed and recovered before the candidate; prevents migration from masking later feature regressions'
+        required: false
+        default: ''
+        type: string
       scenario:
         description: 'Installed route or actual Home Screen widget and shared-data round trip'
         type: choice
@@ -41,15 +50,17 @@ jobs:
   link:
     if: github.event_name == 'workflow_dispatch'
     runs-on: macos-latest
-    timeout-minutes: 60
+    timeout-minutes: 75
     env:
       GH_TOKEN: ${{ github.token }}
       GLAZE_SIMULATOR_RUN: ${{ inputs.simulator_run }}
       GLAZE_PREVIOUS_SIMULATOR_RUN: ${{ inputs.previous_simulator_run }}
       GLAZE_UPGRADE_BASE_RUN: ${{ inputs.upgrade_base_run }}
       GLAZE_UPGRADE_MIDDLE_RUN: ${{ inputs.upgrade_middle_run }}
+      GLAZE_RECOVERED_PREDECESSOR_RUN: ${{ inputs.recovered_predecessor_run }}
       GLAZE_UI_SCENARIO: ${{ inputs.scenario || 'route' }}
       GLAZE_ART_TRACE: ${{ inputs.diagnostic_art_trace && 'true' || 'false' }}
+      GLAZE_THEME_SWAP_CHECK: ${{ inputs.theme_swap_check && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -103,9 +114,14 @@ jobs:
             gh run download "$RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/upgrade-$LABEL"
             ditto -x -k "$RUNNER_TEMP/upgrade-$LABEL/glaze-simulator-app.zip" "$RUNNER_TEMP/upgrade-$LABEL"
           done
+          if [[ -n "$GLAZE_RECOVERED_PREDECESSOR_RUN" ]]; then
+            [[ "$GLAZE_RECOVERED_PREDECESSOR_RUN" =~ ^[0-9]+$ ]]
+            gh run download "$GLAZE_RECOVERED_PREDECESSOR_RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/recovered-predecessor"
+            ditto -x -k "$RUNNER_TEMP/recovered-predecessor/glaze-simulator-app.zip" "$RUNNER_TEMP/recovered-predecessor"
+          fi
       - name: Install the real app and verify the Widgets route through the system prompt
         if: inputs.simulator_run != ''
-        timeout-minutes: 50
+        timeout-minutes: 65
         run: |
           set -euo pipefail
           APP=$(find "$RUNNER_TEMP/installable" -maxdepth 1 -name '*.app' -print -quit)
@@ -125,6 +141,7 @@ jobs:
             if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then python3 apps/glaze/scripts/prepare-simulator-release-identity.py "$PREVIOUS" "$RUNNER_TEMP/glaze-native-link-review/install-identities/seed.json"; fi
             python3 apps/glaze/scripts/sign-native-simulator.py sign "$PREVIOUS" "$RUNNER_TEMP/glaze-native-link-review/signing/seed.json"
             xcrun simctl install "$DEVICE" "$PREVIOUS"
+            xcrun simctl launch "$DEVICE" com.jared797.glaze
             BEFORE_TEST=testAlpineOnHomeScreen
             BEFORE_MARKER=GLAZE_ALPINE_INSTALLED
             if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then BEFORE_TEST=testInstallLegacyArtWidgetsForUpgrade; BEFORE_MARKER=GLAZE_LEGACY_ART_WIDGETS_INSTALLED; fi
@@ -152,12 +169,38 @@ jobs:
               fi
               python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/upgrade/$LABEL"
             done
+            if [[ -n "$GLAZE_RECOVERED_PREDECESSOR_RUN" ]]; then
+              PREDECESSOR=$(find "$RUNNER_TEMP/recovered-predecessor" -maxdepth 1 -name '*.app' -print -quit)
+              test -n "$PREDECESSOR"
+              python3 apps/glaze/scripts/prepare-simulator-release-identity.py "$PREDECESSOR" "$RUNNER_TEMP/glaze-native-link-review/install-identities/recovered-predecessor.json"
+              python3 apps/glaze/scripts/sign-native-simulator.py sign "$PREDECESSOR" "$RUNNER_TEMP/glaze-native-link-review/signing/recovered-predecessor.json"
+              xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
+              xcrun simctl install "$DEVICE" "$PREDECESSOR"
+              xcrun simctl launch "$DEVICE" com.jared797.glaze
+              PREDECESSOR_VERSION=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PREDECESSOR/Info.plist")
+              if [[ "$PREDECESSOR_VERSION" == 1.0.13 ]]; then
+                python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/predecessor-recovery.json"
+                python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE"
+              else
+                python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/predecessor-recovery.json" glaze.widgetArt.recovered106.v2
+                python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE" authored
+              fi
+              python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/upgrade/recovered-predecessor"
+            fi
             xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
           fi
           xcrun simctl install "$DEVICE" "$APP"
           if [[ -n "$GLAZE_PREVIOUS_SIMULATOR_RUN" ]]; then
             mkdir -p "$RUNNER_TEMP/glaze-native-link-review"
             xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/glaze-native-link-review/immediately-after-upgrade.png"
+          fi
+          if [[ "$GLAZE_THEME_SWAP_CHECK" == true ]]; then
+            test "$GLAZE_UI_SCENARIO" = recovery-upgrade
+            test -n "$GLAZE_RECOVERED_PREDECESSOR_RUN"
+            xcrun simctl launch "$DEVICE" com.jared797.glaze
+            python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/candidate-recovered-state.json" glaze.widgetArt.recovered106.v2
+            xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-swap.xcresult" -only-testing:GlazeLinkUITests/GlazeDesignedWidgetUITests/testThemeSwapAfterRecoveredUpgrade test-without-building > "$RUNNER_TEMP/glaze-swap.log" 2>&1 || { tail -160 "$RUNNER_TEMP/glaze-swap.log"; exit 1; }
+            grep -F GLAZE_THEME_SWAP_A_B_A_VERIFIED "$RUNNER_TEMP/glaze-swap.log"
           fi
           if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then
             python3 - <<'PY'
@@ -171,7 +214,10 @@ jobs:
             xcrun simctl addmedia "$DEVICE" "$RUNNER_TEMP/glaze-picker-first.png" "$RUNNER_TEMP/glaze-picker-second.png"
           fi
           TEST=GlazeLinkUITests/GlazeDeepLinkTests/testWidgetLinkReachesWidgets
-          if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineAllFamiliesAfterUpgrade; fi
+          if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then
+            TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineAllFamiliesAfterUpgrade
+            if [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Info.plist")" == 1.0.15 ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineAuthoredFamiliesAfterUpgrade; fi
+          fi
           if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then TEST=GlazeLinkUITests/GlazeWidgetTapTests/testWidgetTapRoundTripsThroughSharedStorage; fi
           if [[ "$GLAZE_UI_SCENARIO" == design ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testThreeFunctionalDesignsReachSharedStorage; fi
           if [[ "$GLAZE_UI_SCENARIO" == alpine ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOriginalFaceFromTheme; fi
@@ -230,6 +276,8 @@ jobs:
           if [[ -d "$RUNNER_TEMP/glaze-link.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-link.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/attachments" > "$RUNNER_TEMP/glaze-native-link-review/attachment-export.log" 2>&1 || true; fi
           if [[ -d "$RUNNER_TEMP/glaze-upgrade-before.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-upgrade-before.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/before-upgrade" || true; fi
           if [[ -d "$RUNNER_TEMP/glaze-upgrade-existing.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-upgrade-existing.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/existing-widget-before-upgrade" || true; fi
+          if [[ -d "$RUNNER_TEMP/glaze-swap.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-swap.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/theme-swap" || true; fi
+          cp "$RUNNER_TEMP/glaze-swap.log" "$RUNNER_TEMP/glaze-native-link-review/" 2>/dev/null || true
           if [[ "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == alpine-art || "$GLAZE_UI_SCENARIO" == recovery-upgrade || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then xcrun simctl spawn "$DEVICE" log show --last 12m --info --debug --style compact --predicate 'process CONTAINS[c] "GlazeWidget" OR process == "linkd" OR ((subsystem CONTAINS[c] "WidgetKit" OR process == "chronod" OR process == "SpringBoard") AND (eventMessage CONTAINS[c] "glaze" OR eventMessage CONTAINS[c] "image" OR eventMessage CONTAINS[c] "archiv"))' > "$RUNNER_TEMP/glaze-native-link-review/widget-os.log" || true; fi
           cp "$RUNNER_TEMP/installable/simulator-app-source.json" "$RUNNER_TEMP/glaze-native-link-review/" || true
           python3 - <<'PY'
@@ -263,14 +311,31 @@ jobs:
           receipt['simulatorInstallIdentities']=[json.loads(p.read_text()) for p in sorted((root/'install-identities').glob('*.json'))]
           receipt['simulatorAppleSigning']=[json.loads(p.read_text()) for p in sorted((root/'signing').glob('*.json'))]
           receipt['releaseQualified']=receipt['upgradeAlpineAllFamilies'] and receipt['copperRenderedOnHomeScreenAllFamilies'] and not receipt['diagnosticExtensionRebuilt']
+          receipt['themeSwapCheckRequested']=os.environ.get('GLAZE_THEME_SWAP_CHECK')=='true'
+          if receipt['themeSwapCheckRequested']:
+              swap_path=root/'glaze-swap.log'
+              swap=swap_path.read_text() if swap_path.exists() else ''
+              receipt['nativeHomeThemeSwapABA']='GLAZE_THEME_SWAP_A_B_A_VERIFIED' in swap and '** TEST EXECUTE SUCCEEDED **' in swap
+              receipt['releaseQualified']=receipt['releaseQualified'] and receipt['nativeHomeThemeSwapABA']
           receipt['upgradeBaseRun']=os.environ.get('GLAZE_UPGRADE_BASE_RUN')
           receipt['upgradeMiddleRun']=os.environ.get('GLAZE_UPGRADE_MIDDLE_RUN')
+          receipt['recoveredPredecessorRun']=os.environ.get('GLAZE_RECOVERED_PREDECESSOR_RUN')
+          if receipt['recoveredPredecessorRun']:
+              recovery_path=root/'predecessor-recovery.json'
+              recovery=json.loads(recovery_path.read_text()) if recovery_path.exists() else {}
+              receipt['alreadyRecoveredPredecessorVerified']=bool(recovery.get('recoveryCompleteObserved') and not recovery.get('appDataModifiedByHarness',True))
+              receipt['releaseQualified']=receipt['releaseQualified'] and receipt['alreadyRecoveredPredecessorVerified']
           if receipt['scenario']=='recovery-upgrade':
               receipt['legacyWidgetSeedRun']=os.environ.get('GLAZE_PREVIOUS_SIMULATOR_RUN')
               existing=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-upgrade-existing.log'
               prior=existing.read_text() if existing.exists() else ''
               receipt['existingAlpineArtWidgetConfiguredBeforeUpgrade']='GLAZE_UPGRADE_EXISTING_ART_WIDGET_PRIMED' in prior and '** TEST EXECUTE SUCCEEDED **' in prior
               receipt['scope']='Production Expo app installed over 1.0.6 and 1.0.12 on one retained-data simulator. The UI gate requires both preview screens and all three Edit Widget art menus. Physical iPhone behavior is not inferred.'
+          receipt['authoredSizeUpgradeVerified']='GLAZE_AUTHORED_SIZE_UPGRADE_VERIFIED' in text and execute_ok
+          receipt['authoredMediumHeroSelected']='GLAZE_AUTHORED_MEDIUM_HERO_SELECTED' in text and execute_ok
+          receipt['auroraUpgradeAllFamilies']=False
+          swap_log=root/'glaze-swap.log'
+          if swap_log.exists(): receipt['auroraUpgradeAllFamilies']='GLAZE_UPGRADE_AURORA_ALL_FAMILIES_VERIFIED' in swap_log.read_text() and '** TEST EXECUTE SUCCEEDED **' in swap_log.read_text()
           receipt['alpineSmallEditWidgetArt']=supplied and execute_ok and 'GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED' in text
           receipt['alpineInstalledThroughPicker']=supplied and 'GLAZE_ALPINE_INSTALLED' in text and execute_ok
           receipt['themeGalleryInstalledThroughPicker']=supplied and 'GLAZE_THEME_GALLERY_INSTALLED' in text and execute_ok
@@ -334,6 +399,7 @@ jobs:
             ${{ runner.temp }}/glaze-native-link-review/**/*.jpg
             ${{ runner.temp }}/glaze-native-link-review/**/*.json
             ${{ runner.temp }}/glaze-link-test.log
+            ${{ runner.temp }}/glaze-swap.log
             ${{ runner.temp }}/glaze-upgrade-*.log
           retention-days: 14
       - name: Remove temporary simulator signing credentials

@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.14 shows the theme art in the Add Widget gallery and offers each piece only at the sizes it was drawn for.",
+  "note": "Glaze 1.0.15: ordered theme swaps, four clear theme actions and larger completion controls.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

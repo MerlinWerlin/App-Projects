@@ -14,7 +14,7 @@ assert os.environ.get('GITHUB_ACTIONS') == 'true'
 app = Path(sys.argv[1]).resolve()
 assert app.is_relative_to(Path(os.environ['RUNNER_TEMP']).resolve())
 report = Path(sys.argv[2])
-builds = {'1.0.4': '33', '1.0.6': '37', '1.0.12': '49', '1.0.13': '51'}
+builds = {'1.0.4': '33', '1.0.6': '37', '1.0.12': '49', '1.0.13': '51', '1.0.14': '53', '1.0.15': '55'}
 rows = []
 for bundle in [app, app / 'PlugIns/GlazeWidgets.appex']:
     path = bundle / 'Info.plist'
@@ -34,5 +34,5 @@ for bundle in [app, app / 'PlugIns/GlazeWidgets.appex']:
 assert rows[0]['version'] == rows[1]['version'] and rows[0]['installBuild'] == rows[1]['installBuild']
 report.parent.mkdir(parents=True, exist_ok=True)
 report.write_text(json.dumps({'simulatorMetadataOnly': True, 'appDataChanged': False,
-    'candidateBuild51IsStagedUntilSignedRelease': rows[0]['version'] == '1.0.13', 'bundles': rows}, indent=2))
+    'candidateBuildIsStagedUntilSignedRelease': rows[0]['version'] in ['1.0.14', '1.0.15'], 'bundles': rows}, indent=2))
 print('GLAZE_SIMULATOR_RELEASE_IDENTITY', rows[0]['version'], rows[0]['installBuild'])
