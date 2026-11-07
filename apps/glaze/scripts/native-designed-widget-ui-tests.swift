@@ -102,7 +102,7 @@ import Vision
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     app.launch()
     XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 30))
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     try openGallery(spring)
     try installWidget("Seamless", in: spring, maxSwipes: 60)
     capture("seamless-installed-before-alpine")
@@ -121,7 +121,7 @@ import Vision
     XCTAssertTrue(use.waitForExistence(timeout: 15), app.debugDescription)
     use.tap()
     RunLoop.current.run(until: Date().addingTimeInterval(8))
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     XCUIDevice.shared.press(.home)
     capture("home-before-adding-new-theme-widgets")
     try openGallery(spring, fromHomeScreen: true)
@@ -138,7 +138,7 @@ import Vision
   func testAlpineSmallEditWidgetArt() throws {
     continueAfterFailure = false
     let app = try openAlpine()
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     defer {
       capture("alpine-art-final")
       print("GLAZE_ART_APP_TREE\n" + app.debugDescription)
@@ -208,7 +208,7 @@ import Vision
   func testApplyAlpineForUpgrade() throws {
     continueAfterFailure = false
     let app = try openAlpine()
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     let everything = app.buttons["Use everything"].firstMatch
     if everything.exists { everything.tap() }
     else {
@@ -234,7 +234,7 @@ import Vision
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     app.launch()
     XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     for (index, size) in ["small", "medium", "large"].enumerated() {
       try openGallery(spring)
       let title = spring.staticTexts["Seamless"].firstMatch
@@ -273,14 +273,13 @@ import Vision
 
   func testPrimeAlpineArtWidgetBeforeUpgrade() throws {
     continueAfterFailure = false
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     XCUIDevice.shared.press(.home)
     let widget = try findArtWidget("small", in: spring)
-    widget.press(forDuration: 1.4)
-    let edit = spring.buttons["Edit Widget"].firstMatch
-    XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription); edit.tap()
+    try enterWidgetEditor(widget, in: spring)
     let art = spring.buttons["Art"].firstMatch
     XCTAssertTrue(art.waitForExistence(timeout: 10), spring.debugDescription); art.tap()
+    try resetArtOptionsToStart(in: spring)
     var selected = false
     for _ in 0..<26 {
       RunLoop.current.run(until: Date().addingTimeInterval(1))
@@ -342,13 +341,11 @@ import Vision
       }
     }
     XCUIDevice.shared.press(.home)
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     for size in ["small", "medium", "large"] {
       let widget = try findArtWidget(size, in: spring)
       capture("upgraded-home-" + size)
-      widget.press(forDuration: 1.4)
-      let edit = spring.buttons["Edit Widget"].firstMatch
-      XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription); edit.tap()
+      try enterWidgetEditor(widget, in: spring)
       try openArtOptions(in: spring)
       try resetArtOptionsToStart(in: spring)
       var seen = Set<String>()
@@ -449,12 +446,45 @@ import Vision
     XCTFail("Could not reach the start of the real art menu: " + visible)
   }
 
-  private func dismissWidgetEditor(in spring: XCUIApplication) throws {
-    // The iPhone commits widget edits when the person taps outside the editor.
-    spring.coordinate(withNormalizedOffset: CGVector(dx: 0.10, dy: 0.20)).tap()
-    RunLoop.current.run(until: Date().addingTimeInterval(1))
+  private func makeSpringboard() -> XCUIApplication {
+    let app = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) {
+      app.setValue(false, forKey: "idleAnimationWaitEnabled")
+      print("GLAZE_SPRINGBOARD_ANIMATION_WAIT_DISABLED"); fflush(stdout)
+    }
+    return app
+  }
+
+  private func enterWidgetEditor(_ widget: XCUIElement, in spring: XCUIApplication) throws {
+    widget.press(forDuration: 1.4)
+    RunLoop.current.run(until: Date().addingTimeInterval(0.8))
+    for _ in 0..<5 {
+      let visible = try screenText()
+      if visible.contains("Seamless") && visible.contains("Layout") { return }
+      if let point = try screenTextPoint(containing: ["Edit Widget"]) {
+        spring.coordinate(withNormalizedOffset: point).tap()
+      } else {
+        let edit = spring.buttons["Edit Widget"].firstMatch
+        if edit.exists && edit.isHittable { edit.tap() }
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+    }
     let visible = try screenText()
-    XCTAssertFalse(visible.contains("Seamless") && visible.contains("Layout"), visible)
+    XCTFail("The actual Seamless editor did not open: " + visible)
+  }
+
+  private func dismissWidgetEditor(in spring: XCUIApplication) throws {
+    // Commit edits by tapping the backdrop outside both the editor and widget preview.
+    for _ in 0..<3 {
+      let visible = try screenText()
+      let editor = visible.contains("Seamless") && visible.contains("Layout")
+      let context = visible.contains("Edit Widget") && visible.contains("Remove Widget")
+      if !editor && !context { return }
+      spring.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.84)).tap()
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+    }
+    let visible = try screenText()
+    XCTFail("The real widget editor did not dismiss: " + visible)
   }
 
   private func openArtOptions(in spring: XCUIApplication) throws {
@@ -486,7 +516,7 @@ import Vision
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     app.launch()
     XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
-    try openGallery(XCUIApplication(bundleIdentifier: "com.apple.springboard"), inspect: true)
+    try openGallery(makeSpringboard(), inspect: true)
     print("GLAZE_ART_GALLERY_DISCOVERY_COMPLETE"); fflush(stdout)
   }
 
