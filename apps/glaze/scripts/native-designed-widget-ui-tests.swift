@@ -254,10 +254,14 @@ import Vision
     let theme = try openAlpine()
     let part = theme.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
     reveal(part, in: theme); part.tap()
-    for name in names {
-      let item = theme.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
-      reveal(item, in: theme)
-      capture("upgraded-theme-preview-" + name.replacingOccurrences(of: " ", with: "-"))
+    for size in ["Small", "Medium", "Large"] {
+      let sizeButton = theme.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@ AND label ENDSWITH %@", "Widget size", size)).firstMatch
+      reveal(sizeButton, in: theme); sizeButton.tap()
+      for name in names {
+        let item = theme.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
+        reveal(item, in: theme)
+        capture("upgraded-theme-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
+      }
     }
     XCUIDevice.shared.press(.home)
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
