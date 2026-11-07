@@ -82,6 +82,12 @@ import Vision
         RunLoop.current.run(until: Date().addingTimeInterval(0.6))
         continue
       }
+      // The Widgets tab does not have the Themes tab's Settings cog. Its visible
+      // bottom tabs already provide real navigation; no edge-pop is needed.
+      if ["Themes", "Widgets", "Icons"].allSatisfy({ label in
+        let tab = app.buttons[label].firstMatch
+        return tab.exists && tab.isHittable
+      }) { return }
       let settings = app.buttons["Settings"].firstMatch
       if settings.exists && settings.isHittable { return }
       let back = app.navigationBars.buttons.firstMatch
