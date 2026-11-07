@@ -711,13 +711,20 @@ import Vision
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
     if !fromHomeScreen { XCUIDevice.shared.press(.home) }
     RunLoop.current.run(until: Date().addingTimeInterval(0.8))
-    let icon = spring.icons["Glaze"].firstMatch
-    for _ in 0..<4 {
-      if icon.exists && icon.isHittable { break }
-      spring.swipeLeft()
-      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    // Existing widgets share the app's Glaze label. The first global match can be on an
+    // off-screen page; use any actually visible match and search both page directions.
+    var visibleIcon: XCUIElement?
+    for direction in ["right", "left"] {
+      for _ in 0..<7 {
+        visibleIcon = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
+          .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable })
+        if visibleIcon != nil { break }
+        if direction == "right" { spring.swipeRight() } else { spring.swipeLeft() }
+        RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+      }
+      if visibleIcon != nil { break }
     }
-    XCTAssertTrue(icon.exists && icon.isHittable, spring.debugDescription)
+    let icon = try XCTUnwrap(visibleIcon, spring.debugDescription)
     icon.press(forDuration: 1.5)
     let editHome = spring.buttons["Edit Home Screen"].firstMatch
     XCTAssertTrue(editHome.waitForExistence(timeout: 10), spring.debugDescription)
