@@ -476,10 +476,14 @@ import Vision
   private func findArtWidget(_ size: String, in spring: XCUIApplication, requireEditable: Bool = false) throws -> XCUIElement {
     for direction in ["left", "right"] {
       for _ in 0..<7 {
-        let matches = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
-        let candidates = matches.allElementsBoundByIndex.filter { element in
+        // SpringBoard exposes SBWidgetIcon as Icon or Other depending on the remote
+        // timeline snapshot. Match its actual accessibility identity, not a stale
+        // type/index binding, and check existence before requesting geometry.
+        let matches = spring.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Glaze"))
+        let candidates = matches.allElementsBoundByAccessibilityElement.filter { element in
+          guard element.exists && element.isHittable else { return false }
           let f = element.frame
-          guard element.exists && element.isHittable && f.width > 110 else { return false }
+          guard f.width > 110 else { return false }
           return size == "small" ? f.width < 220 : size == "medium" ? f.width > 250 && f.height < 230 : f.height > 250
         }
         for hit in candidates {
