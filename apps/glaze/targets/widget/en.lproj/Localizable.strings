@@ -167,3 +167,5 @@
 "Battery" = "Battery";
 "Calendar" = "Calendar";
 "Matches the theme you choose in Glaze." = "Matches the theme you choose in Glaze.";
+/* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
+"Artwork from the theme you choose in Glaze." = "Artwork from the theme you choose in Glaze.";

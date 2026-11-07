@@ -48,13 +48,14 @@ const apply = (lib: WidgetArtIndex, themeId: string, options: WidgetOption[], no
 };
 
 // Theme A has small + medium art; theme B has small art only (no medium piece).
-const A = [opt('moon', ['small', 'medium']), opt('owl', ['small'])];
+// Owner 2026-11-08: a square piece is never offered in medium, so A's medium art is a wide piece.
+const A = [opt('moon', ['small']), opt('owl', ['small']), opt('bay', ['medium'])];
 const B = [opt('sun', ['small']), opt('wave', ['small'])];
 
 test('swap: every size of an unpinned widget follows the new theme (first piece, else plain background)', () => {
   const a = apply(emptyLibrary(), 'a', A, 1000);
   // First apply from no theme is a swap too: unpinned widgets follow theme A.
-  assert.deepEqual(a.unpinned, { small: themePieceId('a', 'moon', 'small'), medium: themePieceId('a', 'moon', 'medium'), large: null });
+  assert.deepEqual(a.unpinned, { small: themePieceId('a', 'moon', 'small'), medium: themePieceId('a', 'bay', 'medium'), large: null });
   const b = apply(a, 'b', B, 2000);
   assert.deepEqual(b.unpinned, { small: themePieceId('b', 'sun', 'small'), medium: null, large: null });
   assert.deepEqual(unpinnedChoice(b, 'small'), { show: 'piece', id: themePieceId('b', 'sun', 'small') });

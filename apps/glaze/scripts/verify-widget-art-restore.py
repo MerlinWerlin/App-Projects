@@ -8,8 +8,8 @@ ROOT = Path(__file__).resolve().parents[1]
 EXACT = [
     'src/ui/ThemeWidgetArt.tsx', 'src/ui/WidgetArtMenu.tsx',
     'src/ui/WidgetArtLibraryList.tsx', 'src/ui/BlendedArt.tsx',
-    'src/core/themeArtSync.ts', 'src/store/themeWidgetArt.ts',
-    'src/core/widgetArtLibrary.ts', 'src/core/widgetOptions.ts', 'src/core/artBlend.ts',
+    'src/store/themeWidgetArt.ts',
+    'src/core/widgetArtLibrary.ts', 'src/core/artBlend.ts',
     'src/native/packs.ts', 'src/native/useRemoteCatalog.ts',
     'app/theme/[id].tsx', 'app/(tabs)/widgets.tsx',
     'targets/widget/SeamlessWidget.swift', 'targets/widget/WidgetArtLibrary.swift',
@@ -20,6 +20,8 @@ EXACT = [
     'src/ui/StepCard.tsx', 'app/install.tsx',
 ]
 ALLOWED = {
+    'src/core/widgetOptions.ts': 'Owner 2026-11-08: drawnForSize, a piece only at the sizes it was drawn for (heroes at their own size, no square piece in medium).',
+    'src/core/themeArtSync.ts': 'Owner 2026-11-08: theme setup plans pieces with drawnForSize instead of every listed size.',
     'src/core/packCatalog.ts': 'Remember a validated release in an installed pack manifest.',
     'src/core/packDownloader.ts': 'Persist the catalogue release when writing a downloaded manifest.',
     'src/core/themeArtResume.ts': 'Carry the installed manifest release through theme lookup.',
