@@ -429,6 +429,7 @@ import Vision
       spring.coordinate(withNormalizedOffset: choice).tap()
       RunLoop.current.run(until: Date().addingTimeInterval(1))
       try dismissWidgetEditor(in: spring)
+      RunLoop.current.run(until: Date().addingTimeInterval(5))
       capture("swapped-aurora-home-" + size)
     }
     print("GLAZE_UPGRADE_AURORA_ALL_FAMILIES_VERIFIED"); fflush(stdout)
