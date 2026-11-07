@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { DEFERRED_KEY, DEFERRED_STEPS } from '../core/deferredWork';
+import { DEFERRED_KEY, DEFERRED_STEPS, parseDeferredState, serializeDeferredState } from '../core/deferredWork';
 import { isRemoteArtTheme } from '../core/remoteCatalog';
 import { parseWidgetLastRead } from '../core/widgetLink';
 import { parseWidgetTheme } from '../core/widgetTheme';
@@ -20,11 +20,9 @@ async function clearPendingArt(): Promise<void> {
   await AsyncStorage.removeItem(THEME_ART_PENDING_KEY);
   const raw = await AsyncStorage.getItem(DEFERRED_KEY);
   if (!raw) return;
-  const state = JSON.parse(raw);
-  if (state?.pending && typeof state.pending === 'object') {
-    delete state.pending[DEFERRED_STEPS.themeArt];
-    await AsyncStorage.setItem(DEFERRED_KEY, JSON.stringify(state));
-  }
+  const state = parseDeferredState(raw);
+  delete state.pending[DEFERRED_STEPS.themeArt];
+  await AsyncStorage.setItem(DEFERRED_KEY, serializeDeferredState(state));
 }
 
 async function rebuild(): Promise<boolean> {
