@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**8 November 2026 TestFlight hero copies: `1.0.16`.** Owner asked to ship duplicate removal: leaves out the 144 hero images that copy one of their theme's pieces (double-ups, and the damaged copper moon in Alpine). On top of 1.0.15.
+
 **8 November 2026 TestFlight gallery art: `1.0.14`.** Claude's PR252 adds six theme Art widget kinds and authored-size filtering.
 
 **8 November 2026 owner-directed follow-up, version `1.0.15`.** PR251 contains ordered A to B to A swaps, four separate theme actions and larger completion controls. Gallery and hero-size changes belong to Claude's separate 1.0.14 PR; rebase after it merges. Preserve all restored art UI, the original compositor and photos. Require retained-data Alpine and Aurora checks before TestFlight. Illustrated clock faces and duplicate removal remain excluded.
