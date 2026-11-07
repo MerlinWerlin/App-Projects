@@ -141,6 +141,7 @@ jobs:
             if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then python3 apps/glaze/scripts/prepare-simulator-release-identity.py "$PREVIOUS" "$RUNNER_TEMP/glaze-native-link-review/install-identities/seed.json"; fi
             python3 apps/glaze/scripts/sign-native-simulator.py sign "$PREVIOUS" "$RUNNER_TEMP/glaze-native-link-review/signing/seed.json"
             xcrun simctl install "$DEVICE" "$PREVIOUS"
+            xcrun simctl launch "$DEVICE" com.jared797.glaze
             BEFORE_TEST=testAlpineOnHomeScreen
             BEFORE_MARKER=GLAZE_ALPINE_INSTALLED
             if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then BEFORE_TEST=testInstallLegacyArtWidgetsForUpgrade; BEFORE_MARKER=GLAZE_LEGACY_ART_WIDGETS_INSTALLED; fi

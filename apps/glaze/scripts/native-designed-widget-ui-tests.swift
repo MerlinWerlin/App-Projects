@@ -435,9 +435,11 @@ import Vision
   func testInstallLegacyArtWidgetsForUpgrade() throws {
     continueAfterFailure = false
     let app = makeApp()
-    app.launch()
+    // The workflow cold-launches the archived app through SpringBoard first. Attach to that
+    // running app instead of restarting it inside XCTest's shorter launch handshake.
+    app.activate()
     let widgetsTab = app.buttons["Widgets"].firstMatch
-    XCTAssertTrue(widgetsTab.waitForExistence(timeout: 40), app.debugDescription)
+    XCTAssertTrue(widgetsTab.waitForExistence(timeout: 90), app.debugDescription)
     widgetsTab.tap()
     // Let the archived app publish its initial native theme and register its widget extension,
     // as an existing user has already done, before opening the system picker on this fresh VM.
