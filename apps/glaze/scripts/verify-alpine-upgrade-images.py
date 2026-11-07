@@ -25,6 +25,9 @@ receipt_file = root / 'link-receipt.json'
 if receipt_file.is_file():
     receipt = json.loads(receipt_file.read_text())
     receipt['originalAlpineImagesIdenticalTo106'] = passed
+    receipt['releaseQualified'] = bool(passed and receipt.get('upgradeAlpineAllFamilies')
+        and receipt.get('copperRenderedOnHomeScreenAllFamilies')
+        and not receipt.get('diagnosticExtensionRebuilt'))
     receipt_file.write_text(json.dumps(receipt, indent=2))
 print('GLAZE_ALPINE_ORIGINAL_IMAGES_IDENTICAL', sum(row['byteIdentical'] for row in rows), 'of', len(rows))
 if not passed:

@@ -218,7 +218,7 @@ jobs:
           if [[ -d "$RUNNER_TEMP/glaze-link.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-link.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/attachments" > "$RUNNER_TEMP/glaze-native-link-review/attachment-export.log" 2>&1 || true; fi
           if [[ -d "$RUNNER_TEMP/glaze-upgrade-before.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-upgrade-before.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/before-upgrade" || true; fi
           if [[ -d "$RUNNER_TEMP/glaze-upgrade-existing.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-upgrade-existing.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/existing-widget-before-upgrade" || true; fi
-          if [[ "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == alpine-art || "$GLAZE_UI_SCENARIO" == recovery-upgrade || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then xcrun simctl spawn "$DEVICE" log show --last 12m --info --debug --style compact --predicate '(process CONTAINS[c] "GlazeWidget" OR subsystem CONTAINS[c] "WidgetKit") AND (eventMessage CONTAINS[c] "glaze" OR eventMessage CONTAINS[c] "image" OR eventMessage CONTAINS[c] "archiv")' > "$RUNNER_TEMP/glaze-native-link-review/widget-os.log" || true; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == alpine-art || "$GLAZE_UI_SCENARIO" == recovery-upgrade || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then xcrun simctl spawn "$DEVICE" log show --last 12m --info --debug --style compact --predicate '(process CONTAINS[c] "GlazeWidget" OR subsystem CONTAINS[c] "WidgetKit" OR process == "chronod" OR process == "SpringBoard") AND (eventMessage CONTAINS[c] "glaze" OR eventMessage CONTAINS[c] "image" OR eventMessage CONTAINS[c] "archiv")' > "$RUNNER_TEMP/glaze-native-link-review/widget-os.log" || true; fi
           cp "$RUNNER_TEMP/installable/simulator-app-source.json" "$RUNNER_TEMP/glaze-native-link-review/" || true
           python3 - <<'PY'
           import os,json,pathlib,hashlib
@@ -293,6 +293,8 @@ jobs:
                   receipt['installedAlbumCursorVerified']=any(c['file']=='album-cursor-'+key+'.json' and c['offset']==1 for c in capture.get('albumCursors',[]))
                   assert receipt['installedAlbumCursorVerified']
                   receipt['scope']='Actual system Photos selection, full Expo album delivery and installed Home Screen Next button; selected image visibly changes without app launch and the matching shared cursor is1. Simulator only.'
+          if receipt['diagnosticExtensionRebuilt']:
+              receipt['scope']='Simulator diagnostic only: original Expo app and resources with a temporary instrumented widget executable. Cannot qualify a release or physical iPhone behavior.'
           (root/'link-receipt.json').write_text(json.dumps(receipt,indent=2))
           PY
           if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade && -d "$RUNNER_TEMP/glaze-native-link-review/upgrade/base" ]]; then
