@@ -5,6 +5,10 @@ on:
     paths: ['.github/workflows/glaze-native-link-smoke.yml']
   workflow_dispatch:
     inputs:
+      diagnostic_art_trace:
+        description: 'Diagnostic only: log the decoded intent and actual view choice in a temporary extension build; never qualifies a release'
+        type: boolean
+        default: false
       simulator_run:
         description: 'Full native run containing glaze-simulator-installable; blank compiles the test runner only'
         required: false
@@ -45,6 +49,7 @@ jobs:
       GLAZE_UPGRADE_BASE_RUN: ${{ inputs.upgrade_base_run }}
       GLAZE_UPGRADE_MIDDLE_RUN: ${{ inputs.upgrade_middle_run }}
       GLAZE_UI_SCENARIO: ${{ inputs.scenario || 'route' }}
+      GLAZE_ART_TRACE: ${{ inputs.diagnostic_art_trace && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v4
       - name: Build a small XCTest runner without rebuilding Expo
@@ -96,6 +101,7 @@ jobs:
           set -euo pipefail
           APP=$(find "$RUNNER_TEMP/installable" -maxdepth 1 -name '*.app' -print -quit)
           test -n "$APP"
+          if [[ "$GLAZE_ART_TRACE" == true ]]; then python3 apps/glaze/scripts/trace-native-art-extension.py "$APP"; fi
           codesign --force --deep --sign - "$APP"
           DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["udid"] for xs in d["devices"].values() for x in xs if "iPhone" in x["name"]))')
           xcrun simctl boot "$DEVICE" || true
@@ -241,6 +247,8 @@ jobs:
           receipt['upgradeAlpineAllFamilies']=supplied and execute_ok and 'GLAZE_UPGRADE_ALL_ALPINE_VERIFIED' in text
           receipt['copperRenderedOnHomeScreenFamilies']=[size for size in ['small','medium','large'] if 'GLAZE_COPPER_HOME_RENDER_VERIFIED '+size in text]
           receipt['copperRenderedOnHomeScreenAllFamilies']=receipt['copperRenderedOnHomeScreenFamilies']==['small','medium','large']
+          receipt['diagnosticExtensionRebuilt']=os.environ.get('GLAZE_ART_TRACE')=='true'
+          receipt['releaseQualified']=receipt['upgradeAlpineAllFamilies'] and receipt['copperRenderedOnHomeScreenAllFamilies'] and not receipt['diagnosticExtensionRebuilt']
           receipt['upgradeBaseRun']=os.environ.get('GLAZE_UPGRADE_BASE_RUN')
           receipt['upgradeMiddleRun']=os.environ.get('GLAZE_UPGRADE_MIDDLE_RUN')
           if receipt['scenario']=='recovery-upgrade':
