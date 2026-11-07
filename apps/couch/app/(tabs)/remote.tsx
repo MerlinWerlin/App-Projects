@@ -7,7 +7,7 @@ import { oneHandedAlign } from '../../src/core/prefs';
 import { minKeyHeight, remoteContentWidth, rowOrStack } from '../../src/core/textScale';
 import { useT } from '../../src/i18n/react';
 import { usePrefs } from '../../src/state/prefs';
-import { useSession } from '../../src/state/session';
+import { useSession, useSessionReady } from '../../src/state/session';
 import { useCastRouting } from '../../src/state/cast';
 import { RemoteCastPill } from '../../src/ui/cast/CastPill';
 import { fonts, radius } from '../../src/theme/tokens';
@@ -93,6 +93,9 @@ export default function RemoteScreen() {
   const [last, setLast] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
   const tv = session.activeTv();
+  // No demo mode (owner 7 Nov 2026): with no TV saved, the first thing on screen is how to add one.
+  const ready = useSessionReady();
+  const needsTv = ready && snap.tvs.length === 0;
   // A Google TV saved for casting (or no Google TV remote in this build): say so, keys do nothing.
   const activeDriver = session.activeDriver();
   const castOnlyNote = isCastOnlyDriver(activeDriver) ? activeDriver.message() : null;
@@ -157,6 +160,26 @@ export default function RemoteScreen() {
         <RemoteCastPill />
         {/* Release standard 1: "Language: English · Change", first session only, in the flow above the remote. */}
         <LanguageHint ink={stage.ink} />
+
+        {needsTv ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t('app.tvs.emptyTitle')}
+            accessibilityHint={t('app.tvs.emptyBody')}
+            onPress={() => router.push('/add-tv')}
+            style={[styles.error, styles.notice, { backgroundColor: theme.accentSoft }]}
+          >
+            <Text scaleRole="body" style={[styles.noticeText, { color: theme.ink }]}>
+              {t('app.tvs.emptyTitle')}
+            </Text>
+            <Text scaleRole="body" style={[styles.noticeText, { color: theme.ink }]}>
+              {t('app.tvs.emptyBody')}
+            </Text>
+            <Text scaleRole="body" style={[styles.errorText, { color: theme.ink }]}>
+              {t('app.tvs.addTv')}
+            </Text>
+          </Pressable>
+        ) : null}
 
         {castOnlyNote !== null ? (
           <Pressable

@@ -1,5 +1,5 @@
 {
-  "mode": "build",
-  "note": "Couch 1.0.3: iPhone only for the first App Store release (no iPad layout or screenshots)",
+  "mode": "update",
+  "note": "Couch 1.0.3 update: demo mode removed, first launch asks you to add your TV",
   "ascAppId": "6826135134"
 }

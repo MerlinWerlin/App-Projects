@@ -60,14 +60,14 @@ describe('TVs on design v2 (T68 step 2)', () => {
   });
 
   it('keeps the v1 behaviour and accessibility labels', () => {
-    for (const key of ['tvLabel', 'tvLabelInUse', 'tvLabelRoom', 'tvLabelRoomInUse', 'wakeLabel', 'addTv', 'demoMode', 'settings', 'nowControlling']) {
+    for (const key of ['tvLabel', 'tvLabelInUse', 'tvLabelRoom', 'tvLabelRoomInUse', 'wakeLabel', 'addTv', 'settings', 'nowControlling']) {
       expect(src).toContain(`'app.tvs.${key}'`);
     }
     expect(src).toContain('session.select(tv.id)');
     expect(src).toContain("router.navigate('/remote')");
     expect(src).toContain("router.push('/add-tv')");
     expect(src).toContain("router.push('/settings')");
-    expect(src).toContain('setDemoMode(session, on)');
+    expect(src).not.toContain('demoMode');
     expect(src).toContain('accessibilityLiveRegion="polite"');
     expect(src).toContain('canWake(tv, udp !== null)');
   });
