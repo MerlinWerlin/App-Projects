@@ -28,7 +28,7 @@ on:
       scenario:
         description: 'Installed route or actual Home Screen widget and shared-data round trip'
         type: choice
-        options: [route, widget, album, album-widget, design, alpine, alpine-home, alpine-art, recovery-upgrade, theme-gallery]
+        options: [route, widget, album, album-widget, design, alpine, alpine-home, alpine-art, art-gallery, recovery-upgrade, theme-gallery]
         default: route
 permissions:
   contents: read
@@ -53,7 +53,7 @@ jobs:
           set -euo pipefail
           FIXTURE=native-link-ui-tests.swift
           if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then FIXTURE=native-widget-tap-tests.swift; fi
-          if [[ "$GLAZE_UI_SCENARIO" == design || "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == alpine-art || "$GLAZE_UI_SCENARIO" == recovery-upgrade || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then FIXTURE=native-designed-widget-ui-tests.swift; fi
+          if [[ "$GLAZE_UI_SCENARIO" == design || "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == alpine-art || "$GLAZE_UI_SCENARIO" == art-gallery || "$GLAZE_UI_SCENARIO" == recovery-upgrade || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then FIXTURE=native-designed-widget-ui-tests.swift; fi
           if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then FIXTURE=native-album-ui-tests.swift; fi
           ruby scripts/prepare-native-link-test.rb "$RUNNER_TEMP/GlazeLinkCheck" "$FIXTURE" "$GLAZE_UI_SCENARIO"
           xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/link-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build-for-testing > "$RUNNER_TEMP/glaze-link-build.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-link-build.log"; exit 1; }
@@ -155,6 +155,7 @@ jobs:
           if [[ "$GLAZE_UI_SCENARIO" == alpine ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOriginalFaceFromTheme; fi
           if [[ "$GLAZE_UI_SCENARIO" == alpine-home ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOnHomeScreen; fi
           if [[ "$GLAZE_UI_SCENARIO" == alpine-art ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineSmallEditWidgetArt; fi
+          if [[ "$GLAZE_UI_SCENARIO" == art-gallery ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testInspectSystemArtGallery; fi
           if [[ "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testThemeGalleryWithoutSavingIndividualWidgets; fi
           if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then TEST=GlazeLinkUITests/GlazeAlbumPickerTests/testSelectedPhotosReachNativeAlbum; fi
           xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-link.xcresult" "-only-testing:$TEST" test-without-building > "$RUNNER_TEMP/glaze-link-test.log" 2>&1 &
@@ -168,6 +169,8 @@ jobs:
               grep -F GLAZE_DESIGNED_WIDGETS_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
             elif [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then
               grep -F GLAZE_UPGRADE_ALL_ALPINE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+            elif [[ "$GLAZE_UI_SCENARIO" == art-gallery ]]; then
+              grep -F GLAZE_ART_GALLERY_DISCOVERY_COMPLETE "$RUNNER_TEMP/glaze-link-test.log"
             elif [[ "$GLAZE_UI_SCENARIO" == alpine-art ]]; then
               grep -F GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
             elif [[ "$GLAZE_UI_SCENARIO" == alpine-home ]]; then

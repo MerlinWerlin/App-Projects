@@ -384,7 +384,16 @@ import Vision
     screenshot.name = name; screenshot.lifetime = .keepAlways; add(screenshot)
   }
 
-  private func openGallery(_ spring: XCUIApplication, fromHomeScreen: Bool = false, legacyArt: Bool = false) throws {
+  func testInspectSystemArtGallery() throws {
+    continueAfterFailure = false
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    app.launch()
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
+    try openGallery(XCUIApplication(bundleIdentifier: "com.apple.springboard"), inspect: true)
+    print("GLAZE_ART_GALLERY_DISCOVERY_COMPLETE"); fflush(stdout)
+  }
+
+  private func openGallery(_ spring: XCUIApplication, fromHomeScreen: Bool = false, legacyArt: Bool = false, inspect: Bool = false) throws {
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
     if !fromHomeScreen { XCUIDevice.shared.press(.home) }
     RunLoop.current.run(until: Date().addingTimeInterval(0.8))
@@ -406,6 +415,27 @@ import Vision
     addWidget.tap()
     let search = spring.searchFields.firstMatch
     XCTAssertTrue(search.waitForExistence(timeout: 10), spring.debugDescription)
+    if inspect {
+      for query in ["Glaze", "Other", "Seamless"] {
+        search.tap()
+        let clear = spring.buttons["Clear text"].firstMatch
+        if clear.exists { clear.tap() }
+        else if let text = search.value as? String, text != "Search Widgets" {
+          search.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: text.count))
+        }
+        search.typeText(query)
+        let go = spring.keyboards.buttons["Search"].firstMatch
+        if go.exists && go.isHittable { go.tap() }
+        RunLoop.current.run(until: Date().addingTimeInterval(4))
+        capture("widget-gallery-search-" + query)
+        print("GLAZE_GALLERY_SEARCH " + query + " " + (try screenText()))
+        print(spring.debugDescription); fflush(stdout)
+        spring.swipeUp()
+        capture("widget-gallery-search-scrolled-" + query)
+        print("GLAZE_GALLERY_SEARCH_SCROLLED " + query + " " + (try screenText())); fflush(stdout)
+      }
+      return
+    }
     if legacyArt {
       let other = spring.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Other")).firstMatch
       for _ in 0..<36 {
