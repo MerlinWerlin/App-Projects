@@ -1,7 +1,6 @@
 // Downloader tests against a local fixture server (node:http on 127.0.0.1, port 0) serving
 // src/core/__fixtures__/packs/ with Range support. No external network.
 import { test, after, before } from 'node:test';
-import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { createServer, type Server } from 'node:http';
 import { appendFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync } from 'node:fs';
@@ -12,7 +11,6 @@ import { PACKS_DISABLED_MESSAGE, PACK_BASE_URL } from '../config/packs.ts';
 import {
   PackError,
   downloadPack,
-  downloadClockCompanion,
   loadPackThemes,
   packsEnabled,
   readLocalManifest,
@@ -153,45 +151,6 @@ async function rejectsWith(p: Promise<unknown>, code: string) {
 }
 
 // ------------------------------------------------------------ tests
-
-test('clock companion fetches only its face, rejects a bad hash, then works offline', async () => {
-  const id = 'after-rain'; // Bundled theme without a downloadable wallpaper pack.
-  const root = 'https://github.com/example/packs/releases/download';
-  const baseUrl = `${root}/glaze-packs-v5`;
-  const host = `${root}/glaze-packs-v15/clock-faces__${id}__`;
-  const png = new Uint8Array([1, 2, 3]);
-  const sha256 = createHash('sha256').update(png).digest('hex');
-  const path = `clock-face.${sha256.slice(0, 8)}.png`;
-  const asset = { path, sha256, width: 900, height: 900, bytes: png.length, mime: 'image/png', role: 'widget-art' };
-  const index = new TextEncoder().encode(JSON.stringify({ v: 1, id, asset }));
-  const dir = tempStore();
-  const transport = nodeTransport(dir);
-  const urls: string[] = [];
-  let corrupt = true;
-  try {
-    transport.fetchRange = async url => {
-      urls.push(url);
-      const bytes = url === `${host}manifest.json` ? index : url === host + path
-        ? (corrupt ? new Uint8Array([3, 2, 1]) : png) : null;
-      if (!bytes) throw new Error(`Unexpected URL ${url}`);
-      return { offset: 0, chunks: (async function* () { yield bytes; })() };
-    };
-    await assert.rejects(downloadClockCompanion(transport, baseUrl, id), PackError);
-    assert.equal(await transport.readFile(`clock-faces/${id}/manifest.json`), null);
-    urls.length = 0;
-    corrupt = false;
-    const expected = `clock-faces/${id}/${path}`;
-    assert.equal(await downloadClockCompanion(transport, baseUrl, id), expected);
-    assert.deepEqual(urls, [`${host}manifest.json`, host + path]);
-    assert.deepEqual(await transport.readFile(expected), png);
-    urls.length = 0;
-    assert.equal(await downloadClockCompanion(transport, baseUrl, id), expected);
-    assert.equal(await downloadClockCompanion(transport, baseUrl, 'alpine-starlight'), null);
-    assert.deepEqual(urls, []);
-  } finally {
-    rmSync(dir, { recursive: true, force: true });
-  }
-});
 
 test('downloads, verifies and stores a pack; themes rebuild from the stored files', async () => {
   resetHooks();

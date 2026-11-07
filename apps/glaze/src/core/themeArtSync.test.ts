@@ -19,9 +19,7 @@ import {
   type WidgetArtIndex,
   type WidgetArtPiece,
 } from './widgetArtLibrary.ts';
-import { withSeamlessHeroes, type WidgetOption } from './widgetOptions.ts';
-import { plannedDesignedWidgets } from './designedWidgetLibrary.ts';
-import { THEMES } from './themes.ts';
+import type { WidgetOption } from './widgetOptions.ts';
 
 const read = (...p: string[]): string => readFileSync(join(process.cwd(), ...p), 'utf8');
 const strip = (s: string): string => s.replace(/\/\/.*$/gm, '');
@@ -98,49 +96,6 @@ test('auto-add ALL: applying a theme lists every one of its pieces, current them
   assert.ok(r.lib.pieces.every((x) => x.file === `${x.id}.jpg`));
 });
 
-test('automatic setup keeps every fitted art edition and defaults Seamless to its size’s hero', () => {
-  const theme = THEMES[0];
-  const original = opt('original-art', ['small']);
-  const options = withSeamlessHeroes([original], [
-    { path: 'hero.png', role: 'widget-small', width: 510, height: 510 },
-  ]);
-  assert.deepEqual(options.map(o => o.id), ['original-art', 'hero-small']);
-  const art = planThemePieces({
-    themeId: theme.id, themeName: theme.name, options, name: o => o.id, includeFittedSizes: true,
-  });
-  assert.equal(art.length, 6);
-  const designed = plannedDesignedWidgets(theme, kind => kind);
-  const planned = [...designed, ...art.map(piece => ({ ...piece, slot: piece.slot + 3 }))];
-  const start = addPiece(emptyLibrary(), photo('p-1', 5)).lib;
-  const result = commitThemeArt(start, theme.id, planned, planned.map(p => p.id), 1000).lib;
-  assert.equal(result.pieces.length, 16);
-  assert.equal(result.unpinned?.small, themePieceId(theme.id, 'hero-small', 'small'));
-  assert.equal(result.unpinned?.medium, themePieceId(theme.id, 'hero-small', 'medium'));
-  assert.equal(resolveWidgetPiece(result, 'p-1', 'small'), 'p-1');
-});
-
-test('a personal piece cannot evict the active theme’s automatically prepared art', () => {
-  const active = Array.from({ length: 45 }, (_, i) => opt('piece-' + i, ['small']));
-  const planned = planThemePieces({ themeId: 'alpine', themeName: 'Alpine', options: active, name: o => o.id, cap: active.length });
-  const lib = commitThemeArt(emptyLibrary(), 'alpine', planned, planned.map(p => p.id), 1000).lib;
-  const added = addPiece(lib, photo('p-1', 2000));
-  assert.equal(added.lib.pieces.length, 46);
-  assert.deepEqual(added.evicted, []);
-});
-
-test('a changed art revision replaces the image under its stable widget id after success', () => {
-  const planned = plan('alpine', [opt('moon', ['small'])]);
-  const id = planned[0].id;
-  const old = commitThemeArt(emptyLibrary(), 'alpine', planned, [id], 1000).lib;
-  const updated = [{ ...planned[0], artRevision: 'new-compositor' }];
-  assert.equal(piecesToCompose(old, updated).length, 1);
-  assert.equal(commitThemeArt(old, 'alpine', updated, [], 2000).lib.pieces[0].artRevision, undefined);
-  const next = commitThemeArt(old, 'alpine', updated, [id], 2000).lib;
-  assert.equal(next.pieces[0].id, id);
-  assert.equal(parseLibrary(serializeLibrary(next)).pieces[0].artRevision, 'new-compositor');
-  assert.equal(piecesToCompose(next, updated).length, 0);
-});
-
 test('replace previous: the old theme\'s auto pieces go (retired with size + slot), own photos stay', () => {
   const first = apply(addPiece(emptyLibrary(), photo('p-1', 5)).lib, 'alpine', A, 1000).lib;
   const r = apply(first, 'firefly', B, 2000);
@@ -213,12 +168,10 @@ test('removed-piece fallback: same slot of the current theme, else same size, el
   assert.equal(resolveWidgetPiece(apply(lib, 'plain', [], 4000).lib, f('fern', 'small'), 'small'), null);
 });
 
-test('picker: one option per picture, with variants resolved by widget size', () => {
+test('picker: current theme first (size, slot), then the rest newest first', () => {
   const lib = apply(addPiece(emptyLibrary(), photo('p-1', 99999)).lib, 'alpine', A, 1000).lib;
   const order = pickerPieces(lib).map((x) => x.id);
-  const unique = plan('alpine', A).filter((piece, index, all) => all.findIndex(other => other.optionId === piece.optionId) === index);
-  assert.deepEqual(order, [...unique.map(piece => piece.id), 'p-1']);
-  assert.equal(resolveWidgetPiece(lib, themePieceId('alpine', 'moon', 'small'), 'large'), themePieceId('alpine', 'moon', 'large'));
+  assert.deepEqual(order, [...plan('alpine', A).map((x) => x.id), 'p-1']);
 });
 
 test('replaceThemeArt (the T238 path) also remembers what it removed', () => {
@@ -244,8 +197,8 @@ test('bridge: index written BEFORE reloadAllTimelines; compose functions never r
   const bridge = strip(read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift'));
   const at = bridge.indexOf('AsyncFunction("setWidgetArtIndex")');
   const fn = bridge.slice(at, bridge.indexOf('AsyncFunction(', at + 10) > 0 ? bridge.indexOf('AsyncFunction(', at + 10) : bridge.indexOf('private static func validArtId'));
-  const write = fn.indexOf('try data.write(to: indexURL, options: .atomic)');
-  const prune = fn.indexOf('removeItem(at: file)');
+  const write = fn.indexOf('try data.write(to: dir.appendingPathComponent(artIndexFile), options: .atomic)');
+  const prune = fn.indexOf('removeItem(at: dir.appendingPathComponent(name))');
   const invalidate = fn.indexOf('invalidateConfigurationRecommendations()');
   const reload = fn.indexOf('GlazeWidgetBridgeModule.reloadWidgets()');
   assert.ok(write > 0 && prune > write && invalidate > prune && reload > invalidate, `order write ${write} < prune ${prune} < invalidate ${invalidate} < reload ${reload}`);
@@ -280,7 +233,7 @@ test('extension: the entity query reads the fresh index from disk every time (no
   assert.match(store, /static func snapshot\(\) -> WidgetArtSnapshot \{/);
   assert.match(store, /Data\(contentsOf: dir\.appendingPathComponent\(indexName\)\)/);
   const query = lib.slice(lib.indexOf('struct WidgetArtQuery'), lib.indexOf('struct ChooseWidgetArtIntent'));
-  assert.equal((query.match(/let snap = snapshot\(\)/g) ?? []).length, 2, 'entities(for:) and suggestedEntities() each read the index');
+  assert.equal((query.match(/WidgetArtStore\.snapshot\(\)/g) ?? []).length, 2, 'entities(for:) and suggestedEntities() each read the index');
   assert.match(query, /snap\.resolve\(id, preferSize: nil\)/, 'a removed piece resolves to its replacement');
   assert.match(query, /snap\.pickerRecords\(\)/, 'current theme first');
   // The timeline uses the resolved piece for the widget's own size, read fresh per timeline.
@@ -307,9 +260,10 @@ test('wiring: theme apply calls syncThemeWidgetArt (non-blocking), the store mak
   assert.match(store, /r === 'not-built'/, 'older bridge without compose: the commit still replaces the old theme\'s art');
   assert.match(store, /if \(!current\.available\) return NONE;/, 'Expo Go / Android: nothing runs');
   assert.match(store, /if \(stale\(\)\)/, 'a newer apply supersedes before the index write');
-  assert.match(apply, /void syncThemeWidgetArt\(theme\)/, 'never blocks the native apply');
-  const applyFn = apply.slice(apply.indexOf('export function applyThemeEverywhere('), apply.indexOf('async function themeArtStep('));
-  assert.doesNotMatch(applyFn, /await syncThemeWidgetArt\(/, 'the native apply never awaits composition');
+  // T250 merge: the sync runs inside the deferred 'themeArt' step, never awaited by applyThemeEverywhere.
+  assert.match(apply, /requestDeferred\(DEFERRED_STEPS\.themeArt, theme\)/, 'never blocks the apply');
+  const applyFn = apply.slice(apply.indexOf('export async function applyThemeEverywhere('), apply.indexOf('async function themeArtStep('));
+  assert.doesNotMatch(applyFn, /syncThemeWidgetArt\(/, 'not called inline in applyThemeEverywhere');
   const adapter = strip(read('src', 'native', 'widgets.ts'));
   assert.match(adapter, /typeof mod\.composeWidgetArtPiece !== 'function'/);
   assert.match(adapter, /commitThemeArt\(lib, themeId, planned, ready, Date\.now\(\)\)/);

@@ -1,104 +1,382 @@
-import { useFocusEffect } from 'expo-router';
-import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
-import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+// T187 (owner-1101 #5): the theme's widget art on the Widgets tab. Resolves every widget option of
+// the picked theme (a downloaded remote pack: its v2 `widgets` list or the options derived from v1;
+// a bundled art pack: its three hero pieces), shows them in WidgetArtMenu for the chosen size and
+// puts the chosen one on the Glaze "Seamless" widget:
+//   background "wallpaper" → widgets.setSeamless (the wallpaper crop under the widget + the art fitted);
+//   background "theme" / "blur" → since T251 (owner-1101h #2: art BLENDS with the wallpaper, no box)
+//   also widgets.setSeamless (the bridge keys / feathers the art onto the wallpaper crop); only a
+//   theme without a wallpaper file falls back to widgets.setWidgetArt (theme colour, same blend).
+// T206: a picture with numbers painted in (fixedValues) says so under the menu, and its button reads
+// "Live widget instead" (the live one is a separate catalogue widget, not this picture).
+// Live kinds (clock, date, countdown, photo, habits) also offer "Make it live" (Widget Studio with
+// that catalogue widget in this theme). Expo Go: the button explains that the TestFlight app is
+// needed; nothing throws. No motion.
+// T201: shown on the Widgets tab AND the theme page's Widgets step, practical pieces first, then art
+// (widgetShelf), with the standard widget set after it on both screens. "Use on my widget" writes the
+// App Group file and the bridge reloads every widget timeline (reloadAllTimelines).
+// T208: the menu gets the wallpaper WITH the seamless crop this phone's bridge would cut for the size
+// (default slot, no nudge, the same call as onUse), so wallpaper previews show only that crop.
+// T221 (owner-1101e): a saved piece is also ADDED to "My widget art" (widgets.addToArtLibrary, a
+// copy of the seamless-<size>.png just written), so each Glaze art widget can show a different
+// piece (long-press > Edit Widget). The library list with Remove buttons is WidgetArtLibraryList.
+// T237 (owner-1101g #2): pieces the widget can make work (src/core/liveArt.ts: the constellation
+// clock, the harbour focus timer, date and battery pieces) are marked liveArt and saved with a
+// `live` spec, so the Seamless widget draws the real time / date / level / focus timer over them.
+// T245: countdown pieces (dune-countdown, rehearsal-countdown) get a "Countdown to" day field (the
+// same YYYY-MM-DD field and strings as Widget Studio); with a day they are live and the saved spec
+// carries `target`; without one they stay Art.
+// T246: the spec also carries the plate on the art itself (`art`; src/core/liveArtFit.ts maps it onto
+// the inset art of Edit Widget > Layout > Fit). Since run 239 (PR #190) the widget draws live values in Fit too,
+// so liveValueShowsIn('fit') is true and the Fill-only note under the menu stays hidden.
+import { useRouter } from 'expo-router';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { AccessibilityInfo, StyleSheet, Text, TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
 import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, HERO_SIZES, isArtPackTheme } from '../core/artPack';
-import { withLiveArt } from '../core/liveArt';
 import { isRemoteArtTheme } from '../core/remoteCatalog';
-import { normaliseSlot, seamlessCrop } from '../core/seamlessWidget';
+import { normaliseSlot, seamlessCrop, seamlessFileName, widgetSizePx } from '../core/seamlessWidget';
+import { countdownArtTarget, isCountdownArtPiece, liveArtPlan, liveArtSpec, validTargetDay, withLiveArt, type CountdownArtTargets } from '../core/liveArt';
+import { liveValueShowsIn } from '../core/liveArtFit';
+import { themePieceId } from '../core/widgetArtLibrary';
+import type { WidgetTabSize } from '../core/tabNav';
 import type { Theme } from '../core/themes';
-import { shelfOptions, widgetOptionsFromV1, type HomeOptionSize } from '../core/widgetOptions';
+import { fixedValues, liveStudioHref, optionName, placeArt, selectedOption, widgetOptionsFromV1, type HomeOptionSize } from '../core/widgetOptions';
 import { useT } from '../i18n';
-import { remoteWidgetArtOnDevice, type RemoteWidgetArtLocal } from '../native/packs';
+import { widgets } from '../native/widgets';
 import { useRemoteArtTheme } from '../native/useRemoteCatalog';
-import { countdownArtTargetsNow, loadCountdownArtTargets, subscribeCountdownArtTargets } from '../store/countdownArtTargets';
-import { fontScaleCap, spaceV2, textV2 } from '../theme/tokensV2';
+import { chromeRadiusV2, continuous, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { countdownArtTargetsNow, loadCountdownArtTargets, setCountdownArtTarget, subscribeCountdownArtTargets } from '../store/countdownArtTargets';
 import { useColorsV2 } from '../theme/useTokens';
 import { artPackHero, artPackWallpaper } from './artPackSources';
+import { haptic } from './haptics';
+import { textStyleFor } from './i18nLayout';
+import { PillButton } from './PillButton';
+import { existingLocalFile, localAssetUri, seamlessDeviceHere } from './seamlessSetup';
+import { WidgetArtMenu, type ArtSource, type MenuOption, type MenuWallpaper } from './WidgetArtMenu';
 import { DesignedThemeWidgets } from './DesignedThemeWidgets';
-import { SectionHeader } from './SectionHeader';
-import { SeamlessWidgetPreview } from './SeamlessWidgetPreview';
-import { seamlessDeviceHere } from './seamlessSetup';
-import { WidgetArtMenu, type MenuOption, type MenuWallpaper } from './WidgetArtMenu';
+import { isReplacedArtEdition } from '../core/designedWidgets';
 
-type Props = { theme: Theme; size: HomeOptionSize; width: number; style?: StyleProp<ViewStyle> };
+type Status = 'idle' | 'busy' | 'saved' | 'savedLibrary' | 'unavailable' | 'failed';
 
-/** The previews share the art sources and default Seamless crop used by theme setup. */
-export function ThemeWidgetArt({ theme, size, width, style }: Props) {
-  const { t } = useT();
+type Props = {
+  theme: Theme;
+  size: WidgetTabSize;
+  /** Width inside the side gutters. */
+  width: number;
+  style?: StyleProp<ViewStyle>;
+  /** T221: called after a piece was added to "My widget art" (the list refreshes). */
+  onLibraryChange?: () => void;
+};
+
+const NONE: readonly MenuOption[] = Object.freeze([]) as readonly MenuOption[];
+
+export function ThemeWidgetArt({ theme, size, width, style, onLibraryChange }: Props) {
+  return <View style={style}>
+    <DesignedThemeWidgets theme={theme} size={size} width={width} onLibraryChange={onLibraryChange} />
+    <ThemeDecorativeArt theme={theme} size={size} width={width} onLibraryChange={onLibraryChange} />
+  </View>;
+}
+
+function ThemeDecorativeArt({ theme, size, width, style, onLibraryChange }: Props) {
   const { c } = useColorsV2();
-  const targets = useSyncExternalStore(subscribeCountdownArtTargets, countdownArtTargetsNow, countdownArtTargetsNow);
-  useEffect(() => { void loadCountdownArtTargets(); }, []);
+  const { t, script } = useT();
+  const router = useRouter();
+  const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
   const remoteTheme = isRemoteArtTheme(theme);
   const remote = useRemoteArtTheme(remoteTheme ? theme.id : null);
-  const [loaded, setLoaded] = useState<{ id: string; art: RemoteWidgetArtLocal | null } | null>(null);
-  const latest = remote.theme ?? theme;
-  useFocusEffect(useCallback(() => {
-    if (!remoteTheme) return;
-    const controller = new AbortController();
-    remoteWidgetArtOnDevice(latest, controller.signal).then(
-      art => { if (!controller.signal.aborted) setLoaded({ id: theme.id, art }); },
-      () => { if (!controller.signal.aborted) setLoaded({ id: theme.id, art: null }); },
-    );
-    return () => controller.abort();
-  }, [latest, remoteTheme, theme.id]));
-  const verified = loaded?.id === theme.id ? loaded.art : null;
   const artId = isArtPackTheme(theme) ? theme.artPack.id : null;
-  const options = useMemo<readonly MenuOption[]>(() => {
-    if (remoteTheme) {
-      const options = verified?.options ?? remote.widgetOptions;
-      const live = withLiveArt(theme.id, options.map(item => item.option), { targets });
-      return options.map((item, i) => ({ option: live[i], source: { uri: item.uri } }));
-    }
-    if (!artId) return [];
-    const sources = new Map<string, number>();
-    const assets = HERO_SIZES.flatMap(size => {
-      const source = artPackHero(artId, size);
-      if (source === null) return [];
-      const path = 'bundled-' + size;
-      sources.set(path, source);
-      return [{ path, role: 'widget-' + size, width: HERO_REFERENCE_SIZES[size].width, height: HERO_REFERENCE_SIZES[size].height }];
-    });
-    return widgetOptionsFromV1(assets).flatMap(option => {
-      const source = sources.get(option.image);
-      return source === undefined ? [] : [{ option, source }];
-    });
-  }, [remoteTheme, remote.widgetOptions, verified, artId, theme.id, targets]);
+  // T245: the days chosen for countdown art pieces (none = those pieces stay Art).
+  const [targets, setTargets] = useState<CountdownArtTargets>(countdownArtTargetsNow);
+  useEffect(() => {
+    let alive = true;
+    loadCountdownArtTargets()
+      .then((v) => {
+        if (alive) setTargets(v);
+      })
+      .catch(() => undefined);
+    const off = subscribeCountdownArtTargets((v) => setTargets(v));
+    return () => {
+      alive = false;
+      off();
+    };
+  }, []);
 
-  const wallpaper = remote.wallpaperUri ? { uri: remote.wallpaperUri } : artId ? artPackWallpaper(artId) : null;
-  const seamlessWallpaper = wallpaper ?? (isRemoteArtTheme(latest) && latest.remoteArt.thumbUrl ? { uri: latest.remoteArt.thumbUrl } : null);
+  const options: readonly MenuOption[] = useMemo(() => {
+    if (remoteTheme) {
+      if (!remote.widgetOptions.length) return NONE;
+      // T245: countdown pictures are live only once the person picked a day for them.
+      const live = withLiveArt(theme.id, remote.widgetOptions.map((o) => o.option), { targets });
+      return remote.widgetOptions.map((o, i) => ({ option: live[i], source: { uri: o.uri } })).filter(o => !isReplacedArtEdition(o.option));
+    }
+    if (!artId) return NONE;
+    // A bundled art pack: its hero pieces, as a v1 pack would list them.
+    const sources = new Map<string, number>();
+    const assets = HERO_SIZES.flatMap((s) => {
+      const mod = artPackHero(artId, s);
+      if (mod === null) return [];
+      const path = `bundled-${s}`;
+      sources.set(path, mod);
+      return [{ path, role: `widget-${s}`, width: HERO_REFERENCE_SIZES[s].width, height: HERO_REFERENCE_SIZES[s].height }];
+    });
+    return widgetOptionsFromV1(assets).flatMap((option) => {
+      const mod = sources.get(option.image);
+      return mod === undefined ? [] : [{ option, source: mod }];
+    });
+  }, [remoteTheme, remote.widgetOptions, artId, theme.id, targets]);
+
+  const wallpaper: ArtSource | null = remote.wallpaperUri ? { uri: remote.wallpaperUri } : artId ? artPackWallpaper(artId) : null;
   const wallpaperPx = remote.wallpaperPx ?? { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height };
-  const slot = normaliseSlot(size, null);
-  const device = seamlessDeviceHere();
-  const crop = seamlessCrop({ device, wallpaper: wallpaperPx, size, slot, nudge: { dx: 0, dy: 0 } }).cropPx;
-  const menuWallpaper: MenuWallpaper | null = wallpaper ? { source: wallpaper, px: wallpaperPx, crop } : null;
-  const hero = options.find(item => item.option.id === 'hero-' + size);
-  const firstArt = shelfOptions(options.map(item => item.option), size)[0];
-  const seamless = hero ?? options.find(item => item.option.id === firstArt?.id);
-  return (
-    <View style={[styles.stack, style]}>
-      <DesignedThemeWidgets theme={theme} size={size} width={width} />
-      <WidgetArtMenu options={options} size={size} width={width} themeColour={theme.palette.bg}
-        wallpaper={menuWallpaper} themeId={theme.id} artTransparent={!remoteTheme} />
-      {seamlessWallpaper || seamless ? (
-        <View style={styles.stack}>
-          <SectionHeader title={t('ui.seamless.title')} flushTop />
-          <SeamlessWidgetPreview wallpaper={seamlessWallpaper} wallpaperPx={wallpaperPx}
-            fallbackWallpaper={(width, height) => <View style={{ width, height, backgroundColor: theme.palette.bg }} />}
-            hero={remoteTheme ? null : seamless?.source ?? null} heroPx={seamless ? { w: seamless.option.width, h: seamless.option.height } : undefined}
-            size={size} slot={slot} nudge={{ dx: 0, dy: 0 }} device={device} width={Math.min(width, 220)}
-            style={styles.seamless} accessibilityLabel={t('ui.seamless.title')} />
-        </View>
+  const [chosen, setChosen] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<Status>('idle');
+  const home: HomeOptionSize | null = size === 'lock' ? null : size;
+  const key = `${theme.id}:${size}`;
+  const picked = home ? selectedOption(options.map((o) => o.option), home, chosen[key]) : null;
+  const pickedItem = picked ? options.find((o) => o.option.id === picked.id) ?? null : null;
+
+  const onSelect = useCallback(
+    (id: string) => {
+      haptic('select');
+      setStatus('idle');
+      setChosen((m) => (m[key] === id ? m : { ...m, [key]: id }));
+    },
+    [key],
+  );
+
+  if (!home) return null;
+  if (remoteTheme && options.length === 0) {
+    // Not downloaded yet: the art arrives with the theme's download (theme page).
+    return (
+      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), styles.note, { color: c.inkSecondary }, style]}>
+        {t('tabs.widgetsTab.art.download')}
+      </Text>
+    );
+  }
+  if (options.length === 0 || !pickedItem) return null;
+
+  /** The wallpaper + crop under this widget, for the seamless path. */
+  const seamless = async (artUri: string): Promise<boolean | null> => {
+    const wallpaperUri = remote.wallpaperUri
+      ? await existingLocalFile(remote.wallpaperUri)
+      : artId
+        ? await localAssetUri(artPackWallpaper(artId), `${artId}-wallpaper.png`)
+        : null;
+    if (!wallpaperUri) return false;
+    const crop = seamlessCrop({ device: seamlessDeviceHere(), wallpaper: wallpaperPx, size: home, slot: normaliseSlot(home, null), nudge: { dx: 0, dy: 0 } });
+    const res = await widgets.setSeamless({ wallpaperUri, cropPx: crop.cropPx, heroUri: artUri, size: home });
+    return res.available ? res.ok : null;
+  };
+
+  const onUse = async () => {
+    if (status === 'busy') return;
+    setStatus('busy');
+    haptic('select');
+    let next: Status = 'failed';
+    try {
+      const avail = await widgets.isAvailable();
+      if (!avail.available) {
+        next = 'unavailable';
+      } else {
+        const { option, source } = pickedItem;
+        const artUri =
+          typeof source === 'number' ? await localAssetUri(source, `${theme.id}-${option.id}.png`) : await existingLocalFile(source.uri);
+        if (artUri) {
+          let ok: boolean | null;
+          // T251 (owner-1101h #2): art BLENDS with the wallpaper on every theme. Every piece goes on
+          // the wallpaper crop under the widget (setSeamless; the bridge keys a plain background
+          // out / feathers a painted one, src/core/artBlend.ts), whatever its pack `background`
+          // says. Only a theme with no wallpaper file falls back to setWidgetArt (the theme colour,
+          // same blend, no blurred copy).
+          const preserveArtwork = option.numberFree === true && !!option.liveFrame && (option.kind === 'clock' && !!option.liveFrame.clockStyle || !!option.liveFrame.valueStyle);
+          let path: 'fit' | 'bleed' = preserveArtwork ? 'bleed' : 'fit';
+          ok = preserveArtwork ? false : await seamless(artUri);
+          if (ok === false && option.background !== 'wallpaper') {
+            path = 'bleed';
+            const px = widgetSizePx(seamlessDeviceHere(), home);
+            const res = await widgets.setWidgetArt({
+              artUri,
+              preserveArtwork,
+              widthPx: px.w,
+              heightPx: px.h,
+              background: option.background,
+              colour: theme.palette.bg,
+              fit: placeArt({ w: option.width, h: option.height }, px, option.fit).mode,
+              size: home,
+            });
+            // The seamless path already failed (no wallpaper file); a bridge without setWidgetArt has nothing left.
+            ok = res.available ? res.ok : false;
+          }
+          next = ok === null ? 'unavailable' : ok ? 'saved' : 'failed';
+          if (ok) {
+            // T221: keep this piece in "My widget art" too (a failure here never undoes the save).
+            const px = widgetSizePx(seamlessDeviceHere(), home);
+            // T237: what the widget draws live over this piece (null = a picture only).
+            const plan = liveArtPlan(theme.id, option, { targets });
+            const live = plan
+              ? liveArtSpec(plan, { w: option.width, h: option.height }, px, path, { bg: theme.palette.bg, ink: theme.palette.ink })
+              : null;
+            const lib = await widgets.addToArtLibrary(
+              {
+                id: themePieceId(theme.id, option.id, home),
+                name: `${pickedName} · ${home === 'small' ? t('ui.seamless.sizes.small') : home === 'medium' ? t('ui.seamless.sizes.medium') : t('ui.seamless.sizes.large')}`,
+                themeName: theme.name,
+                themeId: theme.id,
+                source: 'theme',
+                created: Date.now(),
+                aspect: px.h > 0 ? px.w / px.h : 0,
+                size: home,
+                ...(live ? { live } : {}),
+              },
+              seamlessFileName(home),
+            );
+            if (lib.ok) {
+              next = 'savedLibrary';
+              onLibraryChange?.();
+            }
+          }
+        }
+      }
+    } catch {
+      next = 'failed';
+    }
+    setStatus(next);
+    haptic(next === 'saved' || next === 'savedLibrary' ? 'success' : 'warning');
+    const line = next === 'savedLibrary' ? t('ui.seamless.library.added') : next === 'saved' ? t('ui.seamless.saved') : next === 'unavailable' ? t('ui.seamless.notAvailable') : t('ui.seamless.failed');
+    AccessibilityInfo.announceForAccessibility(line);
+  };
+
+  const menuWallpaper: MenuWallpaper | null = wallpaper
+    ? {
+        source: wallpaper,
+        px: wallpaperPx,
+        crop: seamlessCrop({ device: seamlessDeviceHere(), wallpaper: wallpaperPx, size: home, slot: normaliseSlot(home, null), nudge: { dx: 0, dy: 0 } }).cropPx,
+      }
+    : null;
+  const pickedNm = optionName(pickedItem.option, options.map((o) => o.option));
+  const pickedName = 'text' in pickedNm ? pickedNm.text : (t as unknown as (k: string, p?: Record<string, unknown>) => string)(pickedNm.key, pickedNm.params);
+  // T237: a piece the widget makes live needs no separate Studio widget.
+  const liveOnArt = pickedItem.option.liveArt === true;
+  const liveHref = liveOnArt ? null : liveStudioHref(theme.id, pickedItem.option.kind, home);
+  // T206: the picture's numbers never change, so the live widget is offered as a separate one.
+  const fixed = fixedValues(pickedItem.option);
+  // T245: a countdown picture takes a target day.
+  const countdownPiece = isCountdownArtPiece(theme.id, pickedItem.option);
+  const statusLine =
+    status === 'savedLibrary' ? t('ui.seamless.library.added') : status === 'saved' ? t('ui.seamless.saved') : status === 'unavailable' ? t('ui.seamless.notAvailable') : status === 'failed' ? t('ui.seamless.failed') : null;
+
+  const footer = (
+    <View style={styles.actions}>
+      <PillButton
+        label={t('tabs.widgetsTab.art.use')}
+        icon="check-circle"
+        variant="filled"
+        block
+        busy={status === 'busy'}
+        haptic={false}
+        onPress={() => onUse().catch(() => undefined)}
+        accessibilityLabel={t('tabs.widgetsTab.art.useA11y', { name: pickedName })}
+      />
+      {liveHref ? (
+        <PillButton
+          label={fixed ? t('tabs.widgetsTab.art.liveInstead') : t('tabs.widgetsTab.art.makeLive')}
+          icon="activity"
+          variant="tinted"
+          block
+          haptic="light"
+          onPress={() => router.push(liveHref)}
+          accessibilityHint={fixed ? t('tabs.widgetsTab.art.liveInsteadHint') : t('tabs.widgetsTab.art.liveHint')}
+        />
       ) : null}
-      {remoteTheme && (loaded?.id !== theme.id || !verified || verified.missing > 0) ? (
-        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[textV2.footnote, { color: c.inkSecondary }]}>
-          {loaded?.id !== theme.id ? t('common.loading') : t('theme.remote.offline')}
+      {fixed ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+          {t('tabs.widgetsTab.art.fixedNote')}
         </Text>
       ) : null}
+      {countdownPiece ? (
+        <CountdownDayField
+          key={`${theme.id}/${pickedItem.option.id}`}
+          day={countdownArtTarget(targets, theme.id, pickedItem.option.id)}
+          onDay={(day) => {
+            setStatus('idle');
+            setCountdownArtTarget(theme.id, pickedItem.option.id, day).catch(() => undefined);
+          }}
+        />
+      ) : null}
+      {countdownPiece && !liveOnArt ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+          {t('tabs.widgetsTab.art.countdownNote')}
+        </Text>
+      ) : null}
+      {liveOnArt ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+          {pickedItem.option.kind === 'focus' ? t('tabs.widgetsTab.art.focusNote') : t('tabs.widgetsTab.art.liveOnArt')}
+        </Text>
+      ) : null}
+      {liveOnArt && !liveValueShowsIn('fit') ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+          {t('tabs.widgetsTab.art.liveFillOnly')}
+        </Text>
+      ) : null}
+      {statusLine ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityLiveRegion="polite" style={[...label('footnote'), { color: c.inkSecondary }]}>
+          {statusLine}
+        </Text>
+      ) : null}
+    </View>); // i18n-ignore (code after a JSX element)
+
+  return (
+    <WidgetArtMenu
+      options={options}
+      size={home}
+      width={width}
+      themeColour={theme.palette.bg}
+      wallpaper={menuWallpaper}
+      themeId={theme.id}
+      artTransparent={!remoteTheme}
+      selectedId={pickedItem.option.id}
+      onSelect={onSelect}
+      footer={footer}
+      style={style}
+    />
+  );
+}
+
+/** T245: "Countdown to" YYYY-MM-DD field (the same field and strings as Widget Studio's countdown). */
+function CountdownDayField({ day, onDay }: { day: string | null; onDay: (day: string | null) => void }) {
+  const { c } = useColorsV2();
+  const { t, script } = useT();
+  const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
+  const [text, setText] = useState(day ?? '');
+  const bad = text !== '' && !validTargetDay(text);
+  return (
+    <View style={styles.field}>
+      <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), { color: c.ink }]}>
+        {t('themeUi.widgetStudio.countdown.header')}
+      </Text>
+      <TextInput
+        maxFontSizeMultiplier={fontScaleCap('body')}
+        value={text}
+        onChangeText={(v) => {
+          setText(v);
+          if (v === '') onDay(null);
+          else if (validTargetDay(v)) onDay(v);
+        }}
+        placeholder={t('themeUi.widgetStudio.countdown.placeholder')}
+        placeholderTextColor={c.inkTertiary}
+        keyboardType="numbers-and-punctuation"
+        maxLength={10}
+        accessibilityLabel={t('themeUi.widgetStudio.countdown.header')}
+        accessibilityHint={t('themeUi.widgetStudio.countdown.hint')}
+        style={[...label('body'), styles.input, continuous, { color: c.ink, backgroundColor: c.fill }]}
+      />
+      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+        {bad ? t('themeUi.widgetStudio.countdown.invalid') : t('themeUi.widgetStudio.countdown.hint')}
+      </Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  stack: { gap: spaceV2.md },
-  seamless: { alignSelf: 'center' },
+  actions: { gap: spaceV2.sm, marginTop: spaceV2.xs },
+  field: { gap: spaceV2.xs },
+  input: { minHeight: sizeV2.touch, borderRadius: chromeRadiusV2.control, paddingHorizontal: spaceV2.md, paddingVertical: spaceV2.sm },
+  note: { marginTop: spaceV2.md },
 });

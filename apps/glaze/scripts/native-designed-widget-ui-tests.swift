@@ -71,6 +71,8 @@ import Vision
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
     app.launch()
+    let themes = app.buttons["Themes"].firstMatch
+    if themes.exists { themes.tap() }
     let search = app.textFields["Search themes"]
     XCTAssertTrue(search.waitForExistence(timeout: 30), app.debugDescription)
     search.tap()
@@ -100,7 +102,7 @@ import Vision
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     app.launch()
     XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 30))
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     try openGallery(spring)
     try installWidget("Seamless", in: spring, maxSwipes: 60)
     capture("seamless-installed-before-alpine")
@@ -119,7 +121,7 @@ import Vision
     XCTAssertTrue(use.waitForExistence(timeout: 15), app.debugDescription)
     use.tap()
     RunLoop.current.run(until: Date().addingTimeInterval(8))
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     XCUIDevice.shared.press(.home)
     capture("home-before-adding-new-theme-widgets")
     try openGallery(spring, fromHomeScreen: true)
@@ -136,7 +138,7 @@ import Vision
   func testAlpineSmallEditWidgetArt() throws {
     continueAfterFailure = false
     let app = try openAlpine()
-    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    let spring = makeSpringboard()
     defer {
       capture("alpine-art-final")
       print("GLAZE_ART_APP_TREE\n" + app.debugDescription)
@@ -203,13 +205,340 @@ import Vision
     print("GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED"); fflush(stdout)
   }
 
-  private func screenText() throws -> String {
-    guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return "" }
+  func testApplyAlpineForUpgrade() throws {
+    continueAfterFailure = false
+    let app = try openAlpine()
+    let spring = makeSpringboard()
+    let everything = app.buttons["Use everything"].firstMatch
+    if everything.exists { everything.tap() }
+    else {
+      let use = app.buttons.matching(NSPredicate(format: "label == %@ OR label BEGINSWITH %@", "Use this theme", "In use")).firstMatch
+      XCTAssertTrue(use.waitForExistence(timeout: 12), app.debugDescription)
+      use.tap()
+    }
+    for _ in 0..<8 {
+      for alert in [app.alerts.firstMatch, spring.alerts.firstMatch] where alert.exists {
+        let allow = alert.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@", "Allow")).firstMatch
+        if allow.exists { allow.tap() }
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    let close = app.buttons["Close"].firstMatch
+    if close.exists && close.isHittable { close.tap() }
+    capture("upgrade-alpine-applied")
+    print("GLAZE_UPGRADE_ALPINE_APPLIED"); fflush(stdout)
+  }
+
+  func testInstallLegacyArtWidgetsForUpgrade() throws {
+    continueAfterFailure = false
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    app.launch()
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
+    let spring = makeSpringboard()
+    for (index, size) in ["small", "medium", "large"].enumerated() {
+      try openGallery(spring)
+      let title = spring.staticTexts["Seamless"].firstMatch
+      for _ in 0..<60 {
+        if title.exists { break }
+        spring.swipeLeft()
+      }
+      XCTAssertTrue(title.exists, spring.debugDescription)
+      for _ in 0..<index { spring.swipeLeft(); RunLoop.current.run(until: Date().addingTimeInterval(0.6)) }
+      let add = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
+      XCTAssertTrue(add.waitForExistence(timeout: 6), spring.debugDescription); add.tap()
+      for _ in 0..<2 { let done = spring.buttons["Done"].firstMatch; if done.waitForExistence(timeout: 2) { done.tap() } }
+      RunLoop.current.run(until: Date().addingTimeInterval(3))
+      _ = try findArtWidget(size, in: spring)
+      capture("legacy-art-widget-installed-" + size)
+    }
+    print("GLAZE_LEGACY_ART_WIDGETS_INSTALLED"); fflush(stdout)
+  }
+
+  private func findArtWidget(_ size: String, in spring: XCUIApplication) throws -> XCUIElement {
+    for direction in ["left", "right"] {
+      for _ in 0..<7 {
+        let matches = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
+        if let hit = matches.allElementsBoundByIndex.first(where: { element in
+          let f = element.frame
+          guard element.exists && element.isHittable && f.width > 110 else { return false }
+          return size == "small" ? f.width < 220 : size == "medium" ? f.width > 250 && f.height < 230 : f.height > 250
+        }) { return hit }
+        if direction == "left" { spring.swipeLeft() } else { spring.swipeRight() }
+        RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+      }
+    }
+    XCTFail("Missing existing " + size + " art widget. " + spring.debugDescription)
+    throw NSError(domain: "GlazeUpgradeUI", code: 1)
+  }
+
+  func testPrimeAlpineArtWidgetBeforeUpgrade() throws {
+    continueAfterFailure = false
+    let spring = makeSpringboard()
+    XCUIDevice.shared.press(.home)
+    let widget = try findArtWidget("small", in: spring)
+    try enterWidgetEditor(widget, in: spring)
+    let art = spring.buttons["Art"].firstMatch
+    XCTAssertTrue(art.waitForExistence(timeout: 10), spring.debugDescription); art.tap()
+    try resetArtOptionsToStart(in: spring)
+    var selected = false
+    for _ in 0..<26 {
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+      if try screenTextPoint(containing: ["Silver moon", "Small"]) != nil {
+        capture("baseline-existing-art-choice")
+        let point = try XCTUnwrap(try screenTextPoint(containing: ["Silver moon", "Small"]))
+        spring.coordinate(withNormalizedOffset: point).tap()
+        selected = true
+        break
+      }
+      spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.66))
+        .press(forDuration: 0.05, thenDragTo: spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.40)),
+          withVelocity: .slow, thenHoldForDuration: 0.5)
+      RunLoop.current.run(until: Date().addingTimeInterval(0.4))
+    }
+    XCTAssertTrue(selected, spring.debugDescription)
+    RunLoop.current.run(until: Date().addingTimeInterval(1))
+    capture("baseline-existing-selected-art")
+    let selectedText = try screenText()
+    XCTAssertTrue(selectedText.localizedCaseInsensitiveContains("Silver moon") && selectedText.contains("Small") && selectedText.contains("Layout"), selectedText)
+    try dismissWidgetEditor(in: spring)
+    RunLoop.current.run(until: Date().addingTimeInterval(6))
+    capture("baseline-existing-silver-moon-widget")
+    print("GLAZE_UPGRADE_EXISTING_ART_WIDGET_PRIMED"); fflush(stdout)
+  }
+
+  func testAlpineAllFamiliesAfterUpgrade() throws {
+    continueAfterFailure = false
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
+    app.launch()
+    defer {
+      capture("upgrade-final")
+      print("GLAZE_UPGRADE_FINAL_APP_TREE\n" + app.debugDescription)
+    }
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
+    app.buttons["Widgets"].firstMatch.tap()
+    let names = ["Copper eclipse", "Jupiter polar", "Saturn rings", "Silver moon", "Spiral galaxy"]
+    for size in ["Small", "Medium", "Large"] {
+      let sizeButton = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", size)).firstMatch
+      reveal(sizeButton, in: app); sizeButton.tap()
+      for name in names {
+        let item = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
+        reveal(item, in: app)
+        capture("upgraded-widgets-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
+      }
+    }
+    app.terminate()
+    let theme = try openAlpine()
+    let part = theme.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
+    reveal(part, in: theme); part.tap()
+    for size in ["Small", "Medium", "Large"] {
+      let sizeButton = theme.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@ AND label ENDSWITH %@", "Widget size", size)).firstMatch
+      reveal(sizeButton, in: theme); sizeButton.tap()
+      for name in names {
+        let item = theme.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
+        reveal(item, in: theme)
+        capture("upgraded-theme-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
+      }
+    }
+    XCUIDevice.shared.press(.home)
+    let spring = makeSpringboard()
+    for size in ["small", "medium", "large"] {
+      let widget = try findArtWidget(size, in: spring)
+      capture("upgraded-home-" + size)
+      try enterWidgetEditor(widget, in: spring)
+      try openArtOptions(in: spring)
+      try resetArtOptionsToStart(in: spring)
+      var seen = Set<String>()
+      for _ in 0..<26 {
+        let lines = try screenText().components(separatedBy: " | ")
+        for name in names where lines.contains(where: {
+          $0.localizedCaseInsensitiveContains(name) && $0.localizedCaseInsensitiveContains(size)
+        }) { seen.insert(name) }
+        print("GLAZE_UPGRADE_PICKER_TEXT " + size + " " + lines.joined(separator: " | "))
+        if seen.count == names.count { break }
+        scrollArtOptions(in: spring, towardsStart: false)
+      }
+      capture("upgraded-edit-art-" + size)
+      XCTAssertEqual(seen, Set(names), spring.debugDescription)
+      print("GLAZE_UPGRADE_ART_FAMILY_VERIFIED " + size); fflush(stdout)
+      var chosen = false
+      for _ in 0..<10 {
+        if let point = try screenTextPoint(containing: ["Copper eclipse", size]) {
+          spring.coordinate(withNormalizedOffset: point).tap()
+          chosen = true
+          break
+        }
+        scrollArtOptions(in: spring, towardsStart: true)
+      }
+      XCTAssertTrue(chosen, spring.debugDescription)
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+      let selected = try screenText()
+      XCTAssertTrue(selected.localizedCaseInsensitiveContains("Copper eclipse") && selected.localizedCaseInsensitiveContains(size) && selected.contains("Layout"), selected)
+      capture("upgraded-selected-copper-" + size)
+      try dismissWidgetEditor(in: spring)
+      try waitForCopperOnHomeScreen(size, in: spring)
+      capture("upgraded-copper-home-" + size)
+    }
+    print("GLAZE_UPGRADE_ALL_ALPINE_VERIFIED"); fflush(stdout)
+  }
+
+  private typealias ScreenLine = (text: String, box: CGRect)
+
+  private func waitForCopperOnHomeScreen(_ size: String, in spring: XCUIApplication) throws {
+    let deadline = Date().addingTimeInterval(90)
+    var fraction = 0.0
+    repeat {
+      RunLoop.current.run(until: Date().addingTimeInterval(3))
+      let widget = try findArtWidget(size, in: spring)
+      guard let screen = XCUIScreen.main.screenshot().image.cgImage else { continue }
+      let scale = CGFloat(screen.width) / spring.frame.width
+      let box = widget.frame.insetBy(dx: 4, dy: 4)
+      let pixels = CGRect(x: box.minX * scale, y: box.minY * scale,
+        width: box.width * scale, height: box.height * scale)
+      guard let crop = screen.cropping(to: pixels),
+        let sample = CGContext(data: nil, width: 64, height: 64, bitsPerComponent: 8,
+          bytesPerRow: 256, space: CGColorSpaceCreateDeviceRGB(),
+          bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue)
+      else { continue }
+      sample.draw(crop, in: CGRect(x: 0, y: 0, width: 64, height: 64))
+      guard let data = sample.data?.assumingMemoryBound(to: UInt8.self) else { continue }
+      var warm = 0
+      for pixel in 0..<4096 {
+        let r = Double(data[pixel * 4]), g = Double(data[pixel * 4 + 1]), b = Double(data[pixel * 4 + 2])
+        if r > 35 && r > g * 1.6 && r > b * 1.6 { warm += 1 }
+      }
+      fraction = Double(warm) / 4096
+      print("GLAZE_COPPER_HOME_PIXELS " + size + " " + String(fraction)); fflush(stdout)
+      // The original copper moon occupies much more than this area at every size.
+      // The old clock's thin gold hands cannot satisfy this visible-art check.
+      if fraction > 0.06 {
+        print("GLAZE_COPPER_HOME_RENDER_VERIFIED " + size); fflush(stdout)
+        return
+      }
+    } while Date() < deadline
+    capture("copper-render-failed-" + size)
+    XCTFail("Copper Eclipse did not render on the actual Home Screen: " + size + " warm pixels " + String(fraction))
+  }
+
+  private func recognizedScreenLines() throws -> [ScreenLine] {
+    guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return [] }
     let request = VNRecognizeTextRequest()
     request.recognitionLevel = .accurate
     request.recognitionLanguages = ["en-US"]
     try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
-    return (request.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: " | ")
+    return (request.results ?? []).compactMap { observation -> ScreenLine? in
+      guard let text = observation.topCandidates(1).first?.string else { return nil }
+      return (text: text, box: observation.boundingBox)
+    }
+  }
+
+  private func groupedScreenLines() throws -> [ScreenLine] {
+    var groups: [[ScreenLine]] = []
+    for line in try recognizedScreenLines().sorted(by: { $0.box.midY > $1.box.midY }) {
+      if let last = groups.indices.last, abs(groups[last][0].box.midY - line.box.midY) < 0.007 {
+        groups[last].append(line)
+      } else { groups.append([line]) }
+    }
+    var rows: [ScreenLine] = []
+    for group in groups {
+      let text = group.sorted(by: { $0.box.minX < $1.box.minX }).map { $0.text }.joined(separator: " ")
+      let box = group.reduce(CGRect.null) { $0.union($1.box) }
+      // Vision can split the size suffix horizontally or onto its own wrapped line.
+      if let last = rows.indices.last,
+         text.range(of: "^[^A-Za-z0-9]*(small|medium|large)$", options: [.regularExpression, .caseInsensitive]) != nil {
+        rows[last].text += " " + text
+        rows[last].box = rows[last].box.union(box)
+      } else { rows.append((text: text, box: box)) }
+    }
+    return rows
+  }
+
+  private func screenText() throws -> String {
+    try groupedScreenLines().map { $0.text }.joined(separator: " | ")
+  }
+
+  private func scrollArtOptions(in spring: XCUIApplication, towardsStart: Bool) {
+    let from = CGVector(dx: 0.60, dy: towardsStart ? 0.55 : 0.70)
+    let to = CGVector(dx: 0.60, dy: towardsStart ? 0.79 : 0.45)
+    spring.coordinate(withNormalizedOffset: from).press(forDuration: 0.05,
+      thenDragTo: spring.coordinate(withNormalizedOffset: to), withVelocity: .slow, thenHoldForDuration: 0.4)
+    RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+  }
+
+  private func resetArtOptionsToStart(in spring: XCUIApplication) throws {
+    var loaded = false
+    for _ in 0..<20 {
+      if try screenText().localizedCaseInsensitiveContains("Alpine Starlight") { loaded = true; break }
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    XCTAssertTrue(loaded, "The real art option menu did not finish loading")
+    for _ in 0..<16 {
+      let lines = try groupedScreenLines()
+      if lines.contains(where: { $0.text.localizedCaseInsensitiveContains("Clock") && $0.text.localizedCaseInsensitiveContains("Small") }) { return }
+      scrollArtOptions(in: spring, towardsStart: true)
+    }
+    let visible = try screenText()
+    XCTFail("Could not reach the start of the real art menu: " + visible)
+  }
+
+  private func makeSpringboard() -> XCUIApplication {
+    let app = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) {
+      app.setValue(false, forKey: "idleAnimationWaitEnabled")
+      print("GLAZE_SPRINGBOARD_ANIMATION_WAIT_DISABLED"); fflush(stdout)
+    }
+    return app
+  }
+
+  private func enterWidgetEditor(_ widget: XCUIElement, in spring: XCUIApplication) throws {
+    widget.press(forDuration: 1.4)
+    RunLoop.current.run(until: Date().addingTimeInterval(0.8))
+    for _ in 0..<5 {
+      let visible = try screenText()
+      if visible.contains("Seamless") && visible.contains("Layout") { return }
+      if let point = try screenTextPoint(containing: ["Edit Widget"]) {
+        spring.coordinate(withNormalizedOffset: point).tap()
+      } else {
+        let edit = spring.buttons["Edit Widget"].firstMatch
+        if edit.exists && edit.isHittable { edit.tap() }
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+    }
+    let visible = try screenText()
+    XCTFail("The actual Seamless editor did not open: " + visible)
+  }
+
+  private func dismissWidgetEditor(in spring: XCUIApplication) throws {
+    // Commit edits by tapping the backdrop outside both the editor and widget preview.
+    for _ in 0..<3 {
+      let visible = try screenText()
+      let editor = visible.contains("Seamless") && visible.contains("Layout")
+      let context = visible.contains("Edit Widget") && visible.contains("Remove Widget")
+      if !editor && !context { return }
+      spring.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.84)).tap()
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+    }
+    let visible = try screenText()
+    XCTFail("The real widget editor did not dismiss: " + visible)
+  }
+
+  private func openArtOptions(in spring: XCUIApplication) throws {
+    let art = spring.buttons["Art"].firstMatch
+    if art.waitForExistence(timeout: 3) { art.tap(); return }
+    // With an existing selected entity, the remote control can expose its value instead
+    // of Art. Locate the visible Art caption and tap the value side of that actual row.
+    let visible = try screenText()
+    let caption = try XCTUnwrap(try screenTextPoint(containing: ["Art"], exact: true), visible)
+    spring.coordinate(withNormalizedOffset: CGVector(dx: 0.72, dy: caption.dy)).tap()
+  }
+
+  private func screenTextPoint(containing terms: [String], exact: Bool = false) throws -> CGVector? {
+    let lines: [ScreenLine]
+    if exact { lines = try recognizedScreenLines() } else { lines = try groupedScreenLines() }
+    guard let line = lines.first(where: { line in
+      return exact ? terms.contains(where: { line.text.caseInsensitiveCompare($0) == .orderedSame }) : terms.allSatisfy { line.text.localizedCaseInsensitiveContains($0) }
+    }) else { return nil }
+    return CGVector(dx: line.box.midX, dy: 1 - line.box.midY)
   }
 
   private func capture(_ name: String) {
@@ -217,7 +546,16 @@ import Vision
     screenshot.name = name; screenshot.lifetime = .keepAlways; add(screenshot)
   }
 
-  private func openGallery(_ spring: XCUIApplication, fromHomeScreen: Bool = false) throws {
+  func testInspectSystemArtGallery() throws {
+    continueAfterFailure = false
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    app.launch()
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
+    try openGallery(makeSpringboard(), inspect: true)
+    print("GLAZE_ART_GALLERY_DISCOVERY_COMPLETE"); fflush(stdout)
+  }
+
+  private func openGallery(_ spring: XCUIApplication, fromHomeScreen: Bool = false, legacyArt: Bool = false, inspect: Bool = false) throws {
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
     if !fromHomeScreen { XCUIDevice.shared.press(.home) }
     RunLoop.current.run(until: Date().addingTimeInterval(0.8))
@@ -239,6 +577,41 @@ import Vision
     addWidget.tap()
     let search = spring.searchFields.firstMatch
     XCTAssertTrue(search.waitForExistence(timeout: 10), spring.debugDescription)
+    if inspect {
+      for query in ["Glaze", "Other", "Seamless"] {
+        search.tap()
+        let clear = spring.buttons["Clear text"].firstMatch
+        if clear.exists { clear.tap() }
+        else if let text = search.value as? String, text != "Search Widgets" {
+          search.typeText(String(repeating: XCUIKeyboardKey.delete.rawValue, count: text.count))
+        }
+        search.typeText(query)
+        let go = spring.keyboards.buttons["Search"].firstMatch
+        if go.exists && go.isHittable { go.tap() }
+        RunLoop.current.run(until: Date().addingTimeInterval(4))
+        capture("widget-gallery-search-" + query)
+        print("GLAZE_GALLERY_SEARCH " + query + " " + (try screenText()))
+        print(spring.debugDescription); fflush(stdout)
+        spring.swipeUp()
+        capture("widget-gallery-search-scrolled-" + query)
+        print("GLAZE_GALLERY_SEARCH_SCROLLED " + query + " " + (try screenText())); fflush(stdout)
+      }
+      return
+    }
+    if legacyArt {
+      let other = spring.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Other")).firstMatch
+      for _ in 0..<36 {
+        if other.exists && other.isHittable { break }
+        spring.swipeUp()
+      }
+      capture("widget-gallery-other-section")
+      XCTAssertTrue(other.exists && other.isHittable, spring.debugDescription)
+      other.tap()
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+      capture("widget-gallery-other-open")
+      print("GLAZE_OTHER_GALLERY_TREE\n" + spring.debugDescription); fflush(stdout)
+      return
+    }
     search.tap()
     if !spring.keyboards.firstMatch.waitForExistence(timeout: 5) {
       search.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()

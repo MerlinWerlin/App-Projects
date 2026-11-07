@@ -54,7 +54,7 @@ test('bridge: linkStatus reports containerOk, themeStored, lastRead (read-only);
   const start = src.indexOf('AsyncFunction("linkStatus")');
   assert.ok(start > 0, 'linkStatus defined');
   const fn = src.slice(start, src.indexOf('AsyncFunction("clearPhoto")'));
-  assert.match(fn, /containerURL\(forSecurityApplicationGroupIdentifier: appGroup\)/);
+  assert.match(fn, /containerURL\(forSecurityApplicationGroupIdentifier: appGroup\) != nil/);
   assert.match(fn, /"containerOk":/);
   assert.match(fn, /"themeStored":/);
   assert.match(fn, /"lastRead":/);
@@ -79,8 +79,19 @@ test('adapter: linkStatus is optional on the native type, guarded, and never thr
   assert.match(src, /typeof mod\.setTheme === 'function' && typeof mod\.setPhoto === 'function' \? mod : null/);
 });
 
-test('widget link diagnostics stay in the adapter and store', () => {
-  assert.doesNotMatch(read(TAB), /requireOptionalNativeModule|GlazeWidgetBridge/);
+test('Widgets tab: link line is gated by widgetLinkVisible (hidden in Expo Go), checked on focus and after a pick', () => {
+  const src = read(TAB);
+  assert.match(src, /import \{ useWidgetLink \} from '\.\.\/\.\.\/src\/store\/widgetLink'/);
+  assert.match(src, /const linkVerdict = useWidgetLink\(picked, pickNonce\)/);
+  assert.match(src, /\{widgetLinkVisible\(linkVerdict\) \? \(/);
+  const pick = /const pickTheme = \(id: string\) => \{([\s\S]*?)\n {2}\};/.exec(src);
+  assert.ok(pick);
+  assert.match(pick[1], /setPickNonce\(/);
+  assert.match(src, /accessibilityLabel=\{t\('tabs\.widgetsTab\.link\.a11y'/);
+  assert.doesNotMatch(code(src), /\bwithSpring\b|\.springify\(|\bBounceIn\b/);
+  // No direct native calls from the screen: the store hook goes through the adapter.
+  assert.doesNotMatch(src, /requireOptionalNativeModule|GlazeWidgetBridge/);
+
   const hook = read('src/store/widgetLink.ts');
   assert.match(hook, /from '\.\.\/native\/widgets'/);
   assert.match(hook, /useFocusEffect\(/);

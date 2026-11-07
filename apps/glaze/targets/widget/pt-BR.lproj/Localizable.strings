@@ -53,7 +53,7 @@
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "Sem bordas";
-"Artwork from your current Glaze theme." = "Arte do seu tema atual do Glaze.";
+"Your Glaze art. Long-press and choose Edit Widget to pick a piece." = "Sua arte do Glaze. Toque e segure e escolha Editar Widget para escolher uma peça.";
 "Set up in Glaze" = "Configure no Glaze";
 
 /* My widget art picker (WidgetArtLibrary.swift, T221) */

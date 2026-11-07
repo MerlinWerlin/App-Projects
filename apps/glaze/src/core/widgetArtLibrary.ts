@@ -51,18 +51,12 @@ export type WidgetArtPiece = {
   size: WidgetArtSize | null;
   /** T237: what the widget draws live over this piece; absent = a picture only. */
   live?: LiveArtSpec;
-  /** Identifies the composed remote source and wallpaper without changing the WidgetKit entity id. */
-  artRevision?: string;
   /**
    * T252: position of an auto-added theme piece among its theme's pieces of the same size (0 = the
    * first on the shelf). A widget whose piece was removed by a theme swap shows the new theme's
    * piece in the same slot (resolveWidgetPiece). Absent on photos and older records.
    */
   slot?: number;
-  /** Stable picture identity across size variants, or absent for pre-1.0.12 pieces. */
-  pictureId?: string;
-  /** Kept so existing widget selections still resolve after the art catalogue removes a duplicate. */
-  hiddenFromPicker?: boolean;
 };
 
 /** T252: what a removed auto-added piece was (size + slot), so its widgets can be remapped. */
@@ -152,9 +146,6 @@ function normalisePiece(raw: unknown): WidgetArtPiece | null {
     size,
     // T237 (additive): keep a valid live spec, drop a broken one.
     ...liveField(r.live),
-    ...(typeof r.artRevision === 'string' ? { artRevision: str(r.artRevision, 240) } : {}),
-    ...(isValidPieceId(r.pictureId) ? { pictureId: r.pictureId } : {}),
-    ...(r.hiddenFromPicker === true ? { hiddenFromPicker: true } : {}),
     // T252 (additive): slot of an auto-added theme piece.
     ...slotField(r.slot),
   };
@@ -265,13 +256,8 @@ export function addPiece(lib: WidgetArtIndex, piece: Omit<WidgetArtPiece, 'file'
   const keep = Math.max(1, Math.floor(cap));
   // Never evict the piece just added, even if its clock is behind.
   const ordered = [p, ...merged.filter((q) => q.id !== p.id)];
-  let remaining = keep;
-  const kept = ordered.filter(q => {
-    if (q.source === 'theme' && q.themeId === lib.currentThemeId && q.slot !== undefined) return true;
-    return remaining-- > 0;
-  });
-  const ids = new Set(kept.map(q => q.id));
-  const evicted = ordered.filter(q => !ids.has(q.id)).map(q => q.id);
+  const kept = ordered.slice(0, keep);
+  const evicted = ordered.slice(keep).map((q) => q.id);
   return { lib: { ...lib, v: 1, pieces: listPieces({ v: 1, pieces: kept }) }, added: !existed, evicted };
 }
 
@@ -390,7 +376,7 @@ export function clearAll(lib: WidgetArtIndex): CleanResult {
 export function fallbackPiece(lib: WidgetArtIndex, size: WidgetArtSize | null = null): WidgetArtPiece | null {
   const cur = lib.currentThemeId;
   if (!cur) return null;
-  const mine = listPieces(lib).filter((p) => !isUserPiece(p) && p.themeId === cur && !p.hiddenFromPicker);
+  const mine = listPieces(lib).filter((p) => !isUserPiece(p) && p.themeId === cur);
   return mine.find((p) => size !== null && p.size === size) ?? mine[0] ?? null;
 }
 
@@ -415,27 +401,17 @@ export function byShelf(a: WidgetArtPiece, b: WidgetArtPiece): number {
 export function currentThemePieces(lib: WidgetArtIndex): WidgetArtPiece[] {
   const cur = lib.currentThemeId;
   if (!cur) return [];
-  return lib.pieces.filter((p) => !isUserPiece(p) && p.themeId === cur && !p.hiddenFromPicker).sort(byShelf);
+  return lib.pieces.filter((p) => !isUserPiece(p) && p.themeId === cur).sort(byShelf);
 }
 
-function pictureIdentity(piece: WidgetArtPiece): string {
-  if (piece.pictureId) return piece.pictureId;
-  const suffix = piece.size ? '-' + piece.size : '';
-  return piece.source === 'theme' && suffix && piece.id.startsWith('t-') && piece.id.endsWith(suffix)
-    ? piece.id.slice(0, -suffix.length)
-    : piece.id;
-}
-
-/** Edit Widget > Art order, with one choice per picture and the user's photos after theme art. */
+/**
+ * Edit Widget > Art order (suggestedEntities): the current theme's pieces first (byShelf), then
+ * every other piece (own photos, art kept from elsewhere) newest first.
+ */
 export function pickerPieces(lib: WidgetArtIndex): WidgetArtPiece[] {
-  const other = listPieces(lib).filter(piece => isUserPiece(piece) || !lib.currentThemeId);
-  const seen = new Set<string>();
-  return [...currentThemePieces(lib), ...other].filter(piece => {
-    const picture = pictureIdentity(piece);
-    if (piece.hiddenFromPicker || piece.live?.design || seen.has(picture)) return false;
-    seen.add(picture);
-    return true;
-  });
+  const mine = currentThemePieces(lib);
+  const ids = new Set(mine.map((p) => p.id));
+  return [...mine, ...listPieces(lib).filter((p) => !ids.has(p.id))];
 }
 
 /**
@@ -448,12 +424,7 @@ export function pickerPieces(lib: WidgetArtIndex): WidgetArtPiece[] {
  */
 export function resolveWidgetPiece(lib: WidgetArtIndex, id: string | null | undefined, size: WidgetArtSize | null): string | null {
   if (!isValidPieceId(id)) return null;
-  const selected = lib.pieces.find(piece => piece.id === id);
-  if (selected) {
-    if (!size || selected.size === size) return id;
-    const picture = pictureIdentity(selected);
-    return lib.pieces.find(piece => piece.size === size && pictureIdentity(piece) === picture)?.id ?? id;
-  }
+  if (lib.pieces.some((p) => p.id === id)) return id;
   const mine = currentThemePieces(lib);
   if (mine.length === 0) return null;
   const r = lib.retired?.[id];
@@ -474,11 +445,8 @@ export function resolveWidgetPiece(lib: WidgetArtIndex, id: string | null | unde
 
 /** T259: per size, the current theme's first piece (byShelf) of that size, else null. */
 export function unpinnedPlan(lib: WidgetArtIndex): Record<WidgetArtSize, string | null> {
-  const art = currentThemePieces(lib).filter(piece => !piece.live?.design && !piece.hiddenFromPicker);
-  const first = (size: WidgetArtSize): string | null => {
-    const hero = lib.currentThemeId ? themePieceId(lib.currentThemeId, 'hero-' + size, size) : null;
-    return (art.find(piece => piece.id === hero) ?? art.find(piece => piece.size === size))?.id ?? null;
-  };
+  const mine = currentThemePieces(lib);
+  const first = (size: WidgetArtSize): string | null => mine.find((p) => p.size === size)?.id ?? null;
   return { small: first('small'), medium: first('medium'), large: first('large') };
 }
 

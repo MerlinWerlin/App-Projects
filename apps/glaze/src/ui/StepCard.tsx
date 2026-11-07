@@ -244,7 +244,7 @@ export function StepCard({ index, title, body, illustration, done, onToggleDone,
           accessibilityState={{ checked: !!done }}
           style={({ pressed }) => [styles.doneRow, { borderTopColor: c.separator, opacity: pressed ? 0.7 : 1 }]}
         >
-          <Feather name={done ? 'check-square' : 'square'} size={28} color={done ? c.ok : c.inkSecondary} />
+          <Feather name={done ? 'check-square' : 'square'} size={20} color={done ? c.ok : c.inkSecondary} />
           <Text style={[textV2.body, textStyleFor(script, textV2.body), styles.flex, { color: done ? c.ok : c.ink }]}>
             {done ? t('install.stepCard.done') : t('install.stepCard.markDone')}
           </Text>

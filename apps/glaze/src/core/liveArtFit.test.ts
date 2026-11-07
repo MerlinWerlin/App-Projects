@@ -156,5 +156,8 @@ test('the app claims live values in Fit exactly when the widget draws them there
   if (!FIT_LAYOUT_LIVE_IN_WIDGET) {
     assert.equal(fitLayoutPlateForSpec(spec, { rawArt: SQUARE, composed: { w: 510, h: 510 }, widget: OPTION_SIZE_POINTS.small }), null);
   }
-
+  // The theme art screen says live values show in Fill only while the widget skips Fit.
+  const ui = read('src', 'ui', 'ThemeWidgetArt.tsx');
+  assert.match(ui, /liveValueShowsIn\('fit'\)/);
+  assert.match(ui, /tabs\.widgetsTab\.art\.liveFillOnly/);
 });

@@ -29,9 +29,6 @@ export type WidgetLinkStatus = {
   themeStored: boolean;
   /** Raw WIDGET_LAST_READ_KEY JSON ("" when the extension never wrote it where the app can see). */
   lastRead: string;
-  /** The gallery widgets’ last timeline read and the art library’s committed theme. */
-  galleryRead?: string;
-  artTheme?: string;
   /** Raw glaze.theme.v1 JSON as stored ("" when missing or not reported). */
   storedTheme: string;
 };
@@ -107,8 +104,6 @@ export function normaliseWidgetLinkStatus(raw: unknown): WidgetLinkStatus {
     containerOk: o.containerOk === true,
     themeStored: o.themeStored === true,
     lastRead: typeof o.lastRead === 'string' ? o.lastRead : '',
-    ...(typeof o.galleryRead === 'string' ? { galleryRead: o.galleryRead } : {}),
-    ...(typeof o.artTheme === 'string' ? { artTheme: o.artTheme } : {}),
     storedTheme: typeof o.storedTheme === 'string' ? o.storedTheme : '',
   };
 }

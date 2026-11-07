@@ -88,15 +88,19 @@ test('theme page steps', () => {
   assert.equal(themeStepOf(['icons']), 'overview');
 });
 
-test('theme application queues widget writes before notifying screens', () => {
+test('T184 "Use this theme" writes the icon style, the widget theme (bridge) and the theme in use', () => {
   const store = strip(read('src', 'store', 'activeTheme.ts'));
-  const fn = /export function applyThemeEverywhere[^]*?\n\}/.exec(store)?.[0] ?? '';
-  assert.match(fn, /const native = queueThemeWrite\(async \(\) =>/);
+  const fn = /export async function applyThemeEverywhere[^]*?\n\}/.exec(store)?.[0] ?? '';
+  // T241: in the user's look for the theme (textured 'themed' by default), with its shape.
   assert.match(fn, /applyThemeIcons\(theme, /);
-  assert.match(fn, /await rememberWidgetTheme\(theme\)[\s\S]*listener\(theme\.id\)[\s\S]*void syncThemeWidgetArt\(theme\)/);
-  const widget = read('src', 'store', 'widgetTheme.ts');
-  assert.match(widget, /AsyncStorage\.multiSet\(\[\s*\[ACTIVE_THEME_KEY,[\s\S]*?\[ACTIVE_WIDGET_THEME_KEY,/);
-  assert.match(widget, /widgets\.setTheme\(/);
+  // T250: the widget theme is remembered here; the App Group write is the queued 'widgetTheme' step.
+  assert.match(fn, /rememberWidgetTheme\(theme\)/);
+  assert.match(fn, /requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
+  assert.match(fn, /AsyncStorage\.setItem\(ACTIVE_THEME_KEY/);
+  // T264: each listener is try-wrapped (one throwing never stops the others).
+  assert.match(fn, /for \(const l of \[\.\.\.listeners\]\) \{\s*try \{\s*l\(theme\.id\);/);
+  // The bridge write itself stays in applyWidgetTheme (T125).
+  assert.match(read('src', 'store', 'widgetTheme.ts'), /widgets\.setTheme\(/);
 });
 
 test('T184 the Icons, Widgets and wallpaper screens re-read the theme in use on focus', () => {
@@ -115,6 +119,7 @@ test('T184 the Icons, Widgets and wallpaper screens re-read the theme in use on 
   const widgets = strip(read('app', '(tabs)', 'widgets.tsx'));
   assert.match(widgets, /const activeId = useActiveThemeId\(\);/);
   assert.match(widgets, /useAnyTheme\(activeId\)/);
+  assert.match(widgets, /pickAfterActiveChange\(prev, activeId, p\)/);
   assert.doesNotMatch(widgets, /getAnyTheme\(state\?\.themeId/);
   // Wallpaper maker: opened without a theme, it starts from the theme in use.
   const maker = strip(read('app', 'wallpaper.tsx'));

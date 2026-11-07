@@ -3,7 +3,7 @@
 // T185 (owner-1101 item 3): the button is "Use this theme" (the base for every tab; "In use ✓"
 // when it already is), and Wallpaper, Icons and Widgets are three separate entry points, each its
 // own clean screen: /theme/[id]?step=wallpaper, /theme/[id]?step=icons and (T201)
-// /theme/[id]?step=widgets (preview of the theme’s Clock, Battery and Calendar).
+// /theme/[id]?step=widgets (practical pieces, then art, then the standard set → Widget Studio).
 // The old one-run Apply checklist is gone.
 // T173 premium slice (docs/PREMIUM_UI.md §3.3): the hero phone sits large and centred on a soft
 // surface with a quiet Home / Lock pill under it; the rest reads as editorial blocks (eyebrow +
@@ -48,6 +48,7 @@ import { generateWidgetSet, widgetKindKey, widgetSizeKey } from '../../src/core/
 import { studioPreviews, type StudioState } from '../../src/core/widgetStudio';
 import { loadStudio } from '../../src/store/widgetStudio';
 import { useT, type Script, type TFunction } from '../../src/i18n';
+import { widgets } from '../../src/native/widgets';
 import { PlusBadge } from '../../src/plus/PlusBadge';
 import { PlusLockSheet } from '../../src/plus/PlusLockSheet';
 import { useLocked } from '../../src/plus/useLocked';
@@ -63,9 +64,9 @@ import { OffscreenWallpaper, WallpaperView } from '../../src/render/WallpaperVie
 import { IconCanvas } from '../../src/render/IconCanvas';
 import { usePackTheme } from '../../src/render/usePackTheme';
 import { tickStoredChecklist } from '../../src/store/applyChecklist';
-import { useToast } from '../../src/ui/Toast';
 import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
 import { DEFERRED_STEPS, requestDeferred } from '../../src/store/deferredWork';
+import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { loadBackground } from '../../src/store/background';
 import { setThemeLook, setThemeShape, studioApps, themeLookFor, themeShapeFor } from '../../src/core/studio';
 import { applyThemeIcons, useStudio } from '../../src/store/studio';
@@ -92,7 +93,6 @@ import { IconGridSkeleton, Skeleton } from '../../src/ui/Skeleton';
 import { IconLookPicker } from '../../src/ui/IconLookPicker';
 import { PreviewModeLabel, ShapePicker } from '../../src/ui/ShapePicker';
 import { Segmented } from '../../src/ui/Segmented';
-import { Sheet } from '../../src/ui/Sheet';
 import { SheenButton } from '../../src/ui/SheenButton';
 import { PHONE_ASPECT } from '../../src/ui/ThemeCard';
 import { ThemeOverrideRow } from '../../src/ui/ThemeOverrideRow';
@@ -100,7 +100,13 @@ import { ContextTip } from '../../src/ui/ContextTip';
 import { PhotoCredit, PhotoDownloadControl } from '../../src/ui/PhotoCredit';
 import { usePhotoTheme } from '../../src/ui/usePhotoTheme';
 import { ArtPackCredit } from '../../src/ui/ArtPackCredit';
-import { artPackWallpaper, artPackWallpaperUri } from '../../src/ui/artPackSources';
+import { artPackHero, artPackWallpaper, artPackWallpaperUri } from '../../src/ui/artPackSources';
+import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, type HeroSize } from '../../src/core/artPack';
+import { seamlessCardSources, seamlessImageSource, seamlessSourceKey } from '../../src/core/seamlessSource';
+import { seamlessCrop, type Nudge, type SeamlessSize, type SeamlessSlot } from '../../src/core/seamlessWidget';
+import { SeamlessWidgetPreview } from '../../src/ui/SeamlessWidgetPreview';
+import { SeamlessWidgetControls, type SeamlessControlsStrings } from '../../src/ui/SeamlessWidgetControls';
+import { existingLocalFile, localAssetUri, seamlessDeviceHere } from '../../src/ui/seamlessSetup';
 import { artPackOf } from '../../src/core/artPackThemes';
 import { isRemoteArtTheme, remoteArtDetailView } from '../../src/core/remoteCatalog';
 import { formatBytes } from '../../src/core/themePack';
@@ -193,10 +199,11 @@ function ThemeDetailScreen() {
   const own = remote.theme === theme;
   return (
     <ThemeDetail
-      key={theme.id}
       theme={theme}
       step={themeStepOf(stepParam)}
       remoteWallpaperUri={own ? remote.wallpaperUri : null}
+      remoteHeroUris={own ? remote.heroUris : null}
+      remoteHeroSizes={own ? remote.heroPx : null}
     />
   );
 }
@@ -205,16 +212,21 @@ function ThemeDetail({
   theme: base,
   step,
   remoteWallpaperUri,
+  remoteHeroUris,
+  remoteHeroSizes,
 }: {
   theme: Theme;
   /** T185: the overview (preview + "Use this theme" + three entry points), or its Wallpaper / Icons screen. */
   step: ThemeStep;
   remoteWallpaperUri: string | null;
+  /** T168: downloaded hero art of a remote art pack (seamless widget card). */
+  remoteHeroUris: Partial<Record<HeroSize, string>> | null;
+  /** T208: pixel size of each downloaded hero piece (manifest), so the preview fits the real piece. */
+  remoteHeroSizes: Partial<Record<HeroSize, { w: number; h: number }>> | null;
 }) {
   const { c, scheme } = useColorsV2();
   const router = useRouter();
   const { t, script } = useT();
-  const toast = useToast();
   const insets = useSafeAreaInsets();
   const window = useWindowDimensions();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
@@ -255,10 +267,6 @@ function ThemeDetail({
   const activeId = useActiveThemeId();
   const inUse = isThemeInUse(activeId, theme.id);
   const [useBusy, setUseBusy] = useState(false);
-  const usePending = useRef(false);
-  const themeFocus = useRef(0);
-  useFocusEffect(useCallback(() => () => { themeFocus.current++; }, []));
-  const [themeChoiceOpen, setThemeChoiceOpen] = useState(step === 'overview');
   const [useError, setUseError] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>('idle');
   /** T185: this theme's wallpaper was saved to Photos before (badge only; Save again always shows). */
@@ -270,7 +278,7 @@ function ThemeDetail({
   const locked = useLocked(theme.plus);
   const [lockOpen, setLockOpen] = useState(false);
   /** Why the Plus sheet is open: unlocking from Download shouldn't put the theme in use. */
-  const lockFor = useRef<'apply' | 'download' | 'add-wallpaper' | 'use-everything' | ThemeStep>('apply');
+  const lockFor = useRef<'apply' | 'download' | ThemeStep | 'widgets'>('apply');
   const reduced = useMotionReduced();
   // T265: the guided Wallpaper / Icons / Widgets flow that opens after "Use this theme".
   const setup = useThemeSetup(theme.id);
@@ -410,26 +418,13 @@ function ThemeDetail({
    * (Icons tab), the widget theme (Widgets tab + the Home Screen widgets) and the theme in use
    * (wallpaper maker, "In use ✓"). Saving wallpaper and installing icons stay separate screens.
    */
-  const putInUse = async (checkLock = true) => {
-    if (usePending.current) return;
-    if (checkLock && locked) {
-      lockFor.current = 'use-everything';
-      setThemeChoiceOpen(false);
-      setLockOpen(true);
-      return;
-    }
-    usePending.current = true;
-    const focus = themeFocus.current;
-    setThemeChoiceOpen(false);
+  const putInUse = async () => {
+    if (useBusy) return;
     setUseBusy(true);
     setUseError(false);
     try {
-      if (!await onSaveWallpaper()) {
-        toast.show(t('theme.setup.wallpaper.saveError'), 'warning');
-        return;
-      }
       const res = await applyThemeEverywhere(theme);
-      if (!res.icons || !res.widgets) {
+      if (!res.icons) {
         setUseError(true);
         haptic('warning');
         return;
@@ -440,32 +435,22 @@ function ThemeDetail({
       } catch {
         // T264: the celebration is optional; the theme is already applied.
       }
-      if (themeFocus.current === focus) addThemeIcons();
+      setup.openAt('wallpaper'); // T265: straight into the guided setup
     } catch (e) {
       // T264 (owner-1101i #2): an apply that throws shows the calm "couldn't apply" note, never a crash.
       console.warn('[Theme] apply failed', e);
       setUseError(true);
     } finally {
-      usePending.current = false;
       setUseBusy(false);
     }
   };
-  const addThemeIcons = () => {
-    setThemeChoiceOpen(false);
-    router.push({ pathname: '/install', params: { theme: theme.id } });
-  };
-  const onUseTheme = () => setThemeChoiceOpen(true);
-  const onAddWallpaper = (checkLock = true) => {
-    setThemeChoiceOpen(false);
-    if (checkLock && locked) {
-      lockFor.current = 'add-wallpaper';
+  const onUseTheme = () => {
+    if (locked) {
+      lockFor.current = 'apply';
       setLockOpen(true);
       return;
     }
-    void onSaveWallpaper().then(
-      saved => toast.show(t(saved ? 'theme.save.savedBadge' : 'theme.setup.wallpaper.saveError'), saved ? 'success' : 'warning'),
-      () => toast.show(t('theme.setup.wallpaper.saveError'), 'warning'),
-    );
+    putInUse().catch(() => undefined);
   };
 
   /** T265: a "Set it up" row opens the guided flow at that step (a locked theme asks for Plus first). */
@@ -475,14 +460,20 @@ function ThemeDetail({
       setLockOpen(true);
       return;
     }
-    if (part === 'widgets') {
-      openPart('widgets');
-      return;
-    }
     setup.openAt(part);
   };
+  /** T265: "Install all icons" puts this theme's icons in use if needed, then starts the bulk install. */
   const installFromSetup = () => {
-    setup.leaveFor('icons', () => router.push({ pathname: '/install', params: { theme: theme.id, auto: '1' } }));
+    setup.leaveFor('icons', () => {
+      const go = () => router.push({ pathname: '/install', params: { auto: '1' } });
+      if (inUse) {
+        go();
+        return;
+      }
+      applyThemeEverywhere(theme)
+        .catch(() => null)
+        .finally(go);
+    });
   };
 
   /** T185: the three separate entry points, each its own clean screen. */
@@ -492,7 +483,8 @@ function ThemeDetail({
       setLockOpen(true);
       return;
     }
-    // The Widgets step previews this theme without applying it.
+    // T201: Widgets is the theme's own widgets screen (practical, art, then the standard set, which
+    // still opens Widget Studio), not Widget Studio directly.
     router.push({ pathname: '/theme/[id]', params: { id: theme.id, step: part } });
   };
 
@@ -545,14 +537,7 @@ function ThemeDetail({
     // resolved yet is read now; a remote pack whose file is gone reports it (never the drawn fallback).
     // The file is .webp: RN Image.getSize and the offscreen <Image> decode it (iOS 14+, Android), and
     // view-shot captures the cropped view as PNG, so Photos always gets a PNG.
-    let remoteFile = remoteArt && !photo ? (remoteWallpaperUri ?? (await downloadedRemoteWallpaper(remoteArt.id))) : null;
-    if (remoteArt && !photo && !remoteFile && !artPackWallpaperUri(remoteArt.id)) {
-      try {
-        if (await pack.download() === 'ok') remoteFile = await downloadedRemoteWallpaper(remoteArt.id);
-      } catch {
-        // Report the unavailable wallpaper through the existing save result below.
-      }
-    }
+    const remoteFile = remoteArt && !photo ? (remoteWallpaperUri ?? (await downloadedRemoteWallpaper(remoteArt.id))) : null;
     const artPackUri = artPack ? (artPackWallpaperUri(artPack.artPack.id) ?? remoteFile) : null;
     const remoteMissing = !!remoteArt && !photo && !artPackUri;
     const res: { ok: boolean; reason?: string; why?: SaveFailure; message?: string } = remoteMissing
@@ -573,13 +558,13 @@ function ThemeDetail({
       AccessibilityInfo.announceForAccessibility(t('theme.save.savedBadge'));
       void rememberWallpaperSaved(theme.id);
       void tickStoredChecklist(theme.id, 'wallpaper');
-      return true;
+      // T125: saving a theme's wallpaper applies it, so the widgets follow it too.
+      void applyWidgetTheme(theme); // no-op in Expo Go; never throws
     } else {
       const why: SaveFailure = res.why ?? (res.reason === 'denied' ? 'denied' : res.reason === 'unreadable' ? 'unreadable' : 'unknown');
       setSaveWhy({ why, detail: res.message });
       setSaveState(why === 'denied' ? 'denied' : 'error');
       haptic('warning');
-      return false;
     }
   };
 
@@ -591,6 +576,7 @@ function ThemeDetail({
       // The store applies the user's chosen shape for this theme, so it is baked into the exports.
       await applyThemeIcons(theme, averageColour(theme.wallpaper));
       await studio.reload();
+      void applyWidgetTheme(theme); // T125: also remembered for the launch re-write; never throws
       void tickStoredChecklist(theme.id, 'iconStyle');
       requestDeferred(DEFERRED_STEPS.installedProbe, 'apply'); // T229 / T250: queued, chunked; never throws
       // navigate, not push: push would stack a second copy of the tab navigator.
@@ -995,8 +981,15 @@ function ThemeDetail({
           </View>
         ) : null}
 
+        {/* T201 (owner-1101d #4): the Widgets screen, in the shelf order every widgets screen uses
+            (src/core/widgetOptions.ts widgetShelf / WIDGET_SHELF_ORDER): (a) the theme's practical
+            pieces (habits, countdown, calendar, clock, battery… with Make it live), (b) its art
+            pieces (any piece in any size, fitted), then (c) the standard widgets in its palette.
+            The overview keeps only (c) as a teaser; the Widgets card opens this screen. */}
         {step === 'widgets' ? <ThemeWidgetsShelf theme={theme} /> : null}
-        {overview ? (
+        {/* T133: the Seamless widget (wallpaper crop + floating art), art-pack themes only: part of (b). */}
+        {step === 'widgets' && artPack ? <SeamlessCard artPackId={artPack.artPack.id} theme={theme} wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris} remoteHeroSizes={remoteHeroSizes} /> : null}
+        {overview || step === 'widgets' ? (
           <View style={styles.block}>
             <SectionHeader
               eyebrow={t('theme.section.widgets.eyebrow')}
@@ -1085,11 +1078,6 @@ function ThemeDetail({
           onLayout={(e: LayoutChangeEvent) => setBarH(e.nativeEvent.layout.height)}
           onDownload={() => void onDownloadPack()}
           onUnlock={onUnlockRemote}
-          themeAction={!locked && primary.kind !== 'unlock' && !(primary.kind === 'retry' && primary.reason === 'app-version') ? {
-            label: inUse ? t('theme.use.inUse') : t('theme.use.cta'),
-            onPress: onUseTheme,
-            busy: useBusy,
-          } : undefined}
         />
       ) : null}
 
@@ -1098,7 +1086,7 @@ function ThemeDetail({
         setup={setup}
         themeName={theme.name}
         wallpaper={{
-          onSave: async () => { await onSaveWallpaper(); },
+          onSave: onSaveWallpaper,
           saving,
           saved: saveState === 'saved',
           error:
@@ -1111,42 +1099,18 @@ function ThemeDetail({
         onInstallIcons={installFromSetup}
       />
 
-      <Sheet visible={themeChoiceOpen} onClose={() => setThemeChoiceOpen(false)} title={theme.name}>
-        <View style={styles.themeChoices}>
-          <PillButton label={t('theme.use.viewWidgets')} block variant="plain" onPress={() => {
-            setThemeChoiceOpen(false);
-            openPart('widgets', false);
-          }} />
-          <PillButton label={t('theme.use.viewIcons')} block variant="plain" onPress={() => {
-            setThemeChoiceOpen(false);
-            openPart('icons', false);
-          }} />
-          <PillButton label={t('theme.use.addWallpaper')} block variant="tinted" onPress={() => onAddWallpaper()} />
-          <PillButton label={t('theme.use.useEverything')} block onPress={() => void putInUse()} />
-        </View>
-      </Sheet>
-
       <PlusLockSheet
         visible={lockOpen}
         onClose={() => setLockOpen(false)}
         subject={t('theme.lockSubject', { name: theme.name })}
         onUnlocked={() => {
-          setLockOpen(false);
           const why = lockFor.current;
           if (why === 'download') {
             onDownloadPack().catch(() => undefined);
             return;
           }
-          if (why === 'add-wallpaper') {
-            onAddWallpaper(false);
-            return;
-          }
-          if (why === 'use-everything') {
-            void putInUse(false);
-            return;
-          }
           if (why === 'apply' || why === 'overview') {
-            setThemeChoiceOpen(true);
+            putInUse().catch(() => undefined);
             return;
           }
           openPart(why, false);
@@ -1231,6 +1195,12 @@ function WidgetPreviews({ theme, palette }: { theme: Theme; palette: readonly (r
 
 const SHELF_SIZES: readonly HomeOptionSize[] = ['small', 'medium', 'large'];
 
+/**
+ * T201: the theme's practical pieces then its art pieces (ThemeWidgetArt → WidgetArtMenu, ordered by
+ * src/core/widgetOptions.ts widgetShelf), for a Home Screen size picked here. Every piece is offered
+ * in every size, fitted. "Use on my widget" writes the App Group and reloads the widgets (bridge).
+ * Draws nothing for a theme with no widget art (its standard widgets follow below).
+ */
 function ThemeWidgetsShelf({ theme }: { theme: Theme }) {
   const { t } = useT();
   const tl = t as unknown as (key: string) => string;
@@ -1254,6 +1224,235 @@ const WIDGET_PREVIEW_W = 112;
 /** T173 §3.3: width of the wallpaper-save skeleton (height follows the phone aspect). */
 const WALL_SKELETON_W = 72;
 
+type SeamlessStatus = 'idle' | 'busy' | 'saved' | 'unavailable' | 'failed';
+
+/**
+ * T133: the Seamless widget card on an art-pack theme. T168: a downloaded remote pack uses its
+ * local files (wallpaperUri / heroUris); a file that is missing or fails to load falls back to the
+ * theme's drawn gradient (wallpaper) or no hero, via src/core/seamlessSource.ts. A mock Home Screen shows the widget cut from
+ * the wallpaper with the art floating on top; size / spot / nudge pick where it sits, and "Use for
+ * my Glaze widget" writes the image through the widget bridge. Expo Go: the button explains that
+ * the TestFlight app is needed; nothing throws.
+ */
+function SeamlessCard({
+  artPackId,
+  theme,
+  wallpaperUri: remoteWallpaper,
+  heroUris,
+  remoteHeroSizes,
+}: {
+  artPackId: string;
+  theme: Theme;
+  wallpaperUri: string | null;
+  heroUris: Partial<Record<HeroSize, string>> | null;
+  remoteHeroSizes: Partial<Record<HeroSize, { w: number; h: number }>> | null;
+}) {
+  const { c } = useColorsV2();
+  const { t, script } = useT();
+  const window = useWindowDimensions();
+  const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
+  const [size, setSize] = useState<SeamlessSize>('small');
+  const [slot, setSlot] = useState<SeamlessSlot>('top-left');
+  const [nudge, setNudge] = useState<Nudge>({ dx: 0, dy: 0 });
+  const [status, setStatus] = useState<SeamlessStatus>('idle');
+  // T168: sources that failed to load (or were not on the phone) fall back for this visit.
+  const [failed, setFailed] = useState<readonly string[]>([]);
+  const markFailed = useCallback((key: string) => {
+    setFailed((f) => (f.includes(key) ? f : [...f, key]));
+  }, []);
+  const sources = seamlessCardSources({
+    bundledWallpaper: artPackWallpaper(artPackId),
+    wallpaperUri: remoteWallpaper,
+    bundledHero: artPackHero(artPackId, size),
+    heroUri: heroUris?.[size] ?? null,
+    failed,
+  });
+  const wallpaperSrc = sources.wallpaper;
+  const heroSrc = sources.hero;
+  const fallbackWallpaper = useCallback(
+    (w: number, h: number) => <WallpaperView params={theme.wallpaper} width={w} height={h} maxGrain={120} />,
+    [theme.wallpaper],
+  );
+  // T208: a downloaded piece is fitted at its real size (a v2 piece may be square in every size);
+  // a bundled hero is the reference size for its slot.
+  const heroRef = HERO_REFERENCE_SIZES[size];
+  const heroPx = (heroSrc.kind === 'file' ? remoteHeroSizes?.[size] : undefined) ?? { w: heroRef.width, h: heroRef.height };
+  const previewW = Math.max(160, Math.min(240, Math.round(window.width * 0.6)));
+
+  const strings = useMemo<SeamlessControlsStrings>(() => {
+    const moved = (axis: 'x' | 'y', v: number): string | null => {
+      if (v === 0) return null;
+      const n = Math.abs(v);
+      if (axis === 'x') return v > 0 ? t('ui.seamless.moved.right', { n }) : t('ui.seamless.moved.left', { n });
+      return v > 0 ? t('ui.seamless.moved.down', { n }) : t('ui.seamless.moved.up', { n });
+    };
+    return {
+      sizeGroup: t('ui.seamless.sizeGroup'),
+      sizes: { small: t('ui.seamless.sizes.small'), medium: t('ui.seamless.sizes.medium'), large: t('ui.seamless.sizes.large') },
+      slotGroup: t('ui.seamless.slotGroup'),
+      slots: {
+        'top-left': t('ui.seamless.slots.top-left'),
+        'top-right': t('ui.seamless.slots.top-right'),
+        'middle-left': t('ui.seamless.slots.middle-left'),
+        'middle-right': t('ui.seamless.slots.middle-right'),
+        'bottom-left': t('ui.seamless.slots.bottom-left'),
+        'bottom-right': t('ui.seamless.slots.bottom-right'),
+        top: t('ui.seamless.slots.top'),
+        middle: t('ui.seamless.slots.middle'),
+        bottom: t('ui.seamless.slots.bottom'),
+      },
+      stepGroup: t('ui.seamless.stepGroup'),
+      step1: t('ui.seamless.step1'),
+      step5: t('ui.seamless.step5'),
+      nudgeA11y: (dir, step) =>
+        dir === 'up'
+          ? t('ui.seamless.nudge.up', { n: step })
+          : dir === 'down'
+            ? t('ui.seamless.nudge.down', { n: step })
+            : dir === 'left'
+              ? t('ui.seamless.nudge.left', { n: step })
+              : t('ui.seamless.nudge.right', { n: step }),
+      reset: t('ui.seamless.reset'),
+      readout: (n) => {
+        const parts = [moved('x', n.dx), moved('y', n.dy)].filter((p): p is string => p !== null);
+        if (parts.length === 0) return t('ui.seamless.readoutNone');
+        if (parts.length === 1) return t('ui.seamless.readoutOne', { a: parts[0] });
+        return t('ui.seamless.readoutTwo', { a: parts[0], b: parts[1] });
+      },
+    };
+  }, [t]);
+
+  if (!sources.show) return null;
+
+  /** Resolve local files for the wallpaper and hero, crop for this phone, hand them to the bridge. */
+  const onUse = async () => {
+    if (status === 'busy') return;
+    setStatus('busy');
+    haptic('select');
+    let next: SeamlessStatus = 'failed';
+    try {
+      const avail = await widgets.isAvailable();
+      if (!avail.available) {
+        next = 'unavailable';
+      } else {
+        const wallpaperUri =
+          wallpaperSrc.kind === 'bundled'
+            ? await localAssetUri(wallpaperSrc.module, `${artPackId}-wallpaper.png`)
+            : wallpaperSrc.kind === 'file'
+              ? await existingLocalFile(wallpaperSrc.uri)
+              : null;
+        const heroUri =
+          heroSrc.kind === 'bundled'
+            ? await localAssetUri(heroSrc.module, `${artPackId}-${size}.png`)
+            : heroSrc.kind === 'file'
+              ? await existingLocalFile(heroSrc.uri)
+              : null;
+        // A downloaded file that is gone falls back in the preview too.
+        if (wallpaperSrc.kind === 'file' && !wallpaperUri) markFailed(seamlessSourceKey(wallpaperSrc));
+        if (heroSrc.kind === 'file' && !heroUri) markFailed(seamlessSourceKey(heroSrc));
+        if (wallpaperUri) {
+          const crop = seamlessCrop({
+            device: seamlessDeviceHere(),
+            wallpaper: { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height },
+            size,
+            slot,
+            nudge,
+          });
+          const res = await widgets.setSeamless({ wallpaperUri, cropPx: crop.cropPx, heroUri, size });
+          next = !res.available ? 'unavailable' : res.ok ? 'saved' : 'failed';
+        }
+      }
+    } catch {
+      next = 'failed';
+    }
+    setStatus(next);
+    haptic(next === 'saved' ? 'success' : 'warning');
+    const line =
+      next === 'saved' ? t('ui.seamless.saved') : next === 'unavailable' ? t('ui.seamless.notAvailable') : t('ui.seamless.failed');
+    AccessibilityInfo.announceForAccessibility(line);
+  };
+
+  const statusLine =
+    status === 'saved'
+      ? t('ui.seamless.saved')
+      : status === 'unavailable'
+        ? t('ui.seamless.notAvailable')
+        : status === 'failed'
+          ? t('ui.seamless.failed')
+          : null;
+  const how = [t('ui.seamless.how1'), t('ui.seamless.how2'), t('ui.seamless.how3')];
+
+  return (
+    <SquircleCard style={styles.side}>
+      <View style={styles.stack}>
+        <Text maxFontSizeMultiplier={fontScaleCap('title3')} accessibilityRole="header" style={[...ts('title3'), { color: c.ink }]}>
+          {t('ui.seamless.title')}
+        </Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>{t('ui.seamless.body')}</Text>
+        <SeamlessWidgetPreview
+          wallpaper={seamlessImageSource(wallpaperSrc)}
+          fallbackWallpaper={fallbackWallpaper}
+          onWallpaperError={() => markFailed(seamlessSourceKey(wallpaperSrc))}
+          onHeroError={() => markFailed(seamlessSourceKey(heroSrc))}
+          wallpaperPx={{ w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height }}
+          hero={seamlessImageSource(heroSrc)}
+          heroPx={heroPx}
+          size={size}
+          slot={slot}
+          nudge={nudge}
+          width={previewW}
+          outline
+          accessibilityLabel={t('ui.seamless.previewA11y', { size: strings.sizes[size], slot: strings.slots[slot] })}
+          style={styles.seamlessPreview}
+        />
+        <SeamlessWidgetControls
+          size={size}
+          slot={slot}
+          nudge={nudge}
+          onSizeChange={(s) => {
+            setSize(s);
+            setStatus('idle');
+          }}
+          onSlotChange={(s) => {
+            setSlot(s);
+            setStatus('idle');
+          }}
+          onNudgeChange={(n) => {
+            setNudge(n);
+            setStatus('idle');
+          }}
+          strings={strings}
+        />
+        <PillButton
+          label={status === 'busy' ? t('ui.seamless.saving') : t('ui.seamless.use')}
+          icon="layers"
+          block
+          busy={status === 'busy'}
+          disabled={!sources.canWrite}
+          onPress={onUse}
+          accessibilityHint={t('ui.seamless.useHint')}
+        />
+        {statusLine ? (
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityLiveRegion="polite" style={[...ts('footnote'), { color: status === 'saved' ? c.ok : status === 'failed' ? c.warn : c.inkSecondary }]}>
+            {statusLine}
+          </Text>
+        ) : null}
+        <Text maxFontSizeMultiplier={fontScaleCap('headline')} accessibilityRole="header" style={[...ts('headline'), { color: c.ink }]}>
+          {t('ui.seamless.howTitle')}
+        </Text>
+        <View style={styles.gap}>
+          {how.map((line, i) => (
+            <View key={i} style={styles.howRow}>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.howNum, { color: c.inkSecondary }]}>{i + 1}.</Text>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.flex, { color: c.inkSecondary }]}>{line}</Text>
+            </View>
+          ))}
+        </View>
+      </View>
+    </SquircleCard>
+  );
+}
+
 /**
  * T179: the glass bar of a remote theme that is not on the phone yet. One primary pill: Download
  * with the size; while downloading a determinate bar (capped at 99 % until verified); offline, a
@@ -1268,7 +1467,6 @@ function RemoteDownloadBar({
   onLayout,
   onDownload,
   onUnlock,
-  themeAction,
 }: {
   primary: RemotePrimary;
   name: string;
@@ -1278,7 +1476,6 @@ function RemoteDownloadBar({
   onLayout: (e: LayoutChangeEvent) => void;
   onDownload: () => void;
   onUnlock: () => void;
-  themeAction?: { label: string; onPress: () => void; busy: boolean };
 }) {
   const { t, locale } = useT();
   const note = (text: string, live = false) => <BarNote text={text} live={live} />; // i18n-ignore (code after a JSX element)
@@ -1320,10 +1517,6 @@ function RemoteDownloadBar({
             <PillButton label={t('theme.remote.unlock')} icon="lock" block onPress={onUnlock} accessibilityHint={t('theme.applyHintLocked')} />
             {note(t('theme.pack.locked'))}
           </>
-        ) : null}
-        {themeAction ? (
-          <PillButton label={themeAction.label} variant="tinted" block busy={themeAction.busy}
-            onPress={themeAction.onPress} accessibilityHint={t('theme.use.hint')} />
         ) : null}
       </View>
     </GlassBar>
@@ -1559,7 +1752,6 @@ const styles = StyleSheet.create({
   content: { gap: spaceV2.lg },
   missing: { flex: 1, padding: spaceV2.inset, gap: spaceV2.md, justifyContent: 'center' },
   side: { marginHorizontal: spaceV2.lg },
-  themeChoices: { gap: spaceV2.sm },
   shelf: { gap: spaceV2.lg, paddingTop: spaceV2.lg },
   headWrap: {
     paddingHorizontal: spaceV2.inset,
@@ -1602,6 +1794,9 @@ const styles = StyleSheet.create({
   packHead: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
   widgetRow: { gap: spaceV2.md, paddingVertical: spaceV2.xs },
   widgetItem: { width: WIDGET_PREVIEW_W, gap: spaceV2.xs, minHeight: sizeV2.touch },
+  seamlessPreview: { alignSelf: 'center' },
+  howRow: { flexDirection: 'row', gap: spaceV2.sm },
+  howNum: { minWidth: 16 },
   bar: { position: 'absolute', start: 0, end: 0, bottom: 0 },
   barInner: { paddingHorizontal: spaceV2.inset, paddingTop: spaceV2.md, gap: spaceV2.xs },
   barNote: { textAlign: 'center' },

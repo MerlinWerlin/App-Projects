@@ -53,7 +53,7 @@
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "심리스";
-"Artwork from your current Glaze theme." = "현재 Glaze 테마의 아트입니다.";
+"Your Glaze art. Long-press and choose Edit Widget to pick a piece." = "Glaze 아트. 길게 누른 뒤 위젯 편집을 눌러 작품을 고르세요.";
 "Set up in Glaze" = "Glaze에서 설정";
 
 /* My widget art picker (WidgetArtLibrary.swift, T221) */

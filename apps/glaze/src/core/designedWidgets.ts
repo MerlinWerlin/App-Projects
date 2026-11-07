@@ -6,7 +6,6 @@ import { iconStyleForLook, type LookTheme } from './iconLook.ts';
 import type { LiveArtSpec } from './liveArt.ts';
 import { LEGACY_FALLBACK_CLOCK_ID, type HomeOptionSize, type WidgetOption } from './widgetOptions.ts';
 import { identityForTheme, parseWidgetIdentity, type WidgetIdentity } from './widgetIdentity.ts';
-import { packClockFace, type PackClockFace } from './packClockFace.ts';
 
 export const DESIGNED_WIDGET_VERSION = 1;
 export const DESIGNED_WIDGET_CAPABILITY = 6;
@@ -28,14 +27,11 @@ export type DesignedWidget = {
   clock: 'dial' | 'digital' | 'split';
   battery: 'ring' | 'cells' | 'meter';
   identity?: WidgetIdentity;
-  packFace?: PackClockFace;
 };
 
 export function withWidgetIdentity(id: string, design: DesignedWidget): DesignedWidget {
   const identity = identityForTheme(id);
-  if (!identity) return design;
-  const packFace = design.kind === 'clock' ? packClockFace(id, relativeLuminance(design.background[0]) >= 0.4) : undefined;
-  return { ...design, identity, clock: 'dial', ...(packFace ? { packFace } : {}) };
+  return identity ? { ...design, identity, clock: 'dial' } : design;
 }
 
 // Art direction belongs to the theme, rather than arbitrary random styles. A future theme still
@@ -98,15 +94,12 @@ export function parseDesignedWidget(raw: unknown): DesignedWidget | null {
   }
   if (!DESIGN_MOTIFS.includes(r.motif as DesignMotif) || !['rounded', 'serif', 'mono'].includes(String(r.font)) || !['dial', 'digital', 'split'].includes(String(r.clock)) || !['ring', 'cells', 'meter'].includes(String(r.battery))) return null;
   const identity = parseWidgetIdentity(r.identity);
-  const packFace = r.kind === 'clock' && identity && r.packFace && typeof r.packFace === 'object' && 'id' in r.packFace &&
-    'darkInk' in r.packFace && typeof r.packFace.darkInk === 'boolean' ? packClockFace(r.packFace.id, r.packFace.darkInk) : undefined;
   return {
     v: 1, kind: r.kind as DesignedKind, background: (r.background as string[]).map(normalizeHex) as [string, string],
     ink: normalizeHex(r.ink as string), secondary: normalizeHex(r.secondary as string), accent: normalizeHex(r.accent as string),
     onAccent: normalizeHex(r.onAccent as string), line: normalizeHex(r.line as string), motif: r.motif as DesignMotif,
     font: r.font as DesignedWidget['font'], clock: r.clock as DesignedWidget['clock'], battery: r.battery as DesignedWidget['battery'],
     ...(identity ? { identity } : {}),
-    ...(packFace ? { packFace } : {}),
   };
 }
 

@@ -63,8 +63,19 @@ test('every locale has the family headers and the Studio preview eyebrow', () =>
   }
 });
 
-test('widget previews and studio use calm motion and avoid spinners', () => {
-  for (const f of [['src', 'ui', 'DesignedThemeWidgets.tsx'], ['app', 'widget-studio.tsx']]) {
+test('Widgets tab: editorial family headers, 16-pt rhythm, skeleton waits, lifted cards, no spinners', () => {
+  const tab = strip(read('app', '(tabs)', 'widgets.tsx'));
+  assert.match(tab, /<SectionHeader\b/);
+  assert.match(tab, /widgetFamilyKeys\(family\)/);
+  assert.match(tab, /const GAP = editorialV2\.cardGap;/);
+  assert.match(tab, /<Skeleton\b/);
+  assert.match(tab, /const sampling = wallpaper\.probe !== null;/);
+  assert.match(tab, /outline=\{false\}/);
+  assert.match(tab, /tone=\{scheme === 'dark' \? 'raised' : 'surface'\}/);
+  // T166's ~16 pt spacer above the first grid row stays; the first section header is flush under it.
+  assert.match(tab, /gridTop: \{ height: spaceV2\.lg \}/);
+  assert.match(tab, /flushTop=\{firstSection\}/);
+  for (const f of [['app', '(tabs)', 'widgets.tsx'], ['app', 'widget-studio.tsx']]) {
     const src = strip(read(...f));
     assert.doesNotMatch(src, /ActivityIndicator/, f.join('/'));
     assert.doesNotMatch(src, /\bwithSpring\b|\.springify\(|\bBounceIn\b/, f.join('/'));
@@ -82,10 +93,10 @@ test('Widget Studio: preview on a raised surface without a hairline, eyebrow hea
 });
 
 test('every Text and TextInput on the Widgets tab and in Widget Studio carries a Dynamic Type cap', () => {
-  for (const f of [['src', 'ui', 'DesignedThemeWidgets.tsx'], ['app', 'widget-studio.tsx']]) {
+  for (const f of [['app', '(tabs)', 'widgets.tsx'], ['app', 'widget-studio.tsx']]) {
     const src = strip(read(...f));
     const tags = [...src.matchAll(/<(Text|TextInput)\b[\s\S]*?(?=\/?>)/g)].map((m) => m[0]);
-    assert.ok(tags.length > 0, f.join('/'));
+    assert.ok(tags.length > 5, f.join('/'));
     const uncapped = tags.filter((t) => !/maxFontSizeMultiplier=/.test(t.slice(0, 200)));
     assert.deepEqual(uncapped, [], `${f.join('/')}: Text without maxFontSizeMultiplier`);
   }

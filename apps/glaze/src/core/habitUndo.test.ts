@@ -53,3 +53,11 @@ test('T94: store and local undo write the lowered value; nothing to undo writes 
   const local = logHabitUndoLocal(raw, {}, 'water', NOW, OFF);
   assert.equal(val(local.habits, 'water'), 150);
 });
+
+test('T94: the Widgets tab log button undoes on long-press and offers a decrement action', async () => {
+  const { readFileSync } = await import('node:fs');
+  const src = readFileSync(new URL('../../app/(tabs)/widgets.tsx', import.meta.url), 'utf8');
+  assert.match(src, /onLongPress=\{\(\) => undoHabit\(k\)\}/);
+  assert.match(src, /name: 'decrement'/);
+  assert.match(src, /tabs\.widgetsTab\.log\.undoHint/);
+});

@@ -17,8 +17,6 @@
 // (src/core/packUpdates.ts). The index records each pack's packVersion (older entries back-filled).
 // Only files under documentDirectory/packs/<id>/ are replaced: widget art and wallpapers already
 // applied were copied into the App Group / Photos, so they keep working.
-import { localWidgetArtOptions, remoteWidgetArtOptions, resolveRemoteWidgetArtRef, type LocalWidgetOption } from '../core/remoteWidgetArt';
-import { isRemoteArtTheme } from '../core/remoteCatalog';
 import Constants from 'expo-constants';
 import { Dimensions, PixelRatio, Platform } from 'react-native';
 import { buildFrom } from '../core/feedback';
@@ -28,24 +26,18 @@ import { isMotifId } from '../core/artwork';
 import {
   PackError,
   downloadPack,
-  downloadClockCompanion,
-  downloadRemoteWidgetArt,
   downloadRemoteArtPack,
   fetchCatalogConditional,
   loadPackContent,
   loadRemoteArtQuick,
-  packRequest,
   packsEnabled,
   readLocalRemoteArt,
   remoteArtCacheEntry,
   removePack,
   resolvePackBaseUrl,
-  type ConditionalResponse,
   type Transport,
 } from '../core/packDownloader';
 import type { Catalog, RemoteArtManifest } from '../core/packCatalog';
-import { CLOCK_COMPANION_FOLDER, packClockFace, packClockFaceAsset } from '../core/packClockFace';
-import { widgets } from './widgets';
 import {
   CATALOG_CACHE_FILE,
   catalogCacheStamp,
@@ -125,8 +117,8 @@ function finalUrlOk(requested: string, final: unknown): boolean {
 }
 
 export const deviceTransport: Transport = {
-  async fetchRange(url, start, signal) {
-    const res = await fetch(url, { signal, headers: start > 0 ? { Range: `bytes=${start}-` } : undefined });
+  async fetchRange(url, start) {
+    const res = await fetch(url, start > 0 ? { headers: { Range: `bytes=${start}-` } } : undefined);
     if (res.status !== 200 && res.status !== 206) throw new Error(`HTTP ${res.status}`);
     if (!finalUrlOk(url, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
     const bytes = new Uint8Array(await res.arrayBuffer());
@@ -153,22 +145,20 @@ export const deviceTransport: Transport = {
   },
   // T254: catalog.json with If-None-Match, so an unchanged catalogue answers 304 with no body.
   async fetchConditional(url, etag, limit) {
-    return packRequest<ConditionalResponse>(async signal => {
-      const requestUrl = catalogRequestUrl(url, Date.now());
-      const res = await fetch(requestUrl, { signal, headers: etag ? { 'If-None-Match': etag } : undefined });
-      if (res.status === 304) return { status: 304 };
-      if (res.status !== 200) throw new Error(`HTTP ${res.status}`);
-      if (!finalUrlOk(requestUrl, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
-      const text = await res.text();
-      if (text.length > limit) throw new Error('response too large');
-      let tag: string | null = null;
-      try {
-        tag = res.headers?.get?.('etag') ?? null;
-      } catch {
-        tag = null;
-      }
-      return { status: 200, text, etag: tag };
-    });
+    const requestUrl = catalogRequestUrl(url, Date.now());
+    const res = await fetch(requestUrl, etag ? { headers: { 'If-None-Match': etag } } : undefined);
+    if (res.status === 304) return { status: 304 };
+    if (res.status !== 200) throw new Error(`HTTP ${res.status}`);
+    if (!finalUrlOk(requestUrl, (res as { url?: unknown }).url)) throw new Error('redirected off HTTPS');
+    const text = await res.text();
+    if (text.length > limit) throw new Error('response too large');
+    let tag: string | null = null;
+    try {
+      tag = res.headers?.get?.('etag') ?? null;
+    } catch {
+      tag = null;
+    }
+    return { status: 200, text, etag: tag };
   },
   // T222: swaps a staged pack update in (a folder rename inside documentDirectory/packs/).
   async move(from, to) {
@@ -413,12 +403,6 @@ export async function removePackFromDevice(packId: string): Promise<void> {
   unregisterPackMotifs(packId);
   try {
     await removePack(deviceTransport, packId);
-    if (packClockFace(packId, false)) {
-      await clockFaceJobs.get(packId);
-      clockFaceUris.delete(packId);
-      await deviceTransport.remove(`${CLOCK_COMPANION_FOLDER}/${packId}`);
-      await widgets.setPackClockFace(packId, null);
-    }
   } finally {
     await saveIndex(cacheIndexRemove(state.index, packId));
   }
@@ -590,116 +574,6 @@ export function remoteArtFileUri(id: string, path: string | null | undefined): s
   return ROOT && path ? `${ROOT}${id}/${path}` : null;
 }
 
-export type RemoteWidgetArtLocal = {
-  options: LocalWidgetOption[];
-  missing: number;
-  lastError: string | null;
-  expectedOptions: ReturnType<typeof remoteWidgetArtOptions>;
-};
-
-type WidgetArtJob = { controller: AbortController; promise: Promise<RemoteWidgetArtLocal>; users: number };
-const widgetArtJobs = new Map<string, WidgetArtJob>();
-
-function installedWidgetArt(manifest: RemoteArtManifest): RemoteWidgetArtLocal {
-  const expectedOptions = remoteWidgetArtOptions(manifest);
-  const options = localWidgetArtOptions(expectedOptions, path => remoteArtFileUri(manifest.id, path));
-  return { options, expectedOptions, missing: 0, lastError: null };
-}
-
-/** Installed packs are a cache hit. Other themes fetch just the artwork referenced by the manifest. */
-export async function remoteWidgetArtOnDevice(theme: Theme, signal?: AbortSignal): Promise<RemoteWidgetArtLocal> {
-  if (!ROOT || !PACKS_ENABLED || !isRemoteArtTheme(theme)) {
-    return { options: [], expectedOptions: [], missing: 0, lastError: null };
-  }
-  const ref = await resolveRemoteWidgetArtRef(
-    () => catalogPack(theme.id),
-    { id: theme.id, ...theme.remoteArt },
-    () => packRequest(() => refreshCatalog(false), signal, 15_000),
-    /\/glaze-packs-v\d+\/?$/.test(PACK_BASE),
-  );
-  const installed = await packRequest(() => remoteArtOnDevice(theme.id), signal);
-  if (installed && installed.packVersion >= (ref?.packVersion ?? theme.remoteArt.packVersion)) {
-    return installedWidgetArt(installed);
-  }
-  if (!ref) throw new PackError('manifest', `Widget art release unavailable for ${theme.id}`);
-
-  // One writer per pack cache. A preview and the active theme can share its verified downloads.
-  const key = ref.id + ':' + ref.packVersion;
-  let job = widgetArtJobs.get(key);
-  if (job?.controller.signal.aborted) {
-    const stopping = job;
-    await packRequest(() => stopping.promise.catch(() => undefined), signal);
-    job = widgetArtJobs.get(key);
-  }
-  if (!job) {
-    const controller = new AbortController();
-    const promise = (async () => {
-      const timeout = setTimeout(() => controller.abort(), 60_000);
-      try {
-        const art = await downloadRemoteWidgetArt(deviceTransport, PACK_BASE, ref, controller.signal);
-        const expectedOptions = remoteWidgetArtOptions(art.manifest);
-        const options = localWidgetArtOptions(expectedOptions, path => {
-          const file = art.files.get(path);
-          return file ? uri(file) : null;
-        });
-        return { options, expectedOptions, missing: art.missing, lastError: art.lastError };
-      } catch (error) {
-        if (controller.signal.aborted && widgetArtJobs.get(key)?.users) {
-          throw new PackError('network', `Widget art timed out for ${ref.id}`);
-        }
-        throw error;
-      } finally {
-        clearTimeout(timeout);
-        widgetArtJobs.delete(key);
-      }
-    })();
-    job = { controller, promise, users: 0 };
-    widgetArtJobs.set(key, job);
-  }
-  job.users++;
-  try {
-    return await packRequest(() => job.promise, signal, 65_000);
-  } finally {
-    job.users--;
-    if (job.users === 0) job.controller.abort();
-  }
-}
-
-export function packClockArtworkUri(id: string, manifest = state.remoteArt[id]): string | null {
-  return clockFaceUris.get(id) ?? (packClockFace(id, false) ? remoteArtFileUri(id, packClockFaceAsset(manifest?.assets)?.path) : null);
-}
-
-const clockFaceUris = new Map<string, string>();
-const clockFaceJobs = new Map<string, Promise<void>>();
-const clockFaceRetry = new Map<string, number>();
-
-/** A verified standalone face works with an old theme pack, a bundled theme or an offline cache. */
-export function syncPackClockFace(id: string, manifest?: RemoteArtManifest): Promise<void> {
-  if (!ROOT || !PACKS_ENABLED || !packClockFace(id, false) || clockFaceUris.has(id)) return Promise.resolve();
-  const pending = clockFaceJobs.get(id);
-  if (pending) return pending;
-  const local = packClockArtworkUri(id, manifest);
-  if (!local && (clockFaceRetry.get(id) ?? 0) > Date.now()) return Promise.resolve();
-  const task = (async () => {
-    try {
-      const path = local ? null : await downloadClockCompanion(deviceTransport, PACK_BASE, id);
-      const face = local ?? (path ? uri(path) : null);
-      if (!face) return;
-      const result = await widgets.setPackClockFace(id, face);
-      if (result.available && !result.ok) return;
-      clockFaceUris.set(id, face);
-      set({});
-    } catch {
-      // An unavailable face uses the vector clock and can retry when next applied or opened.
-      clockFaceRetry.set(id, Date.now() + 60_000);
-    } finally {
-      clockFaceJobs.delete(id);
-    }
-  })();
-  clockFaceJobs.set(id, task);
-  return task;
-}
-
 /** Read-once cache of verified downloaded remote art packs. */
 const remoteCache = new Map<string, Promise<RemoteArtManifest | null>>();
 
@@ -716,10 +590,7 @@ export function remoteArtOnDevice(id: string): Promise<RemoteArtManifest | null>
       // T250: exists + exact size per file (no base64 read + SHA-256 in JS of every multi-MB file on
       // first read after launch: the freeze after a theme swap). Hashes were checked at download.
       const m = await loadRemoteArtQuick(deviceTransport, id);
-      if (m) {
-        set({ remoteArt: { ...state.remoteArt, [id]: m } });
-        if (!packClockFaceAsset(m.assets)) void syncPackClockFace(id, m);
-      }
+      if (m) set({ remoteArt: { ...state.remoteArt, [id]: m } });
       else {
         remoteCache.delete(id);
         if (state.index.packs.some((x) => x.id === id)) await saveIndex(cacheIndexRemove(state.index, id));
@@ -760,7 +631,6 @@ export async function downloadRemoteArtToDevice(id: string): Promise<string | nu
       screenLongEdgePx: screenLongEdgePx(),
       onProgress: (p) => set({ busy: { ...state.busy, [id]: p.totalBytes ? p.doneBytes / p.totalBytes : 0 } }),
     });
-    void syncPackClockFace(id, r.manifest);
     // Everything derived from the old manifest (widget art list, hero files, wallpaper URI,
     // credits) re-derives from this new object: useRemoteArtTheme memoises on it.
     remoteCache.set(id, Promise.resolve(r.manifest));

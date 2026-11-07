@@ -20,7 +20,7 @@ import type { WidgetOption, HomeOptionSize } from './widgetOptions.ts';
 import { shelfOptions } from './widgetOptions.ts';
 import {
   WIDGET_ART_LIBRARY_CAP,
-  unpinnedPlan,
+  followTheme,
   isUserPiece,
   listPieces,
   pieceFileName,
@@ -53,7 +53,6 @@ export type PlanInput = {
   /** T237: the live spec for a piece, or null (a picture only). */
   live?: (option: WidgetOption, size: HomeOptionSize) => WidgetArtPiece['live'] | null;
   cap?: number;
-  includeFittedSizes?: boolean;
 };
 
 /**
@@ -68,7 +67,7 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
   for (const size of THEME_ART_SIZES) {
     let slot = 0;
     for (const option of shelfOptions(input.options, size)) {
-      if (!input.includeFittedSizes && !option.sizes.includes(size)) continue;
+      if (!option.sizes.includes(size)) continue;
       const id = themePieceId(input.themeId, option.id, size);
       if (seen.has(id)) continue;
       seen.add(id);
@@ -83,7 +82,6 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
         size,
         slot,
         optionId: option.id,
-        pictureId: themePieceId(input.themeId, option.id, 'small'),
         ...(live ? { live } : {}),
       });
       slot++;
@@ -98,11 +96,8 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
 
 /** The planned pieces that still need an image (not in the index yet), in plan order. */
 export function piecesToCompose(lib: WidgetArtIndex, planned: readonly PlannedThemePiece[]): PlannedThemePiece[] {
-  const have = new Map(lib.pieces.map(piece => [piece.id, piece]));
-  return planned.filter(piece => {
-    const previous = have.get(piece.id);
-    return !previous || previous.artRevision !== piece.artRevision;
-  });
+  const have = new Set(lib.pieces.map((p) => p.id));
+  return planned.filter((p) => !have.has(p.id));
 }
 
 /**
@@ -127,10 +122,7 @@ export function commitThemeArt(
   const kept: WidgetArtPiece[] = [];
   planned.forEach((p, i) => {
     const prev = byId.get(p.id);
-    if (!readySet.has(p.id)) {
-      if (!prev) return; // New piece with no verified image yet.
-      if (prev.artRevision !== p.artRevision) { kept.push(prev); return; }
-    }
+    if (!prev && !readySet.has(p.id)) return; // its image could not be made: left out (file pruned)
     const { optionId: _optionId, ...rest } = p;
     kept.push({ ...rest, file: pieceFileName(p.id), created: prev ? prev.created : now - i });
   });
@@ -138,11 +130,8 @@ export function commitThemeArt(
   const gone: WidgetArtPiece[] = [];
   for (const p of lib.pieces) {
     if (plannedIds.has(p.id)) continue;
-    if (isUserPiece(p)) others.push(p);
-    else if (p.themeId === theme) {
-      // Keep old configured ids but remove superseded catalogue editions from new choices.
-      others.push(p.artRevision ? { ...p, hiddenFromPicker: true } : p);
-    } else gone.push(p);
+    if (isUserPiece(p) || p.themeId === theme) others.push(p);
+    else gone.push(p);
   }
   const pieces = listPieces({ v: 1, pieces: [...kept, ...others] });
   const next: WidgetArtIndex = { ...lib, v: 1, pieces, currentThemeId: theme };
@@ -150,6 +139,5 @@ export function commitThemeArt(
   if (retired) next.retired = retired;
   else delete next.retired;
   // T259: a swap makes widgets with no chosen piece follow the new theme (`unpinned`, per size).
-  next.unpinned = unpinnedPlan(next);
-  return { lib: next, keep: pieces.map((p) => p.id), remove: gone.map((p) => p.id) };
+  return { lib: followTheme(lib, next), keep: pieces.map((p) => p.id), remove: gone.map((p) => p.id) };
 }
