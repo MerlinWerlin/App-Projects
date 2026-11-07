@@ -68,6 +68,10 @@ import Vision
   }
 
   private func openAlpine() throws -> XCUIApplication {
+    try openTheme(searchText: "Alpine", name: "Alpine Starlight")
+  }
+
+  private func openTheme(searchText: String, name: String) throws -> XCUIApplication {
     let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
     app.launch()
@@ -77,12 +81,12 @@ import Vision
     XCTAssertTrue(search.waitForExistence(timeout: 30), app.debugDescription)
     search.tap()
     // Give React Native's controlled field time to echo each simulator key event.
-    for letter in "Alpine" {
+    for letter in searchText {
       search.typeText(String(letter))
       RunLoop.current.run(until: Date().addingTimeInterval(0.18))
     }
-    XCTAssertEqual(search.value as? String, "Alpine")
-    let result = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Alpine Starlight")).firstMatch
+    XCTAssertEqual(search.value as? String, searchText)
+    let result = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", name)).firstMatch
     XCTAssertTrue(result.waitForExistence(timeout: 25), app.debugDescription)
     result.tap()
     if app.buttons["Use everything"].firstMatch.waitForExistence(timeout: 3) { return app }
@@ -208,6 +212,12 @@ import Vision
   func testApplyAlpineForUpgrade() throws {
     continueAfterFailure = false
     let app = try openAlpine()
+    try applyDisplayedTheme(app)
+    capture("upgrade-alpine-applied")
+    print("GLAZE_UPGRADE_ALPINE_APPLIED"); fflush(stdout)
+  }
+
+  private func applyDisplayedTheme(_ app: XCUIApplication) throws {
     let spring = makeSpringboard()
     let everything = app.buttons["Use everything"].firstMatch
     if everything.exists { everything.tap() }
@@ -215,6 +225,8 @@ import Vision
       let use = app.buttons.matching(NSPredicate(format: "label == %@ OR label BEGINSWITH %@", "Use this theme", "In use")).firstMatch
       XCTAssertTrue(use.waitForExistence(timeout: 12), app.debugDescription)
       use.tap()
+      let all = app.buttons["Use everything"].firstMatch
+      if all.waitForExistence(timeout: 1) { all.tap() }
     }
     for _ in 0..<8 {
       for alert in [app.alerts.firstMatch, spring.alerts.firstMatch] where alert.exists {
@@ -225,8 +237,117 @@ import Vision
     }
     let close = app.buttons["Close"].firstMatch
     if close.exists && close.isHittable { close.tap() }
-    capture("upgrade-alpine-applied")
-    print("GLAZE_UPGRADE_ALPINE_APPLIED"); fflush(stdout)
+  }
+
+  private func verifyThemeDiagnostics(_ id: String) throws {
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    app.activate()
+    let settings = app.buttons["Settings"].firstMatch
+    XCTAssertTrue(settings.waitForExistence(timeout: 12), app.debugDescription); settings.tap()
+    let line = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", "Widget diagnostics,")).firstMatch
+    reveal(line, in: app)
+    let deadline = Date().addingTimeInterval(100)
+    repeat {
+      let value = line.label
+      if value.contains("Active " + id) && value.contains("Shared " + id) && value.contains("Widget read " + id)
+        && value.contains("Art [" + id + "]") && value.contains("Failed 0") {
+        capture("swap-diagnostics-" + id)
+        print("GLAZE_SWAP_NATIVE_DIAGNOSTICS " + value); fflush(stdout)
+        return
+      }
+      RunLoop.current.run(until: Date().addingTimeInterval(2))
+    } while Date() < deadline
+    XCTFail("Theme selection, WidgetKit and art did not converge on " + id + ": " + line.label)
+  }
+
+  // A fixed Home Screen layout gives each installed native widget a stable page/frame key.
+  // The three static native widgets lack Edit Widget; the retained Seamless art widgets have it.
+  private func nativeHomeSamples(_ name: String, remove: Bool = false) throws -> [String: [Double]] {
+    XCUIDevice.shared.press(.home)
+    let spring = makeSpringboard()
+    for _ in 0..<8 { spring.swipeRight(); RunLoop.current.run(until: Date().addingTimeInterval(0.2)) }
+    var samples: [String: [Double]] = [:]
+    var removed = 0
+    for page in 0..<8 {
+      let candidates = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze")).allElementsBoundByIndex.filter {
+        $0.exists && $0.isHittable && $0.frame.width > 110 && $0.frame.width < 220
+      }
+      for widget in candidates where widget.exists && widget.isHittable {
+        let frame = widget.frame
+        widget.press(forDuration: 1.3)
+        RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+        let visible = try screenText()
+        let editable = spring.buttons["Edit Widget"].firstMatch.exists || visible.contains("Edit Widget")
+        if !editable && remove {
+          let button = spring.buttons["Remove Widget"].firstMatch
+          XCTAssertTrue(button.exists, spring.debugDescription); button.tap()
+          let confirm = spring.alerts.buttons["Remove"].firstMatch
+          if confirm.waitForExistence(timeout: 3) { confirm.tap() }
+          removed += 1
+          RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+          continue
+        }
+        spring.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.84)).tap()
+        RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+        if editable { continue }
+        let key = "\(page)-\(Int(frame.minX.rounded()))-\(Int(frame.minY.rounded()))"
+        if let image = XCUIScreen.main.screenshot().image.cgImage {
+          let scale = CGFloat(image.width) / spring.frame.width
+          let inset = frame.insetBy(dx: 12, dy: 12)
+          if let crop = image.cropping(to: CGRect(x: inset.minX * scale, y: inset.minY * scale, width: inset.width * scale, height: inset.height * scale)),
+            let context = CGContext(data: nil, width: 20, height: 20, bitsPerComponent: 8, bytesPerRow: 80,
+              space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue) {
+            context.draw(crop, in: CGRect(x: 0, y: 0, width: 20, height: 20))
+            let bytes = context.data!.assumingMemoryBound(to: UInt8.self)
+            samples[key] = (0..<400).flatMap { pixel in (0..<3).map { Double(bytes[pixel * 4 + $0]) / 255 } }
+          }
+        }
+      }
+      capture("swap-" + name + "-home-page-\(page)")
+      spring.swipeLeft()
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    if remove { XCTAssertEqual(removed, 3, "Remove only the three native widgets installed for this test") }
+    else { XCTAssertEqual(samples.count, 3, "Find all three separately installed native Clock/Battery/Calendar widgets") }
+    return samples
+  }
+
+  func testThemeSwapAfterRecoveredUpgrade() throws {
+    continueAfterFailure = false
+    try applyDisplayedTheme(try openAlpine())
+    let spring = makeSpringboard()
+    XCUIDevice.shared.press(.home)
+    for kind in ["Clock", "Battery", "Calendar"] {
+      try openGallery(spring, fromHomeScreen: true)
+      try installWidget(kind, in: spring, maxSwipes: 8)
+    }
+    let baseline = try nativeHomeSamples("A")
+    try verifyThemeDiagnostics("alpine-starlight")
+    try applyDisplayedTheme(try openTheme(searchText: "Aurora", name: "Aurora Haven"))
+    RunLoop.current.run(until: Date().addingTimeInterval(8))
+    let changed = try nativeHomeSamples("B")
+    try verifyThemeDiagnostics("aurora-haven")
+    XCTAssertEqual(Set(baseline.keys), Set(changed.keys))
+    for (key, pixels) in baseline {
+      let next = try XCTUnwrap(changed[key])
+      let distance = zip(pixels, next).map { abs($0 - $1) }.reduce(0, +) / Double(pixels.count)
+      print("GLAZE_SWAP_HOME_PIXEL_DISTANCE B " + key + " " + String(distance)); fflush(stdout)
+      XCTAssertGreaterThan(distance, 0.02, "Each real native widget must visibly change on B")
+    }
+    try applyDisplayedTheme(try openAlpine())
+    RunLoop.current.run(until: Date().addingTimeInterval(8))
+    let restored = try nativeHomeSamples("A-return")
+    try verifyThemeDiagnostics("alpine-starlight")
+    XCTAssertEqual(Set(baseline.keys), Set(restored.keys))
+    for (key, pixels) in baseline {
+      let next = try XCTUnwrap(restored[key])
+      let distance = zip(pixels, next).map { abs($0 - $1) }.reduce(0, +) / Double(pixels.count)
+      print("GLAZE_SWAP_HOME_PIXEL_DISTANCE A " + key + " " + String(distance)); fflush(stdout)
+      // Live clock hands can move during the test; the theme must still return to Alpine.
+      XCTAssertLessThan(distance, 0.04, "Each real native widget must return to A")
+    }
+    _ = try nativeHomeSamples("remove-test-native", remove: true)
+    print("GLAZE_THEME_SWAP_A_B_A_VERIFIED"); fflush(stdout)
   }
 
   func testInstallLegacyArtWidgetsForUpgrade() throws {

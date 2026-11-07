@@ -27,6 +27,7 @@ if receipt_file.is_file():
     receipt['originalAlpineImagesIdenticalTo106'] = passed
     receipt['releaseQualified'] = bool(passed and receipt.get('upgradeAlpineAllFamilies')
         and receipt.get('copperRenderedOnHomeScreenAllFamilies')
+        and (not receipt.get('themeSwapCheckRequested') or receipt.get('nativeHomeThemeSwapABA'))
         and not receipt.get('diagnosticExtensionRebuilt'))
     receipt_file.write_text(json.dumps(receipt, indent=2))
 print('GLAZE_ALPINE_ORIGINAL_IMAGES_IDENTICAL', sum(row['byteIdentical'] for row in rows), 'of', len(rows))
