@@ -232,7 +232,7 @@ import Vision
   func testPrimeAlpineArtWidgetBeforeUpgrade() throws {
     continueAfterFailure = false
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-    try openGallery(spring)
+    try openGallery(spring, legacyArt: true)
     let title = spring.staticTexts["Seamless"].firstMatch
     for _ in 0..<60 {
       if title.exists { break }
@@ -308,7 +308,7 @@ import Vision
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
     for (index, size) in ["small", "medium", "large"].enumerated() {
       if index > 0 {
-      try openGallery(spring, fromHomeScreen: true)
+      try openGallery(spring, fromHomeScreen: true, legacyArt: true)
       let title = spring.staticTexts["Seamless"].firstMatch
       for _ in 0..<60 {
         if title.exists { break }
@@ -384,7 +384,7 @@ import Vision
     screenshot.name = name; screenshot.lifetime = .keepAlways; add(screenshot)
   }
 
-  private func openGallery(_ spring: XCUIApplication, fromHomeScreen: Bool = false) throws {
+  private func openGallery(_ spring: XCUIApplication, fromHomeScreen: Bool = false, legacyArt: Bool = false) throws {
     if spring.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { spring.setValue(false, forKey: "idleAnimationWaitEnabled") }
     if !fromHomeScreen { XCUIDevice.shared.press(.home) }
     RunLoop.current.run(until: Date().addingTimeInterval(0.8))
@@ -406,6 +406,20 @@ import Vision
     addWidget.tap()
     let search = spring.searchFields.firstMatch
     XCTAssertTrue(search.waitForExistence(timeout: 10), spring.debugDescription)
+    if legacyArt {
+      let other = spring.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Other")).firstMatch
+      for _ in 0..<36 {
+        if other.exists && other.isHittable { break }
+        spring.swipeUp()
+      }
+      capture("widget-gallery-other-section")
+      XCTAssertTrue(other.exists && other.isHittable, spring.debugDescription)
+      other.tap()
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+      capture("widget-gallery-other-open")
+      print("GLAZE_OTHER_GALLERY_TREE\n" + spring.debugDescription); fflush(stdout)
+      return
+    }
     search.tap()
     if !spring.keyboards.firstMatch.waitForExistence(timeout: 5) {
       search.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
