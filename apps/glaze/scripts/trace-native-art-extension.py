@@ -23,12 +23,18 @@ text = provider.read_text()
 needle = 'let piece = WidgetArtStore.resolvedID(configuration.art?.id, family: context.family)'
 assert text.count(needle) == 2
 text = text.replace(needle, needle + '\n    NSLog("GLAZE_ART_TRACE provider configured=%@ resolved=%@ family=%@", configuration.art?.id ?? "nil", piece ?? "nil", String(describing: context.family))')
+needle = '  func entities(for identifiers: [WidgetArtEntity.ID]) async throws -> [WidgetArtEntity] {\n    let snap = WidgetArtStore.snapshot()'
+assert text.count(needle) == 1
+text = text.replace(needle, needle + '\n    NSLog("GLAZE_ART_TRACE query identifiers=%@ available=%@", identifiers.joined(separator: ","), snap.records.map { $0.id }.joined(separator: ","))')
 provider.write_text(text)
 view = work / 'SeamlessWidget.swift'
 text = view.read_text()
 needle = '  var body: some View {\n    if let design = LiveArtStore.spec(pieceID: pieceID, family: family)?.design {'
 assert text.count(needle) == 1
 text = text.replace(needle, '  var body: some View {\n    let _ = NSLog("GLAZE_ART_TRACE view piece=%@ design=%@ family=%@", pieceID ?? "nil", LiveArtStore.spec(pieceID: pieceID, family: family)?.design?.kind ?? "none", String(describing: family))\n    if let design = LiveArtStore.spec(pieceID: pieceID, family: family)?.design {')
+needle = 'let image = WidgetArtStore.load(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.load(family)'
+assert text.count(needle) == 1
+text = text.replace(needle, needle + '\n    let _ = NSLog("GLAZE_ART_TRACE image piece=%@ dimensions=%@", pieceID ?? "nil", image.map { String(describing: $0.size) } ?? "nil")')
 view.write_text(text)
 extension = app / 'PlugIns/GlazeWidgets.appex'
 info = plistlib.loads((extension / 'Info.plist').read_bytes())
@@ -42,7 +48,7 @@ entitlements.write_bytes(plistlib.dumps({
 der = work / 'entitlements.der'
 subprocess.run(['derq', 'query', '-f', 'xml', '-i', str(entitlements), '-o', str(der), '--raw'], check=True)
 sdk = subprocess.check_output(['xcrun', '--sdk', 'iphonesimulator', '--show-sdk-path']).decode().strip()
-subprocess.run(['xcrun', 'swiftc', '-O', '-parse-as-library', '-application-extension',
+subprocess.run(['xcrun', 'swiftc', '-O', '-whole-module-optimization', '-parse-as-library', '-application-extension',
     '-module-name', 'GlazeWidgets', '-sdk', sdk, '-target', 'arm64-apple-ios17.0-simulator',
     '-Xlinker', '-sectcreate', '-Xlinker', '__TEXT', '-Xlinker', '__entitlements', '-Xlinker', str(entitlements),
     '-Xlinker', '-sectcreate', '-Xlinker', '__TEXT', '-Xlinker', '__ents_der', '-Xlinker', str(der),
