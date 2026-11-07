@@ -19,7 +19,7 @@ import Vision
 
   func testThreeFunctionalDesignsReachSharedStorage() throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     defer {
       print("GLAZE_DESIGNED_FINAL_TREE\n" + app.debugDescription)
       let screenshot = XCTAttachment(screenshot: app.screenshot()); screenshot.name = "designed-final-screen"; screenshot.lifetime = .keepAlways; add(screenshot)
@@ -75,9 +75,10 @@ import Vision
     for _ in 0..<6 {
       let settings = app.buttons["Settings"].firstMatch
       if settings.exists && settings.isHittable { return }
-      let close = app.buttons["Close"].firstMatch
+      let close = app.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@", "Close"))
+        .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable })
       let back = app.navigationBars.buttons.firstMatch
-      if close.exists && close.isHittable { close.tap() }
+      if let close { close.tap() }
       else if back.exists && back.isHittable { back.tap() }
       else {
         app.coordinate(withNormalizedOffset: CGVector(dx: 0.01, dy: 0.5)).press(forDuration: 0.05,
@@ -89,7 +90,7 @@ import Vision
   }
 
   private func openTheme(searchText: String, name: String, preserveSession: Bool = false) throws -> XCUIApplication {
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
     if preserveSession { app.activate(); try showMainTabs(in: app) }
     else { app.launch() }
@@ -127,7 +128,7 @@ import Vision
 
   func testAlpineOnHomeScreen() throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     app.launch()
     XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 30))
     let spring = makeSpringboard()
@@ -259,12 +260,13 @@ import Vision
       }
       RunLoop.current.run(until: Date().addingTimeInterval(0.5))
     }
-    let close = app.buttons["Close"].firstMatch
-    if close.exists && close.isHittable { close.tap() }
+    let close = app.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] %@", "Close"))
+      .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable })
+    close?.tap()
   }
 
   private func verifyThemeDiagnostics(_ id: String) throws {
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     app.activate()
     try showMainTabs(in: app)
     let settings = app.buttons["Settings"].firstMatch
@@ -383,7 +385,7 @@ import Vision
 
   func testInstallLegacyArtWidgetsForUpgrade() throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     app.launch()
     XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
     let spring = makeSpringboard()
@@ -460,7 +462,7 @@ import Vision
 
   func testAlpineAllFamiliesAfterUpgrade() throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
     app.launch()
     defer {
@@ -633,6 +635,14 @@ import Vision
     XCTFail("Could not reach the start of the real art menu: " + visible)
   }
 
+  private func makeApp() -> XCUIApplication {
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) {
+      app.setValue(false, forKey: "idleAnimationWaitEnabled")
+    }
+    return app
+  }
+
   private func makeSpringboard() -> XCUIApplication {
     let app = XCUIApplication(bundleIdentifier: "com.apple.springboard")
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) {
@@ -700,7 +710,7 @@ import Vision
 
   func testInspectSystemArtGallery() throws {
     continueAfterFailure = false
-    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    let app = makeApp()
     app.launch()
     XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
     try openGallery(makeSpringboard(), inspect: true)
