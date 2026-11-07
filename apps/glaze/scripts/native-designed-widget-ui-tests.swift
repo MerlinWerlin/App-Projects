@@ -792,13 +792,25 @@ import Vision
     }
     let result = spring.buttons["Glaze"].firstMatch
     let title = spring.staticTexts["Glaze"].firstMatch
+    let galleryReady = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
     for attempt in 0..<5 {
       search.typeText("Glaze")
       let searchKey = spring.keyboards.buttons["Search"].firstMatch
       if searchKey.exists && searchKey.isHittable { searchKey.tap() }
-      if result.waitForExistence(timeout: 4) { result.tap(); return }
-      if title.waitForExistence(timeout: 6) && title.frame.width > 1 {
-        title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+      if result.waitForExistence(timeout: 4),
+        let row = spring.buttons.matching(NSPredicate(format: "label == %@", "Glaze"))
+          .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable }) {
+        row.tap()
+        if galleryReady.waitForExistence(timeout: 10) { return }
+      }
+      if title.waitForExistence(timeout: 6),
+        let row = spring.staticTexts.matching(NSPredicate(format: "label == %@", "Glaze"))
+          .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable && $0.frame.width > 1 }) {
+        row.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        if galleryReady.waitForExistence(timeout: 10) { return }
+      }
+      if !search.exists {
+        XCTAssertTrue(galleryReady.waitForExistence(timeout: 20), spring.debugDescription)
         return
       }
       capture("widget-picker-wait-\(attempt)")
