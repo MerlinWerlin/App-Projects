@@ -1,0 +1,49 @@
+{
+  "type": "original procedural 3D motion proof",
+  "generator": "scripts/export-character.ts",
+  "sourceSHA256": {
+    "src/character/motion.ts": "4a26e0fa454859d13df0f3c2bf0db1e3da83a65cac0d06a2bcf71dca840e48a9",
+    "src/character/rig.ts": "08a5318835cc7f28bcd34efd41aab97cae875a9680680b413c10d3f7a11d9a66",
+    "scripts/export-character.ts": "e46eb89d89cf5f443b54ab37dbf3a0cb2fa09ad3472be14b35186a1518f23925"
+  },
+  "fps": 30,
+  "paws": [
+    "paw_fore_left",
+    "paw_fore_right",
+    "paw_hind_left",
+    "paw_hind_right"
+  ],
+  "clips": [
+    {
+      "name": "Nap_to_ready",
+      "duration": 7.2,
+      "tracks": 37
+    },
+    {
+      "name": "Chips_to_ready",
+      "duration": 6.6,
+      "tracks": 30
+    },
+    {
+      "name": "Idle",
+      "duration": 4.6,
+      "tracks": 16
+    },
+    {
+      "name": "Greeting",
+      "duration": 1.8,
+      "tracks": 19
+    },
+    {
+      "name": "Listening",
+      "duration": 3,
+      "tracks": 11
+    },
+    {
+      "name": "Speaking",
+      "duration": 3,
+      "tracks": 22
+    }
+  ],
+  "note": "Motion/timing asset. Fur, skinning around body joints and materials need further art refinement. Physical iPhone performance unverified."
+}

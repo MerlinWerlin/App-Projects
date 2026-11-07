@@ -1,0 +1,21 @@
+{
+  "result": "passed",
+  "paws": [
+    "paw_fore_left",
+    "paw_fore_right",
+    "paw_hind_left",
+    "paw_hind_right"
+  ],
+  "clipFamilies": [
+    "Nap_to_ready",
+    "Chips_to_ready",
+    "Idle",
+    "Greeting",
+    "Listening",
+    "Speaking"
+  ],
+  "actionCount": 6,
+  "nlaTrackCount": 6,
+  "blenderVersion": "4.4.3",
+  "note": "Editable import verified. This is the first motion rig, not final production art."
+}

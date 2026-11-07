@@ -1,0 +1,1 @@
+Actual exported Meow Manager browser screenshots captured by Codex on 4 November 2026 for the APPS Meow Manager build. Phone-size images are responsive browser views at 390x844, not native phone evidence. The example-day banner identifies sample tasks; screenshots preserve the original code artwork.

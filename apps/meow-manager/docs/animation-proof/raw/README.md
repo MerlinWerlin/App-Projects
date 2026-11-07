@@ -1,0 +1,1 @@
+Unmodified browser canvas recordings exported through the Meow Manager review controls by Codex for M05. They are the source recordings for the neighbouring MP4 review clips, contain the generated 3D scene only and have no microphone recording. Preserve these files as recording evidence; the renderer and original rig are in src/character.
