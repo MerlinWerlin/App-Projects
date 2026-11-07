@@ -272,6 +272,9 @@ jobs:
                   receipt['scope']='Actual system Photos selection, full Expo album delivery and installed Home Screen Next button; selected image visibly changes without app launch and the matching shared cursor is1. Simulator only.'
           (root/'link-receipt.json').write_text(json.dumps(receipt,indent=2))
           PY
+          if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade && -d "$RUNNER_TEMP/glaze-native-link-review/upgrade/base" ]]; then
+            python3 apps/glaze/scripts/verify-alpine-upgrade-images.py "$RUNNER_TEMP/glaze-native-link-review"
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
