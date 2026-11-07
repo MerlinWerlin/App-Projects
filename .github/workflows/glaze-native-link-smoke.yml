@@ -302,16 +302,18 @@ jobs:
           receipt['releaseQualified']=receipt['upgradeAlpineAllFamilies'] and receipt['copperRenderedOnHomeScreenAllFamilies'] and not receipt['diagnosticExtensionRebuilt']
           receipt['themeSwapCheckRequested']=os.environ.get('GLAZE_THEME_SWAP_CHECK')=='true'
           if receipt['themeSwapCheckRequested']:
-              swap=(root/'glaze-swap.log').read_text()
+              swap_path=root/'glaze-swap.log'
+              swap=swap_path.read_text() if swap_path.exists() else ''
               receipt['nativeHomeThemeSwapABA']='GLAZE_THEME_SWAP_A_B_A_VERIFIED' in swap and '** TEST EXECUTE SUCCEEDED **' in swap
               receipt['releaseQualified']=receipt['releaseQualified'] and receipt['nativeHomeThemeSwapABA']
           receipt['upgradeBaseRun']=os.environ.get('GLAZE_UPGRADE_BASE_RUN')
           receipt['upgradeMiddleRun']=os.environ.get('GLAZE_UPGRADE_MIDDLE_RUN')
           receipt['recoveredPredecessorRun']=os.environ.get('GLAZE_RECOVERED_PREDECESSOR_RUN')
           if receipt['recoveredPredecessorRun']:
-              recovery=json.loads((root/'predecessor-recovery.json').read_text())
-              assert recovery['recoveryCompleteObserved'] and not recovery['appDataModifiedByHarness']
-              receipt['alreadyRecoveredPredecessorVerified']=True
+              recovery_path=root/'predecessor-recovery.json'
+              recovery=json.loads(recovery_path.read_text()) if recovery_path.exists() else {}
+              receipt['alreadyRecoveredPredecessorVerified']=bool(recovery.get('recoveryCompleteObserved') and not recovery.get('appDataModifiedByHarness',True))
+              receipt['releaseQualified']=receipt['releaseQualified'] and receipt['alreadyRecoveredPredecessorVerified']
           if receipt['scenario']=='recovery-upgrade':
               receipt['legacyWidgetSeedRun']=os.environ.get('GLAZE_PREVIOUS_SIMULATOR_RUN')
               existing=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-upgrade-existing.log'
