@@ -301,7 +301,7 @@ import Vision
     capture("baseline-existing-selected-art")
     let selectedText = try screenText()
     XCTAssertTrue(selectedText.localizedCaseInsensitiveContains("Silver moon") && selectedText.contains("Small") && selectedText.contains("Layout"), selectedText)
-    XCUIDevice.shared.press(.home)
+    try dismissWidgetEditor(in: spring)
     RunLoop.current.run(until: Date().addingTimeInterval(6))
     capture("baseline-existing-silver-moon-widget")
     print("GLAZE_UPGRADE_EXISTING_ART_WIDGET_PRIMED"); fflush(stdout)
@@ -350,7 +350,7 @@ import Vision
       let edit = spring.buttons["Edit Widget"].firstMatch
       XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription); edit.tap()
       try openArtOptions(in: spring)
-      RunLoop.current.run(until: Date().addingTimeInterval(1))
+      try resetArtOptionsToStart(in: spring)
       var seen = Set<String>()
       for _ in 0..<26 {
         let lines = try screenText().components(separatedBy: " | ")
@@ -359,26 +359,102 @@ import Vision
         }) { seen.insert(name) }
         print("GLAZE_UPGRADE_PICKER_TEXT " + size + " " + lines.joined(separator: " | "))
         if seen.count == names.count { break }
-        spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.66))
-          .press(forDuration: 0.05, thenDragTo: spring.coordinate(withNormalizedOffset: CGVector(dx: 0.60, dy: 0.40)))
-        RunLoop.current.run(until: Date().addingTimeInterval(0.4))
+        scrollArtOptions(in: spring, towardsStart: false)
       }
       capture("upgraded-edit-art-" + size)
       XCTAssertEqual(seen, Set(names), spring.debugDescription)
       print("GLAZE_UPGRADE_ART_FAMILY_VERIFIED " + size); fflush(stdout)
-      XCUIDevice.shared.press(.home)
+      var chosen = false
+      for _ in 0..<10 {
+        if let point = try screenTextPoint(containing: ["Copper eclipse", size]) {
+          spring.coordinate(withNormalizedOffset: point).tap()
+          chosen = true
+          break
+        }
+        scrollArtOptions(in: spring, towardsStart: true)
+      }
+      XCTAssertTrue(chosen, spring.debugDescription)
       RunLoop.current.run(until: Date().addingTimeInterval(1))
+      let selected = try screenText()
+      XCTAssertTrue(selected.localizedCaseInsensitiveContains("Copper eclipse") && selected.localizedCaseInsensitiveContains(size) && selected.contains("Layout"), selected)
+      capture("upgraded-selected-copper-" + size)
+      try dismissWidgetEditor(in: spring)
+      RunLoop.current.run(until: Date().addingTimeInterval(6))
+      _ = try findArtWidget(size, in: spring)
+      capture("upgraded-copper-home-" + size)
     }
     print("GLAZE_UPGRADE_ALL_ALPINE_VERIFIED"); fflush(stdout)
   }
 
-  private func screenText() throws -> String {
-    guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return "" }
+  private typealias ScreenLine = (text: String, box: CGRect)
+
+  private func recognizedScreenLines() throws -> [ScreenLine] {
+    guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return [] }
     let request = VNRecognizeTextRequest()
     request.recognitionLevel = .accurate
     request.recognitionLanguages = ["en-US"]
     try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
-    return (request.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: " | ")
+    return (request.results ?? []).compactMap { observation -> ScreenLine? in
+      guard let text = observation.topCandidates(1).first?.string else { return nil }
+      return (text: text, box: observation.boundingBox)
+    }
+  }
+
+  private func groupedScreenLines() throws -> [ScreenLine] {
+    var groups: [[ScreenLine]] = []
+    for line in try recognizedScreenLines().sorted(by: { $0.box.midY > $1.box.midY }) {
+      if let last = groups.indices.last, abs(groups[last][0].box.midY - line.box.midY) < 0.007 {
+        groups[last].append(line)
+      } else { groups.append([line]) }
+    }
+    var rows: [ScreenLine] = []
+    for group in groups {
+      let text = group.sorted(by: { $0.box.minX < $1.box.minX }).map { $0.text }.joined(separator: " ")
+      let box = group.reduce(CGRect.null) { $0.union($1.box) }
+      // Vision can split the size suffix horizontally or onto its own wrapped line.
+      if let last = rows.indices.last,
+         text.range(of: "^[^A-Za-z0-9]*(small|medium|large)$", options: [.regularExpression, .caseInsensitive]) != nil {
+        rows[last].text += " " + text
+        rows[last].box = rows[last].box.union(box)
+      } else { rows.append((text: text, box: box)) }
+    }
+    return rows
+  }
+
+  private func screenText() throws -> String {
+    try groupedScreenLines().map { $0.text }.joined(separator: " | ")
+  }
+
+  private func scrollArtOptions(in spring: XCUIApplication, towardsStart: Bool) {
+    let from = CGVector(dx: 0.60, dy: towardsStart ? 0.55 : 0.70)
+    let to = CGVector(dx: 0.60, dy: towardsStart ? 0.79 : 0.45)
+    spring.coordinate(withNormalizedOffset: from).press(forDuration: 0.05,
+      thenDragTo: spring.coordinate(withNormalizedOffset: to), withVelocity: .slow, thenHoldForDuration: 0.4)
+    RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+  }
+
+  private func resetArtOptionsToStart(in spring: XCUIApplication) throws {
+    var loaded = false
+    for _ in 0..<20 {
+      if try screenText().localizedCaseInsensitiveContains("Alpine Starlight") { loaded = true; break }
+      RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+    }
+    XCTAssertTrue(loaded, "The real art option menu did not finish loading")
+    for _ in 0..<16 {
+      let lines = try groupedScreenLines()
+      if lines.contains(where: { $0.text.localizedCaseInsensitiveContains("Clock") && $0.text.localizedCaseInsensitiveContains("Small") }) { return }
+      scrollArtOptions(in: spring, towardsStart: true)
+    }
+    let visible = try screenText()
+    XCTFail("Could not reach the start of the real art menu: " + visible)
+  }
+
+  private func dismissWidgetEditor(in spring: XCUIApplication) throws {
+    // The iPhone commits widget edits when the person taps outside the editor.
+    spring.coordinate(withNormalizedOffset: CGVector(dx: 0.10, dy: 0.20)).tap()
+    RunLoop.current.run(until: Date().addingTimeInterval(1))
+    let visible = try screenText()
+    XCTAssertFalse(visible.contains("Seamless") && visible.contains("Layout"), visible)
   }
 
   private func openArtOptions(in spring: XCUIApplication) throws {
@@ -392,16 +468,12 @@ import Vision
   }
 
   private func screenTextPoint(containing terms: [String], exact: Bool = false) throws -> CGVector? {
-    guard let image = UIImage(data: XCUIScreen.main.screenshot().pngRepresentation)?.cgImage else { return nil }
-    let request = VNRecognizeTextRequest()
-    request.recognitionLevel = .accurate
-    request.recognitionLanguages = ["en-US"]
-    try VNImageRequestHandler(cgImage: image, options: [:]).perform([request])
-    guard let line = (request.results ?? []).first(where: { observation in
-      guard let text = observation.topCandidates(1).first?.string else { return false }
-      return exact ? terms.contains(where: { text.caseInsensitiveCompare($0) == .orderedSame }) : terms.allSatisfy { text.localizedCaseInsensitiveContains($0) }
+    let lines: [ScreenLine]
+    if exact { lines = try recognizedScreenLines() } else { lines = try groupedScreenLines() }
+    guard let line = lines.first(where: { line in
+      return exact ? terms.contains(where: { line.text.caseInsensitiveCompare($0) == .orderedSame }) : terms.allSatisfy { line.text.localizedCaseInsensitiveContains($0) }
     }) else { return nil }
-    return CGVector(dx: line.boundingBox.midX, dy: 1 - line.boundingBox.midY)
+    return CGVector(dx: line.box.midX, dy: 1 - line.box.midY)
   }
 
   private func capture(_ name: String) {
