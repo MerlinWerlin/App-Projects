@@ -21,6 +21,11 @@ for art in ['copper-eclipse', 'jupiter-polar', 'saturn-rings', 'silver-moon', 's
         })
 passed = all(row['byteIdentical'] for row in rows)
 (root / 'alpine-image-comparison.json').write_text(json.dumps({'passed': passed, 'images': rows}, indent=2))
+receipt_file = root / 'link-receipt.json'
+if receipt_file.is_file():
+    receipt = json.loads(receipt_file.read_text())
+    receipt['originalAlpineImagesIdenticalTo106'] = passed
+    receipt_file.write_text(json.dumps(receipt, indent=2))
 print('GLAZE_ALPINE_ORIGINAL_IMAGES_IDENTICAL', sum(row['byteIdentical'] for row in rows), 'of', len(rows))
 if not passed:
     raise SystemExit('Original Alpine art changed or is missing after upgrade')

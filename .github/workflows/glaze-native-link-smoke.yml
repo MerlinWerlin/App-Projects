@@ -234,6 +234,11 @@ jobs:
           receipt['upgradeAlpineAllFamilies']=supplied and execute_ok and 'GLAZE_UPGRADE_ALL_ALPINE_VERIFIED' in text
           receipt['upgradeBaseRun']=os.environ.get('GLAZE_UPGRADE_BASE_RUN')
           receipt['upgradeMiddleRun']=os.environ.get('GLAZE_UPGRADE_MIDDLE_RUN')
+          if receipt['scenario']=='recovery-upgrade':
+              existing=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-upgrade-existing.log'
+              prior=existing.read_text() if existing.exists() else ''
+              receipt['existingAlpineArtWidgetConfiguredBeforeUpgrade']='GLAZE_UPGRADE_EXISTING_ART_WIDGET_PRIMED' in prior and '** TEST EXECUTE SUCCEEDED **' in prior
+              receipt['scope']='Production Expo app installed over 1.0.6 and 1.0.12 on one retained-data simulator. The UI gate requires both preview screens and all three Edit Widget art menus. Physical iPhone behavior is not inferred.'
           receipt['alpineSmallEditWidgetArt']=supplied and execute_ok and 'GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED' in text
           receipt['alpineInstalledThroughPicker']=supplied and 'GLAZE_ALPINE_INSTALLED' in text and execute_ok
           receipt['themeGalleryInstalledThroughPicker']=supplied and 'GLAZE_THEME_GALLERY_INSTALLED' in text and execute_ok
