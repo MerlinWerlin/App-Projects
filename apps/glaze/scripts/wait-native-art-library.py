@@ -8,10 +8,13 @@ import time
 
 assert os.environ.get('GITHUB_ACTIONS') == 'true'
 device = sys.argv[1]
+authored = len(sys.argv) > 2 and sys.argv[2] == 'authored'
 base = Path.home() / 'Library/Developer/CoreSimulator/Devices' / device / 'data/Containers/Shared/AppGroup'
 expected = {f't-alpine-starlight-{art}-{size}' for art in [
     'copper-eclipse', 'jupiter-polar', 'saturn-rings', 'silver-moon', 'spiral-galaxy'
-] for size in ['small', 'medium', 'large']}
+] for size in (['small', 'large'] if authored else ['small', 'medium', 'large'])}
+if authored:
+    expected.add('t-alpine-starlight-hero-medium-medium')
 deadline = time.monotonic() + 100
 while time.monotonic() < deadline:
     for directory in base.glob('*'):
@@ -28,4 +31,4 @@ while time.monotonic() < deadline:
         except (OSError, ValueError, KeyError, plistlib.InvalidFileException):
             pass
     time.sleep(1)
-raise SystemExit('The production app did not commit all 15 original Alpine art variants')
+raise SystemExit(f'The production app did not commit the {len(expected)} expected Alpine art variants')

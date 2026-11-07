@@ -176,8 +176,14 @@ jobs:
               xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
               xcrun simctl install "$DEVICE" "$PREDECESSOR"
               xcrun simctl launch "$DEVICE" com.jared797.glaze
-              python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/predecessor-recovery.json"
-              python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE"
+              PREDECESSOR_VERSION=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PREDECESSOR/Info.plist")
+              if [[ "$PREDECESSOR_VERSION" == 1.0.13 ]]; then
+                python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/predecessor-recovery.json"
+                python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE"
+              else
+                python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/predecessor-recovery.json" glaze.widgetArt.recovered106.v2
+                python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE" authored
+              fi
               python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/upgrade/recovered-predecessor"
             fi
             xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
