@@ -404,7 +404,7 @@ import Vision
     XCUIDevice.shared.press(.home)
     let spring = makeSpringboard()
     for size in ["small", "medium", "large"] {
-      let widget = try findArtWidget(size, in: spring)
+      let widget = try findArtWidget(size, in: spring, requireEditable: size == "small")
       try enterWidgetEditor(widget, in: spring)
       try openArtOptions(in: spring)
       try resetArtOptionsToStart(in: spring, themeName: "Aurora Haven")
@@ -467,15 +467,27 @@ import Vision
     print("GLAZE_LEGACY_ART_WIDGETS_INSTALLED"); fflush(stdout)
   }
 
-  private func findArtWidget(_ size: String, in spring: XCUIApplication) throws -> XCUIElement {
+  private func findArtWidget(_ size: String, in spring: XCUIApplication, requireEditable: Bool = false) throws -> XCUIElement {
     for direction in ["left", "right"] {
       for _ in 0..<7 {
         let matches = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
-        if let hit = matches.allElementsBoundByIndex.first(where: { element in
+        let candidates = matches.allElementsBoundByIndex.filter { element in
           let f = element.frame
           guard element.exists && element.isHittable && f.width > 110 else { return false }
           return size == "small" ? f.width < 220 : size == "medium" ? f.width > 250 && f.height < 230 : f.height > 250
-        }) { return hit }
+        }
+        for hit in candidates {
+          if !requireEditable { return hit }
+          // During A/B testing three static native Small widgets are present as well.
+          // Find the retained configurable art widget, rather than mistaking a clock for it.
+          hit.press(forDuration: 1.3)
+          RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+          let text = try screenText()
+          let editable = spring.buttons["Edit Widget"].firstMatch.exists || text.contains("Edit Widget")
+          spring.coordinate(withNormalizedOffset: CGVector(dx: 0.97, dy: 0.84)).tap()
+          RunLoop.current.run(until: Date().addingTimeInterval(0.6))
+          if editable { return hit }
+        }
         if direction == "left" { spring.swipeLeft() } else { spring.swipeRight() }
         RunLoop.current.run(until: Date().addingTimeInterval(0.5))
       }
