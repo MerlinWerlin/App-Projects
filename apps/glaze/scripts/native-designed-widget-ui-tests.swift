@@ -392,7 +392,8 @@ import Vision
     for size in ["Small", "Medium", "Large"] {
       let sizeButton = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", size)).firstMatch
       reveal(sizeButton, in: app); sizeButton.tap()
-      for name in ["Aurora date", "Snow mushrooms"] {
+      let expected = size == "Medium" ? ["Art 7"] : ["Aurora date", "Snow mushrooms"]
+      for name in expected {
         let item = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
         reveal(item, in: app)
         capture("swapped-aurora-preview-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
@@ -405,21 +406,23 @@ import Vision
       try enterWidgetEditor(widget, in: spring)
       try openArtOptions(in: spring)
       try resetArtOptionsToStart(in: spring, themeName: "Aurora Haven")
+      let expected = size == "medium" ? ["Art 7"] : ["Aurora date", "Snow mushrooms"]
+      let selectedName = size == "medium" ? "Art 7" : "Snow mushrooms"
       var seen = Set<String>()
       var chosen: CGVector?
       for _ in 0..<26 {
         let lines = try groupedScreenLines()
-        for name in ["Aurora date", "Snow mushrooms"] {
+        for name in expected {
           if let row = lines.first(where: { $0.text.localizedCaseInsensitiveContains(name) && $0.text.localizedCaseInsensitiveContains(size) }) {
             seen.insert(name)
-            if name == "Snow mushrooms" { chosen = CGVector(dx: row.box.midX, dy: 1 - row.box.midY) }
+            if name == selectedName { chosen = CGVector(dx: row.box.midX, dy: 1 - row.box.midY) }
           }
         }
-        if seen.count == 2 && chosen != nil { break }
+        if seen.count == expected.count && chosen != nil { break }
         scrollArtOptions(in: spring, towardsStart: false)
       }
       capture("swapped-aurora-edit-art-" + size)
-      XCTAssertEqual(seen, Set(["Aurora date", "Snow mushrooms"]))
+      XCTAssertEqual(seen, Set(expected))
       let choice = try XCTUnwrap(chosen)
       spring.coordinate(withNormalizedOffset: choice).tap()
       RunLoop.current.run(until: Date().addingTimeInterval(1))
@@ -512,6 +515,14 @@ import Vision
   }
 
   func testAlpineAllFamiliesAfterUpgrade() throws {
+    try verifyAlpineAfterUpgrade(authoredSizes: false)
+  }
+
+  func testAlpineAuthoredFamiliesAfterUpgrade() throws {
+    try verifyAlpineAfterUpgrade(authoredSizes: true)
+  }
+
+  private func verifyAlpineAfterUpgrade(authoredSizes: Bool) throws {
     continueAfterFailure = false
     let app = makeApp()
     if app.responds(to: NSSelectorFromString("setIdleAnimationWaitEnabled:")) { app.setValue(false, forKey: "idleAnimationWaitEnabled") }
@@ -526,7 +537,8 @@ import Vision
     for size in ["Small", "Medium", "Large"] {
       let sizeButton = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", size)).firstMatch
       reveal(sizeButton, in: app); sizeButton.tap()
-      for name in names {
+      let expected = authoredSizes && size == "Medium" ? ["Art 9"] : names
+      for name in expected {
         let item = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
         reveal(item, in: app)
         capture("upgraded-widgets-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
@@ -540,7 +552,8 @@ import Vision
     for size in ["Small", "Medium", "Large"] {
       let sizeButton = theme.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@ AND label ENDSWITH %@", "Widget size", size)).firstMatch
       reveal(sizeButton, in: theme); sizeButton.tap()
-      for name in names {
+      let expected = authoredSizes && size == "Medium" ? ["Art 9"] : names
+      for name in expected {
         let item = theme.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
         reveal(item, in: theme)
         capture("upgraded-theme-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
@@ -554,22 +567,24 @@ import Vision
       try enterWidgetEditor(widget, in: spring)
       try openArtOptions(in: spring)
       try resetArtOptionsToStart(in: spring)
+      let expected = authoredSizes && size == "medium" ? ["Art 9"] : names
+      let selectedName = authoredSizes && size == "medium" ? "Art 9" : "Copper eclipse"
       var seen = Set<String>()
       for _ in 0..<26 {
         let lines = try screenText().components(separatedBy: " | ")
-        for name in names where lines.contains(where: {
+        for name in expected where lines.contains(where: {
           $0.localizedCaseInsensitiveContains(name) && $0.localizedCaseInsensitiveContains(size)
         }) { seen.insert(name) }
         print("GLAZE_UPGRADE_PICKER_TEXT " + size + " " + lines.joined(separator: " | "))
-        if seen.count == names.count { break }
+        if seen.count == expected.count { break }
         scrollArtOptions(in: spring, towardsStart: false)
       }
       capture("upgraded-edit-art-" + size)
-      XCTAssertEqual(seen, Set(names), spring.debugDescription)
+      XCTAssertEqual(seen, Set(expected), spring.debugDescription)
       print("GLAZE_UPGRADE_ART_FAMILY_VERIFIED " + size); fflush(stdout)
       var chosen = false
       for _ in 0..<10 {
-        if let point = try screenTextPoint(containing: ["Copper eclipse", size]) {
+        if let point = try screenTextPoint(containing: [selectedName, size]) {
           spring.coordinate(withNormalizedOffset: point).tap()
           chosen = true
           break
@@ -579,12 +594,17 @@ import Vision
       XCTAssertTrue(chosen, spring.debugDescription)
       RunLoop.current.run(until: Date().addingTimeInterval(1))
       let selected = try screenText()
-      XCTAssertTrue(selected.localizedCaseInsensitiveContains("Copper eclipse") && selected.localizedCaseInsensitiveContains(size) && selected.contains("Layout"), selected)
+      XCTAssertTrue(selected.localizedCaseInsensitiveContains(selectedName) && selected.localizedCaseInsensitiveContains(size) && selected.contains("Layout"), selected)
       capture("upgraded-selected-copper-" + size)
       try dismissWidgetEditor(in: spring)
-      try waitForCopperOnHomeScreen(size, in: spring)
+      if !authoredSizes || size != "medium" { try waitForCopperOnHomeScreen(size, in: spring) }
+      else {
+        RunLoop.current.run(until: Date().addingTimeInterval(5))
+        print("GLAZE_AUTHORED_MEDIUM_HERO_SELECTED"); fflush(stdout)
+      }
       capture("upgraded-copper-home-" + size)
     }
+    if authoredSizes { print("GLAZE_AUTHORED_SIZE_UPGRADE_VERIFIED"); fflush(stdout) }
     print("GLAZE_UPGRADE_ALL_ALPINE_VERIFIED"); fflush(stdout)
   }
 

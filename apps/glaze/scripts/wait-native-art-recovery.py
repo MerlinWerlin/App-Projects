@@ -8,6 +8,7 @@ import time
 
 assert os.environ.get('GITHUB_ACTIONS') == 'true'
 device, report_path = sys.argv[1:3]
+expected_key = sys.argv[3] if len(sys.argv) > 3 else 'glaze.widgetArt.recovered106.v1'
 deadline = time.monotonic() + 120
 while time.monotonic() < deadline:
     result = subprocess.run(
@@ -17,12 +18,12 @@ while time.monotonic() < deadline:
     manifest = Path(result.stdout.strip()) / 'Library/Application Support/com.jared797.glaze/RCTAsyncLocalStorage_V1/manifest.json'
     try:
         values = json.loads(manifest.read_text())
-        if values.get('glaze.widgetArt.recovered106.v1') == 'complete':
+        if values.get(expected_key) == 'complete':
             report = Path(report_path)
             report.parent.mkdir(parents=True, exist_ok=True)
             report.write_text(json.dumps({
                 'recoveryCompleteObserved': True, 'appDataModifiedByHarness': False,
-                'key': 'glaze.widgetArt.recovered106.v1',
+                'key': expected_key,
             }, indent=2))
             print('GLAZE_ALREADY_RECOVERED_INSTALLATION_OBSERVED')
             sys.exit(0)
