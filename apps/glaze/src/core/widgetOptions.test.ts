@@ -441,26 +441,28 @@ test('docs/THEME_PACKS.md: the v2 example manifest parses and validates strictly
 
 const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 
-test('widget previews and automatic setup use the same bundled and downloaded art', () => {
+test('Widgets tab shows the theme widget art menu above the grid', () => {
+  const tab = read('app', '(tabs)', 'widgets.tsx');
+  assert.match(tab, /import \{ ThemeWidgetArt \} from '\.\.\/\.\.\/src\/ui\/ThemeWidgetArt';/);
+  assert.match(tab, /<ThemeWidgetArt theme=\{gridTheme\} size=\{size\}/);
   const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
-  const sync = read('src', 'store', 'themeWidgetArt.ts');
-  const remote = read('src', 'native', 'useRemoteCatalog.ts');
   assert.match(art, /useRemoteArtTheme\(/);
-  assert.match(art, /widgetOptionsFromV1\(/);
-  assert.match(sync, /widgetOptionsFromV1\(/);
-  assert.match(sync, /remoteWidgetArtOnDevice\(theme, signal\)/);
-  assert.match(art, /remoteWidgetArtOnDevice\(latest, controller\.signal\)/);
-  assert.match(remote, /localWidgetArtOptions\(remoteWidgetArtOptions\(local\)/);
+  assert.match(art, /widgetOptionsFromV1\(/, 'bundled art packs list their hero pieces as options');
+  assert.match(art, /widgets\.setWidgetArt\(/);
+  assert.match(art, /widgets\.setSeamless\(/);
+  // T251: every piece tries the wallpaper crop first; setWidgetArt only when there is no wallpaper file.
+  assert.match(art, /ok = preserveArtwork \? false : await seamless\(artUri\);\s*if \(ok === false && option\.background !== 'wallpaper'\)/);
+  assert.match(art, /option\.numberFree === true && !!option\.liveFrame/);
 });
 
 test('menu previews fit the art (never crop): placeArt / fullBleedArt rectangle + contain; T251 no blurred copy', () => {
   const menu = read('src', 'ui', 'WidgetArtMenu.tsx');
   assert.match(menu, /placeArt\(/); // over the wallpaper crop (inset hero, like setSeamless)
   assert.match(menu, /fullBleedArt\(/); // no wallpaper: theme colour, full bleed (like setWidgetArt)
-  assert.match(menu, /<BlendedArt source=\{source\} rect=\{place\.rect\} blend=\{blend\} assetPath=\{option\.image\} \/>/);
+  assert.match(menu, /<BlendedArt source=\{source\} rect=\{place\.rect\} blend=\{blend\} \/>/);
   assert.equal((menu.match(/contentFit="cover"/g) ?? []).length, 0);
   assert.doesNotMatch(menu, /strips\.map\(|styles\.strip|blurRadius/);
-  assert.doesNotMatch(menu, /accessibilityState=\{\{ selected \}\}/);
+  assert.match(menu, /accessibilityState=\{\{ selected \}\}/);
   assert.match(menu, /widgetOptionSections\(/);
   assert.doesNotMatch(menu, /withSpring|Animated\.spring|ActivityIndicator/);
 });

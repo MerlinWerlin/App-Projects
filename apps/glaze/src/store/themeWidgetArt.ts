@@ -21,14 +21,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, HERO_SIZES, isArtPackTheme } from '../core/artPack';
 import { liveArtPlan, liveArtSpec, withLiveArt, type CountdownArtTargets } from '../core/liveArt';
 import { pickWallpaper } from '../core/packCatalog';
-import { isRemoteArtTheme } from '../core/remoteCatalog';
+import { isRemoteArtTheme, remoteArtFiles } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, widgetSizePx } from '../core/seamlessWidget';
-import { piecesToCompose, planThemePieces, THEME_ART_SIZES, type PlannedThemePiece } from '../core/themeArtSync';
+import { piecesToCompose, planThemePieces, type PlannedThemePiece } from '../core/themeArtSync';
 import type { Theme } from '../core/themes';
 import type { WidgetArtIndex } from '../core/widgetArtLibrary';
 import { optionName, widgetOptionsFromV1, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
 import { t } from '../i18n';
-import { getPackState, remoteArtFileUri, remoteWidgetArtOnDevice } from '../native/packs';
+import { getPackState, loadPackIndex, remoteArtFileUri, remoteArtOnDevice } from '../native/packs';
 import { widgets, type WidgetsResult } from '../native/widgets';
 import { artPackHero, artPackWallpaper } from '../ui/artPackSources';
 import { existingLocalFile, localAssetUri, seamlessDeviceHere } from '../ui/seamlessSetup';
@@ -64,36 +64,10 @@ type ThemeArt = {
   /** Resolves the wallpaper to a local file (only wallpaper-backed pieces need it). */
   wallpaper: () => Promise<string | null>;
   wallpaperPx: { w: number; h: number };
-  missing?: number;
-  lastError?: string | null;
-  expectedOptions?: WidgetOption[];
-  artworkRevision?: string;
-  hasWallpaper?: boolean;
 };
-
-type ArtDiagnostics = {
-  themeId: string;
-  planned: number | null;
-  composed: number;
-  failed: number;
-  missing: number;
-  lastError: string | null;
-};
-let diagnostics: ArtDiagnostics | null = null;
-
-export function themeWidgetArtDiagnostics(themeId: string | null): ArtDiagnostics | null {
-  return diagnostics?.themeId === themeId ? diagnostics : null;
-}
 
 let generation = 0;
-let activeDownload: AbortController | null = null;
 let running: Promise<unknown> = Promise.resolve();
-
-export function supersedeThemeWidgetArt(): void {
-  generation++;
-  activeDownload?.abort();
-  activeDownload = null;
-}
 
 /**
  * T252: add every widget art piece of `theme` to My widget art and remove the previous theme's
@@ -101,13 +75,11 @@ export function supersedeThemeWidgetArt(): void {
  * supersedes this one. No-op { available: false } in Expo Go / Android. Never rejects.
  */
 export function syncThemeWidgetArt(theme: Theme, opts: ThemeArtSyncOptions = {}): Promise<ThemeArtSyncResult> {
-  supersedeThemeWidgetArt();
-  const gen = generation;
-  const controller = new AbortController();
-  activeDownload = controller;
-  const job = running.then(() => runSync(theme, gen, opts, controller.signal)).finally(() => {
-    if (activeDownload === controller) activeDownload = null;
-  });
+  const gen = ++generation;
+  const job = running.then(
+    () => runSync(theme, gen, opts),
+    () => runSync(theme, gen, opts),
+  );
   running = job.catch(() => undefined);
   return job;
 }
@@ -125,38 +97,22 @@ export async function pendingThemeWidgetArt(): Promise<string | null> {
 const NONE: ThemeArtSyncResult = { available: false, ok: false, composed: 0, failed: 0 };
 const defaultYield = () => new Promise<void>((resolve) => setTimeout(resolve, 0));
 
-async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions, signal: AbortSignal): Promise<ThemeArtSyncResult> {
+async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Promise<ThemeArtSyncResult> {
   const stale = () => gen !== generation;
   const pause = opts.yieldBetween ?? defaultYield;
-  let endBackgroundUpdate: (() => void) | undefined;
   try {
     if (stale()) return { ...NONE, available: true, superseded: true };
-    diagnostics = { themeId: theme.id, planned: null, composed: 0, failed: 0, missing: 0, lastError: null };
     // 1. Nothing to do without the library bridge (Expo Go, Android, older build): no file work.
     const current = await widgets.artLibrary();
     if (!current.available) return NONE;
-    if (stale()) return { ...NONE, available: true, superseded: true };
-    endBackgroundUpdate = await widgets.beginArtUpdate?.();
-    if (stale()) return { ...NONE, available: true, superseded: true };
     await setPending(theme.id);
     // 2. Plan.
     // T245: countdown art pieces go live with the day the person chose (none = Art).
     const targets = await loadCountdownArtTargets();
-    const art = await themeArt(theme, targets, signal);
-    if (stale()) return { ...NONE, available: true, superseded: true };
-    const planned = plan(theme, art, targets, await widgets.designVersion() >= DESIGNED_WIDGET_CAPABILITY);
+    const art = await themeArt(theme, targets);
+    const planned = plan(theme, art.options, targets, await widgets.designVersion() >= DESIGNED_WIDGET_CAPABILITY);
     const lib: WidgetArtIndex = { v: 1, pieces: current.pieces };
-    const todo = piecesToCompose(lib, planned).sort((a, b) => Number(!!a.live?.design) - Number(!!b.live?.design));
-    if (stale()) return { ...NONE, available: true, superseded: true };
-    const plannedArt = planned.filter(piece => !piece.live?.design).length;
-    const pendingArt = todo.filter(piece => !piece.live?.design).length;
-    const expectedArt = art.expectedOptions && art.missing
-      ? plan(theme, { ...art, options: art.expectedOptions }, targets, false).length
-      : plannedArt;
-    diagnostics = {
-      themeId: theme.id, planned: expectedArt, composed: plannedArt - pendingArt, failed: 0,
-      missing: expectedArt - plannedArt, lastError: art.lastError ?? null,
-    };
+    const todo = piecesToCompose(lib, planned);
     // 3. Compose the missing pieces, one at a time.
     const ready: string[] = [];
     let failed = 0;
@@ -170,57 +126,35 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions, sig
         composeSupported = false;
         break;
       }
-      if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
       if (r === 'ok') ready.push(piece.id);
       else failed++;
-      if (!piece.live?.design) {
-        if (r === 'ok') diagnostics.composed++;
-        else diagnostics.failed++;
-      }
       await pause();
     }
-    if (!composeSupported) {
-      failed += todo.length - ready.length;
-      diagnostics.failed = plannedArt - diagnostics.composed;
-    }
+    if (!composeSupported) failed += todo.length - ready.length - failed;
     if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
     // 4. The one index write; the bridge prunes unlisted files, then reloads every timeline.
-    const res = await widgets.commitThemeArt(theme.id, planned, ready, () => !stale());
-    if (stale()) return { available: true, ok: false, composed: ready.length, failed, superseded: true };
-    if (!res.ok) {
-      diagnostics.failed += diagnostics.composed;
-      diagnostics.composed = 0;
-    }
-    failed += art.missing ?? 0;
-    if (res.ok && failed === 0) await clearPending(theme.id);
-    return { available: res.available, ok: res.ok && failed === 0, composed: ready.length, failed };
-  } catch (error) {
-    if (stale()) return { ...NONE, available: true, superseded: true };
-    if (diagnostics?.themeId === theme.id) {
-      diagnostics.lastError = (error instanceof Error ? error.message : String(error)).slice(0, 240);
-    }
+    const res = await widgets.commitThemeArt(theme.id, planned, ready);
+    if (res.ok) await clearPending(theme.id);
+    return { available: res.available, ok: res.ok, composed: ready.length, failed };
+  } catch {
     return { available: true, ok: false, composed: 0, failed: 0 };
-  } finally {
-    endBackgroundUpdate?.();
   }
 }
 
-function plan(theme: Theme, source: ThemeArt, targets: CountdownArtTargets, supportsDesign: boolean): PlannedThemePiece[] {
+function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTargets, supportsDesign: boolean): PlannedThemePiece[] {
   const device = seamlessDeviceHere();
   const tr = t as unknown as (k: string, p?: Record<string, unknown>) => string;
   const sizeLabel = (s: HomeOptionSize) =>
     s === 'small' ? t('ui.seamless.sizes.small') : s === 'medium' ? t('ui.seamless.sizes.medium') : t('ui.seamless.sizes.large');
   const designed = supportsDesign ? plannedDesignedWidgets(theme, (kind, size) => `${t(`ui.designedWidgets.${kind}`)} · ${sizeLabel(size)}`) : [];
-  const { options } = source;
   const art = planThemePieces({
     themeId: theme.id,
     themeName: theme.name,
     options: options.filter(o => !isReplacedArtEdition(o)),
-    includeFittedSizes: true,
-    cap: THEME_ART_SIZES.length * options.length,
-    name: option => {
+    cap: 40 - designed.length,
+    name: (option, size) => {
       const n = optionName(option, options);
-      return 'text' in n ? n.text : tr(n.key, n.params);
+      return `${'text' in n ? n.text : tr(n.key, n.params)} · ${sizeLabel(size)}`;
     },
     aspect: (size) => {
       const px = widgetSizePx(device, size);
@@ -231,42 +165,45 @@ function plan(theme: Theme, source: ThemeArt, targets: CountdownArtTargets, supp
       const p = liveArtPlan(theme.id, option, { targets });
       if (!p) return null;
       const px = widgetSizePx(device, size);
-      return liveArtSpec(p, { w: option.width, h: option.height }, px, option.background === 'wallpaper' && source.hasWallpaper ? 'fit' : 'bleed', {
+      return liveArtSpec(p, { w: option.width, h: option.height }, px, option.background === 'wallpaper' ? 'fit' : 'bleed', {
         bg: theme.palette.bg,
         ink: theme.palette.ink,
       });
     },
   });
-  return [...designed, ...art.map(piece => ({
-    ...piece,
-    slot: piece.slot + (supportsDesign ? 3 : 0),
-    ...(source.artworkRevision ? { artRevision: source.artworkRevision + ':' + source.sources.get(piece.optionId)?.option.image } : {}),
-  }))];
+  return [...designed, ...art.map(p => ({ ...p, slot: p.slot + (supportsDesign ? 3 : 0) }))];
 }
 
 /** Every widget option of the theme with its art source (same lists as ThemeWidgetArt). */
-async function themeArt(theme: Theme, targets: CountdownArtTargets, signal: AbortSignal): Promise<ThemeArt> {
+async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<ThemeArt> {
   const empty: ThemeArt = { options: [], sources: new Map(), wallpaper: async () => null, wallpaperPx: { w: ART_WALLPAPER_SIZE.width, h: ART_WALLPAPER_SIZE.height } };
-  if (isRemoteArtTheme(theme)) {
-    const downloaded = await remoteWidgetArtOnDevice(theme, signal);
-    const options = withLiveArt(theme.id, downloaded.options.map(item => item.option), { targets });
-    const sources = new Map(options.map((option, i) => [option.id, { option, uri: downloaded.options[i].uri }]));
-    const pack = getPackState().remoteArt[theme.id];
-    const wall = pack ? pickWallpaper(pack, Number.MAX_SAFE_INTEGER) : null;
-    const wallUri = remoteArtFileUri(theme.id, wall?.path);
-    return {
-      options,
-      sources,
-      wallpaper: () => existingLocalFile(wallUri),
-      wallpaperPx: wall ? { w: wall.width, h: wall.height } : empty.wallpaperPx,
-      missing: downloaded.missing,
-      lastError: downloaded.lastError,
-      expectedOptions: downloaded.expectedOptions,
-      hasWallpaper: !!wallUri,
-      artworkRevision: 'widget-art-v1:' + (wall?.path ?? ''),
-    };
-  }
   try {
+    if (isRemoteArtTheme(theme)) {
+      // A downloaded remote pack: its v2 `widgets` list (or the options derived from v1).
+      await loadPackIndex();
+      if (!getPackState().index.packs.some((p) => p.id === theme.id)) return empty;
+      const local = await remoteArtOnDevice(theme.id);
+      if (!local) return empty;
+      const raw = local.widgets ?? [];
+      const live = withLiveArt(theme.id, raw, { targets });
+      const sources = new Map<string, Source>();
+      const options: WidgetOption[] = [];
+      live.forEach((option) => {
+        const uri = remoteArtFileUri(theme.id, option.image);
+        if (!uri) return;
+        options.push(option);
+        sources.set(option.id, { option, uri });
+      });
+      const files = remoteArtFiles(local);
+      const wallUri = remoteArtFileUri(theme.id, files.wallpaper);
+      const wall = pickWallpaper(local, Number.MAX_SAFE_INTEGER);
+      return {
+        options,
+        sources,
+        wallpaper: () => existingLocalFile(wallUri),
+        wallpaperPx: wall ? { w: wall.width, h: wall.height } : empty.wallpaperPx,
+      };
+    }
     if (isArtPackTheme(theme)) {
       // A bundled art pack: its hero pieces, as a v1 pack would list them.
       const artId = theme.artPack.id;
@@ -295,7 +232,6 @@ async function themeArt(theme: Theme, targets: CountdownArtTargets, signal: Abor
           return wall;
         },
         wallpaperPx: empty.wallpaperPx,
-        hasWallpaper: true,
       };
     }
   } catch {
@@ -315,15 +251,15 @@ async function composeOne(theme: Theme, art: ThemeArt, piece: PlannedThemePiece)
   if (!artUri) return 'failed';
   const device = seamlessDeviceHere();
   let res: WidgetsResult;
-  const wallpaperUri = src.option.background === 'wallpaper' ? await art.wallpaper() : null;
-  const skipIfPresent = !piece.artRevision;
-  if (wallpaperUri) {
+  if (src.option.background === 'wallpaper') {
+    const wallpaperUri = await art.wallpaper();
+    if (!wallpaperUri) return 'failed';
     const crop = seamlessCrop({ device, wallpaper: art.wallpaperPx, size: piece.size, slot: normaliseSlot(piece.size, null), nudge: { dx: 0, dy: 0 } });
-    res = await widgets.composeArtPiece({ id: piece.id, kind: 'seamless', wallpaperUri, cropPx: crop.cropPx, heroUri: artUri, skipIfPresent });
+    res = await widgets.composeArtPiece({ id: piece.id, kind: 'seamless', wallpaperUri, cropPx: crop.cropPx, heroUri: artUri });
   } else {
     const px = widgetSizePx(device, piece.size);
     const preserveArtwork = src.option.numberFree === true && !!src.option.liveFrame && (src.option.kind === 'clock' && !!src.option.liveFrame.clockStyle || !!src.option.liveFrame.valueStyle);
-    res = await widgets.composeArtPiece({ id: piece.id, kind: 'art', artUri, widthPx: px.w, heightPx: px.h, colour: theme.palette.bg, preserveArtwork, skipIfPresent });
+    res = await widgets.composeArtPiece({ id: piece.id, kind: 'art', artUri, widthPx: px.w, heightPx: px.h, colour: theme.palette.bg, preserveArtwork });
   }
   if (!res.available && res.reason === 'not-built') return 'not-built';
   return res.ok ? 'ok' : 'failed';

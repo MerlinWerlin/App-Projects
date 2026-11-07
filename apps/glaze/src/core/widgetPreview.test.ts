@@ -149,7 +149,10 @@ test('WidgetArtMenu: stable names, stacked small caption, native-like background
   assert.match(art, /wallpaper=\{menuWallpaper\}/);
 });
 
-test('downloaded hero dimensions remain available to legacy widget artwork', () => {
+test('theme page Seamless card sizes the hero from the downloaded piece (remoteHeroPx), reference size only as fallback', () => {
+  const page = read('app', 'theme', '[id].tsx');
+  assert.match(page, /heroPx=\{heroPx\}/);
+  assert.match(page, /heroSrc\.kind === 'file' \? remoteHeroSizes\?\.\[size\]/);
   const hook = read('src', 'native', 'useRemoteCatalog.ts');
   assert.match(hook, /remoteHeroPx\(local\)/);
 });

@@ -47,7 +47,7 @@ private struct ThemeGalleryProvider: TimelineProvider {
   }
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<ThemeGalleryEntry>) -> Void) {
-    let design = ThemeStore.loadGalleryDesign(kind: kind.rawValue, recordTimeline: true)
+    let design = ThemeStore.loadGalleryDesign(kind: kind.rawValue)
     let plan = LiveArtSchedule.plan(kind: kind.schedule, from: Date())
     completion(Timeline(entries: plan.dates.map { ThemeGalleryEntry(date: $0, design: design) }, policy: plan.policy))
   }

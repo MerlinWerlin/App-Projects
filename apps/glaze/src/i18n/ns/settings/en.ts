@@ -71,6 +71,9 @@ export const en = {
     versionRow: 'Version',
     credits: 'Built with original art; app names belong to their owners.',
     // T257: the startup diagnostics line (timings stay on the phone).
+    rebuildWidgetArt: "Rebuild widget art",
+    artRebuilt: "Widget art rebuilt",
+    artRebuildFailed: "Couldn’t rebuild widget art. Try again.",
     widgetDiagnostics: "Widget diagnostics",
     widgetThemes: "Active {active} · Shared {shared} · Widget read {read}",
     widgetArtCounts: "Art [{theme}] planned {planned} · Ready {composed} · Failed {failed} · Missing {missing}",

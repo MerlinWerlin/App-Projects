@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.12 repairs the native widget art picker, removes duplicate pictures, clarifies theme actions and enlarges the completion controls.",
+  "note": "Glaze 1.0.13 restores the 1.0.6 widget art pipeline and rebuilds old widget art while preserving personal photos.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

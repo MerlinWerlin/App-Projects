@@ -116,3 +116,14 @@ test('owner 25 Oct: the sheet and the Live Photo screens never spring or bounce'
   }
   assert.match(strip(read('src', 'ui', 'Sheet.tsx')), /SlideInDown\.duration\(durations\.base\)\.easing\(easeOutCurve\)/);
 });
+
+// Owner 25 Oct (glaze-retest A): picking a theme on the Widgets tab also re-themes the Home Screen
+// widgets (it used to change the in-app previews only).
+test('owner 25 Oct: the Widgets tab theme pick writes the theme to the Home Screen widgets', () => {
+  const src = strip(read('app', '(tabs)', 'widgets.tsx'));
+  assert.match(src, /import \{ applyWidgetTheme \} from '\.\.\/\.\.\/src\/store\/widgetTheme'/);
+  const pick = /const pickTheme = \(id: string\) => \{([\s\S]*?)\n  \};/.exec(src);
+  assert.ok(pick, 'pickTheme found');
+  assert.match(pick[1], /setPicked\(id\)/);
+  assert.match(pick[1], /applyWidgetTheme\(next\)/);
+});

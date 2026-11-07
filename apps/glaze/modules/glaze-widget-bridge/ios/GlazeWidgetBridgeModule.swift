@@ -8,7 +8,6 @@ import CoreLocation
 import EventKit
 import ExpoModulesCore
 import Foundation
-import ImageIO
 import UIKit
 import WidgetKit
 
@@ -27,7 +26,6 @@ private let habitLogKey = "glaze.habitLog.v1"
 private let habitWidgetKinds = ["GlazeHabitWater", "GlazeHabitMood", "GlazeHabitSleep", "GlazeHabitSteps", "GlazeHabitStreak"]
 /// T146: written by the widget extension on every theme load (targets/widget/ThemeStore.swift,
 /// src/core/widgetLink.ts WIDGET_LAST_READ_KEY); the app only reads it.
-private let galleryLastReadFile = "gallery-last-read.json"
 private let lastReadKey = "glaze.widget.lastRead.v1"
 /// T221 "My widget art" library (src/core/widgetArtLibrary.ts WIDGET_ART_DIR / WIDGET_ART_INDEX_FILE /
 /// WIDGET_ART_SOURCES; read by targets/widget/WidgetArtLibrary.swift).
@@ -36,8 +34,6 @@ private let artIndexFile = "index.json"
 private let artSourceFiles: Set<String> = ["seamless-small.png", "seamless-medium.png", "seamless-large.png", "widget-photo.jpg"]
 
 public class GlazeWidgetBridgeModule: Module {
-  private var artUpdateTasks = Set<Int>()
-
   public func definition() -> ModuleDefinition {
     Name("GlazeWidgetBridge")
 
@@ -81,37 +77,6 @@ public class GlazeWidgetBridgeModule: Module {
       catch { return false }
       if let defaults = UserDefaults(suiteName: appGroup) { defaults.set(json, forKey: themeKey) }
       GlazeWidgetBridgeModule.reloadWidgets()
-      return true
-    }
-
-    AsyncFunction("setPackClockFace") { (id: String, uri: String?) -> Bool in
-      guard id.range(of: "^[a-z0-9][a-z0-9-]{0,63}$", options: .regularExpression) != nil,
-        let group = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
-      else { return false }
-      let files = FileManager.default
-      let destination = group.appendingPathComponent("clock-face-\(id).png")
-      do {
-        if let uri = uri {
-          guard let url = URL(string: uri), url.isFileURL,
-            let size = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize,
-            (1...(1024 * 1024)).contains(size) else { return false }
-          if files.contentsEqual(atPath: url.path, andPath: destination.path) { return true }
-          let bytes = try Data(contentsOf: url)
-          guard bytes.count == size,
-            let source = CGImageSourceCreateWithData(bytes as CFData, [kCGImageSourceShouldCache: false] as CFDictionary),
-            CGImageSourceGetCount(source) == 1,
-            let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString: Any],
-            let width = properties[kCGImagePropertyPixelWidth] as? Int,
-            properties[kCGImagePropertyPixelHeight] as? Int == width, (510...1024).contains(width)
-          else { return false }
-          try bytes.write(to: destination, options: .atomic)
-        } else {
-          guard files.fileExists(atPath: destination.path) else { return true }
-          try files.removeItem(at: destination)
-        }
-      } catch { return false }
-      WidgetCenter.shared.reloadTimelines(ofKind: "GlazeThemeClock")
-      WidgetCenter.shared.reloadTimelines(ofKind: "GlazeSeamless")
       return true
     }
 
@@ -271,7 +236,7 @@ public class GlazeWidgetBridgeModule: Module {
         loaded.size.width > 0, loaded.size.height > 0
       else { return false }
       // T251: keyed / feathered first (unchanged when its edge is already transparent).
-      let art = GlazeArtBlend.blended(loaded, assetUri: artUri)
+      let art = GlazeArtBlend.blended(loaded)
       guard art.size.width > 0, art.size.height > 0 else { return false }
       // T252: the composition is shared with composeWidgetArtPiece (library pieces) below.
       let composed = GlazeWidgetBridgeModule.composeArtImage(art: art, w: w, h: h, colour: colour)
@@ -301,21 +266,14 @@ public class GlazeWidgetBridgeModule: Module {
     /// - lastRead: what the extension last rendered (JSON string) or "" when the app can't see it.
     /// - storedTheme: the stored theme JSON or "" (JS compares its updatedAt with lastRead.at).
     AsyncFunction("linkStatus") { () -> [String: Any] in
-      let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
+      let containerOk = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) != nil
       let defaults = UserDefaults(suiteName: appGroup)
-      let storedFile = container.flatMap { try? String(contentsOf: $0.appendingPathComponent(themeFile), encoding: .utf8) }
-      let stored = storedFile ?? defaults?.string(forKey: themeKey) ?? ""
+      let stored = defaults?.string(forKey: themeKey) ?? ""
       let lastRead = defaults?.string(forKey: lastReadKey) ?? ""
-      let galleryRead = container.flatMap { try? String(contentsOf: $0.appendingPathComponent(galleryLastReadFile), encoding: .utf8) }
-      let artData = container.flatMap { try? Data(contentsOf: $0.appendingPathComponent(artDir).appendingPathComponent(artIndexFile)) }
-      let art = artData.flatMap { (try? JSONSerialization.jsonObject(with: $0)) as? [String: Any] }
-      let artTheme = art?["currentThemeId"] as? String
       return [
-        "containerOk": container != nil,
+        "containerOk": containerOk,
         "themeStored": !stored.isEmpty,
         "lastRead": lastRead,
-        "galleryRead": galleryRead ?? "",
-        "artTheme": artTheme ?? "",
         "storedTheme": stored,
       ]
     }
@@ -370,16 +328,21 @@ public class GlazeWidgetBridgeModule: Module {
 
     /// T221: { index: widget-art/index.json as stored ("" when missing), dir: file URL of widget-art/
     /// ("" when the container is missing) }. Read-only.
-    AsyncFunction("getWidgetArtLibrary") { () -> [String: Any] in
+    AsyncFunction("resetWidgetArtForRecovery") { () -> Bool in
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+            GlazeWidgetArtRecovery.reset(container: container) else { return false }
+      WidgetCenter.shared.invalidateConfigurationRecommendations()
+      GlazeWidgetBridgeModule.reloadWidgets()
+      return true
+    }
+
+    AsyncFunction("getWidgetArtLibrary") { () -> [String: String] in
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
         return ["index": "", "dir": ""]
       }
       let dir = container.appendingPathComponent(artDir, isDirectory: true)
       let raw = (try? String(contentsOf: dir.appendingPathComponent(artIndexFile), encoding: .utf8)) ?? ""
-      let index = (try? JSONSerialization.jsonObject(with: Data(raw.utf8))) as? [String: Any]
-      let ids = GlazeWidgetBridgeModule.artIDs(index)
-      let missing = ids.filter { !FileManager.default.fileExists(atPath: dir.appendingPathComponent("\($0).jpg").path) }
-      return ["index": raw, "dir": dir.absoluteString, "missing": Array(missing)]
+      return ["index": raw, "dir": dir.absoluteString]
     }
 
     /// T221: writes widget-art/index.json (built in JS by src/core/widgetArtLibrary.ts), deletes every
@@ -394,29 +357,22 @@ public class GlazeWidgetBridgeModule: Module {
         let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
       else { return false }
       let dir = container.appendingPathComponent(artDir, isDirectory: true)
-      let indexURL = dir.appendingPathComponent(artIndexFile)
-      let old = (try? Data(contentsOf: indexURL)).flatMap { (try? JSONSerialization.jsonObject(with: $0)) as? [String: Any] }
       do {
         try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
-        try data.write(to: indexURL, options: .atomic)
+        try data.write(to: dir.appendingPathComponent(artIndexFile), options: .atomic)
       } catch {
         return false
       }
-      // Keep a concurrent compose's files until its own index write. Remove retired
-      // files and abandoned drafts old enough that no active compose can be writing them.
-      let keep = Set(pieces.compactMap { $0["id"] as? String })
-      let retired = GlazeWidgetBridgeModule.artIDs(old).subtracting(keep)
-      let properties: [URLResourceKey] = [.contentModificationDateKey]
-      let files = (try? FileManager.default.contentsOfDirectory(at: dir, includingPropertiesForKeys: properties)) ?? []
-      for file in files {
-        let name = file.lastPathComponent
-        let id = name.hasSuffix("-art.png") ? String(name.dropLast(8)) :
-          name.hasSuffix(".jpg") ? String(name.dropLast(4)) : ""
-        guard GlazeWidgetBridgeModule.validArtId(id), !keep.contains(id) else { continue }
-        let modified = (try? file.resourceValues(forKeys: Set(properties)))?.contentModificationDate
-        if retired.contains(id) || (modified?.timeIntervalSinceNow ?? 0) < -86_400 {
-          try? FileManager.default.removeItem(at: file)
+      var keep = Set<String>([artIndexFile])
+      for p in pieces {
+        if let id = p["id"] as? String, GlazeWidgetBridgeModule.validArtId(id) {
+          keep.insert("\(id).jpg")
+          keep.insert("\(id)-art.png") // T236 raw art for the widget's Fit layout (optional)
         }
+      }
+      let names = (try? FileManager.default.contentsOfDirectory(atPath: dir.path)) ?? []
+      for name in names where !keep.contains(name) {
+        try? FileManager.default.removeItem(at: dir.appendingPathComponent(name))
       }
       // T252 (owner-1101h #3): only now, with the new index on disk and the files it no longer lists
       // gone, tell WidgetKit: drop any cached configuration suggestions, then reload every timeline,
@@ -427,20 +383,6 @@ public class GlazeWidgetBridgeModule: Module {
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
-
-    AsyncFunction("beginWidgetArtUpdate") { () -> Int in
-      var task = UIBackgroundTaskIdentifier.invalid
-      task = UIApplication.shared.beginBackgroundTask(withName: "Prepare Glaze widget art") { [weak self] in
-        self?.endArtUpdate(task)
-      }
-      guard task != .invalid else { return -1 }
-      self.artUpdateTasks.insert(task.rawValue)
-      return task.rawValue
-    }.runOnQueue(.main)
-
-    AsyncFunction("endWidgetArtUpdate") { (token: Int) in
-      self.endArtUpdate(UIBackgroundTaskIdentifier(rawValue: token))
-    }.runOnQueue(.main)
 
     /// T252 (owner-1101h #3): composes one theme art piece straight into the library as
     /// widget-art/<id>.jpg (+ the raw art as <id>-art.png for the Fit layout), the same full-bleed
@@ -467,7 +409,7 @@ public class GlazeWidgetBridgeModule: Module {
           loaded.size.width > 0, loaded.size.height > 0
         else { return false }
         // T251: the same blend as setWidgetArt (no box, frame or halo).
-        let art = GlazeArtBlend.blended(loaded, assetUri: artUri)
+        let art = GlazeArtBlend.blended(loaded)
         guard art.size.width > 0, art.size.height > 0 else { return false }
         let composed = GlazeWidgetBridgeModule.composeArtImage(art: art, w: w, h: h, colour: colour)
         guard let data = composed.jpegData(compressionQuality: 0.88) else { return false }
@@ -576,7 +518,7 @@ public class GlazeWidgetBridgeModule: Module {
     let k: CGFloat = longest > 1200 ? 1200 / longest : 1
     let target = CGSize(width: max(1, floor(wanted.width * k)), height: max(1, floor(wanted.height * k)))
     // T251: keyed / feathered (returned unchanged when its edge is already transparent).
-    let hero: UIImage? = heroUri.isEmpty ? nil : GlazeWidgetBridgeModule.loadImage(heroUri).map { GlazeArtBlend.blended($0, assetUri: heroUri) }
+    let hero: UIImage? = heroUri.isEmpty ? nil : GlazeWidgetBridgeModule.loadImage(heroUri).map { GlazeArtBlend.blended($0) }
 
     let format = UIGraphicsImageRendererFormat.default()
     format.scale = 1
@@ -648,15 +590,6 @@ public class GlazeWidgetBridgeModule: Module {
     let digits = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex
     guard digits.count == 6, let v = UInt32(digits, radix: 16) else { return UIColor(white: 0.12, alpha: 1) }
     return UIColor(red: CGFloat((v >> 16) & 0xFF) / 255, green: CGFloat((v >> 8) & 0xFF) / 255, blue: CGFloat(v & 0xFF) / 255, alpha: 1)
-  }
-
-  private func endArtUpdate(_ task: UIBackgroundTaskIdentifier) {
-    if artUpdateTasks.remove(task.rawValue) != nil { UIApplication.shared.endBackgroundTask(task) }
-  }
-
-  private static func artIDs(_ index: [String: Any]?) -> Set<String> {
-    let pieces = index?["pieces"] as? [[String: Any]] ?? []
-    return Set(pieces.compactMap { $0["id"] as? String }.filter(validArtId))
   }
 
   /// T131: a local image from a file:// URI or a plain path.
@@ -751,21 +684,7 @@ enum GlazeArtBlend {
   }
 
   /// The art ready to sit on the wallpaper (or the original when nothing needs doing / on failure).
-  static func blended(_ image: UIImage, assetUri: String) -> UIImage {
-    // Copper Eclipse's lunar shadows are close to the sky colour. Clip the measured
-    // source outline and keep the pixels inside it opaque (artBlend.ts).
-    if URL(string: assetUri)?.lastPathComponent == "widget-copper-eclipse.f9863caf.webp" {
-      let w = image.size.width
-      let h = image.size.height
-      let disk = CGRect(x: w * 127 / 1024, y: h * 109 / 1024, width: w * 763 / 1024, height: h * 759 / 1024)
-      let format = UIGraphicsImageRendererFormat()
-      format.scale = 1
-      return UIGraphicsImageRenderer(size: image.size, format: format).image { renderer in
-        renderer.cgContext.addEllipse(in: disk)
-        renderer.cgContext.clip()
-        image.draw(at: .zero)
-      }
-    }
+  static func blended(_ image: UIImage) -> UIImage {
     guard let ctx = bitmap(image), let data = ctx.data else { return image }
     let w = ctx.width
     let h = ctx.height
