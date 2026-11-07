@@ -387,7 +387,12 @@ import Vision
     continueAfterFailure = false
     let app = makeApp()
     app.launch()
-    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
+    let widgetsTab = app.buttons["Widgets"].firstMatch
+    XCTAssertTrue(widgetsTab.waitForExistence(timeout: 40), app.debugDescription)
+    widgetsTab.tap()
+    // Let the archived app publish its initial native theme and register its widget extension,
+    // as an existing user has already done, before opening the system picker on this fresh VM.
+    RunLoop.current.run(until: Date().addingTimeInterval(5))
     let spring = makeSpringboard()
     for (index, size) in ["small", "medium", "large"].enumerated() {
       try openGallery(spring)
@@ -672,7 +677,7 @@ import Vision
 
   private func dismissWidgetEditor(in spring: XCUIApplication) throws {
     // Commit edits by tapping the backdrop outside both the editor and widget preview.
-    for _ in 0..<3 {
+    for attempt in 0..<5 {
       let visible = try screenText()
       let editor = visible.contains("Seamless") && visible.contains("Layout")
       let context = visible.contains("Edit Widget") && visible.contains("Remove Widget")
@@ -796,6 +801,9 @@ import Vision
         title.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         return
       }
+      capture("widget-picker-wait-\(attempt)")
+      print("GLAZE_PICKER_WAIT " + (try screenText())); fflush(stdout)
+      if attempt == 4 { break }
       let clear = spring.buttons["Clear text"].firstMatch
       if clear.exists { clear.tap() }
       search.tap()
