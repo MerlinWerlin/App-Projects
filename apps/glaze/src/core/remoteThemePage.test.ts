@@ -98,7 +98,7 @@ test('theme page source: one Download pill in its own glass bar, determinate pro
   const bar = d.slice(at, d.indexOf('\nfunction ', at + 10));
   assert.ok(bar.includes('<GlassBar material="chrome"'), 'its own chrome glass bar');
   const pills = [...bar.matchAll(/<PillButton\b[\s\S]*?\/>/g)].map((m) => m[0]);
-  assert.ok(pills.length >= 1 && pills.every((p) => !/variant=/.test(p)), 'each state has one filled pill');
+  assert.ok(pills.length >= 1 && pills.filter((p) => !p.includes('themeAction')).every((p) => !/variant=/.test(p)), 'each download state has one filled pill; theme choices remain separately available');
   assert.ok(bar.includes("t('theme.remote.downloadSize', { size: formatBytes(primary.bytes, locale) })"), 'Download pill shows the size');
   assert.ok(bar.includes('<ProgressBar progress={primary.percent / 100}'), 'determinate progress bar');
   assert.ok(bar.includes("t('theme.remote.offline')"), 'calm offline copy');
@@ -120,7 +120,7 @@ test('theme page source: hero art, Apply end to end, success haptic only at the 
   assert.ok(d.includes("remoteMissing\n      ? { ok: false, why: 'unreadable' }"));
   // Widget step: the downloaded widget art in the seamless card, and applyWidgetTheme.
   assert.ok(d.includes('wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris}'));
-  assert.ok(d.includes('void applyWidgetTheme(theme)'));
+  assert.ok(d.includes('await applyThemeEverywhere(theme)'));
   // Icons step: glyph icons in the palette, with a note for art packs.
   assert.ok(d.includes("t('theme.remote.iconsNote')"));
   assert.equal((d.match(/haptic\('success'\)/g) ?? []).length, 1, 'only the end-of-flow moment (a finished download is light)');

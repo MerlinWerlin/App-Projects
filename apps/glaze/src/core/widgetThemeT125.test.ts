@@ -157,7 +157,7 @@ test('bridge and extension agree on suite, key and file, and the bridge reloads 
   assert.match(code(store), /GlazeShared\.themeFile/);
 });
 
-test('the app writes the theme on every apply path and once at launch', () => {
+test('explicit theme selection writes widgets; wallpaper and icon-only actions keep them unchanged', () => {
   // T250: the launch re-write is the deferred 'widgetTheme' step, queued by startLaunchWork.
   assert.match(read('app/_layout.tsx'), /startLaunchWork\(\)/);
   const launch = read('src/store/launchWork.ts');
@@ -169,12 +169,12 @@ test('the app writes the theme on every apply path and once at launch', () => {
 
   const detail = read('app/theme/[id].tsx');
   const save = /const onSaveWallpaper = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(save, /applyWidgetTheme\(theme\)/, 'wallpaper save must apply the widget theme');
+  assert.doesNotMatch(save, /applyWidgetTheme|applyThemeEverywhere/, 'wallpaper-only saves never change widgets');
   const useStyle = /const onUseStyle = async \([^)]*\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(useStyle, /applyWidgetTheme\(theme\)/);
+  assert.doesNotMatch(useStyle, /applyWidgetTheme|applyThemeEverywhere/, 'icon-only action never changes widgets');
   // T184 / T185: "Use this theme" (the old widgets step is gone) writes the widget theme through
   // applyThemeEverywhere, which remembers it and (T250) queues the App Group write.
-  const putInUse = /const putInUse = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
+  const putInUse = /const putInUse = async \([^)]*\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
   assert.match(putInUse, /applyThemeEverywhere\(theme\)/);
   assert.match(read('src/store/activeTheme.ts'), /const widgets = await rememberWidgetTheme\(theme\);/);
   assert.match(read('src/store/activeTheme.ts'), /requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);

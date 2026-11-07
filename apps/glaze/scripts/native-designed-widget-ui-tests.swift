@@ -360,6 +360,7 @@ import Vision
     RunLoop.current.run(until: Date().addingTimeInterval(8))
     let changed = try nativeHomeSamples("B")
     try verifyThemeDiagnostics("aurora-haven")
+    try verifyAuroraArtAfterSwap()
     XCTAssertEqual(Set(baseline.keys), Set(changed.keys))
     for (key, pixels) in baseline {
       let next = try XCTUnwrap(changed[key])
@@ -381,6 +382,51 @@ import Vision
     }
     _ = try nativeHomeSamples("remove-test-native", remove: true)
     print("GLAZE_THEME_SWAP_A_B_A_VERIFIED"); fflush(stdout)
+  }
+
+  private func verifyAuroraArtAfterSwap() throws {
+    let app = makeApp()
+    app.activate()
+    try showMainTabs(in: app)
+    app.buttons["Widgets"].firstMatch.tap()
+    for size in ["Small", "Medium", "Large"] {
+      let sizeButton = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", size)).firstMatch
+      reveal(sizeButton, in: app); sizeButton.tap()
+      for name in ["Aurora date", "Snow mushrooms"] {
+        let item = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
+        reveal(item, in: app)
+        capture("swapped-aurora-preview-" + size.lowercased() + "-" + name.replacingOccurrences(of: " ", with: "-"))
+      }
+    }
+    XCUIDevice.shared.press(.home)
+    let spring = makeSpringboard()
+    for size in ["small", "medium", "large"] {
+      let widget = try findArtWidget(size, in: spring)
+      try enterWidgetEditor(widget, in: spring)
+      try openArtOptions(in: spring)
+      try resetArtOptionsToStart(in: spring, themeName: "Aurora Haven")
+      var seen = Set<String>()
+      var chosen: CGVector?
+      for _ in 0..<26 {
+        let lines = try groupedScreenLines()
+        for name in ["Aurora date", "Snow mushrooms"] {
+          if let row = lines.first(where: { $0.text.localizedCaseInsensitiveContains(name) && $0.text.localizedCaseInsensitiveContains(size) }) {
+            seen.insert(name)
+            if name == "Snow mushrooms" { chosen = CGVector(dx: row.box.midX, dy: 1 - row.box.midY) }
+          }
+        }
+        if seen.count == 2 && chosen != nil { break }
+        scrollArtOptions(in: spring, towardsStart: false)
+      }
+      capture("swapped-aurora-edit-art-" + size)
+      XCTAssertEqual(seen, Set(["Aurora date", "Snow mushrooms"]))
+      let choice = try XCTUnwrap(chosen)
+      spring.coordinate(withNormalizedOffset: choice).tap()
+      RunLoop.current.run(until: Date().addingTimeInterval(1))
+      try dismissWidgetEditor(in: spring)
+      capture("swapped-aurora-home-" + size)
+    }
+    print("GLAZE_UPGRADE_AURORA_ALL_FAMILIES_VERIFIED"); fflush(stdout)
   }
 
   func testInstallLegacyArtWidgetsForUpgrade() throws {
@@ -488,7 +534,8 @@ import Vision
     }
     app.terminate()
     let theme = try openAlpine()
-    let part = theme.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
+    let choice = theme.buttons["View widgets with this theme"].firstMatch
+    let part = choice.exists ? choice : theme.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", "Widgets, Everyday widgets")).firstMatch
     reveal(part, in: theme); part.tap()
     for size in ["Small", "Medium", "Large"] {
       let sizeButton = theme.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@ AND label ENDSWITH %@", "Widget size", size)).firstMatch
@@ -624,10 +671,10 @@ import Vision
     RunLoop.current.run(until: Date().addingTimeInterval(0.6))
   }
 
-  private func resetArtOptionsToStart(in spring: XCUIApplication) throws {
+  private func resetArtOptionsToStart(in spring: XCUIApplication, themeName: String = "Alpine Starlight") throws {
     var loaded = false
     for _ in 0..<20 {
-      if try screenText().localizedCaseInsensitiveContains("Alpine Starlight") { loaded = true; break }
+      if try screenText().localizedCaseInsensitiveContains(themeName) { loaded = true; break }
       RunLoop.current.run(until: Date().addingTimeInterval(0.5))
     }
     XCTAssertTrue(loaded, "The real art option menu did not finish loading")
@@ -797,6 +844,13 @@ import Vision
       search.typeText("Glaze")
       let searchKey = spring.keyboards.buttons["Search"].firstMatch
       if searchKey.exists && searchKey.isHittable { searchKey.tap() }
+      // SpringBoard exposes the app result as a Cell on current iOS. Its child text can
+      // be visible while reporting non-hittable; tap the actual result row instead.
+      let resultCell = spring.cells.matching(NSPredicate(format: "label == %@", "Glaze")).firstMatch
+      if resultCell.waitForExistence(timeout: 5) {
+        resultCell.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        if galleryReady.waitForExistence(timeout: 10) { return }
+      }
       if result.waitForExistence(timeout: 4),
         let row = spring.buttons.matching(NSPredicate(format: "label == %@", "Glaze"))
           .allElementsBoundByIndex.first(where: { $0.exists && $0.isHittable }) {

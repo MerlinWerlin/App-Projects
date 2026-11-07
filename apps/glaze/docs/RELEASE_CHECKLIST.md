@@ -9,7 +9,7 @@ from the cloud. No store submission is made from the cloud.
 
 **8 November 2026 TestFlight gallery art: `1.0.14`.** Claude's PR252 adds six theme Art widget kinds and authored-size filtering.
 
-**8 November 2026 separate theme-swap build, version `1.0.14`.** After 1.0.13 build 51, restore ordered A to B to A selection with immediate native Clock/Battery/Calendar publication and deferred original art composition. Requires the same Alpine upgrade check, including an already-recovered 1.0.13 predecessor. Four theme actions, larger checkboxes, illustrated faces and duplicate removal remain excluded.
+**8 November 2026 owner-directed follow-up, version `1.0.15`.** PR251 contains ordered A to B to A swaps, four separate theme actions and larger completion controls. Gallery and hero-size changes belong to Claude's separate 1.0.14 PR; rebase after it merges. Preserve all restored art UI, the original compositor and photos. Require retained-data Alpine and Aurora checks before TestFlight. Illustrated clock faces and duplicate removal remain excluded.
 
 **7 November 2026 TestFlight art recovery, version 1.0.13.** Restores the art pipeline to 1a12b3b and rebuilds accumulated theme art while preserving personal photos. Later features return only in separately verified builds.
 

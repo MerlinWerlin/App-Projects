@@ -10,16 +10,20 @@ EXACT = [
     'src/ui/WidgetArtLibraryList.tsx', 'src/ui/BlendedArt.tsx',
     'src/core/widgetArtLibrary.ts', 'src/core/artBlend.ts',
     'src/native/packs.ts', 'src/native/useRemoteCatalog.ts',
-    'app/theme/[id].tsx', 'app/(tabs)/widgets.tsx',
+     'app/(tabs)/widgets.tsx',
     'targets/widget/SeamlessWidget.swift', 'targets/widget/WidgetArtLibrary.swift',
     'modules/glaze-widget-bridge/ios/ClockArtRenderer.swift',
     'targets/widget/DesignedWidget.swift', 'targets/widget/ThemedWidgetDrawing.swift',
-    'src/ui/DesignedThemeWidgets.tsx', 'targets/widget/HabitStreakWidget.swift',
-    'src/ui/StepCard.tsx', 'app/install.tsx',
+    'src/ui/DesignedThemeWidgets.tsx',
+
 ]
 ALLOWED = {
     'src/core/widgetOptions.ts': 'Inherited PR252: authored-size filtering, owned by Claude.',
     'src/core/themeArtSync.ts': 'Inherited PR252: plan only authored sizes, owned by Claude.',
+    'app/theme/[id].tsx': 'Owner-directed four actions; restored ThemeWidgetArt and SeamlessCard sections and composer remain intact.',
+    'targets/widget/HabitStreakWidget.swift': 'Owner-directed larger completion square and 44-point tap target, with compact large-family spacing.',
+    'src/ui/StepCard.tsx': 'Owner-directed completion glyph increases from20 to28 points.',
+    'app/install.tsx': 'Preview/export requested theme without persisting the global selection; larger completion glyph.',
     'src/store/activeTheme.ts': 'Stage (a): order explicit selections, defer art using the current selection, and ignore late focus reads.',
     'src/store/widgetTheme.ts': 'Stage (a): one native theme writer, immediate publication, and preview/launch writes guarded by the active selection.',
     'src/store/themeWidgetArt.ts': 'Stage (a): expose generation cancellation only; original planning, compositing and commit logic remain unchanged.',
@@ -43,3 +47,12 @@ for file, reason in ALLOWED.items():
     rows.append({'file': file, 'justification': reason, 'patch': patch})
 print(json.dumps({'base': BASE, 'files': rows}, indent=2))
 
+
+# The action sheet must not delete or change the restored art compositing UI.
+file = 'app/theme/[id].tsx'
+old = subprocess.check_output(['git', 'show', BASE + ':apps/glaze/' + file], cwd=ROOT).decode()
+current = (ROOT / file).read_text(encoding='utf-8')
+start, end = 'type SeamlessStatus =', '/**\n * T179: the glass bar'
+assert old[old.index(start):old.index(end)] == current[current.index(start):current.index(end)], 'Restored SeamlessCard changed'
+assert 'heroUris={remoteHeroUris} remoteHeroSizes={remoteHeroSizes}' in current
+assert '<ThemeWidgetsShelf theme={theme} />' in current
