@@ -123,6 +123,7 @@ jobs:
               xcrun simctl install "$DEVICE" "$OLD"
               xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-upgrade-$LABEL.xcresult" -only-testing:GlazeLinkUITests/GlazeDesignedWidgetUITests/testApplyAlpineForUpgrade test-without-building > "$RUNNER_TEMP/glaze-upgrade-$LABEL.log" 2>&1 || { tail -140 "$RUNNER_TEMP/glaze-upgrade-$LABEL.log"; exit 1; }
               grep -F GLAZE_UPGRADE_ALPINE_APPLIED "$RUNNER_TEMP/glaze-upgrade-$LABEL.log"
+              python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE"
               python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/upgrade/$LABEL"
             done
             xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
