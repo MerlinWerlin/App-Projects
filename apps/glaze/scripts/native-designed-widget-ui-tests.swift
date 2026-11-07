@@ -392,7 +392,9 @@ import Vision
     for size in ["Small", "Medium", "Large"] {
       let sizeButton = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", size)).firstMatch
       reveal(sizeButton, in: app); sizeButton.tap()
-      let expected = size == "Medium" ? ["Art 7"] : ["Aurora date", "Snow mushrooms"]
+      // In-app names are numbered after the replaced clock edition is filtered out;
+      // the stored Edit Widget label below uses the original manifest numbering.
+      let expected = size == "Medium" ? ["Art 6"] : ["Aurora date", "Snow mushrooms"]
       for name in expected {
         let item = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
         reveal(item, in: app)
@@ -539,7 +541,7 @@ import Vision
     for size in ["Small", "Medium", "Large"] {
       let sizeButton = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", size)).firstMatch
       reveal(sizeButton, in: app); sizeButton.tap()
-      let expected = authoredSizes && size == "Medium" ? ["Art 9"] : names
+      let expected = authoredSizes && size == "Medium" ? ["Art 7"] : names
       for name in expected {
         let item = app.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
         reveal(item, in: app)
@@ -554,7 +556,7 @@ import Vision
     for size in ["Small", "Medium", "Large"] {
       let sizeButton = theme.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@ AND label ENDSWITH %@", "Widget size", size)).firstMatch
       reveal(sizeButton, in: theme); sizeButton.tap()
-      let expected = authoredSizes && size == "Medium" ? ["Art 9"] : names
+      let expected = authoredSizes && size == "Medium" ? ["Art 7"] : names
       for name in expected {
         let item = theme.buttons.matching(NSPredicate(format: "label CONTAINS[c] %@", name)).firstMatch
         reveal(item, in: theme)
