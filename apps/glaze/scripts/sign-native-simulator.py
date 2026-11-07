@@ -17,7 +17,6 @@ import shlex
 import struct
 import subprocess
 import sys
-import urllib.request
 
 assert os.environ.get('GITHUB_ACTIONS') == 'true'
 root = Path(os.environ['RUNNER_TEMP']).resolve() / 'glaze-simulator-signing'
@@ -41,11 +40,19 @@ def setup():
           certificateP12 certificatePassword validityNotAfter
         } } }
     } } }'''
-    request = urllib.request.Request('https://api.expo.dev/graphql',
-        data=json.dumps({'query': query, 'variables': {'name': full_name}}).encode(),
-        headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + os.environ['EXPO_TOKEN']})
-    with urllib.request.urlopen(request, timeout=45) as response:
-        data = json.load(response)
+    # Use the same authenticated Node fetch transport as scripts/expo/ios_credentials.mjs.
+    # Private response bytes are captured in memory and never printed or made an artifact.
+    client = '''const response = await fetch('https://api.expo.dev/graphql', {
+      method: 'POST', headers: {'content-type':'application/json', authorization:'Bearer '+process.env.EXPO_TOKEN},
+      body: process.argv[1], signal: AbortSignal.timeout(45000)
+    });
+    process.stdout.write(JSON.stringify({status:response.status, body:response.ok?await response.json():null}));'''
+    payload = json.dumps({'query': query, 'variables': {'name': full_name}})
+    output, _ = run(['node', '--input-type=module', '-e', client, payload], private=True)
+    response = json.loads(output)
+    if response['status'] != 200:
+        raise RuntimeError('Expo simulator-signing credential read returned HTTP ' + str(response['status']))
+    data = response['body']
     if data.get('errors'):
         raise RuntimeError('Read-only Expo simulator-signing credential query failed')
     selected = None
