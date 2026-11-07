@@ -1,7 +1,7 @@
 /**
  * Simple mode layout as data, ported exactly from prototype/index.html viewRemote()
  * (the `S.simple` branch): a 2-column grid of big keys, read row by row.
- * Pure TS so it is unit-tested; SimpleRemote.tsx only renders it. Every control is free.
+ * Pure TS so it is unit-tested; SimpleRemote.tsx only renders it. Couch Plus is checked by the session gate, never here.
  */
 import { KEY_LABEL, KEY_LABEL_KEY, type Key } from '../../core/keys';
 import type { MessageKey } from '../../i18n/core';

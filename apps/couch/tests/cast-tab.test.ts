@@ -421,6 +421,33 @@ describe('CastController', () => {
     expect(c.isActive()).toBe(false);
   });
 
+  it('Couch Plus gate (owner 7 Nov 2026): locked puts nothing on the TV, serves nothing and stops the slideshow', async () => {
+    const { c, srv, last, queue } = setup();
+    await c.setContext({ demo: false, tvs: [TV] });
+    let asked = 0;
+    let open = false;
+    c.setGate(() => {
+      asked += 1;
+      return open;
+    });
+    expect(c.allowed()).toBe(false);
+    queue().setSlideshow(true);
+    await c.addItems([photo('a'), photo('b')]);
+    await c.start(1);
+    await c.sendTestPicture();
+    expect(srv.served.length).toBe(0);
+    expect(last().loads.length).toBe(0);
+    expect(queue().snapshot().slideshow).toBe(false);
+    expect(asked).toBeGreaterThan(1);
+    // Unlocked (trial started or Plus bought): the same queue casts.
+    open = true;
+    await c.start(0);
+    expect(srv.served.map((x) => x.req.uri)).toEqual(['file:///p/a.jpg']);
+    expect(last().loads.length).toBe(1);
+    c.setGate(null);
+    expect(c.allowed()).toBe(true);
+  });
+
   it('when a video ends on the TV the queue moves on; a stop we asked for does not', async () => {
     const { c, last, queue } = setup();
     await c.setContext({ demo: false, tvs: [TV] });
@@ -522,7 +549,7 @@ describe('CastController', () => {
 describe('Cast tab wiring (static)', () => {
   const screen = read('app/(tabs)/cast.tsx');
 
-  it('the cast screen and its components never import src/plus (casting basics are free)', () => {
+  it('the cast screen and its components never import src/plus (the Couch Plus gate is installed from src/plus/gate.tsx)', () => {
     const files = [
       'app/(tabs)/cast.tsx',
       'src/state/cast.tsx',

@@ -41,7 +41,6 @@ export const coreEn = {
   'core.settings.glow.off': 'Off',
   'core.settings.glow.offShort': 'Off',
   'core.settings.remoteTheme.title': 'Remote theme',
-  'core.settings.remoteTheme.hint': 'Colours, texture and feel of the remote. Every button stays free.',
 
   // Key accessibility labels (src/core/keys.ts KEY_LABEL), identical to the prototype's aria-labels.
   'core.key.power': 'Power',
@@ -302,25 +301,9 @@ export const coreEn = {
   'core.diagnostics.agoMinutes': '{count}m ago',
   'core.diagnostics.agoHours': '{count}h ago',
 
-  // src/plus (Couch Plus screen and tip jar).
-  'core.plus.promise': 'Every button on the remote stays free. Plus adds extras, never takes controls away.',
-  'core.plus.feature.widgets.title': 'Home Screen widgets',
-  'core.plus.feature.widgets.hint': 'Power, volume and your last TV from the Home Screen',
-  'core.plus.feature.watch.title': 'Apple Watch and Wear OS',
-  'core.plus.feature.watch.hint': 'A small remote on your wrist',
-  'core.plus.feature.liveActivity.title': 'Live Activity',
-  'core.plus.feature.liveActivity.hint': 'Volume and play/pause on the Lock Screen while you watch',
-  'core.plus.feature.controls.title': 'Lock Screen and Control Center',
-  'core.plus.feature.controls.hint': 'One-tap controls without opening the app',
-  'core.plus.feature.macros.title': 'Button macros',
-  'core.plus.feature.macros.hint': 'One tap for a sequence, like "Movie night"',
-  'core.plus.unavailable': "Purchases aren't available in this test build.",
-  'core.plus.failed': 'Something went wrong. Nothing was charged.',
-
   // Home Screen widget (T77, src/core/widget)
   'core.widget.openApp': "Open Couch",
   'core.widget.noTv': "Add a TV in Couch to use this widget",
-  'core.widget.plusHint': "Widgets come with Couch Plus. Every button in the app stays free.",
   'core.widget.unnamedTv': "Your TV",
   'core.widget.action.nextInput': "Next input",
   'core.widget.state.connected': "Connected",
@@ -329,4 +312,15 @@ export const coreEn = {
   'core.widget.state.off': "Off",
 
   'core.common.tvCount': { one: '{count} TV', other: '{count} TVs' },
+
+  // Couch Plus: the remote and casting are the paid unlock (owner 7 Nov 2026)
+  "core.plus.promise": "Unlock the remote and casting.",
+  "core.plus.feature.remote.title": "The whole remote",
+  "core.plus.feature.remote.hint": "Every button, the touchpad, keyboard, voice, numbers, inputs and opening apps",
+  "core.plus.feature.cast.title": "Casting",
+  "core.plus.feature.cast.hint": "Your photos and videos on the TV",
+  "core.plus.unavailable": "Purchases aren't available right now. Check your internet connection and try again.",
+  "core.plus.locked": "The remote and casting need Couch Plus. Start the free trial or buy it in Settings.",
+  "core.widget.plusHint": "Widget buttons come with Couch Plus.",
+  "core.settings.remoteTheme.hint": "Colours, texture and feel of the remote.",
 } as const satisfies Record<string, Msg>;

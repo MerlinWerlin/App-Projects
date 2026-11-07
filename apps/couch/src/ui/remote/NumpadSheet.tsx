@@ -27,7 +27,7 @@ function charFor(key: Key): string {
 
 /**
  * 123 number pad bottom sheet (prototype v2 numpadSheet). State lives in numpad.ts;
- * digits go straight to the TV via session.sendKey. Free like every control.
+ * digits go straight to the TV via session.sendKey. Sent through the session, so the Couch Plus gate applies.
  */
 export function NumpadSheet({ visible, onClose, onSent }: NumpadSheetProps) {
   const t = useRemoteTheme();

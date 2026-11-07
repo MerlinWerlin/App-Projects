@@ -29,21 +29,25 @@ describe('Settings on design v2 (T68 step 1)', () => {
     expect(src).not.toMatch(/from '\.\.\/src\/theme\/tokens'|from '\.\.\/src\/ui\/Screen'/);
   });
 
-  it('keeps every setting, all free, with the Remote / General / Help groups', () => {
+  it('keeps every setting, all free, with the Remote / General / Help groups and the Couch Plus card', () => {
     for (const key of ['remoteTheme', 'glow', 'haptics', 'simple', 'oneHanded', 'language', 'theme']) expect(src).toContain(`SETTING_COPY.${key}`);
     for (const key of ['groupRemote', 'groupGeneral', 'groupHelp']) expect(src).toContain(`t('app.settings.${key}')`);
     expect(src).toContain("router.push('/themes')");
     expect(src).toContain("router.push('/diagnostics')");
     expect(src).toContain("router.push('/plus')");
     expect(src).toContain("footer={t('ui.screen.freePromise')}");
-    expect(src).not.toMatch(/usePlus|isPlus|src\/plus/);
+    // Owner 7 Nov 2026: the card shows where you stand (unlocked, trial days left) from usePlus, read-only.
+    expect(src).toContain("import { usePlus } from '../src/plus/usePlus';");
+    expect(src).toContain("t('app.plus.trialDaysLeft', { count: access.daysLeft })");
+    expect(src).not.toMatch(/\.setGate\(|\.allowed\(\)/);
   });
 
   it('keeps the v1 accessibility labels', () => {
     expect(src).toContain("t('app.settings.remoteThemeLabel'");
     expect(src).toContain("t('app.settings.optionLabel'");
     expect(src).toContain("accessibilityHint={t('app.settings.diagnosticsHint')}");
-    expect(src).toContain("accessibilityHint={t('app.settings.plusHint')}");
+    expect(src).toContain("t('app.settings.plusHint')");
+    expect(src).toContain('accessibilityHint={plusHint}');
   });
 });
 
@@ -114,8 +118,14 @@ describe('Plus on design v2 (T68 step 4)', () => {
     expect(src).toContain('<FreePromise');
   });
 
-  it('keeps one-time purchase, restore and the v1 accessibility labels (tip jar removed 25 Oct 2026)', () => {
-    expect(src).toContain('applyPurchase(plusStore(), purchaseProvider(), action)');
+  it('paywall (owner 7 Nov 2026): 7-day free trial, one-time Buy at the store price, Restore, v1 labels', () => {
+    expect(src).toContain("(action === 'buy' ? store.purchase() : store.restore())");
+    expect(src).toContain("t('app.plus.startTrial', { days: TRIAL_DAYS })");
+    expect(src).toContain('canStartTrial(access)');
+    expect(src).toContain("t('app.plus.buyPrice', { price })");
+    expect(src).toContain('storePrice ?? PLUS_PRICE');
+    expect(src).toContain("t('app.plus.trialDaysLeft', { count: access.daysLeft })");
+    expect(src).toContain("t('app.plus.grandfathered')");
     expect(src).toContain("buy('buy')");
     expect(src).toContain("buy('restore')");
     expect(src).not.toContain('.tip(id)');
@@ -125,7 +135,7 @@ describe('Plus on design v2 (T68 step 4)', () => {
     expect(src).toContain("accessibilityHint={t('app.plus.buyHint')}");
     expect(src).toContain("accessibilityLabel={t('app.plus.restore')}");
     expect(src).toContain('accessibilityLiveRegion="polite"');
-    expect(src).not.toMatch(/subscri|per month|monthly/i);
+    expect(src).not.toMatch(/per month|monthly|autoRenew/i);
   });
 });
 
@@ -155,7 +165,6 @@ describe('Themes on design v2 (T68 step 5)', () => {
     expect(src).toContain("t('app.themes.tileLabel', { name, tier })");
     expect(src).toContain("accessibilityHint={locked ? t('app.themes.tryHint') : undefined}");
     expect(src).toContain("accessibilityLabel={t('app.themes.preview', { name: shownName })}");
-    expect(src).toContain("accessibilityHint={t('app.themes.keepHint')}");
     expect(src).toContain('accessibilityLiveRegion="polite"');
     expect(src).toContain('<FreePromise');
   });

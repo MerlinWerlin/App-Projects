@@ -12,7 +12,7 @@
  * that only four were free and the rest were Couch Plus with a session-only "Try it"). Charcoal & Gold is
  * the default (since 24 Oct 2026: matches the app icon and opening animation). The `tier` field and the
  * plus/trying options below are kept so the shape stays stable; nothing is 'plus' today.
- * Every TV control stays free in every theme.
+ * Themes never change what a control does.
  */
 import type { Palette } from './tokens';
 

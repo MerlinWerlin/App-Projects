@@ -18,7 +18,7 @@ import { gridCellWidth, gridColumns, sheetContentWidth } from '../../core/textSc
 /**
  * Sleep timer (T72): a pill under the remote opens this sheet; pick 15 / 30 / 45 / 60 / 90 minutes
  * or Off. Logic lives in src/core/sleepTimer.ts; this file only binds it to the app (one shared
- * timer, AsyncStorage, AppState, the session's sendKey). Free like every TV control: no Plus check.
+ * timer, AsyncStorage, AppState, the session's sendKey). No Plus check here: the session's Couch Plus gate applies.
  */
 
 /** The key sender of the latest mounted remote (the session can be replaced by demo mode). */

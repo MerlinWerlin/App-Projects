@@ -63,7 +63,7 @@ describe('widget bridge (native wrapper)', () => {
     expect(loadWidgetBridge()).toBe(UNAVAILABLE_WIDGET_BRIDGE);
   });
 
-  it('the link handler never reads Couch Plus; only the hook does, via src/plus', () => {
+  it('the link handler never reads Couch Plus (links go through the session gate); only the hook does, via src/plus', () => {
     const handler = readFileSync(join(root, 'src/ui/widget/linkHandler.ts'), 'utf8');
     expect(handler).not.toMatch(/from\s+['"][^'"]*\/plus(\/|['"])/);
     const core = ['actions', 'links', 'tapGate', 'snapshot', 'bridge', 'index'].map((f) =>
@@ -72,6 +72,6 @@ describe('widget bridge (native wrapper)', () => {
     for (const src of core) expect(src).not.toMatch(/\/plus(\/|['"])/);
     const hook = readFileSync(join(root, 'src/ui/widget/useWidgetLinks.ts'), 'utf8');
     const plusImports = [...hook.matchAll(/from\s+['"]([^'"]*\/plus\/[^'"]*)['"]/g)].map((m) => m[1]);
-    expect(plusImports).toEqual(['../../plus/state']);
+    expect(plusImports).toEqual(['../../plus/usePlus']);
   });
 });

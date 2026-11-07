@@ -14,7 +14,7 @@ import { PLATFORM_LABEL } from '../src/core/types';
 import { en } from '../src/i18n/catalog';
 import { coreEn } from '../src/i18n/catalog/en/core';
 import { setLocale } from '../src/i18n/core';
-import { PLUS_FEATURE_COPY, plusPromise } from '../src/plus/entitlement';
+import { PLUS_FEATURE_COPY, plusPromise } from '../src/plus/copy';
 
 const root = join(__dirname, '..');
 
@@ -46,7 +46,7 @@ function pseudoCopy(): string[] {
     ago(10_000, 5_000),
     formatLogEntry({ at: 0, from: null, to: 'connected', attempt: 2 }),
     plusPromise(),
-    PLUS_FEATURE_COPY.widgets.title,
+    PLUS_FEATURE_COPY.remote.title,
   ];
 }
 
@@ -68,7 +68,7 @@ describe('core + plus copy follows the active language', () => {
     expect(foundLabel(0)).toBe('No TVs found');
     expect(foundLabel(1)).toBe('Found 1 TV');
     expect(foundLabel(3)).toBe('Found 3 TVs');
-    expect(plusPromise()).toBe('Every button on the remote stays free. Plus adds extras, never takes controls away.');
+    expect(plusPromise()).toBe('Unlock the remote and casting.');
     expect(VOICE_NOTES.sent('cooking shows')).toBe('Sent to the TV: "cooking shows"');
     expect(formatLogEntry({ at: 0, from: null, to: 'connected', attempt: 2 })).toBe('00:00:00 start -> connected (attempt 2)');
     expect(ago(70_000, 5_000)).toBe('1m ago');

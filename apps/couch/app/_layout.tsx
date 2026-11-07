@@ -12,7 +12,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { INTRO_MS, startupReady } from '../src/core/introRemote';
 import { statusBarStyle } from '../src/core/prefs';
 import { useT } from '../src/i18n/react';
+import { PlusGate } from '../src/plus/gate';
 import { PlusThemeProvider } from '../src/plus/themes';
+import { plusAccess } from '../src/plus/usePlus';
 import { LifecycleProvider } from '../src/state/lifecycle';
 import { PrefsProvider, usePrefs } from '../src/state/prefs';
 import { RatingPromptHost } from '../src/state/useRatingPrompt';
@@ -28,6 +30,10 @@ import { useScheme, useTheme } from '../src/theme/useTheme';
 // Oversight D72-1: real glass behind v2 materials (expo-blur ships in Expo Go). BlurMaterial still
 // draws its solid AA fallback with Reduce Transparency and on Android.
 registerBlurView(BlurView as unknown as BlurViewLike);
+
+// Couch Plus (owner 7 Nov 2026): read the purchase, the trial and whether this phone had the free Couch 1.0.3
+// (grandfathered, src/plus/grandfather.ts) now, before any screen writes storage.
+plusAccess();
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 // Premium polish rule 6: the splash fades into the first screen. night-intro: the splash image is the intro's first
@@ -68,6 +74,8 @@ export default function RootLayout() {
           <SessionProvider>
             {/* cast-1024: Cast tab state (targets for the session's TVs, queue, file server). */}
             <CastProvider>
+              {/* Couch Plus: the one gate on the remote and casting (src/plus/gate.tsx); opens the paywall. */}
+              <PlusGate />
               <LifecycleProvider>
                 <RootShell ready={ready} />
               </LifecycleProvider>

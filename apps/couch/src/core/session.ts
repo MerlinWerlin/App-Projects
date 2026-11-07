@@ -40,6 +40,13 @@ export interface SessionOptions {
   maxHeld?: number;
 }
 
+/**
+ * Couch Plus gate (owner decision 7 Nov 2026): the remote is the paid part of Couch. Returns true when controls may
+ * be sent now; when it returns false it has already told the person why (src/plus/gate.tsx opens the paywall).
+ * The session never knows about purchases: it only asks this one function before every control.
+ */
+export type ControlGate = () => boolean;
+
 /** 'probing': silent foreground check; 'reconnecting': a visible reconnect run. Both hold keys. */
 export type KeyHold = 'none' | 'probing' | 'reconnecting';
 
@@ -77,6 +84,7 @@ export class RemoteSession {
   private holdTimer: unknown = null;
   /** Set while held keys are being sent, so new presses queue behind them (order is kept). */
   private flushing: Promise<void> | null = null;
+  private gate: ControlGate | null = null;
 
   constructor(
     private readonly now: () => number = () => Date.now(),
@@ -184,8 +192,28 @@ export class RemoteSession {
     return this.activeDriver()?.capabilities.has(cap) ?? false;
   }
 
+  /** Installs the Couch Plus gate (null: no gate, every control is sent). */
+  setGate(gate: ControlGate | null): void {
+    this.gate = gate;
+  }
+
+  /**
+   * True when controls may be sent now. False means the gate stopped them and opened the paywall. Every control
+   * entry point (sendKey, sendText, launchApp, exec) checks this first and sends nothing when it is false; screens call
+   * it before opening a control sheet (keyboard, numbers, inputs, voice) so the paywall shows instead.
+   */
+  allowed(): boolean {
+    if (!this.gate) return true;
+    try {
+      return this.gate();
+    } catch {
+      return true;
+    }
+  }
+
   /** Run any driver call with the same never-throw error handling as sendKey (for sheets: inputs, icons, voice). */
   exec(fn: (d: TvDriver) => Promise<void>): Promise<boolean> {
+    if (!this.allowed()) return Promise.resolve(false);
     return this.run(fn);
   }
 
@@ -207,6 +235,7 @@ export class RemoteSession {
   }
 
   sendKey(key: Key): Promise<boolean> {
+    if (!this.allowed()) return Promise.resolve(false);
     if (this.hold !== 'none' && this.activeDriver()) return this.holdKey(key);
     if (this.flushing) return this.flushing.then(() => this.sendKey(key));
     return this.run((d) => d.sendKey(key));
@@ -313,10 +342,12 @@ export class RemoteSession {
   }
 
   sendText(text: string): Promise<boolean> {
+    if (!this.allowed()) return Promise.resolve(false);
     return this.run((d) => d.sendText(text));
   }
 
   launchApp(appId: string): Promise<boolean> {
+    if (!this.allowed()) return Promise.resolve(false);
     return this.run((d) => d.launchApp(appId));
   }
 

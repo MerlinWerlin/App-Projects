@@ -237,6 +237,7 @@ export class CastController {
   private confirmTimer: unknown = null;
   private disposed = false;
   private queueUnsub: () => void;
+  private gate: (() => boolean) | null = null;
 
   constructor(deps: CastControllerDeps) {
     this.deps = deps;
@@ -338,6 +339,24 @@ export class CastController {
     }
   }
 
+  /**
+   * Couch Plus gate (owner decision 7 Nov 2026): casting is part of the paid unlock. Checked before anything is put on
+   * the TV (play); false means the gate stopped it and opened the paywall (src/plus/gate.tsx). Null: no gate.
+   */
+  setGate(gate: (() => boolean) | null): void {
+    this.gate = gate;
+  }
+
+  /** True when casting may start now; false means the gate stopped it and opened the paywall. */
+  allowed(): boolean {
+    if (!this.gate) return true;
+    try {
+      return this.gate();
+    } catch {
+      return true;
+    }
+  }
+
   /** Adds picked items; when nothing is on the TV yet, the first new one starts. */
   async addItems(items: QueueItem[]): Promise<void> {
     if (items.length === 0) return;
@@ -415,6 +434,7 @@ export class CastController {
   async sendTestPicture(): Promise<void> {
     const driver = this.driver;
     if (!driver || driver.target.kind !== 'googlecast') return;
+    if (!this.allowed()) return;
     this.set({ error: null });
     try {
       await this.stopServing();
@@ -463,6 +483,11 @@ export class CastController {
   /** The queue's play(): serve (or fake a URL in demo mode), then load on the TV. Never throws. */
   async play(item: QueueItem, _index: number): Promise<void> {
     if (this.disposed) return;
+    // Locked: nothing goes to the TV, and a running slideshow stops instead of asking again every few seconds.
+    if (!this.allowed()) {
+      this.queue.setSlideshow(false);
+      return;
+    }
     const gen = ++this.playGen;
     const driver = this.driver;
     this.set({ error: null, delivery: null });

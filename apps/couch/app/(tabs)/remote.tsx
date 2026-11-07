@@ -58,7 +58,12 @@ function splitRich(text: string, slot: string): [string, string] {
   return i < 0 ? [text, ''] : [text.slice(0, i), text.slice(i + slot.length)];
 }
 
-/** The remote, ported from prototype/index.html viewRemote() (v2). Every button is free. */
+/**
+ * The remote, ported from prototype/index.html viewRemote() (v2). The remote is the paid part of Couch (owner 7 Nov
+ * 2026): every control goes through the session, whose Couch Plus gate (src/plus/gate.tsx) sends nothing and opens
+ * the paywall without access. session.allowed() is checked first here so a locked press doesn't show "Sent" or open
+ * a sheet.
+ */
 export default function RemoteScreen() {
   // Remote theme (owner-1017): colours, texture, glow and press feel; never what a button does.
   const theme = useRemoteTheme();
@@ -109,6 +114,8 @@ export default function RemoteScreen() {
   // session.sendKey never throws; failures surface as snap.lastError.
   const onKey = useCallback(
     (key: Key, label: string) => {
+      // Couch Plus: locked -> the paywall opens, nothing is sent or shown as sent.
+      if (!session.allowed()) return;
       // Decoration cues for the cinema glow and the volume HUD (never affect sending).
       if (key === 'POWER') emitFx({ type: 'power' });
       else emitFx({ type: 'press', dir: keyDir(key) });
@@ -135,6 +142,8 @@ export default function RemoteScreen() {
   );
 
   const onAction = (a: ActionId) => {
+    // Keyboard and numbers are controls (Couch Plus); the Apps tab gates each launch itself.
+    if (a !== 'APPS' && !session.allowed()) return;
     if (a === 'KEYBOARD') setKbOpen(true);
     else if (a === 'NUMPAD') setNumOpen(true);
     else router.navigate('/apps');
@@ -263,7 +272,7 @@ export default function RemoteScreen() {
 
                 {mode === 'pad' ? <DPad onKey={onKey} /> : <Touchpad onKey={onKey} />}
 
-                <VoiceButton onNote={setNote} onOpenKeyboard={() => setKbOpen(true)} />
+                <VoiceButton onNote={setNote} onOpenKeyboard={() => session.allowed() && setKbOpen(true)} />
 
                 <View style={styles.row}>
                   {NAV_ROW.map((c) => (
@@ -322,7 +331,7 @@ export default function RemoteScreen() {
           </View>
         </View>
 
-        {/* Sleep timer (T72): free, in both full and simple mode; opens its sheet like the numpad. */}
+        {/* Sleep timer (T72): in both full and simple mode; its POWER key goes through the session's Couch Plus gate. */}
         <SleepTimerChip onOpen={() => setSleepOpen(true)} ink={stage.ink} />
 
         {/* Stage ink keeps AA over the theme's stage and glow (glow.test.ts). */}

@@ -3,7 +3,7 @@
  *
  * A widget button is one of a small, fixed set of actions. Each action maps to ordinary remote keys
  * (src/core/keys.ts), so a widget tap sends exactly what the same button in the app sends. Every TV
- * control stays free: nothing here knows about Couch Plus.
+ * control goes through the session, where the Couch Plus gate applies: nothing here knows about Couch Plus.
  */
 import { t, type MessageKey } from '../../i18n/core';
 import { KEY_LABEL_KEY, type Key } from '../keys';

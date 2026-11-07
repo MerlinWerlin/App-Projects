@@ -86,3 +86,47 @@ describe('RemoteSession', () => {
     expect(describeError(new Error('boom'))).toBe('boom');
   });
 });
+
+describe('RemoteSession Couch Plus gate (owner 7 Nov 2026: the remote is the paid part)', () => {
+  it('locked: no key, text, app launch or sheet call reaches the TV, and the gate is asked each time', async () => {
+    const { s, demo } = await demoSession();
+    const tv = demo.drivers.get('demo-1')!;
+    let asked = 0;
+    s.setGate(() => {
+      asked += 1;
+      return false;
+    });
+    expect(s.allowed()).toBe(false);
+    expect(await s.sendKey('UP')).toBe(false);
+    expect(await s.sendText('news')).toBe(false);
+    expect(await s.launchApp('netflix')).toBe(false);
+    let ran = false;
+    expect(await s.exec(async () => void (ran = true))).toBe(false);
+    expect(ran).toBe(false);
+    expect(tv.log).toEqual([]);
+    expect(asked).toBe(5);
+    // Locked is not an error toast: the gate shows the paywall instead.
+    expect(s.getSnapshot().lastError).toBeNull();
+  });
+
+  it('a key pressed while reconnecting is not held when locked', async () => {
+    const { s } = await demoSession();
+    s.setGate(() => false);
+    s.holdKeys('reconnecting');
+    expect(await s.sendKey('UP')).toBe(false);
+    expect(s.heldCount()).toBe(0);
+  });
+
+  it('unlocked or no gate: controls work as before; a throwing gate never blocks', async () => {
+    const { s, demo } = await demoSession();
+    s.setGate(() => true);
+    expect(await s.sendKey('UP')).toBe(true);
+    s.setGate(() => {
+      throw new Error('bug');
+    });
+    expect(await s.sendKey('DOWN')).toBe(true);
+    s.setGate(null);
+    expect(await s.sendKey('LEFT')).toBe(true);
+    expect(demo.drivers.get('demo-1')!.log.map((l) => l.what)).toEqual(['UP', 'DOWN', 'LEFT']);
+  });
+});

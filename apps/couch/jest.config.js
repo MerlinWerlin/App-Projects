@@ -6,7 +6,7 @@ module.exports = {
       preset: 'jest-expo',
       testEnvironment: 'node',
       transform: { '^.+\\.mjs$': 'babel-jest' },
-      testMatch: ['<rootDir>/src/core/**/*.test.ts', '<rootDir>/src/ui/**/*.test.ts', '<rootDir>/src/state/**/*.test.ts', '<rootDir>/src/theme/**/*.test.ts', '<rootDir>/src/i18n/**/*.test.ts', '<rootDir>/tests/**/*.test.ts'],
+      testMatch: ['<rootDir>/src/core/**/*.test.ts', '<rootDir>/src/ui/**/*.test.ts', '<rootDir>/src/state/**/*.test.ts', '<rootDir>/src/theme/**/*.test.ts', '<rootDir>/src/i18n/**/*.test.ts', '<rootDir>/src/plus/**/*.test.ts', '<rootDir>/tests/**/*.test.ts'],
     },
     {
       displayName: 'ui',

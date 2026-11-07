@@ -1,139 +1,51 @@
-import { KEYS } from '../core/keys';
-import { MemoryKv } from '../core/store';
+/**
+ * Couch Plus entitlement (owner decision 7 Nov 2026): one one-time purchase unlocks the remote and casting.
+ */
 import {
-  ENTITLEMENT_KEY,
-  EntitlementStore,
+  NOT_OWNED,
   PLUS_FEATURES,
-  PLUS_FEATURE_COPY,
-  plusPromise,
-  isPlusFeature,
-  parseEntitlement,
-  tierCanUse,
+  PLUS_PRICE,
+  PLUS_STORAGE_KEY,
+  createMockStore,
+  parsePlusState,
+  resetMockPurchase,
+  type PlusStorage,
 } from './entitlement';
-import {
-  StubPurchaseProvider,
-  unavailableMessage,
-  UNAVAILABLE_REASON,
-  applyPurchase,
-  type PurchaseProvider,
-  type PurchaseResult,
-} from './purchases';
 
-describe('PlusFeature', () => {
-  it('is exactly the extras Plus may gate', () => {
-    expect([...PLUS_FEATURES]).toEqual(['widgets', 'watch', 'liveActivity', 'controls', 'macros']);
-    for (const f of PLUS_FEATURES) expect(PLUS_FEATURE_COPY[f].title.length).toBeGreaterThan(0);
+function memory(initial: Record<string, string> = {}): PlusStorage & { data: Map<string, string> } {
+  const data = new Map(Object.entries(initial));
+  return { data, get: async (k) => data.get(k) ?? null, set: async (k, v) => void data.set(k, v) };
+}
+
+describe('Couch Plus entitlement', () => {
+  it('unlocks the remote and casting, for A$3.99 until the store answers', () => {
+    expect([...PLUS_FEATURES]).toEqual(['remote', 'cast']);
+    expect(PLUS_PRICE).toBe('A$3.99');
   });
 
-  it('never includes a TV key', () => {
-    for (const k of KEYS) {
-      expect(isPlusFeature(k)).toBe(false);
-      expect(isPlusFeature(k.toLowerCase())).toBe(false);
+  it('parsePlusState: anything unexpected is not owned', () => {
+    for (const raw of [null, '', 'x', '[]', '{}', '{"owned":false}', '{"owned":true}', '{"owned":true,"source":"none"}', 'null']) {
+      expect(parsePlusState(raw)).toEqual(NOT_OWNED);
     }
-    for (const k of ['power', 'volume', 'dpad', 'touchpad', 'keyboard', 'apps', 'tvs']) expect(isPlusFeature(k)).toBe(false);
+    expect(parsePlusState('{"owned":true,"source":"store","since":5}')).toEqual({ owned: true, source: 'store', since: 5 });
+    expect(parsePlusState('{"owned":true,"source":"mock","since":-1}')).toEqual({ owned: true, source: 'mock' });
   });
 
-  it('has the promise line', () => {
-    expect(plusPromise()).toBe('Every button on the remote stays free. Plus adds extras, never takes controls away.');
-  });
-});
-
-describe('parseEntitlement', () => {
-  it('is free for missing, corrupt or unknown data', () => {
-    for (const raw of [null, '', 'nope', '[]', '{}', '{"version":2,"tier":"plus"}', '{"version":1,"tier":"gold"}']) {
-      expect(parseEntitlement(raw).tier).toBe('free');
-    }
-  });
-  it('reads a stored plus doc', () => {
-    const d = parseEntitlement(JSON.stringify({ version: 1, tier: 'plus', source: 'restore', updatedAt: 5 }));
-    expect(d).toEqual({ version: 1, tier: 'plus', source: 'restore', updatedAt: 5 });
-  });
-});
-
-describe('tierCanUse', () => {
-  it('free uses no Plus feature, plus uses all', () => {
-    for (const f of PLUS_FEATURES) {
-      expect(tierCanUse('free', f)).toBe(false);
-      expect(tierCanUse('plus', f)).toBe(true);
-    }
-  });
-});
-
-describe('EntitlementStore', () => {
-  it('starts free and persists a grant through the KvStore', async () => {
-    const kv = new MemoryKv();
-    const s = new EntitlementStore(kv, () => 42);
-    await s.load();
-    expect(s.tier()).toBe('free');
-    expect(s.canUse('widgets')).toBe(false);
-    let calls = 0;
-    s.subscribe(() => calls++);
-    await s.grant('purchase');
-    expect(s.canUse('widgets')).toBe(true);
-    expect(s.getSnapshot()).toEqual({ tier: 'plus', loaded: true });
-    expect(calls).toBeGreaterThan(0);
-    expect(JSON.parse(kv.data.get(ENTITLEMENT_KEY)!)).toEqual({ version: 1, tier: 'plus', source: 'purchase', updatedAt: 42 });
-
-    const again = new EntitlementStore(kv);
-    await again.load();
-    expect(again.tier()).toBe('plus');
-    await again.revoke();
-    expect(again.canUse('macros')).toBe(false);
-    expect(parseEntitlement(kv.data.get(ENTITLEMENT_KEY)!).tier).toBe('free');
+  it('mock store (development only): buy, restore what this phone stored, reset', async () => {
+    const s = memory();
+    const store = createMockStore(s, () => 42);
+    expect((await store.getState()).owned).toBe(false);
+    expect(await store.purchase()).toEqual({ owned: true, source: 'mock', since: 42 });
+    expect(JSON.parse(s.data.get(PLUS_STORAGE_KEY)!).owned).toBe(true);
+    expect((await createMockStore(s).restore()).owned).toBe(true);
+    expect(await resetMockPurchase(s)).toEqual(NOT_OWNED);
+    expect((await store.getState()).owned).toBe(false);
   });
 
-  it('falls back to free when storage fails', async () => {
-    const s = new EntitlementStore({
-      getItem: () => Promise.reject(new Error('boom')),
-      setItem: () => Promise.resolve(),
-    });
-    await s.load();
-    expect(s.getSnapshot()).toEqual({ tier: 'free', loaded: true });
-  });
-});
-
-describe('StubPurchaseProvider', () => {
-  it('never charges and reports not available', async () => {
-    const p = new StubPurchaseProvider();
-    expect(p.available).toBe(false);
-    expect(await p.plusPrice()).toBeNull();
-    for (const r of [await p.buyPlus(), await p.restore()]) {
-      expect(r).toEqual({ ok: false, reason: UNAVAILABLE_REASON, message: unavailableMessage() });
-    }
-    expect(UNAVAILABLE_REASON).toBe('not available in this build');
-    expect(unavailableMessage()).toContain("Purchases aren't available in this test build");
-  });
-
-  it('applyPurchase with the stub leaves the user free', async () => {
-    const s = new EntitlementStore(new MemoryKv());
-    const r = await applyPurchase(s, new StubPurchaseProvider());
-    expect(r.ok).toBe(false);
-    expect(s.tier()).toBe('free');
-  });
-
-  it('applyPurchase grants only on provider success', async () => {
-    const ok: PurchaseResult = { ok: true, kind: 'plus' };
-    const fake: PurchaseProvider = {
-      available: true,
-      plusPrice: async () => '$4.99',
-      buyPlus: async () => ok,
-      restore: async () => ok,
-    };
-    const s = new EntitlementStore(new MemoryKv());
-    await applyPurchase(s, fake, 'restore');
-    expect(s.tier()).toBe('plus');
-
-    const throwing: PurchaseProvider = { ...fake, buyPlus: () => Promise.reject(new Error('x')) };
-    const s2 = new EntitlementStore(new MemoryKv());
-    const r = await applyPurchase(s2, throwing);
-    expect(r.ok).toBe(false);
-    expect(s2.tier()).toBe('free');
-  });
-});
-
-describe('tip jar (removed by the owner, 25 Oct 2026)', () => {
-  it('no longer exists: no tip() on the purchase seam and no tip copy', () => {
-    const p = new StubPurchaseProvider() as unknown as Record<string, unknown>;
-    expect(p.tip).toBeUndefined();
+  it('a storage failure never throws; a development purchase still counts for this session', async () => {
+    const broken: PlusStorage = { get: async () => Promise.reject(new Error('io')), set: async () => Promise.reject(new Error('io')) };
+    const store = createMockStore(broken, () => 1);
+    expect(await store.getState()).toEqual(NOT_OWNED);
+    expect((await store.purchase()).owned).toBe(true);
   });
 });

@@ -17,8 +17,8 @@ import { fetchAdapter } from './tvs';
  * Cast tab state (cast-1024, T91): one CastController for the app (src/core/cast/castController.ts)
  * with the real dependencies: targets found for the remote session's TVs (DLNA / Roku, T89), the
  * phone's file server (T90; unavailable in Expo Go), and MockCast in demo mode. Mounted inside
- * SessionProvider; stops the TV and the file server when it unmounts. Casting is free: nothing here
- * checks Couch Plus.
+ * SessionProvider; stops the TV and the file server when it unmounts. Casting is part of Couch Plus
+ * (owner 7 Nov 2026), but nothing here checks it: src/plus/gate.tsx installs the controller's gate.
  */
 const Ctx = createContext<CastController | null>(null);
 

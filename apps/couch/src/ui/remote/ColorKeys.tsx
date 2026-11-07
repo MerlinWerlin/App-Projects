@@ -9,7 +9,7 @@ import type { KeyPress } from './RemoteKey';
 
 /**
  * Red / green / yellow / blue pill buttons (prototype v2 .colors). The remote screen only
- * renders this when the TV driver has the 'colorKeys' capability. Free like every control.
+ * renders this when the TV driver has the 'colorKeys' capability. Sent through the session, so the Couch Plus gate applies.
  */
 /** Red/green/yellow/blue keep the TV's physical order in RTL (owner-1016). */
 export function ColorKeys({ onKey }: { onKey: KeyPress }) {
