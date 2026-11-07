@@ -11,7 +11,7 @@ on:
         default: ''
         type: string
       previous_simulator_run:
-        description: 'Optional 1.0.4 simulator app for an in-place upgrade before the theme gallery test'
+        description: '1.0.4 app to seed existing widgets before a theme-gallery or recovery-upgrade test'
         required: false
         default: ''
         type: string
@@ -37,7 +37,7 @@ jobs:
   link:
     if: github.event_name == 'workflow_dispatch'
     runs-on: macos-latest
-    timeout-minutes: 42
+    timeout-minutes: 60
     env:
       GH_TOKEN: ${{ github.token }}
       GLAZE_SIMULATOR_RUN: ${{ inputs.simulator_run }}
@@ -74,7 +74,7 @@ jobs:
           PY
           ditto -x -k "$RUNNER_TEMP/installable/glaze-simulator-app.zip" "$RUNNER_TEMP/installable"
           if [[ -n "$GLAZE_PREVIOUS_SIMULATOR_RUN" ]]; then
-            [[ "$GLAZE_PREVIOUS_SIMULATOR_RUN" =~ ^[0-9]+$ && "$GLAZE_UI_SCENARIO" == theme-gallery ]]
+            [[ "$GLAZE_PREVIOUS_SIMULATOR_RUN" =~ ^[0-9]+$ && ( "$GLAZE_UI_SCENARIO" == theme-gallery || "$GLAZE_UI_SCENARIO" == recovery-upgrade ) ]]
             gh run download "$GLAZE_PREVIOUS_SIMULATOR_RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/previous"
             ditto -x -k "$RUNNER_TEMP/previous/glaze-simulator-app.zip" "$RUNNER_TEMP/previous"
           fi
@@ -91,7 +91,7 @@ jobs:
           done
       - name: Install the real app and verify the Widgets route through the system prompt
         if: inputs.simulator_run != ''
-        timeout-minutes: 34
+        timeout-minutes: 50
         run: |
           set -euo pipefail
           APP=$(find "$RUNNER_TEMP/installable" -maxdepth 1 -name '*.app' -print -quit)
@@ -108,10 +108,14 @@ jobs:
             test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PREVIOUS/Info.plist")" = 1.0.4
             codesign --force --deep --sign - "$PREVIOUS"
             xcrun simctl install "$DEVICE" "$PREVIOUS"
-            xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-upgrade-before.xcresult" -only-testing:GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOnHomeScreen test-without-building > "$RUNNER_TEMP/glaze-upgrade-before.log" 2>&1 || { tail -160 "$RUNNER_TEMP/glaze-upgrade-before.log"; exit 1; }
-            grep -F GLAZE_ALPINE_INSTALLED "$RUNNER_TEMP/glaze-upgrade-before.log"
+            BEFORE_TEST=testAlpineOnHomeScreen
+            BEFORE_MARKER=GLAZE_ALPINE_INSTALLED
+            if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then BEFORE_TEST=testInstallLegacyArtWidgetsForUpgrade; BEFORE_MARKER=GLAZE_LEGACY_ART_WIDGETS_INSTALLED; fi
+            xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-upgrade-before.xcresult" "-only-testing:GlazeLinkUITests/GlazeDesignedWidgetUITests/$BEFORE_TEST" test-without-building > "$RUNNER_TEMP/glaze-upgrade-before.log" 2>&1 || { tail -160 "$RUNNER_TEMP/glaze-upgrade-before.log"; exit 1; }
+            grep -F "$BEFORE_MARKER" "$RUNNER_TEMP/glaze-upgrade-before.log"
           fi
           if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then
+            test -n "$GLAZE_PREVIOUS_SIMULATOR_RUN"
             mkdir -p "$RUNNER_TEMP/glaze-native-link-review/upgrade"
             for LABEL in base middle; do
               OLD=$(find "$RUNNER_TEMP/upgrade-$LABEL" -maxdepth 1 -name '*.app' -print -quit)
@@ -238,6 +242,7 @@ jobs:
           receipt['upgradeBaseRun']=os.environ.get('GLAZE_UPGRADE_BASE_RUN')
           receipt['upgradeMiddleRun']=os.environ.get('GLAZE_UPGRADE_MIDDLE_RUN')
           if receipt['scenario']=='recovery-upgrade':
+              receipt['legacyWidgetSeedRun']=os.environ.get('GLAZE_PREVIOUS_SIMULATOR_RUN')
               existing=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-upgrade-existing.log'
               prior=existing.read_text() if existing.exists() else ''
               receipt['existingAlpineArtWidgetConfiguredBeforeUpgrade']='GLAZE_UPGRADE_EXISTING_ART_WIDGET_PRIMED' in prior and '** TEST EXECUTE SUCCEEDED **' in prior

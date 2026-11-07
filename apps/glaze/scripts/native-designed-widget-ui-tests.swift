@@ -229,24 +229,54 @@ import Vision
     print("GLAZE_UPGRADE_ALPINE_APPLIED"); fflush(stdout)
   }
 
+  func testInstallLegacyArtWidgetsForUpgrade() throws {
+    continueAfterFailure = false
+    let app = XCUIApplication(bundleIdentifier: "com.jared797.glaze")
+    app.launch()
+    XCTAssertTrue(app.buttons["Widgets"].firstMatch.waitForExistence(timeout: 40), app.debugDescription)
+    let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+    for (index, size) in ["small", "medium", "large"].enumerated() {
+      try openGallery(spring)
+      let title = spring.staticTexts["Seamless"].firstMatch
+      for _ in 0..<60 {
+        if title.exists { break }
+        spring.swipeLeft()
+      }
+      XCTAssertTrue(title.exists, spring.debugDescription)
+      for _ in 0..<index { spring.swipeLeft(); RunLoop.current.run(until: Date().addingTimeInterval(0.6)) }
+      let add = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
+      XCTAssertTrue(add.waitForExistence(timeout: 6), spring.debugDescription); add.tap()
+      for _ in 0..<2 { let done = spring.buttons["Done"].firstMatch; if done.waitForExistence(timeout: 2) { done.tap() } }
+      RunLoop.current.run(until: Date().addingTimeInterval(3))
+      _ = try findArtWidget(size, in: spring)
+      capture("legacy-art-widget-installed-" + size)
+    }
+    print("GLAZE_LEGACY_ART_WIDGETS_INSTALLED"); fflush(stdout)
+  }
+
+  private func findArtWidget(_ size: String, in spring: XCUIApplication) throws -> XCUIElement {
+    for direction in ["left", "right"] {
+      for _ in 0..<7 {
+        let matches = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
+        if let hit = matches.allElementsBoundByIndex.first(where: { element in
+          let f = element.frame
+          guard element.exists && element.isHittable && f.width > 110 else { return false }
+          return size == "small" ? f.width < 220 : size == "medium" ? f.width > 250 && f.height < 230 : f.height > 250
+        }) { return hit }
+        if direction == "left" { spring.swipeLeft() } else { spring.swipeRight() }
+        RunLoop.current.run(until: Date().addingTimeInterval(0.5))
+      }
+    }
+    XCTFail("Missing existing " + size + " art widget. " + spring.debugDescription)
+    throw NSError(domain: "GlazeUpgradeUI", code: 1)
+  }
+
   func testPrimeAlpineArtWidgetBeforeUpgrade() throws {
     continueAfterFailure = false
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-    try openGallery(spring, legacyArt: true)
-    let title = spring.staticTexts["Seamless"].firstMatch
-    for _ in 0..<60 {
-      if title.exists { break }
-      spring.swipeLeft()
-    }
-    XCTAssertTrue(title.exists, spring.debugDescription)
-    let add = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
-    XCTAssertTrue(add.waitForExistence(timeout: 6), spring.debugDescription); add.tap()
-    for _ in 0..<2 { let done = spring.buttons["Done"].firstMatch; if done.waitForExistence(timeout: 2) { done.tap() } }
-    RunLoop.current.run(until: Date().addingTimeInterval(3))
-    let widget = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze")).allElementsBoundByIndex.first {
-      $0.exists && $0.isHittable && $0.frame.width > 110 && $0.frame.width < 220
-    }
-    try XCTUnwrap(widget, spring.debugDescription).press(forDuration: 1.4)
+    XCUIDevice.shared.press(.home)
+    let widget = try findArtWidget("small", in: spring)
+    widget.press(forDuration: 1.4)
     let edit = spring.buttons["Edit Widget"].firstMatch
     XCTAssertTrue(edit.waitForExistence(timeout: 8), spring.debugDescription); edit.tap()
     let art = spring.buttons["Art"].firstMatch
@@ -306,29 +336,8 @@ import Vision
     }
     XCUIDevice.shared.press(.home)
     let spring = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-    for (index, size) in ["small", "medium", "large"].enumerated() {
-      if index > 0 {
-      try openGallery(spring, fromHomeScreen: true, legacyArt: true)
-      let title = spring.staticTexts["Seamless"].firstMatch
-      for _ in 0..<60 {
-        if title.exists { break }
-        spring.swipeLeft()
-      }
-      XCTAssertTrue(title.exists, spring.debugDescription)
-      if index > 0 {
-        for _ in 0..<index { spring.swipeLeft(); RunLoop.current.run(until: Date().addingTimeInterval(0.6)) }
-      }
-      let add = spring.buttons.matching(NSPredicate(format: "label ENDSWITH %@", "Add Widget")).firstMatch
-      XCTAssertTrue(add.waitForExistence(timeout: 6), spring.debugDescription); add.tap()
-      for _ in 0..<2 { let done = spring.buttons["Done"].firstMatch; if done.waitForExistence(timeout: 2) { done.tap() } }
-      RunLoop.current.run(until: Date().addingTimeInterval(3))
-      }
-      let matches = spring.icons.matching(NSPredicate(format: "label == %@", "Glaze"))
-      let widget = try XCTUnwrap(matches.allElementsBoundByIndex.first { element in
-        let f = element.frame
-        guard element.exists && element.isHittable && f.width > 110 else { return false }
-        return size == "small" ? f.width < 220 : size == "medium" ? f.width > 250 && f.height < 230 : f.height > 250
-      }, spring.debugDescription)
+    for size in ["small", "medium", "large"] {
+      let widget = try findArtWidget(size, in: spring)
       capture("upgraded-home-" + size)
       widget.press(forDuration: 1.4)
       let edit = spring.buttons["Edit Widget"].firstMatch
