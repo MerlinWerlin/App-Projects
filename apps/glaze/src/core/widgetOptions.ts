@@ -316,7 +316,6 @@ export function placeArt(art: Box, box: Box, fit: WidgetOptionFit = 'fit'): ArtP
 
 // ------------------------------------------------------------------ menu
 
-const HOME_SIZES: readonly HomeOptionSize[] = ['small', 'medium', 'large'];
 
 /**
  * The options for one size. T201 (owner-1101d #4: "any art piece in any size"): a Home Screen size
@@ -325,12 +324,28 @@ const HOME_SIZES: readonly HomeOptionSize[] = ['small', 'medium', 'large'];
  * size first, then the best aspect match), then the rest by aspect match, then pack order. The
  * Lock Screen only offers the options that list `lock`.
  */
+/**
+ * Owner 2026-11-08 ("it keeps re-adding oversized sizes"): a piece is only offered at a Home Screen
+ * size it was drawn for. A hero (hero-small / -medium / -large) belongs to its own size only, even
+ * though older manifests list every size for it. Any other piece must list the size AND have a shape
+ * close to it (aspect match >= DRAWN_FOR_MIN_MATCH), so a square piece is never letterboxed into the
+ * wide Medium widget. Applies to previews, theme setup and therefore Edit Widget and the gallery.
+ */
+export const DRAWN_FOR_MIN_MATCH = 0.8;
+export function drawnForSize(option: Pick<WidgetOption, 'id' | 'sizes' | 'width' | 'height'>, size: HomeOptionSize): boolean {
+  const hero = /^hero-(small|medium|large)$/.exec(option.id);
+  if (hero) return hero[1] === size;
+  if (!option.sizes.includes(size)) return false;
+  if (!(option.width > 0 && option.height > 0)) return true;
+  return aspectMatch({ w: option.width, h: option.height }, OPTION_SIZE_POINTS[size]) >= DRAWN_FOR_MIN_MATCH;
+}
+
 export function optionsForSize(options: readonly WidgetOption[], size: WidgetOptionSize): WidgetOption[] {
   if (size === 'lock') return options.filter((o) => o.sizes.includes('lock'));
   const box = OPTION_SIZE_POINTS[size];
   const allDerived = options.every((o) => o.derived);
   return options
-    .filter((o) => o.sizes.some((s) => (HOME_SIZES as readonly string[]).includes(s)))
+    .filter((o) => drawnForSize(o, size))
     .map((o, i) => {
       const listed = o.sizes.includes(size);
       const m = aspectMatch({ w: o.width, h: o.height }, box);

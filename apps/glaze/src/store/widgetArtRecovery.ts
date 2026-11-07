@@ -10,7 +10,8 @@ import { deferredIdle } from './deferredWork';
 import { findAnyThemeById } from './themeLookup';
 import { syncThemeWidgetArt, THEME_ART_PENDING_KEY } from './themeWidgetArt';
 
-const RECOVERY_KEY = 'glaze.widgetArt.recovered106.v1';
+// v2 (owner 2026-11-08): rebuild once more so pieces drop out of the sizes they were not drawn for.
+const RECOVERY_KEY = 'glaze.widgetArt.recovered106.v2';
 let recovering: Promise<boolean> | null = null;
 let lastError: string | null = null;
 

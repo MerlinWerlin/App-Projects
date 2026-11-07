@@ -12,6 +12,8 @@ struct GlazeWidgetsBundle: WidgetBundle {
   @WidgetBundleBuilder
   var body: some Widget {
     GlazeThemeGalleryBundle().body
+    // Owner 2026-11-08: the theme's art pieces in the Add Widget gallery (ThemeArtWidgets.swift).
+    GlazeThemeArtBundle().body
     GlazeLegacyArtBundle().body
     GlazeLockWidgetsBundle().body
     GlazeHabitWidgetsBundle().body

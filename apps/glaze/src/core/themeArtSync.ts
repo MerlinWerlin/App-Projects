@@ -17,7 +17,7 @@
 //      index does not list, so partial copies are cleaned up. Interrupted before step 3: the old
 //      index is untouched (still consistent) and the next run finishes the job.
 import type { WidgetOption, HomeOptionSize } from './widgetOptions.ts';
-import { shelfOptions } from './widgetOptions.ts';
+import { drawnForSize, shelfOptions } from './widgetOptions.ts';
 import {
   WIDGET_ART_LIBRARY_CAP,
   followTheme,
@@ -67,7 +67,7 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
   for (const size of THEME_ART_SIZES) {
     let slot = 0;
     for (const option of shelfOptions(input.options, size)) {
-      if (!option.sizes.includes(size)) continue;
+      if (!drawnForSize(option, size)) continue;
       const id = themePieceId(input.themeId, option.id, size);
       if (seen.has(id)) continue;
       seen.add(id);

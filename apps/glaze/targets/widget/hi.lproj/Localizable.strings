@@ -157,3 +157,5 @@
 "Battery" = "बैटरी";
 "Calendar" = "कैलेंडर";
 "Matches the theme you choose in Glaze." = "Glaze में चुनी गई थीम से मेल खाता है।";
+/* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
+"Artwork from the theme you choose in Glaze." = "Glaze में चुनी गई थीम की कला।";
