@@ -239,6 +239,8 @@ jobs:
           alpine='GLAZE_ALPINE_CLOCK_SAVED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
           receipt['alpineClockSaveUITest']=supplied and alpine
           receipt['upgradeAlpineAllFamilies']=supplied and execute_ok and 'GLAZE_UPGRADE_ALL_ALPINE_VERIFIED' in text
+          receipt['copperRenderedOnHomeScreenFamilies']=[size for size in ['small','medium','large'] if 'GLAZE_COPPER_HOME_RENDER_VERIFIED '+size in text]
+          receipt['copperRenderedOnHomeScreenAllFamilies']=receipt['copperRenderedOnHomeScreenFamilies']==['small','medium','large']
           receipt['upgradeBaseRun']=os.environ.get('GLAZE_UPGRADE_BASE_RUN')
           receipt['upgradeMiddleRun']=os.environ.get('GLAZE_UPGRADE_MIDDLE_RUN')
           if receipt['scenario']=='recovery-upgrade':
