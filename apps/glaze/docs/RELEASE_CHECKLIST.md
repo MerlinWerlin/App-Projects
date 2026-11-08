@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**8 November 2026 TestFlight gallery after a swap: `1.0.19`.** Owner: after a swap the gallery's Art pages stayed grey for 25 minutes. The pieces made so far are listed after 2, then every 6; the art build keeps background time when Glaze is left; the wallpaper is decoded once per apply; remote packs crop the wallpaper size this phone downloaded, and art falls back to the flat colour if its sky fails.
+
 **8 November 2026 TestFlight sky and gallery: `1.0.18`.** Owner: art stars do not match and the background is muted; Aurora is missing the fox in its gallery. Art pieces are composed on the theme wallpaper crop (seamless) instead of a flat colour; pieces are planned art first and the gallery shows Art 1-5 in Small and Large.
 
 **8 November 2026 TestFlight swap and blend fix: `1.0.17`.** Owner: "swapping themes is no longer swapping it across to widgets", copper moon still dodgy, grey tiles at the end of the gallery. Choosing a theme (any of the four actions) puts it on the widgets again and a declined wallpaper save no longer blocks it; dim coloured interior pixels are held opaque when art is keyed; the gallery shows Art 1-4 in Small and 1-3 in Large.
