@@ -439,25 +439,11 @@ function ThemeDetail({
     setUseBusy(true);
     setUseError(false);
     try {
-      if (!await onSaveWallpaper()) {
-        toast.show(t('theme.setup.wallpaper.saveError'), 'warning');
-        return;
-      }
-      // A wallpaper download or Photos prompt can finish after the person leaves this theme.
-      // Do not let that older screen publish over a more recent theme choice.
-      if (themeFocus.current !== focus) return;
-      const res = await applyThemeEverywhere(theme);
-      if (!res.icons || !res.widgets) {
-        setUseError(true);
-        haptic('warning');
-        return;
-      }
-      try {
-        playApply();
-        AccessibilityInfo.announceForAccessibility(t('theme.use.doneA11y', { name: theme.name }));
-      } catch {
-        // T264: the celebration is optional; the theme is already applied.
-      }
+      // Owner 2026-11-08 ("swapping themes is no longer swapping it across to widgets"): the theme
+      // goes on the widgets FIRST. 1.0.15 saved the wallpaper first and applied nothing when that
+      // save failed or Photos was declined. A failed wallpaper save is only a note now.
+      if (!await selectTheme(focus)) return;
+      if (!await onSaveWallpaper()) toast.show(t('theme.setup.wallpaper.saveError'), 'warning');
       if (themeFocus.current === focus) addThemeIcons();
     } catch (e) {
       // T264 (owner-1101i #2): an apply that throws shows the calm "couldn't apply" note, never a crash.
@@ -472,7 +458,46 @@ function ThemeDetail({
     setThemeChoiceOpen(false);
     router.push({ pathname: '/install', params: { theme: theme.id } });
   };
-  const onUseTheme = () => setThemeChoiceOpen(true);
+  /**
+   * Owner 2026-11-08: choosing a theme swaps the Home Screen widgets to it, whichever of the four
+   * actions follows (as "Use this theme" did up to 1.0.14). 1.0.15 only applied the theme from
+   * "Use everything", so View widgets / View icons / Add wallpaper left the widgets on the old theme.
+   * True when the theme is in use (icons and widgets); a screen left meanwhile publishes nothing.
+   */
+  const selectTheme = async (focus = themeFocus.current): Promise<boolean> => {
+    if (themeFocus.current !== focus) return false;
+    try {
+      const res = await applyThemeEverywhere(theme);
+      if (!res.icons || !res.widgets) {
+        setUseError(true);
+        haptic('warning');
+        return false;
+      }
+      try {
+        playApply();
+        AccessibilityInfo.announceForAccessibility(t('theme.use.doneA11y', { name: theme.name }));
+      } catch {
+        // T264: the celebration is optional; the theme is already applied.
+      }
+      return true;
+    } catch (e) {
+      console.warn('[Theme] apply failed', e);
+      setUseError(true);
+      return false;
+    }
+  };
+  /** Each of the four choices puts an unlocked theme in use (widgets and icons) once. */
+  const ensureSelected = () => {
+    if (locked || inUse || usePending.current) return;
+    setUseError(false);
+    void selectTheme();
+  };
+  const onUseTheme = (checkLock = true) => {
+    setThemeChoiceOpen(true);
+    if ((checkLock && locked) || inUse || usePending.current) return;
+    setUseError(false);
+    void selectTheme();
+  };
   const onAddWallpaper = (checkLock = true) => {
     setThemeChoiceOpen(false);
     if (checkLock && locked) {
@@ -1099,7 +1124,7 @@ function ThemeDetail({
               icon={locked ? 'lock' : 'check-circle'}
               block
               busy={useBusy}
-              onPress={onUseTheme}
+              onPress={() => onUseTheme()}
               accessibilityHint={locked ? t('theme.applyHintLocked') : inUse ? t('theme.use.inUseHint') : t('theme.use.hint')}
             />
             {useError ? (
@@ -1125,7 +1150,7 @@ function ThemeDetail({
           onUnlock={onUnlockRemote}
           themeAction={!locked && primary.kind !== 'unlock' && !(primary.kind === 'retry' && primary.reason === 'app-version') ? {
             label: inUse ? t('theme.use.inUse') : t('theme.use.cta'),
-            onPress: onUseTheme,
+            onPress: () => onUseTheme(),
             busy: useBusy,
           } : undefined}
         />
@@ -1153,13 +1178,15 @@ function ThemeDetail({
         <View style={styles.themeChoices}>
           <PillButton label={t('theme.use.viewWidgets')} block variant="plain" onPress={() => {
             setThemeChoiceOpen(false);
+            ensureSelected();
             openPart('widgets', false);
           }} />
           <PillButton label={t('theme.use.viewIcons')} block variant="plain" onPress={() => {
             setThemeChoiceOpen(false);
+            ensureSelected();
             openPart('icons', false);
           }} />
-          <PillButton label={t('theme.use.addWallpaper')} block variant="tinted" onPress={() => onAddWallpaper()} />
+          <PillButton label={t('theme.use.addWallpaper')} block variant="tinted" onPress={() => { ensureSelected(); onAddWallpaper(); }} />
           <PillButton label={t('theme.use.useEverything')} block onPress={() => void putInUse()} />
         </View>
       </Sheet>
@@ -1184,7 +1211,7 @@ function ThemeDetail({
             return;
           }
           if (why === 'apply' || why === 'overview') {
-            setThemeChoiceOpen(true);
+            onUseTheme(false);
             return;
           }
           openPart(why, false);
