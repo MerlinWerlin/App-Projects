@@ -43,6 +43,7 @@ public class GlazeWidgetBridgeModule: Module {
     // Functional designs need no source artwork. A small solid thumbnail keeps library/file
     // invariants intact; the extension renders the live semantic design, never this placeholder.
     AsyncFunction("composeDesignedWidgetPiece") { (id: String, colour: String) -> Bool in
+      GlazeBuildTime.extend()
       guard GlazeWidgetBridgeModule.validArtId(id), colour.range(of: "^#[0-9a-fA-F]{6}$", options: .regularExpression) != nil,
         let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
       else { return false }
@@ -213,6 +214,7 @@ public class GlazeWidgetBridgeModule: Module {
     }
 
     AsyncFunction("composeClockArtPiece") { (id: String, artUri: String, w: Double, h: Double, colour: String, skipIfPresent: Bool) -> Bool in
+      GlazeBuildTime.extend()
       guard GlazeWidgetBridgeModule.validArtId(id),w>=1,h>=1,
             let container=FileManager.default.containerURL(forSecurityApplicationGroupIdentifier:appGroup) else { return false }
       let dir=container.appendingPathComponent(artDir,isDirectory:true),dest=dir.appendingPathComponent("\(id).jpg")
@@ -392,6 +394,7 @@ public class GlazeWidgetBridgeModule: Module {
     /// already on disk (an interrupted earlier run) is kept as it is. Atomic writes, the .jpg last,
     /// so a piece is either whole or absent; leftovers are pruned by the next index write.
     AsyncFunction("composeWidgetArtPiece") { (id: String, artUri: String, w: Double, h: Double, colour: String, skipIfPresent: Bool) -> Bool in
+      GlazeBuildTime.extend()
       guard GlazeWidgetBridgeModule.validArtId(id), w >= 1, h >= 1 else { return false }
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return false }
       let dir = container.appendingPathComponent(artDir, isDirectory: true)
@@ -433,6 +436,7 @@ public class GlazeWidgetBridgeModule: Module {
     /// the wallpaper under the widget with the hero fitted on top). crop = [x, y, w, h] in wallpaper
     /// pixels. No raw art (the Fit layout fits the composed image). No index write, no reload.
     AsyncFunction("composeSeamlessPiece") { (id: String, wallpaperUri: String, crop: [Double], heroUri: String, skipIfPresent: Bool) -> Bool in
+      GlazeBuildTime.extend()
       guard GlazeWidgetBridgeModule.validArtId(id), crop.count == 4 else { return false }
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return false }
       let dir = container.appendingPathComponent(artDir, isDirectory: true)
@@ -507,8 +511,7 @@ public class GlazeWidgetBridgeModule: Module {
     // T264 (owner-1101i #2): a NaN / infinite crop from JS is refused, never drawn.
     guard x.isFinite, y.isFinite, w.isFinite, h.isFinite, w >= 1, h >= 1 else { return nil }
     guard
-      let wallpaper = GlazeWidgetBridgeModule.loadImage(wallpaperUri),
-      let source = GlazeWidgetBridgeModule.uprightCGImage(wallpaper)
+      let source = GlazeWidgetBridgeModule.uprightWallpaper(wallpaperUri)
     else { return nil }
     let bounds = CGRect(x: 0, y: 0, width: CGFloat(source.width), height: CGFloat(source.height))
     let wanted = CGRect(x: CGFloat(x), y: CGFloat(y), width: CGFloat(w), height: CGFloat(h)).integral.intersection(bounds)
@@ -593,6 +596,23 @@ public class GlazeWidgetBridgeModule: Module {
   }
 
   /// T131: a local image from a file:// URI or a plain path.
+  /// Owner 2026-11-08 ("its been like 25 mins thats way to slow"): a theme apply composes every
+  /// piece on the same wallpaper, so the decoded, upright wallpaper is kept for the next piece
+  /// instead of being decoded again each time. One wallpaper at a time; a new file replaces it.
+  private static let wallpaperLock = NSLock()
+  private static var wallpaperCache: (uri: String, modified: Date?, image: CGImage)?
+  private static func uprightWallpaper(_ uri: String) -> CGImage? {
+    let url: URL = uri.hasPrefix("file://") ? (URL(string: uri) ?? URL(fileURLWithPath: uri)) : URL(fileURLWithPath: uri)
+    let modified = (try? FileManager.default.attributesOfItem(atPath: url.path))?[.modificationDate] as? Date
+    wallpaperLock.lock()
+    defer { wallpaperLock.unlock() }
+    if let c = wallpaperCache, c.uri == uri, c.modified == modified { return c.image }
+    wallpaperCache = nil
+    guard let wallpaper = loadImage(uri), let upright = uprightCGImage(wallpaper) else { return nil }
+    wallpaperCache = (uri: uri, modified: modified, image: upright)
+    return upright
+  }
+
   private static func loadImage(_ uri: String) -> UIImage? {
     let url: URL = uri.hasPrefix("file://")
       ? (URL(string: uri) ?? URL(fileURLWithPath: uri))
@@ -625,6 +645,43 @@ public class GlazeWidgetBridgeModule: Module {
     format.scale = 1
     return UIGraphicsImageRenderer(size: target, format: format).image { _ in
       image.draw(in: CGRect(origin: .zero, size: target))
+    }
+  }
+}
+
+// MARK: - Background time for a theme's art
+
+/// Owner 2026-11-08 (the gallery stayed grey for 25 minutes after a swap): a theme apply composes
+/// its pieces one by one from JS. Leaving Glaze right after tapping a theme froze that work until the
+/// next time the app was opened. Each compose asks iOS for background time and hands it back 20 s
+/// after the last piece, so the art finishes (and the gallery fills) after the person has left.
+enum GlazeBuildTime {
+  private static let lock = NSLock()
+  private static var task: UIBackgroundTaskIdentifier = .invalid
+  private static var ender: DispatchWorkItem?
+
+  static func extend() {
+    DispatchQueue.main.async {
+      lock.lock()
+      defer { lock.unlock() }
+      if task == .invalid {
+        task = UIApplication.shared.beginBackgroundTask(withName: "GlazeThemeArt") { GlazeBuildTime.end() }
+      }
+      ender?.cancel()
+      let work = DispatchWorkItem { GlazeBuildTime.end() }
+      ender = work
+      DispatchQueue.main.asyncAfter(deadline: .now() + 20, execute: work)
+    }
+  }
+
+  static func end() {
+    lock.lock()
+    defer { lock.unlock() }
+    ender?.cancel()
+    ender = nil
+    if task != .invalid {
+      UIApplication.shared.endBackgroundTask(task)
+      task = .invalid
     }
   }
 }

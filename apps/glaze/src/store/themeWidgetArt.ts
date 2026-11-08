@@ -129,8 +129,16 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
         composeSupported = false;
         break;
       }
-      if (r === 'ok') ready.push(piece.id);
-      else failed++;
+      if (r === 'ok') {
+        ready.push(piece.id);
+        // Owner 2026-11-08 ("the art isnt there its just greyed - its been like 25 mins"): the
+        // gallery used to change only after the LAST piece. The pieces are planned art first, so
+        // listing what is made so far (after 2, then every 6) fills the gallery's Art pages
+        // within seconds; the final write below lists the rest.
+        if ((ready.length === 2 || ready.length % 6 === 0) && ready.length < todo.length && !stale()) {
+          await widgets.commitThemeArt(theme.id, planned, ready);
+        }
+      } else failed++;
       await pause();
     }
     if (!composeSupported) failed += todo.length - ready.length - failed;
@@ -197,15 +205,34 @@ async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<The
         options.push(option);
         sources.set(option.id, { option, uri });
       });
-      const files = remoteArtFiles(local);
-      const wallUri = remoteArtFileUri(theme.id, files.wallpaper);
-      const wall = pickWallpaper(local, Number.MAX_SAFE_INTEGER);
-      return {
-        options,
-        sources,
-        wallpaper: () => existingLocalFile(wallUri),
-        wallpaperPx: wall ? { w: wall.width, h: wall.height } : empty.wallpaperPx,
+      // Owner 2026-11-08 (art missing after a swap): a pack lists three wallpaper sizes and a phone
+      // downloads only the one for its screen (assetsForDevice). The first listed file (2796 px) is
+      // not on a 2556 / 1334 px phone, so every wallpaper-backed piece failed there. Use the largest
+      // wallpaper that IS on this phone, and crop in that file's own pixels.
+      const walls = local.assets
+        .filter((a) => a.role === 'wallpaper')
+        .sort((a, b) => Math.max(b.width, b.height) - Math.max(a.width, a.height));
+      const fallback = remoteArtFiles(local).wallpaper;
+      const result: ThemeArt = { options, sources, wallpaper: async () => null, wallpaperPx: empty.wallpaperPx };
+      let found: Promise<string | null> | null = null;
+      result.wallpaper = () => {
+        if (!found) {
+          found = (async () => {
+            for (const w of walls) {
+              const uri = await existingLocalFile(remoteArtFileUri(theme.id, w.path));
+              if (uri) {
+                result.wallpaperPx = { w: w.width, h: w.height };
+                return uri;
+              }
+            }
+            const wall = pickWallpaper(local, Number.MAX_SAFE_INTEGER);
+            if (wall) result.wallpaperPx = { w: wall.width, h: wall.height };
+            return existingLocalFile(remoteArtFileUri(theme.id, fallback));
+          })();
+        }
+        return found;
       };
+      return result;
     }
     if (isArtPackTheme(theme)) {
       // A bundled art pack: its hero pieces, as a v1 pack would list them.
@@ -264,13 +291,19 @@ async function composeOne(theme: Theme, art: ThemeArt, piece: PlannedThemePiece)
   if (wallpaperUri) {
     const crop = seamlessCrop({ device, wallpaper: art.wallpaperPx, size: piece.size, slot: normaliseSlot(piece.size, null), nudge: { dx: 0, dy: 0 } });
     res = await widgets.composeArtPiece({ id: piece.id, kind: 'seamless', wallpaperUri, cropPx: crop.cropPx, heroUri: artUri });
-  } else {
-    const px = widgetSizePx(device, piece.size);
-    const preserveArtwork = src.option.numberFree === true && !!src.option.liveFrame && (src.option.kind === 'clock' && !!src.option.liveFrame.clockStyle || !!src.option.liveFrame.valueStyle);
-    res = await widgets.composeArtPiece({ id: piece.id, kind: 'art', artUri, widthPx: px.w, heightPx: px.h, colour: theme.palette.bg, preserveArtwork });
-  }
+    // An art picture whose sky could not be made still goes in on the flat theme colour (never a
+    // missing piece in the gallery).
+    if (res.available && !res.ok && src.option.background !== 'wallpaper') res = await flatArt(theme, src, artUri, piece);
+  } else res = await flatArt(theme, src, artUri, piece);
   if (!res.available && res.reason === 'not-built') return 'not-built';
   return res.ok ? 'ok' : 'failed';
+}
+
+async function flatArt(theme: Theme, src: Source, artUri: string, piece: PlannedThemePiece): Promise<WidgetsResult> {
+  const device = seamlessDeviceHere();
+  const px = widgetSizePx(device, piece.size);
+  const preserveArtwork = src.option.numberFree === true && !!src.option.liveFrame && (src.option.kind === 'clock' && !!src.option.liveFrame.clockStyle || !!src.option.liveFrame.valueStyle);
+  return widgets.composeArtPiece({ id: piece.id, kind: 'art', artUri, widthPx: px.w, heightPx: px.h, colour: theme.palette.bg, preserveArtwork });
 }
 
 async function setPending(themeId: string): Promise<void> {
