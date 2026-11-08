@@ -19,14 +19,14 @@ EXACT = [
 ]
 ALLOWED = {
     'src/core/widgetOptions.ts': 'Inherited PR252: authored-size filtering, owned by Claude.',
-    'src/core/themeArtSync.ts': 'Inherited PR252: plan only authored sizes, owned by Claude.',
+    'src/core/themeArtSync.ts': 'Inherited PR252: plan only authored sizes; owner 2026-11-08: art pieces planned first in each size. Owned by Claude.',
     'app/theme/[id].tsx': 'Owner-directed four actions; restored ThemeWidgetArt and SeamlessCard sections and composer remain intact.',
     'targets/widget/HabitStreakWidget.swift': 'Owner-directed larger completion square and 44-point tap target, with compact large-family spacing.',
     'src/ui/StepCard.tsx': 'Owner-directed completion glyph increases from20 to28 points.',
     'app/install.tsx': 'Preview/export requested theme without persisting the global selection; larger completion glyph.',
     'src/store/activeTheme.ts': 'Stage (a): order explicit selections, defer art using the current selection, and ignore late focus reads.',
     'src/store/widgetTheme.ts': 'Stage (a): one native theme writer, immediate publication, and preview/launch writes guarded by the active selection.',
-    'src/store/themeWidgetArt.ts': 'Stage (a): expose generation cancellation only; original planning, compositing and commit logic remain unchanged.',
+    'src/store/themeWidgetArt.ts': 'Stage (a): expose generation cancellation. Owner 2026-11-08 (art stars must match the wallpaper): art pieces compose on the wallpaper crop (existing seamless path) instead of a flat colour. Owned by Claude.',
     'src/core/packCatalog.ts': 'Remember a validated release in an installed pack manifest.',
     'src/core/packDownloader.ts': 'Persist the catalogue release when writing a downloaded manifest.',
     'src/core/themeArtResume.ts': 'Carry the installed manifest release through theme lookup.',

@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.17: choosing a theme swaps the widgets again, the copper moon no longer shows the wallpaper through it, and the gallery drops its empty grey Art tiles.",
+  "note": "Glaze 1.0.18 puts every art widget on the theme wallpaper's own sky, so the stars match, and shows every art piece in the Add Widget gallery.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

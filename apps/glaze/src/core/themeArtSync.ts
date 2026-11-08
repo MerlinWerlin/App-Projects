@@ -66,8 +66,12 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
   const cap = Math.max(0, Math.floor(input.cap ?? WIDGET_ART_LIBRARY_CAP));
   for (const size of THEME_ART_SIZES) {
     let slot = 0;
-    for (const option of shelfOptions(input.options, size)) {
-      if (!drawnForSize(option, size)) continue;
+    // Owner 2026-11-08 ("Aurora is missing art works in its gallery again such as the fox"): art
+    // pieces come first in every size, then the theme's live / calendar pictures, so the Add Widget
+    // gallery's Art pages (ThemeArtWidgets.swift, first slots) always show every art piece.
+    const drawn = shelfOptions(input.options, size).filter((option) => drawnForSize(option, size));
+    const ordered = [...drawn.filter((o) => o.kind === 'art'), ...drawn.filter((o) => o.kind !== 'art')];
+    for (const option of ordered) {
       const id = themePieceId(input.themeId, option.id, size);
       if (seen.has(id)) continue;
       seen.add(id);
