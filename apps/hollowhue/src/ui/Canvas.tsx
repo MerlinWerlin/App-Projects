@@ -1,7 +1,8 @@
 // The zoomable colouring surface: pinch/pan camera, tap-to-fill, freehand pencil/marker/rubber.
 // One finger: fill (tap) or pan in Fill mode, draws in Draw mode. Two fingers: always zoom and move.
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { type GestureResponderEvent, type LayoutChangeEvent, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Animated, Easing, type GestureResponderEvent, type LayoutChangeEvent, View } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 import { strokePath } from '../core/geom';
 import { type Edit, type Progress, type Stroke, type Tool, TOOL_STYLE, finishStroke, strokesNear } from '../core/progress';
@@ -11,11 +12,12 @@ import {
   type Placed,
   type Screen,
   cameraFor,
+  cameraInto,
   clampCamera,
   fitCamera,
-  FOUND_AT,
   flight,
   focusAt,
+  isFound,
   hitTest,
   levelAt,
   toLocal,
@@ -25,7 +27,7 @@ import {
   zoomAt,
 } from '../core/scene';
 import { t } from '../i18n';
-import { motion } from '../theme/tokens';
+import { motion, useColors } from '../theme/tokens';
 import { type Base, SceneLevels, useStrokesByLevel } from './SceneArt';
 
 export type Mode = 'fill' | 'draw';
@@ -35,7 +37,11 @@ export type CanvasHandle = {
   zoomBy: (f: number) => void;
   fit: () => void;
   flyTo: (levelId: string) => void;
+  /** Briefly circle where a nested level is, with a sparkle that fades quickly. */
+  showSpot: (levelId: string) => void;
 };
+
+type Spot = { x: number; y: number; r: number; key: number };
 
 type Props = {
   L: Layout;
@@ -84,6 +90,8 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
   const pendingCam = useRef<Camera | null>(null);
   const latest = useRef(props);
   latest.current = props;
+  const [spot, setSpot] = useState<Spot | null>(null);
+  const spotTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const commitCam = useCallback(
     (c: Camera, now = false) => {
@@ -139,7 +147,28 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
       fit: () => flyToCam(fitCamera(L, scRef.current)),
       flyTo: (id) => {
         const p = L.byId.get(id);
-        if (p) flyToCam(cameraFor(p, scRef.current));
+        if (p) flyToCam(cameraInto(L, p, scRef.current));
+      },
+      showSpot: (id) => {
+        const p = L.byId.get(id);
+        if (!p) return;
+        const s = scRef.current;
+        const at = (c: Camera) => ({ x: (p.world.x + p.world.w / 2 - c.cx) * c.z + s.w / 2, y: (p.world.y + p.world.h / 2 - c.cy) * c.z + s.h / 2, w: p.world.w * c.z });
+        let c = camRef.current;
+        let o = at(c);
+        let wait = 0;
+        // When the spot is off screen or too small to see, first frame the picture it is in.
+        if (o.x < 0 || o.y < 0 || o.x > s.w || o.y > s.h || o.w < 8) {
+          const par = p.parent ? L.byId.get(p.parent) : undefined;
+          if (par) {
+            c = clampCamera(L, s, cameraFor(par, s));
+            o = at(c);
+            flyToCam(c);
+            wait = motion.flight;
+          }
+        }
+        if (spotTimer.current) clearTimeout(spotTimer.current);
+        spotTimer.current = setTimeout(() => setSpot({ x: o.x, y: o.y, r: Math.max(30, o.w * 0.78), key: Date.now() }), wait);
       },
     }),
     [L, flyToCam],
@@ -149,6 +178,7 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
     () => () => {
       stopFlight();
       if (frame.current != null) cancelAnimationFrame(frame.current);
+      if (spotTimer.current) clearTimeout(spotTimer.current);
     },
     [],
   );
@@ -180,7 +210,7 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
     const lv = focusAt(vis, w.x, w.y) ?? L.root;
     onFocus(
       lv.id,
-      vis.filter((v) => v.frac >= (v.level.discoveryAt ?? FOUND_AT)).map((v) => v.level.id),
+      vis.filter(isFound).map((v) => v.level.id),
     );
   }, [focusKey, Math.round(Math.log2(cam.z) * 4), Math.round(cam.cx), Math.round(cam.cy)]);
 
@@ -389,6 +419,43 @@ export const Canvas = forwardRef<CanvasHandle, Props>(function Canvas(props, ref
           ) : null}
         </Svg>
       ) : null}
+      {spot ? <SpotRing key={spot.key} spot={spot} onDone={() => setSpot(null)} /> : null}
     </View>
   );
 });
+
+/** A ring around the zoom spot with a sparkle on its rim: pops in, then fades out within about a second. */
+function SpotRing({ spot, onDone }: { spot: Spot; onDone: () => void }) {
+  const { c } = useColors();
+  const a = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    const run = Animated.sequence([
+      Animated.timing(a, { toValue: 1, duration: motion.base, easing: Easing.out(Easing.cubic), useNativeDriver: true }),
+      Animated.delay(450),
+      Animated.timing(a, { toValue: 2, duration: 550, easing: Easing.in(Easing.quad), useNativeDriver: true }),
+    ]);
+    run.start(({ finished }) => finished && onDone());
+    return () => run.stop();
+  }, []);
+  const opacity = a.interpolate({ inputRange: [0, 1, 2], outputRange: [0, 1, 0] });
+  const scale = a.interpolate({ inputRange: [0, 1, 2], outputRange: [0.7, 1, 1.12] });
+  const sparkle = a.interpolate({ inputRange: [0, 1, 2], outputRange: [0.2, 1.15, 0.8] });
+  const { x, y, r } = spot;
+  // The sparkle sits on the ring at the top right (45 degrees).
+  const sx = x + r * 0.707;
+  const sy = y - r * 0.707;
+  return (
+    <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}>
+      <Animated.View
+        style={{
+          position: 'absolute', left: x - r, top: y - r, width: r * 2, height: r * 2, borderRadius: r,
+          borderWidth: 3, borderColor: c.accent, backgroundColor: 'rgba(255,255,255,0.12)',
+          opacity, transform: [{ scale }],
+        }}
+      />
+      <Animated.View style={{ position: 'absolute', left: sx - 16, top: sy - 16, width: 32, height: 32, alignItems: 'center', justifyContent: 'center', opacity, transform: [{ scale: sparkle }] }}>
+        <MaterialCommunityIcons name={'star-four-points' as never} size={28} color={c.accent} />
+      </Animated.View>
+    </View>
+  );
+}

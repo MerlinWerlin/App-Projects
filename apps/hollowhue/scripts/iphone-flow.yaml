@@ -71,6 +71,8 @@ appId: com.jared797.hollowhue
 - assertVisible: '(?s).*Rose Cottage: Inside.*Zoom 0 of 6.*'
 - assertVisible: '.*Zoom 0 of 6.*'
 - takeScreenshot: 04-cottage-root
+- tapOn: Show where to zoom in
+- takeScreenshot: 04b-cottage-zoom-spot
 - tapOn: Look closer
 - waitForAnimationToEnd:
     timeout: 8000

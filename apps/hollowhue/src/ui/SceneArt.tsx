@@ -2,7 +2,7 @@
 // the viewBox; a level re-renders only when its own colours or drawings change.
 import { memo, useMemo } from 'react';
 import { Image } from 'react-native';
-import Svg, { ClipPath, Defs, Ellipse, G, Path, Rect } from 'react-native-svg';
+import Svg, { ClipPath, Defs, Ellipse, G, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 import { strokePath } from '../core/geom';
 import { type Progress, type Stroke, TOOL_STYLE } from '../core/progress';
 import { type Layout, type Placed, type Visible, detailStep, regionSizes, shapeOpacity } from '../core/scene';
@@ -201,11 +201,10 @@ export function SceneLevels({
 }) {
   return (
     <>
-      {vis.map(({ level, step }) => {
+      {vis.map(({ level, step, blend, edge }) => {
         const l = links(level, progress.fills);
-        return (
+        const art = (
           <LevelArt
-            key={level.id}
             level={level}
             base={base}
             step={step}
@@ -217,8 +216,40 @@ export function SceneLevels({
             clip={level.depth > 0}
           />
         );
+        // The memoised art keeps its element position whether or not it is blending, so fading never redraws it.
+        return (
+          <G key={level.id} opacity={blend} mask={edge < 1 ? `url(#${softId(level)})` : undefined}>
+            {edge < 1 ? <SoftEdge level={level} base={base} edge={edge} /> : null}
+            {art}
+          </G>
+        );
       })}
     </>
+  );
+}
+
+const softId = (level: Placed) => `soft-${level.id}`;
+
+/**
+ * Feathered mask that blends a nested level into the picture around it. At edge 0 it fades out from the middle
+ * of each side; by edge 1 it reaches past the corners, so the level ends as a plain solid square.
+ */
+function SoftEdge({ level, base, edge }: { level: Placed; base: Base; edge: number }) {
+  const x = (level.ox - base.ox) / base.s;
+  const y = (level.oy - base.oy) / base.s;
+  const w = (level.w * level.s) / base.s;
+  const h = (level.h * level.s) / base.s;
+  const id = softId(level);
+  return (
+    <Defs>
+      <RadialGradient id={`${id}-g`} gradientUnits="userSpaceOnUse" cx={x + w / 2} cy={y + h / 2} r={Math.max(w, h) * (0.5 + 0.22 * edge)}>
+        <Stop offset={0.5 + 0.48 * edge} stopColor="#fff" stopOpacity={1} />
+        <Stop offset={1} stopColor="#fff" stopOpacity={0} />
+      </RadialGradient>
+      <Mask id={id} maskUnits="userSpaceOnUse" x={x} y={y} width={w} height={h}>
+        <Rect x={x} y={y} width={w} height={h} fill={`url(#${id}-g)`} />
+      </Mask>
+    </Defs>
   );
 }
 
@@ -233,7 +264,7 @@ export const SceneThumb = memo(function SceneThumb({ L, progress, width }: { L: 
   }
   return (
     <Svg width={width} height={(width * r.h) / r.w} viewBox={`0 0 ${r.w} ${r.h}`} pointerEvents="none">
-      <SceneLevels vis={[{ level: r, frac: 1, step: detailStep(width / r.w) }]} base={ROOT_BASE} progress={progress} strokesByLevel={strokes} />
+      <SceneLevels vis={[{ level: r, frac: 1, step: detailStep(width / r.w), blend: 1, edge: 1 }]} base={ROOT_BASE} progress={progress} strokesByLevel={strokes} />
     </Svg>
   );
 });

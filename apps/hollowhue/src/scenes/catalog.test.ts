@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { test } from 'node:test';
 import { browseScenes } from '../core/catalog.ts';
 import { apply, emptyProgress, restoreProgress } from '../core/progress.ts';
-import { cameraFor, clampCamera, focusAt, hitTest, layout, toLocal, visibleLevels, zoomLimits } from '../core/scene.ts';
+import { BLEND_HIT, cameraFor, cameraInto, clampCamera, fitCamera, focusAt, hitTest, layout, toLocal, visibleLevels, zoomLimits } from '../core/scene.ts';
 import { SINGLE_SCENES, ZOOM_SCENES, SHIPPED_ART_SCENES, LEGACY_SCENES, SCENES } from './index.ts';
 import { ARTWORK } from './art/catalog-art.ts';
 import { nestedData } from './nested-data.ts';
@@ -95,4 +95,36 @@ test('all 42 approved illustrations and the seven shipped chains retain their ex
 test('all previously shipped scene shapes, region IDs, versions and palettes are unchanged', () => {
   const digest = createHash('sha256').update(JSON.stringify(LEGACY_SCENES.map(({ id, version, levels, palette }) => ({ id, version, levels, palette })))).digest('hex');
   assert.equal(digest, 'd623f1f6d99f24244a74b24c5a900462e51041a491a82e4516306596bbd567dc');
+});
+
+test('nested details blend in: hidden on the whole picture, soft while small, solid once they fill the screen', () => {
+  for (const scene of ZOOM_SCENES) for (const screen of [{ w: 554, h: 705 }, { w: 780, h: 290 }, { w: 820, h: 900 }]) {
+    const L = layout(scene);
+    // Opening an artwork shows the picture alone: no inset square on top of it.
+    const fit = visibleLevels(L, clampCamera(L, screen, fitCamera(L, screen)), screen);
+    assert.deepEqual(fit.map((v) => v.level.id), [L.root.id], `${scene.id} fit shows no nested square`);
+    for (const level of L.order.slice(1)) {
+      // Look closer goes right into the detail: it fills the screen and nothing of the parent is drawn.
+      const into = clampCamera(L, screen, cameraInto(L, level, screen));
+      const vis = visibleLevels(L, into, screen);
+      const me = vis.find((v) => v.level.id === level.id)!;
+      assert.equal(me.blend, 1, `${scene.id}/${level.id} solid in ${screen.w}x${screen.h}`);
+      assert.ok(into.z >= cameraFor(level, screen).z, 'closer than the old framing');
+      if (!level.round && into.z * level.world.w >= Math.max(screen.w, screen.h)) {
+        assert.equal(vis[0]!.level.id, level.id, 'a square detail that fills the screen hides its parent');
+        assert.equal(me.edge, 1);
+      }
+      assert.equal(focusAt(vis, into.cx, into.cy)?.id, level.id, `${scene.id}/${level.id} focus in ${screen.w}x${screen.h}`);
+      // Half way there the detail is still blending: soft edges, and taps on a faint detail colour the parent.
+      const parent = L.byId.get(level.parent!)!;
+      const half = clampCamera(L, screen, { ...cameraFor(level, screen), z: cameraFor(level, screen).z * 0.45 });
+      const mid = visibleLevels(L, half, screen).find((v) => v.level.id === level.id);
+      if (mid) {
+        assert.ok(mid.edge < 1, `${scene.id}/${level.id} soft edge while small`);
+        const hit = hitTest(visibleLevels(L, half, screen), half.cx, half.cy);
+        if (mid.blend < BLEND_HIT) assert.notEqual(hit?.level, level.id);
+      }
+      void parent;
+    }
+  }
 });
