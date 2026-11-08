@@ -653,6 +653,9 @@ enum GlazeArtBlend {
   static let keyRimShare: Double = 0.02
   static let keyHoldLo: Double = 0.05
   static let keyHoldHi: Double = 0.3
+  /// Owner 2026-11-08: dim but coloured interior pixels are held too (artBlend.ts BLEND_KEY_TINT_LO).
+  static let keyTintLo: Double = 8
+  static let keyTintHi: Double = 20
   static let maxEdge: CGFloat = 1200
 
   static func smoothstep(_ e0: Double, _ e1: Double, _ x: Double) -> Double {
@@ -849,7 +852,10 @@ enum GlazeArtBlend {
         var a = Double(p.3) / 255
         if key_ {
           let raw = keyT[y * w + x]
-          let hold = smoothstep(rim * 0.5, rim, toBg[y * w + x] / 3) * smoothstep(keyHoldLo, keyHoldHi, raw)
+          let chroma = max(c.0, c.1, c.2) - min(c.0, c.1, c.2)
+          let keyChroma = max(key.0, key.1, key.2) - min(key.0, key.1, key.2)
+          let tint = smoothstep(keyTintLo, keyTintHi, chroma - keyChroma)
+          let hold = smoothstep(rim * 0.5, rim, toBg[y * w + x] / 3) * max(smoothstep(keyHoldLo, keyHoldHi, raw), tint)
           let t = max(raw, hold)
           if t > 1.0 / 255 {
             c = (min(255, max(0, key.0 + (c.0 - key.0) / t)),

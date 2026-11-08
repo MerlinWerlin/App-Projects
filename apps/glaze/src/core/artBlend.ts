@@ -52,6 +52,15 @@ export const BLEND_KEY_BG_ALPHA = 0.5;
 export const BLEND_KEY_RIM_SHARE = 0.02;
 export const BLEND_KEY_HOLD_LO = 0.05;
 export const BLEND_KEY_HOLD_HI = 0.3;
+/**
+ * Owner 2026-11-08 ("the copper moon still looks dodgy, a portion of it matching the background"):
+ * a DIM but COLOURED interior pixel is subject, not sky. The blood moon's darkest limb (about rgb
+ * 26,1,0 on a 10,10,12 sky) is only ~22 from the key, under HOLD_LO, so it was keyed out and the
+ * wallpaper showed through the moon. Interior pixels whose chroma (max - min channel) exceeds the
+ * key's by TINT_LO..TINT_HI are held too. Neutral enclosed gaps (a ring gap, a clock dial) stay open.
+ */
+export const BLEND_KEY_TINT_LO = 8;
+export const BLEND_KEY_TINT_HI = 20;
 /** Audit: an opaque edge this far (RGB) from the wallpaper under the widget shows as a box if drawn raw. */
 export const BLEND_BOX_DISTANCE = 28;
 
@@ -293,9 +302,19 @@ export function chamferDistance(mask: ArrayLike<number>, w: number, h: number): 
   return d;
 }
 
-/** Final key alpha with the interior hold (see BLEND_KEY_RIM_SHARE). */
-export function heldKeyAlpha(t: number, distToBg: number, rimPx: number): number {
-  const hold = smoothstep(rimPx * 0.5, rimPx, distToBg) * smoothstep(BLEND_KEY_HOLD_LO, BLEND_KEY_HOLD_HI, t);
+/** Chroma (max - min channel) of a colour, 0-255. */
+export function chroma(c: Rgb): number {
+  return Math.max(c[0], c[1], c[2]) - Math.min(c[0], c[1], c[2]);
+}
+
+/** How strongly a pixel is tinted beyond the key colour (0-1, BLEND_KEY_TINT_LO..HI). */
+export function keyTint(c: Rgb, key: Rgb): number {
+  return smoothstep(BLEND_KEY_TINT_LO, BLEND_KEY_TINT_HI, chroma(c) - chroma(key));
+}
+
+/** Final key alpha with the interior hold (see BLEND_KEY_RIM_SHARE and BLEND_KEY_TINT_LO). */
+export function heldKeyAlpha(t: number, distToBg: number, rimPx: number, tint = 0): number {
+  const hold = smoothstep(rimPx * 0.5, rimPx, distToBg) * Math.max(smoothstep(BLEND_KEY_HOLD_LO, BLEND_KEY_HOLD_HI, t), tint);
   return Math.max(t, hold);
 }
 
@@ -324,7 +343,7 @@ export function applyArtBlend(rgba: ArrayLike<number>, w: number, h: number, d: 
       let c: Rgb = [rgba[i], rgba[i + 1], rgba[i + 2]];
       let a = rgba[i + 3] / 255;
       if (d.mode === 'key' && t && toBg) {
-        const k = heldKeyAlpha(t[y * W + x], toBg[y * W + x], rimPx);
+        const k = heldKeyAlpha(t[y * W + x], toBg[y * W + x], rimPx, keyTint(c, d.key));
         c = unmix(c, d.key, k);
         a *= k;
       }

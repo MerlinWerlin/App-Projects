@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXACT = [
     'src/ui/ThemeWidgetArt.tsx', 'src/ui/WidgetArtMenu.tsx',
     'src/ui/WidgetArtLibraryList.tsx', 'src/ui/BlendedArt.tsx',
-    'src/core/widgetArtLibrary.ts', 'src/core/artBlend.ts',
+    'src/core/widgetArtLibrary.ts',
     'src/native/packs.ts', 'src/native/useRemoteCatalog.ts',
      'app/(tabs)/widgets.tsx',
     'targets/widget/SeamlessWidget.swift', 'targets/widget/WidgetArtLibrary.swift',
@@ -33,6 +33,7 @@ ALLOWED = {
     'src/native/widgets.ts': 'Expose the recovery reset on the existing serial art queue.',
     'modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift': 'Expose the separate photo-preserving recovery reset, then invalidate and reload.',
     'src/store/launchWork.ts': 'Run one-time recovery before the original deferred queue loads old pending state.',
+    'src/core/artBlend.ts': 'Owner 2026-11-08 (copper moon showed the wallpaper through its dark limb): dim coloured interior pixels are held opaque (BLEND_KEY_TINT_LO/HI), mirrored in the bridge and blend-audit.py. Owned by Claude.',
 }
 rows = []
 for file in EXACT:

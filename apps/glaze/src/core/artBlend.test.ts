@@ -10,6 +10,8 @@ import {
   BLEND_KEY_BG_ALPHA,
   BLEND_KEY_HOLD_HI,
   BLEND_KEY_HOLD_LO,
+  BLEND_KEY_TINT_HI,
+  BLEND_KEY_TINT_LO,
   BLEND_KEY_RIM_SHARE,
   BLEND_KEY_EDGE_FEATHER_SHARE,
   BLEND_KEY_LO_BASE,
@@ -25,6 +27,7 @@ import {
   applyArtBlend,
   chamferDistance,
   heldKeyAlpha,
+  keyTint,
   keyBackground,
   rgbDistance,
   decideArtBlend,
@@ -249,6 +252,8 @@ test('constants mirrored in GlazeArtBlend (Swift) and blend-audit.py', () => {
     ['keyRimShare', 'BLEND_KEY_RIM_SHARE', BLEND_KEY_RIM_SHARE],
     ['keyHoldLo', 'BLEND_KEY_HOLD_LO', BLEND_KEY_HOLD_LO],
     ['keyHoldHi', 'BLEND_KEY_HOLD_HI', BLEND_KEY_HOLD_HI],
+    ['keyTintLo', 'BLEND_KEY_TINT_LO', BLEND_KEY_TINT_LO],
+    ['keyTintHi', 'BLEND_KEY_TINT_HI', BLEND_KEY_TINT_HI],
   ];
   for (const [sw, pyName, v] of pairs) {
     const ms = swift.match(new RegExp(`static let ${sw}: (?:Double|Int) = ([0-9.]+)`));
@@ -264,9 +269,10 @@ test('constants mirrored in GlazeArtBlend (Swift) and blend-audit.py', () => {
   // Swift un-mixes, holds the interior and feathers like applyArtBlend.
   assert.match(swift, /key\.0 \+ \(c\.0 - key\.0\) \/ t/);
   assert.match(swift, /a \*= smoothstep\(0, band, e\)/);
-  assert.match(swift, /smoothstep\(rim \* 0\.5, rim, toBg\[y \* w \+ x\] \/ 3\) \* smoothstep\(keyHoldLo, keyHoldHi, raw\)/);
+  assert.match(swift, /smoothstep\(rim \* 0\.5, rim, toBg\[y \* w \+ x\] \/ 3\) \* max\(smoothstep\(keyHoldLo, keyHoldHi, raw\), tint\)/);
+  assert.match(swift, /let tint = smoothstep\(keyTintLo, keyTintHi, chroma - keyChroma\)/);
   assert.match(swift, /v = min\(v, toBg\[i - w - 1\] \+ 4\)/, 'chamfer 3-4');
-  assert.match(py, /smoothstep\(rim \* 0\.5, rim, to_bg\) \* smoothstep\(BLEND_KEY_HOLD_LO, BLEND_KEY_HOLD_HI, t\)/);
+  assert.match(py, /smoothstep\(rim \* 0\.5, rim, to_bg\) \* np\.maximum\(smoothstep\(BLEND_KEY_HOLD_LO, BLEND_KEY_HOLD_HI, t\), tint\)/);
 });
 
 test('guard: Swift art paths draw no border, shadow, blur, material panel or outline (no frame, no box, no halo)', () => {
@@ -311,4 +317,16 @@ test('guard: in-app preview blends art on the wallpaper crop, never on a blurred
   const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
   assert.match(art, /themeId=\{theme\.id\}/);
   assert.match(art, /artTransparent=\{!remoteTheme\}/);
+});
+
+// Owner 2026-11-08 ("the copper moon still looks dodgy"): a dim red interior pixel is held; a neutral
+// enclosed gap (Saturn's ring gap, a clock dial) still shows the wallpaper.
+test('interior hold keeps dim coloured subject pixels and leaves neutral gaps open', () => {
+  const key = [10, 10, 12] as const;
+  assert.equal(keyTint([26, 1, 0], key), 1);
+  assert.equal(keyTint([11, 10, 12], key), 0);
+  assert.equal(heldKeyAlpha(0.02, 50, 20, keyTint([26, 1, 0], key)), 1);
+  assert.equal(heldKeyAlpha(0.02, 50, 20, keyTint([11, 10, 12], key)), 0.02);
+  // Near the outline (inside the rim) nothing is held, so the moon's edge still blends.
+  assert.equal(heldKeyAlpha(0.02, 2, 20, 1), 0.02);
 });

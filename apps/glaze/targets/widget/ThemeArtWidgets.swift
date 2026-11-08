@@ -93,6 +93,21 @@ enum ThemeArtKind {
     .description("Artwork from the theme you choose in Glaze.")
     .supportedFamilies(slot == 1 ? [.systemSmall, .systemMedium, .systemLarge] : [.systemSmall, .systemLarge])
     .contentMarginsDisabled()
+    .disfavoredLocations([.homeScreen], for: galleryHidden(slot: slot))
+  }
+
+  /// Owner 2026-11-08 ("a small and large grey icon at the end of its gallery"): a slot the theme
+  /// has no piece for showed the plain background. Live packs have 2-5 art pieces per size (most:
+  /// 4 small, 3 large), so the Glaze gallery shows Art 1-4 in Small and Art 1-3 in Large. Later
+  /// slots stay registered (widgets already placed keep working) and move to WidgetKit's Other list;
+  /// every piece is still offered in Edit Widget > Art.
+  static let gallerySmallSlots = 4
+  static let galleryLargeSlots = 3
+  static func galleryHidden(slot: Int) -> [WidgetFamily] {
+    var hidden: [WidgetFamily] = []
+    if slot > gallerySmallSlots { hidden.append(.systemSmall) }
+    if slot > galleryLargeSlots { hidden.append(.systemLarge) }
+    return hidden
   }
 }
 

@@ -175,7 +175,10 @@ test('explicit theme selection writes widgets; wallpaper and icon-only actions k
   // T184 / T185: "Use this theme" (the old widgets step is gone) writes the widget theme through
   // applyThemeEverywhere, which remembers it and (T250) queues the App Group write.
   const putInUse = /const putInUse = async \([^)]*\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(putInUse, /applyThemeEverywhere\(theme\)/);
+  // Owner 2026-11-08: putInUse publishes through selectTheme (also used by the four theme choices).
+  assert.match(putInUse, /await selectTheme\(focus\)/);
+  const selectTheme = /const selectTheme = async \([^)]*\)[^{]*\{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
+  assert.match(selectTheme, /applyThemeEverywhere\(theme\)/);
   assert.match(read('src/store/activeTheme.ts'), /const widgets = await rememberWidgetTheme\(theme\);/);
   assert.match(read('src/store/activeTheme.ts'), /requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
 

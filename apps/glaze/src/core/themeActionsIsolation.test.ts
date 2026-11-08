@@ -70,31 +70,73 @@ test('icon-only setup changes the icon export style without publishing B to widg
   assert.deepEqual(navigated, ['/install']);
 });
 
-test('Use everything cannot apply a departed theme after a delayed wallpaper save', async () => {
-  const focus = { current: 1 };
-  const pending = { current: false };
-  let published = false;
-  const use = handler('putInUse', {
-    usePending: pending, locked: false, themeFocus: focus, theme,
-    setThemeChoiceOpen: nothing, setUseBusy: nothing, setUseError: nothing,
-    onSaveWallpaper: async () => { focus.current++; return true; },
-    applyThemeEverywhere: async () => { published = true; return { icons: true, widgets: true }; },
-  });
-  await use();
-  assert.equal(published, false);
-  assert.equal(pending.current, false);
+// Owner 2026-11-08 ("swapping themes is no longer swapping it across to widgets"): choosing a theme
+// swaps the widgets whichever action follows, and a declined or failed wallpaper save never blocks it.
+const selectScope = (events: string[], focus = { current: 1 }) => ({
+  themeFocus: focus, theme, setUseError: nothing, haptic: nothing, playApply: nothing,
+  AccessibilityInfo: { announceForAccessibility: nothing }, t: (key: string) => key, console,
+  applyThemeEverywhere: async (value: typeof theme) => { events.push(value.id); return { icons: true, widgets: true }; },
 });
 
-test('Use everything saves wallpaper, publishes the requested theme, then opens its icon setup', async () => {
+test('Use everything publishes B first, then saves the wallpaper, then opens its icon setup', async () => {
   const events: string[] = [];
+  const select = handler('selectTheme', selectScope(events));
   const use = handler('putInUse', {
     usePending: { current: false }, locked: false, themeFocus: { current: 1 }, theme,
-    setThemeChoiceOpen: nothing, setUseBusy: nothing, setUseError: nothing,
+    setThemeChoiceOpen: nothing, setUseBusy: nothing, setUseError: nothing, selectTheme: select,
     onSaveWallpaper: async () => { events.push('wallpaper'); return true; },
-    applyThemeEverywhere: async (value: typeof theme) => { events.push(value.id); return { icons: true, widgets: true }; },
-    playApply: nothing, AccessibilityInfo: { announceForAccessibility: nothing }, t: nothing,
+    toast: { show: nothing }, t: (key: string) => key,
     addThemeIcons: () => events.push('icons'),
   });
   await use();
-  assert.deepEqual(events, ['wallpaper', 'B', 'icons']);
+  assert.deepEqual(events, ['B', 'wallpaper', 'icons']);
+});
+
+test('Use everything still swaps the widgets when the wallpaper save is declined', async () => {
+  const events: string[] = [], notes: unknown[] = [];
+  const select = handler('selectTheme', selectScope(events));
+  const use = handler('putInUse', {
+    usePending: { current: false }, locked: false, themeFocus: { current: 1 }, theme,
+    setThemeChoiceOpen: nothing, setUseBusy: nothing, setUseError: nothing, selectTheme: select,
+    onSaveWallpaper: async () => false, toast: { show: (m: unknown) => notes.push(m) }, t: (key: string) => key,
+    addThemeIcons: nothing,
+  });
+  await use();
+  assert.deepEqual(events, ['B']);
+  assert.equal(notes.length, 1);
+});
+
+test('a theme screen the person already left publishes nothing', async () => {
+  const events: string[] = [];
+  const focus = { current: 2 };
+  const select = handler('selectTheme', selectScope(events, focus));
+  assert.equal(await select(1), false);
+  assert.deepEqual(events, []);
+});
+
+test('each theme choice puts an unlocked theme that is not in use on the widgets', async () => {
+  const events: string[] = [];
+  const select = handler('selectTheme', selectScope(events));
+  const pick = (scope: Record<string, unknown>) => handler('ensureSelected', {
+    usePending: { current: false }, setUseError: nothing, selectTheme: select, ...scope,
+  });
+  pick({ locked: false, inUse: false })();
+  pick({ locked: false, inUse: true })();
+  pick({ locked: true, inUse: false })();
+  await new Promise((r) => setTimeout(r, 0));
+  assert.deepEqual(events, ['B']);
+});
+
+test('Use this theme opens the choices and swaps the widgets at once', async () => {
+  const events: string[] = [];
+  let open = false;
+  const select = handler('selectTheme', selectScope(events));
+  const use = handler('onUseTheme', {
+    setThemeChoiceOpen: (v: boolean) => { open = v; }, locked: false, inUse: false,
+    usePending: { current: false }, setUseError: nothing, selectTheme: select,
+  });
+  use();
+  await new Promise((r) => setTimeout(r, 0));
+  assert.equal(open, true);
+  assert.deepEqual(events, ['B']);
 });

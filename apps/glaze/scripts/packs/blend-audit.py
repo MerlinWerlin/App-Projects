@@ -71,6 +71,9 @@ BLEND_KEY_BG_ALPHA = 0.5
 BLEND_KEY_RIM_SHARE = 0.02
 BLEND_KEY_HOLD_LO = 0.05
 BLEND_KEY_HOLD_HI = 0.3
+# Owner 2026-11-08: dim but coloured interior pixels are held too (artBlend.ts BLEND_KEY_TINT_LO).
+BLEND_KEY_TINT_LO = 8
+BLEND_KEY_TINT_HI = 20
 BLEND_BOX_DISTANCE = 28
 
 # Audit-only thresholds.
@@ -243,7 +246,8 @@ def apply_blend(rgba, d, fill_interior=False):
         t = smoothstep(d['lo'], d['hi'], dist)
         rim = BLEND_KEY_RIM_SHARE * min(w, h)
         to_bg = distance_to(key_background(t), rim)
-        k = np.maximum(t, smoothstep(rim * 0.5, rim, to_bg) * smoothstep(BLEND_KEY_HOLD_LO, BLEND_KEY_HOLD_HI, t))
+        tint = smoothstep(BLEND_KEY_TINT_LO, BLEND_KEY_TINT_HI, (rgb.max(-1) - rgb.min(-1)) - (key.max() - key.min()))
+        k = np.maximum(t, smoothstep(rim * 0.5, rim, to_bg) * np.maximum(smoothstep(BLEND_KEY_HOLD_LO, BLEND_KEY_HOLD_HI, t), tint))
         if fill_interior:
             k = np.maximum(k, smoothstep(rim * 0.5, rim, to_bg))
         safe = np.where(k > 1 / 255, k, 1.0)
