@@ -12,10 +12,12 @@ import { duration, pressScale } from '../theme/motion.ts';
 import { elevated, fonts, radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { SpotArt, type SpotKind } from './illustrations/index.tsx';
 
-export function Screen({ children, scroll = true }: { children: ReactNode; scroll?: boolean }) {
+// T169: `tabs` = a fixed (non-scrolling) tab screen whose list runs down to the tab bar, which already keeps clear of
+// the home indicator, so no bottom inset or extra gap.
+export function Screen({ children, scroll = true, tabs = false }: { children: ReactNode; scroll?: boolean; tabs?: boolean }) {
   const { theme } = useApp();
   const insets = useSafeAreaInsets();
-  const pad = { paddingTop: insets.top + space.l, paddingBottom: insets.bottom + space.xxl, paddingHorizontal: space.l, gap: space.l };
+  const pad = { paddingTop: insets.top + space.l, paddingBottom: tabs ? 0 : insets.bottom + space.xxl, paddingHorizontal: space.l, gap: tabs ? space.s : space.l };
   if (!scroll) return <View style={[{ flex: 1, backgroundColor: theme.paper }, pad]}>{children}</View>;
   return (
     <ScrollView style={{ flex: 1, backgroundColor: theme.paper }} contentContainerStyle={pad}>

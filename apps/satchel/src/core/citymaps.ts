@@ -223,6 +223,28 @@ export function regionForCity(city: CityMap): Region {
   return { latitude: (s + n) / 2, longitude: (w + e) / 2, latitudeDelta: n - s, longitudeDelta: e - w };
 }
 
+/** T169: the Map tab's stored last view (satchel.mapview.v1), or null when missing or unreadable. */
+export function parseMapView(v: unknown): Region | null {
+  if (!v || typeof v !== 'object') return null;
+  const r = v as Record<string, unknown>;
+  const ok = (x: unknown, lo: number, hi: number) => typeof x === 'number' && Number.isFinite(x) && x >= lo && x <= hi;
+  if (!ok(r.latitude, -90, 90) || !ok(r.longitude, -180, 180) || !ok(r.latitudeDelta, 0.0005, 180) || !ok(r.longitudeDelta, 0.0005, 360)) return null;
+  return { latitude: r.latitude as number, longitude: r.longitude as number, latitudeDelta: r.latitudeDelta as number, longitudeDelta: r.longitudeDelta as number };
+}
+
+/**
+ * T169: where the Map tab opens. The last view wins; with none, the downloaded city holding one of `hints` (the trip
+ * on now), else the first downloaded city. Null keeps the built-in default.
+ */
+export function startRegion(last: Region | null, installed: readonly CityMap[], hints: readonly { lat: number; lon: number }[] = []): Region | null {
+  if (last) return last;
+  for (const h of hints) {
+    const c = pickCityFor(h.lat, h.lon, installed);
+    if (c) return regionForCity(c);
+  }
+  return installed[0] ? regionForCity(installed[0]) : null;
+}
+
 const area = (b: BBox) => (b[2] - b[0]) * (b[3] - b[1]);
 
 /** The installed city whose bbox holds the point (the smallest one when several overlap), or null. */

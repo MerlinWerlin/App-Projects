@@ -26,12 +26,12 @@
 // whenever places are on screen; a filtered list that comes out empty keeps its Show all button.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Alert, FlatList, Text, View } from 'react-native';
+import { Alert, FlatList, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 import kyotoData from '../../src/content/demo_pois_kyoto.json';
 import { availablePoiSets, poiSetKey as setKey, selectPoiSet } from '../../src/core/mapsets.ts';
 import tagData from '../../src/content/osm_poi_tags.json';
 import tokyoData from '../../src/content/demo_pois_tokyo.json';
-import { cityDiskBytes, formatSize, overallProgress, pickCityFor, regionForCity, type CityCatalog, type CityMap } from '../../src/core/citymaps.ts';
+import { cityDiskBytes, formatSize, overallProgress, parseMapView, pickCityFor, regionForCity, startRegion, type CityCatalog, type CityMap } from '../../src/core/citymaps.ts';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
 import { giftPins, giftPinTarget } from '../../src/core/gifts.ts';
 import type { PermissionState } from '../../src/core/permissions.ts';
@@ -118,7 +118,10 @@ import { usePersisted } from '../../src/state/persisted.ts';
 const CATS = parsePoiCategories(tagData);
 const SETS: PoiSet[] = [parsePoiSet(tokyoData, CATS), parsePoiSet(kyotoData, CATS)].filter((s): s is PoiSet => s !== null);
 const NO_SAMPLE_SETS: PoiSet[] = [];
-const MAP_HEIGHT = 280;
+// T169: the map takes about a third of the screen (200-280 pt) so the list under it is not squeezed on smaller phones.
+const mapHeightFor = (screenH: number) => Math.round(Math.min(280, Math.max(200, screenH * 0.3)));
+const MAP_VIEW_KEY = 'satchel.mapview.v1';
+const NO_VIEW: unknown = null;
 const NO_LINES: MapLine[] = [];
 /** "Nearest to you" only when you're actually in that city; otherwise distances are from the city's middle. */
 const NEAR_CITY_M = 50_000;
@@ -395,8 +398,13 @@ export default function MapScreen() {
   const [layersOpen, setLayersOpen] = useState(false);
   const searchY = useRef(0);
   const net = useNetworkStatus();
+  const { height: screenH } = useWindowDimensions();
   const [installed, setInstalled] = useState<InstalledCity[]>([]);
-  const refreshInstalled = useCallback(async () => setInstalled(await listInstalled()), []);
+  const [installedLoaded, setInstalledLoaded] = useState(false);
+  const refreshInstalled = useCallback(async () => {
+    setInstalled(await listInstalled());
+    setInstalledLoaded(true);
+  }, []);
   useEffect(() => {
     refreshInstalled();
   }, [refreshInstalled]);
@@ -525,6 +533,28 @@ export default function MapScreen() {
   }, [layer.fit]);
   const offlineTiles = useMemo(() => (offlineCity ? offlineTilesFor(offlineCity) : null), [offlineCity]);
   const showCity = useCallback((city: CityMap) => setFocus({ region: regionForCity(city), key: Date.now() }), []);
+
+  // T169: open where the map was last left, else on the downloaded city of the trip on now (or the first one), not
+  // on the built-in Tokyo sample. Once per visit, and not over a Trip map, which frames its own trip.
+  const [rawView, setRawView, viewLoaded] = usePersisted<unknown>(MAP_VIEW_KEY, NO_VIEW);
+  const started = useRef(false);
+  useEffect(() => {
+    if (started.current || !viewLoaded || !installedLoaded) return;
+    started.current = true;
+    if (scoped) return;
+    const r = startRegion(parseMapView(rawView), installed, bookingPins(active ? [active] : trips));
+    if (r) setFocus({ region: r, key: Date.now() });
+  }, [viewLoaded, installedLoaded]); // eslint-disable-line react-hooks/exhaustive-deps
+  const saveView = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => () => {
+    if (saveView.current) clearTimeout(saveView.current);
+  }, []);
+  const onRegionChange = (r: Region) => {
+    setView({ lat: r.latitude, lon: r.longitude });
+    if (!started.current) return;
+    if (saveView.current) clearTimeout(saveView.current);
+    saveView.current = setTimeout(() => setRawView({ latitude: r.latitude, longitude: r.longitude, latitudeDelta: r.latitudeDelta, longitudeDelta: r.longitudeDelta }), 800);
+  };
 
   const select = useCallback((s: Selected) => {
     setSelected(s);
@@ -968,7 +998,7 @@ export default function MapScreen() {
   );
 
   return (
-    <Screen scroll={false}>
+    <Screen scroll={false} tabs>
       <HeroHeader compact scene="map" title={t('map.title')} />
       <View style={{ gap: space.xs }}>
         <SatchelMap
@@ -977,13 +1007,13 @@ export default function MapScreen() {
           focus={focus}
           onPinPress={onPinPress}
           onMapPress={onMapPress}
-          height={MAP_HEIGHT}
+          height={mapHeightFor(screenH)}
           label={t('map.a11yMap')}
           fallbackTitle={t('map.noMapTitle')}
           fallbackBody={t('map.noMapBody')}
           offlineTiles={offlineTiles}
           limitZoom={net === 'offline'}
-          onRegionChange={(r) => setView({ lat: r.latitude, lon: r.longitude })}
+          onRegionChange={onRegionChange}
           lines={isShown(layers.prefs, 'route') ? layer.lines : NO_LINES}
           fit={layer.fit}
         />
@@ -1023,14 +1053,23 @@ export default function MapScreen() {
             attribution: set && !set.sample ? t('packpois.attribution') : null,
           }}
         />
-        {offlineCity && offlineTiles ? (
-          <View
-            accessible
-            accessibilityLabel={t('citymaps.chipA11y', { city: offlineCity.name })}
-            style={{ alignSelf: 'flex-start', paddingHorizontal: space.m, paddingVertical: space.xs, borderRadius: radius.pill, backgroundColor: theme.okSoft }}
-          >
-            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 13, color: theme.ok }}>{t('citymaps.chip', { city: offlineCity.name })}</Text>
-          </View>
+        {/* T169: one tap to each downloaded city; the one on screen reads "Offline map: <city>". */}
+        {installed.length > 0 ? (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space.s }}>
+            {installed.map((c) => {
+              const here = offlineCity?.id === c.id && !!offlineTiles;
+              return (
+                <Chip
+                  key={c.id}
+                  label={here ? t('citymaps.chip', { city: c.name }) : c.name}
+                  a11yLabel={here ? t('citymaps.chipA11y', { city: c.name }) : t('citymaps.jumpA11y', { city: c.name })}
+                  hint={t('citymaps.jumpHint', { city: c.name })}
+                  selected={here}
+                  onPress={() => showCity(c)}
+                />
+              );
+            })}
+          </ScrollView>
         ) : net === 'offline' ? (
           <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>
             {t('citymaps.offlineNoCity')}

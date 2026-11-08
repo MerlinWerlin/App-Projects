@@ -6789,5 +6789,7 @@
  "citymaps.dark.removeHint": "Keeps the city map; dark mode shows the light map again",
  "citymaps.dark.removed": "Dark {city} map removed.",
  "citymaps.dark.removeFailed": "Couldn’t remove the dark {city} map. Try again.",
- "citymaps.deleteBodyDark": "This frees about {size}, including the dark map. You can download them again while connected."
+ "citymaps.deleteBodyDark": "This frees about {size}, including the dark map. You can download them again while connected.",
+ "citymaps.jumpA11y": "Show {city} on the map",
+ "citymaps.jumpHint": "Moves the map to your downloaded {city} map"
 }

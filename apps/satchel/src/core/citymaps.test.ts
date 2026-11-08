@@ -17,8 +17,10 @@ import {
   parseCatalog,
   parseCity,
   parseDarkPack,
+  parseMapView,
   pickCityFor,
   regionForCity,
+  startRegion,
   tileCountEstimate,
   tilePathForScheme,
   tilePathTemplate,
@@ -257,4 +259,23 @@ test('T167: cityDiskBytes adds the dark tiles only when they are installed', () 
   assert.equal(cityDiskBytes(c, true), 31_000_000);
   assert.equal(cityDiskBytes({ bytes: 16_000_000 }, true), 16_000_000);
   assert.equal(formatSize(cityDiskBytes(c, true)), '31 MB');
+});
+
+test('T169: the Map tab opens on the last view, else the downloaded city of the trip, else the first one', () => {
+  const syd = { ...(parseCity(kyoto) as CityMap), id: 'sydney', name: 'Sydney', bbox: [150.9, -34.1, 151.4, -33.7] as [number, number, number, number] };
+  const kyo = parseCity(kyoto) as CityMap;
+  const last = { latitude: -33.86, longitude: 151.2, latitudeDelta: 0.05, longitudeDelta: 0.05 };
+  assert.deepEqual(startRegion(last, [kyo], []), last);
+  assert.deepEqual(startRegion(null, [kyo, syd], [{ lat: -33.87, lon: 151.21 }]), regionForCity(syd));
+  assert.deepEqual(startRegion(null, [syd, kyo], [{ lat: 0, lon: 0 }]), regionForCity(syd));
+  assert.equal(startRegion(null, [], [{ lat: -33.87, lon: 151.21 }]), null);
+});
+
+test('T169: a stored map view is read back only when it is a real region', () => {
+  const r = { latitude: -33.86, longitude: 151.2, latitudeDelta: 0.05, longitudeDelta: 0.05 };
+  assert.deepEqual(parseMapView(r), r);
+  assert.equal(parseMapView(null), null);
+  assert.equal(parseMapView({ ...r, latitude: 120 }), null);
+  assert.equal(parseMapView({ ...r, latitudeDelta: 0 }), null);
+  assert.equal(parseMapView('x'), null);
 });

@@ -37,6 +37,8 @@ export const citymaps = {
   'citymaps.retry': 'Check again',
   'citymaps.retryHint': 'Looks for the list of city maps again',
   'citymaps.chip': 'Offline map: {city}',
+  'citymaps.jumpA11y': 'Show {city} on the map',
+  'citymaps.jumpHint': 'Moves the map to your downloaded {city} map',
   'citymaps.chipA11y': 'This area uses your downloaded {city} map, which works without a connection',
   'citymaps.offlineNoCity': 'You’re offline. Downloaded city maps still work; other places show only what the phone has kept.',
   'citymaps.fail.cancelled': 'Download cancelled.',
