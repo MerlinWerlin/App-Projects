@@ -202,6 +202,11 @@ function Colouring({ sceneId }: { sceneId: string }) {
 
       {/* zoom rail */}
       <View pointerEvents="box-none" style={{ position: 'absolute', right: space.md, top: insets.top + 90, gap: space.sm }}>
+        {nextLevel ? (
+          <Bubble>
+            <IconButton icon="creation" label={t('zoom.spot')} onPress={() => { h.select(); canvas.current?.showSpot(nextLevel.id); }} />
+          </Bubble>
+        ) : null}
         <Bubble>
           <IconButton icon="plus" label={t('zoom.in')} onPress={() => canvas.current?.zoomBy(2)} />
           <IconButton icon="minus" label={t('zoom.out')} onPress={() => canvas.current?.zoomBy(0.5)} />

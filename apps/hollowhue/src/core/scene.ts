@@ -186,6 +186,17 @@ export function cameraFor(p: Placed, sc: Screen, margin = 0.92): Camera {
   return { cx: p.world.x + p.world.w / 2, cy: p.world.y + p.world.h / 2, z: Math.min(sc.w / p.world.w, sc.h / p.world.h) * margin };
 }
 
+/**
+ * Camera that goes right into a level: it fills the screen, so nothing of the parent shows around a square
+ * detail. It stops short of making the next detail inside big enough to count as found.
+ */
+export function cameraInto(L: Layout, p: Placed, sc: Screen): Camera {
+  let z = Math.max(sc.w / p.world.w, sc.h / p.world.h) * 1.001;
+  const short = Math.min(sc.w, sc.h);
+  for (const id of p.children) z = Math.min(z, (short * 0.7) / L.byId.get(id)!.world.w);
+  return { cx: p.world.x + p.world.w / 2, cy: p.world.y + p.world.h / 2, z: Math.max(z, cameraFor(p, sc).z) };
+}
+
 /** Point along a smooth zoom flight from a to b at t in [0,1] (log zoom, fixed-point pan). */
 export function flight(a: Camera, b: Camera, t: number): Camera {
   const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -257,8 +268,43 @@ function covers(c: Placed, vb: BBox) {
   );
 }
 
-/** frac: discovery share of the viewport (short side for square editions). step: quantised detail zoom. */
-export type Visible = { level: Placed; frac: number; step: number }[];
+// A nested level is never shown as a picture pasted on its parent. While it is small it is not drawn at all (the
+// parent's own drawing of that spot shows); as it grows it dissolves in with soft edges, and its edges only turn
+// solid once it covers the whole screen.
+
+/** Share of the screen's short side over which a nested level fades in (invisible below `from`, solid by `to`). */
+export const BLEND = { from: 0.3, to: 0.75 };
+/** Taps and strokes land on a nested level once it is at least this opaque. */
+export const BLEND_HIT = 0.5;
+
+const smooth = (a: number) => (a <= 0 ? 0 : a >= 1 ? 1 : a * a * (3 - 2 * a));
+
+/** Width of a level on screen as a share of the screen's short side. */
+function shortShare(p: Placed, cam: Camera, sc: Screen) {
+  return (p.world.w * cam.z) / Math.max(1, Math.min(sc.w, sc.h));
+}
+
+/** Opacity of a nested level (the root is always 1), in sixteenths so art only re-renders on real change. */
+export function blendOf(p: Placed, cam: Camera, sc: Screen): number {
+  if (p.depth === 0) return 1;
+  return Math.round(smooth((shortShare(p, cam, sc) - BLEND.from) / (BLEND.to - BLEND.from)) * 16) / 16;
+}
+
+/**
+ * Soft-edge amount of a nested level: 0 = widest feather, 1 = hard edges. It reaches 1 only once the level is as
+ * wide as the screen's long side, which is when it can cover the screen.
+ */
+export function edgeOf(p: Placed, cam: Camera, sc: Screen): number {
+  if (p.depth === 0) return 1;
+  const cover = Math.max(sc.w, sc.h) / Math.max(1, Math.min(sc.w, sc.h));
+  return Math.round(Math.min(1, Math.max(0, (shortShare(p, cam, sc) - BLEND.from) / (cover - BLEND.from))) * 16) / 16;
+}
+
+/**
+ * frac: discovery share of the viewport (short side for square editions). step: quantised detail zoom.
+ * blend: opacity (0..1). edge: soft-edge amount (1 = solid edges).
+ */
+export type Visible = { level: Placed; frac: number; step: number; blend: number; edge: number }[];
 
 /**
  * Levels to draw, parents first. A rectangular child that covers the whole screen hides its ancestors,
@@ -274,14 +320,28 @@ export function visibleLevels(L: Layout, cam: Camera, sc: Screen): Visible {
   }
   const out: Visible = [];
   const walk = (p: Placed) => {
-    out.push({ level: p, frac: (p.world.w * cam.z) / (p.discoveryAt ? Math.min(sc.w, sc.h) : sc.w), step: detailStep(p.s * cam.z) });
+    // The level that covers the screen is solid even when it is nested.
+    const solid = p === base && p.depth > 0;
+    out.push({
+      level: p,
+      frac: (p.world.w * cam.z) / (p.discoveryAt ? Math.min(sc.w, sc.h) : sc.w),
+      step: detailStep(p.s * cam.z),
+      blend: solid ? 1 : blendOf(p, cam, sc),
+      edge: solid ? 1 : edgeOf(p, cam, sc),
+    });
     for (const id of p.children) {
       const c = L.byId.get(id)!;
-      if (c.world.w * cam.z >= LEVEL_MIN_PX && overlaps(c.world, vb)) walk(c);
+      // A nested level too faint to see is skipped with everything inside it.
+      if (c.world.w * cam.z >= LEVEL_MIN_PX && overlaps(c.world, vb) && blendOf(c, cam, sc) > 0) walk(c);
     }
   };
   walk(base);
   return out;
+}
+
+/** A level counts as found (title, toast) once it is big enough on screen and fully blended in. */
+export function isFound(v: Visible[number]) {
+  return v.level.depth === 0 || (v.frac >= (v.level.discoveryAt ?? FOUND_AT) && v.blend >= 1);
 }
 
 function insideLevel(p: Placed, wx: number, wy: number) {
@@ -297,7 +357,7 @@ export type Hit = { level: string; region: string };
 
 /** What you see is what you tap: the topmost drawn shape (deepest level first) big enough to hit. */
 export function hitTest(vis: Visible, wx: number, wy: number): Hit | null {
-  const cands = vis.filter((v) => insideLevel(v.level, wx, wy)).sort((a, b) => b.level.depth - a.level.depth);
+  const cands = vis.filter((v) => v.blend >= BLEND_HIT && insideLevel(v.level, wx, wy)).sort((a, b) => b.level.depth - a.level.depth);
   for (const v of cands) {
     const l = toLocal(v.level, wx, wy);
     const shapes = hitShapes(v.level);
@@ -314,7 +374,7 @@ export function hitTest(vis: Visible, wx: number, wy: number): Hit | null {
 /** Deepest drawn level under a world point: where a freehand stroke belongs. */
 export function levelAt(vis: Visible, wx: number, wy: number): Placed | null {
   let best: Placed | null = null;
-  for (const v of vis) if (insideLevel(v.level, wx, wy) && (!best || v.level.depth > best.depth)) best = v.level;
+  for (const v of vis) if (v.blend >= BLEND_HIT && insideLevel(v.level, wx, wy) && (!best || v.level.depth > best.depth)) best = v.level;
   return best;
 }
 
@@ -322,7 +382,7 @@ export function levelAt(vis: Visible, wx: number, wy: number): Placed | null {
 export function focusAt(vis: Visible, wx: number, wy: number): Placed | null {
   let best: Placed | null = null;
   for (const v of vis) {
-    if ((v.level.depth === 0 || v.frac >= (v.level.discoveryAt ?? FOUND_AT)) && insideLevel(v.level, wx, wy) && (!best || v.level.depth > best.depth)) best = v.level;
+    if (isFound(v) && insideLevel(v.level, wx, wy) && (!best || v.level.depth > best.depth)) best = v.level;
   }
   return best;
 }

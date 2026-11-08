@@ -47,3 +47,10 @@
   with merged runtime equality checked. No physical-phone uptake or new native install availability claim.
 
 - Final Apple probe41821210892 confirms build0.1.0(4) COMPLETE/VALID/IN_BETA_TESTING, no errors/warnings. Production group28b985e9 and actual bundle hash independently reverified in the same probe. Both OTA and fresh TestFlight are available; physical owner-phone uptake remains unverified. Complete and earlier in-flight receipts retained in docs/qa-art-20261104.
+
+- 2026-11-08 (Claude, Jared's TestFlight feedback on 0.1.0 (5)): nested details looked like a square pasted on the
+  picture and Look closer did not go into the book. Nested levels now stay hidden while small, dissolve in between
+  30% and 75% of the screen's short side with a radial soft edge (solid only once they can cover the screen); faint
+  levels take no taps and are not "found". Look closer flies right into the detail (fills the canvas), capped so the
+  next detail is not found early. New sparkle button circles the next zoom spot (fades in ~1.2 s). 160 tests, both
+  typechecks; native run 42457693915 on 6d56532a passed; reviewed captures in docs/qa-blend-20261108. PR257.

@@ -98,13 +98,19 @@ test('camera is clamped to the scene and to the zoom range', () => {
   assert.equal(out.cx, 50);
 });
 
-test('a child level is drawn as soon as it is a few px wide, in its exact place', () => {
+test('a child level stays hidden while small, then blends in softly in its exact place', () => {
   const L = layout(tiny);
   const b = L.byId.get('b')!;
   const tooSmall = { cx: 50, cy: 37.5, z: (LEVEL_MIN_PX * 0.9) / b.world.w };
   assert.deepEqual(visibleLevels(L, tooSmall, SC).map((v) => v.level.id), ['a']);
-  const fit = fitCamera(L, SC);
-  assert.deepEqual(visibleLevels(L, fit, SC).map((v) => v.level.id), ['a', 'b']);
+  // Not pasted on top while it is a small square: the parent's own drawing shows there.
+  const faint = { cx: 45, cy: 33.75, z: (Math.min(SC.w, SC.h) * 0.25) / b.world.w };
+  assert.deepEqual(visibleLevels(L, faint, SC).map((v) => v.level.id), ['a']);
+  // Half the screen: drawn, part-faded, with soft edges.
+  const half = { cx: 45, cy: 33.75, z: (Math.min(SC.w, SC.h) * 0.5) / b.world.w };
+  const mid = visibleLevels(L, half, SC);
+  assert.deepEqual(mid.map((v) => v.level.id), ['a', 'b']);
+  assert.ok(mid[1]!.blend > 0 && mid[1]!.blend < 1 && mid[1]!.edge < 1);
   // Zoomed right into the child: the parent is no longer drawn at all (the child covers the screen).
   const deep = cameraFor(b, SC, 1.5);
   assert.deepEqual(visibleLevels(L, deep, SC).map((v) => v.level.id), ['b']);
@@ -129,10 +135,10 @@ test('taps hit the deepest drawn level and the topmost region', () => {
   const L = layout(tiny);
   const fit = fitCamera(L, SC);
   assert.deepEqual(hitTest(visibleLevels(L, fit, SC), 20, 20), { level: 'a', region: 'dot' });
-  // world (45, 33.75) is the middle of b: its box is too small to hit from afar (b's background takes the
-  // tap), and is the target when zoomed in
+  // world (45, 33.75) is the middle of b: from afar b has not blended in yet, so the tap colours a's own
+  // drawing there; zoomed in, b's box is the target
   const far = { ...fit, z: (LEVEL_MIN_PX * 1.2) / 10 };
-  assert.deepEqual(hitTest(visibleLevels(L, far, SC), 45, 33.75), { level: 'b', region: 'bg' });
+  assert.equal(hitTest(visibleLevels(L, far, SC), 45, 33.75)?.level, 'a');
   const deep = cameraFor(L.byId.get('b')!, SC);
   assert.deepEqual(hitTest(visibleLevels(L, deep, SC), 45, 33.75), { level: 'b', region: 'box' });
 });

@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw, ImageChops, ImageStat
 
 frames = json.load(open(sys.argv[1])); out = sys.argv[2]
 os.makedirs(out, exist_ok=True)
-W, H = 1024, 768
+W, H = int(os.environ.get('SC_W', 1024)), int(os.environ.get('SC_H', 768))
 def render(fr):
     img = Image.new('RGB', (W, H), (233, 225, 211))
     for lv in fr['levels']:
@@ -14,6 +14,18 @@ def render(fr):
         x0, y0, x1, y1 = lv['clip']
         mask = Image.new('L', (W, H), 0); md = ImageDraw.Draw(mask)
         (md.ellipse if lv['round'] else md.rectangle)([x0, y0, x1, y1], fill=255)
+        if lv.get('edge', 1) < 1 or lv.get('blend', 1) < 1:
+            # The app's soft edge and fade: radial falloff from the middle (see SoftEdge in SceneArt.tsx).
+            e, b = lv.get('edge', 1), lv.get('blend', 1)
+            cx, cy, half = (x0 + x1) / 2, (y0 + y1) / 2, max(x1 - x0, y1 - y0)
+            r = half * (0.5 + 0.22 * e); inner = 0.5 + 0.48 * e
+            soft = Image.new('L', (W, H), 0); px = soft.load()
+            for yy in range(max(0, int(y0)), min(H, int(y1) + 1)):
+                for xx in range(max(0, int(x0)), min(W, int(x1) + 1)):
+                    d = ((xx - cx) ** 2 + (yy - cy) ** 2) ** .5 / r if e < 1 else 0
+                    k = 1 if d <= inner else max(0, 1 - (d - inner) / (1 - inner))
+                    px[xx, yy] = int(255 * k * b)
+            mask = ImageChops.multiply(mask, soft)
         sw = max(1, round(lv['stroke']))
         canvas = img.copy(); cd = ImageDraw.Draw(canvas, 'RGBA')
         for s in lv['shapes']:

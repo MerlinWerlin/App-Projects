@@ -120,6 +120,7 @@ export const en = {
   'zoom.out': 'Zoom out',
   'zoom.fit': 'Whole scene',
   'zoom.closer': 'Look closer',
+  'zoom.spot': 'Show where to zoom in',
   'zoom.backOut': 'Back to the start',
   'level.where': 'Zoom {i} of {n} · {name}',
   'level.found': 'You found: {name}',

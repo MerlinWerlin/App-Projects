@@ -1,0 +1,8 @@
+{
+  "feedback": "TestFlight 0.1.0 (5) screenshot feedback 2026-11-08 06:28 and 06:30 UTC (pasted-square nested details; zoom into the book; zoom-spot button with sparkle)",
+  "source": "6d56532a9ed13a368449fc477fa2c7c153ca9978",
+  "native_run": "42457693915",
+  "result": "pass (full iphone-flow: all six-discovery editions, Mega 20, deep paint/draw, restart persistence, new zoom-spot step)",
+  "reviewed_screenshots": ["04-cottage-root", "04b-cottage-zoom-spot", "05-cottage-detail-2", "05-cottage-detail-3", "06-turtle-sixth-discovery", "09-painted-mega-heart"],
+  "physical_phone_uptake": "unverified"
+}

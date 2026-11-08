@@ -2,15 +2,15 @@
 // shapeOpacity). Pipe to zoom-preview.py to render the frames and check that nothing pops in.
 // Run: node scripts/zoom-frames.ts <scene> <level> [frames] > /tmp/frames.json
 import { flatten } from '../src/core/geom.ts';
-import { cameraFor, fitCamera, layout, regionSizes, shapeOpacity, visibleLevels } from '../src/core/scene.ts';
+import { cameraInto, fitCamera, layout, regionSizes, shapeOpacity, visibleLevels } from '../src/core/scene.ts';
 import { sceneById } from '../src/scenes/index.ts';
 
 const [sceneId = 'bookshop', levelId = 'ladybird', n = '24'] = process.argv.slice(2);
 const scene = sceneById(sceneId)!;
 const L = layout(scene);
-const SC = { w: 1024, h: 768 };
+const SC = { w: Number(process.env.SC_W ?? 1024), h: Number(process.env.SC_H ?? 768) };
 const from = fitCamera(L, SC);
-const to = cameraFor(L.byId.get(levelId)!, SC);
+const to = cameraInto(L, L.byId.get(levelId)!, SC);
 const frames = [];
 for (let f = 0; f < Number(n); f++) {
   // Pure zoom about the target's centre (no pan), so neighbouring frames can be compared pixel for pixel.
@@ -28,6 +28,8 @@ for (let f = 0; f < Number(n); f++) {
       return {
         id: p.id,
         round: !!p.round,
+        blend: v.blend,
+        edge: v.edge,
         clip: [X(p.ox), Y(p.oy), X(p.ox + p.w * p.s), Y(p.oy + p.h * p.s)],
         stroke: (p.stroke ?? 2.6) * k,
         shapes: p.regions
