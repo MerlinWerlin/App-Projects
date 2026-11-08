@@ -525,10 +525,21 @@ export const ar: Translation = {
   'settings.free.body': 'كل أدوات التتبّع في Linework مجانية: التتبّع بالكاميرا، والعتامة، والقفل، والمصباح، والشبكة، والعكس، وقفل اللمس، ولوح الإضاءة، ووضع الرسم الخطي، وصورك الخاصة. بلا إعلانات، وبلا فترة تجريبية، وبلا اشتراك أسبوعي.',
   'settings.free.plusLink': 'Linework Plus وصندوق الإكرامية',
   'settings.free.plusHint': 'إضافات اختيارية لمرة واحدة. لا تقيّد أي أداة تتبّع أبدًا.',
+  'settings.free.playBody': "يبقى التتبع بالكاميرا وصورك وأدوات التتبع و{count} قالبًا أساسيًا مجانيًا. تشمل التجربة الاختيارية لمدة 14 يومًا المكتبة الكاملة وتحويل الصور إلى خطوط. يتيح شراء Plus مرة واحدة الاحتفاظ بهذه المزايا الإضافية.",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "شراء اختياري مرة واحدة للمكتبة الكاملة وتحويل الصور إلى خطوط",
 
   'settings.privacy.title': 'الخصوصية',
   'settings.privacy.body': 'لا يتم جمع البيانات. لا يحتوي Linework على حسابات ولا تحليلات ولا إعلانات. تبقى صورك على هذا الهاتف ولا تُرفع أبدًا؛ ويُنشأ الرسم الخطي على الجهاز.',
+  'settings.privacy.playBody': "تُعالج الصور على هذا الجهاز. ترسل مكتبة الفوترة من Google بيانات تشخيص تقنية إلى Google. لا توجد إعلانات أو حساب داخل التطبيق. اضغط لقراءة سياسة الخصوصية.",
+  'settings.privacy.openHint': "فتح سياسة خصوصية Linework في المتصفح",
+  'settings.privacy.openFailed': "تعذر فتح المتصفح. سياسة الخصوصية: {url}",
 
+  'settings.review.title': "رمز الوصول إلى Plus",
+  'settings.review.active': "الوصول إلى Plus مفعّل",
+  'settings.review.enter': "أدخل رمز الوصول",
+  'settings.review.apply': "تفعيل الوصول",
+  'settings.review.invalid': "تعذّر تفعيل هذا الرمز. تحقّق منه وحاول مجددًا.",
   'settings.about.title': 'حول',
   'settings.about.body': 'Linework {version}. القوالب رسوم خطية أصلية صُمّمت خصيصًا لـ Linework.',
 

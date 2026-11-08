@@ -424,5 +424,15 @@ export function spotLight(trip: Trip, at: LatLon, date: LocalDate | null, now: n
   return photoDay(at.lat, at.lon, day, tz);
 }
 
+/**
+ * T146: the windows for a saved place's or idea's Photo light line, joined across local midnight like the day card
+ * (dayWindows), split by kind in time order. A golden / blue hour from 23:52 to 00:56 then reads "23:52–00:56" on the
+ * line instead of "from 23:52"; one carried over from the evening before keeps `carried` so the line can say so.
+ */
+export function spotWindows(d: PhotoDay): { golden: DayWindow[]; blue: DayWindow[] } {
+  const all = dayWindows(d);
+  return { golden: all.filter((w) => w.kind === 'golden'), blue: all.filter((w) => w.kind === 'blue') };
+}
+
 /** Whole days from today (in the place's zone) to a photo day: 0 today, 1 tomorrow, negative in the past. */
 export const daysAway = (d: PhotoDay, now: number) => daysBetween(localDate(fromUtc(now, d.tz)), d.date);

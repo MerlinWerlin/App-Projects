@@ -48,7 +48,7 @@ export function TripIdeasSlot({ trip }: { trip: Trip }) {
         {top.map((i) => (
           <View key={i.id} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
             <Ionicons name={i.done ? 'checkmark-circle' : IDEA_ICONS[i.category]} size={18} color={i.done ? theme.ok : theme.sea} />
-            <Text numberOfLines={1} style={[typeScale.body, { flex: 1, color: i.done ? theme.muted : theme.ink }]}>
+            <Text numberOfLines={2} style={[typeScale.body, { flex: 1, color: i.done ? theme.muted : theme.ink }]}>
               {i.name}
             </Text>
           </View>

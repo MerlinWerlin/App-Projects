@@ -28,7 +28,7 @@ export function appPath(uri: string): string {
 }
 
 /** Copies `uri` into <documents>/<folder>/<id>-<name>. */
-export async function copyIntoApp(uri: string, folder: 'attachments' | 'vault', id: string, name: string): Promise<Saved> {
+export async function copyIntoApp(uri: string, folder: 'attachments' | 'vault' | 'covers', id: string, name: string): Promise<Saved> {
   const root = documentDir();
   if (!root) return { ok: false, reason: 'no-storage' };
   const dir = `${root}${folder}/`;
@@ -65,7 +65,7 @@ export async function removeFile(uri: string): Promise<void> {
   }
 }
 
-/** Best-effort delete of Satchel's own copies only (anything outside attachments/ and vault/ is left alone). */
+/** Best-effort delete of Satchel's own copies only (anything outside attachments/, vault/ and covers/ is left alone). */
 export async function removeAppFiles(uris: readonly string[]): Promise<void> {
   try {
     const dir = documentDir();

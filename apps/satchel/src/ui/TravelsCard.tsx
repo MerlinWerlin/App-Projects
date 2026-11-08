@@ -44,10 +44,10 @@ export function TravelsCard() {
             <View style={{ flexDirection: 'row', gap: space.m }}>
               {figures.map((f) => (
                 <View key={f.label} style={{ flex: 1 }}>
-                  <Text style={[typeScale.displayM, { color: theme.heroInk, fontVariant: ['tabular-nums'] }]} numberOfLines={1}>
+                  <Text style={[typeScale.displayM, { color: theme.heroInk, fontVariant: ['tabular-nums'] }]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.5}>
                     {f.n}
                   </Text>
-                  <Text style={[typeScale.caption, { color: theme.heroMuted }]} numberOfLines={1}>
+                  <Text style={[typeScale.caption, { color: theme.heroMuted }]} numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7}>
                     {f.label}
                   </Text>
                 </View>

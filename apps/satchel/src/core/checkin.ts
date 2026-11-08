@@ -56,8 +56,10 @@ export type CheckinInfo = {
   deskTo?: string;
   /** "Mark checked in": when it was ticked (ISO instant). */
   doneAt?: string;
+  /** T146 stays: "Mark checked out", when it was ticked (ISO instant). Never copied by Plan this trip again. */
+  outAt?: string;
 };
-export const CHECKIN_KEYS = ['opensH', 'closesMin', 'bagDropMin', 'deskFrom', 'deskTo', 'doneAt'] as const;
+export const CHECKIN_KEYS = ['opensH', 'closesMin', 'bagDropMin', 'deskFrom', 'deskTo', 'doneAt', 'outAt'] as const;
 
 const intIn = (x: unknown, lo: number, hi: number): x is number => typeof x === 'number' && Number.isInteger(x) && x >= lo && x <= hi;
 
@@ -74,6 +76,7 @@ export function readCheckin(raw: unknown): CheckinInfo | undefined {
     out.deskTo = r.deskTo;
   }
   if (typeof r.doneAt === 'string' && r.doneAt && !Number.isNaN(Date.parse(r.doneAt))) out.doneAt = r.doneAt;
+  if (typeof r.outAt === 'string' && r.outAt && !Number.isNaN(Date.parse(r.outAt))) out.outAt = r.outAt;
   return Object.keys(out).length ? out : undefined;
 }
 
@@ -89,6 +92,12 @@ export const setDone = <I extends Item>(item: I, done: boolean, now: number): I 
   withCheckin(item, { ...(readCheckin(item.checkin) ?? {}), doneAt: done ? new Date(now).toISOString() : undefined });
 
 export const isDone = (item: Pick<Item, 'checkin'>): boolean => !!readCheckin(item.checkin)?.doneAt;
+
+/** T146: "Mark checked out" on / off (stays; stored beside the check-in tick on Item.checkin). */
+export const setOut = <I extends Item>(item: I, out: boolean, now: number): I =>
+  withCheckin(item, { ...(readCheckin(item.checkin) ?? {}), outAt: out ? new Date(now).toISOString() : undefined });
+
+export const isOut = (item: Pick<Item, 'checkin'>): boolean => !!readCheckin(item.checkin)?.outAt;
 
 // ------------------------------------------------------------------ windows
 
@@ -248,9 +257,11 @@ export type WindowStatus = {
   minutes: number | null;
 };
 
-export function windowState(w: CheckinWindow, now: number, done: boolean): WindowStatus {
+export function windowState(w: CheckinWindow, now: number, done: boolean, outDone = false): WindowStatus {
   const until = (t: number) => Math.max(0, Math.ceil((t - now) / MIN));
   if (done && TICKED_KINDS.includes(w.kind)) return { window: w, state: 'done', minutes: null };
+  // T146: a stay's check-out is covered by its own "Mark checked out" tick.
+  if (outDone && w.kind === 'stayOut') return { window: w, state: 'done', minutes: null };
   if (w.opens && now < w.opens.utc) return { window: w, state: 'later', minutes: until(w.opens.utc) };
   if (w.kind === 'stayIn') {
     // Open-ended: "check-in from 15:00" is open until the stay is over (the check-out window takes over that day).
@@ -268,7 +279,7 @@ export function tripStatus(trip: Pick<Trip, 'items'>, now: number): WindowStatus
   const all = tripWindows(trip);
   for (const w of all) {
     const item = byId.get(w.itemId);
-    const s = windowState(w, now, !!item && isDone(item));
+    const s = windowState(w, now, !!item && isDone(item), !!item && isOut(item));
     if (s.state === 'past') continue;
     if (w.kind === 'stayIn' && s.state !== 'later') {
       const co = all.find((x) => x.itemId === w.itemId && x.kind === 'stayOut');
@@ -283,7 +294,7 @@ export function tripStatus(trip: Pick<Trip, 'items'>, now: number): WindowStatus
 
 /** The status of one booking's windows (all of them, past included), for its own card. */
 export function itemStatus(item: Item, now: number): WindowStatus[] {
-  return windowsFor(item).map((w) => windowState(w, now, isDone(item)));
+  return windowsFor(item).map((w) => windowState(w, now, isDone(item), isOut(item)));
 }
 
 /** Days, hours and minutes of a duration, for "opens in 3 h 20 min" (the screen picks the words). */
@@ -316,6 +327,25 @@ export function briefCheckin(trip: Pick<Trip, 'items'>, now: number, withinH = 2
   const pick = open[0] ?? s.find((x) => x.state === 'later' && x.minutes !== null && x.minutes <= withinH * 60);
   const item = pick ? byId.get(pick.window.itemId) : undefined;
   return pick && item ? { status: pick, item } : null;
+}
+
+/**
+ * T146: the Your day check-out reminder on a stay's last morning: its check-out window is open now (from 00:00 on the
+ * check-out day, on the hotel's clock, until the check-out time) and not ticked "checked out". The earliest deadline
+ * first when two stays end the same morning. Null when none.
+ */
+export function briefCheckout(trip: Pick<Trip, 'items'>, now: number): { status: WindowStatus; item: Item } | null {
+  let best: { status: WindowStatus; item: Item } | null = null;
+  for (const item of trip.items ?? []) {
+    if (item.kind !== 'hotel' || isOut(item)) continue;
+    for (const w of windowsFor(item)) {
+      if (w.kind !== 'stayOut' || !w.closes) continue;
+      const s = windowState(w, now, false, false);
+      if (s.state !== 'open') continue;
+      if (!best || w.closes.utc < (best.status.window.closes?.utc ?? Infinity)) best = { status: s, item };
+    }
+  }
+  return best;
 }
 
 /** The readiness row (src/core/readiness.ts): warn while an online check-in is open (or overdue) and not ticked. */

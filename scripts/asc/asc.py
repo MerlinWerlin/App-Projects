@@ -119,7 +119,12 @@ def call(method, path, body=None, params=None, ok=(200, 201, 204)):
     if r.status_code not in ok:
         detail = ""
         try:
-            detail = "; ".join(f"{e.get('title')}: {e.get('detail')}" for e in r.json().get("errors", []))
+            errs = r.json().get("errors", [])
+            detail = "; ".join(f"{e.get('title')}: {e.get('detail')}" for e in errs)
+            assoc = [f"{a.get('code')}: {a.get('detail')}" for e in errs
+                     for lst in ((e.get("meta") or {}).get("associatedErrors") or {}).values() for a in lst]
+            if assoc:
+                detail += " | Apple says: " + "; ".join(assoc)[:1500]
         except Exception:
             detail = r.text[:300]
         raise RuntimeError(f"{method} {path} -> {r.status_code} {detail}")
@@ -392,11 +397,19 @@ def apply(app):
                  "relationships": {"app": {"data": {"type": "apps", "id": app_id}}}}})
         step("Create version " + lst.get("version", "1.0"), mk)
         ver, _ = editable_version(app_id)
+    if ver and lst.get("version") and attrs(ver)["versionString"] != lst["version"]:
+        def rename(ver=ver):
+            call("PATCH", f"/v1/appStoreVersions/{ver['id']}", {"data": {"type": "appStoreVersions", "id": ver["id"],
+                 "attributes": {"versionString": lst["version"]}}})
+        step(f"Version {attrs(ver)['versionString']} renamed to {lst['version']}", rename)
+        ver, _ = editable_version(app_id)
     if ver:
         vf = {k: v for k, v in {"description": lst.get("description"), "keywords": lst.get("keywords"),
                                 "promotionalText": lst.get("promotionalText"), "supportUrl": lst.get("supportUrl"),
                                 "marketingUrl": lst.get("marketingUrl")}.items() if v}
-        if lst.get("whatsNew") and attrs(ver)["versionString"] not in ("1.0", "1.0.0"):
+        released = any(attrs(v)["appStoreState"] in ("READY_FOR_SALE", "REPLACED_WITH_NEW_VERSION", "REMOVED_FROM_SALE")
+                       for v in get(f"/v1/apps/{app_id}/appStoreVersions", **{"filter[platform]": "IOS", "limit": 10})["data"])
+        if lst.get("whatsNew") and released:
             vf["whatsNew"] = lst["whatsNew"]
         step("Description, keywords, promo text, URLs", lambda: upsert_ver_loc(ver["id"], locale, vf))
         if lst.get("copyright"):
@@ -437,6 +450,8 @@ def apply(app):
     if lst.get("contentRights"):
         step("Content rights", lambda: call("PATCH", f"/v1/apps/{app_id}", {"data": {"type": "apps", "id": app_id,
              "attributes": {"contentRightsDeclaration": lst["contentRights"]}}}))
+    if lst.get("price") == "free":
+        step("Price: free (base territory AUS)", lambda: ensure_free_price(app_id))
     if lst.get("availability") == "all":
         step("Availability: all countries and regions", lambda: ensure_availability(app_id))
     for iap in lst.get("inAppPurchases", []):
@@ -469,6 +484,78 @@ def apply(app):
             step(f"[{extra}] Description, keywords, promo text, URLs", lambda extra=extra: upsert_ver_loc(ver["id"], extra, vf))
             for disp, folder in (lst.get("screenshots") or {}).items():
                 step(f"[{extra}] Screenshots {disp}", lambda disp=disp, folder=folder, extra=extra: upload_shots(ver["id"], extra, disp, folder))
+
+
+def submit(app):
+    """Owner-requested only (ASC_REQUEST mode "submit"): apply the listing, check the version is complete, then send
+    it to App Review. Stops before submitting if any listing step failed or the build/contact is missing."""
+    rel, lst = app_cfg(app)
+    app_id = rel["ascAppId"]
+    start = len(out)
+    apply(app)
+    if any("**failed**" in line for line in out[start:]):
+        say("")
+        say("**Not submitted:** a listing step above failed; fix it and request submit again.")
+        return
+    ver, _ = editable_version(app_id)
+    if not ver:
+        raise RuntimeError("no editable App Store version to submit")
+    vid = ver["id"]
+    b = get(f"/v1/appStoreVersions/{vid}/build")["data"]
+    if not b:
+        raise RuntimeError("no build attached to the version")
+    want = lst.get("version")
+    if want and attrs(ver)["versionString"] != want:
+        raise RuntimeError(f"version is {attrs(ver)['versionString']}, listing wants {want}")
+    d = get(f"/v1/appStoreVersions/{vid}/appStoreReviewDetail")["data"]
+    if not d or any(not attrs(d).get(k) for k in CONTACT_FIELDS):
+        raise RuntimeError("App Review contact is incomplete")
+    say(f"## Submitting {attrs(ver)['versionString']} (build {attrs(b)['version']}) for App Review")
+    subs = get("/v1/reviewSubmissions", **{"filter[app]": app_id, "filter[platform]": "IOS", "limit": 20})["data"]
+    busy = [x for x in subs if attrs(x).get("state") in ("WAITING_FOR_REVIEW", "IN_REVIEW", "UNRESOLVED_ISSUES")]
+    if busy:
+        say(f"- already with Apple: submission {busy[0]['id']} is {attrs(busy[0])['state']}; nothing sent")
+        return
+    # In-app purchases named in listing.json that Apple has not reviewed yet go in with this version.
+    # (A first non-consumable must be submitted with a new app version; skipping this sent Linework 1.0 out without them.)
+    want_iaps = {i["productId"] for i in lst.get("inAppPurchases", [])}
+    for iap in get(f"/v1/apps/{app_id}/inAppPurchasesV2", limit=50)["data"]:
+        pid, st = attrs(iap)["productId"], attrs(iap).get("state")
+        if pid not in want_iaps:
+            continue
+        if st in ("WAITING_FOR_REVIEW", "IN_REVIEW", "APPROVED", "READY_FOR_SALE"):
+            say(f"- purchase `{pid}` already {st}")
+            continue
+        if st != "READY_TO_SUBMIT":
+            raise RuntimeError(f"purchase {pid} is {st}, not READY_TO_SUBMIT; version not submitted")
+        try:
+            call("POST", "/v1/inAppPurchaseSubmissions", {"data": {"type": "inAppPurchaseSubmissions", "relationships": {
+                 "inAppPurchaseV2": {"data": {"type": "inAppPurchases", "id": iap["id"]}}}}})
+        except RuntimeError as e:
+            if "FIRST_NON_CONSUMABLE_MUST_BE_SUBMITTED_ON_VERSION" not in str(e):
+                raise
+            # Apple's API refuses a first non-consumable; it has to go in the same submission through the website:
+            # each purchase page > Add for Review > Draft Submission, then the version page > Add for Review > Submit.
+            raise RuntimeError(f"purchase {pid} is a first non-consumable, which Apple only accepts through App Store "
+                               "Connect on the web (purchase page Add for Review, then version Add for Review, then "
+                               "Submit for Review); version not submitted so it cannot go out without its purchases")
+        say(f"- purchase `{pid}` added for review with this version")
+    open_ = [x for x in subs if attrs(x).get("state") == "READY_FOR_REVIEW"]
+    if open_:
+        sub = open_[0]
+        say("- reusing the open draft submission")
+    else:
+        sub = call("POST", "/v1/reviewSubmissions", {"data": {"type": "reviewSubmissions", "attributes": {"platform": "IOS"},
+                   "relationships": {"app": {"data": {"type": "apps", "id": app_id}}}}})["data"]
+    items = get(f"/v1/reviewSubmissions/{sub['id']}/items")["data"]
+    if not items:
+        call("POST", "/v1/reviewSubmissionItems", {"data": {"type": "reviewSubmissionItems", "relationships": {
+             "reviewSubmission": {"data": {"type": "reviewSubmissions", "id": sub["id"]}},
+             "appStoreVersion": {"data": {"type": "appStoreVersions", "id": vid}}}}})
+        say("- version added to the submission")
+    r = call("PATCH", f"/v1/reviewSubmissions/{sub['id']}", {"data": {"type": "reviewSubmissions", "id": sub["id"],
+             "attributes": {"submitted": True}}})["data"]
+    say(f"- **submitted**: state {attrs(r).get('state')}, submitted {attrs(r).get('submittedDate')}")
 
 
 def testflight(app):
@@ -586,6 +673,30 @@ def upload_shots(ver_id, locale, disp, folder):
         call("PATCH", f"/v1/appScreenshots/{shot['id']}", {"data": {"type": "appScreenshots", "id": shot["id"],
              "attributes": {"uploaded": True, "sourceFileChecksum": hashlib.md5(data).hexdigest()}}})
     say(f"  - {disp}: uploaded {len(files)}")
+
+
+def ensure_free_price(app_id):
+    """A manual free price from today, Australia as the base territory. Leaves an existing free schedule alone."""
+    try:
+        cur = get(f"/v1/appPriceSchedules/{app_id}/manualPrices", include="appPricePoint", limit=5)
+        pts = [attrs(x).get("customerPrice") for x in cur.get("included", []) if x.get("type") == "appPricePoints"]
+        if pts and all(str(p) in ("0", "0.0", "0.00") for p in pts):
+            say("  - already free")
+            return
+    except RuntimeError:
+        pass
+    pps = get(f"/v1/apps/{app_id}/appPricePoints", **{"filter[territory]": "AUS", "limit": 200})["data"]
+    free = next((x for x in pps if str(attrs(x).get("customerPrice")) in ("0", "0.0", "0.00")), None)
+    if not free:
+        raise RuntimeError("no free price point for AUS")
+    call("POST", "/v1/appPriceSchedules", {
+        "data": {"type": "appPriceSchedules", "relationships": {
+            "app": {"data": {"type": "apps", "id": app_id}},
+            "baseTerritory": {"data": {"type": "territories", "id": "AUS"}},
+            "manualPrices": {"data": [{"type": "appPrices", "id": "${p0}"}]}}},
+        "included": [{"type": "appPrices", "id": "${p0}", "attributes": {"startDate": None},
+                      "relationships": {"appPricePoint": {"data": {"type": "appPricePoints", "id": free["id"]}}}}]})
+    say("  - set to free")
 
 
 def ensure_availability(app_id):
@@ -775,9 +886,11 @@ if __name__ == "__main__":
             testflight(app)
         elif mode == "feedback":
             feedback(app)
+        elif mode == "submit":
+            submit(app)
         else:
             (status if mode == "status" else apply)(app)
-        if mode == "apply":
+        if mode in ("apply", "submit"):
             say("")
             status(app)
     except Exception as e:

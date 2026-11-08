@@ -37,8 +37,26 @@ export function useActiveScreen(): boolean {
     }, []),
   );
   useEffect(() => {
-    const sub = AppState.addEventListener('change', (s) => setForeground(s === 'active'));
-    return () => sub.remove();
+    // T264: a return-to-app handler never throws (a failed listener must not close the app).
+    let sub: { remove: () => void } | null = null;
+    try {
+      sub = AppState.addEventListener('change', (s) => {
+        try {
+          setForeground(s === 'active');
+        } catch {
+          // Unmounted mid-transition: nothing to update.
+        }
+      });
+    } catch {
+      sub = null;
+    }
+    return () => {
+      try {
+        sub?.remove();
+      } catch {
+        // Already removed.
+      }
+    };
   }, []);
   return focused && foreground;
 }

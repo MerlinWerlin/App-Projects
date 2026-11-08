@@ -15,7 +15,8 @@ import { Text } from './Text';
 import { RemoteIcon } from './icons/RemoteIcon';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { easeOut, spring } from '../theme/motion';
-import { backdropOpacity, elevation, fonts, radius, type Palette } from '../theme/tokens';
+import { backdropOpacity, elevation, fonts, type Palette } from '../theme/tokens';
+import { continuous, radii } from '../theme/design';
 import { useReducedMotion } from '../theme/useReducedMotion';
 import { useTheme } from '../theme/useTheme';
 import { PressableScale } from './motion/PressableScale';
@@ -258,8 +259,10 @@ const styles = StyleSheet.create({
   panel: {
     width: '100%',
     maxWidth: 440,
-    borderTopStartRadius: radius.remote,
-    borderTopEndRadius: radius.remote,
+    // Design v2 (T79): sheet radius with continuous (squircle) corners.
+    borderTopStartRadius: radii.sheet,
+    borderTopEndRadius: radii.sheet,
+    ...continuous,
     paddingTop: 8,
     paddingHorizontal: 16,
     gap: 14,
@@ -271,5 +274,5 @@ const styles = StyleSheet.create({
   grabber: { alignSelf: 'center', width: 36, height: 5, borderRadius: 3, opacity: 0.35, marginBottom: -4 },
   hd: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 10 },
   h2: { fontFamily: fonts.display, fontSize: 17, flexShrink: 1 },
-  x: { width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
+  x: { width: 36, height: 36, borderRadius: radii.pill, ...continuous, alignItems: 'center', justifyContent: 'center' },
 });

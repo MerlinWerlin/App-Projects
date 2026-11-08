@@ -9,6 +9,10 @@
 // Pure TS (no React Native / Expo), Node-tested in widgetOptions.test.ts.
 
 import { CATALOGUE_KIND_SIZES } from './widgetKinds.ts';
+import { isHeroCopy } from './heroCopies.ts';
+
+/** Retired clean-face clock export; working designed clocks use themed-live-clock. */
+export const LEGACY_FALLBACK_CLOCK_ID = 'live-clock';
 
 /** What an option is. `art` is a picture; the others are pictures for a widget that can also be live. */
 /** T237: `focus` is a focus-timer piece (the Seamless widget can run it: liveArt.ts). */
@@ -25,6 +29,33 @@ export const WIDGET_OPTION_KINDS: readonly WidgetOptionKind[] = Object.freeze([
   'quote',
   'focus',
 ] as WidgetOptionKind[]);
+
+/**
+ * T275 (owner-1102a A4): kind names used by the theme exports (themes 101-146 widget-options.json)
+ * mapped to Glaze kinds. Keys are normalised (lower case, no spaces / hyphens / underscores). A clock
+ * alias also names the clock style a liveFrame without its own clockStyle gets.
+ */
+export const WIDGET_KIND_ALIASES: Readonly<Record<string, { kind: WidgetOptionKind; clockStyle?: 'analog' | 'digital' }>> = Object.freeze({
+  digitalclock: { kind: 'clock', clockStyle: 'digital' },
+  analogclock: { kind: 'clock', clockStyle: 'analog' },
+  analogueclock: { kind: 'clock', clockStyle: 'analog' },
+  datecalendar: { kind: 'date' },
+  focustimer: { kind: 'focus' },
+});
+
+/**
+ * A pack's kind name -> a Glaze kind (and the clock style an alias implies), or null when unknown.
+ * Case, space, hyphen and underscore insensitive: 'digitalClock', 'analog clock', 'Analog-Clock',
+ * 'dateCalendar', 'focusTimer', 'Countdown', 'battery' all resolve.
+ */
+export function normalizeWidgetKind(raw: unknown): { kind: WidgetOptionKind; clockStyle?: 'analog' | 'digital' } | null {
+  if (typeof raw !== 'string') return null;
+  if (includes(WIDGET_OPTION_KINDS, raw)) return { kind: raw };
+  const key = raw.trim().toLowerCase().replace(/[\s_-]+/g, '');
+  if (includes(WIDGET_OPTION_KINDS, key)) return { kind: key };
+  const alias = Object.prototype.hasOwnProperty.call(WIDGET_KIND_ALIASES, key) ? WIDGET_KIND_ALIASES[key] : undefined;
+  return alias ? { ...alias } : null;
+}
 
 /** Where an option can go: the three Home Screen sizes and the Lock Screen. */
 export type WidgetOptionSize = 'small' | 'medium' | 'large' | 'lock';
@@ -72,6 +103,8 @@ export type WidgetOption = {
    * habits or battery picture is treated as art (its numbers would never change). See fixedValues.
    */
   numberFree?: boolean;
+  /** Optional value area on a verified number-free face, in source-art coordinates. */
+  liveFrame?: { rect: [number, number, number, number]; shape: 'circle' | 'plate'; clockStyle?: 'analog' | 'digital' | 'stacked'; valueStyle?: 'compact'; ink?: string };
   /**
    * T237: the Glaze widget draws this piece's live value over it (src/core/liveArt.ts withLiveArt),
    * so it is a working widget even though a value is painted in. Set by the app, never by a pack.
@@ -115,7 +148,9 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
     if (!isObj(o)) return void errors.push(`${at}: not an object`);
     if (typeof o.id !== 'string' || !ID.test(o.id)) return void errors.push(`${at}: bad id`);
     if (ids.has(o.id)) return void errors.push(`${at}: duplicate id ${o.id}`);
-    if (!includes(WIDGET_OPTION_KINDS, o.kind)) return void errors.push(`${at} (${o.id}): unknown kind ${String(o.kind)}`);
+    const nk = normalizeWidgetKind(o.kind);
+    if (!nk) return void errors.push(`${at} (${o.id}): unknown kind ${String(o.kind)}`);
+    const kind = nk.kind;
     const asset = typeof o.image === 'string' ? byPath.get(o.image) : undefined;
     if (!asset) return void errors.push(`${at} (${o.id}): image is not an asset of the pack`);
     if (!WIDGET_IMAGE_ROLES.includes(asset.role)) return void errors.push(`${at} (${o.id}): image asset has role ${asset.role}`);
@@ -136,10 +171,35 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
       label = o.label.trim();
     }
     if (o.numberFree !== undefined && typeof o.numberFree !== 'boolean') return void errors.push(`${at} (${o.id}): bad numberFree`);
+    let liveFrame: WidgetOption['liveFrame'];
+    if (o.liveFrame !== undefined) {
+      const f = o.liveFrame;
+      if (o.numberFree !== true || !isObj(f) || !Array.isArray(f.rect) || f.rect.length !== 4 ||
+          !f.rect.every((v) => typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= 1) ||
+          (f.shape !== 'circle' && f.shape !== 'plate')) return void errors.push(`${at} (${o.id}): bad liveFrame`);
+      const [x, y, w, h] = f.rect as number[];
+      if (w <= 0 || h <= 0 || x + w > 1 || y + h > 1) return void errors.push(`${at} (${o.id}): liveFrame outside art`);
+      liveFrame = { rect: [x, y, w, h], shape: f.shape };
+      if (f.valueStyle !== undefined) {
+        if (f.valueStyle !== 'compact' || !['date','calendar','focus','battery'].includes(String(kind))) return void errors.push(`${at} (${o.id}): bad valueStyle`);
+        liveFrame.valueStyle = 'compact';
+      }
+      if (f.clockStyle !== undefined) {
+        if (kind !== 'clock' || !['analog', 'digital', 'stacked'].includes(String(f.clockStyle))) return void errors.push(`${at} (${o.id}): bad clockStyle`);
+        liveFrame.clockStyle = f.clockStyle as 'analog' | 'digital' | 'stacked';
+      } else if (nk.clockStyle) {
+        // T275: 'digitalClock' / 'analogClock' name the style of a frame that does not give one.
+        liveFrame.clockStyle = nk.clockStyle;
+      }
+      if (f.ink !== undefined) {
+        if (typeof f.ink !== 'string' || !/^#[0-9a-fA-F]{6}$/.test(f.ink)) return void errors.push(`${at} (${o.id}): bad liveFrame ink`);
+        liveFrame.ink = f.ink.toUpperCase();
+      }
+    }
     ids.add(o.id);
     options.push({
       id: o.id,
-      kind: o.kind,
+      kind,
       image: asset.path,
       sizes,
       fit: (o.fit as WidgetOptionFit | undefined) ?? 'fit',
@@ -149,6 +209,7 @@ export function parseWidgetOptions(raw: unknown, assets: readonly OptionAsset[])
       height: asset.height,
       derived: false,
       ...(o.numberFree === true ? { numberFree: true } : {}),
+      ...(liveFrame ? { liveFrame } : {}),
     });
   });
   return { options, errors };
@@ -256,7 +317,6 @@ export function placeArt(art: Box, box: Box, fit: WidgetOptionFit = 'fit'): ArtP
 
 // ------------------------------------------------------------------ menu
 
-const HOME_SIZES: readonly HomeOptionSize[] = ['small', 'medium', 'large'];
 
 /**
  * The options for one size. T201 (owner-1101d #4: "any art piece in any size"): a Home Screen size
@@ -265,12 +325,33 @@ const HOME_SIZES: readonly HomeOptionSize[] = ['small', 'medium', 'large'];
  * size first, then the best aspect match), then the rest by aspect match, then pack order. The
  * Lock Screen only offers the options that list `lock`.
  */
+/**
+ * Owner 2026-11-08 ("it keeps re-adding oversized sizes"): a piece is only offered at a Home Screen
+ * size it was drawn for. A hero (hero-small / -medium / -large) belongs to its own size only, even
+ * though older manifests list every size for it. Any other piece must list the size AND have a shape
+ * close to it (aspect match >= DRAWN_FOR_MIN_MATCH), so a square piece is never letterboxed into the
+ * wide Medium widget. Applies to previews, theme setup and therefore Edit Widget and the gallery.
+ */
+export const DRAWN_FOR_MIN_MATCH = 0.8;
+export function drawnForSize(
+  option: Pick<WidgetOption, 'id' | 'sizes' | 'width' | 'height'> & { image?: string | null },
+  size: HomeOptionSize,
+): boolean {
+  const hero = /^hero-(small|medium|large)$/.exec(option.id);
+  // Owner 2026-11-08: a hero that is a copy of one of the pack's pieces is not offered twice
+  // (Alpine's small hero is also a damaged copy of copper-eclipse). heroCopies.ts.
+  if (hero) return hero[1] === size && !isHeroCopy(option.image);
+  if (!option.sizes.includes(size)) return false;
+  if (!(option.width > 0 && option.height > 0)) return true;
+  return aspectMatch({ w: option.width, h: option.height }, OPTION_SIZE_POINTS[size]) >= DRAWN_FOR_MIN_MATCH;
+}
+
 export function optionsForSize(options: readonly WidgetOption[], size: WidgetOptionSize): WidgetOption[] {
   if (size === 'lock') return options.filter((o) => o.sizes.includes('lock'));
   const box = OPTION_SIZE_POINTS[size];
   const allDerived = options.every((o) => o.derived);
   return options
-    .filter((o) => o.sizes.some((s) => (HOME_SIZES as readonly string[]).includes(s)))
+    .filter((o) => drawnForSize(o, size))
     .map((o, i) => {
       const listed = o.sizes.includes(size);
       const m = aspectMatch({ w: o.width, h: o.height }, box);

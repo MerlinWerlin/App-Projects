@@ -169,28 +169,6 @@ function street(): Level {
   // shop window (portal into the shop)
   a.fill('shopFrame', frame(330, 344, 380, 286, [[350, 362, 340, 255]], 4));
   a.fill('shopGlass', rect(350, 362, 340, 255));
-  // stand-in for the inside: shelves and spines as seen from the street
-  for (const sy of [430, 505, 580]) a.ink(line([358, sy, 470, sy]), 0.7);
-  for (const sy of [430, 505, 580]) a.ink(line([570, sy, 682, sy]), 0.7);
-  for (const [sx, sy] of [
-    [362, 430],
-    [362, 505],
-    [362, 580],
-    [578, 430],
-    [578, 505],
-    [578, 580],
-  ] as const) {
-    let x = sx;
-    const r = rng(sx * 7 + sy);
-    while (x < sx + 96) {
-      const w = between(r, 8, 13);
-      const h = between(r, 34, 50);
-      a.fill('glimpseBook', rect(x, sy - h, w, h, 1));
-      x += w + 1.5;
-    }
-  }
-  a.fill('glimpseNook', rect(487, 400, 66, 50, 3), 'shop/nookWall');
-  a.ink(line([352, 372, 400, 372]), 0.4);
   a.fill('sill', rect(320, 626, 400, 20, 4));
   // door
   a.fill('doorFrame', archPath(734, 372, 142, 298) + archPath(750, 388, 110, 282));
@@ -307,16 +285,6 @@ function shop(): Level {
   // reading-nook opening (portal into the nook)
   a.fill('nookSurround', frame(425, 140, 350, 280, [[450, 170, 300, 225]], 6));
   a.fill('nookWall', rect(450, 170, 300, 225), 'nook/wall');
-  // stand-in for the nook, matching the next level's layout at 1/4 scale
-  a.fill('glimpseWindow', rect(525, 185, 150, 90), 'nook/nightSky');
-  a.ink(line([575, 185, 575, 275]), 0.6);
-  a.ink(line([625, 185, 625, 275]), 0.6);
-  a.ink(line([525, 230, 675, 230]), 0.6);
-  a.fill('glimpseSeat', rect(505, 279, 190, 20, 6), 'nook/seatCushion');
-  a.fill('glimpseBase', rect(503, 299, 194, 51), 'nook/seatBase');
-  a.fill('glimpseCushion', rect(605, 281, 45, 36, 7), 'cushion/cushion');
-  a.fill('glimpseCat', ellipse(625, 305, 18, 9), 'cushion/catBody');
-  a.fill('glimpsePillow', rect(527, 262, 40, 35, 6), 'nook/pillow');
   // valance and curtains (outside the portal so the child never cuts them)
   let v = 'M413 122H787V150';
   for (let k = 0; k < 8; k++) {
@@ -445,11 +413,7 @@ function nook(): Level {
   a.fill('bolsterEnd', ellipse(965, 393, 14, 33));
   for (const bx of [890, 920]) a.ink(line([bx, 362, bx, 424]), 0.5);
 
-  // cushion with the cat (portal: matches the next level at 1/5 scale)
-  a.fill('glimpseCushion', rect(632, 446, 176, 136, 20), 'cushion/cushion');
-  a.fill('glimpseMotif', circle(720, 500, 30), 'cushion/motifBack');
-  a.fill('glimpseCat', smooth([640, 560, 660, 500, 720, 490, 770, 505, 800, 560, 740, 582, 680, 582]), 'cushion/catBody');
-  a.fill('glimpseHead', circle(782, 530, 22), 'cushion/catHead');
+  // (the cushion and cat level is drawn here, in portal 600,420 240x180)
 
   // side table with tea
   a.fill('tableTop', ellipse(1090, 560, 92, 20));
@@ -514,8 +478,8 @@ function cushion(): Level {
   a.fill('motifBand', ring(cx, cy, 96, 112));
   for (let i = 0; i < 8; i++) a.fill('motifPetal', petal(cx, cy, (i / 8) * Math.PI * 2 + Math.PI / 8, 38, 96, 21));
   for (let i = 0; i < 8; i++) a.fill('motifSeed', circle(cx + Math.cos((i / 8) * Math.PI * 2) * 66, cy + Math.sin((i / 8) * Math.PI * 2) * 66, 8));
-  a.fill('motifHeart', circle(cx, cy, 34));
-  a.fill('motifCore', circle(cx, cy, 14));
+  // the motif's heart is a window onto an embroidered garden (next level, round portal)
+  a.fill('motifHeart', circle(cx, cy, 34), 'garden/sky');
   for (const [fx, fy] of [
     [282, 262],
     [918, 262],
@@ -577,10 +541,154 @@ function cushion(): Level {
   return a.level({ parent: 'nook', portal: { x: 600, y: 420, w: 240, h: 180 }, stroke: 2.6 });
 }
 
+// ---------------------------------------------------------------- level 4: the embroidered garden
+// Seen through the heart of the cushion's mandala (round portal). Stitched-look meadow with a bee,
+// a mushroom and a big leaf; a ladybird sits on the leaf (next level).
+
+/** Big leaf on the garden level; the ladybird level is a 5x close-up of its middle. */
+const LEAF_PORTAL = { x: 700, y: 520, w: 240, h: 180 };
+
+function daisy(a: LevelArt, x: number, y: number, r: number, n = 10) {
+  for (let i = 0; i < n; i++) a.fill('daisyPetal', petal(x, y, (i / n) * Math.PI * 2, r * 0.3, r, r * 0.17));
+  a.fill('daisyHeart', circle(x, y, r * 0.32));
+}
+
+function garden(): Level {
+  const a = new LevelArt('garden');
+  a.fill('sky', rect(0, 0, 1200, 900), 'cushion/motifHeart');
+  a.fill('sun', circle(330, 190, 62));
+  for (let i = 0; i < 12; i++) a.fill('sunRay', petal(330, 190, (i / 12) * Math.PI * 2, 72, 112, 9, true));
+  a.fill('cloud', scallop(760, 150, 90, 30, 7, 0.4));
+  a.fill('cloud', scallop(560, 260, 54, 18, 5, 0.4));
+  a.fill('farHill', 'M0 470C180 380 360 400 520 450C700 505 880 400 1200 430V900H0Z');
+  a.fill('nearHill', 'M0 600C220 540 420 580 600 610C800 645 1000 560 1200 590V900H0Z');
+  for (let k = 0; k < 9; k++) a.ink(curve([140 + k * 110, 640 + (k % 2) * 14, 160 + k * 110, 628, 180 + k * 110, 640 + (k % 2) * 14]), 0.5);
+  // stitched path across the hill
+  a.fill('path', 'M380 900C420 780 520 700 640 660C700 640 760 650 790 640C700 690 600 760 560 900Z');
+  // mushroom
+  a.fill('stem', 'M222 610C220 560 236 520 250 510H300C314 520 330 560 328 610Q275 626 222 610Z');
+  a.fill('cap', smooth([170, 520, 196, 440, 275, 408, 354, 440, 380, 520, 275, 532], 0.9));
+  for (const [x, y, r] of [
+    [230, 470, 16],
+    [282, 444, 12],
+    [326, 480, 15],
+    [270, 498, 10],
+  ] as const)
+    a.fill('capSpot', circle(x, y, r));
+  // tulips
+  for (const [x, y, h] of [
+    [470, 520, 150],
+    [560, 560, 120],
+    [1040, 520, 140],
+  ] as const) {
+    a.fill('tulipStem', rect(x - 4, y, 8, h));
+    a.fill('tulipLeaf', petal(x, y + h * 0.75, -Math.PI / 2 - 0.5, 4, h * 0.55, 13, true));
+    a.fill('tulip', `M${x - 30} ${y - 46}L${x - 15} ${y - 26}L${x} ${y - 52}L${x + 15} ${y - 26}L${x + 30} ${y - 46}C${x + 34} ${y - 6} ${x + 18} ${y + 6} ${x} ${y + 6}C${x - 18} ${y + 6} ${x - 34} ${y - 6} ${x - 30} ${y - 46}Z`);
+  }
+  // daisies
+  for (const [x, y, r] of [
+    [140, 700, 46],
+    [360, 740, 38],
+    [600, 330, 30],
+    [1060, 690, 40],
+  ] as const) {
+    a.fill('daisyStem', rect(x - 3, y + r * 0.3, 6, 900 - y));
+    daisy(a, x, y, r);
+  }
+  // bee
+  a.fill('wing', ellipse(860, 270, 34, 22));
+  a.fill('wing', ellipse(900, 262, 30, 20));
+  a.fill('beeBody', ellipse(880, 320, 56, 36));
+  for (const dx of [-14, 14]) a.fill('beeStripe', `M${880 + dx - 9} 288Q${880 + dx - 14} 320 ${880 + dx - 9} 352H${880 + dx + 9}Q${880 + dx + 4} 320 ${880 + dx + 9} 288Z`);
+  a.fill('beeHead', circle(942, 316, 24));
+  a.ink(curve([952, 296, 962, 270, 976, 262]), 0.6);
+  a.ink(curve([940, 294, 942, 268, 950, 254]), 0.6);
+  a.ink(curve([760, 330, 790, 300, 812, 336, 830, 318]), 0.4);
+  // the big leaf the ladybird sits on
+  a.fill('leafStalk', 'M600 800C630 780 650 760 668 744L676 752C660 770 636 794 610 812Z');
+  a.fill('bigLeaf', smooth([650, 750, 690, 600, 800, 500, 960, 460, 1010, 470, 990, 560, 930, 690, 820, 760], 0.9), 'ladybird/leaf');
+  a.ink(line([660, 740, 990, 480]), 0.6);
+  for (const [x0, y0, x1, y1] of [
+    [700, 708, 690, 640],
+    [760, 661, 800, 720],
+    [940, 520, 930, 476],
+    [960, 504, 990, 530],
+  ] as const)
+    a.ink(curve([x0, y0, (x0 + x1) / 2 + 4, (y0 + y1) / 2, x1, y1]), 0.4);
+  return a.level({ parent: 'cushion', portal: { x: 566, y: 374.5, w: 68, h: 51 }, round: true, stroke: 2.6 });
+}
+
+// ---------------------------------------------------------------- level 5: a ladybird on the leaf
+
+function ladybird(): Level {
+  const a = new LevelArt('ladybird');
+  a.fill('leaf', rect(0, 0, 1200, 900), 'garden/bigLeaf');
+  // the leaf's midrib and veins continue the garden level's lines exactly (5x close-up)
+  const toChild = (x: number, y: number) => [(x - LEAF_PORTAL.x) * 5, (y - LEAF_PORTAL.y) * 5];
+  a.ink(line([...toChild(710.8, 700), ...toChild(939.2, 520)]), 3);
+  for (let k = 0; k < 5; k++) {
+    const t = 0.1 + k * 0.2;
+    const x = 54 + (1196 - 54) * t;
+    const y = 900 - 900 * t;
+    a.ink(curve([x, y, x - 130, y - 40, x - 230, y - 150]), 0.9);
+    a.ink(curve([x, y, x + 60, y + 110, x + 120, y + 240]), 0.9);
+  }
+  // dew drops
+  for (const [x, y, r] of [
+    [180, 200, 46],
+    [1010, 640, 60],
+    [880, 160, 30],
+    [300, 760, 36],
+  ] as const) {
+    a.fill('dew', ellipse(x, y, r, r * 0.9));
+    a.fill('dewShine', ellipse(x - r * 0.35, y - r * 0.35, r * 0.22, r * 0.14));
+  }
+  // legs
+  for (const [x0, y0, x1, y1, x2, y2] of [
+    [470, 380, 400, 330, 360, 350],
+    [460, 460, 380, 470, 340, 520],
+    [490, 540, 440, 600, 430, 650],
+    [690, 380, 760, 330, 800, 350],
+    [700, 460, 780, 470, 820, 520],
+    [670, 540, 720, 600, 730, 650],
+  ] as const)
+    a.ink(line([x0, y0, x1, y1, x2, y2]), 3);
+  // antennae
+  a.ink(curve([540, 240, 500, 180, 470, 160]), 2);
+  a.ink(curve([620, 240, 660, 180, 690, 160]), 2);
+  a.fill('antennaTip', circle(468, 158, 12));
+  a.fill('antennaTip', circle(692, 158, 12));
+  // body
+  a.fill('belly', ellipse(580, 470, 150, 170));
+  a.fill('head', smooth([500, 290, 520, 230, 580, 214, 640, 230, 660, 290, 580, 310], 0.9));
+  a.fill('eye', ellipse(545, 258, 18, 14));
+  a.fill('eye', ellipse(615, 258, 18, 14));
+  a.fill('pronotum', smooth([460, 330, 490, 286, 580, 270, 670, 286, 700, 330, 580, 350], 0.9));
+  a.fill('pronotumSpot', ellipse(540, 312, 26, 16));
+  a.fill('pronotumSpot', ellipse(620, 312, 26, 16));
+  a.fill('wingL', 'M578 340C510 336 446 380 430 460C414 550 470 640 578 652Z');
+  a.fill('wingR', 'M582 340C650 336 714 380 730 460C746 550 690 640 582 652Z');
+  for (const [x, y, r] of [
+    [510, 410, 30],
+    [490, 520, 26],
+    [540, 600, 22],
+    [650, 410, 30],
+    [670, 520, 26],
+    [620, 600, 22],
+    [580, 372, 20],
+  ] as const)
+    a.fill('spot', circle(x, y, r));
+  a.fill('shine', 'M470 420C480 384 506 362 536 356C514 376 494 400 486 432Z');
+  // a tiny flower petal that has fallen on the leaf
+  a.fill('fallenPetal', petal(1000, 300, -0.5, 0, 110, 40));
+  a.ink(curve([1000, 300, 1050, 270, 1094, 250]), 0.5);
+  return a.level({ parent: 'garden', portal: LEAF_PORTAL, stroke: 2.6 });
+}
+
 export const bookshop: Scene = {
   id: 'bookshop',
   theme: 'cosy',
   version: 1,
   palette: 'cosy',
-  levels: [street(), shop(), nook(), cushion()],
+  levels: [street(), shop(), nook(), cushion(), garden(), ladybird()],
 };

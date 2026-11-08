@@ -8,3 +8,8 @@
   at any zoom, tiny saves, works in a plain Expo build (no native modules, no gesture-handler/reanimated).
 - 2026-11-01 · Claude · Child detail switches on at 15% of screen width (no cross-fade ghosting).
 - 2026-11-01 · Claude · No purchases in phase 1; packs + optional lifetime Plus later (docs/PLAN.md).
+- 2026-11-01 · Claude · Replaced the 15% hard reveal and hand-drawn stand-ins with continuous per-shape fade-in by on-screen size (Jared saw the pop).
+- 2026-11-01 · Jared · Eraser must be an obvious tool in both modes.
+
+- 2026-11-04 (Jared): zoom movement now looks good; artwork rejected. Add Linework-style topic categories and Beginner/Intermediate/Advanced choices, six actual standard zoom transitions, and a separate twenty-transition Mega Zoom category. Opening picture is zoom0; standard scenes have7levels and Mega21. Preserve old colouring in My colouring while replacing the default catalogue.
+- 2026-11-04 (Jared): the Linework-based artwork preview still lacks quality and does not look good. Non-beginner pictures should be more realistic and richly detailed. Keep beginner pictures simpler; replace the art approach before publishing the revision.

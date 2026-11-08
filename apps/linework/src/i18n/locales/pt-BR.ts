@@ -499,10 +499,21 @@ export const ptBR: Translation = {
   'settings.free.body': 'Todas as ferramentas de decalque do Linework são grátis: decalque com a câmera, opacidade, travar, lanterna, grade, espelhar, bloqueio de toque, mesa de luz, modo contorno e suas próprias fotos. Sem anúncios, sem período de teste, sem assinatura semanal.',
   'settings.free.plusLink': 'Linework Plus e gorjetas',
   'settings.free.plusHint': 'Extras opcionais com pagamento único. Nunca bloqueia uma ferramenta de decalque.',
+  'settings.free.playBody': "O traçado com câmera, suas fotos, os controles e {count} modelos iniciais continuam grátis. O teste opcional de 14 dias inclui toda a biblioteca e contornos de fotos. Uma compra única do Plus mantém esses extras desbloqueados.",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "Compra única opcional para toda a biblioteca e contornos de fotos",
 
   'settings.privacy.title': 'Privacidade',
   'settings.privacy.body': 'Dados Não Coletados. O Linework não tem contas, análises nem anúncios. Suas fotos ficam neste celular e nunca são enviadas; os contornos são criados no próprio aparelho.',
+  'settings.privacy.playBody': "As imagens são processadas neste dispositivo. A biblioteca de faturamento do Google envia diagnósticos técnicos ao Google. Sem anúncios nem conta no app. Toque para ler a política de privacidade.",
+  'settings.privacy.openHint': "Abrir a política de privacidade do Linework no navegador",
+  'settings.privacy.openFailed': "Não foi possível abrir o navegador. Política de privacidade: {url}",
 
+  'settings.review.title': "Código de acesso ao Plus",
+  'settings.review.active': "O acesso ao Plus está ativo",
+  'settings.review.enter': "Inserir código de acesso",
+  'settings.review.apply': "Ativar acesso",
+  'settings.review.invalid': "Não foi possível ativar o código. Confira e tente novamente.",
   'settings.about.title': 'Sobre',
   'settings.about.body': 'Linework {version}. Os modelos são desenhos em linhas originais criados para o Linework.',
 

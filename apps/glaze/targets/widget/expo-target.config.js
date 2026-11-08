@@ -22,13 +22,27 @@ module.exports = (config) => ({
   // 17.0 is also the floor for interactive widgets (Button(intent:), T73). Do not lower it
   // without wrapping the habit widgets in availability checks.
   deploymentTarget: '17.0',
-  frameworks: ['SwiftUI', 'WidgetKit', 'AppIntents'],
+  // owner-1102b: EventKit (Next event widget, T280) and CoreLocation (Weather widget, T281).
+  frameworks: ['SwiftUI', 'WidgetKit', 'AppIntents', 'EventKit', 'CoreLocation'],
+  // T281: lets the Weather widget read the location the app was allowed (When-In-Use). The app's
+  // usage strings live in native-plugins/datawidgets.json. VERIFY after prebuild: the GlazeWidgets
+  // Info.plist has NSWidgetWantsLocation = YES (apple-targets merges `infoPlist` into it).
+  infoPlist: {
+    NSWidgetWantsLocation: true,
+    // Same wording as the app (native-plugins/datawidgets.json); the extension never prompts, but
+    // some iOS versions want the strings present in an extension that uses EventKit / CoreLocation.
+    NSLocationWhenInUseUsageDescription:
+      'Glaze uses your approximate location only for the Weather widget. It is rounded to about 1 km and sent only to Open-Meteo to get the forecast.',
+    NSCalendarsFullAccessUsageDescription:
+      'Glaze reads your calendars only to show your next event in the Next event widget. Your events stay on this iPhone.',
+  },
   entitlements: {
     'com.apple.security.application-groups':
       (config.ios && config.ios.entitlements && config.ios.entitlements['com.apple.security.application-groups']) || [
         APP_GROUP,
       ],
   },
+  images: { AlpineClockFace: '../../assets/widgets/alpine-clock-face.jpg' },
   colors: {
     // Special names: $accent -> AccentColor, $widgetBackground -> WidgetBackground asset.
     $accent: { light: '#7A2E6B', dark: '#E59AD3' },

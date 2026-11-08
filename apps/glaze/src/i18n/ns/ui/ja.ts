@@ -2,9 +2,24 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ja: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "このテーマのためのデザイン",
+      "body": "アイコンと同じ色で、見やすいライブウィジェット。",
+      "clock": "時計",
+      "battery": "バッテリー",
+      "calendar": "カレンダー",
+      "setup": "ホーム画面でウィジェットを追加し、Glazeを選択します。時計、バッテリー、カレンダーにはここで選んだテーマが反映されます。",
+      "save": "マイウィジェットアートに保存",
+      "update": "このウィジェットを使うには、TestFlightからGlazeの最新ビルドをインストールしてください。",
+      "batteryNote": "バッテリー残量は定期的に更新されます。ダッシュはiOSから残量が取得できないことを示します。",
+      "unavailable": "取得できません"
+  },
   error: {
     body: 'この画面で問題が起きて停止しました。アイコン、テーマ、ループはスマートフォンに保存されており影響はありません。もう一度お試しください。繰り返し起きる場合は下のメモを送ってください。',
     retryHint: 'この画面を再読み込みします',
+    screenTitle: '問題が発生しました',
+    screenBody: 'この画面で問題が起きました。テーマ、アイコン、ウィジェットは端末に安全に保存されています。「再試行」をタップしてもう一度読み込んでください。',
+    retry: '再試行',
     report: '問題を報告',
     reportHint: 'このエラーを入力した状態でメールアプリを開きます。Glaze 自体は何も送信しません。',
     opening: 'メールを開いています…',

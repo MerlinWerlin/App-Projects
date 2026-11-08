@@ -59,6 +59,26 @@ test('max duration: recordAsync resolves by itself and is marked as hitting the 
   assert.equal(s.hitLimit, true);
 });
 
+test('Android camera preparation is excluded from the clip duration', () => {
+  let s = run([{ type: 'start', at: null }]);
+  assert.equal(elapsedSeconds(s.startedAt, 6000), 0, 'setup does not advance the recording clock');
+  s = run([{ type: 'captureStarted', at: 6000 }], s);
+  assert.equal(elapsedSeconds(s.startedAt, 10_300), 4);
+  s = run([{ type: 'stop' }, { type: 'finished', uri: 'file:///clip.mp4', at: 10_300 }], s);
+  assert.equal(s.durationS, 4, 'five seconds preparing the camera are not reported as recorded video');
+});
+
+test('a late or duplicate capture event cannot restart the clip clock', () => {
+  const idle = initialTimelapseState();
+  assert.equal(timelapseReducer(idle, { type: 'captureStarted', at: 6000 }), idle);
+  const stopped = run([{ type: 'start', at: null }, { type: 'stop' }]);
+  assert.equal(timelapseReducer(stopped, { type: 'captureStarted', at: 6000 }), stopped);
+  const started = run([{ type: 'start', at: null }, { type: 'captureStarted', at: 6000 }]);
+  assert.equal(timelapseReducer(started, { type: 'captureStarted', at: 9000 }), started);
+  const original = run([{ type: 'start', at: 1000 }]);
+  assert.equal(timelapseReducer(original, { type: 'captureStarted', at: 6000 }), original);
+});
+
 test('duration is clamped to the cap', () => {
   const s = run([
     { type: 'start', at: 0 },

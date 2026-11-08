@@ -12,12 +12,15 @@
 //     its lower part (DEFAULT_BADGE_RECT), so the value never sits on the subject.
 //  3. Anything else (a value painted somewhere we don't know, habits, photo, quote, plain art) stays
 //     Art. A countdown needs a real target day (YYYY-MM-DD); without one it stays Art too.
+//     T245: the person picks that day per piece on the Widgets tab (ThemeWidgetArt), stored by
+//     src/store/countdownArtTargets.ts and passed as `targets`.
 // The widget reads the result from the piece's record in widget-art/index.json (`live`, see
 // widgetArtLibrary.ts); rects there are 0..1 of the COMPOSED image (art fitted with placeArt).
 //
 // Pure TS (Node runs it directly), tested in liveArt.test.ts.
 
 import { fullBleedArt } from './widgetPreview.ts';
+import { parseDesignedWidget, type DesignedWidget } from './designedWidgets.ts';
 import { placeArt, type Box, type WidgetOption, type WidgetOptionFit, type WidgetOptionKind } from './widgetOptions.ts';
 
 /** What the widget can draw live over art. */
@@ -83,27 +86,114 @@ const DAY = /^(\d{4})-(\d{2})-(\d{2})$/;
 
 /** A valid calendar day `YYYY-MM-DD`, or null. */
 export function validTargetDay(day: unknown): string | null {
-  if (typeof day !== 'string') return null;
+  if (typeof day !== 'string' || day.length !== 10) return null;
   const m = DAY.exec(day);
   if (!m) return null;
   const y = Number(m[1]);
   const mo = Number(m[2]);
   const d = Number(m[3]);
-  if (mo < 1 || mo > 12 || d < 1) return null;
+  if (y < 1 || mo < 1 || mo > 12 || d < 1) return null;
   const days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
   return d <= days ? day : null;
 }
 
 export type LiveArtPlan = {
+  valueStyle?: 'compact';
+  clockStyle?: 'analog' | 'digital' | 'stacked';
+  ink?: string;
   kind: LiveArtKind;
   /** 0..1 of the art. */
   rect: NRect;
   shape: LiveArtShape;
   /** true: the plate hides a value painted into the art; false: a badge on a number-free piece. */
   cover: boolean;
+  /** Curated number-free liveFrame: the source already provides its readable background. */
+  cleanFace?: boolean;
   /** Countdown target day (YYYY-MM-DD). */
   target?: string;
 };
+
+/**
+ * T245: target days the person chose for countdown art pieces, keyed `<themeId>/<optionId>`
+ * (the KNOWN_LIVE_PIECES key). Stored by the app (src/store/countdownArtTargets.ts); the day
+ * travels to the widget inside the piece's `live` spec (`target`), which LiveArtOverlay.swift
+ * already counts down to. No day = the piece stays Art (never a made-up number).
+ */
+export type CountdownArtTargets = Readonly<Record<string, string>>;
+
+/** Options for liveArtPlan / withLiveArt. */
+export type LiveArtOpts = {
+  /** One target day for every countdown piece (null = none). */
+  countdownTo?: string | null;
+  /** T245: per-piece target days (win over `countdownTo`). */
+  targets?: CountdownArtTargets;
+};
+
+/** The key a countdown art piece's target day is stored under. */
+export function countdownArtKey(themeId: string, optionId: string): string {
+  return `${themeId}/${optionId}`;
+}
+
+/** The chosen target day of a piece, or null. */
+export function countdownArtTarget(targets: CountdownArtTargets, themeId: string, optionId: string): string | null {
+  return validTargetDay(targets[countdownArtKey(themeId, optionId)]);
+}
+
+/**
+ * T245: true when this piece counts down once it has a target day (a known countdown piece such as
+ * dune-countdown / rehearsal-countdown, or a number-free piece of the countdown kind), so the UI
+ * offers the day field for it.
+ */
+export function isCountdownArtPiece(themeId: string, option: Pick<WidgetOption, 'id' | 'kind' | 'numberFree'>): boolean {
+  const known = KNOWN_LIVE_PIECES[countdownArtKey(themeId, option.id)];
+  if (known) return known.kind === 'countdown';
+  return option.numberFree === true && liveArtKindOf(option.kind) === 'countdown';
+}
+
+/** Max stored targets (a person sets a few; this only bounds a corrupt store). */
+export const COUNTDOWN_ART_TARGETS_MAX = 200;
+
+/** Tolerant read of stored targets: keeps only `key: valid day` pairs. */
+export function parseCountdownArtTargets(raw: unknown): Record<string, string> {
+  const out: Record<string, string> = {};
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return out;
+  let n = 0;
+  for (const [k, v] of Object.entries(raw as Record<string, unknown>)) {
+    if (n >= COUNTDOWN_ART_TARGETS_MAX) break;
+    if (typeof k !== 'string' || k.length === 0 || k.length > 240 || !k.includes('/')) continue;
+    const day = validTargetDay(v);
+    if (!day) continue;
+    out[k] = day;
+    n++;
+  }
+  return out;
+}
+
+/** A copy of `targets` with this piece's day set (a valid day) or cleared (null / invalid). */
+export function withCountdownArtTarget(targets: CountdownArtTargets, themeId: string, optionId: string, day: string | null): Record<string, string> {
+  const next: Record<string, string> = { ...targets };
+  const key = countdownArtKey(themeId, optionId);
+  const valid = validTargetDay(day);
+  if (valid) next[key] = valid;
+  else delete next[key];
+  return next;
+}
+
+/**
+ * Whole days from `now`'s local day to `target` (the number the widget's plate shows; matches
+ * LiveArtOverlay.swift: never below 0, so the day itself and after show 0). Null without a valid
+ * day: the caller shows the "pick a day" state, never a number. `utcOffsetMinutes` for tests.
+ */
+export function countdownArtDays(target: string | null | undefined, now: Date, utcOffsetMinutes?: number): number | null {
+  const day = validTargetDay(target);
+  if (!day) return null;
+  const off = utcOffsetMinutes ?? -now.getTimezoneOffset();
+  const local = new Date(now.getTime() + off * 60000);
+  const today = Date.UTC(local.getUTCFullYear(), local.getUTCMonth(), local.getUTCDate());
+  const [y, m, d] = day.split('-').map(Number);
+  const days = Math.round((Date.UTC(y, m - 1, d) - today) / 86400000);
+  return days < 0 ? 0 : days;
+}
 
 /**
  * How the widget makes this piece live, or null (it is Art). `themeId` is the pack / theme id.
@@ -111,8 +201,8 @@ export type LiveArtPlan = {
  */
 export function liveArtPlan(
   themeId: string,
-  option: Pick<WidgetOption, 'id' | 'kind' | 'numberFree'>,
-  opts: { countdownTo?: string | null } = {},
+  option: Pick<WidgetOption, 'id' | 'kind' | 'numberFree' | 'liveFrame'>,
+  opts: LiveArtOpts = {},
 ): LiveArtPlan | null {
   const known = KNOWN_LIVE_PIECES[`${themeId}/${option.id}`];
   let plan: LiveArtPlan | null = null;
@@ -120,11 +210,21 @@ export function liveArtPlan(
     plan = { kind: known.kind, rect: { ...known.rect }, shape: known.shape, cover: true };
   } else if (option.numberFree === true) {
     const kind = liveArtKindOf(option.kind);
-    if (kind) plan = { kind, rect: { ...DEFAULT_BADGE_RECT }, shape: 'plate', cover: false };
+    if (kind) {
+      const f = option.liveFrame;
+      if (f) {
+        const [x, y, w, h] = f.rect;
+        if (![x, y, w, h].every((v) => Number.isFinite(v) && v >= 0 && v <= 1) || w <= 0 || h <= 0 || x + w > 1 || y + h > 1) return null;
+        plan = { kind, rect: { x, y, w, h }, shape: f.shape, cover: false, cleanFace: true };
+        if (kind === 'clock' && f.clockStyle) plan.clockStyle = f.clockStyle;
+        if (f.ink) plan.ink = f.ink;
+        if (f.valueStyle === 'compact' && ['date','focus','battery'].includes(kind)) plan.valueStyle = 'compact';
+      } else plan = { kind, rect: { ...DEFAULT_BADGE_RECT }, shape: 'plate', cover: false };
+    }
   }
   if (!plan) return null;
   if (plan.kind === 'countdown') {
-    const target = validTargetDay(opts.countdownTo);
+    const target = validTargetDay(opts.targets ? countdownArtTarget(opts.targets, themeId, option.id) ?? opts.countdownTo : opts.countdownTo);
     if (!target) return null;
     plan.target = target;
   }
@@ -136,7 +236,7 @@ export function liveArtPlan(
  * `liveArt` and listed under its live kind (harbour-focus becomes a `focus` piece); every other
  * option is returned unchanged (and is shown as Art when it has values painted in: fixedValues).
  */
-export function withLiveArt<T extends Pick<WidgetOption, 'id' | 'kind' | 'numberFree'>>(themeId: string, options: readonly T[], opts: { countdownTo?: string | null } = {}): T[] {
+export function withLiveArt<T extends Pick<WidgetOption, 'id' | 'kind' | 'numberFree' | 'liveFrame'>>(themeId: string, options: readonly T[], opts: LiveArtOpts = {}): Array<T & { liveArt?: LiveArtPlan }> {
   return options.map((o) => {
     const plan = liveArtPlan(themeId, o, opts);
     if (!plan) return o;
@@ -155,11 +255,22 @@ const clamp01 = (n: number): number => (n < 0 ? 0 : n > 1 ? 1 : n);
 
 /** Stored with the piece (widget-art/index.json `live`); read by LiveArtOverlay.swift. */
 export type LiveArtSpec = {
+  /** Purpose-designed native content; replaces image/overlay composition entirely. */
+  design?: DesignedWidget;
+  valueStyle?: 'compact';
+  clockStyle?: 'analog' | 'digital' | 'stacked';
   kind: LiveArtKind;
-  /** [x, y, w, h], 0..1 of the composed image the widget shows. */
+  /** [x, y, w, h], 0..1 of the composed image the widget shows (Fill layout). */
   rect: [number, number, number, number];
+  /**
+   * T246: the same plate as [x, y, w, h], 0..1 of the ART itself (the plan rect), so the Fit layout,
+   * which shows the raw art (<id>-art.png, same framing as the art) inset, can place it too
+   * (src/core/liveArtFit.ts). Optional: older records lack it. Unknown to LiveArtOverlay.swift today.
+   */
+  art?: [number, number, number, number];
   shape: LiveArtShape;
   cover: boolean;
+  cleanFace?: boolean;
   /** Plate and text colours (#RRGGBB) from the piece's theme. */
   plate: string;
   ink: string;
@@ -188,11 +299,27 @@ export function liveArtSpec(plan: LiveArtPlan, art: Box, composed: Box, fit: Wid
     shape: plan.shape,
     cover: plan.cover,
     plate: hex(palette.bg) ?? '#000000',
-    ink: hex(palette.ink) ?? '#FFFFFF',
+    ink: hex(plan.ink) ?? hex(palette.ink) ?? '#FFFFFF',
   };
+  const ax = clamp01(plan.rect.x);
+  const ay = clamp01(plan.rect.y);
+  const aw = Math.min(clamp01(plan.rect.w), 1 - ax);
+  const ah = Math.min(clamp01(plan.rect.h), 1 - ay);
+  if (aw > 0 && ah > 0) spec.art = [r4(ax), r4(ay), r4(aw), r4(ah)];
+  if (plan.kind === 'clock' && plan.clockStyle) spec.clockStyle = plan.clockStyle;
+  if (plan.valueStyle) spec.valueStyle = plan.valueStyle;
   if (plan.target) spec.target = plan.target;
+  if (plan.cleanFace === true && !plan.cover) spec.cleanFace = true;
   if (plan.kind === 'focus') spec.minutes = FOCUS_MINUTES;
   return spec;
+}
+
+/** [x, y, w, h] inside 0..1 with a positive size, or null. */
+function unitRect(raw: unknown): [number, number, number, number] | null {
+  if (!Array.isArray(raw) || raw.length !== 4 || !raw.every((n) => typeof n === 'number' && Number.isFinite(n) && n >= 0 && n <= 1)) return null;
+  const [x, y, w, h] = raw as number[];
+  if (w <= 0 || h <= 0 || x + w > 1.0001 || y + h > 1.0001) return null;
+  return [x, y, w, h];
 }
 
 /** Tolerant read of a stored spec (index.json is written by older and newer app versions). */
@@ -201,22 +328,32 @@ export function parseLiveArtSpec(raw: unknown): LiveArtSpec | null {
   const r = raw as Record<string, unknown>;
   if (typeof r.kind !== 'string' || !(LIVE_ART_KINDS as readonly string[]).includes(r.kind)) return null;
   const kind = r.kind as LiveArtKind;
-  if (!Array.isArray(r.rect) || r.rect.length !== 4 || !r.rect.every((n) => typeof n === 'number' && Number.isFinite(n) && n >= 0 && n <= 1)) return null;
-  const [x, y, w, h] = r.rect as number[];
-  if (w <= 0 || h <= 0 || x + w > 1.0001 || y + h > 1.0001) return null;
+  const rect = unitRect(r.rect);
+  if (!rect) return null;
   const spec: LiveArtSpec = {
     kind,
-    rect: [x, y, w, h],
+    rect,
     shape: r.shape === 'circle' ? 'circle' : 'plate',
     cover: r.cover === true,
     plate: hex(r.plate) ?? '#000000',
     ink: hex(r.ink) ?? '#FFFFFF',
   };
+  // T246: a broken art rect is dropped on its own (the Fill rect still works).
+  const art = unitRect(r.art);
+  if (art) spec.art = art;
+  if (r.cleanFace === true && !spec.cover) spec.cleanFace = true;
+  if (r.valueStyle === 'compact' && ['date','focus','battery'].includes(kind)) spec.valueStyle = 'compact';
+  if (kind === 'clock' && ['analog', 'digital', 'stacked'].includes(String(r.clockStyle))) spec.clockStyle = r.clockStyle as 'analog' | 'digital' | 'stacked';
   if (kind === 'countdown') {
     const t = validTargetDay(r.target);
     if (!t) return null;
     spec.target = t;
   }
   if (kind === 'focus') spec.minutes = FOCUS_MINUTES;
+  if (r.design !== undefined) {
+    const design = parseDesignedWidget(r.design);
+    if (!design || (design.kind === 'calendar' ? 'date' : design.kind) !== kind) return null;
+    spec.design = design;
+  }
   return spec;
 }

@@ -5,7 +5,8 @@
 // src/core/widgetArtLibrary.ts, keep in sync):
 //   <App Group>/widget-art/index.json  { "v": 1, "pieces": [{ id, name, themeName, themeId, source,
 //                                        file, created, aspect, size, slot? }], "currentThemeId"?,
-//                                        "retired"?: { <id>: { size, slot } } }
+//                                        "retired"?: { <id>: { size, slot } },
+//                                        "unpinned"?: { <size>: <id> | null } (T259) }
 //   <App Group>/widget-art/<id>.jpg    the composed image (full bleed since T236, long edge <= 1200 px)
 //   <App Group>/widget-art/<id>-art.png  T236, optional: the raw art for the Fit layout
 // T236: Edit Widget also has Layout (ArtLayout): Fill (default) or Fit, see SeamlessWidget.swift.
@@ -60,6 +61,9 @@ struct WidgetArtSnapshot {
   let records: [WidgetArtRecord]
   let currentThemeId: String?
   let retired: [String: WidgetArtRetired]
+  /// T259: index.json `unpinned`, size -> piece id ("" = the theme's plain background). A size not
+  /// listed = the last applied image (seamless-<size>.png). Written by the app (followTheme in TS).
+  var unpinned: [String: String] = [:]
 
   func has(_ id: String) -> Bool {
     records.contains { $0.id == id }
@@ -100,6 +104,23 @@ struct WidgetArtSnapshot {
     }
     return sameSize.first?.id ?? first.id
   }
+
+  /// T259: what a widget with NO piece chosen shows (mirrors unpinnedChoice in TS): size not listed
+  /// → the last applied image; "" → the theme's plain background; an id → resolved like a chosen
+  /// piece, else the plain background. Never the previous theme's last applied image.
+  func unpinnedChoice(_ size: String?) -> UnpinnedChoice {
+    guard let size = size, let want = unpinned[size] else { return .lastApplied }
+    if want.isEmpty { return .background }
+    if let id = resolve(want, preferSize: size) { return .piece(id) }
+    return .background
+  }
+}
+
+/// T259: see WidgetArtSnapshot.unpinnedChoice.
+enum UnpinnedChoice {
+  case lastApplied
+  case background
+  case piece(String)
 }
 
 enum WidgetArtStore {
@@ -152,7 +173,26 @@ enum WidgetArtStore {
     }
     var current: String? = nil
     if let c = root["currentThemeId"] as? String, !c.isEmpty { current = c }
-    return WidgetArtSnapshot(records: newestFirst, currentThemeId: current, retired: retired)
+    // T259: JSON null = the plain background (""), a valid id = that piece; anything else is ignored.
+    var unpinned: [String: String] = [:]
+    if let map = root["unpinned"] as? [String: Any] {
+      for (key, value) in map {
+        guard let size = sizeName(key) else { continue }
+        if value is NSNull {
+          unpinned[size] = ""
+        } else if let id = value as? String, validID(id) {
+          unpinned[size] = id
+        }
+      }
+    }
+    return WidgetArtSnapshot(records: newestFirst, currentThemeId: current, retired: retired, unpinned: unpinned)
+  }
+
+  /// T259: true when a widget of `family` with no chosen piece shows the theme's plain background
+  /// (after a swap to a theme with no piece of that size): the last applied image is NOT shown.
+  static func unpinnedShowsBackground(_ family: WidgetFamily) -> Bool {
+    if case .background = snapshot().unpinnedChoice(SeamlessStore.familyName(family)) { return true }
+    return false
   }
 
   static func sizeName(_ raw: Any?) -> String? {
@@ -202,9 +242,15 @@ enum WidgetArtStore {
   }
 
   /// T252: the piece a widget of `family` configured with `id` shows (see WidgetArtSnapshot.resolve).
+  /// T259: with no piece chosen, the piece the index says unpinned widgets of this size follow (the
+  /// current theme's), else nil (the view shows the last applied image or the plain background).
   static func resolvedID(_ id: String?, family: WidgetFamily) -> String? {
-    guard id != nil else { return nil }
-    return snapshot().resolve(id, preferSize: SeamlessStore.familyName(family))
+    let size = SeamlessStore.familyName(family)
+    guard id != nil else {
+      if case .piece(let follow) = snapshot().unpinnedChoice(size) { return follow }
+      return nil
+    }
+    return snapshot().resolve(id, preferSize: size)
   }
 
   /// The chosen piece's image, or nil (no choice, or unreadable), in which case the widget shows

@@ -49,7 +49,7 @@
 "A photo you pick in Glaze." = "Una foto che scegli in Glaze.";
 "Choose a photo in Glaze" = "Scegli una foto in Glaze";
 "Little Line" = "Frase breve";
-"A short, gentle line that changes every hour." = "Una frase breve e gentile che cambia ogni ora.";
+"A short, gentle line that changes every day." = "Una frase breve e gentile che cambia ogni giorno.";
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "Senza bordi";
@@ -71,3 +71,91 @@
 "Pause" = "Pausa";
 "Resume" = "Riprendi";
 "Days" = "Giorni";
+
+"Photo album" = "Album di foto";
+
+"Choose album photos in Glaze" = "Scegli le foto dell’album in Glaze";
+
+"Your selected photos, changing through the day." = "Le foto che scegli cambiano durante la giornata.";
+
+"Next photo" = "Foto successiva";
+
+"Widget size" = "Dimensione widget";
+/* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
+   The word clock's phrase is English only by design; other languages show a big digital time. */
+"widgets.moon.new" = "Luna nuova";
+"widgets.moon.waxingCrescent" = "Luna crescente";
+"widgets.moon.firstQuarter" = "Primo quarto";
+"widgets.moon.waxingGibbous" = "Gibbosa crescente";
+"widgets.moon.full" = "Luna piena";
+"widgets.moon.waningGibbous" = "Gibbosa calante";
+"widgets.moon.lastQuarter" = "Ultimo quarto";
+"widgets.moon.waningCrescent" = "Luna calante";
+"widgets.moon.lit" = "%1$@ illuminata";
+"widgets.moon.fullTonight" = "Luna piena stanotte";
+"widgets.moon.fullTomorrow" = "Luna piena domani";
+"widgets.moon.fullIn" = "Luna piena tra %1$@ giorni";
+"widgets.moon.nextNights" = "Prossime 7 notti";
+"Moon" = "Luna";
+"Tonight's moon phase, worked out on your phone, in your Glaze theme." = "La fase lunare di stanotte, calcolata sul telefono, nel tuo tema Glaze.";
+"Word clock" = "Orologio a parole";
+"The time in words, in your Glaze theme." = "L’ora in parole, nel tuo tema Glaze.";
+"Big clock" = "Orologio grande";
+"Big, bold numerals in your Glaze theme. Made for StandBy." = "Cifre grandi e decise nel tuo tema Glaze. Perfetto per StandBy.";
+/* Lock Screen widgets: clock, date, battery, countdown, moon (LockAccessoryWidget.swift, T279) */
+"Glaze Lock" = "Glaze Lock";
+"Lock Screen date" = "Data (schermata di blocco)";
+"The weekday and date for your Lock Screen." = "Giorno della settimana e data per la schermata di blocco.";
+"Lock Screen battery" = "Batteria (schermata di blocco)";
+"Your battery level for your Lock Screen." = "Il livello della batteria sulla schermata di blocco.";
+"Lock Screen countdown" = "Conto alla rovescia (schermata di blocco)";
+"Days left to the date you choose in Glaze." = "Giorni fino alla data che scegli in Glaze.";
+"Lock Screen moon" = "Luna (schermata di blocco)";
+"Tonight's moon and the days to the next full moon." = "La luna di stanotte e i giorni alla prossima luna piena.";
+"Choose a date in Glaze" = "Scegli una data in Glaze";
+"lock.battery" = "Batteria";
+"lock.moon" = "Luna";
+"lock.moon.fullToday" = "Luna piena oggi";
+"lock.countdown.days" = "%1$@ giorni";
+"lock.moon.fullIn" = "Luna piena tra %1$@ giorni";
+"lock.moon.lit" = "%1$@ illuminata";
+/* Next event and Weather widgets (CalendarEventWidget.swift, WeatherWidget.swift; owner-1102b T280/T281) */
+"Next event" = "Prossimo evento";
+"Your next calendar event, in your Glaze theme." = "Il tuo prossimo evento del calendario, nel tuo tema Glaze.";
+"Open Glaze to show your next event" = "Apri Glaze per vedere il prossimo evento";
+"No events in the next 7 days" = "Nessun evento nei prossimi 7 giorni";
+"All day" = "Tutto il giorno";
+"Now" = "Ora";
+"Tomorrow" = "Domani";
+"calendar.untitled" = "Evento";
+"calendar.sample.1" = "Caffè con Sam";
+"calendar.sample.2" = "Riunione di team";
+"calendar.sample.3" = "Yoga";
+"Weather" = "Meteo";
+"The weather where you are, in your Glaze theme." = "Il meteo dove ti trovi, nel tuo tema Glaze.";
+"Open Glaze to set weather" = "Apri Glaze per impostare il meteo";
+"Updated %@" = "Aggiornato %@";
+"H:%@ L:%@" = "Max %1$@ Min %2$@";
+"Weather data by Open-Meteo.com" = "Dati meteo di Open-Meteo.com";
+/* Streak widget (HabitStreakWidget.swift, TickHabitIntent, T284). habit.a11y.*: 1 = days / habit name */
+"habit.streak.caption" = "Serie";
+"habit.streak.tick" = "Spunta oggi";
+"habit.streak.done" = "Fatto oggi";
+"habit.streak.name" = "Serie";
+"habit.streak.desc" = "Spunta un’abitudine ogni giorno e guarda crescere la tua serie.";
+"habit.a11y.streak" = "Serie di %1$@ giorni";
+"habit.a11y.tick" = "Spunta %1$@ per oggi";
+"Tick a habit" = "Spunta un’abitudine";
+"Streak habit" = "Abitudine della serie";
+"Choose the habit this streak widget follows." = "Scegli l’abitudine che segue questo widget della serie.";
+
+"Unavailable" = "Non disponibile";
+"Full" = "Carica";
+"Remaining" = "Rimanente";
+
+/* Theme gallery */
+"Battery" = "Batteria";
+"Calendar" = "Calendario";
+"Matches the theme you choose in Glaze." = "Si abbina al tema che scegli in Glaze.";
+/* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
+"Artwork from the theme you choose in Glaze." = "Illustrazioni del tema che scegli in Glaze.";

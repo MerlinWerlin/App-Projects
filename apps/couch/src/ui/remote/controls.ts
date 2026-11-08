@@ -1,7 +1,7 @@
 /**
  * Remote layout as data, ported from prototype/index.html viewRemote().
  * Pure TS (no React Native) so it is unit-tested with bun/jest; the .tsx
- * components only render this. Every TV control is free.
+ * components only render this. Couch Plus is checked by the session gate, never here.
  *
  * Copy (owner-1016 R3): captions and labels on these tables are getters that translate on every
  * read (src/ui/lazyCopy.ts); single strings are exported as message keys (*_KEY) for t().

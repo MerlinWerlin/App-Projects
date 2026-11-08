@@ -1,10 +1,11 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { Text } from '../Text';
 import { RemoteIcon } from '../icons/RemoteIcon';
 import type { ConnectionState, Tv } from '../../core/types';
 import { duration, easeOut } from '../../theme/motion';
-import { fonts, radius, tabular } from '../../theme/tokens';
+import { fonts, tabular } from '../../theme/tokens';
+import { continuous, radii, remoteDesignPalette, textStyle } from '../../theme/design';
 import { useRemoteTheme } from '../../theme/useRemoteTheme';
 import { pillVisual } from '../fx/connection';
 import { StatusPill, useConnectionStatus } from '../fx/StatusPill';
@@ -79,7 +80,9 @@ export function TvHeader({
   lastMs: number | null;
   onPress: () => void;
 }) {
-  const t = useRemoteTheme();
+  // Design v2 (T79): the v2 roles derived from the remote theme (same as <RemoteDesignProvider>).
+  const theme = useRemoteTheme();
+  const d = useMemo(() => remoteDesignPalette(theme), [theme]);
   const tr = useT();
   // T70: while a reconnect run is in progress the pill pulses amber and says "Reconnecting…",
   // whatever the driver reports between attempts (no error flashes, no toast per attempt).
@@ -95,35 +98,37 @@ export function TvHeader({
       accessibilityRole="button"
       accessibilityLabel={tv ? tr('ui.remote.switchTv', { name: tv.name }) : tr('ui.remote.addTv')}
       onPress={onPress}
-      style={({ pressed }) => [styles.bar, { backgroundColor: pressed ? t.accentSoft : t.body }]}
+      style={({ pressed }) => [styles.bar, { backgroundColor: pressed ? d.surfacePressed : d.surface, borderColor: d.cardEdge }]}
     >
       <StatusPill status={status} pops={pops} />
       <View style={styles.text}>
-        <CrossFadeName id={tv?.id ?? null} name={name} color={t.ink} />
+        <CrossFadeName id={tv?.id ?? null} name={name} color={d.label} />
         <Text
           scaleRole="caption"
-          style={[styles.sub, { color: t.muted }]}
+          style={[styles.sub, { color: d.secondaryLabel }]}
           numberOfLines={subLines}
           accessibilityLiveRegion="polite"
         >
           {tv ? tr('ui.remote.modelStatus', { model: tv.model, status: statusLabel }) : tr('ui.remote.pickTv')}
         </Text>
       </View>
-      <Text scaleRole="meta" style={[styles.ms, { color: t.muted }]} accessibilityLabel={lastMs === null ? tr('ui.remote.noLatency') : tr('ui.remote.latencyLabel', { ms: String(Math.round(lastMs)) })}
+      <Text scaleRole="meta" style={[styles.ms, { color: d.secondaryLabel }]} accessibilityLabel={lastMs === null ? tr('ui.remote.noLatency') : tr('ui.remote.latencyLabel', { ms: String(Math.round(lastMs)) })}
       >
         {tv && v.live ? formatLatency(lastMs) : '—'}
       </Text>
       {/* Switcher affordance: the bar opens the TV list (or Add TV). Decorative; the bar is labelled. */}
-      <RemoteIcon name={tv ? 'down' : 'plus'} size={16} color={t.muted} />
+      <RemoteIcon name={tv ? 'down' : 'plus'} size={16} color={d.tertiaryLabel} />
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  bar: { flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: radius.panel, padding: 12, minHeight: 56 },
+  // v2 grouped-cell shape: continuous corners, hairline edge in dark themes only (cardEdge).
+  bar: { flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: radii.group, ...continuous, borderWidth: 1, padding: 12, minHeight: 56 },
   text: { flex: 1, minWidth: 0 },
-  nm: { fontFamily: fonts.display, fontSize: 16 },
+  // The TV name keeps the brand display font (DESIGN_V2 Type); the status line is system footnote.
+  nm: { fontFamily: fonts.display, fontSize: 17, lineHeight: 22 },
   out: { position: 'absolute', start: 0, end: 0, top: 0 },
-  sub: { fontFamily: fonts.text, fontSize: 12.5 },
+  sub: textStyle('footnote'),
   ms: { fontFamily: fonts.mono, fontSize: 12, ...tabular },
 });

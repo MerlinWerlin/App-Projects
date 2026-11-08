@@ -1,6 +1,8 @@
 // Ticket view: full screen at full brightness (restored on every exit), the saved QR crop big, the ticket image
 // fitted (tap for fill), booking ref / seat / times big, and a one-handed Close at the bottom.
-// PDFs can't render inline in Expo Go, so a PDF ticket shows its details plus Open PDF (system share sheet).
+// T28: a PDF ticket opens full screen inside Satchel (View PDF: pinch-zoom, page scrolling, offline) on builds that
+// have the viewer (src/native/pdfView.tsx); otherwise, and always via Open in…, it goes to the system share sheet.
+// T28: an image ticket can be cropped to its code in the app (app/crop/[id].tsx); the crop shows big at the top.
 // T41: Copy booking reference (ACCESSIBILITY "Ticket view") where the clipboard module is present; the result is
 // shown and announced.
 import { Ionicons } from '@expo/vector-icons';
@@ -11,17 +13,20 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { formatDay, formatTime, zoneCity } from '../../src/core/format.ts';
 import type { Stamp } from '../../src/core/model.ts';
 import { isTransport } from '../../src/core/model.ts';
+import { cleanCrop } from '../../src/core/qrcrop.ts';
 import { attachmentKind, ticketToShow } from '../../src/core/tickets.ts';
 import type { Key } from '../../src/i18n/en.ts';
 import { restoreBrightness, useFullBrightness } from '../../src/native/brightness.ts';
 import { clipboardAvailable, copyText } from '../../src/native/clipboard.ts';
 import { fileExists } from '../../src/native/files.ts';
 import { appPath } from '../../src/native/files.ts';
+import { PdfView, pdfViewerAvailable } from '../../src/native/pdfView.tsx';
 import { openInSystem } from '../../src/native/pickers.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { findItem, useTrips } from '../../src/state/trips.tsx';
 import { fonts, radius, space, TOUCH } from '../../src/theme/tokens.ts';
 import { AirportPanel } from '../../src/ui/AirportPanel.tsx';
+import { CroppedImage } from '../../src/ui/CroppedImage.tsx';
 import { kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Card, EmptyState, Label, PressableScale, Warning } from '../../src/ui/kit.tsx';
 
@@ -40,12 +45,23 @@ export default function TicketScreen() {
   const kind = shown ? attachmentKind(shown.mime, shown.name) : 'other';
   const fileUri = shown ? appPath(shown.uri) : null;
   const cropUri = shown?.qrCropUri ? appPath(shown.qrCropUri) : null;
+  // T28: the in-app crop rectangle of an image ticket.
+  const rect = shown && kind === 'image' ? cleanCrop(shown.qrCrop) : null;
 
   const [missing, setMissing] = useState(false);
   const [imageBroken, setImageBroken] = useState(false);
   const [cropBroken, setCropBroken] = useState(false);
   const [fill, setFill] = useState(false);
   const [openFailed, setOpenFailed] = useState(false);
+  const [rectBroken, setRectBroken] = useState(false);
+  const [pdfOpen, setPdfOpen] = useState(false);
+  const [pdfFailed, setPdfFailed] = useState(false);
+  const openSystem = () => {
+    if (!shown) return;
+    setOpenFailed(false);
+    openInSystem(shown.uri, shown.mime, shown.name).then((ok) => setOpenFailed(!ok));
+  };
+  const cropScreen = () => shown && item && router.push({ pathname: '/crop/[id]', params: { id: item.id, att: shown.id } });
   const [refCopy, setRefCopy] = useState<'copied' | 'failed' | null>(null);
   const copyRef = async (ref: string) => {
     const ok = await copyText(ref);
@@ -58,6 +74,8 @@ export default function TicketScreen() {
     setMissing(false);
     setImageBroken(false);
     setCropBroken(false);
+    setRectBroken(false);
+    setPdfOpen(false);
     if (fileUri) fileExists(fileUri).then((ok) => alive && setMissing(!ok));
     return () => {
       alive = false;
@@ -89,6 +107,9 @@ export default function TicketScreen() {
     </View>
   );
 
+  const inlinePdf = kind === 'pdf' && !!fileUri && !pdfFailed && pdfViewerAvailable();
+  const showPdf = pdfOpen && inlinePdf && !missing && !!item;
+
   let body;
   if (!item) {
     body = <EmptyState art="magnifier" title={t('route.ticket')} body={t('item.notFound')} />;
@@ -99,7 +120,8 @@ export default function TicketScreen() {
         ? ['item.checkIn', 'item.checkOut']
         : ['item.starts', 'item.ends'];
     const route = item.from || item.to ? t('ticket.from', { from: item.from?.name ?? '', to: item.to?.name ?? '' }) : item.place?.name;
-    const showCrop = !!cropUri && !cropBroken;
+    const showRect = !!rect && !!fileUri && !missing && !rectBroken && !imageBroken;
+    const showCrop = !!cropUri && !cropBroken && !showRect;
     const showImage = kind === 'image' && !!fileUri && !missing && !imageBroken && fileUri !== cropUri;
 
     body = (
@@ -113,6 +135,19 @@ export default function TicketScreen() {
         </View>
 
         {!shown ? <EmptyState art="ticket" title={t('ticket.none')} body={t('ticket.noneBody')} action={<Button label={t('ticket.manage')} hint={t('ticket.manageHint')} kind="quiet" onPress={manage} />} /> : null}
+
+        {showRect ? (
+          <View style={{ alignSelf: 'center', backgroundColor: theme.card, borderRadius: radius.m, borderWidth: 1, borderColor: theme.line, padding: space.s }}>
+            <CroppedImage
+              uri={fileUri!}
+              crop={rect!}
+              boxW={side - space.s * 2}
+              boxH={Math.round(side * 1.1)}
+              label={t('ticket.qrLabel', { title: item.title })}
+              onError={() => setRectBroken(true)}
+            />
+          </View>
+        ) : null}
 
         {showCrop ? (
           <View style={{ alignSelf: 'center', backgroundColor: theme.card, borderRadius: radius.m, borderWidth: 1, borderColor: theme.line, padding: space.s }}>
@@ -171,6 +206,15 @@ export default function TicketScreen() {
             />
           </PressableScale>
         ) : null}
+        {kind === 'image' && fileUri && !missing && !imageBroken ? (
+          <Button
+            label={t(rect ? 'tpolish.cropAdjust' : 'tpolish.cropAction')}
+            hint={t(rect ? 'tpolish.cropAdjustHint' : 'tpolish.cropActionHint')}
+            kind="quiet"
+            icon="crop"
+            onPress={cropScreen}
+          />
+        ) : null}
 
         {shown && missing ? <EmptyState art="ticket" title={t('ticket.missing')} body={t('ticket.missingBody')} action={<Button label={t('ticket.manage')} hint={t('ticket.manageHint')} kind="quiet" onPress={manage} />} /> : null}
         {shown && !missing && (imageBroken || (cropBroken && !showImage && kind !== 'pdf')) ? (
@@ -185,21 +229,74 @@ export default function TicketScreen() {
             </View>
             <Body muted>{shown.name}</Body>
             {!cropUri ? <Body>{t('ticket.pdfBody')}</Body> : null}
+            {inlinePdf ? (
+              <Button
+                label={t('tpolish.pdf.view')}
+                hint={t('tpolish.pdf.viewHint', { name: shown.name })}
+                kind={cropUri ? 'secondary' : 'primary'}
+                icon="document-text-outline"
+                onPress={() => setPdfOpen(true)}
+              />
+            ) : null}
             <Button
-              label={t('ticket.openPdf')}
-              hint={t('ticket.openPdfHint', { name: shown.name })}
-              kind={cropUri ? 'quiet' : 'primary'}
-              onPress={() => {
-                setOpenFailed(false);
-                openInSystem(shown.uri, shown.mime, shown.name).then((ok) => setOpenFailed(!ok));
-              }}
+              label={inlinePdf ? t('tpolish.pdf.share') : t('ticket.openPdf')}
+              hint={inlinePdf ? t('tpolish.pdf.shareHint', { name: shown.name }) : t('ticket.openPdfHint', { name: shown.name })}
+              kind={cropUri || inlinePdf ? 'quiet' : 'primary'}
+              onPress={openSystem}
             />
+            {pdfFailed ? <Warning text={t('tpolish.pdf.failed')} /> : null}
             {openFailed ? <Warning text={t('ticket.err.open')} /> : null}
           </Card>
         ) : null}
 
         {!brightOk ? <Body muted>{t('ticket.brightnessOff')}</Body> : null}
       </>
+    );
+  }
+
+  if (showPdf && shown && fileUri) {
+    // Full screen PDF: the system's own pinch-zoom and page scrolling; Back returns to the details.
+    return (
+      <View style={{ flex: 1, backgroundColor: theme.paper }}>
+        <View style={{ flex: 1, paddingTop: insets.top }}>
+          <PdfView
+            uri={fileUri}
+            label={t('tpolish.pdf.label', { name: shown.name })}
+            background={theme.paper}
+            onFail={() => {
+              setPdfFailed(true);
+              setPdfOpen(false);
+              AccessibilityInfo.announceForAccessibility(t('tpolish.pdf.failed'));
+            }}
+          />
+        </View>
+        {openFailed ? (
+          <View style={{ paddingHorizontal: space.l, paddingTop: space.s }}>
+            <Warning text={t('ticket.err.open')} />
+          </View>
+        ) : null}
+        <View style={{ flexDirection: 'row', gap: space.s, paddingHorizontal: space.l, paddingTop: space.s, paddingBottom: insets.bottom + space.m, borderTopWidth: 1, borderTopColor: theme.line, backgroundColor: theme.paper }}>
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel={t('tpolish.pdf.back')}
+            accessibilityHint={t('tpolish.pdf.backHint')}
+            onPress={() => setPdfOpen(false)}
+            style={{ flex: 1, minHeight: TOUCH + 12, borderRadius: radius.m, backgroundColor: theme.accentStrong, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', gap: space.s }}
+          >
+            <Ionicons name="chevron-back" size={22} color={theme.onAccent} />
+            <Text style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.onAccent }}>{t('tpolish.pdf.back')}</Text>
+          </PressableScale>
+          <PressableScale
+            accessibilityRole="button"
+            accessibilityLabel={t('tpolish.pdf.share')}
+            accessibilityHint={t('tpolish.pdf.shareHint', { name: shown.name })}
+            onPress={openSystem}
+            style={{ width: TOUCH + 12, minHeight: TOUCH + 12, borderRadius: radius.m, borderWidth: 1, borderColor: theme.line, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Ionicons name="share-outline" size={22} color={theme.ink} />
+          </PressableScale>
+        </View>
+      </View>
     );
   }
 

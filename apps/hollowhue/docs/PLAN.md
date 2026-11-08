@@ -8,9 +8,12 @@ inspired it ("Infinity Coloring Book") has a single theme.
 
 ## How the zoom works
 - A scene is a tree of **levels**. Each level is line art in its own 1200 x 900 space, placed inside a **portal**
-  rectangle (or ellipse) of its parent. The parent draws a simple stand-in there; once the child fills 15% of the
-  screen its real detail is drawn on top, and once it covers the screen the parent stops being drawn.
-- Regions are SVG paths; the same path draws the art and drives tap hit-testing (even-odd, topmost wins).
+  rectangle (or ellipse) of its parent. The child is drawn in place from when it is 10 px wide; each shape fades in
+  as it grows from 1.5 to 5 px on screen, so detail emerges continuously. Once the child covers the screen the
+  parent stops being drawn (invisible, since it is fully covered).
+- Regions are closed SVG paths for colour fills and hit-testing (even-odd, topmost wins). The illustrated
+  catalogue retains the original smooth ink curves above those regions; generated fill contours do not
+  add a second outline.
 - `from` links let a region show another level's colour until coloured itself (zoom into a wall you painted
   and it is still that colour; stand-ins match the detail).
 - Freehand strokes are stored in the level they were drawn in (level units), optionally clipped to the shape they
@@ -24,13 +27,39 @@ inspired it ("Infinity Coloring Book") has a single theme.
   flight to the next hidden level, "You found" toasts, first-launch language line, Settings.
 - No ads, no tracking, no account, no purchases.
 
-## Phase 2 (next)
+## Phase 2 (ongoing)
 - Pinch feel on device (Jared's TestFlight notes), Apple Pencil only drawing option (finger pans), pressure.
 - More scenes with depth: library (shelf -> book -> illustration in the book), forest (tree -> owl hollow -> owl),
   ocean reef, dragon's hoard, a café counter to a latte-art level, jungle with a hidden nest.
-- Custom colour picker + recent colours, gradient fills, texture brushes (crayon, watercolour).
+- Custom colour picker + recent colours shipped 4 November. Gradient fills and texture brushes remain later work.
 - Export / share a finished picture (whole scene or the current zoom), time-lapse replay.
 - Scene versioning: region ids are stable per scene `version`; restore trims ids that no longer exist.
+
+## Artwork and depth correction (5 November)
+
+- Jared approves the new picture quality and confirms that six zooms means newly illustrated detail
+  inside each individual artwork. The 42 approved pictures remain separate Single artworks.
+- Six new Zoom editions each contain six discoveries within their own scene: Cottage, Camellia & Bee,
+  Barn Owl, Coral Turtle, Gentle Daisy, Rose Engraving. Mega Rose Engraving contains twenty inner tiers
+  of the same engraving. The cottage leads through its window into the book, its bee illustration,
+  wing, pollen and pore. This uses 47 new illustrated details, with shared bee microtexture plates.
+- Single artwork, Zoom artworks, Mega Zoom and My colouring are distinct collections; topic and
+  difficulty filters compose with them. Singles have precision zoom without discovery controls.
+- The previous seven chained illustration scenes and six original authored scenes retain exact
+  geometry, region IDs and saves. Saved chains remain in My colouring. On first use only, paint from the latest
+  saved source-scene timestamp can be copied into a new Single edition; existing Single saves are never overwritten.
+- Canonical source/portals are in `scripts/art/nested-source.json`; full built-in image generation
+  prompts/references are in `nested-generation.json`. Rebuild with `scripts/build-art-library.py`.
+  Art decoding is per illustration with a bounded cache, and unpainted white cells avoid extra SVG views.
+- 159 offline checks and strict type checks pass, including all six/twenty stops, landscape framing,
+  deep colour persistence, and hashes of all approved/released geometry. Native iPhone checks pass
+  across two reviewed captures of identical compiled app source: all six regular journeys, Mega
+  twenty, deep paint/drawing and restart persistence. Receipts and qualified frames are in
+  `docs/qa-nested-20261105`.
+- PR234 is merged as `df0c24a7`. Production OTA `9dd44b9b` is live and its actual downloaded bundle
+  hash verifies. TestFlight **0.1.0 (5)** is COMPLETE / VALID / IN_BETA_TESTING with no upload errors
+  or warnings, verified by probe `41919622598`. Update through TestFlight, then open
+  **Zoom artworks → Rose Cottage: Inside**. Existing installations can also apply the OTA.
 
 ## Money (later, not in phase 1)
 Same factory model: free core forever, no ads, no tracking.

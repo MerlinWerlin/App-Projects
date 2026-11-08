@@ -1,19 +1,18 @@
 {
   "locale": "en-AU",
-  "version": "1.0",
+  "version": "1.0.4",
   "name": "Couch: TV Remote",
   "subtitle": "Universal remote for smart TVs",
-  "promotionalText": "Every button free, forever. No ads, no trials, no weekly subscription.",
+  "promotionalText": "Try every button free for 7 days, then unlock the remote and casting once for A$3.99. No ads, no subscription.",
   "keywords": "control,streaming,wifi,keyboard,touchpad,apps,television,stick,box,player,channel,volume,power",
-  "description": "Couch is a universal remote for the TVs and streaming players in your home. Every button is free, forever: power, d-pad, touchpad, keyboard, volume, channels, app launcher and as many TVs as you own. No ads, no trials, no weekly plans, no tracking.\n\n• Works over your Wi-Fi with TVs and players running Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta.\n• Finds your TV on your Wi-Fi in seconds, or enter its address.\n• Fast: a persistent connection, auto-reconnect when you come back to the app, and Wake-on-LAN for TVs that support it.\n• Type with your phone's keyboard, swipe on the touchpad, open your TV's apps in one tap.\n• Switch between TVs in one tap.\n• Simple mode: big power, volume, channel and home buttons for kids and grandparents.\n• Built for accessibility: large targets, haptics and VoiceOver labels, with buttons that grow with your text size up to the largest accessibility sizes.\n• Try it first with demo TVs, no TV needed.\n• Private: no account and no analytics. Your commands go straight from your phone to your TV on your home network.\n\nCouch is an independent app and is not affiliated with, endorsed by or sponsored by Roku, Samsung, LG, Google, Amazon, Vizio, Sony or Philips. All trademarks belong to their owners.",
-  "whatsNew": "Welcome to Couch! A free universal TV remote: every button free, no ads, no subscription.",
+  "description": "Couch is a universal remote for the TVs and streaming players in your home: power, d-pad, touchpad, keyboard, volume, channels, app launcher, casting and as many TVs as you own.\n\nTry everything free for 7 days. Then one purchase, Couch Plus (A$3.99), unlocks the remote and casting for good. No ads, no subscription, no weekly plans, no tracking.\n\n• Works over your Wi-Fi with TVs and players running Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta.\n• Finds your TV on your Wi-Fi in seconds, or enter its address.\n• Fast: a persistent connection, auto-reconnect when you come back to the app, and Wake-on-LAN for TVs that support it.\n• Type with your phone's keyboard, swipe on the touchpad, open your TV's apps in one tap.\n• Switch between TVs in one tap.\n• Simple mode: big power, volume, channel and home buttons for kids and grandparents.\n• Built for accessibility: large targets, haptics and VoiceOver labels, with buttons that grow with your text size up to the largest accessibility sizes.\n• Private: no account and no analytics. Your commands go straight from your phone to your TV on your home network.\n\nCouch is an independent app and is not affiliated with, endorsed by or sponsored by Roku, Samsung, LG, Google, Amazon, Vizio, Sony or Philips. All trademarks belong to their owners.",
+  "whatsNew": "Couch now opens straight to adding your TV. Try the full remote and casting free for 7 days, then unlock it once with Couch Plus. If you already had Couch, everything stays free for you.",
   "primaryCategory": "UTILITIES",
   "secondaryCategory": "ENTERTAINMENT",
   "copyright": "2026 Jared Bradley",
   "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/couch/privacy.html",
   "supportUrl": "https://merlinwerlin.github.io/App-Projects/couch/support.html",
   "marketingUrl": "https://merlinwerlin.github.io/App-Projects/couch/",
-  "_ownerToDo": "Couch Plus price set by the owner 25 Oct 2026: A$3.99 one-time (non-consumable), Australia as the base storefront, other countries from Apple's price tiers. The purchase provider is still a stub, so no in-app purchase is listed in 1.0. Add inAppPurchases here when StoreKit is wired (T100).",
   "ageRating": "none",
   "screenshots": {
     "APP_IPHONE_67": "apps/couch/store/jpg/ios"
@@ -21,9 +20,42 @@
   "availability": "all",
   "attachBuild": "latest",
   "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
-  "reviewNotes": "No account or login. Couch is a Wi-Fi TV remote. To review without a TV: open the TVs tab and turn on Demo mode; demo TVs work with every control and nothing is sent to a real TV. With a real TV, the phone and TV must be on the same Wi-Fi; Couch asks for Local Network access to find it, and some TVs show an Allow prompt or a code on the TV. Every remote control is free and there are no in-app purchases in this version. Platform names in the description are used only to describe compatibility; Couch is not affiliated with those companies. App icons on the Apps tab come from the TV itself or from the public iTunes Search API. No data is collected.\n\nApp Review information:\n1. Screen recording: supplied with the reply (physical iPhone, latest iOS).\n2. Purpose and audience: a free universal remote for people who lose their TV remote or want one remote for several smart TVs. It controls the TV over the home Wi-Fi.\n3. Setup: no login needed. Without a TV, turn on Demo mode in the TVs tab. With a TV, phone and TV on the same Wi-Fi; Couch finds it, and some TVs ask to Allow or show a pairing code.\n4. External services: the TV's own local network control interface (direct phone-to-TV on the home network) and the public iTunes Search API for app icons. No server, accounts, analytics, ads, payments or AI.\n5. Regional differences: none; works the same in all regions.\n6. Regulated industry / third-party material: not applicable; TV platform names are used only to describe compatibility.",
+  "reviewNotes": "No account or login. Couch is a Wi-Fi TV remote. Couch needs a real smart TV or streaming player to control (there is no demo mode). The phone and TV must be on the same Wi-Fi; Couch asks for Local Network access to find it, and some TVs show an Allow prompt or a code on the TV. The remote and casting are unlocked by one non-consumable purchase, Couch Plus (A$3.99), after a 7-day free trial started with the free non-consumable 7-day Trial item (guideline 3.1.1). Adding and finding TVs is always free. Tap any remote button to see the Couch Plus screen with Start 7-day free trial, Buy and Restore purchases. Platform names in the description are used only to describe compatibility; Couch is not affiliated with those companies. The Cast tab can show photos and videos the user picks from their own library on a TV with Chromecast built in or a DLNA TV; the file is served from the phone over the home Wi-Fi only while it is shown, and Couch asks for Photos access only when the user taps to pick. App icons on the Apps tab come from the TV itself or from the public iTunes Search API. No data is collected.\n\nApp Review information:\n1. Screen recording: available on request (physical iPhone, latest iOS).\n2. Purpose and audience: a free universal remote for people who lose their TV remote or want one remote for several smart TVs. It controls the TV over the home Wi-Fi.\n3. Setup: no login needed. Phone and TV on the same Wi-Fi; Couch finds it, and some TVs ask to Allow or show a pairing code.\n4. External services: the TV's own local network control interface (direct phone-to-TV on the home network) and the public iTunes Search API for app icons. No server, accounts, analytics, ads or AI. Payments are Apple in-app purchases only.\n5. Regional differences: none; works the same in all regions.\n6. Regulated industry / third-party material: not applicable; TV platform names are used only to describe compatibility.",
   "dropLocales": [
     "en-US"
   ],
-  "primaryLocale": "en-AU"
+  "primaryLocale": "en-AU",
+  "reviewContactFromApp": "linework",
+  "price": "free",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.couch.plus",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Couch Plus",
+      "displayName": "Couch Plus",
+      "description": "Unlocks the remote and casting for good",
+      "reviewNote": "Non-consumable unlock of the TV remote controls and casting. Adding and finding TVs stays free. Test: tap any remote button, then Buy on the Couch Plus screen.",
+      "familySharable": true,
+      "price": {
+        "territory": "AUS",
+        "amount": "3.99"
+      },
+      "reviewScreenshot": "apps/couch/store/iap/plus.jpg",
+      "availability": "all"
+    },
+    {
+      "productId": "com.jared797.couch.trial7",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "7-day Trial",
+      "displayName": "7-day Trial",
+      "description": "Try the remote and casting free for 7 days",
+      "reviewNote": "Free non-consumable that starts the 7-day trial of Couch Plus (guideline 3.1.1). Tap any remote button, then Start 7-day free trial.",
+      "price": {
+        "territory": "AUS",
+        "amount": "0"
+      },
+      "reviewScreenshot": "apps/couch/store/iap/plus.jpg",
+      "availability": "all"
+    }
+  ]
 }

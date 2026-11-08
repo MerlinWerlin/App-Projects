@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Glaze store shot</title>
+<!--
+  T267: one App Store screenshot. render.mjs sets window.DATA, calls renderShot() and captures the
+  viewport (exact pixel size, JPEG, no alpha). The stage is laid out at 1320 px wide and scaled to
+  the target width; the phone screen inside is laid out in iPhone points (440 x 956) like the app.
+  Colours and type follow src/core/designV2.ts (lightV2, typeV2); copy is the app's English strings.
+-->
+<style>
+  :root {
+    --bg: #F4F1F7; --surface: #FFFFFF; --fill: #ECE7F1; --separator: #E2DBE8;
+    --ink: #1D1A21; --ink2: #5E5766; --ink3: #8A8292; --tint: #A2337F; --tintSoft: #FBE1F1; --onTintSoft: #7A1F5E;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; overflow: hidden; }
+  body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; color: var(--ink); }
+  #stage { position: absolute; left: 0; top: 0; width: 1320px; transform-origin: 0 0; overflow: hidden; }
+  .caption { position: absolute; left: 90px; right: 90px; top: 0; height: 640px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+  .caption h1 { font: 800 104px/1.06 'Inter Display', 'Inter', sans-serif; letter-spacing: -2.5px; color: #1D1A21; text-wrap: balance; }
+  .caption h1.long { font-size: 88px; }
+  .caption .accent { color: #A2337F; }
+  .caption p.accent { font: 800 76px/1.1 'Inter Display', 'Inter', sans-serif; letter-spacing: -1.6px; margin-top: 26px; text-wrap: balance; }
+  .phone { position: absolute; left: 160px; top: 664px; width: 1000px; height: 2126px; border-radius: 150px; background: #17141B; padding: 20px;
+           box-shadow: 0 40px 90px rgba(60, 20, 70, .28), 0 8px 24px rgba(60, 20, 70, .18), inset 0 0 0 3px #2C2830; }
+  .screenwrap { width: 960px; height: 2086px; border-radius: 131px; overflow: hidden; position: relative; background: #000; }
+  .screen { position: absolute; left: 0; top: 0; width: 440px; height: 956px; transform: scale(2.181818); transform-origin: 0 0; overflow: hidden; }
+  .island { position: absolute; top: 11px; left: 50%; width: 124px; height: 36px; margin-left: -62px; border-radius: 18px; background: #000; z-index: 50; }
+  .status { position: absolute; top: 0; left: 0; right: 0; height: 54px; display: flex; align-items: center; justify-content: space-between; padding: 4px 34px 0 50px; font: 600 17px Inter; z-index: 40; }
+  .status .r { display: flex; gap: 7px; align-items: center; }
+  .wall { position: absolute; inset: 0; background-size: cover; background-position: center; }
+
+  /* Home Screen */
+  .grid { position: absolute; left: 0; right: 0; }
+  .app { position: absolute; width: 80px; display: flex; flex-direction: column; align-items: center; }
+  .app .lbl { font: 500 12px/16px Inter; margin-top: 5px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.35); white-space: nowrap; }
+  .widget { position: absolute; border-radius: 24px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+  .widget .art { position: absolute; inset: 0; background-repeat: no-repeat; background-position: center; background-size: contain; }
+  .widget .rim { position: absolute; inset: 0; border-radius: 24px; box-shadow: inset 0 0 0 0.5px rgba(255,255,255,.28); }
+  .dock { position: absolute; left: 14px; right: 14px; bottom: 14px; height: 96px; border-radius: 34px; backdrop-filter: blur(18px); background: rgba(255,255,255,.2); }
+  .search { position: absolute; left: 50%; bottom: 124px; transform: translateX(-50%); padding: 5px 14px; border-radius: 16px; font: 600 13px Inter; color: #fff; background: rgba(255,255,255,.22); backdrop-filter: blur(14px); display: flex; gap: 6px; align-items: center; }
+
+  /* App chrome */
+  .appbg { position: absolute; inset: 0; background: var(--bg); }
+  .navbar { position: absolute; left: 0; right: 0; top: 54px; height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 12px; z-index: 30; }
+  .navtitle { position: absolute; left: 0; right: 0; text-align: center; font: 600 17px Inter; letter-spacing: -0.41px; }
+  .back { display: flex; align-items: center; gap: 2px; color: var(--tint); font: 400 17px Inter; letter-spacing: -0.41px; }
+  .content { position: absolute; left: 0; right: 0; top: 98px; bottom: 0; }
+  .largeTitle { font: 800 34px/41px Inter; letter-spacing: 0.37px; }
+  .subtitle { font: 400 15px/20px Inter; color: var(--ink2); margin-top: 2px; }
+  .eyebrow { font: 600 13px/18px Inter; letter-spacing: 0.8px; text-transform: uppercase; color: var(--ink2); }
+  .title2 { font: 700 22px/28px Inter; letter-spacing: 0.35px; }
+  .title3 { font: 600 20px/25px Inter; letter-spacing: 0.38px; }
+  .headline { font: 600 17px/22px Inter; letter-spacing: -0.41px; }
+  .body { font: 400 17px/22px Inter; letter-spacing: -0.41px; }
+  .callout { font: 400 16px/21px Inter; letter-spacing: -0.32px; }
+  .subhead { font: 400 15px/20px Inter; letter-spacing: -0.24px; }
+  .foot { font: 400 13px/18px Inter; letter-spacing: -0.08px; color: var(--ink2); }
+  .cap1 { font: 400 12px/16px Inter; }
+  .card { background: var(--surface); border-radius: 22px; box-shadow: 0 1px 2px rgba(40,20,50,.06), 0 6px 18px rgba(40,20,50,.07); }
+  .pills { display: flex; gap: 8px; }
+  .pill { padding: 0 16px; height: 36px; border-radius: 18px; display: inline-flex; align-items: center; gap: 6px; font: 600 15px Inter; letter-spacing: -0.24px; background: var(--fill); color: var(--ink); white-space: nowrap; }
+  .pill.on { background: var(--ink); color: #fff; }
+  .pill.soft { background: var(--tintSoft); color: var(--onTintSoft); }
+  .cta { height: 52px; border-radius: 26px; background: var(--tint); color: #fff; font: 600 17px Inter; display: flex; align-items: center; justify-content: center; gap: 8px; letter-spacing: -0.41px; }
+  .searchField { height: 44px; border-radius: 22px; background: var(--surface); display: flex; align-items: center; gap: 8px; padding: 0 16px; color: var(--ink3); box-shadow: 0 1px 2px rgba(40,20,50,.05); }
+  .tabbar { position: absolute; left: 0; right: 0; bottom: 0; height: 92px; background: rgba(250,248,252,.96); backdrop-filter: blur(20px); border-top: 0.5px solid var(--separator); display: flex; justify-content: space-around; padding: 8px 14px 0; z-index: 30; }
+  .tab { display: flex; flex-direction: column; align-items: center; gap: 3px; font: 500 10.5px Inter; color: var(--ink3); width: 84px; }
+  .tab .bub { width: 56px; height: 30px; border-radius: 15px; display: flex; align-items: center; justify-content: center; }
+  .tab.on { color: var(--tint); }
+  .tab.on .bub { background: var(--tintSoft); }
+  .seg { display: flex; background: var(--fill); border-radius: 18px; padding: 3px; }
+  .seg div { flex: 1; text-align: center; height: 32px; line-height: 32px; border-radius: 15px; font: 600 14px Inter; color: var(--ink2); }
+  .seg div.on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(40,20,50,.12); }
+  .glassbar { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px 16px 34px; background: rgba(250,248,252,.96); backdrop-filter: blur(20px); border-top: 0.5px solid var(--separator); z-index: 30; }
+  .num { width: 30px; height: 30px; border-radius: 15px; background: var(--fill); color: var(--ink2); display: flex; align-items: center; justify-content: center; font: 700 15px Inter; flex: none; }
+  .num.cur { background: var(--tint); color: #fff; }
+  .lic { stroke-linecap: round; stroke-linejoin: round; fill: none; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+'use strict';
+// Feather glyphs (MIT, the set the app uses for icons and chrome) plus Glaze's in-house glyphs
+// (src/render/inhouse.ts, injected by render.mjs as DATA.inhouse). 24 x 24 grid, stroke 2.
+const FEATHER = {
+  mail: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>',
+  image: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>',
+  music: '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  'file-text': '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>',
+  cloud: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>',
+  camera: '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',
+  calendar: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  map: '<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>',
+  'message-circle': '<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>',
+  phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  sliders: '<line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/>',
+  compass: '<circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>',
+  'book-open': '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+  'shopping-bag': '<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>',
+  heart: '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+  video: '<polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>',
+  headphones: '<path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>',
+  'check-square': '<polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+  'credit-card': '<rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>',
+  activity: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
+  search: '<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+  'chevron-left': '<polyline points="15 18 9 12 15 6"/>',
+  'chevron-right': '<polyline points="9 18 15 12 9 6"/>',
+  layers: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
+  layout: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>',
+  grid: '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>',
+  'help-circle': '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+  settings: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+  check: '<polyline points="20 6 9 17 4 12"/>',
+  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
+  upload: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
+  plus: '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
+  edit: '<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>',
+};
+// Generic app labels only (never a brand): the glyph each one gets.
+const APPS = {
+  Mail: 'mail', Photos: 'image', Music: 'music', Notes: 'file-text', Weather: 'cloud', Camera: 'camera',
+  Calendar: 'calendar', Clock: 'clock', Maps: 'map', Messages: 'message-circle', Phone: 'phone', Settings: 'sliders',
+  Browser: 'compass', Books: 'book-open', Shop: 'shopping-bag', Health: 'heart', Videos: 'video', Podcasts: 'headphones',
+  Reminders: 'check-square', Wallet: 'credit-card', Fitness: 'activity', Games: 'game-controller', Pets: 'paw', Food: 'pizza',
+};
+
+const D = () => window.DATA;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+function chrome(name, size, colour, sw = 2) {
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" class="lic" stroke="${colour}" stroke-width="${sw}">${FEATHER[name] || ''}</svg>`;
+}
+function glyphMarkup(name, colour) {
+  if (FEATHER[name]) return `<g class="lic" stroke="${colour}" stroke-width="2">${FEATHER[name]}</g>`;
+  const g = D().inhouse[name];
+  if (!g) return '';
+  const strokes = g.strokes.map((d) => `<path d="${d}"/>`).join('');
+  const dots = (g.dots || []).map((d) => `<path d="${d}" fill="${colour}" stroke="none"/>`).join('');
+  return `<g class="lic" stroke="${colour}" stroke-width="2">${strokes}</g>${dots}`;
+}
+// Seeded random (mulberry32), so a theme's texture is the same every render.
+function rng(seed) {
+  let a = seed >>> 0;
+  return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+let uid = 0;
+/**
+ * One icon as IconCanvas draws it, in a 100-unit box: shape path from src/core/shapes.ts, background
+ * (gradient from iconLook.themedTextureSpec, or a solid studio colour), texture marks (stars / grain),
+ * glyph centred at glyphScale.
+ */
+function iconSvg(spec, glyph, size, seedStr) {
+  const id = 'i' + (uid++);
+  const path = spec.shape === 'circle' ? D().shapes.circle : D().shapes.squircle;
+  let fill, defs = '';
+  if (spec.bg.kind === 'gradient') {
+    const v = spec.bg.vec;
+    defs += `<linearGradient id="${id}g" x1="${v.x1}" y1="${v.y1}" x2="${v.x2}" y2="${v.y2}"><stop offset="0" stop-color="${spec.bg.from}"/><stop offset="1" stop-color="${spec.bg.to}"/></linearGradient>`;
+    fill = `url(#${id}g)`;
+  } else fill = spec.bg.colour;
+  let marks = '';
+  if (spec.texture && spec.texture !== 'none') {
+    let s = 0; for (const ch of seedStr) s = (s * 31 + ch.charCodeAt(0)) >>> 0;
+    const r = rng(s ^ (spec.seed || 0));
+    if (spec.texture === 'stars') {
+      for (let i = 0; i < 16; i++) { const rad = 0.5 + r() * 1.4; marks += `<circle cx="${(r() * 100).toFixed(1)}" cy="${(r() * 100).toFixed(1)}" r="${rad.toFixed(2)}" fill="${spec.mark}" opacity="${(0.35 + r() * 0.5).toFixed(2)}"/>`; }
+    } else {
+      for (let i = 0; i < 90; i++) marks += `<circle cx="${(r() * 100).toFixed(1)}" cy="${(r() * 100).toFixed(1)}" r="${(0.35 + r() * 0.5).toFixed(2)}" fill="${spec.mark}" opacity="${(0.08 + r() * 0.14).toFixed(2)}"/>`;
+    }
+  }
+  const gs = (spec.glyphScale || 0.46) * 100;
+  const off = (100 - gs) / 2;
+  const k = gs / 24;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 100 100" style="display:block;filter:drop-shadow(0 1px 2px rgba(0,0,0,.18))"><defs>${defs}<clipPath id="${id}c"><path d="${path}"/></clipPath></defs>` +
+    `<g clip-path="url(#${id}c)"><path d="${path}" fill="${fill}"/>${marks}<rect width="100" height="60" fill="#fff" opacity=".06"/></g>` +
+    `<g transform="translate(${off} ${off}) scale(${k})">${glyphMarkup(glyph, spec.glyph)}</g></svg>`;
+}
+function app(theme, label, x, y, size = 64, labelColour = '#fff', spec) {
+  const s = spec || theme.icon;
+  return `<div class="app" style="left:${x - (80 - size) / 2}px;top:${y}px"><div>${iconSvg(s, APPS[label], size, theme.id + label)}</div>` +
+    (labelColour ? `<div class="lbl" style="color:${labelColour}${labelColour !== '#fff' ? ';text-shadow:none' : ''}">${esc(label)}</div>` : '') + `</div>`;
+}
+function statusBar(dark) {
+  const c = dark ? '#1D1A21' : '#fff';
+  return `<div class="island"></div><div class="status" style="color:${c}"><span>9:41</span><span class="r">` +
+    `<svg width="19" height="12" viewBox="0 0 19 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="${c}"/><rect x="5" y="5.5" width="3" height="6.5" rx="1" fill="${c}"/><rect x="10" y="3" width="3" height="9" rx="1" fill="${c}"/><rect x="15" y="0" width="3" height="12" rx="1" fill="${c}"/></svg>` +
+    `<svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.5 11.5l2.4-2.6a3.4 3.4 0 0 0-4.8 0z" fill="${c}"/><path d="M3.9 6.9a6.5 6.5 0 0 1 9.2 0l1.4-1.5a8.6 8.6 0 0 0-12 0z" fill="${c}"/><path d="M1.4 4.2a10 10 0 0 1 14.2 0L17 2.7a12.1 12.1 0 0 0-17 0z" fill="${c}"/></svg>` +
+    `<svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="${c}" stroke-opacity=".4"/><rect x="2" y="2" width="17" height="9" rx="2.4" fill="${c}"/><path d="M25 4.5v4a2 2 0 0 0 0-4z" fill="${c}" fill-opacity=".45"/></svg></span></div>`;
+}
+// A widget: the theme's widget art over the wallpaper behind it (T251: no blur), like ThemeWidgetArt.
+function widget(theme, size, x, y, inner = '') {
+  const dims = { small: [170, 170], medium: [364, 170], large: [364, 382] }[size];
+  const art = theme.widgets && theme.widgets[size];
+  const bgPos = `background-image:url('${theme.wall}');background-size:440px 956px;background-position:${-x}px ${-y}px;`;
+  return `<div class="widget" style="left:${x}px;top:${y}px;width:${dims[0]}px;height:${dims[1]}px;${theme.wall ? bgPos : `background:${theme.palette.tile}`}">` +
+    `<div style="position:absolute;inset:0;background:rgba(0,0,0,.10)"></div>` +
+    (art && !inner ? `<div class="art" style="background-image:url('${art}');inset:8px"></div>` : '') + inner + `<div class="rim"></div></div>`;
+}
+function clockWidget(theme, x, y) {
+  const p = theme.palette;
+  const inner = `<div style="position:absolute;inset:0;background:${p.tile};opacity:.72"></div>` +
+    `<div style="position:absolute;left:18px;top:16px;right:14px;color:${p.text}">` +
+    `<div style="font:600 13px Inter;letter-spacing:.6px;text-transform:uppercase;color:${p.accent}">Monday</div>` +
+    `<div style="font:800 54px/58px 'Inter Display',Inter;letter-spacing:-1px;margin-top:4px">9:41</div>` +
+    `<div style="font:500 14px Inter;opacity:.85;margin-top:8px">3 November</div></div>`;
+  return widget(theme, 'small', x, y, inner);
+}
+// Home Screen icon grid for a 440-pt screen: 4 columns, 64-pt icons.
+const COLS = [30, 135, 241, 346];
+function homeScreen(theme, layout, search = true) {
+  let h = `<div class="wall" style="${theme.wall ? `background-image:url('${theme.wall}')` : `background:linear-gradient(${theme.wallColours.join(',')})`}"></div>` + statusBar(false);
+  h += layout;
+  if (search) h += `<div class="search">${chrome('search', 12, '#fff', 3)}Search</div>`;
+  h += `<div class="dock"></div>`;
+  ['Phone', 'Messages', 'Browser', 'Music'].forEach((l, i) => { h += app(theme, l, COLS[i] + 8, 862, 64, null); });
+  return h;
+}
+function row(theme, labels, y) { return labels.map((l, i) => app(theme, l, COLS[i] + 8, y)).join(''); }
+
+function screenHome(t) {
+  // Shot 1: a whole look: wallpaper, Glaze icons in the theme, a clock widget and two art widgets.
+  return homeScreen(t,
+    clockWidget(t, 30, 70) + widget(t, 'small', 240, 70) +
+    row(t, ['Mail', 'Photos', 'Camera', 'Calendar'], 262) +
+    row(t, ['Notes', 'Weather', 'Maps', 'Clock'], 362) +
+    widget(t, 'medium', 30, 464) +
+    row(t, ['Books', 'Health', 'Shop', 'Podcasts'], 656));
+}
+function screenWidgets(t) {
+  // Shot 4: small, medium and large widgets of one theme.
+  return homeScreen(t,
+    widget(t, 'large', 30, 70) +
+    clockWidget(t, 30, 474) + widget(t, 'small', 224, 474) +
+    widget(t, 'medium', 30, 666), false);
+}
+function tabBar(active) {
+  const tabs = [['Themes', 'layers'], ['Widgets', 'layout'], ['Icons', 'grid'], ['Wallpapers', 'image']];
+  return `<div class="tabbar">${tabs.map(([l, ic]) => `<div class="tab${l === active ? ' on' : ''}"><div class="bub">${chrome(ic, 22, l === active ? '#A2337F' : '#8A8292')}</div>${l}</div>`).join('')}</div>`;
+}
+function screenThemes() {
+  const d = D();
+  const chips = d.chips.map((c, i) => `<div class="pill${i === 0 ? ' on' : ''}">${esc(c.label)} <span style="opacity:.6;font-weight:500">${c.count}</span></div>`).join('');
+  let rails = '';
+  for (const r of d.rails) {
+    const cards = r.cards.map((c) => `<div style="flex:none;width:170px">` +
+      `<div style="width:170px;height:368px;border-radius:22px;overflow:hidden;background:${c.bg};background-image:url('${c.thumb}');background-size:cover;background-position:center;box-shadow:0 6px 18px rgba(40,20,50,.12)"></div>` +
+      `<div style="display:flex;align-items:flex-start;gap:6px;padding:10px 4px 0"><div style="flex:1;min-width:0"><div class="headline" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(c.name)}</div>` +
+      `<div class="foot" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">${esc(c.mood)}</div></div>${chrome('heart', 20, '#8A8292')}</div></div>`).join('');
+    rails += `<div style="display:flex;align-items:flex-end;padding:30px 16px 12px"><div style="flex:1"><div class="eyebrow">${esc(r.countLabel)}</div><div class="title2">${esc(r.title)}</div></div>` +
+      `<div class="pill soft" style="height:32px;font-size:14px">See all</div></div>` +
+      `<div style="display:flex;gap:16px;padding:0 16px;overflow:hidden">${cards}</div>`;
+  }
+  return `<div class="appbg"></div>${statusBar(true)}` +
+    `<div class="navbar" style="justify-content:flex-end;gap:4px">${chrome('help-circle', 22, '#A2337F')}<span style="width:14px"></span>${chrome('settings', 22, '#A2337F')}<span style="width:6px"></span></div>` +
+    `<div class="content" style="top:96px"><div style="padding:0 16px"><div class="largeTitle">Themes</div></div>` +
+    `<div style="padding:14px 16px 0;display:flex;flex-direction:column;gap:14px">` +
+    `<div class="pills"><div class="pill on">All</div><div class="pill">Liked</div></div>` +
+    `<div class="searchField">${chrome('search', 18, '#8A8292')}<span class="body" style="color:#8A8292">Search themes, colours, moods</span></div>` +
+    `<div class="pills" style="overflow:hidden;margin-right:-16px">${chips}</div></div>${rails}</div>` + tabBar('Themes');
+}
+function sectionHead(eyebrow, title, extra = '') {
+  return `<div style="padding:28px 16px 12px"><div class="eyebrow">${esc(eyebrow)}</div><div class="title2">${esc(title)}</div>${extra}</div>`;
+}
+function screenTheme(t) {
+  // Shot 3: the theme page scrolled to its Icons block (hero preview above, Apply pinned below).
+  const apps = ['Mail', 'Photos', 'Music', 'Notes', 'Weather', 'Camera', 'Calendar', 'Maps', 'Messages', 'Clock', 'Books', 'Health', 'Shop', 'Videos', 'Reminders', 'Fitness'];
+  let grid = '';
+  apps.forEach((l, i) => { grid += app(t, l, 22 + (i % 4) * 92, 20 + Math.floor(i / 4) * 100, 62); });
+  const looks = ['Themed', 'Tinted', 'Glass', 'Dark'].map((l, i) => `<div class="${i === 0 ? 'on' : ''}">${l}</div>`).join('');
+  return `<div class="appbg"></div>${statusBar(true)}` +
+    `<div class="navbar"><span class="back">${chrome('chevron-left', 24, '#A2337F', 2.4)}Themes</span><span class="navtitle">${esc(t.name)}</span>${chrome('heart', 22, '#A2337F')}</div>` +
+    `<div class="content">` +
+    `<div style="margin:6px 16px 0;height:216px;border-radius:24px;overflow:hidden;position:relative;background:#E9E4EF">` +
+    `<div style="position:absolute;left:50%;top:14px;width:150px;margin-left:-75px;height:326px;border-radius:26px;border:5px solid #1D1A21;overflow:hidden;background-image:url('${t.wall}');background-size:cover">` +
+    ['Mail', 'Photos', 'Music', 'Notes', 'Weather', 'Camera', 'Calendar', 'Maps'].map((l, i) => `<div style="position:absolute;left:${12 + (i % 4) * 32}px;top:${28 + Math.floor(i / 4) * 38}px">${iconSvg(t.icon, APPS[l], 24, t.id + l)}</div>`).join('') +
+    `</div></div>` +
+    `<div style="padding:12px 16px 0"><div class="seg" style="width:260px;margin:0 auto"><div class="on">Home Screen</div><div>Lock Screen</div></div></div>` +
+    sectionHead('Icons', 'Shape and your apps') +
+    `<div style="padding:0 16px"><div class="foot" style="margin-bottom:8px;font-weight:600;color:#1D1A21">Icon style</div><div class="seg">${looks}</div>` +
+    `<div class="foot" style="margin-top:8px">The theme's texture behind each icon</div></div>` +
+    `<div style="margin:16px 16px 0;height:420px;border-radius:24px;overflow:hidden;position:relative;background-image:url('${t.wall}');background-size:cover;background-position:center 30%">${grid}</div>` +
+    `</div>` +
+    `<div class="glassbar"><div class="cta">Apply this look</div><div style="text-align:center;margin-top:10px;font:600 15px Inter;color:#A2337F">Choose icons</div></div>`;
+}
+function screenInstall(t) {
+  // Shot 5: app/install.tsx: your icon set, the quick way (one profile), then the guided steps.
+  const set = ['Mail', 'Photos', 'Music', 'Notes', 'Weather', 'Camera'];
+  const strip = set.map((l) => `<div>${iconSvg(t.icon, APPS[l], 46, t.id + l)}</div>`).join('') +
+    `<div style="width:46px;height:46px;border-radius:12px;background:#ECE7F1;display:flex;align-items:center;justify-content:center;font:600 15px Inter;color:#5E5766">+6</div>`;
+  const steps = [
+    ['Install in Safari', 'Safari opens the Glaze page and may ask to download the profile straight away. If it doesn’t, tap Install.'],
+    ['Allow, then Close', ''], ['Open Settings', ''], ['View the profile', ''], ['Install the profile', ''], ['Your icons appear', ''],
+  ];
+  const stepHtml = steps.map(([title, body], i) => `<div style="display:flex;gap:14px;padding:12px 16px;${i ? 'border-top:0.5px solid #E2DBE8' : ''}"><div class="num${i === 0 ? ' cur' : ''}">${i + 1}</div>` +
+    `<div style="flex:1;padding-top:4px"><div class="headline">${esc(title)}</div>${body ? `<div class="subhead" style="color:#5E5766;margin-top:4px">${esc(body)}</div>` : ''}</div>` +
+    (i === 0 ? '' : chrome('chevron-right', 18, '#8A8292')) + `</div>`).join('');
+  return `<div class="appbg"></div>${statusBar(true)}` +
+    `<div class="navbar"><span class="back">${chrome('chevron-left', 24, '#A2337F', 2.4)}Icons</span><span class="navtitle">Install icons</span><span></span></div>` +
+    `<div class="content">` +
+    `<div style="padding:10px 16px 0"><div class="eyebrow">Your icon set</div><div class="title2">12 icons via one profile</div>` +
+    `<div style="display:flex;gap:10px;margin-top:14px">${strip}</div>` +
+    `<div class="foot" style="margin-top:10px">Every app in your set can go in one profile.</div></div>` +
+    `<div class="card" style="margin:22px 16px 0;padding:18px 18px 18px">` +
+    `<div class="eyebrow" style="color:#A2337F">The quick way</div><div class="title3" style="margin-top:2px">Install all at once</div>` +
+    `<div class="subhead" style="color:#5E5766;margin-top:6px">One profile adds 12 icons at once, through Safari, then Settings.</div>` +
+    `<div class="cta" style="margin-top:16px">${chrome('download', 18, '#fff', 2.4)}Generate profile</div>` +
+    `<div class="foot" style="margin-top:10px;text-align:center">Glaze draws your icons and builds one profile file on this iPhone. Nothing is uploaded.</div></div>` +
+    `<div style="padding:26px 16px 10px"><div class="eyebrow">Then</div><div class="title3">How to install</div></div>` +
+    `<div class="card" style="margin:0 16px;overflow:hidden">${stepHtml}</div>` +
+    `</div>`;
+}
+function screenStudio(t) {
+  // Shot 6: the Icons tab: live preview, your set, and "Style for all icons" (shape, background,
+  // colour, symbol size). Style shown: Circle, Solid, Ocean background, white symbol.
+  const own = { shape: 'circle', bg: { kind: 'solid', colour: '#2D4F8C' }, glyph: '#FFFFFF', texture: 'none', glyphScale: 0.55 };
+  const prevApps = ['Mail', 'Photos', 'Music', 'Notes', 'Weather', 'Camera', 'Games', 'Pets'];
+  const prev = prevApps.map((l, i) => app(t, l, 16 + (i % 4) * 92, 16 + Math.floor(i / 4) * 98, 60, '#3B2A2A', own)).join('');
+  const shapes = [['Squircle', 'squircle'], ['Circle', 'circle'], ['Rounded', 'rounded'], ['Square', 'square']].map(([l, s]) => {
+    const on = s === 'circle';
+    const r = { squircle: 13, circle: 20, rounded: 9, square: 3 }[s];
+    return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 0;border-radius:16px;${on ? 'background:#FBE1F1;box-shadow:inset 0 0 0 2px #A2337F' : 'background:#ECE7F1'}">` +
+      `<div style="width:40px;height:40px;border-radius:${r}px;background:#2D4F8C"></div><div style="font:600 12px Inter;color:${on ? '#7A1F5E' : '#5E5766'}">${l}</div></div>`;
+  }).join('');
+  const pal = d => d.map((h) => `<div style="width:30px;height:30px;border-radius:15px;background:${h};${h === '#2D4F8C' ? 'box-shadow:0 0 0 2px #fff,0 0 0 4px #A2337F' : 'box-shadow:inset 0 0 0 0.5px rgba(0,0,0,.15)'}"></div>`).join('');
+  return `<div class="appbg"></div>${statusBar(true)}` +
+    `<div class="navbar" style="justify-content:flex-end">${chrome('help-circle', 22, '#A2337F')}<span style="width:6px"></span></div>` +
+    `<div class="content" style="top:96px"><div style="padding:0 16px"><div class="largeTitle">Icons</div></div>` +
+    `<div style="padding:16px 16px 8px"><div class="eyebrow">Live preview</div></div>` +
+    `<div style="margin:0 16px;height:220px;border-radius:24px;overflow:hidden;position:relative;${t.wall ? `background-image:url('${t.wall}');background-size:cover;background-position:center 20%` : `background:${t.palette.bg}`}">${prev}</div>` +
+    `<div style="padding:24px 16px 12px"><div class="eyebrow">One look</div><div class="title2">Style for all icons</div></div>` +
+    `<div class="card" style="margin:0 16px;padding:16px">` +
+    `<div class="foot" style="font-weight:600;color:#1D1A21;margin-bottom:8px">Shape</div><div style="display:flex;gap:8px">${shapes}</div>` +
+    `<div class="foot" style="font-weight:600;color:#1D1A21;margin:16px 0 8px">Background</div><div class="seg"><div class="on">Solid</div><div>Gradient</div><div>Glass</div></div>` +
+    `<div class="foot" style="font-weight:600;color:#1D1A21;margin:16px 0 10px">Background colour</div><div style="display:flex;gap:9px;flex-wrap:wrap">${pal(['#7A2E6B', '#C4573E', '#E0794F', '#E3A72F', '#7E9C7A', '#2C5A43', '#1F7A80', '#2D4F8C'])}</div>` +
+    `<div class="foot" style="font-weight:600;color:#1D1A21;margin:16px 0 8px">Symbol size</div><div class="seg"><div>Small</div><div class="on">Medium</div><div>Large</div></div>` +
+    `</div>` +
+    `` +
+    `</div>` + tabBar('Icons');
+}
+
+window.renderShot = function renderShot() {
+  const d = D();
+  const shot = d.shot;
+  const scale = d.size.width / 1320;
+  const stageH = d.size.height / scale;
+  const t = shot.theme ? d.themes[shot.theme] : null;
+  const screens = { home: screenHome, widgets: screenWidgets, themes: screenThemes, theme: screenTheme, install: screenInstall, studio: screenStudio };
+  const title = shot.title.replace('{themeCount}', String(d.themeCount));
+  const long = title.length > 34;
+  const stage = document.getElementById('stage');
+  stage.style.height = stageH + 'px';
+  stage.style.transform = `scale(${scale})`;
+  stage.style.background = `linear-gradient(170deg, ${shot.bg[0]}, ${shot.bg[1]})`;
+  const accentInline = shot.accent && shot.accent.length < 8;
+  stage.innerHTML =
+    `<div class="caption"><h1 class="${long ? 'long' : ''}">${esc(title)}${accentInline ? ` <span class="accent">${esc(shot.accent)}</span>` : ''}</h1>` +
+    (shot.accent && !accentInline ? `<p class="accent">${esc(shot.accent)}</p>` : '') + `</div>` +
+    `<div class="phone"><div class="screenwrap"><div class="screen">${screens[shot.screen](t)}</div></div></div>`;
+  return { stageH };
+};
+</script>
+</body>
+</html>

@@ -17,7 +17,7 @@ const EXPO_GO_OK = new Set([
   'expo-font', 'expo-constants', 'expo-linking', 'expo-splash-screen', 'expo-status-bar', 'expo-media-library',
   'react-native-safe-area-context', 'react-native-screens', 'expo-localization', 'expo-updates',
   // pure JS
-  'jpeg-js', 'upng-js',
+  'jpeg-js', 'upng-js', '@noble/hashes',
   // web renderer peer that SDK 57 installs alongside react (pure JS, unused on the phone)
   'react-dom', 'react-native-web',
 ]);

@@ -48,10 +48,28 @@ export function accessFromPurchases(list: StorePurchase[], now: number): StoreAc
   const dates = list.filter(p => matches(p, TRIAL_PRODUCT_ID)).map(p => trialStartFromPurchase(p, now)).filter((x): x is number => x !== null);
   return { plus: list.some(p => matches(p, PLUS_PRODUCT_ID)), trialStart: dates.length ? Math.min(...dates) : null };
 }
-export function createPurchaseProvider(module?: IapApi | null, now: () => number = Date.now): PurchaseProvider {
+export function createPurchaseProvider(module?: IapApi | null, now: () => number = Date.now, skus: readonly string[] = SKUS, platform: 'ios' | 'android' = 'ios'): PurchaseProvider {
   const iap = module === undefined ? loadIap() : module;
   let connection: Promise<boolean> | null = null;
   let busy = false;
+  const acknowledged = new Set<string>();
+  const acknowledging = new Map<string, Promise<void>>();
+  const acknowledgeAndroid = (purchase: StorePurchase, recovery = false): Promise<void> => {
+    if (platform !== 'android' || purchase.purchaseState !== 'purchased' || purchase.isAcknowledgedAndroid === true ||
+        (recovery && purchase.isAcknowledgedAndroid !== false) ||
+        !skus.some(sku => matches(purchase, sku))) return Promise.resolve();
+    const key = typeof purchase.purchaseToken === 'string' ? purchase.purchaseToken : String(purchase.productId);
+    if (acknowledged.has(key)) return Promise.resolve();
+    const active = acknowledging.get(key);
+    if (active) return active;
+    const work = Promise.resolve().then(() => bounded(iap!.finishTransaction({ purchase, isConsumable: false }), 5000))
+      .then(() => { acknowledged.add(key); })
+      // Keep verified ownership; retry a failed acknowledgement on a later store read.
+      .catch(() => undefined)
+      .finally(() => { acknowledging.delete(key); });
+    acknowledging.set(key, work);
+    return work;
+  };
   const connect = (): Promise<boolean> => {
     if (!iap) return Promise.resolve(false);
     connection ??= Promise.resolve().then(() => bounded(iap.initConnection(), 20_000)).then(ok => {
@@ -61,7 +79,12 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
     return connection;
   };
   const owned = async (): Promise<StorePurchase[] | null> => {
-    try { const list = await bounded(iap!.getAvailablePurchases(), 10_000); return Array.isArray(list) ? list : null; } catch { return null; }
+    try {
+      const list = await bounded(iap!.getAvailablePurchases(), 10_000);
+      if (!Array.isArray(list)) return null;
+      await Promise.all(list.map(purchase => acknowledgeAndroid(purchase, true)));
+      return list;
+    } catch { return null; }
   };
   const exclusive = async (action: () => Promise<PurchaseResult>): Promise<PurchaseResult> => {
     if (busy) return failure('E_PURCHASE_IN_PROGRESS');
@@ -75,7 +98,8 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
       const access = accessFromPurchases(prior, now());
       return sku === TRIAL_PRODUCT_ID && access.trialStart === null ? failure('E_TRIAL_DATE') : { ok: true, access };
     }
-    const products = await bounded(iap.fetchProducts({ skus: SKUS, type: 'in-app' }), 15_000);
+    if (!skus.includes(sku)) return unavailable();
+    const products = await bounded(iap.fetchProducts({ skus: [...skus], type: 'in-app' }), 15_000);
     if (!products.some(p => p.id === sku || p.productId === sku)) return unavailable();
     return new Promise<PurchaseResult>(resolve => {
       let done = false, pendingRequest = true, polling = false, failureChecks = 0;
@@ -89,12 +113,17 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
         resolve(result);
       };
       const accept = (purchase: StorePurchase) => {
+        if (!done && purchase.productId === sku && purchase.purchaseState === 'pending') {
+          finish({ ok: false, reason: 'pending', message: t('plus.pending') });
+          return;
+        }
         if (done || !matches(purchase, sku)) return;
         const access = accessFromPurchases([...(prior ?? []), purchase], now());
         if (sku === TRIAL_PRODUCT_ID && access.trialStart === null) { error = 'E_TRIAL_DATE'; return; }
         // Settle once before acknowledgement: event and return may be the same transaction.
         finish({ ok: true, access });
-        void Promise.resolve().then(() => iap.finishTransaction({ purchase, isConsumable: false })).catch(() => undefined);
+        if (platform === 'android') void acknowledgeAndroid(purchase);
+        else void Promise.resolve().then(() => iap.finishTransaction({ purchase, isConsumable: false })).catch(() => undefined);
       };
       const onError = (e: unknown) => {
         if (/cancel/i.test(codeOf(e))) return finish({ ok: false, reason: 'cancelled', message: t('plus.cancelled') });
@@ -134,7 +163,7 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
       if (!(await connect()) || !iap) return null;
       try {
         const [products, storefront] = await Promise.all([
-          bounded(iap.fetchProducts({ skus: SKUS, type: 'in-app' }), 15_000),
+          bounded(iap.fetchProducts({ skus: [...skus], type: 'in-app' }), 15_000),
           iap.getStorefront ? bounded(iap.getStorefront(), 5000).catch(() => null) : null,
         ]);
         const product = products.find(p => p.id === PLUS_PRODUCT_ID || p.productId === PLUS_PRODUCT_ID);
@@ -142,7 +171,7 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
         const currency = product.currency?.toUpperCase();
         // TestFlight may return USD metadata while its purchase sheet uses the Australian store.
         // Never infer the purchase country from the phone's language or convert a foreign price.
-        if (['AU', 'AUS'].includes(storefront?.trim().toUpperCase() ?? '') && currency && currency !== 'AUD') return PLUS_AUSTRALIA_PRICE;
+        if (platform === 'ios' && ['AU', 'AUS'].includes(storefront?.trim().toUpperCase() ?? '') && currency && currency !== 'AUD') return PLUS_AUSTRALIA_PRICE;
         if (currency === 'AUD') return product.displayPrice.replace(/^\$/, 'A$');
         return currency && !product.displayPrice.includes(currency) ? `${currency} ${product.displayPrice}` : product.displayPrice;
       } catch { return null; }

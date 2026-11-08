@@ -3,7 +3,7 @@
 // Includes the browse strings (R4 categories, search, "New" badge; R5 seasonal collections)
 // that used to live in src/core/browseStrings.ts.
 export const en = {
-  subtitle: 'Whole looks: wallpaper, icons, widgets and a loop.',
+  subtitle: 'Whole looks: wallpaper, icons and widgets that match.',
   tipsA11y: 'Tips',
   dismissTip: 'Dismiss tip: {title}',
   makeWallpaper: {

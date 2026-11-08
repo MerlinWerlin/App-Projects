@@ -19,6 +19,7 @@ import {
   listPieces,
   migrateLibrary,
   parseLibrary,
+  pinLastApplied,
   removeMany,
   removePiece,
   replaceThemeArt,
@@ -26,9 +27,15 @@ import {
   WIDGET_ART_SOURCES,
   type WidgetArtIndex,
   type WidgetArtPiece,
+  type WidgetArtSize,
   type WidgetArtSourceFile,
 } from '../core/widgetArtLibrary';
 import { commitThemeArt, type PlannedThemePiece } from '../core/themeArtSync';
+import { ALBUM_LIMIT, isAlbumSharedRef } from '../core/widgetAlbum';
+import { DESIGNED_WIDGET_CAPABILITY, parseDesignedWidget } from '../core/designedWidgets';
+import { upgradedDesignedLibrary } from '../core/designedWidgetLibrary';
+import type { Theme } from '../core/themes';
+import { t } from '../i18n';
 
 export type WidgetsReason = 'expo-go' | 'android' | 'not-built' | 'failed' | null;
 export type WidgetsResult = { available: boolean; ok: boolean; reason: WidgetsReason };
@@ -45,9 +52,13 @@ export interface WidgetsAdapter {
   /** Write the active theme to the App Group and reload widget timelines. */
   setTheme(theme: WidgetTheme): Promise<WidgetsResult>;
   designVersion(): Promise<number>;
+  designedBattery(): Promise<number | null>;
+  saveDesignedWidget(piece: Omit<WidgetArtPiece, 'file'>): Promise<WidgetsResult>;
+  upgradeDesignedWidgets(theme: Theme | null): Promise<WidgetsResult>;
   /** Copy a local image (file:// URI) into the App Group for the Photo widget. */
   setPhoto(uri: string): Promise<WidgetsResult>;
   clearPhoto(): Promise<WidgetsResult>;
+  importAlbumPhotos(uris: string[]): Promise<WidgetsResult & { refs: string[] }>;
   /**
    * T59: write a widget-set payload (src/core/widgetStudio.ts `studioPayload`) to App Group key
    * `glaze.widgets.v2` and reload timelines. A build whose bridge predates T59 reports
@@ -123,6 +134,7 @@ export interface WidgetsAdapter {
    * the timelines; a piece already on disk is kept (skipIfPresent). A build whose bridge predates
    * T252: { available: false, reason: 'not-built' }. Never throws.
    */
+  resetArtForRecovery(): Promise<WidgetsResult>;
   composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResult>;
   /**
    * T252: the ONE index write of a theme apply (src/core/themeArtSync.ts commitThemeArt): own photos
@@ -135,7 +147,8 @@ export interface WidgetsAdapter {
 
 /** T252: one piece for widgets.composeArtPiece (local file:// URIs; never uploaded anywhere). */
 export type ComposeArtPieceInput =
-  | { id: string; kind: 'art'; artUri: string; widthPx: number; heightPx: number; colour: string; skipIfPresent?: boolean }
+  | { id: string; kind: 'design'; colour: string }
+  | { id: string; kind: 'art'; artUri: string; widthPx: number; heightPx: number; colour: string; skipIfPresent?: boolean; preserveArtwork?: boolean }
   | { id: string; kind: 'seamless'; wallpaperUri: string; cropPx: { x: number; y: number; w: number; h: number }; heroUri: string; skipIfPresent?: boolean };
 
 /** T221: widgets.artLibrary() result. */
@@ -157,6 +170,7 @@ export type SeamlessInput = {
 
 /** T187: inputs for widgets.setWidgetArt (local file:// URI of the art; never uploaded anywhere). */
 export type WidgetArtInput = {
+  preserveArtwork?: boolean;
   artUri: string;
   /** Output size in pixels (the widget's size on this phone). */
   widthPx: number;
@@ -200,6 +214,7 @@ type NativeBridge = {
   widgetDesignVersion?(): Promise<number>;
   setPhoto(uri: string): Promise<boolean>;
   clearPhoto?(): Promise<boolean>;
+  importAlbumPhotos?(uris: string[]): Promise<string[]>;
   setWidgetSet?(json: string): Promise<boolean>;
   getHabits?(): Promise<{ habits?: string | null; log?: string | null } | null>;
   setHabits?(json: string): Promise<boolean>;
@@ -215,11 +230,16 @@ type NativeBridge = {
   ): Promise<boolean>;
   /** T187: fit the art on a colour / blurred background, write seamless-<family>.png, reload "GlazeSeamless". */
   setWidgetArt?(artUri: string, w: number, h: number, background: string, colour: string, fit: string, family: string): Promise<boolean>;
+  setClockArt?(artUri: string, w: number, h: number, colour: string, family: string): Promise<boolean>;
+  composeClockArtPiece?(id: string, artUri: string, w: number, h: number, colour: string, skipIfPresent: boolean): Promise<boolean>;
+  composeDesignedWidgetPiece?(id: string, colour: string): Promise<boolean>;
+  designedWidgetBattery?(): Promise<number | null>;
   /** T146: { containerOk, themeStored, lastRead, storedTheme } (read-only). */
   linkStatus?(): Promise<unknown>;
   /** T221: copy an App Group file into widget-art/<id>.jpg. */
   saveWidgetArtPiece?(id: string, from: string): Promise<boolean>;
   /** T221: { index, dir } (read-only). */
+  resetWidgetArtForRecovery?(): Promise<boolean>;
   getWidgetArtLibrary?(): Promise<{ index?: string | null; dir?: string | null } | null>;
   /** T221: write widget-art/index.json, prune unlisted files, reload all timelines. */
   setWidgetArtIndex?(json: string): Promise<boolean>;
@@ -227,6 +247,12 @@ type NativeBridge = {
   composeWidgetArtPiece?(id: string, artUri: string, w: number, h: number, colour: string, skipIfPresent: boolean): Promise<boolean>;
   /** T252: the wallpaper-backed twin; crop = [x, y, w, h] in wallpaper pixels. */
   composeSeamlessPiece?(id: string, wallpaperUri: string, crop: number[], heroUri: string, skipIfPresent: boolean): Promise<boolean>;
+  /** owner-1102b T280: calendar access for the Next event widget. */
+  calendarAccessStatus?(): Promise<string>;
+  requestCalendarAccess?(): Promise<string>;
+  /** owner-1102b T281: When-In-Use location for the Weather widget (rounded coords stored in the App Group). */
+  locationAccessStatus?(): Promise<string>;
+  requestLocationAccess?(): Promise<string>;
 };
 
 function isExpoGo(): boolean {
@@ -325,9 +351,43 @@ export const widgets: WidgetsAdapter = {
   designVersion: async () => {
     try { return (await loadNative()?.widgetDesignVersion?.()) ?? 0; } catch { return 0; }
   },
+  designedBattery: async () => {
+    try {
+      const value = await loadNative()?.designedWidgetBattery?.();
+      return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 100 ? value : null;
+    } catch { return null; }
+  },
+  saveDesignedWidget: (piece) => serialArt(async () => {
+    try {
+      const { mod, reason } = await artBridge();
+      if (!mod?.composeDesignedWidgetPiece) return { available: false, ok: false, reason: reason ?? 'not-built' };
+      const design = parseDesignedWidget(piece.live?.design);
+      if (!design || !isValidPieceId(piece.id) || !piece.size) return { available: true, ok: false, reason: 'failed' };
+      if (design.identity && (await mod.widgetDesignVersion?.() ?? 0) < DESIGNED_WIDGET_CAPABILITY) return { available: false, ok: false, reason: 'not-built' };
+      if (!await mod.composeDesignedWidgetPiece(piece.id, design.background[0])) return { available: true, ok: false, reason: 'failed' };
+      const { lib } = await readArtIndex(mod);
+      const added = addPiece(lib, piece).lib;
+      const next = piece.themeId ? replaceThemeArt(added, piece.themeId).lib : added;
+      next.unpinned = { ...next.unpinned, [piece.size]: piece.id };
+      const ok = await mod.setWidgetArtIndex?.(serializeLibrary(next)) === true;
+      return { available: true, ok, reason: ok ? null : 'failed' };
+    } catch { return { available: true, ok: false, reason: 'failed' }; }
+  }),
+  upgradeDesignedWidgets: (theme) => editArtIndex(lib => upgradedDesignedLibrary(lib, theme, (kind, size) => `${t(`ui.designedWidgets.${kind}`)} · ${t(`ui.seamless.sizes.${size}`)}`)),
   setTheme: (theme) => run((mod) => mod.setTheme(serializeWidgetTheme(theme))),
   setPhoto: (uri) => run((mod) => mod.setPhoto(uri)),
   clearPhoto: () => run((mod) => mod.clearPhoto?.()),
+  importAlbumPhotos: async (uris) => {
+    const status = await isAvailable();
+    const mod = status.available ? loadNative() : null;
+    if (!mod?.importAlbumPhotos) return { available: false, ok: false, reason: status.reason ?? 'not-built', refs: [] };
+    try {
+      if (!uris.length || uris.length > ALBUM_LIMIT || uris.some((u) => !u.startsWith('file://'))) throw new Error('Invalid album');
+      const refs = await mod.importAlbumPhotos(uris);
+      if (!Array.isArray(refs) || refs.length !== uris.length || !refs.every(isAlbumSharedRef)) throw new Error('Photo import failed');
+      return { available: true, ok: true, reason: null, refs: [...new Set(refs)] };
+    } catch { return { available: true, ok: false, reason: 'failed', refs: [] }; }
+  },
   setWidgetSet: async (json) => {
     const mod = (await isAvailable()).available ? loadNative() : null;
     if (mod && typeof mod.setWidgetSet !== 'function') return { available: false, ok: false, reason: 'not-built' };
@@ -350,6 +410,7 @@ export const widgets: WidgetsAdapter = {
       const r = migrateLibrary(lib, currentThemeId);
       return r.ran ? r.lib : null;
     }),
+  resetArtForRecovery: () => serialArt(() => run(mod => mod.resetWidgetArtForRecovery?.())),
   composeArtPiece,
   commitThemeArt: (themeId, planned, ready) => editArtIndex((lib) => commitThemeArt(lib, themeId, planned, ready, Date.now()).lib),
 };
@@ -375,12 +436,20 @@ async function composeArtPiece(input: ComposeArtPieceInput): Promise<WidgetsResu
       return { available: false, ok: false, reason: 'not-built' };
     }
     if (!input || !isValidPieceId(input.id)) return { available: true, ok: false, reason: 'failed' };
+    if (input.kind === 'design') {
+      if (!mod.composeDesignedWidgetPiece) return { available: false, ok: false, reason: 'not-built' };
+      if (!/^#[0-9a-fA-F]{6}$/.test(input.colour)) return { available: true, ok: false, reason: 'failed' };
+      const ok = await mod.composeDesignedWidgetPiece(input.id, input.colour) === true;
+      return { available: true, ok, reason: ok ? null : 'failed' };
+    }
     const skip = input.skipIfPresent !== false;
     let ok = false;
     if (input.kind === 'art') {
       if (typeof input.artUri !== 'string' || !input.artUri || !/^#[0-9A-Fa-f]{6}$/.test(input.colour)) return { available: true, ok: false, reason: 'failed' };
       if (!finite(input.widthPx) || !finite(input.heightPx) || input.widthPx < 1 || input.heightPx < 1) return { available: true, ok: false, reason: 'failed' };
-      ok = (await mod.composeWidgetArtPiece(input.id, input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, skip)) === true;
+      if (input.preserveArtwork && typeof mod.composeClockArtPiece !== 'function') return { available: false, ok: false, reason: 'not-built' };
+      const compose = input.preserveArtwork ? mod.composeClockArtPiece : mod.composeWidgetArtPiece;
+      ok = (await compose?.(input.id, input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, skip)) === true;
     } else {
       const c = input.cropPx;
       if (typeof input.wallpaperUri !== 'string' || !input.wallpaperUri || !c || ![c.x, c.y, c.w, c.h].every(finite) || c.w < 1 || c.h < 1) {
@@ -418,6 +487,25 @@ async function editArtIndexNow(edit: (lib: WidgetArtIndex) => WidgetArtIndex | n
   }
 }
 
+/** T259: 'seamless-medium.png' → 'medium'; anything else (the photo file) → null. */
+function seamlessFileSize(from: string): WidgetArtSize | null {
+  const m = /^seamless-(small|medium|large)\.png$/.exec(from);
+  return m ? (m[1] as WidgetArtSize) : null;
+}
+
+/**
+ * T259: the app just wrote seamless-<size>.png itself, so widgets with no chosen piece show it again
+ * (drops `size` from index.json `unpinned`; no write when it is not there, e.g. no swap since). Best
+ * effort: never throws, never fails the write that called it.
+ */
+async function showLastApplied(size: WidgetArtSize): Promise<void> {
+  try {
+    await editArtIndex((lib) => pinLastApplied(lib, size));
+  } catch {
+    // The image is written; at worst unpinned widgets keep following the theme's own piece.
+  }
+}
+
 /** T221: the bridge with the library functions, or why not. */
 async function artBridge(): Promise<{ mod: NativeBridge | null; reason: WidgetsReason }> {
   const status = await isAvailable();
@@ -450,7 +538,10 @@ async function addToArtLibraryNow(piece: Omit<WidgetArtPiece, 'file'>, from: Wid
     let next = addPiece(lib, piece);
     // T238: adding a theme's art replaces the previous theme's auto-added art.
     if (piece.source !== 'photo' && piece.themeId) next = { ...next, lib: replaceThemeArt(next.lib, piece.themeId).lib };
-    const ok = (await mod.setWidgetArtIndex?.(serializeLibrary(next.lib))) === true;
+    // T259: the piece came from the seamless-<size>.png just written: unpinned widgets show it.
+    const size = seamlessFileSize(from);
+    const pinned = size ? pinLastApplied(next.lib, size) : null;
+    const ok = (await mod.setWidgetArtIndex?.(serializeLibrary(pinned ?? next.lib))) === true;
     return { available: true, ok, reason: ok ? null : 'failed' };
   } catch {
     return { available: true, ok: false, reason: 'failed' };
@@ -490,10 +581,13 @@ async function setWidgetArt(input: WidgetArtInput): Promise<WidgetsResult> {
     const mod = status.available ? loadNative() : null;
     if (!mod) return { available: false, ok: false, reason: status.reason };
     if (typeof mod.setWidgetArt !== 'function') return { available: false, ok: false, reason: 'not-built' };
+    if (input.preserveArtwork && typeof mod.setClockArt !== 'function') return { available: false, ok: false, reason: 'not-built' };
     if (!validWidgetArtInput(input)) return { available: true, ok: false, reason: 'failed' };
-    return run((m) =>
-      m.setWidgetArt?.(input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.background, input.colour, input.fit, input.size),
-    );
+    const res = await run((m) => input.preserveArtwork
+      ? m.setClockArt?.(input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.colour, input.size)
+      : m.setWidgetArt?.(input.artUri, Math.round(input.widthPx), Math.round(input.heightPx), input.background, input.colour, input.fit, input.size));
+    if (res.ok) await showLastApplied(input.size);
+    return res;
   } catch {
     return { available: true, ok: false, reason: 'failed' };
   }
@@ -523,7 +617,7 @@ async function setSeamless(input: SeamlessInput): Promise<WidgetsResult> {
     if (typeof mod.setSeamless !== 'function') return { available: false, ok: false, reason: 'not-built' };
     if (!validSeamlessInput(input)) return { available: true, ok: false, reason: 'failed' };
     const c = input.cropPx;
-    return run((m) =>
+    const res = await run((m) =>
       m.setSeamless?.(
         input.wallpaperUri,
         Math.round(c.x),
@@ -534,7 +628,43 @@ async function setSeamless(input: SeamlessInput): Promise<WidgetsResult> {
         input.size,
       ),
     );
+    if (res.ok) await showLastApplied(input.size);
+    return res;
   } catch {
     return { available: true, ok: false, reason: 'failed' };
   }
 }
+
+// ---- owner-1102b T280 / T281: access for the Next event and Weather widgets ----
+
+/** What the widget-access screen shows. 'unavailable' = Expo Go, Android or a build without the bridge method. */
+export type DataWidgetAccess = 'granted' | 'denied' | 'restricted' | 'notDetermined' | 'writeOnly' | 'unavailable';
+export type DataWidgetKind = 'calendar' | 'weather';
+
+const ACCESS_VALUES: readonly DataWidgetAccess[] = ['granted', 'denied', 'restricted', 'notDetermined', 'writeOnly'];
+
+function asAccess(value: unknown): DataWidgetAccess {
+  return typeof value === 'string' && (ACCESS_VALUES as readonly string[]).includes(value) ? (value as DataWidgetAccess) : 'unavailable';
+}
+
+/**
+ * Read (request = false) or ask for (request = true) the access a data widget needs. Calendar: full
+ * access to events (EKEventStore.requestFullAccessToEvents on iOS 17). Weather: When-In-Use location.
+ * Never throws; Expo Go / Android / an older build: 'unavailable', and nothing is asked.
+ */
+export async function dataWidgetAccess(kind: DataWidgetKind, request: boolean): Promise<DataWidgetAccess> {
+  try {
+    const status = await isAvailable();
+    const mod = status.available ? loadNative() : null;
+    if (!mod) return 'unavailable';
+    const call =
+      kind === 'calendar'
+        ? request ? mod.requestCalendarAccess : mod.calendarAccessStatus
+        : request ? mod.requestLocationAccess : mod.locationAccessStatus;
+    if (typeof call !== 'function') return 'unavailable';
+    return asAccess(await call.call(mod));
+  } catch {
+    return 'unavailable';
+  }
+}
+

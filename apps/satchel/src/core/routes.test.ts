@@ -15,7 +15,7 @@ function routes(dir: string, prefix = ''): string[] {
     const rel = dir ? `${dir}/${f}` : f;
     if (statSync(join(app, rel)).isDirectory()) {
       if (!f.startsWith('(')) out.push(...routes(rel, `${prefix}${f}/`));
-    } else if (f.endsWith('.tsx') && !f.startsWith('_')) out.push(`${prefix}${f.replace(/\.tsx$/, '')}`);
+    } else if (f.endsWith('.tsx') && !f.startsWith('_') && !/^\+(native-intent|html)\./.test(f)) out.push(`${prefix}${f.replace(/\.tsx$/, '')}`);
   }
   return out;
 }
@@ -24,7 +24,7 @@ test('every stack route is registered with headerShown:false or a translated tit
   const root = read('_layout.tsx');
   assert.match(root, /screenOptions=\{\{\s*headerShown: false/);
   for (const r of routes('')) {
-    const m = root.match(new RegExp(`<Stack\\.Screen name="${r.replace(/[[\]]/g, '\\$&')}" options=\\{([^\\n]+)\\} />`));
+    const m = root.match(new RegExp(`<Stack\\.Screen name="${r.replace(/[[\]+]/g, '\\$&')}" options=\\{([^\\n]+)\\} />`));
     assert.ok(m, `route ${r} is not registered in app/_layout.tsx`);
     assert.ok(/headerShown: false/.test(m[1]) || /title: t\('/.test(m[1]), `route ${r} has neither headerShown:false nor a title`);
   }

@@ -1,6 +1,6 @@
 /**
  * Sleep timer (T72, docs/MARKET.md gap): turn the TV off after 15 / 30 / 45 / 60 / 90 minutes.
- * Free like every TV control (no Couch Plus check anywhere in this file).
+ * No Couch Plus check in this file: the timer's key goes through session.sendKey, where the Couch Plus gate applies.
  *
  * Pure TS: the clock, timers, storage and the key sender are injected, so it is unit-tested with a
  * fake clock. The end time is persisted (SLEEP_TIMER_KEY) so a running timer survives app restarts.

@@ -36,6 +36,12 @@ jobs:
         with:
           node-version: 22
 
+      - name: Enforce owner release platform
+        working-directory: .
+        env:
+          APP_FOLDER: ${{ inputs.app }}
+        run: node scripts/check-ios-release.cjs
+
       - name: Use the newest Xcode on the runner
         run: |
           ls -d /Applications/Xcode*.app
@@ -92,6 +98,38 @@ jobs:
           set -o pipefail
           eas build --platform ios --profile "${{ steps.rel.outputs.profile }}" --local --non-interactive \
             --output "$RUNNER_TEMP/app.ipa" 2>&1 | tee -a "$RUNNER_TEMP/ship.log"
+
+      - name: Verify Glaze app and widget signatures, version and shared Group before upload
+        if: inputs.app == 'glaze'
+        run: |
+          set -euo pipefail
+          python3 scripts/verify-signed-widget-groups.py "$RUNNER_TEMP/app.ipa" --output "$RUNNER_TEMP/glaze-signed-group-report.json"
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])
+          report=json.loads((root/'glaze-signed-group-report.json').read_text())
+          version=json.loads(pathlib.Path('app.json').read_text())['expo']['version']
+          assert len(report['binaries'])==2,'Expected the app and its widget extension'
+          assert all(b['version']==version for b in report['binaries']),'App/widget version mismatch'
+          builds={b['build'] for b in report['binaries']}
+          assert len(builds)==1,'App/widget build numbers differ'
+          package=root/'app.ipa'
+          with package.open('rb') as f: digest=hashlib.file_digest(f,'sha256').hexdigest()
+          receipt={'sourceSHA':os.environ['GITHUB_SHA'],'version':version,'build':next(iter(builds)),'packageSHA256':digest,'packageBytes':package.stat().st_size,'signedGroupPreflightPassed':True,'physicalDeviceTest':False}
+          (root/'glaze-signed-package-receipt.json').write_text(json.dumps(receipt,indent=2)+'\n')
+          print('Glaze signed app/extension Group preflight passed for',version,'build',receipt['build'])
+          PY
+
+      - name: Preserve Glaze signed-package verification metadata
+        if: always() && inputs.app == 'glaze'
+        uses: actions/upload-artifact@v4
+        with:
+          name: glaze-signed-mac-package-report
+          path: |
+            ${{ runner.temp }}/glaze-signed-group-report.json
+            ${{ runner.temp }}/glaze-signed-package-receipt.json
+          if-no-files-found: warn
+          retention-days: 14
 
       - name: Upload to TestFlight
         env:

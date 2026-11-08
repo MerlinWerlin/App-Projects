@@ -1,382 +1,574 @@
 {
-  "airmail-daydream": {
+  "agate-apricot": {
     "packVersion": 1,
-    "contentHash": "b062aec328564adf57947fbf9395429f314c9d14393dc1cef307afd8bbacc7e1"
+    "contentHash": "78c2368f428b6d12e72169443fef544dd7765be42f0f7040f7abc3f70d594000"
+  },
+  "airmail-daydream": {
+    "packVersion": 6,
+    "contentHash": "b9c24aae694bb89ab1f22c8642df7e8dda697c79b257369a2bfe4cc28fb1ada8"
   },
   "alpine-starlight": {
-    "packVersion": 1,
-    "contentHash": "616b5a0cdc451dbf2eb82599f718f487e0e57a75800f4f239992f41214210b67"
+    "packVersion": 6,
+    "contentHash": "0c10ae70863289053e846fa240e482229e19437d9ef7ff1fabb9d04427b7901a"
   },
   "amber-archive": {
-    "packVersion": 1,
-    "contentHash": "e8705d721fe3c7a5d4223ab967d50ba0b6109da1fe7f18ab6c92e8dcef6d3670"
+    "packVersion": 6,
+    "contentHash": "d5a4cd6f5d2e342bb7654efbeb551ef19d428a2405ccdfd938945e89da3cf6f0"
   },
   "apricot-fm": {
-    "packVersion": 1,
-    "contentHash": "b125e4a155e9649db27e80b6278a5e61f9b80c7a11c708b2faa78e04dc901b17"
+    "packVersion": 6,
+    "contentHash": "e9565d5bb6e5191e0d97092a1d41fe0745b948eb21c92db33916ede7949c2892"
   },
   "aurora-haven": {
-    "packVersion": 1,
-    "contentHash": "a4ccf2a708366b4738b7d934718912aba70ed63eb2c5d5c75f0f6ca123828709"
+    "packVersion": 6,
+    "contentHash": "f71e03b2c5c4a417aa3092a33ce341b9c7f6c994626f1ea752f23c1087ca1e4a"
+  },
+  "bamboo-ink": {
+    "packVersion": 4,
+    "contentHash": "521b604016b320afa3ba6eff2490aaa06746a917906471b7261d29ae211b5f19"
   },
   "bellbat-bloom": {
-    "packVersion": 1,
-    "contentHash": "092f466debbedb5b5bc7d117914e7ab4d654042ffb7877148b9e2429aa8f8315"
+    "packVersion": 6,
+    "contentHash": "97b4f8c31afe05472074c95224da4da195297ab342423cdbff53100aeeb44805"
   },
   "berry-stitch": {
+    "packVersion": 6,
+    "contentHash": "07a662eb6631955c1dadcd4ef6e30c6cf695714e0b7c758215536798dc8db0c3"
+  },
+  "billabong-clay": {
     "packVersion": 1,
-    "contentHash": "1e0ff6b8687373088a5caccf4d316c109cf6bfbcabdba2b18f28698321206247"
+    "contentHash": "d2cb5aeccb14b8d0ccf7363f6479560de7d034cb3f056332eec4a290ebe431c7"
   },
   "birchlight": {
-    "packVersion": 1,
-    "contentHash": "f7d0ebd3193ec7d3af1ef4c01f7eff14870d08840e1902d13b21e1a2b6e26796"
+    "packVersion": 6,
+    "contentHash": "12ca8f77e6a3a65cad47d18db2925adbd2be388b48b71535fd8d7b6321450cef"
   },
   "blueprint-bureau": {
-    "packVersion": 1,
-    "contentHash": "dc0da59659c3167d3d4d24bd1fca90a600be8980327c3871e2d4c60405364042"
+    "packVersion": 7,
+    "contentHash": "cebf0c1aaadae4fa062e3d0fe201a7d3360a995b2d81e738832670cffbde0322",
+    "clockFaceSha256": "803d85dd10abcde0c1752714ebec5cdcd935eaf907aea9417eb151c431995c22"
   },
   "bluewing": {
-    "packVersion": 1,
-    "contentHash": "0b577c62accd0c9536d820c0b39a25954852a064c7b9f15fff425896e63aa2af"
+    "packVersion": 6,
+    "contentHash": "0dc9d11e38b626a94e1cb68a69a17f835aa606bdbe9b6885075b75984f4984ca"
   },
   "boba-bear-club": {
+    "packVersion": 6,
+    "contentHash": "0aa102012f7f478a6bffdfb7c72426135a310f0cf20dbab3b202e127bed2a185"
+  },
+  "brass-afterhours": {
     "packVersion": 1,
-    "contentHash": "e2fce156c5d68edb3680b768d42028d6794f5ef9361590a7930e4910c626c496"
+    "contentHash": "7d7dae1081f4bf0bd8cebda7c058dfd4b53567a7bd1a9734c0641b92bd833082"
+  },
+  "cacao-velvet": {
+    "packVersion": 1,
+    "contentHash": "7f658b091216ea4f82e9d9f2b28035b21757832f5f1ea4454630ec406854e22e"
+  },
+  "calla-obscura": {
+    "packVersion": 1,
+    "contentHash": "23f1d308fd1af1a5c43074cd0acffd9fad9cef88a18ef920feeb47a1bf085d92"
+  },
+  "canopy-glaze": {
+    "packVersion": 1,
+    "contentHash": "df7c40cb1553540568d4f4b118d2cf279cbbd753c590a1203486fa82233b95e5"
   },
   "carbon-velocity": {
+    "packVersion": 6,
+    "contentHash": "a6ff9ea57a48fa3bc2c4e7fbf89b48ee6c2490fe1ec4c58acef6c35a23568fe0"
+  },
+  "carrom-cedar": {
     "packVersion": 1,
-    "contentHash": "93b4567fb40ceba6375f74985260d0a2967ade8a93ced95784e7dbc4bfe2c44e"
+    "contentHash": "ba33ecb9999fc3268eecb3d5b9fc7a62af79b66655afd474c4e3f688b51f3df4"
   },
   "cherry-arcade": {
-    "packVersion": 1,
-    "contentHash": "11480bf5941f45be56434f5b27f44c71d62f485dc89a4b017c6bd932fcf6d45e"
+    "packVersion": 7,
+    "contentHash": "3d972051066f50205e59878ad848c21f7ec639d4c62cdab580af03d19a735034",
+    "clockFaceSha256": "d8f27e175c8e2a55a86a702c826cdc4bd22eecebfba7ba1865c56974a185a5ae"
   },
   "cherry-ribbon": {
-    "packVersion": 1,
-    "contentHash": "f422b830c944dbd3d620533648d0998ef721f59627d350f7f7c312a470e92716"
+    "packVersion": 6,
+    "contentHash": "7ae8b8e8bdc0437cdb09eefb4d5789ebd52c84689a2c0afee0aadabb6495411a"
   },
   "chromatic-lab": {
-    "packVersion": 1,
-    "contentHash": "413a0b9589366f3c780712829eddda19fea8b56fd7c23a795c7f5d8f72119fac"
+    "packVersion": 6,
+    "contentHash": "b7f202232b01e61669e38460471c6f560042e160747e2da1c83c30c48f8f48d7"
+  },
+  "cicada-linen": {
+    "packVersion": 4,
+    "contentHash": "ec30310a4825ceedf64bc4c6a8abdf0931119f7f6ad0b4219f25ef1114681350"
   },
   "cloud-atelier": {
-    "packVersion": 1,
-    "contentHash": "0b5484ca88ddecb99a68c661bda00bca5cc46cd8019ceaf8a47d274d7b34f2c7"
+    "packVersion": 6,
+    "contentHash": "2883c65ee05af4ed00b510b63c4e6206804dd46606a72217a2a4795942b55574"
   },
   "cloudwash": {
-    "packVersion": 1,
-    "contentHash": "cacf1b4b9bf9935dcd7854156ba82b797c61ec4bbab7393e5428dfd7ffa27567"
+    "packVersion": 6,
+    "contentHash": "08254f8ce685d05bd6eb3eae62abeaa3dd9e52f02c2bb6b5ed9e4ec981977916"
   },
   "clover-nap": {
-    "packVersion": 1,
-    "contentHash": "41e97bdd3d039ac554b6acb9c3bb827fec5d8c98947b31c3e1e1b56b27394935"
+    "packVersion": 6,
+    "contentHash": "bd49f5d5f6a03e139b38c17e3aa7adb96e28134ff3e03e39568e593b1f26d657"
   },
   "cobalt-caravan": {
+    "packVersion": 6,
+    "contentHash": "e528fa6fed95f3e4de362bb895a1723edf17b63540d0b95592682504db249f0f"
+  },
+  "cobalt-ribbon": {
     "packVersion": 1,
-    "contentHash": "313f9b94455856343eba7f6286cda417fe5562a64b8aa44626ce1ce463465f62"
+    "contentHash": "f7eaab564bcfe4835318d46a0c8894325d6e6314e88179c3ea87b008142c6518"
+  },
+  "concertina-rose": {
+    "packVersion": 1,
+    "contentHash": "aee10cc793c570b2c37d58f308677892f24fb3930bf2a3d909aa54726765e965"
+  },
+  "copper-circuit": {
+    "packVersion": 1,
+    "contentHash": "ab97422be5660280a8afbdb5a8d08742cb27245113047873aed8541905ed2226"
   },
   "crimson-reverie": {
-    "packVersion": 1,
-    "contentHash": "07afc5c99ff4249aeee72488d016d6b9a308883016edda33dc056cb09375557c"
+    "packVersion": 6,
+    "contentHash": "dda8cc2444bc4384ce7a83887c6b7643841ea4e37d15cb8080af21ee539d73f6"
   },
   "crumbkin": {
-    "packVersion": 1,
-    "contentHash": "b0c8ec3057e6214b430704a33b1fc950f50b70becdc74c5c35060298ffaaab20"
+    "packVersion": 6,
+    "contentHash": "7b59b1a4f946c0b5cc51dfb50a5bdbbbe34828556f7700bec360aa36e84f79c6"
   },
   "curlfin-cove": {
+    "packVersion": 6,
+    "contentHash": "584c4e87242346610a680a5217358c828b4c484261f6d66e9b1265c6ca251b06"
+  },
+  "curling-frost": {
     "packVersion": 1,
-    "contentHash": "19f253d303fc17c6d47ff5f3c58c272b42979687f560b05522e2d70e08533268"
+    "contentHash": "040bf99ebbd53d92001291e65f68a84281fdd972137f8a80f8b537a392a88fdc"
   },
   "desert-afterglow": {
-    "packVersion": 1,
-    "contentHash": "c3017ea342afbafd477bb4bc47f6f5c023ca2fc2ce162d57730ceae462042670"
+    "packVersion": 6,
+    "contentHash": "665ceb959e4230e3d1d0ae0dd4151e05016764ebeee1a7b2c890603cf396580f"
   },
   "dewdrop-den": {
-    "packVersion": 1,
-    "contentHash": "75947a03b0ac912229d893f6c5b60ce80bc909240dc192ecd081130aaaded130"
+    "packVersion": 6,
+    "contentHash": "517579b8213eb7c135c510bdca7b20ac431c9ad33e024041036b3cb2151cb903"
   },
   "disco-drift": {
-    "packVersion": 1,
-    "contentHash": "c253f23b9ff0fd07a45343c58c5420357f857e037283524bf982b923933ceb6a"
+    "packVersion": 6,
+    "contentHash": "8e594d0cc06f7264f3299c224c4c4d16c00f4edd2bea3a1db193b2058d3033fc"
   },
   "dunesilk": {
-    "packVersion": 1,
-    "contentHash": "fb4d25dc5ae9d8c462ad0b056d1d965c4d49b68f72d566bcda0a938ba212fdc7"
+    "packVersion": 6,
+    "contentHash": "80179611de6531f9b8359a23227b6a0dd73211a73e1450a5fbf4471d0b41bac6"
   },
   "ember-rift": {
-    "packVersion": 1,
-    "contentHash": "2445c4b42d9c480296713838564f0e4ea42c80fad2d387c14d239af6fb9aed74"
+    "packVersion": 6,
+    "contentHash": "cd1c8584503e8f3df183e896156e295eebf6edadd5dba66122cfa6a147e07a21"
   },
   "ember-workshop": {
-    "packVersion": 1,
-    "contentHash": "7daff646f022e32d99ee3b6d8240fa1d45ebe87139634c84b0ba6018dfb51c00"
+    "packVersion": 6,
+    "contentHash": "6f4534bfbf6df10d981662099a84814d8690288ebacca976a99703eabbc3734d"
   },
   "emerald-curio": {
-    "packVersion": 1,
-    "contentHash": "c35c4a2ae0c1f63bcde5eb215f1df41dd91c89c3bc746a51ec910b0483cc24b7"
+    "packVersion": 6,
+    "contentHash": "caf0ee580b43c5b8adc676076a2e068e8be9129036c31a20fae60454f8cf207f"
   },
   "espresso-hour": {
-    "packVersion": 1,
-    "contentHash": "8018128c8cdcd701155b71b8803cb6949d5b0e939b9cad1fc5f0be3a691d8c3f"
+    "packVersion": 7,
+    "contentHash": "8a04e6cfd93e60d154150f428ed179eb8c0f056f5610701aead92c3e2031c927",
+    "clockFaceSha256": "1f5410e108aacacb9253bbc9a4aeaa35e8b1fc00436417ac80a71ff41cf8a222"
   },
   "event-horizon": {
-    "packVersion": 1,
-    "contentHash": "ffb96f37874b8194f2b1f54ce1795c45c19a5adf24aaac435287458bb2131f53"
+    "packVersion": 6,
+    "contentHash": "2e269a6579c0148e415e26e1cb697c3738ac96e7f10f1a7e3e5d8d4d41d6aabb"
   },
   "fern-and-brass": {
-    "packVersion": 1,
-    "contentHash": "0533511344366376859a1125eb463a3dac6372f884f349997925a1d3869333a2"
+    "packVersion": 7,
+    "contentHash": "4c1eba7fe2ebf1e0de80cfba2871ac1cfd64e2257b524b79ec09f03e9dc848f7",
+    "clockFaceSha256": "7afd26b324f5479d233d320a48211e0412a068613dae07746f71ee9be6a196e8"
+  },
+  "fig-nocturne": {
+    "packVersion": 4,
+    "contentHash": "65d529b487aaaffe0b0c919b2b568e43a6767ce65653d000bb887b12caf6ce72"
   },
   "firefly-grove": {
+    "packVersion": 6,
+    "contentHash": "e960e5bc1218139b220e277327e1335f2cdff86a5620d6dd7725a9e71e996952"
+  },
+  "floatplane-blue": {
     "packVersion": 1,
-    "contentHash": "2374f22141fc91b322a784434dc3e72a7a469f3171e16b660562539164c719a6"
+    "contentHash": "e21230915c99263f9d17a5fd192fe680c7e4547afd8ae7aa11d271bd9c132756"
   },
   "fossil-cove": {
-    "packVersion": 1,
-    "contentHash": "ebe36236acc1c65c9d8ead1853cf53d3b06d0c4e71c0ce4fca1025d8e7fc29ec"
+    "packVersion": 6,
+    "contentHash": "b79c203165042258eade80b8c046616926f66e255d3ccd51ef7e10e5c3b9900c"
   },
   "froggy-picnic": {
-    "packVersion": 1,
-    "contentHash": "60035c28ef316cd6cee975dd5741f590db1661015c6ed6ed84d4a7060b14a349"
+    "packVersion": 6,
+    "contentHash": "0b8caf91791d7e569b0fd20c61ebfb4db74bd0d967750e3dc0fbfe05457b9c47"
   },
   "frostglass-passage": {
-    "packVersion": 1,
-    "contentHash": "e7f4e726af92aa8d3dce2dd44163b4d6c67972ae48e92fb46e5eb736349925a0"
+    "packVersion": 6,
+    "contentHash": "62958f65d07aea0e85a48ce93151ca698aa674d1b1893958ce3ffab75ceba192"
   },
   "gambit-house": {
-    "packVersion": 1,
-    "contentHash": "3a9741c1298f0dc1d9defce93ec7a804a2853692824f79d225be49d8bec40c0a"
+    "packVersion": 6,
+    "contentHash": "4b8d71f9665864ea9c967088741d2a23fe90c72be0057198376b6f65ef42eabd"
   },
   "ginkgo-hour": {
-    "packVersion": 1,
-    "contentHash": "d60a675ea14e06e8e5d15ded623988750fe11b9c0a156394dcf3c2adce87a46f"
+    "packVersion": 6,
+    "contentHash": "c99e376f2915064089aaae695a557025803c0e6e870348ed2f52f46b6d9adf86"
   },
   "glacier-quiet": {
+    "packVersion": 6,
+    "contentHash": "4e9d21db3948329fb9fb78673aab9e61067bb4834b5a6b04af3cfd9d395b2a6c"
+  },
+  "glider-nook": {
     "packVersion": 1,
-    "contentHash": "7c175295bf88493715b7d9df3d9d3429e3d3fc044977836acbe6b4335d674f4e"
+    "contentHash": "63a770961384f3b6194223a5f3e811c0116637e870e0178477e7f9af7948b537"
+  },
+  "heirloom-rouge": {
+    "packVersion": 4,
+    "contentHash": "491816af39e19c50a1ad9e8fd41744d4ecd53a1219bf860308892b1a7fb995d7"
+  },
+  "heron-reed": {
+    "packVersion": 4,
+    "contentHash": "b4f11419d924ad6048f55107a5207a08650e0307bb825ab8b439b87766d24030"
   },
   "honeywood": {
-    "packVersion": 1,
-    "contentHash": "dbc2a55aca0efb9bcb0a519f91842379f40fb372b97a465c2e3307b9b9011535"
+    "packVersion": 7,
+    "contentHash": "b397f083cf8f03f6448090313cee29dc13036f46924e8f70172694a66a943d16",
+    "clockFaceSha256": "ed171c250b971b3aa4e3b60cb0a7ba51a22755d41ba8e7f3e4c00190f5ae140b"
   },
   "indigo-current": {
-    "packVersion": 1,
-    "contentHash": "fbd4cf5566e5de72903b25cff38c5335c64780f681fd7ad58de9bd3ba42da760"
+    "packVersion": 6,
+    "contentHash": "2e0714cbf54be7818f254530d53321d2cb8e603333dec6f8eb7cd777300d8881"
   },
   "jade-meridian": {
-    "packVersion": 1,
-    "contentHash": "ac2e2da17f786bc9c6d398db9f193e238bdf37a314d320b1a63f4a75190699e8"
+    "packVersion": 6,
+    "contentHash": "08a1f4c6e7fca11a3b704da4467ce8b2a60d7e1e830c610524da9e20dc402175"
   },
   "jellylight": {
-    "packVersion": 1,
-    "contentHash": "6aee8fbefad1902eabd06b86d2ea44dd8aa044704b605192f47c83d62f7276a1"
+    "packVersion": 6,
+    "contentHash": "b1eaccf4962f9a1de73ebf7ed13c5eb39562a35462499c58edada57ee500e09c"
   },
   "juniper-mist": {
+    "packVersion": 6,
+    "contentHash": "dcbcc9b9213b1ab56b738c96fe9465364d67ed691d8c62f176394d2ffe46e5a1"
+  },
+  "kaleido-cobalt": {
     "packVersion": 1,
-    "contentHash": "ffec324399e0bb2ab9d9b4180c27f6b3750b00c34cb9e17c3631031e8209d600"
+    "contentHash": "50f027da0febcd68c5c63ff77e1fa9e28fa61ffdfce53635c786461bd9c5b982"
   },
   "kingfisher-blue": {
-    "packVersion": 1,
-    "contentHash": "14f157bb6083f44363fbf2cab0f8b83b91c5012a940aceaadb644cbc298abe2c"
+    "packVersion": 6,
+    "contentHash": "1f77396ca3ea2dc87b3f6f66eb3c355ef79457b67e545de95e675441536b8f54"
+  },
+  "labradorite-hush": {
+    "packVersion": 4,
+    "contentHash": "690834b889823590ddc71eb486a5c3025bfd39dd926f7b307c3b37dcf0099e80"
   },
   "lavender-nocturne": {
-    "packVersion": 1,
-    "contentHash": "74b25fc88b77f540d9362c7db1b199497229ee1f1315450391e4479c47928e25"
+    "packVersion": 6,
+    "contentHash": "ff55e8c7fc9da3595582f1a283cea5758f7ede1744f494ae59c176b45b31983c"
   },
   "lemon-lagoon": {
-    "packVersion": 1,
-    "contentHash": "86bbb36c6e2deb5e0ddc920d6cc5039553fcd8455a2a30eab5bc4ca5afac8065"
+    "packVersion": 6,
+    "contentHash": "b0d9e3a85783c8da1d2640e15dd085b77b9e12b9d2d04b5ead157950f381cf87"
   },
   "lotus-drift": {
-    "packVersion": 1,
-    "contentHash": "191b4400bf0b9c74b67d0abe26bff15c8fe2284822a00e6baebb282f89aef016"
+    "packVersion": 6,
+    "contentHash": "b7533525343e9167067da3d5b9e99e99b20832008f7c8eec9edf7bf7294bcf2b"
   },
   "lumen-mosaic": {
+    "packVersion": 6,
+    "contentHash": "d317516ea74ab1a85d856cfdf50e27af56b4ea18d4d1b05f7cb66ad5f905a5c3"
+  },
+  "madder-fold": {
     "packVersion": 1,
-    "contentHash": "b235a6b37951f3ca57a6626a834ee7cd5924f1173fcdd4aef698c2d3eebf99df"
+    "contentHash": "74502ff6dea30ba49809c6e3075841fb0218b3394138c400de7bec9f1d119a77"
+  },
+  "magnolia-veil": {
+    "packVersion": 4,
+    "contentHash": "2fed9efb475ee1f033a53bbd1edd426cf54b2e7b6e8c8ff98a715601b9d1ee4b"
+  },
+  "manta-silk": {
+    "packVersion": 4,
+    "contentHash": "f81f51cf0fd28b2a1fe3d03bb49db6b2cab8716c9333188ebf833fae48a14134"
+  },
+  "marigold-miles": {
+    "packVersion": 1,
+    "contentHash": "70d21eca817b0aa75ffaf2350114276f271d138d49f2ee0c463f2de23cef17aa"
+  },
+  "marquetry-arc": {
+    "packVersion": 1,
+    "contentHash": "70424025394bbd7083af31b9f702c6a5bf2207d4edb712a50bd2b72d55405d3a"
   },
   "match-point": {
-    "packVersion": 1,
-    "contentHash": "7d06f38ed964d3940b47491617f8f9bd6a940830e092d87b4dc3263dc04030f5"
+    "packVersion": 6,
+    "contentHash": "384a1faea70a80e972c5e134ecc8fe2e032628b1758ff65cd081fa664869d0a3"
   },
   "matcha-mews": {
-    "packVersion": 1,
-    "contentHash": "5d13e1578624aa6220c5dc8c844eb1ee3fd09eac2c22de8befe93106f49ad2de"
+    "packVersion": 6,
+    "contentHash": "493f93c9df51fe9e508331ec0c3d055ba4c2c831e5100e8578b9d66401c4f0d1"
   },
   "matcha-riso-garden": {
-    "packVersion": 1,
-    "contentHash": "0c34f8934f3302a626b2e3cff3be858df052c5b37b5c20eabe6da5529ffe327c"
+    "packVersion": 6,
+    "contentHash": "c960e552181191ae0c0876a93992a7159cf3af65ae7e071285fa9c795704afd9"
   },
   "meadowglow": {
-    "packVersion": 1,
-    "contentHash": "e94b5645d6471ef7cbd906e2490b38a734b7734ecafa857b5dbd688d774a543d"
+    "packVersion": 6,
+    "contentHash": "dd4692f8625117a102253ffbb0b73a8fcd8dd6a19982ec82cb35c512bdd3fe7e"
   },
   "midnight-conservatory": {
-    "packVersion": 1,
-    "contentHash": "20b8b16328ce1ba8342bca88c3b14d15e0e893a60f44969ce4f284781e3b029c"
+    "packVersion": 6,
+    "contentHash": "f7b6391c0194bac3bc662da69473910f7200e381bea41484e54f77b2e4d55ca3"
   },
   "midnight-matinee": {
+    "packVersion": 6,
+    "contentHash": "06d03af4d506d65ce3827da957a0e71371d31a63dce07bf2734bace1eca88557"
+  },
+  "millrace-mist": {
     "packVersion": 1,
-    "contentHash": "8ba33145f14e2ca834e496904960d0d23632755ca479ae4f7c61ea6998154e41"
+    "contentHash": "e7c09a595777646ceec23a76015d7705f40183309977f65214b6050c89177895"
   },
   "mochi-sleepover": {
-    "packVersion": 1,
-    "contentHash": "3613a1ade06dd8ebc5227026316fd2451fbf8a12eea59a220e8db9a4b3c6c2b1"
+    "packVersion": 6,
+    "contentHash": "58f6427be790a5a43ac0b86c04518162e452c7922dd12fc2a67214dc133b0603"
   },
   "moonmallow": {
-    "packVersion": 1,
-    "contentHash": "fd17fc502ee4684b8ca83967ae9cf4fc2e260b6438a2661df6ba9dcd6ecdad05"
+    "packVersion": 6,
+    "contentHash": "f4e55ee7d3e79bdd29f6ca6e0e7d61e87207efb8ce0a7e1c425b0d9f0038ac30"
   },
   "moonpatch": {
-    "packVersion": 1,
-    "contentHash": "574cf13c036e1746607daf024a4826e0f3e48001caf9dbe3a0db3c24daab56ef"
+    "packVersion": 6,
+    "contentHash": "ff3f23ed8fba0dbd2de533842f2016dd7487801e8ad182d9768a4bd1051cbf0b"
   },
   "mosswick": {
-    "packVersion": 1,
-    "contentHash": "97da0958b80761d62775b4bbd43cafb041cc13b915768eb68e319ff03464fe20"
+    "packVersion": 6,
+    "contentHash": "32c9e5f778b5363f2b40a2de907e0037970f424e026ffcfbff4ad9210d2a055c"
   },
   "nebula-veil": {
-    "packVersion": 1,
-    "contentHash": "74153469e967cb12f2c3d232bfff1e04a68b78df6be45f46cf8c8b7ca8ca8284"
+    "packVersion": 7,
+    "contentHash": "d16ddbc3053928da65de0f735374bbd85524d3beeeaedf241ee6d23150d86944",
+    "clockFaceSha256": "367378ddae2c437f287cff3171845de12d59096689699393d5826718649baac7"
   },
   "neon-monsoon": {
-    "packVersion": 1,
-    "contentHash": "18e9b20b0560a8590c0f82e85ee2371baddc080e04b7873032616a565a73cd34"
+    "packVersion": 6,
+    "contentHash": "2edd7b1e8a963893c9d753ea8bd5f08aa112e271f66ace00dabb5d90cae575a9"
   },
   "obsidian-tide": {
-    "packVersion": 1,
-    "contentHash": "172606fd7ecbc2443c7e61d8bdb3ecfa6af0adc371e6d326b24db6ec704f38aa"
+    "packVersion": 6,
+    "contentHash": "2449ebbbc97d96c8b2e05a1e8fd56508d59bcc5f7ef4ea7bb3230d0f20fc9390"
   },
   "ochre-bend": {
-    "packVersion": 1,
-    "contentHash": "b5cf78576580f7802f397d7279144ad5ead12f4bd2b73738354f4f767ebf982d"
+    "packVersion": 6,
+    "contentHash": "731cf5c8bae89a7236df2789b174a099a11867e041d5448ff3e69a49dbae9df1"
   },
   "olive-outpost": {
-    "packVersion": 1,
-    "contentHash": "26ee11689118f381436a6047bf0ba24e306d267da4ed5c4d4ab2cb91f947aaec"
+    "packVersion": 6,
+    "contentHash": "cd7e93568fe77dd111f516dd5be0afe43f2d85808efb0139d589cf13ca8848d0"
   },
   "opal-abyss": {
+    "packVersion": 6,
+    "contentHash": "dfeb329c682ff99d6b38ff658ae2c288d12e400af9e86954d0188e9f99c9c516"
+  },
+  "otter-wash": {
     "packVersion": 1,
-    "contentHash": "1a8027977ba72094729bceea6342be4365e1bfdc7f620309026033eca5f97fc0"
+    "contentHash": "c868065bcbbf1aa4da6afcfa0df6a33065f027a1c3c832ddeae4a0cd3a7076fb"
+  },
+  "papaya-punch": {
+    "packVersion": 1,
+    "contentHash": "4191b5a0905429fd23663d025f9c9f3c3e3cf7d60d822e1775fd48da9e3a36cd"
   },
   "paper-carnival": {
-    "packVersion": 1,
-    "contentHash": "ac46761f1d80a05bc547e73561e9be2109bf44b5f5672fecd27b3809f4fe8938"
+    "packVersion": 6,
+    "contentHash": "de375e0961677494a469cb2214d1d96ec7079a21f8824481b08c9c070485d0ee"
   },
   "peach-puddle": {
-    "packVersion": 1,
-    "contentHash": "8ccf24e71112636986c03c1820ef3c7e796461b0f9dce529e722882db8a48a55"
+    "packVersion": 6,
+    "contentHash": "b17a5abe5c3b2aac6cb05bdff90adda8ccd91b6ca13cc35b567413dbbad229b7"
   },
   "peachskin": {
-    "packVersion": 1,
-    "contentHash": "595ae4aff434466ece8bf49b896fb169657995615d0bfc3d30804d7b4d987603"
+    "packVersion": 6,
+    "contentHash": "2f2a4c317d3391c3be1f8200553237d8ca6b91d380d1e122fc5014e9d16fe0df"
   },
   "pebblekin-grove": {
+    "packVersion": 6,
+    "contentHash": "5e432dd9f05ca6b9a7782f2d801b560a26ba4e3bb1f383ed6cc9e41f0bf5b91c"
+  },
+  "persimmon-press": {
     "packVersion": 1,
-    "contentHash": "bd2c1bf6a3348d735dd59f6616f3bf353a3502949e3d2745d0480ef148f86e28"
+    "contentHash": "12156eb265192b9b67627d82c3389301f99d815cd8ed78dd562b40763d709011"
+  },
+  "phosphor-amber": {
+    "packVersion": 1,
+    "contentHash": "68ecf73a001f1a2a9069ee5946b2ce78772270d782c95ceccf6caa8b49d454b4"
   },
   "pistachio-parlour": {
+    "packVersion": 6,
+    "contentHash": "658c261a8bcffd579775ffdd7b198301e98e96bdd73ba9e07c4713a916de81c4"
+  },
+  "pitaya-pop": {
     "packVersion": 1,
-    "contentHash": "1c000665479558ecddb9badbc4d62ccceb295156b9040907e521ca1a2b8946e4"
+    "contentHash": "273a5a28282e6cb387fdff994a8e2e0a0c6d2cb5f4d156b27f464a1c730ab639"
   },
   "plume-court": {
-    "packVersion": 1,
-    "contentHash": "c3b9840441363c66d32f6b53cd97eccda0e4b6a514f6a9b7a23440498c0f544a"
+    "packVersion": 6,
+    "contentHash": "761a7c6f1735e04dab62d803169773f57c2bf3dae7cab0c6da7e57bebb209a70"
   },
   "pocket-pup": {
-    "packVersion": 1,
-    "contentHash": "1b37a51c89aa7955df78faae28efbb8d7aa91bf50a927ec1b01fdc6e05417dc6"
+    "packVersion": 6,
+    "contentHash": "89864dd04488e04efcf75f78c1d0dbd74d01230c6bf656f8269de255d59c94a2"
   },
   "porcelain-tide": {
+    "packVersion": 7,
+    "contentHash": "1260a493be5331bbaf1de14986f96303278c283e92da3d3e8c81ae6cdc46d2da",
+    "clockFaceSha256": "0d361ecd2e228743107e6c0b673b6dca527e1b639a744911f89391ce5378ddde"
+  },
+  "portico-dawn": {
     "packVersion": 1,
-    "contentHash": "dee4037f04d1c02faf3ba4498b78179a0512de0120edc0f45dea0d008ea648eb"
+    "contentHash": "6abc059ab245768625a2a597e5fb439cc727a65a5dada42b6f30782de859be42"
   },
   "prism-orchard": {
+    "packVersion": 6,
+    "contentHash": "6cd7eb19cb767d7164b63f12195bd42fe8c8005510129a88764e0478ad4b7b4e"
+  },
+  "protea-blush": {
+    "packVersion": 4,
+    "contentHash": "8b04b064c314eb77cf6822f6ff9db7b806326375b3b2b9c610e70b027610e351"
+  },
+  "puffin-fold": {
     "packVersion": 1,
-    "contentHash": "075ce866f18fc9d7d3319c9711bb086d165790aec006f3c2dedbb1465450061c"
+    "contentHash": "ea997f6a42b71a83881b0dd8cd2536b1908ec1886fb1f5171c4fee599e6df7c0"
+  },
+  "quince-foil": {
+    "packVersion": 1,
+    "contentHash": "36bdac3dbfb27243cbfdb0fefe3169d0a2c96920c2ff2120e9b4a1f093f5e970"
   },
   "rainleaf": {
-    "packVersion": 1,
-    "contentHash": "401a72b623c43d9efb1566771e62ef8b8b77d6f3a11caf7c7a45c39b25d2d83a"
+    "packVersion": 6,
+    "contentHash": "121d599299a7f8d28b4ca7ba4d417d458a3a3e672685f9a72598aa6f6d5e6e5d"
   },
   "rainlight": {
-    "packVersion": 1,
-    "contentHash": "aa8ff034faa680fb25b3cabb6218ee6727bc9584d6384b416aaf8e4b82a0639c"
+    "packVersion": 7,
+    "contentHash": "794ce8e65a1a06e0a96415e0957b32ffe4649886aebbe1289991b27376f8e46e",
+    "clockFaceSha256": "c36dab69519cc269a285f319b60351d7fe58d14c2927ddb527cb9319ed9db317"
   },
   "regatta-blue": {
-    "packVersion": 1,
-    "contentHash": "1d623baacd941385a249203c3eee1f8a1f364ea4774ec247b312765afe3f9b04"
+    "packVersion": 6,
+    "contentHash": "97deb3f9dde8c5e0a0aa081c9bfce1c259c875f28ae0fdff5ad4373365787d53"
   },
   "rosewater-reverie": {
-    "packVersion": 1,
-    "contentHash": "36e83858172ee151ba95dbf13a40f8afc52bc2f57ef73a4df00cc7931a028a88"
+    "packVersion": 6,
+    "contentHash": "01f240b30dcdae689c2c44a55884f18c0ba9cda939916867e40beaa0b6ab8048"
   },
   "saddlewood": {
-    "packVersion": 1,
-    "contentHash": "3fd2bbfd5d710ab723feaefe9d32d888de023e29dc541bb9755498ea9ceb0ad7"
+    "packVersion": 6,
+    "contentHash": "8032f8d4118a0183f4780febfc0a9014ed1780d6d0eb0b04bfe3e0934d4dfca8"
   },
   "saffron-courtyard": {
-    "packVersion": 1,
-    "contentHash": "f841c47e7a5b462ab3250ebc258865af0c9651123afa6063c30e63a5298f4575"
+    "packVersion": 6,
+    "contentHash": "c57375fb471aaff2633cca8a3a90516d3c4d9a1df3f5b6f8871bb9e16ded484b"
   },
   "saguaro-siesta": {
-    "packVersion": 1,
-    "contentHash": "b177474d1dabcb7e44faa87a1bf82dbf491bdd48444b854a15ea76271864ede1"
+    "packVersion": 6,
+    "contentHash": "76b3443ca9389f7d43fd816786d783b55972bf7c0295d76f63e85e8eef93a687"
   },
   "saltveil": {
-    "packVersion": 1,
-    "contentHash": "f12cb11c3d94f551d99d626fd7d6445438684a41299bfc796d877cfa448e0f77"
+    "packVersion": 6,
+    "contentHash": "8a573a83004a30490df045b1c9c23e355907116e6361b9ffc8b66a26453f9c83"
   },
   "sea-glass-sunday": {
+    "packVersion": 6,
+    "contentHash": "d7aebeb47ebdde00057c4ea1c994e0e94ddf062d135619ecfd84e98e766d04df"
+  },
+  "shuttle-sage": {
     "packVersion": 1,
-    "contentHash": "94f5f437002186753d1a5f226d420526eb30e8a34f095d10c44344d6dfa97ac2"
+    "contentHash": "8fd5bb18ce72294f1edbfad7d77923a1c1a87ec4b2644c5f63698ade1770197d"
   },
   "signal-yellow": {
-    "packVersion": 1,
-    "contentHash": "8b7d35a822633ac102d70e795b66175402f7f090003371b51509cbb8c1d8d1d1"
+    "packVersion": 6,
+    "contentHash": "f963cce393fd656cf279473ca3892900bfaeec2006ace63d0b4e2a0283a3b4fe"
   },
   "silver-orchard": {
-    "packVersion": 1,
-    "contentHash": "c53038d7e05b98b1a8bbf45b3cee621d06a62cef068bce321e46b1a57b4e60df"
+    "packVersion": 6,
+    "contentHash": "638bfacbf0c7b6616d0b452cb031f5cdef9ef3d3b1bdb7ed2a4116a63bb1a714"
   },
   "sonata-house": {
-    "packVersion": 1,
-    "contentHash": "088ab30755367f72ab9bd19944f91d0d07ae7ea3f666e93e68d18ad12e99b732"
+    "packVersion": 6,
+    "contentHash": "e0637c0146484d63af15e728aaebcfdede1a1f3854679aee120ae1a39e36ea16"
   },
   "spare-time": {
+    "packVersion": 6,
+    "contentHash": "9c4a6b5472c67b2dcd15f9f447c9e36522fd76bcdace9d0bfb19b2de68b89245"
+  },
+  "steam-and-sage": {
     "packVersion": 1,
-    "contentHash": "ebb28cec9a1ee7fc15da14a08a1f9d3a8ac3f52210072ddb1519d8676dac2e63"
+    "contentHash": "c0fde4be35dc5dac5d28d5fee9ccc40b9bf9e1c2963eddb76c682d367e6a5fe8"
   },
   "stellar-cradle": {
-    "packVersion": 1,
-    "contentHash": "a9c1051b31de8fbdeab16773a6101d89cceb8fc0fc568ef33c53d922e296764b"
+    "packVersion": 6,
+    "contentHash": "25300246e06d4298394b06d0579a19be7b97e25f2c778d8450800c414e361a7c"
   },
   "summit-line": {
+    "packVersion": 6,
+    "contentHash": "1ff967e9c327ed4d776bcb9479935e9c523e72492c45a5b8c8bdeaa27af9a4ee"
+  },
+  "sundew-ember": {
+    "packVersion": 4,
+    "contentHash": "3c5c2954742771fea143871a0433c84c040e0f5259e407e8873a30832d87be3d"
+  },
+  "tapir-terracotta": {
     "packVersion": 1,
-    "contentHash": "4b9230bc61c67097d8673291e0cea83f8c420dfbb8fd52e3f2511454515ef8c5"
+    "contentHash": "89bb16462dd55061c687eb9494ee09bc949bdb9c58c19f620d1125405a55fd85"
   },
   "tempest-noir": {
+    "packVersion": 6,
+    "contentHash": "ff3bc6add04f915fd997c3cd1c1363982c9cee323e043d8537452655d64e2419"
+  },
+  "tessera-tempo": {
     "packVersion": 1,
-    "contentHash": "9242812b0e56e943a5b0616f63d0771388b0862e254eb942f17477546c17229f"
+    "contentHash": "945da0adba75ff04a69128a18e86cb0288ce95ffccacb51a4d003f820bc595d5"
+  },
+  "thistle-etch": {
+    "packVersion": 1,
+    "contentHash": "25eafa3f476dbb1b01a62b680244cf758d4b505e2bee5be97cdaa9d5dec93fe6"
+  },
+  "toucan-loom": {
+    "packVersion": 1,
+    "contentHash": "9aabf27bacd3699845140fb4bad48736dc6fe3cf71f533a7f2182203f461578b"
+  },
+  "tryline-russet": {
+    "packVersion": 1,
+    "contentHash": "ac420e9bde14dc930d9743b7f84b1612ea6b7955260740a32c5719fb2664a6ba"
+  },
+  "typecase-ivory": {
+    "packVersion": 1,
+    "contentHash": "9896682e6c1392c391ec6e0b0a4d4d449c3673b7876fe3bca1c233e1f3fed25e"
   },
   "velvet-observatory": {
-    "packVersion": 1,
-    "contentHash": "87d6327a8ae8b31910fcf2577b8ebcb7913d4a3ec66884f259253c58108170c1"
+    "packVersion": 6,
+    "contentHash": "26080fc5daa56c34cf10bec093989e3aa70544d1c17ed184320c6abce1ad87f2"
   },
   "verdigris-voyage": {
-    "packVersion": 1,
-    "contentHash": "0692743082555174c06d0cfbbf5055f569a25d56b7f36c048cfd1268b71049df"
+    "packVersion": 6,
+    "contentHash": "d3b2f8d332d8425a3697f69f77962a50af44e2c4b9db416dd69b530213bda2f3"
   },
   "wickling-hollow": {
+    "packVersion": 6,
+    "contentHash": "f499a63086868c246459138c5c4c9f0f3dd81d997879551c7d702b675889b372"
+  },
+  "willow-wicket": {
     "packVersion": 1,
-    "contentHash": "0460355143bb2c29931d7931f41487d4b1a0a1efcfedba0dbac202978e414adf"
+    "contentHash": "bcea0b3f6ec17d4baf7f66b2acedbd040ceaf86ece92450800aabc4f0fe63072"
   },
   "wisteria-hush": {
+    "packVersion": 6,
+    "contentHash": "451c716ea30b5962aa2a4a77e83a427e5ac2b0073f8f2b40a9cb96600e08c6f9"
+  },
+  "woven-wander": {
     "packVersion": 1,
-    "contentHash": "fd7f2572c81a7cd3677880a45af5958618b4be5f3cccfd0617e705cc9bbf4e79"
+    "contentHash": "1d6ff34f1fe8b95ef8d773f02d4b4bea47416049db68a8dc4cec264b7c58c8b4"
   },
   "yuzu-soak": {
-    "packVersion": 1,
-    "contentHash": "363420f0fb833568fea0cd6383cc2211b5c0a6b8a3c7b1dfb2b7bb208ba07d8a"
+    "packVersion": 6,
+    "contentHash": "fb96fbdcfa4dd15ada35d20b490c3c17d7032247d5033a1564e9c1a05eb9086a"
   }
 }

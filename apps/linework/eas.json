@@ -16,6 +16,29 @@
     "production": {
       "autoIncrement": true,
       "channel": "production"
+    },
+    "play-preview": {
+      "distribution": "internal",
+      "channel": "play-preview",
+      "environment": "preview",
+      "env": {
+        "PLAY_VARIANT": "preview"
+      },
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "play-production": {
+      "distribution": "store",
+      "channel": "play-production",
+      "environment": "production",
+      "autoIncrement": true,
+      "env": {
+        "PLAY_VARIANT": "production"
+      },
+      "android": {
+        "buildType": "app-bundle"
+      }
     }
   },
   "submit": {

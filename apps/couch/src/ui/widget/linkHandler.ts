@@ -5,8 +5,8 @@
  * duplicates and floods (WidgetTapGate), switches to that TV if it is not the active one, and sends
  * the action's keys through the session like any remote button.
  *
- * Every TV control is free: this file never looks at Couch Plus. A link that arrives always sends
- * its key, with or without Plus. Plus only decides whether the widget is offered with buttons at all
+ * This file never looks at Couch Plus (the session's gate does, src/plus/gate.tsx). A link that arrives always asks
+ * the session to send its key; without access the gate opens the paywall instead. Plus also decides whether the widget is offered with buttons at all
  * (snapshotSync.ts / useWidgetLinks.ts).
  */
 import type { Key } from '../../core/keys';

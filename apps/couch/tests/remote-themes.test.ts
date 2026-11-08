@@ -7,7 +7,8 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { en } from '../src/i18n/catalog';
-import { PLUS_FEATURES, PLUS_FEATURE_COPY } from '../src/plus/entitlement';
+import { PLUS_FEATURES } from '../src/plus/entitlement';
+import { PLUS_FEATURE_COPY } from '../src/plus/copy';
 import { DEFAULT_REMOTE_THEME, REMOTE_THEME_IDS, REMOTE_THEMES, PRESS_SCALE, effectiveRemoteTheme } from '../src/theme/remoteThemes';
 import { pickTheme, previewThemeId, themeBadge } from '../src/theme/themePicker';
 import { blend, contrast } from '../src/ui/fx/glow';
@@ -124,10 +125,10 @@ describe('Couch Plus gating stays in src/plus', () => {
     expect(layout.indexOf('<PrefsProvider>')).toBeLessThan(layout.indexOf('<PlusThemeProvider>'));
   });
 
-  it('themes are not a Plus feature (owner 25 Oct 2026); neither are TV controls', () => {
+  it('themes are not a Plus feature (owner 25 Oct 2026); Plus is the remote and casting (owner 7 Nov 2026)', () => {
     expect(PLUS_FEATURES as readonly string[]).not.toContain('themes');
     expect(Object.keys(PLUS_FEATURE_COPY)).not.toContain('themes');
-    for (const f of PLUS_FEATURES) expect(f).not.toMatch(/key|button|control.?pad|dpad|volume|channel|power/i);
+    expect([...PLUS_FEATURES]).toEqual(['remote', 'cast']);
   });
 
   it('effective theme: every chosen theme shows and is kept without Plus', () => {
@@ -152,11 +153,10 @@ describe('Themes screen (app/themes.tsx)', () => {
     for (const id of REMOTE_THEME_IDS) expect(typeof catalogue[REMOTE_THEMES[id].nameKey]).toBe('string');
   });
 
-  it('never reads the entitlement itself and offers Try it / keep / stop', () => {
-    expect(code(src)).not.toMatch(/usePlus|canUse|entitlement/);
-    expect(src).toContain("router.navigate('/plus')");
+  it('never reads the entitlement itself, sells nothing and offers Try it / stop', () => {
+    expect(code(src)).not.toMatch(/usePlus|canUse|entitlement|plusForSale/);
+    expect(src).not.toContain("router.navigate('/plus')");
     expect(src).toContain('tryTheme(null)');
-    expect(src).toContain("t('app.themes.keep')");
     expect(src).toContain("t('app.themes.stopTrying')");
   });
 
@@ -178,7 +178,9 @@ describe('Themes screen (app/themes.tsx)', () => {
       expect({ k, sub: /subscri/i.test(text) && !/no subscription/i.test(text) }).toEqual({ k, sub: false });
       expect({ k, periodic: /per month|monthly|per year|yearly|\/mo\b/i.test(text) }).toEqual({ k, periodic: false });
     }
-    expect(String(catalogue['app.themes.keepHint'])).toMatch(/One-time purchase/);
+    // Themes are free (owner 25 Oct 2026): the old "keep it with Plus" copy is gone.
+    expect(catalogue['app.themes.keepHint']).toBeUndefined();
+    expect(String(catalogue['app.plus.priceLine'])).toMatch(/one time\. No subscription/);
   });
 
   it('pickTheme: every theme applies (and is kept) without Plus; every badge says Free', () => {

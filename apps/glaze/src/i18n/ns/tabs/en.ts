@@ -12,7 +12,10 @@ export const en = {
       rotate: 'Change photo every',
       minutes: '{n} min',
       hours: '{n} h',
-      albumPhotos: 'Picking album photos isn’t available yet. The preview shows theme colours where your photos will go.',
+      albumPhotos: 'Choose up to 12 photos. They stay on this device. iOS controls when scheduled changes appear.',
+      chooseAlbumPhotos: 'Choose photos',
+      albumPhotoCount: '{n} / 12 photos',
+      clearAlbumPhotos: 'Clear photos',
       lockColours: 'iOS draws Lock Screen widgets in one colour, so colours can’t be changed here.',
       standbyNote: 'StandBy shows widgets on black while your iPhone charges on its side.',
       habitButtons: 'On iOS 17 or later, tap the buttons on your Home Screen widget to log. Glaze picks up what you logged when you open it.',
@@ -44,6 +47,9 @@ export const en = {
       artBadge: 'Art',
       liveOnArt: 'Works on your Home Screen: the Glaze widget shows the real value over this art.',
       focusNote: 'Tap Start on the widget for a 25-minute focus session; tap again to pause.',
+      countdownNote: 'Pick a day above, then tap Use on my widget: the widget counts down to it over this art. Without a day it stays a picture.',
+      // T246: the widget draws live values in Fill only (Fit: art only until a native change).
+      liveFillOnly: 'Live values show in the Fill layout (long-press the widget, Edit Widget, Layout). Fit shows the art only for now.',
       heroNames: { small: 'Small piece', medium: 'Wide piece', large: 'Large piece' },
       download: 'Download this theme on its page to see all of its widget art here.',
       kinds: { art: 'Art', clock: 'Clocks', date: 'Dates', calendar: 'Calendars', countdown: 'Countdowns', habits: 'Habits', battery: 'Battery', photo: 'Photos', quote: 'Quotes', focus: 'Focus' },
@@ -54,7 +60,7 @@ export const en = {
     open: '{kind}, {size}. Opens Widget Studio.',
     soon: 'Coming soon',
     soonA11y: '{kind}, {size}. Coming soon.',
-    lockNote: 'Lock Screen widgets aren’t ready yet. These are on the way.',
+    lockNote: 'Glaze Lock Screen widgets (clock, date, battery, countdown, moon) are added on the Lock Screen itself: touch and hold it, tap Customise > Lock Screen > the widget area, then pick Glaze. They use your theme’s font; iOS picks their colour.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
       ok: 'Home Screen widgets linked',
@@ -116,5 +122,20 @@ export const en = {
       openClip: 'Open the clip',
       kind: { collage: 'Collage', theme: 'Wallpaper', live: 'Live Photo still' },
     },
+  },
+  // owner-1102b T280/T281: app/widget-access.tsx (Next event and Weather widget access).
+  widgetAccess: {
+    title: "Widget access",
+    calendarTitle: "Next event widget",
+    calendarBody: "The Next event widget shows your next calendar event in your theme. Glaze reads your calendars on this iPhone only and never sends them anywhere.",
+    calendarAllow: "Allow calendar access",
+    weatherTitle: "Weather widget",
+    weatherBody: "The Weather widget shows the weather where you are. Your approximate location (rounded to about 1 km) is sent only to Open-Meteo to get the forecast. Glaze never receives or stores it on a server.",
+    weatherAllow: "Allow location while using Glaze",
+    granted: "Access is on. The widget updates within a few minutes.",
+    denied: "Access is off. You can turn it on in Settings > Glaze.",
+    openSettings: "Open Settings",
+    unavailable: "Asking for access needs the App Store or TestFlight version of Glaze.",
+    credit: "Weather data by Open-Meteo.com (CC BY 4.0)",
   },
 } as const;

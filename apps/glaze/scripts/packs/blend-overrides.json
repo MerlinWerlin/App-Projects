@@ -1,0 +1,4 @@
+{
+  "_note": "T272: re-ship (--fix) overrides, theme id or theme/pieceId -> 'feather'. Use when the backdrop colour also fills the subject, so keying (even with the interior filled) still eats into it. Reviewed by eye 1 Nov 2026 (run 226).",
+  "yuzu-soak": "feather"
+}

@@ -113,5 +113,6 @@ test('catalogue: f104 keys, the never-copied line names planned outfits; old lin
   for (const w of ['Booking references', 'receipts', 'journal', 'spending', 'gifts', 'checklist ticks', 'sitter tasks', 'trip rating']) assert.ok(followups104['f104.copy.neverBody'].includes(w), w);
   assert.ok(followups102['f102.copy.neverBody'] && tripcopy['tripcopy.never.body']);
   const screen = readFileSync(new URL('../../app/trip-again/[tripId].tsx', import.meta.url), 'utf8');
-  assert.ok(screen.includes("t('f104.copy.neverBody')") && !screen.includes("t('f102.copy.neverBody')"));
+  // T151: the screen moved on to f107.copy.neverBody (adds postcard sent ticks and kid-friendly marks).
+  assert.ok((screen.includes("t('f104.copy.neverBody')") || screen.includes("t('f107.copy.neverBody')")) && !screen.includes("t('f102.copy.neverBody')"));
 });

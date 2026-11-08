@@ -345,7 +345,7 @@ export function RainBriefRow({ trip, today, now }: { trip: Trip; today: LocalDat
           <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.heroInk }]}>
             {line}
           </Text>
-          <Text numberOfLines={1} style={[typeScale.small, { color: theme.heroMuted }]}>
+          <Text numberOfLines={2} style={[typeScale.small, { color: theme.heroMuted }]}>
             {[more, age].filter(Boolean).join(' · ')}
           </Text>
         </View>

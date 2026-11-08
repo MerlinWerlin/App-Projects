@@ -77,18 +77,18 @@ test('applyThemeEverywhere returns after the essential writes; heavy follow-ups 
   const fn = fnBody(store, /export async function applyThemeEverywhere\(theme: Theme\): Promise<ApplyResult> \{/);
   for (const re of HEAVY) assert.doesNotMatch(fn, re, `applyThemeEverywhere must not call ${re}`);
   // The essential state: icon style, remembered widget theme, theme in use, listeners.
-  assert.match(fn, /await applyThemeIcons\(theme, /);
+  assert.match(fn, /applyThemeIcons\(theme, /);
   assert.match(fn, /await rememberWidgetTheme\(theme\)/);
-  assert.match(fn, /AsyncStorage\.setItem\(ACTIVE_THEME_KEY/);
+  assert.match(read('src', 'store', 'widgetTheme.ts'), /ACTIVE_THEME_KEY, serializeActiveTheme/);
   // Queued after the theme in use is stored (the steps read it back when resumed next launch).
-  const stored = fn.indexOf('ACTIVE_THEME_KEY');
+  const stored = fn.indexOf('await rememberWidgetTheme(theme)');
   for (const step of ['widgetTheme', 'themeArt', 'installedProbe']) {
     const at = fn.search(new RegExp(`requestDeferred\\(DEFERRED_STEPS\\.${step}\\b`));
     assert.ok(at > stored, `${step} is requested after the essential write`);
   }
   assert.doesNotMatch(fn, /await requestDeferred/);
   // The heavy art call lives in the step the queue runs.
-  const step = fnBody(store, /async function themeArtStep\(arg: unknown\): Promise<void> \{/);
+  const step = fnBody(store, /async function themeArtStep\(\): Promise<void> \{/);
   assert.match(step, /nativeWidgets\.replaceThemeArt\(/);
   assert.match(store, /registerDeferred\(DEFERRED_STEPS\.themeArt, \{[^}]*run: themeArtStep/);
 });

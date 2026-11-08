@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     ...elevation.key,
   },
   // Clips the trail to the pad's rounded corners without clipping the pad's own shadow.
-  trail: { ...StyleSheet.absoluteFillObject, borderRadius: 22, overflow: 'hidden' },
+  trail: { ...StyleSheet.absoluteFill, borderRadius: 22, overflow: 'hidden' },
   dot: { position: 'absolute', left: 0, top: 0, width: DOT, height: DOT, borderRadius: DOT / 2 },
   // Larger Text (T74): capped at the caption scale and wrapped inside the pad (aspect-ratio box).
   hint: { fontFamily: fonts.text, fontSize: 13, textAlign: 'center', paddingHorizontal: 16 },

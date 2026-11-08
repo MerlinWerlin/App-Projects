@@ -3,11 +3,11 @@
     "name": "Couch",
     "slug": "couch-remote",
     "scheme": "couch",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.jared797.couch",
       "infoPlist": {
         "NSLocalNetworkUsageDescription": "Couch finds and controls TVs and streaming players on your Wi-Fi. Nothing leaves your home network.",

@@ -151,7 +151,7 @@ const BagCard = memo(function BagCard({ bag, tally, unit, lang, gifts }: { bag: 
         </View>
         <View style={{ flex: 1 }}>
           <Text style={[typeScale.caption, { color: paint.muted }]}>{whereText(t, bag)}</Text>
-          <Text accessibilityRole="header" numberOfLines={2} style={[typeScale.displayM, { color: paint.ink }]}>
+          <Text accessibilityRole="header" style={[typeScale.displayM, { color: paint.ink }]}>
             {name}
           </Text>
         </View>
@@ -281,7 +281,7 @@ export function BagHeaderCard({
               style={{ flexGrow: 1, flexBasis: '30%', minWidth: 96, minHeight: 88, borderRadius: radius.l, backgroundColor: paint.fill, padding: space.m, gap: space.xs }}
             >
               <Ionicons name={BAG_ICON[bag.kind]} size={20} color={paint.ink} />
-              <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: paint.ink }]}>
+              <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: paint.ink }]}>
                 {name}
               </Text>
               <Text style={[typeScale.small, { color: paint.muted, fontVariant: ['tabular-nums'] }]}>

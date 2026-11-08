@@ -1,5 +1,5 @@
 {
-  "mode": "update",
-  "note": "Couch: Send test picture button now translated in every language; Google Cast test picture checks",
+  "mode": "build",
+  "note": "Couch 1.0.4: no demo mode, 7-day free trial then Couch Plus A$3.99 one-time unlocks the remote and casting, earlier free installs keep it free",
   "ascAppId": "6826135134"
 }

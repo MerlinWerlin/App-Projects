@@ -8,7 +8,7 @@ import { dirname, join } from 'node:path';
 import { DEFAULT_STROKE_WIDTH } from './templates.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const trace = readFileSync(join(root, 'app', 'trace.tsx'), 'utf8');
+const trace = readFileSync(join(root, 'app', 'trace.tsx'), 'utf8').replace(/\r\n/g, '\n');
 
 function loadTemplateStroke(): (tpl: { strokeWidth?: number }, w: string) => number {
   const scale = /const LINE_SCALE: Record<LineWeight, number> = (\{[^}]*\});/.exec(trace);

@@ -1,3 +1,6 @@
+// Model a missing native picker explicitly; jest-expo otherwise supplies a callable mock.
+jest.mock('expo-image-picker', () => ({}));
+
 /**
  * cast-1024 T91: Cast tab. The picker mapping (fake expo-image-picker), the CastController logic
  * with fake drivers / queue / media server, and static checks on the screen and config.
@@ -418,6 +421,33 @@ describe('CastController', () => {
     expect(c.isActive()).toBe(false);
   });
 
+  it('Couch Plus gate (owner 7 Nov 2026): locked puts nothing on the TV, serves nothing and stops the slideshow', async () => {
+    const { c, srv, last, queue } = setup();
+    await c.setContext({ demo: false, tvs: [TV] });
+    let asked = 0;
+    let open = false;
+    c.setGate(() => {
+      asked += 1;
+      return open;
+    });
+    expect(c.allowed()).toBe(false);
+    queue().setSlideshow(true);
+    await c.addItems([photo('a'), photo('b')]);
+    await c.start(1);
+    await c.sendTestPicture();
+    expect(srv.served.length).toBe(0);
+    expect(last().loads.length).toBe(0);
+    expect(queue().snapshot().slideshow).toBe(false);
+    expect(asked).toBeGreaterThan(1);
+    // Unlocked (trial started or Plus bought): the same queue casts.
+    open = true;
+    await c.start(0);
+    expect(srv.served.map((x) => x.req.uri)).toEqual(['file:///p/a.jpg']);
+    expect(last().loads.length).toBe(1);
+    c.setGate(null);
+    expect(c.allowed()).toBe(true);
+  });
+
   it('when a video ends on the TV the queue moves on; a stop we asked for does not', async () => {
     const { c, last, queue } = setup();
     await c.setContext({ demo: false, tvs: [TV] });
@@ -519,7 +549,7 @@ describe('CastController', () => {
 describe('Cast tab wiring (static)', () => {
   const screen = read('app/(tabs)/cast.tsx');
 
-  it('the cast screen and its components never import src/plus (casting basics are free)', () => {
+  it('the cast screen and its components never import src/plus (the Couch Plus gate is installed from src/plus/gate.tsx)', () => {
     const files = [
       'app/(tabs)/cast.tsx',
       'src/state/cast.tsx',
@@ -552,7 +582,7 @@ describe('Cast tab wiring (static)', () => {
   it('declares the expo-image-picker dependency and its config plugin (photos only)', () => {
     const pkg = JSON.parse(read('package.json')) as { dependencies: Record<string, string> };
     // Pinned to the same Expo SDK as `expo` itself (build page: SDK 55; App-Projects: SDK 57).
-    expect(pkg.dependencies['expo-image-picker'].split('.')[0]).toBe(pkg.dependencies['expo'].split('.')[0]);
+    expect(pkg.dependencies['expo-image-picker']!.split('.')[0]).toBe(pkg.dependencies['expo']!.split('.')[0]);
     const names = Object.keys(pkg.dependencies);
     expect(names).toEqual([...names].sort());
     const app = JSON.parse(read('app.json')) as { expo: { plugins: unknown[] } };

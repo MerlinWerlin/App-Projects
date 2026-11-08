@@ -4,10 +4,16 @@
 # the repo. Written, not run yet.
 #
 # Production: release tag glaze-packs-v1  -> https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1/<asset>
-# Staging:    release tag glaze-packs-staging (a pre-release; app builds with extra.packEnv = "staging")
+#   T274: GitHub allows 1000 assets per release, so packs can also live on glaze-packs-v2, -v3, ...
+#   (scripts/packs/releases.json; a catalogue entry's `release`). catalog.json is ALWAYS on
+#   glaze-packs-v1. Every tag the catalogue uses is created if missing and filled first; glaze-packs-v1
+#   is done last, and its catalog.json is the very last upload.
+# Staging:    release tag glaze-packs-staging (a pre-release; app builds with extra.packEnv = "staging").
+#   One release holds every pack (the app ignores `release` on the staging base).
 # Asset names are flat (art/<id>/v<n>/<file> -> art__<id>__v<n>__<file>; src/core/packHost.ts).
-# Upload order: pack files, then manifests, then catalog.json last. Files already on the release are
-# skipped (content-hashed names); catalog.json is replaced (--clobber). Older pack versions stay.
+# Upload order per tag: pack files, then manifests, then (v1 only) catalog.json last. Files already on
+# a release are skipped (content-hashed names); catalog.json is replaced (--clobber). Older pack
+# versions stay.
 name: Publish Glaze theme packs
 
 on:
@@ -22,13 +28,17 @@ on:
         description: 'Comma-separated pack ids to rebuild (empty = all)'
         required: false
         default: ''
+      release:
+        description: 'Release for packs never published before (glaze-packs-v<n>; packs keep the tag in scripts/packs/releases.json)'
+        required: false
+        default: 'glaze-packs-v1'
       dry_run:
         description: 'Build and plan only, no release changes'
         type: boolean
         default: false
 
 permissions:
-  contents: write # create the release and upload its assets with GITHUB_TOKEN
+  contents: write # create the releases and upload their assets with GITHUB_TOKEN
 
 concurrency:
   group: glaze-publish-packs
@@ -43,7 +53,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      TAG: ${{ inputs.target == 'production' && 'glaze-packs-v1' || 'glaze-packs-staging' }}
+      TARGET: ${{ inputs.target }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -57,69 +67,99 @@ jobs:
       - name: Build packs
         env:
           ONLY: ${{ inputs.only }}
+          NEW_RELEASE: ${{ inputs.release }}
         run: |
           if [ -n "$ONLY" ]; then
-            node scripts/packs/build_packs.mjs --plus-file scripts/packs/tiers.json --only "$ONLY"
+            node scripts/packs/build_packs.mjs --plus-file scripts/packs/tiers.json --release "$NEW_RELEASE" --only "$ONLY"
           else
-            node scripts/packs/build_packs.mjs --plus-file scripts/packs/tiers.json
+            node scripts/packs/build_packs.mjs --plus-file scripts/packs/tiers.json --release "$NEW_RELEASE"
           fi
-      - name: Read the release (if it exists)
+      - name: Read the releases (if they exist)
         run: |
-          if gh release view "$TAG" --json assets > /tmp/existing.json 2>/dev/null; then
-            echo "release $TAG exists"
+          mkdir -p /tmp/existing
+          if [ "$TARGET" = "production" ]; then
+            # Every tag the catalogue uses, plus glaze-packs-v1 (catalog.json).
+            node -e 'const c=require("./dist/packs/catalog.json");const t=new Set(["glaze-packs-v1"]);for(const p of c.packs) if(p.release) t.add(p.release);console.log([...t].join("\n"))' > /tmp/tags.txt
           else
-            echo '{"assets":[]}' > /tmp/existing.json
-            echo "release $TAG does not exist yet"
+            echo glaze-packs-staging > /tmp/tags.txt
           fi
-      - name: Flatten into release assets
-        run: node scripts/packs/release_assets.mjs --dir dist/packs --out dist/release --existing /tmp/existing.json
-      - name: Create the release if missing
-        if: ${{ !inputs.dry_run }}
-        run: |
-          if ! gh release view "$TAG" > /dev/null 2>&1; then
-            PRE=""
-            if [ "$TAG" = "glaze-packs-staging" ]; then PRE="--prerelease"; fi
-            gh release create "$TAG" --target "$GITHUB_SHA" --title "Glaze theme packs ($TAG)" \
-              --notes "Theme art packs for the Glaze app. Assets are uploaded by the 'Publish Glaze theme packs' workflow; do not edit by hand." \
-              --latest=false $PRE
-          fi
-      - name: Upload (files, then manifests, then catalog.json last)
-        if: ${{ !inputs.dry_run }}
-        working-directory: apps/glaze/dist/release/assets
-        run: |
-          for list in upload-1-files.txt upload-2-manifests.txt upload-3-catalog.txt; do
-            n=$(grep -c . "../$list" || true)
-            echo "$list: $n asset(s)"
-            if [ "$n" -gt 0 ]; then
-              # Batches of 50 per gh call; --clobber replaces catalog.json (and any same-name file).
-              xargs -a "../$list" -d '\n' -n 50 gh release upload "$TAG" --clobber
+          while read -r tag; do
+            [ -n "$tag" ] || continue
+            if gh release view "$tag" --json assets > "/tmp/existing/$tag.json" 2>/dev/null; then
+              echo "release $tag exists ($(node -e 'console.log(require(process.argv[1]).assets.length)' "/tmp/existing/$tag.json") assets)"
+            else
+              echo '{"assets":[]}' > "/tmp/existing/$tag.json"
+              echo "release $tag does not exist yet"
             fi
-          done
+          done < /tmp/tags.txt
+      - name: Flatten into release assets (one folder per tag)
+        run: |
+          if [ "$TARGET" = "production" ]; then
+            # dist/release/<tag>/{assets,plan.json,upload-*.txt} and dist/release/tags.txt (v1 last).
+            node scripts/packs/release_assets.mjs --dir dist/packs --out dist/release --existing-dir /tmp/existing
+          else
+            node scripts/packs/release_assets.mjs --single --dir dist/packs --out dist/release/glaze-packs-staging --existing /tmp/existing/glaze-packs-staging.json
+            echo glaze-packs-staging > dist/release/tags.txt
+          fi
+          cat dist/release/tags.txt
+      - name: Create the releases if missing
+        if: ${{ !inputs.dry_run }}
+        run: |
+          while read -r tag; do
+            [ -n "$tag" ] || continue
+            if ! gh release view "$tag" > /dev/null 2>&1; then
+              PRE=""
+              if [ "$tag" = "glaze-packs-staging" ]; then PRE="--prerelease"; fi
+              gh release create "$tag" --target "$GITHUB_SHA" --title "Glaze theme packs ($tag)" \
+                --notes "Theme art packs for the Glaze app. Assets are uploaded by the 'Publish Glaze theme packs' workflow; do not edit by hand." \
+                --latest=false $PRE
+            fi
+          done < dist/release/tags.txt
+      - name: Upload (per tag files, then manifests; glaze-packs-v1 last, catalog.json the very last)
+        if: ${{ !inputs.dry_run }}
+        run: |
+          while read -r tag; do
+            [ -n "$tag" ] || continue
+            ( cd "dist/release/$tag/assets"
+              for list in upload-1-files.txt upload-2-manifests.txt upload-3-catalog.txt; do
+                n=$(grep -c . "../$list" || true)
+                echo "$tag $list: $n asset(s)"
+                if [ "$n" -gt 0 ]; then
+                  # Batches of 50 per gh call; --clobber replaces catalog.json (and any same-name file).
+                  xargs -a "../$list" -d '\n' -n 50 gh release upload "$tag" --clobber
+                fi
+              done )
+          done < dist/release/tags.txt
       - name: Verify the public URLs
         if: ${{ !inputs.dry_run }}
-        working-directory: apps/glaze/dist/release
         run: |
-          BASE="https://github.com/${GH_REPO}/releases/download/${TAG}"
           fail=0
-          # Every uploaded asset must download with the exact bytes built (sha256 from plan.json).
-          node -e 'const p=require("./plan.json");for(const a of p.assets) if(a.upload) console.log(a.name+" "+a.sha256)' > /tmp/check.txt
-          while read -r name want; do
-            got=""
-            # A replaced catalog.json can take a moment to be served fresh: up to 5 tries.
-            for i in 1 2 3 4 5; do
-              got=$(curl -fsSL --retry 3 --retry-delay 5 "$BASE/$name" | sha256sum | cut -d" " -f1) || got="(download failed)"
-              [ "$got" = "$want" ] && break
-              sleep 10
-            done
-            if [ "$got" != "$want" ]; then echo "MISMATCH $name: $got"; fail=1; fi
-          done < /tmp/check.txt
-          echo "checked $(wc -l < /tmp/check.txt) asset(s) at $BASE"
+          total=0
+          while read -r tag; do
+            [ -n "$tag" ] || continue
+            BASE="https://github.com/${GH_REPO}/releases/download/${tag}"
+            # Every uploaded asset must download with the exact bytes built (sha256 from plan.json).
+            node -e 'const p=require(process.argv[1]);for(const a of p.assets) if(a.upload) console.log(a.name+" "+a.sha256)' "$PWD/dist/release/$tag/plan.json" > /tmp/check.txt
+            while read -r name want; do
+              got=""
+              # A replaced catalog.json can take a moment to be served fresh: up to 5 tries.
+              for i in 1 2 3 4 5; do
+                got=$(curl -fsSL --retry 3 --retry-delay 5 "$BASE/$name" | sha256sum | cut -d" " -f1) || got="(download failed)"
+                [ "$got" = "$want" ] && break
+                sleep 10
+              done
+              if [ "$got" != "$want" ]; then echo "MISMATCH $tag/$name: $got"; fail=1; fi
+            done < /tmp/check.txt
+            echo "checked $(wc -l < /tmp/check.txt) asset(s) at $BASE"
+          done < dist/release/tags.txt
           exit $fail
-      - name: Keep the version lock and the plan
+      - name: Keep the version lock, the release map and the plans
         uses: actions/upload-artifact@v4
         with:
           name: pack-versions-${{ inputs.target }}
           path: |
             apps/glaze/scripts/packs/versions.json
-            apps/glaze/dist/release/plan.json
+            apps/glaze/scripts/packs/releases.json
+            apps/glaze/dist/release/tags.txt
+            apps/glaze/dist/release/*/plan.json
           if-no-files-found: ignore

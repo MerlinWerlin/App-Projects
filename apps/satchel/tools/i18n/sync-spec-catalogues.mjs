@@ -3,10 +3,11 @@
 // Usage (from the app folder): node tools/i18n/sync-spec-catalogues.mjs
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { en } from '../../src/i18n/en.ts';
 import { SPEC_CATALOGUES, specDrift, syncSpec } from '../../src/i18n/specsync.ts';
 
-const root = resolve(new URL('../..', import.meta.url).pathname);
+const root = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 for (const rel of SPEC_CATALOGUES) {
   const file = join(root, rel);
   const text = readFileSync(file, 'utf8');

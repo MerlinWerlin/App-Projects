@@ -49,7 +49,7 @@
 "A photo you pick in Glaze." = "Glaze で選んだ写真。";
 "Choose a photo in Glaze" = "Glaze で写真を選んでください";
 "Little Line" = "ひとこと";
-"A short, gentle line that changes every hour." = "1時間ごとに変わる、短くやさしいひとこと。";
+"A short, gentle line that changes every day." = "毎日変わる、短くやさしいひとこと。";
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "シームレス";
@@ -71,3 +71,91 @@
 "Pause" = "一時停止";
 "Resume" = "再開";
 "Days" = "日";
+
+"Photo album" = "フォトアルバム";
+
+"Choose album photos in Glaze" = "Glazeでアルバムの写真を選ぶ";
+
+"Your selected photos, changing through the day." = "選んだ写真が一日の中で切り替わります。";
+
+"Next photo" = "次の写真";
+
+"Widget size" = "ウィジェットのサイズ";
+/* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
+   The word clock's phrase is English only by design; other languages show a big digital time. */
+"widgets.moon.new" = "新月";
+"widgets.moon.waxingCrescent" = "三日月";
+"widgets.moon.firstQuarter" = "上弦の月";
+"widgets.moon.waxingGibbous" = "十三夜月";
+"widgets.moon.full" = "満月";
+"widgets.moon.waningGibbous" = "寝待月";
+"widgets.moon.lastQuarter" = "下弦の月";
+"widgets.moon.waningCrescent" = "有明月";
+"widgets.moon.lit" = "%1$@ 照らされています";
+"widgets.moon.fullTonight" = "今夜は満月";
+"widgets.moon.fullTomorrow" = "明日は満月";
+"widgets.moon.fullIn" = "満月まであと%1$@日";
+"widgets.moon.nextNights" = "今後7日間の夜";
+"Moon" = "月";
+"Tonight's moon phase, worked out on your phone, in your Glaze theme." = "今夜の月の満ち欠けを端末上で計算し、Glazeテーマで表示します。";
+"Word clock" = "ワードクロック";
+"The time in words, in your Glaze theme." = "時刻を言葉で、Glazeテーマで表示します。";
+"Big clock" = "ビッグクロック";
+"Big, bold numerals in your Glaze theme. Made for StandBy." = "大きく太い数字をGlazeテーマで。スタンバイにぴったり。";
+/* Lock Screen widgets: clock, date, battery, countdown, moon (LockAccessoryWidget.swift, T279) */
+"Glaze Lock" = "Glaze Lock";
+"Lock Screen date" = "日付（ロック画面）";
+"The weekday and date for your Lock Screen." = "ロック画面用の曜日と日付。";
+"Lock Screen battery" = "バッテリー（ロック画面）";
+"Your battery level for your Lock Screen." = "ロック画面用のバッテリー残量。";
+"Lock Screen countdown" = "カウントダウン（ロック画面）";
+"Days left to the date you choose in Glaze." = "Glazeで選んだ日までの日数。";
+"Lock Screen moon" = "月（ロック画面）";
+"Tonight's moon and the days to the next full moon." = "今夜の月と次の満月までの日数。";
+"Choose a date in Glaze" = "Glazeで日付を選んでください";
+"lock.battery" = "バッテリー";
+"lock.moon" = "月";
+"lock.moon.fullToday" = "今日は満月";
+"lock.countdown.days" = "あと%1$@日";
+"lock.moon.fullIn" = "満月まであと%1$@日";
+"lock.moon.lit" = "輝面比 %1$@";
+/* Next event and Weather widgets (CalendarEventWidget.swift, WeatherWidget.swift; owner-1102b T280/T281) */
+"Next event" = "次の予定";
+"Your next calendar event, in your Glaze theme." = "次のカレンダーの予定を Glaze のテーマで。";
+"Open Glaze to show your next event" = "Glaze を開いて次の予定を表示";
+"No events in the next 7 days" = "今後7日間に予定はありません";
+"All day" = "終日";
+"Now" = "今";
+"Tomorrow" = "明日";
+"calendar.untitled" = "予定";
+"calendar.sample.1" = "サムとコーヒー";
+"calendar.sample.2" = "チームの打ち合わせ";
+"calendar.sample.3" = "ヨガ";
+"Weather" = "天気";
+"The weather where you are, in your Glaze theme." = "現在地の天気を Glaze のテーマで。";
+"Open Glaze to set weather" = "Glaze を開いて天気を設定";
+"Updated %@" = "%@ 更新";
+"H:%@ L:%@" = "最高:%1$@ 最低:%2$@";
+"Weather data by Open-Meteo.com" = "気象データ: Open-Meteo.com";
+/* Streak widget (HabitStreakWidget.swift, TickHabitIntent, T284). habit.a11y.*: 1 = days / habit name */
+"habit.streak.caption" = "連続";
+"habit.streak.tick" = "今日をチェック";
+"habit.streak.done" = "今日は完了";
+"habit.streak.name" = "連続記録";
+"habit.streak.desc" = "毎日習慣をチェックして、連続記録をのばしましょう。";
+"habit.a11y.streak" = "%1$@日連続";
+"habit.a11y.tick" = "今日の%1$@をチェック";
+"Tick a habit" = "習慣をチェック";
+"Streak habit" = "連続記録の習慣";
+"Choose the habit this streak widget follows." = "この連続記録ウィジェットで追う習慣を選びます。";
+
+"Unavailable" = "取得できません";
+"Full" = "満充電";
+"Remaining" = "残量";
+
+/* Theme gallery */
+"Battery" = "バッテリー";
+"Calendar" = "カレンダー";
+"Matches the theme you choose in Glaze." = "Glazeで選んだテーマに合います。";
+/* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
+"Artwork from the theme you choose in Glaze." = "Glazeで選んだテーマのアート。";

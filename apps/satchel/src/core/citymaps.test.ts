@@ -3,6 +3,11 @@ import { test } from 'node:test';
 import {
   bboxContains,
   CATALOG_URL,
+  cityDiskBytes,
+  darkDirOf,
+  darkPackEntryPath,
+  darkPackMetaOk,
+  darkPackUrl,
   formatSize,
   latToTileY,
   lonToTileX,
@@ -11,9 +16,11 @@ import {
   packUrl,
   parseCatalog,
   parseCity,
+  parseDarkPack,
   pickCityFor,
   regionForCity,
   tileCountEstimate,
+  tilePathForScheme,
   tilePathTemplate,
   validBBox,
   zoomsOf,
@@ -176,4 +183,78 @@ test('overall progress: download then unpack', () => {
   assert.equal(overallProgress('unpack', 0.5), 0.875);
   assert.equal(overallProgress('unpack', 2), 1);
   assert.equal(overallProgress('download', NaN), 0);
+});
+
+// ---- T166: dark tile packs ----
+
+const darkEntry = { file: 'kyoto-dark.tar', bytes: 30_000_000, sha256: 'B'.repeat(64), tiles: 811 };
+
+test('T166: a city with a dark pack keeps it; without one nothing changes', () => {
+  const c = parseCity({ ...kyoto, dark: darkEntry });
+  assert.ok(c);
+  assert.deepEqual(c.dark, { file: 'kyoto-dark.tar', bytes: 30_000_000, sha256: 'b'.repeat(64), tiles: 811 });
+  assert.equal(darkPackUrl(c), 'https://github.com/MerlinWerlin/App-Projects/releases/download/satchel-maps-v1/kyoto-dark.tar');
+  const plain = parseCity(kyoto);
+  assert.ok(plain);
+  assert.equal('dark' in plain, false);
+  assert.equal(darkPackUrl(plain), null);
+  // optional fields stay optional
+  assert.deepEqual(parseDarkPack({ file: 'kyoto-dark.tar', bytes: 5 }), { file: 'kyoto-dark.tar', bytes: 5 });
+  assert.deepEqual(parseDarkPack({ ...darkEntry, sha256: 'xyz', tiles: -1 }), { file: 'kyoto-dark.tar', bytes: 30_000_000 });
+});
+
+test('T166: a bad dark object is dropped, never the city', () => {
+  for (const dark of [
+    null,
+    'kyoto-dark.tar',
+    [darkEntry],
+    { ...darkEntry, file: 'kyoto.tar' }, // not a -dark.tar
+    { ...darkEntry, file: '../kyoto-dark.tar' },
+    { ...darkEntry, file: 'https://evil.example/kyoto-dark.tar' },
+    { ...darkEntry, file: 'dark/kyoto-dark.tar' },
+    { ...darkEntry, file: 'Kyoto-dark.tar' },
+    { ...darkEntry, file: 'kyoto-dark.tar.gz' },
+    { ...darkEntry, bytes: 0 },
+    { ...darkEntry, bytes: 5 * 1024 ** 3 },
+    { ...darkEntry, bytes: 1.5 },
+    { ...darkEntry, bytes: '30000000' },
+    { file: 'kyoto-dark.tar' },
+  ]) {
+    const c = parseCity({ ...kyoto, dark });
+    assert.ok(c, JSON.stringify(dark));
+    assert.equal(c.dark, undefined, JSON.stringify(dark));
+  }
+  const cat = parseCatalog({ version: 1, cities: [{ ...kyoto, dark: { file: '../x-dark.tar', bytes: 1 } }] });
+  assert.deepEqual(cat?.cities.map((c) => [c.id, c.dark]), [['kyoto', undefined]]);
+});
+
+test('T166: a dark pack writes only its meta.json and tiles; pois.json and anything unsafe are skipped', () => {
+  assert.equal(darkPackEntryPath('meta.json'), 'meta.json');
+  assert.equal(darkPackEntryPath('./tiles/16/58210/25803.png'), 'tiles/16/58210/25803.png');
+  for (const bad of ['pois.json', '../tiles/1/0/0.png', 'tiles/21/0/0.png', 'dark/tiles/1/0/0.png', '.complete', 'tiles/10/1/2.jpg']) {
+    assert.equal(darkPackEntryPath(bad), null, bad);
+  }
+  assert.equal(darkPackMetaOk({ id: 'kyoto', flavor: 'dark' }, 'kyoto'), true);
+  assert.equal(darkPackMetaOk({ id: 'kyoto' }, 'kyoto'), false, 'a light meta.json is not a dark pack');
+  assert.equal(darkPackMetaOk({ id: 'tokyo', flavor: 'dark' }, 'kyoto'), false);
+  assert.equal(darkPackMetaOk(null, 'kyoto'), false);
+});
+
+test('T166: dark tiles sit in the city folder; dark mode uses them only when installed', () => {
+  assert.equal(darkDirOf('file:///docs/maps/kyoto/'), 'file:///docs/maps/kyoto/dark/');
+  assert.equal(darkDirOf('file:///docs/maps/kyoto'), 'file:///docs/maps/kyoto/dark/');
+  assert.equal(tilePathTemplate(darkDirOf('file:///docs/maps/kyoto/')), '/docs/maps/kyoto/dark/tiles/{z}/{x}/{y}.png');
+  const both = { pathTemplate: '/m/kyoto/tiles/{z}/{x}/{y}.png', darkPathTemplate: '/m/kyoto/dark/tiles/{z}/{x}/{y}.png' };
+  assert.equal(tilePathForScheme(both, true), both.darkPathTemplate);
+  assert.equal(tilePathForScheme(both, false), both.pathTemplate);
+  assert.equal(tilePathForScheme({ pathTemplate: both.pathTemplate }, true), both.pathTemplate);
+  assert.equal(tilePathForScheme({ pathTemplate: both.pathTemplate, darkPathTemplate: null }, true), both.pathTemplate);
+});
+
+test('T167: cityDiskBytes adds the dark tiles only when they are installed', () => {
+  const c = { bytes: 16_000_000, dark: { file: 'sydney-dark.tar', bytes: 15_000_000 } };
+  assert.equal(cityDiskBytes(c, false), 16_000_000);
+  assert.equal(cityDiskBytes(c, true), 31_000_000);
+  assert.equal(cityDiskBytes({ bytes: 16_000_000 }, true), 16_000_000);
+  assert.equal(formatSize(cityDiskBytes(c, true)), '31 MB');
 });

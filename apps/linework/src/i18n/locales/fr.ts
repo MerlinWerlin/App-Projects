@@ -506,10 +506,21 @@ export const fr: Translation = {
   'settings.free.body': 'Tous les outils de calque de Linework sont gratuits: calque avec l’appareil photo, opacité, verrouillage, lampe torche, grille, miroir, verrouillage tactile, table lumineuse, mode contours et vos propres photos. Sans pub, sans essai, sans abonnement hebdomadaire.',
   'settings.free.plusLink': 'Linework Plus et pourboires',
   'settings.free.plusHint': 'Extras facultatifs, en achat unique. Ne bloque jamais un outil de calque.',
+  'settings.free.playBody': "Le tracé avec la caméra, vos photos, les outils et {count} modèles de base restent gratuits. L’essai facultatif de 14 jours comprend toute la bibliothèque et les contours de photos. Un achat unique de Plus conserve ces extras.",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "Achat unique facultatif pour toute la bibliothèque et les contours de photos",
 
   'settings.privacy.title': 'Confidentialité',
   'settings.privacy.body': 'Données non collectées. Linework n’a ni compte, ni statistiques, ni publicité. Vos photos restent sur ce téléphone et ne sont jamais envoyées; les contours sont créés sur l’appareil.',
+  'settings.privacy.playBody': "Les images sont traitées sur cet appareil. La bibliothèque de facturation de Google envoie des diagnostics techniques à Google. Sans publicité ni compte dans l’application. Touchez pour lire la politique de confidentialité.",
+  'settings.privacy.openHint': "Ouvrir la politique de confidentialité de Linework dans le navigateur",
+  'settings.privacy.openFailed': "Impossible d’ouvrir le navigateur. Politique de confidentialité : {url}",
 
+  'settings.review.title': "Code d’accès à Plus",
+  'settings.review.active': "L’accès à Plus est actif",
+  'settings.review.enter': "Saisir le code d’accès",
+  'settings.review.apply': "Activer l’accès",
+  'settings.review.invalid': "Ce code n’a pas pu être activé. Vérifiez-le et réessayez.",
   'settings.about.title': 'À propos',
   'settings.about.body': 'Linework {version}. Les modèles sont des dessins au trait originaux créés pour Linework.',
 

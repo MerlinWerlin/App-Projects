@@ -1,0 +1,45 @@
+name: Hollowhue QA evidence
+on:
+  push:
+    branches: ['codex/hollowhue-*']
+    paths: ['apps/hollowhue/QA_EVIDENCE_REQUEST.json']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Preserve reviewed-source iPhone screenshots in the app docs
+        run: |
+          QA_RUN=$(node -p 'require("./apps/hollowhue/QA_EVIDENCE_REQUEST.json").run')
+          QA_SHA=$(node -p 'require("./apps/hollowhue/QA_EVIDENCE_REQUEST.json").source')
+          QA_CAPTURE_SHA=$(node -p 'const r=require("./apps/hollowhue/QA_EVIDENCE_REQUEST.json");r.captureSource || r.source')
+          QA_DIR=$(node -p 'require("./apps/hollowhue/QA_EVIDENCE_REQUEST.json").directory || "qa-20261104"')
+          [[ "$QA_DIR" =~ ^qa-[a-z0-9-]+$ ]] || { echo 'Invalid QA evidence directory'; exit 1; }
+          test "$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$QA_RUN" --jq .conclusion)" = success
+          test "$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$QA_RUN" --jq .head_sha)" = "$QA_CAPTURE_SHA"
+          git diff --exit-code "$QA_SHA" HEAD -- apps/hollowhue/app apps/hollowhue/src apps/hollowhue/assets apps/hollowhue/modules apps/hollowhue/scripts apps/hollowhue/metro.config.js apps/hollowhue/babel.config.js apps/hollowhue/app.config.ts apps/hollowhue/app.config.js apps/hollowhue/tsconfig.json apps/hollowhue/app.json apps/hollowhue/eas.json apps/hollowhue/package.json apps/hollowhue/package-lock.json ':(exclude)apps/hollowhue/scripts/iphone-flow.yaml'
+          gh run download "$QA_RUN" --repo "$GITHUB_REPOSITORY" --name hollowhue-release-captures --dir "$RUNNER_TEMP/hollowhue-qa"
+          python3 - <<'PY'
+          import json,os,pathlib,shutil
+          request=json.loads(pathlib.Path('apps/hollowhue/QA_EVIDENCE_REQUEST.json').read_text())
+          markers=[p.read_text() for p in pathlib.Path(os.environ['RUNNER_TEMP'],'hollowhue-qa').glob('**/README.txt')]
+          assert any('App source: '+request['source'] in text and 'Capture workflow: '+request.get('captureSource',request['source']) in text for text in markers), 'Capture/app source marker mismatch'
+          output=pathlib.Path('apps/hollowhue/docs',request.get('directory','qa-20261104'));output.mkdir(exist_ok=True)
+          images=sorted(pathlib.Path(os.environ['RUNNER_TEMP'],'hollowhue-qa').glob('**/takeScreenshot/*.png'))
+          assert len(images)>=request.get('expectedImages',8), 'Missing expected iPhone screenshots'
+          for image in images: shutil.copyfile(image,output/image.name)
+          (output/'receipt.json').write_text(json.dumps({'run':request['run'],'source':request['source'],'captureSource':request.get('captureSource',request['source']),'platform':'iPhone simulator','otaDisabledForCapture':True,'images':[p.name for p in images],'physicalPhoneUptakeVerified':False},indent=2)+'\n')
+          PY
+          git add "apps/hollowhue/docs/$QA_DIR"
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Preserve Hollowhue native iPhone QA screenshots' -m 'Co-Authored-By: Codex <codex@openai.com>'
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi

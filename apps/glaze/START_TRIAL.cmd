@@ -18,11 +18,13 @@ if not exist package.json (
   exit /b 1
 )
 for /f "delims=" %%v in ('node -v') do echo node %%v >> "%LOG%"
+if exist KIT_VERSION.txt type KIT_VERSION.txt
 echo Installing packages (first time takes a few minutes)...
 call :logged "npm install"
 if errorlevel 1 goto failed
 echo Matching package versions to the Expo Go app on your phone...
 call :logged "npx expo install expo@latest"
+call :logged "npx expo install expo-blur expo-linear-gradient"
 call :logged "npx expo install --fix"
 echo.
 echo Starting Glaze. When the QR code appears, scan it with your iPhone Camera app.

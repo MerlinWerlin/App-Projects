@@ -106,10 +106,43 @@ export function parseBrowseCategory(raw: unknown): BrowseCategoryId {
 /** What browsing needs from a theme: its id, and (optional) its parsed or raw category. */
 export type Browsable = { id: string; browseCategory?: unknown; category?: unknown };
 
-/** A theme's category: its parsed `browseCategory`, else its raw `category`, else More. */
+/**
+ * owner-1101 (Jared 1 Nov 19:37: "they all need to be in categories"): the original built-in
+ * themes (src/core/themes.ts THEMES) carry no category, so they fell under More. Their categories.
+ */
+export const BUILT_IN_THEME_CATEGORIES: Readonly<Record<string, NamedBrowseCategoryId>> = Object.freeze({
+  'strawberry-dessert': 'sweets-treats',
+  'cottage-garden': 'nature',
+  'wildflower-meadow': 'nature',
+  'celestial-night': 'space-night',
+  'moon-phase': 'space-night',
+  'whimsy-forest': 'nature',
+  'romantic-lace': 'dreamy-pastel',
+  'cloud-nine': 'dreamy-pastel',
+  'seaside-shells': 'ocean-water',
+  'retro-diner': 'city-retro',
+  'matcha-cafe': 'sweets-treats',
+  'cherry-blossom': 'seasonal',
+  'pumpkin-patch': 'seasonal',
+  'candy-arcade': 'sweets-treats',
+  'still-water': 'ocean-water',
+  'sakura-sprint': 'abstract-art',
+  'little-ghosts': 'seasonal',
+  'night-drive': 'city-retro',
+  'pixel-party': 'city-retro',
+  'little-acre': 'cute-cosy',
+  'midnight-munchers': 'cute-cosy',
+  'cape-and-bolt': 'abstract-art',
+  'storybook-castle': 'dreamy-pastel',
+  'woodland-friends': 'cute-cosy',
+});
+
+/** A theme's category: its parsed `browseCategory`, else its raw `category`, else its built-in category, else More. */
 export function browseCategoryOf(t: Browsable): BrowseCategoryId {
-  if (isBrowseCategoryId(t.browseCategory)) return t.browseCategory;
-  return parseBrowseCategory(t.category);
+  if (isBrowseCategoryId(t.browseCategory) && t.browseCategory !== MORE_CATEGORY) return t.browseCategory;
+  const parsed = parseBrowseCategory(t.category);
+  if (parsed !== MORE_CATEGORY) return parsed;
+  return BUILT_IN_THEME_CATEGORIES[t.id] ?? MORE_CATEGORY;
 }
 
 /**

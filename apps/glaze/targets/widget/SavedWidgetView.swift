@@ -47,13 +47,14 @@ struct SavedWidgetFill: View {
 struct SavedWidgetView: View {
   let design: SavedWidgetDesign
   let date: Date
+  var albumImage: UIImage? = nil
 
   var body: some View {
     GeometryReader { geo in
       ZStack(alignment: .topLeading) {
         ForEach(Array(design.regions.enumerated()), id: \.offset) { _, region in
           let frame = object(region, "frame")
-          SavedWidgetRegion(region: region, design: design, date: date, scale: min(geo.size.width / design.width, geo.size.height / design.height))
+          SavedWidgetRegion(region: region, design: design, date: date, scale: min(geo.size.width / design.width, geo.size.height / design.height), albumImage: albumImage)
             .frame(width: max(0, number(frame, "w")) * geo.size.width, height: max(0, number(frame, "h")) * geo.size.height)
             .clipped()
             .offset(x: number(frame, "x") * geo.size.width, y: number(frame, "y") * geo.size.height)
@@ -79,6 +80,7 @@ private struct SavedWidgetRegion: View {
   let design: SavedWidgetDesign
   let date: Date
   let scale: Double
+  let albumImage: UIImage?
   private var colour: Color { Color(hex: string(region, "colour", design.accent)) }
   private var period: WidgetPeriod { WidgetPeriod.at(date, year: design.kind == "yearProgress") }
   private func textFont(_ text: [String: Any]) -> Font {
@@ -114,10 +116,22 @@ private struct SavedWidgetRegion: View {
     case "band", "scrim":
       SavedWidgetFill(fill: object(region, "fill")).opacity(number(region, "fillOpacity", 1))
     case "photo":
-      if string(design.raw, "photoRef") == GlazeShared.photoFile, let image = ThemeStore.loadPhoto() {
+      if design.kind == "photoAlbum", let image = albumImage {
+        Image(uiImage: image).resizable().scaledToFill()
+      } else if string(design.raw, "photoRef") == GlazeShared.photoFile, let image = ThemeStore.loadPhoto() {
         Image(uiImage: image).resizable().scaledToFill()
       } else {
         ZStack { SavedWidgetFill(fill: object(region, "fill")); Image(systemName: "photo").foregroundStyle(colour) }
+      }
+    case "action":
+      if design.kind == "photoAlbum", design.albumRefs.count > 1 {
+        Button(intent: NextAlbumPhotoIntent(size: string(design.raw, "size"))) {
+          Image(systemName: "forward.end.fill").font(.system(size: max(12, 24 * scale), weight: .semibold))
+            .foregroundStyle(colour).frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background { SavedWidgetFill(fill: object(region, "fill")) }
+            .clipShape(RoundedRectangle(cornerRadius: 18.33 * scale, style: .continuous))
+        }.buttonStyle(.plain)
+          .accessibilityLabel(Text(design.texts["next.label"] ?? String(localized: "Next photo")))
       }
     case "dots":
       let dots = object(region, "dots")
@@ -180,9 +194,8 @@ private struct SavedWidgetRegion: View {
     case "monthProgress", "yearProgress": return "\(period.day)/\(period.total)"
     case "progressPercent": return (floor(period.fraction * 100) / 100).formatted(.percent.precision(.fractionLength(0)))
     case "countdown":
-      let formatter = DateFormatter(); formatter.locale = Locale(identifier: "en_US_POSIX"); formatter.dateFormat = "yyyy-MM-dd"; formatter.isLenient = false
-      guard let target = formatter.date(from: string(design.raw, "countdownTo")) else { return "—" }
-      return (cal.dateComponents([.day], from: cal.startOfDay(for: date), to: cal.startOfDay(for: target)).day ?? 0).formatted()
+      guard let days = WidgetDay.remaining(to: string(design.raw, "countdownTo"), from: date, calendar: cal) else { return "—" }
+      return days.formatted()
     default: return string(text, "userText", design.texts[string(region, "id")] ?? "")
     }
   }
@@ -212,8 +225,9 @@ extension HabitKindID {
 }
 
 /// Keeps all existing interactive habit actions while applying the saved colours/gradient per size.
-func savedHabitTheme(_ theme: WidgetTheme, kind: String, family: WidgetFamily) -> WidgetTheme {
-  guard let design = ThemeStore.savedDesign(kind: kind, family: family, theme: theme) else { return theme }
+// Pure palette adaptation; the caller loads its saved design once per render.
+func savedHabitTheme(_ theme: WidgetTheme, design: SavedWidgetDesign?) -> WidgetTheme {
+  guard let design else { return theme }
   var changed = theme
   let bg = design.background
   changed.bg = string(bg, "kind") == "gradient" ? [string(bg, "from"), string(bg, "to")] : [string(bg, "colour", theme.bg.first ?? "#F6F3F5")]

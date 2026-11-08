@@ -1,0 +1,138 @@
+{
+  "scenes": [
+    {
+      "id": "storybook-places",
+      "theme": "places",
+      "difficulty": "advanced",
+      "palette": "dusk",
+      "title": "Storybook Places",
+      "blurb": "Stone cottages, a Parisian cafe and intricate gardens, with six hidden discoveries.",
+      "art": [
+        "cottage",
+        "cafe",
+        "bookshop",
+        "conservatory",
+        "canal",
+        "lighthouse",
+        "teagarden"
+      ]
+    },
+    {
+      "id": "botanical-treasury",
+      "theme": "flowers",
+      "difficulty": "intermediate",
+      "palette": "garden",
+      "title": "Botanical Treasury",
+      "blurb": "Realistic camellias, roses and orchids, with six more botanical pictures inside.",
+      "art": [
+        "botanical",
+        "magnolia",
+        "rose",
+        "hydrangea",
+        "iris",
+        "orchid",
+        "peony"
+      ]
+    },
+    {
+      "id": "forest-friends",
+      "theme": "animals",
+      "difficulty": "advanced",
+      "palette": "cosy",
+      "title": "Wildwood Sanctuary",
+      "blurb": "An owl, fox, hare and other woodland wildlife, richly illustrated across six zooms.",
+      "art": [
+        "owl",
+        "fox",
+        "hare",
+        "kingfisher",
+        "hummingbird",
+        "deer",
+        "redpanda"
+      ]
+    },
+    {
+      "id": "ocean-friends",
+      "theme": "sealife",
+      "difficulty": "intermediate",
+      "palette": "pastel",
+      "title": "Ocean Wonders",
+      "blurb": "Explore natural reef life, delicate shells and graceful sea creatures through six zooms.",
+      "art": [
+        "reef",
+        "seahorse",
+        "octopus",
+        "jellyfish",
+        "fish",
+        "seashells",
+        "dolphins"
+      ]
+    },
+    {
+      "id": "lace-petals",
+      "theme": "patterns",
+      "difficulty": "advanced",
+      "palette": "jewel",
+      "title": "Petals & Patterns",
+      "blurb": "Flowing botanical ornaments, peacock feathers and intricate floral detail, six zooms deep.",
+      "art": [
+        "orn-rose",
+        "orn-lotus",
+        "orn-peacock",
+        "orn-strawberry",
+        "orn-willow",
+        "orn-dahlia",
+        "orn-paisley"
+      ]
+    },
+    {
+      "id": "garden-blooms",
+      "theme": "flowers",
+      "difficulty": "beginner",
+      "palette": "garden",
+      "title": "Garden Blooms",
+      "blurb": "Graceful flowers with larger shapes and clear lines. Seven pictures, six gentle discoveries.",
+      "art": [
+        "begin-daisy",
+        "begin-tulip",
+        "begin-poppy",
+        "begin-lily",
+        "begin-sunflower",
+        "begin-hibiscus",
+        "begin-cosmos"
+      ]
+    },
+    {
+      "id": "mega-ornament",
+      "theme": "patterns",
+      "difficulty": "advanced",
+      "palette": "jewel",
+      "mega": true,
+      "title": "The Twentyfold Garden",
+      "blurb": "Twenty real zooms through twenty-one illustrated gardens, flowers and woodland discoveries.",
+      "art": [
+        "orn-rose",
+        "botanical",
+        "owl",
+        "orn-lotus",
+        "magnolia",
+        "fox",
+        "orn-peacock",
+        "rose",
+        "hare",
+        "orn-strawberry",
+        "hydrangea",
+        "kingfisher",
+        "orn-willow",
+        "iris",
+        "hummingbird",
+        "orn-dahlia",
+        "orchid",
+        "deer",
+        "orn-paisley",
+        "peony",
+        "redpanda"
+      ]
+    }
+  ]
+}

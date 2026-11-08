@@ -1,0 +1,407 @@
+name: Glaze installed Widgets link
+on:
+  push:
+    branches: ['codex/glaze-theme-release-20261101']
+    paths: ['.github/workflows/glaze-native-link-smoke.yml']
+  workflow_dispatch:
+    inputs:
+      diagnostic_art_trace:
+        description: 'Diagnostic only: log the decoded intent and actual view choice in a temporary extension build; never qualifies a release'
+        type: boolean
+        default: false
+      theme_swap_check:
+        description: 'Also apply Alpine to Aurora to Alpine and verify all three real native Home Screen widgets plus native diagnostics before the Alpine art gate'
+        type: boolean
+        default: false
+      simulator_run:
+        description: 'Full native run containing glaze-simulator-installable; blank compiles the test runner only'
+        required: false
+        default: ''
+        type: string
+      previous_simulator_run:
+        description: '1.0.4 app to seed existing widgets before a theme-gallery or recovery-upgrade test'
+        required: false
+        default: ''
+        type: string
+      upgrade_base_run:
+        description: 'Exact 1.0.6 simulator app for the recovery upgrade'
+        required: false
+        default: ''
+        type: string
+      upgrade_middle_run:
+        description: '1.0.12 simulator app installed before the candidate'
+        required: false
+        default: ''
+        type: string
+      recovered_predecessor_run:
+        description: 'Optional already-released 1.0.13+ app installed and recovered before the candidate; prevents migration from masking later feature regressions'
+        required: false
+        default: ''
+        type: string
+      scenario:
+        description: 'Installed route or actual Home Screen widget and shared-data round trip'
+        type: choice
+        options: [route, widget, album, album-widget, design, alpine, alpine-home, alpine-art, art-gallery, recovery-upgrade, theme-gallery]
+        default: route
+permissions:
+  contents: read
+  actions: read
+jobs:
+  link:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-latest
+    timeout-minutes: 75
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GLAZE_SIMULATOR_RUN: ${{ inputs.simulator_run }}
+      GLAZE_PREVIOUS_SIMULATOR_RUN: ${{ inputs.previous_simulator_run }}
+      GLAZE_UPGRADE_BASE_RUN: ${{ inputs.upgrade_base_run }}
+      GLAZE_UPGRADE_MIDDLE_RUN: ${{ inputs.upgrade_middle_run }}
+      GLAZE_RECOVERED_PREDECESSOR_RUN: ${{ inputs.recovered_predecessor_run }}
+      GLAZE_UI_SCENARIO: ${{ inputs.scenario || 'route' }}
+      GLAZE_ART_TRACE: ${{ inputs.diagnostic_art_trace && 'true' || 'false' }}
+      GLAZE_THEME_SWAP_CHECK: ${{ inputs.theme_swap_check && 'true' || 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        if: inputs.simulator_run != ''
+        with:
+          node-version: 24
+      - name: Prepare existing Apple identity for faithful simulator AppIntents
+        if: inputs.simulator_run != ''
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: python3 apps/glaze/scripts/sign-native-simulator.py setup
+      - name: Build a small XCTest runner without rebuilding Expo
+        working-directory: apps/glaze
+        run: |
+          set -euo pipefail
+          FIXTURE=native-link-ui-tests.swift
+          if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then FIXTURE=native-widget-tap-tests.swift; fi
+          if [[ "$GLAZE_UI_SCENARIO" == design || "$GLAZE_UI_SCENARIO" == alpine || "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == alpine-art || "$GLAZE_UI_SCENARIO" == art-gallery || "$GLAZE_UI_SCENARIO" == recovery-upgrade || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then FIXTURE=native-designed-widget-ui-tests.swift; fi
+          if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then FIXTURE=native-album-ui-tests.swift; fi
+          ruby scripts/prepare-native-link-test.rb "$RUNNER_TEMP/GlazeLinkCheck" "$FIXTURE" "$GLAZE_UI_SCENARIO"
+          xcodebuild -project "$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj" -scheme GlazeLinkCheck -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/link-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build-for-testing > "$RUNNER_TEMP/glaze-link-build.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-link-build.log"; exit 1; }
+      - name: Retrieve the exact previously built simulator app
+        if: inputs.simulator_run != ''
+        run: |
+          set -euo pipefail
+          RUN="$GLAZE_SIMULATOR_RUN"
+          [[ "$RUN" =~ ^[0-9]+$ ]]
+          gh run download "$RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/installable"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN" --jq .head_sha > "$RUNNER_TEMP/installable/run-source.txt"
+          python3 - <<'PY'
+          import os,pathlib,json
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'installable'
+          receipt=json.loads((root/'simulator-app-source.json').read_text())
+          assert receipt['sourceSHA']==(root/'run-source.txt').read_text().strip()
+          assert receipt['bundleId']=='com.jared797.glaze' and receipt['bundledJavaScript'] and receipt['unsignedSimulatorOnly']
+          PY
+          ditto -x -k "$RUNNER_TEMP/installable/glaze-simulator-app.zip" "$RUNNER_TEMP/installable"
+          if [[ -n "$GLAZE_PREVIOUS_SIMULATOR_RUN" ]]; then
+            [[ "$GLAZE_PREVIOUS_SIMULATOR_RUN" =~ ^[0-9]+$ && ( "$GLAZE_UI_SCENARIO" == theme-gallery || "$GLAZE_UI_SCENARIO" == recovery-upgrade ) ]]
+            gh run download "$GLAZE_PREVIOUS_SIMULATOR_RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/previous"
+            ditto -x -k "$RUNNER_TEMP/previous/glaze-simulator-app.zip" "$RUNNER_TEMP/previous"
+          fi
+      - name: Retrieve the exact previous upgrade binaries
+        if: inputs.scenario == 'recovery-upgrade'
+        run: |
+          set -euo pipefail
+          for ITEM in "base:$GLAZE_UPGRADE_BASE_RUN" "middle:$GLAZE_UPGRADE_MIDDLE_RUN"; do
+            LABEL="${ITEM%%:*}"
+            RUN="${ITEM#*:}"
+            [[ "$RUN" =~ ^[0-9]+$ ]]
+            gh run download "$RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/upgrade-$LABEL"
+            ditto -x -k "$RUNNER_TEMP/upgrade-$LABEL/glaze-simulator-app.zip" "$RUNNER_TEMP/upgrade-$LABEL"
+          done
+          if [[ -n "$GLAZE_RECOVERED_PREDECESSOR_RUN" ]]; then
+            [[ "$GLAZE_RECOVERED_PREDECESSOR_RUN" =~ ^[0-9]+$ ]]
+            gh run download "$GLAZE_RECOVERED_PREDECESSOR_RUN" --repo "$GITHUB_REPOSITORY" -n glaze-simulator-installable -D "$RUNNER_TEMP/recovered-predecessor"
+            ditto -x -k "$RUNNER_TEMP/recovered-predecessor/glaze-simulator-app.zip" "$RUNNER_TEMP/recovered-predecessor"
+          fi
+      - name: Install the real app and verify the Widgets route through the system prompt
+        if: inputs.simulator_run != ''
+        timeout-minutes: 65
+        run: |
+          set -euo pipefail
+          APP=$(find "$RUNNER_TEMP/installable" -maxdepth 1 -name '*.app' -print -quit)
+          test -n "$APP"
+          if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then python3 apps/glaze/scripts/prepare-simulator-release-identity.py "$APP" "$RUNNER_TEMP/glaze-native-link-review/install-identities/candidate.json"; fi
+          if [[ "$GLAZE_ART_TRACE" == true ]]; then python3 apps/glaze/scripts/trace-native-art-extension.py "$APP"; fi
+          python3 apps/glaze/scripts/sign-native-simulator.py sign "$APP" "$RUNNER_TEMP/glaze-native-link-review/signing/candidate.json"
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["udid"] for xs in d["devices"].values() for x in xs if "iPhone" in x["name"]))')
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          PROJECT="$RUNNER_TEMP/GlazeLinkCheck/GlazeLinkCheck.xcodeproj"
+          ARGS=(-project "$PROJECT" -scheme GlazeLinkCheck -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath "$RUNNER_TEMP/link-build" -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO)
+          if [[ -n "$GLAZE_PREVIOUS_SIMULATOR_RUN" ]]; then
+            PREVIOUS=$(find "$RUNNER_TEMP/previous" -maxdepth 1 -name '*.app' -print -quit)
+            test -n "$PREVIOUS"
+            test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PREVIOUS/Info.plist")" = 1.0.4
+            if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then python3 apps/glaze/scripts/prepare-simulator-release-identity.py "$PREVIOUS" "$RUNNER_TEMP/glaze-native-link-review/install-identities/seed.json"; fi
+            python3 apps/glaze/scripts/sign-native-simulator.py sign "$PREVIOUS" "$RUNNER_TEMP/glaze-native-link-review/signing/seed.json"
+            xcrun simctl install "$DEVICE" "$PREVIOUS"
+            xcrun simctl launch "$DEVICE" com.jared797.glaze
+            BEFORE_TEST=testAlpineOnHomeScreen
+            BEFORE_MARKER=GLAZE_ALPINE_INSTALLED
+            if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then BEFORE_TEST=testInstallLegacyArtWidgetsForUpgrade; BEFORE_MARKER=GLAZE_LEGACY_ART_WIDGETS_INSTALLED; fi
+            xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-upgrade-before.xcresult" "-only-testing:GlazeLinkUITests/GlazeDesignedWidgetUITests/$BEFORE_TEST" test-without-building > "$RUNNER_TEMP/glaze-upgrade-before.log" 2>&1 || { tail -160 "$RUNNER_TEMP/glaze-upgrade-before.log"; exit 1; }
+            grep -F "$BEFORE_MARKER" "$RUNNER_TEMP/glaze-upgrade-before.log"
+          fi
+          if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then
+            test -n "$GLAZE_PREVIOUS_SIMULATOR_RUN"
+            mkdir -p "$RUNNER_TEMP/glaze-native-link-review/upgrade"
+            for LABEL in base middle; do
+              OLD=$(find "$RUNNER_TEMP/upgrade-$LABEL" -maxdepth 1 -name '*.app' -print -quit)
+              test -n "$OLD"
+              VERSION=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$OLD/Info.plist")
+              if [[ "$LABEL" == base ]]; then test "$VERSION" = 1.0.6; else test "$VERSION" = 1.0.12; fi
+              python3 apps/glaze/scripts/prepare-simulator-release-identity.py "$OLD" "$RUNNER_TEMP/glaze-native-link-review/install-identities/$LABEL.json"
+              python3 apps/glaze/scripts/sign-native-simulator.py sign "$OLD" "$RUNNER_TEMP/glaze-native-link-review/signing/$LABEL.json"
+              xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
+              xcrun simctl install "$DEVICE" "$OLD"
+              xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-upgrade-$LABEL.xcresult" -only-testing:GlazeLinkUITests/GlazeDesignedWidgetUITests/testApplyAlpineForUpgrade test-without-building > "$RUNNER_TEMP/glaze-upgrade-$LABEL.log" 2>&1 || { tail -140 "$RUNNER_TEMP/glaze-upgrade-$LABEL.log"; exit 1; }
+              grep -F GLAZE_UPGRADE_ALPINE_APPLIED "$RUNNER_TEMP/glaze-upgrade-$LABEL.log"
+              python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE"
+              if [[ "$LABEL" == base ]]; then
+                xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-upgrade-existing.xcresult" -only-testing:GlazeLinkUITests/GlazeDesignedWidgetUITests/testPrimeAlpineArtWidgetBeforeUpgrade test-without-building > "$RUNNER_TEMP/glaze-upgrade-existing.log" 2>&1 || { tail -140 "$RUNNER_TEMP/glaze-upgrade-existing.log"; exit 1; }
+                grep -F GLAZE_UPGRADE_EXISTING_ART_WIDGET_PRIMED "$RUNNER_TEMP/glaze-upgrade-existing.log"
+              fi
+              python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/upgrade/$LABEL"
+            done
+            if [[ -n "$GLAZE_RECOVERED_PREDECESSOR_RUN" ]]; then
+              PREDECESSOR=$(find "$RUNNER_TEMP/recovered-predecessor" -maxdepth 1 -name '*.app' -print -quit)
+              test -n "$PREDECESSOR"
+              python3 apps/glaze/scripts/prepare-simulator-release-identity.py "$PREDECESSOR" "$RUNNER_TEMP/glaze-native-link-review/install-identities/recovered-predecessor.json"
+              python3 apps/glaze/scripts/sign-native-simulator.py sign "$PREDECESSOR" "$RUNNER_TEMP/glaze-native-link-review/signing/recovered-predecessor.json"
+              xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
+              xcrun simctl install "$DEVICE" "$PREDECESSOR"
+              xcrun simctl launch "$DEVICE" com.jared797.glaze
+              PREDECESSOR_VERSION=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$PREDECESSOR/Info.plist")
+              if [[ "$PREDECESSOR_VERSION" == 1.0.13 ]]; then
+                python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/predecessor-recovery.json"
+                python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE"
+              else
+                python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/predecessor-recovery.json" glaze.widgetArt.recovered106.v2
+                python3 apps/glaze/scripts/wait-native-art-library.py "$DEVICE" authored
+              fi
+              python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/upgrade/recovered-predecessor"
+            fi
+            xcrun simctl terminate "$DEVICE" com.jared797.glaze >/dev/null 2>&1 || true
+          fi
+          xcrun simctl install "$DEVICE" "$APP"
+          if [[ -n "$GLAZE_PREVIOUS_SIMULATOR_RUN" ]]; then
+            mkdir -p "$RUNNER_TEMP/glaze-native-link-review"
+            xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/glaze-native-link-review/immediately-after-upgrade.png"
+          fi
+          if [[ "$GLAZE_THEME_SWAP_CHECK" == true ]]; then
+            test "$GLAZE_UI_SCENARIO" = recovery-upgrade
+            test -n "$GLAZE_RECOVERED_PREDECESSOR_RUN"
+            xcrun simctl launch "$DEVICE" com.jared797.glaze
+            python3 apps/glaze/scripts/wait-native-art-recovery.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/candidate-recovered-state.json" glaze.widgetArt.recovered106.v2
+            xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-swap.xcresult" -only-testing:GlazeLinkUITests/GlazeDesignedWidgetUITests/testThemeSwapAfterRecoveredUpgrade test-without-building > "$RUNNER_TEMP/glaze-swap.log" 2>&1 || { tail -160 "$RUNNER_TEMP/glaze-swap.log"; exit 1; }
+            grep -F GLAZE_THEME_SWAP_A_B_A_VERIFIED "$RUNNER_TEMP/glaze-swap.log"
+          fi
+          if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then
+            python3 - <<'PY'
+          import os,pathlib,struct,zlib,binascii
+          def chunk(tag,data):return struct.pack('>I',len(data))+tag+data+struct.pack('>I',binascii.crc32(tag+data)&0xffffffff)
+          for name,colour in [('first',bytes([0,160,170])),('second',bytes([240,120,20]))]:
+              row=b'\0'+colour*1600
+              png=b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',1600,1000,8,2,0,0,0))+chunk(b'IDAT',zlib.compress(row*1000))+chunk(b'IEND',b'')
+              (pathlib.Path(os.environ['RUNNER_TEMP'])/('glaze-picker-'+name+'.png')).write_bytes(png)
+          PY
+            xcrun simctl addmedia "$DEVICE" "$RUNNER_TEMP/glaze-picker-first.png" "$RUNNER_TEMP/glaze-picker-second.png"
+          fi
+          TEST=GlazeLinkUITests/GlazeDeepLinkTests/testWidgetLinkReachesWidgets
+          if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then
+            TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineAllFamiliesAfterUpgrade
+            if [[ "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP/Info.plist")" == 1.0.15 ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineAuthoredFamiliesAfterUpgrade; fi
+          fi
+          if [[ "$GLAZE_UI_SCENARIO" == widget ]]; then TEST=GlazeLinkUITests/GlazeWidgetTapTests/testWidgetTapRoundTripsThroughSharedStorage; fi
+          if [[ "$GLAZE_UI_SCENARIO" == design ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testThreeFunctionalDesignsReachSharedStorage; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOriginalFaceFromTheme; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine-home ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineOnHomeScreen; fi
+          if [[ "$GLAZE_UI_SCENARIO" == alpine-art ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testAlpineSmallEditWidgetArt; fi
+          if [[ "$GLAZE_UI_SCENARIO" == art-gallery ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testInspectSystemArtGallery; fi
+          if [[ "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then TEST=GlazeLinkUITests/GlazeDesignedWidgetUITests/testThemeGalleryWithoutSavingIndividualWidgets; fi
+          if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then TEST=GlazeLinkUITests/GlazeAlbumPickerTests/testSelectedPhotosReachNativeAlbum; fi
+          xcodebuild "${ARGS[@]}" -resultBundlePath "$RUNNER_TEMP/glaze-link.xcresult" "-only-testing:$TEST" test-without-building > "$RUNNER_TEMP/glaze-link-test.log" 2>&1 &
+          LINK_PID=$!
+          if [[ "$GLAZE_UI_SCENARIO" != route ]]; then
+            if ! wait "$LINK_PID"; then tail -160 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
+            if [[ "$GLAZE_UI_SCENARIO" == album || "$GLAZE_UI_SCENARIO" == album-widget ]]; then
+              grep -F GLAZE_ALBUM_PICKER_DELIVERED "$RUNNER_TEMP/glaze-link-test.log"
+              if [[ "$GLAZE_UI_SCENARIO" == album-widget ]]; then grep -F GLAZE_ALBUM_INSTALLED_NEXT_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"; fi
+            elif [[ "$GLAZE_UI_SCENARIO" == design ]]; then
+              grep -F GLAZE_DESIGNED_WIDGETS_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+            elif [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade ]]; then
+              grep -F GLAZE_UPGRADE_ALL_ALPINE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+            elif [[ "$GLAZE_UI_SCENARIO" == art-gallery ]]; then
+              grep -F GLAZE_ART_GALLERY_DISCOVERY_COMPLETE "$RUNNER_TEMP/glaze-link-test.log"
+            elif [[ "$GLAZE_UI_SCENARIO" == alpine-art ]]; then
+              grep -F GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+            elif [[ "$GLAZE_UI_SCENARIO" == alpine-home ]]; then
+              grep -F GLAZE_ALPINE_INSTALLED "$RUNNER_TEMP/glaze-link-test.log"
+            elif [[ "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then
+              grep -F GLAZE_THEME_GALLERY_INSTALLED "$RUNNER_TEMP/glaze-link-test.log"
+            elif [[ "$GLAZE_UI_SCENARIO" == alpine ]]; then
+              grep -F GLAZE_ALPINE_CLOCK_SAVED "$RUNNER_TEMP/glaze-link-test.log"
+            else
+              grep -F GLAZE_WIDGET_TAP_BRIDGE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+            fi
+            grep -F '** TEST EXECUTE SUCCEEDED **' "$RUNNER_TEMP/glaze-link-test.log"
+            exit 0
+          fi
+          READY=0
+          for TRY in $(seq 1 360); do
+            RUNNER_DATA=$(xcrun simctl get_app_container "$DEVICE" com.glaze.link-ui-tests.xctrunner data 2>/dev/null || true)
+            if [[ -n "$RUNNER_DATA" && -f "$RUNNER_DATA/Library/Caches/glaze-deeplink-ready" ]] || grep -q GLAZE_DEEPLINK_READY "$RUNNER_TEMP/glaze-link-test.log"; then READY=1; break; fi
+            if ! kill -0 "$LINK_PID" 2>/dev/null; then break; fi
+            sleep 1
+          done
+          if [[ "$READY" != 1 ]]; then wait "$LINK_PID" || true; tail -120 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
+          xcrun simctl openurl "$DEVICE" glaze://widgets
+          if ! wait "$LINK_PID"; then tail -160 "$RUNNER_TEMP/glaze-link-test.log"; exit 1; fi
+          grep -F GLAZE_WIDGETS_ROUTE_VERIFIED "$RUNNER_TEMP/glaze-link-test.log"
+          grep -F '** TEST EXECUTE SUCCEEDED **' "$RUNNER_TEMP/glaze-link-test.log"
+          grep -F 'Executed 1 test, with 0 failures' "$RUNNER_TEMP/glaze-link-test.log"
+      - name: Export original XCTest attachments and source receipt
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/glaze-native-link-review"
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(x["udid"] for xs in d["devices"].values() for x in xs if "iPhone" in x["name"]))')
+          python3 apps/glaze/scripts/snapshot-native-test-group.py "$DEVICE" "$RUNNER_TEMP/glaze-native-link-review/shared-group" || true
+          xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/glaze-native-link-review/last-screen.png" || true
+          if [[ -d "$RUNNER_TEMP/glaze-link.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-link.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/attachments" > "$RUNNER_TEMP/glaze-native-link-review/attachment-export.log" 2>&1 || true; fi
+          if [[ -d "$RUNNER_TEMP/glaze-upgrade-before.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-upgrade-before.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/before-upgrade" || true; fi
+          if [[ -d "$RUNNER_TEMP/glaze-upgrade-existing.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-upgrade-existing.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/existing-widget-before-upgrade" || true; fi
+          if [[ -d "$RUNNER_TEMP/glaze-swap.xcresult" ]]; then xcrun xcresulttool export attachments --path "$RUNNER_TEMP/glaze-swap.xcresult" --output-path "$RUNNER_TEMP/glaze-native-link-review/theme-swap" || true; fi
+          cp "$RUNNER_TEMP/glaze-swap.log" "$RUNNER_TEMP/glaze-native-link-review/" 2>/dev/null || true
+          if [[ "$GLAZE_UI_SCENARIO" == alpine-home || "$GLAZE_UI_SCENARIO" == alpine-art || "$GLAZE_UI_SCENARIO" == recovery-upgrade || "$GLAZE_UI_SCENARIO" == theme-gallery ]]; then xcrun simctl spawn "$DEVICE" log show --last 12m --info --debug --style compact --predicate 'process CONTAINS[c] "GlazeWidget" OR process == "linkd" OR ((subsystem CONTAINS[c] "WidgetKit" OR process == "chronod" OR process == "SpringBoard") AND (eventMessage CONTAINS[c] "glaze" OR eventMessage CONTAINS[c] "image" OR eventMessage CONTAINS[c] "archiv"))' > "$RUNNER_TEMP/glaze-native-link-review/widget-os.log" || true; fi
+          cp "$RUNNER_TEMP/installable/simulator-app-source.json" "$RUNNER_TEMP/glaze-native-link-review/" || true
+          python3 - <<'PY'
+          import os,json,pathlib,hashlib
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-native-link-review'
+          log=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-link-test.log'
+          text=log.read_text() if log.exists() else ''
+          package=pathlib.Path(os.environ['RUNNER_TEMP'])/'installable/glaze-simulator-app.zip'
+          execute_ok=any(marker in text for marker in ['** TEST SUCCEEDED **','** TEST EXECUTE SUCCEEDED **'])
+          routed='GLAZE_WIDGETS_ROUTE_VERIFIED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
+          supplied=bool(os.environ.get('GLAZE_SIMULATOR_RUN',''))
+          widget='GLAZE_WIDGET_TAP_BRIDGE_VERIFIED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
+          album='GLAZE_ALBUM_PICKER_DELIVERED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
+          receipt={'harnessSourceSHA':os.environ['GITHUB_SHA'],'simulatorRun':os.environ.get('GLAZE_SIMULATOR_RUN',''),'simulatorZipSHA256':hashlib.sha256(package.read_bytes()).hexdigest() if package.exists() else None,'runnerBuildOnly':not supplied,'scenario':os.environ.get('GLAZE_UI_SCENARIO','route'),'routeTestPassed':supplied and routed,'installedWidgetTapTest':supplied and widget,'fullExpoHabitBridgeQualifiedInSimulator':supplied and widget,'physicalDeviceTest':False,'scope':'Actual app/WidgetKit UI and shared-data round trip in simulator' if widget else ('Real installed Expo app URL test only; no widget tap/full habit bridge qualification' if supplied else 'Compile-only XCTest runner')}
+          receipt['systemAlbumPickerUITest']=supplied and album
+          design='GLAZE_DESIGNED_WIDGETS_BRIDGE_VERIFIED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
+          receipt['designedWidgetSaveUITest']=supplied and design
+          if design:
+              index=json.loads((root/'shared-group/index.json').read_text())
+              kinds={p.get('live',{}).get('design',{}).get('kind') for p in index.get('pieces',[])}
+              assert {'clock','battery','calendar'}<=kinds
+              assert all(p['live']['rect']==[0,0,1,1] for p in index['pieces'] if p.get('live',{}).get('design'))
+              receipt['designedWidgetSharedSpecsVerified']=True
+              receipt['scope']='Real installed Expo app selects and saves all three functional widget designs through the native bridge; shared semantic specs survive app restart. Home Screen interaction/physical phone not inferred.'
+          alpine='GLAZE_ALPINE_CLOCK_SAVED' in text and execute_ok and 'Executed 1 test, with 0 failures' in text
+          receipt['alpineClockSaveUITest']=supplied and alpine
+          receipt['upgradeAlpineAllFamilies']=supplied and execute_ok and 'GLAZE_UPGRADE_ALL_ALPINE_VERIFIED' in text
+          receipt['copperRenderedOnHomeScreenFamilies']=[size for size in ['small','medium','large'] if 'GLAZE_COPPER_HOME_RENDER_VERIFIED '+size in text]
+          receipt['copperRenderedOnHomeScreenAllFamilies']=receipt['copperRenderedOnHomeScreenFamilies']==['small','medium','large']
+          receipt['diagnosticExtensionRebuilt']=os.environ.get('GLAZE_ART_TRACE')=='true'
+          receipt['simulatorInstallIdentities']=[json.loads(p.read_text()) for p in sorted((root/'install-identities').glob('*.json'))]
+          receipt['simulatorAppleSigning']=[json.loads(p.read_text()) for p in sorted((root/'signing').glob('*.json'))]
+          receipt['releaseQualified']=receipt['upgradeAlpineAllFamilies'] and receipt['copperRenderedOnHomeScreenAllFamilies'] and not receipt['diagnosticExtensionRebuilt']
+          receipt['themeSwapCheckRequested']=os.environ.get('GLAZE_THEME_SWAP_CHECK')=='true'
+          if receipt['themeSwapCheckRequested']:
+              swap_path=root/'glaze-swap.log'
+              swap=swap_path.read_text() if swap_path.exists() else ''
+              receipt['nativeHomeThemeSwapABA']='GLAZE_THEME_SWAP_A_B_A_VERIFIED' in swap and '** TEST EXECUTE SUCCEEDED **' in swap
+              receipt['releaseQualified']=receipt['releaseQualified'] and receipt['nativeHomeThemeSwapABA']
+          receipt['upgradeBaseRun']=os.environ.get('GLAZE_UPGRADE_BASE_RUN')
+          receipt['upgradeMiddleRun']=os.environ.get('GLAZE_UPGRADE_MIDDLE_RUN')
+          receipt['recoveredPredecessorRun']=os.environ.get('GLAZE_RECOVERED_PREDECESSOR_RUN')
+          if receipt['recoveredPredecessorRun']:
+              recovery_path=root/'predecessor-recovery.json'
+              recovery=json.loads(recovery_path.read_text()) if recovery_path.exists() else {}
+              receipt['alreadyRecoveredPredecessorVerified']=bool(recovery.get('recoveryCompleteObserved') and not recovery.get('appDataModifiedByHarness',True))
+              receipt['releaseQualified']=receipt['releaseQualified'] and receipt['alreadyRecoveredPredecessorVerified']
+          if receipt['scenario']=='recovery-upgrade':
+              receipt['legacyWidgetSeedRun']=os.environ.get('GLAZE_PREVIOUS_SIMULATOR_RUN')
+              existing=pathlib.Path(os.environ['RUNNER_TEMP'])/'glaze-upgrade-existing.log'
+              prior=existing.read_text() if existing.exists() else ''
+              receipt['existingAlpineArtWidgetConfiguredBeforeUpgrade']='GLAZE_UPGRADE_EXISTING_ART_WIDGET_PRIMED' in prior and '** TEST EXECUTE SUCCEEDED **' in prior
+              receipt['scope']='Production Expo app installed over 1.0.6 and 1.0.12 on one retained-data simulator. The UI gate requires both preview screens and all three Edit Widget art menus. Physical iPhone behavior is not inferred.'
+          receipt['authoredSizeUpgradeVerified']='GLAZE_AUTHORED_SIZE_UPGRADE_VERIFIED' in text and execute_ok
+          receipt['authoredMediumHeroSelected']='GLAZE_AUTHORED_MEDIUM_HERO_SELECTED' in text and execute_ok
+          receipt['auroraUpgradeAllFamilies']=False
+          swap_log=root/'glaze-swap.log'
+          if swap_log.exists(): receipt['auroraUpgradeAllFamilies']='GLAZE_UPGRADE_AURORA_ALL_FAMILIES_VERIFIED' in swap_log.read_text() and '** TEST EXECUTE SUCCEEDED **' in swap_log.read_text()
+          receipt['alpineSmallEditWidgetArt']=supplied and execute_ok and 'GLAZE_ALPINE_SMALL_ART_OPTIONS_VERIFIED' in text
+          receipt['alpineInstalledThroughPicker']=supplied and 'GLAZE_ALPINE_INSTALLED' in text and execute_ok
+          receipt['themeGalleryInstalledThroughPicker']=supplied and 'GLAZE_THEME_GALLERY_INSTALLED' in text and execute_ok
+          if receipt['themeGalleryInstalledThroughPicker']:
+              theme=json.loads((root/'shared-group/theme.json').read_text())
+              assert theme['themeId']=='alpine-starlight'
+              assert {d['kind'] for d in theme['designs']}=={'clock','battery','calendar'}
+              assert all(d['identity']['originalFace']=='alpine' for d in theme['designs'])
+              receipt['scope']='The installed app applies Alpine Starlight without saving individual widgets and the system gallery installs each of the three designed widget kinds.'
+              if os.environ.get('GLAZE_PREVIOUS_SIMULATOR_RUN'):
+                  index=json.loads((root/'shared-group/index.json').read_text())
+                  assert any(p.get('themeId')=='alpine-starlight' and p.get('live',{}).get('design',{}).get('kind')=='clock' for p in index['pieces'])
+                  receipt['installedOverVersion104']=True
+          if alpine:
+              index=json.loads((root/'shared-group/index.json').read_text())
+              clock=next(p for p in index['pieces'] if p.get('themeId')=='alpine-starlight' and p.get('live',{}).get('design',{}).get('kind')=='clock')
+              assert clock['live']['design']['identity']['originalFace']=='alpine'
+              receipt['alpineOriginalFaceSpecVerified']=True
+              receipt['scope']='Real installed app opens Alpine Starlight from the live catalogue and saves its original clock face through the shared bridge.'
+          album_next='GLAZE_ALBUM_INSTALLED_NEXT_VERIFIED' in text and album
+          receipt['installedAlbumNextTest']=supplied and album_next
+          receipt['installedAlbumCursorVerified']=False
+          receipt['albumSharedManifestVerified']=False
+          if album:
+              manifest=json.loads((root/'shared-group/widgets.json').read_text())
+              capture=json.loads((root/'shared-group/group-capture.json').read_text())
+              photos=next(s['photoRefs'] for s in manifest['catalogue']['specs'] if s['kind']=='photoAlbum' and s['size']=='medium')
+              receipt['albumSharedManifestVerified']=len(photos)==2 and len(capture.get('albumImages',[]))==2 and all(i['contentHashMatches'] and i['jpeg'] and i['bytes']<=2*1024*1024 for i in capture['albumImages'])
+              assert receipt['albumSharedManifestVerified']
+              receipt['scope']='Actual system album picker, durable draft and full Expo native bridge to verified shared JPEGs/manifest; no installed album Next button qualification'
+              if album_next:
+                  design=next(s for s in manifest['catalogue']['specs'] if s['kind']=='photoAlbum' and s['size']=='medium')
+                  key=hashlib.sha256((design['id'][:200]+'|'+'|'.join(photos)).encode()).hexdigest()
+                  receipt['installedAlbumCursorVerified']=any(c['file']=='album-cursor-'+key+'.json' and c['offset']==1 for c in capture.get('albumCursors',[]))
+                  assert receipt['installedAlbumCursorVerified']
+                  receipt['scope']='Actual system Photos selection, full Expo album delivery and installed Home Screen Next button; selected image visibly changes without app launch and the matching shared cursor is1. Simulator only.'
+          if receipt['diagnosticExtensionRebuilt']:
+              receipt['scope']='Simulator diagnostic only: original Expo app and resources with a temporary instrumented widget executable. Cannot qualify a release or physical iPhone behavior.'
+          (root/'link-receipt.json').write_text(json.dumps(receipt,indent=2))
+          PY
+          if [[ "$GLAZE_UI_SCENARIO" == recovery-upgrade && -d "$RUNNER_TEMP/glaze-native-link-review/upgrade/base" ]]; then
+            python3 apps/glaze/scripts/verify-alpine-upgrade-images.py "$RUNNER_TEMP/glaze-native-link-review"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glaze-native-link-review
+          path: |
+            ${{ runner.temp }}/glaze-native-link-review
+            ${{ runner.temp }}/glaze-link-build.log
+            ${{ runner.temp }}/glaze-link-test.log
+            ${{ runner.temp }}/glaze-upgrade-*.log
+            ${{ runner.temp }}/glaze-upgrade-before.log
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glaze-native-link-images-and-records
+          path: |
+            ${{ runner.temp }}/glaze-native-link-review/**/*.png
+            ${{ runner.temp }}/glaze-native-link-review/**/*.jpg
+            ${{ runner.temp }}/glaze-native-link-review/**/*.json
+            ${{ runner.temp }}/glaze-link-test.log
+            ${{ runner.temp }}/glaze-swap.log
+            ${{ runner.temp }}/glaze-upgrade-*.log
+          retention-days: 14
+      - name: Remove temporary simulator signing credentials
+        if: always() && inputs.simulator_run != ''
+        run: python3 apps/glaze/scripts/sign-native-simulator.py cleanup

@@ -1,0 +1,25 @@
+appId: com.jared797.cue.playtest
+---
+- launchApp:
+    clearState: false
+    permissions:
+      all: allow
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Android release rehearsal
+- tapOn: Record
+- tapOn: Start recording
+- extendedWaitUntil:
+    visible: Stop recording
+    timeout: 20000
+- extendedWaitUntil:
+    visible: '0:0[2-9]'
+    timeout: 15000
+- takeScreenshot: 08-recording
+- tapOn: Stop recording
+- extendedWaitUntil:
+    visible: Take 1 saved to Photos
+    timeout: 30000
+- takeScreenshot: 09-video-saved
+- tapOn: OK

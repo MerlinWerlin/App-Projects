@@ -2,9 +2,24 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const ko: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "이 테마를 위한 디자인",
+      "body": "아이콘과 같은 색상의 읽기 쉬운 실시간 위젯입니다.",
+      "clock": "시계",
+      "battery": "배터리",
+      "calendar": "달력",
+      "setup": "홈 화면에서 위젯을 추가하고 Glaze를 선택하세요. 시계, 배터리, 캘린더에 여기서 선택한 테마가 적용됩니다.",
+      "save": "내 위젯 아트에 저장",
+      "update": "이 위젯을 사용하려면 TestFlight에서 최신 Glaze 빌드를 설치하세요.",
+      "batteryNote": "배터리는 주기적으로 새로 고침됩니다. 대시는 iOS에서 잔량을 제공하지 않았음을 뜻합니다.",
+      "unavailable": "사용할 수 없음"
+  },
   error: {
     body: '이 화면에 문제가 생겨 멈췄습니다. 아이콘, 테마, 반복 영상은 휴대폰에 저장되어 있으며 영향이 없습니다. 다시 시도하고, 계속되면 아래 메모를 보내 주세요.',
     retryHint: '이 화면을 다시 불러옵니다',
+    screenTitle: '문제가 발생했습니다',
+    screenBody: '이 화면에 문제가 생겼습니다. 테마, 아이콘, 위젯은 휴대폰에 안전하게 저장되어 있습니다. 다시 시도를 탭해 다시 불러오세요.',
+    retry: '다시 시도',
     report: '문제 신고',
     reportHint: '이 오류가 입력된 상태로 메일 앱을 엽니다. Glaze 자체는 아무것도 보내지 않습니다.',
     opening: '메일 여는 중…',

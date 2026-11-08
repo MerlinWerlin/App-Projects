@@ -63,10 +63,11 @@ import { openAppSettings, useOffscreenCapture, useWallpaperSaver } from '../../s
 import { OffscreenWallpaper, WallpaperView } from '../../src/render/WallpaperView';
 import { IconCanvas } from '../../src/render/IconCanvas';
 import { usePackTheme } from '../../src/render/usePackTheme';
+import { useToast } from '../../src/ui/Toast';
+import { Sheet } from '../../src/ui/Sheet';
 import { tickStoredChecklist } from '../../src/store/applyChecklist';
 import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
 import { DEFERRED_STEPS, requestDeferred } from '../../src/store/deferredWork';
-import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { loadBackground } from '../../src/store/background';
 import { setThemeLook, setThemeShape, studioApps, themeLookFor, themeShapeFor } from '../../src/core/studio';
 import { applyThemeIcons, useStudio } from '../../src/store/studio';
@@ -122,9 +123,11 @@ import { haptic } from '../../src/ui/haptics';
 import { Chevron, noMirror, textStyleFor } from '../../src/ui/i18nLayout';
 import { GlassBar, InsetGroup, InsetRow, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
+import { ThemeSetupFlow, ThemeSetupSection, useThemeSetup } from '../../src/ui/ThemeSetupFlow';
 import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
 import { widgetTabSizeKey } from '../../src/core/tabNav';
 import type { HomeOptionSize } from '../../src/core/widgetOptions';
+import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 /** Outer width of the phone preview for a window width: large, but leaves the toggle and bar room. */
 function previewWidthFor(windowW: number): number {
@@ -170,7 +173,7 @@ function headerTint(page: string, accent: string, ink: string, muted: string): s
 
 type SaveState = 'idle' | 'saved' | 'denied' | 'error';
 
-export default function ThemeDetailScreen() {
+function ThemeDetailScreen() {
   const { id, step: stepParam } = useLocalSearchParams<{ id: string; step?: string }>();
   // T160: a remote art pack from the remote catalogue resolves too (bundled themes win).
   const remote = useRemoteArtTheme(typeof id === 'string' ? id : undefined);
@@ -197,6 +200,7 @@ export default function ThemeDetailScreen() {
   const own = remote.theme === theme;
   return (
     <ThemeDetail
+      key={theme.id}
       theme={theme}
       step={themeStepOf(stepParam)}
       remoteWallpaperUri={own ? remote.wallpaperUri : null}
@@ -225,6 +229,7 @@ function ThemeDetail({
   const { c, scheme } = useColorsV2();
   const router = useRouter();
   const { t, script } = useT();
+  const toast = useToast();
   const insets = useSafeAreaInsets();
   const window = useWindowDimensions();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
@@ -265,6 +270,10 @@ function ThemeDetail({
   const activeId = useActiveThemeId();
   const inUse = isThemeInUse(activeId, theme.id);
   const [useBusy, setUseBusy] = useState(false);
+  const usePending = useRef(false);
+  const themeFocus = useRef(0);
+  useFocusEffect(useCallback(() => () => { themeFocus.current++; }, []));
+  const [themeChoiceOpen, setThemeChoiceOpen] = useState(step === 'overview');
   const [useError, setUseError] = useState(false);
   const [saveState, setSaveState] = useState<SaveState>('idle');
   /** T185: this theme's wallpaper was saved to Photos before (badge only; Save again always shows). */
@@ -276,8 +285,10 @@ function ThemeDetail({
   const locked = useLocked(theme.plus);
   const [lockOpen, setLockOpen] = useState(false);
   /** Why the Plus sheet is open: unlocking from Download shouldn't put the theme in use. */
-  const lockFor = useRef<'apply' | 'download' | ThemeStep | 'widgets'>('apply');
+  const lockFor = useRef<'apply' | 'download' | 'add-wallpaper' | 'use-everything' | ThemeStep>('apply');
   const reduced = useMotionReduced();
+  // T265: the guided Wallpaper / Icons / Widgets flow that opens after "Use this theme".
+  const setup = useThemeSetup(theme.id);
 
   // T55: the phone preview is sized from the window (large), with a real phone outline: a bezel
   // around a screen that clips the Home / Lock mock to rounded corners.
@@ -338,9 +349,11 @@ function ThemeDetail({
   useFocusEffect(
     useCallback(() => {
       let alive = true;
-      wasWallpaperSaved(theme.id).then((saved) => {
-        if (alive) setSavedBefore(saved);
-      });
+      wasWallpaperSaved(theme.id)
+        .then((saved) => {
+          if (alive) setSavedBefore(saved);
+        })
+        .catch(() => undefined);
       return () => {
         alive = false;
       };
@@ -353,9 +366,11 @@ function ThemeDetail({
   useFocusEffect(
     useCallback(() => {
       let alive = true;
-      loadBackground(theme.id).then((b) => {
-        if (alive) setBg(b);
-      });
+      loadBackground(theme.id)
+        .then((b) => {
+          if (alive) setBg(b);
+        })
+        .catch(() => undefined);
       return () => {
         alive = false;
       };
@@ -410,38 +425,127 @@ function ThemeDetail({
    * (Icons tab), the widget theme (Widgets tab + the Home Screen widgets) and the theme in use
    * (wallpaper maker, "In use ✓"). Saving wallpaper and installing icons stay separate screens.
    */
-  const putInUse = async () => {
-    if (useBusy) return;
+  const putInUse = async (checkLock = true) => {
+    if (usePending.current) return;
+    if (checkLock && locked) {
+      lockFor.current = 'use-everything';
+      setThemeChoiceOpen(false);
+      setLockOpen(true);
+      return;
+    }
+    usePending.current = true;
+    const focus = themeFocus.current;
+    setThemeChoiceOpen(false);
     setUseBusy(true);
     setUseError(false);
     try {
-      const res = await applyThemeEverywhere(theme);
-      if (!res.icons) {
-        setUseError(true);
-        haptic('warning');
-        return;
-      }
-      playApply();
-      AccessibilityInfo.announceForAccessibility(t('theme.use.doneA11y', { name: theme.name }));
+      // Owner 2026-11-08 ("swapping themes is no longer swapping it across to widgets"): the theme
+      // goes on the widgets FIRST. 1.0.15 saved the wallpaper first and applied nothing when that
+      // save failed or Photos was declined. A failed wallpaper save is only a note now.
+      if (!await selectTheme(focus)) return;
+      if (!await onSaveWallpaper()) toast.show(t('theme.setup.wallpaper.saveError'), 'warning');
+      if (themeFocus.current === focus) addThemeIcons();
+    } catch (e) {
+      // T264 (owner-1101i #2): an apply that throws shows the calm "couldn't apply" note, never a crash.
+      console.warn('[Theme] apply failed', e);
+      setUseError(true);
     } finally {
+      usePending.current = false;
       setUseBusy(false);
     }
   };
-  const onUseTheme = () => {
+  const addThemeIcons = () => {
+    setThemeChoiceOpen(false);
+    router.push({ pathname: '/install', params: { theme: theme.id } });
+  };
+  /**
+   * Owner 2026-11-08: choosing a theme swaps the Home Screen widgets to it, whichever of the four
+   * actions follows (as "Use this theme" did up to 1.0.14). 1.0.15 only applied the theme from
+   * "Use everything", so View widgets / View icons / Add wallpaper left the widgets on the old theme.
+   * True when the theme is in use (icons and widgets); a screen left meanwhile publishes nothing.
+   */
+  const selectTheme = async (focus = themeFocus.current): Promise<boolean> => {
+    if (themeFocus.current !== focus) return false;
+    try {
+      const res = await applyThemeEverywhere(theme);
+      if (!res.icons || !res.widgets) {
+        setUseError(true);
+        haptic('warning');
+        return false;
+      }
+      try {
+        playApply();
+        AccessibilityInfo.announceForAccessibility(t('theme.use.doneA11y', { name: theme.name }));
+      } catch {
+        // T264: the celebration is optional; the theme is already applied.
+      }
+      return true;
+    } catch (e) {
+      console.warn('[Theme] apply failed', e);
+      setUseError(true);
+      return false;
+    }
+  };
+  /** Each of the four choices puts an unlocked theme in use (widgets and icons) once. */
+  const ensureSelected = () => {
+    if (locked || inUse || usePending.current) return;
+    setUseError(false);
+    void selectTheme();
+  };
+  const onUseTheme = (checkLock = true) => {
+    setThemeChoiceOpen(true);
+    if ((checkLock && locked) || inUse || usePending.current) return;
+    setUseError(false);
+    void selectTheme();
+  };
+  const onAddWallpaper = (checkLock = true) => {
+    setThemeChoiceOpen(false);
+    if (checkLock && locked) {
+      lockFor.current = 'add-wallpaper';
+      setLockOpen(true);
+      return;
+    }
+    void onSaveWallpaper().then(
+      saved => toast.show(t(saved ? 'theme.save.savedBadge' : 'theme.setup.wallpaper.saveError'), saved ? 'success' : 'warning'),
+      () => toast.show(t('theme.setup.wallpaper.saveError'), 'warning'),
+    );
+  };
+
+  /** T265: a "Set it up" row opens the guided flow at that step (a locked theme asks for Plus first). */
+  const openSetup = (part: 'wallpaper' | 'icons' | 'widgets') => {
     if (locked) {
       lockFor.current = 'apply';
       setLockOpen(true);
       return;
     }
-    void putInUse();
+    if (part === 'widgets') {
+      openPart('widgets');
+      return;
+    }
+    setup.openAt(part);
+  };
+  const installFromSetup = () => {
+    setup.leaveFor('icons', () => router.push({ pathname: '/install', params: { theme: theme.id, auto: '1' } }));
   };
 
   /** T185: the three separate entry points, each its own clean screen. */
-  const openPart = (part: 'wallpaper' | 'icons' | 'widgets', checkLock = true) => {
+  const openPart = async (part: 'wallpaper' | 'icons' | 'widgets', checkLock = true) => {
     if (checkLock && locked) {
       lockFor.current = part;
       setLockOpen(true);
       return;
+    }
+    // Restored art previews consume the installed pack. Fetch it for a preview without
+    // applying the theme; otherwise a first visit could open an empty widgets screen.
+    if (remoteArt && !pack.usable && !locked) {
+      const focus = themeFocus.current;
+      try {
+        if (await pack.download() !== 'ok') return;
+      } catch {
+        toast.show(t('theme.use.error'), 'warning');
+        return;
+      }
+      if (themeFocus.current !== focus) return;
     }
     // T201: Widgets is the theme's own widgets screen (practical, art, then the standard set, which
     // still opens Widget Studio), not Widget Studio directly.
@@ -451,7 +555,12 @@ function ThemeDetail({
   const onDownloadPack = async () => {
     if (pack.state === 'downloading') return;
     haptic('select');
-    const r = await pack.download();
+    let r: Awaited<ReturnType<typeof pack.download>> | 'error';
+    try {
+      r = await pack.download();
+    } catch {
+      r = 'error'; // T264: a failed download never rejects unhandled
+    }
     if (r === 'locked') {
       lockFor.current = 'download';
       setLockOpen(true);
@@ -492,7 +601,14 @@ function ThemeDetail({
     // resolved yet is read now; a remote pack whose file is gone reports it (never the drawn fallback).
     // The file is .webp: RN Image.getSize and the offscreen <Image> decode it (iOS 14+, Android), and
     // view-shot captures the cropped view as PNG, so Photos always gets a PNG.
-    const remoteFile = remoteArt && !photo ? (remoteWallpaperUri ?? (await downloadedRemoteWallpaper(remoteArt.id))) : null;
+    let remoteFile = remoteArt && !photo ? (remoteWallpaperUri ?? (await downloadedRemoteWallpaper(remoteArt.id))) : null;
+    if (remoteArt && !photo && !remoteFile && !artPackWallpaperUri(remoteArt.id)) {
+      try {
+        if (await pack.download() === 'ok') remoteFile = await downloadedRemoteWallpaper(remoteArt.id);
+      } catch {
+        // Report the unavailable wallpaper through the existing save result below.
+      }
+    }
     const artPackUri = artPack ? (artPackWallpaperUri(artPack.artPack.id) ?? remoteFile) : null;
     const remoteMissing = !!remoteArt && !photo && !artPackUri;
     const res: { ok: boolean; reason?: string; why?: SaveFailure; message?: string } = remoteMissing
@@ -513,13 +629,13 @@ function ThemeDetail({
       AccessibilityInfo.announceForAccessibility(t('theme.save.savedBadge'));
       void rememberWallpaperSaved(theme.id);
       void tickStoredChecklist(theme.id, 'wallpaper');
-      // T125: saving a theme's wallpaper applies it, so the widgets follow it too.
-      void applyWidgetTheme(theme); // no-op in Expo Go; never throws
+      return true;
     } else {
       const why: SaveFailure = res.why ?? (res.reason === 'denied' ? 'denied' : res.reason === 'unreadable' ? 'unreadable' : 'unknown');
       setSaveWhy({ why, detail: res.message });
       setSaveState(why === 'denied' ? 'denied' : 'error');
       haptic('warning');
+      return false;
     }
   };
 
@@ -531,7 +647,6 @@ function ThemeDetail({
       // The store applies the user's chosen shape for this theme, so it is baked into the exports.
       await applyThemeIcons(theme, averageColour(theme.wallpaper));
       await studio.reload();
-      void applyWidgetTheme(theme); // T125: also remembered for the launch re-write; never throws
       void tickStoredChecklist(theme.id, 'iconStyle');
       requestDeferred(DEFERRED_STEPS.installedProbe, 'apply'); // T229 / T250: queued, chunked; never throws
       // navigate, not push: push would stack a second copy of the tab navigator.
@@ -752,6 +867,9 @@ function ThemeDetail({
             </View>
           </View>
         ) : null}
+
+        {/* T265: re-open the guided setup at any step; finished steps are ticked. */}
+        {overview && canApply ? <ThemeSetupSection themeName={theme.name} done={setup.done} onOpen={openSetup} /> : null}
 
         {/* T185: the Wallpaper screen. "Saved to Photos ✓" once saved, and Save again always offered
             (someone who deleted it from Photos gets it back). */}
@@ -1006,7 +1124,7 @@ function ThemeDetail({
               icon={locked ? 'lock' : 'check-circle'}
               block
               busy={useBusy}
-              onPress={onUseTheme}
+              onPress={() => onUseTheme()}
               accessibilityHint={locked ? t('theme.applyHintLocked') : inUse ? t('theme.use.inUseHint') : t('theme.use.hint')}
             />
             {useError ? (
@@ -1030,21 +1148,70 @@ function ThemeDetail({
           onLayout={(e: LayoutChangeEvent) => setBarH(e.nativeEvent.layout.height)}
           onDownload={() => void onDownloadPack()}
           onUnlock={onUnlockRemote}
+          themeAction={!locked && primary.kind !== 'unlock' && !(primary.kind === 'retry' && primary.reason === 'app-version') ? {
+            label: inUse ? t('theme.use.inUse') : t('theme.use.cta'),
+            onPress: () => onUseTheme(),
+            busy: useBusy,
+          } : undefined}
         />
       ) : null}
+
+      {/* T265: the guided "Use this theme" flow (Wallpaper, Icons, Widgets). */}
+      <ThemeSetupFlow
+        setup={setup}
+        themeName={theme.name}
+        wallpaper={{
+          onSave: async () => { await onSaveWallpaper(); },
+          saving,
+          saved: saveState === 'saved',
+          error:
+            saveState === 'denied' || saveState === 'error'
+              ? saveWhy && saveFailureKey(saveWhy.why)
+                ? t(`theme.save.why.${saveWhy.why}`)
+                : t('theme.setup.wallpaper.saveError')
+              : null,
+        }}
+        onInstallIcons={installFromSetup}
+      />
+
+      <Sheet visible={themeChoiceOpen} onClose={() => setThemeChoiceOpen(false)} title={theme.name}>
+        <View style={styles.themeChoices}>
+          <PillButton label={t('theme.use.viewWidgets')} block variant="plain" onPress={() => {
+            setThemeChoiceOpen(false);
+            ensureSelected();
+            openPart('widgets', false);
+          }} />
+          <PillButton label={t('theme.use.viewIcons')} block variant="plain" onPress={() => {
+            setThemeChoiceOpen(false);
+            ensureSelected();
+            openPart('icons', false);
+          }} />
+          <PillButton label={t('theme.use.addWallpaper')} block variant="tinted" onPress={() => { ensureSelected(); onAddWallpaper(); }} />
+          <PillButton label={t('theme.use.useEverything')} block onPress={() => void putInUse()} />
+        </View>
+      </Sheet>
 
       <PlusLockSheet
         visible={lockOpen}
         onClose={() => setLockOpen(false)}
         subject={t('theme.lockSubject', { name: theme.name })}
         onUnlocked={() => {
+          setLockOpen(false);
           const why = lockFor.current;
           if (why === 'download') {
-            void onDownloadPack();
+            onDownloadPack().catch(() => undefined);
+            return;
+          }
+          if (why === 'add-wallpaper') {
+            onAddWallpaper(false);
+            return;
+          }
+          if (why === 'use-everything') {
+            void putInUse(false);
             return;
           }
           if (why === 'apply' || why === 'overview') {
-            void putInUse();
+            onUseTheme(false);
             return;
           }
           openPart(why, false);
@@ -1401,6 +1568,7 @@ function RemoteDownloadBar({
   onLayout,
   onDownload,
   onUnlock,
+  themeAction,
 }: {
   primary: RemotePrimary;
   name: string;
@@ -1410,6 +1578,7 @@ function RemoteDownloadBar({
   onLayout: (e: LayoutChangeEvent) => void;
   onDownload: () => void;
   onUnlock: () => void;
+  themeAction?: { label: string; onPress: () => void; busy: boolean };
 }) {
   const { t, locale } = useT();
   const note = (text: string, live = false) => <BarNote text={text} live={live} />; // i18n-ignore (code after a JSX element)
@@ -1451,6 +1620,10 @@ function RemoteDownloadBar({
             <PillButton label={t('theme.remote.unlock')} icon="lock" block onPress={onUnlock} accessibilityHint={t('theme.applyHintLocked')} />
             {note(t('theme.pack.locked'))}
           </>
+        ) : null}
+        {themeAction ? (
+          <PillButton label={themeAction.label} variant="tinted" block busy={themeAction.busy}
+            onPress={themeAction.onPress} accessibilityHint={t('theme.use.hint')} />
         ) : null}
       </View>
     </GlassBar>
@@ -1686,6 +1859,7 @@ const styles = StyleSheet.create({
   content: { gap: spaceV2.lg },
   missing: { flex: 1, padding: spaceV2.inset, gap: spaceV2.md, justifyContent: 'center' },
   side: { marginHorizontal: spaceV2.lg },
+  themeChoices: { gap: spaceV2.sm },
   shelf: { gap: spaceV2.lg, paddingTop: spaceV2.lg },
   headWrap: {
     paddingHorizontal: spaceV2.inset,
@@ -1740,3 +1914,6 @@ const styles = StyleSheet.create({
   skeletonPage: { padding: spaceV2.inset, gap: spaceV2.md, alignItems: 'center' },
   skeletonHero: { marginTop: spaceV2.lg },
 });
+
+// T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.
+export default withScreenBoundary(ThemeDetailScreen, 'theme');

@@ -9,6 +9,130 @@ import { TRIAL_KEY, accessFor, parseTrialStart } from './access.ts';
 const DAY = 86_400_000;
 const NOW = 20_000 * DAY;
 
+test('Play trial starts on explicit request without connecting to a store or buying an Apple trial', async () => {
+  const storage = memoryStorage();
+  const iap = fakeIap({ connect: false });
+  const store = createIapStore(storage, () => NOW, iap, 'android')!;
+  assert.equal(storage.data.has(TRIAL_KEY), false);
+  assert.deepEqual(await store.startTrial(), { status: 'started', start: NOW });
+  assert.equal(storage.data.get(TRIAL_KEY), String(NOW));
+  assert.deepEqual(iap.calls, []);
+  assert.equal(accessFor(false, NOW, NOW + 14 * DAY).full, false);
+});
+
+test('Play trial retains its original start across adapter recreation and cannot restart after expiry', async () => {
+  const storage = memoryStorage({ [TRIAL_KEY]: String(NOW - 15 * DAY) });
+  const store = createIapStore(storage, () => NOW, fakeIap(), 'android')!;
+  assert.deepEqual(await store.startTrial(), { status: 'restored', start: NOW - 15 * DAY });
+  assert.equal(storage.data.get(TRIAL_KEY), String(NOW - 15 * DAY));
+});
+
+test('Play trial fails closed if persistence fails', async () => {
+  const storage: PlusStorage = { get: async () => null, set: async () => { throw new Error('disk full'); } };
+  const store = createIapStore(storage, () => NOW, fakeIap(), 'android')!;
+  assert.deepEqual(await store.startTrial(), { status: 'failed', start: null });
+});
+
+test('Play only fetches the lifetime SKU', async () => {
+  const iap = fakeIap();
+  const store = createIapStore(memoryStorage(), () => NOW, iap, 'android')!;
+  assert.equal(await store.price(), 'A$2.99');
+  assert.deepEqual(iap.calls.find(c => c.fn === 'fetchProducts')?.arg, { skus: [PLUS_SKU], type: 'in-app' });
+});
+
+test('Play restore never grants Plus for pending, unknown or missing purchase state', async () => {
+  for (const purchaseState of ['pending', 'unknown', undefined]) {
+    const storage = memoryStorage();
+    const iap = fakeIap({ owned: [{ productId: PLUS_SKU, purchaseState }] });
+    const store = createIapStore(storage, () => NOW, iap, 'android')!;
+    assert.equal((await store.restore()).owned, false);
+    assert.equal(storage.data.has(PLUS_STORAGE_KEY), false);
+  }
+});
+
+test('Play restores a completed purchase and ignores an Apple trial product', async () => {
+  const storage = memoryStorage();
+  const iap = fakeIap({ owned: [{ productId: PLUS_SKU, purchaseState: 'purchased' }, { productId: TRIAL_SKU, transactionDate: NOW }] });
+  const store = createIapStore(storage, () => NOW, iap, 'android')!;
+  assert.equal((await store.restore()).owned, true);
+  assert.equal(storage.data.has(TRIAL_KEY), false);
+});
+
+test('Play completed purchase requests the lifetime SKU and acknowledges non-consumable ownership', async () => {
+  const iap = fakeIap({ buy: sku => ({ productId: sku, purchaseState: 'purchased', purchaseToken: 'fixture-token' }) });
+  const store = createIapStore(memoryStorage(), () => NOW, iap, 'android')!;
+  assert.equal((await store.purchase()).owned, true);
+  assert.equal(iap.calls.find(c => c.fn === 'requestPurchase')?.arg, PLUS_SKU);
+  const finish = iap.calls.find(c => c.fn === 'finishTransaction')?.arg as { isConsumable: boolean };
+  assert.equal(finish.isConsumable, false);
+});
+
+test('Play launch and restore retry an interrupted acknowledgement without charging again', async () => {
+  const purchase = { productId: PLUS_SKU, purchaseState: 'purchased', purchaseToken: 'recovered', isAcknowledgedAndroid: false };
+  const iap = fakeIap({ owned: [purchase] });
+  const storage = memoryStorage();
+  let attempts = 0;
+  iap.finishTransaction = async (arg: unknown) => {
+    iap.calls.push({ fn: 'finishTransaction', arg });
+    if (++attempts === 1) throw new Error('connection interrupted');
+    purchase.isAcknowledgedAndroid = true;
+  };
+  assert.equal((await createIapStore(storage, () => NOW, iap, 'android')!.getState()).owned, true);
+  const restarted = createIapStore(storage, () => NOW, iap, 'android')!;
+  assert.equal((await restarted.getState()).owned, true);
+  assert.equal((await restarted.restore()).owned, true);
+  assert.equal(attempts, 2);
+  assert.equal(iap.calls.some(c => c.fn === 'requestPurchase'), false);
+});
+
+test('Play already acknowledged ownership restores without finishing the transaction again', async () => {
+  const iap = fakeIap({ owned: [{ productId: PLUS_SKU, purchaseState: 'purchased', isAcknowledgedAndroid: true }] });
+  assert.equal((await createIapStore(memoryStorage(), () => NOW, iap, 'android')!.restore()).owned, true);
+  assert.equal(iap.calls.some(c => c.fn === 'finishTransaction'), false);
+});
+
+test('Play pending or unknown ownership is never acknowledged by refresh', async () => {
+  for (const purchaseState of ['pending', 'unknown', undefined]) {
+    const iap = fakeIap({ owned: [{ productId: PLUS_SKU, purchaseState, isAcknowledgedAndroid: false }] });
+    assert.equal((await createIapStore(memoryStorage(), () => NOW, iap, 'android')!.getState()).owned, false);
+    assert.equal(iap.calls.some(c => c.fn === 'finishTransaction'), false);
+  }
+});
+
+test('Play late completed purchase after a failed request is acknowledged before recovery', async () => {
+  const purchase = { productId: PLUS_SKU, purchaseState: 'purchased', purchaseToken: 'late' };
+  const iap = fakeIap({ owned: [purchase], buy: () => { throw new Error('store request failed'); } });
+  assert.equal((await createIapStore(memoryStorage(), () => NOW, iap, 'android')!.purchase()).owned, true);
+  const finish = iap.calls.find(c => c.fn === 'finishTransaction')?.arg;
+  assert.deepEqual(finish, { purchase, isConsumable: false });
+});
+
+test('Play successful empty query removes cached ownership after refund or revocation', async () => {
+  const storage = memoryStorage({ [PLUS_STORAGE_KEY]: JSON.stringify({ owned: true, source: 'store', since: NOW }) });
+  const store = createIapStore(storage, () => NOW, fakeIap({ owned: [] }), 'android')!;
+  assert.equal((await store.getState()).owned, false);
+  assert.equal(JSON.parse(storage.data.get(PLUS_STORAGE_KEY)!).owned, false);
+});
+
+test('Play unavailable connection or failed ownership query preserves the cached offline unlock', async () => {
+  for (const disconnect of [true, false]) {
+    const storage = memoryStorage({ [PLUS_STORAGE_KEY]: JSON.stringify({ owned: true, source: 'store', since: NOW }) });
+    const iap = fakeIap({ connect: !disconnect });
+    if (!disconnect) iap.getAvailablePurchases = async () => { throw new Error('offline'); };
+    assert.equal((await createIapStore(storage, () => NOW, iap, 'android')!.getState()).owned, true);
+    assert.equal(JSON.parse(storage.data.get(PLUS_STORAGE_KEY)!).owned, true);
+  }
+});
+
+test('Apple cached read and restore retain their existing transaction behaviour', async () => {
+  const iap = fakeIap({ owned: [{ productId: PLUS_SKU }] });
+  const store = createIapStore(memoryStorage(), () => NOW, iap, 'ios')!;
+  assert.equal((await store.getState()).owned, false);
+  assert.equal(iap.calls.length, 0);
+  assert.equal((await store.restore()).owned, true);
+  assert.equal(iap.calls.some(c => c.fn === 'finishTransaction'), false);
+});
+
 function memoryStorage(initial: Record<string, string> = {}): PlusStorage & { data: Map<string, string> } {
   const data = new Map(Object.entries(initial));
   return {

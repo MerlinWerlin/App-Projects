@@ -490,10 +490,21 @@ export const ko: Translation = {
   'settings.free.body': 'Linework의 모든 따라 그리기 도구는 무료입니다: 카메라 따라 그리기, 불투명도, 잠금, 손전등, 격자, 좌우 반전, 터치 잠금, 라이트박스, 선화 모드, 내 사진. 광고 없음, 체험판 없음, 주간 구독 없음.',
   'settings.free.plusLink': 'Linework Plus와 팁',
   'settings.free.plusHint': '선택 사항인 일회성 추가 기능입니다. 따라 그리기 도구를 제한하지 않습니다.',
+  'settings.free.playBody': "카메라 트레이싱, 내 사진, 트레이싱 도구와 기본 템플릿 {count}개는 계속 무료입니다. 선택형 14일 체험에는 전체 템플릿과 사진 선화 변환이 포함됩니다. Plus를 한 번 구매하면 이 추가 기능을 계속 사용할 수 있습니다.",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "전체 템플릿과 사진 선화 변환을 위한 선택형 일회성 구매",
 
   'settings.privacy.title': '개인정보 보호',
   'settings.privacy.body': '데이터가 수집되지 않음. Linework에는 계정, 분석, 광고가 없습니다. 사진은 이 기기에만 보관되며 업로드되지 않습니다. 선화는 기기에서 만들어집니다.',
+  'settings.privacy.playBody': "이미지는 이 기기에서 처리됩니다. Google 결제 라이브러리는 기술 진단 데이터를 Google로 전송합니다. 광고나 앱 계정은 없습니다. 개인정보처리방침을 읽으려면 탭하세요.",
+  'settings.privacy.openHint': "브라우저에서 Linework 개인정보처리방침 열기",
+  'settings.privacy.openFailed': "브라우저를 열 수 없습니다. 개인정보처리방침: {url}",
 
+  'settings.review.title': "Plus 액세스 코드",
+  'settings.review.active': "Plus 액세스가 활성화되었습니다",
+  'settings.review.enter': "액세스 코드 입력",
+  'settings.review.apply': "액세스 활성화",
+  'settings.review.invalid': "코드를 활성화할 수 없습니다. 확인한 후 다시 시도하세요.",
   'settings.about.title': '정보',
   'settings.about.body': 'Linework {version}. 템플릿은 Linework를 위해 제작한 오리지널 선화입니다.',
 

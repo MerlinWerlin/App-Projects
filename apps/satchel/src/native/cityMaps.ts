@@ -6,8 +6,29 @@
 // partial city folder is deleted on any failure or cancel. Nothing here throws to the UI: every call returns a
 // result with a reason. After an install, a delete or a new saved catalog copy, cityMapsChanged (src/core/signal.ts)
 // fires so the readiness card and Nearest help reload what they show (T63).
+// T166: when the catalog offers a dark tile pack for a city (entry field `dark`), downloadDarkTiles fetches
+// <id>-dark.tar the same way and unpacks only its tiles (and its meta.json, which must say flavor dark for this city)
+// into <documents>/maps/<id>/dark/, '.complete' last. Inside the city folder, so deleting or re-downloading the
+// city removes them too. listInstalled marks cities whose dark tiles are complete; offlineTilesFor then also gives
+// the dark path, and the map uses it while the phone is in dark mode.
 import * as FileSystem from 'expo-file-system/legacy';
-import { CATALOG_URL, packEntryPath, packUrl, parseCatalog, parseCity, tilePathTemplate, type CityCatalog, type CityMap } from '../core/citymaps.ts';
+import {
+  CATALOG_URL,
+  darkDirOf,
+  darkPackEntryPath,
+  darkPackMetaOk,
+  darkPackUrl,
+  packEntryPath,
+  packMetaToSave,
+  packUrl,
+  parseCatalog,
+  parseCity,
+  parsePackMeta,
+  tilePathTemplate,
+  type CityCatalog,
+  type CityMap,
+  type OfflineTiles,
+} from '../core/citymaps.ts';
 import { cityMapsChanged } from '../core/signal.ts';
 import { base64ToBytes, BLOCK, nextHeaderOffset, parseTarHeader } from '../core/tar.ts';
 
@@ -39,10 +60,19 @@ export function cityDir(id: string): string | null {
   return m ? `${m}${id}/` : null;
 }
 
-/** The LocalTile settings for an installed city. */
-export function offlineTilesFor(city: CityMap): { pathTemplate: string; minZoom: number; maxZoom: number } | null {
+/** T166: an installed city, marked when its dark tiles are installed too. */
+export type InstalledCity = CityMap & { darkInstalled?: boolean };
+
+/** The LocalTile settings for an installed city (with the dark tiles' path once they are installed, T166). */
+export function offlineTilesFor(city: InstalledCity): OfflineTiles | null {
   const dir = cityDir(city.id);
-  return dir ? { pathTemplate: tilePathTemplate(dir), minZoom: city.minzoom, maxZoom: city.maxzoom } : null;
+  if (!dir) return null;
+  return {
+    pathTemplate: tilePathTemplate(dir),
+    darkPathTemplate: city.darkInstalled ? tilePathTemplate(darkDirOf(dir)) : null,
+    minZoom: city.minzoom,
+    maxZoom: city.maxzoom,
+  };
 }
 
 const quietDelete = (uri: string) => FileSystem.deleteAsync(uri, { idempotent: true }).catch(() => {});
@@ -110,22 +140,25 @@ export async function fetchCatalog(): Promise<CatalogResult> {
 
 // ---- installed cities ----
 
-/** Cities fully unpacked on this phone (meta.json valid and '.complete' present). */
-export async function listInstalled(): Promise<CityMap[]> {
+/** Cities fully unpacked on this phone (meta.json valid and '.complete' present), dark tiles marked (T166). */
+export async function listInstalled(): Promise<InstalledCity[]> {
   const dir = mapsDir();
   if (!dir) return [];
   try {
     const info = await FileSystem.getInfoAsync(dir);
     if (!info.exists) return [];
     const names = await FileSystem.readDirectoryAsync(dir);
-    const out: CityMap[] = [];
+    const out: InstalledCity[] = [];
     for (const name of names) {
       if (name === 'catalog.json') continue;
       try {
         const done = await FileSystem.getInfoAsync(`${dir}${name}/.complete`);
         if (!done.exists) continue;
         const city = parseCity(JSON.parse(await FileSystem.readAsStringAsync(`${dir}${name}/meta.json`)));
-        if (city && city.id === name) out.push(city);
+        if (city && city.id === name) {
+          const dark = await FileSystem.getInfoAsync(`${dir}${name}/dark/.complete`).catch(() => null);
+          out.push(dark?.exists ? { ...city, darkInstalled: true } : city);
+        }
       } catch {
         // not a city folder, or unreadable: not installed
       }
@@ -153,6 +186,22 @@ export async function deleteCity(id: string): Promise<DeleteResult> {
   }
 }
 
+/** T166: removes a city's dark tiles only (the city itself stays). */
+export async function deleteDarkTiles(id: string): Promise<DeleteResult> {
+  const dir = cityDir(id);
+  if (!dir) return { ok: false, reason: 'no-storage' };
+  const dark = darkDirOf(dir);
+  try {
+    await quietDelete(`${dark}.complete`);
+    await FileSystem.deleteAsync(dark, { idempotent: true });
+    cityMapsChanged.emit();
+    return { ok: true };
+  } catch {
+    cityMapsChanged.emit();
+    return { ok: false, reason: 'failed' };
+  }
+}
+
 // ---- download and unpack ----
 
 export type DownloadPhase = 'download' | 'unpack';
@@ -162,7 +211,14 @@ export type DownloadJob = { promise: Promise<DownloadResult>; cancel: () => void
 
 type UnpackOutcome = 'ok' | 'cancelled' | 'bad-pack' | 'failed';
 
-async function unpack(tarUri: string, size: number, dir: string, cancelled: () => boolean, onFraction: (f: number) => void): Promise<UnpackOutcome> {
+async function unpack(
+  tarUri: string,
+  size: number,
+  dir: string,
+  cancelled: () => boolean,
+  onFraction: (f: number) => void,
+  entryPath: (name: string) => string | null = packEntryPath,
+): Promise<UnpackOutcome> {
   const made = new Set<string>();
   let off = 0;
   let sawMeta = false;
@@ -180,7 +236,7 @@ async function unpack(tarUri: string, size: number, dir: string, cancelled: () =
     if (h === 'end') break;
     if (typeof h === 'string') return 'bad-pack';
     if (off + BLOCK + h.size > size) return 'bad-pack';
-    const rel = h.type === 'file' ? packEntryPath(h.name) : null;
+    const rel = h.type === 'file' ? entryPath(h.name) : null;
     if (rel) {
       const dest = `${dir}${rel}`;
       const parent = dest.slice(0, dest.lastIndexOf('/') + 1);
@@ -261,19 +317,110 @@ export function downloadCity(city: CityMap, onProgress: (phase: DownloadPhase, f
       const outcome = await unpack(tmp, info.size, dir, () => isCancelled, (f) => onProgress('unpack', f));
       if (outcome !== 'ok') return await fail(outcome);
 
+      // meta.json has no bytes/sha256 (they describe the tar it was in): take them from the catalog entry and save
+      // them back, so listInstalled (parseCity) reads the city later without the catalog (T153).
       let meta: CityMap | null = null;
+      let rawMeta: unknown = null;
       try {
-        meta = parseCity(JSON.parse(await FileSystem.readAsStringAsync(`${dir}meta.json`)));
+        rawMeta = JSON.parse(await FileSystem.readAsStringAsync(`${dir}meta.json`));
+        meta = parsePackMeta(rawMeta, city);
       } catch {
         meta = null;
       }
       if (!meta || meta.id !== city.id) return await fail('bad-pack');
+      try {
+        await FileSystem.writeAsStringAsync(`${dir}meta.json`, JSON.stringify(packMetaToSave(rawMeta, meta)));
+      } catch {
+        return await fail('failed');
+      }
       if (isCancelled) return await fail('cancelled');
       await FileSystem.writeAsStringAsync(`${dir}.complete`, '');
       await quietDelete(tmp);
       onProgress('unpack', 1);
       cityMapsChanged.emit();
       return { ok: true, city: meta };
+    } catch {
+      return await fail(isCancelled ? 'cancelled' : 'failed');
+    }
+  };
+
+  return { promise: run(), cancel };
+}
+
+/**
+ * T166: downloads a city's dark tile pack (catalog entry `dark`) into <city folder>/dark/. The city must already be
+ * installed. Same download, size check, cancel and clean-up rules as downloadCity; only meta.json and tiles are
+ * written, and the meta.json must be a dark pack for this city or nothing is kept.
+ */
+export function downloadDarkTiles(city: CityMap, onProgress: (phase: DownloadPhase, fraction: number) => void): DownloadJob {
+  let isCancelled = false;
+  let resumable: FileSystem.DownloadResumable | null = null;
+  const cancel = () => {
+    isCancelled = true;
+    resumable?.cancelAsync().catch(() => {});
+  };
+
+  const run = async (): Promise<DownloadResult> => {
+    const root = cityDir(city.id);
+    const cache = cacheRoot();
+    const url = darkPackUrl(city);
+    if (!root || !cache) return { ok: false, reason: 'no-storage' };
+    if (!url || !city.dark) return { ok: false, reason: 'not-published' };
+    const pack = city.dark;
+    const dir = darkDirOf(root);
+    const tmp = `${cache}satchel-map-${city.id}-dark.tar`;
+    const fail = async (reason: DownloadFailure): Promise<DownloadResult> => {
+      await quietDelete(tmp);
+      await quietDelete(dir);
+      return { ok: false, reason };
+    };
+    try {
+      const base = await FileSystem.getInfoAsync(`${root}.complete`).catch(() => null);
+      if (!base?.exists) return { ok: false, reason: 'failed' };
+      try {
+        const free = await FileSystem.getFreeDiskStorageAsync();
+        if (Number.isFinite(free) && free > 0 && free < pack.bytes * 2 + 50_000_000) return { ok: false, reason: 'no-space' };
+      } catch {
+        // can't tell: try anyway
+      }
+      await quietDelete(tmp);
+      await quietDelete(dir);
+      onProgress('download', 0);
+      resumable = FileSystem.createDownloadResumable(url, tmp, {}, (d) => {
+        const total = d.totalBytesExpectedToWrite > 0 ? d.totalBytesExpectedToWrite : pack.bytes;
+        onProgress('download', total > 0 ? Math.min(1, d.totalBytesWritten / total) : 0);
+      });
+      if (isCancelled) return await fail('cancelled');
+      let res: FileSystem.FileSystemDownloadResult | undefined;
+      try {
+        res = await resumable.downloadAsync();
+      } catch {
+        return await fail(isCancelled ? 'cancelled' : 'offline');
+      }
+      if (isCancelled || !res) return await fail(isCancelled ? 'cancelled' : 'offline');
+      if (res.status === 404) return await fail('not-published');
+      if (res.status < 200 || res.status >= 300) return await fail('offline');
+      const info = await FileSystem.getInfoAsync(tmp);
+      if (!info.exists || info.size < BLOCK) return await fail('bad-pack');
+      onProgress('download', 1);
+
+      await FileSystem.makeDirectoryAsync(dir, { intermediates: true });
+      onProgress('unpack', 0);
+      const outcome = await unpack(tmp, info.size, dir, () => isCancelled, (f) => onProgress('unpack', f), darkPackEntryPath);
+      if (outcome !== 'ok') return await fail(outcome);
+      let metaOk = false;
+      try {
+        metaOk = darkPackMetaOk(JSON.parse(await FileSystem.readAsStringAsync(`${dir}meta.json`)), city.id);
+      } catch {
+        metaOk = false;
+      }
+      if (!metaOk) return await fail('bad-pack');
+      if (isCancelled) return await fail('cancelled');
+      await FileSystem.writeAsStringAsync(`${dir}.complete`, '');
+      await quietDelete(tmp);
+      onProgress('unpack', 1);
+      cityMapsChanged.emit();
+      return { ok: true, city };
     } catch {
       return await fail(isCancelled ? 'cancelled' : 'failed');
     }

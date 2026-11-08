@@ -1,0 +1,81 @@
+appId: com.jared797.cue.playtest
+---
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Settings
+- tapOn:
+    text: Access code
+    index: 1
+- tapOn:
+    id: access-code-input
+- inputText: INVALID-CODE
+- hideKeyboard
+- tapOn: Activate access code
+- assertVisible: The code was not accepted or could not be saved.*
+- tapOn:
+    id: access-code-input
+- eraseText: 128
+- inputText: ${REVIEW_CODE}
+- hideKeyboard
+- tapOn: Activate access code
+- assertVisible: Complimentary Plus is active
+- takeScreenshot: 11-access-code-active
+- stopApp
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Settings
+- tapOn:
+    text: Access code
+    index: 1
+- assertVisible: Complimentary Plus is active
+- takeScreenshot: 12-access-code-persisted
+- back
+- scrollUntilVisible:
+    element:
+      text: Paper
+    direction: DOWN
+    timeout: 20000
+- assertVisible: Paper
+- assertNotVisible: Paper, Plus
+- takeScreenshot: 12b-plus-colors-unlocked
+- scrollUntilVisible:
+    element:
+      text: Access code
+    direction: UP
+    timeout: 20000
+- tapOn:
+    text: Access code
+    index: 1
+- tapOn: Remove access code
+- assertVisible:
+    id: access-code-input
+- assertVisible: Activate access code
+- takeScreenshot: 13-access-code-removed
+- back
+- scrollUntilVisible:
+    element:
+      text: Paper, Plus
+    direction: DOWN
+    timeout: 20000
+- assertVisible: Paper, Plus
+- takeScreenshot: 13b-plus-colors-locked
+- stopApp
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Settings
+- scrollUntilVisible:
+    element:
+      text: Paper, Plus
+    direction: DOWN
+    timeout: 20000
+- assertVisible: Paper, Plus
+- takeScreenshot: 14-access-removal-persisted

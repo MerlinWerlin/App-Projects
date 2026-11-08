@@ -22,7 +22,9 @@ import { Card, LargeTitleHeader, PillButton, useDesign } from '../../src/ui/v2';
 /**
  * Cast tab (cast-1024, T91): pick photos and videos on the phone and show them on the TV. Target
  * chips, the picker, the queue, transport (previous / play-pause / next, -10 s / +10 s for videos,
- * stop), slideshow + loop, and the AirPlay / Screen Mirroring shortcut (T92). Every part is free.
+ * stop), slideshow + loop, and the AirPlay / Screen Mirroring shortcut (T92). Casting is part of Couch Plus
+ * (owner 7 Nov 2026): the controller's gate (src/plus/gate.tsx) puts nothing on the TV without access and opens the
+ * paywall; Add photos asks it first so nobody picks photos only to hit the paywall.
  * In Expo Go there is no file server, so the tab runs in demo mode with the demo TV and says so. With a
  * real TV connected it always says why nothing reaches the TV (D145-2: no receiver found, or no file server).
  * After a send to a real TV it says "sent, waiting for the TV" until the TV confirms it is showing the
@@ -57,6 +59,7 @@ export default function CastScreen() {
 
   const onPick = useCallback(async () => {
     if (picking) return;
+    if (!cast.allowed()) return;
     setPicking(true);
     setNotice(null);
     try {

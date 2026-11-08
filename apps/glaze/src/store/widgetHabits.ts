@@ -230,13 +230,27 @@ export function useWidgetHabits(): WidgetHabits {
   useEffect(() => {
     listeners.add(setState);
     setState(cache);
-    void refreshWidgetHabits();
-    const sub = AppState.addEventListener('change', (s: AppStateStatus) => {
-      if (s === 'active') void refreshWidgetHabits();
-    });
+    refreshWidgetHabits().catch(() => undefined);
+    // T264: the return-to-app handler is try-wrapped and its refresh can never reject unhandled.
+    let sub: { remove: () => void } | null = null;
+    try {
+      sub = AppState.addEventListener('change', (s: AppStateStatus) => {
+        try {
+          if (s === 'active') refreshWidgetHabits().catch(() => undefined);
+        } catch {
+          // Never let a foreground refresh close the app.
+        }
+      });
+    } catch {
+      sub = null;
+    }
     return () => {
       listeners.delete(setState);
-      sub.remove();
+      try {
+        sub?.remove();
+      } catch {
+        // Already removed.
+      }
     };
   }, []);
   return state;

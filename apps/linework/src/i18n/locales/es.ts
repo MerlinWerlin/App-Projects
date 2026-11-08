@@ -499,10 +499,21 @@ export const es: Translation = {
   'settings.free.body': 'Todas las herramientas de calco de Linework son gratis: calco con cámara, opacidad, bloqueo, linterna, cuadrícula, espejo, bloqueo táctil, mesa de luz, modo contorno y tus propias fotos. Sin anuncios, sin periodo de prueba, sin suscripción semanal.',
   'settings.free.plusLink': 'Linework Plus y propinas',
   'settings.free.plusHint': 'Extras opcionales de pago único. Nunca bloquea una herramienta de calco.',
+  'settings.free.playBody': "El trazado con cámara, tus fotos, los controles y {count} plantillas iniciales siguen siendo gratis. La prueba opcional de 14 días incluye toda la biblioteca y los contornos de fotos. Plus mantiene esos extras desbloqueados con una compra única.",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "Compra única opcional para toda la biblioteca y los contornos de fotos",
 
   'settings.privacy.title': 'Privacidad',
   'settings.privacy.body': 'Datos no recopilados. Linework no tiene cuentas, ni analíticas, ni anuncios. Tus fotos se quedan en este teléfono y nunca se suben; los contornos se crean en el dispositivo.',
+  'settings.privacy.playBody': "Las imágenes se procesan en este dispositivo. La biblioteca de facturación de Google envía diagnósticos técnicos a Google. Sin anuncios ni cuenta de la app. Toca para leer la política de privacidad.",
+  'settings.privacy.openHint': "Abrir la política de privacidad de Linework en el navegador",
+  'settings.privacy.openFailed': "No se pudo abrir el navegador. Política de privacidad: {url}",
 
+  'settings.review.title': "Código de acceso a Plus",
+  'settings.review.active': "El acceso a Plus está activo",
+  'settings.review.enter': "Introducir código de acceso",
+  'settings.review.apply': "Activar acceso",
+  'settings.review.invalid': "No se pudo activar el código. Compruébalo y vuelve a intentarlo.",
   'settings.about.title': 'Información',
   'settings.about.body': 'Linework {version}. Las plantillas son dibujos lineales originales creados para Linework.',
 

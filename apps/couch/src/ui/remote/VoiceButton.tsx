@@ -107,6 +107,8 @@ export function VoiceButton({ onNote, onOpenKeyboard }: VoiceButtonProps) {
       accessibilityHint={tr('ui.remote.holdToTalkHint')}
       accessibilityState={{ busy: state === 'sending' }}
       onPressIn={() => {
+        // Couch Plus gate (src/plus/gate.tsx): locked -> the paywall opens and nothing listens or sends.
+        if (!session.allowed()) return;
         tap();
         lockRef.current(true);
         void controller.press();

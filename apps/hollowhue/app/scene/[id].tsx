@@ -5,15 +5,16 @@ import { Alert, Pressable, ScrollView, Text, View, useWindowDimensions } from 'r
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PALETTES, paletteById } from '../../src/core/palettes';
 import { type Edit, type History, apply, markFound, redo, undo } from '../../src/core/progress';
-import { layout } from '../../src/core/scene';
+import { layout, releaseHitGeometry } from '../../src/core/scene';
 import { t, tx } from '../../src/i18n';
 import { sceneById } from '../../src/scenes';
 import { flushProgress, getProgress, setProgress } from '../../src/store/progress';
-import { updateSettings, useSettings } from '../../src/store/settings';
+import { rememberColor, updateSettings, useSettings } from '../../src/store/settings';
 import { radius, space, type as ty, useColors } from '../../src/theme/tokens';
 import { Canvas, type CanvasHandle, type DrawTool, type Mode } from '../../src/ui/Canvas';
 import { useHaptics } from '../../src/ui/haptics';
 import { Button, IconButton } from '../../src/ui/kit';
+import { ColourPicker } from '../../src/ui/ColourPicker';
 
 export default function SceneScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -36,7 +37,8 @@ function Colouring({ sceneId }: { sceneId: string }) {
   const L = layout(scene);
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
+  const [trayHeight, setTrayHeight] = useState(240);
   const { c } = useColors();
   const h = useHaptics();
   const settings = useSettings();
@@ -46,11 +48,17 @@ function Colouring({ sceneId }: { sceneId: string }) {
   const hist = useRef<History>({ past: [], future: [] });
   const [histLen, setHistLen] = useState({ past: 0, future: 0 });
   const [mode, setMode] = useState<Mode>('fill');
-  const [tool, setTool] = useState<DrawTool>('pencil');
+  const [tool, setTool] = useState<'pencil' | 'marker'>('pencil');
+  // The eraser is its own tool in both modes: clears a shape's colour (tap) or rubs out drawing (drag).
+  const [erasing, setErasing] = useState(false);
   const [sizeIndex, setSizeIndex] = useState<0 | 1 | 2>(1);
   const [paletteId, setPaletteId] = useState(scene.palette);
   const palette = paletteById(paletteId);
-  const [color, setColor] = useState<string | null>(palette.colors[0] ?? '#B5523B');
+  const [color, setColor] = useState<string>(palette.colors[0] ?? '#B5523B');
+  const [picking, setPicking] = useState(false);
+  function chooseColor(col: string) {
+    setColor(col); setErasing(false); rememberColor(col);
+  }
   const [focus, setFocus] = useState(L.root.id);
   const [toast, setToast] = useState<string | null>(null);
   const [hint, setHint] = useState(true);
@@ -104,7 +112,8 @@ function Colouring({ sceneId }: { sceneId: string }) {
     return () => clearTimeout(id);
   }, [toast]);
 
-  useEffect(() => () => flushProgress(), []);
+  useEffect(() => () => { void flushProgress().catch(() => {}); }, []);
+  useEffect(() => () => releaseHitGeometry(L), [L]);
 
   const focusLevel = L.byId.get(focus) ?? L.root;
   const depthTotal = Math.max(...L.order.map((p) => p.depth)) + 1;
@@ -131,23 +140,26 @@ function Colouring({ sceneId }: { sceneId: string }) {
 
   const wide = width >= 700;
   const panelW = Math.min(width - space.lg * 2, 760);
-  const swatchSize = wide ? 40 : 34;
+  const swatchSize = 40;
+  const trayMaxHeight = Math.max(120, height * 0.45);
 
   return (
     <View style={{ flex: 1, backgroundColor: c.canvas }}>
-      <Canvas
+      <View style={{ position: 'absolute', left: space.md, right: space.md, top: insets.top + 84, bottom: insets.bottom + space.md + trayHeight + space.sm }}>
+        <Canvas
         ref={canvas}
         L={L}
         progress={progress}
         mode={mode}
-        tool={tool}
-        color={color}
+        tool={erasing ? ('eraser' as DrawTool) : tool}
+        color={erasing ? null : color}
         sizeIndex={sizeIndex}
         insideLines={settings.insideLines}
         onEdit={onEdit}
         onFocus={onFocus}
         onTouchStart={() => setHint(false)}
-      />
+        />
+      </View>
 
       {/* top bar */}
       <View
@@ -159,7 +171,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
             icon="chevron-left"
             label={t('tool.back')}
             onPress={() => {
-              flushProgress();
+              void flushProgress().catch(() => {});
               router.back();
             }}
             size={28}
@@ -171,14 +183,14 @@ function Colouring({ sceneId }: { sceneId: string }) {
             accessibilityRole="header"
             style={{ backgroundColor: c.card, borderRadius: radius.pill, paddingHorizontal: space.lg, paddingVertical: space.sm, borderWidth: 1, borderColor: c.line, maxWidth: '100%' }}
           >
-            <Text style={[ty.bodyBold, { color: c.ink, textAlign: 'center' }]} numberOfLines={1}>
+            <Text style={[ty.bodyBold, { color: c.ink, textAlign: 'center', fontSize: wide ? 16 : 14 }]} numberOfLines={1}>
               {tx(`scene.${scene.id}.title`)}
             </Text>
             {depthTotal > 1 ? (
-              <Text style={[ty.small, { color: c.ink3, textAlign: 'center' }]} numberOfLines={1}>
-                {t('level.where', { name: tx(`scene.${scene.id}.level.${focusLevel.id}`), i: focusLevel.depth + 1, n: depthTotal })}
+              <Text style={[ty.small, { color: c.ink3, textAlign: 'center', fontSize: wide ? 13 : 11 }]} numberOfLines={1}>
+                {t('level.where', { name: tx(`scene.${scene.id}.level.${focusLevel.id}`), i: focusLevel.depth, n: depthTotal - 1 })}
               </Text>
-            ) : null}
+            ) : <Text style={[ty.small, { color: c.ink3, textAlign: 'center' }]}>{t('gallery.single')}</Text>}
           </View>
         </View>
         <Bubble row>
@@ -216,10 +228,11 @@ function Colouring({ sceneId }: { sceneId: string }) {
       ) : null}
 
       {/* tools + palette */}
-      <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, bottom: insets.bottom + space.md, alignItems: 'center' }}>
+      <View pointerEvents="box-none" onLayout={(e) => setTrayHeight(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 0, right: 0, bottom: insets.bottom + space.md, alignItems: 'center', maxHeight: trayMaxHeight }}>
+        <ScrollView style={{ width: panelW, maxHeight: trayMaxHeight }} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
         {hint ? (
           <View pointerEvents="none" style={{ marginBottom: space.sm, backgroundColor: c.card, borderRadius: radius.md, paddingHorizontal: space.md, paddingVertical: space.sm, maxWidth: panelW }}>
-            <Text style={[ty.small, { color: c.ink2, textAlign: 'center' }]}>{mode === 'fill' ? t('hint.fill') : t('hint.draw')}</Text>
+            <Text style={[ty.small, { color: c.ink2, textAlign: 'center' }]}>{erasing ? (mode === 'fill' ? t('hint.eraseFill') : t('hint.eraseDraw')) : mode === 'fill' ? t(depthTotal > 1 ? 'hint.fill' : 'hint.single') : t('hint.draw')}</Text>
           </View>
         ) : null}
         <View style={{ width: panelW, backgroundColor: c.card, borderRadius: radius.lg, borderWidth: 1, borderColor: c.line, padding: space.sm, gap: space.sm }}>
@@ -232,16 +245,41 @@ function Colouring({ sceneId }: { sceneId: string }) {
               value={mode}
               onChange={(m) => {
                 setMode(m as Mode);
-                if (m === 'draw' && color === null) setColor(palette.colors[0] ?? '#2B2622');
+                setErasing(false);
+                setHint(true);
               }}
             />
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={t('tool.eraser')}
+              accessibilityHint={mode === 'fill' ? t('hint.eraseFill') : t('hint.eraseDraw')}
+              accessibilityState={{ selected: erasing }}
+              onPress={() => {
+                h.select();
+                setErasing((e) => !e);
+                setHint(true);
+              }}
+              style={{
+                minHeight: 48,
+                paddingHorizontal: space.md,
+                borderRadius: radius.pill,
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 6,
+                borderWidth: 1.5,
+                borderColor: erasing ? c.accent : c.line,
+                backgroundColor: erasing ? c.accent : 'transparent',
+              }}
+            >
+              <MaterialCommunityIcons name={'eraser' as never} size={20} color={erasing ? c.accentInk : c.ink2} />
+              <Text style={[ty.small, { color: erasing ? c.accentInk : c.ink2, fontWeight: '700' }]}>{t('tool.eraser')}</Text>
+            </Pressable>
             {mode === 'draw' ? (
               <>
                 <View style={{ width: 1, height: 28, backgroundColor: c.line, marginHorizontal: space.xs }} />
-                <IconButton icon="pencil-outline" label={t('tool.pencil')} active={tool === 'pencil'} onPress={() => setTool('pencil')} />
-                <IconButton icon="marker" label={t('tool.marker')} active={tool === 'marker'} onPress={() => setTool('marker')} />
-                <IconButton icon="eraser" label={t('tool.eraser')} active={tool === 'eraser'} onPress={() => setTool('eraser')} />
-                {tool !== 'eraser'
+                <IconButton icon="pencil-outline" label={t('tool.pencil')} active={!erasing && tool === 'pencil'} onPress={() => { setTool('pencil'); setErasing(false); }} />
+                <IconButton icon="marker" label={t('tool.marker')} active={!erasing && tool === 'marker'} onPress={() => { setTool('marker'); setErasing(false); }} />
+                {!erasing
                   ? ([0, 1, 2] as const).map((i) => (
                       <Pressable
                         key={i}
@@ -249,7 +287,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
                         accessibilityLabel={t('tool.size', { n: i + 1 })}
                         accessibilityState={{ selected: sizeIndex === i }}
                         onPress={() => setSizeIndex(i)}
-                        style={{ width: 40, height: 48, alignItems: 'center', justifyContent: 'center' }}
+                        style={{ width: 48, height: 48, alignItems: 'center', justifyContent: 'center' }}
                       >
                         <View
                           style={{
@@ -262,7 +300,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
                       </Pressable>
                     ))
                   : null}
-                {tool !== 'eraser' ? (
+                {!erasing ? (
                   <IconButton
                     icon={settings.insideLines ? 'shape-outline' : 'shape-plus'}
                     label={t('tool.inside')}
@@ -282,10 +320,10 @@ function Colouring({ sceneId }: { sceneId: string }) {
                 accessibilityLabel={tx(`palette.${p.id}`)}
                 onPress={() => {
                   setPaletteId(p.id);
-                  if (color !== null) setColor(p.colors[0] ?? color);
+                  chooseColor(p.colors[0] ?? color);
                 }}
                 style={{
-                  minHeight: 32,
+                  minHeight: 48,
                   paddingHorizontal: space.md,
                   borderRadius: radius.pill,
                   justifyContent: 'center',
@@ -297,29 +335,9 @@ function Colouring({ sceneId }: { sceneId: string }) {
             ))}
           </ScrollView>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingHorizontal: 2, alignItems: 'center' }}>
-            {mode === 'fill' ? (
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel={t('colour.erase')}
-                accessibilityState={{ selected: color === null }}
-                onPress={() => setColor(null)}
-                style={{
-                  width: swatchSize + 8,
-                  height: swatchSize + 8,
-                  borderRadius: (swatchSize + 8) / 2,
-                  borderWidth: 3,
-                  borderColor: color === null ? c.accent : 'transparent',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <View style={{ width: swatchSize, height: swatchSize, borderRadius: swatchSize / 2, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: c.line, alignItems: 'center', justifyContent: 'center' }}>
-                  <MaterialCommunityIcons name={'eraser-variant' as never} size={18} color={c.ink2} />
-                </View>
-              </Pressable>
-            ) : null}
+            <IconButton icon="palette-outline" label={t('colour.custom')} onPress={() => setPicking(true)} />
             {palette.colors.map((col, i) => {
-              const on = color === col;
+              const on = !erasing && color === col;
               return (
                 <Pressable
                   key={col}
@@ -327,8 +345,7 @@ function Colouring({ sceneId }: { sceneId: string }) {
                   accessibilityLabel={t('colour.swatch', { n: i + 1 })}
                   accessibilityState={{ selected: on }}
                   onPress={() => {
-                    setColor(col);
-                    if (mode === 'draw' && tool === 'eraser') setTool('pencil');
+                    chooseColor(col);
                   }}
                   style={{
                     width: swatchSize + 8,
@@ -345,8 +362,24 @@ function Colouring({ sceneId }: { sceneId: string }) {
               );
             })}
           </ScrollView>
+          {settings.recentColors.length ? (
+            <View style={{ gap: space.xs }}>
+              <Text style={[ty.small, { color: c.ink2, paddingHorizontal: space.sm }]}>{t('colour.recent')}</Text>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 6, paddingHorizontal: 2 }}>
+                {settings.recentColors.map((col) => (
+                  <Pressable key={col} accessibilityRole="button" accessibilityLabel={t('colour.recentSwatch', { color: col })}
+                    accessibilityState={{ selected: !erasing && color.toUpperCase() === col }} onPress={() => chooseColor(col)}
+                    style={{ width: 48, height: 48, borderRadius: 24, borderWidth: 3, borderColor: !erasing && color.toUpperCase() === col ? c.accent : 'transparent', alignItems: 'center', justifyContent: 'center' }}>
+                    <View style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: col, borderWidth: 1, borderColor: c.line }} />
+                  </Pressable>
+                ))}
+              </ScrollView>
+            </View>
+          ) : null}
         </View>
+        </ScrollView>
       </View>
+      {picking ? <ColourPicker initial={color} onClose={() => setPicking(false)} onChoose={(col) => { chooseColor(col); setPicking(false); }} /> : null}
     </View>
   );
 }
@@ -378,7 +411,7 @@ function Segment({ items, value, onChange }: { items: { key: string; icon: strin
               onChange(it.key);
             }}
             style={{
-              minHeight: 44,
+              minHeight: 48,
               paddingHorizontal: space.md,
               borderRadius: radius.pill,
               flexDirection: 'row',

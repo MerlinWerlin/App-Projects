@@ -1,0 +1,641 @@
+{
+  "version": "1.0.2",
+  "catalogueRelease": "glaze-packs-v5",
+  "themes": 141,
+  "updatedThemes": 105,
+  "retainedDedicatedArtClocks": 2,
+  "heldAutomaticClocks": 103,
+  "heldRepeatedComponents": 315,
+  "packs": [
+    {
+      "id": "airmail-daydream",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "a642ca51dbb2596a91ef7cf8b7680a418c6a39bff52cd17eae4fe4ebb767086b"
+    },
+    {
+      "id": "alpine-starlight",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "c6b9a614c4e8816819899536de703dda4446ccacc7b9af4f3b2eacd6b31d07b6"
+    },
+    {
+      "id": "amber-archive",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "26755fadaf8bd8b5b6882c87fd6d972ccb6f468de928a31c0da10c2d60f5f304"
+    },
+    {
+      "id": "apricot-fm",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "f9192064ab4fbb7ca296a427d83d22f920d2ae426fcf3c9abbb2ecb4522adc58"
+    },
+    {
+      "id": "aurora-haven",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "09127f30d37c8b3bf6c136bc5355a5c66d7b10dbbb91d346c1418c283220629a"
+    },
+    {
+      "id": "bamboo-ink",
+      "packVersion": 4,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "3b7d10b0340a0d12582593031eb5f262de1cfecb7eaf03fd3fb54ccc709a669a"
+    },
+    {
+      "id": "bellbat-bloom",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "ee7b88b71c1d17708a88c335254eb3cd14fbef83d38285dcefe4e0e46f47feeb"
+    },
+    {
+      "id": "berry-stitch",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "cfaf89aad3421ee8e49f3a235f3c7537b4fd9cd2e2750a71aa9402f66c8c56b9"
+    },
+    {
+      "id": "birchlight",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "eac01dd3dfebd675c9e7931c49d4ff86c1f3a28f9499b53625e7ff55dcf972a2"
+    },
+    {
+      "id": "blueprint-bureau",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "1d3ee3fb0d37a6c623ca2bdaa97da2d2c6b90071fbf68948c14a2189c5de90fc"
+    },
+    {
+      "id": "bluewing",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "770c7ed1ada29039ecda7c094117edd342b6a1d6d4d737ad53cb01c0c13a1bfa"
+    },
+    {
+      "id": "boba-bear-club",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "79308c5a2ec077534c459c582b3cc5fd8134e5c1df95146d2d4bfa2bae7727cb"
+    },
+    {
+      "id": "carbon-velocity",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "17fb60a8a38b284371a44b131de5f32520202ee8fc87dbedc2d995386e07569a"
+    },
+    {
+      "id": "cherry-arcade",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "273ed83e1b389e4b511df59a5a2c558f8fafaa5f0c0473a66885ab3d7708065b"
+    },
+    {
+      "id": "cherry-ribbon",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "f796c0d425e42617bb51d71d63b715119568e27f46640ae2048010823d393674"
+    },
+    {
+      "id": "chromatic-lab",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "8486b0c55cb951b72849773b542f263182bec60e60915302d3ff953e68023320"
+    },
+    {
+      "id": "cicada-linen",
+      "packVersion": 4,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "3472743a572eed77fd26113ac47e518c77ad005bd33b73b8194b1e4866779c9c"
+    },
+    {
+      "id": "cloud-atelier",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "86d2a5a94937492874810f4a2227449c82f346ca69ab8a54bc515936595b2e1c"
+    },
+    {
+      "id": "cloudwash",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "dd72ad1a8783dda6c9c82f21b5f5d9810f8fd3d41933c9a9226c604b5c07719e"
+    },
+    {
+      "id": "clover-nap",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "7723c8ca9060c1de45653ca106bfa2aa33535d8e2e5a13981bb48e56b4b5b068"
+    },
+    {
+      "id": "cobalt-caravan",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "3616b518b5f1391cd4b419aed97085aaaac16d915364965503ba6b9f440cbdd3"
+    },
+    {
+      "id": "crimson-reverie",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "206c906e8173a5d3e007d7859be3c768181cadbfca72ad5bf5be4b033140436f"
+    },
+    {
+      "id": "crumbkin",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "e566361875a1fc4b1ff3f104533b9d4bae101525badfb382630ba83c76f22b35"
+    },
+    {
+      "id": "curlfin-cove",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "e0d406573b146397e680bcff5aa8977307691e432a0a984c66dbec7786fad826"
+    },
+    {
+      "id": "desert-afterglow",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "bf690bef57ac370714a86da545c03eb725447f3956197e7f9bbdaea759204264"
+    },
+    {
+      "id": "dewdrop-den",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "5e97a1b3ec910751ab4323317994b0b04cddc5b491304460ff8b93aaf263dc65"
+    },
+    {
+      "id": "disco-drift",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "8b2444beafd5c2626bc7cae57110f77145fab8914afe77a260be1fb435fbd767"
+    },
+    {
+      "id": "dunesilk",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "8d64bf6720b6c24cc4dcaadbfff17d3a5e9b70d9e08b12594ce1f39049f07d39"
+    },
+    {
+      "id": "ember-rift",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "7b42e2c1ad5126a10e99731779cffaf5b042e9053f8b2eba1182bafffd7d0745"
+    },
+    {
+      "id": "ember-workshop",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "0d10b23fdac7757bc0325813264084451f1f85fe58b61f592bfae9384fbc2c42"
+    },
+    {
+      "id": "emerald-curio",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "d13bc1b2755c9f463607bb1e5c5e22fce23c5724396889b1a5f3a69b1a46868a"
+    },
+    {
+      "id": "espresso-hour",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "2c945b6a8f5ff5438df9117f45d023f7e730de9949de932fd99b2d98e43bbb0d"
+    },
+    {
+      "id": "event-horizon",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "ab48ec004839820dd2447eaebfb3052ae4bc371fb71d116f0b5a7c0da779a8e1"
+    },
+    {
+      "id": "fern-and-brass",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "8106dabc52c1b10814ce21b4624855d46df84d4ee474f2c08d931224803dc0f9"
+    },
+    {
+      "id": "fig-nocturne",
+      "packVersion": 4,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "f576ad14792eca810c52aefc0cf29413412c2d3986a6da6082b43764a0ab37f7"
+    },
+    {
+      "id": "firefly-grove",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "d76e0ffb7bcfd6f2f061c95ec543f0b7f91f18f7f18ab49a90ca260857241eec"
+    },
+    {
+      "id": "fossil-cove",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "306f00b83b42751ecf6cfbb34e1b2eff799c46a7775293f03ed168ba4b5f4984"
+    },
+    {
+      "id": "froggy-picnic",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "cf80b9baf7fc8f9022961314ddf058ff00bab8ce700eeadb43590422b556df05"
+    },
+    {
+      "id": "frostglass-passage",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "33ec803c52348a6fc9ae2b4f7d96fb78ebff3cf3b429e637d2ab8ecedc5b4cfb"
+    },
+    {
+      "id": "gambit-house",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "0f3e7d4dde6c5c24e4b29b3889b2dff0d25e96d28a085e4ec7d77be494ea2149"
+    },
+    {
+      "id": "ginkgo-hour",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "e0f4258452d17a0cd4aa0e10f739a3b70a45e2041f226755eb1ef8f2f8973b7e"
+    },
+    {
+      "id": "glacier-quiet",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "84d39dcff7a9ee2751a00d7f89501e07d6fb38e0cee99df9b68b456e79591982"
+    },
+    {
+      "id": "heirloom-rouge",
+      "packVersion": 4,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "a4cf86e1425734fc6c76314c2efc3285bc523a6b8b7ed2498449a537d88aea80"
+    },
+    {
+      "id": "heron-reed",
+      "packVersion": 4,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "2e4a2544f23a7ecbdb80fb09db574d8d09157e8421be486feb70b927d831a6f3"
+    },
+    {
+      "id": "honeywood",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "93e1199f3d554a56ef2e759d548d3b319c20a6d6d88dc8f1d6867e4bf1faa936"
+    },
+    {
+      "id": "indigo-current",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "2c857f6e060651686c409f69a0d728608e2929c740a64f8821f11f2e1d87a78d"
+    },
+    {
+      "id": "jade-meridian",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "a6a0d569f0cb5a0cf3d25d0f02c078ade777afdd3fddab4bbfb5570e0c6aad65"
+    },
+    {
+      "id": "jellylight",
+      "packVersion": 6,
+      "release": "glaze-packs-v11",
+      "manifestSHA256": "2c7675df672d63e70c6303204a102b12828f502627c42a4c9b60f358285a7d8f"
+    },
+    {
+      "id": "juniper-mist",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "b547fc3cbf7104bd9375a6a7dc8d35b5e0b2a7cdf538aff88a2363dff0dfcccf"
+    },
+    {
+      "id": "kingfisher-blue",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "621098ecc8f2254880d3c02f00679383f1cd329d14877499f54bedc6dc10ff88"
+    },
+    {
+      "id": "labradorite-hush",
+      "packVersion": 4,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "858b1bdd6a76b640e4028379cc097969088a9546ceddca91e802878a9636e625"
+    },
+    {
+      "id": "lavender-nocturne",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "72db182afc747b10754765fe639a983272be9a90b27a46970725a6b227714964"
+    },
+    {
+      "id": "lemon-lagoon",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "669b20d14c1f69620cb267d781b7156189a7ce60b2da2c106e709b7d0cf31a7d"
+    },
+    {
+      "id": "lotus-drift",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "2399261a682c334b935db94be0e2496471d0b384a49c4198f24e40ebe35b2415"
+    },
+    {
+      "id": "lumen-mosaic",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "0953434fbe62088f1a50d5d5a5b878f50e8f9016c46318db37673957392c30b8"
+    },
+    {
+      "id": "magnolia-veil",
+      "packVersion": 4,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "fea26b4d80d6d166feeee1bfe9a0c88d07be19bf563b820967ed43af9671cf26"
+    },
+    {
+      "id": "manta-silk",
+      "packVersion": 4,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "0069553bf56fd64e8982dda846b103c71e4c5cf88d46d2d00f7a8445b458338a"
+    },
+    {
+      "id": "match-point",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "e9cb33b1e75cb248135ead17d8ed49fdeb3e8e549868f519f87a02657e3585f1"
+    },
+    {
+      "id": "matcha-mews",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "6bcd51aaa48df213155801ffe29afb9647bd69eaa47f1177c1eea49c956c1ed1"
+    },
+    {
+      "id": "matcha-riso-garden",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "2af8b85e9c6ab7d55579af6da9db206fab3176d8f7d002289c6fdaa3c474c965"
+    },
+    {
+      "id": "meadowglow",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "397496588debb898f4fda451bfb4e395c7f5d2ec81496d1ec673001ea75b95c9"
+    },
+    {
+      "id": "midnight-conservatory",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "bd7f621cfeb8c1da86d88536fa05811d88a981225f5bf707cfab608633524c25"
+    },
+    {
+      "id": "midnight-matinee",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "f8369dbe48bccbc950e790ddb98e8a2fa849da5580910db8486018102aaa2f8e"
+    },
+    {
+      "id": "mochi-sleepover",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "ba22c7ae5ca4a8de991e58c0d9cd116e046eebee2a674f3392181c9bd6870611"
+    },
+    {
+      "id": "moonmallow",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "3d4a5cac344ed1845df3958e0d234643f1d563f52bcd9bbd155df68a1e3f42d4"
+    },
+    {
+      "id": "moonpatch",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "82843e8d9e176f486aad71561cbf989d11aae9f7e051de583a5fd809a1427800"
+    },
+    {
+      "id": "mosswick",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "d170dd9a42c5f6d02a5c649e24d92a5bb6ac043b537a594cd98fc2d7b374517a"
+    },
+    {
+      "id": "nebula-veil",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "d80ee06d4168a51421b8b2973c9241a4412bd435c22487626f76ae82aa3fc256"
+    },
+    {
+      "id": "neon-monsoon",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "b3dd9bb0a094852f9e923414370f5468c5070a4cfc6a7ba5db74a345a53d5d66"
+    },
+    {
+      "id": "obsidian-tide",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "5a8def6f5f54d6c90e7b0f07d81ec2852122dd001a244321cee1a8c548678f0e"
+    },
+    {
+      "id": "ochre-bend",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "86e757ed4d20e63d9cce8ae6592bc9e16a667c29ace75784100bad1755925e99"
+    },
+    {
+      "id": "olive-outpost",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "86a40b9c116ddd57e3d1825e44f81f90683a0d8443d8666f74ac0841fbf111bf"
+    },
+    {
+      "id": "opal-abyss",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "b87cba80014257359428fe463bcfc690f955cb17e9d72b00eb6048eb8025f889"
+    },
+    {
+      "id": "paper-carnival",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "416ec361cae21d6eeedc9a94e874fa6171f536e1f7ee74d2bc1bb2a7c1fbfb33"
+    },
+    {
+      "id": "peach-puddle",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "866daa5722c855433ff7787113aac9138837f5ac1c61d70caf791137e14afb26"
+    },
+    {
+      "id": "peachskin",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "5afbbd59a204ce6dd4d36ef06839a62e2c03873790fd14f3d9b42f711ca3ef94"
+    },
+    {
+      "id": "pebblekin-grove",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "d57e6d270cf5c1487d2d7c327d4e30626b7ead5fcb84e500fae80445962d4fc9"
+    },
+    {
+      "id": "pistachio-parlour",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "2cc3a781ce16545f22aa5e4eaf683a0e91394ea731cfe5fcdfc1324d665ccedf"
+    },
+    {
+      "id": "plume-court",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "2d1c3e75eaaf367e80b17be72bace3b947bcde17b5085d572546fa45c7895620"
+    },
+    {
+      "id": "pocket-pup",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "48273bfbac1cb279de0a5ab5b8aba2ef71d7927d9cb0f2197a2f6b65f4cc8ff7"
+    },
+    {
+      "id": "porcelain-tide",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "49785d1b78c3fc65c2ebdb29556be267b6877d4faf9acb6be52e4340eca9d6ad"
+    },
+    {
+      "id": "prism-orchard",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "5b67bb01ed60a03120304a4ae6bda0a7519154b788e04e14647811c719d61dd8"
+    },
+    {
+      "id": "protea-blush",
+      "packVersion": 4,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "eade6f662679edce46e8c7162509da547ad685f1cec09041554fed57fdb3037b"
+    },
+    {
+      "id": "rainleaf",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "a4baa21416b28567af2da3e636bc031e05f0c7a29e1cd7fc3040f696dbf61eb8"
+    },
+    {
+      "id": "rainlight",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "378104d8489e5780a314783b568306379082fb35c4c5b42162efd20fa3f6b0ac"
+    },
+    {
+      "id": "regatta-blue",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "9c44727a59ccebb1e73d5a6ef12cf70c594a17cb7783b032e7a3ea977104bd8b"
+    },
+    {
+      "id": "rosewater-reverie",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "2c57cae7e4a1fc74bc9689d94239d52235f45cd4277c592b8fabc5fa0876fc72"
+    },
+    {
+      "id": "saddlewood",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "89f81578570173ce9975f639bdf22e6dbe0188826d250bdd7c91f0381492147a"
+    },
+    {
+      "id": "saffron-courtyard",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "81c7fba2534a635078630a9504ba18989f667482b858f2afc101328e9560ddc5"
+    },
+    {
+      "id": "saguaro-siesta",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "31aeaf4884874b334bf963ee12297dabea8830b34047677265efa625424cbefd"
+    },
+    {
+      "id": "saltveil",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "67c2d0960c65c6a1dd12955ce1bd0760c6f69bddd69b807ba2b787e845981480"
+    },
+    {
+      "id": "sea-glass-sunday",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "fc12f8ad6eaf202f1cf92db96eccafecebce41d8f63c1b0941dd2ea28b711d1c"
+    },
+    {
+      "id": "signal-yellow",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "0914879730352f16bbf150730f98f4f0e311b19cbf9ffd0730627b7f220f49a6"
+    },
+    {
+      "id": "silver-orchard",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "362c68c2e293fd4a5388a96f360d6eb719bb7b677e22750c5bd844fce73d829f"
+    },
+    {
+      "id": "sonata-house",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "23903f3c00c95fad5f6700d8364fc62c9aa85649fac125e9c3329ae6af2ac074"
+    },
+    {
+      "id": "spare-time",
+      "packVersion": 6,
+      "release": "glaze-packs-v12",
+      "manifestSHA256": "058c8863ffd62a23bbecdd14c3c7f34847aa059b088e1872db6e19ec605223b2"
+    },
+    {
+      "id": "stellar-cradle",
+      "packVersion": 6,
+      "release": "glaze-packs-v13",
+      "manifestSHA256": "c9e6615f95a4e00ea40ddb4eaecf940ffd430247b2dc8ac342e0e28d2812f6dc"
+    },
+    {
+      "id": "summit-line",
+      "packVersion": 6,
+      "release": "glaze-packs-v13",
+      "manifestSHA256": "84d4eed2b9f11a4f853d3ffd810185a64335bbfab887a40626e4bcbe77a3fb23"
+    },
+    {
+      "id": "sundew-ember",
+      "packVersion": 4,
+      "release": "glaze-packs-v13",
+      "manifestSHA256": "37f31aa99a94463d35975880687cce23ee8690d9290ac7c81719121cd350f032"
+    },
+    {
+      "id": "tempest-noir",
+      "packVersion": 6,
+      "release": "glaze-packs-v13",
+      "manifestSHA256": "c369d1dfb3b3267b437a38f52438fc685fbb5d3b403acee012ddec3b5c45e594"
+    },
+    {
+      "id": "velvet-observatory",
+      "packVersion": 6,
+      "release": "glaze-packs-v13",
+      "manifestSHA256": "e040aaad801ea096281ad04a63629700d43117718cd770c059333ec36e40de4a"
+    },
+    {
+      "id": "verdigris-voyage",
+      "packVersion": 6,
+      "release": "glaze-packs-v13",
+      "manifestSHA256": "c7843887c9eb8100182488007fb3c9c4d74d8ed8b1ad3d3d840720f9a951fa76"
+    },
+    {
+      "id": "wickling-hollow",
+      "packVersion": 6,
+      "release": "glaze-packs-v13",
+      "manifestSHA256": "6ef22e790b9985fa8cac0c1aed3f60836cb33b1b06b408bb1f895dadaef0d757"
+    },
+    {
+      "id": "wisteria-hush",
+      "packVersion": 6,
+      "release": "glaze-packs-v13",
+      "manifestSHA256": "18c4017a86cd7c23b90c2a960dde90cc075b26b0829d95fe946609022374ed36"
+    },
+    {
+      "id": "yuzu-soak",
+      "packVersion": 6,
+      "release": "glaze-packs-v13",
+      "manifestSHA256": "25d3dc4569e68d85f3853a78e8be04f8b3580d1af596a185bbe92d7d845245fb"
+    }
+  ]
+}

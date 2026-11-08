@@ -3,10 +3,12 @@
  * until `loaded`, so there is no empty-list or "index" flash), then writes through to storage.
  */
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { AccessibilityInfo, AppState as RNAppState, useColorScheme } from 'react-native';
+import { AccessibilityInfo, AppState as RNAppState, Platform, useColorScheme } from 'react-native';
 import { LIBRARY_KEY, WELCOME_BODY, makeScript, parseLibrary, serializeLibrary, sortScripts, upsert, type Script } from '../core/library';
 import { DEFAULT_PREFS, PREFS_KEY, parsePrefs, type Prefs } from '../core/prefs';
-import { ENTITLEMENT_KEY, canUse, parseEntitlement, type PlusFeature, type Tier } from '../plus/entitlement';
+import { ENTITLEMENT_KEY, PLUS_PRODUCT_ID, canUse, parseEntitlement, type PlusFeature, type Tier } from '../plus/entitlement';
+import { createAndroidPurchaseProvider } from '../plus/androidTrial';
+import { createCodeAccess } from '../plus/accessCode';
 import { createPurchaseProvider, type PurchaseProvider, type PurchaseResult, type StoreAccess } from '../plus/purchases';
 import { t } from '../i18n';
 import { readStoredTrial, saveStoredTrial, trialState, type TrialState } from '../plus/trial';
@@ -19,7 +21,7 @@ interface AppState {
   scripts: Script[];
   prefs: Prefs;
   tier: Tier;
-  /** Seven days from the user-started free App Store trial transaction. */
+  /** Seven days from a user-started trial; Android persists its start on-device. */
   trial: TrialState;
   theme: Theme;
   reduceMotion: boolean;
@@ -33,14 +35,21 @@ interface AppState {
   buyPlus(): Promise<PurchaseResult>;
   startTrial(): Promise<PurchaseResult>;
   restorePlus(): Promise<PurchaseResult>;
+  codeAccess: boolean;
+  redeemAccessCode(code: string): Promise<boolean>;
+  removeAccessCode(): Promise<boolean>;
 }
 
 const Ctx = createContext<AppState | null>(null);
 
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [kv] = useState(() => loadKv());
-  const [purchases] = useState<PurchaseProvider>(() => createPurchaseProvider());
   const [secure] = useState(() => loadSecureStore());
+  const [codeProvider] = useState(() => createCodeAccess(kv));
+  const [codeAccess, setCodeAccess] = useState(false);
+  const [purchases] = useState<PurchaseProvider>(() => Platform.OS === 'android'
+    ? createAndroidPurchaseProvider(createPurchaseProvider(undefined, Date.now, [PLUS_PRODUCT_ID], 'android'), kv, secure)
+    : createPurchaseProvider());
   const accessRevision = useRef(0);
   const [loaded, setLoaded] = useState(false);
   const [scripts, setScripts] = useState<Script[]>([]);
@@ -55,11 +64,12 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let alive = true;
     (async () => {
-      const [lib, p, ent, first] = await Promise.all([
+      const [lib, p, ent, first, complimentary] = await Promise.all([
         kv.getItem(LIBRARY_KEY).catch(() => null),
         kv.getItem(PREFS_KEY).catch(() => null),
         kv.getItem(ENTITLEMENT_KEY).catch(() => null),
         readStoredTrial(kv, secure),
+        Platform.OS === 'android' ? codeProvider.read() : Promise.resolve(false),
       ]);
       if (!alive) return;
       let list = parseLibrary(lib);
@@ -74,6 +84,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       setPrefsState(pr);
       setTier(parseEntitlement(ent).tier);
       setTrialStart(first);
+      setCodeAccess(complimentary);
       setLoaded(true);
     })();
     AccessibilityInfo.isReduceMotionEnabled()
@@ -88,7 +99,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       sub.remove();
       appSub.remove();
     };
-  }, [kv, secure]);
+  }, [kv, secure, codeProvider]);
 
   const persistScripts = useCallback(
     (next: Script[]) => {
@@ -132,7 +143,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     setTrialStart(access.trialStart);
     await Promise.all([
       kv.setItem(ENTITLEMENT_KEY, JSON.stringify({ version: 1, tier: access.plus ? 'plus' : 'free', source: access.plus ? source : 'none', updatedAt: Date.now() })).catch(() => undefined),
-      saveStoredTrial(kv, secure, access.trialStart),
+      Platform.OS === 'android' && access.trialStart === null
+        ? Promise.resolve()
+        : saveStoredTrial(kv, secure, access.trialStart),
     ]);
   }, [kv, secure]);
 
@@ -163,12 +176,13 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     const dark = prefs.theme === 'dark' || (prefs.theme === 'system' && scheme === 'dark');
     const reduceMotion = prefs.reduceMotion === 'on' || (prefs.reduceMotion === 'system' && sysReduce);
     const trial = trialState(trialStart, clockTick);
-    const unlocked = tier === 'plus' || trial.active;
+    const effectiveTier = codeAccess ? 'plus' : tier;
+    const unlocked = effectiveTier === 'plus' || trial.active;
     return {
       loaded,
       scripts,
       prefs,
-      tier,
+      tier: effectiveTier,
       trial,
       theme: dark ? DARK : LIGHT,
       reduceMotion,
@@ -182,8 +196,21 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       buyPlus: () => transact('buy'),
       startTrial: () => transact('startTrial'),
       restorePlus: () => transact('restore'),
+      codeAccess,
+      redeemAccessCode: async (code) => {
+        if (Platform.OS !== 'android') return false;
+        const ok = await codeProvider.activate(code);
+        if (ok) setCodeAccess(true);
+        return ok;
+      },
+      removeAccessCode: async () => {
+        if (Platform.OS !== 'android') return false;
+        const ok = await codeProvider.remove();
+        if (ok) setCodeAccess(false);
+        return ok;
+      },
     };
-  }, [loaded, scripts, prefs, tier, trialStart, clockTick, scheme, sysReduce, purchases, saveScript, createScript, deleteScript, setPrefs, transact]);
+  }, [loaded, scripts, prefs, tier, trialStart, clockTick, scheme, sysReduce, purchases, saveScript, createScript, deleteScript, setPrefs, transact, codeAccess, codeProvider]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

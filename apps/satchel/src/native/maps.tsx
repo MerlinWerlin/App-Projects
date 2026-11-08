@@ -10,15 +10,20 @@
 // T72: a numbered stop is a custom-view marker. It tracks view changes only long enough to draw its first frame
 // (and again briefly when its number, icon or colour changes), then stops, so a busy day doesn't redraw every pin
 // on each frame while the map pans (react-native-maps' advice for custom markers).
+// T166: when the city's dark tiles are installed (offlineTiles.darkPathTemplate) and the phone is in dark mode, the
+// LocalTile reads those instead of the light ones (src/core/citymaps.ts tilePathForScheme); keyed by path so the
+// overlay redraws when the appearance changes.
 import { Ionicons } from '@expo/vector-icons';
 import { Component, useCallback, useEffect, useRef, useState, type ComponentProps, type ReactNode } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import type MapViewType from 'react-native-maps';
+import { tilePathForScheme, type OfflineTiles } from '../core/citymaps.ts';
 import { validLatLon, type LatLon, type Region } from '../core/poi.ts';
 import { useApp } from '../state/app.tsx';
 import { duration, dur } from '../theme/motion.ts';
 import { fonts, radius, space } from '../theme/tokens.ts';
 import { Body, PressableScale } from '../ui/kit.tsx';
+import { LiftGlyph } from '../ui/stepfreeIcons.tsx';
 
 type MapsModule = typeof import('react-native-maps');
 
@@ -49,7 +54,16 @@ export type MapPin = {
   a11y: string;
   /** T69: drawn as a numbered disc in `color` (text and icon in the card colour) instead of a plain pin. */
   badge?: { text: string; icon?: ComponentProps<typeof Ionicons>['name'] };
+  /** T155: drawn as a round disc in `color` with this Ionicons glyph in the card colour (place pins by category). */
+  glyph?: ComponentProps<typeof Ionicons>['name'];
+  /** T164: draw this original SVG glyph (src/core/poipins.ts PinSvgGlyph) in the disc instead of `glyph`. */
+  svgGlyph?: 'lift';
 };
+
+/** T164: the disc's glyph: the original SVG drawing when the pin names one, else its Ionicons glyph. */
+function PinGlyphIcon({ pin, size, color }: { pin: MapPin & { glyph: NonNullable<MapPin['glyph']> }; size: number; color: string }) {
+  return pin.svgGlyph === 'lift' ? <LiftGlyph size={size + 2} color={color} /> : <Ionicons name={pin.glyph} size={size} color={color} />;
+}
 
 /** A line on the map (T69: a day's stops in order). `color` is a theme token colour. */
 export type MapLine = { id: string; points: LatLon[]; color: string; dashed?: boolean };
@@ -72,8 +86,8 @@ type Props = {
   fallbackBody: string;
   /** Tap on the map itself (not a pin): selects that spot (FLOWS §11.1). Not offered by the no-map fallback list. */
   onMapPress?: (at: LatLon) => void;
-  /** A downloaded city's raster tiles (plain file path with {z}/{x}/{y}), drawn over the system map. */
-  offlineTiles?: { pathTemplate: string; maxZoom: number; minZoom: number } | null;
+  /** A downloaded city's raster tiles (plain file path with {z}/{x}/{y}), drawn over the system map; T166: plus its dark tiles when installed. */
+  offlineTiles?: OfflineTiles | null;
   /** Stop zooming in past the offline tiles' deepest level (used while the phone is offline, where nothing else draws). */
   limitZoom?: boolean;
   /** Called after the user moves the map. */
@@ -113,10 +127,14 @@ function PinList({ pins, onPinPress, title, body, height }: { pins: MapPin[]; on
               <View style={{ minWidth: 24, height: 24, borderRadius: 12, paddingHorizontal: space.xs, alignItems: 'center', justifyContent: 'center', backgroundColor: item.color }}>
                 <Text style={{ fontFamily: fonts.bodyBold, fontSize: 12, color: theme.card }}>{item.badge.text}</Text>
               </View>
+            ) : item.glyph ? (
+              <View style={{ width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: item.color }}>
+                <PinGlyphIcon pin={{ ...item, glyph: item.glyph }} size={13} color={theme.card} />
+              </View>
             ) : (
               <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: item.color }} />
             )}
-            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 15, color: theme.ink }} numberOfLines={1}>
+            <Text style={{ flex: 1, fontFamily: fonts.body, fontSize: 15, color: theme.ink }} numberOfLines={2}>
               {item.title}
             </Text>
           </PressableScale>
@@ -147,6 +165,36 @@ function Badge({ pin }: { pin: MapPin & { badge: NonNullable<MapPin['badge']> } 
       {pin.badge.icon ? <Ionicons name={pin.badge.icon} size={13} color={theme.card} /> : null}
       <Text style={{ fontFamily: fonts.bodyBold, fontSize: 14, color: theme.card }}>{pin.badge.text}</Text>
     </View>
+  );
+}
+
+/** T155: a place pin as a small disc with its category glyph (card-coloured on the category's theme colour). */
+function Glyph({ pin }: { pin: MapPin & { glyph: NonNullable<MapPin['glyph']> } }) {
+  const { theme } = useApp();
+  return (
+    <View style={{ width: 30, height: 30, borderRadius: 15, borderWidth: 2, borderColor: theme.card, backgroundColor: pin.color, alignItems: 'center', justifyContent: 'center' }}>
+      <PinGlyphIcon pin={pin} size={15} color={theme.card} />
+    </View>
+  );
+}
+
+function GlyphMarker({ Marker, pin, onPress }: { Marker: MapsModule['Marker']; pin: MapPin & { glyph: NonNullable<MapPin['glyph']> }; onPress: () => void }) {
+  const { theme } = useApp();
+  const tracking = useTrackBriefly(`${pin.glyph}|${pin.svgGlyph ?? ''}|${pin.color}|${theme.card}`);
+  return (
+    <Marker
+      identifier={pin.id}
+      coordinate={{ latitude: pin.lat, longitude: pin.lon }}
+      title={pin.title}
+      description={pin.subtitle}
+      anchor={{ x: 0.5, y: 0.5 }}
+      zIndex={1}
+      tracksViewChanges={tracking}
+      accessibilityLabel={pin.a11y}
+      onPress={onPress}
+    >
+      <Glyph pin={pin} />
+    </Marker>
   );
 }
 
@@ -233,6 +281,7 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
   const { Marker, LocalTile } = maps;
   const Polyline = typeof maps.Polyline === 'function' ? maps.Polyline : null;
   const tiles = offlineTiles && typeof LocalTile === 'function' ? offlineTiles : null;
+  const tilePath = tiles ? tilePathForScheme(tiles, theme.dark) : null;
   return (
     <Boundary fallback={fallback}>
       <View style={{ height, borderRadius: radius.m, overflow: 'hidden', borderWidth: 1, borderColor: theme.line }}>
@@ -264,7 +313,7 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
               : undefined
           }
         >
-          {tiles ? <LocalTile pathTemplate={tiles.pathTemplate} tileSize={256} /> : null}
+          {tiles && tilePath ? <LocalTile key={tilePath} pathTemplate={tilePath} tileSize={256} /> : null}
           {Polyline && lines
             ? lines.map((l) =>
                 l.points.length > 1 ? (
@@ -283,6 +332,8 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
           {pins.map((p) =>
             p.badge ? (
               <BadgeMarker key={p.id} Marker={Marker} pin={{ ...p, badge: p.badge }} onPress={() => onPinPress(p.id)} />
+            ) : p.glyph ? (
+              <GlyphMarker key={p.id} Marker={Marker} pin={{ ...p, glyph: p.glyph }} onPress={() => onPinPress(p.id)} />
             ) : (
               <Marker
                 key={p.id}

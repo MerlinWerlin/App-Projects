@@ -1,0 +1,26 @@
+name: Hollowhue TestFlight refresh
+on:
+  push:
+    branches: [main]
+    paths: ['apps/hollowhue/TESTFLIGHT_REQUEST.json']
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: hollowhue-testflight-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start the existing signed iOS build and TestFlight upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # The request marker is reviewed with the app change. RELEASE.json separately publishes
+          # the compatible OTA; ship-mac embeds that source in a fresh TestFlight binary.
+          node -e 'const r=require("./apps/hollowhue/TESTFLIGHT_REQUEST.json"); if(r.ascAppId!=="6829399355") throw new Error("Wrong Hollowhue app record");'
+          gh api -X POST "repos/$GITHUB_REPOSITORY/actions/workflows/ship-mac.yml/dispatches" -f ref=main -f 'inputs[app]=hollowhue'
+          echo 'Fresh Hollowhue iOS build dispatched through ship-mac. Upload and Apple processing still require verification.' >> "$GITHUB_STEP_SUMMARY"

@@ -4,11 +4,12 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 import { PALETTES } from './core/palettes.ts';
 import { en } from './i18n/en.ts';
 import { SCENES } from './scenes/index.ts';
 
-const root = new URL('..', import.meta.url).pathname;
+const root = fileURLToPath(new URL('..', import.meta.url));
 
 function files(dir: string): string[] {
   return readdirSync(dir).flatMap((n) => {
@@ -51,9 +52,9 @@ test('no route can flash its raw name: root stack hides headers and holds the sp
   assert.match(rootLayout, /preventAutoHideAsync/);
 });
 
-test('filters start off and the language line is on first launch only', () => {
+test('gallery starts with the independent approved pictures and language line is first-launch only', () => {
   const gallery = readFileSync(join(root, 'app/index.tsx'), 'utf8');
-  assert.match(gallery, /useState<Filter>\('all'\)/);
+  assert.match(gallery, /useState<BrowseCollection>\('single'\)/);
   const store = readFileSync(join(root, 'src/store/settings.ts'), 'utf8');
   assert.match(store, /langLineDone: false/);
   assert.match(store, /langLineDone: settings\.langLineDone \|\| settings\.launches >= 1/);

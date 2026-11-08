@@ -25,6 +25,7 @@ import { textStyleFor } from '../../src/ui/i18nLayout';
 import { PressableScale } from '../../src/ui/PressableScale';
 import { Sheet } from '../../src/ui/Sheet';
 import { LargeTitleFlatList, PillButton, SectionHeader, Skeleton } from '../../src/ui/v2';
+import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 /** The editorial card rhythm, between thumbnails in a row and between rows. */
 const GAP = editorialV2.cardGap;
@@ -75,7 +76,7 @@ const ThumbRow = memo(function ThumbRow({ row, width, height, onOpen }: RowProps
   );
 });
 
-export default function WallpapersTab() {
+function WallpapersTab() {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const tl = t as unknown as LooseT;
@@ -256,3 +257,6 @@ const styles = StyleSheet.create({
   sheetBody: { gap: spaceV2.md, alignItems: 'stretch' },
   preview: { alignSelf: 'center', borderRadius: chromeRadiusV2.card, overflow: 'hidden' },
 });
+
+// T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.
+export default withScreenBoundary(WallpapersTab, 'wallpapers');

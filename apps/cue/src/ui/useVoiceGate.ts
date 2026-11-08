@@ -6,7 +6,9 @@
 import { AudioModule, RecordingPresets, setAudioModeAsync, useAudioRecorder, useAudioRecorderState } from 'expo-audio';
 import { useEffect, useRef, useState } from 'react';
 import { useSharedValue, type SharedValue } from 'react-native-reanimated';
+import { File } from 'expo-file-system';
 import { VoiceGate } from '../core/pace';
+import { startVoiceRecording } from '../native/voiceRecording';
 
 export type GateStatus = 'off' | 'starting' | 'listening' | 'denied' | 'error';
 
@@ -24,35 +26,18 @@ export function useVoiceGate(enabled: boolean): { gate: SharedValue<number>; sta
       setStatus('off');
       return;
     }
-    let cancelled = false;
     gate.value = 0;
     model.current = new VoiceGate();
     setStatus('starting');
-    (async () => {
-      try {
-        const perm = await AudioModule.requestRecordingPermissionsAsync();
-        if (!perm.granted) {
-          if (!cancelled) setStatus('denied');
-          gate.value = 1;
-          return;
-        }
-        await setAudioModeAsync({ playsInSilentMode: true, allowsRecording: true });
-        await recorder.prepareToRecordAsync();
-        recorder.record();
-        if (!cancelled) setStatus('listening');
-      } catch {
-        if (!cancelled) setStatus('error');
-        gate.value = 1;
-      }
-    })();
+    const session = startVoiceRecording(
+      recorder,
+      async () => (await AudioModule.requestRecordingPermissionsAsync()).granted,
+      enabled => setAudioModeAsync({ playsInSilentMode: true, allowsRecording: enabled }),
+      uri => { const file = new File(uri); if (file.exists) file.delete(); },
+      next => { setStatus(next); if (next !== 'listening') gate.value = 1; },
+    );
     return () => {
-      cancelled = true;
-      try {
-        void recorder.stop().catch(() => undefined);
-      } catch {
-        /* already stopped */
-      }
-      void setAudioModeAsync({ allowsRecording: false }).catch(() => undefined);
+      void session.stop().catch(() => undefined);
     };
   }, [enabled, recorder, gate]);
 

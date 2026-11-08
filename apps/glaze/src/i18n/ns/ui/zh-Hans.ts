@@ -2,9 +2,24 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const zhHans: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "专为此主题设计",
+      "body": "清晰易读的实时小组件，配色与图标一致。",
+      "clock": "时钟",
+      "battery": "电量",
+      "calendar": "日历",
+      "setup": "在主屏幕上添加小组件并选择 Glaze。时钟、电池和日历会使用你在此选择的主题。",
+      "save": "存入我的小组件艺术",
+      "update": "请从 TestFlight 安装最新版本的 Glaze 以使用这些小组件。",
+      "batteryNote": "电量会定期刷新。短横线表示 iOS 尚未提供电量。",
+      "unavailable": "暂不可用"
+  },
   error: {
     body: '此页面出现问题并已停止。你的图标、主题和循环都保存在手机上，不受影响。请重试；如果问题持续，请把下方的说明发给我们。',
     retryHint: '重新加载此页面',
+    screenTitle: '出了点问题',
+    screenBody: '此页面遇到了问题。你的主题、图标和小组件都安全地保存在手机上。轻点“重试”重新加载。',
+    retry: '重试',
     report: '报告问题',
     reportHint: '打开邮件应用并填好此错误。Glaze 自身不会发送任何内容。',
     opening: '正在打开邮件…',

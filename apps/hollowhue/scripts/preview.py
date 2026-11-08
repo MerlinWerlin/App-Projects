@@ -32,13 +32,14 @@ def render(level, s=S):
             if len(p) >= 3:
                 ImageDraw.Draw(m).polygon(p, fill=1)
             mask = ImageChops.logical_xor(mask, m)
-        col = tuple(rnd.randint(120, 245) for _ in range(3)) if fill else (255, 255, 255)
+        col = (43, 38, 34) if r.get('ink') else tuple(rnd.randint(120, 245) for _ in range(3)) if fill else (255, 255, 255)
         img.paste(Image.new('RGB', (W, H), col), (0, 0), mask)
         d = ImageDraw.Draw(img)
-        for ring in r['rings']:
-            p = pts(ring, s)
-            if len(p) >= 3:
-                d.line(p + [p[0]], fill=(43, 38, 34), width=sw, joint='curve')
+        if r.get('outline', True) and not r.get('ink'):
+            for ring in r['rings']:
+                p = pts(ring, s)
+                if len(p) >= 3:
+                    d.line(p + [p[0]], fill=(43, 38, 34), width=sw, joint='curve')
     return img
 
 for sc in data:

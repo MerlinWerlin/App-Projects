@@ -293,16 +293,41 @@ export type Illustration =
   | 'remove-profile'
   | 'safari-page'
   | 'allow-dialog'
-  | 'home-icons';
+  | 'home-icons'
+  // T262 (owner-1101i, iOS 27): redrawn guide screens, drawn by src/ui/ProfileGuideArt.tsx.
+  | 'profile-downloaded'
+  | 'settings-more'
+  | 'more-view-profile'
+  | 'install-profile-sheet';
+
+/** T262: illustrations drawn as a full-width phone-sheet mock under the step text. */
+export const GUIDE_ART_ILLUSTRATIONS: readonly Illustration[] = Object.freeze([
+  'profile-downloaded',
+  'settings-more',
+  'more-view-profile',
+  'install-profile-sheet',
+] as Illustration[]);
+
+export function isGuideArt(kind: Illustration): boolean {
+  return GUIDE_ART_ILLUSTRATIONS.includes(kind);
+}
 
 export type StepCardData = { id: string; title: string; body: string; illustration: Illustration };
 
-/** T126: the exact on-screen steps when the profile is served to Safari from the iPhone. */
+/**
+ * T126: the exact on-screen steps when the profile is served to Safari from the iPhone.
+ * T262 (owner-1101i): matched to iOS 27 on the owner's iPhone (1 Nov 2026): Safari "Profile
+ * Downloaded" -> Close; Settings, "More for Your iPhone" under the Apple Account card; the
+ * "Profile Downloaded" card -> View Profile; the Install Profile sheet -> Install, passcode,
+ * Install. Older iOS: "Profile Downloaded" near the top, or VPN & Device Management.
+ */
 export const SAFARI_PROFILE_STEPS: readonly string[] = Object.freeze([
   // T156: the page requests the profile as it opens, so Safari may ask before Install is tapped.
   'Safari opens the Glaze page and may ask to download the profile straight away. If it doesn’t, tap Install.',
-  'Safari asks to allow a configuration profile download, sometimes before you tap Install: tap Allow, then Close.',
-  'Open Settings: tap “Profile Downloaded” near the top (or General > VPN & Device Management), tap Install, enter your passcode, Install.',
+  'Safari asks to allow a configuration profile download, sometimes before you tap Install: tap Allow. Safari then says “Profile Downloaded”: tap Close.',
+  'Open the Settings app. At the top, under your Apple Account, tap “More for Your iPhone” (it has a red badge). Not there? Look for “Profile Downloaded” near the top of Settings, or General > VPN & Device Management.',
+  'On the “Profile Downloaded” card, tap View Profile.',
+  'The Install Profile sheet shows “Glaze icons” and how many Web Clips it adds. Tap Install (top right), enter your passcode, then tap Install again.',
   'Your icons appear on the Home Screen.',
 ]);
 
@@ -332,16 +357,18 @@ function commonProfileCards(): StepCardData[] {
 
 /**
  * Illustrated steps for the bulk profile flow. `route` 'safari' (T126, the profile is served to
- * Safari from this iPhone) gives the four Safari steps; 'share' (fallback builds) keeps the
+ * Safari from this iPhone) gives the six Safari steps; 'share' (fallback builds) keeps the
  * share sheet / Files steps.
  */
 export function profileStepCards(profileCount: number = 1, route: 'safari' | 'share' = 'share'): StepCardData[] {
   if (route === 'safari') {
-    const [safari, allow, settings, home] = SAFARI_PROFILE_STEPS;
+    const [safari, allow, more, view, settings, home] = SAFARI_PROFILE_STEPS;
     return [
       { id: 'safari', title: 'Install in Safari', body: safari, illustration: 'safari-page' },
-      { id: 'allow', title: 'Allow the download', body: allow, illustration: 'allow-dialog' },
-      { id: 'settings', title: 'Install in Settings', body: settings, illustration: 'install-button' },
+      { id: 'allow', title: 'Allow, then Close', body: allow, illustration: 'profile-downloaded' },
+      { id: 'more', title: 'Open Settings', body: more, illustration: 'settings-more' },
+      { id: 'view', title: 'View the profile', body: view, illustration: 'more-view-profile' },
+      { id: 'settings', title: 'Install the profile', body: settings, illustration: 'install-profile-sheet' },
       { id: 'home', title: 'Your icons appear', body: home, illustration: 'home-icons' },
       ...commonProfileCards(),
     ];
@@ -369,8 +396,8 @@ function shareProfileCards(profileCount: number): StepCardData[] {
     {
       id: 'install',
       title: 'Install in Settings',
-      body: 'Open Settings and tap "Profile Downloaded" near the top (or General > VPN & Device Management). Tap Install, enter your passcode, tap Install again, then Done. Not there? Fully close Settings, open it again and go to General > VPN & Device Management > Downloaded Profile. iOS deletes a downloaded profile after about 8 minutes, so if it is gone, tap the file in Files again and go straight to Settings.',
-      illustration: 'install-button',
+      body: 'Open Settings and tap "More for Your iPhone" at the top, under your Apple Account, then View Profile on the "Profile Downloaded" card. Tap Install (top right), enter your passcode, tap Install again, then Done. Not there? Look for "Profile Downloaded" near the top of Settings, or fully close Settings, open it again and go to General > VPN & Device Management > Downloaded Profile. iOS deletes a downloaded profile after about 8 minutes, so if it is gone, tap the file in Files again and go straight to Settings.',
+      illustration: 'settings-more',
     },
   ];
 }

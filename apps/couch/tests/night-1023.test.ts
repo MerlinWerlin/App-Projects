@@ -12,12 +12,17 @@ const code = (p: string) => read(p).replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/
 
 describe('night-1023: Plus actions never fail silently', () => {
   const src = code('app/plus.tsx');
-  it('every Buy / Restore result also shows as a toast', () => {
+  it('every trial / Buy / Restore result also shows as a toast (paywall, owner 7 Nov 2026)', () => {
     expect(src).toContain("import { showToast } from '../src/ui/Toast';");
     expect(src).toContain("showToast(note, ok ? 'success' : 'warning')");
-    // Buy/restore: success path and the catch path both report (the tip jar was removed 25 Oct 2026).
-    expect(src.match(/report\(note, r\.ok\)/g)?.length).toBe(1);
-    expect(src.match(/report\(t\('app\.plus\.failed'\), false\)/g)?.length).toBe(1);
+    // One say() for every outcome: the inline line and the toast together.
+    expect(src).toMatch(/const say = useCallback\(\(note: string, ok: boolean\) => \{\s*setBuyNote\(note\);\s*report\(note, ok\);/);
+    for (const key of ['app.plus.thanksPlus', 'core.plus.unavailable', 'app.plus.failed', 'app.plus.notBought', 'app.plus.restoreNone',
+      'app.plus.trialUnavailable', 'app.plus.trialFailed', 'app.plus.trialUsed', 'app.plus.trialStarted']) {
+      expect({ key, said: src.includes(`'${key}'`) }).toEqual({ key, said: true });
+    }
+    // Both promise chains end in a catch that says so.
+    expect(src.match(/\.catch\(\(\) => say\(t\('app\.plus\.(failed|trialFailed)'\), false\)\)/g)?.length).toBe(2);
   });
   it('keeps the inline lines too', () => {
     expect(src).toContain('setBuyNote(note)');

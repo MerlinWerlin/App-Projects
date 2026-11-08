@@ -60,7 +60,7 @@ export default function ScoresScreen() {
         {players.map((p) => (
           <View key={p.id} style={[{ flexDirection: 'row', alignItems: 'center', gap: space.s, paddingLeft: space.l, paddingRight: space.s, borderRadius: radius.l }, elevated(theme, 'low')]}>
             <View accessible accessibilityLabel={t('games.scores.rowA11y', { name: p.name, n: p.score })} style={{ flex: 1, paddingVertical: space.s }}>
-              <Text numberOfLines={1} style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>
+              <Text numberOfLines={2} style={{ fontFamily: fonts.bodyBold, fontSize: 17, color: theme.ink }}>
                 {p.name}
               </Text>
             </View>

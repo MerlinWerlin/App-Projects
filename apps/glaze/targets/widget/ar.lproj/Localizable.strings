@@ -49,7 +49,7 @@
 "A photo you pick in Glaze." = "صورة تختارها في Glaze.";
 "Choose a photo in Glaze" = "اختر صورة في Glaze";
 "Little Line" = "سطر قصير";
-"A short, gentle line that changes every hour." = "سطر قصير ولطيف يتغيّر كل ساعة.";
+"A short, gentle line that changes every day." = "سطر قصير ولطيف يتغيّر كل يوم.";
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "سلسة";
@@ -71,3 +71,91 @@
 "Pause" = "إيقاف مؤقت";
 "Resume" = "استئناف";
 "Days" = "أيام";
+
+"Photo album" = "ألبوم صور";
+
+"Choose album photos in Glaze" = "اختر صور الألبوم في Glaze";
+
+"Your selected photos, changing through the day." = "صورك المختارة تتغير خلال اليوم.";
+
+"Next photo" = "الصورة التالية";
+
+"Widget size" = "حجم الأداة";
+/* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
+   The word clock's phrase is English only by design; other languages show a big digital time. */
+"widgets.moon.new" = "محاق";
+"widgets.moon.waxingCrescent" = "هلال متزايد";
+"widgets.moon.firstQuarter" = "تربيع أول";
+"widgets.moon.waxingGibbous" = "أحدب متزايد";
+"widgets.moon.full" = "بدر";
+"widgets.moon.waningGibbous" = "أحدب متناقص";
+"widgets.moon.lastQuarter" = "تربيع أخير";
+"widgets.moon.waningCrescent" = "هلال متناقص";
+"widgets.moon.lit" = "مضاء بنسبة %1$@";
+"widgets.moon.fullTonight" = "بدر الليلة";
+"widgets.moon.fullTomorrow" = "بدر غدًا";
+"widgets.moon.fullIn" = "البدر بعد %1$@ يوم";
+"widgets.moon.nextNights" = "الليالي السبع القادمة";
+"Moon" = "القمر";
+"Tonight's moon phase, worked out on your phone, in your Glaze theme." = "طور القمر الليلة، محسوب على هاتفك، بسمة Glaze الخاصة بك.";
+"Word clock" = "ساعة الكلمات";
+"The time in words, in your Glaze theme." = "الوقت بالكلمات، بسمة Glaze الخاصة بك.";
+"Big clock" = "ساعة كبيرة";
+"Big, bold numerals in your Glaze theme. Made for StandBy." = "أرقام كبيرة وواضحة بسمة Glaze الخاصة بك. مصممة لوضع الاستعداد.";
+/* Lock Screen widgets: clock, date, battery, countdown, moon (LockAccessoryWidget.swift, T279) */
+"Glaze Lock" = "Glaze Lock";
+"Lock Screen date" = "التاريخ (شاشة القفل)";
+"The weekday and date for your Lock Screen." = "اليوم والتاريخ لشاشة القفل.";
+"Lock Screen battery" = "البطارية (شاشة القفل)";
+"Your battery level for your Lock Screen." = "مستوى البطارية على شاشة القفل.";
+"Lock Screen countdown" = "العد التنازلي (شاشة القفل)";
+"Days left to the date you choose in Glaze." = "الأيام المتبقية حتى التاريخ الذي تختاره في Glaze.";
+"Lock Screen moon" = "القمر (شاشة القفل)";
+"Tonight's moon and the days to the next full moon." = "قمر الليلة والأيام حتى البدر القادم.";
+"Choose a date in Glaze" = "اختر تاريخًا في Glaze";
+"lock.battery" = "البطارية";
+"lock.moon" = "القمر";
+"lock.moon.fullToday" = "البدر اليوم";
+"lock.countdown.days" = "%1$@ أيام";
+"lock.moon.fullIn" = "البدر بعد %1$@ أيام";
+"lock.moon.lit" = "%1$@ مضاء";
+/* Next event and Weather widgets (CalendarEventWidget.swift, WeatherWidget.swift; owner-1102b T280/T281) */
+"Next event" = "الحدث التالي";
+"Your next calendar event, in your Glaze theme." = "حدث التقويم التالي بألوان سِمة Glaze.";
+"Open Glaze to show your next event" = "افتح Glaze لعرض حدثك التالي";
+"No events in the next 7 days" = "لا أحداث في الأيام السبعة القادمة";
+"All day" = "طوال اليوم";
+"Now" = "الآن";
+"Tomorrow" = "غدًا";
+"calendar.untitled" = "حدث";
+"calendar.sample.1" = "قهوة مع سام";
+"calendar.sample.2" = "اجتماع الفريق";
+"calendar.sample.3" = "يوغا";
+"Weather" = "الطقس";
+"The weather where you are, in your Glaze theme." = "الطقس في مكانك بألوان سِمة Glaze.";
+"Open Glaze to set weather" = "افتح Glaze لإعداد الطقس";
+"Updated %@" = "آخر تحديث %@";
+"H:%@ L:%@" = "العظمى:%1$@ الصغرى:%2$@";
+"Weather data by Open-Meteo.com" = "بيانات الطقس من Open-Meteo.com";
+/* Streak widget (HabitStreakWidget.swift, TickHabitIntent, T284). habit.a11y.*: 1 = days / habit name */
+"habit.streak.caption" = "سلسلة";
+"habit.streak.tick" = "سجّل اليوم";
+"habit.streak.done" = "تمّ اليوم";
+"habit.streak.name" = "السلاسل";
+"habit.streak.desc" = "سجّل عادة كل يوم وشاهد سلسلتك تكبر.";
+"habit.a11y.streak" = "سلسلة %1$@ أيام";
+"habit.a11y.tick" = "سجّل %1$@ لليوم";
+"Tick a habit" = "تسجيل عادة";
+"Streak habit" = "عادة السلسلة";
+"Choose the habit this streak widget follows." = "اختر العادة التي تتابعها أداة السلسلة هذه.";
+
+"Unavailable" = "غير متاح";
+"Full" = "ممتلئة";
+"Remaining" = "المتبقي";
+
+/* Theme gallery */
+"Battery" = "البطارية";
+"Calendar" = "التقويم";
+"Matches the theme you choose in Glaze." = "يتوافق مع المظهر الذي تختاره في Glaze.";
+/* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
+"Artwork from the theme you choose in Glaze." = "رسوم من المظهر الذي تختاره في Glaze.";

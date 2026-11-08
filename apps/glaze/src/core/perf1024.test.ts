@@ -26,7 +26,7 @@ import { SPACE_THEMES } from './spacePack.ts';
 import { THEMES } from './themes.ts';
 
 const root = process.cwd();
-const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
+const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8').replace(/\r\n/g, '\n');
 const strip = (src: string) => src.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
 
 const THEMES_TAB = strip(read('app', '(tabs)', 'themes.tsx'));

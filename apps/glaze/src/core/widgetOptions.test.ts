@@ -149,7 +149,7 @@ test('v1 adapter: each widget role is an art option offered in every Home Screen
   assert.deepEqual(widgetOptionsFromV1([]), []);
 });
 
-test('v1 manifest (real fixture) parses with derived options; the medium tab offers the square art too', () => {
+test('v1 manifest (real fixture) parses with derived options; each hero only at its own size', () => {
   const r = parseRemoteArtManifest(fixture(), 'alpine-starlight');
   assert.ok(r.ok);
   if (!r.ok) return;
@@ -157,7 +157,7 @@ test('v1 manifest (real fixture) parses with derived options; the medium tab off
   assert.equal(r.value.widgets.length, 3);
   const medium = optionsForSize(r.value.widgets, 'medium');
   assert.equal(medium[0].id, 'hero-medium', 'its own art first');
-  assert.ok(medium.some((o) => o.id === 'hero-small'), 'square art is offered (fitted) in medium');
+  assert.deepEqual(medium.map((o) => o.id), ['hero-medium'], 'owner 2026-11-08: no hero is fitted into another size');
   assert.equal(optionsForSize(r.value.widgets, 'lock').length, 0);
 });
 
@@ -288,7 +288,7 @@ test('the option boxes have the same aspect as the real widget sizes', () => {
 
 // ------------------------------------------------------------------ menu
 
-test('sections: one per kind, practical kinds first (shelf order), art last; every piece in every Home size', () => {
+test('sections: one per kind, practical kinds first (shelf order), art last; a piece only at the sizes it was drawn for', () => {
   const r = parseWidgetOptions(
     [
       // T206: number-free pictures stay practical (pictures with fixed numbers go with the art).
@@ -300,11 +300,10 @@ test('sections: one per kind, practical kinds first (shelf order), art last; eve
     ASSETS,
   );
   const ids = (size: 'small' | 'medium' | 'large') => widgetOptionSections(r.options, size).map((s) => [s.kind, s.options.map((o) => o.id)]);
-  // a2 is only suggested for medium, but small offers it too (fitted), after the suggested a1.
-  assert.deepEqual(ids('small'), [['clock', ['c1']], ['battery', ['b1']], ['art', ['a1', 'a2']]]);
-  assert.deepEqual(ids('medium'), [['clock', ['c1']], ['battery', ['b1']], ['art', ['a1', 'a2']]]);
-  // Nothing is suggested for large: still every piece, the best aspect match first.
-  assert.deepEqual(ids('large'), [['clock', ['c1']], ['battery', ['b1']], ['art', ['a1', 'a2']]]);
+  // Owner 2026-11-08: only listed sizes, and a square piece (a1) never in the wide medium widget.
+  assert.deepEqual(ids('small'), [['clock', ['c1']], ['battery', ['b1']], ['art', ['a1']]]);
+  assert.deepEqual(ids('medium'), [['art', ['a2']]]);
+  assert.deepEqual(ids('large'), []);
   assert.deepEqual(widgetOptionSections(r.options, 'lock'), []);
 });
 
@@ -334,18 +333,21 @@ test('T201 widgetShelf: practical (habits, countdown, calendar, date, clock, bat
   const flat = shelf.flatMap((b) =>
     b.group === 'practical' ? b.sections.flatMap((s) => s.options.map((o) => o.id)) : b.group === 'art' ? b.options.map((o) => o.id) : b.items,
   );
-  assert.deepEqual(flat, ['water', 'trip', 'cal', 'clock', 'fox', 'owl', ...standard]);
-  assert.deepEqual(shelfOptions(r.options, 'small').map((o) => o.id), ['water', 'trip', 'cal', 'clock', 'fox', 'owl']);
+  // Owner 2026-11-08: small offers only pieces drawn for small (trip = large, cal / owl = medium).
+  assert.deepEqual(flat, ['water', 'clock', 'fox', ...standard]);
+  assert.deepEqual(shelfOptions(r.options, 'small').map((o) => o.id), ['water', 'clock', 'fox']);
+  assert.deepEqual(shelfOptions(r.options, 'medium').map((o) => o.id), ['owl']);
+  assert.deepEqual(shelfOptions(r.options, 'large').map((o) => o.id), ['trip', 'fox']);
   // The first thing on the shelf is what a fresh menu selects.
   assert.equal(selectedOption(r.options, 'small', null)?.id, 'water');
-  assert.equal(selectedOption(r.options, 'small', 'owl')?.id, 'owl', 'a medium-only piece can be picked for small');
+  assert.equal(selectedOption(r.options, 'small', 'owl')?.id, 'water', 'a medium-only piece is not offered for small');
   // Lock: only lock pieces; empty groups are left out.
   assert.deepEqual(widgetShelf(r.options, 'lock').map((b) => b.group), ['practical']);
   assert.deepEqual(widgetShelf([], 'small', standard).map((b) => b.group), ['standard']);
   assert.deepEqual(widgetShelf([], 'small'), []);
 });
 
-test('T201: any art piece is offered in every Home Screen size, suggested sizes first', () => {
+test('owner 2026-11-08: a piece is only offered at the sizes it was drawn for (was T201 any piece in any size)', () => {
   const r = parseWidgetOptions(
     [
       { id: 'banner', kind: 'art', image: 'widget-wide.33333333.webp', sizes: ['medium'], fit: 'fill' },
@@ -353,12 +355,9 @@ test('T201: any art piece is offered in every Home Screen size, suggested sizes 
     ],
     ASSETS,
   );
-  for (const size of ['small', 'medium', 'large'] as const) {
-    assert.deepEqual(optionsForSize(r.options, size).map((o) => o.id).sort(), ['banner', 'fox'], size);
-  }
-  assert.deepEqual(optionsForSize(r.options, 'medium').map((o) => o.id), ['banner', 'fox']);
-  assert.deepEqual(optionsForSize(r.options, 'small').map((o) => o.id), ['fox', 'banner']);
-  assert.deepEqual(optionsForSize(r.options, 'large').map((o) => o.id), ['fox', 'banner'], 'square fits large better');
+  assert.deepEqual(optionsForSize(r.options, 'medium').map((o) => o.id), ['banner']);
+  assert.deepEqual(optionsForSize(r.options, 'small').map((o) => o.id), ['fox']);
+  assert.deepEqual(optionsForSize(r.options, 'large').map((o) => o.id), [], 'nothing was drawn for large');
   // And it is never cropped there: a wide `fill` banner in a small box is fitted whole.
   const banner = r.options[0];
   const p = placeArt({ w: banner.width, h: banner.height }, OPTION_SIZE_POINTS.small, banner.fit);
@@ -369,7 +368,7 @@ test('T201: any art piece is offered in every Home Screen size, suggested sizes 
 
 test('selectedOption: remembered id when still offered, else the first', () => {
   const opts = widgetOptionsFromV1(ASSETS.concat([{ path: 'widget-medium.6.webp', role: 'widget-medium', width: 1092, height: 510 }]));
-  assert.equal(selectedOption(opts, 'medium', 'hero-small')?.id, 'hero-small');
+  assert.equal(selectedOption(opts, 'medium', 'hero-small')?.id, 'hero-medium', 'a hero is only offered at its own size');
   assert.equal(selectedOption(opts, 'medium', 'gone')?.id, 'hero-medium');
   assert.equal(selectedOption(opts, 'lock', null), null);
   assert.equal(selectedOption([], 'small', 'x'), null);
@@ -423,7 +422,7 @@ test('docs/THEME_PACKS.md: the v2 example manifest parses and validates strictly
   const doc = read('docs', 'THEME_PACKS.md');
   const at = doc.indexOf('### Example v2 manifest');
   assert.ok(at > 0);
-  const block = /```json\n([\s\S]*?)\n```/.exec(doc.slice(at));
+  const block = /```json\r?\n([\s\S]*?)\r?\n```/.exec(doc.slice(at));
   assert.ok(block);
   const raw = JSON.parse(block[1].replaceAll('<64 hex>', 'a'.repeat(64)));
   const r = parseRemoteArtManifest(raw, 'cloud-atelier');
@@ -431,7 +430,8 @@ test('docs/THEME_PACKS.md: the v2 example manifest parses and validates strictly
   assert.deepEqual(validateWidgetOptions(raw.widgets, raw.assets), []);
   if (r.ok) {
     assert.equal(r.value.widgets.length, 5);
-    assert.deepEqual(optionsForSize(r.value.widgets, 'medium').map((o) => o.id), ['paper-boat', 'cloud-banner', 'rain-habits', 'hot-air-balloon', 'cloud-clock']);
+    // Owner 2026-11-08: medium offers only the wide piece drawn for it (the square ones stay in small / large).
+    assert.deepEqual(optionsForSize(r.value.widgets, 'medium').map((o) => o.id), ['cloud-banner']);
   }
   // Every field name the table documents is a field the parser reads.
   for (const f of ['`id`', '`kind`', '`image`', '`sizes`', '`fit`', '`background`', '`label`']) assert.ok(doc.includes(`| ${f} |`), f);
@@ -451,7 +451,8 @@ test('Widgets tab shows the theme widget art menu above the grid', () => {
   assert.match(art, /widgets\.setWidgetArt\(/);
   assert.match(art, /widgets\.setSeamless\(/);
   // T251: every piece tries the wallpaper crop first; setWidgetArt only when there is no wallpaper file.
-  assert.match(art, /ok = await seamless\(artUri\);\s*if \(ok === false && option\.background !== 'wallpaper'\)/);
+  assert.match(art, /ok = preserveArtwork \? false : await seamless\(artUri\);\s*if \(ok === false && option\.background !== 'wallpaper'\)/);
+  assert.match(art, /option\.numberFree === true && !!option\.liveFrame/);
 });
 
 test('menu previews fit the art (never crop): placeArt / fullBleedArt rectangle + contain; T251 no blurred copy', () => {

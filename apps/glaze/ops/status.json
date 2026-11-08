@@ -1,18 +1,51 @@
 {
-  "tests": "1757/1757 core tests green; core + UI stub typecheck clean",
-  "typecheck": "core only (registry unreachable)",
-  "last_run": "2026-11-01 18:45 AEDT (run 221)",
-  "stage": "owner-tested",
-  "oversight_seen": "v226 (1793508577-aaa5): D226-1 followed (records-only checkpoint, no images; slim candidate prepared for T227); D225-2 followed; D225-3 followed (no new native).",
-  "headline": "Run 221 (owner-1101h): freeze/crash after a theme swap fixed at the likely cause, widget art blends with the wallpaper, theme apply fills My widget art by itself, Themes page with categories and All themes. Needs TestFlight build 20+.",
-  "next_for_owner": "1) When TestFlight build 20+ arrives (your chat ships it), answer docs/TRIAL.md \"New since your last test (1 Nov, night: owner-1101h brief)\" 1-7. 2) Your chat: re-ship the remote widget art with transparency (T256, docs/widget_snapshots/BLEND_AUDIT_1101H.md). (Full install + tsc + expo export needs PC verification: npm registry unreachable; new Swift uncompiled until the native build.)",
+  "tests": "1909/1909 core pass; 27 pack-script pass, 2 optional encoder cases skipped",
+  "typecheck": "Full installed-dependency app + Node TypeScript PASS",
+  "last_run": "2026-11-04T10:10:02.732572+00:00",
+  "stage": "testflight",
+  "oversight_seen": "v233 (1793558948-7f71): no new directives; no patches (rechecked run 240).",
+  "headline": "Glaze 1.0.3 (31) has designed clock, battery and calendar widgets for all215themes. The legacy fallback clock removal is published on the compatible production update.",
+  "next_for_owner": "Use TestFlight1.0.3(31). Fully close and reopen Glaze twice online to fetch and activate the update, then test the designed Clock. The extra fallback choice is removed.",
   "trial_kit": true,
-  "trial_kit_commit": "962a92e",
-  "native_build": "Glaze 1.0.1 (build 11) compiled and on TestFlight since 26 Oct 11:24 UTC: widget target + Island pets compiled; not device-tested",
+  "trial_kit_commit": "cbe1f96",
+  "native_build": "1.0.3 (31), source 06c59b5650779a461d9edbfd889a29942937b75c; Apple VALID / IN_BETA_TESTING observed 2026-11-04T09:02:37Z. Signed app and extension App Groups verified. See docs/DESIGNED_WIDGET_DELIVERY_20261104.json.",
   "slim_candidate": {
     "state": "swapped run 220",
     "root": "859241058f433be25f35ec1c618396837158dbf2",
     "full_history": "history/repo-full-2026-11-01b.bundle.b64.txt (plus the older history/repo-full-2026-11-01.bundle.b64.txt)"
   },
-  "size_note": "slim bundle swapped in run 220 (see RUNLOG for size)"
+  "size_note": "run 240: bundle base64 ~15.05 MB; trial kit not rebuilt (16.7 MB base64, over the 16 MB file limit; owner tests on TestFlight)",
+  "assistant_remaining": "Physical iPhone/Home Screen behavior remains owner testing; weather licensing and Plus decisions remain before public release.",
+  "designed_widgets": {
+    "state": "delivered to internal TestFlight 1.0.3 (31); installed simulator save/restart/shared specs verified",
+    "candidate": "1.0.3 (31)",
+    "catalogueThemes": 141,
+    "allThemeEntries": 215,
+    "functions": [
+      "clock",
+      "battery",
+      "calendar"
+    ],
+    "sizeLayouts": 1935,
+    "nativeRenders": 2727,
+    "nativeAssertions": 58263,
+    "corePassed": 1908,
+    "coreFailed": 0,
+    "nativeRenderRun": 41794617629,
+    "fullNativeAppRun": 41793155698,
+    "physicalDeviceTested": false,
+    "source": "06c59b56 / PR218,220,222,223; delivery PR225"
+  },
+  "fallback_removal": {
+    "state": "published; production manifest and launch asset hash independently verified",
+    "runtimeVersion": "1.0.3",
+    "preservesNativeBuild": "31",
+    "scope": "Remove live-clock from theme choices, saved theme art and future pack generation; preserve designed clocks, battery, calendar, photos and selections.",
+    "validation": "1909 core; 27 pack-script plus 2 optional skips; full app/Node TypeScript; migration/remap/idempotence regression.",
+    "sourceSHA": "2e266cb70cc3e9b3df705fb5b245695f353002c6",
+    "shipRun": 41811848345,
+    "updateGroupId": "5752b1bb-757a-4c63-93b6-1b123e350a19",
+    "iosUpdateId": "01a1a606-dae2-793a-980d-3e51452e84d2",
+    "physicalPhoneActivationVerified": false
+  }
 }

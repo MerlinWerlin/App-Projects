@@ -7,29 +7,38 @@
 //      from the Overpass API (OSM, ODbL); query + shaping in ./pois.mjs (pack format POIS_FORMAT),
 //   4. write meta.json, pois.json and tiles/{z}/{x}/{y}.png and pack them as an uncompressed ustar <id>.tar.
 // Then writes out/catalog.json (upload it LAST; its `version` stays 1 so older app builds keep reading it). Contract: docs/MAP_PACKS.md and src/core/citymaps.ts.
+// T166: `--flavor dark` (after a light build into the same --out) renders the same tiles with the Protomaps dark
+// flavour into <id>-dark.tar (meta.json with "flavor":"dark", pois.json, tiles/...) and adds an optional
+// `dark: {file, bytes, sha256, tiles}` to that city's entry in the existing out/catalog.json (nothing else changes,
+// so older app builds that ignore `dark` keep working). It reuses the light build's pois.json when present.
 //
-// Usage: node build.mjs [--only kyoto] [--ratio 2] [--out out] [--pmtiles <url or file>]
+// Usage: node build.mjs [--only kyoto] [--ratio 2] [--out out] [--pmtiles <url or file>] [--flavor light|dark]
 // Needs: the `pmtiles` CLI on PATH (go-pmtiles), xvfb on Linux (run under xvfb-run), npm deps in package.json.
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import mbgl from '@maplibre/maplibre-gl-native';
 import { layers, namedFlavor } from '@protomaps/basemaps';
 import { PMTiles } from 'pmtiles';
 import sharp from 'sharp';
-import { overpassQuery, POIS_FORMAT, toPois } from './pois.mjs';
+import { POIS_FORMAT, toPois } from './pois.mjs';
+import { fetchCityElements } from './overpass.mjs';
 
 const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => (a.startsWith('--') ? [...acc, [a.slice(2), all[i + 1] ?? '']] : acc), []),
 );
-const here = resolve(new URL('.', import.meta.url).pathname);
+const here = fileURLToPath(new URL('.', import.meta.url));
 const cfg = JSON.parse(readFileSync(join(here, 'cities.json'), 'utf8'));
 const OUT = resolve(args.out || join(here, 'out'));
 const RATIO = Number(args.ratio || 2);
 const GUTTER = 64; // points rendered around each tile, cropped away
 const BUILT = new Date().toISOString().slice(0, 10);
 const UA = 'SatchelMapPacks/1 (+https://github.com/MerlinWerlin/App-Projects)';
+const FLAVOR = args.flavor || 'light';
+if (FLAVOR !== 'light' && FLAVOR !== 'dark') throw new Error(`--flavor must be light or dark, not ${FLAVOR}`);
+const DARK = FLAVOR === 'dark';
 mkdirSync(OUT, { recursive: true });
 
 // ---------------------------------------------------------------- source build
@@ -93,9 +102,9 @@ function makeRenderer(pm) {
   const style = {
     version: 8,
     glyphs: 'https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf',
-    sprite: 'https://protomaps.github.io/basemaps-assets/sprites/v4/light',
+    sprite: `https://protomaps.github.io/basemaps-assets/sprites/v4/${FLAVOR}`,
     sources: { protomaps: { type: 'vector', tiles: ['pmt://{z}/{x}/{y}'], maxzoom: 15, attribution: cfg.attribution } },
-    layers: layers('protomaps', namedFlavor('light'), { lang: 'en' }),
+    layers: layers('protomaps', namedFlavor(FLAVOR), { lang: 'en' }),
   };
   const map = new mbgl.Map({
     ratio: RATIO,
@@ -131,37 +140,30 @@ function makeRenderer(pm) {
   };
 }
 
-// ---------------------------------------------------------------- POIs (Overpass)
-// The query and the pois.json shaping live in ./pois.mjs (pure, fixture-tested by `npm test` in the app).
-async function overpass(bbox) {
-  const q = overpassQuery(bbox);
-  for (let attempt = 0; attempt < 4; attempt++) {
-    const r = await fetch('https://overpass-api.de/api/interpreter', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': UA },
-      body: 'data=' + encodeURIComponent(q),
-    }).catch(() => null);
-    if (r && r.ok) return (await r.json()).elements ?? [];
-    await new Promise((ok) => setTimeout(ok, 15000 * (attempt + 1)));
-  }
-  throw new Error('Overpass failed');
-}
-
 // ---------------------------------------------------------------- main
 const only = args.only ? new Set(args.only.split(',')) : null;
 const source = await latestBuildUrl();
 console.log('Protomaps build:', source);
 const catalog = { version: 1, release: cfg.release, built: BUILT, attribution: cfg.attribution, cities: [] };
+// T166: a dark build adds to the light build's catalog instead of replacing its city entries.
+const lightCatalog = DARK ? JSON.parse(readFileSync(join(OUT, 'catalog.json'), 'utf8')) : null;
+if (lightCatalog && (lightCatalog.version !== 1 || !Array.isArray(lightCatalog.cities))) throw new Error('out/catalog.json is not a v1 catalog');
+const darkBuilt = [];
 
 for (const city of cfg.cities) {
   if (only && !only.has(city.id)) continue;
-  const dir = join(OUT, 'work', city.id);
+  const work = DARK ? `${city.id}-dark` : city.id;
+  const lightPois = join(OUT, 'work', city.id, 'pois.json');
+  const reusePois = DARK && existsSync(lightPois) ? readFileSync(lightPois, 'utf8') : null;
+  if (DARK && !lightCatalog.cities.some((c) => c.id === city.id)) throw new Error(`${city.id}: build the light pack first (not in out/catalog.json)`);
+  const dir = join(OUT, 'work', work);
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(join(dir, 'tiles'), { recursive: true });
   const [w, s, e, n] = city.bbox;
   const pad = 0.02; // a little more vector data around the edges for labels
   const extract = join(OUT, 'work', `${city.id}.pmtiles`);
-  execFileSync('pmtiles', ['extract', source, extract, `--bbox=${w - pad},${s - pad},${e + pad},${n + pad}`, '--maxzoom=15'], { stdio: 'inherit' });
+  // a dark build reuses the light build's extract of the same bbox (same source tiles, same day)
+  if (!DARK || !existsSync(extract)) execFileSync('pmtiles', ['extract', source, extract, `--bbox=${w - pad},${s - pad},${e + pad},${n + pad}`, '--maxzoom=15'], { stdio: 'inherit' });
   const src = new FileSource(extract);
   const pm = new PMTiles(src);
   const r = makeRenderer(pm);
@@ -177,25 +179,41 @@ for (const city of cfg.cities) {
   }
   r.release();
   src.close();
-  const pois = toPois(await overpass(city.bbox), BUILT);
+  let pois;
+  if (reusePois) pois = JSON.parse(reusePois);
+  else {
+    const collected = await fetchCityElements(city.bbox, { label: city.id });
+    writeFileSync(join(OUT, `${work}-poi-source.json`), JSON.stringify({ city: city.id, requests: collected.receipts }, null, 2));
+    pois = toPois(collected.elements, BUILT);
+  }
   const center = [+((w + e) / 2).toFixed(5), +((s + n) / 2).toFixed(5)];
-  const file = `${city.id}.tar`;
+  const file = DARK ? `${city.id}-dark.tar` : `${city.id}.tar`;
+  // meta.json has no bytes/sha256 (they describe the tar it goes into); the app takes them from the catalog entry
+  // (parsePackMeta in src/core/citymaps.ts). Keys are checked by src/core/mapcontract.test.ts.
   const meta = { id: city.id, format: POIS_FORMAT, name: city.name, country: city.country, bbox: city.bbox, center, minzoom: city.minzoom, maxzoom: city.maxzoom, file, tiles: count, pois: pois.toilets.length + pois.places.length, attribution: cfg.attribution, built: BUILT };
+  if (DARK) meta.flavor = 'dark'; // T166: the phone checks this before using a dark pack's tiles
   writeFileSync(join(dir, 'meta.json'), JSON.stringify(meta));
   writeFileSync(join(dir, 'pois.json'), JSON.stringify(pois));
   const tar = join(OUT, file);
   // Regular files only (no directory entries), meta.json first, ustar so the app's parser reads it.
   const list = execFileSync('find', ['tiles', '-type', 'f', '-name', '*.png'], { cwd: dir }).toString().trim().split('\n').sort();
-  writeFileSync(join(OUT, 'work', `${city.id}.list`), ['meta.json', 'pois.json', ...list].join('\n') + '\n');
-  execFileSync('tar', ['--format=ustar', '--owner=0', '--group=0', '--numeric-owner', '--no-recursion', '-cf', tar, '-C', dir, '-T', join(OUT, 'work', `${city.id}.list`)]);
+  writeFileSync(join(OUT, 'work', `${work}.list`), ['meta.json', 'pois.json', ...list].join('\n') + '\n');
+  execFileSync('tar', ['--format=ustar', '--owner=0', '--group=0', '--numeric-owner', '--no-recursion', '-cf', tar, '-C', dir, '-T', join(OUT, 'work', `${work}.list`)]);
   const bytes = statSync(tar).size;
   const sha256 = createHash('sha256').update(readFileSync(tar)).digest('hex');
-  catalog.cities.push({ ...meta, bytes, sha256 });
+  if (DARK) darkBuilt.push({ id: city.id, dark: { file, bytes, sha256, tiles: count } });
+  else catalog.cities.push({ ...meta, bytes, sha256 });
   console.log(`${file}: ${count} tiles, ${pois.toilets.length} toilets, ${pois.places.length} places, ${(bytes / 1e6).toFixed(1)} MB`);
 }
 
+if (DARK) {
+  // T166: merge `dark` into the light build's entries; every other field and city stays as the light build wrote it.
+  if (!darkBuilt.length) throw new Error('no dark packs built');
+  for (const { id, dark } of darkBuilt) lightCatalog.cities.find((c) => c.id === id).dark = dark;
+  Object.assign(catalog, lightCatalog);
+}
 if (!catalog.cities.length) throw new Error('no cities built');
 writeFileSync(join(OUT, 'catalog.json'), JSON.stringify(catalog, null, 1));
-writeFileSync(join(OUT, 'upload-1-packs.txt'), catalog.cities.map((c) => c.file).join('\n') + '\n');
-console.log('catalog.json written with', catalog.cities.length, 'cities');
+writeFileSync(join(OUT, 'upload-1-packs.txt'), catalog.cities.flatMap((c) => (c.dark ? [c.file, c.dark.file] : [c.file])).join('\n') + '\n');
+console.log('catalog.json written with', catalog.cities.length, 'cities', DARK ? `(${darkBuilt.length} with a dark pack)` : '');
 if (!existsSync(join(OUT, 'catalog.json'))) process.exit(1);

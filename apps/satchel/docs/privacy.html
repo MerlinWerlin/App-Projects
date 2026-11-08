@@ -42,49 +42,61 @@
 <body>
 <main>
   <h1>Satchel Privacy Policy</h1>
-  <p class="meta">Last updated: 24 October 2026</p>
+  <p class="meta">Last updated: 1 November 2026</p>
   <p><span class="badge">Data Not Collected</span></p>
 
   <div class="card">
-    <p><strong>In short:</strong> Satchel has no accounts, no servers that store your data, no ads, no analytics and no tracking. Your trips, tickets, documents, packing lists and emergency card are saved on your phone. We never see them.</p>
+    <p><strong>In short:</strong> Satchel has no accounts, no servers of ours, no ads, no analytics and no tracking. Your trips, tickets, documents, notes and emergency card are saved on your phone. We never see them. A few optional features look things up online; each one is listed below with exactly what it sends and to whom.</p>
   </div>
 
   <h2>What stays on your phone</h2>
   <ul>
-    <li>Trips, bookings and timelines you add.</li>
-    <li>Tickets, PDFs and images you attach, and any QR code crops you save. Satchel keeps its own copy on your phone; your originals in Files or Photos are not changed.</li>
+    <li>Trips, bookings, timelines, saved places, ideas, packing lists, spending and your settings.</li>
+    <li>Tickets, PDFs, images and receipts you attach, and any QR code crops you save. Satchel keeps its own copy on your phone; your originals in Files or Photos are not changed.</li>
     <li>Document vault copies (for example passport, visa or licence copies) and their expiry dates.</li>
-    <li>Your emergency card: insurance details, emergency contacts you pick, and private medical notes.</li>
-    <li>Packing lists, saved places and your settings.</li>
+    <li>Your emergency card, help cards and trusted contacts: insurance details, contacts you pick, and private medical notes and medicine times.</li>
+    <li>Your trip journal, photos and other personal notes (for example hotel door codes, home Wi-Fi or a sitter note).</li>
+    <li>Offline city maps you download, and the last weather forecast, so they work in flight mode.</li>
   </ul>
-  <p>None of this is sent to us or to anyone else. If you delete Satchel, this data is deleted from your phone with it, unless it is included in your own phone backup.</p>
+  <p>None of this is sent to us. If you delete Satchel, this data is deleted from your phone with it, unless it is in your own phone backup or a Satchel backup file you saved.</p>
 
   <h2>Location</h2>
-  <p>Satchel checks your location once, only when you tap <em>Where am I?</em> on the map, to show where you are. It never tracks you in the background and does not keep a location history. Your location is not sent to us.</p>
+  <p>Satchel never tracks you in the background and keeps no location history. It asks for your location only when you use a feature that needs it:</p>
+  <ul>
+    <li><em>Where am I?</em> on the map, <em>Find toilets near me</em> or <em>Find help near me</em>, starting a day plan or setting a spot from where you are, and <em>Share where I am</em>: one check, then it stops.</li>
+    <li><em>Find my way back</em>: your position and compass heading are followed only while that screen is open, and stop as soon as you leave it.</li>
+  </ul>
+  <p>Your location is not sent to us. It leaves your phone only in two cases you start yourself: a nearby toilet or help search with no offline city map for that area (see OpenStreetMap below), or a message you choose to send from <em>Share where I am</em>.</p>
+
+  <h2>Online services Satchel uses</h2>
+  <p>Satchel works without a connection. When you are online, these features contact other companies' services directly from your phone. They are third parties with their own privacy policies; like any website, they can see your phone's internet (IP) address. Satchel never sends them your name, account, trips, documents or contacts.</p>
+  <ul>
+    <li><strong>The map (Apple Maps on iPhone, maps.apple.com).</strong> The map background is your phone's built-in map service, which loads map images for the area you are looking at. Tapping <em>Open in Apple Maps</em>, directions or an address opens the Apple Maps app with that place (and your starting point, if Satchel has one). Apple's privacy policy applies. (On Android, the system map is Google Maps.)</li>
+    <li><strong>Weather (MET Norway, api.met.no).</strong> To show a forecast on a trip, Satchel sends the coordinates of that trip's hotel or saved place (rounded to about 10 metres) to the Norwegian Meteorological Institute. Not your own location. The last forecast is kept on your phone.</li>
+    <li><strong>Toilets and help nearby (OpenStreetMap Overpass, overpass-api.de).</strong> If no offline city map covers the spot, Satchel sends that spot (your current location or your hotel's, whichever you searched from) and a search radius, and gets back nearby public places from OpenStreetMap.</li>
+    <li><strong>Offline city maps (GitHub, github.com).</strong> When you open the city map list or download a city, Satchel fetches the list and the map file from GitHub, where the maps are published. The request names the file, not where you are.</li>
+    <li><strong>App updates (Expo).</strong> Satchel may check Expo's update service for a fix to the app. The request carries technical details such as the app version and platform, not your data.</li>
+    <li><strong>Links you choose to open in your browser.</strong> Source links on emergency numbers, customs and other guides, and links you save on ideas, open in your browser only when you tap them. That website's own policy applies.</li>
+  </ul>
 
   <h2>Photos, files and contacts</h2>
-  <p>Satchel only reads a photo, a file or a contact when you pick it. Picked photos and files are copied into Satchel on your phone. For your emergency card, only the contacts you choose are saved, on your phone. Satchel does not upload your photo library, files or address book.</p>
+  <p>Satchel only reads a photo, a file or a contact when you pick it, and only uses the camera when you choose to take a photo. Picked photos and files are copied into Satchel on your phone. Only the contacts you choose are saved, on your phone. Satchel does not upload your photo library, files or address book. Text is read from the clipboard only when you tap <em>Paste</em>.</p>
 
   <h2>Face ID and passcode</h2>
-  <p>The document vault can be locked with Face ID, Touch ID or your passcode. iOS (or Android) handles this check. Satchel only learns whether it succeeded; it never receives your face data, fingerprint or passcode.</p>
+  <p>The document vault, and hotel door or key box codes you choose to hide, can be locked with Face ID, Touch ID or your passcode. Your phone handles this check. Satchel only learns whether it succeeded; your face data, fingerprint and passcode never leave your phone and are never seen by Satchel.</p>
 
-  <h2>The map</h2>
-  <p>In this version the map uses your phone's built-in map service (Apple Maps on iPhone), which loads map images over the internet when you have a signal. That service is run by the platform provider under its own privacy policy. Satchel does not send your trips or saved places to it. Points shown on the demo trip are bundled sample data.</p>
-
-  <h2>App updates</h2>
-  <p>When you are online, Satchel may check for and download an app update from its update service (Expo). This request contains technical details such as the app version and platform, not your trips or any personal information.</p>
+  <h2>Backups, trip files and sharing</h2>
+  <p>Satchel never uploads a backup. A <strong>backup</strong> is a file you save through the share sheet (for example to Files, iCloud Drive or AirDrop), and you decide where it goes. It includes your vault documents only if you choose <em>Include documents</em>. Backup files are not encrypted, so keep them somewhere private.</p>
+  <p>A <strong>trip file</strong> you send to someone contains that trip: its bookings and their attached files, places and packing list (journal photos only if you include them). It never contains your vault documents, emergency card, medical notes, home Wi-Fi or alarm codes. Calendar files, shared itineraries, messages from <em>Share where I am</em> and anything else you share go only where you send them.</p>
 
   <h2>Purchases</h2>
-  <p>If you buy the optional one-time upgrade (Satchel Plus), the purchase is handled by Apple (or Google Play on Android). We do not receive your payment details or your name. The app store only tells Satchel that the upgrade is unlocked.</p>
+  <p>If you buy the optional one-time upgrade (Satchel Plus), the purchase is handled by Apple (or Google Play on Android). We do not receive your payment details, your name or your Apple ID. The app store only tells Satchel that the upgrade is unlocked.</p>
 
   <h2>Sync across your devices</h2>
-  <p>Satchel does not sync today. A future version may offer optional sync through your own iCloud account. If you turn it on, your data would be stored in your private iCloud space under Apple's terms, not on any server of ours, and this policy will be updated before that happens.</p>
-
-  <h2>Sharing</h2>
-  <p>Anything you share from Satchel (for example copying a hotel address into a message) goes only where you send it.</p>
+  <p>Satchel does not sync. To move to a new phone, save a backup file and open it there. If optional sync is ever added, this policy will be updated before that happens.</p>
 
   <h2>Children</h2>
-  <p>Satchel does not collect personal information from anyone, including children.</p>
+  <p>Satchel does not collect personal information from anyone, including children. Details you add about children on a trip stay on your phone.</p>
 
   <h2>Changes</h2>
   <p>If this policy changes, the new version will be posted on this page with a new date.</p>

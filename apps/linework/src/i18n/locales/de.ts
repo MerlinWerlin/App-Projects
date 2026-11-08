@@ -490,10 +490,21 @@ export const de: Translation = {
   'settings.free.body': 'Jedes Werkzeug zum Nachzeichnen in Linework ist kostenlos: Nachzeichnen mit der Kamera, Deckkraft, Fixieren, Taschenlampe, Raster, Spiegeln, Touch-Sperre, Leuchttisch, Konturmodus und deine eigenen Fotos. Keine Werbung, keine Testphase, kein Wochenabo.',
   'settings.free.plusLink': 'Linework Plus und Trinkgeld',
   'settings.free.plusHint': 'Optionale Extras zum Einmalpreis. Sperrt nie ein Werkzeug zum Nachzeichnen.',
+  'settings.free.playBody': "Nachzeichnen mit der Kamera, eigene Fotos, Zeichenwerkzeuge und {count} Startvorlagen bleiben kostenlos. Die optionale 14-tägige Testphase umfasst die gesamte Vorlagenbibliothek und Fotokonturen. Plus schaltet diese Extras mit einem einmaligen Kauf dauerhaft frei.",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "Optionaler einmaliger Kauf für die gesamte Vorlagenbibliothek und Fotokonturen",
 
   'settings.privacy.title': 'Datenschutz',
   'settings.privacy.body': 'Keine Daten erfasst. Linework hat keine Accounts, keine Analysen und keine Werbung. Deine Fotos bleiben auf diesem Gerät und werden nie hochgeladen; Konturen werden auf dem Gerät erstellt.',
+  'settings.privacy.playBody': "Bilder werden auf diesem Gerät verarbeitet. Googles Abrechnungsbibliothek sendet technische Diagnosedaten an Google. Keine Werbung oder App-Konten. Tippe auf die Datenschutzerklärung.",
+  'settings.privacy.openHint': "Lineworks Datenschutzerklärung im Browser öffnen",
+  'settings.privacy.openFailed': "Der Browser konnte nicht geöffnet werden. Datenschutzerklärung: {url}",
 
+  'settings.review.title': "Plus-Zugangscode",
+  'settings.review.active': "Plus-Zugang ist aktiv",
+  'settings.review.enter': "Zugangscode eingeben",
+  'settings.review.apply': "Zugang aktivieren",
+  'settings.review.invalid': "Dieser Code konnte nicht aktiviert werden. Prüfe ihn und versuche es erneut.",
   'settings.about.title': 'Über',
   'settings.about.body': 'Linework {version}. Die Vorlagen sind eigens für Linework erstellte Strichzeichnungen.',
 

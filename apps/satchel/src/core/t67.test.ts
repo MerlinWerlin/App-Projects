@@ -125,7 +125,8 @@ test('old packs: meta.json / catalog entries without a format are format 1; the 
   const build = readFileSync(new URL('../../tools/maps/build.mjs', import.meta.url), 'utf8');
   assert.match(build, /const catalog = \{ version: 1,/);
   assert.match(build, /format: POIS_FORMAT/);
-  assert.match(build, /toPois\(await overpass\(city\.bbox\), BUILT\)/);
+  assert.match(build, /await fetchCityElements\(city\.bbox/);
+  assert.match(build, /toPois\(collected\.elements, BUILT\)/);
 });
 
 test('docs: MAP_PACKS.md documents the format 2 pois.json fields', () => {

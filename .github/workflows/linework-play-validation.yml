@@ -1,0 +1,50 @@
+name: Linework Play production export
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/linework-play-validation.yml'
+      - 'apps/linework/**'
+
+permissions:
+  contents: read
+
+jobs:
+  production-export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: bash
+    env:
+      CI: '1'
+      PLAY_VARIANT: production
+      EAS_BUILD_PLATFORM: android
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install frozen dependencies
+        working-directory: apps/linework
+        run: npm ci --no-audit --no-fund
+      - name: Check production identity and embedded-only settings
+        working-directory: apps/linework
+        run: |
+          mkdir -p ../../production-export-evidence
+          npx expo config --type public --json > ../../production-export-evidence/config.json
+          node -e 'const c=require("../../production-export-evidence/config.json"); if(c.android.package!=="com.jared797.linework" || c.updates.enabled!==false || c.extra.playVariant!=="production") throw Error("Invalid production identity");'
+          git rev-parse HEAD > ../../production-export-evidence/source-commit.txt
+      - name: Compile production Android JavaScript and Hermes bytecode
+        working-directory: apps/linework
+        run: npx expo export --platform android --max-workers 2 --output-dir ../../production-export-evidence/export 2>&1 | tee ../../production-export-evidence/export.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linework-play-production-export
+          path: production-export-evidence/
+          retention-days: 30
+          if-no-files-found: error

@@ -17,6 +17,10 @@ import { StartupMark } from '../src/ui/StartupMark.tsx';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
+// T14: a screen opened from outside (a file shared to Satchel, see app/+native-intent.tsx) sits on top of the tabs,
+// so its back button and "Back to Trips" always have somewhere to go.
+export const unstable_settings = { initialRouteName: '(tabs)' };
+
 export default function RootLayout() {
   return (
     <SafeAreaProvider>
@@ -68,6 +72,8 @@ function Shell() {
           <Stack.Screen name="trip-edit" options={{ ...header, presentation: 'modal', title: t('tripEdit.newTitle') }} />
           <Stack.Screen name="item-edit" options={{ ...header, presentation: 'modal', title: t('itemEdit.newTitle') }} />
           <Stack.Screen name="ticket/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
+          <Stack.Screen name="crop/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
+          <Stack.Screen name="doc-crop/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="address/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="stay/[itemId]" options={{ ...header, title: t('stay.route') }} />
           <Stack.Screen name="inflight/[itemId]" options={{ ...header, title: t('inflight.route') }} />
@@ -89,9 +95,11 @@ function Shell() {
           <Stack.Screen name="idea-edit" options={{ ...header, presentation: 'modal', title: t('ideas.edit.newTitle') }} />
           <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
           <Stack.Screen name="licences" options={{ ...header, title: t('licences.title') }} />
+          <Stack.Screen name="backup" options={{ ...header, title: t('backup.route') }} />
           <Stack.Screen name="phrases" options={{ ...header, title: t('phrases.title') }} />
           <Stack.Screen name="menu" options={{ ...header, title: t('menu.title') }} />
           <Stack.Screen name="signs" options={{ ...header, title: t('signs.route') }} />
+          <Stack.Screen name="numbers" options={{ ...header, title: t('numbers.route') }} />
           <Stack.Screen name="help" options={{ ...header, title: t('help.title') }} />
           <Stack.Screen name="convert" options={{ ...header, title: t('convert.route') }} />
           <Stack.Screen name="tipping" options={{ ...header, title: t('tipping.route') }} />
@@ -102,8 +110,12 @@ function Shell() {
           <Stack.Screen name="leavehome/[tripId]" options={{ ...header, title: t('leavehome.route') }} />
           <Stack.Screen name="lostbag/index" options={{ ...header, title: t('lostbag.route') }} />
           <Stack.Screen name="lostbag/[tripId]" options={{ ...header, title: t('lostbag.route') }} />
+          <Stack.Screen name="kids/[tripId]" options={{ ...header, title: t('kids.route') }} />
+          <Stack.Screen name="kids/lost" options={{ headerShown: false, title: t('kids.lost.route'), presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="comehome/[tripId]" options={{ ...header, title: t('comehome.route') }} />
           <Stack.Screen name="outfits/[tripId]" options={{ ...header, title: t('outfits.route') }} />
+          <Stack.Screen name="postcards/[tripId]" options={{ ...header, title: t('postcards.route') }} />
+          <Stack.Screen name="postcards/address" options={{ ...header, title: t('postcards.bigRoute') }} />
           <Stack.Screen name="units" options={{ ...header, title: t('units.route') }} />
           <Stack.Screen name="travels" options={{ ...header, title: t('travels.route') }} />
           <Stack.Screen name="passport" options={{ ...header, title: t('stamps.route') }} />
@@ -124,11 +136,15 @@ function Shell() {
           <Stack.Screen name="games/questions" options={{ ...header, title: t('games.questions.route') }} />
           <Stack.Screen name="games/scores" options={{ ...header, title: t('games.scores.route') }} />
           <Stack.Screen name="helpcards" options={{ ...header, title: t('helpcards.route') }} />
+          <Stack.Screen name="stepfree" options={{ ...header, title: t('stepfree.route') }} />
           <Stack.Screen name="helpcard-edit" options={{ ...header, presentation: 'modal', title: t('helpcards.edit.route') }} />
           <Stack.Screen name="helpcard" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty/[id]" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="loyalty-edit" options={{ ...header, presentation: 'modal', title: t('loyalty.edit.newTitle') }} />
           <Stack.Screen name="trip-again/[tripId]" options={{ ...header, title: t('tripcopy.route') }} />
+          <Stack.Screen name="openin/index" options={{ ...header, title: t('openin.route') }} />
+          <Stack.Screen name="openin/add" options={{ ...header, title: t('openin.add.route') }} />
+          <Stack.Screen name="+not-found" options={{ ...header, title: t('openin.notFound.route') }} />
           <Stack.Screen name="essentials" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'none' }} />
         </Stack>
       ) : null}

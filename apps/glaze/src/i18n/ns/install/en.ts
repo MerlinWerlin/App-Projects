@@ -148,7 +148,7 @@ export const en = {
     },
     install: {
       title: 'Install in Settings',
-      body: 'Open Settings and tap “Profile Downloaded” near the top (or General > VPN & Device Management). Tap Install, enter your passcode, tap Install again, then Done. Not there? Fully close Settings, open it again and go to General > VPN & Device Management > Downloaded Profile. iOS deletes a downloaded profile after about 8 minutes, so if it is gone, tap the file in Files again and go straight to Settings.',
+      body: 'Open Settings and tap “More for Your iPhone” at the top, under your Apple Account, then View Profile on the “Profile Downloaded” card. Tap Install (top right), enter your passcode, tap Install again, then Done. Not there? Look for “Profile Downloaded” near the top of Settings, or fully close Settings, open it again and go to General > VPN & Device Management > Downloaded Profile. iOS deletes a downloaded profile after about 8 minutes, so if it is gone, tap the file in Files again and go straight to Settings.',
     },
     notVerified: {
       title: 'Why “Not Verified”?',
@@ -185,10 +185,34 @@ export const en = {
     page: { title: 'Glaze icons', body: 'Safari may ask to allow a configuration profile download straight away, before you tap Install. Tap Allow, then Close, and finish in Settings. If Safari doesn’t ask, tap Install.', button: 'Install' },
     cards: {
       safari: { title: 'Install in Safari', body: 'Safari opens the Glaze page and may ask to download the profile straight away. If it doesn’t, tap Install.' },
-      allow: { title: 'Allow the download', body: 'Safari asks to allow a configuration profile download, sometimes before you tap Install: tap Allow, then Close.' },
-      settings: { title: 'Install in Settings', body: 'Open Settings: tap “Profile Downloaded” near the top (or General > VPN & Device Management), tap Install, enter your passcode, Install.' },
+      // T262 (owner-1101i): the iOS 27 flow on the owner's iPhone, one step per screen.
+      allow: { title: 'Allow, then Close', body: 'Safari asks to allow a configuration profile download, sometimes before you tap Install: tap Allow. Safari then says “Profile Downloaded”: tap Close.' },
+      more: { title: 'Open Settings', body: 'Open the Settings app. At the top, under your Apple Account, tap “More for Your iPhone” (it has a red badge). Not there? Look for “Profile Downloaded” near the top of Settings, or General > VPN & Device Management.' },
+      view: { title: 'View the profile', body: 'On the “Profile Downloaded” card, tap View Profile.' },
+      settings: { title: 'Install the profile', body: 'The Install Profile sheet shows “Glaze icons” and how many Web Clips it adds. Tap Install (top right), enter your passcode, then tap Install again.' },
       home: { title: 'Your icons appear', body: 'Your icons appear on the Home Screen.' },
     },
+  },
+  // T262: labels inside the redrawn step illustrations (src/ui/ProfileGuideArt.tsx). Placeholder
+  // content only: no real names, photos or network names.
+  guideArt: {
+    downloadedA11y: 'Illustration: Safari alert “Profile Downloaded” with a Close button',
+    settingsA11y: 'Illustration: top of Settings, the “More for Your iPhone” row with a red badge under the Apple Account card',
+    moreA11y: 'Illustration: More for Your iPhone, the “Profile Downloaded” card with View Profile',
+    sheetA11y: 'Illustration: the Install Profile sheet for Glaze icons, with Install at the top right',
+    downloadedTitle: 'Profile Downloaded',
+    downloadedBody: 'Review the profile in the Settings app if you want to install it.',
+    close: 'Close',
+    settings: 'Settings',
+    yourName: 'Your Name',
+    account: 'Apple Account',
+    moreRow: 'More for Your iPhone',
+    viewProfile: 'View Profile',
+    sheetTitle: 'Install Profile',
+    install: 'Install',
+    custom: 'Custom',
+    contains: 'Contains',
+    webClips: 'Web Clips',
   },
   guided: {
     next: 'Next: {app}',

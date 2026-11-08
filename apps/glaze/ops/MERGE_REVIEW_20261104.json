@@ -1,0 +1,156 @@
+{
+  "native_source": "9a96caa39f1e1ac9e919eacd9fc4a5ef85bb419d",
+  "main_source": "2fd40fbe6b19038c8d7c4212c265f71180a90a08",
+  "conflicts": [
+    {
+      "file": "apps/glaze/docs/WIDGETS.md",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/docs/themed-clock-profiles.json",
+      "resolution": "Retain12reviewedIndigoframecoordinatefixes;allotherJSONfieldsagree"
+    },
+    {
+      "file": "apps/glaze/scripts/prepare-reviewed-packs.mjs",
+      "conflicts": 3,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/scripts/prepare-themed-clocks.mjs",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/scripts/theme-review-harness.swift",
+      "conflicts": 2,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/src/core/liveArt.ts",
+      "conflicts": 7,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/src/core/widgetLiveFrame.test.ts",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/src/core/widgetNativeAudit.test.ts",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/src/core/widgetOptions.test.ts",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/src/core/widgetOptions.ts",
+      "conflicts": 2,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/src/store/themeWidgetArt.ts",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/src/ui/ThemeSetupArt.tsx",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/src/ui/ThemeWidgetArt.tsx",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/src/ui/WidgetArtMenu.tsx",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/LiveArtOverlay.swift",
+      "conflicts": 8,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/ar.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/de.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/en.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/es.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/fr.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/hi.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/it.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/ja.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/ko.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/pt-BR.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    },
+    {
+      "file": "apps/glaze/targets/widget/zh-Hans.lproj/Localizable.strings",
+      "conflicts": 1,
+      "resolution": "Reviewedunion:keepcompactart/albums/habitsandmainnewwidgettypes/localization/fitmetadata"
+    }
+  ],
+  "tests_pending": false,
+  "core_tests": {
+    "pass_count": 1900,
+    "fail_count": 0
+  },
+  "typecheck": "app and Node PASS",
+  "native_compile": {
+    "widgetContract": 41785213726,
+    "photoAlbum11Languages": 41785217911,
+    "habitBehavior": 41785221314,
+    "result": "PASS"
+  },
+  "prototype_icon_exports": "Excluded; existing installed icon renderer/styles retained",
+  "scope": "Glaze only; unrelated Couch and Satchel source-branch differences restored to main",
+  "packValidation": {
+    "library": 141,
+    "updated": 105,
+    "nativeEditions": 420,
+    "parsedWidgets": 1292,
+    "pricingPaletteCredits": "preserved"
+  }
+}

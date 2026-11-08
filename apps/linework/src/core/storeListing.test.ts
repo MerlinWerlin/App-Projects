@@ -13,6 +13,8 @@ type Field = { title: string; limit: number; stated: string; text: string };
 
 /** Every "### Title (≤N) [count]" heading followed by a ```text block. */
 function limitedFields(md: string): Field[] {
+  // Git may check text out with CRLF on Windows; field contents/counts use LF.
+  md = md.replace(/\r\n/g, '\n');
   const re = /^### (.+?) \(≤(\d+)\) \[(\w+)\]\n(?:(?!###)[^\n]*\n)*?```text\n([\s\S]*?)\n```/gm;
   const out: Field[] = [];
   for (const m of md.matchAll(re)) out.push({ title: m[1], limit: Number(m[2]), stated: m[3], text: m[4] });
@@ -69,7 +71,7 @@ test('T58: screenshot headlines are 2–5 words, 6–8 shots', () => {
 test('T57: privacy page says Data Not Collected; privacy and support pages are self-contained', () => {
   const privacy = readFileSync(docs('privacy.html'), 'utf8');
   assert.match(privacy, /Data Not Collected/);
-  assert.match(privacy, /18 October 2026/);
+  assert.match(privacy, /Effective date: \d{1,2} [A-Z][a-z]+ 20\d{2}/);
   for (const f of ['privacy.html', 'support.html']) {
     const html = readFileSync(docs(f), 'utf8');
     assert.doesNotMatch(html, COMPETITORS);
@@ -77,4 +79,22 @@ test('T57: privacy page says Data Not Collected; privacy and support pages are s
     assert.match(html, /prefers-color-scheme: dark/);
     assert.match(html, /jaredbradley272@gmail\.com/, `${f} shows the support email (owner 22 Oct 2026)`);
   }
+});
+
+test('Google Play privacy policy matches its in-app link and listing, and covers the actual billing diagnostics', () => {
+  const policy = readFileSync(docs('play-privacy.html'), 'utf8');
+  const publishedSource = readFileSync(join(root, '..', '..', 'docs', 'linework', 'play-privacy.html'), 'utf8');
+  const listing = JSON.parse(readFileSync(join(root, 'store', 'play-listing.json'), 'utf8'));
+  const settings = readFileSync(join(root, 'app', '(tabs)', 'settings.tsx'), 'utf8');
+  assert.equal(policy, publishedSource, 'app and hosting policy copies stay identical');
+  assert.match(policy, /com\.jared797\.linework/);
+  assert.match(policy, /Astro Labs AU/);
+  assert.match(policy, /technical diagnostics to Google/);
+  assert.match(policy, /random billing-client session identifier/);
+  assert.match(policy, /backups/);
+  assert.match(policy, /jaredbradley272@gmail\.com/);
+  assert.doesNotMatch(policy, /Data Not Collected|<script\b|<link\b|\bsrc\s*=/i);
+  assert.equal(listing.appContent.privacyPolicyUrl, 'https://merlinwerlin.github.io/App-Projects/linework/play-privacy.html');
+  assert.ok(settings.includes(listing.appContent.privacyPolicyUrl));
+  assert.match(settings, /Linking\.openURL\(PLAY_PRIVACY_URL\)/);
 });

@@ -124,7 +124,7 @@ const DayRow = memo(function DayRow({ date, today, sun, day, unit, first }: { da
       style={{ gap: 2, paddingTop: first ? 0 : space.s, borderTopWidth: first ? 0 : 1, borderTopColor: theme.line }}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, minHeight: 28 }}>
-        <Text numberOfLines={1} style={[typeScale.bodyStrong, { color: theme.ink, flex: 1 }]}>
+        <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.ink, flex: 1 }]}>
           {label}
         </Text>
         {day ? (

@@ -6,12 +6,11 @@ import { canWake, wakeTv } from '../../src/core/wol';
 import { useT } from '../../src/i18n/react';
 import { loadPhoneIp } from '../../src/native/network';
 import { loadUdpFactory } from '../../src/native/udp';
-import { setDemoMode, useSession } from '../../src/state/session';
+import { useSession } from '../../src/state/session';
 import { continuous, list, radii, space, textStyle } from '../../src/theme/design';
 import { useReducedMotion } from '../../src/theme/useReducedMotion';
 import { RemoteIcon } from '../../src/ui/icons/RemoteIcon';
 import { FadeIn, animateNextLayout } from '../../src/ui/motion/FadeIn';
-import { DemoNote } from '../../src/ui/Screen';
 import { showToast } from '../../src/ui/Toast';
 import { Text } from '../../src/ui/Text';
 import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } from '../../src/ui/v2';
@@ -25,7 +24,7 @@ function safeLoad<T>(load: () => T | null): T | null {
 }
 
 /**
- * TV list (multi-TV switcher) + demo mode toggle, design v2 (market-1018 M3, docs/DESIGN_V2.md):
+ * TV list (multi-TV switcher), design v2 (market-1018 M3, docs/DESIGN_V2.md):
  * "Your TVs" large title with an add pill, saved TVs as an inset-grouped list (TV icon tile, name,
  * room · model · platform; the TV in use shows a check, the others a chevron). Tapping a TV selects it
  * and opens the remote ("Now controlling <name>" toast). A saved TV with a MAC gets a "Wake" row under
@@ -44,7 +43,7 @@ export default function TvsScreen() {
   const [wakeNote, setWakeNote] = useState<{ id: string; note: string } | null>(null);
   const [waking, setWaking] = useState<string | null>(null);
   const alive = useRef<boolean>(true);
-  // TVs added, removed or replaced (add-TV flow, demo toggle): glide the list into its new layout
+  // TVs added, removed or replaced (add-TV flow): glide the list into its new layout
   // before React commits the change (LayoutAnimation; no-op with Reduce Motion).
   const reduceRef = useRef(reduce);
   reduceRef.current = reduce;
@@ -108,7 +107,6 @@ export default function TvsScreen() {
             </Text>
             <Text style={[textStyle('subheadline'), styles.center, { color: p.secondaryLabel }]}>{t('app.tvs.emptyBody')}</Text>
             <PillButton label={t('app.tvs.addTv')} onPress={addTv} style={styles.emptyPill} />
-            <Text style={[textStyle('footnote'), styles.center, { color: p.secondaryLabel }]}>{t('app.tvs.emptyDemo')}</Text>
           </Card>
           <Text style={[textStyle('footnote'), styles.emptyNote, { color: p.secondaryLabel }]}>{t('app.tvs.sameWifi')}</Text>
         </FadeIn>
@@ -166,21 +164,6 @@ export default function TvsScreen() {
         </Text>
       ) : null}
 
-      <InsetGroupedList>
-        <Row
-          title={t('app.tvs.demoMode')}
-          subtitle={t('app.tvs.demoBody')}
-          accessibilityLabel={t('app.tvs.demoMode')}
-          accessibilityHint={t('app.tvs.demoBody')}
-          accessory={{
-            type: 'switch',
-            value: snap.demo,
-            onValueChange: (on) => {
-              setDemoMode(session, on).catch(() => {});
-            },
-          }}
-        />
-      </InsetGroupedList>
 
       <InsetGroupedList>
         <Row
@@ -192,11 +175,6 @@ export default function TvsScreen() {
           onPress={() => router.push('/settings')}
         />
       </InsetGroupedList>
-      {snap.demo ? (
-        <View style={styles.noteWrap}>
-          <DemoNote color={p.secondaryLabel} />
-        </View>
-      ) : null}
     </LargeTitleHeader>
   );
 }

@@ -3,12 +3,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSyncExternalStore } from 'react';
 import { type Progress, emptyProgress, restoreProgress } from '../core/progress';
 import type { Scene } from '../core/scene';
-import { SCENES } from '../scenes';
+import { SCENES, SHIPPED_ART_SCENES, SINGLE_SCENES } from '../scenes';
+import { singleEditionProgress } from '../core/artProgress';
+import { createSaveQueue } from '../core/saveQueue';
 
 const key = (id: string) => `hollowhue.scene.${id}.v1`;
 const cache = new Map<string, Progress>();
 const listeners = new Set<() => void>();
-const timers = new Map<string, ReturnType<typeof setTimeout>>();
+const saves = createSaveQueue((k, value) => AsyncStorage.setItem(k, value));
 let version = 0;
 
 function emit() {
@@ -27,6 +29,15 @@ export async function loadAllProgress(): Promise<void> {
       } catch {
         cache.set(scene.id, emptyProgress(scene));
       }
+    }
+    const existing = new Map(pairs);
+    const sources = SHIPPED_ART_SCENES.map((scene) => ({ scene, progress: getProgress(scene) }))
+      .filter(({ progress }) => progress.updated > 0);
+    if (sources.length) for (const single of SINGLE_SCENES) {
+      // A single edition written even once belongs to the user; clearing it must stay cleared.
+      if (existing.get(key(single.id)) !== null) continue;
+      const copy = singleEditionProgress(single, sources);
+      if (copy) { cache.set(single.id, copy); saves.put(key(single.id), JSON.stringify(copy)); }
     }
   } catch {
     // start fresh; nothing is lost on disk
@@ -47,25 +58,12 @@ export function setProgress(scene: Scene, p: Progress) {
   if (cache.get(scene.id) === p) return;
   cache.set(scene.id, p);
   emit();
-  const old = timers.get(scene.id);
-  if (old) clearTimeout(old);
-  timers.set(
-    scene.id,
-    setTimeout(() => {
-      timers.delete(scene.id);
-      AsyncStorage.setItem(key(scene.id), JSON.stringify(p)).catch(() => {});
-    }, 400),
-  );
+  saves.put(key(scene.id), JSON.stringify(p));
 }
 
 /** Write any pending saves now (app going to the background, leaving a scene). */
 export function flushProgress() {
-  for (const [id, tm] of timers) {
-    clearTimeout(tm);
-    const p = cache.get(id);
-    if (p) AsyncStorage.setItem(key(id), JSON.stringify(p)).catch(() => {});
-  }
-  timers.clear();
+  return saves.flush();
 }
 
 /** Re-renders when any scene's progress changes. */

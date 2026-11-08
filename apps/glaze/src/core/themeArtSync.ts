@@ -17,9 +17,10 @@
 //      index does not list, so partial copies are cleaned up. Interrupted before step 3: the old
 //      index is untouched (still consistent) and the next run finishes the job.
 import type { WidgetOption, HomeOptionSize } from './widgetOptions.ts';
-import { shelfOptions } from './widgetOptions.ts';
+import { drawnForSize, shelfOptions } from './widgetOptions.ts';
 import {
   WIDGET_ART_LIBRARY_CAP,
+  followTheme,
   isUserPiece,
   listPieces,
   pieceFileName,
@@ -65,8 +66,12 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
   const cap = Math.max(0, Math.floor(input.cap ?? WIDGET_ART_LIBRARY_CAP));
   for (const size of THEME_ART_SIZES) {
     let slot = 0;
-    for (const option of shelfOptions(input.options, size)) {
-      if (!option.sizes.includes(size)) continue;
+    // Owner 2026-11-08 ("Aurora is missing art works in its gallery again such as the fox"): art
+    // pieces come first in every size, then the theme's live / calendar pictures, so the Add Widget
+    // gallery's Art pages (ThemeArtWidgets.swift, first slots) always show every art piece.
+    const drawn = shelfOptions(input.options, size).filter((option) => drawnForSize(option, size));
+    const ordered = [...drawn.filter((o) => o.kind === 'art'), ...drawn.filter((o) => o.kind !== 'art')];
+    for (const option of ordered) {
       const id = themePieceId(input.themeId, option.id, size);
       if (seen.has(id)) continue;
       seen.add(id);
@@ -137,5 +142,6 @@ export function commitThemeArt(
   const retired = retire(lib.retired, gone, pieces);
   if (retired) next.retired = retired;
   else delete next.retired;
-  return { lib: next, keep: pieces.map((p) => p.id), remove: gone.map((p) => p.id) };
+  // T259: a swap makes widgets with no chosen piece follow the new theme (`unpinned`, per size).
+  return { lib: followTheme(lib, next), keep: pieces.map((p) => p.id), remove: gone.map((p) => p.id) };
 }

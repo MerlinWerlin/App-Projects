@@ -91,6 +91,18 @@ export function deferredIdle(): Promise<void> {
   return queue.idle().catch(() => undefined);
 }
 
+/**
+ * T257: the recorded timings (this launch's runs plus the persisted ones once the queue started),
+ * for the Settings › About "Startup" line (src/core/startupDiagnostics.ts). [] on any error.
+ */
+export function deferredTimings(): StepTiming[] {
+  try {
+    return queue.timings();
+  } catch {
+    return [];
+  }
+}
+
 /** One line for Settings diagnostics ("Slowest: probe 420 ms, ..."); '' when nothing ran yet. */
 export function deferredDiagnostics(): string {
   try {

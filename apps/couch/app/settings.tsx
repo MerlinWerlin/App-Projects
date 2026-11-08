@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import { GLOW_OPTIONS, ONE_HANDED_OPTIONS, SETTING_COPY, THEME_OPTIONS, type SettingCopy } from '../src/core/prefs';
 import { useT } from '../src/i18n/react';
 import { plusForSale } from '../src/core/forSale';
+import { usePlus } from '../src/plus/usePlus';
 import { REMOTE_THEMES } from '../src/theme/remoteThemes';
 import { usePrefs } from '../src/state/prefs';
 import { list, space, textStyle } from '../src/theme/design';
@@ -29,7 +30,8 @@ interface Choice<V extends string> {
  * Settings, design v2 (market-1018 M3, docs/DESIGN_V2.md): "Settings" large title, a Couch Plus card,
  * then inset-grouped Remote / General / Help groups. Choice settings (language, appearance, one-handed,
  * glow) are value rows that open their options in place as check rows. Every setting is free; the
- * free promise is the last group's footer.
+ * Couch Plus card (owner 7 Nov 2026: the remote and casting are the paid part) says where you stand: unlocked,
+ * days left in the free trial, or what Plus unlocks. The promise line is the last group's footer.
  */
 export default function SettingsScreen() {
   const t = useT();
@@ -42,6 +44,15 @@ export default function SettingsScreen() {
   const params = useLocalSearchParams<{ open?: string }>();
   const [open, setOpen] = useState<Picker | null>(params.open === 'language' ? 'language' : null);
   const themeName = t(REMOTE_THEMES[prefs.remoteTheme].nameKey);
+  const { access } = usePlus();
+  const plusHint =
+    access.reason === 'owned' || access.reason === 'grandfathered'
+      ? t('app.plus.thanksPlus')
+      : access.reason === 'trial'
+        ? t('app.plus.trialDaysLeft', { count: access.daysLeft })
+        : access.reason === 'expired'
+          ? t('app.plus.trialEnded')
+          : t('app.settings.plusHint');
 
   const toggle = (which: Picker) => {
     animateNextLayout(reduce);
@@ -100,17 +111,17 @@ export default function SettingsScreen() {
           {picker('language', SETTING_COPY.language, language.value, language.choose, language.options)}
         </InsetGroupedList>
 
-        {/* Release standard 2: no purchases in this version (stub provider), so no Couch Plus entry point. */}
+        {/* Couch Plus card: the way into the paywall, with the trial's days left while one runs. */}
         {plusForSale() ? (
         <Card
           style={styles.plus}
           onPress={() => router.push('/plus')}
           accessibilityRole="link"
           accessibilityLabel={t('app.settings.plus')}
-          accessibilityHint={t('app.settings.plusHint')}
+          accessibilityHint={plusHint}
         >
           <Text style={[textStyle('headline'), { color: p.label }]}>{t('app.settings.plus')}</Text>
-          <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{t('app.settings.plusHint')}</Text>
+          <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{plusHint}</Text>
         </Card>
         ) : null}
 

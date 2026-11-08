@@ -1,0 +1,118 @@
+// Strings for postcards (run 107). Every UI string lives in the catalogue.
+// T147: postcards (prefix postcards.): app/postcards/[tripId].tsx, app/postcards/address.tsx, the trip screen card,
+// the Coming home row and the Plan this trip again toggle.
+export const postcards = {
+  'postcards.route': 'Postcards',
+  'postcards.title': 'Postcards',
+  'postcards.notFound': 'This trip isn’t on your phone any more.',
+  'postcards.phoneOnly': 'Names and addresses stay on this phone. They’re never put in a shared trip file.',
+
+  // Counts
+  'postcards.count': '{n} of {total} sent',
+  'postcards.count.all': 'All {n} sent',
+
+  // Trip screen card
+  'postcards.card.title': 'Postcards',
+  'postcards.card.sub': 'Who would love a card from this trip?',
+  'postcards.card.hint': 'Opens your postcard list for this trip.',
+
+  // Coming home row
+  'postcards.come.title': 'Postcards',
+  'postcards.come.left': '{line}: still a few to post',
+  'postcards.come.a11y': 'Postcards, {line}',
+  'postcards.come.hint': 'Opens your postcard list for this trip.',
+
+  // Empty state and adding
+  'postcards.emptyTitle': 'Who are you writing to?',
+  'postcards.emptyBody': 'Add the people you’d like to send a card to. Tick each one off as it goes in the post box.',
+  'postcards.add': 'Add a person',
+  'postcards.addAnother': 'Add another person',
+  'postcards.addHint': 'Opens a short form for a name and a postal address.',
+
+  // A person's row
+  'postcards.noAddress': 'No address yet',
+  'postcards.markSent': 'Mark as sent',
+  'postcards.sentYes': 'Sent',
+  'postcards.sentToggle': 'Card to {name} sent',
+  'postcards.sentToggleHint': 'Ticks the card as sent today, from the place you’re staying.',
+  'postcards.sentToggleOffHint': 'Clears the sent tick.',
+  'postcards.sentDone': 'Card to {name} marked as sent.',
+  'postcards.unsentDone': 'Card to {name} no longer marked as sent.',
+  'postcards.sent.from': 'Sent {date} from {place}',
+  'postcards.sent.on': 'Sent {date}',
+  'postcards.big': 'Big address',
+  'postcards.bigA11y': 'Big address for {name}',
+  'postcards.bigHint': 'Shows the address in large letters to show at the post office or copy onto the card.',
+  'postcards.bigHintEmpty': 'Shows the name in large letters. Add an address with Edit.',
+  'postcards.edit': 'Edit',
+  'postcards.editA11y': 'Edit {name}',
+  'postcards.editHint': 'Change the name or address, or remove this person.',
+
+  // Form
+  'postcards.form.addTitle': 'Add a person',
+  'postcards.form.editTitle': 'Edit person',
+  'postcards.form.name': 'Name',
+  'postcards.form.namePlaceholder': 'e.g. Gran and Pop',
+  'postcards.form.nameError': 'Add a name first.',
+  'postcards.form.address': 'Address',
+  'postcards.form.addressPlaceholder': 'Street and number\nTown and postcode',
+  'postcards.form.addressHelp': 'One line per row, as you’d write it on the card. Put the country below.',
+  'postcards.form.country': 'Country',
+  'postcards.form.countryPlaceholder': 'e.g. Australia',
+  'postcards.form.save': 'Save',
+  'postcards.form.saveHint': 'Saves this person on this phone.',
+  'postcards.form.cancelHint': 'Closes the form without saving.',
+  'postcards.remove.button': 'Remove from the list',
+  'postcards.remove.hint': 'Asks before removing this person.',
+  'postcards.remove.title': 'Remove {name}?',
+  'postcards.remove.body': 'Their name and address are removed from this trip’s postcard list.',
+  'postcards.remove.confirm': 'Remove',
+  'postcards.saveFailed.title': 'Couldn’t save',
+  'postcards.saveFailed.body': 'Your phone didn’t store the change. Try again.',
+
+  // Big address
+  'postcards.bigRoute': 'Address',
+  'postcards.bigMissing': 'This person isn’t on the postcard list any more.',
+  'postcards.bigNoAddress': 'No address saved yet. Add one from the postcard list with Edit.',
+  'postcards.bigNote': 'The country is in capitals on its own last line, the way postal services ask for cards going abroad.',
+  'postcards.bigA11yCard': 'Address: {address}',
+  'postcards.copy': 'Copy address',
+  'postcards.copyHint': 'Copies the address as text.',
+  'postcards.copied': 'Address copied.',
+  'postcards.copyFailed': 'Couldn’t copy here. Press and hold the address to copy it.',
+  'postcards.back': 'Back to the list',
+  'postcards.backHint': 'Goes back to your postcard list.',
+
+  // What to write
+  'postcards.prompts.title': 'What to write',
+  'postcards.prompts.sub': 'Ideas from that day of your trip',
+  'postcards.prompts.prev': 'Previous day',
+  'postcards.prompts.next': 'Next day',
+  'postcards.prompts.from': 'Drawn from your journal pages and ideas for that day. Nothing leaves your phone.',
+  'postcards.prompt.note': 'From your journal: “{text}”',
+  'postcards.prompt.place': 'Tell them about {name}.',
+  'postcards.prompt.went': 'You went to {name}: what was it like?',
+  'postcards.prompt.plan': 'Coming up: {name}.',
+  'postcards.prompt.mood.joyful': 'What made the day so good?',
+  'postcards.prompt.mood.relaxed': 'The slow moment you’d like to share.',
+  'postcards.prompt.mood.adventurous': 'The bravest thing you did.',
+  'postcards.prompt.mood.grateful': 'Someone who was kind to you.',
+  'postcards.prompt.mood.tired': 'The long day, and what made it worth it.',
+  'postcards.prompt.mood.meh': 'A small thing that went right anyway.',
+  'postcards.prompt.weather.sunny': 'The sunshine, and where you sat in it.',
+  'postcards.prompt.weather.partly': 'What the sky was doing.',
+  'postcards.prompt.weather.cloudy': 'A grey day, and how you spent it.',
+  'postcards.prompt.weather.rain': 'Where you sheltered from the rain.',
+  'postcards.prompt.weather.storm': 'The storm, from somewhere safe.',
+  'postcards.prompt.weather.snow': 'The snow, and how cold your fingers got.',
+  'postcards.prompt.generic.food': 'Something you ate that you’d make them try.',
+  'postcards.prompt.generic.sound': 'A sound or smell you’ll remember.',
+  'postcards.prompt.generic.surprise': 'Something that surprised you.',
+  'postcards.prompt.generic.wish': 'A place you wish they could see with you.',
+  'postcards.prompt.generic.view': 'What you can see as you write this.',
+
+  // Plan this trip again
+  'postcards.copy.toggle': 'Postcard people ({n})',
+  'postcards.copy.hint': 'The same names and addresses on the new trip’s postcard list, with no sent ticks.',
+  'postcards.copy.failed': 'The trip was copied, but the postcard list couldn’t be saved.',
+} as const;

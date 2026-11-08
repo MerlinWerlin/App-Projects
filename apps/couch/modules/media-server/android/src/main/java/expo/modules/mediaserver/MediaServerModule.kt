@@ -298,15 +298,17 @@ private class MediaHttpServer(private val resolverProvider: () -> ContentResolve
     val method = parts[0].uppercase()
     val target = parts[1]
     var rangeHeader: String? = null
+    var origin: String? = null
     for (line in lines.drop(1)) {
       val colon = line.indexOf(':')
       if (colon <= 0) continue
       val name = line.substring(0, colon).trim().lowercase()
+      if (name == "origin" && origin == null) origin = line.substring(colon + 1).trim()
       if (name == "range" && rangeHeader == null) rangeHeader = line.substring(colon + 1).trim()
     }
 
-    if (method != "GET" && method != "HEAD") {
-      sendEmpty(out, 405, "Method Not Allowed", listOf("Allow" to "GET, HEAD"))
+    if (method != "GET" && method != "HEAD" && method != "OPTIONS") {
+      sendEmpty(out, 405, "Method Not Allowed", listOf("Allow" to "GET, HEAD, OPTIONS"))
       return
     }
     val token = tokenFromTarget(target)
@@ -316,6 +318,11 @@ private class MediaHttpServer(private val resolverProvider: () -> ContentResolve
       return
     }
     sockets[socket] = entry.id
+    val cors = corsHeaders(origin)
+    if (method == "OPTIONS") {
+      sendEmpty(out, 204, "No Content", cors)
+      return
+    }
 
     val size = entry.size
     val range = if (rangeHeader != null) parseRange(rangeHeader, size) else RangeResult.Full
@@ -326,7 +333,7 @@ private class MediaHttpServer(private val resolverProvider: () -> ContentResolve
     val headers = ArrayList<Pair<String, String>>()
     when (range) {
       is RangeResult.Unsatisfiable -> {
-        sendEmpty(out, 416, "Range Not Satisfiable", listOf("Content-Range" to "bytes */$size"))
+        sendEmpty(out, 416, "Range Not Satisfiable", listOf("Content-Range" to "bytes */$size") + cors)
         return
       }
       is RangeResult.Partial -> {
@@ -344,6 +351,7 @@ private class MediaHttpServer(private val resolverProvider: () -> ContentResolve
     headers.add("Cache-Control" to "no-store")
     headers.add("Connection" to "close")
     headers.addAll(dlnaHeaders(entry.streaming))
+    headers.addAll(cors)
 
     if (method == "HEAD" || length == 0L) {
       out.write(responseHead(status, reason, headers))
@@ -554,4 +562,21 @@ private class MediaHttpServer(private val resolverProvider: () -> ContentResolve
       return sb.toString().toByteArray(Charsets.ISO_8859_1)
     }
   }
+}
+
+/** Echo a syntactically valid web origin; never accept control characters or an origin path. */
+private fun corsHeaders(origin: String?): List<Pair<String, String>> {
+  if (origin == null || origin.length > 512 || origin.any { it.code !in 0x21..0x7e }) return emptyList()
+  val uri = try { java.net.URI(origin) } catch (_: Exception) { return emptyList() }
+  if (uri.scheme !in listOf("http", "https") || uri.host.isNullOrEmpty() ||
+      uri.rawUserInfo != null || uri.rawQuery != null || uri.rawFragment != null ||
+      !uri.rawPath.isNullOrEmpty()) return emptyList()
+  return listOf(
+    "Access-Control-Allow-Origin" to origin,
+    "Vary" to "Origin",
+    "Access-Control-Allow-Methods" to "GET, HEAD, OPTIONS",
+    "Access-Control-Allow-Headers" to "Content-Type, Range, Accept, Origin, Cache-Control, If-Modified-Since, If-None-Match, X-Requested-With",
+    "Access-Control-Expose-Headers" to "Content-Type, Content-Length, Accept-Ranges, Content-Range, transferMode.dlna.org, contentFeatures.dlna.org",
+    "Access-Control-Allow-Private-Network" to "true"
+  )
 }

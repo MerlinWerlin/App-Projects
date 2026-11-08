@@ -1,18 +1,22 @@
 // Places to go (T81): the trip's ideas, Unplanned first and then by planned day, with category filter chips (All,
 // Eat, See, Do, Shop, Other). Each row ticks Been there (then offers a journal page for that day), opens the idea to
 // edit or plan it, and opens its link when that is a web address. Free and offline; ideas travel in trip files.
+// T149: a Kid-friendly chip narrows the list to the traveller's own kid-friendly marks (kept on this phone).
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { formatDay } from '../../src/core/format.ts';
-import { categoryCounts, groupIdeas, ideaStats, type Idea, type IdeaFilter, type IdeaGroup } from '../../src/core/ideas.ts';
+import { categoryCounts, groupIdeas, ideaStats, readIdeas, type Idea, type IdeaFilter, type IdeaGroup } from '../../src/core/ideas.ts';
 import type { Trip } from '../../src/core/model.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
 import { space, typeScale } from '../../src/theme/tokens.ts';
 import { FadeInView, HeroHeader } from '../../src/ui/hero.tsx';
 import { categoryKey, CategoryFilter, IdeaRow, useBeenThere, useOpenLink } from '../../src/ui/ideas.tsx';
+import { kidFriendlyCount, kidFriendlyOnly } from '../../src/core/kids.ts';
+import { useKids } from '../../src/state/kids.ts';
+import { KidFriendlyChip } from '../../src/ui/kids.tsx';
 import { Body, Button, EmptyState, Screen } from '../../src/ui/kit.tsx';
 
 type Row = { kind: 'head'; key: string; group: IdeaGroup } | { kind: 'idea'; key: string; idea: Idea };
@@ -37,7 +41,15 @@ function Ideas({ trip }: { trip: Trip }) {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const [filter, setFilter] = useState<IdeaFilter>('all');
-  const groups = useMemo(() => groupIdeas(trip, filter), [trip, filter]);
+  const [kids] = useKids(trip.id);
+  const [kidOnly, setKidOnly] = useState(false);
+  const kidCount = useMemo(() => kidFriendlyCount(readIdeas(trip), kids), [trip, kids]);
+  const showKid = kidOnly && kidCount > 0;
+  const groups = useMemo(() => {
+    const all = groupIdeas(trip, filter);
+    if (!showKid) return all;
+    return all.map((g) => ({ ...g, ideas: kidFriendlyOnly(g.ideas, kids) })).filter((g) => g.ideas.length > 0);
+  }, [trip, filter, showKid, kids]);
   const stats = useMemo(() => ideaStats(trip), [trip]);
   const counts = useMemo(() => categoryCounts(trip), [trip]);
   const rows = useMemo<Row[]>(() => groups.flatMap((g): Row[] => [{ kind: 'head', key: `h:${g.key}`, group: g }, ...g.ideas.map((idea): Row => ({ kind: 'idea', key: idea.id, idea }))]), [groups]);
@@ -102,8 +114,10 @@ function Ideas({ trip }: { trip: Trip }) {
           <View style={{ gap: space.m }}>
             <HeroHeader tone="map" title={t('ideas.title')} eyebrow={trip.name} subtitle={subtitle} illustration="map" compact />
             {stats.total ? <CategoryFilter value={filter} counts={counts} total={stats.total} onChange={setFilter} /> : null}
+            {kidCount > 0 ? <KidFriendlyChip on={showKid} count={kidCount} onChange={setKidOnly} /> : null}
             {stats.total === 0 ? <EmptyState art="notebook" title={t('ideas.empty.title')} body={t('ideas.empty.body')} /> : null}
-            {stats.total > 0 && rows.length === 0 && filter !== 'all' ? <Body muted>{t('ideas.empty.filtered', { cat: t(categoryKey(filter)) })}</Body> : null}
+            {showKid && rows.length === 0 ? <Body muted>{t('kids.ideas.filteredEmpty')}</Body> : null}
+            {!showKid && stats.total > 0 && rows.length === 0 && filter !== 'all' ? <Body muted>{t('ideas.empty.filtered', { cat: t(categoryKey(filter)) })}</Body> : null}
             <Button label={t('ideas.add')} hint={t('ideas.addHint')} icon="add" onPress={add} />
           </View>
         }

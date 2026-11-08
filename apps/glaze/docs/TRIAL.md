@@ -2,6 +2,54 @@
 
 Glaze is tested in **TestFlight** only. Open the newest Glaze build from the TestFlight app; you don't need Expo Go or your PC. The new items below arrive in the next TestFlight build (auto-ship sends it). Answer yes / no on the Workboard.
 
+## New since your last test (2 Nov, owner-1102b: more themed widgets, run 240)
+Native: needs the TestFlight build made from this run. Long-press the Home Screen > + > Glaze. Answer yes / no:
+
+1. **Moon:** is there a **Moon** widget showing tonight's phase as a drawn moon in your theme's colours (medium: % lit and days to full moon; large: next 7 nights)? yes / no
+2. **Word clock and Big clock:** does **Word clock** read the time in words (e.g. "IT'S TWENTY PAST TEN") and **Big clock** show huge numbers, both in your theme? In StandBy (charging, sideways), are the Big clock and Clock numbers big and readable on black? yes / no
+3. **Lock Screen:** Lock Screen > Customise > add widgets > Glaze: are there clock, date, battery, countdown and moon widgets in round, rectangle and one-line sizes? Is the battery your real level? yes / no
+4. **Next event:** add **Next event**, tap it: does Glaze open a screen asking for calendar access, and after Allow does the widget show your next event within a few minutes? yes / no
+5. **Weather:** add **Weather**, tap it, allow location: does it show your temperature (°C), today's high/low and the Open-Meteo credit? yes / no
+6. **Photo frame:** does the Photo widget show your photo inside a theme-coloured frame, and does tapping it with no photo open Widget Studio? yes / no
+7. **Little Line:** does the quote widget keep one line all day and change after midnight? yes / no
+8. **Streaks:** add **Streaks**: does it show the last 7 days as dots and a streak count, and does the tick button mark today done? yes / no
+
+## New since your last test (2 Nov, owner-1102a: native art clocks, run 239)
+Native: needs the TestFlight build made from this run (Jared's chat ships it). Answer yes / no:
+
+1. **Art clocks:** after the new theme packs are published, Widgets tab > a theme > is there an **Art clock** piece first? Add it to a widget: does the theme's own art stay whole, with a live time on it (hands on a painted dial, a digital time, or two-row 24 h hours/minutes), and does it change every minute? yes / no
+2. **Plain clock fallback:** is the plain clock face labelled **Plain clock (fallback)**, and is it live too? yes / no
+3. **Fit layout:** long-press a widget with a live clock > Edit Widget > Layout > **Fit**: does the time still show and keep moving (it used to show only in Fill)? yes / no
+4. **Midnight:** leave a live date or countdown widget on your Home Screen overnight: does it show the new day (or one day fewer) right after midnight, without opening Glaze? yes / no
+5. **Focus and battery:** on a focus piece, does Start start a 25-minute countdown and Pause stop it? On a battery piece, is the level your real battery (within 15 minutes)? yes / no
+6. **New themes (101-146):** when they appear in the gallery, do their clock, date, focus and battery pieces all show live values (none with a made-up number)? yes / no
+
+(Run 225 question 2 is out of date: live values now show in Fit too.)
+
+## New since your last test (1 Nov, run 225)
+JS only: shows in the next TestFlight build (or Expo Go). Answer yes / no:
+
+1. **Countdown art:** Widgets tab > a theme with the Dune or Rehearsal countdown piece > pick it. Is there a **Countdown to** field? Type a day (YYYY-MM-DD) and tap **Use on my widget**: does your widget count the days down over the art? Without a day does it stay a plain picture (no made-up number)? yes / no
+2. **Fill / Fit note:** on a live piece (clock, date, battery), does the note under it say live values show in **Fill** and Fit shows the art only? Is that what your widget does? yes / no
+3. **Themes tab:** does the top line now read "Whole looks: wallpaper, icons and widgets that match."? yes / no
+
+## New since your last test (1 Nov, owner-1101i)
+Needs a TestFlight build **newer than 1.0.1 (20)**. Answer yes / no:
+
+1. **Guided setup:** open a theme > **Use this theme**. Does a 3-step guide open straight away (dots 1-2-3: Wallpaper, Icons, Widgets), one short sentence per step with a small drawing? yes / no
+2. **Wallpaper step:** does **Save wallpaper to Photos** save it, does **Open Photos** open Photos, and do the steps (Share > Use as Wallpaper > Add > Set as Wallpaper Pair > Blur OFF) match your iPhone? yes / no
+3. **Icons step:** does **Install all icons** go straight to the install and open Safari, and do steps (a)-(e) match what you see (Close > More for Your iPhone > View Profile > Install)? Does **Open Settings** open Settings? yes / no
+4. **Set it up later:** on the theme page, does the **Set it up** section reopen each step, with a tick on the ones you finished? yes / no
+5. **No crash:** swap themes a few times, leave Glaze and come back, browse theme categories, edit widget art. Any crash or freeze? If a screen ever fails, do you get a "Something went wrong · Retry" card instead of the app closing? (no crash = yes) yes / no
+
+## New since your last test (1 Nov, late: run 222)
+Needs a TestFlight build **newer than 1.0.1 (20)** (the widget part is built into the app). Answer yes / no:
+
+1. **Icon install guide:** Install tab > one profile for all icons > open in Safari. Do the numbered steps (Close in Safari, then Settings > **More for Your iPhone** > **View Profile** > **Install**) match what your iPhone shows, and do the small drawn pictures next to each step look right? yes / no
+2. **Unpicked widgets follow the theme:** put a Glaze widget on the Home Screen without picking any art, then apply a different theme. Does the widget switch to the new theme's art (or its plain background if the theme has no art for that size), never the old theme's picture? A widget where you picked a piece yourself should keep it. yes / no
+3. **After a restart:** apply a theme, fully close Glaze straight away, reopen it. Does Edit Widget > Art still list all the new theme's pieces? yes / no
+4. **Startup line:** Settings > About > **Startup**: does it show a short line (e.g. "background work done in 190 ms") rather than an error? yes / no
+
 ## New since your last test (1 Nov, night: owner-1101h brief)
 These need the **new TestFlight build** (newer than 1.0.1 (19)): the widget changes are built into the app. Open Glaze, then answer yes / no:
 

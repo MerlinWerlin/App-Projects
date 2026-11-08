@@ -254,7 +254,7 @@ T68 migration order, one commit per screen:
 5. Themes
 6. Add TV
 7. Apps
-8. Remote chrome + sheets
+8. Remote chrome + sheets (T79, run 171: TvHeader + Sheet; keys, d-pad, glow and textures unchanged)
 
 Each step keeps `bun test` and `tsc -p tsconfig.core.json` green. Each step can also add its pure
 helpers to `tsconfig.core.json`: `src/theme/design.ts`, `src/ui/v2/headerCollapse.ts`,

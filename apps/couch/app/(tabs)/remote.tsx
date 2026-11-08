@@ -7,7 +7,7 @@ import { oneHandedAlign } from '../../src/core/prefs';
 import { minKeyHeight, remoteContentWidth, rowOrStack } from '../../src/core/textScale';
 import { useT } from '../../src/i18n/react';
 import { usePrefs } from '../../src/state/prefs';
-import { useSession } from '../../src/state/session';
+import { useSession, useSessionReady } from '../../src/state/session';
 import { useCastRouting } from '../../src/state/cast';
 import { RemoteCastPill } from '../../src/ui/cast/CastPill';
 import { fonts, radius } from '../../src/theme/tokens';
@@ -50,6 +50,7 @@ import { SimpleRemote } from '../../src/ui/remote/SimpleRemote';
 import { Touchpad } from '../../src/ui/remote/Touchpad';
 import { TvHeader } from '../../src/ui/remote/TvHeader';
 import { useAnnounce } from '../../src/ui/useAnnounce';
+import { RemoteDesignProvider } from '../../src/ui/v2';
 
 /** Splits a `...Rich` message around its {slot} so the slot can be a nested styled element. */
 function splitRich(text: string, slot: string): [string, string] {
@@ -57,7 +58,12 @@ function splitRich(text: string, slot: string): [string, string] {
   return i < 0 ? [text, ''] : [text.slice(0, i), text.slice(i + slot.length)];
 }
 
-/** The remote, ported from prototype/index.html viewRemote() (v2). Every button is free. */
+/**
+ * The remote, ported from prototype/index.html viewRemote() (v2). The remote is the paid part of Couch (owner 7 Nov
+ * 2026): every control goes through the session, whose Couch Plus gate (src/plus/gate.tsx) sends nothing and opens
+ * the paywall without access. session.allowed() is checked first here so a locked press doesn't show "Sent" or open
+ * a sheet.
+ */
 export default function RemoteScreen() {
   // Remote theme (owner-1017): colours, texture, glow and press feel; never what a button does.
   const theme = useRemoteTheme();
@@ -92,6 +98,9 @@ export default function RemoteScreen() {
   const [last, setLast] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
   const tv = session.activeTv();
+  // No demo mode (owner 7 Nov 2026): with no TV saved, the first thing on screen is how to add one.
+  const ready = useSessionReady();
+  const needsTv = ready && snap.tvs.length === 0;
   // A Google TV saved for casting (or no Google TV remote in this build): say so, keys do nothing.
   const activeDriver = session.activeDriver();
   const castOnlyNote = isCastOnlyDriver(activeDriver) ? activeDriver.message() : null;
@@ -105,6 +114,8 @@ export default function RemoteScreen() {
   // session.sendKey never throws; failures surface as snap.lastError.
   const onKey = useCallback(
     (key: Key, label: string) => {
+      // Couch Plus: locked -> the paywall opens, nothing is sent or shown as sent.
+      if (!session.allowed()) return;
       // Decoration cues for the cinema glow and the volume HUD (never affect sending).
       if (key === 'POWER') emitFx({ type: 'power' });
       else emitFx({ type: 'press', dir: keyDir(key) });
@@ -131,6 +142,8 @@ export default function RemoteScreen() {
   );
 
   const onAction = (a: ActionId) => {
+    // Keyboard and numbers are controls (Couch Plus); the Apps tab gates each launch itself.
+    if (a !== 'APPS' && !session.allowed()) return;
     if (a === 'KEYBOARD') setKbOpen(true);
     else if (a === 'NUMPAD') setNumOpen(true);
     else router.navigate('/apps');
@@ -146,6 +159,9 @@ export default function RemoteScreen() {
   const [sentBefore, sentAfter] = splitRich(t('app.remote.sentRich'), '{key}');
 
   return (
+    // Design v2 (T79, docs/DESIGN_V2.md step 8): the header and every sheet opened here take the v2
+    // roles from the remote theme. Keys, d-pad, glow and textures still read the theme directly.
+    <RemoteDesignProvider theme={theme}>
     <View style={styles.root}>
       {/* The theme's stage behind everything (near-black while a glow is on), incl. the status-bar strip. */}
       <Screen bg={stage.bg}>
@@ -153,6 +169,26 @@ export default function RemoteScreen() {
         <RemoteCastPill />
         {/* Release standard 1: "Language: English · Change", first session only, in the flow above the remote. */}
         <LanguageHint ink={stage.ink} />
+
+        {needsTv ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t('app.tvs.emptyTitle')}
+            accessibilityHint={t('app.tvs.emptyBody')}
+            onPress={() => router.push('/add-tv')}
+            style={[styles.error, styles.notice, { backgroundColor: theme.accentSoft }]}
+          >
+            <Text scaleRole="body" style={[styles.noticeText, { color: theme.ink }]}>
+              {t('app.tvs.emptyTitle')}
+            </Text>
+            <Text scaleRole="body" style={[styles.noticeText, { color: theme.ink }]}>
+              {t('app.tvs.emptyBody')}
+            </Text>
+            <Text scaleRole="body" style={[styles.errorText, { color: theme.ink }]}>
+              {t('app.tvs.addTv')}
+            </Text>
+          </Pressable>
+        ) : null}
 
         {castOnlyNote !== null ? (
           <Pressable
@@ -236,7 +272,7 @@ export default function RemoteScreen() {
 
                 {mode === 'pad' ? <DPad onKey={onKey} /> : <Touchpad onKey={onKey} />}
 
-                <VoiceButton onNote={setNote} onOpenKeyboard={() => setKbOpen(true)} />
+                <VoiceButton onNote={setNote} onOpenKeyboard={() => session.allowed() && setKbOpen(true)} />
 
                 <View style={styles.row}>
                   {NAV_ROW.map((c) => (
@@ -295,7 +331,7 @@ export default function RemoteScreen() {
           </View>
         </View>
 
-        {/* Sleep timer (T72): free, in both full and simple mode; opens its sheet like the numpad. */}
+        {/* Sleep timer (T72): in both full and simple mode; its POWER key goes through the session's Couch Plus gate. */}
         <SleepTimerChip onOpen={() => setSleepOpen(true)} ink={stage.ink} />
 
         {/* Stage ink keeps AA over the theme's stage and glow (glow.test.ts). */}
@@ -310,6 +346,7 @@ export default function RemoteScreen() {
       {/* Floating volume HUD (T39): outside the ScrollView so it floats over the screen, not the content. */}
       <VolumeHud />
     </View>
+    </RemoteDesignProvider>
   );
 }
 

@@ -11,7 +11,7 @@
 
 import { ART_PACK_DEFAULT_ADDED_AT, ART_WALLPAPER_SIZE, HERO_SIZES, artPackTheme, isArtPackTheme, type ArtPackData, type ArtPackTheme, type HeroSize, type PixelSize } from './artPack.ts';
 import { parseCatalog, type Catalog, type CatalogPack, type RemoteArtManifest, type RemoteArtRole } from './packCatalog.ts';
-import { packObjectUrl } from './packHost.ts';
+import { packObjectUrl, packReleaseBase } from './packHost.ts';
 import type { PackAccessInput, PackDetailView } from './packDetail.ts';
 
 /** Re-fetch catalog.json at most this often (unless the person pulls to refresh). */
@@ -28,7 +28,21 @@ export const CATALOG_CACHE_FILE = 'catalog.json';
  * T178: part of the cache stamp. Bump it whenever the app's catalogue handling changes, so the
  * first launch of that code fetches a fresh catalogue instead of trusting a copy older code saved.
  */
-export const CATALOG_CLIENT_REV = 't178';
+export const CATALOG_CLIENT_REV = 'github-catalog-20261104';
+
+/** A replaced GitHub catalogue can retain a stale CDN redirect even after an ETag refresh.
+ * Give each actual catalogue request a fresh URL; versioned manifests and art stay immutable.
+ */
+export function catalogRequestUrl(url: string, requestedAt: number): string {
+  if (!Number.isFinite(requestedAt) || requestedAt < 0 || !/^https:\/\/github\.com\/[^/?#]+\/[^/?#]+\/releases\/download\/[^/?#]+\/catalog\.json(?:[?#]|$)/i.test(url)) return url;
+  const hashAt = url.indexOf('#');
+  const fragment = hashAt < 0 ? '' : url.slice(hashAt);
+  const beforeHash = hashAt < 0 ? url : url.slice(0, hashAt);
+  const queryAt = beforeHash.indexOf('?');
+  const pathname = queryAt < 0 ? beforeHash : beforeHash.slice(0, queryAt);
+  const query = queryAt < 0 ? [] : beforeHash.slice(queryAt + 1).split('&').filter((part) => part && part.split('=')[0] !== 'glazeCatalogRequest');
+  return `${pathname}?${[...query, `glazeCatalogRequest=${Math.floor(requestedAt)}`].join('&')}${fragment}`;
+}
 
 /**
  * The cached catalogue: when it was fetched (ms since epoch), its text exactly as served and
@@ -225,6 +239,8 @@ export type RemoteArtRef = {
   thumbUrl: string | null;
   /** ThumbHash (base64) for an instant blurred placeholder. */
   thumbhash: string;
+  /** T274: the release holding the pack's files (absent = glaze-packs-v1); pass to the downloader. */
+  release?: string;
 };
 
 export type RemoteArtTheme = Omit<ArtPackTheme, 'plus'> & { plus: boolean; remoteArt: RemoteArtRef };
@@ -254,8 +270,9 @@ export function remoteArtTheme(p: CatalogPack, baseUrl: string | null): RemoteAr
       packVersion: p.packVersion,
       plus: p.plus,
       bytes: p.bytes,
-      thumbUrl: baseUrl && baseUrl.trim() ? packObjectUrl(baseUrl, p.thumb) : null,
+      thumbUrl: baseUrl && baseUrl.trim() ? packObjectUrl(packReleaseBase(baseUrl, p.release), p.thumb) : null,
       thumbhash: p.thumbhash,
+      ...(p.release ? { release: p.release } : {}),
     }),
   };
 }

@@ -1,0 +1,45 @@
+{
+  "run": "41812677928",
+  "source": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
+  "captureSource": "2c585f9b780eb52b01b0eb5fad38656f1b2e1cf0",
+  "platform": "iPhone simulator",
+  "otaDisabledForCapture": true,
+  "images": [
+    "01-categories.png",
+    "02-beginner-flowers.png",
+    "03-colour-picker.png",
+    "03-realistic-cafe.png",
+    "04-sixth-zoom.png",
+    "05-drawing.png",
+    "06-mega-category.png",
+    "07-twentieth-zoom.png",
+    "08-paint-at-zoom-20.png",
+    "09-saved-colouring.png"
+  ],
+  "excludedFrames": [
+    {
+      "name": "02-realistic-cottage.png",
+      "reason": "Taken before the first SVG render completed; preserved in original run artifact, not approved as artwork evidence."
+    }
+  ],
+  "referenceImages": [
+    {
+      "name": "reference-cottage-source-391f5ed8.png",
+      "run": "41807826539",
+      "source": "391f5ed86bb15a75273d765095be764fe74198a4",
+      "artworkDataLiterallyEqualToRelease": true,
+      "releaseRuntimeClaim": false
+    }
+  ],
+  "physicalPhoneUptakeVerified": false,
+  "captureRetries": [
+    {
+      "run": "41816934677",
+      "result": "driver failed; software-GL warning and simulator accessibility connection loss"
+    },
+    {
+      "run": "41819117906",
+      "result": "driver failed getting active applications; kAXErrorIPCTimeout from simulator accessibility service; Whole scene assertion did not complete"
+    }
+  ]
+}

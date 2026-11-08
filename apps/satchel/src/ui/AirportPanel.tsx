@@ -13,6 +13,7 @@ import { fonts, radius, space, typeScale } from '../theme/tokens.ts';
 import { leaveText, useAirportPrefs, warningTexts } from './AirportFields.tsx';
 import { Body, Button, Card, Label, Warning } from './kit.tsx';
 import { useMinute } from './TripPass.tsx';
+import { AirportAssistanceRow } from './stepfree.tsx';
 
 const COUNT_KEY: Record<AirportStep, Key> = {
   leave: 'airport.count.leave',
@@ -74,6 +75,8 @@ export function AirportPanel({ item, framed }: { item: Item; framed?: boolean })
       {warningTexts(plan, t).map((w) => (
         <Warning key={w} text={w} />
       ))}
+      {/* T156: travel assistance (booked or not), when access needs are set on this phone. */}
+      <AirportAssistanceRow item={item} />
       {/* T127: straight to the lost-bag report for this trip's bags. */}
       <Button
         kind="quiet"

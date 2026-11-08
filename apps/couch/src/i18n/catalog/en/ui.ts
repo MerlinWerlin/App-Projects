@@ -6,7 +6,6 @@ export const uiEn = {
   'ui.common.close': 'Close',
   'ui.common.loading': 'Loading',
 
-  'ui.screen.freePromise': 'Every button is free. No subscription, no ads, no tracking.',
   'ui.screen.demoNote': 'Demo TVs, nothing is sent to a real TV',
   'ui.apps.notAffiliated': 'App names and icons belong to their owners. Couch is not affiliated with them.',
 
@@ -62,7 +61,6 @@ export const uiEn = {
 
   'ui.numpad.title': 'Channel number',
   'ui.numpad.note': 'For free-to-air channels. Digits go straight to the TV.',
-  'ui.numpad.unsupported': "This TV doesn't accept number keys from Couch. Use Channel up and down instead. Still free.",
   'ui.numpad.close': 'Close number pad',
   'ui.numpad.typed': 'Typed {digits}',
   'ui.numpad.nothingTyped': 'Nothing typed',
@@ -224,4 +222,8 @@ export const uiEn = {
   "ui.languageHint.change": "Change",
   "ui.languageHint.changeLabel": "Change language",
   "ui.languageHint.changeHint": "Opens the language setting",
+
+  // Couch Plus: the remote and casting are the paid unlock (owner 7 Nov 2026)
+  "ui.screen.freePromise": "One-time purchase. No subscription, no ads, no tracking.",
+  "ui.numpad.unsupported": "This TV doesn't accept number keys from Couch. Use Channel up and down instead.",
 } as const satisfies Record<string, Msg>;

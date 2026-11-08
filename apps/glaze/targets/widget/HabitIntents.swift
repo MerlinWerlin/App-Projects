@@ -65,7 +65,45 @@ struct SetMoodIntent: AppIntent {
   }
 }
 
+/// T284: tick today off on the streak widget. Count trackers jump to the day's goal (a "set" tap, so
+/// the app folds it in like any other); mood logs "Okay" when nothing is logged yet. A tick on a day
+/// that is already met does nothing, so a second tap never takes progress away.
+@available(iOS 17.0, *)
+struct TickHabitIntent: AppIntent {
+  static var title: LocalizedStringResource = "Tick a habit"
+  static var isDiscoverable: Bool = false
+
+  @Parameter(title: "Habit")
+  var habit: String
+
+  init() {}
+
+  init(habit: HabitKindID) {
+    self.habit = habit.rawValue
+  }
+
+  func perform() async throws -> some IntentResult {
+    if let kind = HabitKindID(rawValue: habit) {
+      let now = Date()
+      let today = HabitStore.todayValue(kind, now: now)
+      let goal = HabitStore.goal(kind)
+      if !HabitStore.met(kind, value: today, goal: goal) {
+        if HabitDef.of(kind).mode == .scale {
+          HabitStore.record(kind, setTo: 3, now: now)
+        } else {
+          HabitStore.record(kind, setTo: goal ?? HabitDef.of(kind).step, now: now)
+        }
+      }
+      HabitWidgetKinds.reload(kind)
+    }
+    return .result()
+  }
+}
+
 enum HabitWidgetKinds {
+  /// T284: the streak widget (HabitStreakWidget.swift) shows every tracker, so every tap reloads it.
+  static let streak = "GlazeHabitStreak"
+
   static func kind(for habit: HabitKindID) -> String {
     switch habit {
     case .water: return "GlazeHabitWater"
@@ -79,5 +117,6 @@ enum HabitWidgetKinds {
   /// widgets of the same tracker (for example a small and a medium water widget).
   static func reload(_ habit: HabitKindID) {
     WidgetCenter.shared.reloadTimelines(ofKind: kind(for: habit))
+    WidgetCenter.shared.reloadTimelines(ofKind: streak)
   }
 }

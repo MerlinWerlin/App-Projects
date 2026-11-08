@@ -63,6 +63,8 @@ export const mandalaScene: Scene = {
   levels: [
     mandala('m1', undefined, { n1: 8, n2: 16, n3: 12, pointy: false }, false),
     mandala('m1-in', 'm1', { n1: 6, n2: 18, n3: 9, pointy: true }, false),
-    mandala('m1-in-in', 'm1-in', { n1: 10, n2: 20, n3: 14, pointy: false }, true),
+    mandala('m1-in-in', 'm1-in', { n1: 10, n2: 20, n3: 14, pointy: false }, false),
+    mandala('m1-in-in-in', 'm1-in-in', { n1: 7, n2: 14, n3: 10, pointy: true }, false),
+    mandala('m1-in-in-in-in', 'm1-in-in-in', { n1: 12, n2: 24, n3: 16, pointy: false }, true),
   ],
 };

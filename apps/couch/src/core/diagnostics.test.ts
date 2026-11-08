@@ -22,8 +22,9 @@ class FakeDriver implements TvDriver {
 
 function fakeSource(tvs: Tv[], drivers: Map<string, TvDriver>, activeId: string | null) {
   const subs = new Set<() => void>();
+  const snap = { tvs, activeId, lastError: null as string | null, demo: false };
   const src = {
-    snap: { tvs, activeId, lastError: null as string | null, demo: false },
+    snap,
     subscribe(cb: () => void) {
       subs.add(cb);
       return () => subs.delete(cb);
@@ -34,7 +35,7 @@ function fakeSource(tvs: Tv[], drivers: Map<string, TvDriver>, activeId: string 
     activeDriver() {
       return src.snap.activeId ? (drivers.get(src.snap.activeId) ?? null) : null;
     },
-    set(p: Partial<typeof src.snap>) {
+    set(p: Partial<typeof snap>) {
       src.snap = { ...src.snap, ...p };
       for (const s of subs) s();
     },

@@ -3,15 +3,16 @@
  * current. Mount once inside <SessionProvider> with <WidgetLinkHost /> (docs/WIDGET.md has the line
  * for app/_layout.tsx).
  *
- * - Links: every link that parses sends its key, Plus or not (every TV control is free).
- * - Snapshot: Plus is read here, only through src/plus, and only decides whether the widget gets
+ * - Links: every link that parses sends its key through session.sendKey, so the Couch Plus gate
+ *   (src/plus/gate.tsx, owner 7 Nov 2026) applies: without access the paywall opens instead.
+ * - Snapshot: access is read here, only through src/plus, and only decides whether the widget gets
  *   buttons or just an "Open Couch" tile with a hint. In Expo Go the bridge is unavailable and
  *   nothing is written.
  */
 import { useEffect, useMemo } from 'react';
 import { Linking } from 'react-native';
 import { useLocale } from '../../i18n/react';
-import { usePlus } from '../../plus/state';
+import { usePlus } from '../../plus/usePlus';
 import { useSession } from '../../state/session';
 import { loadWidgetBridge } from '../../native/widgetBridge';
 import { createWidgetLinkHandler } from './linkHandler';
@@ -22,8 +23,9 @@ let initialUrlHandled = false;
 
 export function useWidgetLinks(): void {
   const { session, snap } = useSession();
-  const { canUse, loaded } = usePlus();
-  const plus = loaded && canUse('widgets');
+  const { access } = usePlus();
+  const loaded = access.reason !== 'loading';
+  const plus = loaded && access.full;
   // Snapshot labels are translated when built, so a language change rebuilds it.
   const locale = useLocale();
 

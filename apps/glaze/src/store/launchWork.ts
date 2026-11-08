@@ -5,6 +5,7 @@
 // step the app was killed in the middle of runs again on the next launch.
 // Every step is registered here at module load, before the queue starts, so a pending step left by
 // a crash is always found. app/_layout.tsx only calls startLaunchWork().
+import { prepareWidgetArtRecovery } from './widgetArtRecovery';
 import { DEFERRED_STEPS } from '../core/deferredWork';
 import type { ProbeReason } from '../core/installedProbe';
 import { whenFirstScreen } from '../core/startupHandoff';
@@ -14,6 +15,7 @@ import './activeTheme';
 import { registerDeferred, requestDeferred, startDeferred, yieldToUi } from './deferredWork';
 import { runInstalledProbeStep } from './installedProbe';
 import { pushStoredWidgetTheme } from './widgetTheme';
+import { upgradeActiveDesignedWidgets } from './activeTheme';
 
 /** Wait after the first screen laid out (the intro fade) before the first step. */
 const AFTER_FIRST_SCREEN_MS = 900;
@@ -40,6 +42,9 @@ registerDeferred(DEFERRED_STEPS.widgetTheme, {
   // App Group write + reloadAllTimelines (no-op in Expo Go / Android). Idempotent.
   run: async () => {
     await pushStoredWidgetTheme();
+    // Metadata-only migration, deferred until after the first screen: existing configured
+    // functional pieces keep their ids and photos/art remain untouched. No download or reapply.
+    await upgradeActiveDesignedWidgets();
   },
 });
 
@@ -77,7 +82,7 @@ export function startLaunchWork(): void {
     requestDeferred(DEFERRED_STEPS.installedProbe, reason);
     whenFirstScreen(() => {
       setTimeout(() => {
-        void yieldToUi().then(startDeferred, startDeferred);
+        void yieldToUi().then(prepareWidgetArtRecovery).then(startDeferred, startDeferred);
       }, AFTER_FIRST_SCREEN_MS);
     }, FIRST_SCREEN_CAP_MS);
   } catch {

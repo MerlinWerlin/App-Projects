@@ -72,7 +72,9 @@ test('parse: numberFree true is kept, absent stays absent, a non-boolean drops t
 test('shelf: pictures with fixed numbers sit with the art (pack order), no Live badge; photo stays practical', () => {
   const { options, errors } = parseWidgetOptions(PRODUCTION_LIKE, ASSETS);
   assert.deepEqual(errors, []);
-  for (const size of ['small', 'medium', 'large'] as const) {
+  // Owner 2026-11-08: these square pieces are drawn for small and large, never the wide medium.
+  assert.deepEqual(widgetShelf(options, 'medium'), []);
+  for (const size of ['small', 'large'] as const) {
     const shelf = widgetShelf(options, size);
     assert.deepEqual(shelf.map((b) => b.group), ['practical', 'art']);
     const practical = shelf[0].group === 'practical' ? shelf[0].sections.flatMap((s) => s.options.map((o) => o.id)) : [];
@@ -101,8 +103,10 @@ test('names: the pack label; derived v1 pieces by shape; else "Art n" by pack pl
   );
   // The shelf order changes per size, the names do not.
   const names = (size: 'small' | 'medium' | 'large') => Object.fromEntries(shelfOptions(v1, size).map((o) => [o.id, JSON.stringify(optionName(o, v1))]));
-  assert.deepEqual(names('small'), names('medium'));
-  assert.deepEqual(names('small'), names('large'));
+  // Owner 2026-11-08: each hero is only on its own size's shelf, under the same name everywhere.
+  assert.deepEqual(names('small'), { 'hero-small': JSON.stringify({ key: heroNameKey('small') }) });
+  assert.deepEqual(names('medium'), { 'hero-medium': JSON.stringify({ key: heroNameKey('medium') }) });
+  assert.deepEqual(names('large'), { 'hero-large': JSON.stringify({ key: heroNameKey('large') }) });
   const plain = parseWidgetOptions(
     [
       { id: 'b', kind: 'art', image: IMG, sizes: ['medium'] },
@@ -116,7 +120,8 @@ test('names: the pack label; derived v1 pieces by shape; else "Art n" by pack pl
   assert.deepEqual(optionName(plain[0], plain), { key: 'tabs.widgetsTab.art.numbered', params: { n: 1 } });
   // A v2 option that happens to be called hero-small is not a derived piece.
   const fake: WidgetOption = { ...plain[0], id: 'hero-small' };
-  assert.equal('key' in optionName(fake, [fake]) && optionName(fake, [fake]).key, 'tabs.widgetsTab.art.numbered');
+  const fakeName = optionName(fake, [fake]);
+  assert.equal('key' in fakeName && fakeName.key, 'tabs.widgetsTab.art.numbered');
 });
 
 test('every locale has the new strings (hero names, live-instead button and hint, fixed-numbers note)', () => {

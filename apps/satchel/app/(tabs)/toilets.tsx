@@ -15,6 +15,8 @@
 // "Nearest toilet" opens this tab with ?find=<nonce>, which starts a search once. T120: a saved toilet pin on the Map
 // tab opens it with ?focus=<token> (src/core/followups99.ts): My toilets highlights that toilet and scrolls to it.
 // T119: signpost hero scene (entrance on every tab focus), Find one / Yours section headers and the shared rhythm.
+// T157: on the map view, wheelchair-accessible toilets get their own glyph and colour (src/core/toiletpins.ts) with a
+// small legend under the map (the list view's wheelchair chip already uses the same sea colour).
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, FlatList, Linking, Text, View } from 'react-native';
@@ -67,6 +69,11 @@ import { FadeInView, FocusEntrance, HeroHeader, SectionHeader } from '../../src/
 import { Button, EmptyState, Screen } from '../../src/ui/kit.tsx';
 import { PermissionNotice } from '../../src/ui/PermissionNotice.tsx';
 import { FilterBar, MineSection, RecentSection, ToiletCard, ViewToggle } from '../../src/ui/toiletplus.tsx';
+import { accessibleCount, accessibleFirst, accessibleOnly, setAccessibleOnly } from '../../src/core/stepfree.ts';
+import { useStepFree } from '../../src/state/stepfree.ts';
+import { ToiletAccessBar } from '../../src/ui/stepfree.tsx';
+import { toiletLegend, toiletPinStyle } from '../../src/core/toiletpins.ts';
+import { ToiletPinLegend } from '../../src/ui/toiletPinLegend.tsx';
 
 type Origin = { kind: 'here'; at: LatLon; tz: string } | { kind: 'hotel'; at: LatLon; tz: string; name: string };
 type Phase =
@@ -228,7 +235,11 @@ export default function ToiletsScreen() {
     return arrange(result.toilets, saved, done.origin.at).map((h) => ({ ...h, status: statusFor(h, now, done.origin.tz) }));
   }, [done, result, saved, now]);
   const asFilterRows = useMemo(() => allRows.map((r) => ({ hit: r, status: r.status })), [allRows]);
-  const rows = useMemo(() => applyFilters(asFilterRows, filters).map((r) => r.hit), [asFilterRows, filters]);
+  // T156: with access needs set (phone only), wheelchair / changing-table toilets first, plus the Accessible only filter.
+  const [stepFree, changeStepFree] = useStepFree();
+  const filtered = useMemo(() => accessibleFirst(applyFilters(asFilterRows, filters).map((r) => r.hit), stepFree.needs), [asFilterRows, filters, stepFree.needs]);
+  const rows = useMemo(() => accessibleOnly(filtered, stepFree), [filtered, stepFree]);
+  const accessibleN = useMemo(() => accessibleCount(filtered, stepFree.needs), [filtered, stepFree.needs]);
   const counts = useMemo(() => filterCounts(asFilterRows, filters), [asFilterRows, filters]);
   const anyPinned = rows.some((r) => r.pinned);
   const openNowOn = filters.includes('openNow');
@@ -257,14 +268,16 @@ export default function ToiletsScreen() {
     if (!done) return [];
     const out: MapPin[] = rows.map((r) => {
       const name = r.name ?? t('toilets.unnamed');
+      const look = toiletPinStyle(r, { saved: r.pinned, closed: r.status.state === 'closed' });
       return {
         id: `t:${r.id}`,
         lat: r.lat,
         lon: r.lon,
         title: name,
         subtitle: t('toilets.distance', { ...toiletDistance(r.meters), min: r.minutes }),
-        color: r.pinned ? theme.warn : r.status.state === 'closed' ? theme.muted : theme.teal,
-        a11y: name,
+        color: theme[look.tone],
+        glyph: look.icon as MapPin['glyph'],
+        a11y: look.kind === 'accessible' ? t('f110.toilets.pinAccessibleA11y', { name }) : name,
       };
     });
     out.push({ id: 'origin', lat: done.origin.at.lat, lon: done.origin.at.lon, title: originLabel, color: theme.accent, a11y: originLabel });
@@ -341,11 +354,12 @@ export default function ToiletsScreen() {
             {done.origin.kind === 'hotel' ? t('toilets.aroundHotel', { name: done.origin.name }) : t('toilets.aroundHere')}
           </Text>
           <Text accessibilityLiveRegion="polite" style={{ fontFamily: fonts.body, fontSize: 14, color: theme.muted }}>
-            {filters.length ? t('toiletplus.shown', { n: rows.length, total: allRows.length }) : allRows.length === 1 ? t('toilets.count1') : t('toilets.count', { n: allRows.length })}
+            {filters.length || rows.length !== allRows.length ? t('toiletplus.shown', { n: rows.length, total: allRows.length }) : allRows.length === 1 ? t('toilets.count1') : t('toilets.count', { n: allRows.length })}
             {' · '}
             {result.source === 'offline' ? t('toilets.source.offline', { city: result.city }) : t('toilets.source.online')}
           </Text>
           <FilterBar active={filters} counts={counts} onToggle={onToggleFilter} />
+          <ToiletAccessBar prefs={stepFree} count={accessibleN} onToggle={() => changeStepFree((p) => setAccessibleOnly(p, !p.accessibleOnly))} />
           {openNowOn ? <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toiletplus.openNowNote')}</Text> : null}
           <ViewToggle value={view} onChange={setView} />
           {anyPinned ? <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toiletplus.savedNear')}</Text> : null}
@@ -355,7 +369,15 @@ export default function ToiletsScreen() {
               {t('toilets.openFailed')}
             </Text>
           ) : null}
-          {rows.length === 0 && allRows.length > 0 ? (
+          {rows.length === 0 && filtered.length > 0 ? (
+            <EmptyState
+              art="mapPin"
+              title={t('stepfree.toilets.noneTitle')}
+              body={t('stepfree.toilets.noneBody')}
+              action={<Button kind="quiet" label={t('stepfree.toilets.showAll')} hint={t('stepfree.toilets.showAllHint')} onPress={() => changeStepFree((p) => setAccessibleOnly(p, false))} />}
+            />
+          ) : null}
+          {filtered.length === 0 && allRows.length > 0 ? (
             <EmptyState
               art="mapPin"
               title={t('toiletplus.noneMatchTitle')}
@@ -377,6 +399,7 @@ export default function ToiletsScreen() {
                 offlineTiles={offlineTiles}
                 fit={{ points: [done.origin.at, ...rows.slice(0, 15)], key: done.run }}
               />
+              <ToiletPinLegend kinds={toiletLegend(rows)} />
               <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('toilets.attribution')}</Text>
               {offlineCity && offlineTiles ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.ok }}>{t('toiletplus.mapOffline', { city: offlineCity.name })}</Text> : null}
               {mapAvailable() && !selected ? <Text style={{ fontFamily: fonts.body, fontSize: 13, color: theme.muted }}>{t('toiletplus.mapTapHint')}</Text> : null}

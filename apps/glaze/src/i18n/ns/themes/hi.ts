@@ -2,7 +2,7 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const hi: NonNullable<LocaleMessages['themes']> = {
-  subtitle: 'पूरे लुक: वॉलपेपर, आइकन, विजेट और एक लूप।',
+  subtitle: 'पूरे लुक: वॉलपेपर, आइकन और विजेट, सब मेल खाते हुए।',
   tipsA11y: 'सुझाव',
   dismissTip: 'सुझाव हटाएँ: {title}',
   makeWallpaper: {

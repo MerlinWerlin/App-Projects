@@ -1,7 +1,7 @@
 import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Linking, Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { FONT_MAX, FONT_MIN, type PrompterColors } from '../src/core/prefs';
 import { t } from '../src/i18n';
@@ -34,6 +34,10 @@ export default function Settings() {
           }}
         />
       </Section>
+
+      {Platform.OS === 'android' ? <Section title={t('access.title')}>
+        <Row icon="key-outline" label={t('access.title')} value={app.codeAccess ? t('common.on') : undefined} onPress={() => router.push('/access-code')} last />
+      </Section> : null}
 
       <Section title={t('settings.prompter')}>
         <Stepper icon="text-outline" label={t('settings.fontSize')} value={String(prefs.fontSize)} onMinus={() => setPrefs({ fontSize: Math.max(FONT_MIN, prefs.fontSize - 2) })} onPlus={() => setPrefs({ fontSize: Math.min(FONT_MAX, prefs.fontSize + 2) })} />

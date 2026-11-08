@@ -49,7 +49,7 @@
 "A photo you pick in Glaze." = "你在 Glaze 中选择的照片。";
 "Choose a photo in Glaze" = "在 Glaze 中选择一张照片";
 "Little Line" = "一句话";
-"A short, gentle line that changes every hour." = "每小时更换的一句简短温柔的话。";
+"A short, gentle line that changes every day." = "每天更换的一句简短温柔的话。";
 
 /* Seamless widget (SeamlessWidget.swift, T131/T133) */
 "Seamless" = "无缝";
@@ -71,3 +71,91 @@
 "Pause" = "暂停";
 "Resume" = "继续";
 "Days" = "天";
+
+"Photo album" = "相册";
+
+"Choose album photos in Glaze" = "在Glaze中选择相册照片";
+
+"Your selected photos, changing through the day." = "所选照片在一天中轮流显示。";
+
+"Next photo" = "下一张照片";
+
+"Widget size" = "小组件尺寸";
+/* Moon, Word clock and Big clock widgets (MoonWidget.swift, ClockStyleWidgets.swift, owner-1102b T277/T278).
+   The word clock's phrase is English only by design; other languages show a big digital time. */
+"widgets.moon.new" = "新月";
+"widgets.moon.waxingCrescent" = "蛾眉月";
+"widgets.moon.firstQuarter" = "上弦月";
+"widgets.moon.waxingGibbous" = "盈凸月";
+"widgets.moon.full" = "满月";
+"widgets.moon.waningGibbous" = "亏凸月";
+"widgets.moon.lastQuarter" = "下弦月";
+"widgets.moon.waningCrescent" = "残月";
+"widgets.moon.lit" = "%1$@ 被照亮";
+"widgets.moon.fullTonight" = "今晚满月";
+"widgets.moon.fullTomorrow" = "明天满月";
+"widgets.moon.fullIn" = "%1$@ 天后满月";
+"widgets.moon.nextNights" = "接下来 7 个夜晚";
+"Moon" = "月亮";
+"Tonight's moon phase, worked out on your phone, in your Glaze theme." = "今晚的月相，在手机上计算，用你的 Glaze 主题显示。";
+"Word clock" = "文字时钟";
+"The time in words, in your Glaze theme." = "用文字显示时间，采用你的 Glaze 主题。";
+"Big clock" = "大时钟";
+"Big, bold numerals in your Glaze theme. Made for StandBy." = "大而醒目的数字，采用你的 Glaze 主题。适合待机显示。";
+/* Lock Screen widgets: clock, date, battery, countdown, moon (LockAccessoryWidget.swift, T279) */
+"Glaze Lock" = "Glaze Lock";
+"Lock Screen date" = "日期（锁定屏幕）";
+"The weekday and date for your Lock Screen." = "锁定屏幕上的星期和日期。";
+"Lock Screen battery" = "电池（锁定屏幕）";
+"Your battery level for your Lock Screen." = "锁定屏幕上的电池电量。";
+"Lock Screen countdown" = "倒数日（锁定屏幕）";
+"Days left to the date you choose in Glaze." = "距离你在 Glaze 中选择的日期还有几天。";
+"Lock Screen moon" = "月亮（锁定屏幕）";
+"Tonight's moon and the days to the next full moon." = "今晚的月相和距下次满月的天数。";
+"Choose a date in Glaze" = "在 Glaze 中选择日期";
+"lock.battery" = "电池";
+"lock.moon" = "月亮";
+"lock.moon.fullToday" = "今天满月";
+"lock.countdown.days" = "%1$@ 天";
+"lock.moon.fullIn" = "%1$@ 天后满月";
+"lock.moon.lit" = "亮度 %1$@";
+/* Next event and Weather widgets (CalendarEventWidget.swift, WeatherWidget.swift; owner-1102b T280/T281) */
+"Next event" = "下一个日程";
+"Your next calendar event, in your Glaze theme." = "以 Glaze 主题显示你的下一个日历日程。";
+"Open Glaze to show your next event" = "打开 Glaze 以显示下一个日程";
+"No events in the next 7 days" = "未来 7 天没有日程";
+"All day" = "全天";
+"Now" = "现在";
+"Tomorrow" = "明天";
+"calendar.untitled" = "日程";
+"calendar.sample.1" = "和 Sam 喝咖啡";
+"calendar.sample.2" = "团队例会";
+"calendar.sample.3" = "瑜伽";
+"Weather" = "天气";
+"The weather where you are, in your Glaze theme." = "以 Glaze 主题显示你所在地的天气。";
+"Open Glaze to set weather" = "打开 Glaze 设置天气";
+"Updated %@" = "%@ 更新";
+"H:%@ L:%@" = "最高:%1$@ 最低:%2$@";
+"Weather data by Open-Meteo.com" = "天气数据：Open-Meteo.com";
+/* Streak widget (HabitStreakWidget.swift, TickHabitIntent, T284). habit.a11y.*: 1 = days / habit name */
+"habit.streak.caption" = "连续";
+"habit.streak.tick" = "今天打卡";
+"habit.streak.done" = "今天已完成";
+"habit.streak.name" = "连续打卡";
+"habit.streak.desc" = "每天为一个习惯打卡，看着连续天数增长。";
+"habit.a11y.streak" = "连续 %1$@ 天";
+"habit.a11y.tick" = "为今天的%1$@打卡";
+"Tick a habit" = "习惯打卡";
+"Streak habit" = "连续打卡的习惯";
+"Choose the habit this streak widget follows." = "选择这个连续打卡小组件跟踪的习惯。";
+
+"Unavailable" = "暂不可用";
+"Full" = "已充满";
+"Remaining" = "剩余";
+
+/* Theme gallery */
+"Battery" = "电池";
+"Calendar" = "日历";
+"Matches the theme you choose in Glaze." = "与您在 Glaze 中选择的主题相配。";
+/* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
+"Artwork from the theme you choose in Glaze." = "来自你在 Glaze 中所选主题的图片。";

@@ -2,9 +2,24 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const fr: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "Conçus pour ce thème",
+      "body": "Des widgets lisibles et actualisés, aux couleurs de vos icônes.",
+      "clock": "Horloge",
+      "battery": "Batterie",
+      "calendar": "Calendrier",
+      "setup": "Ajoutez un widget à l’écran d’accueil et choisissez Glaze. L’horloge, la batterie et le calendrier suivent le thème choisi ici.",
+      "save": "Enregistrer dans Mes créations de widgets",
+      "update": "Installez la dernière version de Glaze depuis TestFlight pour utiliser ces widgets.",
+      "batteryNote": "La batterie est actualisée régulièrement. Un tiret signifie que le niveau est indisponible dans iOS.",
+      "unavailable": "Indisponible"
+  },
   error: {
     body: 'Cet écran a rencontré un problème et s’est arrêté. Vos icônes, thèmes et boucles sont enregistrés sur votre téléphone et ne sont pas touchés. Réessayez et, si cela se reproduit, envoyez-nous la note ci-dessous.',
     retryHint: 'Recharge cet écran',
+    screenTitle: 'Un problème est survenu',
+    screenBody: 'Cet écran a rencontré un souci. Tes thèmes, icônes et widgets sont en sécurité sur ton téléphone. Touche Réessayer pour le recharger.',
+    retry: 'Réessayer',
     report: 'Signaler un problème',
     reportHint: 'Ouvre votre app Mail avec cette erreur déjà remplie. Glaze n’envoie rien lui-même.',
     opening: 'Ouverture de Mail…',

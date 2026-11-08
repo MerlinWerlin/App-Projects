@@ -19,7 +19,7 @@ import { lookup } from './i18n.ts';
 import { CATALOGUES } from '../i18n/locales/index.ts';
 
 const root = process.cwd();
-const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
+const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8').replace(/\r\n/g, '\n');
 const strip = (src: string) => src.replace(/\{\/\*[\s\S]*?\*\/\}/g, '').replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:'"`])\/\/.*$/gm, '$1');
 
 const THEMES = strip(read('app', '(tabs)', 'themes.tsx'));

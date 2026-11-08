@@ -32,7 +32,8 @@ struct MinuteProvider: TimelineProvider {
   }
 }
 
-/// One entry now, refreshed just after midnight (for date-only widgets).
+/// One entry now and one at midnight, refreshed just after (date widgets, the daily Little Line,
+/// the photo frame's date caption).
 struct DayProvider: TimelineProvider {
   func placeholder(in context: Context) -> GlazeEntry {
     GlazeEntry(date: Date(), theme: ThemeStore.load())
@@ -46,12 +47,15 @@ struct DayProvider: TimelineProvider {
     let now = Date()
     let cal = Calendar.current
     let tomorrow = cal.date(byAdding: .day, value: 1, to: cal.startOfDay(for: now)) ?? now.addingTimeInterval(3600)
-    let entry = GlazeEntry(date: now, theme: ThemeStore.load())
-    completion(Timeline(entries: [entry], policy: .after(tomorrow.addingTimeInterval(5))))
+    let theme = ThemeStore.load()
+    // T276: a second entry AT midnight, so the date rolls over even if the reload is late.
+    let entries = [GlazeEntry(date: now, theme: theme), GlazeEntry(date: tomorrow, theme: theme)]
+    completion(Timeline(entries: entries, policy: .after(tomorrow.addingTimeInterval(5))))
   }
 }
 
-/// One entry per hour for the next 24 hours (the Quote widget rotates hourly).
+// T283: the Little Line now changes once a day (DayProvider); HourProvider stays for the Moon widget.
+/// One entry per hour for the next 24 hours (the Moon widget, owner-1102b T277).
 struct HourProvider: TimelineProvider {
   func placeholder(in context: Context) -> GlazeEntry {
     GlazeEntry(date: Date(), theme: ThemeStore.load())
@@ -74,7 +78,9 @@ struct HourProvider: TimelineProvider {
   }
 }
 
-/// Static content (the Photo widget): only changes when the app reloads timelines.
+
+/// Static content: only changes when the app reloads timelines. (T282: the Photo widget moved to
+/// DayProvider so its date caption rolls over at midnight.)
 struct StaticProvider: TimelineProvider {
   func placeholder(in context: Context) -> GlazeEntry {
     GlazeEntry(date: Date(), theme: ThemeStore.load())

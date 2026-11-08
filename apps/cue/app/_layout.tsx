@@ -92,6 +92,7 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
         <Stack.Screen name="prompt/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom' }} />
         <Stack.Screen name="record/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom' }} />
         <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
+        <Stack.Screen name="access-code" options={{ ...header, title: t('access.title') }} />
         <Stack.Screen name="plus" options={{ ...header, presentation: 'modal', title: '' }} />
       </Stack>
       {!introDone && !skipIntro ? <LaunchIntro onDone={() => setIntroDone(true)} /> : null}

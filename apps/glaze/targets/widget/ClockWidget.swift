@@ -5,9 +5,13 @@ import WidgetKit
 
 struct ClockWidgetView: View {
   @Environment(\.widgetFamily) private var family
+  /// T279: false where iOS removes the removable background (StandBy), showing the widget on
+  /// black: the numerals go white and larger there.
+  @Environment(\.showsWidgetContainerBackground) private var showsBackground
   let entry: GlazeEntry
 
   private var timeSize: CGFloat {
+    if !showsBackground && family == .systemSmall { return 56 }
     switch family {
     case .systemLarge: return 84
     case .systemMedium: return 54
@@ -17,6 +21,7 @@ struct ClockWidgetView: View {
 
   var body: some View {
     let t = entry.theme
+    let ink = showsBackground ? t.inkColor : Color.white
     VStack(alignment: .leading, spacing: 4) {
       Capsule()
         .fill(t.accentColor)
@@ -25,12 +30,13 @@ struct ClockWidgetView: View {
       // Each timeline entry is on a minute boundary, so a static time string stays correct.
       Text(entry.date, format: .dateTime.hour().minute())
         .font(t.typeface(size: timeSize, weight: .bold))
-        .foregroundStyle(t.inkColor)
+        .foregroundStyle(ink)
+        .monospacedDigit()
         .minimumScaleFactor(0.5)
         .lineLimit(1)
       Text(entry.date, format: .dateTime.weekday(.wide))
         .font(t.typeface(size: family == .systemLarge ? 20 : 14, weight: .medium))
-        .foregroundStyle(t.inkColor.opacity(0.75))
+        .foregroundStyle(ink.opacity(0.75))
       if family == .systemLarge {
         Text(entry.date, format: .dateTime.day().month(.wide))
           .font(t.typeface(size: 16, weight: .semibold))
@@ -53,5 +59,6 @@ struct ClockWidget: Widget {
     .description("The time, in your Glaze theme.")
     .contentMarginsDisabled()
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    .legacyGlazeGallery()
   }
 }

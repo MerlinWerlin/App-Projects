@@ -7,13 +7,14 @@
 // T210 (owner-1101d screens): Help has a Clean up old icons row; the How icons work sheet says
 // Install all at once is the main way (T202) and shows the removal steps as a numbered sequence.
 import Constants from 'expo-constants';
-import { router } from 'expo-router';
-import { useState, type ReactNode } from 'react';
+import { router, useFocusEffect } from 'expo-router';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { StyleSheet, Text, View, type TextStyle } from 'react-native';
 import type { IconShape } from '../../src/core/iconspec';
 import { PROBE_APPS } from '../../src/core/installedProbe';
 import { GLYPH_SIZES, setStyle, type StudioState } from '../../src/core/studio';
 import type { ReduceMotion } from '../../src/core/settings';
+import { rebuildWidgetArt, widgetArtRecoveryDiagnostics } from '../../src/store/widgetArtRecovery';
 import { PlusLockSheet } from '../../src/plus/PlusLockSheet';
 import { RestorePurchases } from '../../src/plus/RestorePurchases';
 import { TipJar } from '../../src/plus/TipJar';
@@ -30,10 +31,13 @@ import { Sheet } from '../../src/ui/Sheet';
 import { ContextTip } from '../../src/ui/ContextTip';
 import { useToast } from '../../src/ui/Toast';
 import type { UpdateCheckOutcome } from '../../src/core/updates';
+import { formatDeferredDiagnostics, type StartupStepKey } from '../../src/core/startupDiagnostics';
+import { deferredIdle, deferredTimings } from '../../src/store/deferredWork';
 import { useT, type MessageKey, type Script } from '../../src/i18n';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { BarIconButton, InsetGroup, InsetRow, LargeTitleScrollView, Skeleton, SwitchInsetRow } from '../../src/ui/v2';
 import { checkForUpdate, reloadApp } from '../../src/native/updates';
+import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 const PLUS_NAME = 'Glaze Plus'; // i18n-ignore (product name)
 
@@ -56,6 +60,15 @@ const UPDATE_MESSAGE = {
   error: 'settings.updates.error',
 } as const satisfies Record<UpdateCheckOutcome, MessageKey>;
 
+// T257: plain-words names of the deferred launch steps (src/core/deferredWork.ts DEFERRED_STEPS).
+const STARTUP_STEP = {
+  packRestore: 'settings.about.startupSteps.packRestore',
+  widgetTheme: 'settings.about.startupSteps.widgetTheme',
+  themeArt: 'settings.about.startupSteps.themeArt',
+  installedProbe: 'settings.about.startupSteps.installedProbe',
+  packUpdates: 'settings.about.startupSteps.packUpdates',
+} as const satisfies Record<StartupStepKey, MessageKey>;
+
 // Same steps as removeGuide() in src/core/mobileconfig.ts, translated.
 const REMOVE_STEPS = [
   'settings.explainer.step1',
@@ -75,7 +88,7 @@ function nearestSize(scale: number): SizeKey {
   return best.key;
 }
 
-export default function SettingsScreen() {
+function SettingsScreen() {
   const { c } = useColorsV2();
   const toast = useToast();
   const { state, update } = useStudio();
@@ -285,6 +298,8 @@ export default function SettingsScreen() {
           accessibilityLabel={t('settings.about.version', { version })}
         />
         <UpdateRow />
+        <StartupRow />
+        <WidgetDiagnosticsRow />
       </InsetGroup>
 
       <PlusLockSheet visible={plusOpen} onClose={() => setPlusOpen(false)} />
@@ -354,6 +369,88 @@ function UpdateRow() {
   );
 }
 
+// T257: one plain line about the last launch's background work (T250 deferred queue timings, kept on
+// the phone). Read on mount and again once the queue is idle; never throws.
+function StartupRow() {
+  const { t, formatNumber } = useT();
+  const read = (): readonly unknown[] => {
+    try {
+      return deferredTimings();
+    } catch {
+      return [];
+    }
+  };
+  const [timings, setTimings] = useState<readonly unknown[]>(read);
+  useEffect(() => {
+    let alive = true;
+    deferredIdle()
+      .then(() => {
+        if (alive) setTimings(read());
+      })
+      .catch(() => undefined);
+    return () => {
+      alive = false;
+    };
+  }, []);
+  const line = formatDeferredDiagnostics(timings, {
+    line: (v) => t('settings.about.startupLine', v),
+    failed: ({ count }) => t('settings.about.startupFailed', { n: formatNumber(count) }),
+    empty: t('settings.about.startupEmpty'),
+    duration: (d) =>
+      d.unit === 'ms'
+        ? t('settings.about.startupMs', { value: formatNumber(d.value) })
+        : t('settings.about.startupSeconds', { value: formatNumber(d.value, { maximumFractionDigits: 1 }) }),
+    step: (key, raw) => (key ? t(STARTUP_STEP[key]) : raw),
+  });
+  const title = t('settings.about.startupRow');
+  return <InsetRow icon="activity" iconTone="sky" title={title} subtitle={line} accessibilityLabel={[title, line].join(', ')} />;
+}
+
+function WidgetDiagnosticsRow() {
+  const { t } = useT();
+  const toast = useToast();
+  const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState<Awaited<ReturnType<typeof widgetArtRecoveryDiagnostics>> | null>(null);
+  useFocusEffect(useCallback(() => {
+    let focused = true;
+    let pending = false;
+    const refresh = async () => {
+      if (pending) return;
+      pending = true;
+      try {
+        const current = await widgetArtRecoveryDiagnostics();
+        if (focused) setStatus(current);
+      } finally {
+        pending = false;
+      }
+    };
+    const read = () => { void refresh().catch(() => undefined); };
+    read();
+    const timer = setInterval(read, 2_000);
+    return () => { focused = false; clearInterval(timer); };
+  }, []));
+  const empty = '—';
+  const art = status;
+  const line = [
+    t('settings.about.widgetThemes', { active: status?.active ?? empty, shared: status?.shared ?? empty, read: status?.read ?? empty }),
+    t('settings.about.widgetArtCounts', {
+      theme: status?.artTheme ?? empty, planned: art?.composed ?? empty, composed: art?.composed ?? empty,
+      failed: art?.lastError ? 1 : 0, missing: empty,
+    }),
+    t('settings.about.widgetArtError', { error: art?.lastError?.slice(0, 160) ?? empty }),
+  ].join('\n');
+  const title = t('settings.about.widgetDiagnostics');
+  return <View>
+    <InsetRow icon="activity" iconTone="sky" title={title} subtitle={line} accessibilityLabel={[title, line].join(', ')} />
+    <InsetRow title={t('settings.about.rebuildWidgetArt')} icon="refresh-cw" disabled={busy} onPress={() => {
+      setBusy(true);
+      void rebuildWidgetArt().then(ok => {
+        toast.show(t(ok ? 'settings.about.artRebuilt' : 'settings.about.artRebuildFailed'), ok ? 'success' : 'warning');
+      }).finally(() => setBusy(false));
+    }} />
+  </View>;
+}
+
 function Para({ title, children }: { title: string; children?: ReactNode }) {
   const { c } = useColorsV2();
   const { script } = useT();
@@ -380,3 +477,6 @@ const styles = StyleSheet.create({
   stepDot: { width: sizeV2.rowIcon, height: sizeV2.rowIcon, borderRadius: circleRadius(sizeV2.rowIcon), alignItems: 'center', justifyContent: 'center' },
   stepDigit: { fontWeight: '700' },
 });
+
+// T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.
+export default withScreenBoundary(SettingsScreen, 'settings');

@@ -26,9 +26,12 @@ powershell -NoProfile -Command "npx --yes expo install expo@latest 2>&1 | Tee-Ob
 
 echo.
 echo [3/4] Aligning package versions with that SDK...
+powershell -NoProfile -Command "npx --yes expo install expo-blur expo-linear-gradient 2>&1 | Tee-Object -FilePath '%LOG%' -Append"
 powershell -NoProfile -Command "npx --yes expo install --fix 2>&1 | Tee-Object -FilePath '%LOG%' -Append"
 
 echo.
+powershell -NoProfile -Command "npx tsc --noEmit 2>&1 | Tee-Object -FilePath '%LOG%' -Append; Write-Output 'tsc exit code' $LASTEXITCODE | Tee-Object -FilePath '%LOG%' -Append"
+
 echo [4/4] Starting Couch for Expo Go. Scan the QR code with your iPhone camera.
 echo If anything is red, paste trial-log.txt (and a photo of this window) into a comment on the Couch build page.
 echo Starting expo (output stays on screen so the QR code and key menu work) >> "%LOG%"

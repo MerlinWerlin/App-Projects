@@ -1,0 +1,422 @@
+[
+  {
+    "id": "cottage",
+    "sourceSha256": "bbc20f4bd2953f336f1ec8683b1736a7bf70732183e5366fdc520557ede3bb82",
+    "fillableRegions": 1757,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.3048
+  },
+  {
+    "id": "cafe",
+    "sourceSha256": "4cf0f2c5f6b66c43278fe0f6f5e0802882bf80e8d3a3fc50b57d787e617e2d3c",
+    "fillableRegions": 1820,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2687
+  },
+  {
+    "id": "bookshop",
+    "sourceSha256": "d7a785044af31e0a84911d3de77ecd1e6a05867cd05de8d6610d611dc5de2a6a",
+    "fillableRegions": 2366,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.3194
+  },
+  {
+    "id": "conservatory",
+    "sourceSha256": "2d8eb1709fb2856d4142cf81065588d70ed779c8ee4d00369aabfa7870332645",
+    "fillableRegions": 2242,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.3346
+  },
+  {
+    "id": "canal",
+    "sourceSha256": "61a9897fd8a9512231636ca8cf050af367a3b475857436eb3dc94be2d59d4077",
+    "fillableRegions": 1743,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2888
+  },
+  {
+    "id": "lighthouse",
+    "sourceSha256": "a2473f4f8fa1f02ff93c7f24de97d877e97ebd30718e50bd97ced20507a09fe0",
+    "fillableRegions": 1751,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2754
+  },
+  {
+    "id": "teagarden",
+    "sourceSha256": "9892ac7d1d41b6cc29f7a98a11ac8d66615f9aa4744ea98214f7d443934eef74",
+    "fillableRegions": 1430,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2768
+  },
+  {
+    "id": "botanical",
+    "sourceSha256": "bc573c08b814df55e43130b765e5bd02e6272ab958f25d20ad45fd2f3e9bc9b9",
+    "fillableRegions": 328,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1083
+  },
+  {
+    "id": "magnolia",
+    "sourceSha256": "a16fcd0f4486cf556b45050e639506d29f64dca0d055bf8f82b74a334bbc46d0",
+    "fillableRegions": 278,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1001
+  },
+  {
+    "id": "rose",
+    "sourceSha256": "3f2ff67911554658c2972abfe138bedd19bda6a7967f791443ff1c23e55849b6",
+    "fillableRegions": 297,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1112
+  },
+  {
+    "id": "hydrangea",
+    "sourceSha256": "d9924cf3fb54d47a7771cffcb185bd4873fffefb2c7fcd9f64e9054d40a34909",
+    "fillableRegions": 450,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1493
+  },
+  {
+    "id": "iris",
+    "sourceSha256": "728edd0fbe70b7c3240d627c8ef82f4473a75423041784fd56fcdec585b89f17",
+    "fillableRegions": 403,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1349
+  },
+  {
+    "id": "orchid",
+    "sourceSha256": "16dcb5c6c97582cf2eaddc2a3bb74fd94dfc9cd2151383107e01f9166c440119",
+    "fillableRegions": 209,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0858
+  },
+  {
+    "id": "peony",
+    "sourceSha256": "e3d0bf9c05719ba24e1c3355a9d8cf5e266cfa5c2ccdbbe3d0eabe39d079e2a8",
+    "fillableRegions": 530,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1377
+  },
+  {
+    "id": "owl",
+    "sourceSha256": "a4a43fd79b7c0cfcea55a1dc0c3cb28d9daf97602d69cbec004cfca04ea1165e",
+    "fillableRegions": 888,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2175
+  },
+  {
+    "id": "fox",
+    "sourceSha256": "d0609a725215d08769e1f4a7137a428a60d3a1c181a1d319e7fdafe9fdcb8e70",
+    "fillableRegions": 1046,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2217
+  },
+  {
+    "id": "hare",
+    "sourceSha256": "54fa8039d43b9020406a08a7a3ac4fe0604e8a24cf79c90e807b8211082a4947",
+    "fillableRegions": 1007,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2079
+  },
+  {
+    "id": "kingfisher",
+    "sourceSha256": "cb2633457a9fef0bdcf2acc60f9761200b144582542ba95181624929aad8e0c2",
+    "fillableRegions": 825,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1839
+  },
+  {
+    "id": "hummingbird",
+    "sourceSha256": "52dab895abbb1851f04da5f51b2a5e24dc8809b600e751ff045cf057ed607ed3",
+    "fillableRegions": 544,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1493
+  },
+  {
+    "id": "deer",
+    "sourceSha256": "ed65a295b4c5a99d3d2e8e9f5a6e9d700a23b33d43f0aad120793df221bc9e32",
+    "fillableRegions": 1073,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2444
+  },
+  {
+    "id": "redpanda",
+    "sourceSha256": "b3a05a616b01bd22ae8c97406698c05694c7d2b62f0255d5888c807a386175d2",
+    "fillableRegions": 589,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.23
+  },
+  {
+    "id": "reef",
+    "sourceSha256": "a031b32e47b1a5fe86cbdf123b24e8f0e1765aeb7e3b1a343dbfed5c80267b52",
+    "fillableRegions": 1675,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2191
+  },
+  {
+    "id": "seahorse",
+    "sourceSha256": "e754a43494c70e0c051fb5bcf6a37b2923df77c18dc1424400ca8f5157303008",
+    "fillableRegions": 410,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1404
+  },
+  {
+    "id": "octopus",
+    "sourceSha256": "89e264e12fae902c2387d0229b7788440ef8b3241fc368cfbd3ff884a4a2a130",
+    "fillableRegions": 682,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.202
+  },
+  {
+    "id": "jellyfish",
+    "sourceSha256": "6b696d7604bf1f21234a39521688e871061349bdd6cd46b1a1dfc753cb4f7b19",
+    "fillableRegions": 683,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1725
+  },
+  {
+    "id": "fish",
+    "sourceSha256": "f5a738d779e3530cc7ea4bf3248086937a39ae2e168c288757aea6c8c8af71ca",
+    "fillableRegions": 490,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1802
+  },
+  {
+    "id": "seashells",
+    "sourceSha256": "7b6821989293d2714cc356abfa125063943993eec48c7c8818575bcdeacf8022",
+    "fillableRegions": 670,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.152
+  },
+  {
+    "id": "dolphins",
+    "sourceSha256": "ae2da9363801920ff3adb45183de7a1e13728062fc1ba35daf9dbab6f3ad237a",
+    "fillableRegions": 489,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1735
+  },
+  {
+    "id": "orn-rose",
+    "sourceSha256": "3b5b57e7517eccd432c464637ff2832344f18c49d0002b68f53d4ac491c85efc",
+    "fillableRegions": 369,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.173
+  },
+  {
+    "id": "orn-lotus",
+    "sourceSha256": "527acabaa61046e8e9ee4823bc7628db4c9744729775b1399ed755c848e1fa5f",
+    "fillableRegions": 705,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2713
+  },
+  {
+    "id": "orn-peacock",
+    "sourceSha256": "6751f96fdbaa90f326b5fb1abef68006d29d7c11fde5c742042bbf61654c700f",
+    "fillableRegions": 802,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2344
+  },
+  {
+    "id": "orn-strawberry",
+    "sourceSha256": "3314a93409b7dadfdea69e0a8d736ad4b56d5cb2ef70160de4db81b8bc3595ba",
+    "fillableRegions": 450,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2017
+  },
+  {
+    "id": "orn-willow",
+    "sourceSha256": "6e2ac8fbdb73db7114ce9f7bdb9ffe5864073d268123e1b6ea46da76a70f5fca",
+    "fillableRegions": 922,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1962
+  },
+  {
+    "id": "orn-dahlia",
+    "sourceSha256": "6b68aa6fd76ebc1597c033fbaf0f9cad54a510b386ea86f40816306298babd99",
+    "fillableRegions": 355,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.1713
+  },
+  {
+    "id": "orn-paisley",
+    "sourceSha256": "d10ff77fc874ea655ef30f0b83de6b26b0f593184192d8a2af7c2ce3f17f3ec5",
+    "fillableRegions": 931,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.2694
+  },
+  {
+    "id": "begin-daisy",
+    "sourceSha256": "9b31fb1526d96becb7964ca24363de3ac3a5ef8ecbe466184510f548ce13084a",
+    "fillableRegions": 51,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0886
+  },
+  {
+    "id": "begin-tulip",
+    "sourceSha256": "fc766a1f32f31e0bb69884506002ecfccb1483623f5d16f66487fd5d5231a898",
+    "fillableRegions": 26,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0848
+  },
+  {
+    "id": "begin-poppy",
+    "sourceSha256": "7ea3b279133a3526a7136537b8605d770d43cfe7306404870758649ee31919b6",
+    "fillableRegions": 83,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0976
+  },
+  {
+    "id": "begin-lily",
+    "sourceSha256": "684a3e5ba173aebb81cd7b24d2a84ead97c56d914f9a922fc4cbe7f52fe5e112",
+    "fillableRegions": 71,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0938
+  },
+  {
+    "id": "begin-sunflower",
+    "sourceSha256": "dbc35c5af4f25b427adad55b6cccb4c64ae72f2246924aecfaffb6c58d70e2fd",
+    "fillableRegions": 40,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0975
+  },
+  {
+    "id": "begin-hibiscus",
+    "sourceSha256": "ec619b7a54a5bd6edee149466e27bd5d65811a529946c1811d0f521f196d79ca",
+    "fillableRegions": 25,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0919
+  },
+  {
+    "id": "begin-cosmos",
+    "sourceSha256": "f85fd02261432fab7fbe12688fec62bd9ff8ea2ae75362488bbcd0bd60400ca0",
+    "fillableRegions": 41,
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "inkCoverage": 0.0958
+  }
+]

@@ -38,7 +38,7 @@ describe('widget snapshot', () => {
     const s = buildWidgetSnapshot(base({ plus: false }));
     expect(s.plus).toBe(false);
     expect(s.buttons).toEqual([]);
-    expect(s.message).toBe('Widgets come with Couch Plus. Every button in the app stays free.');
+    expect(s.message).toBe('Widget buttons come with Couch Plus.');
     expect(s.tv?.name).toBe('Living room');
     expect(s.openLabel).toBe('Open Couch');
   });

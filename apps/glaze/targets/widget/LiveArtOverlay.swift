@@ -11,7 +11,7 @@
 //
 // What is drawn (never a made-up number):
 //   clock     live hands + the time (Text(date, style: .time)); the timeline has an entry per minute
-//   date      today's weekday, day and month (current locale); reloads after midnight
+//   date      today's weekday, day and month (current locale); a timeline entry at midnight
 //   countdown whole days to the stored target day; without a target the piece is never live
 //   battery   UIDevice batteryLevel with monitoring on, refreshed every 15 min; unknown (-1) = a dash
 //   focus     Button(intent: ToggleFocusIntent()): "25:00 · Start", Text(timerInterval:) while running
@@ -34,10 +34,14 @@ struct LiveArtSpec {
   let rect: CGRect
   let circle: Bool
   let cover: Bool
+  let cleanFace: Bool
+  let clockStyle: String
+  let compact: Bool
   let plate: String
   let ink: String
   /// Countdown target (start of that day, current calendar).
   let target: Date?
+  var design: DesignedWidgetSpec? = nil
 
   /// Tolerant parse of a record's `live` value (same rules as parseLiveArtSpec in TS).
   static func parse(_ raw: Any?) -> LiveArtSpec? {
@@ -49,6 +53,7 @@ struct LiveArtSpec {
     else { return nil }
     let v = list.map { $0.doubleValue }
     guard v.allSatisfy({ $0.isFinite && $0 >= 0 && $0 <= 1 }), v[2] > 0, v[3] > 0 else { return nil }
+    guard v[0] + v[2] <= 1.0001, v[1] + v[3] <= 1.0001 else { return nil }
     var target: Date? = nil
     if kind == .countdown {
       guard let day = r["target"] as? String, let d = LiveArtSpec.day(day) else { return nil }
@@ -56,30 +61,29 @@ struct LiveArtSpec {
     }
     let plate = (r["plate"] as? String).flatMap { Color.isHex($0) ? $0 : nil } ?? "#000000"
     let ink = (r["ink"] as? String).flatMap { Color.isHex($0) ? $0 : nil } ?? "#FFFFFF"
+    let clockStyle = r["clockStyle"] as? String ?? "legacy"
+    let design = DesignedWidgetSpec.parse(r["design"])
+    if r["design"] != nil {
+      guard let design = design, (design.kind == "calendar" ? "date" : design.kind) == kindRaw else { return nil }
+    }
     return LiveArtSpec(
       kind: kind,
       rect: CGRect(x: v[0], y: v[1], width: v[2], height: v[3]),
       circle: (r["shape"] as? String) == "circle",
       cover: (r["cover"] as? Bool) == true,
+      cleanFace: (r["cleanFace"] as? Bool) == true && (r["cover"] as? Bool) != true,
+      clockStyle: ["analog", "digital", "stacked"].contains(clockStyle) ? clockStyle : "legacy",
+      compact: (r["valueStyle"] as? String) == "compact" && [.date,.focus,.battery].contains(kind),
       plate: plate,
       ink: ink,
-      target: target
+      target: target,
+      design: design
     )
   }
 
-  /// "YYYY-MM-DD" → the start of that day in the current calendar, or nil.
-  static func day(_ s: String) -> Date? {
-    let parts = s.split(separator: "-").compactMap { Int($0) }
-    guard parts.count == 3 else { return nil }
-    var c = DateComponents()
-    c.year = parts[0]
-    c.month = parts[1]
-    c.day = parts[2]
-    guard let d = Calendar.current.date(from: c) else { return nil }
-    let back = Calendar.current.dateComponents([.year, .month, .day], from: d)
-    guard back.year == parts[0], back.month == parts[1], back.day == parts[2] else { return nil }
-    return Calendar.current.startOfDay(for: d)
-  }
+  /// Gregorian civil day in the widget's current time zone.
+  static func day(_ s: String) -> Date? { WidgetDay.parse(s) }
+
 }
 
 enum LiveArtStore {
@@ -101,6 +105,8 @@ enum LiveArtStore {
       return LiveArtSpec.parse(record["live"])
     }
     guard let name = SeamlessStore.familyName(family) else { return nil }
+    // T259: the plain background (no image) has no live value.
+    if WidgetArtStore.unpinnedShowsBackground(family) { return nil }
     let file = container.appendingPathComponent("seamless-\(name).png")
     guard
       let attrs = try? FileManager.default.attributesOfItem(atPath: file.path),
@@ -118,9 +124,20 @@ enum LiveArtStore {
 /// Timeline entry dates and reload policy for a Seamless widget, from what it shows live.
 enum LiveArtSchedule {
   static func plan(pieceID: String?, family: WidgetFamily, from now: Date) -> (dates: [Date], policy: TimelineReloadPolicy) {
-    guard let spec = LiveArtStore.spec(pieceID: pieceID, family: family) else { return ([now], .never) }
-    let cal = Calendar.current
-    switch spec.kind {
+    plan(spec:LiveArtStore.spec(pieceID:pieceID,family:family),from:now)
+  }
+
+  static func nextMidnight(from now:Date,calendar:Calendar) -> Date {
+    calendar.date(byAdding:.day,value:1,to:calendar.startOfDay(for:now)) ?? now.addingTimeInterval(3600)
+  }
+
+  static func plan(spec:LiveArtSpec?,from now:Date,calendar cal:Calendar = .current) -> (dates:[Date],policy:TimelineReloadPolicy) {
+    plan(kind: spec?.kind, from: now, calendar: cal)
+  }
+
+  static func plan(kind: LiveArtSpec.Kind?, from now: Date, calendar cal: Calendar = .current) -> (dates: [Date], policy: TimelineReloadPolicy) {
+    guard let kind = kind else { return ([now], .never) }
+    switch kind {
     case .clock:
       // One entry per minute for the next hour, then a new timeline.
       let minuteStart = cal.dateInterval(of: .minute, for: now)?.start ?? now
@@ -130,8 +147,8 @@ enum LiveArtSchedule {
       }
       return (dates, .atEnd)
     case .date, .countdown:
-      let tomorrow = cal.date(byAdding: .day, value: 1, to: cal.startOfDay(for: now)) ?? now.addingTimeInterval(3600)
-      return ([now], .after(tomorrow))
+      let tomorrow = nextMidnight(from:now,calendar:cal)
+      return ([now, tomorrow], .atEnd)
     case .battery:
       return ([now], .after(now.addingTimeInterval(15 * 60)))
     case .focus:
@@ -151,8 +168,40 @@ enum LiveBattery {
   static func percent() -> Int? {
     UIDevice.current.isBatteryMonitoringEnabled = true
     let level = UIDevice.current.batteryLevel
-    guard level >= 0, level <= 1 else { return nil }
+    return percent(level: level)
+  }
+
+  static func percent(level: Float) -> Int? {
+    guard level.isFinite, level >= 0, level <= 1 else { return nil }
     return Int((Double(level) * 100).rounded())
+  }
+}
+
+/// Explicit preview readings never write to the shared store. Widget entry points use `.device`.
+enum LiveArtReadings {
+  case device
+  case snapshot(focus: GlazeFocusPhase, battery: Int?)
+
+  func focus(at date: Date) -> GlazeFocusPhase {
+    switch self { case .device: return FocusStore.phase(at: date); case .snapshot(let phase, _): return phase }
+  }
+  var battery: Int? {
+    switch self {
+    case .device: return LiveBattery.percent()
+    case .snapshot(_, let value): return value.flatMap { (0...100).contains($0) ? $0 : nil }
+    }
+  }
+}
+
+/// Respect SwiftUI's locale, calendar and time zone, including previews and widget overrides.
+enum LiveDateText {
+  static func format(_ date: Date, template: String, locale: Locale, calendar: Calendar, timeZone: TimeZone) -> String {
+    let formatter = DateFormatter()
+    formatter.locale = locale
+    formatter.calendar = calendar
+    formatter.timeZone = timeZone
+    formatter.setLocalizedDateFormatFromTemplate(template)
+    return formatter.string(from: date)
   }
 }
 
@@ -164,22 +213,12 @@ struct LiveArtLayer: View {
   let imageSize: CGSize
   let theme: WidgetTheme
   let date: Date
+  /// Fit uses the composed image, inset by the same fraction as its background view.
+  var insetFraction: CGFloat = 0
 
   var body: some View {
     if let spec = LiveArtStore.spec(pieceID: pieceID, family: family) {
-      GeometryReader { geo in
-        let frame = LiveArtLayer.fitted(imageSize, in: geo.size)
-        let r = CGRect(
-          x: frame.minX + spec.rect.minX * frame.width,
-          y: frame.minY + spec.rect.minY * frame.height,
-          width: spec.rect.width * frame.width,
-          height: spec.rect.height * frame.height
-        )
-        let side = min(r.width, r.height)
-        LiveArtValueView(spec: spec, theme: theme, date: date)
-          .frame(width: spec.circle ? side : r.width, height: spec.circle ? side : r.height)
-          .position(x: r.midX, y: r.midY)
-      }
+      LiveArtPlacedValue(spec: spec, imageSize: imageSize, theme: theme, date: date, insetFraction: insetFraction)
     }
   }
 
@@ -195,30 +234,75 @@ struct LiveArtLayer: View {
   }
 }
 
+/// Source-art rectangles use physical image coordinates. RTL changes text order, never their position.
+/// Shared with the native capture host so its placement is the production placement.
+@available(iOS 17.0, *)
+struct LiveArtPlacedValue: View {
+  @Environment(\.layoutDirection) private var textDirection
+  let spec: LiveArtSpec
+  let imageSize: CGSize
+  let theme: WidgetTheme
+  let date: Date
+  var insetFraction: CGFloat = 0
+  var readings: LiveArtReadings = .device
+
+  var body: some View {
+    GeometryReader { geo in
+        let inset = min(geo.size.width, geo.size.height) * insetFraction
+        let box = CGSize(width: max(0, geo.size.width - 2 * inset), height: max(0, geo.size.height - 2 * inset))
+        let frame = LiveArtLayer.fitted(imageSize, in: box).offsetBy(dx: inset, dy: inset)
+        let r = CGRect(
+          x: frame.minX + spec.rect.minX * frame.width,
+          y: frame.minY + spec.rect.minY * frame.height,
+          width: spec.rect.width * frame.width,
+          height: spec.rect.height * frame.height
+        )
+        let side = min(r.width, r.height)
+        LiveArtValueView(spec: spec, theme: theme, date: date, readings: readings)
+          .environment(\.layoutDirection, textDirection)
+          .frame(width: spec.circle ? side : r.width, height: spec.circle ? side : r.height)
+          .position(x: r.midX, y: r.midY)
+      }
+      .environment(\.layoutDirection, .leftToRight)
+  }
+}
+
 @available(iOS 17.0, *)
 struct LiveArtValueView: View {
+  @Environment(\.locale) private var locale
+  @Environment(\.calendar) private var calendar
+  @Environment(\.timeZone) private var timeZone
   let spec: LiveArtSpec
   let theme: WidgetTheme
   let date: Date
+  var readings: LiveArtReadings = .device
 
+  private func formattedDate(_ template: String) -> String {
+    LiveDateText.format(date, template: template, locale: locale, calendar: calendar, timeZone: timeZone)
+  }
   private var ink: Color { Color(hex: spec.ink) }
+  private var valueShadow: Color {
+    guard spec.kind == .clock || spec.compact, let rgb = UInt32(spec.ink.dropFirst(), radix:16) else { return Color.black.opacity(0.25) }
+    let lightness = (0.2126 * Double((rgb>>16)&255) + 0.7152 * Double((rgb>>8)&255) + 0.0722 * Double(rgb&255)) / 255
+    return (lightness < 0.5 ? Color.white : Color.black).opacity(0.65)
+  }
 
   var body: some View {
     GeometryReader { geo in
       let s = min(geo.size.width, geo.size.height)
       ZStack {
-        plate
+        if !spec.cleanFace { plate }
         content(s: s)
           .foregroundStyle(ink)
-          .shadow(color: Color.black.opacity(0.25), radius: 2, y: 1)
+          .shadow(color: valueShadow, radius: spec.kind == .clock || spec.compact ? 1.2 : 2, y: spec.kind == .clock || spec.compact ? 0 : 1)
       }
       .frame(width: geo.size.width, height: geo.size.height)
     }
   }
 
-  /// Nearly opaque over a painted value (it must vanish), lighter as a badge on number-free art.
+  /// Opaque over a painted value; translucent only on a verified number-free face.
   @ViewBuilder private var plate: some View {
-    let fill = Color(hex: spec.plate).opacity(spec.cover ? 0.94 : 0.72)
+    let fill = Color(hex: spec.plate).opacity(spec.cover ? 1 : 0.72)
     if spec.circle {
       Circle()
         .fill(fill)
@@ -235,29 +319,82 @@ struct LiveArtValueView: View {
   @ViewBuilder private func content(s: CGFloat) -> some View {
     switch spec.kind {
     case .clock:
+      clock(s: s)
+    case .date:
+      if spec.compact {
+        Text(verbatim: formattedDate("EEE d MMM"))
+          .font(theme.typeface(size: max(10,s * 0.6),weight:.medium))
+          .lineLimit(1).minimumScaleFactor(0.4)
+      } else { dateContent(s: s) }
+    case .countdown:
+      countdownContent(s: s)
+    case .battery:
+      if spec.compact {
+        HStack(spacing:s * 0.12) {
+          if let pct=readings.battery {
+            Image(systemName:pct<=10 ? "battery.0" : pct<=35 ? "battery.25" : pct<=60 ? "battery.50" : pct<=85 ? "battery.75" : "battery.100")
+            Text(verbatim:"\(pct)%").monospacedDigit()
+          } else {
+            Image(systemName:"battery.0")
+            Text(verbatim:"–").accessibilityLabel("Battery unavailable")
+          }
+        }
+        .font(theme.typeface(size:max(10,s * 0.6),weight:.semibold))
+        .lineLimit(1).minimumScaleFactor(0.4)
+      } else { batteryContent(s: s) }
+    case .focus:
+      LiveFocusButton(date: date, theme: theme, s: s, compact: spec.compact, phase: readings.focus(at: date))
+    }
+  }
+
+  /// Value-only rendering: the art provides the dial/material, never a flat replacement face.
+  @ViewBuilder private func clock(s: CGFloat) -> some View {
+    switch spec.clockStyle {
+    case "analog":
+      LiveClockHands(date: date, ink: ink)
+        .accessibilityLabel(date.formatted(date: .omitted, time: .shortened))
+    case "digital":
+      Text(date, style: .time)
+        .font(theme.typeface(size: max(12, s * 0.64), weight: .medium))
+        .monospacedDigit().lineLimit(1).minimumScaleFactor(0.3)
+    case "stacked":
+      VStack(spacing: 0) {
+        Text(verbatim: String(format: "%02d", Calendar.current.component(.hour, from: date)))
+        Text(verbatim: String(format: "%02d", Calendar.current.component(.minute, from: date)))
+      }
+      .font(theme.typeface(size: max(14, s * 0.78), weight: .light))
+      .monospacedDigit().lineLimit(1).minimumScaleFactor(0.4)
+      .accessibilityElement(children: .ignore)
+      .accessibilityLabel(date.formatted(date: .omitted, time: .shortened))
+    default:
       ZStack {
         LiveClockHands(date: date, ink: ink)
-          .frame(width: s * 0.86, height: s * 0.86)
+          .frame(width: s * 0.70, height: s * 0.70)
         Text(date, style: .time)
           .font(theme.typeface(size: max(9, s * 0.1), weight: .semibold))
           .monospacedDigit()
           .lineLimit(1)
           .minimumScaleFactor(0.5)
-          .offset(y: s * 0.27)
+          .offset(y: s * 0.39)
       }
-    case .date:
+    }
+  }
+
+  private func dateContent(s: CGFloat) -> some View {
       VStack(spacing: s * 0.02) {
-        Text(verbatim: date.formatted(.dateTime.weekday(.abbreviated)).uppercased())
+        Text(verbatim: formattedDate("EEE").uppercased(with: locale))
           .font(theme.typeface(size: max(9, s * 0.13), weight: .semibold))
-        Text(verbatim: date.formatted(.dateTime.day()))
+        Text(verbatim: formattedDate("d"))
           .font(theme.typeface(size: max(18, s * 0.42), weight: .bold))
-        Text(verbatim: date.formatted(.dateTime.month(.abbreviated)).uppercased())
+        Text(verbatim: formattedDate("MMM").uppercased(with: locale))
           .font(theme.typeface(size: max(9, s * 0.13), weight: .semibold))
       }
       .lineLimit(1)
       .minimumScaleFactor(0.4)
       .padding(s * 0.06)
-    case .countdown:
+  }
+
+  @ViewBuilder private func countdownContent(s: CGFloat) -> some View {
       if let target = spec.target {
         let cal = Calendar.current
         let days = max(0, cal.dateComponents([.day], from: cal.startOfDay(for: date), to: target).day ?? 0)
@@ -272,8 +409,10 @@ struct LiveArtValueView: View {
         .minimumScaleFactor(0.4)
         .padding(s * 0.06)
       }
-    case .battery:
-      if let pct = LiveBattery.percent() {
+  }
+
+  @ViewBuilder private func batteryContent(s: CGFloat) -> some View {
+      if let pct = readings.battery {
         Text(verbatim: "\(pct)%")
           .font(theme.typeface(size: max(14, s * 0.3), weight: .bold))
           .monospacedDigit()
@@ -285,9 +424,6 @@ struct LiveArtValueView: View {
         Text(verbatim: "–")
           .font(theme.typeface(size: max(14, s * 0.3), weight: .bold))
       }
-    case .focus:
-      LiveFocusButton(date: date, theme: theme, s: s)
-    }
   }
 }
 
@@ -297,11 +433,38 @@ struct LiveFocusButton: View {
   let date: Date
   let theme: WidgetTheme
   let s: CGFloat
+  var compact: Bool = false
+  var phase: GlazeFocusPhase? = nil
+
+  private var currentPhase: GlazeFocusPhase { phase ?? FocusStore.phase(at: date) }
+  private var actionLabel: LocalizedStringKey {
+    switch currentPhase { case .running: return "Pause"; case .paused: return "Resume"; case .idle: return "Start" }
+  }
 
   var body: some View {
     Button(intent: ToggleFocusIntent()) {
+      if compact {
+        HStack(spacing:s * 0.15) {
+          switch currentPhase {
+          case .running(let end):
+            Image(systemName:"pause.circle.fill")
+            Text(timerInterval:min(date,end)...end,countsDown:true).monospacedDigit()
+          case .paused(let remaining):
+            Image(systemName:"play.circle.fill")
+            Text(verbatim:FocusStore.clock(remaining)).monospacedDigit()
+          case .idle:
+            Image(systemName:"play.circle.fill")
+            Text(verbatim:FocusStore.clock(FocusStore.length)).monospacedDigit()
+          }
+        }
+        .font(theme.typeface(size:max(10,s * 0.65),weight:.semibold))
+        .lineLimit(1).minimumScaleFactor(0.4)
+        .frame(maxWidth:.infinity,maxHeight:.infinity)
+        .contentShape(Rectangle())
+        .accessibilityLabel(actionLabel)
+      } else {
       VStack(spacing: s * 0.03) {
-        switch FocusStore.phase(at: date) {
+        switch currentPhase {
         case .running(let end):
           Text(timerInterval: min(date, end)...end, countsDown: true)
             .font(theme.typeface(size: max(14, s * 0.24), weight: .semibold))
@@ -328,6 +491,7 @@ struct LiveFocusButton: View {
       .padding(s * 0.08)
       .frame(maxWidth: .infinity, maxHeight: .infinity)
       .contentShape(Rectangle())
+      }
     }
     .buttonStyle(.plain)
   }

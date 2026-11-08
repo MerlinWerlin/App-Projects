@@ -4,7 +4,7 @@
 // __DEV__ links simulate a purchase or start / end the trial so the locks can be tried.
 // Guideline 3.1.1 (docs/OWNER_1024.md): the trial is a free "14-day Trial" in-app purchase the person starts here,
 // under a disclosure of its length, what stays free, what locks when it ends and the Plus price (TrialOfferText).
-import { Alert, Pressable, Text, View } from 'react-native';
+import { Alert, Platform, Pressable, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { Stack, useRouter } from 'expo-router';
 import { useThemeV2 } from '../src/theme/useTheme';
@@ -31,6 +31,11 @@ import { startTrialWithAlerts } from '../src/plus/trialFlow';
 import { lastPurchaseError } from '../src/plus/iapStore';
 import { useT } from '../src/i18n';
 import type { MessageKey } from '../src/i18n/en';
+
+// Keep translated purchase copy, but name the actual Android store. The
+// localized dictionaries and all Apple screens retain their original text.
+const storeMessage = (message: string) => Platform.OS === 'android'
+  ? message.replace(/App[\s-]+Store/g, 'Google Play') : message;
 
 // Typed catalogue keys per id, so a missing translation key fails the type check.
 const FREE_KEYS: Record<FreeToolId, MessageKey> = {
@@ -61,13 +66,13 @@ export default function PlusScreen() {
   const { t } = useT();
   const router = useRouter();
   const plus = usePlus();
-  const owned = plus.state.owned;
+  const owned = plus.state.owned || plus.reviewActive;
   const price = plus.price ?? PLUS_PRICE;
   const reason = plus.access.reason;
   const offerTrial = canStartTrial(plus.access);
   const trialLine =
     reason === 'owned'
-      ? t('plus.trial.owned')
+      ? (plus.reviewActive ? t('settings.review.active') : t('plus.trial.owned'))
       : reason === 'trial'
         ? t('plus.trial.left', { count: plus.access.daysLeft })
         : reason === 'none'
@@ -86,7 +91,7 @@ export default function PlusScreen() {
     // Never fail silently (fb-1023): say whether the store answered at all.
     const code = lastPurchaseError();
     // i18n-ignore
-    Alert.alert(t('plus.buyFailedTitle'), (plus.price ? t('plus.buyFailed') : t('plus.storeNotReady')) + (code ? `\n\n(${code})` : ''));
+    Alert.alert(t('plus.buyFailedTitle'), (plus.price ? t('plus.buyFailed') : storeMessage(t('plus.storeNotReady'))) + (code ? `\n\n(${code})` : ''));
   };
 
   const goBack = () => {
@@ -218,7 +223,7 @@ export default function PlusScreen() {
             </View>
           ) : (
             <PillButton
-              title={plus.canBuy ? t('plus.buy', { price }) : t('plus.notInExpoGo')}
+              title={plus.canBuy ? t('plus.buy', { price }) : storeMessage(t('plus.notInExpoGo'))}
               variant={offerTrial ? 'secondary' : 'primary'}
               block
               onPress={() => {
@@ -227,7 +232,7 @@ export default function PlusScreen() {
               disabled={!plus.canBuy || plus.busy || plus.loading}
               haptic="none"
               accessibilityLabel={t('plus.buyLabel')}
-              accessibilityHint={t('plus.buyHint')}
+              accessibilityHint={storeMessage(t('plus.buyHint'))}
             />
           )}
           {/* onRestore plays the selection tick itself. */}

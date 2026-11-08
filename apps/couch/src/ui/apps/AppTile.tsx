@@ -305,9 +305,9 @@ const styles = StyleSheet.create({
   app: { borderRadius: RADIUS },
   clip: { borderRadius: RADIUS, overflow: 'hidden' },
   art: { width: '100%', aspectRatio: ICON_FRAME_ASPECT, overflow: 'hidden' },
-  center: { ...StyleSheet.absoluteFillObject, alignItems: 'center', justifyContent: 'center' },
-  shimmer: { ...StyleSheet.absoluteFillObject, borderRadius: 0 },
-  labelBox: { ...StyleSheet.absoluteFillObject, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 8 },
+  center: { ...StyleSheet.absoluteFill, alignItems: 'center', justifyContent: 'center' },
+  shimmer: { ...StyleSheet.absoluteFill, borderRadius: 0 },
+  labelBox: { ...StyleSheet.absoluteFill, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 8 },
   label: {
     color: '#FFFFFF',
     fontFamily: fonts.displayBold,

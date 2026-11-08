@@ -11,13 +11,21 @@ theme (background, accent, ink, glass/solid/outline surface, display/body font).
 
 | Widget | Kind | Families | Updates |
 | --- | --- | --- | --- |
-| Clock | `GlazeClock` | small, medium, large | one entry per minute for the next hour |
+| Clock | `GlazeClock` | small, medium, large; small is the StandBy clock (white numerals on black) | one entry per minute for the next hour |
 | Date | `GlazeDate` | small, medium, large | at midnight |
-| Little Line | `GlazeQuote` | small, medium, large | hourly; 24 original short lines bundled in Swift |
-| Photo | `GlazePhoto` | small, medium, large | when the app saves a new photo; gradient placeholder otherwise |
+| Little Line (T283) | `GlazeQuote` | small, medium, large | daily at midnight (`DayProvider`); 64 original lines bundled in Swift, picked by local day of the year |
+| Photo frame (T282) | `GlazePhoto` | small, medium, large | when the app saves a new photo, and at midnight (date caption); themed empty frame otherwise |
 | Seamless (T131) | `GlazeSeamless` | small, medium, large | when the app writes a new crop (`setSeamless`); theme background otherwise |
 | Glaze Lock | `GlazeLockAccessory` | Lock Screen rectangular, circular, inline | per minute (time, date, theme glyph) |
+| Moon (owner-1102b T277) | `GlazeMoon` | small, medium, large | hourly; phase worked out on-device (`MoonPhase.swift` = `src/core/moonPhase.ts`), disc drawn in theme accent/ink; large adds the next 7 nights |
+| Word clock (T278) | `GlazeWordClock` | small, medium, large | per minute; "IT'S HALF PAST TEN", rounded to 5 minutes (`WordClock.swift` = `src/core/wordClock.ts`); non-English languages show a big digital time |
+| Big clock (T278) | `GlazeBigClock` | small, medium, large; small and large suit StandBy | per minute; huge numerals, brightest theme colour when StandBy drops the background |
+| Lock Screen date (T279) | `GlazeLockDate` | Lock Screen rectangular, circular, inline | at midnight |
+| Lock Screen battery (T279) | `GlazeLockBattery` | Lock Screen rectangular, circular (gauge), inline | every 15 min; a dash when iOS reports no level |
+| Lock Screen countdown (T279) | `GlazeLockCountdown` | Lock Screen rectangular, circular, inline | at midnight; days to the Countdown widget's `countdownTo` |
+| Lock Screen moon (T279) | `GlazeLockMoon` | Lock Screen rectangular, circular (illumination gauge), inline | at midnight (`MoonPhase.swift`) |
 | Water / Sleep / Steps / Mood (T73) | `GlazeHabitWater`, `GlazeHabitSleep`, `GlazeHabitSteps`, `GlazeHabitMood` | small, medium | on every button tap, and just after midnight (back to 0) |
+| Streaks (T284) | `GlazeHabitStreak` | small, medium, large | on every habit tap (any habit widget), and just after midnight |
 
 | Month progress | `GlazeMonthProgress` | small, medium, circular, inline | at midnight |
 | Year progress | `GlazeYearProgress` | small, medium, circular, rectangular, inline | at midnight |
@@ -25,7 +33,30 @@ theme (background, accent, ink, glass/solid/outline surface, display/body font).
 | Month calendar | `GlazeMonthCalendar` | small (StandBy design), medium, large | at midnight |
 | Countdown | `GlazeCountdown` | small, medium, circular, rectangular, inline | at midnight |
 
-No battery widget (needs device APIs we don't want in v1).
+### Lock Screen widgets (T279, owner-1102b Part B)
+
+All five Lock Screen kinds live in `targets/widget/LockAccessoryWidget.swift` and are registered
+through the nested `GlazeLockWidgetsBundle` (`GlazeWidgetsBundle.swift` includes it as `.body`).
+`GlazeLockAccessory` keeps its kind id so widgets already placed stay. The system tints accessory
+widgets (vibrant / tinted), so they draw in one colour with `.widgetAccentable()` on the key part
+and `AccessoryWidgetBackground()` behind circular faces; the theme supplies only the typeface. No
+theme name anywhere.
+
+- **Date**: weekday + day number (circular), weekday / day and month / year (rectangular), one
+  line with a calendar glyph (inline).
+- **Battery**: `LiveBattery.percent()` (UIDevice with monitoring on, read in the extension when the
+  timeline is built, every 15 minutes). The app writes no battery value to the App Group, so when
+  iOS gives no level the widget shows a dash, never a guessed number. Circular is a
+  `Gauge(.accessoryCircular)`; rectangular adds an `.accessoryLinearCapacity` bar.
+- **Countdown**: whole days to the `countdownTo` day of the saved Countdown widget design
+  (`widgets.json`, any size, the current size first) and its typed label if any; without one it
+  asks the user to choose a date in Glaze.
+- **Moon**: `MoonPhase.info(at:)` phase symbol and illumination (circular gauge), "Full in N days"
+  from `MoonPhase.daysToFull(at:)` (inline / rectangular).
+
+StandBy: the separate big clock is `GlazeBigClock`; the Clock widget's small size also works in
+StandBy. When iOS removes its background (`showsWidgetContainerBackground == false`) the numerals
+turn white and grow to 56 pt.
 
 **Not yet:** a "Live Lock" start/stop control. That needs an iOS 18 `ControlWidget` backed by an
 App Intent that calls the T10 `GlazeLivelock` module from the app process. A `TODO(T10)` sits in
@@ -46,6 +77,17 @@ app/theme/[id].tsx  "Use this style"
 Photo widget: `widgets.setPhoto(fileUri)` makes the bridge re-encode the image as JPEG (long edge
 ≤ 1200 px) into the App Group container as `widget-photo.jpg`; `widgets.clearPhoto()` removes it.
 Widget Studio calls `setPhoto` before saving a photo design; a cleared photoRef displays the placeholder instead of reusing an old photo.
+T282 frame (`PhotoWidget.swift`, used when no Studio design is saved): the theme background is the
+mat (10 / 12 / 16 pt by size) with a soft accent corner, the photo is clipped to a rounded rectangle
+with an accent rule, and medium / large add a small date caption (localised weekday, day, month) in
+the theme typeface. With no photo the same frame is empty with "Choose a photo in Glaze". Tapping
+opens `glaze://widget-studio?theme=<themeId>&kind=photo&size=<small|medium|large>` (Widget Studio
+on the photo widget, where the photo is picked).
+
+Little Line (T283, `QuoteWidget.swift`): 64 short lines written for Glaze (no famous quotes, no
+attributions); `GlazeLines.index` = `(year * 7 + dayOfYear - 1) mod count`, so the line holds all
+day and changes at local midnight. `src/core/dailyLines.test.ts` pins the count, uniqueness,
+originality markers and the formula. The lines are English only for now.
 
 The App Group `group.com.jared797.glaze` is added to the app by `native-plugins/widgets.json` and to the
 extension by `targets/widget/expo-target.config.js`.
@@ -276,6 +318,21 @@ under an `NSLock`), `HabitIntents.swift` (`StepHabitIntent` with `habit` + `dire
 faces), registered in `GlazeWidgetsBundle.swift`. The extension's deployment target is 17.0, so
 the bundle needs no `#available` check; `AppIntents` was added to the target's frameworks.
 
+**Streak ticks (T284).** `HabitStreakWidget.swift` (`GlazeHabitStreak`, in `GlazeHabitWidgetsBundle`):
+the last 7 days as dots (filled accent = goal met; today ringed), the current streak with a flame,
+and a tap-to-tick button. Small / medium follow the habit picked in Edit Widget
+(`HabitStreakConfigIntent`, an `AppIntentConfiguration`; water by default; medium adds weekday
+letters); large lists all four trackers, the picked one first. Data: `HabitStore.streakSummary`
+(the app's tracker value + `history`, plus taps the app hasn't read), with `habitStreak` /
+`habitHistory` rules from `src/core/habits.ts`: a count day is met at its goal, a mood day once
+logged; today counts only once met. `TickHabitIntent` (`isDiscoverable = false`) logs a `set`
+tap: count trackers jump to the day's goal, mood logs "Okay" (3) when nothing is logged; on a day
+already met it does nothing, so a tick never takes progress away. Every habit intent reloads the
+streak widget too (`HabitWidgetKinds.reload`), and the bridge's `setHabits` reloads it with the
+other habit kinds. The gallery preview (`context.isPreview`) with no streak yet shows a sample
+week in the theme. Ticks use the accent; the check mark is whichever of ink / surface stands out
+more on the accent.
+
 **Daily goals (T86).** Widgets tab › the **Goal: …** chip under a water / sleep / steps card
 opens *Daily goals* (`app/habit-goals.tsx`): a − / + stepper per tracker (water 250–6,000 ml in
 250s, sleep 4–14 h in halves, steps 1,000–50,000 in 500s; also a VoiceOver adjustable) and
@@ -312,8 +369,7 @@ value straight away and runs every native read / write one at a time.
 
 **Not yet.** No Lock Screen accessory
 habit widgets natively (the catalogue's accessory specs have no buttons anyway; T89's Swift half is
-held, D79-1). The extension still doesn't read the catalogue specs (`glaze.widgets.v2`), so the
-habit widgets don't pick up per-widget Studio edits (colours, name text). No in-app undo for a hand
+held, D79-1). Since T155 the extension reads `glaze.widgets.v2` and applies saved background, accent and text colours per size. Custom name text now reads the saved name region or resolved editor translation; catalogue geometry is still not applied to the interactive habit layout. No in-app undo for a hand
 tap yet (mood wraps round; count trackers only go up); a custom step size per tracker isn't
 offered (goals only).
 
@@ -633,11 +689,32 @@ theme's (own photos stay); changing a widget's art "bugged out" after a swap.
   removed shows the current theme's piece of the same size + slot, else that size's first, else
   the theme's first (`resolveWidgetPiece` ⇄ `WidgetArtSnapshot.resolve`), else the last applied
   image, else the theme background; `entities(for:)` returns the removed id with the
-  replacement's name so the widget keeps its configuration. A widget with no piece chosen still
-  shows the last applied image (unchanged).
+  replacement's name so the widget keeps its configuration. A widget with no piece chosen: see
+  T259 below.
 - **Not compiled or device-tested here.** VERIFY on a dev build: apply theme A, place two Seamless
   widgets on A's pieces, apply theme B: Edit Widget > Art lists B's pieces first at once, both
   widgets show B's pieces in the same slots, own photos still listed.
+- **T260 (resumed step)**: the deferred 'themeArt' step resumed on the next launch (no Theme in
+  memory) looks the stored theme in use up by id (`src/store/themeLookup.ts`: bundled
+  `getAnyTheme`, the in-memory remote catalogue, then downloaded packs: a remote art pack's
+  manifest or a theme pack's themes; never a network fetch) and runs the same full
+  `syncThemeWidgetArt`. Only a theme found nowhere falls back to `replaceThemeArt` by id.
+- **T259 (unpinned widgets follow the theme)**: a widget with no piece chosen in Edit Widget used
+  to keep showing `seamless-<size>.png` after a swap (often the old theme's art). The app now
+  writes index `unpinned` (`{ small|medium|large: <id> | null }`, `followTheme` in
+  `src/core/widgetArtLibrary.ts`, set for every size by `commitThemeArt` / `replaceThemeArt` when
+  the current theme changes): the new theme's first piece for that size (shelf order), or null =
+  the theme's plain background (no "Set up in Glaze" hint). A size not listed = the last applied
+  image, as before (older indexes, the one-time clean-up). When the app writes
+  `seamless-<size>.png` itself (Use on my widget, Seamless setup: `setSeamless` / `setWidgetArt` /
+  `addToArtLibrary` from that file) the size is dropped again (`pinLastApplied`), so that image
+  shows. A piece picked in Edit Widget is untouched (removed → the T252 remap). Extension:
+  `WidgetArtSnapshot.unpinnedChoice` mirrors `unpinnedChoice`; `resolvedID` returns the followed
+  piece for a widget with no choice (image, Fit art and live value all come from it), and
+  `SeamlessStore.load` / `loadArt` / `LiveArtStore.spec` return nil when it is the plain
+  background. VERIFY on a dev build: unconfigured Seamless small + medium on theme A, apply theme B
+  with small art only: the small shows B's first small piece, the medium shows B's plain
+  background; "Use on my widget" for a B medium then shows it on the medium.
 
 ### Paper boat fit check (T223, owner-1101e)
 
@@ -678,6 +755,8 @@ Widget > Layout: Fill (default; full bleed) or Fit (raw art inset on the theme).
 `fullBleedArt` (`src/core/widgetPreview.ts`). Not device-tested. Follow-up: pre-sized pack images
 per widget size (deferred, no new images now); pieces saved before T236 keep their old frame until re-applied.
 ### Live values over art (T237, owner-1101g #2)
+
+Reviewed number-free faces may declare a validated `liveFrame` in source-image coordinates; see [REVIEWED_THEME_EXPORTS.md](REVIEWED_THEME_EXPORTS.md). Live pieces now retain their composed image in both Fill and Fit, with the same inset applied to the value layer in Fit. Decorative pieces still use raw-art Fit. Switching layout does not remove a live clock, and opaque covers completely hide painted sample values.
 Rule: a piece that looks like a clock, date, battery, countdown or focus timer must work, or be labelled
 **Art**. `src/core/liveArt.ts` decides; the piece's `live` spec is saved in widget-art/index.json and
 `targets/widget/LiveArtOverlay.swift` draws it (clock: hands + time, minute timeline; date: today;
@@ -690,6 +769,19 @@ piece with painted values, habits pieces and countdowns without a target stay Ar
 gets an overlay). The menu shows "Live" or "Art" on every card. Plate rects were measured from the
 run-208 snapshot sheets: VERIFY alignment on device (and if T236 changes the composition geometry,
 `liveArtSpec`'s placeArt mapping must follow).
+
+**Fit layout (T246).** Edit Widget > Layout > Fit shows the raw art (`<id>-art.png`, same framing as
+the art) whole, inset by 6 % of the widget's short side, so the Fill rect (0..1 of the composed image)
+does not line up there. Each `live` spec now also stores `art: [x, y, w, h]` (the plate, 0..1 of the
+art itself), and `src/core/liveArtFit.ts` maps it onto the contained art (`fitLayoutPlate`, tested
+for square / wide / tall art in every size; no raw art file = the composed rect on the fitted composed
+image; an older record without `art` over a raw art file = no plate). **Native caveat:**
+`SeamlessWidget.swift` still skips `LiveArtLayer` in Fit (`if let image = image, !fit`) and new Swift
+is held (D225-3), so the widget shows live values in **Fill only**; `FIT_LAYOUT_LIVE_IN_WIDGET` is
+false and the theme art screen says so (`tabs.widgetsTab.art.liveFillOnly`). The native change, when
+allowed: in Fit, parse `art`, frame = `LiveArtLayer.fitted(raw.size, in: box inset by min(w,h)*0.06)`
+(or the composed image's rect with `rect` when there is no raw file), place the plate on that frame,
+then flip the flag (liveArtFit.test.ts checks the flag against the Swift source).
 
 ### Art blends with the wallpaper (T251, owner-1101h #2)
 
@@ -753,7 +845,7 @@ T136 compile audit of every Swift file (what was checked and fixed, what is stil
 `docs/RELEASING.md` section 7.
 
 - T73 habit widgets: `Button(intent:)` taps update the value without opening the app; two widgets
-  of the same tracker both refresh; small-size layout fits (value, goal, bar, two 36 pt buttons);
+  of the same tracker both refresh; small-size layout fits (value, goal, bar, two 44 pt buttons);
   `invalidatableContent()` while a tap is pending; mood faces in tinted / StandBy modes; the app
   picks up taps after midnight onto the right day; `getHabits` returning `[String: String]` maps to
   a plain JS object through Expo Modules.
@@ -774,7 +866,7 @@ The editor previously wrote `glaze.widgets.v2`, but the extension did not read i
 
 Native widget types now include clock, date, photo, quote, analog clock, month calendar, countdown, month progress, year progress, water, sleep, steps and mood. Existing Lock Screen accessory and seamless widgets keep their identities. The five added types are registered in a nested bundle; existing installed widgets keep their kind identifiers. Month/year dots use the current calendar and refresh after midnight. Countdown uses the saved target date. Habit widgets retain their AppIntent actions and now consume saved background/accent/text colours.
 
-Remaining limits: battery and photo-album designs, and habit accessory sizes, remain preview-only and are labelled before save. iOS controls accessory/tinted appearance; arbitrary Home Screen wallpaper blur is unavailable. System fonts stand in for the unbundled display font. The per-size shared design is common to all installed instances of that kind and size. A native build, not OTA alone, is needed. Compiler/decoder checks do not establish actual phone rendering or WidgetKit refresh timing.
+At the 26 October audit, catalogue battery and photo-album designs remained preview-only. Photo albums are implemented in the 4 November continuation below; catalogue battery is still preview-only. Habit accessory sizes are implemented in the 4 November continuation below. iOS controls accessory/tinted appearance; arbitrary Home Screen wallpaper blur is unavailable. System fonts stand in for the unbundled display font. The per-size shared design is common to all installed instances of that kind and size. A native build, not OTA alone, is needed. Compiler/decoder checks do not establish actual phone rendering or WidgetKit refresh timing.
 
 Validation: `.github/workflows/glaze-widgets-check.yml` compiles the actual widget extension against the iOS simulator SDK and runs the Swift decoder against the real TypeScript editor payload. Run 40290905453 passed both. Existing colour/readability tests plus explicit gradient preservation across all bundled Home Screen designs pass. Full Windows suite has the same 19 failures on the base commit and repair; those unrelated SDK/source/path/asset guards are not hidden or claimed green.
 
@@ -782,3 +874,84 @@ Validation: `.github/workflows/glaze-widgets-check.yml` compiles the actual widg
 
 Cut on 1 Nov 2026 (owner-1101d #1, T198): no pets, no Live Activity, no Dynamic Island. Notes and art: [future/pets-game/README.md](future/pets-game/README.md).
 - T236/T237 merge (run 218): live values sit on the Fill layout only; in Fit the painted picture shows as art.
+
+
+## Native habit storage and readability (4 November 2026)
+
+`HabitWidgetContent` is the production content shared by WidgetKit and the isolated simulator review host. Water, sleep, steps and mood retain their AppIntent buttons and live tracker values. Counter controls have a minimum height of 44 pt. Saved Studio names resolve from the name region or translated editor text, with bounded Unicode-safe handling and a localized fallback. The saved name never replaces a live counter with an editor sample value.
+
+Habit backgrounds retain their source colour/gradient stops. The controls avoid the glass material that washed dark palettes grey. `HabitColours.swift` retains the preferred foreground where readable, otherwise mixes its hue toward black or white; secondary labels use 85% opacity. Native and independent app colour-library checks sample 21 positions per gradient, requiring 4.5:1 for text and 3:1 for mood outlines. The 105 reviewed palettes and 48 saved editor designs pass. These source-colour checks do not qualify rendered text, tinted modes or arbitrary user gradients; a single foreground can be impossible over an arbitrary gradient. Original artwork clock/date/focus/battery editions are separate and preserved.
+
+At b24524e, the native contract passes 624 assertions: 19 app/native data cases, persistence, acknowledgements, a 400-event bound, day reset, invalid timestamps, colour normalization, saved titles and 200 concurrent writes within one process. These Foundation tests use disposable suites, not the real App Group.
+
+The native screenshot run passes 2,568 captures: 105 palettes x four trackers x two Home Screen sizes x three values, plus 48 real editor-serialized custom names and gradients. The host models 16 pt content margins. All hashes/dimensions and browser variants verify; neither gallery overflows at mobile width. Human review covers all 420 small/progress layouts, 96 representative empty/upper-bound layouts and all 48 saved editor layouts. Saved-name support leaves every standard layout byte-identical. Review: `Apps/outputs/glaze-theme-reviews/release-simulation/native-habits-20261103.html` and `native-habit-saved-20261104.html`.
+
+A separate installed App Group check passes at 4e68c81 (run 41711980638). Three independently installed simulator hosts share the production group identifier and a file marker. One writes a real app-generated tracker payload; another calls the actual water/sleep/steps `StepHabitIntent.perform` and `SetMoodIntent.perform`; a fresh reader sees all four persisted events. Values match the real app parser, and the intents leave app-owned tracker bytes unchanged. No `synchronize()` call is added to the production path. The test hosts embed simulator XML/DER entitlements. The first harness failure at 01b1db6 is retained separately; it lacked these simulator sections.
+
+The full Expo app, bundled JavaScript and widget extension also build, install and launch at b24524e (run 41703099234). The launch screenshot and persisted app process are verified. The shared-storage hosts test production store/intent sources, rather than the full Expo bridge or SpringBoard dispatch. Actual installed widget taps, cross-process concurrent writes, phone locales, accessibility/tinted rendering and physical-device behavior remain separate checks. The 105 candidate packs are still unpublished.
+
+Reproduce with `.github/workflows/glaze-native-habit-contract.yml`, `glaze-native-habit-capture.yml`, `glaze-native-group-smoke.yml` and `glaze-native-simulator-app.yml`. Sources: `scripts/native-habit-contract.swift`, `native-habit-colours.mjs`, `native-habit-review.swift`, `native-group-smoke.swift` and `native-group-smoke.mjs`. App-derived fixtures come from `prepare-native-habit-review.mjs` and `prepare-native-habit-saved-review.mjs`.
+
+Native registration and durable multi-photo delivery for photo albums remain unimplemented; photo albums keep their preview-only flags.
+
+## Native Lock Screen habit readouts (4 November 2026)
+
+Water, sleep and steps support circular, rectangular and inline accessories. Mood supports circular and rectangular accessories. `HabitAccessoryView` uses the same `HabitEntry` provider and persisted tracker values as the Home Screen controls. Circular counters show progress against the saved goal; rectangular counters show the saved name, value, unit and progress. Mood displays the logged face and level or an unset state. Accessory taps open `glaze://widgets` for logging in the app. Home Screen AppIntent controls retain their existing actions and system content margins.
+
+These compact layouts follow the system's monochrome presentation. Saved names remain editable, including Unicode and right-to-left text; custom Home Screen background colours do not override Lock Screen presentation. This does not replace or flatten the original decorative theme artwork.
+
+At e37fdc7, the bridge reports native capability version 3. Studio requires version 3 for these new habit accessory sizes and retains version 2 compatibility for existing Home Screen habits. The editor's serialized design payload remains version 2. Older binaries retain saved drafts and show the existing update message before delivery. Mood inline and habit StandBy/large sizes remain unsupported. Photo albums are added later in capability4, recorded below.
+
+At e37fdc7, the native contract passes 628 assertions and the complete extension typechecks against the iOS simulator SDK (run 41735521919). Four assertions compare the real Swift family declarations with the app catalogue. All 1,827 core tests and both TypeScript configurations pass; subsequent production changes are confined to Swift accessory presentation. The Home Screen regression at 53877fe passes all 2,568 captures, each byte-identical to b24524e, including saved names and gradients.
+
+The final accessory run at e37fdc7 passes 3,711 captures (run 41735521846): 3,663 default layouts across 105 palettes and 48 real saved editor names. Hashes, dimensions, 18 gallery variants, filtering and mobile width verify. The earlier heading correction changes exactly 1,380 rectangular title bands. The final score arrangement changes 222 nonzero circular mood captures; all other 3,489 images match 77a13a9. Human review covers all 66 distinct layout/value/appearance cases and all 48 saved-name examples through direct review and subsequent byte-identity checks. Review `native-habit-accessories-20261104.html` and `native-habit-accessory-saved-20261104.html` in the release-simulation folder.
+
+A separate language run at e37fdc7 passes 858 native captures across all 11 bundled languages (run 41735521797). Each fresh process uses AppleLanguages and AppleLocale launch arguments. Actual native names, units and mood descriptions match the bundled translations; native number formatting and explicit Arabic RTL geometry are captured. Empty, progress, maximum and every mood value are covered. Visual review checks 418 maximum/long-label cases across both appearances, followed by all 110 final nonzero circular scores. The final score change leaves the other 748 language images byte-identical. Numerator and denominator use native digits in an explicit LTR math row, avoiding a reversed fraction in RTL. This is not a native-speaker review, full system-language change or VoiceOver test. Review `native-habit-languages-20261104.html` and the exact-source JSON receipts.
+
+The complete Expo app, bundled JavaScript and GlazeWidgets.appex at 921f7a7 build, install and launch successfully (run 41736149533). Its reusable simulator-only ZIP has verified CRCs, bundle identity, JavaScript and extension. The921f7a7 package retains e37fdc7 production sources. Subsequent Group guards and album implementation have their own exact-source evidence below.
+
+The installed-app route check passes at 84cb2b6 (run 41741384177): XCTest launches the real app, waits for its initial screen, signals readiness, accepts the system Open confirmation and requires the unique Widgets subtitle. One test, zero failures. The selected Widgets tab, native screenshot and exact original package hash verify. Review `native-installed-app-20261104.html` and `native-installed-app-verification-20261104.json`. The first run's actual test also passed, but a wrong post-test success-string check marked the job and receipt failed; original evidence is retained under `native-link-ui-8bc8c42-failed`. The corrected run qualifies the checker and route.
+
+This historical921f7a7 simulator app displays an App Group sharing warning. Its main arm64 executable has no XML/DER simulator entitlement sections; source app/extension/bridge Group identifiers match. Full Expo habit synchronization is not qualified by launch or routing. The separate installed three-host storage/intent check at 4e68c81 remains valid, with unchanged production store/intent sources. That build does not qualify signed Group/bridge behavior or installed widget taps; later separate results are recorded below. These checks perform no signed release archive, pack publication or Apple upload.
+
+Capture sources: `scripts/native-habit-accessory-review.swift`, `native-habit-locale-review.swift`, `.github/workflows/glaze-native-habit-accessory-capture.yml` and `glaze-native-habit-locales.yml`. Frames and values are explicit fixtures rendered through actual production content. These captures do not test installed placement, system tint, actual widget taps or the full Expo bridge. Separate runtime results and photo album qualification are recorded below; physical phone language and accessibility still need execution. Original artwork galleries and unpublished 105-theme pack candidates remain separate.
+
+
+## Native photo albums and full-app Group integration (4 November 2026)
+
+Native capability version 4 adds three Home Screen album sizes, system photo selection, private draft copies, bounded shared JPEG imports, saved caption/control geometry, scheduled rotation and a persisted Next-photo intent. The existing v2 editor payload and previous widget identifiers remain compatible. See [NATIVE_PHOTO_ALBUM.md](NATIVE_PHOTO_ALBUM.md) for storage, delivery, scheduling and qualification scope. Original decorative artwork is unchanged.
+
+At 6ec3877, run41755244392 passes **5,247 native assertions and 792 captures** across eleven language launches, six visual palettes, three sizes and four states. Empty-state readability is checked across all105 release palettes. Captures include the actual theme background, default captions and maximum-length editor captions. All hashes/dimensions and132 gallery variants verify at mobile375px. Human review covers representative English/Arabic/German sheets and full-resolution Japanese, Hindi, Chinese and Korean cases. Every one of396 photo-state captures is byte-identical to00b886c, and all198 empty/missing pairs are identical. This is not a native-speaker or all792-image artistic approval. Review `native-albums-20261104.html`.
+
+The complete capability4 app at8b89fda builds, installs and launches (run41753201531). The41,676,869-byte simulator ZIP has verified CRCs, bundled JavaScript, album type/bridge metadata and matching Group XML+DER sections in both arm64/x86_64 binaries. The only subsequent production-file change is the empty-album foreground/material helper, separately SDK-compiled and captured at6ec3877; import/delivery, rotation, Next and real-photo layouts are unchanged. The simulator team is GLAZETEST0. This is not an Apple-signed iPhone archive.
+
+Run41760076206 passes an actual installed Water widget round trip against the complete8b89fda app, using harnessa1ba27b. Glaze logs150ml, the real Home Screen widget displays150, its actual button raises the value to300 without opening Glaze, and reopening the app reconciles300. The shared preferences independently contain exactly one150ml widget event and its matching sequence acknowledgement. One XCTest passes with zero failures. Review `native-widget-taps-20261104.html` and `native-widget-tap-verification-20261104.json`. This supersedes the earlier one-way gallery observation41754619122 and the failed test-selector attempts, whose originals remain intact. It qualifies Water interaction and the full Expo habit bridge in Simulator; it does not qualify every widget kind, concurrent cross-process writes, or physical iPhone behavior. The native bridge rejects writes without a shared container; capability4 reads throw rather than returning an apparently valid empty store.
+
+Read-only inspection of the existing EAS1.0.1(24) archive passes real Apple signature, app/extension identity, matching team, unexpired profile and shared Group authorization checks (run41763986947). Its34,214,757-byte IPA has SHA2568aa5fb643d6dc2f9a0b2cab5a36bed6bc01136de4fb9be09270b843eaac4d034. EAS associates this2November production-native build withb34a10f. The signed app and extension lack the new album importer/type metadata; this earlier binary cannot qualify capability4 album delivery. Signing authorization is established separately from runtime phone synchronization. The check reuses an existing archive and creates no Apple build or upload.
+
+Actual App Store Connect GET queries confirm1.0.1(24) is the latest valid, unexpired internal TestFlight build (run41764037608). The internal Team (Expo) group has automatic access to all builds. Its EAS-recorded source advertises native capability2. This establishes server availability, not which build is currently installed on a phone. Review `native-signed-build-20261104.html` and the reconciled exact-source receipt.
+
+The actual system Photos-picker test passes against the complete8b89fda app with harness9369e1a (run41763936395): two real selected library assets return to Studio, and saving through the actual Expo bridge publishes the shared album manifest and two JPEGs. Independent inspection verifies both1200x750 images,15,305/15,258 bytes, content-hash filenames, matching active theme and absence of private file references. Their metadata contains only upright orientation, resolution, colour space and output dimensions; the seed inputs do not contain GPS. Original picker and saved-state screenshots are reviewed. This does not qualify restart UI durability or installed album Next. Review `native-album-picker-20261104.html` and `native-album-picker-verification-20261104.json`.
+
+Installed Medium album Next also passes in run41767585363 with harness95ab978 against the same full8b89fda app. The real system picker feeds the actual bridge, SpringBoard installs the saved Medium widget, and its actual Next button changes from the selected teal fixture to orange without opening Glaze. One XCTest, zero failures. Independent original screenshot pixels identify different imported JPEGs before/after; the matching production cursor file contains1. Both screenshots are visually reviewed. The first selection attempt swiped past a still-redacted Medium snapshot; its recording and failed artifacts are retained. The corrected test waits for real WidgetKit content, rather than treating the gallery title as readiness. Review `native-album-next-20261104.html` and `native-album-next-verification-20261104.json`. This qualifies the tested Medium interaction in Simulator, not every size, concurrent process access or a physical phone.
+
+All 1,831 core tests and both app/tooling TypeScript configurations pass. Final verification receipts and galleries live in Apps/outputs/glaze-theme-reviews/release-simulation. Actual picker delivery, Water interaction and Medium album Next are qualified separately from native snapshots. Apple-signed phone sync, other sizes/interactions and device tint/accessibility remain separate checks. No new Apple archive/upload, pack publication or merge is performed.
+## Next event and Weather widgets (owner-1102b T280 / T281)
+
+Built: `targets/widget/CalendarEventWidget.swift` (kind `GlazeCalendarEvent`), `WeatherWidget.swift`
+(`GlazeWeather`), `WeatherCodes.swift` (mirror of `src/core/weatherCodes.ts`), nested bundle
+`DataWidgetsBundle.swift`. Both are small / medium / large in the theme's colours and fonts; the gallery
+shows sample data in the theme.
+
+- Permission flow: a widget cannot prompt. Without access each widget shows "Open Glaze to ..." and links
+  to `glaze://widget-access?kind=calendar|weather` (`app/widget-access.tsx`), whose button calls the bridge
+  (`requestCalendarAccess` = `requestFullAccessToEvents`, `requestLocationAccess` = When-In-Use) through
+  `dataWidgetAccess()` in `src/native/widgets.ts` ('unavailable' in Expo Go / Android / older builds).
+- Calendar: the extension reads events with EventKit once the app has full access; next 7 days, entries at
+  each start/end in the next 30 min, new timeline every 30 min.
+- Weather: Open-Meteo (`api.open-meteo.com`, no key, CC BY 4.0, credited in medium/large and in the app).
+  Location: the widget's own (`NSWidgetWantsLocation`, `isAuthorizedForWidgetUpdates`) or the app's last fix,
+  stored rounded to 2 decimals in App Group key `glaze.weather.coords.v1`. Last result cached in
+  `glaze.weather.cache.v1`; new timeline every 45 min (15 min after a failure with no cache). °F when
+  `Locale.current.measurementSystem == .us`.
+- Owner check: Open-Meteo's free tier is non-commercial (see "Options" above and docs/LICENSES.md).

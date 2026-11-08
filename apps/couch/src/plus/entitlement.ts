@@ -1,146 +1,93 @@
 /**
- * Couch Plus entitlement (PLAN section 5). Pure TypeScript, persisted through the injected KvStore.
+ * Couch Plus entitlement (owner decision 7 Nov 2026). Pure TypeScript, no React Native imports, so Node can test it.
  *
- * HARD RULE: every TV control is free forever. Plus may only gate the extras listed in PLUS_FEATURES
- * (widgets, Watch/Wear, Live Activity, Lock Screen / Control Center controls, macros). Themes are free for everyone (owner 25 Oct 2026).
- * Only src/plus/ may read the entitlement; tests/plus-guard.test.ts enforces that no control path
- * (src/core, src/ui/remote, app/(tabs), src/state/session.tsx) imports this folder.
+ * Couch Plus is one one-time purchase (A$3.99, non-consumable, no subscription) that unlocks the paid part of Couch:
+ * the TV remote and casting (src/plus/access.ts says who has access; src/plus/gate.tsx is the single place controls
+ * are stopped). Adding and finding TVs, the TVs list, settings and themes stay free.
+ * Only src/plus reads the entitlement. No accounts, no analytics: state lives on the phone and in the App Store.
  */
-import { MemoryKv, type KvStore } from '../core/store';
-import { t } from '../i18n/core';
-import { withCopy } from '../i18n/lazyCopy';
 
-export type Tier = 'free' | 'plus';
+export type PlusSource = 'none' | 'mock' | 'store';
 
-/** The only things Couch Plus can ever unlock. TV controls are deliberately absent. */
-export const PLUS_FEATURES = ['widgets', 'watch', 'liveActivity', 'controls', 'macros'] as const;
+export type PlusState = { owned: boolean; source: PlusSource; since?: number };
+
+export interface PlusStore {
+  getState(): Promise<PlusState>;
+  purchase(): Promise<PlusState>;
+  restore(): Promise<PlusState>;
+}
+
+export interface PlusStorage {
+  get(key: string): Promise<string | null>;
+  set(key: string, value: string): Promise<void>;
+}
+
+export const PLUS_STORAGE_KEY = 'couch.plus.v1';
+
+/** Shown price until the App Store answers with the localised one. */
+export const PLUS_PRICE = 'A$3.99';
+
+export const NOT_OWNED: PlusState = { owned: false, source: 'none' };
+
+/** What Couch Plus unlocks, for the paywall (translated as core.plus.feature.<id>.title / .hint). */
+export const PLUS_FEATURES = ['remote', 'cast'] as const;
 export type PlusFeature = (typeof PLUS_FEATURES)[number];
 
-export function isPlusFeature(v: unknown): v is PlusFeature {
-  return typeof v === 'string' && (PLUS_FEATURES as readonly string[]).includes(v);
-}
-
-/** What each Plus feature adds, for the Couch Plus screen. Translated on read (t() getters). */
-export const PLUS_FEATURE_COPY: Record<PlusFeature, { title: string; hint: string }> = {
-  widgets: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.widgets.title', hint: 'core.plus.feature.widgets.hint' }),
-  watch: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.watch.title', hint: 'core.plus.feature.watch.hint' }),
-  liveActivity: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.liveActivity.title', hint: 'core.plus.feature.liveActivity.hint' }),
-  controls: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.controls.title', hint: 'core.plus.feature.controls.hint' }),
-  macros: withCopy({ title: '', hint: '' }, { title: 'core.plus.feature.macros.title', hint: 'core.plus.feature.macros.hint' }),
-};
-
-/** The free-forever promise at the top of the Couch Plus screen, in the active language. */
-export function plusPromise(): string {
-  return t('core.plus.promise');
-}
-
-export const ENTITLEMENT_KEY = 'couch.entitlement';
-export const ENTITLEMENT_VERSION = 1;
-
-export type EntitlementSource = 'none' | 'purchase' | 'restore';
-
-export interface EntitlementDoc {
-  version: typeof ENTITLEMENT_VERSION;
-  tier: Tier;
-  source: EntitlementSource;
-  updatedAt: number;
-}
-
-export function freeDoc(): EntitlementDoc {
-  return { version: ENTITLEMENT_VERSION, tier: 'free', source: 'none', updatedAt: 0 };
-}
-
-/** Parses a stored entitlement. Anything missing, corrupt or unknown is 'free' (never throws). */
-export function parseEntitlement(raw: string | null): EntitlementDoc {
-  if (raw === null) return freeDoc();
-  let j: unknown;
+/** Tolerates any stored garbage: anything unexpected reads as "not owned". */
+export function parsePlusState(text: string | null): PlusState {
+  if (!text) return { ...NOT_OWNED };
+  let raw: unknown;
   try {
-    j = JSON.parse(raw);
+    raw = JSON.parse(text);
   } catch {
-    return freeDoc();
+    return { ...NOT_OWNED };
   }
-  if (typeof j !== 'object' || j === null || Array.isArray(j)) return freeDoc();
-  const o = j as Record<string, unknown>;
-  if (o['version'] !== ENTITLEMENT_VERSION || o['tier'] !== 'plus') return freeDoc();
-  const source = o['source'] === 'purchase' || o['source'] === 'restore' ? o['source'] : 'purchase';
-  const updatedAt = typeof o['updatedAt'] === 'number' ? o['updatedAt'] : 0;
-  return { version: ENTITLEMENT_VERSION, tier: 'plus', source, updatedAt };
+  if (!raw || typeof raw !== 'object') return { ...NOT_OWNED };
+  const r = raw as Record<string, unknown>;
+  if (r.owned !== true) return { ...NOT_OWNED };
+  const source: PlusSource = r.source === 'store' ? 'store' : r.source === 'mock' ? 'mock' : 'none';
+  if (source === 'none') return { ...NOT_OWNED };
+  const out: PlusState = { owned: true, source };
+  if (typeof r.since === 'number' && Number.isFinite(r.since) && r.since > 0) out.since = r.since;
+  return out;
 }
 
-/** Pure check: may this tier use this Plus feature? */
-export function tierCanUse(tier: Tier, feature: PlusFeature): boolean {
-  return isPlusFeature(feature) && tier === 'plus';
-}
-
-export interface EntitlementSnapshot {
-  tier: Tier;
-  loaded: boolean;
-}
-
-/** Entitlement state over a KvStore, with a subscribe/getSnapshot pair for useSyncExternalStore. */
-export class EntitlementStore {
-  private doc: EntitlementDoc = freeDoc();
-  private snap: EntitlementSnapshot = { tier: 'free', loaded: false };
-  private loading: Promise<void> | null = null;
-  private readonly listeners = new Set<() => void>();
-
-  constructor(
-    private readonly kv: KvStore = new MemoryKv(),
-    private readonly now: () => number = () => Date.now(),
-    private readonly key: string = ENTITLEMENT_KEY,
-  ) {}
-
-  load(): Promise<void> {
-    if (!this.loading) {
-      this.loading = this.kv
-        .getItem(this.key)
-        .then((raw) => parseEntitlement(raw))
-        .catch(() => freeDoc())
-        .then((doc) => {
-          this.doc = doc;
-          this.emit(true);
-        });
+/**
+ * Local mock store for development (Expo Go has no store module) and tests. Never used in a store build:
+ * src/plus/accessStore.ts only falls back to it when __DEV__ is true.
+ */
+export function createMockStore(storage: PlusStorage, now: () => number = () => Date.now()): PlusStore {
+  const read = async (): Promise<PlusState> => {
+    try {
+      return parsePlusState(await storage.get(PLUS_STORAGE_KEY));
+    } catch {
+      return { ...NOT_OWNED };
     }
-    return this.loading;
-  }
+  };
+  return {
+    getState: read,
+    async purchase() {
+      const current = await read();
+      if (current.owned) return current;
+      const next: PlusState = { owned: true, source: 'mock', since: now() };
+      try {
+        await storage.set(PLUS_STORAGE_KEY, JSON.stringify(next));
+      } catch {
+        // storage unavailable: the purchase still counts for this session
+      }
+      return next;
+    },
+    // A mock restore can only find what this device already stored.
+    restore: read,
+  };
+}
 
-  tier(): Tier {
-    return this.doc.tier;
+/** Development only: clear the mock purchase. */
+export async function resetMockPurchase(storage: PlusStorage): Promise<PlusState> {
+  try {
+    await storage.set(PLUS_STORAGE_KEY, JSON.stringify(NOT_OWNED));
+  } catch {
+    // ignore
   }
-
-  canUse(feature: PlusFeature): boolean {
-    return tierCanUse(this.doc.tier, feature);
-  }
-
-  /** Records a verified purchase or restore. Only called by applyPurchase with a provider's success. */
-  async grant(source: Exclude<EntitlementSource, 'none'>): Promise<void> {
-    await this.load();
-    this.doc = { version: ENTITLEMENT_VERSION, tier: 'plus', source, updatedAt: this.now() };
-    await this.kv.setItem(this.key, JSON.stringify(this.doc));
-    this.emit(true);
-  }
-
-  /** Back to free (refund, tests). Controls are unaffected either way. */
-  async revoke(): Promise<void> {
-    await this.load();
-    this.doc = { ...freeDoc(), updatedAt: this.now() };
-    await this.kv.setItem(this.key, JSON.stringify(this.doc));
-    this.emit(true);
-  }
-
-  subscribe(cb: () => void): () => void {
-    this.listeners.add(cb);
-    return () => {
-      this.listeners.delete(cb);
-    };
-  }
-
-  getSnapshot(): EntitlementSnapshot {
-    return this.snap;
-  }
-
-  private emit(loaded: boolean): void {
-    this.snap = { tier: this.doc.tier, loaded };
-    for (const l of this.listeners) l();
-  }
+  return { ...NOT_OWNED };
 }

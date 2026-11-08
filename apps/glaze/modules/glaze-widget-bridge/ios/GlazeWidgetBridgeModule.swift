@@ -4,6 +4,8 @@
 // adds it to the extension). Keep the ids below in sync with src/core/widgetTheme.ts and
 // targets/widget/ThemeStore.swift.
 import CoreImage
+import CoreLocation
+import EventKit
 import ExpoModulesCore
 import Foundation
 import UIKit
@@ -21,7 +23,7 @@ private let themeFile = "theme.json"
 /// (written by the widget extension's App Intents, src/core/habitLog.ts HABIT_LOG_KEY).
 private let habitsKey = "glaze.habits.v1"
 private let habitLogKey = "glaze.habitLog.v1"
-private let habitWidgetKinds = ["GlazeHabitWater", "GlazeHabitMood", "GlazeHabitSleep", "GlazeHabitSteps"]
+private let habitWidgetKinds = ["GlazeHabitWater", "GlazeHabitMood", "GlazeHabitSleep", "GlazeHabitSteps", "GlazeHabitStreak"]
 /// T146: written by the widget extension on every theme load (targets/widget/ThemeStore.swift,
 /// src/core/widgetLink.ts WIDGET_LAST_READ_KEY); the app only reads it.
 private let lastReadKey = "glaze.widget.lastRead.v1"
@@ -36,7 +38,36 @@ public class GlazeWidgetBridgeModule: Module {
     Name("GlazeWidgetBridge")
 
     // Version handshake: old installed binaries must not claim that v2 designs were applied.
-    AsyncFunction("widgetDesignVersion") { () -> Int in 2 }
+    AsyncFunction("widgetDesignVersion") { () -> Int in 6 }
+
+    // Functional designs need no source artwork. A small solid thumbnail keeps library/file
+    // invariants intact; the extension renders the live semantic design, never this placeholder.
+    AsyncFunction("composeDesignedWidgetPiece") { (id: String, colour: String) -> Bool in
+      GlazeBuildTime.extend()
+      guard GlazeWidgetBridgeModule.validArtId(id), colour.range(of: "^#[0-9a-fA-F]{6}$", options: .regularExpression) != nil,
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)
+      else { return false }
+      let dir = container.appendingPathComponent(artDir, isDirectory: true)
+      do {
+        try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        let format = UIGraphicsImageRendererFormat(); format.scale = 1; format.opaque = true
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 16, height: 16), format: format).image { context in
+          let hex = UInt32(colour.dropFirst(), radix: 16) ?? 0
+          UIColor(red: CGFloat((hex >> 16) & 255) / 255, green: CGFloat((hex >> 8) & 255) / 255, blue: CGFloat(hex & 255) / 255, alpha: 1).setFill()
+          context.fill(CGRect(x: 0, y: 0, width: 16, height: 16))
+        }
+        guard let data = image.jpegData(compressionQuality: 0.9) else { return false }
+        try data.write(to: dir.appendingPathComponent("\(id).jpg"), options: .atomic)
+        return true
+      } catch { return false }
+    }
+
+    AsyncFunction("designedWidgetBattery") { () -> Int? in
+      UIDevice.current.isBatteryMonitoringEnabled = true
+      let level = UIDevice.current.batteryLevel
+      guard level.isFinite, level >= 0, level <= 1 else { return nil }
+      return Int((Double(level) * 100).rounded())
+    }
 
     AsyncFunction("setTheme") { (json: String) -> Bool in
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
@@ -54,19 +85,24 @@ public class GlazeWidgetBridgeModule: Module {
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
             let data = json.data(using: .utf8), data.count < 512 * 1024,
             let payload = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
-            payload["v"] as? Int == 2, payload["specs"] is [[String: Any]] else { return false }
+            payload["v"] as? Int == 2, payload["specs"] is [[String: Any]],
+            AlbumPhotoImport.validDesigns(payload, container: container) else { return false }
       do { try data.write(to: container.appendingPathComponent("widgets.json"), options: .atomic) }
       catch { return false }
       UserDefaults(suiteName: appGroup)?.set(json, forKey: widgetSetKey)
+      AlbumPhotoImport.pruneUnused(payload, container: container)
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
     }
 
     /// T73: both habit keys as stored (JSON strings; a missing key is left out). The app merges them
     /// in JS (syncHabitStore) and writes the trackers back with setHabits. This never writes the log.
-    AsyncFunction("getHabits") { () -> [String: String] in
+    AsyncFunction("getHabits") { () throws -> [String: String] in
       var out: [String: String] = [:]
-      guard let defaults = UserDefaults(suiteName: appGroup) else { return out }
+      guard FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) != nil,
+            let defaults = UserDefaults(suiteName: appGroup) else {
+        throw NSError(domain: "GlazeWidgetBridge", code: 1, userInfo: [NSLocalizedDescriptionKey: "Shared widget storage is unavailable"])
+      }
       if let habits = defaults.string(forKey: habitsKey) { out["habits"] = habits }
       if let log = defaults.string(forKey: habitLogKey) { out["log"] = log }
       return out
@@ -74,7 +110,8 @@ public class GlazeWidgetBridgeModule: Module {
 
     /// T73: stores the app's trackers (with the `applied` mark) and reloads the habit widgets.
     AsyncFunction("setHabits") { (json: String) -> Bool in
-      guard let defaults = UserDefaults(suiteName: appGroup) else { return false }
+      guard FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) != nil,
+            let defaults = UserDefaults(suiteName: appGroup) else { return false }
       guard json.utf8.count < 256 * 1024 else { return false }
       defaults.set(json, forKey: habitsKey)
       if #available(iOS 14.0, *) {
@@ -104,6 +141,11 @@ public class GlazeWidgetBridgeModule: Module {
       }
       GlazeWidgetBridgeModule.reloadWidgets()
       return true
+    }
+
+    AsyncFunction("importAlbumPhotos") { (uris: [String]) -> [String] in
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return [] }
+      return AlbumPhotoImport.copy(uris, to: container)
     }
 
     /// T131 Seamless widget: crops (x, y, w, h) out of the wallpaper (wallpaper pixels of the
@@ -155,6 +197,39 @@ public class GlazeWidgetBridgeModule: Module {
     /// frame round a black square). `background` / `fit` are kept for the JS signature. Caps the long
     /// edge at 1200 px, writes seamless-<family>.png plus the blended art as seamless-<family>-art.png
     /// (for Edit Widget > Layout > Fit), and reloads the timelines.
+    // Curated clock backgrounds retain their full material; older callers keep the blend path.
+    AsyncFunction("setClockArt") { (artUri: String, w: Double, h: Double, colour: String, family: String) -> Bool in
+      guard ["small","medium","large"].contains(family),w>=1,h>=1,
+            let container=FileManager.default.containerURL(forSecurityApplicationGroupIdentifier:appGroup),
+            let image=GlazeWidgetBridgeModule.loadImage(artUri),image.size.width>0,image.size.height>0 else { return false }
+      let composed=ClockArtRenderer.render(image:image,width:w,height:h,colour:colour)
+      guard let data=composed.pngData() else { return false }
+      do {
+        try data.write(to:container.appendingPathComponent("seamless-\(family).png"),options:.atomic)
+        if let raw=GlazeWidgetBridgeModule.downscale(image,maxEdge:1200).pngData() {
+          try raw.write(to:container.appendingPathComponent("seamless-\(family)-art.png"),options:.atomic)
+        }
+        GlazeWidgetBridgeModule.reloadWidgets();return true
+      } catch { return false }
+    }
+
+    AsyncFunction("composeClockArtPiece") { (id: String, artUri: String, w: Double, h: Double, colour: String, skipIfPresent: Bool) -> Bool in
+      GlazeBuildTime.extend()
+      guard GlazeWidgetBridgeModule.validArtId(id),w>=1,h>=1,
+            let container=FileManager.default.containerURL(forSecurityApplicationGroupIdentifier:appGroup) else { return false }
+      let dir=container.appendingPathComponent(artDir,isDirectory:true),dest=dir.appendingPathComponent("\(id).jpg")
+      if skipIfPresent && FileManager.default.fileExists(atPath:dest.path) { return true }
+      return autoreleasepool {
+        guard let image=GlazeWidgetBridgeModule.loadImage(artUri),image.size.width>0,image.size.height>0,
+              let data=ClockArtRenderer.render(image:image,width:w,height:h,colour:colour).jpegData(compressionQuality:0.88) else { return false }
+        do {
+          try FileManager.default.createDirectory(at:dir,withIntermediateDirectories:true)
+          if let raw=GlazeWidgetBridgeModule.downscale(image,maxEdge:1200).pngData() { try raw.write(to:dir.appendingPathComponent("\(id)-art.png"),options:.atomic) }
+          try data.write(to:dest,options:.atomic);return true
+        } catch { return false }
+      }
+    }
+
     AsyncFunction("setWidgetArt") { (artUri: String, w: Double, h: Double, background: String, colour: String, fit: String, family: String) -> Bool in
       guard ["small", "medium", "large"].contains(family), w >= 1, h >= 1 else { return false }
       guard
@@ -255,6 +330,14 @@ public class GlazeWidgetBridgeModule: Module {
 
     /// T221: { index: widget-art/index.json as stored ("" when missing), dir: file URL of widget-art/
     /// ("" when the container is missing) }. Read-only.
+    AsyncFunction("resetWidgetArtForRecovery") { () -> Bool in
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+            GlazeWidgetArtRecovery.reset(container: container) else { return false }
+      WidgetCenter.shared.invalidateConfigurationRecommendations()
+      GlazeWidgetBridgeModule.reloadWidgets()
+      return true
+    }
+
     AsyncFunction("getWidgetArtLibrary") { () -> [String: String] in
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
         return ["index": "", "dir": ""]
@@ -311,6 +394,7 @@ public class GlazeWidgetBridgeModule: Module {
     /// already on disk (an interrupted earlier run) is kept as it is. Atomic writes, the .jpg last,
     /// so a piece is either whole or absent; leftovers are pruned by the next index write.
     AsyncFunction("composeWidgetArtPiece") { (id: String, artUri: String, w: Double, h: Double, colour: String, skipIfPresent: Bool) -> Bool in
+      GlazeBuildTime.extend()
       guard GlazeWidgetBridgeModule.validArtId(id), w >= 1, h >= 1 else { return false }
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return false }
       let dir = container.appendingPathComponent(artDir, isDirectory: true)
@@ -352,6 +436,7 @@ public class GlazeWidgetBridgeModule: Module {
     /// the wallpaper under the widget with the hero fitted on top). crop = [x, y, w, h] in wallpaper
     /// pixels. No raw art (the Fit layout fits the composed image). No index write, no reload.
     AsyncFunction("composeSeamlessPiece") { (id: String, wallpaperUri: String, crop: [Double], heroUri: String, skipIfPresent: Bool) -> Bool in
+      GlazeBuildTime.extend()
       guard GlazeWidgetBridgeModule.validArtId(id), crop.count == 4 else { return false }
       guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return false }
       let dir = container.appendingPathComponent(artDir, isDirectory: true)
@@ -383,6 +468,35 @@ public class GlazeWidgetBridgeModule: Module {
       }
       return ok
     }
+
+    // owner-1102b T280 / T281: access for the Next event and Weather widgets. Asked only from the
+    // widget-access screen (app/widget-access.tsx), which the widgets open when tapped. Results:
+    // "granted" | "denied" | "restricted" | "notDetermined" | "writeOnly" (calendar, iOS 17).
+    AsyncFunction("calendarAccessStatus") { () -> String in
+      GlazeDataAccess.calendarStatus()
+    }
+
+    AsyncFunction("requestCalendarAccess") { (promise: Promise) in
+      GlazeDataAccess.requestCalendar { status in
+        promise.resolve(status)
+      }
+    }
+
+    AsyncFunction("locationAccessStatus") { (promise: Promise) in
+      DispatchQueue.main.async {
+        promise.resolve(GlazeDataAccess.locationStatus(CLLocationManager().authorizationStatus))
+      }
+    }
+
+    /// When-In-Use only. On "granted" one location fix is taken and stored ROUNDED to 2 decimals
+    /// (about 1 km) in the App Group for the Weather widget; it is never sent anywhere by the app.
+    AsyncFunction("requestLocationAccess") { (promise: Promise) in
+      DispatchQueue.main.async {
+        GlazeLocationAsker.shared.request { status in
+          promise.resolve(status)
+        }
+      }
+    }
   }
 
   /// T221: same rule as WIDGET_ART_ID_RE in src/core/widgetArtLibrary.ts (^[A-Za-z0-9_-]{1,64}$).
@@ -394,9 +508,10 @@ public class GlazeWidgetBridgeModule: Module {
   /// out of the upright wallpaper, draws the hero (may be "") centred-fit with the 6 % padding of
   /// heroRect, long edge capped at 1200 px. nil when the wallpaper can't be read or the crop is empty.
   private static func composeSeamlessImage(wallpaperUri: String, x: Double, y: Double, w: Double, h: Double, heroUri: String) -> (image: UIImage, hero: UIImage?)? {
+    // T264 (owner-1101i #2): a NaN / infinite crop from JS is refused, never drawn.
+    guard x.isFinite, y.isFinite, w.isFinite, h.isFinite, w >= 1, h >= 1 else { return nil }
     guard
-      let wallpaper = GlazeWidgetBridgeModule.loadImage(wallpaperUri),
-      let source = GlazeWidgetBridgeModule.uprightCGImage(wallpaper)
+      let source = GlazeWidgetBridgeModule.uprightWallpaper(wallpaperUri)
     else { return nil }
     let bounds = CGRect(x: 0, y: 0, width: CGFloat(source.width), height: CGFloat(source.height))
     let wanted = CGRect(x: CGFloat(x), y: CGFloat(y), width: CGFloat(w), height: CGFloat(h)).integral.intersection(bounds)
@@ -430,13 +545,22 @@ public class GlazeWidgetBridgeModule: Module {
   /// <= 1200): the opaque theme colour as the base, then the art whole, edge to edge when the
   /// aspects match within 2 %, else fitted with NO inset. No blurred copy of the art anywhere (the
   /// blurred strips read as a light-grey frame round a black square).
-  private static func composeArtImage(art: UIImage, w: Double, h: Double, colour: String) -> UIImage {
+  private static func composeArtImage(art: UIImage, w rawW: Double, h rawH: Double, colour: String) -> UIImage {
+    // T264 (owner-1101i #2): never a NaN / zero canvas (UIGraphicsImageRenderer must get a real size).
+    let w = rawW.isFinite && rawW >= 1 ? rawW : 1
+    let h = rawH.isFinite && rawH >= 1 ? rawH : 1
     let longest = max(w, h)
     let k: CGFloat = longest > 1200 ? 1200 / CGFloat(longest) : 1
     let target = CGSize(width: max(1, floor(CGFloat(w) * k)), height: max(1, floor(CGFloat(h) * k)))
     let canvas = CGRect(origin: .zero, size: target)
     let base = GlazeWidgetBridgeModule.colour(colour)
 
+    guard art.size.width > 0, art.size.height > 0 else {
+      return UIGraphicsImageRenderer(size: target).image { ctx in
+        base.setFill()
+        ctx.fill(canvas)
+      }
+    }
     let artAspect = art.size.width / art.size.height
     let outAspect = target.width / target.height
     let aspectsMatch = min(artAspect, outAspect) / max(artAspect, outAspect) >= 0.98
@@ -472,6 +596,23 @@ public class GlazeWidgetBridgeModule: Module {
   }
 
   /// T131: a local image from a file:// URI or a plain path.
+  /// Owner 2026-11-08 ("its been like 25 mins thats way to slow"): a theme apply composes every
+  /// piece on the same wallpaper, so the decoded, upright wallpaper is kept for the next piece
+  /// instead of being decoded again each time. One wallpaper at a time; a new file replaces it.
+  private static let wallpaperLock = NSLock()
+  private static var wallpaperCache: (uri: String, modified: Date?, image: CGImage)?
+  private static func uprightWallpaper(_ uri: String) -> CGImage? {
+    let url: URL = uri.hasPrefix("file://") ? (URL(string: uri) ?? URL(fileURLWithPath: uri)) : URL(fileURLWithPath: uri)
+    let modified = (try? FileManager.default.attributesOfItem(atPath: url.path))?[.modificationDate] as? Date
+    wallpaperLock.lock()
+    defer { wallpaperLock.unlock() }
+    if let c = wallpaperCache, c.uri == uri, c.modified == modified { return c.image }
+    wallpaperCache = nil
+    guard let wallpaper = loadImage(uri), let upright = uprightCGImage(wallpaper) else { return nil }
+    wallpaperCache = (uri: uri, modified: modified, image: upright)
+    return upright
+  }
+
   private static func loadImage(_ uri: String) -> UIImage? {
     let url: URL = uri.hasPrefix("file://")
       ? (URL(string: uri) ?? URL(fileURLWithPath: uri))
@@ -498,11 +639,49 @@ public class GlazeWidgetBridgeModule: Module {
     let longest = max(size.width, size.height)
     guard longest > maxEdge, longest > 0 else { return image }
     let scale = maxEdge / longest
-    let target = CGSize(width: floor(size.width * scale), height: floor(size.height * scale))
+    // T264: at least 1 x 1 px (a very thin image never asks for a zero-size canvas).
+    let target = CGSize(width: max(1, floor(size.width * scale)), height: max(1, floor(size.height * scale)))
     let format = UIGraphicsImageRendererFormat.default()
     format.scale = 1
     return UIGraphicsImageRenderer(size: target, format: format).image { _ in
       image.draw(in: CGRect(origin: .zero, size: target))
+    }
+  }
+}
+
+// MARK: - Background time for a theme's art
+
+/// Owner 2026-11-08 (the gallery stayed grey for 25 minutes after a swap): a theme apply composes
+/// its pieces one by one from JS. Leaving Glaze right after tapping a theme froze that work until the
+/// next time the app was opened. Each compose asks iOS for background time and hands it back 20 s
+/// after the last piece, so the art finishes (and the gallery fills) after the person has left.
+enum GlazeBuildTime {
+  private static let lock = NSLock()
+  private static var task: UIBackgroundTaskIdentifier = .invalid
+  private static var ender: DispatchWorkItem?
+
+  static func extend() {
+    DispatchQueue.main.async {
+      lock.lock()
+      defer { lock.unlock() }
+      if task == .invalid {
+        task = UIApplication.shared.beginBackgroundTask(withName: "GlazeThemeArt") { GlazeBuildTime.end() }
+      }
+      ender?.cancel()
+      let work = DispatchWorkItem { GlazeBuildTime.end() }
+      ender = work
+      DispatchQueue.main.asyncAfter(deadline: .now() + 20, execute: work)
+    }
+  }
+
+  static func end() {
+    lock.lock()
+    defer { lock.unlock() }
+    ender?.cancel()
+    ender = nil
+    if task != .invalid {
+      UIApplication.shared.endBackgroundTask(task)
+      task = .invalid
     }
   }
 }
@@ -531,6 +710,9 @@ enum GlazeArtBlend {
   static let keyRimShare: Double = 0.02
   static let keyHoldLo: Double = 0.05
   static let keyHoldHi: Double = 0.3
+  /// Owner 2026-11-08: dim but coloured interior pixels are held too (artBlend.ts BLEND_KEY_TINT_LO).
+  static let keyTintLo: Double = 8
+  static let keyTintHi: Double = 20
   static let maxEdge: CGFloat = 1200
 
   static func smoothstep(_ e0: Double, _ e1: Double, _ x: Double) -> Double {
@@ -727,7 +909,10 @@ enum GlazeArtBlend {
         var a = Double(p.3) / 255
         if key_ {
           let raw = keyT[y * w + x]
-          let hold = smoothstep(rim * 0.5, rim, toBg[y * w + x] / 3) * smoothstep(keyHoldLo, keyHoldHi, raw)
+          let chroma = max(c.0, c.1, c.2) - min(c.0, c.1, c.2)
+          let keyChroma = max(key.0, key.1, key.2) - min(key.0, key.1, key.2)
+          let tint = smoothstep(keyTintLo, keyTintHi, chroma - keyChroma)
+          let hold = smoothstep(rim * 0.5, rim, toBg[y * w + x] / 3) * max(smoothstep(keyHoldLo, keyHoldHi, raw), tint)
           let t = max(raw, hold)
           if t > 1.0 / 255 {
             c = (min(255, max(0, key.0 + (c.0 - key.0) / t)),
@@ -749,5 +934,108 @@ enum GlazeArtBlend {
     }
     guard let out = ctx.makeImage() else { return image }
     return UIImage(cgImage: out)
+  }
+}
+
+// MARK: - owner-1102b T280 / T281: calendar and location access for the data widgets
+
+/// App Group key the Weather widget reads (targets/widget/WeatherWidget.swift GlazeWeatherStore.coordsKey).
+private let weatherCoordsKey = "glaze.weather.coords.v1"
+private let calendarWidgetKind = "GlazeCalendarEvent"
+private let weatherWidgetKind = "GlazeWeather"
+
+enum GlazeDataAccess {
+  /// Kept alive while the permission prompt is up.
+  private static let eventStore = EKEventStore()
+
+  static func calendarStatus() -> String {
+    let status = EKEventStore.authorizationStatus(for: .event)
+    if #available(iOS 17.0, *) {
+      if status == .fullAccess { return "granted" }
+      if status == .writeOnly { return "writeOnly" }
+    } else if status.rawValue == 3 {
+      // .authorized before iOS 17 (same raw value as .fullAccess).
+      return "granted"
+    }
+    if status == .notDetermined { return "notDetermined" }
+    if status == .restricted { return "restricted" }
+    return "denied"
+  }
+
+  static func requestCalendar(_ done: @escaping (String) -> Void) {
+    let finish: () -> Void = {
+      if #available(iOS 14.0, *) {
+        WidgetCenter.shared.reloadTimelines(ofKind: calendarWidgetKind)
+      }
+      done(calendarStatus())
+    }
+    if #available(iOS 17.0, *) {
+      eventStore.requestFullAccessToEvents { _, _ in finish() }
+    } else {
+      eventStore.requestAccess(to: .event) { _, _ in finish() }
+    }
+  }
+
+  static func locationStatus(_ status: CLAuthorizationStatus) -> String {
+    switch status {
+    case .authorizedWhenInUse, .authorizedAlways: return "granted"
+    case .notDetermined: return "notDetermined"
+    case .restricted: return "restricted"
+    case .denied: return "denied"
+    @unknown default: return "denied"
+    }
+  }
+}
+
+/// One CLLocationManager on the main thread; answers every waiting request when the user decides.
+final class GlazeLocationAsker: NSObject, CLLocationManagerDelegate {
+  static let shared = GlazeLocationAsker()
+
+  private let manager = CLLocationManager()
+  private var waiting: [(String) -> Void] = []
+
+  override init() {
+    super.init()
+    manager.delegate = self
+    manager.desiredAccuracy = kCLLocationAccuracyKilometer
+  }
+
+  /// Call on the main queue.
+  func request(_ done: @escaping (String) -> Void) {
+    let status = manager.authorizationStatus
+    if status == .notDetermined {
+      waiting.append(done)
+      manager.requestWhenInUseAuthorization()
+      return
+    }
+    if status == .authorizedWhenInUse || status == .authorizedAlways { manager.requestLocation() }
+    done(GlazeDataAccess.locationStatus(status))
+  }
+
+  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    let status = manager.authorizationStatus
+    // Also called once when the delegate is set; nothing to answer until the user decides.
+    if status == .notDetermined { return }
+    if status == .authorizedWhenInUse || status == .authorizedAlways { manager.requestLocation() }
+    let answer = GlazeDataAccess.locationStatus(status)
+    let pending = waiting
+    waiting = []
+    for done in pending { done(answer) }
+    if #available(iOS 14.0, *) {
+      WidgetCenter.shared.reloadTimelines(ofKind: weatherWidgetKind)
+    }
+  }
+
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    guard let loc = locations.last else { return }
+    let value = String(format: "%.2f,%.2f", loc.coordinate.latitude, loc.coordinate.longitude)
+    UserDefaults(suiteName: appGroup)?.set(value, forKey: weatherCoordsKey)
+    if #available(iOS 14.0, *) {
+      WidgetCenter.shared.reloadTimelines(ofKind: weatherWidgetKind)
+    }
+  }
+
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    // No fix this time: the widget keeps its last coordinates (or its "Open Glaze" state).
   }
 }

@@ -44,7 +44,7 @@ export const toiletplus = {
   'toiletplus.searchPoint': 'Where you searched',
   'toiletplus.searchHotel': 'Your hotel: {name}',
   'toiletplus.noMapTitle': 'Map not available here',
-  'toiletplus.noMapBody': 'This build can’t show the map. Tap a toilet below to see it.',
+  'toiletplus.noMapBody': 'The map can’t be shown right now. Tap a toilet below to see it.',
   'toiletplus.mapTapHint': 'Tap a marker to see that toilet.',
   'toiletplus.mapOffline': 'Offline {city} map drawn on top',
   'toiletplus.closeCard': 'Close',

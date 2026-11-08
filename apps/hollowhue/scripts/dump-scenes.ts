@@ -3,7 +3,8 @@
 import { flatten } from '../src/core/geom.ts';
 import { SCENES } from '../src/scenes/index.ts';
 
-const out = SCENES.map((s) => ({
+const requested = process.argv.slice(2);
+const out = SCENES.filter((s) => !requested.length || requested.includes(s.id)).map((s) => ({
   id: s.id,
   levels: s.levels.map((l) => ({
     id: l.id,
@@ -13,7 +14,7 @@ const out = SCENES.map((s) => ({
     portal: l.portal ?? null,
     round: !!l.round,
     stroke: l.stroke ?? 3,
-    regions: l.regions.map((r) => ({ id: r.id, line: r.line ?? 0, rings: flatten(r.d, 8).map((ring) => ring.map((v) => Math.round(v * 10) / 10)) })),
+    regions: l.regions.map((r) => ({ id: r.id, line: r.line ?? 0, ink: !!r.ink, outline: r.outline !== false, rings: flatten(r.d, 8).map((ring) => ring.map((v) => Math.round(v * 10) / 10)) })),
   })),
 }));
 process.stdout.write(JSON.stringify(out));

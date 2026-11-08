@@ -3,7 +3,7 @@
 // (haptics), Language (phone language or any shipped language) and About (free tools, Linework Plus + tip jar,
 // privacy, version). Defaults are persisted locally.
 import { useEffect, useState, type ReactNode } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, Linking, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import Constants from 'expo-constants';
 import { Stack, useRouter } from 'expo-router';
 import { useThemeV2 } from '../../src/theme/useTheme';
@@ -14,11 +14,15 @@ import { LabeledSlider } from '../../src/ui/LabeledSlider';
 import { STYLE_OPTIONS } from '../../src/core/outlineStyleParam';
 import { PRESETS } from '../../src/core/outlinePresets';
 import { SetupGuide } from '../../src/ui/SetupGuide';
-import { InsetGroup, InsetRow, ScreenV2 } from '../../src/ui/v2';
+import { InsetGroup, InsetRow, PillButton, ScreenV2 } from '../../src/ui/v2';
+import { activateReviewAccess, reviewAccessAvailable, usePlus } from '../../src/plus/usePlus';
 import { setLanguage, useT, type LanguageSetting } from '../../src/i18n';
 import { LOCALES, localeInfo } from '../../src/i18n/core';
 import { applyLayoutDirection } from '../../src/i18n/direction';
 import type { MessageKey } from '../../src/i18n/en';
+import { STARTER_TEMPLATE_COUNT } from '../../src/plus/entitlement';
+
+const PLAY_PRIVACY_URL = 'https://merlinwerlin.github.io/App-Projects/linework/play-privacy.html';
 
 const GRID_OPTIONS: { value: GridDefault; label: MessageKey }[] = [
   { value: 'off', label: 'settings.tracing.grid.off' },
@@ -164,15 +168,20 @@ export default function SettingsScreen() {
 
         {/* About: free tools, Plus + tip jar, privacy, version */}
         <InsetGroup header={t('settings.about.title')} footer={t('settings.about.body', { version })}>
-          <InsetRow title={t('settings.free.title')} subtitle={t('settings.free.body')} icon="heart" iconFill={c.pastels[1]} />
           <InsetRow
-            title={t('settings.free.plusLink')}
-            subtitle={t('settings.free.plusHint')}
+            title={t('settings.free.title')}
+            subtitle={t(Platform.OS === 'android' ? 'settings.free.playBody' : 'settings.free.body', { count: STARTER_TEMPLATE_COUNT })}
+            icon="heart"
+            iconFill={c.pastels[1]}
+          />
+          <InsetRow
+            title={t(Platform.OS === 'android' ? 'settings.free.playPlusLink' : 'settings.free.plusLink')}
+            subtitle={t(Platform.OS === 'android' ? 'settings.free.playPlusHint' : 'settings.free.plusHint')}
             icon="gift"
             iconFill={c.pastels[4]}
             onPress={() => router.push('/plus')}
-            accessibilityLabel={t('settings.free.plusLink')}
-            accessibilityHint={t('settings.free.plusHint')}
+            accessibilityLabel={t(Platform.OS === 'android' ? 'settings.free.playPlusLink' : 'settings.free.plusLink')}
+            accessibilityHint={t(Platform.OS === 'android' ? 'settings.free.playPlusHint' : 'settings.free.plusHint')}
           />
           <InsetRow
             title={t('feedback.row')}
@@ -183,11 +192,71 @@ export default function SettingsScreen() {
             accessibilityLabel={t('feedback.row')}
             accessibilityHint={t('feedback.rowHint')}
           />
-          <InsetRow title={t('settings.privacy.title')} subtitle={t('settings.privacy.body')} icon="shield" iconFill={c.pastels[3]} />
+          <InsetRow
+            title={t('settings.privacy.title')}
+            subtitle={t(Platform.OS === 'android' ? 'settings.privacy.playBody' : 'settings.privacy.body')}
+            icon="shield"
+            iconFill={c.pastels[3]}
+            onPress={Platform.OS === 'android' ? () => {
+              void Linking.openURL(PLAY_PRIVACY_URL).catch(() => {
+                Alert.alert(t('settings.privacy.title'), t('settings.privacy.openFailed', { url: PLAY_PRIVACY_URL }));
+              });
+            } : undefined}
+            accessibilityHint={Platform.OS === 'android' ? t('settings.privacy.openHint') : undefined}
+          />
         </InsetGroup>
+        {reviewAccessAvailable ? <ReviewAccessSection /> : null}
       </ScreenV2>
       <SetupGuide visible={showGuide} onDone={() => setShowGuide(false)} />
     </>
+  );
+}
+
+function ReviewAccessSection() {
+  const { c, text } = useThemeV2();
+  const { t } = useT();
+  const { reviewActive } = usePlus();
+  const [editing, setEditing] = useState(false);
+  const [code, setCode] = useState('');
+  const [busy, setBusy] = useState(false);
+
+  const activate = async () => {
+    setBusy(true);
+    const accepted = await activateReviewAccess(code);
+    setBusy(false);
+    if (accepted) {
+      setEditing(false);
+      setCode('');
+    } else {
+      Alert.alert(t('settings.review.title'), t('settings.review.invalid'));
+    }
+  };
+
+  return (
+    <InsetGroup header={t('settings.review.title')}>
+      <InsetRow
+        title={t(reviewActive ? 'settings.review.active' : 'settings.review.enter')}
+        icon={reviewActive ? 'check' : 'key'}
+        onPress={reviewActive ? undefined : () => setEditing((shown) => !shown)}
+      />
+      {editing && !reviewActive ? (
+        <View style={{ padding: spaceV2.x4, gap: spaceV2.x3 }}>
+          <TextInput
+            accessibilityLabel={t('settings.review.title')}
+            placeholder={t('settings.review.title')}
+            placeholderTextColor={c.muted}
+            value={code}
+            onChangeText={setCode}
+            maxLength={64}
+            autoCapitalize="characters"
+            autoCorrect={false}
+            secureTextEntry
+            style={[text('body'), { color: c.ink, backgroundColor: c.inkSoft, padding: spaceV2.x3 }]}
+          />
+          <PillButton title={t('settings.review.apply')} disabled={busy || !code.trim()} onPress={() => { void activate(); }} />
+        </View>
+      ) : null}
+    </InsetGroup>
   );
 }
 

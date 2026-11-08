@@ -1,0 +1,15 @@
+appId: com.jared797.cue.playtest
+---
+- launchApp:
+    clearState: false
+    permissions:
+      all: deny
+- extendedWaitUntil:
+    visible: Scripts
+    timeout: 60000
+- tapOn: Android release rehearsal
+- tapOn: Record
+- assertVisible: Camera for your takes
+- takeScreenshot: 07-camera-denied
+- tapOn: Cancel
+- assertVisible: Prompt

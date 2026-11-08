@@ -44,6 +44,7 @@ test('no widget renders the theme name', () => {
 test('every provider placeholder reads the stored theme, never the built-in fallback', () => {
   const providers = code(read('targets/widget/Providers.swift'));
   const placeholders = providers.match(/func placeholder\(in context: Context\) -> GlazeEntry \{[^}]*\}/g) ?? [];
+  // Minute, Day, Hour (Moon widget, T277) and Static.
   assert.equal(placeholders.length, 4);
   for (const p of placeholders) {
     assert.match(p, /ThemeStore\.load\(\)/);
@@ -59,10 +60,18 @@ test('every provider placeholder reads the stored theme, never the built-in fall
 });
 
 test('every Home Screen widget paints the theme background through containerBackground', () => {
-  for (const f of ['ClockWidget.swift', 'DateWidget.swift', 'QuoteWidget.swift', 'PhotoWidget.swift', 'HabitWidget.swift']) {
+  for (const f of ['ClockWidget.swift', 'DateWidget.swift', 'QuoteWidget.swift', 'PhotoWidget.swift', 'HabitWidget.swift', 'HabitStreakWidget.swift']) {
     const src = code(read(`targets/widget/${f}`));
     assert.match(src, /\.containerBackground\(for: \.widget\)/, f);
-    assert.match(src, /GlazeBackground\(theme: t\)/, `${f} has no themed background`);
+    if (f === 'HabitWidget.swift') {
+      // Habit controls retain the original stops without a legibility-changing glass material.
+      assert.match(src, /return entry\.theme\.backgroundHexes/);
+      assert.match(src, /LinearGradient\(colors: stops\.map/);
+      assert.match(src, /SavedWidgetFill\(fill: fill\)/);
+      assert.doesNotMatch(src, /ultraThinMaterial/);
+    } else {
+      assert.match(src, /GlazeBackground\(theme: t\)/, `${f} has no themed background`);
+    }
     assert.match(src, /t\.(inkColor|accentColor)/, `${f} has no themed ink/accent`);
   }
   // The shared background uses the pale-aware stops.
@@ -148,7 +157,7 @@ test('bridge and extension agree on suite, key and file, and the bridge reloads 
   assert.match(code(store), /GlazeShared\.themeFile/);
 });
 
-test('the app writes the theme on every apply path and once at launch', () => {
+test('explicit theme selection writes widgets; wallpaper and icon-only actions keep them unchanged', () => {
   // T250: the launch re-write is the deferred 'widgetTheme' step, queued by startLaunchWork.
   assert.match(read('app/_layout.tsx'), /startLaunchWork\(\)/);
   const launch = read('src/store/launchWork.ts');
@@ -160,13 +169,16 @@ test('the app writes the theme on every apply path and once at launch', () => {
 
   const detail = read('app/theme/[id].tsx');
   const save = /const onSaveWallpaper = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(save, /applyWidgetTheme\(theme\)/, 'wallpaper save must apply the widget theme');
+  assert.doesNotMatch(save, /applyWidgetTheme|applyThemeEverywhere/, 'wallpaper-only saves never change widgets');
   const useStyle = /const onUseStyle = async \([^)]*\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(useStyle, /applyWidgetTheme\(theme\)/);
+  assert.doesNotMatch(useStyle, /applyWidgetTheme|applyThemeEverywhere/, 'icon-only action never changes widgets');
   // T184 / T185: "Use this theme" (the old widgets step is gone) writes the widget theme through
   // applyThemeEverywhere, which remembers it and (T250) queues the App Group write.
-  const putInUse = /const putInUse = async \(\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
-  assert.match(putInUse, /applyThemeEverywhere\(theme\)/);
+  const putInUse = /const putInUse = async \([^)]*\) => \{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
+  // Owner 2026-11-08: putInUse publishes through selectTheme (also used by the four theme choices).
+  assert.match(putInUse, /await selectTheme\(focus\)/);
+  const selectTheme = /const selectTheme = async \([^)]*\)[^{]*\{[^]*?\n {2}\};/.exec(detail)?.[0] ?? '';
+  assert.match(selectTheme, /applyThemeEverywhere\(theme\)/);
   assert.match(read('src/store/activeTheme.ts'), /const widgets = await rememberWidgetTheme\(theme\);/);
   assert.match(read('src/store/activeTheme.ts'), /requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
 

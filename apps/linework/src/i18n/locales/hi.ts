@@ -490,10 +490,21 @@ export const hi: Translation = {
   'settings.free.body': 'Linework का हर ट्रेसिंग टूल मुफ़्त है: कैमरा से ट्रेसिंग, अपारदर्शिता, लॉक, फ़्लैशलाइट, ग्रिड, मिरर, टच लॉक, लाइटबॉक्स, आउटलाइन मोड और आपकी अपनी फ़ोटो। न विज्ञापन, न ट्रायल, न साप्ताहिक सब्सक्रिप्शन।',
   'settings.free.plusLink': 'Linework Plus और टिप जार',
   'settings.free.plusHint': 'वैकल्पिक, एक बार के एक्स्ट्रा। कोई भी ट्रेसिंग टूल कभी लॉक नहीं होता।',
+  'settings.free.playBody': "कैमरा ट्रेसिंग, आपकी फ़ोटो, ट्रेसिंग नियंत्रण और {count} शुरुआती टेम्प्लेट मुफ़्त रहते हैं। वैकल्पिक 14-दिन के ट्रायल में पूरी लाइब्रेरी और फ़ोटो से आउटलाइन बनाना शामिल है। Plus की एकमुश्त खरीद से ये अतिरिक्त सुविधाएँ खुली रहती हैं।",
+  'settings.free.playPlusLink': "Linework Plus",
+  'settings.free.playPlusHint': "पूरी टेम्प्लेट लाइब्रेरी और फ़ोटो से आउटलाइन के लिए वैकल्पिक एकमुश्त खरीद",
 
   'settings.privacy.title': 'गोपनीयता',
   'settings.privacy.body': 'डेटा एकत्रित नहीं किया गया। Linework में न अकाउंट हैं, न एनालिटिक्स, न विज्ञापन। आपकी फ़ोटो इसी फ़ोन पर रहती हैं और कभी अपलोड नहीं होतीं; आउटलाइन डिवाइस पर ही बनती हैं।',
+  'settings.privacy.playBody': "चित्र इसी डिवाइस पर संसाधित होते हैं। Google की बिलिंग लाइब्रेरी तकनीकी निदान डेटा Google को भेजती है। कोई विज्ञापन या ऐप खाता नहीं है। गोपनीयता नीति पढ़ने के लिए टैप करें।",
+  'settings.privacy.openHint': "ब्राउज़र में Linework की गोपनीयता नीति खोलें",
+  'settings.privacy.openFailed': "ब्राउज़र नहीं खुल सका। गोपनीयता नीति: {url}",
 
+  'settings.review.title': "Plus ऐक्सेस कोड",
+  'settings.review.active': "Plus ऐक्सेस चालू है",
+  'settings.review.enter': "ऐक्सेस कोड डालें",
+  'settings.review.apply': "ऐक्सेस चालू करें",
+  'settings.review.invalid': "यह कोड चालू नहीं हो सका। इसे जाँचें और फिर कोशिश करें।",
   'settings.about.title': 'परिचय',
   'settings.about.body': 'Linework {version}। टेम्पलेट Linework के लिए बनाए गए मौलिक लाइन आर्ट हैं।',
 

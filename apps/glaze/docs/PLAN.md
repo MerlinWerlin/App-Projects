@@ -102,3 +102,5 @@ Glaze ships around themes, matching icons, themed widgets and wallpaper packs; o
 **1 Nov (owner-1101):** icons open apps with no Safari hop (Shortcuts Open App default), apply-a-theme switches every tab, theme page with three separate entry points, 5 tabs (Themes · Widgets · Icons · Pets · Wallpapers), pack format v2 with every widget art piece, live Island pets, bigger app catalogue, prism creature mascot + calm startup. Status: [docs/OWNER_1101.md](OWNER_1101.md).
 
 **1 Nov (owner-1101d #1, T198):** pets are cut. No Pets tab, no Island pets, no Live Activity / Dynamic Island; tabs are Themes · Widgets · Icons · Wallpapers. Parked notes and art (maybe a separate game much later): [docs/future/pets-game/README.md](future/pets-game/README.md).
+
+**2 Nov (owner-1102a):** native art clocks from Codex PR #190 (105 clock editions, live in Fill and Fit), per-pack release tags (glaze-packs-v2+), clock editions built into packs, every practical piece live (midnight rollover). Next: owner-1102b native widget kinds (moon, word clock, Lock Screen, calendar, weather, photo frame, quote, habits). Status: [docs/OWNER_1102A.md](OWNER_1102A.md).

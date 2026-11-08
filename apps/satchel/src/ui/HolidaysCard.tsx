@@ -110,7 +110,7 @@ export function HolidayBadge({ holidays }: { holidays: readonly TripHoliday[] | 
       accessibilityLabel={t('holidays.badgeA11y', { names })}
       style={{ alignSelf: 'flex-start', marginTop: 2, paddingHorizontal: space.s, paddingVertical: 2, borderRadius: radius.pill, backgroundColor: theme.tealSoft }}
     >
-      <Text numberOfLines={1} style={[typeScale.caption, { color: theme.teal }]}>
+      <Text numberOfLines={2} style={[typeScale.caption, { color: theme.teal }]}>
         {t('holidays.badge')} · {names}
       </Text>
     </View>

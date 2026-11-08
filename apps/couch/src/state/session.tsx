@@ -1,6 +1,4 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, useSyncExternalStore, type ReactNode } from 'react';
-import type { TvDriver } from '../core/driver';
-import { createDemoSession } from '../core/demo';
 import { connectRestored, restoreSaved } from '../core/restore';
 import { RemoteSession, type SessionSnapshot } from '../core/session';
 import { appTransport } from '../native/transport';
@@ -8,43 +6,31 @@ import { savedTvStore } from './tvs';
 
 /**
  * React binding for the pure-TS RemoteSession. On start, saved TVs are restored (last used first,
- * src/core/restore.ts) and the app starts out of demo mode; with no restorable TVs it starts in demo
- * mode (MockTv) so the app always works in Expo Go. The active TV is remembered as "last used".
+ * src/core/restore.ts). With none saved the list starts empty and the app asks the user to add their TV
+ * (owner 7 Nov 2026: demo mode removed from the app). The active TV is remembered as "last used".
  */
 const Ctx = createContext<RemoteSession | null>(null);
-
-async function loadDemo(session: RemoteSession): Promise<void> {
-  const demo = await createDemoSession();
-  session.load(demo.tvs, demo.drivers as Map<string, TvDriver>, { demo: true });
-}
-
-/** Loads the saved TVs into the session. Returns false (session untouched) when none can be restored. */
-async function loadSaved(session: RemoteSession): Promise<boolean> {
-  const r = await restoreSaved(savedTvStore, appTransport());
-  if (r.tvs.length === 0) return false;
-  session.load(r.tvs, r.drivers, { demo: false });
-  void connectRestored(r.drivers);
-  return true;
-}
+/** True once saved TVs have been read from storage, so screens don't flash "add a TV" on start. */
+const ReadyCtx = createContext(false);
 
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [session] = useState(() => new RemoteSession());
+  const [ready, setReady] = useState(false);
   useEffect(() => {
     let cancelled = false;
     (async () => {
       const r = await restoreSaved(savedTvStore, appTransport());
-      // Skip if a TV was added (or demo toggled) while we were reading storage.
+      // Skip if a TV was added while we were reading storage.
       if (cancelled || session.getSnapshot().tvs.length > 0) return;
       if (r.tvs.length > 0) {
         session.load(r.tvs, r.drivers, { demo: false });
         void connectRestored(r.drivers);
-        return;
       }
-      const demo = await createDemoSession();
-      if (!cancelled && session.getSnapshot().tvs.length === 0) {
-        session.load(demo.tvs, demo.drivers as Map<string, TvDriver>, { demo: true });
-      }
-    })().catch(() => {});
+    })()
+      .catch(() => {})
+      .finally(() => {
+        if (!cancelled) setReady(true);
+      });
     return () => {
       cancelled = true;
     };
@@ -61,7 +47,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     });
   }, [session]);
 
-  return <Ctx.Provider value={session}>{children}</Ctx.Provider>;
+  return (
+    <Ctx.Provider value={session}>
+      <ReadyCtx.Provider value={ready}>{children}</ReadyCtx.Provider>
+    </Ctx.Provider>
+  );
 }
 
 export function useSession(): { session: RemoteSession; snap: SessionSnapshot } {
@@ -74,14 +64,7 @@ export function useSession(): { session: RemoteSession; snap: SessionSnapshot } 
   return useMemo(() => ({ session, snap }), [session, snap]);
 }
 
-/**
- * Demo mode on/off: on re-creates the demo session; off restores the saved TVs, or clears the list
- * until real ones are added when there are none.
- */
-export async function setDemoMode(session: RemoteSession, on: boolean): Promise<void> {
-  if (on) {
-    await loadDemo(session);
-    return;
-  }
-  if (!(await loadSaved(session))) session.load([], new Map(), { demo: false });
+/** True once the saved TVs have been read on start. */
+export function useSessionReady(): boolean {
+  return useContext(ReadyCtx);
 }

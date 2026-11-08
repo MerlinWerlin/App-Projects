@@ -172,6 +172,8 @@ export default function AppsScreen() {
 
   const onLaunch = useCallback(
     (app: TvApp) => {
+      // Couch Plus gate (src/plus/gate.tsx): locked -> the paywall opens, no "Opening..." line.
+      if (!session.allowed()) return;
       setStatus(t('app.apps.opening', { name: app.name }));
       void session.launchApp(app.id).then((ok) => {
         setStatus(ok ? t('app.apps.opened', { name: app.name }) : null);

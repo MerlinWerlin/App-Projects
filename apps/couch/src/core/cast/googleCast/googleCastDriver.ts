@@ -96,10 +96,11 @@ export function buildLoadPayload(media: CastMedia): CastPayload {
     media: {
       contentId: media.url,
       contentType: media.mime,
-      streamType: 'BUFFERED',
+      streamType: media.kind === 'photo' ? 'NONE' : 'BUFFERED',
       metadata: {
         metadataType: media.kind === 'photo' ? GCAST_METADATA_PHOTO : GCAST_METADATA_GENERIC,
         title: media.title,
+        ...(media.kind === 'photo' ? { images: [{ url: media.url }] } : {}),
       },
     },
     autoplay: true,

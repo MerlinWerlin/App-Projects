@@ -2,9 +2,24 @@
 import type { LocaleMessages } from '../../catalogue.ts';
 
 export const de: NonNullable<LocaleMessages['ui']> = {
+  designedWidgets: {
+      "title": "Für dieses Thema gestaltet",
+      "body": "Gut lesbare Live-Widgets in den Farben deiner Symbole.",
+      "clock": "Uhr",
+      "battery": "Batterie",
+      "calendar": "Kalender",
+      "setup": "Füge auf dem Home-Bildschirm ein Widget hinzu und wähle Glaze. Uhr, Batterie und Kalender folgen dem hier gewählten Thema.",
+      "save": "In meiner Widget-Kunst speichern",
+      "update": "Installiere den neuesten Glaze-Build über TestFlight, um diese Widgets zu nutzen.",
+      "batteryNote": "Batteriewerte werden regelmäßig aktualisiert. Ein Strich bedeutet, dass iOS keinen Wert liefert.",
+      "unavailable": "Nicht verfügbar"
+  },
   error: {
     body: 'Auf diesem Bildschirm ist ein Problem aufgetreten. Deine Symbole, Themes und Schleifen sind auf deinem Telefon gespeichert und nicht betroffen. Versuch es noch einmal und schick uns die Notiz unten, wenn es wieder passiert.',
     retryHint: 'Lädt diesen Bildschirm neu',
+    screenTitle: 'Etwas ist schiefgelaufen',
+    screenBody: 'Auf diesem Bildschirm ist etwas schiefgegangen. Deine Themes, Symbole und Widgets sind sicher auf deinem Telefon. Tippe auf Erneut versuchen, um ihn neu zu laden.',
+    retry: 'Erneut versuchen',
     report: 'Problem melden',
     reportHint: 'Öffnet deine Mail-App mit diesem Fehler ausgefüllt. Glaze selbst sendet nichts.',
     opening: 'Mail wird geöffnet…',
