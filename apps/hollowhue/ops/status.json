@@ -1,12 +1,12 @@
 {
   "app": "hollowhue",
   "stage": "testflight",
-  "headline": "Nested artwork update delivered: TestFlight 0.1.0 (5) ready and production OTA verified. 42 separate Single artworks, six Zoom editions with six nested discoveries each, and twenty Mega tiers. 47 new drawings; 159 tests and complete reviewed native coverage pass.",
+  "headline": "Blended zoom update ready in PR257: nested details dissolve into the picture with soft edges (no pasted squares), Look closer fills the canvas, sparkle button shows where to zoom. Native iPhone run 42457693915 passed; ships on merge (OTA + TestFlight build 6).",
   "next_for_owner": [
-    "Open TestFlight and update Hollowhue to 0.1.0 (5). Choose Zoom artworks > Rose Cottage: Inside for six discoveries; Mega Zoom > Mega Rose Engraving has twenty.",
-    "The 42 approved pictures remain in Single artwork. Existing installations can also apply the content through Settings > App updates > Check for updates > Save & apply update."
+    "Merge PR257 to send the over-the-air update and a fresh TestFlight build.",
+    "Then open Rose Cottage: Inside, tap the sparkle (top right), and use Look closer into the book."
   ],
-  "tests": 159,
+  "tests": 160,
   "typecheck": "159 tests, full/stub strict types, Expo doctor21/21 and iOS/Hermes export pass. Exact prior geometry retained. Native all6x6 and20 stops,deep paint/drawing and restart save verified across2 reviewed captures of identical compiled runtime.",
   "previous_native_qa": {
     "run": "41788606169",
@@ -113,6 +113,13 @@
     "scope": "categories/difficulties, all six regular and twenty Mega stops, deep paint, drawing, undo/redo and saved work/recent colours after relaunch",
     "evidence": "docs/qa-art-20261104/receipt.json",
     "screenshotQualification": "10 usable current-source frames plus separately attributed earlier cottage reference with identical artwork data. Premature initial frame excluded; additional retakes ended in simulator accessibility-driver failures.",
+    "physical_phone_uptake": "unverified"
+  },
+  "blend_native_qa": {
+    "run": "42457693915",
+    "source": "6d56532a9ed13a368449fc477fa2c7c153ca9978",
+    "result": "pass",
+    "evidence": "docs/qa-blend-20261108/receipt.json",
     "physical_phone_uptake": "unverified"
   }
 }
