@@ -3,7 +3,7 @@
     "name": "Glaze",
     "slug": "glaze",
     "scheme": "glaze",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "runtimeVersion": {
       "policy": "appVersion"
     },

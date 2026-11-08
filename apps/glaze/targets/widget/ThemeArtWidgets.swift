@@ -11,6 +11,7 @@
 // shows the plain theme background, never a repeat of another piece.
 // Kinds 2-6 are small and large only: theme packs draw their extra pieces square, and a square piece
 // is never offered in the wide medium widget (src/core/widgetOptions.ts drawnForSize).
+import ImageIO
 import SwiftUI
 import WidgetKit
 
@@ -39,26 +40,29 @@ struct ThemeArtEntry: TimelineEntry {
   /// nil = this theme has no piece for the slot: the plain theme background.
   let pieceID: String?
   let layout: ArtLayout?
+  /// The Add Widget gallery (snapshot with context.isPreview, and the placeholder): a small
+  /// thumbnail instead of the full composed image.
+  var preview: Bool = false
 }
 
 @available(iOS 17.0, *)
 struct ThemeArtProvider: AppIntentTimelineProvider {
   let slot: Int
 
-  private func entry(_ configuration: ChooseWidgetArtIntent?, family: WidgetFamily) -> ThemeArtEntry {
+  private func entry(_ configuration: ChooseWidgetArtIntent?, family: WidgetFamily, preview: Bool = false) -> ThemeArtEntry {
     let chosen = configuration?.art?.id
     let piece = chosen != nil
       ? WidgetArtStore.resolvedID(chosen, family: family)
       : ThemeArtSlots.piece(slot: slot, family: family)
-    return ThemeArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: piece, layout: configuration?.layout)
+    return ThemeArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: piece, layout: configuration?.layout, preview: preview)
   }
 
   func placeholder(in context: Context) -> ThemeArtEntry {
-    entry(nil, family: context.family)
+    entry(nil, family: context.family, preview: true)
   }
 
   func snapshot(for configuration: ChooseWidgetArtIntent, in context: Context) async -> ThemeArtEntry {
-    entry(configuration, family: context.family)
+    entry(configuration, family: context.family, preview: context.isPreview)
   }
 
   func timeline(for configuration: ChooseWidgetArtIntent, in context: Context) async -> Timeline<ThemeArtEntry> {
@@ -71,10 +75,33 @@ struct ThemeArtProvider: AppIntentTimelineProvider {
 
 @available(iOS 17.0, *)
 struct ThemeArtSlotView: View {
+  @Environment(\.widgetFamily) private var family
   let entry: ThemeArtEntry
 
+  static func thumbnail(_ id: String) -> UIImage? {
+    guard WidgetArtStore.validID(id), let dir = WidgetArtStore.directory() else { return nil }
+    let url = dir.appendingPathComponent("\(id).jpg")
+    guard
+      let source = CGImageSourceCreateWithURL(url as CFURL, [kCGImageSourceShouldCache: false] as CFDictionary),
+      let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+        kCGImageSourceCreateThumbnailFromImageAlways: true, kCGImageSourceCreateThumbnailWithTransform: true,
+        kCGImageSourceThumbnailMaxPixelSize: 360, kCGImageSourceShouldCacheImmediately: true] as CFDictionary)
+    else { return nil }
+    return UIImage(cgImage: image)
+  }
+
   var body: some View {
-    if entry.pieceID != nil {
+    // Owner 2026-11-08 (after a swap the whole Glaze gallery stayed on the old theme, even after a
+    // restart, since 1.0.18 showed 11 Art tiles instead of 8): every gallery tile decoded its full
+    // composed image (up to 1200 px, ~6 MB each) in the one extension process, which is over the
+    // widget memory limit, so iOS kept the old previews. Gallery tiles of plain art now decode a
+    // 360 px thumbnail; live pieces and placed widgets are unchanged.
+    if entry.preview, let id = entry.pieceID, LiveArtStore.spec(pieceID: id, family: family) == nil,
+       let thumb = ThemeArtSlotView.thumbnail(id) {
+      Color.clear.containerBackground(for: .widget) {
+        Image(uiImage: thumb).resizable().scaledToFill()
+      }
+    } else if entry.pieceID != nil {
       SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date)
     } else {
       Color.clear.containerBackground(for: .widget) { GlazeBackground(theme: entry.theme) }

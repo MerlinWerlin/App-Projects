@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**8 November 2026 TestFlight gallery follows a swap: `1.0.20`.** Owner: the whole Glaze gallery (Clock, Battery, Calendar and Art) stays on the old theme after a swap, even after a restart, while placed widgets swap. Since 1.0.18 the gallery drew 11 Art tiles each decoding its full image; gallery Art tiles now decode a 360 px thumbnail.
+
 **8 November 2026 TestFlight gallery after a swap: `1.0.19`.** Owner: after a swap the gallery's Art pages stayed grey for 25 minutes. The pieces made so far are listed after 2, then every 6; the art build keeps background time when Glaze is left; the wallpaper is decoded once per apply; remote packs crop the wallpaper size this phone downloaded, and art falls back to the flat colour if its sky fails.
 
 **8 November 2026 TestFlight sky and gallery: `1.0.18`.** Owner: art stars do not match and the background is muted; Aurora is missing the fox in its gallery. Art pieces are composed on the theme wallpaper crop (seamless) instead of a flat colour; pieces are planned art first and the gallery shows Art 1-5 in Small and Large.
