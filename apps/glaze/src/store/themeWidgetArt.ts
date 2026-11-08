@@ -254,9 +254,14 @@ async function composeOne(theme: Theme, art: ThemeArt, piece: PlannedThemePiece)
   if (!artUri) return 'failed';
   const device = seamlessDeviceHere();
   let res: WidgetsResult;
-  if (src.option.background === 'wallpaper') {
-    const wallpaperUri = await art.wallpaper();
-    if (!wallpaperUri) return 'failed';
+  // Owner 2026-11-08 ("the stars for the art works don't match, also the background colour is muted
+  // in comparison to the background"): every art picture sits on the theme wallpaper's own sky
+  // (the seamless crop), like the heroes, instead of a flat theme colour, so all of a theme's pieces
+  // share one sky that matches the Home Screen. Clocks / dates / calendars keep their own backdrop.
+  // Falls back to the flat colour when the theme has no wallpaper file.
+  const wallpaperUri = src.option.background === 'wallpaper' || src.option.kind === 'art' ? await art.wallpaper() : null;
+  if (src.option.background === 'wallpaper' && !wallpaperUri) return 'failed';
+  if (wallpaperUri) {
     const crop = seamlessCrop({ device, wallpaper: art.wallpaperPx, size: piece.size, slot: normaliseSlot(piece.size, null), nudge: { dx: 0, dy: 0 } });
     res = await widgets.composeArtPiece({ id: piece.id, kind: 'seamless', wallpaperUri, cropPx: crop.cropPx, heroUri: artUri });
   } else {
