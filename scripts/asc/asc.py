@@ -639,6 +639,9 @@ def feedback(app):
         for sh in shots:
             a = attrs(sh)
             say(f"## Screenshot feedback {a.get('createdDate')}: {a.get('comment')}")
+            say(f"- device {a.get('deviceModel')} iOS {a.get('osVersion')} build {a.get('buildBundleId') or ''}")
+            for i, img in enumerate(a.get("screenshots") or []):
+                say(f"- screenshot {i + 1}: {img.get('url')}")
     except RuntimeError as e:
         say(f"- screenshot list: {str(e)[:300]}")
 
