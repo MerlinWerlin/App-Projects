@@ -1,0 +1,23 @@
+captured_at,scope,channel,account,app,post_id,metric,value,period,source
+2026-11-06,account,pinterest,fernandfableau,,,monthly_views,23400,last_30d,profile header
+2026-11-06,account,pinterest,fernandfableau,,,followers,2,now,profile header
+2026-11-06,account,etsy,fernfableau,,,sales_total,219,lifetime,Shop Manager dashboard
+2026-11-06,account,etsy,fernfableau,,,active_listings,21,now,Shop Manager dashboard
+2026-11-10,account,pinterest,fernandfableau,,,impressions,22069,2026-10-10..2026-11-09,Pinterest Analytics overview (organic+paid)
+2026-11-10,account,pinterest,fernandfableau,,,engagements,1030,2026-10-10..2026-11-09,Pinterest Analytics overview (shown as 1.03k)
+2026-11-10,account,pinterest,fernandfableau,,,outbound_clicks,11,2026-10-10..2026-11-09,Pinterest Analytics overview
+2026-11-10,account,pinterest,fernandfableau,,,saves,41,2026-10-10..2026-11-09,Pinterest Analytics overview
+2026-11-10,account,pinterest,fernandfableau,,,total_audience,16880,2026-10-10..2026-11-09,Pinterest Analytics overview (shown as 16.88k)
+2026-11-10,account,pinterest,fernandfableau,,,engaged_audience,868,2026-10-10..2026-11-09,Pinterest Analytics overview
+2026-11-10,post,pinterest,fernandfableau,cue,pin-1047298088374388948,impressions,1,lifetime,Pinterest Analytics top pins (first hours)
+2026-11-10,account,etsy,fernfableau,,,visits,2303,2026-10-11..2026-11-09,Etsy Stats last 30 days
+2026-11-10,account,etsy,fernfableau,,,conversion_rate_pct,0.3,2026-10-11..2026-11-09,Etsy Stats last 30 days
+2026-11-10,account,etsy,fernfableau,,,revenue_aud,545,2026-10-11..2026-11-09,Etsy Stats last 30 days
+2026-11-10,account,etsy,fernfableau,,,orders,8,2026-10-11..2026-11-09,derived: revenue 545 / average order value 68.13
+2026-11-10,account,etsy,fernfableau,,,listing_views,4060,2026-10-11..2026-11-09,Etsy Stats last 30 days
+2026-11-10,account,etsy,fernfableau,,,favourites,235,2026-10-11..2026-11-09,Etsy Stats last 30 days
+2026-11-10,account,etsy,fernfableau,,,followers,159,now,Etsy Stats shop follows total
+2026-11-10,account,etsy,fernfableau,,,visits_from_pinterest,46,2026-10-11..2026-11-09,Etsy Stats traffic sources
+2026-11-10,account,etsy,fernfableau,,,visits_from_facebook,9,2026-10-11..2026-11-09,Etsy Stats traffic sources
+2026-11-10,account,etsy,fernfableau,,,visits_from_instagram,0,2026-10-11..2026-11-09,Etsy Stats traffic sources
+2026-11-10,account,etsy,fernfableau,,,visits_from_social,55,2026-10-11..2026-11-09,Etsy Stats traffic sources (all social)

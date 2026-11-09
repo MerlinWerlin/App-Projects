@@ -1,0 +1,11 @@
+channel,account,line,url,stats_source,notes
+pinterest,fernandfableau,apps+etsy,https://au.pinterest.com/fernandfableau/,Pinterest Analytics (business) and per-pin stats at /pin/<id>/analytics,"App pins on board 'Fun & Useful iPhone Apps'; Etsy pins on product boards"
+instagram,fernandfableau,apps+etsy,https://www.instagram.com/fernandfableau,Instagram Insights (professional dashboard),"Business account only; never personal jaredbradley7"
+facebook,via instagram,apps+etsy,,Meta Business Suite insights,"Only through Instagram cross-posting"
+tiktok,tbc,apps,,TikTok Studio analytics,"Confirm it is a business account before use"
+reddit,tbc,apps,,post score and comments,"Answer the question first; follow each sub's promo rules"
+web,merlinwerlin.github.io/App-Projects,apps,https://merlinwerlin.github.io/App-Projects/,Google Search Console (site verified),"Launch, comparison and FAQ pages"
+appstore,Astro Labs AU,apps,,App Store Connect > Analytics (impressions, product page views, downloads, web referrers),"Linework only on iOS so far"
+googleplay,Astro Labs AU,apps,,Play Console > Statistics and Store listing acquisition (by UTM source),"Linework, Cue, Backspin"
+etsy,fernfableau,etsy,https://fernfableau.etsy.com,Etsy Shop Manager > Stats (traffic sources incl. Pinterest),"Woodwork plans, fairy doors, lanterns"
+directory,various,apps,,listing views or upvotes where shown,"AlternativeTo, Product Hunt, roundups"
