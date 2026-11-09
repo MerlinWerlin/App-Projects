@@ -3,8 +3,7 @@
 Jared handed marketing to Claude on 10 Nov 2026 (roadmap Decision log): Claude posts without asking each time, **only
 on the business accounts**. This file is the campaign system. The Claude scheduled task **"App marketing daily
 (posting)"** (task id `app-marketing-daily`, 18:20 Sydney, needs the PC and Chrome with Claude in Chrome) follows it.
-**Not created yet (10 Nov):** the permission check blocked creating it from a delegated session; its exact prompt is in
-`marketing/campaign/DAILY_TASK.md`, waiting for Jared's go-ahead.
+Created 10 Nov 2026 with Jared's go-ahead; a copy of its prompt is in `marketing/campaign/DAILY_TASK.md`.
 
 Apps in rotation (from `apps.json`, stage `live`):
 | App | Where | Link to use |
@@ -81,8 +80,10 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
   wait 2 s, then a space (the first hashtag sometimes gets swallowed: re-check the text). Settings > Show more >
   Disclose post content > Your brand. Post now; TikTok's scheduler needs a one-time consent Jared hasn't given.
   The new post's URL is the first `/video/` link on https://www.tiktok.com/tiktokstudio/content.
-- **Instagram** (instagram.com, check the profile says `fernandfableau` first): Create > Post > select the mp4 >
-  crop "Original" (9:16) > Next > Next > caption > Share. Reels links aren't clickable: write "on Google Play" /
+- **Instagram** (instagram.com, check the profile says `fernandfableau` first): Create > Post > file input > OK on the
+  "shared as reels" notice > Select crop > 9:16 > Next > Next > caption > Share, then wait about 30 s for "Your reel has
+  been shared". **Leave "Share to Facebook (Georgia Molden)" OFF**: that's a personal profile. Never press Escape in
+  the dialog (it asks to discard the post). Reels links aren't clickable: write "on Google Play" /
   "on the App Store and Google Play" and keep the link in the profile.
 - Chrome screenshots time out on this PC; work from `find`, `read_page`, `get_page_text` and small JS reads instead.
 
