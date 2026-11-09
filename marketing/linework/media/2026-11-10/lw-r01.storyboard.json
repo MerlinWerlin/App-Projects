@@ -1,0 +1,44 @@
+{
+ "id": "lw-r01",
+ "app": "linework",
+ "title": "Live reel: trace a photo onto paper",
+ "source": "real store screenshots (no AI images)",
+ "shots": [
+  {
+   "fit": "contain",
+   "image": "../../../../apps/linework/store/jpg/a/01-trace.jpg",
+   "caption": "Trace any photo onto paper",
+   "seconds": 3,
+   "motion": "in"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/linework/store/jpg/a/07-lock.jpg",
+   "caption": "Lock it so it stays put",
+   "seconds": 2.6,
+   "motion": "up"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/linework/store/jpg/a/04-photo-sketch.jpg",
+   "caption": "Photo to sketch",
+   "sub": "With Linework Plus",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/linework/store/jpg/a/05-templates.jpg",
+   "caption": "Or start from a template",
+   "seconds": 2.6,
+   "motion": "down"
+  }
+ ],
+ "end": {
+  "title": "Linework",
+  "line": "On iPhone and Android",
+  "sub": "No ads. No subscription."
+ },
+ "accent": "#2346A8",
+ "branded": true
+}
