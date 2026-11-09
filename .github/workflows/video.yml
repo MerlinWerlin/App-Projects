@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
       - name: Tools
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-inter fonts-dejavu-core > /dev/null
@@ -31,7 +31,11 @@ jobs:
           for sb in $(find marketing -path '*/media/*' -name '*.storyboard.json' | sort); do
             dir=$(dirname "$sb"); id=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['id'])" "$sb")
             mp4="$dir/$id.mp4"
-            if [ ! -f "$mp4" ] || git diff --name-only HEAD~1 HEAD | grep -q "^$dir/"; then
+            # Re-render only when the storyboard or its images were committed after the video. A merge of a branch
+            # whose videos were already rendered there leaves them alone (that re-render caused the 10 Nov push race).
+            src_t=$(git log -1 --format=%ct -- "$sb" "$dir/img" 2>/dev/null || echo 0)
+            vid_t=$(git log -1 --format=%ct -- "$mp4" 2>/dev/null || echo 0)
+            if [ ! -f "$mp4" ] || [ "${src_t:-0}" -gt "${vid_t:-0}" ]; then
               python3 marketing/video/render.py "$sb" "$mp4" && n=$((n+1))
             fi
           done
@@ -42,5 +46,11 @@ jobs:
           git config user.name "video-render"
           git config user.email "video-render@users.noreply.github.com"
           git add 'marketing/*/media/**/*.mp4' 'marketing/*/media/**/*.jpg'
-          git diff --cached --quiet || git commit -m "Render ${{ env.rendered }} marketing video(s)"
-          git push
+          git diff --cached --quiet && exit 0
+          git commit -m "Render ${{ env.rendered }} marketing video(s)"
+          # Other merges can land while rendering: rebase onto them and retry instead of failing.
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+          done
+          exit 1
