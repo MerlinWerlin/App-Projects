@@ -11,7 +11,6 @@ EXACT = [
     'src/core/widgetArtLibrary.ts',
     'src/native/packs.ts', 'src/native/useRemoteCatalog.ts',
      'app/(tabs)/widgets.tsx',
-    'targets/widget/SeamlessWidget.swift', 'targets/widget/WidgetArtLibrary.swift',
     'modules/glaze-widget-bridge/ios/ClockArtRenderer.swift',
     'targets/widget/DesignedWidget.swift', 'targets/widget/ThemedWidgetDrawing.swift',
     'src/ui/DesignedThemeWidgets.tsx',
@@ -33,6 +32,8 @@ ALLOWED = {
     'src/native/widgets.ts': 'Expose the recovery reset on the existing serial art queue.',
     'modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift': 'Expose the separate photo-preserving recovery reset, then invalidate and reload.',
     'src/store/launchWork.ts': 'Run one-time recovery before the original deferred queue loads old pending state.',
+    'targets/widget/SeamlessWidget.swift': 'Owner 2026-11-09 (Add Widget gallery kept the old theme): isPreview snapshots and placeholders render from a 360 px ImageIO thumbnail (GalleryThumbnail, preview mode) so the gallery fits the widget extension memory limit. Timelines (placed widgets) unchanged. Owned by Claude.',
+    'targets/widget/WidgetArtLibrary.swift': 'Owner 2026-11-09: ArtEntry.preview from context.isPreview, WidgetArtStore.preview (thumbnail), and a per-record design flag so Art slots read index.json once. Timelines unchanged. Owned by Claude.',
     'src/core/artBlend.ts': 'Owner 2026-11-08 (copper moon showed the wallpaper through its dark limb): dim coloured interior pixels are held opaque (BLEND_KEY_TINT_LO/HI), mirrored in the bridge and blend-audit.py. Owned by Claude.',
 }
 rows = []
