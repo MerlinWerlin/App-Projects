@@ -1,0 +1,13 @@
+# Cue: Teleprompter
+
+> Cue is a teleprompter for Android phones: write or import a script, keep the words near the camera and record takes without a watermark. Optional Voice Pace scrolls while you talk and waits when you pause. Free download with unlimited scripts and watermark-free recording. Cue Plus is a one-time A$2.99 for Voice Pace, Voice Follow and extras.
+
+## Pages
+- [Facts (plain text)](https://merlinwerlin.github.io/App-Projects/cue/facts.txt): price, platforms, what's free, privacy
+- [Overview](https://merlinwerlin.github.io/App-Projects/cue/)
+- [Cue compared with typical teleprompter apps](https://merlinwerlin.github.io/App-Projects/cue/compare/)
+- [Alternatives to subscription teleprompter apps](https://merlinwerlin.github.io/App-Projects/cue/alternatives/)
+- [FAQ](https://merlinwerlin.github.io/App-Projects/cue/faq/)
+
+## Stores
+- [Google Play (Android)](https://play.google.com/store/apps/details?id=com.jared797.cue)

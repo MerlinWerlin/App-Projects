@@ -1,0 +1,13 @@
+# Apps by Astro Labs AU
+
+> Small phone apps from an independent developer in Australia. No ads, no subscriptions, no accounts; optional one-time purchases. Each app has a plain-text facts file with price, platforms, what's free and privacy, checked against the live store listings.
+
+## Apps
+- [Linework: Trace & Sketch](https://merlinwerlin.github.io/App-Projects/linework/facts.txt): Linework shows a photo or template over your phone's live camera view so you can trace it onto real paper with your own pencil, or use the screen as a lightbox. Free download. Tracing your own photos with every tracing tool stays free; Linework Plus is a one-time A$2.99 for the full template library and photo-to-outline.
+- [Cue: Teleprompter](https://merlinwerlin.github.io/App-Projects/cue/facts.txt): Cue is a teleprompter for Android phones: write or import a script, keep the words near the camera and record takes without a watermark. Optional Voice Pace scrolls while you talk and waits when you pause. Free download with unlimited scripts and watermark-free recording. Cue Plus is a one-time A$2.99 for Voice Pace, Voice Follow and extras.
+- [Backspin: Reverse Your Voice](https://merlinwerlin.github.io/App-Projects/backspin/facts.txt): Backspin is a reverse-voice party game for Android: say a short line, hear it backwards, copy the backwards sound, and Backspin flips your copy forwards and scores how close it is. Free download with 10 scored rounds and everything switched on. Backspin Plus is a one-time A$1.99 for unlimited rounds. No ads, no subscription.
+
+## Per-app pages
+- [Linework](https://merlinwerlin.github.io/App-Projects/linework/llms.txt)
+- [Cue](https://merlinwerlin.github.io/App-Projects/cue/llms.txt)
+- [Backspin](https://merlinwerlin.github.io/App-Projects/backspin/llms.txt)

@@ -1,0 +1,13 @@
+# Backspin: Reverse Your Voice
+
+> Backspin is a reverse-voice party game for Android: say a short line, hear it backwards, copy the backwards sound, and Backspin flips your copy forwards and scores how close it is. Free download with 10 scored rounds and everything switched on. Backspin Plus is a one-time A$1.99 for unlimited rounds. No ads, no subscription.
+
+## Pages
+- [Facts (plain text)](https://merlinwerlin.github.io/App-Projects/backspin/facts.txt): price, platforms, what's free, privacy
+- [Overview](https://merlinwerlin.github.io/App-Projects/backspin/)
+- [Backspin compared with typical reverse singing apps](https://merlinwerlin.github.io/App-Projects/backspin/compare/)
+- [Alternatives to ad-heavy reverse audio apps](https://merlinwerlin.github.io/App-Projects/backspin/alternatives/)
+- [FAQ](https://merlinwerlin.github.io/App-Projects/backspin/faq/)
+
+## Stores
+- [Google Play (Android)](https://play.google.com/store/apps/details?id=com.jared797.backspin)

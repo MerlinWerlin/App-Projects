@@ -1,0 +1,46 @@
+Linework: Trace & Sketch: facts
+========================================
+
+What it is: Linework shows a photo or template over your phone's live camera view so you can trace it onto real paper with your own pencil, or use the screen as a lightbox.
+Category: AR drawing and tracing app
+Made by: Astro Labs AU (an independent developer in Australia)
+
+Where to get it:
+- App Store (iOS): https://apps.apple.com/au/app/id6826041969
+- Google Play (Android): https://play.google.com/store/apps/details?id=com.jared797.linework
+- On Apple devices it runs on iPhone (iOS 16.4 or later) and on Macs with Apple silicon; it is not offered for iPad.
+
+Price: Free download. Tracing your own photos with every tracing tool stays free; Linework Plus is a one-time A$2.99 for the full template library and photo-to-outline.
+
+Free (no subscription):
+- Trace your own photos with the camera overlay
+- Opacity, move, resize and rotate
+- Picture lock and touch lock so the image stays put while your hand rests on the screen
+- Grid, mirror and flashlight
+- Lightbox mode: trace through thin paper laid on the screen, no camera needed
+- 24 starter templates
+
+Linework Plus (A$2.99 in Australia; Google Play and the App Store show your local price, one-time, not a subscription):
+- The full library of 1,900+ original templates, including letters in 16 styles and Workshop angles, joints and layouts
+- Photo to outline: turn a photo into line art on the phone
+
+Trial: Free 14-day trial of Plus. It does not charge when it ends; tracing your own photos stays free afterwards.
+
+Ads: none. Subscription: none. Account: none needed.
+
+Privacy:
+- App Store privacy label: Data Not Collected.
+- No ads, no account, no tracking SDKs. Photos, outlines and drawings stay on your device; image processing happens on the device.
+- Google Play's Data safety section lists app diagnostics, device IDs and purchase history (used for analytics, app functionality and purchases). See the listing for the current details.
+
+Not claimed: Linework shows the picture on your phone screen over the camera view; it does not project an image onto the paper. It needs a stable stand (a glass, a stack of books or a phone stand) for camera tracing.
+
+Web page: https://merlinwerlin.github.io/App-Projects/linework/
+Comparison: https://merlinwerlin.github.io/App-Projects/linework/compare/
+Alternatives: https://merlinwerlin.github.io/App-Projects/linework/alternatives/
+FAQ: https://merlinwerlin.github.io/App-Projects/linework/faq/
+Support: https://merlinwerlin.github.io/App-Projects/linework/support.html
+Privacy (iPhone): https://merlinwerlin.github.io/App-Projects/linework/privacy.html
+Privacy (Android): https://merlinwerlin.github.io/App-Projects/linework/play-privacy.html
+
+Facts checked against the live store listings on 10 November 2026.

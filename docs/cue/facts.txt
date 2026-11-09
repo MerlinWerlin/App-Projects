@@ -1,0 +1,48 @@
+Cue: Teleprompter: facts
+========================================
+
+What it is: Cue is a teleprompter for Android phones: write or import a script, keep the words near the camera and record takes without a watermark. Optional Voice Pace scrolls while you talk and waits when you pause.
+Category: teleprompter app
+Made by: Astro Labs AU (an independent developer in Australia)
+
+Where to get it:
+- Google Play (Android): https://play.google.com/store/apps/details?id=com.jared797.cue
+- Not yet on iPhone or the App Store.
+
+Price: Free download with unlimited scripts and watermark-free recording. Cue Plus is a one-time A$2.99 for Voice Pace, Voice Follow and extras.
+
+Free (no subscription):
+- Unlimited scripts
+- Steady scrolling with adjustable speed and text size
+- Mirror or flip the text for a teleprompter rig
+- Countdown before you start
+- Record video takes with the script near the camera, with no watermark
+- Import scripts with the system file picker
+
+Cue Plus (A$2.99 in Australia; Google Play shows your local price, one-time, not a subscription):
+- Voice Pace: the script moves while you talk and waits when you pause
+- Voice Follow: on-device speech recognition follows your words (depends on device and language)
+- Caption-file export
+- Prompter colours
+- Word document import
+- Rehearsal stats
+
+Trial: Optional free 7-day trial of Plus, started when you choose. It does not charge automatically; scripts and steady-scroll tools stay available when it ends.
+
+Ads: none. Subscription: none. Account: none needed.
+
+Privacy:
+- No ads, no account. Scripts and videos stay on your phone.
+- Voice Follow uses on-device speech recognition.
+- Google Play's Data safety section lists app diagnostics and purchase history. See the listing for the current details.
+
+Not claimed: Voice Follow needs compatible on-device speech recognition and installed language resources; availability varies by device and language. Cue is not yet available on iPhone.
+
+Web page: https://merlinwerlin.github.io/App-Projects/cue/
+Comparison: https://merlinwerlin.github.io/App-Projects/cue/compare/
+Alternatives: https://merlinwerlin.github.io/App-Projects/cue/alternatives/
+FAQ: https://merlinwerlin.github.io/App-Projects/cue/faq/
+Support: https://merlinwerlin.github.io/App-Projects/cue/support.html
+Privacy policy: https://merlinwerlin.github.io/App-Projects/cue/privacy.html
+
+Facts checked against the live store listings on 10 November 2026.

@@ -1,0 +1,658 @@
+{
+  "about": "Content for the answer pages built by marketing/site/build.py (docs/<slug>/ index, compare/, alternatives/, faq/, facts.txt, llms.txt). Every claim must match the live store listing or the app code; 'checked' is the date the listings were last compared. No competitor names (each app's avoid list in apps.json), no 'best', 'only' or '#1'. 'Typical app' columns describe the category generically and must stay hedged ('often', 'common') and backed by the research notes in marketing/site/RESEARCH.md.",
+  "checked": "10 November 2026",
+  "publisher": {
+    "name": "Astro Labs AU",
+    "where": "an independent developer in Australia"
+  },
+  "headExtra": "<meta name=\"google-site-verification\" content=\"FLkGZhXPgPux0ALcg_B33yd6rrvtieX1KPh5Hj7U7F0\" />",
+  "otherPages": [
+    [
+      "couch/",
+      "Couch: TV Remote (coming soon)"
+    ]
+  ],
+  "apps": {
+    "linework": {
+      "category": "AR drawing and tracing app",
+      "schemaCategory": "DesignApplication",
+      "accentDark": "#9DB3FF",
+      "h1": "trace photos onto real paper",
+      "titleTail": "AR tracing app with no subscription",
+      "oneLine": "Linework shows a photo or template over your phone's live camera view so you can trace it onto real paper with your own pencil, or use the screen as a lightbox.",
+      "metaDesc": "Trace photos and templates onto paper with your phone's camera. Tracing your own photos and every tracing tool stay free; Linework Plus is a one-time A$2.99. No ads, no subscription. iPhone and Android.",
+      "priceLine": "Free download. Tracing your own photos with every tracing tool stays free; Linework Plus is a one-time A$2.99 for the full template library and photo-to-outline.",
+      "platformNote": "On Apple devices it runs on iPhone (iOS 16.4 or later) and on Macs with Apple silicon; it is not offered for iPad.",
+      "languages": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "it",
+        "pt-BR",
+        "ja",
+        "ko",
+        "zh-Hans",
+        "hi",
+        "ar"
+      ],
+      "screenshots": [
+        "apps/linework/store/jpg/a/01-trace.jpg",
+        "apps/linework/store/jpg/a/02-made-for.jpg",
+        "apps/linework/store/jpg/a/03-workshop.jpg",
+        "apps/linework/store/jpg/a/04-photo-sketch.jpg",
+        "apps/linework/store/jpg/a/05-templates.jpg",
+        "apps/linework/store/jpg/a/06-letters.jpg",
+        "apps/linework/store/jpg/a/07-lock.jpg",
+        "apps/linework/store/jpg/a/08-plus.jpg"
+      ],
+      "free": [
+        "Trace your own photos with the camera overlay",
+        "Opacity, move, resize and rotate",
+        "Picture lock and touch lock so the image stays put while your hand rests on the screen",
+        "Grid, mirror and flashlight",
+        "Lightbox mode: trace through thin paper laid on the screen, no camera needed",
+        "24 starter templates"
+      ],
+      "plus": {
+        "name": "Linework Plus",
+        "priceAUD": "2.99",
+        "priceText": "A$2.99 in Australia; Google Play and the App Store show your local price",
+        "features": [
+          "The full library of 1,900+ original templates, including letters in 16 styles and Workshop angles, joints and layouts",
+          "Photo to outline: turn a photo into line art on the phone"
+        ]
+      },
+      "trial": "Free 14-day trial of Plus. It does not charge when it ends; tracing your own photos stays free afterwards.",
+      "privacy": [
+        "App Store privacy label: Data Not Collected.",
+        "No ads, no account, no tracking SDKs. Photos, outlines and drawings stay on your device; image processing happens on the device.",
+        "Google Play's Data safety section lists app diagnostics, device IDs and purchase history (used for analytics, app functionality and purchases). See the listing for the current details."
+      ],
+      "notClaimed": "Linework shows the picture on your phone screen over the camera view; it does not project an image onto the paper. It needs a stable stand (a glass, a stack of books or a phone stand) for camera tracing.",
+      "lead": [
+        [
+          "No subscription, no ads",
+          "Tracing your own photos stays free with every tracing tool. Linework Plus is one A$2.99 payment for the full library and photo to outline, not a weekly plan."
+        ],
+        [
+          "Keeps the picture still",
+          "Lock the picture, rest your hand on the screen with touch lock, and on iPhone keep focus while you draw, so the image doesn't slide or blur as your hand moves in."
+        ],
+        [
+          "1,900+ original templates",
+          "Kawaii and chibi, tattoo flash, animals, fairy tales, letters in 16 styles, and a Workshop of exact angles and joints for trades. Plus photo to sketch on the phone."
+        ]
+      ],
+      "compare": {
+        "title": "Linework compared with typical AR tracing apps",
+        "metaDesc": "How Linework compares with typical AR drawing and tracing apps on price, ads, tracing your own photo, keeping the image still and privacy. Honest, checked against store listings.",
+        "intro": "Most AR drawing and tracing apps work the same way: your phone shows a picture over the live camera view and you draw along it on paper. The differences are in how they charge, whether they show ads, and how well the picture stays still. Here is how Linework compares with what is typical in the category.",
+        "them": "Typical AR tracing app",
+        "rows": [
+          [
+            "Price",
+            "Free to trace your own photos; A$2.99 once for the full library",
+            "Weekly or yearly subscriptions are common, often around US$7-10 a week"
+          ],
+          [
+            "Ads",
+            "None",
+            "Common in free apps"
+          ],
+          [
+            "Trace your own photo",
+            "Free, with every tracing tool",
+            "Often locked behind a subscription after a trial"
+          ],
+          [
+            "Keeping the image still",
+            "Picture lock and touch lock; focus lock on iPhone",
+            "Drifting or refocusing images are a frequent complaint in reviews"
+          ],
+          [
+            "Works without the camera",
+            "Lightbox mode: trace through thin paper on the screen",
+            "Varies"
+          ],
+          [
+            "Account",
+            "None needed",
+            "Varies; some need sign-in"
+          ],
+          [
+            "Privacy label",
+            "App Store: Data Not Collected",
+            "Varies; check each listing"
+          ]
+        ],
+        "method": [
+          "We read the store listings, reviews and 2026 roundups of AR drawing apps that appear when you search phrases like 'AR drawing app no subscription' and 'tracing app one-time purchase'.",
+          "The 'typical app' column describes patterns we saw across many apps, not one named app. Some apps in the category are free with ads, some sell a one-time unlock, and many use weekly or yearly plans.",
+          "Linework's column comes from its own App Store and Google Play listings."
+        ],
+        "notFor": [
+          "You want to draw on an iPad: Linework isn't offered for iPad.",
+          "You want an image projected onto a wall with a projector: Linework shows the picture on the phone screen.",
+          "You want a full digital painting app: Linework is for drawing on real paper, walls or materials.",
+          "You want step-by-step drawing lessons: Linework's Sketch steps reveal a picture in stages, but it is a tracing tool, not a course."
+        ]
+      },
+      "alternatives": {
+        "title": "Alternatives to subscription AR drawing apps",
+        "metaDesc": "The main ways to trace a picture onto paper without a weekly subscription: one-time-purchase tracing apps, a lightbox, a window, the grid method and carbon paper. What to check before you install.",
+        "intro": "If you want to trace a photo or drawing onto paper but don't want a weekly subscription, you have several options, from apps with a one-time price to methods artists have used for centuries.",
+        "kinds": [
+          [
+            "One-time-purchase tracing apps.",
+            "Apps that show the picture over the camera view and charge once (or keep core tracing free) instead of weekly. Linework is one of these."
+          ],
+          [
+            "Free apps with ads.",
+            "These cost nothing up front but often show ads, sometimes mid-drawing, and may limit tracing your own photos."
+          ],
+          [
+            "Lightbox or tracing pad.",
+            "A light pad under thin paper. Very steady and no phone needed; it costs a little and only works with paper thin enough to see through. A tablet or phone screen at full brightness does the same job for small drawings."
+          ],
+          [
+            "A sunny window.",
+            "Tape the picture and your paper to a window. Free and steady, but vertical and daylight only."
+          ],
+          [
+            "The grid method.",
+            "Draw a grid over the picture and a matching grid on your paper, then copy one square at a time. Slower, but it works at any size and trains your eye."
+          ],
+          [
+            "Carbon or graphite transfer paper.",
+            "Print the picture, lay transfer paper under it and go over the lines. Good for wood, canvas and walls."
+          ],
+          [
+            "A projector.",
+            "Projects the picture onto a wall or large surface; useful for murals, but costs more and needs a dark room."
+          ]
+        ],
+        "lookFor": [
+          "Is the price weekly, yearly or one-time? Check the in-app purchase list on the store page before starting a trial.",
+          "Can you trace your own photo for free, or only the app's templates?",
+          "Does the picture stay still? Look for a lock, a touch lock and reviews that mention drift.",
+          "Are there ads, and does the app need an account?",
+          "Does it work without the camera (a lightbox mode) for thin paper?",
+          "What does the privacy label say?"
+        ],
+        "fit": "Linework is a one-time-purchase AR tracing app for iPhone and Android. Tracing your own photos with every tracing tool stays free with no ads; Linework Plus (A$2.99 once) adds the full library of 1,900+ templates and photo to outline. It also has a lightbox mode for tracing through thin paper on the screen."
+      },
+      "faqTitleTail": "tracing photos onto paper with your phone",
+      "faqDesc": "Answers about Linework and about tracing with a phone: price, no subscription, keeping the picture still, photo to sketch, lightbox mode, iPad and privacy.",
+      "faq": [
+        [
+          "Is there an AR drawing app without a subscription?",
+          "Yes. Linework has no subscription. Tracing your own photos with every tracing tool and 24 starter templates stays free, with no ads. Linework Plus is a one-time A$2.99 (local price shown in the store) for the full template library and photo to outline. There is an optional free 14-day trial that doesn't charge when it ends."
+        ],
+        [
+          "How much does Linework cost?",
+          "The download is free. Linework Plus is a one-time in-app purchase of A$2.99 in Australia; the App Store and Google Play show the price in your currency. There is no weekly, monthly or yearly plan."
+        ],
+        [
+          "How do I trace a picture from my phone onto paper?",
+          "Open the picture in Linework, stand the phone securely above your paper on a glass, a stack of books or a phone stand, then draw along the lines you see on the screen. Fade the picture with the opacity slider until you can see both it and your pencil."
+        ],
+        [
+          "How do I stop the picture moving while I trace?",
+          "Tap Lock so a stray touch can't move it, and turn on touch lock so your hand can rest on the screen. On iPhone, focus also stays put while locked. Keep the phone on a stable stand; most drift comes from the phone itself moving."
+        ],
+        [
+          "Does Linework project the image onto the paper?",
+          "No. Like other AR tracing apps, it shows the picture on your phone screen over the camera view. You look at the screen and draw on the paper underneath."
+        ],
+        [
+          "Can I trace without using the camera?",
+          "Yes. Lightbox mode shows the picture full-bright on a white screen so you can lay thin paper over the phone or tablet and trace it. No camera access is needed."
+        ],
+        [
+          "Can I turn a photo into a sketch to trace?",
+          "Yes, with Linework Plus or during the trial. Photo to outline makes line art on the phone in several styles with detail and line-thickness controls. Nothing is uploaded."
+        ],
+        [
+          "Is tracing cheating?",
+          "No. Artists have traced with projectors, lightboxes and grids for centuries. Tracing helps you learn proportions and line confidence; Linework's Sketch steps reveal a picture from big shapes to fine lines so you build it the way artists do."
+        ],
+        [
+          "Is Linework on iPad?",
+          "Not at the moment. On Apple devices Linework runs on iPhone (iOS 16.4 or later) and on Macs with Apple silicon. On Android it is on Google Play."
+        ],
+        [
+          "Does Linework have ads or need an account?",
+          "No ads and no account."
+        ],
+        [
+          "What does Linework do with my photos?",
+          "Your photos, outlines and drawings stay on your device, and image processing happens on the device. The App Store privacy label is Data Not Collected; Google Play's Data safety section lists app diagnostics, device IDs and purchase history."
+        ],
+        [
+          "Can I record a timelapse of my drawing?",
+          "Yes. Linework records a timelapse of your drawing and saves it to Photos when you choose. On iPhone it records up to 10 minutes with no watermark, and the guide picture isn't recorded."
+        ],
+        [
+          "What can I trace with it?",
+          "Your own photos, plus 1,900+ original templates with Plus: kawaii and chibi, tattoo flash, animals, sea life, fairy tales, flowers, mandalas, letters in 16 styles, and a Workshop of exact angles, joints and layouts for woodwork and trades."
+        ],
+        [
+          "What languages is Linework in?",
+          "English, Spanish, French, German, Italian, Portuguese (Brazil), Japanese, Korean, Simplified Chinese, Hindi and Arabic."
+        ]
+      ],
+      "legal": [
+        [
+          "Support",
+          "support.html"
+        ],
+        [
+          "Privacy (iPhone)",
+          "privacy.html"
+        ],
+        [
+          "Privacy (Android)",
+          "play-privacy.html"
+        ]
+      ]
+    },
+    "cue": {
+      "category": "teleprompter app",
+      "schemaCategory": "BusinessApplication",
+      "accentDark": "#FF8A63",
+      "h1": "a teleprompter that waits for you",
+      "titleTail": "teleprompter app for Android with no watermark",
+      "oneLine": "Cue is a teleprompter for Android phones: write or import a script, keep the words near the camera and record takes without a watermark. Optional Voice Pace scrolls while you talk and waits when you pause.",
+      "metaDesc": "Free Android teleprompter with video recording and no watermark. Optional Cue Plus (one-time A$2.99) adds Voice Pace scrolling that follows your voice. No ads, no subscription.",
+      "priceLine": "Free download with unlimited scripts and watermark-free recording. Cue Plus is a one-time A$2.99 for Voice Pace, Voice Follow and extras.",
+      "platformNote": "Not yet on iPhone or the App Store.",
+      "screenshots": [
+        "apps/cue/store/assets/phone-03-prompter.png",
+        "apps/cue/store/assets/phone-02-editor.png",
+        "apps/cue/store/assets/phone-01-library.png",
+        "apps/cue/store/assets/phone-04-settings.png"
+      ],
+      "free": [
+        "Unlimited scripts",
+        "Steady scrolling with adjustable speed and text size",
+        "Mirror or flip the text for a teleprompter rig",
+        "Countdown before you start",
+        "Record video takes with the script near the camera, with no watermark",
+        "Import scripts with the system file picker"
+      ],
+      "plus": {
+        "name": "Cue Plus",
+        "priceAUD": "2.99",
+        "priceText": "A$2.99 in Australia; Google Play shows your local price",
+        "features": [
+          "Voice Pace: the script moves while you talk and waits when you pause",
+          "Voice Follow: on-device speech recognition follows your words (depends on device and language)",
+          "Caption-file export",
+          "Prompter colours",
+          "Word document import",
+          "Rehearsal stats"
+        ]
+      },
+      "trial": "Optional free 7-day trial of Plus, started when you choose. It does not charge automatically; scripts and steady-scroll tools stay available when it ends.",
+      "privacy": [
+        "No ads, no account. Scripts and videos stay on your phone.",
+        "Voice Follow uses on-device speech recognition.",
+        "Google Play's Data safety section lists app diagnostics and purchase history. See the listing for the current details."
+      ],
+      "notClaimed": "Voice Follow needs compatible on-device speech recognition and installed language resources; availability varies by device and language. Cue is not yet available on iPhone.",
+      "lead": [
+        [
+          "Waits for you",
+          "With Cue Plus, Voice Pace moves the words only while you talk and stops when you pause, so you aren't chasing the text."
+        ],
+        [
+          "No watermark, no subscription",
+          "Recording with the script by the lens is free and never watermarked. Plus is one payment, not a monthly bill."
+        ],
+        [
+          "Built for real takes",
+          "Mirror or flip for a teleprompter rig, use a countdown, and keep unlimited scripts on the phone."
+        ]
+      ],
+      "compare": {
+        "title": "Cue compared with typical teleprompter apps",
+        "metaDesc": "How Cue compares with typical teleprompter apps on price, watermarks, voice scrolling, ads and accounts. Honest, checked against store listings.",
+        "intro": "Teleprompter apps all scroll a script so you can read it while looking at the camera. They differ in whether recording is watermarked, whether voice scrolling costs a subscription, and how much the free version can do. Here is how Cue compares with what is typical.",
+        "them": "Typical teleprompter app",
+        "rows": [
+          [
+            "Price",
+            "Free core app; Cue Plus A$2.99 once",
+            "Monthly or yearly subscriptions are common for the full app"
+          ],
+          [
+            "Watermark on recordings",
+            "None",
+            "Common on free tiers"
+          ],
+          [
+            "Voice-following scroll",
+            "Voice Pace and Voice Follow with Plus (one-time)",
+            "Usually part of a paid subscription"
+          ],
+          [
+            "Free limits",
+            "Unlimited scripts; recording included",
+            "Some free tiers limit scripts or recording length"
+          ],
+          [
+            "Ads",
+            "None",
+            "Some free apps show ads"
+          ],
+          [
+            "Account",
+            "None needed",
+            "Some require one for syncing"
+          ],
+          [
+            "Platforms",
+            "Android (Google Play)",
+            "Many are on both iPhone and Android"
+          ]
+        ],
+        "method": [
+          "We read store listings, reviews and 2026 roundups of teleprompter apps that come up for searches like 'teleprompter app that follows your voice' and 'free teleprompter app no watermark'.",
+          "The 'typical app' column describes patterns across many apps, not one named app. Some apps in the category are one-time purchases or free with ads; many sell monthly or yearly plans.",
+          "Cue's column comes from its Google Play listing."
+        ],
+        "notFor": [
+          "You need an iPhone app: Cue is Android only for now.",
+          "You need scripts synced across devices or a team workspace: Cue keeps scripts on the phone with no account.",
+          "You need a floating prompter over other camera or video-call apps: Cue records inside its own camera screen.",
+          "You want built-in video editing or AI script writing: Cue focuses on reading and recording."
+        ]
+      },
+      "alternatives": {
+        "title": "Alternatives to subscription teleprompter apps",
+        "metaDesc": "Ways to read a script on camera without a monthly teleprompter subscription: one-time-purchase apps, free apps, hardware rigs and simple tricks. What to check before you install.",
+        "intro": "If you record videos to camera and want a teleprompter without a monthly bill or a watermark, there are several routes, from apps with a one-time price to simple tricks.",
+        "kinds": [
+          [
+            "One-time-purchase teleprompter apps.",
+            "Apps that keep the core prompter free or charge once instead of monthly. Cue is one of these, on Android."
+          ],
+          [
+            "Free apps with a watermark or limits.",
+            "Common free tiers stamp a watermark on recordings, cap recording length or limit how many scripts you keep."
+          ],
+          [
+            "A notes app or document scrolled by hand.",
+            "Free and simple, but you scroll yourself and your eyes leave the lens."
+          ],
+          [
+            "A hardware teleprompter rig.",
+            "A beam-splitter glass in front of the camera with a phone or tablet underneath. The most natural eye contact; it needs a prompter app that can mirror the text."
+          ],
+          [
+            "Bullet points instead of a script.",
+            "Keep a few key points beside the lens and talk naturally. No app needed, but harder for exact wording."
+          ]
+        ],
+        "lookFor": [
+          "Is recording watermarked on the free version?",
+          "Is voice scrolling included, and is it a subscription or a one-time purchase?",
+          "How many scripts and how long a recording does the free version allow?",
+          "Does it mirror text for a rig?",
+          "Does it need an account, and does your script leave the phone?",
+          "Is it on your platform (iPhone, Android or both)?"
+        ],
+        "fit": "Cue is an Android teleprompter with free unlimited scripts and watermark-free recording. Cue Plus (A$2.99 once) adds Voice Pace and Voice Follow scrolling, caption export, Word import and more. No ads, no account, no subscription."
+      },
+      "faqTitleTail": "teleprompter with voice scrolling and no watermark",
+      "faqDesc": "Answers about Cue for Android: price, watermark-free recording, Voice Pace and Voice Follow, mirroring for a rig, offline use, privacy and iPhone availability.",
+      "faq": [
+        [
+          "Is there a free teleprompter app for Android with no watermark?",
+          "Yes. Cue is free on Google Play with unlimited scripts, steady scrolling, mirror and flip, a countdown and video recording with no watermark. No ads and no account."
+        ],
+        [
+          "Is there a teleprompter app that follows your voice?",
+          "Cue Plus adds two voice modes: Voice Pace moves the script while you talk and waits when you pause, and Voice Follow uses on-device speech recognition to follow your words. Voice Follow depends on your device and language support."
+        ],
+        [
+          "How much does Cue cost?",
+          "The download and core teleprompter are free. Cue Plus is a one-time purchase of A$2.99 in Australia (Google Play shows your local price). There is no subscription."
+        ],
+        [
+          "Is there a free trial of Cue Plus?",
+          "Yes, an optional 7-day trial you start from the Plus screen. It doesn't charge automatically, and your scripts and steady-scroll tools stay when it ends."
+        ],
+        [
+          "Can I record video while reading a script?",
+          "Yes. Cue records takes with the script near the camera so your eyes stay close to the lens, and recordings have no watermark. Camera and microphone permission are needed."
+        ],
+        [
+          "Can I mirror the text for a teleprompter rig?",
+          "Yes. Mirror or flip the text for a beam-splitter teleprompter."
+        ],
+        [
+          "Does Cue work offline?",
+          "The prompter, scripts and recording work on the phone with no account. Voice Follow uses on-device speech recognition, which may need the language resources installed first."
+        ],
+        [
+          "Can I import a script?",
+          "Yes. Import scripts with the system file picker. Word document import is part of Cue Plus."
+        ],
+        [
+          "Is Cue on iPhone?",
+          "Not yet. Cue is Android only for now, on Google Play."
+        ],
+        [
+          "Does Cue have ads or need an account?",
+          "No ads and no account. Your scripts and videos stay on your phone."
+        ],
+        [
+          "Can Cue make captions?",
+          "With Cue Plus you can export a caption file for your script."
+        ]
+      ]
+    },
+    "backspin": {
+      "category": "reverse singing and reverse audio game",
+      "icon": "apps/backspin/assets/icon.png",
+      "schemaCategory": "GameApplication",
+      "accentDark": "#FF8A80",
+      "h1": "the reverse singing game with a score",
+      "titleTail": "reverse singing game for Android with no ads",
+      "oneLine": "Backspin is a reverse-voice party game for Android: say a short line, hear it backwards, copy the backwards sound, and Backspin flips your copy forwards and scores how close it is.",
+      "metaDesc": "Reverse singing game for Android: record a line, hear it backwards, copy it and get a score. 10 free scored rounds, then a one-time A$1.99 unlock. No ads, no subscription.",
+      "priceLine": "Free download with 10 scored rounds and everything switched on. Backspin Plus is a one-time A$1.99 for unlimited rounds. No ads, no subscription.",
+      "platformNote": "Not yet on iPhone or the App Store.",
+      "screenshots": [
+        "apps/backspin/store/jpg/ios/01-score.jpg",
+        "apps/backspin/store/jpg/ios/02-say-it.jpg",
+        "apps/backspin/store/jpg/ios/03-backwards.jpg",
+        "apps/backspin/store/jpg/ios/04-copy-it.jpg",
+        "apps/backspin/store/jpg/ios/05-party.jpg",
+        "apps/backspin/store/jpg/ios/06-daily.jpg"
+      ],
+      "free": [
+        "10 scored rounds with every pack, effect and party size switched on",
+        "Quick round, daily challenge, freestyle and party mode",
+        "Loop or slow down the backwards clip while you practise",
+        "Saved takes stay playable and shareable"
+      ],
+      "plus": {
+        "name": "Backspin Plus",
+        "priceAUD": "1.99",
+        "priceText": "A$1.99 in Australia; Google Play shows your local price",
+        "features": [
+          "Unlimited scored rounds",
+          "Every challenge pack (950+ lines)",
+          "All voice effects",
+          "Party mode for up to 8 players",
+          "Unlimited saved takes and 30-second takes"
+        ]
+      },
+      "trial": "No trial needed: the first 10 scored rounds are free with everything on.",
+      "privacy": [
+        "No ads, no account. Recording and audio processing happen on your phone; Backspin doesn't upload your recordings, and you choose when to share them.",
+        "Google Play's Data safety section lists app diagnostics and purchase history. See the listing for the current details."
+      ],
+      "notClaimed": "Backspin ships no copyrighted song lyrics; you sing or say your own lines or use its built-in challenge lines. It is not yet on iPhone.",
+      "lead": [
+        [
+          "A real score",
+          "Backspin flips your backwards copy forwards and scores its sound, rhythm and length, so you know how close you got."
+        ],
+        [
+          "Party mode",
+          "Pass one phone around: Copy it, where everyone copies a line for points, or Guess it, where players hear only the backwards copy and guess the line."
+        ],
+        [
+          "No ads, no subscription",
+          "10 scored rounds free with everything on, then one small lifetime unlock. Recordings stay on your phone."
+        ]
+      ],
+      "compare": {
+        "title": "Backspin compared with typical reverse singing apps",
+        "metaDesc": "How Backspin compares with typical reverse audio and reverse singing apps on price, ads, scoring, party modes and privacy. Honest, checked against store listings.",
+        "intro": "Reverse singing apps let you record yourself, play it backwards, then try to copy the backwards sound. Most are simple recorders; they differ in ads, subscriptions and whether they turn it into a game. Here is how Backspin compares with what is typical.",
+        "them": "Typical reverse audio app",
+        "rows": [
+          [
+            "Price",
+            "10 free scored rounds; A$1.99 once for unlimited",
+            "Weekly subscriptions or ads are common"
+          ],
+          [
+            "Ads",
+            "None",
+            "Frequent in free apps, sometimes before each recording"
+          ],
+          [
+            "Scores your attempt",
+            "Yes: sound, rhythm and length",
+            "Usually just plays the audio back"
+          ],
+          [
+            "Party play",
+            "Copy it and Guess it modes, pass one phone, up to 8 players",
+            "Rare"
+          ],
+          [
+            "Practice tools",
+            "Loop and slow down the backwards clip",
+            "Varies"
+          ],
+          [
+            "Daily challenge",
+            "Yes",
+            "Rare"
+          ],
+          [
+            "Recordings",
+            "Processed on your phone, not uploaded",
+            "Varies; check each listing"
+          ]
+        ],
+        "method": [
+          "We read store listings, reviews and app trackers for the apps that come up for searches like 'reverse singing app' and 'reverse audio challenge'.",
+          "The 'typical app' column describes patterns across many apps, not one named app. Some apps in the category are free with ads, some sell weekly plans and some sell a one-time unlock.",
+          "Backspin's column comes from its Google Play listing and the app itself."
+        ],
+        "notFor": [
+          "You need an iPhone app: Backspin is Android only for now.",
+          "You want to reverse a song file or a long recording: Backspin is built around short lines you record yourself.",
+          "You want video editing with effects for social posts: Backspin shares a four-part audio clip of each round."
+        ]
+      },
+      "alternatives": {
+        "title": "Alternatives to ad-heavy reverse audio apps",
+        "metaDesc": "Ways to play the reverse singing challenge without ads or weekly subscriptions: one-time-purchase game apps, free audio editors and voice recorders. What to check before you install.",
+        "intro": "The reverse singing challenge is simple: record a line, play it backwards, copy the backwards sound, then flip your copy to hear how close you got. You can play it with several kinds of tool.",
+        "kinds": [
+          [
+            "One-time-purchase reverse singing games.",
+            "Apps built for the challenge, with rounds and scoring, that charge once instead of weekly. Backspin is one of these, on Android."
+          ],
+          [
+            "Free reverse audio apps with ads.",
+            "Record and reverse at no cost, but ads often interrupt and features may sit behind a weekly plan."
+          ],
+          [
+            "A free audio editor on a computer.",
+            "Desktop audio editors can reverse any recording. Free and precise, but slow for a party."
+          ],
+          [
+            "Social video app effects.",
+            "Some video apps offer a reverse effect for clips. Handy for posting, with no scoring."
+          ]
+        ],
+        "lookFor": [
+          "Weekly subscription or one-time price? Check the in-app purchase list.",
+          "How many ads, and do they play before each recording?",
+          "Does it score your attempt, or just play it back?",
+          "Can a group play on one phone?",
+          "Does it upload your recordings?"
+        ],
+        "fit": "Backspin is a reverse-voice party game for Android with scoring, a daily challenge and party modes for up to 8 players. The first 10 scored rounds are free with everything on; Backspin Plus is a one-time A$1.99 for unlimited rounds. No ads, no subscription, recordings stay on the phone."
+      },
+      "faqTitleTail": "the reverse singing game with a score",
+      "faqDesc": "Answers about Backspin for Android: how the reverse singing challenge works, scoring, party mode, price, ads, privacy and iPhone availability.",
+      "faq": [
+        [
+          "How does the reverse singing challenge work?",
+          "Say or sing a short line and the app plays it backwards. You copy that backwards sound as closely as you can, then the app reverses your copy so it plays forwards again. The closer your copy, the more it sounds like the original line."
+        ],
+        [
+          "Is there a reverse singing app that scores you?",
+          "Yes. Backspin flips your copy forwards and scores its sound, rhythm and length so you can see how close you got."
+        ],
+        [
+          "Is there a reverse singing app with no ads?",
+          "Backspin has no ads and no subscription. The first 10 scored rounds are free with everything on; Backspin Plus is a one-time A$1.99 (Google Play shows your local price) for unlimited rounds."
+        ],
+        [
+          "Can I play reverse singing with friends on one phone?",
+          "Yes. Party mode passes one phone around. In Copy it, each player copies a line and the closest wins. In Guess it, one player records secretly and the others hear only the backwards copy and guess the line. Up to 8 players."
+        ],
+        [
+          "How much does Backspin cost?",
+          "Free to download with 10 scored rounds. Backspin Plus is one optional lifetime purchase of A$1.99 in Australia. Saved takes stay playable and shareable without it."
+        ],
+        [
+          "What does Backspin Plus add?",
+          "Unlimited scored rounds, every challenge pack (950+ lines), all voice effects, party mode for up to 8 players, and unlimited saved takes and 30-second takes."
+        ],
+        [
+          "Can I slow down the backwards clip to practise?",
+          "Yes. Loop or slow down the backwards clip while you practise."
+        ],
+        [
+          "Can I share my reverse singing attempt?",
+          "Yes. Save takes on your phone and share a four-part clip: the original, the backwards version, your copy and your copy flipped."
+        ],
+        [
+          "Does Backspin upload my voice?",
+          "No. Recording and audio processing happen on your phone, and Backspin doesn't upload your recordings. You choose when to share them."
+        ],
+        [
+          "Is Backspin on iPhone?",
+          "Not yet. Backspin is Android only for now, on Google Play."
+        ],
+        [
+          "Is there a daily challenge?",
+          "Yes. Pick a daily challenge, or play a quick round or freestyle with any line you like."
+        ]
+      ],
+      "legal": [
+        [
+          "Support",
+          "support-android.html"
+        ],
+        [
+          "Privacy",
+          "privacy-android.html"
+        ]
+      ]
+    }
+  }
+}
