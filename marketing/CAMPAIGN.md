@@ -87,6 +87,12 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
   "on the App Store and Google Play" and keep the link in the profile.
 - Chrome screenshots time out on this PC; work from `find`, `read_page`, `get_page_text` and small JS reads instead.
 
+## Downloads watch
+Every daily run reads Play Console (signed in) and App Store Connect (signed out in Chrome on 10 Nov, so iPhone numbers
+need Jared to sign in once) and sends Jared a phone notification the first time each app shows a download, then at 10,
+50 and 100. State: `marketing/analytics/first_downloads.json`. The first 1-2 Linework iPhone downloads are probably Jared
+and his partner.
+
 ## Logging (source of truth: `marketing/analytics/`)
 - `marketing/analytics/posts.csv`: add a row the moment anything goes live (pin, reel, TikTok, Reddit reply, directory listing), `post_id` = `pin-<id>`, `ig-<id>`, `tt-<id>`, `rd-<id>`, `dir-<site>`. Scheduled pins get their row when they go live.
 - `marketing/analytics/snapshots.csv`: append only, one number per row, metric names from `marketing/analytics/README.md`. The Sunday run appends per-post and account readings for every channel, plus Etsy traffic sources (`visits_from_pinterest` etc.) and Play/App Store installs and store page views.
