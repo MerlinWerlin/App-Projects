@@ -45,6 +45,7 @@ asked for it on 10 Nov 2026. It's plain CSV that only gets added to, with no spr
 | `total_audience`, `engaged_audience` | people reached / who interacted | Pinterest |
 | `listing_views`, `favourites`, `conversion_rate_pct` | shop listing numbers | Etsy |
 | `visits_from_<source>` | visits a channel sent (`pinterest`, `facebook`, `instagram`, `social`, `tiktok` …) | Etsy traffic sources, Play/App Store by UTM |
+| `ai_mentions` | 1 if an AI assistant names our app for a key question, else 0 (`scope=app`, source `<assistant>: <question>`, plus what it named instead) | ChatGPT, Perplexity, Claude, Google AI Overviews |
 
 Only add a new metric when none of these fit, and then add it to this table.
 

@@ -55,10 +55,24 @@ def stores(a):
     return out
 
 
-def store_buttons(a):
+def tracked(url, page):
+    """Store link tagged so Play Console / App Store Connect can split visits by page (marketing/analytics/README.md).
+    Structured data and facts.txt keep the clean URLs."""
+    if "play.google.com" in url:
+        return f"{url}&referrer=utm_source%3Dweb%26utm_medium%3D{page}%26utm_campaign%3Dcompare"
+    if "apps.apple.com" in url:
+        return f"{url}{'&' if '?' in url else '?'}ct=web-{page}"
+    return url
+
+
+def page_tag(slug, sub):
+    return f"{slug}-{sub.strip('/') or 'home'}" if slug else "index"
+
+
+def store_buttons(a, page):
     s = stores(a)
     if s:
-        return "".join(f'<a class="cta" href="{E(u)}" rel="noopener">Get it on {E(n)}</a>' for n, _, u in s)
+        return "".join(f'<a class="cta" href="{E(tracked(u, page))}" rel="noopener">Get it on {E(n)}</a>' for n, _, u in s)
     if a.get("testflightUrl"):
         return f'<a class="cta" href="{E(a["testflightUrl"])}">Join the free beta on TestFlight</a>'
     return '<span class="cta off">Coming soon</span>'
@@ -122,7 +136,7 @@ def doc(a, x, sub, title, desc, body, lds, og_image):
     ld = "".join(f'<script type="application/ld+json">{json.dumps(o, ensure_ascii=False)}</script>' for o in lds)
     smart = f'<meta name="apple-itunes-app" content="app-id={a["ascAppId"]}">' if a.get("appStoreUrl") and a.get("ascAppId") else ""
     css = CSS % {"accent": a.get("accent", "#2346A8"), "accentDark": x.get("accentDark", "#9DB3FF")}
-    foot = "".join(f'<a href="{E(u)}" rel="noopener">{E(a["name"])} on {E(n)}</a>' for n, _, u in stores(a))
+    foot = "".join(f'<a href="{E(tracked(u, page_tag(slug, sub)))}" rel="noopener">{E(a["name"])} on {E(n)}</a>' for n, _, u in stores(a))
     legal = "".join(f'<a href="{up}{E(h)}">{E(n)}</a>' for n, h in x.get("legal", [["Support", "support.html"], ["Privacy", "privacy.html"]]))
     ideas = f'<a href="{up}ideas/">Free drawings to trace</a>' if (DOCS / slug / "ideas" / "index.html").exists() else ""
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
@@ -241,7 +255,7 @@ def build_app(a):
     shots_html = "".join(f'<img src="img/{s}" alt="{E(a["name"])} screenshot {i+1}" loading="lazy" width="600">' for i, s in enumerate(shots))
     body = f"""{header(a, a['name'] + ': ' + x['h1'], '')}
 <p class=lede>{E(x['oneLine'])}</p>
-<div class=ctas>{store_buttons(a)}</div>
+<div class=ctas>{store_buttons(a, slug + "-home")}</div>
 <p class=price>{E(x['priceLine'])} {E(platforms_line(a, x))}</p>
 <div class=shots>{shots_html}</div>
 <h2>Why people pick {E(a['name'])}</h2><div class=lead>{lead}</div>
@@ -265,7 +279,7 @@ def build_app(a):
     fit = "".join(f"<li>{E(m)}</li>" for m in c["notFor"])
     body = f"""{header(a, c['title'], 'compare/')}
 <p class=lede>{E(c['intro'])}</p>
-<div class=ctas>{store_buttons(a)}</div>
+<div class=ctas>{store_buttons(a, slug + "-compare")}</div>
 {table(a, x)}
 {named}
 <h2>How we compared</h2><ul class=kinds>{method}<li>Last checked {E(checked)}. Prices change; the store listing is always the final word.</li></ul>
@@ -283,7 +297,7 @@ def build_app(a):
 <h2>The main kinds of alternative</h2><ul class=kinds>{kinds}</ul>
 <h2>What to check before you install</h2><ul class=kinds>{look}</ul>
 <h2>Where {E(a['name'])} fits</h2><p class=lede>{E(al['fit'])}</p>
-<div class=ctas>{store_buttons(a)}</div>
+<div class=ctas>{store_buttons(a, slug + "-alternatives")}</div>
 <h2>More</h2>{more_links(x, 'alternatives/')}"""
     write(out / "alternatives" / "index.html", doc(a, x, "alternatives/", al["title"], al["metaDesc"], body,
                                                     [app, crumbs(a, base, "Alternatives", "alternatives/")], og))
@@ -291,7 +305,7 @@ def build_app(a):
     # FAQ page
     qa = "".join(f"<h3>{E(q)}</h3><p>{E(ans)}</p>" for q, ans in x["faq"])
     body = f"""{header(a, a['name'] + ' questions and answers', 'faq/')}
-<div class=ctas>{store_buttons(a)}</div>
+<div class=ctas>{store_buttons(a, slug + "-faq")}</div>
 <div class=qa>{qa}</div>
 <h2>More</h2>{more_links(x, 'faq/')}"""
     write(out / "faq" / "index.html", doc(a, x, "faq/", f"{a['name']} FAQ: {x['faqTitleTail']}", x["faqDesc"], body,
@@ -329,7 +343,7 @@ def site(built):
     items, ll, urls = [], [], [SITE]
     for slug, pages in built:
         a, x = apps[slug], ANS["apps"][slug]
-        st = " · ".join(f'<a href="{E(u)}" rel="noopener">{E(n)}</a>' for n, _, u in stores(a))
+        st = " · ".join(f'<a href="{E(tracked(u, "index"))}" rel="noopener">{E(n)}</a>' for n, _, u in stores(a))
         items.append(f'<li><a href="{slug}/"><b>{E(a["storeName"] or a["name"])}</b></a><br>{E(x["oneLine"])}<br>'
                      f'<span class=m>{E(x["priceLine"])}</span><br>{st} · <a href="{slug}/compare/">Compare</a> · <a href="{slug}/faq/">FAQ</a> · <a href="{slug}/facts.txt">Facts</a></li>')
         ll.append(f"- [{a['storeName'] or a['name']}]({SITE}{slug}/facts.txt): {x['oneLine']} {x['priceLine']}")
