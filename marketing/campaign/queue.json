@@ -13,10 +13,14 @@
     "#publicspeaking"
    ],
    "tiktok": {
-    "status": "queued"
+    "status": "live",
+    "date": "2026-11-10",
+    "url": "https://www.tiktok.com/@fernandfableau/video/7706268997020290324"
    },
    "instagram": {
-    "status": "queued"
+    "status": "live",
+    "date": "2026-11-10",
+    "url": "https://www.instagram.com/fernandfableau/reel/DfiLxa9voa7/"
    }
   },
   {
@@ -31,12 +35,14 @@
     "#arttok"
    ],
    "tiktok": {
-    "status": "review",
+    "status": "live",
     "date": "2026-11-10",
     "url": "https://www.tiktok.com/@fernandfableau/video/7706258992498052373"
    },
    "instagram": {
-    "status": "queued"
+    "status": "live",
+    "date": "2026-11-10",
+    "url": "https://www.instagram.com/fernandfableau/reel/DfiLjXXhZU8/"
    }
   },
   {
@@ -51,10 +57,14 @@
     "#familygames"
    ],
    "tiktok": {
-    "status": "queued"
+    "status": "live",
+    "date": "2026-11-10",
+    "url": "https://www.tiktok.com/@fernandfableau/video/7706269324368989461"
    },
    "instagram": {
-    "status": "queued"
+    "status": "live",
+    "date": "2026-11-10",
+    "url": "https://www.instagram.com/fernandfableau/reel/DfiL_9jNbWw/"
    }
   }
  ],

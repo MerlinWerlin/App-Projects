@@ -27,16 +27,16 @@ because Linework already has five queued).
 ## TikTok
 | Date (Sydney) | App | Item | Caption start | Status | URL |
 |---|---|---|---|---|---|
-| 2026-11-10 | Linework | lw-r01 | Trace any photo onto real paper… | review (TikTok content check) | https://www.tiktok.com/@fernandfableau/video/7706258992498052373 |
-| next run | Cue | cu-r01 | Read your script right by the lens… | queued | |
-| next run | Backspin | bs-r01 | Say a line, hear it backwards… | queued | |
+| 2026-11-10 | Linework | lw-r01 | Trace any photo onto real paper… | live | https://www.tiktok.com/@fernandfableau/video/7706258992498052373 |
+| 2026-11-10 | Cue | cu-r01 | Read your script right by the lens… | live | https://www.tiktok.com/@fernandfableau/video/7706268997020290324 |
+| 2026-11-10 | Backspin | bs-r01 | Say a line, hear it backwards… | live | https://www.tiktok.com/@fernandfableau/video/7706269324368989461 |
 
 ## Instagram (Reels)
 | Date (Sydney) | App | Item | Caption start | Status | URL |
 |---|---|---|---|---|---|
-| next run | Linework | lw-r01 | Trace any photo onto real paper… | queued | |
-| next run | Cue | cu-r01 | Read your script right by the lens… | queued | |
-| next run | Backspin | bs-r01 | Say a line, hear it backwards… | queued | |
+| 2026-11-10 | Linework | lw-r01 | Trace any photo onto real paper… | live | https://www.instagram.com/fernandfableau/reel/DfiLjXXhZU8/ |
+| 2026-11-10 | Cue | cu-r01 | Read your script right by the lens… | live | https://www.instagram.com/fernandfableau/reel/DfiLxa9voa7/ |
+| 2026-11-10 | Backspin | bs-r01 | Say a line, hear it backwards… | live | https://www.instagram.com/fernandfableau/reel/DfiL_9jNbWw/ |
 
 ## Other sites
 | Date | Site | App | What | Status | URL |
