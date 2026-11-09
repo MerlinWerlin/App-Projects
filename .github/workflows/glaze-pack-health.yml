@@ -1,0 +1,49 @@
+# Read-only health check of Glaze's live theme packs: downloads catalog.json from the production
+# release and checks every pack's thumb and manifest (and each manifest's files) answer 200 on the
+# release the catalogue names. Writes a summary; changes nothing.
+name: glaze-pack-health
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release holding catalog.json'
+        default: 'glaze-packs-v5'
+        type: string
+      deep:
+        description: 'Also check every file listed in each manifest'
+        default: false
+        type: boolean
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        env:
+          TAG: ${{ inputs.tag }}
+          DEEP: ${{ inputs.deep }}
+        run: |
+          B="https://github.com/${{ github.repository }}/releases/download"
+          curl -fsSL "$B/$TAG/catalog.json" -o catalog.json
+          jq '{generatedAt, packs:(.packs|length), byRelease:(.packs|map(.release//"(catalog tag)")|group_by(.)|map({(.[0]):length})|add)}' catalog.json | tee -a "$GITHUB_STEP_SUMMARY"
+          bad=0; n=0
+          while IFS=$'\t' read -r id rel thumb man; do
+            [ "$rel" = "null" ] && rel="$TAG"
+            for p in "$thumb" "$man"; do
+              f=$(printf '%s' "$p" | sed 's#/#__#g')
+              code=$(curl -s -o /dev/null -w '%{http_code}' -L "$B/$rel/$f"); n=$((n+1))
+              [ "$code" = 200 ] || { echo "BAD $code $id $rel $f" | tee -a "$GITHUB_STEP_SUMMARY"; bad=$((bad+1)); }
+            done
+            if [ "$DEEP" = "true" ]; then
+              dir=$(dirname "$man")
+              curl -fsSL "$B/$rel/$(printf '%s' "$man" | sed 's#/#__#g')" -o m.json || continue
+              for a in $(jq -r '.assets[].path' m.json); do
+                f=$(printf '%s/%s' "$dir" "$a" | sed 's#/#__#g')
+                code=$(curl -s -o /dev/null -w '%{http_code}' -L "$B/$rel/$f"); n=$((n+1))
+                [ "$code" = 200 ] || { echo "BAD $code $id $rel $f" | tee -a "$GITHUB_STEP_SUMMARY"; bad=$((bad+1)); }
+              done
+            fi
+          done < <(jq -r '.packs[] | [.id, (.release // "null"), .thumb, .manifest] | @tsv' catalog.json)
+          echo "checked $n urls, $bad bad" | tee -a "$GITHUB_STEP_SUMMARY"
+          for id in alpine-starlight aurora-haven; do
+            jq -c --arg id "$id" '.packs[]|select(.id==$id)|{id,packVersion,release,manifest,thumb}' catalog.json | tee -a "$GITHUB_STEP_SUMMARY"
+          done
