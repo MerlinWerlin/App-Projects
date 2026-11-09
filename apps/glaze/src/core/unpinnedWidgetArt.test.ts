@@ -159,7 +159,7 @@ test('wiring: adapter pins the last applied image on every seamless write; the e
   // No chosen piece: the timeline uses the followed piece.
   assert.match(lib, /guard id != nil else \{\s*if case \.piece\(let follow\) = snapshot\(\)\.unpinnedChoice\(size\) \{ return follow \}/);
   const seamless = strip(read('targets', 'widget', 'SeamlessWidget.swift'));
-  assert.equal(seamless.match(/if WidgetArtStore\.unpinnedShowsBackground\(family\) \{ return nil \}/g)?.length, 2, 'load + loadArt');
+  assert.equal(seamless.match(/if WidgetArtStore\.unpinnedShowsBackground\(family\) \{ return nil \}/g)?.length, 3, 'load + loadArt + the gallery preview');
   const live = strip(read('targets', 'widget', 'LiveArtOverlay.swift'));
   assert.match(live, /if WidgetArtStore\.unpinnedShowsBackground\(family\) \{ return nil \}/);
   // Swift rules: no force unwraps / try! / fatalError in the touched extension files.

@@ -104,7 +104,7 @@ test('Seamless widget: Edit Widget Layout Fill (default) / Fit; Fill never shows
   assert.match(lib, /layout: configuration\.layout/);
   assert.match(lib, /"\\\(id\)-art\.png"/);
   const widget = read('targets', 'widget', 'SeamlessWidget.swift');
-  assert.match(widget, /SeamlessWidgetView\(theme: entry\.theme, pieceID: entry\.pieceID, layout: entry\.layout(, date: entry\.date)?\)/);
+  assert.match(widget, /SeamlessWidgetView\(theme: entry\.theme, pieceID: entry\.pieceID, layout: entry\.layout(, date: entry\.date)?(, preview: entry\.preview)?\)/);
   assert.match(widget, /let fit = layout == \.fit/, 'nil and .fill both mean Fill');
   assert.match(widget, /"seamless-\\\(name\)-art\.png"/);
   // Fill branch: full-opacity blur, no GlazeBackground, no opacity veil.
