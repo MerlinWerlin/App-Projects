@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cue FAQ: teleprompter with voice scrolling and no watermark</title><meta name="description" content="Answers about Cue for Android: price, watermark-free recording, Voice Pace and Voice Follow, mirroring for a rig, offline use, privacy and iPhone availability.">
+<link rel="canonical" href="https://merlinwerlin.github.io/App-Projects/cue/faq/">
+<meta property="og:title" content="Cue FAQ: teleprompter with voice scrolling and no watermark"><meta property="og:description" content="Answers about Cue for Android: price, watermark-free recording, Voice Pace and Voice Follow, mirroring for a rig, offline use, privacy and iPhone availability.">
+<meta property="og:url" content="https://merlinwerlin.github.io/App-Projects/cue/faq/"><meta property="og:image" content="https://merlinwerlin.github.io/App-Projects/cue/img/phone-03-prompter.jpg"><meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../img/icon.png">
+<link rel="alternate" type="text/plain" href="https://merlinwerlin.github.io/App-Projects/cue/facts.txt" title="Cue facts">
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{--paper:#F7F3EE;--ink:#1C1E22;--muted:#5A5F68;--accent:#E8552B;--line:#DDD6CC;--card:#FFFDF9;
+--display:"Fraunces",Georgia,serif;--text:"Atkinson Hyperlegible",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root{--paper:#15171B;--ink:#ECEAE6;--muted:#A3A7AF;--line:#2C3037;--card:#1C1F24;--accent:#FF8A63}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--text)}
+.w{max-width:1040px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left))}
+nav.top{display:flex;flex-wrap:wrap;gap:6px 16px;padding:18px 0 0;font-size:15px}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a[aria-current]{color:var(--ink);font-weight:700}
+header{padding:34px 0 18px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+header img{width:80px;height:80px;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+h1{font:700 clamp(30px,5.4vw,52px)/1.05 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{font:500 clamp(18px,2.4vw,22px)/1.3 var(--display);color:var(--muted);margin:6px 0 0}
+.lede{max-width:68ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:20px 0 8px}
+.cta{display:inline-block;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;border-radius:12px;padding:13px 20px}
+.cta.off{background:var(--line);color:var(--muted)}
+.muted,.price{color:var(--muted);font-size:15px}
+.shots{display:flex;gap:14px;overflow-x:auto;padding:22px 0 14px;scroll-snap-type:x mandatory}
+.shots img{height:min(540px,68vh);width:auto;border-radius:18px;scroll-snap-align:start;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+h2{font:700 clamp(23px,3.2vw,30px)/1.15 var(--display);margin:44px 0 14px;text-wrap:balance}
+h3{font-size:18px;margin:22px 0 6px}
+.lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.lead div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.lead h3{margin:0 0 6px}.lead p{margin:0;color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px}th,td{text-align:left;padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;font-size:14px;color:var(--muted)}tbody th{font-weight:700}td.us{font-weight:700}
+details{border-top:1px solid var(--line);padding:14px 0}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font-weight:700;cursor:pointer}details p{margin:8px 0 0;max-width:70ch;color:var(--muted)}
+.qa h3{margin-top:28px}.qa p{max-width:70ch;margin:6px 0 0}
+ul.kinds{padding-left:1.1em}ul.kinds li{margin:10px 0;max-width:72ch}
+.facts{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 18px}
+.facts dt{font-weight:700;margin-top:12px}.facts dd{margin:2px 0 12px;color:var(--muted)}
+.more{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px}
+.more a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
+.more a span{display:block;color:var(--muted);font-size:14px}
+footer{margin:56px 0 40px;color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:8px 20px}
+a{color:var(--accent)}
+@media (max-width:600px){table{min-width:0;font-size:15px}th,td{padding:10px 8px}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "url": "https://merlinwerlin.github.io/App-Projects/cue/faq/", "mainEntity": [{"@type": "Question", "name": "Is there a free teleprompter app for Android with no watermark?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Cue is free on Google Play with unlimited scripts, steady scrolling, mirror and flip, a countdown and video recording with no watermark. No ads and no account."}}, {"@type": "Question", "name": "Is there a teleprompter app that follows your voice?", "acceptedAnswer": {"@type": "Answer", "text": "Cue Plus adds two voice modes: Voice Pace moves the script while you talk and waits when you pause, and Voice Follow uses on-device speech recognition to follow your words. Voice Follow depends on your device and language support."}}, {"@type": "Question", "name": "How much does Cue cost?", "acceptedAnswer": {"@type": "Answer", "text": "The download and core teleprompter are free. Cue Plus is a one-time purchase of A$2.99 in Australia (Google Play shows your local price). There is no subscription."}}, {"@type": "Question", "name": "Is there a free trial of Cue Plus?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, an optional 7-day trial you start from the Plus screen. It doesn't charge automatically, and your scripts and steady-scroll tools stay when it ends."}}, {"@type": "Question", "name": "Can I record video while reading a script?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Cue records takes with the script near the camera so your eyes stay close to the lens, and recordings have no watermark. Camera and microphone permission are needed."}}, {"@type": "Question", "name": "Can I mirror the text for a teleprompter rig?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mirror or flip the text for a beam-splitter teleprompter."}}, {"@type": "Question", "name": "Does Cue work offline?", "acceptedAnswer": {"@type": "Answer", "text": "The prompter, scripts and recording work on the phone with no account. Voice Follow uses on-device speech recognition, which may need the language resources installed first."}}, {"@type": "Question", "name": "Can I import a script?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Import scripts with the system file picker. Word document import is part of Cue Plus."}}, {"@type": "Question", "name": "Is Cue on iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Not yet. Cue is Android only for now, on Google Play."}}, {"@type": "Question", "name": "Does Cue have ads or need an account?", "acceptedAnswer": {"@type": "Answer", "text": "No ads and no account. Your scripts and videos stay on your phone."}}, {"@type": "Question", "name": "Can Cue make captions?", "acceptedAnswer": {"@type": "Answer", "text": "With Cue Plus you can export a caption file for your script."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Apps", "item": "https://merlinwerlin.github.io/App-Projects/"}, {"@type": "ListItem", "position": 2, "name": "Cue", "item": "https://merlinwerlin.github.io/App-Projects/cue/"}, {"@type": "ListItem", "position": 3, "name": "FAQ", "item": "https://merlinwerlin.github.io/App-Projects/cue/faq/"}]}</script>
+</head><body><main class=w>
+<nav class=top aria-label="Cue pages"><a href="../">Overview</a><a href="../compare/">Compare</a><a href="../alternatives/">Alternatives</a><a href="../faq/" aria-current=page>FAQ</a><a href="../facts.txt">Facts</a><a href="../../">More apps</a></nav>
+<header><img src="../img/icon.png" alt="Cue app icon" width="80" height="80"><div><h1>Cue questions and answers</h1><p class=sub>Cue: Teleprompter</p></div></header>
+<div class=ctas><a class="cta" href="https://play.google.com/store/apps/details?id=com.jared797.cue&amp;referrer=utm_source%3Dweb%26utm_medium%3Dcue-faq%26utm_campaign%3Dcompare" rel="noopener">Get it on Google Play</a></div>
+<div class=qa><h3>Is there a free teleprompter app for Android with no watermark?</h3><p>Yes. Cue is free on Google Play with unlimited scripts, steady scrolling, mirror and flip, a countdown and video recording with no watermark. No ads and no account.</p><h3>Is there a teleprompter app that follows your voice?</h3><p>Cue Plus adds two voice modes: Voice Pace moves the script while you talk and waits when you pause, and Voice Follow uses on-device speech recognition to follow your words. Voice Follow depends on your device and language support.</p><h3>How much does Cue cost?</h3><p>The download and core teleprompter are free. Cue Plus is a one-time purchase of A$2.99 in Australia (Google Play shows your local price). There is no subscription.</p><h3>Is there a free trial of Cue Plus?</h3><p>Yes, an optional 7-day trial you start from the Plus screen. It doesn&#x27;t charge automatically, and your scripts and steady-scroll tools stay when it ends.</p><h3>Can I record video while reading a script?</h3><p>Yes. Cue records takes with the script near the camera so your eyes stay close to the lens, and recordings have no watermark. Camera and microphone permission are needed.</p><h3>Can I mirror the text for a teleprompter rig?</h3><p>Yes. Mirror or flip the text for a beam-splitter teleprompter.</p><h3>Does Cue work offline?</h3><p>The prompter, scripts and recording work on the phone with no account. Voice Follow uses on-device speech recognition, which may need the language resources installed first.</p><h3>Can I import a script?</h3><p>Yes. Import scripts with the system file picker. Word document import is part of Cue Plus.</p><h3>Is Cue on iPhone?</h3><p>Not yet. Cue is Android only for now, on Google Play.</p><h3>Does Cue have ads or need an account?</h3><p>No ads and no account. Your scripts and videos stay on your phone.</p><h3>Can Cue make captions?</h3><p>With Cue Plus you can export a caption file for your script.</p></div>
+<h2>More</h2><div class=more><a href="../compare/">How it compares<span>Cue compared with typical teleprompter apps</span></a><a href="../alternatives/">Alternatives<span>Alternatives to subscription teleprompter apps</span></a><a href="../facts.txt">Plain-text facts<span>Price, platforms, what&#x27;s free, privacy</span></a></div>
+<footer><span>Cue: Teleprompter by Astro Labs AU</span><a href="https://play.google.com/store/apps/details?id=com.jared797.cue&amp;referrer=utm_source%3Dweb%26utm_medium%3Dcue-faq%26utm_campaign%3Dcompare" rel="noopener">Cue on Google Play</a><a href="../support.html">Support</a><a href="../privacy.html">Privacy</a><a href="../../">More apps</a></footer>
+</main></body></html>

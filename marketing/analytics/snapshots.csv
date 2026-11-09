@@ -21,6 +21,9 @@ captured_at,scope,channel,account,app,post_id,metric,value,period,source
 2026-11-10,account,etsy,fernfableau,,,visits_from_facebook,9,2026-10-11..2026-11-09,Etsy Stats traffic sources
 2026-11-10,account,etsy,fernfableau,,,visits_from_instagram,0,2026-10-11..2026-11-09,Etsy Stats traffic sources
 2026-11-10,account,etsy,fernfableau,,,visits_from_social,55,2026-10-11..2026-11-09,Etsy Stats traffic sources (all social)
+2026-11-10,app,web,,linework,,ai_mentions,0,now,"ChatGPT (logged out, web search on): What is a good AR drawing tracing app with no subscription? | named instead: Sketchar, Grid Maker Pro, Art Overlay, Da Vinci Eye"
+2026-11-10,app,web,,cue,,ai_mentions,0,now,"ChatGPT (logged out, web search on): What is a good free teleprompter app for Android that follows your voice with no watermark? | named instead: Whisprompt, Followscript, PromptSmart (also Elegant Teleprompter, Teleprompter for Video)"
+2026-11-10,app,web,,backspin,,ai_mentions,0,now,"ChatGPT (logged out, web search on): What is a good reverse singing game app for Android with no ads? | named instead: Reversong, Backwards, SingFun"
 2026-11-10,account,tiktok,fernandfableau,,,followers,358,now,TikTok Studio home
 2026-11-10,account,tiktok,fernandfableau,,,video_views,97,last_7d,TikTok Studio home key metrics
 2026-11-10,account,tiktok,fernandfableau,,,likes,0,last_7d,TikTok Studio home key metrics

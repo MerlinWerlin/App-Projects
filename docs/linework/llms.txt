@@ -1,0 +1,14 @@
+# Linework: Trace & Sketch
+
+> Linework shows a photo or template over your phone's live camera view so you can trace it onto real paper with your own pencil, or use the screen as a lightbox. Free download. Tracing your own photos with every tracing tool stays free; Linework Plus is a one-time A$2.99 for the full template library and photo-to-outline.
+
+## Pages
+- [Facts (plain text)](https://merlinwerlin.github.io/App-Projects/linework/facts.txt): price, platforms, what's free, privacy
+- [Overview](https://merlinwerlin.github.io/App-Projects/linework/)
+- [Linework compared with typical AR tracing apps](https://merlinwerlin.github.io/App-Projects/linework/compare/)
+- [Alternatives to subscription AR drawing apps](https://merlinwerlin.github.io/App-Projects/linework/alternatives/)
+- [FAQ](https://merlinwerlin.github.io/App-Projects/linework/faq/)
+
+## Stores
+- [App Store (iOS)](https://apps.apple.com/au/app/id6826041969)
+- [Google Play (Android)](https://play.google.com/store/apps/details?id=com.jared797.linework)

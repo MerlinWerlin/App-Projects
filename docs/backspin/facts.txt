@@ -1,0 +1,44 @@
+Backspin: Reverse Your Voice: facts
+========================================
+
+What it is: Backspin is a reverse-voice party game for Android: say a short line, hear it backwards, copy the backwards sound, and Backspin flips your copy forwards and scores how close it is.
+Category: reverse singing and reverse audio game
+Made by: Astro Labs AU (an independent developer in Australia)
+
+Where to get it:
+- Google Play (Android): https://play.google.com/store/apps/details?id=com.jared797.backspin
+- Not yet on iPhone or the App Store.
+
+Price: Free download with 10 scored rounds and everything switched on. Backspin Plus is a one-time A$1.99 for unlimited rounds. No ads, no subscription.
+
+Free (no subscription):
+- 10 scored rounds with every pack, effect and party size switched on
+- Quick round, daily challenge, freestyle and party mode
+- Loop or slow down the backwards clip while you practise
+- Saved takes stay playable and shareable
+
+Backspin Plus (A$1.99 in Australia; Google Play shows your local price, one-time, not a subscription):
+- Unlimited scored rounds
+- Every challenge pack (950+ lines)
+- All voice effects
+- Party mode for up to 8 players
+- Unlimited saved takes and 30-second takes
+
+Trial: No trial needed: the first 10 scored rounds are free with everything on.
+
+Ads: none. Subscription: none. Account: none needed.
+
+Privacy:
+- No ads, no account. Recording and audio processing happen on your phone; Backspin doesn't upload your recordings, and you choose when to share them.
+- Google Play's Data safety section lists app diagnostics and purchase history. See the listing for the current details.
+
+Not claimed: Backspin ships no copyrighted song lyrics; you sing or say your own lines or use its built-in challenge lines. It is not yet on iPhone.
+
+Web page: https://merlinwerlin.github.io/App-Projects/backspin/
+Comparison: https://merlinwerlin.github.io/App-Projects/backspin/compare/
+Alternatives: https://merlinwerlin.github.io/App-Projects/backspin/alternatives/
+FAQ: https://merlinwerlin.github.io/App-Projects/backspin/faq/
+Support: https://merlinwerlin.github.io/App-Projects/backspin/support-android.html
+Privacy: https://merlinwerlin.github.io/App-Projects/backspin/privacy-android.html
+
+Facts checked against the live store listings on 10 November 2026.

@@ -1,0 +1,5 @@
+# Everything here may be crawled and quoted, including by AI assistants.
+User-agent: *
+Allow: /
+
+Sitemap: https://merlinwerlin.github.io/App-Projects/sitemap.xml
