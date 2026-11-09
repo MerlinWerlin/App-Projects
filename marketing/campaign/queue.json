@@ -1,0 +1,65 @@
+{
+ "_about": "Posting queue read by the 'App marketing daily (posting)' task. Take the first item whose channel is due and whose status is 'queued'; set status and url after posting and add a row to marketing/POSTED.md. Captions must follow marketing/CAMPAIGN.md (claims bank).",
+ "reels": [
+  {
+   "id": "cu-r01",
+   "app": "cue",
+   "file": "marketing/cue/media/2026-11-10/cu-r01.mp4",
+   "caption": "Read your script right by the lens and keep eye contact. Cue: Teleprompter records with no watermark, and optional Cue Plus adds Voice Pace, which scrolls while you talk and waits when you pause. Now on Android, on Google Play.",
+   "hashtags": [
+    "#teleprompter",
+    "#contentcreator",
+    "#creatortips",
+    "#publicspeaking"
+   ],
+   "tiktok": {
+    "status": "queued"
+   },
+   "instagram": {
+    "status": "queued"
+   }
+  },
+  {
+   "id": "lw-r01",
+   "app": "linework",
+   "file": "marketing/linework/media/2026-11-10/lw-r01.mp4",
+   "caption": "Trace any photo onto real paper: stand your phone above the page, lock the picture and follow the lines with your own pencil. Linework: Trace & Sketch, on iPhone and Android. No ads, no subscription.",
+   "hashtags": [
+    "#drawing",
+    "#tracing",
+    "#sketching",
+    "#arttok"
+   ],
+   "tiktok": {
+    "status": "review",
+    "date": "2026-11-10",
+    "url": "https://www.tiktok.com/@fernandfableau/video/7706258992498052373"
+   },
+   "instagram": {
+    "status": "queued"
+   }
+  },
+  {
+   "id": "bs-r01",
+   "app": "backspin",
+   "file": "marketing/backspin/media/2026-11-10/bs-r01.mp4",
+   "caption": "Say a line, hear it backwards, then try to copy that sound. Backspin flips your attempt forwards and scores it. Party mode for 2 to 8 players. Backspin: Reverse Your Voice, now on Android, on Google Play.",
+   "hashtags": [
+    "#partygames",
+    "#gamenight",
+    "#reversechallenge",
+    "#familygames"
+   ],
+   "tiktok": {
+    "status": "queued"
+   },
+   "instagram": {
+    "status": "queued"
+   }
+  }
+ ],
+ "pins_next": [
+  "Pinterest app pins are scheduled up to 22 Nov (see marketing/POSTED.md). Fill open 19:00 slots from new plan items: write them into marketing/pins/<slug>-live-2026-11.json (next ids CU-C03, BS-B03, LW-L06...), render, schedule.",
+  "Ideas backed by the store screenshots: Cue 04-sections (retake one section), 05-fit-time (fit a script to a time), 02-pause; Backspin 06-daily (daily challenge), 03-backwards, 07-packs; Linework 06-letters (16 lettering styles), 03-workshop (angles and joints), 05-templates."
+ ]
+}

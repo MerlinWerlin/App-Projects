@@ -7,7 +7,7 @@ Storyboard (written by the OpenAI lane, see marketing/LANES.md):
 {
   "id": "bs-v001", "app": "backspin", "title": "internal title",
   "shots": [
-    {"image": "img/01.png", "caption": "Sing a line", "sub": "optional smaller line",
+    {"image": "img/01.png", "caption": "Sing a line", "sub": "optional smaller line", "fit": "cover" | "contain",
      "seconds": 2.5, "motion": "in" | "out" | "left" | "right" | "up" | "down" | "none"}
   ],
   "end": {"title": "Backspin", "line": "Coming soon to iPhone", "sub": "No ads. No subscription."},
@@ -22,9 +22,11 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 W, H, FPS, XF = 1080, 1920, 30, 0.35
 FONT_CANDIDATES = {
     "bold": ["/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf", "/usr/share/fonts/opentype/inter/Inter-Bold.otf",
-             "/usr/share/fonts/truetype/inter/Inter-Bold.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"],
+             "/usr/share/fonts/truetype/inter/Inter-Bold.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+             "C:/Windows/Fonts/segoeuib.ttf"],
     "reg": ["/usr/share/fonts/opentype/inter/Inter-Medium.otf", "/usr/share/fonts/truetype/inter/Inter-Medium.ttf",
-            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"],
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            "C:/Windows/Fonts/seguisb.ttf"],
 }
 
 
@@ -61,11 +63,18 @@ def cover(img, w, h):
     return img.crop((x, y, x + w, y + h))
 
 
-def base_frame(src, accent):
-    """Frame-sized base; zoompan supplies the motion."""
+def base_frame(src, accent, fit="cover"):
+    """Frame-sized base; zoompan supplies the motion. fit="contain" shows the whole image (e.g. a store
+    screenshot) on a blurred copy of itself, sitting low so a caption fits above it."""
     bw, bh = W, H
     if src and src.exists():
         im = Image.open(src).convert("RGB")
+        if fit == "contain":
+            bg = cover(im, bw, bh).filter(ImageFilter.GaussianBlur(40))
+            fg = im.copy()
+            fg.thumbnail((int(bw * 0.9), int(bh * 0.7)), Image.LANCZOS)
+            bg.paste(fg, ((bw - fg.width) // 2, bh - fg.height - 90))
+            return bg
         if im.width / im.height > 0.75:  # landscape/square art: blurred fill behind a contained copy
             bg = cover(im, bw, bh).filter(ImageFilter.GaussianBlur(40))
             fg = im.copy()
@@ -152,7 +161,7 @@ def shot_clip(tmp, n, base, cap_png, seconds, motion):
 
 def render(sb_path, out_path=None):
     sb_path = pathlib.Path(sb_path)
-    sb = json.loads(sb_path.read_text())
+    sb = json.loads(sb_path.read_text(encoding="utf-8"))
     accent = sb.get("accent", "#2346A8")
     out_path = pathlib.Path(out_path or sb_path.with_name(sb["id"] + ".mp4"))
     with tempfile.TemporaryDirectory() as td:
@@ -163,7 +172,7 @@ def render(sb_path, out_path=None):
             src = (sb_path.parent / s["image"]) if s.get("image") else None
             cap = tmp / f"c{n}.png"
             caption_png(s.get("caption", ""), s.get("sub", ""), accent, cap)
-            clips.append(shot_clip(tmp, n, base_frame(src, accent), cap, secs, s.get("motion", "in")))
+            clips.append(shot_clip(tmp, n, base_frame(src, accent, s.get("fit", "cover")), cap, secs, s.get("motion", "in")))
             lens.append(secs)
         if sb.get("end"):
             e = tmp / "end.png"

@@ -9,6 +9,7 @@ One setup for every App Factory app. An app joins by getting an entry in `apps.j
 | Store listing | `apps/<slug>/store/listing.json` + `scripts/asc/asc.py` + `.github/workflows/store.yml` | Pushes name, subtitle, description, keywords, promo text, categories, URLs and in-app purchases to App Store Connect. Change `apps/<slug>/store/ASC_REQUEST.json` to `{"mode":"status"}` or `{"mode":"apply"}` and commit; the report appears as a comment on that commit. Never submits for review |
 | Pins | `marketing/pins/render_pins.py` + `<slug>-*.json` plans | 1000×1500 Pinterest pins: `single`/`grid` from an app's own SVG art, `shot` from a store screenshot. Branded footer only when `nameLocked` |
 | Hub | claude.ai artifact "App launch room" (https://claude.ai/artifact/9dXFwsufnoapNGmrFe86A4) | Per-app pin queue, Reddit threads with draft replies, comparison, launch checklist. Its database: `apps`, `pins`, `threads`, `checks` (every doc carries `app`) |
+| Campaign | `marketing/CAMPAIGN.md`, `marketing/campaign/queue.json`, `marketing/POSTED.md` + Claude scheduled task "App marketing daily (posting)" (18:20 Sydney, needs the PC; prompt in `campaign/DAILY_TASK.md`, not created yet) | Channels, cadence, claims bank, how-to; posts 1 pin a day and 3 reels a week, logs every post, weekly stats |
 | Weekly run | Claude scheduled task "App launch marketing weekly" (Sundays 19:37 Sydney, needs the PC) | For every app at prelaunch/launching/live: Reddit scan in the Claude app's browser, draft replies, pin top-up |
 
 ## Stages
@@ -25,7 +26,7 @@ One setup for every App Factory app. An app joins by getting an entry in `apps.j
 5. Set `stage` to `prelaunch`. The weekly run picks it up.
 
 ## Rules that hold for every app
-- Posting to Pinterest or Reddit happens only live in chat with Jared's OK; the weekly run drafts, never posts.
+- Posting: since 10 Nov 2026 Claude posts without asking each time, only on the Fern & Fable business accounts (Pinterest, Instagram, TikTok). The daily posting task follows `CAMPAIGN.md` and logs to `POSTED.md`. Reddit stays draft-only (Jared posts).
 - Reddit: answer the question first; after launch disclose "I made this" once; never the same text twice; respect each subreddit's promo rules (see the hub's Reddit tab).
 - No competitor or franchise names in pins or store keywords. No "only", "never" or "best" claims the app can't prove.
 - Pinterest pace for a young account: about 5 pins a week; one business account for all apps, boards per app.
