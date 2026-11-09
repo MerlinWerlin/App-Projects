@@ -1,0 +1,44 @@
+{
+ "id": "cu-r01",
+ "app": "cue",
+ "title": "Live reel: a teleprompter by the lens",
+ "source": "real store screenshots (no AI images)",
+ "shots": [
+  {
+   "fit": "contain",
+   "image": "../../../../apps/cue/store/jpg/ios/03-record.jpg",
+   "caption": "Read your script at the lens",
+   "seconds": 3,
+   "motion": "in"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/cue/store/jpg/ios/01-waits-for-you.jpg",
+   "caption": "Talk and it scrolls",
+   "sub": "Voice Pace, in Cue Plus",
+   "seconds": 2.6,
+   "motion": "up"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/cue/store/jpg/ios/02-pause.jpg",
+   "caption": "Pause and it waits",
+   "seconds": 2.6,
+   "motion": "in"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/cue/store/jpg/ios/04-sections.jpg",
+   "caption": "Free to record, no watermark",
+   "seconds": 2.6,
+   "motion": "down"
+  }
+ ],
+ "end": {
+  "title": "Cue",
+  "line": "Now on Android",
+  "sub": "Teleprompter. No watermark."
+ },
+ "accent": "#E8552B",
+ "branded": true
+}
