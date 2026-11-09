@@ -1,0 +1,51 @@
+{
+ "id": "bs-r01",
+ "app": "backspin",
+ "title": "Live reel: say it, flip it, copy it",
+ "source": "real store screenshots (no AI images)",
+ "shots": [
+  {
+   "fit": "contain",
+   "image": "../../../../apps/backspin/store/jpg/ios/02-say-it.jpg",
+   "caption": "Say a line",
+   "seconds": 2.4,
+   "motion": "in"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/backspin/store/jpg/ios/03-backwards.jpg",
+   "caption": "Hear it backwards",
+   "seconds": 2.4,
+   "motion": "up"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/backspin/store/jpg/ios/04-copy-it.jpg",
+   "caption": "Now copy that sound",
+   "seconds": 2.4,
+   "motion": "in"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/backspin/store/jpg/ios/01-score.jpg",
+   "caption": "It flips you back and scores it",
+   "seconds": 2.8,
+   "motion": "down"
+  },
+  {
+   "fit": "contain",
+   "image": "../../../../apps/backspin/store/jpg/ios/05-party.jpg",
+   "caption": "Pass the phone",
+   "sub": "Party mode, 2 to 8 players",
+   "seconds": 2.6,
+   "motion": "in"
+  }
+ ],
+ "end": {
+  "title": "Backspin",
+  "line": "Now on Android",
+  "sub": "First 10 scored rounds free"
+ },
+ "accent": "#FF5A4E",
+ "branded": true
+}
