@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.20 makes the Add Widget gallery follow a theme swap again: gallery Art tiles load small previews so iOS can redraw the whole Glaze gallery.",
+  "note": "Glaze 1.0.21: every Add Widget gallery art tile (including live clock and date pieces) loads a small preview, so whenever iPhone refreshes the gallery it can show the current theme.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
