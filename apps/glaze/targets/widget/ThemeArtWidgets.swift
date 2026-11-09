@@ -11,7 +11,6 @@
 // shows the plain theme background, never a repeat of another piece.
 // Kinds 2-6 are small and large only: theme packs draw their extra pieces square, and a square piece
 // is never offered in the wide medium widget (src/core/widgetOptions.ts drawnForSize).
-import ImageIO
 import SwiftUI
 import WidgetKit
 
@@ -20,9 +19,9 @@ enum ThemeArtSlots {
   /// The current theme's art pieces for this family, in Edit Widget order, designs left out.
   static func pieces(family: WidgetFamily) -> [String] {
     guard let size = SeamlessStore.familyName(family) else { return [] }
+    // One read of index.json per tile (the design flag is parsed with it), not one per piece.
     return WidgetArtStore.snapshot().currentThemeRecords()
-      .filter { $0.size == size }
-      .filter { LiveArtStore.spec(pieceID: $0.id, family: family)?.design == nil }
+      .filter { $0.size == size && !$0.design }
       .map { $0.id }
   }
 
@@ -75,34 +74,14 @@ struct ThemeArtProvider: AppIntentTimelineProvider {
 
 @available(iOS 17.0, *)
 struct ThemeArtSlotView: View {
-  @Environment(\.widgetFamily) private var family
   let entry: ThemeArtEntry
 
-  static func thumbnail(_ id: String) -> UIImage? {
-    guard WidgetArtStore.validID(id), let dir = WidgetArtStore.directory() else { return nil }
-    let url = dir.appendingPathComponent("\(id).jpg")
-    guard
-      let source = CGImageSourceCreateWithURL(url as CFURL, [kCGImageSourceShouldCache: false] as CFDictionary),
-      let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
-        kCGImageSourceCreateThumbnailFromImageAlways: true, kCGImageSourceCreateThumbnailWithTransform: true,
-        kCGImageSourceThumbnailMaxPixelSize: 360, kCGImageSourceShouldCacheImmediately: true] as CFDictionary)
-    else { return nil }
-    return UIImage(cgImage: image)
-  }
-
   var body: some View {
-    // Owner 2026-11-08 (after a swap the whole Glaze gallery stayed on the old theme, even after a
-    // restart, since 1.0.18 showed 11 Art tiles instead of 8): every gallery tile decoded its full
-    // composed image (up to 1200 px, ~6 MB each) in the one extension process, which is over the
-    // widget memory limit, so iOS kept the old previews. Gallery tiles of plain art now decode a
-    // 360 px thumbnail; live pieces and placed widgets are unchanged.
-    if entry.preview, let id = entry.pieceID, LiveArtStore.spec(pieceID: id, family: family) == nil,
-       let thumb = ThemeArtSlotView.thumbnail(id) {
-      Color.clear.containerBackground(for: .widget) {
-        Image(uiImage: thumb).resizable().scaledToFill()
-      }
-    } else if entry.pieceID != nil {
-      SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date)
+    // Owner 2026-11-09: in the gallery (entry.preview) EVERY tile, live pieces included, draws a
+    // small thumbnail (GalleryThumbnail, SeamlessWidget.swift): 1.0.20 covered plain art only, and
+    // the live pieces in the later Art tiles still decoded full images over the extension's memory limit.
+    if entry.pieceID != nil {
+      SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date, preview: entry.preview)
     } else {
       Color.clear.containerBackground(for: .widget) { GlazeBackground(theme: entry.theme) }
     }

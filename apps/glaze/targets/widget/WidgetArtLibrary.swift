@@ -46,6 +46,9 @@ struct WidgetArtRecord {
   let size: String?
   /// T252: position among the theme's pieces of the same size, or nil (photos, older records).
   let slot: Int?
+  /// The record's `live` value is a native design (Clock / Battery / Calendar). Parsed with the
+  /// index in snapshot(), so the gallery's Art slots never re-read index.json once per piece.
+  var design: Bool = false
 }
 
 /// T252: what a removed auto-added piece was, so its widgets can be remapped.
@@ -159,7 +162,8 @@ enum WidgetArtStore {
           source: (p["source"] as? String) == "photo" ? "photo" : "theme",
           themeId: p["themeId"] as? String,
           size: sizeName(p["size"]),
-          slot: slotNumber(p["slot"])
+          slot: slotNumber(p["slot"]),
+          design: LiveArtSpec.parse(p["live"])?.design != nil
         )
       )
     }
@@ -265,6 +269,18 @@ enum WidgetArtStore {
     }
     guard let fallback = fallbackID(for: id, preferSize: preferSize), fallback != id else { return nil }
     return UIImage(contentsOfFile: dir.appendingPathComponent("\(fallback).jpg").path)
+  }
+
+  /// The Add Widget gallery's version of load(): the same piece (or its replacement), decoded as a
+  /// small thumbnail (GalleryThumbnail), never the full composed image.
+  static func preview(_ id: String?, preferSize: String? = nil) -> UIImage? {
+    guard let id = id, validID(id), let dir = directory() else { return nil }
+    let url = dir.appendingPathComponent("\(id).jpg")
+    if FileManager.default.fileExists(atPath: url.path) {
+      return GalleryThumbnail.load(url)
+    }
+    guard let fallback = fallbackID(for: id, preferSize: preferSize), fallback != id else { return nil }
+    return GalleryThumbnail.load(dir.appendingPathComponent("\(fallback).jpg"))
   }
 
   /// T238/T252: the current theme's replacement for a removed piece (fresh index read), or nil.
@@ -375,6 +391,8 @@ struct ArtEntry: TimelineEntry {
   let pieceID: String?
   /// T236: nil (placeholder) behaves as .fill.
   let layout: ArtLayout?
+  /// The Add Widget gallery (snapshot with context.isPreview): small thumbnails only.
+  var preview: Bool = false
 }
 
 /// Static content: only changes when the app reloads timelines (every library change does) or the
@@ -382,7 +400,7 @@ struct ArtEntry: TimelineEntry {
 @available(iOS 17.0, *)
 struct ArtProvider: AppIntentTimelineProvider {
   func placeholder(in context: Context) -> ArtEntry {
-    ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: nil, layout: nil)
+    ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: nil, layout: nil, preview: true)
   }
 
   // T252: the configured piece resolved against the index as it is on disk NOW, for this widget's
@@ -390,7 +408,7 @@ struct ArtProvider: AppIntentTimelineProvider {
   // the image, the Fit raw art and the live overlay all come from one existing piece.
   func snapshot(for configuration: ChooseWidgetArtIntent, in context: Context) async -> ArtEntry {
     let piece = WidgetArtStore.resolvedID(configuration.art?.id, family: context.family)
-    return ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: piece, layout: configuration.layout)
+    return ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: piece, layout: configuration.layout, preview: context.isPreview)
   }
 
   func timeline(for configuration: ChooseWidgetArtIntent, in context: Context) async -> Timeline<ArtEntry> {

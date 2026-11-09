@@ -22,9 +22,34 @@
 // blurred copy (the old light-grey frame), no border, no shadow, no material panel (ArtBackdrop).
 // The three SwiftUI string literals below are localised like the other widgets' (looked up by
 // their English text in targets/widget/<lang>.lproj/Localizable.strings; T133).
+import ImageIO
 import SwiftUI
 import UIKit
 import WidgetKit
+
+/// Owner 2026-11-09 (build 65: "it hasn't fixed it ... this was not an issue in like build 40"):
+/// iOS renders EVERY Glaze page of the Add Widget gallery in one widget extension process, which
+/// has a small memory limit. Since 1.0.14 (#252) the gallery also has Art tiles (11 since 1.0.18),
+/// and each decoded its full composed image (a large widget's is ~1100 x 1150 px, ~5 MB). Over the
+/// limit, iOS stops the extension and keeps the previous theme's previews for the whole gallery,
+/// even after a restart, while placed widgets (rendered one at a time) still swap. 1.0.20 thumbnailed
+/// plain art only; live pieces (clock / date / battery over the art), which fill the later Art tiles
+/// since 1.0.18, still decoded in full. Now every gallery render of an art widget decodes only this
+/// thumbnail, so the gallery's cost no longer grows with the number of tiles' full images.
+enum GalleryThumbnail {
+  static let maxPixels = 360
+
+  static func load(_ url: URL) -> UIImage? {
+    guard
+      FileManager.default.fileExists(atPath: url.path),
+      let source = CGImageSourceCreateWithURL(url as CFURL, [kCGImageSourceShouldCache: false] as CFDictionary),
+      let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+        kCGImageSourceCreateThumbnailFromImageAlways: true, kCGImageSourceCreateThumbnailWithTransform: true,
+        kCGImageSourceThumbnailMaxPixelSize: maxPixels, kCGImageSourceShouldCacheImmediately: true] as CFDictionary)
+    else { return nil }
+    return UIImage(cgImage: image)
+  }
+}
 
 enum SeamlessStore {
   /// "small" / "medium" / "large" for the Home Screen families; nil for anything else.
@@ -51,6 +76,16 @@ enum SeamlessStore {
     let url = container.appendingPathComponent("seamless-\(name).png")
     guard FileManager.default.fileExists(atPath: url.path) else { return nil }
     return UIImage(contentsOfFile: url.path)
+  }
+
+  /// The gallery's version of load(): the same file as a small thumbnail.
+  static func preview(_ family: WidgetFamily) -> UIImage? {
+    if WidgetArtStore.unpinnedShowsBackground(family) { return nil }
+    guard
+      let name = familyName(family),
+      let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: GlazeShared.appGroup)
+    else { return nil }
+    return GalleryThumbnail.load(container.appendingPathComponent("seamless-\(name).png"))
   }
 
   /// T236: the raw art behind this family's composed image (seamless-<family>-art.png, written by
@@ -90,6 +125,8 @@ struct SeamlessWidgetView: View {
   }
   /// T237: the timeline entry's date (live values over the art, LiveArtOverlay.swift).
   var date: Date = Date()
+  /// The Add Widget gallery (isPreview snapshot / placeholder): thumbnails only (GalleryThumbnail).
+  var preview: Bool = false
 
   var body: some View {
     if let design = LiveArtStore.spec(pieceID: pieceID, family: family)?.design {
@@ -104,12 +141,14 @@ struct SeamlessWidgetView: View {
 
   @ViewBuilder private var artBody: some View {
     let t = theme
-    let image = WidgetArtStore.load(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.load(family)
+    let image = preview
+      ? WidgetArtStore.preview(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.preview(family)
+      : WidgetArtStore.load(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.load(family)
     let fit = layout == .fit
     let live = LiveArtStore.spec(pieceID: pieceID, family: family) != nil
     // Fit only: the raw art of the same source (piece or per-size file), else the composed image.
-    // Not loaded for Fill (widget memory budget).
-    let raw: UIImage? = fit && !live ? (WidgetArtStore.has(pieceID) ? WidgetArtStore.loadArt(pieceID) : SeamlessStore.loadArt(family)) : nil
+    // Not loaded for Fill (widget memory budget), nor in the gallery (the thumbnail is fitted).
+    let raw: UIImage? = fit && !live && !preview ? (WidgetArtStore.has(pieceID) ? WidgetArtStore.loadArt(pieceID) : SeamlessStore.loadArt(family)) : nil
     ZStack(alignment: .bottomLeading) {
       // T259: following a theme with no piece of this size = its plain background, no hint.
       if image == nil && !WidgetArtStore.unpinnedShowsBackground(family) {
@@ -206,7 +245,7 @@ struct SeamlessWidget: Widget {
 
   var body: some WidgetConfiguration {
     AppIntentConfiguration(kind: kind, intent: ChooseWidgetArtIntent.self, provider: ArtProvider()) { entry in
-      SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date)
+      SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date, preview: entry.preview)
     }
     .configurationDisplayName("Seamless")
     .description("Your Glaze art. Long-press and choose Edit Widget to pick a piece.")

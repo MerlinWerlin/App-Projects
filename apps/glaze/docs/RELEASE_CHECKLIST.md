@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**9 November 2026 TestFlight gallery previews: `1.0.21`.** Owner: the gallery still kept the old theme on 1.0.20; older builds "did and it didn't". iOS caches gallery previews and refreshes them on its own schedule (no API forces it). Every gallery render of art (live pieces and Seamless included) now uses a 360 px thumbnail so each refresh iOS attempts fits the extension memory limit; placed widgets unchanged.
+
 **8 November 2026 TestFlight gallery follows a swap: `1.0.20`.** Owner: the whole Glaze gallery (Clock, Battery, Calendar and Art) stays on the old theme after a swap, even after a restart, while placed widgets swap. Since 1.0.18 the gallery drew 11 Art tiles each decoding its full image; gallery Art tiles now decode a 360 px thumbnail.
 
 **8 November 2026 TestFlight gallery after a swap: `1.0.19`.** Owner: after a swap the gallery's Art pages stayed grey for 25 minutes. The pieces made so far are listed after 2, then every 6; the art build keeps background time when Glaze is left; the wallpaper is decoded once per apply; remote packs crop the wallpaper size this phone downloaded, and art falls back to the flat colour if its sky fails.

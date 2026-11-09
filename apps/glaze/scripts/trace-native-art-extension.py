@@ -32,7 +32,7 @@ text = view.read_text()
 needle = '  var body: some View {\n    if let design = LiveArtStore.spec(pieceID: pieceID, family: family)?.design {'
 assert text.count(needle) == 1
 text = text.replace(needle, '  var body: some View {\n    let _ = NSLog("GLAZE_ART_TRACE view piece=%@ design=%@ family=%@", pieceID ?? "nil", LiveArtStore.spec(pieceID: pieceID, family: family)?.design?.kind ?? "none", String(describing: family))\n    if let design = LiveArtStore.spec(pieceID: pieceID, family: family)?.design {')
-needle = 'let image = WidgetArtStore.load(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.load(family)'
+needle = ': WidgetArtStore.load(pieceID, preferSize: SeamlessStore.familyName(family)) ?? SeamlessStore.load(family)'
 assert text.count(needle) == 1
 text = text.replace(needle, needle + '\n    let _ = NSLog("GLAZE_ART_TRACE image piece=%@ dimensions=%@", pieceID ?? "nil", image.map { String(describing: $0.size) } ?? "nil")')
 view.write_text(text)
