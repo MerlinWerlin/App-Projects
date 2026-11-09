@@ -48,9 +48,9 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
 - **Pinterest**: one app pin a day at 19:00 Sydney, scheduled up to 7 days ahead with "Publish at a later date".
   Rotate apps; never the same app two days running when another app has unused items.
 - **TikTok + Instagram**: Mon, Wed and Fri. Post the next `queued` reel in `marketing/campaign/queue.json` to both.
-- **Weekly stats (Sunday run)**: Pinterest analytics (impressions, saves, outbound clicks per app pin), TikTok Studio
-  (views per video), Instagram insights (plays). Write a dated block to `marketing/campaign/STATS.md` and adjust: the
-  app or format with the most outbound clicks/saves gets the next extra slot; formats with no views after 2 weeks stop.
+- **Weekly stats (Sunday run)**: append readings to `marketing/analytics/snapshots.csv` (see Logging), run
+  `analyze.py`, and adjust: the app or format with the best save/click rate gets the next extra slot; formats with no
+  views after 2 weeks stop.
 - New material: when the queue has fewer than 3 reels or 5 pins left, make more from the **real store screenshots**
   (`apps/<slug>/store/jpg/...`): reels with `marketing/video/render.py` and `"fit": "contain"` shots (see
   `marketing/*/media/2026-11-10/*.storyboard.json`), pins with `marketing/pins/render_pins.py` (`PYTHONUTF8=1`).
@@ -86,6 +86,11 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
   "on the App Store and Google Play" and keep the link in the profile.
 - Chrome screenshots time out on this PC; work from `find`, `read_page`, `get_page_text` and small JS reads instead.
 
-## Logging
-Every post or schedule gets a row in `marketing/POSTED.md` with its URL (Pinterest pin URLs appear once a scheduled
-pin goes live; the daily run fills them in from the board). Commit log changes straight to `main` (see the task).
+## Logging (source of truth: `marketing/analytics/`)
+- `marketing/analytics/posts.csv`: add a row the moment anything goes live (pin, reel, TikTok, Reddit reply, directory listing), `post_id` = `pin-<id>`, `ig-<id>`, `tt-<id>`, `rd-<id>`, `dir-<site>`. Scheduled pins get their row when they go live.
+- `marketing/analytics/snapshots.csv`: append only, one number per row, metric names from `marketing/analytics/README.md`. The Sunday run appends per-post and account readings for every channel, plus Etsy traffic sources (`visits_from_pinterest` etc.) and Play/App Store installs and store page views.
+- Decide cadence and mix with `python marketing/analytics/analyze.py` (`--json` for data, `--stale 7` for posts needing a reading).
+- `marketing/POSTED.md` stays as the human-readable log.
+- Use tracking links for every new post (record the exact link in `link_target`): Google Play `https://play.google.com/store/apps/details?id=com.jared797.<app>&referrer=utm_source%3D<channel>%26utm_medium%3D<format>%26utm_campaign%3Dlive-2026-11`, App Store `https://apps.apple.com/au/app/id6826041969?ct=<channel>-live-2026-11`. Pins scheduled on 10 Nov use plain links (they were queued before the register existed).
+
+Commit log changes straight to `main` (see the task).
