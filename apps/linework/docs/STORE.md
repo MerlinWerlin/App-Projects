@@ -122,7 +122,7 @@ Answer "None" / "No" to every content question: no violence, no mature themes, n
 ### App Privacy ("nutrition label")
 - "Do you or your third-party partners collect data from this app?" → **No, we do not collect data from this app.** Result: **Data Not Collected**.
 - Why that is true: no analytics, ads, crash reporting, accounts or tracking SDKs (`src/core/scaffold.test.ts` guards the dependency list); camera frames, photos, outlines and drawings never leave the device; settings, recent pictures, favourites, My drawings, stats and the Plus flag live in on-device storage only; purchases are processed by Apple, which does not count as collection by the app.
-- Owner check before submitting: store builds run the EAS Update check on launch (`app.json` `updates`), which sends the app version, platform, update channel and a random install ID created by the update library to Expo's update service. It carries nothing about the person and is only used to deliver updates; the privacy page discloses it. If the owner wants to be strict, he can confirm Expo's current guidance on App Privacy for EAS Update before answering.
+- From 1.0.2 there is no EAS Update check: `expo-updates` is removed, so store builds make no update-service request at all (see `store/OTA_REMOVAL_1_0_2.md`). 1.0.1 and earlier did check Expo's update service on launch.
 - Tracking (App Tracking Transparency): **No**, the app does not track.
 - Privacy manifest: no tracking domains.
 

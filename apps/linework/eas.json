@@ -6,20 +6,16 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal",
-      "channel": "development"
+      "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal",
-      "channel": "preview"
+      "distribution": "internal"
     },
     "production": {
-      "autoIncrement": true,
-      "channel": "production"
+      "autoIncrement": true
     },
     "play-preview": {
       "distribution": "internal",
-      "channel": "play-preview",
       "environment": "preview",
       "env": {
         "PLAY_VARIANT": "preview"
@@ -30,7 +26,6 @@
     },
     "play-production": {
       "distribution": "store",
-      "channel": "play-production",
       "environment": "production",
       "autoIncrement": true,
       "env": {

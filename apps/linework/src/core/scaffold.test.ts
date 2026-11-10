@@ -15,7 +15,7 @@ const EXPO_GO_OK = new Set([
   'expo-file-system', 'expo-haptics', 'expo-keep-awake', 'react-native-gesture-handler', 'react-native-reanimated',
   'react-native-worklets', 'react-native-svg', '@react-native-async-storage/async-storage', '@expo/vector-icons',
   'expo-font', 'expo-constants', 'expo-linking', 'expo-splash-screen', 'expo-status-bar', 'expo-media-library',
-  'react-native-safe-area-context', 'react-native-screens', 'expo-localization', 'expo-updates',
+  'react-native-safe-area-context', 'react-native-screens', 'expo-localization',
   // pure JS
   'jpeg-js', 'upng-js', '@noble/hashes',
   // web renderer peer that SDK 57 installs alongside react (pure JS, unused on the phone)
@@ -119,18 +119,17 @@ test('T38: release identity uses com.jared797.linework and declares no custom en
   assert.equal(app.ios.config?.usesNonExemptEncryption, false);
 });
 
-test('T38: eas.json has development / preview / production profiles on matching channels', () => {
+test('T38: eas.json has development / preview / production profiles with no update channels', () => {
   const eas = JSON.parse(readFileSync(join(root, 'eas.json'), 'utf8'));
   assert.equal(eas.cli.appVersionSource, 'remote');
   assert.match(eas.cli.version, />=\s*16/);
   const { development, preview, production } = eas.build;
   assert.equal(development.developmentClient, true);
   assert.equal(development.distribution, 'internal');
-  assert.equal(development.channel, 'development');
   assert.equal(preview.distribution, 'internal');
-  assert.equal(preview.channel, 'preview');
   assert.equal(production.autoIncrement, true);
-  assert.equal(production.channel, 'production');
+  // 1.0.2: no over-the-air updates (Guideline 5.6), so no profile has an EAS Update channel.
+  for (const [name, profile] of Object.entries(eas.build)) assert.equal((profile as { channel?: string }).channel, undefined, name);
   assert.ok(eas.submit && eas.submit.production, 'submit.production profile present');
 });
 

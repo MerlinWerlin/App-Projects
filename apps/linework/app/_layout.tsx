@@ -14,7 +14,6 @@ import { setHapticsEnabled } from '../src/native/haptics';
 import { pruneOutlineCache } from '../src/native/outlineDeps';
 import { initI18n, useDeviceLanguageWatcher, useT } from '../src/i18n';
 import { startupDirectionCheck } from '../src/i18n/direction';
-import { checkForUpdateQuietly } from '../src/native/updates';
 import { IntroDraw } from '../src/ui/IntroDraw';
 import { INTRO_MS, startupReady } from '../src/core/introPath';
 import { isRTL } from '../src/i18n/direction';
@@ -39,12 +38,6 @@ export default function RootLayout() {
       .then(() => startupDirectionCheck())
       .catch(() => {})
       .finally(() => setI18nReady(true));
-    // EAS Update: downloads a newer JS bundle in the background for the next launch; no-op in Expo Go / dev.
-    try {
-      checkForUpdateQuietly().catch(() => {});
-    } catch {
-      // ignore
-    }
   }, []);
   const [loaded, error] = useFonts({
     Fraunces_600SemiBold,

@@ -3,19 +3,10 @@
     "name": "Linework",
     "slug": "linework",
     "scheme": "linework",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "default",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/icon.png",
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "enabled": true,
-      "checkAutomatically": "ON_LOAD",
-      "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/febfc445-71b5-42f1-b8a6-1a88dac92ec1"
-    },
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.jared797.linework",

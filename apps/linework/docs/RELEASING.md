@@ -1,5 +1,7 @@
 # Releasing Linework
 
+> **From 1.0.2 (10 Nov 2026) Linework has no over-the-air updates.** `expo-updates` is removed (Apple Guideline 5.6, after Backspin's rejection), `PUSH_UPDATE.cmd` is deleted and `eas.json` has no update channels. Every change, including during review, needs a new build through TestFlight. The quick-update and channel sections below are kept only as history; do not run `eas update` or `eas update:configure` for Linework. See `store/OTA_REMOVAL_1_0_2.md`.
+
 This page explains, in plain words, how Linework gets from your PC onto your iPhone through TestFlight, and how to send quick fixes without making a new build.
 
 There are two ways to get changes to your phone:

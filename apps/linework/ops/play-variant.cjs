@@ -10,7 +10,6 @@ module.exports = function withPlayVariant(config, env = process.env) {
   if (env.EXPO_GO_PREVIEW === '1') throw new Error('Play native builds cannot use EXPO_GO_PREVIEW.');
   if (!config.android?.package) throw new Error('An explicit Android package is required.');
   const preview = variant === 'preview';
-  const channel = 'play-' + variant;
   const versionCode = !preview && env.LINEWORK_VERSION_CODE
     ? Number(env.LINEWORK_VERSION_CODE) : config.android.versionCode || 1;
   if (!Number.isSafeInteger(versionCode) || versionCode < 1 || versionCode > 2100000000) {
@@ -30,7 +29,6 @@ module.exports = function withPlayVariant(config, env = process.env) {
       }
       return plugin;
     }).concat(['./ops/play-android-manifest.cjs']),
-    runtimeVersion: String(config.version) + '-play-v1',
     android: {
       ...config.android,
       package: config.android.package + (preview ? '.playtest' : ''),
@@ -42,9 +40,6 @@ module.exports = function withPlayVariant(config, env = process.env) {
         'android.permission.READ_MEDIA_IMAGES', 'android.permission.READ_MEDIA_VIDEO',
         'android.permission.READ_MEDIA_VISUAL_USER_SELECTED'])],
     },
-    // Keep initial builds embedded-only until Android runtime/update testing is complete.
-    updates: { ...config.updates, enabled: false,
-      requestHeaders: { ...config.updates?.requestHeaders, 'expo-channel-name': channel } },
     extra: { ...config.extra, playVariant: variant },
   };
 };

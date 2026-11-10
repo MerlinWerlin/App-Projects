@@ -39,3 +39,5 @@ node store/src/render.mjs    # JPEG renders + contact sheet (needs local Chromiu
 `src/core/storeAssets.test.ts` (run by `npm test`) checks the sizes, the captions in every locale, and that no other app's names, ranking claims or store badges appear in these files.
 
 The SVGs set font-family stacks and embed no fonts, so the renders use whatever fonts the machine has. Install Fraunces and SF Pro Rounded before the final export to get the exact brand faces. Localised sets are made by swapping in the strings from `captions.json`. Check line breaks by eye for German and French, which run longer.
+
+**1.0.2 OTA removal (10 Nov 2026):** see `OTA_REMOVAL_1_0_2.md`. Linework no longer includes expo-updates; the review notes and privacy page say so.

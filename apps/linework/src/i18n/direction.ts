@@ -1,7 +1,8 @@
 // Layout direction (right-to-left for Arabic; owner request 16 Oct, R3, docs/I18N.md "Right-to-left").
 // React Native only switches the native layout direction after a reload, so changing between an LTR and an RTL
-// language sets I18nManager.allowRTL/forceRTL and reloads the JS bundle (expo-updates when available, the dev
-// reload in Expo Go / development) or asks the user to restart.
+// language sets I18nManager.allowRTL/forceRTL and reloads the JS bundle in Expo Go / development, or asks the user
+// to close and reopen Linework. Store builds have no over-the-air updates (1.0.2, Guideline 5.6), so they cannot
+// reload themselves and always take the close-and-reopen path.
 import { DevSettings, I18nManager } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getLocaleInfo } from './store.ts';
@@ -54,21 +55,8 @@ export type DirectionResult = 'unchanged' | 'reloading' | 'restart-needed';
 const ATTEMPT_KEY = 'linework.directionReload.v1';
 const ATTEMPT_WINDOW_MS = 60_000;
 
-type UpdatesModule = { isEnabled?: boolean; reloadAsync?: () => Promise<void> };
-
-/** Reloads the JS bundle so the new native direction applies. Returns false when it cannot. */
+/** Reloads the JS bundle in development so the new native direction applies. Returns false when it cannot. */
 async function reload(): Promise<boolean> {
-  try {
-    // Required lazily: expo-updates may be missing in Node tests or an older Expo Go, and must never crash.
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const Updates = require('expo-updates') as UpdatesModule;
-    if (Updates.isEnabled && typeof Updates.reloadAsync === 'function') {
-      await Updates.reloadAsync();
-      return true;
-    }
-  } catch {
-    // fall through to the development reload
-  }
   try {
     if (__DEV__ && typeof DevSettings.reload === 'function') {
       DevSettings.reload('Switching layout direction');

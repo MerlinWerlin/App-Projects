@@ -157,7 +157,7 @@ Each app retains its source and existing iOS profiles. Its self-contained `ops/p
 | `play-preview` | APK | Existing Android package + `.playtest`, name ends `Play Test` | Installable test build, separate app data |
 | `play-production` | AAB | Existing Android package, unchanged | Candidate bundle for later Play testing |
 
-Channels are `play-preview` / `play-production`; runtime ends `-play-v1`. Initial Play builds disable OTA updates and use embedded code until the Android update path is tested. EAS environments are explicit. Existing Expo project IDs, signing identities, iOS profiles and RELEASE.json files are untouched. A preview cannot overwrite a future production install; its data is separate. Production here describes the packaging format, **not release readiness**. There is no Play submit profile or automatic upload. No duplicate public app listings are proposed.
+Channels are `play-preview` / `play-production`; runtime ends `-play-v1`. Initial Play builds disable OTA updates and use embedded code until the Android update path is tested. Linework (from 1.0.2) has no `expo-updates` at all, so its overlay sets no channel, runtime or `updates` block. EAS environments are explicit. Existing Expo project IDs, signing identities, iOS profiles and RELEASE.json files are untouched. A preview cannot overwrite a future production install; its data is separate. Production here describes the packaging format, **not release readiness**. There is no Play submit profile or automatic upload. No duplicate public app listings are proposed.
 
 From an app folder, after normal dependency installation:
 
