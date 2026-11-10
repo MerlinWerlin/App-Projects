@@ -48,7 +48,9 @@
       [
         "expo-audio",
         {
-          "microphonePermission": "Cue records sound with your videos, and listens while you read so the words can follow your voice. Nothing is uploaded."
+          "microphonePermission": "Cue records sound with your videos, and listens while you read so the words can follow your voice. Nothing is uploaded.",
+          "enableBackgroundPlayback": false,
+          "enableBackgroundRecording": false
         }
       ],
       [
