@@ -25,3 +25,5 @@ and losslessly converts opaque UI captures to RGB PNG.
 
 Sizes and formats follow [Google's preview-asset guidance](https://support.google.com/googleplay/android-developer/answer/9866151)
 and [icon specifications](https://developer.android.com/distribute/google-play/resources/icon-design-specifications).
+
+**No-OTA build (10 Nov 2026):** build 13 was withdrawn from review before a decision, so that the binary cannot change after review (Guideline 5.6, as in the Backspin rejection). The new 1.0.0 build removes expo-updates completely. Before resubmitting, apply `APP_PRIVACY_NO_OTA.md` (App Privacy: Data Not Collected; privacy page edits). `listing.json` already holds the updated review notes.

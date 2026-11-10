@@ -20,6 +20,6 @@ Use TestFlight on your iPhone. The release candidate includes real Apple sandbox
 
 ## Layout
 - `src/core/` pure TS, tested (`npm test`, or `bun test src`).
-- `src/native/` guarded adapters (storage, Keychain/secure store, speech seam, import, haptics, updates).
+- `src/native/` guarded adapters (storage, Keychain/secure store, speech seam, import, haptics).
 - `app/` screens. `docs/STORE.md` listing copy. `docs/FEATURES.md` competitor scan and the feature map.
 - `.github/workflows/check.yml` installs, aligns Expo versions, typechecks, tests and bundles on every branch push.

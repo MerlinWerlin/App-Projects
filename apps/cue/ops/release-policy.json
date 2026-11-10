@@ -1,6 +1,8 @@
 {
-  "target": "android",
-  "iosReleaseEnabled": false,
-  "ownerDecision": "2026-11-04: Jared clarified Cue is going to Android, not TestFlight.",
-  "note": "Do not change this policy from inferred source changes or RELEASE.json updates. A new explicit owner decision is required to enable iOS releases. Use cue-play-production for Android; Google account approval and billing QA remain required."
+  "target": "ios",
+  "iosReleaseEnabled": true,
+  "android": "Cue stays on Google Play too. Use cue-play-production for Android.",
+  "ownerDecision": "2026-11-10: Jared (asked directly whether Cue should go to the App Store as well as Google Play, after expo-updates was removed): \"Yeah, if we fix that, just send it. Like this was, preventative.\" Supersedes the 2026-11-04 Android-only decision.",
+  "previousDecision": "2026-11-04: Jared clarified Cue is going to Android, not TestFlight.",
+  "note": "Do not change this policy from inferred source changes or RELEASE.json updates. Only an explicit owner decision may disable or re-enable iOS releases."
 }

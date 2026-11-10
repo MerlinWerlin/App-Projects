@@ -119,3 +119,9 @@ Account readiness was independently read in App Store Connect on27October: Free 
 
 
 Cue App Information was read directly:4+ global age rating with regional equivalents, and “This developer has identified itself as a trader for this app.” The account’s pending DSA verification is already submitted to Apple; no new owner form was displayed. Production code does not use non-exempt encryption (the build’s Info.plist declaration remains false).
+
+## No-OTA build for resubmission (10 Nov 2026)
+
+- Backspin 1.0 was rejected under Guideline 5.6, most likely because `expo-updates` let the app change its code after review. Cue build 13 had the same setup (`checkAutomatically: ON_LOAD`, disclosed in the review notes), so it was withdrawn from review (Developer Rejected) before a decision.
+- The new build keeps version 1.0.0 and removes `expo-updates` completely: the dependency and its lockfile packages, `updates` and `runtimeVersion` in app.json, the EAS Update channels in eas.json, `src/native/updates.ts` and the `useQuietUpdate` launch check. `reloadApp` (the reload for a text-direction change) had no callers, so no replacement was needed. The EAS project id is pinned in app.json, so ship-mac skips `eas update:configure`.
+- Store data is prepared in the repo only: review notes and description in `store/listing.json`, and App Privacy and policy changes in `store/APP_PRIVACY_NO_OTA.md`. None of it has been applied to App Store Connect.
