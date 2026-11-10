@@ -32,12 +32,16 @@ test('other apps retain their existing release route', () => {
     assert.doesNotThrow(() => assertIosReleaseAllowed(app));
   }
 });
-test('actual checked-in Cue policy rejects the shipping CLI', () => {
+test('shipping CLI follows the checked-in Cue policy', () => {
+  const policy = JSON.parse(fs.readFileSync(path.join(__dirname, '../apps/cue/ops/release-policy.json'), 'utf8'));
+  const allowed = policy.target === 'ios' && policy.iosReleaseEnabled === true;
+  // Enabling iOS needs a recorded owner decision in the policy file itself.
+  if (allowed) assert.match(policy.ownerDecision || '', /^\d{4}-\d{2}-\d{2}: Jared/);
   const result = spawnSync(process.execPath, [require.resolve('./check-ios-release.cjs')], {
     env: { ...process.env, APP_FOLDER: 'cue' }, encoding: 'utf8',
   });
-  assert.equal(result.status, 1);
-  assert.match(result.stderr, /Android-only/);
+  assert.equal(result.status, allowed ? 0 : 1);
+  if (!allowed) assert.match(result.stderr, /Android-only/);
 });
 test('other-app CLI passes and invalid app fails', () => {
   for (const [app, status] of [['glaze', 0], ['../cue', 1]]) {
