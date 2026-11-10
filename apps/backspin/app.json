@@ -25,7 +25,7 @@
     "plugins": [
       "expo-router",
       "expo-localization",
-      ["expo-audio", { "microphonePermission": "Backspin records your voice when you use the record button, so it can play it backwards. Recordings stay on your phone unless you share them." }],
+      ["expo-audio", { "microphonePermission": "Backspin records your voice when you use the record button, so it can play it backwards. Recordings stay on your phone unless you share them.", "enableBackgroundPlayback": false, "enableBackgroundRecording": false }],
       ["expo-splash-screen", { "image": "./assets/splash-icon.png", "imageWidth": 300, "resizeMode": "contain", "backgroundColor": "#FFF3E2", "dark": { "image": "./assets/splash-icon.png", "backgroundColor": "#14111F" } }],
       "expo-status-bar"
     ],

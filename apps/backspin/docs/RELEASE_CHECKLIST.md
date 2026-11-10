@@ -32,6 +32,13 @@ The app keeps native iPad support. [Capture 40293901740](https://github.com/Merl
 - Store data prepared in the repo only: review notes in `store/listing.json`, App Privacy and policy changes in `store/APP_PRIVACY_1_0_1.md`, and the reply to App Review in `store/REVIEW_REPLY_5_6.md`. None of it has been applied to App Store Connect.
 - The Google Play build still contains EAS Update; `privacy-android.html` stays unchanged until Android ships a build without it.
 
+## 1.0.1: no background audio mode (11 Nov 2026)
+
+- Apple rejected Cue under Guideline 2.5.4 for declaring `UIBackgroundModes` "audio" without a feature that needs it. Backspin had the same issue: the expo-audio plugin turns background playback on by default, and `npx expo config --type introspect` on build 9's source (ea9f919) shows `UIBackgroundModes: ["audio"]`.
+- Fix: `enableBackgroundPlayback: false` and `enableBackgroundRecording: false` on the expo-audio plugin. Introspect now shows no `UIBackgroundModes`, and the microphone usage text is unchanged. Version stays 1.0.1.
+- The app's behaviour doesn't change. Source never sets `shouldPlayInBackground` or `allowsBackgroundRecording` (both default off), so expo-audio already paused playback and recording when the app went to the background.
+- This needs a new binary. Build 9 still declares "audio". Shipping is Jared's call: the PR has no RELEASE.json change.
+
 ## Release authorization and review status
 
 - **Device checks passed (owner confirmation):** on 26 October Jared answered “Yes, all passed” for TestFlight build 7 recording/playback/sharing and Plus purchase + Restore. Do not ask for these checks again.
