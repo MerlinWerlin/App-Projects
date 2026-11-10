@@ -150,6 +150,14 @@ struct SeamlessWidgetView: View {
     // Not loaded for Fill (widget memory budget), nor in the gallery (the thumbnail is fitted).
     let raw: UIImage? = fit && !live && !preview ? (WidgetArtStore.has(pieceID) ? WidgetArtStore.loadArt(pieceID) : SeamlessStore.loadArt(family)) : nil
     ZStack(alignment: .bottomLeading) {
+      // Owner 2026-11-10 (Home Screen screenshot: the moon and planet widgets sat on a lighter
+      // frosted panel with a bright rim; the Clock beside them did not): iOS treats a widget's
+      // container background as removable and puts its own glass over it in some Home Screen
+      // appearances. The designed Clock draws its face in the CONTENT and keeps its colour, so the
+      // art is drawn in the content too. The container background is only the plain backdrop.
+      if let image = image {
+        SeamlessArtLayer(image: image, raw: raw, fit: fit, theme: t)
+      }
       // T259: following a theme with no piece of this size = its plain background, no hint.
       if image == nil && !WidgetArtStore.unpinnedShowsBackground(family) {
         VStack(alignment: .leading, spacing: 4) {
@@ -175,56 +183,76 @@ struct SeamlessWidgetView: View {
       }
     }
     .containerBackground(for: .widget) {
-      if let image = image {
-        // T201 (owner-1101d #4): every layer is pinned to the widget's own size, so an aspect-filled
-        // layer can never grow the stack and push the art past the widget's edges.
-        GeometryReader { geo in
-          let size = geo.size
-          if fit {
-            // T236 Fit: the whole raw art, small inset. T251: the raw art is the BLENDED art (keyed /
-            // feathered by the bridge, transparent edges), on the plain wallpaper-sampled theme
-            // gradient (ArtBackdrop: no material panel, no outline), so no box shows round it.
-            let inset = min(size.width, size.height) * 0.06
-            ZStack {
-              ArtBackdrop(theme: t)
-              Image(uiImage: raw ?? image)
-                .resizable()
-                .scaledToFit()
-                .padding(inset)
-                .frame(width: size.width, height: size.height)
-            }
+      if image != nil { ArtBackdrop(theme: t) } else { GlazeBackground(theme: t) }
+    }
+  }
+}
+
+/// The art itself (Fit or Fill), drawn in the widget's content so iOS never frosts it.
+struct SeamlessArtLayer: View {
+  let image: UIImage
+  let raw: UIImage?
+  let fit: Bool
+  let theme: WidgetTheme
+
+  var body: some View {
+    let t = theme
+    // T201 (owner-1101d #4): every layer is pinned to the widget's own size, so an aspect-filled
+    // layer can never grow the stack and push the art past the widget's edges.
+    GeometryReader { geo in
+      let size = geo.size
+      if fit {
+        // T236 Fit: the whole raw art, small inset. T251: the raw art is the BLENDED art (keyed /
+        // feathered by the bridge, transparent edges), on the plain wallpaper-sampled theme
+        // gradient (ArtBackdrop: no material panel, no outline), so no box shows round it.
+        let inset = min(size.width, size.height) * 0.06
+        ZStack {
+          ArtBackdrop(theme: t)
+          Image(uiImage: raw ?? image)
+            .resizable()
+            .glazeArtFullColor()
+            .scaledToFit()
+            .padding(inset)
             .frame(width: size.width, height: size.height)
-            .clipped()
+        }
+        .frame(width: size.width, height: size.height)
+        .clipped()
+      } else {
+        // T236 Fill (default). T251 (owner-1101h #2): the composed file (the wallpaper crop under
+        // the widget, or the theme colour, with the blended art on it) goes edge to edge. NO
+        // blurred copy behind it any more: that blur of a black square with a white moon was the
+        // light-grey frame. When the shapes differ (iPad extra large, older pieces) the image is
+        // fitted whole over the plain theme gradient (ArtBackdrop), never a grey/white box.
+        let edgeToEdge = SeamlessWidgetView.aspectMatch(image.size, size) >= seamlessFillMinAspectMatch
+        ZStack {
+          ArtBackdrop(theme: t)
+          if edgeToEdge {
+            Image(uiImage: image)
+              .resizable()
+              .glazeArtFullColor()
+              .scaledToFill()
+              .frame(width: size.width, height: size.height)
+              .clipped()
           } else {
-            // T236 Fill (default). T251 (owner-1101h #2): the composed file (the wallpaper crop under
-            // the widget, or the theme colour, with the blended art on it) goes edge to edge. NO
-            // blurred copy behind it any more: that blur of a black square with a white moon was the
-            // light-grey frame. When the shapes differ (iPad extra large, older pieces) the image is
-            // fitted whole over the plain theme gradient (ArtBackdrop), never a grey/white box.
-            let edgeToEdge = SeamlessWidgetView.aspectMatch(image.size, size) >= seamlessFillMinAspectMatch
-            ZStack {
-              ArtBackdrop(theme: t)
-              if edgeToEdge {
-                Image(uiImage: image)
-                  .resizable()
-                  .scaledToFill()
-                  .frame(width: size.width, height: size.height)
-                  .clipped()
-              } else {
-                Image(uiImage: image)
-                  .resizable()
-                  .scaledToFit()
-                  .frame(width: size.width, height: size.height)
-              }
-            }
-            .frame(width: size.width, height: size.height)
-            .clipped()
+            Image(uiImage: image)
+              .resizable()
+              .glazeArtFullColor()
+              .scaledToFit()
+              .frame(width: size.width, height: size.height)
           }
         }
-      } else {
-        GlazeBackground(theme: t)
+        .frame(width: size.width, height: size.height)
+        .clipped()
       }
     }
+  }
+}
+
+extension Image {
+  /// Tinted / accented Home Screens: keep the art's own colours (iOS 18+), like the Clock face.
+  func glazeArtFullColor() -> Image {
+    if #available(iOS 18.0, *) { return self.widgetAccentedRenderingMode(.fullColor) }
+    return self
   }
 }
 

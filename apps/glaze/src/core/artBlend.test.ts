@@ -279,10 +279,9 @@ test('guard: Swift art paths draw no border, shadow, blur, material panel or out
   const widget = strip(read('targets', 'widget', 'SeamlessWidget.swift'));
   const view = widget.slice(widget.indexOf('struct SeamlessWidgetView'), widget.indexOf('struct SeamlessWidget: Widget'));
   assert.ok(view.length > 500);
-  // The art background (containerBackground with an image) and the ArtBackdrop.
-  const artView = view.slice(view.indexOf('private var artBody:'));
-  const art = artView.slice(artView.indexOf('.containerBackground(for: .widget)'), artView.indexOf('} else {\n        GlazeBackground'));
-  assert.ok(art.length > 200, 'art background found');
+  // The art layer (Owner 2026-11-10: drawn in the content, SeamlessArtLayer) and the ArtBackdrop.
+  const art = view.slice(view.indexOf('struct SeamlessArtLayer'), view.indexOf('extension Image {'));
+  assert.ok(art.length > 200, 'art layer found');
   for (const bad of [/\.border\(/, /\.shadow\(/, /\.blur\(/, /strokeBorder/, /\.stroke\(/, /Material/, /GlazeBackground/, /\.opacity\(/, /\.padding\(inset\)[\s\S]*\.background\(/]) {
     assert.doesNotMatch(art, bad, `art path: ${bad}`);
   }
