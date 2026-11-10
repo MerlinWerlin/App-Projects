@@ -95,7 +95,7 @@ test('no crop of art: JS previews contain; Swift widget pins both layers; the br
   assert.equal(fills.length, 1);
   for (const f of fills) assert.match(f[1], /^\s*\.frame\(width: size\.width, height: size\.height\)\s*\.clipped\(\)/);
   assert.doesNotMatch(widget, /\.blur\(radius:/);
-  assert.match(widget, /if edgeToEdge \{\s*Image\(uiImage: image\)\s*\.resizable\(\)\s*\.scaledToFill\(\)/);
+  assert.match(widget, /if edgeToEdge \{\s*Image\(uiImage: image\)\s*\.resizable\(\)\s*(\.glazeArtFullColor\(\)\s*)?\.scaledToFill\(\)/);
   assert.match(widget, /\.scaledToFit\(\)\s*\.frame\(width: size\.width, height: size\.height\)/);
   assert.doesNotMatch(widget, /aspectRatio\(contentMode: \.fill\)/);
 

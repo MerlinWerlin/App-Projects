@@ -108,7 +108,7 @@ test('Seamless widget: Edit Widget Layout Fill (default) / Fit; Fill never shows
   assert.match(widget, /let fit = layout == \.fit/, 'nil and .fill both mean Fill');
   assert.match(widget, /"seamless-\\\(name\)-art\.png"/);
   // Fill branch: full-opacity blur, no GlazeBackground, no opacity veil.
-  const fill = widget.slice(widget.indexOf('} else {\n            // T236 Fill'), widget.indexOf('} else {\n        GlazeBackground'));
+  const fill = widget.slice(widget.indexOf('} else {\n        // T236 Fill'), widget.indexOf('extension Image {'));
   assert.ok(fill.length > 100, 'Fill branch found');
   assert.doesNotMatch(fill, /GlazeBackground|\.opacity\(/);
   // T251: no blur at all; the plain theme gradient (no material / outline) only behind the image.
@@ -119,7 +119,7 @@ test('Seamless widget: Edit Widget Layout Fill (default) / Fit; Fill never shows
   // Fit branch: the raw art whole, inset, on the theme background.
   const fit = widget.slice(widget.indexOf('if fit {'), widget.indexOf('// T236 Fill'));
   assert.match(fit, /ArtBackdrop\(theme: t\)/, 'T251: plain gradient behind the blended raw art, no panel / outline');
-  assert.match(fit, /Image\(uiImage: raw \?\? image\)\s*\.resizable\(\)\s*\.scaledToFit\(\)\s*\.padding\(inset\)/);
+  assert.match(fit, /Image\(uiImage: raw \?\? image\)\s*\.resizable\(\)\s*(\.glazeArtFullColor\(\)\s*)?\.scaledToFit\(\)\s*\.padding\(inset\)/);
   // The new literals are localised in every language.
   const en = read('targets', 'widget', 'en.lproj', 'Localizable.strings');
   for (const k of ['Layout', 'Fill', 'Fit']) assert.match(en, new RegExp(`^"${k}" = "${k}";$`, 'm'));
