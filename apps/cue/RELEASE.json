@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Cue 1.0.0: remove over-the-air code updates (expo-updates) entirely for App Store resubmission (Guideline 5.6)",
+  "note": "Cue 1.0.0: no background audio mode on iOS (expo-audio background playback/recording off) for Guideline 2.5.4",
   "ascAppId": "6826554677"
 }

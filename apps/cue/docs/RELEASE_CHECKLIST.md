@@ -125,3 +125,8 @@ Cue App Information was read directly:4+ global age rating with regional equival
 - Backspin 1.0 was rejected under Guideline 5.6, most likely because `expo-updates` let the app change its code after review. Cue build 13 had the same setup (`checkAutomatically: ON_LOAD`, disclosed in the review notes), so it was withdrawn from review (Developer Rejected) before a decision.
 - The new build keeps version 1.0.0 and removes `expo-updates` completely: the dependency and its lockfile packages, `updates` and `runtimeVersion` in app.json, the EAS Update channels in eas.json, `src/native/updates.ts` and the `useQuietUpdate` launch check. `reloadApp` (the reload for a text-direction change) had no callers, so no replacement was needed. The EAS project id is pinned in app.json, so ship-mac skips `eas update:configure`.
 - Store data is prepared in the repo only: review notes and description in `store/listing.json`, and App Privacy and policy changes in `store/APP_PRIVACY_NO_OTA.md`. None of it has been applied to App Store Connect.
+
+## Guideline 2.5.4: background audio removed (11 Nov 2026)
+
+- Apple rejected build 16 under 2.5.4: Info.plist declared `UIBackgroundModes` `audio`, but no feature needs background audio. The `expo-audio` config plugin turns background playback on by default.
+- `app.json` now passes `enableBackgroundPlayback: false` and `enableBackgroundRecording: false` to `expo-audio`, which the Play overlay already did. `expo config --type introspect` shows `UIBackgroundModes: ["audio"]` before the change and no `UIBackgroundModes` after it. expo-camera and expo-speech-recognition add none, and the source never asks for background audio: `setAudioModeAsync` sets only `playsInSilentMode` and `allowsRecording`.
