@@ -2,7 +2,8 @@
 #
 # How approval works: a build run (or Claude) opens a pull request that changes apps/<app>/RELEASE.json
 # (and the code). Merging that pull request in the GitHub app IS the approval: this workflow then
-#   mode "build"  -> builds the iOS app on Expo (EAS) and uploads it to App Store Connect / TestFlight
+#   mode "build"  -> starts ship-mac, which builds the iOS app on GitHub's free Mac runner and uploads it to
+#                    App Store Connect / TestFlight. Expo's paid cloud builds are never used (owner decision, 10 Nov 2026).
 #   mode "update" -> publishes an over-the-air update to phones already running that app version
 # Nothing ships without a merge to main. Secrets are set once by the owner (docs/SHIPPING.md).
 name: ship
@@ -104,10 +105,11 @@ jobs:
           echo "ascKeyAuth=$(jq -r 'if .ascKeyAuth then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
 
       - name: Install packages
+        if: steps.rel.outputs.mode == 'update'
         run: npm install --no-audit --no-fund
 
       - name: Native-only tools for the chosen build profile
-        if: steps.rel.outputs.mode == 'build'
+        if: steps.rel.outputs.mode == 'update'
         env:
           PROFILE: ${{ steps.rel.outputs.profile }}
         run: |
@@ -120,68 +122,22 @@ jobs:
           fi
 
       - name: Link the Expo project (first time only)
+        if: steps.rel.outputs.mode == 'update'
         run: |
           if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
             eas init --non-interactive --force
             eas update:configure --non-interactive || true
           fi
 
-      - name: Submit profile (App Store Connect app id)
+      - name: Build on GitHub's Mac (ship-mac) and upload to TestFlight
         if: steps.rel.outputs.mode == 'build'
-        env:
-          ASC_APP_ID: ${{ steps.rel.outputs.ascAppId }}
-        run: |
-          # Signing credentials and the upload key live on Expo's servers (set up once from the PC, 23 Oct 2026),
-          # so the build only needs to know which App Store Connect app to upload to.
-          if [ -n "$ASC_APP_ID" ]; then
-            jq --arg a "$ASC_APP_ID" '.submit.production.ios = ((.submit.production.ios // {}) + {ascAppId: $a})' eas.json > eas.tmp.json
-            mv eas.tmp.json eas.json
-          fi
-
-      - name: Build and upload to TestFlight
-        if: steps.rel.outputs.mode == 'build'
-        env:
-          EAS_BUILD_NO_EXPO_GO_WARNING: 'true'
-          EXPO_NO_CAPABILITY_SYNC: ${{ steps.rel.outputs.skipCapSync == '1' && '1' || '0' }}
-          ASC_KEY_AUTH: ${{ steps.rel.outputs.ascKeyAuth }}
-          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
-          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
-          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-        run: |
-          set -o pipefail
-          if [ "$ASC_KEY_AUTH" = "1" ]; then
-            # Only for apps whose RELEASE.json asks for it (first CI build of a new app).
-            k="$RUNNER_TEMP/AuthKey.p8"
-            # Same tolerant .p8 parsing as the store sync (literal \n, one line, base64 of the file ...).
-            python3 - > "$k" <<'PY'
-          import base64, os, re
-          raw = os.environ["ASC_KEY_P8"].strip().strip('"').replace("\\n", "\n")
-          if "BEGIN" not in raw:
-              try:
-                  dec = base64.b64decode(raw).decode()
-                  raw = dec if "BEGIN" in dec else raw
-              except Exception:
-                  pass
-          body = re.sub(r"[^A-Za-z0-9+/=]", "", re.sub(r"-----(BEGIN|END)[^-]*-----", "", raw))
-          print("-----BEGIN PRIVATE KEY-----\n" + "\n".join(body[i:i + 64] for i in range(0, len(body), 64)) + "\n-----END PRIVATE KEY-----")
-          PY
-            grep -q 'BEGIN PRIVATE KEY' "$k" || { echo "::error::ASC_KEY_P8 is not a PEM private key"; exit 1; }
-            export EXPO_ASC_API_KEY_PATH="$k" EXPO_ASC_KEY_ID="$(echo "$ASC_KEY_ID" | tr -d '[:space:]')" \
-                   EXPO_ASC_ISSUER_ID="$(echo "$ASC_ISSUER_ID" | tr -d '[:space:]')" EXPO_APPLE_TEAM_ID="$(echo "$APPLE_TEAM_ID" | tr -d '[:space:]')" \
-                   EXPO_APPLE_TEAM_TYPE=INDIVIDUAL
-          fi
-          eas build --platform ios --profile "${{ steps.rel.outputs.profile }}" --non-interactive --auto-submit-with-profile production --no-wait --message "${{ steps.rel.outputs.note }}" 2>&1 | tee "$RUNNER_TEMP/ship.log"
-
-      - name: Expo build quota spent? Build free on GitHub's Mac instead
-        if: failure() && steps.rel.outputs.mode == 'build'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if grep -qiE "used its iOS builds|build credits|upgrade your plan" "$RUNNER_TEMP/ship.log" 2>/dev/null; then
-            gh api -X POST "repos/${{ github.repository }}/actions/workflows/ship-mac.yml/dispatches" -f ref=main -f "inputs[app]=${{ matrix.app }}"
-            echo "Dispatched ship-mac for ${{ matrix.app }}" >> "$GITHUB_STEP_SUMMARY"
-          fi
+          # No Expo cloud build: the owner does not pay for it, and the free plan's iOS builds run out.
+          gh api -X POST "repos/${{ github.repository }}/actions/workflows/ship-mac.yml/dispatches" -f ref=main -f "inputs[app]=${{ matrix.app }}"
+          echo "Started ship-mac for ${{ matrix.app }}" | tee "$RUNNER_TEMP/ship.log"
+          echo "Started ship-mac for ${{ matrix.app }}: Actions > ship-mac shows the build and TestFlight upload." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publish an over-the-air update
         if: steps.rel.outputs.mode == 'update'
@@ -201,4 +157,4 @@ jobs:
         run: |
           echo "### ${{ matrix.app }}: ${{ steps.rel.outputs.mode }}" >> "$GITHUB_STEP_SUMMARY"
           echo "${{ steps.rel.outputs.note }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "Build progress and TestFlight upload: https://expo.dev (Builds / Submissions)." >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.rel.outputs.mode }}" = "build" ]; then echo "Build and TestFlight upload: Actions > ship-mac." >> "$GITHUB_STEP_SUMMARY"; fi
