@@ -17,7 +17,7 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
 ## Channels (checked 10 Nov 2026 in Jared's Chrome)
 | Channel | Account | State | Use |
 |---|---|---|---|
-| Pinterest | Fern & Fable business (`fernandfableau`), board **Fun & Useful iPhone Apps** | signed in, working | 1 app pin a day at 19:00 (woodwork plan pins own 12:00) |
+| Pinterest | Fern & Fable business (`fernandfableau`), board **Fun & Useful Phone Apps** | signed in, working | 1 app pin a day at 19:00 (woodwork plan pins own 12:00) |
 | TikTok | Fern & Fable (`fernandfableau`, 358 followers, bio "DIY woodworking plans"), not Jared's personal | signed in, working | 3 app videos a week |
 | Instagram | Fern & Fable business (`fernandfableau`). **Never `jaredbradley7`** | signed in, working | Same videos as Reels, 3 a week |
 | Facebook | none linked to the Instagram account (Edit profile shows "Facebook: Connect") | needs Jared | Cross-post Reels once a Fern & Fable Page is linked |
@@ -71,7 +71,7 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
 ## How-to (what has tripped runs before)
 - **Pinterest** (pin builder https://au.pinterest.com/pin-creation-tool/): upload with the file input, then **find the
   form fields again** (they re-render after each upload): title, description (a contenteditable), link, board (should
-  already say Fun & Useful iPhone Apps), tick "Publish at a later date", pick the day in the calendar and 07:00 PM in
+  already say Fun & Useful Phone Apps), tick "Publish at a later date", pick the day in the calendar and 07:00 PM in
   the time menu. Click **Schedule** (or Publish), then click **Schedule/Publish again in the confirmation dialog**:
   two clicks. Leave "Mark as AI-modified" off. Check https://au.pinterest.com/fernandfableau/scheduled-pins/ afterwards.
   Leave the two old drafts in the drafts list alone.

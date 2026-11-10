@@ -4,7 +4,7 @@ One row per post, newest at the bottom of each table. The scheduled task **"App 
 rows here; see `marketing/CAMPAIGN.md`. Status: `live`, `scheduled` (queued on the platform), `review` (platform
 review), `queued` (in `marketing/campaign/queue.json`, not on the platform yet), `failed`.
 
-Accounts: all on **Fern & Fable** (`fernandfableau`). Pinterest board **Fun & Useful iPhone Apps**. App posts are made
+Accounts: all on **Fern & Fable** (`fernandfableau`). Pinterest board **Fun & Useful Phone Apps**. App posts are made
 from the apps' real store screenshots, so no AI label (TikTok gets the "Your brand" promotion label).
 
 ## Pinterest
