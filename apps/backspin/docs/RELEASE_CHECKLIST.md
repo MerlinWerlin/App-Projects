@@ -18,11 +18,19 @@ Native **build 7**, version 1.0.0 (Apple listing 1.0), and **Backspin Plus** wer
 - Opaque RGB 1254x1254 icon; transparent padded launch/adaptive assets. [ART_BRIEF.md](ART_BRIEF.md) records exact built-in ImageGen prompts and actual output dimensions. Expo produces platform icon sizes during the native build.
 - Expo's monthly cloud quota refused build 6. The existing [Mac fallback 40293135600](https://github.com/MerlinWerlin/App-Projects/actions/runs/40293135600) signed a 20.5 MB IPA and successfully uploaded build 7 at 08:58 UTC. [Upload receipt](https://github.com/MerlinWerlin/App-Projects/commit/26bab64ca0e2b9a0ae4141e826260b2504740b14#commitcomment-206653171).
 - Public marketing, privacy and support pages return HTTP 200. The public icon's SHA256 matches the committed mascot asset.
-- Microphone wording covers hold and tap mode. Review notes disclose EAS Update and do not claim an unverified video has been supplied. First-launch language hint, Settings language picker and empty-filter Show all behavior are already implemented.
+- Microphone wording covers hold and tap mode. Review notes (1.0) disclosed EAS Update and do not claim an unverified video has been supplied. First-launch language hint, Settings language picker and empty-filter Show all behavior are already implemented.
 
 ## Tablet captures
 
 The app keeps native iPad support. [Capture 40293901740](https://github.com/MerlinWerlin/App-Projects/actions/runs/40293901740) succeeded. One actual 2064x2752 native first-launch screenshot was inspected and selected for the 13-inch iPad set; three route shots showing the system Open confirmation were excluded. See [store/ipad/README.md](../store/ipad/README.md). OTA was disabled only in the capture environment. No physical-iPad success is claimed. [Apple readback at 09:31 UTC](https://github.com/MerlinWerlin/App-Projects/commit/0f731a8520f2d4d2b29f08af9a296e62170ea835#commitcomment-206656898) confirms this iPad image and all eight iPhone images are COMPLETE.
+
+## 1.0.1: Guideline 5.6 rejection and OTA removal (10 Nov 2026)
+
+- Apple rejected 1.0 (build 7, submission 22938d32-20f4-400f-ae3a-0271fb08027b) on 10 Nov under Guideline 5.6 ("features ... intentionally hidden during the review process"). No hidden screens or flags exist. The likely trigger is that the build could change its own code after review: `expo-updates` with `checkAutomatically: ON_LOAD`, disclosed in the review notes as "Expo EAS Update for app-code updates".
+- 1.0.1 removes `expo-updates` completely: the dependency and its lockfile packages (expo-eas-client, expo-manifests, expo-structured-headers, expo-json-utils, expo-updates-interface), `updates` and `runtimeVersion` in app.json, and the EAS Update `channel` in eas.json. The app has no `Updates.*` code. Autolinking no longer finds an updates module. The EAS project id is now pinned in app.json, so ship-mac skips `eas update:configure`.
+- iPad: the app supports all four iPad orientations (Expo's default for `supportsTablet` without full-screen), so content now sits in a centred column up to 640 pt wide. Phones are narrower than that and render as before.
+- Store data prepared in the repo only: review notes in `store/listing.json`, App Privacy and policy changes in `store/APP_PRIVACY_1_0_1.md`, and the reply to App Review in `store/REVIEW_REPLY_5_6.md`. None of it has been applied to App Store Connect.
+- The Google Play build still contains EAS Update; `privacy-android.html` stays unchanged until Android ships a build without it.
 
 ## Release authorization and review status
 

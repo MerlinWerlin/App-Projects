@@ -26,22 +26,28 @@ export function Backdrop() {
   return <LinearGradient pointerEvents="none" colors={c as [string, string, ...string[]]} style={StyleSheet.absoluteFill} />;
 }
 
+/** Widest content column, in points. Wider than any iPhone, so it only matters on iPad. */
+export const CONTENT_MAX = 640;
+
 export function Screen({ children, scroll = true, pad = true }: { children: ReactNode; scroll?: boolean; pad?: boolean }) {
   const { theme } = useApp();
   const ins = useSafeAreaInsets();
   const style = { paddingHorizontal: pad ? SP(5) : 0, paddingTop: ins.top + SP(3), paddingBottom: SP(10) };
+  // On iPad (and iPad landscape) keep one centred phone-width column instead of stretching edge to edge.
+  // Phones are narrower than CONTENT_MAX, so they render exactly as before.
+  const column = { width: '100%', maxWidth: CONTENT_MAX, alignSelf: 'center' } as const;
   if (!scroll)
     return (
       <View style={[{ flex: 1, backgroundColor: theme.bg }, style]}>
         <Backdrop />
-        {children}
+        <View style={[column, { flex: 1 }]}>{children}</View>
       </View>
     );
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
       <Backdrop />
       <ScrollView style={{ flex: 1 }} contentContainerStyle={style} keyboardShouldPersistTaps="handled">
-        {children}
+        <View style={column}>{children}</View>
       </ScrollView>
     </View>
   );

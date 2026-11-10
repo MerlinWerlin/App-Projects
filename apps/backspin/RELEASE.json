@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Backspin: new purple mascot icon and launch screen; pinned purchases with transaction listener handling; release metadata cleanup",
+  "note": "Backspin 1.0.1: remove over-the-air code updates (expo-updates) entirely for Guideline 5.6 resubmission; centred content column on iPad",
   "ascAppId": "6826553963"
 }

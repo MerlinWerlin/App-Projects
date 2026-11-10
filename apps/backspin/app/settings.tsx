@@ -12,7 +12,7 @@ export default function Settings() {
   const { t, theme, prefs, setPref, owned: plus, restorePlus, stats, lang } = useApp();
   const router = useRouter();
   const [msg, setMsg] = useState<string | null>(null);
-  const version = Constants.expoConfig?.version ?? '1.0.0';
+  const version = Constants.expoConfig?.version ?? '1.0.1';
   return (
     <Screen>
       {/* Language stays at the top of Settings (release standard §1); Home's first-launch line opens here. */}

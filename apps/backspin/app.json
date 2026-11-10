@@ -3,7 +3,7 @@
     "name": "Backspin",
     "slug": "backspin",
     "scheme": "backspin",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/icon.png",
@@ -30,8 +30,7 @@
       "expo-status-bar"
     ],
     "experiments": { "typedRoutes": false },
-    "runtimeVersion": { "policy": "appVersion" },
-    "updates": { "enabled": true, "checkAutomatically": "ON_LOAD", "fallbackToCacheTimeout": 0 },
+    "extra": { "eas": { "projectId": "1ae42fdf-352f-45c9-a9bf-f0c755c68da8" } },
     "owner": "jared797",
     "newArchEnabled": true
   }

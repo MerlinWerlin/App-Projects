@@ -30,8 +30,7 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - name: Prepare isolated simulator build
         run: |
-          # Capture this commit's embedded app, without fetching a different OTA during screenshots.
-          node -e 'const fs=require("fs"); const p=JSON.parse(fs.readFileSync("app.json")); p.expo.updates.enabled=false; fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
+          # Backspin ships without expo-updates (1.0.1+), so the build already embeds only this commit's code.
           npx expo prebuild --platform ios --no-install
           cd ios
           pod install > "$RUNNER_TEMP/backspin-pods.log" 2>&1 || { tail -100 "$RUNNER_TEMP/backspin-pods.log"; exit 1; }
@@ -72,7 +71,7 @@ jobs:
             sleep 5
             xcrun simctl io "$IPAD_UDID" screenshot "$RUNNER_TEMP/backspin-ipad/$ROUTE.png"
           done
-          printf 'Source: %s\nDevice: %s\nActual simulator captures, not physical-device QA. OTA disabled only in this capture build. Inspect every image before using in the listing.\n' "$GITHUB_SHA" "$IPAD_UDID" > "$RUNNER_TEMP/backspin-ipad/README.txt"
+          printf 'Source: %s\nDevice: %s\nActual simulator captures, not physical-device QA. Inspect every image before using in the listing.\n' "$GITHUB_SHA" "$IPAD_UDID" > "$RUNNER_TEMP/backspin-ipad/README.txt"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -6,7 +6,7 @@ import { canPlayLine, rng } from '../../src/core/game.ts';
 import { PACKS } from '../../src/content/index.ts';
 import type { Key } from '../../src/i18n/en.ts';
 import { useApp } from '../../src/state/app.tsx';
-import { Button, Chip, Press, T } from '../../src/ui/kit.tsx';
+import { Button, Chip, CONTENT_MAX, Press, T } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 const ROW = 76;
@@ -33,7 +33,7 @@ export default function PackScreen() {
         getItemLayout={(_, index) => ({ length: ROW, offset: ROW * index, index })}
         initialNumToRender={14}
         windowSize={7}
-        contentContainerStyle={{ padding: SP(5), paddingBottom: SP(12) }}
+        contentContainerStyle={{ padding: SP(5), paddingBottom: SP(12), width: '100%', maxWidth: CONTENT_MAX + SP(10), alignSelf: 'center' }}
         ListHeaderComponent={
           <View style={{ marginBottom: SP(4) }}>
             <T color={theme.sub}>{t(`pack.${pack.id}.sub` as Key)}</T>
