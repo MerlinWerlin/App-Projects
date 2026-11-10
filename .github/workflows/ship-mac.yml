@@ -1,8 +1,7 @@
-# Build an app's iOS binary on a GitHub macOS runner (free for this public repo) instead of Expo's cloud,
-# then upload it to TestFlight with `eas submit`. Use when Expo's monthly free iOS builds are used up
-# ("This account has used its iOS builds from the Free plan this month"). Same signing as ship.yml:
-# the certificate, provisioning profile and App Store Connect key all come from Expo's credentials service.
-# Started by hand (or by Claude through the API) with the app folder; reads that app's RELEASE.json.
+# The only iOS build path: build an app's binary on a GitHub macOS runner (free for this public repo), never on
+# Expo's paid cloud, then upload it to TestFlight with `eas submit`. Signing (certificate, provisioning profile,
+# App Store Connect key) still comes from Expo's free credentials service.
+# Started by ship.yml when an apps/<app>/RELEASE.json with mode "build" merges to main, or by hand with the app folder.
 name: ship-mac
 
 on:
@@ -63,6 +62,7 @@ jobs:
           echo "ascAppId=$(jq -r '.ascAppId // empty' RELEASE.json)" >> "$GITHUB_OUTPUT"
           echo "profile=$(jq -r '.profile // "production"' RELEASE.json)" >> "$GITHUB_OUTPUT"
           echo "ascKeyAuth=$(jq -r 'if .ascKeyAuth then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
+          echo "skipCapSync=$(jq -r 'if .skipCapabilitySync then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
 
       - name: Install packages
         run: npm install --no-audit --no-fund
@@ -94,6 +94,8 @@ jobs:
           fi
 
       - name: Build on this Mac
+        env:
+          EXPO_NO_CAPABILITY_SYNC: ${{ steps.rel.outputs.skipCapSync == '1' && '1' || '0' }}
         run: |
           set -o pipefail
           eas build --platform ios --profile "${{ steps.rel.outputs.profile }}" --local --non-interactive \

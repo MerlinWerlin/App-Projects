@@ -3,7 +3,8 @@
 ## Every release (after the one-time setup)
 1. You get a pull request, for example **"Ship Linework 1.0 to TestFlight"**, saying what changed.
 2. In the **GitHub app** on your phone: open it → **Merge pull request** → Confirm. That is your approval.
-3. The `ship` workflow builds the app on Expo and uploads it to App Store Connect. About 20–40 minutes later
+3. The `ship` workflow starts `ship-mac`, which builds the app on GitHub's free Mac runner and uploads it to App
+   Store Connect. Expo's paid cloud builds are never used. About 20–40 minutes later
    Apple emails you and the build is in **TestFlight**.
 4. Once an app is live, small changes come as **update** pull requests: merging one sends the change straight to
    phones (no App Store review).
@@ -38,4 +39,5 @@ Nobody but you ever sees these values: GitHub hides secrets from everyone, inclu
   linked Expo project ids).
 - `apps/<app>/RELEASE.json`: `{"mode": "build" | "update", "note": "...", "ascAppId": "..."}`. A change to this file
   merged into `main` is the trigger.
-- `.github/workflows/ship.yml`: the workflow. It can also be started by hand: Actions → ship → Run workflow.
+- `.github/workflows/ship.yml`: the workflow. For `"mode": "build"` it hands the build to `.github/workflows/ship-mac.yml`
+  (GitHub's Mac runner, free); it never runs an Expo cloud build. It can also be started by hand: Actions → ship → Run workflow.
