@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Backspin 1.0.1: remove over-the-air code updates (expo-updates) entirely for Guideline 5.6 resubmission; centred content column on iPad",
+  "note": "Backspin 1.0.1: no UIBackgroundModes audio (Guideline 2.5.4); replaces build 9 for review",
   "ascAppId": "6826553963"
 }

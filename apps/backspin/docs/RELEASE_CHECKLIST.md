@@ -37,7 +37,7 @@ The app keeps native iPad support. [Capture 40293901740](https://github.com/Merl
 - Apple rejected Cue under Guideline 2.5.4 for declaring `UIBackgroundModes` "audio" without a feature that needs it. Backspin had the same issue: the expo-audio plugin turns background playback on by default, and `npx expo config --type introspect` on build 9's source (ea9f919) shows `UIBackgroundModes: ["audio"]`.
 - Fix: `enableBackgroundPlayback: false` and `enableBackgroundRecording: false` on the expo-audio plugin. Introspect now shows no `UIBackgroundModes`, and the microphone usage text is unchanged. Version stays 1.0.1.
 - The app's behaviour doesn't change. Source never sets `shouldPlayInBackground` or `allowsBackgroundRecording` (both default off), so expo-audio already paused playback and recording when the app went to the background.
-- This needs a new binary. Build 9 still declares "audio". Shipping is Jared's call: the PR has no RELEASE.json change.
+- This needs a new binary: build 9 still declares "audio". Jared approved swapping it, so this PR changes RELEASE.json and merging ships a new 1.0.1 build to TestFlight.
 
 ## Release authorization and review status
 
