@@ -78,7 +78,7 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
 - **TikTok** (https://www.tiktok.com/tiktokstudio/upload): upload, dismiss the "automatic checks" prompt with Cancel,
   focus the description editor (`.public-DraftEditor-content`), select all, type the caption, then type each hashtag,
   wait 2 s, then a space (the first hashtag sometimes gets swallowed: re-check the text). Settings > Show more >
-  Disclose post content > Your brand. Post now; TikTok's scheduler needs a one-time consent Jared hasn't given.
+  Disclose post content > Your brand. Schedule it (Jared OK'd scheduling and its one-time consent on 11 Nov): pick a Mon/Wed/Fri at 19:30, one reel a day, never several at once.
   The new post's URL is the first `/video/` link on https://www.tiktok.com/tiktokstudio/content.
 - **Instagram** (instagram.com, check the profile says `fernandfableau` first): Create > Post > file input > OK on the
   "shared as reels" notice > Select crop > 9:16 > Next > Next > caption > Share, then wait about 30 s for "Your reel has
