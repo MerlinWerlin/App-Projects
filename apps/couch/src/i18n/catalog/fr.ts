@@ -13,6 +13,7 @@ export const fr: Catalogue = {
     "{language} se lit dans l'autre sens. Couch va redémarrer pour inverser la mise en page. Vos téléviseurs et réglages restent inchangés.",
   'core.settings.language.restartNow': 'Redémarrer',
   'core.settings.language.restartLater': 'Plus tard',
+  'core.settings.language.reopenMessage': 'Fermez Couch puis rouvrez-le pour voir la nouvelle mise en page.',
   'core.common.tvCount': { one: '{count} TV', other: '{count} TV' },
 
   // core (T51 keys)

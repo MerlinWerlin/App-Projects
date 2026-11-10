@@ -13,6 +13,7 @@ export const ptBR: Catalogue = {
     '{language} é lido em outra direção. O Couch vai reiniciar para inverter o layout. Suas TVs e configurações continuam como estão.',
   'core.settings.language.restartNow': 'Reiniciar agora',
   'core.settings.language.restartLater': 'Depois',
+  'core.settings.language.reopenMessage': 'Feche o Couch e abra de novo para ver o novo layout.',
   'core.common.tvCount': { one: '{count} TV', other: '{count} TVs' },
 
   // core (T51 keys)

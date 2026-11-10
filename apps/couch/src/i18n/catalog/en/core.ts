@@ -12,6 +12,7 @@ export const coreEn = {
     '{language} reads in a different direction. Couch will restart to flip the layout. Your TVs and settings stay as they are.',
   'core.settings.language.restartNow': 'Restart now',
   'core.settings.language.restartLater': 'Later',
+  'core.settings.language.reopenMessage': 'Close Couch and open it again to see the new layout.',
   'core.settings.simple.title': 'Simple mode',
   'core.settings.simple.hint': 'Big power, volume, channel and home buttons only',
   'core.settings.haptics.title': 'Haptics',

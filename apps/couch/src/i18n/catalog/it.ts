@@ -13,6 +13,7 @@ export const it: Catalogue = {
     "{language} si legge nell'altra direzione. Couch si riavvierà per invertire il layout. TV e impostazioni restano come sono.",
   'core.settings.language.restartNow': 'Riavvia ora',
   'core.settings.language.restartLater': 'Più tardi',
+  'core.settings.language.reopenMessage': 'Chiudi Couch e riaprilo per vedere il nuovo layout.',
   'core.common.tvCount': { one: '{count} TV', other: '{count} TV' },
 
   // core (T51 keys)

@@ -1,14 +1,15 @@
 /**
  * Right-to-left switching (owner-1016 R3). React Native fixes the layout direction at bundle start,
  * so a change between Arabic and the other languages needs I18nManager.forceRTL plus an app reload.
- * Everything is guarded (D4-1): where react-native / expo-updates are missing (tests, Node) nothing
- * throws and no reload happens. The remote's physical controls opt out of mirroring via src/ui/NeverMirror.
+ * Everything is guarded (D4-1): where react-native is missing (tests, Node) nothing throws and no reload
+ * happens. Store builds have no OTA updates (1.0.4, Guideline 5.6), so they cannot reload the bundle: the
+ * new direction applies when the person reopens Couch (see LanguagePicker). Development builds reload. The remote's physical controls opt out of mirroring via src/ui/NeverMirror.
  */
 import { needsDirectionChange } from '../i18n/direction';
-import { reloadApp } from './updates';
 import { isRtl, type AnyLocale } from '../i18n/locales';
 
 declare const require: (id: string) => unknown;
+declare const __DEV__: boolean | undefined;
 
 export interface I18nManagerLike {
   isRTL: boolean;
@@ -33,26 +34,21 @@ function loadI18nManager(): I18nManagerLike | null {
   }
 }
 
+/** True only in a development build (Metro). Store builds return false. */
+export function canReloadApp(): boolean {
+  try {
+    return typeof __DEV__ !== 'undefined' && __DEV__ === true;
+  } catch {
+    return false;
+  }
+}
+
 /**
- * Reload the app. src/native/updates.ts (reloadApp) is owned by another task; until it lands this is
- * a local fallback: expo-updates reloadAsync (release builds), else DevSettings.reload (development).
+ * Reload the JS bundle in development builds only (react-native DevSettings.reload). Store builds
+ * do nothing here: the direction set by forceRTL applies on the next launch. Never throws.
  */
 export async function reloadAppFallback(): Promise<void> {
-  try {
-    if (await reloadApp()) return;
-  } catch {
-    // fall through to the local fallback below
-  }
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const updates = require('expo-updates') as { reloadAsync?: () => Promise<void> } | null;
-    if (typeof updates?.reloadAsync === 'function') {
-      await updates.reloadAsync();
-      return;
-    }
-  } catch {
-    // fall through to DevSettings
-  }
+  if (!canReloadApp()) return;
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const rn = require('react-native') as { DevSettings?: { reload?: (reason?: string) => void } } | null;

@@ -17,6 +17,7 @@ export const ar: Catalogue = {
     'تُقرأ اللغة {language} باتجاه مختلف. سيُعاد تشغيل Couch لقلب التخطيط. ستبقى أجهزة التلفزيون والإعدادات كما هي.',
   'core.settings.language.restartNow': 'إعادة التشغيل الآن',
   'core.settings.language.restartLater': 'لاحقًا',
+  'core.settings.language.reopenMessage': 'أغلق Couch ثم افتحه مرة أخرى لرؤية التخطيط الجديد.',
 
   // core (T51 keys)
   'core.settings.simple.title': 'الوضع البسيط',

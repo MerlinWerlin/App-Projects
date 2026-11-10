@@ -59,3 +59,5 @@ The order follows the "Store screenshot playbook" in docs/MARKET.md (T69): the o
 - No TV brand names, real TV interfaces or streaming service names or logos in any image. Any TV screen shown must use original abstract art.
 - Headlines come only from the i18n catalogue. To change one, add or edit it there, never in this script.
 - RTL locales set `dir="rtl"` on the headline only. The prototype UI inside the frame is still English. A localised prototype is follow-up work.
+
+**1.0.4 OTA removal (10 Nov 2026):** see `OTA_REMOVAL_1_0_4.md`. Couch no longer includes expo-updates. The public privacy page's "App updates" section still needs the replacement wording given there.

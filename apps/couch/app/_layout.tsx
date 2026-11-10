@@ -18,7 +18,6 @@ import { plusAccess } from '../src/plus/usePlus';
 import { LifecycleProvider } from '../src/state/lifecycle';
 import { PrefsProvider, usePrefs } from '../src/state/prefs';
 import { RatingPromptHost } from '../src/state/useRatingPrompt';
-import { useQuietUpdate } from '../src/state/useQuietUpdate';
 import { SessionProvider } from '../src/state/session';
 import { CastProvider } from '../src/state/cast';
 import { IntroRemote } from '../src/ui/IntroRemote';
@@ -45,8 +44,6 @@ try {
 }
 
 export default function RootLayout() {
-  // owner-1016 R2: quiet OTA check (no-op in Expo Go and development).
-  useQuietUpdate();
   const [loaded, error] = useFonts({
     Sora_600SemiBold,
     Sora_700Bold,
