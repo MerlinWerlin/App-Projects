@@ -47,7 +47,6 @@
     "expo-speech-recognition": "58.0.0",
     "expo-splash-screen": "~58.0.13",
     "expo-status-bar": "~58.0.4",
-    "expo-updates": "~58.0.21",
     "jszip": "^3.10.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",

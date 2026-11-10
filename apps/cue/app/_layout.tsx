@@ -11,7 +11,6 @@ import { useReducedMotion } from 'react-native-reanimated';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { t } from '../src/i18n';
 import { AppStateProvider, useApp } from '../src/state/AppState';
-import { useQuietUpdate } from '../src/state/useQuietUpdate';
 import { FONT } from '../src/theme/theme';
 import { LaunchIntro } from '../src/ui/LaunchIntro';
 
@@ -23,7 +22,6 @@ try {
 }
 
 export default function RootLayout() {
-  useQuietUpdate();
   const [fontsLoaded, fontError] = useFonts({
     AtkinsonHyperlegible_400Regular,
     AtkinsonHyperlegible_700Bold,
