@@ -13,7 +13,7 @@ import { t as translate } from '../../i18n/core';
 import { directionPlan } from '../../i18n/direction';
 import { LOCALES, localeInfo, resolveLocale, type LocaleCode } from '../../i18n/locales';
 import { useT } from '../../i18n/react';
-import { applyDirection, syncDirectionOnStart } from '../../native/rtl';
+import { applyDirection, canReloadApp, syncDirectionOnStart } from '../../native/rtl';
 import { deviceLanguageTags } from '../../native/localization';
 import { usePrefs } from '../../state/prefs';
 
@@ -68,7 +68,17 @@ export function useLanguageChoice(): {
         {
           text: translate('core.settings.language.restartNow', undefined, next),
           onPress: () => {
-            setTimeout(() => void applyDirection(next), PERSIST_MS);
+            if (canReloadApp()) {
+              setTimeout(() => void applyDirection(next), PERSIST_MS);
+              return;
+            }
+            // Store builds cannot reload themselves (no OTA updates): set the direction for the next
+            // launch and ask the person to reopen Couch.
+            syncDirectionOnStart(next);
+            Alert.alert(
+              translate('core.settings.language.restartTitle', undefined, next),
+              translate('core.settings.language.reopenMessage', undefined, next),
+            );
           },
         },
       ],

@@ -36,8 +36,7 @@ the Plus screen says "coming in a later update" with no Buy / Restore / tips.
 | Paid Apps Agreement, bank and tax | done (account, 23 Oct 2026) |
 
 ## 4. While in review
-Over-the-air updates reach the reviewer's copy: during review the build runs ship only fixes the reviewer needs.
-Recorded as a standing rule in ops/DECISIONS.md (run 80).
+From 1.0.4 (10 Nov 2026) Couch has no over-the-air updates: `expo-updates` is removed (Guideline 5.6, after Backspin's rejection). Every change, including during review, needs a new build through TestFlight. This replaces the run-80 rule in ops/DECISIONS.md.
 
 ## Couch Plus purchase settings (owner, 25 Oct 2026)
 - Non-consumable, A$3.99 (AU base storefront), **Family Sharing ON** (App Store Connect > In-App Purchases > Couch Plus > Family Sharing: Turn On; it can't be turned off again once on). No tip jar.

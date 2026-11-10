@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Couch 1.0.4: no demo mode, 7-day free trial then Couch Plus A$3.99 one-time unlocks the remote and casting, earlier free installs keep it free",
+  "note": "Couch 1.0.4 rebuild without OTA updates (expo-updates removed, Guideline 5.6): 7-day free trial then Couch Plus A$3.99 one-time, earlier free installs keep it free",
   "ascAppId": "6826135134"
 }

@@ -13,6 +13,7 @@ export const zhHans: Catalogue = {
     '{language}的书写方向不同。Couch 将重启以切换布局。你的电视和设置都会保留。',
   'core.settings.language.restartNow': '立即重启',
   'core.settings.language.restartLater': '稍后',
+  'core.settings.language.reopenMessage': '关闭 Couch 后重新打开，即可看到新的布局。',
 
   // core (T51 keys)
   'core.settings.simple.title': '简洁模式',

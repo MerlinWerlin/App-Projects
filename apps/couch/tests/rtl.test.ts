@@ -70,7 +70,7 @@ describe('RTL switching (owner-1016 T50)', () => {
     expect(same.log).toEqual(['allow true', 'force true', 'swap true']);
   });
 
-  it('defaults never throw (with or without react-native / expo-updates installed)', async () => {
+  it('defaults never throw (with or without react-native installed)', async () => {
     expect(typeof currentIsRtl()).toBe('boolean');
     expect(currentIsRtl({ i18n: fakeI18n(true).i18n })).toBe(true);
     if (currentIsRtl() === false && !hasModule('react-native')) {

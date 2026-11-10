@@ -65,16 +65,11 @@
     "experiments": {
       "typedRoutes": true
     },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "enabled": true,
-      "checkAutomatically": "ON_LOAD",
-      "fallbackToCacheTimeout": 0
-    },
     "extra": {
-      "supportsRTL": true
+      "supportsRTL": true,
+      "eas": {
+        "projectId": "13c9422c-742a-4c5b-aa36-c9ad87cd7c83"
+      }
     },
     "owner": "jared797",
     "icon": "./assets/brand/icon.png",

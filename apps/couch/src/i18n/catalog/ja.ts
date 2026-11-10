@@ -13,6 +13,7 @@ export const ja: Catalogue = {
     '{language}は文字の向きが異なります。レイアウトを切り替えるためにCouchを再起動します。テレビと設定はそのまま残ります。',
   'core.settings.language.restartNow': '今すぐ再起動',
   'core.settings.language.restartLater': 'あとで',
+  'core.settings.language.reopenMessage': '新しいレイアウトを表示するには、Couch を閉じてもう一度開いてください。',
   'core.common.tvCount': { other: 'テレビ{count}台' },
 
   // core (T51 keys)

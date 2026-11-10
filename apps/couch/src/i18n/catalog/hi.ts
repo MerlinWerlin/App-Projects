@@ -13,6 +13,7 @@ export const hi: Catalogue = {
     '{language} दूसरी दिशा में पढ़ी जाती है। लेआउट बदलने के लिए Couch फिर से शुरू होगा। आपके TV और सेटिंग्स वैसे ही रहेंगे।',
   'core.settings.language.restartNow': 'अभी रीस्टार्ट करें',
   'core.settings.language.restartLater': 'बाद में',
+  'core.settings.language.reopenMessage': 'नया लेआउट देखने के लिए Couch बंद करें और फिर से खोलें।',
 
   // core (T51 keys)
   'core.settings.simple.title': 'सरल मोड',

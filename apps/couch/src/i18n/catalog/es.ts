@@ -13,6 +13,7 @@ export const es: Catalogue = {
     '{language} se lee en otra dirección. Couch se reiniciará para invertir el diseño. Tus televisores y ajustes no cambian.',
   'core.settings.language.restartNow': 'Reiniciar ahora',
   'core.settings.language.restartLater': 'Más tarde',
+  'core.settings.language.reopenMessage': 'Cierra Couch y vuelve a abrirlo para ver el nuevo diseño.',
   'core.common.tvCount': { one: '{count} TV', other: '{count} TV' },
 
   // core (T51 keys)

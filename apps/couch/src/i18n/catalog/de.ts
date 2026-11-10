@@ -13,6 +13,7 @@ export const de: Catalogue = {
     '{language} wird in die andere Richtung gelesen. Couch startet neu, um das Layout zu spiegeln. Deine Fernseher und Einstellungen bleiben unverändert.',
   'core.settings.language.restartNow': 'Jetzt neu starten',
   'core.settings.language.restartLater': 'Später',
+  'core.settings.language.reopenMessage': 'Schließe Couch und öffne es erneut, um das neue Layout zu sehen.',
   'core.common.tvCount': { one: '{count} Fernseher', other: '{count} Fernseher' },
 
   // core (T51 keys)

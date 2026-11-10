@@ -13,6 +13,7 @@ export const ko: Catalogue = {
     '{language}은(는) 읽는 방향이 달라요. 레이아웃을 바꾸기 위해 Couch가 다시 시작돼요. TV와 설정은 그대로 유지돼요.',
   'core.settings.language.restartNow': '지금 다시 시작',
   'core.settings.language.restartLater': '나중에',
+  'core.settings.language.reopenMessage': '새 레이아웃을 보려면 Couch를 닫았다가 다시 여세요.',
   'core.common.tvCount': { other: 'TV {count}대' },
 
   // core (T51 keys)
