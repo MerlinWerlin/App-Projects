@@ -31,12 +31,12 @@ jobs:
       - name: Install frozen dependencies
         working-directory: apps/linework
         run: npm ci --no-audit --no-fund
-      - name: Check production identity and embedded-only settings
+      - name: Check production identity and no OTA updates
         working-directory: apps/linework
         run: |
           mkdir -p ../../production-export-evidence
           npx expo config --type public --json > ../../production-export-evidence/config.json
-          node -e 'const c=require("../../production-export-evidence/config.json"); if(c.android.package!=="com.jared797.linework" || c.updates.enabled!==false || c.extra.playVariant!=="production") throw Error("Invalid production identity");'
+          node -e 'const c=require("../../production-export-evidence/config.json"); if(c.android.package!=="com.jared797.linework" || (c.updates && (c.updates.enabled!==false || c.updates.url)) || c.runtimeVersion || c.extra.playVariant!=="production") throw Error("Invalid production identity");'
           git rev-parse HEAD > ../../production-export-evidence/source-commit.txt
       - name: Compile production Android JavaScript and Hermes bytecode
         working-directory: apps/linework
