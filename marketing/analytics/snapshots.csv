@@ -27,3 +27,7 @@ captured_at,scope,channel,account,app,post_id,metric,value,period,source
 2026-11-10,account,tiktok,fernandfableau,,,followers,358,now,TikTok Studio home
 2026-11-10,account,tiktok,fernandfableau,,,video_views,97,last_7d,TikTok Studio home key metrics
 2026-11-10,account,tiktok,fernandfableau,,,likes,0,last_7d,TikTok Studio home key metrics
+2026-11-10,app,appstore,Astro Labs AU,linework,,installs,8,last_30d,App Store Connect > Linework > Analytics > Overview (dateSpec=d30; 30 days to 8 Nov UTC)
+2026-11-10,app,appstore,Astro Labs AU,linework,,redownloads,1,last_30d,App Store Connect > Linework > Analytics > Overview (dateSpec=d30; 30 days to 8 Nov UTC)
+2026-11-10,app,appstore,Astro Labs AU,linework,,impressions,64,last_30d,App Store Connect > Linework > Analytics > Overview (dateSpec=d30; 30 days to 8 Nov UTC)
+2026-11-10,app,appstore,Astro Labs AU,linework,,store_page_views,10,last_30d,App Store Connect > Linework > Analytics > Overview (dateSpec=d30; 30 days to 8 Nov UTC)
