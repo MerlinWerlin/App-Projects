@@ -37,13 +37,22 @@ struct HabitProvider: TimelineProvider {
     )
   }
 
+  /// The Add Widget gallery: a fixed GallerySample palette per habit and a part-filled day.
   func placeholder(in context: Context) -> HabitEntry {
     let def = HabitDef.of(habit)
-    return HabitEntry(date: Date(), theme: ThemeStore.load(), habit: habit, value: 0, goal: def.goal, step: def.step)
+    let variant: Int
+    switch habit {
+    case .water: variant = 3
+    case .sleep: variant = 0
+    case .steps: variant = 2
+    case .mood: variant = 5
+    }
+    let value = def.goal.map { ($0 * 0.6).rounded() } ?? 0
+    return HabitEntry(date: Date(), theme: GallerySample.theme(variant), habit: habit, value: value, goal: def.goal, step: def.step)
   }
 
   func getSnapshot(in context: Context, completion: @escaping (HabitEntry) -> Void) {
-    completion(entry(Date()))
+    completion(context.isPreview ? placeholder(in: context) : entry(Date()))
   }
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<HabitEntry>) -> Void) {

@@ -156,6 +156,6 @@
 /* Theme gallery */
 "Battery" = "电池";
 "Calendar" = "日历";
-"Matches the theme you choose in Glaze." = "与您在 Glaze 中选择的主题相配。";
+"Takes on your Glaze theme once added." = "添加后即采用你的 Glaze 主题。";
 /* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
-"Artwork from the theme you choose in Glaze." = "来自你在 Glaze 中所选主题的图片。";
+"Shows your Glaze theme's art once added." = "添加后显示你的 Glaze 主题插画。";

@@ -65,15 +65,21 @@ test('GalleryThumbnail: ImageIO downsampling capped at 360 px (no full-size deco
   assert.doesNotMatch(thumb, /UIImage\(contentsOfFile/);
 });
 
-test('both art providers mark the gallery: isPreview snapshots and placeholders render in preview mode', () => {
+test('both art providers send the gallery to a fixed sample: no theme, index or art reads', () => {
+  // Owner 2026-11-11 ("make it generic - variations"): iOS keeps gallery previews long after a
+  // swap, so the gallery draws GallerySampleArt (one scene per Art slot) instead of theme art.
   const art = body(library, 'struct ArtProvider', 'func timeline(');
   assert.match(art, /pieceID: nil, layout: nil, preview: true\)/);
-  assert.match(art, /layout: configuration\.layout, preview: context\.isPreview\)/);
-  assert.match(seamless, /SeamlessWidgetView\(theme: entry\.theme, pieceID: entry\.pieceID, layout: entry\.layout, date: entry\.date, preview: entry\.preview\)/);
+  assert.match(art, /if context\.isPreview \{ return placeholder\(in: context\) \}/);
+  assert.match(art, /theme: GallerySample\.theme\(1\)/);
+  assert.match(seamless, /if entry\.preview \{\n\s*GallerySampleArt\(variant: 1\)/);
   const slotProvider = body(slots, 'struct ThemeArtProvider', 'struct ThemeArtSlotView');
-  assert.match(slotProvider, /entry\(nil, family: context\.family, preview: true\)/);
-  assert.match(slotProvider, /preview: context\.isPreview\)/);
-  // Placed widgets (timelines) keep full images.
+  const gallery = body(slots, 'private var galleryEntry', 'func placeholder(');
+  assert.match(gallery, /theme: GallerySample\.theme\(slot - 1\), pieceID: nil, layout: nil, preview: true, sample: slot - 1/);
+  assert.doesNotMatch(gallery, /ThemeStore|WidgetArtStore|ThemeArtSlots/);
+  assert.match(slotProvider, /context\.isPreview \? galleryEntry : entry\(configuration, family: context\.family\)/);
+  assert.match(body(slots, 'struct ThemeArtSlotView', 'enum ThemeArtKind'), /if entry\.preview \{\n\s*GallerySampleArt\(variant: entry\.sample\)/);
+  // Placed widgets (timelines) keep the theme's full images.
   assert.doesNotMatch(body(slots, 'func timeline(', 'struct ThemeArtSlotView'), /preview: true/);
 });
 

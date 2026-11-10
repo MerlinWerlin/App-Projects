@@ -76,7 +76,7 @@ struct LockAccessoryWidget: Widget {
   let kind = "GlazeLockAccessory"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: MinuteProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: MinuteProvider(sample: 0)) { entry in
       LockAccessoryView(entry: entry)
     }
     .configurationDisplayName("Glaze Lock")
@@ -165,7 +165,7 @@ struct LockDateWidget: Widget {
   let kind = "GlazeLockDate"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: DayProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: DayProvider(sample: 0)) { entry in
       LockDateView(entry: entry)
     }
     .configurationDisplayName("Lock Screen date")
@@ -185,10 +185,11 @@ struct LockBatteryEntry: TimelineEntry {
 
 struct LockBatteryProvider: TimelineProvider {
   func placeholder(in context: Context) -> LockBatteryEntry {
-    LockBatteryEntry(date: Date(), theme: ThemeStore.load(), percent: nil)
+    LockBatteryEntry(date: Date(), theme: GallerySample.theme(0), percent: nil)
   }
 
   func getSnapshot(in context: Context, completion: @escaping (LockBatteryEntry) -> Void) {
+    if context.isPreview { return completion(LockBatteryEntry(date: Date(), theme: GallerySample.theme(0), percent: 75)) }
     completion(LockBatteryEntry(date: Date(), theme: ThemeStore.load(), percent: LiveBattery.percent()))
   }
 
@@ -434,7 +435,7 @@ struct LockCountdownWidget: Widget {
   let kind = "GlazeLockCountdown"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: DayProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: DayProvider(sample: 0)) { entry in
       LockCountdownView(entry: entry)
     }
     .configurationDisplayName("Lock Screen countdown")
@@ -498,7 +499,7 @@ struct LockMoonWidget: Widget {
   let kind = "GlazeLockMoon"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: DayProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: DayProvider(sample: 0)) { entry in
       LockMoonView(entry: entry)
     }
     .configurationDisplayName("Lock Screen moon")

@@ -64,7 +64,7 @@ struct DateWidget: Widget {
   let kind = "GlazeDate"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: DayProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: DayProvider(sample: 1)) { entry in
       GlazeDesignedWidget(kind: "date", entry: entry) { DateWidgetView(entry: entry) }
     }
     .configurationDisplayName("Date")

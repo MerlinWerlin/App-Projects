@@ -53,7 +53,8 @@ struct PhotoWidgetView: View {
   var body: some View {
     let t = entry.theme
     let m = PhotoFrameMetrics.of(family)
-    let photo = ThemeStore.loadPhoto()
+    // The gallery sample never shows the person's photo (iOS keeps gallery previews).
+    let photo = t.isGallerySample ? nil : ThemeStore.loadPhoto()
     let shape = RoundedRectangle(cornerRadius: m.radius, style: .continuous)
     VStack(spacing: m.mat * 0.6) {
       ZStack {
@@ -123,7 +124,7 @@ struct PhotoWidget: Widget {
   let kind = "GlazePhoto"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: DayProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: DayProvider(sample: 1)) { entry in
       GlazeDesignedWidget(kind: "photo", entry: entry) { PhotoWidgetView(entry: entry) }
     }
     .configurationDisplayName("Photo")

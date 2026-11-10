@@ -64,7 +64,7 @@ struct WordClockWidget: Widget {
   let kind = "GlazeWordClock"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: MinuteProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: MinuteProvider(sample: 3)) { entry in
       WordClockWidgetView(entry: entry)
     }
     .configurationDisplayName("Word clock")
@@ -147,7 +147,7 @@ struct BigClockWidget: Widget {
   let kind = "GlazeBigClock"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: MinuteProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: MinuteProvider(sample: 5)) { entry in
       BigClockWidgetView(entry: entry)
     }
     .configurationDisplayName("Big clock")

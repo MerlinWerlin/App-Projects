@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**11 November 2026 TestFlight generic gallery: `1.0.23`.** Owner: "make it generic - variations". iOS keeps Add Widget gallery previews after a swap (no API refreshes them), so every gallery preview (isPreview snapshot and placeholder) draws a fixed GallerySample: six palettes, drawn art scenes per Art slot, generic Clock / Battery / Calendar faces. No theme, art index, saved design or photo is read for the gallery. Home Screen widgets unchanged.
+
 **10 November 2026 TestFlight art colour: `1.0.22`.** Owner (Home Screen screenshot): the moon and planet art widgets sat on a lighter frosted panel with a bright rim while the Clock kept its colour. The art was the widget's container background, which iOS may cover with its own glass; it is now drawn in the content like the Clock's face (full colour on tinted Home Screens, iOS 18+). Gallery previews unchanged.
 
 **9 November 2026 TestFlight gallery previews: `1.0.21`.** Owner: the gallery still kept the old theme on 1.0.20; older builds "did and it didn't". iOS caches gallery previews and refreshes them on its own schedule (no API forces it). Every gallery render of art (live pieces and Seamless included) now uses a 360 px thumbnail so each refresh iOS attempts fits the extension memory limit; placed widgets unchanged.

@@ -166,6 +166,6 @@
 /* Theme gallery */
 "Battery" = "Battery";
 "Calendar" = "Calendar";
-"Matches the theme you choose in Glaze." = "Matches the theme you choose in Glaze.";
+"Takes on your Glaze theme once added." = "Takes on your Glaze theme once added.";
 /* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
-"Artwork from the theme you choose in Glaze." = "Artwork from the theme you choose in Glaze.";
+"Shows your Glaze theme's art once added." = "Shows your Glaze theme's art once added.";

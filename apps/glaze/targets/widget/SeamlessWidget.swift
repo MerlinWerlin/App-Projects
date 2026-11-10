@@ -272,7 +272,12 @@ struct SeamlessWidget: Widget {
 
   var body: some WidgetConfiguration {
     AppIntentConfiguration(kind: kind, intent: ChooseWidgetArtIntent.self, provider: ArtProvider()) { entry in
-      SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date, preview: entry.preview)
+      if entry.preview {
+        GallerySampleArt(variant: 1)
+          .containerBackground(for: .widget) { GallerySampleArt.backdrop(1) }
+      } else {
+        SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date, preview: entry.preview)
+      }
     }
     .configurationDisplayName("Seamless")
     .description("Your Glaze art. Long-press and choose Edit Widget to pick a piece.")

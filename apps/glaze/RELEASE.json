@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.22: art widgets on the Home Screen draw their artwork in the widget itself, so iOS no longer lays a lighter frosted panel over it and the art matches the wallpaper like the Clock.",
+  "note": "Glaze 1.0.23: the Add Widget gallery shows fixed sample designs in a spread of styles instead of your theme, because iPhone keeps old gallery previews after a theme swap. Widgets you add take on your Glaze theme straight away.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

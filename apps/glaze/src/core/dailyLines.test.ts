@@ -66,7 +66,7 @@ test('lines are original: no attributions, quote marks or well-known sayings', (
 });
 
 test('the pick is daily and deterministic by local day of the year', () => {
-  assert.match(SWIFT, /provider: DayProvider\(\)/);
+  assert.match(SWIFT, /provider: DayProvider\((sample: \d+)?\)/);
   assert.doesNotMatch(SWIFT, /HourProvider|\.hour\b/);
   assert.match(SWIFT, /ordinality\(of: \.day, in: \.year, for: date\)/);
   assert.match(SWIFT, /let raw = \(year \* 7 \+ dayOfYear - 1\) % count/);
