@@ -31,7 +31,7 @@ test('every art image keeps its own colours on tinted Home Screens (iOS 18+)', (
   const images = layer.match(/Image\(uiImage:[^)]*\)\n\s*\.resizable\(\)\n\s*\.glazeArtFullColor\(\)/g) ?? [];
   assert.equal(images.length, 3);
   assert.equal((layer.match(/Image\(uiImage:/g) ?? []).length, 3);
-  assert.match(src, /if #available\(iOS 18\.0, \*\) \{ return self\.widgetAccentedRenderingMode\(\.fullColor\) \}/);
+  assert.match(src, /if #available\(iOS 18\.0, \*\) \{ self\.widgetAccentedRenderingMode\(\.fullColor\) \} else \{ self \}/);
 });
 
 test('the designed Clock is unchanged: face in the content, gradient as the container background', () => {

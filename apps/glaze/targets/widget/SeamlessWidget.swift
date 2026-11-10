@@ -250,9 +250,8 @@ struct SeamlessArtLayer: View {
 
 extension Image {
   /// Tinted / accented Home Screens: keep the art's own colours (iOS 18+), like the Clock face.
-  func glazeArtFullColor() -> Image {
-    if #available(iOS 18.0, *) { return self.widgetAccentedRenderingMode(.fullColor) }
-    return self
+  @ViewBuilder func glazeArtFullColor() -> some View {
+    if #available(iOS 18.0, *) { self.widgetAccentedRenderingMode(.fullColor) } else { self }
   }
 }
 
