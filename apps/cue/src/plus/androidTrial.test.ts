@@ -78,7 +78,9 @@ test('corrupt trial cannot block verified permanent purchase or revocation and i
 test('Android product query contains Plus only and never requests Apple trial', async () => {
   const api = {
     initConnection: async () => true,
-    fetchProducts: jest.fn(async () => [{ id: PLUS_PRODUCT_ID, displayPrice: 'A$2.99', currency: 'AUD' }]),
+    fetchProducts: jest.fn(async () => [{ id: PLUS_PRODUCT_ID, discountOffers: [
+      { purchaseOptionIdAndroid: 'lifetime', offerTokenAndroid: 'lifetime-token', displayPrice: 'A$2.99', currency: 'AUD' },
+    ] }]),
     getAvailablePurchases: async () => [],
     requestPurchase: jest.fn(),
   } as unknown as IapApi;
@@ -92,7 +94,9 @@ test('Google price is never replaced by the Australian TestFlight workaround', a
   const api = {
     initConnection: async () => true,
     getStorefront: async () => 'AU',
-    fetchProducts: async () => [{ id: PLUS_PRODUCT_ID, displayPrice: '$1.99', currency: 'USD' }],
+    fetchProducts: async () => [{ id: PLUS_PRODUCT_ID, discountOffers: [
+      { purchaseOptionIdAndroid: 'lifetime', offerTokenAndroid: 'lifetime-token', displayPrice: '$1.99', currency: 'USD' },
+    ] }],
   } as unknown as IapApi;
   expect(await createPurchaseProvider(api, () => NOW, [PLUS_PRODUCT_ID], 'android').price()).toBe('USD $1.99');
 });
