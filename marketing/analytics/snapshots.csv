@@ -31,3 +31,27 @@ captured_at,scope,channel,account,app,post_id,metric,value,period,source
 2026-11-10,app,appstore,Astro Labs AU,linework,,redownloads,1,last_30d,App Store Connect > Linework > Analytics > Overview (dateSpec=d30; 30 days to 8 Nov UTC)
 2026-11-10,app,appstore,Astro Labs AU,linework,,impressions,64,last_30d,App Store Connect > Linework > Analytics > Overview (dateSpec=d30; 30 days to 8 Nov UTC)
 2026-11-10,app,appstore,Astro Labs AU,linework,,store_page_views,10,last_30d,App Store Connect > Linework > Analytics > Overview (dateSpec=d30; 30 days to 8 Nov UTC)
+2026-11-11,post,tiktok,fernandfableau,,tt-7706258992498052373,video_views,134,lifetime,TikTok Studio Posts list
+2026-11-11,post,tiktok,fernandfableau,,tt-7706258992498052373,likes,0,lifetime,TikTok Studio Posts list
+2026-11-11,post,tiktok,fernandfableau,,tt-7706268997020290324,video_views,188,lifetime,TikTok Studio Posts list
+2026-11-11,post,tiktok,fernandfableau,,tt-7706268997020290324,likes,3,lifetime,TikTok Studio Posts list
+2026-11-11,post,tiktok,fernandfableau,,tt-7706269324368989461,video_views,132,lifetime,TikTok Studio Posts list
+2026-11-11,post,tiktok,fernandfableau,,tt-7706269324368989461,likes,1,lifetime,TikTok Studio Posts list
+2026-11-11,post,instagram,fernandfableau,,ig-DfiLjXXhZU8,video_views,18,lifetime,Instagram profile Reels tab
+2026-11-11,post,instagram,fernandfableau,,ig-DfiLxa9voa7,video_views,17,lifetime,Instagram profile Reels tab
+2026-11-11,post,instagram,fernandfableau,,ig-DfiL_9jNbWw,video_views,27,lifetime,Instagram profile Reels tab
+2026-11-11,account,etsy,fernfableau,,,visits,2151,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov)
+2026-11-11,account,etsy,fernfableau,,,revenue_aud,545,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov)
+2026-11-11,account,etsy,fernfableau,,,orders,8,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) (revenue AU$545 / average order AU$68.13)
+2026-11-11,account,etsy,fernfableau,,,conversion_rate_pct,0.4,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov)
+2026-11-11,account,etsy,fernfableau,,,listing_views,3801,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov)
+2026-11-11,account,etsy,fernfableau,,,favourites,222,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov)
+2026-11-11,account,etsy,fernfableau,,,visits_from_pinterest,40,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) traffic sources
+2026-11-11,account,etsy,fernfableau,,,visits_from_facebook,9,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) traffic sources
+2026-11-11,account,etsy,fernfableau,,,visits_from_instagram,0,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) traffic sources
+2026-11-11,account,etsy,fernfableau,,,visits_from_social,49,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) traffic sources
+2026-11-11,app,etsy,fernfableau,a-frame-plant-ladder-plan,,listing_views,1,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) all-listings table (0 favourites 0 orders)
+2026-11-11,app,etsy,fernfableau,waterfall-coffee-table-plan,,listing_views,0,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) all-listings table (0 favourites 0 orders)
+2026-11-11,app,etsy,fernfableau,planter-bench-plan,,listing_views,0,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) all-listings table (0 favourites 0 orders)
+2026-11-11,app,etsy,fernfableau,garden-bar-plan,,listing_views,0,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) all-listings table (0 favourites 0 orders)
+2026-11-11,app,etsy,fernfableau,outdoor-bench-plan,,listing_views,0,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) all-listings table (0 favourites 0 orders)
