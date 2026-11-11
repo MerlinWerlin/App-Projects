@@ -78,7 +78,7 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
 - **TikTok** (https://www.tiktok.com/tiktokstudio/upload): upload, dismiss the "automatic checks" prompt with Cancel,
   focus the description editor (`.public-DraftEditor-content`), select all, type the caption, then type each hashtag,
   wait 2 s, then a space (the first hashtag sometimes gets swallowed: re-check the text). Settings > Show more >
-  Disclose post content > Your brand. Post now; TikTok's scheduler needs a one-time consent Jared hasn't given.
+  Disclose post content > Your brand. Schedule it (Jared OK'd scheduling and its one-time consent on 11 Nov): pick a Mon/Wed/Fri at 19:30, one reel a day, never several at once.
   The new post's URL is the first `/video/` link on https://www.tiktok.com/tiktokstudio/content.
 - **Instagram** (instagram.com, check the profile says `fernandfableau` first): Create > Post > file input > OK on the
   "shared as reels" notice > Select crop > 9:16 > Next > Next > caption > Share, then wait about 30 s for "Your reel has
@@ -88,10 +88,14 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
 - Chrome screenshots time out on this PC; work from `find`, `read_page`, `get_page_text` and small JS reads instead.
 
 ## Downloads watch
-Every daily run reads Play Console (signed in) and App Store Connect (signed out in Chrome on 10 Nov, so iPhone numbers
-need Jared to sign in once) and sends Jared a phone notification the first time each app shows a download, then at 10,
+Every daily run reads Play Console (signed in) and App Store Connect (signed in on 10 Nov but it signs itself out
+often; when it has, the run skips it and says so) and sends Jared a phone notification the first time each app shows a download, then at 10,
 50 and 100. State: `marketing/analytics/first_downloads.json`. The first 1-2 Linework iPhone downloads are probably Jared
 and his partner.
+
+First reading, 10 Nov: Linework on iPhone had **8 first-time downloads** (plus 1 redownload, 64 impressions, 10 product
+page views) in the 30 days to 8 Nov UTC. Running totals on the page: 5 by 6 Nov, 6 by 7 Nov, 8 by 8 Nov. Play Console
+still showed no acquisitions for any app.
 
 ## Logging (source of truth: `marketing/analytics/`)
 - `marketing/analytics/posts.csv`: add a row the moment anything goes live (pin, reel, TikTok, Reddit reply, directory listing), `post_id` = `pin-<id>`, `ig-<id>`, `tt-<id>`, `rd-<id>`, `dir-<site>`. Scheduled pins get their row when they go live.

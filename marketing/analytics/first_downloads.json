@@ -1,3 +1,12 @@
 {
- "_about": "Per store+app: date the first install (and 10/50/100 milestones) was seen. Written by the daily task, which notifies Jared once per entry. 10 Nov 2026: Play Console shows no acquisitions yet for any app; App Store Connect is signed out in Chrome."
+ "_about": "Per store+app: date the first install (and 10/50/100 milestones) was seen. Written by the daily task, which notifies Jared once per entry.",
+ "appstore:linework": {
+  "first_seen": "2026-11-10",
+  "installs_at_first_seen": 8,
+  "period": "last_30d to 2026-11-08 UTC",
+  "notified": [
+   "first"
+  ],
+  "note": "First read on 10 Nov (App Store Connect had been signed out). Earlier totals on the Overview page: 5 by 6 Nov, 6 by 7 Nov, 8 by 8 Nov, none shown up to 31 Oct. The first 1-2 are probably Jared and his partner. Next milestone: 10."
+ }
 }
