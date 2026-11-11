@@ -205,7 +205,7 @@ struct MoonWidget: Widget {
 
   var body: some WidgetConfiguration {
     // Hourly, so the lit percentage keeps up through the day; the phase changes far slower.
-    StaticConfiguration(kind: kind, provider: HourProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: HourProvider(sample: 0)) { entry in
       MoonWidgetView(entry: entry)
     }
     .configurationDisplayName("Moon")

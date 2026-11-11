@@ -137,7 +137,7 @@ struct QuoteWidget: Widget {
   let kind = "GlazeQuote"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: DayProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: DayProvider(sample: 2)) { entry in
       GlazeDesignedWidget(kind: "quote", entry: entry) { QuoteWidgetView(entry: entry) }
     }
     .configurationDisplayName("Little Line")

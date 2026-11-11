@@ -81,14 +81,14 @@ enum GlazeCalendarReader {
 struct CalendarEventProvider: TimelineProvider {
   func placeholder(in context: Context) -> CalendarEventEntry {
     let now = Date()
-    return CalendarEventEntry(date: now, theme: ThemeStore.load(), hasAccess: true, items: GlazeCalendarReader.sample(now: now))
+    return CalendarEventEntry(date: now, theme: GallerySample.theme(4), hasAccess: true, items: GlazeCalendarReader.sample(now: now))
   }
 
   func getSnapshot(in context: Context, completion: @escaping (CalendarEventEntry) -> Void) {
     let now = Date()
-    let theme = ThemeStore.load()
+    let theme = context.isPreview ? GallerySample.theme(4) : ThemeStore.load()
     if context.isPreview || !GlazeCalendarReader.hasFullAccess() {
-      // Gallery: sample events in the active theme.
+      // Gallery: sample events in a fixed sample palette (GallerySample).
       completion(CalendarEventEntry(date: now, theme: theme, hasAccess: true, items: GlazeCalendarReader.sample(now: now)))
       return
     }

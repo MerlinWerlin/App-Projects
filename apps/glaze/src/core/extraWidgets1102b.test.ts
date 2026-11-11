@@ -22,8 +22,8 @@ test('kinds, families and providers', () => {
       assert.match(m[1], /\.systemLarge/);
     }
   }
-  assert.match(moon, /provider: HourProvider\(\)/);
-  assert.equal((clocks.match(/provider: MinuteProvider\(\)/g) ?? []).length, 2);
+  assert.match(moon, /provider: HourProvider\((sample: \d+)?\)/);
+  assert.equal((clocks.match(/provider: MinuteProvider\((sample: \d+)?\)/g) ?? []).length, 2);
 });
 
 test('nested bundle is registered once in the main bundle', () => {

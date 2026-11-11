@@ -400,13 +400,15 @@ struct ArtEntry: TimelineEntry {
 @available(iOS 17.0, *)
 struct ArtProvider: AppIntentTimelineProvider {
   func placeholder(in context: Context) -> ArtEntry {
-    ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: nil, layout: nil, preview: true)
+    ArtEntry(date: Date(), theme: GallerySample.theme(1), pieceID: nil, layout: nil, preview: true)
   }
 
   // T252: the configured piece resolved against the index as it is on disk NOW, for this widget's
   // size: a piece removed by a theme swap becomes the current theme's piece in the same slot, so
   // the image, the Fit raw art and the live overlay all come from one existing piece.
   func snapshot(for configuration: ChooseWidgetArtIntent, in context: Context) async -> ArtEntry {
+    // Owner 2026-11-11: the gallery draws a fixed sample (GallerySampleArt), no theme or art reads.
+    if context.isPreview { return placeholder(in: context) }
     let piece = WidgetArtStore.resolvedID(configuration.art?.id, family: context.family)
     return ArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: piece, layout: configuration.layout, preview: context.isPreview)
   }

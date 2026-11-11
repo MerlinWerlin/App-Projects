@@ -143,13 +143,13 @@ enum GlazeWeatherStore {
 
 struct WeatherProvider: TimelineProvider {
   func placeholder(in context: Context) -> WeatherEntry {
-    WeatherEntry(date: Date(), theme: ThemeStore.load(), report: GlazeWeatherStore.sample(now: Date()))
+    WeatherEntry(date: Date(), theme: GallerySample.theme(3), report: GlazeWeatherStore.sample(now: Date()))
   }
 
   func getSnapshot(in context: Context, completion: @escaping (WeatherEntry) -> Void) {
     let now = Date()
     let report = context.isPreview ? nil : GlazeWeatherStore.cached()
-    completion(WeatherEntry(date: now, theme: ThemeStore.load(), report: report ?? GlazeWeatherStore.sample(now: now)))
+    completion(WeatherEntry(date: now, theme: context.isPreview ? GallerySample.theme(3) : ThemeStore.load(), report: report ?? GlazeWeatherStore.sample(now: now)))
   }
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<WeatherEntry>) -> Void) {

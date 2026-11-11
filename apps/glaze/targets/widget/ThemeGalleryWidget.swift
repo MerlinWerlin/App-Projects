@@ -38,12 +38,15 @@ private struct ThemeGalleryEntry: TimelineEntry {
 private struct ThemeGalleryProvider: TimelineProvider {
   let kind: ThemeGalleryKind
 
+  // Owner 2026-11-11: the gallery (placeholder, isPreview snapshot) shows a fixed sample face
+  // (GallerySample), never the theme's design: iOS keeps gallery previews long after a swap.
   func placeholder(in context: Context) -> ThemeGalleryEntry {
-    ThemeGalleryEntry(date: Date(), design: ThemeStore.loadGalleryDesign(kind: kind.rawValue), preview: true)
+    ThemeGalleryEntry(date: Date(), design: GallerySample.design(kind: kind.rawValue), preview: true)
   }
 
   func getSnapshot(in context: Context, completion: @escaping (ThemeGalleryEntry) -> Void) {
-    completion(ThemeGalleryEntry(date: Date(), design: ThemeStore.loadGalleryDesign(kind: kind.rawValue), preview: context.isPreview))
+    if context.isPreview { return completion(placeholder(in: context)) }
+    completion(ThemeGalleryEntry(date: Date(), design: ThemeStore.loadGalleryDesign(kind: kind.rawValue)))
   }
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<ThemeGalleryEntry>) -> Void) {
@@ -64,7 +67,7 @@ private extension ThemeGalleryKind {
         .widgetURL(URL(string: "glaze://widgets"))
     }
     .configurationDisplayName(title)
-    .description("Matches the theme you choose in Glaze.")
+    .description("Takes on your Glaze theme once added.")
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     .contentMarginsDisabled()
   }

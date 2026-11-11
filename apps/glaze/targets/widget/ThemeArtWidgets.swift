@@ -39,9 +39,10 @@ struct ThemeArtEntry: TimelineEntry {
   /// nil = this theme has no piece for the slot: the plain theme background.
   let pieceID: String?
   let layout: ArtLayout?
-  /// The Add Widget gallery (snapshot with context.isPreview, and the placeholder): a small
-  /// thumbnail instead of the full composed image.
+  /// The Add Widget gallery (snapshot with context.isPreview, and the placeholder): the fixed
+  /// GallerySampleArt scene `sample`, never the theme's art.
   var preview: Bool = false
+  var sample: Int = 0
 }
 
 @available(iOS 17.0, *)
@@ -56,12 +57,17 @@ struct ThemeArtProvider: AppIntentTimelineProvider {
     return ThemeArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: piece, layout: configuration?.layout, preview: preview)
   }
 
+  /// Owner 2026-11-11: the gallery never reads the theme, the art index or any art file.
+  private var galleryEntry: ThemeArtEntry {
+    ThemeArtEntry(date: Date(), theme: GallerySample.theme(slot - 1), pieceID: nil, layout: nil, preview: true, sample: slot - 1)
+  }
+
   func placeholder(in context: Context) -> ThemeArtEntry {
-    entry(nil, family: context.family, preview: true)
+    galleryEntry
   }
 
   func snapshot(for configuration: ChooseWidgetArtIntent, in context: Context) async -> ThemeArtEntry {
-    entry(configuration, family: context.family, preview: context.isPreview)
+    context.isPreview ? galleryEntry : entry(configuration, family: context.family)
   }
 
   func timeline(for configuration: ChooseWidgetArtIntent, in context: Context) async -> Timeline<ThemeArtEntry> {
@@ -80,7 +86,10 @@ struct ThemeArtSlotView: View {
     // Owner 2026-11-09: in the gallery (entry.preview) EVERY tile, live pieces included, draws a
     // small thumbnail (GalleryThumbnail, SeamlessWidget.swift): 1.0.20 covered plain art only, and
     // the live pieces in the later Art tiles still decoded full images over the extension's memory limit.
-    if entry.pieceID != nil {
+    if entry.preview {
+      GallerySampleArt(variant: entry.sample)
+        .containerBackground(for: .widget) { GallerySampleArt.backdrop(entry.sample) }
+    } else if entry.pieceID != nil {
       SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date, preview: entry.preview)
     } else {
       Color.clear.containerBackground(for: .widget) { GlazeBackground(theme: entry.theme) }
@@ -96,7 +105,7 @@ enum ThemeArtKind {
         .widgetURL(URL(string: "glaze://widgets"))
     }
     .configurationDisplayName("Art")
-    .description("Artwork from the theme you choose in Glaze.")
+    .description("Shows your Glaze theme's art once added.")
     .supportedFamilies(slot == 1 ? [.systemSmall, .systemMedium, .systemLarge] : [.systemSmall, .systemLarge])
     .contentMarginsDisabled()
     .disfavoredLocations([.homeScreen], for: galleryHidden(slot: slot))

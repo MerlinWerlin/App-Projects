@@ -67,7 +67,7 @@ struct PhotoAlbumEntry: TimelineEntry {
 }
 
 struct PhotoAlbumProvider: TimelineProvider {
-  func placeholder(in context: Context) -> PhotoAlbumEntry { PhotoAlbumEntry(date: Date(), theme: ThemeStore.load(), design: nil, photoRef: nil) }
+  func placeholder(in context: Context) -> PhotoAlbumEntry { PhotoAlbumEntry(date: Date(), theme: GallerySample.theme(5), design: nil, photoRef: nil) }
   func entry(at date: Date, theme: WidgetTheme, design: SavedWidgetDesign?) -> PhotoAlbumEntry {
     let refs = design?.albumRefs ?? []
     let offset = design.map { PhotoAlbumStore.offset($0, in: PhotoAlbumStore.container) } ?? 0
@@ -75,6 +75,7 @@ struct PhotoAlbumProvider: TimelineProvider {
     return PhotoAlbumEntry(date: date, theme: theme, design: design, photoRef: refs.isEmpty ? nil : refs[index])
   }
   func getSnapshot(in context: Context, completion: @escaping (PhotoAlbumEntry) -> Void) {
+    if context.isPreview { return completion(placeholder(in: context)) }
     let theme = ThemeStore.load()
     completion(entry(at: Date(), theme: theme, design: ThemeStore.savedDesign(kind: "photoAlbum", family: context.family, theme: theme)))
   }

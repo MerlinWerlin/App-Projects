@@ -60,7 +60,8 @@ struct HabitStreakProvider: AppIntentTimelineProvider {
       let real = HabitStore.streakSummary(kind, days: 7, now: now)
       return HabitStreakRow(habit: kind, summary: sample && real.streak == 0 ? Self.sample(real) : real)
     }
-    return HabitStreakEntry(date: now, theme: ThemeStore.load(), rows: rows)
+    // The gallery (sample) uses a fixed GallerySample palette, never the theme.
+    return HabitStreakEntry(date: now, theme: sample ? GallerySample.theme(2) : ThemeStore.load(), rows: rows)
   }
 
   /// Gallery preview with no history yet: a few ticked days, so the widget reads at a glance.

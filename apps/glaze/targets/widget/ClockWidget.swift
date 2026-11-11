@@ -52,7 +52,7 @@ struct ClockWidget: Widget {
   let kind = "GlazeClock"
 
   var body: some WidgetConfiguration {
-    StaticConfiguration(kind: kind, provider: MinuteProvider()) { entry in
+    StaticConfiguration(kind: kind, provider: MinuteProvider(sample: 0)) { entry in
       GlazeDesignedWidget(kind: "clock", entry: entry) { ClockWidgetView(entry: entry) }
     }
     .configurationDisplayName("Clock")

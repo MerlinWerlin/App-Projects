@@ -21,7 +21,7 @@ test('T282 photo frame: themed mat, accent rule, rounded photo, date caption, al
   assert.match(src, /Text\("Choose a photo in Glaze"\)/);
   assert.match(src, /t\.typeface\(/);
   assert.match(src, /\.supportedFamilies\(\[\.systemSmall, \.systemMedium, \.systemLarge\]\)/);
-  assert.match(src, /provider: DayProvider\(\)/);
+  assert.match(src, /provider: DayProvider\((sample: \d+)?\)/);
   assert.doesNotMatch(src, /\bt\.name\b|theme\.name\b/);
   assert.doesNotMatch(src, /\w!\.|as!/, 'no force unwraps');
 });

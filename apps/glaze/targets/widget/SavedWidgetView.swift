@@ -4,6 +4,8 @@ import WidgetKit
 
 extension ThemeStore {
   static func savedDesign(kind: String, family: WidgetFamily, theme: WidgetTheme) -> SavedWidgetDesign? {
+    // Gallery samples (GallerySample) never read the person's saved designs.
+    if theme.isGallerySample { return nil }
     let size: String
     switch family {
     case .systemMedium: size = "medium"

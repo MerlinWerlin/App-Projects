@@ -41,18 +41,21 @@ test('no widget renders the theme name', () => {
   }
 });
 
-test('every provider placeholder reads the stored theme, never the built-in fallback', () => {
+// Owner 2026-11-11: the gallery (placeholder, isPreview snapshot) draws a fixed GallerySample
+// palette instead (iOS keeps gallery previews long after a swap); Home Screen snapshots and
+// timelines still read the stored theme.
+test('every provider placeholder draws a gallery sample, never the built-in fallback', () => {
   const providers = code(read('targets/widget/Providers.swift'));
   const placeholders = providers.match(/func placeholder\(in context: Context\) -> GlazeEntry \{[^}]*\}/g) ?? [];
   // Minute, Day, Hour (Moon widget, T277) and Static.
   assert.equal(placeholders.length, 4);
   for (const p of placeholders) {
-    assert.match(p, /ThemeStore\.load\(\)/);
-    assert.doesNotMatch(p, /\.fallback/);
+    assert.match(p, /GallerySample\.entry\(sample\)/);
+    assert.doesNotMatch(p, /\.fallback|ThemeStore/);
   }
   const snapshots = providers.match(/func getSnapshot\([^]*?\n {2}\}/g) ?? [];
   assert.equal(snapshots.length, 4);
-  for (const s of snapshots) assert.match(s, /ThemeStore\.load\(\)/);
+  for (const s of snapshots) assert.match(s, /context\.isPreview \? GallerySample\.entry\(sample\) : GlazeEntry\(date: Date\(\), theme: ThemeStore\.load\(\)\)/);
   for (const f of swiftFiles().filter((n) => n !== 'ThemeStore.swift')) {
     const src = code(readFileSync(join(WIDGET_DIR, f), 'utf8'));
     assert.doesNotMatch(src, /theme:\s*\.fallback/, `${f} uses the fallback theme directly`);

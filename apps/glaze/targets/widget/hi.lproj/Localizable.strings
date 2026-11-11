@@ -156,6 +156,6 @@
 /* Theme gallery */
 "Battery" = "बैटरी";
 "Calendar" = "कैलेंडर";
-"Matches the theme you choose in Glaze." = "Glaze में चुनी गई थीम से मेल खाता है।";
+"Takes on your Glaze theme once added." = "जोड़ने के बाद आपकी Glaze थीम अपना लेता है।";
 /* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
-"Artwork from the theme you choose in Glaze." = "Glaze में चुनी गई थीम की कला।";
+"Shows your Glaze theme's art once added." = "जोड़ने के बाद आपकी Glaze थीम की कला दिखाता है।";
