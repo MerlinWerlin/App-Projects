@@ -77,7 +77,7 @@ test('both art providers send the gallery to a fixed sample: no theme, index or 
   assert.match(gallery, /theme: GallerySample\.theme\(slot - 1\), pieceID: nil, layout: nil, preview: true, sample: slot - 1/);
   assert.doesNotMatch(gallery, /ThemeStore|WidgetArtStore|ThemeArtSlots/);
   assert.match(slotProvider, /context\.isPreview \? galleryEntry : entry\(configuration, family: context\.family\)/);
-  assert.match(body(slots, 'struct ThemeArtSlotView', 'enum ThemeArtKind'), /if entry\.preview \{\n\s*GallerySampleArt\(variant: entry\.sample\)/);
+  assert.match(body(slots, 'struct ThemeArtSlotView', 'enum ThemeArtKind'), /if entry\.preview \{\n\s*ArtworkSlotTile\(slot: entry\.sample \+ 1\)/);
   // Placed widgets (timelines) keep the theme's full images.
   assert.doesNotMatch(body(slots, 'func timeline(', 'struct ThemeArtSlotView'), /preview: true/);
 });

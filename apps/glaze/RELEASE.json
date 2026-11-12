@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.24: the theme art widgets are now Artwork 1 to Artwork 5, small only. Each shows your current theme's artwork in that position and swaps with the theme; a theme with fewer pieces repeats them, so no Artwork widget is ever blank.",
+  "note": "Glaze 1.0.24: the theme art widgets are now Artwork 1 to Artwork 5, small only, each with its own colour (coral, amber, mint, blue, violet). The gallery shows each colour with a big number, and My widget art shows the same badge on the matching piece. On the Home Screen each shows your current theme's artwork in that position; a theme with fewer pieces repeats them, so none is ever blank.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

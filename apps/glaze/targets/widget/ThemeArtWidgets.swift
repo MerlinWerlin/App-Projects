@@ -38,6 +38,56 @@ enum ThemeArtSlots {
   }
 }
 
+// Owner 2026-11-12 ("like colour code them or some thing"): one fixed colour per Artwork slot, the
+// same in every theme; the app shows the same colour and number on each piece (src/core/artworkSlots.ts
+// ARTWORK_SLOT_COLOURS, kept equal by artworkSlots.test.ts).
+enum ArtworkSlotColour {
+  /// (fill, ink) for slots 1...6: coral, amber, mint, blue, violet, rose.
+  static let table: [(fill: String, ink: String)] = [
+    ("#E5533D", "#FFFFFF"), ("#F2A91D", "#2A1A00"), ("#2FBF8F", "#062A1E"),
+    ("#2F7BEA", "#FFFFFF"), ("#8A5CF0", "#FFFFFF"), ("#E04F8E", "#FFFFFF"),
+  ]
+
+  static func of(_ slot: Int) -> (fill: Color, ink: Color) {
+    let n = table.count
+    let c = table[(((slot - 1) % n) + n) % n]
+    return (Color(hex: c.fill), Color(hex: c.ink))
+  }
+}
+
+/// The Add Widget gallery tile of Artwork `slot`: its colour and a big number, never theme art.
+struct ArtworkSlotTile: View {
+  let slot: Int
+
+  static func backdrop(slot: Int) -> some View {
+    let fill = ArtworkSlotColour.of(slot).fill
+    return ZStack {
+      fill
+      LinearGradient(colors: [Color.white.opacity(0.22), Color.black.opacity(0.12)], startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
+  }
+
+  var body: some View {
+    let ink = ArtworkSlotColour.of(slot).ink
+    GeometryReader { geo in
+      let s = min(geo.size.width, geo.size.height)
+      ZStack(alignment: .topLeading) {
+        Text(verbatim: "\(slot)")
+          .font(.system(size: s * 0.62, weight: .heavy, design: .rounded))
+          .foregroundStyle(ink)
+          .minimumScaleFactor(0.5)
+          .frame(width: geo.size.width, height: geo.size.height)
+        Image(systemName: "sparkles")
+          .font(.system(size: s * 0.13, weight: .semibold))
+          .foregroundStyle(ink.opacity(0.85))
+          .padding(s * 0.09)
+      }
+    }
+    .accessibilityElement(children: .ignore)
+    .accessibilityLabel(Text("Artwork \(slot)"))
+  }
+}
+
 @available(iOS 17.0, *)
 struct ThemeArtEntry: TimelineEntry {
   let date: Date
@@ -93,8 +143,8 @@ struct ThemeArtSlotView: View {
     // small thumbnail (GalleryThumbnail, SeamlessWidget.swift): 1.0.20 covered plain art only, and
     // the live pieces in the later Art tiles still decoded full images over the extension's memory limit.
     if entry.preview {
-      GallerySampleArt(variant: entry.sample)
-        .containerBackground(for: .widget) { GallerySampleArt.backdrop(entry.sample) }
+      ArtworkSlotTile(slot: entry.sample + 1)
+        .containerBackground(for: .widget) { ArtworkSlotTile.backdrop(slot: entry.sample + 1) }
     } else if entry.pieceID != nil {
       SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date, preview: entry.preview)
     } else {

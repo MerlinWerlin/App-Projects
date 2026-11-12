@@ -174,6 +174,7 @@ export const en = {
       manageA11y: 'Manage My widget art',
       done: 'Done',
       selectA11y: 'Select {name}',
+      artworkA11y: 'Artwork {n}',
       deleteSelected: 'Delete selected',
       clearAll: 'Clear all',
       clearTitle: 'Clear My widget art?',

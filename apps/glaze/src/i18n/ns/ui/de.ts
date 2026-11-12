@@ -179,6 +179,7 @@ export const de: NonNullable<LocaleMessages['ui']> = {
       manageA11y: '„Meine Widget-Motive“ verwalten',
       done: 'Fertig',
       selectA11y: '{name} auswählen',
+      artworkA11y: 'Kunstwerk {n}',
       deleteSelected: 'Auswahl löschen',
       clearAll: 'Alle löschen',
       clearTitle: '„Meine Widget-Motive“ leeren?',

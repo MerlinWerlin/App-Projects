@@ -174,6 +174,7 @@ export const ja: NonNullable<LocaleMessages['ui']> = {
       manageA11y: 'マイウィジェットアートを管理',
       done: '完了',
       selectA11y: '{name}を選択',
+      artworkA11y: 'アートワーク {n}',
       deleteSelected: '選択項目を削除',
       clearAll: 'すべて消去',
       clearTitle: 'マイウィジェットアートを消去しますか？',
