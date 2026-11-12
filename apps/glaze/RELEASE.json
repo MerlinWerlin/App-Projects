@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.23: the Add Widget gallery shows fixed sample designs in a spread of styles instead of your theme, because iPhone keeps old gallery previews after a theme swap. Widgets you add take on your Glaze theme straight away.",
+  "note": "Glaze 1.0.24: the theme art widgets are now Artwork 1 to Artwork 5, small only. Each shows your current theme's artwork in that position and swaps with the theme; a theme with fewer pieces repeats them, so no Artwork widget is ever blank.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

@@ -59,6 +59,7 @@
 /* My widget art picker (WidgetArtLibrary.swift, T221) */
 "Choose widget art" = "选择小组件图片";
 "Art" = "图片";
+"Artwork %lld" = "插画 %lld";
 "Widget art" = "小组件图片";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

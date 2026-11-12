@@ -9,26 +9,32 @@
 // designs left out because they have their own gallery pages). Edit Widget > Art still picks any
 // piece (the same ChooseWidgetArtIntent and view as Seamless). A slot the theme has no piece for
 // shows the plain theme background, never a repeat of another piece.
-// Kinds 2-6 are small and large only: theme packs draw their extra pieces square, and a square piece
-// is never offered in the wide medium widget (src/core/widgetOptions.ts drawnForSize).
+// Since 2026-11-12 every kind is small only ("Artwork n", ThemeArtSlots below).
 import SwiftUI
 import WidgetKit
 
+// Owner 2026-11-12 ("singular themes need to be like art work 1 art work 2 ... just be all small
+// arts"): the theme art widgets are a plain numbered set, "Artwork 1" to "Artwork 5", small only.
+// Artwork n is the current theme's n-th small plain art piece (no clock / date / calendar
+// pictures, no designs). Every published theme has 2 to 5 (audit 12 Nov), so a slot past the
+// theme's count cycles back through its pieces: no Artwork slot is ever blank.
 @available(iOS 17.0, *)
 enum ThemeArtSlots {
-  /// The current theme's art pieces for this family, in Edit Widget order, designs left out.
+  /// The current theme's small artwork, in Edit Widget order. Plain art first; a theme with none
+  /// falls back to its other small pictures (designs never).
   static func pieces(family: WidgetFamily) -> [String] {
-    guard let size = SeamlessStore.familyName(family) else { return [] }
-    // One read of index.json per tile (the design flag is parsed with it), not one per piece.
-    return WidgetArtStore.snapshot().currentThemeRecords()
-      .filter { $0.size == size && !$0.design }
-      .map { $0.id }
+    // One read of index.json per tile (the flags are parsed with it), not one per piece.
+    let small = WidgetArtStore.snapshot().currentThemeRecords().filter { $0.size == "small" && !$0.design }
+    let art = small.filter { !$0.live }
+    return (art.isEmpty ? small : art).map { $0.id }
   }
 
-  /// The piece slot `slot` (1-based) shows when nothing is chosen in Edit Widget, else nil.
+  /// The piece Artwork `slot` (1-based) shows when nothing is chosen in Edit Widget: cycles
+  /// through the theme's pieces, nil only when the theme has none at all.
   static func piece(slot: Int, family: WidgetFamily) -> String? {
     let list = pieces(family: family)
-    return slot >= 1 && slot <= list.count ? list[slot - 1] : nil
+    guard slot >= 1, !list.isEmpty else { return nil }
+    return list[(slot - 1) % list.count]
   }
 }
 
@@ -104,9 +110,9 @@ enum ThemeArtKind {
       ThemeArtSlotView(entry: entry)
         .widgetURL(URL(string: "glaze://widgets"))
     }
-    .configurationDisplayName("Art")
+    .configurationDisplayName("Artwork \(slot)")
     .description("Shows your Glaze theme's art once added.")
-    .supportedFamilies(slot == 1 ? [.systemSmall, .systemMedium, .systemLarge] : [.systemSmall, .systemLarge])
+    .supportedFamilies([.systemSmall])
     .contentMarginsDisabled()
     .disfavoredLocations([.homeScreen], for: galleryHidden(slot: slot))
   }
@@ -118,12 +124,8 @@ enum ThemeArtKind {
   // (themeArtSync.ts), live / calendar pictures after. Every live pack has at most 5 art pieces and
   // at least 5 non-design pieces per size, so Art 1-5 show every art piece and never an empty tile.
   static let gallerySmallSlots = 5
-  static let galleryLargeSlots = 5
   static func galleryHidden(slot: Int) -> [WidgetFamily] {
-    var hidden: [WidgetFamily] = []
-    if slot > gallerySmallSlots { hidden.append(.systemSmall) }
-    if slot > galleryLargeSlots { hidden.append(.systemLarge) }
-    return hidden
+    slot > gallerySmallSlots ? [.systemSmall] : []
   }
 }
 

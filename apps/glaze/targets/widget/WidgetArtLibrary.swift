@@ -49,6 +49,8 @@ struct WidgetArtRecord {
   /// The record's `live` value is a native design (Clock / Battery / Calendar). Parsed with the
   /// index in snapshot(), so the gallery's Art slots never re-read index.json once per piece.
   var design: Bool = false
+  /// The record has any live value (clock, date, battery, countdown...): not plain artwork.
+  var live: Bool = false
 }
 
 /// T252: what a removed auto-added piece was, so its widgets can be remapped.
@@ -163,7 +165,8 @@ enum WidgetArtStore {
           themeId: p["themeId"] as? String,
           size: sizeName(p["size"]),
           slot: slotNumber(p["slot"]),
-          design: LiveArtSpec.parse(p["live"])?.design != nil
+          design: LiveArtSpec.parse(p["live"])?.design != nil,
+          live: LiveArtSpec.parse(p["live"]) != nil
         )
       )
     }
