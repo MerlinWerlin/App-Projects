@@ -1,0 +1,45 @@
+Couch: TV Remote: facts
+========================================
+
+What it is: Couch is a universal TV remote for iPhone. It controls smart TVs and streaming players over your home Wi-Fi: power, d-pad, touchpad, keyboard, volume, channels, app launcher and casting, for as many TVs as you own.
+Category: TV remote app
+Made by: Astro Labs AU (an independent developer in Australia)
+
+Where to get it:
+- App Store (iOS): https://apps.apple.com/au/app/couch-tv-remote/id6826135134
+- iPhone only (iOS 16.4 or later). Not on Android or Google Play.
+
+Price: Free download with a 7-day free trial of the full remote and casting. Couch Plus is a one-time A$3.99 that unlocks them for good. No ads, no subscription.
+
+Free (no subscription):
+- Download and set-up
+- Finding the TVs and streaming players on your Wi-Fi, or adding one by its address
+- Adding as many TVs as you own
+- A 7-day free trial of the full remote and casting, started when you choose; it never charges
+
+Couch Plus (A$3.99 in Australia; the App Store shows your local price, one-time, not a subscription):
+- The remote: power, d-pad, touchpad, volume, channels, home, Simple mode and Wake-on-LAN for TVs that support it
+- Type on the TV with your phone's keyboard
+- App launcher: open your TV's apps in one tap
+- Casting photos and videos from your phone to a TV with Chromecast built in, a Roku player or a DLNA TV
+- Family Sharing
+
+Trial: The 7-day trial is a free item you start from the Couch Plus screen. It never charges; when it ends, the remote and casting lock until you buy Couch Plus. Finding and adding TVs stays free.
+
+Ads: none. Subscription: none. Account: none needed.
+
+Privacy:
+- No account, no analytics, no ads and no tracking. The App Store privacy label says Data Not Collected.
+- Your button presses and typing go straight from your phone to your TV over your home network, not through a server.
+- Couch asks for Photos access only when you tap to pick something to cast.
+
+Not claimed: Couch needs the phone and TV on the same Wi-Fi; it is not an infrared remote. Supported: Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta. Some TVs ask you to press Allow or enter a code on the TV the first time, which can need the physical remote. Couch is an independent app, not affiliated with any TV maker. It is designed for iPhone and is not on Android.
+
+Web page: https://merlinwerlin.github.io/App-Projects/couch/
+Comparison: https://merlinwerlin.github.io/App-Projects/couch/compare/
+Alternatives: https://merlinwerlin.github.io/App-Projects/couch/alternatives/
+FAQ: https://merlinwerlin.github.io/App-Projects/couch/faq/
+Support: https://merlinwerlin.github.io/App-Projects/couch/support.html
+Privacy policy: https://merlinwerlin.github.io/App-Projects/couch/privacy.html
+
+Facts checked against the live store listings on 12 November 2026.

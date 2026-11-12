@@ -1,0 +1,13 @@
+# Couch: TV Remote
+
+> Couch is a universal TV remote for iPhone. It controls smart TVs and streaming players over your home Wi-Fi: power, d-pad, touchpad, keyboard, volume, channels, app launcher and casting, for as many TVs as you own. Free download with a 7-day free trial of the full remote and casting. Couch Plus is a one-time A$3.99 that unlocks them for good. No ads, no subscription.
+
+## Pages
+- [Facts (plain text)](https://merlinwerlin.github.io/App-Projects/couch/facts.txt): price, platforms, what's free, privacy
+- [Overview](https://merlinwerlin.github.io/App-Projects/couch/)
+- [Couch compared with typical TV remote apps](https://merlinwerlin.github.io/App-Projects/couch/compare/)
+- [Alternatives to subscription TV remote apps](https://merlinwerlin.github.io/App-Projects/couch/alternatives/)
+- [FAQ](https://merlinwerlin.github.io/App-Projects/couch/faq/)
+
+## Stores
+- [App Store (iOS)](https://apps.apple.com/au/app/couch-tv-remote/id6826135134)

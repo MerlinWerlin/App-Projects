@@ -1,0 +1,50 @@
+[
+ {
+  "id": "CO-T01",
+  "style": "shot",
+  "image": "apps/couch/store/jpg/ios/01-every-tv.jpg",
+  "palette": "sky",
+  "kicker": "On iPhone",
+  "title": "One remote for every TV",
+  "foot": [
+   "No ads"
+  ],
+  "branded": true,
+  "hs": 76,
+  "link": "https://apps.apple.com/au/app/couch-tv-remote/id6826135134?ct=pinterest-live-2026-11",
+  "pin_title": "Lost the TV Remote? Use Your iPhone: Couch TV Remote (No Subscription)",
+  "desc": "Couch turns your iPhone into a remote for the smart TVs and streaming players on your Wi-Fi: Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta. Power, d-pad, touchpad, keyboard, volume and your TV's apps. Try it free for 7 days, then Couch Plus is A$3.99 once. No ads, no subscription, no account."
+ },
+ {
+  "id": "CO-T02",
+  "style": "shot",
+  "image": "apps/couch/store/jpg/ios/06-multi-tv.jpg",
+  "palette": "ink",
+  "kicker": "On iPhone",
+  "title": "Switch TVs in one tap",
+  "foot": [
+   "One-time A$3.99"
+  ],
+  "branded": true,
+  "hs": 80,
+  "link": "https://apps.apple.com/au/app/couch-tv-remote/id6826135134?ct=pinterest-live-2026-11",
+  "pin_title": "One iPhone Remote for Every TV in the House: Couch",
+  "desc": "Add the lounge TV, the bedroom TV and the streaming box, then switch between them in one tap. Couch works over your home Wi-Fi with Roku, Samsung Tizen, LG webOS and Google TV / Android TV. 7-day free trial, then one A$3.99 purchase with Family Sharing. No weekly plans, no ads."
+ },
+ {
+  "id": "CO-T03",
+  "style": "shot",
+  "image": "apps/couch/store/jpg/ios/04-search.jpg",
+  "palette": "butter",
+  "kicker": "TV tip",
+  "title": "Type TV searches on your phone",
+  "foot": [
+   "7-day free trial"
+  ],
+  "branded": true,
+  "hs": 74,
+  "link": "https://apps.apple.com/au/app/couch-tv-remote/id6826135134?ct=pinterest-live-2026-11",
+  "pin_title": "Stop Typing Searches With the TV Remote: Use Your iPhone Keyboard",
+  "desc": "Searching and entering passwords letter by letter with a TV remote is slow. Couch lets you type on the TV with your iPhone's keyboard, swipe on a touchpad and open your TV's apps in one tap. Works over Wi-Fi with Roku, Samsung Tizen, LG webOS and Google TV / Android TV. iPhone app, no ads, no subscription."
+ }
+]

@@ -246,7 +246,7 @@ def build_app(a):
         img(src, out / "img" / name, 600)
         shots.append(name)
     og = base + "img/" + (shots[0] if shots else "icon.png")
-    checked = ANS["checked"]
+    checked = x.get("checked", ANS["checked"])  # per-app override when only one listing was rechecked
     app = app_ld(a, x, base, shots)
 
     # Product page

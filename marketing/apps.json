@@ -153,11 +153,11 @@
       "slug": "couch",
       "name": "Couch",
       "storeName": "Couch: TV Remote",
-      "tagline": "Every button free. No ads.",
-      "stage": "launching",
-      "nameLocked": false,
+      "tagline": "One remote for every TV in the house",
+      "stage": "live",
+      "nameLocked": true,
       "ascAppId": "6826135134",
-      "appStoreUrl": "",
+      "appStoreUrl": "https://apps.apple.com/au/app/couch-tv-remote/id6826135134",
       "testflightUrl": "",
       "playUrl": "",
       "pinSource": {
@@ -180,7 +180,11 @@
           "PleX"
         ]
       },
-      "note": "Docs in apps/couch/docs (STORE.md, MARKET.md). Turn on by setting stage to prelaunch."
+      "note": "Live on the App Store since 6 Nov 2026 (1.0.4). iPhone only; not on Google Play. Docs in apps/couch/docs (STORE.md, MARKET.md).",
+      "price": "Free download; 7-day free trial of the remote and casting, then Couch Plus unlocks them once for A$3.99",
+      "accent": "#2F5BD3",
+      "icon": "apps/couch/assets/brand/icon.png",
+      "screenshots": "apps/couch/store/jpg/ios"
     },
     {
       "slug": "glaze",
