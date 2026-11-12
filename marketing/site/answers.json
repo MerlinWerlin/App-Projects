@@ -6,12 +6,7 @@
     "where": "an independent developer in Australia"
   },
   "headExtra": "<meta name=\"google-site-verification\" content=\"FLkGZhXPgPux0ALcg_B33yd6rrvtieX1KPh5Hj7U7F0\" />",
-  "otherPages": [
-    [
-      "couch/",
-      "Couch: TV Remote (coming soon)"
-    ]
-  ],
+  "otherPages": [],
   "apps": {
     "linework": {
       "category": "AR drawing and tracing app",
@@ -651,6 +646,214 @@
         [
           "Privacy",
           "privacy-android.html"
+        ]
+      ]
+    },
+    "couch": {
+      "checked": "12 November 2026",
+      "category": "TV remote app",
+      "schemaCategory": "UtilitiesApplication",
+      "accentDark": "#86A6FF",
+      "h1": "one remote for every TV in the house",
+      "titleTail": "universal TV remote for iPhone with no ads and no subscription",
+      "oneLine": "Couch is a universal TV remote for iPhone. It controls smart TVs and streaming players over your home Wi-Fi: power, d-pad, touchpad, keyboard, volume, channels, app launcher and casting, for as many TVs as you own.",
+      "metaDesc": "Universal TV remote for iPhone that works over Wi-Fi with Roku, Samsung Tizen, LG webOS and Google TV / Android TV. Try it free for 7 days, then one A$3.99 purchase. No ads, no subscription, no account.",
+      "priceLine": "Free download with a 7-day free trial of the full remote and casting. Couch Plus is a one-time A$3.99 that unlocks them for good. No ads, no subscription.",
+      "platformNote": "iPhone only (iOS 16.4 or later). Not on Android or Google Play.",
+      "os": "iOS",
+      "screenshots": [
+        "apps/couch/store/jpg/ios/01-every-tv.jpg",
+        "apps/couch/store/jpg/ios/03-find-tv.jpg",
+        "apps/couch/store/jpg/ios/04-search.jpg",
+        "apps/couch/store/jpg/ios/05-apps.jpg",
+        "apps/couch/store/jpg/ios/06-multi-tv.jpg",
+        "apps/couch/store/jpg/ios/02-trial.jpg"
+      ],
+      "free": [
+        "Download and set-up",
+        "Finding the TVs and streaming players on your Wi-Fi, or adding one by its address",
+        "Adding as many TVs as you own",
+        "A 7-day free trial of the full remote and casting, started when you choose; it never charges"
+      ],
+      "plus": {
+        "name": "Couch Plus",
+        "priceAUD": "3.99",
+        "priceText": "A$3.99 in Australia; the App Store shows your local price",
+        "features": [
+          "The remote: power, d-pad, touchpad, volume, channels, home, Simple mode and Wake-on-LAN for TVs that support it",
+          "Type on the TV with your phone's keyboard",
+          "App launcher: open your TV's apps in one tap",
+          "Casting photos and videos from your phone to a TV with Chromecast built in, a Roku player or a DLNA TV",
+          "Family Sharing"
+        ]
+      },
+      "trial": "The 7-day trial is a free item you start from the Couch Plus screen. It never charges; when it ends, the remote and casting lock until you buy Couch Plus. Finding and adding TVs stays free.",
+      "privacy": [
+        "No account, no analytics, no ads and no tracking. The App Store privacy label says Data Not Collected.",
+        "Your button presses and typing go straight from your phone to your TV over your home network, not through a server.",
+        "Couch asks for Photos access only when you tap to pick something to cast."
+      ],
+      "notClaimed": "Couch needs the phone and TV on the same Wi-Fi; it is not an infrared remote. Supported: Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta. Some TVs ask you to press Allow or enter a code on the TV the first time, which can need the physical remote. Couch is an independent app, not affiliated with any TV maker. It is designed for iPhone and is not on Android.",
+      "lead": [
+        [
+          "One purchase, not a weekly plan",
+          "Try everything free for 7 days. Then Couch Plus is A$3.99 once, with Family Sharing. No ads in the remote."
+        ],
+        [
+          "Every TV in the house",
+          "Roku, Samsung Tizen, LG webOS and Google TV / Android TV (Fire TV in beta). Couch finds them on your Wi-Fi and switches between them in one tap."
+        ],
+        [
+          "Easy for everyone",
+          "Simple mode has big power, volume, channel and home buttons, and the buttons grow with your text size, with haptics and VoiceOver labels."
+        ]
+      ],
+      "compare": {
+        "title": "Couch compared with typical TV remote apps",
+        "metaDesc": "How Couch compares with typical universal TV remote apps for iPhone on price, ads, free trials, casting, accessibility and privacy. Checked against App Store listings.",
+        "intro": "Universal TV remote apps for iPhone all send your phone's taps to the TV over Wi-Fi. They differ in how they charge (weekly plans are common), whether ads sit among the buttons, what the free version can do and what they collect. Here is how Couch compares with what is typical.",
+        "them": "Typical TV remote app",
+        "rows": [
+          [
+            "Price",
+            "7-day free trial, then A$3.99 once",
+            "Weekly plans are common, often US$3-7 a week, alongside yearly plans and pricier lifetime options"
+          ],
+          [
+            "Free trial",
+            "7 days, never charges",
+            "Often starts a subscription that renews unless you cancel"
+          ],
+          [
+            "Ads",
+            "None",
+            "Common, sometimes full-screen between button taps"
+          ],
+          [
+            "Family Sharing",
+            "Yes",
+            "Often not offered"
+          ],
+          [
+            "Casting from your phone",
+            "Photos and videos, included in Couch Plus",
+            "Offered by some apps, often inside the subscription"
+          ],
+          [
+            "Big buttons and large text",
+            "Simple mode; buttons grow with your text size; VoiceOver labels",
+            "Layouts that break with larger text are a common complaint"
+          ],
+          [
+            "Account and data",
+            "No account; Data Not Collected",
+            "Many collect usage or advertising data"
+          ],
+          [
+            "Platforms",
+            "iPhone",
+            "Many are on both iPhone and Android"
+          ]
+        ],
+        "method": [
+          "We read the App Store listings, in-app purchase lists and recent reviews of about a dozen universal TV remote apps that come up for searches like 'tv remote app' and 'universal remote app no ads' (October 2026, rechecked November 2026), plus 2026 roundups.",
+          "The 'typical app' column describes patterns across those apps, not one named app. A few remote apps are free with no purchases, some charge once, and many sell weekly or yearly plans.",
+          "Couch's column comes from its App Store listing (version 1.0.4)."
+        ],
+        "notFor": [
+          "You use Android: Couch is iPhone only.",
+          "Your TV isn't on Wi-Fi, or isn't a Roku, Samsung Tizen, LG webOS or Google TV / Android TV set: Couch doesn't use infrared, and Fire TV support is still in beta.",
+          "You only have one brand of TV and want it free: your TV maker's own app may be free for that brand.",
+          "Your physical remote is lost and your TV asks you to press Allow on it the first time: some TVs need that once before any phone app can connect."
+        ]
+      },
+      "alternatives": {
+        "title": "Alternatives to subscription TV remote apps",
+        "metaDesc": "Ways to control your TV from your iPhone without a weekly subscription: TV makers' own apps, one-time-purchase remotes, free apps with ads and spare physical remotes. What to check before you install.",
+        "intro": "If you've lost the remote, want one remote for several TVs or just want to type searches on your phone, you don't need a weekly subscription. These are the main routes.",
+        "kinds": [
+          [
+            "Your TV maker's own app.",
+            "Free and made for that brand, but it only controls that brand, so you need a different app for each TV."
+          ],
+          [
+            "One-time-purchase universal remote apps.",
+            "Pay once and control several brands. Couch is one of these, on iPhone."
+          ],
+          [
+            "Free remote apps with ads or weekly plans.",
+            "Free to install, but many put ads between the buttons or lock basics behind a weekly subscription."
+          ],
+          [
+            "A spare or universal physical remote.",
+            "Works without Wi-Fi or a phone, but has no keyboard and no casting."
+          ],
+          [
+            "Your phone's built-in remote.",
+            "Some phones have a remote in the control centre, but only for their own streaming devices."
+          ]
+        ],
+        "lookFor": [
+          "Is it a weekly or yearly subscription, or a one-time price?",
+          "Does the trial start a subscription, and does it charge automatically?",
+          "Are there ads among the buttons?",
+          "Does it support your TV (Roku, Samsung, LG, Google TV and so on) over Wi-Fi?",
+          "Is there a keyboard for searches and passwords?",
+          "Does it need an account, and what data does it collect?",
+          "Does it offer Family Sharing?"
+        ],
+        "fit": "Couch is a universal TV remote for iPhone that works over Wi-Fi with Roku, Samsung Tizen, LG webOS and Google TV / Android TV (Fire TV in beta). Try the full remote and casting free for 7 days, then Couch Plus is A$3.99 once, with Family Sharing. No ads, no subscription, no account, no data collected."
+      },
+      "faqTitleTail": "universal TV remote for iPhone",
+      "faqDesc": "Answers about Couch for iPhone: price and trial, which TVs it works with, casting, setup without the remote, privacy and Android availability.",
+      "faq": [
+        [
+          "Is there a TV remote app for iPhone without a subscription?",
+          "Yes. Couch has no subscription: try the full remote and casting free for 7 days, then Couch Plus unlocks them once for A$3.99 (the App Store shows your local price). No ads and no account."
+        ],
+        [
+          "Which TVs does Couch work with?",
+          "TVs and streaming players running Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta. They need to be on the same Wi-Fi as your iPhone."
+        ],
+        [
+          "How does the free trial work?",
+          "Start it from the Couch Plus screen. It never charges. After 7 days the remote and casting lock until you buy Couch Plus; finding and adding TVs stays free."
+        ],
+        [
+          "Can I use Couch if I lost my TV remote?",
+          "Usually. Couch finds the TV on your Wi-Fi. Some TVs ask you to press Allow or show a code on the TV the first time; if yours needs the physical remote for that, you'll need it once."
+        ],
+        [
+          "Does Couch have a keyboard?",
+          "Yes. Type searches and passwords on the TV with your phone's keyboard."
+        ],
+        [
+          "Can I cast photos and videos to my TV?",
+          "Yes, with Couch Plus. Pick photos or videos from your library and show them on a TV with Chromecast built in, a Roku player or a DLNA TV. The file is served from your phone over your home Wi-Fi."
+        ],
+        [
+          "Can I control more than one TV?",
+          "Yes. Add as many TVs as you own and switch between them in one tap."
+        ],
+        [
+          "Is Couch easy for kids or grandparents?",
+          "Simple mode shows big power, volume, channel and home buttons. Buttons grow with your text size, with haptics and VoiceOver labels."
+        ],
+        [
+          "Does Couch have ads or collect data?",
+          "No ads, no account and no analytics. The App Store privacy label says Data Not Collected; your commands go straight from your phone to your TV on your home network."
+        ],
+        [
+          "Is Couch on Android?",
+          "Not at the moment. Couch is on iPhone only, from the App Store."
+        ],
+        [
+          "Does Couch Plus work with Family Sharing?",
+          "Yes. One purchase covers your family through Apple's Family Sharing."
+        ],
+        [
+          "Is Couch an infrared remote?",
+          "No. Couch works over Wi-Fi, so your TV or streaming player needs to be on your home network."
         ]
       ]
     }

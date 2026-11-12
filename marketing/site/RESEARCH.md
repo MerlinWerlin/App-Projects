@@ -80,3 +80,6 @@ Method: about 30 web searches and page fetches on 10 Nov 2026. No Reddit or Goog
   - weekly subscriptions of $30–40
   - having to watch an ad to reverse a clip
 - **AlternativeTo:** its reverse-singing page lists 14 "alternatives", none of them games, so that is an opening for a listing.
+
+## IndexNow pings
+- 2026-11-12: 14 URLs (the live sitemap before the Couch pages), all 200 first; api.indexnow.org answered 202. The Couch pages go in the next ping once they are deployed (the daily task does this on Sundays when docs/sitemap.xml has changed).

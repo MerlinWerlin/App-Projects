@@ -1,0 +1,15 @@
+{
+ "id": "co-r01",
+ "app": "couch",
+ "title": "Live reel: one iPhone remote for every TV",
+ "source": "real store screenshots (no AI images)",
+ "shots": [
+  {"fit": "contain", "image": "../../../../apps/couch/store/jpg/ios/01-every-tv.jpg", "caption": "Your iPhone is the TV remote", "seconds": 3, "motion": "in"},
+  {"fit": "contain", "image": "../../../../apps/couch/store/jpg/ios/03-find-tv.jpg", "caption": "Finds your TV on Wi-Fi", "seconds": 2.6, "motion": "up"},
+  {"fit": "contain", "image": "../../../../apps/couch/store/jpg/ios/04-search.jpg", "caption": "Type searches on your phone", "seconds": 2.6, "motion": "in"},
+  {"fit": "contain", "image": "../../../../apps/couch/store/jpg/ios/06-multi-tv.jpg", "caption": "Switch TVs in one tap", "sub": "No ads. No subscription.", "seconds": 2.6, "motion": "down"}
+ ],
+ "end": {"title": "Couch", "line": "On iPhone", "sub": "TV remote. A$3.99 once."},
+ "accent": "#2F5BD3",
+ "branded": true
+}

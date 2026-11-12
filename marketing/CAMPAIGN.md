@@ -11,8 +11,10 @@ Apps in rotation (from `apps.json`, stage `live`):
 | Linework: Trace & Sketch | iPhone + Android | https://apps.apple.com/au/app/id6826041969 or https://play.google.com/store/apps/details?id=com.jared797.linework |
 | Cue: Teleprompter | **Android only** | https://play.google.com/store/apps/details?id=com.jared797.cue |
 | Backspin: Reverse Your Voice | **Android only** | https://play.google.com/store/apps/details?id=com.jared797.backspin |
+| Couch: TV Remote | **iPhone only** (added 12 Nov 2026) | https://apps.apple.com/au/app/couch-tv-remote/id6826135134 |
 
-Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUrl` is set in `apps.json`.
+Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUrl` is set in `apps.json`. Couch posts
+always say "on iPhone" / "App Store" (no `playUrl`). Couch pins: `marketing/pins/couch-live-2026-11.json`; reel `co-r01`.
 
 ## Channels (checked 10 Nov 2026 in Jared's Chrome)
 | Channel | Account | State | Use |
@@ -64,6 +66,11 @@ Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUr
   Follow, caption export, Word import; 7-day trial that doesn't auto-charge.
 - Backspin: say a line, hear it backwards, copy it, it flips your copy forwards and scores sound, rhythm and length;
   first 10 scored rounds free; party mode for 2 to 8 players; daily challenge; no account, no ads.
+- Couch: universal TV remote for iPhone over home Wi-Fi; Roku, Samsung Tizen, LG webOS, Google TV / Android TV, Fire TV
+  in beta (platform names only to say what it works with, never as a logo or endorsement); power, d-pad, touchpad,
+  phone keyboard, volume, channels, app launcher, casting photos/videos, switch TVs in one tap, Simple mode, Wake-on-LAN;
+  7-day free trial that never charges, then Couch Plus A$3.99 once with Family Sharing; finding and adding TVs stays
+  free; no ads, no subscription, no account, Data Not Collected. Not: infrared, Android, "every button free" (outdated).
 - Never: "best", "only", "#1", "never drifts", competitor or franchise names, song lyrics, plain "free" without the
   trial/Plus wording. App content is not marked AI-made (it's real screenshots). On TikTok tick "Disclose post
   content > Your brand".

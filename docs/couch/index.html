@@ -1,50 +1,68 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
-<title>Couch: TV Remote</title>
-<meta name="description" content="A free universal TV remote">
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Couch: TV Remote: universal TV remote for iPhone with no ads and no subscription</title><meta name="description" content="Universal TV remote for iPhone that works over Wi-Fi with Roku, Samsung Tizen, LG webOS and Google TV / Android TV. Try it free for 7 days, then one A$3.99 purchase. No ads, no subscription, no account.">
+<link rel="canonical" href="https://merlinwerlin.github.io/App-Projects/couch/">
+<meta property="og:title" content="Couch: TV Remote: universal TV remote for iPhone with no ads and no subscription"><meta property="og:description" content="Universal TV remote for iPhone that works over Wi-Fi with Roku, Samsung Tizen, LG webOS and Google TV / Android TV. Try it free for 7 days, then one A$3.99 purchase. No ads, no subscription, no account.">
+<meta property="og:url" content="https://merlinwerlin.github.io/App-Projects/couch/"><meta property="og:image" content="https://merlinwerlin.github.io/App-Projects/couch/img/01-every-tv.jpg"><meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="img/icon.png">
+<link rel="alternate" type="text/plain" href="https://merlinwerlin.github.io/App-Projects/couch/facts.txt" title="Couch facts">
+<meta name="apple-itunes-app" content="app-id=6826135134">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <style>
-:root{--paper:#F4F5F7;--card:#FFFFFF;--line:#DDE1E6;--text:#1C232B;--muted:#5D6873;--ink:#2F5BD3;--ink-soft:#E3EAFB}
-@media (prefers-color-scheme: dark){:root{--paper:#0E1115;--card:#171B21;--line:#2A3038;--text:#E6EAEF;--muted:#98A3AF;--ink:#86A6FF;--ink-soft:#1B2540}}
+:root{--paper:#F7F3EE;--ink:#1C1E22;--muted:#5A5F68;--accent:#2F5BD3;--line:#DDD6CC;--card:#FFFDF9;
+--display:"Fraunces",Georgia,serif;--text:"Atkinson Hyperlegible",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root{--paper:#15171B;--ink:#ECEAE6;--muted:#A3A7AF;--line:#2C3037;--card:#1C1F24;--accent:#86A6FF}}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--text);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-main{max-width:720px;margin:0 auto;padding:32px 16px 64px}
-h1{font:800 2rem/1.15 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;margin:0 0 4px;letter-spacing:-.01em}
-h2{font-size:1.15rem;margin:32px 0 8px}
-p,li{overflow-wrap:anywhere}
-.meta{color:var(--muted);margin:0 0 24px}
-.badge{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;gap:16px;align-items:flex-start}
-.badge .tick{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink-soft);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:22px}
-.badge strong{display:block;font-size:1.25rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:4px 20px;margin-top:16px}
-ul,ol{padding-left:1.2em}a{color:var(--ink)}
-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
-nav a{background:var(--ink-soft);color:var(--ink);text-decoration:none;border-radius:999px;padding:6px 14px;font-size:.95rem;font-weight:600}
-details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin:10px 0}
-summary{cursor:pointer;padding:14px 18px;font-weight:600}
-details>div{padding:0 18px 14px}details[open] summary{border-bottom:1px solid var(--line);margin-bottom:10px}
-header{display:flex;gap:18px;align-items:center;margin:8px 0 18px}header img{width:84px;height:84px;border-radius:19px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
-.sub{color:var(--muted);font-size:1.15rem;margin:2px 0 0}
-.cta{display:inline-block;background:var(--line);color:var(--muted);font-weight:700;border-radius:12px;padding:12px 20px;margin:6px 0 4px}
-.shots{display:flex;gap:12px;overflow-x:auto;padding:18px 0;scroll-snap-type:x mandatory}
-.shots img{height:min(520px,68vh);width:auto;border-radius:16px;scroll-snap-align:start;box-shadow:0 8px 22px rgba(0,0,0,.12)}
-.lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.lead div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}.lead h3{margin:0 0 4px;font-size:1.05rem}.lead p{margin:0;color:var(--muted)}
-footer{color:var(--muted);font-size:.9rem;margin-top:40px;display:flex;flex-wrap:wrap;gap:6px 18px}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.55 var(--text)}
+.w{max-width:1040px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left))}
+nav.top{display:flex;flex-wrap:wrap;gap:6px 16px;padding:18px 0 0;font-size:15px}
+nav.top a{color:var(--muted);text-decoration:none}nav.top a[aria-current]{color:var(--ink);font-weight:700}
+header{padding:34px 0 18px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+header img{width:80px;height:80px;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+h1{font:700 clamp(30px,5.4vw,52px)/1.05 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{font:500 clamp(18px,2.4vw,22px)/1.3 var(--display);color:var(--muted);margin:6px 0 0}
+.lede{max-width:68ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:20px 0 8px}
+.cta{display:inline-block;background:var(--accent);color:#fff;font-weight:700;text-decoration:none;border-radius:12px;padding:13px 20px}
+.cta.off{background:var(--line);color:var(--muted)}
+.muted,.price{color:var(--muted);font-size:15px}
+.shots{display:flex;gap:14px;overflow-x:auto;padding:22px 0 14px;scroll-snap-type:x mandatory}
+.shots img{height:min(540px,68vh);width:auto;border-radius:18px;scroll-snap-align:start;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+h2{font:700 clamp(23px,3.2vw,30px)/1.15 var(--display);margin:44px 0 14px;text-wrap:balance}
+h3{font-size:18px;margin:22px 0 6px}
+.lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.lead div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.lead h3{margin:0 0 6px}.lead p{margin:0;color:var(--muted)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px}th,td{text-align:left;padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;font-size:14px;color:var(--muted)}tbody th{font-weight:700}td.us{font-weight:700}
+details{border-top:1px solid var(--line);padding:14px 0}details:last-of-type{border-bottom:1px solid var(--line)}
+summary{font-weight:700;cursor:pointer}details p{margin:8px 0 0;max-width:70ch;color:var(--muted)}
+.qa h3{margin-top:28px}.qa p{max-width:70ch;margin:6px 0 0}
+ul.kinds{padding-left:1.1em}ul.kinds li{margin:10px 0;max-width:72ch}
+.facts{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 18px}
+.facts dt{font-weight:700;margin-top:12px}.facts dd{margin:2px 0 12px;color:var(--muted)}
+.more{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:10px}
+.more a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
+.more a span{display:block;color:var(--muted);font-size:14px}
+footer{margin:56px 0 40px;color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:8px 20px}
+a{color:var(--accent)}
+@media (max-width:600px){table{min-width:0;font-size:15px}th,td{padding:10px 8px}}
 </style>
-</head>
-<body>
-<main>
-<header><img src="img/icon.png" alt="" width="84" height="84"><div><h1>Couch</h1><p class="sub">A free universal TV remote</p></div></header>
-<span class="cta">Coming soon to the App Store</span>
-<p class="meta">Every button free. No ads, no trials, no subscription.</p>
-<div class="shots"><img src="img/01-every-tv.jpg" alt="Couch screenshot 1" loading="lazy" width="600"><img src="img/02-free.jpg" alt="Couch screenshot 2" loading="lazy" width="600"><img src="img/03-find-tv.jpg" alt="Couch screenshot 3" loading="lazy" width="600"><img src="img/04-search.jpg" alt="Couch screenshot 4" loading="lazy" width="600"><img src="img/05-apps.jpg" alt="Couch screenshot 5" loading="lazy" width="600"><img src="img/06-multi-tv.jpg" alt="Couch screenshot 6" loading="lazy" width="600"></div>
-<h2>Why Couch</h2><div class="lead"><div><h3>Every button free</h3><p>Power, d-pad, touchpad, keyboard, volume, channels, app launcher and as many TVs as you own. No ads, no trials, no weekly plans.</p></div><div><h3>Finds your TV</h3><p>Couch looks for TVs and streaming players on your Wi-Fi and connects directly, with fast reconnect when you come back.</p></div><div><h3>Private</h3><p>No account and no analytics. Your commands go straight from your phone to your TV on your home network.</p></div></div>
-<footer><span>Couch: TV Remote</span><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="../">More apps</a></footer>
-</main>
-</body>
-</html>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": ["MobileApplication", "SoftwareApplication"], "@id": "https://merlinwerlin.github.io/App-Projects/couch/#app", "name": "Couch: TV Remote", "alternateName": "Couch", "description": "Couch is a universal TV remote for iPhone. It controls smart TVs and streaming players over your home Wi-Fi: power, d-pad, touchpad, keyboard, volume, channels, app launcher and casting, for as many TVs as you own.", "url": "https://merlinwerlin.github.io/App-Projects/couch/", "operatingSystem": "iOS", "applicationCategory": "UtilitiesApplication", "applicationSubCategory": "TV remote app", "image": "https://merlinwerlin.github.io/App-Projects/couch/img/icon.png", "publisher": {"@type": "Organization", "name": "Astro Labs AU", "url": "https://merlinwerlin.github.io/App-Projects/"}, "isAccessibleForFree": true, "featureList": ["Download and set-up", "Finding the TVs and streaming players on your Wi-Fi, or adding one by its address", "Adding as many TVs as you own", "A 7-day free trial of the full remote and casting, started when you choose; it never charges", "The remote: power, d-pad, touchpad, volume, channels, home, Simple mode and Wake-on-LAN for TVs that support it", "Type on the TV with your phone's keyboard", "App launcher: open your TV's apps in one tap", "Casting photos and videos from your phone to a TV with Chromecast built in, a Roku player or a DLNA TV", "Family Sharing"], "offers": [{"@type": "Offer", "name": "Download", "price": "0", "priceCurrency": "AUD", "category": "free"}, {"@type": "Offer", "name": "Couch Plus (one-time in-app purchase)", "price": "3.99", "priceCurrency": "AUD"}], "sameAs": ["https://apps.apple.com/au/app/couch-tv-remote/id6826135134"], "installUrl": "https://apps.apple.com/au/app/couch-tv-remote/id6826135134", "downloadUrl": ["https://apps.apple.com/au/app/couch-tv-remote/id6826135134"], "screenshot": ["https://merlinwerlin.github.io/App-Projects/couch/img/01-every-tv.jpg", "https://merlinwerlin.github.io/App-Projects/couch/img/03-find-tv.jpg", "https://merlinwerlin.github.io/App-Projects/couch/img/04-search.jpg", "https://merlinwerlin.github.io/App-Projects/couch/img/05-apps.jpg", "https://merlinwerlin.github.io/App-Projects/couch/img/06-multi-tv.jpg", "https://merlinwerlin.github.io/App-Projects/couch/img/02-trial.jpg"]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "url": "https://merlinwerlin.github.io/App-Projects/couch/", "mainEntity": [{"@type": "Question", "name": "Is there a TV remote app for iPhone without a subscription?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Couch has no subscription: try the full remote and casting free for 7 days, then Couch Plus unlocks them once for A$3.99 (the App Store shows your local price). No ads and no account."}}, {"@type": "Question", "name": "Which TVs does Couch work with?", "acceptedAnswer": {"@type": "Answer", "text": "TVs and streaming players running Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta. They need to be on the same Wi-Fi as your iPhone."}}, {"@type": "Question", "name": "How does the free trial work?", "acceptedAnswer": {"@type": "Answer", "text": "Start it from the Couch Plus screen. It never charges. After 7 days the remote and casting lock until you buy Couch Plus; finding and adding TVs stays free."}}, {"@type": "Question", "name": "Can I use Couch if I lost my TV remote?", "acceptedAnswer": {"@type": "Answer", "text": "Usually. Couch finds the TV on your Wi-Fi. Some TVs ask you to press Allow or show a code on the TV the first time; if yours needs the physical remote for that, you'll need it once."}}, {"@type": "Question", "name": "Does Couch have a keyboard?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Type searches and passwords on the TV with your phone's keyboard."}}, {"@type": "Question", "name": "Can I cast photos and videos to my TV?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, with Couch Plus. Pick photos or videos from your library and show them on a TV with Chromecast built in, a Roku player or a DLNA TV. The file is served from your phone over your home Wi-Fi."}}]}</script>
+</head><body><main class=w>
+<nav class=top aria-label="Couch pages"><a href="" aria-current=page>Overview</a><a href="compare/">Compare</a><a href="alternatives/">Alternatives</a><a href="faq/">FAQ</a><a href="facts.txt">Facts</a><a href="../">More apps</a></nav>
+<header><img src="img/icon.png" alt="Couch app icon" width="80" height="80"><div><h1>Couch: one remote for every TV in the house</h1><p class=sub>Couch: TV Remote</p></div></header>
+<p class=lede>Couch is a universal TV remote for iPhone. It controls smart TVs and streaming players over your home Wi-Fi: power, d-pad, touchpad, keyboard, volume, channels, app launcher and casting, for as many TVs as you own.</p>
+<div class=ctas><a class="cta" href="https://apps.apple.com/au/app/couch-tv-remote/id6826135134?ct=web-couch-home" rel="noopener">Get it on App Store</a></div>
+<p class=price>Free download with a 7-day free trial of the full remote and casting. Couch Plus is a one-time A$3.99 that unlocks them for good. No ads, no subscription. Available on App Store (iOS). iPhone only (iOS 16.4 or later). Not on Android or Google Play.</p>
+<div class=shots><img src="img/01-every-tv.jpg" alt="Couch screenshot 1" loading="lazy" width="600"><img src="img/03-find-tv.jpg" alt="Couch screenshot 2" loading="lazy" width="600"><img src="img/04-search.jpg" alt="Couch screenshot 3" loading="lazy" width="600"><img src="img/05-apps.jpg" alt="Couch screenshot 4" loading="lazy" width="600"><img src="img/06-multi-tv.jpg" alt="Couch screenshot 5" loading="lazy" width="600"><img src="img/02-trial.jpg" alt="Couch screenshot 6" loading="lazy" width="600"></div>
+<h2>Why people pick Couch</h2><div class=lead><div><h3>One purchase, not a weekly plan</h3><p>Try everything free for 7 days. Then Couch Plus is A$3.99 once, with Family Sharing. No ads in the remote.</p></div><div><h3>Every TV in the house</h3><p>Roku, Samsung Tizen, LG webOS and Google TV / Android TV (Fire TV in beta). Couch finds them on your Wi-Fi and switches between them in one tap.</p></div><div><h3>Easy for everyone</h3><p>Simple mode has big power, volume, channel and home buttons, and the buttons grow with your text size, with haptics and VoiceOver labels.</p></div></div>
+<h2>Couch compared with typical TV remote apps</h2><div class=tbl><table><thead><tr><th></th><th scope=col>Couch</th><th scope=col>Typical TV remote app</th></tr></thead><tbody><tr><th scope=row>Price</th><td class=us>7-day free trial, then A$3.99 once</td><td>Weekly plans are common, often US$3-7 a week, alongside yearly plans and pricier lifetime options</td></tr><tr><th scope=row>Free trial</th><td class=us>7 days, never charges</td><td>Often starts a subscription that renews unless you cancel</td></tr><tr><th scope=row>Ads</th><td class=us>None</td><td>Common, sometimes full-screen between button taps</td></tr><tr><th scope=row>Family Sharing</th><td class=us>Yes</td><td>Often not offered</td></tr><tr><th scope=row>Casting from your phone</th><td class=us>Photos and videos, included in Couch Plus</td><td>Offered by some apps, often inside the subscription</td></tr><tr><th scope=row>Big buttons and large text</th><td class=us>Simple mode; buttons grow with your text size; VoiceOver labels</td><td>Layouts that break with larger text are a common complaint</td></tr><tr><th scope=row>Account and data</th><td class=us>No account; Data Not Collected</td><td>Many collect usage or advertising data</td></tr><tr><th scope=row>Platforms</th><td class=us>iPhone</td><td>Many are on both iPhone and Android</td></tr></tbody></table></div>
+<p class=muted>Checked against public store listings on 12 November 2026. <a href="compare/">How we compared</a>.</p>
+<h2>Questions</h2><details><summary>Is there a TV remote app for iPhone without a subscription?</summary><p>Yes. Couch has no subscription: try the full remote and casting free for 7 days, then Couch Plus unlocks them once for A$3.99 (the App Store shows your local price). No ads and no account.</p></details><details><summary>Which TVs does Couch work with?</summary><p>TVs and streaming players running Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta. They need to be on the same Wi-Fi as your iPhone.</p></details><details><summary>How does the free trial work?</summary><p>Start it from the Couch Plus screen. It never charges. After 7 days the remote and casting lock until you buy Couch Plus; finding and adding TVs stays free.</p></details><details><summary>Can I use Couch if I lost my TV remote?</summary><p>Usually. Couch finds the TV on your Wi-Fi. Some TVs ask you to press Allow or show a code on the TV the first time; if yours needs the physical remote for that, you&#x27;ll need it once.</p></details><details><summary>Does Couch have a keyboard?</summary><p>Yes. Type searches and passwords on the TV with your phone&#x27;s keyboard.</p></details><details><summary>Can I cast photos and videos to my TV?</summary><p>Yes, with Couch Plus. Pick photos or videos from your library and show them on a TV with Chromecast built in, a Roku player or a DLNA TV. The file is served from your phone over your home Wi-Fi.</p></details>
+<p><a href="faq/">All 12 questions</a></p>
+<h2>More about Couch</h2><div class=more><a href="compare/">How it compares<span>Couch compared with typical TV remote apps</span></a><a href="alternatives/">Alternatives<span>Alternatives to subscription TV remote apps</span></a><a href="faq/">Questions<span>12 answers</span></a><a href="facts.txt">Plain-text facts<span>Price, platforms, what&#x27;s free, privacy</span></a></div>
+<footer><span>Couch: TV Remote by Astro Labs AU</span><a href="https://apps.apple.com/au/app/couch-tv-remote/id6826135134?ct=web-couch-home" rel="noopener">Couch on App Store</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="../">More apps</a></footer>
+</main></body></html>
