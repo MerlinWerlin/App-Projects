@@ -174,6 +174,7 @@ export const zhHans: NonNullable<LocaleMessages['ui']> = {
       manageA11y: '管理“我的小组件图片”',
       done: '完成',
       selectA11y: '选择{name}',
+      artworkA11y: '插画 {n}',
       deleteSelected: '删除所选',
       clearAll: '全部清除',
       clearTitle: '清除“我的小组件图片”？',

@@ -59,6 +59,7 @@
 /* My widget art picker (WidgetArtLibrary.swift, T221) */
 "Choose widget art" = "اختر رسم الأداة";
 "Art" = "الرسم";
+"Artwork %lld" = "عمل فني %lld";
 "Widget art" = "رسم الأداة";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

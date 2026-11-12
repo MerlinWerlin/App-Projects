@@ -59,6 +59,7 @@
 /* My widget art picker (WidgetArtLibrary.swift, T221) */
 "Choose widget art" = "विजेट कला चुनें";
 "Art" = "कला";
+"Artwork %lld" = "कलाकृति %lld";
 "Widget art" = "विजेट कला";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

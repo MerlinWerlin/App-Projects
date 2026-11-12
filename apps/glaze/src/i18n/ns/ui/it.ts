@@ -184,6 +184,7 @@ export const it: NonNullable<LocaleMessages['ui']> = {
       manageA11y: 'Gestisci La mia arte per widget',
       done: 'Fine',
       selectA11y: 'Seleziona {name}',
+      artworkA11y: 'Opera {n}',
       deleteSelected: 'Elimina selezionati',
       clearAll: 'Cancella tutto',
       clearTitle: 'Cancellare La mia arte per widget?',

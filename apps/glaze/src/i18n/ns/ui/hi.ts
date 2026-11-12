@@ -179,6 +179,7 @@ export const hi: NonNullable<LocaleMessages['ui']> = {
       manageA11y: 'मेरी विजेट कला प्रबंधित करें',
       done: 'हो गया',
       selectA11y: '{name} चुनें',
+      artworkA11y: 'कलाकृति {n}',
       deleteSelected: 'चुने हुए हटाएँ',
       clearAll: 'सब साफ़ करें',
       clearTitle: 'मेरी विजेट कला साफ़ करें?',

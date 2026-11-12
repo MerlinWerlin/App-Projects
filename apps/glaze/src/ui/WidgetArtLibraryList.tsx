@@ -7,13 +7,14 @@
 // the one-time clean-up of art from older versions / other themes runs on the first load.
 import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AccessibilityInfo, Alert, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { artworkNumbers, artworkSlotColour } from '../core/artworkSlots';
 import type { WidgetArtPiece } from '../core/widgetArtLibrary';
 import { useT } from '../i18n';
 import { widgets } from '../native/widgets';
 import { loadActiveThemeId } from '../store/activeTheme';
-import { chromeRadiusV2, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { chromeRadiusV2, circleRadius, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
@@ -40,6 +41,9 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
   const [managing, setManaging] = useState(false);
   const [selected, setSelected] = useState<ReadonlySet<string>>(new Set());
   const [bulkBusy, setBulkBusy] = useState(false);
+  // Owner 2026-11-12: the colour + number badge of each Artwork slot a piece fills (artworkSlots.ts).
+  const [activeThemeId, setActiveThemeId] = useState<string | null>(null);
+  const numbers = useMemo(() => artworkNumbers(pieces ?? [], activeThemeId), [pieces, activeThemeId]);
 
   // T264 (owner-1101i #2): no setState after unmount, and a failed bridge read hides the list
   // instead of rejecting unhandled.
@@ -61,7 +65,9 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
         }
       }
       const res = await widgets.artLibrary();
+      const themeId = await loadActiveThemeId().catch(() => null);
       if (!alive.current) return;
+      setActiveThemeId(themeId);
       if (!res || !res.available || !res.ok || !Array.isArray(res.pieces)) {
         setPieces(null);
         return;
@@ -215,9 +221,29 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
               accessibilityIgnoresInvertColors
             />;
         };
+        const slots = numbers.get(p.id) ?? [];
         const body = (
           <>
-          {thumbnail()}
+          <View>
+            {thumbnail()}
+            {slots.length ? (
+              <View style={styles.badges}>
+                {slots.map((n) => {
+                  const col = artworkSlotColour(n);
+                  return (
+                    <View
+                      key={n}
+                      style={[styles.badge, { backgroundColor: col.fill, borderColor: c.surface }]}
+                      accessible
+                      accessibilityLabel={t('ui.seamless.library.artworkA11y', { n })}
+                    >
+                      <Text allowFontScaling={false} style={[styles.badgeText, { color: col.ink }]}>{n}</Text>
+                    </View>
+                  );
+                })}
+              </View>
+            ) : null}
+          </View>
           <View style={styles.text}>
             <Text numberOfLines={2} maxFontSizeMultiplier={fontScaleCap('body')} style={[...label('body'), { color: c.ink }]}>
               {p.name}
@@ -276,6 +302,9 @@ const styles = StyleSheet.create({
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm },
   row: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
+  badges: { position: 'absolute', top: -6, left: -6, flexDirection: 'row', gap: 2 },
+  badge: { minWidth: 22, height: 22, borderRadius: circleRadius(22), borderWidth: 2, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 },
+  badgeText: { ...textV2.caption2, fontWeight: '800' },
   text: { flex: 1, gap: spaceV2.xxs },
 });
 import { DesignedWidgetThumbnail } from './DesignedThemeWidgets';

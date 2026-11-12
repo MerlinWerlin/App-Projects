@@ -59,6 +59,7 @@
 /* My widget art picker (WidgetArtLibrary.swift, T221) */
 "Choose widget art" = "Elegir arte del widget";
 "Art" = "Arte";
+"Artwork %lld" = "Obra %lld";
 "Widget art" = "Arte del widget";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

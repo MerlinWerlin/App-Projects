@@ -10,7 +10,6 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { OPTION_SIZE_POINTS } from './widgetOptions.ts';
 
 const root = process.cwd();
 const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8').replace(/\r\n/g, '\n');
@@ -78,29 +77,7 @@ test('both art providers send the gallery to a fixed sample: no theme, index or 
   assert.match(gallery, /theme: GallerySample\.theme\(slot - 1\), pieceID: nil, layout: nil, preview: true, sample: slot - 1/);
   assert.doesNotMatch(gallery, /ThemeStore|WidgetArtStore|ThemeArtSlots/);
   assert.match(slotProvider, /context\.isPreview \? galleryEntry : entry\(configuration, family: context\.family\)/);
-  assert.match(body(slots, 'struct ThemeArtSlotView', 'enum ThemeArtKind'), /if entry\.preview \{\n\s*GallerySampleArt\(variant: entry\.sample\)/);
+  assert.match(body(slots, 'struct ThemeArtSlotView', 'enum ThemeArtKind'), /if entry\.preview \{\n\s*ArtworkSlotTile\(slot: entry\.sample \+ 1\)/);
   // Placed widgets (timelines) keep the theme's full images.
   assert.doesNotMatch(body(slots, 'func timeline(', 'struct ThemeArtSlotView'), /preview: true/);
-});
-
-test('gallery memory model: thumbnails keep all Art tiles far under the limit; full images did not', () => {
-  // Visible gallery tiles from the Swift constants: Art 1 small/medium/large, Art 2..6 small and
-  // large up to the gallery slot counts.
-  const small = Number(/gallerySmallSlots = (\d+)/.exec(slots)?.[1]);
-  const large = Number(/galleryLargeSlots = (\d+)/.exec(slots)?.[1]);
-  assert.ok(small >= 1 && large >= 1);
-  const scale = 3; // iPhone @3x: the composed piece is the widget's pixel size.
-  const bytes = (w: number, h: number) => w * h * 4;
-  const full = (s: 'small' | 'medium' | 'large') => bytes(OPTION_SIZE_POINTS[s].w * scale, OPTION_SIZE_POINTS[s].h * scale);
-  const fullTotal = small * full('small') + full('medium') + large * full('large');
-  const thumb = (s: 'small' | 'medium' | 'large') => {
-    const { w, h } = OPTION_SIZE_POINTS[s];
-    const k = 360 / Math.max(w * scale, h * scale);
-    return bytes(Math.round(w * scale * k), Math.round(h * scale * k));
-  };
-  const thumbTotal = small * thumb('small') + thumb('medium') + large * thumb('large');
-  const MB = 1024 * 1024;
-  // Full images alone were ~30 MB (11 tiles): the whole widget extension budget.
-  assert.ok(fullTotal > 25 * MB, `full ${(fullTotal / MB).toFixed(1)} MB`);
-  assert.ok(thumbTotal < 6 * MB, `thumbnails ${(thumbTotal / MB).toFixed(1)} MB`);
 });

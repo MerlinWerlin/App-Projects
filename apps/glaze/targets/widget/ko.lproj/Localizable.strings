@@ -59,6 +59,7 @@
 /* My widget art picker (WidgetArtLibrary.swift, T221) */
 "Choose widget art" = "위젯 아트 선택";
 "Art" = "아트";
+"Artwork %lld" = "아트워크 %lld";
 "Widget art" = "위젯 아트";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

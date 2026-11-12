@@ -184,6 +184,7 @@ export const fr: NonNullable<LocaleMessages['ui']> = {
       manageA11y: 'Gérer Mes illustrations de widget',
       done: 'OK',
       selectA11y: 'Sélectionner {name}',
+      artworkA11y: 'Illustration {n}',
       deleteSelected: 'Supprimer la sélection',
       clearAll: 'Tout effacer',
       clearTitle: 'Effacer Mes illustrations de widget ?',
