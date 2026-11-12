@@ -19,7 +19,7 @@ always say "on iPhone" / "App Store" (no `playUrl`). Couch pins: `marketing/pins
 ## Channels (checked 10 Nov 2026 in Jared's Chrome)
 | Channel | Account | State | Use |
 |---|---|---|---|
-| Pinterest | Fern & Fable business (`fernandfableau`), board **Fun & Useful Phone Apps** | signed in, working | 1 app pin a day at 19:00 (woodwork plan pins own 12:00) |
+| Pinterest | Fern & Fable business (`fernandfableau`), board **Fun & Useful Phone Apps** | signed in, working | 1 app pin a day at 19:00; 1 woodwork-plan pin a day at 12:00 on **DIY Woodworking Plans** |
 | TikTok | Fern & Fable (`fernandfableau`, 358 followers, bio "DIY woodworking plans"), not Jared's personal | signed in, working | 3 app videos a week |
 | Instagram | Fern & Fable business (`fernandfableau`). **Never `jaredbradley7`** | signed in, working | Same videos as Reels, 3 a week |
 | Facebook | none linked to the Instagram account (Edit profile shows "Facebook: Connect") | needs Jared | Cross-post Reels once a Fern & Fable Page is linked |
@@ -46,7 +46,8 @@ always say "on iPhone" / "App Store" (no `playUrl`). Couch pins: `marketing/pins
    the Android apps.
 
 ## Cadence
-- **Pinterest**: one app pin a day at 19:00 Sydney, scheduled up to 7 days ahead with "Publish at a later date".
+- **Pinterest**: one app pin a day at 19:00 Sydney and one woodwork-plan pin a day at 12:00 (rotating the 5 plans),
+  each scheduled up to 7 days ahead with "Publish at a later date".
   Rotate apps; never the same app two days running when another app has unused items.
 - **TikTok + Instagram**: Mon, Wed and Fri. Post the next `queued` reel in `marketing/campaign/queue.json` to both.
 - **Weekly stats (Sunday run)**: append readings to `marketing/analytics/snapshots.csv` (see Logging), run
@@ -81,7 +82,11 @@ always say "on iPhone" / "App Store" (no `playUrl`). Couch pins: `marketing/pins
   already say Fun & Useful Phone Apps), tick "Publish at a later date", pick the day in the calendar and 07:00 PM in
   the time menu. Click **Schedule** (or Publish), then click **Schedule/Publish again in the confirmation dialog**:
   two clicks. Leave "Mark as AI-modified" off. Check https://au.pinterest.com/fernandfableau/scheduled-pins/ afterwards.
-  Leave the two old drafts in the drafts list alone.
+  Leave the two old drafts in the drafts list alone. After the second Schedule click, wait for "Scheduled for <date>"
+  on the page before navigating away: leaving early (12 Nov) left two pins as drafts and two duplicate drafts behind.
+  Woodwork-plan pins: board **DIY Woodworking Plans**, "Mark as AI-modified" **on** (the photos are AI renderings),
+  12:00 PM, link to the Etsy listing with `?utm_source=pinterest&utm_medium=pin&utm_campaign=plans-2026-11`. Plan:
+  `marketing/pins/woodwork-plans-2026-11.json`; images: `marketing/pins/woodwork/make_pins.py` (check: no duck).
 - **TikTok** (https://www.tiktok.com/tiktokstudio/upload): upload, dismiss the "automatic checks" prompt with Cancel,
   focus the description editor (`.public-DraftEditor-content`), select all, type the caption, then type each hashtag,
   wait 2 s, then a space (the first hashtag sometimes gets swallowed: re-check the text). Settings > Show more >
