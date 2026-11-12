@@ -83,3 +83,7 @@ Method: about 30 web searches and page fetches on 10 Nov 2026. No Reddit or Goog
 
 ## IndexNow pings
 - 2026-11-12: 14 URLs (the live sitemap before the Couch pages), all 200 first; api.indexnow.org answered 202. The Couch pages go in the next ping once they are deployed (the daily task does this on Sundays when docs/sitemap.xml has changed).
+- 2026-11-12 (after PR #278 deployed): all 18 sitemap URLs returned 200; `indexnow.py` answered 200 for 18 URLs, including the 4 Couch pages.
+
+## Search Console
+- Property `https://merlinwerlin.github.io/App-Projects/` (signed in as Jared). 2026-11-12: submitted `sitemap.xml` for the first time. It showed "Couldn't fetch" straight after submitting; check it again on the next Sunday run, and if it still fails, use URL Inspection on the home page.
