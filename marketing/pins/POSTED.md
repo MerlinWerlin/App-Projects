@@ -3,7 +3,7 @@
 > Moved: the all-channel log is `marketing/POSTED.md` (10 Nov 2026). This file is kept for history.
 
 Account: Pinterest business profile **Fern & Fable** (`fernandfableau`). App pins go on the board
-**Fun & Useful iPhone Apps** (Jared, 10 Nov 2026: no separate app profile). App pins are made from the apps' own store
+**Fun & Useful Phone Apps** (Jared, 10 Nov 2026: no separate app profile). App pins are made from the apps' own store
 screenshots, so the "Mark as AI-modified" label stays **off** (unlike the AI-photo woodwork plan pins).
 
 | Date | Pin | Plan id | Link | Pinterest |
