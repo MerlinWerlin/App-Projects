@@ -1,0 +1,54 @@
+"""Make 2:3 (1000x1500) Pinterest pins for the 5 woodworking plans from the approved Etsy listing photos."""
+import os
+from PIL import Image, ImageDraw, ImageFont
+
+SRC = r"C:/Users/jared/Desktop/Woodworking project plans/woodworking-plans/etsy-upload"
+OUT = os.path.dirname(os.path.abspath(__file__))
+F = "C:/Windows/Fonts/"
+serif = lambda s: ImageFont.truetype(F + "georgiab.ttf", s)
+sans = lambda s: ImageFont.truetype(F + "segoeuib.ttf", s)
+sansr = lambda s: ImageFont.truetype(F + "segoeui.ttf", s)
+BG, INK, MUTED = (243, 238, 230), (40, 33, 27), (110, 98, 86)
+
+PINS = [
+ ("WW-P01", "four-board-bench", "00-main-square.jpg", "Four-Board Bench", "Build it in an afternoon from four boards"),
+ ("WW-P02", "plant-ladder", "00-main-square.jpg", "A-Frame Plant Ladder", "Three tiers from eight standard boards"),
+ ("WW-P03", "waterfall-stack-table", "00-main-square.jpg", "Waterfall Coffee Table", "Chunky two-tone 2x4 table, no screws on show"),
+ ("WW-P04", "planter-bench", "00-main-square.jpg", "Planter Bench", "Two planter boxes and a seat, every screw hidden"),
+ ("WW-P05", "garden-bar", "00-main-square.jpg", "Garden Bar & Potting Bench", "From 10 boards, every screw hidden"),
+ ("WW-P06", "four-board-bench", "phone/07-stain-options.png", "Four-Board Bench", "One plan, four finishes"),
+ ("WW-P07", "plant-ladder", "phone/07-finish-options.png", "A-Frame Plant Ladder", "Pick your finish"),
+]
+
+def centred(d, y, text, font, fill, maxw=900):
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        t = (cur + " " + w).strip()
+        if d.textlength(t, font=font) <= maxw: cur = t
+        else: lines.append(cur); cur = w
+    lines.append(cur)
+    for ln in lines:
+        w = d.textlength(ln, font=font)
+        d.text(((1000 - w) / 2, y), ln, font=font, fill=fill)
+        y += font.size * 1.18
+    return y
+
+for pid, slug, rel, title, sub in PINS:
+    im = Image.open(f"{SRC}/{slug}/2-listing-photos/{rel}").convert("RGB")
+    pin = Image.new("RGB", (1000, 1500), BG)
+    d = ImageDraw.Draw(pin)
+    y = 64
+    y = centred(d, y, "WOODWORKING PLAN  ·  PDF", sans(28), MUTED)
+    y = centred(d, y + 14, title, serif(76 if len(title) < 22 else 64), INK)
+    y = centred(d, y + 8, sub, sansr(36), MUTED)
+    top = int(y + 36)
+    area_h = 1500 - top - 110
+    ph = im.copy()
+    ph.thumbnail((1000, area_h), Image.LANCZOS)
+    if ph.width < 1000 and ph.height < area_h:  # never upscale much
+        pass
+    x = (1000 - ph.width) // 2
+    pin.paste(ph, (x, top))
+    centred(d, 1500 - 82, "US · AU · UK · EU · DE editions  ·  Fern & Fable", sans(30), INK)
+    pin.save(f"{OUT}/{pid}.jpg", quality=88)
+    print(pid, ph.size, top)

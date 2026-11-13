@@ -20,6 +20,13 @@ from the apps' real store screenshots, so no AI label (TikTok gets the "Your bra
 | 2026-11-15 19:00 | Linework | launch pin (earlier run) | Lock It, Draw Steady | App Store | scheduled | (URL once live) |
 | 2026-11-18 19:00 | Linework | LW-L02 | Turn Any Photo Into a Sketch to Trace (Free App, iPhone & Android) | Google Play | scheduled | (URL once live) |
 | 2026-11-22 19:00 | Linework | LW-L05 | How to Trace a Picture From Your Phone Without It Moving | App Store | scheduled | (URL once live) |
+| 2026-11-13 12:00 | Woodwork plan: four-board-bench | WW-P01 | Four-Board Outdoor Bench Plan: Build It in an Afternoon (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-14 12:00 | Woodwork plan: plant-ladder | WW-P02 | A-Frame Plant Ladder Plan: DIY 3-Tier Plant Stand (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-15 12:00 | Woodwork plan: waterfall-stack-table | WW-P03 | Waterfall Coffee Table Plan: Chunky Two-Tone 2x4 Table (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-16 12:00 | Woodwork plan: planter-bench | WW-P04 | Planter Bench Plan: DIY Garden Bench With Planter Boxes (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-17 12:00 | Woodwork plan: garden-bar | WW-P05 | Garden Bar & Potting Bench Plan: 2x4 Outdoor Bar (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-18 12:00 | Woodwork plan: four-board-bench | WW-P06 | Easy Garden Bench Plan in Four Finishes: Four-Board Bench (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-19 12:00 | Woodwork plan: plant-ladder | WW-P07 | Plant Ladder Plan in Four Finishes: DIY Tiered Plant Stand (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
 
 Open app-pin days to fill: 14, 16, 17, 19, 20, 21 Nov onward (the daily run fills them, rotating Cue and Backspin first
 because Linework already has five queued).
