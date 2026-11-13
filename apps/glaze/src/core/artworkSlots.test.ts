@@ -89,3 +89,16 @@ test('app numbering matches the widget: current theme, small plain art in shelf 
   assert.match(list, /backgroundColor: col\.fill/);
   assert.match(list, /t\('ui\.seamless\.library\.artworkA11y', \{ n \}\)/);
 });
+
+// Owner 2026-11-13 (build 74: the gallery tiles "do not correspsone"): iOS kept the older gallery
+// previews of the GlazeThemeArt kinds, so Artwork 1-5 are fresh kinds with no stored preview.
+test('gallery Artwork 1-5 are fresh kinds; the old GlazeThemeArt kinds stay registered but leave the gallery', () => {
+  assert.ok(code.includes('legacy ? "GlazeThemeArt\\(slot)" : "GlazeArtwork\\(slot)"'), 'kind names');
+  assert.match(code, /\.disfavoredLocations\(\[\.homeScreen\], for: legacy \? \[\.systemSmall\] : galleryHidden\(slot: slot\)\)/);
+  for (let i = 1; i <= 5; i++) assert.ok(code.includes(`struct ArtworkWidget${i}: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: ${i}) } }`), `ArtworkWidget${i}`);
+  for (let i = 1; i <= 6; i++) assert.ok(code.includes(`struct ThemeArtWidget${i}: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: ${i}, legacy: true) } }`), `ThemeArtWidget${i}`);
+  const art = code.slice(code.indexOf('struct GlazeThemeArtBundle'));
+  assert.deepEqual([...art.matchAll(/(ArtworkWidget\d)\(\)/g)].map((m) => m[1]), ['ArtworkWidget1', 'ArtworkWidget2', 'ArtworkWidget3', 'ArtworkWidget4', 'ArtworkWidget5']);
+  const legacy = W('GlazeWidgetsBundle.swift');
+  for (let i = 1; i <= 6; i++) assert.ok(legacy.split(/\r?\n/).some((l) => l.trim() === `ThemeArtWidget${i}()`), `legacy ThemeArtWidget${i}`);
+});
