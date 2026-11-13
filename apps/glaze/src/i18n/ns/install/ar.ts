@@ -78,6 +78,8 @@ export const ar: NonNullable<LocaleMessages['install']> = {
     chooseApps: 'اختيار التطبيقات',
   },
   method: {
+    // Owner 2026-11-13: for anyone who already has a second set from before 1.0.28.
+    duplicateNote: 'هل ترى مجموعتين من أيقونات Glaze؟ افتح الإعدادات › عام › VPN وإدارة الجهاز، واضغط على ملف Glaze الأقدم وأزِله. ستُزال أيقوناته معه.',
     heading: 'طريقة التثبيت',
     // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
     bulk: 'تثبيت الكل دفعة واحدة',

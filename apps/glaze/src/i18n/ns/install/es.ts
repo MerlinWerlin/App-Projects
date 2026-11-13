@@ -48,6 +48,8 @@ export const es: NonNullable<LocaleMessages['install']> = {
     chooseApps: 'Elegir apps',
   },
   method: {
+    // Owner 2026-11-13: for anyone who already has a second set from before 1.0.28.
+    duplicateNote: '¿Ves dos juegos de iconos de Glaze? Abre Ajustes › General › VPN y gestión de dispositivos, toca el perfil de Glaze más antiguo y elimínalo. Sus iconos se van con él.',
     heading: 'Cómo instalar',
     // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
     bulk: 'Instalar todo de una vez',
