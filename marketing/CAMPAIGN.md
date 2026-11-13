@@ -46,7 +46,7 @@ always say "on iPhone" / "App Store" (no `playUrl`). Couch pins: `marketing/pins
    the Android apps.
 
 ## Cadence
-- **Pinterest**: one app pin a day at 19:00 Sydney and one woodwork-plan pin a day at 12:00 (rotating the 5 plans),
+- **Pinterest**: one app pin a day at 19:00 Sydney and one woodwork-plan pin a day at 12:00 (rotating all 18 live plans, newest first; booked to 2 Dec),
   each scheduled up to 7 days ahead with "Publish at a later date".
   Rotate apps; never the same app two days running when another app has unused items.
 - **TikTok + Instagram**: Mon, Wed and Fri. Post the next `queued` reel in `marketing/campaign/queue.json` to both.

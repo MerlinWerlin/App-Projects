@@ -20,13 +20,26 @@ from the apps' real store screenshots, so no AI label (TikTok gets the "Your bra
 | 2026-11-15 19:00 | Linework | launch pin (earlier run) | Lock It, Draw Steady | App Store | scheduled | (URL once live) |
 | 2026-11-18 19:00 | Linework | LW-L02 | Turn Any Photo Into a Sketch to Trace (Free App, iPhone & Android) | Google Play | scheduled | (URL once live) |
 | 2026-11-22 19:00 | Linework | LW-L05 | How to Trace a Picture From Your Phone Without It Moving | App Store | scheduled | (URL once live) |
-| 2026-11-13 12:00 | Woodwork plan: four-board-bench | WW-P01 | Four-Board Outdoor Bench Plan: Build It in an Afternoon (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-13 12:00 | Woodwork plan: four-board-bench | WW-P01 | Four-Board Outdoor Bench Plan: Build It in an Afternoon (PDF) | Etsy listing | live (board DIY Woodworking Plans, AI-modified on) | https://au.pinterest.com/pin/1047298088374484293/ |
 | 2026-11-14 12:00 | Woodwork plan: plant-ladder | WW-P02 | A-Frame Plant Ladder Plan: DIY 3-Tier Plant Stand (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
 | 2026-11-15 12:00 | Woodwork plan: waterfall-stack-table | WW-P03 | Waterfall Coffee Table Plan: Chunky Two-Tone 2x4 Table (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
 | 2026-11-16 12:00 | Woodwork plan: planter-bench | WW-P04 | Planter Bench Plan: DIY Garden Bench With Planter Boxes (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
 | 2026-11-17 12:00 | Woodwork plan: garden-bar | WW-P05 | Garden Bar & Potting Bench Plan: 2x4 Outdoor Bar (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
 | 2026-11-18 12:00 | Woodwork plan: four-board-bench | WW-P06 | Easy Garden Bench Plan in Four Finishes: Four-Board Bench (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
 | 2026-11-19 12:00 | Woodwork plan: plant-ladder | WW-P07 | Plant Ladder Plan in Four Finishes: DIY Tiered Plant Stand (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-20 12:00 | Woodwork plan: arbour-bench | WW-P08 | Garden Arbour Bench Plans: DIY Arbor Seat for Climbing Roses (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-21 12:00 | Woodwork plan: flip-bin-record-stand | WW-P09 | Flip-Bin Record Stand Plan: DIY Vinyl Storage & Turntable Stand (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-22 12:00 | Woodwork plan: leaning-bookcase | WW-P10 | Leaning Bookcase Plan: DIY 4-Shelf Ladder Bookshelf (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-23 12:00 | Woodwork plan: v-cradle-record-rack | WW-P11 | V-Cradle Record Rack Plan: Vinyl LP Bin on X Legs (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-24 12:00 | Woodwork plan: cross-panel-side-table | WW-P12 | X-Panel Side Table Plan: Modern Plywood End Table (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-25 12:00 | Woodwork plan: floating-king-bed | WW-P13 | Floating King Bed Plans: DIY Platform Bed With Slat Headboard (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-26 12:00 | Woodwork plan: tilted-record-cubby | WW-P14 | Tilted Record Cubby Plan: Plywood LP Storage Box on X Legs (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-27 12:00 | Woodwork plan: cat-nook-side-table | WW-P15 | Cat Nook Side Table Plan: Plywood Cat Bed & Nightstand (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-28 12:00 | Woodwork plan: log-store | WW-P16 | Firewood Log Store Plans: DIY Wood Shed With Kindling Shelf (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-29 12:00 | Woodwork plan: x-leg-record-table | WW-P17 | X-Leg Record Table Plan: Turntable Stand With LP Storage (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-30 12:00 | Woodwork plan: zigzag-record-tower | WW-P18 | Zigzag Record Tower Plan: Diamond Vinyl LP Shelf (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-12-01 12:00 | Woodwork plan: record-console | WW-P19 | Record Console Plan: DIY Vinyl Storage & Turntable Stand (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-12-02 12:00 | Woodwork plan: king-bed-slat-headboard | WW-P20 | King Bed Plans: DIY Platform Bed With Slat Headboard (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
 
 Open app-pin days to fill: 14, 16, 17, 19, 20, 21 Nov onward (the daily run fills them, rotating Cue and Backspin first
 because Linework already has five queued).
