@@ -110,6 +110,13 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  howTo: {
+    play: '播放操作视频',
+    wallpaper: '视频：保存墙纸并设置到 iPhone',
+    icons: '视频：把配套图标添加到主屏幕',
+    widgets: '视频：把 Glaze 小组件添加到主屏幕',
+  },
   iconsIntro: {
     title: '图标',
     skip: '跳过',

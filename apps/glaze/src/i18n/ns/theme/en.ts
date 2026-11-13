@@ -110,6 +110,13 @@ export const en = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  howTo: {
+    play: 'Play the how-to video',
+    wallpaper: 'Video: saving the wallpaper and setting it on your iPhone',
+    icons: 'Video: adding the matching icons to your Home Screen',
+    widgets: 'Video: adding a Glaze widget to your Home Screen',
+  },
   iconsIntro: {
     title: 'Icons',
     skip: 'Skip',

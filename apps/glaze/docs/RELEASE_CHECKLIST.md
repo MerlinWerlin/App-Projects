@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**14 November 2026 TestFlight how-to clips: `1.0.30`.** Owner approved the three screen recordings (wallpaper 18 s, icons 29 s, widgets 25 s; H.264 590×1278, no audio, 1.7-2.1 MB each, ~5.8 MB with posters). Bundled in assets/video, played by src/ui/HowToClip.tsx (expo-video, muted, looping, inline, poster until ready, Reduce Motion = poster + play, paused off-screen / in background) on the icons walkthrough card and the Wallpaper / Icons / Widgets steps of the Set it up flow. IPA grows ~5.8 MB (35.8 → ~41.6 MB).
+
 **14 November 2026 additions to `1.0.29`.** Owner on 1.0.28: a theme with no artwork (every one of the 63 built-in themes; all 141 packs have 2-5) showed a blank grey Artwork tile; now ThemedFallbackArt, a scene in the theme's colours per slot. My widget art: 64 pt number and 132 pt artwork side by side; the separate art picker left the Widgets tab. Use everything opens icon setup every time (walkthrough first, then /install).
 
 **13 November 2026 TestFlight pure Artwork + icons walkthrough: `1.0.29`.** Owner on 1.0.27 (Aurora): My widget art's Artwork 1 was the date picture while the Home Screen Artwork 1 was the mushroom, and Artwork 5 showed a static date picture saying October. One ordered `artwork` list in index.json (pure illustrations: small, option kind `art`, no live value), written by commitThemeArt and read by both the app and the widget; widget art recovery v6 rebuilds once. Owner on Use everything ("scary... scammy... so much information"): a four-card first-time icons walkthrough (app/icons-intro.tsx, demo-video slot), then a one-line Set up icons / How it works row on the theme page.
