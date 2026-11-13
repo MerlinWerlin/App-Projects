@@ -23,7 +23,7 @@ import { liveArtPlan, liveArtSpec, withLiveArt, type CountdownArtTargets } from 
 import { pickWallpaper } from '../core/packCatalog';
 import { isRemoteArtTheme, remoteArtFiles } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, widgetSizePx } from '../core/seamlessWidget';
-import { composeOrder, isArtworkPiece, piecesToCompose, planThemePieces, type PlannedThemePiece } from '../core/themeArtSync';
+import { THEME_PACK_ART_SIZES, composeOrder, isArtworkPiece, piecesToCompose, planThemePieces, type PlannedThemePiece } from '../core/themeArtSync';
 import type { Theme } from '../core/themes';
 import type { WidgetArtIndex } from '../core/widgetArtLibrary';
 import { optionName, widgetOptionsFromV1, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
@@ -167,6 +167,8 @@ function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTarget
     themeName: theme.name,
     options: options.filter(o => !isReplacedArtEdition(o)),
     cap: 40 - designed.length,
+    // Owner 2026-11-13: pack art in small only; the designs above keep every size.
+    sizes: THEME_PACK_ART_SIZES,
     name: (option, size) => {
       const n = optionName(option, options);
       return `${'text' in n ? n.text : tr(n.key, n.params)} · ${sizeLabel(size)}`;

@@ -170,7 +170,7 @@ enum ThemeArtKind {
       ThemeArtSlotView(entry: entry)
         .widgetURL(URL(string: "glaze://widgets"))
     }
-    .configurationDisplayName("Artwork \(slot)")
+    .configurationDisplayName(displayName(slot: slot))
     .description("Shows your Glaze theme's art once added.")
     .supportedFamilies([.systemSmall])
     .contentMarginsDisabled()
@@ -184,6 +184,20 @@ enum ThemeArtKind {
   // (themeArtSync.ts), live / calendar pictures after. Every live pack has at most 5 art pieces and
   // at least 5 non-design pieces per size, so Art 1-5 show every art piece and never an empty tile.
   static let gallerySmallSlots = 5
+
+  /// Owner 2026-11-13 (Glaze missing from the Add Widget list after a reinstall): six fixed,
+  /// localised names instead of an interpolated key ("Artwork \(slot)"), so every widget
+  /// description iOS stores is a plain string key like every other Glaze widget's.
+  static func displayName(slot: Int) -> LocalizedStringKey {
+    switch slot {
+    case 1: return "Artwork 1"
+    case 2: return "Artwork 2"
+    case 3: return "Artwork 3"
+    case 4: return "Artwork 4"
+    case 5: return "Artwork 5"
+    default: return "Artwork 6"
+    }
+  }
   static func galleryHidden(slot: Int) -> [WidgetFamily] {
     slot > gallerySmallSlots ? [.systemSmall] : []
   }

@@ -29,3 +29,17 @@ test('My widget art: the Artwork badges sit in a row under the name, not over th
   const text = list.slice(list.indexOf('<View style={styles.text}>'));
   assert.ok(text.indexOf('styles.badges') > text.indexOf('{p.name}'));
 });
+
+// Owner 2026-11-13 ("remove them unless its the native ones"): the theme's pack art is small only.
+import { THEME_PACK_ART_SIZES, planThemePieces } from './themeArtSync.ts';
+
+test('theme pack art is planned in small only; the app art menu shows on the Small tab only', () => {
+  assert.deepEqual([...THEME_PACK_ART_SIZES], ['small']);
+  const option = { id: 'moon', kind: 'art', image: 'moon.webp', sizes: ['small', 'medium', 'large'], width: 1024, height: 1024 } as never;
+  const planned = planThemePieces({ themeId: 't', themeName: 'T', options: [option], name: () => 'Moon', sizes: THEME_PACK_ART_SIZES });
+  assert.deepEqual([...new Set(planned.map((p) => p.size))], ['small']);
+  const store = readFileSync(join(process.cwd(), 'src', 'store', 'themeWidgetArt.ts'), 'utf8');
+  assert.match(store, /sizes: THEME_PACK_ART_SIZES,/);
+  const menu = readFileSync(join(process.cwd(), 'src', 'ui', 'ThemeWidgetArt.tsx'), 'utf8');
+  assert.match(menu, /if \(!home \|\| home !== 'small'\) return null;/);
+});

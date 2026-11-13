@@ -141,7 +141,9 @@ function ThemeDecorativeArt({ theme, size, width, style, onLibraryChange }: Prop
     [key],
   );
 
-  if (!home) return null;
+  // Owner 2026-11-13 ("remove them unless its the native ones"): the theme's pack art is small
+  // only, so this menu shows on the Small tab; Medium / Large keep the native widgets below.
+  if (!home || home !== 'small') return null;
   if (remoteTheme && options.length === 0) {
     // Not downloaded yet: the art arrives with the theme's download (theme page).
     return (

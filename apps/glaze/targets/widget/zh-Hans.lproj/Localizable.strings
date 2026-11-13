@@ -60,6 +60,12 @@
 "Choose widget art" = "选择小组件图片";
 "Art" = "图片";
 "Artwork %lld" = "插画 %lld";
+"Artwork 1" = "插画 1";
+"Artwork 2" = "插画 2";
+"Artwork 3" = "插画 3";
+"Artwork 4" = "插画 4";
+"Artwork 5" = "插画 5";
+"Artwork 6" = "插画 6";
 "Widget art" = "小组件图片";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

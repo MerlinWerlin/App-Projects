@@ -60,6 +60,12 @@
 "Choose widget art" = "اختر رسم الأداة";
 "Art" = "الرسم";
 "Artwork %lld" = "عمل فني %lld";
+"Artwork 1" = "عمل فني 1";
+"Artwork 2" = "عمل فني 2";
+"Artwork 3" = "عمل فني 3";
+"Artwork 4" = "عمل فني 4";
+"Artwork 5" = "عمل فني 5";
+"Artwork 6" = "عمل فني 6";
 "Widget art" = "رسم الأداة";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

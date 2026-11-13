@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.26: after a theme apply or a fresh install Glaze makes the small Artwork pieces first and saves them straight away, so Artwork 1 to 5 each get their own piece within seconds. The colour badges in My widget art sit under the name instead of over it.",
+  "note": "Glaze 1.0.26: theme art is small only (the medium and large art options are gone; Clock, Battery and Calendar keep every size), the Artwork widgets have fixed names, and after a theme apply or a fresh install Glaze makes the Artwork pieces first so Artwork 1 to 5 each get their own piece within seconds. The colour badges sit under the name.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
