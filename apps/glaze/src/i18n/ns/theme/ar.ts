@@ -108,6 +108,24 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
     viewWidgets: "عرض الأدوات بهذا المظهر",
     addWallpaper: "إضافة الخلفية",
   },
+  // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
+  // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  iconsIntro: {
+    title: 'الأيقونات',
+    skip: 'تخطٍّ',
+    next: 'التالي',
+    back: 'رجوع',
+    start: 'إعداد الأيقونات',
+    stepOf: '{n} من {total}',
+    setUp: 'إعداد الأيقونات',
+    howItWorks: 'كيف يعمل',
+    steps: {
+      look: { title: 'أيقونات تناسب مظهرك', body: 'يصنع Glaze مجموعة أيقونات للتطبيقات بألوان هذا المظهر. تبقى تطبيقاتك كما هي تمامًا.' },
+      oneGo: { title: 'دفعة واحدة', body: 'يضع Glaze المجموعة كاملة على الشاشة الرئيسية في خطوة واحدة، بدلًا من أيقونة تلو الأخرى.' },
+      confirm: { title: 'يسألك iPhone أولًا', body: 'يعرض iPhone شاشة قصيرة يسألك فيها إن كنت تريد إضافة الأيقونات. هذا أمر طبيعي، ولا يتغير شيء حتى توافق.' },
+      undo: { title: 'يمكنك التراجع متى شئت', body: 'يمكنك إزالة الأيقونات متى شئت. لا تتأثر تطبيقاتك ولا بياناتها.' },
+    },
+  },
   parts: {
     title: 'الإعداد',
     subtitle: 'الخلفية والأيقونات والأدوات',

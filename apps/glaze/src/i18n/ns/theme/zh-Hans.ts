@@ -108,6 +108,24 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
     viewWidgets: "查看此主题的小组件",
     addWallpaper: "添加壁纸",
   },
+  // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
+  // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  iconsIntro: {
+    title: '图标',
+    skip: '跳过',
+    next: '下一步',
+    back: '返回',
+    start: '设置图标',
+    stepOf: '{n}/{total}',
+    setUp: '设置图标',
+    howItWorks: '如何运作',
+    steps: {
+      look: { title: '与主题相配的图标', body: 'Glaze 会用这个主题的颜色制作一套 App 图标。你的 App 本身不会有任何变化。' },
+      oneGo: { title: '一次全部添加', body: 'Glaze 会一步把整套图标放到主屏幕上，而不是一个一个地添加。' },
+      confirm: { title: 'iPhone 会先询问你', body: 'iPhone 会显示一个简短的页面，询问你是否要添加这些图标。这是正常的，在你同意之前不会有任何改变。' },
+      undo: { title: '随时可以改主意', body: '你可以随时移除这些图标。你的 App 和数据都不会受影响。' },
+    },
+  },
   parts: {
     title: '设置',
     subtitle: '墙纸、图标和小组件',

@@ -67,6 +67,8 @@ import { useToast } from '../../src/ui/Toast';
 import { Sheet } from '../../src/ui/Sheet';
 import { tickStoredChecklist } from '../../src/store/applyChecklist';
 import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
+import { iconsAfterUseEverything } from '../../src/core/iconsIntro';
+import { iconsIntroSeen } from '../../src/store/iconsIntro';
 import { DEFERRED_STEPS, requestDeferred } from '../../src/store/deferredWork';
 import { loadBackground } from '../../src/store/background';
 import { setThemeLook, setThemeShape, studioApps, themeLookFor, themeShapeFor } from '../../src/core/studio';
@@ -275,6 +277,13 @@ function ThemeDetail({
   useFocusEffect(useCallback(() => () => { themeFocus.current++; }, []));
   const [themeChoiceOpen, setThemeChoiceOpen] = useState(step === 'overview');
   const [useError, setUseError] = useState(false);
+  // Owner 2026-11-13: the icons walkthrough was seen, so the bar offers "Set up icons" / "How it works".
+  const [iconsSeen, setIconsSeen] = useState(false);
+  useEffect(() => {
+    let live = true;
+    iconsIntroSeen().then((seen) => { if (live) setIconsSeen(seen); }).catch(() => undefined);
+    return () => { live = false; };
+  }, []);
   const [saveState, setSaveState] = useState<SaveState>('idle');
   /** T185: this theme's wallpaper was saved to Photos before (badge only; Save again always shows). */
   const [savedBefore, setSavedBefore] = useState(false);
@@ -444,7 +453,12 @@ function ThemeDetail({
       // save failed or Photos was declined. A failed wallpaper save is only a note now.
       if (!await selectTheme(focus)) return;
       if (!await onSaveWallpaper()) toast.show(t('theme.setup.wallpaper.saveError'), 'warning');
-      if (themeFocus.current === focus) addThemeIcons();
+      // Owner 2026-11-13: the gentle icons walkthrough the first time only; afterwards the theme
+      // page's one-line "Set up icons" / "How it works" row (below), not the install screen.
+      if (themeFocus.current === focus) {
+        if (iconsAfterUseEverything(await iconsIntroSeen()) === 'intro') openIconsIntro(false);
+        else setIconsSeen(true);
+      }
     } catch (e) {
       // T264 (owner-1101i #2): an apply that throws shows the calm "couldn't apply" note, never a crash.
       console.warn('[Theme] apply failed', e);
@@ -453,6 +467,10 @@ function ThemeDetail({
       usePending.current = false;
       setUseBusy(false);
     }
+  };
+  const openIconsIntro = (again: boolean) => {
+    setThemeChoiceOpen(false);
+    router.push({ pathname: '/icons-intro', params: again ? { theme: theme.id, again: '1' } : { theme: theme.id } });
   };
   const addThemeIcons = () => {
     setThemeChoiceOpen(false);
@@ -1135,6 +1153,12 @@ function ThemeDetail({
             <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.barNote, { color: c.inkSecondary }]}>
               {inUse ? t('theme.use.inUseNote') : t('theme.use.note')}
             </Text>
+            {inUse && iconsSeen ? (
+              <View style={styles.iconsRow}>
+                <PillButton label={t('theme.iconsIntro.setUp')} icon="grid" variant="plain" size="small" onPress={addThemeIcons} />
+                <PillButton label={t('theme.iconsIntro.howItWorks')} variant="plain" size="small" onPress={() => openIconsIntro(true)} />
+              </View>
+            ) : null}
           </View>
         </GlassBar>
       ) : null}
@@ -1908,6 +1932,7 @@ const styles = StyleSheet.create({
   bar: { position: 'absolute', start: 0, end: 0, bottom: 0 },
   barInner: { paddingHorizontal: spaceV2.inset, paddingTop: spaceV2.md, gap: spaceV2.xs },
   barNote: { textAlign: 'center' },
+  iconsRow: { flexDirection: 'row', justifyContent: 'center', flexWrap: 'wrap', gap: spaceV2.sm },
   barLink: { alignSelf: 'center' },
   wallSkeleton: { alignSelf: 'center' },
   heroNote: { textAlign: 'center' },

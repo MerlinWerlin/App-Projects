@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.27: My widget art in the Widgets tab now lists just your theme's Artwork 1 to 5, each with a big number in its gallery colour, with no Remove buttons and no large or medium copies.",
+  "note": "Glaze 1.0.28: Artwork 1 to 5 are now only real artwork (no date, clock or focus pictures) and show the same piece in the app and on the Home Screen. Setting up icons the first time is a short, calm walkthrough; after that it is one tap.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

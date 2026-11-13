@@ -108,6 +108,24 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
     viewWidgets: "इस थीम के विजेट देखें",
     addWallpaper: "वॉलपेपर जोड़ें",
   },
+  // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
+  // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  iconsIntro: {
+    title: 'आइकन',
+    skip: 'छोड़ें',
+    next: 'आगे',
+    back: 'पीछे',
+    start: 'आइकन सेट करें',
+    stepOf: '{total} में से {n}',
+    setUp: 'आइकन सेट करें',
+    howItWorks: 'यह कैसे काम करता है',
+    steps: {
+      look: { title: 'आपकी थीम से मेल खाते आइकन', body: 'Glaze इस थीम के रंगों में ऐप आइकन का एक सेट बनाता है। आपके ऐप बिल्कुल वैसे ही रहते हैं।' },
+      oneGo: { title: 'एक बार में सब', body: 'Glaze पूरा सेट एक ही कदम में आपकी होम स्क्रीन पर रखता है, एक-एक आइकन करके नहीं।' },
+      confirm: { title: 'iPhone पहले पूछता है', body: 'iPhone एक छोटी स्क्रीन दिखाकर पूछता है कि क्या आप आइकन जोड़ना चाहते हैं। यह सामान्य है, और आपकी हाँ के बिना कुछ नहीं बदलता।' },
+      undo: { title: 'कभी भी मन बदल सकते हैं', body: 'आप जब चाहें आइकन हटा सकते हैं। आपके ऐप और उनका डेटा नहीं बदलता।' },
+    },
+  },
   parts: {
     title: 'सेट अप करें',
     subtitle: 'वॉलपेपर, आइकन और विजेट',
