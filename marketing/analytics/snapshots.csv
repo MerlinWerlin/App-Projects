@@ -81,3 +81,5 @@ captured_at,scope,channel,account,app,post_id,metric,value,period,source
 2026-11-13,app,etsy,fernfableau,a-frame-plant-ladder-plan,,listing_views,3,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov) all-listings table
 2026-11-13,app,etsy,fernfableau,waterfall-coffee-table-plan,,listing_views,3,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov) all-listings table
 2026-11-13,app,googleplay,Astro Labs AU,backspin,,installs,1,last_28d,Play Console home: Device acquisitions
+2026-11-13,account,appstore,Astro Labs AU,,,installs,16,2026-11-05..2026-11-11,App Store Connect app Units 7D (Free iOS; Linework + Couch combined; from Jared's phone screenshot)
+2026-11-13,account,appstore,Astro Labs AU,,,trial_starts,1,2026-11-05..2026-11-11,App Store Connect app Units 7D (In-App iOS = 1; Jared checked: the free Trial item; app not noted)

@@ -40,6 +40,7 @@ asked for it on 10 Nov 2026. It's plain CSV that only gets added to, with no spr
 | `store_page_views` | views of the app's store page | App Store, Play |
 | `installs` | first-time downloads | App Store (first-time downloads), Play (store listing acquisitions) |
 | `redownloads` | downloads by people who had the app before | App Store |
+| `trial_starts` | free trial items started (the $0 Trial in-app item) | App Store |
 | `iap_purchases`, `proceeds_aud` | Plus purchases and money received | App Store, Play |
 | `visits`, `orders`, `sales_total`, `revenue_aud`, `active_listings` | shop numbers | Etsy |
 | `score`, `upvotes` | community votes | Reddit, Product Hunt, AlternativeTo |
