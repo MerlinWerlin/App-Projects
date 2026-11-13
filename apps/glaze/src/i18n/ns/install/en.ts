@@ -55,6 +55,8 @@ export const en = {
     chooseApps: 'Choose apps',
   },
   method: {
+    // Owner 2026-11-13: for anyone who already has a second set from before 1.0.28.
+    duplicateNote: 'Seeing two sets of Glaze icons? Open Settings › General › VPN & Device Management, tap the older Glaze profile and remove it. Its icons go with it.',
     heading: 'How to install',
     bulk: 'Install all at once',
     // T210: eyebrow over the Install all at once heading.

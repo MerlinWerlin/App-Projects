@@ -48,6 +48,8 @@ export const hi: NonNullable<LocaleMessages['install']> = {
     chooseApps: 'ऐप चुनें',
   },
   method: {
+    // Owner 2026-11-13: for anyone who already has a second set from before 1.0.28.
+    duplicateNote: 'Glaze आइकन के दो सेट दिख रहे हैं? सेटिंग्स › सामान्य › VPN और डिवाइस प्रबंधन खोलें, पुरानी Glaze प्रोफ़ाइल पर टैप करके उसे हटाएँ। उसके आइकन भी साथ में हट जाएँगे।',
     heading: 'कैसे इंस्टॉल करें',
     // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
     bulk: 'सभी एक साथ इंस्टॉल करें',

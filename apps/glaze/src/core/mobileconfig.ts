@@ -70,6 +70,25 @@ export function isValidInstallId(id: unknown): id is string {
   return typeof id === 'string' && /^[a-z0-9]{6,32}$/.test(id);
 }
 
+/**
+ * Owner 2026-11-13 (a reinstall made the icon profile ADD a second set of icons): the id a Glaze with
+ * no saved id uses. Fixed, never random, so even if every saved copy is lost the identifier is the
+ * same each time and a new profile replaces the last one instead of sitting beside it.
+ */
+export const FIXED_INSTALL_ID = 'glazeicons';
+
+/**
+ * Owner 2026-11-13: which install id to use, from the Keychain copy (kept when Glaze is deleted) and
+ * the AsyncStorage copy (lost on delete). Keychain first; else the stored id (every install made
+ * before 1.0.28 keeps its own id, so updating never adds a duplicate); else FIXED_INSTALL_ID.
+ * `save` lists the copies to write so both hold the chosen id.
+ */
+export function resolveInstallId(keychain: unknown, stored: unknown): { id: string; save: Array<'keychain' | 'storage'> } {
+  if (isValidInstallId(keychain)) return { id: keychain, save: stored === keychain ? [] : ['storage'] };
+  if (isValidInstallId(stored)) return { id: stored, save: ['keychain'] };
+  return { id: FIXED_INSTALL_ID, save: ['keychain', 'storage'] };
+}
+
 /** A fresh random install id (16 lower-case hex characters). Created once and stored by src/store. */
 export function makeInstallId(bytes: (n: number) => Uint8Array = randomBytes): string {
   return Array.from(bytes(8), (x) => x.toString(16).padStart(2, '0')).join('');

@@ -38,6 +38,8 @@ export const ko: NonNullable<LocaleMessages['install']> = {
     chooseApps: '앱 고르기',
   },
   method: {
+    // Owner 2026-11-13: for anyone who already has a second set from before 1.0.28.
+    duplicateNote: 'Glaze 아이콘이 두 세트 보이나요? 설정 › 일반 › VPN 및 기기 관리에서 이전 Glaze 프로파일을 눌러 제거하세요. 그 아이콘도 함께 사라집니다.',
     heading: '설치 방법',
     // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
     bulk: '한 번에 모두 설치',

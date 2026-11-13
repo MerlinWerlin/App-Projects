@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.27: My widget art in the Widgets tab now lists just your theme's Artwork 1 to 5, each with a big number in its gallery colour, with no Remove buttons and no large or medium copies.",
+  "note": "Glaze 1.0.28: installing icons for a new theme always replaces your Glaze icons again, even after Glaze has been deleted and reinstalled. If you already have two sets, the install screen says how to remove the older one.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

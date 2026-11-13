@@ -38,6 +38,8 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
     chooseApps: '选择 App',
   },
   method: {
+    // Owner 2026-11-13: for anyone who already has a second set from before 1.0.28.
+    duplicateNote: '看到两套 Glaze 图标？打开“设置 › 通用 › VPN与设备管理”，轻点较旧的 Glaze 描述文件并将其移除，它的图标会一起消失。',
     heading: '安装方式',
     // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
     bulk: '一次全部安装',
