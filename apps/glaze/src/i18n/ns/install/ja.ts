@@ -38,6 +38,8 @@ export const ja: NonNullable<LocaleMessages['install']> = {
     chooseApps: 'Appを選ぶ',
   },
   method: {
+    // Owner 2026-11-13: for anyone who already has a second set from before 1.0.28.
+    duplicateNote: 'Glazeのアイコンが2組ありますか？ 設定 › 一般 › VPNとデバイス管理 を開き、古いGlazeのプロファイルをタップして削除してください。そのアイコンも一緒に消えます。',
     heading: 'インストール方法',
     // T213: named to match English "Install all at once" (machine translation awaiting native-speaker review).
     bulk: 'すべてまとめてインストール',

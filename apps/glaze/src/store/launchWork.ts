@@ -5,6 +5,7 @@
 // step the app was killed in the middle of runs again on the next launch.
 // Every step is registered here at module load, before the queue starts, so a pending step left by
 // a crash is always found. app/_layout.tsx only calls startLaunchWork().
+import { getInstallId } from './installId';
 import { prepareWidgetArtRecovery } from './widgetArtRecovery';
 import { DEFERRED_STEPS } from '../core/deferredWork';
 import type { ProbeReason } from '../core/installedProbe';
@@ -83,6 +84,10 @@ export function startLaunchWork(): void {
     whenFirstScreen(() => {
       setTimeout(() => {
         void yieldToUi().then(prepareWidgetArtRecovery).then(startDeferred, startDeferred);
+        // Owner 2026-11-13: after the first screen, save the icon profile's install id to the
+        // Keychain (one small read and write), so an install made before 1.0.28 keeps its id even if
+        // Glaze is deleted before the next icon install.
+        void getInstallId().catch(() => undefined);
       }, AFTER_FIRST_SCREEN_MS);
     }, FIRST_SCREEN_CAP_MS);
   } catch {

@@ -40,6 +40,17 @@ public class GlazeWidgetBridgeModule: Module {
     // Version handshake: old installed binaries must not claim that v2 designs were applied.
     AsyncFunction("widgetDesignVersion") { () -> Int in 6 }
 
+    // Owner 2026-11-13 (a reinstall made the icon profile ADD a second set): the install id behind
+    // the icon profile's PayloadIdentifier lives in the Keychain, which iOS keeps when the app is
+    // deleted, so a reinstalled Glaze builds the same identifier and its profile replaces the old one.
+    // This device only (never synced), readable after the first unlock. Only [a-z0-9] values.
+    AsyncFunction("stableValueGet") { (key: String) -> String? in
+      GlazeWidgetBridgeModule.keychainGet(key)
+    }
+    AsyncFunction("stableValueSet") { (key: String, value: String) -> Bool in
+      GlazeWidgetBridgeModule.keychainSet(key, value)
+    }
+
     // Functional designs need no source artwork. A small solid thumbnail keeps library/file
     // invariants intact; the extension renders the live semantic design, never this placeholder.
     AsyncFunction("composeDesignedWidgetPiece") { (id: String, colour: String) -> Bool in
@@ -497,6 +508,47 @@ public class GlazeWidgetBridgeModule: Module {
         }
       }
     }
+  }
+
+  private static let keychainService = "com.jared797.glaze.stable"
+
+  private static func keychainKeyOK(_ key: String) -> Bool {
+    key.range(of: "^[a-z0-9.]{1,64}$", options: .regularExpression) != nil
+  }
+
+  static func keychainGet(_ key: String) -> String? {
+    guard keychainKeyOK(key) else { return nil }
+    let query: [String: Any] = [
+      kSecClass as String: kSecClassGenericPassword,
+      kSecAttrService as String: keychainService,
+      kSecAttrAccount as String: key,
+      kSecReturnData as String: true,
+      kSecMatchLimit as String: kSecMatchLimitOne,
+    ]
+    var out: AnyObject?
+    guard SecItemCopyMatching(query as CFDictionary, &out) == errSecSuccess,
+      let data = out as? Data, let value = String(data: data, encoding: .utf8)
+    else { return nil }
+    return value
+  }
+
+  static func keychainSet(_ key: String, _ value: String) -> Bool {
+    guard keychainKeyOK(key), value.range(of: "^[a-z0-9]{1,64}$", options: .regularExpression) != nil,
+      let data = value.data(using: .utf8)
+    else { return false }
+    let base: [String: Any] = [
+      kSecClass as String: kSecClassGenericPassword,
+      kSecAttrService as String: keychainService,
+      kSecAttrAccount as String: key,
+    ]
+    let update: [String: Any] = [kSecValueData as String: data]
+    let status = SecItemUpdate(base as CFDictionary, update as CFDictionary)
+    if status == errSecSuccess { return true }
+    guard status == errSecItemNotFound else { return false }
+    var add = base
+    add[kSecValueData as String] = data
+    add[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+    return SecItemAdd(add as CFDictionary, nil) == errSecSuccess
   }
 
   /// T221: same rule as WIDGET_ART_ID_RE in src/core/widgetArtLibrary.ts (^[A-Za-z0-9_-]{1,64}$).

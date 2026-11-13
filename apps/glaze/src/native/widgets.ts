@@ -211,6 +211,9 @@ export function validSeamlessInput(input: SeamlessInput | null | undefined): boo
 /** Shape exposed by modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift. */
 type NativeBridge = {
   setTheme(json: string): Promise<boolean>;
+  /** Owner 2026-11-13: Keychain values that survive a reinstall (the icon profile's install id). */
+  stableValueGet?(key: string): Promise<string | null>;
+  stableValueSet?(key: string, value: string): Promise<boolean>;
   widgetDesignVersion?(): Promise<number>;
   setPhoto(uri: string): Promise<boolean>;
   clearPhoto?(): Promise<boolean>;
@@ -668,3 +671,29 @@ export async function dataWidgetAccess(kind: DataWidgetKind, request: boolean): 
   }
 }
 
+
+/**
+ * Owner 2026-11-13: a value in the iOS Keychain (kept when Glaze is deleted and reinstalled), or null
+ * when there is none, the bridge is missing (Expo Go, Android, an older build) or the read fails.
+ */
+export async function stableValueGet(key: string): Promise<string | null> {
+  try {
+    const mod = loadNative();
+    if (!mod?.stableValueGet) return null;
+    const v = await mod.stableValueGet(key);
+    return typeof v === 'string' ? v : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Owner 2026-11-13: saves a Keychain value; false when it could not be saved. */
+export async function stableValueSet(key: string, value: string): Promise<boolean> {
+  try {
+    const mod = loadNative();
+    if (!mod?.stableValueSet) return false;
+    return (await mod.stableValueSet(key, value)) === true;
+  } catch {
+    return false;
+  }
+}

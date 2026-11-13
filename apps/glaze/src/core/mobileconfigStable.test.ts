@@ -252,5 +252,8 @@ test('T242 (owner-1101g, keep): the install screen always builds the profile wit
   assert.match(install, /buildInstallProfiles\([^)]*\{ installId \}\)/);
   const store = readFileSync(new URL('src/store/installId.ts', root), 'utf8');
   assert.match(store, /'glaze\.installId\.v1'/, 'the storage key never changes (a new key = a second profile)');
-  assert.match(store, /isValidInstallId\(stored\)\) return stored/);
+  // Owner 2026-11-13: an existing stored id is always kept (resolveInstallId: Keychain, then this).
+  assert.match(store, /loadInstallId\(deviceStores\)/);
+  const core = readFileSync(new URL('src/core/mobileconfig.ts', root), 'utf8');
+  assert.match(core, /if \(isValidInstallId\(stored\)\) return \{ id: stored, save: \['keychain'\] \};/);
 });

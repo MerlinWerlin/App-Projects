@@ -888,6 +888,10 @@ export default function InstallScreen() {
                     />
                   </View>
                 ) : null}
+                {/* Owner 2026-11-13: how to clear a second set left by an older Glaze (before 1.0.28). */}
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
+                  {t('install.method.duplicateNote')}
+                </Text>
               </View>
             </SquircleCard>
 
