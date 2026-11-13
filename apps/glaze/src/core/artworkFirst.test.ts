@@ -22,13 +22,16 @@ test('theme sync composes in composeOrder and saves once every Artwork piece is 
   assert.match(src, /ready\.length === artworkCount/);
 });
 
-test('My widget art: the Artwork badges sit in a row under the name, not over the title', () => {
+test('My widget art: Artwork 1-5 in order, a big number in the slot colour, no Remove', () => {
+  // Owner 2026-11-13: "the numbers need to be larger and more clear and there needs to be no remove
+  // options just the native art works to the theme".
   const list = readFileSync(join(process.cwd(), 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
-  assert.match(list, /badges: \{ flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2\.xxs \}/);
-  assert.doesNotMatch(list, /position: 'absolute'/);
-  const text = list.slice(list.indexOf('<View style={styles.text}>'));
-  assert.ok(text.indexOf('styles.badges') > text.indexOf('{p.name}'));
+  assert.match(list, /Array\.from\(\{ length: ARTWORK_SLOT_COUNT \}, \(_, i\) => \(\{ n: i \+ 1, p: list\[i % list\.length\] \}\)\)/);
+  assert.match(list, /number: \{ width: sizeV2\.touch, height: sizeV2\.touch/);
+  assert.match(list, /numberText: \{ \.\.\.textV2\.title2, fontWeight: '800' \}/);
+  assert.doesNotMatch(list, /PillButton|ui\.seamless\.library\.remove|position: 'absolute'/);
 });
+
 
 // Owner 2026-11-13 ("remove them unless its the native ones"): the theme's pack art is small only.
 import { THEME_PACK_ART_SIZES, planThemePieces } from './themeArtSync.ts';

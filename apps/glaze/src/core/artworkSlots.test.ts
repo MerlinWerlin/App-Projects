@@ -93,7 +93,7 @@ test('app numbering matches the widget: current theme, small plain art in shelf 
   assert.deepEqual(Object.fromEntries(artworkNumbers([pieces[2]], 't')), { clock: [1, 2, 3, 4, 5] });
   // The art list shows the badges.
   const list = readFileSync(join(process.cwd(), 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
-  assert.match(list, /artworkNumbers\(pieces \?\? \[\], activeThemeId\)/);
+  assert.match(list, /artworkPieces\(pieces, activeThemeId\)/);
   assert.match(list, /backgroundColor: col\.fill/);
   assert.match(list, /t\('ui\.seamless\.library\.artworkA11y', \{ n \}\)/);
 });
