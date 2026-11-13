@@ -23,7 +23,7 @@ import { liveArtPlan, liveArtSpec, withLiveArt, type CountdownArtTargets } from 
 import { pickWallpaper } from '../core/packCatalog';
 import { isRemoteArtTheme, remoteArtFiles } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, widgetSizePx } from '../core/seamlessWidget';
-import { piecesToCompose, planThemePieces, type PlannedThemePiece } from '../core/themeArtSync';
+import { composeOrder, isArtworkPiece, piecesToCompose, planThemePieces, type PlannedThemePiece } from '../core/themeArtSync';
 import type { Theme } from '../core/themes';
 import type { WidgetArtIndex } from '../core/widgetArtLibrary';
 import { optionName, widgetOptionsFromV1, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
@@ -115,7 +115,9 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
     const art = await themeArt(theme, targets);
     const planned = plan(theme, art.options, targets, await widgets.designVersion() >= DESIGNED_WIDGET_CAPABILITY);
     const lib: WidgetArtIndex = { v: 1, pieces: current.pieces };
-    const todo = piecesToCompose(lib, planned);
+    // Owner 2026-11-13: the Artwork pieces (small plain art) first, so Artwork 1-5 fill first.
+    const todo = composeOrder(piecesToCompose(lib, planned));
+    const artworkCount = todo.filter(isArtworkPiece).length;
     // 3. Compose the missing pieces, one at a time.
     const ready: string[] = [];
     let failed = 0;
@@ -135,7 +137,9 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
         // gallery used to change only after the LAST piece. The pieces are planned art first, so
         // listing what is made so far (after 2, then every 6) fills the gallery's Art pages
         // within seconds; the final write below lists the rest.
-        if ((ready.length === 2 || ready.length % 6 === 0) && ready.length < todo.length && !stale()) {
+        // Owner 2026-11-13: also as soon as every Artwork piece is made, so a person who leaves the
+        // app straight after a theme apply or a reinstall already has Artwork 1-5 filled.
+        if ((ready.length === 2 || ready.length === artworkCount || ready.length % 6 === 0) && ready.length < todo.length && !stale()) {
           await widgets.commitThemeArt(theme.id, planned, ready);
         }
       } else failed++;

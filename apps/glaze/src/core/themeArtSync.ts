@@ -104,6 +104,21 @@ export function piecesToCompose(lib: WidgetArtIndex, planned: readonly PlannedTh
   return planned.filter((p) => !have.has(p.id));
 }
 
+/** A small plain art piece: what the Artwork 1-5 widgets show (ThemeArtSlots in ThemeArtWidgets.swift). */
+export function isArtworkPiece(p: Pick<PlannedThemePiece, 'size' | 'live'>): boolean {
+  return p.size === 'small' && !p.live;
+}
+
+/**
+ * Owner 2026-11-13 (build 74, after a reinstall all five Artwork badges sat on one piece): the
+ * order pieces are made in. The Artwork pieces (small plain art) come first, so Artwork 1-5 fill
+ * within seconds of a theme apply or a fresh install, before the designed Clock / Battery / Calendar
+ * and the other sizes. Stable otherwise (plan order within each group).
+ */
+export function composeOrder(todo: readonly PlannedThemePiece[]): PlannedThemePiece[] {
+  return [...todo.filter(isArtworkPiece), ...todo.filter((p) => !isArtworkPiece(p))];
+}
+
 /**
  * The one index write of a theme apply. Keeps every own photo, keeps the planned pieces that are in
  * the index already or whose image is `ready` (made this run), keeps any other piece of this theme

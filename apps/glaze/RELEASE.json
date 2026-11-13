@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.25: the Add Widget gallery now shows the colour-coded Artwork 1 to 5 tiles (coral, amber, mint, blue, violet with a big number). They are new widget entries, so iPhone draws them fresh instead of showing its old saved pictures. Artwork widgets you already placed keep working.",
+  "note": "Glaze 1.0.26: after a theme apply or a fresh install Glaze makes the small Artwork pieces first and saves them straight away, so Artwork 1 to 5 each get their own piece within seconds. The colour badges in My widget art sit under the name instead of over it.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
