@@ -55,3 +55,31 @@ captured_at,scope,channel,account,app,post_id,metric,value,period,source
 2026-11-11,app,etsy,fernfableau,planter-bench-plan,,listing_views,0,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) all-listings table (0 favourites 0 orders)
 2026-11-11,app,etsy,fernfableau,garden-bar-plan,,listing_views,0,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) all-listings table (0 favourites 0 orders)
 2026-11-11,app,etsy,fernfableau,outdoor-bench-plan,,listing_views,0,last_30d,Etsy Stats last 30 days (13 Oct-11 Nov) all-listings table (0 favourites 0 orders)
+2026-11-13,post,tiktok,fernandfableau,,tt-7706258992498052373,video_views,167,lifetime,TikTok Studio Posts list
+2026-11-13,post,tiktok,fernandfableau,,tt-7706258992498052373,likes,0,lifetime,TikTok Studio Posts list
+2026-11-13,post,tiktok,fernandfableau,,tt-7706268997020290324,video_views,188,lifetime,TikTok Studio Posts list
+2026-11-13,post,tiktok,fernandfableau,,tt-7706268997020290324,likes,3,lifetime,TikTok Studio Posts list
+2026-11-13,post,tiktok,fernandfableau,,tt-7706269324368989461,video_views,138,lifetime,TikTok Studio Posts list
+2026-11-13,post,tiktok,fernandfableau,,tt-7706269324368989461,likes,1,lifetime,TikTok Studio Posts list
+2026-11-13,account,tiktok,fernandfableau,,,followers,358,now,TikTok Studio home
+2026-11-13,account,tiktok,fernandfableau,,,video_views,644,last_7d,TikTok Studio home key metrics
+2026-11-13,account,tiktok,fernandfableau,,,likes,4,last_7d,TikTok Studio home key metrics
+2026-11-13,post,instagram,fernandfableau,,ig-DfiLjXXhZU8,video_views,20,lifetime,Instagram profile Reels tab
+2026-11-13,post,instagram,fernandfableau,,ig-DfiLxa9voa7,video_views,19,lifetime,Instagram profile Reels tab
+2026-11-13,post,instagram,fernandfableau,,ig-DfiL_9jNbWw,video_views,28,lifetime,Instagram profile Reels tab
+2026-11-13,account,instagram,fernandfableau,,,followers,54,now,Instagram profile header
+2026-11-13,account,pinterest,fernandfableau,,,monthly_views,21200,last_30d,profile header (21.2k)
+2026-11-13,account,pinterest,fernandfableau,,,followers,2,now,profile header
+2026-11-13,account,etsy,fernfableau,,,visits,2021,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov)
+2026-11-13,account,etsy,fernfableau,,,revenue_aud,495,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov)
+2026-11-13,account,etsy,fernfableau,,,orders,7,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov) (revenue AU$495 / average order AU$70.71)
+2026-11-13,account,etsy,fernfableau,,,conversion_rate_pct,0.3,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov)
+2026-11-13,account,etsy,fernfableau,,,visits_from_pinterest,36,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov) traffic sources
+2026-11-13,account,etsy,fernfableau,,,visits_from_facebook,9,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov) traffic sources
+2026-11-13,account,etsy,fernfableau,,,visits_from_instagram,0,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov) traffic sources
+2026-11-13,account,etsy,fernfableau,,,visits_from_social,45,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov) traffic sources
+2026-11-13,app,etsy,fernfableau,a-frame-plant-ladder-plan,,listing_views,3,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov) all-listings table
+2026-11-13,app,etsy,fernfableau,waterfall-coffee-table-plan,,listing_views,3,last_30d,Etsy Stats last 30 days (15 Oct-13 Nov) all-listings table
+2026-11-13,app,googleplay,Astro Labs AU,backspin,,installs,1,last_28d,Play Console home: Device acquisitions
+2026-11-13,account,appstore,Astro Labs AU,,,installs,16,2026-11-05..2026-11-11,App Store Connect app Units 7D (Free iOS; Linework + Couch combined; from Jared's phone screenshot)
+2026-11-13,account,appstore,Astro Labs AU,,,trial_starts,1,2026-11-05..2026-11-11,App Store Connect app Units 7D (In-App iOS = 1; Jared checked: the free Trial item; app not noted)

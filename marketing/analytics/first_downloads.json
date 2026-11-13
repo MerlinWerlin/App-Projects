@@ -8,5 +8,14 @@
    "first"
   ],
   "note": "First read on 10 Nov (App Store Connect had been signed out). Earlier totals on the Overview page: 5 by 6 Nov, 6 by 7 Nov, 8 by 8 Nov, none shown up to 31 Oct. The first 1-2 are probably Jared and his partner. Next milestone: 10."
+ },
+ "googleplay:backspin": {
+  "first_seen": "2026-11-13",
+  "installs_at_first_seen": 1,
+  "period": "last_28d (Play Console home, Device acquisitions)",
+  "notified": [
+   "first"
+  ],
+  "note": "First Android download for any app. Told to Jared in chat on 13 Nov (phone push is off). Next milestone: 10."
  }
 }
