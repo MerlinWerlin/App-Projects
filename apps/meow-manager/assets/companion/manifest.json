@@ -1,0 +1,30 @@
+{
+  "type": "original generated 2D facial keyframes",
+  "sourceGrid": [
+    3,
+    2
+  ],
+  "cellSize": 512,
+  "bodySource": 0,
+  "headRegion": 0.55,
+  "frames": [
+    "open",
+    "half-blink",
+    "closed",
+    "ear",
+    "glance",
+    "attentive"
+  ],
+  "sha256": {
+    "master-sheet.png": "64bd8e0264969231112307c1f5bd45c4e89bebd945d2c0952d39d0e5f94468c3",
+    "master-sheet-alpha-v2.png": "27d3ce72080eb3ad78ca4d9bb7e26a2aafd762ade1a8c035396b4b5ae0d0b53d",
+    "study-source.png": "a8fb4eac4c520d351efd472914b4f63c57baac2de87ceadc96c23799a38b5edc",
+    "study.jpg": "61146b6a88f34995ee6093bee6d25e9791323b26e6b5b711768bfa049cde45cb",
+    "frame-0.png": "6f4d25489ac79a2baed4a8c3270f2d687a9858ca25be980d3efd02c634e72bc4",
+    "frame-1.png": "2a476160bb03d113e605e87f3612d8a8c56f11d85de40471fa04ce3518fb2f83",
+    "frame-2.png": "c888d6231622c05f66faf7338df1054e66dab6c8056d6e9611a6fd35bb2553be",
+    "frame-3.png": "7586ebdf13bbdefc1c6d9ac83befabd0e955456182b70030330ef25408c2cacc",
+    "frame-4.png": "ce4ff4ea063f392de2ebcacaa8d2c40377e13b3c5fcdfad8cd4872030d00bb77",
+    "frame-5.png": "a9ca4553c0c725b94f53fcf9a1004243da756146443cae3c231323364b44165e"
+  }
+}
