@@ -155,8 +155,18 @@ struct ThemeArtSlotView: View {
 
 @available(iOS 17.0, *)
 enum ThemeArtKind {
-  @MainActor static func configuration(slot: Int) -> some WidgetConfiguration {
-    AppIntentConfiguration(kind: "GlazeThemeArt\(slot)", intent: ChooseWidgetArtIntent.self, provider: ThemeArtProvider(slot: slot)) { entry in
+  // Owner 2026-11-13 (build 74: "the galary ones arent like that ... they do not correspsone"): the
+  // code drew the coloured numbered tiles, but iOS keeps each widget kind's gallery preview and
+  // kept showing the older pictures for GlazeThemeArt1-6. Fresh kinds (GlazeArtwork1-5) have no
+  // preview stored, so iOS must draw the current tiles; the tiles never read the theme, so they can
+  // never go stale again. The GlazeThemeArt kinds stay registered (widgets already placed keep
+  // working, same provider and view) but leave the Home Screen gallery.
+  static func kind(slot: Int, legacy: Bool) -> String {
+    legacy ? "GlazeThemeArt\(slot)" : "GlazeArtwork\(slot)"
+  }
+
+  @MainActor static func configuration(slot: Int, legacy: Bool = false) -> some WidgetConfiguration {
+    AppIntentConfiguration(kind: kind(slot: slot, legacy: legacy), intent: ChooseWidgetArtIntent.self, provider: ThemeArtProvider(slot: slot)) { entry in
       ThemeArtSlotView(entry: entry)
         .widgetURL(URL(string: "glaze://widgets"))
     }
@@ -164,7 +174,7 @@ enum ThemeArtKind {
     .description("Shows your Glaze theme's art once added.")
     .supportedFamilies([.systemSmall])
     .contentMarginsDisabled()
-    .disfavoredLocations([.homeScreen], for: galleryHidden(slot: slot))
+    .disfavoredLocations([.homeScreen], for: legacy ? [.systemSmall] : galleryHidden(slot: slot))
   }
 
   /// Owner 2026-11-08 ("a small and large grey icon at the end of its gallery"): an empty slot
@@ -179,21 +189,27 @@ enum ThemeArtKind {
   }
 }
 
-@available(iOS 17.0, *) struct ThemeArtWidget1: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 1) } }
-@available(iOS 17.0, *) struct ThemeArtWidget2: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 2) } }
-@available(iOS 17.0, *) struct ThemeArtWidget3: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 3) } }
-@available(iOS 17.0, *) struct ThemeArtWidget4: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 4) } }
-@available(iOS 17.0, *) struct ThemeArtWidget5: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 5) } }
-@available(iOS 17.0, *) struct ThemeArtWidget6: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 6) } }
+@available(iOS 17.0, *) struct ThemeArtWidget1: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 1, legacy: true) } }
+@available(iOS 17.0, *) struct ThemeArtWidget2: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 2, legacy: true) } }
+@available(iOS 17.0, *) struct ThemeArtWidget3: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 3, legacy: true) } }
+@available(iOS 17.0, *) struct ThemeArtWidget4: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 4, legacy: true) } }
+@available(iOS 17.0, *) struct ThemeArtWidget5: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 5, legacy: true) } }
+@available(iOS 17.0, *) struct ThemeArtWidget6: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 6, legacy: true) } }
 
-/// The theme's art pages in the gallery, after its Clock, Battery and Calendar.
+@available(iOS 17.0, *) struct ArtworkWidget1: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 1) } }
+@available(iOS 17.0, *) struct ArtworkWidget2: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 2) } }
+@available(iOS 17.0, *) struct ArtworkWidget3: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 3) } }
+@available(iOS 17.0, *) struct ArtworkWidget4: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 4) } }
+@available(iOS 17.0, *) struct ArtworkWidget5: Widget { var body: some WidgetConfiguration { ThemeArtKind.configuration(slot: 5) } }
+
+/// The theme's art pages in the gallery, after its Clock, Battery and Calendar: Artwork 1-5 (fresh
+/// kinds, 2026-11-13). The older GlazeThemeArt1-6 kinds are in GlazeLegacyArtBundle.
 struct GlazeThemeArtBundle: WidgetBundle {
   var body: some Widget {
-    ThemeArtWidget1()
-    ThemeArtWidget2()
-    ThemeArtWidget3()
-    ThemeArtWidget4()
-    ThemeArtWidget5()
-    ThemeArtWidget6()
+    ArtworkWidget1()
+    ArtworkWidget2()
+    ArtworkWidget3()
+    ArtworkWidget4()
+    ArtworkWidget5()
   }
 }

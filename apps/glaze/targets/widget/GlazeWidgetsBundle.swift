@@ -45,6 +45,14 @@ struct GlazeLegacyArtBundle: WidgetBundle {
     ClockWidget()
     DateWidget()
     SeamlessWidget()
+    // 2026-11-13: the GlazeThemeArt1-6 kinds (Artwork before 1.0.25), kept for widgets already
+    // placed and out of the Home Screen gallery; the gallery shows GlazeArtwork1-5 (ThemeArtWidgets.swift).
+    ThemeArtWidget1()
+    ThemeArtWidget2()
+    ThemeArtWidget3()
+    ThemeArtWidget4()
+    ThemeArtWidget5()
+    ThemeArtWidget6()
   }
 }
 
