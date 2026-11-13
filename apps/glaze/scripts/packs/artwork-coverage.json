@@ -1,0 +1,1162 @@
+{
+  "generated": "scripts/packs/artwork-coverage.mjs",
+  "themes": 141,
+  "byArtworkCount": {
+    "2": 45,
+    "3": 35,
+    "4": 56,
+    "5": 5
+  },
+  "problems": [],
+  "perTheme": {
+    "agate-apricot": {
+      "manifest": "glaze-packs-v2/art__agate-apricot__v1__manifest.json",
+      "artwork": [
+        "agate-slice",
+        "band-rhythm",
+        "crystal-progress",
+        "druzy-center"
+      ]
+    },
+    "airmail-daydream": {
+      "manifest": "glaze-packs-v11/art__airmail-daydream__v6__manifest.json",
+      "artwork": [
+        "stamp-terrarium",
+        "hero-small"
+      ]
+    },
+    "alpine-starlight": {
+      "manifest": "glaze-packs-v11/art__alpine-starlight__v6__manifest.json",
+      "artwork": [
+        "copper-eclipse",
+        "jupiter-polar",
+        "saturn-rings",
+        "silver-moon",
+        "spiral-galaxy"
+      ]
+    },
+    "amber-archive": {
+      "manifest": "glaze-packs-v11/art__amber-archive__v6__manifest.json",
+      "artwork": [
+        "archive-wax-seal",
+        "pressed-leaf-bookmark",
+        "reading-chapters",
+        "paper-owl",
+        "hero-small"
+      ]
+    },
+    "apricot-fm": {
+      "manifest": "glaze-packs-v11/art__apricot-fm__v6__manifest.json",
+      "artwork": [
+        "apricot-headphones",
+        "pocket-radio",
+        "vinyl-cat",
+        "hero-small"
+      ]
+    },
+    "aurora-haven": {
+      "manifest": "glaze-packs-v11/art__aurora-haven__v6__manifest.json",
+      "artwork": [
+        "snow-mushrooms",
+        "hero-small"
+      ]
+    },
+    "bamboo-ink": {
+      "manifest": "glaze-packs-v11/art__bamboo-ink__v4__manifest.json",
+      "artwork": [
+        "ink-wash",
+        "leaf-fan",
+        "hero-small"
+      ]
+    },
+    "bellbat-bloom": {
+      "manifest": "glaze-packs-v11/art__bellbat-bloom__v6__manifest.json",
+      "artwork": [
+        "bellflower-basket",
+        "velvet-wing-bow",
+        "seedpod-swing",
+        "hero-small"
+      ]
+    },
+    "berry-stitch": {
+      "manifest": "glaze-packs-v11/art__berry-stitch__v6__manifest.json",
+      "artwork": [
+        "stitched-berry-basket",
+        "hero-small"
+      ]
+    },
+    "billabong-clay": {
+      "manifest": "glaze-packs-v2/art__billabong-clay__v1__manifest.json",
+      "artwork": [
+        "clay-platypus",
+        "drop-progress",
+        "eucalyptus-sprig",
+        "river-ripples"
+      ]
+    },
+    "birchlight": {
+      "manifest": "glaze-packs-v11/art__birchlight__v6__manifest.json",
+      "artwork": [
+        "amber-fern-frame",
+        "birch-seedpod",
+        "golden-leaf",
+        "hero-small"
+      ]
+    },
+    "blueprint-bureau": {
+      "manifest": "glaze-packs-v14/art__blueprint-bureau__v7__manifest.json",
+      "artwork": [
+        "compass-beetle",
+        "hero-small"
+      ]
+    },
+    "bluewing": {
+      "manifest": "glaze-packs-v11/art__bluewing__v6__manifest.json",
+      "artwork": [
+        "production-20261101-wing-study",
+        "hero-small"
+      ]
+    },
+    "boba-bear-club": {
+      "manifest": "glaze-packs-v11/art__boba-bear-club__v6__manifest.json",
+      "artwork": [
+        "tapioca-planet",
+        "hero-small"
+      ]
+    },
+    "brass-afterhours": {
+      "manifest": "glaze-packs-v2/art__brass-afterhours__v1__manifest.json",
+      "artwork": [
+        "key-rhythm",
+        "reed-study",
+        "sax-bell"
+      ]
+    },
+    "cacao-velvet": {
+      "manifest": "glaze-packs-v2/art__cacao-velvet__v1__manifest.json",
+      "artwork": [
+        "cacao-leaf",
+        "cacao-pod",
+        "roast-beans"
+      ]
+    },
+    "calla-obscura": {
+      "manifest": "glaze-packs-v2/art__calla-obscura__v1__manifest.json",
+      "artwork": [
+        "calla-pair",
+        "dew-leaf",
+        "pearl-vase"
+      ]
+    },
+    "canopy-glaze": {
+      "manifest": "glaze-packs-v2/art__canopy-glaze__v1__manifest.json",
+      "artwork": [
+        "jade-climber",
+        "leaf-relief",
+        "tail-medallion"
+      ]
+    },
+    "carbon-velocity": {
+      "manifest": "glaze-packs-v11/art__carbon-velocity__v6__manifest.json",
+      "artwork": [
+        "titanium-turbine",
+        "hero-small"
+      ]
+    },
+    "carrom-cedar": {
+      "manifest": "glaze-packs-v2/art__carrom-cedar__v1__manifest.json",
+      "artwork": [
+        "cedar-board",
+        "disc-stack",
+        "red-striker"
+      ]
+    },
+    "cherry-arcade": {
+      "manifest": "glaze-packs-v14/art__cherry-arcade__v7__manifest.json",
+      "artwork": [
+        "arcade-goals",
+        "pixel-cherry-star"
+      ]
+    },
+    "cherry-ribbon": {
+      "manifest": "glaze-packs-v11/art__cherry-ribbon__v6__manifest.json",
+      "artwork": [
+        "ribbon-locket",
+        "hero-small"
+      ]
+    },
+    "chromatic-lab": {
+      "manifest": "glaze-packs-v11/art__chromatic-lab__v6__manifest.json",
+      "artwork": [
+        "molecular-butterfly",
+        "prism-beaker-garden",
+        "spiral-glass",
+        "hero-small"
+      ]
+    },
+    "cicada-linen": {
+      "manifest": "glaze-packs-v11/art__cicada-linen__v4__manifest.json",
+      "artwork": [
+        "cicada-portrait",
+        "wing-venation",
+        "hero-small"
+      ]
+    },
+    "cloud-atelier": {
+      "manifest": "glaze-packs-v11/art__cloud-atelier__v6__manifest.json",
+      "artwork": [
+        "balloon-skiff",
+        "cloud-kite",
+        "paper-boat",
+        "hero-small"
+      ]
+    },
+    "cloudwash": {
+      "manifest": "glaze-packs-v11/art__cloudwash__v6__manifest.json",
+      "artwork": [
+        "clothespin-bird",
+        "cloud-laundry-basket",
+        "star-wash",
+        "hero-small"
+      ]
+    },
+    "clover-nap": {
+      "manifest": "glaze-packs-v11/art__clover-nap__v6__manifest.json",
+      "artwork": [
+        "daisy-ladybird",
+        "hero-small"
+      ]
+    },
+    "cobalt-caravan": {
+      "manifest": "glaze-packs-v11/art__cobalt-caravan__v6__manifest.json",
+      "artwork": [
+        "lapis-compass",
+        "oasis-bird",
+        "sand-cat",
+        "hero-small"
+      ]
+    },
+    "cobalt-ribbon": {
+      "manifest": "glaze-packs-v2/art__cobalt-ribbon__v1__manifest.json",
+      "artwork": [
+        "brushed-blue",
+        "folded-fan",
+        "ribbon-loop"
+      ]
+    },
+    "concertina-rose": {
+      "manifest": "glaze-packs-v2/art__concertina-rose__v1__manifest.json",
+      "artwork": [
+        "bellows-fold",
+        "pearl-buttons",
+        "rosewood-concertina"
+      ]
+    },
+    "copper-circuit": {
+      "manifest": "glaze-packs-v2/art__copper-circuit__v1__manifest.json",
+      "artwork": [
+        "chip-island",
+        "copper-coil",
+        "trace-flow"
+      ]
+    },
+    "crimson-reverie": {
+      "manifest": "glaze-packs-v11/art__crimson-reverie__v6__manifest.json",
+      "artwork": [
+        "crimson-fan",
+        "silk-crane",
+        "silk-dragon",
+        "hero-small"
+      ]
+    },
+    "crumbkin": {
+      "manifest": "glaze-packs-v11/art__crumbkin__v6__manifest.json",
+      "artwork": [
+        "crumb-goals",
+        "nougat-flowerpot"
+      ]
+    },
+    "curlfin-cove": {
+      "manifest": "glaze-packs-v11/art__curlfin-cove__v6__manifest.json",
+      "artwork": [
+        "paper-starfish",
+        "quilled-nautilus",
+        "shell-nap",
+        "hero-small"
+      ]
+    },
+    "curling-frost": {
+      "manifest": "glaze-packs-v2/art__curling-frost__v1__manifest.json",
+      "artwork": [
+        "granite-stone",
+        "house-rings",
+        "sweep-brush"
+      ]
+    },
+    "desert-afterglow": {
+      "manifest": "glaze-packs-v11/art__desert-afterglow__v6__manifest.json",
+      "artwork": [
+        "crescent-moon",
+        "desert-scarab",
+        "sandstone-arch",
+        "pyramid",
+        "solstice-seal"
+      ]
+    },
+    "dewdrop-den": {
+      "manifest": "glaze-packs-v11/art__dewdrop-den__v6__manifest.json",
+      "artwork": [
+        "fern-dew-bead",
+        "moss-lantern-ball",
+        "raindrop-den",
+        "hero-small"
+      ]
+    },
+    "disco-drift": {
+      "manifest": "glaze-packs-v11/art__disco-drift__v6__manifest.json",
+      "artwork": [
+        "mirror-snapshot",
+        "hero-small"
+      ]
+    },
+    "dunesilk": {
+      "manifest": "glaze-packs-v11/art__dunesilk__v6__manifest.json",
+      "artwork": [
+        "wind-lines",
+        "hero-small"
+      ]
+    },
+    "ember-rift": {
+      "manifest": "glaze-packs-v11/art__ember-rift__v6__manifest.json",
+      "artwork": [
+        "cooling-lava",
+        "hero-small"
+      ]
+    },
+    "ember-workshop": {
+      "manifest": "glaze-packs-v11/art__ember-workshop__v6__manifest.json",
+      "artwork": [
+        "ember-lizard",
+        "tin-workshop-robot",
+        "pocket-railway",
+        "hero-small"
+      ]
+    },
+    "emerald-curio": {
+      "manifest": "glaze-packs-v11/art__emerald-curio__v6__manifest.json",
+      "artwork": [
+        "fern-curio-orb",
+        "hero-small"
+      ]
+    },
+    "espresso-hour": {
+      "manifest": "glaze-packs-v14/art__espresso-hour__v7__manifest.json",
+      "artwork": [
+        "coffee-plant-glass",
+        "hero-small"
+      ]
+    },
+    "event-horizon": {
+      "manifest": "glaze-packs-v11/art__event-horizon__v6__manifest.json",
+      "artwork": [
+        "gravity-hourglass",
+        "orbit-diamond",
+        "lensing-study",
+        "hero-small"
+      ]
+    },
+    "fern-and-brass": {
+      "manifest": "glaze-packs-v14/art__fern-and-brass__v7__manifest.json",
+      "artwork": [
+        "brass-leaf-beetle",
+        "fern-glasshouse",
+        "hero-small"
+      ]
+    },
+    "fig-nocturne": {
+      "manifest": "glaze-packs-v11/art__fig-nocturne__v4__manifest.json",
+      "artwork": [
+        "fig-pair",
+        "rose-seeds",
+        "hero-small"
+      ]
+    },
+    "firefly-grove": {
+      "manifest": "glaze-packs-v11/art__firefly-grove__v6__manifest.json",
+      "artwork": [
+        "firefly-jar",
+        "mosswood-door",
+        "sleeping-fox",
+        "hero-small"
+      ]
+    },
+    "floatplane-blue": {
+      "manifest": "glaze-packs-v2/art__floatplane-blue__v1__manifest.json",
+      "artwork": [
+        "floatplane-model",
+        "pontoon-study",
+        "wood-propeller"
+      ]
+    },
+    "fossil-cove": {
+      "manifest": "glaze-packs-v11/art__fossil-cove__v6__manifest.json",
+      "artwork": [
+        "fossil-ammonite",
+        "hero-small"
+      ]
+    },
+    "froggy-picnic": {
+      "manifest": "glaze-packs-v11/art__froggy-picnic__v6__manifest.json",
+      "artwork": [
+        "strawberry-basket",
+        "hero-small"
+      ]
+    },
+    "frostglass-passage": {
+      "manifest": "glaze-packs-v11/art__frostglass-passage__v6__manifest.json",
+      "artwork": [
+        "glacier-pebble",
+        "ice-lantern",
+        "frost-fox",
+        "hero-small"
+      ]
+    },
+    "gambit-house": {
+      "manifest": "glaze-packs-v11/art__gambit-house__v6__manifest.json",
+      "artwork": [
+        "onyx-rook",
+        "pawn-pair",
+        "oxblood-knight",
+        "hero-small"
+      ]
+    },
+    "ginkgo-hour": {
+      "manifest": "glaze-packs-v11/art__ginkgo-hour__v6__manifest.json",
+      "artwork": [
+        "production-20261101-fan-leaf",
+        "hero-small"
+      ]
+    },
+    "glacier-quiet": {
+      "manifest": "glaze-packs-v11/art__glacier-quiet__v6__manifest.json",
+      "artwork": [
+        "frost-feather",
+        "glacial-iceberg",
+        "frozen-bubbles",
+        "hero-small"
+      ]
+    },
+    "glider-nook": {
+      "manifest": "glaze-packs-v3/art__glider-nook__v1__manifest.json",
+      "artwork": [
+        "felt-leaves",
+        "leaf-progress",
+        "seed-keeper",
+        "winglet"
+      ]
+    },
+    "heirloom-rouge": {
+      "manifest": "glaze-packs-v11/art__heirloom-rouge__v4__manifest.json",
+      "artwork": [
+        "seed-crosscut",
+        "vine-trio",
+        "hero-small"
+      ]
+    },
+    "heron-reed": {
+      "manifest": "glaze-packs-v11/art__heron-reed__v4__manifest.json",
+      "artwork": [
+        "heron-still",
+        "reed-rhythm",
+        "hero-small"
+      ]
+    },
+    "honeywood": {
+      "manifest": "glaze-packs-v14/art__honeywood__v7__manifest.json",
+      "artwork": [
+        "wool-moth",
+        "hero-small"
+      ]
+    },
+    "indigo-current": {
+      "manifest": "glaze-packs-v11/art__indigo-current__v6__manifest.json",
+      "artwork": [
+        "ink-stingray",
+        "paper-lighthouse",
+        "paper-harbour",
+        "hero-small"
+      ]
+    },
+    "jade-meridian": {
+      "manifest": "glaze-packs-v11/art__jade-meridian__v6__manifest.json",
+      "artwork": [
+        "jade-bonsai",
+        "mountain-crane",
+        "valley-disc",
+        "hero-small"
+      ]
+    },
+    "jellylight": {
+      "manifest": "glaze-packs-v11/art__jellylight__v6__manifest.json",
+      "artwork": [
+        "glass-anemone",
+        "opal-stingray",
+        "prism-drifter",
+        "hero-small"
+      ]
+    },
+    "juniper-mist": {
+      "manifest": "glaze-packs-v12/art__juniper-mist__v6__manifest.json",
+      "artwork": [
+        "production-20261101-needle-study",
+        "hero-small"
+      ]
+    },
+    "kaleido-cobalt": {
+      "manifest": "glaze-packs-v3/art__kaleido-cobalt__v1__manifest.json",
+      "artwork": [
+        "cobalt-kaleidoscope",
+        "mirror-triad",
+        "optical-rosette"
+      ]
+    },
+    "kingfisher-blue": {
+      "manifest": "glaze-packs-v12/art__kingfisher-blue__v6__manifest.json",
+      "artwork": [
+        "production-20261101-reed-perch",
+        "hero-small"
+      ]
+    },
+    "labradorite-hush": {
+      "manifest": "glaze-packs-v12/art__labradorite-hush__v4__manifest.json",
+      "artwork": [
+        "cleavage-lines",
+        "stone-pair",
+        "hero-small"
+      ]
+    },
+    "lavender-nocturne": {
+      "manifest": "glaze-packs-v12/art__lavender-nocturne__v6__manifest.json",
+      "artwork": [
+        "lavender-butterfly",
+        "lavender-dream-jar",
+        "teacup-village",
+        "hero-small"
+      ]
+    },
+    "lemon-lagoon": {
+      "manifest": "glaze-packs-v12/art__lemon-lagoon__v6__manifest.json",
+      "artwork": [
+        "lemon-sailboat",
+        "hero-small"
+      ]
+    },
+    "lotus-drift": {
+      "manifest": "glaze-packs-v12/art__lotus-drift__v6__manifest.json",
+      "artwork": [
+        "pond-dragonfly",
+        "hero-small"
+      ]
+    },
+    "lumen-mosaic": {
+      "manifest": "glaze-packs-v12/art__lumen-mosaic__v6__manifest.json",
+      "artwork": [
+        "tessellated-sunbird",
+        "hero-small"
+      ]
+    },
+    "madder-fold": {
+      "manifest": "glaze-packs-v3/art__madder-fold__v1__manifest.json",
+      "artwork": [
+        "folded-cotton",
+        "pleat-study",
+        "resist-ring"
+      ]
+    },
+    "magnolia-veil": {
+      "manifest": "glaze-packs-v12/art__magnolia-veil__v4__manifest.json",
+      "artwork": [
+        "gentle-progress",
+        "ivory-bloom",
+        "petal-fold",
+        "hero-small"
+      ]
+    },
+    "manta-silk": {
+      "manifest": "glaze-packs-v12/art__manta-silk__v4__manifest.json",
+      "artwork": [
+        "ripple-caustic",
+        "sand-rays"
+      ]
+    },
+    "marigold-miles": {
+      "manifest": "glaze-packs-v3/art__marigold-miles__v1__manifest.json",
+      "artwork": [
+        "chrome-headlamp",
+        "ivory-helmet",
+        "marigold-scooter"
+      ]
+    },
+    "marquetry-arc": {
+      "manifest": "glaze-packs-v3/art__marquetry-arc__v1__manifest.json",
+      "artwork": [
+        "chevron-grain",
+        "nested-arch",
+        "veneer-sun"
+      ]
+    },
+    "match-point": {
+      "manifest": "glaze-packs-v12/art__match-point__v6__manifest.json",
+      "artwork": [
+        "racket-butterfly",
+        "tennis-planter",
+        "racket-study",
+        "hero-small"
+      ]
+    },
+    "matcha-mews": {
+      "manifest": "glaze-packs-v12/art__matcha-mews__v6__manifest.json",
+      "artwork": [
+        "teacup-fern",
+        "hero-small"
+      ]
+    },
+    "matcha-riso-garden": {
+      "manifest": "glaze-packs-v12/art__matcha-riso-garden__v6__manifest.json",
+      "artwork": [
+        "riso-butterfly",
+        "hero-small"
+      ]
+    },
+    "meadowglow": {
+      "manifest": "glaze-packs-v12/art__meadowglow__v6__manifest.json",
+      "artwork": [
+        "dew-grass-orb",
+        "sunlit-dandelion",
+        "morning-grass",
+        "hero-small"
+      ]
+    },
+    "midnight-conservatory": {
+      "manifest": "glaze-packs-v12/art__midnight-conservatory__v6__manifest.json",
+      "artwork": [
+        "dew-capsule",
+        "night-orchid",
+        "hanging-garden",
+        "hero-small"
+      ]
+    },
+    "midnight-matinee": {
+      "manifest": "glaze-packs-v12/art__midnight-matinee__v6__manifest.json",
+      "artwork": [
+        "popcorn-planet",
+        "velvet-cinema-bat",
+        "velvet-moth",
+        "hero-small"
+      ]
+    },
+    "millrace-mist": {
+      "manifest": "glaze-packs-v3/art__millrace-mist__v1__manifest.json",
+      "artwork": [
+        "oak-waterwheel",
+        "ripple-study",
+        "timber-bucket"
+      ]
+    },
+    "mochi-sleepover": {
+      "manifest": "glaze-packs-v12/art__mochi-sleepover__v6__manifest.json",
+      "artwork": [
+        "star-hot-water-bottle",
+        "hero-small"
+      ]
+    },
+    "moonmallow": {
+      "manifest": "glaze-packs-v12/art__moonmallow__v6__manifest.json",
+      "artwork": [
+        "wool-cloud-swing",
+        "hero-small"
+      ]
+    },
+    "moonpatch": {
+      "manifest": "glaze-packs-v12/art__moonpatch__v6__manifest.json",
+      "artwork": [
+        "patchwork-kite",
+        "quilted-rocket",
+        "star-catcher",
+        "hero-small"
+      ]
+    },
+    "mosswick": {
+      "manifest": "glaze-packs-v12/art__mosswick__v6__manifest.json",
+      "artwork": [
+        "bark-snail",
+        "moss-tower",
+        "travelling-cottage",
+        "hero-small"
+      ]
+    },
+    "nebula-veil": {
+      "manifest": "glaze-packs-v14/art__nebula-veil__v7__manifest.json",
+      "artwork": [
+        "glass-satellite",
+        "nebula-quill",
+        "nebula-aperture",
+        "hero-small"
+      ]
+    },
+    "neon-monsoon": {
+      "manifest": "glaze-packs-v12/art__neon-monsoon__v6__manifest.json",
+      "artwork": [
+        "neon-paper-fish",
+        "rain-capsule",
+        "midnight-ramen",
+        "hero-small"
+      ]
+    },
+    "obsidian-tide": {
+      "manifest": "glaze-packs-v12/art__obsidian-tide__v6__manifest.json",
+      "artwork": [
+        "audit-20261101-shoreline-shell",
+        "audit-20261101-tidal-eye",
+        "foam-pebble-garden",
+        "sea-glass-wave-sculpture"
+      ]
+    },
+    "ochre-bend": {
+      "manifest": "glaze-packs-v12/art__ochre-bend__v6__manifest.json",
+      "artwork": [
+        "eucalyptus-capsule",
+        "sandstone-kingfisher",
+        "ochre-stone",
+        "hero-small"
+      ]
+    },
+    "olive-outpost": {
+      "manifest": "glaze-packs-v12/art__olive-outpost__v6__manifest.json",
+      "artwork": [
+        "olive-field-radio",
+        "hero-small"
+      ]
+    },
+    "opal-abyss": {
+      "manifest": "glaze-packs-v12/art__opal-abyss__v6__manifest.json",
+      "artwork": [
+        "moon-jelly-window",
+        "pearl-shell",
+        "nautilus",
+        "hero-small"
+      ]
+    },
+    "otter-wash": {
+      "manifest": "glaze-packs-v3/art__otter-wash__v1__manifest.json",
+      "artwork": [
+        "kelp-wash",
+        "pebble-study",
+        "shell-keeper",
+        "shell-progress"
+      ]
+    },
+    "papaya-punch": {
+      "manifest": "glaze-packs-v3/art__papaya-punch__v1__manifest.json",
+      "artwork": [
+        "palmate-leaf",
+        "papaya-half",
+        "seed-rosette",
+        "sun-study"
+      ]
+    },
+    "paper-carnival": {
+      "manifest": "glaze-packs-v12/art__paper-carnival__v6__manifest.json",
+      "artwork": [
+        "confetti-snail",
+        "paper-dragon-kite",
+        "pinwheel-trio",
+        "hero-small"
+      ]
+    },
+    "peach-puddle": {
+      "manifest": "glaze-packs-v12/art__peach-puddle__v6__manifest.json",
+      "artwork": [
+        "peach-umbrella-snail",
+        "hero-small"
+      ]
+    },
+    "peachskin": {
+      "manifest": "glaze-packs-v12/art__peachskin__v6__manifest.json",
+      "artwork": [
+        "production-20261101-velvet-peach",
+        "hero-small"
+      ]
+    },
+    "pebblekin-grove": {
+      "manifest": "glaze-packs-v12/art__pebblekin-grove__v6__manifest.json",
+      "artwork": [
+        "fern-altar",
+        "pebble-moth",
+        "sprout-keeper",
+        "hero-small"
+      ]
+    },
+    "persimmon-press": {
+      "manifest": "glaze-packs-v4/art__persimmon-press__v1__manifest.json",
+      "artwork": [
+        "calyx-star",
+        "carved-grain",
+        "persimmon-pair",
+        "seed-progress"
+      ]
+    },
+    "phosphor-amber": {
+      "manifest": "glaze-packs-v4/art__phosphor-amber__v1__manifest.json",
+      "artwork": [
+        "buffer-progress-v2",
+        "floppy-study",
+        "pixel-landscape",
+        "terminal-desk"
+      ]
+    },
+    "pistachio-parlour": {
+      "manifest": "glaze-packs-v12/art__pistachio-parlour__v6__manifest.json",
+      "artwork": [
+        "pistachio-sundae",
+        "hero-small"
+      ]
+    },
+    "pitaya-pop": {
+      "manifest": "glaze-packs-v4/art__pitaya-pop__v1__manifest.json",
+      "artwork": [
+        "bract-rosette",
+        "seeded-slice",
+        "whole-pitaya"
+      ]
+    },
+    "plume-court": {
+      "manifest": "glaze-packs-v12/art__plume-court__v6__manifest.json",
+      "artwork": [
+        "porcelain-quail",
+        "hero-small"
+      ]
+    },
+    "pocket-pup": {
+      "manifest": "glaze-packs-v12/art__pocket-pup__v6__manifest.json",
+      "artwork": [
+        "pocket-mailbox",
+        "hero-small"
+      ]
+    },
+    "porcelain-tide": {
+      "manifest": "glaze-packs-v14/art__porcelain-tide__v7__manifest.json",
+      "artwork": [
+        "blue-lotus-bowl",
+        "porcelain-crane",
+        "koi-medallion",
+        "hero-small"
+      ]
+    },
+    "portico-dawn": {
+      "manifest": "glaze-packs-v4/art__portico-dawn__v1__manifest.json",
+      "artwork": [
+        "curved-stair",
+        "fluted-column",
+        "three-arch-portico"
+      ]
+    },
+    "prism-orchard": {
+      "manifest": "glaze-packs-v12/art__prism-orchard__v6__manifest.json",
+      "artwork": [
+        "glass-plum",
+        "opal-tree-frog",
+        "petal-hummingbird",
+        "hero-small"
+      ]
+    },
+    "protea-blush": {
+      "manifest": "glaze-packs-v12/art__protea-blush__v4__manifest.json",
+      "artwork": [
+        "bloom-progress",
+        "king-protea",
+        "silver-leaf"
+      ]
+    },
+    "puffin-fold": {
+      "manifest": "glaze-packs-v4/art__puffin-fold__v1__manifest.json",
+      "artwork": [
+        "cliff-strata",
+        "egg-progress",
+        "paper-flight",
+        "puffin-perch"
+      ]
+    },
+    "quince-foil": {
+      "manifest": "glaze-packs-v4/art__quince-foil__v1__manifest.json",
+      "artwork": [
+        "folded-leaf",
+        "gilded-quince",
+        "ivory-blossom"
+      ]
+    },
+    "rainleaf": {
+      "manifest": "glaze-packs-v12/art__rainleaf__v6__manifest.json",
+      "artwork": [
+        "jade-rain-frog",
+        "rain-bamboo",
+        "fern-unfurl",
+        "hero-small"
+      ]
+    },
+    "rainlight": {
+      "manifest": "glaze-packs-v14/art__rainlight__v7__manifest.json",
+      "artwork": [
+        "audit-20261101-after-hours",
+        "audit-20261101-rain-window",
+        "glass-umbrella",
+        "rain-leaf",
+        "koi"
+      ]
+    },
+    "regatta-blue": {
+      "manifest": "glaze-packs-v12/art__regatta-blue__v6__manifest.json",
+      "artwork": [
+        "sail-glass-bottle",
+        "hero-small"
+      ]
+    },
+    "rosewater-reverie": {
+      "manifest": "glaze-packs-v12/art__rosewater-reverie__v6__manifest.json",
+      "artwork": [
+        "audit-20261101-pearl-pendulum",
+        "glass-rose",
+        "pearl-ballet-brooch",
+        "satin-swan",
+        "hero-small"
+      ]
+    },
+    "saddlewood": {
+      "manifest": "glaze-packs-v12/art__saddlewood__v6__manifest.json",
+      "artwork": [
+        "leather-compass",
+        "hero-small"
+      ]
+    },
+    "saffron-courtyard": {
+      "manifest": "glaze-packs-v12/art__saffron-courtyard__v6__manifest.json",
+      "artwork": [
+        "glazed-lemons",
+        "mosaic-sunbird",
+        "pomegranate-court",
+        "hero-small"
+      ]
+    },
+    "saguaro-siesta": {
+      "manifest": "glaze-packs-v12/art__saguaro-siesta__v6__manifest.json",
+      "artwork": [
+        "terracotta-snake",
+        "hero-small"
+      ]
+    },
+    "saltveil": {
+      "manifest": "glaze-packs-v12/art__saltveil__v6__manifest.json",
+      "artwork": [
+        "salt-crystal",
+        "hero-small"
+      ]
+    },
+    "sea-glass-sunday": {
+      "manifest": "glaze-packs-v12/art__sea-glass-sunday__v6__manifest.json",
+      "artwork": [
+        "sea-glass-bottle",
+        "hero-small"
+      ]
+    },
+    "shuttle-sage": {
+      "manifest": "glaze-packs-v4/art__shuttle-sage__v1__manifest.json",
+      "artwork": [
+        "feather-fan",
+        "feather-shuttle",
+        "racket-study"
+      ]
+    },
+    "signal-yellow": {
+      "manifest": "glaze-packs-v12/art__signal-yellow__v6__manifest.json",
+      "artwork": [
+        "signal-lantern",
+        "transit-ticket-fold",
+        "platform-slice",
+        "hero-small"
+      ]
+    },
+    "silver-orchard": {
+      "manifest": "glaze-packs-v12/art__silver-orchard__v6__manifest.json",
+      "artwork": [
+        "glass-orchard-snail",
+        "silver-leaf-lantern",
+        "silver-dormouse",
+        "hero-small"
+      ]
+    },
+    "sonata-house": {
+      "manifest": "glaze-packs-v12/art__sonata-house__v6__manifest.json",
+      "artwork": [
+        "practice-chapters",
+        "string-butterfly",
+        "hero-small"
+      ]
+    },
+    "spare-time": {
+      "manifest": "glaze-packs-v12/art__spare-time__v6__manifest.json",
+      "artwork": [
+        "bowling-satellite",
+        "spare-goals",
+        "hero-small"
+      ]
+    },
+    "steam-and-sage": {
+      "manifest": "glaze-packs-v4/art__steam-and-sage__v1__manifest.json",
+      "artwork": [
+        "bamboo-steamer",
+        "pleated-dumpling",
+        "woven-lid"
+      ]
+    },
+    "stellar-cradle": {
+      "manifest": "glaze-packs-v13/art__stellar-cradle__v6__manifest.json",
+      "artwork": [
+        "nebula-egg",
+        "star-seedling",
+        "stellar-nursery",
+        "hero-small"
+      ]
+    },
+    "summit-line": {
+      "manifest": "glaze-packs-v13/art__summit-line__v6__manifest.json",
+      "artwork": [
+        "pine-rope-pendant",
+        "hero-small"
+      ]
+    },
+    "sundew-ember": {
+      "manifest": "glaze-packs-v13/art__sundew-ember__v4__manifest.json",
+      "artwork": [
+        "dew-orbit",
+        "sundew-crown",
+        "hero-small"
+      ]
+    },
+    "tapir-terracotta": {
+      "manifest": "glaze-packs-v4/art__tapir-terracotta__v1__manifest.json",
+      "artwork": [
+        "ceramic-tapir",
+        "clay-pebbles",
+        "sage-leaf",
+        "water-drops"
+      ]
+    },
+    "tempest-noir": {
+      "manifest": "glaze-packs-v13/art__tempest-noir__v6__manifest.json",
+      "artwork": [
+        "storm-glass",
+        "hero-small"
+      ]
+    },
+    "tessera-tempo": {
+      "manifest": "glaze-packs-v4/art__tessera-tempo__v1__manifest.json",
+      "artwork": [
+        "arc-current",
+        "dot-progress",
+        "quadrant-rosette",
+        "tile-weave"
+      ]
+    },
+    "thistle-etch": {
+      "manifest": "glaze-packs-v4/art__thistle-etch__v1__manifest.json",
+      "artwork": [
+        "seed-tuft",
+        "silver-leaf",
+        "thistle-head"
+      ]
+    },
+    "toucan-loom": {
+      "manifest": "glaze-packs-v4/art__toucan-loom__v1__manifest.json",
+      "artwork": [
+        "canopy-leaf",
+        "tuft-progress",
+        "tufted-toucan",
+        "woven-feather"
+      ]
+    },
+    "tryline-russet": {
+      "manifest": "glaze-packs-v4/art__tryline-russet__v1__manifest.json",
+      "artwork": [
+        "ivory-posts",
+        "russet-ball",
+        "stitched-boot"
+      ]
+    },
+    "typecase-ivory": {
+      "manifest": "glaze-packs-v4/art__typecase-ivory__v1__manifest.json",
+      "artwork": [
+        "ampersand-block",
+        "ink-brayer",
+        "typecase-grid"
+      ]
+    },
+    "velvet-observatory": {
+      "manifest": "glaze-packs-v13/art__velvet-observatory__v6__manifest.json",
+      "artwork": [
+        "brass-telescope",
+        "lunar-moth",
+        "pearl-orrery",
+        "hero-small"
+      ]
+    },
+    "verdigris-voyage": {
+      "manifest": "glaze-packs-v13/art__verdigris-voyage__v6__manifest.json",
+      "artwork": [
+        "copper-seed-capsule",
+        "terrarium-sailboat",
+        "greenhouse-airship"
+      ]
+    },
+    "wickling-hollow": {
+      "manifest": "glaze-packs-v13/art__wickling-hollow__v6__manifest.json",
+      "artwork": [
+        "candle-lantern-beetle",
+        "hollow-key-door",
+        "moth-lantern",
+        "hero-small"
+      ]
+    },
+    "willow-wicket": {
+      "manifest": "glaze-packs-v4/art__willow-wicket__v1__manifest.json",
+      "artwork": [
+        "innings-score",
+        "stitched-ball",
+        "wicket-study",
+        "willow-bat"
+      ]
+    },
+    "wisteria-hush": {
+      "manifest": "glaze-packs-v13/art__wisteria-hush__v6__manifest.json",
+      "artwork": [
+        "wisteria-lacewing",
+        "hero-small"
+      ]
+    },
+    "woven-wander": {
+      "manifest": "glaze-packs-v4/art__woven-wander__v1__manifest.json",
+      "artwork": [
+        "coil-basket",
+        "plaited-fern",
+        "woven-pangolin",
+        "woven-progress"
+      ]
+    },
+    "yuzu-soak": {
+      "manifest": "glaze-packs-v13/art__yuzu-soak__v6__manifest.json",
+      "artwork": [
+        "yuzu-pond-bowl",
+        "hero-small"
+      ]
+    }
+  }
+}

@@ -23,7 +23,10 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-const THUMB = 56;
+// Owner 2026-11-14 ("large image and large number next to each other, not separate"): each row is a
+// big number in the slot colour on the left and the artwork itself, large, on the right.
+const THUMB = 132;
+const NUMBER = 64;
 /** T238: the one-time clean-up runs once per app launch at most (it is a no-op once flagged). */
 let migrationTried = false;
 
@@ -34,6 +37,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
   const [pieces, setPieces] = useState<WidgetArtPiece[] | null>(null);
   const [dir, setDir] = useState('');
   const [activeThemeId, setActiveThemeId] = useState<string | null>(null);
+  const [artwork, setArtwork] = useState<string[] | null>(null);
 
   // T264 (owner-1101i #2): no setState after unmount, and a failed bridge read hides the list
   // instead of rejecting unhandled.
@@ -64,6 +68,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
       }
       setPieces(res.pieces.filter((p) => !!p && typeof p.id === 'string'));
       setDir(typeof res.dir === 'string' ? res.dir : '');
+      setArtwork(Array.isArray(res.artwork) ? res.artwork : null);
     } catch (e) {
       console.warn('[WidgetArt] library read failed', e);
       if (alive.current) setPieces(null);
@@ -78,7 +83,8 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
 
   const base = dir.endsWith('/') ? dir : `${dir}/`;
   // Artwork n = the theme's n-th small plain art piece, cycling (the same rule as the widget).
-  const list = artworkPieces(pieces, activeThemeId);
+  // Owner 2026-11-13: the same ordered list the Home Screen widgets read (index.json `artwork`).
+  const list = artworkPieces(pieces, activeThemeId, artwork);
   const rows = list.length ? Array.from({ length: ARTWORK_SLOT_COUNT }, (_, i) => ({ n: i + 1, p: list[i % list.length] })) : [];
 
   return (
@@ -127,8 +133,8 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
 const styles = StyleSheet.create({
   wrap: { gap: spaceV2.sm, marginTop: spaceV2.lg },
   row: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
-  number: { width: sizeV2.touch, height: sizeV2.touch, borderRadius: circleRadius(sizeV2.touch), alignItems: 'center', justifyContent: 'center' },
-  numberText: { ...textV2.title2, fontWeight: '800' },
+  number: { width: NUMBER, height: NUMBER, borderRadius: circleRadius(NUMBER), alignItems: 'center', justifyContent: 'center' },
+  numberText: { ...textV2.largeTitle, fontWeight: '800' },
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
   text: { flex: 1 },
 });

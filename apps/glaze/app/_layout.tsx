@@ -151,6 +151,7 @@ function RootStack() {
       <Stack.Screen name="(tabs)" options={{ headerShown: false, animation: 'none' }} />
       <Stack.Screen name="theme/[id]" options={{ title: t('theme.title') }} />
       <Stack.Screen name="install" options={{ title: t('install.title') }} />
+      <Stack.Screen name="icons-intro" options={{ title: t('theme.iconsIntro.title') }} />
       <Stack.Screen name="icons-cleanup" options={{ title: t('install.cleanup.title') }} />
       <Stack.Screen name="wallpaper" options={{ title: t('wallpaper.title') }} />
       <Stack.Screen name="collage" options={{ title: t('wallpaper.collage.title') }} />

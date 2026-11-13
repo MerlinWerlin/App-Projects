@@ -108,6 +108,24 @@ export const de: NonNullable<LocaleMessages['theme']> = {
     viewWidgets: "Widgets mit diesem Design ansehen",
     addWallpaper: "Hintergrundbild hinzufügen",
   },
+  // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
+  // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  iconsIntro: {
+    title: 'Symbole',
+    skip: 'Überspringen',
+    next: 'Weiter',
+    back: 'Zurück',
+    start: 'Symbole einrichten',
+    stepOf: '{n} von {total}',
+    setUp: 'Symbole einrichten',
+    howItWorks: 'So funktioniert’s',
+    steps: {
+      look: { title: 'Symbole passend zu deinem Thema', body: 'Glaze erstellt App-Symbole in den Farben dieses Themas. Deine Apps bleiben genau, wie sie sind.' },
+      oneGo: { title: 'Alles auf einmal', body: 'Glaze legt das ganze Set in einem Schritt auf deinen Home-Bildschirm, statt Symbol für Symbol.' },
+      confirm: { title: 'Dein iPhone fragt zuerst', body: 'Dein iPhone zeigt kurz einen Bildschirm und fragt, ob du die Symbole hinzufügen möchtest. Das ist normal, und nichts ändert sich, bevor du zustimmst.' },
+      undo: { title: 'Jederzeit änderbar', body: 'Du kannst die Symbole jederzeit wieder entfernen. Deine Apps und ihre Daten bleiben unberührt.' },
+    },
+  },
   parts: {
     title: 'Einrichten',
     subtitle: 'Hintergrund, Symbole und Widgets',

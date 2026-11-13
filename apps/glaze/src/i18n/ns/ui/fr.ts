@@ -173,7 +173,7 @@ export const fr: NonNullable<LocaleMessages['ui']> = {
       added: 'Enregistré et ajouté à Mes illustrations de widget. Pour afficher une illustration différente sur chaque widget, appuyez longuement sur le widget de l’écran d’accueil, touchez Modifier le widget et choisissez-en une.',
       title: 'Mes illustrations de widget',
       hint: 'Chaque illustration utilisée est gardée ici. Appuyez longuement sur un widget Glaze « Sans bordure », touchez Modifier le widget et choisissez-en une : chaque widget peut ainsi afficher une illustration différente.',
-      empty: 'Rien pour l’instant. Touchez Utiliser sur mon widget pour en ajouter une.',
+      empty: 'Ce thème n’a pas encore d’illustrations. Vos widgets Illustration affichent un motif à ses couleurs.',
       remove: 'Retirer',
       removeA11y: 'Retirer {name} de Mes illustrations de widget',
       removed: 'Retiré.',

@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.28: installing icons for a new theme always replaces your Glaze icons again, even after Glaze has been deleted and reinstalled. If you already have two sets, the install screen says how to remove the older one.",
+  "note": "Glaze 1.0.29: Artwork 1 to 5 are now only real artwork and match between the app and the Home Screen. My widget art shows each big number next to its large artwork. Themes without artwork show a design in their colours instead of a grey tile. Use everything sets up your icons every time, with a short walkthrough the first time.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

@@ -47,6 +47,12 @@ export type PlannedThemePiece = Omit<WidgetArtPiece, 'file' | 'created' | 'size'
   slot: number;
   /** The pack's option this piece draws (src/core/widgetOptions.ts). */
   optionId: string;
+  /**
+   * Owner 2026-11-13 ("the first artwork ... is the DATE one ... It should be an artwork"): a pure
+   * illustration for the Artwork 1-5 widgets: small, the pack option's kind is `art`, no live value.
+   * Date / calendar / clock / focus / battery pictures (even static ones with a baked-in date) never are.
+   */
+  artwork?: boolean;
 };
 
 export type PlanInput = {
@@ -96,6 +102,7 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
         slot,
         optionId: option.id,
         ...(live ? { live } : {}),
+        ...(size === 'small' && option.kind === 'art' && !live ? { artwork: true } : {}),
       });
       slot++;
     }
@@ -114,8 +121,8 @@ export function piecesToCompose(lib: WidgetArtIndex, planned: readonly PlannedTh
 }
 
 /** A small plain art piece: what the Artwork 1-5 widgets show (ThemeArtSlots in ThemeArtWidgets.swift). */
-export function isArtworkPiece(p: Pick<PlannedThemePiece, 'size' | 'live'>): boolean {
-  return p.size === 'small' && !p.live;
+export function isArtworkPiece(p: Pick<PlannedThemePiece, 'artwork'>): boolean {
+  return p.artwork === true;
 }
 
 /**
@@ -151,7 +158,7 @@ export function commitThemeArt(
   planned.forEach((p, i) => {
     const prev = byId.get(p.id);
     if (!prev && !readySet.has(p.id)) return; // its image could not be made: left out (file pruned)
-    const { optionId: _optionId, ...rest } = p;
+    const { optionId: _optionId, artwork: _artwork, ...rest } = p;
     kept.push({ ...rest, file: pieceFileName(p.id), created: prev ? prev.created : now - i });
   });
   const others: WidgetArtPiece[] = [];
@@ -163,6 +170,10 @@ export function commitThemeArt(
   }
   const pieces = listPieces({ v: 1, pieces: [...kept, ...others] });
   const next: WidgetArtIndex = { ...lib, v: 1, pieces, currentThemeId: theme };
+  // Owner 2026-11-13: THE ordered Artwork list (pure illustrations, plan order). The app's My widget
+  // art and the widget's Artwork n both read it, so in-app Artwork n = Home Screen Artwork n.
+  const keptIds = new Set(kept.map((p) => p.id));
+  next.artwork = planned.filter((p) => p.artwork === true && keptIds.has(p.id)).map((p) => p.id);
   const retired = retire(lib.retired, gone, pieces);
   if (retired) next.retired = retired;
   else delete next.retired;

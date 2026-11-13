@@ -108,6 +108,24 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
     viewWidgets: "Voir les widgets avec ce thème",
     addWallpaper: "Ajouter le fond d’écran",
   },
+  // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
+  // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  iconsIntro: {
+    title: 'Icônes',
+    skip: 'Passer',
+    next: 'Suivant',
+    back: 'Retour',
+    start: 'Installer les icônes',
+    stepOf: '{n} sur {total}',
+    setUp: 'Installer les icônes',
+    howItWorks: 'Comment ça marche',
+    steps: {
+      look: { title: 'Des icônes assorties à votre thème', body: 'Glaze crée des icônes d’apps aux couleurs de ce thème. Vos apps restent exactement les mêmes.' },
+      oneGo: { title: 'Tout en une fois', body: 'Glaze ajoute tout l’ensemble à votre écran d’accueil en une seule étape, plutôt qu’icône par icône.' },
+      confirm: { title: 'L’iPhone vous demande d’abord', body: 'L’iPhone affiche un court écran pour vous demander si vous voulez ajouter les icônes. C’est normal, et rien ne change tant que vous n’acceptez pas.' },
+      undo: { title: 'Vous pouvez changer d’avis', body: 'Vous pouvez retirer les icônes quand vous voulez. Vos apps et leurs données ne sont pas touchées.' },
+    },
+  },
   parts: {
     title: 'Mise en place',
     subtitle: 'Fond d’écran, icônes et widgets',

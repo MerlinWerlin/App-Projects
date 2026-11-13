@@ -8,15 +8,15 @@ ROOT = Path(__file__).resolve().parents[1]
 EXACT = [
     'src/ui/WidgetArtMenu.tsx',
     'src/ui/BlendedArt.tsx',
-    'src/core/widgetArtLibrary.ts',
     'src/native/packs.ts', 'src/native/useRemoteCatalog.ts',
-     'app/(tabs)/widgets.tsx',
     'modules/glaze-widget-bridge/ios/ClockArtRenderer.swift',
     'targets/widget/DesignedWidget.swift', 'targets/widget/ThemedWidgetDrawing.swift',
     'src/ui/DesignedThemeWidgets.tsx',
 
 ]
 ALLOWED = {
+    'app/(tabs)/widgets.tsx': 'Owner 2026-11-14 (large image and large number next to each other, not separate): the separate theme art picker is no longer shown; My widget art is the one numbered Artwork list. Owned by Claude.',
+    'src/core/widgetArtLibrary.ts': 'Owner 2026-11-13 (Artwork 1 to 5 must match in the app and on the Home Screen): the index carries an optional ordered artwork list (readMeta). Pieces, parsing and every other field unchanged. Owned by Claude.',
     'src/ui/ThemeWidgetArt.tsx': 'Owner 2026-11-13 (remove the large variations unless native): the theme pack art menu shows on the Small tab only; Medium and Large keep the native widgets. Owned by Claude.',
     'src/ui/WidgetArtLibraryList.tsx': 'Owner 2026-11-12 ("colour code them"): each piece that fills an Artwork slot shows the colour and number badge of that slot (src/core/artworkSlots.ts). Listing, removing and managing unchanged. Owned by Claude.',
     'src/core/widgetOptions.ts': 'Inherited PR252: authored-size filtering, owned by Claude.',

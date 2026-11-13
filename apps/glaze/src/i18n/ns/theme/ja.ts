@@ -108,6 +108,24 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
     viewWidgets: "このテーマのウィジェットを見る",
     addWallpaper: "壁紙を追加",
   },
+  // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
+  // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  iconsIntro: {
+    title: 'アイコン',
+    skip: 'スキップ',
+    next: '次へ',
+    back: '戻る',
+    start: 'アイコンを設定',
+    stepOf: '{n}/{total}',
+    setUp: 'アイコンを設定',
+    howItWorks: 'しくみ',
+    steps: {
+      look: { title: 'テーマに合うアイコン', body: 'Glazeがこのテーマの色でアプリのアイコンを作ります。アプリそのものは何も変わりません。' },
+      oneGo: { title: 'まとめて追加', body: 'Glazeがアイコンをひとつずつではなく、一度にまとめてホーム画面に追加します。' },
+      confirm: { title: '先にiPhoneが確認します', body: 'アイコンを追加するか、iPhoneが短い画面で確認します。これは通常の動作で、同意するまで何も変わりません。' },
+      undo: { title: 'いつでも元に戻せます', body: 'アイコンはいつでも削除できます。アプリやデータには影響しません。' },
+    },
+  },
   parts: {
     title: '設定',
     subtitle: '壁紙、アイコン、ウィジェット',

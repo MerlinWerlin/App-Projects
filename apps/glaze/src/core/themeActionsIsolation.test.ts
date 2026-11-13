@@ -86,7 +86,8 @@ test('Use everything publishes B first, then saves the wallpaper, then opens its
     setThemeChoiceOpen: nothing, setUseBusy: nothing, setUseError: nothing, selectTheme: select,
     onSaveWallpaper: async () => { events.push('wallpaper'); return true; },
     toast: { show: nothing }, t: (key: string) => key,
-    addThemeIcons: () => events.push('icons'),
+    // Owner 2026-11-14: the walkthrough the first time, then the install screen, every time.
+    openIconSetup: async () => { events.push('icons'); },
   });
   await use();
   assert.deepEqual(events, ['B', 'wallpaper', 'icons']);
@@ -99,7 +100,7 @@ test('Use everything still swaps the widgets when the wallpaper save is declined
     usePending: { current: false }, locked: false, themeFocus: { current: 1 }, theme,
     setThemeChoiceOpen: nothing, setUseBusy: nothing, setUseError: nothing, selectTheme: select,
     onSaveWallpaper: async () => false, toast: { show: (m: unknown) => notes.push(m) }, t: (key: string) => key,
-    addThemeIcons: nothing,
+    openIconSetup: async () => undefined,
   });
   await use();
   assert.deepEqual(events, ['B']);

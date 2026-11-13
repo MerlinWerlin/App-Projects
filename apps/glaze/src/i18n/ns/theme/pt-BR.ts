@@ -108,6 +108,24 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
     viewWidgets: "Ver widgets com este tema",
     addWallpaper: "Adicionar o papel de parede",
   },
+  // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
+  // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  iconsIntro: {
+    title: 'Ícones',
+    skip: 'Pular',
+    next: 'Próximo',
+    back: 'Voltar',
+    start: 'Configurar ícones',
+    stepOf: '{n} de {total}',
+    setUp: 'Configurar ícones',
+    howItWorks: 'Como funciona',
+    steps: {
+      look: { title: 'Ícones que combinam com seu tema', body: 'O Glaze cria ícones de apps nas cores deste tema. Seus apps continuam exatamente iguais.' },
+      oneGo: { title: 'Tudo de uma vez', body: 'O Glaze coloca o conjunto inteiro na sua Tela de Início em uma etapa, em vez de um ícone por vez.' },
+      confirm: { title: 'O iPhone pergunta antes', body: 'O iPhone mostra uma tela curta perguntando se você quer adicionar os ícones. É normal, e nada muda até você aceitar.' },
+      undo: { title: 'Mude de ideia quando quiser', body: 'Você pode remover os ícones quando quiser. Seus apps e os dados deles não são alterados.' },
+    },
+  },
   parts: {
     title: 'Configurar',
     subtitle: 'Papel de parede, ícones e widgets',

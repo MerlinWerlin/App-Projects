@@ -108,6 +108,24 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
     viewWidgets: "이 테마의 위젯 보기",
     addWallpaper: "배경화면 추가",
   },
+  // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
+  // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  iconsIntro: {
+    title: '아이콘',
+    skip: '건너뛰기',
+    next: '다음',
+    back: '뒤로',
+    start: '아이콘 설정',
+    stepOf: '{n}/{total}',
+    setUp: '아이콘 설정',
+    howItWorks: '작동 방식',
+    steps: {
+      look: { title: '테마에 어울리는 아이콘', body: 'Glaze가 이 테마의 색으로 앱 아이콘을 만듭니다. 앱은 그대로 유지됩니다.' },
+      oneGo: { title: '한 번에 추가', body: 'Glaze가 아이콘을 하나씩이 아니라 한 번에 홈 화면에 추가합니다.' },
+      confirm: { title: 'iPhone이 먼저 물어봅니다', body: 'iPhone이 아이콘을 추가할지 짧은 화면으로 물어봅니다. 정상적인 과정이며, 허용하기 전에는 아무것도 바뀌지 않습니다.' },
+      undo: { title: '언제든 되돌릴 수 있어요', body: '아이콘은 언제든 지울 수 있습니다. 앱과 데이터는 건드리지 않습니다.' },
+    },
+  },
   parts: {
     title: '설정하기',
     subtitle: '배경화면, 아이콘, 위젯',

@@ -108,6 +108,24 @@ export const en = {
     viewWidgets: "View widgets with this theme",
     addWallpaper: "Add the wallpaper",
   },
+  // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
+  // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  iconsIntro: {
+    title: 'Icons',
+    skip: 'Skip',
+    next: 'Next',
+    back: 'Back',
+    start: 'Set up icons',
+    stepOf: '{n} of {total}',
+    setUp: 'Set up icons',
+    howItWorks: 'How it works',
+    steps: {
+      look: { title: 'Icons that match your theme', body: 'Glaze makes a set of app icons in this theme’s colours. Your apps stay exactly as they are.' },
+      oneGo: { title: 'Added in one go', body: 'Glaze puts the whole set on your Home Screen in one step, instead of one icon at a time.' },
+      confirm: { title: 'iPhone asks you first', body: 'iPhone shows a short screen asking if you want to add the icons. That’s normal, and nothing changes until you say yes.' },
+      undo: { title: 'Change your mind any time', body: 'You can remove the icons whenever you like. Your apps and their data aren’t touched.' },
+    },
+  },
   parts: {
     title: 'Set it up',
     subtitle: 'Wallpaper, icons and widgets',

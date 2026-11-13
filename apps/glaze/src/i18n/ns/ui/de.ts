@@ -168,7 +168,7 @@ export const de: NonNullable<LocaleMessages['ui']> = {
       added: 'Gespeichert und zu „Meine Widget-Motive“ hinzugefügt. Für ein anderes Motiv pro Widget halte das Widget auf dem Home-Bildschirm gedrückt, tippe auf „Widget bearbeiten“ und wähle eines aus.',
       title: 'Meine Widget-Motive',
       hint: 'Jedes verwendete Motiv wird hier aufbewahrt. Halte ein Glaze-Widget „Nahtlos“ gedrückt, tippe auf „Widget bearbeiten“ und wähle ein Motiv – so zeigt jedes Widget etwas anderes.',
-      empty: 'Noch leer. Tippe auf „Für mein Widget verwenden“, um ein Motiv hinzuzufügen.',
+      empty: 'Dieses Thema hat noch keine Kunstwerke. Deine Kunstwerk-Widgets zeigen ein Motiv in seinen Farben.',
       remove: 'Entfernen',
       removeA11y: '{name} aus „Meine Widget-Motive“ entfernen',
       removed: 'Entfernt.',
