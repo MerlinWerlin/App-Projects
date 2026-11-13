@@ -4,9 +4,10 @@
 // keeps them equal. Each slot's colour is a strong mid tone with its own ink (white, or a dark ink
 // on the light amber / mint), readable on light and dark backgrounds.
 //
-// Which piece is Artwork n mirrors ThemeArtSlots (ThemeArtWidgets.swift): the current theme's small
-// pieces in shelf order, plain art only (no live picture, no design; all of them when the theme has
-// no plain art), cycling when the theme has fewer pieces than slots.
+// Which piece is Artwork n: since 2026-11-13 the index's ordered `artwork` list (pure illustrations,
+// written at theme apply by commitThemeArt), read by the app here and by ThemeArtSlots in
+// ThemeArtWidgets.swift, cycling when the theme has fewer pieces than slots. Older indexes without
+// the list fall back to the current theme's small plain pieces in shelf order.
 import type { WidgetArtPiece } from './widgetArtLibrary.ts';
 
 /** Artwork slots shown in the Add Widget gallery. */
@@ -44,7 +45,16 @@ function shelfOrder(a: WidgetArtPiece, b: WidgetArtPiece): number {
 }
 
 /** The pieces Artwork 1, 2, ... draw from (before cycling). */
-export function artworkPieces(pieces: readonly WidgetArtPiece[], currentThemeId: string | null): WidgetArtPiece[] {
+export function artworkPieces(
+  pieces: readonly WidgetArtPiece[],
+  currentThemeId: string | null,
+  /** Owner 2026-11-13: index.json `artwork`, the ordered list the widget reads too (null = older index). */
+  artwork: readonly string[] | null = null,
+): WidgetArtPiece[] {
+  if (artwork) {
+    const byId = new Map(pieces.map((p) => [p.id, p] as const));
+    return artwork.flatMap((id) => byId.get(id) ?? []);
+  }
   if (!currentThemeId) return [];
   const small = pieces
     .filter((p) => p.source !== 'photo' && p.themeId === currentThemeId && p.size === 'small' && !p.live?.design)

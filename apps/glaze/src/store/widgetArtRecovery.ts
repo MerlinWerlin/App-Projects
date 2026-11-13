@@ -14,7 +14,9 @@ import { syncThemeWidgetArt, THEME_ART_PENDING_KEY } from './themeWidgetArt';
 // v3 (owner 2026-11-08, 1.0.16): and once more so hero copies of pieces (heroCopies.ts) drop out.
 // v4 (owner 2026-11-08, 1.0.17): recompose so dim coloured subject parts (the copper moon's limb) stay solid.
 // v5 (owner 2026-11-08, 1.0.18): art pieces on the wallpaper sky, art first in every size.
-const RECOVERY_KEY = 'glaze.widgetArt.recovered106.v5';
+// v6 (owner 2026-11-13, 1.0.28): rebuild once so the index carries the ordered Artwork list (pure
+// illustrations only, no date / focus pictures) and the old medium / large copies go.
+const RECOVERY_KEY = 'glaze.widgetArt.recovered106.v6';
 let recovering: Promise<boolean> | null = null;
 let lastError: string | null = null;
 

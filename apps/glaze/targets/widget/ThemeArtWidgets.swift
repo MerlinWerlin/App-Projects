@@ -24,7 +24,11 @@ enum ThemeArtSlots {
   /// falls back to its other small pictures (designs never).
   static func pieces(family: WidgetFamily) -> [String] {
     // One read of index.json per tile (the flags are parsed with it), not one per piece.
-    let small = WidgetArtStore.snapshot().currentThemeRecords().filter { $0.size == "small" && !$0.design }
+    let snap = WidgetArtStore.snapshot()
+    // Owner 2026-11-13: the app's ordered Artwork list (pure illustrations), the same list My widget
+    // art shows, so Home Screen Artwork n = in-app Artwork n.
+    if let list = snap.artwork { return list.filter { snap.has($0) } }
+    let small = snap.currentThemeRecords().filter { $0.size == "small" && !$0.design }
     let art = small.filter { !$0.live }
     return (art.isEmpty ? small : art).map { $0.id }
   }

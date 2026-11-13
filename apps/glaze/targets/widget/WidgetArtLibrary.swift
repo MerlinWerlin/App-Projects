@@ -69,6 +69,9 @@ struct WidgetArtSnapshot {
   /// T259: index.json `unpinned`, size -> piece id ("" = the theme's plain background). A size not
   /// listed = the last applied image (seamless-<size>.png). Written by the app (followTheme in TS).
   var unpinned: [String: String] = [:]
+  /// Owner 2026-11-13: index.json `artwork`, the current theme's Artwork pieces in slot order (pure
+  /// illustrations only), written by the app (commitThemeArt). nil = an index from before 1.0.28.
+  var artwork: [String]? = nil
 
   func has(_ id: String) -> Bool {
     records.contains { $0.id == id }
@@ -192,7 +195,8 @@ enum WidgetArtStore {
         }
       }
     }
-    return WidgetArtSnapshot(records: newestFirst, currentThemeId: current, retired: retired, unpinned: unpinned)
+    let artwork = (root["artwork"] as? [Any])?.compactMap { $0 as? String }.filter { validID($0) }
+    return WidgetArtSnapshot(records: newestFirst, currentThemeId: current, retired: retired, unpinned: unpinned, artwork: artwork)
   }
 
   /// T259: true when a widget of `family` with no chosen piece shows the theme's plain background

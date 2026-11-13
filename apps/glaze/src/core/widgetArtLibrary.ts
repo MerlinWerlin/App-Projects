@@ -84,6 +84,11 @@ export type WidgetArtIndex = {
    * app writes seamless-<size>.png (pinLastApplied). See unpinnedChoice.
    */
   unpinned?: UnpinnedMap;
+  /**
+   * Owner 2026-11-13: the current theme's Artwork pieces in slot order (pure illustrations only),
+   * written by commitThemeArt. Artwork n (app list and Home Screen widget) = artwork[(n - 1) % length].
+   */
+  artwork?: string[];
 };
 
 /** T259: per size, the piece an unpinned widget follows (null = the theme's plain background). */
@@ -201,7 +206,7 @@ export function parseLibrary(raw: string | null | undefined): WidgetArtIndex {
   return { ...lib, ...meta };
 }
 
-type IndexMeta = Pick<WidgetArtIndex, 'currentThemeId' | 'migrated' | 'retired' | 'unpinned'>;
+type IndexMeta = Pick<WidgetArtIndex, 'currentThemeId' | 'migrated' | 'retired' | 'unpinned' | 'artwork'>;
 
 function readUnpinned(raw: unknown): UnpinnedMap | undefined {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return undefined;
@@ -227,6 +232,9 @@ function readMeta(r: Record<string, unknown>): IndexMeta {
   if (retired) out.retired = retired;
   const unpinned = readUnpinned(r.unpinned);
   if (unpinned) out.unpinned = unpinned;
+  if (Array.isArray(r.artwork)) {
+    out.artwork = r.artwork.filter((id): id is string => typeof id === 'string' && WIDGET_ART_ID_RE.test(id)).slice(0, 20);
+  }
   return out;
 }
 

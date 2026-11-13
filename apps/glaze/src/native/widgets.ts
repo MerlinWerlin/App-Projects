@@ -152,7 +152,12 @@ export type ComposeArtPieceInput =
   | { id: string; kind: 'seamless'; wallpaperUri: string; cropPx: { x: number; y: number; w: number; h: number }; heroUri: string; skipIfPresent?: boolean };
 
 /** T221: widgets.artLibrary() result. */
-export type ArtLibraryResult = WidgetsResult & { pieces: WidgetArtPiece[]; dir: string };
+export type ArtLibraryResult = WidgetsResult & {
+  pieces: WidgetArtPiece[];
+  dir: string;
+  /** Owner 2026-11-13: index.json `artwork` (the ordered Artwork list), null before 1.0.28's rebuild. */
+  artwork?: string[] | null;
+};
 
 /** T146: linkStatus result (normalised status + why it is unavailable). */
 export type WidgetLinkResult = WidgetLinkStatus & { reason: WidgetsReason };
@@ -553,7 +558,7 @@ async function artLibrary(): Promise<ArtLibraryResult> {
     const { mod, reason } = await artBridge();
     if (!mod) return { available: false, ok: false, reason, pieces: [], dir: '' };
     const { lib, dir } = await readArtIndex(mod);
-    return { available: true, ok: true, reason: null, pieces: listPieces(lib), dir };
+    return { available: true, ok: true, reason: null, pieces: listPieces(lib), dir, artwork: lib.artwork ?? null };
   } catch {
     return { available: true, ok: false, reason: 'failed', pieces: [], dir: '' };
   }
