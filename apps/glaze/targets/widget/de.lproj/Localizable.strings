@@ -60,6 +60,12 @@
 "Choose widget art" = "Widget-Motiv wählen";
 "Art" = "Motiv";
 "Artwork %lld" = "Kunstwerk %lld";
+"Artwork 1" = "Kunstwerk 1";
+"Artwork 2" = "Kunstwerk 2";
+"Artwork 3" = "Kunstwerk 3";
+"Artwork 4" = "Kunstwerk 4";
+"Artwork 5" = "Kunstwerk 5";
+"Artwork 6" = "Kunstwerk 6";
 "Widget art" = "Widget-Motiv";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

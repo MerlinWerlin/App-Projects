@@ -6,7 +6,7 @@ import subprocess
 BASE = '1a12b3b2842fec5668f1b13d56d93cb256dd7edd'
 ROOT = Path(__file__).resolve().parents[1]
 EXACT = [
-    'src/ui/ThemeWidgetArt.tsx', 'src/ui/WidgetArtMenu.tsx',
+    'src/ui/WidgetArtMenu.tsx',
     'src/ui/BlendedArt.tsx',
     'src/core/widgetArtLibrary.ts',
     'src/native/packs.ts', 'src/native/useRemoteCatalog.ts',
@@ -17,6 +17,7 @@ EXACT = [
 
 ]
 ALLOWED = {
+    'src/ui/ThemeWidgetArt.tsx': 'Owner 2026-11-13 (remove the large variations unless native): the theme pack art menu shows on the Small tab only; Medium and Large keep the native widgets. Owned by Claude.',
     'src/ui/WidgetArtLibraryList.tsx': 'Owner 2026-11-12 ("colour code them"): each piece that fills an Artwork slot shows the colour and number badge of that slot (src/core/artworkSlots.ts). Listing, removing and managing unchanged. Owned by Claude.',
     'src/core/widgetOptions.ts': 'Inherited PR252: authored-size filtering, owned by Claude.',
     'src/core/themeArtSync.ts': 'Inherited PR252: plan only authored sizes; owner 2026-11-08: art pieces planned first in each size. Owned by Claude.',

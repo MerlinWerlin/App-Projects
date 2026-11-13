@@ -60,6 +60,12 @@
 "Choose widget art" = "Elegir arte del widget";
 "Art" = "Arte";
 "Artwork %lld" = "Obra %lld";
+"Artwork 1" = "Obra 1";
+"Artwork 2" = "Obra 2";
+"Artwork 3" = "Obra 3";
+"Artwork 4" = "Obra 4";
+"Artwork 5" = "Obra 5";
+"Artwork 6" = "Obra 6";
 "Widget art" = "Arte del widget";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

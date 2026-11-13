@@ -34,6 +34,13 @@ import {
 
 export const THEME_ART_SIZES: readonly HomeOptionSize[] = Object.freeze(['small', 'medium', 'large'] as HomeOptionSize[]);
 
+/**
+ * Owner 2026-11-13 ("why is there the option for large variations still in the widget section in
+ * the app - remove them unless its the native ones"): a theme's pack art is small only (Artwork 1-5).
+ * The native designed Clock / Battery / Calendar keep every size (plannedDesignedWidgets).
+ */
+export const THEME_PACK_ART_SIZES: readonly HomeOptionSize[] = Object.freeze(['small'] as HomeOptionSize[]);
+
 /** One piece the theme should have in "My widget art". */
 export type PlannedThemePiece = Omit<WidgetArtPiece, 'file' | 'created' | 'size' | 'slot'> & {
   size: WidgetArtSize;
@@ -53,6 +60,8 @@ export type PlanInput = {
   /** T237: the live spec for a piece, or null (a picture only). */
   live?: (option: WidgetOption, size: HomeOptionSize) => WidgetArtPiece['live'] | null;
   cap?: number;
+  /** Owner 2026-11-13: the sizes to plan (default every Home Screen size). */
+  sizes?: readonly HomeOptionSize[];
 };
 
 /**
@@ -64,7 +73,7 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
   const out: PlannedThemePiece[] = [];
   const seen = new Set<string>();
   const cap = Math.max(0, Math.floor(input.cap ?? WIDGET_ART_LIBRARY_CAP));
-  for (const size of THEME_ART_SIZES) {
+  for (const size of input.sizes ?? THEME_ART_SIZES) {
     let slot = 0;
     // Owner 2026-11-08 ("Aurora is missing art works in its gallery again such as the fox"): art
     // pieces come first in every size, then the theme's live / calendar pictures, so the Add Widget
@@ -102,6 +111,21 @@ export function planThemePieces(input: PlanInput): PlannedThemePiece[] {
 export function piecesToCompose(lib: WidgetArtIndex, planned: readonly PlannedThemePiece[]): PlannedThemePiece[] {
   const have = new Set(lib.pieces.map((p) => p.id));
   return planned.filter((p) => !have.has(p.id));
+}
+
+/** A small plain art piece: what the Artwork 1-5 widgets show (ThemeArtSlots in ThemeArtWidgets.swift). */
+export function isArtworkPiece(p: Pick<PlannedThemePiece, 'size' | 'live'>): boolean {
+  return p.size === 'small' && !p.live;
+}
+
+/**
+ * Owner 2026-11-13 (build 74, after a reinstall all five Artwork badges sat on one piece): the
+ * order pieces are made in. The Artwork pieces (small plain art) come first, so Artwork 1-5 fill
+ * within seconds of a theme apply or a fresh install, before the designed Clock / Battery / Calendar
+ * and the other sizes. Stable otherwise (plan order within each group).
+ */
+export function composeOrder(todo: readonly PlannedThemePiece[]): PlannedThemePiece[] {
+  return [...todo.filter(isArtworkPiece), ...todo.filter((p) => !isArtworkPiece(p))];
 }
 
 /**

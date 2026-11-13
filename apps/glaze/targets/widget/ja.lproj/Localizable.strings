@@ -60,6 +60,12 @@
 "Choose widget art" = "ウィジェットのアートを選択";
 "Art" = "アート";
 "Artwork %lld" = "アートワーク %lld";
+"Artwork 1" = "アートワーク 1";
+"Artwork 2" = "アートワーク 2";
+"Artwork 3" = "アートワーク 3";
+"Artwork 4" = "アートワーク 4";
+"Artwork 5" = "アートワーク 5";
+"Artwork 6" = "アートワーク 6";
 "Widget art" = "ウィジェットのアート";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */

@@ -257,7 +257,7 @@ test('wiring: theme apply calls syncThemeWidgetArt (non-blocking), the store mak
   // Owner 2026-11-08 (gallery grey for 25 min): what is made so far is listed early (after 2, then
   // every 6 pieces, never as the last one), then the one final write lists the rest.
   assert.equal((store.match(/widgets\.commitThemeArt\(/g) ?? []).length, 2, 'one early listing plus the final index write');
-  assert.match(run, /\(ready\.length === 2 \|\| ready\.length % 6 === 0\) && ready\.length < todo\.length && !stale\(\)/);
+  assert.match(run, /\(ready\.length === 2 \|\| ready\.length === artworkCount \|\| ready\.length % 6 === 0\) && ready\.length < todo\.length && !stale\(\)/);
   assert.match(store.slice(store.indexOf('async function composeOne(')), /widgets\.composeArtPiece\(\{ id: piece\.id, kind: 'seamless'/);
   assert.match(store.slice(store.indexOf('async function composeOne(')), /widgets\.composeArtPiece\(\{ id: piece\.id, kind: 'art'/);
   assert.match(store, /r === 'not-built'/, 'older bridge without compose: the commit still replaces the old theme\'s art');

@@ -12,7 +12,15 @@ const slots = W('ThemeArtWidgets.swift');
 const code = slots.replace(/^\s*\/\/.*$/gm, '');
 
 test('Artwork widgets: numbered names, small only, five in the gallery', () => {
-  assert.ok(code.includes('.configurationDisplayName("Artwork \\(slot)")'), 'Artwork n name');
+  // Owner 2026-11-13: six fixed localised names, never an interpolated display name.
+  assert.ok(code.includes('.configurationDisplayName(displayName(slot: slot))'), 'Artwork n name');
+  assert.ok(!code.includes('configurationDisplayName("Artwork \\('), 'no interpolated display name');
+  for (let n = 1; n <= 6; n++) {
+    assert.ok(code.includes(`return "Artwork ${n}"`), `Artwork ${n}`);
+    for (const lang of ['en', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt-BR', 'zh-Hans']) {
+      assert.ok(W(`${lang}.lproj/Localizable.strings`).split(/\r?\n/).some((l) => l.startsWith(`"Artwork ${n}" = "`)), `${lang} Artwork ${n}`);
+    }
+  }
   assert.match(code, /\.supportedFamilies\(\[\.systemSmall\]\)/);
   assert.doesNotMatch(code, /systemMedium|systemLarge/);
   assert.match(code, /static let gallerySmallSlots = 5/);

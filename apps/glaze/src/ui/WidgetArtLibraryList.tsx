@@ -224,8 +224,17 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
         const slots = numbers.get(p.id) ?? [];
         const body = (
           <>
-          <View>
-            {thumbnail()}
+          {thumbnail()}
+          <View style={styles.text}>
+            <Text numberOfLines={2} maxFontSizeMultiplier={fontScaleCap('body')} style={[...label('body'), { color: c.ink }]}>
+              {p.name}
+            </Text>
+            {p.themeName ? (
+              <Text numberOfLines={1} maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
+                {p.themeName}
+              </Text>
+            ) : null}
+            {/* Owner 2026-11-13: the badges sit in their own row under the name, never over it. */}
             {slots.length ? (
               <View style={styles.badges}>
                 {slots.map((n) => {
@@ -242,16 +251,6 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
                   );
                 })}
               </View>
-            ) : null}
-          </View>
-          <View style={styles.text}>
-            <Text numberOfLines={2} maxFontSizeMultiplier={fontScaleCap('body')} style={[...label('body'), { color: c.ink }]}>
-              {p.name}
-            </Text>
-            {p.themeName ? (
-              <Text numberOfLines={1} maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
-                {p.themeName}
-              </Text>
             ) : null}
           </View>
           </>
@@ -302,7 +301,7 @@ const styles = StyleSheet.create({
   actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm },
   row: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
-  badges: { position: 'absolute', top: -6, left: -6, flexDirection: 'row', gap: 2 },
+  badges: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.xxs },
   badge: { minWidth: 22, height: 22, borderRadius: circleRadius(22), borderWidth: 2, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 },
   badgeText: { ...textV2.caption2, fontWeight: '800' },
   text: { flex: 1, gap: spaceV2.xxs },

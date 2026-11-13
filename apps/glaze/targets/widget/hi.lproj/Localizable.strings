@@ -60,6 +60,12 @@
 "Choose widget art" = "विजेट कला चुनें";
 "Art" = "कला";
 "Artwork %lld" = "कलाकृति %lld";
+"Artwork 1" = "कलाकृति 1";
+"Artwork 2" = "कलाकृति 2";
+"Artwork 3" = "कलाकृति 3";
+"Artwork 4" = "कलाकृति 4";
+"Artwork 5" = "कलाकृति 5";
+"Artwork 6" = "कलाकृति 6";
 "Widget art" = "विजेट कला";
 
 /* Widget art layout in Edit Widget (WidgetArtLibrary.swift ArtLayout, T236) */
