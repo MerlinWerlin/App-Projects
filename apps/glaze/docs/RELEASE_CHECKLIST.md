@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**13 November 2026 TestFlight Artwork list: `1.0.27`.** Owner TestFlight feedback (07:33 UTC): "Large photos are still in the widget store but the galaxy thing is working now. ... the numbers need to be larger and more clear and there needs to be no remove options just the native art works to the theme". My widget art (WidgetArtLibraryList) now lists only the current theme's Artwork 1-5 in slot order, each with a 48 pt number in the slot colour; no Remove / Manage, no other sizes, photos or older pieces.
+
 **13 November 2026 TestFlight Artwork first: `1.0.26`.** Owner TestFlight screenshot (build 74, after delete + reinstall): My widget art had one small art piece (Alpine copper eclipse, all five badges on it) plus the designs; the pack has five. Theme art sync made designs and other sizes before the small art, and saved only after 2 / every 6 pieces, so leaving the app early left Artwork 1-5 on one piece. Now composeOrder puts the Artwork pieces first and the index is saved as soon as they are all made. Badges moved under the name (they covered the title).
 
 **13 November 2026 TestFlight fresh Artwork kinds: `1.0.25`.** Owner on build 74: the gallery tiles "do not correspsone". The code drew the coloured numbered tiles, but iOS kept its stored gallery previews for GlazeThemeArt1-6. Artwork 1-5 are now fresh kinds GlazeArtwork1-5 (no stored preview, so iOS draws the current tiles; the tiles never read the theme, so they cannot go stale). GlazeThemeArt1-6 stay registered in GlazeLegacyArtBundle for placed widgets, out of the Home Screen gallery.

@@ -140,8 +140,9 @@ test('wiring: adapter, theme apply, widget fallback and Manage UI', () => {
   const swift = read('targets', 'widget', 'WidgetArtLibrary.swift');
   assert.match(swift, /"currentThemeId"/);
   assert.match(swift, /fallbackID\(/);
+  // Owner 2026-11-13 ("no remove options just the native art works to the theme"): My widget art
+  // lists the theme's Artwork 1-5 only, with no Remove / Manage; the one-time clean-up still runs.
   const ui = read('src', 'ui', 'WidgetArtLibraryList.tsx');
-  assert.match(ui, /Alert\.alert/);
-  assert.match(ui, /accessibilityRole="checkbox"/);
-  assert.match(ui, /clearArtLibrary\(\)/);
+  assert.match(ui, /widgets\.migrateArtLibrary\(/);
+  assert.doesNotMatch(ui, /removeFromArtLibrary|removeManyFromArtLibrary|clearArtLibrary|Alert\.alert/);
 });

@@ -1,24 +1,21 @@
-// T221 (owner-1101e) "My widget art": every piece the user has applied (theme art and Widget Studio
-// photos), newest first, each with a Remove button, plus the plain-words hint that each Glaze
-// Seamless widget can show its own piece (long-press > Edit Widget). Reads the App Group library
-// through widgets.artLibrary(); shows nothing in Expo Go / Android / an older build (no library).
-// Removing deletes the piece's file; a widget that showed it falls back to the current theme's art.
-// T238 (owner-1101g #6): Manage (select with checkboxes > Delete selected, Clear all with a confirm);
-// the one-time clean-up of art from older versions / other themes runs on the first load.
-import { Feather } from '@expo/vector-icons';
+// T221 (owner-1101e) "My widget art", reworked 2026-11-13 (owner TestFlight feedback: "the numbers
+// need to be larger and more clear and there needs to be no remove options just the native art works
+// to the theme"): the current theme's Artwork 1-5, one row per slot in order, each with a big number
+// in that slot's colour (src/core/artworkSlots.ts, the same colours as the Add Widget gallery tiles),
+// the piece and its name. No Remove / Manage, no other sizes, photos or older pieces. Reads the App
+// Group library through widgets.artLibrary(); shows nothing in Expo Go / Android / an older build.
+// The one-time clean-up of art from older versions / other themes still runs on the first load.
 import { Image as ExpoImage } from 'expo-image';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { AccessibilityInfo, Alert, Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
-import { artworkNumbers, artworkSlotColour } from '../core/artworkSlots';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { ARTWORK_SLOT_COUNT, artworkPieces, artworkSlotColour } from '../core/artworkSlots';
 import type { WidgetArtPiece } from '../core/widgetArtLibrary';
 import { useT } from '../i18n';
 import { widgets } from '../native/widgets';
 import { loadActiveThemeId } from '../store/activeTheme';
 import { chromeRadiusV2, circleRadius, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
-import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
-import { PillButton } from './PillButton';
 
 type Props = {
   /** Bump to re-read the library (ThemeWidgetArt calls back after adding a piece). */
@@ -36,14 +33,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
   const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
   const [pieces, setPieces] = useState<WidgetArtPiece[] | null>(null);
   const [dir, setDir] = useState('');
-  const [busyId, setBusyId] = useState<string | null>(null);
-  const [line, setLine] = useState<string | null>(null);
-  const [managing, setManaging] = useState(false);
-  const [selected, setSelected] = useState<ReadonlySet<string>>(new Set());
-  const [bulkBusy, setBulkBusy] = useState(false);
-  // Owner 2026-11-12: the colour + number badge of each Artwork slot a piece fills (artworkSlots.ts).
   const [activeThemeId, setActiveThemeId] = useState<string | null>(null);
-  const numbers = useMemo(() => artworkNumbers(pieces ?? [], activeThemeId), [pieces, activeThemeId]);
 
   // T264 (owner-1101i #2): no setState after unmount, and a failed bridge read hides the list
   // instead of rejecting unhandled.
@@ -72,11 +62,8 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
         setPieces(null);
         return;
       }
-      const list = res.pieces.filter((p) => !!p && typeof p.id === 'string');
-      setPieces(list);
+      setPieces(res.pieces.filter((p) => !!p && typeof p.id === 'string'));
       setDir(typeof res.dir === 'string' ? res.dir : '');
-      setSelected((prev) => new Set([...prev].filter((id) => list.some((p) => p.id === id))));
-      if (list.length === 0) setManaging(false);
     } catch (e) {
       console.warn('[WidgetArt] library read failed', e);
       if (alive.current) setPieces(null);
@@ -89,221 +76,59 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
 
   if (pieces === null) return null;
 
-  const onRemove = async (piece: WidgetArtPiece) => {
-    if (busyId) return;
-    setBusyId(piece.id);
-    haptic('select');
-    let res: { ok: boolean };
-    try {
-      res = await widgets.removeFromArtLibrary(piece.id);
-    } catch {
-      res = { ok: false }; // T264
-    }
-    setBusyId(null);
-    const msg = res.ok ? t('ui.seamless.library.removed') : t('ui.seamless.library.failed');
-    setLine(msg);
-    AccessibilityInfo.announceForAccessibility(msg);
-    await load();
-  };
-
-  const announce = (ok: boolean, done: string) => {
-    const msg = ok ? done : t('ui.seamless.library.failed');
-    setLine(msg);
-    AccessibilityInfo.announceForAccessibility(msg);
-  };
-
-  const toggle = (id: string) => {
-    haptic('select');
-    setSelected((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  };
-
-  const onDeleteSelected = async () => {
-    if (bulkBusy || selected.size === 0) return;
-    setBulkBusy(true);
-    haptic('warning');
-    let res: { ok: boolean };
-    try {
-      res = await widgets.removeManyFromArtLibrary([...selected]);
-    } catch {
-      res = { ok: false }; // T264
-    }
-    setBulkBusy(false);
-    setSelected(new Set());
-    announce(res.ok, t('ui.seamless.library.deleted'));
-    await load();
-  };
-
-  const onClearAll = () => {
-    if (bulkBusy) return;
-    haptic('warning');
-    Alert.alert(t('ui.seamless.library.clearTitle'), t('ui.seamless.library.clearBody'), [
-      { text: t('common.cancel'), style: 'cancel' },
-      {
-        text: t('ui.seamless.library.clearAll'),
-        style: 'destructive',
-        onPress: async () => {
-          setBulkBusy(true);
-          let res: { ok: boolean };
-          try {
-            res = await widgets.clearArtLibrary();
-          } catch {
-            res = { ok: false }; // T264
-          }
-          setBulkBusy(false);
-          setSelected(new Set());
-          announce(res.ok, t('ui.seamless.library.deleted'));
-          await load();
-        },
-      },
-    ]);
-  };
-
   const base = dir.endsWith('/') ? dir : `${dir}/`;
+  // Artwork n = the theme's n-th small plain art piece, cycling (the same rule as the widget).
+  const list = artworkPieces(pieces, activeThemeId);
+  const rows = list.length ? Array.from({ length: ARTWORK_SLOT_COUNT }, (_, i) => ({ n: i + 1, p: list[i % list.length] })) : [];
 
   return (
     <View style={[styles.wrap, style]}>
-      <View style={styles.head}>
-        <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('headline')} style={[...label('headline'), styles.text, { color: c.ink }]}>
-          {t('ui.seamless.library.title')}
-        </Text>
-        {pieces.length ? (
-          <PillButton
-            label={managing ? t('ui.seamless.library.done') : t('ui.seamless.library.manage')}
-            variant="plain"
-            size="small"
-            onPress={() => {
-              setManaging((m) => !m);
-              setSelected(new Set());
-            }}
-            accessibilityLabel={managing ? t('ui.seamless.library.done') : t('ui.seamless.library.manageA11y')}
-          />
-        ) : null}
-      </View>
-      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
-        {pieces.length ? t('ui.seamless.library.hint') : t('ui.seamless.library.empty')}
+      <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('headline')} style={[...label('headline'), { color: c.ink }]}>
+        {t('ui.seamless.library.title')}
       </Text>
-      {pieces.length ? (
+      {rows.length ? null : (
         <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
-          {t('ui.seamless.library.kept')}
+          {t('ui.seamless.library.empty')}
         </Text>
-      ) : null}
-      {managing ? (
-        <View style={styles.actions}>
-          <PillButton
-            label={t('ui.seamless.library.deleteSelected')}
-            icon="trash-2"
-            variant="destructive"
-            size="small"
-            disabled={selected.size === 0}
-            busy={bulkBusy}
-            haptic={false}
-            onPress={() => onDeleteSelected().catch(() => undefined)}
-          />
-          <PillButton label={t('ui.seamless.library.clearAll')} variant="plain" size="small" haptic={false} disabled={bulkBusy} onPress={onClearAll} />
-        </View>
-      ) : null}
-      {pieces.map((p) => {
-        const on = selected.has(p.id);
-        const thumbnail = () => {
-          if (p.live?.design) return <DesignedWidgetThumbnail design={p.live.design} size={p.size ?? 'small'} width={sizeV2.touch} />; // i18n-ignore (JSX return, no literal text)
-          if (!dir) return null;
-          return <ExpoImage
-              source={{ uri: `${base}${p.file}` }}
-              recyclingKey={`${p.id}-${p.created}`}
-              cachePolicy="none"
-              contentFit="contain"
-              style={[styles.thumb, { backgroundColor: c.surfaceRaised }]}
-              accessibilityIgnoresInvertColors
-            />;
-        };
-        const slots = numbers.get(p.id) ?? [];
-        const body = (
-          <>
-          {thumbnail()}
-          <View style={styles.text}>
-            <Text numberOfLines={2} maxFontSizeMultiplier={fontScaleCap('body')} style={[...label('body'), { color: c.ink }]}>
+      )}
+      {rows.map(({ n, p }) => {
+        const col = artworkSlotColour(n);
+        return (
+          <View
+            key={n}
+            style={[styles.row, { borderColor: c.separator }]}
+            accessible
+            accessibilityLabel={t('ui.seamless.library.artworkA11y', { n })}
+            accessibilityValue={{ text: p.name }}
+          >
+            <View style={[styles.number, { backgroundColor: col.fill }]}>
+              <Text allowFontScaling={false} style={[styles.numberText, { color: col.ink }]}>{n}</Text>
+            </View>
+            {dir ? (
+              <ExpoImage
+                source={{ uri: `${base}${p.file}` }}
+                recyclingKey={`${p.id}-${p.created}`}
+                cachePolicy="none"
+                contentFit="contain"
+                style={[styles.thumb, { backgroundColor: c.surfaceRaised }]}
+                accessibilityIgnoresInvertColors
+              />
+            ) : null}
+            <Text numberOfLines={2} maxFontSizeMultiplier={fontScaleCap('body')} style={[...label('body'), styles.text, { color: c.ink }]}>
               {p.name}
             </Text>
-            {p.themeName ? (
-              <Text numberOfLines={1} maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), { color: c.inkSecondary }]}>
-                {p.themeName}
-              </Text>
-            ) : null}
-            {/* Owner 2026-11-13: the badges sit in their own row under the name, never over it. */}
-            {slots.length ? (
-              <View style={styles.badges}>
-                {slots.map((n) => {
-                  const col = artworkSlotColour(n);
-                  return (
-                    <View
-                      key={n}
-                      style={[styles.badge, { backgroundColor: col.fill, borderColor: c.surface }]}
-                      accessible
-                      accessibilityLabel={t('ui.seamless.library.artworkA11y', { n })}
-                    >
-                      <Text allowFontScaling={false} style={[styles.badgeText, { color: col.ink }]}>{n}</Text>
-                    </View>
-                  );
-                })}
-              </View>
-            ) : null}
           </View>
-          </>
-        );
-        if (managing) {
-          return (
-            <Pressable
-              key={p.id}
-              onPress={() => toggle(p.id)}
-              accessibilityRole="checkbox"
-              accessibilityState={{ checked: on }}
-              accessibilityLabel={t('ui.seamless.library.selectA11y', { name: p.name })}
-              style={({ pressed }) => [styles.row, { borderColor: c.separator, opacity: pressed ? 0.7 : 1 }]}
-            >
-              <Feather name={on ? 'check-circle' : 'circle'} size={sizeV2.rowIcon} color={on ? c.tint : c.inkSecondary} />
-              {body}
-            </Pressable>
-          );
-        }
-        return (
-        <View key={p.id} style={[styles.row, { borderColor: c.separator }]}>
-          {body}
-          <PillButton
-            label={t('ui.seamless.library.remove')}
-            icon="trash-2"
-            variant="destructive"
-            size="small"
-            busy={busyId === p.id}
-            haptic={false}
-            onPress={() => onRemove(p).catch(() => undefined)}
-            accessibilityLabel={t('ui.seamless.library.removeA11y', { name: p.name })}
-          />
-        </View>
         );
       })}
-      {line ? (
-        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityLiveRegion="polite" style={[...label('footnote'), { color: c.inkSecondary }]}>
-          {line}
-        </Text>
-      ) : null}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   wrap: { gap: spaceV2.sm, marginTop: spaceV2.lg },
-  head: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
-  actions: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.sm },
   row: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
+  number: { width: sizeV2.touch, height: sizeV2.touch, borderRadius: circleRadius(sizeV2.touch), alignItems: 'center', justifyContent: 'center' },
+  numberText: { ...textV2.title2, fontWeight: '800' },
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
-  badges: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.xxs },
-  badge: { minWidth: 22, height: 22, borderRadius: circleRadius(22), borderWidth: 2, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 4 },
-  badgeText: { ...textV2.caption2, fontWeight: '800' },
-  text: { flex: 1, gap: spaceV2.xxs },
+  text: { flex: 1 },
 });
-import { DesignedWidgetThumbnail } from './DesignedThemeWidgets';
