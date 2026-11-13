@@ -24,6 +24,13 @@ PINS = [
  ("WW-P11", "v-cradle-record-rack", "00-main-square.jpg", "V-Cradle Record Rack", "About 62 records from one sheet of plywood"),
  ("WW-P12", "cross-panel-side-table", "00-main-square.jpg", "X-Panel Side Table", "A modern side table from half a sheet of plywood"),
  ("WW-P13", "floating-king-bed", "00-main-square.jpg", "Floating King Bed", "A timber deck that seems to hover, no screws on show"),
+ ("WW-P14", "tilted-record-cubby", "00-main-square.jpg", "Tilted Record Cubby", "A plywood LP box that leans back on X legs"),
+ ("WW-P15", "cat-nook-side-table", "00-main-square.jpg", "Cat Nook Side Table", "A bedside table with a cushioned cat nook inside"),
+ ("WW-P16", "log-store", "00-main-square.jpg", "Firewood Log Store", "Keeps a winter of firewood dry, with a kindling shelf"),
+ ("WW-P17", "x-leg-record-table", "00-main-square.jpg", "X-Leg Record Table", "A turntable table with a box for about 100 LPs"),
+ ("WW-P18", "zigzag-record-tower", "00-main-square.jpg", "Zigzag Record Tower", "Three diamond bays for about 135 records"),
+ ("WW-P19", "record-console", "00-main-square.jpg", "Record Console", "Three bays for about 120 records, square cuts only"),
+ ("WW-P20", "king-bed-slat-headboard", "00-main-square.jpg", "King Bed with Slat Headboard", "Solid wood, glued like furniture, no screws on show"),
 ]
 
 def centred(d, y, text, font, fill, maxw=900):
