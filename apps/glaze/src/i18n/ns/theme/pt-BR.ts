@@ -110,6 +110,13 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  howTo: {
+    play: 'Reproduzir o vídeo de ajuda',
+    wallpaper: 'Vídeo: salvar o papel de parede e usá-lo no iPhone',
+    icons: 'Vídeo: adicionar os ícones combinando à Tela de Início',
+    widgets: 'Vídeo: adicionar um widget do Glaze à Tela de Início',
+  },
   iconsIntro: {
     title: 'Ícones',
     skip: 'Pular',

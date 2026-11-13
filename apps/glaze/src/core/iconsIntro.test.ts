@@ -21,7 +21,7 @@ test('walkthrough: four one-idea cards, first time only, then the inline row', (
   const screen = read('app', 'icons-intro.tsx');
   assert.match(screen, /markIconsIntroSeen\(\)/);
   assert.match(screen, /router\.replace\(\{ pathname: '\/install'/);
-  assert.match(screen, /ICONS_INTRO_DEMO !== null \? <DemoVideo/);
+  assert.match(screen, /<HowToClip clip=\{HOW_TO_CLIPS\.icons\}/);
   assert.match(read('app', '_layout.tsx'), /name="icons-intro"/);
 });
 

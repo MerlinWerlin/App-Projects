@@ -3,10 +3,9 @@
 // One idea per card, calm plain words, Back / Next and Skip; the last card's "Set up icons" opens the
 // existing install screen (/install). Seen once (finished or skipped), "Use everything" no longer
 // opens it: the theme page shows a one-line "Set up icons" with a "How it works" link that reopens
-// this screen (`again=1`, which just closes at the end). The first card has a slot for a short demo
-// video (src/ui/iconsIntroDemo.ts), empty until Jared adds a clip.
+// this screen (`again=1`, which just closes at the end). The first card plays the bundled how-to clip
+// of the icons being added (src/ui/howToClips.ts).
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useVideoPlayer, VideoView } from 'expo-video';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,17 +16,9 @@ import { chromeRadiusV2, fontScaleCap, spaceV2, textV2, type TypeRoleV2 } from '
 import { useColorsV2 } from '../src/theme/useTokens';
 import { haptic } from '../src/ui/haptics';
 import { textStyleFor } from '../src/ui/i18nLayout';
-import { ICONS_INTRO_DEMO } from '../src/ui/iconsIntroDemo';
+import { HowToClip } from '../src/ui/HowToClip';
+import { HOW_TO_CLIPS } from '../src/ui/howToClips';
 import { PillButton } from '../src/ui/PillButton';
-
-function DemoVideo({ source }: { source: number }) {
-  const player = useVideoPlayer(source, (p) => {
-    p.loop = true;
-    p.muted = true;
-    p.play();
-  });
-  return <VideoView player={player} style={styles.video} contentFit="contain" nativeControls={false} />;
-}
 
 export default function IconsIntroScreen() {
   const { c } = useColorsV2();
@@ -59,7 +50,8 @@ export default function IconsIntroScreen() {
         )}
       </View>
       <View style={[styles.card, { backgroundColor: c.surface }]}>
-        {index === 0 && ICONS_INTRO_DEMO !== null ? <DemoVideo source={ICONS_INTRO_DEMO} /> : null}
+        {/* Owner 2026-11-14: the bundled how-to clip of the icons being added (HowToClip). */}
+        {index === 0 ? <HowToClip clip={HOW_TO_CLIPS.icons} label={t('theme.howTo.icons')} style={styles.video} /> : null}
         <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title2')} style={[...label('title2'), { color: c.ink }]}>
           {t(`theme.iconsIntro.steps.${step}.title`)}
         </Text>
@@ -85,6 +77,6 @@ const styles = StyleSheet.create({
   screen: { flex: 1, paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.md, gap: spaceV2.lg },
   top: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: spaceV2.xl },
   card: { flex: 1, justifyContent: 'center', gap: spaceV2.md, padding: spaceV2.xl, borderRadius: chromeRadiusV2.card },
-  video: { width: '100%', aspectRatio: 9 / 16, maxHeight: '55%', borderRadius: chromeRadiusV2.control },
+  video: { maxHeight: '55%' },
   actions: { gap: spaceV2.sm, paddingBottom: spaceV2.md },
 });

@@ -35,6 +35,8 @@ import { loadSetupProgress, markSetupDone } from '../store/themeSetup';
 import { circleRadius, continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
+import { HowToClip } from './HowToClip';
+import { HOW_TO_CLIPS } from './howToClips';
 import { textStyleFor } from './i18nLayout';
 import { InsetGroup, InsetRow } from './InsetGroup';
 import { PillButton } from './PillButton';
@@ -321,6 +323,8 @@ export function ThemeSetupFlow({ setup, themeName, wallpaper, onInstallIcons }: 
 
           {step === 'wallpaper' ? (
             <View style={styles.stepBody}>
+              {/* Owner 2026-11-14: the bundled how-to clip of setting the wallpaper. */}
+              <HowToClip clip={HOW_TO_CLIPS.wallpaper} label={t('theme.howTo.wallpaper')} />
               <PillButton
                 label={wallpaper.saving ? t('theme.setup.wallpaper.saving') : wallpaper.saved ? t('theme.setup.wallpaper.saved') : t('theme.setup.wallpaper.save')}
                 icon={wallpaper.saved ? 'check-circle' : 'download'}
@@ -365,6 +369,8 @@ export function ThemeSetupFlow({ setup, themeName, wallpaper, onInstallIcons }: 
 
           {step === 'icons' ? (
             <View style={styles.stepBody}>
+              {/* Owner 2026-11-14: the bundled how-to clip of adding the icons. */}
+              <HowToClip clip={HOW_TO_CLIPS.icons} label={t('theme.howTo.icons')} />
               <PillButton
                 label={t('theme.setup.icons.install')}
                 icon="grid"
@@ -405,6 +411,8 @@ export function ThemeSetupFlow({ setup, themeName, wallpaper, onInstallIcons }: 
 
           {step === 'widgets' ? (
             <View style={styles.stepBody}>
+              {/* Owner 2026-11-14: the bundled how-to clip of adding a Glaze widget. */}
+              <HowToClip clip={HOW_TO_CLIPS.widgets} label={t('theme.howTo.widgets')} />
               <Instruction n={1} text={t('theme.setup.widgets.s1')}>
                 <Art kind="jiggle-edit" />
               </Instruction>

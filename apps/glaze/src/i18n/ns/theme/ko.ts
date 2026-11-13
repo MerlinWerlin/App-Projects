@@ -110,6 +110,13 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  howTo: {
+    play: '사용법 동영상 재생',
+    wallpaper: '동영상: 배경화면을 저장하고 iPhone에 설정하기',
+    icons: '동영상: 어울리는 아이콘을 홈 화면에 추가하기',
+    widgets: '동영상: Glaze 위젯을 홈 화면에 추가하기',
+  },
   iconsIntro: {
     title: '아이콘',
     skip: '건너뛰기',

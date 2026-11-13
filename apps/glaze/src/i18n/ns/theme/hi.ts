@@ -110,6 +110,13 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
+  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  howTo: {
+    play: 'कैसे करें वीडियो चलाएँ',
+    wallpaper: 'वीडियो: वॉलपेपर सहेजकर iPhone पर लगाना',
+    icons: 'वीडियो: मेल खाते आइकन होम स्क्रीन पर जोड़ना',
+    widgets: 'वीडियो: Glaze विजेट होम स्क्रीन पर जोड़ना',
+  },
   iconsIntro: {
     title: 'आइकन',
     skip: 'छोड़ें',
