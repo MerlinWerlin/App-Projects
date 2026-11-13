@@ -173,7 +173,7 @@ export const it: NonNullable<LocaleMessages['ui']> = {
       added: 'Salvato e aggiunto a La mia arte per widget. Per mostrare un’opera diversa in ogni widget, tieni premuto il widget nella schermata Home, tocca Modifica widget e scegline una.',
       title: 'La mia arte per widget',
       hint: 'Ogni opera che usi resta qui. Tieni premuto un widget Glaze ‘Senza bordi’, tocca Modifica widget e scegli un’opera, così ogni widget può mostrare un’arte diversa.',
-      empty: 'Ancora niente. Tocca Usa nel mio widget per aggiungere un’opera.',
+      empty: 'Questo tema non ha ancora opere. I tuoi widget Opera mostrano un disegno nei suoi colori.',
       remove: 'Rimuovi',
       removeA11y: 'Rimuovi {name} da La mia arte per widget',
       removed: 'Rimosso.',

@@ -173,7 +173,7 @@ export const ptBR: NonNullable<LocaleMessages['ui']> = {
       added: 'Salvo e adicionado a Minha arte de widget. Para mostrar uma peça diferente em cada widget, toque e segure o widget na Tela de Início, toque em Editar Widget e escolha uma.',
       title: 'Minha arte de widget',
       hint: 'Cada peça que você usa fica guardada aqui. Toque e segure um widget ‘Sem bordas’ do Glaze, toque em Editar Widget e escolha uma peça, para cada widget mostrar uma arte diferente.',
-      empty: 'Nada aqui ainda. Toque em Usar no meu widget para adicionar uma peça.',
+      empty: 'Este tema ainda não tem artes. Seus widgets de Arte mostram um desenho nas cores dele.',
       remove: 'Remover',
       removeA11y: 'Remover {name} de Minha arte de widget',
       removed: 'Removido.',

@@ -443,8 +443,9 @@ const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 
 test('Widgets tab shows the theme widget art menu above the grid', () => {
   const tab = read('app', '(tabs)', 'widgets.tsx');
-  assert.match(tab, /import \{ ThemeWidgetArt \} from '\.\.\/\.\.\/src\/ui\/ThemeWidgetArt';/);
-  assert.match(tab, /<ThemeWidgetArt theme=\{gridTheme\} size=\{size\}/);
+  // Owner 2026-11-14 ("not separate"): the Widgets tab no longer shows this picker; the component
+  // stays (theme page) and its apply path is still checked below.
+  assert.doesNotMatch(tab, /<ThemeWidgetArt/);
   const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
   assert.match(art, /useRemoteArtTheme\(/);
   assert.match(art, /widgetOptionsFromV1\(/, 'bundled art packs list their hero pieces as options');

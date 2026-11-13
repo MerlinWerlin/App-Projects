@@ -85,7 +85,6 @@ import { CatalogueWidgetPreview } from '../../src/ui/CatalogueWidgetPreview';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
 import { SizeArt, SwatchArt } from '../../src/ui/WidgetOptionArt';
-import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
 import { WidgetArtLibraryList } from '../../src/ui/WidgetArtLibraryList';
 import { lookSwatch, themeSwatch as rawThemeSwatch, type Swatch } from '../../src/core/widgetOptionArt';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
@@ -478,7 +477,7 @@ function WidgetsTab() {
   // T146: link check; re-checked a few seconds after each pick (pickNonce) and on focus.
   const [pickNonce, setPickNonce] = useState(0);
   // T221: bumped when a piece is added to "My widget art", so the list below the menu re-reads it.
-  const [artLibKey, setArtLibKey] = useState(0);
+  const [artLibKey] = useState(0);
   const linkVerdict = useWidgetLink(picked, pickNonce);
 
   const [look, setLook] = useState<WidgetLook>('theme');
@@ -724,9 +723,9 @@ function WidgetsTab() {
         </Text>
       ) : null}
 
-      {/* T187: the theme's widget art, every piece, for this size (nothing on Lock or for drawn themes). */}
-      <ThemeWidgetArt theme={gridTheme} size={size} width={width - GUTTER * 2} style={styles.art} onLibraryChange={() => setArtLibKey((k) => k + 1)} />
-      {/* T221: "My widget art" (every applied piece + Studio photos, Remove each); hidden without the native library. */}
+      {/* Owner 2026-11-14 ("not separate"): the theme's art picker is gone; My widget art below is the
+          one list, Artwork 1-5 with a big number and the large artwork side by side. */}
+      {/* T221: "My widget art"; hidden without the native library. */}
       {size === 'lock' ? null : <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} />}
 
       {/* T166: the grid's top padding from before T162 (rows are list items now). T173: the first

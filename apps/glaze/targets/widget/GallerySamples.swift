@@ -181,3 +181,61 @@ struct GallerySampleArt: View {
     }
   }
 }
+
+/// Owner 2026-11-14 (a theme with no artwork showed a blank grey Artwork tile on the Home Screen): a
+/// simple scene drawn in the theme's own colours (accent, ink), one per Artwork slot, over the theme
+/// background. Shown only when the theme has no artwork pieces at all; never reads a file.
+struct ThemedFallbackArt: View {
+  let theme: WidgetTheme
+  let variant: Int
+
+  var body: some View {
+    let v = ((variant % 5) + 5) % 5
+    let accent = theme.accentColor
+    let ink = theme.inkColor
+    GeometryReader { geo in
+      let w = geo.size.width, h = geo.size.height, s = min(w, h)
+      ZStack {
+        switch v {
+        case 0:
+          Circle().fill(accent).frame(width: s * 0.34, height: s * 0.34)
+            .shadow(color: accent.opacity(0.55), radius: s * 0.07)
+            .position(x: w * 0.66, y: h * 0.32)
+          Ellipse().fill(ink.opacity(0.18)).frame(width: w * 1.3, height: h * 0.5).position(x: w * 0.3, y: h * 1.02)
+        case 1:
+          ForEach(0..<3, id: \.self) { i in
+            Circle().stroke(accent.opacity(0.55 - Double(i) * 0.15), lineWidth: s * 0.022)
+              .frame(width: s * (0.42 + CGFloat(i) * 0.2), height: s * (0.42 + CGFloat(i) * 0.2))
+              .position(x: w * 0.5, y: h * 0.5)
+          }
+          Circle().fill(accent).frame(width: s * 0.3, height: s * 0.3).position(x: w * 0.5, y: h * 0.5)
+        case 2:
+          Circle().fill(accent).frame(width: s * 0.42, height: s * 0.42).position(x: w * 0.5, y: h * 0.5)
+          Ellipse().stroke(ink.opacity(0.7), lineWidth: s * 0.024).frame(width: s * 0.8, height: s * 0.2)
+            .rotationEffect(.degrees(-18)).position(x: w * 0.5, y: h * 0.5)
+        case 3:
+          Path { p in
+            p.move(to: CGPoint(x: 0, y: h))
+            p.addLine(to: CGPoint(x: w * 0.35, y: h * 0.48))
+            p.addLine(to: CGPoint(x: w * 0.6, y: h * 0.72))
+            p.addLine(to: CGPoint(x: w * 0.82, y: h * 0.44))
+            p.addLine(to: CGPoint(x: w, y: h * 0.66))
+            p.addLine(to: CGPoint(x: w, y: h))
+            p.closeSubpath()
+          }
+          .fill(ink.opacity(0.22))
+          Circle().fill(accent).frame(width: s * 0.2, height: s * 0.2).position(x: w * 0.28, y: h * 0.32)
+        default:
+          ForEach(0..<7, id: \.self) { i in
+            let x = [0.2, 0.36, 0.55, 0.72, 0.8, 0.46, 0.28][i], y = [0.28, 0.2, 0.34, 0.24, 0.56, 0.66, 0.6][i]
+            Circle().fill(i % 2 == 0 ? accent : ink.opacity(0.8)).frame(width: s * 0.05, height: s * 0.05)
+              .position(x: w * x, y: h * y)
+          }
+        }
+      }
+      .frame(width: w, height: h)
+      .clipped()
+    }
+    .accessibilityHidden(true)
+  }
+}

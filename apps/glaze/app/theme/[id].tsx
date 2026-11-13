@@ -453,12 +453,9 @@ function ThemeDetail({
       // save failed or Photos was declined. A failed wallpaper save is only a note now.
       if (!await selectTheme(focus)) return;
       if (!await onSaveWallpaper()) toast.show(t('theme.setup.wallpaper.saveError'), 'warning');
-      // Owner 2026-11-13: the gentle icons walkthrough the first time only; afterwards the theme
-      // page's one-line "Set up icons" / "How it works" row (below), not the install screen.
-      if (themeFocus.current === focus) {
-        if (iconsAfterUseEverything(await iconsIntroSeen()) === 'intro') openIconsIntro(false);
-        else setIconsSeen(true);
-      }
+      // Owner 2026-11-14: Use everything always sets up icons: the gentle walkthrough the first
+      // time (it ends on the install screen), the install screen straight away every later time.
+      if (themeFocus.current === focus) await openIconSetup();
     } catch (e) {
       // T264 (owner-1101i #2): an apply that throws shows the calm "couldn't apply" note, never a crash.
       console.warn('[Theme] apply failed', e);
@@ -466,6 +463,13 @@ function ThemeDetail({
     } finally {
       usePending.current = false;
       setUseBusy(false);
+    }
+  };
+  const openIconSetup = async () => {
+    if (iconsAfterUseEverything(await iconsIntroSeen()) === 'intro') openIconsIntro(false);
+    else {
+      setIconsSeen(true);
+      addThemeIcons();
     }
   };
   const openIconsIntro = (again: boolean) => {

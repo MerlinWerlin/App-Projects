@@ -10,7 +10,7 @@ export const ICONS_INTRO_SEEN_KEY = 'glaze.iconsIntro.seen.v1';
 export const ICONS_INTRO_STEPS = ['look', 'oneGo', 'confirm', 'undo'] as const;
 export type IconsIntroStep = (typeof ICONS_INTRO_STEPS)[number];
 
-/** Where "Use everything" goes for the icons part: the walkthrough first time, then the inline row. */
+/** Where "Use everything" goes for the icons part: the walkthrough first time, then straight to install. */
 export function iconsAfterUseEverything(seen: boolean): 'intro' | 'inline' {
   return seen ? 'inline' : 'intro';
 }

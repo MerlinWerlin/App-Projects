@@ -42,7 +42,9 @@ test('theme page > Widgets: practical + art (ThemeWidgetArt) first, then the sta
 test('Widgets tab: the theme widget menu (practical, art) sits above the standard grid', () => {
   const tab = strip(read('app', '(tabs)', 'widgets.tsx'));
   const head = tab.slice(tab.indexOf('const header = ('), tab.indexOf('return (\n    <LargeTitleFlatList'));
-  assert.match(head, /<ThemeWidgetArt theme=\{gridTheme\} size=\{size\}/);
+  // Owner 2026-11-14 ("not separate"): the numbered My widget art list replaced the art picker here.
+  assert.doesNotMatch(head, /<ThemeWidgetArt/);
+  assert.match(head, /<WidgetArtLibraryList refreshKey=\{artLibKey\}/);
   // The grid rows (standard widget types in the theme palette) are the list data, after the header.
   assert.match(tab, /header=\{header\}\s*\n\s*data=\{rows\}/);
 });

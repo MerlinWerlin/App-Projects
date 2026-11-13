@@ -114,10 +114,11 @@ struct ThemeArtProvider: AppIntentTimelineProvider {
     let piece = chosen != nil
       ? WidgetArtStore.resolvedID(chosen, family: family)
       : ThemeArtSlots.piece(slot: slot, family: family)
-    return ThemeArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: piece, layout: configuration?.layout, preview: preview)
+    return ThemeArtEntry(date: Date(), theme: ThemeStore.load(), pieceID: piece, layout: configuration?.layout, preview: preview, sample: slot - 1)
   }
 
   /// Owner 2026-11-11: the gallery never reads the theme, the art index or any art file.
+  // The slot (0-based) also picks the fallback scene when the theme has no artwork.
   private var galleryEntry: ThemeArtEntry {
     ThemeArtEntry(date: Date(), theme: GallerySample.theme(slot - 1), pieceID: nil, layout: nil, preview: true, sample: slot - 1)
   }
@@ -133,7 +134,7 @@ struct ThemeArtProvider: AppIntentTimelineProvider {
   func timeline(for configuration: ChooseWidgetArtIntent, in context: Context) async -> Timeline<ThemeArtEntry> {
     let first = entry(configuration, family: context.family)
     let live = LiveArtSchedule.plan(pieceID: first.pieceID, family: context.family, from: first.date)
-    let entries = live.dates.map { ThemeArtEntry(date: $0, theme: first.theme, pieceID: first.pieceID, layout: first.layout) }
+    let entries = live.dates.map { ThemeArtEntry(date: $0, theme: first.theme, pieceID: first.pieceID, layout: first.layout, sample: first.sample) }
     return Timeline(entries: entries, policy: live.policy)
   }
 }
@@ -152,7 +153,10 @@ struct ThemeArtSlotView: View {
     } else if entry.pieceID != nil {
       SeamlessWidgetView(theme: entry.theme, pieceID: entry.pieceID, layout: entry.layout, date: entry.date, preview: entry.preview)
     } else {
-      Color.clear.containerBackground(for: .widget) { GlazeBackground(theme: entry.theme) }
+      // Owner 2026-11-14 (a theme with no artwork showed a blank grey Artwork tile): never a plain
+      // tile. A theme with no artwork pieces gets a simple scene in its own colours, one per slot.
+      ThemedFallbackArt(theme: entry.theme, variant: entry.sample)
+        .containerBackground(for: .widget) { GlazeBackground(theme: entry.theme) }
     }
   }
 }

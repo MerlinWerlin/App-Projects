@@ -27,8 +27,9 @@ test('My widget art: Artwork 1-5 in order, a big number in the slot colour, no R
   // options just the native art works to the theme".
   const list = readFileSync(join(process.cwd(), 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
   assert.match(list, /Array\.from\(\{ length: ARTWORK_SLOT_COUNT \}, \(_, i\) => \(\{ n: i \+ 1, p: list\[i % list\.length\] \}\)\)/);
-  assert.match(list, /number: \{ width: sizeV2\.touch, height: sizeV2\.touch/);
-  assert.match(list, /numberText: \{ \.\.\.textV2\.title2, fontWeight: '800' \}/);
+  assert.match(list, /number: \{ width: NUMBER, height: NUMBER/);
+  assert.match(list, /const THUMB = 132;/);
+  assert.match(list, /numberText: \{ \.\.\.textV2\.largeTitle, fontWeight: '800' \}/);
   assert.doesNotMatch(list, /PillButton|ui\.seamless\.library\.remove|position: 'absolute'/);
 });
 

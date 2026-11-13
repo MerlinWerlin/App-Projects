@@ -163,7 +163,7 @@ export const en = {
       added: 'Saved and added to My widget art. To show a different piece on each widget, long-press the widget on your Home Screen, tap Edit Widget and pick one.',
       title: 'My widget art',
       hint: 'Every piece you use is kept here. Long-press a Glaze Seamless widget, tap Edit Widget and pick a piece, so each widget can show different art.',
-      empty: 'Nothing here yet. Tap Use on my widget to add a piece.',
+      empty: 'This theme has no artwork yet. Your Artwork widgets show a design in its colours.',
       remove: 'Remove',
       removeA11y: 'Remove {name} from My widget art',
       removed: 'Removed.',

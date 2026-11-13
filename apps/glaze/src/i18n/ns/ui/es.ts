@@ -173,7 +173,7 @@ export const es: NonNullable<LocaleMessages['ui']> = {
       added: 'Guardado y añadido a Mi arte para widgets. Para mostrar una pieza distinta en cada widget, mantén pulsado el widget en tu pantalla de inicio, toca Editar widget y elige una.',
       title: 'Mi arte para widgets',
       hint: 'Aquí se guarda cada pieza que usas. Mantén pulsado un widget Integrado de Glaze, toca Editar widget y elige una pieza, para que cada widget muestre un arte distinto.',
-      empty: 'Aún no hay nada. Toca Usar en mi widget para añadir una pieza.',
+      empty: 'Este tema aún no tiene obras. Tus widgets de Obra muestran un diseño con sus colores.',
       remove: 'Quitar',
       removeA11y: 'Quitar {name} de Mi arte para widgets',
       removed: 'Quitado.',

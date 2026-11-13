@@ -23,7 +23,10 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-const THUMB = 56;
+// Owner 2026-11-14 ("large image and large number next to each other, not separate"): each row is a
+// big number in the slot colour on the left and the artwork itself, large, on the right.
+const THUMB = 132;
+const NUMBER = 64;
 /** T238: the one-time clean-up runs once per app launch at most (it is a no-op once flagged). */
 let migrationTried = false;
 
@@ -130,8 +133,8 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
 const styles = StyleSheet.create({
   wrap: { gap: spaceV2.sm, marginTop: spaceV2.lg },
   row: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.md, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm, borderTopWidth: StyleSheet.hairlineWidth },
-  number: { width: sizeV2.touch, height: sizeV2.touch, borderRadius: circleRadius(sizeV2.touch), alignItems: 'center', justifyContent: 'center' },
-  numberText: { ...textV2.title2, fontWeight: '800' },
+  number: { width: NUMBER, height: NUMBER, borderRadius: circleRadius(NUMBER), alignItems: 'center', justifyContent: 'center' },
+  numberText: { ...textV2.largeTitle, fontWeight: '800' },
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
   text: { flex: 1 },
 });
