@@ -26,7 +26,7 @@
 // whenever places are on screen; a filtered list that comes out empty keeps its Show all button.
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Alert, FlatList, ScrollView, Text, useWindowDimensions, View } from 'react-native';
+import { Alert, FlatList, Keyboard, Platform, ScrollView, Text, useWindowDimensions, View } from 'react-native';
 import kyotoData from '../../src/content/demo_pois_kyoto.json';
 import { availablePoiSets, poiSetKey as setKey, selectPoiSet } from '../../src/core/mapsets.ts';
 import tagData from '../../src/content/osm_poi_tags.json';
@@ -120,6 +120,9 @@ const SETS: PoiSet[] = [parsePoiSet(tokyoData, CATS), parsePoiSet(kyotoData, CAT
 const NO_SAMPLE_SETS: PoiSet[] = [];
 // T169: the map takes about a third of the screen (200-280 pt) so the list under it is not squeezed on smaller phones.
 const mapHeightFor = (screenH: number) => Math.round(Math.min(280, Math.max(200, screenH * 0.3)));
+// T170: while the keyboard is up (typing a search) the map shrinks to a strip and its extras step aside, so the search
+// box and its results have room.
+const MAP_TYPING_HEIGHT = 110;
 const MAP_VIEW_KEY = 'satchel.mapview.v1';
 const NO_VIEW: unknown = null;
 const NO_LINES: MapLine[] = [];
@@ -399,6 +402,16 @@ export default function MapScreen() {
   const searchY = useRef(0);
   const net = useNetworkStatus();
   const { height: screenH } = useWindowDimensions();
+  const [typing, setTyping] = useState(false);
+  useEffect(() => {
+    const ios = Platform.OS === 'ios';
+    const show = Keyboard.addListener(ios ? 'keyboardWillShow' : 'keyboardDidShow', () => setTyping(true));
+    const hide = Keyboard.addListener(ios ? 'keyboardWillHide' : 'keyboardDidHide', () => setTyping(false));
+    return () => {
+      show.remove();
+      hide.remove();
+    };
+  }, []);
   const [installed, setInstalled] = useState<InstalledCity[]>([]);
   const [installedLoaded, setInstalledLoaded] = useState(false);
   const refreshInstalled = useCallback(async () => {
@@ -840,6 +853,8 @@ export default function MapScreen() {
             setFound(h);
             if (h) focusOn(h);
           }}
+          // T170: bring the search box to the top of the list once the map has shrunk for the keyboard.
+          onFocus={() => setTimeout(() => listRef.current?.scrollToOffset({ offset: searchY.current, animated: !reduceMotion }), 250)}
         />
         <Body muted>{t('map.online')}</Body>
         <OfflineMaps installed={installed} refreshInstalled={refreshInstalled} onShow={showCity} tripCount={trips.length} />
@@ -1007,7 +1022,7 @@ export default function MapScreen() {
           focus={focus}
           onPinPress={onPinPress}
           onMapPress={onMapPress}
-          height={mapHeightFor(screenH)}
+          height={typing ? MAP_TYPING_HEIGHT : mapHeightFor(screenH)}
           label={t('map.a11yMap')}
           fallbackTitle={t('map.noMapTitle')}
           fallbackBody={t('map.noMapBody')}
@@ -1017,7 +1032,9 @@ export default function MapScreen() {
           lines={isShown(layers.prefs, 'route') ? layer.lines : NO_LINES}
           fit={layer.fit}
         />
-        {scoped ? <TripRouteDays layer={layer} /> : null}
+        {scoped && !typing ? <TripRouteDays layer={layer} /> : null}
+        {typing ? null : (
+          <>
         <MapLayersButton prefs={layers.prefs} onPress={() => setLayersOpen(true)} />
         {/* T157: with the Lifts kind on, "Where is the lift?" full screen in the local language (src/core/liftcard.ts). */}
         {showLiftAsk(on.lift, poiCounts.lift, stepFree) ? (
@@ -1077,6 +1094,8 @@ export default function MapScreen() {
         ) : null}
         <DaylightLine trip={active} />
         {mapAvailable() ? <Text style={{ fontFamily: fonts.body, fontSize: 12, color: theme.muted }}>{t('places.tapHint')}</Text> : null}
+          </>
+        )}
         {shownPois.length > 0 && isShown(layers.prefs, 'pois') ? (
           <>
             {/* T13: OSM / ODbL attribution whenever places are on the map (the pack extract is ODbL data). */}
@@ -1088,6 +1107,9 @@ export default function MapScreen() {
       <FlatList
         ref={listRef}
         style={{ flex: 1 }}
+        // T170: a tap on a search result while the keyboard is up picks it (not only closes the keyboard).
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
         data={nearby}
         keyExtractor={(p) => p.id}
         ListHeaderComponent={header}

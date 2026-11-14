@@ -43,7 +43,7 @@ const kindLabelKey = (k: SearchKind): Key => `mapsearch.kind.${k}`;
  * `reveal` (T96): the Map bumps it when its search pin is tapped; the picked result's card then opens again (fades in
  * afresh) and is announced, so the pin and the card stay one thing.
  */
-export function MapSearch({ sets, from, installedKey, onPick, reveal = 0 }: { sets: readonly PoiSet[]; from: LatLon | null; installedKey: string; onPick: (hit: SearchHit | null) => void; reveal?: number }) {
+export function MapSearch({ sets, from, installedKey, onPick, reveal = 0, onFocus }: { sets: readonly PoiSet[]; from: LatLon | null; installedKey: string; onPick: (hit: SearchHit | null) => void; reveal?: number; onFocus?: () => void }) {
   const { t, theme } = useApp();
   const router = useRouter();
   const { trips } = useTrips();
@@ -152,7 +152,7 @@ export function MapSearch({ sets, from, installedKey, onPick, reveal = 0 }: { se
 
   return (
     <SectionCard title={t('mapsearch.heading')} subtitle={t('mapsearch.intro')} icon="search-outline" tone="sea">
-      <TextField label={t('mapsearch.label')} placeholder={t('mapsearch.placeholder')} value={query} onChange={(q) => { setQuery(q); setNotice(null); }} autoCapitalize="none" />
+      <TextField label={t('mapsearch.label')} placeholder={t('mapsearch.placeholder')} value={query} onChange={(q) => { setQuery(q); setNotice(null); }} autoCapitalize="none" onFocus={onFocus} />
       {typed ? <Button kind="quiet" icon="close-outline" label={t('mapsearch.clearQuery')} hint={t('mapsearch.clearQueryHint')} onPress={() => setQuery('')} /> : null}
 
       {picked ? (

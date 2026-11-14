@@ -192,6 +192,7 @@ export function TextField({
   multiline,
   autoCapitalize = 'sentences',
   inputMode,
+  onFocus,
 }: {
   label: string;
   value: string;
@@ -202,6 +203,7 @@ export function TextField({
   autoCapitalize?: 'none' | 'sentences' | 'words';
   /** 'tel' gives the phone keypad and lets the system offer the user's own phone numbers to fill in. */
   inputMode?: 'text' | 'numeric' | 'decimal' | 'tel';
+  onFocus?: () => void;
 }) {
   const { theme } = useApp();
   const tel = inputMode === 'tel';
@@ -213,6 +215,7 @@ export function TextField({
         accessibilityHint={error}
         value={value}
         onChangeText={onChange}
+        onFocus={onFocus}
         placeholder={placeholder}
         placeholderTextColor={theme.muted}
         multiline={multiline}

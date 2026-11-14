@@ -1,6 +1,6 @@
 {
   "mode": "update",
-  "note": "Map tab: roomier list down to the tabs, one-tap buttons for your downloaded cities, opens where you last looked instead of Tokyo",
+  "note": "Map search has room: the map shrinks while you type, the search box moves to the top and one tap picks a result",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }
