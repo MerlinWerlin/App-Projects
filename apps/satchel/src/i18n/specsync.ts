@@ -92,7 +92,6 @@ export const SPEC_SYNC_PREFIXES = [
   'tripcopy.',
   'look2.',
   'leavehome.',
-  'games.',
   'f100.',
   'lostbag.',
   'comehome.',

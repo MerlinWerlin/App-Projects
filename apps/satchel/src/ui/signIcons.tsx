@@ -1,7 +1,7 @@
 // T144: the original pictograms for the sign reader, drawn with react-native-svg (already a dependency) on a 48x48
 // grid from theme tokens only (ink outline, accentSoft fill, accent / sea highlights, danger for "not allowed" and
 // warnings), so they follow light and dark mode. Simple geometric shapes in the same hand as the bingo tiles
-// (gameIcons.tsx); not copies of any country's official sign artwork, no brands or logos, no protected emblems (the
+// (the same drawn style as the other icons); not copies of any country's official sign artwork, no brands or logos, no protected emblems (the
 // hospital mark is a bed, not a red cross). The card around each one carries the name and the screen-reader text,
 // so the drawing itself is hidden from screen readers.
 import { memo, type ReactElement } from 'react';

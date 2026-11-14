@@ -14,7 +14,7 @@
 // - buildQuiz: a seeded, deterministic multiple-choice quiz (see a number in words, pick it from 4). Scores stay on
 //   the phone (NUMBERS_KEY, cleaned on every read).
 // Every reading is model-written: needsCheck is always true until a fluent speaker has checked the rules.
-import { rng, seedFrom, shuffle } from './games.ts';
+import { rng, seedFrom, shuffle } from './seeded.ts';
 import { languageForCountry, PHRASE_LANGS, type PhraseLang, type PhraseTable } from './phrases.ts';
 import { currencyDigits } from './spending.ts';
 import { currencyForCountry } from './countrycurrency.ts';

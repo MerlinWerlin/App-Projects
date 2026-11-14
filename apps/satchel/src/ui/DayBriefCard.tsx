@@ -29,7 +29,6 @@ import { carDueBack } from '../core/followups100.ts';
 import { RentalBriefRow } from './followups100.tsx';
 import { LeaveHomeBriefRow } from './leavehome.tsx';
 import { ComeHomeBriefRow } from './comehome.tsx';
-import { GamesBriefRow } from './games.tsx';
 import { LayoverBriefRow } from './layovers.tsx';
 import { GapsBriefRow } from './gaps.tsx';
 import { OutfitBriefRow } from './outfits.tsx';
@@ -169,8 +168,6 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
       {/* T128: "Before you head home: today · 3 of 6 left" on the last days, "Home again" the day after. T134: not
           while the Trips tab's Heading home card shows this trip (same `trips`). */}
       <ComeHomeBriefRow trip={b.trip} trips={trips} now={now} />
-      {/* T125: "Games for the wait", mode from the next (or first) booking today. */}
-      <GamesBriefRow trip={b.trip} kind={n?.item.kind ?? b.first?.kind} />
     </View>
   );
 });
