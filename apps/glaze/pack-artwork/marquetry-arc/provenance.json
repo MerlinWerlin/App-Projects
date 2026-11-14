@@ -1,0 +1,40 @@
+{
+  "theme": "marquetry-arc",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "marquetry-arc",
+      "id": "bowtie-inlay",
+      "label": "Bowtie inlay",
+      "ref": "112-marquetry-arc\\widgets\\nested-arch.png",
+      "subject": "a single refined geometric bowtie inlay motif made from four interlocking angular walnut and tobacco-oak veneer ribbons, asymmetrical but balanced, fine cream maple seams, a small self-contained flat mosaic with generous bare maple around it. No arches, chevrons or sun disc",
+      "prompt": "Use case: stylized-concept. Glaze Marquetry Arc original 1024 x 1024 square pure artwork of a single refined geometric bowtie inlay motif made from four interlocking angular walnut and tobacco-oak veneer ribbons, asymmetrical but balanced, fine cream maple seams, a small self-contained flat mosaic with generous bare maple around it. No arches, chevrons or sun disc. Premium flat wood marquetry craft illustration, pale maple #E4D3B6 background with quiet fine grain throughout, walnut #634C39 tobacco oak #A8774A cream maple. Flush fine seams and natural grain create subtle tactile depth, no raised blocks or 3D doorway, warm diffused light. Match reference medium, entirely new pattern/composition not crop/copy/recolour. Entire motif within 16 percent clear safe margins. No text, numbers, logos, UI/frame, watermark, clocks/hands/dials, date/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-43595aa7-4e19-435a-9802-40716d2cdb35.png",
+      "image": "widget-bowtie-inlay.bc521627.webp",
+      "sha256": "bc5216271b5cb3aa5cfa04346b4a6e066cf2e96d000346804bb5c742bbed4677",
+      "bytes": 247124,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "marquetry-arc",
+      "id": "veneer-wave",
+      "label": "Veneer wave",
+      "ref": "112-marquetry-arc\\widgets\\chevron-grain.png",
+      "subject": "a single flowing abstract wave motif made from three broad undulating flush veneer strips, walnut, tobacco oak and cream maple, precise alternating grain orientations, calm long S-shaped current contained as one compact composition. No nested arches, chevrons, circles or bowtie",
+      "prompt": "Use case: stylized-concept. Glaze Marquetry Arc original 1024 x 1024 square pure artwork of a single flowing abstract wave motif made from three broad undulating flush veneer strips, walnut, tobacco oak and cream maple, precise alternating grain orientations, calm long S-shaped current contained as one compact composition. No nested arches, chevrons, circles or bowtie. Premium flat wood marquetry craft illustration, pale maple #E4D3B6 background with quiet fine grain throughout, walnut #634C39 tobacco oak #A8774A cream maple. Flush fine seams and natural grain create subtle tactile depth, no raised blocks or 3D doorway, warm diffused light. Match reference medium, entirely new pattern/composition not crop/copy/recolour. Entire motif within 16 percent clear safe margins. No text, numbers, logos, UI/frame, watermark, clocks/hands/dials, date/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-c06c9abc-13b9-400f-b174-fa6032fc2958.png",
+      "image": "widget-veneer-wave.8fdca9e0.webp",
+      "sha256": "8fdca9e0cda4113e7c9c116a314ffc4a8c0d0947bcc08794da4703f361116750",
+      "bytes": 277606,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

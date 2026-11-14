@@ -1,0 +1,26 @@
+[
+  {
+    "id": "velvet-instrument-case",
+    "kind": "art",
+    "image": "widget-velvet-instrument-case.c2cb73fc.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Velvet instrument case"
+  },
+  {
+    "id": "brass-cup-mute",
+    "kind": "art",
+    "image": "widget-brass-cup-mute.3ac494c0.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Brass cup mute"
+  }
+]

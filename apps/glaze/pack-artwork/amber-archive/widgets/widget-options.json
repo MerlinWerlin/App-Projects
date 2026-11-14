@@ -1,0 +1,14 @@
+[
+  {
+    "id": "folded-paper-fox",
+    "kind": "art",
+    "image": "widget-folded-paper-fox.db598801.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Paper Fox"
+  }
+]

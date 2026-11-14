@@ -1,4 +1,6 @@
 # Glaze: build theme art packs and publish them as GitHub Release assets (T169, docs/PACK_HOSTING.md).
+# Historical source-theme template. The five-artwork append workflow is installed at
+# .github/workflows/glaze-publish-packs.yml and defaults to a dry run pending Jared's OK.
 # Copy to MerlinWerlin/App-Projects at .github/workflows/glaze-publish-packs.yml (the app lives in
 # apps/glaze). Manual dispatch only. Uses the built-in GITHUB_TOKEN: no secrets to add, no tokens in
 # the repo. Written, not run yet.

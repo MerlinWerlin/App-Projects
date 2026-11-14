@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "otter-wash",
+  "packVersion": 1,
+  "name": "Otter Wash",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DAE3E5",
+    "tile": "#BFC7C8",
+    "glyph": "#1C1816",
+    "accent": "#9FBAB9",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Otter Wash",
+    "mood": "A watercolour otter floating on pale blue.",
+    "tags": [
+      "otter",
+      "wash",
+      "watercolour",
+      "floating",
+      "pale",
+      "blue",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tallportrait9:19.5 iPhone wallpaper OTTER WASH. Original delicate WATERCOLOR illustration on pale blue-grey #E5ECED hotpressedpaper, upper TWO THIRDS empty quiet almostuniformpaperwithfaintfiber,no marks,objectsorhorizon. Bottomthird one gentle SEA OTTER floating onitsback in a small calm tealwaterwash, softbrownfur #96785D,creamroundedface,smallroundears, darkeyes,longtaperingtail, fourpaws, forepawsholdingone small ivoryshell onbelly. A single mutedkelpfrond curlsnearby, minimal ripples lowonly. Beautifultransparentpigmentedges, controlledgranulation, finepaintedfurdetail, sereneeditorialstorybooknaturalart, no3Dfeltorphoto. Wholeottercontainedlowwithbreathingroom. Noartistattribution,text,logos,UI,phone,frame orextraanimals.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "8ecNAwKHf0eId4ukTjCn5QY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7d29c59b.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 185956,
+      "sha256": "7d29c59b7558f095afdec5352be1790f63e2c063398a4e2b0c5d79b1bed63189",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.96281ac3.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 167714,
+      "sha256": "96281ac3a6b7b52d6937b3512157af3b0a8bb21fd1dc4593ee3a28d937df19a3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.829b2001.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 73530,
+      "sha256": "829b2001e9301eef524ecb347fa1041191764d4a80f6b286a43b6388e5b789d9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.1d3d3a77.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 40778,
+      "sha256": "1d3d3a774ce0ea4d7e842a65d9b7fe55be0a83ee6ce6dcf04a9089b8f443ff0e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.c26af9a3.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 97866,
+      "sha256": "c26af9a32be4cdd21bb4c6edd551a559d0fd394c49fbec904e29781edbfe22ec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.4be45ea3.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 126092,
+      "sha256": "4be45ea368e8054936212ba672786d48a0bc8b97d35355b88b484743ce1b1b64",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.a25c6443.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 10848,
+      "sha256": "a25c6443301ede47bf8453101af5767955aab1c0bf0d7f8cc15db62eb97608de",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-kelp-wash.16befa11.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 128852,
+      "sha256": "16befa114a59740308f7c62fe01b248c410f73cd2e434be7d81ae93a724fa0ae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pebble-study.a1135535.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 100100,
+      "sha256": "a1135535237645b3eb17a52e80041fb8d34e16969e3c483f1677e004e2d2de6f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-shell-keeper.0e5a8f9e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 106322,
+      "sha256": "0e5a8f9e63d75a24b4f6610ceffe265a0bf60b21c0fcf08ec13e175896540493",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-shell-progress.e67e3379.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 62186,
+      "sha256": "e67e3379fa19af8a77cda7eed935d4c5cb85198fdd41dfa7e7ad6978bfff3f94",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tide-clock.338ff9b4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 48158,
+      "sha256": "338ff9b459d857e739953ef1e7cf00d13868f21d2b0f9d57a9b09db0532918bc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-water-date.8ed1b2c5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 58298,
+      "sha256": "8ed1b2c54189274931af1aedee45133094688ebc8ba4e2a8ec4423fb462f1c87",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1206700,
+  "widgets": [
+    {
+      "id": "kelp-wash",
+      "kind": "art",
+      "image": "widget-kelp-wash.16befa11.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Kelp wash"
+    },
+    {
+      "id": "pebble-study",
+      "kind": "art",
+      "image": "widget-pebble-study.a1135535.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pebble study"
+    },
+    {
+      "id": "shell-keeper",
+      "kind": "art",
+      "image": "widget-shell-keeper.0e5a8f9e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Shell keeper"
+    },
+    {
+      "id": "shell-progress",
+      "kind": "art",
+      "image": "widget-shell-progress.e67e3379.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Shell progress"
+    },
+    {
+      "id": "tide-clock",
+      "kind": "clock",
+      "image": "widget-tide-clock.338ff9b4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tide clock"
+    },
+    {
+      "id": "water-date",
+      "kind": "calendar",
+      "image": "widget-water-date.8ed1b2c5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Water date"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.1d3d3a77.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.c26af9a3.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.4be45ea3.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

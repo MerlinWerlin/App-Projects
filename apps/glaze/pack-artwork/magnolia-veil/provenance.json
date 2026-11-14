@@ -1,0 +1,58 @@
+{
+  "theme": "magnolia-veil",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__magnolia-veil__v4__manifest.json",
+    "sha256": "fea26b4d80d6d166feeee1bfe9a0c88d07be19bf563b820967ed43af9671cf26",
+    "packVersion": 4,
+    "existingArtwork": [
+      "gentle-progress",
+      "ivory-bloom",
+      "petal-fold",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "magnolia-seedpod",
+      "label": "Magnolia seedpod",
+      "file": "widgets/widget-magnolia-seedpod.bd586d13.webp",
+      "sha256": "bd586d134d9b77b7fb981a9153dec94b9b9bf749838a11e20b2a578c0c3e2089",
+      "bytes": 178530,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-7a21d796-4e21-4f16-a71e-c55551f56bcc.png",
+      "sourceSha256": "a19589bf4eb8f6791dffb8ae4addefcb3eedaff0e141404e33d233d56d2c4443",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for magnolia-veil. One beautiful mature magnolia seedpod on a short grey-brown twig, softly velvety warm-taupe pod with overlapping sculptural scales and two small dusty-rose seeds peeking out, a single muted sage leaf with subtle pale veins. Fine-art botanical editorial macro photography, soft diffuse studio daylight, serene warm grey/ivory/taupe/dusty-plum palette, realistic delicate textures. No open flower, flower bud, petal closeup, symbols or text. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 743023,
+      "opaquePixels": 645
+    },
+    {
+      "id": "magnolia-skeleton-leaf",
+      "label": "Magnolia skeleton leaf",
+      "file": "widgets/widget-magnolia-skeleton-leaf.b118391c.webp",
+      "sha256": "b118391c9c955788f9e9ca3770333261bc41270461995ebee602109e3e3f6073",
+      "bytes": 233932,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-0d0edb96-2efd-49d8-b95d-7987c2ecc246.png",
+      "sourceSha256": "7d97f214f24408e05b7e6e776df6fc8f76e4083a969e121762cb145e5bf6c0c5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for magnolia-veil. One gently curled natural magnolia skeleton leaf, translucent warm-ivory lace of delicate branching veins, slender grey-brown stem and one tiny clear dew bead near the base, a soft dusty-plum tint along its thin outer edge. Fine-art botanical editorial macro photography, serene diffuse daylight, very pale warm grey/ivory/taupe palette, tangible delicate organic structure. No blossom, flower bud, folded petal, seedpod, meter, markings or text. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 637473,
+      "opaquePixels": 493
+    }
+  ]
+}

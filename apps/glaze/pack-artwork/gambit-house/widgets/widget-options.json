@@ -1,0 +1,14 @@
+[
+  {
+    "id": "ivory-bishop",
+    "kind": "art",
+    "image": "widget-ivory-bishop.cdaa7960.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ivory Bishop"
+  }
+]

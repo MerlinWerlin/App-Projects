@@ -1,0 +1,26 @@
+{
+  "theme": "crimson-reverie",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "crimson-reverie",
+      "id": "crimson-silk-koi",
+      "label": "Crimson silk koi",
+      "ref": "013-crimson-reverie\\wallpapers\\wallpaper.png",
+      "subject": "one elegant koi fish sculpture formed from flowing folded crimson silk, two long delicate ivory-and-red silk fins and graceful curved tail, tiny restrained warm gold thread seams, whole fish in a gentle S-shaped floating pose",
+      "style": "Premium realistic luxurious silk-and-lacquer still-life illustration on almost-black silk backdrop with one quiet crimson drape low behind, deep crimson/ivory/charcoal and tiny muted gold accents, subtle soft studio edge lighting matching reference",
+      "avoid": "No dragon, crane, fan, moon gate or clock",
+      "prompt": "Use case: stylized-concept. Glaze crimson-reverie: original standalone 1024 x 1024 square pure artwork. Subject one elegant koi fish sculpture formed from flowing folded crimson silk, two long delicate ivory-and-red silk fins and graceful curved tail, tiny restrained warm gold thread seams, whole fish in a gentle S-shaped floating pose. Premium realistic luxurious silk-and-lacquer still-life illustration on almost-black silk backdrop with one quiet crimson drape low behind, deep crimson/ivory/charcoal and tiny muted gold accents, subtle soft studio edge lighting matching reference. No dragon, crane, fan, moon gate or clock. Entire subject centred within16percent clear margins; new subject/composition, no copy/crop/recolour. No text, numbers, labels, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-39107c91-f178-4a5c-bb39-992a47a50300.png",
+      "image": "widget-crimson-silk-koi.92f1ea37.webp",
+      "sha256": "92f1ea371866b9d1304643f85556d1fe336f4b7212220ebd8d2316a4dada2c21",
+      "bytes": 157188,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

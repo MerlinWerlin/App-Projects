@@ -1,0 +1,26 @@
+{
+  "theme": "cloud-atelier",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "cloud-atelier",
+      "id": "origami-cloud-swan",
+      "label": "Origami cloud swan",
+      "ref": "009-cloud-atelier\\wallpapers\\wallpaper.png",
+      "subject": "one elegant small ivory origami swan with a long gracefully folded neck and two layered paper wings, floating above a tiny pearl-white cotton cloud, a thin soft gold ribbon of light curling below",
+      "style": "Editorial luxury dreamlike miniature photographic illustration, luminous pale peach/apricot sky, feathered lilac mist and soft pearl-white cloud archipelagos low behind only, tactile folded paper/cotton, physically convincing soft side lighting and muted lavender shadows matching reference wallpaper",
+      "avoid": "No boat, balloon, kite, whale, stars or buildings",
+      "prompt": "Use case: stylized-concept. Glaze cloud-atelier: original standalone1024x1024 square pure artwork. Subject one elegant small ivory origami swan with a long gracefully folded neck and two layered paper wings, floating above a tiny pearl-white cotton cloud, a thin soft gold ribbon of light curling below. Editorial luxury dreamlike miniature photographic illustration, luminous pale peach/apricot sky, feathered lilac mist and soft pearl-white cloud archipelagos low behind only, tactile folded paper/cotton, physically convincing soft side lighting and muted lavender shadows matching reference wallpaper. No boat, balloon, kite, whale, stars or buildings. Entire compact subject centred inside16percent clear safe margins, backdrop reaches all edges without card border. New composition/subject no copy/crop/recolour. No text, numbers, labels, logos, UI, watermark, clocks/hands/dials, date/calendar, focus/battery/progress imagery. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-fb954f58-2465-49eb-812b-27399a272c3e.png",
+      "image": "widget-origami-cloud-swan.b0d895ec.webp",
+      "sha256": "b0d895ec35eb02c4a03f0931259b9d67703d17d7be65a9dac997e425ba66c489",
+      "bytes": 71370,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

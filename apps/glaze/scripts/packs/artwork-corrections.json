@@ -1,0 +1,134 @@
+{
+  "agate-apricot": {
+    "options": {
+      "crystal-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "amber-archive": {
+    "options": {
+      "reading-chapters": "habits"
+    },
+    "reason": "Baked-in GOAL 12/20; retain as a functional image, never an Artwork slot."
+  },
+  "billabong-clay": {
+    "options": {
+      "drop-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "cherry-arcade": {
+    "options": {
+      "arcade-goals": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "crumbkin": {
+    "options": {
+      "crumb-goals": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "glider-nook": {
+    "options": {
+      "leaf-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "magnolia-veil": {
+    "options": {
+      "gentle-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "otter-wash": {
+    "options": {
+      "shell-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "papaya-punch": {
+    "options": {
+      "sun-study": "photo"
+    },
+    "reason": "Baked-in 22 C SUNNY weather information; retain as a static picture outside pure Artwork."
+  },
+  "persimmon-press": {
+    "options": {
+      "seed-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "phosphor-amber": {
+    "options": {
+      "buffer-progress-v2": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "protea-blush": {
+    "options": {
+      "bloom-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "puffin-fold": {
+    "options": {
+      "egg-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "rainlight": {
+    "options": {
+      "audit-20261101-after-hours": "clock"
+    },
+    "reason": "Baked-in 06:15 and WED 28; clock/date pictures never count as pure Artwork."
+  },
+  "rosewater-reverie": {
+    "options": {
+      "audit-20261101-pearl-pendulum": "clock"
+    },
+    "reason": "Analogue clock face and hands; retain as a clock option, never pure Artwork."
+  },
+  "sonata-house": {
+    "options": {
+      "practice-chapters": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "spare-time": {
+    "options": {
+      "spare-goals": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "tapir-terracotta": {
+    "options": {
+      "water-drops": "habits"
+    },
+    "reason": "Baked-in 4/6 progress value; retain as a functional image outside Artwork."
+  },
+  "tessera-tempo": {
+    "options": {
+      "dot-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "toucan-loom": {
+    "options": {
+      "tuft-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "willow-wicket": {
+    "options": {
+      "innings-score": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "woven-wander": {
+    "options": {
+      "woven-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "theme": "tessera-tempo",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__tessera-tempo__v1__manifest.json",
+    "sha256": "18de570832f28bb271661bf96229f993e20e6e2aed33f48af92c40c9ada22bf1",
+    "packVersion": 1,
+    "existingArtwork": [
+      "arc-current",
+      "dot-progress",
+      "quadrant-rosette",
+      "tile-weave"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "ceramic-mountain-mosaic",
+      "label": "Ceramic Mountain Mosaic",
+      "file": "widgets/widget-ceramic-mountain-mosaic.75a06843.webp",
+      "sha256": "75a068436b05c439dbc80e04caffeaff74c7030e58eae94bcc51d0ba963dcd8c",
+      "bytes": 177776,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-eca90e8f-fe1e-40f0-80f3-56b2d5dfe6c7.png",
+      "sourceSha256": "8655c55d7a301e277228ffecb311381db2450941c755e14a08fcbd15d32f64c2",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for tessera-tempo. One compact original abstract ceramic relief representing a layered mountain landscape: three asymmetrical angular interlocking mountain peaks made of thick blue-grey/cobalt, burnt terracotta and warm golden-ochre tesserae, an ivory triangular snowcap on the largest peak, with a single curved slate-blue foreground ribbon at their feet. Visually coherent single mosaic landscape, clean modernist geometry, subtle rounded bevels, satin-glazed stoneware and tactile fine mineral grain. Match a warm chalk/navy/terracotta geometric ceramic collection. No sun disk or stars, no pictograms, no loose counting dots; this is a tactile crafted miniature relief, not a vector graphic. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 704644,
+      "opaquePixels": 684
+    },
+    {
+      "id": "glazed-ceramic-fan",
+      "label": "Glazed Ceramic Fan",
+      "file": "widgets/widget-glazed-ceramic-fan.0f082106.webp",
+      "sha256": "0f08210633709a271100b799cba0880d1c9aa50b31ec9f18c5783792bc54160d",
+      "bytes": 175066,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-76804944-bab4-4a2a-8629-177e4caba0aa.png",
+      "sourceSha256": "0a139c2705dcd1139da2a49a5194c773f98eef1511c4086d008081700d3ce833",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for tessera-tempo. One original decorative folding-fan sculpture built from seven broad fluted ceramic sections fanning asymmetrically upward, in alternating muted cobalt blue, terracotta orange, golden ochre and warm chalk ivory. Wide gently scalloped outer edge, a small solid ivory grip at the lower left, no joint exposed. Tactile thick satin-glazed stoneware with finely rounded bevels and subtle mineral grain, modern abstract craft relief with three-quarter depth, quiet refined composition matching a geometric ceramic collection. A recognisable decorative fan, purely ornamental, without a dial, needle, ticks, dots, divisions for measuring, letters or numbers. Not an interface symbol or vector graphic. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 624162,
+      "opaquePixels": 1034
+    }
+  ]
+}

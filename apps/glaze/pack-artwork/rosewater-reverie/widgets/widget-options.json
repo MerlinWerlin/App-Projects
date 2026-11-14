@@ -1,0 +1,14 @@
+[
+  {
+    "id": "pearl-shell",
+    "kind": "art",
+    "image": "widget-pearl-shell.b3fcd6a1.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pearl Shell"
+  }
+]

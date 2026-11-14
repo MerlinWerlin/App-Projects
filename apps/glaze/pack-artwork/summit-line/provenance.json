@@ -1,0 +1,38 @@
+{
+  "theme": "summit-line",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__summit-line__v7__manifest.json",
+    "sha256": "b4820a1884de461e510e0239cb5160d04058a59cc27028b0933144ad9487a156",
+    "packVersion": 7,
+    "existingArtwork": [
+      "pine-rope-pendant",
+      "hero-small",
+      "art-20261107-signal-gondola",
+      "art-20261107-snowshoe-pair"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "alpine-ice-axe",
+      "label": "Alpine ice axe",
+      "file": "widgets/widget-alpine-ice-axe.6210dbd7.webp",
+      "sha256": "6210dbd79d95a1547032d0b298ada050abecb7f5e7e179845f548b6a009a6f5a",
+      "bytes": 172264,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-5a849c4c-bc3c-47dc-95bd-51929404e370.png",
+      "sourceSha256": "be65956a15192e033aad34118eb8b7e8bdec388f23208c513d2bfc3625464cc9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for summit-line. One premium miniature mountaineering ice axe resting at an elegant diagonal, brushed-steel pick and adze, matte graphite shaft with a short scarlet-red fabric wrist loop, delicate frost crystals and a small tuft of fresh snow at its base. Photoreal alpine equipment still-life, cool silver/ivory/graphite and restrained cable-car red palette, soft cold mountain light. No climber, snowshoe, gondola, pine pendant, numbers or measurement scales. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 836564,
+      "opaquePixels": 917
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "kingfisher-blue",
+  "packVersion": 7,
+  "name": "Kingfisher Blue",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#D1E6F5",
+    "tile": "#B8C9D6",
+    "glyph": "#1C1816",
+    "accent": "#CBE2F2",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Kingfisher Blue",
+    "mood": "A brilliant kingfisher by the water.",
+    "tags": [
+      "kingfisher",
+      "blue",
+      "brilliant",
+      "water",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: photorealistic-natural. Original portrait iPhone wallpaper 9:19.5 KINGFISHER BLUE. Fine-art wildlife editorial photography of ONE small real common kingfisher bird, rich electric teal-blue crown and wings, warm copper-orange breast, cream throat patch, long pointed dark beak and glossy dark eye; accurate natural bird proportions, no exaggerated cartoon eye. Bird perches sideways facing left on one slender dry reed stem across lower right, its compact body entirely inside the bottom25percent of the composition. Tiny natural talons, exquisite individual feather detail and subtle living posture. Seamless smooth pale POWDER RIVER BLUE #E6EFF3 backdrop with only very subtle soft hazy natural light. Upper72percent completely quiet and empty for home-screen icons: no branches, leaves, bokeh dots, clouds, text or objects. Bird should occupy about24percent canvas width, not a huge closeup. One fine reed leaf curves very low along bottom edge. Soft diffuse morning light, luminous blue plumage and natural copper chest, delicate soft shadows, calm refined nature photography. Palette pale river blue, teal, navy and restrained copper. No other birds, flowers, fish, water splashes, landscapes, human figures, jewelry, craft material, phone frame, UI, logo or watermark. Original generated wildlife imagery; no external photograph.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "ddcFCwCbX2d4pFx2B4KaQLY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.3036e191.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 69512,
+      "sha256": "3036e19126e4b68a61eefe9c6d9adf3625649f3fef6e83cd7faa6239e246a03f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.d902ff51.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 62586,
+      "sha256": "d902ff513dfc26f418f5ba1b8f352b0d8009e2d53d39fe1884957881bf1e3e27",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.16a394c0.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 30936,
+      "sha256": "16a394c0e18da967078dc5837b7fe43ba127987d96058e09972d5cc3d09b03c4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.a8a7097b.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 7938,
+      "sha256": "a8a7097ba696318ad4f03fb2d0e6e81b7aca148494e0581957cf23f2cddccfd4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.65309c60.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 1974,
+      "sha256": "65309c605d190adb0c1f3d6a58a097384b323e2bff411967007d0055e0fb62a3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.7e737e3c.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 29136,
+      "sha256": "7e737e3ccf575a7737b85f1b487913ec4bdf8137dca293f5c24045c5a587b9d0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.00589bcb.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5898,
+      "sha256": "00589bcbc3cd2c149a89a9b009805fe5d8b25f52981e6b46a2adfacf82c4141b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.1126f811.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 252392,
+      "sha256": "1126f811b40eeb8930a5644bb20a94ca6e28228f0a182304bd45bedc7020abb8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-production-20261101-reed-perch.5ff8cbc5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 70944,
+      "sha256": "5ff8cbc5e76461d824f539e76ab4d61597436f0dc1a05dea9aa6f282ba671eb3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.e3028d08.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6868,
+      "sha256": "e3028d08a590eb14dca4d3234fa7694973e6a9651e0a5786241438c7568a0ea2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.47ecb490.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3346,
+      "sha256": "47ecb4901e6c76d34a7d127769aedd25910a2214f6b8b5da1f65b265c8b7cd66",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.18de7c6e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6746,
+      "sha256": "18de7c6e2214f4cfac5d82075a06f7f197ac1505fd83e5f93d585578e1dcf83b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-battery.07ff351c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2932,
+      "sha256": "07ff351cb86a09ddb90b9129d95e3a90c7f34076cd226421eda908df80bc2109",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-kingfisher-dive.a67ceba5.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 259680,
+      "sha256": "a67ceba5827f97b70d58aa640ecd054624c9b340ad356e327f66c7c7448bb034",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-river-feather.a998b304.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 184706,
+      "sha256": "a998b30443a1dc5baf768d01873a8ee548989a7e94b7ae64bcc4e60cea036098",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 995594,
+  "widgets": [
+    {
+      "id": "production-20261101-reed-perch",
+      "kind": "art",
+      "image": "widget-production-20261101-reed-perch.5ff8cbc5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Production 20261101 reed perch"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.e3028d08.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.47ecb490.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.18de7c6e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-battery",
+      "kind": "battery",
+      "image": "widget-live-battery.07ff351c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Battery level",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.22,
+          0.27,
+          0.56,
+          0.46
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.a8a7097b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.65309c60.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.7e737e3c.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "art-20261106-kingfisher-dive",
+      "label": "Kingfisher Dive",
+      "kind": "art",
+      "image": "widget-kingfisher-dive.a67ceba5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    },
+    {
+      "id": "art-20261106-river-feather",
+      "label": "River Feather",
+      "kind": "art",
+      "image": "widget-river-feather.a998b304.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "theme": "heron-reed",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "heron-reed",
+      "id": "reed-nest",
+      "label": "Reed nest",
+      "ref": "108-heron-reed\\widgets\\reed-rhythm.png",
+      "subject": "one small delicately woven empty reed-warbler nest suspended between three slender muted-gold reeds, fine warm straw fibres, a quiet sculptural cup silhouette, soft marsh haze, no bird or eggs",
+      "prompt": "Use case: stylized-concept. Glaze Heron Reed: original 1024 x 1024 square pure artwork of one small delicately woven empty reed-warbler nest suspended between three slender muted-gold reeds, fine warm straw fibres, a quiet sculptural cup silhouette, soft marsh haze, no bird or eggs. Atmospheric wildlife photographic illustration, pale warm mist #E5E6DE seamless calm background, grey/dark olive/warm beige palette, soft diffused dawn light and delicate natural texture, match reference mood. Entire compact centred subject visible with 16 percent clear margins and gentle edges blending into mist; new composition, no copy/crop/recolour. No labels, text, numbers, logos, UI/frame, watermark, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. Single image no grid.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-90857cbf-5348-4819-b967-1eb5ea38de9f.png",
+      "image": "widget-reed-nest.0b794e8b.webp",
+      "sha256": "0b794e8b0f281c4b74bdd68deace2d8b865f75288bf2668966942beeb08842e5",
+      "bytes": 116250,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "heron-reed",
+      "id": "marsh-lily-bud",
+      "label": "Marsh lily bud",
+      "ref": "108-heron-reed\\widgets\\heron-still.png",
+      "subject": "one pale ivory water-lily bud on a slender curved olive stem emerging beside one small round muted-sage floating leaf, two gentle water ripples, subtle reflection, no heron, feather study, reeds or nest",
+      "prompt": "Use case: stylized-concept. Glaze Heron Reed: original 1024 x 1024 square pure artwork of one pale ivory water-lily bud on a slender curved olive stem emerging beside one small round muted-sage floating leaf, two gentle water ripples, subtle reflection, no heron, feather study, reeds or nest. Atmospheric wildlife photographic illustration, pale warm mist #E5E6DE seamless calm background, grey/dark olive/warm beige palette, soft diffused dawn light and delicate natural texture, match reference mood. Entire compact centred subject visible with 16 percent clear margins and gentle edges blending into mist; new composition, no copy/crop/recolour. No labels, text, numbers, logos, UI/frame, watermark, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. Single image no grid.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-df1ea1e9-ab8a-4a7e-b568-f1387f49a638.png",
+      "image": "widget-marsh-lily-bud.c835c60f.webp",
+      "sha256": "c835c60fa3c3e0cf6e2c1289a70bdfcda2828f26a5e40b8bf3d69b9298cefa20",
+      "bytes": 52874,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

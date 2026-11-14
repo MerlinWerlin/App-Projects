@@ -1,0 +1,14 @@
+[
+  {
+    "id": "pond-water-strider",
+    "kind": "art",
+    "image": "widget-pond-water-strider.90f186ac.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pond water strider"
+  }
+]

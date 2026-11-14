@@ -1,0 +1,25 @@
+{
+  "theme": "rainleaf",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "rainleaf",
+      "id": "emerald-mushrooms",
+      "label": "Emerald Mushrooms",
+      "ref": "082-rainleaf\\wallpapers\\wallpaper.png",
+      "subject": "a small cluster of three delicate forest mushrooms with glossy deep emerald-green caps and pale moss-green stems, emerging from a little lush mossy log. Crisp clear raindrops bead along the curved cap rims. Intimate realistic rainforest macro photography, rich layered dark-green bokeh and near-black forest shadows, soft diffuse rainy daylight, visible cap texture and tiny moss fronds",
+      "avoid": "frog, bamboo, fern curl, monstera leaf",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for rainleaf. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: a small cluster of three delicate forest mushrooms with glossy deep emerald-green caps and pale moss-green stems, emerging from a little lush mossy log. Crisp clear raindrops bead along the curved cap rims. Intimate realistic rainforest macro photography, rich layered dark-green bokeh and near-black forest shadows, soft diffuse rainy daylight, visible cap texture and tiny moss fronds. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: frog, bamboo, fern curl, monstera leaf. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-5eddc9fd-21ab-4cf3-b14d-3e97a8098c8c.png",
+      "image": "widget-emerald-mushrooms.329641ed.webp",
+      "sha256": "329641ed44fb4d509a02660c3b3f26c61c2dde1fce438adcb1738ddaf48d444c",
+      "bytes": 144908,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

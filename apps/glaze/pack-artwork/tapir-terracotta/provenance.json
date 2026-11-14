@@ -1,0 +1,58 @@
+{
+  "theme": "tapir-terracotta",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__tapir-terracotta__v1__manifest.json",
+    "sha256": "5789df094ec2f507b2bd9b3f52a0d6e11ae0cc433060b981cf76ba5a109ff076",
+    "packVersion": 1,
+    "existingArtwork": [
+      "ceramic-tapir",
+      "clay-pebbles",
+      "sage-leaf",
+      "water-drops"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "speckled-clay-pitcher",
+      "label": "Speckled Clay Pitcher",
+      "file": "widgets/widget-speckled-clay-pitcher.4760e44a.webp",
+      "sha256": "4760e44a1d30b2cdb179e8c27c8061a9f51e08b963550796aaeaa2f4740f7bf1",
+      "bytes": 147198,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-147563aa-5c9e-4729-8c09-7495f05e1bf2.png",
+      "sourceSha256": "ac338c8a7f8a0086d156988004950e71e2b696ca97b7dc4c13259f8fc489ff9f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for tapir-terracotta. One original small hand-thrown stoneware water pitcher, full three-quarter view. Broad ivory satin-glazed belly with tiny brown mineral speckles, cocoa-brown curved handle, warm terracotta narrow neck and softly pinched pouring lip; a fine sage-green leaf impressed into its side as a simple decorative relief. Refined tactile ceramic craft, rounded peaceful forms, soft diffused studio lighting, restrained warm pale-clay/ivory/cocoa/sage palette matching a ceramic tapir collection. Pitcher alone, dry, no liquid, pedestal or other objects. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 637384,
+      "opaquePixels": 1005
+    },
+    {
+      "id": "ceramic-bromeliad",
+      "label": "Ceramic Bromeliad",
+      "file": "widgets/widget-ceramic-bromeliad.93e6cd9a.webp",
+      "sha256": "93e6cd9a72eea941cbbaa6a68e32149bf0bfdcc9f31f057ac721473675fe3f68",
+      "bytes": 199410,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-2b754624-78ef-4b85-b5f5-7dca077e820a.png",
+      "sourceSha256": "3d72ceffb5f64883e578c6c79565dca17d727cfbca93714298031c2ef7e73fd4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for tapir-terracotta. One original handmade ceramic bromeliad botanical sculpture, a compact rosette of rounded sage-green stoneware leaves with a short upright terracotta-orange flower spike rising at its center. Ivory unglazed undersides, cocoa mineral speckles, subtle softly rounded leaf edges, satin glaze. The plant is entirely a ceramic sculpture, not a live plant; no pot or soil, no separate base. Refined tactile stoneware craft in terracotta, pale ivory and muted sage, peaceful rounded styling matching a ceramic tapir and sage leaf collection, softly lit with finely visible glaze. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 661064,
+      "opaquePixels": 1209
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "copper-storm-lantern",
+    "kind": "art",
+    "image": "widget-copper-storm-lantern.59a743f2.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Copper storm lantern"
+  }
+]

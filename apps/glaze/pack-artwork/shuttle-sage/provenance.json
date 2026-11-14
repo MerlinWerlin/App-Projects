@@ -1,0 +1,40 @@
+{
+  "theme": "shuttle-sage",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "shuttle-sage",
+      "id": "ivory-court-shoe",
+      "label": "Ivory court shoe",
+      "ref": "124-shuttle-sage\\widgets\\feather-shuttle.png",
+      "subject": "one refined unbranded vintage badminton court shoe, soft ivory canvas and suede with muted sage laces, thin warm gum sole and delicate stitching, complete coherent side three-quarter view, no racket, feather or shuttlecock",
+      "prompt": "Use case: stylized-concept. Glaze Shuttle Sage, original standalone 1024 x 1024 square pure artwork of one refined unbranded vintage badminton court shoe, soft ivory canvas and suede with muted sage laces, thin warm gum sole and delicate stitching, complete coherent side three-quarter view, no racket, feather or shuttlecock. Premium realistic unbranded sporting still-life photographic illustration, pale sage #DCE4DA seamless matte backdrop/floor, warm wood, ivory and muted sage, soft studio daylight and quiet shadow matching reference material finish. New subject/composition no copy/crop/recolour. Whole compact object centred with16percent clear safe margins. No branding, labels, text, numbers, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-1c0ee549-9aed-4098-91fb-a247c1599745.png",
+      "image": "widget-ivory-court-shoe.3dbe627a.webp",
+      "sha256": "3dbe627af552a0d314536991509f9a421b86b5dfed291dcf7446cadd31c8f7bf",
+      "bytes": 138544,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "shuttle-sage",
+      "id": "wooden-net-post",
+      "label": "Wooden net post",
+      "ref": "124-shuttle-sage\\widgets\\racket-study.png",
+      "subject": "one small handcrafted tabletop badminton net-post study: short warm-wood post on a simple low base, ivory cotton netting gathered in one loose fold with a carefully tied sage cord knot, a tiny brass eyelet, entire model visible, no full court, racket or shuttlecock",
+      "prompt": "Use case: stylized-concept. Glaze Shuttle Sage, original standalone 1024 x 1024 square pure artwork of one small handcrafted tabletop badminton net-post study: short warm-wood post on a simple low base, ivory cotton netting gathered in one loose fold with a carefully tied sage cord knot, a tiny brass eyelet, entire model visible, no full court, racket or shuttlecock. Premium realistic unbranded sporting still-life photographic illustration, pale sage #DCE4DA seamless matte backdrop/floor, warm wood, ivory and muted sage, soft studio daylight and quiet shadow matching reference material finish. New subject/composition no copy/crop/recolour. Whole compact object centred with16percent clear safe margins. No branding, labels, text, numbers, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-ccef1e9e-d82c-4e53-af53-37f71396e69c.png",
+      "image": "widget-wooden-net-post.8d12935a.webp",
+      "sha256": "8d12935a9d99c2069ba8f4a66f22b78aee2676e30012100f536cfd130c7e3087",
+      "bytes": 95930,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

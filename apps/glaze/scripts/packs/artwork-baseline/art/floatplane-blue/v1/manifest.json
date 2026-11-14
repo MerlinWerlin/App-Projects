@@ -1,0 +1,271 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "floatplane-blue",
+  "packVersion": 1,
+  "name": "Floatplane Blue",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D1DBE5",
+    "tile": "#B8C0C8",
+    "glyph": "#1C1816",
+    "accent": "#CDD8E2",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Floatplane Blue",
+    "mood": "A vintage floatplane over pale sky blue.",
+    "tags": [
+      "floatplane",
+      "blue",
+      "vintage",
+      "over",
+      "pale",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 Glaze wallpaper FLOATPLANE BLUE. Upper74percent completely EMPTY pale sky-grey #D9E3E8 matte studio field, subtle fine grain only, no clouds/scenery/pattern behind icons. Bottom22percent one SMALL original decorative single-engine FLOATPLANE MODEL in muted blue #789AB2 and ivory #EDE5D3, high single wing, two slim complete pontoons under body, tiny two-blade wooden nose propeller. Slight three-quarter side view on matching studio floor, not flying. ENTIRE model from both wing tips to tail, nose propeller and BOTH floats completely visible, compact vignette only42percent canvas width and18percent total canvas height, centered LOW with broad margins. Refined painted wood/brushed-aluminum miniature craft, small navy details, no brand, letters, registration marks, people, sky, water, phone, UI, border or frame.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "tOcFAwCnj0WXh3uzBpJaQIo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.b8e6ef76.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 44588,
+      "sha256": "b8e6ef768e48c92f3a1a8c81487d5c9cada63f4840f739e47bd687fe460128e6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.37a062f4.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 39864,
+      "sha256": "37a062f4d0b14d581436896d09b781e1d3db6be8ca241db001ca90c90690d019",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.bcefbb65.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 20866,
+      "sha256": "bcefbb658e3b4de2bdd716f7261d9d90eac79ae42e393a535988cb388cd2b0d6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.43af9318.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 23286,
+      "sha256": "43af93183aea85df97a6fd094ae02a1e4bb9836b3568c7a354ffe3d2e4684b57",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.78f2a4f3.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 45264,
+      "sha256": "78f2a4f334d6f7c7241ece1b691d67b56c2ebf8c999b3020e7164ebefb65e846",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.b4175dcb.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 42252,
+      "sha256": "b4175dcb0ade068f35172c61c7c58c2d968285125b5e2627beefb46f286b280c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.f828c5f5.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 3866,
+      "sha256": "f828c5f5e22cefe65aea0b7310c71bcfe8112ab7bdcf7612470d1a966abe1e45",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cockpit-clock.8bdca7a2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 52336,
+      "sha256": "8bdca7a2e8b2f2f8856d291c97db82accfc73dfcea1caa83e50fdbdd6f3c8e42",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-floatplane-model.3ba24518.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 65088,
+      "sha256": "3ba24518175506d9c122e016f591264d6c0258ac10d0512c2ba06b4d317b0703",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-hangar-focus.9334cd23.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 71228,
+      "sha256": "9334cd23496e742290ab0bdf07fc068d4fdf52f344cc9c1df097d275b7eecd4d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pontoon-study.a88808b4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 43128,
+      "sha256": "a88808b4710888c323d94d806380c693ecb3d7754613123a10b4f665e305c376",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sky-date.37bbc909.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 45630,
+      "sha256": "37bbc909c18b828cf283d03ce5319b250ff3d2a3d815c9f44ba42f7a1defd6d6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wood-propeller.a6a5830a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 32326,
+      "sha256": "a6a5830a8aa37c335bffe262bb0702ce44f1e19c5f07851054e4f00b6df4c0b0",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 529722,
+  "widgets": [
+    {
+      "id": "cockpit-clock",
+      "kind": "clock",
+      "image": "widget-cockpit-clock.8bdca7a2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cockpit clock"
+    },
+    {
+      "id": "floatplane-model",
+      "kind": "art",
+      "image": "widget-floatplane-model.3ba24518.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Floatplane model"
+    },
+    {
+      "id": "hangar-focus",
+      "kind": "focus",
+      "image": "widget-hangar-focus.9334cd23.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Hangar focus"
+    },
+    {
+      "id": "pontoon-study",
+      "kind": "art",
+      "image": "widget-pontoon-study.a88808b4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pontoon study"
+    },
+    {
+      "id": "sky-date",
+      "kind": "calendar",
+      "image": "widget-sky-date.37bbc909.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sky date"
+    },
+    {
+      "id": "wood-propeller",
+      "kind": "art",
+      "image": "widget-wood-propeller.a6a5830a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wood propeller"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.43af9318.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.78f2a4f3.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.b4175dcb.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

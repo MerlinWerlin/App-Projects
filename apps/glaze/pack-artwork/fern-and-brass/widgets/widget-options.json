@@ -1,0 +1,26 @@
+[
+  {
+    "id": "brass-acorn",
+    "kind": "art",
+    "image": "widget-brass-acorn.274ede4b.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Brass acorn"
+  },
+  {
+    "id": "brass-watering-can",
+    "kind": "art",
+    "image": "widget-brass-watering-can.1a0b9adf.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Brass watering can"
+  }
+]

@@ -1,0 +1,292 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "manta-silk",
+  "packVersion": 4,
+  "name": "Manta Silk",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#C8E8E6",
+    "tile": "#B0CBC9",
+    "glyph": "#1C1816",
+    "accent": "#90CFD0",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Manta Silk",
+    "mood": "A manta ray gliding through silky blue water.",
+    "tags": [
+      "manta",
+      "silk",
+      "gliding",
+      "through",
+      "silky",
+      "blue",
+      "water",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original Glaze MANTA SILK iPhone wallpaper, tall9:19.5 portrait. Fine-art underwater wildlife photographic aesthetic in a fictional calm tropical sea. One small elegant MANTA RAY glides low across bottom-right, broad graceful diamond body and wing-like pectoral fins gently curved, long thin tail, dark navy-teal dorsal surface with restrained natural lighter markings, plausible manta head with two small cephalic lobes, no exaggerated face. Whole ray including tail safely inside bottom28percent, about42percentwidth, soft faint aquatic light. Background upper72percent perfectly quiet smooth PALE SEAFOAM #DBEBE8 water haze, no sun rays, fish, bubbles, reef or texture in icon area. Lower only a whisper of pale sandy seabed/soft caustic light, no sharp rocks. Palette seafoam, navy-teal #28535C, cool silver and warm ivory, serene spacious composition, no saturated electric blue or fantasy glow. No humans, boats, scuba gear, other creatures, text, clock, phone, UI, frames, logos or watermark. Original generated fictional nature photography style, no external photograph.",
+    "addedAt": "2026-11-01",
+    "category": "Ocean & Water"
+  },
+  "thumbhash": "s7cFCwSXf5aIdHuVh3h/p/c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d976c42a.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 65700,
+      "sha256": "d976c42ab66f2f80104802e67520b5ac56bcee8b26cf7fd549d0883851008d04",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.3309d73c.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 58498,
+      "sha256": "3309d73c33b788bc65d30cb60ae9a551a8de64fd61bdf5275d4b5e8a1fd0bf40",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.d18aec97.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 23126,
+      "sha256": "d18aec97370a6ee47fb0797f6adb86330ab9ab7ef46611ad85edd3d56b68ee2a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.666b3680.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 10878,
+      "sha256": "666b3680e51ecc4159260e3e834e39e53fc60485b089096784d15d46a0977368",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.9ecef6e9.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 75258,
+      "sha256": "9ecef6e96d135613a91da2047486141812e2c3a3a5ef7ff02ba2158f988774d5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.a71d5b09.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 149274,
+      "sha256": "a71d5b098eadbed953986709dc2a0ec13b3382e6e919d53666c49331641416e9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.563b5afb.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5960,
+      "sha256": "563b5afb9fc2d0f84a25b0bd1fdaeb1664479a590b73ea5b7d4c51936810b699",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.08ec55e7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 111716,
+      "sha256": "08ec55e7b92d6b44bfb5d2250f174cf01d478dc84da456a6a805370879539931",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-current-clock.e9ee7be0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 24670,
+      "sha256": "e9ee7be03106b586b73612a4450bed4999c824ad79741d528954709ff24619a9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-drift-timer.a0deac4d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 24832,
+      "sha256": "a0deac4d04765515fb125a271e80927a4f9fb15b664c6a9583ef0b75e3a67165",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ripple-caustic.5cd69043.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 77026,
+      "sha256": "5cd690431ecaa623ca8f39804f75d34b4fead0723865b3af720835e5d014b9df",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sand-rays.7c3ad97d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 162728,
+      "sha256": "7c3ad97d869573fe45d090c3907d8e1ee4d9432dadaed738e7cbd36443d1d459",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tide-date.3299c885.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 74368,
+      "sha256": "3299c885114751054885a34123f639f437a7cd984c96804651e7a1054bee3f90",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.c616aa52.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6512,
+      "sha256": "c616aa5255cdd25ee7d2d83bd4810a463a0c36661fc7a281f261b18103403e35",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 870546,
+  "widgets": [
+    {
+      "id": "current-clock",
+      "kind": "clock",
+      "image": "widget-current-clock.e9ee7be0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Current clock"
+    },
+    {
+      "id": "drift-timer",
+      "kind": "focus",
+      "image": "widget-drift-timer.a0deac4d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Drift timer"
+    },
+    {
+      "id": "ripple-caustic",
+      "kind": "art",
+      "image": "widget-ripple-caustic.5cd69043.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ripple caustic"
+    },
+    {
+      "id": "sand-rays",
+      "kind": "art",
+      "image": "widget-sand-rays.7c3ad97d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sand rays"
+    },
+    {
+      "id": "tide-date",
+      "kind": "calendar",
+      "image": "widget-tide-date.3299c885.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tide date"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.c616aa52.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.666b3680.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.9ecef6e9.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.a71d5b09.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

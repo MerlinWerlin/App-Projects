@@ -1,0 +1,26 @@
+[
+  {
+    "id": "metal-feather",
+    "kind": "art",
+    "image": "widget-metal-feather.1636c830.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Metal feather"
+  },
+  {
+    "id": "cobalt-cairn",
+    "kind": "art",
+    "image": "widget-cobalt-cairn.2f26bdaa.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cobalt cairn"
+  }
+]

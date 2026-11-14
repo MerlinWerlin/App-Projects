@@ -1,0 +1,38 @@
+{
+  "theme": "lemon-lagoon",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__lemon-lagoon__v7__manifest.json",
+    "sha256": "7e6fe98d43adee5f18b419805c80bf424c2fce4b0e7ffa79f45b5d56b4a59943",
+    "packVersion": 7,
+    "existingArtwork": [
+      "lemon-sailboat",
+      "hero-small",
+      "art-20261107-pool-float",
+      "art-20261107-lagoon-tile"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "cobalt-lemon-juicer",
+      "label": "Cobalt lemon juicer",
+      "file": "widgets/widget-cobalt-lemon-juicer.9e35de14.webp",
+      "sha256": "9e35de143f5b5cb5cfc84586b2dd3f55690f9e1b8576752910da4abf043d9787",
+      "bytes": 148982,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-6eb0df32-286f-45c5-b022-fbcad789a999.png",
+      "sourceSha256": "ee49080e4eb60243cdd7aa7b68dff75afe17510b39f78e1b513d32aaeb199194",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for lemon-lagoon. One exquisite miniature ceramic citrus juicer, glossy cobalt-blue fluted cone inside an ivory shallow bowl with delicate cobalt hand-painted curling leaf motifs, one sun-yellow lemon half beside it and a single small white citrus blossom. Mediterranean ceramic model photography, gentle warm sunlight, butter-lemon/cobalt/ivory/aqua palette, fine glaze and tactile lemon rind. No sailboat, pool float, turtle, swimming pool or text. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 743320,
+      "opaquePixels": 458
+    }
+  ]
+}

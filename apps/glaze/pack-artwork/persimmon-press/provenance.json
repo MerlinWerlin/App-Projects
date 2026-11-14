@@ -1,0 +1,42 @@
+{
+  "theme": "persimmon-press",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "persimmon-press",
+      "id": "harvest-basket",
+      "label": "Harvest Basket",
+      "ref": "111-persimmon-press\\wallpapers\\wallpaper.png",
+      "subject": "one deep curved woven harvest basket with a graceful loop handle, holding three persimmons and a sprig of muted teal leaves. Tactile hand-carved WOODBLOCK PRINT on warm ivory fibrous paper, flat restrained rust-orange, persimmon-orange and muted teal inks, irregular carved hatch marks, block-printed edges. Basket is the unmistakable main subject with generous negative space",
+      "avoid": "calyx rosette, full-field woodgrain, cut fruit pair, seed counter",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for persimmon-press. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one deep curved woven harvest basket with a graceful loop handle, holding three persimmons and a sprig of muted teal leaves. Tactile hand-carved WOODBLOCK PRINT on warm ivory fibrous paper, flat restrained rust-orange, persimmon-orange and muted teal inks, irregular carved hatch marks, block-printed edges. Basket is the unmistakable main subject with generous negative space. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: calyx rosette, full-field woodgrain, cut fruit pair, seed counter. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-8a2d1c29-339a-4d96-9f2d-d6322999d964.png",
+      "image": "widget-harvest-basket.d46fa736.webp",
+      "sha256": "d46fa7367059bbf563732758d7be8263b347f5a3952a3bd9d9e184b81dfa0db8",
+      "bytes": 335356,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "persimmon-press",
+      "id": "orchard-songbird",
+      "label": "Orchard Songbird",
+      "ref": "111-persimmon-press\\wallpapers\\wallpaper.png",
+      "subject": "one plump orchard songbird perched sideways on a small branching twig with three simple leaves. Teal wings and head, persimmon-orange breast, rust-brown twig. Tactile hand-carved WOODBLOCK PRINT on warm ivory fibrous paper, flat three-ink palette, short irregular carved hatching, authentic block-printed contours and paper grain. Entire little bird and twig comfortably visible, restrained elegant botanical print",
+      "avoid": "fruit pair, basket, calyx rosette, full-field woodgrain, seed counter",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for persimmon-press. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one plump orchard songbird perched sideways on a small branching twig with three simple leaves. Teal wings and head, persimmon-orange breast, rust-brown twig. Tactile hand-carved WOODBLOCK PRINT on warm ivory fibrous paper, flat three-ink palette, short irregular carved hatching, authentic block-printed contours and paper grain. Entire little bird and twig comfortably visible, restrained elegant botanical print. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: fruit pair, basket, calyx rosette, full-field woodgrain, seed counter. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-c9fb430e-c94c-4dd5-826e-a49b728e8a25.png",
+      "image": "widget-orchard-songbird.80c2c739.webp",
+      "sha256": "80c2c7396f2002cb53c93583312b296afe8b11b1f480722248225eda43939a89",
+      "bytes": 287370,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

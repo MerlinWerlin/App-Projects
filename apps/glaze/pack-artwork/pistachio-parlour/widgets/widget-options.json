@@ -1,0 +1,14 @@
+[
+  {
+    "id": "pistachio-eclair",
+    "kind": "art",
+    "image": "widget-pistachio-eclair.6cd42da2.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pistachio eclair"
+  }
+]

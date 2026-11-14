@@ -1,0 +1,270 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "jade-meridian",
+  "packVersion": 6,
+  "name": "Jade Meridian",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#182C1E",
+    "tile": "#38493C",
+    "glyph": "#FAF8F2",
+    "accent": "#A2A58F",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Jade Meridian",
+    "mood": "Mineral green valley and a sleeping jade tiger.",
+    "tags": [
+      "jade",
+      "meridian",
+      "mineral",
+      "green",
+      "valley",
+      "sleeping",
+      "tiger",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Chengyu Wang (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "TOgFCwJDkIp1fZamZ4CaCHk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.8c4637b9.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 191428,
+      "sha256": "8c4637b904cd1a7fed22ba76f77d976a57afb312fd094b1c925b9f05b11c3689",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1d73e81c.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 173548,
+      "sha256": "1d73e81cce22a5f00519337c0f1085d66035cf27045b4232202e7d1324788698",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e5729274.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 79132,
+      "sha256": "e572927468b52201783eff2f68d1e4bd52917f97b0c66755f6cd6a0fb8cadd47",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.71282922.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 57776,
+      "sha256": "7128292232b6f644360bb32db52622b93df587058985e69c8d7ab19cc6aace7f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.4e415aff.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 163808,
+      "sha256": "4e415aff1053242334381629aa3f3c3a4bcd9573389933a1e34075235b5cfbb5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.f386a20f.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 188506,
+      "sha256": "f386a20f618cd666ec6498615bd43d5ce1dfc90558b53c3c4bbbfab84b9ad73e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.89840b2d.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 13046,
+      "sha256": "89840b2dac52e807e9c0fc3086bc0b8311b75be36ca5732fc31c531b93e98117",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.2eb4bd03.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 175234,
+      "sha256": "2eb4bd0336e4fa14137beee4ddf340f79df4e235ee4f16e9928143a40157ca9c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-jade-bonsai.f7d72e61.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 148396,
+      "sha256": "f7d72e613a2b3c5d17001ac694332fe9381bd7cc22ffefa98fddb5e3762ba247",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-meridian-date.b7175b1f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 167102,
+      "sha256": "b7175b1f9149b8b797fb1c8ca6b28f9aed54c7be0389fca69f89762e0c6adc65",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mountain-crane.df44e688.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 150492,
+      "sha256": "df44e6887701defc9aee77f7240840534d547d92976191da5101809195d88797",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-valley-disc.b7e1ce0f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 198848,
+      "sha256": "b7e1ce0f00173d92a4b11b9893a89df41841c3bc019672cb0af81641540dac06",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.617f0fc8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7090,
+      "sha256": "617f0fc88a74f080aefd883619796ecd1d35c42d93982eef76f5a4c6a808275f",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1714406,
+  "widgets": [
+    {
+      "id": "jade-bonsai",
+      "kind": "art",
+      "image": "widget-jade-bonsai.f7d72e61.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Jade bonsai"
+    },
+    {
+      "id": "meridian-date",
+      "kind": "calendar",
+      "image": "widget-meridian-date.b7175b1f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Meridian date"
+    },
+    {
+      "id": "mountain-crane",
+      "kind": "art",
+      "image": "widget-mountain-crane.df44e688.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mountain crane"
+    },
+    {
+      "id": "valley-disc",
+      "kind": "art",
+      "image": "widget-valley-disc.b7e1ce0f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Valley disc"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.617f0fc8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.71282922.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.4e415aff.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.f386a20f.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

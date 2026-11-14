@@ -1,0 +1,38 @@
+{
+  "theme": "olive-outpost",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__olive-outpost__v7__manifest.json",
+    "sha256": "03088d9f3238ca1c6a7e96d25c6ec66674892e00f11b2d91bab1dd0b835c4623",
+    "packVersion": 7,
+    "existingArtwork": [
+      "olive-field-radio",
+      "hero-small",
+      "art-20261107-canvas-canteen",
+      "art-20261107-field-stove"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "canvas-field-binoculars",
+      "label": "Canvas field binoculars",
+      "file": "widgets/widget-canvas-field-binoculars.9e3bbfd7.webp",
+      "sha256": "9e3bbfd7953b5ffe43ebf6fc96e9d0a9829aa2e0b3ab76a64c2865e56ab6dbb7",
+      "bytes": 292418,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-abfc956a-2041-4552-be6b-b3b841ff326f.png",
+      "sourceSha256": "008abf5e7af481ff0fdcb0d74901b34aedb2f8ac790724c9feadafcfb5895732",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for olive-outpost. One exquisite pair of vintage unbranded field binoculars with matte dark-olive leather barrels, aged brass eyecups and central bridge, finely woven sandy canvas neck strap loosely curved below, soft cream lens reflections and a tiny pine needle fragment. High-end outdoor-equipment still-life macro photography, warm lantern-like side light, realistic leather/brass/cotton texture, olive/sand/brass/ivory palette. No gauges, numeric scales, radio, canteen, stove, clock or compass. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 556457,
+      "opaquePixels": 791
+    }
+  ]
+}

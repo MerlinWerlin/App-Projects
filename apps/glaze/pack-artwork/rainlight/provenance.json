@@ -1,0 +1,25 @@
+{
+  "theme": "rainlight",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "rainlight",
+      "id": "rain-dragonfly",
+      "label": "Rain Dragonfly",
+      "ref": "005-rainlight\\wallpapers\\wallpaper.png",
+      "subject": "a delicate iridescent silver-blue dragonfly resting diagonally on a small smooth wet black river stone, all four transparent wings open and dotted with crisp rain beads. Cinematic rainy-night macro photography, cyan and violet light catches on the wings, very soft distant amber and tiny red city bokeh through dark rain glass, restrained ink-plum shadows",
+      "avoid": "umbrella, koi, leaf, time display",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for rainlight. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: a delicate iridescent silver-blue dragonfly resting diagonally on a small smooth wet black river stone, all four transparent wings open and dotted with crisp rain beads. Cinematic rainy-night macro photography, cyan and violet light catches on the wings, very soft distant amber and tiny red city bokeh through dark rain glass, restrained ink-plum shadows. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: umbrella, koi, leaf, time display. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-fba30375-8d72-4c43-9635-2ee6044d7310.png",
+      "image": "widget-rain-dragonfly.ab89f6bf.webp",
+      "sha256": "ab89f6bf592159e1decf18b46114e47cc73bcc3715bd82e330af062801e6d64e",
+      "bytes": 328626,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "carrom-cedar",
+  "packVersion": 1,
+  "name": "Carrom Cedar",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EFDDC5",
+    "tile": "#D1C1AC",
+    "glyph": "#1C1816",
+    "accent": "#966D4C",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Carrom Cedar",
+    "mood": "A cedar carrom board on warm cream.",
+    "tags": [
+      "carrom",
+      "cedar",
+      "board",
+      "warm",
+      "cream",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 iPhone wallpaper CARROM CEDAR. Upper70percent empty calm warm cream #EFE2CD matte paper with extremely subtle grain, no objects behind icons. Bottom25percent a complete small cedar carrom board on matching cream floor, slightly elevated three-quarter view, squared wooden rim and ivory smooth playing surface, four round black corner pockets, fine red/black geometric guide lines and tiny red center mark. A small stack of ivory and charcoal discs and one red striker beside board, entire vignette fully contained with generous margins, only50percent canvas width and20percent height. Warm cedar #A8754E, charcoal #453831, ivory #F8EDD7, restrained lacquer-red #B64A4A. Quiet premium handcrafted sports still life, refined woodgrain, soft studio shadow. Original unbranded art, no letters, brands, real venue, people, phone or frame. No broad decorative pattern in upper field.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "MykGCwKXj2aHhI6yaHCJBpc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.5a133336.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 60440,
+      "sha256": "5a133336fee968f2dbb76b55f5af56c4c30e11688c01e33fe24531a7dbb57cf1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.50cf831d.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 52514,
+      "sha256": "50cf831dc18c4053a1a6ed84196726a550b91f0aeddafce281211b6a49cd324c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.d24f9b0f.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 25426,
+      "sha256": "d24f9b0fa76e33c29b7ec2b7dbd31677e97653e27a2e8bf9ed7b55db4a512ad8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.3cb49849.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 26222,
+      "sha256": "3cb49849648a851c24e2afa132b10e79f97317615c6ac08f5667789f05182c7f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.dfc9fadf.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 38792,
+      "sha256": "dfc9fadf060dc0b8ffd539efe9881387c8ca508c114553a4c1b359fd5585a0e6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.346938c3.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 86350,
+      "sha256": "346938c330ff8ebe9337059b76a20ddae8e6e39c038d943a6c05bfbf1f38a08e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.fcf66677.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4598,
+      "sha256": "fcf66677df7481d204ac889a3c987d5d60204a74f84bd968d02283751009c284",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cedar-board.57aa2681.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 70012,
+      "sha256": "57aa2681dd40bd8da2677e4a6185bc79991163833cac13675a8803084d073880",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cedar-date.07f74920.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 55642,
+      "sha256": "07f7492072c1d9456a942f3be1ce3d0978784e78fd419b2333608f09c2e3d114",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-club-clock.3b3bebe4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 77126,
+      "sha256": "3b3bebe40795039f1d3923dbd7618b9e3eed5fd843a91d9969ad1ff10a388473",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-disc-stack.ed50f4b0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 43400,
+      "sha256": "ed50f4b0c0fd4039b91fe4ea260520febb1cff31b01c237295525c8bd7f4e63c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-quiet-focus.e3ed877f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 56452,
+      "sha256": "e3ed877f9a65675dd9a08e5213d7e417c8801cd59c5f526fb16fe302e2990ff2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-red-striker.be21df74.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 68634,
+      "sha256": "be21df74ce046e8379e18f9d6c71110d74894ee6fdb281f0a9cebdd5f1539b11",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 665608,
+  "widgets": [
+    {
+      "id": "cedar-board",
+      "kind": "art",
+      "image": "widget-cedar-board.57aa2681.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cedar board"
+    },
+    {
+      "id": "cedar-date",
+      "kind": "calendar",
+      "image": "widget-cedar-date.07f74920.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cedar date"
+    },
+    {
+      "id": "club-clock",
+      "kind": "clock",
+      "image": "widget-club-clock.3b3bebe4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Club clock"
+    },
+    {
+      "id": "disc-stack",
+      "kind": "art",
+      "image": "widget-disc-stack.ed50f4b0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Disc stack"
+    },
+    {
+      "id": "quiet-focus",
+      "kind": "focus",
+      "image": "widget-quiet-focus.e3ed877f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Quiet focus"
+    },
+    {
+      "id": "red-striker",
+      "kind": "art",
+      "image": "widget-red-striker.be21df74.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Red striker"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.3cb49849.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.dfc9fadf.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.346938c3.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

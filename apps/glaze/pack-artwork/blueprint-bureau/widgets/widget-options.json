@@ -1,0 +1,14 @@
+[
+  {
+    "id": "articulated-seahorse",
+    "kind": "art",
+    "image": "widget-articulated-seahorse.bd715abf.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Articulated seahorse"
+  }
+]

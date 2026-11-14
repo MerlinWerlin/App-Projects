@@ -1,0 +1,25 @@
+{
+  "theme": "saffron-courtyard",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "saffron-courtyard",
+      "id": "mosaic-carafe",
+      "label": "Mosaic Carafe",
+      "ref": "020-saffron-courtyard\\wallpapers\\wallpaper.png",
+      "subject": "one elegant round-bellied ceramic water carafe with a long curved handle and short spout, decorated with small turquoise, saffron-orange, warm ivory and terracotta mosaic tesserae forming a simple geometric floral pattern. Sitting on warm sunlit peach plaster, a small olive sprig alongside, softly dappled olive-leaf shadows. Exquisite tactile glazed ceramic, Mediterranean courtyard light, quiet handmade luxury",
+      "avoid": "lemon, sunbird, tortoise, pomegranate-shaped vessel",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for saffron-courtyard. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one elegant round-bellied ceramic water carafe with a long curved handle and short spout, decorated with small turquoise, saffron-orange, warm ivory and terracotta mosaic tesserae forming a simple geometric floral pattern. Sitting on warm sunlit peach plaster, a small olive sprig alongside, softly dappled olive-leaf shadows. Exquisite tactile glazed ceramic, Mediterranean courtyard light, quiet handmade luxury. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: lemon, sunbird, tortoise, pomegranate-shaped vessel. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-f26eb28e-e861-4257-9a5b-57b1462242bc.png",
+      "image": "widget-mosaic-carafe.0054b4df.webp",
+      "sha256": "0054b4df03235562a288056697774edb2f3092f5a15c8817900190a860238b57",
+      "bytes": 323070,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

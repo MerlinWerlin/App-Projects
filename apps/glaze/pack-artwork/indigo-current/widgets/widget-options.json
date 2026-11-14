@@ -1,0 +1,14 @@
+[
+  {
+    "id": "paper-octopus",
+    "kind": "art",
+    "image": "widget-paper-octopus.89acebad.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Paper octopus"
+  }
+]

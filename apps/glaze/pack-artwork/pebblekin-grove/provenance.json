@@ -1,0 +1,25 @@
+{
+  "theme": "pebblekin-grove",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "pebblekin-grove",
+      "id": "mossback-tortoise",
+      "label": "Mossback Tortoise",
+      "ref": "078-pebblekin-grove\\wallpapers\\wallpaper.png",
+      "subject": "a charming tiny tortoise assembled from softly rounded grey river pebbles, its broad domed shell made from overlapping smooth stone pieces with moss in the seams and a little fern sprig. Gentle black bead eyes, no mouth text. Resting on an earthy sage green surface beside a few miniature stones. Tactile whimsical handcrafted miniature, soft diffuse light, quiet sage and grey palette",
+      "avoid": "stone doorway, moth, standing pebble person",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for pebblekin-grove. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: a charming tiny tortoise assembled from softly rounded grey river pebbles, its broad domed shell made from overlapping smooth stone pieces with moss in the seams and a little fern sprig. Gentle black bead eyes, no mouth text. Resting on an earthy sage green surface beside a few miniature stones. Tactile whimsical handcrafted miniature, soft diffuse light, quiet sage and grey palette. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: stone doorway, moth, standing pebble person. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-b15a322d-e51d-4333-aa5a-99a30aeb195b.png",
+      "image": "widget-mossback-tortoise.1e55ef6d.webp",
+      "sha256": "1e55ef6d8aaf4f5684bd98f98c4d0ef478065ab275d04ce73f0952333ebe1bcc",
+      "bytes": 230006,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

@@ -3,6 +3,7 @@
 //
 //   node scripts/packs/release_assets.mjs [--dir dist/packs] [--out dist/release] [--existing-dir <dir>]
 //        [--existing assets.json] [--single | --tag <tag>]
+//        [--catalog-tag glaze-packs-v5]  (default v1 for the historical source-theme builder)
 //
 // Release assets have no folders, so every file gets its flat name from src/core/packHost.ts
 // (the app uses the same function to build URLs):  art/<id>/v<n>/<file> -> art__<id>__v<n>__<file>,
@@ -50,9 +51,9 @@ export const DEFAULT_RELEASE = 'glaze-packs-v1';
 export const packTag = (p) => p.release ?? DEFAULT_RELEASE;
 
 /** Tags in publish order: glaze-packs-v2, -v3, ... (by number), then glaze-packs-v1 last (catalog.json). */
-export function tagOrder(tags) {
+export function tagOrder(tags, catalogTag = DEFAULT_RELEASE) {
   const num = (t) => Number(/^glaze-packs-v(\d+)$/.exec(t)?.[1] ?? 0);
-  return [...new Set(tags)].filter((t) => t !== DEFAULT_RELEASE).sort((a, b) => num(a) - num(b) || (a < b ? -1 : 1)).concat(DEFAULT_RELEASE);
+  return [...new Set(tags)].filter((t) => t !== catalogTag).sort((a, b) => num(a) - num(b) || (a < b ? -1 : 1)).concat(catalogTag);
 }
 
 const sha256 = (b) => createHash('sha256').update(b).digest('hex');
@@ -86,14 +87,14 @@ export function parseExisting(raw) {
  * (`release` ignored). With `tag` (T274): only the packs of that release, plus catalog.json when the
  * tag is glaze-packs-v1; a built folder of a pack the catalogue doesn't list counts as glaze-packs-v1.
  */
-export function planRelease(dir, existing = new Map(), { tag = null } = {}) {
+export function planRelease(dir, existing = new Map(), { tag = null, catalogTag = DEFAULT_RELEASE } = {}) {
   const root = resolve(dir);
   if (!existsSync(join(root, cat.CATALOG_FILE))) throw new Error(`${root}/catalog.json not found: run scripts/packs/build_packs.mjs first`);
   const catalog = cat.parseCatalog(JSON.parse(readFileSync(join(root, cat.CATALOG_FILE), 'utf8')));
   if (!catalog.ok) throw new Error(`catalog.json does not parse: ${catalog.error}`);
   const tagOf = new Map(catalog.value.packs.map((p) => [p.id, packTag(p)]));
   const mine = (id) => tag === null || (tagOf.get(id) ?? DEFAULT_RELEASE) === tag;
-  const withCatalog = tag === null || tag === DEFAULT_RELEASE;
+  const withCatalog = tag === null || tag === catalogTag;
   const files = [];
   const manifests = [];
   for (const p of existsSync(join(root, 'art')) ? walk(join(root, 'art')) : []) {
@@ -133,19 +134,19 @@ export function planRelease(dir, existing = new Map(), { tag = null } = {}) {
 }
 
 /** T274: one plan per release tag the catalogue uses (glaze-packs-v1 always, last). */
-export function planReleases(dir, existingByTag = new Map()) {
+export function planReleases(dir, existingByTag = new Map(), { catalogTag = DEFAULT_RELEASE } = {}) {
   const root = resolve(dir);
   if (!existsSync(join(root, cat.CATALOG_FILE))) throw new Error(`${root}/catalog.json not found: run scripts/packs/build_packs.mjs first`);
   const catalog = cat.parseCatalog(JSON.parse(readFileSync(join(root, cat.CATALOG_FILE), 'utf8')));
   if (!catalog.ok) throw new Error(`catalog.json does not parse: ${catalog.error}`);
-  return tagOrder(catalog.value.packs.map(packTag)).map((tag) => planRelease(root, existingByTag.get(tag) ?? new Map(), { tag }));
+  return tagOrder(catalog.value.packs.map(packTag), catalogTag).map((tag) => planRelease(root, existingByTag.get(tag) ?? new Map(), { tag, catalogTag }));
 }
 
 /** Write <out>/assets/<flat name> copies, plan.json and upload-order.txt (one release; `tag` as in planRelease). */
-export function writeReleaseAssets({ dir, outDir, existing = new Map(), log = console.log, tag = null }) {
+export function writeReleaseAssets({ dir, outDir, existing = new Map(), log = console.log, tag = null, catalogTag = DEFAULT_RELEASE }) {
   const root = resolve(dir);
   const out = resolve(outDir);
-  const r = planRelease(root, existing, { tag });
+  const r = planRelease(root, existing, { tag, catalogTag });
   writeOne(root, out, r, log);
   return { ...r, outDir: out, assetsDir: join(out, 'assets'), order: r.plan.filter((e) => e.upload).map((e) => e.name) };
 }
@@ -154,10 +155,10 @@ export function writeReleaseAssets({ dir, outDir, existing = new Map(), log = co
  * T274: <out>/<tag>/... for every release the catalogue uses, and <out>/tags.txt (publish order,
  * glaze-packs-v1 last). `existingByTag`: Map tag -> parseExisting() result.
  */
-export function writeReleaseSets({ dir, outDir, existingByTag = new Map(), log = console.log }) {
+export function writeReleaseSets({ dir, outDir, existingByTag = new Map(), log = console.log, catalogTag = DEFAULT_RELEASE }) {
   const root = resolve(dir);
   const out = resolve(outDir);
-  const plans = planReleases(root, existingByTag);
+  const plans = planReleases(root, existingByTag, { catalogTag });
   rmSync(out, { recursive: true, force: true });
   mkdirSync(out, { recursive: true });
   const sets = plans.map((r) => {
@@ -166,7 +167,7 @@ export function writeReleaseSets({ dir, outDir, existingByTag = new Map(), log =
     return { ...r, outDir: tagOut, assetsDir: join(tagOut, 'assets'), order: r.plan.filter((e) => e.upload).map((e) => e.name) };
   });
   writeFileSync(join(out, 'tags.txt'), sets.map((s) => s.tag).join('\n') + '\n');
-  log(`${sets.length} release(s): ${sets.map((s) => s.tag).join(', ')} (catalog.json goes to ${DEFAULT_RELEASE}, uploaded last)`);
+  log(`${sets.length} release(s): ${sets.map((s) => s.tag).join(', ')} (catalog.json goes to ${catalogTag}, uploaded last)`);
   return { outDir: out, sets };
 }
 
@@ -209,6 +210,7 @@ function parseArgs(argv) {
     else if (a === '--existing-dir') o.existingDir = resolve(v());
     else if (a === '--single') o.single = true;
     else if (a === '--tag') o.tag = v();
+    else if (a === '--catalog-tag') o.catalogTag = v();
     else if (a === '--help' || a === '-h') o.help = true;
     else throw new Error(`unknown option ${a}`);
   }
@@ -229,15 +231,16 @@ if (isMain) {
     const outDir = o.outDir ?? join(APP_ROOT, 'dist', 'release');
     if (o.single && o.tag) throw new Error('--single and --tag are exclusive');
     if (o.tag !== undefined && !host.isPackReleaseTag(o.tag)) throw new Error(`--tag: "${o.tag}" is not a release tag (glaze-packs-v<n>)`);
+    if (o.catalogTag !== undefined && !host.isPackReleaseTag(o.catalogTag)) throw new Error('--catalog-tag must be glaze-packs-v<n>');
     if (o.single || o.tag) {
-      writeReleaseAssets({ dir, outDir, existing, tag: o.tag ?? null });
+      writeReleaseAssets({ dir, outDir, existing, tag: o.tag ?? null, catalogTag: o.catalogTag });
     } else {
       const existingByTag = new Map();
       if (o.existingDir && existsSync(o.existingDir)) {
         for (const f of readdirSync(o.existingDir)) if (f.endsWith('.json')) existingByTag.set(f.slice(0, -5), readEx(join(o.existingDir, f)));
       }
       if (o.existingFile) existingByTag.set(DEFAULT_RELEASE, existing);
-      writeReleaseSets({ dir, outDir, existingByTag });
+      writeReleaseSets({ dir, outDir, existingByTag, catalogTag: o.catalogTag });
     }
   } catch (e) {
     console.error(`error: ${e instanceof Error ? e.message : e}`);

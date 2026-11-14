@@ -1,0 +1,38 @@
+{
+  "theme": "saddlewood",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__saddlewood__v7__manifest.json",
+    "sha256": "eb193f731cc0091ba5594c9f913be9006db9d81fa8305e141af3e342609e7e51",
+    "packVersion": 7,
+    "existingArtwork": [
+      "leather-compass",
+      "hero-small",
+      "art-20261107-brass-stirrup",
+      "art-20261107-braided-rosette"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "chestnut-saddle",
+      "label": "Chestnut saddle",
+      "file": "widgets/widget-chestnut-saddle.b60ab58c.webp",
+      "sha256": "b60ab58cdb0632ec57033972f88008a911397a562dc2dd02780ca6f9d05cf3f9",
+      "bytes": 210112,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-4de32383-620a-4a44-bd20-49ab1b175178.png",
+      "sourceSha256": "7328264a8036944150e2895c2f7aeb5e0a75366987d89dafd42ad291a8afbf59",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for saddlewood. One exquisite miniature English riding saddle made from richly grained chestnut leather, fine cream stitching, softly padded sage suede seat, small warm brass fittings, standing on a simple low pale-oak support. Premium equestrian still-life craft photography, natural leather patina and tactile wood grain, soft countryside light, chestnut/sage/cream/brass palette. No horse, stirrup, ribbon rosette, compass, clock or writing. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 636303,
+      "opaquePixels": 1349
+    }
+  ]
+}

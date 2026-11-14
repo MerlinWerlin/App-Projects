@@ -1,0 +1,56 @@
+{
+  "theme": "sonata-house",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "sonata-house",
+      "id": "walnut-cello",
+      "label": "Walnut cello",
+      "ref": "048-sonata-house\\widgets\\extra-20261029-string-butterfly.png",
+      "subject": "one exquisite miniature walnut cello resting upright on a small ivory plaster plinth, coherent four strings, elegant scroll and fine brass endpin, a short bow leaning beside it, subtle oxblood velvet touch at base. Whole cello/scroll/bow visible, no butterfly or piano keys",
+      "prompt": "Use case: stylized-concept. Glaze Sonata House original 1024 x 1024 square pure artwork of one exquisite miniature walnut cello resting upright on a small ivory plaster plinth, coherent four strings, elegant scroll and fine brass endpin, a short bow leaning beside it, subtle oxblood velvet touch at base. Whole cello/scroll/bow visible, no butterfly or piano keys. Premium refined editorial acoustic chamber-music photographic illustration, warm ivory #EEE7DB seamless matte subtly plastered backdrop/ground, rich walnut, very restrained burgundy, tiny brushed brass, soft afternoon light and tactile wood/velvet detail matching reference. New subject/composition never copy/crop/recolour. Entire compact object centred within16percent clear margins. No people, sheet music, notation, lettering, numbers, logos, watermark, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-b3b3b087-5e51-45e4-807f-ade7dddd6784.png",
+      "image": "widget-walnut-cello.583d3fe5.webp",
+      "sha256": "583d3fe5dcddbf81ee881bdab48717e5c614f7a26dde8c333efdfb0174a24ae9",
+      "bytes": 156142,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "sonata-house",
+      "id": "chamber-french-horn",
+      "label": "Chamber French horn",
+      "ref": "048-sonata-house\\wallpapers\\wallpaper.png",
+      "subject": "one beautifully crafted miniature brushed-brass French horn with coherent coiled tubing and a single flared bell, small ivory valve caps, resting on a tiny oxblood velvet cushion. Complete horn silhouette, restrained warm reflections, no clock, butterfly or piano",
+      "prompt": "Use case: stylized-concept. Glaze Sonata House original 1024 x 1024 square pure artwork of one beautifully crafted miniature brushed-brass French horn with coherent coiled tubing and a single flared bell, small ivory valve caps, resting on a tiny oxblood velvet cushion. Complete horn silhouette, restrained warm reflections, no clock, butterfly or piano. Premium refined editorial acoustic chamber-music photographic illustration, warm ivory #EEE7DB seamless matte subtly plastered backdrop/ground, rich walnut, very restrained burgundy, tiny brushed brass, soft afternoon light and tactile wood/velvet detail matching reference. New subject/composition never copy/crop/recolour. Entire compact object centred within16percent clear margins. No people, sheet music, notation, lettering, numbers, logos, watermark, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-51f2ee13-0863-49b0-9589-3465e4050fe4.png",
+      "image": "widget-chamber-french-horn.fa4e49cd.webp",
+      "sha256": "fa4e49cdb52752f427ec26e6932cb828d2f65ab71c61b516061104d3882e96d4",
+      "bytes": 159868,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "sonata-house",
+      "id": "walnut-music-stand",
+      "label": "Walnut music stand",
+      "ref": "048-sonata-house\\wallpapers\\wallpaper.png",
+      "subject": "one small exquisite empty walnut chamber-music stand, an airy lyre-shaped carved wooden backrest with subtle ivory inlay and slim adjustable stem on a coherent three-foot base, tiny brushed brass fitting, warm woodgrain, no paper or music notation",
+      "prompt": "Use case: stylized-concept. Glaze Sonata House original standalone 1024 x 1024 square pure artwork of one small exquisite empty walnut chamber-music stand, an airy lyre-shaped carved wooden backrest with subtle ivory inlay and slim adjustable stem on a coherent three-foot base, tiny brushed brass fitting, warm woodgrain, no paper or music notation. Premium editorial miniature acoustic salon photographic illustration on warm ivory #EEE7DB seamless matte plaster backdrop/ground, dark walnut, tiny brushed brass and restrained burgundy accent, soft afternoon light and delicate studio shadow matching reference. Entire object compact centred within16percent clear margins. New subject/composition no copy/crop/recolour. No piano, butterfly, text, sheet music, letters, numerals, labels, logo, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-689e9858-cfcd-4eca-a6ff-f2d5696ebf23.png",
+      "image": "widget-walnut-music-stand.3c17bbd8.webp",
+      "sha256": "3c17bbd8e5278705be456ec2500102547dee710df22fba3853c3365df7d3500f",
+      "bytes": 85334,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

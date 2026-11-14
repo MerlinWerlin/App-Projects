@@ -1,0 +1,38 @@
+{
+  "theme": "nebula-veil",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v14/art__nebula-veil__v7__manifest.json",
+    "sha256": "c3930dedeb7dffbebede88ef686dd4a09d21edb0bbe9e7e09ebb8883c8830867",
+    "packVersion": 7,
+    "existingArtwork": [
+      "glass-satellite",
+      "nebula-quill",
+      "nebula-aperture",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "nebula-hummingbird",
+      "label": "Nebula hummingbird",
+      "file": "widgets/widget-nebula-hummingbird.2af5911c.webp",
+      "sha256": "2af5911c54af42feaa9d47872e581e7f7e80f04f11cb5962adb2e22376d4654e",
+      "bytes": 161230,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-45918838-626b-4129-97c1-2c5b2dcab631.png",
+      "sourceSha256": "d1b519abd0104ddd9586719383f4a48ead6e926419d22d5e2f0a7463b64b4478",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for nebula-veil. One graceful original hummingbird sculpted from transparent celestial glass, wings lifted in a soft hovering curve, long fine clear beak and flowing tail, cobalt-blue and magenta nebula wisps suspended INSIDE its delicate body, tiny restrained star-like internal lights. Premium photoreal cosmic-glass fantasy sculpture, luminous pink/blue/violet/clear-glass palette with dark-night reflected shadows. No satellite, feather, quill, comet, aperture, circular frame, background starfield or writing. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.\n\nFraming-only edit prompt: Framing correction only. Preserve the exact hummingbird design, transparent celestial glass, cobalt/magenta internal nebula, fine beak, flowing tail, pose and premium realistic sculpture style. Reframe the ENTIRE COMPLETE hummingbird smaller within a square1024x1024 transparent canvas, leaving a clearly empty20percent margin on all four sides. Restore any clipped wing tips or tail ends so every part is entirely visible. Keep actual transparent alpha; no square backdrop, floor, new object, text, numbers or UI. Do not crop any part of the bird.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 821779,
+      "opaquePixels": 408
+    }
+  ]
+}

@@ -93,9 +93,11 @@ async function trySharp() {
 }
 
 function tryPillow() {
-  const r = spawnSync('python3', ['-I', '-c', "import PIL, PIL.features; assert PIL.features.check('webp'); print(PIL.__version__)"], { encoding: 'utf8' });
-  if (r.status !== 0 || r.error) return null;
-  return { name: `pillow ${r.stdout.trim()}`, kind: 'pillow' };
+  for (const command of ['python3', 'python']) {
+    const r = spawnSync(command, ['-I', '-c', "import PIL, PIL.features; assert PIL.features.check('webp'); print(PIL.__version__)"], { encoding: 'utf8' });
+    if (r.status === 0 && !r.error) return { name: `pillow ${r.stdout.trim()}`, kind: 'pillow', command };
+  }
+  return null;
 }
 
 /** Pick an encoder: 'auto' tries sharp, then Pillow, then PNG. */
@@ -128,7 +130,7 @@ async function encodeWebp(encoder, jobs) {
   const tmp = mkdtempSync(join(tmpdir(), 'glaze-packs-'));
   try {
     const list = jobs.map((j, i) => ({ src: j.src, dst: join(tmp, `${i}.webp`), w: j.w, h: j.h, alpha: !!j.alpha, q: WEBP_QUALITY, m: WEBP_EFFORT }));
-    const r = spawnSync('python3', ['-I', '-c', PILLOW_SCRIPT], { input: JSON.stringify(list), encoding: 'utf8', maxBuffer: 1 << 20 });
+    const r = spawnSync(encoder.command ?? 'python3', ['-I', '-c', PILLOW_SCRIPT], { input: JSON.stringify(list), encoding: 'utf8', maxBuffer: 1 << 20 });
     if (r.status !== 0 || r.error) throw new Error(`Pillow failed: ${(r.stderr || String(r.error)).trim().slice(-400)}`);
     return list.map((j) => readFileSync(j.dst));
   } finally {
@@ -606,6 +608,11 @@ async function buildOne({ id, dir, report, encoder, plus, minAppVersion, edition
  * paths in write order], encoder }. Never touches the network.
  */
 export async function buildPacks(opts = {}) {
+  if (opts.basePacksDir || opts.addArtDir) {
+    if (!opts.basePacksDir || !opts.addArtDir) throw new Error('--base-packs and --add-art must be supplied together');
+    const { buildArtworkAdditions } = await import('./append_artwork.mjs');
+    return buildArtworkAdditions({ ...opts, outDir: opts.outDir ?? join(APP_ROOT, 'dist', 'artwork-packs'), log: opts.log ?? console.log });
+  }
   const themesDir = resolve(opts.themesDir ?? join(APP_ROOT, art.ART_PACK_DIR));
   const outDir = resolve(opts.outDir ?? join(APP_ROOT, 'dist', 'packs'));
   const versionsFile = opts.versionsFile === null ? null : resolve(opts.versionsFile ?? join(APP_ROOT, 'scripts', 'packs', 'versions.json'));
@@ -754,6 +761,9 @@ function parseArgs(argv) {
       return x;
     };
     if (a === '--themes') o.themesDir = resolve(v());
+    else if (a === '--base-packs') o.basePacksDir = resolve(v());
+    else if (a === '--add-art') o.addArtDir = resolve(v());
+    else if (a === '--complete') o.complete = true;
     else if (a === '--out') o.outDir = resolve(v());
     else if (a === '--only') o.only = list(v());
     else if (a === '--plus') o.plus = list(v());

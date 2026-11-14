@@ -1,0 +1,26 @@
+[
+  {
+    "id": "phosphor-nautilus",
+    "kind": "art",
+    "image": "widget-phosphor-nautilus.01a34e58.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Phosphor Nautilus"
+  },
+  {
+    "id": "cream-joystick",
+    "kind": "art",
+    "image": "widget-cream-joystick.9411c952.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cream Joystick"
+  }
+]

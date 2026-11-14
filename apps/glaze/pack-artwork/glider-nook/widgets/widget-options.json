@@ -1,0 +1,26 @@
+[
+  {
+    "id": "felt-acorn-cradle",
+    "kind": "art",
+    "image": "widget-felt-acorn-cradle.b13d650e.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Felt acorn cradle"
+  },
+  {
+    "id": "felt-toadstool-stool",
+    "kind": "art",
+    "image": "widget-felt-toadstool-stool.48ed80e6.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Felt toadstool stool"
+  }
+]

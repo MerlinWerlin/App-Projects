@@ -1,0 +1,38 @@
+{
+  "theme": "peach-puddle",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__peach-puddle__v7__manifest.json",
+    "sha256": "6d9a9aeee5f0798ccea13df4993d40fb8c5be1e6b9de3f009702f0876096161f",
+    "packVersion": 7,
+    "existingArtwork": [
+      "peach-umbrella-snail",
+      "hero-small",
+      "art-20261107-rain-boots",
+      "art-20261107-duckling-raft"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "peach-raincoat",
+      "label": "Peach raincoat",
+      "file": "widgets/widget-peach-raincoat.bfbf2082.webp",
+      "sha256": "bfbf2082050168b3640d0f459c2974d67864832986856bcf4f52caa83e073236",
+      "bytes": 247470,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-6cb02336-9ed6-4de4-8832-eb506ff45230.png",
+      "sourceSha256": "c71d6bae6e5cfade7d8ab5294beaa0c9b5e78b68038b06533402007a80fe564e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for peach-puddle. One tiny empty peach-coloured raincoat with a round hood, soft sage-green toggle buttons and two little patch pockets, draped on a simple twig hanger, one small coral petal at its hem. Flat2D soft chalk-pastel and coloured-pencil picture-book drawing, visible dry pigment grain, gently smudged edges, fine cocoa pencil details, peach/custard/sage/dusty-coral palette. No3D, no duckling, snail, umbrella, boot or boat; raincoat itself is the new subject. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 634630,
+      "opaquePixels": 57
+    }
+  ]
+}

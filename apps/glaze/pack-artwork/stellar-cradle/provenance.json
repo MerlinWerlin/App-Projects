@@ -1,0 +1,38 @@
+{
+  "theme": "stellar-cradle",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v13/art__stellar-cradle__v6__manifest.json",
+    "sha256": "c9e6615f95a4e00ea40ddb4eaecf940ffd430247b2dc8ac342e0e28d2812f6dc",
+    "packVersion": 6,
+    "existingArtwork": [
+      "nebula-egg",
+      "star-seedling",
+      "stellar-nursery",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "starforming-spire",
+      "label": "Stellar Spire",
+      "file": "widgets/widget-starforming-spire.83886f32.webp",
+      "sha256": "83886f320782bd5d049b77174591e641a8d60c33cf380d76aea39c9135a2c613",
+      "bytes": 227132,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-2fbd7a92-8194-4ac8-877c-85fbf86f17e3.png",
+      "sourceSha256": "0eae72c5554e6d43b8a3b978c4298a5993e29358fd3ba02b69fcccd2de8589e1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for stellar-cradle. A magnificent single star-forming nebula pillar, a tapering craglike tower of translucent interstellar dust with branching wisps along its sides, illuminated from within by a newborn tiny white-gold star near its summit. Fiery copper-orange gas on its left edge and electric cobalt-blue vapor on its right, against true empty transparent space. Fine astrophotographic filaments, physically textured smoky depth, exquisite luminosity, dark navy shadowed core. Vertical compact nebula silhouette with a few tiny attached spark-like stars; a gas pillar rather than an egg, galaxy, disk or bipolar jet. Match a dramatic realistic orange-and-blue stellar-nursery collection. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 702957,
+      "opaquePixels": 10
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "theme": "signal-yellow",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "signal-yellow",
+      "id": "platform-bench",
+      "label": "Platform Bench",
+      "ref": "037-signal-yellow\\wallpapers\\wallpaper.png",
+      "subject": "one crisp architectural miniature of a modern railway platform bench, three horizontal signal-yellow metal seat slats and two yellow backrest slats, black angular end brackets mounted on two simple warm concrete feet. A short pale concrete platform plinth underneath. Three-quarter isometric view, all edges visible, warm greige concrete studio background, tactile miniature realism, precise soft directional shadows, restrained industrial design and bold yellow accents",
+      "avoid": "train, transit map, ticket, signal lantern, text signs",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for signal-yellow. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one crisp architectural miniature of a modern railway platform bench, three horizontal signal-yellow metal seat slats and two yellow backrest slats, black angular end brackets mounted on two simple warm concrete feet. A short pale concrete platform plinth underneath. Three-quarter isometric view, all edges visible, warm greige concrete studio background, tactile miniature realism, precise soft directional shadows, restrained industrial design and bold yellow accents. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: train, transit map, ticket, signal lantern, text signs. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-3f77e7ae-4986-4385-b045-24b804e0658f.png",
+      "image": "widget-platform-bench.802ce0da.webp",
+      "sha256": "802ce0da8fa0a7e6178b3715fdecd0ea1c46815a4cf4a478fdf16c8bf2686892",
+      "bytes": 300056,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

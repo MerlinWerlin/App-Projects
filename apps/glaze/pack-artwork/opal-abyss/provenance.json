@@ -1,0 +1,38 @@
+{
+  "theme": "opal-abyss",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__opal-abyss__v6__manifest.json",
+    "sha256": "b87cba80014257359428fe463bcfc690f955cb17e9d72b00eb6048eb8025f889",
+    "packVersion": 6,
+    "existingArtwork": [
+      "moon-jelly-window",
+      "pearl-shell",
+      "nautilus",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "opal-starfish",
+      "label": "Opal starfish",
+      "file": "widgets/widget-opal-starfish.5297d351.webp",
+      "sha256": "5297d351e55ba3bcf5f8b27ad8d8a7d41d1a6743bc56e40224f2e21ee0f316ce",
+      "bytes": 282780,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-4d687d8f-5f4b-4a18-be7d-540d80502c1b.png",
+      "sourceSha256": "81ffb2f6a96e0d573a159acb88c23aece736bf9a14091ff6cc8ee1ba4e99e1f7",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for opal-abyss. One exquisite five-armed sea star sculpted from softly translucent iridescent opal, gently curved rounded arms with delicate pearl-like natural tubercles, faint lavender/rose/cyan internal refraction and a tiny elegant curl of clear seawater beneath it. Premium photoreal deep-ocean fantasy still-life, navy-reflected/pearl/lavender/cyan palette, subtle watery caustic light. No jellyfish, shell, pearl oyster, nautilus, lighthouse, droplet vessel, text or backdrop. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 637273,
+      "opaquePixels": 296
+    }
+  ]
+}

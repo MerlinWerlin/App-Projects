@@ -1,0 +1,38 @@
+{
+  "theme": "indigo-current",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__indigo-current__v6__manifest.json",
+    "sha256": "2c857f6e060651686c409f69a0d728608e2929c740a64f8821f11f2e1d87a78d",
+    "packVersion": 6,
+    "existingArtwork": [
+      "ink-stingray",
+      "paper-lighthouse",
+      "paper-harbour",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "paper-octopus",
+      "label": "Paper octopus",
+      "file": "widgets/widget-paper-octopus.89acebad.webp",
+      "sha256": "89acebad4ef6ae4153af6614bed369a7750155af605a555c22fffba0f524317f",
+      "bytes": 264618,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-7663b4ef-6bce-4282-b37b-607cbd890a7e.png",
+      "sourceSha256": "830f703a1d26453575500b9841a54f07c6f5c6c15696fbab652ad8a736f1b987",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for indigo-current. One graceful octopus assembled from many finely cut and layered sheets of deep-indigo and warm-ivory textured paper, elegant rounded mantle and eight gently curled flowing arms, alternating torn-paper edges creating subtle pale silver highlights, tiny dark paper eye. Exquisite hand-cut paper sculpture with ink-wash detail and realistic paper fibres, restrained indigo/ivory palette, soft directional craft light. No stingray, whale, lighthouse, boat, harbour or background sea panel. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 651311,
+      "opaquePixels": 1426
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "concertina-rose",
+  "packVersion": 1,
+  "name": "Concertina Rose",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EDD8D1",
+    "tile": "#D0BDB7",
+    "glyph": "#1C1816",
+    "accent": "#825A49",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Concertina Rose",
+    "mood": "A folded concertina rose on pale blush.",
+    "tags": [
+      "concertina",
+      "rose",
+      "folded",
+      "pale",
+      "blush",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait original premium Glaze wallpaper Concertina Rose. Uniformpaleblush matte #ECDCD6, TOP72percent completelyemptyquietground forUI. BOTTOM25percent one small beautiful unbrandedhexagonal CONCERTINA restingdiagonally, tworosewoodendplateswithsmallivoryroundbuttons, shortwine-coloredfoldedbellowsbetween, fineantiquebrasscorners anddarkleatherhandstrap. Wholecompactinstrumentmax60percentwidth22percenttotalheightwithsafe margins. Refinedrealisticwoodgrain/pleatedleather/pearltexture, softwarmstudio lightandshadow, originaldecorativeinstrumentart. No musician/sheetmusic/words/logo/phone/icons orpatternabove.",
+    "addedAt": "2026-11-01",
+    "category": "Dreamy & Pastel"
+  },
+  "thumbhash": "rDgSCwKIf4eHgX51iWB3Bmg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.9e24c599.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 122766,
+      "sha256": "9e24c59986aec5fe69481098b467ed9b8eeec49f680b5e07b55ecc2afecc89ab",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.3924ff39.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 110270,
+      "sha256": "3924ff39cf2176d99a5a8e7c43e5c64cf0469de36756acecd9df0e22d6abbb51",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.8fdf52c7.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 63476,
+      "sha256": "8fdf52c7407cad5cef63c1c781a199ba829c19726d85d957e50c80c1522498d9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.47ff32f6.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 15256,
+      "sha256": "47ff32f6e4393d078ef1a4f3df9d47c5de35ac806b81fbe9eeff27f686c0aa50",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.1d3dac2d.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 90654,
+      "sha256": "1d3dac2d5180c34cf944e123ec652cebb592557e3920f4b21c82c6f4a285a39d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.2d3bd8d0.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 71114,
+      "sha256": "2d3bd8d04cb0bc0abad6fcc0d69e512316522e30e66807eb8703bfe05f7c1c25",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.4cbe039a.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11106,
+      "sha256": "4cbe039a90ac4463e6e19ae4826af29873937dbcc1fba67c045dce297eac5be8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bellows-fold.b4ed9f2e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 45968,
+      "sha256": "b4ed9f2e061d9cbd357282ea81290a47e8831db4fdc1a4353aa20fbe0342f24a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-concertina-date.1e93dc73.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 41574,
+      "sha256": "1e93dc73b45944b8084a60162dc07134817e97c56818dee9e02784dd49dfa607",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pearl-buttons.1de25f45.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 88258,
+      "sha256": "1de25f451cde7e192a72a4577b1a3b0a028610c4f39868c5f156aaf53eec4339",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-play-focus.e82695af.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 47782,
+      "sha256": "e82695af273daecbd7c4dafa20093de8c530182b55020290fdceea1a85f25561",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-refrain-clock.3b26d47e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 62134,
+      "sha256": "3b26d47e057bb8f2dcf8e2cc468d45d42cd55300a6a68227be3e047b49399388",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rosewood-concertina.5b4f3ac8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 55096,
+      "sha256": "5b4f3ac8d1d36bebd32a74b7146987c3f64a986784fd916c01ffdfcb2c71f6cb",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 825454,
+  "widgets": [
+    {
+      "id": "bellows-fold",
+      "kind": "art",
+      "image": "widget-bellows-fold.b4ed9f2e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bellows fold"
+    },
+    {
+      "id": "concertina-date",
+      "kind": "calendar",
+      "image": "widget-concertina-date.1e93dc73.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Concertina date"
+    },
+    {
+      "id": "pearl-buttons",
+      "kind": "art",
+      "image": "widget-pearl-buttons.1de25f45.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pearl buttons"
+    },
+    {
+      "id": "play-focus",
+      "kind": "focus",
+      "image": "widget-play-focus.e82695af.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Play focus"
+    },
+    {
+      "id": "refrain-clock",
+      "kind": "clock",
+      "image": "widget-refrain-clock.3b26d47e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Refrain clock"
+    },
+    {
+      "id": "rosewood-concertina",
+      "kind": "art",
+      "image": "widget-rosewood-concertina.5b4f3ac8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rosewood concertina"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.47ff32f6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.1d3dac2d.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.2d3bd8d0.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "theme": "saguaro-siesta",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__saguaro-siesta__v7__manifest.json",
+    "sha256": "6a7192067161e7f5cfbc846b2f9b548f50d80df9b513f913b7b2eab7ff266cca",
+    "packVersion": 7,
+    "existingArtwork": [
+      "terracotta-snake",
+      "hero-small",
+      "art-20261107-turquoise-agave",
+      "art-20261107-desert-quail"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "terracotta-armadillo",
+      "label": "Terracotta armadillo",
+      "file": "widgets/widget-terracotta-armadillo.8ec526df.webp",
+      "sha256": "8ec526df27a1722f884b11e71d183b7d6f6775c244e716d6a0e5a75b4279b23f",
+      "bytes": 264964,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-1ebcc16d-e5e5-4526-bd70-c12a9076cc53.png",
+      "sourceSha256": "85c4c784fefe88c47c7029fdad1c564dd3b147580270a0261dd4026d0deaf2da",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for saguaro-siesta. One charming curled desert armadillo made from warm terracotta pottery, elegantly segmented shell with small turquoise glazed geometric inlays, tiny ivory eyes and short rounded clay feet, resting on a minimal warm sand-coloured clay base. Sophisticated handcrafted Southwestern ceramic sculpture, fine unglazed clay texture, turquoise/terracotta/cream palette, soft golden light. No snake, quail, cactus house, agave or text. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 502620,
+      "opaquePixels": 926
+    }
+  ]
+}

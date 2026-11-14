@@ -1,0 +1,26 @@
+{
+  "theme": "frostglass-passage",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "frostglass-passage",
+      "id": "frostglass-pinecone",
+      "label": "Frostglass pinecone",
+      "ref": "014-frostglass-passage\\wallpapers\\wallpaper.png",
+      "subject": "one exquisite pinecone sculpted from clear frosted ice-glass, delicate overlapping crystalline scales with soft silver-blue refractions, resting on a tiny snow-covered stone plinth, a short frosted twig beside it, whole sculpture visible",
+      "style": "Premium realistic icy material photographic illustration, pale misty silver-blue alpine sky, very faint distant snowy ridges low behind only, delicate snow frost and quiet cold diffuse daylight matching reference, no hard card edge",
+      "avoid": "No fox, lantern, cabin, iceberg pebble or geometric crystal house",
+      "prompt": "Use case: stylized-concept. Glaze frostglass-passage: original standalone 1024 x 1024 square pure artwork. Subject one exquisite pinecone sculpted from clear frosted ice-glass, delicate overlapping crystalline scales with soft silver-blue refractions, resting on a tiny snow-covered stone plinth, a short frosted twig beside it, whole sculpture visible. Premium realistic icy material photographic illustration, pale misty silver-blue alpine sky, very faint distant snowy ridges low behind only, delicate snow frost and quiet cold diffuse daylight matching reference, no hard card edge. No fox, lantern, cabin, iceberg pebble or geometric crystal house. Entire compact composition centred within16percent clear margins, new subject/composition no copy/crop/recolour. No text, labels, numbers, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-1a690bac-f5b6-4fa0-b2b4-46ae6effc89f.png",
+      "image": "widget-frostglass-pinecone.7d5516dc.webp",
+      "sha256": "7d5516dc1ccab40cfe01ca470f7bf98979fa88e3e8312f6edb78130ac834782e",
+      "bytes": 173040,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

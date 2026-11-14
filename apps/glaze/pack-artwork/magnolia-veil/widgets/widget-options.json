@@ -1,0 +1,26 @@
+[
+  {
+    "id": "magnolia-seedpod",
+    "kind": "art",
+    "image": "widget-magnolia-seedpod.bd586d13.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Magnolia seedpod"
+  },
+  {
+    "id": "magnolia-skeleton-leaf",
+    "kind": "art",
+    "image": "widget-magnolia-skeleton-leaf.b118391c.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Magnolia skeleton leaf"
+  }
+]

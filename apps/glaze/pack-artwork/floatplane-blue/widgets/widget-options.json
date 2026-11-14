@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mooring-cleat",
+    "kind": "art",
+    "image": "widget-mooring-cleat.32eb6796.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mooring cleat"
+  },
+  {
+    "id": "aviator-goggles",
+    "kind": "art",
+    "image": "widget-aviator-goggles.13ef94cb.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Aviator goggles"
+  }
+]

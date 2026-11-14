@@ -1,0 +1,347 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "bluewing",
+  "packVersion": 7,
+  "name": "Bluewing",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#15202E",
+    "tile": "#353E49",
+    "glyph": "#FAF8F2",
+    "accent": "#253E5E",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Bluewing",
+    "mood": "Iridescent blue butterfly wings up close.",
+    "tags": [
+      "bluewing",
+      "iridescent",
+      "blue",
+      "butterfly",
+      "wings",
+      "close",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original portrait iPhone wallpaper9:19.5 BLUEWING. Fine-art natural BUTTERFLY MACRO PHOTOGRAPH aesthetic. Near-black soft CHARCOAL-BLUE background #161E2A. UPPER70percent EMPTY quiet dark charcoalblue with barely visible smooth tonal depth, no bokeh points stars or objects. Bottom28percent ONE beautiful small iridescent BLUE BUTTERFLY with wings gently opened symmetrically in near-top view, rich cobalt-to-skyblue wing scales, fine dark indigo outer margins and delicate natural vein patterns, slender dark body and TWO fine antennae. Butterfly rests on one small curved matte dark twig near lower center, no flowers or leaves. Soft grazing natural light brings out real-looking wing scale texture, subtle blue iridescence not neon glow, faint believable soft shadow. Entire butterfly only44percent canvas width, around14percent image height, low with ample margins and bottom space. Minimal restrained editorial nature photograph, blue/charcoal/silverblue palette, anatomically plausible butterfly with four wings and six delicate legs mostly tucked under. No fantasy glow glitter jewels crystals craft paper painting textile toys other insects birds flowers shells glass ice lotus UI phones text branding border watermark. Original generated photographic-style image, no external photo.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "SOcBCwAFaXt4jXBt+JiJn5k=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.f3f42fb2.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 61000,
+      "sha256": "f3f42fb21a568adf2d888b03cd9a21c1fafee15ed48a03f3d7b96552f46359b2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c100915e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 54222,
+      "sha256": "c100915ee3de8d742031ec6b323fcfe8e427afdd9a7f15d2d556d62edb6d6c2c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.61cf11c2.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 28014,
+      "sha256": "61cf11c2ab40b95e94e31889c95cd7b3419161b9da5f4e32100f7d518dc62825",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.399c449e.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 7130,
+      "sha256": "399c449e8d9cda859bfb8b9a8a37c9c6a3ed1d7d46376c0d9beee8212ee210f5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.8261397b.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 2964,
+      "sha256": "8261397b03bca6422136e956a0c87ba4baaae304fa20eeb88ada297d1de7f8ac",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.c0e13399.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 53610,
+      "sha256": "c0e13399092095d03433242dc3171676cf91542300d4731ea638116e8fc545ae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.e31cf4fd.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4114,
+      "sha256": "e31cf4fd815a737116a7d2820eb94e436ad16e2f32bf03e43ec38326bd6f6233",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.1c505e37.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 158142,
+      "sha256": "1c505e37fd932c44de25bc6dee6c0739a40259a3bb194cf019aa375db9927ade",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-production-20261101-wing-study.a22e0dd6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 251502,
+      "sha256": "a22e0dd6e40254e9f7957a8a34d3d2d1fb01036db5a0ff878282f4193d6ac138",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.33131ec1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7034,
+      "sha256": "33131ec10c12a904a2b2f3aa9daf8ebf137e10f52d3210362f6c189b75debb13",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.189f8a6f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3242,
+      "sha256": "189f8a6ff4120d99cd4ed11836be39a28fa45d5081039e8e935295d8cab740b8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.37966974.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6908,
+      "sha256": "3796697444741f9f409be88a98bcf13d6f0da7abbdcdb2a84f0623c435db643b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-battery.fb8d5a81.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 2656,
+      "sha256": "fb8d5a81298c4e75cbfb8d74fe2431dfe47b8b3654089e1212a7d7953709a0cd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sapphire-chrysalis.4a87397a.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 138420,
+      "sha256": "4a87397aa84fe2973c9ac50fe9e12402fefd61d6ef4b5bcca3f92cbca8c0a515",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-filigree-wing.c399a07b.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 136370,
+      "sha256": "c399a07bf8bcdcd4096f668b175df787b7a612eeb0785ac4f56fc2068caccc53",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 915328,
+  "widgets": [
+    {
+      "id": "production-20261101-wing-study",
+      "kind": "art",
+      "image": "widget-production-20261101-wing-study.a22e0dd6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Production 20261101 wing study"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.33131ec1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.189f8a6f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.37966974.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-battery",
+      "kind": "battery",
+      "image": "widget-live-battery.fb8d5a81.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Battery level",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.22,
+          0.27,
+          0.56,
+          0.46
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.399c449e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.8261397b.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.c0e13399.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "art-20261106-sapphire-chrysalis",
+      "label": "Sapphire Chrysalis",
+      "kind": "art",
+      "image": "widget-sapphire-chrysalis.4a87397a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    },
+    {
+      "id": "art-20261106-filigree-wing",
+      "label": "Filigree Wing",
+      "kind": "art",
+      "image": "widget-filigree-wing.c399a07b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    }
+  ]
+}

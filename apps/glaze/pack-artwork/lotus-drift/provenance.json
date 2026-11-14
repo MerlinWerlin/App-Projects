@@ -1,0 +1,38 @@
+{
+  "theme": "lotus-drift",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__lotus-drift__v7__manifest.json",
+    "sha256": "4f89fa3bcf1d1eb55bb89beda3c375c3e1b1e2133df38cae6a060a6512959dcd",
+    "packVersion": 7,
+    "existingArtwork": [
+      "pond-dragonfly",
+      "hero-small",
+      "art-20261107-lotus-tea-bowl",
+      "art-20261107-pond-minnow"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "pond-water-strider",
+      "label": "Pond water strider",
+      "file": "widgets/widget-pond-water-strider.90f186ac.webp",
+      "sha256": "90f186acdb8c002da2c716d909624b0b458be51876bea9032a03d36345480019",
+      "bytes": 103920,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a21c3f3f-f59b-4569-88d2-b4ba70da37ef.png",
+      "sourceSha256": "8c30333af703d408b030a2a745fb59fcd1bf770a9563572155ba34fb9861187b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for lotus-drift. A graceful natural water strider balanced on one small lens-shaped pool of deep twilight-blue water, delicate bronze-brown body and six long fine legs making distinct little circular dimples, one tiny fallen blush-pink lotus petal at the pool edge. Photoreal botanical pond macro study, soft evening light with rose-gold reflections, dark blue/sage/blush/bronze palette. Water patch has an organic outline, not a square; no lotus blossom, dragonfly, frog, minnow or tea bowl. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 728765,
+      "opaquePixels": 436
+    }
+  ]
+}

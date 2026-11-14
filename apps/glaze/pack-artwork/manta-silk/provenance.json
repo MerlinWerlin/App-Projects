@@ -1,0 +1,76 @@
+{
+  "theme": "manta-silk",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__manta-silk__v4__manifest.json",
+    "sha256": "0069553bf56fd64e8982dda846b103c71e4c5cf88d46d2d00f7a8445b458338a",
+    "packVersion": 4,
+    "existingArtwork": [
+      "ripple-caustic",
+      "sand-rays"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "silver-flying-fish",
+      "label": "Silver flying fish",
+      "file": "widgets/widget-silver-flying-fish.9fef40d5.webp",
+      "sha256": "9fef40d595fc296896bf1d0c55d445b585772015831d3688a4e5b33e63c43f76",
+      "bytes": 177904,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-3dc85322-9667-45ed-a3c3-5e0528c1f220.png",
+      "sourceSha256": "c376fc701df5e5beed884512ad979e6215c393495a7650848b7e9c8355576ebc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for manta-silk. One graceful natural flying fish in a gentle diagonal glide, luminous silver-blue scaled body, wide translucent aqua pectoral fins spread like delicate wings, slender tail and tiny black eye. Fine-art marine wildlife photography, soft turquoise underwater caustic light, subtle pearl highlights, pale aqua/ivory/silver palette. Anatomically convincing fish, not a glass ornament, no manta ray, sand panel or background water scene. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 774405,
+      "opaquePixels": 345
+    },
+    {
+      "id": "ivory-sea-fan",
+      "label": "Ivory sea fan",
+      "file": "widgets/widget-ivory-sea-fan.2a03bcb7.webp",
+      "sha256": "2a03bcb755e3a83f50d21d0bd425a73f127b63bd1e03cffb750964b5460a508d",
+      "bytes": 532766,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-3b81834d-8294-4e8e-bcfa-8003f889fd12.png",
+      "sourceSha256": "660b074d8e7853848c9534182f2f9b6afe6529ab04ef45edc112cd5c53b2cd0b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for manta-silk. One delicate natural sea-fan coral with an elegant branching lace-like silhouette, warm ivory fine branches lightly tipped in pale aqua, rooted on a tiny smooth cream limestone pebble. Fine-art underwater natural-history macro photography, realistic coral texture, soft translucent turquoise caustic highlights, airy pale aqua/ivory palette. Organic whole coral form, no fish, ray, shell, landscape panel or decorative frame. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 565627,
+      "opaquePixels": 108
+    },
+    {
+      "id": "aqua-pearl-oyster",
+      "label": "Aqua pearl oyster",
+      "file": "widgets/widget-aqua-pearl-oyster.35bec9fa.webp",
+      "sha256": "35bec9fa7a495b87f0289b1879b6591a750dc7aa04f1585cc7466342343a70da",
+      "bytes": 204128,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-0ce8303b-8305-434f-bf75-7e5e7b61d4ca.png",
+      "sourceSha256": "f3baa351ba2b7f5e9d0a29f578feef02b3d25358db43fb440534bbee7a092d7b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for manta-silk. One natural open pearl oyster with softly layered ivory shell, luminous pale-aqua nacre interior cradling a single smooth white pearl, fine sea-worn ribbing and one tiny cream sand pebble. Fine-art marine natural-history macro photography, realistic wet shell and pearl textures, gentle turquoise caustic light, pale aqua/ivory/silver palette. No glass sculpture, sand panel, fish, ray or coral. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 598469,
+      "opaquePixels": 458
+    }
+  ]
+}

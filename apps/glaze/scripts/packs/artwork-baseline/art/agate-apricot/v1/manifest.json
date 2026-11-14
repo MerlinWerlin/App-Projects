@@ -1,0 +1,271 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "agate-apricot",
+  "packVersion": 1,
+  "name": "Agate Apricot",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E3DBD0",
+    "tile": "#C7C0B6",
+    "glyph": "#1C1816",
+    "accent": "#A2836E",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Agate Apricot",
+    "mood": "Banded apricot agate on warm putty.",
+    "tags": [
+      "agate",
+      "apricot",
+      "banded",
+      "warm",
+      "putty",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tallportrait9:19.5 iPhone wallpaper AGATE APRICOT. Upper TWO THIRDS quiet nearlyuniform pale warmputty #E7E1D7 mattefield, noobjects,patterns orstrongshadows behindfutureappglyphs. Bottomthird sculptural stilllife oftwo NATURAL BANDED AGATE slices, oneuprightirregularoval andonesmallflatcutgeode, gentleconcentric bandsofmuttedapricot #C29275,slateblue #7290A3,ivoryandsoftgrey, tinyroughcreamouterrind andsmallcrystallinecenters. Refinedmineralphotographylook, softdiffusewindowlight, subtletranslucency andpolishedbandsnotglossyplastic. Entirearrangementlowwithmargins, no mineralshoplabels, specimenclaims, plants,text,logo,UI,phone orframe. Originalfictionalstudio art.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "shgGCwKln3Z4ZIuVe2CnB4Y=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.dbb5c1ad.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 90420,
+      "sha256": "dbb5c1ad7378d9d4d22a9c3b0d657f93d5aca5a0da57c7e555de0412b300cea2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.c99b3609.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 81196,
+      "sha256": "c99b36098e9049135d89e531928ee98d4ee9fcfc46c6f4b7ef514994a17bffca",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.5bf626fa.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 44656,
+      "sha256": "5bf626fa8676eaa8c0e6f326fa494d8bf9a4d4698dc5f30030b1b9a9d98e6b23",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.be957c4f.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 43796,
+      "sha256": "be957c4f49205158422da6890b9b06fa6bd419856c9b4862224896a953ab7ac0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.15bf279d.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 81800,
+      "sha256": "15bf279d1b249e487e6a48c9ba0d46bc6d64095fbf67f3677a5d7a336082829d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.000d835f.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 66838,
+      "sha256": "000d835fc0e7d6154a7fa69dbe7c359007181aba89aae1bbe6336283c9d0bf05",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.969e9b09.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8314,
+      "sha256": "969e9b09d263622328b706a7dc10eeeaccc44e605b890bbc370f51443900780e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-agate-date.3e0a3823.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 61654,
+      "sha256": "3e0a3823b76183776eb41d62f6d7793de73060326a58ecf5ec6ee21b60f1a6b4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-agate-slice.572cbc2b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 119096,
+      "sha256": "572cbc2bad59c58cf41b334c0386c22908eede4d1fe910dbb9f64c03f640de4c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-band-rhythm.633ff6d3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 125954,
+      "sha256": "633ff6d36040ea8c4b0dc101f93bbc21bcc7d87adc1e4c8c7dea46406567f4bd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-crystal-progress.03a5d732.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 57980,
+      "sha256": "03a5d732bca7a834f51abdd0217d2d108886c2ead183eefdef77248419655aac",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-druzy-center.f0187cb2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 176162,
+      "sha256": "f0187cb2654bdf4aa651192c09624fe096fb69581682e24aa505523a8236ad89",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-strata-clock.cdebf695.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 69500,
+      "sha256": "cdebf6951b377e8bc691c8c7adcc6a25455e377117880ca305af9bb96112dacf",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1027366,
+  "widgets": [
+    {
+      "id": "agate-date",
+      "kind": "calendar",
+      "image": "widget-agate-date.3e0a3823.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Agate date"
+    },
+    {
+      "id": "agate-slice",
+      "kind": "art",
+      "image": "widget-agate-slice.572cbc2b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Agate slice"
+    },
+    {
+      "id": "band-rhythm",
+      "kind": "art",
+      "image": "widget-band-rhythm.633ff6d3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Band rhythm"
+    },
+    {
+      "id": "crystal-progress",
+      "kind": "art",
+      "image": "widget-crystal-progress.03a5d732.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Crystal progress"
+    },
+    {
+      "id": "druzy-center",
+      "kind": "art",
+      "image": "widget-druzy-center.f0187cb2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Druzy center"
+    },
+    {
+      "id": "strata-clock",
+      "kind": "clock",
+      "image": "widget-strata-clock.cdebf695.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Strata clock"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.be957c4f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.15bf279d.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.000d835f.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

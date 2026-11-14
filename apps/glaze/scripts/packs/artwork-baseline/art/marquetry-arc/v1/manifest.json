@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "marquetry-arc",
+  "packVersion": 1,
+  "name": "Marquetry Arc",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E2C6A0",
+    "tile": "#C6AE8D",
+    "glyph": "#1C1816",
+    "accent": "#A06B3F",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Marquetry Arc",
+    "mood": "Inlaid wood marquetry arcs in pale maple.",
+    "tags": [
+      "marquetry",
+      "inlaid",
+      "wood",
+      "arcs",
+      "pale",
+      "maple",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall9:19.5 iPhone wallpaper MARQUETRY ARC. Premium abstract craft-style artwork showing a flat panel of pale maple #E4D3B6 with veryfine quiet vertical grain, upperTWO THIRDS empty nearlyuniform wood for dark appglyphs. Bottomthird an elegant geometric inlay composition of THREE NESTED ROUND ARCHES made from contrasting walnut #634C39, tobacco oak #A8774A andcream maple veneers, precisegrain orientations andfineflush seams. Slighttactiledepth fromnaturalgrain only, flatflushveneer not raisedtoyblocks ordoorways. Warmdiffusedstudiolight, sophisticatedminimalfurniturecraftaesthetic. No musicalinstruments,animals,cottages,text,logo,UI,phone,frame. Originalgeneratedcraftconcept,notrealproductphoto.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "pkkOAwKIf2eHhoh5tXB0CIg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.bfe1f2ad.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 207260,
+      "sha256": "bfe1f2ad4fbde1170683074343c7d6f41ff634eff65049f36ba3c9e2a0bce3b6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.45e660a0.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 182484,
+      "sha256": "45e660a0ad1728fe1c7b1a75a0140fceece2995369dd5c8934a70a24a21aa7b7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.56fef516.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 78866,
+      "sha256": "56fef5163335ccf1cb64db8f63a5b9e179c022f1a2d4d2b5e3f9babd84ecdd7b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.73572b11.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 50262,
+      "sha256": "73572b113b8523abae65d49e22577f55c8ec64feccd2ab6a633f471d125d3366",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.4fbc200c.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 91362,
+      "sha256": "4fbc200cb07d4cd99c6c35cbb0bf116db75955bd288aa53956d085cbf6f20754",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.a3b218e9.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 180844,
+      "sha256": "a3b218e9d85455e2ac060f5104ae4196bcf7885de467350d5c73e119f7998de2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.a8759a80.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7802,
+      "sha256": "a8759a80c5f596334308b1c168f8ac0158eeb8206febb378ad1c99a15d0f1c16",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-arc-focus.1d607836.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 59560,
+      "sha256": "1d607836ea1c6209daa54887f2cd9d0eb7ef2e2e8cd162ad35c84cab6c8adb35",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-chevron-grain.94c0c565.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 209322,
+      "sha256": "94c0c565d9d81ac90edbee1e7b55561ec4877d0ad38f26600f4f12882d852bbc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-inlay-clock.a7b05717.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 53966,
+      "sha256": "a7b05717198fdfa29c7984065d9b5bd3e55c11d9b426865b98b9799fe5742234",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-maple-date.fe4c737b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 52202,
+      "sha256": "fe4c737b4f25e29d896acb68628e698d95085be2321a329713f533f9eb2eb860",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nested-arch.20144052.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 95988,
+      "sha256": "20144052b035119259194e5cae696eb1bcd80ee3e2447de6b04c3b4f4cf26096",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-veneer-sun.1fc211fe.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 145770,
+      "sha256": "1fc211fe9992e89e0900f1c4ea9f17054f4c15a0a33820eb2cc118b0beab2543",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1415688,
+  "widgets": [
+    {
+      "id": "arc-focus",
+      "kind": "focus",
+      "image": "widget-arc-focus.1d607836.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Arc focus"
+    },
+    {
+      "id": "chevron-grain",
+      "kind": "art",
+      "image": "widget-chevron-grain.94c0c565.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Chevron grain"
+    },
+    {
+      "id": "inlay-clock",
+      "kind": "clock",
+      "image": "widget-inlay-clock.a7b05717.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Inlay clock"
+    },
+    {
+      "id": "maple-date",
+      "kind": "calendar",
+      "image": "widget-maple-date.fe4c737b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Maple date"
+    },
+    {
+      "id": "nested-arch",
+      "kind": "art",
+      "image": "widget-nested-arch.20144052.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nested arch"
+    },
+    {
+      "id": "veneer-sun",
+      "kind": "art",
+      "image": "widget-veneer-sun.1fc211fe.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Veneer sun"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.73572b11.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.4fbc200c.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.a3b218e9.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

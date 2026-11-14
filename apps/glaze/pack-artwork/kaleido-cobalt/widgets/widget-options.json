@@ -1,0 +1,26 @@
+[
+  {
+    "id": "optical-spinning-top",
+    "kind": "art",
+    "image": "widget-optical-spinning-top.dfedb092.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Optical spinning top"
+  },
+  {
+    "id": "glass-kingfisher",
+    "kind": "art",
+    "image": "widget-glass-kingfisher.b150f36d.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Glass kingfisher"
+  }
+]

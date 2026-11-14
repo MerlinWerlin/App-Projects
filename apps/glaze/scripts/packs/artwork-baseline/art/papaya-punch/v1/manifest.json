@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "papaya-punch",
+  "packVersion": 1,
+  "name": "Papaya Punch",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F1DFCB",
+    "tile": "#D3C3B2",
+    "glyph": "#1C1816",
+    "accent": "#857445",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Papaya Punch",
+    "mood": "Juicy papaya on cream-peach painted paper.",
+    "tags": [
+      "papaya",
+      "punch",
+      "juicy",
+      "cream",
+      "peach",
+      "painted",
+      "paper",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait original Glaze wallpaper Papaya Punch. Cream-peach mattepaintedpaper #F0E2D2. TOP72percent completelyquietemptypaper forUI. BOTTOM25percent smallflat GOUACHE illustration: one lengthwisehalved ripePAPAYA with warmorangeflesh, thinmutedgreenrind and compactclusterof smallcharcoalblackseeds incenter, one elegantpalmatepapayaleaf besideit, tinywholegreenpapayabehind. Entirelowvignettemax65percentwidth22percenttotalheight, fullmargins. Handpaintedpigmenttexture, clean organicshapes, mutedforestgreen/orange/cream, sophisticated editorialstill-life, no3D/photo, noextra fruit/text/device/icons.",
+    "addedAt": "2026-11-01",
+    "category": "Sweets & Treats"
+  },
+  "thumbhash": "MikKCwKIf1eHhH6iS1DrQLM=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.abff6985.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 92098,
+      "sha256": "abff69859133840102a09500244000e8ddcf2f61fcdb90d74b1aada4d8f753e5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.aa5a5218.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 81274,
+      "sha256": "aa5a52183cc48dffc1e8edc214d96dd92fc7fe64c05ad8b5f066080ebd18d2f1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.4acf0693.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 43738,
+      "sha256": "4acf0693811979cd610f91f7a628f6cb52ca105982819dbfd648c577e8ede00c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.a5ef6008.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 22684,
+      "sha256": "a5ef6008eb8c5c182dde7b78ad053fc89ad2c91a62070f6302b6b1f12574db9d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.e3080752.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 66626,
+      "sha256": "e308075272c0093fca9e33ca22829bb0feaba032c8993bc4abf1f7dd87f79018",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.56c86762.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 121488,
+      "sha256": "56c86762f60adf4a78da9e243f768ec03baeef54fe38d7b8095416463e59bc82",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.3e821356.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7716,
+      "sha256": "3e82135671ad6550f7b8c0b285394a5cd172939819d967351ba248423951e694",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-palmate-leaf.c6da44dc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 66132,
+      "sha256": "c6da44dc3f625f94ecbf1e3e9af763242d62c50290a0b5b38797057f290b4713",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-papaya-clock.4f4b1ab9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 31398,
+      "sha256": "4f4b1ab94ac495f9a6cfab22ceb28c18bfaf8fe4f3439573733130fc6411be2a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-papaya-date.3efcb5be.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 37432,
+      "sha256": "3efcb5be7313cfc3b6046bd6f4e26e226ac0802a3e9aeced439d6c3207f29eb1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-papaya-half.447ec8ff.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 61218,
+      "sha256": "447ec8ff353fd170ac3f1e33a0d86093b528f228002ed394be77f1ad0390b979",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-seed-rosette.2f37dcb3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97386,
+      "sha256": "2f37dcb310b4541f234bb2c4703ef8ba7be191b646fd5e35faf977a513ae3a19",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sun-study.266fc4bf.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 35992,
+      "sha256": "266fc4bf5e54a07ce6a71aabee82ddae76d177ddae6b25cd2c4f258ebcc5673c",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 765182,
+  "widgets": [
+    {
+      "id": "palmate-leaf",
+      "kind": "art",
+      "image": "widget-palmate-leaf.c6da44dc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Palmate leaf"
+    },
+    {
+      "id": "papaya-clock",
+      "kind": "clock",
+      "image": "widget-papaya-clock.4f4b1ab9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Papaya clock"
+    },
+    {
+      "id": "papaya-date",
+      "kind": "calendar",
+      "image": "widget-papaya-date.3efcb5be.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Papaya date"
+    },
+    {
+      "id": "papaya-half",
+      "kind": "art",
+      "image": "widget-papaya-half.447ec8ff.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Papaya half"
+    },
+    {
+      "id": "seed-rosette",
+      "kind": "art",
+      "image": "widget-seed-rosette.2f37dcb3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Seed rosette"
+    },
+    {
+      "id": "sun-study",
+      "kind": "art",
+      "image": "widget-sun-study.266fc4bf.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sun study"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.a5ef6008.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.e3080752.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.56c86762.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

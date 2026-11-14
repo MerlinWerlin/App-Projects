@@ -1,0 +1,14 @@
+[
+  {
+    "id": "strawberry-pancake-stack",
+    "kind": "art",
+    "image": "widget-strawberry-pancake-stack.e6d626a5.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Strawberry pancakes"
+  }
+]

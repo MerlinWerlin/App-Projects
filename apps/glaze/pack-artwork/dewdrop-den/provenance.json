@@ -1,0 +1,26 @@
+{
+  "theme": "dewdrop-den",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "dewdrop-den",
+      "id": "opal-glass-snail",
+      "label": "Opal glass snail",
+      "ref": "070-dewdrop-den\\wallpapers\\wallpaper.png",
+      "subject": "one tiny gentle snail made of transparent opalescent glass, a pale pink translucent body with two soft antennae, a round spiral glass shell holding a miniature moss-and-lilac flower garden, little clear droplets along the shell edge, entire coherent creature visible",
+      "style": "Exquisite whimsical iridescent glass miniature photographic illustration on soft lilac seamless backdrop and reflective pale lavender surface, warm ivory caustics, pale pink/sage/lilac details and fine gentle light matching reference",
+      "avoid": "No axolotl, raindrop house, hammock or lantern",
+      "prompt": "Use case: stylized-concept. Glaze dewdrop-den: original standalone 1024 x 1024 square pure artwork. Subject one tiny gentle snail made of transparent opalescent glass, a pale pink translucent body with two soft antennae, a round spiral glass shell holding a miniature moss-and-lilac flower garden, little clear droplets along the shell edge, entire coherent creature visible. Exquisite whimsical iridescent glass miniature photographic illustration on soft lilac seamless backdrop and reflective pale lavender surface, warm ivory caustics, pale pink/sage/lilac details and fine gentle light matching reference. No axolotl, raindrop house, hammock or lantern. Entire compact object centred inside16percent clear safe margins, new subject/composition no copy/crop/recolour. No text, labels, numbers, logos, watermark, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-cf85b786-c6f2-477d-ba57-037815ce03e1.png",
+      "image": "widget-opal-glass-snail.1a070417.webp",
+      "sha256": "1a0704170a440c7eef5d8785f69ee5b09725577273e7bbb1cfa40b90c5fb95ef",
+      "bytes": 147902,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

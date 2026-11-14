@@ -1,0 +1,38 @@
+{
+  "theme": "matcha-mews",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__matcha-mews__v7__manifest.json",
+    "sha256": "d5d9416cd365407e40db998650f4b780ab48b332d5282b4fd180418ca6ea00a2",
+    "packVersion": 7,
+    "existingArtwork": [
+      "teacup-fern",
+      "hero-small",
+      "art-20261107-matcha-kitten",
+      "art-20261107-whisk-bowl"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "felt-matcha-dango",
+      "label": "Felt matcha dango",
+      "file": "widgets/widget-felt-matcha-dango.6485e477.webp",
+      "sha256": "6485e47784917e4250fed19c6d73e400252defe1d134714dd99761b636b89135",
+      "bytes": 258770,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-c61066fc-c805-427a-8d93-42b7f1198328.png",
+      "sourceSha256": "b7ebad5a1a5311bfefae101ace5fe1540810833ff7dde2e6e78825f486dff8b2",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for matcha-mews. One small wooden dango skewer carrying three plump soft-felt mochi balls in matcha green, warm ivory and pale strawberry pink, tiny cocoa embroidered eyes on the center mochi, tied with a little sage linen bow, resting on a tiny scalloped ivory saucer. Kawaii handmade felt miniature, fine fuzzy wool texture and stitched seams, soft warm craft photography, matcha/cream/blush palette. No cat, fish, teacup, whisk, fern or beverage. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 330276,
+      "opaquePixels": 278
+    }
+  ]
+}
