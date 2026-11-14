@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Cue 1.0.1: design polish (prompter speed controls, paywall close button, text contrast, 44pt targets, settings grouping); background audio stays off (Guideline 2.5.4)",
+  "note": "Cue 1.0.2: paywall trial terms sit above the price again, so 'the price shown below' is accurate; background audio stays off (Guideline 2.5.4)",
   "ascAppId": "6826554677"
 }

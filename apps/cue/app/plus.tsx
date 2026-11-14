@@ -129,14 +129,15 @@ export default function Plus() {
         </Txt>
       ) : (
         <View style={{ marginTop: 22, gap: 10 }}>
+          {/* Sits above the buttons: the copy says "at the price shown below". */}
+          <Txt v="callout" tone="sub" style={{ textAlign: 'center', marginBottom: 6 }}>
+            {t('plus.trial.body')}
+          </Txt>
           {!app.trial.started ? <Btn label={t('plus.trial.start')} icon="hourglass-outline" kind="secondary" onPress={() => void act('trial')} disabled={busy || (Platform.OS !== 'android' && price === null)} /> : null}
           <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
           {price === null ? <Btn label={t('plus.reloadPrice')} kind="secondary" onPress={() => void reloadPrice()} disabled={busy} /> : null}
           <Txt v="caption" tone="faint" style={{ textAlign: 'center' }}>
             {t('plus.once')}
-          </Txt>
-          <Txt v="callout" tone="sub" style={{ textAlign: 'center', marginTop: 6 }}>
-            {t('plus.trial.body')}
           </Txt>
         </View>
       )}

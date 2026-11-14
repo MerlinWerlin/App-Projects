@@ -3,7 +3,7 @@
     "name": "Cue",
     "slug": "cue-teleprompter",
     "scheme": "cue",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "default",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/brand/icon.png",
