@@ -15,6 +15,8 @@ import {
   tabNavI18nKeys,
   widgetStudioHref,
   widgetTabCards,
+  WIDGET_TAB_CATALOGUE_KINDS,
+  WIDGET_TAB_SET_KINDS,
   widgetTabSizeKey,
 } from './tabNav.ts';
 import { ACCESSORY_SIZES, CATALOGUE_KINDS, CATALOGUE_KIND_SIZES, catalogueKindKey, catalogueSizeKey, type CatalogueKind, type CatalogueSize } from './widgetKinds.ts';
@@ -78,44 +80,44 @@ test('size sub-tabs: Small / Medium / Large / Lock', () => {
 
 const STUDIO = studioKinds(generateWidgetSet(THEMES[0]));
 
-test('home sizes: the 5 theme-set kinds first, all editable in the Studio, then catalogue kinds of that size', () => {
+// 1.0.34 (owner 2026-11-14): the tab lists the theme's artwork (My widget art) and the clocks only.
+test('home sizes list the clocks only: the theme clock first, then the analog clock where it comes in that size', () => {
+  const expected: Record<'small' | 'medium' | 'large', string[]> = {
+    small: ['set-clock-small', 'cat-analogClock-small'],
+    medium: ['set-clock-medium'],
+    large: ['set-clock-large', 'cat-analogClock-large'],
+  };
   for (const size of ['small', 'medium', 'large'] as const) {
     const cards = widgetTabCards(size, STUDIO);
+    assert.deepEqual(cards.map((c) => c.id), expected[size]);
+    assert.ok(cards.every((c) => (c.source === 'set' ? (WIDGET_TAB_SET_KINDS as readonly string[]) : (WIDGET_TAB_CATALOGUE_KINDS as readonly string[])).includes(c.kind)));
     const set = cards.filter((c) => c.source === 'set');
-    assert.deepEqual(set.map((c) => c.kind), [...WIDGET_KINDS]);
     assert.ok(set.every((c) => c.studio && c.size === size));
-    assert.deepEqual(cards.slice(0, set.length), set, 'set cards come first');
-    const cat = cards.filter((c) => c.source === 'catalogue');
-    assert.deepEqual(cat.map((c) => c.kind), CATALOGUE_KINDS.filter((k) => CATALOGUE_KIND_SIZES[k].includes(size)));
-    // The Studio edits only the theme-set kinds today: catalogue cards are honest "coming soon".
-    assert.ok(cat.every((c) => !c.studio && widgetStudioHref('x', c) === null));
-    // Catalogue cards use the catalogue's own keys, not tab-local copies.
-    for (const c of cat) {
+    for (const c of cards.filter((x) => x.source === 'catalogue')) {
       assert.equal(c.nameKey, catalogueKindKey(c.kind as CatalogueKind));
       assert.equal(c.sizeKey, catalogueSizeKey(c.size as CatalogueSize));
+      assert.ok(CATALOGUE_KIND_SIZES[c.kind as CatalogueKind].includes(c.size as CatalogueSize));
     }
-    assert.equal(new Set(cards.map((c) => c.id)).size, cards.length);
   }
+  // Nothing decorative: no date / photo / quote / battery set cards, no habits, progress, calendars or albums.
+  const all = (['small', 'medium', 'large', 'lock'] as const).flatMap((s) => widgetTabCards(s, STUDIO));
+  assert.ok(all.every((c) => c.kind === 'clock' || c.kind === 'analogClock'));
+  assert.ok(WIDGET_KINDS.length > WIDGET_TAB_SET_KINDS.length && CATALOGUE_KINDS.length > WIDGET_TAB_CATALOGUE_KINDS.length);
 });
 
-test('Lock sub-tab lists accessory sizes only, never a fake Studio link', () => {
+test('Lock sub-tab: only the analog clock, which the extension really offers on the Lock Screen', () => {
   const cards = widgetTabCards('lock', STUDIO);
-  assert.ok(cards.length > 0);
+  assert.deepEqual(cards.map((c) => c.id), ['cat-analogClock-accessoryCircular']);
   for (const c of cards) {
-    assert.equal(c.source, 'catalogue');
     assert.ok((ACCESSORY_SIZES as readonly string[]).includes(c.size), c.id);
-    assert.equal(c.sizeKey, catalogueSizeKey(c.size));
-    assert.equal(c.nameKey, catalogueKindKey(c.kind as CatalogueKind));
     assert.equal(widgetStudioHref('x', c), null);
   }
-  const expected = CATALOGUE_KINDS.flatMap((k) => ACCESSORY_SIZES.filter((s) => CATALOGUE_KIND_SIZES[k].includes(s)).map((s) => `cat-${k}-${s}`));
-  assert.deepEqual(cards.map((c) => c.id), expected);
 });
 
-test('a catalogue kind becomes a Studio link once the Studio lists it', () => {
-  const cards = widgetTabCards('small', [...STUDIO, 'countdown']);
-  const cd = cards.find((c) => c.kind === 'countdown')!;
-  assert.equal(widgetStudioHref('rose quartz', cd), '/widget-studio?theme=rose%20quartz&kind=countdown&size=small');
+test('a clock catalogue card becomes a Studio link once the Studio lists it', () => {
+  const cards = widgetTabCards('small', [...STUDIO, 'analogClock']);
+  const ac = cards.find((c) => c.kind === 'analogClock')!;
+  assert.equal(widgetStudioHref('rose quartz', ac), '/widget-studio?theme=rose%20quartz&kind=analogClock&size=small');
 });
 
 test('Studio links carry theme, kind and size', () => {

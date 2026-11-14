@@ -1,3 +1,7 @@
+// 1.0.34 (owner 2026-11-14: "remove the medium large lock screen... just show the medium and large clocks but thats
+// it... straw berry dessert etc needs to go... just show the relevant theme art work"): no theme chips and no look
+// chips; the tab shows the theme in use: My widget art (Artwork 1-5, small) and the clocks (tabNav widgetTabCards).
+// Notes below that mention theme / look chips describe the tab before 1.0.34.
 // Widgets tab (T70, docs/MARKET.md L1 + L3). Pick a theme, pick a size sub-tab (Small / Medium /
 // Large / Lock), then browse a 2-column grid of that theme's matching widgets. Theme-set widgets
 // (src/core/widgetSets.ts) show a real preview and open Widget Studio with theme, kind and size.
@@ -44,20 +48,18 @@
 // art, then the standard widgets of the grid below, drawn in the theme's palette.
 import { Feather } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions, type AccessibilityActionEvent, type ListRenderItem, type StyleProp, type ViewStyle } from 'react-native';
+import { memo, useCallback, useDeferredValue, useMemo, useRef, useState, type ReactNode } from 'react';
+import { Pressable, StyleSheet, Text, View, useWindowDimensions, type AccessibilityActionEvent, type ListRenderItem, type StyleProp, type ViewStyle } from 'react-native';
 import { WIDGET_TAB_SIZES, widgetStudioHref, widgetTabCards, widgetTabSizeKey, type WidgetTabCard, type WidgetTabSize } from '../../src/core/tabNav';
-import { pickAfterActiveChange } from '../../src/core/activeTheme';
 import { THEMES, type Theme } from '../../src/core/themes';
 import { CATALOGUE_SIZE_POINTS, catalogueKindKey, catalogueSizeKey, catalogueSpecOf, type CatalogueKind, type CatalogueSpec } from '../../src/core/widgetKinds';
 import { wallpaperTokensFor } from '../../src/core/wallpaperPalette';
-import { widgetLookKey, type WidgetLook } from '../../src/core/widgetLook';
+import type { WidgetLook } from '../../src/core/widgetLook';
 import { generateWidgetSet, generateWidgetSetFromTokens, widgetSpecOf, type WidgetSpec } from '../../src/core/widgetSets';
 import {
   catalogueHasButtons,
   catalogueSpecInLook,
   catalogueStudioKinds,
-  previewLooks,
   setSpecInLook,
   studioCatalogue,
   studioKinds,
@@ -71,7 +73,6 @@ import { weakKeyedCache, weakMemo } from '../../src/core/perfCache';
 import { useT } from '../../src/i18n';
 import { useActiveThemeId } from '../../src/store/activeTheme';
 import { useAnyTheme } from '../../src/native/useAnyTheme';
-import { applyWidgetTheme } from '../../src/store/widgetTheme';
 import { useWidgetLink } from '../../src/store/widgetLink';
 import { widgetLinkVisible, type WidgetLinkVerdict } from '../../src/core/widgetLink';
 import { logWidgetHabit, undoWidgetHabit, useWidgetHabits, widgetHabitGoal, widgetHabitValue, type WidgetHabits } from '../../src/store/widgetHabits';
@@ -84,9 +85,8 @@ import { LargeTitleFlatList, PillButton, SectionHeader, Skeleton, SquircleCard }
 import { CatalogueWidgetPreview } from '../../src/ui/CatalogueWidgetPreview';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
-import { SizeArt, SwatchArt } from '../../src/ui/WidgetOptionArt';
+import { SizeArt } from '../../src/ui/WidgetOptionArt';
 import { WidgetArtLibraryList } from '../../src/ui/WidgetArtLibraryList';
-import { lookSwatch, themeSwatch as rawThemeSwatch, type Swatch } from '../../src/core/widgetOptionArt';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 /** Untyped lookup for keys carried in data (tabNav card name/size keys). */
@@ -121,8 +121,6 @@ const CARD_PAD = spaceV2.md;
 
 // T118: per-object caches (themes, palettes and specs are stable objects), so switching back to a
 // theme or a look reuses the solved specs instead of solving every card again.
-/** A theme chip's swatch, once per palette. */
-const themeSwatch = weakMemo((palette: Theme['palette']): Swatch => rawThemeSwatch(palette));
 /** The bundled widget set of a theme, once per theme. */
 const setForTheme = weakMemo((theme: Theme) => generateWidgetSet(theme));
 /** Every card spec's look variant, once per spec and look. */
@@ -456,31 +454,20 @@ function WidgetsTab() {
   // T86: values logged on the Home Screen habit widgets (full iOS build) and the daily goals.
   const widgetHabits = useWidgetHabits();
 
-  // Default theme: the one in use (it may be a Plus or remote theme), else the first bundled theme.
-  // T184: re-read on every focus (the tab is frozen while hidden), and a chip picked here is dropped
-  // once another theme is put in use, so "Use this theme" shows here straight away.
+  // 1.0.34 (owner 2026-11-14: "straw berry dessert etc needs to go... just show the relevant theme art work"): no
+  // theme chips any more. The tab shows the theme in use (re-read on every focus, T184), else the first bundled one.
   const activeId = useActiveThemeId();
   const applied: Theme | undefined = useAnyTheme(activeId);
-  const themes: readonly Theme[] = useMemo(
-    () => (applied && !THEMES.some((x) => x.id === applied.id) ? [applied, ...THEMES] : THEMES),
-    [applied],
-  );
-  const [picked, setPicked] = useState<string | null>(null);
-  const seenActive = useRef<string | null>(activeId);
-  useEffect(() => {
-    const prev = seenActive.current;
-    seenActive.current = activeId;
-    setPicked((p) => pickAfterActiveChange(prev, activeId, p));
-  }, [activeId]);
-  const theme: Theme = themes.find((x) => x.id === picked) ?? applied ?? THEMES[0];
+  const theme: Theme = applied ?? THEMES[0];
   const [size, setSize] = useState<WidgetTabSize>('small');
-  // T146: link check; re-checked a few seconds after each pick (pickNonce) and on focus.
-  const [pickNonce, setPickNonce] = useState(0);
+  // T146: link check on focus (no theme picks here any more, so the nonce stays 0).
+  const pickNonce = 0;
   // T221: bumped when a piece is added to "My widget art", so the list below the menu re-reads it.
   const [artLibKey] = useState(0);
-  const linkVerdict = useWidgetLink(picked, pickNonce);
+  const linkVerdict = useWidgetLink(null, pickNonce);
 
-  const [look, setLook] = useState<WidgetLook>('theme');
+  // 1.0.34: the look chips are gone too (they only recoloured these previews); previews use the theme's own look.
+  const look: WidgetLook = 'theme';
 
   // T118: the chips answer at once; the previews follow with the deferred theme and look.
   const gridTheme = useDeferredValue(theme);
@@ -494,9 +481,6 @@ function WidgetsTab() {
     [baseSet, wallpaper.usesPhoto, wallpaper.sampled],
   );
   const cat = useMemo(() => studioCatalogue(set), [set]);
-  const looks: WidgetLook[] = useMemo(() => previewLooks(set.tokens), [set]);
-  // fb-1023 C: one swatch per look, from the same tokens (and photo colours) as the previews.
-  const lookSwatches: Map<WidgetLook, Swatch> = useMemo(() => new Map(looks.map((l) => [l, lookSwatch(l, set.tokens)])), [looks, set]);
   const editable: string[] = useMemo(() => [...studioKinds(set), ...catalogueStudioKinds()], [set]);
   const cards: WidgetTabCard[] = useMemo(() => widgetTabCards(size, editable), [size, editable]);
 
@@ -545,23 +529,6 @@ function WidgetsTab() {
   const cardWidth = Math.max(120, Math.floor((width - GUTTER * 2 - GAP) / 2));
   const innerWidth = cardWidth - CARD_PAD * 2;
 
-  // Owner 25 Oct (glaze-retest A: "just shows the same line of widgets with the same colour scheme
-  // every time"): picking a theme here used to change the in-app previews only, so the Home Screen
-  // widgets (and the iOS widget gallery) kept the old theme. Picking a theme now also writes it to
-  // the widgets through the App Group (no-op in Expo Go).
-  const pickTheme = (id: string) => {
-    if (id === theme.id) return;
-    haptic('select');
-    setPicked(id);
-    const next = themes.find((x) => x.id === id);
-    if (next) Promise.resolve(applyWidgetTheme(next)).catch(() => undefined); // T264: never unhandled
-    setPickNonce((n) => n + 1);
-  };
-  const pickLook = (l: WidgetLook) => {
-    if (l === look) return;
-    haptic('select');
-    setLook(l);
-  };
   const pickSize = (s: WidgetTabSize) => {
     if (s === size) return;
     haptic('select');
@@ -617,34 +584,6 @@ function WidgetsTab() {
 
   const header = (
     <>
-      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
-        {t('tabs.widgetsTab.themes')}
-      </Text>
-      <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.chips}>
-        {themes.map((x) => {
-          const on = x.id === theme.id;
-          return (
-            <Pressable
-              key={x.id}
-              onPress={() => pickTheme(x.id)}
-              accessibilityRole="button"
-              accessibilityLabel={x.name}
-              accessibilityState={{ selected: on }}
-              style={({ pressed }) => [
-                styles.chip,
-                continuous,
-                { backgroundColor: on ? c.tint : c.fill, opacity: pressed ? 0.7 : 1 },
-              ]}
-            >
-              <SwatchArt swatch={themeSwatch(x.palette)} ring={on ? c.onTint : c.separator} />
-              <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), styles.bold, { color: on ? c.onTint : c.ink }]} numberOfLines={1}>
-                {x.name}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </ScrollView>
-
       {/* T146: hidden unless a native iOS build answered the link check (never in Expo Go). */}
       {widgetLinkVisible(linkVerdict) ? (
         <View
@@ -659,37 +598,6 @@ function WidgetsTab() {
           </Text>
         </View>
       ) : null}
-
-      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} accessibilityRole="header" style={[...label('footnote'), styles.section, { color: c.inkSecondary }]}>
-        {t('tabs.widgetsTab.looks')}
-      </Text>
-      <ScrollView bounces={false} overScrollMode="never"
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.chips}
-        accessibilityLabel={t('tabs.widgetsTab.looks')}
-      >
-        {looks.map((l) => {
-          const on = l === look;
-          const name = tl(widgetLookKey(l));
-          const swatch = lookSwatches.get(l) ?? lookSwatch(l, set.tokens);
-          return (
-            <Pressable
-              key={l}
-              onPress={() => pickLook(l)}
-              accessibilityRole="button"
-              accessibilityLabel={name}
-              accessibilityState={{ selected: on }}
-              style={({ pressed }) => [styles.chip, continuous, { backgroundColor: on ? c.tint : c.fill, opacity: pressed ? 0.7 : 1 }]}
-            >
-              <SwatchArt swatch={swatch} ring={on ? c.onTint : c.separator} />
-              <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), styles.bold, { color: on ? c.onTint : c.ink }]} numberOfLines={1}>
-                {name}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </ScrollView>
 
       <View accessibilityRole="tablist" accessibilityLabel={t('tabs.widgetsTab.sizes')} style={[styles.sizes, { backgroundColor: c.fill }]}>
         {WIDGET_TAB_SIZES.map((s) => {
@@ -748,15 +656,6 @@ function WidgetsTab() {
 
 const styles = StyleSheet.create({
   section: { paddingHorizontal: GUTTER, marginTop: spaceV2.sm, marginBottom: spaceV2.xs },
-  chips: { paddingHorizontal: GUTTER, gap: spaceV2.sm, paddingBottom: spaceV2.md },
-  chip: {
-    minHeight: sizeV2.touch,
-    paddingHorizontal: spaceV2.lg,
-    borderRadius: chromeRadiusV2.pill,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spaceV2.sm,
-  },
   // T146: link check line (icon + one or two lines of footnote text).
   link: {
     flexDirection: 'row',

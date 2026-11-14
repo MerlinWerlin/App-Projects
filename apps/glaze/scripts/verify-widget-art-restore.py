@@ -21,7 +21,7 @@ ALLOWED = {
     'src/ui/WidgetArtLibraryList.tsx': 'Owner 2026-11-12 ("colour code them"): each piece that fills an Artwork slot shows the colour and number badge of that slot (src/core/artworkSlots.ts). Listing, removing and managing unchanged. Owned by Claude.',
     'src/core/widgetOptions.ts': 'Inherited PR252: authored-size filtering, owned by Claude.',
     'src/core/themeArtSync.ts': 'Inherited PR252: plan only authored sizes; owner 2026-11-08: art pieces planned first in each size. Owned by Claude.',
-    'app/theme/[id].tsx': 'Owner-directed four actions; restored ThemeWidgetArt and SeamlessCard sections and composer remain intact.',
+    'app/theme/[id].tsx': 'Owner-directed four actions; restored ThemeWidgetArt section and composer remain intact. 1.0.34 (owner 2026-11-14): the SeamlessCard spot picker is removed (iOS does not let apps place widgets); honest add-a-widget steps + Watch how in its place.',
     'targets/widget/HabitStreakWidget.swift': 'Owner-directed larger completion square and 44-point tap target, with compact large-family spacing.',
     'src/ui/StepCard.tsx': 'Owner-directed completion glyph increases from20 to28 points.',
     'app/install.tsx': 'Preview/export requested theme without persisting the global selection; larger completion glyph.',
@@ -53,10 +53,10 @@ print(json.dumps({'base': BASE, 'files': rows}, indent=2))
 
 
 # The action sheet must not delete or change the restored art compositing UI.
+# 1.0.34 (owner 2026-11-14: "theres an option to go like top right middle right bottom right etc and then save the
+# widget to the home screen - i dont believe we can do this so remove it"): the SeamlessCard (spot picker) is removed
+# on purpose; the widget art shelf (ThemeWidgetsShelf / ThemeWidgetArt) stays.
 file = 'app/theme/[id].tsx'
-old = subprocess.check_output(['git', 'show', BASE + ':apps/glaze/' + file], cwd=ROOT).decode()
 current = (ROOT / file).read_text(encoding='utf-8')
-start, end = 'type SeamlessStatus =', '/**\n * T179: the glass bar'
-assert old[old.index(start):old.index(end)] == current[current.index(start):current.index(end)], 'Restored SeamlessCard changed'
-assert 'heroUris={remoteHeroUris} remoteHeroSizes={remoteHeroSizes}' in current
+assert 'function SeamlessCard(' not in current and '<SeamlessCard' not in current, 'Seamless spot picker is back'
 assert '<ThemeWidgetsShelf theme={theme} />' in current

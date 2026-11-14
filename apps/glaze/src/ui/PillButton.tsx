@@ -11,7 +11,7 @@ import type { HapticKind } from './haptics';
 import { textStyleFor } from './i18nLayout';
 import { PressableScale, type PressableScaleProps } from './PressableScale';
 
-export type PillVariant = 'filled' | 'tinted' | 'plain' | 'glass' | 'destructive';
+export type PillVariant = 'filled' | 'tinted' | 'plain' | 'glass' | 'destructive' | 'soft';
 
 type Props = {
   testID?: string;
@@ -66,6 +66,8 @@ export function PillButton({
     filled: { bg: c.tint, fg: c.onTint },
     tinted: { bg: c.tintSoft, fg: c.onTintSoft },
     plain: { bg: 'transparent', fg: c.tint },
+    // 1.0.34: a quiet neutral pill with tint text (Watch how); tint/fill is in the contrast audit (designV2 paletteChecks).
+    soft: { bg: c.fill, fg: c.tint },
     glass: { bg: glass.translucent, fg: c.ink },
     destructive: { bg: c.danger, fg: c.onDanger },
   };

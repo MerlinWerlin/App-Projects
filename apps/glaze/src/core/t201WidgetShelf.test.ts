@@ -29,9 +29,10 @@ test('theme page > Widgets: practical + art (ThemeWidgetArt) first, then the sta
   // which only had the standard types, while the overview showed the art: no practical pieces).
   assert.match(d, /router\.push\(\{ pathname: '\/theme\/\[id\]', params: \{ id: theme\.id, step: part \} \}\)/);
   const shelf = d.indexOf("{step === 'widgets' ? <ThemeWidgetsShelf theme={theme} /> : null}");
-  const seamless = d.indexOf("{step === 'widgets' && artPack ? <SeamlessCard");
+  // 1.0.34: the Seamless card's place holds the honest "Add a widget" steps + Watch how (seamlessWiring.test.ts).
+  const howTo = d.indexOf("<SectionHeader title={t('theme.howTo.titles.widgets')}");
   const standard = d.indexOf("{overview || step === 'widgets' ? (");
-  assert.ok(shelf > 0 && seamless > shelf && standard > seamless, 'practical + art, then seamless art, then standard');
+  assert.ok(shelf > 0 && howTo > shelf && standard > howTo, 'practical + art, then how to add one, then standard');
   assert.ok(d.slice(standard).indexOf('<WidgetPreviews theme={theme} palette={palette} />') > 0);
   const fn = d.slice(d.indexOf('function ThemeWidgetsShelf('), d.indexOf('const WIDGET_PREVIEW_W'));
   assert.match(fn, /<ThemeWidgetArt theme=\{theme\} size=\{size\} width=\{width\} \/>/);

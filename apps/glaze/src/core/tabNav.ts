@@ -58,20 +58,33 @@ export const catalogueTabKindKey = (kind: CatalogueKind): string => catalogueKin
  * for the chosen theme (widgetStudio.ts `studioKinds`); a card is `studio: true` only if its kind
  * is one of them. The Lock sub-tab lists every accessory size of every catalogue kind.
  */
+/**
+ * 1.0.34 (owner 2026-11-14: "remove the medium large lock screen... just show the medium and large clocks but thats
+ * it... these things do nothing in here just show the relevant theme art work"): the Widgets tab lists the theme's
+ * own artwork (My widget art, Artwork 1-5, small) and the clocks, nothing else. Both clock kinds are real widgets in
+ * the extension at these sizes (ClockWidget: small / medium / large; AnalogClockWidget: small / large / Lock Screen
+ * circular). The other kinds stay in the iOS Add Widget list and in Widget Studio; they are just not listed here.
+ */
+export const WIDGET_TAB_SET_KINDS: readonly WidgetKind[] = Object.freeze(['clock'] as WidgetKind[]);
+export const WIDGET_TAB_CATALOGUE_KINDS: readonly CatalogueKind[] = Object.freeze(['analogClock'] as CatalogueKind[]);
+
 export function widgetTabCards(size: WidgetTabSize, studioKinds: readonly string[]): WidgetTabCard[] {
   const out: WidgetTabCard[] = [];
   const canEdit = (k: string) => studioKinds.includes(k);
   if (size !== 'lock') {
     for (const kind of WIDGET_KINDS) {
+      if (!WIDGET_TAB_SET_KINDS.includes(kind)) continue;
       out.push({ source: 'set', id: `set-${kind}-${size}`, kind, size, studio: canEdit(kind), nameKey: widgetKindKey(kind), sizeKey: widgetSizeKey(size) });
     }
     for (const kind of CATALOGUE_KINDS) {
+      if (!WIDGET_TAB_CATALOGUE_KINDS.includes(kind)) continue;
       if (!CATALOGUE_KIND_SIZES[kind].includes(size)) continue;
       out.push({ source: 'catalogue', id: `cat-${kind}-${size}`, kind, size, studio: canEdit(kind), nameKey: catalogueTabKindKey(kind), sizeKey: catalogueSizeKey(size) });
     }
     return out;
   }
   for (const kind of CATALOGUE_KINDS) {
+    if (!WIDGET_TAB_CATALOGUE_KINDS.includes(kind)) continue;
     for (const acc of ACCESSORY_SIZES) {
       if (!CATALOGUE_KIND_SIZES[kind].includes(acc)) continue;
       out.push({ source: 'catalogue', id: `cat-${kind}-${acc}`, kind, size: acc, studio: canEdit(kind), nameKey: catalogueTabKindKey(kind), sizeKey: catalogueSizeKey(acc) });

@@ -124,15 +124,7 @@ test('seamlessImageSource maps to expo-image sources', () => {
   assert.equal(seamlessImageSource(SEAMLESS_FALLBACK), null);
 });
 
-test('the Seamless card resolves pictures through seamlessCardSources and passes remote files', () => {
-  const detail = read('app/theme/[id].tsx');
-  assert.match(detail, /seamlessCardSources\(/);
-  assert.match(detail, /<SeamlessCard artPackId=\{artPack\.artPack\.id\}[^>]*wallpaperUri=\{remoteWallpaperUri\}[^>]*heroUris=\{remoteHeroUris\}/);
-  // The bridge gets the downloaded file directly; bundled art still goes through localAssetUri.
-  const start = detail.indexOf('const onUse = async () => {');
-  const body = detail.slice(start, detail.indexOf('\n  };', start));
-  assert.match(body, /existingLocalFile\(/);
-});
+// 1.0.34: the theme page's Seamless card is gone (seamlessWiring.test.ts); seamlessCardSources stays for the core.
 
 test('the preview draws a fallback wallpaper and reports image errors', () => {
   const src = read('src/ui/SeamlessWidgetPreview.tsx');
