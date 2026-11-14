@@ -1,0 +1,40 @@
+{
+  "theme": "sundew-ember",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "sundew-ember",
+      "id": "ember-seed-capsule",
+      "label": "Ember seed capsule",
+      "ref": "101-sundew-ember\\widgets\\dew-orbit.png",
+      "subject": "one small sundew seed capsule on a slender branching rose-copper stalk, gently split dry burgundy shell revealing tiny dark seeds and fine warm ivory fibres, delicate natural macro texture, complete compact specimen. No rounded dew globe, tentacles, rosette or flower",
+      "prompt": "Use case: stylized-concept. Glaze Sundew Ember original standalone1024x1024 square pure artwork of one small sundew seed capsule on a slender branching rose-copper stalk, gently split dry burgundy shell revealing tiny dark seeds and fine warm ivory fibres, delicate natural macro texture, complete compact specimen. No rounded dew globe, tentacles, rosette or flower. Fine-art intimate botanical macro photographic illustration, quiet seamless black-cherry #1B1520 backdrop, dark wine-charcoal/rose copper #D99E8E/muted sage/tiny warm cream palette, delicate grazing light, plausible natural detail and restrained shallow depth matching reference. New subject/composition, not crop/copy/recolour. Whole compact subject centred within16percent dark clear margins. No trapped animals, fantasy glitter, lettering, numbers, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-9b43fa79-39ef-4228-ae2b-1f485d5cd281.png",
+      "image": "widget-ember-seed-capsule.4f6066c1.webp",
+      "sha256": "4f6066c1297aab5daaf1d68a0079b8b96c42a96000ef82ef081c632ca31fd2ad",
+      "bytes": 78026,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "sundew-ember",
+      "id": "sundew-blossom",
+      "label": "Sundew blossom",
+      "ref": "101-sundew-ember\\widgets\\sundew-crown.png",
+      "subject": "one tiny open sundew flower with five silky warm-ivory petals, a delicate rose-copper centre and slender burgundy curved stem, two minute closed buds, a complete airy botanical blossom specimen. No tentacle rosette, curled leaf or dew sphere",
+      "prompt": "Use case: stylized-concept. Glaze Sundew Ember original standalone1024x1024 square pure artwork of one tiny open sundew flower with five silky warm-ivory petals, a delicate rose-copper centre and slender burgundy curved stem, two minute closed buds, a complete airy botanical blossom specimen. No tentacle rosette, curled leaf or dew sphere. Fine-art intimate botanical macro photographic illustration, quiet seamless black-cherry #1B1520 backdrop, dark wine-charcoal/rose copper #D99E8E/muted sage/tiny warm cream palette, delicate grazing light, plausible natural detail and restrained shallow depth matching reference. New subject/composition, not crop/copy/recolour. Whole compact subject centred within16percent dark clear margins. No trapped animals, fantasy glitter, lettering, numbers, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-309d7595-c8f3-4e6b-a7d8-940a2aff7a6c.png",
+      "image": "widget-sundew-blossom.c8f85045.webp",
+      "sha256": "c8f850459e4adf9091f9479b46a4eb32a1ef82a41eaa5399f32de763be7ed605",
+      "bytes": 92828,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

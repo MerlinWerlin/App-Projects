@@ -1,0 +1,38 @@
+[
+  {
+    "id": "coral-bowling-shoes",
+    "kind": "art",
+    "image": "widget-coral-bowling-shoes.cdc6149b.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Coral bowling shoes"
+  },
+  {
+    "id": "retro-bowling-bag",
+    "kind": "art",
+    "image": "widget-retro-bowling-bag.54b23117.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Retro bowling bag"
+  },
+  {
+    "id": "maple-pin-rack",
+    "kind": "art",
+    "image": "widget-maple-pin-rack.a00e80fd.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Maple pin rack"
+  }
+]
