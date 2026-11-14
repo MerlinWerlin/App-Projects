@@ -1,0 +1,26 @@
+[
+  {
+    "id": "speckled-clay-pitcher",
+    "kind": "art",
+    "image": "widget-speckled-clay-pitcher.4760e44a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Speckled Clay Pitcher"
+  },
+  {
+    "id": "ceramic-bromeliad",
+    "kind": "art",
+    "image": "widget-ceramic-bromeliad.93e6cd9a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ceramic Bromeliad"
+  }
+]
