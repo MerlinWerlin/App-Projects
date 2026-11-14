@@ -1,0 +1,14 @@
+[
+  {
+    "id": "mosaic-carafe",
+    "kind": "art",
+    "image": "widget-mosaic-carafe.0054b4df.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mosaic Carafe"
+  }
+]
