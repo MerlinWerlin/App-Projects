@@ -1,0 +1,58 @@
+{
+  "theme": "glider-nook",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__glider-nook__v1__manifest.json",
+    "sha256": "586021ae1a03604fad863ad6f5eedfb663a629848079744c1725b548beea4eb5",
+    "packVersion": 1,
+    "existingArtwork": [
+      "felt-leaves",
+      "leaf-progress",
+      "seed-keeper",
+      "winglet"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "felt-acorn-cradle",
+      "label": "Felt acorn cradle",
+      "file": "widgets/widget-felt-acorn-cradle.b13d650e.webp",
+      "sha256": "b13d650e102b565b547898f7e4dc03e63d6e233a95a3d7189abad83469513116",
+      "bytes": 200822,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-faeb6119-42a1-421f-a4f9-534f323efdb4.png",
+      "sourceSha256": "1a78fc05b88efedbd87d530d884ee0d60bfd9d4bfa7aa84f3ed58904731a6a2e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for glider-nook. One tiny empty woodland cradle made from a soft needle-felt acorn cup, textured cork-brown wool shell, warm ivory fuzzy mattress, small folded sage felt blanket and two little twig-like wooden rockers. Exquisite handmade miniature, visible fine fuzzy wool fibres and neat stitched seams, soft warm craft photography, pistachio/sage/cream/tan palette. No glider, animal, leaf pair, seed held by character or numbers. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 716313,
+      "opaquePixels": 366
+    },
+    {
+      "id": "felt-toadstool-stool",
+      "label": "Felt toadstool stool",
+      "file": "widgets/widget-felt-toadstool-stool.48ed80e6.webp",
+      "sha256": "48ed80e635dca3aff4fdf7a9eb0931e006e1900135f0d8f10edd3a98e31e55ce",
+      "bytes": 210298,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-889d19c3-7053-4fdf-a7bc-6bf894be16ba.png",
+      "sourceSha256": "3833e13f662b4c28e841e97e11c2fd1c17703cb32838354b69f016dc9f4ea21c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for glider-nook. One tiny woodland toadstool stool made entirely of needle-felt wool: warm cinnamon domed mushroom cap with a few ivory stitched spots, thick cream felt stem, a soft sage moss cushion at its base and one tiny tan seed. Fine fuzzy fibres and neat embroidered seams, sophisticated tactile handmade miniature photography, pistachio/sage/cream/tan palette, soft warm light. No glider, animal, acorn cradle, paired leaves, letters or numbers. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 680180,
+      "opaquePixels": 11
+    }
+  ]
+}
