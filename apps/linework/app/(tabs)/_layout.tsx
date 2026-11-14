@@ -17,7 +17,7 @@ export default function TabsLayout() {
         <TabBarV2 state={props.state} navigation={props.navigation as unknown as TabBarNavigation} />
       )}
       screenOptions={{
-        // Home, Templates and Settings draw their own large titles; My drawings opts into the header below.
+        // Every tab draws its own large title (ScreenV2 / LargeTitleHeader), so the navigator header stays hidden.
         headerShown: false,
         headerStyle: { backgroundColor: c.paper },
         headerTintColor: c.graphite,
@@ -29,7 +29,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="index" options={{ title: t('common.nav.trace') }} />
       <Tabs.Screen name="templates" options={{ title: t('common.nav.templates') }} />
       <Tabs.Screen name="workshop" options={{ title: t('common.nav.workshop') }} />
-      <Tabs.Screen name="drawings" options={{ title: t('drawings.title'), headerShown: true }} />
+      <Tabs.Screen name="drawings" options={{ title: t('drawings.title') }} />
       <Tabs.Screen name="settings" options={{ title: t('common.nav.settings') }} />
     </Tabs>
   );

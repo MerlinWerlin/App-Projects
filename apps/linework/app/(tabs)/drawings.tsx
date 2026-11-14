@@ -1,30 +1,29 @@
 // "My drawings" (T67, docs/MARKET.md §2.3 + §4.7): a free, local gallery of paper-check snapshots saved from the
 // trace screen. Newest first; tap opens the before/after (the existing CompareView: reference vs your paper);
 // delete asks first. Local only, never gated by Plus.
+// Design review 14 Nov 2026: on the v2 ScreenV2 shell (large title, v2 gutter and type) like the other tabs; it was
+// the last tab on the v1 stack header with its own 24 pt gutter.
 import { useCallback, useState } from 'react';
-import { Alert, Image, Modal, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Alert, Image, Modal, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { useTheme } from '../../src/theme/useTheme';
-import { radius, space, tabular } from '../../src/theme/tokens';
+import { useThemeV2 } from '../../src/theme/useTheme';
+import { gutterFor, maxFontScaleV2, radiusV2, spaceV2 } from '../../src/theme/tokensV2';
 import { fitForView, type Drawing } from '../../src/core/drawings';
 import { getTemplate } from '../../src/core/templates';
 import { deleteDrawing, loadDrawings } from '../../src/native/drawings';
 import { select, success } from '../../src/native/haptics';
 import { CompareView } from '../../src/ui/CompareView';
-import { EmptyStateV2 } from '../../src/ui/v2';
+import { EmptyStateV2, ScreenV2 } from '../../src/ui/v2';
+import { squircle } from '../../src/ui/v2/shared';
 import { StaggerIn } from '../../src/ui/StaggerIn';
 import { useT } from '../../src/i18n';
-import { useTypography } from '../../src/theme/typography';
 
-const GUTTER = space.xl;
-const GRID_GAP = space.sm;
+const GRID_GAP = spaceV2.x2;
 const COLS = 3;
 const DATE_STYLE: Intl.DateTimeFormatOptions = { dateStyle: 'medium' };
 
 export default function DrawingsScreen() {
-  const ty = useTypography();
-  const { c } = useTheme();
+  const { c, text } = useThemeV2();
   const { t, date } = useT();
   const { width, height } = useWindowDimensions();
   const router = useRouter();
@@ -73,15 +72,15 @@ export default function DrawingsScreen() {
     [t],
   );
 
-  const tile = Math.floor((width - GUTTER * 2 - GRID_GAP * (COLS - 1)) / COLS);
+  const tile = Math.floor((width - gutterFor(width) * 2 - GRID_GAP * (COLS - 1)) / COLS);
   const items = list ?? [];
   const view = { width, height };
   const fit = open ? fitForView(open.fit, view) : null;
   const template = open ? getTemplate(open.templateId) : undefined;
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: c.paper }} edges={['left', 'right']}>
-      <ScrollView contentContainerStyle={{ paddingHorizontal: GUTTER, paddingTop: space.md, paddingBottom: space.xxl }}>
+    <>
+      <ScreenV2 title={t('drawings.title')} inTabs>
         {list === null ? null : items.length === 0 ? (
           <EmptyStateV2
             art="drawings"
@@ -97,14 +96,14 @@ export default function DrawingsScreen() {
         ) : (
           <>
             <Text
-              maxFontSizeMultiplier={1.4}
-              style={[{ ...ty.face('bodyMedium'), fontSize: 15, lineHeight: ty.lhOf(21), color: c.graphite }, tabular]}
+              maxFontSizeMultiplier={maxFontScaleV2}
+              style={[text('headline'), { color: c.graphite, fontVariant: ['tabular-nums'] }]}
             >
               {t('drawings.count', { count: items.length })}
             </Text>
             <Text
-              maxFontSizeMultiplier={1.4}
-              style={{ ...ty.face('body'), fontSize: 14, lineHeight: ty.lhOf(20), color: c.muted, marginBottom: space.md }}
+              maxFontSizeMultiplier={maxFontScaleV2}
+              style={[text('footnote'), { color: c.muted, marginTop: spaceV2.x1, marginBottom: spaceV2.x4 }]}
             >
               {t('drawings.privacy')}
             </Text>
@@ -126,9 +125,10 @@ export default function DrawingsScreen() {
                     accessibilityLabel={t('drawings.itemLabel', { date: date(d.createdAt, DATE_STYLE) })}
                     accessibilityHint={t('drawings.itemHint')}
                     style={({ pressed }) => ({
+                      ...squircle,
                       width: tile,
                       height: tile,
-                      borderRadius: radius.sm,
+                      borderRadius: radiusV2.xs,
                       overflow: 'hidden',
                       backgroundColor: c.card,
                       borderWidth: 1,
@@ -148,7 +148,7 @@ export default function DrawingsScreen() {
             </View>
           </>
         )}
-      </ScrollView>
+      </ScreenV2>
 
       <Modal visible={open !== null} animationType="fade" presentationStyle="fullScreen" onRequestClose={close}>
         {open && fit ? (
@@ -164,6 +164,6 @@ export default function DrawingsScreen() {
           />
         ) : null}
       </Modal>
-    </SafeAreaView>
+    </>
   );
 }

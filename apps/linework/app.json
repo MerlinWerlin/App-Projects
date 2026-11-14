@@ -3,7 +3,7 @@
     "name": "Linework",
     "slug": "linework",
     "scheme": "linework",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "default",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/icon.png",

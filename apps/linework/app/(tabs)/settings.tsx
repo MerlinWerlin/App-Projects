@@ -1,9 +1,9 @@
 // Settings (PLAN §3 /settings, DESIGN_V2 §7): iOS inset-grouped sections on the v2 components — Tracing (starting
 // opacity, keep awake, focus lock, setup guide replay, grid at start, outline style at start), Look & feel
-// (haptics), Language (phone language or any shipped language) and About (free tools, Linework Plus + tip jar,
+// (haptics), Language (a row that opens app/language.tsx) and About (free tools, Linework Plus + tip jar,
 // privacy, version). Defaults are persisted locally.
 import { useEffect, useState, type ReactNode } from 'react';
-import { Alert, Linking, Platform, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Linking, Platform, StyleSheet, TextInput, View } from 'react-native';
 import Constants from 'expo-constants';
 import { Stack, useRouter } from 'expo-router';
 import { useThemeV2 } from '../../src/theme/useTheme';
@@ -16,9 +16,8 @@ import { PRESETS } from '../../src/core/outlinePresets';
 import { SetupGuide } from '../../src/ui/SetupGuide';
 import { InsetGroup, InsetRow, PillButton, ScreenV2 } from '../../src/ui/v2';
 import { activateReviewAccess, reviewAccessAvailable, usePlus } from '../../src/plus/usePlus';
-import { setLanguage, useT, type LanguageSetting } from '../../src/i18n';
-import { LOCALES, localeInfo } from '../../src/i18n/core';
-import { applyLayoutDirection } from '../../src/i18n/direction';
+import { useT } from '../../src/i18n';
+import { isLocaleCode, localeInfo } from '../../src/i18n/core';
 import type { MessageKey } from '../../src/i18n/en';
 import { STARTER_TEMPLATE_COUNT } from '../../src/plus/entitlement';
 
@@ -32,7 +31,7 @@ const GRID_OPTIONS: { value: GridDefault; label: MessageKey }[] = [
 
 export default function SettingsScreen() {
   const { c } = useThemeV2();
-  const { t, tDynamic, percent } = useT();
+  const { t, tDynamic, percent, setting: language, deviceLocale } = useT();
   const router = useRouter();
   const [s, setS] = useState<Settings>(DEFAULT_SETTINGS);
   const [opacityDraft, setOpacityDraft] = useState(DEFAULT_SETTINGS.defaultOpacity);
@@ -56,6 +55,8 @@ export default function SettingsScreen() {
   };
 
   const version = Constants.expoConfig?.version ?? '0.1.0';
+  const languageName =
+    language === 'system' ? t('settings.language.system', { name: localeInfo(deviceLocale).nativeName }) : isLocaleCode(language) ? localeInfo(language).nativeName : language;
 
   // InsetRow fires the selection tick for switches and check rows (it follows the Haptics setting).
   return (
@@ -164,7 +165,18 @@ export default function SettingsScreen() {
           />
         </InsetGroup>
 
-        <LanguageSection />
+        {/* Language: one row with the current choice that opens the picker (app/language.tsx), as in iOS Settings. */}
+        <InsetGroup>
+          <InsetRow
+            title={t('settings.language.title')}
+            detail={languageName}
+            icon="globe"
+            iconFill={c.pastels[5]}
+            onPress={() => router.push('/language')}
+            accessibilityLabel={`${t('settings.language.title')}, ${languageName}`}
+            accessibilityHint={t('settings.language.hint')}
+          />
+        </InsetGroup>
 
         {/* About: free tools, Plus + tip jar, privacy, version */}
         <InsetGroup header={t('settings.about.title')} footer={t('settings.about.body', { version })}>
@@ -257,74 +269,6 @@ function ReviewAccessSection() {
         </View>
       ) : null}
     </InsetGroup>
-  );
-}
-
-// Language picker: "Phone language (<its native name>)" plus every shipped language by its own name.
-// Picking one applies it at once; switching between left-to-right and right-to-left may need a restart.
-function LanguageSection() {
-  const { c, text } = useThemeV2();
-  const { t, setting, deviceLocale } = useT();
-  const [busy, setBusy] = useState(false);
-
-  // The check row fires the selection tick.
-  const pick = async (value: LanguageSetting) => {
-    if (busy || value === setting) return;
-    setBusy(true);
-    try {
-      await setLanguage(value);
-      const r = await applyLayoutDirection();
-      if (r === 'restart-needed') {
-        Alert.alert(t('settings.language.restartTitle'), t('settings.language.restartManual'), [{ text: t('common.ok') }]);
-      }
-    } catch {
-      // the language still changed for this session
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const options: { value: LanguageSetting; label: string; hint: string; subtitle?: string }[] = [
-    {
-      value: 'system',
-      label: t('settings.language.system', { name: localeInfo(deviceLocale).nativeName }),
-      hint: t('settings.language.systemHint'),
-    },
-    ...LOCALES.map((l) => ({
-      value: l.code as LanguageSetting,
-      label: l.nativeName,
-      hint: l.englishName,
-      subtitle: l.englishName !== l.nativeName ? l.englishName : undefined,
-    })),
-  ];
-
-  return (
-    <View style={{ marginBottom: spaceV2.section }}>
-      <View accessibilityRole="radiogroup" accessibilityLabel={t('settings.language.title')}>
-        <InsetGroup header={t('settings.language.title')} footer={t('settings.language.hint')} style={{ marginBottom: 0 }}>
-          {options.map((o) => (
-            <InsetRow
-              key={o.value}
-              title={o.label}
-              subtitle={o.subtitle}
-              accessory="check"
-              checked={setting === o.value}
-              onPress={() => {
-                pick(o.value).catch(() => {});
-              }}
-              accessibilityLabel={o.label}
-              accessibilityHint={o.hint}
-            />
-          ))}
-        </InsetGroup>
-      </View>
-      <Text
-        maxFontSizeMultiplier={maxFontScaleV2}
-        style={[text('footnote'), { color: c.muted, paddingHorizontal: spaceV2.x4, marginTop: spaceV2.x2 }]}
-      >
-        {t('settings.language.machineNote')}
-      </Text>
-    </View>
   );
 }
 
