@@ -110,12 +110,25 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: 'Reproduzir o vídeo de ajuda',
-    wallpaper: 'Vídeo: salvar o papel de parede e usá-lo no iPhone',
-    icons: 'Vídeo: adicionar os ícones combinando à Tela de Início',
-    widgets: 'Vídeo: adicionar um widget do Glaze à Tela de Início',
+    watch: 'Ver como',
+    watchHint: 'Abre um vídeo curto de cada etapa',
+    gotIt: 'Entendi',
+    again: 'Ver de novo',
+    playHint: 'Reproduz o vídeo',
+    pauseHint: 'Pausa o vídeo',
+    videoLabel: 'Vídeo: {steps}',
+    titles: {
+      wallpaper: 'Defina seu papel de parede',
+      icons: 'Adicione seus ícones',
+      widgets: 'Adicione um widget',
+    },
+    captions: {
+      wallpaper: 'Abra em Fotos, toque em Compartilhar e depois em Usar como Papel de Parede. Desative o desfoque da Tela de Início.',
+      icons: 'Toque em Gerar e depois em Permitir. Abra Ajustes, toque em Perfil Baixado e depois em Instalar.',
+      widgets: 'Toque e segure a Tela de Início, toque em Editar e depois em Adicionar Widget. Escolha o Glaze e deslize até o número que quiser.',
+    },
   },
   iconsIntro: {
     title: 'Ícones',

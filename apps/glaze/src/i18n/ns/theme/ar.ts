@@ -110,12 +110,25 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: 'تشغيل فيديو الشرح',
-    wallpaper: 'فيديو: حفظ الخلفية وتعيينها على iPhone',
-    icons: 'فيديو: إضافة الأيقونات المطابقة إلى الشاشة الرئيسية',
-    widgets: 'فيديو: إضافة أداة Glaze إلى الشاشة الرئيسية',
+    watch: 'شاهد الطريقة',
+    watchHint: 'يفتح فيديو قصيرًا لكل خطوة',
+    gotIt: 'حسنًا',
+    again: 'شاهد مرة أخرى',
+    playHint: 'يشغّل الفيديو',
+    pauseHint: 'يوقف الفيديو مؤقتًا',
+    videoLabel: 'فيديو: {steps}',
+    titles: {
+      wallpaper: 'عيّن خلفيتك',
+      icons: 'أضف أيقوناتك',
+      widgets: 'أضف أداة',
+    },
+    captions: {
+      wallpaper: 'افتحها في الصور، واضغط على مشاركة، ثم استخدام كخلفية. أوقف التمويه للشاشة الرئيسية.',
+      icons: 'اضغط على إنشاء، ثم سماح. افتح الإعدادات، واضغط على تم تنزيل ملف التعريف، ثم تثبيت.',
+      widgets: 'اضغط مطولًا على الشاشة الرئيسية، واضغط على تعديل، ثم إضافة أداة. اختر Glaze واسحب إلى الرقم الذي تريده.',
+    },
   },
   iconsIntro: {
     title: 'الأيقونات',

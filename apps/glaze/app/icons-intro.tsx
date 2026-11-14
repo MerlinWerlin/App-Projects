@@ -16,8 +16,7 @@ import { chromeRadiusV2, fontScaleCap, spaceV2, textV2, type TypeRoleV2 } from '
 import { useColorsV2 } from '../src/theme/useTokens';
 import { haptic } from '../src/ui/haptics';
 import { textStyleFor } from '../src/ui/i18nLayout';
-import { HowToClip } from '../src/ui/HowToClip';
-import { HOW_TO_CLIPS } from '../src/ui/howToClips';
+import { useHowTo } from '../src/ui/HowToSheet';
 import { PillButton } from '../src/ui/PillButton';
 
 export default function IconsIntroScreen() {
@@ -27,6 +26,8 @@ export default function IconsIntroScreen() {
   const params = useLocalSearchParams<{ theme?: string; again?: string }>();
   const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
   const [index, setIndex] = useState(0);
+  // Owner 2026-11-15: the icons video opens large on its own the first time, and from "Watch how".
+  const how = useHowTo('icons', { auto: true });
   const step = ICONS_INTRO_STEPS[index];
   const last = index === ICONS_INTRO_STEPS.length - 1;
 
@@ -50,8 +51,7 @@ export default function IconsIntroScreen() {
         )}
       </View>
       <View style={[styles.card, { backgroundColor: c.surface }]}>
-        {/* Owner 2026-11-14: the bundled how-to clip of the icons being added (HowToClip). */}
-        {index === 0 ? <HowToClip clip={HOW_TO_CLIPS.icons} label={t('theme.howTo.icons')} style={styles.video} /> : null}
+        {how.button()}
         <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title2')} style={[...label('title2'), { color: c.ink }]}>
           {t(`theme.iconsIntro.steps.${step}.title`)}
         </Text>
@@ -69,6 +69,7 @@ export default function IconsIntroScreen() {
           <PillButton label={t('theme.iconsIntro.back')} block variant="plain" onPress={() => setIndex((i) => Math.max(0, i - 1))} />
         ) : null}
       </View>
+      {how.sheet}
     </SafeAreaView>
   );
 }
@@ -77,6 +78,5 @@ const styles = StyleSheet.create({
   screen: { flex: 1, paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.md, gap: spaceV2.lg },
   top: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: spaceV2.xl },
   card: { flex: 1, justifyContent: 'center', gap: spaceV2.md, padding: spaceV2.xl, borderRadius: chromeRadiusV2.card },
-  video: { maxHeight: '55%' },
   actions: { gap: spaceV2.sm, paddingBottom: spaceV2.md },
 });

@@ -110,12 +110,25 @@ export const zhHans: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: '播放操作视频',
-    wallpaper: '视频：保存墙纸并设置到 iPhone',
-    icons: '视频：把配套图标添加到主屏幕',
-    widgets: '视频：把 Glaze 小组件添加到主屏幕',
+    watch: '看看怎么做',
+    watchHint: '打开每一步的短视频',
+    gotIt: '知道了',
+    again: '再看一遍',
+    playHint: '播放视频',
+    pauseHint: '暂停视频',
+    videoLabel: '视频：{steps}',
+    titles: {
+      wallpaper: '设置墙纸',
+      icons: '添加图标',
+      widgets: '添加小组件',
+    },
+    captions: {
+      wallpaper: '在“照片”中打开它，轻点“共享”，再选“用作墙纸”。为主屏幕关闭“模糊”。',
+      icons: '轻点“生成”，然后轻点“允许”。打开“设置”，轻点“已下载描述文件”，再轻点“安装”。',
+      widgets: '按住主屏幕，轻点“编辑”，再轻点“添加小组件”。选择 Glaze，滑到你想要的编号。',
+    },
   },
   iconsIntro: {
     title: '图标',

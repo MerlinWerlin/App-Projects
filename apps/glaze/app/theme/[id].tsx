@@ -130,6 +130,8 @@ import { ThemeWidgetArt } from '../../src/ui/ThemeWidgetArt';
 import { widgetTabSizeKey } from '../../src/core/tabNav';
 import type { HomeOptionSize } from '../../src/core/widgetOptions';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
+import { howToSeen } from '../../src/store/howTo';
+import { useHowTo } from '../../src/ui/HowToSheet';
 
 /** Outer width of the phone preview for a window width: large, but leaves the toggle and bar room. */
 function previewWidthFor(windowW: number): number {
@@ -277,6 +279,8 @@ function ThemeDetail({
   useFocusEffect(useCallback(() => () => { themeFocus.current++; }, []));
   const [themeChoiceOpen, setThemeChoiceOpen] = useState(step === 'overview');
   const [useError, setUseError] = useState(false);
+  // Owner 2026-11-15: the wallpaper how-to video opens large after the first wallpaper save.
+  const wallpaperHow = useHowTo('wallpaper');
   // Owner 2026-11-13: the icons walkthrough was seen, so the bar offers "Set up icons" / "How it works".
   const [iconsSeen, setIconsSeen] = useState(false);
   useEffect(() => {
@@ -528,7 +532,11 @@ function ThemeDetail({
       return;
     }
     void onSaveWallpaper().then(
-      saved => toast.show(t(saved ? 'theme.save.savedBadge' : 'theme.setup.wallpaper.saveError'), saved ? 'success' : 'warning'),
+      saved => {
+        toast.show(t(saved ? 'theme.save.savedBadge' : 'theme.setup.wallpaper.saveError'), saved ? 'success' : 'warning');
+        // Owner 2026-11-15: the first time, show how to set it as the wallpaper.
+        if (saved) void howToSeen('wallpaper').then(seen => { if (!seen) wallpaperHow.open(); });
+      },
       () => toast.show(t('theme.setup.wallpaper.saveError'), 'warning'),
     );
   };
@@ -1202,6 +1210,7 @@ function ThemeDetail({
         onInstallIcons={installFromSetup}
       />
 
+      {wallpaperHow.sheet}
       <Sheet visible={themeChoiceOpen} onClose={() => setThemeChoiceOpen(false)} title={theme.name}>
         <View style={styles.themeChoices}>
           <PillButton label={t('theme.use.viewWidgets')} block variant="plain" onPress={() => {

@@ -110,12 +110,25 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: 'कैसे करें वीडियो चलाएँ',
-    wallpaper: 'वीडियो: वॉलपेपर सहेजकर iPhone पर लगाना',
-    icons: 'वीडियो: मेल खाते आइकन होम स्क्रीन पर जोड़ना',
-    widgets: 'वीडियो: Glaze विजेट होम स्क्रीन पर जोड़ना',
+    watch: 'कैसे करें देखें',
+    watchHint: 'हर कदम का छोटा वीडियो खोलता है',
+    gotIt: 'समझ गया',
+    again: 'फिर से देखें',
+    playHint: 'वीडियो चलाता है',
+    pauseHint: 'वीडियो रोकता है',
+    videoLabel: 'वीडियो: {steps}',
+    titles: {
+      wallpaper: 'अपना वॉलपेपर लगाएँ',
+      icons: 'अपने आइकन जोड़ें',
+      widgets: 'एक विजेट जोड़ें',
+    },
+    captions: {
+      wallpaper: 'इसे फ़ोटो में खोलें, शेयर पर टैप करें, फिर वॉलपेपर के रूप में उपयोग करें। होम स्क्रीन के लिए धुंधलापन बंद करें।',
+      icons: 'बनाएँ पर टैप करें, फिर अनुमति दें। सेटिंग्स खोलें, डाउनलोड की गई प्रोफ़ाइल पर टैप करें, फिर इंस्टॉल करें।',
+      widgets: 'होम स्क्रीन को दबाकर रखें, संपादित करें पर टैप करें, फिर विजेट जोड़ें। Glaze चुनें और अपनी पसंद के नंबर तक स्वाइप करें।',
+    },
   },
   iconsIntro: {
     title: 'आइकन',

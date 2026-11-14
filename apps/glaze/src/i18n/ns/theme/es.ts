@@ -110,12 +110,25 @@ export const es: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: 'Reproducir el vídeo de ayuda',
-    wallpaper: 'Vídeo: guardar el fondo y ponerlo en tu iPhone',
-    icons: 'Vídeo: añadir los iconos a juego a tu pantalla de inicio',
-    widgets: 'Vídeo: añadir un widget de Glaze a tu pantalla de inicio',
+    watch: 'Ver cómo',
+    watchHint: 'Abre un vídeo corto de cada paso',
+    gotIt: 'Entendido',
+    again: 'Ver de nuevo',
+    playHint: 'Reproduce el vídeo',
+    pauseHint: 'Pausa el vídeo',
+    videoLabel: 'Vídeo: {steps}',
+    titles: {
+      wallpaper: 'Pon tu fondo',
+      icons: 'Añade tus iconos',
+      widgets: 'Añade un widget',
+    },
+    captions: {
+      wallpaper: 'Ábrelo en Fotos, toca Compartir y luego Usar como fondo. Desactiva Desenfoque para la pantalla de inicio.',
+      icons: 'Toca Generar y luego Permitir. Abre Ajustes, toca Perfil descargado y luego Instalar.',
+      widgets: 'Mantén pulsada la pantalla de inicio, toca Editar y luego Añadir widget. Elige Glaze y desliza hasta el número que quieras.',
+    },
   },
   iconsIntro: {
     title: 'Iconos',

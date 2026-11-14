@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**15 November 2026 TestFlight big how-to videos: `1.0.31`.** Owner on 1.0.30: "the vids are so small in the app and i was confused where to see them, the first time a widget is select a vid should come up and watching the vid should be an easy access button". HowToSheet: a page sheet with title, a caption spelling the steps out, the recording at the largest size that fits, Got it + Watch again, tap to pause; opens on its own once per category (wallpaper / icons / widgets, AsyncStorage glaze.howTo.seen.v1.*) on the Set it up steps, icons walkthrough, install screen, Widget Studio and the first wallpaper save; Watch how button on each. Inline players removed.
+
 **14 November 2026 TestFlight how-to clips: `1.0.30`.** Owner approved the three screen recordings (wallpaper 18 s, icons 29 s, widgets 25 s; H.264 590×1278, no audio, 1.7-2.1 MB each, ~5.8 MB with posters). Bundled in assets/video, played by src/ui/HowToClip.tsx (expo-video, muted, looping, inline, poster until ready, Reduce Motion = poster + play, paused off-screen / in background) on the icons walkthrough card and the Wallpaper / Icons / Widgets steps of the Set it up flow. IPA grows ~5.8 MB (35.8 → ~41.6 MB).
 
 **14 November 2026 additions to `1.0.29`.** Owner on 1.0.28: a theme with no artwork (every one of the 63 built-in themes; all 141 packs have 2-5) showed a blank grey Artwork tile; now ThemedFallbackArt, a scene in the theme's colours per slot. My widget art: 64 pt number and 132 pt artwork side by side; the separate art picker left the Widgets tab. Use everything opens icon setup every time (walkthrough first, then /install).

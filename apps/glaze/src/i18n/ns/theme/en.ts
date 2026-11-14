@@ -110,12 +110,25 @@ export const en = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: 'Play the how-to video',
-    wallpaper: 'Video: saving the wallpaper and setting it on your iPhone',
-    icons: 'Video: adding the matching icons to your Home Screen',
-    widgets: 'Video: adding a Glaze widget to your Home Screen',
+    watch: 'Watch how',
+    watchHint: 'Opens a short video of each step',
+    gotIt: 'Got it',
+    again: 'Watch again',
+    playHint: 'Plays the video',
+    pauseHint: 'Pauses the video',
+    videoLabel: 'Video: {steps}',
+    titles: {
+      wallpaper: 'Set your wallpaper',
+      icons: 'Add your icons',
+      widgets: 'Add a widget',
+    },
+    captions: {
+      wallpaper: 'Open it in Photos, tap Share, then Use as Wallpaper. Turn off Blur for the Home Screen.',
+      icons: 'Tap Generate, then Allow. Open Settings, tap Profile Downloaded, then Install.',
+      widgets: 'Press and hold the Home Screen, tap Edit, then Add Widget. Pick Glaze and swipe to the number you want.',
+    },
   },
   iconsIntro: {
     title: 'Icons',

@@ -25,7 +25,7 @@
 import { Feather } from '@expo/vector-icons';
 import * as FileSystem from '../src/native/fs';
 import * as MediaLibrary from 'expo-media-library/legacy';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Linking, Pressable, ScrollView, StyleSheet, Text, View, type TextStyle } from 'react-native';
@@ -116,6 +116,7 @@ import { haptic } from '../src/ui/haptics';
 import { PressableScale } from '../src/ui/PressableScale';
 import { Chevron, textStyleFor } from '../src/ui/i18nLayout';
 import { InsetGroup, InsetRow, PillButton, SectionHeader, Skeleton, SquircleCard } from '../src/ui/v2';
+import { useHowTo, WatchHowButton } from '../src/ui/HowToSheet';
 
 /** A v2 type role plus the script's line-height adjustment. */
 function typeFor(script: Script, role: TypeRoleV2): TextStyle[] {
@@ -192,6 +193,8 @@ export default function InstallScreen() {
   const { t, script, isRTL, formatNumber, locale } = useT();
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
   const router = useRouter();
+  // Owner 2026-11-15: the icons how-to video, large, on its own the first time and from "Watch how".
+  const how = useHowTo('icons', { auto: true });
   const { auto, theme: requestedThemeId } = useLocalSearchParams<{ auto?: string; theme?: string }>();
   const requestedTheme = useAnyTheme(requestedThemeId);
   const reduced = useMotionReduced();
@@ -637,6 +640,8 @@ export default function InstallScreen() {
 
   return (
     <SafeAreaView edges={['left', 'right']} style={[styles.root, { backgroundColor: c.bg }]}>
+      <Stack.Screen options={{ headerRight: () => <WatchHowButton onPress={how.open} compact /> }} />
+      {how.sheet}
       <OffscreenIconRenderer ref={renderer.ref} backdrop={backdrop} />
       <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.scroll}>
         {PROFILE_INSTALL_ENABLED && choice === 'bulk' ? (

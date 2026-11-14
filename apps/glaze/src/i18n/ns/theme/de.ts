@@ -110,12 +110,25 @@ export const de: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: 'Anleitungsvideo abspielen',
-    wallpaper: 'Video: Hintergrund sichern und auf dem iPhone festlegen',
-    icons: 'Video: passende Symbole zum Home-Bildschirm hinzufügen',
-    widgets: 'Video: ein Glaze-Widget zum Home-Bildschirm hinzufügen',
+    watch: 'So geht’s',
+    watchHint: 'Öffnet ein kurzes Video zu jedem Schritt',
+    gotIt: 'Verstanden',
+    again: 'Noch mal ansehen',
+    playHint: 'Spielt das Video ab',
+    pauseHint: 'Pausiert das Video',
+    videoLabel: 'Video: {steps}',
+    titles: {
+      wallpaper: 'Hintergrund festlegen',
+      icons: 'Symbole hinzufügen',
+      widgets: 'Widget hinzufügen',
+    },
+    captions: {
+      wallpaper: 'Öffne es in Fotos, tippe auf Teilen und dann auf Als Hintergrund. Schalte für den Home-Bildschirm Weichzeichnen aus.',
+      icons: 'Tippe auf Erstellen und dann auf Erlauben. Öffne Einstellungen, tippe auf Profil geladen und dann auf Installieren.',
+      widgets: 'Halte den Home-Bildschirm gedrückt, tippe auf Bearbeiten und dann auf Widget hinzufügen. Wähle Glaze und wische zur gewünschten Nummer.',
+    },
   },
   iconsIntro: {
     title: 'Symbole',

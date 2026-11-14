@@ -110,12 +110,25 @@ export const it: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: 'Riproduci il video guida',
-    wallpaper: 'Video: salvare lo sfondo e impostarlo sull’iPhone',
-    icons: 'Video: aggiungere le icone abbinate alla schermata Home',
-    widgets: 'Video: aggiungere un widget Glaze alla schermata Home',
+    watch: 'Guarda come',
+    watchHint: 'Apre un breve video di ogni passaggio',
+    gotIt: 'Ho capito',
+    again: 'Guarda di nuovo',
+    playHint: 'Avvia il video',
+    pauseHint: 'Mette in pausa il video',
+    videoLabel: 'Video: {steps}',
+    titles: {
+      wallpaper: 'Imposta lo sfondo',
+      icons: 'Aggiungi le icone',
+      widgets: 'Aggiungi un widget',
+    },
+    captions: {
+      wallpaper: 'Aprilo in Foto, tocca Condividi e poi Usa come sfondo. Disattiva la sfocatura per la schermata Home.',
+      icons: 'Tocca Genera e poi Consenti. Apri Impostazioni, tocca Profilo scaricato e poi Installa.',
+      widgets: 'Tieni premuto sulla schermata Home, tocca Modifica e poi Aggiungi widget. Scegli Glaze e scorri fino al numero che vuoi.',
+    },
   },
   iconsIntro: {
     title: 'Icone',
