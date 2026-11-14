@@ -81,6 +81,12 @@ export default function OpenInScreen() {
       const raw = await readIncomingText(got.uri);
       await discardIncoming(got.uri);
       if (raw == null) return show({ k: 'failed' });
+      // T170: a calendar file opens Add your itinerary with its events read.
+      if (route === 'itinerary') {
+        if (!raw.trim()) return show({ k: 'empty' });
+        router.replace({ pathname: '/itinerary', params: { incoming: stashIncomingText(raw), name: got.name } });
+        return;
+      }
       if (route === 'paste' && (got.kind === 'text' || got.kind === 'eml')) {
         const text = pasteTextFor(got.kind, raw);
         if (!text.trim()) return show({ k: 'empty' });

@@ -1,6 +1,6 @@
 {
-  "mode": "update",
-  "note": "Map search has room: the map shrinks while you type, the search box moves to the top and one tap picks a result",
+  "mode": "build",
+  "note": "Satchel 0.2.0: Today timetable (today, tomorrow and every trip day as a school-day style schedule with now, next and free time) and Add your itinerary (paste, share, or open a calendar file; read on the phone)",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

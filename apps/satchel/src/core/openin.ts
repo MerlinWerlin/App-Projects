@@ -3,6 +3,7 @@
 // or .satchel trip file. This module decides what that file is (by extension, UTI or MIME type, else by its first
 // bytes), reads the text out of an .eml message, and picks the screen it goes to:
 //   text / eml -> Paste a booking, filled in (the T77 parser)
+//   ics (T170) -> Add your itinerary, filled in (src/core/itinerary.ts reads the calendar file)
 //   pdf / image -> Add to a trip (pick a trip, then a new booking with the file attached)
 //   trip -> the T15 import flow
 //   backup (.satchelbackup, T154) -> Settings > Backup's restore preview (Merge or Replace), never a trip import
@@ -11,8 +12,8 @@
 import { BACKUP_FILE_MIME, BACKUP_UTI } from './backup.ts';
 import { extensionOf } from './tickets.ts';
 
-export type OpenInKind = 'trip' | 'backup' | 'pdf' | 'image' | 'text' | 'eml' | 'unknown';
-export type OpenInRoute = 'import' | 'restore' | 'addToTrip' | 'paste' | 'unsupported';
+export type OpenInKind = 'trip' | 'backup' | 'pdf' | 'image' | 'text' | 'eml' | 'ics' | 'unknown';
+export type OpenInRoute = 'import' | 'restore' | 'addToTrip' | 'paste' | 'itinerary' | 'unsupported';
 
 /** Largest file Satchel takes in through Open in (bytes). Bigger ones get the "too large" message. */
 export const MAX_INCOMING_BYTES = 40 * 1024 * 1024;
@@ -59,6 +60,9 @@ const EXT_KIND: Record<string, OpenInKind> = {
   txt: 'text',
   text: 'text',
   eml: 'eml',
+  ics: 'ics',
+  ical: 'ics',
+  ifb: 'ics',
 };
 
 const UTI_KIND: Record<string, OpenInKind> = {
@@ -77,6 +81,8 @@ const UTI_KIND: Record<string, OpenInKind> = {
   'public.text': 'text',
   'com.apple.mail.email': 'eml',
   'public.email-message': 'eml',
+  'com.apple.ical.ics': 'ics',
+  'public.calendar-event': 'ics',
 };
 
 function kindForMime(mime: string): OpenInKind {
@@ -85,6 +91,7 @@ function kindForMime(mime: string): OpenInKind {
   if (m.startsWith('image/')) return 'image';
   if (m === 'message/rfc822') return 'eml';
   if (m === 'text/plain') return 'text';
+  if (m === 'text/calendar') return 'ics';
   if (m === 'application/vnd.satchel.trip+json') return 'trip';
   if (m === BACKUP_FILE_MIME) return 'backup';
   return 'unknown';
@@ -127,6 +134,7 @@ export function sniffKind(bytes: Uint8Array): OpenInKind | null {
   if (lead.startsWith('{') && /"format"\s*:\s*"satchel-trip"/.test(text)) return 'trip';
   if (lead.startsWith('{') && /"format"\s*:\s*"satchel-backup"/.test(text)) return 'backup';
   if (lead.startsWith('{') || lead.startsWith('[')) return 'unknown'; // some other JSON: not ours
+  if (/^BEGIN:VCALENDAR/i.test(lead)) return 'ics';
   if (EML_HEAD.test(lead)) return 'eml';
   return 'text';
 }
@@ -138,7 +146,7 @@ export function decideKind(p: { name?: string | null; mime?: string | null; uti?
   // A file named .json or .txt could still be a trip file renamed by a mail app; the bytes decide those.
   if (named !== 'unknown' && ext !== 'txt' && ext !== 'text') return named;
   const sniffed = head ? sniffKind(head) : null;
-  if (named === 'text') return sniffed === 'trip' || sniffed === 'backup' || sniffed === 'eml' ? sniffed : 'text';
+  if (named === 'text') return sniffed === 'trip' || sniffed === 'backup' || sniffed === 'eml' || sniffed === 'ics' ? sniffed : 'text';
   return sniffed ?? 'unknown';
 }
 
@@ -155,6 +163,8 @@ export function routeFor(kind: OpenInKind): OpenInRoute {
     case 'text':
     case 'eml':
       return 'paste';
+    case 'ics':
+      return 'itinerary';
     default:
       return 'unsupported';
   }
@@ -176,7 +186,7 @@ export function incomingRedirect(path: unknown): string | null {
 
 /** A safe file name for the inbox copy: `<id>-<name>`, path characters replaced, never empty, at most 80 chars. */
 export function incomingName(id: string, name: string, kind: OpenInKind = 'unknown'): string {
-  const fallback = kind === 'pdf' ? 'file.pdf' : kind === 'image' ? 'image.jpg' : kind === 'eml' ? 'message.eml' : kind === 'trip' ? 'trip.satchel' : kind === 'backup' ? 'backup.satchelbackup' : 'file';
+  const fallback = kind === 'pdf' ? 'file.pdf' : kind === 'image' ? 'image.jpg' : kind === 'eml' ? 'message.eml' : kind === 'trip' ? 'trip.satchel' : kind === 'backup' ? 'backup.satchelbackup' : kind === 'ics' ? 'calendar.ics' : 'file';
   const clean = name.replace(/[^\w.\-]+/g, '_').replace(/^\.+/, '').slice(-80) || fallback;
   return `${id}-${clean}`;
 }
