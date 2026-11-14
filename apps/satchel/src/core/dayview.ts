@@ -295,3 +295,19 @@ export function todayTomorrow(trip: Trip, now: number): { today: LocalDate; tomo
 export function headline(s: DaySchedule): Block | null {
   return s.blocks.find((b) => b.state === 'now') ?? s.blocks.find((b) => b.state === 'next') ?? null;
 }
+
+/**
+ * T171 the trip the Itinerary tab opens on: the one on now (the earliest started when two overlap), else the next to
+ * start, else the one that ended last. Null with no trips. Each trip's "today" is read where its traveller is.
+ */
+export function scheduleTrip<T extends Trip>(trips: readonly T[], now: number): T | null {
+  const byStart = [...trips].sort((a, b) => (a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : a.id < b.id ? -1 : 1));
+  const on = byStart.find((t) => {
+    const today = tripToday(t, now);
+    return today >= t.startDate && today <= t.endDate;
+  });
+  if (on) return on;
+  const next = byStart.find((t) => tripToday(t, now) < t.startDate);
+  if (next) return next;
+  return [...byStart].sort((a, b) => (a.endDate > b.endDate ? -1 : a.endDate < b.endDate ? 1 : 0))[0] ?? null;
+}
