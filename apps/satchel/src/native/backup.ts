@@ -52,7 +52,7 @@ async function walk(root: string, rel: string, out: AppFile[]): Promise<void> {
   for (const name of names) {
     const path = `${rel}${name}`;
     try {
-      const info = await FileSystem.getInfoAsync(`${root}${path}`, { size: true });
+      const info = await FileSystem.getInfoAsync(`${root}${path}`); // size comes back for every existing file
       if (!info.exists) continue;
       if (info.isDirectory) await walk(root, `${path}/`, out);
       else out.push({ path, size: info.size });

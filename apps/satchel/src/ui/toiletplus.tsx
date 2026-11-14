@@ -2,7 +2,7 @@
 // star with a private note and thumbs up/down, Open in Apple Maps), the filter chips with counts, the List/Map
 // switch, and the "My toilets" and "Recently used" sections. Used by app/(tabs)/toilets.tsx. Theme tokens only.
 import { Ionicons } from '@expo/vector-icons';
-import { memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState, type ComponentRef } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { FILTERS, hoursLine, type FilterId, type RecentToilet, type SavedToilet, type Vote } from '../core/toiletplus.ts';
 import type { HoursStatus } from '../core/openinghours.ts';
@@ -323,7 +323,7 @@ export function MineSection({
   onLocated?: (windowY: number) => void;
 }) {
   const { t, theme } = useApp();
-  const box = useRef<View>(null);
+  const box = useRef<ComponentRef<typeof View>>(null);
   const located = useRef(onLocated);
   located.current = onLocated;
   const focusShown = !!focusId && saved.some((s) => s.toilet.id === focusId);

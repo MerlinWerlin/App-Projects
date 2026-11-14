@@ -7,7 +7,7 @@
 // T119: the trip's own accent (src/theme/tripAccent.ts, from its cover scene) marks each day card: a stripe on the
 // left and the day heading in the accent's text colour (AA on the card in both themes).
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
 import { AccessibilityInfo, Alert, FlatList, findNodeHandle, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { overlapPartners, overlapTitles } from '../../src/core/clashes.ts';
@@ -162,7 +162,7 @@ export default function TripScreen() {
   const arrivalY = useRef<number | null>(null);
   const arrivalPending = useRef(!!arrivalFocus);
   // T138: the stop card's heading; VoiceOver focus moves there once the scroll has settled.
-  const arrivalHeading = useRef<View | null>(null);
+  const arrivalHeading = useRef<ComponentRef<typeof View> | null>(null);
   const cover = useMemo(() => (trip ? tripCover(trip) : null), [trip]);
   // T152: the trip's own cover photo (phone-only) wins over the illustration.
   const coverPhoto = useCoverPhoto(trip?.id);

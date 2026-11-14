@@ -7,7 +7,7 @@
 // fade only (FadeInView), no springs. Missing data shows a plain line, never a blank or a guess.
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { useCallback, useMemo, type ReactNode, type RefObject } from 'react';
+import { useCallback, useMemo, type ComponentRef, type ReactNode, type RefObject } from 'react';
 import { Text, View, type LayoutChangeEvent } from 'react-native';
 import emergencyTable from '../content/emergency_numbers.json';
 import essentialsTable from '../content/country_essentials.json';
@@ -77,7 +77,7 @@ export function ArrivalCard({
   focusIso2?: string | null;
   onCloseFocus?: () => void;
   onLayout?: (e: LayoutChangeEvent) => void;
-  stopHeadingRef?: RefObject<View | null>;
+  stopHeadingRef?: RefObject<ComponentRef<typeof View> | null>;
 }) {
   const { homeIso } = useHomeCountry();
   const { dismissed, loaded, dismiss } = useDismissed();
@@ -165,7 +165,7 @@ function HeroButton({ label, hint, icon, onPress, a11yLabel }: { label: string; 
   );
 }
 
-function ArrivalHero({ view: v, stay, onDismiss, headingRef }: { view: ArrivalView; stay: CurrentStay | null; onDismiss: () => void; headingRef?: RefObject<View | null> }) {
+function ArrivalHero({ view: v, stay, onDismiss, headingRef }: { view: ArrivalView; stay: CurrentStay | null; onDismiss: () => void; headingRef?: RefObject<ComponentRef<typeof View> | null> }) {
   const { t, theme, lang } = useApp();
   const router = useRouter();
   const when = v.when === 'here' ? t('arrival.whenHere') : v.when === 'stop' ? t('f103.arrival.whenStop') : t('arrival.whenToday');

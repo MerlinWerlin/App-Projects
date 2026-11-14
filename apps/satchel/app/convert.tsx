@@ -9,7 +9,7 @@
 // Free feature. Tokens only, timed motion only (no springs), 48 pt targets, every control labelled.
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState, type ComponentRef } from 'react';
 import { AccessibilityInfo, Alert, Animated, ScrollView, Text, View, type AccessibilityActionEvent } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
@@ -82,7 +82,7 @@ function ConvertBody({ trip, tripChoices, onPickTrip, toSplit }: { trip: Trip; t
   const { saveTrip } = useTrips();
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const scroll = useRef<ScrollView>(null);
+  const scroll = useRef<ComponentRef<typeof ScrollView>>(null);
   const scrolled = useRef(false);
   const today = todayIn(deviceZone());
 
