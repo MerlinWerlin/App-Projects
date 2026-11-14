@@ -193,16 +193,17 @@ export default function RecordScreen() {
             <Text style={st.recText}>{formatDuration(secs)}</Text>
           </Glass>
         ) : null}
-        <Glass tint="dark" style={st.round}>
+        <Glass tint="dark" style={[st.round, { opacity: recording ? 0.4 : 1 }]}>
           <IconBtn icon="camera-reverse-outline" label={t('record.flipCamera')} onPress={() => !recording && app.setPrefs({ recordCamera: facing === 'front' ? 'back' : 'front' })} color="#F1EEE6" />
         </Glass>
       </View>
       <View style={[st.bottom, { paddingBottom: insets.bottom + 22 }]}>
-        <Pressable onPress={pickSection} disabled={recording || !parsed.sections.length} accessibilityRole="button" accessibilityLabel={t('record.section')} style={{ width: 120 }}>
-          <Glass tint="dark" style={[st.chip, { opacity: recording ? 0.5 : 1 }]}>
-            <Text style={st.chipText} numberOfLines={1}>
+        <Pressable onPress={pickSection} disabled={recording || !parsed.sections.length} accessibilityRole="button" accessibilityLabel={`${t('record.section')}: ${section === null ? t('record.wholeScript') : parsed.sections[section]?.title ?? ''}`} style={{ width: 120 }}>
+          <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 4, opacity: recording ? 0.5 : 1 }]}>
+            <Text style={[st.chipText, { flexShrink: 1 }]} numberOfLines={1}>
               {section === null ? t('record.wholeScript') : parsed.sections[section]?.title}
             </Text>
+            {parsed.sections.length ? <Ionicons name="chevron-down" size={13} color="#C9CCD6" /> : null}
           </Glass>
         </Pressable>
         <Pressable onPress={toggle} disabled={!ready} accessibilityRole="button" accessibilityLabel={recording ? t('record.stop') : t('record.start')} style={({ pressed }) => [st.shutter, { transform: [{ scale: pressed ? 0.94 : 1 }] }]}>
@@ -212,7 +213,7 @@ export default function RecordScreen() {
           {takes ? (
             <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
               <Ionicons name="checkmark-circle" size={15} color="#D9AD5E" />
-              <Text style={st.chipText}>{takes}</Text>
+              <Text style={st.chipText} accessibilityLiveRegion="polite">{takes === 1 ? t('record.takesOne') : t('record.takes', { n: takes })}</Text>
             </Glass>
           ) : null}
         </View>
@@ -235,7 +236,7 @@ const st = StyleSheet.create({
   count: { fontFamily: FONT.display, fontSize: 150, color: '#F1EEE6', fontVariant: ['tabular-nums'] },
   top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: 8 },
   round: { borderRadius: 22 },
-  chip: { borderRadius: RADIUS.pill, paddingHorizontal: 14, minHeight: 38, alignItems: 'center', justifyContent: 'center' },
+  chip: { borderRadius: RADIUS.pill, paddingHorizontal: 14, minHeight: 44, alignItems: 'center', justifyContent: 'center' },
   chipText: { fontFamily: FONT.bodyBold, fontSize: 13.5, color: '#F1EEE6' },
   recDot: { width: 9, height: 9, borderRadius: 5, backgroundColor: TALLY },
   recText: { fontFamily: FONT.display, fontSize: 16, color: '#F1EEE6', fontVariant: ['tabular-nums'] },

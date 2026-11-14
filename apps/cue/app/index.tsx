@@ -114,7 +114,7 @@ export default function Library() {
             </View>
             {scripts.length > 0 && !q ? (
               <Txt v="caption" tone="faint" style={st.count}>
-                {t('library.count', { n: scripts.length })}
+                {scripts.length === 1 ? t('library.countOne') : t('library.count', { n: scripts.length })}
               </Txt>
             ) : null}
           </View>
@@ -162,7 +162,7 @@ const ScriptCard = memo(function ScriptCard({ script, theme, onOpen, onMenu }: {
       onLongPress={() => onMenu(script)}
       accessibilityRole="button"
       accessibilityLabel={`${title}${script.pinned ? `, ${t('library.pinned')}` : ''}. ${t('library.meta', { words, time })}`}
-      accessibilityHint="Opens the script. Long press for more."
+      accessibilityHint={t('library.openHint')}
       style={({ pressed }) => [st.card, theme.shadow, { backgroundColor: theme.card, borderColor: theme.line, transform: [{ scale: pressed ? 0.985 : 1 }] }]}
     >
       {script.pinned ? <View style={[st.pinEdge, { backgroundColor: theme.accent }]} /> : null}
@@ -184,7 +184,7 @@ const ScriptCard = memo(function ScriptCard({ script, theme, onOpen, onMenu }: {
         <Text style={[TYPE.numeral, { color: theme.ink }]}>{time}</Text>
         <Text style={[TYPE.caption, { color: theme.faint }]}>{t('library.readTime')}</Text>
       </View>
-      <Pressable onPress={() => onMenu(script)} accessibilityRole="button" accessibilityLabel={`More for ${title}`} hitSlop={10} style={st.more}>
+      <Pressable onPress={() => onMenu(script)} accessibilityRole="button" accessibilityLabel={t('library.more', { title })} hitSlop={6} style={st.more}>
         <Ionicons name="ellipsis-horizontal" size={18} color={theme.faint} />
       </Pressable>
     </Pressable>
@@ -202,7 +202,7 @@ const st = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     paddingVertical: 16,
     paddingLeft: 18,
-    paddingRight: 8,
+    paddingRight: 4,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
@@ -211,7 +211,7 @@ const st = StyleSheet.create({
   pinEdge: { position: 'absolute', left: 0, top: 18, bottom: 18, width: 3, borderTopRightRadius: 3, borderBottomRightRadius: 3 },
   metaRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 2 },
   timeCol: { alignItems: 'flex-end', minWidth: 56 },
-  more: { width: 32, height: 44, alignItems: 'center', justifyContent: 'center' },
+  more: { width: 44, height: 44, alignItems: 'center', justifyContent: 'center' },
   emptyBox: { alignItems: 'center', paddingTop: 72, paddingHorizontal: 40, gap: 10 },
   emptyMark: { width: 72, height: 72, borderRadius: 24, alignItems: 'center', justifyContent: 'center', marginBottom: 6 },
   empty: { textAlign: 'center', marginTop: 32, paddingHorizontal: 24 },

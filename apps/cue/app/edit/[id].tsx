@@ -120,8 +120,8 @@ export default function Edit() {
         <TextInput
           value={title}
           onChangeText={setTitle}
-          placeholder={t('edit.titlePlaceholder')}
-          placeholderTextColor={theme.sub}
+          placeholder={displayTitle({ title: '', body }, t('edit.titlePlaceholder'))}
+          placeholderTextColor={theme.faint}
           style={[st.title, { color: theme.ink }]}
           selectionColor={theme.accent}
           accessibilityLabel={t('edit.titlePlaceholder')}
@@ -156,6 +156,7 @@ export default function Edit() {
                 onPress={fn}
                 accessibilityRole="button"
                 accessibilityLabel={t(k)}
+                hitSlop={{ top: 4, bottom: 4 }}
                 style={({ pressed }) => [st.tool, { backgroundColor: theme.card, borderColor: theme.line, opacity: pressed ? 0.6 : 1 }]}
               >
                 <Ionicons name={icon as IconName} size={15} color={theme.accentText} />
@@ -194,10 +195,10 @@ export default function Edit() {
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 2 }}>
             <View style={[st.stepper, { backgroundColor: theme.chip }]}>
-              <IconBtn icon="remove" label="Slower" onPress={() => setWpm((w) => clampWpm(w - 5))} size={18} />
-              <IconBtn icon="add" label="Faster" onPress={() => setWpm((w) => clampWpm(w + 5))} size={18} />
+              <IconBtn icon="remove" label={t('edit.slower')} onPress={() => setWpm((w) => clampWpm(w - 5))} size={18} />
+              <IconBtn icon="add" label={t('edit.faster')} onPress={() => setWpm((w) => clampWpm(w + 5))} size={18} />
             </View>
-            <Pressable onPress={fit} accessibilityRole="button" style={({ pressed }) => [st.fit, { borderColor: theme.accent, opacity: pressed ? 0.6 : 1 }]}>
+            <Pressable onPress={fit} accessibilityRole="button" accessibilityLabel={t('edit.fit')} style={({ pressed }) => [st.fit, { borderColor: theme.accent, opacity: pressed ? 0.6 : 1 }]}>
               <Ionicons name="timer-outline" size={15} color={theme.accentText} />
               <Text style={{ color: theme.accentText, fontFamily: FONT.bodyBold, fontSize: 14 }}>{t('edit.fit')}</Text>
             </Pressable>
@@ -222,10 +223,10 @@ const st = StyleSheet.create({
   top: { paddingHorizontal: 16, gap: 12, paddingBottom: 4 },
   title: { ...TYPE.title, fontSize: 28, lineHeight: 34, paddingVertical: 2 },
   tools: { paddingHorizontal: 16, gap: 8, paddingVertical: 8 },
-  tool: { minHeight: 36, paddingHorizontal: 12, borderRadius: RADIUS.pill, borderWidth: StyleSheet.hairlineWidth, flexDirection: 'row', alignItems: 'center', gap: 6 },
+  tool: { minHeight: 40, paddingHorizontal: 12, borderRadius: RADIUS.pill, borderWidth: StyleSheet.hairlineWidth, flexDirection: 'row', alignItems: 'center', gap: 6 },
   body: { flex: 1, fontFamily: FONT.body, fontSize: 19, lineHeight: 29, paddingHorizontal: 18, paddingTop: 8 },
   bar: { borderTopWidth: StyleSheet.hairlineWidth, paddingHorizontal: 16, paddingTop: 12 },
   meta: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   stepper: { flexDirection: 'row', borderRadius: RADIUS.pill },
-  fit: { borderWidth: 1, borderRadius: RADIUS.pill, paddingHorizontal: 12, minHeight: 38, flexDirection: 'row', alignItems: 'center', gap: 5, marginLeft: 6 },
+  fit: { borderWidth: 1, borderRadius: RADIUS.pill, paddingHorizontal: 12, minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: 5, marginLeft: 6 },
 });

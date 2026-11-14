@@ -248,6 +248,7 @@ export function Segmented<T extends string | number>({
             accessibilityRole="radio"
             accessibilityState={{ selected: on }}
             accessibilityLabel={o.locked ? `${o.label}, Plus` : o.label}
+            hitSlop={compact ? { top: 6, bottom: 6 } : 3}
             onPress={() => {
               tap(prefs.haptics);
               onChange(o.value);
