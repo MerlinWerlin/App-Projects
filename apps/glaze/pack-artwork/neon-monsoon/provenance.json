@@ -1,0 +1,38 @@
+{
+  "theme": "neon-monsoon",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__neon-monsoon__v6__manifest.json",
+    "sha256": "b3dd9bb0a094852f9e923414370f5468c5070a4cfc6a7ba5db74a345a53d5d66",
+    "packVersion": 6,
+    "existingArtwork": [
+      "neon-paper-fish",
+      "rain-capsule",
+      "midnight-ramen",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "neon-origami-fox",
+      "label": "Neon origami fox",
+      "file": "widgets/widget-neon-origami-fox.a23ee949.webp",
+      "sha256": "a23ee9492ac6dc2137bb354fd349aa532aaa98afa19cb30e71f847f4838fccc2",
+      "bytes": 255964,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a2cbc0fc-3396-495d-a0af-c34b33eaf37d.png",
+      "sourceSha256": "27ca675451700df939c819ff07ccc61794c6dd6e8cc7d55cbc6134735fede64e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE wholly new standalone square1024x1024 Glaze NEON MONSOON artwork. One elegant origami fox made from transparent folded violet glass, crisp faceted ears, compact seated body and one sweeping curled angular tail, tiny cyan and magenta neon reflections along folds and realistic clear rain droplets clinging to edges. Premium photoreal rainy-city glass craft aesthetic, rich indigo/violet/magenta/cyan palette, dark reflected shadows, no light source or scene background. Entire fox centered with generous18percent transparent margins. True transparent alpha, no floor, tile, frame or collage. No fish, crane, umbrella, ramen cabinet, lettering, numbers, logos, clocks, dates, dials or UI. New original subject, no crop/copy/recolour of existing art.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 654930,
+      "opaquePixels": 610
+    }
+  ]
+}

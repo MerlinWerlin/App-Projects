@@ -1,0 +1,38 @@
+{
+  "theme": "ochre-bend",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__ochre-bend__v6__manifest.json",
+    "sha256": "86e757ed4d20e63d9cce8ae6592bc9e16a667c29ace75784100bad1755925e99",
+    "packVersion": 6,
+    "existingArtwork": [
+      "eucalyptus-capsule",
+      "sandstone-kingfisher",
+      "ochre-stone",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "eucalyptus-bark-curl",
+      "label": "Eucalyptus bark curl",
+      "file": "widgets/widget-eucalyptus-bark-curl.6f714d75.webp",
+      "sha256": "6f714d75ca93faae7acd7dfe9e655c019de370e734bdc4f1a404d5a883eae880",
+      "bytes": 212104,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-0bc7c565-59b4-431f-a115-7eed1066e24f.png",
+      "sourceSha256": "fa49996933e80e89eaf046ec8bb5feaaf6641c0a417f35d80a890cebf1e4bb3b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for ochre-bend. One beautiful naturally curled strip of eucalyptus bark, warm ochre and rust outer surface with fine fibrous ridges, soft pale-cream interior, a tiny muted-sage eucalyptus leaf and one clear river-water dew bead near the base. Fine-art Australian botanical still-life macro photography, authentic dry bark texture, warm gentle afternoon light, sandstone-ochre/cream/sage palette. No gumnut capsule, bird, stone, river pool, typography or markings. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 727450,
+      "opaquePixels": 417
+    }
+  ]
+}
