@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**14 November 2026 TestFlight design polish: `1.0.33`.** Design review (ios-review, ui-review, ui-compare, accessibility-review, ux-copy) on simulator captures (glaze-design-capture.yml): number-free live art in the widget art menu draws a sample date / 25:00 / time in its liveFrame (LiveArtSample); Themes "See all" sits on the section title (PillButton's alignSelf overrode the row); ContextTip leads keep a title's own ? / ! (tipLead); Theme / Widget Studio "Theme not found" is a centred empty state. No purchase, icon profile, widget kind / name or Artwork slot change.
+
 **14 November 2026 TestFlight hotfix: `1.0.32`.** Widget Studio failed to open in 1.0.31: `useHowTo('widgets')` was called in the route wrapper while `how` was read inside `WidgetStudio` (a type error no PR check caught). The hook now lives in `WidgetStudio` (guarded in howToClips.test.ts), and every Glaze PR runs `npm run typecheck` and `npm test` (glaze-widget-art-options.yml, job typecheck-and-tests).
 
 **15 November 2026 TestFlight big how-to videos: `1.0.31`.** Owner on 1.0.30: "the vids are so small in the app and i was confused where to see them, the first time a widget is select a vid should come up and watching the vid should be an easy access button". HowToSheet: a page sheet with title, a caption spelling the steps out, the recording at the largest size that fits, Got it + Watch again, tap to pause; opens on its own once per category (wallpaper / icons / widgets, AsyncStorage glaze.howTo.seen.v1.*) on the Set it up steps, icons walkthrough, install screen, Widget Studio and the first wallpaper save; Watch how button on each. Inline players removed.

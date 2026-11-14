@@ -3,7 +3,7 @@
 // can be brought back from the Tips library (Settings › Tips, or "?" on the Themes tab).
 import { Feather } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
-import { nextTip, type TipId } from '../core/tips';
+import { nextTip, tipLead, type TipId } from '../core/tips';
 import { useT } from '../i18n';
 import { useTips } from '../store/tips';
 import { continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
@@ -39,7 +39,7 @@ export function ContextTip({ id, ids, style }: Props) {
       >
         <Feather name="info" size={18} color={c.onTintSoft} style={styles.icon} />
         <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...body1, styles.flex, { color: c.onTintSoft }]}>
-          <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={styles.semibold}>{t('themeUi.tip.lead', { title })}</Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={styles.semibold}>{tipLead(title, (x) => t('themeUi.tip.lead', { title: x }))}</Text>
           {body}
         </Text>
       </View>

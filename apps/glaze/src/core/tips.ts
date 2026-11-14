@@ -240,3 +240,17 @@ export function tipGroups(): TipGroup[] {
 export function hiddenCount(dismissed: readonly TipId[] | null): number {
   return dismissed === null ? 0 : TIP_IDS.filter((id) => dismissed.includes(id)).length;
 }
+
+/** Sentence-ending marks in every script Glaze ships (Latin, CJK full width, Devanagari danda, Arabic question mark). */
+const TIP_TITLE_ENDS = /[.?!…。？！।؟]$/u;
+
+/**
+ * Design review 1.0.33 (ux-copy): the bold lead before a tip's body. The catalogue's lead template adds a full stop
+ * ('{title}. '), which read "App not in the list?." for question titles. A title that already ends a sentence keeps
+ * its own mark and gets only the space (or nothing, for CJK whose full-width marks carry their own spacing).
+ */
+export function tipLead(title: string, lead: (title: string) => string): string {
+  const t = title.trim();
+  if (!TIP_TITLE_ENDS.test(t)) return lead(t);
+  return /[。？！]$/u.test(t) ? t : `${t} `;
+}

@@ -194,7 +194,8 @@ function ThemeDetailScreen() {
     return (
       <View style={[styles.missing, { backgroundColor: c.bg }]}>
         <Stack.Screen options={{ title: t('theme.title') }} />
-        <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title2')} style={[...typeFor(script, 'title2'), { color: c.ink }]}>
+        <Feather name="layers" size={32} color={c.tint} accessibilityElementsHidden importantForAccessibility="no" />
+        <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title2')} style={[...typeFor(script, 'title2'), styles.missingText, { color: c.ink }]}>
           {t('theme.notFound')}
         </Text>
         <PillButton label={t('theme.backToThemes')} onPress={() => router.back()} />
@@ -1894,7 +1895,9 @@ const styles = StyleSheet.create({
   partLine: { width: '90%', height: spaceV2.xxs + 1, borderRadius: circleRadius(spaceV2.xxs + 1), opacity: 0.55 },
   partLineShort: { width: '55%' },
   content: { gap: spaceV2.lg },
-  missing: { flex: 1, padding: spaceV2.inset, gap: spaceV2.md, justifyContent: 'center' },
+  // Design review 1.0.33: a centred empty state (icon, heading, one way back), like the icon install screen's.
+  missing: { flex: 1, padding: spaceV2.inset, gap: spaceV2.md, justifyContent: 'center', alignItems: 'center' },
+  missingText: { textAlign: 'center' },
   side: { marginHorizontal: spaceV2.lg },
   themeChoices: { gap: spaceV2.sm },
   shelf: { gap: spaceV2.lg, paddingTop: spaceV2.lg },
