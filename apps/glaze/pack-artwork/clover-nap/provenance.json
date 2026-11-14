@@ -1,0 +1,38 @@
+{
+  "theme": "clover-nap",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__clover-nap__v7__manifest.json",
+    "sha256": "13d01fed6d5adee89f4445227ee6a0050161e1a846ea64c25f6c39a1054a8cf5",
+    "packVersion": 7,
+    "existingArtwork": [
+      "daisy-ladybird",
+      "hero-small",
+      "art-20261107-acorn-teacup",
+      "art-20261107-clover-nest"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "clover-snail-parasol",
+      "label": "Clover snail parasol",
+      "file": "widgets/widget-clover-snail-parasol.beab03ee.webp",
+      "sha256": "beab03eeb141fa193478f31443b8bd57106bf2057a19d056ff5ca433d2bd625c",
+      "bytes": 240126,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-857a3c7b-4956-48e1-8fab-77b919c1aacc.png",
+      "sourceSha256": "1fbdffdb2b1ff6b56c98c7cbe87ef63b693388e954b452aa274bcdf56d31f961",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE original square 1024x1024 Glaze small-widget illustration for clover-nap. A tiny gentle garden snail resting beneath one arched four-leaf clover as a parasol, warm cinnamon spiral shell, creamy body with closed sleepy eyes and faint pink cheek, three small white clover blossoms nearby. Delicate flat botanical watercolor with fine brown pencil contours, transparent soft pigment blooms, subtle ivory watercolor-paper tooth within painted areas. Sage/olive green, warm cream and cinnamon brown; soft tender picture-book style, explicitly2D, never clay/plush/3D. New snail vignette; no hedgehog, mouse, teacup, ladybird or nest. Whole subject centered, compact readable silhouette, generous18percent clear margins. True transparent background with preserved alpha, no opaque tile, floor or rectangular frame. Pure illustration: no text, lettering, numbers, dates, clocks, dials, hands, calendars, UI, brand or watermark. Entirely new artwork, not a copy/crop/recolour.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 679388,
+      "opaquePixels": 733
+    }
+  ]
+}
