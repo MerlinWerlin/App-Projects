@@ -75,7 +75,7 @@ jobs:
           xcrun simctl bootstatus "$DEVICE" -b
           xcrun simctl install "$DEVICE" "$APP"
           xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100 || true
-          ROUTES="themes theme/deep-sea install?theme=deep-sea icons-intro?theme=deep-sea widgets widget-studio icons wallpapers settings tips"
+          ROUTES="themes theme/deep-sea theme/deep-sea?step=widgets install?theme=deep-sea icons-intro?theme=deep-sea widgets widget-studio icons wallpapers settings tips"
           shoot() { # $1 = pass name
             mkdir -p "$OUT/$1"
             xcrun simctl terminate "$DEVICE" "$BUNDLE" 2>/dev/null || true
