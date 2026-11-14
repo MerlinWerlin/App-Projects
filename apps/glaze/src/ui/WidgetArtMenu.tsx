@@ -42,9 +42,10 @@ import { widgetTabSizeKey } from '../core/tabNav';
 import { fullBleedArt, menuCaptionLayout, wallpaperUnderSlot } from '../core/widgetPreview';
 import { previewBlendFor, type PreviewBlend } from '../core/artBlend';
 import { useT } from '../i18n';
-import { chromeRadiusV2, circleRadius, continuous, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { chromeRadiusV2, circleRadius, continuous, fontScaleCap, onArtV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { BlendedArt } from './BlendedArt';
+import { LiveArtSample } from './LiveArtSample';
 import { textStyleFor } from './i18nLayout';
 import { SectionHeader } from './SectionHeader';
 
@@ -73,10 +74,12 @@ type CardProps = {
   wallpaper: MenuWallpaper | null;
   /** T251: how the art blends (src/core/artBlend.ts previewBlendFor). */
   blend: PreviewBlend;
+  /** Ink for a live value drawn on number-free art when its liveFrame names none (the theme's ink). */
+  themeInk: string;
   onSelect: (id: string) => void;
 };
 
-const OptionCard = memo(function OptionCard({ item, size, width, name, selected, themeColour, wallpaper, blend, onSelect }: CardProps) {
+const OptionCard = memo(function OptionCard({ item, size, width, name, selected, themeColour, wallpaper, blend, themeInk, onSelect }: CardProps) {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const tl = t as unknown as LooseT;
@@ -117,6 +120,7 @@ const OptionCard = memo(function OptionCard({ item, size, width, name, selected,
           {preserveArtwork ? (
             <ExpoImage source={source} style={{ position:'absolute',left:place.rect.x,top:place.rect.y,width:place.rect.w,height:place.rect.h }} contentFit="contain" cachePolicy="memory-disk" transition={0} />
           ) : <BlendedArt source={source} rect={place.rect} blend={blend} />}
+          <LiveArtSample option={option} art={place.rect} ink={option.liveFrame?.ink ?? themeInk} />
           {selected ? (
             <View style={[styles.check, { backgroundColor: c.tint }]}>
               <Feather name="check" size={16} color={c.onTint} />
@@ -157,6 +161,8 @@ type Props = {
   width: number;
   /** The theme's own background colour (#RRGGBB), behind fitted art. */
   themeColour: string;
+  /** The theme's ink (#RRGGBB) for sample live values (defaults to white). */
+  themeInk?: string;
   /** The theme wallpaper and its seamless crop for `size`: since T251 behind EVERY option (art blends with it). */
   wallpaper: MenuWallpaper | null;
   /** T251: the theme id (measured production pieces, KNOWN_ART_BLEND) and whether its art is already transparent (bundled heroes). */
@@ -170,7 +176,7 @@ type Props = {
 };
 
 /** The menu: one header, then a section per kind with its grid. Renders nothing when there is no option. */
-export function WidgetArtMenu({ options, size, width, themeColour, wallpaper, themeId = '', artTransparent = false, selectedId, onSelect, footer, style }: Props) {
+export function WidgetArtMenu({ options, size, width, themeColour, themeInk = onArtV2.ink, wallpaper, themeId = '', artTransparent = false, selectedId, onSelect, footer, style }: Props) {
   const { t } = useT();
   const tl = t as unknown as LooseT;
   const bySource = useMemo(() => new Map(options.map((o) => [o.option.id, o] as const)), [options]);
@@ -202,6 +208,7 @@ export function WidgetArtMenu({ options, size, width, themeColour, wallpaper, th
                   themeColour={themeColour}
                   wallpaper={wallpaper}
                   blend={previewBlendFor(themeId, o.id, artTransparent)}
+                  themeInk={themeInk}
                   onSelect={onSelect}
                 />
               );

@@ -330,6 +330,7 @@ function ThemeDecorativeArt({ theme, size, width, style, onLibraryChange }: Prop
       size={home}
       width={width}
       themeColour={theme.palette.bg}
+      themeInk={theme.palette.ink}
       wallpaper={menuWallpaper}
       themeId={theme.id}
       artTransparent={!remoteTheme}
