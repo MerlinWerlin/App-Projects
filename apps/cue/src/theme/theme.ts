@@ -45,8 +45,9 @@ export const LIGHT: Theme = {
   card: '#FFFFFF',
   chip: '#E1E4EA',
   ink: '#151A26',
-  sub: '#5B6273',
-  faint: '#8C93A3',
+  sub: '#4F5667',
+  /** Captions and placeholders: 4.5:1 on bg and card. */
+  faint: '#646B7B',
   line: '#D6DAE2',
   accent: '#C9973F',
   accentInk: '#1A1408',
@@ -65,7 +66,8 @@ export const DARK: Theme = {
   chip: '#242A3A',
   ink: '#F1EEE6',
   sub: '#A3A8B6',
-  faint: '#6E7486',
+  /** Captions and placeholders: 4.5:1 on bg and card. */
+  faint: '#80869A',
   line: '#2A3042',
   accent: '#C9973F',
   accentInk: '#1A1408',

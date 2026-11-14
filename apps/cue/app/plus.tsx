@@ -1,7 +1,7 @@
 /** Paywall without dark patterns: what stays free first, one clear one-time price, restore, close always visible. */
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert, AppState, Platform, ScrollView, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -10,7 +10,7 @@ import { success } from '../src/native/haptics';
 import { trialLabel, trialState } from '../src/plus/trial';
 import { useApp } from '../src/state/AppState';
 import { RADIUS } from '../src/theme/theme';
-import { Btn, Txt, type IconName } from '../src/ui/kit';
+import { Btn, IconBtn, Txt, type IconName } from '../src/ui/kit';
 
 const FEATURES: [IconName, MessageKey, MessageKey][] = [
   ['mic-outline', 'plus.f.voice', 'plus.f.voice.body'],
@@ -71,6 +71,11 @@ export default function Plus() {
 
   return (
     <ScrollView style={{ backgroundColor: theme.bg }} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: insets.bottom + 30 }}>
+      <Stack.Screen
+        options={{
+          headerRight: () => (router.canGoBack() ? <IconBtn icon="close" label={t('plus.close')} onPress={() => router.back()} bg={theme.chip} size={20} /> : null),
+        }}
+      />
       <View style={st.hero}>
         <View style={st.mark}>
           <LinearGradient colors={['#DDB063', '#C9973F', '#9C7028']} style={StyleSheet.absoluteFill} />
@@ -89,11 +94,6 @@ export default function Plus() {
               {t(trial.key, { n: trial.n })}
             </Txt>
           </View>
-        ) : null}
-        {app.tier !== 'plus' ? (
-          <Txt v="caption" tone="sub" style={{ textAlign: 'center', maxWidth: 320 }}>
-            {t('plus.trial.body')}
-          </Txt>
         ) : null}
       </View>
 
@@ -135,7 +135,9 @@ export default function Plus() {
           <Txt v="caption" tone="faint" style={{ textAlign: 'center' }}>
             {t('plus.once')}
           </Txt>
-
+          <Txt v="callout" tone="sub" style={{ textAlign: 'center', marginTop: 6 }}>
+            {t('plus.trial.body')}
+          </Txt>
         </View>
       )}
       <View style={{ marginTop: 12 }}>
@@ -146,7 +148,7 @@ export default function Plus() {
 }
 
 const st = StyleSheet.create({
-  hero: { alignItems: 'center', gap: 10, paddingTop: 12, paddingBottom: 24 },
+  hero: { alignItems: 'center', gap: 10, paddingTop: 4, paddingBottom: 24 },
   trial: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, marginTop: 4 },
   mark: { width: 76, height: 76, borderRadius: 26, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', marginBottom: 6 },
   card: { borderRadius: RADIUS.card, borderWidth: StyleSheet.hairlineWidth },

@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Cue 1.0.0: no background audio mode on iOS (expo-audio background playback/recording off) for Guideline 2.5.4",
+  "note": "Cue 1.0.1: design polish (prompter speed controls, paywall close button, text contrast, 44pt targets, settings grouping); background audio stays off (Guideline 2.5.4)",
   "ascAppId": "6826554677"
 }

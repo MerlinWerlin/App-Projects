@@ -22,7 +22,7 @@ export default function Settings() {
   return (
     <ScrollView style={{ backgroundColor: theme.bg }} contentContainerStyle={{ paddingBottom: insets.bottom + 40, paddingTop: 4 }}>
       <Section title={t('settings.plus')} footer={trial ? t(trial.key, { n: trial.n }) : undefined}>
-        <Row icon="sparkles-outline" label={t('settings.plus')} value={app.tier === 'plus' ? '✓' : undefined} onPress={() => router.push('/plus')} />
+        <Row icon="sparkles-outline" label={t('settings.plus')} value={app.tier === 'plus' ? t('plus.active') : undefined} onPress={() => router.push('/plus')} />
         <Row
           label={t('settings.restore')}
           icon="refresh-outline"
@@ -39,14 +39,17 @@ export default function Settings() {
         <Row icon="key-outline" label={t('access.title')} value={app.codeAccess ? t('common.on') : undefined} onPress={() => router.push('/access-code')} last />
       </Section> : null}
 
-      <Section title={t('settings.prompter')}>
+      <Section title={t('settings.prompterText')}>
         <Stepper icon="text-outline" label={t('settings.fontSize')} value={String(prefs.fontSize)} onMinus={() => setPrefs({ fontSize: Math.max(FONT_MIN, prefs.fontSize - 2) })} onPlus={() => setPrefs({ fontSize: Math.min(FONT_MAX, prefs.fontSize + 2) })} />
         <Stepper icon="reorder-four-outline" label={t('settings.lineHeight')} value={prefs.lineHeight.toFixed(2)} onMinus={() => setPrefs({ lineHeight: Math.max(1.1, +(prefs.lineHeight - 0.05).toFixed(2)) })} onPlus={() => setPrefs({ lineHeight: Math.min(2, +(prefs.lineHeight + 0.05).toFixed(2)) })} />
         <Stepper icon="resize-outline" label={t('settings.margin')} value={String(prefs.margin)} onMinus={() => setPrefs({ margin: Math.max(8, prefs.margin - 8) })} onPlus={() => setPrefs({ margin: Math.min(120, prefs.margin + 8) })} />
+        <SwitchRow icon="reorder-three-outline" label={t('settings.align')} value={prefs.align === 'center'} onChange={(v) => setPrefs({ align: v ? 'center' : 'left' })} />
+        <SwitchRow icon="text" label={t('settings.bold')} value={prefs.bold} onChange={(bold) => setPrefs({ bold })} last />
+      </Section>
+
+      <Section title={t('settings.reading')}>
         <Stepper icon="remove-outline" label={t('settings.readingLine')} value={`${Math.round(prefs.readingLine * 100)}%`} onMinus={() => setPrefs({ readingLine: Math.max(0.15, +(prefs.readingLine - 0.05).toFixed(2)) })} onPlus={() => setPrefs({ readingLine: Math.min(0.6, +(prefs.readingLine + 0.05).toFixed(2)) })} />
         <Stepper icon="timer-outline" label={t('settings.countdown')} value={prefs.countdown ? t('settings.seconds', { n: prefs.countdown }) : t('settings.countdownOff')} onMinus={() => setPrefs({ countdown: Math.max(0, prefs.countdown - 1) })} onPlus={() => setPrefs({ countdown: Math.min(10, prefs.countdown + 1) })} />
-        <SwitchRow icon="reorder-three-outline" label={t('settings.align')} value={prefs.align === 'center'} onChange={(v) => setPrefs({ align: v ? 'center' : 'left' })} />
-        <SwitchRow icon="text" label={t('settings.bold')} value={prefs.bold} onChange={(bold) => setPrefs({ bold })} />
         <SwitchRow icon="sunny-outline" label={t('settings.highlightLine')} value={prefs.highlightLine} onChange={(highlightLine) => setPrefs({ highlightLine })} />
         <SwitchRow icon="chatbubble-ellipses-outline" label={t('settings.showNotes')} value={prefs.showNotes} onChange={(showNotes) => setPrefs({ showNotes })} />
         <SwitchRow icon="swap-horizontal" label={t('prompt.mirror')} value={prefs.mirrorH} onChange={(mirrorH) => setPrefs({ mirrorH })} />

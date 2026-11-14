@@ -329,7 +329,7 @@ export default function PromptScreen() {
               <Text style={st.timer}>{formatDuration(elapsed)}</Text>
             </Glass>
           ) : null}
-          <Pressable onPress={chooseMode} accessibilityRole="button" accessibilityLabel={t(`prompt.mode.${mode}`)}>
+          <Pressable onPress={chooseMode} accessibilityRole="button" accessibilityLabel={t('prompt.changeMode', { mode: t(`prompt.mode.${mode}`) })}>
             <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
               <Ionicons name={mode === 'steady' ? 'speedometer-outline' : 'mic-outline'} size={15} color={BRASS} />
               <Text style={st.chipText}>{t(`prompt.mode.${mode}`)}</Text>
@@ -353,21 +353,19 @@ export default function PromptScreen() {
             <View style={st.dockRow}>
               <IconBtn icon="play-skip-back-outline" label={t('prompt.restart')} onPress={restart} color="#C9CCD6" />
               <IconBtn icon="list-outline" label={t('prompt.sections')} onPress={sections} color="#C9CCD6" />
-              <View style={{ flex: 1 }} />
+              <Text style={st.speed} accessibilityLabel={t('prompt.speed', { pct: Math.round(speed * 100) })} accessibilityLiveRegion="polite">
+                {Math.round(speed * 100)}%
+              </Text>
               <IconBtn icon="swap-horizontal" label={t('prompt.mirror')} active={prefs.mirrorH} onPress={() => app.setPrefs({ mirrorH: !prefs.mirrorH })} color="#C9CCD6" />
               <IconBtn icon="swap-vertical" label={t('prompt.flip')} active={prefs.mirrorV} onPress={() => app.setPrefs({ mirrorV: !prefs.mirrorV })} color="#C9CCD6" />
             </View>
             <View style={st.dockMain}>
-              <IconBtn icon="remove" label="Slower" onPress={() => setSpeed((s) => nudgeSpeed(s, -1))} color="#F1EEE6" />
-              <Text style={st.speed} accessibilityLabel={t('prompt.speed', { pct: Math.round(speed * 100) })}>
-                {Math.round(speed * 100)}%
-              </Text>
-              <Pressable onPress={toggle} accessibilityRole="button" accessibilityLabel={running ? 'Pause' : 'Play'} style={({ pressed }) => [st.play, { transform: [{ scale: pressed ? 0.94 : 1 }] }]}>
+              <IconBtn icon="remove" label={t('prompt.slower')} onPress={() => setSpeed((s) => nudgeSpeed(s, -1))} color="#F1EEE6" size={24} />
+              <Pressable onPress={toggle} accessibilityRole="button" accessibilityLabel={running ? t('prompt.pause') : t('prompt.play')} style={({ pressed }) => [st.play, { transform: [{ scale: pressed ? 0.94 : 1 }] }]}>
                 <LinearGradient colors={['#DDB063', '#C9973F', '#B4832F']} style={StyleSheet.absoluteFill} />
                 <Ionicons name={running ? 'pause' : 'play'} size={28} color="#1A1408" style={running ? undefined : { marginLeft: 3 }} />
               </Pressable>
-              <IconBtn icon="add" label="Faster" onPress={() => setSpeed((s) => nudgeSpeed(s, 1))} color="#F1EEE6" />
-              <View style={{ width: 44 }} />
+              <IconBtn icon="add" label={t('prompt.faster')} onPress={() => setSpeed((s) => nudgeSpeed(s, 1))} color="#F1EEE6" size={24} />
             </View>
           </Glass>
         </Animated.View>
@@ -386,7 +384,7 @@ const st = StyleSheet.create({
   hint: { fontFamily: FONT.bodyBold, fontSize: 15, color: '#F1EEE6' },
   top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: 8 },
   round: { borderRadius: 22 },
-  chip: { borderRadius: RADIUS.pill, paddingHorizontal: 14, minHeight: 38, alignItems: 'center', justifyContent: 'center' },
+  chip: { borderRadius: RADIUS.pill, paddingHorizontal: 14, minHeight: 44, alignItems: 'center', justifyContent: 'center' },
   chipText: { fontFamily: FONT.bodyBold, fontSize: 13.5, color: '#F1EEE6' },
   timer: { fontFamily: FONT.display, fontSize: 16, color: '#F1EEE6', fontVariant: ['tabular-nums'] },
   listen: { position: 'absolute', right: 14 },
@@ -394,7 +392,7 @@ const st = StyleSheet.create({
   bottom: { position: 'absolute', bottom: 0, left: 0, right: 0, alignItems: 'center', paddingHorizontal: 12 },
   dock: { borderRadius: 30, paddingHorizontal: 10, paddingVertical: 8, width: '100%', maxWidth: 460 },
   dockRow: { flexDirection: 'row', alignItems: 'center' },
-  dockMain: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, paddingTop: 2, paddingBottom: 4 },
+  dockMain: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 20, paddingTop: 2, paddingBottom: 4 },
   play: { width: 68, height: 68, borderRadius: 34, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', marginHorizontal: 10 },
-  speed: { fontFamily: FONT.display, fontSize: 17, color: '#F1EEE6', minWidth: 52, textAlign: 'center', fontVariant: ['tabular-nums'] },
+  speed: { flex: 1, fontFamily: FONT.display, fontSize: 17, color: '#F1EEE6', textAlign: 'center', fontVariant: ['tabular-nums'] },
 });
