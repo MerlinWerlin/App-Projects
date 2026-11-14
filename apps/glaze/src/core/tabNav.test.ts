@@ -81,9 +81,10 @@ test('size sub-tabs: Small / Medium / Large / Lock', () => {
 const STUDIO = studioKinds(generateWidgetSet(THEMES[0]));
 
 // 1.0.34 (owner 2026-11-14): the tab lists the theme's artwork (My widget art) and the clocks only.
-test('home sizes list the clocks only: the theme clock first, then the analog clock where it comes in that size', () => {
+// Owner TestFlight 2026-11-14 04:00 ("they all need to go", on the Small grid): Small lists no cards (artwork only).
+test('home sizes: Small has no cards (artwork only); Medium and Large list the clocks only', () => {
   const expected: Record<'small' | 'medium' | 'large', string[]> = {
-    small: ['set-clock-small', 'cat-analogClock-small'],
+    small: [],
     medium: ['set-clock-medium'],
     large: ['set-clock-large', 'cat-analogClock-large'],
   };
@@ -115,9 +116,9 @@ test('Lock sub-tab: only the analog clock, which the extension really offers on 
 });
 
 test('a clock catalogue card becomes a Studio link once the Studio lists it', () => {
-  const cards = widgetTabCards('small', [...STUDIO, 'analogClock']);
+  const cards = widgetTabCards('large', [...STUDIO, 'analogClock']);
   const ac = cards.find((c) => c.kind === 'analogClock')!;
-  assert.equal(widgetStudioHref('rose quartz', ac), '/widget-studio?theme=rose%20quartz&kind=analogClock&size=small');
+  assert.equal(widgetStudioHref('rose quartz', ac), '/widget-studio?theme=rose%20quartz&kind=analogClock&size=large');
 });
 
 test('Studio links carry theme, kind and size', () => {
