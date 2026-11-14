@@ -1,0 +1,40 @@
+{
+  "theme": "heirloom-rouge",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "heirloom-rouge",
+      "id": "garden-snips",
+      "label": "Garden snips",
+      "ref": "105-heirloom-rouge\\widgets\\seed-crosscut.png",
+      "subject": "one small pair of elegant unbranded garden snips with matte dark olive handles, short brushed steel blades partly open and a tiny aged terracotta cotton loop around the end, one short vine tendril beside it, entire object visible. No tomatoes, seed slice or leaf cluster",
+      "prompt": "Use case: stylized-concept. Glaze Heirloom Rouge one original standalone 1024 x 1024 square pure artwork of one small pair of elegant unbranded garden snips with matte dark olive handles, short brushed steel blades partly open and a tiny aged terracotta cotton loop around the end, one short vine tendril beside it, entire object visible. No tomatoes, seed slice or leaf cluster. Fine-art editorial botanical photographic illustration, warm quiet oat #EFE7DB seamless background and ground, muted olive #5A6A45 and restrained tomato-red #AF372E accents only as appropriate, soft morning window light, delicate natural imperfections and tiny grounded shadows, refined farmers-market mood matching reference. New composition, never copy/crop/recolour. Whole compact specimen centred with generous 16 percent clear safe margins. No text, numbers, brands, labels, UI/frame, watermark, clock hands/dials, date/calendar, focus/battery/progress imagery. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-fb817840-b910-4f7a-9c44-f06d404419d6.png",
+      "image": "widget-garden-snips.497d971b.webp",
+      "sha256": "497d971b1cfe4f1189e427c5369f45b52ea418ffa1a1c02b69dcdb905f0852f3",
+      "bytes": 79342,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "heirloom-rouge",
+      "id": "tomato-blossom-truss",
+      "label": "Tomato blossom truss",
+      "ref": "105-heirloom-rouge\\widgets\\vine-trio.png",
+      "subject": "one delicate heirloom tomato flower truss with three small warm pale-yellow star blossoms and a few closed buds on a softly hairy muted sage-green curved stem, entire botanical specimen visible, no fruit or broad leaf cluster",
+      "prompt": "Use case: stylized-concept. Glaze Heirloom Rouge one original standalone 1024 x 1024 square pure artwork of one delicate heirloom tomato flower truss with three small warm pale-yellow star blossoms and a few closed buds on a softly hairy muted sage-green curved stem, entire botanical specimen visible, no fruit or broad leaf cluster. Fine-art editorial botanical photographic illustration, warm quiet oat #EFE7DB seamless background and ground, muted olive #5A6A45 and restrained tomato-red #AF372E accents only as appropriate, soft morning window light, delicate natural imperfections and tiny grounded shadows, refined farmers-market mood matching reference. New composition, never copy/crop/recolour. Whole compact specimen centred with generous 16 percent clear safe margins. No text, numbers, brands, labels, UI/frame, watermark, clock hands/dials, date/calendar, focus/battery/progress imagery. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-59cc8bfb-22d8-457b-b164-71ce2cd904a2.png",
+      "image": "widget-tomato-blossom-truss.ac336d8e.webp",
+      "sha256": "ac336d8e15ccbba4230b1194c6d8d00c0ce224ba08016394d7aca05a9c7cc566",
+      "bytes": 104340,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}
