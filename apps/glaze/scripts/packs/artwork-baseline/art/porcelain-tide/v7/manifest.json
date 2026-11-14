@@ -1,0 +1,300 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "porcelain-tide",
+  "packVersion": 7,
+  "name": "Porcelain Tide",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#F4F3F2",
+    "tile": "#D6D4D3",
+    "glyph": "#1C1816",
+    "accent": "#6E98B4",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Porcelain Tide",
+    "mood": "Pale porcelain blues and gentle sea foam.",
+    "tags": [
+      "porcelain",
+      "tide",
+      "pale",
+      "blues",
+      "gentle",
+      "foam",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by elizabeth lies (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Create one portrait9:19.5 iPhone wallpaper 'Porcelain Tide'. Attached real ocean-mist photograph is reference for natural ocean forms and horizon only. Transform into an elegant fine-art mixed-medium image: upper65% very pale warm porcelain-white mist, extremely subtle translucent fine ceramic crackle texture, clean calm negative space. Lower35% an original flowing indigo-and-cobalt ocean wave painted with expressive delicate ink washes on porcelain, pale blue foam and one fine curved pale-brass stroke along a wave crest. Not a copy of any famous wave print; create a soft lateral rolling swell, no giant claw waves or mountain. Seamlessly fuse misty photographic ocean water texture with blue-and-white ceramic brushwork, quietly luxurious, airy and tactile. Sea remains anchored at base. Subtle warm ivory, deep indigo, washed blue, tiny brass. No koi, birds, sun, moon, text, UI, frame, icons, logos or watermarks. Distinct light theme with excellent space for dark blue glyphs, no harsh bright-white clipping.",
+    "addedAt": "2026-11-01",
+    "category": "Ocean & Water"
+  },
+  "thumbhash": "sucRIwaHj0eGiHh4iH+F+Eg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.c7f25ef0.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 273880,
+      "sha256": "c7f25ef067368c3b8497fd7a5f467cab99bd991b919fb2937648b6fffef3bc87",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.44713221.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 246774,
+      "sha256": "44713221c5485903002c0e64a3501fe971ca998b6b7f4d5b4bdfafb2a1c01171",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.075da71a.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 110944,
+      "sha256": "075da71ae30c3ef735beadea10ce199f726edacd74e8dd2d3bca380e16fee6eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.69bf45d6.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 65002,
+      "sha256": "69bf45d6786261a772d28af2dda32e1632aead57842b27e7464cd9e03422de79",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.825fd87c.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 91434,
+      "sha256": "825fd87c88826223029bd5dc294c24df1929ca6e2726d3d91f023702bc6f7b42",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.b53c6d2a.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 212848,
+      "sha256": "b53c6d2ace10c04283e8b99ce6f7c10032731fb21076281a90fafc9f6de4ee6f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.1716a59d.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 16986,
+      "sha256": "1716a59dd561893ba418bf58463ebbde700fa887bb326d851dc1133266e02577",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.188fe901.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 192778,
+      "sha256": "188fe9013a9300f7fdd379f88392d53f01b6fd845997ae5a0c31583cdbc9bf2f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-porcelain-clock.d766f408.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 127394,
+      "sha256": "d766f408a8c9c53d691a47c5bd113487b07b786e2e15e9ea5d93861315f652da",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-blue-lotus-bowl.fa9e3a09.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 124894,
+      "sha256": "fa9e3a0901526e94ed9d0f4a951040f6924a8560ba4f82bda3108e141c1f516b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-porcelain-crane.7d0ad798.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 118506,
+      "sha256": "7d0ad79844adf8ecba2d3614d606370284507c64ecdd78561c070fd5e7b8558f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-porcelain-date.7459cf4a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 154402,
+      "sha256": "7459cf4acd17c1b8b583d5d577d173a09b4421746dec1d774145cf3c57149821",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-koi-medallion.8d9dfc8a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 141368,
+      "sha256": "8d9dfc8a14c612040536e79e7a6cca41cd004ad07656646ae50b01a8f3340d8a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.8aea6742.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 8034,
+      "sha256": "8aea6742493d6fe6be55d4f2d04e916a0cdbd9d3ac8f4f8e866abf452d7716ed",
+      "mime": "image/webp"
+    },
+    {
+      "path": "clock-face.0d361ecd.png",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 553658,
+      "sha256": "0d361ecd2e228743107e6c0b673b6dca527e1b639a744911f89391ce5378ddde",
+      "mime": "image/png"
+    }
+  ],
+  "totalBytes": 2438902,
+  "widgets": [
+    {
+      "id": "audit-20261101-porcelain-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-porcelain-clock.d766f408.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 porcelain clock"
+    },
+    {
+      "id": "blue-lotus-bowl",
+      "kind": "art",
+      "image": "widget-blue-lotus-bowl.fa9e3a09.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Blue lotus bowl"
+    },
+    {
+      "id": "porcelain-crane",
+      "kind": "art",
+      "image": "widget-porcelain-crane.7d0ad798.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Porcelain crane"
+    },
+    {
+      "id": "porcelain-date",
+      "kind": "calendar",
+      "image": "widget-porcelain-date.7459cf4a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Porcelain date"
+    },
+    {
+      "id": "koi-medallion",
+      "kind": "art",
+      "image": "widget-koi-medallion.8d9dfc8a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Koi medallion"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.8aea6742.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.69bf45d6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.825fd87c.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.b53c6d2a.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

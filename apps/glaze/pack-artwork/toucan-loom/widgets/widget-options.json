@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tufted-heliconia",
+    "kind": "art",
+    "image": "widget-tufted-heliconia.9a980030.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Tufted Heliconia"
+  },
+  {
+    "id": "woven-pineapple",
+    "kind": "art",
+    "image": "widget-woven-pineapple.06546f7c.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Woven Pineapple"
+  }
+]

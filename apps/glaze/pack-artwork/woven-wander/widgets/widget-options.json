@@ -1,0 +1,26 @@
+[
+  {
+    "id": "raffia-chameleon",
+    "kind": "art",
+    "image": "widget-raffia-chameleon.095fc198.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Raffia Chameleon"
+  },
+  {
+    "id": "plaited-dragonfly",
+    "kind": "art",
+    "image": "widget-plaited-dragonfly.7bede0e3.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Plaited Dragonfly"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "theme": "berry-stitch",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__berry-stitch__v7__manifest.json",
+    "sha256": "b538bab9b5c38e95e3912ff104478353fe740ace8b87079a19c7fe23902879ba",
+    "packVersion": 7,
+    "existingArtwork": [
+      "stitched-berry-basket",
+      "hero-small",
+      "art-20261107-bilberry-pincushion",
+      "art-20261107-thread-spool-finch"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "berry-yarn-teapot",
+      "label": "Berry yarn teapot",
+      "file": "widgets/widget-berry-yarn-teapot.1fec9d4c.webp",
+      "sha256": "1fec9d4c21fcd21bdd842fcd16067debde170ddbdb4103d5c621feb11c4d218c",
+      "bytes": 536482,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-5b8ded63-9a01-4bfa-9674-c7e3e40e2591.png",
+      "sourceSha256": "e7cd1a9994cfbff8aada10e759189395f836fca0158e8b2f847be61ebe56e6ee",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone Glaze small-widget illustration for berry-stitch. Square 1024 x 1024. Subject: A tiny plump hand-crocheted cream teapot with a dusty-strawberry-pink lid, sage yarn handle and spout, three embroidered strawberry shapes and delicate cream daisy stitching on its belly. A beautifully tangible amigurumi tea object, complete lid, handle and spout visible. Style: Extremely cute sophisticated amigurumi crochet miniature, real-looking visible cotton yarn loops, fuzzy fibres and stitched seams, warm soft craft photography. Palette warm cream, dusty strawberry pink, soft sage and tiny cocoa accents, complementary to pale mint wallpaper. Match the existing crochet berry basket, bird, bilberry pincushion and bunny/thread-spool scene without repeating them. Composition: whole subject centered, clear readable silhouette at small iPhone size, 15 percent clear margins, soft upper-left lighting. True transparent background, alpha preserved; no opaque tile, hard rectangular frame, scenery or collage. Pure art only: absolutely NO text, lettering, numerals, dates, calendar, clock hands, dial, UI, logo or watermark. No copy, crop or recolour of any existing piece.",
+      "processing": "Resize entire original square to 1024x1024; WebP q92 method6; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 12618,
+      "opaquePixels": 12
+    }
+  ]
+}

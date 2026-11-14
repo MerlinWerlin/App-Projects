@@ -1,0 +1,38 @@
+{
+  "theme": "midnight-matinee",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__midnight-matinee__v6__manifest.json",
+    "sha256": "f8369dbe48bccbc950e790ddb98e8a2fa849da5580910db8486018102aaa2f8e",
+    "packVersion": 6,
+    "existingArtwork": [
+      "popcorn-planet",
+      "velvet-cinema-bat",
+      "velvet-moth",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "brass-film-projector",
+      "label": "Brass film projector",
+      "file": "widgets/widget-brass-film-projector.4545fd16.webp",
+      "sha256": "4545fd16f6f68c710153bfb842324223e79ac9434632c517cf0d01640aaccdf8",
+      "bytes": 229908,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a32d81ef-78b4-48fa-970b-2fc525e6bdeb.png",
+      "sourceSha256": "cfffe8655f467664ebd401875f4cc7e30de2cbfe97ebd0b07cebc244a2424de7",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for midnight-matinee. One exquisite miniature antique film projector, warm aged-brass body and two elegant open-spoke film reels, dark burgundy velvet carrying strap, small polished lens with a gentle ivory glow but no visible beam or screen. Cinematic collectible still-life photography, fine metal patina and restrained velvet texture, black/cherry-burgundy/brass/ivory palette, warm theatrical light. No writing, reel numbers, gauges, popcorn, moth, bat, theatre interior or clock. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 665784,
+      "opaquePixels": 1496
+    }
+  ]
+}

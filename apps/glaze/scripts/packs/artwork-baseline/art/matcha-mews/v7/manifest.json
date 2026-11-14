@@ -1,0 +1,341 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "matcha-mews",
+  "packVersion": 7,
+  "name": "Matcha Mews",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#F8F1DF",
+    "tile": "#D9D3C3",
+    "glyph": "#1C1816",
+    "accent": "#BBAB7D",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Matcha Mews",
+    "mood": "Warm cream, matcha green and pale pink original plush theme.",
+    "tags": [
+      "matcha",
+      "mews",
+      "warm",
+      "cream",
+      "green",
+      "pale",
+      "pink",
+      "original",
+      "plush",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original adorable kawaii PLUSH TOY wallpaper, portrait iPhone9:19.5 MATCHA MEWS. User requests matcha and Jellycat-like soft beanbag plush feel: use tactile short-pile velour, embroidered smiles, tiny corduroy dangling legs, affectionate understated faces. Invent original toys with NO brand labels/logos or exact existing products. Overall warm CREAM #F4F0DF, muted MATCHA GREEN #82966D, tiny strawberry-pink accents. Upper65percent clean uniform warm cream, no objects patterns lettering or shadows there, quiet icon space. LOWER35percent TWO unbelievably cute cuddly beanbag toys on one small low soft matcha-green cushion: a smiling cream MATCHA CUP PLUSH with tiny rounded handle, fuzzy green matcha surface with small cream foam HEART, dark bead eyes and simple embroidered curved smile/pink cheeks, TWO little cocoa corduroy legs and round feet dangling forward. Beside cup a small round marshmallow CREAM KITTEN with tiny triangle ears/dark bead eyes/stitched little smile/tiny whiskers/peach blush, stubby paws holding a small green heart-shaped mochi, one floppy green bow at neck. At their feet one small smiling pale-green mochi ball and one tiny pink heart charm. Entire group below63percent with generous side margins, soft real velvety textile texture, warm diffuse studio lighting, premium collectible plush product photograph aesthetic, squishy marshmallow softness, kawaii cuteness. No realistic live-animal anatomy claws teeth long limbs, no cafe furniture machinery bugs stars space scenes paper carnival, no logos labels text UI phones borders watermark. Full bleed.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "9BgOEwCYf1eIdoukZ4BpBVk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.6194c177.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 108186,
+      "sha256": "6194c177d66b87765004fa51f58b7cd2326d76de98f9556e8900ee5dcd25c994",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.e53498c7.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 97876,
+      "sha256": "e53498c7ee35bb7b3e3fd87f49bf39af946306bb812de4ff85fcec6b5652f2fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.2df1907e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 53890,
+      "sha256": "2df1907e303b7c475af21f89141eca9ae5e39b28830fdd1b31921ce996697f84",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.e172118c.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 20608,
+      "sha256": "e172118c878e0e5b635170ec751050c1446657e1cbb4e3f6f46d18201cac473c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.bceec222.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 96644,
+      "sha256": "bceec222a00b9ad9827b24af29c760edff723ed01d1d188cca746d60148f1dcf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.d8dfb10f.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 109512,
+      "sha256": "d8dfb10f32334a56bb23e9c502b22b0356628150d5e8613643ef61a75e8ec52b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.df1c3e97.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7434,
+      "sha256": "df1c3e9738f1aa3591597b30238dd681809f2ba2e7dade67083c2e5b72864bda",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.03ae8e2f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 71292,
+      "sha256": "03ae8e2fedfdd9ace6dcc42b3368df67acf516c5e8c18fb457c153e2510e2472",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-matcha-date.69487760.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 90456,
+      "sha256": "69487760f7c2f35fd01500726a76daeb909a52089177b5c7d6457bd539b41edc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-teacup-fern.d19da77f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 76678,
+      "sha256": "d19da77f576555abc69dc29e8b9e4038db610c2466a4a9e88daa5d10836cd87f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.3647be4b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6418,
+      "sha256": "3647be4b376715338c0bf4f1c9e7f8032887abfddb626a348aa673c8fb76705a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.bbf84748.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3118,
+      "sha256": "bbf84748a25e7994d5e703803a1b2401f96c48f74f4b1ec2f58410bb89157e91",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.e5bf925b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6280,
+      "sha256": "e5bf925b353e3999fe72fcd2dc02ed7efd87109c0be0626deafb43e8db6622f5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-matcha-kitten.6139cf90.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 156052,
+      "sha256": "6139cf909a2ad2a87631093d51af4258feb33f4c7faead20ae55f91d075fe649",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-whisk-bowl.c2f0e83b.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 112042,
+      "sha256": "c2f0e83b68dd69cf923a10f2aa9691e365414ccd9c8fa9ea7592b3c27c4d5184",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1016486,
+  "widgets": [
+    {
+      "id": "matcha-date",
+      "kind": "calendar",
+      "image": "widget-matcha-date.69487760.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Matcha date"
+    },
+    {
+      "id": "teacup-fern",
+      "kind": "art",
+      "image": "widget-teacup-fern.d19da77f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Teacup fern"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.3647be4b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.bbf84748.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.e5bf925b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.e172118c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.bceec222.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.d8dfb10f.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "art-20261107-matcha-kitten",
+      "label": "Matcha Kitten",
+      "kind": "art",
+      "image": "widget-matcha-kitten.6139cf90.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    },
+    {
+      "id": "art-20261107-whisk-bowl",
+      "label": "Whisk Bowl",
+      "kind": "art",
+      "image": "widget-whisk-bowl.c2f0e83b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    }
+  ]
+}

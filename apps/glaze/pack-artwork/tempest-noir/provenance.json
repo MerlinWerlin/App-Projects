@@ -1,0 +1,38 @@
+{
+  "theme": "tempest-noir",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__tempest-noir__v7__manifest.json",
+    "sha256": "5417aeb597a2be014e0add16d4fe755d8df586943178af4e595dce5a05279330",
+    "packVersion": 7,
+    "existingArtwork": [
+      "storm-glass",
+      "hero-small",
+      "art-20261107-lightning-coil",
+      "art-20261107-rain-gauge"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "copper-storm-lantern",
+      "label": "Copper storm lantern",
+      "file": "widgets/widget-copper-storm-lantern.59a743f2.webp",
+      "sha256": "59a743f241223ab59930e5d99b07e62bbfcfbbd984b37a9da398bf1ba8b2dcb3",
+      "bytes": 196808,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a33ac639-4e62-431f-a1b6-aa8081dfa425.png",
+      "sourceSha256": "0af4e4132e054c03b27e5f546a2215b996be097c3c3e4c3396c29d921c589865",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for tempest-noir. One elegant old ship's storm lantern with blackened steel cage, aged copper cap and hanging loop, clear rain-speckled glass belly around a small warm amber light, standing on a low dark basalt fragment. Cinematic realistic moody coastal still-life photography, deep charcoal-indigo/black, copper and subtle ivory rain highlights. Distinct lantern silhouette, no globe bottle, heron, lightning coil, gauge, clock, numeric scale or seascape panel. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 743200,
+      "opaquePixels": 760
+    }
+  ]
+}

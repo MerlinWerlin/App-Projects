@@ -1,0 +1,2 @@
+# These are byte-exact public release snapshots, checked against baseline-lock.json.
+*.json -text

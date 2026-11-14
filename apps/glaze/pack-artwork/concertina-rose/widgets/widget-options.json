@@ -1,0 +1,26 @@
+[
+  {
+    "id": "leather-handstrap",
+    "kind": "art",
+    "image": "widget-leather-handstrap.439a7182.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Leather handstrap"
+  },
+  {
+    "id": "brass-tuning-fork",
+    "kind": "art",
+    "image": "widget-brass-tuning-fork.011b9c51.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Brass tuning fork"
+  }
+]

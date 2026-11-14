@@ -1,0 +1,14 @@
+[
+  {
+    "id": "mossback-tortoise",
+    "kind": "art",
+    "image": "widget-mossback-tortoise.1e55ef6d.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mossback Tortoise"
+  }
+]

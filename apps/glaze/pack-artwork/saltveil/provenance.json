@@ -1,0 +1,38 @@
+{
+  "theme": "saltveil",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__saltveil__v7__manifest.json",
+    "sha256": "d472148d1003c89fa31f2af127780b90ea04162b9048691eebbf9c5e5a1dcf00",
+    "packVersion": 7,
+    "existingArtwork": [
+      "salt-crystal",
+      "hero-small",
+      "art-20261106-pink-halite",
+      "art-20261106-sea-glass-shell"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "halite-feather",
+      "label": "Halite feather",
+      "file": "widgets/widget-halite-feather.f7fe1ac5.webp",
+      "sha256": "f7fe1ac50900c4499a490c00839801b107085220e7cf8c69c8aeb66858ee7db9",
+      "bytes": 267048,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-f1cccb4b-8d81-47e3-86f5-50bb5491d618.png",
+      "sourceSha256": "3ac785023e3823894e645e9421a39776e7dfe4700ecb53fd2e34826b18822956",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for saltveil. One delicate curved natural feather encrusted with tiny translucent rose-pink and ivory salt crystals, subtle pale blush quill and fine crystalline barbs, a few small cubic halite grains gathered near its base. Premium fine-art mineral macro photography, softly luminous pink salt and realistic frosted crystal edges, rose/blush/ivory palette, gentle diffuse reflected light. No shell, pearl, large crystal cluster, shore panel, winged animal or text. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 700639,
+      "opaquePixels": 102
+    }
+  ]
+}

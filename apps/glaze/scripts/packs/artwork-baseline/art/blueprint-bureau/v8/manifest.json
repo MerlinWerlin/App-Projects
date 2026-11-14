@@ -1,0 +1,354 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "blueprint-bureau",
+  "packVersion": 8,
+  "name": "Blueprint Bureau",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#0F4D6C",
+    "tile": "#30657F",
+    "glyph": "#FAF8F2",
+    "accent": "#0B4A69",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Blueprint Bureau",
+    "mood": "Cyan paper, ivory line icons, bellows-camera diagram, clockwork dragonfly and drafting clock.",
+    "tags": [
+      "blueprint",
+      "bureau",
+      "cyan",
+      "paper",
+      "ivory",
+      "line",
+      "icons",
+      "bellows",
+      "camera",
+      "diagram",
+      "clockwork",
+      "dragonfly",
+      "drafting",
+      "clock",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: stylized-concept. Original premium portrait iPhone wallpaper about9:19.5 for BLUEPRINT BUREAU. Cyanotype technical drawing art, NOT photoreal objects. Upper74percent uniform deep muted cyan-blue drawing paper #185A73 with very subtle fine fibres, completely quiet with no grid, marks, labels or light effects behind future app icons. Bottom26percent exquisite precise ivory-white technical line drawing of a vintage unbranded folding bellows camera in three-quarter perspective, partially expanded bellows and large round lens, with two subtle exploded lens rings and one small draughtsman's divider near it. Thin varied-weight engraved engineering lines, fine crosshatching, barely visible ghosted construction lines ONLY near bottom objects. Restrained one soft pale-cyan accent, no bright neon. Elegant antique patent-plate/cyanotype aesthetic, exact architectural drafting craft, monochrome ink on deep cyan paper. Entire camera reasonably low and contained, much clean useful blue space above. No readable text, brand, annotations, numbers, UI, phones, borders, stars, gradient, global grid, 3D rendered metal or photographic shadows. Full bleed portrait wallpaper.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "EYYBCwIZhKxnm3BfKHCKApc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.d4e6ab5b.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 246710,
+      "sha256": "d4e6ab5b90939b230626883543985475ecadf062dd363df249758c1d25013fe9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.cd1b803b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 218820,
+      "sha256": "cd1b803b41337ffa8ddd5655c8f8e7454321b3a1a64be68cb8b3a06c92df1c37",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.dc581a59.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 92534,
+      "sha256": "dc581a59e8687a3bbae587eb6f972fdeb3de0e1fee26e4aa4c79594db4871b57",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.1186a85a.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 48450,
+      "sha256": "1186a85a521d5a276e1fbd519fb25965161f425b1a69f9c2b2665e0067d59817",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.d04e7825.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 131646,
+      "sha256": "d04e78259ab1fc86440f8bfb71d7e1b7c7b0a9711d90efcd5ecc19f5c3efb3ec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.85fb2281.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 264878,
+      "sha256": "85fb22811694872622d329eec3ad20afdc3602ba6ae0655f9c2852957a3467db",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.5e6f582b.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7322,
+      "sha256": "5e6f582b93d12bfda939544c3f0f4e6ca35cae570f422aaf49cdd97376515bbb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.10739bd8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 215604,
+      "sha256": "10739bd87a67a9c1347fd27c3b396ec5095dd4b8db952d2935e7a0a98319b2e7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-blueprint-focus.d6cb6881.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 166512,
+      "sha256": "d6cb6881b565fbc2b8d3682d402924e34c22a197617d1e6e9d87c35a1472887c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-compass-beetle.4c6ea18a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 159952,
+      "sha256": "4c6ea18a0fef65c8d04675e66647c881b47419431eb2e834c3658385dd08e7f9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.005bf8c9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7758,
+      "sha256": "005bf8c92a157be12a23cf319638fe5a2179f6adb8240e3e6cc388d8d7052c77",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.c5631f94.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3364,
+      "sha256": "c5631f94113ee977f45156646b51213d68e575b52033cd573ba031ba09ff42a0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.2d90b296.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7606,
+      "sha256": "2d90b296555e24eb8c795aee7c45f6edd17e30b0a4bc7a51f677ab6181de23ff",
+      "mime": "image/webp"
+    },
+    {
+      "path": "clock-face.803d85dd.png",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 664223,
+      "sha256": "803d85dd10abcde0c1752714ebec5cdcd935eaf907aea9417eb151c431995c22",
+      "mime": "image/png"
+    },
+    {
+      "path": "widget-optical-lantern.cde82ce8.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 129442,
+      "sha256": "cde82ce86f111bc6d8ac84b0a899a11b5ce5f7e83c17db8cea21a4f07361a31e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mechanical-nautilus.a1971d27.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 149054,
+      "sha256": "a1971d2745ae5ca57c77bf6782af10c356c21f2824e6f8cecdc2aaec32ea86d9",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2513875,
+  "widgets": [
+    {
+      "id": "blueprint-focus",
+      "kind": "focus",
+      "image": "widget-blueprint-focus.d6cb6881.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Blueprint focus"
+    },
+    {
+      "id": "compass-beetle",
+      "kind": "art",
+      "image": "widget-compass-beetle.4c6ea18a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Compass beetle"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.005bf8c9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.c5631f94.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.2d90b296.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.1186a85a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.d04e7825.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.85fb2281.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "art-20261107-optical-lantern",
+      "label": "Optical Lantern",
+      "kind": "art",
+      "image": "widget-optical-lantern.cde82ce8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    },
+    {
+      "id": "art-20261107-mechanical-nautilus",
+      "label": "Mechanical Nautilus",
+      "kind": "art",
+      "image": "widget-mechanical-nautilus.a1971d27.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    }
+  ]
+}

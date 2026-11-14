@@ -1,0 +1,276 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "wickling-hollow",
+  "packVersion": 6,
+  "name": "Wickling Hollow",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#022435",
+    "tile": "#25424F",
+    "glyph": "#FAF8F2",
+    "accent": "#B06519",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Wickling Hollow",
+    "mood": "A sleepy beeswax dragon with petrol-blue paper, ivory icons, moth lantern.",
+    "tags": [
+      "wickling",
+      "hollow",
+      "sleepy",
+      "beeswax",
+      "dragon",
+      "with",
+      "petrol",
+      "blue",
+      "paper",
+      "ivory",
+      "icons",
+      "moth",
+      "lantern",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "DPgFMwo3gIuIfoKZSHCIBIc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.f3ff3778.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 141544,
+      "sha256": "f3ff3778a2db775f0a914ca3c08d770ed275c1afab784885ea703403cf154c12",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.5b8a4729.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 124888,
+      "sha256": "5b8a4729eb7f3d3a4fd52a2ba918abdfde0233ce2838ff1553132b0a80db6696",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.f30b615a.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 59304,
+      "sha256": "f30b615ad3f156b5efcdda96191e982ccaf14a737a31456cb56a3de30cbca42c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.2a9ea6c9.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 20238,
+      "sha256": "2a9ea6c96472ac84bfd2252e3602aa54e85c7b405ccdb8ec9dad353f4595913f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.d8dba9ab.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 76488,
+      "sha256": "d8dba9ab2509cd2b62c0a6af7096425f9188aff48a1ddebf24e9177fff452236",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.84f1b5d1.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 110282,
+      "sha256": "84f1b5d18d74660303434594562b92bca476701c911c2ae28c9602934c5c03fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.3327fa60.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 9184,
+      "sha256": "3327fa6076be43b33bd99772fbd4ee95554fe1d12fb411e9c2b43db530d200fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.864d2462.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75534,
+      "sha256": "864d24625d7fc56f22e3fa5e4ff207b6f1907cc79c5dc2eff176ee799e7ba6fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-candle-lantern-beetle.438f3415.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84030,
+      "sha256": "438f3415c697828ea76740009dbe46428f3bdbb9afd6c42baaf0324746e9801d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-hollow-key-door.3f300ef5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 96916,
+      "sha256": "3f300ef56bae0344cc3a06f3d30d24212bb4676c9848ba35de24d0c85558e8d5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wick-focus.a864d003.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 81852,
+      "sha256": "a864d00361aeb5b107f585fa0cfaad05de931ec1d5c5892202821941c0448aee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-moth-lantern.f0118ef0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 79308,
+      "sha256": "f0118ef0b3cd487c9047aac725d5cdb6c67ead4aa3e511ce7afe76b85dff4ec0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.53b0e064.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 8548,
+      "sha256": "53b0e06486cdbb7b09f5943be7848c3fa2b988ab8a02d91b96e45b959b872053",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 968116,
+  "widgets": [
+    {
+      "id": "candle-lantern-beetle",
+      "kind": "art",
+      "image": "widget-candle-lantern-beetle.438f3415.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Candle lantern beetle"
+    },
+    {
+      "id": "hollow-key-door",
+      "kind": "art",
+      "image": "widget-hollow-key-door.3f300ef5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Hollow key door"
+    },
+    {
+      "id": "wick-focus",
+      "kind": "focus",
+      "image": "widget-wick-focus.a864d003.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wick focus"
+    },
+    {
+      "id": "moth-lantern",
+      "kind": "art",
+      "image": "widget-moth-lantern.f0118ef0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Moth lantern"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.53b0e064.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.2a9ea6c9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.d8dba9ab.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.84f1b5d1.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

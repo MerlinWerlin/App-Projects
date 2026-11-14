@@ -1,0 +1,44 @@
+{
+  "theme": "bamboo-ink",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "bamboo-ink",
+      "id": "resting-crane",
+      "label": "Resting crane",
+      "ref": "110-bamboo-ink\\widgets\\leaf-fan.png",
+      "subject": "one graceful sleeping white crane with neck tucked into its wing and a single thin bent leg on a small mossy stone, poised airy silhouette, charcoal-black primary feathers, one muted sage brush shadow below",
+      "style": "Elegant expressive East Asian brush-ink illustration on warm rice-paper ivory #EFEADF, very fine visible fibres, charcoal drybrush texture and wet ink edges with restrained grey/sage #99A28B wash, flat pigment on paper. Match reference medium",
+      "avoid": "No bamboo stalk cluster, leaf fan, boat or abstract mountain cloud study",
+      "prompt": "Use case: stylized-concept. Asset type: Glaze bamboo-ink pure Artwork widget. Create one finished original standalone 1024 x 1024 square image of one graceful sleeping white crane with neck tucked into its wing and a single thin bent leg on a small mossy stone, poised airy silhouette, charcoal-black primary feathers, one muted sage brush shadow below. Elegant expressive East Asian brush-ink illustration on warm rice-paper ivory #EFEADF, very fine visible fibres, charcoal drybrush texture and wet ink edges with restrained grey/sage #99A28B wash, flat pigment on paper. Match reference medium. Centered complete composition with generous 16 percent clear safe margins, same quiet backdrop at every edge, no cropped parts or separate card boundary. Input image is a STYLE/PALETTE reference only. New subject and composition, never copy, crop or recolour existing art. No bamboo stalk cluster, leaf fan, boat or abstract mountain cloud study. No text, writing, numbers, calligraphy, seals, logos, watermarks, UI, frames, clocks, hands, dials, calendar/date imagery, focus or battery indicators. No grids or panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-559cea9d-3883-4f03-9b2c-fd0b6b194798.png",
+      "image": "widget-resting-crane.2da7eb69.webp",
+      "sha256": "2da7eb69f39875a9f56a1066a382f00562e6677fccead4246604c1d27d238056",
+      "bytes": 177784,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "bamboo-ink",
+      "id": "reed-skiff",
+      "label": "Reed skiff",
+      "ref": "110-bamboo-ink\\widgets\\ink-wash.png",
+      "subject": "one tiny empty traditional reed skiff with a single bamboo pole laid diagonally across it, floating over two diluted sage-grey water strokes. Compact quiet silhouette, no person, no landscape, refined asymmetry",
+      "style": "Elegant expressive East Asian brush-ink illustration on warm rice-paper ivory #EFEADF, very fine visible fibres, charcoal drybrush texture and wet ink edges with restrained grey/sage #99A28B wash, flat pigment on paper. Match reference medium",
+      "avoid": "No bamboo stalk cluster, leaf fan or abstract mountain cloud study",
+      "prompt": "Use case: stylized-concept. Asset type: Glaze bamboo-ink pure Artwork widget. Create one finished original standalone 1024 x 1024 square image of one tiny empty traditional reed skiff with a single bamboo pole laid diagonally across it, floating over two diluted sage-grey water strokes. Compact quiet silhouette, no person, no landscape, refined asymmetry. Elegant expressive East Asian brush-ink illustration on warm rice-paper ivory #EFEADF, very fine visible fibres, charcoal drybrush texture and wet ink edges with restrained grey/sage #99A28B wash, flat pigment on paper. Match reference medium. Centered complete composition with generous 16 percent clear safe margins, same quiet backdrop at every edge, no cropped parts or separate card boundary. Input image is a STYLE/PALETTE reference only. New subject and composition, never copy, crop or recolour existing art. No bamboo stalk cluster, leaf fan or abstract mountain cloud study. No text, writing, numbers, calligraphy, seals, logos, watermarks, UI, frames, clocks, hands, dials, calendar/date imagery, focus or battery indicators. No grids or panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-03b9ed82-7e1d-4d3d-95b8-655557271f6c.png",
+      "image": "widget-reed-skiff.fc0af3b6.webp",
+      "sha256": "fc0af3b664d449a3fe4cd7e121a941251b859fab784333c7b257292dd9bbfac6",
+      "bytes": 211720,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

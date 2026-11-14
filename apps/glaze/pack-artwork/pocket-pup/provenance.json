@@ -1,0 +1,38 @@
+{
+  "theme": "pocket-pup",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__pocket-pup__v7__manifest.json",
+    "sha256": "e7edd67e053d6297131473aee78a06440c9000be0f1c862aa4dc565bbe42c6bb",
+    "packVersion": 7,
+    "existingArtwork": [
+      "pocket-mailbox",
+      "hero-small",
+      "art-20261107-corgi-slipper",
+      "art-20261107-biscuit-tin"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "cloud-puppy-leash",
+      "label": "Cloud puppy leash",
+      "file": "widgets/widget-cloud-puppy-leash.82d776cc.webp",
+      "sha256": "82d776ccb0fbacb5d6fe205db79f7714783dc942b19a808ce0891d896d44c007",
+      "bytes": 262350,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-83d7184a-9adc-460c-a8b7-05fe9d6e69be.png",
+      "sourceSha256": "49303c529f75a351952f50f65180af5416d8dd4622071d552f24285c5e972646",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for pocket-pup. One charming miniature puppy leash and matching collar, soft powder-blue woven strap curled in a loose graceful loop, ivory padded collar with a small dusty-peach heart-shaped tag bearing only a simple raised paw mark, tiny warm-brass clasp. Premium kawaii handmade felt/clay craft style, tactile soft fabric, rounded seams, gentle daylight, powder-blue/cream/peach palette. No dog, slipper, planter, mailbox, tin or biscuits; no writing on tag. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 601090,
+      "opaquePixels": 780
+    }
+  ]
+}

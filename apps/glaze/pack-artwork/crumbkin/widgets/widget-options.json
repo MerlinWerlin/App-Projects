@@ -1,0 +1,50 @@
+[
+  {
+    "id": "croissant-sailboat",
+    "kind": "art",
+    "image": "widget-croissant-sailboat.7e2ae57b.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Croissant sailboat"
+  },
+  {
+    "id": "biscuit-windmill",
+    "kind": "art",
+    "image": "widget-biscuit-windmill.62df35a5.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Biscuit windmill"
+  },
+  {
+    "id": "marzipan-squirrel",
+    "kind": "art",
+    "image": "widget-marzipan-squirrel.a6cfdba3.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Marzipan squirrel"
+  },
+  {
+    "id": "biscuit-treasure-chest",
+    "kind": "art",
+    "image": "widget-biscuit-treasure-chest.2b6520db.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Biscuit treasure chest"
+  }
+]

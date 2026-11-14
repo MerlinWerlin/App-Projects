@@ -1,0 +1,26 @@
+{
+  "theme": "chromatic-lab",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "chromatic-lab",
+      "id": "prism-microscope",
+      "label": "Prism microscope",
+      "ref": "042-chromatic-lab\\wallpapers\\wallpaper.png",
+      "subject": "one exquisite tiny decorative laboratory microscope fashioned from clear optical glass and brushed chrome, cobalt-blue glass objective housing, tiny ruby-red glass focus knobs without markings, transparent stage and coherent curved stand, entire complete object visible",
+      "style": "Refined photoreal chromatic optical-glass studio illustration on cool pale silver-grey seamless background/floor, clear glass/red/cobalt palette, clean soft side light and subtle prismatic reflections matching reference",
+      "avoid": "No numbers, scales, gauges, beaker garden, butterfly, molecular model or spiral tubing",
+      "prompt": "Use case: stylized-concept. Glaze chromatic-lab: original standalone1024x1024 square pure artwork. Subject one exquisite tiny decorative laboratory microscope fashioned from clear optical glass and brushed chrome, cobalt-blue glass objective housing, tiny ruby-red glass focus knobs without markings, transparent stage and coherent curved stand, entire complete object visible. Refined photoreal chromatic optical-glass studio illustration on cool pale silver-grey seamless background/floor, clear glass/red/cobalt palette, clean soft side light and subtle prismatic reflections matching reference. No numbers, scales, gauges, beaker garden, butterfly, molecular model or spiral tubing. Whole compact object centred with16percent clear safe margins, new subject/composition never copy/crop/recolour. No text, labels, numerals, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress indicators. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-4559a422-17c0-443c-bf94-983f475e5f88.png",
+      "image": "widget-prism-microscope.e7a4ba02.webp",
+      "sha256": "e7a4ba02b62c74f00e45645e95facb2d65dbad689d3fc8c64d3ee470ab4fcba0",
+      "bytes": 117334,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

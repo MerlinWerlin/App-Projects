@@ -1,0 +1,25 @@
+{
+  "theme": "amber-archive",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "amber-archive",
+      "id": "folded-paper-fox",
+      "label": "Paper Fox",
+      "ref": "011-amber-archive\\wallpapers\\wallpaper.png",
+      "subject": "an alert seated fox beautifully sculpted from many layered amber parchment paper folds, long flowing folded tail curled to one side and pointed ears, standing on a closed unmarked antique book. Tiny curled paper shavings at its feet. Warm amber library light, tactile weathered paper fibers, dimensional miniature craft still life on a softly textured parchment background",
+      "avoid": "owl, wax seal, bookmark, doorway",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for amber-archive. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: an alert seated fox beautifully sculpted from many layered amber parchment paper folds, long flowing folded tail curled to one side and pointed ears, standing on a closed unmarked antique book. Tiny curled paper shavings at its feet. Warm amber library light, tactile weathered paper fibers, dimensional miniature craft still life on a softly textured parchment background. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: owl, wax seal, bookmark, doorway. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-ccc17eda-5bfa-40d2-8f73-13c3e7f6948e.png",
+      "image": "widget-folded-paper-fox.db598801.webp",
+      "sha256": "db598801382ca8a435bba506e8d1b6dcbe3826acdec8471055a5a4a10e9bcb08",
+      "bytes": 387802,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

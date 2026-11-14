@@ -1,0 +1,38 @@
+{
+  "theme": "cherry-ribbon",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__cherry-ribbon__v7__manifest.json",
+    "sha256": "a047d12eef210f38be08815371347e329203b0699f7d351a7be561a9ce733653",
+    "packVersion": 7,
+    "existingArtwork": [
+      "ribbon-locket",
+      "hero-small",
+      "art-20261107-cherry-needlebook",
+      "art-20261107-ribbon-brooch"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "cherry-ballet-slippers",
+      "label": "Cherry ballet slippers",
+      "file": "widgets/widget-cherry-ballet-slippers.d521bdb0.webp",
+      "sha256": "d521bdb0ded7400452ae10de8123a296f2986811fff311ce62252b548b9651fa",
+      "bytes": 360466,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-8fb4af87-46f2-49e0-bfc1-c4a5cdc50632.png",
+      "sourceSha256": "f4cda33aabd89e2e82fa1ba0c8fa94fb0c30bb4281864796d250d7c930f95419",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original square 1024x1024 standalone Glaze small-widget illustration for cherry-ribbon. One exquisite pair of miniature ivory linen ballet slippers gently overlapping, lustrous dusty-rose satin ribbons forming two soft loops, delicate cherry-red satin-stitch cherries with olive-green stitched leaves embroidered on the toes, fine scalloped cream seams. Refined tactile textile still-life photography, visible linen weave and subtle silk sheen, soft natural light; sophisticated cream/rose/cherry palette. No brooch, locket, butterfly or needlebook. Full subject centered with ample18percent transparent margins, clear shape at tiny size. Truly transparent empty background, alpha preserved; no floor, opaque square, framing or collage. Pure illustration only: no text, numbers, lettering, dates, clocks, dials, hands, calendars, UI, brand or watermark. Entirely new artwork, no copy/crop/recolour.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 490480,
+      "opaquePixels": 1088
+    }
+  ]
+}

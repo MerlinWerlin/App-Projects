@@ -1,0 +1,38 @@
+{
+  "theme": "honeywood",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__honeywood__v8__manifest.json",
+    "sha256": "48c0fc01816e729b2dd445d9cf9cd1c383eb3144b1ef1946a95ee5c04e3b0aa3",
+    "packVersion": 8,
+    "existingArtwork": [
+      "wool-moth",
+      "hero-small",
+      "art-20261107-wax-lantern",
+      "art-20261107-honey-spoon"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "amber-hedgehog",
+      "label": "Amber hedgehog",
+      "file": "widgets/widget-amber-hedgehog.2d00dee3.webp",
+      "sha256": "2d00dee3030aa932baef3d1f09250f788474dc5d9d7dbbb6e0724529bd77392f",
+      "bytes": 182200,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-89738ab0-6580-4a3f-be56-336b52ac301a.png",
+      "sourceSha256": "2f10b367a70f80815f3e6e0674b8f216c0ff2e026e755dedc9487e5a90ffabae",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for honeywood. One tiny woodland hedgehog sculpted from translucent honey-amber glass, warm glowing cream face and dark bead nose, fine pale-wood tapered spines forming an elegant rounded back, tiny wooden feet, one little ivory wildflower at its side. Sophisticated cozy woodland craft photography, realistic amber refraction and pale wood grain, golden afternoon light, honey/cream/toasted-brown palette. No bee, moth, lantern, spoon, acorn house or hexagonal terraces. Entire subject centered with generous18percent empty margins, clear compact silhouette. Truly transparent background with preserved alpha; no opaque tile, ground plane, frame or collage. Pure illustration: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Never crop/copy/recolour any existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 688288,
+      "opaquePixels": 589
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "platform-bench",
+    "kind": "art",
+    "image": "widget-platform-bench.802ce0da.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Platform Bench"
+  }
+]

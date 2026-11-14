@@ -1,0 +1,38 @@
+{
+  "theme": "aurora-haven",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__aurora-haven__v7__manifest.json",
+    "sha256": "8477e2ca0ae33cbd36a35827944dd711cc9a3aca842dfe4b04e514259e1466b6",
+    "packVersion": 7,
+    "existingArtwork": [
+      "snow-mushrooms",
+      "hero-small",
+      "art-20261106-aurora-fox",
+      "art-20261106-aurora-prism"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "aurora-seal",
+      "label": "Aurora seal",
+      "file": "widgets/widget-aurora-seal.1362fa0a.webp",
+      "sha256": "1362fa0af126de38ebdab7de07e64afeb2212d88af440d5cc4bbe222064ec060",
+      "bytes": 345146,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-b66b16d5-ff50-4aa2-add6-de0877ffca8a.png",
+      "sourceSha256": "758600d118e76c60e86b986ca8faeee0f385bb54f4a294269e3dfc64e5bc8e5f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone Glaze small-widget illustration for aurora-haven. Square 1024 x 1024. Subject: A serene Arctic seal pup carved from frosted translucent ice, tucked foreflippers and gently lifted face, tiny dark natural eyes, flowing emerald and turquoise aurora ribbons with a very subtle violet fringe glowing INSIDE the icy body, delicately frosted whiskers. One small low snow ledge below the seal; everything isolated as one collectible sculpture. Style: Premium photoreal fantasy ice sculpture, realistic frost microcrystals and translucent blue ice, dark-teal reflected shadows. Match a deep Arctic teal night wallpaper and existing frosted aurora mushrooms, aurora bottle, sleeping fox and crystal prism; create a new seal subject, not any of those objects. Composition: whole subject centered, clear readable silhouette at small iPhone size, 15 percent clear margins, soft upper-left lighting. True transparent background, alpha preserved; no opaque tile, hard rectangular frame, scenery or collage. Pure art only: absolutely NO text, lettering, numerals, dates, calendar, clock hands, dial, UI, logo or watermark. No copy, crop or recolour of any existing piece.",
+      "processing": "Resize entire original square to 1024x1024; WebP q92 method6; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 496219,
+      "opaquePixels": 339
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "theme": "fig-nocturne",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "fig-nocturne",
+      "id": "fig-wasp",
+      "label": "Fig wasp",
+      "ref": "109-fig-nocturne\\widgets\\rose-seeds.png",
+      "subject": "one tiny delicate bronze-black fig wasp perched on a short softly curved figwood twig, fine translucent smoky-rose wings and coherent six legs, natural macro detail, whole insect/twig contained, no fruit, leaf, jar or spoon",
+      "prompt": "Use case: stylized-concept. One original standalone 1024 x 1024 square pure artwork for Glaze Fig Nocturne: one tiny delicate bronze-black fig wasp perched on a short softly curved figwood twig, fine translucent smoky-rose wings and coherent six legs, natural macro detail, whole insect/twig contained, no fruit, leaf, jar or spoon. Editorial fine-art photographic still-life illustration, seamless near-black plum #221E28 background and surface, dusty rose #D8BAC1 highlights and muted olive touches, soft directional left light, luxurious tactile subtle detail, calm matte surroundings matching reference. New subject/composition, not copy/crop/recolour. Entire compact subject centred with 16 percent clear margins. No text, numbers, labels, brand, watermark, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress indicators. No panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-a56465a3-ea2e-4fe6-b020-898d8c5c3305.png",
+      "image": "widget-fig-wasp.f6f38814.webp",
+      "sha256": "f6f3881402c55123ae1477312e4dbe2c92c30004ba11ebdd1538533cbd9e2423",
+      "bytes": 108118,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "fig-nocturne",
+      "id": "fig-preserve-jar",
+      "label": "Fig preserve jar",
+      "ref": "109-fig-nocturne\\widgets\\fig-pair.png",
+      "subject": "one small unlabelled clear glass preserve jar filled with deep rosy-purple fig jam, an elegant plain dark plum lid tilted beside it and a slender silver spoon carrying a tiny ribbon of preserve. Refined compact dessert still life, no whole or sliced figs, no leaf",
+      "prompt": "Use case: stylized-concept. One original standalone 1024 x 1024 square pure artwork for Glaze Fig Nocturne: one small unlabelled clear glass preserve jar filled with deep rosy-purple fig jam, an elegant plain dark plum lid tilted beside it and a slender silver spoon carrying a tiny ribbon of preserve. Refined compact dessert still life, no whole or sliced figs, no leaf. Editorial fine-art photographic still-life illustration, seamless near-black plum #221E28 background and surface, dusty rose #D8BAC1 highlights and muted olive touches, soft directional left light, luxurious tactile subtle detail, calm matte surroundings matching reference. New subject/composition, not copy/crop/recolour. Entire compact subject centred with 16 percent clear margins. No text, numbers, labels, brand, watermark, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress indicators. No panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-202b92a3-e8ce-49dc-9ab7-cccfd50850f1.png",
+      "image": "widget-fig-preserve-jar.d2028849.webp",
+      "sha256": "d2028849487db02e432a429828fdf2488892225d125f5f8ca0703c2cadd356c0",
+      "bytes": 144140,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

@@ -1,0 +1,341 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "saguaro-siesta",
+  "packVersion": 7,
+  "name": "Saguaro Siesta",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#EFD8BA",
+    "tile": "#D1BDA3",
+    "glyph": "#1C1816",
+    "accent": "#C99066",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Saguaro Siesta",
+    "mood": "Warm sand, terracotta, cactus green and turquoise desert theme.",
+    "tags": [
+      "saguaro",
+      "siesta",
+      "warm",
+      "sand",
+      "terracotta",
+      "cactus",
+      "green",
+      "turquoise",
+      "desert",
+      "theme",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Use case: original premium natural landscape artwork. Portrait iPhone wallpaper approx9:19.5 SAGUARO SIESTA. Upper65percent quiet near-uniform pale warm sand #E9D9BF sky, visually very clean matte atmosphere, no clouds sun dark shapes lines trees branches patterns or text in upper65percent. Lower35percent refined realistic desert landscape: ONE sculptural green saguaro cactus with two asymmetrical raised arms, whole cactus body and arms occupy only22percent total image height with tip BELOW65percent canvas height, cactus slightly left of center, natural fine vertical ribs and subtle spines. A low terracotta mesa ridge at78percent height behind it, a couple small rounded sandstone rocks at bottom right and a few sparse small agave tufts only at bottom edge, warm pale sandy ground. Gentle late-afternoon sunlight, soft natural shadows, warm sand/terracotta/sage-green palette, premium quiet desert editorial photography. Frame broad landscape from a distance so cactus does NOT fill screen, entire cactus with generous negative space around arms. No dramatic sunset or sky textures, no pebbles crowding icons. Original fictional southwestern-type landscape, no named landmark. No people buildings birds animals jellyfish beach stars nebula cars signs logos text UI phone frames borders watermark. Full bleed portrait.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "bjkOCwSIjzh3iXiWd4BsCNk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.6612bbda.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 177820,
+      "sha256": "6612bbda24173e12b1ed47ddfcb8e852ee71cb482803f99591e02fd668aef502",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.a85c0c6a.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 162072,
+      "sha256": "a85c0c6ab8a304b2d9b09824b032dc244c2962c9a6878b158939a68b08a59b0d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e0a05e2f.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 61578,
+      "sha256": "e0a05e2fd77378a1ef120bd043f3f38c1640ff519044dab848a86a3ce634ab49",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.dfb799dd.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 22932,
+      "sha256": "dfb799ddfc91757e96a8759223c495636290348b360f4b561c24c464a52f33ed",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.1d1996d6.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 59890,
+      "sha256": "1d1996d66fbae5410f9f1216a73d6e3d3a446575bda359defdcdde129e613383",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.8d087d5b.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 88208,
+      "sha256": "8d087d5b121427c0098ff118b5143ab8e5fa6b088720b9b28e07eef6f84fcfb9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.2c50fc92.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12080,
+      "sha256": "2c50fc921d11c5f38e65484b5297414a4c95f761e663178c69f8f2804e334e01",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.5a3047c0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 64484,
+      "sha256": "5a3047c0f54fe659c3bd3893859b1e7caca7fa98a4ca907c6b5bdea4ee5b5ad2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-siesta-focus.f7298eeb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 95580,
+      "sha256": "f7298eeb684534f6564a4193555c9ba773495aaaf5ac3bc183e1ec500c5ee14d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-terracotta-snake.e0eb8f4e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 87548,
+      "sha256": "e0eb8f4e64d7f26c8674ad79578d2e30be728c5e55b60679232537497938d43f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.73e27add.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6296,
+      "sha256": "73e27add50dc5b3c83a773cbac82c712bbe399585547293620c3e0618b1e8b06",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-date.65333822.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 3088,
+      "sha256": "653338229ad0a370d0e74082b919d70e3af78a8bd164005a7e4175170c359d30",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-focus.783fb03b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6142,
+      "sha256": "783fb03b5c32bd77c5436d29297fdd254a88ee3510c0559f16090559efcb65f0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-turquoise-agave.544d6fc6.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 130360,
+      "sha256": "544d6fc67784ff3f321924390c6bb43aba7b637610a345a06b63682d11ffd2a4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-desert-quail.abe2c792.webp",
+      "role": "widget-art",
+      "width": 900,
+      "height": 900,
+      "bytes": 140246,
+      "sha256": "abe2c79294d0143f5d92c0e134930ca812c111fbe9374db3612aa9ebe0887e51",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1118324,
+  "widgets": [
+    {
+      "id": "siesta-focus",
+      "kind": "focus",
+      "image": "widget-siesta-focus.f7298eeb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Siesta focus"
+    },
+    {
+      "id": "terracotta-snake",
+      "kind": "art",
+      "image": "widget-terracotta-snake.e0eb8f4e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Terracotta snake"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.73e27add.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "live-date",
+      "kind": "date",
+      "image": "widget-live-date.65333822.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Today",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.16,
+          0.64,
+          0.68
+        ],
+        "shape": "plate"
+      }
+    },
+    {
+      "id": "live-focus",
+      "kind": "focus",
+      "image": "widget-live-focus.783fb03b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Focus session",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.2,
+          0.2,
+          0.6,
+          0.6
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.dfb799dd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.1d1996d6.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.8d087d5b.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "art-20261107-turquoise-agave",
+      "label": "Turquoise Agave",
+      "kind": "art",
+      "image": "widget-turquoise-agave.544d6fc6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    },
+    {
+      "id": "art-20261107-desert-quail",
+      "label": "Desert Quail",
+      "kind": "art",
+      "image": "widget-desert-quail.abe2c792.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "width": 900,
+      "height": 900
+    }
+  ]
+}

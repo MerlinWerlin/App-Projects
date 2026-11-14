@@ -1,0 +1,38 @@
+{
+  "theme": "emerald-curio",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__emerald-curio__v7__manifest.json",
+    "sha256": "8056d10f4a5b05ee738e3ed31a0e8695c1b10ea672e7e7c3c761cb4e036ac08c",
+    "packVersion": 7,
+    "existingArtwork": [
+      "fern-curio-orb",
+      "hero-small",
+      "art-20261107-emerald-moth",
+      "art-20261107-antique-key"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "filigree-thimble",
+      "label": "Filigree thimble",
+      "file": "widgets/widget-filigree-thimble.9adcb7a0.webp",
+      "sha256": "9adcb7a053a1722b203ed19b678bce76ffa5fcb7883324d6d546d84cbd9120f1",
+      "bytes": 202846,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-d2a2588b-7ec0-4a35-9cdd-121d5c94806e.png",
+      "sourceSha256": "866ae571ea87d8d292979a9d85dd078ad1d4b752a3f46bf7b1d751a875f963bc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE original standalone square1024x1024 Glaze small-widget illustration for emerald-curio. One exquisite antique brass thimble with open delicate botanical filigree and deep emerald-green guilloche enamel, a tiny unfurling golden fern rising from its top, subtle small garnet cabochon on one side. Jewel-like Victorian natural-history curio, premium realistic still-life photography, dark emerald, aged warm brass and a restrained burgundy accent, soft dramatic grazing light. Match dark aubergine velvet theme. No beetle, moth, key, glass orb or dial. Entire subject centered, strong compact silhouette, generous18percent clear margins. Truly TRANSPARENT empty background, alpha preserved; no opaque square, floor, frame, border or collage. Pure art only: no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. No crop/copy/recolour of any existing piece.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 730945,
+      "opaquePixels": 614
+    }
+  ]
+}

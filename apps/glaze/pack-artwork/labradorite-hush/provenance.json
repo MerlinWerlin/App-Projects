@@ -1,0 +1,40 @@
+{
+  "theme": "labradorite-hush",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "labradorite-hush",
+      "id": "mineral-mortar",
+      "label": "Mineral mortar",
+      "ref": "103-labradorite-hush\\widgets\\stone-pair.png",
+      "subject": "one small handcrafted shallow mortar and short rounded pestle carved from dark grey labradorite, restrained blue/teal/gold labradorescent flash across one outer plane, fine natural cleavage lines and matte stone interior. Entire compact vessel/pestle visible, no raw stone pair",
+      "prompt": "Use case: stylized-concept. Glaze Labradorite Hush, one original standalone 1024 x 1024 square pure artwork of one small handcrafted shallow mortar and short rounded pestle carved from dark grey labradorite, restrained blue/teal/gold labradorescent flash across one outer plane, fine natural cleavage lines and matte stone interior. Entire compact vessel/pestle visible, no raw stone pair. Fine-art mineral product photographic illustration on seamless quiet charcoal-slate #252C34 matte background/ground. Silver-blue #B8CED8 muted teal #496F7C restrained old gold #BB985D, soft directional studio sidelight and velvety grounded shadows, never glowing from within or sparkling. Match reference material realism. New object/composition, not copy/crop/recolour. Entire compact subject centred with 16 percent clear margins. No text, numbers, logos, watermark, UI/frame, clock hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-d27e1a09-10f1-4e74-8ecd-39def0b8316a.png",
+      "image": "widget-mineral-mortar.ef872cd1.webp",
+      "sha256": "ef872cd1cafd060105c15feefc75319233102ea8aa828ec87acc6c424b4b3bb3",
+      "bytes": 151548,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "labradorite-hush",
+      "id": "carved-mineral-leaf",
+      "label": "Carved mineral leaf",
+      "ref": "103-labradorite-hush\\widgets\\cleavage-lines.png",
+      "subject": "one elegant gently curved leaf sculpture carved from dark grey labradorite, one subtle incised central vein, irregular natural mineral edge, restrained true-looking silver-blue and muted teal flash through a broad plane, fine geological texture. Entire complete leaf visible, no jewellery or polished pebble",
+      "prompt": "Use case: stylized-concept. Glaze Labradorite Hush, one original standalone 1024 x 1024 square pure artwork of one elegant gently curved leaf sculpture carved from dark grey labradorite, one subtle incised central vein, irregular natural mineral edge, restrained true-looking silver-blue and muted teal flash through a broad plane, fine geological texture. Entire complete leaf visible, no jewellery or polished pebble. Fine-art mineral product photographic illustration on seamless quiet charcoal-slate #252C34 matte background/ground. Silver-blue #B8CED8 muted teal #496F7C restrained old gold #BB985D, soft directional studio sidelight and velvety grounded shadows, never glowing from within or sparkling. Match reference material realism. New object/composition, not copy/crop/recolour. Entire compact subject centred with 16 percent clear margins. No text, numbers, logos, watermark, UI/frame, clock hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-a5625c1a-a237-4090-b8ba-d2056d270420.png",
+      "image": "widget-carved-mineral-leaf.e7cb9f8b.webp",
+      "sha256": "e7cb9f8b0093457876a4fdff5239164e6a8de8f11d42eed1f26bf1d1fc028f6c",
+      "bytes": 180888,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "theme": "sea-glass-sunday",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__sea-glass-sunday__v7__manifest.json",
+    "sha256": "cc2945221937dcdc40bd5700a553f35180ac06059c0a2f5501a9dd4a77856f90",
+    "packVersion": 7,
+    "existingArtwork": [
+      "sea-glass-bottle",
+      "hero-small",
+      "art-20261107-tidepool-charm",
+      "art-20261107-shell-wind-chime"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "sea-glass-crab",
+      "label": "Sea glass crab",
+      "file": "widgets/widget-sea-glass-crab.1abec885.webp",
+      "sha256": "1abec8852e6b049060bcaa0c6b724d244664ceff50f05e3259b7925c10af8af5",
+      "bytes": 231774,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-7a1306ea-1632-4d3f-b7bb-12ba9de529e5.png",
+      "sourceSha256": "9e8d1e701353b3439b2acef4025ad757a2e3021b98478ee359a6eeba6fa3ace4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for sea-glass-sunday. One small whimsical shore crab sculpted from softly frosted pale-aqua sea glass, rounded mint-green body with subtle sea-worn translucence, warm-ivory shell-like claws and little clear glass legs, two tiny dark pearl eyes, a few cream sand grains at its feet. Sophisticated coastal collectible craft photography, tactile frosted glass, warm beach daylight, seafoam/aqua/ivory/sand palette. No bottle, starfish, sand dollar, wind chime or large shell. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 644427,
+      "opaquePixels": 1033
+    }
+  ]
+}

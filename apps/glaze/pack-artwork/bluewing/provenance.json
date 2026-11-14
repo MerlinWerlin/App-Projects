@@ -1,0 +1,38 @@
+{
+  "theme": "bluewing",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__bluewing__v7__manifest.json",
+    "sha256": "cf164b87ff131fa3e55f28fad69d49567a6eb1dec484d70cd66e900432bbf7ed",
+    "packVersion": 7,
+    "existingArtwork": [
+      "production-20261101-wing-study",
+      "hero-small",
+      "art-20261106-sapphire-chrysalis",
+      "art-20261106-filigree-wing"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "sapphire-bluebell",
+      "label": "Sapphire bluebell",
+      "file": "widgets/widget-sapphire-bluebell.dec917b9.webp",
+      "sha256": "dec917b9de24c713a6e74f2e0a63acaadf42f18daa7e6ada1b624100e52f9c3f",
+      "bytes": 207584,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-18b744af-3c3c-4b68-a257-704007e3e9ea.png",
+      "sourceSha256": "8186e37a51e9d398e32c8e5a776053c47630e28bf02b9deca3d8ac73da2b4816",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE entirely new original standalone square 1024 x 1024 Glaze illustration for bluewing. One gracefully arching stem carrying three delicate sapphire-blue bellflowers, a pair of narrow charcoal-blue leaves and two clear round dewdrops, each translucent petal showing natural fine striations, deep indigo shading and subtle cobalt iridescence. Whole botanical spray as an elegant compact silhouette. Fine-art natural macro photography, realistically delicate botanical textures, restrained grazing light and deep blue-black shadows, not a cartoon or neon. Matches the theme's rich cobalt/sky-blue butterfly scales, charcoal-blue #161E2A background, silver/sapphire accents. Distinct flower subject, no butterfly, chrysalis or detached wing. Whole subject visible, airy 18 percent clear margin all sides; readable as a small iPhone artwork widget. Truly transparent empty background, no floor, opaque tile, border or backdrop, alpha preserved. Pure illustration only: absolutely no text, numbers, lettering, dates, clock hands, dials, calendars, UI, brands or watermark. Do not copy, recolour or crop an existing asset.",
+      "processing": "Resize entire original square to 1024x1024; WebP q92 method6; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 790281,
+      "opaquePixels": 1350
+    }
+  ]
+}

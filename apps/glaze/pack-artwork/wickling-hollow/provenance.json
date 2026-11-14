@@ -1,0 +1,38 @@
+{
+  "theme": "wickling-hollow",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v13/art__wickling-hollow__v6__manifest.json",
+    "sha256": "6ef22e790b9985fa8cac0c1aed3f60836cb33b1b06b408bb1f895dadaef0d757",
+    "packVersion": 6,
+    "existingArtwork": [
+      "candle-lantern-beetle",
+      "hollow-key-door",
+      "moth-lantern",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "beeswax-walnut-mouse",
+      "label": "Beeswax Walnut Mouse",
+      "file": "widgets/widget-beeswax-walnut-mouse.ab283022.webp",
+      "sha256": "ab283022eb3c1328cbcc8c81632fd7530c09725dcd686dd92677d8c7d7f8b587",
+      "bytes": 162398,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-8d6b41dc-3172-4a23-b382-8349a2060143.png",
+      "sourceSha256": "95e727e39f2957ed211a7edd0b2b7e3814a73c10f0d7f94e8dccdc5296809671",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for wickling-hollow. One tiny original woodland mouse curled peacefully inside a half walnut shell, the entire little sculpture carved from warm honey-gold beeswax. Mouse has two round delicate ears, tiny closed sleeping eyes and a long fine tail curled along the shell rim; mouse anatomy readable as a mouse, no wings. The walnut shell has deeply carved natural grooves and sits in one curled oak leaf also made of golden beeswax. Exquisite soft translucent wax, fine hand-carved fur impressions, tiny pinprick warm amber glow within the shell as though softly lit from inside, a cozy storybook woodland craft matching a beeswax dragon and lantern-creature collection. No candle flame, extra animals, ground or separate base. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 649223,
+      "opaquePixels": 875
+    }
+  ]
+}

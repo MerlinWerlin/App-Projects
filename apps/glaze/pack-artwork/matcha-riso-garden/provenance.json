@@ -1,0 +1,38 @@
+{
+  "theme": "matcha-riso-garden",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__matcha-riso-garden__v7__manifest.json",
+    "sha256": "b71e57a5439b9e3c5f0f5bc1afdc3836f20d553b81885abefbf0606e3cb5219f",
+    "packVersion": 7,
+    "existingArtwork": [
+      "riso-butterfly",
+      "hero-small",
+      "art-20261107-riso-foxglove",
+      "art-20261107-seed-packet"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "riso-watering-can",
+      "label": "Riso watering can",
+      "file": "widgets/widget-riso-watering-can.25409f9b.webp",
+      "sha256": "25409f9bb8d144d25eeb242f43f33a1ba13f0d773f4a9c1f012f68f8d5ee5a7a",
+      "bytes": 272054,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-334d6db3-3762-44e8-874a-d1746e409184.png",
+      "sourceSha256": "f1dfde76feb737b1f6e6cd7712494e8116242103fbc941e3c12face56d021726",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for matcha-riso-garden. One charming garden watering can with a long curved spout and arched handle, olive-green body with a delicate blush-pink floral relief print, a small leafy seedling and two coral petals tucked behind the handle. Flat2D risograph illustration using limited moss-green, coral-pink and warm-ivory ink, visibly grainy halftone texture, subtle print misregistration, paper-cut contours and botanical line detail. No3D rendering, no photographic metal, no cat, butterfly, foxglove or seed packet. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 716672,
+      "opaquePixels": 854
+    }
+  ]
+}

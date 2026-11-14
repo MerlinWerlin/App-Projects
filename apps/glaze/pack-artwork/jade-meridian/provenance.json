@@ -1,0 +1,38 @@
+{
+  "theme": "jade-meridian",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__jade-meridian__v6__manifest.json",
+    "sha256": "a6a0d569f0cb5a0cf3d25d0f02c078ade777afdd3fddab4bbfb5570e0c6aad65",
+    "packVersion": 6,
+    "existingArtwork": [
+      "jade-bonsai",
+      "mountain-crane",
+      "valley-disc",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "jade-cloud-tortoise",
+      "label": "Jade cloud tortoise",
+      "file": "widgets/widget-jade-cloud-tortoise.02164a33.webp",
+      "sha256": "02164a33c5c8db705db23f71fbaa003d6535d463d838eaa4410c8a590bf43a57",
+      "bytes": 125778,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-67df25a3-44d3-4b1d-b9e9-7801e9519f2f.png",
+      "sourceSha256": "4920ef7f8476894c2e12ab542dcc98d2ca2f3a8feedc54b68fdbdb296e8070a3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for jade-meridian. One serene tortoise carved from deep forest-green jade, subtly translucent polished stone with creamy ivory veins, gently arched shell engraved with shallow mist-cloud and mountain relief, tiny calm dark eyes and short sturdy feet. Premium realistic East-Asian stone-carving collectible photography, dark jade/ivory palette, soft misty reflected light, exquisite mineral texture. No tiger, crane, bonsai, landscape disc or text. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 684774,
+      "opaquePixels": 920
+    }
+  ]
+}

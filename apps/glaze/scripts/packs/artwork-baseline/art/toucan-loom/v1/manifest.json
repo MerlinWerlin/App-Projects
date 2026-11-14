@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "toucan-loom",
+  "packVersion": 1,
+  "name": "Toucan Loom",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#20273A",
+    "tile": "#3F4454",
+    "glyph": "#FAF8F2",
+    "accent": "#20273B",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Toucan Loom",
+    "mood": "A bright toucan woven into dark indigo fabric.",
+    "tags": [
+      "toucan",
+      "loom",
+      "bright",
+      "woven",
+      "into",
+      "dark",
+      "indigo",
+      "fabric"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait premium original Glaze wallpaper Toucan Loom. Quiet darkindigo wovenfabric #272E49, TOP72percent entirelyempty subtlefinefabric forUI. BOTTOM25percent small exquisite tuftedwool TOUCAN relief in sideprofile on a slim yarnbranch: charcoalnavybody, ivorythroat, oversized clear gold/ochre beak with mutedorange tip, one smalldarkeye, twocoherentfeet, longsimpletail, one smallteal textileleaf. Wholebird/branchcontained in60percentwidth23percenttotalheightwithsafe margins. Tactile finecut-piletufts and loopstitches, elegantcraftedart no actualwildlifephoto. Softside studio light, calmrestrainedpalette, no otheranimal/flowers/text/device/icons orpatternabove.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "S/cBCwBSp0mJT5TFcqADCAo=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.62ff4033.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 444350,
+      "sha256": "62ff40338cd01b34ed1a2c3bb7c5c33b0b545da487062173ce1fd2c3c1e4a9ea",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.6b65909d.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 401712,
+      "sha256": "6b65909d5c60ffd3ae6fe7106a5922476bf254fba17bf07bba650c00a0bd21e3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.8551a0f6.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 198372,
+      "sha256": "8551a0f6f24ce4a605dc02d37875a2ca7aa5685bc0281a0e77262624b9394e61",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.c7d72970.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 72776,
+      "sha256": "c7d72970f8412760d5b2f15f1db310110fb409a9084f6bb282ebdb9a3afcf410",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.c0b5609a.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 124202,
+      "sha256": "c0b5609ab67c14dbd4f8ddd15fcb50b5bce92ad9ece25fe31c7435b10b8ff146",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.85787a7e.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 318166,
+      "sha256": "85787a7e0458df857ff77fde9072e28bf5bef3c177207839321965e535a8d6b3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.839638f7.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 17058,
+      "sha256": "839638f714005a40dd93ddac90311c25115d5b10c2bf0228833238e97151a864",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-canopy-leaf.006791f0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 268576,
+      "sha256": "006791f0137d086b2a9dc007132443c1d1a520c14eb400c38e644e2d59bb5273",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-loom-date.b379900e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 222474,
+      "sha256": "b379900e217b169bdcfc76685be22ef413d2e21d37cc6fb1bee672b2a377d9a6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-loop-clock.d57f257c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 249826,
+      "sha256": "d57f257c746731de195f41f52ed8b8b9313ab8057d868fc1ffb4926e2d2cc3a3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tuft-progress.d10ee6ba.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 205486,
+      "sha256": "d10ee6ba91905c67e49d81e4a97b07129aebac22fca930e4232ee78d8632818c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tufted-toucan.c8a00426.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 282788,
+      "sha256": "c8a004262a7e9edd0e9189415d7090ecb2ad35d3a44f6f2c14558277927c6e5a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-woven-feather.d58c0127.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 260650,
+      "sha256": "d58c0127ede48be3fd4d5dbd8d3600a2f5cc951e6a472562ecaa56e0476a3b35",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 3066436,
+  "widgets": [
+    {
+      "id": "canopy-leaf",
+      "kind": "art",
+      "image": "widget-canopy-leaf.006791f0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Canopy leaf"
+    },
+    {
+      "id": "loom-date",
+      "kind": "calendar",
+      "image": "widget-loom-date.b379900e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Loom date"
+    },
+    {
+      "id": "loop-clock",
+      "kind": "clock",
+      "image": "widget-loop-clock.d57f257c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Loop clock"
+    },
+    {
+      "id": "tuft-progress",
+      "kind": "art",
+      "image": "widget-tuft-progress.d10ee6ba.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tuft progress"
+    },
+    {
+      "id": "tufted-toucan",
+      "kind": "art",
+      "image": "widget-tufted-toucan.c8a00426.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tufted toucan"
+    },
+    {
+      "id": "woven-feather",
+      "kind": "art",
+      "image": "widget-woven-feather.d58c0127.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Woven feather"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.c7d72970.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.c0b5609a.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.85787a7e.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

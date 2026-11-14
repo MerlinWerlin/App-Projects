@@ -1,0 +1,294 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "tessera-tempo",
+  "packVersion": 1,
+  "name": "Tessera Tempo",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E8DFD3",
+    "tile": "#CBC3B9",
+    "glyph": "#1C1816",
+    "accent": "#AC8B68",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Tessera Tempo",
+    "mood": "Mosaic tesserae in a playful rhythm.",
+    "tags": [
+      "tessera",
+      "tempo",
+      "mosaic",
+      "tesserae",
+      "playful",
+      "rhythm",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait original premium Glaze wallpaper Tessera Tempo. Warm chalk matte #E9E3D6 background, TOP72percent entirely empty quietchalk for UI. Along BOTTOM25percent a small elegant low horizontal abstract ceramic relief: bluegrey andterracotta quartercircle arcs forming one interlockingwave, twoochre halfdiscs and one warmivory raisedcircle, restrained softglazed surfaces, subtle coherent shadows. Wholegeometry forms low strip max75percentcanvaswidth20percenttotalheight, fullmargins, no tallobjects. Refined modern abstract craftstill-life, precise clean quartercirclecurves, originaldesign not manufacturer/productcopy. No text/flowers/animals/icons/device/patternabove.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "sxgGCwJ4f1h4do3BeHCKBqY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.ffbae343.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 55922,
+      "sha256": "ffbae3434784b90fdbc1a1f26eca36dde80b5a73de3074e933323566c99d346b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.f9cd13b6.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 47992,
+      "sha256": "f9cd13b640bc44329c132d769ce6d8dba966366b5bc7be419267244af25e8839",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.b149afd3.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 20890,
+      "sha256": "b149afd3ba30ee64044eec397febe1db1d0111a7ea1772b0717342f1989c89ce",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.f98f9f3a.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 20350,
+      "sha256": "f98f9f3a84da2e4354b0907ea934960f12fb78ef5bc03b6b36204507cdb3aae3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.73251be9.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 24488,
+      "sha256": "73251be96426341649352654eb3f84f579aa55c9348909383b4656aed117624b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.52254b10.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 49076,
+      "sha256": "52254b10a362db125396b8fb30fbae870c5a9988420d1ba57bbb8647e82d08a5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.266a1db2.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 2956,
+      "sha256": "266a1db2e9c73eca5b1530bfc20919c2932a42d359502f6524928140c35c43c4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-arc-current.9365c670.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 72940,
+      "sha256": "9365c6707b49746626f3684855aafb2089cde8317837cb590b04fd85f92d3bbe",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dot-progress.e60e8964.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 23990,
+      "sha256": "e60e8964a5867730d69b6f839c8e9ffd5b91308c7fc0d444c35ded9c81d34519",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-quadrant-rosette.cbd11b86.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 37924,
+      "sha256": "cbd11b8686bdd06dcb2e0237628ebf212c3d740d7bad212a4cf3e15a72bcb936",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sector-clock-v2.93d128cc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 24862,
+      "sha256": "93d128cca000f9620544d753d6cadec2812d36ec5a36ee94f1403997e19d7448",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sector-clock.0877c939.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 23996,
+      "sha256": "0877c939affbd035647dd4fc4796c6d3df6d8c1336af021ce3044ade25b21e46",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tempo-date.a3f59337.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 22536,
+      "sha256": "a3f593371586b4a2af3df32effc1a2b67fc591abbe885854a34803af7e89c9bc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tile-weave.d3e0eac2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 50048,
+      "sha256": "d3e0eac2eba43b662a7c334c3e111f4d9dadedc412c1c4173e3eca2bbd3cbe84",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 477970,
+  "widgets": [
+    {
+      "id": "arc-current",
+      "kind": "art",
+      "image": "widget-arc-current.9365c670.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Arc current"
+    },
+    {
+      "id": "dot-progress",
+      "kind": "art",
+      "image": "widget-dot-progress.e60e8964.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dot progress"
+    },
+    {
+      "id": "quadrant-rosette",
+      "kind": "art",
+      "image": "widget-quadrant-rosette.cbd11b86.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Quadrant rosette"
+    },
+    {
+      "id": "sector-clock-v2",
+      "kind": "clock",
+      "image": "widget-sector-clock-v2.93d128cc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sector clock v2"
+    },
+    {
+      "id": "sector-clock",
+      "kind": "clock",
+      "image": "widget-sector-clock.0877c939.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sector clock"
+    },
+    {
+      "id": "tempo-date",
+      "kind": "calendar",
+      "image": "widget-tempo-date.a3f59337.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tempo date"
+    },
+    {
+      "id": "tile-weave",
+      "kind": "art",
+      "image": "widget-tile-weave.d3e0eac2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tile weave"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.f98f9f3a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.73251be9.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.52254b10.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

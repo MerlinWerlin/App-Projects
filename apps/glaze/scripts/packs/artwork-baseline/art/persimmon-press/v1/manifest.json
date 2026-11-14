@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "persimmon-press",
+  "packVersion": 1,
+  "name": "Persimmon Press",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#ECDEC4",
+    "tile": "#CFC2AC",
+    "glyph": "#1C1816",
+    "accent": "#CF9C69",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Persimmon Press",
+    "mood": "Persimmons as a hand-carved woodblock print.",
+    "tags": [
+      "persimmon",
+      "press",
+      "persimmons",
+      "hand",
+      "carved",
+      "woodblock",
+      "print",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original vertical9:19.5 iPhone wallpaper PERSIMMON PRESS. Tactile hand-carved WOODBLOCK PRINT illustration look, warmivorypaper #EEE3D0, upperTWO THIRDS EMPTY uniformpaperwithfinefibres, no patterns,words,marksorobjects. Bottomthird originalcompositionofTWO ripepersimmons, onewhole orangefruitwithfourlobedmutedtealcalyx andonecutfruitwithsmallstarshapedseedcore, shortbranchandtwo simpletealleaves. Rustorange #96522F,persimmon #C87636,mutedteal #4C6D63 inks; carvedparallelhatchmarks, slightlyirregularprintededges, restrainedflat3colorart, no 3Dphotography. Compositioncontainedlow, gracefulnegative space. Noartistattribution,seal,calligraphy,text,UI,phone,frame,logos.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "cSkKEwSXf2aIdIyFaHCMBsc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.82d28e90.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 255086,
+      "sha256": "82d28e900831814eb8c5d59abe82052873aab6995cc8cfb44c5548fa458c70c0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.78780ead.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 227530,
+      "sha256": "78780ead307a8da3bdb660cbdcdb6e8ab168caa13ac73b3a3abc45ebb6a756ab",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.a023f307.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 107220,
+      "sha256": "a023f307f6da6c23feb49d6d5801e0d7aed10795a15e9caaa378d4f7e2761692",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.9caf2dc5.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 60704,
+      "sha256": "9caf2dc52b5ab85743a160e1bc8f6fb227f761091e035390e08d8039f00abe64",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.de9906cb.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 194306,
+      "sha256": "de9906cb8fcb3e61747908ce4fc29e50a338438b9159e83f76d440c1454d59a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.070dd265.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 294674,
+      "sha256": "070dd2658860a22f637566d7c556094e2f09c9c6a284177ba097af91ffa51bfa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.e33f0087.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 12256,
+      "sha256": "e33f0087d8cc98ae4e98fc640072f8fbaa0f6f09d3b81648a2111f349e9065a9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-autumn-date.efde84bd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 99990,
+      "sha256": "efde84bdd2464ed9d22f9d0d102d5f2d77eda46c3641bd90edd3883977b5c62d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-calyx-star.03c4b550.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 119504,
+      "sha256": "03c4b550c2f4497e10a9ff8b697312ef652f58355dfd66a8cd8bc94d4425af1a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-carved-grain.fff645ba.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 384562,
+      "sha256": "fff645ba9e6dcdb273baf200db4edfc4d6a31ffd391ee203c1826f727a6ffb1a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-persimmon-pair.50a1cc0d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 249562,
+      "sha256": "50a1cc0d1fcade11b419846621bd43eeb665a956d2cecfe04f8b57df7bde2dbe",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-press-clock.972760a3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 146222,
+      "sha256": "972760a30bb01ba5f1f9b29f58db855bd81da63cb93da5a46b8e6192139bd9e8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-seed-progress.b39236b1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 67600,
+      "sha256": "b39236b1c278462752dcc65f1e774d6e2739722e4711b7bb44f73365ee13d1f6",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2219216,
+  "widgets": [
+    {
+      "id": "autumn-date",
+      "kind": "calendar",
+      "image": "widget-autumn-date.efde84bd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Autumn date"
+    },
+    {
+      "id": "calyx-star",
+      "kind": "art",
+      "image": "widget-calyx-star.03c4b550.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Calyx star"
+    },
+    {
+      "id": "carved-grain",
+      "kind": "art",
+      "image": "widget-carved-grain.fff645ba.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Carved grain"
+    },
+    {
+      "id": "persimmon-pair",
+      "kind": "art",
+      "image": "widget-persimmon-pair.50a1cc0d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Persimmon pair"
+    },
+    {
+      "id": "press-clock",
+      "kind": "clock",
+      "image": "widget-press-clock.972760a3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Press clock"
+    },
+    {
+      "id": "seed-progress",
+      "kind": "art",
+      "image": "widget-seed-progress.b39236b1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Seed progress"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.9caf2dc5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.de9906cb.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.070dd265.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

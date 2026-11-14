@@ -1,0 +1,14 @@
+[
+  {
+    "id": "berry-yarn-teapot",
+    "kind": "art",
+    "image": "widget-berry-yarn-teapot.1fec9d4c.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Berry yarn teapot"
+  }
+]

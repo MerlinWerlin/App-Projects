@@ -1,0 +1,14 @@
+[
+  {
+    "id": "amber-hedgehog",
+    "kind": "art",
+    "image": "widget-amber-hedgehog.2d00dee3.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Amber hedgehog"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "lavender-pollen-bee",
+    "kind": "art",
+    "image": "widget-lavender-pollen-bee.febdaa8a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lavender pollen bee"
+  },
+  {
+    "id": "thistle-goldfinch",
+    "kind": "art",
+    "image": "widget-thistle-goldfinch.1dbe66a7.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Thistle goldfinch"
+  }
+]

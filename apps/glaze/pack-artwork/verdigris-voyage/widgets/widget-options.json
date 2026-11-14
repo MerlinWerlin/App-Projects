@@ -1,0 +1,26 @@
+[
+  {
+    "id": "botanical-diving-bell",
+    "kind": "art",
+    "image": "widget-botanical-diving-bell.468a7bef.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Botanical diving bell"
+  },
+  {
+    "id": "glasswing-dragonfly-craft",
+    "kind": "art",
+    "image": "widget-glasswing-dragonfly-craft.419c072b.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Glasswing dragonfly craft"
+  }
+]

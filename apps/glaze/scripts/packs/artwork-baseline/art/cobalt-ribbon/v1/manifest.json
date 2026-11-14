@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cobalt-ribbon",
+  "packVersion": 1,
+  "name": "Cobalt Ribbon",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D7E2EB",
+    "tile": "#BDC6CD",
+    "glyph": "#1C1816",
+    "accent": "#144782",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Cobalt Ribbon",
+    "mood": "A cobalt ribbon curling over pale steel blue.",
+    "tags": [
+      "cobalt",
+      "ribbon",
+      "curling",
+      "over",
+      "pale",
+      "steel",
+      "blue",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 iPhone wallpaper COBALT RIBBON. Upper TWO THIRDS nearly uniform pale steel-blue #DDE6ED, empty quiet matte field for slate-blue app glyphs. Bottom third a single elegant abstract sculpture made from one broad cobalt-blue anodized metal ribbon, curling into an open oval loop with one graceful fold and two clean ends, completely contained low in frame. Brushed metal #2772A2, soft silver-blue highlights, precise thin edges and gentle studio reflection on matching pale floor. Tactile refined industrial-design photography aesthetic, no geometric arch doorway, no car, fabric, flowers, text, logos, UI, phone or frame. Original fictional sculpture, no manufactured-product claim.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "MtcJEwKHj3d3g4t2l4+H+Xg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.158e6f40.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 64728,
+      "sha256": "158e6f407bfc9f8a8c818c7246326b84c461ea1ac35af2d23d91696fbe679343",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.27b502fe.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 57814,
+      "sha256": "27b502fea02b6ade6cd17d3cdc632dbb7b7f97268fb8edc28a7e962f17dabaaf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.64b882b7.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 29164,
+      "sha256": "64b882b7fb78ef3e593b96b80a3548aabd2d0091be4db613ab1392fe7c81adc8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.110ba1bc.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 48754,
+      "sha256": "110ba1bc2cd87cb304fae98808b3e98dde3429af32dae7b936108223208956c6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.b89bd2be.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 73192,
+      "sha256": "b89bd2be6565bd4e6fdf7210e368fdab70cc77f6d157a25f3b3490a352f872e7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.53ff22d4.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 80398,
+      "sha256": "53ff22d464ee872b7f1ceb5ce5062af6be9feaff6285fb00f45cd903399e8549",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.2b56f341.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4826,
+      "sha256": "2b56f3416620e4a410d75b3c50aee4d26622d21b9d2a87a67d1db08be18a1286",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-brushed-blue.8b8f2052.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 220906,
+      "sha256": "8b8f2052cfc754e2acbf3134fdf5d794ff5d50d20527d5fbbb35b7d759ba9f3d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coil-focus.4e39f4d7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 52474,
+      "sha256": "4e39f4d7f6474ece1069aa8c785423c926b2e1684b64ec2b76b8f8574094af1c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fold-clock.4fe6555d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98992,
+      "sha256": "4fe6555d19ef9e811a97f29ec9122373139f7cf7b85d1a3a81e63bd380963143",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-folded-fan.0fdb2603.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 76824,
+      "sha256": "0fdb26039cee5a5ecb79463e52104233c1219df894039c68a9d6bc94c3c0c1eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ribbon-date.521bac7c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 95468,
+      "sha256": "521bac7c7705fcc07167af4ac58e89b832bfb3d83253ef719ec15ef4c0c672ae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ribbon-loop.8f16ef65.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 57516,
+      "sha256": "8f16ef656c0ed053d61e66599fbdc18a139549b15d96955001f071b6cf1f3a17",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 961056,
+  "widgets": [
+    {
+      "id": "brushed-blue",
+      "kind": "art",
+      "image": "widget-brushed-blue.8b8f2052.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Brushed blue"
+    },
+    {
+      "id": "coil-focus",
+      "kind": "focus",
+      "image": "widget-coil-focus.4e39f4d7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coil focus"
+    },
+    {
+      "id": "fold-clock",
+      "kind": "clock",
+      "image": "widget-fold-clock.4fe6555d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fold clock"
+    },
+    {
+      "id": "folded-fan",
+      "kind": "art",
+      "image": "widget-folded-fan.0fdb2603.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Folded fan"
+    },
+    {
+      "id": "ribbon-date",
+      "kind": "calendar",
+      "image": "widget-ribbon-date.521bac7c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ribbon date"
+    },
+    {
+      "id": "ribbon-loop",
+      "kind": "art",
+      "image": "widget-ribbon-loop.8f16ef65.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ribbon loop"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.110ba1bc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.b89bd2be.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.53ff22d4.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

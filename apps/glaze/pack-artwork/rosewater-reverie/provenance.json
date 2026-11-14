@@ -1,0 +1,25 @@
+{
+  "theme": "rosewater-reverie",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "rosewater-reverie",
+      "id": "pearl-shell",
+      "label": "Pearl Shell",
+      "ref": "017-rosewater-reverie\\wallpapers\\wallpaper.png",
+      "subject": "one exquisite open blush-pink nacre scallop shell holding a single luminous round pearl, delicately rimmed with rose gold. Sculptural luxury still life nestled in flowing rosewater pink silk, satiny folds and soft luminous highlights, pale blush reflections, exquisitely realistic nacre texture, calm romantic atmosphere",
+      "avoid": "rose, swan, ballet shoes, perfume bottle, clock",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for rosewater-reverie. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one exquisite open blush-pink nacre scallop shell holding a single luminous round pearl, delicately rimmed with rose gold. Sculptural luxury still life nestled in flowing rosewater pink silk, satiny folds and soft luminous highlights, pale blush reflections, exquisitely realistic nacre texture, calm romantic atmosphere. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: rose, swan, ballet shoes, perfume bottle, clock. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-7f524cd0-38f9-4ccc-9283-fbd6289875b8.png",
+      "image": "widget-pearl-shell.b3fcd6a1.webp",
+      "sha256": "b3fcd6a15133cfd6558f929c1cc8c2eca96f228134fc45af992940133b707a6c",
+      "bytes": 168682,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

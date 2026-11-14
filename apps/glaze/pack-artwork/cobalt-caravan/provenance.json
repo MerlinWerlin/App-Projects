@@ -1,0 +1,26 @@
+{
+  "theme": "cobalt-caravan",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "cobalt-caravan",
+      "id": "lapis-dune-scarab",
+      "label": "Lapis dune scarab",
+      "ref": "028-cobalt-caravan\\wallpapers\\wallpaper.png",
+      "subject": "one exquisite sculptural desert scarab beetle with deep lapis-cobalt wing plates inlaid with fine warm gold veins, delicate articulated golden legs and a small ivory cabochon beneath its body, entire compact silhouette visible",
+      "style": "Refined realistic ornamental desert material illustration on deep royal cobalt seamless matte backdrop and floor, lapis blue, warm sandstone gold and tiny ivory highlights, dramatic soft golden sidelight and quiet deep shadows matching reference",
+      "avoid": "No compass, dials, bird, cat, lantern or oasis building",
+      "prompt": "Use case: stylized-concept. Glaze cobalt-caravan: original standalone 1024 x 1024 square pure artwork. Subject one exquisite sculptural desert scarab beetle with deep lapis-cobalt wing plates inlaid with fine warm gold veins, delicate articulated golden legs and a small ivory cabochon beneath its body, entire compact silhouette visible. Refined realistic ornamental desert material illustration on deep royal cobalt seamless matte backdrop and floor, lapis blue, warm sandstone gold and tiny ivory highlights, dramatic soft golden sidelight and quiet deep shadows matching reference. No compass, dials, bird, cat, lantern or oasis building. Entire subject centred within16percent clear margins; new subject/composition, no copy/crop/recolour. No text, numbers, labels, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-dcfcfcd6-93f4-4317-a9cd-ebff998dbd34.png",
+      "image": "widget-lapis-dune-scarab.cb0909ba.webp",
+      "sha256": "cb0909ba05570feb1a3b8be006246b52ac53a883139764642ed5ba49a7e23b48",
+      "bytes": 191806,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

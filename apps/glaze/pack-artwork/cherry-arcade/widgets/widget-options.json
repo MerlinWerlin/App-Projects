@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cherry-claw-cabinet",
+    "kind": "art",
+    "image": "widget-cherry-claw-cabinet.0275dfad.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cherry claw cabinet"
+  },
+  {
+    "id": "mint-gamepad",
+    "kind": "art",
+    "image": "widget-mint-gamepad.8156d1c0.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mint gamepad"
+  },
+  {
+    "id": "pixel-dragon",
+    "kind": "art",
+    "image": "widget-pixel-dragon.da54e017.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pixel dragon"
+  },
+  {
+    "id": "mint-game-cartridge",
+    "kind": "art",
+    "image": "widget-mint-game-cartridge.90aeace0.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mint game cartridge"
+  }
+]

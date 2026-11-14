@@ -1,0 +1,14 @@
+[
+  {
+    "id": "peach-stone-seedling",
+    "kind": "art",
+    "image": "widget-peach-stone-seedling.9aa7fdc1.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Peach stone seedling"
+  }
+]

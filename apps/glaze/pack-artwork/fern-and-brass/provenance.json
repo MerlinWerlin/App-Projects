@@ -1,0 +1,40 @@
+{
+  "theme": "fern-and-brass",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "fern-and-brass",
+      "id": "brass-acorn",
+      "label": "Brass acorn",
+      "ref": "003-fern-and-brass\\widgets\\extra-20261029-brass-leaf-beetle.png",
+      "subject": "one finely crafted antique-brass acorn with a textured bronze cupule, resting beside a single unfurled small moss-green fern tip on dark moss, delicate dew on leaf edges, rich tactile botanical still life, entire acorn visible, no beetle, house or watering can",
+      "prompt": "Use case: stylized-concept. Glaze Fern and Brass pure Artwork widget: one original standalone 1024 x 1024 square image of one finely crafted antique-brass acorn with a textured bronze cupule, resting beside a single unfurled small moss-green fern tip on dark moss, delicate dew on leaf edges, rich tactile botanical still life, entire acorn visible, no beetle, house or watering can. Exquisite realistic botanical material photographic illustration on deep nearly-black forest green seamless backdrop, moss green/sage foliage with warm subdued antique brass, soft slanted natural light and a few tiny dew droplets, restrained premium texture exactly fitting reference world. Compact centred whole subject with 16 percent dark clear safe margins and gentle vignette blending with wallpaper. New composition, never copy/crop/recolour. No synthetic glitter, stars, fantasy glow, text, numbers, logos, watermark, UI/frame, clock/hands/dials, dates/calendar, focus/battery/progress indicators. Single image no panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-be5da950-d0ce-4015-b036-11fb923e3cc5.png",
+      "image": "widget-brass-acorn.274ede4b.webp",
+      "sha256": "274ede4bcd03ddb707a20e605b7b231aad65a50c0692ed934bbbb534d3497dbf",
+      "bytes": 140474,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "fern-and-brass",
+      "id": "brass-watering-can",
+      "label": "Brass watering can",
+      "ref": "003-fern-and-brass\\widgets\\extra-20261029-fern-glasshouse.png",
+      "subject": "one tiny antique-brass botanical watering can with an elegant long slender spout, dark patina at its seams and a curved handle, two freshly cut delicate fern sprigs tucked through the opening. Whole vessel/spout visible, restrained warm metallic highlights, no glasshouse or beetle",
+      "prompt": "Use case: stylized-concept. Glaze Fern and Brass pure Artwork widget: one original standalone 1024 x 1024 square image of one tiny antique-brass botanical watering can with an elegant long slender spout, dark patina at its seams and a curved handle, two freshly cut delicate fern sprigs tucked through the opening. Whole vessel/spout visible, restrained warm metallic highlights, no glasshouse or beetle. Exquisite realistic botanical material photographic illustration on deep nearly-black forest green seamless backdrop, moss green/sage foliage with warm subdued antique brass, soft slanted natural light and a few tiny dew droplets, restrained premium texture exactly fitting reference world. Compact centred whole subject with 16 percent dark clear safe margins and gentle vignette blending with wallpaper. New composition, never copy/crop/recolour. No synthetic glitter, stars, fantasy glow, text, numbers, logos, watermark, UI/frame, clock/hands/dials, dates/calendar, focus/battery/progress indicators. Single image no panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-0b772484-a855-41d7-bcb0-965058726126.png",
+      "image": "widget-brass-watering-can.1a0b9adf.webp",
+      "sha256": "1a0b9adf5505234e82eb20ae81d90272bfe521c8a224c0966ba7a24c0d0d828a",
+      "bytes": 136966,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

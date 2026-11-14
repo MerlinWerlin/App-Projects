@@ -1,0 +1,26 @@
+[
+  {
+    "id": "miniature-letterpress",
+    "kind": "art",
+    "image": "widget-miniature-letterpress.738dd0e9.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Miniature letterpress"
+  },
+  {
+    "id": "empty-composing-stick",
+    "kind": "art",
+    "image": "widget-empty-composing-stick.fb755465.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Empty composing stick"
+  }
+]

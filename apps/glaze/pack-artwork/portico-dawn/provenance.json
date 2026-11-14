@@ -1,0 +1,40 @@
+{
+  "theme": "portico-dawn",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "portico-dawn",
+      "id": "travertine-urn",
+      "label": "Travertine urn",
+      "ref": "128-portico-dawn\\widgets\\fluted-column.png",
+      "subject": "one small sculptural travertine urn, broad shallow bowl with two elegant low handles on a short square pedestal, subtle porous limestone texture and a refined fine bronze rim, complete freestanding architectural object. No column, stairs or arch portico",
+      "prompt": "Use case: stylized-concept. Glaze Portico Dawn, original standalone 1024 x 1024 square pure artwork of one small sculptural travertine urn, broad shallow bowl with two elegant low handles on a short square pedestal, subtle porous limestone texture and a refined fine bronze rim, complete freestanding architectural object. No column, stairs or arch portico. Premium refined sculptural architecture photographic illustration, pale matte sandstone #E8DFD2 seamless quiet ground/background, warm soft sidelight, delicate coherent cast shadow, neutral stone and restrained bronze palette matching reference. Whole compact object centred within 16 percent clear margins, newly invented composition, never copy/crop/recolour. No real building, plants, people, text, numerals, logos, watermark, UI/frame, clock hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-39c3a890-90b1-48a1-a79a-967a665796e4.png",
+      "image": "widget-travertine-urn.5630ffd5.webp",
+      "sha256": "5630ffd536546d2db89ffd3e11ce8eb5105d882f6d3affd9d1dfa5a10b19ac8c",
+      "bytes": 83922,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "portico-dawn",
+      "id": "stone-lattice-screen",
+      "label": "Stone lattice screen",
+      "ref": "128-portico-dawn\\widgets\\three-arch-portico.png",
+      "subject": "one small freestanding sandstone architectural lattice screen model, a rectangular panel with six airy diamond-shaped openings and a simple thick border, resting on a low flat travertine foot, refined porous stone and coherent cast shadow. No arches, column, staircase or urn",
+      "prompt": "Use case: stylized-concept. Glaze Portico Dawn, original standalone 1024 x 1024 square pure artwork of one small freestanding sandstone architectural lattice screen model, a rectangular panel with six airy diamond-shaped openings and a simple thick border, resting on a low flat travertine foot, refined porous stone and coherent cast shadow. No arches, column, staircase or urn. Premium refined sculptural architecture photographic illustration, pale matte sandstone #E8DFD2 seamless quiet ground/background, warm soft sidelight, delicate coherent cast shadow, neutral stone and restrained bronze palette matching reference. Whole compact object centred within 16 percent clear margins, newly invented composition, never copy/crop/recolour. No real building, plants, people, text, numerals, logos, watermark, UI/frame, clock hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-c0013a45-0c4e-43b9-b7b2-047692056651.png",
+      "image": "widget-stone-lattice-screen.007d66e4.webp",
+      "sha256": "007d66e4afa6145914f4b3f492035809575932d8956eaba043e6778daf9be0a2",
+      "bytes": 151068,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

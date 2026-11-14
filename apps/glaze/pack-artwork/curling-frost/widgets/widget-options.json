@@ -1,0 +1,26 @@
+[
+  {
+    "id": "pine-green-glove",
+    "kind": "art",
+    "image": "widget-pine-green-glove.b5a3cb21.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pine green glove"
+  },
+  {
+    "id": "ice-rosette",
+    "kind": "art",
+    "image": "widget-ice-rosette.06335dd0.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ice rosette"
+  }
+]

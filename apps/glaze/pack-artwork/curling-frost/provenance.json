@@ -1,0 +1,40 @@
+{
+  "theme": "curling-frost",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "curling-frost",
+      "id": "pine-green-glove",
+      "label": "Pine green glove",
+      "ref": "136-curling-frost\\widgets\\granite-stone.png",
+      "subject": "one elegant pine-green curling sports glove resting on its side, soft textured leather with ivory suede palm just visible, delicate stitching and an unmarked tiny ochre wrist fastener, complete coherent five-finger silhouette, no stone, broom, rings or text",
+      "prompt": "Use case: stylized-concept. One original 1024 x 1024 square pure artwork for Glaze Curling Frost: one elegant pine-green curling sports glove resting on its side, soft textured leather with ivory suede palm just visible, delicate stitching and an unmarked tiny ochre wrist fastener, complete coherent five-finger silhouette, no stone, broom, rings or text. Sophisticated tactile sports still-life photographic illustration, quiet icy blue #DDE8ED matte backdrop and softly textured icy floor seamless at all edges, gentle cool studio shadows, restrained pine green, graphite, ivory and ochre details, match reference material realism. Fully contained compact subject centred with 16 percent empty safe margins, new composition. No team marks, lettering, numbers, logos, score, watermarks, UI, frame, clock/dial/hands, date/calendar, focus/battery/progress indicators. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-b85fe9d6-0522-4b4c-a567-0e0aa1b6b555.png",
+      "image": "widget-pine-green-glove.b5a3cb21.webp",
+      "sha256": "b5a3cb21cd64017ec4ed39855022767a5536f8a56c9c630fa1a41b5d3ed7d315",
+      "bytes": 240180,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "curling-frost",
+      "id": "ice-rosette",
+      "label": "Ice rosette",
+      "ref": "136-curling-frost\\widgets\\house-rings.png",
+      "subject": "one naturally grown delicate cluster of hoarfrost ice crystals, six slender branching translucent icy spires forming a loose asymmetrical rosette on a tiny frozen pebble, fine frosted facets with subtle pine-green reflections, no circular target, stone handle or broom",
+      "prompt": "Use case: stylized-concept. One original 1024 x 1024 square pure artwork for Glaze Curling Frost: one naturally grown delicate cluster of hoarfrost ice crystals, six slender branching translucent icy spires forming a loose asymmetrical rosette on a tiny frozen pebble, fine frosted facets with subtle pine-green reflections, no circular target, stone handle or broom. Sophisticated tactile sports still-life photographic illustration, quiet icy blue #DDE8ED matte backdrop and softly textured icy floor seamless at all edges, gentle cool studio shadows, restrained pine green, graphite, ivory and ochre details, match reference material realism. Fully contained compact subject centred with 16 percent empty safe margins, new composition. No team marks, lettering, numbers, logos, score, watermarks, UI, frame, clock/dial/hands, date/calendar, focus/battery/progress indicators. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-d04bbb65-ea59-4b77-858a-c7471cd40e9b.png",
+      "image": "widget-ice-rosette.06335dd0.webp",
+      "sha256": "06335dd0ec123ebcafbf7de3932ed2ac97b7be6295d8a19e70e6c2fe7ff1f00d",
+      "bytes": 312210,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

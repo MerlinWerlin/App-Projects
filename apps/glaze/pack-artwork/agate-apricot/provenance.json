@@ -1,0 +1,40 @@
+{
+  "theme": "agate-apricot",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "agate-apricot",
+      "id": "scalloped-agate-bowl",
+      "label": "Scalloped agate bowl",
+      "ref": "118-agate-apricot\\wallpapers\\wallpaper.png",
+      "subject": "one small shallow sculptural agate bowl with a softly scalloped irregular rim, polished muted apricot and slate-blue bands along the outside, ivory translucent interior and fine natural mineral texture, entire vessel visible in three-quarter view, empty, no slice or geode",
+      "prompt": "Use case: stylized-concept. Glaze Agate Apricot original standalone 1024 x 1024 square pure artwork of one small shallow sculptural agate bowl with a softly scalloped irregular rim, polished muted apricot and slate-blue bands along the outside, ivory translucent interior and fine natural mineral texture, entire vessel visible in three-quarter view, empty, no slice or geode. Refined realistic mineral material photographic illustration on seamless pale warm putty #E7E1D7 matte backdrop/floor, muted apricot #C29275/slateblue #7290A3/ivory/soft grey, soft diffuse window light, subtle translucency and velvety natural contact shadow, no plastic shine. Match reference medium. Entire compact object centred within16percent clear margins, new object/composition no copy/crop/recolour. No labels, specimen claims, text, numbers, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-9b077b1a-a9f2-4bb4-9965-c07393c557ae.png",
+      "image": "widget-scalloped-agate-bowl.31ce98ab.webp",
+      "sha256": "31ce98ab7a6ef4864d0e2f3e2f3451616eb8091efafa956219fe9b553567996c",
+      "bytes": 86352,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "agate-apricot",
+      "id": "agate-shell-carving",
+      "label": "Agate shell carving",
+      "ref": "118-agate-apricot\\wallpapers\\wallpaper.png",
+      "subject": "one elegant small spiral seashell sculpture carved from banded agate, gentle muted apricot, slate-blue, ivory and grey mineral bands following the carved spiral, fine translucent edge and tiny rough cream patch underneath, complete shell visible, no slice or geode crosscut",
+      "prompt": "Use case: stylized-concept. Glaze Agate Apricot original standalone 1024 x 1024 square pure artwork of one elegant small spiral seashell sculpture carved from banded agate, gentle muted apricot, slate-blue, ivory and grey mineral bands following the carved spiral, fine translucent edge and tiny rough cream patch underneath, complete shell visible, no slice or geode crosscut. Refined realistic mineral material photographic illustration on seamless pale warm putty #E7E1D7 matte backdrop/floor, muted apricot #C29275/slateblue #7290A3/ivory/soft grey, soft diffuse window light, subtle translucency and velvety natural contact shadow, no plastic shine. Match reference medium. Entire compact object centred within16percent clear margins, new object/composition no copy/crop/recolour. No labels, specimen claims, text, numbers, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-77b0b8c2-d6c3-4595-ac5e-a7917152fcbf.png",
+      "image": "widget-agate-shell-carving.1a70b23b.webp",
+      "sha256": "1a70b23b392bb788ed36787126986d4d58910763a0b62239d7ac9a85e183e125",
+      "bytes": 89364,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

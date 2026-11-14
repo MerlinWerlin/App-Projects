@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "glider-nook",
+  "packVersion": 1,
+  "name": "Glider Nook",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DDE1C9",
+    "tile": "#C2C5B0",
+    "glyph": "#1C1816",
+    "accent": "#8E6F4C",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Glider Nook",
+    "mood": "A tiny glider tucked into a pistachio paper nook.",
+    "tags": [
+      "glider",
+      "nook",
+      "tiny",
+      "tucked",
+      "into",
+      "pistachio",
+      "paper",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tallportrait9:19.5 iPhone wallpaper GLIDER NOOK. Pale pistachio #E5EAD9 matte paper background, upper TWO THIRDS EMPTY quiet uniform color with subtle fine fibers. Bottomthird one adorable tiny NEEDLE-FELT SUGAR GLIDER perched on a short cork branch with two soft sage felt leaves. Cream/tan rounded body, large dark glossy eyes, small rounded ears with pink innerfelt, dark narrow stripe down forehead/back, four little paws, fluffy long curved tail. Holds one tiny felt seed. Lovely fuzzy wool texture and neat stitched details, soft warm studio light, sophisticated handcrafted miniature fantasy, small contained scene low with margins. No axolotl gills, wings, bat, koala, acorn cart, leaf parasol, text, logos, UI, phone orframe. Original generated craft-style character.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "8ggGCwK4f2WHhHykR4B4BIc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2a3642fe.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 131616,
+      "sha256": "2a3642fead107ab9e5d15e10cc3dccb8f9043fab38c8a3105d60167424bd04c9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.caef74d4.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 116690,
+      "sha256": "caef74d44d407180827fab7f59ce44db1c5723212743c7b80f5c43959bbd645b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.f402fd54.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 56334,
+      "sha256": "f402fd54e4b708b31d1a018630b88a8d81197a0f511b064b9eea03c60d093c24",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.eefe8335.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 31982,
+      "sha256": "eefe8335709d857d4f7e5e445e0c5ed0f99cdf803bf72542802fb3c9b8506a99",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.aa9bf71e.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 60704,
+      "sha256": "aa9bf71e545ee531c1fdf99200252eaeedf4466373a1520450aea6768792ab1b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.5c121fdd.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 143970,
+      "sha256": "5c121fddb95292ea1418dc5dabe6c1d8fef1ca6c75339a530d6d8488647c87dc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.eef1bb88.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7402,
+      "sha256": "eef1bb88f43ad48b21d9a24ac303f53740483b56a12e1efe1f1cd878bdd213e3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-felt-leaves.d828f003.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 128700,
+      "sha256": "d828f00348c5af9429b8dc3cb96e2b19fcf21626147b804e8bba0249132c8f20",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-leaf-progress.a5020d91.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 58552,
+      "sha256": "a5020d913b04815ff64a6c5f140745a73b53a5614f5c49f9a83d461e40e3d075",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-nook-date.258d0097.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 57626,
+      "sha256": "258d0097d0ee0d3a54e9f81e8c8702185e920b2516633b32f89eb2be5705b8ab",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-seed-keeper.18bb0117.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 114564,
+      "sha256": "18bb0117301f3370af66613ec3c6c8a53c50e952bd7e6c598fef46879f063e9d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tail-clock.dd8e1882.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 123066,
+      "sha256": "dd8e1882db36790e1dd13495bbf0dbf87b42a3bb00bfb1aec737d2e33070638a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-winglet.0f022531.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84248,
+      "sha256": "0f02253189516c952f8e507f463705f5bd2c50d87671d43c42f21c3885955814",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1115454,
+  "widgets": [
+    {
+      "id": "felt-leaves",
+      "kind": "art",
+      "image": "widget-felt-leaves.d828f003.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Felt leaves"
+    },
+    {
+      "id": "leaf-progress",
+      "kind": "art",
+      "image": "widget-leaf-progress.a5020d91.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Leaf progress"
+    },
+    {
+      "id": "nook-date",
+      "kind": "calendar",
+      "image": "widget-nook-date.258d0097.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Nook date"
+    },
+    {
+      "id": "seed-keeper",
+      "kind": "art",
+      "image": "widget-seed-keeper.18bb0117.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Seed keeper"
+    },
+    {
+      "id": "tail-clock",
+      "kind": "clock",
+      "image": "widget-tail-clock.dd8e1882.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tail clock"
+    },
+    {
+      "id": "winglet",
+      "kind": "art",
+      "image": "widget-winglet.0f022531.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Winglet"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.eefe8335.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.aa9bf71e.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.5c121fdd.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

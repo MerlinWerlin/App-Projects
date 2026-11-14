@@ -1,0 +1,26 @@
+[
+  {
+    "id": "copper-fin-array",
+    "kind": "art",
+    "image": "widget-copper-fin-array.b911c243.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Copper fin array"
+  },
+  {
+    "id": "ceramic-transistor",
+    "kind": "art",
+    "image": "widget-ceramic-transistor.b3e3dfd4.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ceramic transistor"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "resting-crane",
+    "kind": "art",
+    "image": "widget-resting-crane.2da7eb69.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Resting crane"
+  },
+  {
+    "id": "reed-skiff",
+    "kind": "art",
+    "image": "widget-reed-skiff.fc0af3b6.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Reed skiff"
+  }
+]

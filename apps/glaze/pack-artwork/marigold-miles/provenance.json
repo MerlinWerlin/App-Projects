@@ -1,0 +1,40 @@
+{
+  "theme": "marigold-miles",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "marigold-miles",
+      "id": "marigold-key-fob",
+      "label": "Marigold key fob",
+      "ref": "140-marigold-miles\\widgets\\chrome-headlamp.png",
+      "subject": "one elegant small unbranded vintage scooter key with a plain brushed-chrome head and coherent cut blade, attached by a little chrome ring to a smooth marigold enamel oval fob with an ivory inset and short navy leather loop. No lettering, emblems or markings, no scooter/headlamp/helmet",
+      "prompt": "Use case: stylized-concept. Glaze Marigold Miles: original 1024 x 1024 square pure artwork of one elegant small unbranded vintage scooter key with a plain brushed-chrome head and coherent cut blade, attached by a little chrome ring to a smooth marigold enamel oval fob with an ivory inset and short navy leather loop. No lettering, emblems or markings, no scooter/headlamp/helmet. Refined realistic enamel/leather/chrome miniature product photographic illustration, seamless pale periwinkle #DDE2EB matte studio background and floor, marigold #C69A42 navy and ivory palette, delicate chrome reflections, soft studio shadow matching reference. New subject/composition never copy/crop/recolour. Whole compact object centred with 16 percent clear safe margins. No brands, plates, text, numerals, logos, watermarks, UI/frame, clocks/dials/hands, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-2f1c427f-ab06-4106-9414-0871a4f092d9.png",
+      "image": "widget-marigold-key-fob.810413d4.webp",
+      "sha256": "810413d4cafdc105df6cc77a1ce646bd1f3da47611287f7204f628a46bc22274",
+      "bytes": 88086,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "marigold-miles",
+      "id": "navy-scooter-saddle",
+      "label": "Navy scooter saddle",
+      "ref": "140-marigold-miles\\widgets\\marigold-scooter.png",
+      "subject": "one sculptural vintage scooter saddle, deep navy stitched leather with ivory piping, two small visible chrome suspension springs underneath and a muted marigold enamel mounting bracket, complete freestanding accessory, no whole scooter, headlamp or helmet",
+      "prompt": "Use case: stylized-concept. Glaze Marigold Miles: original 1024 x 1024 square pure artwork of one sculptural vintage scooter saddle, deep navy stitched leather with ivory piping, two small visible chrome suspension springs underneath and a muted marigold enamel mounting bracket, complete freestanding accessory, no whole scooter, headlamp or helmet. Refined realistic enamel/leather/chrome miniature product photographic illustration, seamless pale periwinkle #DDE2EB matte studio background and floor, marigold #C69A42 navy and ivory palette, delicate chrome reflections, soft studio shadow matching reference. New subject/composition never copy/crop/recolour. Whole compact object centred with 16 percent clear safe margins. No brands, plates, text, numerals, logos, watermarks, UI/frame, clocks/dials/hands, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-2583117f-d009-423d-910a-8513a2e9877d.png",
+      "image": "widget-navy-scooter-saddle.3dbac92d.webp",
+      "sha256": "3dbac92d12e6b4d2db33c29246d02821b2b9513764cad26a70a3bdeae6bc721e",
+      "bytes": 123550,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

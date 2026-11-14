@@ -1,0 +1,271 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "marigold-miles",
+  "packVersion": 1,
+  "name": "Marigold Miles",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#CFD8EA",
+    "tile": "#B6BDCC",
+    "glyph": "#1C1816",
+    "accent": "#826F4E",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Marigold Miles",
+    "mood": "Marigold garlands on pale periwinkle.",
+    "tags": [
+      "marigold",
+      "miles",
+      "garlands",
+      "pale",
+      "periwinkle",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 iPhone wallpaper MARIGOLD MILES. Upper72percent EMPTY calm pale periwinkle #DDE2EB matte studio field, no roads or objects behind icons. Bottom24percent a SMALL complete original unbranded vintage-style motor scooter in marigold enamel #C69A42, navy saddle/grips, ivory wheel rims, delicate chrome round headlamp and two small mirrors. Elegant three-quarter side view, whole TWO wheels, mirrors, handlebars and stand visible within broad margins. Vignette only48percent canvas width,20percent height, centered low on matching periwinkle floor, soft studio shadow. Refined realistic enamel/metal details, original fictional shape, no recognizable brand/model, plates, lettering, people, helmet, scenery, phone, UI or frame.",
+    "addedAt": "2026-11-01",
+    "category": "Seasonal"
+  },
+  "thumbhash": "svcFCwKnj2Z4c42TR3CHBYc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.dcc3d443.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 64436,
+      "sha256": "dcc3d443b9bb1c11ab4897075582cc0c37859487af8d957ac1ab1fed8ceea198",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.7a41af3e.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 57632,
+      "sha256": "7a41af3ef5548367f0d101b3b0a6d304f3ce948a2ee6d7ea272acc49a7feae15",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.0d7a9764.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 32004,
+      "sha256": "0d7a9764509f7263f8fc940855061de8e28eb4399a21135c5c03eb183e71dc60",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.e3cf52b8.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 25448,
+      "sha256": "e3cf52b8efafe3083f8e394dca9af286572582d3d640c93d01ef647133bb5995",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.f08fc33e.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 65304,
+      "sha256": "f08fc33e1e5541d438c9abfa4c89b2ae776e26ed30df4967adafbf15421af205",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.d4aec34f.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 96320,
+      "sha256": "d4aec34fa11f09f2e09d99ad1a6b77e116885b44210b47c0ce0112202705191a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.e8aa379b.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6286,
+      "sha256": "e8aa379b47bf3a523171d81f5d5c89b78b96da668e98509b725c2edf9895e6d4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-chrome-headlamp.a223e1f6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 67094,
+      "sha256": "a223e1f6e4ef0d5c0e3481f5038c5ff1dbdf294420ba39a57a60a3264500d6eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ivory-helmet.4ea7a270.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 64184,
+      "sha256": "4ea7a27004f058f64cff69c732e548980a706f9a236257b6d4bcc8ea225f9bf2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-marigold-scooter.4d3db20b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 74700,
+      "sha256": "4d3db20b05a873afbc4d676564371efa2d9b0c74e2916aeae4df647f41395346",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-miles-clock.80c5931d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 40510,
+      "sha256": "80c5931dd570ab3bc5c55ff5d3b784f37911883610b598b3019895581979fd78",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ride-focus.ebf298a2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 49464,
+      "sha256": "ebf298a23f4f7277ea738079ce9bfc5acf447770a7e19f5dcdf5fff4412f9be8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-road-date.0984bbda.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 29256,
+      "sha256": "0984bbda42ea5ed3d73ddace27f264cb20aa87fe4a1771df607358b71c2a299d",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 672638,
+  "widgets": [
+    {
+      "id": "chrome-headlamp",
+      "kind": "art",
+      "image": "widget-chrome-headlamp.a223e1f6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Chrome headlamp"
+    },
+    {
+      "id": "ivory-helmet",
+      "kind": "art",
+      "image": "widget-ivory-helmet.4ea7a270.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ivory helmet"
+    },
+    {
+      "id": "marigold-scooter",
+      "kind": "art",
+      "image": "widget-marigold-scooter.4d3db20b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Marigold scooter"
+    },
+    {
+      "id": "miles-clock",
+      "kind": "clock",
+      "image": "widget-miles-clock.80c5931d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Miles clock"
+    },
+    {
+      "id": "ride-focus",
+      "kind": "focus",
+      "image": "widget-ride-focus.ebf298a2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ride focus"
+    },
+    {
+      "id": "road-date",
+      "kind": "calendar",
+      "image": "widget-road-date.0984bbda.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Road date"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.e3cf52b8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.f08fc33e.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.d4aec34f.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

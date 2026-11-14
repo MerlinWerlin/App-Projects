@@ -1,0 +1,40 @@
+{
+  "theme": "copper-circuit",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "copper-circuit",
+      "id": "copper-fin-array",
+      "label": "Copper fin array",
+      "ref": "115-copper-circuit\\widgets\\chip-island.png",
+      "subject": "a small sculptural copper heat sink made from six delicately spaced rising curved fins, dark teal base and restrained warm reflections, an elegant architectural miniature of thermal fins, no microchip, wire coil or track pattern",
+      "prompt": "Use case: stylized-concept. Glaze Copper Circuit pure Artwork widget, one original standalone 1024 x 1024 square image of a small sculptural copper heat sink made from six delicately spaced rising curved fins, dark teal base and restrained warm reflections, an elegant architectural miniature of thermal fins, no microchip, wire coil or track pattern. Cinematic macro material photographic illustration, seamless deep matte teal #17262B background and ground, copper #CE9470 edges with tiny muted sage accents, subtle warm metallic light, restrained premium technical mood, match reference material finish. Whole compact object centered with 16 percent clear safe margins. New composition/subject, not crop/copy/recolour. No circuit data, voltage values, text, writing, numbers, logos, watermark, UI, frame, clocks/hands/dials, date/calendar, focus/battery/progress imagery. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-627ef9c3-d1ef-4ffb-abf2-f6b7269b9467.png",
+      "image": "widget-copper-fin-array.b911c243.webp",
+      "sha256": "b911c243f62e30cf0621341432c3167d3451047f087fd5b647550b797749f4b8",
+      "bytes": 96484,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "copper-circuit",
+      "id": "ceramic-transistor",
+      "label": "Ceramic transistor",
+      "ref": "115-copper-circuit\\widgets\\copper-coil.png",
+      "subject": "one vintage unmarked tiny sage ceramic transistor with a rounded rectangular body and three gently bent polished copper legs, beside one small matte charcoal component, refined precise electronics still-life, no labels, no wire coil, no microchip",
+      "prompt": "Use case: stylized-concept. Glaze Copper Circuit pure Artwork widget, one original standalone 1024 x 1024 square image of one vintage unmarked tiny sage ceramic transistor with a rounded rectangular body and three gently bent polished copper legs, beside one small matte charcoal component, refined precise electronics still-life, no labels, no wire coil, no microchip. Cinematic macro material photographic illustration, seamless deep matte teal #17262B background and ground, copper #CE9470 edges with tiny muted sage accents, subtle warm metallic light, restrained premium technical mood, match reference material finish. Whole compact object centered with 16 percent clear safe margins. New composition/subject, not crop/copy/recolour. No circuit data, voltage values, text, writing, numbers, logos, watermark, UI, frame, clocks/hands/dials, date/calendar, focus/battery/progress imagery. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-c132c423-cfbb-46d9-b542-aab1430e3e31.png",
+      "image": "widget-ceramic-transistor.b3e3dfd4.webp",
+      "sha256": "b3e3dfd48842647f441fb60ea9824745acee3c6ea517a9313d92d83efd2205e0",
+      "bytes": 65190,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

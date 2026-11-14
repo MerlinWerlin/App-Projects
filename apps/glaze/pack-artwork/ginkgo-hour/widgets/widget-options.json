@@ -1,0 +1,14 @@
+[
+  {
+    "id": "golden-ginkgo-fruit",
+    "kind": "art",
+    "image": "widget-golden-ginkgo-fruit.eab88e34.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Golden ginkgo fruit"
+  }
+]

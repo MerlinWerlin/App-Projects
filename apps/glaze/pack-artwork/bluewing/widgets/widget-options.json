@@ -1,0 +1,14 @@
+[
+  {
+    "id": "sapphire-bluebell",
+    "kind": "art",
+    "image": "widget-sapphire-bluebell.dec917b9.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sapphire bluebell"
+  }
+]

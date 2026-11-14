@@ -1,0 +1,26 @@
+[
+  {
+    "id": "clay-water-lily",
+    "kind": "art",
+    "image": "widget-clay-water-lily.20f56c24.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Clay water lily"
+  },
+  {
+    "id": "clay-river-turtle",
+    "kind": "art",
+    "image": "widget-clay-river-turtle.d578e68c.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Clay river turtle"
+  }
+]

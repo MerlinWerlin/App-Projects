@@ -1,0 +1,38 @@
+{
+  "theme": "mochi-sleepover",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__mochi-sleepover__v7__manifest.json",
+    "sha256": "1c78b832c6bfa1857dc4d15f66bc3030ef24f329dc9434b64fda63fc39ca7772",
+    "packVersion": 7,
+    "existingArtwork": [
+      "star-hot-water-bottle",
+      "hero-small",
+      "art-20261107-pillow-fort",
+      "art-20261107-sleepover-lantern"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "cloud-sleep-mask",
+      "label": "Cloud sleep mask",
+      "file": "widgets/widget-cloud-sleep-mask.20aa5a8d.webp",
+      "sha256": "20aa5a8d2b4b100ba8b39bd73e44aeac0cab2fecdf88c504d1681070f7694faa",
+      "bytes": 144610,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-479ea385-ee2e-4970-8975-51134f58cb8b.png",
+      "sourceSha256": "c3269b4f5792e5e8b8b8344cbd1c47bc9797401ef0934bddac634e011c5c6659",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for mochi-sleepover. One adorably plush ivory cloud-shaped sleeping mask with two tiny cocoa embroidered closed eyes, soft strawberry-pink cheeks, lilac satin elastic loops and one small buttery-yellow star charm sewn onto a corner. Fine fuzzy plush fleece, tactile embroidered seams, premium soft kawaii craft photography, lilac/ivory/pink/butter-yellow palette. No face wearing it, no bunny, hot-water bottle, lantern, pillow fort, clock or text. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 743367,
+      "opaquePixels": 242
+    }
+  ]
+}

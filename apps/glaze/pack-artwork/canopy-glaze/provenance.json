@@ -1,0 +1,40 @@
+{
+  "theme": "canopy-glaze",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "canopy-glaze",
+      "id": "canopy-orchid",
+      "label": "Canopy orchid",
+      "ref": "121-canopy-glaze\\widgets\\leaf-relief.png",
+      "subject": "one sculptural small ceramic orchid spray of three delicate flowers on a terracotta stem, jade and celadon glazed petals with unglazed warm clay rims and cream throats, upright airy botanical collectible. No monstera leaf, animal or circular medallion",
+      "prompt": "Use case: stylized-concept. Glaze Canopy Glaze, one original standalone 1024 x 1024 square pure illustration. one sculptural small ceramic orchid spray of three delicate flowers on a terracotta stem, jade and celadon glazed petals with unglazed warm clay rims and cream throats, upright airy botanical collectible. No monstera leaf, animal or circular medallion. Tactile premium satin-glazed stoneware still-life, warm pale stone #EBE8DE seamless background and surface, jade/olive/terracotta palette, soft realistic studio light and subtle grounded shadow. Same medium and material quality as style reference, new subject and composition. Fully contained compact arrangement with 16 percent clear safe margins. No text, numerals, labels, logo, watermark, UI, frame, clock hands/dials, date/calendar, focus/battery/progress imagery. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-ebec700f-f7df-4fc2-9d34-d10615155450.png",
+      "image": "widget-canopy-orchid.8b56ff54.webp",
+      "sha256": "8b56ff54593d721850035e15fc7896bd11fbbe2395689c7baf6898b28a84ae21",
+      "bytes": 164018,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "canopy-glaze",
+      "id": "jade-tree-frog",
+      "label": "Jade tree frog",
+      "ref": "121-canopy-glaze\\widgets\\jade-climber.png",
+      "subject": "one tiny ceramic tree frog crouched on a small warm terracotta pebble, coherent four feet and rounded toe pads, olive-jade satin glaze with dark green pooling over gently stippled skin, tiny warm clay edges, exquisite handcrafted collectible, three-quarter view. No chameleon, curled tail or leaf",
+      "prompt": "Use case: stylized-concept. Glaze Canopy Glaze, one original standalone 1024 x 1024 square pure illustration. one tiny ceramic tree frog crouched on a small warm terracotta pebble, coherent four feet and rounded toe pads, olive-jade satin glaze with dark green pooling over gently stippled skin, tiny warm clay edges, exquisite handcrafted collectible, three-quarter view. No chameleon, curled tail or leaf. Tactile premium satin-glazed stoneware still-life, warm pale stone #EBE8DE seamless background and surface, jade/olive/terracotta palette, soft realistic studio light and subtle grounded shadow. Same medium and material quality as style reference, new subject and composition. Fully contained compact arrangement with 16 percent clear safe margins. No text, numerals, labels, logo, watermark, UI, frame, clock hands/dials, date/calendar, focus/battery/progress imagery. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-b996c119-0173-42b2-9a50-6c00c80b60de.png",
+      "image": "widget-jade-tree-frog.cc0bb31b.webp",
+      "sha256": "cc0bb31b7dc3b684af542b186377024ef3574457512fe84f238b9035d0a25bd5",
+      "bytes": 139516,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bowtie-inlay",
+    "kind": "art",
+    "image": "widget-bowtie-inlay.bc521627.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bowtie inlay"
+  },
+  {
+    "id": "veneer-wave",
+    "kind": "art",
+    "image": "widget-veneer-wave.8fdca9e0.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Veneer wave"
+  }
+]

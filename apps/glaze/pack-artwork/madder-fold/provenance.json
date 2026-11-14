@@ -1,0 +1,40 @@
+{
+  "theme": "madder-fold",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "madder-fold",
+      "id": "dyed-thread-skein",
+      "label": "Dyed thread skein",
+      "ref": "129-madder-fold\\widgets\\folded-cotton.png",
+      "subject": "one loosely looped skein of madder-rust cotton thread, soft ivory binding around its middle, two gracefully curling loose strand ends. Delicate natural cotton fibres and restrained deep rust dye variations, entire skein visible, no folded cloth, fan or printed rings",
+      "prompt": "Use case: stylized-concept. Glaze Madder Fold, original 1024 x 1024 square pure artwork of one loosely looped skein of madder-rust cotton thread, soft ivory binding around its middle, two gracefully curling loose strand ends. Delicate natural cotton fibres and restrained deep rust dye variations, entire skein visible, no folded cloth, fan or printed rings. Realistic premium textile still-life photographic illustration, deep muted madder-rust #713F3D seamless cotton background/floor, restrained rust/ivory palette, soft fibre texture and warm studio shadow matching reference craft world. No regional provenance claim. Entire compact subject centred with 16 percent empty margins, new composition never copy/crop/recolour. No text, numerals, logos, UI/frame, watermark, clock/dial/hands, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-78845c38-c75b-45d2-89a8-1924af151653.png",
+      "image": "widget-dyed-thread-skein.114d88ad.webp",
+      "sha256": "114d88adce80c05b162c8656afff6438d8ed187a1bf27194b65177a0bebd1031",
+      "bytes": 270972,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "madder-fold",
+      "id": "stitched-cotton-pod",
+      "label": "Stitched cotton pod",
+      "ref": "129-madder-fold\\widgets\\pleat-study.png",
+      "subject": "one small sculptural handmade cotton seedpod form sewn from madder-rust and ivory resist-dyed cloth, three softly rounded lobes, subtle ivory running stitches along seams and a short twisted cotton stem, tactile artisan textile, no folded square, fan or rings",
+      "prompt": "Use case: stylized-concept. Glaze Madder Fold, original 1024 x 1024 square pure artwork of one small sculptural handmade cotton seedpod form sewn from madder-rust and ivory resist-dyed cloth, three softly rounded lobes, subtle ivory running stitches along seams and a short twisted cotton stem, tactile artisan textile, no folded square, fan or rings. Realistic premium textile still-life photographic illustration, deep muted madder-rust #713F3D seamless cotton background/floor, restrained rust/ivory palette, soft fibre texture and warm studio shadow matching reference craft world. No regional provenance claim. Entire compact subject centred with 16 percent empty margins, new composition never copy/crop/recolour. No text, numerals, logos, UI/frame, watermark, clock/dial/hands, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-f0e13358-39e0-43eb-9ec5-66f78d93bc5c.png",
+      "image": "widget-stitched-cotton-pod.08bb8be8.webp",
+      "sha256": "08bb8be8d7035245ceb31d9726567f933b69310fd9e8662eb926d9d6b6a34413",
+      "bytes": 351542,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

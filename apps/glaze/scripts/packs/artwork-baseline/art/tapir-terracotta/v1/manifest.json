@@ -1,0 +1,270 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "tapir-terracotta",
+  "packVersion": 1,
+  "name": "Tapir Terracotta",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EDD1BE",
+    "tile": "#D0B7A6",
+    "glyph": "#1C1816",
+    "accent": "#8C6954",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Tapir Terracotta",
+    "mood": "A gentle tapir on pale terracotta.",
+    "tags": [
+      "tapir",
+      "terracotta",
+      "gentle",
+      "pale",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 iPhone wallpaper TAPIR TERRACOTTA. Upper70percent EMPTY calm pale terracotta #EFE0D4 matte clay field with almost invisible mineral grain, no objects or patterns behind icons. Bottom25percent one SMALL original ceramic tapir, dark cocoa #5D4C46 head/front and hindquarters with wide ivory #E4D3BF saddle across middle, short rounded trunk, little round ears, four short legs, peaceful side three-quarter pose. Tiny sage-green tropical leaf and three smooth terracotta pebbles beside its feet. WHOLE vignette only45percent canvas width,20percent height, centered low with broad margins. Refined handcrafted stoneware, soft satin glaze, tiny pinprick eye, tactile subtle speckles, soft studio shadow on matching clay floor. No faces on leaf, no people, text, logo, phone, frame or borders. Original sculpture, not realism/specimen.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "MjkGAwDGn0SXd4vCaXCKBqc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.975530ef.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 47474,
+      "sha256": "975530efd74bf3ed05f6f863c96b1b9fb6ac2445be74e2c7ef402cc8ff125202",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.a5dc4a52.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 41330,
+      "sha256": "a5dc4a52080eba51ee5bf614f8cb2752c259015b904ebe685e234d9b4c0d13c5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.e6c7ff41.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 19094,
+      "sha256": "e6c7ff41c8d11885416259f37de00ffe94033c744a29ad612c4773199897c075",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.2683117b.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 24114,
+      "sha256": "2683117b63162f91005c23171b29bfff4c73496ea18a4aa0e5815efd2d109371",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.bf58ab36.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 53194,
+      "sha256": "bf58ab36018883aa31661cf1c6af1ee4d3580f28f373954ffaad92c44fa0105f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.983cc063.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 120568,
+      "sha256": "983cc06382c4e0445f723ecd48c1aa594b5750d6280b8230b22787054a4e5cda",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.89d533e3.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 2806,
+      "sha256": "89d533e3857878077aadcb8b85deb480f3cb8f929ee6375ebbcaed28ab523ceb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ceramic-tapir.f0dc6a47.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 64384,
+      "sha256": "f0dc6a47dbbe77292ee66c93b18fdb69a57c0bd9bb51b22303ead77eae0b9ee3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-clay-date.5c6ef883.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 53212,
+      "sha256": "5c6ef883d0a892f58538a77b16172d8984fdc199ebce1ceebf1dc7c80e6e1af9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-clay-pebbles.a1c437e8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 47708,
+      "sha256": "a1c437e88692400b46ea889fc6f69c307f7906504ec0148e812aa2be1ffeabae",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sage-leaf.4c51fed0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 62794,
+      "sha256": "4c51fed0bfcf310dc34f03ead36ff98500dea6f60a5737095453f0a24e5573b6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tapir-clock.6cfb6e07.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 44612,
+      "sha256": "6cfb6e076eb62ae15906c5a5c6418844470d97bd458f5692624d72ca70ae44b0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-water-drops.7d353ecc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 70828,
+      "sha256": "7d353ecced23edb7a0a1eddba32108e5751e7944c1dd34cb548e0dc86ba73084",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 652118,
+  "widgets": [
+    {
+      "id": "ceramic-tapir",
+      "kind": "art",
+      "image": "widget-ceramic-tapir.f0dc6a47.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ceramic tapir"
+    },
+    {
+      "id": "clay-date",
+      "kind": "calendar",
+      "image": "widget-clay-date.5c6ef883.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Clay date"
+    },
+    {
+      "id": "clay-pebbles",
+      "kind": "art",
+      "image": "widget-clay-pebbles.a1c437e8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Clay pebbles"
+    },
+    {
+      "id": "sage-leaf",
+      "kind": "art",
+      "image": "widget-sage-leaf.4c51fed0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sage leaf"
+    },
+    {
+      "id": "tapir-clock",
+      "kind": "clock",
+      "image": "widget-tapir-clock.6cfb6e07.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tapir clock"
+    },
+    {
+      "id": "water-drops",
+      "kind": "art",
+      "image": "widget-water-drops.7d353ecc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Water drops"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.2683117b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.bf58ab36.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.983cc063.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

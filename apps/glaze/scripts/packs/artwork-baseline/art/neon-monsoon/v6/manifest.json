@@ -1,0 +1,293 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "neon-monsoon",
+  "packVersion": 6,
+  "name": "Neon Monsoon",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#0B0A14",
+    "tile": "#2C2B33",
+    "glyph": "#FAF8F2",
+    "accent": "#997E8C",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Neon Monsoon",
+    "mood": "A rainy neon alley with a tiny ramen shop.",
+    "tags": [
+      "neon",
+      "monsoon",
+      "rainy",
+      "alley",
+      "with",
+      "tiny",
+      "ramen",
+      "shop",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Nicolas Caetano (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "yBcGCwSGkLiGinWJFoBYBrg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.b6fdf8a8.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 249960,
+      "sha256": "b6fdf8a8ffc35baae8ab00a662e6094e73de93e2ed59c5518a0867a446ee6014",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.bfad2505.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 226216,
+      "sha256": "bfad250568839ad4870109792733edb1d368062c7763c765c7ba08bc3d3b1c66",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.1035c485.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 114866,
+      "sha256": "1035c48568302447eaaf439651f9bc4dde8e5e53d7f596ee6d5019b85fa8d02e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.a9dfac6d.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 64096,
+      "sha256": "a9dfac6da4be90f3a75ff16d23d8657a2b0a76ef45ea9c0eed783503f2804016",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.4e509823.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 127676,
+      "sha256": "4e509823def8b5f2419fd9fe9bd16a7af5186063bd563febaddbfdf3f067cd84",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.a19468c2.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 213412,
+      "sha256": "a19468c29bd6f4f93ea6830b54652731eb5492bf905676304852b896360b023a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.7983814f.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 20420,
+      "sha256": "7983814ffd22226c401a41523d7350dede65bf5b43f30a942a864a06f7c70e09",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.a1f8b8d2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 169458,
+      "sha256": "a1f8b8d2f9739c27ee1fae10496a5790a79425e093780cb2261158d1d97c0ad6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-audit-20261101-rain-flip-clock.3b8a1ea0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 191332,
+      "sha256": "3b8a1ea0ade6d6a6a3dfc9ae5d08c56891d15898c02d1a9e53c807ce20e37724",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-monsoon-date.ae586857.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 257408,
+      "sha256": "ae586857c7e1c5923c84183da8530880e59f89239acf2d805446dceb13121e51",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-neon-paper-fish.a2fb26fa.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 186272,
+      "sha256": "a2fb26fa3bee10648139f6a9a6df58a8e1d57f92a42c94f26b8b5f5b512db4eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rain-capsule.e16cd9ab.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 192648,
+      "sha256": "e16cd9ab084f256c9fba7993237234d72320273dfd887a94e3a1a2767c651a13",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-midnight-ramen.c3c850cb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 215724,
+      "sha256": "c3c850cb11176dfdf15f0f2c80490dfc8b9570815722b5706f2c266cf874ab69",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.b173bab1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 7546,
+      "sha256": "b173bab139d4e391aa11df3e0449c97f1d5e33b871e933ba0f7c8915ddd03797",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2237034,
+  "widgets": [
+    {
+      "id": "audit-20261101-rain-flip-clock",
+      "kind": "clock",
+      "image": "widget-audit-20261101-rain-flip-clock.3b8a1ea0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Audit 20261101 rain flip clock"
+    },
+    {
+      "id": "monsoon-date",
+      "kind": "calendar",
+      "image": "widget-monsoon-date.ae586857.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Monsoon date"
+    },
+    {
+      "id": "neon-paper-fish",
+      "kind": "art",
+      "image": "widget-neon-paper-fish.a2fb26fa.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Neon paper fish"
+    },
+    {
+      "id": "rain-capsule",
+      "kind": "art",
+      "image": "widget-rain-capsule.e16cd9ab.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rain capsule"
+    },
+    {
+      "id": "midnight-ramen",
+      "kind": "art",
+      "image": "widget-midnight-ramen.c3c850cb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Midnight ramen"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.b173bab1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.a9dfac6d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.4e509823.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.a19468c2.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

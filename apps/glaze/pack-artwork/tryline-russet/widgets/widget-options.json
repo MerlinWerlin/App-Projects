@@ -1,0 +1,26 @@
+[
+  {
+    "id": "brass-referee-whistle",
+    "kind": "art",
+    "image": "widget-brass-referee-whistle.d5b06789.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Brass referee whistle"
+  },
+  {
+    "id": "heritage-scrum-cap",
+    "kind": "art",
+    "image": "widget-heritage-scrum-cap.0f7fee58.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Heritage scrum cap"
+  }
+]

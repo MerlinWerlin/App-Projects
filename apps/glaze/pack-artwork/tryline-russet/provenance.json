@@ -1,0 +1,40 @@
+{
+  "theme": "tryline-russet",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "tryline-russet",
+      "id": "brass-referee-whistle",
+      "label": "Brass referee whistle",
+      "ref": "145-tryline-russet\\widgets\\russet-ball.png",
+      "subject": "one compact antique-brass rugby referee whistle with a short neatly looped russet leather lanyard, subtle brushed metal patina, ivory stitching on the leather, whole whistle and cord visible, no ball, boot, posts or cap",
+      "prompt": "Use case: stylized-concept. Glaze Tryline Russet original standalone1024x1024 square pure artwork of one compact antique-brass rugby referee whistle with a short neatly looped russet leather lanyard, subtle brushed metal patina, ivory stitching on the leather, whole whistle and cord visible, no ball, boot, posts or cap. Refined realistic heritage sports-equipment photographic illustration on seamless dark umber #332C29 matte leather-grain backdrop/floor, russet/ivory/brass palette, fine worn leather and soft warm studio shadow matching reference. New object/composition no copy/crop/recolour. Whole compact subject centred within16percent empty safe margins. No brand/team marks, score, labels, letters, numbers, watermark, UI/frame, clocks/hands/dials, dates/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-3f145b14-9c2c-4978-b34d-ba58d89d7727.png",
+      "image": "widget-brass-referee-whistle.d5b06789.webp",
+      "sha256": "d5b067892b710f619749fcb30dc4a36c20c84f3a4d09c5594c30d9a46ac0ff17",
+      "bytes": 225900,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "tryline-russet",
+      "id": "heritage-scrum-cap",
+      "label": "Heritage scrum cap",
+      "ref": "145-tryline-russet\\widgets\\stitched-boot.png",
+      "subject": "one refined heritage rugby scrum cap made from russet leather padded panels, neat ivory cross-stitching and a softly curved cream chin strap, complete coherent cap silhouette, no person, ball, boot or posts",
+      "prompt": "Use case: stylized-concept. Glaze Tryline Russet original standalone1024x1024 square pure artwork of one refined heritage rugby scrum cap made from russet leather padded panels, neat ivory cross-stitching and a softly curved cream chin strap, complete coherent cap silhouette, no person, ball, boot or posts. Refined realistic heritage sports-equipment photographic illustration on seamless dark umber #332C29 matte leather-grain backdrop/floor, russet/ivory/brass palette, fine worn leather and soft warm studio shadow matching reference. New object/composition no copy/crop/recolour. Whole compact subject centred within16percent empty safe margins. No brand/team marks, score, labels, letters, numbers, watermark, UI/frame, clocks/hands/dials, dates/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-c4dafdc6-dfe2-4c68-9073-f37658817ce2.png",
+      "image": "widget-heritage-scrum-cap.0f7fee58.webp",
+      "sha256": "0f7fee589a1e699a1b7d9a63000b0d5e54983fd3a8184145017cf80e397e3835",
+      "bytes": 237598,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

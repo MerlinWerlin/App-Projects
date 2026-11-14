@@ -1,0 +1,38 @@
+{
+  "theme": "regatta-blue",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__regatta-blue__v7__manifest.json",
+    "sha256": "15c926ad6f51755ceccdc33e8a6796ca0c099b9abf92adc785f7a04f751f6e55",
+    "packVersion": 7,
+    "existingArtwork": [
+      "sail-glass-bottle",
+      "hero-small",
+      "art-20261107-brass-sextant",
+      "art-20261107-sail-knot"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "brass-yacht-anchor",
+      "label": "Brass yacht anchor",
+      "file": "widgets/widget-brass-yacht-anchor.13c9d46b.webp",
+      "sha256": "13c9d46b188a3a93c5a867f6735aa863020eff2193e34ff20eed8afd4e619c42",
+      "bytes": 175642,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-f88d4af6-6057-43bd-9187-29edbff64235.png",
+      "sourceSha256": "92081ee7f9d46e32e139a5bb1b4472d9ab738716aa7b8f218c043d74b3b4675b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for regatta-blue. One elegant polished aged-brass yacht anchor in three-quarter view, dark navy wrapped central shaft, a short beautifully woven ivory rope loosely draped around it and a small warm walnut mounting foot. Premium marine collectible still-life photography, realistic brushed brass and rope fibres, warm highlights and deep-navy reflected shadows, navy/ivory/brass/walnut palette. No boat, whale, bottle, sextant, cleat, gauge or measurement marks. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 777435,
+      "opaquePixels": 1581
+    }
+  ]
+}

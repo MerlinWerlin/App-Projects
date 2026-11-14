@@ -1,0 +1,26 @@
+[
+  {
+    "id": "moss-footbridge",
+    "kind": "art",
+    "image": "widget-moss-footbridge.0fabed9c.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Moss footbridge"
+  },
+  {
+    "id": "oak-sluice-gate",
+    "kind": "art",
+    "image": "widget-oak-sluice-gate.97511227.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Oak sluice gate"
+  }
+]

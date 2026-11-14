@@ -1,0 +1,26 @@
+{
+  "theme": "firefly-grove",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "firefly-grove",
+      "id": "mossy-hedgehog",
+      "label": "Mossy hedgehog",
+      "ref": "008-firefly-grove\\wallpapers\\wallpaper.png",
+      "subject": "one small awake natural hedgehog sitting on a soft moss hummock under a gently arching fern tip, delicate warm ivory-brown spines and coherent little paws, two dim amber fireflies nearby, whole creature visible",
+      "style": "Tasteful subtly magical woodland diorama photographic realism at blue-hour twilight, seamless deep forest-green haze with distant soft tree silhouettes, rich velvety moss, sage, muted ivory and restrained amber light, same premium quiet handmade scene as reference",
+      "avoid": "No fox, jar, doorway, lantern or mushroom cluster",
+      "prompt": "Use case: stylized-concept. Glaze firefly-grove: original standalone 1024 x 1024 square pure artwork. Subject one small awake natural hedgehog sitting on a soft moss hummock under a gently arching fern tip, delicate warm ivory-brown spines and coherent little paws, two dim amber fireflies nearby, whole creature visible. Tasteful subtly magical woodland diorama photographic realism at blue-hour twilight, seamless deep forest-green haze with distant soft tree silhouettes, rich velvety moss, sage, muted ivory and restrained amber light, same premium quiet handmade scene as reference. No fox, jar, doorway, lantern or mushroom cluster. Entire compact composition centred within16percent clear margins, new subject/composition no copy/crop/recolour. No text, labels, numbers, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-44d43ccd-94cf-472d-8a89-158814f46f77.png",
+      "image": "widget-mossy-hedgehog.99811653.webp",
+      "sha256": "9981165351f35d42c6cc150a2d410efb451fbbeede9e08173421067259a6e23b",
+      "bytes": 177728,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

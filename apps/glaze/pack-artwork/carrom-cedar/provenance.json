@@ -1,0 +1,40 @@
+{
+  "theme": "carrom-cedar",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "carrom-cedar",
+      "id": "cedar-powder-brush",
+      "label": "Cedar powder brush",
+      "ref": "137-carrom-cedar\\widgets\\cedar-board.png",
+      "subject": "one small polished cedar-handled carrom powder brush lying diagonally, a broad soft cream natural-bristle head with tiny chalk dust at its tip, refined woodgrain, one lacquer red inset detail on handle. Whole brush visible, no board, discs or striker",
+      "prompt": "Use case: stylized-concept. One original standalone 1024 x 1024 square pure artwork for Glaze Carrom Cedar. one small polished cedar-handled carrom powder brush lying diagonally, a broad soft cream natural-bristle head with tiny chalk dust at its tip, refined woodgrain, one lacquer red inset detail on handle. Whole brush visible, no board, discs or striker. Premium tactile handcrafted sports still-life photographic illustration, warm cream #EFE2CD seamless matte background and floor, extremely subtle paper grain, warm cedar #A8754E charcoal #453831 ivory #F8EDD7 restrained lacquer red #B64A4A. Soft studio shadow and elegant material detail as style reference. New object/composition, no copy/crop/recolour. Whole compact object centred within 16 percent clear safe margins. No text, lettering, labels, numbers, logos, watermarks, UI, frames, clock hands/dials, dates/calendars, scoreboards, focus or battery indicators. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-f8fb9eb4-3351-4e60-9f46-8c7b78397986.png",
+      "image": "widget-cedar-powder-brush.4be5a83f.webp",
+      "sha256": "4be5a83f2704c53add72ccf2c563e6ce5939af4d2f0eaee4ca86676a9e18766a",
+      "bytes": 155366,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "carrom-cedar",
+      "id": "cotton-disc-pouch",
+      "label": "Cotton disc pouch",
+      "ref": "137-carrom-cedar\\widgets\\disc-stack.png",
+      "subject": "one small unprinted ivory cotton drawstring pouch with a warm cedar bead on each cord end, open gently to show just one charcoal carrom counter peeking from its mouth, a short red cloth tab. Quiet handcrafted game accessory still life, no board or stacked discs",
+      "prompt": "Use case: stylized-concept. One original standalone 1024 x 1024 square pure artwork for Glaze Carrom Cedar. one small unprinted ivory cotton drawstring pouch with a warm cedar bead on each cord end, open gently to show just one charcoal carrom counter peeking from its mouth, a short red cloth tab. Quiet handcrafted game accessory still life, no board or stacked discs. Premium tactile handcrafted sports still-life photographic illustration, warm cream #EFE2CD seamless matte background and floor, extremely subtle paper grain, warm cedar #A8754E charcoal #453831 ivory #F8EDD7 restrained lacquer red #B64A4A. Soft studio shadow and elegant material detail as style reference. New object/composition, no copy/crop/recolour. Whole compact object centred within 16 percent clear safe margins. No text, lettering, labels, numbers, logos, watermarks, UI, frames, clock hands/dials, dates/calendars, scoreboards, focus or battery indicators. No collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-dff29dbf-339f-45a9-ad38-7a66b5e2cc92.png",
+      "image": "widget-cotton-disc-pouch.16265846.webp",
+      "sha256": "16265846f6a93b0c28c8437884a1dcf3cd7fa240b576bdc713a9d75558001c9b",
+      "bytes": 156172,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

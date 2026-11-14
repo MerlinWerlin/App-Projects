@@ -1,0 +1,274 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "canopy-glaze",
+  "packVersion": 1,
+  "name": "Canopy Glaze",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E7DFD4",
+    "tile": "#CBC3B9",
+    "glyph": "#1C1816",
+    "accent": "#B4AE92",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Canopy Glaze",
+    "mood": "Ceramic still life in leafy glazed greens.",
+    "tags": [
+      "canopy",
+      "glaze",
+      "ceramic",
+      "still",
+      "life",
+      "leafy",
+      "glazed",
+      "greens",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait phone wallpaper, premium original ceramic still-life theme Canopy Glaze. Warm pale stone matte background #EBE8DE, TOP TWO THIRDS entirely calm empty stone for phone UI. In LOWER THIRD a small finely crafted jade-glazed ceramic CHAMELEON in side profile on a slim warm terracotta branch with two green ceramic leaves. One conical textured eye, subtle dorsal ridge, four coherent clasping feet, long tail curled in single elegant spiral, olive-jade body with dark green glaze pooling and tiny warm clay edge. Whole animal and branch fully within safe margins, vignette about60percent width and22percent totalheight. Soft realistic studio light, subtle grounded shadow, tactile satin glaze, restrained collectible art, no text/device/icons/pattern in upper area, no other animal, no live-animal photo.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "sggKCwCZb4d4gn50Z4CIN/c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.9125a703.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 93470,
+      "sha256": "9125a7036a2c21f8874d6a3ae5a7a8ceabb54ba74d447d1db320cddcfb927c32",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.3bb7fd14.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 82620,
+      "sha256": "3bb7fd14b2a77e794f9951688d7237662fb8fee8d00e57a86bf5b49519d6f3e7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.afcfed29.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 46550,
+      "sha256": "afcfed295992ce564bd67b3177f32b6be37fa5bc16e90b811a6d006d5236355d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.eb242a43.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 34868,
+      "sha256": "eb242a43c28e22b3d613ac1712ff5d5047323a615aa8862f26e385442b26325d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.cd02d88d.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 115512,
+      "sha256": "cd02d88d9e39075c3b867ff9a0e631bce2461cbacacb52dcc5a32d9a4b3e5652",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.f669fbf5.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 106940,
+      "sha256": "f669fbf5c5defc1d2f35b6bbe5b522ffb33df7d5dd2b4dad3961ef2bae3b5113",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.7dcab187.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8500,
+      "sha256": "7dcab1875358e7201773bbe67c790f77a8081234d3f20124ea5d7e958093f2fe",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-canopy-date.08ec8f87.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 33292,
+      "sha256": "08ec8f871a0dbffabb35e82534dfd73e5eb27334bca6e4f4b81b24b2d8b09ef2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-iris-clock.38241d9c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 57326,
+      "sha256": "38241d9cb83a55528de5ddd20381dd80eda65806071a8377ac987cd5bca7b1e9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-jade-climber.b5f05903.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 96114,
+      "sha256": "b5f059039292652fa2eff06c9313e468f01d6a7713da7b4fc7eb39263b9ce54c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-leaf-focus.1d188f23.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 46498,
+      "sha256": "1d188f2342be35273673b76df213edb96f2fcba878c9fe75b6bd7144e1669eab",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-leaf-relief.21dbb394.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 123140,
+      "sha256": "21dbb39449bb3bb6f22f0bfd5ce65f528d9c926b25417940121cf2d340be96bf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tail-medallion.ea5097e9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 78840,
+      "sha256": "ea5097e936e8adf7dbd6d197b982c92127764368206f81081af105ff302f5641",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 923670,
+  "widgets": [
+    {
+      "id": "canopy-date",
+      "kind": "calendar",
+      "image": "widget-canopy-date.08ec8f87.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Canopy date"
+    },
+    {
+      "id": "iris-clock",
+      "kind": "clock",
+      "image": "widget-iris-clock.38241d9c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Iris clock"
+    },
+    {
+      "id": "jade-climber",
+      "kind": "art",
+      "image": "widget-jade-climber.b5f05903.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Jade climber"
+    },
+    {
+      "id": "leaf-focus",
+      "kind": "focus",
+      "image": "widget-leaf-focus.1d188f23.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Leaf focus"
+    },
+    {
+      "id": "leaf-relief",
+      "kind": "art",
+      "image": "widget-leaf-relief.21dbb394.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Leaf relief"
+    },
+    {
+      "id": "tail-medallion",
+      "kind": "art",
+      "image": "widget-tail-medallion.ea5097e9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tail medallion"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.eb242a43.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.cd02d88d.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.f669fbf5.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

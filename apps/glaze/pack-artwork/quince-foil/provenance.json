@@ -1,0 +1,40 @@
+{
+  "theme": "quince-foil",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "quince-foil",
+      "id": "gilded-seed-capsule",
+      "label": "Gilded seed capsule",
+      "ref": "139-quince-foil\\widgets\\gilded-quince.png",
+      "subject": "one small open elongated botanical seed capsule sculpted from crinkled warm gold foil, two gracefully parted shell halves exposing three smooth ivory seed forms, fine dark golden stem, entire compact object visible, no quince fruit shape, leaf or flower",
+      "prompt": "Use case: stylized-concept. Glaze Quince Foil, original 1024 x 1024 square pure artwork of one small open elongated botanical seed capsule sculpted from crinkled warm gold foil, two gracefully parted shell halves exposing three smooth ivory seed forms, fine dark golden stem, entire compact object visible, no quince fruit shape, leaf or flower. Restrained elegant artisanal gilded botanical material photographic illustration, deep matte teal #243D3D seamless backdrop/floor, warm gold #CBA864 and pale ivory #EEE5CF, fine foil wrinkles, soft warm reflected light and deep studio shadows matching reference. New composition/object not copy/crop/recolour. Whole compact sculpture centred within16percent clear margins. No precious-metal product claim, text, numbers, logos, watermark, UI/frame, clock/hands/dials, dates/calendar, focus/battery/progress imagery. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-539db5a2-ef22-4164-a385-a779ac09878c.png",
+      "image": "widget-gilded-seed-capsule.595caf5d.webp",
+      "sha256": "595caf5db1741ada23acf08984b7c5ec28afb9223a78fe2a28dd8ef2bcc349bf",
+      "bytes": 111386,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "quince-foil",
+      "id": "gilded-dragonfly",
+      "label": "Gilded dragonfly",
+      "ref": "139-quince-foil\\widgets\\folded-leaf.png",
+      "subject": "one delicate dragonfly sculpture made from finely wrinkled warm gold foil, four thin translucent-looking ivory foil wings with subtle gold veins, a slender segmented gold body and coherent six tiny legs, entire airy silhouette visible, no leaf, fruit or blossom",
+      "prompt": "Use case: stylized-concept. Glaze Quince Foil, original 1024 x 1024 square pure artwork of one delicate dragonfly sculpture made from finely wrinkled warm gold foil, four thin translucent-looking ivory foil wings with subtle gold veins, a slender segmented gold body and coherent six tiny legs, entire airy silhouette visible, no leaf, fruit or blossom. Restrained elegant artisanal gilded botanical material photographic illustration, deep matte teal #243D3D seamless backdrop/floor, warm gold #CBA864 and pale ivory #EEE5CF, fine foil wrinkles, soft warm reflected light and deep studio shadows matching reference. New composition/object not copy/crop/recolour. Whole compact sculpture centred within16percent clear margins. No precious-metal product claim, text, numbers, logos, watermark, UI/frame, clock/hands/dials, dates/calendar, focus/battery/progress imagery. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-24b55e6d-4b48-4f88-a442-5dc72f887bf3.png",
+      "image": "widget-gilded-dragonfly.bf47be59.webp",
+      "sha256": "bf47be596f5e6bfc5d3e9533fd1abe28996988739ad85754d49ef2212c63dbc2",
+      "bytes": 142810,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "reed-nest",
+    "kind": "art",
+    "image": "widget-reed-nest.0b794e8b.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Reed nest"
+  },
+  {
+    "id": "marsh-lily-bud",
+    "kind": "art",
+    "image": "widget-marsh-lily-bud.c835c60f.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Marsh lily bud"
+  }
+]

@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "steam-and-sage",
+  "packVersion": 1,
+  "name": "Steam & Sage",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#CBD6CC",
+    "tile": "#B2BBB3",
+    "glyph": "#1C1816",
+    "accent": "#8D724F",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Steam & Sage",
+    "mood": "A little steam train through pale sage hills.",
+    "tags": [
+      "steam",
+      "sage",
+      "little",
+      "train",
+      "through",
+      "pale",
+      "hills",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 Glaze wallpaper STEAM AND SAGE. Upper72percent completely EMPTY quiet pale sage #DCE7DF matte background, subtle paper grain only, no pattern or steam behind app icons. Bottom24percent a SMALL complete round woven bamboo steamer with exactlythree ivory pleated dumplings inside, circular woven bamboo lid leaning gently behind one side, tiny terracotta dipping dish beside it. One barely visible short steam wisp entirely confined to lower vignette. Refined warm bamboo grain and soft dough folds, sophisticated calm culinary still life. Entire group at most48percent canvas width,21percent height, low centered, all basket/lid/dish contained with generous margins. Matching pale sage floor, soft shadow. No restaurant brands, lettering, people, chopsticks crossing frame, phone, UI or border.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "cPgFCwKbX1aJhmu0VoBqBbk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.faf97cf9.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 81598,
+      "sha256": "faf97cf917be28209564ea1d1cdb5227c53c5928318dc33d96fa450ddba7882a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.0628bc73.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 71582,
+      "sha256": "0628bc73b0213e32e86be677a921d89fee24b33d69e0dda1002832e772dde8b0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ae39a881.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 30936,
+      "sha256": "ae39a881ca31c7b8bc5bd9244d18ce1dce724c9464fb4c911ca534943dc9de2a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.8ec28916.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 27136,
+      "sha256": "8ec28916dce89ab69e911ae181edb319cc077c3c7ac68be7bd2b117a3656abdc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.07c335f6.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 51304,
+      "sha256": "07c335f67cbd3e36772a4e1407fe43094d3c56e2c848d5e4ebe50a67fda0cc26",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.7c4528de.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 122384,
+      "sha256": "7c4528de9c618835f8ef1fe52a491df573835994bb1c3e44de41b93d1dd4aa89",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.58314a53.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4774,
+      "sha256": "58314a537c879758e18ad27a0db253aaa27f08a79c64fb36667bd0946842f712",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bamboo-steamer.a42775d4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 78238,
+      "sha256": "a42775d4bf07dd8c19330ea4cdfe951a342ec2ddc5b8a867af5ed8766971bc48",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pleated-dumpling.a484899b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 39302,
+      "sha256": "a484899bfdaeac6afb4b5185a71ffc19561434b983c7264125907240bc517bd9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sage-date.745b3c0c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 42234,
+      "sha256": "745b3c0c83fc75820cb67fe4a1ae37a58add3b45d461fdb398731cceb543ee23",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-steam-clock.86814131.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 45292,
+      "sha256": "8681413108d0f2247833997d8f9cc65cd568ef35c97b95c21f29d7c375c786b3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-steam-focus.38dddb3c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 52004,
+      "sha256": "38dddb3cf181a5d01bdb26574ea8ab9b5277bd1b4b79845f0720c4b638fb5212",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-woven-lid.e2f950b9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 94358,
+      "sha256": "e2f950b95e7fadb312a470971fec1c1c8e3e5c7192e589a444223325cb9ed575",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 741142,
+  "widgets": [
+    {
+      "id": "bamboo-steamer",
+      "kind": "art",
+      "image": "widget-bamboo-steamer.a42775d4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bamboo steamer"
+    },
+    {
+      "id": "pleated-dumpling",
+      "kind": "art",
+      "image": "widget-pleated-dumpling.a484899b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pleated dumpling"
+    },
+    {
+      "id": "sage-date",
+      "kind": "calendar",
+      "image": "widget-sage-date.745b3c0c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sage date"
+    },
+    {
+      "id": "steam-clock",
+      "kind": "clock",
+      "image": "widget-steam-clock.86814131.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Steam clock"
+    },
+    {
+      "id": "steam-focus",
+      "kind": "focus",
+      "image": "widget-steam-focus.38dddb3c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Steam focus"
+    },
+    {
+      "id": "woven-lid",
+      "kind": "art",
+      "image": "widget-woven-lid.e2f950b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Woven lid"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.8ec28916.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.07c335f6.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.7c4528de.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

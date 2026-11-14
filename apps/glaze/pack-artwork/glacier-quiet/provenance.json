@@ -1,0 +1,38 @@
+{
+  "theme": "glacier-quiet",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__glacier-quiet__v6__manifest.json",
+    "sha256": "84d39dcff7a9ee2751a00d7f89501e07d6fb38e0cee99df9b68b456e79591982",
+    "packVersion": 6,
+    "existingArtwork": [
+      "frost-feather",
+      "glacial-iceberg",
+      "frozen-bubbles",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "dendritic-snow-crystal",
+      "label": "Dendritic snow crystal",
+      "file": "widgets/widget-dendritic-snow-crystal.5a3e2617.webp",
+      "sha256": "5a3e2617775722b72310165239c5c9e07cdfe9e141653ea76e7844d0ec034110",
+      "bytes": 441454,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-8990e6fc-342d-4c68-9de3-f1a2f37d3fd9.png",
+      "sourceSha256": "b0c85a78c2d5dc919f738b2a3f12900cf5228040e47ffef67bed960b5acaefea",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for glacier-quiet. One exquisite natural dendritic snow crystal in close macro view, six intricately branched translucent ice arms with delicate stepped facets and tiny frost beads, subtly tilted in three-quarter view to reveal real crystalline depth. Fine-art glacial macro photography, soft cool mist light, pale steel-blue/icy-cyan/white palette, quiet realistic ice texture. No typography, emblem styling, icons, feathers, bubbles or iceberg; a natural physical snow crystal. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 414817,
+      "opaquePixels": 6
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ivory-court-shoe",
+    "kind": "art",
+    "image": "widget-ivory-court-shoe.3dbe627a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ivory court shoe"
+  },
+  {
+    "id": "wooden-net-post",
+    "kind": "art",
+    "image": "widget-wooden-net-post.8d12935a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Wooden net post"
+  }
+]

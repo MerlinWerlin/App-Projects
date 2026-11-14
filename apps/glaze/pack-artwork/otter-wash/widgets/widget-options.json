@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tidepool-anemone",
+    "kind": "art",
+    "image": "widget-tidepool-anemone.31e56b89.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Tidepool anemone"
+  },
+  {
+    "id": "driftwood-buoy",
+    "kind": "art",
+    "image": "widget-driftwood-buoy.a4200b23.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Driftwood buoy"
+  }
+]

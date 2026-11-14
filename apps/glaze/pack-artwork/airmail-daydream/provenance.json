@@ -1,0 +1,38 @@
+{
+  "theme": "airmail-daydream",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__airmail-daydream__v7__manifest.json",
+    "sha256": "30162f61900eb9e4dad6657c024d06079376039f759873842123b5409cbbcbe2",
+    "packVersion": 7,
+    "existingArtwork": [
+      "stamp-terrarium",
+      "hero-small",
+      "art-20261106-mail-balloon",
+      "art-20261106-paper-swallow"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "postal-satchel",
+      "label": "Postal satchel",
+      "file": "widgets/widget-postal-satchel.c00ef70b.webp",
+      "sha256": "c00ef70b21812883f57a19575da72583a26881029abf54dbed44ac2ab92320ec",
+      "bytes": 282486,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-c32532f7-48a5-40f8-8b7d-3f31636c98ba.png",
+      "sourceSha256": "dd5084eaf66645a0e69535198c3a8016b8c1ad75b0bd7f07a87cb7f4e170a986",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE original premium small square widget illustration for the existing Glaze theme AIRMAIL DAYDREAM. 1024 x 1024 output. Subject: a miniature deep-navy canvas postal satchel with a gracefully curved coral linen shoulder strap, beautiful ivory folded-paper interior dividers peeking from its open top, a tiny unlettered brass wing-shaped clasp. Entire object on its own, centrally composed with 15 percent clear margins, readable at small iPhone widget size. Sophisticated tactile handmade miniature stationery sculpture, very fine matte canvas weave, laid ivory paper fibres, softly rounded seams, warm gentle daylight from upper left, delicately realistic craft photography, quiet whimsical travel-mail mood. Palette strictly deep navy, warm ivory, muted coral, tiny warm brass accents, subtly pale powder-blue bounced light, matching a powder-blue paper wallpaper. Truly TRANSPARENT background with preserved alpha; no opaque square backdrop, ground plane or hard frame. Pure illustration only: absolutely NO text, letters, numerals, addresses, stamps with values, logos, UI, clock, dial, clock hands, calendar or date. No terrarium, hot-air balloon, paper aircraft, extra panel, contact sheet, repeated object or scene collage. Make a completely new standalone artwork; no cropping or recoloring an existing asset.",
+      "processing": "Resize entire original square to 1024x1024; WebP q92 method6; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 540987,
+      "opaquePixels": 879
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "theme": "silver-orchard",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "silver-orchard",
+      "id": "silver-pear-blossom",
+      "label": "Silver Pear Blossom",
+      "ref": "030-silver-orchard\\wallpapers\\wallpaper.png",
+      "subject": "one gracefully arcing small pear-tree blossom twig sculpted as an exquisite antique silver botanical ornament. Three open pear blossoms with luminous ivory mother-of-pearl petals and tiny silver stamens, two muted sage-green translucent enamel leaves with fine silver veins, organic hammered-silver bark. Displayed horizontally at a gentle upward diagonal on warm near-black charcoal linen, soft directional museum light and deep shadows, tactile metals and delicate living botanical shapes",
+      "avoid": "pear vessel, snail, lantern, dormouse",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for silver-orchard. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one gracefully arcing small pear-tree blossom twig sculpted as an exquisite antique silver botanical ornament. Three open pear blossoms with luminous ivory mother-of-pearl petals and tiny silver stamens, two muted sage-green translucent enamel leaves with fine silver veins, organic hammered-silver bark. Displayed horizontally at a gentle upward diagonal on warm near-black charcoal linen, soft directional museum light and deep shadows, tactile metals and delicate living botanical shapes. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: pear vessel, snail, lantern, dormouse. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-a08b10cf-b098-4aee-8513-fe0ee0025b6e.png",
+      "image": "widget-silver-pear-blossom.885b3b43.webp",
+      "sha256": "885b3b43228dd4d1e86fc6bbda5e320ce001928e421aeb1deec40470e6f0f75b",
+      "bytes": 203062,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

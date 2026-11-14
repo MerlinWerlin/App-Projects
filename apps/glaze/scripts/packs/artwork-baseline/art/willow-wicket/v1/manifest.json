@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "willow-wicket",
+  "packVersion": 1,
+  "name": "Willow Wicket",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DDE1D2",
+    "tile": "#C2C5B8",
+    "glyph": "#1C1816",
+    "accent": "#A18465",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Willow Wicket",
+    "mood": "A cricket wicket by the willows on soft green.",
+    "tags": [
+      "willow",
+      "wicket",
+      "cricket",
+      "willows",
+      "soft",
+      "green",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait original premium Glaze wallpaper Willow Wicket. Uniformpalemattegrassgreen #E1E4D7, TOP72percent entirelyemptyquietground forUI. BOTTOM25percent small elegant unbranded CRICKET still-life: one naturalwillowbat lyinglowdiagonally withflatbroadblade anddarkforesthandlegrip, besideone deepredleathercricketball withfinecreamstitchedraisedseam. Entirebatandballmax70percentwidth22percenttotalheightinsidegenerousmargins. Realisticwarmwoodgrain/leathertexture, softstudio daylightanddelicate shadow, refinedvintagesport mood, no logos/words/tennisracket/extraequipment/phone/icons orpatternabove.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "tAgGCwJ5f0h3lm3RamCbBrY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.40c71214.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 46878,
+      "sha256": "40c7121444c64e081dd5d7db780a0fa8cd30edde032926cafe1802cffa419d07",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.0500ad72.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 41140,
+      "sha256": "0500ad728e12f7e066c5fe1fb56d06b430ecc685f895d80cddbdb8d1097ae75d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.0c8ba1df.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 22132,
+      "sha256": "0c8ba1dff2fcc23eb66d09c843e543b18609bae6e3ecb32db1f5bab1c07d6ac5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.f9fe7d80.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 14518,
+      "sha256": "f9fe7d80103e7304087cf28ddb684bff0d21c1363fbfc29f5a2a83286b870daa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.55be17e7.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 56770,
+      "sha256": "55be17e7be1036b8f0f3ebb1ce277ab0db3b2e61f7ddd580fba076e8ba67075b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.47e93274.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 53294,
+      "sha256": "47e93274be0791c7ea5d28ccab9e59a8a67b87cdcbed531487b306e64947f65f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.286c83e3.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 3476,
+      "sha256": "286c83e3e06ee0301af4137e2f0bb42e73ecb352e5337bac00db8489b13bd101",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-crease-clock.85430785.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 81816,
+      "sha256": "854307853b8dedcb3bb0e528d97ee2254b7d7b2281793401e45aa8474370f635",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-innings-score.016fc890.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 38080,
+      "sha256": "016fc890f818e42cb7163d38518669425ca9fc972ba43a4768fe05759e1d395b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stitched-ball.1575cd34.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 49366,
+      "sha256": "1575cd34d388bcac9acc7e6bb3d3a6fbb27817e1cafaba1deb503ebee5775e5a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wicket-study.16e35d09.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 40056,
+      "sha256": "16e35d093e0519a414c3c564fc317a8be3bcd93b71e97f1ac8e944cbc66c016d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-willow-bat.b8639385.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 45018,
+      "sha256": "b86393856af936f70afb86afb2e36e8e992f23cf41034b27596f851b4726bb14",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-willow-date.dc1dd5ad.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 51116,
+      "sha256": "dc1dd5ad8c18965a7c7164f85263f38f1bad55ae0ad60c51803306f38aaa51c8",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 543660,
+  "widgets": [
+    {
+      "id": "crease-clock",
+      "kind": "clock",
+      "image": "widget-crease-clock.85430785.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Crease clock"
+    },
+    {
+      "id": "innings-score",
+      "kind": "art",
+      "image": "widget-innings-score.016fc890.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Innings score"
+    },
+    {
+      "id": "stitched-ball",
+      "kind": "art",
+      "image": "widget-stitched-ball.1575cd34.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stitched ball"
+    },
+    {
+      "id": "wicket-study",
+      "kind": "art",
+      "image": "widget-wicket-study.16e35d09.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wicket study"
+    },
+    {
+      "id": "willow-bat",
+      "kind": "art",
+      "image": "widget-willow-bat.b8639385.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Willow bat"
+    },
+    {
+      "id": "willow-date",
+      "kind": "calendar",
+      "image": "widget-willow-date.dc1dd5ad.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Willow date"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.f9fe7d80.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.55be17e7.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.47e93274.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

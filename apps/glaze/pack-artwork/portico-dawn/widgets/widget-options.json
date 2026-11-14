@@ -1,0 +1,26 @@
+[
+  {
+    "id": "travertine-urn",
+    "kind": "art",
+    "image": "widget-travertine-urn.5630ffd5.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Travertine urn"
+  },
+  {
+    "id": "stone-lattice-screen",
+    "kind": "art",
+    "image": "widget-stone-lattice-screen.007d66e4.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Stone lattice screen"
+  }
+]

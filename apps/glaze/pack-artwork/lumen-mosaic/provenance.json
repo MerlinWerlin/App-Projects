@@ -1,0 +1,38 @@
+{
+  "theme": "lumen-mosaic",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__lumen-mosaic__v7__manifest.json",
+    "sha256": "421704555752f56f11f699974cd2005c2145394c8eafe138689cef875ac2b07f",
+    "packVersion": 7,
+    "existingArtwork": [
+      "tessellated-sunbird",
+      "hero-small",
+      "art-20261107-mosaic-pomegranate",
+      "art-20261107-jewel-window"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "stained-glass-iris",
+      "label": "Stained glass iris",
+      "file": "widgets/widget-stained-glass-iris.b4fa5f9e.webp",
+      "sha256": "b4fa5f9e4b9d22a38fde9bb651ec141412c8893c6fc56d9646a6b0249321d17e",
+      "bytes": 236872,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-d6ed695c-280e-4aab-8517-ee055acf173d.png",
+      "sourceSha256": "3abb4b7f5e63a734f3509a294435b4eee5811da5087b977c8a3292fed5d79523",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for lumen-mosaic. One graceful iris flower made from translucent tessellated stained glass, three broad warm amber/coral petals curving around an ivory center, slender deep-teal glass leaves, fine antique-brass leading along every mosaic shard. Exquisite premium artisan glass sculpture, realistic faceted transmission and soft warm light, teal/amber/coral/ivory palette. Entire flower compact and elegant, no bird, pomegranate, lantern, window or frame. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 699727,
+      "opaquePixels": 999
+    }
+  ]
+}

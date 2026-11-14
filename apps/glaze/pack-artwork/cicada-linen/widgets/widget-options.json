@@ -1,0 +1,26 @@
+[
+  {
+    "id": "lichen-bark-curl",
+    "kind": "art",
+    "image": "widget-lichen-bark-curl.e482ace4.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lichen bark curl"
+  },
+  {
+    "id": "fern-fiddlehead",
+    "kind": "art",
+    "image": "widget-fern-fiddlehead.a42d6edc.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fern fiddlehead"
+  }
+]

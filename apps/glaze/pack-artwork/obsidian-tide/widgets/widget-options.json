@@ -1,0 +1,14 @@
+[
+  {
+    "id": "tidal-sea-urchin",
+    "kind": "art",
+    "image": "widget-tidal-sea-urchin.c4001526.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Tidal sea urchin"
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "theme": "thistle-etch",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "thistle-etch",
+      "id": "lavender-pollen-bee",
+      "label": "Lavender pollen bee",
+      "ref": "133-thistle-etch\\widgets\\silver-leaf.png",
+      "subject": "one small bumblebee resting on a slender silvery thistle stem, fine pewter-grey and warm ivory fuzz, translucent smoky lavender wings and tiny lavender pollen grains, coherent six legs and antennae, whole insect visible, no bloom or seed tuft",
+      "prompt": "Use case: stylized-concept. Glaze Thistle Etch original standalone1024x1024 square pure artwork of one small bumblebee resting on a slender silvery thistle stem, fine pewter-grey and warm ivory fuzz, translucent smoky lavender wings and tiny lavender pollen grains, coherent six legs and antennae, whole insect visible, no bloom or seed tuft. Exquisite fine-art botanical wildlife photographic illustration on seamless matte dark plum #302A38 background, restrained pewter/lavender/silver-green palette with subtle natural warm accents, delicate edge light and fine realistic texture matching reference. New subject/composition not crop/copy/recolour. Entire compact specimen centred within16percent clear margins. No labels, text, numerals, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-2e93c3c7-39a8-4e90-843e-b3d3a7d97df4.png",
+      "image": "widget-lavender-pollen-bee.febdaa8a.webp",
+      "sha256": "febdaa8adee688cdfc092196482cd22020229e1e056a5ffee4dadad558c682ac",
+      "bytes": 116016,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "thistle-etch",
+      "id": "thistle-goldfinch",
+      "label": "Thistle goldfinch",
+      "ref": "133-thistle-etch\\widgets\\thistle-head.png",
+      "subject": "one delicate small goldfinch perched on a short fine dry thistle twig, muted warm grey and ivory feathers with restrained pale gold wing stripe and tiny dusty burgundy face accent, complete natural bird/tail silhouette, no flowerhead or large leaf",
+      "prompt": "Use case: stylized-concept. Glaze Thistle Etch original standalone1024x1024 square pure artwork of one delicate small goldfinch perched on a short fine dry thistle twig, muted warm grey and ivory feathers with restrained pale gold wing stripe and tiny dusty burgundy face accent, complete natural bird/tail silhouette, no flowerhead or large leaf. Exquisite fine-art botanical wildlife photographic illustration on seamless matte dark plum #302A38 background, restrained pewter/lavender/silver-green palette with subtle natural warm accents, delicate edge light and fine realistic texture matching reference. New subject/composition not crop/copy/recolour. Entire compact specimen centred within16percent clear margins. No labels, text, numerals, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-ec64d752-7dc5-4bb4-a59a-00cff0743810.png",
+      "image": "widget-thistle-goldfinch.1dbe66a7.webp",
+      "sha256": "1dbe66a797d26ab53437e3dcc87112b534f00e95bc48c101e89637b34f8f41e1",
+      "bytes": 95360,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

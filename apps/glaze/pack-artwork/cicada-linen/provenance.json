@@ -1,0 +1,40 @@
+{
+  "theme": "cicada-linen",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "cicada-linen",
+      "id": "lichen-bark-curl",
+      "label": "Lichen bark curl",
+      "ref": "104-cicada-linen\\widgets\\cicada-portrait.png",
+      "subject": "one curled thin ribbon of grey cedar bark, tiny muted sage lichen rosettes and a single clear dew bead along its rim, natural quiet forest macro still life, entire airy spiral shape visible, no insect or wings",
+      "prompt": "Use case: stylized-concept. Glaze Cicada Linen pure Artwork widget. One original 1024 x 1024 square image of one curled thin ribbon of grey cedar bark, tiny muted sage lichen rosettes and a single clear dew bead along its rim, natural quiet forest macro still life, entire airy spiral shape visible, no insect or wings. Fine-art natural history macro photographic illustration, pale olive-linen #E1E2D5 smooth quiet backdrop, muted forest olive #53634D warm cream and soft grey details, diffuse morning daylight, delicate exquisite tactile detail. Match style reference's palette, realism and subtle depth, new subject/composition. Compact whole specimen centered within 16 percent clear safe margins, no crop or branch entering frame. No labels, text, numbers, signatures, logo, UI, watermark, frame, clock/dial/hands, calendar/date, focus/battery/progress indicators. One image no panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-d586caa7-4bc8-4845-a62b-4da7e2e033d4.png",
+      "image": "widget-lichen-bark-curl.e482ace4.webp",
+      "sha256": "e482ace413f025738afff53dfaee3832435314e3ca65f9e466870c071685d0fe",
+      "bytes": 133394,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "cicada-linen",
+      "id": "fern-fiddlehead",
+      "label": "Fern fiddlehead",
+      "ref": "104-cicada-linen\\widgets\\wing-venation.png",
+      "subject": "one slender unfurling fern fiddlehead with fine pale olive hairs and tiny curled leaflets, gentle natural arc with one small split frond, restrained macro botanical specimen, complete short stem visible, no cicada or wings",
+      "prompt": "Use case: stylized-concept. Glaze Cicada Linen pure Artwork widget. One original 1024 x 1024 square image of one slender unfurling fern fiddlehead with fine pale olive hairs and tiny curled leaflets, gentle natural arc with one small split frond, restrained macro botanical specimen, complete short stem visible, no cicada or wings. Fine-art natural history macro photographic illustration, pale olive-linen #E1E2D5 smooth quiet backdrop, muted forest olive #53634D warm cream and soft grey details, diffuse morning daylight, delicate exquisite tactile detail. Match style reference's palette, realism and subtle depth, new subject/composition. Compact whole specimen centered within 16 percent clear safe margins, no crop or branch entering frame. No labels, text, numbers, signatures, logo, UI, watermark, frame, clock/dial/hands, calendar/date, focus/battery/progress indicators. One image no panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-d2077d83-ec06-46e7-8af8-58d2c5d484e8.png",
+      "image": "widget-fern-fiddlehead.a42d6edc.webp",
+      "sha256": "a42d6edcf29aaf33c1d74a77b054a31417ba6043cc26aeef1b786f74ed19afcc",
+      "bytes": 89778,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

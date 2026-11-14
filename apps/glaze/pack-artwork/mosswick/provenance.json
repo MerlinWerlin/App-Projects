@@ -1,0 +1,38 @@
+{
+  "theme": "mosswick",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__mosswick__v6__manifest.json",
+    "sha256": "d170dd9a42c5f6d02a5c649e24d92a5bb6ac043b537a594cd98fc2d7b374517a",
+    "packVersion": 6,
+    "existingArtwork": [
+      "bark-snail",
+      "moss-tower",
+      "travelling-cottage",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "mosswood-storybook",
+      "label": "Mosswood storybook",
+      "file": "widgets/widget-mosswood-storybook.e6e80e3a.webp",
+      "sha256": "e6e80e3a230489bba6a08f8d9cf1169b62b92b8213865e97c012765ac79e22b7",
+      "bytes": 240574,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-e52fb1a4-1a3c-4cf3-9aa5-fe48257237a6.png",
+      "sourceSha256": "c2b03924b6ce9a5db66fc77f081420d1aefd6b3edbb216a379cc9b0450dacf49",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for mosswick. One tiny closed woodland storybook with a beautifully textured cork-bark cover, inlaid soft green moss fern motif, thick warm-ivory deckled paper pages, small tan stitched spine and simple unlettered wood clasp, one tiny moss tuft at the lower corner. Sophisticated handcrafted cork/felt miniature, warm cozy craft photography, visible natural cork grain and fuzzy moss, sage/cork-brown/cream palette. No writing, letters, numbers, animals, snail, tower, cottage or cart. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 667489,
+      "opaquePixels": 537
+    }
+  ]
+}

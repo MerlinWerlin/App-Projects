@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "thistle-etch",
+  "packVersion": 1,
+  "name": "Thistle Etch",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#35293A",
+    "tile": "#514654",
+    "glyph": "#FAF8F2",
+    "accent": "#322538",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Thistle Etch",
+    "mood": "Etched thistles on deep plum.",
+    "tags": [
+      "thistle",
+      "etch",
+      "etched",
+      "thistles",
+      "deep",
+      "plum",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait original premium Glaze wallpaper Thistle Etch. Uniformmatte DARKPLUM #302A38. TOP72percent completelyemptyquietplum forUI. BOTTOM25percent one small botanicalstill-life of two purpleTHISTLE blooms withsilvery-green spinybracts, shortcutstems lyinglowdiagonally andone sharplylobedsilverleaf. Fullarrangementmax65percentwidth22percentheight,safemargins; flowerheads mustremainlow, nottallstemsupcanvas. Exquisite fineartrealisticpetalfilaments and subtleedge light, restrained pewter/lavender/silvergreen palette, originalgeneratedbotanicalimage notexternalphoto. No vase/rose/extraobjects/text/icons/device/patternabove.",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "jhcCAwB4cpd2rGBtUML/aFI=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7c33964d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 97674,
+      "sha256": "7c33964d27f2fcd2e2a2dfb4d1a080997f29f32f81b4d7a9858b2f1e02c70836",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.e83dd12b.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 88706,
+      "sha256": "e83dd12be6964b2339cff6ca5516c4e19e6d4460e83d3903020ca2bf15b2516a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ce6e5a1e.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 51788,
+      "sha256": "ce6e5a1eebca11fab5c50a0188da8da1bee5d4ec4042579528dc958cd7b4167a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.a75dc17b.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 36696,
+      "sha256": "a75dc17b69457dd21a65f374482851f238062e6b7d6ce7088e8a0bed922ea665",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.c60caba0.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 71940,
+      "sha256": "c60caba0190640d2f02922212c4074f96a0b9d49b963af5c8b77b254d798e1eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.c41e08fc.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 161488,
+      "sha256": "c41e08fceede0aaa19e7c1644bb98272ced96a626255c75b030431aab069e898",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.115a0f6c.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6964,
+      "sha256": "115a0f6c8e54d93be48d699d1c0427607ea78758571e86ab84b93baf514b6d26",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-etch-focus.139d4894.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 36178,
+      "sha256": "139d4894e34a6f72919fe33d57a06913ebd9457c2a6e1e21f55aec4906f0079e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pewter-clock.25a05c73.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 94346,
+      "sha256": "25a05c73155c71557fd8886a496f9d98ce0265921cf877320384015fc3e33a95",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-seed-tuft.b1694133.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 111584,
+      "sha256": "b16941334658bce55fa6408bf4416656c52acf4e469d9126d331b3eaf6baf2f8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-silver-leaf.fd22a998.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 82578,
+      "sha256": "fd22a998f8e92c9f20e3f2b7d5c8600314e1062ee52bd9460f3dc0bb6b352c94",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-thistle-date.fd028576.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 44684,
+      "sha256": "fd0285769a7c9e663935fa2f0a98d8a686e774c7e054a40de4a47069fad95ba0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-thistle-head.d79ef931.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 136676,
+      "sha256": "d79ef93190e7b8ed5ec6d2533a03aa431362dea13bfe14bfdf2b99ef927dc6b8",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1021302,
+  "widgets": [
+    {
+      "id": "etch-focus",
+      "kind": "focus",
+      "image": "widget-etch-focus.139d4894.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Etch focus"
+    },
+    {
+      "id": "pewter-clock",
+      "kind": "clock",
+      "image": "widget-pewter-clock.25a05c73.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pewter clock"
+    },
+    {
+      "id": "seed-tuft",
+      "kind": "art",
+      "image": "widget-seed-tuft.b1694133.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Seed tuft"
+    },
+    {
+      "id": "silver-leaf",
+      "kind": "art",
+      "image": "widget-silver-leaf.fd22a998.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Silver leaf"
+    },
+    {
+      "id": "thistle-date",
+      "kind": "calendar",
+      "image": "widget-thistle-date.fd028576.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Thistle date"
+    },
+    {
+      "id": "thistle-head",
+      "kind": "art",
+      "image": "widget-thistle-head.d79ef931.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Thistle head"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.a75dc17b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.c60caba0.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.c41e08fc.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

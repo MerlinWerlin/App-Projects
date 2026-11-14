@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "quince-foil",
+  "packVersion": 1,
+  "name": "Quince Foil",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#1F3837",
+    "tile": "#3E5351",
+    "glyph": "#FAF8F2",
+    "accent": "#816A3E",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Quince Foil",
+    "mood": "Gold-foil quince on deep matte teal.",
+    "tags": [
+      "quince",
+      "foil",
+      "gold",
+      "deep",
+      "matte",
+      "teal",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 Glaze iPhone wallpaper QUINCE FOIL. Deep matte teal #243D3D background upper72percent completely empty uniform quiet colour with extremely subtle paper grain, no bright texture behind app icons. Bottom24percent one SMALL original sculptural quince fruit in delicately wrinkled warm gold foil, squat irregular pear shape and tiny brown-gold stem, one folded gold leaf, one ivory five-petal blossom nearby. Restrained elegant artisanal still-life, gold #CBA864, pale ivory #EEE5CF, soft warm reflected light and deep studio shadows. Entire vignette only42percent canvas width and18percent height, centered low, whole fruit/leaf/flower contained with generous margins. No fruit slices, extra objects, people, lettering, brands, phone, UI, borders or frame. Sculptural gilded botanical material art, not a real precious-metal product.",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "zdcBCwIHcq14e4FeF4B5Apg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.a884e259.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 71334,
+      "sha256": "a884e259bebe6e209f40f07b302c35974ac8ffd68b93c78a70ac75086dca33c3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.5c3d4263.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 63622,
+      "sha256": "5c3d426391819fd6a8aaa7f46ade0211527bd4a061adbb284f48401059ea18e0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.047ee76b.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 32986,
+      "sha256": "047ee76b6a313cef8fda07a72934207266850b598750570e8ddb79ba35f7479d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.2bdf5021.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 45354,
+      "sha256": "2bdf50219541bd2c2b179f98d87eaa01be01d5162c4c81a1857859e1ea8e6dec",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.77c0ac39.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 88446,
+      "sha256": "77c0ac3989f19991eb8a851bb17eede2c459a15b8e71c351629753112ad111e5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.3a4fcc1d.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 137548,
+      "sha256": "3a4fcc1d0264989cd90aa634d6223c1f3c1aa2aafbd36168cac0ee330e0109a7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.60644bf2.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4486,
+      "sha256": "60644bf29ccecd67dd7c953571132c2753fb550a658ecb958280c216c2b34a9c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-foil-clock.ad778bc6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84958,
+      "sha256": "ad778bc6f01262a385543d8db5125bb52830742704cff21440963bc0d5fcea46",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-folded-leaf.a72a6f7c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 111052,
+      "sha256": "a72a6f7c9bbdc05b5a351361fd6f39016a7adc2b3d2bfc29682b93da1a2088d2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-gilded-quince.b6c94c32.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 98488,
+      "sha256": "b6c94c328f8eb806b9ca996d06584c0e0ebe96633bd08aeed888c48fe86a937e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-gilt-focus.56108ed2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 65488,
+      "sha256": "56108ed27747b558e0197a051e8331aa8e4c14109f4fdba7e3e64a6bae846a8f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ivory-blossom.06123a3a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 110778,
+      "sha256": "06123a3aba3cafa64f62baf24f1de391fc5baeaa66f3261c7f1d185ae1e81c75",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-quince-date.2a78e4fe.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 85022,
+      "sha256": "2a78e4fe7bafd2cd9e14d82e4ce804ee363ed749e8b47411d58d0d6545bc3a80",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 999562,
+  "widgets": [
+    {
+      "id": "foil-clock",
+      "kind": "clock",
+      "image": "widget-foil-clock.ad778bc6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Foil clock"
+    },
+    {
+      "id": "folded-leaf",
+      "kind": "art",
+      "image": "widget-folded-leaf.a72a6f7c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Folded leaf"
+    },
+    {
+      "id": "gilded-quince",
+      "kind": "art",
+      "image": "widget-gilded-quince.b6c94c32.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Gilded quince"
+    },
+    {
+      "id": "gilt-focus",
+      "kind": "focus",
+      "image": "widget-gilt-focus.56108ed2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Gilt focus"
+    },
+    {
+      "id": "ivory-blossom",
+      "kind": "art",
+      "image": "widget-ivory-blossom.06123a3a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ivory blossom"
+    },
+    {
+      "id": "quince-date",
+      "kind": "calendar",
+      "image": "widget-quince-date.2a78e4fe.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Quince date"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.2bdf5021.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.77c0ac39.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.3a4fcc1d.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "theme": "woven-wander",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__woven-wander__v1__manifest.json",
+    "sha256": "2578a3724b6c7428140facbfc51f88307357fedb4d9c739c1dc87a5f68609b7a",
+    "packVersion": 1,
+    "existingArtwork": [
+      "coil-basket",
+      "plaited-fern",
+      "woven-pangolin",
+      "woven-progress"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "raffia-chameleon",
+      "label": "Raffia Chameleon",
+      "file": "widgets/widget-raffia-chameleon.095fc198.webp",
+      "sha256": "095fc1987742d245035c629c469e10ba0c3eb52b3ad5f06d0edbab72e828a2c0",
+      "bytes": 240846,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-d3a18f72-86aa-49fb-b6ea-c8e492b48ce0.png",
+      "sourceSha256": "e8e1182aa813b5b2d0f8cdeebc4bdda16e0c132b986e727cd9750610b2454958",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for woven-wander. One original handwoven raffia chameleon sculpture in side three-quarter profile, a single small sculptural animal with a clearly visible spiral-curled tail, domed head with one tiny glossy dark bead eye, four coherent short clasping legs, and a gentle ridge of folded plaited raffia along its curved back. Pale straw, muted olive and caramel fibers, overlapping fine woven loops rather than feathers or fur. Tactile expert basketry craft matching an existing raffia pangolin and plaited fern collection, soft warm studio lighting, refined natural flax palette. Entire creature fully visible including tail and all feet, no branch, pot, stand, ground or background. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 689982,
+      "opaquePixels": 783
+    },
+    {
+      "id": "plaited-dragonfly",
+      "label": "Plaited Dragonfly",
+      "file": "widgets/widget-plaited-dragonfly.7bede0e3.webp",
+      "sha256": "7bede0e377de93b1d54bd6420debbb3baf85e24e1f22bcdd413dcbcb654cf624",
+      "bytes": 375322,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-754c99fb-14b6-4569-afe5-6ec759835b81.png",
+      "sourceSha256": "410b559bbed66d5a58ad1f5c7ffbd9af9bdb3b9a6a2adb6d67b29b7263349152",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for woven-wander. One exquisite original dragonfly sculpture made entirely of handwoven natural raffia and fine plaited straw. Four broad delicately net-woven translucent straw wings, two on each side, laid in a gentle diagonal flight pose; a slender segmented caramel-and-muted-olive braided body, small round straw head with two tiny dark bead eyes, six fine coherent raffia legs held close beneath the body. Airy visibly open basketweave in the wings with beautifully finished golden edges. Refined tactile craft, soft warm daylight, pale flax/straw/caramel/olive palette matching a woven pangolin, fern and coil-basket collection. Whole silhouette fully visible and ample margins, no flower, plant, stand, ground or background. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 730962,
+      "opaquePixels": 1079
+    }
+  ]
+}

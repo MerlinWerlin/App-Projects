@@ -1,0 +1,38 @@
+{
+  "theme": "jellylight",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__jellylight__v6__manifest.json",
+    "sha256": "2c7675df672d63e70c6303204a102b12828f502627c42a4c9b60f358285a7d8f",
+    "packVersion": 6,
+    "existingArtwork": [
+      "glass-anemone",
+      "opal-stingray",
+      "prism-drifter",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "opal-sea-slug",
+      "label": "Opal sea slug",
+      "file": "widgets/widget-opal-sea-slug.27753804.webp",
+      "sha256": "27753804e4940c935179dd577d3527c81063f0f9006fee234e3e1fc58b79b889",
+      "bytes": 242958,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-36c76ba5-7e38-4359-b07c-f41d117bcd1a.png",
+      "sourceSha256": "f1ba95bcb6add7a0e22e05da12491f4e861506f90151bde16dc3bac4fbd9753b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for jellylight. One dreamlike translucent marine nudibranch sea slug, gently curved opalescent glassy body with a ruffled clear fin-like mantle, two delicate rhinophores and a graceful cluster of fine lavender-pink cerata, tiny luminous cyan pinpoints suspended inside the body. Premium photoreal bioluminescent deep-sea fantasy, delicate glass-like wet tissue and subtle internal light, navy-reflected/cyan/lavender/pearl palette. No jellyfish, ctenophore, stingray, anemone, orb, text or background sea panel. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 684622,
+      "opaquePixels": 145
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "bamboo-ink",
+  "packVersion": 4,
+  "name": "Bamboo Ink",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#EAE2D2",
+    "tile": "#CDC6B8",
+    "glyph": "#1C1816",
+    "accent": "#E9E1D0",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Bamboo Ink",
+    "mood": "Bamboo in expressive brush ink on warm paper.",
+    "tags": [
+      "bamboo",
+      "expressive",
+      "brush",
+      "warm",
+      "paper",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original vertical9:19.5 iPhone wallpaper BAMBOO INK. Expressive elegant EastAsian-inspired brush-ink illustration onwarm rice-paper ivory #EFEADF, visibleveryfinepaperfibres. UpperTWO THIRDS completelyquietuniformpaper, no leaves,marks,splats,charactersorlines. Bottomthird smallcompositionofthree charcoalblack bamboo stalks with distinctjointnodes, graceful taperedleafclusters reachingright; dilutedgrey/sagewash #99A28B behindonlylow. Beautifuldrybrushtexture, wetinkedges, restrainednegative space, flatpigmentonpaper not3D/photo. Entireplantmotifcomfortablylow, no writing,seal,calligraphy,text,logo,UI,phone,frame. Originalartwithoutartiststyleattribution.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "sggKAwCUr1d2h4l3c89G+Es=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.5b032388.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 229094,
+      "sha256": "5b032388c3b59152b32ff7859c1f09f2c5b757e706bacbfce664d39f2e5e6318",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.b83a90d1.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 204834,
+      "sha256": "b83a90d1b2ffe2fb349039985e17e4b771e0d5661a92d58c3f8fdc453b6b5922",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.ee56633f.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 86778,
+      "sha256": "ee56633fb1831852780c1083df45823c21801e47b639dede500d4c3733a0ee57",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.2cf5817e.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 43344,
+      "sha256": "2cf5817e316168301e4f219a3d9f428c0414450a38cde1b10f9206bf814d473b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.681e278f.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 143660,
+      "sha256": "681e278f6549a26eb49d8ff0d9f09b9e0fe6d89d75ca8c017d2ad13acc0f62c2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.c52ddbe3.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 66748,
+      "sha256": "c52ddbe340f50dfb942b5be47731a566cf78a318fc4eba49b169e4a7d448261b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.37378ebe.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11180,
+      "sha256": "37378ebe762ca41a714b5ea1e0f885fbd3dfc55883f2d60fbb67903df35a9cf8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.3fc839b5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 160602,
+      "sha256": "3fc839b5975061b9b4ecb30e30c3fe77a1cfbf2cccfbf70c876fe1426c6587c7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-brush-focus.04f42e71.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 117326,
+      "sha256": "04f42e71730e998181155d700fbaff2d71536ef0e00de9f74778a9468496464a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ink-wash.434999e5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 233124,
+      "sha256": "434999e52aaa20572ab2790cae6bffd017af5e0cabd60fecc344944c31d312f4",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-joint-clock.0760a03b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84904,
+      "sha256": "0760a03b492772e7e752ff6163d096954508bd257eb2fbf899e1ae7299a792cd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-leaf-fan.0ccdf00a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 79234,
+      "sha256": "0ccdf00a0db8ede748d278952d5f67abc5348a46d818e2899136d8ff4d7e7b7a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-paper-date.75497602.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 46330,
+      "sha256": "7549760206f6b29cace33e3852c62aabf7904ee1f470032abe0cedabadb3b1ee",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.df2c1f77.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6736,
+      "sha256": "df2c1f770a2b25e7986a31914978573e7895ac3c41f5d2224fa8390d17a0a907",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1513894,
+  "widgets": [
+    {
+      "id": "brush-focus",
+      "kind": "focus",
+      "image": "widget-brush-focus.04f42e71.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Brush focus"
+    },
+    {
+      "id": "ink-wash",
+      "kind": "art",
+      "image": "widget-ink-wash.434999e5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ink wash"
+    },
+    {
+      "id": "joint-clock",
+      "kind": "clock",
+      "image": "widget-joint-clock.0760a03b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Joint clock"
+    },
+    {
+      "id": "leaf-fan",
+      "kind": "art",
+      "image": "widget-leaf-fan.0ccdf00a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Leaf fan"
+    },
+    {
+      "id": "paper-date",
+      "kind": "calendar",
+      "image": "widget-paper-date.75497602.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Paper date"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.df2c1f77.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.2cf5817e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.681e278f.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.c52ddbe3.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "amber-birch-mushroom",
+    "kind": "art",
+    "image": "widget-amber-birch-mushroom.3f1f7c15.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Amber birch mushroom"
+  }
+]

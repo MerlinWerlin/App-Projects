@@ -1,0 +1,42 @@
+{
+  "theme": "phosphor-amber",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "phosphor-amber",
+      "id": "phosphor-nautilus",
+      "label": "Phosphor Nautilus",
+      "ref": "130-phosphor-amber\\wallpapers\\wallpaper.png",
+      "subject": "a sculptural nautilus shell drawn entirely from tiny glowing amber phosphor dots and delicate amber wireframe curves, three-quarter view showing a dimensional spiral and graceful chamber ribs. Restrained retro amber computer-art aesthetic, warm monochrome phosphor on uniform matte charcoal #202426, complete floating shell shape centered with generous breathing room, crisp intentional dithered dot structure and very subtle warm glow. No display device or interface",
+      "avoid": "CRT monitor, floppy disk, mountain landscape, progress display, joystick",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for phosphor-amber. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: a sculptural nautilus shell drawn entirely from tiny glowing amber phosphor dots and delicate amber wireframe curves, three-quarter view showing a dimensional spiral and graceful chamber ribs. Restrained retro amber computer-art aesthetic, warm monochrome phosphor on uniform matte charcoal #202426, complete floating shell shape centered with generous breathing room, crisp intentional dithered dot structure and very subtle warm glow. No display device or interface. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: CRT monitor, floppy disk, mountain landscape, progress display, joystick. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-c3cff284-25e8-4be7-9838-4cb82c31ccf2.png",
+      "image": "widget-phosphor-nautilus.01a34e58.webp",
+      "sha256": "01a34e58734a8cb1c69d82e2529b61673bd9193b90761d09cfba58b68b2eefcd",
+      "bytes": 176742,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "phosphor-amber",
+      "id": "cream-joystick",
+      "label": "Cream Joystick",
+      "ref": "130-phosphor-amber\\wallpapers\\wallpaper.png",
+      "subject": "one beautiful unbranded vintage desktop joystick, warm cream square plastic base with chamfered corners, short black stick and round amber top, two small amber buttons without markings, a loosely curled dark cable tucked beside it. Nostalgic realistic retro computer accessory still life, matte charcoal #202426 background, restrained warm amber sidelight and soft studio shadows, precise tactile slightly aged plastic",
+      "avoid": "CRT monitor, floppy disk, landscape, progress display",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for phosphor-amber. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one beautiful unbranded vintage desktop joystick, warm cream square plastic base with chamfered corners, short black stick and round amber top, two small amber buttons without markings, a loosely curled dark cable tucked beside it. Nostalgic realistic retro computer accessory still life, matte charcoal #202426 background, restrained warm amber sidelight and soft studio shadows, precise tactile slightly aged plastic. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: CRT monitor, floppy disk, landscape, progress display. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-de04ba68-f6a6-4598-940a-dfd3bb99440e.png",
+      "image": "widget-cream-joystick.9411c952.webp",
+      "sha256": "9411c952a0f401f94b6f568d581c636a572d6e290d914a0637670d3ccae5b278",
+      "bytes": 80908,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "cacao-velvet",
+  "packVersion": 1,
+  "name": "Cacao Velvet",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#2E1B14",
+    "tile": "#4B3A33",
+    "glyph": "#FAF8F2",
+    "accent": "#B17452",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Cacao Velvet",
+    "mood": "Velvety cacao pods and chocolate browns.",
+    "tags": [
+      "cacao",
+      "velvet",
+      "velvety",
+      "pods",
+      "chocolate",
+      "browns",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tallportrait9:19.5 iPhone wallpaper CACAO VELVET. Upper TWO THIRDS nearlyuniform deepwarm cocoa-brown #2A211E empty mattefield, noobjects orpatterns behindfutureoaticons. Bottomthird refined editorial stilllife ofONE ribbed warmred-brown cacao pod, one opened pod half showing softivory bean-pulp forms, a few dry roastedbrown beans and one mutedbronze leaf. Warmdirectionalsoftlight, detailednaturalridgesandmattebeantexture, luxuriousquietbotanicalfoodphotographylook, restrainedcopper/oat/brownpalette. Compositioncontainedlowwithbreathingroom, no chocolatebrand, packaging, plate,tableedge, text, UI, phone,frame orlogo. Originalfictionalstudio scene, notscientificillustration.",
+    "addedAt": "2026-11-01",
+    "category": "Sweets & Treats"
+  },
+  "thumbhash": "yzgGEwRocIiIbJOoeWCoBoY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.13943dc6.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 150670,
+      "sha256": "13943dc6bc43dc113ed83ee9b75b89f697630627cd9d5c01b5026cc5f58a132b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.1f58ce5d.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 136966,
+      "sha256": "1f58ce5d6625f2203eb514ab1c7f7babd34acef903be017490e81b006a6b052e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.5523200a.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 72574,
+      "sha256": "5523200a7ecea6540bbbcf5ccc78f711dfa3582aab94ea2e0df51987c575b695",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.fceeaa49.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 16784,
+      "sha256": "fceeaa490d377086b094e130b31d308f5b4039bf783ae72cabf66632299b0391",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.d904d63d.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 164852,
+      "sha256": "d904d63d80fe419305be0553d96b28fc2c9fe8966008de6c122b1ac3831f55ac",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.eea780f6.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 140786,
+      "sha256": "eea780f6f97d808fb1727785ca5bed647c277792fc623fa98921411946f62735",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.11e90ee7.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11642,
+      "sha256": "11e90ee741877300542a2799d1a43622e4442b913f92abc31db822c2e79e9d0f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bean-dial.7b29cbe2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 55824,
+      "sha256": "7b29cbe223f91fdbb7760d890903f6787657cb2e5cc011642d2fa972188beb4d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cacao-date.ac742124.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 60618,
+      "sha256": "ac742124547c723a4801442bb5d804dd7dece9896eaa85e165a3ef7949ba8fc8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cacao-leaf.c7fecbdf.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 187608,
+      "sha256": "c7fecbdfb1d3747b16f901a259a86654135a8ba4b1256be45c07effa3800ebf7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cacao-pod.ab74ed6f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 109614,
+      "sha256": "ab74ed6ffe7b01d63a2d490e7434b01c89e2d57f70a305732199420097181328",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-roast-beans.8bf39d6c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 158244,
+      "sha256": "8bf39d6c375b69f22aed87245c15acfe16b4f9241d1f6531e74433be4f48fd35",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-roast-focus.e6fb385d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 91838,
+      "sha256": "e6fb385ddc35fd272ec90b27f7933cc22f99532bed96e7a763ea11e7b810f27a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1358020,
+  "widgets": [
+    {
+      "id": "bean-dial",
+      "kind": "clock",
+      "image": "widget-bean-dial.7b29cbe2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bean dial"
+    },
+    {
+      "id": "cacao-date",
+      "kind": "calendar",
+      "image": "widget-cacao-date.ac742124.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cacao date"
+    },
+    {
+      "id": "cacao-leaf",
+      "kind": "art",
+      "image": "widget-cacao-leaf.c7fecbdf.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cacao leaf"
+    },
+    {
+      "id": "cacao-pod",
+      "kind": "art",
+      "image": "widget-cacao-pod.ab74ed6f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cacao pod"
+    },
+    {
+      "id": "roast-beans",
+      "kind": "art",
+      "image": "widget-roast-beans.8bf39d6c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Roast beans"
+    },
+    {
+      "id": "roast-focus",
+      "kind": "focus",
+      "image": "widget-roast-focus.e6fb385d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Roast focus"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.fceeaa49.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.d904d63d.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.eea780f6.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

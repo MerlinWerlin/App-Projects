@@ -1,0 +1,26 @@
+[
+  {
+    "id": "papaya-blossom-spray",
+    "kind": "art",
+    "image": "widget-papaya-blossom-spray.40b571de.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Papaya blossom spray"
+  },
+  {
+    "id": "papaya-nursery-pot",
+    "kind": "art",
+    "image": "widget-papaya-nursery-pot.2fa5cd0b.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Papaya nursery pot"
+  }
+]

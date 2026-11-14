@@ -1,0 +1,58 @@
+{
+  "theme": "toucan-loom",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__toucan-loom__v1__manifest.json",
+    "sha256": "02a0ea255898dbe0abb71c9d2501d0469752de9310ce3eb27c37c79500c17d59",
+    "packVersion": 1,
+    "existingArtwork": [
+      "canopy-leaf",
+      "tuft-progress",
+      "tufted-toucan",
+      "woven-feather"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "tufted-heliconia",
+      "label": "Tufted Heliconia",
+      "file": "widgets/widget-tufted-heliconia.9a980030.webp",
+      "sha256": "9a98003092abd56396af3614c2764ba139e2a0e40bac8421ebb7d00d24e007ad",
+      "bytes": 206252,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-df782640-e104-497b-826f-8a1137fa310b.png",
+      "sourceSha256": "c7bd39dc68dd3fd174fe3ed427f2fda203526c384e0dc48ee55df7692874b762",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for toucan-loom. One compact tropical heliconia flowering sprig made entirely of exquisitely tufted and twisted wool yarn. A graceful dark-teal stem with two small curved deep-teal leaves and four alternating substantial lobster-claw-shaped orange/ochre bracts edged in warm gold. Ivory tiny flower tips, clear asymmetrical botanical silhouette, richly tactile loopstitch veins and dense fine-cut-pile tufts. Refined crafted textile art, soft warm side lighting, restrained dark-indigo/teal/golden-yellow/muted-orange palette matching an elegant woven toucan collection. No bird, feather, fabric panel, pot or ground. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 783206,
+      "opaquePixels": 483
+    },
+    {
+      "id": "woven-pineapple",
+      "label": "Woven Pineapple",
+      "file": "widgets/widget-woven-pineapple.06546f7c.webp",
+      "sha256": "06546f7c5a1e07767b1d351c7802a12b528a1e1aa47337cb1fc86646d63440ba",
+      "bytes": 246578,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-d9ca965f-6f50-4a1e-9187-c52e0b1575f5.png",
+      "sourceSha256": "12381a6c558e41af55a7b4bb4a314956098ba254ebc4db20dfdcf3072bb940be",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for toucan-loom. One original small pineapple sculpture made entirely of exquisite braided and tufted wool. Plump oval golden-ochre fruit formed from neat overlapping diamond-shaped yarn tufts, tiny amber-orange accents at each diamond, a compact crown of seven curling deep-teal and muted ivory textile leaves. Densely twisted fibers and fine loopstitches visible, sculptural tactile handcraft, elegant rather than cartoonish. Soft warm side lighting, dark-indigo shadows, mustard gold/teal/ivory/muted-orange palette matching a premium tufted toucan collection. Fruit alone, no face, pot, branch, textile panel or ground. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 630061,
+      "opaquePixels": 691
+    }
+  ]
+}

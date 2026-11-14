@@ -1,0 +1,96 @@
+{
+  "theme": "cherry-arcade",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v14/art__cherry-arcade__v7__manifest.json",
+    "sha256": "d29b7ba471fcfeca3d0ac23ec5963a30ab4d20ed7ceff1be4435658a011c5f7d",
+    "packVersion": 7,
+    "existingArtwork": [
+      "arcade-goals",
+      "pixel-cherry-star"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "cherry-claw-cabinet",
+      "label": "Cherry claw cabinet",
+      "file": "widgets/widget-cherry-claw-cabinet.0275dfad.webp",
+      "sha256": "0275dfad5989f5062ea8681d685f02e582d715659a861e254690e4a9e6033e55",
+      "bytes": 108008,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a19093ad-ed3b-4124-8d06-e379da35903e.png",
+      "sourceSha256": "a3179306ae0d09d7f303b986cdf44b0edaa13aa83c915ddff2b18c27afec78ae",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE wholly original square 1024 x 1024 standalone small-widget illustration for Glaze cherry-arcade. An exquisite retro-futurist miniature arcade claw cabinet, glossy cherry-red rounded frame, clear pale-mint glass chamber containing a small pair of shiny sculptural cherries, tiny ivory three-pronged claw suspended inside, two unmarked round controls on a blush ledge, low blush plinth. Sophisticated toy-design architectural-model photography, glossy enamel and transparent mint resin, warm soft daylight, refined pale-blush/cherry-red/mint palette. No lettering or display, no numbers, no signage or score panel, no IP characters. Center the entire complete sculpture with generous 18 percent empty margins, strong silhouette, no clipped objects. True TRANSPARENT empty background, alpha preserved, no ground plane, tile, frame, wall, scene collage or contact sheet. Pure illustration only: no text, letters, numbers, dates, clocks, clock hands, dials, calendars, UI, logos or watermark. New subject, never a crop/copy/recolour of existing artwork.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 655559,
+      "opaquePixels": 693
+    },
+    {
+      "id": "mint-gamepad",
+      "label": "Mint gamepad",
+      "file": "widgets/widget-mint-gamepad.8156d1c0.webp",
+      "sha256": "8156d1c06827e52f9d27069b90fab1064197ddb9e934329e7eaf59df0cf4736c",
+      "bytes": 91178,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-8edcbc23-fa37-4025-b9ea-c222c0416c26.png",
+      "sourceSha256": "2d63500942e933e4a60d8909294f7b9be165a3531d0b11cd0e99100d98a33628",
+      "sourceDimensions": [
+        1312,
+        1199
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original square 1024x1024 Glaze small-widget illustration for cherry-arcade. A refined sculptural retro game controller, a single smooth rounded translucent mint-glass body, glossy cherry-red directional cross at left and two round cherry-red buttons at right, two tiny ivory shoulder controls, restrained blush reflected light. No thumbstick, cable, lettering, printed glyphs or screen. Elegant premium toy-design product photography with glossy enamel and mint resin. Very different silhouette from the existing pixel star and joystick. Entire subject centered, isolated, strong silhouette, ample 18 percent margins. Truly TRANSPARENT empty background, alpha preserved, no ground plane, opaque tile, border, frame or collage. Pure art only: no text, lettering, numbers, dates, clocks, hands, dials, calendars, UI, brands or watermark. No copy, crop or recolour of an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 691759,
+      "opaquePixels": 537
+    },
+    {
+      "id": "pixel-dragon",
+      "label": "Pixel dragon",
+      "file": "widgets/widget-pixel-dragon.da54e017.webp",
+      "sha256": "da54e0178135275b29df00b15e20c23f23ce40858f61ec6007f32a265157a1d6",
+      "bytes": 174164,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-ae31e5fb-54aa-4a7c-b301-32aae62cd1e7.png",
+      "sourceSha256": "a31424e102c2f3750df3f6c16856c7ea5a234df62d3ba0bc0ff3349536124c36",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original square 1024x1024 Glaze small-widget illustration for cherry-arcade. One tiny friendly original cubic dragon built from smoothly bevelled cherry-red translucent resin voxel blocks, compact seated body, mint-glass stepped wings, short curled block tail, small ivory horns, two black bead eyes. No recognizable licensed game character, no flame, coins or environment. Sophisticated collectible glass toy sculpture, warm studio daylight, blush/cherry/mint palette, premium model photography matching an elegant retro arcade. Entire subject centered, isolated, strong silhouette, ample 18 percent margins. Truly TRANSPARENT empty background, alpha preserved, no ground plane, opaque tile, border, frame or collage. Pure art only: no text, lettering, numbers, dates, clocks, hands, dials, calendars, UI, brands or watermark. No copy, crop or recolour of an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 603997,
+      "opaquePixels": 988
+    },
+    {
+      "id": "mint-game-cartridge",
+      "label": "Mint game cartridge",
+      "file": "widgets/widget-mint-game-cartridge.90aeace0.webp",
+      "sha256": "90aeace06360a809a26dc837488442c25e8a4f93a3b984dffd8b2d5108310dde",
+      "bytes": 147230,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-b3bb9d68-02c2-4fce-ab66-79f513b7167f.png",
+      "sourceSha256": "f1ac7d7d60c099c37d0cc0f99d4fab7395236f66eaf2743872b9f83b80fe9da9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original square 1024x1024 standalone Glaze small-widget illustration for cherry-arcade. A charming premium collectible retro video-game cartridge standing in three-quarter view, transparent pale-mint glass shell revealing elegant abstract red internal traces, rounded ivory connector edge, a raised glossy cherry-red pair-of-cherries emblem on its front. Front has absolutely no label area, text, logo or printed symbol. Refined toy-design sculpture, warm soft daylight, cherry-red/blush/mint palette, restrained clean form. No screen, controller or cabinet. Full subject centered with ample18percent transparent margins, clear shape at tiny size. Truly transparent empty background, alpha preserved; no floor, opaque square, framing or collage. Pure illustration only: no text, numbers, lettering, dates, clocks, dials, hands, calendars, UI, brand or watermark. Entirely new artwork, no copy/crop/recolour.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 515325,
+      "opaquePixels": 491
+    }
+  ]
+}

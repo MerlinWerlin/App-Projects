@@ -1,0 +1,38 @@
+{
+  "theme": "peachskin",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__peachskin__v7__manifest.json",
+    "sha256": "99a597df9b2a3f4b49febb2f2c3a168593301446035b30e809b5887121b0b12b",
+    "packVersion": 7,
+    "existingArtwork": [
+      "production-20261101-velvet-peach",
+      "hero-small",
+      "art-20261106-peach-blossom",
+      "art-20261106-peach-slice"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "peach-stone-seedling",
+      "label": "Peach stone seedling",
+      "file": "widgets/widget-peach-stone-seedling.9aa7fdc1.webp",
+      "sha256": "9aa7fdc113f2697409f8098dbeb46d95204ed6bf1981a725b815fad8c5cff97a",
+      "bytes": 157024,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-dedd6e6f-5072-4d4a-9c2f-e9d50638001c.png",
+      "sourceSha256": "67566c779fddb857af4efbdf804b715f38b6de85c4809155d2f5c0f4ccd8524c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for peachskin. One beautiful germinating peach stone, warm cinnamon-brown deeply textured split pit cradling a small ivory kernel, slender new green shoot rising with two soft young leaves and one delicate curved root below. Fine-art natural botanical macro photography, realistic stone ridges, tender translucent leaves, softly luminous warm peach/cream/muted-green palette and gentle diffuse daylight. No whole peach, peach slice, blossom, teacup or cloth. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 836264,
+      "opaquePixels": 480
+    }
+  ]
+}

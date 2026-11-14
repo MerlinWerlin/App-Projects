@@ -1,0 +1,26 @@
+{
+  "theme": "bellbat-bloom",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "bellbat-bloom",
+      "id": "velvet-acorn-lantern",
+      "label": "Velvet acorn lantern",
+      "ref": "074-bellbat-bloom\\wallpapers\\wallpaper.png",
+      "subject": "one tiny whimsical acorn lantern made entirely of dusty plum and rose felt, textured stitched cupule above a softly glowing warm ivory felt seed body, hung from a short curved sage felt twig with two small stitched leaves, delicate wool fibres and handmade seams",
+      "style": "Exquisite tactile felt/velvet miniature photographic illustration, muted mauve/plum/rose/sage on warm taupe-linen seamless background, soft studio daylight and gentle shadow, the same handcrafted botanical softness as reference",
+      "avoid": "No bat, wing bow, seedpod swing, basket or bellflowers",
+      "prompt": "Use case: stylized-concept. Glaze bellbat-bloom, one original standalone 1024 x 1024 square pure artwork. Subject: one tiny whimsical acorn lantern made entirely of dusty plum and rose felt, textured stitched cupule above a softly glowing warm ivory felt seed body, hung from a short curved sage felt twig with two small stitched leaves, delicate wool fibres and handmade seams. Exquisite tactile felt/velvet miniature photographic illustration, muted mauve/plum/rose/sage on warm taupe-linen seamless background, soft studio daylight and gentle shadow, the same handcrafted botanical softness as reference. No bat, wing bow, seedpod swing, basket or bellflowers. Whole compact subject centred with16percent clear safe margins. New subject/composition no copy/crop/recolour. No text, numbers, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-7c0f215d-1343-40dd-9879-da56bff50ee0.png",
+      "image": "widget-velvet-acorn-lantern.2864cf38.webp",
+      "sha256": "2864cf38eb6dc82e3d42d169c8c8288e99aa36800e6a51db7061b3bae637d43c",
+      "bytes": 229896,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

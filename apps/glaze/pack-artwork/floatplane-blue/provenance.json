@@ -1,0 +1,40 @@
+{
+  "theme": "floatplane-blue",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "floatplane-blue",
+      "id": "mooring-cleat",
+      "label": "Mooring cleat",
+      "ref": "146-floatplane-blue\\widgets\\pontoon-study.png",
+      "subject": "one small brushed-aluminium seaplane mooring cleat mounted on a painted muted-blue wooden base, neatly curved ivory rope looped around it with one loose end, precise handcrafted miniature, complete silhouette, no float, plane, propeller or goggles",
+      "prompt": "Use case: stylized-concept. Glaze Floatplane Blue, one original standalone 1024 x 1024 square pure artwork of one small brushed-aluminium seaplane mooring cleat mounted on a painted muted-blue wooden base, neatly curved ivory rope looped around it with one loose end, precise handcrafted miniature, complete silhouette, no float, plane, propeller or goggles. Refined painted wood/brushed-aluminium collectible miniature photographic illustration, pale sky-grey #D9E3E8 seamless matte studio ground/background, muted blue #789AB2 ivory #EDE5D3 and tiny navy details, gentle soft light/shadow, match reference craft finish and scale. Whole compact object centred inside generous 16 percent clear safe margins, newly invented composition, never copy/crop/recolour. No brand, registration marks, letters, numerals, logos, watermarks, UI, frame, gauges, clocks/dials/hands, date/calendar, focus/battery indicators. No panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-af13b888-13d2-46f5-bf16-cdd744940a3f.png",
+      "image": "widget-mooring-cleat.32eb6796.webp",
+      "sha256": "32eb6796baf074cc467e8d64e52ed04c5e221e38d5aa3a09361c78b58e2e9c45",
+      "bytes": 80694,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "floatplane-blue",
+      "id": "aviator-goggles",
+      "label": "Aviator goggles",
+      "ref": "146-floatplane-blue\\widgets\\floatplane-model.png",
+      "subject": "one small pair of vintage aviator goggles crafted as a collectible miniature, round clear smoky lenses in brushed aluminium rims, soft ivory padded leather and a muted blue strap curled behind, fine tiny rivets, complete whole object, no aircraft, float or propeller",
+      "prompt": "Use case: stylized-concept. Glaze Floatplane Blue, one original standalone 1024 x 1024 square pure artwork of one small pair of vintage aviator goggles crafted as a collectible miniature, round clear smoky lenses in brushed aluminium rims, soft ivory padded leather and a muted blue strap curled behind, fine tiny rivets, complete whole object, no aircraft, float or propeller. Refined painted wood/brushed-aluminium collectible miniature photographic illustration, pale sky-grey #D9E3E8 seamless matte studio ground/background, muted blue #789AB2 ivory #EDE5D3 and tiny navy details, gentle soft light/shadow, match reference craft finish and scale. Whole compact object centred inside generous 16 percent clear safe margins, newly invented composition, never copy/crop/recolour. No brand, registration marks, letters, numerals, logos, watermarks, UI, frame, gauges, clocks/dials/hands, date/calendar, focus/battery indicators. No panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-3312bdbe-f93a-45ed-bf75-b36144c7240a.png",
+      "image": "widget-aviator-goggles.13ef94cb.webp",
+      "sha256": "13ef94cbfd633ab8a51170cf6344ad7452a4026a636676da0d4723800804e3c8",
+      "bytes": 114860,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

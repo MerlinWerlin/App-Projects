@@ -1,0 +1,38 @@
+{
+  "theme": "lavender-nocturne",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__lavender-nocturne__v6__manifest.json",
+    "sha256": "72db182afc747b10754765fe639a983272be9a90b27a46970725a6b227714964",
+    "packVersion": 6,
+    "existingArtwork": [
+      "lavender-butterfly",
+      "lavender-dream-jar",
+      "teacup-village",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "lavender-embroidered-harp",
+      "label": "Lavender embroidered harp",
+      "file": "widgets/widget-lavender-embroidered-harp.0bcfb135.webp",
+      "sha256": "0bcfb1357c965deb1d46ff108359511996974d7f8fcd413109e78de69dda95a2",
+      "bytes": 286772,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-17dd070a-8706-4961-ae5c-e308670615cc.png",
+      "sourceSha256": "49d59e75b2b63943ec7cc20f9ec95745ef8bc57f2fa798c0a35b8c3b800598ed",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for lavender-nocturne. One elegant small harp rendered entirely as intricate raised ivory-and-lavender embroidery, fine golden thread strings, warm-cream stitched wooden frame, delicate lavender flower sprigs winding around its lower curve, softly scalloped stitched base. Premium tactile needlework illustration and realistic embroidery texture, dense fine thread fibres, dark aubergine reflected shadows with ivory/lavender/soft gold palette. No butterfly, dream jar, teacup village, hare, clock, lettering or musical notation. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 707927,
+      "opaquePixels": 431
+    }
+  ]
+}

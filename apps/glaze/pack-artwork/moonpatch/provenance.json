@@ -1,0 +1,38 @@
+{
+  "theme": "moonpatch",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__moonpatch__v6__manifest.json",
+    "sha256": "82843e8d9e176f486aad71561cbf989d11aae9f7e051de583a5fd809a1427800",
+    "packVersion": 6,
+    "existingArtwork": [
+      "patchwork-kite",
+      "quilted-rocket",
+      "star-catcher",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "patchwork-moon-rover",
+      "label": "Patchwork moon rover",
+      "file": "widgets/widget-patchwork-moon-rover.3f1e2dbf.webp",
+      "sha256": "3f1e2dbf833e5f299bc08db44ec52cf382a3beadcd407e3bd720d3849b914163",
+      "bytes": 259348,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-e730ee95-864d-45c2-957b-9a5791498a94.png",
+      "sourceSha256": "bab7f2409450ed1bc9a847e508d4cf239f5aac3d612c09b67712222ef3fc1fd2",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for moonpatch. One charming lunar rover made entirely of quilted and embroidered fabric: warm-ivory padded cabin with a navy round porthole, four soft stitched terracotta wheels, cream patchwork panels, fine golden-thread seams and one little star-tipped antenna. Tactile handcrafted textile miniature photography, visible linen weave, tiny stitches and fluffy padded forms, navy/ivory/brick-red/soft-gold palette. No astronaut, rocket, kite, crescent moon, meter, numbers or text. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 638721,
+      "opaquePixels": 320
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "theme": "match-point",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__match-point__v6__manifest.json",
+    "sha256": "e9cb33b1e75cb248135ead17d8ed49fdeb3e8e549868f519f87a02657e3585f1",
+    "packVersion": 6,
+    "existingArtwork": [
+      "racket-butterfly",
+      "tennis-planter",
+      "racket-study",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "clay-court-tennis-shoe",
+      "label": "Clay court tennis shoe",
+      "file": "widgets/widget-clay-court-tennis-shoe.b960bfe3.webp",
+      "sha256": "b960bfe3c694507d3b846bcec00dcb87dc2fad42e1741583f0319218622fde7c",
+      "bytes": 194632,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-027ec7ca-ed02-4130-af9d-9eeb446e6a20.png",
+      "sourceSha256": "74217a3797c15ecf2455c4754ea41025b44be7ed68a76548fa48e44c7e2845f0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for match-point. One refined vintage unbranded tennis shoe in warm ivory canvas and suede, dark navy ankle trim and laces, restrained terracotta clay dust along the rubber sole, small chartreuse heel tab and beautifully realistic stitched panels. Premium sports editorial still-life macro photography with warm clay-court sunlight, ivory/navy/rust/yellow-green palette. No visible logo, word, number, racket, tennis ball, butterfly, planter or court diorama. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 696468,
+      "opaquePixels": 1014
+    }
+  ]
+}

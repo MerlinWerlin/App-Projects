@@ -1,0 +1,26 @@
+{
+  "theme": "birchlight",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "birchlight",
+      "id": "amber-birch-mushroom",
+      "label": "Amber birch mushroom",
+      "ref": "084-birchlight\\wallpapers\\wallpaper.png",
+      "subject": "one small natural amber-and-ivory woodland mushroom growing from a short curved piece of white birch twig, translucent warm ochre cap edge, delicate pale gills, a little silver lichen, complete quiet botanical specimen",
+      "style": "Fine-art natural autumn macro photographic illustration, pale silver mist seamless backdrop with faint warm birch woodland haze low behind only, muted amber/gold/ivory/soft grey palette, diffuse dawn light, beautiful realistic bark and mushroom texture matching reference",
+      "avoid": "No golden leaf, fern frame or dangling birch seedpod",
+      "prompt": "Use case: stylized-concept. Glaze birchlight: original standalone1024x1024 square pure artwork. Subject one small natural amber-and-ivory woodland mushroom growing from a short curved piece of white birch twig, translucent warm ochre cap edge, delicate pale gills, a little silver lichen, complete quiet botanical specimen. Fine-art natural autumn macro photographic illustration, pale silver mist seamless backdrop with faint warm birch woodland haze low behind only, muted amber/gold/ivory/soft grey palette, diffuse dawn light, beautiful realistic bark and mushroom texture matching reference. No golden leaf, fern frame or dangling birch seedpod. Whole compact object centred with16percent clear safe margins, new subject/composition never copy/crop/recolour. No text, labels, numerals, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress indicators. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-52105d94-bdef-47a1-bef4-eaaa7c6315c5.png",
+      "image": "widget-amber-birch-mushroom.3f1f7c15.webp",
+      "sha256": "3f1f7c15616959fe2f1e6cdbd7d2e3da0f2afec010b4384b13c1d84e13575db8",
+      "bytes": 112466,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "theme": "spare-time",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "spare-time",
+      "id": "coral-bowling-shoes",
+      "label": "Coral bowling shoes",
+      "ref": "054-spare-time\\wallpapers\\wallpaper.png",
+      "subject": "one neat pair of miniature vintage bowling shoes arranged heel-to-toe, cream leather and restrained coral-red saddle panels, navy laces and thin warm maple-toned soles, no branding or markings, whole pair visible, no ball or pin",
+      "prompt": "Use case: stylized-concept. Glaze Spare Time original 1024 x 1024 square pure artwork of one neat pair of miniature vintage bowling shoes arranged heel-to-toe, cream leather and restrained coral-red saddle panels, navy laces and thin warm maple-toned soles, no branding or markings, whole pair visible, no ball or pin. Cheerful refined retro bowling collectible material photographic illustration, seamless powder blue #DCE9EC matte background/floor, navy/coral/cream/warm maple palette, fine leathergrain and soft warm studio light/shadow, same premium miniature world as reference. Whole compact object centred within16percent clear margins; new subject/composition no copy/crop/recolour. No text, numbers, labels, scores, logos, watermark, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-a4af4ca6-3822-496c-8430-3f0f8399e5fc.png",
+      "image": "widget-coral-bowling-shoes.cdc6149b.webp",
+      "sha256": "cdc6149bccf7a6764f38845bd2508072727dbf14f07a583a184e451f8b92c9f0",
+      "bytes": 104758,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "spare-time",
+      "id": "retro-bowling-bag",
+      "label": "Retro bowling bag",
+      "ref": "054-spare-time\\wallpapers\\wallpaper.png",
+      "subject": "one compact refined retro bowling carry bag, coral and cream enamel-like leather panels with navy piping and twin curved ivory handles, small plain brass zip pull, polished tactile collectible miniature. Whole bag visible, no bowling ball, pin vase or score",
+      "prompt": "Use case: stylized-concept. Glaze Spare Time original 1024 x 1024 square pure artwork of one compact refined retro bowling carry bag, coral and cream enamel-like leather panels with navy piping and twin curved ivory handles, small plain brass zip pull, polished tactile collectible miniature. Whole bag visible, no bowling ball, pin vase or score. Cheerful refined retro bowling collectible material photographic illustration, seamless powder blue #DCE9EC matte background/floor, navy/coral/cream/warm maple palette, fine leathergrain and soft warm studio light/shadow, same premium miniature world as reference. Whole compact object centred within16percent clear margins; new subject/composition no copy/crop/recolour. No text, numbers, labels, scores, logos, watermark, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-3e4d6321-5914-412e-95b8-a7725108a638.png",
+      "image": "widget-retro-bowling-bag.54b23117.webp",
+      "sha256": "54b23117de17c209e89d86f870b50acfa03962abd428b714e0c38a8e4c0ad754",
+      "bytes": 136112,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "spare-time",
+      "id": "maple-pin-rack",
+      "label": "Maple pin rack",
+      "ref": "054-spare-time\\wallpapers\\wallpaper.png",
+      "prompt": "Use case: stylized-concept. Glaze Spare Time pure Artwork widget, one original standalone1024x1024 square. A small sculptural miniature bowling-pin rack: three complete ivory enamel bowling pins with coral-red neck stripes held in an elegant low curved maple cradle with navy ends, tiny brass supports. New composition, no ball, pin-flower vase, alley or score. Cheerful refined retro collectible material photography, powder blue #DCE9EC seamless matte backdrop/floor, navy/coral/cream/maple palette, fine woodgrain, warm soft studio light/shadow matching reference. Full object within16percent clear margins. No text, numerals, markings, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-efad6ee5-791a-4c6d-828c-8f16f5acff91.png",
+      "image": "widget-maple-pin-rack.a00e80fd.webp",
+      "sha256": "a00e80fd6389e4a811b99e155a83ede3b2fefe5f12583aac2a2c7b6916906bbb",
+      "bytes": 75818,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

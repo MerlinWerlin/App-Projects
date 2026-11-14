@@ -1,0 +1,277 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "ochre-bend",
+  "packVersion": 6,
+  "name": "Ochre Bend",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#FEE3C5",
+    "tile": "#DEC7AC",
+    "glyph": "#1C1816",
+    "accent": "#9C6B41",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Ochre Bend",
+    "mood": "An Australian-inspired sandstone creek with pale sand haze, clay icons, gum leaves, ochre stone.",
+    "tags": [
+      "ochre",
+      "bend",
+      "australian",
+      "inspired",
+      "sandstone",
+      "creek",
+      "with",
+      "pale",
+      "sand",
+      "haze",
+      "clay",
+      "icons",
+      "leaves",
+      "stone",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "azkSEwJ4f3iHdYh4jED1CHI=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.636fb616.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 325050,
+      "sha256": "636fb616e0ae4e9b7642f54a7642e764cb1f17ab6700a3a25405b401f0e9f13f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.61b97943.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 292914,
+      "sha256": "61b97943d7954ddf658856718be59ac1394be083a90a87bb9ceef1e8d2cef048",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.bfcd3e9f.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 134178,
+      "sha256": "bfcd3e9f54d06d21237f0b1a5fa8488861015f92dd31a57ae74a8134cda2fa18",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.56e63546.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 26826,
+      "sha256": "56e63546eff3b027f0c893e1bebf75e13bd9467f36dadc80442bad77f3d4e60e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.b6bea5e7.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 155136,
+      "sha256": "b6bea5e7038b91d485ae2625e2231a90719acb9bc5df8c0780fb172aedf38398",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.85460a2f.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 99800,
+      "sha256": "85460a2f3aa4f0f292966641a1aaad15b405fb0ca35486cffdbc605517e7eff9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.7a0c915e.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 20602,
+      "sha256": "7a0c915e0cee67dbf487d03a804d4c1404efae222f5573f98e3bdd68cd037d44",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.6ab40ae7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84120,
+      "sha256": "6ab40ae79cca506c51ee8ff405b28c8945948eca4515ec715ffc06348f57e347",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-creek-date.5b2ef34b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 121126,
+      "sha256": "5b2ef34b91747bb775b96e755e6deee1e045a40e72e431e05f5e463d81c8abeb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-eucalyptus-capsule.24f5d9de.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 73046,
+      "sha256": "24f5d9de3182f90643c86796bd381909af97861d2bb455b082fe7fc85f5352c2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sandstone-kingfisher.ef39382a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 135778,
+      "sha256": "ef39382a48df9ce4686280adeeb55102e8b49adf2361eb413886c9960af35956",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ochre-stone.9735cff1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 146686,
+      "sha256": "9735cff14f4b63e6e31840f89c448b2a720f6665ac4598e0de38adc2412984eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.9be9ed74.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 6590,
+      "sha256": "9be9ed74a834b9e446ec8b0b9562ebb095eedcd5bed5a15e42f745a436723cbd",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1621852,
+  "widgets": [
+    {
+      "id": "creek-date",
+      "kind": "calendar",
+      "image": "widget-creek-date.5b2ef34b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Creek date"
+    },
+    {
+      "id": "eucalyptus-capsule",
+      "kind": "art",
+      "image": "widget-eucalyptus-capsule.24f5d9de.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Eucalyptus capsule"
+    },
+    {
+      "id": "sandstone-kingfisher",
+      "kind": "art",
+      "image": "widget-sandstone-kingfisher.ef39382a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sandstone kingfisher"
+    },
+    {
+      "id": "ochre-stone",
+      "kind": "art",
+      "image": "widget-ochre-stone.9735cff1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ochre stone"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.9be9ed74.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.56e63546.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.b6bea5e7.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.85460a2f.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

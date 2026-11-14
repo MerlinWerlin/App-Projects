@@ -1,0 +1,38 @@
+[
+  {
+    "id": "walnut-cello",
+    "kind": "art",
+    "image": "widget-walnut-cello.583d3fe5.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Walnut cello"
+  },
+  {
+    "id": "chamber-french-horn",
+    "kind": "art",
+    "image": "widget-chamber-french-horn.fa4e49cd.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Chamber French horn"
+  },
+  {
+    "id": "walnut-music-stand",
+    "kind": "art",
+    "image": "widget-walnut-music-stand.3c17bbd8.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Walnut music stand"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "canopy-orchid",
+    "kind": "art",
+    "image": "widget-canopy-orchid.8b56ff54.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Canopy orchid"
+  },
+  {
+    "id": "jade-tree-frog",
+    "kind": "art",
+    "image": "widget-jade-tree-frog.cc0bb31b.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Jade tree frog"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "theme": "juniper-mist",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__juniper-mist__v7__manifest.json",
+    "sha256": "e11c74a8dcc0cfc6cd4cf86ba34c3cb4e7abb5a01f17f831589ac2cd2d48b4af",
+    "packVersion": 7,
+    "existingArtwork": [
+      "production-20261101-needle-study",
+      "hero-small",
+      "art-20261106-frosted-juniper",
+      "art-20261106-winter-terrarium"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "winter-wren",
+      "label": "Winter wren",
+      "file": "widgets/widget-winter-wren.abd10c58.webp",
+      "sha256": "abd10c58f8fbf45ab53c4b5dacdf50b9fd0d830fe9ee834219e45a80de9fa9f8",
+      "bytes": 267020,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a4487f14-ff9d-466a-a6f7-20f328522922.png",
+      "sourceSha256": "3a400f385bbda34fca2e7c33440a9c1c8137229547eeb9fc7b3a607bc8f5cab8",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for juniper-mist. One small natural winter wren perched gently on a short weathered juniper twig, soft cool taupe feathers with subtle sage-grey and dusty blue shading, round cream breast, fine feather barbs, tiny dark eye and delicate feet. One small dusty-blue juniper berry and two fine needle clusters on the perch, frosty dew detail, quiet cool diffuse morning light. Fine-art botanical wildlife still-life macro photography, pale mist-sage/blue-grey/cream palette. No terrarium or repeated full sprig; bird is focal subject. Entire subject centered with generous18percent empty margins, clear compact silhouette. Truly transparent background with preserved alpha; no opaque tile, ground plane, frame or collage. Pure illustration: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Never crop/copy/recolour any existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 706645,
+      "opaquePixels": 260
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "brass-afterhours",
+  "packVersion": 1,
+  "name": "Brass Afterhours",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#0F1B2B",
+    "tile": "#303A47",
+    "glyph": "#FAF8F2",
+    "accent": "#88633B",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Brass Afterhours",
+    "mood": "Polished brass details on late-night navy.",
+    "tags": [
+      "brass",
+      "afterhours",
+      "polished",
+      "details",
+      "late",
+      "night",
+      "navy",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tallportrait9:19.5 iPhone wallpaper BRASS AFTERHOURS. Upper TWO THIRDS nearlyuniform deep matte navy #1C2630, emptyquietfield withoutobjects,patternsorbrightlight behindfuturebrassappglyphs. Bottomthird one beautifully crafted unbranded small ALTO SAXOPHONE angleddiagonallylow on a darknavystudiosurface, recognizablecurvedbrassbody,flaredbell,pearlkeybuttons,curvedneckandblackmouthpiece. Warmsoftbrass #C3A169 andivoryhighlights, tinyfoldofbordeauxclothbeneathonlylow, entireinstrumentcontainedwithmargins, quietluxuriouseditorialstilllife. Refinedmaterialphotographylook,noconcertstage,people,smoke,musicnotation,text,logos,UI,phone orframe. Originalfictionalstudioart.",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "iPcBEwIBxIyUfcN5RpBoBZk=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.3b135700.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 107080,
+      "sha256": "3b1357001828d99e28ff49510756e88f5867c2e320b5c46a63396bc732178b44",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.2c34add8.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 95964,
+      "sha256": "2c34add8b3eec6441f9ebd70c81197f41d8abf987a6760dd9bd893623a58699f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.c94777c9.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 48920,
+      "sha256": "c94777c9a655eac643e412edff4c07fa4d0b55c9ebd4f1429e1eed28be64db8b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.328e9724.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 48100,
+      "sha256": "328e97244de1e459a394fc0050cfd142391202450c22298ede2f0bea7fc1f4ab",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.9d6bba54.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 68008,
+      "sha256": "9d6bba54be23d671de94eae6c04fe6be2032bb583bc4b1b75dd0cce4eb30f979",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.a4113c00.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 163642,
+      "sha256": "a4113c0055156984ad77f8d1b58890b3f5eeca71e979bf5a4999ff0e8048b2a6",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.27a958d4.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8438,
+      "sha256": "27a958d490565bdff24bde7283dd57ed522c51d61b80a6f700d308483aaaf08c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-brass-clock.4b220104.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 26976,
+      "sha256": "4b22010494de75ad3d8cb421ee76efb3a17a7b7fa072b17abe82b26272062b5f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-key-rhythm.feca7f52.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 100112,
+      "sha256": "feca7f5205eaecf653f3294be17ccfa920f4727993c9b607a557ccc67d322362",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-reed-study.95a3e23a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 62770,
+      "sha256": "95a3e23a43db5ec81810fe60e9a82d96ff6a6e83d3de8449d65d249f4493040d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-sax-bell.e90077c5.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 101698,
+      "sha256": "e90077c5b875ce2503103a928ae94d091ffd3bab59c74932514c73c55eaee07f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-session-date.dd76a655.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 19960,
+      "sha256": "dd76a655d0f8317a1ecbad436aac5d80be1c7c5027df7c3789039ebae2eaa6ef",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-session-focus.4c09b8b9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 27996,
+      "sha256": "4c09b8b9fdf57ddb229f23195066ff84b5c37707c78dcdc22dd4f7f5b2fe7ba0",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 879664,
+  "widgets": [
+    {
+      "id": "brass-clock",
+      "kind": "clock",
+      "image": "widget-brass-clock.4b220104.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Brass clock"
+    },
+    {
+      "id": "key-rhythm",
+      "kind": "art",
+      "image": "widget-key-rhythm.feca7f52.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Key rhythm"
+    },
+    {
+      "id": "reed-study",
+      "kind": "art",
+      "image": "widget-reed-study.95a3e23a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Reed study"
+    },
+    {
+      "id": "sax-bell",
+      "kind": "art",
+      "image": "widget-sax-bell.e90077c5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Sax bell"
+    },
+    {
+      "id": "session-date",
+      "kind": "calendar",
+      "image": "widget-session-date.dd76a655.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Session date"
+    },
+    {
+      "id": "session-focus",
+      "kind": "focus",
+      "image": "widget-session-focus.4c09b8b9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Session focus"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.328e9724.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.9d6bba54.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.a4113c00.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

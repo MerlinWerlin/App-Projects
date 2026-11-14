@@ -1,0 +1,23 @@
+{
+  "theme": "wisteria-hush",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "wisteria-hush",
+      "id": "wisteria-seedpods",
+      "label": "Velvet seedpods",
+      "ref": "085-wisteria-hush/widgets/extra-20261029-wisteria-lacewing.png",
+      "prompt": "Use case: stylized-concept. Asset type: Glaze Wisteria Hush small Artwork widget, one finished standalone 1024 x 1024 square pure illustration. Create an original fine-art botanical macro photographic illustration of THREE velvety pale sage wisteria seedpods, one gently opened to show smooth dark warm-brown seeds, arranged as a graceful compact hanging botanical study on a slender curved woody stem. Delicate natural anatomy, subtle lilac reflected light, soft overcast morning lighting, refined lifelike surface detail. Muted pale lilac backdrop #EEEAF5 with quiet tonal variation matching the reference's own sky, no hard card edge, the whole subject contained with generous 16 percent clear margins. Reference images are STYLE AND PALETTE REFERENCES ONLY; create a completely new composition and subject, never a crop, copy or recolour. No flowers or insects. No text, numbers, letters, logos, watermark, border, UI, calendar, clock, hands, dial, battery, focus indicator or progress bar. One finished image, no grid.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-29851ca5-6b69-4a02-894b-24683262a178.png",
+      "image": "widget-wisteria-seedpods.2b95b40a.webp",
+      "sha256": "2b95b40a769a121c3e538135e4b2a8238d428f9560aec6e17f54cfb2c31be06d",
+      "bytes": 96328,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

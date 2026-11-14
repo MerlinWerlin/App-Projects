@@ -1,0 +1,40 @@
+{
+  "theme": "pitaya-pop",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "pitaya-pop",
+      "id": "paper-hummingbird",
+      "label": "Paper hummingbird",
+      "ref": "143-pitaya-pop\\widgets\\whole-pitaya.png",
+      "subject": "one tiny hovering hummingbird built entirely from layered folded paper, magenta breast and sage-green wings with ivory underside, delicately cut narrow beak and tail, coherent graceful anatomy and rich paper fibre texture. Entire wings and tail visible, no fruit, slice, flower or radial rosette",
+      "prompt": "Use case: stylized-concept. Glaze Pitaya Pop original 1024 x 1024 square pure artwork of one tiny hovering hummingbird built entirely from layered folded paper, magenta breast and sage-green wings with ivory underside, delicately cut narrow beak and tail, coherent graceful anatomy and rich paper fibre texture. Entire wings and tail visible, no fruit, slice, flower or radial rosette. Refined layered papercraft sculpture photographic illustration, warm ivory #F2E8DE seamless matte paper background/floor with subtle fibres, magenta/sage/ivory palette, soft warm studio shadow. Match reference folded-paper medium, no wet fruit or glossy plastic. New subject/composition no copy/crop/recolour. Entire compact object centred within 16 percent clear margins. No text, numbers, logos, watermarks, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-49b16dc8-0563-41d6-b63c-1f08a4939b5b.png",
+      "image": "widget-paper-hummingbird.be4a31f2.webp",
+      "sha256": "be4a31f2951796f3968e5b7b4184913b29dfcd1bb4e1474fbd786e5ec3680eab",
+      "bytes": 163804,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "pitaya-pop",
+      "id": "paper-cactus-blossom",
+      "label": "Paper cactus blossom",
+      "ref": "143-pitaya-pop\\widgets\\bract-rosette.png",
+      "subject": "one sophisticated layered-paper night-blooming cactus flower, long delicate ivory paper petals around fine magenta paper stamens, a short sage folded-paper cactus segment below, visible cut edges and subtle creases. Entire bloom/stem contained, no fruit, slice or green radial bract rosette",
+      "prompt": "Use case: stylized-concept. Glaze Pitaya Pop original 1024 x 1024 square pure artwork of one sophisticated layered-paper night-blooming cactus flower, long delicate ivory paper petals around fine magenta paper stamens, a short sage folded-paper cactus segment below, visible cut edges and subtle creases. Entire bloom/stem contained, no fruit, slice or green radial bract rosette. Refined layered papercraft sculpture photographic illustration, warm ivory #F2E8DE seamless matte paper background/floor with subtle fibres, magenta/sage/ivory palette, soft warm studio shadow. Match reference folded-paper medium, no wet fruit or glossy plastic. New subject/composition no copy/crop/recolour. Entire compact object centred within 16 percent clear margins. No text, numbers, logos, watermarks, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-94ae519e-d6d9-4d29-ac6d-21d4b596e378.png",
+      "image": "widget-paper-cactus-blossom.6068dcc1.webp",
+      "sha256": "6068dcc18cfb441ddb30b2bc025fdd4f8d31dd22e8ac334a8859cf9691994de0",
+      "bytes": 195420,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

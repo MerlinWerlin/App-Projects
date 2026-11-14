@@ -1,0 +1,40 @@
+{
+  "theme": "typecase-ivory",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "typecase-ivory",
+      "id": "miniature-letterpress",
+      "label": "Miniature letterpress",
+      "ref": "131-typecase-ivory\\widgets\\ink-brayer.png",
+      "subject": "one small unbranded vintage tabletop letterpress sculpture, dark patinated iron frame, warm walnut base and short curved ivory-handled lever, empty flat printing platen with no type, a tiny oxide-red ink trace, complete miniature visible, no roller or typecase grid",
+      "prompt": "Use case: stylized-concept. Glaze Typecase Ivory original standalone 1024 x 1024 square pure artwork of one small unbranded vintage tabletop letterpress sculpture, dark patinated iron frame, warm walnut base and short curved ivory-handled lever, empty flat printing platen with no type, a tiny oxide-red ink trace, complete miniature visible, no roller or typecase grid. Premium realistic decorative printcraft still-life photographic illustration on warm matte ivory cotton paper #EEE9DD seamless backdrop/floor, fine woodgrain, worn metal and ink patina, soft studio light/shadow matching reference. New subject/composition never copy/crop/recolour. Entire compact object centred within 16 percent clear margins. No letters, symbols, words, text, numerals, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-84f79c39-3567-42d6-9549-3b40484dd3d2.png",
+      "image": "widget-miniature-letterpress.738dd0e9.webp",
+      "sha256": "738dd0e9add392a807810d16cae86d7c0ae730d0ec16d04d37f0e25c8142f0d9",
+      "bytes": 229434,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "typecase-ivory",
+      "id": "empty-composing-stick",
+      "label": "Empty composing stick",
+      "ref": "131-typecase-ivory\\widgets\\typecase-grid.png",
+      "subject": "one empty vintage letterpress composing stick of dark patinated metal with a warm walnut handle, a plain unmarked steel spacer and a tiny folded ivory cotton cleaning rag beside it, precise tactile craft tools, complete objects contained, absolutely no type blocks, glyphs or graduations",
+      "prompt": "Use case: stylized-concept. Glaze Typecase Ivory original standalone 1024 x 1024 square pure artwork of one empty vintage letterpress composing stick of dark patinated metal with a warm walnut handle, a plain unmarked steel spacer and a tiny folded ivory cotton cleaning rag beside it, precise tactile craft tools, complete objects contained, absolutely no type blocks, glyphs or graduations. Premium realistic decorative printcraft still-life photographic illustration on warm matte ivory cotton paper #EEE9DD seamless backdrop/floor, fine woodgrain, worn metal and ink patina, soft studio light/shadow matching reference. New subject/composition never copy/crop/recolour. Entire compact object centred within 16 percent clear margins. No letters, symbols, words, text, numerals, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar or progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-0df5c553-56f6-46f5-a3ee-ab30b97b5943.png",
+      "image": "widget-empty-composing-stick.fb755465.webp",
+      "sha256": "fb755465556941d262c9526d8679b52ded5d0dc1a6ac2f75036447ab1ea17f59",
+      "bytes": 198734,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

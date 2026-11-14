@@ -1,0 +1,38 @@
+{
+  "theme": "obsidian-tide",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__obsidian-tide__v6__manifest.json",
+    "sha256": "5a8def6f5f54d6c90e7b0f07d81ec2852122dd001a244321cee1a8c548678f0e",
+    "packVersion": 6,
+    "existingArtwork": [
+      "audit-20261101-shoreline-shell",
+      "audit-20261101-tidal-eye",
+      "foam-pebble-garden",
+      "sea-glass-wave-sculpture"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "tidal-sea-urchin",
+      "label": "Tidal sea urchin",
+      "file": "widgets/widget-tidal-sea-urchin.c4001526.webp",
+      "sha256": "c40015268fc5f4adfae0c63efb3622783f448c975ed51ac63a39e092d61a39c3",
+      "bytes": 247848,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a304474d-ec25-4969-afb3-56091b71b565.png",
+      "sourceSha256": "2dbd1e601407bf7a03bd66c4bff3006e76ad9dcf91533f313c3394ac7f77ae2e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for obsidian-tide. One natural black sea urchin with elegant fine obsidian-dark spines, subtle turquoise tidal-water highlights between its spines, tiny ivory foam beads at its lower edge, resting on one small wet basalt sliver. Premium fine-art coastal macro photography, realistic wet marine texture and restrained sea-glass refraction, obsidian-black/deep-teal/ivory palette. No spiral shell, vortex, pebble garden, wave sculpture or rectangular shore panel. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 718036,
+      "opaquePixels": 480
+    }
+  ]
+}

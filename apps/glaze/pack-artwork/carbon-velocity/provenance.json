@@ -1,0 +1,38 @@
+{
+  "theme": "carbon-velocity",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__carbon-velocity__v7__manifest.json",
+    "sha256": "95030cc16c813d3f254d191a16b7106cd8de8194e1c4809f415b9c0fcc223084",
+    "packVersion": 7,
+    "existingArtwork": [
+      "titanium-turbine",
+      "hero-small",
+      "art-20261107-carbon-gear",
+      "art-20261107-track-helmet"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "titanium-damper",
+      "label": "Titanium damper",
+      "file": "widgets/widget-titanium-damper.4dd56911.webp",
+      "sha256": "4dd569117c707736880fe30c17e1901c08215efc7961299f9b3b519dd47e745b",
+      "bytes": 138900,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-566afc03-65b2-4312-96fe-3383b49557a7.png",
+      "sourceSha256": "50667962e28351215e3253f4671760ae91a9b15c53d191420e27868fe5e9f01c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. Create ONE wholly original square 1024 x 1024 standalone small-widget illustration for Glaze carbon-velocity. A premium precision-engineered racing suspension damper displayed diagonally: brushed dark-titanium central cylinder, one sculptural matte-black coil spring, carbon-fibre upper reservoir, small acid-lime hose curving alongside. Realistic industrial product sculpture with fine carbon weave, silver machining highlights, restrained graphite/black and acid-lime palette. Match a near-black brutalist racing theme; no turbine, gear, helmet or racetrack. Center the entire complete sculpture with generous 18 percent empty margins, strong silhouette, no clipped objects. True TRANSPARENT empty background, alpha preserved, no ground plane, tile, frame, wall, scene collage or contact sheet. Pure illustration only: no text, letters, numbers, dates, clocks, clock hands, dials, calendars, UI, logos or watermark. New subject, never a crop/copy/recolour of existing artwork.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 773278,
+      "opaquePixels": 975
+    }
+  ]
+}

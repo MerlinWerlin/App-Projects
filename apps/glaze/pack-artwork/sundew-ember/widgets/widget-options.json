@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ember-seed-capsule",
+    "kind": "art",
+    "image": "widget-ember-seed-capsule.4f6066c1.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ember seed capsule"
+  },
+  {
+    "id": "sundew-blossom",
+    "kind": "art",
+    "image": "widget-sundew-blossom.c8f85045.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sundew blossom"
+  }
+]

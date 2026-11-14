@@ -1,0 +1,38 @@
+{
+  "theme": "boba-bear-club",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__boba-bear-club__v7__manifest.json",
+    "sha256": "2058b396ac2afce584918b7f7179ac5c4e9c6e1cd1d814e0a1788f4076dd88e4",
+    "packVersion": 7,
+    "existingArtwork": [
+      "tapioca-planet",
+      "hero-small",
+      "art-20261107-caramel-pudding",
+      "art-20261107-strawberry-milk-carton"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "strawberry-pancake-stack",
+      "label": "Strawberry pancakes",
+      "file": "widgets/widget-strawberry-pancake-stack.e6d626a5.webp",
+      "sha256": "e6d626a52ed49314925fe63ed1c6e4e4e5e4c97f589ccd397de898e22f8bddb6",
+      "bytes": 157484,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-0bd270a9-e9ae-4f05-91b9-95b0cfd7d53d.png",
+      "sourceSha256": "2c7846be1b37ed29dc9f1244ff08addaff000d6a22bbcc42d0c3226045a51d7d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE entirely new original standalone square 1024 x 1024 Glaze illustration for boba-bear-club. A miniature stack of three very fluffy cream-coloured pancakes on a soft strawberry-pink scalloped plate, a shy kawaii face with two cocoa bead eyes on the middle pancake, glossy caramel drizzle, a generous puff of strawberry-milk cream and two bright strawberry halves on top, a few dark tapioca pearls tucked around the base, one tiny sage mint leaf. Adorable premium soft 3D plush-and-clay confectionery sculpture, subtly fuzzy warm baked surfaces, rounded shapes, soft daylight, cream/caramel/strawberry-pink palette matching milk-tea-cream wallpaper. Entire stack centered and self contained, no pudding, tea pot, milk carton, planet or cup. Whole subject visible, airy 18 percent clear margin all sides; readable as a small iPhone artwork widget. Truly transparent empty background, no floor, opaque tile, border or backdrop, alpha preserved. Pure illustration only: absolutely no text, numbers, lettering, dates, clock hands, dials, calendars, UI, brands or watermark. Do not copy, recolour or crop an existing asset.",
+      "processing": "Resize entire original square to 1024x1024; WebP q92 method6; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 632749,
+      "opaquePixels": 587
+    }
+  ]
+}

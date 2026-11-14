@@ -1,0 +1,14 @@
+[
+  {
+    "id": "winter-wren",
+    "kind": "art",
+    "image": "widget-winter-wren.abd10c58.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Winter wren"
+  }
+]

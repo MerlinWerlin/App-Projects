@@ -1,0 +1,38 @@
+{
+  "theme": "disco-drift",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__disco-drift__v7__manifest.json",
+    "sha256": "b3f8d3632687b834926f5d74d37c107c7a5d5750c6bf9bb7e9d70dbe251daf78",
+    "packVersion": 7,
+    "existingArtwork": [
+      "mirror-snapshot",
+      "hero-small",
+      "art-20261107-disco-cassette",
+      "art-20261107-prism-headphones"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "mirror-tambourine",
+      "label": "Mirror tambourine",
+      "file": "widgets/widget-mirror-tambourine.9f0f180b.webp",
+      "sha256": "9f0f180ba8b2dbb8e3efa99c5056556fa5b794c9b7b7e8862929214af48deffd",
+      "bytes": 218568,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-48d124af-a2cf-4d66-9b27-1524c4456c22.png",
+      "sourceSha256": "18efdc434be0e9f498935637ef1bb011faef97172f88dc8fcd08baabb853f045",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE completely new original square1024x1024 standalone Glaze small-widget artwork for disco-drift. One elegant1970s disco tambourine, slim tangerine-orange enamel hoop set with tiny mirrored-silver mosaic panels, polished lilac-metal jingles, a loose plum satin ribbon tied at one side. Sophisticated contemporary collectible sculpture, realistic glass reflections, periwinkle/plum/tangerine/iridescent-silver palette, warm glancing studio light. No cassette, headphones, mirror frame, jellyfish or extra instruments. Whole subject centered, readable silhouette, ample18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, square, ground plane, border or collage. Pure illustration only: no text, numbers, dates, clock hands, dials, calendars, UI, logos or watermark. Do not copy/crop/recolour an existing piece.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 720940,
+      "opaquePixels": 927
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "phosphor-amber",
+  "packVersion": 1,
+  "name": "Phosphor Amber",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#1F2224",
+    "tile": "#3E4041",
+    "glyph": "#FAF8F2",
+    "accent": "#7C5F3E",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Phosphor Amber",
+    "mood": "Glowing amber phosphor on matte charcoal.",
+    "tags": [
+      "phosphor",
+      "amber",
+      "glowing",
+      "matte",
+      "charcoal",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait premium original Glaze wallpaper Phosphor Amber. Uniform mattecharcoal #202426, TOP72percent entirelyemptyquietcharcoal forUI,noscatteredpixels/pattern/glowabove. BOTTOM25percent smallunbrandedvintagecreamCRTdesktopmonitor withthickbezelandcurveddarkglass, matchingcompactkeyboard infront andoneblack3.5inchfloppydisk leaningnearby. ScreenhasrestrainedAMBER phosphor outlineofsimplemountains/sun, no OS/trademarks orwords. Wholeequipmentvignettemax65percentwidth23percenttotalheightwithinmargins. Fine realistic nostalgicplastic/curvedglass, softstudio shadowsandverygentleamberlight, quietsophisticatedoriginalstill-life. No cablesacrossupperfield,text/devicephone/icons.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "SwgGEwRYcJl5enVoR4B5BJg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.2d793dc7.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 74972,
+      "sha256": "2d793dc71a06973f6e3a3960792d7e8f2a498aca29d40e8f728a2dee32604d67",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.782ea56d.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 67970,
+      "sha256": "782ea56d6b57bf2c825ee309dd75ad04b145043ec051cf938940b3f98ad8d73c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.3b56a28d.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 36526,
+      "sha256": "3b56a28d356bf38623463947f76bd521056a289890325d4a6d254bf008a24d63",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.7ef7733c.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 5346,
+      "sha256": "7ef7733c5114d78b08654ffbdf0a22aee164ad958681cd29d40f2b067eadb864",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.20fbe0c3.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 15802,
+      "sha256": "20fbe0c315b54291dab414b443b5688433bdf375a83f80f7047bf132c3b9a0df",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.6f40c741.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 155030,
+      "sha256": "6f40c741b81eba3126c92ac161f5ffc3327109bb6970f97a667a7d7bc37ff039",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.4f059210.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6580,
+      "sha256": "4f0592103baefa1779d241efd50fd35d82964a3097e86e3d92015c408ed7cf80",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-buffer-progress-v2.b8befea0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 12872,
+      "sha256": "b8befea076f42e569988633fdaa1a7fc5af8d857696a99a8039f3fd8e2cf17a9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-buffer-progress.1c6234ab.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 512,
+      "bytes": 13628,
+      "sha256": "1c6234ab645bbd0292b5cc32b067d2089ea5319511f4b6385667a350784b738d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-floppy-study.7ef5380d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 78478,
+      "sha256": "7ef5380db0e363dc798338068ade1154ee09c3f3920abdfc707fb477ce247199",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-phosphor-date.9aa46c5b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 20506,
+      "sha256": "9aa46c5bd12fd4f24c5224fee295f46b755819c72cd11f993658c3a2664def4f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pixel-landscape.84a30082.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 53716,
+      "sha256": "84a3008213af46373f5519d2851a1b75651de5e2bb096afc1c31cf45056e5eef",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-segment-clock.d31618e1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 30242,
+      "sha256": "d31618e1bea4d0509754daf8439cad17047e83f1d2fa5a3792a768c5f588ebf5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-terminal-desk.3ebf95ff.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 99250,
+      "sha256": "3ebf95ff4e1c9e590a32f2d8741d7a4facd3df07927c0c798762affda3f124ae",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 670918,
+  "widgets": [
+    {
+      "id": "buffer-progress-v2",
+      "kind": "art",
+      "image": "widget-buffer-progress-v2.b8befea0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Buffer progress v2"
+    },
+    {
+      "id": "buffer-progress",
+      "kind": "art",
+      "image": "widget-buffer-progress.1c6234ab.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Buffer progress"
+    },
+    {
+      "id": "floppy-study",
+      "kind": "art",
+      "image": "widget-floppy-study.7ef5380d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Floppy study"
+    },
+    {
+      "id": "phosphor-date",
+      "kind": "calendar",
+      "image": "widget-phosphor-date.9aa46c5b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Phosphor date"
+    },
+    {
+      "id": "pixel-landscape",
+      "kind": "art",
+      "image": "widget-pixel-landscape.84a30082.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pixel landscape"
+    },
+    {
+      "id": "segment-clock",
+      "kind": "clock",
+      "image": "widget-segment-clock.d31618e1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Segment clock"
+    },
+    {
+      "id": "terminal-desk",
+      "kind": "art",
+      "image": "widget-terminal-desk.3ebf95ff.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Terminal desk"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.7ef7733c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.20fbe0c3.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.6f40c741.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

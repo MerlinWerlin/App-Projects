@@ -1,0 +1,26 @@
+[
+  {
+    "id": "marigold-key-fob",
+    "kind": "art",
+    "image": "widget-marigold-key-fob.810413d4.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Marigold key fob"
+  },
+  {
+    "id": "navy-scooter-saddle",
+    "kind": "art",
+    "image": "widget-navy-scooter-saddle.3dbac92d.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Navy scooter saddle"
+  }
+]

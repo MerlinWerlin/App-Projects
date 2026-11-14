@@ -1,0 +1,271 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "shuttle-sage",
+  "packVersion": 1,
+  "name": "Shuttle Sage",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#D4DCD0",
+    "tile": "#BAC1B6",
+    "glyph": "#1C1816",
+    "accent": "#AFA68F",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Shuttle Sage",
+    "mood": "A weaving shuttle and threads on pale sage.",
+    "tags": [
+      "shuttle",
+      "sage",
+      "weaving",
+      "threads",
+      "pale",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait premium original Glaze wallpaper Shuttle Sage. Pale sage matte #DCE4DA background, TOP70percent entirely empty for icons. BOTTOM27percent a small vintage wood BADMINTON racket with slender oval strung head and brown leather handle resting diagonally, beside exactlyone ivory FEATHER SHUTTLECOCK with rounded corknose and neat flared feather cone, delicately realistic unbranded sportingstill-life. Whole arrangement max65percentwidth24percentheight, generous margins, soft studio daylight and quiet shadow. Refined warmwood/ivory/sage tones, fine taut racketstrings, no tennisball or net across image, no text/logo/device/UI.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "c/gFCwB4f2h5dH2zemCZCJc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.5cd9b505.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 71632,
+      "sha256": "5cd9b5056db0212cef774d9fe78a0d8c9512c4ce60b31d146efa05f2b56552af",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.30e3fd70.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 64388,
+      "sha256": "30e3fd708770dd97b0fa9e0a8c94c4fea675358783469612d0c901965a55619b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.eb88a581.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 35294,
+      "sha256": "eb88a581594a086977da19b09378ec9c1c3038e2a8bc1e5cce6c5716c1032d2a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.ce47aedb.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 14316,
+      "sha256": "ce47aedb079db64f68f81596f03a982ff110340d948e6ac1f0fd4833f5b73a7d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.fd58c3cd.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 40686,
+      "sha256": "fd58c3cd0ecd368cbbd643ca056ed63d17a56fa8c2a93b36a0d82fbcf1dce248",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.f2cee162.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 47134,
+      "sha256": "f2cee16256c256c3b2eb6431bbd2e216b1505a4715e3f31f376d934801041efc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.3208f71a.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5286,
+      "sha256": "3208f71ade28dde67cf936501fa2e392993dc9a545642a1002367c49e93d6e9e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-court-clock.81f856e4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 41608,
+      "sha256": "81f856e4a9762ba70b30d91768433b7a558a602ddc41bf35dab210461b1c510e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-feather-fan.5290c627.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 48526,
+      "sha256": "5290c627f246db23ed5e5d75997738326cde03a0a9d27329754ce9ab9d274a45",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-feather-shuttle.ad70cd65.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 40176,
+      "sha256": "ad70cd65f0d5678669dee201e6449f7a0154db4848c901922e5c6929dd2f36c7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-racket-study.57341858.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 37340,
+      "sha256": "57341858c5ae8a084ae30ccd099b2feb604e61bc6daf32ce311864cd0c7ba24a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-rally-focus.248cbe8e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 53190,
+      "sha256": "248cbe8e1471ea73b7b5759d96504220d62079019efa0c59ed4160f276ef20ea",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-shuttle-date.e7210534.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 30536,
+      "sha256": "e72105347265489a776f28626f1f83ad8ab93b5c7b5f12284fe422ae3da089a0",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 530112,
+  "widgets": [
+    {
+      "id": "court-clock",
+      "kind": "clock",
+      "image": "widget-court-clock.81f856e4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Court clock"
+    },
+    {
+      "id": "feather-fan",
+      "kind": "art",
+      "image": "widget-feather-fan.5290c627.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Feather fan"
+    },
+    {
+      "id": "feather-shuttle",
+      "kind": "art",
+      "image": "widget-feather-shuttle.ad70cd65.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Feather shuttle"
+    },
+    {
+      "id": "racket-study",
+      "kind": "art",
+      "image": "widget-racket-study.57341858.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Racket study"
+    },
+    {
+      "id": "rally-focus",
+      "kind": "focus",
+      "image": "widget-rally-focus.248cbe8e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Rally focus"
+    },
+    {
+      "id": "shuttle-date",
+      "kind": "calendar",
+      "image": "widget-shuttle-date.e7210534.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Shuttle date"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.ce47aedb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.fd58c3cd.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.f2cee162.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

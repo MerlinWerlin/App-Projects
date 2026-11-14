@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "madder-fold",
+  "packVersion": 1,
+  "name": "Madder Fold",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#703227",
+    "tile": "#834E43",
+    "glyph": "#FAF8F2",
+    "accent": "#925140",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Madder Fold",
+    "mood": "Folded madder-rust cotton in rich shadow.",
+    "tags": [
+      "madder",
+      "fold",
+      "folded",
+      "rust",
+      "cotton",
+      "rich",
+      "shadow",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait premium original Glaze wallpaper Madder Fold. Uniform deepmutedMADDER-RUST cotton #713F3D, TOP72percent quietunpatternedfinecloth forUI. BOTTOM25percent one elegant lowarrangement: folded rust-and-ivory resist-dyed cottonsquare withsoftblurred tiediamond pattern, one compactradialpleated cottonfanlyingbesideit, two smallcream concentricresist-dye ringmarks subtlyprintedbelow. Wholelowstill-lifemax70percentwidth22percentheightwithmargins, realisticsofttextilefiberandwarmstudio shadow, refinedoriginalcraftart. No authenticregionalprovenanceclaim. No plants/animals/woodprops/text/device/icons orpatternabove.",
+    "addedAt": "2026-11-01",
+    "category": "Moody & Dark"
+  },
+  "thumbhash": "UXkCAwBfZYmIm1Gqb2X3lnU=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.430dd272.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 170380,
+      "sha256": "430dd27283b1951c4e01d2e8828f824c4b7455924b511e90a5df4880b01ff9d8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.3b9b46ea.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 158702,
+      "sha256": "3b9b46eafc57152dcdd15e702add9178b19ae51faa7bb35e821650379aedc750",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.7ea428a9.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 70252,
+      "sha256": "7ea428a9a25d3c19f5bd02371bbdfc52184e2dfbb6658718c13b65234bb4bc6e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.11c87543.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 47692,
+      "sha256": "11c87543756bf25da7d5876560a81324de14c93a331c3eb5dd1547f1567c27c2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.7497a6b9.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 144256,
+      "sha256": "7497a6b9505851bc70a80c343a4c4a696314651027ee78b380c68838eacf1139",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.f290b8db.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 309218,
+      "sha256": "f290b8db3a99408e9df8d6de87c51a1794d4a02e9df8a7819b139825ee36b67f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.000e7858.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 7274,
+      "sha256": "000e785873827cb7d0c0ab6725238cdd9701d3cd8df8ec5ff8d6d36d80cc0e89",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cotton-clock.daf83496.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 179144,
+      "sha256": "daf83496cd022b65f67690f75e58f470d9c08af058f1051497a398bff62d5160",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fold-focus.c2cfd8ca.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 235152,
+      "sha256": "c2cfd8ca7951269a74cd7a73094eac90c82d39fd8e52be543d703cf5effe855a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-folded-cotton.18628665.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 136164,
+      "sha256": "1862866568c6fd25887967839a271768f9e2aab3f7e8357429b794907ac26316",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-madder-date.712d5489.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 185214,
+      "sha256": "712d5489d5904bad09e24e630abd8d6f340ed659e868407cd6036a1c660e75dd",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pleat-study.98be07d9.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 190764,
+      "sha256": "98be07d9d141f1f330b7848ddedef2613e725c576df737db509fe3529e92e581",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-resist-ring.5b6f67b1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 193676,
+      "sha256": "5b6f67b1374e4284c3f50e1cffc01a1f40a9a233c07d2cdc1cee81a508554afb",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 2027888,
+  "widgets": [
+    {
+      "id": "cotton-clock",
+      "kind": "clock",
+      "image": "widget-cotton-clock.daf83496.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cotton clock"
+    },
+    {
+      "id": "fold-focus",
+      "kind": "focus",
+      "image": "widget-fold-focus.c2cfd8ca.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fold focus"
+    },
+    {
+      "id": "folded-cotton",
+      "kind": "art",
+      "image": "widget-folded-cotton.18628665.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Folded cotton"
+    },
+    {
+      "id": "madder-date",
+      "kind": "calendar",
+      "image": "widget-madder-date.712d5489.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Madder date"
+    },
+    {
+      "id": "pleat-study",
+      "kind": "art",
+      "image": "widget-pleat-study.98be07d9.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pleat study"
+    },
+    {
+      "id": "resist-ring",
+      "kind": "art",
+      "image": "widget-resist-ring.5b6f67b1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Resist ring"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.11c87543.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.7497a6b9.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.f290b8db.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

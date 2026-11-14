@@ -1,0 +1,38 @@
+{
+  "theme": "espresso-hour",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__espresso-hour__v8__manifest.json",
+    "sha256": "50d07d798c419e1c3f28bed7060b81b759ce0dc9116d3d50898e2b2152709e09",
+    "packVersion": 8,
+    "existingArtwork": [
+      "coffee-plant-glass",
+      "hero-small",
+      "art-20261107-copper-grinder",
+      "art-20261107-moka-tiramisu"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "walnut-portafilter",
+      "label": "Walnut portafilter",
+      "file": "widgets/widget-walnut-portafilter.bea2552d.webp",
+      "sha256": "bea2552dfb461628d7cd74ecdf9e0b142c5ee9113119bc3efd5e86abf68e0f42",
+      "bytes": 142238,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-745a45ae-5085-40e6-8ace-1864317e6e67.png",
+      "sourceSha256": "0e2aa7997fd9e27955ffeeaacb542298d4ab2bdecf7f953e0a44d2ef79965b11",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for espresso-hour. An elegant unbranded espresso portafilter resting at a graceful diagonal, warm copper and brass basket filled with glossy dark roasted coffee beans, sculpted dark walnut handle, one tiny curl of coffee-cream steam rising above. Premium realistic artisan still-life photography, rich espresso-brown, warm copper and ivory highlights, tactile walnut grain, soft dramatic cafe light. No grinder, moka pot, cup, crescent or coffee plant; no gauge or dial. Whole subject centered, simple readable silhouette, generous18percent transparent margins. Truly transparent empty background with alpha; no opaque tile, floor, rectangular frame or collage. Pure illustration only: absolutely no text, lettering, numbers, dates, clocks, hands, dials, calendar, UI, logo or watermark. Never copy/crop/recolour an existing piece.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 801363,
+      "opaquePixels": 819
+    }
+  ]
+}

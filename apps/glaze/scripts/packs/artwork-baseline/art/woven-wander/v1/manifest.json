@@ -1,0 +1,273 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "woven-wander",
+  "packVersion": 1,
+  "name": "Woven Wander",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#E7DFD3",
+    "tile": "#CBC3B9",
+    "glyph": "#1C1816",
+    "accent": "#996F45",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Woven Wander",
+    "mood": "Woven textures and wandering threads on flax linen.",
+    "tags": [
+      "woven",
+      "wander",
+      "textures",
+      "wandering",
+      "threads",
+      "flax",
+      "linen",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait original premium Glaze wallpaper Woven Wander, pale flax linen #EEE8DC. TOP TWO THIRDS empty quiet pale flax. LOWER THIRD one small exquisitely handwoven RAFFIA PANGOLIN sculpture in side profile, long tapered snout, tiny dark bead eye, four short coherent legs and long curved tail, overlapping scale-like plaited loops of warm straw and caramel fibers. No feathers or spikes. Stands by one muted olive woven fern, soft studio lighting and delicate natural shadow. Entire sculpture at most60percent canvaswidth22percenttotalheight, generous margins, crisp tactile fiber craftsmanship, understated modern craft aesthetic, no typography/icon/device/pattern above. Original generated art, no photographed product brand.",
+    "addedAt": "2026-11-01",
+    "category": "Cute & Cosy"
+  },
+  "thumbhash": "sxgGCwKofpZogH9VR4B1BFg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.f9565020.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 130558,
+      "sha256": "f95650206da65f6c816d20e3d391b625a5de215473bcc6795f3ef50683028bea",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.b3d88982.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 117862,
+      "sha256": "b3d88982652df231e147b7b20d80d2bf8b08cb176e0f5b570fed4f3631da13a2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.4f72724c.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 65874,
+      "sha256": "4f72724c0ee4b3ef147ce772786e2b65ce59b2398dae0b49887475ac54e3ac39",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.320a7890.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 45464,
+      "sha256": "320a7890a7df51d6361f843d94d10dec5b38eb3cad6e74e12d4fc6c1aecac0c5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.c30b8430.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 76344,
+      "sha256": "c30b8430649186b85591a8d17d5ea7e84fb0f6b7fdafb0ceb1b574eeb171e774",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.a95bde3b.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 92062,
+      "sha256": "a95bde3b5ff2e67542f07ef4092e6d6f08925389e6d4ca20ff972ede4078d079",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.fd4ff457.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 8490,
+      "sha256": "fd4ff45742e8fd1e0e7ca68fb6fa88cb8fa8df796696bee48a145aaa1897e036",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-coil-basket.8ad7188e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 138172,
+      "sha256": "8ad7188ea7fe595ee7c1a585bba87b25a503a81b78816c712d7fcb357ddf92d8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-flax-clock.d54109c3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 38470,
+      "sha256": "d54109c3294642570a5714e2ebe542d8fa09e9a0de29539a1cb2df9548bc4467",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-plaited-fern.dfcffa9b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 90384,
+      "sha256": "dfcffa9b8c915cee645595b4d59027f235e3fdadc54b3bf70162537957052841",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-wander-date.53c96721.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 46534,
+      "sha256": "53c96721131188307f0e62894179c4701d11d9ba7dcf99bab531a83ca680ebc3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-woven-pangolin.475a386c.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75258,
+      "sha256": "475a386cddf726fcf20593be2d50d95c0eee3120e10dc557dbc3e0c13dcee29e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-woven-progress.1fe515cc.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 50258,
+      "sha256": "1fe515cc8262579caa317d71b574aa8337d4af49ff17995eede9caf11d9a3f52",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 975730,
+  "widgets": [
+    {
+      "id": "coil-basket",
+      "kind": "art",
+      "image": "widget-coil-basket.8ad7188e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Coil basket"
+    },
+    {
+      "id": "flax-clock",
+      "kind": "clock",
+      "image": "widget-flax-clock.d54109c3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Flax clock"
+    },
+    {
+      "id": "plaited-fern",
+      "kind": "art",
+      "image": "widget-plaited-fern.dfcffa9b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Plaited fern"
+    },
+    {
+      "id": "wander-date",
+      "kind": "calendar",
+      "image": "widget-wander-date.53c96721.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Wander date"
+    },
+    {
+      "id": "woven-pangolin",
+      "kind": "art",
+      "image": "widget-woven-pangolin.475a386c.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Woven pangolin"
+    },
+    {
+      "id": "woven-progress",
+      "kind": "art",
+      "image": "widget-woven-progress.1fe515cc.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Woven progress"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.320a7890.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.c30b8430.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.a95bde3b.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "theme": "kaleido-cobalt",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "kaleido-cobalt",
+      "id": "optical-spinning-top",
+      "label": "Optical spinning top",
+      "ref": "141-kaleido-cobalt\\widgets\\mirror-triad.png",
+      "subject": "one elegant optical toy spinning top lying slightly tilted, low conical cobalt-enamel body with alternating teal and ruby glass wedge inlays, fine brass stem and tip, entire complete toy, no markings or face, no kaleidoscope cylinder or rosette",
+      "prompt": "Use case: stylized-concept. Glaze Kaleido Cobalt: original 1024 x 1024 square pure artwork of one elegant optical toy spinning top lying slightly tilted, low conical cobalt-enamel body with alternating teal and ruby glass wedge inlays, fine brass stem and tip, entire complete toy, no markings or face, no kaleidoscope cylinder or rosette. Refined realistic enamel/brass/coloured-glass craftsmanship photographic illustration on seamless deep blue-slate #283748 matte studio backdrop and floor. Cobalt/teal/ruby glass reflections, gentle warm brass rim light, restrained soft shadow, same material world as reference. New subject and composition, not copy/crop/recolour. Whole compact sculpture centred with 16 percent clear margins. No labels, letters, numbers, logos, watermarks, UI/frame, clock/dial/hands, calendar/date, focus/battery/progress imagery. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-df86da6d-3b59-4751-a8ec-ee2e12576d9b.png",
+      "image": "widget-optical-spinning-top.dfedb092.webp",
+      "sha256": "dfedb0925dfb7e23d90dea74e3cfcecee9ba891a3e3acae84e955f5b88c9d288",
+      "bytes": 105338,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "kaleido-cobalt",
+      "id": "glass-kingfisher",
+      "label": "Glass kingfisher",
+      "ref": "141-kaleido-cobalt\\widgets\\cobalt-kaleidoscope.png",
+      "subject": "one compact decorative kingfisher bird sculpture built from cobalt and teal faceted glass panels with fine warm brass seams, tiny ruby chest accent, coherent folded wings and long pointed beak, perched on a simple short brass twig. No cylinder, triangle frame or radial rosette",
+      "prompt": "Use case: stylized-concept. Glaze Kaleido Cobalt: original 1024 x 1024 square pure artwork of one compact decorative kingfisher bird sculpture built from cobalt and teal faceted glass panels with fine warm brass seams, tiny ruby chest accent, coherent folded wings and long pointed beak, perched on a simple short brass twig. No cylinder, triangle frame or radial rosette. Refined realistic enamel/brass/coloured-glass craftsmanship photographic illustration on seamless deep blue-slate #283748 matte studio backdrop and floor. Cobalt/teal/ruby glass reflections, gentle warm brass rim light, restrained soft shadow, same material world as reference. New subject and composition, not copy/crop/recolour. Whole compact sculpture centred with 16 percent clear margins. No labels, letters, numbers, logos, watermarks, UI/frame, clock/dial/hands, calendar/date, focus/battery/progress imagery. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-0056b084-be77-498d-9575-eadf302a7695.png",
+      "image": "widget-glass-kingfisher.b150f36d.webp",
+      "sha256": "b150f36dde3a8f3ff69409ac942afcf1370b593c9b3fc6a825506c2fec150cf9",
+      "bytes": 135388,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

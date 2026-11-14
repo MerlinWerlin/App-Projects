@@ -1,0 +1,26 @@
+[
+  {
+    "id": "bamboo-chopstick-rest",
+    "kind": "art",
+    "image": "widget-bamboo-chopstick-rest.bf64ccd1.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bamboo chopstick rest"
+  },
+  {
+    "id": "ginger-fan",
+    "kind": "art",
+    "image": "widget-ginger-fan.03e806ea.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ginger fan"
+  }
+]

@@ -1,0 +1,269 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "apricot-fm",
+  "packVersion": 6,
+  "name": "Apricot FM",
+  "plus": false,
+  "minAppVersion": "1.0.2",
+  "palette": {
+    "bg": "#F5DBB7",
+    "tile": "#D7C0A0",
+    "glyph": "#1C1816",
+    "accent": "#BA4D19",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Apricot FM",
+    "mood": "Cream and apricot record shop with a vinyl cat.",
+    "tags": [
+      "apricot",
+      "cream",
+      "record",
+      "shop",
+      "with",
+      "vinyl",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze; texture reference photo by Paul Seling (Unsplash licence)",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "KloSGwZ3f2iJZYp3eXCIB5c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.004e4a21.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 168072,
+      "sha256": "004e4a21cba8290b98a304f4fd99e9ab0003b5dd8c70e83cd88aa28a1ceb2bf3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.30432e38.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 148730,
+      "sha256": "30432e3817585b2af8ee6f8dc7057eeef2841812a9e46ca57db6485dc47947e2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.bc360219.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 63862,
+      "sha256": "bc360219ed2e2cf9269d89513a5261ff63d3007bd2659a8e6fc53a0215c6c8f1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.b0208d50.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 46154,
+      "sha256": "b0208d509889ff50094e54e84a57fff37b362d6c9d1700b0290ed34fcc085614",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.4861971f.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 102022,
+      "sha256": "4861971fadb7e037aef6b13ec7f30944fd1423c1d91cb803c214995d6a8b764c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.173a7257.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 154156,
+      "sha256": "173a7257d5d5d7ded3db9e4291c6d95b4593f96d1492e7e04a6c826cc97e1956",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.dcec6555.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 11678,
+      "sha256": "dcec6555d27498577d689ab3c7ff22e7ab66837903ea2fc5fcb03505fda54e9e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-themed-live-clock.325462bb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 121466,
+      "sha256": "325462bb4d6abed5c2e41c8e0abed8e0df9b26c5193d0da2baeb355698b04711",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-apricot-headphones.f1891ebd.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 103926,
+      "sha256": "f1891ebd7e84000e6bf8a44414871c80f4c88426aacc57cd72724aed5180fcff",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fm-focus.3020b0b2.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 85158,
+      "sha256": "3020b0b2952108e47174c7e4e98c04a0afe1848c27e51df363890bb9bd4aa5e3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pocket-radio.8c020b36.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97518,
+      "sha256": "8c020b3666da574b65c5ebbd88b0ee13eb7aefe1f68eab7c40a31fec4f348b40",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-vinyl-cat.d38f34f4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 109366,
+      "sha256": "d38f34f4ce79ac97c42cddedbf967b6883fc5b3eaa3101231bf3855fc0fe3f3e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-live-clock.dbd7c41f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 5858,
+      "sha256": "dbd7c41f78cb5623206790e0fe1dae1bd450bfde29f6d22f97056b215358011f",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1217966,
+  "widgets": [
+    {
+      "id": "apricot-headphones",
+      "kind": "art",
+      "image": "widget-apricot-headphones.f1891ebd.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Apricot headphones"
+    },
+    {
+      "id": "fm-focus",
+      "kind": "focus",
+      "image": "widget-fm-focus.3020b0b2.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fm focus"
+    },
+    {
+      "id": "pocket-radio",
+      "kind": "art",
+      "image": "widget-pocket-radio.8c020b36.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pocket radio"
+    },
+    {
+      "id": "vinyl-cat",
+      "kind": "art",
+      "image": "widget-vinyl-cat.d38f34f4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Vinyl cat"
+    },
+    {
+      "id": "live-clock",
+      "kind": "clock",
+      "image": "widget-live-clock.dbd7c41f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "theme",
+      "label": "Plain clock (fallback)",
+      "numberFree": true,
+      "liveFrame": {
+        "rect": [
+          0.18,
+          0.18,
+          0.64,
+          0.64
+        ],
+        "shape": "circle"
+      }
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.b0208d50.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.4861971f.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.173a7257.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

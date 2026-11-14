@@ -1,0 +1,38 @@
+{
+  "theme": "midnight-conservatory",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__midnight-conservatory__v6__manifest.json",
+    "sha256": "bd7f621cfeb8c1da86d88536fa05811d88a981225f5bf707cfab608633524c25",
+    "packVersion": 6,
+    "existingArtwork": [
+      "dew-capsule",
+      "night-orchid",
+      "hanging-garden",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "moonlit-pitcher-plant",
+      "label": "Moonlit pitcher plant",
+      "file": "widgets/widget-moonlit-pitcher-plant.183c82be.webp",
+      "sha256": "183c82be973d640ce6cc0e101ea9cfcffe1200ecb3a63ae6b04caac81a7182db",
+      "bytes": 274224,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-22f8d40f-b3bd-456b-97b5-59989dc1a03e.png",
+      "sourceSha256": "2f82385a35896b67bf8b94b36bf6c5bd73b01defa83cadcf85526e763edb023c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for midnight-conservatory. One extraordinary small pitcher plant growing from a compact cushion of dark moss, elegant deep-teal and green sculptural pitcher leaves with pale ivory rims and tiny silver dew beads, one softly curved fresh leaf rising behind. Premium realistic botanical fantasy still-life, moist glossy plant tissue, subtle aged-silver filigree root support, cool moonlit greenhouse illumination, deep teal/emerald/ivory/silver palette. No orchid, glass globe, bell jar, hanging greenhouse, butterfly or window panel. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 587802,
+      "opaquePixels": 372
+    }
+  ]
+}

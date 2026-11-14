@@ -1,0 +1,26 @@
+{
+  "theme": "curlfin-cove",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "curlfin-cove",
+      "id": "quilled-coral-crab",
+      "label": "Quilled coral crab",
+      "ref": "076-curlfin-cove\\wallpapers\\wallpaper.png",
+      "subject": "one tiny elegant crab made from rolled and quilled paper, coral and warm ivory spiral shell, two coherent curled claws and slender sea-green paper legs, a small tuft of delicate rolled-paper seaweed beneath, entire animal contained",
+      "style": "Premium tactile quilled-paper coastal miniature illustration, pale mint/seafoam seamless textured paper background, coral/ivory/sage-green palette, fine cut edges and soft studio shadows matching reference",
+      "avoid": "No seahorse, starfish, nautilus or shell cradle",
+      "prompt": "Use case: stylized-concept. Glaze curlfin-cove: original standalone 1024 x 1024 square pure artwork. Subject one tiny elegant crab made from rolled and quilled paper, coral and warm ivory spiral shell, two coherent curled claws and slender sea-green paper legs, a small tuft of delicate rolled-paper seaweed beneath, entire animal contained. Premium tactile quilled-paper coastal miniature illustration, pale mint/seafoam seamless textured paper background, coral/ivory/sage-green palette, fine cut edges and soft studio shadows matching reference. No seahorse, starfish, nautilus or shell cradle. Entire compact object centred inside16percent clear safe margins, new subject/composition no copy/crop/recolour. No text, labels, numbers, logos, watermark, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-3bcb65aa-e035-4aa9-ad98-ba511ccf79ae.png",
+      "image": "widget-quilled-coral-crab.7cfc252e.webp",
+      "sha256": "7cfc252ed6288043e975983f8aa3b7ede2e8a254c69562618be31933f32cb4f7",
+      "bytes": 318420,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

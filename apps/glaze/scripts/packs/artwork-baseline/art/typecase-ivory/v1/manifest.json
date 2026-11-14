@@ -1,0 +1,272 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "typecase-ivory",
+  "packVersion": 1,
+  "name": "Typecase Ivory",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#EFE7DB",
+    "tile": "#D1CABF",
+    "glyph": "#1C1816",
+    "accent": "#917D6C",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Typecase Ivory",
+    "mood": "Vintage letterpress type on ivory paper.",
+    "tags": [
+      "typecase",
+      "ivory",
+      "vintage",
+      "letterpress",
+      "type",
+      "paper",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait premium original Glaze wallpaper Typecase Ivory. Warm matte ivory cotton paper #EEE9DD. TOP72percent entirely empty quiet paper for phone UI. BOTTOM25percent a small elegant letterpress workshop still-life: three vintage wood-and-darkmetal type blocks showing large raised glyphs A, ampersand, Z, beside one small black rubber ink brayer with walnut handle and tiny oxide-red ink trace. Entire low arrangement max65percentwidth22percentheight, full margins. Fine tactile woodgrain, ink patina and metal edges, realistic soft studio light and gentle shadow. Original unbranded decorative printcraft, not functional equipment diagram. No other writing, logos, phone, icons or patterns above.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "sxgKAwKHj0d3d5zSaWCLB8c=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.430e9ef1.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 172894,
+      "sha256": "430e9ef18c22e982d1b34af6b44588d0d6e426b55f55474ab422433e95b3ffba",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.3943992c.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 152312,
+      "sha256": "3943992cf92126ea607b7d440486d7bd87f0c44af80f98964abb274a0a0c0b2a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.54e3462f.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 72934,
+      "sha256": "54e3462f75ce8eb4075e0439581f68814fa834d369d05aa76a1d3d1ee2a11ebf",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.b0aa62e5.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 34630,
+      "sha256": "b0aa62e50cbc31aed21449bc5a37f4413aea736860e7d88f90e32241ea859485",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.60e06167.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 66910,
+      "sha256": "60e061677b798f3c9d902a0c44db6612f810ceced2005b8def1909c3bd89de91",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.3fbf5b2c.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 204236,
+      "sha256": "3fbf5b2c1c0b7d88458551d34cf83207aa7cc69165acd2e82a24db098c20d0cc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.a5149fac.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6594,
+      "sha256": "a5149facfae79155efe4f0db49f012b7cfe19a76fd1cfc947039d8cf42993301",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ampersand-block.e59fe69d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 119520,
+      "sha256": "e59fe69d6a2f2673129b79b173a665b2466213ad166ef0ac7092a8cc754f1c1d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ink-brayer.4987caf7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 80456,
+      "sha256": "4987caf7088218c325d1587a5080d9748926e18e653391e2eb037353053d8777",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-print-clock.908a1f2f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 82982,
+      "sha256": "908a1f2f91ca3ec1d8e7258ae10c2e19f4a134de8d3b93747f766311cb5569eb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-reading-focus.57b11c01.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 102234,
+      "sha256": "57b11c01af478b22e2f19766f03c75afe0f28ccf007841a16de21b8d5d391fc9",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-typecase-date.9dfd3c79.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 75822,
+      "sha256": "9dfd3c79d606ab71e6e99f050518f4a4b460fc32465118e2d551892a36b8cb3e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-typecase-grid.89a99bca.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 149202,
+      "sha256": "89a99bca3bc6832ea63dbda0cf87d81cda08d51206e670e9aee119243ae4c50a",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1320726,
+  "widgets": [
+    {
+      "id": "ampersand-block",
+      "kind": "art",
+      "image": "widget-ampersand-block.e59fe69d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ampersand block"
+    },
+    {
+      "id": "ink-brayer",
+      "kind": "art",
+      "image": "widget-ink-brayer.4987caf7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ink brayer"
+    },
+    {
+      "id": "print-clock",
+      "kind": "clock",
+      "image": "widget-print-clock.908a1f2f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Print clock"
+    },
+    {
+      "id": "reading-focus",
+      "kind": "focus",
+      "image": "widget-reading-focus.57b11c01.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Reading focus"
+    },
+    {
+      "id": "typecase-date",
+      "kind": "calendar",
+      "image": "widget-typecase-date.9dfd3c79.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Typecase date"
+    },
+    {
+      "id": "typecase-grid",
+      "kind": "art",
+      "image": "widget-typecase-grid.89a99bca.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Typecase grid"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.b0aa62e5.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.60e06167.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.3fbf5b2c.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
