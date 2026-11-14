@@ -1,6 +1,7 @@
 name: Glaze artwork sources
 on:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - 'apps/glaze/pack-artwork/**'
       - 'apps/glaze/scripts/packs/**'
@@ -29,3 +30,24 @@ jobs:
         run: node scripts/packs/artwork_progress.mjs --markdown
       - name: Decode every new WebP pixel payload
         run: python scripts/packs/verify_artwork_images.py
+      - name: Complete rebuild when ready for review
+        if: ${{ !github.event.pull_request.draft }}
+        run: |
+          node scripts/packs/artwork_progress.mjs --complete --markdown
+          node scripts/packs/cache_artwork_baseline.mjs --snapshot scripts/packs/artwork-baseline --out dist/published-cache
+          node scripts/packs/build_packs.mjs --base-packs dist/published-cache --add-art pack-artwork --out dist/artwork-packs --release glaze-packs-v18 --complete
+          node scripts/packs/release_assets.mjs --dir dist/artwork-packs --out dist/artwork-release --catalog-tag glaze-packs-v5
+      - name: Keep review manifests and offline upload plans
+        if: ${{ !github.event.pull_request.draft }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: glaze-artwork-review-plans
+          path: |
+            apps/glaze/dist/artwork-packs/catalog.json
+            apps/glaze/dist/artwork-packs/art/**/manifest.json
+            apps/glaze/dist/artwork-packs/versions.json
+            apps/glaze/dist/artwork-packs/releases.json
+            apps/glaze/dist/artwork-packs/artwork-*.json
+            apps/glaze/dist/artwork-release/tags.txt
+            apps/glaze/dist/artwork-release/*/plan.json
+          retention-days: 7

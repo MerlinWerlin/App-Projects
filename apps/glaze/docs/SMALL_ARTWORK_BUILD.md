@@ -36,6 +36,8 @@ The cache command only downloads public files and checks all hashes/lengths. The
 
 Generated `versions.json`, `releases.json`, coverage, catalogue and upload plans stay under `dist/`. The tracked historical publishing map and the live catalogue are not changed by a rebuild. The two genuinely complete packs, Alpine Starlight and Desert Afterglow, retain their exact manifests and assets.
 
+The five-piece count uses the app's hero-copy and live-picture filtering, preserving historical option aliases without counting them as extra pictures. The read-only PR workflow performs the full complete rebuild once the PR is ready for review and retains the resulting manifests, maps and offline plans as a small review artifact. It has no release-writing permission.
+
 ## Publication boundary
 
 The full rebuilt set exceeds the existing publisher's 1,000-assets-per-release limit. The reviewable local layout starts with `glaze-packs-v18` and allocates complete packs to subsequent new tags as needed. It does not split a pack across releases. `release_assets.mjs --catalog-tag glaze-packs-v5` puts the active catalogue last, instead of accidentally updating the obsolete v1 catalogue.

@@ -3,6 +3,7 @@
 //
 //   node scripts/packs/release_assets.mjs [--dir dist/packs] [--out dist/release] [--existing-dir <dir>]
 //        [--existing assets.json] [--single | --tag <tag>]
+//        [--catalog-tag glaze-packs-v5]  (default v1 for the historical source-theme builder)
 //
 // Release assets have no folders, so every file gets its flat name from src/core/packHost.ts
 // (the app uses the same function to build URLs):  art/<id>/v<n>/<file> -> art__<id>__v<n>__<file>,
