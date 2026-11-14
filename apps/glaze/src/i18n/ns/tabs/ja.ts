@@ -62,6 +62,26 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: '中・大サイズのウィジェットは準備中です。今は「小」でテーマのアートワークを追加してください。',
     soonA11y: '{kind}、{size}。近日公開。',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "あなたのアートワーク",
+      makeItYours: "自分らしく：ここに自分の画像を追加して、カスタム 1〜5 をホーム画面に置きましょう。",
+      privacy: "画像はこの iPhone の中だけに保存され、アップロードされません。",
+      slot: "カスタム {n}",
+      add: "画像を追加",
+      addA11y: "カスタム {n} に画像を追加",
+      saving: "保存中…",
+      filledA11y: "カスタム {n} の画像",
+      replace: "置き換え",
+      replaceA11y: "カスタム {n} の画像を置き換え",
+      remove: "削除",
+      removeA11y: "カスタム {n} の画像を削除",
+      removeTitle: "カスタム {n} の画像を削除しますか？",
+      removeBody: "カスタム {n} ウィジェットには「Glazeで画像を追加」と表示されます。",
+      cancel: "キャンセル",
+      denied: "Glaze が写真を開けません。設定でアクセスを許可してください。",
+      failed: "その画像を保存できませんでした。別の画像をお試しください。",
+    },
     lockNote: 'Glaze のロック画面ウィジェット（時計、日付、バッテリー、カウントダウン、月）はロック画面で追加します：ロック画面を長押しし、カスタマイズ > ロック画面 > ウィジェットの枠をタップして Glaze を選びます。フォントはテーマに合わせ、色は iOS が決めます。',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {

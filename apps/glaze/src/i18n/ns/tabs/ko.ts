@@ -62,6 +62,26 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: '중간 및 큰 위젯은 곧 나와요. 지금은 ‘작게’에서 테마 아트워크를 추가하세요.',
     soonA11y: '{kind}, {size}. 곧 출시.',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "나의 아트워크",
+      makeItYours: "나만의 것으로: 여기에 사진을 추가한 뒤 사용자 지정 1~5를 홈 화면에 놓으세요.",
+      privacy: "사진은 이 iPhone에만 저장되며 업로드되지 않아요.",
+      slot: "사용자 지정 {n}",
+      add: "사진 추가",
+      addA11y: "사용자 지정 {n}에 사진 추가",
+      saving: "저장 중…",
+      filledA11y: "사용자 지정 {n}의 사진",
+      replace: "바꾸기",
+      replaceA11y: "사용자 지정 {n}의 사진 바꾸기",
+      remove: "제거",
+      removeA11y: "사용자 지정 {n}에서 사진 제거",
+      removeTitle: "사용자 지정 {n}에서 사진을 제거할까요?",
+      removeBody: "사용자 지정 {n} 위젯에 Glaze에서 사진을 추가하라는 안내가 표시돼요.",
+      cancel: "취소",
+      denied: "Glaze가 사진을 열 수 없어요. 설정에서 접근을 허용하세요.",
+      failed: "사진을 저장하지 못했어요. 다른 사진을 시도해 보세요.",
+    },
     lockNote: 'Glaze 잠금 화면 위젯(시계, 날짜, 배터리, 카운트다운, 달)은 잠금 화면에서 추가해요: 잠금 화면을 길게 누르고 사용자화 > 잠금 화면 > 위젯 영역을 탭한 다음 Glaze를 고르세요. 글꼴은 테마를 따르고 색상은 iOS가 정해요.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {

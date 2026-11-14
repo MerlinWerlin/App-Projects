@@ -62,6 +62,26 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: 'Los widgets medianos y grandes llegarán pronto. Por ahora, añade las ilustraciones de tu tema en Pequeño.',
     soonA11y: '{kind}, {size}. Próximamente.',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "Tus imágenes",
+      makeItYours: "Hazlo tuyo: añade aquí tus propias imágenes y luego pon Personal 1 a 5 en tu pantalla de inicio.",
+      privacy: "Tus imágenes se quedan en este iPhone. Nunca se suben.",
+      slot: "Personal {n}",
+      add: "Añadir imagen",
+      addA11y: "Añadir una imagen a Personal {n}",
+      saving: "Guardando…",
+      filledA11y: "Tu imagen en Personal {n}",
+      replace: "Cambiar",
+      replaceA11y: "Cambiar la imagen de Personal {n}",
+      remove: "Quitar",
+      removeA11y: "Quitar la imagen de Personal {n}",
+      removeTitle: "¿Quitar la imagen de Personal {n}?",
+      removeBody: "El widget Personal {n} te pedirá que añadas una imagen en Glaze.",
+      cancel: "Cancelar",
+      denied: "Glaze no puede abrir tus fotos. Permite el acceso en Ajustes.",
+      failed: "No se pudo guardar esa imagen. Prueba con otra.",
+    },
     lockNote: 'Los widgets de Glaze para la pantalla bloqueada (reloj, fecha, batería, cuenta atrás, luna) se añaden en la propia pantalla bloqueada: mantenla pulsada, toca Personalizar > Pantalla bloqueada > la zona de widgets y elige Glaze. Usan la fuente de tu tema; iOS elige el color.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {

@@ -62,6 +62,26 @@ export const en = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: 'Medium and large widgets are on the way. For now, add your theme’s artwork in Small.',
     soonA11y: '{kind}, {size}. Coming soon.',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "Your artwork",
+      makeItYours: "Make it yours: add your own pictures here, then put Custom 1 to 5 on your Home Screen.",
+      privacy: "Your pictures stay on this iPhone. They are never uploaded.",
+      slot: "Custom {n}",
+      add: "Add picture",
+      addA11y: "Add a picture to Custom {n}",
+      saving: "Saving…",
+      filledA11y: "Your picture in Custom {n}",
+      replace: "Replace",
+      replaceA11y: "Replace the picture in Custom {n}",
+      remove: "Remove",
+      removeA11y: "Remove the picture from Custom {n}",
+      removeTitle: "Remove the picture from Custom {n}?",
+      removeBody: "The Custom {n} widget will ask you to add a picture in Glaze.",
+      cancel: "Cancel",
+      denied: "Glaze can’t open your photos. Allow access in Settings.",
+      failed: "That picture couldn’t be saved. Try another one.",
+    },
     lockNote: 'Glaze Lock Screen widgets (clock, date, battery, countdown, moon) are added on the Lock Screen itself: touch and hold it, tap Customise > Lock Screen > the widget area, then pick Glaze. They use your theme’s font; iOS picks their colour.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {

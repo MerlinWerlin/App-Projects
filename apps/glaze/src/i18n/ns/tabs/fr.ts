@@ -62,6 +62,26 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: 'Les widgets moyens et grands arrivent bientôt. En attendant, ajoutez les illustrations de votre thème en Petit.',
     soonA11y: '{kind}, {size}. Bientôt disponible.',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "Vos images",
+      makeItYours: "Personnalisez : ajoutez ici vos propres images, puis placez Perso 1 à 5 sur votre écran d’accueil.",
+      privacy: "Vos images restent sur cet iPhone. Elles ne sont jamais envoyées.",
+      slot: "Perso {n}",
+      add: "Ajouter une image",
+      addA11y: "Ajouter une image à Perso {n}",
+      saving: "Enregistrement…",
+      filledA11y: "Votre image dans Perso {n}",
+      replace: "Remplacer",
+      replaceA11y: "Remplacer l’image de Perso {n}",
+      remove: "Retirer",
+      removeA11y: "Retirer l’image de Perso {n}",
+      removeTitle: "Retirer l’image de Perso {n} ?",
+      removeBody: "Le widget Perso {n} vous proposera d’ajouter une image dans Glaze.",
+      cancel: "Annuler",
+      denied: "Glaze ne peut pas ouvrir vos photos. Autorisez l’accès dans Réglages.",
+      failed: "Impossible d’enregistrer cette image. Essayez-en une autre.",
+    },
     lockNote: 'Les widgets Glaze de l’écran verrouillé (horloge, date, batterie, compte à rebours, lune) s’ajoutent sur l’écran verrouillé : maintenez-le, touchez Personnaliser > Écran verrouillé > la zone des widgets, puis choisissez Glaze. Ils prennent la police de votre thème ; iOS choisit leur couleur.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {

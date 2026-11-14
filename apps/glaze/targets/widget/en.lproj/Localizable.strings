@@ -176,3 +176,12 @@
 "Takes on your Glaze theme once added." = "Takes on your Glaze theme once added.";
 /* Owner 2026-11-08: the theme art widgets in the Add Widget gallery (ThemeArtWidgets.swift). */
 "Shows your Glaze theme's art once added." = "Shows your Glaze theme's art once added.";
+/* Owner 2026-11-15: Custom 1-5, your own pictures (CustomArtWidgets.swift). Fixed names, never interpolated. */
+"Custom 1" = "Custom 1";
+"Custom 2" = "Custom 2";
+"Custom 3" = "Custom 3";
+"Custom 4" = "Custom 4";
+"Custom 5" = "Custom 5";
+"Your own picture, added in Glaze." = "Your own picture, added in Glaze.";
+"Add a picture in Glaze" = "Add a picture in Glaze";
+"Your picture" = "Your picture";

@@ -62,6 +62,26 @@ export const it: NonNullable<LocaleMessages['tabs']> = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: 'I widget medi e grandi arriveranno presto. Per ora aggiungi le illustrazioni del tuo tema in Piccolo.',
     soonA11y: '{kind}, {size}. In arrivo.',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "Le tue immagini",
+      makeItYours: "Rendilo tuo: aggiungi qui le tue immagini, poi metti Personale 1-5 nella schermata Home.",
+      privacy: "Le tue immagini restano su questo iPhone. Non vengono mai caricate.",
+      slot: "Personale {n}",
+      add: "Aggiungi immagine",
+      addA11y: "Aggiungi un’immagine a Personale {n}",
+      saving: "Salvataggio…",
+      filledA11y: "La tua immagine in Personale {n}",
+      replace: "Sostituisci",
+      replaceA11y: "Sostituisci l’immagine di Personale {n}",
+      remove: "Rimuovi",
+      removeA11y: "Rimuovi l’immagine da Personale {n}",
+      removeTitle: "Rimuovere l’immagine da Personale {n}?",
+      removeBody: "Il widget Personale {n} ti chiederà di aggiungere un’immagine in Glaze.",
+      cancel: "Annulla",
+      denied: "Glaze non riesce ad aprire le tue foto. Consenti l’accesso in Impostazioni.",
+      failed: "Impossibile salvare l’immagine. Provane un’altra.",
+    },
     lockNote: 'I widget Glaze per la schermata di blocco (orologio, data, batteria, conto alla rovescia, luna) si aggiungono dalla schermata di blocco: tienila premuta, tocca Personalizza > Schermata di blocco > l’area dei widget e scegli Glaze. Usano il font del tuo tema; il colore lo sceglie iOS.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {

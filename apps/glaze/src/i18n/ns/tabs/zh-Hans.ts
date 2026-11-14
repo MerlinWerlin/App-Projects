@@ -62,6 +62,26 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: '中号和大号小组件即将推出。目前请在“小号”中添加主题插画。',
     soonA11y: '{kind}，{size}。即将推出。',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "你的作品",
+      makeItYours: "打造你的专属主题：在这里添加你自己的图片，然后把“自定义 1”到“自定义 5”放到主屏幕上。",
+      privacy: "你的图片只保存在这台 iPhone 上，绝不会上传。",
+      slot: "自定义 {n}",
+      add: "添加图片",
+      addA11y: "为自定义 {n} 添加图片",
+      saving: "正在存储…",
+      filledA11y: "自定义 {n} 中的图片",
+      replace: "替换",
+      replaceA11y: "替换自定义 {n} 中的图片",
+      remove: "移除",
+      removeA11y: "移除自定义 {n} 中的图片",
+      removeTitle: "要移除自定义 {n} 中的图片吗？",
+      removeBody: "自定义 {n} 小组件会提示你在 Glaze 中添加图片。",
+      cancel: "取消",
+      denied: "Glaze 无法打开你的照片。请在“设置”中允许访问。",
+      failed: "无法存储这张图片，请换一张试试。",
+    },
     lockNote: 'Glaze 锁定屏幕小组件（时钟、日期、电池、倒计时、月相）需在锁定屏幕上添加：长按锁定屏幕，轻点“自定”>“锁定屏幕”> 小组件区域，然后选择 Glaze。它们使用主题字体，颜色由 iOS 决定。',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {

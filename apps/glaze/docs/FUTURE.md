@@ -15,6 +15,12 @@ the bottom of their section with the date and who asked; move an item to "Done" 
 - **The other native widgets in the Widgets tab** (date, photo, quote, battery, habits, progress, calendar, photo album).
   They exist in the iOS Add Widget list and Widget Studio but are no longer listed in the app (1.0.34): the owner found
   them confusing ("you can't select these anymore"). Bring back only once each one is clearly useful and tappable.
+- **Make your own theme: custom icons, wallpapers and community sharing of original art** (owner, 15 Nov 2026, after
+  1.0.36's Your artwork slots). Next steps: custom icon pictures and custom wallpapers built the same private,
+  on-device way. Public sharing (a community page) is a separate, bigger job: Apple guideline 1.2 needs a way to
+  filter objectionable content, report it, block abusive users and contact us; and it must never host third-party
+  IP (characters, logos or brands people don't own: guideline 5.2, and weak Australian safe harbour). Original
+  art only, with moderation in place before anything goes public.
 
 ## Artwork
 - **Missing small artwork: 261 pieces across 136 of 141 themes** (audit 13 Nov). Every theme needs 5 plain artworks so
@@ -36,3 +42,4 @@ the bottom of their section with the date and who asked; move an item to "Done" 
 ## Done
 - 1.0.35: Lock Screen tab hidden, Medium / Large "Coming soon", one icon shape, corner Watch how on every tab, theme
   wallpapers on the Wallpapers tab, Icons / Widgets start screen.
+- 1.0.36: Your artwork: five private picture slots on the Widgets tab and the Custom 1–5 Home Screen widgets.

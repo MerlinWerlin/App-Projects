@@ -84,9 +84,15 @@ struct GlazeCatalogueWidgetsBundle: WidgetBundle {
 }
 
 /// owner-1102b: personal widgets (quote, photo frame) in their own nested bundle.
+/// Owner 2026-11-15 ("make your own theme"): Custom 1-5, the person's own pictures (CustomArtWidgets.swift).
 struct GlazePersonalWidgetsBundle: WidgetBundle {
   var body: some Widget {
     QuoteWidget()
     PhotoWidget()
+    CustomArtWidget1()
+    CustomArtWidget2()
+    CustomArtWidget3()
+    CustomArtWidget4()
+    CustomArtWidget5()
   }
 }

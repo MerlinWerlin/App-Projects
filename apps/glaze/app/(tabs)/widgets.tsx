@@ -87,6 +87,7 @@ import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
 import { SizeArt } from '../../src/ui/WidgetOptionArt';
 import { WidgetArtLibraryList } from '../../src/ui/WidgetArtLibraryList';
+import { CustomArtSlots } from '../../src/ui/CustomArtSlots';
 import { useHowTo, WatchHowButton } from '../../src/ui/HowToSheet';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
@@ -646,6 +647,10 @@ function WidgetsTab() {
           one list, Artwork 1-5 with a big number and the large artwork side by side. */}
       {/* T221: "My widget art"; hidden without the native library. */}
       {size === 'small' ? <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} /> : null}
+
+      {/* Owner 2026-11-15 ("make your own theme, be creative"): Your artwork, five slots of the
+          person's own pictures for the Custom 1-5 widgets; on this device only. */}
+      {size === 'small' ? <CustomArtSlots onWatchHow={how.open} style={styles.art} /> : null}
 
       {/* T166: the grid's top padding from before T162 (rows are list items now). T173: the first
           family's section header sits right under it (flushTop), so the gap stays ~16 pt. */}

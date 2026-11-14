@@ -62,6 +62,26 @@ export const hi: NonNullable<LocaleMessages['tabs']> = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: 'मीडियम और बड़े विजेट जल्द आ रहे हैं। अभी के लिए, छोटे में अपनी थीम की कलाकृति जोड़ें।',
     soonA11y: '{kind}, {size}। जल्द आ रहा है।',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "आपकी कलाकृति",
+      makeItYours: "इसे अपना बनाएँ: यहाँ अपनी तस्वीरें जोड़ें, फिर कस्टम 1 से 5 को होम स्क्रीन पर लगाएँ।",
+      privacy: "आपकी तस्वीरें इसी iPhone पर रहती हैं। वे कभी अपलोड नहीं होतीं।",
+      slot: "कस्टम {n}",
+      add: "तस्वीर जोड़ें",
+      addA11y: "कस्टम {n} में तस्वीर जोड़ें",
+      saving: "सहेजा जा रहा है…",
+      filledA11y: "कस्टम {n} में आपकी तस्वीर",
+      replace: "बदलें",
+      replaceA11y: "कस्टम {n} की तस्वीर बदलें",
+      remove: "हटाएँ",
+      removeA11y: "कस्टम {n} से तस्वीर हटाएँ",
+      removeTitle: "कस्टम {n} से तस्वीर हटाएँ?",
+      removeBody: "कस्टम {n} विजेट आपसे Glaze में तस्वीर जोड़ने को कहेगा।",
+      cancel: "रद्द करें",
+      denied: "Glaze आपकी फ़ोटो नहीं खोल सकता। सेटिंग्स में अनुमति दें।",
+      failed: "वह तस्वीर सहेजी नहीं जा सकी। कोई दूसरी आज़माएँ।",
+    },
     lockNote: 'Glaze के लॉक स्क्रीन विजेट (घड़ी, तारीख, बैटरी, काउंटडाउन, चाँद) लॉक स्क्रीन पर ही जोड़े जाते हैं: उसे दबाकर रखें, कस्टमाइज़ करें > लॉक स्क्रीन > विजेट वाली जगह पर टैप करें, फिर Glaze चुनें। ये आपकी थीम का फ़ॉन्ट लेते हैं; रंग iOS तय करता है।',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {

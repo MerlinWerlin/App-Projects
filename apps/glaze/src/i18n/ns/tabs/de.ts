@@ -62,6 +62,26 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: 'Mittlere und große Widgets kommen bald. Füge bis dahin die Bilder deines Themes in „Klein“ hinzu.',
     soonA11y: '{kind}, {size}. Bald verfügbar.',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "Deine Bilder",
+      makeItYours: "Mach es zu deinem: Füge hier eigene Bilder hinzu und lege dann „Eigenes 1“ bis „Eigenes 5“ auf deinen Home-Bildschirm.",
+      privacy: "Deine Bilder bleiben auf diesem iPhone. Sie werden nie hochgeladen.",
+      slot: "Eigenes {n}",
+      add: "Bild hinzufügen",
+      addA11y: "Ein Bild zu Eigenes {n} hinzufügen",
+      saving: "Wird gesichert …",
+      filledA11y: "Dein Bild in Eigenes {n}",
+      replace: "Ersetzen",
+      replaceA11y: "Das Bild in Eigenes {n} ersetzen",
+      remove: "Entfernen",
+      removeA11y: "Das Bild aus Eigenes {n} entfernen",
+      removeTitle: "Bild aus Eigenes {n} entfernen?",
+      removeBody: "Das Widget Eigenes {n} bittet dich dann, in Glaze ein Bild hinzuzufügen.",
+      cancel: "Abbrechen",
+      denied: "Glaze kann deine Fotos nicht öffnen. Erlaube den Zugriff in den Einstellungen.",
+      failed: "Dieses Bild konnte nicht gesichert werden. Versuche ein anderes.",
+    },
     lockNote: 'Glaze-Sperrbildschirm-Widgets (Uhr, Datum, Batterie, Countdown, Mond) fügst du direkt auf dem Sperrbildschirm hinzu: lange drücken, Anpassen > Sperrbildschirm > Widget-Bereich tippen, dann Glaze wählen. Sie nutzen die Schrift deines Themes; die Farbe legt iOS fest.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {
