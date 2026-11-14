@@ -36,6 +36,7 @@ jobs:
           node scripts/packs/artwork_progress.mjs --complete --markdown
           node scripts/packs/cache_artwork_baseline.mjs --snapshot scripts/packs/artwork-baseline --out dist/published-cache
           node scripts/packs/build_packs.mjs --base-packs dist/published-cache --add-art pack-artwork --out dist/artwork-packs --release glaze-packs-v18 --complete
+          node scripts/packs/verify_artwork_build.mjs --dir dist/artwork-packs --complete --output dist/artwork-packs/artwork-preservation.json
           node scripts/packs/release_assets.mjs --dir dist/artwork-packs --out dist/artwork-release --catalog-tag glaze-packs-v5
       - name: Keep review manifests and offline upload plans
         if: ${{ !github.event.pull_request.draft }}

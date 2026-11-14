@@ -14,7 +14,7 @@ export function artworkProgress({ appDir = resolve(dirname(fileURLToPath(import.
   for (const [id, original] of baseline.manifests) {
     const base = applyArtworkCorrections(original, corrections);
     const count = plannedArtworkOptionIds(id, parseWidgetOptions(base.widgets, base.assets).options).length;
-    if (count === 5) continue; // five pre-existing complete themes are retained separately
+    if (count === 5) continue; // genuinely complete baseline themes are retained separately
     const optionsFile = join(appDir, 'pack-artwork', id, 'widgets/widget-options.json');
     let added = [], status = 'pending';
     if (existsSync(optionsFile)) {

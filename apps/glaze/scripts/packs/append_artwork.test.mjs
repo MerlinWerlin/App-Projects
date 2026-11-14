@@ -8,6 +8,7 @@ import { planReleases } from './release_assets.mjs';
 import { buildPacks } from './build_packs.mjs';
 import { applyArtworkCorrections, buildArtworkAdditions, checkedPath, digest, loadBaseline, readArtworkAdditions, webpSize } from './append_artwork.mjs';
 import { cacheArtworkBaseline } from './cache_artwork_baseline.mjs';
+import { verifyArtworkBuild } from './verify_artwork_build.mjs';
 import { plannedArtworkOptionIds, artworkSlotSources } from '../../src/core/artworkCoverage.ts';
 import { parseWidgetOptions } from '../../src/core/widgetOptions.ts';
 
@@ -149,6 +150,40 @@ test('cache verifies existing bytes and re-fetches corruption using pinned asset
     assert.equal((await cacheArtworkBaseline({ snapshotDir: f.base, outDir: out, fetcher, log: () => {} })).downloaded, 0);
     writeFileSync(join(out, 'art/artwork-example/v7', f.originals.get('artwork-example').assets[0].path), 'bad');
     assert.equal((await cacheArtworkBaseline({ snapshotDir: f.base, outDir: out, fetcher, log: () => {} })).downloaded, 1);
+  } finally { f.cleanup(); }
+});
+
+test('independent output audit detects damaged bytes, original metadata edits and missing themes', async () => {
+  const f = fixture();
+  try {
+    await buildPacks(f.opts);
+    const opts = { dir: f.out, baselineDir: f.base, complete: true };
+    const report = verifyArtworkBuild(opts);
+    assert.equal(report.originalAssetsPreserved, 6); assert.equal(report.newAssetsVerified, 1);
+    assert.equal(report.rebuilt, 1); assert.deepEqual(report.pending, []);
+    const path = join(f.out, 'art/artwork-example/v8/manifest.json'), m = JSON.parse(readFileSync(path));
+    const image = join(dirname(path), m.assets[0].path), bytes = readFileSync(image);
+    writeFileSync(image, Buffer.alloc(bytes.length));
+    assert.throws(() => verifyArtworkBuild(opts), /output hash changed/);
+    writeFileSync(image, bytes);
+    save(path, { ...m, retainedUnknownField: { value: 'unintended edit' } });
+    assert.throws(() => verifyArtworkBuild(opts), /manifest fields changed/);
+    save(path, m);
+    const cat = join(f.out, 'catalog.json'), catalog = JSON.parse(readFileSync(cat));
+    save(cat, { ...catalog, packs: [] });
+    assert.throws(() => verifyArtworkBuild(opts), /membership changed/);
+  } finally { f.cleanup(); }
+});
+
+test('independent audit permits an unchanged partial pack but rejects incomplete final output', async () => {
+  const f = fixture(['artwork-one', 'artwork-two']);
+  try {
+    await buildPacks({ ...f.opts, complete: false, only: new Set(['artwork-one']) });
+    const opts = { dir: f.out, baselineDir: f.base };
+    const report = verifyArtworkBuild(opts);
+    assert.equal(report.originalAssetsPreserved, 12); assert.equal(report.unchangedManifests, 1);
+    assert.deepEqual(report.pending, ['artwork-two']);
+    assert.throws(() => verifyArtworkBuild({ ...opts, complete: true }), /final build is incomplete/);
   } finally { f.cleanup(); }
 });
 

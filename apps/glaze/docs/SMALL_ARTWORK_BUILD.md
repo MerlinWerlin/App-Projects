@@ -26,6 +26,8 @@ node scripts/packs/cache_artwork_baseline.mjs \
 node scripts/packs/build_packs.mjs \
   --base-packs dist/published-cache --add-art pack-artwork \
   --out dist/artwork-packs --release glaze-packs-v18 --complete
+node scripts/packs/verify_artwork_build.mjs \
+  --dir dist/artwork-packs --complete --output dist/artwork-packs/artwork-preservation.json
 node scripts/packs/release_assets.mjs \
   --dir dist/artwork-packs --out dist/artwork-release --catalog-tag glaze-packs-v5
 ```
@@ -36,7 +38,7 @@ The cache command only downloads public files and checks all hashes/lengths. The
 
 Generated `versions.json`, `releases.json`, coverage, catalogue and upload plans stay under `dist/`. The tracked historical publishing map and the live catalogue are not changed by a rebuild. The two genuinely complete packs, Alpine Starlight and Desert Afterglow, retain their exact manifests and assets.
 
-The five-piece count uses the app's hero-copy and live-picture filtering, preserving historical option aliases without counting them as extra pictures. The read-only PR workflow performs the full complete rebuild once the PR is ready for review and retains the resulting manifests, maps and offline plans as a small review artifact. It has no release-writing permission.
+The five-piece count uses the app's hero-copy and live-picture filtering, preserving historical option aliases without counting them as extra pictures. An independent output audit checks every old and new file hash, original manifest fields and option order, catalogue membership, version increments and exactly five pieces per theme. The read-only PR workflow performs the full complete rebuild once the PR is ready for review and retains the resulting preservation report, manifests, maps and offline plans as a small review artifact. It has no release-writing permission.
 
 ## Publication boundary
 
