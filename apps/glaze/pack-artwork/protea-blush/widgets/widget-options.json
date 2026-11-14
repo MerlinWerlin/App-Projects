@@ -1,0 +1,38 @@
+[
+  {
+    "id": "blush-rose-chafer",
+    "kind": "art",
+    "image": "widget-blush-rose-chafer.56c8fe66.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Blush rose chafer"
+  },
+  {
+    "id": "blush-satin-moth",
+    "kind": "art",
+    "image": "widget-blush-satin-moth.70c4f5d5.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Blush satin moth"
+  },
+  {
+    "id": "protea-sugarbird",
+    "kind": "art",
+    "image": "widget-protea-sugarbird.3cc5d3c0.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Protea sugarbird"
+  }
+]

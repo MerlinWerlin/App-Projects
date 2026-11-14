@@ -1,0 +1,26 @@
+[
+  {
+    "id": "gilded-seed-capsule",
+    "kind": "art",
+    "image": "widget-gilded-seed-capsule.595caf5d.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Gilded seed capsule"
+  },
+  {
+    "id": "gilded-dragonfly",
+    "kind": "art",
+    "image": "widget-gilded-dragonfly.bf47be59.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Gilded dragonfly"
+  }
+]

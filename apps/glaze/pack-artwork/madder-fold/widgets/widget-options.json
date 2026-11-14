@@ -1,0 +1,26 @@
+[
+  {
+    "id": "dyed-thread-skein",
+    "kind": "art",
+    "image": "widget-dyed-thread-skein.114d88ad.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Dyed thread skein"
+  },
+  {
+    "id": "stitched-cotton-pod",
+    "kind": "art",
+    "image": "widget-stitched-cotton-pod.08bb8be8.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Stitched cotton pod"
+  }
+]

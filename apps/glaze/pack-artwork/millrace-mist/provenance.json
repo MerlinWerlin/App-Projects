@@ -1,0 +1,40 @@
+{
+  "theme": "millrace-mist",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "millrace-mist",
+      "id": "moss-footbridge",
+      "label": "Moss footbridge",
+      "ref": "144-millrace-mist\\widgets\\oak-waterwheel.png",
+      "subject": "one small tabletop miniature of an arched weathered oak footbridge over a tiny muted-blue ceramic stream, two simple timber railings, moss-grey stone abutments, subtle moss tufts, whole bridge/base contained, no wheel or bucket",
+      "prompt": "Use case: stylized-concept. Glaze Millrace Mist, original 1024 x 1024 square pure artwork of one small tabletop miniature of an arched weathered oak footbridge over a tiny muted-blue ceramic stream, two simple timber railings, moss-grey stone abutments, subtle moss tufts, whole bridge/base contained, no wheel or bucket. Refined realistic handcrafted diorama photographic illustration, pale river-mist #DDE6E3 seamless matte studio backdrop/floor, fine oak grain, moss green #78886D grey stone muted blue #7DABBA, gentle natural studio shadow matching reference. Compact complete vignette centred within 16 percent clear margins, new subject/composition no copy/crop/recolour. No people, house, landscape, lettering, numbers, logos, watermark, UI/frame, clock hands/dials, dates/calendar, focus/battery/progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-3a5ae40c-1a3e-400c-98b2-736b54e9f68a.png",
+      "image": "widget-moss-footbridge.0fabed9c.webp",
+      "sha256": "0fabed9ceebd584f20cd62557da6a921473ffc568e7352aeb699dae204e2edec",
+      "bytes": 216834,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "millrace-mist",
+      "id": "oak-sluice-gate",
+      "label": "Oak sluice gate",
+      "ref": "144-millrace-mist\\widgets\\timber-bucket.png",
+      "subject": "one small handcrafted mill sluice gate miniature, weathered oak planks in a timber frame raised slightly above a narrow blue ceramic-water channel, two moss-grey stone posts and a simple iron lifting loop, whole model/base visible, no wheel, bucket or bridge",
+      "prompt": "Use case: stylized-concept. Glaze Millrace Mist, original 1024 x 1024 square pure artwork of one small handcrafted mill sluice gate miniature, weathered oak planks in a timber frame raised slightly above a narrow blue ceramic-water channel, two moss-grey stone posts and a simple iron lifting loop, whole model/base visible, no wheel, bucket or bridge. Refined realistic handcrafted diorama photographic illustration, pale river-mist #DDE6E3 seamless matte studio backdrop/floor, fine oak grain, moss green #78886D grey stone muted blue #7DABBA, gentle natural studio shadow matching reference. Compact complete vignette centred within 16 percent clear margins, new subject/composition no copy/crop/recolour. No people, house, landscape, lettering, numbers, logos, watermark, UI/frame, clock hands/dials, dates/calendar, focus/battery/progress indicators. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-171fb8e4-8262-46da-b0c5-053280b0df03.png",
+      "image": "widget-oak-sluice-gate.97511227.webp",
+      "sha256": "975112279b54d94a60f4c77df95ccb68391814ae15d16e29d1f8e7b04bbff207",
+      "bytes": 214968,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

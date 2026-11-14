@@ -1,0 +1,26 @@
+[
+  {
+    "id": "paper-hummingbird",
+    "kind": "art",
+    "image": "widget-paper-hummingbird.be4a31f2.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Paper hummingbird"
+  },
+  {
+    "id": "paper-cactus-blossom",
+    "kind": "art",
+    "image": "widget-paper-cactus-blossom.6068dcc1.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Paper cactus blossom"
+  }
+]
