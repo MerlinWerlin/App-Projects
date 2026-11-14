@@ -1,0 +1,25 @@
+{
+  "theme": "porcelain-tide",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "porcelain-tide",
+      "id": "cobalt-seahorse",
+      "label": "Cobalt Seahorse",
+      "ref": "006-porcelain-tide\\wallpapers\\wallpaper.png",
+      "subject": "one elegant curled-tail seahorse rendered in flowing indigo and washed-cobalt ink on pale warm porcelain, delicate translucent sea fan sprigs behind its lower tail, tiny pale-brass accents along the ridges. Luminous blue-and-white ceramic watercolor, subtle ceramic crackle texture, airy misty backdrop, detailed sculptural silhouette with soft lateral ocean wash near the base",
+      "avoid": "lotus bowl, crane, koi, wave-only landscape",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for porcelain-tide. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one elegant curled-tail seahorse rendered in flowing indigo and washed-cobalt ink on pale warm porcelain, delicate translucent sea fan sprigs behind its lower tail, tiny pale-brass accents along the ridges. Luminous blue-and-white ceramic watercolor, subtle ceramic crackle texture, airy misty backdrop, detailed sculptural silhouette with soft lateral ocean wash near the base. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: lotus bowl, crane, koi, wave-only landscape. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-75f53c27-5022-425b-80e7-ab30dfeb86e8.png",
+      "image": "widget-cobalt-seahorse.76ce2d29.webp",
+      "sha256": "76ce2d29cd0fd4e4e97571f6610fb5b517125f58bfea5c0cb3fb70eeeebc2128",
+      "bytes": 215064,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}
