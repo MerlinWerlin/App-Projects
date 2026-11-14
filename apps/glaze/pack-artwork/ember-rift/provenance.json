@@ -1,0 +1,38 @@
+{
+  "theme": "ember-rift",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__ember-rift__v7__manifest.json",
+    "sha256": "ba6f3bd4c0a58d08e2f0b48f2fe0dda82a93ceb78efddd643e8b043e6a7c1e86",
+    "packVersion": 7,
+    "existingArtwork": [
+      "cooling-lava",
+      "hero-small",
+      "art-20261106-ember-geode",
+      "art-20261106-basalt-spires"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "obsidian-arrowhead",
+      "label": "Obsidian arrowhead",
+      "file": "widgets/widget-obsidian-arrowhead.c1ebb175.webp",
+      "sha256": "c1ebb17536706706863a9fa8e912132631465fe6946122acf6c57696b65f1337",
+      "bytes": 158146,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-0585d7db-043a-487f-a425-33b5e187fd45.png",
+      "sourceSha256": "a13de6c1d6adafc9cec837d4a1da7dd6471cfc6e9b8a6b4de7ade5b0687cd574",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE original standalone square1024x1024 Glaze small-widget illustration for ember-rift. One tall ancient obsidian arrowhead, beautifully knapped black volcanic-glass facets, a single fine ember-orange molten seam tracing organically through its center, a few tiny rough basalt grains beneath its pointed base. Premium fine-art geological macro photography, realistic glossy black glass against matte char, restrained orange internal radiance, charcoal/slate/ember palette. No numbers, no tool handle, no geode, hexagonal spires or lava landscape. Entire subject centered, strong compact silhouette, generous18percent clear margins. Truly TRANSPARENT empty background, alpha preserved; no opaque square, floor, frame, border or collage. Pure art only: no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. No crop/copy/recolour of any existing piece.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 778013,
+      "opaquePixels": 403
+    }
+  ]
+}

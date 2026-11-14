@@ -1,0 +1,96 @@
+{
+  "theme": "crumbkin",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__crumbkin__v6__manifest.json",
+    "sha256": "e566361875a1fc4b1ff3f104533b9d4bae101525badfb382630ba83c76f22b35",
+    "packVersion": 6,
+    "existingArtwork": [
+      "crumb-goals",
+      "nougat-flowerpot"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "croissant-sailboat",
+      "label": "Croissant sailboat",
+      "file": "widgets/widget-croissant-sailboat.7e2ae57b.webp",
+      "sha256": "7e2ae57be84d4441ea81b6da82bae2557f71b9cc0d40555dc0c9cf2210919834",
+      "bytes": 191668,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-04a12ed2-3b41-4319-a03e-806a91e65a2a.png",
+      "sourceSha256": "94909bd0953ec17a84f0099bd94864571a55857c8fbc98283103148faba4dfcd",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE original square 1024x1024 Glaze small-widget illustration for crumbkin. A whimsical miniature sailboat made entirely of marzipan confectionery: a small curved apricot-golden croissant hull, a slender biscuit mast and one gently curved ivory wafer sail, tiny pink fondant pennant without markings, a few fine almond crumbs along its base. Finely sugar-dusted matte almond paste, delicate crumbly edges, warm realistic confectionery craft photography, oat/cream/apricot/pale-pink palette matching Crumbkin. No water scenery, no actual text or numbers, no hamster or flowerpot. Whole subject centered, compact readable silhouette, generous18percent clear margins. True transparent background with preserved alpha, no opaque tile, floor or rectangular frame. Pure illustration: no text, lettering, numbers, dates, clocks, dials, hands, calendars, UI, brand or watermark. Entirely new artwork, not a copy/crop/recolour.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 779688,
+      "opaquePixels": 922
+    },
+    {
+      "id": "biscuit-windmill",
+      "label": "Biscuit windmill",
+      "file": "widgets/widget-biscuit-windmill.62df35a5.webp",
+      "sha256": "62df35a5b2fa22688587d7ad64fddaa8f187672f041b25806c3796703793b413",
+      "bytes": 204510,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-c778bebb-7cb9-4559-8bb7-850b90a0f1da.png",
+      "sourceSha256": "5084e1c8251b570c729c6f3d744d634e4b01a5eed9a274aebe5f7746088f7c17",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original square 1024x1024 Glaze small-widget illustration for crumbkin. A tiny fairytale windmill made entirely from warm almond marzipan and golden butter biscuits, plump sugar-dusted cream body, cinnamon roof, four slim ivory wafer sails, little arched apricot door and two heart-shaped windows. Matte fine almond-paste texture, soft crumbly edges, delicate pale-pink fondant accents, tiny almond crumbs at base. Realistic miniature confectionery craft photography, warm oat/cream/apricot palette, no icing writing, no hamster or flowerpot. Whole compact subject centered, generous18percent empty margins, readable at small size. True transparent empty background with alpha, no opaque tile, ground, border or collage. Pure art: absolutely no text, lettering, numbers, dates, clocks, hands, dials, calendars, UI, logo or watermark. No copies/crops/recolours.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 672037,
+      "opaquePixels": 882
+    },
+    {
+      "id": "marzipan-squirrel",
+      "label": "Marzipan squirrel",
+      "file": "widgets/widget-marzipan-squirrel.a6cfdba3.webp",
+      "sha256": "a6cfdba3b1cff0da7c5d10fbca5f35df9152381de3cd3ded932b86066212a48a",
+      "bytes": 191734,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a77a7daf-f216-434c-b3c6-fead33ce5f1e.png",
+      "sourceSha256": "0f10388e9886687e69b1c289b3c9518abd2a9687d3a36c90aeb76e64ef360bfc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original square 1024x1024 Glaze small-widget illustration for crumbkin. One small cheerful marzipan squirrel with a plump apricot almond-paste body, cream cheeks and tummy, big curled biscuit tail, tiny cocoa eyes, short paws hugging one beautifully moulded biscuit acorn. Fine sugar-dusted matte confectionery texture, subtle crumbly edges, soft warm light, warm oat/cream/apricot and pale-pink blush palette. An entirely new squirrel character, not a hamster, no bun bed or flowerpot. Whole compact subject centered, generous18percent empty margins, readable at small size. True transparent empty background with alpha, no opaque tile, ground, border or collage. Pure art: absolutely no text, lettering, numbers, dates, clocks, hands, dials, calendars, UI, logo or watermark. No copies/crops/recolours.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 662682,
+      "opaquePixels": 599
+    },
+    {
+      "id": "biscuit-treasure-chest",
+      "label": "Biscuit treasure chest",
+      "file": "widgets/widget-biscuit-treasure-chest.2b6520db.webp",
+      "sha256": "2b6520db1330db524c58ccaab6b9bb2c150eaf61d85a618a829f56f8dede7032",
+      "bytes": 273012,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-fe950327-9ce6-4724-98fb-be4b7a8b254f.png",
+      "sourceSha256": "e13448228c63724ac0678a9d18b8f1d090eee3b772e5a87c7945032bf49c2fc9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE wholly original standalone square 1024x1024 miniature confectionery illustration for Glaze CRUMBKIN. A charming tiny treasure chest made entirely from golden butter-biscuit panels and warm almond marzipan, its softly rounded hinged lid open, ivory cream piping along edges, filled with a few pale-pink fondant jewels and smooth toasted almonds. Tiny heart-shaped marzipan clasp, no inscriptions. Clearly edible sugar-dusted matte almond paste with delicate crumbly biscuit edges and fine almond texture, soft realistic craft photography, warm oat/cream/apricot/cinnamon palette with restrained pale-pink accents. Whole complete chest centered with generous18percent clear margins. True transparent empty background, preserved alpha, no floor or opaque tile. Pure art only: absolutely no text, numbers, lettering, dates, clocks, dials, hands, calendars, UI, brand or watermark. No hamster, squirrel, windmill, sailboat or flowerpot. A completely new subject, no copies/crops/recolours.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 466397,
+      "opaquePixels": 776
+    }
+  ]
+}

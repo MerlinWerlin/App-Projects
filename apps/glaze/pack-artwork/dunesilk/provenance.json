@@ -1,0 +1,38 @@
+{
+  "theme": "dunesilk",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__dunesilk__v7__manifest.json",
+    "sha256": "c68a9e52194ed51f4fb57fc7014b15208f2bd3d8e006ea36d3d45b93b2c277d7",
+    "packVersion": 7,
+    "existingArtwork": [
+      "wind-lines",
+      "hero-small",
+      "art-20261106-desert-rose",
+      "art-20261106-dune-shell"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "wind-carved-arch",
+      "label": "Wind carved arch",
+      "file": "widgets/widget-wind-carved-arch.2fce4abd.webp",
+      "sha256": "2fce4abd7bee57dbb4dc932971a9d171ded425dd82db9687432d3b3844a8efaa",
+      "bytes": 235148,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-7c361114-7da1-4f97-bdf1-762d400f3a3f.png",
+      "sourceSha256": "b7fc30b2ca2b0a839a146210c91a74401bf9dcebf8f4a3623dea50e644c6b489",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE completely new original square1024x1024 standalone Glaze small-widget artwork for dunesilk. One exquisite miniature naturally wind-carved golden sandstone arch standing over a low ripple of silky fine sand; asymmetrical elegant opening, thin warm honey-beige strata, realistic granular sand and eroded stone. Natural fine-art desert macro-photography aesthetic, soft golden sunrise grazing light, cream/apricot/honey palette, calm luxurious tactile finish. No rose crystal, shell, dunes landscape panel or other objects. Whole subject centered, readable silhouette, ample18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, square, ground plane, border or collage. Pure illustration only: no text, numbers, dates, clock hands, dials, calendars, UI, logos or watermark. Do not copy/crop/recolour an existing piece.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 690454,
+      "opaquePixels": 408
+    }
+  ]
+}
