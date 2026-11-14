@@ -102,6 +102,17 @@ jobs:
               while IFS= read -r file; do
                 [ -n "$file" ] || continue
                 if [ "$file" = catalog.json ]; then
+                  # Uploading all immutable packs can take time. Check again at the commit point.
+                  node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const lock=JSON.parse(readFileSync('scripts/packs/artwork-baseline/baseline-lock.json'));
+          const url=new URL(lock.catalogUrl);url.searchParams.set('commit-check',String(Date.now()));
+          const response=await fetch(url,{signal:AbortSignal.timeout(90000)});
+          if(!response.ok)throw Error(`Catalogue commit check HTTP ${response.status}`);
+          const sha=createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex');
+          if(sha!==lock.catalogSha256)throw Error('Catalogue changed during uploads; retain the new immutable files and reconcile before updating the live catalogue.');
+          NODE
                   gh release upload "$tag" --clobber "dist/artwork-release/$tag/assets/$file"
                 else
                   gh release upload "$tag" "dist/artwork-release/$tag/assets/$file"

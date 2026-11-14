@@ -34,7 +34,8 @@ test('publication workflow is manual, defaults to dry run and never clobbers imm
   assert.match(yaml, /workflow_dispatch:/); assert.match(yaml, /dry_run:[\s\S]*?default: true/);
   assert.doesNotMatch(yaml, /^\s+(push|pull_request):/m);
   assert.match(yaml, /artwork_progress\.mjs --complete/); assert.match(yaml, /build_packs\.mjs[^\n]*--complete/);
-  assert.match(yaml, /if \[ "\$file" = catalog\.json \]; then\s+gh release upload "\$tag" --clobber/);
+  assert.match(yaml, /if \[ "\$file" = catalog\.json \]; then[\s\S]*?gh release upload "\$tag" --clobber/);
+  assert.match(yaml, /Catalogue changed during uploads/);
   assert.equal((yaml.match(/--clobber/g) ?? []).length, 1);
   assert.match(yaml, /catalog-tag glaze-packs-v5/);
 });
