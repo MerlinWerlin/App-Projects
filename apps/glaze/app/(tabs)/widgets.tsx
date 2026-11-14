@@ -431,10 +431,10 @@ const WidgetRow = memo(function WidgetRow({
   // T173: the family's editorial header (one accessibility heading) above its first row.
   return (
     <View>
+      {/* 1.0.34: the tab lists clocks only, so the family's longer title and body ("Clock, date, photo, quote and
+          battery…", "Clocks, calendars and photos") no longer fit; its short label ("Your theme", "Everyday") is the title. */}
       <SectionHeader
-        eyebrow={tl(keys.eyebrow)}
-        title={tl(keys.title)}
-        body={tl(keys.body)}
+        title={tl(keys.eyebrow)}
         flushTop={firstSection}
         style={firstSection ? styles.sectionHeader : [styles.sectionHeader, styles.sectionAfterRow]}
       />
