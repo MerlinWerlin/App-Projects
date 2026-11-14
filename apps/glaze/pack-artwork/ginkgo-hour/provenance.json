@@ -1,0 +1,38 @@
+{
+  "theme": "ginkgo-hour",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__ginkgo-hour__v7__manifest.json",
+    "sha256": "3e448ef3cc6076e62f4f769165d313ac98cd73fa77cf66fcc3ce47cc4866495b",
+    "packVersion": 7,
+    "existingArtwork": [
+      "production-20261101-fan-leaf",
+      "hero-small",
+      "art-20261106-ginkgo-ink",
+      "art-20261106-golden-leaf-mobile"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "golden-ginkgo-fruit",
+      "label": "Golden ginkgo fruit",
+      "file": "widgets/widget-golden-ginkgo-fruit.eab88e34.webp",
+      "sha256": "eab88e34cbd90783d5f520f295793338750c585bb92cbc412921b3046f978255",
+      "bytes": 180678,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-28ce2848-382c-4704-89f3-afd3f55c2a39.png",
+      "sourceSha256": "7f2dedd99087437a59dc1a62bb2760aec2a88ee36657177ef8ab96b7e0c1a294",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for ginkgo-hour. A compact natural ginkgo twig carrying three ripe golden-amber ginkgo fruits, one fruit split to reveal a smooth ivory seed, one small curled fan leaf resting beside the fruit cluster. Fine-art botanical still-life macro photography, delicate speckled skin, authentic warm brown twig, subtle translucent golden leaf veins, cream/ochre/amber and muted olive palette, diffuse autumn daylight. Fruits and seed are the focal subject; no ink bottle or mobile. Entire compact subject centered with generous18percent empty margins, readable at small size. Truly transparent empty background, alpha preserved; no floor, opaque square, frame, panel or collage. Pure art: absolutely no lettering, text, numbers, dates, clocks, hands, dials, calendars, UI, logos or watermark. Never copy/crop/recolour existing art.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 761340,
+      "opaquePixels": 1551
+    }
+  ]
+}

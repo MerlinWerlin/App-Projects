@@ -1,0 +1,14 @@
+[
+  {
+    "id": "lily-picnic-chair",
+    "kind": "art",
+    "image": "widget-lily-picnic-chair.5c9f5375.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lily picnic chair"
+  }
+]

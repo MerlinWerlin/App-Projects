@@ -1,0 +1,38 @@
+{
+  "theme": "froggy-picnic",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__froggy-picnic__v7__manifest.json",
+    "sha256": "657cc8ebede2c183a6d3a251bd5627bc0a44904155219d40c7d526aa073d7e29",
+    "packVersion": 7,
+    "existingArtwork": [
+      "strawberry-basket",
+      "hero-small",
+      "art-20261107-lily-teapot",
+      "art-20261107-dewdrop-sandwich"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "lily-picnic-chair",
+      "label": "Lily picnic chair",
+      "file": "widgets/widget-lily-picnic-chair.5c9f5375.webp",
+      "sha256": "5c9f537508fab278bfe2b3dd05474c755546eab20bdf95eedcc0a386ac4ccdee",
+      "bytes": 153304,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-27b7a984-186b-4d57-9422-a3d88a401832.png",
+      "sourceSha256": "8c9f2f4878a6cd0b581855db2705b6305104e9cba638471580db095698216135",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for froggy-picnic. One delightful miniature folding picnic chair with a broad soft sage-green lily-leaf seat and back, peach wooden crossed legs, one plump ivory daisy-shaped cushion and a little coral-and-cream gingham bow at the side. Premium kawaii handmade miniature, tactile soft felt/clay finish, rounded gentle forms, pale mint/sage/peach/ivory palette and soft warm light. No frog, duck, chick, teapot, sandwich, basket or parasol; chair is a wholly new picnic object. Entire compact subject centered with generous18percent empty margins, readable at small size. Truly transparent empty background, alpha preserved; no floor, opaque square, frame, panel or collage. Pure art: absolutely no lettering, text, numbers, dates, clocks, hands, dials, calendars, UI, logos or watermark. Never copy/crop/recolour existing art.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 699428,
+      "opaquePixels": 1482
+    }
+  ]
+}

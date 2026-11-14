@@ -1,0 +1,38 @@
+{
+  "theme": "fossil-cove",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__fossil-cove__v7__manifest.json",
+    "sha256": "57956c473202a6f7a06e9e3dd85cb718cb98cc2edee9bd110b0bdf8fa87dc4a6",
+    "packVersion": 7,
+    "existingArtwork": [
+      "fossil-ammonite",
+      "hero-small",
+      "art-20261107-amber-inclusion",
+      "art-20261107-mosaic-trilobite"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "sandstone-shark-tooth",
+      "label": "Sandstone shark tooth",
+      "file": "widgets/widget-sandstone-shark-tooth.38a709e6.webp",
+      "sha256": "38a709e6791bc55c66b4b07666ff2cbe28a2182d2e2a2cf947f4b5b4612152e9",
+      "bytes": 418028,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-fd2382cf-d6f4-4d3c-9718-5ef930b9b993.png",
+      "sourceSha256": "1d134cd19ff640a3baa3dcb482f8af965607d5dd9375108b50e9882a927854ef",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for fossil-cove. One beautiful large prehistoric fossil shark tooth embedded upright in a small naturally layered limestone fragment, warm ivory serrated enamel, weathered sand-beige root, subtle sage-green mineral patina, a few tiny rounded sea pebbles at the base. Fine-art paleontological coastal still-life photography, tangible stone texture and softly rounded miniature sculptural finish, sea-mist sage and warm chalk palette. No ammonite, pterosaur, trilobite, amber or insect. Whole subject centered, simple readable silhouette, generous18percent transparent margins. Truly transparent empty background with alpha; no opaque tile, floor, rectangular frame or collage. Pure illustration only: absolutely no text, lettering, numbers, dates, clocks, hands, dials, calendar, UI, logo or watermark. Never copy/crop/recolour an existing piece.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 191545,
+      "opaquePixels": 142
+    }
+  ]
+}
