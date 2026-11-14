@@ -204,6 +204,16 @@ test('publish: uploads in order to a mock S3, verifies, is idempotent, never log
     const r2 = await publish({ dir: out, env, log });
     assert.equal(r2.uploaded.length, 0);
     assert.equal(r2.skipped.length, plan.length);
+    // 1.0.37: in parallel the phases stay ordered: every file, then every manifest, then the catalogue.
+    mock.store.clear();
+    mock.puts.length = 0;
+    const r3 = await publish({ dir: out, env, log, concurrency: 4 });
+    assert.equal(r3.uploaded.length, plan.length);
+    assert.equal(r3.verified, plan.length);
+    const phase = new Map(plan.map((p) => [p.key, ['file', 'manifest', 'catalog'].indexOf(p.kind)]));
+    const phases = mock.puts.map((k) => phase.get(k));
+    assert.deepEqual(phases, [...phases].sort((x, y) => x - y));
+    assert.equal(mock.puts.at(-1), 'catalog.json');
     // A versioned manifest that changed in place is refused (immutable folders).
     const man = plan.find((p) => p.kind === 'manifest');
     writeFileSync(man.file, readFileSync(man.file, 'utf8').replace('"plus": false', '"plus": true'));
