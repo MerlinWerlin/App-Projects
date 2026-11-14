@@ -6,6 +6,7 @@ import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
 import { EmptyState, Screen } from '../../src/ui/kit.tsx';
 import { ItineraryStart, TripDays } from '../../src/ui/TripDays.tsx';
+import { ShareItinerary } from '../../src/ui/ShareItinerary.tsx';
 
 export default function TodayScreen() {
   const { tripId, day } = useLocalSearchParams<{ tripId: string; day?: string }>();
@@ -22,7 +23,7 @@ export default function TodayScreen() {
   }
   return (
     <>
-      <Stack.Screen options={{ title: trip.name }} />
+      <Stack.Screen options={{ title: trip.name, headerRight: trip.items.length ? () => <ShareItinerary trip={trip} compact /> : undefined }} />
       {trip.items.length ? (
         <TripDays trip={trip} initialDay={typeof day === 'string' ? day : undefined} />
       ) : (

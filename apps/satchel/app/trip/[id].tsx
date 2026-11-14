@@ -64,6 +64,7 @@ import { PhotoLightCard } from '../../src/ui/photolight.tsx';
 import { CheckinTripCard } from '../../src/ui/checkin.tsx';
 import { RainDayCard, useTripRain } from '../../src/ui/rainplan.tsx';
 import { TimetableEntry } from '../../src/ui/timetable.tsx';
+import { ShareItinerary } from '../../src/ui/ShareItinerary.tsx';
 
 const DEMO_INTRO_KEY = 'satchel.demoIntro.done.v1';
 const NOT_DONE = false;
@@ -330,6 +331,8 @@ export default function TripScreen() {
             ) : null}
             {/* T170: the trip as a day-by-day timetable (today first while it's on), and bringing an itinerary in. */}
             {empty ? null : <TimetableEntry trip={trip} />}
+            {/* T174: share the itinerary to another phone. */}
+            {empty ? null : <ShareItinerary trip={trip} />}
             <Button
               label={t('today.import')}
               hint={t('today.importHint')}

@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Satchel 0.2.3: travel games removed (owner request); the Trips tab card, Your day row and In-flight button for them are gone. Nothing else changed",
+  "note": "Satchel 0.2.4: Add your itinerary in two clear paths (copy our format and paste, with your own AI to fill it in; or Add plans myself with day, time, type and place), tap a plan to edit or delete it, and Share itinerary to another phone (calendar file, Satchel file or text)",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

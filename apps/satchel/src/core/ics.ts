@@ -202,6 +202,19 @@ function vevent(i: Item, w: IcsWords, o: { codes: boolean; notes: boolean; stamp
   const g = geo(i);
   if (g) lines.push(p('GEO', g));
   lines.push(p('DESCRIPTION', escapeText(description(i, w, o))));
+  // T173: Satchel's own exact copy of the booking (wall clock, zones, kind, plan type, route), so a phone with
+  // Satchel imports it back unchanged. Calendar apps ignore X- properties.
+  if (hasClock(i.start.local)) {
+    lines.push(p('X-SATCHEL-START', i.start.local), p('X-SATCHEL-TZ', i.start.tz));
+    if (i.end && hasClock(i.end.local)) lines.push(p('X-SATCHEL-END', i.end.local), p('X-SATCHEL-END-TZ', i.end.tz));
+  }
+  lines.push(p('X-SATCHEL-KIND', i.kind));
+  if (i.look) lines.push(p('X-SATCHEL-LOOK', i.look));
+  if (isTransport(i.kind)) {
+    if (clean(i.from?.name)) lines.push(p('X-SATCHEL-FROM', escapeText(clean(i.from?.name))));
+    if (clean(i.to?.name)) lines.push(p('X-SATCHEL-TO', escapeText(clean(i.to?.name))));
+  }
+  if (o.codes && clean(i.number)) lines.push(p('X-SATCHEL-NUMBER', escapeText(clean(i.number))));
   lines.push('END:VEVENT');
   return lines;
 }

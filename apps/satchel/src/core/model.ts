@@ -16,6 +16,7 @@ import type { TripOutfits } from './outfits.ts';
 import type { PlanSetting } from './plansetting.ts';
 import type { CheckinInfo } from './checkin.ts';
 import type { AccessNote } from './stepfree.ts';
+import type { PlanType } from './planform.ts';
 
 /** Wall-clock local time, minute precision: 'YYYY-MM-DDTHH:mm'. */
 export type LocalDateTime = string;
@@ -98,6 +99,8 @@ export type Item = {
   checkin?: CheckinInfo;
   /** T156 step-free travel: step-free room, assistance booked, lift and a short note. Read defensively in src/core/stepfree.ts. */
   access?: AccessNote;
+  /** T173: the plan type picked in Add plans myself / the copy-in format (its icon on the timetable). Read defensively in src/core/planform.ts. */
+  look?: PlanType;
   attachments: Attachment[];
 };
 

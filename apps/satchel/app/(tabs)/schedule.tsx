@@ -13,6 +13,7 @@ import { useTrips } from '../../src/state/trips.tsx';
 import { space, typeScale } from '../../src/theme/tokens.ts';
 import { Chip } from '../../src/ui/kit.tsx';
 import { ItineraryStart, TripDays } from '../../src/ui/TripDays.tsx';
+import { ShareItinerary } from '../../src/ui/ShareItinerary.tsx';
 import { useMinute } from '../../src/ui/TripPass.tsx';
 
 export default function ScheduleTab() {
@@ -27,9 +28,13 @@ export default function ScheduleTab() {
 
   return (
     <View style={{ flex: 1, backgroundColor: theme.paper, paddingTop: insets.top + space.m }}>
-      <View style={{ paddingHorizontal: space.l, gap: 2 }} accessible accessibilityRole="header">
-        <Text style={[typeScale.displayM, { color: theme.ink }]}>{t('tab.itinerary')}</Text>
-        {trip ? <Text style={[typeScale.small, { color: theme.muted }]}>{`${trip.name} · ${formatRange(trip.startDate, trip.endDate, lang)}`}</Text> : null}
+      <View style={{ paddingHorizontal: space.l, flexDirection: 'row', alignItems: 'center', gap: space.m }}>
+        <View style={{ flex: 1, gap: 2 }} accessible accessibilityRole="header">
+          <Text style={[typeScale.displayM, { color: theme.ink }]}>{t('tab.itinerary')}</Text>
+          {trip ? <Text style={[typeScale.small, { color: theme.muted }]}>{`${trip.name} · ${formatRange(trip.startDate, trip.endDate, lang)}`}</Text> : null}
+        </View>
+        {/* T174: share the itinerary to another phone (calendar file, Satchel file or text). */}
+        {trip && trip.items.length ? <ShareItinerary trip={trip} compact /> : null}
       </View>
       {sorted.length > 1 ? (
         <ScrollView

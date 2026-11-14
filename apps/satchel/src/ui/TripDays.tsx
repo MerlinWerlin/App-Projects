@@ -11,6 +11,7 @@ import { dayStrip, daySchedule, openingDay, todayTomorrow, tripToday } from '../
 import { formatDay, formatDuration, formatTime, zoneCity } from '../core/format.ts';
 import type { Trip } from '../core/model.ts';
 import { addDays } from '../core/tz.ts';
+import { planFormFits } from '../core/planform.ts';
 import { useApp } from '../state/app.tsx';
 import { elevated, radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { IconBadge } from './hero.tsx';
@@ -74,7 +75,7 @@ function DayPage({ trip, date, now, width, inTab }: { trip: Trip; date: string; 
         <View>
           {s.rows.map((r) =>
             r.type === 'block' ? (
-              <TimetableBlock key={r.key} b={r} last={r.key === lastKey} onPress={() => router.push(`/item/${r.item.id}`)} />
+              <TimetableBlock key={r.key} b={r} last={r.key === lastKey} onPress={() => (planFormFits(r.item) ? router.push({ pathname: '/plan-edit', params: { tripId: trip.id, itemId: r.item.id } }) : router.push(`/item/${r.item.id}`))} />
             ) : (
               <FreeRow key={r.key} f={r} />
             ),
@@ -218,13 +219,12 @@ export function TripDays({ trip, initialDay, inTab }: { trip: Trip; initialDay?:
 }
 
 /**
- * "Add your itinerary": every way to bring plans in. With a trip, each option opens the importer for it (a calendar
- * file or the clipboard starts straight away); with none, the first step is making the trip.
+ * "Add your itinerary" (T173): the two paths, big and plain. "I already have an itinerary" opens the copy-in format
+ * and paste box; "Add plans myself" opens the plan form. With no trip yet, the first step is making one.
  */
 export function ItineraryStart({ trip }: { trip?: Trip }) {
   const { t } = useApp();
   const router = useRouter();
-  const open = (start?: 'calendar' | 'paste' | 'ai') => router.push({ pathname: '/itinerary', params: { ...(trip ? { tripId: trip.id } : {}), ...(start ? { start } : {}) } });
   return (
     <EmptyState
       art="notebook"
@@ -233,17 +233,15 @@ export function ItineraryStart({ trip }: { trip?: Trip }) {
       action={
         <View style={{ gap: space.s, alignSelf: 'stretch' }}>
           {trip ? null : <Button label={t('schedule.newTrip')} hint={t('itin.newTripHint')} icon="add" onPress={() => router.push('/trip-edit')} />}
-          <Button label={t('itin.calendar')} hint={t('itin.calendarHint')} kind={trip ? 'primary' : 'secondary'} icon="calendar-outline" onPress={() => open('calendar')} />
-          <Button label={t('itin.paste')} hint={t('itin.pasteHint')} kind="secondary" icon="clipboard-outline" onPress={() => open('paste')} />
-          <Button label={t('schedule.ai')} hint={t('schedule.aiHint')} kind="secondary" icon="sparkles-outline" onPress={() => open('ai')} />
+          <Button
+            label={t('itin.pathA.title')}
+            hint={t('itin.pathA.body')}
+            kind={trip ? 'primary' : 'secondary'}
+            icon="document-text-outline"
+            onPress={() => router.push({ pathname: '/itinerary', params: { ...(trip ? { tripId: trip.id } : {}), start: 'have' } })}
+          />
           {trip ? (
-            <Button
-              label={t('itin.manual')}
-              hint={t('itin.manualHint')}
-              kind="quiet"
-              icon="add"
-              onPress={() => router.push({ pathname: '/item-edit', params: { tripId: trip.id, kind: 'activity', date: trip.startDate } })}
-            />
+            <Button label={t('itin.pathB.title')} hint={t('itin.pathB.body')} kind="secondary" icon="create-outline" onPress={() => router.push({ pathname: '/plan-edit', params: { tripId: trip.id } })} />
           ) : null}
         </View>
       }

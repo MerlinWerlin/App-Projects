@@ -86,6 +86,7 @@ const flight: Required<Item> = {
   setting: 'outdoor',
   checkin,
   access,
+  look: 'flight',
   attachments: [{ id: 'att_1', uri: 'file:///docs/attachments/att_1-boarding.pdf', name: 'boarding.pdf', mime: 'application/pdf', role: 'ticket', qrCropUri: 'file:///docs/attachments/att_1-crop.png' }],
 };
 const hotel: Required<Item> = {
@@ -243,7 +244,7 @@ test('T118 guard: every field of every copied type has exactly one rule (copied,
   assert.deepEqual(keys(BAG_RULES), keys(ownBag));
   // Same Trip / Item key list the T85 round-trip guard pins today (a new field must be ruled on in both).
   assert.deepEqual(keys(TRIP_RULES), ['budget', 'cash', 'comingHome', 'companions', 'cover', 'createdAt', 'dayPlans', 'demo', 'endDate', 'expenses', 'gifts', 'homeTz', 'id', 'ideas', 'items', 'journal', 'leavingHome', 'name', 'outfits', 'places', 'rates', 'ratesUpdated', 'settlements', 'startDate', 'todos']);
-  assert.deepEqual(keys(ITEM_RULES), ['access', 'airport', 'attachments', 'carrier', 'checkin', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'setting', 'start', 'title', 'to', 'tripId']);
+  assert.deepEqual(keys(ITEM_RULES), ['access', 'airport', 'attachments', 'carrier', 'checkin', 'end', 'from', 'id', 'kind', 'legInfo', 'look', 'notes', 'number', 'place', 'ref', 'seat', 'setting', 'start', 'title', 'to', 'tripId']);
   // Phone-only and money data is never a part the traveller can switch on.
   for (const k of ['expenses', 'settlements', 'rates', 'ratesUpdated', 'journal', 'cash', 'gifts', 'dayPlans', 'demo', 'leavingHome', 'comingHome'] as const) assert.equal(TRIP_RULES[k], 'drop', k);
   for (const k of ['ref', 'seat', 'attachments'] as const) assert.equal(ITEM_RULES[k], 'drop', k);

@@ -39,6 +39,7 @@ import { readAirport } from './leaveby.ts';
 import { readLegInfo } from './layovers.ts';
 import { readPlanSetting } from './plansetting.ts';
 import { readCheckin } from './checkin.ts';
+import { readPlanLook } from './planform.ts';
 import { readAccess } from './stepfree.ts';
 import { checkFileSpending } from './spending.ts';
 import { cleanFileTogether } from './together.ts';
@@ -254,6 +255,14 @@ function filePlaceSetting(p: SavedPlace): SavedPlace {
   return s ? { ...rest, setting: s } : rest;
 }
 
+/** T173: a booking's plan type is optional; anything unreadable is dropped (never refusing the file). */
+function fileLook(item: FileItem): FileItem {
+  if (!('look' in item)) return item;
+  const { look, ...rest } = item as FileItem & { look?: unknown };
+  const l = readPlanLook(look);
+  return (l ? { ...rest, look: l } : rest) as FileItem;
+}
+
 /** T143: a booking's check-in settings and tick are optional; bad values are dropped (never refusing the file). */
 function fileCheckin(item: FileItem): FileItem {
   if (!('checkin' in item)) return item;
@@ -365,7 +374,7 @@ export function parseTripFile(data: unknown): ParseResult {
       version: TRIP_FILE_VERSION,
       exported_at: isStr(data.exported_at) ? data.exported_at : '',
       trip,
-      items: (data.items as FileItem[]).map((i) => fileAccess(fileCheckin(fileSetting(fileLegInfo(fileAirport(i)))))),
+      items: (data.items as FileItem[]).map((i) => fileLook(fileAccess(fileCheckin(fileSetting(fileLegInfo(fileAirport(i))))))),
       places: (places as SavedPlace[]).map(filePlaceSetting),
       ...(packing ? { packing } : {}),
       attachments: data.attachments as FilePayload[],

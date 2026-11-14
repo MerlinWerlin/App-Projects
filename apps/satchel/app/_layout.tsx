@@ -91,6 +91,7 @@ function Shell() {
           <Stack.Screen name="dayplan/[tripId]" options={{ ...header, title: t('dayplan.route') }} />
           <Stack.Screen name="today/[tripId]" options={{ ...header, title: t('today.route') }} />
           <Stack.Screen name="itinerary" options={{ ...header, title: t('itin.route') }} />
+          <Stack.Screen name="plan-edit" options={{ ...header, presentation: 'modal', title: t('plan.title') }} />
           <Stack.Screen name="cash/[tripId]" options={{ ...header, title: t('cash.route') }} />
           <Stack.Screen name="holidays/[tripId]" options={{ ...header, title: t('holidays.route') }} />
           <Stack.Screen name="gifts/[tripId]" options={{ ...header, title: t('gifts.route') }} />
