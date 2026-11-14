@@ -180,6 +180,7 @@ export const de: NonNullable<LocaleMessages['ui']> = {
       done: 'Fertig',
       selectA11y: '{name} auswählen',
       artworkA11y: 'Kunstwerk {n}',
+      preparing: 'Kunst des Themes wird vorbereitet…',
       deleteSelected: 'Auswahl löschen',
       clearAll: 'Alle löschen',
       clearTitle: '„Meine Widget-Motive“ leeren?',

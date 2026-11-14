@@ -465,6 +465,13 @@ function WidgetsTab() {
   const applied: Theme | undefined = useAnyTheme(activeId);
   const theme: Theme = applied ?? THEMES[0];
   const [size, setSize] = useState<WidgetTabSize>('small');
+  // 1.0.37 (owner TestFlight 1.0.36: the tab opened on Medium / Large, which only say Coming soon, and the
+  // widgets looked gone): the tab opens on Small, where Artwork 1-5 and Custom 1-5 live, every time it is shown.
+  useFocusEffect(
+    useCallback(() => {
+      setSize('small');
+    }, []),
+  );
   // T146: link check on focus (no theme picks here any more, so the nonce stays 0).
   const pickNonce = 0;
   // T221: bumped when a piece is added to "My widget art", so the list below the menu re-reads it.

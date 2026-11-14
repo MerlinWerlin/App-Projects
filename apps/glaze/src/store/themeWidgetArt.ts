@@ -69,6 +69,38 @@ type ThemeArt = {
 let generation = 0;
 let running: Promise<unknown> = Promise.resolve();
 
+// 1.0.37 (owner TestFlight 1.0.36: the Widgets tab kept the old theme's art until a size switch):
+// screens listen to the sync so they re-read My widget art straight after each index write, and show
+// a placeholder (never the previous theme's pieces) while a theme's art is still being made.
+export type ThemeArtSyncStatus = {
+  /** The theme whose art is being made, or null when no sync is running. */
+  syncing: string | null;
+  /** Bumped after every index write (partial or final) and when a sync ends. */
+  rev: number;
+};
+let syncStatus: ThemeArtSyncStatus = { syncing: null, rev: 0 };
+const statusListeners = new Set<(s: ThemeArtSyncStatus) => void>();
+function setSyncStatus(syncing: string | null, bump: boolean): void {
+  if (syncStatus.syncing === syncing && !bump) return;
+  syncStatus = { syncing, rev: syncStatus.rev + (bump ? 1 : 0) };
+  for (const l of [...statusListeners]) {
+    try {
+      l(syncStatus);
+    } catch {
+      // A listener never breaks the sync.
+    }
+  }
+}
+export function getThemeArtSyncStatus(): ThemeArtSyncStatus {
+  return syncStatus;
+}
+export function subscribeThemeArtSync(l: (s: ThemeArtSyncStatus) => void): () => void {
+  statusListeners.add(l);
+  return () => {
+    statusListeners.delete(l);
+  };
+}
+
 /** Stop an older theme's pending composition before the next index commit. */
 export function supersedeThemeWidgetArt(): void { generation++; }
 
@@ -79,10 +111,15 @@ export function supersedeThemeWidgetArt(): void { generation++; }
  */
 export function syncThemeWidgetArt(theme: Theme, opts: ThemeArtSyncOptions = {}): Promise<ThemeArtSyncResult> {
   const gen = ++generation;
-  const job = running.then(
-    () => runSync(theme, gen, opts),
-    () => runSync(theme, gen, opts),
-  );
+  const run = async () => {
+    try {
+      return await runSync(theme, gen, opts);
+    } finally {
+      // The newest sync owns the status; an older, superseded run ends quietly.
+      if (gen === generation) setSyncStatus(null, true);
+    }
+  };
+  const job = running.then(run, run);
   running = job.catch(() => undefined);
   return job;
 }
@@ -108,6 +145,7 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
     // 1. Nothing to do without the library bridge (Expo Go, Android, older build): no file work.
     const current = await widgets.artLibrary();
     if (!current.available) return NONE;
+    setSyncStatus(theme.id, false);
     await setPending(theme.id);
     // 2. Plan.
     // T245: countdown art pieces go live with the day the person chose (none = Art).
@@ -141,6 +179,7 @@ async function runSync(theme: Theme, gen: number, opts: ThemeArtSyncOptions): Pr
         // app straight after a theme apply or a reinstall already has Artwork 1-5 filled.
         if ((ready.length === 2 || ready.length === artworkCount || ready.length % 6 === 0) && ready.length < todo.length && !stale()) {
           await widgets.commitThemeArt(theme.id, planned, ready);
+          setSyncStatus(theme.id, true);
         }
       } else failed++;
       await pause();

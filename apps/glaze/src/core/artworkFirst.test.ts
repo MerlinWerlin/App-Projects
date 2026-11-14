@@ -26,13 +26,30 @@ test('My widget art: Artwork 1-5 in order, a big number in the slot colour, no R
   // Owner 2026-11-13: "the numbers need to be larger and more clear and there needs to be no remove
   // options just the native art works to the theme".
   const list = readFileSync(join(process.cwd(), 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
-  assert.match(list, /Array\.from\(\{ length: ARTWORK_SLOT_COUNT \}, \(_, i\) => \(\{ n: i \+ 1, p: list\[i % list\.length\] \}\)\)/);
+  assert.match(list, /Array\.from\(\{ length: ARTWORK_SLOT_COUNT \}, \(_, i\) => \(\{ n: i \+ 1, p: preparing \? \(list\[i\] \?\? null\) : list\[i % list\.length\] \}\)\)/);
   assert.match(list, /number: \{ width: NUMBER, height: NUMBER/);
   assert.match(list, /const THUMB = 132;/);
   assert.match(list, /numberText: \{ \.\.\.textV2\.largeTitle, fontWeight: '800' \}/);
   assert.doesNotMatch(list, /PillButton|ui\.seamless\.library\.remove|position: 'absolute'/);
 });
 
+test('1.0.37: My widget art follows a theme change by itself and never shows the previous theme', () => {
+  // Owner TestFlight 1.0.36: the list kept the old theme's art until a Medium -> Small switch.
+  const list = readFileSync(join(process.cwd(), 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
+  assert.match(list, /const liveThemeId = useActiveThemeId\(\);/);
+  assert.match(list, /useEffect\(\(\) => subscribeThemeArtSync\(setSync\), \[\]\);/);
+  assert.match(list, /\}, \[load, refreshKey, liveThemeId, sync\.rev\]\);/);
+  assert.match(list, /const stale = !!activeThemeId && listed\.some\(\(p\) => p\.themeId !== activeThemeId\);/);
+  assert.match(list, /const list = stale \? \[\] : listed;/);
+  assert.match(list, /ui\.seamless\.library\.preparing/);
+  const store = readFileSync(join(process.cwd(), 'src', 'store', 'themeWidgetArt.ts'), 'utf8');
+  // Every index write (partial and final) bumps the status, so the tab re-reads straight away.
+  assert.match(store, /await widgets\.commitThemeArt\(theme\.id, planned, ready\);\s*setSyncStatus\(theme\.id, true\);/);
+  assert.match(store, /if \(gen === generation\) setSyncStatus\(null, true\);/);
+  // The Widgets tab opens on Small every time it is shown.
+  const tab = readFileSync(join(process.cwd(), 'app', '(tabs)', 'widgets.tsx'), 'utf8');
+  assert.match(tab, /useFocusEffect\(\s*useCallback\(\(\) => \{\s*setSize\('small'\);/);
+});
 
 // Owner 2026-11-13 ("remove them unless its the native ones"): the theme's pack art is small only.
 import { THEME_PACK_ART_SIZES, planThemePieces } from './themeArtSync.ts';

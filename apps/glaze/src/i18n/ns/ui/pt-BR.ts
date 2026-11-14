@@ -185,6 +185,7 @@ export const ptBR: NonNullable<LocaleMessages['ui']> = {
       done: 'OK',
       selectA11y: 'Selecionar {name}',
       artworkA11y: 'Arte {n}',
+      preparing: 'Preparando a arte do tema…',
       deleteSelected: 'Apagar selecionados',
       clearAll: 'Limpar tudo',
       clearTitle: 'Limpar Minha arte de widget?',

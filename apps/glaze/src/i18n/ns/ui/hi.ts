@@ -180,6 +180,7 @@ export const hi: NonNullable<LocaleMessages['ui']> = {
       done: 'हो गया',
       selectA11y: '{name} चुनें',
       artworkA11y: 'कलाकृति {n}',
+      preparing: 'थीम की कलाकृति तैयार हो रही है…',
       deleteSelected: 'चुने हुए हटाएँ',
       clearAll: 'सब साफ़ करें',
       clearTitle: 'मेरी विजेट कला साफ़ करें?',

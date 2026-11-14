@@ -15,10 +15,10 @@ EXACT = [
 ]
 ALLOWED = {
     'src/ui/WidgetArtMenu.tsx': 'Design review 1.0.33 (owner TestFlight screenshots: Live art cards showed an empty frame / ring): one added overlay, <LiveArtSample> (src/ui/LiveArtSample.tsx), draws a sample date / 25:00 / time inside a number-free piece liveFrame, plus a themeInk prop. Compositing, blending, placement and every other line unchanged. Owned by Claude.',
-    'app/(tabs)/widgets.tsx': 'Owner 2026-11-14 (large image and large number next to each other, not separate): the separate theme art picker is no longer shown; My widget art is the one numbered Artwork list. 1.0.36 (owner 2026-11-15, make your own theme): a Your artwork section (src/ui/CustomArtSlots.tsx) is added under it on Small; nothing above it changes. Owned by Claude.',
+    'app/(tabs)/widgets.tsx': 'Owner 2026-11-14 (large image and large number next to each other, not separate): the separate theme art picker is no longer shown; My widget art is the one numbered Artwork list. 1.0.36 (owner 2026-11-15, make your own theme): a Your artwork section (src/ui/CustomArtSlots.tsx) is added under it on Small; nothing above it changes. Owned by Claude. 1.0.37 (owner TestFlight 1.0.36): the size tabs reset to Small whenever the tab is focused (one useFocusEffect).',
     'src/core/widgetArtLibrary.ts': 'Owner 2026-11-13 (Artwork 1 to 5 must match in the app and on the Home Screen): the index carries an optional ordered artwork list (readMeta). Pieces, parsing and every other field unchanged. Owned by Claude.',
     'src/ui/ThemeWidgetArt.tsx': 'Owner 2026-11-13 (remove the large variations unless native): the theme pack art menu shows on the Small tab only; Medium and Large keep the native widgets. Owned by Claude.',
-    'src/ui/WidgetArtLibraryList.tsx': 'Owner 2026-11-12 ("colour code them"): each piece that fills an Artwork slot shows the colour and number badge of that slot (src/core/artworkSlots.ts). Listing, removing and managing unchanged. Owned by Claude.',
+    'src/ui/WidgetArtLibraryList.tsx': 'Owner 2026-11-12 ("colour code them"): each piece that fills an Artwork slot shows the colour and number badge of that slot (src/core/artworkSlots.ts). Listing, removing and managing unchanged. Owned by Claude. 1.0.37 (owner TestFlight 1.0.36): re-reads on an active-theme change and after each theme art sync index write; placeholder rows (never pieces of the previous theme) while the art is being made.',
     'src/core/widgetOptions.ts': 'Inherited PR252: authored-size filtering, owned by Claude.',
     'src/core/themeArtSync.ts': 'Inherited PR252: plan only authored sizes; owner 2026-11-08: art pieces planned first in each size. Owned by Claude.',
     'app/theme/[id].tsx': 'Owner-directed four actions; restored ThemeWidgetArt section and composer remain intact. 1.0.34 (owner 2026-11-14): the SeamlessCard spot picker is removed (iOS does not let apps place widgets); honest add-a-widget steps + Watch how in its place.',
@@ -27,7 +27,7 @@ ALLOWED = {
     'app/install.tsx': 'Preview/export requested theme without persisting the global selection; larger completion glyph.',
     'src/store/activeTheme.ts': 'Stage (a): order explicit selections, defer art using the current selection, and ignore late focus reads.',
     'src/store/widgetTheme.ts': 'Stage (a): one native theme writer, immediate publication, and preview/launch writes guarded by the active selection.',
-    'src/store/themeWidgetArt.ts': 'Stage (a): expose generation cancellation. Owner 2026-11-08 (art stars must match the wallpaper): art pieces compose on the wallpaper crop (existing seamless path) instead of a flat colour. Owned by Claude.',
+    'src/store/themeWidgetArt.ts': 'Stage (a): expose generation cancellation. Owner 2026-11-08 (art stars must match the wallpaper): art pieces compose on the wallpaper crop (existing seamless path) instead of a flat colour. Owned by Claude. 1.0.37: a read-only sync status (syncing theme id + revision bumped after each index write) for the Widgets tab; composition and commits unchanged.',
     'src/core/packCatalog.ts': 'Remember a validated release in an installed pack manifest.',
     'src/core/packDownloader.ts': 'Persist the catalogue release when writing a downloaded manifest.',
     'src/core/themeArtResume.ts': 'Carry the installed manifest release through theme lookup.',
