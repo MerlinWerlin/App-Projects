@@ -1,0 +1,40 @@
+{
+  "theme": "cobalt-ribbon",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "cobalt-ribbon",
+      "id": "metal-feather",
+      "label": "Metal feather",
+      "ref": "113-cobalt-ribbon\\widgets\\brushed-blue.png",
+      "subject": "one elegant sculptural feather crafted from thin cobalt-blue anodized metal, precise gently separated barbs with fine brushed grain, one silver-blue central quill and subtly lifted tip, complete diagonal silhouette, no ribbon loop or folded fan",
+      "prompt": "Use case: stylized-concept. One original standalone 1024 x 1024 square pure artwork for Glaze Cobalt Ribbon: one elegant sculptural feather crafted from thin cobalt-blue anodized metal, precise gently separated barbs with fine brushed grain, one silver-blue central quill and subtly lifted tip, complete diagonal silhouette, no ribbon loop or folded fan. Refined industrial-design photographic illustration, cobalt brushed metal #2772A2 on seamless pale steel-blue #DDE6ED background/floor, soft silver-blue highlights, gentle studio reflection and quiet lighting, match reference medium and finish. New subject and composition, no copy/crop/recolour. Entire compact sculpture centred within generous 16 percent clear safe margins, no crop. No text, numerals, logos, watermark, frames, UI, clock hands/dials, dates/calendars, focus/battery/progress imagery. Single image, no grid.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-ebe43001-8ce4-4155-a43a-6a8e502897f6.png",
+      "image": "widget-metal-feather.1636c830.webp",
+      "sha256": "1636c830bf565868c0bbccb9304c337c212316488928f325c1a9ec513f8fcd69",
+      "bytes": 132094,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "cobalt-ribbon",
+      "id": "cobalt-cairn",
+      "label": "Cobalt cairn",
+      "ref": "113-cobalt-ribbon\\widgets\\ribbon-loop.png",
+      "subject": "three smooth asymmetrical rounded cobalt-blue anodized metal pebble forms balanced as a small tactile sculpture, smallest resting off-centre at top, restrained brushed grain, soft silver-blue edge reflections, no hole or loop, no ribbon or fan",
+      "prompt": "Use case: stylized-concept. One original standalone 1024 x 1024 square pure artwork for Glaze Cobalt Ribbon: three smooth asymmetrical rounded cobalt-blue anodized metal pebble forms balanced as a small tactile sculpture, smallest resting off-centre at top, restrained brushed grain, soft silver-blue edge reflections, no hole or loop, no ribbon or fan. Refined industrial-design photographic illustration, cobalt brushed metal #2772A2 on seamless pale steel-blue #DDE6ED background/floor, soft silver-blue highlights, gentle studio reflection and quiet lighting, match reference medium and finish. New subject and composition, no copy/crop/recolour. Entire compact sculpture centred within generous 16 percent clear safe margins, no crop. No text, numerals, logos, watermark, frames, UI, clock hands/dials, dates/calendars, focus/battery/progress imagery. Single image, no grid.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-4582ed87-4d70-42b4-a3a6-933974ca830e.png",
+      "image": "widget-cobalt-cairn.2f26bdaa.webp",
+      "sha256": "2f26bdaaaf3b7d143bca071fb29484b973daf2a2687726c3e808647a441114ed",
+      "bytes": 84766,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

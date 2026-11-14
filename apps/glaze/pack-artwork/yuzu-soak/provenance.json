@@ -1,0 +1,26 @@
+{
+  "theme": "yuzu-soak",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "yuzu-soak",
+      "id": "citrus-steam-kettle",
+      "label": "Citrus steam kettle",
+      "ref": "069-yuzu-soak\\widgets\\extra-20261029-yuzu-pond-bowl.png",
+      "subject": "one small round nerikomi ceramic steam kettle on three tiny feet, handmade marbled pale apricot and lavender clay bands, a butter-yellow yuzu-shaped knob with two sage leaves, curved ivory handle and short pouring spout, two soft sculptural ivory curls of steam. Charming glossy stoneware miniature, quiet collectible art",
+      "style": "Hand-sculpted glossy NERIKOMI MARBLED STONEWARE pottery, slight clay irregularities, subtle glaze pinpricks, cozy soft light. Warm butter ivory #FFF3D7 background seamlessly matching reference",
+      "avoid": "No bathtub, bowl, capybara, towel or soap dish",
+      "prompt": "Use case: stylized-concept. Asset type: Glaze yuzu-soak pure Artwork widget. Create one finished original standalone 1024 x 1024 square image of one small round nerikomi ceramic steam kettle on three tiny feet, handmade marbled pale apricot and lavender clay bands, a butter-yellow yuzu-shaped knob with two sage leaves, curved ivory handle and short pouring spout, two soft sculptural ivory curls of steam. Charming glossy stoneware miniature, quiet collectible art. Hand-sculpted glossy NERIKOMI MARBLED STONEWARE pottery, slight clay irregularities, subtle glaze pinpricks, cozy soft light. Warm butter ivory #FFF3D7 background seamlessly matching reference. Centered complete composition with generous 16 percent clear safe margins, same quiet backdrop at every edge, no cropped parts or separate card boundary. Input image is a STYLE/PALETTE reference only. New subject and composition, never copy, crop or recolour existing art. No bathtub, bowl, capybara, towel or soap dish. No text, writing, numbers, calligraphy, seals, logos, watermarks, UI, frames, clocks, hands, dials, calendar/date imagery, focus or battery indicators. No grids or panels.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-cb4c1bc7-2ba5-47e0-aa4d-10992b793dfa.png",
+      "image": "widget-citrus-steam-kettle.d858b96b.webp",
+      "sha256": "d858b96b0c2745b3c2cc67415986fdfa7d78e75552fd173f0aa8ca3648c69caa",
+      "bytes": 89286,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

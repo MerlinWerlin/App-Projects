@@ -1,0 +1,26 @@
+[
+  {
+    "id": "chocolate-curls",
+    "kind": "art",
+    "image": "widget-chocolate-curls.28406efa.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Chocolate curls"
+  },
+  {
+    "id": "cacao-blossom",
+    "kind": "art",
+    "image": "widget-cacao-blossom.5b5ae1f4.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cacao blossom"
+  }
+]

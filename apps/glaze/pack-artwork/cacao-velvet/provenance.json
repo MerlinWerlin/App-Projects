@@ -1,0 +1,40 @@
+{
+  "theme": "cacao-velvet",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "cacao-velvet",
+      "id": "chocolate-curls",
+      "label": "Chocolate curls",
+      "ref": "117-cacao-velvet\\widgets\\roast-beans.png",
+      "subject": "three sculptural thin curls of dark chocolate shaving nestled in a loose sculptural spiral, one broad ribbon, one delicate rolled tube and one short flake. Luxurious warm copper edge highlights on matte cocoa texture, no beans, no cacao pods, no plate or packaging",
+      "prompt": "Use case: stylized-concept. Create one original 1024 x 1024 square pure artwork for Glaze Cacao Velvet: three sculptural thin curls of dark chocolate shaving nestled in a loose sculptural spiral, one broad ribbon, one delicate rolled tube and one short flake. Luxurious warm copper edge highlights on matte cocoa texture, no beans, no cacao pods, no plate or packaging. Refined natural editorial still-life photographic illustration, deep warm cocoa-brown #2A211E seamless empty background and surface, restrained copper/oat/brown palette. Match reference material realism, warm soft directional light and quiet mood. Whole compact subject centred within generous 16 percent clear safe margins, beautiful tactile detail. New composition, not a copy/crop/recolour. No text, labels, numbers, logos, borders, UI, watermarks, clock/dial/hands, date/calendar, focus or battery imagery. One image, no collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-542533ad-2b25-4dac-9d6e-59116bf9c250.png",
+      "image": "widget-chocolate-curls.28406efa.webp",
+      "sha256": "28406efae50970c8a64f59623c32af31c299db137ce8cd24336d95d0d6d23bed",
+      "bytes": 165718,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "cacao-velvet",
+      "id": "cacao-blossom",
+      "label": "Cacao blossom",
+      "ref": "117-cacao-velvet\\widgets\\cacao-pod.png",
+      "subject": "a tiny spray of cacao blossoms emerging directly from a short textured cocoa tree twig, delicate creamy ivory and pale blush star petals with curled burgundy centres. Intimate natural botanical study, entire branch contained, no leaves or pods",
+      "prompt": "Use case: stylized-concept. Create one original 1024 x 1024 square pure artwork for Glaze Cacao Velvet: a tiny spray of cacao blossoms emerging directly from a short textured cocoa tree twig, delicate creamy ivory and pale blush star petals with curled burgundy centres. Intimate natural botanical study, entire branch contained, no leaves or pods. Refined natural editorial still-life photographic illustration, deep warm cocoa-brown #2A211E seamless empty background and surface, restrained copper/oat/brown palette. Match reference material realism, warm soft directional light and quiet mood. Whole compact subject centred within generous 16 percent clear safe margins, beautiful tactile detail. New composition, not a copy/crop/recolour. No text, labels, numbers, logos, borders, UI, watermarks, clock/dial/hands, date/calendar, focus or battery imagery. One image, no collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-479b641e-3111-4361-ad33-46fba2c5e284.png",
+      "image": "widget-cacao-blossom.5b5ae1f4.webp",
+      "sha256": "5b5ae1f44d1b4a51106342bdbf9ae019185bd8feadd984d086acfa1cae1752df",
+      "bytes": 103094,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}
