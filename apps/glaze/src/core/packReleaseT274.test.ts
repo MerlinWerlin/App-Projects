@@ -9,7 +9,7 @@ import { CATALOG_FILE, manifestPath, packFolder, parseCatalog } from './packCata
 import { isArtPackId, PALETTE_KEYS } from './artPack.ts';
 import { downloadRemoteArtPack, fetchCatalogText, PackError, type Transport } from './packDownloader.ts';
 import { remoteArtThemes } from './remoteCatalog.ts';
-import { PACK_BASE_URLS } from '../config/packs.ts';
+import { GITHUB_PRODUCTION_BASE, PACK_BASE_URLS } from '../config/packs.ts';
 
 const REPO = 'https://github.com/MerlinWerlin/App-Projects/releases/download';
 const V1 = `${REPO}/glaze-packs-v1`;
@@ -41,7 +41,9 @@ test('packReleaseBase: swaps only the tag of a numbered GitHub release; everythi
   assert.equal(packReleaseBase('http://127.0.0.1:4567', 'glaze-packs-v2'), 'http://127.0.0.1:4567');
   // Owner/repo always come from the configured base.
   assert.equal(packReleaseBase('https://github.com/o/r/releases/download/glaze-packs-v1', 'glaze-packs-v3'), 'https://github.com/o/r/releases/download/glaze-packs-v3');
-  assert.equal(packReleaseBase(PACK_BASE_URLS.production, 'glaze-packs-v2'), V2);
+  assert.equal(packReleaseBase(GITHUB_PRODUCTION_BASE, 'glaze-packs-v2'), V2);
+  // 1.0.37: production is the R2 folder host, which serves every pack under one tree.
+  assert.equal(packReleaseBase(PACK_BASE_URLS.production, 'glaze-packs-v18'), PACK_BASE_URLS.production);
   assert.equal(packReleaseBase(PACK_BASE_URLS.staging, 'glaze-packs-v2'), PACK_BASE_URLS.staging);
   assert.equal(packObjectUrl(packReleaseBase(V1, 'glaze-packs-v2'), manifestPath('deep-sea', 2)), `${V2}/art__deep-sea__v2__manifest.json`);
 });

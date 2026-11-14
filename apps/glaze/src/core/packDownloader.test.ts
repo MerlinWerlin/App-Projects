@@ -276,8 +276,8 @@ test('bad manifests and old app versions are refused before any asset is fetched
   rmSync(dir, { recursive: true, force: true });
 });
 
-test('base URL config: GitHub release in production (T169); empty = disabled, no request; https or loopback only', async () => {
-  assert.equal(PACK_BASE_URL, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5');
+test('base URL config: Cloudflare R2 in production (1.0.37); empty = disabled, no request; https or loopback only', async () => {
+  assert.equal(PACK_BASE_URL, 'https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev');
   assert.equal(PACKS_DISABLED_MESSAGE, 'Theme packs arrive with the store release');
   assert.equal(packsEnabled(PACK_BASE_URL), true);
   assert.equal(packsEnabled(''), false);

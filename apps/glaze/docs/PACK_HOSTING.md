@@ -1,16 +1,61 @@
-# Pack hosting: GitHub Release assets (T169)
+# Pack hosting: Cloudflare R2 (1.0.37+), GitHub Release assets (up to 1.0.36)
 
-Glaze's downloadable theme packs are hosted as **release assets on the public repo `MerlinWerlin/App-Projects`** (Jared's instruction, 30 Oct 2026). This replaces the Cloudflare R2 plan (`docs/R2_SETUP.md` is kept as reference only). Nothing here needs an account, a card or a secret: the workflow uses the built-in `GITHUB_TOKEN`.
+Since **Glaze 1.0.37** the production theme packs are served from **Cloudflare R2** (Jared's choice, 15 Nov 2026: R2 charges no egress, and the free tier is 10 GB stored, 1M writes and 10M reads a month). Builds up to 1.0.36 keep reading the GitHub Release assets described further down. Those releases stay published and unchanged, so older TestFlight builds keep working.
 
-| | Release tag | Base URL the app uses (`src/config/packs.ts`) |
+| | Host | Base URL (`src/config/packs.ts`) |
 |---|---|---|
-| Production (1.0.2+) | `glaze-packs-v5` | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5` |
+| Production (1.0.37+) | R2 bucket `glaze-packs`, public r2.dev URL | `PACK_R2_PUBLIC_URL` = `https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev` |
+| Production (1.0.2 to 1.0.36) | GitHub release `glaze-packs-v5` (+ v2 to v17 per pack) | `GITHUB_PRODUCTION_BASE` |
+| Staging | GitHub release `glaze-packs-staging` (pre-release) | unchanged |
+
+The app picks staging only when the build has Expo extra `packEnv: "staging"`; otherwise production.
+
+## R2 (1.0.37+)
+
+- **Folder layout.** R2 is a `folder` host (`packHostKind`). Objects use the normal relative paths, `catalog.json` and `art/<id>/v<n>/<file>`, with no flat `__` names. A catalogue entry's `release` field is ignored, because one tree holds every pack.
+- **Custom domain later.** The r2.dev URL is rate-limited. That's fine for TestFlight, but a custom domain should come before the App Store launch. Attach it to the bucket in Cloudflare (R2 > glaze-packs > Settings > Custom Domains). Set the repo variable `GLAZE_R2_PUBLIC_URL` to it, re-run the publish workflow (everything is skipped except the public check), then change the **one line** `PACK_R2_PUBLIC_URL` and ship a build. Keep r2.dev enabled until no build in use still reads it.
+- **Integrity** doesn't depend on the host. Every file is checked against the SHA-256 in its manifest, and a corrupt file is fetched once more and then refused.
+- **No automatic GitHub fallback (by design).** A pack "update" is any change of `packVersion`, and GitHub's catalogue is the older baseline. Falling back to it would roll every updated pack back to a version without the new artwork, then forward again when R2 answers. Instead, an unreachable R2 is treated exactly like being offline: the cached catalogue is shown, no error appears, and installed packs keep working.
+- **Cache-Control.** `art/**` objects (content-hashed files and versioned manifests) are `public, max-age=31536000, immutable`. `catalog.json` is `public, max-age=300`. The catalogue cache stamp includes the base URL, so the first launch of 1.0.37 fetches the R2 catalogue fresh.
+- **Privacy.** Downloads come from Cloudflare (`*.r2.dev`), which sees the phone's IP address like any website. Glaze sends no personal data, so "Data Not Collected" still holds.
+
+### Publish to R2 (workflow)
+
+`.github/workflows/glaze-publish-r2.yml`, manual dispatch, `dry_run` defaults to **true**:
+
+```sh
+gh workflow run glaze-publish-r2.yml -R MerlinWerlin/App-Projects -f dry_run=true
+gh workflow run glaze-publish-r2.yml -R MerlinWerlin/App-Projects -f dry_run=false
+```
+
+1. It runs the pack tests, the artwork completeness checks and the live GitHub catalogue preflight (the reviewed baseline must still be live).
+2. It rebuilds the complete set exactly as `glaze-publish-packs.yml` does. `cache_artwork_baseline.mjs` downloads and verifies the published bytes, then `build_packs.mjs --base-packs dist/published-cache --add-art pack-artwork --complete` and `verify_artwork_build.mjs` run.
+3. It writes the plan (object count, MB, % of the free 10 GB) to the step summary and fails above 9 GB. The build is kept as the `glaze-r2-pack-build` artifact for 7 days.
+4. With `dry_run=false`, `scripts/packs/publish_r2.mjs --dir dist/artwork-packs` uploads hashed files first, then manifests, then `catalog.json` last. An object already in the bucket with the same size and MD5 ETag is skipped, so re-running is safe and cheap. A versioned manifest that exists with different bytes is an error, because versions are immutable. Afterwards every object is HEAD-checked through the S3 API.
+5. `scripts/packs/verify_r2_public.mjs` then HEADs every object at `vars.GLAZE_R2_PUBLIC_URL` (status, length, type, Cache-Control) and GETs it to compare SHA-256. It retries 429 and 5xx, because r2.dev is rate-limited.
+
+Secrets (repo Actions secrets, never printed or committed): `R2_ACCOUNT_ID`, `R2_BUCKET`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` (an Object Read & Write token for `glaze-packs` only). Only the upload step gets them. The public URL is the repo variable `GLAZE_R2_PUBLIC_URL`.
+
+Check by hand:
+```sh
+curl -fsS https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev/catalog.json | head -c 300
+curl -fsSI https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev/art/deep-sea/v1/manifest.json | grep -i -E '^HTTP|content-length|cache-control'
+```
+
+**Next pack changes.** New artwork from here on should be built on top of the R2 catalogue. The baseline snapshot in `scripts/packs/artwork-baseline/` is still the GitHub v5 catalogue, which is what this first R2 publish was built from. Re-baseline from the R2 catalogue before the next pack change.
+
+# GitHub Release hosting (T169; builds up to 1.0.36)
+
+Until 1.0.37, Glaze's downloadable theme packs were hosted as **release assets on the public repo `MerlinWerlin/App-Projects`** (Jared's instruction, 30 Oct 2026). They stay published for older builds. Nothing here needs an account, a card or a secret: the workflow uses the built-in `GITHUB_TOKEN`.
+
+| | Release tag | Base URL |
+|---|---|---|
+| Production (1.0.2 to 1.0.36) | `glaze-packs-v5` | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5` |
 | Legacy (1.0.1 and earlier) | `glaze-packs-v1` | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v1` |
 | Staging | `glaze-packs-staging` (pre-release) | `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-staging` |
 
 The 1.0.2 catalogue lives on v5. Design-hold immutable packs on v11/v12/v13 preserve141themes while removing103 small automatic clock overlays and withholding315 repeated component editions;2dedicated art clocks and other original choices remain. Source branches `codex/glaze-packs-v11-20261104` through v13 contain exact assets and upload plans. Historical versioned files remain intact. The rebuild-template commands below describe the legacy v1 publisher: do not use that catalogue default for1.0.2 or replace older clients' catalogue. Current locks/digests are in `versions.json`, `releases.json` and `testflight-1.0.2.json`.
 
-The app picks staging only when the build has Expo extra `packEnv: "staging"`; otherwise production.
 
 The eight illustrated clock pilot packs on `glaze-packs-v14` add a single `clock-face.<sha8>.png` asset with the existing `widget-art` role. The asset stays outside the pack's decorative widget choices. Restore the published PNG as `clock-face.png` in that theme's source folder before rebuilding it. The version lock records the face digest and the builder catches a missing source so a rebuild keeps the illustrated clock.
 
@@ -176,9 +221,9 @@ node scripts/packs/release_assets.mjs --dir dist/packs --out dist/release --exis
 
 To use the workflow instead, the theme folders (with `widgets/`) must be committed under `apps/glaze/themes/` first, because the workflow builds from the repo's `themes/`.
 
-## Not used any more
-- `scripts/packs/publish_r2.mjs` and `scripts/packs/sigv4.mjs` (S3/R2 uploader) stay in the repo, tested, in case the packs ever move to a bucket. A bucket would be a `folder` host, so only the base URL changes.
-- `docs/R2_SETUP.md`: reference only. Jared has nothing to do there.
+## R2 tools
+- `scripts/packs/publish_r2.mjs` and `scripts/packs/sigv4.mjs` (the S3/R2 uploader, no SDK) are what the R2 workflow uses, together with `scripts/packs/verify_r2_public.mjs`.
+- `docs/R2_SETUP.md`: how the bucket, public URL and token were set up. It's done (15 Nov 2026), and Jared has nothing left to do there.
 
 ## 4 Nov 2026 TestFlight design gate
 

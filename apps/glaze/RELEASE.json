@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.36: make it yours. The Widgets tab has Your artwork: five slots for your own pictures, picked from Photos and cropped square, shown on your Home Screen by the new Custom 1 to Custom 5 widgets. Your pictures stay on your iPhone and are never uploaded.",
+  "note": "Glaze 1.0.37: themes now download from Cloudflare R2, and every theme has five small artworks to choose from. Theme packs you already downloaded update to the new artwork. Downloads are still checked file by file, and Glaze still collects no data.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
