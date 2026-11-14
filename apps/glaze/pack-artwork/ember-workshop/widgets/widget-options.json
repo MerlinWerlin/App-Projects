@@ -1,0 +1,14 @@
+[
+  {
+    "id": "copper-forge-anvil",
+    "kind": "art",
+    "image": "widget-copper-forge-anvil.269b8789.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Copper forge anvil"
+  }
+]
