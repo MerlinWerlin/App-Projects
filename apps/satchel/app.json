@@ -3,7 +3,7 @@
     "name": "Satchel",
     "slug": "satchel",
     "scheme": "satchel",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/icon.png",
@@ -204,17 +204,6 @@
     ],
     "experiments": {
       "typedRoutes": false
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "enabled": true,
-      "checkAutomatically": "ON_LOAD",
-      "fallbackToCacheTimeout": 0,
-      "requestHeaders": {
-        "expo-channel-name": "production"
-      }
     },
     "owner": "jared797",
     "newArchEnabled": true

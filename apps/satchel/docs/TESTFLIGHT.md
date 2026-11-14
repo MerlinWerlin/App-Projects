@@ -4,7 +4,7 @@ Owner brief, 25 Oct 2026: ship Satchel straight to TestFlight instead of testing
 
 ## Ready now (build run, commit in ops/RUNLOG.md run 17)
 
-- `app.json`: name Satchel, bundle id / package `com.jared797.satchel`, Expo owner `jared797`, version 0.1.0, update channel `production`, runtime version follows the app version, `ITSAppUsesNonExemptEncryption` false (no export-compliance question per build).
+- `app.json`: name Satchel, bundle id / package `com.jared797.satchel`, Expo owner `jared797`, version 0.2.1, no over-the-air updates (expo-updates, update channel and runtime version removed in 0.2.1, Guideline 5.6), `ITSAppUsesNonExemptEncryption` false (no export-compliance question per build).
 - Purpose strings for every iOS permission the linked modules can touch: location (when in use only, never background), photo library, camera (added this run: expo-image-picker links camera code, and an upload without a camera purpose string is rejected by App Store Connect), Face ID, contacts.
 - Privacy manifest (`ios.privacyManifests`): no tracking, no collected data, and the standard required-reason API entries React Native apps need (user defaults, file timestamps, boot time, disk space).
 - `eas.json`: `production` (store build, build number auto-increments on EAS) and `production-native`; `submit.production.ios` is in place and only needs the App Store Connect id.

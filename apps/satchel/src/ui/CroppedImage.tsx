@@ -14,14 +14,15 @@ export function useImageSize(uri: string | null, onError?: () => void): { w: num
     setSize(null);
     if (!uri) return;
     try {
-      Image.getSize(
+      // Typed void with callbacks, but some React Native versions also return a promise that can reject.
+      (Image.getSize(
         uri,
         (w, h) => {
           if (alive && w > 0 && h > 0) setSize({ w, h });
           else if (alive) onError?.();
         },
         () => alive && onError?.(),
-      )?.catch?.(() => {});
+      ) as unknown as Promise<void> | undefined)?.catch?.(() => {});
     } catch {
       onError?.();
     }

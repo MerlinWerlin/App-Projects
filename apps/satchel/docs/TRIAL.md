@@ -1,10 +1,10 @@
 # Trying Satchel on your iPhone (TestFlight)
 
-Satchel is tested in **TestFlight** only. Changes without new native code arrive as an over-the-air update inside the TestFlight app; bigger ones arrive as a new TestFlight build.
+Satchel is tested in **TestFlight** only. From 0.2.1 every change arrives as a new TestFlight build: over-the-air updates were removed (Apple Guideline 5.6).
 
 ## The 4 steps
 1. On your iPhone open **TestFlight > Satchel** and tap **Install** or **Update** if offered (first time: open Apple's TestFlight invite email).
-2. Open Satchel, close it fully and open it again (twice if needed) so the newest over-the-air update loads.
+2. Install the newest Satchel build from the TestFlight app, then open Satchel.
 3. Try the demo trip, then turn on **flight mode** and try again.
 4. Comment on the Satchel Build page with anything that looks wrong (the yes/no questions below help).
 

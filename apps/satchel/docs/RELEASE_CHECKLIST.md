@@ -5,13 +5,13 @@ The owner's steps to put Satchel in the App Store and Google Play. Plain and in 
 Fixed values:
 - Bundle id / package: `com.jared797.satchel`; App Store Connect Apple ID `6826958413`
 - In-app purchase id: `com.jared797.satchel.plus` (non-consumable, one-time, "Satchel Plus", about A$7.99, your choice)
-- Expo owner: `jared797`; version `0.1.0`; update channel `production`
+- Expo owner: `jared797`; version `0.2.1`; no update channel (expo-updates removed in 0.2.1, Guideline 5.6)
 - Name: "Satchel" is a working title: check App Store and trademark availability first (docs/PLAN.md)
 
 ## Done
 
 - [x] App Store Connect app record created (26 Oct, Apple ID 6826958413); auto-ship onboarded Satchel into App-Projects.
-- [x] TestFlight build pipeline: the hourly App Factory auto-ship builds a new TestFlight build when native code or app.json changes and sends an over-the-air update otherwise (docs/STARTER_STANDARD.md). Jared has tested TestFlight builds.
+- [x] TestFlight build pipeline: the hourly App Factory auto-ship builds a new TestFlight build for every change (from 0.2.1 Satchel has no over-the-air updates). Jared has tested TestFlight builds.
 - [x] Satchel Plus built (T16): guarded expo-iap 6.2.0 adapter, Unlock and Restore purchases in Settings > Satchel Plus (docs/PLUS.md). Still to prove with a sandbox purchase: step 19.
 - [x] Backup and restore (T17): one `.satchelbackup` file through the share sheet; restore on the new phone (docs/BACKUP.md). Trip files (`.satchel`) and Open in / Save to Satchel (T14) also done.
 - [x] Offline city packs published 4 November 2026: Kyoto, central Tokyo and Sydney in `satchel-maps-v1`; public downloads match the verified CI files (docs/MAP_PACKS.md). Native iPhone download/restart/flight-mode testing remains outstanding.
@@ -91,7 +91,7 @@ Satchel Plus is built (T16, run 108; docs/PLUS.md). Still to prove on a real iPh
 ### 4. While in review
 | Standard line | Status |
 |---|---|
-| During review, ship over-the-air only the fixes the reviewer needs | rule for build runs: no OTA update to the production channel while a version is in review except a reviewer-needed fix |
+| During review, ship only the fixes the reviewer needs | rule for build runs: from 0.2.1 there are no OTA updates at all (Guideline 5.6); a reviewer-needed fix is a new build |
 
 ## Next native build (app.json changed in T159)
 

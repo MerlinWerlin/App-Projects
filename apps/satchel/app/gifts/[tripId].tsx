@@ -7,7 +7,7 @@
 // T112: a gift opened from its Map-tab pin is scrolled into view and highlighted (accent border, "From the map").
 import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
 import { AccessibilityInfo, Alert, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { formatWeight } from '../../src/core/bags.ts';
@@ -93,7 +93,7 @@ function GiftsBody({ trip }: { trip: Trip }) {
   const { t, theme, lang, reduceMotion } = useApp();
   const insets = useSafeAreaInsets();
   // T112: the gift opened from the Map tab, scrolled to and highlighted while its editor is open.
-  const scroll = useRef<ScrollView>(null);
+  const scroll = useRef<ComponentRef<typeof ScrollView>>(null);
   const scrollY = useRef(0);
   const [focusGift, setFocusGift] = useState<string | null>(null);
   const scrollToGift = (giftWindowY: number) =>
@@ -459,7 +459,7 @@ function GiftEditor({
   onLocated?: (windowY: number) => void;
 }) {
   const { t, lang, theme } = useApp();
-  const box = useRef<View>(null);
+  const box = useRef<ComponentRef<typeof View>>(null);
   const located = useRef(onLocated);
   located.current = onLocated;
   useEffect(() => {

@@ -18,7 +18,7 @@
 // T157: on the map view, wheelchair-accessible toilets get their own glyph and colour (src/core/toiletpins.ts) with a
 // small legend under the map (the list view's wheelchair chip already uses the same sea colour).
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
 import { AccessibilityInfo, Animated, FlatList, Linking, Text, View } from 'react-native';
 import { pickCityFor, type CityMap } from '../../src/core/citymaps.ts';
 import { deviceZone, todayIn } from '../../src/core/format.ts';
@@ -112,7 +112,7 @@ export default function ToiletsScreen() {
   const [focusId, setFocusId] = useState<string | null>(null);
   const [focusGone, setFocusGone] = useState(false);
   const listRef = useRef<FlatList<Row>>(null);
-  const listBox = useRef<View>(null);
+  const listBox = useRef<ComponentRef<typeof View>>(null);
   const scrollY = useRef(0);
 
   const [rawFilters, setRawFilters] = usePersisted<unknown>(TOILET_FILTERS_KEY, NONE);

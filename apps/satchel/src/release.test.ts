@@ -29,7 +29,8 @@ test('privacy manifest declares no tracking and no collected data', () => {
 });
 
 test('eas has production profiles and the App Store Connect id in both the submit slot and the onboarding draft (T38)', () => {
-  assert.equal(eas.build.production.channel, 'production');
+  // 0.2.1: no over-the-air updates (Guideline 5.6), so no profile has an EAS Update channel.
+  for (const [name, profile] of Object.entries(eas.build)) assert.equal((profile as { channel?: string }).channel, undefined, name);
   assert.equal(eas.build.production.autoIncrement, true);
   assert.ok(eas.build['production-native']);
   assert.ok(eas.submit.production.ios);

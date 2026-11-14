@@ -160,7 +160,6 @@ declare module 'expo-constants' {
     name: string;
     slug: string;
     version?: string;
-    runtimeVersion?: string | { policy: string };
     extra?: { [k: string]: any };
     ios?: { buildNumber?: string; bundleIdentifier?: string; [k: string]: any };
     android?: { versionCode?: number; package?: string; [k: string]: any };

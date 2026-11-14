@@ -43,7 +43,7 @@ From `package.json` `dependencies`. All are open source; none is an analytics, a
 
 | Package | Licence |
 |---|---|
-| expo, expo-router, expo-asset, expo-battery, expo-brightness, expo-clipboard, expo-constants, expo-contacts, expo-document-picker, expo-file-system, expo-font, expo-haptics, expo-image-picker, expo-keep-awake, expo-linking, expo-local-authentication, expo-localization, expo-location, expo-network, expo-sharing, expo-splash-screen, expo-status-bar, expo-updates | MIT (Expo) |
+| expo, expo-router, expo-asset, expo-battery, expo-brightness, expo-clipboard, expo-constants, expo-contacts, expo-document-picker, expo-file-system, expo-font, expo-haptics, expo-image-picker, expo-keep-awake, expo-linking, expo-local-authentication, expo-localization, expo-location, expo-network, expo-sharing, expo-splash-screen, expo-status-bar | MIT (Expo) |
 | @expo/vector-icons | MIT (only the Ionicons set is used: MIT) |
 | @expo-google-fonts/inter, @expo-google-fonts/space-grotesk | MIT (code); fonts SIL OFL 1.1 (§2) |
 | react, react-dom | MIT |
@@ -61,7 +61,7 @@ Transitive dependencies (Babel, Metro runtime pieces, Hermes and so on) are most
 
 MIT, BSD and Apache-2.0 ask us to keep their copyright and licence notices with copies of the software: include an in-app "Open-source licences" list (Settings > About) generated from the installed packages. T72: Settings > Licences and credits lists every package above with its licence (hand-kept, tested against package.json); the full licence texts and copyright lines, generated from `node_modules/*/LICENSE` on the PC, and the OFL text for the fonts are still to add before release.
 
-**Platform services the app calls (not bundled data):** the map in this version is the system map (Apple Maps on iPhone; on Android react-native-maps uses Google Maps, which needs a Maps SDK key and is governed by Google's terms: **to confirm before an Android release**). expo-updates contacts Expo's update service to fetch over-the-air updates. Neither receives the user's trips.
+**Platform services the app calls (not bundled data):** the map in this version is the system map (Apple Maps on iPhone; on Android react-native-maps uses Google Maps, which needs a Maps SDK key and is governed by Google's terms: **to confirm before an Android release**). It does not receive the user's trips. Satchel has no over-the-air updates from 0.2.1 (expo-updates removed, Guideline 5.6).
 
 ## 4. Development-only tools (not shipped)
 

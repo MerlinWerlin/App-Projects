@@ -14,7 +14,6 @@ docs/privacy.html does not name, or a new file starts using the network.
 | `api.met.no` (MET Norway Locationforecast) | src/core/weather.ts `MET_URL`, src/native/weather.ts | Trip weather card, online, forecast range covers the trip | Coordinates of the trip's stay or saved place, rounded to 4 decimals; User-Agent `Satchel/<version> github.com/MerlinWerlin/App-Projects`. Never the phone's location |
 | `overpass-api.de` (OpenStreetMap Overpass) | src/native/toilets.ts `OVERPASS_URL`, src/native/help.ts | "Find toilets / help near me" or "Near my hotel" when no installed city pack covers the spot | That spot (6 decimals) and a radius |
 | `github.com` releases (`satchel-maps-v1`) | src/core/citymaps.ts `MAPS_BASE_URL`, src/native/cityMaps.ts | Opening the city map list; downloading a city | File names only (catalog.json, the city pack) |
-| Expo update service | expo-updates (app.json `updates`, url filled by EAS) | App launch, online | App version, runtime version, platform, channel; no user data |
 | App Store / Google Play billing | src/plus/store.ts (expo-iap) | Unlock / Restore in Settings > Satchel Plus | Handled by the OS store; the app gets only the purchase result |
 
 Not runtime calls: source-citation URLs in src/content/*.json and the licences screen open in the browser only when

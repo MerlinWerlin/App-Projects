@@ -19,7 +19,7 @@ const COVER_GLYPH = 120;
 
 function currentState(): string | undefined {
   try {
-    return AppState.currentState;
+    return AppState.currentState ?? undefined;
   } catch {
     return undefined;
   }

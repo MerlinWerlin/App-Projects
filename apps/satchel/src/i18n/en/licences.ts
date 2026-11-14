@@ -23,7 +23,6 @@ export const licences = {
   'licences.ionicons.what': 'The icons, including the weather icons.',
   'licences.expo.what': 'The app’s building blocks: files, photos, location, battery, sharing, updates and more.',
   'licences.systemMap.what': 'The map underneath is your phone’s own map, under Apple’s terms. It never receives your trips.',
-  'licences.updates.what': 'App updates come from Expo’s update service. It never receives your trips.',
   'licences.content.emergency': 'Written for Satchel and not yet checked against official sources. Always check numbers locally.',
   'licences.content.samples': 'The sample trip and its map points are invented, not real bookings or places.',
   'licences.content.art': 'Original art made for Satchel. No logos or brand marks.',

@@ -80,7 +80,11 @@ jobs:
         run: |
           if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
             eas init --non-interactive --force 2>&1 | tee -a "$RUNNER_TEMP/ship.log"
-            eas update:configure --non-interactive || true
+            # Only apps that still use expo-updates get an update URL. App Store apps without it (Guideline 5.6:
+            # Backspin, Couch, Cue, Linework, Satchel) must never have updates/runtimeVersion added back.
+            if jq -e '.dependencies["expo-updates"]' package.json > /dev/null; then
+              eas update:configure --non-interactive || true
+            fi
           fi
           jq -r '.expo.extra.eas.projectId // "no project id"' app.json
 

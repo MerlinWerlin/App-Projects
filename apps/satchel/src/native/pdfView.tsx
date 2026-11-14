@@ -6,11 +6,12 @@
 // fails reports "not available" and the ticket view keeps the system share / preview sheet instead of crashing.
 // The viewer only ever loads the one local file: JavaScript is off and every other navigation (a link inside the
 // PDF) is refused, so nothing is fetched and nothing leaves the phone.
-import { Component, type ReactNode } from 'react';
+import { Component, type ComponentProps, type ReactNode } from 'react';
 import { NativeModules, Platform, TurboModuleRegistry } from 'react-native';
-import type { ShouldStartLoadRequest } from 'react-native-webview';
 
 type WebViewModule = typeof import('react-native-webview');
+// Taken from the WebView props: react-native-webview 13.16 no longer exports this type from its entry point.
+type ShouldStartLoadRequest = Parameters<NonNullable<ComponentProps<WebViewModule['WebView']>['onShouldStartLoadWithRequest']>>[0];
 
 let cached: WebViewModule['WebView'] | null | undefined;
 let failed = false;
