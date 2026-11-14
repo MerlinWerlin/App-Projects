@@ -304,33 +304,12 @@ export default function HomeScreen() {
     markFirstRunDone();
   }, []);
 
-  const settingsButton = (
-    <Pressable
-      onPress={() => {
-        select();
-        router.push('/settings');
-      }}
-      accessibilityRole="button"
-      accessibilityLabel={t('common.nav.settings')}
-      hitSlop={4}
-      style={({ pressed }) => ({
-        width: sizeV2.touch,
-        height: sizeV2.touch,
-        borderRadius: sizeV2.touch / 2,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: pressed ? c.inkSoft : 'transparent',
-      })}
-    >
-      <Feather name="settings" size={24} color={c.ink} />
-    </Pressable>
-  );
-
+  // Settings is its own tab (T81), so Home no longer repeats it as a header gear (design review 14 Nov 2026).
   const hasMiniRows = recentTemplates.length > 0 || favoriteTemplates.length > 0;
 
   return (
     <View style={{ flex: 1, backgroundColor: c.paper }}>
-      <ScreenV2 title={t('common.appName')} trailing={settingsButton} inTabs>
+      <ScreenV2 title={t('common.appName')} inTabs>
         <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('callout'), { color: c.muted, marginBottom: spaceV2.x6 }]}>
           {t('home.tagline')}
         </Text>

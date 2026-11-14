@@ -171,11 +171,21 @@ export default function WorkshopScreen() {
               {label}
             </Text>
             {locked ? (
-              <Text style={{ color: BLUEPRINT.line, fontFamily: MONO, fontSize: 10, borderWidth: 1, borderColor: BLUEPRINT.line, paddingHorizontal: 3 }}>
-                {t('workshop.plus')}
-              </Text>
+              // Lock glyph + 11 pt label (was a bare 10 pt "PLUS"), the same signal as the Templates PlusBadge.
+              <View
+                accessibilityElementsHidden
+                importantForAccessibility="no-hide-descendants"
+                style={{ flexDirection: 'row', alignItems: 'center', gap: 3, borderWidth: 1, borderColor: BLUEPRINT.line, paddingHorizontal: spaceV2.x1, paddingVertical: 1 }}
+              >
+                <Feather name="lock" size={11} color={BLUEPRINT.line} />
+                <Text maxFontSizeMultiplier={1.3} style={{ color: BLUEPRINT.line, fontFamily: MONO, fontSize: 11, lineHeight: 14, fontWeight: '600' }}>
+                  {t('workshop.plus')}
+                </Text>
+              </View>
             ) : null}
-            {favSet.has(item.id) ? <Feather name="heart" size={12} color={BLUEPRINT.line} /> : null}
+            {favSet.has(item.id) ? (
+              <Feather name="heart" size={14} color={BLUEPRINT.line} accessibilityElementsHidden importantForAccessibility="no" />
+            ) : null}
           </View>
         </Pressable>
       );
@@ -205,7 +215,7 @@ export default function WorkshopScreen() {
       <Text numberOfLines={2} maxFontSizeMultiplier={maxFontScaleV2} style={{ color: active ? BLUEPRINT.onActive : BLUEPRINT.ink, fontFamily: MONO, fontSize: 12, lineHeight: 15, fontWeight: '600' }}>
         {label}
       </Text>
-      <Text style={{ color: active ? BLUEPRINT.onActive : BLUEPRINT.muted, fontFamily: MONO, fontSize: 11, marginTop: 2 }}>{count}</Text>
+      <Text maxFontSizeMultiplier={maxFontScaleV2} style={{ color: active ? BLUEPRINT.onActive : BLUEPRINT.muted, fontFamily: MONO, fontSize: 12, marginTop: 2, fontVariant: ['tabular-nums'] }}>{count}</Text>
     </Pressable>
   );
 
@@ -221,7 +231,7 @@ export default function WorkshopScreen() {
         {tile('all', t('workshop.all'), TRADE.length, sub === null, () => pick(null))}
         {SUBS.map((s) => tile(s, subName(s), COUNTS[s], sub === s, () => pick(s)))}
       </View>
-      <Text style={{ color: BLUEPRINT.muted, fontFamily: MONO, fontSize: 12, marginTop: spaceV2.x4 }} accessibilityLiveRegion="polite">
+      <Text maxFontSizeMultiplier={maxFontScaleV2} style={{ color: BLUEPRINT.muted, fontFamily: MONO, fontSize: 12, marginTop: spaceV2.x4 }} accessibilityLiveRegion="polite">
         {`// ${t('workshop.count', { count: data.length })}`}
       </Text>
     </View>

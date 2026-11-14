@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Linework 1.0.2: rebuild without OTA updates (expo-updates removed, Guideline 5.6), nothing else changed",
+  "note": "Linework 1.0.3: design polish (My drawings on the large-title shell, Language as its own screen, no duplicate Settings gear on Home, clearer Workshop Plus badge). TestFlight build only; 1.0.2 stays in App Review.",
   "ascAppId": "6826041969"
 }
