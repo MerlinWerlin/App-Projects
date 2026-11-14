@@ -30,6 +30,13 @@ export const ja: NonNullable<LocaleMessages['install']> = {
     // T210: eyebrow over the summary heading.
     eyebrow: 'あなたのアイコンセット',
   },
+  // 1.0.35: the two-choice start of a theme's flow (src/ui/AddChooser.tsx).
+  chooser: {
+    title: '何を追加しますか？',
+    body: '1つ選んでください。どちらも短い動画で手順を確認できます。',
+    icons: { title: 'アイコン', body: 'すべてのアプリにお揃いのアイコンを一度に追加。', hint: 'アイコンのインストールを開きます' },
+    widgets: { title: 'ウィジェット', body: 'テーマのアートワークと時計をホーム画面に。', hint: '「ウィジェット」タブを開きます' },
+  },
   state: {
     loadError: 'アイコンセットを読み込めませんでした。',
     loading: 'アイコンを読み込み中…',

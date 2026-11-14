@@ -40,6 +40,13 @@ export const hi: NonNullable<LocaleMessages['install']> = {
     // T210: eyebrow over the summary heading.
     eyebrow: 'आपका आइकन सेट',
   },
+  // 1.0.35: the two-choice start of a theme's flow (src/ui/AddChooser.tsx).
+  chooser: {
+    title: 'आप क्या जोड़ना चाहते हैं?',
+    body: 'एक चुनें। हर एक के साथ एक छोटा वीडियो है जो तरीका दिखाता है।',
+    icons: { title: 'आइकन', body: 'हर ऐप के लिए मेल खाता आइकन, एक बार में जोड़ा गया।', hint: 'आइकन इंस्टॉल खोलता है' },
+    widgets: { title: 'विजेट', body: 'आपकी थीम की कलाकृति और घड़ियाँ होम स्क्रीन पर।', hint: 'विजेट टैब खोलता है' },
+  },
   state: {
     loadError: 'आपका आइकन सेट लोड नहीं हो सका।',
     loading: 'आपके आइकन लोड हो रहे हैं…',

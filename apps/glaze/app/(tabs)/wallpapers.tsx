@@ -13,11 +13,11 @@
 import { Image as ExpoImage } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, View, useWindowDimensions, type ListRenderItem } from 'react-native';
+import { Alert, StyleSheet, Text, View, useWindowDimensions, type ListRenderItem } from 'react-native';
 import { myWallpaperKindKey, type MyWallpaper } from '../../src/core/myWallpapers';
 import { LIVE_MAKER_HREF } from '../../src/core/tabNav';
 import { useT } from '../../src/i18n';
-import { forgetWallpaper, saveWallpaperAgain, useMyWallpapers, type SaveAgainResult } from '../../src/store/myWallpapers';
+import { forgetWallpaper, saveFileToPhotos, saveWallpaperAgain, useMyWallpapers, type SaveAgainResult } from '../../src/store/myWallpapers';
 import { chromeRadiusV2, editorialV2, fontScaleCap, spaceV2, textV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { haptic } from '../../src/ui/haptics';
@@ -26,7 +26,7 @@ import { PressableScale } from '../../src/ui/PressableScale';
 import { Sheet } from '../../src/ui/Sheet';
 import { LargeTitleFlatList, PillButton, SectionHeader, Skeleton } from '../../src/ui/v2';
 import { useHowTo, WatchHowButton } from '../../src/ui/HowToSheet';
-import { useDownloadedThemeWallpapers } from '../../src/native/useDownloadedThemeWallpapers';
+import { useDownloadedThemeWallpapers, type DownloadedThemeWallpaper } from '../../src/native/useDownloadedThemeWallpapers';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 /** The editorial card rhythm, between thumbnails in a row and between rows. */
@@ -89,6 +89,17 @@ function WallpapersTab() {
   const { width } = useWindowDimensions();
   const { items, loaded } = useMyWallpapers();
   const themeWalls = useDownloadedThemeWallpapers();
+  const [openTheme, setOpenTheme] = useState<DownloadedThemeWallpaper | null>(null);
+  const [themeSaving, setThemeSaving] = useState(false);
+  const [themeResult, setThemeResult] = useState<SaveAgainResult | null>(null);
+  const onSaveTheme = async () => {
+    if (!openTheme?.uri || themeSaving) return;
+    setThemeSaving(true);
+    const res = await saveFileToPhotos(openTheme.uri);
+    setThemeSaving(false);
+    haptic(res === 'saved' ? 'success' : 'warning');
+    setThemeResult(res);
+  };
   const [open, setOpen] = useState<MyWallpaper | null>(null);
   const [saving, setSaving] = useState(false);
   const [result, setResult] = useState<SaveAgainResult | null>(null);
@@ -213,11 +224,15 @@ function WallpapersTab() {
             {t('tabs.wallpapersTab.themes.empty')}
           </Text>
         ) : (
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} bounces={false} overScrollMode="never" contentContainerStyle={styles.themeRow}>
+          // Owner brief 2026-11-14: "a simple grid he can save from": 3 columns, tap one to save it to Photos.
+          <View style={styles.themeGrid}>
             {themeWalls.map((w) => (
               <PressableScale
                 key={w.id}
-                onPress={() => router.push({ pathname: '/theme/[id]', params: { id: w.id, step: 'wallpaper' } })}
+                onPress={() => {
+                  setThemeResult(null);
+                  setOpenTheme(w);
+                }}
                 accessibilityRole="button"
                 accessibilityLabel={t('tabs.wallpapersTab.themes.itemA11y', { name: w.name })}
                 style={[styles.themeItem, { width: thumbW }]}
@@ -230,7 +245,7 @@ function WallpapersTab() {
                 </Text>
               </PressableScale>
             ))}
-          </ScrollView>
+          </View>
         )}
       </View>
       {/* 3. My wallpapers: the header here, the thumbnails are the list rows below. */}
@@ -284,6 +299,48 @@ function WallpapersTab() {
           </View>
         ) : null}
       </Sheet>
+      {/* 1.0.35: a downloaded theme's wallpaper: save it to Photos, or open the theme. */}
+      <Sheet visible={openTheme !== null} onClose={() => setOpenTheme(null)} title={openTheme?.name ?? t('tabs.wallpapersTab.themes.title')}>
+        {openTheme ? (
+          <View style={styles.sheetBody}>
+            <View style={[styles.preview, { width: sheetW, height: Math.round(sheetW * THUMB_ASPECT), backgroundColor: c.fill }]}>
+              {openTheme.uri ? (
+                <ExpoImage
+                  source={{ uri: openTheme.uri }}
+                  style={styles.fill}
+                  contentFit="cover"
+                  cachePolicy="memory-disk"
+                  transition={0}
+                  accessibilityLabel={t('tabs.wallpapersTab.themes.itemA11y', { name: openTheme.name })}
+                />
+              ) : null}
+            </View>
+            {themeResult ? (
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={footnote} accessibilityLiveRegion="polite">
+                {themeResult === 'saved'
+                  ? t('tabs.wallpapersTab.mine.saved')
+                  : themeResult === 'denied'
+                    ? t('wallpaper.status.denied')
+                    : themeResult === 'missing'
+                      ? t('tabs.wallpapersTab.mine.missing')
+                      : t('tabs.wallpapersTab.mine.failed')}
+              </Text>
+            ) : null}
+            <PillButton label={t('tabs.wallpapersTab.themes.save')} variant="filled" icon="download" block busy={themeSaving} disabled={!openTheme.uri} onPress={() => void onSaveTheme()} />
+            <PillButton
+              label={t('tabs.wallpapersTab.themes.openTheme')}
+              variant="tinted"
+              icon="layers"
+              block
+              onPress={() => {
+                const id = openTheme.id;
+                setOpenTheme(null);
+                router.push({ pathname: '/theme/[id]', params: { id, step: 'wallpaper' } });
+              }}
+            />
+          </View>
+        ) : null}
+      </Sheet>
     </>
   );
 }
@@ -295,7 +352,7 @@ const styles = StyleSheet.create({
   thumb: { borderRadius: chromeRadiusV2.card, overflow: 'hidden' },
   fill: { width: '100%', height: '100%' },
   skeletonRow: { flexDirection: 'row', gap: GAP },
-  themeRow: { gap: GAP },
+  themeGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: GAP },
   themeItem: { gap: spaceV2.xs },
   bold: { fontWeight: '600' },
   sheetBody: { gap: spaceV2.md, alignItems: 'stretch' },

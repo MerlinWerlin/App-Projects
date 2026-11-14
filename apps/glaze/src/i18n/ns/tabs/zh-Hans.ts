@@ -106,7 +106,7 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     liveEntry: { eyebrow: '来自片段', title: '用片段制作实况照片', body: '把视频或 GIF 变成锁定屏幕用的实况照片。', action: '制作实况照片', hint: '打开实况照片制作器' },
     collageEntry: { eyebrow: '你的照片', title: '照片拼贴', body: '把几张照片放进同一个锁定屏幕。' },
     // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
-    themes: { eyebrow: '你的主题', title: '主题壁纸', body: '这台 iPhone 上主题的壁纸。轻点即可保存并设置。', empty: '在“主题”标签页下载主题后，它的壁纸会显示在这里。', itemA11y: '{name}壁纸' },
+    themes: { eyebrow: '你的主题', title: '主题壁纸', body: '这台 iPhone 上主题的壁纸。轻点即可保存并设置。', empty: '在“主题”标签页下载主题后，它的壁纸会显示在这里。', itemA11y: '{name}壁纸', save: '存储到“照片”', openTheme: '打开主题' },
     mine: {
       eyebrow: '在 Glaze 中制作',
       title: '我的壁纸',

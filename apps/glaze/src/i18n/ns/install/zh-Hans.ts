@@ -30,6 +30,13 @@ export const zhHans: NonNullable<LocaleMessages['install']> = {
     // T210: eyebrow over the summary heading.
     eyebrow: '你的图标组',
   },
+  // 1.0.35: the two-choice start of a theme's flow (src/ui/AddChooser.tsx).
+  chooser: {
+    title: '你想添加什么？',
+    body: '选一个。每项都有一段简短视频演示操作。',
+    icons: { title: '图标', body: '为每个 App 配上相同风格的图标，一次添加。', hint: '打开图标安装' },
+    widgets: { title: '小组件', body: '把主题的插画和时钟放到主屏幕。', hint: '打开“小组件”标签页' },
+  },
   state: {
     loadError: '无法载入你的图标组。',
     loading: '正在载入图标…',

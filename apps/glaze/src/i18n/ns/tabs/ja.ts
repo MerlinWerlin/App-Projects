@@ -106,7 +106,7 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     liveEntry: { eyebrow: 'クリップから', title: 'クリップからライブフォト', body: '動画やGIFをロック画面用のライブフォトにします。', action: 'ライブフォトを作る', hint: 'ライブフォトメーカーを開きます' },
     collageEntry: { eyebrow: 'あなたの写真', title: 'フォトコラージュ', body: '複数の写真をひとつのロック画面にまとめます。' },
     // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
-    themes: { eyebrow: 'あなたのテーマ', title: 'テーマの壁紙', body: 'このiPhoneにあるテーマの壁紙です。タップして保存し、設定できます。', empty: '「テーマ」タブでテーマをダウンロードすると、ここに壁紙が表示されます。', itemA11y: '{name}の壁紙' },
+    themes: { eyebrow: 'あなたのテーマ', title: 'テーマの壁紙', body: 'このiPhoneにあるテーマの壁紙です。タップして保存し、設定できます。', empty: '「テーマ」タブでテーマをダウンロードすると、ここに壁紙が表示されます。', itemA11y: '{name}の壁紙', save: '写真に保存', openTheme: 'テーマを開く' },
     mine: {
       eyebrow: 'Glazeで作成',
       title: 'マイ壁紙',

@@ -47,6 +47,13 @@ export const en = {
     // T210: eyebrow over the summary heading.
     eyebrow: 'Your icon set',
   },
+  // 1.0.35: the two-choice start of a theme's flow (src/ui/AddChooser.tsx).
+  chooser: {
+    title: 'What do you want to add?',
+    body: 'Pick one. Each has a short video that shows how.',
+    icons: { title: 'Icons', body: 'A matching icon for every app, added in one go.', hint: 'Opens the icon install' },
+    widgets: { title: 'Widgets', body: 'Your theme’s artwork and clocks on the Home Screen.', hint: 'Opens the Widgets tab' },
+  },
   state: {
     loadError: 'Your icon set could not be loaded.',
     loading: 'Loading your icons…',

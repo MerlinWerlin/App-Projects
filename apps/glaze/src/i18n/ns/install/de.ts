@@ -40,6 +40,13 @@ export const de: NonNullable<LocaleMessages['install']> = {
     // T210: eyebrow over the summary heading.
     eyebrow: 'Dein Symbol-Set',
   },
+  // 1.0.35: the two-choice start of a theme's flow (src/ui/AddChooser.tsx).
+  chooser: {
+    title: 'Was möchtest du hinzufügen?',
+    body: 'Wähle eins. Zu jedem gibt es ein kurzes Video, das es zeigt.',
+    icons: { title: 'Symbole', body: 'Ein passendes Symbol für jede App, in einem Schritt hinzugefügt.', hint: 'Öffnet die Symbol-Installation' },
+    widgets: { title: 'Widgets', body: 'Die Bilder und Uhren deines Themes auf dem Home-Bildschirm.', hint: 'Öffnet den Tab „Widgets“' },
+  },
   state: {
     loadError: 'Dein Icon-Set konnte nicht geladen werden.',
     loading: 'Deine Icons werden geladen…',

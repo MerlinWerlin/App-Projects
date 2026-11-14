@@ -117,6 +117,7 @@ import { PressableScale } from '../src/ui/PressableScale';
 import { Chevron, textStyleFor } from '../src/ui/i18nLayout';
 import { InsetGroup, InsetRow, PillButton, SectionHeader, Skeleton, SquircleCard } from '../src/ui/v2';
 import { useHowTo, WatchHowButton } from '../src/ui/HowToSheet';
+import { AddChooser } from '../src/ui/AddChooser';
 
 /** A v2 type role plus the script's line-height adjustment. */
 function typeFor(script: Script, role: TypeRoleV2): TextStyle[] {
@@ -196,6 +197,10 @@ export default function InstallScreen() {
   // Owner 2026-11-15: the icons how-to video, large, on its own the first time and from "Watch how".
   const how = useHowTo('icons', { auto: true });
   const { auto, theme: requestedThemeId } = useLocalSearchParams<{ auto?: string; theme?: string }>();
+  // 1.0.35 (owner TestFlight 2026-11-14 04:02: "This menus confusing we should just have an option which takes them to
+  // icons or widgets and just shows how"): a theme's flow (a theme, no auto start) opens on two choices first (AddChooser).
+  // Opened from the Icons tab or with auto, the person already chose icons, so the install shows straight away.
+  const [chooser, setChooser] = useState<boolean>(() => !!requestedThemeId && auto !== '1');
   const requestedTheme = useAnyTheme(requestedThemeId);
   const reduced = useMotionReduced();
   // T210 (PREMIUM_UI §1.6): every card lifts by surface, never a dark-mode hairline.
@@ -552,6 +557,18 @@ export default function InstallScreen() {
         <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.centerText, { color: c.ink }]}>{t('install.state.loadError')}</Text>
         <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.centerText, { color: c.inkSecondary }]}>{loadError}</Text>
         <PillButton label={t('common.retry')} icon="refresh-cw" onPress={load} style={styles.selfCenter} />
+      </SafeAreaView>
+    );
+  }
+
+  if (chooser) {
+    return (
+      <SafeAreaView edges={['left', 'right', 'bottom']} style={[styles.root, { backgroundColor: c.bg }]}>
+        <Stack.Screen options={{ headerRight: () => <WatchHowButton onPress={how.open} compact /> }} />
+        {how.sheet}
+        <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={[styles.scroll, styles.side]}>
+          <AddChooser onIcons={() => setChooser(false)} onWidgets={() => router.navigate('/widgets')} />
+        </ScrollView>
       </SafeAreaView>
     );
   }

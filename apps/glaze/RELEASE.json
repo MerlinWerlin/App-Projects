@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.35: a bright Watch how button in the top-right corner of the Icons, Widgets and Wallpapers tabs; the Wallpapers tab shows the wallpapers of the themes you downloaded; the Widgets tab's Small size shows your theme's artwork only.",
+  "note": "Glaze 1.0.35: setting up a theme now starts with two simple choices, Icons or Widgets, each with its how-to video; a bright Watch how in the top-right corner of the Icons, Widgets and Wallpapers tabs; the Wallpapers tab shows your downloaded themes' wallpapers to save to Photos; the Widgets tab's Small size shows your theme's artwork only.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

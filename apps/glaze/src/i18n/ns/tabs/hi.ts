@@ -106,7 +106,7 @@ export const hi: NonNullable<LocaleMessages['tabs']> = {
     liveEntry: { eyebrow: 'क्लिप से', title: 'क्लिप से लाइव फ़ोटो', body: 'किसी वीडियो या GIF को लॉक स्क्रीन के लिए लाइव फ़ोटो बनाएँ।', action: 'लाइव फ़ोटो बनाएँ', hint: 'लाइव फ़ोटो मेकर खोलता है' },
     collageEntry: { eyebrow: 'आपकी फ़ोटो', title: 'फ़ोटो कोलाज', body: 'अपनी कई फ़ोटो एक लॉक स्क्रीन पर रखें।' },
     // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
-    themes: { eyebrow: 'आपकी थीम', title: 'थीम वॉलपेपर', body: 'इस iPhone पर मौजूद थीम के वॉलपेपर। सेव करके लगाने के लिए किसी एक पर टैप करें।', empty: 'थीम टैब पर कोई थीम डाउनलोड करें, उसका वॉलपेपर यहाँ दिखेगा।', itemA11y: '{name} वॉलपेपर' },
+    themes: { eyebrow: 'आपकी थीम', title: 'थीम वॉलपेपर', body: 'इस iPhone पर मौजूद थीम के वॉलपेपर। सेव करके लगाने के लिए किसी एक पर टैप करें।', empty: 'थीम टैब पर कोई थीम डाउनलोड करें, उसका वॉलपेपर यहाँ दिखेगा।', itemA11y: '{name} वॉलपेपर', save: 'फ़ोटो में सेव करें', openTheme: 'थीम खोलें' },
     mine: {
       eyebrow: 'Glaze में बना',
       title: 'मेरे वॉलपेपर',

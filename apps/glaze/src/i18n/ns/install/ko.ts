@@ -30,6 +30,13 @@ export const ko: NonNullable<LocaleMessages['install']> = {
     // T210: eyebrow over the summary heading.
     eyebrow: '내 아이콘 세트',
   },
+  // 1.0.35: the two-choice start of a theme's flow (src/ui/AddChooser.tsx).
+  chooser: {
+    title: '무엇을 추가할까요?',
+    body: '하나를 고르세요. 각각 방법을 보여 주는 짧은 동영상이 있어요.',
+    icons: { title: '아이콘', body: '모든 앱에 어울리는 아이콘을 한 번에 추가해요.', hint: '아이콘 설치를 엽니다' },
+    widgets: { title: '위젯', body: '테마의 아트워크와 시계를 홈 화면에.', hint: '위젯 탭을 엽니다' },
+  },
   state: {
     loadError: '아이콘 세트를 불러오지 못했습니다.',
     loading: '아이콘 불러오는 중…',

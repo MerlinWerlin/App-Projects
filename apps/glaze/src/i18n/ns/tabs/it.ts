@@ -106,7 +106,7 @@ export const it: NonNullable<LocaleMessages['tabs']> = {
     liveEntry: { eyebrow: 'Da un clip', title: 'Live Photo da un clip', body: 'Trasforma un video o una GIF in una Live Photo per la schermata di blocco.', action: 'Crea una Live Photo', hint: 'Apre il creatore di Live Photo' },
     collageEntry: { eyebrow: 'Le tue foto', title: 'Collage di foto', body: 'Metti diverse tue foto su una schermata di blocco.' },
     // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
-    themes: { eyebrow: 'I tuoi temi', title: 'Sfondi dei temi', body: 'Gli sfondi dei temi su questo iPhone. Toccane uno per salvarlo e impostarlo.', empty: 'Scarica un tema nella scheda Temi e il suo sfondo apparirà qui.', itemA11y: 'Sfondo {name}' },
+    themes: { eyebrow: 'I tuoi temi', title: 'Sfondi dei temi', body: 'Gli sfondi dei temi su questo iPhone. Toccane uno per salvarlo e impostarlo.', empty: 'Scarica un tema nella scheda Temi e il suo sfondo apparirà qui.', itemA11y: 'Sfondo {name}', save: 'Salva in Foto', openTheme: 'Apri il tema' },
     mine: {
       eyebrow: 'Fatto in Glaze',
       title: 'I miei sfondi',
