@@ -62,7 +62,7 @@ jobs:
       - name: Prepare simulator build
         if: inputs.simulator_run_id == ''
         run: |
-          node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("app.json"));p.expo.updates.enabled=false;fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
+          node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("app.json"));if(p.expo.updates)p.expo.updates.enabled=false;fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
           npx expo prebuild --platform ios --no-install
           cd ios
           pod install > "$RUNNER_TEMP/cue-pods.log" 2>&1 || { tail -100 "$RUNNER_TEMP/cue-pods.log"; exit 1; }
