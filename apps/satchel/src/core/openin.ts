@@ -433,3 +433,43 @@ export function pasteTextFor(kind: 'text' | 'eml', raw: string): string {
 }
 
 const clampPaste = (s: string) => (s.length > MAX_PASTE_CHARS ? s.slice(0, MAX_PASTE_CHARS) : s);
+
+// ---------------------------------------------------------------------------------------------------------------
+// T170: schema.org booking markup (JSON-LD) that airlines, hotels and booking sites put in confirmation emails
+
+/** The contents of every <script type="application/ld+json"> block in an HTML document. */
+export function jsonLdBlocks(html: string): string[] {
+  const out: string[] = [];
+  const re = /<script\b[^>]*type\s*=\s*["']?application\/ld\+json["']?[^>]*>([\s\S]*?)<\/script\s*>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html))) {
+    const body = m[1].replace(/^\s*<!\[CDATA\[|\]\]>\s*$/g, '').trim();
+    if (body) out.push(body);
+  }
+  return out;
+}
+
+/**
+ * Booking markup in an .eml message's HTML parts, as one JSON array text (each block parsed and flattened), or ''
+ * when there is none or none of it is a reservation. Never throws.
+ */
+export function emlJsonLd(raw: string): string {
+  try {
+    const items: unknown[] = [];
+    for (const p of leaves(splitPart(raw))) {
+      if (isAttachment(p) || mediaType(p) !== 'text/html') continue;
+      for (const block of jsonLdBlocks(partText(p))) {
+        try {
+          const v: unknown = JSON.parse(block);
+          if (Array.isArray(v)) items.push(...v);
+          else items.push(v);
+        } catch {
+          // a broken block is skipped; the email text is still read
+        }
+      }
+    }
+    return items.length && /Reservation"/.test(JSON.stringify(items)) ? JSON.stringify(items) : '';
+  } catch {
+    return '';
+  }
+}

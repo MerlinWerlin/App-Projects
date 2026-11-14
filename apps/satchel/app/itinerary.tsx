@@ -14,11 +14,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { lookOf } from '../src/core/dayview.ts';
 import { deviceZone, formatDay, formatRange, todayIn } from '../src/core/format.ts';
 import { destinationZone } from '../src/core/glance.ts';
-import { alreadyPlanned, importSpan, parseItinerary, tripForImport, usable, type ImportedPlan } from '../src/core/itinerary.ts';
+import { aiPrompt, alreadyPlanned, importSpan, isJsonLd, jsonIn, looksLikeJson, parseItinerary, readAiReply, tripForImport, usable, type ImportedPlan } from '../src/core/itinerary.ts';
 import type { Trip } from '../src/core/model.ts';
 import { itemFromDraft } from '../src/core/trips.ts';
 import { pickCalendarFile } from '../src/native/calendarPick.ts';
-import { readText } from '../src/native/clipboard.ts';
+import { copyText, readText } from '../src/native/clipboard.ts';
 import { haptic } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
 import { incomingText } from '../src/state/openinStash.ts';
@@ -41,6 +41,7 @@ export default function ItineraryScreen() {
   const [off, setOff] = useState<Set<string>>(new Set());
   const [picked, setPicked] = useState<string | null>(params.tripId ?? null);
   const [saving, setSaving] = useState(false);
+  const [aiNote, setAiNote] = useState<string | null>(null);
   const today = todayIn(deviceZone());
 
   const sortedTrips = useMemo(() => [...trips].sort((a, b) => (a.startDate < b.startDate ? -1 : 1)), [trips]);
@@ -125,6 +126,36 @@ export default function ItineraryScreen() {
 
   const hasText = !!text.trim();
 
+  // "Use your own AI": the reply pasted back is checked here, so a format slip says what to fix.
+  const aiCheck = useMemo(() => {
+    if (!looksLikeJson(text)) return null;
+    const v = jsonIn(text);
+    if (v !== undefined && isJsonLd(v)) return null;
+    return readAiReply(text, { now: today, fallbackTz: deviceZone() });
+  }, [text, today]);
+  const aiMessage = !aiCheck
+    ? null
+    : aiCheck.error
+      ? t(`itin.ai.error.${aiCheck.error}`)
+      : aiCheck.problems.length
+        ? t(aiCheck.problems.length === 1 ? 'itin.ai.skipped.one' : 'itin.ai.skipped.many', {
+            n: aiCheck.problems.length,
+            why: aiCheck.problems
+              .slice(0, 3)
+              .map((p) => t(`itin.ai.why.${p.reason}`, { n: p.item }))
+              .join('; '),
+          })
+        : null;
+
+  const copyPrompt = async () => {
+    const own = hasText && !looksLikeJson(text) ? text : '';
+    const ok = await copyText(aiPrompt(own, trip ? { name: trip.name, startDate: trip.startDate, endDate: trip.endDate } : undefined));
+    const note = ok ? t('itin.ai.copied') : t('itin.ai.copyFailed');
+    setAiNote(note);
+    AccessibilityInfo.announceForAccessibility(note);
+    if (ok) haptic.success();
+  };
+
   return (
     <ScrollView
       style={{ flex: 1, backgroundColor: theme.paper }}
@@ -196,10 +227,25 @@ export default function ItineraryScreen() {
           ]}
         />
         {!hasText ? <Body muted>{t('itin.formatTip')}</Body> : null}
+        {aiMessage ? <Warning text={aiMessage} /> : null}
       </View>
 
+      {/* Use your own AI: no AI service of ours, no key in the app. */}
+      <SectionCard title={t('itin.ai.title')} subtitle={t('itin.ai.subtitle')} icon="sparkles-outline" tone="sea">
+        <Body>{t('itin.ai.step1')}</Body>
+        <Body>{t('itin.ai.step2')}</Body>
+        <Body>{t('itin.ai.step3')}</Body>
+        <Button label={t('itin.ai.copy')} hint={t('itin.ai.copyHint')} kind="secondary" icon="copy-outline" onPress={copyPrompt} />
+        {aiNote ? (
+          <View accessibilityLiveRegion="polite">
+            <Text style={[typeScale.bodyStrong, { color: theme.ok }]}>{aiNote}</Text>
+          </View>
+        ) : null}
+        <Body muted>{t('itin.ai.privacy')}</Body>
+      </SectionCard>
+
       {/* What was found */}
-      {hasText && found.length === 0 ? (
+      {hasText && found.length === 0 && !aiCheck ? (
         <SectionCard title={t('itin.none.title')} icon="search-outline" tone="ink">
           <Body muted>{t('itin.none.body')}</Body>
         </SectionCard>

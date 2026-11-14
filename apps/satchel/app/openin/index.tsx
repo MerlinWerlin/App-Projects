@@ -8,7 +8,7 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, View } from 'react-native';
-import { classifyFile, maxIncomingBytes, pasteTextFor, routeFor } from '../../src/core/openin.ts';
+import { classifyFile, emlJsonLd, maxIncomingBytes, pasteTextFor, routeFor } from '../../src/core/openin.ts';
 import { haptic } from '../../src/native/device.ts';
 import { discardIncoming, readIncomingText, receiveIncoming } from '../../src/native/openin.ts';
 import { useApp } from '../../src/state/app.tsx';
@@ -85,6 +85,12 @@ export default function OpenInScreen() {
       if (route === 'itinerary') {
         if (!raw.trim()) return show({ k: 'empty' });
         router.replace({ pathname: '/itinerary', params: { incoming: stashIncomingText(raw), name: got.name } });
+        return;
+      }
+      // T170: an email carrying booking markup (schema.org JSON-LD) goes to Add your itinerary, read exactly.
+      const markup = got.kind === 'eml' ? emlJsonLd(raw) : '';
+      if (markup) {
+        router.replace({ pathname: '/itinerary', params: { incoming: stashIncomingText(markup), name: got.name } });
         return;
       }
       if (route === 'paste' && (got.kind === 'text' || got.kind === 'eml')) {

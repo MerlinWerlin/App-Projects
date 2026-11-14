@@ -2,7 +2,10 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import {
+  aiPrompt,
   alreadyPlanned,
+  looksLikeJson,
+  readAiReply,
   durationMinutes,
   guessKind,
   icsEvents,
@@ -249,4 +252,117 @@ test('open in: a calendar file is recognised by name, UTI, MIME or its first byt
   assert.equal(sniffKind(new TextEncoder().encode('BEGIN:VCALENDAR\r\nVERSION:2.0\r\n')), 'ics');
   assert.equal(decideKind({ name: 'export.txt' }, new TextEncoder().encode('BEGIN:VCALENDAR\r\n')), 'ics');
   assert.equal(routeFor('ics'), 'itinerary');
+});
+
+// ---- structured data: email booking markup and the traveller's own AI ----
+
+const LD = [
+  {
+    '@context': 'http://schema.org',
+    '@type': 'FlightReservation',
+    reservationNumber: 'K7Q2ZP',
+    reservedTicket: { '@type': 'Ticket', ticketedSeat: { '@type': 'Seat', seatNumber: '32A' } },
+    reservationFor: {
+      '@type': 'Flight',
+      flightNumber: '25',
+      airline: { '@type': 'Airline', name: 'Coral Wing Airways', iataCode: 'QF' },
+      departureAirport: { '@type': 'Airport', name: 'Sydney Airport', iataCode: 'SYD' },
+      arrivalAirport: { '@type': 'Airport', name: 'Narita', iataCode: 'NRT' },
+      departureTime: '2027-03-12T09:30:00+11:00',
+      arrivalTime: '2027-03-12T17:45:00+09:00',
+    },
+  },
+  {
+    '@context': 'http://schema.org',
+    '@type': 'LodgingReservation',
+    reservationNumber: 'HX-88123',
+    reservationFor: { '@type': 'LodgingBusiness', name: 'Hotel Exemple Shinjuku', address: { streetAddress: '1-2-3 Example', addressLocality: 'Tokyo', addressCountry: 'JP' } },
+    checkinDate: '2027-03-12T15:00:00+09:00',
+    checkoutDate: '2027-03-15',
+  },
+  { '@type': 'FoodEstablishmentReservation', reservationStatus: 'http://schema.org/ReservationCancelled', reservationFor: { name: 'Gone' }, startTime: '2027-03-13T19:00:00' },
+];
+
+test('email booking markup: JSON-LD blocks are found in an .eml and read exactly', async () => {
+  const { emlJsonLd, jsonLdBlocks } = await import('./openin.ts');
+  const html = `<html><head><script type="application/ld+json">${JSON.stringify(LD)}</script></head><body>Hi</body></html>`;
+  assert.equal(jsonLdBlocks(html).length, 1);
+  const eml = ['From: bookings@example.com', 'Subject: Your trip', 'Content-Type: text/html; charset=utf-8', '', html].join('\r\n');
+  const json = emlJsonLd(eml);
+  assert.ok(json.startsWith('['));
+  const got = parseItinerary(json, opts);
+  assert.equal(got.length, 2); // the cancelled one is left out
+  const [fl, stay] = got;
+  assert.equal(fl.draft.kind, 'flight');
+  assert.equal(fl.draft.number, 'QF25');
+  assert.equal(fl.draft.ref, 'K7Q2ZP');
+  assert.equal(fl.draft.seat, '32A');
+  assert.equal(fl.draft.startTime, '09:30');
+  assert.equal(fl.draft.startTz, 'Australia/Sydney');
+  assert.equal(fl.draft.endTime, '17:45');
+  assert.equal(fl.draft.endTz, 'Asia/Tokyo');
+  assert.equal(fl.draft.fromName, 'Sydney Airport (SYD)');
+  assert.equal(stay.draft.kind, 'hotel');
+  assert.equal(stay.draft.placeName, 'Hotel Exemple Shinjuku');
+  assert.equal(stay.draft.startTz, 'Asia/Tokyo');
+  assert.equal(stay.draft.endDate, '2027-03-15');
+  assert.equal(stay.draft.endTime, '11:00');
+  for (const p of got) assert.deepEqual(validateItem(p.draft), [], p.draft.title);
+  // A plain email with no markup gives nothing here (its text still goes to Paste a booking).
+  assert.equal(emlJsonLd(['Subject: Hi', '', 'Hello'].join('\r\n')), '');
+});
+
+const AI_REPLY = `Here you go:
+\`\`\`json
+[
+  {"date": "2027-03-03", "start": "9:30", "end": "11:00", "endDate": "", "type": "tour", "title": "Old town walking tour", "place": "Town Hall", "address": "", "from": "", "to": "", "code": "", "timezone": "Europe/Paris"},
+  {"date": "2027-03-03", "start": "15:00", "end": "11:00", "endDate": "2027-03-05", "type": "hotel", "title": "Hotel Exemple", "place": "Hotel Exemple", "code": "HX1", "timezone": "Europe/Paris"},
+  {"date": "2027-03-05", "start": "08:00", "end": "10:00", "type": "train", "title": "TGV 6201", "from": "Paris", "to": "Lyon", "timezone": "Europe/Paris"},
+  {"date": "2027-03-05", "start": "12:00", "type": "transfer", "title": "Driver to the vineyard"},
+  {"date": "March 6", "start": "10:00", "title": "Bad date"},
+  {"date": "2027-03-06", "start": "25:00", "title": "Bad time"},
+  {"date": "2027-03-06", "start": "10:00", "title": "Bad zone", "timezone": "Mars/Olympus"}
+]
+\`\`\``;
+
+test('own AI: a fenced JSON reply is read, bad items are listed with the reason', () => {
+  const r = readAiReply(AI_REPLY, opts);
+  assert.equal(r.error, null);
+  assert.deepEqual(r.problems, [
+    { item: 5, reason: 'date' },
+    { item: 6, reason: 'time' },
+    { item: 7, reason: 'zone' },
+  ]);
+  const [tour, hotel, train, transfer] = r.plans;
+  assert.equal(tour.draft.startTime, '09:30');
+  assert.equal(tour.draft.endTime, '11:00');
+  assert.equal(tour.check, false);
+  assert.equal(hotel.draft.kind, 'hotel');
+  assert.equal(hotel.draft.endDate, '2027-03-05');
+  assert.equal(train.draft.kind, 'train');
+  assert.equal(train.draft.toName, 'Lyon');
+  assert.equal(transfer.draft.title, 'Transfer: Driver to the vineyard');
+  assert.equal(transfer.check, true); // no time zone given
+  for (const p of r.plans) assert.deepEqual(validateItem(p.draft), [], p.draft.title);
+  // The one entry point reads the same reply.
+  assert.equal(parseItinerary(AI_REPLY, opts).length, 4);
+});
+
+test('own AI: clear errors for replies in the wrong shape', () => {
+  assert.equal(readAiReply('Sure! Here is your trip...', opts).error, 'json');
+  assert.equal(readAiReply('{"trip": "Paris"}', opts).error, 'notList');
+  assert.equal(readAiReply('[]', opts).error, 'empty');
+  assert.equal(readAiReply('{"items": [{"date": "2027-03-03", "start": "09:00", "title": "Museum"}]}', opts).plans.length, 1);
+  assert.ok(looksLikeJson('```json\n[]```'));
+  assert.ok(!looksLikeJson('Day 1\n09:00 Museum'));
+});
+
+test('own AI: the prompt asks for the strict format and carries the itinerary and trip', () => {
+  const p = aiPrompt('Day 1\n09:00 Museum', { name: 'Paris', startDate: '2027-03-03', endDate: '2027-03-08' });
+  assert.match(p, /ONLY the JSON/);
+  assert.match(p, /"timezone"/);
+  assert.match(p, /flight, train, ferry, bus, transfer, car, hotel, food, tour, activity, free, note/);
+  assert.match(p, /"Paris", 2027-03-03 to 2027-03-08/);
+  assert.ok(p.endsWith('Day 1\n09:00 Museum'));
+  assert.match(aiPrompt('', undefined), /\[paste your itinerary here\]$/);
 });

@@ -3,7 +3,7 @@
 // Logic in src/core/dayview.ts. Colours from tokens only; every control names itself; 48 pt targets.
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { memo, useEffect, useRef, type ComponentProps } from 'react';
+import { memo, useEffect, useRef, type ComponentProps, type ComponentRef } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { formatDay, formatDuration, formatTime, zoneCity } from '../core/format.ts';
 import { dayStrip, daySchedule, headline, openingDay, type Block, type BlockLook, type FreeBlock, type StripDay } from '../core/dayview.ts';
@@ -233,7 +233,7 @@ export const FreeRow = memo(function FreeRow({ f }: { f: FreeBlock }) {
 /** The day strip: one chip per trip day (weekday, date number, the day's main icon), today ringed, selected filled. */
 export function DayStrip({ days, selected, onPick }: { days: StripDay[]; selected: string; onPick: (date: string) => void }) {
   const { t, theme, lang } = useApp();
-  const ref = useRef<ScrollView>(null);
+  const ref = useRef<ComponentRef<typeof ScrollView>>(null);
   const idx = Math.max(0, days.findIndex((d) => d.date === selected));
   const CHIP = 58;
   useEffect(() => {

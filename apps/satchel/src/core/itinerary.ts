@@ -454,6 +454,11 @@ export function parseItinerary(text: string, opts: ImportOptions): ImportedPlan[
   try {
     if (typeof text !== 'string' || !text.trim()) return [];
     if (looksLikeIcs(text)) return parseIcs(text, opts);
+    // JSON: booking markup from an email, or the reply from the traveller's own AI chat.
+    if (looksLikeJson(text)) {
+      const v = jsonIn(text);
+      if (v !== undefined) return isJsonLd(v) ? parseJsonLd(v, opts) : readAiReply(text, opts).plans;
+    }
     const bookings: ImportedPlan[] = parseBookings(text.slice(0, 50_000), { now: opts.now, us: opts.us, fallbackTz: opts.fallbackTz })
       .filter((b: PasteBooking) => b.draft.startDate && b.draft.startTime && isValidZone(b.draft.startTz))
       .map((b, i) => ({ key: `bk-${i}`, source: 'booking' as const, draft: fitKind({ ...b.draft, title: b.draft.title.trim() || b.draft.placeName || b.draft.toName }), check: Object.values(b.confidence).includes('low') }));
@@ -498,4 +503,277 @@ export function tripForImport<T extends Pick<Trip, 'id' | 'startDate' | 'endDate
     }
   }
   return best;
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// T170: structured data — schema.org booking markup (JSON-LD) and replies from the traveller's own AI chat
+
+/** The text is JSON (an array or object), possibly inside a ``` code fence as AI chats write it. */
+export function jsonIn(text: string): unknown | undefined {
+  const t = text.trim();
+  const fenced = /```(?:json)?\s*([\s\S]*?)```/i.exec(t);
+  const body = (fenced ? fenced[1] : t).trim();
+  const from = body.search(/[[{]/);
+  if (from < 0 || from > 200) return undefined;
+  const open = body[from];
+  const to = body.lastIndexOf(open === '[' ? ']' : '}');
+  if (to <= from) return undefined;
+  try {
+    return JSON.parse(body.slice(from, to + 1));
+  } catch {
+    return undefined;
+  }
+}
+
+/** Text that is meant to be JSON (starts with [ or {, or has a ``` code fence as AI chats write): its errors are worth showing. */
+export const looksLikeJson = (text: string) => /^\s*[[{]|```/.test(text);
+
+type Obj = Record<string, unknown>;
+const isObj = (v: unknown): v is Obj => !!v && typeof v === 'object' && !Array.isArray(v);
+const str = (v: unknown): string => (typeof v === 'string' ? v.trim() : typeof v === 'number' ? String(v) : '');
+const types = (o: Obj): string[] => (Array.isArray(o['@type']) ? (o['@type'] as unknown[]).map(str) : [str(o['@type'])]);
+const nameOf = (v: unknown): string => (isObj(v) ? str(v.name) || str(v.iataCode) : str(v));
+function addressText(v: unknown): string {
+  if (!isObj(v)) return str(v);
+  return [v.streetAddress, v.addressLocality, v.addressRegion, v.postalCode, isObj(v.addressCountry) ? v.addressCountry.name : v.addressCountry].map(str).filter(Boolean).join(', ');
+}
+/** "2027-03-12T09:30:00+11:00" -> the wall clock as written (date, HH:mm). */
+function wall(v: unknown): { date: string; time: string } {
+  const m = /^(\d{4}-\d{2}-\d{2})(?:[T ](\d{2}):(\d{2}))?/.exec(str(v));
+  return m ? { date: m[1], time: m[2] ? `${m[2]}:${m[3]}` : '' } : { date: '', time: '' };
+}
+
+/** Every object in a JSON-LD value (arrays and @graph opened). */
+function nodes(v: unknown, out: Obj[] = [], depth = 0): Obj[] {
+  if (depth > 6) return out;
+  if (Array.isArray(v)) for (const x of v) nodes(x, out, depth + 1);
+  else if (isObj(v)) {
+    if (Array.isArray(v['@graph'])) nodes(v['@graph'], out, depth + 1);
+    else out.push(v);
+  }
+  return out;
+}
+
+/** True when the value carries schema.org markup. */
+export const isJsonLd = (v: unknown) => nodes(v).some((o) => '@type' in o || '@context' in o);
+
+/** Drafts from schema.org reservations (flights, stays, trains, buses, boats, car hire, restaurants, events, taxis). */
+export function parseJsonLd(value: unknown, opts: ImportOptions): ImportedPlan[] {
+  const out: ImportedPlan[] = [];
+  for (const r of nodes(value)) {
+    if (out.length >= MAX_IMPORT_ITEMS) break;
+    const t = types(r).find((x) => /Reservation$/.test(x)) ?? '';
+    if (!t || /Cancel/i.test(str(r.reservationStatus))) continue;
+    const f: Obj = isObj(r.reservationFor) ? r.reservationFor : {};
+    const ref = str(r.reservationNumber) || str(r.confirmationNumber);
+    let kind: ItemKind = 'activity';
+    let title = '';
+    let start = { date: '', time: '' };
+    let end = { date: '', time: '' };
+    let from = '';
+    let to = '';
+    let fromCode = '';
+    let toCode = '';
+    let place = '';
+    let address = '';
+    let number = '';
+    let carrier = '';
+    if (t === 'FlightReservation') {
+      kind = 'flight';
+      const air = isObj(f.airline) ? f.airline : {};
+      carrier = str(air.name);
+      const fn = str(f.flightNumber);
+      number = /^[A-Z0-9]{2}\d/.test(fn) ? fn : `${str(air.iataCode)}${fn}`;
+      fromCode = isObj(f.departureAirport) ? str(f.departureAirport.iataCode) : '';
+      toCode = isObj(f.arrivalAirport) ? str(f.arrivalAirport.iataCode) : '';
+      from = nameOf(f.departureAirport);
+      to = nameOf(f.arrivalAirport);
+      start = wall(f.departureTime);
+      end = wall(f.arrivalTime);
+      title = [carrier || 'Flight', number].filter(Boolean).join(' ');
+    } else if (t === 'TrainReservation' || t === 'BusReservation' || t === 'BoatReservation') {
+      kind = t === 'TrainReservation' ? 'train' : t === 'BusReservation' ? 'bus' : 'ferry';
+      from = nameOf(f.departureStation ?? f.departureBusStop ?? f.departureBoatTerminal);
+      to = nameOf(f.arrivalStation ?? f.arrivalBusStop ?? f.arrivalBoatTerminal);
+      number = str(f.trainNumber ?? f.busNumber);
+      carrier = nameOf(f.provider ?? f.busCompany ?? r.provider);
+      start = wall(f.departureTime);
+      end = wall(f.arrivalTime);
+      title = [str(f.trainName ?? f.busName) || carrier, number].filter(Boolean).join(' ') || `${from} → ${to}`;
+    } else if (t === 'LodgingReservation') {
+      kind = 'hotel';
+      title = nameOf(f) || 'Stay';
+      place = title;
+      address = addressText(f.address);
+      start = wall(r.checkinTime ?? r.checkinDate);
+      end = wall(r.checkoutTime ?? r.checkoutDate);
+      if (!start.time) start.time = '15:00';
+      if (!end.time) end.time = '11:00';
+    } else if (t === 'RentalCarReservation') {
+      kind = 'car';
+      carrier = nameOf(f.rentalCompany ?? r.provider);
+      title = [carrier, nameOf(f)].filter(Boolean).join(' · ') || 'Car hire';
+      place = nameOf(r.pickupLocation);
+      address = addressText(isObj(r.pickupLocation) ? r.pickupLocation.address : '');
+      start = wall(r.pickupTime);
+      end = wall(r.dropoffTime);
+    } else if (t === 'FoodEstablishmentReservation') {
+      title = nameOf(f) || 'Restaurant';
+      place = title;
+      address = addressText(f.address);
+      start = wall(r.startTime ?? r.startDate);
+      end = wall(r.endTime);
+    } else if (t === 'TaxiReservation') {
+      title = `Transfer${nameOf(r.provider) ? ` · ${nameOf(r.provider)}` : ''}`;
+      place = nameOf(r.pickupLocation);
+      address = addressText(isObj(r.pickupLocation) ? r.pickupLocation.address : '');
+      start = wall(r.pickupTime);
+    } else {
+      // EventReservation and any other reservation with a start.
+      title = nameOf(f) || str(r.name) || 'Booking';
+      const loc = f.location;
+      place = nameOf(loc);
+      address = addressText(isObj(loc) ? loc.address : '');
+      start = wall(f.startDate ?? r.startTime ?? r.startDate);
+      end = wall(f.endDate ?? r.endTime);
+    }
+    if (!start.date) continue;
+    const startZone = (fromCode && zoneFor(fromCode)) || zoneFor(`${from} ${place} ${address}`);
+    const endZone = (toCode && zoneFor(toCode)) || (to ? zoneFor(to) : undefined) || startZone;
+    const tz = startZone ?? opts.fallbackTz;
+    const d = newItemDraft(kind, start.date, tz);
+    Object.assign(d, {
+      title,
+      startDate: start.date,
+      startTime: start.time || '09:00',
+      startTz: tz,
+      endDate: end.date && end.time ? end.date : '',
+      endTime: end.date && end.time ? end.time : '',
+      endTz: endZone ?? tz,
+      fromName: from && fromCode && !from.includes(fromCode) ? `${from} (${fromCode})` : from,
+      toName: to && toCode && !to.includes(toCode) ? `${to} (${toCode})` : to,
+      placeName: place,
+      address,
+      ref,
+      number,
+      carrier,
+      seat: isObj(r.reservedTicket) && isObj(r.reservedTicket.ticketedSeat) ? str(r.reservedTicket.ticketedSeat.seatNumber) : '',
+    });
+    out.push({ key: `ld-${out.length}`, source: 'booking', draft: fitKind(d), check: !startZone || !start.time });
+  }
+  return out;
+}
+
+/** The plan types the "use your own AI" reply may use, and the booking kind each becomes. */
+export const AI_TYPES: Record<string, ItemKind> = {
+  flight: 'flight',
+  train: 'train',
+  ferry: 'ferry',
+  boat: 'ferry',
+  bus: 'bus',
+  transfer: 'activity',
+  taxi: 'activity',
+  car: 'car',
+  hotel: 'hotel',
+  stay: 'hotel',
+  food: 'activity',
+  restaurant: 'activity',
+  tour: 'activity',
+  activity: 'activity',
+  free: 'note',
+  note: 'note',
+};
+
+/** Why one item of an AI reply was left out (the screen words it). */
+export type AiProblem = { item: number; reason: 'notObject' | 'date' | 'time' | 'title' | 'zone' | 'end' };
+export type AiReply = { plans: ImportedPlan[]; problems: AiProblem[]; error: null | 'json' | 'notList' | 'empty' };
+
+const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
+const HHMM = /^([01]?\d|2[0-3]):[0-5]\d$/;
+const pad5 = (t: string) => (/^\d:\d\d$/.test(t) ? `0${t}` : t);
+
+/**
+ * Reads the reply from the traveller's own AI chat: a JSON list of plans in the format `aiPrompt` asks for. Items
+ * that don't fit are left out and listed (item number + reason); nothing is guessed except a missing zone (the
+ * fallback zone, marked "check this"). Never throws.
+ */
+export function readAiReply(text: string, opts: ImportOptions): AiReply {
+  try {
+    const v = jsonIn(text);
+    if (v === undefined) return { plans: [], problems: [], error: 'json' };
+    const list = Array.isArray(v) ? v : isObj(v) && Array.isArray(v.items) ? v.items : isObj(v) && Array.isArray(v.plans) ? v.plans : null;
+    if (!list) return { plans: [], problems: [], error: 'notList' };
+    if (!list.length) return { plans: [], problems: [], error: 'empty' };
+    const plans: ImportedPlan[] = [];
+    const problems: AiProblem[] = [];
+    list.slice(0, MAX_IMPORT_ITEMS).forEach((raw: unknown, i: number) => {
+      const n = i + 1;
+      if (!isObj(raw)) return void problems.push({ item: n, reason: 'notObject' });
+      const date = str(raw.date);
+      const start = pad5(str(raw.start ?? raw.time));
+      const end = pad5(str(raw.end));
+      const title = str(raw.title ?? raw.name);
+      const tzRaw = str(raw.timezone ?? raw.tz);
+      const type = str(raw.type).toLowerCase();
+      const kind = AI_TYPES[type] ?? guessKind(title);
+      const endDate = str(raw.endDate) || (end ? date : kind === 'hotel' && DATE_ONLY.test(date) ? addDays(date, 1) : '');
+      if (!DATE_ONLY.test(date) || !isLocalDateTime(`${date}T00:00`)) return void problems.push({ item: n, reason: 'date' });
+      if (start && !HHMM.test(start)) return void problems.push({ item: n, reason: 'time' });
+      if (!title) return void problems.push({ item: n, reason: 'title' });
+      if ((end && !HHMM.test(end)) || (endDate && !DATE_ONLY.test(endDate))) return void problems.push({ item: n, reason: 'end' });
+      if (tzRaw && !isValidZone(tzRaw)) return void problems.push({ item: n, reason: 'zone' });
+      const place = str(raw.place);
+      const tz = tzRaw || zoneFor(`${place} ${str(raw.from)} ${str(raw.address)}`) || opts.fallbackTz;
+      const endTz = zoneFor(str(raw.to)) ?? tz;
+      const d = newItemDraft(kind, date, tz);
+      const titled = (type === 'transfer' || type === 'taxi') && !/transfer|taxi/i.test(title) ? `Transfer: ${title}` : title;
+      const hasEnd = !!end || kind === 'hotel';
+      Object.assign(d, {
+        title: titled,
+        startDate: date,
+        startTime: start || (kind === 'hotel' ? '15:00' : '09:00'),
+        startTz: tz,
+        endDate: hasEnd ? endDate : '',
+        endTime: hasEnd ? end || '11:00' : '',
+        endTz: isTransportKind(kind) ? endTz : tz,
+        fromName: str(raw.from),
+        toName: str(raw.to),
+        placeName: place,
+        address: str(raw.address),
+        ref: str(raw.code ?? raw.confirmation ?? raw.ref),
+        notes: str(raw.notes).slice(0, 2000),
+      });
+      const fno = kind === 'flight' ? FLIGHT_NO.exec(title) : null;
+      if (fno) d.number = `${fno[1]}${fno[2]}`;
+      plans.push({ key: `ai-${i}`, source: 'plan', draft: fitKind(d), check: !tzRaw || !start });
+    });
+    return { plans, problems, error: null };
+  } catch {
+    return { plans: [], problems: [], error: 'json' };
+  }
+}
+
+/**
+ * The prompt for "Use your own AI": the traveller copies it (with their itinerary text when they have pasted it)
+ * into their own AI chat and pastes the reply back. Asks for a strict JSON list Satchel can check.
+ */
+export function aiPrompt(itinerary: string, trip?: { name: string; startDate: string; endDate: string }): string {
+  const lines = [
+    'Turn my travel itinerary below into a JSON list for my travel app.',
+    'Reply with ONLY the JSON (no other words), in exactly this shape:',
+    '[',
+    '  {"date": "2027-03-03", "start": "09:30", "end": "11:00", "endDate": "", "type": "tour", "title": "Old town walking tour", "place": "Town Hall", "address": "", "from": "", "to": "", "code": "", "timezone": "Europe/Paris"}',
+    ']',
+    'Rules:',
+    '- One object per booking or plan, in time order.',
+    '- date and endDate are YYYY-MM-DD. start and end are 24-hour HH:MM, in local time where it happens. Use "" when unknown.',
+    '- type is one of: flight, train, ferry, bus, transfer, car, hotel, food, tour, activity, free, note.',
+    '- Flights, trains, ferries and buses: "from" and "to" are the places; end and endDate are the arrival.',
+    '- Hotels: date and start are check-in; endDate and end are check-out.',
+    '- code is the booking or confirmation code. timezone is the IANA time zone where it starts (like Asia/Tokyo).',
+    '- Do not invent anything that is not in the itinerary.',
+  ];
+  if (trip) lines.push(`The trip is "${trip.name}", ${trip.startDate} to ${trip.endDate} (use these years for dates without one).`);
+  lines.push('', 'My itinerary:', itinerary.trim() ? itinerary.trim().slice(0, 30_000) : '[paste your itinerary here]');
+  return lines.join('\n');
 }
