@@ -163,3 +163,16 @@ test('an item with a zone this phone cannot read is left off the timetable, neve
   const s = daySchedule(trip, '2027-03-03', at('2027-03-03T09:00'));
   assert.ok(!s.blocks.some((b) => b.item.title === 'Broken zone'));
 });
+
+test('the Itinerary tab opens on the trip on now, else the next, else the last one', async () => {
+  const { scheduleTrip } = await import('./dayview.ts');
+  const mk = (id: string, startDate: string, endDate: string): Trip => ({ id, name: id, startDate, endDate, homeTz: P, items: [], createdAt: '2027-01-01' });
+  const past = mk('past', '2026-12-01', '2026-12-10');
+  const on = mk('on', '2027-03-01', '2027-03-10');
+  const later = mk('later', '2027-05-01', '2027-05-05');
+  const soon = mk('soon', '2027-04-01', '2027-04-05');
+  assert.equal(scheduleTrip([past, later, on, soon], at('2027-03-05T10:00'))?.id, 'on');
+  assert.equal(scheduleTrip([past, later, soon], at('2027-03-05T10:00'))?.id, 'soon');
+  assert.equal(scheduleTrip([past, mk('older', '2026-01-01', '2026-01-05')], at('2027-03-05T10:00'))?.id, 'past');
+  assert.equal(scheduleTrip([], at('2027-03-05T10:00')), null);
+});

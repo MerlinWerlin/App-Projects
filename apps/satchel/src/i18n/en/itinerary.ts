@@ -76,6 +76,17 @@ export const itinerary = {
   'today.empty.body': 'Bring your plans in and Satchel lays out each day like a timetable, with what’s on now and what’s next.',
   'today.notFound': 'This trip isn’t on this phone any more.',
 
+  // ---- T171 Itinerary tab ----
+  'tab.itinerary': 'Itinerary',
+  'schedule.switcher': 'Choose a trip',
+  'schedule.switchHint': 'Shows this trip’s itinerary, {range}.',
+  'schedule.noTrips.body': 'Make a trip, then bring its plans in. Satchel lays out each day like a timetable, with what’s on now and what’s next.',
+  'schedule.newTrip': 'Make a trip',
+  'schedule.ai': 'Use your own AI',
+  'schedule.aiHint': 'Opens the importer with a prompt to copy into your own AI chat. Its reply comes back here to check.',
+  'map.toiletFinder': 'Toilet finder',
+  'map.toiletFinderHint': 'Opens the toilet finder: filters, saved toilets and ones you’ve used.',
+
   // ---- Add your itinerary ----
   'itin.route': 'Add your itinerary',
   'itin.hero.eyebrow': 'Works offline',

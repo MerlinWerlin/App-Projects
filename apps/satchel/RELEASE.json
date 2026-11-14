@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Satchel 0.2.1: rebuild without over-the-air updates (expo-updates removed, Apple Guideline 5.6); after a restore, store builds ask you to close and reopen Satchel. Nothing else changed",
+  "note": "Satchel 0.2.2: Itinerary is its own tab in the middle of the tab bar (Today, Tomorrow and every trip day; Add your itinerary when there are no plans yet); Toilets moves into the Map tab (Toilet finder and Nearest toilet buttons)",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

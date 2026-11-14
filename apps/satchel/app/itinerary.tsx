@@ -8,7 +8,7 @@
 // incoming (text handed over in memory by Open in / Paste a booking) and name (the file it came from).
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type ComponentRef } from 'react';
 import { AccessibilityInfo, ScrollView, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { lookOf } from '../src/core/dayview.ts';
@@ -29,7 +29,7 @@ import { Body, Button, Chip, Label, PressableScale, Warning } from '../src/ui/ki
 import { LOOK_ICON, LOOK_TONE, lookKey } from '../src/ui/timetable.tsx';
 
 export default function ItineraryScreen() {
-  const params = useLocalSearchParams<{ tripId?: string; day?: string; incoming?: string; name?: string }>();
+  const params = useLocalSearchParams<{ tripId?: string; day?: string; incoming?: string; name?: string; start?: string }>();
   const { t, theme, lang } = useApp();
   const { trips, saveTrip } = useTrips();
   const router = useRouter();
@@ -126,6 +126,20 @@ export default function ItineraryScreen() {
 
   const hasText = !!text.trim();
 
+  // T171: opened from the Itinerary tab's "Add your itinerary" with one way picked: start it straight away.
+  const scroller = useRef<ComponentRef<typeof ScrollView>>(null);
+  const aiY = useRef(0);
+  const started = useRef(false);
+  useEffect(() => {
+    if (started.current) return;
+    started.current = true;
+    if (params.start === 'calendar') void openCalendar();
+    else if (params.start === 'paste') void pasteClipboard();
+    else if (params.start === 'ai') setTimeout(() => scroller.current?.scrollTo({ y: aiY.current, animated: false }), 300);
+    // Runs once, for the way this screen was opened with.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // "Use your own AI": the reply pasted back is checked here, so a format slip says what to fix.
   const aiCheck = useMemo(() => {
     if (!looksLikeJson(text)) return null;
@@ -158,6 +172,7 @@ export default function ItineraryScreen() {
 
   return (
     <ScrollView
+      ref={scroller}
       style={{ flex: 1, backgroundColor: theme.paper }}
       contentContainerStyle={{ padding: space.l, paddingBottom: insets.bottom + space.xxl, gap: space.l }}
       keyboardShouldPersistTaps="handled"
@@ -231,6 +246,7 @@ export default function ItineraryScreen() {
       </View>
 
       {/* Use your own AI: no AI service of ours, no key in the app. */}
+      <View onLayout={(e) => (aiY.current = e.nativeEvent.layout.y)} />
       <SectionCard title={t('itin.ai.title')} subtitle={t('itin.ai.subtitle')} icon="sparkles-outline" tone="sea">
         <Body>{t('itin.ai.step1')}</Body>
         <Body>{t('itin.ai.step2')}</Body>
