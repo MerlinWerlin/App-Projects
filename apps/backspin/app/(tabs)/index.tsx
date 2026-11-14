@@ -45,7 +45,7 @@ export default function Home() {
             }}
             style={{ minHeight: 44, justifyContent: 'center', paddingHorizontal: SP(1) }}
           >
-            <T kind="small" color={theme.rec} style={{ fontWeight: '800' }}>
+            <T kind="small" color={theme.recText} style={{ fontWeight: '800' }}>
               {t('home.languageChange')}
             </T>
           </Press>
@@ -81,7 +81,7 @@ export default function Home() {
           <T kind="line" style={{ marginTop: SP(3) }}>
             {daily.line.t}
           </T>
-          <T kind="bodyB" color={doneToday != null ? theme.good : theme.rec} style={{ marginTop: SP(3) }}>
+          <T kind="bodyB" color={doneToday != null ? theme.good : theme.recText} style={{ marginTop: SP(3) }}>
             {doneToday != null ? `✓ ${t('home.dailyDone', { score: doneToday })}` : `${t('home.dailyPlay')} ➜`}
           </T>
         </Card>
@@ -125,7 +125,7 @@ export default function Home() {
           {t('home.howBody')}
         </T>
         {stats.rounds > 0 ? (
-          <T kind="small" color={theme.faint} style={{ marginTop: SP(3) }}>
+          <T kind="small" color={theme.sub} style={{ marginTop: SP(3) }}>
             {t('home.stats', { rounds: stats.rounds, best: stats.best })}
           </T>
         ) : null}

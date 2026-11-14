@@ -43,6 +43,8 @@ export type Skin = {
 };
 
 export type Theme = Palette & {
+  /** The record red for text and links: the first of rec / glow / labelForward that reads at 4.5:1 on cards, else ink. */
+  recText: string;
   dark: boolean;
   skin: string;
   font: Skin['font'];
@@ -73,9 +75,38 @@ export const BOOTH: Skin = {
 
 export const SKINS: Skin[] = [BOOTH, ...GENERATED_SKINS];
 
+const lum = (hex: string) => {
+  const n = parseInt(hex.slice(1, 7), 16);
+  const ch = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => {
+    const c = v / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
+};
+/** WCAG contrast ratio of two #RRGGBB colours. */
+export const contrastRatio = (a: string, b: string) => {
+  const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p);
+  return (x + 0.05) / (y + 0.05);
+};
+
+const mix = (a: string, b: string, t: number) => {
+  if (!/^#[0-9a-fA-F]{6}$/.test(a) || !/^#[0-9a-fA-F]{6}$/.test(b)) return a;
+  const x = parseInt(a.slice(1), 16), y = parseInt(b.slice(1), 16);
+  const c = [16, 8, 0].map((sh) => Math.round(((x >> sh) & 255) * (1 - t) + ((y >> sh) & 255) * t));
+  return '#' + c.map((v) => v.toString(16).padStart(2, '0')).join('').toUpperCase();
+};
+
+/** Record red that is readable as small text on bg, card and cardHi (the red fill itself is often only ~3.5:1). */
+export function readableRec(p: Palette): string {
+  const ok = (c: string) => /^#[0-9a-fA-F]{6}$/.test(c) && [p.bg, p.card, p.cardHi].every((b) => contrastRatio(c, b) >= 4.5);
+  // Last resorts before plain ink: the red nudged towards ink (darker in light mode, lighter in dark mode).
+  return [p.rec, p.glow, p.labelForward, mix(p.rec, p.ink, 0.2), mix(p.rec, p.ink, 0.35), mix(p.rec, p.ink, 0.5)].find(ok) ?? p.ink;
+}
+
 export function makeTheme(skinId: string, dark: boolean): Theme {
   const s = SKINS.find((k) => k.id === skinId) ?? BOOTH;
-  return { ...(dark ? s.dark : s.light), dark, skin: s.id, font: s.font, radius: s.radius, cardFinish: s.card };
+  const p = dark ? s.dark : s.light;
+  return { ...p, recText: readableRec(p), dark, skin: s.id, font: s.font, radius: s.radius, cardFinish: s.card };
 }
 
 export const DARK: Theme = makeTheme('booth', true);

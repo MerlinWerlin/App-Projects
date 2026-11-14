@@ -37,7 +37,7 @@ export default function Round() {
   // Out of free goes (and not bought): the round can't start; a finished round's reveal stays on screen.
   if ((!plus && !result) || pick?.locked) {
     return (
-      <Screen>
+      <Screen header>
         <OutOfGoes />
       </Screen>
     );
@@ -66,7 +66,7 @@ export default function Round() {
   };
 
   return (
-    <Screen>
+    <Screen header>
       <RoundEngine
         key={key}
         line={pick?.line.t ?? null}

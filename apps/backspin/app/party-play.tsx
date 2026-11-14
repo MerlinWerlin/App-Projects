@@ -28,7 +28,7 @@ export default function PartyPlay() {
 
   if (!party) {
     return (
-      <Screen>
+      <Screen header>
         <Button title={t('common.back')} onPress={() => router.back()} />
       </Screen>
     );
@@ -43,7 +43,7 @@ export default function PartyPlay() {
     const st = standings(party);
     const loser = st[st.length - 1];
     return (
-      <Screen>
+      <Screen header>
         <T kind="small" color={theme.sub} center>
           {t('party.scoreboard')}
         </T>
@@ -98,7 +98,7 @@ export default function PartyPlay() {
   };
 
   return (
-    <Screen>
+    <Screen header>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <T kind="small" color={theme.sub}>
           {t('party.roundOf', { round: party.round, rounds: party.rounds })}
@@ -207,7 +207,7 @@ function GuessTurn({ party, line, onDone }: { party: Party; line: string; onDone
             style={{ marginTop: SP(6) }}
             onPress={() => (rec.phase === 'recording' ? rec.finish() : recordSecret())}
           />
-          {rec.phase === 'recording' ? <T kind="small" color={theme.rec} center style={{ marginTop: SP(2) }}>{t('round.recording', { s: rec.seconds })}</T> : null}
+          {rec.phase === 'recording' ? <T kind="small" color={theme.recText} center style={{ marginTop: SP(2) }}>{t('round.recording', { s: rec.seconds })}</T> : null}
         </>
       )}
       {stage === 'listen' && (

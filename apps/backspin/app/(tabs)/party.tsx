@@ -35,7 +35,7 @@ export default function PartySetup() {
 
       <View style={{ flexDirection: 'row', gap: SP(3), marginTop: SP(5) }}>
         {(['copy', 'guess'] as const).map((m) => (
-          <Card key={m} hi={mode === m} label={t(m === 'copy' ? 'party.copy' : 'party.guess')} onPress={() => setMode(m)} style={{ flex: 1, borderColor: mode === m ? theme.rec : theme.line, borderWidth: 2 }}>
+          <Card key={m} hi={mode === m} selected={mode === m} label={t(m === 'copy' ? 'party.copy' : 'party.guess')} onPress={() => setMode(m)} style={{ flex: 1, borderColor: mode === m ? theme.rec : theme.line, borderWidth: 2 }}>
             <Emoji size={26}>{m === 'copy' ? '🎙' : '🕵️'}</Emoji>
             <T kind="bodyB" style={{ marginTop: SP(2) }}>
               {t(m === 'copy' ? 'party.copy' : 'party.guess')}
@@ -58,6 +58,9 @@ export default function PartySetup() {
               placeholderTextColor={theme.faint}
               accessibilityLabel={t('party.playerN', { n: i + 1 })}
               maxLength={18}
+              autoCapitalize="words"
+              autoCorrect={false}
+              textContentType="nickname"
               returnKeyType="done"
               style={{ flex: 1, minHeight: 50, borderRadius: R.m, backgroundColor: theme.card, color: theme.ink, paddingHorizontal: SP(4), fontSize: 17, fontWeight: '600' }}
             />

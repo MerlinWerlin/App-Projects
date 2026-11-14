@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Backspin 1.0.1: no UIBackgroundModes audio (Guideline 2.5.4); replaces build 9 for review",
+  "note": "Backspin 1.0.2: design polish (nav-bar spacing, paywall Close in nav bar, contrast, VoiceOver selected states, Takes empty state). TestFlight only; 1.0.1 build 10 stays in review",
   "ascAppId": "6826553963"
 }
