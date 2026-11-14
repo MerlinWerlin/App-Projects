@@ -66,6 +66,11 @@ jobs:
           BUNDLE=$(python3 -c 'import plistlib,sys,pathlib; print(plistlib.loads((pathlib.Path(sys.argv[1])/"Info.plist").read_bytes())["CFBundleIdentifier"])' "$APP")
           DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); xs=[x for k,v in sorted(d["devices"].items(),reverse=True) if "iOS" in k for x in v]; print(next((x["udid"] for x in xs if x["name"]=="iPhone 16 Pro"), next(x["udid"] for x in xs if "iPhone" in x["name"] and "Pro" in x["name"])))')
           codesign --force --deep --sign - "$APP"
+          # Pre-approve glaze:// for simctl openurl, so no "Open in Glaze?" alert covers the screens.
+          xcrun simctl shutdown "$DEVICE" 2>/dev/null || true
+          PREFS="$HOME/Library/Developer/CoreSimulator/Devices/$DEVICE/data/Library/Preferences"
+          mkdir -p "$PREFS"
+          /usr/libexec/PlistBuddy -c "Add :com.apple.CoreSimulator.CoreSimulatorBridge-->glaze string $BUNDLE" "$PREFS/com.apple.launchservices.schemeapproval.plist" || true
           xcrun simctl boot "$DEVICE" || true
           xcrun simctl bootstatus "$DEVICE" -b
           xcrun simctl install "$DEVICE" "$APP"
