@@ -1,0 +1,42 @@
+{
+  "theme": "puffin-fold",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "puffin-fold",
+      "id": "paper-lighthouse",
+      "label": "Paper Lighthouse",
+      "ref": "116-puffin-fold\\wallpapers\\wallpaper.png",
+      "subject": "one compact coastal lighthouse assembled from layered hand-cut paper: warm white tapered tower, two broad charcoal horizontal bands, small orange lantern room with no time marks, charcoal cliff base and two restrained soft blue paper wave layers. Pale grey-green fibrous paper background, crisp hand-cut edges and shallow layer shadows, sophisticated grown-up playful folded-paper craft sculpture",
+      "avoid": "puffin, eggs, counter, full-field cliff strata",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for puffin-fold. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one compact coastal lighthouse assembled from layered hand-cut paper: warm white tapered tower, two broad charcoal horizontal bands, small orange lantern room with no time marks, charcoal cliff base and two restrained soft blue paper wave layers. Pale grey-green fibrous paper background, crisp hand-cut edges and shallow layer shadows, sophisticated grown-up playful folded-paper craft sculpture. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: puffin, eggs, counter, full-field cliff strata. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-4888424d-8b37-443c-a595-0276a6c3cee4.png",
+      "image": "widget-paper-lighthouse.b36f7e52.webp",
+      "sha256": "b36f7e52fb6e3e56be7dfaa6fedf34bc36534528cbbb86943dde62e3682203f3",
+      "bytes": 203626,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "puffin-fold",
+      "id": "paper-fishing-boat",
+      "label": "Paper Fishing Boat",
+      "ref": "116-puffin-fold\\wallpapers\\wallpaper.png",
+      "subject": "one small charming coastal fishing boat assembled from layered hand-cut paper, curved charcoal hull with a crisp orange stripe, simple white cabin with two dark square windows, short mast and one folded pale-blue pennant, two shallow blue paper waves supporting the boat. No boat name. Pale grey-green fibrous paper background, crisp cut edges and shallow soft layer shadows, tactile folded-paper craft sculpture",
+      "avoid": "puffin, eggs, counter, cliff strata, lighthouse",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for puffin-fold. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one small charming coastal fishing boat assembled from layered hand-cut paper, curved charcoal hull with a crisp orange stripe, simple white cabin with two dark square windows, short mast and one folded pale-blue pennant, two shallow blue paper waves supporting the boat. No boat name. Pale grey-green fibrous paper background, crisp cut edges and shallow soft layer shadows, tactile folded-paper craft sculpture. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: puffin, eggs, counter, cliff strata, lighthouse. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-b64b7d13-e360-42f7-b3f2-bc848fcf3f82.png",
+      "image": "widget-paper-fishing-boat.48436bd7.webp",
+      "sha256": "48436bd7222477368b6d9f2b0f79f46c3c133421a4ca3de237e1256ae08d27a4",
+      "bytes": 238658,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

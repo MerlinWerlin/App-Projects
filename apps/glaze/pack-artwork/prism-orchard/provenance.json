@@ -1,0 +1,25 @@
+{
+  "theme": "prism-orchard",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "prism-orchard",
+      "id": "opal-butterfly",
+      "label": "Opal Butterfly",
+      "ref": "019-prism-orchard\\wallpapers\\wallpaper.png",
+      "subject": "one luminous butterfly with broad open wings fashioned from translucent opal and pale pink faceted glass, delicate fine gold wing veins, perched on a tiny crystalline blossom twig. Soft lavender orchard atmosphere, pastel prismatic caustics and gentle blossom bokeh, intricate believable jewelry-like glass craft, the complete butterfly has a clear balanced silhouette",
+      "avoid": "plum, pear vessel, frog, hummingbird",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for prism-orchard. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: one luminous butterfly with broad open wings fashioned from translucent opal and pale pink faceted glass, delicate fine gold wing veins, perched on a tiny crystalline blossom twig. Soft lavender orchard atmosphere, pastel prismatic caustics and gentle blossom bokeh, intricate believable jewelry-like glass craft, the complete butterfly has a clear balanced silhouette. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: plum, pear vessel, frog, hummingbird. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-e708d253-606b-4cf9-bc32-800888a0e9c3.png",
+      "image": "widget-opal-butterfly.444dc4ac.webp",
+      "sha256": "444dc4acb555b63aaf4aa1d63af8e013c76194a746b9a36ab118c686be80aaa8",
+      "bytes": 212790,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}
