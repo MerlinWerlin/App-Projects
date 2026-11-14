@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -93,6 +93,10 @@ test('partial builds retain untouched packs; --complete refuses a short pack bef
     const r = await buildPacks({ ...f.opts, complete: false, only: new Set(['artwork-one']) });
     assert.equal(r.catalog.packs[1].packVersion, 7);
     assert.deepEqual(JSON.parse(readFileSync(join(f.out, 'art/artwork-two/v7/manifest.json'))), f.originals.get('artwork-two'));
+    await buildPacks(f.opts);
+    assert.deepEqual(readdirSync(join(f.out, 'art/artwork-two')), ['v8'], 'later batches must remove the obsolete generated baseline folder');
+    const plans = planReleases(f.out, new Map(), { catalogTag: 'glaze-packs-v5' });
+    assert.equal(plans.reduce((n, p) => n + p.plan.length, 0), 17, 'only current-version assets and one catalogue enter the upload plan');
   } finally { f.cleanup(); }
 });
 

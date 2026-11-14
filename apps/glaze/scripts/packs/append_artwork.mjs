@@ -156,8 +156,11 @@ export async function buildArtworkAdditions(opts) {
     versions[p.id] = { packVersion: m.packVersion, contentHash: digest(JSON.stringify(Object.fromEntries(Object.entries(m).filter(([k]) => k !== 'packVersion')))) };
     releases[p.id] = release;
     const folder = packFolder(p.id, m.packVersion), target = checkedPath(outDir, folder);
-    // This generated version folder is owned by this builder; never remove input/source folders.
-    if (existsSync(target)) rmSync(target, { recursive: true, force: true });
+    // A theme may have been untouched in an earlier partial build. Keep just this build's
+    // version, otherwise the flat release planner would also upload that obsolete folder.
+    // Only generated v<number> folders strictly inside the checked output root are removed.
+    const packRoot = checkedPath(outDir, `art/${p.id}`);
+    if (existsSync(packRoot)) for (const version of readdirSync(packRoot)) if (/^v\d+$/.test(version)) rmSync(checkedPath(packRoot, version), { recursive: true, force: true });
     mkdirSync(target, { recursive: true });
     for (const a of base.assets) copyFileSync(checkedPath(baseDir, `${packFolder(p.id, base.packVersion)}/${a.path}`), checkedPath(target, a.path));
     for (const f of plan?.files ?? []) copyFileSync(f.src, checkedPath(target, f.name));
