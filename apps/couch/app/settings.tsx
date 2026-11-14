@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState, type ReactElement } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { GLOW_OPTIONS, ONE_HANDED_OPTIONS, SETTING_COPY, THEME_OPTIONS, type SettingCopy } from '../src/core/prefs';
 import { useT } from '../src/i18n/react';
 import { plusForSale } from '../src/core/forSale';
@@ -12,7 +12,7 @@ import { useReducedMotion } from '../src/theme/useReducedMotion';
 import { animateNextLayout } from '../src/ui/motion/FadeIn';
 import { useLanguageChoice } from '../src/ui/settings/LanguagePicker';
 import { Text } from '../src/ui/Text';
-import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } from '../src/ui/v2';
+import { Card, Chevron, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } from '../src/ui/v2';
 
 type Picker = 'language' | 'theme' | 'oneHanded' | 'glow';
 
@@ -120,8 +120,14 @@ export default function SettingsScreen() {
           accessibilityLabel={t('app.settings.plus')}
           accessibilityHint={plusHint}
         >
-          <Text style={[textStyle('headline'), { color: p.label }]}>{t('app.settings.plus')}</Text>
-          <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{plusHint}</Text>
+          {/* A chevron says the card opens the Couch Plus page, like the rows below it. */}
+          <View style={styles.plusRow}>
+            <View style={styles.plusText}>
+              <Text style={[textStyle('headline'), { color: p.label }]}>{t('app.settings.plus')}</Text>
+              <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{plusHint}</Text>
+            </View>
+            <Chevron color={p.tertiaryLabel} />
+          </View>
         </Card>
         ) : null}
 
@@ -181,4 +187,6 @@ export default function SettingsScreen() {
 
 const styles = StyleSheet.create({
   plus: { marginHorizontal: list.inset, marginBottom: list.groupGap, marginTop: space.sm },
+  plusRow: { flexDirection: 'row', alignItems: 'center', gap: space.md },
+  plusText: { flex: 1, gap: space.xxs },
 });
