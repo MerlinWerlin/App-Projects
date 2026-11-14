@@ -1,0 +1,38 @@
+{
+  "theme": "kingfisher-blue",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__kingfisher-blue__v7__manifest.json",
+    "sha256": "0afb9bec0d088d3006a20521779c2a542cc5205e0eee6665ad8ca09f61a3736d",
+    "packVersion": 7,
+    "existingArtwork": [
+      "production-20261101-reed-perch",
+      "hero-small",
+      "art-20261106-kingfisher-dive",
+      "art-20261106-river-feather"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "river-reed-nest",
+      "label": "River reed nest",
+      "file": "widgets/widget-river-reed-nest.84b040c6.webp",
+      "sha256": "84b040c675591b4fb95480c2fb747f082b355980e56edbdb929d6110a99d1592",
+      "bytes": 294998,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-887b5f71-0c61-4018-b981-02476dbcf591.png",
+      "sourceSha256": "6ebd5ddef0a5cb467799e0e64afa4c1f378eb2ceedc82980a5f21fa3ec81b7de",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for kingfisher-blue. A small beautifully woven natural river-reed nest cradling two smooth ivory kingfisher eggs, a few slender golden reed tips arching around its edge, one clear dew bead with faint teal reflected light. Fine-art natural wildlife macro photography, authentic fine reed fibres, soft powder-river-blue reflected light, warm copper-gold and cream with restrained teal accents. No bird, diving splash or detached feather; nest and eggs are the new subject. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 649346,
+      "opaquePixels": 227
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "silver-flying-fish",
+    "kind": "art",
+    "image": "widget-silver-flying-fish.9fef40d5.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Silver flying fish"
+  },
+  {
+    "id": "ivory-sea-fan",
+    "kind": "art",
+    "image": "widget-ivory-sea-fan.2a03bcb7.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ivory sea fan"
+  },
+  {
+    "id": "aqua-pearl-oyster",
+    "kind": "art",
+    "image": "widget-aqua-pearl-oyster.35bec9fa.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Aqua pearl oyster"
+  }
+]
