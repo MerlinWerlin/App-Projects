@@ -1,0 +1,25 @@
+{
+  "theme": "gambit-house",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "gambit-house",
+      "id": "ivory-bishop",
+      "label": "Ivory Bishop",
+      "ref": "039-gambit-house\\wallpapers\\wallpaper.png",
+      "subject": "a single elegant carved ivory chess bishop, clearly visible diagonal mitre slit, poised on a low round oxblood velvet cushion, its slender long shadow falling across warm ivory plaster. No other chessmen. A small onyx inlay around the base. Refined collectible still life, sunny window light, precise polished material and soft realistic shadows",
+      "avoid": "rook, knight, pawn, king, clock",
+      "prompt": "Create ONE original square 1024x1024 decorative Glaze widget artwork for gambit-house. Use the attached image only to match its theme palette, artistic medium and lighting; create a new composition and subject: a single elegant carved ivory chess bishop, clearly visible diagonal mitre slit, poised on a low round oxblood velvet cushion, its slender long shadow falling across warm ivory plaster. No other chessmen. A small onyx inlay around the base. Refined collectible still life, sunny window light, precise polished material and soft realistic shadows. Keep the complete subject comfortably inside the frame with generous margins, a cohesive full-bleed background and a clear small-size silhouette. No rounded corners, border, UI, text, letters, numbers, labels, logos, watermark, clock, time display, calendar, progress bar or functional information. Avoid repeating these existing subjects: rook, knight, pawn, king, clock. This is pure ornamental art, not a recolored or cropped version of the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-2fee91a9-1707-4f07-836a-cbe134d42e85.png",
+      "image": "widget-ivory-bishop.cdaa7960.webp",
+      "sha256": "cdaa7960dc59dbadfcf72f4fce6b519191db373bd10fcd98953acad830a42377",
+      "bytes": 154196,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

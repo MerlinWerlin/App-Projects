@@ -1,0 +1,14 @@
+[
+  {
+    "id": "rain-dragonfly",
+    "kind": "art",
+    "image": "widget-rain-dragonfly.ab89f6bf.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Rain Dragonfly"
+  }
+]
