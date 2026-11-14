@@ -1,0 +1,38 @@
+{
+  "theme": "pistachio-parlour",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__pistachio-parlour__v7__manifest.json",
+    "sha256": "148b8e6e1c76d7bba1e2ae5c595d6f6f5bc49da5eeb3ee7f76f729631aef0e36",
+    "packVersion": 7,
+    "existingArtwork": [
+      "pistachio-sundae",
+      "hero-small",
+      "art-20261107-pistachio-macaron",
+      "art-20261107-pastry-whisk"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "pistachio-eclair",
+      "label": "Pistachio eclair",
+      "file": "widgets/widget-pistachio-eclair.6cd42da2.webp",
+      "sha256": "6cd42da286b708afd56fff52428fd2ee46f47887e3372d49ab4271ec5208f4af",
+      "bytes": 157960,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-c26603db-90c6-426c-8fc2-9fb38e4e483a.png",
+      "sourceSha256": "282feab4f9d697eea0481d718bebfd81c2a2789dc554502ac4db0c9f97561b86",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for pistachio-parlour. One exquisite miniature pistachio eclair on a small scalloped ivory patisserie plate, golden crisp choux shell filled with a generous pale-pistachio cream swirl, smooth muted-green glaze, finely chopped pistachios and one delicate cream pastry blossom. Premium realistic patisserie still-life photography, tactile baked crumb and silky cream, warm cream/pistachio/biscuit-brown palette, soft natural light. No macaron, croissant, ice-cream sundae, mouse or whisk. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 655056,
+      "opaquePixels": 665
+    }
+  ]
+}

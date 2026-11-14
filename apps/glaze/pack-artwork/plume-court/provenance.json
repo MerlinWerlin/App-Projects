@@ -1,0 +1,38 @@
+{
+  "theme": "plume-court",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__plume-court__v7__manifest.json",
+    "sha256": "7ea909939d8ca9ddfcb56ca1ee300a154e0a7dd1da47d59e1db79edbc86f9647",
+    "packVersion": 7,
+    "existingArtwork": [
+      "porcelain-quail",
+      "hero-small",
+      "art-20261107-jade-plume",
+      "art-20261107-garden-fountain"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "jade-court-coffer",
+      "label": "Jade court coffer",
+      "file": "widgets/widget-jade-court-coffer.765652ea.webp",
+      "sha256": "765652ea63a5d18393c6a56593ad2caefb69ae5eb993d1bc0fee76b5133dcb15",
+      "bytes": 217454,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a010b4d4-c117-4579-bada-56a10f54b598.png",
+      "sourceSha256": "7330157d6f2916fde2f2f399876c3d80070a1643a48b814a2c0d2ef3774188b5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for plume-court. One small aristocratic trinket coffer, softly rectangular ivory porcelain body with deep teal and jade-green enamel inlays, delicate antique-gold filigree hinges and feet, lid slightly ajar revealing pale satin lining, one small blue-green cabochon clasp. Subtle peacock-eye enamel ornament on lid, exquisitely restrained courtly craft photography, warm parchment reflected light, teal/jade/ivory/aged-gold palette. No actual bird, feather brooch, folding fan, fountain, clock or text. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 585896,
+      "opaquePixels": 448
+    }
+  ]
+}
