@@ -214,7 +214,6 @@ test('Widgets tab: specs solved once per change, memoised cells, deferred previe
   assert.match(WIDGETS_TAB, /SET_LOOKS\.get\(spec, look/);
   assert.match(WIDGETS_TAB, /CAT_LOOKS\.get\(spec, look/);
   assert.match(WIDGETS_TAB, /const setForTheme = weakMemo\(/);
-  assert.match(WIDGETS_TAB, /const themeSwatch = weakMemo\(/);
   assert.match(WIDGETS_TAB, /useDeferredValue\(theme\)/);
   assert.match(WIDGETS_TAB, /useDeferredValue\(look\)/);
   assert.match(WIDGETS_TAB, /habits=\{m\.habit \? habits : undefined\}/);

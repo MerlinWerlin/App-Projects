@@ -119,11 +119,10 @@ test('owner 25 Oct: the sheet and the Live Photo screens never spring or bounce'
 
 // Owner 25 Oct (glaze-retest A): picking a theme on the Widgets tab also re-themes the Home Screen
 // widgets (it used to change the in-app previews only).
-test('owner 25 Oct: the Widgets tab theme pick writes the theme to the Home Screen widgets', () => {
+// 1.0.34 (owner 2026-11-14: "straw berry dessert etc needs to go"): the tab no longer picks a theme of its own; it
+// shows the theme in use, which the theme page already writes to the widgets when it is put in use.
+test('1.0.34: the Widgets tab has no theme picker; it follows the theme in use', () => {
   const src = strip(read('app', '(tabs)', 'widgets.tsx'));
-  assert.match(src, /import \{ applyWidgetTheme \} from '\.\.\/\.\.\/src\/store\/widgetTheme'/);
-  const pick = /const pickTheme = \(id: string\) => \{([\s\S]*?)\n  \};/.exec(src);
-  assert.ok(pick, 'pickTheme found');
-  assert.match(pick[1], /setPicked\(id\)/);
-  assert.match(pick[1], /applyWidgetTheme\(next\)/);
+  assert.doesNotMatch(src, /const pickTheme =|themes\.map\(|tabs\.widgetsTab\.themes/);
+  assert.doesNotMatch(src, /applyWidgetTheme/);
 });

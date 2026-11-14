@@ -117,11 +117,11 @@ test('T184 the Icons, Widgets and wallpaper screens re-read the theme in use on 
   assert.match(useStudio, /useFocusEffect\(\s*useCallback\(\(\) => \{\s*reload\(\);/);
   assert.match(useStudio, /listeners\.add\(/);
   assert.match(strip(read('app', '(tabs)', 'icons.tsx')), /const \{ state, update \} = useStudio\(\);/);
-  // Widgets: the theme in use (remote themes too), re-read on focus; a local pick resets.
+  // Widgets: the theme in use (remote themes too), re-read on focus. 1.0.34: no local theme picks any more.
   const widgets = strip(read('app', '(tabs)', 'widgets.tsx'));
   assert.match(widgets, /const activeId = useActiveThemeId\(\);/);
   assert.match(widgets, /useAnyTheme\(activeId\)/);
-  assert.match(widgets, /pickAfterActiveChange\(prev, activeId, p\)/);
+  assert.match(widgets, /const theme: Theme = applied \?\? THEMES\[0\];/);
   assert.doesNotMatch(widgets, /getAnyTheme\(state\?\.themeId/);
   // Wallpaper maker: opened without a theme, it starts from the theme in use.
   const maker = strip(read('app', 'wallpaper.tsx'));

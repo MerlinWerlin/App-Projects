@@ -434,6 +434,7 @@ export function paletteChecks(p: PaletteV2): ContrastCheck[] {
     ['inkTertiary/bg', p.inkTertiary, p.bg, AA_LARGE],
     ['tint/bg', p.tint, p.bg, AA_TEXT],
     ['tint/surface', p.tint, p.surface, AA_TEXT],
+    ['tint/fill', p.tint, p.fill, AA_TEXT],
     ['onTint/tint', p.onTint, p.tint, AA_TEXT],
     ['onTintSoft/tintSoft', p.onTintSoft, p.tintSoft, AA_TEXT],
     ['ok/surface', p.ok, p.surface, AA_TEXT],

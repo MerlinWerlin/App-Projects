@@ -64,12 +64,15 @@ export function HowToSheet({ category, visible, onClose }: { category: HowToCate
 export function WatchHowButton({ onPress, style, compact }: { onPress: () => void; style?: StyleProp<ViewStyle>; compact?: boolean }) {
   const { t } = useT();
   // `compact`: the small header version (still a 48 pt touch target); otherwise a full-width pill.
+  // 1.0.34 (owner 2026-11-14: "watch now in the corner... change its colours it looks whack in dark mode"): both use
+  // the quiet `soft` pill, the neutral fill with tint text (>= 4.5:1 in light and dark, designV2 tint/fill), instead of
+  // the plum tinted pill / bare tint text.
   return (
     <View style={style}>
       <PillButton
         label={t('theme.howTo.watch')}
         icon="play-circle"
-        variant={compact ? 'plain' : 'tinted'}
+        variant="soft"
         size={compact ? 'small' : 'regular'}
         block={!compact}
         onPress={onPress}

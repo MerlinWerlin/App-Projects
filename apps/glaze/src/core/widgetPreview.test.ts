@@ -149,13 +149,7 @@ test('WidgetArtMenu: stable names, stacked small caption, native-like background
   assert.match(art, /wallpaper=\{menuWallpaper\}/);
 });
 
-test('theme page Seamless card sizes the hero from the downloaded piece (remoteHeroPx), reference size only as fallback', () => {
-  const page = read('app', 'theme', '[id].tsx');
-  assert.match(page, /heroPx=\{heroPx\}/);
-  assert.match(page, /heroSrc\.kind === 'file' \? remoteHeroSizes\?\.\[size\]/);
-  const hook = read('src', 'native', 'useRemoteCatalog.ts');
-  assert.match(hook, /remoteHeroPx\(local\)/);
-});
+// 1.0.34: the theme page's Seamless card (and its remoteHeroSizes sizing) is gone (seamlessWiring.test.ts).
 
 test('T223/T236: setWidgetArt draws edge to edge only when the real aspect matches (else whole + extended edges); value mirrored', () => {
   const bridge = read('modules', 'glaze-widget-bridge', 'ios', 'GlazeWidgetBridgeModule.swift');

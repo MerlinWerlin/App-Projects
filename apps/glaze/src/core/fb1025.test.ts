@@ -82,11 +82,9 @@ test('adapter: linkStatus is optional on the native type, guarded, and never thr
 test('Widgets tab: link line is gated by widgetLinkVisible (hidden in Expo Go), checked on focus and after a pick', () => {
   const src = read(TAB);
   assert.match(src, /import \{ useWidgetLink \} from '\.\.\/\.\.\/src\/store\/widgetLink'/);
-  assert.match(src, /const linkVerdict = useWidgetLink\(picked, pickNonce\)/);
+  // 1.0.34: no theme picks on the tab, so the check expects the theme in use (null) and runs on focus.
+  assert.match(src, /const linkVerdict = useWidgetLink\(null, pickNonce\)/);
   assert.match(src, /\{widgetLinkVisible\(linkVerdict\) \? \(/);
-  const pick = /const pickTheme = \(id: string\) => \{([\s\S]*?)\n {2}\};/.exec(src);
-  assert.ok(pick);
-  assert.match(pick[1], /setPickNonce\(/);
   assert.match(src, /accessibilityLabel=\{t\('tabs\.widgetsTab\.link\.a11y'/);
   assert.doesNotMatch(code(src), /\bwithSpring\b|\.springify\(|\bBounceIn\b/);
   // No direct native calls from the screen: the store hook goes through the adapter.

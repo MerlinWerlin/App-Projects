@@ -118,8 +118,7 @@ test('theme page source: hero art, Apply end to end, success haptic only at the 
   // Wallpaper step: the downloaded file (read now if needed), never the drawn fallback for a remote pack.
   assert.ok(d.includes('await downloadedRemoteWallpaper(remoteArt.id)'));
   assert.ok(d.includes("remoteMissing\n      ? { ok: false, why: 'unreadable' }"));
-  // Widget step: the downloaded widget art in the seamless card, and applyWidgetTheme.
-  assert.ok(d.includes('wallpaperUri={remoteWallpaperUri} heroUris={remoteHeroUris}'));
+  // Widget step: 1.0.34 removed the Seamless card (seamlessWiring.test.ts); the theme still applies everywhere.
   assert.ok(d.includes('await applyThemeEverywhere(theme)'));
   // Icons step: glyph icons in the palette, with a note for art packs.
   assert.ok(d.includes("t('theme.remote.iconsNote')"));

@@ -24,7 +24,8 @@ test('theme detail reads as editorial blocks: Icons, Widgets, Wallpaper, Credits
   // T200: no "What's inside" block (its palette moved to the widgets block).
   assert.ok(!d.includes("theme.section.inside"), "no What's inside block");
   assert.ok(!d.includes("t('theme.iconStyle')") && !d.includes('theme.summary.') && !d.includes("t('theme.widgets.line'"), 'no style summary');
-  assert.equal((d.match(/<SectionHeader\b/g) ?? []).length, 4);
+  // 1.0.34: plus the Widgets step's "Add a widget" steps header (where the Seamless card was).
+  assert.equal((d.match(/<SectionHeader\b/g) ?? []).length, 5);
   // Credits only when there is something to credit.
   assert.match(d, /\{hasCredits \? \(/);
 });

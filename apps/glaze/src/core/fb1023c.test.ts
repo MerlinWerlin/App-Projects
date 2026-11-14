@@ -25,21 +25,11 @@ test('size sub-tabs draw a SizeArt picture above the label, keeping role, label 
   assert.match(tab, /sizeTab: \{\s*flex: 1,\s*minHeight: sizeV2\.touch/);
 });
 
-test('look chips draw the look swatch next to the label', () => {
-  const looks = rendered.slice(rendered.indexOf('looks.map'), rendered.indexOf('WIDGET_TAB_SIZES.map'));
-  assert.match(tab, /lookSwatches[^\n]*useMemo\(\(\) => new Map\(looks\.map\(\(l\) => \[l, lookSwatch\(l, set\.tokens\)\]\)\)/);
-  assert.match(looks, /<SwatchArt swatch=\{swatch\}/);
-  assert.match(looks, /accessibilityLabel=\{name\}/);
-  assert.ok(looks.indexOf('<SwatchArt') < looks.indexOf('<Text'));
-});
-
-test('theme chips draw a theme swatch instead of the plain dot', () => {
-  const themes = rendered.slice(rendered.indexOf('themes.map'), rendered.indexOf('looks.map'));
-  assert.match(themes, /<SwatchArt swatch=\{themeSwatch\(x\.palette\)\}/);
-  assert.match(themes, /accessibilityLabel=\{x\.name\}/);
-  assert.match(themes, /\{x\.name\}\s*<\/Text>/);
-  assert.doesNotMatch(tab, /styles\.dot/);
-  assert.match(tab, /chip: \{\s*minHeight: sizeV2\.touch/);
+// 1.0.34 (owner 2026-11-14): the theme and look chip rows are gone from the Widgets tab (they only recoloured
+// these previews); the tab shows the theme in use. The size tabs keep their pictures (above).
+test('1.0.34: no theme or look chips on the Widgets tab', () => {
+  assert.doesNotMatch(rendered, /themes\.map|looks\.map|<SwatchArt/);
+  assert.doesNotMatch(tab, /styles\.dot|styles\.chip\b/);
 });
 
 test('the pictures are decorative (hidden from screen readers), RTL safe and drawn with plain Views', () => {
