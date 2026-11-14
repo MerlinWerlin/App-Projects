@@ -64,7 +64,13 @@ test('Watch how everywhere, auto-open at each first time, and no inline players 
   }
   assert.match(r('app', 'icons-intro.tsx'), /\{how\.button\(\)\}/);
   assert.match(r('app', 'install.tsx'), /useHowTo\('icons', \{ auto: true \}\)/);
-  assert.match(r('app', 'widget-studio.tsx'), /useHowTo\('widgets', \{ auto: !!theme \}\)/);
+  // 1.0.32: the hook must sit in WidgetStudio (where `how` is read), not in the route wrapper (1.0.31 threw
+  // "how is not defined" on the Widget Studio's first render).
+  const studio = r('app', 'widget-studio.tsx');
+  const inner = studio.slice(studio.indexOf('function WidgetStudio('));
+  assert.match(inner, /useHowTo\('widgets', \{ auto: true \}\)/);
+  assert.ok(studio.indexOf("useHowTo('widgets'") > studio.indexOf('function WidgetStudio('), 'useHowTo lives inside WidgetStudio');
+  assert.ok(inner.includes('onPress={how.open}') && inner.includes('{how.sheet}'), 'WidgetStudio uses its own how');
   assert.match(r('app', 'theme', '[id].tsx'), /if \(saved\) void howToSeen\('wallpaper'\)/);
   for (const f of [['src', 'ui', 'ThemeSetupFlow.tsx'], ['app', 'icons-intro.tsx'], ['app', 'install.tsx'], ['app', 'widget-studio.tsx']]) {
     assert.doesNotMatch(r(...f), /<HowToClip\b/, f.join('/'));

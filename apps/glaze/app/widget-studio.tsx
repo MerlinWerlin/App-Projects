@@ -154,9 +154,6 @@ export default function WidgetStudioScreen() {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const router = useRouter();
-  // Owner 2026-11-15 ("the first time a widget is select a vid should come up"): the widgets how-to
-  // video, large, on its own the first time a widget is picked, and from "Watch how" in the header.
-  const how = useHowTo('widgets', { auto: !!theme });
   if (!theme) {
     return (
       <View style={[styles.missing, { backgroundColor: c.bg }]}>
@@ -176,6 +173,11 @@ export default function WidgetStudioScreen() {
 }
 
 function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null; size: string | null }) {
+  // Owner 2026-11-15 ("the first time a widget is select a vid should come up"): the widgets how-to
+  // video, large, on its own the first time a widget is picked, and from "Watch how" in the header.
+  // 1.0.32 hotfix: the hook lives HERE, where `how` is used (1.0.31 called it in the wrapper above,
+  // so this screen threw "how is not defined" on its first render).
+  const how = useHowTo('widgets', { auto: true });
   const { c } = useColorsV2();
   const { t, script, formatNumber } = useT();
   const tl = t as unknown as LooseT;

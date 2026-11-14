@@ -6,6 +6,26 @@ on:
 permissions:
   contents: read
 jobs:
+  # 1.0.32: 1.0.31 shipped with a type error (Widget Studio read `how` it never declared) because no PR check
+  # typechecked Glaze. Every Glaze PR now typechecks (app + node scripts) and runs the full test suite.
+  typecheck-and-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: apps/glaze
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install
+        run: npm ci --no-audit --no-fund
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Tests
+        if: success() || failure()
+        run: npm test
   native-picker:
     runs-on: macos-latest
     timeout-minutes: 10

@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.31: the how-to videos now open big, on their own the first time you set a wallpaper, add icons or pick a widget, and any time from a clear Watch how button. Tap the video to pause; Watch again starts it over.",
+  "note": "Glaze 1.0.32: fixes Widget Studio failing to open in 1.0.31 (the how-to video change left it reading a value it never set up). Nothing else changes.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
