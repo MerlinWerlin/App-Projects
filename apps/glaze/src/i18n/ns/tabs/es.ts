@@ -59,6 +59,8 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
     lock: 'Pantalla bloqueada',
     open: '{kind}, {size}. Abre el Estudio de widgets.',
     soon: 'Próximamente',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: 'Los widgets medianos y grandes llegarán pronto. Por ahora, añade las ilustraciones de tu tema en Pequeño.',
     soonA11y: '{kind}, {size}. Próximamente.',
     lockNote: 'Los widgets de Glaze para la pantalla bloqueada (reloj, fecha, batería, cuenta atrás, luna) se añaden en la propia pantalla bloqueada: mantenla pulsada, toca Personalizar > Pantalla bloqueada > la zona de widgets y elige Glaze. Usan la fuente de tu tema; iOS elige el color.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
@@ -105,6 +107,8 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'Desde un clip', title: 'Live Photo desde un clip', body: 'Convierte un vídeo o GIF en una Live Photo para tu pantalla bloqueada.', action: 'Crear una Live Photo', hint: 'Abre el creador de Live Photos' },
     collageEntry: { eyebrow: 'Tus fotos', title: 'Collage de fotos', body: 'Pon varias de tus fotos en una pantalla bloqueada.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'Tus temas', title: 'Fondos de temas', body: 'Los fondos de los temas de este iPhone. Toca uno para guardarlo y ponerlo.', empty: 'Descarga un tema en la pestaña Temas y su fondo aparecerá aquí.', itemA11y: 'Fondo de {name}', save: 'Guardar en Fotos', openTheme: 'Abrir el tema' },
     mine: {
       eyebrow: 'Hecho en Glaze',
       title: 'Mis fondos',

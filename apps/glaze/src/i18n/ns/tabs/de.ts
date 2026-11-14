@@ -59,6 +59,8 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
     lock: 'Sperrbildschirm',
     open: '{kind}, {size}. Öffnet das Widget-Studio.',
     soon: 'Bald verfügbar',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: 'Mittlere und große Widgets kommen bald. Füge bis dahin die Bilder deines Themes in „Klein“ hinzu.',
     soonA11y: '{kind}, {size}. Bald verfügbar.',
     lockNote: 'Glaze-Sperrbildschirm-Widgets (Uhr, Datum, Batterie, Countdown, Mond) fügst du direkt auf dem Sperrbildschirm hinzu: lange drücken, Anpassen > Sperrbildschirm > Widget-Bereich tippen, dann Glaze wählen. Sie nutzen die Schrift deines Themes; die Farbe legt iOS fest.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
@@ -105,6 +107,8 @@ export const de: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'Aus einem Clip', title: 'Live Photo aus einem Clip', body: 'Mach aus einem Video oder GIF ein Live Photo für den Sperrbildschirm.', action: 'Live Photo erstellen', hint: 'Öffnet den Live-Photo-Editor' },
     collageEntry: { eyebrow: 'Deine Fotos', title: 'Fotocollage', body: 'Mehrere deiner Fotos auf einem Sperrbildschirm.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'Deine Themes', title: 'Theme-Hintergründe', body: 'Die Hintergründe der Themes auf diesem iPhone. Tippe auf einen, um ihn zu sichern und einzustellen.', empty: 'Lade auf dem Tab „Themes“ ein Theme, dann erscheint sein Hintergrund hier.', itemA11y: 'Hintergrund {name}', save: 'In Fotos sichern', openTheme: 'Theme öffnen' },
     mine: {
       eyebrow: 'In Glaze gemacht',
       title: 'Meine Hintergründe',

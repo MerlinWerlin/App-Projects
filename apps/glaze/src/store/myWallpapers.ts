@@ -101,11 +101,16 @@ export type SaveAgainResult = 'saved' | 'denied' | 'missing' | 'error';
 
 /** Save the kept copy to Photos again (add-only access). */
 export async function saveWallpaperAgain(item: MyWallpaper): Promise<SaveAgainResult> {
+  return saveFileToPhotos(item.uri);
+}
+
+/** 1.0.35: save any wallpaper file on this phone (e.g. a downloaded theme's) to Photos (add-only access). */
+export async function saveFileToPhotos(uri: string): Promise<SaveAgainResult> {
   try {
-    const info = await FileSystem.getInfoAsync(item.uri);
+    const info = await FileSystem.getInfoAsync(uri);
     if (!info.exists) return 'missing';
     if (!(await ensurePhotosWriteAccess())) return 'denied';
-    await MediaLibrary.saveToLibraryAsync(item.uri);
+    await MediaLibrary.saveToLibraryAsync(uri);
     return 'saved';
   } catch {
     return 'error';

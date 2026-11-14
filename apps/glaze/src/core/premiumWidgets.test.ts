@@ -39,9 +39,11 @@ test('familyRows keeps every card once, in order, never mixes families in a row,
     assert.deepEqual(firsts, [...new Set(rows.map((r) => r.family))], `${size}: one header per family, at its first row`);
     assert.equal(new Set(rows.map((r) => r.key)).size, rows.length, `${size}: stable unique keys`);
   }
-  // Home sizes open with the theme's own set; the Lock tab has no theme set.
-  assert.equal(familyRows(widgetTabCards('small', EDITABLE))[0].family, 'theme');
-  assert.ok(!familyRows(widgetTabCards('lock', EDITABLE)).some((r) => r.family === 'theme'));
+  // 1.0.35: no size lists cards (Small = My widget art, Medium / Large = Coming soon), so no family rows.
+  for (const size of WIDGET_TAB_SIZES) assert.deepEqual(familyRows(widgetTabCards(size, EDITABLE)), [], size);
+  // familyRows itself still groups any card list by family (kept for when cards return).
+  const clock = { source: 'set', id: 'set-clock-medium', kind: 'clock', size: 'medium', studio: true, nameKey: 'k', sizeKey: 's' } as const;
+  assert.equal(familyRows([clock])[0].family, 'theme');
   assert.deepEqual(familyRows([]), []);
 });
 

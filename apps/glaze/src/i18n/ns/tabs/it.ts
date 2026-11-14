@@ -59,6 +59,8 @@ export const it: NonNullable<LocaleMessages['tabs']> = {
     lock: 'Schermata di blocco',
     open: '{kind}, {size}. Apre lo Studio widget.',
     soon: 'In arrivo',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: 'I widget medi e grandi arriveranno presto. Per ora aggiungi le illustrazioni del tuo tema in Piccolo.',
     soonA11y: '{kind}, {size}. In arrivo.',
     lockNote: 'I widget Glaze per la schermata di blocco (orologio, data, batteria, conto alla rovescia, luna) si aggiungono dalla schermata di blocco: tienila premuta, tocca Personalizza > Schermata di blocco > l’area dei widget e scegli Glaze. Usano il font del tuo tema; il colore lo sceglie iOS.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
@@ -105,6 +107,8 @@ export const it: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'Da un clip', title: 'Live Photo da un clip', body: 'Trasforma un video o una GIF in una Live Photo per la schermata di blocco.', action: 'Crea una Live Photo', hint: 'Apre il creatore di Live Photo' },
     collageEntry: { eyebrow: 'Le tue foto', title: 'Collage di foto', body: 'Metti diverse tue foto su una schermata di blocco.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'I tuoi temi', title: 'Sfondi dei temi', body: 'Gli sfondi dei temi su questo iPhone. Toccane uno per salvarlo e impostarlo.', empty: 'Scarica un tema nella scheda Temi e il suo sfondo apparirà qui.', itemA11y: 'Sfondo {name}', save: 'Salva in Foto', openTheme: 'Apri il tema' },
     mine: {
       eyebrow: 'Fatto in Glaze',
       title: 'I miei sfondi',

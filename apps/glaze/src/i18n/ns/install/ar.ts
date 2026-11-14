@@ -70,6 +70,13 @@ export const ar: NonNullable<LocaleMessages['install']> = {
     // T210: eyebrow over the summary heading.
     eyebrow: 'مجموعة أيقوناتك',
   },
+  // 1.0.35: the two-choice start of a theme's flow (src/ui/AddChooser.tsx).
+  chooser: {
+    title: 'ماذا تريد أن تضيف؟',
+    body: 'اختر واحدًا. لكل منهما فيديو قصير يوضح الطريقة.',
+    icons: { title: 'الأيقونات', body: 'أيقونة متناسقة لكل تطبيق، تُضاف دفعة واحدة.', hint: 'يفتح تثبيت الأيقونات' },
+    widgets: { title: 'الأدوات', body: 'رسومات سمتك وساعاتها على الشاشة الرئيسية.', hint: 'يفتح تبويب الأدوات' },
+  },
   state: {
     loadError: 'تعذّر تحميل مجموعة أيقوناتك.',
     loading: 'جارٍ تحميل أيقوناتك…',

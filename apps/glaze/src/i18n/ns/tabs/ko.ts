@@ -59,6 +59,8 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
     lock: '잠금 화면',
     open: '{kind}, {size}. 위젯 스튜디오를 엽니다.',
     soon: '곧 출시',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: '중간 및 큰 위젯은 곧 나와요. 지금은 ‘작게’에서 테마 아트워크를 추가하세요.',
     soonA11y: '{kind}, {size}. 곧 출시.',
     lockNote: 'Glaze 잠금 화면 위젯(시계, 날짜, 배터리, 카운트다운, 달)은 잠금 화면에서 추가해요: 잠금 화면을 길게 누르고 사용자화 > 잠금 화면 > 위젯 영역을 탭한 다음 Glaze를 고르세요. 글꼴은 테마를 따르고 색상은 iOS가 정해요.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
@@ -105,6 +107,8 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: '클립에서', title: '클립으로 라이브 포토', body: '동영상이나 GIF를 잠금 화면용 라이브 포토로 바꿉니다.', action: '라이브 포토 만들기', hint: '라이브 포토 메이커를 엽니다' },
     collageEntry: { eyebrow: '내 사진', title: '사진 콜라주', body: '여러 장의 사진을 잠금 화면 하나에 담습니다.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: '내 테마', title: '테마 배경화면', body: '이 iPhone에 있는 테마의 배경화면입니다. 탭해서 저장하고 설정하세요.', empty: '테마 탭에서 테마를 다운로드하면 배경화면이 여기에 표시됩니다.', itemA11y: '{name} 배경화면', save: '사진에 저장', openTheme: '테마 열기' },
     mine: {
       eyebrow: 'Glaze에서 만듦',
       title: '내 배경화면',

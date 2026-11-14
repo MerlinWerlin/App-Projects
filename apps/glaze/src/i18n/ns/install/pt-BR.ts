@@ -40,6 +40,13 @@ export const ptBR: NonNullable<LocaleMessages['install']> = {
     // T210: eyebrow over the summary heading.
     eyebrow: 'Seu conjunto de ícones',
   },
+  // 1.0.35: the two-choice start of a theme's flow (src/ui/AddChooser.tsx).
+  chooser: {
+    title: 'O que você quer adicionar?',
+    body: 'Escolha um. Cada um tem um vídeo curto que mostra como.',
+    icons: { title: 'Ícones', body: 'Um ícone combinando para cada app, adicionados de uma vez.', hint: 'Abre a instalação dos ícones' },
+    widgets: { title: 'Widgets', body: 'As artes e relógios do seu tema na Tela de Início.', hint: 'Abre a aba Widgets' },
+  },
   state: {
     loadError: 'Não foi possível carregar seu conjunto de ícones.',
     loading: 'Carregando seus ícones…',

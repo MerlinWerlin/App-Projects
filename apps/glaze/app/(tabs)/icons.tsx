@@ -84,6 +84,7 @@ import { haptic } from '../../src/ui/haptics';
 import { Chevron, noMirror, textStyleFor } from '../../src/ui/i18nLayout';
 import { GlassBar, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SquircleCard, SwitchInsetRow, useLargeTitleScroll } from '../../src/ui/v2';
 import { useT, type MessageKey, type Script } from '../../src/i18n';
+import { useHowTo, WatchHowButton } from '../../src/ui/HowToSheet';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 const RESULT_LIMIT = 60;
@@ -151,6 +152,9 @@ function IconsScreen() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { t, script, isRTL } = useT();
+  // 1.0.35 (owner TestFlight 2026-11-14 04:02-04:03: "needs the glowing watch vid now in the top right hand corner"): the
+  // how-to video for this tab from the corner (WatchHowButton compact: the filled tint pill).
+  const how = useHowTo('icons');
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
   const installedFound = useInstalledFound(); // T229
   const eyebrowCase = eyebrowCaseFor(script);
@@ -561,17 +565,8 @@ function IconsScreen() {
           body={t('icons.sections.styleBody')}
           style={styles.sectionHeader}
         />
-        <InsetGroup title={t('icons.shape')}>
-          <View style={styles.block}>
-            <Segmented
-              vertical
-              label={t('icons.shapeLabel')}
-              options={shapeOptions}
-              value={style.shape}
-              onChange={(shape) => styleChange((s) => setStyle(s, { shape }))}
-            />
-          </View>
-        </InsetGroup>
+        {/* 1.0.35 (owner 2026-11-14: "we can't do blob, square, rounded, circles... that needs to go"): no shape picker;
+            every icon uses the one shape (studio.ts ONE_ICON_SHAPE). Colours and symbol size stay. */}
 
         <InsetGroup title={t('icons.background')}>
           <View style={styles.block}>
@@ -670,7 +665,8 @@ function IconsScreen() {
         contentContainerStyle={[styles.scroll, { paddingTop: insets.top + sizeV2.navBar }]}
       />
 
-      <LargeTitleHeader title={t('icons.title')} scrollY={scrollY} />
+      <LargeTitleHeader title={t('icons.title')} scrollY={scrollY} trailing={<WatchHowButton onPress={how.open} compact />} />
+      {how.sheet}
 
       {/* Sticky CTA on the bar glass, above the tab bar. */}
       <GlassBar material="bar" hairline="top">

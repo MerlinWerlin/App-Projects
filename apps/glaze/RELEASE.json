@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.34: the Widgets tab shows your theme's artwork and the clocks only (no other themes, looks or made-up pieces); the Home Screen spot picker is gone, replaced by the real steps to add a widget and Watch how; Watch how has calmer colours in dark mode.",
+  "note": "Glaze 1.0.35: setting up a theme starts with two simple choices, Icons or Widgets; a bright Watch how in the top-right of the Icons, Widgets and Wallpapers tabs; the Wallpapers tab shows your downloaded themes' wallpapers to save; the Widgets tab shows your theme's artwork (Medium and Large are coming soon); every icon uses one clean shape.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

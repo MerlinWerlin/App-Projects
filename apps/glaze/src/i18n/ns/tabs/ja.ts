@@ -59,6 +59,8 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     lock: 'ロック画面',
     open: '{kind}、{size}。ウィジェットスタジオを開きます。',
     soon: '近日公開',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: '中・大サイズのウィジェットは準備中です。今は「小」でテーマのアートワークを追加してください。',
     soonA11y: '{kind}、{size}。近日公開。',
     lockNote: 'Glaze のロック画面ウィジェット（時計、日付、バッテリー、カウントダウン、月）はロック画面で追加します：ロック画面を長押しし、カスタマイズ > ロック画面 > ウィジェットの枠をタップして Glaze を選びます。フォントはテーマに合わせ、色は iOS が決めます。',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
@@ -105,6 +107,8 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'クリップから', title: 'クリップからライブフォト', body: '動画やGIFをロック画面用のライブフォトにします。', action: 'ライブフォトを作る', hint: 'ライブフォトメーカーを開きます' },
     collageEntry: { eyebrow: 'あなたの写真', title: 'フォトコラージュ', body: '複数の写真をひとつのロック画面にまとめます。' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'あなたのテーマ', title: 'テーマの壁紙', body: 'このiPhoneにあるテーマの壁紙です。タップして保存し、設定できます。', empty: '「テーマ」タブでテーマをダウンロードすると、ここに壁紙が表示されます。', itemA11y: '{name}の壁紙', save: '写真に保存', openTheme: 'テーマを開く' },
     mine: {
       eyebrow: 'Glazeで作成',
       title: 'マイ壁紙',

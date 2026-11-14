@@ -59,6 +59,8 @@ export const hi: NonNullable<LocaleMessages['tabs']> = {
     lock: 'लॉक स्क्रीन',
     open: '{kind}, {size}। विजेट स्टूडियो खोलता है।',
     soon: 'जल्द आ रहा है',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: 'मीडियम और बड़े विजेट जल्द आ रहे हैं। अभी के लिए, छोटे में अपनी थीम की कलाकृति जोड़ें।',
     soonA11y: '{kind}, {size}। जल्द आ रहा है।',
     lockNote: 'Glaze के लॉक स्क्रीन विजेट (घड़ी, तारीख, बैटरी, काउंटडाउन, चाँद) लॉक स्क्रीन पर ही जोड़े जाते हैं: उसे दबाकर रखें, कस्टमाइज़ करें > लॉक स्क्रीन > विजेट वाली जगह पर टैप करें, फिर Glaze चुनें। ये आपकी थीम का फ़ॉन्ट लेते हैं; रंग iOS तय करता है।',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
@@ -105,6 +107,8 @@ export const hi: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'क्लिप से', title: 'क्लिप से लाइव फ़ोटो', body: 'किसी वीडियो या GIF को लॉक स्क्रीन के लिए लाइव फ़ोटो बनाएँ।', action: 'लाइव फ़ोटो बनाएँ', hint: 'लाइव फ़ोटो मेकर खोलता है' },
     collageEntry: { eyebrow: 'आपकी फ़ोटो', title: 'फ़ोटो कोलाज', body: 'अपनी कई फ़ोटो एक लॉक स्क्रीन पर रखें।' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'आपकी थीम', title: 'थीम वॉलपेपर', body: 'इस iPhone पर मौजूद थीम के वॉलपेपर। सेव करके लगाने के लिए किसी एक पर टैप करें।', empty: 'थीम टैब पर कोई थीम डाउनलोड करें, उसका वॉलपेपर यहाँ दिखेगा।', itemA11y: '{name} वॉलपेपर', save: 'फ़ोटो में सेव करें', openTheme: 'थीम खोलें' },
     mine: {
       eyebrow: 'Glaze में बना',
       title: 'मेरे वॉलपेपर',

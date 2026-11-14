@@ -27,12 +27,11 @@ test('G1: no stacked first-run tip cards on the Themes screen; help stays behind
   assert.match(detail, /FIRST_RUN_TIP_IDS/);
 });
 
-test('G2: the shape picker is only in theme detail, behind a collapsed Shape row', () => {
+// 1.0.35 (owner 2026-11-14: "we can't do blob, square, rounded, circles"): no shape picker anywhere; one icon shape.
+test('G2 (1.0.35): no shape picker on Themes, the theme page, Settings or the Icons tab', () => {
   assert.doesNotMatch(themes, /ShapePicker/);
   assert.doesNotMatch(look, /<ShapePicker/);
-  assert.match(detail, /const \[shapeOpen, setShapeOpen\] = useState\(false\)/);
-  assert.match(detail, /\{shapeOpen \? \(\s*<SquircleCard[^>]*>\s*<ShapePicker/);
-  assert.match(detail, /theme\.shapeRow\.title/);
+  assert.doesNotMatch(detail, /<ShapePicker|theme\.shapeRow\.title/);
 });
 
 // T177 (owner-1031): the category bubbles left the Themes tab (about 13 themes in two sections);

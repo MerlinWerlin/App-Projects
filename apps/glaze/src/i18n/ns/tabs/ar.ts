@@ -59,6 +59,8 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
     lock: 'شاشة القفل',
     open: '{kind}، {size}. يفتح استوديو الأدوات.',
     soon: 'قريبًا',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: 'الأدوات المتوسطة والكبيرة قادمة قريبًا. حاليًا، أضف رسومات سمتك في الحجم الصغير.',
     soonA11y: '{kind}، {size}. قريبًا.',
     lockNote: 'تُضاف أدوات Glaze لشاشة القفل (الساعة، التاريخ، البطارية، العد التنازلي، القمر) من شاشة القفل نفسها: المس مطولًا، ثم اضغط تخصيص > شاشة القفل > منطقة الأدوات واختر Glaze. تستخدم خط سمتك، ويختار iOS لونها.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
@@ -105,6 +107,8 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'من مقطع', title: 'صورة Live من مقطع', body: 'حوّل فيديو أو GIF إلى صورة Live لشاشة القفل.', action: 'اصنع صورة Live', hint: 'يفتح صانع صور Live' },
     collageEntry: { eyebrow: 'صورك', title: 'صورة مجمّعة', body: 'ضع عدة صور من صورك على شاشة قفل واحدة.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'سماتك', title: 'خلفيات السمات', body: 'خلفيات السمات الموجودة على هذا الـ iPhone. اضغط على واحدة لحفظها وتعيينها.', empty: 'نزّل سمة من تبويب السمات وستظهر خلفيتها هنا.', itemA11y: 'خلفية {name}', save: 'حفظ في الصور', openTheme: 'فتح السمة' },
     mine: {
       eyebrow: 'صُنع في Glaze',
       title: 'خلفياتي',

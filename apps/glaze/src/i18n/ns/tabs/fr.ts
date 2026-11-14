@@ -59,6 +59,8 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
     lock: 'Écran verrouillé',
     open: '{kind}, {size}. Ouvre le Studio de widgets.',
     soon: 'Bientôt',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: 'Les widgets moyens et grands arrivent bientôt. En attendant, ajoutez les illustrations de votre thème en Petit.',
     soonA11y: '{kind}, {size}. Bientôt disponible.',
     lockNote: 'Les widgets Glaze de l’écran verrouillé (horloge, date, batterie, compte à rebours, lune) s’ajoutent sur l’écran verrouillé : maintenez-le, touchez Personnaliser > Écran verrouillé > la zone des widgets, puis choisissez Glaze. Ils prennent la police de votre thème ; iOS choisit leur couleur.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
@@ -105,6 +107,8 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'Depuis un clip', title: 'Live Photo depuis un clip', body: 'Transformez une vidéo ou un GIF en Live Photo pour l’écran verrouillé.', action: 'Créer une Live Photo', hint: 'Ouvre le créateur de Live Photos' },
     collageEntry: { eyebrow: 'Vos photos', title: 'Collage photo', body: 'Réunissez plusieurs de vos photos sur un écran verrouillé.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'Vos thèmes', title: 'Fonds des thèmes', body: 'Les fonds d’écran des thèmes de cet iPhone. Touchez-en un pour l’enregistrer et le définir.', empty: 'Téléchargez un thème dans l’onglet Thèmes et son fond d’écran apparaîtra ici.', itemA11y: 'Fond d’écran {name}', save: 'Enregistrer dans Photos', openTheme: 'Ouvrir le thème' },
     mine: {
       eyebrow: 'Fait dans Glaze',
       title: 'Mes fonds d’écran',

@@ -50,7 +50,7 @@ import { Feather } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useDeferredValue, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View, useWindowDimensions, type AccessibilityActionEvent, type ListRenderItem, type StyleProp, type ViewStyle } from 'react-native';
-import { WIDGET_TAB_SIZES, widgetStudioHref, widgetTabCards, widgetTabSizeKey, type WidgetTabCard, type WidgetTabSize } from '../../src/core/tabNav';
+import { WIDGET_TAB_SIZES, WIDGET_TAB_SOON_SIZES, widgetStudioHref, widgetTabCards, widgetTabSizeKey, type WidgetTabCard, type WidgetTabSize } from '../../src/core/tabNav';
 import { THEMES, type Theme } from '../../src/core/themes';
 import { CATALOGUE_SIZE_POINTS, catalogueKindKey, catalogueSizeKey, catalogueSpecOf, type CatalogueKind, type CatalogueSpec } from '../../src/core/widgetKinds';
 import { wallpaperTokensFor } from '../../src/core/wallpaperPalette';
@@ -87,6 +87,7 @@ import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
 import { SizeArt } from '../../src/ui/WidgetOptionArt';
 import { WidgetArtLibraryList } from '../../src/ui/WidgetArtLibraryList';
+import { useHowTo, WatchHowButton } from '../../src/ui/HowToSheet';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 /** Untyped lookup for keys carried in data (tabNav card name/size keys). */
@@ -431,10 +432,10 @@ const WidgetRow = memo(function WidgetRow({
   // T173: the family's editorial header (one accessibility heading) above its first row.
   return (
     <View>
+      {/* 1.0.34: the tab lists clocks only, so the family's longer title and body ("Clock, date, photo, quote and
+          battery…", "Clocks, calendars and photos") no longer fit; its short label ("Your theme", "Everyday") is the title. */}
       <SectionHeader
-        eyebrow={tl(keys.eyebrow)}
-        title={tl(keys.title)}
-        body={tl(keys.body)}
+        title={tl(keys.eyebrow)}
         flushTop={firstSection}
         style={firstSection ? styles.sectionHeader : [styles.sectionHeader, styles.sectionAfterRow]}
       />
@@ -451,6 +452,9 @@ function WidgetsTab() {
   const tl = t as unknown as LooseT;
   const router = useRouter();
   const { width } = useWindowDimensions();
+  // 1.0.35 (owner TestFlight 2026-11-14 04:02-04:03: "needs the glowing watch vid now in the top right hand corner"): the
+  // how-to video for this tab from the corner (WatchHowButton compact: the filled tint pill).
+  const how = useHowTo('widgets');
   // T86: values logged on the Home Screen habit widgets (full iOS build) and the daily goals.
   const widgetHabits = useWidgetHabits();
 
@@ -625,16 +629,23 @@ function WidgetsTab() {
         })}
       </View>
 
-      {size === 'lock' ? (
-        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...label('footnote'), styles.note, { color: c.inkSecondary }]}>
-          {t('tabs.widgetsTab.lockNote')}
-        </Text>
+      {/* 1.0.35 (owner 2026-11-14: "under medium and large, just say coming soon"): no cards in those sizes yet. */}
+      {WIDGET_TAB_SOON_SIZES.includes(size) ? (
+        <View style={[styles.soon, continuous, { backgroundColor: c.fill }]} accessible accessibilityRole="text">
+          <Feather name="clock" size={22} color={c.tint} />
+          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...label('headline'), styles.centre, { color: c.ink }]}>
+            {t('tabs.widgetsTab.soon')}
+          </Text>
+          <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), styles.centre, { color: c.inkSecondary }]}>
+            {t('tabs.widgetsTab.soonSizes')}
+          </Text>
+        </View>
       ) : null}
 
       {/* Owner 2026-11-14 ("not separate"): the theme's art picker is gone; My widget art below is the
           one list, Artwork 1-5 with a big number and the large artwork side by side. */}
       {/* T221: "My widget art"; hidden without the native library. */}
-      {size === 'lock' ? null : <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} />}
+      {size === 'small' ? <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} /> : null}
 
       {/* T166: the grid's top padding from before T162 (rows are list items now). T173: the first
           family's section header sits right under it (flushTop), so the gap stays ~16 pt. */}
@@ -642,15 +653,19 @@ function WidgetsTab() {
     </>); // i18n-ignore (code after a JSX element)
 
   return (
+    <>
+    {how.sheet}
     <LargeTitleFlatList
       title={t('tabs.widgets')}
       subtitle={t('tabs.widgetsTab.subtitle')}
+      trailing={<WatchHowButton onPress={how.open} compact />}
       header={header}
       data={rows}
       renderItem={renderRow}
       keyExtractor={rowKey}
       footer={wallpaper.probe ? <>{wallpaper.probe}</> : null}
     />
+    </>
   );
 }
 
@@ -688,6 +703,7 @@ const styles = StyleSheet.create({
     gap: spaceV2.xxs,
   },
   note: { paddingHorizontal: GUTTER, marginTop: spaceV2.md },
+  soon: { marginHorizontal: GUTTER, marginTop: spaceV2.xl, padding: spaceV2.xl, gap: spaceV2.sm, alignItems: 'center', borderRadius: chromeRadiusV2.card },
   // T187: the theme widget art menu sits in the side gutters, a section's space below the size tabs.
   art: { paddingHorizontal: GUTTER, marginTop: spaceV2.xl },
   // T91: one row of the grid; cells stretch to the tallest one. T162: rows are list items, so each

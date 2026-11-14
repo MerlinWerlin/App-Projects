@@ -40,6 +40,13 @@ export const es: NonNullable<LocaleMessages['install']> = {
     // T210: eyebrow over the summary heading.
     eyebrow: 'Tu set de iconos',
   },
+  // 1.0.35: the two-choice start of a theme's flow (src/ui/AddChooser.tsx).
+  chooser: {
+    title: '¿Qué quieres añadir?',
+    body: 'Elige uno. Cada uno tiene un vídeo corto que te lo enseña.',
+    icons: { title: 'Iconos', body: 'Un icono a juego para cada app, añadidos de una vez.', hint: 'Abre la instalación de iconos' },
+    widgets: { title: 'Widgets', body: 'Las ilustraciones y relojes de tu tema en la pantalla de inicio.', hint: 'Abre la pestaña Widgets' },
+  },
   state: {
     loadError: 'No se pudo cargar tu set de iconos.',
     loading: 'Cargando tus iconos…',

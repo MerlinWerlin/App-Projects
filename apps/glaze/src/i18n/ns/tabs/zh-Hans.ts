@@ -59,6 +59,8 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     lock: '锁定屏幕',
     open: '{kind}，{size}。打开小组件工作室。',
     soon: '即将推出',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: '中号和大号小组件即将推出。目前请在“小号”中添加主题插画。',
     soonA11y: '{kind}，{size}。即将推出。',
     lockNote: 'Glaze 锁定屏幕小组件（时钟、日期、电池、倒计时、月相）需在锁定屏幕上添加：长按锁定屏幕，轻点“自定”>“锁定屏幕”> 小组件区域，然后选择 Glaze。它们使用主题字体，颜色由 iOS 决定。',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
@@ -105,6 +107,8 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: '来自片段', title: '用片段制作实况照片', body: '把视频或 GIF 变成锁定屏幕用的实况照片。', action: '制作实况照片', hint: '打开实况照片制作器' },
     collageEntry: { eyebrow: '你的照片', title: '照片拼贴', body: '把几张照片放进同一个锁定屏幕。' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: '你的主题', title: '主题壁纸', body: '这台 iPhone 上主题的壁纸。轻点即可保存并设置。', empty: '在“主题”标签页下载主题后，它的壁纸会显示在这里。', itemA11y: '{name}壁纸', save: '存储到“照片”', openTheme: '打开主题' },
     mine: {
       eyebrow: '在 Glaze 中制作',
       title: '我的壁纸',

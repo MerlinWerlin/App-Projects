@@ -23,6 +23,7 @@ import {
   pickerResults,
   removeApp,
   sanitizeStyle,
+  ONE_ICON_SHAPE,
   serializeStudioState,
   setOverride,
   setStyle,
@@ -242,64 +243,23 @@ test('pickerResults: search, categories and custom apps', () => {
 
 // ---------------------------------------------------------------- T26: shape per theme
 
-test('square is a valid stored shape (style and override)', () => {
-  assert.equal(sanitizeStyle({ ...DEFAULT_STYLE, shape: 'square' }).shape, 'square');
-  assert.equal(sanitizeStyle({ ...DEFAULT_STYLE, shape: 'hexagon' }).shape, DEFAULT_STYLE.shape);
-});
-
-test('per-theme shape: chosen shape is remembered per theme and survives a round trip', () => {
-  let s = defaultStudioState();
-  assert.deepEqual(s.themeShapes, {});
-  assert.equal(themeShapeFor(s, 'cloud-nine', 'squircle'), 'squircle');
-  s = setThemeShape(s, 'cloud-nine', 'circle');
-  s = setThemeShape(s, 'matcha-cafe', 'square');
-  assert.equal(themeShapeFor(s, 'cloud-nine', 'squircle'), 'circle');
-  assert.equal(themeShapeFor(s, 'matcha-cafe', 'blob'), 'square');
-  assert.equal(themeShapeFor(s, 'retro-diner', 'blob'), 'blob');
-  // Not the applied theme: the studio style is untouched.
-  assert.equal(s.style.shape, DEFAULT_STYLE.shape);
-  const back = parseStudioState(serializeStudioState(s));
-  assert.deepEqual(back.themeShapes, { 'cloud-nine': 'circle', 'matcha-cafe': 'square' });
-  // Bad input is a no-op.
-  assert.equal(setThemeShape(s, '', 'circle'), s);
-  assert.equal(setThemeShape(s, '*', 'circle'), s);
-  assert.equal(setThemeShape(s, 'x', 'hexagon' as never), s);
-  // Clearing goes back to the theme's own shape.
-  assert.equal(themeShapeFor(clearThemeShape(s, 'cloud-nine'), 'cloud-nine', 'rounded'), 'rounded');
-  assert.equal(clearThemeShape(s, 'nope'), s);
-});
-
-test('per-theme shape: changing the applied theme\'s shape changes the exported specs', () => {
-  let s = addApps(defaultStudioState(), ['camera', 'mail']);
-  s = applyThemeStyle(s, { ...DEFAULT_STYLE, shape: 'rounded' }, 'cloud-nine', '#112233');
-  assert.equal(s.themeId, 'cloud-nine');
-  assert.equal(s.wallpaperColour, '#112233');
-  assert.ok(studioSpecs(s).every((x) => x.shape === 'rounded'));
-  s = setThemeShape(s, 'cloud-nine', 'square');
-  assert.equal(s.style.shape, 'square');
-  assert.ok(studioSpecs(s).every((x) => x.shape === 'square'));
-  // The Icon Studio's shape control records the choice for the applied theme too.
+// 1.0.35 (owner 2026-11-14: "we can't do blob, square, rounded, circles... that needs to go"): one icon shape. iOS draws
+// every added icon inside its own rounded square, so any saved, chosen or theme shape reads as the squircle.
+test('1.0.35: one icon shape: saved, per-theme and theme shapes all read as the squircle', () => {
+  assert.equal(ONE_ICON_SHAPE, 'squircle');
+  for (const shape of ['square', 'circle', 'blob', 'rounded', 'hexagon']) assert.equal(sanitizeStyle({ ...DEFAULT_STYLE, shape }).shape, ONE_ICON_SHAPE);
+  let s = setThemeShape(defaultStudioState(), 'cloud-nine', 'circle');
+  assert.equal(themeShapeFor(s, 'cloud-nine', 'blob'), ONE_ICON_SHAPE);
+  assert.equal(themeStyleWithShape(s, 'cloud-nine', { ...DEFAULT_STYLE, shape: 'rounded' }).shape, ONE_ICON_SHAPE);
+  s = addApps(applyThemeStyle(s, { ...DEFAULT_STYLE, shape: 'rounded' }, 'cloud-nine', '#112233'), ['camera', 'mail']);
+  assert.equal(s.style.shape, ONE_ICON_SHAPE);
+  assert.ok(studioSpecs(s).every((x) => x.shape === ONE_ICON_SHAPE), 'exported icons use the one shape');
   s = setStyle(s, { shape: 'blob' });
-  assert.equal(s.themeShapes['cloud-nine'], 'blob');
-  // With no theme applied, a style change records nothing.
-  const none = setStyle(defaultStudioState(), { shape: 'circle' });
-  assert.deepEqual(none.themeShapes, {});
-});
-
-test('applying a theme uses the shape chosen for it, else the theme\'s own', () => {
-  let s = setThemeShape(defaultStudioState(), 'celestial-night', 'circle');
-  const themeStyle = { ...DEFAULT_STYLE, shape: 'squircle' as const };
-  s = applyThemeStyle(s, themeStyle, 'celestial-night');
-  assert.equal(s.style.shape, 'circle');
-  assert.equal(s.wallpaperColour, null);
-  s = applyThemeStyle(s, themeStyle, 'moon-phase', '#000000');
-  assert.equal(s.style.shape, 'squircle');
-  // Choices for other themes are kept when switching.
-  assert.equal(s.themeShapes['celestial-night'], 'circle');
-  assert.equal(themeStyleWithShape(s, 'celestial-night', themeStyle).shape, 'circle');
-  assert.equal(themeStyleWithShape(s, 'moon-phase', themeStyle).shape, 'squircle');
-  // Bad wallpaper colours are not stored.
-  assert.equal(applyThemeStyle(s, themeStyle, 'moon-phase', 'nope').wallpaperColour, null);
+  assert.ok(studioSpecs(s).every((x) => x.shape === ONE_ICON_SHAPE));
+  // An older saved state with a chosen shape loads with the one shape.
+  const back = parseStudioState(serializeStudioState(setThemeShape(s, 'cloud-nine', 'square')));
+  assert.equal(back.style.shape, ONE_ICON_SHAPE);
+  assert.equal(clearThemeShape(s, 'nope'), s);
 });
 
 test('themeShapes: v2 data without it loads; junk entries are dropped; version unchanged', () => {
