@@ -359,10 +359,141 @@ test('own AI: clear errors for replies in the wrong shape', () => {
 
 test('own AI: the prompt asks for the strict format and carries the itinerary and trip', () => {
   const p = aiPrompt('Day 1\n09:00 Museum', { name: 'Paris', startDate: '2027-03-03', endDate: '2027-03-08' });
-  assert.match(p, /ONLY the JSON/);
-  assert.match(p, /"timezone"/);
-  assert.match(p, /flight, train, ferry, bus, transfer, car, hotel, food, tour, activity, free, note/);
+  assert.match(p, /ONLY the lines/);
+  assert.match(p, /Day · Start–End · Type: Title · Place or address · Booking code/);
+  assert.match(p, /Flight, Stay, Tour, Food, Transport, Free time, Other/);
   assert.match(p, /"Paris", 2027-03-03 to 2027-03-08/);
   assert.ok(p.endsWith('Day 1\n09:00 Museum'));
   assert.match(aiPrompt('', undefined), /\[paste your itinerary here\]$/);
+});
+
+// ---- T173 the copy-in format ----
+
+test('copy-in format: the example reads as five plans, the stay closed by its check-out line', async () => {
+  const { FORMAT_EXAMPLE, readLines, looksLikeLines } = await import('./itinerary.ts');
+  assert.ok(looksLikeLines(FORMAT_EXAMPLE));
+  const r = readLines(FORMAT_EXAMPLE, { now: '2027-01-10', fallbackTz: 'Asia/Tokyo' });
+  assert.deepEqual(r.problems, []);
+  assert.deepEqual(
+    r.plans.map((p) => [p.draft.startDate, p.draft.startTime, p.draft.kind, p.look, p.draft.title]),
+    [
+      ['2027-05-12', '09:30', 'flight', 'flight', 'QF1 Sydney to Tokyo'],
+      ['2027-05-12', '15:00', 'hotel', 'stay', 'Hotel Sakura'],
+      ['2027-05-13', '10:00', 'activity', 'tour', 'Asakusa walking tour'],
+      ['2027-05-13', '19:00', 'activity', 'food', 'Dinner at Ramen Street'],
+      ['2027-05-14', '13:00', 'activity', 'free', 'Shopping in Harajuku'],
+    ],
+  );
+  const [flight, stay, tour] = r.plans;
+  assert.equal(flight.draft.ref, 'ABC123');
+  assert.equal(flight.draft.number, 'QF1');
+  assert.equal(flight.draft.startTz, 'Australia/Sydney');
+  assert.equal(flight.draft.endTz, 'Asia/Tokyo');
+  assert.equal(flight.draft.endTime, '20:45');
+  assert.equal(stay.draft.placeName, '1-2-3 Shinjuku');
+  assert.equal(stay.draft.ref, 'HX8812');
+  assert.equal(stay.draft.endDate, '2027-05-15');
+  assert.equal(stay.draft.endTime, '11:00');
+  assert.equal(tour.draft.endTime, '12:00');
+  assert.equal(tour.draft.placeName, 'Kaminarimon Gate');
+  for (const p of r.plans) assert.deepEqual(validateItem(p.draft), [], p.draft.title);
+  // The one entry point reads the format too.
+  assert.equal(parseItinerary(FORMAT_EXAMPLE, { now: '2027-01-10', fallbackTz: 'Asia/Tokyo' }).length, 5);
+});
+
+test('copy-in format: lines that do not fit say why, by line number; "|" and "Conf" prefixes work', async () => {
+  const { readLines } = await import('./itinerary.ts');
+  const r = readLines(
+    ['Mon 12 May | 09:00 | Tour: Museum | City Museum | Conf ZX99', 'someday · 10:00 · Tour: Lost', 'Tue 13 May · soon · Food: Lunch', 'Tue 13 May · 12:00 · Food:'].join('\n'),
+    { now: '2027-01-10', fallbackTz: 'Europe/Paris' },
+  );
+  assert.equal(r.plans.length, 1);
+  assert.equal(r.plans[0].draft.ref, 'ZX99');
+  assert.deepEqual(r.problems, [
+    { line: 2, reason: 'date' },
+    { line: 3, reason: 'time' },
+    { line: 4, reason: 'title' },
+  ]);
+});
+
+// ---- T174 Share itinerary: export -> import round trips ----
+
+test('share: a calendar file Satchel wrote comes back exactly (times, zones, kinds, plan types, codes, routes)', async () => {
+  const { buildIcs } = await import('./ics.ts');
+  const { itemFromPlan, newPlanForm } = await import('./planform.ts');
+  const words = {
+    kind: (k: string) => k,
+    starts: (_k: string, at: string) => `Starts ${at}`,
+    ends: (_k: string, at: string) => `Ends ${at}`,
+    zoneTime: (time: string, city: string) => `${time} ${city} time`,
+    code: (ref: string) => `Booking code: ${ref}`,
+    notes: (text: string) => `Notes: ${text}`,
+  };
+  const flight: Item = {
+    id: 'f1', tripId: 't', kind: 'flight', title: 'QF25', ref: 'K7Q2ZP', number: 'QF25',
+    start: { local: '2027-03-12T09:30', tz: 'Australia/Sydney' }, end: { local: '2027-03-12T17:45', tz: 'Asia/Tokyo' },
+    from: { id: 'a', name: 'Sydney (SYD)' }, to: { id: 'b', name: 'Tokyo Narita (NRT)' }, attachments: [],
+  };
+  const stay: Item = {
+    id: 'h1', tripId: 't', kind: 'hotel', title: 'Hotel Sakura', ref: 'HX1',
+    start: { local: '2027-03-12T15:00', tz: 'Asia/Tokyo' }, end: { local: '2027-03-15T11:00', tz: 'Asia/Tokyo' },
+    place: { id: 'p', name: 'Hotel Sakura', address: '1-2-3 Shinjuku, Tokyo' }, attachments: [],
+  };
+  const dinner = itemFromPlan({ ...newPlanForm('2027-03-13', 'Asia/Tokyo', 'food'), title: 'Ramen Street', start: '19:00', end: '20:30', place: 'Tokyo Station', notes: 'Bring cash' }, 't')!;
+  const free = itemFromPlan({ ...newPlanForm('2027-03-14', 'Asia/Tokyo', 'free'), title: 'Shopping' }, 't')!;
+  const trip: Trip = { id: 't', name: 'Japan', startDate: '2027-03-12', endDate: '2027-03-15', homeTz: 'Australia/Sydney', items: [flight, stay, dinner, free], createdAt: '2027-01-01' };
+  const ics = buildIcs(trip, words as never, { includeCodes: true, includeNotes: true, now: Date.UTC(2027, 0, 1) });
+  const back = parseItinerary(ics.text, { now: '2027-01-01', fallbackTz: 'Europe/Paris' });
+  assert.equal(back.length, 4);
+  const byTitle = Object.fromEntries(back.map((p) => [p.draft.title, p]));
+  for (const orig of trip.items) {
+    const p = byTitle[orig.title];
+    assert.ok(p, orig.title);
+    assert.equal(p.check, false, orig.title);
+    assert.equal(p.draft.kind, orig.kind, orig.title);
+    assert.equal(`${p.draft.startDate}T${p.draft.startTime}`, orig.start.local, orig.title);
+    assert.equal(p.draft.startTz, orig.start.tz, orig.title);
+    if (orig.end) {
+      assert.equal(`${p.draft.endDate}T${p.draft.endTime}`, orig.end.local, orig.title);
+      assert.equal(p.draft.endTz, orig.end.tz, orig.title);
+    }
+    assert.equal(p.draft.ref, orig.ref ?? '', orig.title);
+    assert.equal(p.look, orig.look, orig.title);
+    assert.deepEqual(validateItem(p.draft), [], orig.title);
+  }
+  assert.equal(byTitle.QF25.draft.fromName, 'Sydney (SYD)');
+  assert.equal(byTitle.QF25.draft.toName, 'Tokyo Narita (NRT)');
+  assert.equal(byTitle.QF25.draft.number, 'QF25');
+  assert.equal(byTitle['Hotel Sakura'].draft.address, '1-2-3 Shinjuku, Tokyo');
+  assert.equal(byTitle['Ramen Street'].draft.notes, 'Bring cash');
+  // Codes left out on export stay out on import.
+  const noCodes = parseItinerary(buildIcs(trip, words as never, { includeCodes: false }).text, { now: '2027-01-01', fallbackTz: 'Europe/Paris' });
+  assert.ok(noCodes.every((p) => !p.draft.ref));
+});
+
+test('share: a Satchel trip file round-trips the plans, plan types and codes', async () => {
+  const { buildTripFile, importTripFile, parseTripFileText } = await import('./tripfile.ts');
+  const { itemFromPlan, newPlanForm } = await import('./planform.ts');
+  const tour = itemFromPlan({ ...newPlanForm('2027-03-13', 'Asia/Tokyo', 'tour'), title: 'Asakusa walk', code: 'TR9', start: '10:00', end: '12:00' }, 't')!;
+  const trip: Trip = { id: 't', name: 'Japan', startDate: '2027-03-12', endDate: '2027-03-15', homeTz: 'Australia/Sydney', items: [tour], createdAt: '2027-01-01' };
+  const parsed = parseTripFileText(JSON.stringify(buildTripFile(trip, {}).file));
+  assert.ok(parsed.ok);
+  if (!parsed.ok) return;
+  let n = 0;
+  const back = importTripFile(parsed.file, (p) => `${p}_${++n}`).trip.items[0];
+  assert.equal(back.title, 'Asakusa walk');
+  assert.equal(back.look, 'tour');
+  assert.equal(back.ref, 'TR9');
+  assert.deepEqual(back.start, tour.start);
+  assert.deepEqual(back.end, tour.end);
+});
+
+test('share: the readable text carries every plan of the day, codes only when asked', async () => {
+  const { itineraryText } = await import('./itinerarytext.ts');
+  const { itemFromPlan, newPlanForm } = await import('./planform.ts');
+  const tour = itemFromPlan({ ...newPlanForm('2027-03-13', 'Asia/Tokyo', 'tour'), title: 'Asakusa walk', code: 'TR9' }, 't')!;
+  const trip: Trip = { id: 't', name: 'Japan', startDate: '2027-03-12', endDate: '2027-03-15', homeTz: 'Australia/Sydney', items: [tour], createdAt: '2027-01-01' };
+  const words = { kind: (k: string) => k, dates: (r: string) => r, dayHeading: (d: string) => d, zoneTime: (t: string) => t, noTime: '', arrives: (t: string) => t, code: (r: string) => `Code ${r}`, nothing: 'none' };
+  assert.match(itineraryText(trip, words as never, { includeCodes: true }), /Asakusa walk[\s\S]*Code TR9/);
+  assert.doesNotMatch(itineraryText(trip, words as never, { includeCodes: false }), /TR9/);
 });

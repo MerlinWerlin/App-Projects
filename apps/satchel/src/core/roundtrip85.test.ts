@@ -103,6 +103,8 @@ const flight: Required<Item> = {
   setting: 'outdoor',
   checkin,
   access,
+  // T173: the plan type picked in Add plans myself.
+  look: 'tour',
   attachments: [attachment],
 };
 
@@ -127,6 +129,7 @@ const hotel: Required<Item> = {
   setting: 'outdoor',
   checkin,
   access,
+  look: 'stay',
   attachments: [{ id: 'att_2', uri: `${DOCS}attachments/att_2-voucher.png`, name: 'voucher.png', mime: 'image/png', role: 'booking', qrCropUri: `${DOCS}attachments/att_2-voucher.png`, qrCrop: { x: 0, y: 0.5, w: 1, h: 0.125 } }],
 };
 
@@ -380,7 +383,7 @@ test('T85 fixture: every Trip and Item field is set (Required<> typing + no unde
   // T107: Gift / GiftPerson keys today.
   assert.deepEqual(Object.keys(gift).sort(), ['bag', 'createdAt', 'currency', 'expenseId', 'id', 'lat', 'lon', 'price', 'spotName', 'status', 'updatedAt', 'weightG', 'what', 'where']);
   assert.deepEqual(Object.keys(giftPerson).sort(), ['budget', 'createdAt', 'gifts', 'id', 'name']);
-  assert.deepEqual(Object.keys(flight).sort(), ['access', 'airport', 'attachments', 'carrier', 'checkin', 'end', 'from', 'id', 'kind', 'legInfo', 'notes', 'number', 'place', 'ref', 'seat', 'setting', 'start', 'title', 'to', 'tripId']);
+  assert.deepEqual(Object.keys(flight).sort(), ['access', 'airport', 'attachments', 'carrier', 'checkin', 'end', 'from', 'id', 'kind', 'legInfo', 'look', 'notes', 'number', 'place', 'ref', 'seat', 'setting', 'start', 'title', 'to', 'tripId']);
   // T142: SavedPlace keys today (setting added).
   assert.deepEqual(Object.keys(savedPlace).sort(), ['address', 'category', 'id', 'lat', 'localAddress', 'lon', 'name', 'phone', 'sample', 'savedAt', 'setting']);
   // T143: CheckinInfo keys today.

@@ -16,6 +16,8 @@ import { airportByCode, zoneFromCity } from './airports.ts';
 import type { Item, ItemKind, LocalDate, Trip } from './model.ts';
 import { findDates, findTimes, parseBookings, type PasteBooking } from './pasteparse.ts';
 import { newItemDraft, validateItem, type ItemDraft } from './trips.ts';
+import { draftFromPlan, newPlanForm, planTypeFromWord, readPlanLook, type PlanType } from './planform.ts';
+import { ITEM_KINDS } from './model.ts';
 import { addDays, fromUtc, isLocalDateTime, isValidZone, toUtc } from './tz.ts';
 
 export type ImportSource = 'calendar' | 'plan' | 'booking';
@@ -27,6 +29,8 @@ export type ImportedPlan = {
   draft: ItemDraft;
   /** True when the time or zone is a best guess the traveller should glance at. */
   check: boolean;
+  /** T173: the plan type named in the copy-in format or an AI reply (its icon on the timetable). */
+  look?: PlanType;
 };
 
 export type ImportOptions = {
@@ -305,12 +309,58 @@ export function parseIcs(text: string, opts: ImportOptions): ImportedPlan[] {
       }
     }
     fillPlace(d, location, title);
+    const exact = satchelExact(ev, title, location, notes);
+    if (exact) {
+      out.push({ key: `cal-${out.length}`, source: 'calendar', draft: exact.draft, check: false, ...(exact.look ? { look: exact.look } : {}) });
+      continue;
+    }
     out.push({ key: `cal-${out.length}`, source: 'calendar', draft: fitKind(d), check });
   }
   return out;
 }
 
 const isTransportKind = (k: ItemKind) => k === 'flight' || k === 'train' || k === 'ferry' || k === 'bus';
+
+/**
+ * T173: a calendar file Satchel wrote (src/core/ics.ts adds X-SATCHEL-* lines): the booking exactly as it was, wall
+ * clock, zones, kind, plan type and route, instead of a best guess. Null for any other calendar's events.
+ */
+function satchelExact(ev: RawEvent, title: string, location: string, description: string): { draft: ItemDraft; look?: PlanType } | null {
+  const v = (k: string) => (ev[k] ? unescapeIcs(ev[k].value).trim() : '');
+  const start = v('X-SATCHEL-START');
+  const tz = v('X-SATCHEL-TZ');
+  const kind = v('X-SATCHEL-KIND') as ItemKind;
+  if (!isLocalDateTime(start) || !isValidZone(tz) || !(ITEM_KINDS as readonly string[]).includes(kind)) return null;
+  const end = v('X-SATCHEL-END');
+  const endTz = v('X-SATCHEL-END-TZ');
+  const d = newItemDraft(kind, start.slice(0, 10), tz);
+  d.title = title || location;
+  d.startDate = start.slice(0, 10);
+  d.startTime = start.slice(11, 16);
+  d.startTz = tz;
+  if (isLocalDateTime(end) && isValidZone(endTz)) {
+    d.endDate = end.slice(0, 10);
+    d.endTime = end.slice(11, 16);
+    d.endTz = endTz;
+  } else {
+    d.endDate = '';
+    d.endTime = '';
+    d.endTz = tz;
+  }
+  if (isTransportKind(kind)) {
+    d.fromName = v('X-SATCHEL-FROM');
+    d.toName = v('X-SATCHEL-TO');
+    d.number = v('X-SATCHEL-NUMBER');
+  } else if (location && kind !== 'note') {
+    const [name, ...rest] = location.split(/,\s*/);
+    d.placeName = name.trim();
+    d.address = rest.join(', ').trim();
+  }
+  d.ref = (/^Booking code: (.+)$/m.exec(description)?.[1] ?? '').trim();
+  d.notes = (/^Notes: ([\s\S]*)$/m.exec(description)?.[1] ?? '').trim();
+  if (validateItem(d).length) return null;
+  return { draft: d, look: readPlanLook(v('X-SATCHEL-LOOK')) };
+}
 
 /** A local wall time plus minutes (no zone involved: the event's own clock). */
 function shiftLocal(local: string, min: number): string {
@@ -459,6 +509,8 @@ export function parseItinerary(text: string, opts: ImportOptions): ImportedPlan[
       const v = jsonIn(text);
       if (v !== undefined) return isJsonLd(v) ? parseJsonLd(v, opts) : readAiReply(text, opts).plans;
     }
+    // The copy-in format (one plan per line, from the traveller or their own AI).
+    if (looksLikeLines(text)) return readLines(text, opts).plans;
     const bookings: ImportedPlan[] = parseBookings(text.slice(0, 50_000), { now: opts.now, us: opts.us, fallbackTz: opts.fallbackTz })
       .filter((b: PasteBooking) => b.draft.startDate && b.draft.startTime && isValidZone(b.draft.startTz))
       .map((b, i) => ({ key: `bk-${i}`, source: 'booking' as const, draft: fitKind({ ...b.draft, title: b.draft.title.trim() || b.draft.placeName || b.draft.toName }), check: Object.values(b.confidence).includes('low') }));
@@ -745,7 +797,7 @@ export function readAiReply(text: string, opts: ImportOptions): AiReply {
       });
       const fno = kind === 'flight' ? FLIGHT_NO.exec(title) : null;
       if (fno) d.number = `${fno[1]}${fno[2]}`;
-      plans.push({ key: `ai-${i}`, source: 'plan', draft: fitKind(d), check: !tzRaw || !start });
+      plans.push({ key: `ai-${i}`, source: 'plan', draft: fitKind(d), check: !tzRaw || !start, look: planTypeFromWord(type) });
     });
     return { plans, problems, error: null };
   } catch {
@@ -754,26 +806,135 @@ export function readAiReply(text: string, opts: ImportOptions): AiReply {
 }
 
 /**
- * The prompt for "Use your own AI": the traveller copies it (with their itinerary text when they have pasted it)
- * into their own AI chat and pastes the reply back. Asks for a strict JSON list Satchel can check.
+ * The prompt for "Use your own AI" (T173): the traveller copies it, with their itinerary when they have pasted one,
+ * into their own AI chat and pastes the reply back. It asks for the copy-in format, one plan per line, which the
+ * traveller can read and fix by hand too.
  */
 export function aiPrompt(itinerary: string, trip?: { name: string; startDate: string; endDate: string }): string {
   const lines = [
-    'Turn my travel itinerary below into a JSON list for my travel app.',
-    'Reply with ONLY the JSON (no other words), in exactly this shape:',
-    '[',
-    '  {"date": "2027-03-03", "start": "09:30", "end": "11:00", "endDate": "", "type": "tour", "title": "Old town walking tour", "place": "Town Hall", "address": "", "from": "", "to": "", "code": "", "timezone": "Europe/Paris"}',
-    ']',
+    'Rewrite my travel itinerary below for my travel app, one plan per line, in exactly this format:',
+    FORMAT_RULE,
+    '',
+    'Example:',
+    FORMAT_EXAMPLE,
+    '',
     'Rules:',
-    '- One object per booking or plan, in time order.',
-    '- date and endDate are YYYY-MM-DD. start and end are 24-hour HH:MM, in local time where it happens. Use "" when unknown.',
-    '- type is one of: flight, train, ferry, bus, transfer, car, hotel, food, tour, activity, free, note.',
-    '- Flights, trains, ferries and buses: "from" and "to" are the places; end and endDate are the arrival.',
-    '- Hotels: date and start are check-in; endDate and end are check-out.',
-    '- code is the booking or confirmation code. timezone is the IANA time zone where it starts (like Asia/Tokyo).',
-    '- Do not invent anything that is not in the itinerary.',
+    '- Reply with ONLY the lines, in time order, no other words.',
+    '- Day like "Mon 12 May". Times are 24-hour HH:MM, in local time where it happens; add –End when there is an end or arrival time.',
+    '- Type is one of: Flight, Stay, Tour, Food, Transport, Free time, Other.',
+    '- For each hotel stay, also add a line on the check-out day: Day · time · Check-out: the same hotel name.',
+    '- Leave out the place or booking code when unknown (just end the line there). Do not invent anything.',
   ];
   if (trip) lines.push(`The trip is "${trip.name}", ${trip.startDate} to ${trip.endDate} (use these years for dates without one).`);
   lines.push('', 'My itinerary:', itinerary.trim() ? itinerary.trim().slice(0, 30_000) : '[paste your itinerary here]');
   return lines.join('\n');
+}
+
+// ---------------------------------------------------------------------------------------------------------------
+// T173: the copy-in format, one plan per line:
+//   Mon 12 May · 09:30–11:00 · Tour: Old town walking tour · Town Hall, 1 Main St · ABC123
+// Day · start[–end] · Type: title · place or address (optional) · booking code (optional). "|" works as the
+// separator too. Types: Flight, Stay, Tour, Food, Transport, Free time, Other (src/core/planform.ts). A stay's
+// check-out is its own line ("Check-out: Hotel name"), paired with the stay; an unpaired stay is one night.
+
+/** The example the screen shows and the prompt asks for. */
+export const FORMAT_EXAMPLE = [
+  'Mon 12 May · 09:30–20:45 · Flight: QF1 Sydney to Tokyo · Sydney Airport T1 · ABC123',
+  'Mon 12 May · 15:00 · Stay: Hotel Sakura · 1-2-3 Shinjuku, Tokyo · HX8812',
+  'Tue 13 May · 10:00–12:00 · Tour: Asakusa walking tour · Kaminarimon Gate',
+  'Tue 13 May · 19:00 · Food: Dinner at Ramen Street · Tokyo Station',
+  'Wed 14 May · 13:00–17:00 · Free time: Shopping in Harajuku',
+  'Thu 15 May · 11:00 · Check-out: Hotel Sakura',
+].join('\n');
+
+/** The format in words, for the screen and the prompt. */
+export const FORMAT_RULE = 'Day · Start–End · Type: Title · Place or address · Booking code';
+
+const LINE_SEP = /\s+[·|•]\s+|\t+/;
+export type LineProblem = { line: number; reason: 'date' | 'time' | 'title' };
+export type LineRead = { plans: ImportedPlan[]; problems: LineProblem[] };
+
+/** Lines written in the copy-in format (at least two separators), with their 1-based line numbers. */
+function formatLines(text: string): { n: number; parts: string[] }[] {
+  return text
+    .replace(/\r\n?/g, '\n')
+    .split('\n')
+    .map((l, i) => ({ n: i + 1, parts: l.replace(/^\s*[-*•]\s+/, '').split(LINE_SEP).map((p) => p.trim()) }))
+    .filter((l) => l.parts.length >= 3 && l.parts[0] !== '');
+}
+
+/** True when the text uses the copy-in format. */
+export const looksLikeLines = (text: string) => formatLines(text.slice(0, MAX_IMPORT_CHARS)).length > 0;
+
+/** Plans from text in the copy-in format, and the lines that couldn't be read (with why). Never throws. */
+export function readLines(text: string, opts: ImportOptions): LineRead {
+  const plans: ImportedPlan[] = [];
+  const problems: LineProblem[] = [];
+  const stays: { plan: ImportedPlan; name: string }[] = [];
+  try {
+    for (const { n, parts } of formatLines(text.slice(0, MAX_IMPORT_CHARS))) {
+      if (plans.length >= MAX_IMPORT_ITEMS) break;
+      const [dayText, timeText, what, place = '', code = ''] = parts;
+      const dn = DAY_N.exec(dayText);
+      const date = findDates(dayText, { now: opts.now, us: opts.us })[0]?.date ?? (dn && opts.firstDay ? addDays(opts.firstDay, Math.max(0, +dn[1] - 1)) : '');
+      if (!date) {
+        problems.push({ line: n, reason: 'date' });
+        continue;
+      }
+      const times = findTimes(timeText);
+      if (!times.length && !/noon|midday/i.test(timeText)) {
+        problems.push({ line: n, reason: 'time' });
+        continue;
+      }
+      const m = /^([^:]{2,20}):\s*(.*)$/.exec(what);
+      const word = m ? m[1].trim() : '';
+      const title = (m ? m[2] : what).trim();
+      if (!title) {
+        problems.push({ line: n, reason: 'title' });
+        continue;
+      }
+      const cleanCode = code.replace(/^(?:conf(?:irmation)?|ref(?:erence)?|code|booking|pnr)\b\.?\s*[:#]?\s*/i, '').trim();
+      // A check-out line closes the stay it names.
+      if (/^check[\s-]?out$/i.test(word)) {
+        const key = title.toLowerCase();
+        const stay = [...stays].reverse().find((s) => s.name === key || key.includes(s.name) || s.name.includes(key));
+        if (stay && date > stay.plan.draft.startDate) {
+          stay.plan.draft.endDate = date;
+          stay.plan.draft.endTime = times[0]?.time ?? '11:00';
+          stay.plan.check = false;
+        }
+        continue;
+      }
+      const type = planTypeFromWord(word) ?? (guessKind(title, place) === 'flight' ? 'flight' : guessKind(title, place) === 'hotel' ? 'stay' : 'other');
+      const zone = zoneFor(`${place} ${title}`);
+      const form = newPlanForm(date, zone ?? opts.fallbackTz, type);
+      Object.assign(form, {
+        start: times[0]?.time ?? '12:00',
+        end: times[1]?.time ?? (type === 'stay' ? '11:00' : ''),
+        title,
+        place,
+        code: cleanCode,
+      });
+      if (type === 'flight' && times[1]) {
+        // A flight lands on the clock where it arrives, when the title names the place.
+        const r = routeIn(title);
+        const arrive = r ? zoneFor(r.to) : undefined;
+        const d = draftFromPlan(form);
+        if (arrive) d.endTz = arrive;
+        if (r) {
+          d.fromName = place || r.from;
+          d.toName = r.to;
+        }
+        if (!d.number) d.number = FLIGHT_NO.exec(title)?.slice(1, 3).join('') ?? '';
+        plans.push({ key: `line-${n}`, source: 'plan', draft: fitKind(d), check: !zone, look: 'flight' });
+        continue;
+      }
+      const plan: ImportedPlan = { key: `line-${n}`, source: 'plan', draft: draftFromPlan(form), check: !zone || type === 'stay', look: type };
+      if (type === 'stay') stays.push({ plan, name: title.toLowerCase() });
+      plans.push(plan);
+    }
+  } catch {
+    // keep what was read
+  }
+  return { plans, problems };
 }

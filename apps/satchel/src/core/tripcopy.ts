@@ -117,6 +117,8 @@ export const ITEM_RULES: Rules<Item> = {
   checkin: 'keep',
   // T156: the lift and the note are about the place; the room request and assistance booking are that trip's (ACCESS_RULES).
   access: 'keep',
+  // T173: the plan type picked for it.
+  look: 'keep',
   attachments: 'drop',
 };
 

@@ -17,6 +17,7 @@ import { isTransport, type Item, type LocalDate, type LocalDateTime, type Stamp,
 import { groupByDay, sortItems, zonesReadable } from './timeline.ts';
 import { addDays, fromUtc, isLocalDateTime, localDate, toUtc } from './tz.ts';
 import { FREE_WORDS } from './itinerary.ts';
+import { readPlanLook } from './planform.ts';
 
 /** How a block looks: its own icon and colour on the timetable. */
 export type BlockLook =
@@ -105,6 +106,12 @@ const TRANSFER = /\b(transfer|pick[\s-]?up|drop[\s-]?off|shuttle|taxi|uber|lyft|
 
 /** The look of a booking (for its whole block), from its kind and title words. */
 export function lookOf(item: Item): BlockLook {
+  // T173: the type picked when the plan was added wins (stays and journeys keep their own roles).
+  const picked = readPlanLook(item.look);
+  if (picked && item.kind !== 'hotel' && !(isTransport(item.kind) && picked === 'transport')) {
+    const byPick: Record<typeof picked, BlockLook> = { flight: 'flight', stay: 'checkin', tour: 'tour', food: 'food', transport: 'transfer', free: 'free', other: item.kind === 'note' ? 'note' : 'activity' };
+    if (item.kind !== 'flight' || picked === 'flight') return byPick[picked];
+  }
   const words = `${item.title} ${item.place?.name ?? ''}`;
   switch (item.kind) {
     case 'flight':
