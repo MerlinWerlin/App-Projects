@@ -1,0 +1,56 @@
+{
+  "theme": "protea-blush",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "protea-blush",
+      "id": "blush-rose-chafer",
+      "label": "Blush rose chafer",
+      "ref": "107-protea-blush\\widgets\\silver-leaf.png",
+      "subject": "one tiny rose-chafer beetle with softly reflective rose-bronze wing cases and coherent six fine legs resting on a short silver-sage twig, soft dusty pink reflected light, refined natural macro botanical companion, no flower or broad leaf pair",
+      "prompt": "Use case: stylized-concept. Glaze Protea Blush, one original standalone 1024 x 1024 square pure artwork of one tiny rose-chafer beetle with softly reflective rose-bronze wing cases and coherent six fine legs resting on a short silver-sage twig, soft dusty pink reflected light, refined natural macro botanical companion, no flower or broad leaf pair. Sophisticated editorial botanical photographic illustration on seamless pale blush #EDE3E4 backdrop and surface, dusty rose, ivory, muted silver-sage, detailed fine fibres and waxy botanical texture, soft diffuse natural studio light matching reference. New subject/composition never copy/crop/recolour. Compact complete specimen centred within16percent clear margins. No text, writing, numbers, labels, logos, watermark, UI/frame, clock/dial/hands, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-79250403-cec9-4bb1-9b15-547d2c0217de.png",
+      "image": "widget-blush-rose-chafer.56c8fe66.webp",
+      "sha256": "56c8fe66e1ef767b0105937bfc6f8e006cd8ab245fb37b6d8302f981fbc524c1",
+      "bytes": 162132,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "protea-blush",
+      "id": "blush-satin-moth",
+      "label": "Blush satin moth",
+      "ref": "107-protea-blush\\widgets\\silver-leaf.png",
+      "subject": "one delicate pale dusty-blush moth with wings softly open as two gentle satin triangles, tiny ivory body, fine silver-sage wing veins and feathery antennae, exquisite natural macro detail, whole silhouette visible, no flower, leaf pair, beetle or bird",
+      "prompt": "Use case: stylized-concept. Glaze Protea Blush, original standalone 1024 x 1024 square pure artwork of one delicate pale dusty-blush moth with wings softly open as two gentle satin triangles, tiny ivory body, fine silver-sage wing veins and feathery antennae, exquisite natural macro detail, whole silhouette visible, no flower, leaf pair, beetle or bird. Sophisticated editorial botanical photographic illustration on seamless pale blush #EDE3E4 backdrop, dusty rose/ivory/silver-sage palette, soft diffuse natural studio light matching reference. New subject and composition, no copy/crop/recolour. Compact complete subject centered within16percent clear margins. No text, numbers, labels, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-3fdc40ad-c89c-4a87-a904-11356279b7e8.png",
+      "image": "widget-blush-satin-moth.70c4f5d5.webp",
+      "sha256": "70c4f5d539f1181638578a5bf4bcf1c2b5deedf9f8ff69e50cfcde3eeb26f5cb",
+      "bytes": 162738,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "protea-blush",
+      "id": "protea-sugarbird",
+      "label": "Protea sugarbird",
+      "ref": "107-protea-blush\\widgets\\king-protea.png",
+      "subject": "one delicate small Cape sugarbird perched on a short silver-sage twig, subtle dusty rose reflected light across warm grey feathers, long slender curved beak and elegant long tail, whole bird and tail visible, anatomically coherent natural botanical wildlife, no protea blossom or leaf pair",
+      "prompt": "Use case: stylized-concept. Glaze Protea Blush, original standalone 1024 x 1024 square pure artwork of one delicate small Cape sugarbird perched on a short silver-sage twig, subtle dusty rose reflected light across warm grey feathers, long slender curved beak and elegant long tail, whole bird and tail visible, anatomically coherent natural botanical wildlife, no protea blossom or leaf pair. Sophisticated editorial botanical photographic illustration on seamless pale blush #EDE3E4 backdrop, dusty rose/ivory/silver-sage palette, soft diffuse natural studio light matching reference. New subject and composition, no copy/crop/recolour. Compact complete subject centered within16percent clear margins. No text, numbers, labels, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-3a4a6ebd-08ae-442b-aa4e-2673591da96c.png",
+      "image": "widget-protea-sugarbird.3cc5d3c0.webp",
+      "sha256": "3cc5d3c05fc04b2e71a619ca0d39712213368d739f038248909656bbc6c0fe98",
+      "bytes": 102894,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}
