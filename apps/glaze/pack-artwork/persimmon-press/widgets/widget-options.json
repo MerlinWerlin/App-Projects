@@ -1,0 +1,26 @@
+[
+  {
+    "id": "harvest-basket",
+    "kind": "art",
+    "image": "widget-harvest-basket.d46fa736.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Harvest Basket"
+  },
+  {
+    "id": "orchard-songbird",
+    "kind": "art",
+    "image": "widget-orchard-songbird.80c2c739.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Orchard Songbird"
+  }
+]
