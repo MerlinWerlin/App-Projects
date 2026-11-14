@@ -36,10 +36,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned image verification dependency
+        run: python -m pip install -r scripts/packs/requirements-images.txt
       - name: Tests and all 139 source themes must be complete
         run: |
           node --test "scripts/packs/*.test.mjs"
           node scripts/packs/artwork_progress.mjs --complete --markdown
+          python scripts/packs/verify_artwork_images.py
       - name: Refuse to overwrite an intervening catalogue update
         run: |
           node --input-type=module <<'NODE'

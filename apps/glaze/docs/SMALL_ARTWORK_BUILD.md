@@ -14,11 +14,13 @@ Visual inspection of all 528 app-selected existing images found 22 functional pi
 
 Each theme has `pack-artwork/<id>/widgets/widget-options.json`, an array of pure-art options, and 1024×1024 content-hashed WebPs beside it. The theme's `provenance.json` retains each original generation prompt, source reference and final image hash. Surplus experiments are excluded.
 
-Run from `apps/glaze` with Node 22 or newer:
+Run from `apps/glaze` with Node 24 and Python 3.13:
 
 ```sh
+python -m pip install -r scripts/packs/requirements-images.txt
 node --test "scripts/packs/*.test.mjs"
 node scripts/packs/artwork_progress.mjs --markdown
+python scripts/packs/verify_artwork_images.py
 node scripts/packs/cache_artwork_baseline.mjs \
   --snapshot scripts/packs/artwork-baseline --out dist/published-cache
 node scripts/packs/build_packs.mjs \

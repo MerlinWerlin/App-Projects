@@ -118,7 +118,8 @@ export async function buildArtworkAdditions(opts) {
     if (!base || !candidates.includes(id)) throw new Error(`${id}: missing baseline or artwork sources`);
     plans.set(id, readArtworkAdditions(addDir, id, applyArtworkCorrections(base, corrections)));
   }
-  if (opts.complete) for (const [id, m] of baseline.manifests) if ((plans.get(id)?.artwork ?? artwork(applyArtworkCorrections(m, corrections))).length !== 5) throw new Error(`${id}: final build still needs artwork`);
+  const pending = [...baseline.manifests].filter(([id, m]) => (plans.get(id)?.artwork ?? artwork(applyArtworkCorrections(m, corrections))).length !== 5).map(([id]) => id);
+  if (opts.complete && pending.length) throw new Error(`${pending[0]}: final build still needs artwork`);
   // Preflight every old byte BEFORE touching any output. Missing files require the cache command.
   for (const [id, m] of baseline.manifests) {
     for (const asset of m.assets) {
@@ -173,7 +174,7 @@ export async function buildArtworkAdditions(opts) {
   save(join(outDir, 'versions.json'), versions);
   save(join(outDir, 'releases.json'), releases);
   save(join(outDir, 'artwork-coverage.json'), { generated: 'scripts/packs/build_packs.mjs --base-packs --add-art', themes: entries.length, byArtworkCount, problems: [], perTheme: coverage });
-  save(join(outDir, 'artwork-build.json'), { baselineCatalogSha256: baseline.lock.catalogSha256, baselineCatalogUrl: baseline.lock.catalogUrl, catalogTag: 'glaze-packs-v5', correctedFunctionalOptions: corrections, complete: Object.values(coverage).every((t) => t.artwork.length === 5), built });
+  save(join(outDir, 'artwork-build.json'), { baselineCatalogSha256: baseline.lock.catalogSha256, baselineCatalogUrl: baseline.lock.catalogUrl, catalogTag: 'glaze-packs-v5', correctedFunctionalOptions: corrections, complete: pending.length === 0, pending, built });
   save(join(outDir, 'catalog.json'), catalog); // catalogue written last, never uploaded here
   opts.log?.(`Artwork build: ${built.length} themes, ${built.reduce((n, x) => n + x.added.length, 0)} additions; ${JSON.stringify(byArtworkCount)}`);
   return { catalog, built, failed: [], writes, encoder: 'existing WebP bytes (unchanged)' };
