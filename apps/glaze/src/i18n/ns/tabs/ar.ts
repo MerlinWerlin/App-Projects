@@ -62,6 +62,26 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
     // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
     soonSizes: 'الأدوات المتوسطة والكبيرة قادمة قريبًا. حاليًا، أضف رسومات سمتك في الحجم الصغير.',
     soonA11y: '{kind}، {size}. قريبًا.',
+    // Owner 2026-11-15: Your artwork, the Custom 1-5 widgets' own pictures (src/ui/CustomArtSlots.tsx).
+    custom: {
+      title: "أعمالك الفنية",
+      makeItYours: "اجعلها لك: أضف صورك هنا، ثم ضع «مخصص 1» إلى «مخصص 5» على الشاشة الرئيسية.",
+      privacy: "تبقى صورك على هذا الـ iPhone ولا تُرفع أبدًا.",
+      slot: "مخصص {n}",
+      add: "إضافة صورة",
+      addA11y: "أضف صورة إلى مخصص {n}",
+      saving: "جارٍ الحفظ…",
+      filledA11y: "صورتك في مخصص {n}",
+      replace: "استبدال",
+      replaceA11y: "استبدل الصورة في مخصص {n}",
+      remove: "إزالة",
+      removeA11y: "أزل الصورة من مخصص {n}",
+      removeTitle: "إزالة الصورة من مخصص {n}؟",
+      removeBody: "ستطلب منك أداة مخصص {n} إضافة صورة في Glaze.",
+      cancel: "إلغاء",
+      denied: "لا يستطيع Glaze فتح صورك. اسمح بالوصول من الإعدادات.",
+      failed: "تعذّر حفظ هذه الصورة. جرّب صورة أخرى.",
+    },
     lockNote: 'تُضاف أدوات Glaze لشاشة القفل (الساعة، التاريخ، البطارية، العد التنازلي، القمر) من شاشة القفل نفسها: المس مطولًا، ثم اضغط تخصيص > شاشة القفل > منطقة الأدوات واختر Glaze. تستخدم خط سمتك، ويختار iOS لونها.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).
     link: {

@@ -15,7 +15,7 @@ EXACT = [
 ]
 ALLOWED = {
     'src/ui/WidgetArtMenu.tsx': 'Design review 1.0.33 (owner TestFlight screenshots: Live art cards showed an empty frame / ring): one added overlay, <LiveArtSample> (src/ui/LiveArtSample.tsx), draws a sample date / 25:00 / time inside a number-free piece liveFrame, plus a themeInk prop. Compositing, blending, placement and every other line unchanged. Owned by Claude.',
-    'app/(tabs)/widgets.tsx': 'Owner 2026-11-14 (large image and large number next to each other, not separate): the separate theme art picker is no longer shown; My widget art is the one numbered Artwork list. Owned by Claude.',
+    'app/(tabs)/widgets.tsx': 'Owner 2026-11-14 (large image and large number next to each other, not separate): the separate theme art picker is no longer shown; My widget art is the one numbered Artwork list. 1.0.36 (owner 2026-11-15, make your own theme): a Your artwork section (src/ui/CustomArtSlots.tsx) is added under it on Small; nothing above it changes. Owned by Claude.',
     'src/core/widgetArtLibrary.ts': 'Owner 2026-11-13 (Artwork 1 to 5 must match in the app and on the Home Screen): the index carries an optional ordered artwork list (readMeta). Pieces, parsing and every other field unchanged. Owned by Claude.',
     'src/ui/ThemeWidgetArt.tsx': 'Owner 2026-11-13 (remove the large variations unless native): the theme pack art menu shows on the Small tab only; Medium and Large keep the native widgets. Owned by Claude.',
     'src/ui/WidgetArtLibraryList.tsx': 'Owner 2026-11-12 ("colour code them"): each piece that fills an Artwork slot shows the colour and number badge of that slot (src/core/artworkSlots.ts). Listing, removing and managing unchanged. Owned by Claude.',
@@ -32,7 +32,7 @@ ALLOWED = {
     'src/core/packDownloader.ts': 'Persist the catalogue release when writing a downloaded manifest.',
     'src/core/themeArtResume.ts': 'Carry the installed manifest release through theme lookup.',
     'src/native/widgets.ts': 'Expose the recovery reset on the existing serial art queue.',
-    'modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift': 'Expose the separate photo-preserving recovery reset, then invalidate and reload.',
+    'modules/glaze-widget-bridge/ios/GlazeWidgetBridgeModule.swift': 'Expose the separate photo-preserving recovery reset, then invalidate and reload. 1.0.36 (owner 2026-11-15): three added functions, customArtSlots / setCustomArt / clearCustomArt (CustomArtSlots.swift, the custom-art folder only); every existing function unchanged.',
     'src/store/launchWork.ts': 'Run one-time recovery before the original deferred queue loads old pending state.',
     'targets/widget/SeamlessWidget.swift': 'Owner 2026-11-09 (Add Widget gallery kept the old theme): isPreview snapshots and placeholders render from a 360 px ImageIO thumbnail (GalleryThumbnail, preview mode) so the gallery fits the widget extension memory limit. Timelines (placed widgets) unchanged. Owned by Claude.',
     'targets/widget/WidgetArtLibrary.swift': 'Owner 2026-11-09: ArtEntry.preview from context.isPreview, WidgetArtStore.preview (thumbnail), and a per-record design flag so Art slots read index.json once. Timelines unchanged. Owned by Claude.',

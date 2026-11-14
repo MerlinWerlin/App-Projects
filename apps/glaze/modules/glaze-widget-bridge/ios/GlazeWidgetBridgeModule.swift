@@ -301,6 +301,31 @@ public class GlazeWidgetBridgeModule: Module {
       return true
     }
 
+    /// Owner 2026-11-15 "Your artwork" (CustomArtSlots.swift): the Custom 1-5 widgets' own pictures,
+    /// kept in the App Group on the device only. Every change reloads every timeline.
+    AsyncFunction("customArtSlots") { () -> [String] in
+      guard let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else { return [] }
+      return CustomArtSlots.list(container: container)
+    }
+
+    AsyncFunction("setCustomArt") { (slot: Int, uri: String) -> Bool in
+      guard
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+        CustomArtSlots.save(slot: slot, uri: uri, container: container)
+      else { return false }
+      GlazeWidgetBridgeModule.reloadWidgets()
+      return true
+    }
+
+    AsyncFunction("clearCustomArt") { (slot: Int) -> Bool in
+      guard
+        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup),
+        CustomArtSlots.clear(slot: slot, container: container)
+      else { return false }
+      GlazeWidgetBridgeModule.reloadWidgets()
+      return true
+    }
+
     /// T221 "My widget art": copies one App Group file the bridge just wrote (seamless-<size>.png
     /// from setWidgetArt / setSeamless, or widget-photo.jpg from setPhoto) into widget-art/<id>.jpg,
     /// so applying a new piece ADDS to the library instead of only overwriting the per-size image.
