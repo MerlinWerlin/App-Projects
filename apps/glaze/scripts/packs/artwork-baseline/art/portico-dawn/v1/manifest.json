@@ -1,0 +1,270 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "portico-dawn",
+  "packVersion": 1,
+  "name": "Portico Dawn",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DCCFC1",
+    "tile": "#C1B5A9",
+    "glyph": "#1C1816",
+    "accent": "#BC9B7A",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Portico Dawn",
+    "mood": "A sandstone portico at first light.",
+    "tags": [
+      "portico",
+      "dawn",
+      "sandstone",
+      "first",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait original premium Glaze wallpaper Portico Dawn. Pale matte sandstone #E8DFD2, TOP72percent completelyemptyquietstone forUI. BOTTOM25percent one small exquisite architecturalmodel of a low TRAVERTINE PORTICO with exactly3roundedarchopenings inaline, simpleflatcornice and three shallowstepbase. Fullfreestandingmodel max65percentwidth22percenttotalheight withsafe margins, subtleporouslimestonetexture, warmsoftsidelight and coherentdelicatecastshadow. Restrained sculpturalarchitecture notrealbuilding, no talltower/stairsabove/no plants/animals/people. Quiet neutralstone/bronze palette, no text/logo/device/UI.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "8SgGCwJ6f2h4hXtmiHB6CKc=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.1ef291f4.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 96764,
+      "sha256": "1ef291f40a86c83dfdbd228ddfaf8f223f6f1afdbf4776838315be5dfaf948cb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.e7e1c913.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 86530,
+      "sha256": "e7e1c913da0960c748f549c0fed272c209ac65e43e1f643cdb628e77e888a1fb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.81d76153.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 44834,
+      "sha256": "81d76153c406e8c5c0fa45c580e5e45f2a372bbe2f8e721ea3afe1fada25925d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.a89c18f1.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 24410,
+      "sha256": "a89c18f1f258cfb0e223cf9e840e23b9add5bc280989fb64d4f92a19a4167c1f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.5782936e.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 29372,
+      "sha256": "5782936e438de8c1e546e4a813b9ee137b00155f94d9c0dfb4f50638330c9258",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.9dab91c3.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 80188,
+      "sha256": "9dab91c3b031d3ad09afeca27f3b6bee4eb8d84fcfce2c646a355bdec75c9b45",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.04617b1b.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 6132,
+      "sha256": "04617b1b64041cf6007c327625961e221a1c97768d732bdbdc8a00661bde9b3d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-curved-stair.efde5f9d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 65190,
+      "sha256": "efde5f9d7d3352aff1d7755218911a92709ec0a19615892d91d2a8656fbdba53",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-dawn-focus.e434fcbe.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 52334,
+      "sha256": "e434fcbe4c89577dfd024592c562a69bbd2c3d58ba9de4c57e2436950ba95e03",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fluted-column.cd0a8424.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 30190,
+      "sha256": "cd0a8424f5e2268ccccbca5c3a6f9d05fd70813a07a17b6242c526f7c1ccb267",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-portico-date.f7ad4c1f.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 66902,
+      "sha256": "f7ad4c1f7614bc3b5e92e5dfa845ced8fe461d2c08146275f0c83293ea578c2c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stone-clock.e255eac4.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 64532,
+      "sha256": "e255eac476b23427349ba04d689e85a25ea8ba0d791643ca99f3adf5875428ed",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-three-arch-portico.34195cd7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 62718,
+      "sha256": "34195cd75a84d8575dc52407bc44ca3494e4d160fed3aafcd104712a2e61d866",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 710096,
+  "widgets": [
+    {
+      "id": "curved-stair",
+      "kind": "art",
+      "image": "widget-curved-stair.efde5f9d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Curved stair"
+    },
+    {
+      "id": "dawn-focus",
+      "kind": "focus",
+      "image": "widget-dawn-focus.e434fcbe.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Dawn focus"
+    },
+    {
+      "id": "fluted-column",
+      "kind": "art",
+      "image": "widget-fluted-column.cd0a8424.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fluted column"
+    },
+    {
+      "id": "portico-date",
+      "kind": "calendar",
+      "image": "widget-portico-date.f7ad4c1f.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Portico date"
+    },
+    {
+      "id": "stone-clock",
+      "kind": "clock",
+      "image": "widget-stone-clock.e255eac4.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stone clock"
+    },
+    {
+      "id": "three-arch-portico",
+      "kind": "art",
+      "image": "widget-three-arch-portico.34195cd7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Three arch portico"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.a89c18f1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.5782936e.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.9dab91c3.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

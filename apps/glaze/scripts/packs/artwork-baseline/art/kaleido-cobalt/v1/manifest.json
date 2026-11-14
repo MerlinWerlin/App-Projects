@@ -1,0 +1,271 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "kaleido-cobalt",
+  "packVersion": 1,
+  "name": "Kaleido Cobalt",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#23344A",
+    "tile": "#414F62",
+    "glyph": "#FAF8F2",
+    "accent": "#131E37",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Kaleido Cobalt",
+    "mood": "A cobalt kaleidoscope on blue slate.",
+    "tags": [
+      "kaleido",
+      "cobalt",
+      "kaleidoscope",
+      "blue",
+      "slate",
+      "dark"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 Glaze wallpaper KALEIDO COBALT. Deep blue-slate #283748 upper72percent EMPTY uniform calm matte field with subtle paper grain only, no stars, patterns or objects behind icons. Bottom24percent one SMALL original cobalt-enamel kaleidoscope cylinder lying diagonally on matching floor, fine brass end rings, a visible round faceted-glass end with teal/ruby/cobalt radial reflection. Two tiny loose coloured-glass triangles beside cylinder. Whole vignette at most45percent canvas width,20percent height, centered low, complete cylinder/endcaps fully visible with broad margins. Refined realistic enamel/brass/glass craftsmanship, soft reflections and gentle studio shadow, no neon light spill, logos, letters, people, phone, UI, border or frame. Original fictional optical object.",
+    "addedAt": "2026-11-01",
+    "category": "Abstract & Art"
+  },
+  "thumbhash": "DtcBAwCPZPeKdHd59pZ2C5g=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.39dcb330.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 86168,
+      "sha256": "39dcb330532054d9deb6a4b5b0df6758cfd35a222b56db5b6914a4a9d6703df1",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.613adaaf.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 74530,
+      "sha256": "613adaaf9579325dab213da576e5a399228b81eb35e0ce183c7b3d834fe98ffb",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.7ae42ffc.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 32704,
+      "sha256": "7ae42ffcd0a2fc5b7111e5b324c950255fb9affe82ba104ae636819be0fe5f10",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.209c89c3.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 32912,
+      "sha256": "209c89c37c7f902461c2459fa52789dbbfb32e7c96e8d1490d0330dc972e1034",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.d83e2948.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 72216,
+      "sha256": "d83e2948e87eae291e8ad81438ec4ed084dae210e19b0835c33b3d15aff30d7a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.70b17d54.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 142552,
+      "sha256": "70b17d5413e8c9732c7f2e143da473faa2cb95e600e19e726cb77ff113e4c69b",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.8869cc33.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4568,
+      "sha256": "8869cc33d0a225c91c512616e7e0d2a1768ded9d87910ee776713fb8ee3b09d7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cobalt-date.67a3c558.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 44930,
+      "sha256": "67a3c558315afdb13fa4ddacce6d0d3d96e3c06c261f914cbf5979fea80b5658",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-cobalt-kaleidoscope.5e5fc1b3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 90104,
+      "sha256": "5e5fc1b3eeeee48ee74570c95973d1592cf1cca96b1e7ef772ff730c1a740c7d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-kaleido-focus.61fe8338.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 59706,
+      "sha256": "61fe8338604df19d9fe25c900ef67def95b1b5f3d14a6e3b83a6cec73ecff739",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-mirror-triad.d8c3b7ab.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 55390,
+      "sha256": "d8c3b7ab526e74a6bcd1102ea512ffa560d9ed8fd99bfe2b4b62953bcfe06b61",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-optical-rosette.5168b0ae.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 108994,
+      "sha256": "5168b0ae05c8c3075fb7110d9ef4ecc7e09e15b19ccd0c0462410353b8cf0716",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-prism-clock.b2b3d79e.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 39050,
+      "sha256": "b2b3d79eeacac501c86c35cdc0de2b66b48c547f7109173049e1b47269290149",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 843824,
+  "widgets": [
+    {
+      "id": "cobalt-date",
+      "kind": "calendar",
+      "image": "widget-cobalt-date.67a3c558.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cobalt date"
+    },
+    {
+      "id": "cobalt-kaleidoscope",
+      "kind": "art",
+      "image": "widget-cobalt-kaleidoscope.5e5fc1b3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Cobalt kaleidoscope"
+    },
+    {
+      "id": "kaleido-focus",
+      "kind": "focus",
+      "image": "widget-kaleido-focus.61fe8338.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Kaleido focus"
+    },
+    {
+      "id": "mirror-triad",
+      "kind": "art",
+      "image": "widget-mirror-triad.d8c3b7ab.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Mirror triad"
+    },
+    {
+      "id": "optical-rosette",
+      "kind": "art",
+      "image": "widget-optical-rosette.5168b0ae.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Optical rosette"
+    },
+    {
+      "id": "prism-clock",
+      "kind": "clock",
+      "image": "widget-prism-clock.b2b3d79e.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Prism clock"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.209c89c3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.d83e2948.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.70b17d54.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

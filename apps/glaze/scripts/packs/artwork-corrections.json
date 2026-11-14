@@ -1,0 +1,104 @@
+{
+  "agate-apricot": {
+    "options": {
+      "crystal-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "billabong-clay": {
+    "options": {
+      "drop-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "cherry-arcade": {
+    "options": {
+      "arcade-goals": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "crumbkin": {
+    "options": {
+      "crumb-goals": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "glider-nook": {
+    "options": {
+      "leaf-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "magnolia-veil": {
+    "options": {
+      "gentle-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "otter-wash": {
+    "options": {
+      "shell-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "persimmon-press": {
+    "options": {
+      "seed-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "phosphor-amber": {
+    "options": {
+      "buffer-progress-v2": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "protea-blush": {
+    "options": {
+      "bloom-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "puffin-fold": {
+    "options": {
+      "egg-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "sonata-house": {
+    "options": {
+      "practice-chapters": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "spare-time": {
+    "options": {
+      "spare-goals": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "tessera-tempo": {
+    "options": {
+      "dot-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "toucan-loom": {
+    "options": {
+      "tuft-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "willow-wicket": {
+    "options": {
+      "innings-score": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "woven-wander": {
+    "options": {
+      "woven-progress": "habits"
+    },
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  }
+}

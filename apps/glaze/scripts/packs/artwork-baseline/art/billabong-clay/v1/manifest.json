@@ -1,0 +1,271 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "billabong-clay",
+  "packVersion": 1,
+  "name": "Billabong Clay",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#DAE4E2",
+    "tile": "#BFC7C5",
+    "glyph": "#1C1816",
+    "accent": "#D8E5E5",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Billabong Clay",
+    "mood": "A quiet billabong in river blue and clay.",
+    "tags": [
+      "billabong",
+      "clay",
+      "quiet",
+      "river",
+      "blue",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Portrait original premium Glaze wallpaper Billabong Clay. Pale river-blue matte #DAE4E2, TOP72percent completely emptyquietground for UI. BOTTOM25percent one small charming MATTE-CLAY PLATYPUS resting beside two softteal clayripples andone tiny eucalyptus sprig. Brown roundedbody, distinct broadflat darkslate duckbill, smalldark eyes, fourshortwebbedfeet, flatbroadtaperedtail behind; coherentanatomy, wholecharacterwithin60percentwidth22percentheight andsafe margins. Elegant handcrafted-clay texture, soft studio lightanddelicate shadow, calmoriginalcharacterart notwildlifephoto, no duck/otter/extraanimal/text/icons/device orpatternabove.",
+    "addedAt": "2026-11-01",
+    "category": "Nature"
+  },
+  "thumbhash": "8/cJAwCpb2Z4g2+xJZBnAFg=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.ecbc0bb1.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 41054,
+      "sha256": "ecbc0bb16a47f8c5acfce5436d127db31f74c21ee38d1a8d8e440b28895cf0f2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.24f53850.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 36520,
+      "sha256": "24f538505c612b47d0f020c61f78caf4f6a7d5a6d7ec10b2e3d3b05816d8e501",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.fd45838a.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 18444,
+      "sha256": "fd45838a89e2bd2c31a31d23004106b5a3bbc2bc215b20b2c6efb8ea5777c6a5",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.15b15f9b.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 11630,
+      "sha256": "15b15f9b40d60322cc1b7798cc3160b3c21f635086130fdb45e531510f4ab269",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.56b33065.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 17158,
+      "sha256": "56b330651171de6f1cba2413bcf2435d658203339a4f1c85737ec6cb42635c64",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.c7436ae0.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 47728,
+      "sha256": "c7436ae0c2e135342b6d61ac9fcde38f5c0867afdf8803a9a4b50cbc59f6688a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.877907d5.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 3466,
+      "sha256": "877907d504bd80ec4f614a2ef15dca884c6ed0be00467eb54c87743bde1c7f9c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-billabong-clock.c3bd61e6.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 19756,
+      "sha256": "c3bd61e67b402f358c70ca7f85bdcec0a0be4b345a53cf10ebb40cfb202f67aa",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-clay-platypus.c4b8d7c0.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 30408,
+      "sha256": "c4b8d7c0a1de7688b76384d784fda508757ecdcb252ef01daccd7c29731f8510",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-drop-progress.041f02eb.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 15418,
+      "sha256": "041f02eb2570c6f52305a8a2f8215d35d45b19d1808283fb6268fe5e61c70751",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-eucalyptus-sprig.bdfe1ee3.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 34306,
+      "sha256": "bdfe1ee32d602f9d71cb30a6c5b7dc2fe5685ef08b24bcc13854acb9881c954f",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-river-date.b95d2a58.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 20676,
+      "sha256": "b95d2a58f61cbc8a8f4db6654af4d2a8516bcd459cc785cb6424e32c1b717609",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-river-ripples.0c17f26d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 17572,
+      "sha256": "0c17f26de515e36c2e1d2293e747d830266e037f1330366af414a43b624856b6",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 314136,
+  "widgets": [
+    {
+      "id": "billabong-clock",
+      "kind": "clock",
+      "image": "widget-billabong-clock.c3bd61e6.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Billabong clock"
+    },
+    {
+      "id": "clay-platypus",
+      "kind": "art",
+      "image": "widget-clay-platypus.c4b8d7c0.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Clay platypus"
+    },
+    {
+      "id": "drop-progress",
+      "kind": "art",
+      "image": "widget-drop-progress.041f02eb.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Drop progress"
+    },
+    {
+      "id": "eucalyptus-sprig",
+      "kind": "art",
+      "image": "widget-eucalyptus-sprig.bdfe1ee3.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Eucalyptus sprig"
+    },
+    {
+      "id": "river-date",
+      "kind": "calendar",
+      "image": "widget-river-date.b95d2a58.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "River date"
+    },
+    {
+      "id": "river-ripples",
+      "kind": "art",
+      "image": "widget-river-ripples.0c17f26d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "River ripples"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.15b15f9b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.56b33065.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.c7436ae0.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

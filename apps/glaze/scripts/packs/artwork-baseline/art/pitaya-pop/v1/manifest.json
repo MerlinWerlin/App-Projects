@@ -1,0 +1,271 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "pitaya-pop",
+  "packVersion": 1,
+  "name": "Pitaya Pop",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#F1E3D6",
+    "tile": "#D3C7BB",
+    "glyph": "#1C1816",
+    "accent": "#AB5A5E",
+    "text": "#1C1816"
+  },
+  "meta": {
+    "name": "Pitaya Pop",
+    "mood": "Bright pink pitaya on warm ivory.",
+    "tags": [
+      "pitaya",
+      "bright",
+      "pink",
+      "warm",
+      "ivory",
+      "light"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 Glaze wallpaper PITAYA POP. Upper72percent completely empty warm ivory #F2E8DE matte paper field, subtle fibres only, no speckles/pattern behind icons. Bottom24percent a SMALL original papercraft dragon fruit/pitaya, rich magenta folded-paper peel with short sage-green tipped bracts, one half fruit beside it with ivory flesh and tiny dark seed cutouts. Sophisticated layered-paper sculpture, fine visible cut edges and subtle folds, no glossy plastic/real wet fruit. Entire still-life group at most45percent canvas width,20percent height, low centered with broad margins. Soft warm studio shadow on matching ivory paper floor. No bowl, letters, logo, people, phone, UI, borders or frame.",
+    "addedAt": "2026-11-01",
+    "category": "Sweets & Treats"
+  },
+  "thumbhash": "tSgGAwLGn1SXdpyzKmCZAqY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.f6a0420b.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 67562,
+      "sha256": "f6a0420b98c4a0e6162274e63d5ae2cb74ca339b78608c34a0fafef90957436a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.4427fc40.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 59564,
+      "sha256": "4427fc4025b7a43ca7502c2509464bc75c9a761b29ec8fb64a9ae4e2029c0896",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.368c27b1.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 29084,
+      "sha256": "368c27b18b3f406e650e4600beb8abac84a11e92a0886e2854fba755cd8afc3e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.c60510e8.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 24548,
+      "sha256": "c60510e829dcd8546f3133912cd1555dd6d46e628353f0a5f6f522fe29624aa0",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.597a7ac9.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 74452,
+      "sha256": "597a7ac9979d618fce572b35fe20c90c88c0d559a566d006381c7fab7a2f8ac3",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.b71cc643.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 109026,
+      "sha256": "b71cc6436b1cd75e249ad4ab83af150021cc35a6443a4a0db64e43d58f4c1e1d",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.6411fd61.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 5594,
+      "sha256": "6411fd6135a50e647f52f7661e9204f40e92eb5a9cd61612d343a79c1639db54",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-bract-rosette.daed54e1.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 84920,
+      "sha256": "daed54e1f5ba84e015dad8b6ec4c7bc7f110a86e3871cd3ae1e9d608f350d0e2",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-fruit-date.538e269d.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 47368,
+      "sha256": "538e269dc7c1455d63e7c10c0f6525ba266dd184590d5d469b30141d11adcfbc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-pitaya-clock.47f669a8.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 56628,
+      "sha256": "47f669a8362185ec537a844d20f2acc7adf33d715279e2965cbcf731eea7933a",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-seed-focus.cd2a2693.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 57240,
+      "sha256": "cd2a26930d91b0475be49057dcb1d2dc2ac0f8149b76d69bd20402ff15601361",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-seeded-slice.8c1bca36.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 67238,
+      "sha256": "8c1bca36f2a0b6ba7f69c4837c3bc192e691a9e8378da04237c4cccd7fc38b85",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-whole-pitaya.d0068820.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 78972,
+      "sha256": "d0068820d7814f13c9202d69ab32489a21a4a8504d94921198e551edba63dbf9",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 762196,
+  "widgets": [
+    {
+      "id": "bract-rosette",
+      "kind": "art",
+      "image": "widget-bract-rosette.daed54e1.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Bract rosette"
+    },
+    {
+      "id": "fruit-date",
+      "kind": "calendar",
+      "image": "widget-fruit-date.538e269d.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Fruit date"
+    },
+    {
+      "id": "pitaya-clock",
+      "kind": "clock",
+      "image": "widget-pitaya-clock.47f669a8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Pitaya clock"
+    },
+    {
+      "id": "seed-focus",
+      "kind": "focus",
+      "image": "widget-seed-focus.cd2a2693.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Seed focus"
+    },
+    {
+      "id": "seeded-slice",
+      "kind": "art",
+      "image": "widget-seeded-slice.8c1bca36.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Seeded slice"
+    },
+    {
+      "id": "whole-pitaya",
+      "kind": "art",
+      "image": "widget-whole-pitaya.d0068820.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Whole pitaya"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.c60510e8.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.597a7ac9.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.b71cc643.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}

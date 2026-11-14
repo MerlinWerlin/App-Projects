@@ -1,0 +1,270 @@
+{
+  "format": "glaze-remote-art-pack",
+  "version": 2,
+  "id": "tryline-russet",
+  "packVersion": 1,
+  "name": "Tryline Russet",
+  "plus": false,
+  "minAppVersion": "1.0.0",
+  "palette": {
+    "bg": "#342821",
+    "tile": "#50453E",
+    "glyph": "#FAF8F2",
+    "accent": "#533628",
+    "text": "#FAF8F2"
+  },
+  "meta": {
+    "name": "Tryline Russet",
+    "mood": "A rugby tryline in russet and dark umber.",
+    "tags": [
+      "tryline",
+      "russet",
+      "rugby",
+      "dark",
+      "umber"
+    ],
+    "credits": "Original AI artwork for Glaze",
+    "licence": "openai-output-owned",
+    "generator": "openai-image",
+    "prompt": "Original tall portrait9:19.5 Glaze wallpaper TRYLINE RUSSET. Upper74percent EMPTY uniform matte dark umber #332C29 with subtle leather-like grain, no patterns or objects behind icons. Bottom22percent ONE SMALL original heritage-style rugby still life: russet leather OVAL rugby-inspired ball, softly tapered rounded ends, longitudinal cream seam/lacing, one small stitched brown leather sports boot beside it. Fine worn leather grain, ivory stitching, small brass eyelets, no manufacturer logos. Entire two-object vignette at most45percent canvas width,19percent total canvas height, centered LOW with generous margins. Whole ball and boot including sole/studs fully visible, soft warm studio shadow on matching umber floor. No field, grass, people, score, letters, team marks, phone, UI, borders or frame. Fictional unbranded equipment art.",
+    "addedAt": "2026-11-01",
+    "category": "City & Retro"
+  },
+  "thumbhash": "SxgCCwI/EuqKhURcSXCbBLY=",
+  "assets": [
+    {
+      "path": "wallpaper-2796.7eee595d.webp",
+      "role": "wallpaper",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 88672,
+      "sha256": "7eee595d4e5553feb1877a68c7a0aa9b231268f35716ce4b43ab5da40ccf1abc",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-2556.0be56eaa.webp",
+      "role": "wallpaper",
+      "width": 1179,
+      "height": 2556,
+      "bytes": 76640,
+      "sha256": "0be56eaa021e76658edfb9ebcbe9df37e7ee617b370fa28290d1d8c1228228d8",
+      "mime": "image/webp"
+    },
+    {
+      "path": "wallpaper-1334.a83a5fd7.webp",
+      "role": "wallpaper",
+      "width": 750,
+      "height": 1334,
+      "bytes": 33152,
+      "sha256": "a83a5fd76125d56c5af9def66d72fa902b2d4d24a5887367f90e1bc7978e5d1e",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-small.aaaec3ce.webp",
+      "role": "widget-small",
+      "width": 510,
+      "height": 510,
+      "bytes": 9608,
+      "sha256": "aaaec3ceb595d240096cf4b0ac1e501a78f9d4f3d4dc2feb1925fb1f1a39f622",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-medium.54e4e535.webp",
+      "role": "widget-medium",
+      "width": 1092,
+      "height": 510,
+      "bytes": 147324,
+      "sha256": "54e4e535ea27170bb0647e43c0250e1d16f0b362efd1266ec1c71d568a80e3d7",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-large.7948c862.webp",
+      "role": "widget-large",
+      "width": 1092,
+      "height": 1146,
+      "bytes": 103294,
+      "sha256": "7948c8624b71dd010667c7408599e01d53d50218d0288c03787487dd4b1f8b10",
+      "mime": "image/webp"
+    },
+    {
+      "path": "thumb.0171a67a.webp",
+      "role": "thumb",
+      "width": 240,
+      "height": 520,
+      "bytes": 4028,
+      "sha256": "0171a67a13c5abe89b3064bdaea3ca93e752eb4cbefa0a6484b30c2aa9502b3c",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-club-date.65265cbe.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 165898,
+      "sha256": "65265cbea8eebfe069792219f6b62ea83aedf3efdef4299896eb8092744ddc23",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-ivory-posts.7d9aca8b.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 29474,
+      "sha256": "7d9aca8b82dac4c84d4773ef159651912a7985ee439b808f4bf0098450c01926",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-russet-ball.bc81905a.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 130650,
+      "sha256": "bc81905acf47d2939c9e8a459da8d5f10c118c0c7d70dfa427ebce2f04fbad92",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-stitched-boot.11396c91.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 73778,
+      "sha256": "11396c91231b67e96425ef00942e5eaf20f661bc0059506939b38401fe885c43",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-training-focus.fd0a6b89.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 97270,
+      "sha256": "fd0a6b89e9aaed7377409635b39bb96b33bafd88ffdcde3d79436e6c01cfbc42",
+      "mime": "image/webp"
+    },
+    {
+      "path": "widget-tryline-clock.64ae50a7.webp",
+      "role": "widget-art",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 144578,
+      "sha256": "64ae50a7362fe4aff52618c7a5f71c2a532b0e9d2cb1fdc8de9047580f8fa4a0",
+      "mime": "image/webp"
+    }
+  ],
+  "totalBytes": 1104366,
+  "widgets": [
+    {
+      "id": "club-date",
+      "kind": "calendar",
+      "image": "widget-club-date.65265cbe.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Club date"
+    },
+    {
+      "id": "ivory-posts",
+      "kind": "art",
+      "image": "widget-ivory-posts.7d9aca8b.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Ivory posts"
+    },
+    {
+      "id": "russet-ball",
+      "kind": "art",
+      "image": "widget-russet-ball.bc81905a.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Russet ball"
+    },
+    {
+      "id": "stitched-boot",
+      "kind": "art",
+      "image": "widget-stitched-boot.11396c91.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Stitched boot"
+    },
+    {
+      "id": "training-focus",
+      "kind": "focus",
+      "image": "widget-training-focus.fd0a6b89.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Training focus"
+    },
+    {
+      "id": "tryline-clock",
+      "kind": "clock",
+      "image": "widget-tryline-clock.64ae50a7.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "blur",
+      "label": "Tryline clock"
+    },
+    {
+      "id": "hero-small",
+      "kind": "art",
+      "image": "widget-small.aaaec3ce.webp",
+      "sizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-medium",
+      "kind": "art",
+      "image": "widget-medium.54e4e535.webp",
+      "sizes": [
+        "medium",
+        "small",
+        "large"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    },
+    {
+      "id": "hero-large",
+      "kind": "art",
+      "image": "widget-large.7948c862.webp",
+      "sizes": [
+        "large",
+        "small",
+        "medium"
+      ],
+      "fit": "fit",
+      "background": "wallpaper"
+    }
+  ]
+}
