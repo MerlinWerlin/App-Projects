@@ -12,6 +12,7 @@ import { plannedArtworkOptionIds, artworkSlotSources } from '../../src/core/artw
 import { parseWidgetOptions } from '../../src/core/widgetOptions.ts';
 
 const WEBP = Buffer.from('UklGRlAAAABXRUJQVlA4TEMAAAAv/8P/AAfQyz53q/8BgUCyv/kERfQ/4z//+c9//vOf//znP//5z3/+85///Oc///nPf/7zn//85z//+c9//vOf//zfAA==', 'base64');
+const SECOND_WEBP = Buffer.from('UklGRlAAAABXRUJQVlA4TEMAAAAv/8P/AAfQy271uf8BgUCyv/kERfQ/4z//+c9//vOf//znP//5z3/+85///Oc///nPf/7zn//85z//+c9//vOf//zfAA==', 'base64');
 const save = (path, obj) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, JSON.stringify(obj, null, 2) + '\n'); };
 function fixture(ids = ['artwork-example']) {
   const root = mkdtempSync(join(tmpdir(), 'glaze-append-'));
@@ -66,6 +67,21 @@ test('future release layout shards whole packs below the 1000-asset cap', async 
     const plans = planReleases(f.out, new Map(), { catalogTag: 'glaze-packs-v5' });
     assert.deepEqual(plans.map((p) => p.tag), ['glaze-packs-v18', 'glaze-packs-v19', 'glaze-packs-v5']);
     assert.deepEqual(plans.filter((p) => p.plan.some((a) => a.kind === 'catalog')).map((p) => p.tag), ['glaze-packs-v5']);
+  } finally { f.cleanup(); }
+});
+
+test('baked-in functional images are retained as habits and replaced by additional real artwork', async () => {
+  const f = fixture();
+  try {
+    const dir = join(f.add, 'artwork-example/widgets'), path = join(dir, 'widget-options.json');
+    const list = JSON.parse(readFileSync(path)), image = `widget-second-piece.${digest(SECOND_WEBP).slice(0, 8)}.webp`;
+    list.push({ ...list[0], id: 'second-piece', image, label: 'Second piece' }); save(path, list); writeFileSync(join(dir, image), SECOND_WEBP);
+    const corrections = { 'artwork-example': { options: { 'piece-0': 'habits' } } };
+    await buildArtworkAdditions({ ...f.opts, corrections });
+    const m = JSON.parse(readFileSync(join(f.out, 'art/artwork-example/v8/manifest.json')));
+    assert.deepEqual(m.widgets[0], { ...f.originals.get('artwork-example').widgets[0], kind: 'habits' });
+    assert.deepEqual(m.assets.slice(0, 6), f.originals.get('artwork-example').assets);
+    assert.deepEqual(plannedArtworkOptionIds(m.id, parseWidgetOptions(m.widgets, m.assets).options), ['piece-1', 'piece-2', 'piece-3', 'new-piece', 'second-piece']);
   } finally { f.cleanup(); }
 });
 
