@@ -12,9 +12,9 @@ export default function Settings() {
   const { t, theme, prefs, setPref, owned: plus, restorePlus, stats, lang } = useApp();
   const router = useRouter();
   const [msg, setMsg] = useState<string | null>(null);
-  const version = Constants.expoConfig?.version ?? '1.0.1';
+  const version = Constants.expoConfig?.version ?? '1.0.2';
   return (
-    <Screen>
+    <Screen header>
       {/* Language stays at the top of Settings (release standard §1); Home's first-launch line opens here. */}
       <SectionTitle>{t('settings.language')}</SectionTitle>
       <View style={{ flexDirection: 'row', gap: SP(2), flexWrap: 'wrap', marginBottom: SP(4) }}>
@@ -46,7 +46,7 @@ export default function Settings() {
           const p = theme.dark ? k.dark : k.light;
           const on = (prefs.skin ?? 'booth') === k.id;
           return (
-            <Press key={k.id} label={k.name} onPress={() => setPref('skin', k.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: SP(3), padding: SP(3), borderRadius: k.radius.m, backgroundColor: p.card, borderWidth: on ? 2 : 1, borderColor: on ? p.rec : p.cardBorder }}>
+            <Press key={k.id} label={k.name} selected={on} onPress={() => setPref('skin', k.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: SP(3), padding: SP(3), borderRadius: k.radius.m, backgroundColor: p.card, borderWidth: on ? 2 : 1, borderColor: on ? p.rec : p.cardBorder }}>
               <View style={{ flexDirection: 'row' }}>
                 {[p.bg, p.rec, p.rew, p.score].map((c, i) => (
                   <View key={i} style={{ width: 22, height: 22, borderRadius: 11, backgroundColor: c, marginLeft: i ? -6 : 0, borderWidth: 1.5, borderColor: p.card }} />
@@ -90,7 +90,7 @@ export default function Settings() {
       <T kind="small" color={theme.sub} style={{ marginTop: SP(6) }}>
         {t('settings.privacy')}
       </T>
-      <T kind="small" color={theme.faint} style={{ marginTop: SP(2) }}>
+      <T kind="small" color={theme.sub} style={{ marginTop: SP(2) }}>
         {t('settings.version', { v: version })}
       </T>
     </Screen>

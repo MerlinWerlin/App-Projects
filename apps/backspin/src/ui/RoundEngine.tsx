@@ -226,7 +226,7 @@ export function RoundEngine(props: {
             </T>
           ) : null}
           {props.note ? (
-            <T kind="small" color={theme.faint} style={{ marginTop: SP(1) }}>
+            <T kind="small" color={theme.sub} style={{ marginTop: SP(1) }}>
               {props.note}
             </T>
           ) : null}
@@ -421,7 +421,7 @@ function ScoreCard({ score, quip, calm, line }: { score: ScoreBreakdown; quip: s
         {quip}
       </T>
       {line ? (
-        <T kind="small" color={theme.faint} center style={{ marginTop: SP(2) }} lines={2}>
+        <T kind="small" color={theme.sub} center style={{ marginTop: SP(2) }} lines={2}>
           “{line}”
         </T>
       ) : null}

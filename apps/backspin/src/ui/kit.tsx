@@ -29,10 +29,16 @@ export function Backdrop() {
 /** Widest content column, in points. Wider than any iPhone, so it only matters on iPad. */
 export const CONTENT_MAX = 640;
 
-export function Screen({ children, scroll = true, pad = true }: { children: ReactNode; scroll?: boolean; pad?: boolean }) {
+/**
+ * A screen. `header` = this route shows a navigation bar, which already sits below the status bar, so the top
+ * safe-area inset must not be added again (it left a ~60 pt empty band under the title on Round, Settings, Plus).
+ */
+export function Screen({ children, scroll = true, pad = true, header = false }: { children: ReactNode; scroll?: boolean; pad?: boolean; header?: boolean }) {
   const { theme } = useApp();
   const ins = useSafeAreaInsets();
-  const style = { paddingHorizontal: pad ? SP(5) : 0, paddingTop: ins.top + SP(3), paddingBottom: SP(10) };
+  // Fixed (non-scrolling) screens keep their bottom buttons clear of the home indicator.
+  const bottom = scroll ? SP(10) : Math.max(SP(6), ins.bottom + SP(3));
+  const style = { paddingHorizontal: pad ? SP(5) : 0, paddingTop: (header ? 0 : ins.top) + SP(3), paddingBottom: bottom };
   // On iPad (and iPad landscape) keep one centred phone-width column instead of stretching edge to edge.
   // Phones are narrower than CONTENT_MAX, so they render exactly as before.
   const column = { width: '100%', maxWidth: CONTENT_MAX, alignSelf: 'center' } as const;
@@ -84,8 +90,8 @@ export function Emoji({ children, size = 28, style }: { children: string; size?:
   );
 }
 
-export function Card({ children, style, onPress, label, hi }: {
-  children: ReactNode; style?: StyleProp<ViewStyle>; onPress?: () => void; label?: string; hi?: boolean;
+export function Card({ children, style, onPress, label, hi, selected }: {
+  children: ReactNode; style?: StyleProp<ViewStyle>; onPress?: () => void; label?: string; hi?: boolean; selected?: boolean;
 }) {
   const { theme } = useApp();
   const f = theme.cardFinish;
@@ -105,15 +111,15 @@ export function Card({ children, style, onPress, label, hi }: {
   ];
   if (!onPress) return <View style={base}>{children}</View>;
   return (
-    <Press onPress={onPress} label={label} style={base}>
+    <Press onPress={onPress} label={label} style={base} selected={selected}>
       {children}
     </Press>
   );
 }
 
-export function Press({ children, onPress, onPressIn, onPressOut, style, label, disabled, hint }: {
+export function Press({ children, onPress, onPressIn, onPressOut, style, label, disabled, hint, selected }: {
   children: ReactNode; onPress?: () => void; onPressIn?: () => void; onPressOut?: () => void;
-  style?: StyleProp<ViewStyle>; label?: string; disabled?: boolean; hint?: string;
+  style?: StyleProp<ViewStyle>; label?: string; disabled?: boolean; hint?: string; selected?: boolean;
 }) {
   const { calm } = useApp();
   const s = useRef(new Animated.Value(1)).current;
@@ -123,7 +129,7 @@ export function Press({ children, onPress, onPressIn, onPressOut, style, label, 
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityHint={hint}
-      accessibilityState={{ disabled: !!disabled }}
+      accessibilityState={selected == null ? { disabled: !!disabled } : { disabled: !!disabled, selected }}
       disabled={disabled}
       onPress={onPress}
       onPressIn={() => {
@@ -191,18 +197,20 @@ export function ToggleRow({ title, sub, value, onChange }: { title: string; sub?
   );
 }
 
-export function Chip({ label, on, onPress, locked }: { label: string; on?: boolean; onPress: () => void; locked?: boolean }) {
-  const { theme } = useApp();
+export function Chip({ label, on, onPress, locked, tone }: { label: string; on?: boolean; onPress: () => void; locked?: boolean; tone?: 'danger' }) {
+  const { theme, t } = useApp();
+  // VoiceOver hears "selected" on the active chip (language, theme, rounds, effects), and "locked" on Plus-only ones.
   return (
     <Press
-      label={label}
+      label={locked ? `${label}, ${t('common.locked')}` : label}
+      selected={!!on}
       onPress={() => {
         haptic.tap();
         onPress();
       }}
       style={{ paddingHorizontal: SP(4), minHeight: 40, justifyContent: 'center', borderRadius: R.pill, backgroundColor: on ? theme.ink : theme.cardHi }}
     >
-      <Text style={[TYPE.small, fontFor(theme, 'small'), { color: on ? theme.bg : theme.ink, fontWeight: '700' }]}>
+      <Text style={[TYPE.small, fontFor(theme, 'small'), { color: on ? theme.bg : tone === 'danger' ? theme.bad : theme.ink, fontWeight: '700' }]}>
         {locked ? '🔒 ' : ''}
         {label}
       </Text>

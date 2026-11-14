@@ -1,11 +1,11 @@
 // The paywall. No dark patterns: the close button is always visible, the price is the store's own,
 // nothing is pre-ticked, there is no timer, and the free game stays complete without it.
-import { useRouter } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { haptic } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
-import { Button, Card, Disc, Screen, T, Toastish } from '../src/ui/kit.tsx';
+import { Button, Card, Disc, Press, Screen, T, Toastish } from '../src/ui/kit.tsx';
 import { SP } from '../src/ui/theme.ts';
 
 export default function Plus() {
@@ -27,7 +27,19 @@ export default function Plus() {
   };
 
   return (
-    <Screen>
+    <Screen header>
+      {/* Close lives in the navigation bar, where iOS puts it, so it is visible without scrolling on small phones. */}
+      <Stack.Screen
+        options={{
+          headerRight: () => (
+            <Press label={t('common.close')} onPress={() => router.back()} style={{ minHeight: 44, minWidth: 44, justifyContent: 'center', alignItems: 'flex-end' }}>
+              <T kind="bodyB" color={theme.recText}>
+                {t('common.close')}
+              </T>
+            </Press>
+          ),
+        }}
+      />
       <Disc size={120} spin={1} />
       <T kind="title" center style={{ marginTop: SP(5) }}>
         {t('plus.headline')}
@@ -63,8 +75,7 @@ export default function Plus() {
           {t('plus.expoGo')}
         </T>
       ) : null}
-      <Button kind="ghost" small title={t('plus.restore')} style={{ marginTop: SP(5) }} onPress={async () => setMsg((await restorePlus()) ? t('settings.restored') : t('settings.nothingToRestore'))} />
-      <Button kind="quiet" small title={t('common.close')} style={{ marginTop: SP(3) }} onPress={() => router.back()} />
+      <Button kind="ghost" small title={t('plus.restore')} style={{ marginTop: SP(5), alignSelf: 'center' }} onPress={async () => setMsg((await restorePlus()) ? t('settings.restored') : t('settings.nothingToRestore'))} />
       <Toastish text={msg} />
     </Screen>
   );

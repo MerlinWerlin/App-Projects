@@ -190,7 +190,7 @@ export const en = {
   'plus.buy': 'Unlock for {price}',
   'plus.buyNoPrice': 'Unlock Backspin Plus',
   'plus.owned': "You've got Plus. Thank you!",
-  'plus.restore': 'Restore purchase',
+  'plus.restore': 'Restore purchases',
   'plus.note': 'One-time purchase. No subscription, no ads, ever.',
   'plus.expoGo': 'Test mode (Expo Go): this unlock is pretend and only on this phone.',
   'plus.failed': "The purchase didn't go through, and nothing was charged. ({detail})",
@@ -208,7 +208,7 @@ export const en = {
   'intro.skip': 'Skip',
 
   'mic.title': 'Backspin needs the microphone',
-  'mic.body': "Backspin only listens while you hold the record button. Recordings stay on this phone and are never uploaded.",
+  'mic.body': "Backspin only listens while you're recording. Recordings stay on this phone and are never uploaded.",
   'mic.allow': 'Allow microphone',
   'mic.denied': 'Microphone access is off. Turn it on in Settings to play.',
   'mic.openSettings': 'Open Settings',

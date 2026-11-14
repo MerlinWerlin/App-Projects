@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { makeTheme, SKINS } from './theme.ts';
+import { makeTheme, readableRec, SKINS } from './theme.ts';
 
 const lum = (hex: string) => {
   const n = parseInt(hex.slice(1), 16);
@@ -33,6 +33,8 @@ test('every skin is complete and readable in dark and light', () => {
       assert.ok(contrast(p.recInk, p.rec) >= 4.5, `${where} recInk/rec`);
       assert.ok(contrast(p.rewInk, p.rew) >= 4.5, `${where} rewInk/rew`);
       assert.ok(contrast(p.score, p.cardHi) >= 3, `${where} score/cardHi`);
+      const rt = readableRec(p);
+      for (const b of [p.bg, p.card, p.cardHi]) assert.ok(contrast(rt, b) >= 4.5, `${where} recText`);
       assert.ok(p.bgGradient.length >= 2 && p.recGradient.length >= 2, `${where} gradients`);
     }
     assert.equal(makeTheme(s.id, true).skin, s.id);

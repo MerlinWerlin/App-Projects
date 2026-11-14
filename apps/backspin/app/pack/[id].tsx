@@ -63,7 +63,7 @@ export default function PackScreen() {
                 {item.l.t}
               </T>
               {item.l.n && (pack.id === 'songs' || pack.id === 'aussie') ? (
-                <T kind="small" color={theme.faint} lines={1}>
+                <T kind="small" color={theme.sub} lines={1}>
                   {item.l.n}
                 </T>
               ) : null}
