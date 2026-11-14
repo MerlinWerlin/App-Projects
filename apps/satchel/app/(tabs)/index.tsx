@@ -32,7 +32,6 @@ import { RecapHeroCard } from '../../src/ui/RecapHeroCard.tsx';
 import { TravelsCard } from '../../src/ui/TravelsCard.tsx';
 import { TripImport } from '../../src/ui/TripImport.tsx';
 import { BackupReminder } from '../../src/ui/BackupReminder.tsx';
-import { GamesEntryCard } from '../../src/ui/games.tsx';
 import { DRIVING_TABLE, driveSideA11y } from '../../src/ui/driving.tsx';
 import { leaveNudge } from '../../src/core/leavehome.ts';
 import { LeaveHomeHomeCard, leavePillA11y } from '../../src/ui/leavehome.tsx';
@@ -166,8 +165,6 @@ export default function TripsScreen() {
           <TodayCard trips={trips} />
           {focus && dest ? <ClockCard destTz={dest} homeTz={focus.homeTz} /> : null}
           <EmergencyShortcutSlot />
-          {/* T125: Travel games for the wait. */}
-          {trips.length ? <GamesEntryCard trips={trips} /> : null}
           {list.length ? (
             <View accessibilityRole="header" style={{ marginTop: space.s }}>
               <Label>{t('trips.title')}</Label>

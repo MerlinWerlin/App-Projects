@@ -133,11 +133,6 @@ function Shell() {
           <Stack.Screen name="trouble/numbers" options={{ ...header, title: t('trouble.route.numbers') }} />
           <Stack.Screen name="phrase-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
           <Stack.Screen name="menu-card" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'fade' }} />
-          <Stack.Screen name="games/index" options={{ ...header, title: t('games.route') }} />
-          <Stack.Screen name="games/bingo" options={{ ...header, title: t('games.bingo.route') }} />
-          <Stack.Screen name="games/spy" options={{ ...header, title: t('games.spy.route') }} />
-          <Stack.Screen name="games/questions" options={{ ...header, title: t('games.questions.route') }} />
-          <Stack.Screen name="games/scores" options={{ ...header, title: t('games.scores.route') }} />
           <Stack.Screen name="helpcards" options={{ ...header, title: t('helpcards.route') }} />
           <Stack.Screen name="stepfree" options={{ ...header, title: t('stepfree.route') }} />
           <Stack.Screen name="helpcard-edit" options={{ ...header, presentation: 'modal', title: t('helpcards.edit.route') }} />

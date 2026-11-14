@@ -76,7 +76,6 @@ PACKING
 
 MEMORIES
 - A trip journal with photos, a recap of each trip, passport stamps and Your travels: countries, cities and days away.
-- Travel games for queues, flights and car trips.
 - An In the air card while you fly.
 
 DOCUMENTS AND LOW BATTERY
@@ -174,7 +173,6 @@ PACKING
 
 MEMORIES
 - A trip journal with photos, a recap of each trip, passport stamps and Your travels: countries, cities and days away.
-- Travel games for queues, flights and car trips.
 - An In the air card while you fly.
 
 DOCUMENTS AND LOW BATTERY
@@ -204,7 +202,7 @@ Try it straight away with the demo trip.
 - **Emergency numbers:** every field that mentions them says "verify locally" (the in-app card has a source and checked date per country, but numbers change).
 - **Medical notes and medicine times** are the traveller's own notes and reminders, not advice; keep the copy that way.
 - **Face ID** is named only in the App Store text; Play says "fingerprint, face or passcode".
-- **Not in the copy although built:** the In-flight games and recap details beyond one line, arrival cards, photo light details, kids' rows, Plan B dismissals, and other smaller follow-ups. Fine to rotate in when a feature gets owner confirmation in docs/TRIAL.md.
+- **Not in the copy although built:** recap details beyond one line, arrival cards, photo light details, kids' rows, Plan B dismissals, and other smaller follow-ups. Fine to rotate in when a feature gets owner confirmation in docs/TRIAL.md.
 - **Owner confirmation:** the pitch "ready in flight mode" and every feature above still need the owner's yes on a TestFlight build (docs/TRIAL.md). Do not submit while any line above has a "no" there.
 
 ## Add when shipped (do not paste before the feature is live and confirmed)

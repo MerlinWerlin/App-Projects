@@ -13,7 +13,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AccessibilityInfo, Animated, Easing, Text, View } from 'react-native';
 import { deviceZone, todayIn } from '../src/core/format.ts';
 import { focusTrip } from '../src/core/glance.ts';
-import { newSeed } from '../src/core/games.ts';
+import { newSeed } from '../src/core/seeded.ts';
 import {
   buildQuiz,
   groupedDigits,
