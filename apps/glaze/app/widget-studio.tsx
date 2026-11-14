@@ -114,6 +114,7 @@ import { InsetGroup, PillButton, SquircleCard } from '../src/ui/v2';
 import { CatalogueWidgetPreview } from '../src/ui/CatalogueWidgetPreview';
 import { WidgetPreview } from '../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../src/ui/useWallpaperPalette';
+import { useHowTo, WatchHowButton } from '../src/ui/HowToSheet';
 
 /** Untyped lookup for catalogue keys carried in data (kind/size/issue keys). */
 type LooseT = (key: string, params?: Record<string, string | number>) => string;
@@ -153,6 +154,9 @@ export default function WidgetStudioScreen() {
   const { c } = useColorsV2();
   const { t, script } = useT();
   const router = useRouter();
+  // Owner 2026-11-15 ("the first time a widget is select a vid should come up"): the widgets how-to
+  // video, large, on its own the first time a widget is picked, and from "Watch how" in the header.
+  const how = useHowTo('widgets', { auto: !!theme });
   if (!theme) {
     return (
       <View style={[styles.missing, { backgroundColor: c.bg }]}>
@@ -409,7 +413,8 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
 
   return (
     <View style={[styles.flex, { backgroundColor: c.bg }]}>
-      <Stack.Screen options={{ title: t('themeUi.widgetStudio.title') }} />
+      <Stack.Screen options={{ title: t('themeUi.widgetStudio.title'), headerRight: () => <WatchHowButton onPress={how.open} compact /> }} />
+      {how.sheet}
       <ScrollView bounces={false} overScrollMode="never" stickyHeaderIndices={[0]} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         {/* Live preview, pinned on top. */}
         <View style={[styles.previewWrap, { backgroundColor: c.bg }]}>

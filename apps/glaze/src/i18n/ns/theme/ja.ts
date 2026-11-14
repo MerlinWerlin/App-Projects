@@ -110,12 +110,25 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: '使い方の動画を再生',
-    wallpaper: '動画：壁紙を保存してiPhoneに設定する',
-    icons: '動画：テーマに合うアイコンをホーム画面に追加する',
-    widgets: '動画：Glazeのウィジェットをホーム画面に追加する',
+    watch: '見方を見る',
+    watchHint: '各手順の短い動画を開きます',
+    gotIt: 'OK',
+    again: 'もう一度見る',
+    playHint: '動画を再生します',
+    pauseHint: '動画を一時停止します',
+    videoLabel: '動画：{steps}',
+    titles: {
+      wallpaper: '壁紙を設定する',
+      icons: 'アイコンを追加する',
+      widgets: 'ウィジェットを追加する',
+    },
+    captions: {
+      wallpaper: '写真アプリで開き、共有をタップして「壁紙に設定」を選びます。ホーム画面のぼかしはオフにします。',
+      icons: '「生成」をタップしてから「許可」をタップします。設定を開き、「ダウンロード済みのプロファイル」から「インストール」をタップします。',
+      widgets: 'ホーム画面を長押しし、「編集」から「ウィジェットを追加」をタップします。Glazeを選び、使いたい番号までスワイプします。',
+    },
   },
   iconsIntro: {
     title: 'アイコン',

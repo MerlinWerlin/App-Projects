@@ -35,8 +35,7 @@ import { loadSetupProgress, markSetupDone } from '../store/themeSetup';
 import { circleRadius, continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { haptic } from './haptics';
-import { HowToClip } from './HowToClip';
-import { HOW_TO_CLIPS } from './howToClips';
+import { useHowTo } from './HowToSheet';
 import { textStyleFor } from './i18nLayout';
 import { InsetGroup, InsetRow } from './InsetGroup';
 import { PillButton } from './PillButton';
@@ -218,6 +217,11 @@ export function ThemeSetupFlow({ setup, themeName, wallpaper, onInstallIcons }: 
   const { state, visible, done } = setup;
   const step = state.step;
   const scroll = useRef<ScrollView>(null);
+  // Owner 2026-11-15: each step's how-to video opens large, on its own the first time that step is
+  // reached on this phone, and always from the step's "Watch how" button.
+  const wallpaperHow = useHowTo('wallpaper', { auto: visible && step === 'wallpaper' });
+  const iconsHow = useHowTo('icons', { auto: visible && step === 'icons' });
+  const widgetsHow = useHowTo('widgets', { auto: visible && step === 'widgets' });
   const [photosFailed, setPhotosFailed] = useState(false);
   const [settingsFailed, setSettingsFailed] = useState(false);
 
@@ -323,8 +327,7 @@ export function ThemeSetupFlow({ setup, themeName, wallpaper, onInstallIcons }: 
 
           {step === 'wallpaper' ? (
             <View style={styles.stepBody}>
-              {/* Owner 2026-11-14: the bundled how-to clip of setting the wallpaper. */}
-              <HowToClip clip={HOW_TO_CLIPS.wallpaper} label={t('theme.howTo.wallpaper')} />
+              {wallpaperHow.button()}
               <PillButton
                 label={wallpaper.saving ? t('theme.setup.wallpaper.saving') : wallpaper.saved ? t('theme.setup.wallpaper.saved') : t('theme.setup.wallpaper.save')}
                 icon={wallpaper.saved ? 'check-circle' : 'download'}
@@ -369,8 +372,7 @@ export function ThemeSetupFlow({ setup, themeName, wallpaper, onInstallIcons }: 
 
           {step === 'icons' ? (
             <View style={styles.stepBody}>
-              {/* Owner 2026-11-14: the bundled how-to clip of adding the icons. */}
-              <HowToClip clip={HOW_TO_CLIPS.icons} label={t('theme.howTo.icons')} />
+              {iconsHow.button()}
               <PillButton
                 label={t('theme.setup.icons.install')}
                 icon="grid"
@@ -411,8 +413,7 @@ export function ThemeSetupFlow({ setup, themeName, wallpaper, onInstallIcons }: 
 
           {step === 'widgets' ? (
             <View style={styles.stepBody}>
-              {/* Owner 2026-11-14: the bundled how-to clip of adding a Glaze widget. */}
-              <HowToClip clip={HOW_TO_CLIPS.widgets} label={t('theme.howTo.widgets')} />
+              {widgetsHow.button()}
               <Instruction n={1} text={t('theme.setup.widgets.s1')}>
                 <Art kind="jiggle-edit" />
               </Instruction>
@@ -433,6 +434,9 @@ export function ThemeSetupFlow({ setup, themeName, wallpaper, onInstallIcons }: 
           />
         </View>
       </View>
+      {wallpaperHow.sheet}
+      {iconsHow.sheet}
+      {widgetsHow.sheet}
     </Modal>
   );
 }

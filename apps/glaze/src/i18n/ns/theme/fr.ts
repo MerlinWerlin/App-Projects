@@ -110,12 +110,25 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: 'Lire la vidéo explicative',
-    wallpaper: 'Vidéo : enregistrer le fond d’écran et l’appliquer sur votre iPhone',
-    icons: 'Vidéo : ajouter les icônes assorties à votre écran d’accueil',
-    widgets: 'Vidéo : ajouter un widget Glaze à votre écran d’accueil',
+    watch: 'Voir comment',
+    watchHint: 'Ouvre une courte vidéo de chaque étape',
+    gotIt: 'J’ai compris',
+    again: 'Revoir',
+    playHint: 'Lance la vidéo',
+    pauseHint: 'Met la vidéo en pause',
+    videoLabel: 'Vidéo : {steps}',
+    titles: {
+      wallpaper: 'Définir le fond d’écran',
+      icons: 'Ajouter vos icônes',
+      widgets: 'Ajouter un widget',
+    },
+    captions: {
+      wallpaper: 'Ouvrez-le dans Photos, touchez Partager puis Utiliser en fond d’écran. Désactivez le flou pour l’écran d’accueil.',
+      icons: 'Touchez Générer puis Autoriser. Ouvrez Réglages, touchez Profil téléchargé puis Installer.',
+      widgets: 'Maintenez le doigt sur l’écran d’accueil, touchez Modifier puis Ajouter un widget. Choisissez Glaze et balayez jusqu’au numéro voulu.',
+    },
   },
   iconsIntro: {
     title: 'Icônes',

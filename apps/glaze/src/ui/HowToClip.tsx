@@ -1,9 +1,11 @@
-// Owner 2026-11-14 ("Yes, add them"): a short how-to screen recording (bundled, so it works offline),
-// played muted, looping and inline with expo-video (already in the app, no new dependency).
+// Owner 2026-11-14 / 2026-11-15: a how-to screen recording (bundled, so it works offline), played
+// muted, looping and inline with expo-video (already in the app, no new dependency). Used LARGE in
+// HowToSheet only (1.0.31: no small inline players any more).
 // - The poster frame shows until the video is ready to play.
 // - Reduce Motion (the Glaze setting or iOS): no autoplay; the poster with a play button instead.
-// - Pauses when its screen loses focus or the app goes to the background; resumes when it returns.
-// Clips: src/ui/howToClips.ts.
+// - Tap the video to pause or play it (a looping video needs a pause control, WCAG 2.2.2).
+// - `replay` changes → back to the start and playing.
+// - Pauses when its screen loses focus or the app goes to the background.
 import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
 import { useFocusEffect } from 'expo-router';
@@ -18,12 +20,16 @@ import { useReduceMotion } from './useReduceMotion';
 
 type Props = {
   clip: HowToClipSource;
-  /** What the clip shows, for VoiceOver. */
+  /** What the clip shows, step by step, for VoiceOver (the video has no audio). */
   label: string;
+  /** Bump to restart from the beginning and play. */
+  replay?: number;
   style?: StyleProp<ViewStyle>;
 };
 
-export function HowToClip({ clip, label, style }: Props) {
+const PLAY = 72;
+
+export function HowToClip({ clip, label, replay = 0, style }: Props) {
   const { c } = useColorsV2();
   const { t } = useT();
   const reduce = useReduceMotion();
@@ -60,7 +66,17 @@ export function HowToClip({ clip, label, style }: Props) {
     sync();
   }, [sync]);
 
-  // Off-screen: pause when the screen loses focus, play again when it comes back.
+  // "Watch again": from the start, playing.
+  useEffect(() => {
+    if (replay === 0) return;
+    try {
+      player.currentTime = 0;
+    } catch {
+      // Not loaded yet: it starts at 0 anyway.
+    }
+    setWantsPlay(true);
+  }, [player, replay]);
+
   useFocusEffect(
     useCallback(() => {
       visible.current = true;
@@ -85,31 +101,27 @@ export function HowToClip({ clip, label, style }: Props) {
 
   const showPoster = !ready || !wantsPlay;
   return (
-    <View
-      style={[styles.frame, { backgroundColor: c.surfaceRaised }, style]}
-      accessible
-      accessibilityRole="image"
+    <Pressable
+      onPress={() => setWantsPlay((v) => !v)}
+      accessibilityRole="button"
       accessibilityLabel={label}
+      accessibilityHint={wantsPlay ? t('theme.howTo.pauseHint') : t('theme.howTo.playHint')}
+      style={[styles.frame, { backgroundColor: c.surfaceRaised, borderColor: c.separator }, style]}
     >
       <VideoView player={player} style={StyleSheet.absoluteFill} contentFit="contain" nativeControls={false} />
       {showPoster ? (
         <ExpoImage source={clip.poster} style={StyleSheet.absoluteFill} contentFit="contain" accessibilityIgnoresInvertColors />
       ) : null}
       {!wantsPlay ? (
-        <Pressable
-          onPress={() => setWantsPlay(true)}
-          accessibilityRole="button"
-          accessibilityLabel={t('theme.howTo.play')}
-          style={({ pressed }) => [styles.play, { backgroundColor: c.tint, opacity: pressed ? 0.8 : 1 }]}
-        >
+        <View style={[styles.play, { backgroundColor: c.tint }]} pointerEvents="none">
           <Feather name="play" size={sizeV2.rowIcon} color={c.onTint} />
-        </Pressable>
+        </View>
       ) : null}
-    </View>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  frame: { width: '100%', aspectRatio: 590 / 1278, maxHeight: 420, alignSelf: 'center', overflow: 'hidden', borderRadius: chromeRadiusV2.card, alignItems: 'center', justifyContent: 'center' },
-  play: { width: sizeV2.touch + 16, height: sizeV2.touch + 16, borderRadius: circleRadius(sizeV2.touch + 16), alignItems: 'center', justifyContent: 'center' },
+  frame: { aspectRatio: 590 / 1278, overflow: 'hidden', borderRadius: chromeRadiusV2.card, borderWidth: StyleSheet.hairlineWidth, alignItems: 'center', justifyContent: 'center', alignSelf: 'center' },
+  play: { width: PLAY, height: PLAY, borderRadius: circleRadius(PLAY), alignItems: 'center', justifyContent: 'center' },
 });

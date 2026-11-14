@@ -110,12 +110,25 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
   },
   // Owner 2026-11-13 ("seems scary... looks scammy... so much information"): the first-time icons
   // walkthrough (app/icons-intro.tsx), one idea per card, calm plain words.
-  // Owner 2026-11-14: the bundled how-to clips (src/ui/HowToClip.tsx).
+  // Owner 2026-11-15: the how-to videos, large in their own sheet (src/ui/HowToSheet.tsx).
   howTo: {
-    play: '사용법 동영상 재생',
-    wallpaper: '동영상: 배경화면을 저장하고 iPhone에 설정하기',
-    icons: '동영상: 어울리는 아이콘을 홈 화면에 추가하기',
-    widgets: '동영상: Glaze 위젯을 홈 화면에 추가하기',
+    watch: '방법 보기',
+    watchHint: '각 단계를 보여 주는 짧은 동영상을 엽니다',
+    gotIt: '확인',
+    again: '다시 보기',
+    playHint: '동영상을 재생합니다',
+    pauseHint: '동영상을 일시 정지합니다',
+    videoLabel: '동영상: {steps}',
+    titles: {
+      wallpaper: '배경화면 설정하기',
+      icons: '아이콘 추가하기',
+      widgets: '위젯 추가하기',
+    },
+    captions: {
+      wallpaper: '사진 앱에서 열고 공유를 탭한 다음 배경화면으로 사용을 탭하세요. 홈 화면의 흐림 효과는 끄세요.',
+      icons: '생성을 탭한 다음 허용을 탭하세요. 설정을 열고 다운로드된 프로파일을 탭한 다음 설치를 탭하세요.',
+      widgets: '홈 화면을 길게 누르고 편집을 탭한 다음 위젯 추가를 탭하세요. Glaze를 고르고 원하는 번호로 쓸어 넘기세요.',
+    },
   },
   iconsIntro: {
     title: '아이콘',
