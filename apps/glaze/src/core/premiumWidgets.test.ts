@@ -98,7 +98,8 @@ test('every Text and TextInput on the Widgets tab and in Widget Studio carries a
   for (const f of [['app', '(tabs)', 'widgets.tsx'], ['app', 'widget-studio.tsx']]) {
     const src = strip(read(...f));
     const tags = [...src.matchAll(/<(Text|TextInput)\b[\s\S]*?(?=\/?>)/g)].map((m) => m[0]);
-    assert.ok(tags.length > 5, f.join('/'));
+    // 1.0.37: the Widgets tab lost its size picker and Coming soon card (Small only), so it has fewer labels.
+    assert.ok(tags.length >= 4, f.join('/'));
     const uncapped = tags.filter((t) => !/maxFontSizeMultiplier=/.test(t.slice(0, 200)));
     assert.deepEqual(uncapped, [], `${f.join('/')}: Text without maxFontSizeMultiplier`);
   }

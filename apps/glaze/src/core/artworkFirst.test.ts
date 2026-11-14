@@ -46,9 +46,11 @@ test('1.0.37: My widget art follows a theme change by itself and never shows the
   // Every index write (partial and final) bumps the status, so the tab re-reads straight away.
   assert.match(store, /await widgets\.commitThemeArt\(theme\.id, planned, ready\);\s*setSyncStatus\(theme\.id, true\);/);
   assert.match(store, /if \(gen === generation\) setSyncStatus\(null, true\);/);
-  // The Widgets tab opens on Small every time it is shown.
+  // The Widgets tab is Small only (owner 2026-11-15): no size picker, no Coming soon, no Medium / Large.
   const tab = readFileSync(join(process.cwd(), 'app', '(tabs)', 'widgets.tsx'), 'utf8');
-  assert.match(tab, /useFocusEffect\(\s*useCallback\(\(\) => \{\s*setSize\('small'\);/);
+  assert.match(tab, /const size: WidgetTabSize = 'small';/);
+  assert.doesNotMatch(tab, /accessibilityRole="tablist"|WIDGET_TAB_SIZES|WIDGET_TAB_SOON_SIZES|tabs\.widgetsTab\.soonSizes|setSize/);
+  assert.match(tab, /<WidgetArtLibraryList refreshKey=\{artLibKey\}/);
 });
 
 // Owner 2026-11-13 ("remove them unless its the native ones"): the theme's pack art is small only.

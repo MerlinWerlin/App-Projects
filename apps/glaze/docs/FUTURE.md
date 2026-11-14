@@ -9,9 +9,11 @@ the bottom of their section with the date and who asked; move an item to "Done" 
   countdown, moon: `targets/widget/LockAccessoryWidget.swift`). The Widgets tab's Lock Screen size tab was taken out in
   1.0.35 ("a lock screen one is something that we'll do. This needs to go for now"). To bring it back: add `'lock'` to
   `WIDGET_TAB_SIZES` and `WIDGET_TAB_CARD_SIZES` in `src/core/tabNav.ts` (the analog clock card rule is still there).
-- **Medium and Large widgets.** Shown as "Coming soon" since 1.0.35. The theme clock (`ClockWidget`, S/M/L) and analog
-  clock (`AnalogClockWidget`, S/L) are real; theme artwork is small only (Artwork 1–5). To show cards again: add the size
-  to `WIDGET_TAB_CARD_SIZES`.
+- **Medium and Large widgets (clocks and art).** Owner 2026-11-15: the Medium / Large tabs ("Coming soon" in 1.0.35-1.0.36)
+  confused people, so 1.0.37 removes the size picker and the Widgets tab is Small only (Artwork 1-5, Custom 1-5). The
+  widget extension still has the theme clock (`ClockWidget`, S/M/L) and the analog clock (`AnalogClockWidget`, S/L);
+  only the in-app tabs went. Bring the tabs back once there is medium and large content (clocks plus art): restore the size
+  picker in `app/(tabs)/widgets.tsx` (`WIDGET_TAB_SIZES`, `SizeArt`) and add the size to `WIDGET_TAB_CARD_SIZES`.
 - **The other native widgets in the Widgets tab** (date, photo, quote, battery, habits, progress, calendar, photo album).
   They exist in the iOS Add Widget list and Widget Studio but are no longer listed in the app (1.0.34): the owner found
   them confusing ("you can't select these anymore"). Bring back only once each one is clearly useful and tappable.
@@ -23,10 +25,8 @@ the bottom of their section with the date and who asked; move an item to "Done" 
   art only, with moderation in place before anything goes public.
 
 ## Artwork
-- **Missing small artwork: 261 pieces across 136 of 141 themes** (audit 13 Nov). Every theme needs 5 plain artworks so
-  Artwork 1–5 differ; short themes repeat pieces (e.g. Moonpatch shows the kite and rocket twice). The one-shot prompt
-  for ChatGPT / Codex is in the session notes (`glaze-missing-artwork-prompt.md`); publishing the packs needs the owner's
-  OK. No app change is needed: themes pick up new art when applied.
+- **Missing small artwork** (audit 13 Nov): done in 1.0.37. The 199 pieces from #307 are published on Cloudflare R2, and
+  all 141 themes have five artworks.
 
 ## Icons
 - **Icon install screen "More options".** 1.0.35 opens a theme's flow on two choices (Icons / Widgets). Inside the install,

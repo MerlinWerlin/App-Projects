@@ -50,7 +50,7 @@ import { Feather } from '@expo/vector-icons';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { memo, useCallback, useDeferredValue, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View, useWindowDimensions, type AccessibilityActionEvent, type ListRenderItem, type StyleProp, type ViewStyle } from 'react-native';
-import { WIDGET_TAB_SIZES, WIDGET_TAB_SOON_SIZES, widgetStudioHref, widgetTabCards, widgetTabSizeKey, type WidgetTabCard, type WidgetTabSize } from '../../src/core/tabNav';
+import { widgetStudioHref, widgetTabCards, widgetTabSizeKey, type WidgetTabCard, type WidgetTabSize } from '../../src/core/tabNav';
 import { THEMES, type Theme } from '../../src/core/themes';
 import { CATALOGUE_SIZE_POINTS, catalogueKindKey, catalogueSizeKey, catalogueSpecOf, type CatalogueKind, type CatalogueSpec } from '../../src/core/widgetKinds';
 import { wallpaperTokensFor } from '../../src/core/wallpaperPalette';
@@ -85,7 +85,6 @@ import { LargeTitleFlatList, PillButton, SectionHeader, Skeleton, SquircleCard }
 import { CatalogueWidgetPreview } from '../../src/ui/CatalogueWidgetPreview';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
-import { SizeArt } from '../../src/ui/WidgetOptionArt';
 import { WidgetArtLibraryList } from '../../src/ui/WidgetArtLibraryList';
 import { CustomArtSlots } from '../../src/ui/CustomArtSlots';
 import { useHowTo, WatchHowButton } from '../../src/ui/HowToSheet';
@@ -464,14 +463,8 @@ function WidgetsTab() {
   const activeId = useActiveThemeId();
   const applied: Theme | undefined = useAnyTheme(activeId);
   const theme: Theme = applied ?? THEMES[0];
-  const [size, setSize] = useState<WidgetTabSize>('small');
-  // 1.0.37 (owner TestFlight 1.0.36: the tab opened on Medium / Large, which only say Coming soon, and the
-  // widgets looked gone): the tab opens on Small, where Artwork 1-5 and Custom 1-5 live, every time it is shown.
-  useFocusEffect(
-    useCallback(() => {
-      setSize('small');
-    }, []),
-  );
+  // 1.0.37 (owner 2026-11-15): Medium and Large are gone from the tab for now; it always shows Small.
+  const size: WidgetTabSize = 'small';
   // T146: link check on focus (no theme picks here any more, so the nonce stays 0).
   const pickNonce = 0;
   // T221: bumped when a piece is added to "My widget art", so the list below the menu re-reads it.
@@ -541,11 +534,6 @@ function WidgetsTab() {
   const cardWidth = Math.max(120, Math.floor((width - GUTTER * 2 - GAP) / 2));
   const innerWidth = cardWidth - CARD_PAD * 2;
 
-  const pickSize = (s: WidgetTabSize) => {
-    if (s === size) return;
-    haptic('select');
-    setSize(s);
-  };
 
   const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
 
@@ -611,53 +599,17 @@ function WidgetsTab() {
         </View>
       ) : null}
 
-      <View accessibilityRole="tablist" accessibilityLabel={t('tabs.widgetsTab.sizes')} style={[styles.sizes, { backgroundColor: c.fill }]}>
-        {WIDGET_TAB_SIZES.map((s) => {
-          const on = s === size;
-          const name = tl(widgetTabSizeKey(s));
-          return (
-            <Pressable
-              key={s}
-              onPress={() => pickSize(s)}
-              accessibilityRole="tab"
-              accessibilityLabel={name}
-              accessibilityState={{ selected: on }}
-              style={[styles.sizeTab, continuous, on ? { backgroundColor: c.surface } : null]}
-            >
-              <SizeArt size={s} stroke={on ? c.tint : c.inkSecondary} fill={on ? c.tintSoft : 'transparent'} />
-              <Text
-                maxFontSizeMultiplier={fontScaleCap('footnote')}
-                style={[...label('footnote'), styles.bold, styles.centre, { color: on ? c.ink : c.inkSecondary }]}
-                numberOfLines={2}
-              >
-                {name}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </View>
-
-      {/* 1.0.35 (owner 2026-11-14: "under medium and large, just say coming soon"): no cards in those sizes yet. */}
-      {WIDGET_TAB_SOON_SIZES.includes(size) ? (
-        <View style={[styles.soon, continuous, { backgroundColor: c.fill }]} accessible accessibilityRole="text">
-          <Feather name="clock" size={22} color={c.tint} />
-          <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...label('headline'), styles.centre, { color: c.ink }]}>
-            {t('tabs.widgetsTab.soon')}
-          </Text>
-          <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label('subhead'), styles.centre, { color: c.inkSecondary }]}>
-            {t('tabs.widgetsTab.soonSizes')}
-          </Text>
-        </View>
-      ) : null}
-
+      {/* 1.0.37 (owner 2026-11-15: Medium / Large "confused him, and would confuse everyone more"): no size
+          picker and no Coming soon; the tab is Small only (Artwork 1-5, Custom 1-5). The Medium and Large
+          widgets in the extension are untouched; the tabs come back with content (docs/FUTURE.md). */}
       {/* Owner 2026-11-14 ("not separate"): the theme's art picker is gone; My widget art below is the
           one list, Artwork 1-5 with a big number and the large artwork side by side. */}
       {/* T221: "My widget art"; hidden without the native library. */}
-      {size === 'small' ? <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} /> : null}
+      <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} />
 
       {/* Owner 2026-11-15 ("make your own theme, be creative"): Your artwork, five slots of the
           person's own pictures for the Custom 1-5 widgets; on this device only. */}
-      {size === 'small' ? <CustomArtSlots onWatchHow={how.open} style={styles.art} /> : null}
+      <CustomArtSlots onWatchHow={how.open} style={styles.art} />
 
       {/* T166: the grid's top padding from before T162 (rows are list items now). T173: the first
           family's section header sits right under it (flushTop), so the gap stays ~16 pt. */}
@@ -696,27 +648,8 @@ const styles = StyleSheet.create({
   linkText: { flex: 1 },
   bold: { fontWeight: '600' },
   centre: { textAlign: 'center' },
-  sizes: {
-    marginHorizontal: GUTTER,
-    padding: spaceV2.xs,
-    borderRadius: chromeRadiusV2.pill,
-    flexDirection: 'row',
-    gap: spaceV2.xs,
-  },
-  sizeTab: {
-    flex: 1,
-    minHeight: sizeV2.touch,
-    borderRadius: chromeRadiusV2.pill,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: spaceV2.xs,
-    // fb-1023 C: room for the size picture above the label.
-    paddingVertical: spaceV2.xs,
-    gap: spaceV2.xxs,
-  },
   note: { paddingHorizontal: GUTTER, marginTop: spaceV2.md },
-  soon: { marginHorizontal: GUTTER, marginTop: spaceV2.xl, padding: spaceV2.xl, gap: spaceV2.sm, alignItems: 'center', borderRadius: chromeRadiusV2.card },
-  // T187: the theme widget art menu sits in the side gutters, a section's space below the size tabs.
+  // T187: the theme widget art menu sits in the side gutters, a section's space below the header.
   art: { paddingHorizontal: GUTTER, marginTop: spaceV2.xl },
   // T91: one row of the grid; cells stretch to the tallest one. T162: rows are list items, so each
   // row carries the grid's side gutter and the gap below it.
