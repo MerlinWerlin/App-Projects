@@ -178,15 +178,18 @@ export default function RemoteScreen() {
             onPress={() => router.push('/add-tv')}
             style={[styles.error, styles.notice, { backgroundColor: theme.accentSoft }]}
           >
-            <Text scaleRole="body" style={[styles.noticeText, { color: theme.ink }]}>
+            {/* Title, then the why, then the action in the theme's accent so it reads as the thing to tap. */}
+            <Text scaleRole="body" style={[styles.noticeTitle, { color: theme.ink }]}>
               {t('app.tvs.emptyTitle')}
             </Text>
             <Text scaleRole="body" style={[styles.noticeText, { color: theme.ink }]}>
               {t('app.tvs.emptyBody')}
             </Text>
-            <Text scaleRole="body" style={[styles.errorText, { color: theme.ink }]}>
-              {t('app.tvs.addTv')}
-            </Text>
+            <View style={[styles.noticeAction, { backgroundColor: theme.accent }]}>
+              <Text scaleRole="body" style={[styles.errorText, { color: theme.accentInk }]}>
+                {t('app.tvs.addTv')}
+              </Text>
+            </View>
           </Pressable>
         ) : null}
 
@@ -385,4 +388,6 @@ const styles = StyleSheet.create({
   /** Cast-only Google TV notice: same card as the error, message then the "Open Cast" action. */
   notice: { gap: 6 },
   noticeText: { fontFamily: fonts.text, fontSize: 13.5 },
+  noticeTitle: { fontFamily: fonts.textSemi, fontSize: 16 },
+  noticeAction: { alignSelf: 'flex-start', borderRadius: 99, paddingVertical: 8, paddingHorizontal: 16, minHeight: 36, justifyContent: 'center', marginTop: 4 },
 });

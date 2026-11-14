@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Couch 1.0.4 rebuild without OTA updates (expo-updates removed, Guideline 5.6): 7-day free trial then Couch Plus A$3.99 one-time, earlier free installs keep it free",
+  "note": "Couch 1.0.5 TestFlight build: design polish (paywall hierarchy and result colours, Settings Plus card chevron, remote add-TV notice, Cast controls order). No purchase, permission or service changes. 1.0.4 stays in App Review.",
   "ascAppId": "6826135134"
 }

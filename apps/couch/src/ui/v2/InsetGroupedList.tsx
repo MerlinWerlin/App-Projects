@@ -166,7 +166,8 @@ export function Row({
 /** Row separator inset helper re-exported for screens that draw custom rows. */
 export { separatorInset };
 
-function Chevron({ color }: { color: string }) {
+/** Disclosure chevron (end edge, mirrored in right-to-left languages), hidden from VoiceOver. Also used by tappable cards. */
+export function Chevron({ color }: { color: string }) {
   return (
     <View
       accessibilityElementsHidden

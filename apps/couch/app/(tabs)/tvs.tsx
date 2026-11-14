@@ -164,7 +164,6 @@ export default function TvsScreen() {
         </Text>
       ) : null}
 
-
       <InsetGroupedList>
         <Row
           title={t('app.tvs.settings')}
@@ -187,5 +186,4 @@ const styles = StyleSheet.create({
   emptyPill: { alignSelf: 'center' },
   center: { textAlign: 'center' },
   note: { paddingHorizontal: list.inset + list.rowPadding, marginTop: -space.lg, marginBottom: list.groupGap },
-  noteWrap: { paddingHorizontal: list.inset + list.rowPadding },
 });

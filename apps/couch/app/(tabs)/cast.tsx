@@ -155,12 +155,7 @@ export default function CastScreen() {
                 {delivery}
               </Text>
             ) : null}
-            {snap.delivery?.via === 'googlecast' ? (
-              <PillButton variant="plain" label={t('app.cast.testPicture')} onPress={() => void cast.sendTestPicture()} />
-            ) : null}
-            {queue.items.length > 0 ? (
-              <PillButton variant="tinted" stretch label={t('app.cast.airplayShow')} onPress={() => router.push('/airplay-show')} />
-            ) : null}
+            {/* Playback controls sit right under the status they act on; the secondary ways to show come after. */}
             <Card>
               <TransportBar
                 cast={snap.cast}
@@ -175,6 +170,12 @@ export default function CastScreen() {
                 onStop={() => void cast.stop()}
               />
             </Card>
+            {snap.delivery?.via === 'googlecast' ? (
+              <PillButton variant="plain" label={t('app.cast.testPicture')} onPress={() => void cast.sendTestPicture()} />
+            ) : null}
+            {queue.items.length > 0 ? (
+              <PillButton variant="tinted" stretch label={t('app.cast.airplayShow')} onPress={() => router.push('/airplay-show')} />
+            ) : null}
             <View style={styles.section}>
               <View style={styles.sectionHd}>
                 <Text accessibilityRole="header" style={[textStyle('title3'), styles.grow, { color: p.label }]}>

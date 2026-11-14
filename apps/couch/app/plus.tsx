@@ -7,7 +7,8 @@ import { PLUS_FEATURE_COPY, plusPromise } from '../src/plus/copy';
 import { PLUS_FEATURES, PLUS_PRICE } from '../src/plus/entitlement';
 import { setPaywallShown } from '../src/plus/paywall';
 import { usePlus } from '../src/plus/usePlus';
-import { list, space, textStyle } from '../src/theme/design';
+import { continuous, list, radii, space, textStyle } from '../src/theme/design';
+import { RemoteIcon } from '../src/ui/icons/RemoteIcon';
 import { FreePromise } from '../src/ui/Screen';
 import { Text } from '../src/ui/Text';
 import { showToast } from '../src/ui/Toast';
@@ -37,6 +38,8 @@ export default function PlusScreen() {
   const router = useRouter();
   const { access, price: storePrice, busy, store } = usePlus();
   const [buyNote, setBuyNote] = useState<string | null>(null);
+  // Whether the line under the buttons is good news (green) or a problem (amber).
+  const [buyOk, setBuyOk] = useState(false);
   const price = storePrice ?? PLUS_PRICE;
 
   // The gate doesn't open a second paywall on top of this one.
@@ -48,6 +51,7 @@ export default function PlusScreen() {
   const say = useCallback((note: string, ok: boolean) => {
     setBuyNote(note);
     report(note, ok);
+    setBuyOk(ok);
   }, []);
 
   const buy = useCallback(
@@ -103,8 +107,10 @@ export default function PlusScreen() {
         leading={<PillButton variant="plain" label={t('app.common.back')} onPress={() => router.back()} />}
       >
         <Card elevation="mid" style={styles.card}>
-          <Text style={[textStyle('headline'), { color: p.label }]}>{plusPromise()}</Text>
-          <Text style={[textStyle('subheadline'), { color: p.secondaryLabel }]}>{t('app.plus.priceLine', { price })}</Text>
+          <Text style={[textStyle('title2'), { color: p.label }]} accessibilityRole="header">
+            {plusPromise()}
+          </Text>
+          <Text style={[textStyle('headline'), { color: p.tintLabel }]}>{t('app.plus.priceLine', { price })}</Text>
           <View style={styles.features}>
             {PLUS_FEATURES.map((f) => (
               <View
@@ -113,8 +119,18 @@ export default function PlusScreen() {
                 accessible
                 accessibilityLabel={t('app.plus.featureLabel', { title: PLUS_FEATURE_COPY[f].title, hint: PLUS_FEATURE_COPY[f].hint })}
               >
-                <Text style={[textStyle('body'), { color: p.label }]}>{PLUS_FEATURE_COPY[f].title}</Text>
-                <Text style={[textStyle('footnote'), { color: p.secondaryLabel }]}>{PLUS_FEATURE_COPY[f].hint}</Text>
+                {/* Decorative tick in the Plus tint, like the TVs list's icon tiles; VoiceOver reads the row label. */}
+                <View
+                  style={[styles.tick, continuous, { backgroundColor: p.tintedFill }]}
+                  accessibilityElementsHidden
+                  importantForAccessibility="no-hide-descendants"
+                >
+                  <RemoteIcon name="check" size={16} color={p.tintedLabel} />
+                </View>
+                <View style={styles.featureText}>
+                  <Text style={[textStyle('headline'), { color: p.label }]}>{PLUS_FEATURE_COPY[f].title}</Text>
+                  <Text style={[textStyle('footnote'), { color: p.secondaryLabel }]}>{PLUS_FEATURE_COPY[f].hint}</Text>
+                </View>
               </View>
             ))}
           </View>
@@ -165,7 +181,11 @@ export default function PlusScreen() {
             </>
           ) : null}
           {buyNote ? (
-            <Text style={[textStyle('footnote'), { color: p.warning }]} accessibilityLiveRegion="polite">
+            // A good result (trial started, Plus restored) reads as success, never in the warning colour.
+            <Text
+              style={[textStyle('footnote'), styles.centerText, { color: buyOk ? p.success : p.warning }]}
+              accessibilityLiveRegion="polite"
+            >
               {buyNote}
             </Text>
           ) : null}
@@ -182,7 +202,10 @@ export default function PlusScreen() {
 const styles = StyleSheet.create({
   card: { marginHorizontal: list.inset, marginTop: space.sm, marginBottom: space.xl, gap: space.xs },
   features: { gap: space.md, marginTop: space.sm, marginBottom: space.sm },
-  feature: { gap: space.xxs },
+  feature: { flexDirection: 'row', alignItems: 'flex-start', gap: space.md },
+  featureText: { flex: 1, gap: space.xxs },
+  tick: { width: 28, height: 28, borderRadius: radii.sm, alignItems: 'center', justifyContent: 'center', marginTop: 1 },
+  centerText: { textAlign: 'center' },
   actions: { marginHorizontal: list.inset, marginBottom: list.groupGap, gap: space.sm },
   center: { alignSelf: 'center' },
   bottom: { marginHorizontal: list.inset, gap: space.md },
