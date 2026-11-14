@@ -12,7 +12,7 @@ appId: com.jared797.cue
 - assertVisible: Prompt
 - takeScreenshot: 02-editor
 - tapOn: Prompt
-- assertVisible: Steady
+- assertVisible: '.*Steady.*'
 - takeScreenshot: 03-prompter
 - launchApp:
     clearState: false
