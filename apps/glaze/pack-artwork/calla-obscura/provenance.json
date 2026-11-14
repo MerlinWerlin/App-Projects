@@ -6,22 +6,6 @@
   "artworks": [
     {
       "theme": "calla-obscura",
-      "id": "furled-calla-bud",
-      "label": "Furled calla bud",
-      "ref": "123-calla-obscura\\widgets\\calla-pair.png",
-      "subject": "one unopened calla bud, sculptural narrow ivory petal wrapped in a satin spiral around a pale chartreuse tip, one slender deep sage stem, subtle soft edge light, complete botanical specimen angled diagonally, no open bloom or vase",
-      "prompt": "Use case: stylized-concept. One original standalone 1024 x 1024 square pure artwork for Glaze Calla Obscura. one unopened calla bud, sculptural narrow ivory petal wrapped in a satin spiral around a pale chartreuse tip, one slender deep sage stem, subtle soft edge light, complete botanical specimen angled diagonally, no open bloom or vase. Photoreal fine-art botanical still-life illustration, completely quiet matte graphite #222728 background seamless across all edges, ivory and dark sage with restrained silver highlights. Match reference's satin texture, delicate lighting and calm sophisticated contrast, but a new subject/composition. Whole object centred within 16 percent clear margins, no cropping. No text, writing, numbers, logos, border, watermark, UI, clocks, clock hands/dials, calendars/dates, battery/focus indicators. No grid.",
-      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-4ea0a132-a27a-4afd-986f-8f341b44c478.png",
-      "image": "widget-furled-calla-bud.a7a348a1.webp",
-      "sha256": "a7a348a1661f5416c8df37edb12b8782f108c9863171032c37309bba2642bf59",
-      "bytes": 41092,
-      "dimensions": [
-        1024,
-        1024
-      ]
-    },
-    {
-      "theme": "calla-obscura",
       "id": "silver-moth",
       "label": "Silver moth",
       "ref": "123-calla-obscura\\widgets\\calla-pair.png",
@@ -35,6 +19,26 @@
         1024,
         1024
       ]
+    },
+    {
+      "id": "pearl-garden-snail",
+      "label": "Pearl Garden Snail",
+      "file": "widgets/widget-pearl-garden-snail.5f5dd19f.webp",
+      "sha256": "5f5dd19f8acdd29134d87998eff08fcbf03da4ae0117d364cfdb94ccf9e8bafc",
+      "bytes": 109350,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-c4055d16-5caa-4786-be4d-8688189e84c1.png",
+      "sourceSha256": "413c4c9be96e36084c6f23f75c9c634f4e1cbca800f6586fe0bbe35600e6ce25",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for calla-obscura. One elegant garden snail, complete side three-quarter view, with a beautifully formed spiralling ivory pearl shell and muted dark sage-green body. Shell has restrained satin mother-of-pearl lustre, gentle natural growth ridges and warm ivory highlights; body has finely detailed soft natural skin, one coherent broad foot and two long eye tentacles with two shorter lower tentacles, calmly extended. Refined photorealistic botanical-study treatment with luxurious soft directional studio lighting, deep charcoal shadows, dark muted green and ivory palette, matching an understated dark calla-lily still-life collection. Isolated snail only: absolutely no flowers, leaves, foliage, moths, water, earth, ground, backdrop or separate base. Entire shell, body, tail and tentacle tips fit comfortably within square with ample empty margins. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 833750,
+      "opaquePixels": 884
     }
   ]
 }

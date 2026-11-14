@@ -1,17 +1,5 @@
 [
   {
-    "id": "furled-calla-bud",
-    "kind": "art",
-    "image": "widget-furled-calla-bud.a7a348a1.webp",
-    "sizes": [
-      "small",
-      "large"
-    ],
-    "fit": "fit",
-    "background": "wallpaper",
-    "label": "Furled calla bud"
-  },
-  {
     "id": "silver-moth",
     "kind": "art",
     "image": "widget-silver-moth.f153e3a0.webp",
@@ -22,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Silver moth"
+  },
+  {
+    "id": "pearl-garden-snail",
+    "kind": "art",
+    "image": "widget-pearl-garden-snail.5f5dd19f.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pearl Garden Snail"
   }
 ]
