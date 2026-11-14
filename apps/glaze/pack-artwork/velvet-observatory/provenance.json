@@ -1,0 +1,38 @@
+{
+  "theme": "velvet-observatory",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v13/art__velvet-observatory__v6__manifest.json",
+    "sha256": "e040aaad801ea096281ad04a63629700d43117718cd770c059333ec36e40de4a",
+    "packVersion": 6,
+    "existingArtwork": [
+      "brass-telescope",
+      "lunar-moth",
+      "pearl-orrery",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "ivory-brass-comet",
+      "label": "Ivory Brass Comet",
+      "file": "widgets/widget-ivory-brass-comet.87a79035.webp",
+      "sha256": "87a79035605dec0315db955c01c65b5c81251f1e97ddbebaad1a455d481f3dfb",
+      "bytes": 155366,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-bd38ad23-5b0e-49b7-af5b-feb7cd73989c.png",
+      "sourceSha256": "0ffefcf919309c76ec9dcdd43e73516ffae84f4ff0410fdcb255143fc567bd97",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for velvet-observatory. One luxurious miniature celestial sculpture of a comet: a small irregular ivory pearl-stone comet nucleus at upper right, followed diagonally toward lower left by five elegant long curved antique-brass filaments that fan into a tapered flowing tail. The brass has fine engraved organic fluting and subtle patina; a single narrow deep-burgundy velvet ribbon is woven gently through the middle of the tail as an inset material accent. Restrained antique observatory aesthetic, photorealistic still-life material detail, warm selective light, ivory/old brass/deep wine palette. Fully visible compact sculptural object, not a telescope, moth, orrery or crescent; no base, fabric backdrop or ornamental frame. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 882985,
+      "opaquePixels": 1147
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "theme": "willow-wicket",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__willow-wicket__v1__manifest.json",
+    "sha256": "5d60a6f3f5b16d9b42902058e5ac026d366a30fb4545c0527ce88ec6b6c33768",
+    "packVersion": 1,
+    "existingArtwork": [
+      "innings-score",
+      "stitched-ball",
+      "wicket-study",
+      "willow-bat"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "vintage-batting-glove",
+      "label": "Vintage Batting Glove",
+      "file": "widgets/widget-vintage-batting-glove.0b54ae47.webp",
+      "sha256": "0b54ae4751173bb037c54339118bb9ddf43223d410dbf1df7186a4ea29315ea6",
+      "bytes": 180320,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-c18b5053-10ea-4a9f-89a1-633307280296.png",
+      "sourceSha256": "a5362f77552a7c7c90c10d872a204f3241f35edec0b03abced2a8180beeb271d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for willow-wicket. One single vintage cricket batting glove, shown three-quarter view with five clearly separated naturally slightly curled fingers. Supple warm ivory leather, thick segmented finger pads, quilted back-of-hand protection, muted forest-green cuff with a narrow burgundy-red piping accent, fine cream stitching and gently worn tactile leather. Refined classic cricket equipment still-life, warm soft daylight, natural realistic proportions, palette coordinated with a willow wood bat and deep-red stitched ball on pale sage. No hand or person inside, no writing, logos, embroidery, numbers, laced baseball web, ball or bat. Entire glove fully visible with ample margin. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 673890,
+      "opaquePixels": 895
+    },
+    {
+      "id": "ivory-cricket-sunhat",
+      "label": "Ivory Cricket Sunhat",
+      "file": "widgets/widget-ivory-cricket-sunhat.06f05360.webp",
+      "sha256": "06f05360f3a9067df78f0ff0eff5d19d8fbba4bb4cccbacf0db33f291c3803d5",
+      "bytes": 165828,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-86201f7a-f49a-41cd-a2e0-a0e1723b6783.png",
+      "sourceSha256": "87d445ba89ab1b13939bedeeca698b41a49009a6cae91fb52aa6c3959e32c14e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for willow-wicket. One traditional cricket sunhat in warm ivory canvas, softly structured low rounded crown with a broad gently downturned circular brim and a simple dark forest-green woven hatband. Fine natural cotton weave and tidy cream stitching visible, subtle realistic creases, no holes, labels, badges or embroidered motifs. Full three-quarter view, classic understated cricket-club equipment study, warm soft studio daylight, restrained pale sage/ivory/forest-green palette to complement willow wood and burgundy-red leather. Hat alone, no head, stand, rack, ball, bat, ground or background. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 671499,
+      "opaquePixels": 732
+    }
+  ]
+}

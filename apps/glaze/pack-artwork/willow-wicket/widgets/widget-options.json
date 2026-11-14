@@ -1,0 +1,26 @@
+[
+  {
+    "id": "vintage-batting-glove",
+    "kind": "art",
+    "image": "widget-vintage-batting-glove.0b54ae47.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Vintage Batting Glove"
+  },
+  {
+    "id": "ivory-cricket-sunhat",
+    "kind": "art",
+    "image": "widget-ivory-cricket-sunhat.06f05360.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ivory Cricket Sunhat"
+  }
+]
