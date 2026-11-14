@@ -1,0 +1,40 @@
+{
+  "theme": "calla-obscura",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "calla-obscura",
+      "id": "furled-calla-bud",
+      "label": "Furled calla bud",
+      "ref": "123-calla-obscura\\widgets\\calla-pair.png",
+      "subject": "one unopened calla bud, sculptural narrow ivory petal wrapped in a satin spiral around a pale chartreuse tip, one slender deep sage stem, subtle soft edge light, complete botanical specimen angled diagonally, no open bloom or vase",
+      "prompt": "Use case: stylized-concept. One original standalone 1024 x 1024 square pure artwork for Glaze Calla Obscura. one unopened calla bud, sculptural narrow ivory petal wrapped in a satin spiral around a pale chartreuse tip, one slender deep sage stem, subtle soft edge light, complete botanical specimen angled diagonally, no open bloom or vase. Photoreal fine-art botanical still-life illustration, completely quiet matte graphite #222728 background seamless across all edges, ivory and dark sage with restrained silver highlights. Match reference's satin texture, delicate lighting and calm sophisticated contrast, but a new subject/composition. Whole object centred within 16 percent clear margins, no cropping. No text, writing, numbers, logos, border, watermark, UI, clocks, clock hands/dials, calendars/dates, battery/focus indicators. No grid.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-4ea0a132-a27a-4afd-986f-8f341b44c478.png",
+      "image": "widget-furled-calla-bud.a7a348a1.webp",
+      "sha256": "a7a348a1661f5416c8df37edb12b8782f108c9863171032c37309bba2642bf59",
+      "bytes": 41092,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "calla-obscura",
+      "id": "silver-moth",
+      "label": "Silver moth",
+      "ref": "123-calla-obscura\\widgets\\calla-pair.png",
+      "subject": "one small silvery ivory moth resting with wings softly fanned in a shallow triangle, intricate satin scales, faint sage veins, slender charcoal antennae and tiny natural feet, refined anatomical botanical companion, no flower, leaf or vase",
+      "prompt": "Use case: stylized-concept. One original standalone 1024 x 1024 square pure artwork for Glaze Calla Obscura. one small silvery ivory moth resting with wings softly fanned in a shallow triangle, intricate satin scales, faint sage veins, slender charcoal antennae and tiny natural feet, refined anatomical botanical companion, no flower, leaf or vase. Photoreal fine-art botanical still-life illustration, completely quiet matte graphite #222728 background seamless across all edges, ivory and dark sage with restrained silver highlights. Match reference's satin texture, delicate lighting and calm sophisticated contrast, but a new subject/composition. Whole object centred within 16 percent clear margins, no cropping. No text, writing, numbers, logos, border, watermark, UI, clocks, clock hands/dials, calendars/dates, battery/focus indicators. No grid.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-b7c0d8b2-17d6-46d6-89e2-ed90714832d0.png",
+      "image": "widget-silver-moth.f153e3a0.webp",
+      "sha256": "f153e3a0303f867931dd98aac5e97ae9ae91c9c62d32ce3060b05d6f219e1397",
+      "bytes": 117130,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

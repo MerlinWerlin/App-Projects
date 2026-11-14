@@ -1,0 +1,42 @@
+{
+  "theme": "brass-afterhours",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "brass-afterhours",
+      "id": "velvet-instrument-case",
+      "label": "Velvet instrument case",
+      "ref": "119-brass-afterhours\\widgets\\sax-bell.png",
+      "subject": "one compact open vintage saxophone carry case, sculpted dark bordeaux velvet lining forming the instrument-shaped hollow, black leather outer shell, two warm brushed brass clasps and a small curved carrying handle. EMPTY case without instrument, entire case visible, angled three-quarter view, one subtle warm brass edge glint",
+      "avoid": "No saxophone, sax bell, keys or reed",
+      "prompt": "Use case: stylized-concept. Asset type: Glaze Brass Afterhours pure Artwork widget. One original standalone 1024 x 1024 square image. Subject: one compact open vintage saxophone carry case, sculpted dark bordeaux velvet lining forming the instrument-shaped hollow, black leather outer shell, two warm brushed brass clasps and a small curved carrying handle. EMPTY case without instrument, entire case visible, angled three-quarter view, one subtle warm brass edge glint. Refined photoreal editorial studio material illustration, deep matte navy #1C2630 ground and background seamless at all edges, warm brass #C3A169 and restrained ivory highlights, subtle bordeaux, soft warm directional light and gentle navy shadows. Match the reference's material realism, palette and quiet mood, but invent a new composition. Centered compact arrangement occupying 68 percent canvas width, full silhouette and 16 percent safe margins. No saxophone, sax bell, keys or reed. No people, music notation, lettering, labels, numbers, logos, watermarks, frames, UI, clocks, dials, hands, date/calendar pictures, focus or battery indicators. One image, no grids.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-6d4957fc-e7db-4053-b021-c07ff179986b.png",
+      "image": "widget-velvet-instrument-case.c2cb73fc.webp",
+      "sha256": "c2cb73fcbbe49151b6119f8e5073b855cc9d141a777551910016ec830554a164",
+      "bytes": 151890,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "brass-afterhours",
+      "id": "brass-cup-mute",
+      "label": "Brass cup mute",
+      "ref": "119-brass-afterhours\\widgets\\sax-bell.png",
+      "subject": "one beautifully crafted brass cup mute for a jazz trumpet standing at a gentle angle on a folded tiny bordeaux velvet cloth, warm brushed golden cone, three small natural cork strips and a shallow flared brass cup. Unbranded luxurious musical still-life, whole object visible with warm ivory rim light",
+      "avoid": "No saxophone, sax bell, key array, case or reed",
+      "prompt": "Use case: stylized-concept. Asset type: Glaze Brass Afterhours pure Artwork widget. One original standalone 1024 x 1024 square image. Subject: one beautifully crafted brass cup mute for a jazz trumpet standing at a gentle angle on a folded tiny bordeaux velvet cloth, warm brushed golden cone, three small natural cork strips and a shallow flared brass cup. Unbranded luxurious musical still-life, whole object visible with warm ivory rim light. Refined photoreal editorial studio material illustration, deep matte navy #1C2630 ground and background seamless at all edges, warm brass #C3A169 and restrained ivory highlights, subtle bordeaux, soft warm directional light and gentle navy shadows. Match the reference's material realism, palette and quiet mood, but invent a new composition. Centered compact arrangement occupying 68 percent canvas width, full silhouette and 16 percent safe margins. No saxophone, sax bell, key array, case or reed. No people, music notation, lettering, labels, numbers, logos, watermarks, frames, UI, clocks, dials, hands, date/calendar pictures, focus or battery indicators. One image, no grids.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-6ff7facc-69b9-4958-ab44-c9b2375c6e7e.png",
+      "image": "widget-brass-cup-mute.3ac494c0.webp",
+      "sha256": "3ac494c0bcd86be54760d950538a8e9aae01326eba420b4ae554f7d151ec60da",
+      "bytes": 114692,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

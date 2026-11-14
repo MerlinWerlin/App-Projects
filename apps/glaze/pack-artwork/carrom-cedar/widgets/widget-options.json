@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cedar-powder-brush",
+    "kind": "art",
+    "image": "widget-cedar-powder-brush.4be5a83f.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cedar powder brush"
+  },
+  {
+    "id": "cotton-disc-pouch",
+    "kind": "art",
+    "image": "widget-cotton-disc-pouch.16265846.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cotton disc pouch"
+  }
+]
