@@ -1,0 +1,108 @@
+name: Publish Glaze artwork packs
+
+# Manual only. Jared's explicit OK is required before selecting dry_run=false.
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Build and verify only; keep true until Jared approves publication'
+        type: boolean
+        default: true
+      release:
+        description: 'First new release; whole packs overflow to subsequent tags below 1000 assets'
+        type: string
+        default: glaze-packs-v18
+
+permissions:
+  contents: read
+concurrency:
+  group: glaze-publish-packs
+  cancel-in-progress: false
+
+jobs:
+  packs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: apps/glaze
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      FIRST_RELEASE: ${{ inputs.release }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Tests and all 139 source themes must be complete
+        run: |
+          node --test "scripts/packs/*.test.mjs"
+          node scripts/packs/artwork_progress.mjs --complete --markdown
+      - name: Refuse to overwrite an intervening catalogue update
+        run: |
+          node --input-type=module <<'NODE'
+          import {readFileSync} from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const lock=JSON.parse(readFileSync('scripts/packs/artwork-baseline/baseline-lock.json'));
+          const url=new URL(lock.catalogUrl);url.searchParams.set('preflight',String(Date.now()));
+          const response=await fetch(url,{signal:AbortSignal.timeout(90000)});
+          if(!response.ok)throw Error(`Live catalogue HTTP ${response.status}`);
+          const sha=createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex');
+          if(sha!==lock.catalogSha256)throw Error('Live catalogue changed. Reconcile the new packs before publishing.');
+          console.log('Live catalogue matches the reviewed baseline');
+          NODE
+      - name: Download and verify original pack bytes
+        run: node scripts/packs/cache_artwork_baseline.mjs --snapshot scripts/packs/artwork-baseline --out dist/published-cache
+      - name: Offline complete rebuild
+        run: node scripts/packs/build_packs.mjs --base-packs dist/published-cache --add-art pack-artwork --out dist/artwork-packs --release "$FIRST_RELEASE" --complete
+      - name: Read existing release names and sizes
+        run: |
+          mkdir -p dist/existing
+          node --input-type=module <<'NODE' > dist/release-tags.txt
+          import {readFileSync} from 'node:fs';
+          const c=JSON.parse(readFileSync('dist/artwork-packs/catalog.json'));
+          console.log([...new Set([...c.packs.map(p=>p.release),'glaze-packs-v5'])].join('\n'));
+          NODE
+          while IFS= read -r tag; do
+            if ! gh release view "$tag" --json assets > "dist/existing/$tag.json"; then
+              echo '{"assets":[]}' > "dist/existing/$tag.json"
+            fi
+          done < dist/release-tags.txt
+      - name: Plan upload order and verify existing immutable assets
+        run: |
+          node scripts/packs/release_assets.mjs --dir dist/artwork-packs --out dist/artwork-release --catalog-tag glaze-packs-v5 --existing-dir dist/existing
+          node scripts/packs/verify_artwork_release.mjs --dir dist/artwork-release --existing-dir dist/existing
+      - name: Retain the exact reviewable build and upload plans
+        uses: actions/upload-artifact@v4
+        with:
+          name: glaze-artwork-pack-build
+          path: |
+            apps/glaze/dist/artwork-packs
+            apps/glaze/dist/artwork-release
+          retention-days: 7
+      - name: Create missing releases only after approval
+        if: ${{ !inputs.dry_run }}
+        run: |
+          while IFS= read -r tag; do
+            gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --target "$GITHUB_SHA" --title "Glaze theme packs ($tag)" --notes "Reviewed pure artwork additions; immutable pack assets." --latest=false
+          done < dist/artwork-release/tags.txt
+      - name: Upload files then manifests, active catalogue last
+        if: ${{ !inputs.dry_run }}
+        run: |
+          while IFS= read -r tag; do
+            for list in upload-1-files.txt upload-2-manifests.txt upload-3-catalog.txt; do
+              while IFS= read -r file; do
+                [ -n "$file" ] || continue
+                if [ "$file" = catalog.json ]; then
+                  gh release upload "$tag" --clobber "dist/artwork-release/$tag/assets/$file"
+                else
+                  gh release upload "$tag" "dist/artwork-release/$tag/assets/$file"
+                fi
+              done < "dist/artwork-release/$tag/$list"
+            done
+          done < dist/artwork-release/tags.txt
+      - name: Verify every newly uploaded public asset hash
+        if: ${{ !inputs.dry_run }}
+        run: node scripts/packs/verify_artwork_release.mjs --dir dist/artwork-release --uploaded

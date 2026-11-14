@@ -5,6 +5,12 @@
     },
     "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
   },
+  "amber-archive": {
+    "options": {
+      "reading-chapters": "habits"
+    },
+    "reason": "Baked-in GOAL 12/20; retain as a functional image, never an Artwork slot."
+  },
   "billabong-clay": {
     "options": {
       "drop-progress": "habits"
@@ -41,6 +47,12 @@
     },
     "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
   },
+  "papaya-punch": {
+    "options": {
+      "sun-study": "photo"
+    },
+    "reason": "Baked-in 22 C SUNNY weather information; retain as a static picture outside pure Artwork."
+  },
   "persimmon-press": {
     "options": {
       "seed-progress": "habits"
@@ -65,6 +77,18 @@
     },
     "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
   },
+  "rainlight": {
+    "options": {
+      "audit-20261101-after-hours": "clock"
+    },
+    "reason": "Baked-in 06:15 and WED 28; clock/date pictures never count as pure Artwork."
+  },
+  "rosewater-reverie": {
+    "options": {
+      "audit-20261101-pearl-pendulum": "clock"
+    },
+    "reason": "Analogue clock face and hands; retain as a clock option, never pure Artwork."
+  },
   "sonata-house": {
     "options": {
       "practice-chapters": "habits"
@@ -76,6 +100,12 @@
       "spare-goals": "habits"
     },
     "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "tapir-terracotta": {
+    "options": {
+      "water-drops": "habits"
+    },
+    "reason": "Baked-in 4/6 progress value; retain as a functional image outside Artwork."
   },
   "tessera-tempo": {
     "options": {

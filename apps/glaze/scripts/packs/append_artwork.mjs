@@ -17,7 +17,7 @@ export function applyArtworkCorrections(manifest, corrections) {
   const result = structuredClone(manifest), changes = corrections[manifest.id]?.options ?? {};
   for (const [id, kind] of Object.entries(changes)) {
     const option = result.widgets.find((w) => w.id === id);
-    if (!option || option.kind !== 'art' || kind !== 'habits') throw new Error(`${manifest.id}/${id}: expected existing baked-in functional art`);
+    if (!option || option.kind !== 'art' || !['habits', 'clock', 'photo'].includes(kind)) throw new Error(`${manifest.id}/${id}: expected existing baked-in functional art`);
     option.kind = kind;
   }
   return result;

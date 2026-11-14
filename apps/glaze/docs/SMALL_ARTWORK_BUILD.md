@@ -8,7 +8,7 @@ These are pack content and build tools. Glaze runtime code is unchanged. Pack pu
 
 `scripts/packs/artwork-baseline/` pins the active catalogue and all 141 selected manifests as exact downloaded bytes. `baseline-lock.json` records their URLs, SHA256, versions and app-selected artwork. Five themes already have five pieces. Before semantic correction, 136 themes need 177 additions.
 
-Visual inspection found 17 existing goal/progress/score images with baked-in numbers. `artwork-corrections.json` deliberately changes those options from `art` to `habits`, retaining their IDs, images and every other field. They remain available as functional images and no longer occupy an Artwork slot. Replacing those slots increases the additions to **194 across the same 136 themes**. Decorative objects such as an hourglass or a radio remain illustrations.
+Visual inspection of all 528 app-selected existing images found 22 functional pictures: numbered goals, progress and scores, two clocks and a weather value. `artwork-corrections.json` deliberately changes those options from `art` to the appropriate functional `habits`/`clock` kind, or `photo` for static weather information, retaining their IDs, images and every other field. They remain available as functional images and no longer occupy an Artwork slot. Replacing those slots increases the additions to **199 across 139 themes**, including Amber Archive, Rainlight and Rosewater Reverie, which the original table incorrectly marked complete. Decorative objects such as an hourglass or a radio remain illustrations.
 
 ## Source assets and rebuild
 
@@ -32,7 +32,7 @@ Omit `--complete` only to inspect an unfinished batch. Every supplied theme must
 
 The cache command only downloads public files and checks all hashes/lengths. The builder is offline. It copies every original asset unchanged, appends the new WebPs without re-encoding, increments each changed pack version once from the pinned baseline and preserves the existing artwork order. New artwork must fill the actual small-widget artwork plan to exactly five; duplicate bytes/IDs, functional metadata, wrong dimensions and bad hashes fail validation.
 
-Generated `versions.json`, `releases.json`, coverage, catalogue and upload plans stay under `dist/`. The tracked historical publishing map and the live catalogue are not changed by a rebuild. The five already-complete packs retain their exact manifests and assets.
+Generated `versions.json`, `releases.json`, coverage, catalogue and upload plans stay under `dist/`. The tracked historical publishing map and the live catalogue are not changed by a rebuild. The two genuinely complete packs, Alpine Starlight and Desert Afterglow, retain their exact manifests and assets.
 
 ## Publication boundary
 

@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { planReleases } from './release_assets.mjs';
 import { buildPacks } from './build_packs.mjs';
-import { buildArtworkAdditions, checkedPath, digest, loadBaseline, readArtworkAdditions, webpSize } from './append_artwork.mjs';
+import { applyArtworkCorrections, buildArtworkAdditions, checkedPath, digest, loadBaseline, readArtworkAdditions, webpSize } from './append_artwork.mjs';
 import { cacheArtworkBaseline } from './cache_artwork_baseline.mjs';
 import { plannedArtworkOptionIds, artworkSlotSources } from '../../src/core/artworkCoverage.ts';
 import { parseWidgetOptions } from '../../src/core/widgetOptions.ts';
@@ -154,4 +154,12 @@ test('committed baseline matches the actual consumer and retains 84 formerly omi
   assert.deepEqual(baseline.lock.baselineCounts, { 2: 3, 3: 35, 4: 98, 5: 5 });
   const airmail = baseline.manifests.get('airmail-daydream');
   assert.ok(airmail.widgets.some((w) => w.id === 'art-20261106-paper-swallow'));
+  const corrections = JSON.parse(readFileSync(new URL('./artwork-corrections.json', import.meta.url), 'utf8'));
+  assert.equal(Object.keys(corrections).length, 22);
+  const counts = [...baseline.manifests.values()].map((m) => {
+    const corrected = applyArtworkCorrections(m, corrections);
+    return plannedArtworkOptionIds(m.id, parseWidgetOptions(corrected.widgets, corrected.assets).options).length;
+  });
+  assert.equal(counts.filter((n) => n < 5).length, 139);
+  assert.equal(counts.reduce((n, count) => n + 5 - count, 0), 199);
 });
