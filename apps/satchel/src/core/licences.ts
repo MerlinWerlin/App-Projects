@@ -44,7 +44,6 @@ const EXPO_MODULES = [
   'expo-sharing',
   'expo-splash-screen',
   'expo-status-bar',
-  'expo-updates',
 ] as const;
 
 export const LICENCE_SECTIONS: readonly LicenceSection[] = [
@@ -103,7 +102,6 @@ export const LICENCE_SECTIONS: readonly LicenceSection[] = [
     title: 'licences.sectionPlatform',
     entries: [
       { id: 'systemmap', name: 'Apple Maps', licence: 'Apple terms', what: 'licences.systemMap.what' },
-      { id: 'updates', name: 'Expo updates', licence: 'Expo terms', what: 'licences.updates.what' },
     ],
   },
   {

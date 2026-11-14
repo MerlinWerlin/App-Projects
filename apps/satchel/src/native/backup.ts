@@ -8,7 +8,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';
-import * as Updates from 'expo-updates';
 import { DevSettings } from 'react-native';
 import {
   BACKUP_MIME,
@@ -217,14 +216,11 @@ export async function applyRestore(plan: RestorePlan, before: Record<string, str
   }
 }
 
-/** Starts the app again so every screen reads the restored data. False when this build can't (ask to reopen). */
+/** Starts the app again so every screen reads the restored data. False when this build can't (ask to reopen).
+ * Store builds have no over-the-air updates from 0.2.1 (expo-updates removed, Guideline 5.6), so they can't reload
+ * themselves and always ask the person to close and reopen Satchel; only Expo Go / development reloads. */
 export async function restartApp(): Promise<boolean> {
-  try {
-    await Updates.reloadAsync();
-    return true;
-  } catch {
-    // Expo Go / development: the dev reload
-  }
+  if (!__DEV__) return false;
   try {
     DevSettings.reload();
     return true;

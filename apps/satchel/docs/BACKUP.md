@@ -55,7 +55,7 @@ Satchel, document type `app.satchel.backup`) goes straight to the same preview.
 - **Replace** (asks first) makes the phone match the backup; phone keys not in it are removed, except the vault
   when the backup has no documents, the caches and the backup record.
 - Files are written first, then the keys; if a key write fails the changed keys are put back. Then the app starts
-  again (expo-updates `reloadAsync`; in Expo Go the dev reload) so every screen reads the restored data; if that
+  again (in Expo Go / development the dev reload; store builds have no expo-updates from 0.2.1, so they ask the person to close and reopen Satchel) so every screen reads the restored data; if that
   can't happen the screen asks to close and reopen Satchel.
 
 ## Reminder

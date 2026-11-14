@@ -5,6 +5,7 @@
 #   mode "build"  -> starts ship-mac, which builds the iOS app on GitHub's free Mac runner and uploads it to
 #                    App Store Connect / TestFlight. Expo's paid cloud builds are never used (owner decision, 10 Nov 2026).
 #   mode "update" -> publishes an over-the-air update to phones already running that app version
+#                    Only for apps that still have expo-updates; App Store apps without it (Guideline 5.6) fail on purpose.
 # Nothing ships without a merge to main. Secrets are set once by the owner (docs/SHIPPING.md).
 name: ship
 
@@ -104,6 +105,14 @@ jobs:
           # Connect API key instead of an interactive Apple login. Needed for an app's first build from CI.
           echo "ascKeyAuth=$(jq -r 'if .ascKeyAuth then "1" else "" end' RELEASE.json)" >> "$GITHUB_OUTPUT"
 
+      - name: Refuse an over-the-air update for an app without expo-updates
+        if: steps.rel.outputs.mode == 'update'
+        run: |
+          if ! jq -e '.dependencies["expo-updates"]' package.json > /dev/null; then
+            echo "${{ matrix.app }} has no expo-updates (no over-the-air updates, Apple Guideline 5.6). Set mode to build in RELEASE.json." | tee "$RUNNER_TEMP/ship.log"
+            exit 1
+          fi
+
       - name: Install packages
         if: steps.rel.outputs.mode == 'update'
         run: npm install --no-audit --no-fund
@@ -126,7 +135,9 @@ jobs:
         run: |
           if [ "$(jq -r '.expo.extra.eas.projectId // empty' app.json)" = "" ]; then
             eas init --non-interactive --force
-            eas update:configure --non-interactive || true
+            if jq -e '.dependencies["expo-updates"]' package.json > /dev/null; then
+              eas update:configure --non-interactive || true
+            fi
           fi
 
       - name: Build on GitHub's Mac (ship-mac) and upload to TestFlight

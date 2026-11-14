@@ -4,6 +4,7 @@ Every new app gets everything below from its first build (T00 / T01), so we stop
 
 ## 1. Pipeline (born shippable)
 - **One stream.** The app's shipped home is the GitHub repo MerlinWerlin/App-Projects, folder `apps/<app>`. The hourly "App Factory auto-ship" task merges the build page into it and ships it: a TestFlight build when native code changed, an over-the-air update otherwise. Each run starts by syncing owner fixes made directly in the repo (3-way apply; the owner's change wins).
+- **No over-the-air updates (14 Nov 2026).** Apple rejected Backspin under Guideline 5.6, so App Store apps do not use expo-updates; every change ships as a new build. The expo-updates advice below is history only.
 - **Expo SDK 57 from day one**, with the same pins as the other apps. Set up expo-updates with `runtimeVersion` policy `appVersion` and channel `production`, so updates reach phones without a rebuild.
 - **Two EAS profiles:** `production` (no native modules; must pass tests) and `production-native` (widgets, Live Activities and other native modules). Native pieces sit behind adapters that never crash Expo Go.
 - **The cloud can't reach the npm registry.** Keep offline checks green every run: `node --test` core tests, `ops/typecheck-core.sh`, `npm run typecheck:ui` against `scripts/tsc-stubs`, and `node ops/ui-check.mjs`. The PC runs the full install and type check.
