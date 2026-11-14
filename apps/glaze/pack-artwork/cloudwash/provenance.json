@@ -1,0 +1,26 @@
+{
+  "theme": "cloudwash",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "cloudwash",
+      "id": "blue-laundry-iron",
+      "label": "Blue laundry iron",
+      "ref": "068-cloudwash\\wallpapers\\wallpaper.png",
+      "subject": "one tiny charming vintage laundry iron with a blue porcelain body and an arched ivory handle, resting on a folded cream scalloped cloth, a small soft curling cloud of steam above, no temperature marks or controls",
+      "style": "Delicate flat storybook blue-ink engraved/risograph illustration on warm ivory linen-paper, fine blue hatch shading, tiny restrained butter-gold accents, tactile printed paper and stitched-cloth detail, quiet naive laundry whimsy matching reference",
+      "avoid": "No ghosts, birds, baskets, washed stars or characters",
+      "prompt": "Use case: stylized-concept. Glaze cloudwash: original standalone1024x1024 square pure artwork. Subject one tiny charming vintage laundry iron with a blue porcelain body and an arched ivory handle, resting on a folded cream scalloped cloth, a small soft curling cloud of steam above, no temperature marks or controls. Delicate flat storybook blue-ink engraved/risograph illustration on warm ivory linen-paper, fine blue hatch shading, tiny restrained butter-gold accents, tactile printed paper and stitched-cloth detail, quiet naive laundry whimsy matching reference. No ghosts, birds, baskets, washed stars or characters. Entire compact subject centred inside16percent clear safe margins, backdrop reaches all edges without card border. New composition/subject no copy/crop/recolour. No text, numbers, labels, logos, UI, watermark, clocks/hands/dials, date/calendar, focus/battery/progress imagery. Single image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-625d4fcf-ba4d-4319-8c99-e2bdd185aa43.png",
+      "image": "widget-blue-laundry-iron.b0e0287b.webp",
+      "sha256": "b0e0287be2d1bf671d8b204f466c33be63e5668ef98839e23b8e9068b629ac38",
+      "bytes": 371590,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

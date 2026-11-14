@@ -1,0 +1,40 @@
+{
+  "theme": "billabong-clay",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "billabong-clay",
+      "id": "clay-water-lily",
+      "label": "Clay water lily",
+      "ref": "132-billabong-clay\\widgets\\eucalyptus-sprig.png",
+      "subject": "one small handcrafted matte-clay water lily, warm ivory petals gently cupping a muted ochre clay centre, two soft sage-teal rounded clay lily pads and a short curved clay stem, all pieces contained, no eucalyptus sprig or circular ripple pattern",
+      "prompt": "Use case: stylized-concept. Glaze Billabong Clay, original standalone 1024 x 1024 square pure artwork of one small handcrafted matte-clay water lily, warm ivory petals gently cupping a muted ochre clay centre, two soft sage-teal rounded clay lily pads and a short curved clay stem, all pieces contained, no eucalyptus sprig or circular ripple pattern. Elegant handcrafted matte-clay collectible photographic illustration, pale river-blue #DAE4E2 seamless quiet background/floor, warm brown/slate/teal/sage/ivory clay palette, fine hand-smoothed texture, soft studio light/shadow matching reference, no live-wildlife photography. Whole compact object centred within16percent clear margins. New subject/composition no copy/crop/recolour. No text, numerals, labels, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-277022dd-3191-4e02-a7c9-121af4b2bd49.png",
+      "image": "widget-clay-water-lily.20f56c24.webp",
+      "sha256": "20f56c248e8907d123943276f2a97beedc174a3ec0f2af8c3032459cb40bac19",
+      "bytes": 76530,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "billabong-clay",
+      "id": "clay-river-turtle",
+      "label": "Clay river turtle",
+      "ref": "132-billabong-clay\\widgets\\clay-platypus.png",
+      "subject": "one small charming freshwater turtle made entirely of matte clay, soft olive-teal sculpted shell with subtle handmade panel lines, warm brown clay head and four coherent short feet, tiny dark eyes, gentle side three-quarter pose, no platypus or water ripples",
+      "prompt": "Use case: stylized-concept. Glaze Billabong Clay, original standalone 1024 x 1024 square pure artwork of one small charming freshwater turtle made entirely of matte clay, soft olive-teal sculpted shell with subtle handmade panel lines, warm brown clay head and four coherent short feet, tiny dark eyes, gentle side three-quarter pose, no platypus or water ripples. Elegant handcrafted matte-clay collectible photographic illustration, pale river-blue #DAE4E2 seamless quiet background/floor, warm brown/slate/teal/sage/ivory clay palette, fine hand-smoothed texture, soft studio light/shadow matching reference, no live-wildlife photography. Whole compact object centred within16percent clear margins. New subject/composition no copy/crop/recolour. No text, numerals, labels, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-86618e75-27ac-41c7-a39b-bfcf976f17d8.png",
+      "image": "widget-clay-river-turtle.d578e68c.webp",
+      "sha256": "d578e68ca9da19d1ce4c9a6d441cf210d8c258737017ef34149666507e62cccc",
+      "bytes": 84082,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}
