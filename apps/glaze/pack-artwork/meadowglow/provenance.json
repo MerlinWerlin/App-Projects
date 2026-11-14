@@ -1,0 +1,38 @@
+{
+  "theme": "meadowglow",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__meadowglow__v6__manifest.json",
+    "sha256": "397496588debb898f4fda451bfb4e395c7f5d2ec81496d1ec673001ea75b95c9",
+    "packVersion": 6,
+    "existingArtwork": [
+      "dew-grass-orb",
+      "sunlit-dandelion",
+      "morning-grass",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "morning-dew-web",
+      "label": "Morning dew web",
+      "file": "widgets/widget-morning-dew-web.bcffe4d7.webp",
+      "sha256": "bcffe4d7489871ad03a67daf2fac6901acc2ce2d873fd13917f14cd0c03d76e2",
+      "bytes": 376206,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-0f19c685-845f-4db1-845a-dca6ce6f8d90.png",
+      "sourceSha256": "c57a1fbc87b63df8e84d9ea38c6ef81971ed8126760272b9d8496b5bf02d8d70",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for meadowglow. One delicate natural spiderweb strung between two short bent meadow stems, gracefully irregular oval woven structure carrying tiny round morning dewdrops that catch warm pale-gold sunrise light, one small muted-green leaf low at the edge. Fine-art natural meadow macro photography, realistic silk filaments and luminous dew, cream/sage/warm honey palette, soft gentle sunlight. No spider, daisy, dandelion, dew orb, large grass field, clock or artificial symbols. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 502742,
+      "opaquePixels": 67
+    }
+  ]
+}
