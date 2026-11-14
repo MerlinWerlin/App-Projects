@@ -98,9 +98,9 @@ test('migration: an untouched pre-T241 theme style moves to themed; an explicit 
   assert.equal(moved.looksMigrated, true);
   assert.equal(moved.style.art?.texture, 'stars');
   assert.deepEqual(moved.style.background, iconStyleForLook(night, 'themed').background);
-  // Shape choice survives.
+  // 1.0.35: one icon shape, whatever was chosen before.
   const shaped = migrateThemedLook(setThemeShape(old, night.id, 'circle'), night);
-  assert.equal(shaped.style.shape, 'circle');
+  assert.equal(shaped.style.shape, 'squircle');
   // The user had changed the background in Icon Studio: kept as is.
   const custom = parseStudioState(
     JSON.stringify({ version: 2, themeId: night.id, style: { ...night.iconStyle, background: { kind: 'solid', colour: '#123456' } } }),

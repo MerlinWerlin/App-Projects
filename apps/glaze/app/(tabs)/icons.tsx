@@ -565,17 +565,8 @@ function IconsScreen() {
           body={t('icons.sections.styleBody')}
           style={styles.sectionHeader}
         />
-        <InsetGroup title={t('icons.shape')}>
-          <View style={styles.block}>
-            <Segmented
-              vertical
-              label={t('icons.shapeLabel')}
-              options={shapeOptions}
-              value={style.shape}
-              onChange={(shape) => styleChange((s) => setStyle(s, { shape }))}
-            />
-          </View>
-        </InsetGroup>
+        {/* 1.0.35 (owner 2026-11-14: "we can't do blob, square, rounded, circles... that needs to go"): no shape picker;
+            every icon uses the one shape (studio.ts ONE_ICON_SHAPE). Colours and symbol size stay. */}
 
         <InsetGroup title={t('icons.background')}>
           <View style={styles.block}>

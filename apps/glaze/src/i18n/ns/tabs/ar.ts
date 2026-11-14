@@ -59,6 +59,8 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
     lock: 'شاشة القفل',
     open: '{kind}، {size}. يفتح استوديو الأدوات.',
     soon: 'قريبًا',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: 'الأدوات المتوسطة والكبيرة قادمة قريبًا. حاليًا، أضف رسومات سمتك في الحجم الصغير.',
     soonA11y: '{kind}، {size}. قريبًا.',
     lockNote: 'تُضاف أدوات Glaze لشاشة القفل (الساعة، التاريخ، البطارية، العد التنازلي، القمر) من شاشة القفل نفسها: المس مطولًا، ثم اضغط تخصيص > شاشة القفل > منطقة الأدوات واختر Glaze. تستخدم خط سمتك، ويختار iOS لونها.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).

@@ -59,6 +59,8 @@ export const es: NonNullable<LocaleMessages['tabs']> = {
     lock: 'Pantalla bloqueada',
     open: '{kind}, {size}. Abre el Estudio de widgets.',
     soon: 'Próximamente',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: 'Los widgets medianos y grandes llegarán pronto. Por ahora, añade las ilustraciones de tu tema en Pequeño.',
     soonA11y: '{kind}, {size}. Próximamente.',
     lockNote: 'Los widgets de Glaze para la pantalla bloqueada (reloj, fecha, batería, cuenta atrás, luna) se añaden en la propia pantalla bloqueada: mantenla pulsada, toca Personalizar > Pantalla bloqueada > la zona de widgets y elige Glaze. Usan la fuente de tu tema; iOS elige el color.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).

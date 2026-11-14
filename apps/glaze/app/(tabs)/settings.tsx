@@ -130,21 +130,8 @@ function SettingsScreen() {
       trailing={<BarIconButton icon="x" accessibilityLabel={t('common.done')} onPress={() => router.navigate('/themes')} />}
     >
       <InsetGroup title={t('settings.style.title')} footer={t('settings.style.note')}>
-        {state ? (
-          <View key="shape" style={styles.block}>
-            <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>
-              {t('settings.style.shape')}
-            </Text>
-            <ContextTip id="icon-shapes" />
-            <Segmented
-              vertical
-              label={t('settings.style.shapeGroup')}
-              options={shapeOptions}
-              value={state.style.shape}
-              onChange={(shape) => styleChange((s) => setStyle(s, { shape }))}
-            />
-          </View>
-        ) : null}
+        {/* 1.0.35 (owner 2026-11-14: "we can't do blob, square, rounded, circles... that needs to go"): no shape picker;
+            every icon uses the one shape (studio.ts ONE_ICON_SHAPE). Colours and symbol size stay. */}
         {state ? (
           <View key="size" style={styles.block}>
             <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.ink }]}>

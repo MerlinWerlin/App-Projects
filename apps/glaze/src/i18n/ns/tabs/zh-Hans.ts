@@ -59,6 +59,8 @@ export const zhHans: NonNullable<LocaleMessages['tabs']> = {
     lock: '锁定屏幕',
     open: '{kind}，{size}。打开小组件工作室。',
     soon: '即将推出',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: '中号和大号小组件即将推出。目前请在“小号”中添加主题插画。',
     soonA11y: '{kind}，{size}。即将推出。',
     lockNote: 'Glaze 锁定屏幕小组件（时钟、日期、电池、倒计时、月相）需在锁定屏幕上添加：长按锁定屏幕，轻点“自定”>“锁定屏幕”> 小组件区域，然后选择 Glaze。它们使用主题字体，颜色由 iOS 决定。',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).

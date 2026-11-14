@@ -28,9 +28,10 @@ test('Segmented has an optional vertical prop that stacks full-width rows', () =
   assert.doesNotMatch(s, /numberOfLines/);
 });
 
-test('shape choices in Settings and Icon Studio are vertical', () => {
-  assert.match(segmentedWith(read('app/(tabs)/settings.tsx'), 'settings.style.shapeGroup'), /\bvertical\b/);
-  assert.match(segmentedWith(read('app/(tabs)/icons.tsx'), 'icons.shapeLabel'), /\bvertical\b/);
+// 1.0.35: Settings and the Icons tab no longer offer a shape (one icon shape, studio.ts ONE_ICON_SHAPE).
+test('1.0.35: no shape choice in Settings or the Icons tab', () => {
+  assert.doesNotMatch(read('app/(tabs)/settings.tsx'), /settings\.style\.shapeGroup/);
+  assert.doesNotMatch(read('app/(tabs)/icons.tsx'), /icons\.shapeLabel/);
 });
 
 test('ShapePicker is a vertical list whose shape labels have no numberOfLines limit', () => {

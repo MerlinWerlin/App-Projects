@@ -26,7 +26,8 @@ import { THEMES } from './themes.ts';
 
 const theme = THEMES.find((t) => t.iconStyle.art) ?? THEMES[0];
 const other = THEMES.find((t) => t.id !== theme.id) ?? THEMES[1];
-const SHAPE = theme.iconStyle.shape === 'circle' ? 'square' : 'circle';
+// 1.0.35: one icon shape (studio.ts ONE_ICON_SHAPE); a chosen shape no longer changes the export.
+const SHAPE = 'squircle';
 const IMG_THEME = 'file:///docs/icons/spotify-1.png';
 const IMG_ALL = 'file:///docs/icons/maps-2.png';
 

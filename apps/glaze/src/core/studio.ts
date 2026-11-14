@@ -192,12 +192,17 @@ export function sanitizeBackground(raw: unknown): IconBackground | null {
   return null;
 }
 
+/** 1.0.35: the one icon shape (iOS draws every added icon in its own rounded square). */
+export const ONE_ICON_SHAPE: IconShape = 'squircle';
+
 /** Any malformed field falls back to DEFAULT_STYLE's value. */
 export function sanitizeStyle(raw: unknown): IconStyle {
   const d = DEFAULT_STYLE;
   if (!isObj(raw)) return cloneStyle(d);
   const style: IconStyle = {
-    shape: isShape(raw.shape) ? raw.shape : d.shape,
+    // 1.0.35 (owner 2026-11-14: "We already know that we can't do blob, square, rounded, circles... that needs to go"):
+    // iOS shows every added icon inside its own rounded square, so Glaze has one icon shape. Any saved shape reads as it.
+    shape: ONE_ICON_SHAPE,
     background: sanitizeBackground(raw.background) ?? { ...d.background },
     glyphColour: hexOr(raw.glyphColour, d.glyphColour),
     glyphSet: typeof raw.glyphSet === 'string' && raw.glyphSet.trim() ? raw.glyphSet.trim() : d.glyphSet,
@@ -500,9 +505,9 @@ export function setStyle(s: StudioState, patch: Partial<IconStyle>): StudioState
 // ---------------------------------------------------------------- shape per theme
 
 /** The shape to use for `themeId`: the user's choice, else the theme's own shape. */
-export function themeShapeFor(s: Pick<StudioState, 'themeShapes'>, themeId: string, themeDefault: IconShape): IconShape {
-  const chosen = s.themeShapes[themeId];
-  return isShape(chosen) ? chosen : themeDefault;
+export function themeShapeFor(_s: Pick<StudioState, 'themeShapes'>, _themeId: string, _themeDefault: IconShape): IconShape {
+  // 1.0.35: one icon shape for every theme (see ONE_ICON_SHAPE); saved per-theme shapes are ignored.
+  return ONE_ICON_SHAPE;
 }
 
 /**

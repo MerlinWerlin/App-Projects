@@ -59,6 +59,8 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     lock: 'ロック画面',
     open: '{kind}、{size}。ウィジェットスタジオを開きます。',
     soon: '近日公開',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: '中・大サイズのウィジェットは準備中です。今は「小」でテーマのアートワークを追加してください。',
     soonA11y: '{kind}、{size}。近日公開。',
     lockNote: 'Glaze のロック画面ウィジェット（時計、日付、バッテリー、カウントダウン、月）はロック画面で追加します：ロック画面を長押しし、カスタマイズ > ロック画面 > ウィジェットの枠をタップして Glaze を選びます。フォントはテーマに合わせ、色は iOS が決めます。',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).

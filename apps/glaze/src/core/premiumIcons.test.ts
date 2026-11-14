@@ -40,7 +40,7 @@ test('Icons tab: editorial SectionHeaders for Your apps, Add apps and Style, in 
 test('Icons tab: inset groups use editorial group titles, not the small grey header', () => {
   const tab = strip(read(...TAB));
   assert.doesNotMatch(tab, /<InsetGroup\b[^>]*\bheader=/);
-  for (const k of ['customTitle', 'shape', 'background', 'symbolColour', 'symbolSize']) {
+  for (const k of ['customTitle', 'background', 'symbolColour', 'symbolSize']) {
     assert.match(tab, new RegExp(`<InsetGroup title=\\{t\\('icons\\.${k}'\\)\\}`), k);
   }
 });

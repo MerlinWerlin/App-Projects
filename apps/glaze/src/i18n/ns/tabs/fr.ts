@@ -59,6 +59,8 @@ export const fr: NonNullable<LocaleMessages['tabs']> = {
     lock: 'Écran verrouillé',
     open: '{kind}, {size}. Ouvre le Studio de widgets.',
     soon: 'Bientôt',
+    // 1.0.35: the Widgets tab's Medium / Large "Coming soon" card.
+    soonSizes: 'Les widgets moyens et grands arrivent bientôt. En attendant, ajoutez les illustrations de votre thème en Petit.',
     soonA11y: '{kind}, {size}. Bientôt disponible.',
     lockNote: 'Les widgets Glaze de l’écran verrouillé (horloge, date, batterie, compte à rebours, lune) s’ajoutent sur l’écran verrouillé : maintenez-le, touchez Personnaliser > Écran verrouillé > la zone des widgets, puis choisissez Glaze. Ils prennent la police de votre thème ; iOS choisit leur couleur.',
     // T146 (fb-1025 A): widget link check line under the theme chips (native iOS builds only).

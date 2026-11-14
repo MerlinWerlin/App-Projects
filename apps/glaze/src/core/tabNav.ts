@@ -35,8 +35,17 @@ export const tabLabelKey = (id: TabId): string => `tabs.${id}`;
 
 // ---------------------------------------------------------------------------------- widgets tab
 
-export const WIDGET_TAB_SIZES = Object.freeze(['small', 'medium', 'large', 'lock'] as const);
-export type WidgetTabSize = (typeof WIDGET_TAB_SIZES)[number];
+const WIDGET_TAB_ALL_SIZES = ['small', 'medium', 'large', 'lock'] as const;
+export type WidgetTabSize = (typeof WIDGET_TAB_ALL_SIZES)[number];
+/**
+ * The size tabs shown. 1.0.35 (owner 2026-11-14: "a lock screen one is something that we'll do. This needs to go for
+ * now"): no Lock Screen tab (docs/FUTURE.md). The 'lock' size stays in the type for the code that still handles it.
+ */
+export const WIDGET_TAB_SIZES: readonly WidgetTabSize[] = Object.freeze(['small', 'medium', 'large'] as WidgetTabSize[]);
+/** Sizes whose tab lists widget cards: none in 1.0.35 (docs/FUTURE.md). */
+export const WIDGET_TAB_CARD_SIZES: readonly WidgetTabSize[] = Object.freeze([] as WidgetTabSize[]);
+/** 1.0.35 (owner: "under medium and large, just say coming soon, because we're not doing that yet"). */
+export const WIDGET_TAB_SOON_SIZES: readonly WidgetTabSize[] = Object.freeze(['medium', 'large'] as WidgetTabSize[]);
 
 export const widgetTabSizeKey = (size: WidgetTabSize): string =>
   size === 'lock' ? 'tabs.widgetsTab.lock' : widgetSizeKey(size);
@@ -71,9 +80,10 @@ export const WIDGET_TAB_CATALOGUE_KINDS: readonly CatalogueKind[] = Object.freez
 export function widgetTabCards(size: WidgetTabSize, studioKinds: readonly string[]): WidgetTabCard[] {
   const out: WidgetTabCard[] = [];
   const canEdit = (k: string) => studioKinds.includes(k);
-  // Owner TestFlight 2026-11-14 04:00 ("you can't select these anymore they all need to go", on the Small grid): Small
-  // is the theme's artwork only (My widget art, Artwork 1-5); the clocks stay on Medium, Large and Lock Screen.
-  if (size === 'small') return out;
+  // Owner TestFlight 2026-11-14 04:00 on the Small grid ("you can't select these anymore they all need to go") and 1.0.35
+  // ("under medium and large, just say coming soon"): no size lists cards yet. Small is the theme's artwork (My widget
+  // art); Medium / Large draw "Coming soon"; Lock is not shown. The clock rules below are kept for when they return.
+  if (!WIDGET_TAB_CARD_SIZES.includes(size)) return out;
   if (size !== 'lock') {
     for (const kind of WIDGET_KINDS) {
       if (!WIDGET_TAB_SET_KINDS.includes(kind)) continue;

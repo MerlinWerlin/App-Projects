@@ -1045,32 +1045,8 @@ function ThemeDetail({
         {step === 'icons' ? (
           <View style={styles.block}>
             <SectionHeader eyebrow={t('theme.section.icons.eyebrow')} title={t('theme.section.icons.title')} style={styles.sectionHead} />
-            <InsetGroup>
-              <InsetRow
-                title={t('theme.shapeRow.title')}
-                value={t(`themeUi.shape.names.${shape}`)}
-                icon="square"
-                iconTone="mint"
-                accessory="none"
-                trailing={<Feather name={shapeOpen ? 'chevron-up' : 'chevron-down'} size={18} color={c.inkTertiary} />}
-                onPress={() => setShapeOpen((o) => !o)}
-                accessibilityLabel={t('theme.shapeRow.a11y', { shape: t(`themeUi.shape.names.${shape}`) })}
-                accessibilityHint={shapeOpen ? t('theme.shapeRow.hideHint') : t('theme.shapeRow.showHint')}
-              />
-            </InsetGroup>
-            {shapeOpen ? (
-              <SquircleCard style={styles.side}>
-                <ShapePicker
-                  theme={theme}
-                  value={shape}
-                  onChange={(next) => studio.update((s) => setThemeShape(s, shapeKey, next))}
-                  look={look}
-                  iosMask={iosMask}
-                  onIosMaskChange={setIosMask}
-                  backdrop={iconBackdrop}
-                />
-              </SquircleCard>
-            ) : null}
+            {/* 1.0.35 (owner 2026-11-14: "we can't do blob, square, rounded, circles... that needs to go"): no shape picker;
+            every icon uses the one shape (studio.ts ONE_ICON_SHAPE). Colours and symbol size stay. */}
             {locked || !canApply ? null : (
               <View style={styles.side}>
                 <ThemeOverrideRow theme={theme} />
