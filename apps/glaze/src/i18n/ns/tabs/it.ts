@@ -105,6 +105,8 @@ export const it: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'Da un clip', title: 'Live Photo da un clip', body: 'Trasforma un video o una GIF in una Live Photo per la schermata di blocco.', action: 'Crea una Live Photo', hint: 'Apre il creatore di Live Photo' },
     collageEntry: { eyebrow: 'Le tue foto', title: 'Collage di foto', body: 'Metti diverse tue foto su una schermata di blocco.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'I tuoi temi', title: 'Sfondi dei temi', body: 'Gli sfondi dei temi su questo iPhone. Toccane uno per salvarlo e impostarlo.', empty: 'Scarica un tema nella scheda Temi e il suo sfondo apparirà qui.', itemA11y: 'Sfondo {name}' },
     mine: {
       eyebrow: 'Fatto in Glaze',
       title: 'I miei sfondi',

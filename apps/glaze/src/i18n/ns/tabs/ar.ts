@@ -105,6 +105,8 @@ export const ar: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'من مقطع', title: 'صورة Live من مقطع', body: 'حوّل فيديو أو GIF إلى صورة Live لشاشة القفل.', action: 'اصنع صورة Live', hint: 'يفتح صانع صور Live' },
     collageEntry: { eyebrow: 'صورك', title: 'صورة مجمّعة', body: 'ضع عدة صور من صورك على شاشة قفل واحدة.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'سماتك', title: 'خلفيات السمات', body: 'خلفيات السمات الموجودة على هذا الـ iPhone. اضغط على واحدة لحفظها وتعيينها.', empty: 'نزّل سمة من تبويب السمات وستظهر خلفيتها هنا.', itemA11y: 'خلفية {name}' },
     mine: {
       eyebrow: 'صُنع في Glaze',
       title: 'خلفياتي',

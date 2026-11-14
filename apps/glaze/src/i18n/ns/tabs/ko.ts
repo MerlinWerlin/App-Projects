@@ -105,6 +105,8 @@ export const ko: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: '클립에서', title: '클립으로 라이브 포토', body: '동영상이나 GIF를 잠금 화면용 라이브 포토로 바꿉니다.', action: '라이브 포토 만들기', hint: '라이브 포토 메이커를 엽니다' },
     collageEntry: { eyebrow: '내 사진', title: '사진 콜라주', body: '여러 장의 사진을 잠금 화면 하나에 담습니다.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: '내 테마', title: '테마 배경화면', body: '이 iPhone에 있는 테마의 배경화면입니다. 탭해서 저장하고 설정하세요.', empty: '테마 탭에서 테마를 다운로드하면 배경화면이 여기에 표시됩니다.', itemA11y: '{name} 배경화면' },
     mine: {
       eyebrow: 'Glaze에서 만듦',
       title: '내 배경화면',

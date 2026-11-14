@@ -13,7 +13,7 @@
 import { Image as ExpoImage } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
-import { Alert, StyleSheet, Text, View, useWindowDimensions, type ListRenderItem } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, View, useWindowDimensions, type ListRenderItem } from 'react-native';
 import { myWallpaperKindKey, type MyWallpaper } from '../../src/core/myWallpapers';
 import { LIVE_MAKER_HREF } from '../../src/core/tabNav';
 import { useT } from '../../src/i18n';
@@ -25,6 +25,8 @@ import { textStyleFor } from '../../src/ui/i18nLayout';
 import { PressableScale } from '../../src/ui/PressableScale';
 import { Sheet } from '../../src/ui/Sheet';
 import { LargeTitleFlatList, PillButton, SectionHeader, Skeleton } from '../../src/ui/v2';
+import { useHowTo, WatchHowButton } from '../../src/ui/HowToSheet';
+import { useDownloadedThemeWallpapers } from '../../src/native/useDownloadedThemeWallpapers';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 /** The editorial card rhythm, between thumbnails in a row and between rows. */
@@ -77,12 +79,16 @@ const ThumbRow = memo(function ThumbRow({ row, width, height, onOpen }: RowProps
 });
 
 function WallpapersTab() {
+  // 1.0.35 (owner TestFlight 2026-11-14 04:02-04:03: "needs the glowing watch vid now in the top right hand corner"): the
+  // how-to video for this tab from the corner (WatchHowButton compact: the filled tint pill).
+  const how = useHowTo('wallpaper');
   const { c } = useColorsV2();
   const { t, script } = useT();
   const tl = t as unknown as LooseT;
   const router = useRouter();
   const { width } = useWindowDimensions();
   const { items, loaded } = useMyWallpapers();
+  const themeWalls = useDownloadedThemeWallpapers();
   const [open, setOpen] = useState<MyWallpaper | null>(null);
   const [saving, setSaving] = useState(false);
   const [result, setResult] = useState<SaveAgainResult | null>(null);
@@ -194,6 +200,39 @@ function WallpapersTab() {
           onPress={() => router.push('/collage')}
         />
       </View>
+      {/* 1.0.35 (owner TestFlight 2026-11-14: "This should have downloaded wall papers as well"): the wallpapers of the
+          themes downloaded to this phone, one tap from their theme's Wallpaper step (save to Photos, then set it). */}
+      <View>
+        <SectionHeader
+          eyebrow={t('tabs.wallpapersTab.themes.eyebrow')}
+          title={t('tabs.wallpapersTab.themes.title')}
+          body={t('tabs.wallpapersTab.themes.body')}
+        />
+        {themeWalls.length === 0 ? (
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={footnote}>
+            {t('tabs.wallpapersTab.themes.empty')}
+          </Text>
+        ) : (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} bounces={false} overScrollMode="never" contentContainerStyle={styles.themeRow}>
+            {themeWalls.map((w) => (
+              <PressableScale
+                key={w.id}
+                onPress={() => router.push({ pathname: '/theme/[id]', params: { id: w.id, step: 'wallpaper' } })}
+                accessibilityRole="button"
+                accessibilityLabel={t('tabs.wallpapersTab.themes.itemA11y', { name: w.name })}
+                style={[styles.themeItem, { width: thumbW }]}
+              >
+                <View style={[styles.thumb, { width: thumbW, height: thumbH, backgroundColor: c.fill }]}>
+                  {w.uri ? <ExpoImage source={{ uri: w.uri }} style={styles.fill} contentFit="cover" cachePolicy="memory-disk" transition={0} /> : null}
+                </View>
+                <Text maxFontSizeMultiplier={fontScaleCap('footnote')} numberOfLines={1} style={[textV2.footnote, textStyleFor(script, textV2.footnote), styles.bold, { color: c.ink }]}>
+                  {w.name}
+                </Text>
+              </PressableScale>
+            ))}
+          </ScrollView>
+        )}
+      </View>
       {/* 3. My wallpapers: the header here, the thumbnails are the list rows below. */}
       <View>
         <SectionHeader
@@ -214,11 +253,13 @@ function WallpapersTab() {
       <LargeTitleFlatList
         title={t('tabs.wallpapers')}
         subtitle={t('tabs.wallpapersTab.subtitle')}
+        trailing={<WatchHowButton onPress={how.open} compact />}
         header={header}
         data={rows}
         renderItem={renderRow}
         keyExtractor={rowKey}
       />
+      {how.sheet}
       <Sheet visible={open !== null} onClose={onClose} title={open ? tl(myWallpaperKindKey(open.kind)) : t('tabs.wallpapersTab.mine.title')}>
         {open ? (
           <View style={styles.sheetBody}>
@@ -254,6 +295,9 @@ const styles = StyleSheet.create({
   thumb: { borderRadius: chromeRadiusV2.card, overflow: 'hidden' },
   fill: { width: '100%', height: '100%' },
   skeletonRow: { flexDirection: 'row', gap: GAP },
+  themeRow: { gap: GAP },
+  themeItem: { gap: spaceV2.xs },
+  bold: { fontWeight: '600' },
   sheetBody: { gap: spaceV2.md, alignItems: 'stretch' },
   preview: { alignSelf: 'center', borderRadius: chromeRadiusV2.card, overflow: 'hidden' },
 });

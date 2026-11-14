@@ -105,6 +105,8 @@ export const ja: NonNullable<LocaleMessages['tabs']> = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'クリップから', title: 'クリップからライブフォト', body: '動画やGIFをロック画面用のライブフォトにします。', action: 'ライブフォトを作る', hint: 'ライブフォトメーカーを開きます' },
     collageEntry: { eyebrow: 'あなたの写真', title: 'フォトコラージュ', body: '複数の写真をひとつのロック画面にまとめます。' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'あなたのテーマ', title: 'テーマの壁紙', body: 'このiPhoneにあるテーマの壁紙です。タップして保存し、設定できます。', empty: '「テーマ」タブでテーマをダウンロードすると、ここに壁紙が表示されます。', itemA11y: '{name}の壁紙' },
     mine: {
       eyebrow: 'Glazeで作成',
       title: 'マイ壁紙',

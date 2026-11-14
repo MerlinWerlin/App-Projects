@@ -105,6 +105,8 @@ export const en = {
     // T186 (owner-1101 #4): the tab is now Live Photo from a clip, the collage maker and My wallpapers.
     liveEntry: { eyebrow: 'From a clip', title: 'Live Photo from a clip', body: 'Turn a video or GIF into a Live Photo for your Lock Screen.', action: 'Make a Live Photo', hint: 'Opens the Live Photo maker' },
     collageEntry: { eyebrow: 'Your photos', title: 'Photo collage', body: 'Put several of your photos on one Lock Screen.' },
+    // 1.0.35: wallpapers of the themes downloaded to this phone (app/(tabs)/wallpapers.tsx).
+    themes: { eyebrow: 'Your themes', title: 'Theme wallpapers', body: 'The wallpapers of the themes on this phone. Tap one to save it and set it.', empty: 'Download a theme on the Themes tab and its wallpaper shows up here.', itemA11y: '{name} wallpaper' },
     mine: {
       eyebrow: 'Made in Glaze',
       title: 'My wallpapers',

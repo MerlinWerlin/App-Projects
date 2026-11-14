@@ -87,6 +87,7 @@ import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
 import { SizeArt } from '../../src/ui/WidgetOptionArt';
 import { WidgetArtLibraryList } from '../../src/ui/WidgetArtLibraryList';
+import { useHowTo, WatchHowButton } from '../../src/ui/HowToSheet';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 /** Untyped lookup for keys carried in data (tabNav card name/size keys). */
@@ -451,6 +452,9 @@ function WidgetsTab() {
   const tl = t as unknown as LooseT;
   const router = useRouter();
   const { width } = useWindowDimensions();
+  // 1.0.35 (owner TestFlight 2026-11-14 04:02-04:03: "needs the glowing watch vid now in the top right hand corner"): the
+  // how-to video for this tab from the corner (WatchHowButton compact: the filled tint pill).
+  const how = useHowTo('widgets');
   // T86: values logged on the Home Screen habit widgets (full iOS build) and the daily goals.
   const widgetHabits = useWidgetHabits();
 
@@ -642,15 +646,19 @@ function WidgetsTab() {
     </>); // i18n-ignore (code after a JSX element)
 
   return (
+    <>
+    {how.sheet}
     <LargeTitleFlatList
       title={t('tabs.widgets')}
       subtitle={t('tabs.widgetsTab.subtitle')}
+      trailing={<WatchHowButton onPress={how.open} compact />}
       header={header}
       data={rows}
       renderItem={renderRow}
       keyExtractor={rowKey}
       footer={wallpaper.probe ? <>{wallpaper.probe}</> : null}
     />
+    </>
   );
 }
 
