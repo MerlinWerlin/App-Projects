@@ -71,6 +71,9 @@ export const WIDGET_TAB_CATALOGUE_KINDS: readonly CatalogueKind[] = Object.freez
 export function widgetTabCards(size: WidgetTabSize, studioKinds: readonly string[]): WidgetTabCard[] {
   const out: WidgetTabCard[] = [];
   const canEdit = (k: string) => studioKinds.includes(k);
+  // Owner TestFlight 2026-11-14 04:00 ("you can't select these anymore they all need to go", on the Small grid): Small
+  // is the theme's artwork only (My widget art, Artwork 1-5); the clocks stay on Medium, Large and Lock Screen.
+  if (size === 'small') return out;
   if (size !== 'lock') {
     for (const kind of WIDGET_KINDS) {
       if (!WIDGET_TAB_SET_KINDS.includes(kind)) continue;

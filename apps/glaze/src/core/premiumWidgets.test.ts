@@ -39,8 +39,9 @@ test('familyRows keeps every card once, in order, never mixes families in a row,
     assert.deepEqual(firsts, [...new Set(rows.map((r) => r.family))], `${size}: one header per family, at its first row`);
     assert.equal(new Set(rows.map((r) => r.key)).size, rows.length, `${size}: stable unique keys`);
   }
-  // Home sizes open with the theme's own set; the Lock tab has no theme set.
-  assert.equal(familyRows(widgetTabCards('small', EDITABLE))[0].family, 'theme');
+  // Medium / Large open with the theme's own clock; Small lists no cards (artwork only, 1.0.34); Lock has no theme set.
+  assert.equal(familyRows(widgetTabCards('medium', EDITABLE))[0].family, 'theme');
+  assert.deepEqual(familyRows(widgetTabCards('small', EDITABLE)), []);
   assert.ok(!familyRows(widgetTabCards('lock', EDITABLE)).some((r) => r.family === 'theme'));
   assert.deepEqual(familyRows([]), []);
 });
