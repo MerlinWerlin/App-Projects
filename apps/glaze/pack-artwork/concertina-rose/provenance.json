@@ -1,0 +1,40 @@
+{
+  "theme": "concertina-rose",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "concertina-rose",
+      "id": "leather-handstrap",
+      "label": "Leather handstrap",
+      "ref": "135-concertina-rose\\widgets\\bellows-fold.png",
+      "subject": "one beautifully crafted short wine-coloured leather concertina handstrap curled as an open sculptural arc, delicate saddle stitching, antique brass buckle and two rosewood mounting tabs, ivory suede inner surface, whole accessory visible, no bellows or instrument",
+      "prompt": "Use case: stylized-concept. Glaze Concertina Rose, one original standalone 1024 x 1024 square pure artwork of one beautifully crafted short wine-coloured leather concertina handstrap curled as an open sculptural arc, delicate saddle stitching, antique brass buckle and two rosewood mounting tabs, ivory suede inner surface, whole accessory visible, no bellows or instrument. Refined realistic musical still-life photographic illustration, pale blush #ECDCD6 seamless matte background and ground, rosewood, burgundy leather, antique brass and restrained pearl ivory palette. Soft warm studio light/shadow, exquisite tactile grain and stitching, match reference medium and material quality. Entire compact subject centred with 16 percent empty safe margins, new composition, not copy/crop/recolour. No musician, sheet music, notation, words, numbers, logos, watermark, UI, frame, clock hands/dials, calendar/date, focus/battery indicators. One image no collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-d61fbb56-1601-4b31-a872-e30454b9e91e.png",
+      "image": "widget-leather-handstrap.439a7182.webp",
+      "sha256": "439a7182d2afff590798e4c7b38e7d11086c224ff2613ef72118eda8dc752d3a",
+      "bytes": 116826,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "concertina-rose",
+      "id": "brass-tuning-fork",
+      "label": "Brass tuning fork",
+      "ref": "135-concertina-rose\\widgets\\rosewood-concertina.png",
+      "subject": "one warm antique-brass tuning fork with a short polished rosewood handle resting diagonally on a tiny fold of wine-coloured velvet, clean paired prongs, fine restrained craftsmanship, no instrument or buttons",
+      "prompt": "Use case: stylized-concept. Glaze Concertina Rose, one original standalone 1024 x 1024 square pure artwork of one warm antique-brass tuning fork with a short polished rosewood handle resting diagonally on a tiny fold of wine-coloured velvet, clean paired prongs, fine restrained craftsmanship, no instrument or buttons. Refined realistic musical still-life photographic illustration, pale blush #ECDCD6 seamless matte background and ground, rosewood, burgundy leather, antique brass and restrained pearl ivory palette. Soft warm studio light/shadow, exquisite tactile grain and stitching, match reference medium and material quality. Entire compact subject centred with 16 percent empty safe margins, new composition, not copy/crop/recolour. No musician, sheet music, notation, words, numbers, logos, watermark, UI, frame, clock hands/dials, calendar/date, focus/battery indicators. One image no collage.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-d822642d-a62d-445b-ad5d-133a254b0040.png",
+      "image": "widget-brass-tuning-fork.011b9c51.webp",
+      "sha256": "011b9c516272baae994fb870a1d3d693d13a26ba3a6087c454e21c1841d4bdbc",
+      "bytes": 101070,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

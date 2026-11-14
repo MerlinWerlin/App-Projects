@@ -1,0 +1,26 @@
+[
+  {
+    "id": "garden-snips",
+    "kind": "art",
+    "image": "widget-garden-snips.497d971b.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Garden snips"
+  },
+  {
+    "id": "tomato-blossom-truss",
+    "kind": "art",
+    "image": "widget-tomato-blossom-truss.ac336d8e.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Tomato blossom truss"
+  }
+]
