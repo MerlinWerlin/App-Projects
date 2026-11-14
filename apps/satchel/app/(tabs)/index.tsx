@@ -26,6 +26,7 @@ import { InflightHomeCard } from '../../src/ui/InflightCard.tsx';
 import { FadeInView, HeroHeader, ProgressBar, StatTile } from '../../src/ui/hero.tsx';
 import { Button, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
 import { NextUpCard } from '../../src/ui/NextUpCard.tsx';
+import { TimetableEntry, timetableTrip } from '../../src/ui/timetable.tsx';
 import { LeavingSoonBanner } from '../../src/ui/ReadinessCard.tsx';
 import { RecapHeroCard } from '../../src/ui/RecapHeroCard.tsx';
 import { TravelsCard } from '../../src/ui/TravelsCard.tsx';
@@ -65,6 +66,8 @@ export default function TripsScreen() {
   const focus = useMemo(() => focusTrip(trips, today), [trips, today]);
   const stats = useMemo(() => quickStats(trips, today), [trips, today]);
   const dest = useMemo(() => (focus ? destinationZone(focus) : null), [focus]);
+  // T170: the trip on now (or starting within a week) gets a way into its Today timetable.
+  const timetable = useMemo(() => timetableTrip(trips, today), [trips, today]);
   const greeting = t(`design.greeting.${dayPart(new Date().getHours())}`);
 
   const renderTrip = useCallback(
@@ -143,6 +146,7 @@ export default function TripsScreen() {
           <InflightHomeCard trips={list} />
           {/* T71: "Your day" sits above the other cards, only while a trip is on today. */}
           <DayBriefCard trips={trips} />
+          {timetable ? <TimetableEntry trip={timetable} /> : null}
           {/* T124: "You leave tomorrow" with the leaving-home checklist, when no Your day brief shows it. */}
           <LeaveHomeHomeCard trips={trips} />
           {/* T130: "You head home tomorrow" with the before-you-head-home list, while it's due and unfinished. */}

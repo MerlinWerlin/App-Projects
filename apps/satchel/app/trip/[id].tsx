@@ -63,6 +63,7 @@ import { TripGapsCard } from '../../src/ui/gaps.tsx';
 import { PhotoLightCard } from '../../src/ui/photolight.tsx';
 import { CheckinTripCard } from '../../src/ui/checkin.tsx';
 import { RainDayCard, useTripRain } from '../../src/ui/rainplan.tsx';
+import { TimetableEntry } from '../../src/ui/timetable.tsx';
 
 const DEMO_INTRO_KEY = 'satchel.demoIntro.done.v1';
 const NOT_DONE = false;
@@ -327,6 +328,15 @@ export default function TripScreen() {
                 <Button label={t('tripfile.photos.dismiss')} hint={t('tripfile.photos.dismissHint')} kind="quiet" onPress={() => router.setParams({ photosLeftOut: '' })} />
               </Card>
             ) : null}
+            {/* T170: the trip as a day-by-day timetable (today first while it's on), and bringing an itinerary in. */}
+            {empty ? null : <TimetableEntry trip={trip} />}
+            <Button
+              label={t('today.import')}
+              hint={t('today.importHint')}
+              kind={empty ? 'primary' : 'quiet'}
+              icon="download-outline"
+              onPress={() => router.push({ pathname: '/itinerary', params: { tripId: trip.id } })}
+            />
             {/* T69: the trip on the map, day by day (numbered stops, dashed day routes). */}
             <Button
               label={t('triproute.seeOnMap')}

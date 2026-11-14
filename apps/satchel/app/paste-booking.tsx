@@ -24,7 +24,7 @@ import type { Key } from '../src/i18n/en.ts';
 import { DEFAULT_DATE_ORDER, parseDateOrder, PASTE_DATE_ORDER_KEY, PASTE_SAVED_KEY, parseSavedPastes, pasteFingerprint, pasteSavedIn } from '../src/core/followups89.ts';
 import { readText } from '../src/native/clipboard.ts';
 import { useApp } from '../src/state/app.tsx';
-import { incomingText } from '../src/state/openinStash.ts';
+import { incomingText, stashIncomingText } from '../src/state/openinStash.ts';
 import { stashPastedDraft } from '../src/state/pasteDraft.ts';
 import { usePersisted } from '../src/state/persisted.ts';
 import { useTrips } from '../src/state/trips.tsx';
@@ -166,6 +166,16 @@ export default function PasteBookingScreen() {
         />
         <Button label={t('paste.fromClipboard')} hint={t('paste.fromClipboardHint')} icon="clipboard-outline" kind={hasText ? 'secondary' : 'primary'} onPress={pasteClipboard} />
         {hasText ? <Button label={t('paste.clear')} hint={t('paste.clearHint')} kind="quiet" icon="close" onPress={() => setText('')} /> : null}
+        {/* T170: the same text as a whole day-by-day itinerary, every plan added at once. */}
+        {hasText ? (
+          <Button
+            label={t('itin.fromPaste')}
+            hint={t('itin.fromPasteHint')}
+            kind="quiet"
+            icon="calendar-outline"
+            onPress={() => router.push({ pathname: '/itinerary', params: { incoming: stashIncomingText(text), ...(tripId ? { tripId } : {}) } })}
+          />
+        ) : null}
         {notice ? (
           <View accessibilityLiveRegion="polite">
             <Body muted>{notice}</Body>

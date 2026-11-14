@@ -23,6 +23,9 @@
       "mimeType": "message/rfc822"
     },
     {
+      "mimeType": "text/calendar"
+    },
+    {
       "mimeType": "application/json"
     },
     {
