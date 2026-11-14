@@ -1,0 +1,26 @@
+{
+  "theme": "ember-workshop",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "ember-workshop",
+      "id": "copper-forge-anvil",
+      "label": "Copper forge anvil",
+      "ref": "018-ember-workshop\\wallpapers\\wallpaper.png",
+      "subject": "one tiny exquisite patinated copper forge anvil on a dark volcanic-stone pedestal, a short coherent copper hammer resting diagonally across it, subtle ember-orange light glowing through fine seams in the pedestal, tactile miniature metalwork",
+      "style": "Premium cinematic handcrafted industrial-fantasy photographic illustration, soot-black and very dark copper seamless backdrop, restrained molten amber/copper reflections and warm forge light, rich aged metal texture matching reference",
+      "avoid": "No lizard, robot, pangolin, train, pocket watch or dial",
+      "prompt": "Use case: stylized-concept. Glaze ember-workshop: original standalone 1024 x 1024 square pure artwork. Subject one tiny exquisite patinated copper forge anvil on a dark volcanic-stone pedestal, a short coherent copper hammer resting diagonally across it, subtle ember-orange light glowing through fine seams in the pedestal, tactile miniature metalwork. Premium cinematic handcrafted industrial-fantasy photographic illustration, soot-black and very dark copper seamless backdrop, restrained molten amber/copper reflections and warm forge light, rich aged metal texture matching reference. No lizard, robot, pangolin, train, pocket watch or dial. Entire compact form centred within16percent clear safe margins, new subject/composition never copy/crop/recolour. No text, numbers, labels, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-b71ef428-616a-4ab1-86d1-8239a36114e0.png",
+      "image": "widget-copper-forge-anvil.269b8789.webp",
+      "sha256": "269b8789303f0b1c6d0240830b1dd701bd81057f4d2ec30ceb16fdd0611541d3",
+      "bytes": 265690,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

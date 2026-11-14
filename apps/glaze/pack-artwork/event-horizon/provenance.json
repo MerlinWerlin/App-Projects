@@ -1,0 +1,26 @@
+{
+  "theme": "event-horizon",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "event-horizon",
+      "id": "photon-ribbon-helix",
+      "label": "Photon ribbon helix",
+      "ref": "047-event-horizon\\wallpapers\\wallpaper.png",
+      "subject": "one free-standing luminous amber photon ribbon twisting through space as a graceful open vertical double helix with two unequal sweeping strands, fine gold-orange filaments and smoky dark glass-like core edges, entire elegant sculptural light form visible",
+      "style": "Refined cinematic cosmic abstract illustration on seamless absolute-black space, rich amber/gold/orange light with subtle restrained bloom and tiny sparse distant pinpoints, physically convincing glowing filaments and deep contrast matching reference",
+      "avoid": "No black-hole ring, lensing circle, diamond, hourglass, stars shaped as symbols or arrows",
+      "prompt": "Use case: stylized-concept. Glaze event-horizon: original standalone 1024 x 1024 square pure artwork. Subject one free-standing luminous amber photon ribbon twisting through space as a graceful open vertical double helix with two unequal sweeping strands, fine gold-orange filaments and smoky dark glass-like core edges, entire elegant sculptural light form visible. Refined cinematic cosmic abstract illustration on seamless absolute-black space, rich amber/gold/orange light with subtle restrained bloom and tiny sparse distant pinpoints, physically convincing glowing filaments and deep contrast matching reference. No black-hole ring, lensing circle, diamond, hourglass, stars shaped as symbols or arrows. Entire compact form centred within16percent clear safe margins, new subject/composition never copy/crop/recolour. No text, numbers, labels, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-381ce062-7407-4afc-8a78-357e620c2ea2.png",
+      "image": "widget-photon-ribbon-helix.e148e924.webp",
+      "sha256": "e148e924cc6731ec1e746738ba260e89a437cfff8b2dd65e8284d12f924d1525",
+      "bytes": 76312,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}
