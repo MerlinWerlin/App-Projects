@@ -1,0 +1,58 @@
+{
+  "theme": "papaya-punch",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__papaya-punch__v1__manifest.json",
+    "sha256": "cd25a7c43df5bce31af8f3349784a2e6396fbf9067c4bba6abaca6cd375c8652",
+    "packVersion": 1,
+    "existingArtwork": [
+      "palmate-leaf",
+      "papaya-half",
+      "seed-rosette",
+      "sun-study"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "papaya-blossom-spray",
+      "label": "Papaya blossom spray",
+      "file": "widgets/widget-papaya-blossom-spray.40b571de.webp",
+      "sha256": "40b571dea98d8f160a4dab93bbb87bc4425c8aa5a84a4be4c99d56051d8d4583",
+      "bytes": 201978,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-7d4f8c9d-3ed7-4611-b598-7013675b8d3a.png",
+      "sourceSha256": "d7ca1a71247fdd5be813cab52eb78489d66b61247a743e5a654c69e635bdf7d9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for papaya-punch. One compact fresh papaya blossom spray with three delicate ivory five-petalled flowers, small warm-orange pollen centers, slender forest-green stems and a tiny new green leaf, elegant slightly asymmetrical botanical composition. Flat hand-painted2D gouache editorial illustration with visible matte pigment texture and clean organic silhouettes, warm cream/forest-green/muted-orange palette, no photographic or3D rendering. No fruit half, sliced-fruit rosette, large palmate leaf, sun symbol, weather value or typography. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 751268,
+      "opaquePixels": 1981
+    },
+    {
+      "id": "papaya-nursery-pot",
+      "label": "Papaya nursery pot",
+      "file": "widgets/widget-papaya-nursery-pot.2fa5cd0b.webp",
+      "sha256": "2fa5cd0b08ad820614ee9fd0880807a67011d9d3690ffd896e11d820beb0f6f2",
+      "bytes": 159966,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-d5a59b86-505f-41f5-b5f8-32e34aa06f4c.png",
+      "sourceSha256": "fe1710d2eff50b11d937e8fdd289af5ffbc269f5622914fd8c225d1c15b52753",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for papaya-punch. One small young papaya sapling growing from a plain warm-terracotta nursery pot, slender vivid muted-green trunk and a compact crown of three fresh palmate leaves, one tiny glossy black seed resting beside the pot. Flat2D hand-painted gouache editorial illustration, visible matte brush texture, clean organic shapes, warm cream/forest-green/papaya-orange/terracotta palette, no shading that suggests3D photography. No fruit half, sliced rosette, large detached leaf, sun, weather value, label, lettering or numbers. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 794570,
+      "opaquePixels": 2015
+    }
+  ]
+}

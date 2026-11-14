@@ -1,0 +1,58 @@
+{
+  "theme": "otter-wash",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__otter-wash__v1__manifest.json",
+    "sha256": "31b8e57b1c0365a7b810ee5178469abf7e3fce91a344d9000aabeb9e3487e4dd",
+    "packVersion": 1,
+    "existingArtwork": [
+      "kelp-wash",
+      "pebble-study",
+      "shell-keeper",
+      "shell-progress"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "tidepool-anemone",
+      "label": "Tidepool anemone",
+      "file": "widgets/widget-tidepool-anemone.31e56b89.webp",
+      "sha256": "31e56b89038607054451bd183bc622eb6a06382681c5b123952e12d112784b10",
+      "bytes": 295054,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-7e2efb24-2121-4a69-8b88-8e3a024406f3.png",
+      "sourceSha256": "3ff9bc0f6dfbb6c13fcb4b8eb7755d4a8189558aa4625d9ea3863ab40393a1d8",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for otter-wash. One gentle small tidepool anemone with an elegant ring of softly waving ivory and muted sea-blue tentacles around a warm ochre center, growing on a low natural mottled grey stone, a few tiny transparent watercolor splash marks along its base. Flat2D botanical wildlife watercolor and fine brown-pencil illustration, translucent pigment blooms, delicate paper tooth within painted areas, mist-blue/sage/ivory/cocoa/ochre palette. No3D, no otter, shell, kelp frond, pebble stack or progress symbols. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 647142,
+      "opaquePixels": 660
+    },
+    {
+      "id": "driftwood-buoy",
+      "label": "Driftwood buoy",
+      "file": "widgets/widget-driftwood-buoy.a4200b23.webp",
+      "sha256": "a4200b23bd91c25d478ba81448e6378fc22123ce2e135952cff58dc233d721d5",
+      "bytes": 275410,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a79a8b28-0bc2-45a8-a100-7d89755b8dc2.png",
+      "sourceSha256": "77b7d9c0d9ea0655b85a1decde369db3c422446bddc018d112bfe50c269ef512",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for otter-wash. One small charming weathered coastal wooden buoy with softly rounded tapered body painted muted sea-blue and warm ivory, a natural tan rope loop through its top, one tiny olive kelp bead near the base and delicate mist-blue watercolor water ripples below. Flat2D natural-history watercolor and fine brown-pencil picture-book illustration, translucent washes, paper tooth in painted areas, sea-blue/ivory/cocoa/sage palette. No letters, numbers, marks, otter, shell, anemone, pebble stack or large kelp spray. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 509672,
+      "opaquePixels": 140
+    }
+  ]
+}

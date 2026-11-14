@@ -1,0 +1,38 @@
+{
+  "theme": "paper-carnival",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__paper-carnival__v6__manifest.json",
+    "sha256": "416ec361cae21d6eeedc9a94e874fa6171f536e1f7ee74d2bc1bb2a7c1fbfb33",
+    "packVersion": 6,
+    "existingArtwork": [
+      "confetti-snail",
+      "paper-dragon-kite",
+      "pinwheel-trio",
+      "hero-small"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "paper-carousel",
+      "label": "Paper carousel",
+      "file": "widgets/widget-paper-carousel.f0d88dd9.webp",
+      "sha256": "f0d88dd9525319d5d9425b28484209804716c571f8ce7b1254e7b527fec21547",
+      "bytes": 149110,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-a790bc30-bef1-495f-8220-a5a3f62cd0e0.png",
+      "sourceSha256": "d073705bb523d62c1de92dd691857c03deb75c066b7faaeef4f47a59676d4360",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone square1024x1024 Glaze small-widget illustration for paper-carnival. One exquisite small carnival carousel built entirely from folded and hand-cut paper, one elegant cream paper horse with a navy saddle on a simple golden-paper pole, compact cherry-red and ivory striped canopy, low navy/red scalloped circular base, one tiny red pennant without markings. Sophisticated tactile papercraft model photography, visible paper fibres and carefully folded edges, warm cream/cherry-red/navy palette. Entire complete carousel, no circus interior, snail, dragon kite, pinwheel, Ferris wheel, signs, text or numbers. Whole subject centered, compact readable silhouette, generous18percent empty margins. Truly transparent empty background, alpha preserved; no opaque tile, floor, frame, border or collage. Pure illustration only: absolutely no text, lettering, numerals, dates, clocks, hands, dials, calendars, UI, logos or watermark. Entirely new art, never copy/crop/recolour an existing image.",
+      "processing": "Resize entire original square to 1024x1024; WebP q90 method4; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 760504,
+      "opaquePixels": 2330
+    }
+  ]
+}
