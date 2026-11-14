@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Satchel 0.2.2: Itinerary is its own tab in the middle of the tab bar (Today, Tomorrow and every trip day; Add your itinerary when there are no plans yet); Toilets moves into the Map tab (Toilet finder and Nearest toilet buttons)",
+  "note": "Satchel 0.2.3: travel games removed (owner request); the Trips tab card, Your day row and In-flight button for them are gone. Nothing else changed",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

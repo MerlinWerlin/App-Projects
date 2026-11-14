@@ -1574,7 +1574,8 @@
   },
   {
    "id": "T125",
-   "status": "done",
+   "status": "removed",
+   "removed": "2026-11-14 (0.2.3, T172): travel games taken out of Satchel at the owner's request",
    "deps": [],
    "tags": [
     "owner-1031",

@@ -89,11 +89,6 @@ catalogue only; stepfree / phrase-card big text caps at 1.6× like the other sho
 | `app/driving/[iso2].tsx` | Labels/roles, 48 pt targets, tokens only, images/SVGs, headers, motion (ui-check); empty states reviewed | – | Normal VoiceOver + AX5 + dark mode walk-through |
 | `app/emergency-edit.tsx` | Contacts PermissionNotice with type-by-hand fallback | – | Contacts denied/limited |
 | `app/essentials.tsx` | Labels/roles, 48 pt targets, tokens only, images/SVGs, headers, motion (ui-check); empty states reviewed | – | Normal VoiceOver + AX5 + dark mode walk-through |
-| `app/games/bingo.tsx` | Line flash skipped with Reduce Motion; tiles labelled | – | Bingo tiles at AX5 (tile text shrinks to 0.8, two lines) |
-| `app/games/index.tsx` | Labels/roles, 48 pt targets, tokens only, images/SVGs, headers, motion (ui-check); empty states reviewed | – | Normal VoiceOver + AX5 + dark mode walk-through |
-| `app/games/questions.tsx` | Fades respect Reduce Motion | – | – |
-| `app/games/scores.tsx` | Labels/roles, 48 pt targets, tokens only, images/SVGs, headers, motion (ui-check); empty states reviewed | – | Normal VoiceOver + AX5 + dark mode walk-through |
-| `app/games/spy.tsx` | Labels/roles, 48 pt targets, tokens only, images/SVGs, headers, motion (ui-check); empty states reviewed | – | Normal VoiceOver + AX5 + dark mode walk-through |
 | `app/getaround/[country].tsx` | Labels/roles, 48 pt targets, tokens only, images/SVGs, headers, motion (ui-check); empty states reviewed | – | Normal VoiceOver + AX5 + dark mode walk-through |
 | `app/gifts/[tripId].tsx` | “Here” location button: denied note; gift bag cards (bags.tsx header) | Location refusal that only Settings can undo (blocked, or Location Services off) now shows an Open Settings button under the note; bag names wrap instead of clipping | Deny location for Satchel, tap Here → note + Open Settings; Services off |
 | `app/help.tsx` | Nearest help: location PermissionNotice, offline-no-pack, network failure, none-found empty state; fade respects Reduce Motion | – | Flight mode with and without a downloaded city; location denied |
