@@ -1,0 +1,38 @@
+{
+  "theme": "blueprint-bureau",
+  "mode": "built-in image_gen",
+  "created": "2026-11-14",
+  "baseline": {
+    "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__blueprint-bureau__v8__manifest.json",
+    "sha256": "527d3f2b2f9b3a026fe53629a6f388835f499e33f7475a47ffa55aae2bad7d43",
+    "packVersion": 8,
+    "existingArtwork": [
+      "compass-beetle",
+      "hero-small",
+      "art-20261107-optical-lantern",
+      "art-20261107-mechanical-nautilus"
+    ]
+  },
+  "artworks": [
+    {
+      "id": "articulated-seahorse",
+      "label": "Articulated seahorse",
+      "file": "widgets/widget-articulated-seahorse.bd715abf.webp",
+      "sha256": "bd715abf1346da645cc52da8d72919496ef5e35dca97fc7ec43ec41fb565a3f4",
+      "bytes": 239484,
+      "width": 1024,
+      "height": 1024,
+      "sourceImage": "exec-32e2b00f-0b97-4953-8b1a-4a35c61b639b.png",
+      "sourceSha256": "7aebd3ed556c3df0fdfb2d95818b6d9f61625a73ec3911dc1e079b621eeee595",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "prompt": "Use case: stylized-concept. ONE new original standalone Glaze small-widget illustration for blueprint-bureau. Square 1024 x 1024. Subject: One entirely original articulated mechanical seahorse in elegant upright side profile, its curved ivory engineering-line silhouette formed from fine ribbed metal plates and miniature hinge joints, curled segmented tail, delicate fan-like fin, a tiny exploded view of two fin parts beside it. No words or measurement marks. Style: Precise cyanotype technical engraving: very fine warm ivory-white linework and restrained pale-cyan crosshatching, continuous delicate engineering contours, no filled brass 3D rendering. Retain deep muted cyan-blue ink-paper tone ONLY inside the object silhouette if needed; background transparent. Match a deep #185A73 cyan-blue drawing-paper wallpaper, existing compass-beetle and technical house, lantern and mechanical nautilus; new seahorse subject. Composition: whole subject centered, clear readable silhouette at small iPhone size, 15 percent clear margins, soft upper-left lighting. True transparent background, alpha preserved; no opaque tile, hard rectangular frame, scenery or collage. Pure art only: absolutely NO text, lettering, numerals, dates, calendar, clock hands, dial, UI, logo or watermark. No copy, crop or recolour of any existing piece.",
+      "processing": "Resize entire original square to 1024x1024; WebP q92 method6; alpha preserved; no crop, recolour or subject edits.",
+      "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
+      "transparentPixels": 786754,
+      "opaquePixels": 844
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "aurora-seal",
+    "kind": "art",
+    "image": "widget-aurora-seal.1362fa0a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Aurora seal"
+  }
+]
