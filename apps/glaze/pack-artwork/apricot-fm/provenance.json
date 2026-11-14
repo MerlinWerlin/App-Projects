@@ -1,0 +1,26 @@
+{
+  "theme": "apricot-fm",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "apricot-fm",
+      "id": "apricot-studio-mic",
+      "label": "Apricot studio microphone",
+      "ref": "023-apricot-fm\\wallpapers\\wallpaper.png",
+      "subject": "one elegant small retro studio microphone, rounded apricot-enamel grille with fine ivory mesh, a short warm brass stem and cream circular base, a softly curling coral cable, entire object visible",
+      "style": "Warm cream/apricot/coral original retro material photographic illustration, soft golden afternoon window light, quiet cream #F4E2BE backdrop and matching ground, a subtle broad apricot ribbon low behind only, refined tactile enamel and ivory detail, matching reference",
+      "avoid": "No headset, radio, vinyl record, cat, cassette or markings",
+      "prompt": "Use case: stylized-concept. Glaze apricot-fm, one original standalone 1024 x 1024 square pure artwork. Subject: one elegant small retro studio microphone, rounded apricot-enamel grille with fine ivory mesh, a short warm brass stem and cream circular base, a softly curling coral cable, entire object visible. Warm cream/apricot/coral original retro material photographic illustration, soft golden afternoon window light, quiet cream #F4E2BE backdrop and matching ground, a subtle broad apricot ribbon low behind only, refined tactile enamel and ivory detail, matching reference. No headset, radio, vinyl record, cat, cassette or markings. Whole compact subject centred with16percent clear safe margins. New subject/composition no copy/crop/recolour. No text, numbers, logos, watermark, UI/frame, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-4b89d441-8496-4458-87af-ee5814f301bb.png",
+      "image": "widget-apricot-studio-mic.d058b3fa.webp",
+      "sha256": "d058b3fa4d36d661b41383c120e76589efd153eb6d0493a6d86cb2505afa08be",
+      "bytes": 122182,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}

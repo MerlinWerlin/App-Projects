@@ -1,0 +1,26 @@
+[
+  {
+    "id": "scalloped-agate-bowl",
+    "kind": "art",
+    "image": "widget-scalloped-agate-bowl.31ce98ab.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Scalloped agate bowl"
+  },
+  {
+    "id": "agate-shell-carving",
+    "kind": "art",
+    "image": "widget-agate-shell-carving.1a70b23b.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Agate shell carving"
+  }
+]

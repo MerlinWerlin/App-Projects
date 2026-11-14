@@ -1,0 +1,40 @@
+{
+  "theme": "verdigris-voyage",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "verdigris-voyage",
+      "id": "botanical-diving-bell",
+      "label": "Botanical diving bell",
+      "ref": "015-verdigris-voyage\\wallpapers\\wallpaper.png",
+      "subject": "one elegant suspended botanical diving-bell capsule, patinated seafoam copper lower hull, tall clear curved glass panels framed with slender copper ribs, a tiny lush fern garden inside, three delicate articulated landing feet and a loop above. Full original exploration craft visible, no airship, sailboat or opening seed sphere",
+      "prompt": "Use case: stylized-concept. Glaze Verdigris Voyage original standalone 1024 x 1024 square pure artwork of one elegant suspended botanical diving-bell capsule, patinated seafoam copper lower hull, tall clear curved glass panels framed with slender copper ribs, a tiny lush fern garden inside, three delicate articulated landing feet and a loop above. Full original exploration craft visible, no airship, sailboat or opening seed sphere. Exquisite realistic fantasy botanical exploration illustration, intricate aged copper/verdigris/glass craftsmanship, lush muted green plants, warm pale gold detail, soft seafoam mist and cream cloud sky behind object matching reference wallpaper, delicate distant forest hints low only. Entire compact object centred within16percent sky margins, premium subtle atmospheric light, no frame or hard card edge. New subject/composition not copy/crop/recolour. No text, numerals, logos, UI, watermark, gauges, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-eb4c6d43-7587-4096-a59e-f1f4d6252530.png",
+      "image": "widget-botanical-diving-bell.468a7bef.webp",
+      "sha256": "468a7befd3e75aa6e00dc50bb724ecccf766fee63bd0df46f8eef99d0fddc182",
+      "bytes": 234782,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "verdigris-voyage",
+      "id": "glasswing-dragonfly-craft",
+      "label": "Glasswing dragonfly craft",
+      "ref": "015-verdigris-voyage\\wallpapers\\wallpaper.png",
+      "subject": "one whimsical small dragonfly exploration craft, four delicate translucent pale-seafoam glass wings in patinated copper frames, a slender copper-and-glass fuselage holding a tiny moss garden, fine mechanical six legs, entire wings/tail contained. No bird, airship, sailboat or round capsule",
+      "prompt": "Use case: stylized-concept. Glaze Verdigris Voyage original standalone 1024 x 1024 square pure artwork of one whimsical small dragonfly exploration craft, four delicate translucent pale-seafoam glass wings in patinated copper frames, a slender copper-and-glass fuselage holding a tiny moss garden, fine mechanical six legs, entire wings/tail contained. No bird, airship, sailboat or round capsule. Exquisite realistic fantasy botanical exploration illustration, intricate aged copper/verdigris/glass craftsmanship, lush muted green plants, warm pale gold detail, soft seafoam mist and cream cloud sky behind object matching reference wallpaper, delicate distant forest hints low only. Entire compact object centred within16percent sky margins, premium subtle atmospheric light, no frame or hard card edge. New subject/composition not copy/crop/recolour. No text, numerals, logos, UI, watermark, gauges, clocks/hands/dials, dates/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-4e8e09fe-be53-41d6-87ac-98924cc57162.png",
+      "image": "widget-glasswing-dragonfly-craft.419c072b.webp",
+      "sha256": "419c072b64ba705eaab0d6ad37e6b6b7ea2ae283de6a607c833379a63c1a3f6a",
+      "bytes": 261776,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}
