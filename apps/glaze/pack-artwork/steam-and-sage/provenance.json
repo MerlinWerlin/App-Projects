@@ -1,0 +1,40 @@
+{
+  "theme": "steam-and-sage",
+  "created": "2026-11-14",
+  "tool": "built-in image_gen",
+  "review": "Original subjects, theme medium and palette checked against wallpaper and existing artwork; no text, numbers, dates, clocks, dials or live values.",
+  "artworks": [
+    {
+      "theme": "steam-and-sage",
+      "id": "bamboo-chopstick-rest",
+      "label": "Bamboo chopstick rest",
+      "ref": "142-steam-and-sage\\widgets\\bamboo-steamer.png",
+      "subject": "one pair of fine unmarked warm bamboo chopsticks lying neatly together on a small softly glazed sage ceramic crescent rest, subtle bamboo grain and a tiny terracotta reflected accent, both ends contained, no basket, dumpling or lid",
+      "prompt": "Use case: stylized-concept. Glaze Steam and Sage, original standalone1024x1024 square pure artwork of one pair of fine unmarked warm bamboo chopsticks lying neatly together on a small softly glazed sage ceramic crescent rest, subtle bamboo grain and a tiny terracotta reflected accent, both ends contained, no basket, dumpling or lid. Sophisticated calm culinary still-life photographic illustration on pale sage #DCE7DF seamless matte backdrop/floor with subtle fine grain, warm bamboo/ivory/sage/terracotta palette, soft studio shadow and refined texture matching reference. New subject/composition not copy/crop/recolour. Whole compact arrangement centred within16percent clear safe margins. No labels, text, numbers, logos, watermarks, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-67e5a8a8-4b2a-403b-94cc-16689accd1d7.png",
+      "image": "widget-bamboo-chopstick-rest.bf64ccd1.webp",
+      "sha256": "bf64ccd17ee938bab33a4e62ddb672ee326df436589342b08d367a1d40be9b2c",
+      "bytes": 64356,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "theme": "steam-and-sage",
+      "id": "ginger-fan",
+      "label": "Ginger fan",
+      "ref": "142-steam-and-sage\\widgets\\pleated-dumpling.png",
+      "subject": "one small warm golden ginger root with three delicate ivory ginger slices arranged in a loose fan beside it, fine fresh fibrous cut edges, quiet tactile culinary still life, no steamer, dumpling, basket lid or plate",
+      "prompt": "Use case: stylized-concept. Glaze Steam and Sage, original standalone1024x1024 square pure artwork of one small warm golden ginger root with three delicate ivory ginger slices arranged in a loose fan beside it, fine fresh fibrous cut edges, quiet tactile culinary still life, no steamer, dumpling, basket lid or plate. Sophisticated calm culinary still-life photographic illustration on pale sage #DCE7DF seamless matte backdrop/floor with subtle fine grain, warm bamboo/ivory/sage/terracotta palette, soft studio shadow and refined texture matching reference. New subject/composition not copy/crop/recolour. Whole compact arrangement centred within16percent clear safe margins. No labels, text, numbers, logos, watermarks, UI/frame, clocks/hands/dials, date/calendar, focus/battery/progress imagery. One image.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-dcfd3fe6-76dd-4499-a567-4bdac8102612.png",
+      "image": "widget-ginger-fan.03e806ea.webp",
+      "sha256": "03e806ea05b7903e23d201e0849c827f14f585544ae87813e3703e3edfa478c2",
+      "bytes": 187494,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    }
+  ]
+}
