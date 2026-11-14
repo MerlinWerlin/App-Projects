@@ -60,7 +60,7 @@ import { useT, type Script } from '../../src/i18n';
 import { refreshRemoteCatalog, useRemoteArtThemes, useRemoteCatalogStatus } from '../../src/native/useRemoteCatalog';
 import { PlusBadge } from '../../src/plus/PlusBadge';
 import { useFavourites } from '../../src/store/favourites';
-import { circleRadius, continuous, editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import { circleRadius, continuous, editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, typeV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { CategoryChipRow } from '../../src/ui/CategoryChipRow';
 import { GalleryArtCard, GalleryCardSkeleton } from '../../src/ui/GalleryArtCard';
@@ -611,7 +611,9 @@ const styles = StyleSheet.create({
   // 32 above a section and 12 below its title; card rows keep the 16-pt rhythm.
   headRow: { flexDirection: 'row', alignItems: 'flex-end', paddingHorizontal: spaceV2.lg, gap: spaceV2.sm },
   headText: { flex: 1 },
-  seeAll: { marginBottom: spaceV2.xs },
+  // Design review 1.0.33: PillButton's own alignSelf 'flex-start' pinned "See all" to the top of the row, floating
+  // above the eyebrow; it now sits on the title's line (centred on title2 inside the header's bottom padding).
+  seeAll: { alignSelf: 'flex-end', marginBottom: Math.max(0, editorialV2.sectionBottom - (sizeV2.pillSmall - typeV2.title2.lineHeight) / 2) },
   rail: { paddingHorizontal: spaceV2.lg, paddingBottom: editorialV2.cardGap },
   railItem: { paddingEnd: editorialV2.cardGap },
   // Thumbnail rows: fixed height (card + gap), so the grid's getItemLayout is exact.

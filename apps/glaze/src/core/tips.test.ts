@@ -13,6 +13,7 @@ import {
   isDismissed,
   nextTip,
   parseTips,
+  tipLead,
   restoreAll,
   restoreOne,
   serializeTips,
@@ -195,4 +196,16 @@ test('T217: no locale calls Install all at once a beta (tips, themeUi, plus)', (
       assert.doesNotMatch(lines.join('\n'), /beta|Beta|ベータ|베타|测试版|बीटा|تجريبي/, ns + '/' + f);
     }
   }
+});
+
+// Design review 1.0.33 (ux-copy): "App not in the list?." — a title that ends a sentence keeps its own mark.
+test('tipLead adds a full stop only when the title has none', () => {
+  const lead = (x: string) => `${x}. `;
+  assert.equal(tipLead('How shapes look on iPhone', lead), 'How shapes look on iPhone. ');
+  assert.equal(tipLead('App not in the list?', lead), 'App not in the list? ');
+  assert.equal(tipLead('¿La app no está en la lista?', lead), '¿La app no está en la lista? ');
+  assert.equal(tipLead('Wait!', lead), 'Wait! ');
+  assert.equal(tipLead('アプリがありませんか？', (x) => `${x}。`), 'アプリがありませんか？');
+  assert.equal(tipLead('ऐप सूची में नहीं है?', (x) => `${x}। `), 'ऐप सूची में नहीं है? ');
+  assert.equal(tipLead('التطبيق غير موجود؟', lead), 'التطبيق غير موجود؟ ');
 });

@@ -6,7 +6,6 @@ import subprocess
 BASE = '1a12b3b2842fec5668f1b13d56d93cb256dd7edd'
 ROOT = Path(__file__).resolve().parents[1]
 EXACT = [
-    'src/ui/WidgetArtMenu.tsx',
     'src/ui/BlendedArt.tsx',
     'src/native/packs.ts', 'src/native/useRemoteCatalog.ts',
     'modules/glaze-widget-bridge/ios/ClockArtRenderer.swift',
@@ -15,6 +14,7 @@ EXACT = [
 
 ]
 ALLOWED = {
+    'src/ui/WidgetArtMenu.tsx': 'Design review 1.0.33 (owner TestFlight screenshots: Live art cards showed an empty frame / ring): one added overlay, <LiveArtSample> (src/ui/LiveArtSample.tsx), draws a sample date / 25:00 / time inside a number-free piece liveFrame, plus a themeInk prop. Compositing, blending, placement and every other line unchanged. Owned by Claude.',
     'app/(tabs)/widgets.tsx': 'Owner 2026-11-14 (large image and large number next to each other, not separate): the separate theme art picker is no longer shown; My widget art is the one numbered Artwork list. Owned by Claude.',
     'src/core/widgetArtLibrary.ts': 'Owner 2026-11-13 (Artwork 1 to 5 must match in the app and on the Home Screen): the index carries an optional ordered artwork list (readMeta). Pieces, parsing and every other field unchanged. Owned by Claude.',
     'src/ui/ThemeWidgetArt.tsx': 'Owner 2026-11-13 (remove the large variations unless native): the theme pack art menu shows on the Small tab only; Medium and Large keep the native widgets. Owned by Claude.',

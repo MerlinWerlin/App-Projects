@@ -158,7 +158,8 @@ export default function WidgetStudioScreen() {
     return (
       <View style={[styles.missing, { backgroundColor: c.bg }]}>
         <Stack.Screen options={{ title: t('themeUi.widgetStudio.title') }} />
-        <Text maxFontSizeMultiplier={fontScaleCap('title3')} style={[textV2.title3, textStyleFor(script, textV2.title3), { color: c.ink }]}>{t('theme.notFound')}</Text>
+        <Feather name="layers" size={32} color={c.tint} accessibilityElementsHidden importantForAccessibility="no" />
+        <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title3')} style={[textV2.title3, textStyleFor(script, textV2.title3), styles.missingText, { color: c.ink }]}>{t('theme.notFound')}</Text>
         <PillButton label={t('theme.backToThemes')} onPress={() => router.back()} />
       </View>
     );
@@ -879,7 +880,9 @@ function ScaleSlider({ value, onChange }: { value: number; onChange: (v: number)
 
 const styles = StyleSheet.create({
   flex: { flex: 1 },
-  missing: { flex: 1, padding: spaceV2.lg, gap: spaceV2.md, justifyContent: 'center' },
+  // Design review 1.0.33: a centred empty state (icon, heading, one way back), like the icon install screen's.
+  missing: { flex: 1, padding: spaceV2.lg, gap: spaceV2.md, justifyContent: 'center', alignItems: 'center' },
+  missingText: { textAlign: 'center' },
   content: { paddingBottom: spaceV2.xxxl, gap: spaceV2.lg },
   previewWrap: { paddingHorizontal: spaceV2.lg, paddingTop: spaceV2.md, paddingBottom: spaceV2.sm },
   previewCard: { alignSelf: 'stretch' },

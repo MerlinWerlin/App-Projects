@@ -1,0 +1,109 @@
+name: Glaze design capture
+# Builds the full native Glaze simulator app and screenshots the main screens through deep links, in light, dark and
+# the largest non-accessibility text size, for design reviews (before/after evidence). Simulator only: no signing,
+# no purchases, no installed-widget behaviour.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/glaze-design-*']
+    paths: ['.github/workflows/glaze-design-capture.yml', 'apps/glaze/app/**', 'apps/glaze/src/**']
+concurrency:
+  group: glaze-design-capture-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: macos-latest
+    timeout-minutes: 80
+    defaults:
+      run:
+        working-directory: apps/glaze
+    env:
+      GLAZE_NATIVE: '1'
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      RCT_NO_LAUNCH_PACKAGER: '1'
+      GLAZE_SIMULATOR_GROUP_TEST: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Select current Xcode
+        run: |
+          set -euo pipefail
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version
+      - name: Install the native build dependencies
+        run: |
+          set -euo pipefail
+          node scripts/native-link.mjs 1
+          npm install --no-audit --no-fund > "$RUNNER_TEMP/glaze-native-install.log" 2>&1 || { tail -100 "$RUNNER_TEMP/glaze-native-install.log"; exit 1; }
+          node scripts/eas-native-deps.js >> "$RUNNER_TEMP/glaze-native-install.log" 2>&1 || { tail -100 "$RUNNER_TEMP/glaze-native-install.log"; exit 1; }
+      - name: Generate iOS app and widget targets (OTA off for reproducible captures)
+        run: |
+          set -euo pipefail
+          node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("app.json"));if(p.expo.updates)p.expo.updates.enabled=false;fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
+          npx expo prebuild --platform ios --no-install > "$RUNNER_TEMP/glaze-prebuild.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-prebuild.log"; exit 1; }
+          cd ios
+          pod install > "$RUNNER_TEMP/glaze-pods.log" 2>&1 || { tail -120 "$RUNNER_TEMP/glaze-pods.log"; exit 1; }
+      - name: Enable shared Group access in simulator app and extension
+        run: ruby scripts/prepare-native-simulator-groups.rb ios
+      - name: Build unsigned simulator app with bundled JavaScript
+        run: |
+          set -euo pipefail
+          WORKSPACE=$(python3 -c 'from pathlib import Path; print(next(Path("ios").glob("*.xcworkspace")))')
+          SCHEME=$(basename "$WORKSPACE" .xcworkspace)
+          xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/glaze-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO build > "$RUNNER_TEMP/glaze-build.log" 2>&1 || { tail -160 "$RUNNER_TEMP/glaze-build.log"; exit 1; }
+      - name: Capture the main screens
+        timeout-minutes: 30
+        run: |
+          set -uo pipefail
+          OUT="$RUNNER_TEMP/glaze-design-captures"; mkdir -p "$OUT"
+          APP=$(python3 -c 'import os; from pathlib import Path; print(next((Path(os.environ["RUNNER_TEMP"])/"glaze-build/Build/Products/Release-iphonesimulator").glob("*.app")))')
+          BUNDLE=$(python3 -c 'import plistlib,sys,pathlib; print(plistlib.loads((pathlib.Path(sys.argv[1])/"Info.plist").read_bytes())["CFBundleIdentifier"])' "$APP")
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); xs=[x for k,v in sorted(d["devices"].items(),reverse=True) if "iOS" in k for x in v]; print(next((x["udid"] for x in xs if x["name"]=="iPhone 16 Pro"), next(x["udid"] for x in xs if "iPhone" in x["name"] and "Pro" in x["name"])))')
+          codesign --force --deep --sign - "$APP"
+          # Pre-approve glaze:// for simctl openurl, so no "Open in Glaze?" alert covers the screens.
+          xcrun simctl shutdown "$DEVICE" 2>/dev/null || true
+          PREFS="$HOME/Library/Developer/CoreSimulator/Devices/$DEVICE/data/Library/Preferences"
+          mkdir -p "$PREFS"
+          /usr/libexec/PlistBuddy -c "Add :com.apple.CoreSimulator.CoreSimulatorBridge-->glaze string $BUNDLE" "$PREFS/com.apple.launchservices.schemeapproval.plist" || true
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl install "$DEVICE" "$APP"
+          xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100 || true
+          ROUTES="themes theme/deep-sea install?theme=deep-sea icons-intro?theme=deep-sea widgets widget-studio icons wallpapers settings tips"
+          shoot() { # $1 = pass name
+            mkdir -p "$OUT/$1"
+            xcrun simctl terminate "$DEVICE" "$BUNDLE" 2>/dev/null || true
+            xcrun simctl launch "$DEVICE" "$BUNDLE" > /dev/null
+            sleep 14
+            xcrun simctl io "$DEVICE" screenshot "$OUT/$1/00-launch.png"
+            N=1
+            for R in $ROUTES; do
+              NAME=$(printf '%02d-%s' "$N" "$(echo "$R" | tr '/?=' '---')")
+              xcrun simctl openurl "$DEVICE" "glaze://$R" || echo "openurl failed: $R"
+              sleep 6
+              xcrun simctl io "$DEVICE" screenshot "$OUT/$1/$NAME.png"
+              N=$((N+1))
+            done
+          }
+          xcrun simctl ui "$DEVICE" appearance light; shoot light
+          xcrun simctl ui "$DEVICE" appearance dark; shoot dark
+          xcrun simctl ui "$DEVICE" appearance light
+          xcrun simctl ui "$DEVICE" content_size extra-extra-extra-large || echo 'content_size not supported'
+          shoot xxxl-text
+          printf 'Source: %s\nSimulator captures via deep links (OTA disabled). Not a physical device; no purchase or installed-widget claim.\n' "$GITHUB_SHA" > "$OUT/README.txt"
+          ls -R "$OUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glaze-design-captures
+          path: |
+            ${{ runner.temp }}/glaze-design-captures
+            ${{ runner.temp }}/glaze-build.log
+            ${{ runner.temp }}/glaze-prebuild.log
+          retention-days: 14
