@@ -97,6 +97,7 @@ function Shell() {
           <Stack.Screen name="gifts/[tripId]" options={{ ...header, title: t('gifts.route') }} />
           <Stack.Screen name="idea-edit" options={{ ...header, presentation: 'modal', title: t('ideas.edit.newTitle') }} />
           <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
+          <Stack.Screen name="paywall" options={{ ...header, title: t('access.title') }} />
           <Stack.Screen name="licences" options={{ ...header, title: t('licences.title') }} />
           <Stack.Screen name="backup" options={{ ...header, title: t('backup.route') }} />
           <Stack.Screen name="phrases" options={{ ...header, title: t('phrases.title') }} />
