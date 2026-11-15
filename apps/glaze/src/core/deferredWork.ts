@@ -36,6 +36,8 @@ export const DEFERRED_STEPS = Object.freeze({
   installedProbe: 'installedProbe',
   /** T222 background updates of downloaded remote packs. */
   packUpdates: 'packUpdates',
+  /** 1.0.38: install the bundled starter packs (from the app, no network), one per run. */
+  starterPacks: 'starterPacks',
 } as const);
 /** A step is tried at most this many launches in a row before it is dropped. */
 export const MAX_ATTEMPTS = 3;

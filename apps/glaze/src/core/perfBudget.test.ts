@@ -122,6 +122,7 @@ test('list rows are memoised with stable keys and render callbacks', () => {
 const RN_IMAGE_OK: Record<string, string> = {
   'src/ui/artPackSources.ts': 'Image.resolveAssetSource only (bundled asset URI), draws nothing',
   'src/ui/seamlessSetup.ts': 'Image.resolveAssetSource only, draws nothing',
+  'src/native/starterPacks.ts': 'Image.resolveAssetSource only (bundled starter pack bytes), draws nothing',
   'src/render/CollageView.tsx': 'captured by react-native-view-shot for Save; sync layout matters, not in a list',
   'src/render/PhotoWallpaperView.tsx': 'captured by react-native-view-shot for Save; not in a list',
   'src/render/HomeWallpaperView.tsx': 'captured by react-native-view-shot for Save; not in a list',

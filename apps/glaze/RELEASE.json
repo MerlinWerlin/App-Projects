@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.37: themes now download from Cloudflare R2, and every theme has five different small artworks. The Widgets tab is simpler: no Medium and Large tabs, just your theme's Artwork 1-5 and Custom 1-5, straight away. After you change theme it updates by itself, showing a short Preparing step instead of the old theme's art. Theme packs you already downloaded update to the new artwork. Downloads are still checked file by file, and Glaze still collects no data.",
+  "note": "Glaze 1.0.38: eight complete themes now come built in (Alpine Starlight, Aurora Haven, Cobalt Caravan, Cherry Arcade, Boba Bear Club, Espresso Hour, Lemon Lagoon and Honeywood), so Glaze looks complete on first launch and works offline. They behave exactly like downloaded themes and update the same way. The rest still download from Cloudflare in seconds. The privacy page now names Cloudflare.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
