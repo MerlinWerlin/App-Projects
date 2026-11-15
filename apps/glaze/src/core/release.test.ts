@@ -28,8 +28,9 @@ test('eas.json has development, preview and production profiles', () => {
   assert.equal(development.distribution, 'internal');
   assert.equal(preview.distribution, 'internal');
   assert.equal(production.autoIncrement, true);
+  // 1.0.42: no over-the-air updates, so no profile has an update channel.
   for (const [name, profile] of Object.entries({ development, preview, production })) {
-    assert.equal(profile.channel, name, `${name} profile publishes to the ${name} update channel`);
+    assert.equal(profile.channel, undefined, `${name} profile has no update channel`);
   }
   for (const [name, profile] of Object.entries({ development, preview })) {
     assert.deepEqual(profile.env, { GLAZE_NATIVE: '1' }, `${name} profile turns on the native pieces`);

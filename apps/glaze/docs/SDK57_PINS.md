@@ -34,7 +34,6 @@ The cloud build repo keeps the SDK 54-era ranges in `package.json` (Expo Go tria
 | `expo-sharing` | `~57.0.24` |
 | `expo-splash-screen` | `~57.0.10` |
 | `expo-status-bar` | `~57.0.1` |
-| `expo-updates` | `~57.0.26` |
 | `expo-video` | `~57.0.5` |
 | `expo-web-browser` | `~57.0.3` |
 | `react` | `19.2.3` |

@@ -63,6 +63,17 @@ jobs:
           app=pathlib.Path(os.environ['APP'])
           info=plistlib.loads((app/'Info.plist').read_bytes())
           assert (app/'main.jsbundle').exists() and (app/'PlugIns/GlazeWidgets.appex').exists()
+          # 1.0.42: both the app and the widget extension carry a privacy manifest (app.json ios.privacyManifests,
+          # targets/widget/PrivacyInfo.xcprivacy), with no tracking and the UserDefaults / FileTimestamp reasons.
+          for bundle in (app, app/'PlugIns/GlazeWidgets.appex'):
+            manifest=bundle/'PrivacyInfo.xcprivacy'
+            assert manifest.exists(), f'{bundle.name} has no PrivacyInfo.xcprivacy'
+            pm=plistlib.loads(manifest.read_bytes())
+            assert pm.get('NSPrivacyTracking') is False, bundle.name
+            reasons={a['NSPrivacyAccessedAPIType']:set(a['NSPrivacyAccessedAPITypeReasons']) for a in pm.get('NSPrivacyAccessedAPITypes',[])}
+            assert {'CA92.1','1C8F.1'} <= reasons.get('NSPrivacyAccessedAPICategoryUserDefaults',set()), (bundle.name,reasons)
+            assert 'C617.1' in reasons.get('NSPrivacyAccessedAPICategoryFileTimestamp',set()), (bundle.name,reasons)
+            print(bundle.name,'privacy manifest ok')
           receipt={'sourceSHA':os.environ['GITHUB_SHA'],'bundleId':info['CFBundleIdentifier'],'bundledJavaScript':True,'unsignedSimulatorOnly':True,'signedReleaseArchive':False,'simulatorGroupEntitlements':True,'simulatorTeam':'GLAZETEST0'}
           (pathlib.Path(os.environ['RUNNER_TEMP'])/'simulator-app-source.json').write_text(json.dumps(receipt,indent=2))
           PY

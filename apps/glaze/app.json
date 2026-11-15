@@ -3,15 +3,7 @@
     "name": "Glaze",
     "slug": "glaze",
     "scheme": "glaze",
-    "version": "1.0.41",
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0,
-      "checkAutomatically": "ON_LOAD",
-      "url": "https://u.expo.dev/8dcff573-80a3-457e-9791-f41552a0d678"
-    },
+    "version": "1.0.42",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "ios": {
@@ -38,6 +30,21 @@
       },
       "config": {
         "usesNonExemptEncryption": false
+      },
+      "privacyManifests": {
+        "NSPrivacyTracking": false,
+        "NSPrivacyTrackingDomains": [],
+        "NSPrivacyCollectedDataTypes": [],
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": ["CA92.1", "1C8F.1"]
+          },
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp",
+            "NSPrivacyAccessedAPITypeReasons": ["C617.1"]
+          }
+        ]
       }
     },
     "android": {
@@ -57,7 +64,9 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "Glaze uses your photos and videos to make icons, wallpapers and Live Photos. They never leave your phone."
+          "photosPermission": "Glaze uses your photos and videos to make icons, wallpapers and Live Photos. They never leave your phone.",
+          "cameraPermission": false,
+          "microphonePermission": false
         }
       ],
       [

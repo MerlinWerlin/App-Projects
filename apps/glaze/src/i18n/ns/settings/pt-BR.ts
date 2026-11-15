@@ -92,15 +92,6 @@ export const ptBR: NonNullable<LocaleMessages['settings']> = {
       packUpdates: 'atualizações de pacotes',
     },
   },
-  updates: {
-    check: 'Buscar atualizações',
-    checking: 'Buscando atualizações…',
-    hint: 'Baixa as correções mais recentes para esta versão do Glaze',
-    none: 'O Glaze está atualizado',
-    downloaded: 'Atualização pronta. Reiniciando o Glaze…',
-    unavailable: 'As atualizações chegam com as versões do TestFlight e da App Store',
-    error: 'Não foi possível buscar atualizações. Tente mais tarde.',
-  },
   explainer: {
     addedTitle: 'Os ícones são adicionados, não substituídos',
     addedBody: 'O iOS não deixa nenhum app mudar o ícone de outro. Em vez disso, o Glaze adiciona atalhos na Tela de Início com o seu novo visual. Tocar em um abre o app de verdade.',

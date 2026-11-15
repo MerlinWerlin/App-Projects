@@ -111,15 +111,17 @@ test('T152: Plus uses the real store where the module exists, the mock elsewhere
   assert.match(store, /if \(!r\.ok\) throw new Error\(r\.code\)/, 'restore failure reaches restoreFailed');
 });
 
-test('T152: a native build with the store never shows the test-version line', () => {
+test('T152 / 1.0.42: no test-version line anywhere; Subscribe needs the StoreKit price', () => {
   const sheet = read('src', 'plus', 'PlusLockSheet.tsx');
-  // The only branches that show plus.lock.unavailable are the mock result and the catch for the mock.
-  assert.match(sheet, /if \(PLUS_PURCHASABLE\) \{[\s\S]*?showFailed\('unknown'\);[\s\S]*?\} else \{\s*setMessage\(t\('plus\.lock\.unavailable'\)\)/);
-  assert.match(sheet, /else if \(res === 'unavailable'\)/);
+  // The test-version and coming-soon strings are gone; a mock 'unavailable' result reads as a failed purchase.
+  assert.doesNotMatch(sheet, /plus\.lock\.(unavailable|unlock|unlockHint)'/);
+  assert.match(sheet, /else if \(res === 'unavailable'\) \{[\s\S]*?showFailed\('unavailable'\);/);
+  assert.match(sheet, /\} catch \{\s*showFailed\('unknown'\);/);
   // The mock is the only store that returns 'unavailable'.
   assert.doesNotMatch(read('src', 'plus', 'iapStore.ts'), /'unavailable'/);
-  assert.match(sheet, /PLUS_PURCHASABLE \? t\('plus\.lock\.unlockBuy', \{ price \}\) : t\('plus\.lock\.unlock'\)/);
-  assert.match(sheet, /PLUS_PURCHASABLE \? t\('plus\.lock\.buyHint'\) : t\('plus\.lock\.unlockHint'\)/);
+  assert.match(sheet, /const canBuy = PLUS_PURCHASABLE \? price !== null : DEV_MOCK;/);
+  assert.match(sheet, /disabled=\{!canBuy\}/);
+  assert.match(sheet, /price !== null \? t\('plus\.lock\.unlockBuy', \{ price \}\) : t\('plus\.lock\.subscribe'\)/);
   assert.match(sheet, /t\('plus\.lock\.price', \{ price \}\)/);
   assert.match(sheet, /res === 'pending'/);
   // Cancel stays silent: no branch for it.
@@ -162,8 +164,8 @@ test('parsePurchase and parseProduct normalise whatever the module returns', () 
   assert.equal(parseProduct({ id: 'other', displayPrice: '$1' }, PLUS_SKU), null);
   assert.equal(parseProduct({ id: PLUS_SKU }, PLUS_SKU), null);
   assert.equal(parseProduct(null, PLUS_SKU), null);
-  assert.equal(priceText(null, 'A$2.99'), 'A$2.99');
-  assert.equal(priceText({ id: PLUS_SKU, displayPrice: '2,99 €', displayName: '' }, 'A$2.99'), '2,99 €');
+  assert.equal(priceText(null), null, '1.0.42: no fallback price');
+  assert.equal(priceText({ id: PLUS_SKU, displayPrice: '2,99 €', displayName: '' }), '2,99 €');
 });
 
 function fake(result: StorePurchase | Error, owned: boolean | null): StoreKitLike & { calls: string[] } {

@@ -1,5 +1,5 @@
 // Plus gate for downloadable theme packs (T46). Combines the Glaze Plus entitlement (read only
-// here, in src/plus) with what is downloaded on the phone. One-time Glaze Plus; no subscriptions.
+// here, in src/plus) with what is downloaded on the phone. Glaze Plus is the yearly subscription (1.0.41).
 // Screens show the existing PlusLockSheet when `state === 'locked'`.
 import { useCallback, useEffect, useSyncExternalStore } from 'react';
 import { isPackDownloaded, totalCacheBytes, type PackCacheEntry } from '../core/themePack';

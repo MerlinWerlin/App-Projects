@@ -257,21 +257,10 @@ export const PACK_BASE_RESOLVED: string | null = (() => {
 export const PACKS_ENABLED = packsEnabled(PACK_BASE);
 if (!PACKS_ENABLED) state = { ...state, catalogStatus: 'disabled' };
 
-/** T178: the running build's JS bundle id (expo-updates), or '' in Expo Go / dev / when unavailable. */
-function runningUpdateId(): string {
-  try {
-    if (String(Constants.executionEnvironment ?? '') === 'storeClient' || __DEV__) return '';
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const u = require('expo-updates') as { updateId?: string | null };
-    return typeof u?.updateId === 'string' ? u.updateId : '';
-  } catch {
-    return '';
-  }
-}
-
 /**
- * T178: the stamp the cached catalogue is saved under: app version, build number, JS bundle and
- * pack base URL. A different stamp (first launch of a new build or OTA) refetches at once.
+ * T178: the stamp the cached catalogue is saved under: app version, build number and pack base
+ * URL. A different stamp (first launch of a new build) refetches at once. (No over-the-air updates
+ * since 1.0.42, so there is no JS bundle id to add.)
  * Every part falls back to '' so Expo Go and web never throw here.
  */
 function computeCatalogStamp(): string {
@@ -283,7 +272,7 @@ function computeCatalogStamp(): string {
   } catch {
     // keep the fallbacks
   }
-  return catalogCacheStamp({ appVersion: version, build, updateId: runningUpdateId(), baseUrl: PACK_BASE_RESOLVED });
+  return catalogCacheStamp({ appVersion: version, build, baseUrl: PACK_BASE_RESOLVED });
 }
 
 let catalogStampMemo: string | null = null;

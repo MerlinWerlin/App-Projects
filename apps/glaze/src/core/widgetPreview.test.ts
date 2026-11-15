@@ -134,7 +134,7 @@ test('T208 remoteHeroPx: the real size of the piece each size shows', () => {
 
 test('WidgetArtMenu: stable names, stacked small caption, native-like backgrounds', () => {
   const menu = read('src', 'ui', 'WidgetArtMenu.tsx');
-    assert.match(menu, /optionName\(o, all\)/); // T209 naming supersedes optionMenuName in the UI
+    assert.match(menu, /optionName\(o, all(, themeName)?\)/); // T209 naming supersedes optionMenuName in the UI
   assert.doesNotMatch(menu, /n: index \+ 1/, 'no per-size numbering');
   assert.match(menu, /menuCaptionLayout\(size\)/);
   assert.match(menu, /numberOfLines=\{caption\.nameLines\}/);

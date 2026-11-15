@@ -41,7 +41,8 @@ test('T266: release checklist names the configured native TestFlight train', () 
   const checklist = read('docs/RELEASE_CHECKLIST.md');
   assert.match(checklist, /## 0\. Version decision/);
   assert.ok(checklist.includes(`\`${app.expo.version}\``), 'checklist names the app.json version');
-  assert.equal(app.expo.runtimeVersion?.policy, 'appVersion');
+  // 1.0.42: no over-the-air updates, so no runtimeVersion (src/core/releasing.test.ts).
+  assert.equal(app.expo.runtimeVersion, undefined);
 });
 
 const LIMITS: Record<string, number> = {

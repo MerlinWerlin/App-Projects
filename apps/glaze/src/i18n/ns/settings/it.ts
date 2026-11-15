@@ -92,15 +92,6 @@ export const it: NonNullable<LocaleMessages['settings']> = {
       packUpdates: 'aggiornamenti dei pacchetti',
     },
   },
-  updates: {
-    check: 'Cerca aggiornamenti',
-    checking: 'Ricerca aggiornamenti…',
-    hint: 'Scarica le ultime correzioni per questa versione di Glaze',
-    none: 'Glaze è aggiornato',
-    downloaded: 'Aggiornamento pronto. Riavvio di Glaze…',
-    unavailable: 'Gli aggiornamenti arrivano con le build TestFlight e App Store',
-    error: 'Impossibile cercare aggiornamenti. Riprova più tardi.',
-  },
   explainer: {
     addedTitle: 'Le icone si aggiungono, non si sostituiscono',
     addedBody: 'iOS non permette a nessuna app di cambiare l’icona di un’altra. Glaze aggiunge invece collegamenti alla schermata Home con il tuo nuovo stile. Toccandone uno si apre l’app vera.',

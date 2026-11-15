@@ -111,3 +111,37 @@ test('the Privacy Policy URL the paywall and App Store Connect use is a page Git
     assert.doesNotMatch(read(...f), /apps\/glaze\/docs\/site\/privacy\.html/, f.join('/'));
   }
 });
+
+test('1.0.42: the paywall never shows a hard-coded price; Subscribe waits for StoreKit getProduct', async () => {
+  const { readdirSync, statSync } = await import('node:fs');
+  // No UI source (app/, src/ outside tests) carries the owner's price as fallback text.
+  const offenders: string[] = [];
+  const walk = (dir: string) => {
+    for (const name of readdirSync(join(ROOT, dir))) {
+      const rel = join(dir, name);
+      if (statSync(join(ROOT, rel)).isDirectory()) walk(rel);
+      else if (/\.tsx?$/.test(name) && !name.endsWith('.test.ts') && /A\$\s?2[.,]99|2[.,]99\s?(A\$|AUD)/.test(read(rel))) offenders.push(rel);
+    }
+  };
+  for (const dir of ['app', 'src']) walk(dir);
+  assert.deepEqual(offenders, []);
+  // The hook: price only from plusStore.displayPrice (StoreKit getProduct), null until then, with a retry.
+  const ent = read('src', 'plus', 'entitlement.ts');
+  const hook = ent.slice(ent.indexOf('export function usePlusPrice'));
+  assert.match(hook, /useState<string \| null>\(priceCache\)/, 'no fallback price');
+  assert.match(hook, /retry/);
+  const store = read('src', 'plus', 'iapStore.ts');
+  const sub = store.slice(store.indexOf('export function createSubscriptionPlusStore'), store.indexOf('export function createStoreKitPlusStore'));
+  assert.match(sub, /price = store\.getProduct\(YEARLY_SKU\)\.then\(/);
+  assert.match(sub, /\(\) => \{\s*price = null;\s*return null;\s*\}/, 'a failed lookup is retried, not cached');
+  // The sheet: Subscribe disabled without the price; "Couldn't load the price · Try again".
+  const sheet = read('src', 'plus', 'PlusLockSheet.tsx');
+  assert.match(sheet, /const canBuy = PLUS_PURCHASABLE \? price !== null : DEV_MOCK;/);
+  assert.match(sheet, /disabled=\{!canBuy\}/);
+  assert.match(sheet, /if \(busy \|\| !canBuy\) return;/);
+  assert.match(sheet, /t\('plus\.lock\.priceFailed'\)\} ·/);
+  assert.match(sheet, /onPress=\{retryPrice\}/);
+  const en = read('src', 'i18n', 'ns', 'plus', 'en.ts');
+  assert.match(en, /priceFailed: 'Couldn’t load the price'/);
+  assert.match(en, /priceRetry: 'Try again'/);
+});

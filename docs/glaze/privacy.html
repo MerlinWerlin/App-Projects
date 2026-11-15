@@ -21,7 +21,7 @@ hr{border:0;border-top:1px solid var(--line);margin:28px 0}
 <body>
 <main>
 <h1>Glaze privacy</h1>
-<p class="muted">Last updated 15 November 2026 (Glaze Plus subscription)</p>
+<p class="muted">Last updated 15 November 2026 (Glaze Plus subscription; no over-the-air updates from 1.0.42)</p>
 <p><span class="badge">Data Not Collected</span></p>
 <p>Glaze has no accounts, analytics, ads or tracking. We don't collect, store or share any information about you.</p>
 
@@ -42,7 +42,7 @@ hr{border:0;border-top:1px solid var(--line);margin:28px 0}
 <p>A few older Space themes use a real telescope photo. If you open one, Glaze downloads that one photo from the official ESA/Webb image site (cdn.esawebb.org) as a plain image download, with nothing about you added.</p>
 
 <h2>App updates</h2>
-<p>Glaze checks Expo's update service for fixes to the version you have installed. Expo's update library sends the app version and a random installation ID it creates on first launch (not derived from your device, Apple ID or any account; it resets if you delete the app) so it can serve the right update. Glaze adds no personal data to that request.</p>
+<p>From version 1.0.42, Glaze does not download app code or updates outside the App Store. Updates come only through the App Store (or TestFlight while testing), and Glaze sends nothing to any update service. Earlier test versions checked Expo's update service for fixes; those requests carried only the app version and a random installation ID, never your data.</p>
 
 <h2>Purchases</h2>
 <p>Glaze Plus is bought through Apple's In-App Purchase. Apple handles the payment; Glaze only learns whether Plus is unlocked.</p>
@@ -56,7 +56,6 @@ hr{border:0;border-top:1px solid var(--line);margin:28px 0}
 <h2>Everything Glaze connects to</h2>
 <ul>
 <li>Cloudflare (R2 storage and CDN): theme images and the theme catalogue (files only, no identifiers). Older app versions use GitHub for the same files.</li>
-<li>Expo's update service (u.expo.dev): app fixes, with the app version and a random installation ID.</li>
 <li>Apple's public App Store search (itunes.apple.com): only the name of an app Glaze doesn't recognise, plus your store's country code.</li>
 <li>ESA/Webb image site: only if you open an older Space theme.</li>
 <li>Apple's App Store (StoreKit): only when you buy or restore Glaze Plus.</li>

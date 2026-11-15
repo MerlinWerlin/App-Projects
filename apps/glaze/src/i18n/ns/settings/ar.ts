@@ -92,15 +92,6 @@ export const ar: NonNullable<LocaleMessages['settings']> = {
       packUpdates: 'تحديثات الحزم',
     },
   },
-  updates: {
-    check: 'التحقق من التحديثات',
-    checking: 'جارٍ التحقق من التحديثات…',
-    hint: 'ينزّل أحدث الإصلاحات لهذا الإصدار من Glaze',
-    none: 'Glaze محدَّث',
-    downloaded: 'التحديث جاهز. جارٍ إعادة تشغيل Glaze…',
-    unavailable: 'تصل التحديثات مع إصدارات TestFlight وApp Store',
-    error: 'تعذّر التحقق من التحديثات. حاول لاحقًا.',
-  },
   explainer: {
     addedTitle: 'تُضاف الأيقونات ولا تُستبدل',
     addedBody: 'لا يسمح iOS لأي تطبيق بتغيير أيقونة تطبيق آخر. لذلك يضيف Glaze اختصارات إلى الشاشة الرئيسية بمظهرك الجديد. النقر على أحدها يفتح التطبيق الحقيقي.',

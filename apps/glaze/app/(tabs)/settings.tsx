@@ -30,13 +30,11 @@ import { Segmented, type SegmentedOption } from '../../src/ui/Segmented';
 import { Sheet } from '../../src/ui/Sheet';
 import { ContextTip } from '../../src/ui/ContextTip';
 import { useToast } from '../../src/ui/Toast';
-import type { UpdateCheckOutcome } from '../../src/core/updates';
 import { formatDeferredDiagnostics, type StartupStepKey } from '../../src/core/startupDiagnostics';
 import { deferredIdle, deferredTimings } from '../../src/store/deferredWork';
 import { useT, type MessageKey, type Script } from '../../src/i18n';
 import { textStyleFor } from '../../src/ui/i18nLayout';
 import { BarIconButton, InsetGroup, InsetRow, LargeTitleScrollView, Skeleton, SwitchInsetRow } from '../../src/ui/v2';
-import { checkForUpdate, reloadApp } from '../../src/native/updates';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 const PLUS_NAME = 'Glaze Plus'; // i18n-ignore (product name)
@@ -52,13 +50,6 @@ const SHAPES = Object.keys(SHAPE_LABEL) as IconShape[];
 
 type SizeKey = (typeof GLYPH_SIZES)[number]['key'];
 const SIZE_LABEL = { S: 'settings.sizes.small', M: 'settings.sizes.medium', L: 'settings.sizes.large' } as const;
-
-const UPDATE_MESSAGE = {
-  none: 'settings.updates.none',
-  downloaded: 'settings.updates.downloaded',
-  unavailable: 'settings.updates.unavailable',
-  error: 'settings.updates.error',
-} as const satisfies Record<UpdateCheckOutcome, MessageKey>;
 
 // T257: plain-words names of the deferred launch steps (src/core/deferredWork.ts DEFERRED_STEPS).
 const STARTUP_STEP = {
@@ -284,9 +275,9 @@ function SettingsScreen() {
           value={version}
           accessibilityLabel={t('settings.about.version', { version })}
         />
-        <UpdateRow />
-        <StartupRow />
-        <WidgetDiagnosticsRow />
+        {/* Launch timings and widget diagnostics are for development only; release builds leave them out. */}
+        {__DEV__ ? <StartupRow /> : null}
+        {__DEV__ ? <WidgetDiagnosticsRow /> : null}
       </InsetGroup>
 
       <PlusLockSheet visible={plusOpen} onClose={() => setPlusOpen(false)} />
@@ -324,35 +315,6 @@ function SettingsScreen() {
         </Text>
       </Sheet>
     </LargeTitleScrollView>
-  );
-}
-
-// "Check for updates" (T41): asks EAS Update for a newer JS bundle. In Expo Go it just says so.
-function UpdateRow() {
-  const toast = useToast();
-  const { t } = useT();
-  const [busy, setBusy] = useState(false);
-  const onCheck = async () => {
-    if (busy) return;
-    setBusy(true);
-    haptic('select');
-    const outcome = await checkForUpdate();
-    setBusy(false);
-    toast.show(t(UPDATE_MESSAGE[outcome]), outcome === 'error' ? 'warning' : outcome === 'downloaded' ? 'success' : 'info');
-    if (outcome === 'downloaded') setTimeout(() => void reloadApp(), 1200);
-  };
-  const label = busy ? t('settings.updates.checking') : t('settings.updates.check');
-  return (
-    <InsetRow
-      icon="refresh-cw"
-      iconTone="mint"
-      title={label}
-      accessibilityLabel={label}
-      accessibilityHint={t('settings.updates.hint')}
-      onPress={() => void onCheck()}
-      accessory="none"
-      haptic={false}
-    />
   );
 }
 

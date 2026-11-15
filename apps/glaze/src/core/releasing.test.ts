@@ -1,29 +1,34 @@
-// Guard test for over-the-air updates (owner request 16 Oct 2026, R2 / T41).
+// Guard test: Glaze has no over-the-air updates (1.0.42, Apple Guideline 5.6). Every change ships as a
+// new build through TestFlight and App Store review, as for Backspin, Couch, Cue, Linework and Satchel.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
-const read = (rel: string): string => readFileSync(join(process.cwd(), rel), 'utf8').replace(/\r\n/g, '\n');
+const ROOT = process.cwd();
+const read = (rel: string): string => readFileSync(join(ROOT, rel), 'utf8').replace(/\r\n/g, '\n');
+// Package name built at runtime so guard.test.ts's import scan doesn't see it in this file.
+const UPDATES_PKG = ['expo', 'updates'].join('-');
 
-test('PUSH_UPDATE.cmd publishes to the production channel and pauses', () => {
-  const cmd = read('PUSH_UPDATE.cmd');
-  assert.match(cmd, /cd \/d "%~dp0"/);
-  assert.match(cmd, /where node/);
-  assert.match(cmd, /set \/p NOTE=/);
-  assert.ok(cmd.includes('npx eas-cli@latest update --channel production --message "%NOTE%"'));
-  assert.match(cmd, /^pause\s*$/m);
+test('expo-updates is not a dependency and is not in the lockfile', () => {
+  const pkg = JSON.parse(read('package.json')) as Record<string, Record<string, string> | undefined>;
+  for (const field of ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies']) {
+    assert.equal(pkg[field]?.[UPDATES_PKG], undefined, `${field} has no ${UPDATES_PKG}`);
+  }
+  const lock = JSON.parse(read('package-lock.json')) as { packages?: Record<string, unknown> };
+  assert.ok(!Object.keys(lock.packages ?? {}).some((k) => k.endsWith(`node_modules/${UPDATES_PKG}`)), 'lockfile has no expo-updates');
 });
 
-test('app.json: runtimeVersion follows the app version; updates.url is left for eas update:configure', () => {
-  const app = JSON.parse(read('app.json')) as {
-    expo: { runtimeVersion?: { policy?: string }; updates?: { url?: string; fallbackToCacheTimeout?: number } };
-  };
-  assert.equal(app.expo.runtimeVersion?.policy, 'appVersion');
-  // D55-1: no placeholder URL in the repo. `npx eas-cli@latest update:configure` writes the real one on the PC.
-  const url = app.expo.updates?.url;
-  if (url !== undefined) assert.match(url, /^https:\/\/u\.expo\.dev\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/);
-  assert.equal(app.expo.updates?.fallbackToCacheTimeout, 0, 'launch never waits on the network');
+test('app.json has no updates block or runtimeVersion', () => {
+  const app = JSON.parse(read('app.json')) as { expo: Record<string, unknown> };
+  assert.equal(app.expo.updates, undefined);
+  assert.equal(app.expo.runtimeVersion, undefined);
+  assert.ok(!read('app.json').includes('u.expo.dev'));
+});
+
+test('eas.json build profiles carry no update channels', () => {
+  const eas = JSON.parse(read('eas.json')) as { build: Record<string, { channel?: string }> };
+  for (const [name, profile] of Object.entries(eas.build)) assert.equal(profile.channel, undefined, `${name} has no channel`);
 });
 
 test('app config carries no placeholder URLs or ids', () => {
@@ -33,42 +38,25 @@ test('app config carries no placeholder URLs or ids', () => {
   }
 });
 
-test('expo-updates matches the installed Expo SDK native module range', () => {
-  const pkg = JSON.parse(read('package.json')) as { dependencies?: Record<string, string> };
-  const bundled=JSON.parse(read('node_modules/expo/bundledNativeModules.json')) as Record<string,string>;
-  assert.equal(pkg.dependencies?.['expo-updates'],bundled['expo-updates']);
+test('no update script and no code that loads expo-updates', () => {
+  assert.ok(!existsSync(join(ROOT, 'PUSH_UPDATE.cmd')), 'PUSH_UPDATE.cmd is gone');
+  const offenders: string[] = [];
+  const walk = (dir: string) => {
+    for (const name of readdirSync(join(ROOT, dir))) {
+      const rel = `${dir}/${name}`;
+      if (statSync(join(ROOT, rel)).isDirectory()) walk(rel);
+      else if (/\.(tsx?|jsx?|mjs)$/.test(name) && !name.endsWith('.test.ts')) {
+        const src = read(rel);
+        if (src.includes(`'${UPDATES_PKG}'`) || src.includes(`"${UPDATES_PKG}"`) || src.includes('ExpoUpdates') || /\bUpdates\.\w+\(/.test(src)) offenders.push(rel);
+      }
+    }
+  };
+  for (const dir of ['app', 'src']) walk(dir);
+  assert.deepEqual(offenders, []);
 });
 
-test('eas.json channels equal their profile names', () => {
-  const eas = JSON.parse(read('eas.json')) as { build: Record<string, { channel?: string }> };
-  for (const name of ['development', 'preview', 'production']) {
-    assert.equal(eas.build[name]?.channel, name);
-  }
-  for (const [name, profile] of Object.entries(eas.build)) {
-    // A profile that extends another (production-native extends production) shares its update channel.
-    const base = (profile as { extends?: string }).extends;
-    assert.equal(profile.channel ?? (base ? eas.build[base]?.channel : undefined), base ?? name);
-  }
-});
-
-test('the updates adapter skips Expo Go and dev runs and loads expo-updates lazily', () => {
-  const src = read('src/native/updates.ts');
-  assert.match(src, /'storeClient'/);
-  assert.match(src, /__DEV__/);
-  // Package name built at runtime so guard.test.ts's import scan doesn't see it in this file.
-  const pkg = ['expo', 'updates'].join('-');
-  const lazy = `mod = require('${pkg}')`;
-  const at = src.indexOf(lazy);
-  assert.ok(at > 0, 'expo-updates is required lazily');
-  const tryAt = src.lastIndexOf('try {', at);
-  assert.ok(tryAt > 0 && !src.slice(tryAt, at).includes('}'), 'the require sits inside try');
-  assert.ok(src.slice(0, at).includes("!== 'storeClient'") || src.slice(0, at).includes('!isExpoGo()'), 'skipped in Expo Go');
-  assert.ok(!src.includes(`from '${pkg}'`), 'no top-level value import of expo-updates');
-});
-
-test('RELEASING.md explains setup, OTA vs new build, and rollback', () => {
+test('RELEASING.md says builds only, no over-the-air updates', () => {
   const doc = read('docs/RELEASING.md');
-  for (const s of ['eas init', 'eas update:configure', 'PUSH_UPDATE.cmd', 'update:republish','runtimeVersion']) {
-    assert.ok(doc.includes(s), `RELEASING.md mentions ${s}`);
-  }
+  assert.match(doc, /no over-the-air updates/i);
+  assert.ok(!doc.includes('PUSH_UPDATE.cmd'));
 });

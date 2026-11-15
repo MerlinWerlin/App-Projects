@@ -92,15 +92,6 @@ export const hi: NonNullable<LocaleMessages['settings']> = {
       packUpdates: 'पैक अपडेट',
     },
   },
-  updates: {
-    check: 'अपडेट देखें',
-    checking: 'अपडेट देखे जा रहे हैं…',
-    hint: 'Glaze के इस वर्ज़न के नए सुधार डाउनलोड करता है',
-    none: 'Glaze अप-टू-डेट है',
-    downloaded: 'अपडेट तैयार है। Glaze फिर से शुरू हो रहा है…',
-    unavailable: 'अपडेट TestFlight और App Store बिल्ड के साथ आते हैं',
-    error: 'अपडेट नहीं देखे जा सके। बाद में फिर कोशिश करें।',
-  },
   explainer: {
     addedTitle: 'आइकन जोड़े जाते हैं, बदले नहीं जाते',
     addedBody: 'iOS किसी भी ऐप को दूसरे ऐप का आइकन बदलने नहीं देता। इसलिए Glaze आपके नए लुक के साथ होम स्क्रीन शॉर्टकट जोड़ता है। किसी पर टैप करने से असली ऐप खुलता है।',

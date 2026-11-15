@@ -76,7 +76,7 @@ function oneLine(x: unknown): string {
 export type CatalogStampInput = {
   appVersion?: string | null;
   build?: string | number | null;
-  /** The running JS bundle (expo-updates updateId), so a new build or an over-the-air update counts as new. */
+  /** Optional bundle id. Unused since 1.0.42 (no over-the-air updates); kept so older stamps still compare. */
   updateId?: string | null;
   baseUrl?: string | null;
 };

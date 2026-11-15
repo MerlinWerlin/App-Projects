@@ -19,6 +19,10 @@ copy may say: it saves your clip to Photos as a Live Photo that moves when you p
 moves on the Lock Screen, when the phone wakes, or that it is a "live wallpaper" on iPhone. Android's looping live
 wallpaper is real and may be described on Google Play.
 
+**Current listing (1.0.42):** the App Store Connect copy for the first review is in `store/LISTING.md`; the yearly
+subscription's App Store Connect fields and the review notes are in `store/SUBSCRIPTION.md`. This page keeps the
+listing rules, counts and screenshot plan.
+
 **No pets, no Live Activities (T198, 1 Nov 2026):** never mention or show them in the listing, keywords or What's New.
 Tabs are Themes · Widgets · Icons · Wallpapers.
 
@@ -98,7 +102,7 @@ Policy link in the description, so the "GLAZE PLUS" paragraph states them. If th
 | Primary category | **Lifestyle** |
 | Secondary category | Utilities |
 | Age rating | 4+ (answers in `docs/RELEASE_CHECKLIST.md` §5) |
-| Price | Free download; Glaze Plus yearly subscription (about A$2.99 a year, no trial) |
+| Price | Free download; Glaze Plus yearly auto-renewable subscription (about A$2.99 a year, no trial; `store/SUBSCRIPTION.md`) |
 
 **Why Lifestyle:** people choose a Home Screen "look" the way they choose decor or fashion; that is a lifestyle
 purchase, and the pitch (themes first, widgets and icons that match) is about taste, not a tool. Utilities is crowded
@@ -129,8 +133,10 @@ smaller iPhone.
 - **Theme count:** "Over 140" = 141 themes in the live catalogue on Cloudflare R2 (15 Nov 2026) + 3 bundled. Recount
   before upload; if it ever drops to 140 or fewer, change the promotional text, description and shot 6.
 - **Free themes:** "10 free" = `FREE_THEME_IDS` in `src/core/freeThemes.ts` (1.0.41).
-- **No price on the captions** (the store localises it). The Plus sheet in shot 8 shows the app's fallback A$2.99,
-  which is the Australian price.
+- **No price on the captions** (the store localises it). The Plus sheet in shot 8 was captured on 1.0.41, which showed
+  the app's fallback A$2.99 (the Australian price). From 1.0.42 the sheet shows only StoreKit's localised price, so a
+  re-capture needs StoreKit to return the product (a StoreKit configuration or sandbox), or the sheet shows
+  "Couldn't load the price · Try again" instead.
 - **Icons:** generic app labels and Glaze's own glyphs, never brand logos. The phone frame is a plain rounded rectangle.
 - The older sets (`assets/store/` 1290 x 2796, and the T267 HTML compositions) are out of date: do not upload them.
 

@@ -92,15 +92,6 @@ export const fr: NonNullable<LocaleMessages['settings']> = {
       packUpdates: 'mises à jour des packs',
     },
   },
-  updates: {
-    check: 'Rechercher des mises à jour',
-    checking: 'Recherche de mises à jour…',
-    hint: 'Télécharge les derniers correctifs pour cette version de Glaze',
-    none: 'Glaze est à jour',
-    downloaded: 'Mise à jour prête. Redémarrage de Glaze…',
-    unavailable: 'Les mises à jour arrivent avec les versions TestFlight et App Store',
-    error: 'Impossible de rechercher des mises à jour. Réessayez plus tard.',
-  },
   explainer: {
     addedTitle: 'Les icônes sont ajoutées, pas remplacées',
     addedBody: 'iOS ne permet à aucune app de changer l’icône d’une autre. Glaze ajoute donc des raccourcis à l’écran d’accueil avec votre nouveau style. En touchant l’un d’eux, la vraie app s’ouvre.',

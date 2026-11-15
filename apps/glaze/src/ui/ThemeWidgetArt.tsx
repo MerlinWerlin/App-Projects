@@ -240,7 +240,7 @@ function ThemeDecorativeArt({ theme, size, width, style, onLibraryChange }: Prop
         crop: seamlessCrop({ device: seamlessDeviceHere(), wallpaper: wallpaperPx, size: home, slot: normaliseSlot(home, null), nudge: { dx: 0, dy: 0 } }).cropPx,
       }
     : null;
-  const pickedNm = optionName(pickedItem.option, options.map((o) => o.option));
+  const pickedNm = optionName(pickedItem.option, options.map((o) => o.option), theme.name);
   const pickedName = 'text' in pickedNm ? pickedNm.text : (t as unknown as (k: string, p?: Record<string, unknown>) => string)(pickedNm.key, pickedNm.params);
   // T237: a piece the widget makes live needs no separate Studio widget.
   const liveOnArt = pickedItem.option.liveArt === true;
@@ -321,6 +321,7 @@ function ThemeDecorativeArt({ theme, size, width, style, onLibraryChange }: Prop
       themeInk={theme.palette.ink}
       wallpaper={menuWallpaper}
       themeId={theme.id}
+      themeName={theme.name}
       artTransparent={!remoteTheme}
       selectedId={pickedItem.option.id}
       onSelect={onSelect}

@@ -7,6 +7,8 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
+**15 November 2026 first App Store review: `1.0.42`.** No over-the-air updates (expo-updates, `updates` and `runtimeVersion` removed, Guideline 5.6); the paywall shows StoreKit's price only and keeps Subscribe disabled until the product loads ("Couldn't load the price · Try again"); app and widget privacy manifests; no camera / microphone strings; Startup and Widget diagnostics rows only in development; the theme's own hero widget art is named after the theme (no "Art n"); review notes in `store/SUBSCRIPTION.md`. `RELEASE.json` is bumped separately, after the owner's purchase test in build 90.
+
 **15 November 2026 Glaze Plus yearly subscription: `1.0.41`.** Owner 2026-11-15 ("$3 a year ... no free trial, the 10 free ones are the free trial ... the first tab they open should be the free ones ... after you buy, the free tab disappears"; Alpine Starlight and Cloud Atelier featured; every free theme tagged "Premium · Free"). Product `com.jared797.glaze.yearly` (1 year, group "Glaze", A$2.99 base, no introductory offer): set up from `store/SUBSCRIPTION.md` before the build is submitted. Legacy `com.jared797.glaze.plus` still honoured, never sold. StoreKit module: an entitlement counts only while not revoked and not expired; the app checks both ids, StoreKit wins, and a cached yes is trusted for 7 days offline only when StoreKit can't be asked. Free set `src/core/freeThemes.ts`: the 9 bundled starter packs (Cloud Atelier added, +0.76 MB, 11.32 MB in all) + Deep Sea (in-app), so all 10 work offline; Starry Night left the free set (its flat copper moon clashes with its painterly pieces). Every other gallery theme is `plus`. Gated: Use this theme, the wallpaper / icons steps of a premium theme, premium pack downloads, Add to Custom with premium artwork. Not gated: browsing / previewing, a theme already in use (lapse keeps it), own photos in Custom 1-5, the install screen and make-your-own icons (owner free paths). Themes tab: Free section first (featured rail, then the rest), "Premium · Free" tags; Plus badges on the rest; both disappear once subscribed. Paywall: price a year from StoreKit, three benefits, renewal / cancel text, Restore, Terms of Use (Apple EULA) and Privacy Policy links. Owner check (sandbox): subscribe from a premium theme, see the Free section and badges go; cancel, wait for the hourly sandbox renewal, and the applied theme stays while a new premium theme opens the sheet.
 
 **15 November 2026 artwork distinctness: `1.0.40`.** Deep Sea, Starry Night and Sunset Dunes each retain their original artwork and add four transparent 1024-square WebPs. The shared bundled artwork list drives previews and native composition. Companion R2 replacements preserve all original files and change only the listed old options' kind; pack publication remains manual and requires Jared's OK. The separate Widgets tab work is PR313 / 1.0.39.
@@ -86,8 +88,7 @@ from the cloud. No store submission is made from the cloud.
     match the train of the build you attach, and a train can't go backwards once Apple approves something, so "1.0.0"
     would mean a fresh upload under a lower number for no gain. Keeping 1.0.1 lets you submit a build you already
     tested.
-  - `runtimeVersion.policy` is `appVersion`, so the App Store build and the TestFlight builds share runtime `1.0.1`
-    and the same over-the-air fixes reach both. A 1.0.0 build would split them.
+  - (1.0.42: Glaze no longer has over-the-air updates or a `runtimeVersion`; every change ships as a new build.)
   - Build numbers: `eas.json` uses `appVersionSource: remote` with `autoIncrement`, so EAS gives every build the next
     number (21, 22, …); `ios.buildNumber` "1" in `app.json` is ignored. Nothing to change.
   - Next release: raise `expo.version` to `1.0.2` (or `1.1.0` for a feature release). That also starts a new
@@ -165,7 +166,7 @@ Options for the owner:
       no background audio; risk table for 5.5 / 4.x / 2.x / 3.1.1 with the `src/config/install.ts` switch as mitigation
 - [x] Review notes answer Apple's new-developer questions (purpose/audience, no login, no external services, no regional
       differences, no regulated material) — `docs/REVIEW_NOTES.md` "App Review information" (T141)
-- [x] EAS Update check (T174, run 192): expo-updates sends a random per-install client ID (Expo docs: "not derived from any hardware or account identifier", pseudonymous) to `u.expo.dev` only to pick the right update; no tracking, no ads, nothing linked to the person. "Data Not Collected" is the intended answer; the cautious alternative, if Apple ever queries it, is Identifiers > Device ID · App Functionality · Not linked · Not tracking. Privacy page and REVIEW_NOTES item 4 now say this
+- [x] ~~EAS Update check (T174, run 192)~~ obsolete from 1.0.42 (expo-updates removed, Guideline 5.6). Was: expo-updates sent a random per-install client ID (Expo docs: "not derived from any hardware or account identifier", pseudonymous) to `u.expo.dev` only to pick the right update; no tracking, no ads, nothing linked to the person. "Data Not Collected" is the intended answer; the cautious alternative, if Apple ever queries it, is Identifiers > Device ID · App Functionality · Not linked · Not tracking. Privacy page and REVIEW_NOTES item 4 now say this
 - [x] Paid Apps Agreement, bank and tax active (account, 23 Oct)
 - [ ] Owner: paste the listing fields from `docs/STORE.md` into the 1.0.1 version page (en-AU), set the category to
       Lifestyle / Utilities, price Free
@@ -183,7 +184,6 @@ Answer in App Store Connect > Apps > Glaze > App Privacy > Get Started: **"No, w
 | Network call | What is sent | Why it is not "collection" |
 |---|---|---|
 | Theme packs from GitHub Releases | Plain file requests (catalogue, manifests, PNGs) | No identifier or personal data; GitHub sees an IP like any download. Files SHA-256 checked |
-| Expo updates (`u.expo.dev`) | App version, runtime, channel, a random per-install client ID | Not derived from device or account, not linked to a person, not used for tracking (Expo docs) |
 | App Store category lookup (`itunes.apple.com`, owner-1101f T231) | Only the name of an app Glaze doesn't recognise + store country code | No identifier; public search; answer cached on the phone |
 | Older Space themes (`cdn.esawebb.org`) | One image request, only if such a theme is opened | No identifier; not in the gallery since T177 |
 | StoreKit (Apple) | Purchase and restore, handled by Apple | Apple's data, not the developer's |

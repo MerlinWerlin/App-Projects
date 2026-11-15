@@ -219,3 +219,18 @@ test('T210: the sheet shows the removal steps as one numbered sequence on a soft
   assert.match(s, /stepDot: \{[^}]*borderRadius: circleRadius\(sizeV2\.rowIcon\)/);
   assert.doesNotMatch(s, /hairlineWidth|borderTopWidth/, 'no ruled lines in Settings');
 });
+
+test('1.0.42: no price on the Plus sheet until StoreKit has loaded it (no fallback text)', () => {
+  const sheet = strip(read(...SHEET));
+  // The price line, the Subscribe label and the renewal terms only render with StoreKit's price.
+  assert.match(sheet, /price !== null \? t\('plus\.lock\.price', \{ price \}\) : t\('plus\.lock\.cancelAnytime'\)/);
+  assert.match(sheet, /\{price !== null \? \(\s*<Text[\s\S]*?t\('plus\.lock\.renewal', \{ price \}\)/);
+  assert.match(sheet, /priceState === 'loading'/);
+  assert.doesNotMatch(sheet, /A\$|PLUS_PRICE/);
+  for (const loc of LOCALES) {
+    const src = read('src', 'i18n', 'ns', 'plus', `${loc}.ts`);
+    for (const k of ['subscribe', 'cancelAnytime', 'priceLoading', 'priceFailed', 'priceRetry']) {
+      assert.match(src, new RegExp(`^ +${k}: '`, 'm'), `${loc}: plus.lock.${k}`);
+    }
+  }
+});
