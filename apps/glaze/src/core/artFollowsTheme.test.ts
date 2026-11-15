@@ -37,3 +37,34 @@ test('Preparing clears itself: the sync ends it, and a safety timer if no sync e
   assert.match(art, /if \(syncStatus\.syncing === themeId\) setSyncStatus\(null, true\);\s*\}, 60_000\);/);
   assert.match(read('src', 'ui', 'WidgetArtLibraryList.tsx'), /const preparing = stale \|\| \(sync\.syncing !== null && list\.length < ARTWORK_SLOT_COUNT\);/);
 });
+
+// 1.0.39 (owner 2026-11-15): each artwork in My widget art has Save to Photos and Add to Custom 1-5,
+// and the theme page / chooser say every theme comes with its own five artworks.
+test('artwork menu: Save to Photos (add-only) and Add to Custom 1-5, confirming before a replace', () => {
+  const actions = read('src', 'ui', 'artworkActions.ts');
+  assert.match(actions, /const options = \[t\('ui\.seamless\.library\.savePhotos'\), \.\.\.custom, t\('ui\.seamless\.library\.cancel'\)\];/);
+  assert.match(actions, /await saveFileToPhotos\(uri\)/);
+  assert.match(actions, /if \(now\?\.\[slot - 1\]\) \{\s*Alert\.alert\(t\('ui\.seamless\.library\.replaceTitle'/);
+  assert.match(actions, /const ok = await customArt\.set\(slot, uri\);/);
+  const list = read('src', 'ui', 'WidgetArtLibraryList.tsx');
+  assert.match(list, /accessibilityActions=\{dir \? \[\{ name: 'more', label: t\('ui\.seamless\.library\.actions', \{ n \}\) \}\] : undefined\}/);
+  assert.match(list, /onPress=\{\(\) => openArtworkActions|onPress=\{\(\) => openActions\(n, `\$\{base\}\$\{p\.file\}`\)\}/);
+  assert.match(read('src', 'native', 'customArt.ts'), /if \(ok\) emitChanged\(\);/);
+  assert.match(read('src', 'ui', 'CustomArtSlots.tsx'), /customArt\.subscribe\(/);
+});
+
+test('the five-artworks note is on the theme page and in the theme chooser', () => {
+  const page = read('app', 'theme', '[id].tsx');
+  assert.match(page, /\{overview \|\| step === 'widgets' \? <ArtworkNote style=\{styles\.artworkNote\} \/> : null\}/);
+  const sheet = page.slice(page.indexOf('<Sheet visible={themeChoiceOpen}'));
+  assert.ok(sheet.indexOf('<ArtworkNote />') > 0 && sheet.indexOf('<ArtworkNote />') < sheet.indexOf('</Sheet>'));
+  const en = read('src', 'i18n', 'ns', 'theme', 'en.ts');
+  assert.match(en, /artNoteTitle: 'Every theme comes with its own 5 widget artworks'/);
+  assert.match(en, /artNoteBody: 'Like a piece from another theme\? Add it to one of your Custom widgets\.'/);
+});
+
+test('the Home Screen widget never repeats a piece: past the count it draws the theme design', () => {
+  const swift = read('targets', 'widget', 'ThemeArtWidgets.swift');
+  assert.match(swift, /guard slot >= 1, slot <= list\.count else \{ return nil \}/);
+  assert.match(swift, /ThemedFallbackArt\(theme: entry\.theme, variant: entry\.sample\)/);
+});

@@ -51,6 +51,8 @@ export function CustomArtSlots({ onWatchHow, style }: Props) {
   useEffect(() => {
     load().catch(() => undefined);
   }, [load]);
+  // 1.0.39: a theme artwork added from My widget art ("Add to Custom n") shows here at once.
+  useEffect(() => customArt.subscribe(() => void load().catch(() => undefined)), [load]);
 
   const choose = useCallback(
     async (n: number) => {

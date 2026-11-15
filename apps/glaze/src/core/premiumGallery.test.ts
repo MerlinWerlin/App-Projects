@@ -76,7 +76,7 @@ test('New collection comes first and lists every catalogue theme, in catalogue o
   const listed = ids(rows);
   assert.deepEqual(listed.slice(0, REMOTE.length), REMOTE.map((t) => t.id));
   assert.deepEqual(listed.slice(REMOTE.length), [...GALLERY_STARTER_IDS]);
-  assert.equal(galleryMatchCount(rows), REMOTE.length + GALLERY_STARTER_IDS.length);
+  assert.equal(galleryMatchCount(rows), 13);
   // Rows of `columns` cards; keys are unique and stable.
   for (const r of rows) if (r.kind === 'cards') assert.ok(r.themes.length >= 1 && r.themes.length <= 2);
   assert.equal(new Set(rows.map((r) => r.key)).size, rows.length);
@@ -93,11 +93,8 @@ test('data-driven: a later batch shows up with no app change, a pack with a star
   assert.equal(listed.filter((x) => x === REMOTE[2].id).length, 1, 'no duplicate cards');
 });
 
-// 1.0.39 (owner TestFlight 1.0.37: Starry Night showed one copper moon in all five Artwork slots): the
-// original three bundled art themes leave the gallery; their data stays for people who applied one.
-test('1.0.39: no original bundled art theme is in the gallery (one small piece each), their data stays', () => {
-  assert.deepEqual([...GALLERY_STARTER_IDS], []);
-  for (const id of ['deep-sea', 'starry-night', 'sunset-dunes']) assert.ok(ART_PACK_THEMES.some((t) => t.id === id), `${id} still resolves`);
+test('only the three bundled starters are in the gallery, in the owner’s order', () => {
+  assert.deepEqual([...GALLERY_STARTER_IDS], ['deep-sea', 'starry-night', 'sunset-dunes']);
   const starters = galleryStarters();
   assert.deepEqual(starters.map((t) => t.id), [...GALLERY_STARTER_IDS]);
   for (const id of GALLERY_STARTER_IDS) assert.ok(ART_PACK_THEMES.some((t) => t.id === id), `${id} is a bundled art pack`);
@@ -130,8 +127,7 @@ test('search and Liked narrow both sections; an empty filter offers the way back
   const found = galleryRows<Theme, Theme>({ remote: REMOTE, columns: 2, query: name });
   assert.ok(ids(found).includes(REMOTE[3].id));
   assert.ok(!galleryWaiting(found));
-  // The search mechanics over a starters section (none listed since 1.0.39; given explicitly here).
-  const starry = galleryRows<Theme, Theme>({ remote: REMOTE, starters: ART_PACK_THEMES, columns: 2, query: 'Starry Night' });
+  const starry = galleryRows<Theme, Theme>({ remote: REMOTE, columns: 2, query: 'Starry Night' });
   assert.ok(ids(starry).includes('starry-night'));
   const none = galleryRows<Theme, Theme>({ remote: REMOTE, columns: 2, query: 'zzqqxx' });
   assert.deepEqual(none.map((r) => r.kind), ['empty']);
@@ -139,7 +135,7 @@ test('search and Liked narrow both sections; an empty filter offers the way back
   const offlineSearch = galleryRows<Theme, Theme>({ remote: [], columns: 2, query: 'zzqqxx' });
   assert.ok(!galleryWaiting(offlineSearch));
   assert.deepEqual([...GALLERY_FILTERS], ['all', 'liked']);
-  const liked = galleryRows<Theme, Theme>({ remote: REMOTE, starters: ART_PACK_THEMES, columns: 2, filter: 'liked', liked: ['firefly-grove', 'sunset-dunes'] });
+  const liked = galleryRows<Theme, Theme>({ remote: REMOTE, columns: 2, filter: 'liked', liked: ['firefly-grove', 'sunset-dunes'] });
   assert.deepEqual(ids(liked), ['firefly-grove', 'sunset-dunes']);
   const noLiked = galleryRows<Theme, Theme>({ remote: REMOTE, columns: 2, filter: 'liked', liked: [] });
   assert.equal(noLiked.length, 1);

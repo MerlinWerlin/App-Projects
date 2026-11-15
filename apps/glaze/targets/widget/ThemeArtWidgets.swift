@@ -33,12 +33,14 @@ enum ThemeArtSlots {
     return (art.isEmpty ? small : art).map { $0.id }
   }
 
-  /// The piece Artwork `slot` (1-based) shows when nothing is chosen in Edit Widget: cycles
-  /// through the theme's pieces, nil only when the theme has none at all.
+  /// The piece Artwork `slot` (1-based) shows when nothing is chosen in Edit Widget: the theme's
+  /// slot-th piece, or nil past the theme's count. 1.0.39 (owner TestFlight 1.0.37: one copper moon in
+  /// all five Starry Night slots): nil draws the calm theme-coloured scene (ThemedFallbackArt), so a
+  /// theme with fewer pieces never shows the same image twice.
   static func piece(slot: Int, family: WidgetFamily) -> String? {
     let list = pieces(family: family)
-    guard slot >= 1, !list.isEmpty else { return nil }
-    return list[(slot - 1) % list.count]
+    guard slot >= 1, slot <= list.count else { return nil }
+    return list[slot - 1]
   }
 }
 

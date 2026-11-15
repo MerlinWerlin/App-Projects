@@ -104,6 +104,8 @@ export const en = {
     doneA11y: '{name} is now your theme in every tab',
     error: 'Couldn’t switch to this theme. Please try again.',
     useEverything: "Use everything",
+    artNoteTitle: 'Every theme comes with its own 5 widget artworks',
+    artNoteBody: 'Like a piece from another theme? Add it to one of your Custom widgets.',
     viewIcons: "View icons with this theme",
     viewWidgets: "View widgets with this theme",
     addWallpaper: "Add the wallpaper",

@@ -65,6 +65,7 @@ import { IconCanvas } from '../../src/render/IconCanvas';
 import { usePackTheme } from '../../src/render/usePackTheme';
 import { useToast } from '../../src/ui/Toast';
 import { Sheet } from '../../src/ui/Sheet';
+import { ArtworkNote } from '../../src/ui/ArtworkNote';
 import { tickStoredChecklist } from '../../src/store/applyChecklist';
 import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
 import { iconsAfterUseEverything } from '../../src/core/iconsIntro';
@@ -1072,6 +1073,8 @@ function ThemeDetail({
             pieces (habits, countdown, calendar, clock, battery… with Make it live), (b) its art
             pieces (any piece in any size, fitted), then (c) the standard widgets in its palette.
             The overview keeps only (c) as a teaser; the Widgets card opens this screen. */}
+        {/* 1.0.39 (owner 2026-11-15): the five-artworks note on the theme page (overview and Widgets). */}
+        {overview || step === 'widgets' ? <ArtworkNote style={styles.artworkNote} /> : null}
         {step === 'widgets' ? <ThemeWidgetsShelf theme={theme} /> : null}
         {/* 1.0.34 (owner 2026-11-14: "theres an option to go like top right middle right bottom right etc and then
             save the widget to the home screen - i dont believe we can do this so remove it"): the Seamless card (size,
@@ -1208,6 +1211,8 @@ function ThemeDetail({
       {widgetsHow.sheet}
       <Sheet visible={themeChoiceOpen} onClose={() => setThemeChoiceOpen(false)} title={theme.name}>
         <View style={styles.themeChoices}>
+          {/* 1.0.39 (owner 2026-11-15): every theme has its own five artworks; others go on Custom widgets. */}
+          <ArtworkNote />
           <PillButton label={t('theme.use.viewWidgets')} block variant="plain" onPress={() => {
             setThemeChoiceOpen(false);
             ensureSelected();
@@ -1665,6 +1670,7 @@ const styles = StyleSheet.create({
   missingText: { textAlign: 'center' },
   side: { marginHorizontal: spaceV2.lg },
   themeChoices: { gap: spaceV2.sm },
+  artworkNote: { paddingHorizontal: spaceV2.inset, marginTop: spaceV2.lg },
   shelf: { gap: spaceV2.lg, paddingTop: spaceV2.lg },
   headWrap: {
     paddingHorizontal: spaceV2.inset,

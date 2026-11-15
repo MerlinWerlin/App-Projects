@@ -104,6 +104,8 @@ export const fr: NonNullable<LocaleMessages['theme']> = {
     doneA11y: '{name} est maintenant votre thème dans chaque onglet',
     error: 'Impossible de passer à ce thème. Réessayez.',
     useEverything: "Tout utiliser",
+    artNoteTitle: 'Chaque thème a ses 5 illustrations de widget',
+    artNoteBody: 'Une pièce d’un autre thème vous plaît ? Ajoutez-la à l’un de vos widgets Perso.',
     viewIcons: "Voir les icônes avec ce thème",
     viewWidgets: "Voir les widgets avec ce thème",
     addWallpaper: "Ajouter le fond d’écran",

@@ -104,6 +104,8 @@ export const ar: NonNullable<LocaleMessages['theme']> = {
     doneA11y: 'أصبحت {name} سمتك في كل علامة تبويب',
     error: 'تعذّر التبديل إلى هذه السمة. حاول مرة أخرى.',
     useEverything: "استخدام الكل",
+    artNoteTitle: 'كل سمة تأتي مع 5 أعمال فنية خاصة بها للأدوات',
+    artNoteBody: 'أعجبتك قطعة من سمة أخرى؟ أضفها إلى إحدى أدواتك المخصصة.',
     viewIcons: "عرض الأيقونات بهذا المظهر",
     viewWidgets: "عرض الأدوات بهذا المظهر",
     addWallpaper: "إضافة الخلفية",

@@ -4,7 +4,7 @@
 //      data-driven, so a later batch of packs shows up with no app change. While the catalogue is
 //      still empty (first launch, offline, a 404) the section shows calm skeleton cards in the
 //      final shape, never an error.
-//   2. "Starters": the bundled art-pack themes in GALLERY_STARTER_IDS (none since 1.0.39; see there).
+//   2. "Starters": exactly the three bundled art-pack themes (GALLERY_STARTER_IDS).
 // The older built-in sets (the starter showcase, themesNew / themesStoryPlay lists, Space, the Plus
 // packs) leave the gallery only: their data modules stay, so getAnyTheme() still resolves a theme a
 // person already applied (theme page, widgets, saved state).
@@ -16,14 +16,8 @@ import type { ArtPackTheme } from './artPack.ts';
 import { searchThemes } from './categories.ts';
 import type { Theme } from './themes.ts';
 
-/**
- * The bundled art-pack themes the gallery keeps, in display order. 1.0.39 (owner TestFlight 1.0.37: Starry
- * Night showed the same copper moon in all five Artwork slots): the original three (Deep Sea, Starry Night,
- * Sunset Dunes) have one small piece each, so they leave the gallery for launch. Their data stays, so a
- * person who already applied one keeps it working; the eight bundled starter packs (1.0.38) list in the
- * collection instead. A theme listed here must fill Artwork 1-5 with five different pieces (test).
- */
-export const GALLERY_STARTER_IDS: readonly string[] = Object.freeze([] as string[]);
+/** The bundled themes the gallery keeps, in display order (owner-1031: Deep Sea, Starry Night, Sunset Dunes). */
+export const GALLERY_STARTER_IDS: readonly string[] = Object.freeze(['deep-sea', 'starry-night', 'sunset-dunes']);
 
 /** Gallery sections, top to bottom. */
 export const GALLERY_SECTIONS = Object.freeze(['collection', 'starters'] as const);

@@ -29,12 +29,13 @@ export function plannedArtworkOptionIds(themeId: string, options: readonly Widge
 export type SlotSource = { slot: number; piece: string | null; source: 'artwork' | 'repeat' | 'fallback' };
 
 /**
- * What Artwork 1..count shows: the n-th piece, a repeat when the theme has fewer, and the theme-coloured
- * fallback scene (ThemedFallbackArt, never a grey tile) when it has none at all.
+ * What Artwork 1..count shows: the n-th piece, else the theme-coloured fallback scene (ThemedFallbackArt,
+ * never a grey tile). 1.0.39 (owner TestFlight 1.0.37: Starry Night showed one copper moon in all five
+ * slots): a theme with fewer pieces shows each piece ONCE and the calm theme design in the rest, never
+ * the same image twice ('repeat' is kept in the type for older callers and is never returned).
  */
 export function artworkSlotSources(list: readonly string[], count: number = ARTWORK_SLOTS): SlotSource[] {
-  return Array.from({ length: count }, (_, i) => {
-    if (list.length === 0) return { slot: i + 1, piece: null, source: 'fallback' as const };
-    return { slot: i + 1, piece: list[i % list.length], source: i < list.length ? ('artwork' as const) : ('repeat' as const) };
-  });
+  return Array.from({ length: count }, (_, i) =>
+    i < list.length ? { slot: i + 1, piece: list[i], source: 'artwork' as const } : { slot: i + 1, piece: null, source: 'fallback' as const },
+  );
 }

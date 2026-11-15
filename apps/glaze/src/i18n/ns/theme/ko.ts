@@ -104,6 +104,8 @@ export const ko: NonNullable<LocaleMessages['theme']> = {
     doneA11y: '이제 {name} 테마가 모든 탭에 적용됩니다',
     error: '이 테마로 바꾸지 못했습니다. 다시 시도해 주세요.',
     useEverything: "모두 사용",
+    artNoteTitle: '모든 테마에 전용 위젯 아트워크 5개',
+    artNoteBody: '다른 테마의 작품이 마음에 드나요? 사용자 위젯에 추가하세요.',
     viewIcons: "이 테마의 아이콘 보기",
     viewWidgets: "이 테마의 위젯 보기",
     addWallpaper: "배경화면 추가",

@@ -25,7 +25,27 @@ function bridge(): CustomArtBridge | null {
   }
 }
 
+// 1.0.39: My widget art can put a theme artwork into a Custom slot; the Your artwork section listens
+// so it shows the new picture without a reload.
+const changed = new Set<() => void>();
+function emitChanged(): void {
+  for (const l of [...changed]) {
+    try {
+      l();
+    } catch {
+      // A listener never breaks a slot change.
+    }
+  }
+}
+
 export const customArt = {
+  /** Called after any slot changes (set or clear). Returns the unsubscribe function. */
+  subscribe(listener: () => void): () => void {
+    changed.add(listener);
+    return () => {
+      changed.delete(listener);
+    };
+  },
   /** The five slots, or null without the native bridge. */
   async list(): Promise<CustomArtList | null> {
     const mod = bridge();
@@ -41,7 +61,9 @@ export const customArt = {
     const mod = bridge();
     if (!mod?.setCustomArt || !isCustomArtSlot(slot) || !uri) return false;
     try {
-      return (await mod.setCustomArt(slot, uri)) === true;
+      const ok = (await mod.setCustomArt(slot, uri)) === true;
+      if (ok) emitChanged();
+      return ok;
     } catch {
       return false;
     }
@@ -50,7 +72,9 @@ export const customArt = {
     const mod = bridge();
     if (!mod?.clearCustomArt || !isCustomArtSlot(slot)) return false;
     try {
-      return (await mod.clearCustomArt(slot)) === true;
+      const ok = (await mod.clearCustomArt(slot)) === true;
+      if (ok) emitChanged();
+      return ok;
     } catch {
       return false;
     }

@@ -30,8 +30,9 @@ the bottom of their section with the date and who asked; move an item to "Done" 
 
 - **Patchwork theme: rocket pieces not distinct enough; refresh art** (owner TestFlight 1.0.37, 15 Nov 2026). The five
   pieces pass the SHA-256 check but two rocket pieces read as near-duplicates on the phone; give it new, clearly different art.
-- **Bring back the original art themes** (Deep Sea, Starry Night, Sunset Dunes) once each has five distinct small artworks.
-  They left the gallery in 1.0.39 with one piece each (their data stays; add the ids back to `GALLERY_STARTER_IDS`).
+- **New art for themes with fewer than five distinct pieces** (owner 2026-11-15): Deep Sea, Starry Night and Sunset Dunes
+  need 4 new pieces each, and 21 R2 themes need a replacement for a duplicate-looking or mostly empty "hero-small" piece
+  (prompt written by the master session). Until then each piece shows once and the other slots show the theme design (1.0.39).
 
 ## Icons
 - **Icon install screen "More options".** 1.0.35 opens a theme's flow on two choices (Icons / Widgets). Inside the install,

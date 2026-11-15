@@ -104,6 +104,8 @@ export const ja: NonNullable<LocaleMessages['theme']> = {
     doneA11y: '{name}がすべてのタブのテーマになりました',
     error: 'このテーマに切り替えられませんでした。もう一度お試しください。',
     useEverything: "すべて使う",
+    artNoteTitle: 'どのテーマにも専用のウィジェットアートが 5 点',
+    artNoteBody: '他のテーマの作品が気に入ったら、カスタムウィジェットに追加できます。',
     viewIcons: "このテーマのアイコンを見る",
     viewWidgets: "このテーマのウィジェットを見る",
     addWallpaper: "壁紙を追加",

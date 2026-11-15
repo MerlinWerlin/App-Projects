@@ -104,6 +104,8 @@ export const ptBR: NonNullable<LocaleMessages['theme']> = {
     doneA11y: '{name} agora é seu tema em todas as abas',
     error: 'Não foi possível mudar para este tema. Tente de novo.',
     useEverything: "Usar tudo",
+    artNoteTitle: 'Cada tema vem com 5 artes próprias para widgets',
+    artNoteBody: 'Gostou de uma peça de outro tema? Adicione a um dos seus widgets Personalizado.',
     viewIcons: "Ver ícones com este tema",
     viewWidgets: "Ver widgets com este tema",
     addWallpaper: "Adicionar o papel de parede",

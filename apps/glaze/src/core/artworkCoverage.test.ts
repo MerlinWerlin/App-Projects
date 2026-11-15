@@ -21,12 +21,17 @@ test('every published pack is checked and has at least one pure artwork', () => 
   }
 });
 
-test('Artwork 1-5 always resolve to a real piece for every pack (repeats only when a pack has fewer)', () => {
+// 1.0.39 (owner TestFlight 1.0.37: one copper moon in all five Starry Night slots): Artwork n is the
+// n-th piece, else the theme-coloured design; never a repeat.
+test('Artwork 1-5: each piece once, then the theme design; never the same piece twice', () => {
   for (const [id, t] of Object.entries(coverage.perTheme) as [string, { artwork: string[] }][]) {
     const slots = artworkSlotSources(t.artwork);
     assert.equal(slots.length, ARTWORK_SLOTS);
-    for (const s of slots) assert.ok(s.piece && s.source !== 'fallback', `${id} Artwork ${s.slot}`);
+    const shown = slots.filter((s) => s.piece).map((s) => s.piece);
+    assert.equal(new Set(shown).size, shown.length, `${id}: a piece twice`);
+    for (const s of slots) assert.equal(s.source, s.slot <= t.artwork.length ? 'artwork' : 'fallback', `${id} Artwork ${s.slot}`);
   }
+  assert.deepEqual(artworkSlotSources(['a', 'b']).map((s) => s.piece), ['a', 'b', null, null, null]);
 });
 
 test('a theme with no artwork (or a pack still downloading) gets the fallback scene, never a blank', () => {

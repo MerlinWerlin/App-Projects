@@ -1,6 +1,7 @@
 // Glaze 1.0.39 (owner TestFlight 1.0.37: Starry Night showed the same copper moon in all five Artwork
-// slots): no theme the gallery shows may put the same image in two Artwork slots. Artwork n is the
-// n-th planned piece, cycling (artworkSlotSources), so a theme needs five DIFFERENT pieces.
+// slots): no theme the gallery shows may put the same image in two Artwork slots. Artwork n is the n-th
+// planned piece, else the theme design (artworkSlotSources: no cycling). Packs must have five
+// different pieces; the three original bundled themes have one each until their new art lands.
 //  - bundled art themes in GALLERY_STARTER_IDS: their pieces as the art sync plans them;
 //  - bundled starter packs (1.0.38, src/generated/starterPacks.ts): from their manifests;
 //  - catalogue themes on R2: the snapshot scripts/packs/r2-artwork.json, written by
@@ -35,14 +36,16 @@ function bundledOptions(id: string): WidgetOption[] {
   return widgetOptionsFromV1(assets);
 }
 
-test('every bundled art theme the gallery lists fills Artwork 1-5 with five different images', () => {
+test('no bundled art theme the gallery lists shows the same image in two Artwork slots', () => {
   for (const id of GALLERY_STARTER_IDS) assert.deepEqual(repeats(slotImages(id, bundledOptions(id))), [], id);
 });
 
-test('the check bites: the retired original art themes would repeat a piece (why they left the gallery)', () => {
+test('themes with fewer pieces show each once and the theme design in the rest (owner 2026-11-15: keep every theme)', () => {
   for (const id of ['deep-sea', 'starry-night', 'sunset-dunes']) {
-    assert.ok(repeats(slotImages(id, bundledOptions(id))).length > 0, `${id} has fewer than ${ARTWORK_SLOTS} pieces`);
-    assert.ok(!GALLERY_STARTER_IDS.includes(id), `${id} is not in the gallery`);
+    assert.ok(GALLERY_STARTER_IDS.includes(id), `${id} stays in the gallery`);
+    const images = slotImages(id, bundledOptions(id));
+    assert.deepEqual(repeats(images), [], id);
+    assert.ok(images.some((x) => x.startsWith('fallback:')), `${id} has fewer than ${ARTWORK_SLOTS} pieces until its new art lands`);
   }
 });
 

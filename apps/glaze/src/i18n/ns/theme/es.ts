@@ -104,6 +104,8 @@ export const es: NonNullable<LocaleMessages['theme']> = {
     doneA11y: '{name} es ahora tu tema en todas las pestañas',
     error: 'No se pudo cambiar a este tema. Inténtalo de nuevo.',
     useEverything: "Usar todo",
+    artNoteTitle: 'Cada tema trae sus propias 5 obras para widgets',
+    artNoteBody: '¿Te gusta una pieza de otro tema? Añádela a uno de tus widgets Personal.',
     viewIcons: "Ver iconos con este tema",
     viewWidgets: "Ver widgets con este tema",
     addWallpaper: "Añadir el fondo de pantalla",

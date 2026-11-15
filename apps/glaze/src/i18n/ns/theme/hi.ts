@@ -104,6 +104,8 @@ export const hi: NonNullable<LocaleMessages['theme']> = {
     doneA11y: '{name} अब हर टैब में आपकी थीम है',
     error: 'इस थीम पर नहीं बदल सके। कृपया फिर से कोशिश करें।',
     useEverything: "सब कुछ इस्तेमाल करें",
+    artNoteTitle: 'हर थीम के साथ उसकी अपनी 5 विजेट कलाकृतियाँ',
+    artNoteBody: 'किसी और थीम की कलाकृति पसंद आई? उसे अपने किसी कस्टम विजेट में जोड़ें।',
     viewIcons: "इस थीम के आइकन देखें",
     viewWidgets: "इस थीम के विजेट देखें",
     addWallpaper: "वॉलपेपर जोड़ें",

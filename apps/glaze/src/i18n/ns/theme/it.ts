@@ -104,6 +104,8 @@ export const it: NonNullable<LocaleMessages['theme']> = {
     doneA11y: '{name} è ora il tuo tema in ogni scheda',
     error: 'Impossibile passare a questo tema. Riprova.',
     useEverything: "Usa tutto",
+    artNoteTitle: 'Ogni tema ha le sue 5 opere per i widget',
+    artNoteBody: 'Ti piace un pezzo di un altro tema? Aggiungilo a uno dei tuoi widget Personale.',
     viewIcons: "Vedi le icone con questo tema",
     viewWidgets: "Vedi i widget con questo tema",
     addWallpaper: "Aggiungi lo sfondo",

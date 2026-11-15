@@ -26,7 +26,10 @@ test('My widget art: Artwork 1-5 in order, a big number in the slot colour, no R
   // Owner 2026-11-13: "the numbers need to be larger and more clear and there needs to be no remove
   // options just the native art works to the theme".
   const list = readFileSync(join(process.cwd(), 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
-  assert.match(list, /Array\.from\(\{ length: ARTWORK_SLOT_COUNT \}, \(_, i\) => \(\{ n: i \+ 1, p: preparing \? \(list\[i\] \?\? null\) : list\[i % list\.length\] \}\)\)/);
+  // 1.0.39: each piece once; an empty slot is Preparing while the art is made, else the theme design.
+  assert.match(list, /Array\.from\(\{ length: ARTWORK_SLOT_COUNT \}, \(_, i\) => \(\{ n: i \+ 1, p: list\[i\] \?\? null \}\)\)/);
+  assert.doesNotMatch(list, /i % list\.length/);
+  assert.match(list, /if \(!p && !preparing\) \{/);
   assert.match(list, /number: \{ width: NUMBER, height: NUMBER/);
   assert.match(list, /const THUMB = 132;/);
   assert.match(list, /numberText: \{ \.\.\.textV2\.largeTitle, fontWeight: '800' \}/);
