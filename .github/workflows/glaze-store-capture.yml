@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   push:
     branches: ['claude/glaze-store-*']
-    paths: ['.github/workflows/glaze-store-capture.yml', 'apps/glaze/store/capture/**', 'apps/glaze/app/**', 'apps/glaze/src/**']
+    paths: ['.github/workflows/glaze-store-capture.yml', 'apps/glaze/store/capture/**', 'apps/glaze/app/**', 'apps/glaze/src/**', 'apps/glaze/modules/**']
 concurrency:
   group: glaze-store-capture-${{ github.ref }}
   cancel-in-progress: true
