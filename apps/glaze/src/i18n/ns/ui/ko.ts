@@ -175,6 +175,7 @@ export const ko: NonNullable<LocaleMessages['ui']> = {
       done: '완료',
       selectA11y: '{name} 선택',
       artworkA11y: '아트워크 {n}',
+      preparing: '테마 아트를 준비하는 중…',
       deleteSelected: '선택 항목 삭제',
       clearAll: '모두 지우기',
       clearTitle: '내 위젯 아트를 모두 지울까요?',

@@ -5,14 +5,18 @@
 // the piece and its name. No Remove / Manage, no other sizes, photos or older pieces. Reads the App
 // Group library through widgets.artLibrary(); shows nothing in Expo Go / Android / an older build.
 // The one-time clean-up of art from older versions / other themes still runs on the first load.
+// 1.0.37 (owner TestFlight 1.0.36): re-reads by itself when the active theme changes and after every
+// index write of the theme art sync; while the new theme's art is being made it shows placeholder rows,
+// never the previous theme's pieces.
 import { Image as ExpoImage } from 'expo-image';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { ARTWORK_SLOT_COUNT, artworkPieces, artworkSlotColour } from '../core/artworkSlots';
 import type { WidgetArtPiece } from '../core/widgetArtLibrary';
 import { useT } from '../i18n';
 import { widgets } from '../native/widgets';
-import { loadActiveThemeId } from '../store/activeTheme';
+import { loadActiveThemeId, useActiveThemeId } from '../store/activeTheme';
+import { getThemeArtSyncStatus, subscribeThemeArtSync, type ThemeArtSyncStatus } from '../store/themeWidgetArt';
 import { chromeRadiusV2, circleRadius, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { textStyleFor } from './i18nLayout';
@@ -36,8 +40,13 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
   const label = (role: TypeRoleV2) => [textV2[role], textStyleFor(script, textV2[role])];
   const [pieces, setPieces] = useState<WidgetArtPiece[] | null>(null);
   const [dir, setDir] = useState('');
-  const [activeThemeId, setActiveThemeId] = useState<string | null>(null);
+  const [storedThemeId, setStoredThemeId] = useState<string | null>(null);
   const [artwork, setArtwork] = useState<string[] | null>(null);
+  // 1.0.37: the theme in use (updates the moment a theme is applied) and the art sync's progress.
+  const liveThemeId = useActiveThemeId();
+  const activeThemeId = liveThemeId ?? storedThemeId;
+  const [sync, setSync] = useState<ThemeArtSyncStatus>(getThemeArtSyncStatus);
+  useEffect(() => subscribeThemeArtSync(setSync), []);
 
   // T264 (owner-1101i #2): no setState after unmount, and a failed bridge read hides the list
   // instead of rejecting unhandled.
@@ -61,7 +70,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
       const res = await widgets.artLibrary();
       const themeId = await loadActiveThemeId().catch(() => null);
       if (!alive.current) return;
-      setActiveThemeId(themeId);
+      setStoredThemeId(themeId);
       if (!res || !res.available || !res.ok || !Array.isArray(res.pieces)) {
         setPieces(null);
         return;
@@ -77,15 +86,24 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
 
   useEffect(() => {
     load().catch(() => undefined);
-  }, [load, refreshKey]);
+  }, [load, refreshKey, liveThemeId, sync.rev]);
 
   if (pieces === null) return null;
 
   const base = dir.endsWith('/') ? dir : `${dir}/`;
   // Artwork n = the theme's n-th small plain art piece, cycling (the same rule as the widget).
   // Owner 2026-11-13: the same ordered list the Home Screen widgets read (index.json `artwork`).
-  const list = artworkPieces(pieces, activeThemeId, artwork);
-  const rows = list.length ? Array.from({ length: ARTWORK_SLOT_COUNT }, (_, i) => ({ n: i + 1, p: list[i % list.length] })) : [];
+  const listed = artworkPieces(pieces, activeThemeId, artwork);
+  // 1.0.37: pieces of another theme (the index has not caught up with a theme change yet) are never shown.
+  const stale = !!activeThemeId && listed.some((p) => p.themeId !== activeThemeId);
+  const list = stale ? [] : listed;
+  // While the art is being made (or the index still lists the previous theme), unfilled slots are
+  // placeholders instead of repeating pieces; once it is done, Artwork n cycles as the widget does.
+  const preparing = stale || (sync.syncing !== null && list.length < ARTWORK_SLOT_COUNT);
+  const rows: { n: number; p: WidgetArtPiece | null }[] =
+    preparing || list.length
+      ? Array.from({ length: ARTWORK_SLOT_COUNT }, (_, i) => ({ n: i + 1, p: preparing ? (list[i] ?? null) : list[i % list.length] }))
+      : [];
 
   return (
     <View style={[styles.wrap, style]}>
@@ -99,6 +117,28 @@ export function WidgetArtLibraryList({ refreshKey = 0, style }: Props) {
       )}
       {rows.map(({ n, p }) => {
         const col = artworkSlotColour(n);
+        if (!p) {
+          return (
+            <View
+              key={n}
+              style={[styles.row, { borderColor: c.separator }]}
+              accessible
+              accessibilityLabel={t('ui.seamless.library.artworkA11y', { n })}
+              accessibilityValue={{ text: t('ui.seamless.library.preparing') }}
+              accessibilityState={{ busy: true }}
+            >
+              <View style={[styles.number, { backgroundColor: col.fill }]}>
+                <Text allowFontScaling={false} style={[styles.numberText, { color: col.ink }]}>{n}</Text>
+              </View>
+              <View style={[styles.thumb, styles.placeholder, { backgroundColor: c.fill }]}>
+                <ActivityIndicator color={c.inkSecondary} />
+              </View>
+              <Text numberOfLines={2} maxFontSizeMultiplier={fontScaleCap('body')} style={[...label('body'), styles.text, { color: c.inkSecondary }]}>
+                {t('ui.seamless.library.preparing')}
+              </Text>
+            </View>
+          );
+        }
         return (
           <View
             key={n}
@@ -136,5 +176,6 @@ const styles = StyleSheet.create({
   number: { width: NUMBER, height: NUMBER, borderRadius: circleRadius(NUMBER), alignItems: 'center', justifyContent: 'center' },
   numberText: { ...textV2.largeTitle, fontWeight: '800' },
   thumb: { width: THUMB, height: THUMB, borderRadius: chromeRadiusV2.control },
+  placeholder: { alignItems: 'center', justifyContent: 'center' },
   text: { flex: 1 },
 });

@@ -150,8 +150,26 @@ const etagOf = (h) => String(h.etag ?? '').replace(/"/g, '').toLowerCase();
 
 // ------------------------------------------------------------------ publish
 
+/** Run `fn` over `items` with at most `n` in flight; the first error stops new work and is thrown. */
+export async function pool(items, n, fn) {
+  let next = 0;
+  let failure = null;
+  const worker = async () => {
+    while (!failure && next < items.length) {
+      const item = items[next++];
+      try {
+        await fn(item);
+      } catch (e) {
+        failure ??= e;
+      }
+    }
+  };
+  await Promise.all(Array.from({ length: Math.max(1, Math.min(Math.floor(n) || 1, items.length)) }, worker));
+  if (failure) throw failure;
+}
+
 /** Upload (or with dryRun just print) the plan. Returns { plan, uploaded, skipped, verified }. */
-export async function publish({ dir = join(APP_ROOT, 'dist', 'packs'), dryRun = false, env = loadEnv(), log = console.log } = {}) {
+export async function publish({ dir = join(APP_ROOT, 'dist', 'packs'), dryRun = false, env = loadEnv(), log = console.log, concurrency = 1 } = {}) {
   const plan = planUpload(dir);
   const total = plan.reduce((a, b) => a + b.size, 0);
   if (dryRun) {
@@ -163,14 +181,14 @@ export async function publish({ dir = join(APP_ROOT, 'dist', 'packs'), dryRun = 
   log(`publishing ${plan.length} object(s), ${(total / 1e6).toFixed(2)} MB to R2 bucket ${cfg.bucket}`);
   const uploaded = [];
   const skipped = [];
-  for (const p of plan) {
+  const one = async (p) => {
     const head = await s3(cfg, 'HEAD', p.key);
     if (head.status === 200) {
       const same = Number(head.headers['content-length']) === p.size && etagOf(head.headers) === p.md5;
       const sameCache = !head.headers['cache-control'] || head.headers['cache-control'] === p.cacheControl;
       if (same && sameCache) {
         skipped.push(p.key);
-        continue;
+        return;
       }
       if (!same && p.kind === 'manifest') {
         throw new Error(`${p.key} is already published with different content; versioned folders are immutable. Rebuild so the pack gets a new version (keep scripts/packs/versions.json committed).`);
@@ -186,17 +204,21 @@ export async function publish({ dir = join(APP_ROOT, 'dist', 'packs'), dryRun = 
     if (r.status !== 200) throw new Error(`PUT ${p.key}: HTTP ${r.status} ${redact(cfg, r.body.slice(0, 300))}`);
     uploaded.push(p.key);
     log(`  put  ${p.key} (${p.size} B)`);
-  }
+  };
+  // 1.0.37: up to `concurrency` requests at once INSIDE a phase; the phases stay strictly ordered
+  // (every pack file, then every manifest, then catalog.json alone), so a phone never sees a
+  // manifest before its files or a catalogue before its manifests.
+  for (const kind of ['file', 'manifest', 'catalog']) await pool(plan.filter((p) => p.kind === kind), concurrency, one);
   log(`uploaded ${uploaded.length}, unchanged ${skipped.length}; verifying`);
   let verified = 0;
-  for (const p of plan) {
+  await pool(plan, concurrency, async (p) => {
     const h = await s3(cfg, 'HEAD', p.key);
     const type = String(h.headers['content-type'] ?? '');
     if (h.status !== 200 || Number(h.headers['content-length']) !== p.size || !type.startsWith(p.contentType)) {
       throw new Error(`verify ${p.key}: HTTP ${h.status}, ${h.headers['content-length']} B, ${type || 'no content-type'} (want ${p.size} B ${p.contentType})`);
     }
     verified++;
-  }
+  });
   log(`verified ${verified} object(s)`);
   return { plan, uploaded, skipped, verified };
 }
@@ -208,11 +230,13 @@ if (isMain) {
   const args = process.argv.slice(2);
   let dir;
   let dryRun = false;
+  let concurrency = 1;
   for (let i = 0; i < args.length; i++) {
     if (args[i] === '--dry-run') dryRun = true;
     else if (args[i] === '--dir') dir = resolve(args[++i] ?? '');
+    else if (args[i] === '--concurrency') concurrency = Number(args[++i] ?? 1);
     else if (args[i] === '--help' || args[i] === '-h') {
-      console.log('usage: node scripts/packs/publish_r2.mjs [--dir dist/packs] [--dry-run]');
+      console.log('usage: node scripts/packs/publish_r2.mjs [--dir dist/packs] [--dry-run] [--concurrency n]');
       process.exit(0);
     } else {
       console.error(`unknown option ${args[i]}`);
@@ -220,7 +244,7 @@ if (isMain) {
     }
   }
   try {
-    await publish({ dir, dryRun });
+    await publish({ dir, dryRun, concurrency });
   } catch (e) {
     console.error(`error: ${e instanceof Error ? e.message : e}`);
     process.exit(1);

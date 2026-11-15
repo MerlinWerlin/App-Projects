@@ -16,13 +16,10 @@ const core = read('src', 'core', 'widgetOptionArt.ts');
 // T162: the controls are the list header (`const header = (`); the grid rows are a FlatList below it.
 const rendered = tab.slice(tab.indexOf('const header = ('));
 
-test('size sub-tabs draw a SizeArt picture above the label, keeping role, label and touch size', () => {
-  const sizes = rendered.slice(rendered.indexOf('WIDGET_TAB_SIZES.map'), rendered.indexOf('lockNote'));
-  assert.match(sizes, /<SizeArt size=\{s\} stroke=\{on \? c\.tint : c\.inkSecondary\}/);
-  assert.ok(sizes.indexOf('<SizeArt') < sizes.indexOf('<Text'), 'picture before the label');
-  assert.match(sizes, /accessibilityRole="tab"/);
-  assert.match(sizes, /accessibilityLabel=\{name\}/);
-  assert.match(tab, /sizeTab: \{\s*flex: 1,\s*minHeight: sizeV2\.touch/);
+// 1.0.37 (owner 2026-11-15): the size sub-tabs are gone (the tab is Small only), so no size pictures either.
+test('1.0.37: the Widgets tab has no size sub-tabs', () => {
+  assert.doesNotMatch(rendered, /<SizeArt|accessibilityRole="tab"/);
+  assert.doesNotMatch(tab, /sizeTab: \{/);
 });
 
 // 1.0.34 (owner 2026-11-14): the theme and look chip rows are gone from the Widgets tab (they only recoloured

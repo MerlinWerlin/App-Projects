@@ -200,6 +200,7 @@ export const ar: NonNullable<LocaleMessages['ui']> = {
       done: 'تم',
       selectA11y: 'تحديد {name}',
       artworkA11y: 'عمل فني {n}',
+      preparing: 'جارٍ تجهيز فن السمة…',
       deleteSelected: 'حذف المحدد',
       clearAll: 'مسح الكل',
       clearTitle: 'مسح رسوم أدواتي؟',

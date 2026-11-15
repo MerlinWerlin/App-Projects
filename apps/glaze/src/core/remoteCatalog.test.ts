@@ -2,7 +2,7 @@
 // remote detail card) and the pack base URL config. Pure; no network.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { PACK_BASE_URL, PACK_BASE_URLS, PACK_RELEASE_TAGS, packBaseUrl, packEnvFrom, packHostKind } from '../config/packs.ts';
+import { GITHUB_PRODUCTION_BASE, PACK_BASE_URL, PACK_BASE_URLS, PACK_R2_PUBLIC_URL, PACK_RELEASE_TAGS, packBaseUrl, packEnvFrom, packHostKind } from '../config/packs.ts';
 import { ART_PACK_THEMES } from './artPackThemes.ts';
 import { isArtPackTheme } from './artPack.ts';
 import { manifestPath, type RemoteArtManifest } from './packCatalog.ts';
@@ -40,16 +40,19 @@ const entry = (id: string, plus = false) => ({
 const catalogText = (...packs: object[]) => JSON.stringify({ format: 'glaze-catalog', version: 1, generatedAt: '2026-10-30T00:00:00Z', packs });
 const BASE = 'https://pub-0123.r2.dev';
 
-test('config: GitHub release bases (T169), production by default, staging only when asked', () => {
-  assert.equal(PACK_BASE_URL, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5');
+test('config: R2 production (1.0.37), GitHub staging, production by default, staging only when asked', () => {
+  assert.equal(PACK_BASE_URL, 'https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev');
+  assert.equal(PACK_BASE_URL, PACK_R2_PUBLIC_URL);
+  assert.equal(GITHUB_PRODUCTION_BASE, 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5');
   assert.deepEqual(
     { ...PACK_BASE_URLS },
     {
       staging: 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-staging',
-      production: 'https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5',
+      production: 'https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev',
     },
   );
-  assert.equal(packHostKind(PACK_BASE_URLS.production), 'github-release');
+  assert.equal(packHostKind(PACK_BASE_URLS.production), 'folder');
+  assert.equal(packHostKind(GITHUB_PRODUCTION_BASE), 'github-release');
   assert.equal(packHostKind(PACK_BASE_URLS.staging), 'github-release');
   assert.equal(PACK_RELEASE_TAGS.production, 'glaze-packs-v5');
   assert.equal(packEnvFrom(undefined), 'production');

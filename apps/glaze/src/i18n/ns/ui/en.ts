@@ -175,6 +175,7 @@ export const en = {
       done: 'Done',
       selectA11y: 'Select {name}',
       artworkA11y: 'Artwork {n}',
+      preparing: 'Preparing the theme’s art…',
       deleteSelected: 'Delete selected',
       clearAll: 'Clear all',
       clearTitle: 'Clear My widget art?',

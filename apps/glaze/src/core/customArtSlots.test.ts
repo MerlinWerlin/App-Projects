@@ -79,7 +79,8 @@ test('the app section: system picker with a square crop, Replace and Remove, the
   for (const k of ['replace', 'remove', 'add', 'makeItYours', 'privacy']) assert.ok(ui.includes(`tabs.widgetsTab.custom.${k}`), k);
   assert.match(ui, /<WatchHowButton onPress=\{onWatchHow\}/);
   const tab = R('app', '(tabs)', 'widgets.tsx');
-  assert.match(tab, /size === 'small' \? <CustomArtSlots onWatchHow=\{how\.open\}/);
+  // 1.0.37: the tab is Small only, so Your artwork always shows.
+  assert.match(tab, /<CustomArtSlots onWatchHow=\{how\.open\}/);
 });
 
 test('copy names no third-party brand or character', () => {

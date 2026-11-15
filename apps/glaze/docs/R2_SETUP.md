@@ -1,4 +1,4 @@
-> **Reference only: replaced by GitHub Release hosting (`docs/PACK_HOSTING.md`). Nothing for Jared to do here.** Packs are published as release assets on `MerlinWerlin/App-Projects` (tag `glaze-packs-v1`) by a workflow using the built-in GitHub token, so no Cloudflare account, bucket or secrets are needed. The tier plan at the bottom ("Plan for the ~87 themes") still applies; read "R2" there as "the pack host".
+> **Done (15 Nov 2026).** The bucket `glaze-packs`, its public r2.dev URL and the upload token exist, and production packs (Glaze 1.0.37+) are served from R2. See `docs/PACK_HOSTING.md`. Nothing more for Jared to do here.
 
 # Theme hosting on Cloudflare R2: your steps (owner-1030 A5)
 

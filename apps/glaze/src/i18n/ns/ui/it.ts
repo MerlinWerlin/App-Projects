@@ -185,6 +185,7 @@ export const it: NonNullable<LocaleMessages['ui']> = {
       done: 'Fine',
       selectA11y: 'Seleziona {name}',
       artworkA11y: 'Opera {n}',
+      preparing: 'Preparazione delle opere del tema…',
       deleteSelected: 'Elimina selezionati',
       clearAll: 'Cancella tutto',
       clearTitle: 'Cancellare La mia arte per widget?',
