@@ -88,7 +88,10 @@ function phone(options: { slowIcons?: Promise<void> } = {}) {
     '../core/wallpaper': { averageColour: () => '#000000' },
     '../native/widgets': { widgets: native }, './deferredWork': deferred,
     './studio': studio, './themeLookup': lookup, './widgetTheme': writer,
+    // 1.0.39: the pack-installed hook (no packs in this model) and the Preparing mark.
+    '../native/packs': { setPackInstalledListener() {} },
     './themeWidgetArt': {
+      markThemeArtPending() {},
       supersedeThemeWidgetArt() {},
       async syncThemeWidgetArt(theme: Theme) { composed.push(theme.id); return { available: true, ok: true }; },
     },

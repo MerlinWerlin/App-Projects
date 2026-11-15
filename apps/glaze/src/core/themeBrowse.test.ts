@@ -90,7 +90,10 @@ function bigCatalog(n = 100): Record<string, unknown> {
 const BIG_TEXT = JSON.stringify(bigCatalog());
 const BIG = parseCatalogText(BIG_TEXT);
 const REMOTE: RemoteArtTheme[] = remoteArtThemes(BIG, BASE, []);
-const STARTERS = galleryStarters();
+// 1.0.39: no bundled art theme is listed any more (GALLERY_STARTER_IDS is empty); the browse mechanics
+// are tested with the three original art themes given explicitly.
+const STARTERS = ['deep-sea', 'starry-night', 'sunset-dunes'].map((id) => ART_PACK_THEMES.find((t) => t.id === id)!);
+void galleryStarters;
 const ALL = browseThemes(REMOTE, STARTERS);
 
 // ------------------------------------------------------------------ category parsing

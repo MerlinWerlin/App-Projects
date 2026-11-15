@@ -73,6 +73,8 @@ test('icon-only setup changes the icon export style without publishing B to widg
 // Owner 2026-11-08 ("swapping themes is no longer swapping it across to widgets"): choosing a theme
 // swaps the widgets whichever action follows, and a declined or failed wallpaper save never blocks it.
 const selectScope = (events: string[], focus = { current: 1 }) => ({
+  // 1.0.39: a bundled / already downloaded theme (no pack download before the apply).
+  remoteArt: null, pack: { usable: true, download: async () => 'ok' }, locked: false,
   themeFocus: focus, theme, setUseError: nothing, haptic: nothing, playApply: nothing,
   AccessibilityInfo: { announceForAccessibility: nothing }, t: (key: string) => key, console,
   applyThemeEverywhere: async (value: typeof theme) => { events.push(value.id); return { icons: true, widgets: true }; },
@@ -140,4 +142,37 @@ test('Use this theme opens the choices and swaps the widgets at once', async () 
   await new Promise((r) => setTimeout(r, 0));
   assert.equal(open, true);
   assert.deepEqual(events, ['B']);
+});
+
+// 1.0.39 (owner TestFlight 1.0.37: "when I hit use the theme, it doesn't do anything because I haven't
+// hit use everything"): a pack theme not on the phone is downloaded BEFORE the apply, so the widget-art
+// sync the apply starts finds its pieces; offline, the theme is still applied.
+test('choosing a pack theme downloads its pack first, then applies it; a failed download still applies', async () => {
+  for (const outcome of ['ok', 'throws'] as const) {
+    const events: string[] = [];
+    const select = handler('selectTheme', {
+      ...selectScope(events),
+      remoteArt: { id: 'B' },
+      pack: {
+        usable: false,
+        download: async () => {
+          events.push('download');
+          if (outcome === 'throws') throw new Error('offline');
+          return 'ok';
+        },
+      },
+    });
+    assert.equal(await select(), true);
+    assert.deepEqual(events, ['download', 'B'], outcome);
+  }
+  // Left for another theme during the download: nothing is applied.
+  const events: string[] = [];
+  const focus = { current: 1 };
+  const select = handler('selectTheme', {
+    ...selectScope(events, focus),
+    remoteArt: { id: 'B' },
+    pack: { usable: false, download: async () => { focus.current = 2; return 'ok'; } },
+  });
+  assert.equal(await select(), false);
+  assert.deepEqual(events, []);
 });

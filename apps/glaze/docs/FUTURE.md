@@ -28,6 +28,11 @@ the bottom of their section with the date and who asked; move an item to "Done" 
 - **Missing small artwork** (audit 13 Nov): done in 1.0.37. The 199 pieces from #307 are published on Cloudflare R2, and
   all 141 themes have five artworks.
 
+- **Patchwork theme: rocket pieces not distinct enough; refresh art** (owner TestFlight 1.0.37, 15 Nov 2026). The five
+  pieces pass the SHA-256 check but two rocket pieces read as near-duplicates on the phone; give it new, clearly different art.
+- **Bring back the original art themes** (Deep Sea, Starry Night, Sunset Dunes) once each has five distinct small artworks.
+  They left the gallery in 1.0.39 with one piece each (their data stays; add the ids back to `GALLERY_STARTER_IDS`).
+
 ## Icons
 - **Icon install screen "More options".** 1.0.35 opens a theme's flow on two choices (Icons / Widgets). Inside the install,
   the method, re-install and clean-up steps stay in order because each depends on the one before; a calmer layout for

@@ -112,7 +112,7 @@ test('T264: "Use this theme" catches; listeners and deferred requests cannot sto
   const store = strip(read('src', 'store', 'activeTheme.ts'));
   const apply = store.slice(store.indexOf('export async function applyThemeEverywhere'), store.indexOf('async function themeArtStep'));
   assert.match(apply, /for \(const l of \[\.\.\.listeners\]\) \{\s*try \{\s*l\(theme\.id\);/);
-  assert.match(apply, /try \{\s*requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
+  assert.match(apply, /try \{\s*markThemeArtPending\(theme\.id\);\s*requestDeferred\(DEFERRED_STEPS\.widgetTheme\)/);
   const queue = strip(read('src', 'core', 'deferredWork.ts'));
   assert.doesNotMatch(queue, /void drain\(\)/, 'a drain never rejects unhandled');
 });

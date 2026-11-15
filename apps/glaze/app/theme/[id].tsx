@@ -490,6 +490,18 @@ function ThemeDetail({
    */
   const selectTheme = async (focus = themeFocus.current): Promise<boolean> => {
     if (themeFocus.current !== focus) return false;
+    // 1.0.39 (owner TestFlight 1.0.37: "when I hit use the theme, it doesn't do anything because I
+    // haven't hit use everything"): a pack theme not on the phone yet is downloaded FIRST, so the
+    // widget-art sync that the apply starts finds its pieces. Offline, the theme is still applied and
+    // its art follows as soon as the pack arrives (setPackInstalledListener in src/store/activeTheme.ts).
+    if (remoteArt && !pack.usable && !locked) {
+      try {
+        await pack.download();
+      } catch {
+        // Applied anyway below.
+      }
+      if (themeFocus.current !== focus) return false;
+    }
     try {
       const res = await applyThemeEverywhere(theme);
       if (!res.icons || !res.widgets) {

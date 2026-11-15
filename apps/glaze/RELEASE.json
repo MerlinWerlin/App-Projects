@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.38: eight complete themes now come built in (Alpine Starlight, Aurora Haven, Cobalt Caravan, Cherry Arcade, Boba Bear Club, Espresso Hour, Lemon Lagoon and Honeywood), so Glaze looks complete on first launch and works offline. They behave exactly like downloaded themes and update the same way. The rest still download from Cloudflare in seconds. The privacy page now names Cloudflare.",
+  "note": "Glaze 1.0.39: choosing a theme now puts its widget art in place straight away. Use this theme (or any theme choice) downloads the theme if needed and fills Artwork 1-5. The Widgets tab shows Preparing, then the five pieces, with no need for Use everything or a Home Screen widget first. The three original themes that had only one small artwork (Deep Sea, Starry Night, Sunset Dunes) leave the gallery; anyone using one keeps it. Every theme in the gallery now has five different artworks.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

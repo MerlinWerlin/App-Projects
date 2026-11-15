@@ -91,6 +91,21 @@ function setSyncStatus(syncing: string | null, bump: boolean): void {
     }
   }
 }
+/**
+ * 1.0.39: a theme was just chosen and its art sync is queued: the Widgets tab shows Preparing rows
+ * straight away instead of an empty list. The sync itself clears it; a safety timer clears it if no
+ * sync ever starts (no widget bridge, superseded before it ran).
+ */
+let pendingTimer: ReturnType<typeof setTimeout> | null = null;
+export function markThemeArtPending(themeId: string): void {
+  setSyncStatus(themeId, false);
+  if (pendingTimer) clearTimeout(pendingTimer);
+  pendingTimer = setTimeout(() => {
+    pendingTimer = null;
+    if (syncStatus.syncing === themeId) setSyncStatus(null, true);
+  }, 60_000);
+}
+
 export function getThemeArtSyncStatus(): ThemeArtSyncStatus {
   return syncStatus;
 }
