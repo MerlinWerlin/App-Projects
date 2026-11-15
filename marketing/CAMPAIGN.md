@@ -125,7 +125,12 @@ new terms; anything like that goes to Jared.
   - Jared's verdict (15 Nov): the clips look good, but there's no AI video "just for the sake of it". They were too short, didn't show the table
     off, and jumped straight to branding. Keep Flow in reserve for a specific job, e.g. a first-frame/last-frame morph between two real photos
     where a plain transition looks flat (Omni 1.2 Flash, one 4-6 s clip).
-  - Woodwork reels are made from photos and PDF pages instead (`marketing/woodwork/reel_template.py`).
+  - **Woodwork video is paused (Jared, 15 Nov: "just don't do anything with it right now").** Make no woodwork videos and use no Flow
+    until Jared raises it again. A photo-and-PDF-page slideshow sample (`ww-reel-waterfall-stack-table.mp4`, local only) was cancelled.
+  - Rules for when woodwork video comes back:
+    - No slow zooms or close push-ins on the AI plan photos. Zooming exposes the flaws in the AI images.
+    - Don't spend Flow credits on demos to show Jared.
+  - Everything else carries on: the 12:00 woodwork pins (still images) and the app reels made from real store screenshots.
 
 ## Downloads watch
 Every daily run reads Play Console (signed in) and App Store Connect (signed in on 10 Nov but it signs itself out
