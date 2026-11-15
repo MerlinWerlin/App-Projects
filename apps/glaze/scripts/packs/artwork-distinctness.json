@@ -1,0 +1,175 @@
+{
+  "reviewedAt": "2026-11-15",
+  "baselineCatalogSha256": "91f3f261ec9d9cad8fcd9d9354ca217dce5aefe10885940a9ba6da0c9ccc2c6c",
+  "rows": [
+    {
+      "row": 1,
+      "theme": "agate-apricot",
+      "replaced": [
+        "druzy-center"
+      ],
+      "required": true
+    },
+    {
+      "row": 2,
+      "theme": "bellbat-bloom",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 3,
+      "theme": "carbon-velocity",
+      "replaced": [
+        "art-20261107-track-helmet"
+      ],
+      "required": true
+    },
+    {
+      "row": 4,
+      "theme": "cloudwash",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 5,
+      "theme": "copper-circuit",
+      "replaced": [
+        "trace-flow"
+      ],
+      "required": true
+    },
+    {
+      "row": 6,
+      "theme": "glacier-quiet",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 7,
+      "theme": "kingfisher-blue",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 8,
+      "theme": "lotus-drift",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 9,
+      "theme": "manta-silk",
+      "replaced": [
+        "sand-rays"
+      ],
+      "required": true
+    },
+    {
+      "row": 10,
+      "theme": "meadowglow",
+      "replaced": [
+        "morning-grass"
+      ],
+      "required": true
+    },
+    {
+      "row": 11,
+      "theme": "moonpatch",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 12,
+      "theme": "mosswick",
+      "replaced": [
+        "travelling-cottage"
+      ],
+      "required": true
+    },
+    {
+      "row": 13,
+      "theme": "ochre-bend",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 14,
+      "theme": "pebblekin-grove",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 15,
+      "theme": "summit-line",
+      "replaced": [
+        "art-20261107-signal-gondola"
+      ],
+      "required": true
+    },
+    {
+      "row": 16,
+      "theme": "wisteria-hush",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 17,
+      "theme": "bluewing",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 18,
+      "theme": "ginkgo-hour",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 19,
+      "theme": "juniper-mist",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true
+    },
+    {
+      "row": 20,
+      "theme": "peachskin",
+      "replaced": [
+        "hero-small",
+        "art-20261106-peach-slice"
+      ],
+      "required": true
+    },
+    {
+      "row": 21,
+      "theme": "phosphor-amber",
+      "replaced": [
+        "pixel-landscape"
+      ],
+      "required": true
+    }
+  ]
+}

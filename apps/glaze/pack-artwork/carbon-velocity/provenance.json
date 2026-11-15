@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 773278,
       "opaquePixels": 975
+    },
+    {
+      "theme": "carbon-velocity",
+      "id": "carbon-steering-wheel",
+      "label": "Carbon Steering Wheel",
+      "ref": "art/carbon-velocity/v8/widget-titanium-turbine.74f960f1.webp",
+      "subject": "one sculptural three-spoke racing steering wheel, black woven carbon-fiber grip, brushed titanium spokes and a fine acid-lime center stripe. Whole wheel presented upright at a slight three-quarter angle on a small dark charcoal plinth. Precise premium industrial still life, satin metal, realistic carbon weave, dramatic restrained dark studio lighting. No helmet, turbine, gears, damper or brand markings",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze carbon-velocity decorative artwork, 1024\u00d71024. Reference is ONLY for medium, palette and lighting. New subject: one sculptural three-spoke racing steering wheel, black woven carbon-fiber grip, brushed titanium spokes and a fine acid-lime center stripe. Whole wheel presented upright at a slight three-quarter angle on a small dark charcoal plinth. Precise premium industrial still life, satin metal, realistic carbon weave, dramatic restrained dark studio lighting. No helmet, turbine, gears, damper or brand markings. Main object whole inside 12% margins, clear silhouette for small widget. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendars, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-a6f1f385-630a-41ed-87ce-cd149fb7f5fa.png",
+      "image": "widget-carbon-steering-wheel.abd68897.webp",
+      "sha256": "abd68897dec4e94e93cc29501f1b687e9362c9213f050af9d9fd5187ec6b5029",
+      "bytes": 146654,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

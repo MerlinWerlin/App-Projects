@@ -22,5 +22,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Ceramic transistor"
+  },
+  {
+    "id": "copper-vacuum-tube",
+    "kind": "art",
+    "image": "widget-copper-vacuum-tube.1a095551.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Copper Vacuum Tube"
   }
 ]

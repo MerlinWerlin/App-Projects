@@ -187,18 +187,25 @@ test('independent audit permits an unchanged partial pack but rejects incomplete
   } finally { f.cleanup(); }
 });
 
-test('committed baseline matches the actual consumer and retains 84 formerly omitted illustrations', () => {
+test('committed R2 baseline retains all published artworks and pins each reviewed replacement', () => {
   const baseline = loadBaseline(fileURLToPath(new URL('./artwork-baseline', import.meta.url)));
-  assert.equal(baseline.manifests.size, 141); assert.equal(baseline.lock.additionsNeeded, 177);
-  assert.deepEqual(baseline.lock.baselineCounts, { 2: 3, 3: 35, 4: 98, 5: 5 });
+  assert.equal(baseline.manifests.size, 141); assert.equal(baseline.lock.additionsNeeded, 0);
+  assert.deepEqual(baseline.lock.baselineCounts, { 5: 141 });
+  assert.equal(baseline.lock.catalogUrl, 'https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev/catalog.json');
+  assert.equal([...baseline.manifests.values()].reduce((n, m) => n + m.assets.length, 0), 2158);
   const airmail = baseline.manifests.get('airmail-daydream');
   assert.ok(airmail.widgets.some((w) => w.id === 'art-20261106-paper-swallow'));
   const corrections = JSON.parse(readFileSync(new URL('./artwork-corrections.json', import.meta.url), 'utf8'));
-  assert.equal(Object.keys(corrections).length, 22);
+  const review = JSON.parse(readFileSync(new URL('./artwork-distinctness.json', import.meta.url), 'utf8')).rows;
+  for (const row of review) for (const id of row.replaced) {
+    assert.equal(corrections[row.theme].options[id], 'photo');
+    assert.ok(baseline.manifests.get(row.theme).widgets.some((w) => w.id === id && w.kind === 'art'));
+  }
   const counts = [...baseline.manifests.values()].map((m) => {
     const corrected = applyArtworkCorrections(m, corrections);
     return plannedArtworkOptionIds(m.id, parseWidgetOptions(corrected.widgets, corrected.assets).options).length;
   });
-  assert.equal(counts.filter((n) => n < 5).length, 139);
-  assert.equal(counts.reduce((n, count) => n + 5 - count, 0), 199);
+  assert.equal(counts.filter((n) => n < 5).length, review.length);
+  assert.equal(counts.reduce((n, count) => n + 5 - count, 0), review.reduce((n, row) => n + row.replaced.length, 0));
+  for (const m of baseline.manifests.values()) assert.deepEqual(applyArtworkCorrections(applyArtworkCorrections(m, corrections), corrections), applyArtworkCorrections(m, corrections));
 });

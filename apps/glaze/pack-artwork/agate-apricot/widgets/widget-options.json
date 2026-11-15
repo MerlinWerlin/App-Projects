@@ -22,5 +22,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Agate shell carving"
+  },
+  {
+    "id": "agate-pendant",
+    "kind": "art",
+    "image": "widget-agate-pendant.88e322bc.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Agate Pendant"
   }
 ]

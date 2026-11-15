@@ -21,6 +21,24 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "bellbat-bloom",
+      "id": "felt-luna-moth",
+      "label": "Felt Luna Moth",
+      "ref": "art/bellbat-bloom/v7/widget-seedpod-swing.01460c99.webp",
+      "subject": "a handmade felt luna moth with four clearly separate dusty-sage and muted-rose wings, long curved hindwing tails, small fuzzy pink body and two fine stitched antennae. Tiny ivory embroidered dots. Resting on a short twig with one felt leaf, warm taupe fabric background. Tactile wool felt with softly stitched seams, delicate miniature craft light. No bat, sleeping animal, flower basket, lantern or bow",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze bellbat-bloom decorative artwork, 1024\u00d71024. Reference is ONLY for medium, palette and lighting. New subject: a handmade felt luna moth with four clearly separate dusty-sage and muted-rose wings, long curved hindwing tails, small fuzzy pink body and two fine stitched antennae. Tiny ivory embroidered dots. Resting on a short twig with one felt leaf, warm taupe fabric background. Tactile wool felt with softly stitched seams, delicate miniature craft light. No bat, sleeping animal, flower basket, lantern or bow. Main object whole inside 12% margins, clear silhouette for small widget. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendars, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-2ce90474-4f82-4a94-be71-90d1661157e5.png",
+      "image": "widget-felt-luna-moth.b07604c6.webp",
+      "sha256": "b07604c61698c33f659b5857ec7c80582023453ea194cf8ed5796fb75248c1a1",
+      "bytes": 373354,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

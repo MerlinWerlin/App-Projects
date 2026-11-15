@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Morning dew web"
+  },
+  {
+    "id": "meadow-harvest-mouse",
+    "kind": "art",
+    "image": "widget-meadow-harvest-mouse.cc797f45.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Meadow Harvest Mouse"
   }
 ]

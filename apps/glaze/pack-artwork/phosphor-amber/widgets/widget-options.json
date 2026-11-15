@@ -22,5 +22,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Cream Joystick"
+  },
+  {
+    "id": "amber-cassette-tape",
+    "kind": "art",
+    "image": "widget-amber-cassette-tape.2f0b7aaa.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Amber Cassette Tape"
   }
 ]

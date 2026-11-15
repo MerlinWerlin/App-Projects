@@ -35,6 +35,24 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "agate-apricot",
+      "id": "agate-pendant",
+      "label": "Agate Pendant",
+      "ref": "art/agate-apricot/v2/widget-agate-slice.572cbc2b.webp",
+      "subject": "a polished pear-shaped banded agate gemstone pendant in a fine brushed brass setting, a loose thin sand-colored silk cord curling beside it. Whole wearable jewelry still life, warm apricot, pale slate blue and ivory agate bands, realistic mineral detail, warm greige backdrop matching the reference. Avoid the existing shell carving, bowl, sliced rock specimen disc and full-field textures",
+      "prompt": "Use case: stylized-concept. Create ONE original square Glaze Agate Apricot decorative widget illustration, 1024\u00d71024. Reference image is ONLY for artistic medium, palette and lighting. New subject: a polished pear-shaped banded agate gemstone pendant in a fine brushed brass setting, a loose thin sand-colored silk cord curling beside it. Whole wearable jewelry still life, warm apricot, pale slate blue and ivory agate bands, realistic mineral detail, warm greige backdrop matching the reference. Avoid the existing shell carving, bowl, sliced rock specimen disc and full-field textures. The entire main object has generous 12% margins and a clear small-size silhouette. Pure art, own full-bleed theme backdrop. No border, rounded card, text, letters, numerals, hands or dials, calendar, progress bar, logo or watermark. Never crop, copy or recolor the reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-2f47cdf3-75bf-4bc9-947f-7d2eb7b1c09e.png",
+      "image": "widget-agate-pendant.88e322bc.webp",
+      "sha256": "88e322bce0a2636aa806913366a326438ea382d6e151bcfff97dabcc2f6ef47b",
+      "bytes": 112824,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

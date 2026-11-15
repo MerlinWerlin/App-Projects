@@ -1,16 +1,16 @@
 {
   "format": "glaze-catalog",
   "version": 1,
-  "generatedAt": "2026-11-06T22:29:43.596Z",
+  "generatedAt": "2026-11-14T00:00:00.000Z",
   "packs": [
     {
       "id": "agate-apricot",
       "name": "Agate Apricot",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1027366,
-      "manifest": "art/agate-apricot/v1/manifest.json",
-      "thumb": "art/agate-apricot/v1/thumb.969e9b09.webp",
+      "bytes": 1203082,
+      "manifest": "art/agate-apricot/v2/manifest.json",
+      "thumb": "art/agate-apricot/v2/thumb.969e9b09.webp",
       "thumbhash": "shgGCwKln3Z4ZIuVe2CnB4Y=",
       "palette": {
         "bg": "#E3DBD0",
@@ -30,16 +30,16 @@
       "mood": "Banded apricot agate on warm putty.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "airmail-daydream",
       "name": "Airmail Daydream",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1220276,
-      "manifest": "art/airmail-daydream/v7/manifest.json",
-      "thumb": "art/airmail-daydream/v7/thumb.9040b1c9.webp",
+      "bytes": 1502762,
+      "manifest": "art/airmail-daydream/v8/manifest.json",
+      "thumb": "art/airmail-daydream/v8/thumb.9040b1c9.webp",
       "thumbhash": "dNcFCwKWnzaXeoemVpBrBbk=",
       "palette": {
         "bg": "#C5DCE9",
@@ -66,7 +66,7 @@
       "mood": "Sky blue, coral and cream, balloon post office, sealed letters and postmark clock.",
       "addedAt": "2026-11-01",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "alpine-starlight",
@@ -105,11 +105,11 @@
     {
       "id": "amber-archive",
       "name": "Amber Archive",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2414062,
-      "manifest": "art/amber-archive/v6/manifest.json",
-      "thumb": "art/amber-archive/v6/thumb.cca9d273.webp",
+      "bytes": 2801864,
+      "manifest": "art/amber-archive/v7/manifest.json",
+      "thumb": "art/amber-archive/v7/thumb.cca9d273.webp",
       "thumbhash": "40kSCwJ3f0h4eIh4ZZlQBzo=",
       "palette": {
         "bg": "#DBB88E",
@@ -133,16 +133,16 @@
       "mood": "Warm parchment and a tiny bookshop inside curled pages.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "apricot-fm",
       "name": "Apricot FM",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1217966,
-      "manifest": "art/apricot-fm/v6/manifest.json",
-      "thumb": "art/apricot-fm/v6/thumb.dcec6555.webp",
+      "bytes": 1340148,
+      "manifest": "art/apricot-fm/v7/manifest.json",
+      "thumb": "art/apricot-fm/v7/thumb.dcec6555.webp",
       "thumbhash": "KloSGwZ3f2iJZYp3eXCIB5c=",
       "palette": {
         "bg": "#F5DBB7",
@@ -163,16 +163,16 @@
       "mood": "Cream and apricot record shop with a vinyl cat.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "aurora-haven",
       "name": "Aurora Haven",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1395586,
-      "manifest": "art/aurora-haven/v7/manifest.json",
-      "thumb": "art/aurora-haven/v7/thumb.6078c660.webp",
+      "bytes": 1740732,
+      "manifest": "art/aurora-haven/v8/manifest.json",
+      "thumb": "art/aurora-haven/v8/thumb.6078c660.webp",
       "thumbhash": "DqcJCwR3kEiGjIeFZ39P2fk=",
       "palette": {
         "bg": "#04232D",
@@ -201,16 +201,16 @@
       "mood": "Emerald/violet northern lights, snowy fjord, ice prism, frosty ivory icons and polar clock.",
       "addedAt": "2026-11-01",
       "category": "Space & Night",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "bamboo-ink",
       "name": "Bamboo Ink",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 1513894,
-      "manifest": "art/bamboo-ink/v4/manifest.json",
-      "thumb": "art/bamboo-ink/v4/thumb.37378ebe.webp",
+      "bytes": 1903398,
+      "manifest": "art/bamboo-ink/v5/manifest.json",
+      "thumb": "art/bamboo-ink/v5/thumb.37378ebe.webp",
       "thumbhash": "sggKAwCUr1d2h4l3c89G+Es=",
       "palette": {
         "bg": "#EAE2D2",
@@ -230,16 +230,16 @@
       "mood": "Bamboo in expressive brush ink on warm paper.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "bellbat-bloom",
       "name": "Bellbat Bloom",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1631558,
-      "manifest": "art/bellbat-bloom/v6/manifest.json",
-      "thumb": "art/bellbat-bloom/v6/thumb.b03ca820.webp",
+      "bytes": 1861454,
+      "manifest": "art/bellbat-bloom/v7/manifest.json",
+      "thumb": "art/bellbat-bloom/v7/thumb.b03ca820.webp",
       "thumbhash": "5ygKAwK1j3Z4dYu0qmowAEo=",
       "palette": {
         "bg": "#C2AE9F",
@@ -266,16 +266,16 @@
       "mood": "A velvet bat and bellflower with mushroom-grey paper, plum icons, seedpod swing.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "berry-stitch",
       "name": "Berry Stitch",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1012494,
-      "manifest": "art/berry-stitch/v7/manifest.json",
-      "thumb": "art/berry-stitch/v7/thumb.236ae131.webp",
+      "bytes": 1548976,
+      "manifest": "art/berry-stitch/v8/manifest.json",
+      "thumb": "art/berry-stitch/v8/thumb.236ae131.webp",
       "thumbhash": "dfgFCwK6f1WYhnzCJ4CJA5c=",
       "palette": {
         "bg": "#DBE8D9",
@@ -297,16 +297,16 @@
       "mood": "A crocheted bunny among berries and stitches.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "billabong-clay",
       "name": "Billabong Clay",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 314136,
-      "manifest": "art/billabong-clay/v1/manifest.json",
-      "thumb": "art/billabong-clay/v1/thumb.877907d5.webp",
+      "bytes": 474748,
+      "manifest": "art/billabong-clay/v2/manifest.json",
+      "thumb": "art/billabong-clay/v2/thumb.877907d5.webp",
       "thumbhash": "8/cJAwCpb2Z4g2+xJZBnAFg=",
       "palette": {
         "bg": "#DAE4E2",
@@ -326,16 +326,16 @@
       "mood": "A quiet billabong in river blue and clay.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "birchlight",
       "name": "Birchlight",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1458704,
-      "manifest": "art/birchlight/v6/manifest.json",
-      "thumb": "art/birchlight/v6/thumb.9785c070.webp",
+      "bytes": 1571170,
+      "manifest": "art/birchlight/v7/manifest.json",
+      "thumb": "art/birchlight/v7/thumb.9785c070.webp",
       "thumbhash": "axgOEwKEn4d4dneITlDSBTU=",
       "palette": {
         "bg": "#D5D4D3",
@@ -364,16 +364,16 @@
       "mood": "A photographic-style autumn birch lake with pale fog, umber icons, golden leaf, bark study.",
       "addedAt": "2026-11-01",
       "category": "Seasonal",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "blueprint-bureau",
       "name": "Blueprint Bureau",
-      "packVersion": 8,
+      "packVersion": 9,
       "plus": false,
-      "bytes": 2513875,
-      "manifest": "art/blueprint-bureau/v8/manifest.json",
-      "thumb": "art/blueprint-bureau/v8/thumb.5e6f582b.webp",
+      "bytes": 2753359,
+      "manifest": "art/blueprint-bureau/v9/manifest.json",
+      "thumb": "art/blueprint-bureau/v9/thumb.5e6f582b.webp",
       "thumbhash": "EYYBCwIZhKxnm3BfKHCKApc=",
       "palette": {
         "bg": "#0F4D6C",
@@ -402,16 +402,16 @@
       "mood": "Cyan paper, ivory line icons, bellows-camera diagram, clockwork dragonfly and drafting clock.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "bluewing",
       "name": "Bluewing",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 915328,
-      "manifest": "art/bluewing/v7/manifest.json",
-      "thumb": "art/bluewing/v7/thumb.e31cf4fd.webp",
+      "bytes": 1122912,
+      "manifest": "art/bluewing/v8/manifest.json",
+      "thumb": "art/bluewing/v8/thumb.e31cf4fd.webp",
       "thumbhash": "SOcBCwAFaXt4jXBt+JiJn5k=",
       "palette": {
         "bg": "#15202E",
@@ -432,16 +432,16 @@
       "mood": "Iridescent blue butterfly wings up close.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "boba-bear-club",
       "name": "Boba Bear Club",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 704258,
-      "manifest": "art/boba-bear-club/v7/manifest.json",
-      "thumb": "art/boba-bear-club/v7/thumb.bcde65a3.webp",
+      "bytes": 861742,
+      "manifest": "art/boba-bear-club/v8/manifest.json",
+      "thumb": "art/boba-bear-club/v8/thumb.bcde65a3.webp",
       "thumbhash": "NUkGEwSln5Z4YnqHSXCWBoc=",
       "palette": {
         "bg": "#FAE7D4",
@@ -466,16 +466,16 @@
       "mood": "Milk-tea cream, caramel and strawberry-pink kawaii theme.",
       "addedAt": "2026-11-01",
       "category": "Sweets & Treats",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "brass-afterhours",
       "name": "Brass Afterhours",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 879664,
-      "manifest": "art/brass-afterhours/v1/manifest.json",
-      "thumb": "art/brass-afterhours/v1/thumb.27a958d4.webp",
+      "bytes": 1146246,
+      "manifest": "art/brass-afterhours/v2/manifest.json",
+      "thumb": "art/brass-afterhours/v2/thumb.27a958d4.webp",
       "thumbhash": "iPcBEwIBxIyUfcN5RpBoBZk=",
       "palette": {
         "bg": "#0F1B2B",
@@ -497,16 +497,16 @@
       "mood": "Polished brass details on late-night navy.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "cacao-velvet",
       "name": "Cacao Velvet",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1358020,
-      "manifest": "art/cacao-velvet/v1/manifest.json",
-      "thumb": "art/cacao-velvet/v1/thumb.11e90ee7.webp",
+      "bytes": 1626832,
+      "manifest": "art/cacao-velvet/v2/manifest.json",
+      "thumb": "art/cacao-velvet/v2/thumb.11e90ee7.webp",
       "thumbhash": "yzgGEwRocIiIbJOoeWCoBoY=",
       "palette": {
         "bg": "#2E1B14",
@@ -527,16 +527,16 @@
       "mood": "Velvety cacao pods and chocolate browns.",
       "addedAt": "2026-11-01",
       "category": "Sweets & Treats",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "calla-obscura",
       "name": "Calla Obscura",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 420548,
-      "manifest": "art/calla-obscura/v1/manifest.json",
-      "thumb": "art/calla-obscura/v1/thumb.b0e762a6.webp",
+      "bytes": 647028,
+      "manifest": "art/calla-obscura/v2/manifest.json",
+      "thumb": "art/calla-obscura/v2/thumb.b0e762a6.webp",
       "thumbhash": "DPgFCwBWlQinb5iTJ4Bicgg=",
       "palette": {
         "bg": "#242627",
@@ -557,16 +557,16 @@
       "mood": "A white calla lily against dark graphite.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "canopy-glaze",
       "name": "Canopy Glaze",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 923670,
-      "manifest": "art/canopy-glaze/v1/manifest.json",
-      "thumb": "art/canopy-glaze/v1/thumb.7dcab187.webp",
+      "bytes": 1227204,
+      "manifest": "art/canopy-glaze/v2/manifest.json",
+      "thumb": "art/canopy-glaze/v2/thumb.7dcab187.webp",
       "thumbhash": "sggKCwCZb4d4gn50Z4CIN/c=",
       "palette": {
         "bg": "#E7DFD4",
@@ -589,16 +589,16 @@
       "mood": "Ceramic still life in leafy glazed greens.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "carbon-velocity",
       "name": "Carbon Velocity",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1082364,
-      "manifest": "art/carbon-velocity/v7/manifest.json",
-      "thumb": "art/carbon-velocity/v7/thumb.0f0bdb2d.webp",
+      "bytes": 1221264,
+      "manifest": "art/carbon-velocity/v8/manifest.json",
+      "thumb": "art/carbon-velocity/v8/thumb.0f0bdb2d.webp",
       "thumbhash": "yfcFAwBngMh3iGVqZ4B99Dk=",
       "palette": {
         "bg": "#141718",
@@ -621,16 +621,16 @@
       "mood": "Graphite, titanium and acid-lime racing garage.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "carrom-cedar",
       "name": "Carrom Cedar",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 665608,
-      "manifest": "art/carrom-cedar/v1/manifest.json",
-      "thumb": "art/carrom-cedar/v1/thumb.fcf66677.webp",
+      "bytes": 977146,
+      "manifest": "art/carrom-cedar/v2/manifest.json",
+      "thumb": "art/carrom-cedar/v2/thumb.fcf66677.webp",
       "thumbhash": "MykGCwKXj2aHhI6yaHCJBpc=",
       "palette": {
         "bg": "#EFDDC5",
@@ -650,16 +650,16 @@
       "mood": "A cedar carrom board on warm cream.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "cherry-arcade",
       "name": "Cherry Arcade",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 908958,
-      "manifest": "art/cherry-arcade/v7/manifest.json",
-      "thumb": "art/cherry-arcade/v7/thumb.2a3aef76.webp",
+      "bytes": 1429538,
+      "manifest": "art/cherry-arcade/v8/manifest.json",
+      "thumb": "art/cherry-arcade/v8/thumb.2a3aef76.webp",
       "thumbhash": "8VgOEwiIfzeHiXd4d4B7Bsg=",
       "palette": {
         "bg": "#F5DDD5",
@@ -686,16 +686,16 @@
       "mood": "Blush, cherry-red icons, a miniature arcade cabinet, mint robot frog and retro digital clock.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v14"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "cherry-ribbon",
       "name": "Cherry Ribbon",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 3074276,
-      "manifest": "art/cherry-ribbon/v7/manifest.json",
-      "thumb": "art/cherry-ribbon/v7/thumb.e90ce1a1.webp",
+      "bytes": 3434742,
+      "manifest": "art/cherry-ribbon/v8/manifest.json",
+      "thumb": "art/cherry-ribbon/v8/thumb.e90ce1a1.webp",
       "thumbhash": "thgGAwLnf3OIhH2kF4B4Aag=",
       "palette": {
         "bg": "#EEE5D9",
@@ -716,16 +716,16 @@
       "mood": "Embroidered cherries and satin bows.",
       "addedAt": "2026-11-01",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "chromatic-lab",
       "name": "Chromatic Lab",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 739040,
-      "manifest": "art/chromatic-lab/v6/manifest.json",
-      "thumb": "art/chromatic-lab/v6/thumb.25273e2a.webp",
+      "bytes": 856374,
+      "manifest": "art/chromatic-lab/v7/manifest.json",
+      "thumb": "art/chromatic-lab/v7/thumb.25273e2a.webp",
       "thumbhash": "r/cFEwRtj5h4dIyFfyn3SJI=",
       "palette": {
         "bg": "#C3C9D3",
@@ -752,16 +752,16 @@
       "mood": "Milky grey, graphite icons, cobalt/vermilion glass coil and mobile, and an instrument clock.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "cicada-linen",
       "name": "Cicada Linen",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 1259480,
-      "manifest": "art/cicada-linen/v4/manifest.json",
-      "thumb": "art/cicada-linen/v4/thumb.4cd8dced.webp",
+      "bytes": 1482652,
+      "manifest": "art/cicada-linen/v5/manifest.json",
+      "thumb": "art/cicada-linen/v5/thumb.4cd8dced.webp",
       "thumbhash": "cggGAwCIjzeGqUilV4CLB8c=",
       "palette": {
         "bg": "#DBDCCD",
@@ -781,16 +781,16 @@
       "mood": "A delicate cicada resting on natural linen.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "cloud-atelier",
       "name": "Cloud Atelier",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 767202,
-      "manifest": "art/cloud-atelier/v6/manifest.json",
-      "thumb": "art/cloud-atelier/v6/thumb.a4d7c735.webp",
+      "bytes": 838572,
+      "manifest": "art/cloud-atelier/v7/manifest.json",
+      "thumb": "art/cloud-atelier/v7/thumb.a4d7c735.webp",
       "thumbhash": "MnkGCwJmfxl5e3RpZo+R+Io=",
       "palette": {
         "bg": "#FEBEAA",
@@ -814,16 +814,16 @@
       "mood": "Peach skies, pearl clouds, a cloud whale and paper boats.",
       "addedAt": "2026-10-31",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "cloudwash",
       "name": "Cloudwash",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2110992,
-      "manifest": "art/cloudwash/v6/manifest.json",
-      "thumb": "art/cloudwash/v6/thumb.1e34fbe5.webp",
+      "bytes": 2482582,
+      "manifest": "art/cloudwash/v7/manifest.json",
+      "thumb": "art/cloudwash/v7/thumb.1e34fbe5.webp",
       "thumbhash": "dQgGEwJ4fzh4eYd4aH+C9jc=",
       "palette": {
         "bg": "#F1E7D7",
@@ -851,16 +851,16 @@
       "mood": "A friendly ghost laundry with blue linocut icons, ivory paper, sleeping cloud basket.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "clover-nap",
       "name": "Clover Nap",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1367920,
-      "manifest": "art/clover-nap/v7/manifest.json",
-      "thumb": "art/clover-nap/v7/thumb.9082f718.webp",
+      "bytes": 1608046,
+      "manifest": "art/clover-nap/v8/manifest.json",
+      "thumb": "art/clover-nap/v8/thumb.9082f718.webp",
       "thumbhash": "9wgGEwCmj1aHdYyzSHBKYFo=",
       "palette": {
         "bg": "#F7F0E3",
@@ -879,16 +879,16 @@
       "mood": "A watercolour hedgehog napping in clover.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "cobalt-caravan",
       "name": "Cobalt Caravan",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1495416,
-      "manifest": "art/cobalt-caravan/v6/manifest.json",
-      "thumb": "art/cobalt-caravan/v6/thumb.791acf04.webp",
+      "bytes": 1687222,
+      "manifest": "art/cobalt-caravan/v7/manifest.json",
+      "thumb": "art/cobalt-caravan/v7/thumb.791acf04.webp",
       "thumbhash": "yPYFMwYqhmmInWBcd3B5Bpc=",
       "palette": {
         "bg": "#00134C",
@@ -914,16 +914,16 @@
       "mood": "Midnight blue, ivory icons, lantern oasis, sandstone cat and dune dial.",
       "addedAt": "2026-11-01",
       "category": "Space & Night",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "cobalt-ribbon",
       "name": "Cobalt Ribbon",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 961056,
-      "manifest": "art/cobalt-ribbon/v1/manifest.json",
-      "thumb": "art/cobalt-ribbon/v1/thumb.2b56f341.webp",
+      "bytes": 1177916,
+      "manifest": "art/cobalt-ribbon/v2/manifest.json",
+      "thumb": "art/cobalt-ribbon/v2/thumb.2b56f341.webp",
       "thumbhash": "MtcJEwKHj3d3g4t2l4+H+Xg=",
       "palette": {
         "bg": "#D7E2EB",
@@ -945,16 +945,16 @@
       "mood": "A cobalt ribbon curling over pale steel blue.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "concertina-rose",
       "name": "Concertina Rose",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 825454,
-      "manifest": "art/concertina-rose/v1/manifest.json",
-      "thumb": "art/concertina-rose/v1/thumb.4cbe039a.webp",
+      "bytes": 1043350,
+      "manifest": "art/concertina-rose/v2/manifest.json",
+      "thumb": "art/concertina-rose/v2/thumb.4cbe039a.webp",
       "thumbhash": "rDgSCwKIf4eHgX51iWB3Bmg=",
       "palette": {
         "bg": "#EDD8D1",
@@ -974,16 +974,16 @@
       "mood": "A folded concertina rose on pale blush.",
       "addedAt": "2026-11-01",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "copper-circuit",
       "name": "Copper Circuit",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1393034,
-      "manifest": "art/copper-circuit/v1/manifest.json",
-      "thumb": "art/copper-circuit/v1/thumb.4f73073f.webp",
+      "bytes": 1554708,
+      "manifest": "art/copper-circuit/v2/manifest.json",
+      "thumb": "art/copper-circuit/v2/thumb.4f73073f.webp",
       "thumbhash": "idcBCwJMUrl6e3Btd4BpCJg=",
       "palette": {
         "bg": "#0E252B",
@@ -1004,16 +1004,16 @@
       "mood": "Copper circuit traces on deep matte teal.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "crimson-reverie",
       "name": "Crimson Reverie",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1489660,
-      "manifest": "art/crimson-reverie/v6/manifest.json",
-      "thumb": "art/crimson-reverie/v6/thumb.b52e2af3.webp",
+      "bytes": 1646848,
+      "manifest": "art/crimson-reverie/v7/manifest.json",
+      "thumb": "art/crimson-reverie/v7/thumb.b52e2af3.webp",
       "thumbhash": "RDgCEwhqkIlkmoZoiYCYB4c=",
       "palette": {
         "bg": "#0C0C0D",
@@ -1042,16 +1042,16 @@
       "mood": "Charcoal silk, ruby folds, ivory line icons with tiny crimson inlays, silk dragon, lantern-lit moon gate.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "crumbkin",
       "name": "Crumbkin",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 662460,
-      "manifest": "art/crumbkin/v6/manifest.json",
-      "thumb": "art/crumbkin/v6/thumb.989a46d5.webp",
+      "bytes": 1523384,
+      "manifest": "art/crumbkin/v7/manifest.json",
+      "thumb": "art/crumbkin/v7/thumb.989a46d5.webp",
       "thumbhash": "NSkGEwLKb3V3g36TN4BoA4g=",
       "palette": {
         "bg": "#F1E0CE",
@@ -1073,16 +1073,16 @@
       "mood": "A marzipan hamster with crumbs and sweet treats.",
       "addedAt": "2026-11-01",
       "category": "Sweets & Treats",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "curlfin-cove",
       "name": "Curlfin Cove",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1963682,
-      "manifest": "art/curlfin-cove/v6/manifest.json",
-      "thumb": "art/curlfin-cove/v6/thumb.956d72f7.webp",
+      "bytes": 2282102,
+      "manifest": "art/curlfin-cove/v7/manifest.json",
+      "thumb": "art/curlfin-cove/v7/thumb.956d72f7.webp",
       "thumbhash": "b/gFEwSGj3eIdYuVJ4B4Aog=",
       "palette": {
         "bg": "#C4DBCE",
@@ -1109,16 +1109,16 @@
       "mood": "A peach quilled-paper seahorse with sea-glass paper, teal icons, bubble mobile.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "curling-frost",
       "name": "Curling Frost",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1785184,
-      "manifest": "art/curling-frost/v1/manifest.json",
-      "thumb": "art/curling-frost/v1/thumb.f519950a.webp",
+      "bytes": 2337574,
+      "manifest": "art/curling-frost/v2/manifest.json",
+      "thumb": "art/curling-frost/v2/thumb.f519950a.webp",
       "thumbhash": "dNcFAwDof1OYdX2yGlCXCNY=",
       "palette": {
         "bg": "#CCDFED",
@@ -1139,7 +1139,7 @@
       "mood": "Curling stones gliding across icy blue.",
       "addedAt": "2026-11-01",
       "category": "Seasonal",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "desert-afterglow",
@@ -1178,11 +1178,11 @@
     {
       "id": "dewdrop-den",
       "name": "Dewdrop Den",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1183674,
-      "manifest": "art/dewdrop-den/v6/manifest.json",
-      "thumb": "art/dewdrop-den/v6/thumb.beaafa2a.webp",
+      "bytes": 1331576,
+      "manifest": "art/dewdrop-den/v7/manifest.json",
+      "thumb": "art/dewdrop-den/v7/thumb.beaafa2a.webp",
       "thumbhash": "ricCEwCfjHWXioe0enD3FnA=",
       "palette": {
         "bg": "#BCA9CB",
@@ -1207,16 +1207,16 @@
       "mood": "A resin axolotl, pressed lilac flowers, lavender backgrounds, plum icons.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "disco-drift",
       "name": "Disco Drift",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 880386,
-      "manifest": "art/disco-drift/v7/manifest.json",
-      "thumb": "art/disco-drift/v7/thumb.8d1b9299.webp",
+      "bytes": 1098954,
+      "manifest": "art/disco-drift/v8/manifest.json",
+      "thumb": "art/disco-drift/v8/thumb.8d1b9299.webp",
       "thumbhash": "NBcGCwZ3f1h4dnqFlZB+CLg=",
       "palette": {
         "bg": "#D8D9F6",
@@ -1244,16 +1244,16 @@
       "mood": "Periwinkle, plum and tangerine, mirrorball roller rink, iridescent quad skate and flip clock.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "dunesilk",
       "name": "Dunesilk",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1315770,
-      "manifest": "art/dunesilk/v7/manifest.json",
-      "thumb": "art/dunesilk/v7/thumb.69585977.webp",
+      "bytes": 1550918,
+      "manifest": "art/dunesilk/v8/manifest.json",
+      "thumb": "art/dunesilk/v8/thumb.69585977.webp",
       "thumbhash": "bTkSEwR5f1h4hnloamCYBpY=",
       "palette": {
         "bg": "#EEDEC9",
@@ -1283,16 +1283,16 @@
       "mood": "A photographic-style dune landscape with pale sand haze, umber icons, wind lines, desert rose.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "ember-rift",
       "name": "Ember Rift",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1983714,
-      "manifest": "art/ember-rift/v7/manifest.json",
-      "thumb": "art/ember-rift/v7/thumb.813630e5.webp",
+      "bytes": 2141860,
+      "manifest": "art/ember-rift/v8/manifest.json",
+      "thumb": "art/ember-rift/v8/thumb.813630e5.webp",
       "thumbhash": "CAgCEwYwwpqWXaM/dZBaB6k=",
       "palette": {
         "bg": "#181E27",
@@ -1320,16 +1320,16 @@
       "mood": "A photographic-style lava stream with charcoal backgrounds, ash-white icons, basalt columns.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "ember-workshop",
       "name": "Ember Workshop",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2503810,
-      "manifest": "art/ember-workshop/v6/manifest.json",
-      "thumb": "art/ember-workshop/v6/thumb.1004248e.webp",
+      "bytes": 2769500,
+      "manifest": "art/ember-workshop/v7/manifest.json",
+      "thumb": "art/ember-workshop/v7/thumb.1004248e.webp",
       "thumbhash": "hygGEwSWkKh3imWHlZBpCZg=",
       "palette": {
         "bg": "#161412",
@@ -1355,16 +1355,16 @@
       "mood": "Soot-black paper, hammered copper and a railway inside a pocket watch.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "emerald-curio",
       "name": "Emerald Curio",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1290992,
-      "manifest": "art/emerald-curio/v7/manifest.json",
-      "thumb": "art/emerald-curio/v7/thumb.0f3f9b0e.webp",
+      "bytes": 1493838,
+      "manifest": "art/emerald-curio/v8/manifest.json",
+      "thumb": "art/emerald-curio/v8/thumb.0f3f9b0e.webp",
       "thumbhash": "BxgCCwI1izipf4fRZ4CFj8Y=",
       "palette": {
         "bg": "#201521",
@@ -1387,16 +1387,16 @@
       "mood": "Dark aubergine, emerald enamel and antique-brass collector theme.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "espresso-hour",
       "name": "Espresso Hour",
-      "packVersion": 8,
+      "packVersion": 9,
       "plus": false,
-      "bytes": 1762399,
-      "manifest": "art/espresso-hour/v8/manifest.json",
-      "thumb": "art/espresso-hour/v8/thumb.38a7db3e.webp",
+      "bytes": 1904637,
+      "manifest": "art/espresso-hour/v9/manifest.json",
+      "thumb": "art/espresso-hour/v9/thumb.38a7db3e.webp",
       "thumbhash": "yigGCwJdQMmJd3RMS1DaA6U=",
       "palette": {
         "bg": "#311E13",
@@ -1423,16 +1423,16 @@
       "mood": "Coffee-brown, cream and copper, cutaway moka cafe, latte artwork and cafe clock.",
       "addedAt": "2026-11-01",
       "category": "Sweets & Treats",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "event-horizon",
       "name": "Event Horizon",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 690994,
-      "manifest": "art/event-horizon/v6/manifest.json",
-      "thumb": "art/event-horizon/v6/thumb.ad8a120c.webp",
+      "bytes": 767306,
+      "manifest": "art/event-horizon/v7/manifest.json",
+      "thumb": "art/event-horizon/v7/thumb.ad8a120c.webp",
       "thumbhash": "QxgGEwRrUWmHr1CqamCGBmc=",
       "palette": {
         "bg": "#000000",
@@ -1459,16 +1459,16 @@
       "mood": "Black, platinum and amber accretion disc, lensing study, blended icons and horizon clock.",
       "addedAt": "2026-11-01",
       "category": "Space & Night",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "fern-and-brass",
       "name": "Fern & Brass",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 2179181,
-      "manifest": "art/fern-and-brass/v7/manifest.json",
-      "thumb": "art/fern-and-brass/v7/thumb.5b8348c9.webp",
+      "bytes": 2456621,
+      "manifest": "art/fern-and-brass/v8/manifest.json",
+      "thumb": "art/fern-and-brass/v8/thumb.5b8348c9.webp",
       "thumbhash": "BegBCwBacDl1jpV3aIAFB64=",
       "palette": {
         "bg": "#040E0E",
@@ -1489,16 +1489,16 @@
       "mood": "Lush ferns and warm antique brass.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v14"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "fig-nocturne",
       "name": "Fig Nocturne",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 1125666,
-      "manifest": "art/fig-nocturne/v4/manifest.json",
-      "thumb": "art/fig-nocturne/v4/thumb.3cceb633.webp",
+      "bytes": 1377924,
+      "manifest": "art/fig-nocturne/v5/manifest.json",
+      "thumb": "art/fig-nocturne/v5/thumb.3cceb633.webp",
       "thumbhash": "yRcGCwJMUIp5fWCMV3DXA6Q=",
       "palette": {
         "bg": "#1D171F",
@@ -1519,16 +1519,16 @@
       "mood": "Ripe figs on deep plum in low light.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "firefly-grove",
       "name": "Firefly Grove",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2142018,
-      "manifest": "art/firefly-grove/v6/manifest.json",
-      "thumb": "art/firefly-grove/v6/thumb.4bb67955.webp",
+      "bytes": 2319746,
+      "manifest": "art/firefly-grove/v7/manifest.json",
+      "thumb": "art/firefly-grove/v7/thumb.4bb67955.webp",
       "thumbhash": "R/gFEwI0cXd4X5KJhpBnCYg=",
       "palette": {
         "bg": "#0E1718",
@@ -1552,16 +1552,16 @@
       "mood": "Mossy woodland at blue hour, a lantern, ferns and fireflies.",
       "addedAt": "2026-10-31",
       "category": "Nature",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "floatplane-blue",
       "name": "Floatplane Blue",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 529722,
-      "manifest": "art/floatplane-blue/v1/manifest.json",
-      "thumb": "art/floatplane-blue/v1/thumb.f828c5f5.webp",
+      "bytes": 725276,
+      "manifest": "art/floatplane-blue/v2/manifest.json",
+      "thumb": "art/floatplane-blue/v2/thumb.f828c5f5.webp",
       "thumbhash": "tOcFAwCnj0WXh3uzBpJaQIo=",
       "palette": {
         "bg": "#D1DBE5",
@@ -1581,16 +1581,16 @@
       "mood": "A vintage floatplane over pale sky blue.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v2"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "fossil-cove",
       "name": "Fossil Cove",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1402146,
-      "manifest": "art/fossil-cove/v7/manifest.json",
-      "thumb": "art/fossil-cove/v7/thumb.54920f22.webp",
+      "bytes": 1820174,
+      "manifest": "art/fossil-cove/v8/manifest.json",
+      "thumb": "art/fossil-cove/v8/thumb.54920f22.webp",
       "thumbhash": "bvgJEwR3j0h3eImGeXCcCMc=",
       "palette": {
         "bg": "#CCD6CD",
@@ -1617,16 +1617,16 @@
       "mood": "Misty sage, limestone and teal, miniature egg museum, ceramic triceratops and strata clock.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "froggy-picnic",
       "name": "Froggy Picnic",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 607624,
-      "manifest": "art/froggy-picnic/v7/manifest.json",
-      "thumb": "art/froggy-picnic/v7/thumb.ff3b24a1.webp",
+      "bytes": 760928,
+      "manifest": "art/froggy-picnic/v8/manifest.json",
+      "thumb": "art/froggy-picnic/v8/thumb.ff3b24a1.webp",
       "thumbhash": "d+gFCwK3f2WIc46TN4B4BIg=",
       "palette": {
         "bg": "#E0F0E4",
@@ -1649,16 +1649,16 @@
       "mood": "Pastel mint, peach and butter-yellow kawaii picnic.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "frostglass-passage",
       "name": "Frostglass Passage",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1674262,
-      "manifest": "art/frostglass-passage/v6/manifest.json",
-      "thumb": "art/frostglass-passage/v6/thumb.4606cfe3.webp",
+      "bytes": 1847302,
+      "manifest": "art/frostglass-passage/v7/manifest.json",
+      "thumb": "art/frostglass-passage/v7/thumb.4606cfe3.webp",
       "thumbhash": "c+cFAwAlvxl3iIeGBqlBkAs=",
       "palette": {
         "bg": "#D3DCE8",
@@ -1689,16 +1689,16 @@
       "mood": "Pale silver-blue mist and snowy peaks with quiet slate outline icons, crystal cabin, frost-ring Arctic fox.",
       "addedAt": "2026-11-01",
       "category": "Seasonal",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "gambit-house",
       "name": "Gambit House",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 824428,
-      "manifest": "art/gambit-house/v6/manifest.json",
-      "thumb": "art/gambit-house/v6/thumb.33cd7da7.webp",
+      "bytes": 978624,
+      "manifest": "art/gambit-house/v7/manifest.json",
+      "thumb": "art/gambit-house/v7/thumb.33cd7da7.webp",
       "thumbhash": "7igOAwKLX0d4h3h4TCBqBJg=",
       "palette": {
         "bg": "#EBDBC9",
@@ -1728,16 +1728,16 @@
       "mood": "Ivory paper, black icons, oxblood knight, chessboard artwork and dual-window time/date concept.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "ginkgo-hour",
       "name": "Ginkgo Hour",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 898478,
-      "manifest": "art/ginkgo-hour/v7/manifest.json",
-      "thumb": "art/ginkgo-hour/v7/thumb.01e8900d.webp",
+      "bytes": 1079156,
+      "manifest": "art/ginkgo-hour/v8/manifest.json",
+      "thumb": "art/ginkgo-hour/v8/thumb.01e8900d.webp",
       "thumbhash": "NikGGwKnf4Zoc3laRpBkBWk=",
       "palette": {
         "bg": "#F5ECE0",
@@ -1758,16 +1758,16 @@
       "mood": "Golden ginkgo leaves in late-afternoon light.",
       "addedAt": "2026-11-01",
       "category": "Seasonal",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "glacier-quiet",
       "name": "Glacier Quiet",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1641948,
-      "manifest": "art/glacier-quiet/v6/manifest.json",
-      "thumb": "art/glacier-quiet/v6/thumb.4dd40acb.webp",
+      "bytes": 2083402,
+      "manifest": "art/glacier-quiet/v7/manifest.json",
+      "thumb": "art/glacier-quiet/v7/thumb.4dd40acb.webp",
       "thumbhash": "LdcNAwJ2j0h3iYd4qI9t+nk=",
       "palette": {
         "bg": "#C4D3E5",
@@ -1795,16 +1795,16 @@
       "mood": "A photographic-style blue ice lagoon with pale fog, slate icons, frozen bubble artwork.",
       "addedAt": "2026-11-01",
       "category": "Seasonal",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "glider-nook",
       "name": "Glider Nook",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1115454,
-      "manifest": "art/glider-nook/v1/manifest.json",
-      "thumb": "art/glider-nook/v1/thumb.eef1bb88.webp",
+      "bytes": 1526574,
+      "manifest": "art/glider-nook/v2/manifest.json",
+      "thumb": "art/glider-nook/v2/thumb.eef1bb88.webp",
       "thumbhash": "8ggGCwK4f2WHhHykR4B4BIc=",
       "palette": {
         "bg": "#DDE1C9",
@@ -1826,16 +1826,16 @@
       "mood": "A tiny glider tucked into a pistachio paper nook.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v3"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "heirloom-rouge",
       "name": "Heirloom Rouge",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 941954,
-      "manifest": "art/heirloom-rouge/v4/manifest.json",
-      "thumb": "art/heirloom-rouge/v4/thumb.1339bdfc.webp",
+      "bytes": 1125636,
+      "manifest": "art/heirloom-rouge/v5/manifest.json",
+      "thumb": "art/heirloom-rouge/v5/thumb.1339bdfc.webp",
       "thumbhash": "8igKCwSLX1eIlVyjY6A6Brs=",
       "palette": {
         "bg": "#EDE2D5",
@@ -1856,16 +1856,16 @@
       "mood": "Heirloom fruit in deep, rich rouge tones.",
       "addedAt": "2026-11-01",
       "category": "Sweets & Treats",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "heron-reed",
       "name": "Heron Reed",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 1296506,
-      "manifest": "art/heron-reed/v4/manifest.json",
-      "thumb": "art/heron-reed/v4/thumb.40c2d26e.webp",
+      "bytes": 1465630,
+      "manifest": "art/heron-reed/v5/manifest.json",
+      "thumb": "art/heron-reed/v5/thumb.40c2d26e.webp",
       "thumbhash": "sggKEwJ6X1h4hnmHh4B4CIg=",
       "palette": {
         "bg": "#E7E6DF",
@@ -1888,16 +1888,16 @@
       "mood": "A grey heron among reeds in pale morning mist.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "honeywood",
       "name": "Honeywood",
-      "packVersion": 8,
+      "packVersion": 9,
       "plus": false,
-      "bytes": 1793164,
-      "manifest": "art/honeywood/v8/manifest.json",
-      "thumb": "art/honeywood/v8/thumb.8306dfa2.webp",
+      "bytes": 1975364,
+      "manifest": "art/honeywood/v9/manifest.json",
+      "thumb": "art/honeywood/v9/thumb.8306dfa2.webp",
       "thumbhash": "LUoOEwR4fzh3iHmVdZBbCLk=",
       "palette": {
         "bg": "#F5DAAD",
@@ -1924,16 +1924,16 @@
       "mood": "Toasted cream, cocoa icons, amber honeycomb treehouse, sleeping wool bee and hexagonal clock.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "indigo-current",
       "name": "Indigo Current",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2740992,
-      "manifest": "art/indigo-current/v6/manifest.json",
-      "thumb": "art/indigo-current/v6/thumb.ea44ea86.webp",
+      "bytes": 3005610,
+      "manifest": "art/indigo-current/v7/manifest.json",
+      "thumb": "art/indigo-current/v7/thumb.ea44ea86.webp",
       "thumbhash": "zdYFAwB6YLh3ipV5enC3CEc=",
       "palette": {
         "bg": "#0E1F3D",
@@ -1956,16 +1956,16 @@
       "mood": "Indigo paper-craft harbour with a silver ink whale.",
       "addedAt": "2026-10-31",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "jade-meridian",
       "name": "Jade Meridian",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1714406,
-      "manifest": "art/jade-meridian/v6/manifest.json",
-      "thumb": "art/jade-meridian/v6/thumb.89840b2d.webp",
+      "bytes": 1840184,
+      "manifest": "art/jade-meridian/v7/manifest.json",
+      "thumb": "art/jade-meridian/v7/thumb.89840b2d.webp",
       "thumbhash": "TOgFCwJDkIp1fZamZ4CaCHk=",
       "palette": {
         "bg": "#182C1E",
@@ -1987,16 +1987,16 @@
       "mood": "Mineral green valley and a sleeping jade tiger.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "jellylight",
       "name": "Jellylight",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1004982,
-      "manifest": "art/jellylight/v6/manifest.json",
-      "thumb": "art/jellylight/v6/thumb.15cdc28a.webp",
+      "bytes": 1247940,
+      "manifest": "art/jellylight/v7/manifest.json",
+      "thumb": "art/jellylight/v7/thumb.15cdc28a.webp",
       "thumbhash": "jLYFCwJEhGmZb3al3KaQWwo=",
       "palette": {
         "bg": "#00213C",
@@ -2024,16 +2024,16 @@
       "mood": "Deep teal water, clean seafoam icons, translucent jellyfish, iridescent drifter and Current Clock.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v11"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "juniper-mist",
       "name": "Juniper Mist",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 857830,
-      "manifest": "art/juniper-mist/v7/manifest.json",
-      "thumb": "art/juniper-mist/v7/thumb.74e15c85.webp",
+      "bytes": 1124850,
+      "manifest": "art/juniper-mist/v8/manifest.json",
+      "thumb": "art/juniper-mist/v8/thumb.74e15c85.webp",
       "thumbhash": "MegJAwCEr3d3dJyFrFB2+Yk=",
       "palette": {
         "bg": "#D7E0DA",
@@ -2054,16 +2054,16 @@
       "mood": "Misty juniper branches and frosted berries.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "kaleido-cobalt",
       "name": "Kaleido Cobalt",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 843824,
-      "manifest": "art/kaleido-cobalt/v1/manifest.json",
-      "thumb": "art/kaleido-cobalt/v1/thumb.8869cc33.webp",
+      "bytes": 1084550,
+      "manifest": "art/kaleido-cobalt/v2/manifest.json",
+      "thumb": "art/kaleido-cobalt/v2/thumb.8869cc33.webp",
       "thumbhash": "DtcBAwCPZPeKdHd59pZ2C5g=",
       "palette": {
         "bg": "#23344A",
@@ -2083,16 +2083,16 @@
       "mood": "A cobalt kaleidoscope on blue slate.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v3"
+      "release": "glaze-packs-v18"
     },
     {
       "id": "kingfisher-blue",
       "name": "Kingfisher Blue",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 995594,
-      "manifest": "art/kingfisher-blue/v7/manifest.json",
-      "thumb": "art/kingfisher-blue/v7/thumb.00589bcb.webp",
+      "bytes": 1290592,
+      "manifest": "art/kingfisher-blue/v8/manifest.json",
+      "thumb": "art/kingfisher-blue/v8/thumb.00589bcb.webp",
       "thumbhash": "ddcFCwCbX2d4pFx2B4KaQLY=",
       "palette": {
         "bg": "#D1E6F5",
@@ -2111,16 +2111,16 @@
       "mood": "A brilliant kingfisher by the water.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "labradorite-hush",
       "name": "Labradorite Hush",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 1648850,
-      "manifest": "art/labradorite-hush/v4/manifest.json",
-      "thumb": "art/labradorite-hush/v4/thumb.043252a3.webp",
+      "bytes": 1981286,
+      "manifest": "art/labradorite-hush/v5/manifest.json",
+      "thumb": "art/labradorite-hush/v5/thumb.043252a3.webp",
       "thumbhash": "jfcFAwBHgMp4aKNclpCrv4U=",
       "palette": {
         "bg": "#262C34",
@@ -2141,16 +2141,16 @@
       "mood": "A flash of labradorite colour on calm stone.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "lavender-nocturne",
       "name": "Lavender Nocturne",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 3657960,
-      "manifest": "art/lavender-nocturne/v6/manifest.json",
-      "thumb": "art/lavender-nocturne/v6/thumb.d2c4c266.webp",
+      "bytes": 3944732,
+      "manifest": "art/lavender-nocturne/v7/manifest.json",
+      "thumb": "art/lavender-nocturne/v7/thumb.d2c4c266.webp",
       "thumbhash": "CigGCwB2gLh3eXR6dZAroMo=",
       "palette": {
         "bg": "#281521",
@@ -2177,16 +2177,16 @@
       "mood": "Aubergine linen, ivory icons, teacup village, sleeping hare and hoop clock.",
       "addedAt": "2026-11-01",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "lemon-lagoon",
       "name": "Lemon Lagoon",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1162988,
-      "manifest": "art/lemon-lagoon/v7/manifest.json",
-      "thumb": "art/lemon-lagoon/v7/thumb.c61e4048.webp",
+      "bytes": 1311970,
+      "manifest": "art/lemon-lagoon/v8/manifest.json",
+      "thumb": "art/lemon-lagoon/v8/thumb.c61e4048.webp",
       "thumbhash": "8vgJKwZ3n1lnhXx1l49W+2o=",
       "palette": {
         "bg": "#F6E8B5",
@@ -2214,16 +2214,16 @@
       "mood": "Pale lemon, cobalt icons, a bottled pool resort, blue ceramic octopus and pool-tile clock.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "lotus-drift",
       "name": "Lotus Drift",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 712022,
-      "manifest": "art/lotus-drift/v7/manifest.json",
-      "thumb": "art/lotus-drift/v7/thumb.cf8bec5d.webp",
+      "bytes": 815942,
+      "manifest": "art/lotus-drift/v8/manifest.json",
+      "thumb": "art/lotus-drift/v8/thumb.cf8bec5d.webp",
       "thumbhash": "EtcFCwIpnnt3fYB8SICIA5g=",
       "palette": {
         "bg": "#3A4C5F",
@@ -2244,16 +2244,16 @@
       "mood": "Lotus flowers drifting on a calm pond.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "lumen-mosaic",
       "name": "Lumen Mosaic",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1627526,
-      "manifest": "art/lumen-mosaic/v7/manifest.json",
-      "thumb": "art/lumen-mosaic/v7/thumb.c8e57494.webp",
+      "bytes": 1864398,
+      "manifest": "art/lumen-mosaic/v8/manifest.json",
+      "thumb": "art/lumen-mosaic/v8/thumb.c8e57494.webp",
       "thumbhash": "bEkKEwKqf6dXg4mIZJAKHvo=",
       "palette": {
         "bg": "#E6C5AD",
@@ -2276,16 +2276,16 @@
       "mood": "Peach, petrol teal and jewel-glass theme.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "madder-fold",
       "name": "Madder Fold",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 2027888,
-      "manifest": "art/madder-fold/v1/manifest.json",
-      "thumb": "art/madder-fold/v1/thumb.000e7858.webp",
+      "bytes": 2650402,
+      "manifest": "art/madder-fold/v2/manifest.json",
+      "thumb": "art/madder-fold/v2/thumb.000e7858.webp",
       "thumbhash": "UXkCAwBfZYmIm1Gqb2X3lnU=",
       "palette": {
         "bg": "#703227",
@@ -2307,16 +2307,16 @@
       "mood": "Folded madder-rust cotton in rich shadow.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v3"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "magnolia-veil",
       "name": "Magnolia Veil",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 534218,
-      "manifest": "art/magnolia-veil/v4/manifest.json",
-      "thumb": "art/magnolia-veil/v4/thumb.2463424b.webp",
+      "bytes": 946680,
+      "manifest": "art/magnolia-veil/v5/manifest.json",
+      "thumb": "art/magnolia-veil/v5/thumb.2463424b.webp",
       "thumbhash": "NAgGCwCab0eJeHmlR4B6A6c=",
       "palette": {
         "bg": "#E2DCDA",
@@ -2337,16 +2337,16 @@
       "mood": "Soft magnolia petals behind a quiet veil.",
       "addedAt": "2026-11-01",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "manta-silk",
       "name": "Manta Silk",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 870546,
-      "manifest": "art/manta-silk/v4/manifest.json",
-      "thumb": "art/manta-silk/v4/thumb.563b5afb.webp",
+      "bytes": 1785344,
+      "manifest": "art/manta-silk/v5/manifest.json",
+      "thumb": "art/manta-silk/v5/thumb.563b5afb.webp",
       "thumbhash": "s7cFCwSXf5aIdHuVh3h/p/c=",
       "palette": {
         "bg": "#C8E8E6",
@@ -2368,16 +2368,16 @@
       "mood": "A manta ray gliding through silky blue water.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "marigold-miles",
       "name": "Marigold Miles",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 672638,
-      "manifest": "art/marigold-miles/v1/manifest.json",
-      "thumb": "art/marigold-miles/v1/thumb.e8aa379b.webp",
+      "bytes": 884274,
+      "manifest": "art/marigold-miles/v2/manifest.json",
+      "thumb": "art/marigold-miles/v2/thumb.e8aa379b.webp",
       "thumbhash": "svcFCwKnj2Z4c42TR3CHBYc=",
       "palette": {
         "bg": "#CFD8EA",
@@ -2397,16 +2397,16 @@
       "mood": "Marigold garlands on pale periwinkle.",
       "addedAt": "2026-11-01",
       "category": "Seasonal",
-      "release": "glaze-packs-v3"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "marquetry-arc",
       "name": "Marquetry Arc",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1415688,
-      "manifest": "art/marquetry-arc/v1/manifest.json",
-      "thumb": "art/marquetry-arc/v1/thumb.a8759a80.webp",
+      "bytes": 1940418,
+      "manifest": "art/marquetry-arc/v2/manifest.json",
+      "thumb": "art/marquetry-arc/v2/thumb.a8759a80.webp",
       "thumbhash": "pkkOAwKIf2eHhoh5tXB0CIg=",
       "palette": {
         "bg": "#E2C6A0",
@@ -2427,16 +2427,16 @@
       "mood": "Inlaid wood marquetry arcs in pale maple.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v3"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "match-point",
       "name": "Match Point",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 3759080,
-      "manifest": "art/match-point/v6/manifest.json",
-      "thumb": "art/match-point/v6/thumb.2ddbccee.webp",
+      "bytes": 3953712,
+      "manifest": "art/match-point/v7/manifest.json",
+      "thumb": "art/match-point/v7/thumb.2ddbccee.webp",
       "thumbhash": "FNsCCwR+RliJn2B8iW+V+Gc=",
       "palette": {
         "bg": "#B2360B",
@@ -2464,16 +2464,16 @@
       "mood": "Clay tennis, cream icons, miniature court, vintage rackets and a navy scoreboard clock.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "matcha-mews",
       "name": "Matcha Mews",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1016486,
-      "manifest": "art/matcha-mews/v7/manifest.json",
-      "thumb": "art/matcha-mews/v7/thumb.df1c3e97.webp",
+      "bytes": 1275256,
+      "manifest": "art/matcha-mews/v8/manifest.json",
+      "thumb": "art/matcha-mews/v8/thumb.df1c3e97.webp",
       "thumbhash": "9BgOEwCYf1eIdoukZ4BpBVk=",
       "palette": {
         "bg": "#F8F1DF",
@@ -2498,16 +2498,16 @@
       "mood": "Warm cream, matcha green and pale pink original plush theme.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "matcha-riso-garden",
       "name": "Matcha Riso Garden",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1869650,
-      "manifest": "art/matcha-riso-garden/v7/manifest.json",
-      "thumb": "art/matcha-riso-garden/v7/thumb.79d00c4c.webp",
+      "bytes": 2141704,
+      "manifest": "art/matcha-riso-garden/v8/manifest.json",
+      "thumb": "art/matcha-riso-garden/v8/thumb.79d00c4c.webp",
       "thumbhash": "9RgKCwCXj4aHcY1HZ4BIB7k=",
       "palette": {
         "bg": "#F6EFDC",
@@ -2531,16 +2531,16 @@
       "mood": "Cream, matcha and rose risograph-style storybook fantasy.",
       "addedAt": "2026-11-01",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "meadowglow",
       "name": "Meadowglow",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1021870,
-      "manifest": "art/meadowglow/v6/manifest.json",
-      "thumb": "art/meadowglow/v6/thumb.98e8601f.webp",
+      "bytes": 1398076,
+      "manifest": "art/meadowglow/v7/manifest.json",
+      "thumb": "art/meadowglow/v7/thumb.98e8601f.webp",
       "thumbhash": "bykSIwJ3j0iHiHd4d4BnBxk=",
       "palette": {
         "bg": "#F5EADE",
@@ -2562,16 +2562,16 @@
       "mood": "A sunlit daisy meadow in soft morning mist.",
       "addedAt": "2026-10-31",
       "category": "Nature",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "midnight-conservatory",
       "name": "Midnight Conservatory",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2295676,
-      "manifest": "art/midnight-conservatory/v6/manifest.json",
-      "thumb": "art/midnight-conservatory/v6/thumb.44ebedfd.webp",
+      "bytes": 2569900,
+      "manifest": "art/midnight-conservatory/v7/manifest.json",
+      "thumb": "art/midnight-conservatory/v7/thumb.44ebedfd.webp",
       "thumbhash": "iOcFEwIET6dlendWqoCXDYk=",
       "palette": {
         "bg": "#122227",
@@ -2594,16 +2594,16 @@
       "mood": "A moonlit glasshouse in dark teal with a glasswing butterfly.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "midnight-matinee",
       "name": "Midnight Matinee",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1135482,
-      "manifest": "art/midnight-matinee/v6/manifest.json",
-      "thumb": "art/midnight-matinee/v6/thumb.15241117.webp",
+      "bytes": 1365390,
+      "manifest": "art/midnight-matinee/v7/manifest.json",
+      "thumb": "art/midnight-matinee/v7/thumb.15241117.webp",
       "thumbhash": "QxgGCwRmgFiKb2SWZoBmB4g=",
       "palette": {
         "bg": "#060000",
@@ -2626,16 +2626,16 @@
       "mood": "Charcoal and cherry velvet, an old cinema and an embroidered moth.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "millrace-mist",
       "name": "Millrace Mist",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1024252,
-      "manifest": "art/millrace-mist/v1/manifest.json",
-      "thumb": "art/millrace-mist/v1/thumb.551fc5c4.webp",
+      "bytes": 1456054,
+      "manifest": "art/millrace-mist/v2/manifest.json",
+      "thumb": "art/millrace-mist/v2/thumb.551fc5c4.webp",
       "thumbhash": "9PcFCwDnj2OXdY2yCHCJAKc=",
       "palette": {
         "bg": "#D8E1E0",
@@ -2654,16 +2654,16 @@
       "mood": "An old millrace in soft river mist.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v3"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "mochi-sleepover",
       "name": "Mochi Sleepover",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 625162,
-      "manifest": "art/mochi-sleepover/v7/manifest.json",
-      "thumb": "art/mochi-sleepover/v7/thumb.91843d6f.webp",
+      "bytes": 769772,
+      "manifest": "art/mochi-sleepover/v8/manifest.json",
+      "thumb": "art/mochi-sleepover/v8/thumb.91843d6f.webp",
       "thumbhash": "uCcGCwR2j1iHd4l3eIB1B5g=",
       "palette": {
         "bg": "#EAE0FC",
@@ -2688,16 +2688,16 @@
       "mood": "Milky lilac, strawberry pink and marshmallow-cream kawaii sleepover theme.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "moonmallow",
       "name": "Moonmallow",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1884176,
-      "manifest": "art/moonmallow/v7/manifest.json",
-      "thumb": "art/moonmallow/v7/thumb.188d1f38.webp",
+      "bytes": 2053212,
+      "manifest": "art/moonmallow/v8/manifest.json",
+      "thumb": "art/moonmallow/v8/thumb.188d1f38.webp",
       "thumbhash": "kgcKEwI3gHqIfXR4N4B4A3c=",
       "palette": {
         "bg": "#2D2A3F",
@@ -2719,16 +2719,16 @@
       "mood": "A tufted-wool koala dozing under the moon.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "moonpatch",
       "name": "Moonpatch",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 3541276,
-      "manifest": "art/moonpatch/v6/manifest.json",
-      "thumb": "art/moonpatch/v6/thumb.c40a80dd.webp",
+      "bytes": 3800624,
+      "manifest": "art/moonpatch/v7/manifest.json",
+      "thumb": "art/moonpatch/v7/thumb.c40a80dd.webp",
       "thumbhash": "ywcKEwJXgMl3hndpV4B8Bdg=",
       "palette": {
         "bg": "#101322",
@@ -2750,16 +2750,16 @@
       "mood": "A tiny felt astronaut on a cratered wool moon.",
       "addedAt": "2026-10-31",
       "category": "Space & Night",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "mosswick",
       "name": "Mosswick",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2675392,
-      "manifest": "art/mosswick/v6/manifest.json",
-      "thumb": "art/mosswick/v6/thumb.22d7162b.webp",
+      "bytes": 2915966,
+      "manifest": "art/mosswick/v7/manifest.json",
+      "thumb": "art/mosswick/v7/thumb.22d7162b.webp",
       "thumbhash": "JhkKEwKZbzd4iWd3aHB8BLg=",
       "palette": {
         "bg": "#BBB7A1",
@@ -2785,16 +2785,16 @@
       "mood": "A cork snail cottage with tufted moss, paper backgrounds, cocoa icons.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "nebula-veil",
       "name": "Nebula Veil",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 2655263,
-      "manifest": "art/nebula-veil/v7/manifest.json",
-      "thumb": "art/nebula-veil/v7/thumb.d0e7278c.webp",
+      "bytes": 2816493,
+      "manifest": "art/nebula-veil/v8/manifest.json",
+      "thumb": "art/nebula-veil/v8/thumb.d0e7278c.webp",
       "thumbhash": "ixcKCwZmgFl4m2Z3m1N/CKg=",
       "palette": {
         "bg": "#090B1A",
@@ -2817,16 +2817,16 @@
       "mood": "Ink-violet starfield with cyan and rose gas clouds.",
       "addedAt": "2026-11-01",
       "category": "Space & Night",
-      "release": "glaze-packs-v14"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "neon-monsoon",
       "name": "Neon Monsoon",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2237034,
-      "manifest": "art/neon-monsoon/v6/manifest.json",
-      "thumb": "art/neon-monsoon/v6/thumb.7983814f.webp",
+      "bytes": 2492998,
+      "manifest": "art/neon-monsoon/v7/manifest.json",
+      "thumb": "art/neon-monsoon/v7/thumb.7983814f.webp",
       "thumbhash": "yBcGCwSGkLiGinWJFoBYBrg=",
       "palette": {
         "bg": "#0B0A14",
@@ -2849,16 +2849,16 @@
       "mood": "A rainy neon alley with a tiny ramen shop.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "obsidian-tide",
       "name": "Obsidian Tide",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 3442456,
-      "manifest": "art/obsidian-tide/v6/manifest.json",
-      "thumb": "art/obsidian-tide/v6/thumb.24bc89fe.webp",
+      "bytes": 3690304,
+      "manifest": "art/obsidian-tide/v7/manifest.json",
+      "thumb": "art/obsidian-tide/v7/thumb.24bc89fe.webp",
       "thumbhash": "ktcJEwZoUFiLflV4em+191Y=",
       "palette": {
         "bg": "#2A2F34",
@@ -2883,16 +2883,16 @@
       "mood": "Black volcanic sand and turquoise surf seen from above.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "ochre-bend",
       "name": "Ochre Bend",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1621852,
-      "manifest": "art/ochre-bend/v6/manifest.json",
-      "thumb": "art/ochre-bend/v6/thumb.7a0c915e.webp",
+      "bytes": 1833956,
+      "manifest": "art/ochre-bend/v7/manifest.json",
+      "thumb": "art/ochre-bend/v7/thumb.7a0c915e.webp",
       "thumbhash": "azkSEwJ4f3iHdYh4jED1CHI=",
       "palette": {
         "bg": "#FEE3C5",
@@ -2921,16 +2921,16 @@
       "mood": "An Australian-inspired sandstone creek with pale sand haze, clay icons, gum leaves, ochre stone.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "olive-outpost",
       "name": "Olive Outpost",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1197046,
-      "manifest": "art/olive-outpost/v7/manifest.json",
-      "thumb": "art/olive-outpost/v7/thumb.6c39935a.webp",
+      "bytes": 1489464,
+      "manifest": "art/olive-outpost/v8/manifest.json",
+      "thumb": "art/olive-outpost/v8/thumb.6c39935a.webp",
       "thumbhash": "zAgGCwJdQZl4qzBejEC6CKU=",
       "palette": {
         "bg": "#30331E",
@@ -2957,16 +2957,16 @@
       "mood": "Dark olive canvas, cream icons, pocket campsite, camping lantern and field-watch clock.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "opal-abyss",
       "name": "Opal Abyss",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1936202,
-      "manifest": "art/opal-abyss/v6/manifest.json",
-      "thumb": "art/opal-abyss/v6/thumb.b14bea31.webp",
+      "bytes": 2218982,
+      "manifest": "art/opal-abyss/v7/manifest.json",
+      "thumb": "art/opal-abyss/v7/thumb.b14bea31.webp",
       "thumbhash": "DecNAwB4cLl4eYV5WcCBBj0=",
       "palette": {
         "bg": "#000C25",
@@ -2990,16 +2990,16 @@
       "mood": "Deep ink-blue water with a pearl nautilus and a lighthouse.",
       "addedAt": "2026-10-31",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "otter-wash",
       "name": "Otter Wash",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1206700,
-      "manifest": "art/otter-wash/v1/manifest.json",
-      "thumb": "art/otter-wash/v1/thumb.a25c6443.webp",
+      "bytes": 1777164,
+      "manifest": "art/otter-wash/v2/manifest.json",
+      "thumb": "art/otter-wash/v2/thumb.a25c6443.webp",
       "thumbhash": "8ecNAwKHf0eId4ukTjCn5QY=",
       "palette": {
         "bg": "#DAE3E5",
@@ -3020,16 +3020,16 @@
       "mood": "A watercolour otter floating on pale blue.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v3"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "papaya-punch",
       "name": "Papaya Punch",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 765182,
-      "manifest": "art/papaya-punch/v1/manifest.json",
-      "thumb": "art/papaya-punch/v1/thumb.3e821356.webp",
+      "bytes": 1127126,
+      "manifest": "art/papaya-punch/v2/manifest.json",
+      "thumb": "art/papaya-punch/v2/thumb.3e821356.webp",
       "thumbhash": "MikKCwKIf1eHhH6iS1DrQLM=",
       "palette": {
         "bg": "#F1DFCB",
@@ -3051,16 +3051,16 @@
       "mood": "Juicy papaya on cream-peach painted paper.",
       "addedAt": "2026-11-01",
       "category": "Sweets & Treats",
-      "release": "glaze-packs-v3"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "paper-carnival",
       "name": "Paper Carnival",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1617166,
-      "manifest": "art/paper-carnival/v6/manifest.json",
-      "thumb": "art/paper-carnival/v6/thumb.f092aa86.webp",
+      "bytes": 1766276,
+      "manifest": "art/paper-carnival/v7/manifest.json",
+      "thumb": "art/paper-carnival/v7/thumb.f092aa86.webp",
       "thumbhash": "8ygKCwKXjzeHiHq0aYCNBsg=",
       "palette": {
         "bg": "#F3E4D0",
@@ -3088,16 +3088,16 @@
       "mood": "Ivory paper, ink-blue icons, crimson foldout tent, pinwheel trio and Ferris-wheel clock.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "peach-puddle",
       "name": "Peach Puddle",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 972836,
-      "manifest": "art/peach-puddle/v7/manifest.json",
-      "thumb": "art/peach-puddle/v7/thumb.7f3817b2.webp",
+      "bytes": 1220306,
+      "manifest": "art/peach-puddle/v8/manifest.json",
+      "thumb": "art/peach-puddle/v8/thumb.7f3817b2.webp",
       "thumbhash": "+DgGCwLYf1SXhoqlJ4B6A6g=",
       "palette": {
         "bg": "#FAE2D8",
@@ -3119,16 +3119,16 @@
       "mood": "A chalk-pastel duckling splashing in peach puddles.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "peachskin",
       "name": "Peachskin",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 595084,
-      "manifest": "art/peachskin/v7/manifest.json",
-      "thumb": "art/peachskin/v7/thumb.05e8d3fd.webp",
+      "bytes": 752108,
+      "manifest": "art/peachskin/v8/manifest.json",
+      "thumb": "art/peachskin/v8/thumb.05e8d3fd.webp",
       "thumbhash": "NDkGEwKVr2eHdIyFWXCJA6c=",
       "palette": {
         "bg": "#F8E1D1",
@@ -3150,16 +3150,16 @@
       "mood": "Velvety peach skin and soft fruit tones.",
       "addedAt": "2026-11-01",
       "category": "Sweets & Treats",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "pebblekin-grove",
       "name": "Pebblekin Grove",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1859658,
-      "manifest": "art/pebblekin-grove/v6/manifest.json",
-      "thumb": "art/pebblekin-grove/v6/thumb.5db841e9.webp",
+      "bytes": 2089664,
+      "manifest": "art/pebblekin-grove/v7/manifest.json",
+      "thumb": "art/pebblekin-grove/v7/thumb.5db841e9.webp",
       "thumbhash": "5ggGCwKVm5aIYZ+iVpBnBok=",
       "palette": {
         "bg": "#A7A692",
@@ -3187,16 +3187,16 @@
       "mood": "A carved stone guardian with sage-grey paper, charcoal icons, pocket grotto.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "persimmon-press",
       "name": "Persimmon Press",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 2219216,
-      "manifest": "art/persimmon-press/v1/manifest.json",
-      "thumb": "art/persimmon-press/v1/thumb.e33f0087.webp",
+      "bytes": 2841942,
+      "manifest": "art/persimmon-press/v2/manifest.json",
+      "thumb": "art/persimmon-press/v2/thumb.e33f0087.webp",
       "thumbhash": "cSkKEwSXf2aIdIyFaHCMBsc=",
       "palette": {
         "bg": "#ECDEC4",
@@ -3218,16 +3218,16 @@
       "mood": "Persimmons as a hand-carved woodblock print.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "phosphor-amber",
       "name": "Phosphor Amber",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 670918,
-      "manifest": "art/phosphor-amber/v1/manifest.json",
-      "thumb": "art/phosphor-amber/v1/thumb.4f059210.webp",
+      "bytes": 928568,
+      "manifest": "art/phosphor-amber/v2/manifest.json",
+      "thumb": "art/phosphor-amber/v2/thumb.4f059210.webp",
       "thumbhash": "SwgGEwRYcJl5enVoR4B5BJg=",
       "palette": {
         "bg": "#1F2224",
@@ -3247,16 +3247,16 @@
       "mood": "Glowing amber phosphor on matte charcoal.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "pistachio-parlour",
       "name": "Pistachio Parlour",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 935278,
-      "manifest": "art/pistachio-parlour/v7/manifest.json",
-      "thumb": "art/pistachio-parlour/v7/thumb.379833e4.webp",
+      "bytes": 1093238,
+      "manifest": "art/pistachio-parlour/v8/manifest.json",
+      "thumb": "art/pistachio-parlour/v8/thumb.379833e4.webp",
       "thumbhash": "MQkKEwSpb0aId4uzV4B7Bqg=",
       "palette": {
         "bg": "#DFE1C8",
@@ -3282,16 +3282,16 @@
       "mood": "Pistachio, cream and cocoa, miniature pastry atelier, croissant study and porcelain clock.",
       "addedAt": "2026-11-01",
       "category": "Sweets & Treats",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "pitaya-pop",
       "name": "Pitaya Pop",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 762196,
-      "manifest": "art/pitaya-pop/v1/manifest.json",
-      "thumb": "art/pitaya-pop/v1/thumb.6411fd61.webp",
+      "bytes": 1121420,
+      "manifest": "art/pitaya-pop/v2/manifest.json",
+      "thumb": "art/pitaya-pop/v2/thumb.6411fd61.webp",
       "thumbhash": "tSgGAwLGn1SXdpyzKmCZAqY=",
       "palette": {
         "bg": "#F1E3D6",
@@ -3311,16 +3311,16 @@
       "mood": "Bright pink pitaya on warm ivory.",
       "addedAt": "2026-11-01",
       "category": "Sweets & Treats",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "plume-court",
       "name": "Plume Court",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1857538,
-      "manifest": "art/plume-court/v7/manifest.json",
-      "thumb": "art/plume-court/v7/thumb.09ab5af4.webp",
+      "bytes": 2074992,
+      "manifest": "art/plume-court/v8/manifest.json",
+      "thumb": "art/plume-court/v8/thumb.09ab5af4.webp",
       "thumbhash": "LBkKAwKHjqd3gH1H+XSNy/g=",
       "palette": {
         "bg": "#E0CCB3",
@@ -3344,16 +3344,16 @@
       "mood": "Limestone, peacock-blue, jade and bronze garden theme.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "pocket-pup",
       "name": "Pocket Pup",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 524414,
-      "manifest": "art/pocket-pup/v7/manifest.json",
-      "thumb": "art/pocket-pup/v7/thumb.07a08583.webp",
+      "bytes": 786764,
+      "manifest": "art/pocket-pup/v8/manifest.json",
+      "thumb": "art/pocket-pup/v8/thumb.07a08583.webp",
       "thumbhash": "eOcFCwLmj5RocY6EGWOgECY=",
       "palette": {
         "bg": "#D9EAFC",
@@ -3375,16 +3375,16 @@
       "mood": "A tiny eraser-style corgi in soft pastels.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "porcelain-tide",
       "name": "Porcelain Tide",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 2438902,
-      "manifest": "art/porcelain-tide/v7/manifest.json",
-      "thumb": "art/porcelain-tide/v7/thumb.1716a59d.webp",
+      "bytes": 2653966,
+      "manifest": "art/porcelain-tide/v8/manifest.json",
+      "thumb": "art/porcelain-tide/v8/thumb.1716a59d.webp",
       "thumbhash": "sucRIwaHj0eGiHh4iH+F+Eg=",
       "palette": {
         "bg": "#F4F3F2",
@@ -3405,16 +3405,16 @@
       "mood": "Pale porcelain blues and gentle sea foam.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v14"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "portico-dawn",
       "name": "Portico Dawn",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 710096,
-      "manifest": "art/portico-dawn/v1/manifest.json",
-      "thumb": "art/portico-dawn/v1/thumb.04617b1b.webp",
+      "bytes": 945086,
+      "manifest": "art/portico-dawn/v2/manifest.json",
+      "thumb": "art/portico-dawn/v2/thumb.04617b1b.webp",
       "thumbhash": "8SgGCwJ6f2h4hXtmiHB6CKc=",
       "palette": {
         "bg": "#DCCFC1",
@@ -3433,16 +3433,16 @@
       "mood": "A sandstone portico at first light.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "prism-orchard",
       "name": "Prism Orchard",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1801472,
-      "manifest": "art/prism-orchard/v6/manifest.json",
-      "thumb": "art/prism-orchard/v6/thumb.e791d81b.webp",
+      "bytes": 2014262,
+      "manifest": "art/prism-orchard/v7/manifest.json",
+      "thumb": "art/prism-orchard/v7/thumb.e791d81b.webp",
       "thumbhash": "MRgGGwRXX5mJdYl3iIB4CZg=",
       "palette": {
         "bg": "#CDC6D7",
@@ -3464,16 +3464,16 @@
       "mood": "Lilac mist and an orchard inside a glass pear.",
       "addedAt": "2026-11-01",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "protea-blush",
       "name": "Protea Blush",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 1354782,
-      "manifest": "art/protea-blush/v4/manifest.json",
-      "thumb": "art/protea-blush/v4/thumb.15e3223e.webp",
+      "bytes": 1782546,
+      "manifest": "art/protea-blush/v5/manifest.json",
+      "thumb": "art/protea-blush/v5/thumb.15e3223e.webp",
       "thumbhash": "cigKCwKab2aIhXqmVZBGBDk=",
       "palette": {
         "bg": "#EDE0E0",
@@ -3493,16 +3493,16 @@
       "mood": "One blush-pink king protea in soft light.",
       "addedAt": "2026-11-01",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "puffin-fold",
       "name": "Puffin Fold",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1892634,
-      "manifest": "art/puffin-fold/v1/manifest.json",
-      "thumb": "art/puffin-fold/v1/thumb.9e544b8f.webp",
+      "bytes": 2334918,
+      "manifest": "art/puffin-fold/v2/manifest.json",
+      "thumb": "art/puffin-fold/v2/thumb.9e544b8f.webp",
       "thumbhash": "L/gNCwCWnzd3ioZ5K0/BoEI=",
       "palette": {
         "bg": "#D9DDD8",
@@ -3524,16 +3524,16 @@
       "mood": "A paper-folded puffin on soft grey-green.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "quince-foil",
       "name": "Quince Foil",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 999562,
-      "manifest": "art/quince-foil/v1/manifest.json",
-      "thumb": "art/quince-foil/v1/thumb.60644bf2.webp",
+      "bytes": 1253758,
+      "manifest": "art/quince-foil/v2/manifest.json",
+      "thumb": "art/quince-foil/v2/thumb.60644bf2.webp",
       "thumbhash": "zdcBCwIHcq14e4FeF4B5Apg=",
       "palette": {
         "bg": "#1F3837",
@@ -3554,16 +3554,16 @@
       "mood": "Gold-foil quince on deep matte teal.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "rainleaf",
       "name": "Rainleaf",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1137694,
-      "manifest": "art/rainleaf/v6/manifest.json",
-      "thumb": "art/rainleaf/v6/thumb.66110054.webp",
+      "bytes": 1282602,
+      "manifest": "art/rainleaf/v7/manifest.json",
+      "thumb": "art/rainleaf/v7/thumb.66110054.webp",
       "thumbhash": "BugFAwBZc2p3n4SnWXBZ+cg=",
       "palette": {
         "bg": "#0C1610",
@@ -3591,16 +3591,16 @@
       "mood": "Photographic-style wet tropical leaves with dark forest backgrounds, silver-green icons, fern unfurl.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "rainlight",
       "name": "Rainlight",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 3600921,
-      "manifest": "art/rainlight/v7/manifest.json",
-      "thumb": "art/rainlight/v7/thumb.6cc0713f.webp",
+      "bytes": 3929547,
+      "manifest": "art/rainlight/v8/manifest.json",
+      "thumb": "art/rainlight/v8/thumb.6cc0713f.webp",
       "thumbhash": "xwcGCwSMQGiHnXZ4YNQIZnw=",
       "palette": {
         "bg": "#07070D",
@@ -3623,16 +3623,16 @@
       "mood": "A rainy night in plum, cyan and lilac, with a quiet koi.",
       "addedAt": "2026-10-31",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v14"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "regatta-blue",
       "name": "Regatta Blue",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 967192,
-      "manifest": "art/regatta-blue/v7/manifest.json",
-      "thumb": "art/regatta-blue/v7/thumb.5e4280af.webp",
+      "bytes": 1142834,
+      "manifest": "art/regatta-blue/v8/manifest.json",
+      "thumb": "art/regatta-blue/v8/thumb.5e4280af.webp",
       "thumbhash": "z9YFCwIGmSyHf4KJB4B5EIg=",
       "palette": {
         "bg": "#223B59",
@@ -3658,16 +3658,16 @@
       "mood": "Slate navy, sailcloth ivory, teak and warm-brass sailing theme.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "rosewater-reverie",
       "name": "Rosewater Reverie",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1477918,
-      "manifest": "art/rosewater-reverie/v6/manifest.json",
-      "thumb": "art/rosewater-reverie/v6/thumb.203e0eb4.webp",
+      "bytes": 1646600,
+      "manifest": "art/rosewater-reverie/v7/manifest.json",
+      "thumb": "art/rosewater-reverie/v7/thumb.203e0eb4.webp",
       "thumbhash": "r0gGCwJXb3iHlWlXhKB4CYk=",
       "palette": {
         "bg": "#DFC0BD",
@@ -3690,16 +3690,16 @@
       "mood": "Dusty rose satin, a bottled ballet and a satin swan.",
       "addedAt": "2026-10-31",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "saddlewood",
       "name": "Saddlewood",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1324426,
-      "manifest": "art/saddlewood/v7/manifest.json",
-      "thumb": "art/saddlewood/v7/thumb.82ae9434.webp",
+      "bytes": 1534538,
+      "manifest": "art/saddlewood/v8/manifest.json",
+      "thumb": "art/saddlewood/v8/thumb.82ae9434.webp",
       "thumbhash": "LRkOKwiHj1eIdYtXd4B7B6g=",
       "palette": {
         "bg": "#D7DCCB",
@@ -3722,16 +3722,16 @@
       "mood": "Sage, chestnut leather and antique-brass equestrian theme.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "saffron-courtyard",
       "name": "Saffron Courtyard",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1753080,
-      "manifest": "art/saffron-courtyard/v6/manifest.json",
-      "thumb": "art/saffron-courtyard/v6/thumb.44141cc1.webp",
+      "bytes": 2076150,
+      "manifest": "art/saffron-courtyard/v7/manifest.json",
+      "thumb": "art/saffron-courtyard/v7/thumb.44141cc1.webp",
       "thumbhash": "rEkSGwZ5f3iHdYiImXCYCJc=",
       "palette": {
         "bg": "#F7DFC4",
@@ -3754,16 +3754,16 @@
       "mood": "Warm chalk, terracotta and teal around a sunny courtyard.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "saguaro-siesta",
       "name": "Saguaro Siesta",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1118324,
-      "manifest": "art/saguaro-siesta/v7/manifest.json",
-      "thumb": "art/saguaro-siesta/v7/thumb.2c50fc92.webp",
+      "bytes": 1383288,
+      "manifest": "art/saguaro-siesta/v8/manifest.json",
+      "thumb": "art/saguaro-siesta/v8/thumb.2c50fc92.webp",
       "thumbhash": "bjkOCwSIjzh3iXiWd4BsCNk=",
       "palette": {
         "bg": "#EFD8BA",
@@ -3788,16 +3788,16 @@
       "mood": "Warm sand, terracotta, cactus green and turquoise desert theme.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "saltveil",
       "name": "Saltveil",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1311332,
-      "manifest": "art/saltveil/v7/manifest.json",
-      "thumb": "art/saltveil/v7/thumb.bfc24321.webp",
+      "bytes": 1578380,
+      "manifest": "art/saltveil/v8/manifest.json",
+      "thumb": "art/saltveil/v8/thumb.bfc24321.webp",
       "thumbhash": "rVgCCwJ31YhwrdiTZo1Q9jg=",
       "palette": {
         "bg": "#DCA2A0",
@@ -3826,16 +3826,16 @@
       "mood": "A photographic-style rose salt lagoon with blush backgrounds, wine icons, salt crystal, brine ripples.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v16"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "sea-glass-sunday",
       "name": "Sea Glass Sunday",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1154690,
-      "manifest": "art/sea-glass-sunday/v7/manifest.json",
-      "thumb": "art/sea-glass-sunday/v7/thumb.509024f5.webp",
+      "bytes": 1386464,
+      "manifest": "art/sea-glass-sunday/v8/manifest.json",
+      "thumb": "art/sea-glass-sunday/v8/thumb.509024f5.webp",
       "thumbhash": "thgGAwCoj3aHhH2TkqAHjYw=",
       "palette": {
         "bg": "#EEE5D9",
@@ -3855,16 +3855,16 @@
       "mood": "Sea glass and shells on a lazy Sunday shore.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "shuttle-sage",
       "name": "Shuttle Sage",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 530112,
-      "manifest": "art/shuttle-sage/v1/manifest.json",
-      "thumb": "art/shuttle-sage/v1/thumb.3208f71a.webp",
+      "bytes": 764586,
+      "manifest": "art/shuttle-sage/v2/manifest.json",
+      "thumb": "art/shuttle-sage/v2/thumb.3208f71a.webp",
       "thumbhash": "c/gFCwB4f2h5dH2zemCZCJc=",
       "palette": {
         "bg": "#D4DCD0",
@@ -3884,16 +3884,16 @@
       "mood": "A weaving shuttle and threads on pale sage.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "signal-yellow",
       "name": "Signal Yellow",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2331410,
-      "manifest": "art/signal-yellow/v6/manifest.json",
-      "thumb": "art/signal-yellow/v6/thumb.d316d195.webp",
+      "bytes": 2631466,
+      "manifest": "art/signal-yellow/v7/manifest.json",
+      "thumb": "art/signal-yellow/v7/thumb.d316d195.webp",
       "thumbhash": "pxgOEwKGj0eId4l3aXCZBpc=",
       "palette": {
         "bg": "#BFB7AF",
@@ -3919,16 +3919,16 @@
       "mood": "Concrete grey, black icons, yellow metro station, route sculpture and station clock.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "silver-orchard",
       "name": "Silver Orchard",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1359256,
-      "manifest": "art/silver-orchard/v6/manifest.json",
-      "thumb": "art/silver-orchard/v6/thumb.76032c6e.webp",
+      "bytes": 1562318,
+      "manifest": "art/silver-orchard/v7/manifest.json",
+      "thumb": "art/silver-orchard/v7/thumb.76032c6e.webp",
       "thumbhash": "DAgGCwBKoLl5bJB8VpD6h6Q=",
       "palette": {
         "bg": "#2A2623",
@@ -3956,16 +3956,16 @@
       "mood": "Warm charcoal, oxidised silver, celadon pears, pear conservatory, sleeping dormouse and leaf clock.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "sonata-house",
       "name": "Sonata House",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 789782,
-      "manifest": "art/sonata-house/v6/manifest.json",
-      "thumb": "art/sonata-house/v6/thumb.f35310ca.webp",
+      "bytes": 1191126,
+      "manifest": "art/sonata-house/v7/manifest.json",
+      "thumb": "art/sonata-house/v7/thumb.f35310ca.webp",
       "thumbhash": "KTkSEwSnj1aHh3iHhpB5B6g=",
       "palette": {
         "bg": "#E2D6C4",
@@ -3989,16 +3989,16 @@
       "mood": "Warm ivory, walnut and burgundy chamber-music theme.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "spare-time",
       "name": "Spare Time",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 522210,
-      "manifest": "art/spare-time/v6/manifest.json",
-      "thumb": "art/spare-time/v6/thumb.9ecd0905.webp",
+      "bytes": 838898,
+      "manifest": "art/spare-time/v7/manifest.json",
+      "thumb": "art/spare-time/v7/thumb.9ecd0905.webp",
       "thumbhash": "MvgJGwSWj5d5Yot4R4CGBGg=",
       "palette": {
         "bg": "#CEE4EC",
@@ -4022,16 +4022,16 @@
       "mood": "Powder-blue, navy and coral retro bowling theme.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v12"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "steam-and-sage",
       "name": "Steam & Sage",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 741142,
-      "manifest": "art/steam-and-sage/v1/manifest.json",
-      "thumb": "art/steam-and-sage/v1/thumb.58314a53.webp",
+      "bytes": 992992,
+      "manifest": "art/steam-and-sage/v2/manifest.json",
+      "thumb": "art/steam-and-sage/v2/thumb.58314a53.webp",
       "thumbhash": "cPgFCwKbX1aJhmu0VoBqBbk=",
       "palette": {
         "bg": "#CBD6CC",
@@ -4053,16 +4053,16 @@
       "mood": "A little steam train through pale sage hills.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v19"
     },
     {
       "id": "stellar-cradle",
       "name": "Stellar Cradle",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1289582,
-      "manifest": "art/stellar-cradle/v6/manifest.json",
-      "thumb": "art/stellar-cradle/v6/thumb.d0a73ffb.webp",
+      "bytes": 1516714,
+      "manifest": "art/stellar-cradle/v7/manifest.json",
+      "thumb": "art/stellar-cradle/v7/thumb.d0a73ffb.webp",
       "thumbhash": "hwcGEwQokEuEjbVoXljQVAY=",
       "palette": {
         "bg": "#010816",
@@ -4092,16 +4092,16 @@
       "mood": "Midnight navy, pearl icons, peach/blue protostellar cavities, dust disc and First Light Clock.",
       "addedAt": "2026-11-01",
       "category": "Space & Night",
-      "release": "glaze-packs-v13"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "summit-line",
       "name": "Summit Line",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1339968,
-      "manifest": "art/summit-line/v7/manifest.json",
-      "thumb": "art/summit-line/v7/thumb.d453cf3e.webp",
+      "bytes": 1512232,
+      "manifest": "art/summit-line/v8/manifest.json",
+      "thumb": "art/summit-line/v8/thumb.d453cf3e.webp",
       "thumbhash": "jNcFCwBocHl5a5fEh493CMg=",
       "palette": {
         "bg": "#162829",
@@ -4126,16 +4126,16 @@
       "mood": "Pine-black, snowy ivory and signal-red alpine cable-car theme.",
       "addedAt": "2026-11-01",
       "category": "Seasonal",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "sundew-ember",
       "name": "Sundew Ember",
-      "packVersion": 4,
+      "packVersion": 5,
       "plus": false,
-      "bytes": 1088334,
-      "manifest": "art/sundew-ember/v4/manifest.json",
-      "thumb": "art/sundew-ember/v4/thumb.25e66bd7.webp",
+      "bytes": 1259188,
+      "manifest": "art/sundew-ember/v5/manifest.json",
+      "thumb": "art/sundew-ember/v5/thumb.25e66bd7.webp",
       "thumbhash": "SigKGwRkoKloaIZ5dKBLB7o=",
       "palette": {
         "bg": "#1A121B",
@@ -4157,16 +4157,16 @@
       "mood": "Glowing sundew droplets in warm copper light.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v13"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "tapir-terracotta",
       "name": "Tapir Terracotta",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 652118,
-      "manifest": "art/tapir-terracotta/v1/manifest.json",
-      "thumb": "art/tapir-terracotta/v1/thumb.89d533e3.webp",
+      "bytes": 998726,
+      "manifest": "art/tapir-terracotta/v2/manifest.json",
+      "thumb": "art/tapir-terracotta/v2/thumb.89d533e3.webp",
       "thumbhash": "MjkGAwDGn0SXd4vCaXCKBqc=",
       "palette": {
         "bg": "#EDD1BE",
@@ -4185,16 +4185,16 @@
       "mood": "A gentle tapir on pale terracotta.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "tempest-noir",
       "name": "Tempest Noir",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 1342058,
-      "manifest": "art/tempest-noir/v7/manifest.json",
-      "thumb": "art/tempest-noir/v7/thumb.333e2ce2.webp",
+      "bytes": 1538866,
+      "manifest": "art/tempest-noir/v8/manifest.json",
+      "thumb": "art/tempest-noir/v8/thumb.333e2ce2.webp",
       "thumbhash": "yQcGCwIlcDuKfVZIRZA3AVk=",
       "palette": {
         "bg": "#131523",
@@ -4221,16 +4221,16 @@
       "mood": "Charcoal, electric ivory and copper, coastal lightning, bolt sculpture and basalt clock.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "tessera-tempo",
       "name": "Tessera Tempo",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 477970,
-      "manifest": "art/tessera-tempo/v1/manifest.json",
-      "thumb": "art/tessera-tempo/v1/thumb.266a1db2.webp",
+      "bytes": 830812,
+      "manifest": "art/tessera-tempo/v2/manifest.json",
+      "thumb": "art/tessera-tempo/v2/thumb.266a1db2.webp",
       "thumbhash": "sxgGCwJ4f1h4do3BeHCKBqY=",
       "palette": {
         "bg": "#E8DFD3",
@@ -4251,16 +4251,16 @@
       "mood": "Mosaic tesserae in a playful rhythm.",
       "addedAt": "2026-11-01",
       "category": "Abstract & Art",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "thistle-etch",
       "name": "Thistle Etch",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1021302,
-      "manifest": "art/thistle-etch/v1/manifest.json",
-      "thumb": "art/thistle-etch/v1/thumb.115a0f6c.webp",
+      "bytes": 1232678,
+      "manifest": "art/thistle-etch/v2/manifest.json",
+      "thumb": "art/thistle-etch/v2/thumb.115a0f6c.webp",
       "thumbhash": "jhcCAwB4cpd2rGBtUML/aFI=",
       "palette": {
         "bg": "#35293A",
@@ -4281,16 +4281,16 @@
       "mood": "Etched thistles on deep plum.",
       "addedAt": "2026-11-01",
       "category": "Moody & Dark",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "toucan-loom",
       "name": "Toucan Loom",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 3066436,
-      "manifest": "art/toucan-loom/v1/manifest.json",
-      "thumb": "art/toucan-loom/v1/thumb.839638f7.webp",
+      "bytes": 3519266,
+      "manifest": "art/toucan-loom/v2/manifest.json",
+      "thumb": "art/toucan-loom/v2/thumb.839638f7.webp",
       "thumbhash": "S/cBCwBSp0mJT5TFcqADCAo=",
       "palette": {
         "bg": "#20273A",
@@ -4312,16 +4312,16 @@
       "mood": "A bright toucan woven into dark indigo fabric.",
       "addedAt": "2026-11-01",
       "category": "Nature",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "tryline-russet",
       "name": "Tryline Russet",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1104366,
-      "manifest": "art/tryline-russet/v1/manifest.json",
-      "thumb": "art/tryline-russet/v1/thumb.0171a67a.webp",
+      "bytes": 1567864,
+      "manifest": "art/tryline-russet/v2/manifest.json",
+      "thumb": "art/tryline-russet/v2/thumb.0171a67a.webp",
       "thumbhash": "SxgCCwI/EuqKhURcSXCbBLY=",
       "palette": {
         "bg": "#342821",
@@ -4340,16 +4340,16 @@
       "mood": "A rugby tryline in russet and dark umber.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "typecase-ivory",
       "name": "Typecase Ivory",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 1320726,
-      "manifest": "art/typecase-ivory/v1/manifest.json",
-      "thumb": "art/typecase-ivory/v1/thumb.a5149fac.webp",
+      "bytes": 1748894,
+      "manifest": "art/typecase-ivory/v2/manifest.json",
+      "thumb": "art/typecase-ivory/v2/thumb.a5149fac.webp",
       "thumbhash": "sxgKAwKHj0d3d5zSaWCLB8c=",
       "palette": {
         "bg": "#EFE7DB",
@@ -4370,16 +4370,16 @@
       "mood": "Vintage letterpress type on ivory paper.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "velvet-observatory",
       "name": "Velvet Observatory",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 1162354,
-      "manifest": "art/velvet-observatory/v6/manifest.json",
-      "thumb": "art/velvet-observatory/v6/thumb.d7586329.webp",
+      "bytes": 1317720,
+      "manifest": "art/velvet-observatory/v7/manifest.json",
+      "thumb": "art/velvet-observatory/v7/thumb.d7586329.webp",
       "thumbhash": "hUgCAwBWkKh2mXmVVKA90Hc=",
       "palette": {
         "bg": "#240002",
@@ -4398,16 +4398,16 @@
       "mood": "A velvet-dark observatory under a sky of stars.",
       "addedAt": "2026-11-01",
       "category": "Space & Night",
-      "release": "glaze-packs-v13"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "verdigris-voyage",
       "name": "Verdigris Voyage",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 2017556,
-      "manifest": "art/verdigris-voyage/v6/manifest.json",
-      "thumb": "art/verdigris-voyage/v6/thumb.52d82148.webp",
+      "bytes": 2514114,
+      "manifest": "art/verdigris-voyage/v7/manifest.json",
+      "thumb": "art/verdigris-voyage/v7/thumb.52d82148.webp",
       "thumbhash": "rPgJCwJ0nzh3epd3Z3BKBrc=",
       "palette": {
         "bg": "#C6D0BC",
@@ -4430,16 +4430,16 @@
       "mood": "Seafoam mist and aged copper botanical machines.",
       "addedAt": "2026-11-01",
       "category": "Ocean & Water",
-      "release": "glaze-packs-v13"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "wickling-hollow",
       "name": "Wickling Hollow",
-      "packVersion": 6,
+      "packVersion": 7,
       "plus": false,
-      "bytes": 968116,
-      "manifest": "art/wickling-hollow/v6/manifest.json",
-      "thumb": "art/wickling-hollow/v6/thumb.3327fa60.webp",
+      "bytes": 1130514,
+      "manifest": "art/wickling-hollow/v7/manifest.json",
+      "thumb": "art/wickling-hollow/v7/thumb.3327fa60.webp",
       "thumbhash": "DPgFMwo3gIuIfoKZSHCIBIc=",
       "palette": {
         "bg": "#022435",
@@ -4467,16 +4467,16 @@
       "mood": "A sleepy beeswax dragon with petrol-blue paper, ivory icons, moth lantern.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v13"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "willow-wicket",
       "name": "Willow Wicket",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 543660,
-      "manifest": "art/willow-wicket/v1/manifest.json",
-      "thumb": "art/willow-wicket/v1/thumb.286c83e3.webp",
+      "bytes": 889808,
+      "manifest": "art/willow-wicket/v2/manifest.json",
+      "thumb": "art/willow-wicket/v2/thumb.286c83e3.webp",
       "thumbhash": "tAgGCwJ5f0h3lm3RamCbBrY=",
       "palette": {
         "bg": "#DDE1D2",
@@ -4497,16 +4497,16 @@
       "mood": "A cricket wicket by the willows on soft green.",
       "addedAt": "2026-11-01",
       "category": "City & Retro",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "wisteria-hush",
       "name": "Wisteria Hush",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 804712,
-      "manifest": "art/wisteria-hush/v7/manifest.json",
-      "thumb": "art/wisteria-hush/v7/thumb.1a69eb79.webp",
+      "bytes": 901040,
+      "manifest": "art/wisteria-hush/v8/manifest.json",
+      "thumb": "art/wisteria-hush/v8/thumb.1a69eb79.webp",
       "thumbhash": "dhcGAwKWj4aIdIp3AHyABXg=",
       "palette": {
         "bg": "#E4DAF2",
@@ -4527,16 +4527,16 @@
       "mood": "Soft wisteria blooms in a hushed garden.",
       "addedAt": "2026-11-01",
       "category": "Dreamy & Pastel",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "woven-wander",
       "name": "Woven Wander",
-      "packVersion": 1,
+      "packVersion": 2,
       "plus": false,
-      "bytes": 975730,
-      "manifest": "art/woven-wander/v1/manifest.json",
-      "thumb": "art/woven-wander/v1/thumb.fd4ff457.webp",
+      "bytes": 1591898,
+      "manifest": "art/woven-wander/v2/manifest.json",
+      "thumb": "art/woven-wander/v2/thumb.fd4ff457.webp",
       "thumbhash": "sxgGCwKofpZogH9VR4B1BFg=",
       "palette": {
         "bg": "#E7DFD3",
@@ -4558,16 +4558,16 @@
       "mood": "Woven textures and wandering threads on flax linen.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v4"
+      "release": "glaze-packs-v20"
     },
     {
       "id": "yuzu-soak",
       "name": "Yuzu Soak",
-      "packVersion": 7,
+      "packVersion": 8,
       "plus": false,
-      "bytes": 681652,
-      "manifest": "art/yuzu-soak/v7/manifest.json",
-      "thumb": "art/yuzu-soak/v7/thumb.8723d567.webp",
+      "bytes": 770938,
+      "manifest": "art/yuzu-soak/v8/manifest.json",
+      "thumb": "art/yuzu-soak/v8/thumb.8723d567.webp",
       "thumbhash": "tikGCwK2j2V3dIyUW1CJBJc=",
       "palette": {
         "bg": "#FEEFCA",
@@ -4589,7 +4589,7 @@
       "mood": "A ceramic capybara soaking in a warm yuzu bath.",
       "addedAt": "2026-11-01",
       "category": "Cute & Cosy",
-      "release": "glaze-packs-v17"
+      "release": "glaze-packs-v20"
     }
   ]
 }

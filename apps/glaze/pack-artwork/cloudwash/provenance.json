@@ -21,6 +21,23 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "cloudwash",
+      "id": "cloud-soap-dish",
+      "label": "Cloud Soap Dish",
+      "ref": "art/cloudwash/v7/widget-clothespin-bird.424c32a2.webp",
+      "prompt": "Use case: stylized-concept. ONE original square 1024\u00d71024 Glaze Cloudwash artwork. Reference ONLY for medium and palette. A gently scalloped blue-and-white porcelain soap dish holding one puffy cloud-shaped ivory soap bar, small clear blue soap bubbles floating just above, a folded blue floral washcloth beside it. Sophisticated flat blue-ink illustration on warm ivory linen paper, visible hand-drawn hatching and stippling, tiny restrained pale-gold sparkle accents, cheerful quiet laundry world. Complete object inside generous 12% margins. No basket, bird, iron or ghost washing stars. No text, numbers, calendar, clock, dial, progress, border, rounded card, logos or watermark. Brand-new subject and composition, never crop/copy/recolor.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-4f2b807e-fc1e-4ecd-b3bd-6502b1090473.png",
+      "image": "widget-cloud-soap-dish.c04a8a6e.webp",
+      "sha256": "c04a8a6e0163f8190b151de8817d531e75f1412301d3a1172791fb73a181de29",
+      "bytes": 435942,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

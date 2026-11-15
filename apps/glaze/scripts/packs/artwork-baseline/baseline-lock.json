@@ -1,45 +1,34 @@
 {
-  "catalogUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v5/catalog.json",
-  "catalogSha256": "726d2585d99d27ffedad8fb26c173364d09bc2436846200ee81b99eb8598669f",
-  "generatedAt": "2026-11-06T22:29:43.596Z",
-  "baselineCounts": {
-    "2": 3,
-    "3": 35,
-    "4": 98,
-    "5": 5
-  },
-  "additionsNeeded": 177,
+  "catalogUrl": "https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev/catalog.json",
+  "catalogSha256": "91f3f261ec9d9cad8fcd9d9354ca217dce5aefe10885940a9ba6da0c9ccc2c6c",
+  "generatedAt": "2026-11-14T00:00:00.000Z",
   "packs": [
     {
       "id": "agate-apricot",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/agate-apricot/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__agate-apricot__v1__manifest.json",
-      "sha256": "1fd0424713bbda40919f08b6dbeaeca83e0430fe42c0c8eec649c577e074c9dd",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/agate-apricot/v2/manifest.json",
+      "sha256": "f02f31499ab10719bde85bf1a13e89892cb2e6b824723e54419a96620f3e4caa",
       "artwork": [
         "agate-slice",
         "band-rhythm",
-        "crystal-progress",
-        "druzy-center"
+        "druzy-center",
+        "scalloped-agate-bowl",
+        "agate-shell-carving"
       ]
     },
     {
       "id": "airmail-daydream",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/airmail-daydream/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__airmail-daydream__v7__manifest.json",
-      "sha256": "30162f61900eb9e4dad6657c024d06079376039f759873842123b5409cbbcbe2",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/airmail-daydream/v8/manifest.json",
+      "sha256": "95db3010cb6e264bf1b68b7b8998822fef4f40d35387a8cb990481e241174d76",
       "artwork": [
         "stamp-terrarium",
         "hero-small",
         "art-20261106-mail-balloon",
-        "art-20261106-paper-swallow"
+        "art-20261106-paper-swallow",
+        "postal-satchel"
       ]
     },
     {
@@ -47,10 +36,7 @@
       "packVersion": 6,
       "release": "glaze-packs-v11",
       "manifest": "art/alpine-starlight/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__alpine-starlight__v6__manifest.json",
       "sha256": "c6b9a614c4e8816819899536de703dda4446ccacc7b9af4f3b2eacd6b31d07b6",
-      "count": 5,
-      "needs": 0,
       "artwork": [
         "copper-eclipse",
         "jupiter-polar",
@@ -61,500 +47,450 @@
     },
     {
       "id": "amber-archive",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/amber-archive/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__amber-archive__v6__manifest.json",
-      "sha256": "26755fadaf8bd8b5b6882c87fd6d972ccb6f468de928a31c0da10c2d60f5f304",
-      "count": 5,
-      "needs": 0,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/amber-archive/v7/manifest.json",
+      "sha256": "2ffdec39bd89624844f9002be95b3d7737a4a92cec5b7b43e3f425eebf846d0f",
       "artwork": [
         "archive-wax-seal",
         "pressed-leaf-bookmark",
-        "reading-chapters",
         "paper-owl",
-        "hero-small"
+        "hero-small",
+        "folded-paper-fox"
       ]
     },
     {
       "id": "apricot-fm",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/apricot-fm/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__apricot-fm__v6__manifest.json",
-      "sha256": "f9192064ab4fbb7ca296a427d83d22f920d2ae426fcf3c9abbb2ecb4522adc58",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/apricot-fm/v7/manifest.json",
+      "sha256": "4f58553be6c40d81f75eb65557a2befd5dafe0a11518c96c82018fa5b9e850c2",
       "artwork": [
         "apricot-headphones",
         "pocket-radio",
         "vinyl-cat",
-        "hero-small"
+        "hero-small",
+        "apricot-studio-mic"
       ]
     },
     {
       "id": "aurora-haven",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/aurora-haven/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__aurora-haven__v7__manifest.json",
-      "sha256": "8477e2ca0ae33cbd36a35827944dd711cc9a3aca842dfe4b04e514259e1466b6",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/aurora-haven/v8/manifest.json",
+      "sha256": "54f72cbecd9019e977248cf93ba9f031ecc90cad55452d081e88b255cfe8098f",
       "artwork": [
         "snow-mushrooms",
         "hero-small",
         "art-20261106-aurora-fox",
-        "art-20261106-aurora-prism"
+        "art-20261106-aurora-prism",
+        "aurora-seal"
       ]
     },
     {
       "id": "bamboo-ink",
-      "packVersion": 4,
-      "release": "glaze-packs-v11",
-      "manifest": "art/bamboo-ink/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__bamboo-ink__v4__manifest.json",
-      "sha256": "3b7d10b0340a0d12582593031eb5f262de1cfecb7eaf03fd3fb54ccc709a669a",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 5,
+      "release": "glaze-packs-v18",
+      "manifest": "art/bamboo-ink/v5/manifest.json",
+      "sha256": "c92adbecd003d6ac2cca322183e77ae6108cc11fe1e9fe23edcd9c9903f8ade4",
       "artwork": [
         "ink-wash",
         "leaf-fan",
-        "hero-small"
+        "hero-small",
+        "resting-crane",
+        "reed-skiff"
       ]
     },
     {
       "id": "bellbat-bloom",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/bellbat-bloom/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__bellbat-bloom__v6__manifest.json",
-      "sha256": "ee7b88b71c1d17708a88c335254eb3cd14fbef83d38285dcefe4e0e46f47feeb",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/bellbat-bloom/v7/manifest.json",
+      "sha256": "fe019b0d676ba1fb3dec35ebb33ff4547789fe36c4b62ba59209f3dded186e92",
       "artwork": [
         "bellflower-basket",
         "velvet-wing-bow",
         "seedpod-swing",
-        "hero-small"
+        "hero-small",
+        "velvet-acorn-lantern"
       ]
     },
     {
       "id": "berry-stitch",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/berry-stitch/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__berry-stitch__v7__manifest.json",
-      "sha256": "b538bab9b5c38e95e3912ff104478353fe740ace8b87079a19c7fe23902879ba",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/berry-stitch/v8/manifest.json",
+      "sha256": "05f6f7ba80ebca03d0580c8cfd0a267fcd31bb344963ff2491e76c99bb624cbd",
       "artwork": [
         "stitched-berry-basket",
         "hero-small",
         "art-20261107-bilberry-pincushion",
-        "art-20261107-thread-spool-finch"
+        "art-20261107-thread-spool-finch",
+        "berry-yarn-teapot"
       ]
     },
     {
       "id": "billabong-clay",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/billabong-clay/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__billabong-clay__v1__manifest.json",
-      "sha256": "bee2a4f6461c446b4b99f3016464235299bbf758565dd3e34c13a384e34c958f",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/billabong-clay/v2/manifest.json",
+      "sha256": "cdf761ab0c851ea8ef371db7e8253641c3356c7f763a3cddd1605e9cf0968e02",
       "artwork": [
         "clay-platypus",
-        "drop-progress",
         "eucalyptus-sprig",
-        "river-ripples"
+        "river-ripples",
+        "clay-water-lily",
+        "clay-river-turtle"
       ]
     },
     {
       "id": "birchlight",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/birchlight/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__birchlight__v6__manifest.json",
-      "sha256": "eac01dd3dfebd675c9e7931c49d4ff86c1f3a28f9499b53625e7ff55dcf972a2",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/birchlight/v7/manifest.json",
+      "sha256": "492bb1ef3519e83dc3240ec1ae29759c283cff915b4ac5ba282394495208ed29",
       "artwork": [
         "amber-fern-frame",
         "birch-seedpod",
         "golden-leaf",
-        "hero-small"
+        "hero-small",
+        "amber-birch-mushroom"
       ]
     },
     {
       "id": "blueprint-bureau",
-      "packVersion": 8,
-      "release": "glaze-packs-v17",
-      "manifest": "art/blueprint-bureau/v8/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__blueprint-bureau__v8__manifest.json",
-      "sha256": "527d3f2b2f9b3a026fe53629a6f388835f499e33f7475a47ffa55aae2bad7d43",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 9,
+      "release": "glaze-packs-v18",
+      "manifest": "art/blueprint-bureau/v9/manifest.json",
+      "sha256": "bf130effa5a2232ee4939df97229bcfc4f090bfc4ac617bab3893e8e9f82c826",
       "artwork": [
         "compass-beetle",
         "hero-small",
         "art-20261107-optical-lantern",
-        "art-20261107-mechanical-nautilus"
+        "art-20261107-mechanical-nautilus",
+        "articulated-seahorse"
       ]
     },
     {
       "id": "bluewing",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/bluewing/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__bluewing__v7__manifest.json",
-      "sha256": "cf164b87ff131fa3e55f28fad69d49567a6eb1dec484d70cd66e900432bbf7ed",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/bluewing/v8/manifest.json",
+      "sha256": "5e83edc84f440e59516e4f1795e3384af08a4fdd624d1f4a2662862eb8cc7295",
       "artwork": [
         "production-20261101-wing-study",
         "hero-small",
         "art-20261106-sapphire-chrysalis",
-        "art-20261106-filigree-wing"
+        "art-20261106-filigree-wing",
+        "sapphire-bluebell"
       ]
     },
     {
       "id": "boba-bear-club",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/boba-bear-club/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__boba-bear-club__v7__manifest.json",
-      "sha256": "2058b396ac2afce584918b7f7179ac5c4e9c6e1cd1d814e0a1788f4076dd88e4",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/boba-bear-club/v8/manifest.json",
+      "sha256": "b5adb21eda8fee5f9950985e2413d9d04bd612c122df06d1c378b7467e7481cc",
       "artwork": [
         "tapioca-planet",
         "hero-small",
         "art-20261107-caramel-pudding",
-        "art-20261107-strawberry-milk-carton"
+        "art-20261107-strawberry-milk-carton",
+        "strawberry-pancake-stack"
       ]
     },
     {
       "id": "brass-afterhours",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/brass-afterhours/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__brass-afterhours__v1__manifest.json",
-      "sha256": "aa89f2b25612c93dca300c74df0b137349fb181e94c6b1bbda53ca01103ea0c1",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/brass-afterhours/v2/manifest.json",
+      "sha256": "4db38c353cda4a0bbf2fa69454c120f83920b238e5852a41fcc979b8c9ec30bc",
       "artwork": [
         "key-rhythm",
         "reed-study",
-        "sax-bell"
+        "sax-bell",
+        "velvet-instrument-case",
+        "brass-cup-mute"
       ]
     },
     {
       "id": "cacao-velvet",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/cacao-velvet/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__cacao-velvet__v1__manifest.json",
-      "sha256": "29abd3dea805d28f75dae7d4f6dda3b893a89886ff51f031eace24d75d4ca351",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/cacao-velvet/v2/manifest.json",
+      "sha256": "8ec1dfb10e9383aff99dc129c7e09de175b055ad8d6991add8100e9e1bca2f4e",
       "artwork": [
         "cacao-leaf",
         "cacao-pod",
-        "roast-beans"
+        "roast-beans",
+        "chocolate-curls",
+        "cacao-blossom"
       ]
     },
     {
       "id": "calla-obscura",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/calla-obscura/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__calla-obscura__v1__manifest.json",
-      "sha256": "44d645f3f10206b405a2d228685635b5b09369db36be86593cccfa63c7d10e41",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/calla-obscura/v2/manifest.json",
+      "sha256": "6b02e5531594d1d4e6d31b60d46a2ecf23b7b493f500cc16b506310192ee4a02",
       "artwork": [
         "calla-pair",
         "dew-leaf",
-        "pearl-vase"
+        "pearl-vase",
+        "silver-moth",
+        "pearl-garden-snail"
       ]
     },
     {
       "id": "canopy-glaze",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/canopy-glaze/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__canopy-glaze__v1__manifest.json",
-      "sha256": "343de4304b5ed6a5bdd8171c415aa3d157eeb209e48e6d4872d795ae24c16e95",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/canopy-glaze/v2/manifest.json",
+      "sha256": "b1d03dc25acc90433f3b6daae2f51a90c5d6088b122120a3e5cb00f169dbc8dd",
       "artwork": [
         "jade-climber",
         "leaf-relief",
-        "tail-medallion"
+        "tail-medallion",
+        "canopy-orchid",
+        "jade-tree-frog"
       ]
     },
     {
       "id": "carbon-velocity",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/carbon-velocity/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__carbon-velocity__v7__manifest.json",
-      "sha256": "95030cc16c813d3f254d191a16b7106cd8de8194e1c4809f415b9c0fcc223084",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/carbon-velocity/v8/manifest.json",
+      "sha256": "ac69b1754395ceadd084a28ee5054d99a4e0d85e387fb8083bd7cf4f801dd7c8",
       "artwork": [
         "titanium-turbine",
         "hero-small",
         "art-20261107-carbon-gear",
-        "art-20261107-track-helmet"
+        "art-20261107-track-helmet",
+        "titanium-damper"
       ]
     },
     {
       "id": "carrom-cedar",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/carrom-cedar/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__carrom-cedar__v1__manifest.json",
-      "sha256": "9917326cbc118c5fe71bdd4de100ba8009a187cccb0b7d26579274a8d09d7175",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/carrom-cedar/v2/manifest.json",
+      "sha256": "2c0098327650eaf3ae569c4ca763cc722e026ac8bb2b3d6a0b3e68c8be0c3ba7",
       "artwork": [
         "cedar-board",
         "disc-stack",
-        "red-striker"
+        "red-striker",
+        "cedar-powder-brush",
+        "cotton-disc-pouch"
       ]
     },
     {
       "id": "cherry-arcade",
-      "packVersion": 7,
-      "release": "glaze-packs-v14",
-      "manifest": "art/cherry-arcade/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v14/art__cherry-arcade__v7__manifest.json",
-      "sha256": "d29b7ba471fcfeca3d0ac23ec5963a30ab4d20ed7ceff1be4435658a011c5f7d",
-      "count": 2,
-      "needs": 3,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/cherry-arcade/v8/manifest.json",
+      "sha256": "11cd1d2814f3ee6765e5ecfed61cb0cef4da9cc3b6efc2eb28768187cb0848cd",
       "artwork": [
-        "arcade-goals",
-        "pixel-cherry-star"
+        "pixel-cherry-star",
+        "cherry-claw-cabinet",
+        "mint-gamepad",
+        "pixel-dragon",
+        "mint-game-cartridge"
       ]
     },
     {
       "id": "cherry-ribbon",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/cherry-ribbon/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__cherry-ribbon__v7__manifest.json",
-      "sha256": "a047d12eef210f38be08815371347e329203b0699f7d351a7be561a9ce733653",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/cherry-ribbon/v8/manifest.json",
+      "sha256": "7087c47d3215e816e4d0c50c6933348f270122711273dcf4d26fe13703525d90",
       "artwork": [
         "ribbon-locket",
         "hero-small",
         "art-20261107-cherry-needlebook",
-        "art-20261107-ribbon-brooch"
+        "art-20261107-ribbon-brooch",
+        "cherry-ballet-slippers"
       ]
     },
     {
       "id": "chromatic-lab",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/chromatic-lab/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__chromatic-lab__v6__manifest.json",
-      "sha256": "8486b0c55cb951b72849773b542f263182bec60e60915302d3ff953e68023320",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/chromatic-lab/v7/manifest.json",
+      "sha256": "34ad96d5f7f44e5f79e9a5780340269db5854372e2aff2fcd315cff6fcfbcb40",
       "artwork": [
         "molecular-butterfly",
         "prism-beaker-garden",
         "spiral-glass",
-        "hero-small"
+        "hero-small",
+        "prism-microscope"
       ]
     },
     {
       "id": "cicada-linen",
-      "packVersion": 4,
-      "release": "glaze-packs-v11",
-      "manifest": "art/cicada-linen/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__cicada-linen__v4__manifest.json",
-      "sha256": "3472743a572eed77fd26113ac47e518c77ad005bd33b73b8194b1e4866779c9c",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 5,
+      "release": "glaze-packs-v18",
+      "manifest": "art/cicada-linen/v5/manifest.json",
+      "sha256": "b3d1e4ba9370dbd1e60ce6c3def9c6d08d7f527d48cf8bccce8d91b84b013160",
       "artwork": [
         "cicada-portrait",
         "wing-venation",
-        "hero-small"
+        "hero-small",
+        "lichen-bark-curl",
+        "fern-fiddlehead"
       ]
     },
     {
       "id": "cloud-atelier",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/cloud-atelier/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__cloud-atelier__v6__manifest.json",
-      "sha256": "86d2a5a94937492874810f4a2227449c82f346ca69ab8a54bc515936595b2e1c",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/cloud-atelier/v7/manifest.json",
+      "sha256": "32acf634d273daff9885fd3a8ad9388db7540f0baf862126169b46155fba9fd9",
       "artwork": [
         "balloon-skiff",
         "cloud-kite",
         "paper-boat",
-        "hero-small"
+        "hero-small",
+        "origami-cloud-swan"
       ]
     },
     {
       "id": "cloudwash",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/cloudwash/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__cloudwash__v6__manifest.json",
-      "sha256": "dd72ad1a8783dda6c9c82f21b5f5d9810f8fd3d41933c9a9226c604b5c07719e",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/cloudwash/v7/manifest.json",
+      "sha256": "a1bcbda0d7e33e31b53831d0404fcd4c09011059e83322ae153469c739ba4dbc",
       "artwork": [
         "clothespin-bird",
         "cloud-laundry-basket",
         "star-wash",
-        "hero-small"
+        "hero-small",
+        "blue-laundry-iron"
       ]
     },
     {
       "id": "clover-nap",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/clover-nap/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__clover-nap__v7__manifest.json",
-      "sha256": "13d01fed6d5adee89f4445227ee6a0050161e1a846ea64c25f6c39a1054a8cf5",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/clover-nap/v8/manifest.json",
+      "sha256": "72f28c991cb5bef0bbb2420ea771b54fdc559ff6a2d01fcb5283f685d8f7ba6e",
       "artwork": [
         "daisy-ladybird",
         "hero-small",
         "art-20261107-acorn-teacup",
-        "art-20261107-clover-nest"
+        "art-20261107-clover-nest",
+        "clover-snail-parasol"
       ]
     },
     {
       "id": "cobalt-caravan",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/cobalt-caravan/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__cobalt-caravan__v6__manifest.json",
-      "sha256": "3616b518b5f1391cd4b419aed97085aaaac16d915364965503ba6b9f440cbdd3",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/cobalt-caravan/v7/manifest.json",
+      "sha256": "d8301128a7d2cbc01f38157262be3e4eab08af3d49e1d0eb5002829f41313147",
       "artwork": [
         "lapis-compass",
         "oasis-bird",
         "sand-cat",
-        "hero-small"
+        "hero-small",
+        "lapis-dune-scarab"
       ]
     },
     {
       "id": "cobalt-ribbon",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/cobalt-ribbon/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__cobalt-ribbon__v1__manifest.json",
-      "sha256": "f4cc334c3dd9e1b6c75e57fbb074a59310cbbb8da0cf76815faf0d60a9f398f1",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/cobalt-ribbon/v2/manifest.json",
+      "sha256": "36ce6f285c5bd22b47444289d82e900f381d0748d8525dd398f9f57ec5e4ef93",
       "artwork": [
         "brushed-blue",
         "folded-fan",
-        "ribbon-loop"
+        "ribbon-loop",
+        "metal-feather",
+        "cobalt-cairn"
       ]
     },
     {
       "id": "concertina-rose",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/concertina-rose/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__concertina-rose__v1__manifest.json",
-      "sha256": "c4716f2f17d5933ccc1f05a9f2cf9f48700f62fc3aaf4a7b1394d49e90941811",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/concertina-rose/v2/manifest.json",
+      "sha256": "b740de425d92d4cd4896269642162db7491efbea4a731f4661f908de711025f5",
       "artwork": [
         "bellows-fold",
         "pearl-buttons",
-        "rosewood-concertina"
+        "rosewood-concertina",
+        "leather-handstrap",
+        "brass-tuning-fork"
       ]
     },
     {
       "id": "copper-circuit",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/copper-circuit/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__copper-circuit__v1__manifest.json",
-      "sha256": "d14610cebda9847c9717920376b8d250ffbe4e7d6ae85e838335041b1a3b22f6",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/copper-circuit/v2/manifest.json",
+      "sha256": "f0c721b61771d511ec57efa979c869b91a4e17bf225b708928180eeee3054ca8",
       "artwork": [
         "chip-island",
         "copper-coil",
-        "trace-flow"
+        "trace-flow",
+        "copper-fin-array",
+        "ceramic-transistor"
       ]
     },
     {
       "id": "crimson-reverie",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/crimson-reverie/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__crimson-reverie__v6__manifest.json",
-      "sha256": "206c906e8173a5d3e007d7859be3c768181cadbfca72ad5bf5be4b033140436f",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/crimson-reverie/v7/manifest.json",
+      "sha256": "eb0ecd929894ac466ca6cc3febf7c229a0e41e27a5a864caf5db0f95f28378ad",
       "artwork": [
         "crimson-fan",
         "silk-crane",
         "silk-dragon",
-        "hero-small"
+        "hero-small",
+        "crimson-silk-koi"
       ]
     },
     {
       "id": "crumbkin",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/crumbkin/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__crumbkin__v6__manifest.json",
-      "sha256": "e566361875a1fc4b1ff3f104533b9d4bae101525badfb382630ba83c76f22b35",
-      "count": 2,
-      "needs": 3,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/crumbkin/v7/manifest.json",
+      "sha256": "a452d0eb5da4c4d57107af799025b91f28122baf1a62fab71d30fcf74a2b4a90",
       "artwork": [
-        "crumb-goals",
-        "nougat-flowerpot"
+        "nougat-flowerpot",
+        "croissant-sailboat",
+        "biscuit-windmill",
+        "marzipan-squirrel",
+        "biscuit-treasure-chest"
       ]
     },
     {
       "id": "curlfin-cove",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/curlfin-cove/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__curlfin-cove__v6__manifest.json",
-      "sha256": "e0d406573b146397e680bcff5aa8977307691e432a0a984c66dbec7786fad826",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/curlfin-cove/v7/manifest.json",
+      "sha256": "8b35b810075af163ee64b6a6fd133ef2d93b6a19a9974077b50145fda7883291",
       "artwork": [
         "paper-starfish",
         "quilled-nautilus",
         "shell-nap",
-        "hero-small"
+        "hero-small",
+        "quilled-coral-crab"
       ]
     },
     {
       "id": "curling-frost",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/curling-frost/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__curling-frost__v1__manifest.json",
-      "sha256": "359082a96eed1a5fe6653817270ad959619c57ac9193e482fc41c5586fa2c609",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/curling-frost/v2/manifest.json",
+      "sha256": "28e6191e4abd555b928375061644c243e2297624ed11b622727987e159f22ca6",
       "artwork": [
         "granite-stone",
         "house-rings",
-        "sweep-brush"
+        "sweep-brush",
+        "pine-green-glove",
+        "ice-rosette"
       ]
     },
     {
@@ -562,10 +498,7 @@
       "packVersion": 6,
       "release": "glaze-packs-v11",
       "manifest": "art/desert-afterglow/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__desert-afterglow__v6__manifest.json",
       "sha256": "bf690bef57ac370714a86da545c03eb725447f3956197e7f9bbdaea759204264",
-      "count": 5,
-      "needs": 0,
       "artwork": [
         "crescent-moon",
         "desert-scarab",
@@ -576,1659 +509,1477 @@
     },
     {
       "id": "dewdrop-den",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/dewdrop-den/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__dewdrop-den__v6__manifest.json",
-      "sha256": "5e97a1b3ec910751ab4323317994b0b04cddc5b491304460ff8b93aaf263dc65",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/dewdrop-den/v7/manifest.json",
+      "sha256": "22cce54304d3061f934df27796a9f2a0afa3b5b080b5a5544e47bbb4a4e64fe4",
       "artwork": [
         "fern-dew-bead",
         "moss-lantern-ball",
         "raindrop-den",
-        "hero-small"
+        "hero-small",
+        "opal-glass-snail"
       ]
     },
     {
       "id": "disco-drift",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/disco-drift/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__disco-drift__v7__manifest.json",
-      "sha256": "b3f8d3632687b834926f5d74d37c107c7a5d5750c6bf9bb7e9d70dbe251daf78",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/disco-drift/v8/manifest.json",
+      "sha256": "817ea6b5a50f3aaf300808b0612dcc5e3597df3e89189d1b05603c52c4d8c3a7",
       "artwork": [
         "mirror-snapshot",
         "hero-small",
         "art-20261107-disco-cassette",
-        "art-20261107-prism-headphones"
+        "art-20261107-prism-headphones",
+        "mirror-tambourine"
       ]
     },
     {
       "id": "dunesilk",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/dunesilk/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__dunesilk__v7__manifest.json",
-      "sha256": "c68a9e52194ed51f4fb57fc7014b15208f2bd3d8e006ea36d3d45b93b2c277d7",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/dunesilk/v8/manifest.json",
+      "sha256": "e90ce8438ee4d47fd121d5afcc837f47fcef0f74227edb3262f9ae894c2e7e93",
       "artwork": [
         "wind-lines",
         "hero-small",
         "art-20261106-desert-rose",
-        "art-20261106-dune-shell"
+        "art-20261106-dune-shell",
+        "wind-carved-arch"
       ]
     },
     {
       "id": "ember-rift",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/ember-rift/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__ember-rift__v7__manifest.json",
-      "sha256": "ba6f3bd4c0a58d08e2f0b48f2fe0dda82a93ceb78efddd643e8b043e6a7c1e86",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/ember-rift/v8/manifest.json",
+      "sha256": "9faa220e1ff76b3c3eb19a51d182f553e2dbf211ccc234bbcd4c194766943185",
       "artwork": [
         "cooling-lava",
         "hero-small",
         "art-20261106-ember-geode",
-        "art-20261106-basalt-spires"
+        "art-20261106-basalt-spires",
+        "obsidian-arrowhead"
       ]
     },
     {
       "id": "ember-workshop",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/ember-workshop/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__ember-workshop__v6__manifest.json",
-      "sha256": "0d10b23fdac7757bc0325813264084451f1f85fe58b61f592bfae9384fbc2c42",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/ember-workshop/v7/manifest.json",
+      "sha256": "fbd6cc42d6bc8b72670e28e14a81ac9265694142d60f3b8d58f8c3ad94166480",
       "artwork": [
         "ember-lizard",
         "tin-workshop-robot",
         "pocket-railway",
-        "hero-small"
+        "hero-small",
+        "copper-forge-anvil"
       ]
     },
     {
       "id": "emerald-curio",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/emerald-curio/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__emerald-curio__v7__manifest.json",
-      "sha256": "8056d10f4a5b05ee738e3ed31a0e8695c1b10ea672e7e7c3c761cb4e036ac08c",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/emerald-curio/v8/manifest.json",
+      "sha256": "6ff02c833971f36da9129c171bec9ee7cad7f53478930a21c5e7afded80393f9",
       "artwork": [
         "fern-curio-orb",
         "hero-small",
         "art-20261107-emerald-moth",
-        "art-20261107-antique-key"
+        "art-20261107-antique-key",
+        "filigree-thimble"
       ]
     },
     {
       "id": "espresso-hour",
-      "packVersion": 8,
-      "release": "glaze-packs-v17",
-      "manifest": "art/espresso-hour/v8/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__espresso-hour__v8__manifest.json",
-      "sha256": "50d07d798c419e1c3f28bed7060b81b759ce0dc9116d3d50898e2b2152709e09",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 9,
+      "release": "glaze-packs-v18",
+      "manifest": "art/espresso-hour/v9/manifest.json",
+      "sha256": "3faf6534e70aaee09283cd56fe61e379f6f2f8e0266ecdaf4b13a7a1ebeb0d30",
       "artwork": [
         "coffee-plant-glass",
         "hero-small",
         "art-20261107-copper-grinder",
-        "art-20261107-moka-tiramisu"
+        "art-20261107-moka-tiramisu",
+        "walnut-portafilter"
       ]
     },
     {
       "id": "event-horizon",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/event-horizon/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__event-horizon__v6__manifest.json",
-      "sha256": "ab48ec004839820dd2447eaebfb3052ae4bc371fb71d116f0b5a7c0da779a8e1",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/event-horizon/v7/manifest.json",
+      "sha256": "006445cfe6c913a158dcaf8df77697a65a9dcbb34f18432ba2c7f7a3fb30d88d",
       "artwork": [
         "gravity-hourglass",
         "orbit-diamond",
         "lensing-study",
-        "hero-small"
+        "hero-small",
+        "photon-ribbon-helix"
       ]
     },
     {
       "id": "fern-and-brass",
-      "packVersion": 7,
-      "release": "glaze-packs-v14",
-      "manifest": "art/fern-and-brass/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v14/art__fern-and-brass__v7__manifest.json",
-      "sha256": "a9694c866580227449d130034806704305c3cc2aa7c20e4c185852e1de7a9693",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/fern-and-brass/v8/manifest.json",
+      "sha256": "64c0e0cf2b4ddececbd91c590820b8556fcd65fb2191c18d915f7f481c8ec385",
       "artwork": [
         "brass-leaf-beetle",
         "fern-glasshouse",
-        "hero-small"
+        "hero-small",
+        "brass-acorn",
+        "brass-watering-can"
       ]
     },
     {
       "id": "fig-nocturne",
-      "packVersion": 4,
-      "release": "glaze-packs-v11",
-      "manifest": "art/fig-nocturne/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__fig-nocturne__v4__manifest.json",
-      "sha256": "f576ad14792eca810c52aefc0cf29413412c2d3986a6da6082b43764a0ab37f7",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 5,
+      "release": "glaze-packs-v18",
+      "manifest": "art/fig-nocturne/v5/manifest.json",
+      "sha256": "bc38503a13a414d15c1df5ebff6d013c27fe35c73e0117475b8e8467cff4977a",
       "artwork": [
         "fig-pair",
         "rose-seeds",
-        "hero-small"
+        "hero-small",
+        "fig-wasp",
+        "fig-preserve-jar"
       ]
     },
     {
       "id": "firefly-grove",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/firefly-grove/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__firefly-grove__v6__manifest.json",
-      "sha256": "d76e0ffb7bcfd6f2f061c95ec543f0b7f91f18f7f18ab49a90ca260857241eec",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/firefly-grove/v7/manifest.json",
+      "sha256": "7ba4680c7ccaf6b5546f35168d6771b9b0208b19bb537359accea9beb6c0c1af",
       "artwork": [
         "firefly-jar",
         "mosswood-door",
         "sleeping-fox",
-        "hero-small"
+        "hero-small",
+        "mossy-hedgehog"
       ]
     },
     {
       "id": "floatplane-blue",
-      "packVersion": 1,
-      "release": "glaze-packs-v2",
-      "manifest": "art/floatplane-blue/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v2/art__floatplane-blue__v1__manifest.json",
-      "sha256": "c4221b99b65937aefa97fd4bb05fab912d30e7633699b7d84188ade72ecdf2f7",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/floatplane-blue/v2/manifest.json",
+      "sha256": "4edd039e4ba2c2f4ed59113f7368fe364a596ea2762176c824fc586abce778ef",
       "artwork": [
         "floatplane-model",
         "pontoon-study",
-        "wood-propeller"
+        "wood-propeller",
+        "mooring-cleat",
+        "aviator-goggles"
       ]
     },
     {
       "id": "fossil-cove",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/fossil-cove/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__fossil-cove__v7__manifest.json",
-      "sha256": "57956c473202a6f7a06e9e3dd85cb718cb98cc2edee9bd110b0bdf8fa87dc4a6",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/fossil-cove/v8/manifest.json",
+      "sha256": "9011a9522bcabd67d571f5e12ebf0a3e3523ba74744dac292e4a590dc33f95da",
       "artwork": [
         "fossil-ammonite",
         "hero-small",
         "art-20261107-amber-inclusion",
-        "art-20261107-mosaic-trilobite"
+        "art-20261107-mosaic-trilobite",
+        "sandstone-shark-tooth"
       ]
     },
     {
       "id": "froggy-picnic",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/froggy-picnic/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__froggy-picnic__v7__manifest.json",
-      "sha256": "657cc8ebede2c183a6d3a251bd5627bc0a44904155219d40c7d526aa073d7e29",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/froggy-picnic/v8/manifest.json",
+      "sha256": "174a75d0b089b0fb40076b7225d2ea8ec181e089d6385348e5564e8863fd10b1",
       "artwork": [
         "strawberry-basket",
         "hero-small",
         "art-20261107-lily-teapot",
-        "art-20261107-dewdrop-sandwich"
+        "art-20261107-dewdrop-sandwich",
+        "lily-picnic-chair"
       ]
     },
     {
       "id": "frostglass-passage",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/frostglass-passage/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__frostglass-passage__v6__manifest.json",
-      "sha256": "33ec803c52348a6fc9ae2b4f7d96fb78ebff3cf3b429e637d2ab8ecedc5b4cfb",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/frostglass-passage/v7/manifest.json",
+      "sha256": "265438134a928fbf4024d8769d4fd9997b10b5392fd38dd9d435756ae30c6c62",
       "artwork": [
         "glacier-pebble",
         "ice-lantern",
         "frost-fox",
-        "hero-small"
+        "hero-small",
+        "frostglass-pinecone"
       ]
     },
     {
       "id": "gambit-house",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/gambit-house/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__gambit-house__v6__manifest.json",
-      "sha256": "0f3e7d4dde6c5c24e4b29b3889b2dff0d25e96d28a085e4ec7d77be494ea2149",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/gambit-house/v7/manifest.json",
+      "sha256": "de88aa2bb44476174a9e2654d8201b6502bfdd1fced39702819348a6ef228b88",
       "artwork": [
         "onyx-rook",
         "pawn-pair",
         "oxblood-knight",
-        "hero-small"
+        "hero-small",
+        "ivory-bishop"
       ]
     },
     {
       "id": "ginkgo-hour",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/ginkgo-hour/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__ginkgo-hour__v7__manifest.json",
-      "sha256": "3e448ef3cc6076e62f4f769165d313ac98cd73fa77cf66fcc3ce47cc4866495b",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/ginkgo-hour/v8/manifest.json",
+      "sha256": "6196d5fba5ca2198fbb9ec0d1bae040811a3772ac783f71ffd5ffb044a073d28",
       "artwork": [
         "production-20261101-fan-leaf",
         "hero-small",
         "art-20261106-ginkgo-ink",
-        "art-20261106-golden-leaf-mobile"
+        "art-20261106-golden-leaf-mobile",
+        "golden-ginkgo-fruit"
       ]
     },
     {
       "id": "glacier-quiet",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/glacier-quiet/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__glacier-quiet__v6__manifest.json",
-      "sha256": "84d39dcff7a9ee2751a00d7f89501e07d6fb38e0cee99df9b68b456e79591982",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/glacier-quiet/v7/manifest.json",
+      "sha256": "5be594dfc7364778f60656e0c3dd42a6fd135c59c3b68226bbfcf518ba8a08f3",
       "artwork": [
         "frost-feather",
         "glacial-iceberg",
         "frozen-bubbles",
-        "hero-small"
+        "hero-small",
+        "dendritic-snow-crystal"
       ]
     },
     {
       "id": "glider-nook",
-      "packVersion": 1,
-      "release": "glaze-packs-v3",
-      "manifest": "art/glider-nook/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__glider-nook__v1__manifest.json",
-      "sha256": "586021ae1a03604fad863ad6f5eedfb663a629848079744c1725b548beea4eb5",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/glider-nook/v2/manifest.json",
+      "sha256": "9fa31a3a5e9ade12d7b873f12a38c8a7f6b4cae2251641c01b7581f157783c32",
       "artwork": [
         "felt-leaves",
-        "leaf-progress",
         "seed-keeper",
-        "winglet"
+        "winglet",
+        "felt-acorn-cradle",
+        "felt-toadstool-stool"
       ]
     },
     {
       "id": "heirloom-rouge",
-      "packVersion": 4,
-      "release": "glaze-packs-v11",
-      "manifest": "art/heirloom-rouge/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__heirloom-rouge__v4__manifest.json",
-      "sha256": "a4cf86e1425734fc6c76314c2efc3285bc523a6b8b7ed2498449a537d88aea80",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 5,
+      "release": "glaze-packs-v18",
+      "manifest": "art/heirloom-rouge/v5/manifest.json",
+      "sha256": "8414639bfb8733fe88c083caa16ea4e3fc60b8688e4853814f8bb3754e42be66",
       "artwork": [
         "seed-crosscut",
         "vine-trio",
-        "hero-small"
+        "hero-small",
+        "garden-snips",
+        "tomato-blossom-truss"
       ]
     },
     {
       "id": "heron-reed",
-      "packVersion": 4,
-      "release": "glaze-packs-v11",
-      "manifest": "art/heron-reed/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__heron-reed__v4__manifest.json",
-      "sha256": "2e4a2544f23a7ecbdb80fb09db574d8d09157e8421be486feb70b927d831a6f3",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 5,
+      "release": "glaze-packs-v18",
+      "manifest": "art/heron-reed/v5/manifest.json",
+      "sha256": "e6d01a68d368790d2ac7ba2bb0913a28563003a68bb3328fb93ca609cf01c33c",
       "artwork": [
         "heron-still",
         "reed-rhythm",
-        "hero-small"
+        "hero-small",
+        "reed-nest",
+        "marsh-lily-bud"
       ]
     },
     {
       "id": "honeywood",
-      "packVersion": 8,
-      "release": "glaze-packs-v17",
-      "manifest": "art/honeywood/v8/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__honeywood__v8__manifest.json",
-      "sha256": "48c0fc01816e729b2dd445d9cf9cd1c383eb3144b1ef1946a95ee5c04e3b0aa3",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 9,
+      "release": "glaze-packs-v18",
+      "manifest": "art/honeywood/v9/manifest.json",
+      "sha256": "d670d9faf96cdce5d1ffea0725fafd3f8c429bfb40b0badf68d5d3ee71e7ab17",
       "artwork": [
         "wool-moth",
         "hero-small",
         "art-20261107-wax-lantern",
-        "art-20261107-honey-spoon"
+        "art-20261107-honey-spoon",
+        "amber-hedgehog"
       ]
     },
     {
       "id": "indigo-current",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/indigo-current/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__indigo-current__v6__manifest.json",
-      "sha256": "2c857f6e060651686c409f69a0d728608e2929c740a64f8821f11f2e1d87a78d",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/indigo-current/v7/manifest.json",
+      "sha256": "20b881b0ba5527cca74416f8908064bee0bd9c7da50aece3e8f416658d709b0d",
       "artwork": [
         "ink-stingray",
         "paper-lighthouse",
         "paper-harbour",
-        "hero-small"
+        "hero-small",
+        "paper-octopus"
       ]
     },
     {
       "id": "jade-meridian",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/jade-meridian/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__jade-meridian__v6__manifest.json",
-      "sha256": "a6a0d569f0cb5a0cf3d25d0f02c078ade777afdd3fddab4bbfb5570e0c6aad65",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/jade-meridian/v7/manifest.json",
+      "sha256": "56c998d1fbb8e96b7689a95f62ed54b563ba0b0bf2609c87494f5d99471e4753",
       "artwork": [
         "jade-bonsai",
         "mountain-crane",
         "valley-disc",
-        "hero-small"
+        "hero-small",
+        "jade-cloud-tortoise"
       ]
     },
     {
       "id": "jellylight",
-      "packVersion": 6,
-      "release": "glaze-packs-v11",
-      "manifest": "art/jellylight/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v11/art__jellylight__v6__manifest.json",
-      "sha256": "2c7675df672d63e70c6303204a102b12828f502627c42a4c9b60f358285a7d8f",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v18",
+      "manifest": "art/jellylight/v7/manifest.json",
+      "sha256": "81ed7c1f98a31a424d376394cf213deb3ab044f8089ed2d1e41d04bebcbd9551",
       "artwork": [
         "glass-anemone",
         "opal-stingray",
         "prism-drifter",
-        "hero-small"
+        "hero-small",
+        "opal-sea-slug"
       ]
     },
     {
       "id": "juniper-mist",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/juniper-mist/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__juniper-mist__v7__manifest.json",
-      "sha256": "e11c74a8dcc0cfc6cd4cf86ba34c3cb4e7abb5a01f17f831589ac2cd2d48b4af",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v18",
+      "manifest": "art/juniper-mist/v8/manifest.json",
+      "sha256": "a7c4c6bc333c395778a75d4db887730f018dfc6221cca54ba95b7c333c3360d5",
       "artwork": [
         "production-20261101-needle-study",
         "hero-small",
         "art-20261106-frosted-juniper",
-        "art-20261106-winter-terrarium"
+        "art-20261106-winter-terrarium",
+        "winter-wren"
       ]
     },
     {
       "id": "kaleido-cobalt",
-      "packVersion": 1,
-      "release": "glaze-packs-v3",
-      "manifest": "art/kaleido-cobalt/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__kaleido-cobalt__v1__manifest.json",
-      "sha256": "67b525930038b36c63000d9d06569a77da4bb3d7b65b122ba4fecd5f1541c760",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v18",
+      "manifest": "art/kaleido-cobalt/v2/manifest.json",
+      "sha256": "ddafd087d746a7951f2736527882a1755e3b8323f5fd9019b636d561ea89af76",
       "artwork": [
         "cobalt-kaleidoscope",
         "mirror-triad",
-        "optical-rosette"
+        "optical-rosette",
+        "optical-spinning-top",
+        "glass-kingfisher"
       ]
     },
     {
       "id": "kingfisher-blue",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/kingfisher-blue/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__kingfisher-blue__v7__manifest.json",
-      "sha256": "0afb9bec0d088d3006a20521779c2a542cc5205e0eee6665ad8ca09f61a3736d",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/kingfisher-blue/v8/manifest.json",
+      "sha256": "e137253905e6182b44962082bd713c2a90cbd7259cad318a5427554c85465cbf",
       "artwork": [
         "production-20261101-reed-perch",
         "hero-small",
         "art-20261106-kingfisher-dive",
-        "art-20261106-river-feather"
+        "art-20261106-river-feather",
+        "river-reed-nest"
       ]
     },
     {
       "id": "labradorite-hush",
-      "packVersion": 4,
-      "release": "glaze-packs-v12",
-      "manifest": "art/labradorite-hush/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__labradorite-hush__v4__manifest.json",
-      "sha256": "858b1bdd6a76b640e4028379cc097969088a9546ceddca91e802878a9636e625",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 5,
+      "release": "glaze-packs-v19",
+      "manifest": "art/labradorite-hush/v5/manifest.json",
+      "sha256": "5da5739665da3482a7cd38af7783a92a33ae56a2e2f1bd922c67bd255a70cc89",
       "artwork": [
         "cleavage-lines",
         "stone-pair",
-        "hero-small"
+        "hero-small",
+        "mineral-mortar",
+        "carved-mineral-leaf"
       ]
     },
     {
       "id": "lavender-nocturne",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/lavender-nocturne/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__lavender-nocturne__v6__manifest.json",
-      "sha256": "72db182afc747b10754765fe639a983272be9a90b27a46970725a6b227714964",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/lavender-nocturne/v7/manifest.json",
+      "sha256": "5ba86444f80ab11a8dd5cd6e8d71ba6ccc318a76e19dcced6d3acc6dedf9aa13",
       "artwork": [
         "lavender-butterfly",
         "lavender-dream-jar",
         "teacup-village",
-        "hero-small"
+        "hero-small",
+        "lavender-embroidered-harp"
       ]
     },
     {
       "id": "lemon-lagoon",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/lemon-lagoon/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__lemon-lagoon__v7__manifest.json",
-      "sha256": "7e6fe98d43adee5f18b419805c80bf424c2fce4b0e7ffa79f45b5d56b4a59943",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/lemon-lagoon/v8/manifest.json",
+      "sha256": "b781d08a293b21c8e13730b324a556ddc977df87e4a5ed5cd506ab6440eea9e6",
       "artwork": [
         "lemon-sailboat",
         "hero-small",
         "art-20261107-pool-float",
-        "art-20261107-lagoon-tile"
+        "art-20261107-lagoon-tile",
+        "cobalt-lemon-juicer"
       ]
     },
     {
       "id": "lotus-drift",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/lotus-drift/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__lotus-drift__v7__manifest.json",
-      "sha256": "4f89fa3bcf1d1eb55bb89beda3c375c3e1b1e2133df38cae6a060a6512959dcd",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/lotus-drift/v8/manifest.json",
+      "sha256": "9a95c2421c7a66ee82bae5e81974e3c3d6e50fb1de37aff61bfb4405ddfd80d5",
       "artwork": [
         "pond-dragonfly",
         "hero-small",
         "art-20261107-lotus-tea-bowl",
-        "art-20261107-pond-minnow"
+        "art-20261107-pond-minnow",
+        "pond-water-strider"
       ]
     },
     {
       "id": "lumen-mosaic",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/lumen-mosaic/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__lumen-mosaic__v7__manifest.json",
-      "sha256": "421704555752f56f11f699974cd2005c2145394c8eafe138689cef875ac2b07f",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/lumen-mosaic/v8/manifest.json",
+      "sha256": "1d7d6a519d88285438c9a326ee6fedaca622082b2fcf2779ad023da8b002befd",
       "artwork": [
         "tessellated-sunbird",
         "hero-small",
         "art-20261107-mosaic-pomegranate",
-        "art-20261107-jewel-window"
+        "art-20261107-jewel-window",
+        "stained-glass-iris"
       ]
     },
     {
       "id": "madder-fold",
-      "packVersion": 1,
-      "release": "glaze-packs-v3",
-      "manifest": "art/madder-fold/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__madder-fold__v1__manifest.json",
-      "sha256": "f1f0a88b16201b43e1886ae18903c524cb41558dd4b0a724545eb7dde924334e",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/madder-fold/v2/manifest.json",
+      "sha256": "180885deac55cc22fa9ad2f169ead05e21fd758a587871e44d7253c0aed2e106",
       "artwork": [
         "folded-cotton",
         "pleat-study",
-        "resist-ring"
+        "resist-ring",
+        "dyed-thread-skein",
+        "stitched-cotton-pod"
       ]
     },
     {
       "id": "magnolia-veil",
-      "packVersion": 4,
-      "release": "glaze-packs-v12",
-      "manifest": "art/magnolia-veil/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__magnolia-veil__v4__manifest.json",
-      "sha256": "fea26b4d80d6d166feeee1bfe9a0c88d07be19bf563b820967ed43af9671cf26",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 5,
+      "release": "glaze-packs-v19",
+      "manifest": "art/magnolia-veil/v5/manifest.json",
+      "sha256": "b06e29702e1eff6050ae20d12b72bdf8b3eac3dbcc6af1c72ee7777b917111f9",
       "artwork": [
-        "gentle-progress",
         "ivory-bloom",
         "petal-fold",
-        "hero-small"
+        "hero-small",
+        "magnolia-seedpod",
+        "magnolia-skeleton-leaf"
       ]
     },
     {
       "id": "manta-silk",
-      "packVersion": 4,
-      "release": "glaze-packs-v12",
-      "manifest": "art/manta-silk/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__manta-silk__v4__manifest.json",
-      "sha256": "0069553bf56fd64e8982dda846b103c71e4c5cf88d46d2d00f7a8445b458338a",
-      "count": 2,
-      "needs": 3,
+      "packVersion": 5,
+      "release": "glaze-packs-v19",
+      "manifest": "art/manta-silk/v5/manifest.json",
+      "sha256": "a506854ad16b83f305bff544f7a2f876cb4d5d421e028521118ed3b6b17610ba",
       "artwork": [
         "ripple-caustic",
-        "sand-rays"
+        "sand-rays",
+        "silver-flying-fish",
+        "ivory-sea-fan",
+        "aqua-pearl-oyster"
       ]
     },
     {
       "id": "marigold-miles",
-      "packVersion": 1,
-      "release": "glaze-packs-v3",
-      "manifest": "art/marigold-miles/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__marigold-miles__v1__manifest.json",
-      "sha256": "f412593aea9ba964cf3a7386c3a0b938f6ab41728c671df862b56caa83f9439a",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/marigold-miles/v2/manifest.json",
+      "sha256": "c5ac9c4f42d3267f28826422f37edd8120f86c3e9a90cd125b1f96ff98e2bae0",
       "artwork": [
         "chrome-headlamp",
         "ivory-helmet",
-        "marigold-scooter"
+        "marigold-scooter",
+        "marigold-key-fob",
+        "navy-scooter-saddle"
       ]
     },
     {
       "id": "marquetry-arc",
-      "packVersion": 1,
-      "release": "glaze-packs-v3",
-      "manifest": "art/marquetry-arc/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__marquetry-arc__v1__manifest.json",
-      "sha256": "0db1ccd4e51227cad95711f97001ed455e43958c6ee90b66a65037e6e2460a2a",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/marquetry-arc/v2/manifest.json",
+      "sha256": "245eb3d1e5c5ca650ce1cea7cffce12d459ad84f388c8e698548fdc5fb0844e9",
       "artwork": [
         "chevron-grain",
         "nested-arch",
-        "veneer-sun"
+        "veneer-sun",
+        "bowtie-inlay",
+        "veneer-wave"
       ]
     },
     {
       "id": "match-point",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/match-point/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__match-point__v6__manifest.json",
-      "sha256": "e9cb33b1e75cb248135ead17d8ed49fdeb3e8e549868f519f87a02657e3585f1",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/match-point/v7/manifest.json",
+      "sha256": "0542430255bc9ecba993411d60075d4ea0abe333f5aed7dd3345e6954d8b17fb",
       "artwork": [
         "racket-butterfly",
         "tennis-planter",
         "racket-study",
-        "hero-small"
+        "hero-small",
+        "clay-court-tennis-shoe"
       ]
     },
     {
       "id": "matcha-mews",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/matcha-mews/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__matcha-mews__v7__manifest.json",
-      "sha256": "d5d9416cd365407e40db998650f4b780ab48b332d5282b4fd180418ca6ea00a2",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/matcha-mews/v8/manifest.json",
+      "sha256": "afa702813ea8c79f232c6a0f32f8af0be2d0dea28dea40e2c823c77f2b66c65b",
       "artwork": [
         "teacup-fern",
         "hero-small",
         "art-20261107-matcha-kitten",
-        "art-20261107-whisk-bowl"
+        "art-20261107-whisk-bowl",
+        "felt-matcha-dango"
       ]
     },
     {
       "id": "matcha-riso-garden",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/matcha-riso-garden/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__matcha-riso-garden__v7__manifest.json",
-      "sha256": "b71e57a5439b9e3c5f0f5bc1afdc3836f20d553b81885abefbf0606e3cb5219f",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/matcha-riso-garden/v8/manifest.json",
+      "sha256": "01ad64cbec282a1e2dc5c4223568962273b3a2a4a616cb7d4ecc96d3ff5a844e",
       "artwork": [
         "riso-butterfly",
         "hero-small",
         "art-20261107-riso-foxglove",
-        "art-20261107-seed-packet"
+        "art-20261107-seed-packet",
+        "riso-watering-can"
       ]
     },
     {
       "id": "meadowglow",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/meadowglow/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__meadowglow__v6__manifest.json",
-      "sha256": "397496588debb898f4fda451bfb4e395c7f5d2ec81496d1ec673001ea75b95c9",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/meadowglow/v7/manifest.json",
+      "sha256": "c4f76ca31a310a8ff86f67d584493e73a15da317a738c97bd4d740207adec113",
       "artwork": [
         "dew-grass-orb",
         "sunlit-dandelion",
         "morning-grass",
-        "hero-small"
+        "hero-small",
+        "morning-dew-web"
       ]
     },
     {
       "id": "midnight-conservatory",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/midnight-conservatory/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__midnight-conservatory__v6__manifest.json",
-      "sha256": "bd7f621cfeb8c1da86d88536fa05811d88a981225f5bf707cfab608633524c25",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/midnight-conservatory/v7/manifest.json",
+      "sha256": "22f9d4754e9a22696617a3f631351eff00fd742af96038306ff1e460c8105d08",
       "artwork": [
         "dew-capsule",
         "night-orchid",
         "hanging-garden",
-        "hero-small"
+        "hero-small",
+        "moonlit-pitcher-plant"
       ]
     },
     {
       "id": "midnight-matinee",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/midnight-matinee/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__midnight-matinee__v6__manifest.json",
-      "sha256": "f8369dbe48bccbc950e790ddb98e8a2fa849da5580910db8486018102aaa2f8e",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/midnight-matinee/v7/manifest.json",
+      "sha256": "6af4508e5991ef3e919023ee281ba61c5f9fef6907cfb08f92e07411d28e64b0",
       "artwork": [
         "popcorn-planet",
         "velvet-cinema-bat",
         "velvet-moth",
-        "hero-small"
+        "hero-small",
+        "brass-film-projector"
       ]
     },
     {
       "id": "millrace-mist",
-      "packVersion": 1,
-      "release": "glaze-packs-v3",
-      "manifest": "art/millrace-mist/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__millrace-mist__v1__manifest.json",
-      "sha256": "eea060d59a5fdb1a88cc33f6df6dd3f5e7444678e28fbe18b960d4ec2e3d656d",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/millrace-mist/v2/manifest.json",
+      "sha256": "7075b467baa97f85cffcb9e8a094b0a50db0243d0c7cbe75cdedec5e6b606cf6",
       "artwork": [
         "oak-waterwheel",
         "ripple-study",
-        "timber-bucket"
+        "timber-bucket",
+        "moss-footbridge",
+        "oak-sluice-gate"
       ]
     },
     {
       "id": "mochi-sleepover",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/mochi-sleepover/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__mochi-sleepover__v7__manifest.json",
-      "sha256": "1c78b832c6bfa1857dc4d15f66bc3030ef24f329dc9434b64fda63fc39ca7772",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/mochi-sleepover/v8/manifest.json",
+      "sha256": "3bd1e799ac73511908cfbaf8731958031b0d5c17452232ca00f657cc8bd058b1",
       "artwork": [
         "star-hot-water-bottle",
         "hero-small",
         "art-20261107-pillow-fort",
-        "art-20261107-sleepover-lantern"
+        "art-20261107-sleepover-lantern",
+        "cloud-sleep-mask"
       ]
     },
     {
       "id": "moonmallow",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/moonmallow/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__moonmallow__v7__manifest.json",
-      "sha256": "7d2d947d34fe88388464e9101c6dc4da40188802e37b515919f76bcf274d8124",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/moonmallow/v8/manifest.json",
+      "sha256": "5f684e75f9ce326b6207b22e12bad77fd6603ae7593b7b4f70c39aca0e8918fc",
       "artwork": [
         "wool-cloud-swing",
         "hero-small",
         "art-20261107-wool-comet",
-        "art-20261107-koala-nest"
+        "art-20261107-koala-nest",
+        "tufted-saturn-pillow"
       ]
     },
     {
       "id": "moonpatch",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/moonpatch/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__moonpatch__v6__manifest.json",
-      "sha256": "82843e8d9e176f486aad71561cbf989d11aae9f7e051de583a5fd809a1427800",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/moonpatch/v7/manifest.json",
+      "sha256": "03a19ba9499b1f180f1b3325e7b0d611da1b1106c311829746102bc5c1ca14c7",
       "artwork": [
         "patchwork-kite",
         "quilted-rocket",
         "star-catcher",
-        "hero-small"
+        "hero-small",
+        "patchwork-moon-rover"
       ]
     },
     {
       "id": "mosswick",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/mosswick/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__mosswick__v6__manifest.json",
-      "sha256": "d170dd9a42c5f6d02a5c649e24d92a5bb6ac043b537a594cd98fc2d7b374517a",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/mosswick/v7/manifest.json",
+      "sha256": "e0a7f26f65142356310ff3a3cd565a3b382c8841738d1ebbfcbe26f0650e83bf",
       "artwork": [
         "bark-snail",
         "moss-tower",
         "travelling-cottage",
-        "hero-small"
+        "hero-small",
+        "mosswood-storybook"
       ]
     },
     {
       "id": "nebula-veil",
-      "packVersion": 7,
-      "release": "glaze-packs-v14",
-      "manifest": "art/nebula-veil/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v14/art__nebula-veil__v7__manifest.json",
-      "sha256": "c3930dedeb7dffbebede88ef686dd4a09d21edb0bbe9e7e09ebb8883c8830867",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/nebula-veil/v8/manifest.json",
+      "sha256": "df7446ee6ceb8251a39ec8fad28a771d181f7cba7551a17fd502be62df17ffa2",
       "artwork": [
         "glass-satellite",
         "nebula-quill",
         "nebula-aperture",
-        "hero-small"
+        "hero-small",
+        "nebula-hummingbird"
       ]
     },
     {
       "id": "neon-monsoon",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/neon-monsoon/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__neon-monsoon__v6__manifest.json",
-      "sha256": "b3dd9bb0a094852f9e923414370f5468c5070a4cfc6a7ba5db74a345a53d5d66",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/neon-monsoon/v7/manifest.json",
+      "sha256": "0984e7cb6898f72389271905d1fdcc4747d7780d8ed5dc5f1fbf796ab36a5900",
       "artwork": [
         "neon-paper-fish",
         "rain-capsule",
         "midnight-ramen",
-        "hero-small"
+        "hero-small",
+        "neon-origami-fox"
       ]
     },
     {
       "id": "obsidian-tide",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/obsidian-tide/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__obsidian-tide__v6__manifest.json",
-      "sha256": "5a8def6f5f54d6c90e7b0f07d81ec2852122dd001a244321cee1a8c548678f0e",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/obsidian-tide/v7/manifest.json",
+      "sha256": "58c6a7963392380f7b158e212d36381d291cd94d1ae657ef5168f7a82df9e525",
       "artwork": [
         "audit-20261101-shoreline-shell",
         "audit-20261101-tidal-eye",
         "foam-pebble-garden",
-        "sea-glass-wave-sculpture"
+        "sea-glass-wave-sculpture",
+        "tidal-sea-urchin"
       ]
     },
     {
       "id": "ochre-bend",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/ochre-bend/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__ochre-bend__v6__manifest.json",
-      "sha256": "86e757ed4d20e63d9cce8ae6592bc9e16a667c29ace75784100bad1755925e99",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/ochre-bend/v7/manifest.json",
+      "sha256": "eb5fc0ea0c729c24ceb07904aeb3ef049412664699bfb2fc1250935fe54a2baa",
       "artwork": [
         "eucalyptus-capsule",
         "sandstone-kingfisher",
         "ochre-stone",
-        "hero-small"
+        "hero-small",
+        "eucalyptus-bark-curl"
       ]
     },
     {
       "id": "olive-outpost",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/olive-outpost/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__olive-outpost__v7__manifest.json",
-      "sha256": "03088d9f3238ca1c6a7e96d25c6ec66674892e00f11b2d91bab1dd0b835c4623",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/olive-outpost/v8/manifest.json",
+      "sha256": "7a8bc632719b1b36e794eeabc48423ebf1470d17507f418f0d1c1283b0b3923f",
       "artwork": [
         "olive-field-radio",
         "hero-small",
         "art-20261107-canvas-canteen",
-        "art-20261107-field-stove"
+        "art-20261107-field-stove",
+        "canvas-field-binoculars"
       ]
     },
     {
       "id": "opal-abyss",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/opal-abyss/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__opal-abyss__v6__manifest.json",
-      "sha256": "b87cba80014257359428fe463bcfc690f955cb17e9d72b00eb6048eb8025f889",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/opal-abyss/v7/manifest.json",
+      "sha256": "de208f0c7b218cb64d4b1ff1f4b95f502faaf0a6958230f11b22336c6b804c1c",
       "artwork": [
         "moon-jelly-window",
         "pearl-shell",
         "nautilus",
-        "hero-small"
+        "hero-small",
+        "opal-starfish"
       ]
     },
     {
       "id": "otter-wash",
-      "packVersion": 1,
-      "release": "glaze-packs-v3",
-      "manifest": "art/otter-wash/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__otter-wash__v1__manifest.json",
-      "sha256": "31b8e57b1c0365a7b810ee5178469abf7e3fce91a344d9000aabeb9e3487e4dd",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/otter-wash/v2/manifest.json",
+      "sha256": "34ebb0fc1f1b2071f17ccb57e5c379177a22341171ac48182c6dfbad139722df",
       "artwork": [
         "kelp-wash",
         "pebble-study",
         "shell-keeper",
-        "shell-progress"
+        "tidepool-anemone",
+        "driftwood-buoy"
       ]
     },
     {
       "id": "papaya-punch",
-      "packVersion": 1,
-      "release": "glaze-packs-v3",
-      "manifest": "art/papaya-punch/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v3/art__papaya-punch__v1__manifest.json",
-      "sha256": "cd25a7c43df5bce31af8f3349784a2e6396fbf9067c4bba6abaca6cd375c8652",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/papaya-punch/v2/manifest.json",
+      "sha256": "6b448c8b4ac22fcca86bf95e31046d0add464d46017216b355d173d4d13676a7",
       "artwork": [
         "palmate-leaf",
         "papaya-half",
         "seed-rosette",
-        "sun-study"
+        "papaya-blossom-spray",
+        "papaya-nursery-pot"
       ]
     },
     {
       "id": "paper-carnival",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/paper-carnival/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__paper-carnival__v6__manifest.json",
-      "sha256": "416ec361cae21d6eeedc9a94e874fa6171f536e1f7ee74d2bc1bb2a7c1fbfb33",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/paper-carnival/v7/manifest.json",
+      "sha256": "6569fdd7809c036bccab4bb2c13597a796ca2d3925d51e20a71cb19e80f07fd5",
       "artwork": [
         "confetti-snail",
         "paper-dragon-kite",
         "pinwheel-trio",
-        "hero-small"
+        "hero-small",
+        "paper-carousel"
       ]
     },
     {
       "id": "peach-puddle",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/peach-puddle/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__peach-puddle__v7__manifest.json",
-      "sha256": "6d9a9aeee5f0798ccea13df4993d40fb8c5be1e6b9de3f009702f0876096161f",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/peach-puddle/v8/manifest.json",
+      "sha256": "7db307b886af722d450e00c6a2879dd65901ed2f2eb681273a83db05250cea46",
       "artwork": [
         "peach-umbrella-snail",
         "hero-small",
         "art-20261107-rain-boots",
-        "art-20261107-duckling-raft"
+        "art-20261107-duckling-raft",
+        "peach-raincoat"
       ]
     },
     {
       "id": "peachskin",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/peachskin/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__peachskin__v7__manifest.json",
-      "sha256": "99a597df9b2a3f4b49febb2f2c3a168593301446035b30e809b5887121b0b12b",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/peachskin/v8/manifest.json",
+      "sha256": "b7e9f5525c7f7f1ee5d88175cce70c22c24316f2d473aea2adf772326d121ee6",
       "artwork": [
         "production-20261101-velvet-peach",
         "hero-small",
         "art-20261106-peach-blossom",
-        "art-20261106-peach-slice"
+        "art-20261106-peach-slice",
+        "peach-stone-seedling"
       ]
     },
     {
       "id": "pebblekin-grove",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/pebblekin-grove/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__pebblekin-grove__v6__manifest.json",
-      "sha256": "d57e6d270cf5c1487d2d7c327d4e30626b7ead5fcb84e500fae80445962d4fc9",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/pebblekin-grove/v7/manifest.json",
+      "sha256": "672dabcc194838695ff691f063874509d028da75be231baf8941053b7c006092",
       "artwork": [
         "fern-altar",
         "pebble-moth",
         "sprout-keeper",
-        "hero-small"
+        "hero-small",
+        "mossback-tortoise"
       ]
     },
     {
       "id": "persimmon-press",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/persimmon-press/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__persimmon-press__v1__manifest.json",
-      "sha256": "66e4cb4ba9eaea94541c0ecd1c11d062864e4093679528116a959822a47d6e63",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/persimmon-press/v2/manifest.json",
+      "sha256": "631f3e3d86365719e538384b53e0a553775747dfc4660aa851781bd61aa702f5",
       "artwork": [
         "calyx-star",
         "carved-grain",
         "persimmon-pair",
-        "seed-progress"
+        "harvest-basket",
+        "orchard-songbird"
       ]
     },
     {
       "id": "phosphor-amber",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/phosphor-amber/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__phosphor-amber__v1__manifest.json",
-      "sha256": "09b871882797e6070cd2b78f3eacba9866ce4239e08425f6ce8ea3203a27278b",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/phosphor-amber/v2/manifest.json",
+      "sha256": "b3a1a6bc2f27d674366d7669b3ee460dc73b4dbc1303b8b4e2ea00747ab86028",
       "artwork": [
-        "buffer-progress-v2",
         "floppy-study",
         "pixel-landscape",
-        "terminal-desk"
+        "terminal-desk",
+        "phosphor-nautilus",
+        "cream-joystick"
       ]
     },
     {
       "id": "pistachio-parlour",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/pistachio-parlour/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__pistachio-parlour__v7__manifest.json",
-      "sha256": "148b8e6e1c76d7bba1e2ae5c595d6f6f5bc49da5eeb3ee7f76f729631aef0e36",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/pistachio-parlour/v8/manifest.json",
+      "sha256": "13c726bb7126ce36649adab45685f4b5fca5de0ec0dbd882ae61c1791239ed69",
       "artwork": [
         "pistachio-sundae",
         "hero-small",
         "art-20261107-pistachio-macaron",
-        "art-20261107-pastry-whisk"
+        "art-20261107-pastry-whisk",
+        "pistachio-eclair"
       ]
     },
     {
       "id": "pitaya-pop",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/pitaya-pop/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__pitaya-pop__v1__manifest.json",
-      "sha256": "1c7f92c8ef367b1af31c8fbeb63e89f02786295f02fdaed7a7ea9a1e5377b9d9",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/pitaya-pop/v2/manifest.json",
+      "sha256": "82b7c3e04f8d37be93591b15aac547a19c2c9f670c2a45a576602a63aa7c4722",
       "artwork": [
         "bract-rosette",
         "seeded-slice",
-        "whole-pitaya"
+        "whole-pitaya",
+        "paper-hummingbird",
+        "paper-cactus-blossom"
       ]
     },
     {
       "id": "plume-court",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/plume-court/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__plume-court__v7__manifest.json",
-      "sha256": "7ea909939d8ca9ddfcb56ca1ee300a154e0a7dd1da47d59e1db79edbc86f9647",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/plume-court/v8/manifest.json",
+      "sha256": "8f969c0cf33321ef435dde6b622c733f42920985a9467ffb66fdb74fa8b3377f",
       "artwork": [
         "porcelain-quail",
         "hero-small",
         "art-20261107-jade-plume",
-        "art-20261107-garden-fountain"
+        "art-20261107-garden-fountain",
+        "jade-court-coffer"
       ]
     },
     {
       "id": "pocket-pup",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/pocket-pup/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__pocket-pup__v7__manifest.json",
-      "sha256": "e7edd67e053d6297131473aee78a06440c9000be0f1c862aa4dc565bbe42c6bb",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/pocket-pup/v8/manifest.json",
+      "sha256": "ac91625be05bf523fe46d1c786dcfeba17f9ac1ab217f0e792889e02a2d1adf7",
       "artwork": [
         "pocket-mailbox",
         "hero-small",
         "art-20261107-corgi-slipper",
-        "art-20261107-biscuit-tin"
+        "art-20261107-biscuit-tin",
+        "cloud-puppy-leash"
       ]
     },
     {
       "id": "porcelain-tide",
-      "packVersion": 7,
-      "release": "glaze-packs-v14",
-      "manifest": "art/porcelain-tide/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v14/art__porcelain-tide__v7__manifest.json",
-      "sha256": "c5f9f1505e3b0adad603fe5ebd776a27242e35b6d6a058e6d00fd8720ac763b2",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/porcelain-tide/v8/manifest.json",
+      "sha256": "b113e8793d326989ed085ff6e900fe30cd867a8dd1505a0f1a4f8f87f9de140c",
       "artwork": [
         "blue-lotus-bowl",
         "porcelain-crane",
         "koi-medallion",
-        "hero-small"
+        "hero-small",
+        "cobalt-seahorse"
       ]
     },
     {
       "id": "portico-dawn",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/portico-dawn/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__portico-dawn__v1__manifest.json",
-      "sha256": "dd249078a4982aab586131ad22e8693ddda0ad41d28ea06d14ea310e6fad399c",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/portico-dawn/v2/manifest.json",
+      "sha256": "bd505baea374d8d0e8b0a6a52107d429510bcf50ee22b9b5d8825dad20c6942c",
       "artwork": [
         "curved-stair",
         "fluted-column",
-        "three-arch-portico"
+        "three-arch-portico",
+        "travertine-urn",
+        "stone-lattice-screen"
       ]
     },
     {
       "id": "prism-orchard",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/prism-orchard/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__prism-orchard__v6__manifest.json",
-      "sha256": "5b67bb01ed60a03120304a4ae6bda0a7519154b788e04e14647811c719d61dd8",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/prism-orchard/v7/manifest.json",
+      "sha256": "a5bd09932b2a368c9b04570efbb3678689c35b612c3599bdcc132148d8393f46",
       "artwork": [
         "glass-plum",
         "opal-tree-frog",
         "petal-hummingbird",
-        "hero-small"
+        "hero-small",
+        "opal-butterfly"
       ]
     },
     {
       "id": "protea-blush",
-      "packVersion": 4,
-      "release": "glaze-packs-v12",
-      "manifest": "art/protea-blush/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__protea-blush__v4__manifest.json",
-      "sha256": "eade6f662679edce46e8c7162509da547ad685f1cec09041554fed57fdb3037b",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 5,
+      "release": "glaze-packs-v19",
+      "manifest": "art/protea-blush/v5/manifest.json",
+      "sha256": "430cf4a6152dacc66ba6232df72ba40ed3f86122dafc7def3187f8c0a01ab51e",
       "artwork": [
-        "bloom-progress",
         "king-protea",
-        "silver-leaf"
+        "silver-leaf",
+        "blush-rose-chafer",
+        "blush-satin-moth",
+        "protea-sugarbird"
       ]
     },
     {
       "id": "puffin-fold",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/puffin-fold/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__puffin-fold__v1__manifest.json",
-      "sha256": "e0650ea9f7ce8bb5e6eb3a437676cc0a5bc4e84d75388e72a9de8ef375aab237",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/puffin-fold/v2/manifest.json",
+      "sha256": "cfa89ae7ac55eefebe9cd26222ce19bf3e8929844369f961abad6bfcbdaf8820",
       "artwork": [
         "cliff-strata",
-        "egg-progress",
         "paper-flight",
-        "puffin-perch"
+        "puffin-perch",
+        "paper-lighthouse",
+        "paper-fishing-boat"
       ]
     },
     {
       "id": "quince-foil",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/quince-foil/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__quince-foil__v1__manifest.json",
-      "sha256": "00dca4c0d96ac7ead127a696e14c37f460adeca714060b24bf80777bf0e5cada",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/quince-foil/v2/manifest.json",
+      "sha256": "9b3850b0f9201eb2ade8285bc589266dacaa9bbd252bd1495ac5398b8b91b80d",
       "artwork": [
         "folded-leaf",
         "gilded-quince",
-        "ivory-blossom"
+        "ivory-blossom",
+        "gilded-seed-capsule",
+        "gilded-dragonfly"
       ]
     },
     {
       "id": "rainleaf",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/rainleaf/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__rainleaf__v6__manifest.json",
-      "sha256": "a4baa21416b28567af2da3e636bc031e05f0c7a29e1cd7fc3040f696dbf61eb8",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/rainleaf/v7/manifest.json",
+      "sha256": "4fb5fd2e135e4be5b234231c316e21a4c09f66b378085ea5a2e12748a361b293",
       "artwork": [
         "jade-rain-frog",
         "rain-bamboo",
         "fern-unfurl",
-        "hero-small"
+        "hero-small",
+        "emerald-mushrooms"
       ]
     },
     {
       "id": "rainlight",
-      "packVersion": 7,
-      "release": "glaze-packs-v14",
-      "manifest": "art/rainlight/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v14/art__rainlight__v7__manifest.json",
-      "sha256": "c5afbaa3819e94f85fd38ad01b2146cc28803ee80159f6771da06611134370a4",
-      "count": 5,
-      "needs": 0,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/rainlight/v8/manifest.json",
+      "sha256": "2ef46cefe2fc065d6619fe4661ebde89d30ab4cb5e9f278e28c7ee7d96722b0c",
       "artwork": [
-        "audit-20261101-after-hours",
         "audit-20261101-rain-window",
         "glass-umbrella",
         "rain-leaf",
-        "koi"
+        "koi",
+        "rain-dragonfly"
       ]
     },
     {
       "id": "regatta-blue",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/regatta-blue/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__regatta-blue__v7__manifest.json",
-      "sha256": "15c926ad6f51755ceccdc33e8a6796ca0c099b9abf92adc785f7a04f751f6e55",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/regatta-blue/v8/manifest.json",
+      "sha256": "78fc1a16f8b7b5df6f7766c4dadba0be9fe922218f87298bbdedf5ca8ec6bef4",
       "artwork": [
         "sail-glass-bottle",
         "hero-small",
         "art-20261107-brass-sextant",
-        "art-20261107-sail-knot"
+        "art-20261107-sail-knot",
+        "brass-yacht-anchor"
       ]
     },
     {
       "id": "rosewater-reverie",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/rosewater-reverie/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__rosewater-reverie__v6__manifest.json",
-      "sha256": "2c57cae7e4a1fc74bc9689d94239d52235f45cd4277c592b8fabc5fa0876fc72",
-      "count": 5,
-      "needs": 0,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/rosewater-reverie/v7/manifest.json",
+      "sha256": "48783c1c51e14bc30c4868400270037cd1fbd579fd271a3b49372cbe4a32c8b3",
       "artwork": [
-        "audit-20261101-pearl-pendulum",
         "glass-rose",
         "pearl-ballet-brooch",
         "satin-swan",
-        "hero-small"
+        "hero-small",
+        "pearl-shell"
       ]
     },
     {
       "id": "saddlewood",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/saddlewood/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__saddlewood__v7__manifest.json",
-      "sha256": "eb193f731cc0091ba5594c9f913be9006db9d81fa8305e141af3e342609e7e51",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/saddlewood/v8/manifest.json",
+      "sha256": "9e4b5fa44ac623e3836e589ca20fa9a0a52d612c7ed081cf029f44f69524991a",
       "artwork": [
         "leather-compass",
         "hero-small",
         "art-20261107-brass-stirrup",
-        "art-20261107-braided-rosette"
+        "art-20261107-braided-rosette",
+        "chestnut-saddle"
       ]
     },
     {
       "id": "saffron-courtyard",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/saffron-courtyard/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__saffron-courtyard__v6__manifest.json",
-      "sha256": "81c7fba2534a635078630a9504ba18989f667482b858f2afc101328e9560ddc5",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/saffron-courtyard/v7/manifest.json",
+      "sha256": "1e9108d9695ced4100cb5b9b02fd18a1de48b8de216f1711e57379abb6976934",
       "artwork": [
         "glazed-lemons",
         "mosaic-sunbird",
         "pomegranate-court",
-        "hero-small"
+        "hero-small",
+        "mosaic-carafe"
       ]
     },
     {
       "id": "saguaro-siesta",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/saguaro-siesta/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__saguaro-siesta__v7__manifest.json",
-      "sha256": "6a7192067161e7f5cfbc846b2f9b548f50d80df9b513f913b7b2eab7ff266cca",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/saguaro-siesta/v8/manifest.json",
+      "sha256": "1aef0ac2965d58d5b0976e17e9eed3694cf945eaefbfe355a1e8f18d02c55b83",
       "artwork": [
         "terracotta-snake",
         "hero-small",
         "art-20261107-turquoise-agave",
-        "art-20261107-desert-quail"
+        "art-20261107-desert-quail",
+        "terracotta-armadillo"
       ]
     },
     {
       "id": "saltveil",
-      "packVersion": 7,
-      "release": "glaze-packs-v16",
-      "manifest": "art/saltveil/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__saltveil__v7__manifest.json",
-      "sha256": "d472148d1003c89fa31f2af127780b90ea04162b9048691eebbf9c5e5a1dcf00",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/saltveil/v8/manifest.json",
+      "sha256": "98ff76067e3f4133db16adad314bea6a24862446431d02d9df03b4293279b024",
       "artwork": [
         "salt-crystal",
         "hero-small",
         "art-20261106-pink-halite",
-        "art-20261106-sea-glass-shell"
+        "art-20261106-sea-glass-shell",
+        "halite-feather"
       ]
     },
     {
       "id": "sea-glass-sunday",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/sea-glass-sunday/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__sea-glass-sunday__v7__manifest.json",
-      "sha256": "cc2945221937dcdc40bd5700a553f35180ac06059c0a2f5501a9dd4a77856f90",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v19",
+      "manifest": "art/sea-glass-sunday/v8/manifest.json",
+      "sha256": "8904b499f916d156e81c2d3e9ef0944d0f9649427a0180498ffff87a211d0ec6",
       "artwork": [
         "sea-glass-bottle",
         "hero-small",
         "art-20261107-tidepool-charm",
-        "art-20261107-shell-wind-chime"
+        "art-20261107-shell-wind-chime",
+        "sea-glass-crab"
       ]
     },
     {
       "id": "shuttle-sage",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/shuttle-sage/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__shuttle-sage__v1__manifest.json",
-      "sha256": "1dc7b50540595fcbca672cf127a5eaa213b25ff0794ef431bd5f6652ae9a0f57",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/shuttle-sage/v2/manifest.json",
+      "sha256": "03c9d1f1283937e9a8e29ca12443b7650dc15d1f3339645c83e8d205abcc244b",
       "artwork": [
         "feather-fan",
         "feather-shuttle",
-        "racket-study"
+        "racket-study",
+        "ivory-court-shoe",
+        "wooden-net-post"
       ]
     },
     {
       "id": "signal-yellow",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/signal-yellow/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__signal-yellow__v6__manifest.json",
-      "sha256": "0914879730352f16bbf150730f98f4f0e311b19cbf9ffd0730627b7f220f49a6",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/signal-yellow/v7/manifest.json",
+      "sha256": "3447f1ad466e53555af2cfab45a2b48dd9c02de0265a45a5d1beba6244b93a3a",
       "artwork": [
         "signal-lantern",
         "transit-ticket-fold",
         "platform-slice",
-        "hero-small"
+        "hero-small",
+        "platform-bench"
       ]
     },
     {
       "id": "silver-orchard",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/silver-orchard/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__silver-orchard__v6__manifest.json",
-      "sha256": "362c68c2e293fd4a5388a96f360d6eb719bb7b677e22750c5bd844fce73d829f",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/silver-orchard/v7/manifest.json",
+      "sha256": "f0c5454848045a5b87d6477f8eedfa515a1d4ac866a53b4e737b140eb42dd0c5",
       "artwork": [
         "glass-orchard-snail",
         "silver-leaf-lantern",
         "silver-dormouse",
-        "hero-small"
+        "hero-small",
+        "silver-pear-blossom"
       ]
     },
     {
       "id": "sonata-house",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/sonata-house/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__sonata-house__v6__manifest.json",
-      "sha256": "23903f3c00c95fad5f6700d8364fc62c9aa85649fac125e9c3329ae6af2ac074",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/sonata-house/v7/manifest.json",
+      "sha256": "a053b6ba5ed59c6ebd349032b5a21bf6b26394583d38ee93f76ca05c302a68ab",
       "artwork": [
-        "practice-chapters",
         "string-butterfly",
-        "hero-small"
+        "hero-small",
+        "walnut-cello",
+        "chamber-french-horn",
+        "walnut-music-stand"
       ]
     },
     {
       "id": "spare-time",
-      "packVersion": 6,
-      "release": "glaze-packs-v12",
-      "manifest": "art/spare-time/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v12/art__spare-time__v6__manifest.json",
-      "sha256": "058c8863ffd62a23bbecdd14c3c7f34847aa059b088e1872db6e19ec605223b2",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 7,
+      "release": "glaze-packs-v19",
+      "manifest": "art/spare-time/v7/manifest.json",
+      "sha256": "156f21f68a351ef33fec3224dd42484dc9fedf5dc8fce3faaf8ff9fd245bec4d",
       "artwork": [
         "bowling-satellite",
-        "spare-goals",
-        "hero-small"
+        "hero-small",
+        "coral-bowling-shoes",
+        "retro-bowling-bag",
+        "maple-pin-rack"
       ]
     },
     {
       "id": "steam-and-sage",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/steam-and-sage/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__steam-and-sage__v1__manifest.json",
-      "sha256": "13fff942e0d13efb854e1c0cfa2dbbeda3ee2f6d0398b31b18e45ea29ae1b168",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v19",
+      "manifest": "art/steam-and-sage/v2/manifest.json",
+      "sha256": "8bce6d2a708c1c661ae089c0477f02d4246962c78b7000d0d7ad4c14bbd16074",
       "artwork": [
         "bamboo-steamer",
         "pleated-dumpling",
-        "woven-lid"
+        "woven-lid",
+        "bamboo-chopstick-rest",
+        "ginger-fan"
       ]
     },
     {
       "id": "stellar-cradle",
-      "packVersion": 6,
-      "release": "glaze-packs-v13",
-      "manifest": "art/stellar-cradle/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v13/art__stellar-cradle__v6__manifest.json",
-      "sha256": "c9e6615f95a4e00ea40ddb4eaecf940ffd430247b2dc8ac342e0e28d2812f6dc",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v20",
+      "manifest": "art/stellar-cradle/v7/manifest.json",
+      "sha256": "92962e1999970d3b9dcdd7b3e4e3e41775f0ba90a652c2837a633116e3a93b6c",
       "artwork": [
         "nebula-egg",
         "star-seedling",
         "stellar-nursery",
-        "hero-small"
+        "hero-small",
+        "starforming-spire"
       ]
     },
     {
       "id": "summit-line",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/summit-line/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__summit-line__v7__manifest.json",
-      "sha256": "b4820a1884de461e510e0239cb5160d04058a59cc27028b0933144ad9487a156",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v20",
+      "manifest": "art/summit-line/v8/manifest.json",
+      "sha256": "3cfb9276d38317b03874b16c96c15026d4921e00205b60aaf010383da7ba8acb",
       "artwork": [
         "pine-rope-pendant",
         "hero-small",
         "art-20261107-signal-gondola",
-        "art-20261107-snowshoe-pair"
+        "art-20261107-snowshoe-pair",
+        "alpine-ice-axe"
       ]
     },
     {
       "id": "sundew-ember",
-      "packVersion": 4,
-      "release": "glaze-packs-v13",
-      "manifest": "art/sundew-ember/v4/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v13/art__sundew-ember__v4__manifest.json",
-      "sha256": "37f31aa99a94463d35975880687cce23ee8690d9290ac7c81719121cd350f032",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 5,
+      "release": "glaze-packs-v20",
+      "manifest": "art/sundew-ember/v5/manifest.json",
+      "sha256": "e9b112ee0d912455dbfcd0b74e291e3124a660bdcddc5624e8333184062940fc",
       "artwork": [
         "dew-orbit",
         "sundew-crown",
-        "hero-small"
+        "hero-small",
+        "ember-seed-capsule",
+        "sundew-blossom"
       ]
     },
     {
       "id": "tapir-terracotta",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/tapir-terracotta/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__tapir-terracotta__v1__manifest.json",
-      "sha256": "5789df094ec2f507b2bd9b3f52a0d6e11ae0cc433060b981cf76ba5a109ff076",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v20",
+      "manifest": "art/tapir-terracotta/v2/manifest.json",
+      "sha256": "390e70856856b4f505bd104cce55ee37025aace7cb14d14ea4a8f0ec9fe4fd27",
       "artwork": [
         "ceramic-tapir",
         "clay-pebbles",
         "sage-leaf",
-        "water-drops"
+        "speckled-clay-pitcher",
+        "ceramic-bromeliad"
       ]
     },
     {
       "id": "tempest-noir",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/tempest-noir/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__tempest-noir__v7__manifest.json",
-      "sha256": "5417aeb597a2be014e0add16d4fe755d8df586943178af4e595dce5a05279330",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v20",
+      "manifest": "art/tempest-noir/v8/manifest.json",
+      "sha256": "08102e8f3f9681e99f3ad5f68e7175c2496d9dff68ea0b1f8015556eed6d2f3b",
       "artwork": [
         "storm-glass",
         "hero-small",
         "art-20261107-lightning-coil",
-        "art-20261107-rain-gauge"
+        "art-20261107-rain-gauge",
+        "copper-storm-lantern"
       ]
     },
     {
       "id": "tessera-tempo",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/tessera-tempo/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__tessera-tempo__v1__manifest.json",
-      "sha256": "18de570832f28bb271661bf96229f993e20e6e2aed33f48af92c40c9ada22bf1",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v20",
+      "manifest": "art/tessera-tempo/v2/manifest.json",
+      "sha256": "44259ceccfc44d60a146446f5c1e46dc2a08aab90eb9273fd67a1c609cd33efb",
       "artwork": [
         "arc-current",
-        "dot-progress",
         "quadrant-rosette",
-        "tile-weave"
+        "tile-weave",
+        "ceramic-mountain-mosaic",
+        "glazed-ceramic-fan"
       ]
     },
     {
       "id": "thistle-etch",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/thistle-etch/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__thistle-etch__v1__manifest.json",
-      "sha256": "07875e05bb3292c1b97d2f02954ad900b85fb17f36fcfb7e32ae4f6ab4101cb8",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v20",
+      "manifest": "art/thistle-etch/v2/manifest.json",
+      "sha256": "e1f7dd4dd65da8492fadbca8b794e512d1adb004e9704de6ed018278d6fb8b2b",
       "artwork": [
         "seed-tuft",
         "silver-leaf",
-        "thistle-head"
+        "thistle-head",
+        "lavender-pollen-bee",
+        "thistle-goldfinch"
       ]
     },
     {
       "id": "toucan-loom",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/toucan-loom/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__toucan-loom__v1__manifest.json",
-      "sha256": "02a0ea255898dbe0abb71c9d2501d0469752de9310ce3eb27c37c79500c17d59",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v20",
+      "manifest": "art/toucan-loom/v2/manifest.json",
+      "sha256": "52b325c305300de639bb17398e55a85311361b9a70f0990196949a11af6fdb60",
       "artwork": [
         "canopy-leaf",
-        "tuft-progress",
         "tufted-toucan",
-        "woven-feather"
+        "woven-feather",
+        "tufted-heliconia",
+        "woven-pineapple"
       ]
     },
     {
       "id": "tryline-russet",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/tryline-russet/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__tryline-russet__v1__manifest.json",
-      "sha256": "044323151246b472cdd02cb54191815b2b4d4b243ea44250f154644cb753fc16",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v20",
+      "manifest": "art/tryline-russet/v2/manifest.json",
+      "sha256": "97cdc30162f456e0573881acc70dd73c75137bd3aea7455a3ba97713a2a43ff0",
       "artwork": [
         "ivory-posts",
         "russet-ball",
-        "stitched-boot"
+        "stitched-boot",
+        "brass-referee-whistle",
+        "heritage-scrum-cap"
       ]
     },
     {
       "id": "typecase-ivory",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/typecase-ivory/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__typecase-ivory__v1__manifest.json",
-      "sha256": "d03b7c2bf91ed972dc2de35fd5be8b0b4c3907a3c6d228e39da622f9eaa134ce",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 2,
+      "release": "glaze-packs-v20",
+      "manifest": "art/typecase-ivory/v2/manifest.json",
+      "sha256": "93fa2b4cd865923ffab8f8c0dd230495ef7a5bcf48e4dcefafcda8054d856586",
       "artwork": [
         "ampersand-block",
         "ink-brayer",
-        "typecase-grid"
+        "typecase-grid",
+        "miniature-letterpress",
+        "empty-composing-stick"
       ]
     },
     {
       "id": "velvet-observatory",
-      "packVersion": 6,
-      "release": "glaze-packs-v13",
-      "manifest": "art/velvet-observatory/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v13/art__velvet-observatory__v6__manifest.json",
-      "sha256": "e040aaad801ea096281ad04a63629700d43117718cd770c059333ec36e40de4a",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v20",
+      "manifest": "art/velvet-observatory/v7/manifest.json",
+      "sha256": "04ee56bc47620175deeed8f54e79fb2ecdffec84d2db71af7d8aef5c0fe84f7b",
       "artwork": [
         "brass-telescope",
         "lunar-moth",
         "pearl-orrery",
-        "hero-small"
+        "hero-small",
+        "ivory-brass-comet"
       ]
     },
     {
       "id": "verdigris-voyage",
-      "packVersion": 6,
-      "release": "glaze-packs-v13",
-      "manifest": "art/verdigris-voyage/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v13/art__verdigris-voyage__v6__manifest.json",
-      "sha256": "c7843887c9eb8100182488007fb3c9c4d74d8ed8b1ad3d3d840720f9a951fa76",
-      "count": 3,
-      "needs": 2,
+      "packVersion": 7,
+      "release": "glaze-packs-v20",
+      "manifest": "art/verdigris-voyage/v7/manifest.json",
+      "sha256": "b34bfb6e9d303e2e930d17dfc40dd6e68f274676c6b87e750da245f1952c5973",
       "artwork": [
         "copper-seed-capsule",
         "terrarium-sailboat",
-        "greenhouse-airship"
+        "greenhouse-airship",
+        "botanical-diving-bell",
+        "glasswing-dragonfly-craft"
       ]
     },
     {
       "id": "wickling-hollow",
-      "packVersion": 6,
-      "release": "glaze-packs-v13",
-      "manifest": "art/wickling-hollow/v6/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v13/art__wickling-hollow__v6__manifest.json",
-      "sha256": "6ef22e790b9985fa8cac0c1aed3f60836cb33b1b06b408bb1f895dadaef0d757",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 7,
+      "release": "glaze-packs-v20",
+      "manifest": "art/wickling-hollow/v7/manifest.json",
+      "sha256": "436cacd3cb6c364c6cf253fa414940c0014fcd5b51c3bfef177bc67ed6c77052",
       "artwork": [
         "candle-lantern-beetle",
         "hollow-key-door",
         "moth-lantern",
-        "hero-small"
+        "hero-small",
+        "beeswax-walnut-mouse"
       ]
     },
     {
       "id": "willow-wicket",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/willow-wicket/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__willow-wicket__v1__manifest.json",
-      "sha256": "5d60a6f3f5b16d9b42902058e5ac026d366a30fb4545c0527ce88ec6b6c33768",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v20",
+      "manifest": "art/willow-wicket/v2/manifest.json",
+      "sha256": "d2b8fbb68da900c6056d89c9cc5ff0cfb5508a064c6756f7786aee200ba42487",
       "artwork": [
-        "innings-score",
         "stitched-ball",
         "wicket-study",
-        "willow-bat"
+        "willow-bat",
+        "vintage-batting-glove",
+        "ivory-cricket-sunhat"
       ]
     },
     {
       "id": "wisteria-hush",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/wisteria-hush/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__wisteria-hush__v7__manifest.json",
-      "sha256": "df4c648f38e666fd06ca872cf4e8e929214c11100b6684292fe72e8dafb21a23",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v20",
+      "manifest": "art/wisteria-hush/v8/manifest.json",
+      "sha256": "42760b9e03c69599005c2e2f89faacc4c55fec6db88ce93dcb20b361772ce844",
       "artwork": [
         "wisteria-lacewing",
         "hero-small",
         "art-20261107-wisteria-bell",
-        "art-20261107-dew-snail"
+        "art-20261107-dew-snail",
+        "wisteria-seedpods"
       ]
     },
     {
       "id": "woven-wander",
-      "packVersion": 1,
-      "release": "glaze-packs-v4",
-      "manifest": "art/woven-wander/v1/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v4/art__woven-wander__v1__manifest.json",
-      "sha256": "2578a3724b6c7428140facbfc51f88307357fedb4d9c739c1dc87a5f68609b7a",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 2,
+      "release": "glaze-packs-v20",
+      "manifest": "art/woven-wander/v2/manifest.json",
+      "sha256": "1b58ab0e9d3b3373125171fadbe8b11b1b714db8d0ba64023e91d2cd139be298",
       "artwork": [
         "coil-basket",
         "plaited-fern",
         "woven-pangolin",
-        "woven-progress"
+        "raffia-chameleon",
+        "plaited-dragonfly"
       ]
     },
     {
       "id": "yuzu-soak",
-      "packVersion": 7,
-      "release": "glaze-packs-v17",
-      "manifest": "art/yuzu-soak/v7/manifest.json",
-      "sourceUrl": "https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v17/art__yuzu-soak__v7__manifest.json",
-      "sha256": "6363236af07d743121973553ac6bb95ebe192bf615a6898151e4db5bf206e433",
-      "count": 4,
-      "needs": 1,
+      "packVersion": 8,
+      "release": "glaze-packs-v20",
+      "manifest": "art/yuzu-soak/v8/manifest.json",
+      "sha256": "1fe9742dba5801f08c61ff0fe3eeb6ecd74981923504b645448df8a06401d9d0",
       "artwork": [
         "yuzu-pond-bowl",
         "hero-small",
         "art-20261107-yuzu-soap-dish",
-        "art-20261107-capybara-towel"
+        "art-20261107-capybara-towel",
+        "citrus-steam-kettle"
       ]
     }
-  ]
+  ],
+  "baselineCounts": {
+    "5": 141
+  },
+  "additionsNeeded": 0
 }

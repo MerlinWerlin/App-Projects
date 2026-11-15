@@ -17,7 +17,7 @@ export function applyArtworkCorrections(manifest, corrections) {
   const result = structuredClone(manifest), changes = corrections[manifest.id]?.options ?? {};
   for (const [id, kind] of Object.entries(changes)) {
     const option = result.widgets.find((w) => w.id === id);
-    if (!option || option.kind !== 'art' || !['habits', 'clock', 'photo'].includes(kind)) throw new Error(`${manifest.id}/${id}: expected existing baked-in functional art`);
+    if (!option || !['art', kind].includes(option.kind) || !['habits', 'clock', 'photo'].includes(kind)) throw new Error(`${manifest.id}/${id}: expected retained art or an already applied correction`);
     option.kind = kind;
   }
   return result;
@@ -76,8 +76,20 @@ export function loadBaseline(root) {
 
 export function readArtworkAdditions(root, id, base) {
   const dir = checkedPath(root, `${id}/widgets`);
-  const options = json(join(dir, 'widget-options.json'));
-  if (!Array.isArray(options) || !options.length) throw new Error(`${id}: additions must be a nonempty widget-options.json array`);
+  const source = json(join(dir, 'widget-options.json'));
+  if (!Array.isArray(source) || !source.length) throw new Error(`${id}: additions must be a nonempty widget-options.json array`);
+  // A new R2 snapshot already includes earlier source additions. Keep their provenance and
+  // verify their exact option fields/bytes, but append only unpublished pieces this time.
+  const seen = new Set();
+  const options = source.filter((option) => {
+    if (!option || seen.has(option.id)) throw new Error(`${id}: duplicate or invalid artwork id`);
+    seen.add(option.id);
+    const existing = base.widgets.find((w) => w.id === option.id);
+    if (!existing) return true;
+    const asset = base.assets.find((a) => a.path === existing.image);
+    if (!asset || Object.entries(option).some(([key, value]) => key !== 'kind' && JSON.stringify(value) !== JSON.stringify(existing[key])) || digest(readFileSync(checkedPath(dir, option.image))) !== asset.sha256) throw new Error(`${id}/${option.id}: duplicate artwork id differs from published source`);
+    return false;
+  });
   const ids = new Set(base.widgets.map((w) => w.id));
   const hashes = new Set(base.assets.map((a) => a.sha256));
   const files = [], assets = [];
@@ -116,7 +128,8 @@ export async function buildArtworkAdditions(opts) {
   for (const id of ids) {
     const base = baseline.manifests.get(id);
     if (!base || !candidates.includes(id)) throw new Error(`${id}: missing baseline or artwork sources`);
-    plans.set(id, readArtworkAdditions(addDir, id, applyArtworkCorrections(base, corrections)));
+    const plan = readArtworkAdditions(addDir, id, applyArtworkCorrections(base, corrections));
+    if (plan.options.length) plans.set(id, plan);
   }
   const pending = [...baseline.manifests].filter(([id, m]) => (plans.get(id)?.artwork ?? artwork(applyArtworkCorrections(m, corrections))).length !== 5).map(([id]) => id);
   if (opts.complete && pending.length) throw new Error(`${pending[0]}: final build still needs artwork`);

@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 728765,
       "opaquePixels": 436
+    },
+    {
+      "theme": "lotus-drift",
+      "id": "pond-paper-boat",
+      "label": "Pond Paper Boat",
+      "ref": "art/lotus-drift/v8/widget-pond-dragonfly.63d8b43c.webp",
+      "subject": "one beautiful small ivory folded-paper boat floating beside a single rounded green lily pad on a calm dark dusk-blue pond. A few loose pale pink lotus petals rest in the boat, no full blossom. Gentle concentric ripples, subtle rose reflections and atmospheric softly painted photographic realism. Boat is large and clear enough for a small widget. No dragonfly, fish, seedpod, flower bouquet, tea bowl or water strider",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze lotus-drift decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one beautiful small ivory folded-paper boat floating beside a single rounded green lily pad on a calm dark dusk-blue pond. A few loose pale pink lotus petals rest in the boat, no full blossom. Gentle concentric ripples, subtle rose reflections and atmospheric softly painted photographic realism. Boat is large and clear enough for a small widget. No dragonfly, fish, seedpod, flower bouquet, tea bowl or water strider. Main subject whole inside 12% margins, clear silhouette for small widget. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-4d7a3fe3-a375-4679-b349-cc98d20b2fe8.png",
+      "image": "widget-pond-paper-boat.85edd7e2.webp",
+      "sha256": "85edd7e24c6bffc4ba699e23c5b917ca177b8b9ecc6d2081fc6fb93f3b4fbd70",
+      "bytes": 124820,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

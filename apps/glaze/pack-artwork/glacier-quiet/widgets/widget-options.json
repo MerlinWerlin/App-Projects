@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Dendritic snow crystal"
+  },
+  {
+    "id": "glacial-cave-arch",
+    "kind": "art",
+    "image": "widget-glacial-cave-arch.cbe4a197.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Glacial Cave Arch"
   }
 ]

@@ -35,6 +35,24 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "copper-circuit",
+      "id": "copper-vacuum-tube",
+      "label": "Copper Vacuum Tube",
+      "ref": "art/copper-circuit/v2/widget-copper-coil.1bfbbc83.webp",
+      "subject": "one elegant vintage glass vacuum tube upright in a small matte sea-green ceramic socket, clearly visible copper support rods, fine metallic mesh inside and a restrained warm amber glow. Dark petrol teal studio backdrop, precise copper highlights and understated electronics still-life craftsmanship matching the reference. No chip, circuit-board texture, coil, fins, transistor, printed marks or numbers",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze copper-circuit decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one elegant vintage glass vacuum tube upright in a small matte sea-green ceramic socket, clearly visible copper support rods, fine metallic mesh inside and a restrained warm amber glow. Dark petrol teal studio backdrop, precise copper highlights and understated electronics still-life craftsmanship matching the reference. No chip, circuit-board texture, coil, fins, transistor, printed marks or numbers. Main subject whole inside 12% margins, clear silhouette for small widget. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-12874186-7998-4453-874a-5f1be69930a5.png",
+      "image": "widget-copper-vacuum-tube.1a095551.webp",
+      "sha256": "1a0955512caebd0edf579ae199f6ec5584097f8abef3a7c9982946bbeb78a94f",
+      "bytes": 111600,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

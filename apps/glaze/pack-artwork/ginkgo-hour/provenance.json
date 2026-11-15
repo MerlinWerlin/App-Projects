@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 761340,
       "opaquePixels": 1551
+    },
+    {
+      "theme": "ginkgo-hour",
+      "id": "pressed-ginkgo-bookmark",
+      "label": "Ginkgo Bookmark",
+      "ref": "art/ginkgo-hour/v8/widget-production-20261101-fan-leaf.b123eb23.webp",
+      "subject": "a slender handmade warm-ivory paper bookmark enclosing one finely pressed golden ginkgo leaf under a translucent vellum layer, a soft ochre silk tassel curling beside it. A tiny blank warm-ivory book corner beneath supports the composition. Elegant tactile natural still life, warm cream backdrop, quiet late-autumn light, detailed leaf veins. The bookmark is the whole clear main object. No ink bottle, mobile, fruit or loose leaf-only close-up",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze ginkgo-hour decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: a slender handmade warm-ivory paper bookmark enclosing one finely pressed golden ginkgo leaf under a translucent vellum layer, a soft ochre silk tassel curling beside it. A tiny blank warm-ivory book corner beneath supports the composition. Elegant tactile natural still life, warm cream backdrop, quiet late-autumn light, detailed leaf veins. The bookmark is the whole clear main object. No ink bottle, mobile, fruit or loose leaf-only close-up. Entire subject inside generous margins, readable at small widget size. Own theme backdrop. No card border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-59497176-62e9-4b78-81d1-ab38eaea0f76.png",
+      "image": "widget-pressed-ginkgo-bookmark.41a27d2a.webp",
+      "sha256": "41a27d2a4b6b7912d893503f7104f038edae18f889b1f72e4f81ad424e676581",
+      "bytes": 274614,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

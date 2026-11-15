@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Blue laundry iron"
+  },
+  {
+    "id": "cloud-soap-dish",
+    "kind": "art",
+    "image": "widget-cloud-soap-dish.c04a8a6e.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cloud Soap Dish"
   }
 ]

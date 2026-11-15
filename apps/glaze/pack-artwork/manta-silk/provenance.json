@@ -71,6 +71,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 598469,
       "opaquePixels": 458
+    },
+    {
+      "theme": "manta-silk",
+      "id": "silken-manta-ray",
+      "label": "Silken Manta Ray",
+      "ref": "art/manta-silk/v5/widget-ripple-caustic.5cd69043.webp",
+      "subject": "WIDE VIEW of one complete graceful dark teal manta ray gliding through luminous turquoise shallows. The animal occupies only the CENTRAL 60 PERCENT of the square width, both wings and the ENTIRE thin tail fully visible with a broad ring of empty water on every side. No part touches any edge. Seen slightly from above, broad swept wings and curled head fins, soft sunshine caustics skim its satin-like skin and pale sandy bottom. Quiet airy aqua underwater photographic illustration. No fish, sea fan, oyster or texture-only composition",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze manta-silk decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: WIDE VIEW of one complete graceful dark teal manta ray gliding through luminous turquoise shallows. The animal occupies only the CENTRAL 60 PERCENT of the square width, both wings and the ENTIRE thin tail fully visible with a broad ring of empty water on every side. No part touches any edge. Seen slightly from above, broad swept wings and curled head fins, soft sunshine caustics skim its satin-like skin and pale sandy bottom. Quiet airy aqua underwater photographic illustration. No fish, sea fan, oyster or texture-only composition. Whole subject clearly framed, generous margins, readable at small widget size. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-e7074afa-9720-4e5d-b732-4c6c57a52bc1.png",
+      "image": "widget-silken-manta-ray.7e1d11bd.webp",
+      "sha256": "7e1d11bd893c4c0c567faf683f4d357008d74fba91a435e6e94096acd4c77a4c",
+      "bytes": 207908,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }
