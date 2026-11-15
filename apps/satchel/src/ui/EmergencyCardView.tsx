@@ -1,12 +1,13 @@
 // The emergency card body: local numbers (big call buttons, a 112 + embassy fallback so no country is ever blank,
-// the general number named for any missing service, verify locally, source + checked date, T25 doubted-number
-// lines from the GUARD review and the import's confidence rating), insurance,
+// the general number named for any missing service, verify locally, one short source + checked date line, T25
+// doubted-number lines; 1.0.0: no import ratings or table wording on screen, src/core/sourceline.ts), insurance,
 // contacts and private medical notes behind a tap. Presentational: data and callbacks come in as props, so the
 // Emergency tab and the low-battery essentials screen (T07) render the same card. 'essentials' = pure black.
 import { Ionicons } from '@expo/vector-icons';
 import type { ReactNode } from 'react';
 import { Alert, Text, View } from 'react-native';
-import { FALLBACK_NUMBER, lineLabelServices, type Confidence, type DoubtField, type RowDisplay, type Service } from '../core/emergency.ts';
+import { FALLBACK_NUMBER, lineLabelServices, type DoubtField, type RowDisplay, type Service } from '../core/emergency.ts';
+import { checkedDate, sourceName, travellerNote } from '../core/sourceline.ts';
 import type { EmergencyCard } from '../core/model.ts';
 import type { T } from '../i18n/core.ts';
 import type { Key } from '../i18n/en.ts';
@@ -51,13 +52,6 @@ const SERVICE_ICON: Record<Service, IconName> = {
   ambulance: 'medkit',
   fire: 'flame',
   tourist_police: 'shield-outline',
-};
-
-const LEVEL_KEY: Record<Confidence, Key> = {
-  high: 'sources.level.high',
-  medium: 'sources.level.medium',
-  low: 'sources.level.low',
-  unknown: 'sources.level.unknown',
 };
 
 /** Words for doubted fields that have no number line of their own ("Ambulance, Fire", "this whole entry"). */
@@ -228,9 +222,8 @@ export function EmergencyCardView({ variant, row, card, onCall, medicalShown, on
           ) : (
             <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, lineHeight: 23, color: c.ink }}>{t('emergency.verifyLocally')}</Text>
           )}
-          {body(row.source.kind === 'checked' ? t('emergency.sourceChecked', { host: row.source.host, date: row.source.date }) : t('emergency.sourcePending'), true)}
-          {body(t('sources.confidence', { level: t(LEVEL_KEY[row.confidence]) }), true)}
-          {row.notes ? body(t('emergency.tableNote', { note: row.notes }), true) : null}
+          {body(row.source.kind === 'checked' ? t('emergency.sourceChecked', { host: sourceName(row.source.host), date: checkedDate(row.source.date) }) : t('emergency.sourcePending'), true)}
+          {travellerNote(row.notes) ? body(travellerNote(row.notes), true) : null}
           {row.notesDoubted ? (
             <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, lineHeight: 23, color: c.ink }}>{t('sources.noteDoubted')}</Text>
           ) : null}

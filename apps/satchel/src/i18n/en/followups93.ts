@@ -7,5 +7,5 @@ export const followups93 = {
   'f93.localCurrencyAlso': 'Also accepted: {codes}',
   'f93.sameAsHome': 'Same currency as your home currency, so prices need no converting.',
   'f93.noRateFor': 'Add a {code} rate in the converter to see what local prices are worth.',
-  'f93.currencyVerify': 'General guidance from the ISO 4217 currency list. Verify locally.',
+  'f93.currencyVerify': 'Check the rate before you change money.',
 } as const;

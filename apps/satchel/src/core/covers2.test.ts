@@ -166,11 +166,14 @@ test('redrawn SVG scenes: 3-5 depth layers with haze between them, shading, clou
   }
 });
 
-test('renderer: layered glow, crescent moon, grain texture, bottom scrim, tokens only, timed fade', () => {
+test('renderer: layered glow, crescent moon, bottom scrim, no SVG pattern fills, tokens only, timed fade', () => {
   const ui = read('src/ui/TripCover.tsx');
-  for (const re of [/<Mask id=\{`moon/, /<Pattern id=\{`grain/, /foot\$\{uid\}/, /aura\$\{uid\}/, /k === 'haze'/, /resolveCover\(/, /markMissing/, /onError/])
+  for (const re of [/<Mask id=\{`moon/, /foot\$\{uid\}/, /aura\$\{uid\}/, /k === 'haze'/, /resolveCover\(/, /markMissing/, /onError/])
     assert.match(ui, re);
   assert.doesNotMatch(ui, /spring|bounce/i);
+  // a <Pattern> fill drew as an opaque block on the new architecture (1.0.0 store capture)
+  assert.doesNotMatch(ui, /<Pattern/);
+  assert.doesNotMatch(read('src/ui/Stamp.tsx'), /<Pattern/);
   assert.match(ui, /fadeIn\(opacity, reduceMotion, duration\.slow\)/);
   // the hero and the Trips list card show the photo
   assert.match(read('app/trip/[id].tsx'), /<TripCoverHero scene=\{cover\} photo=\{coverPhoto\}/);

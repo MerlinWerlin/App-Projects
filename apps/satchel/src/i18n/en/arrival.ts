@@ -18,8 +18,8 @@ export const arrival = {
   // Money
   'arrival.moneyLabel': 'Your saved rate',
   'arrival.moneyRate': '1 {local} = {rate} {home}',
-  'arrival.moneyRateDay': 'Rate you saved on {day}. Not live: update it in the converter.',
-  'arrival.moneyRateNoDay': 'Rate you saved. Not live: update it in the converter.',
+  'arrival.moneyRateDay': 'Your saved rate from {day}. Update it in the converter.',
+  'arrival.moneyRateNoDay': 'Your saved rate. Update it in the converter.',
   'arrival.moneyRow': '{local} is about {home}',
   'arrival.moneyNoHome': 'Set a home currency in Spending to see what local prices are worth.',
   'arrival.moneyNoRate': 'Add a rate in the converter to see what local prices are worth.',
@@ -36,8 +36,8 @@ export const arrival = {
   'arrival.plugsUnknown': 'Plugs: not sure, check locally',
   'arrival.voltageUnknown': 'Power: not sure, check locally',
   'arrival.drivingUnknown': 'Driving side: not sure, check locally',
-  'arrival.verifyChecked': 'Verify locally. From a bundled table, checked {date}.',
-  'arrival.verify': 'Verify locally. From a bundled table.',
+  'arrival.verifyChecked': 'Verify locally. Checked {date}.',
+  'arrival.verify': 'Verify locally.',
   'arrival.noPower': 'Satchel has no plug or driving details for {country} yet. Check locally.',
 
   // Emergency

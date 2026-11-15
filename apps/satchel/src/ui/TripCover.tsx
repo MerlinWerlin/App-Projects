@@ -11,7 +11,7 @@
 // bands, a fine grain texture and a gentle bottom scrim.
 import { memo, useCallback, useEffect, useId, useMemo, useRef, useSyncExternalStore, type ReactNode } from 'react';
 import { Animated, Image, Text, View, type StyleProp, type ViewStyle } from 'react-native';
-import Svg, { Circle, Defs, G, LinearGradient, Mask, Path, Pattern, RadialGradient, Rect, Stop } from 'react-native-svg';
+import Svg, { Circle, Defs, G, LinearGradient, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 import { COVER_ART_IMAGES } from '../content/coverArt.ts';
 import { COVER_ART, COVER_H, COVER_W, sceneShapes, type CoverShape } from '../core/coverArt.ts';
 import { COVER_SCENES, isCoverId, type CoverId } from '../core/covers.ts';
@@ -114,11 +114,8 @@ export const CoverArt = memo(function CoverArt({ scene, dark }: { scene: CoverId
           <Rect x={0} y={0} width={COVER_W} height={COVER_H} fill={coverFx.maskShow} />
           <Circle cx={sun.cx + sun.r * 0.55} cy={sun.cy - sun.r * 0.3} r={sun.r * 0.9} fill={coverFx.maskHide} />
         </Mask>
-        {/* fine grain so flat fills read as paper, not plastic */}
-        <Pattern id={`grain${uid}`} x={0} y={0} width={7} height={7} patternUnits="userSpaceOnUse">
-          <Circle cx={1.5} cy={1.5} r={0.55} fill={p.detail} />
-          <Circle cx={5} cy={4.5} r={0.45} fill={p.near} />
-        </Pattern>
+        {/* 1.0.0: no SVG pattern grain: on the new architecture a pattern fill drew as an opaque block over the
+            lower half of the scene (store capture, 15 Nov 2026), leaving a blank band on every trip without a photo. */}
         <LinearGradient id={`foot${uid}`} x1="0" y1="0" x2="0" y2="1">
           <Stop offset="0" stopColor={scrim.from} stopOpacity={0} />
           <Stop offset="0.6" stopColor={scrim.from} stopOpacity={0} />
@@ -136,7 +133,6 @@ export const CoverArt = memo(function CoverArt({ scene, dark }: { scene: CoverId
         <Circle cx={sun.cx} cy={sun.cy} r={sun.r} fill={`url(#disc${uid})`} />
       )}
       {shapes}
-      <Rect x={0} y={COVER_H * 0.45} width={COVER_W} height={COVER_H * 0.55} fill={`url(#grain${uid})`} opacity={dark ? 0.14 : 0.1} />
       <Rect x={0} y={0} width={COVER_W} height={COVER_H} fill={`url(#foot${uid})`} />
     </Svg>
   );

@@ -99,3 +99,9 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 8000
 - takeScreenshot: 09b-share-satchel-file-${MODE}
+
+# Passport page (stamps on paper texture): checked by eye, not a store shot.
+- openLink: satchel://passport
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 10-passport-${MODE}
