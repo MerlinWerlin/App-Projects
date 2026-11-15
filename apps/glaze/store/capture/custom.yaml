@@ -5,7 +5,7 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 6000
 # The row is one accessibility element ("Artwork N"); its "..." button is hidden from accessibility, so it is
-# tapped by position (measured on the 1320 x 2868 capture: x 91%, rows at 39.5 / 55.8 / 72.2 %).
+# tapped by position (measured on the 1320 x 2868 capture: x 91%, rows at 40 / 56 / 72 %; Maestro takes whole percentages only).
 - extendedWaitUntil:
     visible: "Artwork ${ART}"
     timeout: 60000

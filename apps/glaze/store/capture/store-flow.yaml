@@ -31,7 +31,7 @@ appId: ${APP_ID}
     file: custom.yaml
     env:
       ART: '3'
-      POINT: '91%,72.2%'
+      POINT: '91%,72%'
       SLOT: '1'
       SHOOT: 'menu'
 - runFlow:
@@ -42,7 +42,7 @@ appId: ${APP_ID}
     file: custom.yaml
     env:
       ART: '1'
-      POINT: '91%,39.5%'
+      POINT: '91%,40%'
       SLOT: '2'
       SHOOT: ''
 
@@ -69,7 +69,7 @@ appId: ${APP_ID}
     file: custom.yaml
     env:
       ART: '3'
-      POINT: '91%,72.2%'
+      POINT: '91%,72%'
       SLOT: '3'
       SHOOT: ''
 
