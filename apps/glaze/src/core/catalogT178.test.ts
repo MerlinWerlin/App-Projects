@@ -1,6 +1,7 @@
 // T178 (owner-1031): the catalogue refetches on the first launch of a new app build, an empty or
 // failed catalogue never sticks for 6 h, a 404 / offline / garbage response keeps the last good
 // copy without an error for the UI, and the REAL glaze-packs-v1 catalogue + manifest parse.
+import { isFreeTheme } from './freeThemes.ts';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -45,7 +46,8 @@ test('real glaze-packs-v1 catalogue: 10 free packs, flat release asset URLs, all
   const themes = remoteArtThemes(cat, base, bundled);
   assert.equal(themes.length, 10);
   for (const t of themes) {
-    assert.equal(t.plus, false);
+    // 1.0.41: the app's free set decides; the catalogue's own flags are all false.
+    assert.equal(t.plus, !isFreeTheme(t.id));
     assert.match(t.remoteArt.thumbUrl ?? '', new RegExp(`^${base}/art__${t.id}__v1__thumb\\.[0-9a-f]{8}\\.webp$`));
     assert.ok(t.remoteArt.thumbhash.length > 0);
   }

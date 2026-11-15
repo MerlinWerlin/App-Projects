@@ -19,6 +19,12 @@ export const ptBR: NonNullable<LocaleMessages['themes']> = {
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Arte · papéis de parede originais', body: 'Grátis. Papéis de parede de arte originais com ícones combinando e arte flutuante para widgets. Nada para baixar.' },
   plusNote: 'Glaze Plus.',
+  freeBadge: 'Premium · Grátis',
+  freeNote: 'Tema premium, grátis',
+  free: {
+    title: 'Grátis',
+    body: 'Dez temas premium, grátis para você. O Glaze Plus libera todos os outros.',
+  },
   feedback: 'Enviar feedback',
   feedbackHint: 'Sugira um tema ou relate um problema pelo seu app Mail',
   empty: {

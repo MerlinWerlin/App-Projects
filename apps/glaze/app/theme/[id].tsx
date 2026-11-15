@@ -582,6 +582,11 @@ function ThemeDetail({
    */
   const openWidgetsTab = async (checkLock = true) => {
     setThemeChoiceOpen(false);
+    // 1.0.41: a theme already in use keeps working after Plus lapses; only choosing it again needs Plus.
+    if (inUse) {
+      router.navigate('/widgets');
+      return;
+    }
     if (checkLock && locked) {
       lockFor.current = 'widgets';
       setLockOpen(true);
@@ -1226,6 +1231,12 @@ function ThemeDetail({
               )}
               <PillButton label={t('theme.use.viewIcons')} icon="grid" block variant="plain" onPress={() => {
                 setThemeChoiceOpen(false);
+                // 1.0.41: installing a premium theme's icons needs Glaze Plus (a lapsed subscription included).
+                if (locked) {
+                  lockFor.current = 'icons';
+                  setLockOpen(true);
+                  return;
+                }
                 void openIconSetup();
               }} />
               <PillButton label={t('theme.use.viewWidgets')} icon="layout" block onPress={() => void openWidgetsTab()} />

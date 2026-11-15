@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCallback, useEffect, useState } from 'react';
 import { PLUS_SKU } from '../core/iapFlow';
 import { glazeStore } from '../native/store';
-import { createStoreKitPlusStore } from './iapStore';
+import { createSubscriptionPlusStore } from './iapStore';
 
 export type PurchaseResult = 'purchased' | 'cancelled' | 'pending' | 'unavailable' | 'failed';
 
@@ -24,15 +24,17 @@ export interface PlusStore {
   lastFailureCode?(): string | null;
 }
 
-/** App Store product id of Glaze Plus (non-consumable). One id everywhere: docs/IAP_SANDBOX.md. */
+/** App Store product id of the legacy one-time unlock (sandbox / TestFlight only; still honoured). */
 export const PLUS_PRODUCT_ID = PLUS_SKU;
+/** 1.0.41: the product Glaze sells, the yearly subscription (store/SUBSCRIPTION.md). */
+export { YEARLY_SKU as PLUS_SUBSCRIPTION_ID } from '../core/plusStoreKit';
 
 export const PLUS_MOCK_KEY = 'glaze.plus.mock.v1';
 /** English source of plus.lock.unavailable (UI shows the catalogue string). */
 export const PLUS_UNAVAILABLE_MESSAGE = "You can't buy Glaze Plus in this test version";
-/** Owner's price A$2.99 one-time (D145-1). Fallback text: the store's localised displayPrice replaces it once loaded (T152). */
+/** Owner's price A$2.99 a year (1.0.41). Fallback text: the store's localised displayPrice replaces it once loaded. */
 export const PLUS_PRICE = 'A$2.99'; // i18n-ignore
-export const PLUS_PRICE_HINT = `One-time ${PLUS_PRICE}`;
+export const PLUS_PRICE_HINT = `${PLUS_PRICE} a year`; // i18n-ignore
 
 function parse(raw: string | null): boolean {
   if (!raw) return false;
@@ -82,7 +84,7 @@ const DEV = typeof __DEV__ !== 'undefined' && __DEV__;
 
 /** Real StoreKit purchase where the native module exists, otherwise the honest mock. */
 export const plusStore: PlusStore = glazeStore.available()
-  ? createStoreKitPlusStore(glazeStore, (v) => notify(v), PLUS_PRODUCT_ID)
+  ? createSubscriptionPlusStore(glazeStore, (v) => notify(v))
   : createMockPlusStore(DEV);
 
 /** True when Unlock really buys (native build with the store module). */

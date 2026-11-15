@@ -19,6 +19,12 @@ export const ar: NonNullable<LocaleMessages['themes']> = {
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'فن · خلفيات أصلية', body: 'مجاني. خلفيات فنية أصلية مع أيقونات متناسقة ورسوم عائمة للأدوات. لا شيء للتنزيل.' },
   plusNote: 'Glaze Plus.',
+  freeBadge: 'مميز · مجاني',
+  freeNote: 'سمة مميزة، مجانًا',
+  free: {
+    title: 'مجاني',
+    body: 'عشر سمات مميزة مجانًا لك. يفتح Glaze Plus جميع السمات الأخرى.',
+  },
   feedback: 'إرسال ملاحظات',
   feedbackHint: 'اقترح سمة أو أبلغ عن مشكلة من تطبيق البريد لديك',
   empty: {

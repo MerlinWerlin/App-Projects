@@ -21,6 +21,12 @@ export const en = {
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Art · original wallpapers', body: 'Free. Original art wallpapers with matching icons and floating widget art. Nothing to download.' },
   plusNote: 'Glaze Plus.',
+  freeBadge: 'Premium · Free',
+  freeNote: 'Premium theme, free',
+  free: {
+    title: 'Free',
+    body: 'Ten premium themes, yours free. Glaze Plus unlocks every other theme.',
+  },
   feedback: 'Send feedback',
   feedbackHint: 'Suggest a theme or report a problem from your own Mail app',
   empty: {

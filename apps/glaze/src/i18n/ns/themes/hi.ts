@@ -19,6 +19,12 @@ export const hi: NonNullable<LocaleMessages['themes']> = {
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'आर्ट · मौलिक वॉलपेपर', body: 'मुफ़्त। मौलिक आर्ट वॉलपेपर, मेल खाते आइकन और तैरती विजेट आर्ट के साथ। कुछ डाउनलोड नहीं करना।' },
   plusNote: 'Glaze Plus।',
+  freeBadge: 'प्रीमियम · मुफ़्त',
+  freeNote: 'प्रीमियम थीम, मुफ़्त',
+  free: {
+    title: 'मुफ़्त',
+    body: 'दस प्रीमियम थीम, आपके लिए मुफ़्त। Glaze Plus बाकी सभी थीम खोलता है।',
+  },
   feedback: 'फ़ीडबैक भेजें',
   feedbackHint: 'अपने Mail ऐप से कोई थीम सुझाएँ या समस्या बताएँ',
   empty: {

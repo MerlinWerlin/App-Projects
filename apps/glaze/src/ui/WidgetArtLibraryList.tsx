@@ -34,6 +34,9 @@ type Props = {
   style?: StyleProp<ViewStyle>;
   /** 1.0.39: the theme in use's colours, for the design shown in a slot the theme has no piece for. */
   palette?: { bg: string; accent: string; ink: string } | null;
+  /** 1.0.41: Add to Custom n needs Glaze Plus for this (premium) theme; the paywall opens instead. */
+  customLocked?: boolean;
+  onCustomLocked?: () => void;
 };
 
 // Owner 2026-11-14 ("large image and large number next to each other, not separate"): each row is a
@@ -43,7 +46,7 @@ const NUMBER = 64;
 /** T238: the one-time clean-up runs once per app launch at most (it is a no-op once flagged). */
 let migrationTried = false;
 
-export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null }: Props) {
+export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null, customLocked = false, onCustomLocked }: Props) {
   const toast = useToast();
   const { c } = useColorsV2();
   const { t, script } = useT();
@@ -114,7 +117,7 @@ export function WidgetArtLibraryList({ refreshKey = 0, style, palette = null }: 
   const rows: { n: number; p: WidgetArtPiece | null }[] =
     preparing || list.length ? Array.from({ length: ARTWORK_SLOT_COUNT }, (_, i) => ({ n: i + 1, p: list[i] ?? null })) : [];
 
-  const openActions = (n: number, uri: string) => openArtworkActions(n, uri, t as never, toast);
+  const openActions = (n: number, uri: string) => openArtworkActions(n, uri, t as never, toast, customLocked ? onCustomLocked ?? (() => undefined) : undefined);
 
   return (
     <View style={[styles.wrap, style]}>

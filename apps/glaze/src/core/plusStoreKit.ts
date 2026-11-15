@@ -4,6 +4,51 @@
 // The product id is PLUS_SKU in ./iapFlow.ts (one place; Swift receives it from JS).
 
 export { PLUS_SKU } from './iapFlow.ts';
+import { PLUS_SKU as LEGACY_SKU } from './iapFlow.ts';
+
+/**
+ * Glaze 1.0.41 (owner 2026-11-15: "$3 a year ... no free trial, the 10 free ones are the free trial"):
+ * Glaze Plus is a yearly auto-renewable subscription (subscription group "Glaze", no introductory
+ * offer; store/SUBSCRIPTION.md). The old one-time unlock was only ever available in sandbox /
+ * TestFlight and is still honoured if someone owns it.
+ */
+export const YEARLY_SKU = 'com.jared797.glaze.yearly';
+export const LEGACY_UNLOCK_SKU = LEGACY_SKU;
+/** Every product id that unlocks Glaze Plus; the first one is the one sold. */
+export const ENTITLEMENT_SKUS: readonly string[] = Object.freeze([YEARLY_SKU, LEGACY_UNLOCK_SKU]);
+/** How long a cached "subscribed" answer is trusted while StoreKit can't be asked at all. */
+export const OFFLINE_GRACE_MS = 7 * 24 * 60 * 60 * 1000;
+
+/** Any product owned: true; all unknown: null (StoreKit couldn't be asked); else false. */
+export function combineOwned(answers: readonly (boolean | null)[]): boolean | null {
+  if (answers.some((a) => a === true)) return true;
+  if (answers.length && answers.every((a) => a === null)) return null;
+  return false;
+}
+
+export type PlusCache = { plus: boolean; checkedAt: number };
+
+/** The cached answer (older copies have no checkedAt: treated as checked long ago). */
+export function parsePlusCache(raw: string | null): PlusCache | null {
+  if (!raw) return null;
+  try {
+    const v = JSON.parse(raw) as { plus?: unknown; checkedAt?: unknown };
+    if (!v || typeof v !== 'object' || typeof v.plus !== 'boolean') return null;
+    return { plus: v.plus, checkedAt: typeof v.checkedAt === 'number' && Number.isFinite(v.checkedAt) ? v.checkedAt : 0 };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * StoreKit's answer always wins (it already knows an expired or refunded subscription, offline too).
+ * Only when StoreKit can't be asked at all does a cached "subscribed" count, and only for
+ * OFFLINE_GRACE_MS after it was last confirmed.
+ */
+export function resolveSubscribed(storeSays: boolean | null, cache: PlusCache | null, now: number, graceMs: number = OFFLINE_GRACE_MS): boolean {
+  if (storeSays !== null) return storeSays;
+  return !!cache && cache.plus && now - cache.checkedAt <= graceMs;
+}
 
 /** Native module name (modules/glaze-store, expo-module.config.json / Name("GlazeStore")). */
 export const STORE_MODULE = 'GlazeStore';

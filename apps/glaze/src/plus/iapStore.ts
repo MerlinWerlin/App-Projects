@@ -9,7 +9,7 @@
 // for Android later. This file must not import expo-iap itself (guarded by src/core/iapFlow.test.ts).
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PLUS_SKU, purchasePlus, restorePlus, type IapClient } from '../core/iapFlow';
-import { buyPlus, resolveOwned } from '../core/plusStoreKit';
+import { ENTITLEMENT_SKUS, YEARLY_SKU, buyPlus, combineOwned, parsePlusCache, resolveOwned, resolveSubscribed } from '../core/plusStoreKit';
 import type { GlazeStoreAdapter } from '../native/store';
 import type { PlusStore, PurchaseResult } from './entitlement';
 
@@ -22,7 +22,7 @@ export type IapPlusStore = PlusStore & {
 
 async function cache(plus: boolean): Promise<void> {
   try {
-    await AsyncStorage.setItem(PLUS_IAP_CACHE_KEY, JSON.stringify({ plus }));
+    await AsyncStorage.setItem(PLUS_IAP_CACHE_KEY, JSON.stringify({ plus, checkedAt: Date.now() }));
   } catch {
     // cache only; the store stays the source of truth
   }
@@ -30,15 +30,84 @@ async function cache(plus: boolean): Promise<void> {
 
 async function cached(): Promise<boolean> {
   try {
-    const raw = await AsyncStorage.getItem(PLUS_IAP_CACHE_KEY);
-    return !!raw && JSON.parse(raw)?.plus === true;
+    return parsePlusCache(await AsyncStorage.getItem(PLUS_IAP_CACHE_KEY))?.plus === true;
   } catch {
     return false;
   }
 }
 
+async function cachedEntry() {
+  try {
+    return parsePlusCache(await AsyncStorage.getItem(PLUS_IAP_CACHE_KEY));
+  } catch {
+    return null;
+  }
+}
+
 /**
- * T152: Glaze Plus through StoreKit 2. Unlock shows Apple's sheet (sandbox in TestFlight, nothing
+ * Glaze 1.0.41: the yearly subscription. Buying sells YEARLY_SKU; Glaze Plus is on while ANY of
+ * ENTITLEMENT_SKUS is active (the subscription, or the legacy sandbox-only one-time unlock). StoreKit
+ * already drops expired / refunded subscriptions; the cache only bridges a short offline gap
+ * (resolveSubscribed, 7 days since the last confirmed answer).
+ */
+export function createSubscriptionPlusStore(store: GlazeStoreAdapter, onChange: (plus: boolean) => void): IapPlusStore {
+  let lastCode: string | null = null;
+  let price: Promise<string | null> | null = null;
+  const check = async (): Promise<boolean> => {
+    const answers: (boolean | null)[] = [];
+    for (const id of ENTITLEMENT_SKUS) answers.push(await store.isOwned(id));
+    const v = resolveSubscribed(combineOwned(answers), await cachedEntry(), Date.now());
+    // Only a real StoreKit answer refreshes the cache's time stamp.
+    if (combineOwned(answers) !== null) await cache(v);
+    return v;
+  };
+  // A renewal, expiry, refund or Ask to Buy approval for either product: re-check both.
+  for (const id of ENTITLEMENT_SKUS) {
+    store.onEntitlementChange(id, () => {
+      void check().then(onChange, () => undefined);
+    });
+  }
+  return {
+    purchasable: true,
+    lastFailureCode: () => lastCode,
+    displayPrice() {
+      if (!price) {
+        price = store.getProduct(YEARLY_SKU).then((p) => {
+          if (!p) price = null;
+          return p ? p.displayPrice : null;
+        });
+      }
+      return price;
+    },
+    isPlus: check,
+    async purchase(): Promise<PurchaseResult> {
+      lastCode = null;
+      const r = await buyPlus(store, YEARLY_SKU);
+      if (r.status === 'purchased') {
+        await cache(true);
+        onChange(true);
+        return 'purchased';
+      }
+      if (r.status === 'cancelled') return 'cancelled';
+      if (r.status === 'pending') return 'pending';
+      lastCode = r.code;
+      return 'failed';
+    },
+    async restore() {
+      const r = await store.restore(YEARLY_SKU);
+      // Throwing makes RestorePurchases say "Couldn't restore right now" (plus.lock.restoreFailed).
+      if (!r.ok) throw new Error(r.code);
+      const owned = r.owned || (await check());
+      await cache(owned);
+      onChange(owned);
+      return owned;
+    },
+  };
+}
+
+/**
+ * T152: Glaze Plus through StoreKit 2 (one product; kept for its tests, superseded by
+ * createSubscriptionPlusStore in 1.0.41). Unlock shows Apple's sheet (sandbox in TestFlight, nothing
  * charged); success unlocks and persists; cancel is silent; pending (Ask to Buy) says so and
  * unlocks later through the Transaction.updates event; failure keeps the store code.
  */

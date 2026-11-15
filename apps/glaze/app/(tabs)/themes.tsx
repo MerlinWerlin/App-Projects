@@ -59,6 +59,9 @@ import type { Theme } from '../../src/core/themes';
 import { useT, type Script } from '../../src/i18n';
 import { refreshRemoteCatalog, useRemoteArtThemes, useRemoteCatalogStatus } from '../../src/native/useRemoteCatalog';
 import { PlusBadge } from '../../src/plus/PlusBadge';
+import { useLocked } from '../../src/plus/useLocked';
+import { FreeBadge } from '../../src/ui/FreeBadge';
+import { FEATURED_FREE_IDS, freeThemesIn, isFreeTheme } from '../../src/core/freeThemes';
 import { useFavourites } from '../../src/store/favourites';
 import { circleRadius, continuous, editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, typeV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
@@ -82,6 +85,7 @@ type Row = BrowseRow<GalleryTheme>;
 
 /** Stable badge element so memoised cards don't re-render for it (a catalogue pack marked Plus). */
 const PLUS_BADGE = <PlusBadge />; // i18n-ignore (code after a JSX element)
+const FREE_BADGE = <FreeBadge />; // i18n-ignore (code after a JSX element)
 /** The bundled starters, once (each with its category from themes/<id>/meta.json). */
 const STARTERS: readonly GalleryTheme[] = galleryStarters();
 /** Panels below the gallery take no props; memoised so a filter change skips them. */
@@ -128,6 +132,8 @@ type CardShared = {
   /** Thumbnail card width and art height (fixed grid geometry). */
   thumbWidth: number;
   thumbArt: number;
+  /** 1.0.41: true until the person subscribes (free themes show "Premium · Free", the rest the Plus lock). */
+  showTiers: boolean;
   onOpen: (id: string) => void;
   likedIds: ReadonlySet<string>;
   onToggleLike: (id: string) => void;
@@ -139,7 +145,11 @@ const BrowseCard = memo(function BrowseCard({ theme, variant, shared }: { theme:
   const plusNote = t('themes.plusNote');
   const downloadNote = t('themes.collection.downloadA11y');
   const remote = isRemoteArtTheme(theme);
-  const plus = remote && theme.plus;
+  // 1.0.41: every theme outside the free ten needs Glaze Plus; the free ten say "Premium · Free".
+  const plus = shared.showTiers && theme.plus === true;
+  const free = shared.showTiers && isFreeTheme(theme.id);
+  const badge = plus ? PLUS_BADGE : free ? FREE_BADGE : undefined;
+  const note = plus ? plusNote : free ? t('themes.freeNote') : remote ? downloadNote : undefined;
   const { onOpen, likedIds, onToggleLike } = shared;
   if (variant === 'art') {
     return (
@@ -147,8 +157,8 @@ const BrowseCard = memo(function BrowseCard({ theme, variant, shared }: { theme:
         theme={theme}
         width={shared.railWidth}
         onOpen={onOpen}
-        badge={plus ? PLUS_BADGE : undefined}
-        accessibilityNote={plus ? plusNote : remote ? downloadNote : undefined}
+        badge={badge}
+        accessibilityNote={note}
         liked={likedIds.has(theme.id)}
         onToggleLike={onToggleLike}
       />
@@ -160,8 +170,8 @@ const BrowseCard = memo(function BrowseCard({ theme, variant, shared }: { theme:
       width={shared.thumbWidth}
       artHeight={shared.thumbArt}
       onOpen={onOpen}
-      badge={plus ? PLUS_BADGE : undefined}
-      accessibilityNote={plus ? plusNote : remote ? downloadNote : undefined}
+      badge={badge}
+      accessibilityNote={note}
       liked={likedIds.has(theme.id)}
       onToggleLike={onToggleLike}
     />
@@ -169,18 +179,18 @@ const BrowseCard = memo(function BrowseCard({ theme, variant, shared }: { theme:
 });
 
 /** Header of a home section: the category (or All themes) with its count and a "See all" button. */
-const BrowseHead = memo(function BrowseHead({ section, count, onSeeAll }: { section: BrowseCategoryId | 'all'; count: number; onSeeAll: (id: BrowseCategoryId | 'all') => void }) {
+const BrowseHead = memo(function BrowseHead({ section, count, onSeeAll }: { section: BrowseCategoryId | 'all' | 'free'; count: number; onSeeAll: (id: BrowseCategoryId | 'all') => void }) {
   const { t } = useT();
-  const label = section === 'all' ? t('themes.browse.allThemes') : t(browseCategoryLabelKey(section));
+  const label = section === 'all' ? t('themes.browse.allThemes') : section === 'free' ? t('themes.free.title') : t(browseCategoryLabelKey(section));
   return (
     <View style={styles.headRow}>
       <SectionHeader
         eyebrow={t('themes.browse.count', { count })}
         title={label}
-        body={section === 'all' ? t('themes.browse.allThemesBody') : undefined}
+        body={section === 'all' ? t('themes.browse.allThemesBody') : section === 'free' ? t('themes.free.body') : undefined}
         style={styles.headText}
       />
-      {section === 'all' ? null : (
+      {section === 'all' || section === 'free' ? null : (
         <PillButton
           label={t('themes.browse.seeAll')}
           size="small"
@@ -344,6 +354,8 @@ function ThemesScreen() {
     }
   }, [remote]);
   const sections = useMemo(() => groupByCategory(themes), [themes]);
+  // 1.0.41: the Free section (first) and the tier badges show until the person subscribes.
+  const subscribed = !useLocked(true);
   const chips = useMemo(() => browseChips(sections, themes.length), [sections, themes.length]);
   const waiting = status === 'loading' && remote.length === 0;
 
@@ -366,8 +378,11 @@ function ThemesScreen() {
   // One list for both views (so the search field in its header keeps focus while the view changes):
   // the overview's rows, or the grid as fixed-height rows of `columns` thumbnails.
   const rows: readonly Row[] = useMemo(
-    () => (mode === 'home' ? browseHomeRows<GalleryTheme>({ themes, columns, waiting }) : browseGridRows<GalleryTheme>(gridThemes, columns)),
-    [mode, themes, columns, waiting, gridThemes],
+    () =>
+      mode === 'home'
+        ? browseHomeRows<GalleryTheme>({ themes, columns, waiting, ...(subscribed ? {} : { free: freeThemesIn(themes), featured: FEATURED_FREE_IDS }) })
+        : browseGridRows<GalleryTheme>(gridThemes, columns),
+    [mode, themes, columns, waiting, gridThemes, subscribed],
   );
 
   const onOpen = useCallback(
@@ -388,8 +403,8 @@ function ThemesScreen() {
     setView('home');
   }, []);
   const shared: CardShared = useMemo(
-    () => ({ railWidth, thumbWidth: geo.cardWidth, thumbArt: geo.artHeight, onOpen, likedIds, onToggleLike: toggleLike }),
-    [railWidth, geo.cardWidth, geo.artHeight, onOpen, likedIds, toggleLike],
+    () => ({ railWidth, thumbWidth: geo.cardWidth, thumbArt: geo.artHeight, showTiers: !subscribed, onOpen, likedIds, onToggleLike: toggleLike }),
+    [railWidth, geo.cardWidth, geo.artHeight, subscribed, onOpen, likedIds, toggleLike],
   );
 
   // Scroll position lives in a shared value written on the UI thread; the large title and glass bar

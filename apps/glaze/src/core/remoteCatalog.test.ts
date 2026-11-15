@@ -116,7 +116,9 @@ test('catalogue packs become art-pack gallery themes; bundled ids win; disabled 
   assert.deepEqual(list.map((t) => t.id), ['deep-blue', 'pink-sky']);
   const [free, plus] = list;
   assert.ok(isArtPackTheme(free) && isRemoteArtTheme(free));
-  assert.equal(free.plus, false);
+  // 1.0.41: 'deep-blue' is not one of the ten free themes, so it needs Glaze Plus too.
+  assert.equal(free.plus, true);
+  assert.equal(free.remoteArt.plus, true);
   assert.equal(plus.plus, true);
   assert.equal(plus.remoteArt.plus, true);
   assert.equal(free.remoteArt.thumbUrl, `${BASE}/art/deep-blue/v3/thumb.0000dddd.webp`);

@@ -9,6 +9,7 @@
 //  - the theme detail's pack card for a remote art pack (free packs download without Plus).
 // Entitlement is never read here (src/plus decides). Pure TS, no React Native / Expo imports.
 
+import { isFreeTheme } from './freeThemes.ts';
 import { ART_PACK_DEFAULT_ADDED_AT, ART_WALLPAPER_SIZE, HERO_SIZES, artPackTheme, isArtPackTheme, type ArtPackData, type ArtPackTheme, type HeroSize, type PixelSize } from './artPack.ts';
 import { parseCatalog, type Catalog, type CatalogPack, type RemoteArtManifest, type RemoteArtRole } from './packCatalog.ts';
 import { packObjectUrl, packReleaseBase } from './packHost.ts';
@@ -264,11 +265,12 @@ export function remoteArtTheme(p: CatalogPack, baseUrl: string | null): RemoteAr
   const base = artPackTheme(data);
   return {
     ...base,
-    plus: p.plus,
+    // 1.0.41: the catalogue's own flag, or (the app's free set) every theme outside the free ten.
+    plus: p.plus || !isFreeTheme(p.id),
     remoteArt: Object.freeze({
       packId: p.id,
       packVersion: p.packVersion,
-      plus: p.plus,
+      plus: p.plus || !isFreeTheme(p.id),
       bytes: p.bytes,
       thumbUrl: baseUrl && baseUrl.trim() ? packObjectUrl(packReleaseBase(baseUrl, p.release), p.thumb) : null,
       thumbhash: p.thumbhash,

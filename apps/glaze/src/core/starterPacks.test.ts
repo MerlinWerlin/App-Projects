@@ -45,10 +45,10 @@ function memoryDevice(): Transport & { files: Map<string, Uint8Array>; fetches: 
   };
 }
 
-test('the generated starter set: 6-8 free packs incl. Alpine Starlight and Aurora Haven, under 25 MB, files match the code', () => {
-  assert.ok(STARTERS.length >= 6 && STARTERS.length <= 8, `${STARTERS.length} starters`);
+test('the generated starter set: 6-10 free packs incl. Alpine Starlight, Cloud Atelier and Aurora Haven, under 25 MB, files match the code', () => {
+  assert.ok(STARTERS.length >= 6 && STARTERS.length <= 10, `${STARTERS.length} starters`);
   const ids = STARTERS.map((s) => s.entry.id);
-  for (const id of ['alpine-starlight', 'aurora-haven']) assert.ok(ids.includes(id), id);
+  for (const id of ['alpine-starlight', 'cloud-atelier', 'aurora-haven']) assert.ok(ids.includes(id), id);
   const bytes = paths.reduce((n, p) => n + statSync(p).size, 0);
   assert.equal(Number(/STARTER_BYTES = (\d+);/.exec(GENERATED)![1]), bytes);
   assert.ok(bytes < 25e6, `${bytes} bytes`);
