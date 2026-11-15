@@ -19,7 +19,7 @@
       "n": 2,
       "slug": "five-artworks",
       "kind": "phone",
-      "raw": "12-cobalt-caravan-widgets",
+      "raw": "12-alpine-starlight-widgets",
       "title": "Five artworks with every theme",
       "sub": "Artwork 1 to 5 widgets follow the theme you use.",
       "bg": [
@@ -34,11 +34,11 @@
       "kind": "trio",
       "raw": [
         "00-home-desert-afterglow",
-        "00-home-porcelain-tide",
+        "00-home-cloud-atelier",
         "00-home-cobalt-caravan"
       ],
       "title": "A look for every mood",
-      "sub": "Desert Afterglow, Porcelain Tide and Cobalt Caravan.",
+      "sub": "Desert Afterglow, Cloud Atelier and Cobalt Caravan.",
       "bg": [
         "#FFE7DA",
         "#E2ECFA"
@@ -49,7 +49,7 @@
       "n": 4,
       "slug": "use-this-theme",
       "kind": "phone",
-      "raw": "10-cloud-atelier-prompt",
+      "raw": "15-cloud-atelier-prompt-clean",
       "title": "Tap a theme,\nthen tap Yes",
       "sub": "Glaze puts it on your widgets, then shows the next steps.",
       "bg": [
@@ -88,9 +88,9 @@
       "n": 7,
       "slug": "matching-icons",
       "kind": "phone",
-      "raw": "40-icons-step",
+      "raw": "13-cloud-atelier-page",
       "title": "Matching icons for your apps",
-      "sub": "Add them all at once, with a guide for every step.",
+      "sub": "Every theme styles your icons to match.",
       "bg": [
         "#DCE6F7",
         "#EDE4FF"

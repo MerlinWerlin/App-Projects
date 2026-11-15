@@ -7,7 +7,8 @@ Medium/Large, live or Lock Screen widgets: Glaze 1.0.41 has small Artwork 1-5 an
 
 ## App name (30 max)
 
-The App Store Connect name is still the placeholder `Glaze (0968ee)` and must change before submission.
+**Chosen (master chat, 15 Nov 2026): option 1, `Glaze: Icon Themes & Widgets`, with the subtitle below.** The App Store
+Connect name is still the placeholder `Glaze (0968ee)` and must change before submission.
 
 | # | Name | Chars | Why |
 |---|---|---|---|
@@ -90,9 +91,9 @@ auto-renewal, how to cancel) and the Terms of Use (Apple's standard EULA) and Pr
 | Age rating | 4+ |
 | License Agreement | Apple's standard EULA |
 
-**The support and privacy pages go live when this PR is merged** (GitHub Pages serves `main:/docs`):
-`docs/glaze/support.html` and `docs/glaze/privacy.html`. The same pages are also published at
-`/App-Projects/apps/glaze/docs/site/`, the address the 1.0.41 paywall links to, which returns 404 today.
+**The support page goes live when this PR is merged** (GitHub Pages serves `main:/docs`): `docs/glaze/support.html`.
+The privacy page `docs/glaze/privacy.html` is already on main (1.0.41), and the in-app paywall links to the same
+address (`src/plus/PlusLockSheet.tsx`).
 
 ## Facts behind the numbers
 
