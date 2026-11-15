@@ -1,0 +1,30 @@
+# Puts the in-use theme's Artwork ${ART} on Custom ${SLOT} through the artwork's own menu (Widgets tab).
+appId: ${APP_ID}
+---
+- openLink: glaze://widgets
+- waitForAnimationToEnd:
+    timeout: 6000
+- extendedWaitUntil:
+    visible: "More for Artwork ${ART}"
+    timeout: 60000
+    optional: true
+- tapOn:
+    text: "More for Artwork ${ART}"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000
+- runFlow:
+    when:
+      true: ${SHOOT == 'menu'}
+    commands:
+      - takeScreenshot: 20-artwork-menu
+- tapOn:
+    text: "Add to Custom ${SLOT}"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000
+- tapOn:
+    text: "Replace"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000
