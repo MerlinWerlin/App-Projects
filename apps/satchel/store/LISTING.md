@@ -1,5 +1,8 @@
 # Satchel 1.0.0: App Store listing (first release)
 
+`store/listing.json` holds the same fields for the store sync (`scripts/asc/asc.py apply`, run when
+`store/ASC_REQUEST.json` changes on main).
+
 Copy-paste text for App Store Connect > Satchel (app id 6826958413) > iOS App > 1.0 > App Store tab, primary
 language English (Australia). Satchel 1.0.0 is a free download with a 7-day free trial, then a one-time A$2.99 unlock (two non-consumables,
 `store/IAP.md`). iPhone only (`supportsTablet: false`), no account, no ads and no tracking.
@@ -129,7 +132,7 @@ these captions in this order (the test checks it).
 | Privacy Policy URL | `https://merlinwerlin.github.io/App-Projects/satchel/privacy.html` |
 | Marketing URL | leave empty |
 | Copyright | `2026 Jared Bradley` (App Store Connect adds the ©) |
-| Version | 1.0 (the build is 1.0.0) |
+| Version | 1.0.0 (the store sync renames the 1.0 version record to match the build) |
 | What's New | not shown for a first version; leave empty |
 | Age rating | 4+: every questionnaire answer "None" / "No" (no user-generated content shared with others, no web browsing inside the app, no gambling, no medical treatment information beyond the traveller's own notes) |
 | Content rights | Does not contain, show or access third-party content that needs rights (OpenStreetMap data is ODbL with attribution in the app; MET Norway weather is CC BY 4.0 with attribution) |
