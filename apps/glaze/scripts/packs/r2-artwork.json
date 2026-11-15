@@ -3,13 +3,13 @@
   "themes": 141,
   "perTheme": {
     "agate-apricot": {
-      "packVersion": 2,
+      "packVersion": 3,
       "slots": [
         "agate-slice 572cbc2bad59c58cf41b334c0386c22908eede4d1fe910dbb9f64c03f640de4c",
         "band-rhythm 633ff6d36040ea8c4b0dc101f93bbc21bcc7d87adc1e4c8c7dea46406567f4bd",
-        "druzy-center f0187cb2654bdf4aa651192c09624fe096fb69581682e24aa505523a8236ad89",
         "scalloped-agate-bowl 31ce98ab7a6ef4864d0e2f3e2f3451616eb8091efafa956219fe9b553567996c",
-        "agate-shell-carving 1a70b23b392bb788ed36787126986d4d58910763a0b62239d7ac9a85e183e125"
+        "agate-shell-carving 1a70b23b392bb788ed36787126986d4d58910763a0b62239d7ac9a85e183e125",
+        "agate-pendant 88e322bce0a2636aa806913366a326438ea382d6e151bcfff97dabcc2f6ef47b"
       ]
     },
     "airmail-daydream": {
@@ -73,13 +73,13 @@
       ]
     },
     "bellbat-bloom": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "bellflower-basket 8c16184bef3e68e974486d46b3ccc59c3321722e0a756f97e17fe99e4524d277",
         "velvet-wing-bow 112d0152d42b6bdd032e191cf6d806fb439861ef1fea8ca76458bca7a95dc0a2",
         "seedpod-swing 01460c997f2d40bfc8eb1ef3e02b496d2f04bbeff3b8528309a9c13be163c918",
-        "hero-small 6610317964c6cfcdb9fe2ef7a8f958b96ffe7a6a52d13f577b9fd252e3666b6a",
-        "velvet-acorn-lantern 2864cf38eb6dc82e3d42d169c8c8288e99aa36800e6a51db7061b3bae637d43c"
+        "velvet-acorn-lantern 2864cf38eb6dc82e3d42d169c8c8288e99aa36800e6a51db7061b3bae637d43c",
+        "felt-luna-moth b07604c61698c33f659b5857ec7c80582023453ea194cf8ed5796fb75248c1a1"
       ]
     },
     "berry-stitch": {
@@ -123,13 +123,13 @@
       ]
     },
     "bluewing": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "production-20261101-wing-study a22e0dd6e40254e9f7957a8a34d3d2d1fb01036db5a0ff878282f4193d6ac138",
-        "hero-small 399c449e8d9cda859bfb8b9a8a37c9c6a3ed1d7d46376c0d9beee8212ee210f5",
         "art-20261106-sapphire-chrysalis 4a87397aa84fe2973c9ac50fe9e12402fefd61d6ef4b5bcca3f92cbca8c0a515",
         "art-20261106-filigree-wing c399a07bf8bcdcd4096f668b175df787b7a612eeb0785ac4f56fc2068caccc53",
-        "sapphire-bluebell dec917b9de24c713a6e74f2e0a63acaadf42f18daa7e6ada1b624100e52f9c3f"
+        "sapphire-bluebell dec917b9de24c713a6e74f2e0a63acaadf42f18daa7e6ada1b624100e52f9c3f",
+        "sapphire-stag-beetle 9eb7c1b2a964f401459ba401ed07fbc5041d106fc1b509018bfe34bd845ff1c9"
       ]
     },
     "boba-bear-club": {
@@ -143,13 +143,13 @@
       ]
     },
     "brass-afterhours": {
-      "packVersion": 2,
+      "packVersion": 3,
       "slots": [
-        "key-rhythm feca7f5205eaecf653f3294be17ccfa920f4727993c9b607a557ccc67d322362",
         "reed-study 95a3e23a43db5ec81810fe60e9a82d96ff6a6e83d3de8449d65d249f4493040d",
         "sax-bell e90077c5b875ce2503103a928ae94d091ffd3bab59c74932514c73c55eaee07f",
         "velvet-instrument-case c2cb73fcbbe49151b6119f8e5073b855cc9d141a777551910016ec830554a164",
-        "brass-cup-mute 3ac494c0bcd86be54760d950538a8e9aae01326eba420b4ae554f7d151ec60da"
+        "brass-cup-mute 3ac494c0bcd86be54760d950538a8e9aae01326eba420b4ae554f7d151ec60da",
+        "brass-ribbon-microphone d8eec00a6a1a70d73a25c084079ae16b68da952158a66b0e9f9e9c300bcde14e"
       ]
     },
     "cacao-velvet": {
@@ -183,13 +183,13 @@
       ]
     },
     "carbon-velocity": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "titanium-turbine 74f960f1e64e29d6fb2542827be83cc91f00308126989803adbb24604cc1acda",
         "hero-small 6995b57642b1492e25b7420344763951d2b5fd0ef22b514b0ea8bb893f552525",
         "art-20261107-carbon-gear e6357245e0bfba48ac15c07b659d3e081948f50f9b88b6cd1ba8b67863fc6776",
-        "art-20261107-track-helmet 854e593d0586cee32c1b28350b4837d2d525d6fbe41d1fe7eaf905144d10cc9a",
-        "titanium-damper 4dd569117c707736880fe30c17e1901c08215efc7961299f9b3b519dd47e745b"
+        "titanium-damper 4dd569117c707736880fe30c17e1901c08215efc7961299f9b3b519dd47e745b",
+        "carbon-steering-wheel abd68897dec4e94e93cc29501f1b687e9362c9213f050af9d9fd5187ec6b5029"
       ]
     },
     "carrom-cedar": {
@@ -253,13 +253,13 @@
       ]
     },
     "cloudwash": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "clothespin-bird 424c32a2c160b9d3e67a74656c44ec15633737372d645e038b7e56c68128d3ff",
         "cloud-laundry-basket b2ae0508a0ac6a9e0c15f448d8e2c5416e2435270dca70a5271295df1c334497",
         "star-wash 2b34bf0272fe5cbf6a586dd4f388d1cfb5f87a54b6d13f1c9b152310c4c3ce64",
-        "hero-small 5baf706cb432ae5930da4b77d1e9d4a081a3e20aecd15657386555f4f3a0ca13",
-        "blue-laundry-iron b0e0287be2d1bf671d8b204f466c33be63e5668ef98839e23b8e9068b629ac38"
+        "blue-laundry-iron b0e0287be2d1bf671d8b204f466c33be63e5668ef98839e23b8e9068b629ac38",
+        "cloud-soap-dish c04a8a6e0163f8190b151de8817d531e75f1412301d3a1172791fb73a181de29"
       ]
     },
     "clover-nap": {
@@ -303,13 +303,13 @@
       ]
     },
     "copper-circuit": {
-      "packVersion": 2,
+      "packVersion": 3,
       "slots": [
         "chip-island f7acf499165e27f98510769f261f9c9c60ed8eaf8d90f4b2df84ef6b71704ff1",
         "copper-coil 1bfbbc8320a7602745f53394cf771ff7ddb764d877ce700f8969903ba6bc3b74",
-        "trace-flow d2daad37a0428536efd42075bb6f27c6ac558cbd426626ba7d98017f6f31fc01",
         "copper-fin-array b911c243f62e30cf0621341432c3167d3451047f087fd5b647550b797749f4b8",
-        "ceramic-transistor b3e3dfd48842647f441fb60ea9824745acee3c6ea517a9313d92d83efd2205e0"
+        "ceramic-transistor b3e3dfd48842647f441fb60ea9824745acee3c6ea517a9313d92d83efd2205e0",
+        "copper-vacuum-tube 1a0955512caebd0edf579ae199f6ec5584097f8abef3a7c9982946bbeb78a94f"
       ]
     },
     "crimson-reverie": {
@@ -333,13 +333,13 @@
       ]
     },
     "curlfin-cove": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "paper-starfish 6e87e8b54aebe60f711bc9f096d817ee85eddfbe384749c8759b39906bb96563",
         "quilled-nautilus 1e41b3f1ef9d095aaa4ebb4956cf0b244ae7f04be076b409098b3f78d19f5ac0",
         "shell-nap fece485da24cdaef550813bdc31907c89f3fc1648161bfb48eb083cb59ce0aa2",
-        "hero-small 1afd96abd68c1be1820334edf2e73451004584ea8895eb62649e456a58a8e5fd",
-        "quilled-coral-crab 7cfc252ed6288043e975983f8aa3b7ede2e8a254c69562618be31933f32cb4f7"
+        "quilled-coral-crab 7cfc252ed6288043e975983f8aa3b7ede2e8a254c69562618be31933f32cb4f7",
+        "quilled-sea-turtle 25a31ab1b8cd9e91ad0538fd7cd8cbfca3ed6282f42e92707795fe26ed1cbd49"
       ]
     },
     "curling-frost": {
@@ -383,13 +383,13 @@
       ]
     },
     "dunesilk": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "wind-lines 7ee03f141291fc62a1e13f400b84ae47f12f24b3f368860c6d4bbb68bb824e9f",
-        "hero-small 3df4841e4c3b04ddfb180e72d14171ddc82374fece1699951d58ec26eeff5323",
         "art-20261106-desert-rose b227929b59a73185a44a42ea2932261c84521b69fb60c945a565a7b74d5a4d71",
         "art-20261106-dune-shell b59b769009c7cc1a3bc7cf08927b7ff69e8240cfa90a8c12e7c04693478d6b0f",
-        "wind-carved-arch 2fce4abd7bee57dbb4dc932971a9d171ded425dd82db9687432d3b3844a8efaa"
+        "wind-carved-arch 2fce4abd7bee57dbb4dc932971a9d171ded425dd82db9687432d3b3844a8efaa",
+        "sandstone-fennec f5a4a4cfeb1ea15be8db9e522773a93b930fc8626a34c7d2d74b8c6ac4008e67"
       ]
     },
     "ember-rift": {
@@ -443,13 +443,13 @@
       ]
     },
     "fern-and-brass": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "brass-leaf-beetle 78dc3cc0a760dede45cd85e6d0985837dbb60c63bd6e348b44102eb2c78bcd21",
         "fern-glasshouse 25659d294beac074d5dfc81f5272dfa3be31e2f3c12a376ee6ec6db02f545961",
-        "hero-small 6dc4d990f990894e8671b2868e2eccfa85b019ed2daa07783568b12bb5c6210e",
         "brass-acorn 274ede4bcd03ddb707a20e605b7b231aad65a50c0692ed934bbbb534d3497dbf",
-        "brass-watering-can 1a0b9adf5505234e82eb20ae81d90272bfe521c8a224c0966ba7a24c0d0d828a"
+        "brass-watering-can 1a0b9adf5505234e82eb20ae81d90272bfe521c8a224c0966ba7a24c0d0d828a",
+        "brass-garden-trowel 6280560e7136bfaec0133bd89b808b536fd7cdbe707925fe433a9edfea2c7dc8"
       ]
     },
     "fig-nocturne": {
@@ -523,23 +523,23 @@
       ]
     },
     "ginkgo-hour": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "production-20261101-fan-leaf b123eb23f7e170ea6ab60dea5c6417e47e5cf8116f098b1b5ddf0924e2483503",
-        "hero-small ec1cc0f6af82651c53af27f472b6d79b5fdabcef002ff0c6c25adcfac376d8dc",
         "art-20261106-ginkgo-ink e4ccbf02db92195dbca36c4656f0afe34c74802deea6f0dcd83157032c7c9e86",
         "art-20261106-golden-leaf-mobile 5f40a92bc6dfbea1c6fc486eaceb98acaf0b7b688600c45f823a45959d58e9a7",
-        "golden-ginkgo-fruit eab88e34cbd90783d5f520f295793338750c585bb92cbc412921b3046f978255"
+        "golden-ginkgo-fruit eab88e34cbd90783d5f520f295793338750c585bb92cbc412921b3046f978255",
+        "pressed-ginkgo-bookmark 41a27d2a4b6b7912d893503f7104f038edae18f889b1f72e4f81ad424e676581"
       ]
     },
     "glacier-quiet": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "frost-feather c0226a5636ca21afa2f14bf1a8ec0351412761f43095af155f6bd8ec397b7e41",
         "glacial-iceberg e46a964eb9d50f3bad20273c7bd16c616fb74e85452c379c31e371eb6c5feaf3",
         "frozen-bubbles c109808dc981bdb48598b5eead810c78680e69dbe1673f4e873e24493895f46f",
-        "hero-small f3dd84aba6823b5d368e48a208b810fff766cf6606eadcbaf20ab1525428c572",
-        "dendritic-snow-crystal 5a3e2617775722b72310165239c5c9e07cdfe9e141653ea76e7844d0ec034110"
+        "dendritic-snow-crystal 5a3e2617775722b72310165239c5c9e07cdfe9e141653ea76e7844d0ec034110",
+        "glacial-cave-arch cbe4a1971794b92f36536ff8e206e7634247558d74270d3269df4e8316c1f74e"
       ]
     },
     "glider-nook": {
@@ -603,23 +603,23 @@
       ]
     },
     "jellylight": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "glass-anemone 0376a5e831462ccd052e99243680b899d879595091b4b61baf073f3a628c9e1a",
         "opal-stingray 6101c6ed4b7340a29716e942eb6a5b26196b6d7ea48aea52412301253c4678e1",
         "prism-drifter 30dd486a60d75ee8c44b3a0f2687f1994624adb0da58495966d1aeb248949f10",
-        "hero-small ede99230e4f84edb1e0d590b0bccb7177a6dac0a06cc8a5f595952d6f8603811",
-        "opal-sea-slug 27753804e4940c935179dd577d3527c81063f0f9006fee234e3e1fc58b79b889"
+        "opal-sea-slug 27753804e4940c935179dd577d3527c81063f0f9006fee234e3e1fc58b79b889",
+        "opal-seahorse 2ad85cb78ea45efb2af2a86f0caa3c875610dc60d5b6a615226a1e8f355957a8"
       ]
     },
     "juniper-mist": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "production-20261101-needle-study 350915945b0e1ea58abb0302e7c980638005be852114184ab2cb626c075f7e93",
-        "hero-small edff3aac3fb5dd4cc05919b6d0ea378c1bd229ac082930447e97661790b1bb81",
         "art-20261106-frosted-juniper b97022afa5853c6aec4fc4dd88f45b61ad99eee60ada5a59d2345a35f41ef8da",
         "art-20261106-winter-terrarium dba50cb7a1e8a62d0e478f86185450e4f63eb3ab9f211dc279a48a1166d24ec1",
-        "winter-wren abd10c58f8fbf45ab53c4b5dacdf50b9fd0d830fe9ee834219e45a80de9fa9f8"
+        "winter-wren abd10c58f8fbf45ab53c4b5dacdf50b9fd0d830fe9ee834219e45a80de9fa9f8",
+        "juniper-mortar-pestle 2238890a34e7246ffdf9ccc31cf5837621c1ada3c01a19f83b5d7de3032636f8"
       ]
     },
     "kaleido-cobalt": {
@@ -633,23 +633,23 @@
       ]
     },
     "kingfisher-blue": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "production-20261101-reed-perch 5ff8cbc5e76461d824f539e76ab4d61597436f0dc1a05dea9aa6f282ba671eb3",
-        "hero-small a8a7097ba696318ad4f03fb2d0e6e81b7aca148494e0581957cf23f2cddccfd4",
         "art-20261106-kingfisher-dive a67ceba5827f97b70d58aa640ecd054624c9b340ad356e327f66c7c7448bb034",
         "art-20261106-river-feather a998b30443a1dc5baf768d01873a8ee548989a7e94b7ae64bcc4e60cea036098",
-        "river-reed-nest 84b040c675591b4fb95480c2fb747f082b355980e56edbdb929d6110a99d1592"
+        "river-reed-nest 84b040c675591b4fb95480c2fb747f082b355980e56edbdb929d6110a99d1592",
+        "reed-bed-dragonfly 3cd1da164fce5986c5e6c14468924e1cbd14832b963535bbec39aeab44bb5738"
       ]
     },
     "labradorite-hush": {
-      "packVersion": 5,
+      "packVersion": 6,
       "slots": [
         "cleavage-lines bd104ad5583a3568603c01b137fc20b9f0d5b5d2eab25d40791a628b5b2a8aba",
         "stone-pair f8478e240ce3e0ff1f769d28e946353c61f2972dbfd9ebbcc3fe3660c6045796",
-        "hero-small c983374f579166f3b6ec5077dc538d9e8e00939c79e8c3b17fffbbd60c2c1f0d",
         "mineral-mortar ef872cd1cafd060105c15feefc75319233102ea8aa828ec87acc6c424b4b3bb3",
-        "carved-mineral-leaf e7cb9f8b0093457876a4fdff5239164e6a8de8f11d42eed1f26bf1d1fc028f6c"
+        "carved-mineral-leaf e7cb9f8b0093457876a4fdff5239164e6a8de8f11d42eed1f26bf1d1fc028f6c",
+        "labradorite-owl 1e99d1b5e24e6625e43e312c7594d0761532ca3ed6c8dcd66a66c74b56d20af1"
       ]
     },
     "lavender-nocturne": {
@@ -673,13 +673,13 @@
       ]
     },
     "lotus-drift": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "pond-dragonfly 63d8b43c320afa7ded4286cde3f0b0c458d9d5e8d873317cb80d11f47ce883e2",
-        "hero-small 6584b5c518b2830821beae78a3d66ca7e2f295d080f4ab1f544fdda4b7d09ed0",
         "art-20261107-lotus-tea-bowl 7367abb7564f7472c48d7ea15c9dbef862ccca82c8153e0fdc96183d35e3c3e3",
         "art-20261107-pond-minnow f48a01b804d891c2f8e4c914578e0adff1cfc3d086aa1dd6c70f1325a3abe605",
-        "pond-water-strider 90f186acdb8c002da2c716d909624b0b458be51876bea9032a03d36345480019"
+        "pond-water-strider 90f186acdb8c002da2c716d909624b0b458be51876bea9032a03d36345480019",
+        "pond-paper-boat 85edd7e24c6bffc4ba699e23c5b917ca177b8b9ecc6d2081fc6fb93f3b4fbd70"
       ]
     },
     "lumen-mosaic": {
@@ -713,13 +713,13 @@
       ]
     },
     "manta-silk": {
-      "packVersion": 5,
+      "packVersion": 6,
       "slots": [
         "ripple-caustic 5cd690431ecaa623ca8f39804f75d34b4fead0723865b3af720835e5d014b9df",
-        "sand-rays 7c3ad97d869573fe45d090c3907d8e1ee4d9432dadaed738e7cbd36443d1d459",
         "silver-flying-fish 9fef40d595fc296896bf1d0c55d445b585772015831d3688a4e5b33e63c43f76",
         "ivory-sea-fan 2a03bcb755e3a83f50d21d0bd425a73f127b63bd1e03cffb750964b5460a508d",
-        "aqua-pearl-oyster 35bec9fa7a495b87f0289b1879b6591a750dc7aa04f1585cc7466342343a70da"
+        "aqua-pearl-oyster 35bec9fa7a495b87f0289b1879b6591a750dc7aa04f1585cc7466342343a70da",
+        "silken-manta-ray 7e1d11bd893c4c0c567faf683f4d357008d74fba91a435e6e94096acd4c77a4c"
       ]
     },
     "marigold-miles": {
@@ -773,23 +773,23 @@
       ]
     },
     "meadowglow": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "dew-grass-orb ab598b9169e5dfb508dd8446fd1aca74ef61d1f7dd8c4a4feb0647f45a265f1c",
         "sunlit-dandelion d099e95f864c456f491ac36e54572d10ca8c4b4578401c63f5e15d99da1195f7",
-        "morning-grass aed4e109fc75ec127b6743414a028b5f5336a3c4dbb8fcbeb099e92c4b06df1a",
         "hero-small 6e971e17ad8ddfb30432c2243733dac48c5479aaaf49348f8510ec7756a2eaa6",
-        "morning-dew-web bcffe4d7489871ad03a67daf2fac6901acc2ce2d873fd13917f14cd0c03d76e2"
+        "morning-dew-web bcffe4d7489871ad03a67daf2fac6901acc2ce2d873fd13917f14cd0c03d76e2",
+        "meadow-harvest-mouse cc797f4581905c6e6c8b7d9ea0532af2ce54ca6574ef0c228ce8d607dd661d11"
       ]
     },
     "midnight-conservatory": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "dew-capsule eee37a31d42ceab6818a361b8d81be135a5f5774fc1684d46b6ef1347975b507",
-        "night-orchid d8e5c85c7f575af3afee8e838b343011f692a78e9f3a83a981fc6721dc3bf97a",
         "hanging-garden 3dd7fa500a4ad582bb94f45bcb41861f0d7f21eb5fe8087c921db265ff9796cb",
         "hero-small f60d82513b80836dcd773f26be67f1b436b23d23aae5dcff3262e6ac502e880b",
-        "moonlit-pitcher-plant 183c82be973d640ce6cc0e101ea9cfcffe1200ecb3a63ae6b04caac81a7182db"
+        "moonlit-pitcher-plant 183c82be973d640ce6cc0e101ea9cfcffe1200ecb3a63ae6b04caac81a7182db",
+        "moonlit-garden-shears c6be44ae766dc1997524042f574f0abb277066c60438f6b9da1b4fd5dd3cf0be"
       ]
     },
     "midnight-matinee": {
@@ -833,23 +833,23 @@
       ]
     },
     "moonpatch": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "patchwork-kite 647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac",
         "quilted-rocket bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657",
         "star-catcher b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8",
-        "hero-small fad8004e8a8406ebdfc9c99cc1252f88946176000c20c123b58d4bcf7ae04848",
-        "patchwork-moon-rover 3f1e2dbf833e5f299bc08db44ec52cf382a3beadcd407e3bd720d3849b914163"
+        "patchwork-moon-rover 3f1e2dbf833e5f299bc08db44ec52cf382a3beadcd407e3bd720d3849b914163",
+        "stitched-satellite af8a9633b75e328f5bc75a2ab7b9a754a7198e6c66e836f27080c98016b927f2"
       ]
     },
     "mosswick": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "bark-snail 06eb2ab1889f8778f84c7fdd9a9762303b64f80fd196fd91555d45aa747026bc",
         "moss-tower 462a4a4b03dce6059bb4dce3b33644ef2dd8c6ff19e65504ba233c83de87887a",
-        "travelling-cottage 8f26df1d8a1a583e4ab535dc7f9225ff8a2c8613ecf9d46da924c6ad2d6dcec0",
         "hero-small d11ebbc63971c7de9fcb262f794b36a2b1d0c7e39abc6ba4badffc91a59f831b",
-        "mosswood-storybook e6e80e3a230489bba6a08f8d9cf1169b62b92b8213865e97c012765ac79e22b7"
+        "mosswood-storybook e6e80e3a230489bba6a08f8d9cf1169b62b92b8213865e97c012765ac79e22b7",
+        "mushroom-mailbox ee08b5db17ba9617b8e0e5f7b2e8d107abcb29bea606a07858fdbcb19021d3bd"
       ]
     },
     "nebula-veil": {
@@ -883,13 +883,13 @@
       ]
     },
     "ochre-bend": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "eucalyptus-capsule 24f5d9de3182f90643c86796bd381909af97861d2bb455b082fe7fc85f5352c2",
         "sandstone-kingfisher ef39382a48df9ce4686280adeeb55102e8b49adf2361eb413886c9960af35956",
         "ochre-stone 9735cff14f4b63e6e31840f89c448b2a720f6665ac4598e0de38adc2412984eb",
-        "hero-small 56e63546eff3b027f0c893e1bebf75e13bd9467f36dadc80442bad77f3d4e60e",
-        "eucalyptus-bark-curl 6f714d75ca93faae7acd7dfe9e655c019de370e734bdc4f1a404d5a883eae880"
+        "eucalyptus-bark-curl 6f714d75ca93faae7acd7dfe9e655c019de370e734bdc4f1a404d5a883eae880",
+        "billabong-lizard 30e0d9deba93151a4020896d807da03401f63807a74f0a18f3ea950df7a2d109"
       ]
     },
     "olive-outpost": {
@@ -943,33 +943,33 @@
       ]
     },
     "peach-puddle": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "peach-umbrella-snail 44a1b298dad448b8087862b76ce2fa0000cb66769800079b457c03580d41a84f",
-        "hero-small c2bce4f1eca8a7682b2d55808a855cb9473f2c23487f0ede3c35ee082215e778",
         "art-20261107-rain-boots 99aa23958bf92e6580edc110865f84e3389b19c437d3020667ab68a9e26d26ae",
         "art-20261107-duckling-raft c8db65bfd3cff38bfb80a5e757a4909f55d98f6de51401405eb4c99842826b3a",
-        "peach-raincoat bfbf2082050168b3640d0f459c2974d67864832986856bcf4f52caa83e073236"
+        "peach-raincoat bfbf2082050168b3640d0f459c2974d67864832986856bcf4f52caa83e073236",
+        "peach-paper-pinwheel 7589b8ec75716f0002e62317e2fb732cd9fe53333b1a5b6f66ac6cce16ecbaa3"
       ]
     },
     "peachskin": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "production-20261101-velvet-peach ca35d047f2595788dc57debecbf6eb3dce24c4b463c4705a9f8d3b530388b5dd",
-        "hero-small cbd5656376a4db35a14b15a621240571bd0d121c282ee9d16f4b6f65a379a31b",
         "art-20261106-peach-blossom 300d54f423b01af4a3211f1b0df027c80bd83e783c73c17cfff3473e69fce871",
-        "art-20261106-peach-slice 2d41a4147925b025f279d3d3e57eefdd0fa72586039c184684d192a468376b85",
-        "peach-stone-seedling 9aa7fdc113f2697409f8098dbeb46d95204ed6bf1981a725b815fad8c5cff97a"
+        "peach-stone-seedling 9aa7fdc113f2697409f8098dbeb46d95204ed6bf1981a725b815fad8c5cff97a",
+        "peach-blossom-teapot 5e30a51f09ff0ddf678476ad41bc9a1a1690db5fc402e93d3ac27924456e3f0c",
+        "peach-orchard-butterfly e738893f39cd155560c08ad82e43ec14527a2ad729626738daf4adb7b1f29691"
       ]
     },
     "pebblekin-grove": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "fern-altar 9011bc9d38846d33a3d9733b6cc2478a034c7c23e23fd1307f2bf6864a95ea52",
         "pebble-moth 581949858ce75027e0d495c659b838910deca9933d5efeffd57cbb68cf0e1320",
         "sprout-keeper b72f099a8f1f717c71ed233f23cea7439a20a898bda6199504fc67d9c050cc6a",
-        "hero-small 8fc11f9547cf600207c60209261d456dc82fb01b911d99c7bed07d23788261dc",
-        "mossback-tortoise 1e55ef6d8aaf4f5684bd98f98c4d0ef478065ab275d04ce73f0952333ebe1bcc"
+        "mossback-tortoise 1e55ef6d8aaf4f5684bd98f98c4d0ef478065ab275d04ce73f0952333ebe1bcc",
+        "pebble-owl b39e15352e841485593062b8f11a891c4818226f0dce15a4a07563c41891f3fb"
       ]
     },
     "persimmon-press": {
@@ -983,13 +983,13 @@
       ]
     },
     "phosphor-amber": {
-      "packVersion": 2,
+      "packVersion": 3,
       "slots": [
         "floppy-study 7ef5380db0e363dc798338068ade1154ee09c3f3920abdfc707fb477ce247199",
-        "pixel-landscape 84a3008213af46373f5519d2851a1b75651de5e2bb096afc1c31cf45056e5eef",
         "terminal-desk 3ebf95ff4e1c9e590a32f2d8741d7a4facd3df07927c0c798762affda3f124ae",
         "phosphor-nautilus 01a34e58734a8cb1c69d82e2529b61673bd9193b90761d09cfba58b68b2eefcd",
-        "cream-joystick 9411c952a0f401f94b6f568d581c636a572d6e290d914a0637670d3ccae5b278"
+        "cream-joystick 9411c952a0f401f94b6f568d581c636a572d6e290d914a0637670d3ccae5b278",
+        "amber-cassette-tape 2f0b7aaaf173f89c7c786e9879dfdb0b4c467715634af931bc8fe9dee682f415"
       ]
     },
     "pistachio-parlour": {
@@ -1053,13 +1053,13 @@
       ]
     },
     "prism-orchard": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "glass-plum df948b647b05e17044f06ca92bbab84594235cbdd28704213e3e6dfeb297d51f",
         "opal-tree-frog 87be490cd80633af054b45a06aa8ceb6a32fdb525ceff5160ff388e0ad9407a3",
         "petal-hummingbird 2e0c34fc637a1eedad6ca0f7a77c4e067ced252725b4e9a1a99b78f1a08cd085",
-        "hero-small f909d1442ccc4efbae53946274a26c33bc99b538da67099eeee19df8ffa06f7d",
-        "opal-butterfly 444dc4acb555b63aaf4aa1d63af8e013c76194a746b9a36ab118c686be80aaa8"
+        "opal-butterfly 444dc4acb555b63aaf4aa1d63af8e013c76194a746b9a36ab118c686be80aaa8",
+        "opal-orchard-rabbit 725d50b0bc4ff2afb21b98cb81a96dbfcbca29731004052056ff731fd47b8fc6"
       ]
     },
     "protea-blush": {
@@ -1163,13 +1163,13 @@
       ]
     },
     "saltveil": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "salt-crystal a68920a735e352dcc6ece702a74820b64021c794f3c1a6c4fc2650fffd2ea66f",
         "hero-small c09f7282eddfb3fab8870637a436c9ba8c07931037d83d2819a76206130cd476",
-        "art-20261106-pink-halite b3367950a5410b648962eec02efaef94f7693bf63bb2fd32f320b91bbd2247ca",
         "art-20261106-sea-glass-shell 90468f4b28c70650c9778d94cb6629bb1e58df15868ba76bbc60e7ab478a4f2f",
-        "halite-feather f7fe1ac50900c4499a490c00839801b107085220e7cf8c69c8aeb66858ee7db9"
+        "halite-feather f7fe1ac50900c4499a490c00839801b107085220e7cf8c69c8aeb66858ee7db9",
+        "rose-glass-sailboat 31a5ea2ea7ededbb77316cd5beb9c0d918431bb48dc3dc5eb4f31da54001d6d2"
       ]
     },
     "sea-glass-sunday": {
@@ -1203,13 +1203,13 @@
       ]
     },
     "silver-orchard": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "glass-orchard-snail 10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025",
         "silver-leaf-lantern 0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c",
         "silver-dormouse 9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694",
-        "hero-small 089da6c1648f56007ef17d84b1d59d34a31738957331be428ac2cb782df42ad4",
-        "silver-pear-blossom 885b3b43228dd4d1e86fc6bbda5e320ce001928e421aeb1deec40470e6f0f75b"
+        "silver-pear-blossom 885b3b43228dd4d1e86fc6bbda5e320ce001928e421aeb1deec40470e6f0f75b",
+        "silver-orchard-key d55931b2c76fc6d6cf4f4517ecf1a85d63b18b2d49cb0503353609a085feb393"
       ]
     },
     "sonata-house": {
@@ -1243,33 +1243,33 @@
       ]
     },
     "stellar-cradle": {
-      "packVersion": 7,
+      "packVersion": 8,
       "slots": [
         "nebula-egg 4054a8c9f6976f8c30f6203cd8d1934fcf00e84e85186868b675d9ccb9c84a20",
         "star-seedling a3f9a3bc637334cc5abf4ebb01a3bd1a2e0cd98dc2d581fa604fc19573124010",
-        "stellar-nursery a570bcc69601606ba3bf72ff38ff17c44338addfccfa84c4202aa5e012f47b09",
         "hero-small f60d378ba2128732fe20526aafc3c7c64606d18e73ef16d2a47be58e51b8c871",
-        "starforming-spire 83886f320782bd5d049b77174591e641a8d60c33cf380d76aea39c9135a2c613"
+        "starforming-spire 83886f320782bd5d049b77174591e641a8d60c33cf380d76aea39c9135a2c613",
+        "stellar-ringed-world 9fc5e2fcef5d18c32b3e6598720b2d4277a02568670418009e87d747493f8524"
       ]
     },
     "summit-line": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "pine-rope-pendant 38e56c1c0fd6c7f6d56124256addc6fc0b80aa3122929c48ada4b5470b4c0a63",
         "hero-small 73fa8577d5ae2b4147a8177b3832c10bb9a7b79cb20fcdc66fa85145a2e94f99",
-        "art-20261107-signal-gondola b6343e74f289c5b555dabea36a25d04ce51eec306b0603fe9b0ce18c8e9d1b69",
         "art-20261107-snowshoe-pair befa228a5529421775a577dd7027aa5ccb099ce7c689766878f0543c1bd193d0",
-        "alpine-ice-axe 6210dbd79d95a1547032d0b298ada050abecb7f5e7e179845f548b6a009a6f5a"
+        "alpine-ice-axe 6210dbd79d95a1547032d0b298ada050abecb7f5e7e179845f548b6a009a6f5a",
+        "alpine-mountain-hut be2a271be4a6fa4f977b89e17255c0bf49f04bbb7b716c4b5229cb2121a541e4"
       ]
     },
     "sundew-ember": {
-      "packVersion": 5,
+      "packVersion": 6,
       "slots": [
         "dew-orbit 8dd77a90e4b58eefccfc93cffd7dc8babe983acc169dc613c8adee0dedabebb3",
         "sundew-crown 9abc93d315fd50e2f5f3ef3a6b8f1c84732e8fa0c9a9608ea2a365d9e57d3545",
-        "hero-small 03f3bad8c9f9d11fd37f7069684825453d0e46efa67eab982361bf63c57f9f01",
         "ember-seed-capsule 4f6066c1297aab5daaf1d68a0079b8b96c42a96000ef82ef081c632ca31fd2ad",
-        "sundew-blossom c8f850459e4adf9091f9479b46a4eb32a1ef82a41eaa5399f32de763be7ed605"
+        "sundew-blossom c8f850459e4adf9091f9479b46a4eb32a1ef82a41eaa5399f32de763be7ed605",
+        "ruby-garden-beetle 09690fa04748faff175737c5e59dce2727a078678ebd58d79e570d61f315aa18"
       ]
     },
     "tapir-terracotta": {
@@ -1383,13 +1383,13 @@
       ]
     },
     "wisteria-hush": {
-      "packVersion": 8,
+      "packVersion": 9,
       "slots": [
         "wisteria-lacewing 0450b0e60793c99c462728bd9ccc6f15a280603413d9077f205b93e7b238a705",
-        "hero-small b5fc346d61bd19aa5fbfffbbfdbb97f71bb3c8888a7e348ce45849cb17281cbe",
         "art-20261107-wisteria-bell d9e18259cbf480bd0a9c975c42002ab8c817822e890478853f9288564cfc087e",
         "art-20261107-dew-snail 40f74c9362919ff701bcbb90d9d17bd79285a66bd6e6234a8e4e511e07b1f566",
-        "wisteria-seedpods 2b95b40a769a121c3e538135e4b2a8238d428f9560aec6e17f54cfb2c31be06d"
+        "wisteria-seedpods 2b95b40a769a121c3e538135e4b2a8238d428f9560aec6e17f54cfb2c31be06d",
+        "wisteria-carpenter-bee 2a8cd6ec596e91e40ca0e126fd4e7c53d2ef8053be4fe7f77d2d820339fcb516"
       ]
     },
     "woven-wander": {
