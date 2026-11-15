@@ -95,9 +95,9 @@ test('stored text without sample trips, or not a list, is kept byte for byte', (
   assert.equal(stripSampleTravelsText(JSON.stringify(sampleTravels(TODAY, NOW))), '[]');
 });
 
-test('UI wiring: Settings mounts the row, the trip screen hides export, the pass shows a Sample chip', () => {
+test('UI wiring: 1.0.0 Settings has no Sample past trips row (screenshot-only tool), the trip screen hides export, the pass shows a Sample chip', () => {
   const read = (p: string) => readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8');
-  assert.match(read('app/settings.tsx'), /<SampleTravelsSection \/>/);
+  assert.doesNotMatch(read('app/settings.tsx'), /SampleTravelsSection/);
   assert.match(read('app/trip/[id].tsx'), /canExportTrip\(trip\) \? <TripExport trip=\{trip\} \/>/);
   assert.match(read('src/ui/TripPass.tsx'), /isSampleTravel\(trip\) \? t\('demo2\.chip'\)/);
 });
