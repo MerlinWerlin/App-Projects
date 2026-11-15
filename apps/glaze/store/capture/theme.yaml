@@ -1,6 +1,10 @@
 # One theme: the "Use this theme?" prompt, Yes (downloads a remote pack first), Next steps, its widgets, its page.
 appId: ${APP_ID}
 ---
+# From the Themes tab, so the theme page's back button has no other theme's name on it.
+- openLink: glaze://themes
+- waitForAnimationToEnd:
+    timeout: 3000
 - openLink: glaze://theme/${THEME}
 - runFlow:
     file: dismiss.yaml

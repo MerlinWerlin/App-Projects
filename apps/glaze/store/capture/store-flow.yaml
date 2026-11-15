@@ -22,6 +22,17 @@ appId: ${APP_ID}
     timeout: 4000
 - takeScreenshot: 02-themes-scrolled
 
+# Premium themes' pages first (browsing is free): their "Got it" taps use up the rotating tips, so the
+# "Use this theme?" captures below have no tip banner behind them.
+- runFlow:
+    file: page.yaml
+    env:
+      THEME: desert-afterglow
+- runFlow:
+    file: page.yaml
+    env:
+      THEME: porcelain-tide
+
 # Free themes: prompt, Yes, next steps, the Widgets tab with their art, the plain page.
 - runFlow:
     file: theme.yaml
@@ -42,10 +53,6 @@ appId: ${APP_ID}
       SLOT: '4'
       SHOOT: ''
 - runFlow:
-    file: cleanprompt.yaml
-    env:
-      THEME: cloud-atelier
-- runFlow:
     file: theme.yaml
     env:
       THEME: cloud-atelier
@@ -64,15 +71,7 @@ appId: ${APP_ID}
       SLOT: '5'
       SHOOT: ''
 
-# Premium themes: their pages (browsing is free), and the Glaze Plus sheet from "Use this theme?".
-- runFlow:
-    file: page.yaml
-    env:
-      THEME: desert-afterglow
-- runFlow:
-    file: page.yaml
-    env:
-      THEME: porcelain-tide
+# The yearly Glaze Plus sheet, from "Use this theme?" on a premium theme.
 - runFlow:
     file: plus.yaml
     env:
