@@ -35,6 +35,17 @@ appId: ${APP_ID}
       SLOT: '1'
       SHOOT: 'menu'
 - runFlow:
+    file: custom.yaml
+    env:
+      ART: '1'
+      POINT: '91%,40%'
+      SLOT: '4'
+      SHOOT: ''
+- runFlow:
+    file: cleanprompt.yaml
+    env:
+      THEME: cloud-atelier
+- runFlow:
     file: theme.yaml
     env:
       THEME: cloud-atelier
@@ -44,6 +55,13 @@ appId: ${APP_ID}
       ART: '1'
       POINT: '91%,40%'
       SLOT: '2'
+      SHOOT: ''
+- runFlow:
+    file: custom.yaml
+    env:
+      ART: '2'
+      POINT: '91%,56%'
+      SLOT: '5'
       SHOOT: ''
 
 # Premium themes: their pages (browsing is free), and the Glaze Plus sheet from "Use this theme?".
