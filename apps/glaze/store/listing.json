@@ -21,5 +21,6 @@
   "primaryLocale": "en-AU",
   "dropLocales": [
     "en-US"
-  ]
+  ],
+  "attachBuild": "latest"
 }
