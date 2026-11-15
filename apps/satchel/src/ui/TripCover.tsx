@@ -13,6 +13,7 @@ import { memo, useCallback, useEffect, useId, useMemo, useRef, useSyncExternalSt
 import { Animated, Image, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Defs, G, LinearGradient, Mask, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 import { COVER_ART_IMAGES } from '../content/coverArt.ts';
+import { stopOf } from '../core/svgstop.ts';
 import { COVER_ART, COVER_H, COVER_W, sceneShapes, type CoverShape } from '../core/coverArt.ts';
 import { COVER_SCENES, isCoverId, type CoverId } from '../core/covers.ts';
 import { resolveCover, type ResolvedCover } from '../core/covers2.ts';
@@ -117,9 +118,9 @@ export const CoverArt = memo(function CoverArt({ scene, dark }: { scene: CoverId
         {/* 1.0.0: no SVG pattern grain: on the new architecture a pattern fill drew as an opaque block over the
             lower half of the scene (store capture, 15 Nov 2026), leaving a blank band on every trip without a photo. */}
         <LinearGradient id={`foot${uid}`} x1="0" y1="0" x2="0" y2="1">
-          <Stop offset="0" stopColor={scrim.from} stopOpacity={0} />
-          <Stop offset="0.6" stopColor={scrim.from} stopOpacity={0} />
-          <Stop offset="1" stopColor={scrim.to} stopOpacity={dark ? 0.5 : 0.38} />
+          <Stop offset="0" stopColor={stopOf(scrim.from).stopColor} stopOpacity={0} />
+          <Stop offset="0.6" stopColor={stopOf(scrim.from).stopColor} stopOpacity={0} />
+          <Stop offset="1" stopColor={stopOf(scrim.to).stopColor} stopOpacity={dark ? 0.5 : 0.38} />
         </LinearGradient>
       </Defs>
       <Rect x={0} y={0} width={COVER_W} height={COVER_H} fill={`url(#sky${uid})`} />
@@ -145,10 +146,12 @@ const CoverScrim = memo(function CoverScrim({ dark }: { dark: boolean }) {
   return (
     <Svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" style={FILL} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
       <Defs>
+        {/* 1.0.0: alpha goes in stopOpacity. An rgba() stopColor lost its alpha on the new architecture and the scrim
+            drew as a solid navy block over the lower 70% of every cover (store capture, 15 Nov 2026). */}
         <LinearGradient id={`scrim${uid}`} x1="0" y1="0" x2="0" y2="1">
-          <Stop offset="0" stopColor={s.from} />
-          <Stop offset="0.45" stopColor={s.mid} />
-          <Stop offset="1" stopColor={s.to} />
+          <Stop offset="0" {...stopOf(s.from)} />
+          <Stop offset="0.45" {...stopOf(s.mid)} />
+          <Stop offset="1" {...stopOf(s.to)} />
         </LinearGradient>
       </Defs>
       <Rect x={0} y={0} width={100} height={100} fill={`url(#scrim${uid})`} />

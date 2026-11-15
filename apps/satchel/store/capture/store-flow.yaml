@@ -83,6 +83,12 @@ appId: ${APP_ID}
     timeout: 4000
 - takeScreenshot: 08c-paste-scrolled-${MODE}
 
+# Passport page (stamps on paper texture): checked by eye, not a store shot.
+- openLink: satchel://passport
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 10-passport-${MODE}
+
 # Share itinerary: the sheet, then "Satchel trip file" hands a .satchel file to the system share sheet.
 - openLink: satchel://schedule
 - waitForAnimationToEnd:
@@ -99,9 +105,3 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 8000
 - takeScreenshot: 09b-share-satchel-file-${MODE}
-
-# Passport page (stamps on paper texture): checked by eye, not a store shot.
-- openLink: satchel://passport
-- waitForAnimationToEnd:
-    timeout: 6000
-- takeScreenshot: 10-passport-${MODE}
