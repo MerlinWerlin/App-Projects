@@ -19,6 +19,12 @@ export const ko: NonNullable<LocaleMessages['themes']> = {
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: '아트 · 오리지널 배경화면', body: '무료. 어울리는 아이콘과 떠 있는 위젯 아트가 함께하는 오리지널 아트 배경화면입니다. 다운로드할 필요가 없습니다.' },
   plusNote: 'Glaze Plus.',
+  freeBadge: '프리미엄 · 무료',
+  freeNote: '프리미엄 테마, 무료',
+  free: {
+    title: '무료',
+    body: '프리미엄 테마 10개를 무료로. Glaze Plus로 다른 모든 테마를 사용할 수 있어요.',
+  },
   feedback: '피드백 보내기',
   feedbackHint: '메일 앱에서 테마를 제안하거나 문제를 알려 주세요',
   empty: {

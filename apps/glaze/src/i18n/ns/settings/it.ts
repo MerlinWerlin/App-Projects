@@ -55,14 +55,14 @@ export const it: NonNullable<LocaleMessages['settings']> = {
     feedbackHint: 'Scrivi al team di Glaze dalla tua app Mail',
   },
   plus: {
-    body: 'Prezzo unico. Nessun abbonamento, mai. Creare le tue icone, entrambi i metodi di installazione e il creatore di Live Photo con il tuo video restano gratis.',
+    body: 'Glaze Plus è un abbonamento annuale che sblocca tutti i temi. 10 temi premium restano gratis, così come le tue icone, entrambi i metodi di installazione, Personale 1-5 con le tue immagini e il creatore di Live Photo. Annulla quando vuoi in Impostazioni.',
     more: 'Cosa include Glaze Plus',
-    moreHint: 'Spiega lo sblocco unico e cosa comprende',
+    moreHint: 'Spiega l’abbonamento annuale e cosa include',
   },
   privacy: {
     title: 'Privacy',
     heading: 'Nessun dato raccolto',
-    body: 'Niente account, statistiche, pubblicità o tracciamento. Foto e video non lasciano mai il tuo telefono. I pacchetti di temi si scaricano da GitHub come semplici file; Glaze non invia dati personali, account o identificativi.',
+    body: 'Nessun account, analisi, pubblicità o tracciamento. Foto e video non lasciano mai il telefono. I pacchetti di temi si scaricano da Cloudflare come semplici file; Glaze non invia dati personali, account né identificativi.',
     installedTitle: "App su questo iPhone",
     installedBody: "Per selezionare le tue app al posto tuo, Glaze chiede a iOS solo se {count} app popolari specifiche sono installate. La risposta serve solo a dare un tema a quelle app e nulla lascia il tuo telefono.",
   },

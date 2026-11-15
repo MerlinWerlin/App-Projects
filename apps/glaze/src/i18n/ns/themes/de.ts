@@ -19,6 +19,12 @@ export const de: NonNullable<LocaleMessages['themes']> = {
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Kunst · eigene Hintergrundbilder', body: 'Kostenlos. Eigene Kunst-Hintergrundbilder mit passenden Symbolen und schwebender Widget-Kunst. Nichts zu laden.' },
   plusNote: 'Glaze Plus.',
+  freeBadge: 'Premium · Gratis',
+  freeNote: 'Premium-Theme, gratis',
+  free: {
+    title: 'Gratis',
+    body: 'Zehn Premium-Themes, für dich gratis. Glaze Plus schaltet alle anderen frei.',
+  },
   feedback: 'Feedback senden',
   feedbackHint: 'Schlage ein Theme vor oder melde ein Problem über deine Mail-App',
   empty: {

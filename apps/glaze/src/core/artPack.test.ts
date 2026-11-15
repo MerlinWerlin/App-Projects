@@ -1,6 +1,7 @@
 // T130: theme art packs: PNG checks, the validator, the Theme mapping, the generated files and the
 // importer script. PNG fixtures are built here with a tiny encoder (stored, zlib-free DEFLATE
 // blocks; node:zlib only for the full-size wallpaper so the fixture stays small).
+import { isFreeTheme } from './freeThemes.ts';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
@@ -416,7 +417,8 @@ test('artPackTheme maps the palette, keeps vector glyph icons and flags the imag
   assert.equal(t.id, 'test-night');
   assert.equal(t.name, 'Test Night');
   assert.equal(t.tagline, 'A quiet test sky.');
-  assert.equal(t.plus, false);
+  // 1.0.41: only the ten free themes are free; a test pack is not one of them.
+  assert.equal(t.plus, !isFreeTheme(t.id));
   assert.deepEqual(t.palette, { bg: '#0A0F24', surface: '#161C2E', accent: '#F4D58D', ink: '#EEF1FF', glyph: '#FFFFFF' });
   assert.deepEqual(t.iconStyle.background, { kind: 'solid', colour: '#161C2E' });
   assert.equal(t.iconStyle.glyphColour, '#FFFFFF');
@@ -550,7 +552,8 @@ test('art-pack themes resolve everywhere: getAnyTheme, free marks, no clashes wi
     assert.equal(artPackOf(t.id), t);
     assert.equal(artPackOf(t), t);
     assert.ok(isFreeMarked(t.id), `${t.id} shows the Free pill`);
-    assert.equal(t.plus, false);
+    // 1.0.41: Deep Sea is one of the ten free themes; Starry Night and Sunset Dunes need Glaze Plus.
+    assert.equal(t.plus, !isFreeTheme(t.id));
     assert.ok(contrastRatio(t.palette.glyph, t.palette.surface) >= 4.5);
     assert.ok(contrastRatio(t.palette.ink, t.palette.bg) >= 4.5);
   }

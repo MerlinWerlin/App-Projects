@@ -102,28 +102,34 @@ test('no string literal in app/ or src/ invents downloads, ratings, ranks, likes
 
 // ------------------------------------------------------------------ pricing copy
 
-test('Plus copy states a one-time price and no subscription, in English and every locale', () => {
+test('1.0.41: Plus copy states the yearly price and how to cancel, in English and every locale', () => {
   const price = en.plus.lock.price;
-  assert.match(price, /one-time/i);
-  assert.match(price, /no subscription/i);
+  assert.match(price, /a year/i);
+  assert.match(price, /cancel anytime in Settings/i);
   assert.ok(price.includes('{price}'));
+  assert.match(en.plus.lock.renewal, /renews automatically every year at \{price\}/);
+  assert.match(en.plus.lock.renewal, /24 hours/);
+  assert.match(en.plus.lock.renewal, /No free trial/);
   for (const [locale, cat] of Object.entries(TRANSLATIONS)) {
-    const p = (cat as { plus?: { lock?: { price?: unknown } } }).plus?.lock?.price;
-    assert.equal(typeof p, 'string', `${locale} plus.lock.price`);
-    assert.ok((p as string).includes('{price}'), `${locale} plus.lock.price keeps {price}`);
+    const lock = (cat as { plus?: { lock?: Record<string, unknown> } }).plus?.lock ?? {};
+    for (const k of ['price', 'renewal', 'unlockBuy']) {
+      assert.equal(typeof lock[k], 'string', `${locale} plus.lock.${k}`);
+      assert.ok((lock[k] as string).includes('{price}'), `${locale} plus.lock.${k} keeps {price}`);
+    }
+    for (const k of ['terms', 'privacy']) assert.equal(typeof lock[k], 'string', `${locale} plus.lock.${k}`);
   }
   const ent = read('src', 'plus', 'entitlement.ts');
-  assert.match(ent, /PLUS_PRICE_HINT = `One-time /);
+  assert.match(ent, /PLUS_PRICE_HINT = `\$\{PLUS_PRICE\} a year`/);
 });
 
-test('no English copy offers a weekly, monthly or yearly plan, a free trial or a special offer', () => {
-  const plans = /\b(weekly|monthly|yearly|annual(ly)?|per (week|month|year)|a (week|month|year)|\/\s?(wk|week|mo|month|yr|year))\b|free trial|special offer|limited[- ]time|auto-?renew/i;
-  // Negations that promise the opposite are allowed ("No subscription, ever", "no weekly anything").
-  const negated = /\bno (weekly|monthly|subscription)/i;
-  for (const [key, s] of texts(en)) {
-    if (negated.test(s)) continue;
-    assert.ok(!plans.test(s), `${key}: "${s}"`);
-  }
+test('1.0.41: one yearly plan only; no weekly or monthly plan, free trial offer, special or limited-time offer', () => {
+  const plans = /\b(weekly|monthly|per (week|month)|a (week|month)|\/\s?(wk|week|mo|month))\b|special offer|limited[- ]time|start (your|a) free trial|try (it )?free for/i;
+  for (const [key, s] of texts(en)) assert.ok(!plans.test(s), `${key}: "${s}"`);
+  // The App Store product is the one yearly subscription, with no introductory offer.
+  const doc = read('store', 'SUBSCRIPTION.md');
+  assert.match(doc, /\| Product ID \| `com\.jared797\.glaze\.yearly`/);
+  assert.match(doc, /\| Subscription Duration \| 1 Year \|/);
+  assert.match(doc, /\| Introductory Offers \| \*\*None\.\*\*/);
 });
 
 // ------------------------------------------------------------------ sheet behaviour
@@ -185,14 +191,13 @@ test('no launch paywall: the Plus sheet only opens from a tap, never on mount', 
 
 // ------------------------------------------------------------------ badges and free content
 
-test('every Plus theme card shows the Plus badge before tapping', () => {
+test('every Plus theme card shows the Plus badge before tapping; the free ten say Premium · Free', () => {
   for (const t of PLUS_THEMES) assert.equal(t.plus, true, t.id);
   const gallery = read('app', '(tabs)', 'themes.tsx');
-  // Per theme, not per grid: a catalogue pack marked Plus gets the badge in the gallery card
-  // (T177: the gallery is the New collection + bundled starters, src/core/gallery.ts).
-  assert.match(gallery, /const plus = remote && theme\.plus;/);
-  assert.match(gallery, /badge=\{plus \? PLUS_BADGE : undefined\}/);
-  assert.match(gallery, /accessibilityNote=\{plus \? plusNote : /);
+  assert.match(gallery, /const plus = shared\.showTiers && theme\.plus === true;/);
+  assert.match(gallery, /const free = shared\.showTiers && isFreeTheme\(theme\.id\);/);
+  assert.match(gallery, /const badge = plus \? PLUS_BADGE : free \? FREE_BADGE : undefined;/);
+  assert.match(gallery, /showTiers: !subscribed/);
   const detail = read('app', 'theme', '[id].tsx');
   assert.match(detail, /theme\.plus \? <PlusBadge \/> : null/);
 });

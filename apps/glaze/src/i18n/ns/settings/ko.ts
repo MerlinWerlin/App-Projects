@@ -55,14 +55,14 @@ export const ko: NonNullable<LocaleMessages['settings']> = {
     feedbackHint: '내 메일 앱으로 Glaze 팀에 연락합니다',
   },
   plus: {
-    body: '한 번만 결제. 구독은 절대 없습니다. 나만의 아이콘 만들기, 두 가지 설치 방법, 내 동영상으로 만드는 Live Photo 메이커는 계속 무료입니다.',
+    body: 'Glaze Plus는 모든 테마를 여는 연간 구독이에요. 프리미엄 테마 10개는 계속 무료이고, 직접 만드는 아이콘, 두 가지 설치 방법, 내 사진으로 쓰는 사용자 1-5, Live Photo 메이커도 무료예요. 설정에서 언제든 취소할 수 있어요.',
     more: 'Glaze Plus 포함 내용',
-    moreHint: '한 번 결제로 잠금 해제되는 내용을 설명합니다',
+    moreHint: '연간 구독과 포함 내용을 설명합니다',
   },
   privacy: {
     title: '개인정보',
     heading: '수집하는 데이터 없음',
-    body: '계정, 분석, 광고, 추적이 없습니다. 사진과 동영상은 휴대폰 밖으로 나가지 않습니다. 테마 팩은 GitHub에서 일반 파일로 내려받으며, Glaze는 개인 데이터, 계정, 식별자를 보내지 않습니다.',
+    body: '계정, 분석, 광고, 추적이 없어요. 사진과 동영상은 휴대폰 밖으로 나가지 않아요. 테마 팩은 Cloudflare에서 일반 파일로 다운로드되며 Glaze는 개인 데이터, 계정, 식별자를 보내지 않아요.',
     installedTitle: "이 iPhone의 앱",
     installedBody: "앱을 대신 선택하기 위해 Glaze는 특정 인기 앱 {count}개가 설치되어 있는지만 iOS에 확인합니다. 결과는 해당 앱의 테마에만 쓰이며 어떤 정보도 휴대폰 밖으로 나가지 않습니다.",
   },

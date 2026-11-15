@@ -246,8 +246,8 @@ export function nextBrowseView(current: BrowseView, chip: 'all' | BrowseCategory
 
 /** A list row of the home view. */
 export type BrowseRow<T> =
-  | { kind: 'head'; key: string; section: BrowseCategoryId | 'all'; count: number }
-  | { kind: 'rail'; key: string; section: BrowseCategoryId; themes: readonly T[] }
+  | { kind: 'head'; key: string; section: BrowseCategoryId | 'all' | 'free'; count: number }
+  | { kind: 'rail'; key: string; section: BrowseCategoryId | 'free' | 'featured'; themes: readonly T[] }
   | { kind: 'cards'; key: string; themes: readonly T[] }
   | { kind: 'skeleton'; key: string; count: number };
 
@@ -258,6 +258,13 @@ export type BrowseHomeInput<T> = {
   /** True while the catalogue's first load is running (skeleton row under the sections). */
   waiting?: boolean;
   railMax?: number;
+  /**
+   * 1.0.41 (owner: "the first tab they open should be the free ones ... after you buy, the free tab
+   * disappears"): the free themes in order, shown FIRST; omit (subscribed) to leave the section out.
+   */
+  free?: readonly T[];
+  /** Ids of the free themes to feature (their own rail at the top of the Free section). */
+  featured?: readonly string[];
 };
 
 /**
@@ -269,6 +276,15 @@ export function browseHomeRows<T extends Browsable>(input: BrowseHomeInput<T>): 
   const columns = Math.max(1, Math.floor(input.columns) || 1);
   const railMax = Math.max(1, Math.floor(input.railMax ?? RAIL_MAX));
   const rows: BrowseRow<T>[] = [];
+  const free = input.free ?? [];
+  if (free.length > 0) {
+    const featuredIds = new Set(input.featured ?? []);
+    const featured = free.filter((t) => featuredIds.has(t.id));
+    const rest = free.filter((t) => !featuredIds.has(t.id));
+    rows.push({ kind: 'head', key: 'head:free', section: 'free', count: free.length });
+    if (featured.length) rows.push({ kind: 'rail', key: 'rail:featured', section: 'featured', themes: featured });
+    if (rest.length) rows.push({ kind: 'rail', key: 'rail:free', section: 'free', themes: rest });
+  }
   for (const s of groupByCategory(input.themes)) {
     rows.push({ kind: 'head', key: `head:${s.id}`, section: s.id, count: s.themes.length });
     rows.push({ kind: 'rail', key: `rail:${s.id}`, section: s.id, themes: s.themes.slice(0, railMax) });

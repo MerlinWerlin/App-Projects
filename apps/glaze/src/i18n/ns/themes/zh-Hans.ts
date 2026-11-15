@@ -19,6 +19,12 @@ export const zhHans: NonNullable<LocaleMessages['themes']> = {
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: '艺术 · 原创壁纸', body: '免费。原创艺术壁纸，配有相称的图标和悬浮的小组件插画。无需下载。' },
   plusNote: 'Glaze Plus。',
+  freeBadge: '高级 · 免费',
+  freeNote: '高级主题，免费',
+  free: {
+    title: '免费',
+    body: '10 个高级主题，免费使用。Glaze Plus 解锁其他所有主题。',
+  },
   feedback: '发送反馈',
   feedbackHint: '用你的邮件 App 推荐主题或报告问题',
   empty: {

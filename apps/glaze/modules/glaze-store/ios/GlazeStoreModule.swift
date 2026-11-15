@@ -109,7 +109,7 @@ public class GlazeStoreModule: Module {
         await transaction.finish()
         let body: [String: Any] = [
           "productId": transaction.productID,
-          "owned": transaction.revocationDate == nil,
+          "owned": GlazeStoreKit.isActive(transaction),
         ]
         self?.sendEvent("onEntitlementChange", body)
       }
@@ -181,11 +181,19 @@ enum GlazeStoreKit {
     }
   }
 
-  /// A verified, unrevoked transaction for id in the current entitlements.
+  /// Glaze 1.0.41: an entitlement counts while it is not revoked and (a subscription) has not expired.
+  static func isActive(_ transaction: StoreKit.Transaction) -> Bool {
+    if transaction.revocationDate != nil { return false }
+    if let expires = transaction.expirationDate, expires <= Date() { return false }
+    return true
+  }
+
+  /// A verified, unrevoked and unexpired transaction for id in the current entitlements
+  /// (the yearly subscription, or the legacy one-time unlock that never expires).
   static func isOwned(id: String) async -> Bool {
     for await entitlement in Transaction.currentEntitlements {
       guard case .verified(let transaction) = entitlement else { continue }
-      if transaction.productID == id && transaction.revocationDate == nil {
+      if transaction.productID == id && isActive(transaction) {
         return true
       }
     }

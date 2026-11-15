@@ -39,6 +39,10 @@ the bottom of their section with the date and who asked; move an item to "Done" 
   need 4 new pieces each, and 21 R2 themes need a replacement for a duplicate-looking or mostly empty "hero-small" piece
   (prompt written by the master session). Until then each piece shows once and the other slots show the theme design (1.0.39).
 
+- **Glaze Plus free set** (owner 2026-11-15): the ten free themes live in `src/core/freeThemes.ts` (app-side, so the set
+  can change with an app update; the catalogue's `plus` flags stay false). A monthly plan, Family Sharing or an offer
+  code for testers would be new products in the "Glaze" subscription group (store/SUBSCRIPTION.md).
+
 ## Icons
 - **Icon install screen "More options".** 1.0.35 opens a theme's flow on two choices (Icons / Widgets). Inside the install,
   the method, re-install and clean-up steps stay in order because each depends on the one before; a calmer layout for
