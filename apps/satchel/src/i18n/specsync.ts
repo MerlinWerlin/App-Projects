@@ -113,7 +113,6 @@ export const SPEC_SYNC_PREFIXES = [
   'kids.',
   'f106.',
   'cover2.',
-  'plus.',
   'openin.',
   'backup.',
   // T28 (run 109): in-app QR crop and the inline PDF viewer.

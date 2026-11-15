@@ -3,13 +3,13 @@
     "name": "Satchel",
     "slug": "satchel",
     "scheme": "satchel",
-    "version": "0.2.4",
+    "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/icon.png",
     "backgroundColor": "#F4F1EA",
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "com.jared797.satchel",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Satchel uses your location only when you ask, for example Where am I? on the map, a near-me search, planning a walk or sharing where you are, and for Find my way back while that screen is open. Never in the background. A near-me search outside your downloaded city maps sends that spot to OpenStreetMap.",

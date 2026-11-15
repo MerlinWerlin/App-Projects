@@ -1,4 +1,4 @@
-// T158: the store listing in docs/STORE.md stays inside every App Store / Google Play limit, keeps brand names and
+// T158 (1.0.0: store/LISTING.md, App Store only): the store listing stays inside every App Store / Google Play limit, keeps brand names and
 // banned claims out of the paste-ready copy, and docs/SCREENSHOTS.md uses the same captions in the same order.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -6,7 +6,7 @@ import { test } from 'node:test';
 import { chars, parseStore, REQUIRED, screenshotCaptions, storeCaptions, storeProblems, type StoreField } from '../../tools/store/limits.mjs';
 
 const read = (p: string) => readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8');
-const STORE = read('docs/STORE.md');
+const STORE = read('store/LISTING.md');
 const fields = parseStore(STORE);
 const get = (key: string): StoreField => {
   const f = fields.find((x) => `${x.store}:${x.field}` === key);
@@ -23,11 +23,11 @@ test('store listing: keywords are comma-separated, no spaces, none already in th
   const kw = get('ios:Keywords').text;
   assert.ok(chars(kw) <= 100);
   assert.doesNotMatch(kw, /\s/);
-  for (const w of ['satchel', 'offline', 'travel', 'wallet', 'trip', 'trips', 'tickets', 'flight', 'mode']) assert.ok(!kw.split(',').includes(w), w);
+  for (const w of ['satchel', 'offline', 'travel', 'wallet', 'itinerary', 'tickets', 'documents']) assert.ok(!kw.split(',').includes(w), w);
 });
 
 test('store listing: the copy says no ads, no tracking, no account, and says verify locally for emergency numbers', () => {
-  for (const key of ['ios:Description', 'play:Full description']) {
+  for (const key of ['ios:Description']) {
     const t = get(key).text;
     assert.match(t, /No account/);
     assert.match(t, /No ads/);
@@ -36,13 +36,11 @@ test('store listing: the copy says no ads, no tracking, no account, and says ver
   }
 });
 
-test('store listing: offline city maps and Satchel Plus only appear under "Add when shipped"', () => {
-  const add = STORE.slice(STORE.indexOf('## Add when shipped'));
-  assert.ok(add.length > 100);
-  assert.match(add, /downloaded cities when available/);
-  assert.match(add, /satchel-maps-v1/);
-  assert.match(add, /Satchel Plus/);
-  assert.match(add, /one-time purchase/);
+test('store listing: 1.0.0 is free, with no purchase, and credits the map and weather data', () => {
+  const d = get('ios:Description').text;
+  assert.doesNotMatch(STORE, /Satchel Plus|in-app purchase available|Restore purchases/);
+  assert.match(d, /© OpenStreetMap contributors/);
+  assert.match(d, /MET Norway/);
 });
 
 test('store checker catches what it should', () => {
@@ -59,7 +57,7 @@ test('store checker catches what it should', () => {
       '```',
       '### Description (4000 limit)',
       '```text',
-      'Better than TripIt. Saves battery: 20% less drain. Download your city map. Works on your phone. Emergency numbers included. Satchel Plus unlocks it.',
+      'Better than TripIt. Saves battery: 20% less drain. Works on your phone. Emergency numbers included. Satchel Plus unlocks it.',
       '```',
       '## Notes',
       '### Ignored (10 limit)',
@@ -68,7 +66,7 @@ test('store checker catches what it should', () => {
       '```',
     ].join('\n'),
   );
-  assert.equal(fields.length >= 9, true);
+  assert.equal(fields.length >= 5, true);
   assert.deepEqual(
     bad.map((f) => f.field),
     ['Name', 'Subtitle', 'Keywords', 'Description'],
@@ -82,16 +80,15 @@ test('store checker catches what it should', () => {
     'ios:Keywords: "travel" is already in the name or subtitle',
     'brand or competitor name "TripIt"',
     'battery-life number',
-    'offline maps (not live yet)',
     'works-on-your-phone claim',
     'mentions emergency numbers without "verify locally"',
     'Satchel Plus',
-    'play:Full description: missing',
+    'ios:Promotional text: missing',
   ])
     assert.ok(p.includes(want), `${want}\n---\n${p}`);
 });
 
-test('screenshots: SCREENSHOTS.md uses the STORE.md captions in order, six to eight shots', () => {
+test('screenshots: SCREENSHOTS.md uses the LISTING.md captions in order, six to eight shots', () => {
   const store = storeCaptions(STORE);
   const shots = screenshotCaptions(read('docs/SCREENSHOTS.md'));
   assert.ok(store.length >= 6 && store.length <= 8, `${store.length}`);
