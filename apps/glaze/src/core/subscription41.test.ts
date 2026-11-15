@@ -98,3 +98,16 @@ test('gating: premium themes need Plus to be chosen; a theme in use keeps workin
   // Your own photos in Custom 1-5 (src/ui/CustomArtSlots.tsx) never check Plus.
   assert.doesNotMatch(read('src', 'ui', 'CustomArtSlots.tsx'), /useLocked|usePlus|PlusLockSheet/);
 });
+
+test('the Privacy Policy URL the paywall and App Store Connect use is a page GitHub Pages actually serves', () => {
+  // GitHub Pages serves the repository's top-level docs/ folder (like docs/couch/privacy.html), so Glaze's
+  // page is docs/glaze/privacy.html -> https://merlinwerlin.github.io/App-Projects/glaze/privacy.html.
+  const sheet = read('src', 'plus', 'PlusLockSheet.tsx');
+  assert.match(sheet, /PRIVACY_POLICY_URL = 'https:\/\/merlinwerlin\.github\.io\/App-Projects\/glaze\/privacy\.html'/);
+  const published = join(ROOT, '..', '..', 'docs', 'glaze', 'privacy.html');
+  assert.ok(existsSync(published), 'docs/glaze/privacy.html is published');
+  assert.equal(readFileSync(published, 'utf8'), read('docs', 'privacy.html'), 'the published page is the app privacy page');
+  for (const f of [['store', 'SUBSCRIPTION.md'], ['docs', 'STORE.md']]) {
+    assert.doesNotMatch(read(...f), /apps\/glaze\/docs\/site\/privacy\.html/, f.join('/'));
+  }
+});

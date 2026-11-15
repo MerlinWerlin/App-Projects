@@ -88,7 +88,7 @@ picks option B (ship 1.0.1 without Plus), delete the paragraph.
 |---|---|
 | What's New | Not shown for a first release (App Store Connect only asks from the second version). For 1.0.2: `Smoother set-up, new themes and fixes. Thanks for using Glaze!` |
 | Support URL | `https://merlinwerlin.github.io/App-Projects/apps/glaze/docs/site/` (page `docs/site/index.html`; needs GitHub Pages, owner step) |
-| Privacy Policy URL | `https://merlinwerlin.github.io/App-Projects/apps/glaze/docs/site/privacy.html` (copy of `docs/privacy.html`) |
+| Privacy Policy URL | `https://merlinwerlin.github.io/App-Projects/glaze/privacy.html` (the repo-root `docs/glaze/privacy.html`, a copy of `apps/glaze/docs/privacy.html`, served by GitHub Pages from `docs/`) |
 | Marketing URL | leave empty |
 | Copyright | `2026 Jared Bradley` (App Store Connect adds the © sign; use the seller name shown under Business if it differs) |
 | Primary category | **Lifestyle** |

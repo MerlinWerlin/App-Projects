@@ -52,7 +52,7 @@ const BENEFITS: readonly { icon: FeatherName; key: BenefitKey }[] = [
 /** Apple's standard Licensed Application End User License Agreement (the app uses it as its Terms of Use). */
 export const TERMS_OF_USE_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
 /** Glaze's privacy policy (docs/site/privacy.html, the App Store Connect Privacy Policy URL). */
-export const PRIVACY_POLICY_URL = 'https://merlinwerlin.github.io/App-Projects/apps/glaze/docs/site/privacy.html';
+export const PRIVACY_POLICY_URL = 'https://merlinwerlin.github.io/App-Projects/glaze/privacy.html';
 
 /** Up to three bundled wallpapers for the hero collage (art already in the repo, no network). */
 const HERO_ART: readonly number[] = Object.values(ART_PACK_ASSETS)

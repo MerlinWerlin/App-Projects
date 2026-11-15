@@ -177,7 +177,7 @@ test('1.0.41: the sheet lists what the subscription opens and links the Terms of
   assert.match(sheet, /Linking\.openURL\(PRIVACY_POLICY_URL\)/);
   const raw = read(...SHEET);
   assert.match(raw, /TERMS_OF_USE_URL = 'https:\/\/www\.apple\.com\/legal\/internet-services\/itunes\/dev\/stdeula\/'/);
-  assert.match(raw, /PRIVACY_POLICY_URL = 'https:\/\/merlinwerlin\.github\.io\/App-Projects\/apps\/glaze\/docs\/site\/privacy\.html'/);
+  assert.match(raw, /PRIVACY_POLICY_URL = 'https:\/\/merlinwerlin\.github\.io\/App-Projects\/glaze\/privacy\.html'/);
   const en = read('src', 'i18n', 'ns', 'plus', 'en.ts');
   assert.match(en, /themes: 'Every theme in the gallery'/);
   assert.match(en, /freeThemes: '10 premium themes, free'/);

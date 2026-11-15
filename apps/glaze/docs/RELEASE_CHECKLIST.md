@@ -229,7 +229,7 @@ Result: **4+**.
       `docs/privacy.html`, test-guarded). Self-contained: inline CSS, no scripts, fonts or images
 - [x] Proposed URLs (Glaze lives at `apps/glaze` in the public `MerlinWerlin/App-Projects` repo):
       support `https://merlinwerlin.github.io/App-Projects/apps/glaze/docs/site/`,
-      privacy `https://merlinwerlin.github.io/App-Projects/apps/glaze/docs/site/privacy.html`.
+      privacy `https://merlinwerlin.github.io/App-Projects/glaze/privacy.html`.
       This repo copy has no Pages workflow or `.nojekyll`; Pages settings can't be read from the cloud
 - [ ] Owner: replace the text `SUPPORT_EMAIL` (twice) in `apps/glaze/docs/site/index.html` with the support email
       address you want public (a dedicated address is better than your personal one; `src/config/feedback.ts` still
