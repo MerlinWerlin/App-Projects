@@ -1,4 +1,4 @@
-# Glaze artwork review â€” 15 November 2026
+# Glaze artwork review — 15 November 2026
 
 All 24 required rows and all 11 optional themes are complete. The complete gallery review additionally replaced two similar mineral pieces in Dunesilk and Saltveil. There are 47 new 1024-square WebPs across 37 themes: 35 R2 additions and 12 bundled additions. Every one of the 144 final gallery themes selects five distinct artwork images.
 
@@ -54,44 +54,44 @@ Validation: 1,989 app tests; 48 pack tests with no skips; standard core and Node
 
 Reviewed all 720 selected tiles by eye against their theme wallpaper, checking subject variety, style, framing and no text/time overlays in the new artwork. These contact sheets use the exact app-selected files from the staged manifests and bundled data.
 
-![Gallery themes 1â€“8](review/gallery-01.jpg)
+![Gallery themes 1–8](review/gallery-01.jpg)
 
-![Gallery themes 9â€“16](review/gallery-02.jpg)
+![Gallery themes 9–16](review/gallery-02.jpg)
 
-![Gallery themes 17â€“24](review/gallery-03.jpg)
+![Gallery themes 17–24](review/gallery-03.jpg)
 
-![Gallery themes 25â€“32](review/gallery-04.jpg)
+![Gallery themes 25–32](review/gallery-04.jpg)
 
-![Gallery themes 33â€“40](review/gallery-05.jpg)
+![Gallery themes 33–40](review/gallery-05.jpg)
 
-![Gallery themes 41â€“48](review/gallery-06.jpg)
+![Gallery themes 41–48](review/gallery-06.jpg)
 
-![Gallery themes 49â€“56](review/gallery-07.jpg)
+![Gallery themes 49–56](review/gallery-07.jpg)
 
-![Gallery themes 57â€“64](review/gallery-08.jpg)
+![Gallery themes 57–64](review/gallery-08.jpg)
 
-![Gallery themes 65â€“72](review/gallery-09.jpg)
+![Gallery themes 65–72](review/gallery-09.jpg)
 
-![Gallery themes 73â€“80](review/gallery-10.jpg)
+![Gallery themes 73–80](review/gallery-10.jpg)
 
-![Gallery themes 81â€“88](review/gallery-11.jpg)
+![Gallery themes 81–88](review/gallery-11.jpg)
 
-![Gallery themes 89â€“96](review/gallery-12.jpg)
+![Gallery themes 89–96](review/gallery-12.jpg)
 
-![Gallery themes 97â€“104](review/gallery-13.jpg)
+![Gallery themes 97–104](review/gallery-13.jpg)
 
-![Gallery themes 105â€“112](review/gallery-14.jpg)
+![Gallery themes 105–112](review/gallery-14.jpg)
 
-![Gallery themes 113â€“120](review/gallery-15.jpg)
+![Gallery themes 113–120](review/gallery-15.jpg)
 
-![Gallery themes 121â€“128](review/gallery-16.jpg)
+![Gallery themes 121–128](review/gallery-16.jpg)
 
-![Gallery themes 129â€“136](review/gallery-17.jpg)
+![Gallery themes 129–136](review/gallery-17.jpg)
 
-![Gallery themes 137â€“144](review/gallery-18.jpg)
+![Gallery themes 137–144](review/gallery-18.jpg)
 
 ## Publication
 
-One PR contains all source work. R2 publication requires Jaredâ€™s separate OK; `glaze-publish-r2.yml` was not dispatched and no upload command was run. The review can be reproduced with the pinned baseline and the complete add-art build.
+One PR contains all source work. R2 publication requires Jared’s separate OK; `glaze-publish-r2.yml` was not dispatched and no upload command was run. The review can be reproduced with the pinned baseline and the complete add-art build.
 
 The baseline cache can reuse retained source artwork and original GitHub release mirrors; every file must match the current R2 snapshot SHA-256 and byte length. This prevents the R2.dev rate limit from blocking bulk CI checks. The live R2 catalogue and publishing approval are unchanged.

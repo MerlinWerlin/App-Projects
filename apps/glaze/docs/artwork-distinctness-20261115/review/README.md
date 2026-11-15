@@ -1,1 +1,1 @@
-Visual review of all 144 final app-selected Artwork 1ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“5 combinations, with each theme wallpaper shown at left. Derived by this chat from the verified staged R2 manifests and generated bundled selection; APPS A2.
+Visual review of all 144 final app-selected Artwork 1–5 combinations, with each theme wallpaper shown at left. Derived by this chat from the verified staged R2 manifests and generated bundled selection; APPS A2.
