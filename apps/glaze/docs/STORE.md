@@ -39,7 +39,7 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
   aesthetic, home, screen, makeover, glaze). Singular forms only (Apple matches plurals). No brand or app names.
 - **Promotional text** can be changed at any time without a new review.
 
-### Description (2,814 characters; limit 4,000)
+### Description (2,714 characters; limit 4,000)
 
 <!-- description:start -->
 ```text
@@ -54,12 +54,12 @@ THEMES
 ONE TAP TO START
 Tap a theme and answer "Use this theme?". Your Glaze widgets switch to its art straight away. Then Glaze lists the next steps: add the wallpaper, add the icons, add the widgets. Skip any step and come back later.
 
-FIVE ARTWORKS WITH EVERY THEME
-- Put Artwork 1 to 5 on your Home Screen. Each shows a different piece from the theme you use, and they change when you change theme.
+WIDGETS: FIVE ARTWORKS AND FIVE OF YOUR OWN
+- Small Home Screen widgets. Put Artwork 1 to 5 on your Home Screen: each shows a different piece from the theme you use, and they change when you change theme.
 - Make it yours with Custom 1 to 5: add your own pictures, or a favourite artwork from a theme.
 
 MATCHING ICONS
-- Glaze makes icons for the apps you choose, in the theme's colours and symbols.
+- Glaze makes icons for the apps you choose, in the theme's colours and symbols. They are Home Screen shortcuts that open your apps; your original apps are not changed.
 - Add them all at once with one install in Settings, or one at a time with Apple's Shortcuts app. Glaze shows every step, and how to undo it.
 - Change the shape, colours and symbol of any icon.
 
@@ -73,11 +73,7 @@ SIMPLE AND PRIVATE
 - Available in 11 languages.
 
 GLAZE PLUS
-Glaze Plus is an optional yearly subscription that unlocks every theme, new themes as they are added, and the widget artwork of every theme. There is no free trial: the 10 free themes are yours to try. In Australia it is A$2.99 a year; the price in your country is shown in the app before you buy.
-- Payment is charged to your Apple Account when you confirm the purchase.
-- It renews automatically each year unless you turn off auto-renew at least 24 hours before the end of the current year. Renewal is charged within the 24 hours before the year ends.
-- Manage or cancel it any time in Settings > your name > Subscriptions. Cancelling stops the next renewal; Plus stays on until the end of the year you paid for.
-- Without Plus you keep the 10 free themes, your own icons, Custom 1 to 5 with your own pictures and the Live Photo maker. A theme you already applied keeps working if Plus ends.
+Glaze Plus: a yearly subscription (A$2.99 a year in Australia, or your local equivalent) that unlocks every theme, new themes as they're added and all widget artwork. Ten premium themes are free, and there is no free trial: the free themes are yours to try. Payment is charged to your Apple Account at confirmation. The subscription renews automatically unless cancelled at least 24 hours before the end of the current year, and you can manage or cancel it in Settings > your name > Subscriptions. Without Plus you keep the 10 free themes, your own icons, Custom 1 to 5 with your own pictures and the Live Photo maker, and a theme you already applied keeps working.
 
 Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 Privacy Policy: https://merlinwerlin.github.io/App-Projects/glaze/privacy.html
