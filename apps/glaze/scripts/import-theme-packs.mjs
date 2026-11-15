@@ -98,7 +98,7 @@ function regenerate() {
     }
   }
   const lib = artPackLibrarySource(packs);
-  const assets = artPackAssetsSource(packs.map((p) => p.id));
+  const assets = artPackAssetsSource(packs.map((p) => p.id), packs);
   if (dryRun) {
     console.log(`(dry run) would write ${ART_LIBRARY_PATH} and ${ART_ASSETS_PATH} with ${packs.length} pack(s)`);
   } else {
@@ -143,7 +143,7 @@ async function main() {
     if (dryRun) continue;
     if (existsSync(dest)) rmSync(dest, { recursive: true });
     mkdirSync(dest, { recursive: true });
-    for (const f of ART_PACK_FILES) cpSync(join(src, id, f), join(dest, f));
+    for (const f of Object.keys(report.pack.bytes)) cpSync(join(src, id, f), join(dest, f));
     imported++;
   }
   console.log(`\n${ids.length - failed} valid, ${failed} failed${dryRun ? '' : `, ${imported} imported into ${ART_PACK_DIR}/`} (${kb(total)} of art)`);

@@ -448,7 +448,8 @@ test('Widgets tab shows the theme widget art menu above the grid', () => {
   assert.doesNotMatch(tab, /<ThemeWidgetArt/);
   const art = read('src', 'ui', 'ThemeWidgetArt.tsx');
   assert.match(art, /useRemoteArtTheme\(/);
-  assert.match(art, /widgetOptionsFromV1\(/, 'bundled art packs list their hero pieces as options');
+  assert.match(art, /artPackArtwork\(artId\)/, 'bundled previews use the shared complete artwork list');
+  assert.match(read('src', 'ui', 'artPackSources.ts'), /artPackWidgetOptions\(pack\)/, 'the shared source uses validated per-theme options');
   assert.match(art, /widgets\.setWidgetArt\(/);
   assert.match(art, /widgets\.setSeamless\(/);
   // T251: every piece tries the wallpaper crop first; setWidgetArt only when there is no wallpaper file.

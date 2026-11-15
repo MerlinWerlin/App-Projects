@@ -1,0 +1,78 @@
+{
+  "theme": "deep-sea",
+  "tool": "built-in image_gen",
+  "created": "2026-11-15",
+  "artworks": [
+    {
+      "theme": "deep-sea",
+      "id": "luminous-nautilus",
+      "label": "Luminous Nautilus",
+      "subject": "one graceful nautilus with a pearly translucent pale-cyan spiral shell, soft midnight-blue chamber bands and a small cluster of elegantly curved translucent tentacles. Simple sculptural silhouette, subtle blue internal glow, delicate soft luminous 3D illustration matching the theme's translucent bubbles. No fish, jellyfish or coral",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze deep-sea pure artwork, square 1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: one graceful nautilus with a pearly translucent pale-cyan spiral shell, soft midnight-blue chamber bands and a small cluster of elegantly curved translucent tentacles. Simple sculptural silhouette, subtle blue internal glow, delicate soft luminous 3D illustration matching the theme's translucent bubbles. No fish, jellyfish or coral. Transparent background, isolated entire object with generous 16% clear margins. Soft refined gradient shading, smooth forms, restrained bloom, cool cyan/navy palette, no outline or photoreal scenery. No scene backdrop, text, letters, numbers, dials, clocks, calendars, progress, logo, border or watermark. New subject never crop/copy/recolor existing art.",
+      "ref": "themes/deep-sea/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-5eb5863d-ad07-4249-b696-d9200ac3a36f.png",
+      "image": "widget-luminous-nautilus.51a10d0f.webp",
+      "sha256": "51a10d0fc276de894f29fd9ded6696b07b30ed57ac591830ca7b0f9802d01d04",
+      "bytes": 96700,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "deep-sea",
+      "id": "glowing-anglerfish",
+      "label": "Glowing Anglerfish",
+      "subject": "a single gentle deep-sea anglerfish with a rounded midnight-blue body, subtle turquoise fins and a gracefully curved thin lure ending in a small luminous cyan pearl. A few restrained soft cyan bioluminescent freckles, calm expressive tiny eye, no frightening teeth. Delicate soft luminous 3D illustration matching the theme's translucent bubbles",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze deep-sea pure artwork, square 1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: a single gentle deep-sea anglerfish with a rounded midnight-blue body, subtle turquoise fins and a gracefully curved thin lure ending in a small luminous cyan pearl. A few restrained soft cyan bioluminescent freckles, calm expressive tiny eye, no frightening teeth. Delicate soft luminous 3D illustration matching the theme's translucent bubbles. Transparent background, isolated entire object with generous 16% clear margins. Soft refined gradient shading, smooth forms, restrained bloom, cool cyan/navy palette, no outline or photoreal scenery. No scene backdrop, text, letters, numbers, dials, clocks, calendars, progress, logo, border or watermark. New subject never crop/copy/recolor existing art.",
+      "ref": "themes/deep-sea/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-34a8c66f-eefa-46a6-9d52-eba8e7b8286e.png",
+      "image": "widget-glowing-anglerfish.b15b920a.webp",
+      "sha256": "b15b920abbca27c7b6f40aaa1b1bcdd6c53003526d1c87d8ef84af54773b1d67",
+      "bytes": 114082,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "deep-sea",
+      "id": "bioluminescent-coral-fan",
+      "label": "Glowing Coral Fan",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. One original square1024\u00d71024 Glaze Deep Sea decorative artwork. Reference1 wallpaper is palette/mood only, reference2 original bubble hero is medium only. NEW subject: a graceful complete fan-shaped deep-sea coral with delicate widely spreading pale cyan branches growing from a small smooth midnight-blue rock, restrained turquoise bioluminescent glow along its tips. Soft luminous3D illustration, smooth simple sculptural forms and subtle gradient shading matching the original translucent bubbles. Transparent background; isolated whole coral with broad16% clear margins. No fish, nautilus, jellyfish, helmet or large bubbles. No full scene, text, numbers, dials, clock, calendar, progress, borders or watermark.",
+      "ref": "themes/deep-sea/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-a3a79775-0195-4826-985c-de253c606d03.png",
+      "image": "widget-bioluminescent-coral-fan.5137fec8.webp",
+      "sha256": "5137fec85f47424b1be45ddaacdca9efd6a5e9e2cf6de076aacbc1b387af8cf8",
+      "bytes": 312442,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "deep-sea",
+      "id": "abyssal-diving-helmet",
+      "label": "Abyssal Diving Helmet",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. One original square1024\u00d71024 Glaze Deep Sea decorative artwork. Reference1 wallpaper is palette/mood only; reference2 original bubble hero is medium only. NEW subject: a complete antique diving helmet sculpted in deep navy-blue metal with a luminous translucent cyan round glass front window, a simple silver-gray protective crossbar and rounded side ports, a little matching collar base. No gauges, dial faces or markings. Smooth elegant soft3D illustration with subtle cool underwater reflections and gentle cyan rim glow, matching the original theme's simple luminous bubbles. Transparent background, whole isolated object comfortably within broad16% clear margins. No fish, shell, coral or jellyfish; no scenery, text, letters, numbers, clocks, calendar, progress, logos, border or watermark.",
+      "ref": "themes/deep-sea/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-835e4746-0b90-49b2-b371-35af0cd18538.png",
+      "image": "widget-abyssal-diving-helmet.4bda679c.webp",
+      "sha256": "4bda679cc88b8d90f0dcbb5054bc591064930214674240d1a2599ade3ea81a29",
+      "bytes": 120952,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    }
+  ],
+  "updated": "2026-11-15"
+}

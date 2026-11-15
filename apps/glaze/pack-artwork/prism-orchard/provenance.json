@@ -20,6 +20,26 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "prism-orchard",
+      "id": "opal-orchard-rabbit",
+      "label": "Opal Orchard Rabbit",
+      "optionalRow": 32,
+      "replacedOption": "hero-small",
+      "replacedSlot": 4,
+      "prompt": "Use case: stylized-concept. ONE original square1024\u00d71024 Glaze prism-orchard pure decorative artwork. Reference is STYLE, PALETTE AND LIGHTING ONLY. New subject: one graceful little sitting rabbit sculpted from translucent pale-lilac and rose opal glass, tall clear ears, delicate fine gold contours and a tiny crystal blossom near its front paws. Realistic exquisite glass sculpture, soft lavender orchard bokeh and restrained rainbow caustics, warm pearly highlights. Complete rabbit comfortably framed. No fruit vessel, plum, frog, hummingbird or butterfly. Whole main object completely inside broad12% margins, strong silhouette readable on a small widget, same theme world and cohesive full-bleed backdrop. Never copy, crop or recolor an existing piece. No text, letters, numbers, clock hands, dials, calendars, values, progress, card border, logos or watermark.",
+      "ref": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze-3\\work\\distinct-20261115\\baseline\\art\\prism-orchard\\v7\\widget-opal-tree-frog.87be490c.webp",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-ae2ea3e0-3e3b-4e40-8fba-ce452e3fd91f.png",
+      "image": "widget-opal-orchard-rabbit.725d50b0.webp",
+      "sha256": "725d50b0bc4ff2afb21b98cb81a96dbfcbca29731004052056ff731fd47b8fc6",
+      "bytes": 174138,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

@@ -11,13 +11,23 @@ import { parseWidgetOptions } from './widgetOptions.ts';
 const coverage = JSON.parse(readFileSync(join(process.cwd(), 'scripts', 'packs', 'artwork-coverage.json'), 'utf8'));
 const releases = JSON.parse(readFileSync(join(process.cwd(), 'scripts', 'packs', 'releases.json'), 'utf8'));
 
-test('every published pack is checked and has at least one pure artwork', () => {
+test('every published pack is checked and has five distinct pure artwork images', () => {
   assert.deepEqual(Object.keys(coverage.perTheme).sort(), Object.keys(releases).sort());
   assert.deepEqual(coverage.problems, []);
   for (const [id, t] of Object.entries(coverage.perTheme) as [string, { manifest: string | null; artwork: string[] }][]) {
     assert.ok(t.manifest, `${id}: manifest found`);
-    assert.ok(t.artwork.length >= 1, `${id}: has pure artwork`);
+    assert.equal(t.artwork.length, 5, `${id}: has five pure artworks`);
     assert.equal(new Set(t.artwork).size, t.artwork.length, `${id}: no duplicate pieces`);
+  }
+});
+
+test('coverage includes all 144 gallery themes including the three bundled originals', () => {
+  assert.equal(coverage.galleryThemes, 144);
+  assert.deepEqual(Object.keys(coverage.bundled).sort(), ['deep-sea', 'starry-night', 'sunset-dunes']);
+  for (const [id, t] of Object.entries(coverage.bundled) as [string, { artwork: string[]; hashes: string[] }][]) {
+    assert.equal(t.artwork.length, 5, id);
+    assert.equal(new Set(t.hashes).size, 5, id);
+    assert.ok(artworkSlotSources(t.artwork).every((s) => s.source === 'artwork'), id);
   }
 });
 

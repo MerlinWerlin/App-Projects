@@ -1,0 +1,50 @@
+[
+  {
+    "id": "luminous-nautilus",
+    "kind": "art",
+    "image": "widget-luminous-nautilus.51a10d0f.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Luminous Nautilus"
+  },
+  {
+    "id": "glowing-anglerfish",
+    "kind": "art",
+    "image": "widget-glowing-anglerfish.b15b920a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Glowing Anglerfish"
+  },
+  {
+    "id": "bioluminescent-coral-fan",
+    "kind": "art",
+    "image": "widget-bioluminescent-coral-fan.5137fec8.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Glowing Coral Fan"
+  },
+  {
+    "id": "abyssal-diving-helmet",
+    "kind": "art",
+    "image": "widget-abyssal-diving-helmet.4bda679c.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Abyssal Diving Helmet"
+  }
+]

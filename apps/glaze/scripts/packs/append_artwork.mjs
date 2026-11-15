@@ -82,7 +82,7 @@ export function readArtworkAdditions(root, id, base) {
   // verify their exact option fields/bytes, but append only unpublished pieces this time.
   const seen = new Set();
   const options = source.filter((option) => {
-    if (!option || seen.has(option.id)) throw new Error(`${id}: duplicate or invalid artwork id`);
+    if (!option || option.kind !== 'art' || seen.has(option.id)) throw new Error(`${id}: duplicate or invalid artwork id`);
     seen.add(option.id);
     const existing = base.widgets.find((w) => w.id === option.id);
     if (!existing) return true;

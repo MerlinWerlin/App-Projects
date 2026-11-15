@@ -21,6 +21,26 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "curlfin-cove",
+      "id": "quilled-sea-turtle",
+      "label": "Quilled Sea Turtle",
+      "optionalRow": 26,
+      "replacedOption": "hero-small",
+      "replacedSlot": 4,
+      "prompt": "Use case: stylized-concept. ONE original square1024\u00d71024 Glaze curlfin-cove pure decorative artwork. Reference is STYLE, PALETTE AND LIGHTING ONLY. New subject: one charming complete sea turtle made from individually curled paper strips, a soft ivory shell with coral-pink quilled spiral panels, four graceful muted-sage flippers and a small ivory head. Sophisticated tactile paper-quilling miniature, mint-green paper background and soft shallow craft shadows, restrained coral/ivory/sage palette. No seahorse, shell cradle, nautilus, starfish or crab. Whole main object completely inside broad12% margins, strong silhouette readable on a small widget, same theme world and cohesive full-bleed backdrop. Never copy, crop or recolor an existing piece. No text, letters, numbers, clock hands, dials, calendars, values, progress, card border, logos or watermark.",
+      "ref": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze-3\\work\\distinct-20261115\\baseline\\art\\curlfin-cove\\v7\\widget-paper-starfish.6e87e8b5.webp",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-796a1728-8c2e-41c5-b21a-15e7b9996d1e.png",
+      "image": "widget-quilled-sea-turtle.25a31ab1.webp",
+      "sha256": "25a31ab1b8cd9e91ad0538fd7cd8cbfca3ed6282f42e92707795fe26ed1cbd49",
+      "bytes": 314898,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

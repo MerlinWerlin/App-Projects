@@ -1,11 +1,14 @@
 name: Glaze Artwork coverage
 # Owner 2026-11-14: every published theme pack must fill the Artwork 1-5 widgets with real pieces.
-# Reads each pack's latest manifest from the pack releases and checks it with the app's own rules
-# (apps/glaze/scripts/packs/artwork-coverage.mjs). Runs when the pack lists or the rules change.
+# Builds the reviewed additions from the pinned R2 baseline, then checks all 144 gallery themes
+# with the app's own selection rules before publication.
 on:
   pull_request:
     paths:
       - 'apps/glaze/scripts/packs/**'
+      - 'apps/glaze/pack-artwork/**'
+      - 'apps/glaze/themes/**'
+      - 'apps/glaze/src/core/artPack*.ts'
       - 'apps/glaze/src/core/artworkCoverage.ts'
       - 'apps/glaze/src/core/themeArtSync.ts'
       - 'apps/glaze/src/core/widgetOptions.ts'
@@ -15,6 +18,8 @@ on:
     branches: [main]
     paths:
       - 'apps/glaze/scripts/packs/**'
+      - 'apps/glaze/pack-artwork/**'
+      - 'apps/glaze/themes/**'
       - 'apps/glaze/src/core/artworkCoverage.ts'
       - 'apps/glaze/src/core/themeArtSync.ts'
   workflow_dispatch:
@@ -29,8 +34,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Check Artwork 1-5 for every published pack
+      - name: Build and check the reviewed R2 replacements before publication
         working-directory: apps/glaze
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: node scripts/packs/artwork-coverage.mjs --download --check
+        run: |
+          node scripts/packs/artwork_progress.mjs --complete --markdown
+          node scripts/packs/cache_artwork_baseline.mjs --snapshot scripts/packs/artwork-baseline --out dist/published-cache
+          node scripts/packs/build_packs.mjs --base-packs dist/published-cache --add-art pack-artwork --out dist/artwork-packs --release glaze-packs-v21 --complete
+          node scripts/packs/verify_artwork_build.mjs --dir dist/artwork-packs --complete
+          node scripts/packs/artwork-coverage.mjs --staged dist/artwork-packs --check --bundled

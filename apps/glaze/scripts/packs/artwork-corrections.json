@@ -247,5 +247,83 @@
       "art-20261106-peach-slice": "photo"
     },
     "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "brass-afterhours": {
+    "options": {
+      "key-rhythm": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "curlfin-cove": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "fern-and-brass": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "jellylight": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "labradorite-hush": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "midnight-conservatory": {
+    "options": {
+      "night-orchid": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "peach-puddle": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "prism-orchard": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "silver-orchard": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "stellar-cradle": {
+    "options": {
+      "stellar-nursery": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "sundew-ember": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "dunesilk": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "saltveil": {
+    "options": {
+      "art-20261106-pink-halite": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
   }
 }

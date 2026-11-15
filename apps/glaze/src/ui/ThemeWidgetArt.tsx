@@ -31,7 +31,7 @@
 import { useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AccessibilityInfo, StyleSheet, Text, TextInput, View, type StyleProp, type ViewStyle } from 'react-native';
-import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, HERO_SIZES, isArtPackTheme } from '../core/artPack';
+import { ART_WALLPAPER_SIZE, isArtPackTheme } from '../core/artPack';
 import { isRemoteArtTheme } from '../core/remoteCatalog';
 import { normaliseSlot, seamlessCrop, seamlessFileName, widgetSizePx } from '../core/seamlessWidget';
 import { countdownArtTarget, isCountdownArtPiece, liveArtPlan, liveArtSpec, validTargetDay, withLiveArt, type CountdownArtTargets } from '../core/liveArt';
@@ -39,14 +39,14 @@ import { liveValueShowsIn } from '../core/liveArtFit';
 import { themePieceId } from '../core/widgetArtLibrary';
 import type { WidgetTabSize } from '../core/tabNav';
 import type { Theme } from '../core/themes';
-import { fixedValues, liveStudioHref, optionName, placeArt, selectedOption, widgetOptionsFromV1, type HomeOptionSize } from '../core/widgetOptions';
+import { fixedValues, liveStudioHref, optionName, placeArt, selectedOption, type HomeOptionSize } from '../core/widgetOptions';
 import { useT } from '../i18n';
 import { widgets } from '../native/widgets';
 import { useRemoteArtTheme } from '../native/useRemoteCatalog';
 import { chromeRadiusV2, continuous, fontScaleCap, sizeV2, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { countdownArtTargetsNow, loadCountdownArtTargets, setCountdownArtTarget, subscribeCountdownArtTargets } from '../store/countdownArtTargets';
 import { useColorsV2 } from '../theme/useTokens';
-import { artPackHero, artPackWallpaper } from './artPackSources';
+import { artPackArtwork, artPackWallpaper } from './artPackSources';
 import { haptic } from './haptics';
 import { textStyleFor } from './i18nLayout';
 import { PillButton } from './PillButton';
@@ -108,19 +108,7 @@ function ThemeDecorativeArt({ theme, size, width, style, onLibraryChange }: Prop
       return remote.widgetOptions.map((o, i) => ({ option: live[i], source: { uri: o.uri } })).filter(o => !isReplacedArtEdition(o.option));
     }
     if (!artId) return NONE;
-    // A bundled art pack: its hero pieces, as a v1 pack would list them.
-    const sources = new Map<string, number>();
-    const assets = HERO_SIZES.flatMap((s) => {
-      const mod = artPackHero(artId, s);
-      if (mod === null) return [];
-      const path = `bundled-${s}`;
-      sources.set(path, mod);
-      return [{ path, role: `widget-${s}`, width: HERO_REFERENCE_SIZES[s].width, height: HERO_REFERENCE_SIZES[s].height }];
-    });
-    return widgetOptionsFromV1(assets).flatMap((option) => {
-      const mod = sources.get(option.image);
-      return mod === undefined ? [] : [{ option, source: mod }];
-    });
+    return artPackArtwork(artId);
   }, [remoteTheme, remote.widgetOptions, artId, theme.id, targets]);
 
   const wallpaper: ArtSource | null = remote.wallpaperUri ? { uri: remote.wallpaperUri } : artId ? artPackWallpaper(artId) : null;
@@ -179,7 +167,7 @@ function ThemeDecorativeArt({ theme, size, width, style, onLibraryChange }: Prop
       } else {
         const { option, source } = pickedItem;
         const artUri =
-          typeof source === 'number' ? await localAssetUri(source, `${theme.id}-${option.id}.png`) : await existingLocalFile(source.uri);
+          typeof source === 'number' ? await localAssetUri(source, `${theme.id}-${option.id}.${option.image.endsWith('.webp') ? 'webp' : 'png'}`) : await existingLocalFile(source.uri);
         if (artUri) {
           let ok: boolean | null;
           // T251 (owner-1101h #2): art BLENDS with the wallpaper on every theme. Every piece goes on

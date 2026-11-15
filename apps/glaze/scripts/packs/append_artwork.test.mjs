@@ -59,6 +59,36 @@ test('append build preserves old bytes, metadata and slot order; increments once
   } finally { f.cleanup(); }
 });
 
+test('a later published baseline retains earlier sources and appends only its replacement', async () => {
+  const f = fixture();
+  try {
+    const first = await buildPacks(f.opts), p = first.catalog.packs[0];
+    const old = JSON.parse(readFileSync(join(f.out, p.manifest)));
+    save(join(f.out, 'baseline-lock.json'), {
+      catalogUrl: 'https://example.invalid/catalog.json', catalogSha256: digest(readFileSync(join(f.out, 'catalog.json'))),
+      packs: [{ id: p.id, manifest: p.manifest, packVersion: p.packVersion, release: p.release,
+        sha256: digest(readFileSync(join(f.out, p.manifest))), artwork: old.widgets.map((w) => w.id) }],
+    });
+    const next = { ...f.opts, basePacksDir: f.out, outDir: join(f.root, 'next') };
+    assert.equal((await buildPacks(next)).built.length, 0, 'published sources do not bump a pack again');
+    const file = join(f.add, p.id, 'widgets/widget-options.json'), list = JSON.parse(readFileSync(file));
+    const image = `widget-second-piece.${digest(SECOND_WEBP).slice(0, 8)}.webp`;
+    save(file, [...list, { ...list[0], id: 'second-piece', image, label: 'Second piece' }]);
+    writeFileSync(join(dirname(file), image), SECOND_WEBP);
+    const result = await buildPacks({ ...next, corrections: { [p.id]: { options: { 'piece-0': 'photo' } } } });
+    assert.deepEqual(result.built[0].added, ['second-piece']);
+    const m = JSON.parse(readFileSync(join(next.outDir, `art/${p.id}/v9/manifest.json`)));
+    assert.equal(m.packVersion, 9); assert.equal(m.widgets[0].kind, 'photo');
+    assert.deepEqual(m.widgets[4], old.widgets[4], 'earlier source metadata stays intact');
+    assert.deepEqual(plannedArtworkOptionIds(p.id, parseWidgetOptions(m.widgets, m.assets).options), ['piece-1', 'piece-2', 'piece-3', 'new-piece', 'second-piece']);
+    for (const a of old.assets) assert.deepEqual(readFileSync(join(next.outDir, `art/${p.id}/v9`, a.path)), readFileSync(join(f.out, `art/${p.id}/v8`, a.path)));
+    save(file, [{ ...list[0], label: 'Changed historical label' }]);
+    assert.throws(() => readArtworkAdditions(f.add, p.id, old), /differs from published source/);
+    save(file, [{ ...list[0], kind: 'photo' }]);
+    assert.throws(() => readArtworkAdditions(f.add, p.id, old), /invalid artwork/);
+  } finally { f.cleanup(); }
+});
+
 test('future release layout shards whole packs below the 1000-asset cap', async () => {
   const f = fixture(['artwork-one', 'artwork-two']);
   try {

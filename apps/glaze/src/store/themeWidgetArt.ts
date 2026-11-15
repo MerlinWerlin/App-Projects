@@ -18,7 +18,7 @@
 // (same theme) finishes the job quickly; pendingThemeWidgetArt() tells a launch queue it is due.
 // A newer apply supersedes an older run (it stops before its index write). Never throws.
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ART_WALLPAPER_SIZE, HERO_REFERENCE_SIZES, HERO_SIZES, isArtPackTheme } from '../core/artPack';
+import { ART_WALLPAPER_SIZE, isArtPackTheme } from '../core/artPack';
 import { liveArtPlan, liveArtSpec, withLiveArt, type CountdownArtTargets } from '../core/liveArt';
 import { pickWallpaper } from '../core/packCatalog';
 import { isRemoteArtTheme, remoteArtFiles } from '../core/remoteCatalog';
@@ -26,11 +26,11 @@ import { normaliseSlot, seamlessCrop, widgetSizePx } from '../core/seamlessWidge
 import { THEME_PACK_ART_SIZES, composeOrder, isArtworkPiece, piecesToCompose, planThemePieces, type PlannedThemePiece } from '../core/themeArtSync';
 import type { Theme } from '../core/themes';
 import type { WidgetArtIndex } from '../core/widgetArtLibrary';
-import { optionName, widgetOptionsFromV1, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
+import { optionName, type HomeOptionSize, type WidgetOption } from '../core/widgetOptions';
 import { t } from '../i18n';
 import { getPackState, loadPackIndex, remoteArtFileUri, remoteArtOnDevice } from '../native/packs';
 import { widgets, type WidgetsResult } from '../native/widgets';
-import { artPackHero, artPackWallpaper } from '../ui/artPackSources';
+import { artPackArtwork, artPackWallpaper } from '../ui/artPackSources';
 import { existingLocalFile, localAssetUri, seamlessDeviceHere } from '../ui/seamlessSetup';
 import { loadCountdownArtTargets } from './countdownArtTargets';
 import { DESIGNED_WIDGET_CAPABILITY, isReplacedArtEdition } from '../core/designedWidgets';
@@ -280,21 +280,11 @@ async function themeArt(theme: Theme, targets: CountdownArtTargets): Promise<The
       return result;
     }
     if (isArtPackTheme(theme)) {
-      // A bundled art pack: its hero pieces, as a v1 pack would list them.
+      // A bundled art pack: original heroes plus its declared decorative artwork additions.
       const artId = theme.artPack.id;
-      const mods = new Map<string, number>();
-      const assets = HERO_SIZES.flatMap((s) => {
-        const mod = artPackHero(artId, s);
-        if (mod === null) return [];
-        const path = `bundled-${s}`;
-        mods.set(path, mod);
-        return [{ path, role: `widget-${s}`, width: HERO_REFERENCE_SIZES[s].width, height: HERO_REFERENCE_SIZES[s].height }];
-      });
       const sources = new Map<string, Source>();
       const options: WidgetOption[] = [];
-      for (const option of widgetOptionsFromV1(assets)) {
-        const mod = mods.get(option.image);
-        if (mod === undefined) continue;
+      for (const { option, source: mod } of artPackArtwork(artId)) {
         options.push(option);
         sources.set(option.id, { option, mod });
       }
@@ -322,7 +312,7 @@ async function composeOne(theme: Theme, art: ThemeArt, piece: PlannedThemePiece)
   }
   const src = art.sources.get(piece.optionId);
   if (!src) return 'failed';
-  const artUri = src.mod !== undefined ? await localAssetUri(src.mod, `${theme.id}-${src.option.id}.png`) : await existingLocalFile(src.uri ?? null);
+  const artUri = src.mod !== undefined ? await localAssetUri(src.mod, `${theme.id}-${src.option.id}.${src.option.image.endsWith('.webp') ? 'webp' : 'png'}`) : await existingLocalFile(src.uri ?? null);
   if (!artUri) return 'failed';
   const device = seamlessDeviceHere();
   let res: WidgetsResult;

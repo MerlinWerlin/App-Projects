@@ -1,0 +1,50 @@
+[
+  {
+    "id": "desert-camel",
+    "kind": "art",
+    "image": "widget-desert-camel.9666fb2c.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Desert Camel"
+  },
+  {
+    "id": "desert-rose-mineral",
+    "kind": "art",
+    "image": "widget-desert-rose-mineral.bd9db73f.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Desert Rose Mineral"
+  },
+  {
+    "id": "dusk-lantern",
+    "kind": "art",
+    "image": "widget-dusk-lantern.ac60ea5f.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Dusk Lantern"
+  },
+  {
+    "id": "date-palm",
+    "kind": "art",
+    "image": "widget-date-palm.85661b3a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Date Palm"
+  }
+]

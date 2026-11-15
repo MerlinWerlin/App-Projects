@@ -3,7 +3,9 @@
 // returns null for a theme that is not an art pack or a missing file; callers fall back to the drawn
 // wallpaper. Never throws.
 import { Image } from 'react-native';
-import type { HeroSize } from '../core/artPack';
+import { artPackWidgetOptions, HERO_FILES, type HeroSize } from '../core/artPack';
+import { ART_PACK_LIBRARY } from '../core/artPackLibrary';
+import type { WidgetOption } from '../core/widgetOptions';
 import { ART_PACK_ASSETS } from './artPackAssets';
 
 /** A bundled image module (the number Metro's require() returns). */
@@ -28,6 +30,17 @@ export function artPackHero(id: string | null | undefined, size: HeroSize): ArtI
   const a = assetsOf(id);
   if (!a) return null;
   return a[size] ?? null;
+}
+
+/** The same complete bundled option list for previews and automatic widget composition. */
+export function artPackArtwork(id: string | null | undefined): { option: WidgetOption; source: number }[] {
+  const assets = assetsOf(id), pack = ART_PACK_LIBRARY.find((p) => p.id === id);
+  if (!assets || !pack) return [];
+  return artPackWidgetOptions(pack).flatMap((option) => {
+    const hero = (Object.entries(HERO_FILES) as [HeroSize, string][]).find(([, file]) => file === option.image);
+    const source = hero ? assets[hero[0]] : assets.artworks?.[option.image];
+    return typeof source === 'number' ? [{ option, source }] : [];
+  });
 }
 
 /** A URI for the wallpaper image (Save to Photos reads it like a downloaded photo). */

@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Wind carved arch"
+  },
+  {
+    "id": "sandstone-fennec",
+    "kind": "art",
+    "image": "widget-sandstone-fennec.f5a4a4cf.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sandstone Fennec"
   }
 ]

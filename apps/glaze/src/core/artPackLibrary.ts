@@ -56,8 +56,76 @@ export const ART_PACK_LIBRARY: readonly ArtPackData[] = Object.freeze([
       "widget-medium.png": 41058,
       "widget-large.png": 90445,
       "palette.json": 109,
-      "meta.json": 406
-    }
+      "meta.json": 406,
+      "artwork-options.json": 1020,
+      "artwork-provenance.json": 7117,
+      "widget-luminous-nautilus.51a10d0f.webp": 96700,
+      "widget-glowing-anglerfish.b15b920a.webp": 114082,
+      "widget-bioluminescent-coral-fan.5137fec8.webp": 312442,
+      "widget-abyssal-diving-helmet.4bda679c.webp": 120952
+    },
+    "artworks": [
+      {
+        "id": "luminous-nautilus",
+        "kind": "art",
+        "image": "widget-luminous-nautilus.51a10d0f.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Luminous Nautilus",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      },
+      {
+        "id": "glowing-anglerfish",
+        "kind": "art",
+        "image": "widget-glowing-anglerfish.b15b920a.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Glowing Anglerfish",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      },
+      {
+        "id": "bioluminescent-coral-fan",
+        "kind": "art",
+        "image": "widget-bioluminescent-coral-fan.5137fec8.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Glowing Coral Fan",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      },
+      {
+        "id": "abyssal-diving-helmet",
+        "kind": "art",
+        "image": "widget-abyssal-diving-helmet.4bda679c.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Abyssal Diving Helmet",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      }
+    ]
   },
   {
     "id": "starry-night",
@@ -112,8 +180,76 @@ export const ART_PACK_LIBRARY: readonly ArtPackData[] = Object.freeze([
       "widget-medium.png": 47560,
       "widget-large.png": 131885,
       "palette.json": 109,
-      "meta.json": 408
-    }
+      "meta.json": 408,
+      "artwork-options.json": 946,
+      "artwork-provenance.json": 7172,
+      "widget-ringed-planet.3c64b5e6.webp": 168148,
+      "widget-copper-telescope.953152ed.webp": 76430,
+      "widget-ember-comet.dd51ca5d.webp": 176142,
+      "widget-spiral-galaxy.23e6d758.webp": 184294
+    },
+    "artworks": [
+      {
+        "id": "ringed-planet",
+        "kind": "art",
+        "image": "widget-ringed-planet.3c64b5e6.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Ringed Planet",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      },
+      {
+        "id": "copper-telescope",
+        "kind": "art",
+        "image": "widget-copper-telescope.953152ed.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Copper Telescope",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      },
+      {
+        "id": "ember-comet",
+        "kind": "art",
+        "image": "widget-ember-comet.dd51ca5d.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Ember Comet",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      },
+      {
+        "id": "spiral-galaxy",
+        "kind": "art",
+        "image": "widget-spiral-galaxy.23e6d758.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Spiral Galaxy",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      }
+    ]
   },
   {
     "id": "sunset-dunes",
@@ -168,7 +304,75 @@ export const ART_PACK_LIBRARY: readonly ArtPackData[] = Object.freeze([
       "widget-medium.png": 28928,
       "widget-large.png": 74007,
       "palette.json": 109,
-      "meta.json": 405
-    }
+      "meta.json": 405,
+      "artwork-options.json": 943,
+      "artwork-provenance.json": 7227,
+      "widget-desert-camel.9666fb2c.webp": 104368,
+      "widget-desert-rose-mineral.bd9db73f.webp": 100280,
+      "widget-dusk-lantern.ac60ea5f.webp": 84964,
+      "widget-date-palm.85661b3a.webp": 231066
+    },
+    "artworks": [
+      {
+        "id": "desert-camel",
+        "kind": "art",
+        "image": "widget-desert-camel.9666fb2c.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Desert Camel",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      },
+      {
+        "id": "desert-rose-mineral",
+        "kind": "art",
+        "image": "widget-desert-rose-mineral.bd9db73f.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Desert Rose Mineral",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      },
+      {
+        "id": "dusk-lantern",
+        "kind": "art",
+        "image": "widget-dusk-lantern.ac60ea5f.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Dusk Lantern",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      },
+      {
+        "id": "date-palm",
+        "kind": "art",
+        "image": "widget-date-palm.85661b3a.webp",
+        "sizes": [
+          "small",
+          "large"
+        ],
+        "fit": "fit",
+        "background": "wallpaper",
+        "label": "Date Palm",
+        "width": 1024,
+        "height": 1024,
+        "derived": false
+      }
+    ]
   }
 ] as ArtPackData[]);
