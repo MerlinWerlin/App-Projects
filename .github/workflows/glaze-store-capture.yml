@@ -84,7 +84,12 @@ jobs:
           xcrun simctl ui "$DEVICE" appearance light
           xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100 || true
           cd store/capture
-          maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro" store-flow.yaml || echo "maestro reported a failure (optional steps may have missed)"
+          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
+          for TRY in 1 2; do
+            maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro" store-flow.yaml || echo "maestro reported a failure (optional steps may have missed)"
+            ls ./*.png > /dev/null 2>&1 && break
+            echo "No captures on try $TRY (driver start-up?); retrying once"
+          done
           find . "$OUT/maestro" -name '*.png' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
           ls -la "$OUT/raw"
           python3 -c 'import sys; from PIL import Image' 2>/dev/null || pip3 install --quiet --break-system-packages pillow
