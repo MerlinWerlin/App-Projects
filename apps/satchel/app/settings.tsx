@@ -29,7 +29,9 @@ import { TEMP_UNITS } from '../src/core/weather.ts';
 import { useTempUnit } from '../src/ui/WeatherCard.tsx';
 import { FadeInView, HeroHeader, SectionHeader, type IconName, type Tone } from '../src/ui/hero.tsx';
 import { Body, Button, Card, Chip, PressableScale, Screen, ToggleRow } from '../src/ui/kit.tsx';
+import { RemindersSection } from '../src/ui/RemindersSection.tsx';
 import { StepFreeEntry } from '../src/ui/stepfree.tsx';
+import { ThemeSection } from '../src/ui/ThemeSection.tsx';
 import { UnlockSection } from '../src/ui/UnlockSection.tsx';
 
 const LIST_DATE = typeof (table as { imported?: unknown }).imported === 'string' ? (table as { imported: string }).imported : null;
@@ -161,6 +163,9 @@ export default function SettingsScreen() {
         </View>
         <Body muted>{t('settings.appearanceBody')}</Body>
       </Section>
+      <ThemeSection />
+
+      <RemindersSection />
 
       <Section title={t('weather.unitSetting')} icon="thermometer-outline" tone="warn">
         <View accessibilityRole="radiogroup" accessibilityLabel={t('weather.unitSetting')} style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>

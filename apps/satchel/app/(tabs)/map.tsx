@@ -1012,7 +1012,7 @@ export default function MapScreen() {
 
   return (
     <Screen scroll={false} tabs>
-      <HeroHeader compact scene="map" title={t('map.title')} />
+      <HeroHeader compact scene="map" mascot="map" title={t('map.title')} />
       <View style={{ gap: space.xs }}>
         <SatchelMap
           pins={pins}

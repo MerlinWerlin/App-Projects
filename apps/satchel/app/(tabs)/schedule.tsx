@@ -13,6 +13,8 @@ import { useTrips } from '../../src/state/trips.tsx';
 import { space, typeScale } from '../../src/theme/tokens.ts';
 import { Chip } from '../../src/ui/kit.tsx';
 import { ItineraryStart, TripDays } from '../../src/ui/TripDays.tsx';
+import { RemindersOffer } from '../../src/ui/RemindersOffer.tsx';
+import { Mascot } from '../../src/ui/Mascot.tsx';
 import { ShareItinerary } from '../../src/ui/ShareItinerary.tsx';
 import { useMinute } from '../../src/ui/TripPass.tsx';
 
@@ -33,6 +35,7 @@ export default function ScheduleTab() {
           <Text style={[typeScale.displayM, { color: theme.ink }]}>{t('tab.itinerary')}</Text>
           {trip ? <Text style={[typeScale.small, { color: theme.muted }]}>{`${trip.name} · ${formatRange(trip.startDate, trip.endDate, lang)}`}</Text> : null}
         </View>
+        <Mascot pose="itinerary" size={56} />
         {/* T174: share the itinerary to another phone (calendar file, Satchel file or text). */}
         {trip && trip.items.length ? <ShareItinerary trip={trip} compact /> : null}
       </View>
@@ -50,6 +53,8 @@ export default function ScheduleTab() {
           ))}
         </ScrollView>
       ) : null}
+      {/* Trip reminders: a quiet one-time offer while they're off and a real trip has plans coming up. */}
+      {trip && trip.items.length ? <RemindersOffer now={now} style={{ marginHorizontal: space.l, marginTop: space.s }} /> : null}
       {trip && trip.items.length ? (
         <TripDays key={trip.id} trip={trip} inTab />
       ) : (

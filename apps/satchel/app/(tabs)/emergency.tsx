@@ -88,7 +88,7 @@ export default function EmergencyScreen() {
 
   return (
     <Screen>
-      <HeroHeader scene="emergency" title={t('emergency.title')}>
+      <HeroHeader scene="emergency" mascot="emergency" title={t('emergency.title')}>
         {display ? (
           <View style={{ gap: space.xs }}>
             <Text accessibilityRole="header" style={[typeScale.title, { color: theme.heroInk, maxWidth: '64%' }]}>

@@ -11,6 +11,7 @@ import { useApp } from '../state/app.tsx';
 import { duration, pressScale } from '../theme/motion.ts';
 import { elevated, fonts, radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { SpotArt, type SpotKind } from './illustrations/index.tsx';
+import { Mascot, type MascotPose } from './Mascot.tsx';
 
 // T169: `tabs` = a fixed (non-scrolling) tab screen whose list runs down to the tab bar, which already keeps clear of
 // the home indicator, so no bottom inset or extra gap.
@@ -140,11 +141,28 @@ export function Button({
  * Empty or nothing-found state: an illustration (T91 `art`, original spot art, decorative) or an icon badge, a title
  * (screen-reader header), a body with the next step, and an optional action. `art` wins over `icon`.
  */
-export function EmptyState({ title, body, action, icon, art }: { title: string; body: string; action?: ReactNode; icon?: IconName; art?: SpotKind }) {
+export function EmptyState({
+  title,
+  body,
+  action,
+  icon,
+  art,
+  mascot,
+}: {
+  title: string;
+  body: string;
+  action?: ReactNode;
+  icon?: IconName;
+  art?: SpotKind;
+  /** The mascot in this tab's pose (wins over `art` and `icon`). */
+  mascot?: MascotPose;
+}) {
   const { theme } = useApp();
   return (
     <Card style={{ alignItems: 'flex-start', gap: space.m }}>
-      {art ? (
+      {mascot ? (
+        <Mascot pose={mascot} size={140} style={{ alignSelf: 'center' }} />
+      ) : art ? (
         <View style={{ alignSelf: 'center' }}>
           <SpotArt kind={art} size={132} />
         </View>

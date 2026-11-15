@@ -99,6 +99,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
+/**
+ * Re-provides the app state below with another theme (destination themes, src/state/countryTheme.tsx); everything
+ * else passes through. The value only changes when the parent state or the theme object does.
+ */
+export function ThemeOverride({ theme, children }: { theme: Theme; children: ReactNode }) {
+  const parent = useApp();
+  const value = useMemo<AppState>(() => (theme === parent.theme ? parent : { ...parent, theme }), [parent, theme]);
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+}
+
 export function useApp(): AppState {
   const v = useContext(Ctx);
   if (!v) throw new Error('useApp outside AppProvider');

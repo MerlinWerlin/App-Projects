@@ -67,10 +67,10 @@ export function sceneHue(scene: CoverId): HSL {
 }
 
 const MARGIN = 0.1;
-const passes = (fg: string, bgs: string[], min: number) => bgs.every((bg) => contrast(fg, bg) >= min + MARGIN);
+export const passes = (fg: string, bgs: string[], min: number) => bgs.every((bg) => contrast(fg, bg) >= min + MARGIN);
 
 /** Walk lightness from `from` in `step` until `ok` holds (or the end of the range); returns the colour. */
-function walk(h: number, s: number, from: number, step: number, ok: (c: string) => boolean): string | null {
+export function walk(h: number, s: number, from: number, step: number, ok: (c: string) => boolean): string | null {
   for (let l = from; l >= 0 && l <= 1; l += step) {
     const c = fromHsl({ h, s, l });
     if (ok(c)) return c;
@@ -81,6 +81,16 @@ function walk(h: number, s: number, from: number, step: number, ok: (c: string) 
 /** The accent set for a scene in a theme. Always AA: falls back to the theme's own accent set if a walk fails. */
 export function tripAccent(scene: CoverId, theme: Theme): TripAccent {
   const base = sceneHue(scene);
+  return accentFromHue(base.h, base.s, theme);
+}
+
+/**
+ * The accent set (ink, soft, strong, onStrong) for any hue and saturation in a theme, with the lightness walked until
+ * every pair is AA. Shared by the per-trip accents and the destination themes (src/theme/countryTheme.ts). Falls back
+ * to the theme's own accent set if a walk fails.
+ */
+export function accentFromHue(h: number, sat: number, theme: Theme): TripAccent {
+  const base = { h, s: sat };
   const s = Math.min(0.72, Math.max(0.38, base.s));
   const raised = theme.dark ? Object.values(surfaces.dark) : [theme.cardRaised];
   const pages = [theme.paper, theme.card, theme.cardRaised, ...raised];

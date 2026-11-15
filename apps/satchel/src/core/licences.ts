@@ -41,6 +41,7 @@ const EXPO_MODULES = [
   'expo-localization',
   'expo-location',
   'expo-network',
+  'expo-notifications',
   'expo-sharing',
   'expo-splash-screen',
   'expo-status-bar',

@@ -52,10 +52,28 @@ test('appearance: System follows the phone, Light and Dark override it', () => {
 });
 
 test('stored prefs from older builds gain the appearance default; junk is replaced', () => {
-  assert.deepEqual(normaliseAppPrefs({ haptics: false }), { haptics: false, appearance: 'system', language: 'system', languageHintSeen: false, sleepBed: '23:00', sleepWake: '07:00' });
-  assert.deepEqual(normaliseAppPrefs({ haptics: true, appearance: 'dark' }), { haptics: true, appearance: 'dark', language: 'system', languageHintSeen: false, sleepBed: '23:00', sleepWake: '07:00' });
+  assert.deepEqual(normaliseAppPrefs({ haptics: false }), { haptics: false, appearance: 'system', language: 'system', languageHintSeen: false, sleepBed: '23:00', sleepWake: '07:00', reminders: false, countryThemes: true });
+  assert.deepEqual(normaliseAppPrefs({ haptics: true, appearance: 'dark' }), { haptics: true, appearance: 'dark', language: 'system', languageHintSeen: false, sleepBed: '23:00', sleepWake: '07:00', reminders: false, countryThemes: true });
   assert.deepEqual(normaliseAppPrefs({ haptics: 'no', appearance: 'blue' }), DEFAULT_APP_PREFS);
   assert.deepEqual(normaliseAppPrefs(null), DEFAULT_APP_PREFS);
   assert.deepEqual(normaliseAppPrefs([1]), DEFAULT_APP_PREFS);
   assert.ok(APPEARANCES.every(isAppearance));
+});
+
+test('trip reminders: off by default, on only for a stored true, junk is off', () => {
+  assert.equal(DEFAULT_APP_PREFS.reminders, false);
+  assert.equal(normaliseAppPrefs({}).reminders, false);
+  assert.equal(normaliseAppPrefs({ reminders: true }).reminders, true);
+  assert.equal(normaliseAppPrefs({ reminders: false }).reminders, false);
+  assert.equal(normaliseAppPrefs({ reminders: 'yes' }).reminders, false);
+  assert.equal(normaliseAppPrefs({ reminders: 1 }).reminders, false);
+  // Turning reminders on keeps every other choice.
+  assert.deepEqual(normaliseAppPrefs({ haptics: false, appearance: 'dark', reminders: true }), { ...DEFAULT_APP_PREFS, haptics: false, appearance: 'dark', reminders: true });
+});
+
+test('destination themes pref: on by default, kept when saved, repaired when damaged', () => {
+  assert.equal(DEFAULT_APP_PREFS.countryThemes, true);
+  assert.equal(normaliseAppPrefs({}).countryThemes, true);
+  assert.equal(normaliseAppPrefs({ countryThemes: false }).countryThemes, false);
+  assert.equal(normaliseAppPrefs({ countryThemes: 'no' }).countryThemes, true);
 });

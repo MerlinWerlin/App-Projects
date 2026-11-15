@@ -114,6 +114,7 @@ export default function TripsScreen() {
             <HeroHeader
               tone="trips"
               illustration="route"
+              mascot="home"
               eyebrow={greeting}
               title={focus && c ? countdownHeadline(t, c, place) : t('design.trips.heroNone')}
               subtitle={

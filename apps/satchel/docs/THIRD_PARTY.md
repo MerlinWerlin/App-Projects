@@ -43,7 +43,7 @@ From `package.json` `dependencies`. All are open source; none is an analytics, a
 
 | Package | Licence |
 |---|---|
-| expo, expo-router, expo-asset, expo-battery, expo-brightness, expo-clipboard, expo-constants, expo-contacts, expo-document-picker, expo-file-system, expo-font, expo-haptics, expo-image-picker, expo-keep-awake, expo-linking, expo-local-authentication, expo-localization, expo-location, expo-network, expo-sharing, expo-splash-screen, expo-status-bar | MIT (Expo) |
+| expo, expo-router, expo-asset, expo-battery, expo-brightness, expo-clipboard, expo-constants, expo-contacts, expo-document-picker, expo-file-system, expo-font, expo-haptics, expo-image-picker, expo-keep-awake, expo-linking, expo-local-authentication, expo-localization, expo-location, expo-network, expo-notifications, expo-sharing, expo-splash-screen, expo-status-bar | MIT (Expo) |
 | @expo/vector-icons | MIT (only the Ionicons set is used: MIT) |
 | @expo-google-fonts/inter, @expo-google-fonts/space-grotesk | MIT (code); fonts SIL OFL 1.1 (§2) |
 | react, react-dom | MIT |
