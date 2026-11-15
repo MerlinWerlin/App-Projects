@@ -28,8 +28,8 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
 |---|---|---|---|
 | Name | `Glaze: Icon Themes & Widgets` | 28 | 30 |
 | Subtitle | `Aesthetic Home Screen Makeover` | 30 | 30 |
-| Keywords | `wallpaper,lock,custom,shortcut,cute,pastel,kawaii,cozy,dark,color,clock,calendar,photo,matching` | 95 | 100 |
-| Promotional text | `Over 90 original themes, each with matching icons, wallpapers and widgets. Pick a look and Glaze walks you through setting it up, step by step. No account, no ads.` | 163 | 170 |
+| Keywords | `wallpaper,lock,custom,cute,pastel,kawaii,cozy,dark,color,photo,matching,artwork,shortcut,style,art` | 98 | 100 |
+| Promotional text | `Over 140 original themes, each with a wallpaper, matching icons and five artworks for your widgets. Start with 10 free themes, or unlock them all with Glaze Plus.` | 162 | 170 |
 
 - **Name:** "Glaze" first; "Icon Themes & Widgets" are the two most-searched outcome nouns. Fallback if the name is
   taken in App Store Connect: `Glaze: Themes & Widgets` (23).
@@ -39,34 +39,33 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
   aesthetic, home, screen, makeover, glaze). Singular forms only (Apple matches plurals). No brand or app names.
 - **Promotional text** can be changed at any time without a new review.
 
-### Description (1,865 characters; limit 4,000)
+### Description (2,581 characters; limit 4,000)
 
 <!-- description:start -->
 ```text
-Glaze gives your iPhone a look that fits together: a wallpaper, matching app icons and widgets in the same colours, all from one theme.
+Glaze gives your iPhone a look that fits together: a wallpaper, matching app icons and widget art in the same style, all from one theme.
 
 THEMES
-- Over 90 original themes drawn for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
-- Every theme comes with a wallpaper, an icon style and widget art that match.
-- Themes download when you open them and stay on your iPhone, so they keep working offline.
+- Over 140 original themes drawn for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
+- Every theme comes with a wallpaper, an icon style and five artworks for your widgets.
+- 10 themes are free, including Alpine Starlight and Cloud Atelier. Glaze Plus unlocks all the others.
+- Starter themes are built into the app and work offline. Other themes download once, then stay on your iPhone.
+
+ONE TAP TO START
+Tap a theme and answer "Use this theme?". Your Glaze widgets switch to its art straight away. Then Glaze lists the next steps: add the wallpaper, add the icons, add the widgets. Skip any step and come back later.
+
+FIVE ARTWORKS WITH EVERY THEME
+- Put Artwork 1 to 5 on your Home Screen. Each shows a different piece from the theme you use, and they change when you change theme.
+- Make it yours with Custom 1 to 5: add your own pictures, or a favourite artwork from any theme.
 
 MATCHING ICONS
 - Glaze makes icons for the apps you choose, in the theme's colours and symbols.
-- Install them all at once, or one at a time with Apple's Shortcuts app. Glaze walks you through every step and shows how to undo it.
-- Make your own icons from hundreds of symbols and letters.
-
-WIDGETS THAT WORK
-- Clock, calendar, photo, countdown, quote and battery widgets in small, medium and large.
-- Use the theme's art, or make a widget your own in the Widget Studio with your photo, colours and fonts.
-- Moon phase, word clock, big clock and habit streak widgets, plus Lock Screen clock, date, battery, countdown and moon widgets.
-- Next event and weather widgets in your theme. They ask for calendar or location access only when you set them up. Weather data by Open-Meteo.com.
+- Add them all at once with one install in Settings, or one at a time with Apple's Shortcuts app. Glaze shows every step, and how to undo it.
+- Change the shape, colours and symbol of any icon.
 
 WALLPAPERS
-- Still wallpapers and matching Lock Screen and Home Screen pairs.
+- Save a theme's wallpaper to Photos and set it for your Home Screen and Lock Screen.
 - Extra: the Live Photo maker turns a short clip of your own into a Live Photo that moves when you press it in Photos.
-
-GUIDED SET-UP
-Tap "Use this theme" and Glaze shows you what to do, one short step at a time: wallpaper, then icons, then widgets. Skip any step and come back later.
 
 SIMPLE AND PRIVATE
 - No account, no ads, no tracking.
@@ -74,27 +73,36 @@ SIMPLE AND PRIVATE
 - Available in 11 languages.
 
 GLAZE PLUS
-Glaze Plus is an optional one-time purchase. No subscription, ever. Restore it any time from Settings.
+Glaze Plus is an optional yearly subscription that unlocks every theme in Glaze. In Australia it is A$2.99 a year; the price in your country is shown in the app before you buy.
+- Payment is charged to your Apple Account when you confirm the purchase.
+- It renews automatically each year unless you turn off auto-renew at least 24 hours before the end of the current year. Renewal is charged within the 24 hours before the year ends.
+- Manage or cancel it any time in Settings > your name > Subscriptions. Cancelling stops the next renewal; Plus stays on until the end of the year you paid for.
+- The 10 free themes keep working without Plus, and Glaze needs no account.
+
+Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Privacy Policy: https://merlinwerlin.github.io/App-Projects/glaze/privacy.html
 ```
 <!-- description:end -->
 
-The "GLAZE PLUS" paragraph deliberately names no contents: what Plus adds is still the owner's decision
-(`docs/RELEASE_CHECKLIST.md` §2b). Once decided, add one plain sentence such as "It adds N extra themes." If the owner
-picks option B (ship 1.0.1 without Plus), delete the paragraph.
+**1.0.41 (15 Nov 2026):** `store/listing.json` is now the source for every field above (the store workflow pushes it);
+this file mirrors it. Glaze Plus is a yearly auto-renewing subscription (about A$2.99 a year, no trial) and 10
+themes are free. Guideline 3.1.2 needs the subscription's name, length and price plus a Terms of Use and Privacy
+Policy link in the description, so the "GLAZE PLUS" paragraph states them. If the final price tier changes, change
+"A$2.99" in listing.json, here and in the paywall shot. Apple's standard EULA is the Terms of Use.
 
 ### Other fields
 
 | Field | Value |
 |---|---|
-| What's New | Not shown for a first release (App Store Connect only asks from the second version). For 1.0.2: `Smoother set-up, new themes and fixes. Thanks for using Glaze!` |
-| Support URL | `https://merlinwerlin.github.io/App-Projects/apps/glaze/docs/site/` (page `docs/site/index.html`; needs GitHub Pages, owner step) |
-| Privacy Policy URL | `https://merlinwerlin.github.io/App-Projects/apps/glaze/docs/site/privacy.html` (copy of `docs/privacy.html`) |
+| What's New | `Welcome to Glaze! Pick a theme, tap Use this theme, and your widgets switch to its five artworks. Then add the wallpaper and matching icons, one short step at a time.` (App Store Connect may not ask for it on a first release) |
+| Support URL | `https://merlinwerlin.github.io/App-Projects/glaze/support.html` (repo `docs/glaze/support.html`; the old `apps/glaze/docs/site/` address was never served by Pages) |
+| Privacy Policy URL | `https://merlinwerlin.github.io/App-Projects/glaze/privacy.html` (repo `docs/glaze/privacy.html`, copy of `apps/glaze/docs/privacy.html`) |
 | Marketing URL | leave empty |
 | Copyright | `2026 Jared Bradley` (App Store Connect adds the © sign; use the seller name shown under Business if it differs) |
 | Primary category | **Lifestyle** |
 | Secondary category | Utilities |
 | Age rating | 4+ (answers in `docs/RELEASE_CHECKLIST.md` §5) |
-| Price | Free download; Glaze Plus in-app purchase (`docs/IAP_SANDBOX.md`) |
+| Price | Free download; Glaze Plus yearly subscription (about A$2.99 a year, no trial) |
 
 **Why Lifestyle:** people choose a Home Screen "look" the way they choose decor or fashion; that is a lifestyle
 purchase, and the pitch (themes first, widgets and icons that match) is about taste, not a tool. Utilities is crowded

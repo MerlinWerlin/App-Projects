@@ -66,18 +66,37 @@ def background(c1, c2, glow):
 
 
 def wrap(draw, text, font, max_w):
+    """Greedy line count, then the most even split for that count (no one-word last lines)."""
     lines = []
     for para in text.split('\n'):
-        words, cur = para.split(), ''
+        words = para.split()
+        n, cur = 1, ''
         for w in words:
             t = (cur + ' ' + w).strip()
             if draw.textlength(t, font=font) <= max_w:
                 cur = t
             else:
-                lines.append(cur)
-                cur = w
-        lines.append(cur)
+                n, cur = n + 1, w
+        lines += balanced(draw, words, font, max_w, n)
     return lines
+
+
+def balanced(draw, words, font, max_w, n):
+    if n == 1:
+        return [' '.join(words)]
+    best = None
+    for i in range(1, len(words)):
+        head = ' '.join(words[:i])
+        if draw.textlength(head, font=font) > max_w:
+            break
+        rest = balanced(draw, words[i:], font, max_w, n - 1)
+        widths = [draw.textlength(head, font=font)] + [draw.textlength(r, font=font) for r in rest]
+        if max(widths) > max_w:
+            continue
+        score = max(widths) - min(widths)
+        if best is None or score < best[0]:
+            best = (score, [head] + rest)
+    return best[1] if best else [' '.join(words)]
 
 
 def captions(img, shot, F, top=210):
@@ -150,13 +169,13 @@ def render(shot, raw, F):
     elif kind == 'trio':
         y = captions(bg, shot, F)
         names = shot['raw']
-        side_w, mid_w = 640, 760
+        side_w, mid_w = 720, 900
         sides = [phone(load(raw, n), side_w) for n in (names[0], names[2])]
         mid = phone(load(raw, names[1]), mid_w)
         top = y + 80
         (l, lp), (r, rp) = sides
-        bg.alpha_composite(l, (-70 - lp, top + 260 - lp))
-        bg.alpha_composite(r, (W + 70 - side_w - rp, top + 260 - rp))
+        bg.alpha_composite(l, (-190 - lp, top + 300 - lp))
+        bg.alpha_composite(r, (W + 190 - side_w - rp, top + 300 - rp))
         bg.alpha_composite(mid[0], ((W - mid[0].size[0]) // 2, top - mid[1]))
     else:
         raise SystemExit(f'unknown kind {kind}')

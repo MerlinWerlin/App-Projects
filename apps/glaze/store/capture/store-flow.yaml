@@ -1,7 +1,7 @@
-# App Store captures for Glaze (Maestro, iOS simulator). Run by .github/workflows/glaze-store-capture.yml.
+# App Store captures for Glaze 1.0.41 (Maestro, iOS simulator). Run by .github/workflows/glaze-store-capture.yml.
 # Every step that depends on a tap is optional, so one miss never loses the other screens.
-# Screens: Themes tab, theme pages with "Use this theme?", the next steps, the Widgets tab (Artwork 1-5 and
-# Custom 1-5) for each theme, the icons step and the Glaze Plus sheet.
+# Free themes (src/core/freeThemes.ts) are used for "Use this theme?", Artwork 1-5 and Custom 1-5; premium themes are
+# shown on their theme pages, and one opens the yearly Glaze Plus sheet.
 appId: ${APP_ID}
 ---
 - launchApp:
@@ -11,7 +11,7 @@ appId: ${APP_ID}
 - runFlow:
     file: dismiss.yaml
 
-# Themes tab, top of the page (Free section first in 1.0.41).
+# Themes tab, top of the page (the Free section, Alpine Starlight and Cloud Atelier first).
 - openLink: glaze://themes
 - waitForAnimationToEnd:
     timeout: 10000
@@ -22,11 +22,7 @@ appId: ${APP_ID}
     timeout: 4000
 - takeScreenshot: 02-themes-scrolled
 
-# Each featured theme: prompt, use it (remote packs download first), next steps, its Widgets tab, then the plain page.
-- runFlow:
-    file: theme.yaml
-    env:
-      THEME: alpine-starlight
+# Free themes: prompt, Yes, next steps, the Widgets tab with their art, the plain page.
 - runFlow:
     file: theme.yaml
     env:
@@ -40,40 +36,41 @@ appId: ${APP_ID}
 - runFlow:
     file: theme.yaml
     env:
-      THEME: desert-afterglow
+      THEME: cloud-atelier
 - runFlow:
     file: custom.yaml
     env:
       ART: '1'
       SLOT: '2'
       SHOOT: ''
+
+# Premium themes: their pages (browsing is free), and the Glaze Plus sheet from "Use this theme?".
 - runFlow:
-    file: theme.yaml
+    file: page.yaml
+    env:
+      THEME: desert-afterglow
+- runFlow:
+    file: page.yaml
     env:
       THEME: porcelain-tide
 - runFlow:
-    file: custom.yaml
+    file: plus.yaml
     env:
-      ART: '2'
-      SLOT: '3'
-      SHOOT: ''
-- runFlow:
-    file: theme.yaml
-    env:
-      THEME: cloud-atelier
-- runFlow:
-    file: custom.yaml
-    env:
-      ART: '1'
-      SLOT: '4'
-      SHOOT: ''
-# Alpine Starlight (the hero) runs again last, so the Widgets, icons and Plus screens below are in it.
+      THEME: lavender-nocturne
+
+# Alpine Starlight (the hero) last, so the Widgets and icons screens below are in it.
 - runFlow:
     file: theme.yaml
     env:
       THEME: alpine-starlight
+- runFlow:
+    file: custom.yaml
+    env:
+      ART: '3'
+      SLOT: '3'
+      SHOOT: ''
 
-# Widgets tab with the in-use theme, scrolled to the Custom slots.
+# Widgets tab with the in-use theme, then the Custom slots.
 - openLink: glaze://widgets
 - waitForAnimationToEnd:
     timeout: 8000
@@ -101,31 +98,3 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 8000
 - takeScreenshot: 41-install
-- openLink: glaze://icons
-- waitForAnimationToEnd:
-    timeout: 8000
-- takeScreenshot: 42-icons-tab
-
-# Glaze Plus sheet from Settings.
-- openLink: glaze://settings
-- waitForAnimationToEnd:
-    timeout: 8000
-- scrollUntilVisible:
-    element:
-      text: ".*Glaze Plus.*"
-    direction: DOWN
-    timeout: 15000
-    optional: true
-- tapOn:
-    text: "What’s in Glaze Plus"
-    optional: true
-- extendedWaitUntil:
-    visible: ".*(What’s included|Glaze Plus a year|per year|Subscribe).*"
-    timeout: 10000
-    optional: true
-- waitForAnimationToEnd:
-    timeout: 6000
-- takeScreenshot: 50-plus
-- scroll:
-    optional: true
-- takeScreenshot: 51-plus-scrolled

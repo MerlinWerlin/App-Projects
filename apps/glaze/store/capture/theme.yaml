@@ -16,7 +16,7 @@ appId: ${APP_ID}
     optional: true
 - extendedWaitUntil:
     visible: "Next steps"
-    timeout: 120000
+    timeout: 90000
     optional: true
 - waitForAnimationToEnd:
     timeout: 6000
