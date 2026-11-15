@@ -118,8 +118,9 @@ test('1.0.41: Plus copy states the yearly price and how to cancel, in English an
     }
     for (const k of ['terms', 'privacy']) assert.equal(typeof lock[k], 'string', `${locale} plus.lock.${k}`);
   }
+  // 1.0.42: the price is StoreKit's only; no hard-coded price constant or hint.
   const ent = read('src', 'plus', 'entitlement.ts');
-  assert.match(ent, /PLUS_PRICE_HINT = `\$\{PLUS_PRICE\} a year`/);
+  assert.doesNotMatch(ent, /PLUS_PRICE_HINT|export const PLUS_PRICE\b/);
 });
 
 test('1.0.41: one yearly plan only; no weekly or monthly plan, free trial offer, special or limited-time offer', () => {

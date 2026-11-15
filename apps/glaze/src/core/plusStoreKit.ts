@@ -98,9 +98,9 @@ export function parsePurchase(v: unknown): StorePurchase {
   }
 }
 
-/** The App Store's localised price when loaded, else the owner's price (A$2.99). */
-export function priceText(product: StoreProduct | null, fallback: string): string {
-  return product?.displayPrice ?? fallback;
+/** The App Store's localised price, or null until the product has loaded (1.0.42: never a hard-coded fallback). */
+export function priceText(product: StoreProduct | null): string | null {
+  return product?.displayPrice ?? null;
 }
 
 /** Event body from the Transaction.updates listener, only when it is about `id`. */

@@ -10,7 +10,7 @@
 // (expo-localization) ?? English. Switching between LTR and RTL needs an app reload; see
 // setLocaleOverride() and applyDirection().
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { requireOptionalNativeModule } from 'expo';
+import { reloadAppAsync } from 'expo';
 import * as Localization from 'expo-localization';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { DevSettings, I18nManager } from 'react-native';
@@ -129,23 +129,19 @@ function setNativeDirection(rtl: boolean): void {
   }
 }
 
-type UpdatesNative = { reload?: (options?: unknown) => Promise<void> };
-
 /**
- * Reload the JS bundle so a new direction applies. Tries expo-updates' native module (looked up
- * optionally, so builds without expo-updates and Expo Go never crash or fail to bundle), then
- * DevSettings.reload() in development. Returns false when the user has to restart by hand.
+ * Reload the JS bundle so a new direction applies. Uses Expo's own reloadAppAsync (part of expo,
+ * no over-the-air updates involved), then DevSettings.reload() in development. Returns false when
+ * the user has to restart by hand.
  */
 export async function reloadApp(): Promise<boolean> {
   try {
-    const updates =
-      typeof requireOptionalNativeModule === 'function' ? requireOptionalNativeModule<UpdatesNative>('ExpoUpdates') : null;
-    if (updates && typeof updates.reload === 'function') {
-      await updates.reload();
+    if (typeof reloadAppAsync === 'function') {
+      await reloadAppAsync('layout direction changed');
       return true;
     }
   } catch {
-    // Updates disabled (dev client, Expo Go): fall through.
+    // Older runtimes or web: fall through.
   }
   if (__DEV__) {
     try {

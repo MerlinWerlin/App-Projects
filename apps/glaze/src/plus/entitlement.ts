@@ -1,8 +1,8 @@
 // Glaze Plus entitlement. ONLY src/plus may read this (ops/CONVENTIONS.md); free features
 // never ask.
-// T152: in an iOS native build that has the StoreKit 2 module (modules/glaze-store) Plus is a real
-// one-time App Store purchase (sandbox in TestFlight: nothing is charged). Everywhere else (Expo
-// Go, Android, the plain `production` profile) it stays a mock persisted on-device; in
+// T152 / 1.0.41: in an iOS native build that has the StoreKit 2 module (modules/glaze-store) Plus is
+// the yearly App Store subscription (sandbox in TestFlight: nothing is charged). Everywhere else
+// (Expo Go, Android, the plain `production` profile) it stays a mock persisted on-device; in
 // development "purchase" toggles Plus on so locked states can be tested.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCallback, useEffect, useState } from 'react';
@@ -30,11 +30,9 @@ export const PLUS_PRODUCT_ID = PLUS_SKU;
 export { YEARLY_SKU as PLUS_SUBSCRIPTION_ID } from '../core/plusStoreKit';
 
 export const PLUS_MOCK_KEY = 'glaze.plus.mock.v1';
-/** English source of plus.lock.unavailable (UI shows the catalogue string). */
-export const PLUS_UNAVAILABLE_MESSAGE = "You can't buy Glaze Plus in this test version";
-/** Owner's price A$2.99 a year (1.0.41). Fallback text: the store's localised displayPrice replaces it once loaded. */
-export const PLUS_PRICE = 'A$2.99'; // i18n-ignore
-export const PLUS_PRICE_HINT = `${PLUS_PRICE} a year`; // i18n-ignore
+// 1.0.42: no hard-coded price anywhere in the UI. The sheet shows StoreKit's localised displayPrice
+// and keeps Subscribe disabled until the product has loaded (usePlusPrice below). The owner's
+// App Store Connect price lives in store/SUBSCRIPTION.md only.
 
 function parse(raw: string | null): boolean {
   if (!raw) return false;
@@ -115,25 +113,64 @@ export type UsePlus = {
 
 let priceCache: string | null = null;
 
-/** The price to show: the App Store's localised displayPrice once loaded, else PLUS_PRICE. */
-export function usePlusPrice(): string {
-  const [price, setPrice] = useState<string>(priceCache ?? PLUS_PRICE);
+/** 'loading' while StoreKit is asked, 'ready' with its price, 'failed' when it gave none (or there is no store). */
+export type PlusPriceState = 'loading' | 'ready' | 'failed';
+export type PlusPrice = { price: string | null; state: PlusPriceState; retry: () => void };
+
+/** How long the sheet waits for StoreKit's product before offering Try again. */
+export const PRICE_TIMEOUT_MS = 15_000;
+
+/**
+ * 1.0.42: the price to show, ONLY from StoreKit's getProduct (localised displayPrice). There is no
+ * fallback price: until the product loads `price` is null, the sheet shows no price and Subscribe
+ * stays disabled; on a miss it says "Couldn't load the price" with Try again (retry).
+ */
+export function usePlusPrice(): PlusPrice {
+  const canLoad = typeof plusStore.displayPrice === 'function';
+  const [price, setPrice] = useState<string | null>(priceCache);
+  const [state, setState] = useState<PlusPriceState>(priceCache ? 'ready' : canLoad ? 'loading' : 'failed');
+  const [attempt, setAttempt] = useState(0);
   useEffect(() => {
-    if (priceCache || typeof plusStore.displayPrice !== 'function') return;
+    if (priceCache) {
+      setPrice(priceCache);
+      setState('ready');
+      return;
+    }
+    const load = plusStore.displayPrice;
+    if (typeof load !== 'function') {
+      setState('failed');
+      return;
+    }
     let live = true;
-    plusStore
-      .displayPrice()
-      .then((p) => {
-        if (!p) return;
-        priceCache = p;
-        if (live) setPrice(p);
-      })
-      .catch(() => {});
+    setState('loading');
+    const timer = setTimeout(() => {
+      if (live) setState((s) => (s === 'loading' ? 'failed' : s));
+    }, PRICE_TIMEOUT_MS);
+    load
+      .call(plusStore)
+      .then(
+        (p) => {
+          if (!live) return;
+          if (p) {
+            priceCache = p;
+            setPrice(p);
+            setState('ready');
+          } else {
+            setState('failed');
+          }
+        },
+        () => {
+          if (live) setState('failed');
+        },
+      )
+      .finally(() => clearTimeout(timer));
     return () => {
       live = false;
+      clearTimeout(timer);
     };
-  }, []);
-  return price;
+  }, [attempt]);
+  const retry = useCallback(() => setAttempt((a) => a + 1), []);
+  return { price, state, retry };
 }
 
 export function usePlus(): UsePlus {

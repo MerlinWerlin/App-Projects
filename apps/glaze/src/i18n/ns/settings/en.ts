@@ -92,15 +92,6 @@ export const en = {
       packUpdates: 'pack updates',
     },
   },
-  updates: {
-    check: 'Check for updates',
-    checking: 'Checking for updates…',
-    hint: 'Downloads the latest fixes for this version of Glaze',
-    none: 'Glaze is up to date',
-    downloaded: 'Update ready. Restarting Glaze…',
-    unavailable: 'Updates arrive with TestFlight and App Store builds',
-    error: 'Couldn’t check for updates. Try again later.',
-  },
   explainer: {
     addedTitle: 'Icons are added, not replaced',
     addedBody: 'iOS doesn’t let any app change another app’s icon. Instead, Glaze adds Home Screen shortcuts with your new look. Tapping one opens the real app.',

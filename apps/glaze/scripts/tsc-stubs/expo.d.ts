@@ -15,6 +15,7 @@ declare module 'expo' {
     release(): void;
   }
   export function registerRootComponent(component: import('react').ComponentType<any>): void;
+  export function reloadAppAsync(reason?: string): Promise<void>;
 }
 
 declare module 'expo-router' {
@@ -605,32 +606,6 @@ declare module 'expo-file-system/legacy' {
   export function makeDirectoryAsync(fileUri: string, options?: MakeDirectoryOptions): Promise<void>;
   export function readDirectoryAsync(fileUri: string): Promise<string[]>;
   export function downloadAsync(uri: string, fileUri: string, options?: { headers?: Record<string, string>; md5?: boolean }): Promise<{ uri: string; status: number; headers: Record<string, string>; md5?: string; mimeType: string | null }>;
-}
-
-declare module 'expo-updates' {
-  export interface Manifest {
-    id?: string;
-    createdAt?: string;
-    [key: string]: any;
-  }
-  export type UpdateCheckResult =
-    | { isAvailable: true; manifest: Manifest; isRollBackToEmbedded: false; reason: undefined }
-    | { isAvailable: false; manifest: undefined; isRollBackToEmbedded: boolean; reason: string };
-  export type UpdateFetchResult =
-    | { isNew: true; manifest: Manifest; isRollBackToEmbedded: false }
-    | { isNew: false; manifest: undefined; isRollBackToEmbedded: boolean };
-  export const isEnabled: boolean;
-  export const isEmbeddedLaunch: boolean;
-  export const isEmergencyLaunch: boolean;
-  export const updateId: string | null;
-  export const channel: string | null;
-  export const runtimeVersion: string | null;
-  export const createdAt: Date | null;
-  export const manifest: Partial<Manifest>;
-  export function checkForUpdateAsync(): Promise<UpdateCheckResult>;
-  export function fetchUpdateAsync(): Promise<UpdateFetchResult>;
-  export function reloadAsync(options?: { reloadScreenOptions?: object }): Promise<void>;
-  export function useUpdates(): any;
 }
 
 declare module 'expo-video' {

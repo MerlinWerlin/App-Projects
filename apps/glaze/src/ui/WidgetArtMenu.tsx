@@ -167,6 +167,8 @@ type Props = {
   wallpaper: MenuWallpaper | null;
   /** T251: the theme id (measured production pieces, KNOWN_ART_BLEND) and whether its art is already transparent (bundled heroes). */
   themeId?: string;
+  /** 1.0.42: names the theme's own hero pieces (optionName), so none reads "Art n". */
+  themeName?: string;
   artTransparent?: boolean;
   selectedId: string | null;
   onSelect: (id: string) => void;
@@ -176,7 +178,7 @@ type Props = {
 };
 
 /** The menu: one header, then a section per kind with its grid. Renders nothing when there is no option. */
-export function WidgetArtMenu({ options, size, width, themeColour, themeInk = onArtV2.ink, wallpaper, themeId = '', artTransparent = false, selectedId, onSelect, footer, style }: Props) {
+export function WidgetArtMenu({ options, size, width, themeColour, themeInk = onArtV2.ink, wallpaper, themeId = '', themeName, artTransparent = false, selectedId, onSelect, footer, style }: Props) {
   const { t } = useT();
   const tl = t as unknown as LooseT;
   const bySource = useMemo(() => new Map(options.map((o) => [o.option.id, o] as const)), [options]);
@@ -196,7 +198,7 @@ export function WidgetArtMenu({ options, size, width, themeColour, themeInk = on
             {s.options.map((o) => {
               const item = bySource.get(o.id);
               if (!item) return null;
-              const nm = optionName(o, all);
+              const nm = optionName(o, all, themeName);
               return (
                 <OptionCard
                   key={o.id}

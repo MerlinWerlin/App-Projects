@@ -1,4 +1,5 @@
-// GlazeStore (T152): buys and restores Glaze Plus, one non-consumable in-app purchase, with
+// GlazeStore (T152, 1.0.41): buys and restores Glaze Plus, the yearly auto-renewable subscription
+// (com.jared797.glaze.yearly; the legacy one-time unlock com.jared797.glaze.plus is still honoured), with
 // StoreKit 2 only. No receipts, no server, no analytics: StoreKit verifies the signed transaction
 // on the iPhone (VerificationResult) and keeps the entitlement (Transaction.currentEntitlements).
 //
@@ -9,7 +10,8 @@
 // Deployment target: the podspec sets iOS 15.1 (the app's target), and StoreKit 2 needs iOS 15.0,
 // so the helper is also marked @available(iOS 15.0, *).
 //
-// NOT YET COMPILED OR TESTED ON A DEVICE. Only long-standing StoreKit 2 APIs from iOS 15.0 are used:
+// Compiled by the "Glaze full native simulator app" CI job and bought in TestFlight sandbox
+// builds. Only long-standing StoreKit 2 APIs from iOS 15.0 are used:
 // Product.products(for:), product.purchase(), VerificationResult, transaction.finish(),
 // Transaction.currentEntitlements, Transaction.updates, AppStore.sync().
 //

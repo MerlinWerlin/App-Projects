@@ -91,7 +91,7 @@ test('shelf: pictures with fixed numbers sit with the art (pack order), no Live 
   assert.equal(showsLiveBadge(freed[0]), true);
 });
 
-test('names: the pack label; derived v1 pieces by shape; else "Art n" by pack place, the same in every size', () => {
+test('names: the pack label; hero pieces by theme or shape; descriptive ids; else "Art n" by pack place, the same in every size', () => {
   const v1 = widgetOptionsFromV1([
     { path: 's', role: 'widget-small', width: 510, height: 510 },
     { path: 'm', role: 'widget-medium', width: 1092, height: 510 },
@@ -118,10 +118,12 @@ test('names: the pack label; derived v1 pieces by shape; else "Art n" by pack pl
   assert.deepEqual(optionName(plain[1], plain), { text: 'Fox' });
   assert.deepEqual(optionName(plain[2], plain), { key: 'tabs.widgetsTab.art.numbered', params: { n: 3 } });
   assert.deepEqual(optionName(plain[0], plain), { key: 'tabs.widgetsTab.art.numbered', params: { n: 1 } });
-  // A v2 option that happens to be called hero-small is not a derived piece.
-  const fake: WidgetOption = { ...plain[0], id: 'hero-small' };
-  const fakeName = optionName(fake, [fake]);
-  assert.equal('key' in fakeName && fakeName.key, 'tabs.widgetsTab.art.numbered');
+  // 1.0.42: a hero-small the pack builder lists (no derived flag, no label) is still the theme's hero art:
+  // named after the theme when its name is known, else by shape; never "Art n".
+  const listed: WidgetOption = { ...plain[0], id: 'hero-small' };
+  assert.deepEqual(optionName(listed, [listed]), { key: heroNameKey('small') });
+  assert.deepEqual(optionName(listed, [listed], 'Cobalt Caravan'), { text: 'Cobalt Caravan' });
+  assert.deepEqual(optionName({ ...plain[0], id: 'lapis-dune-scarab' }, plain), { text: 'Lapis dune scarab' }, 'a descriptive id reads as a title');
 });
 
 test('every locale has the new strings (hero names, live-instead button and hint, fixed-numbers note)', () => {
@@ -137,7 +139,7 @@ test('every locale has the new strings (hero names, live-instead button and hint
 test('UI wiring: the menu names via optionName and badges via showsLiveBadge; the theme widget art labels fixed pieces', () => {
   const menu = strip(read('src', 'ui', 'WidgetArtMenu.tsx'));
   assert.match(menu, /showsLiveBadge\(option\)/);
-  assert.match(menu, /optionName\(o, all\)/);
+  assert.match(menu, /optionName\(o, all, themeName\)/);
   assert.doesNotMatch(menu, /liveKindOf\(/, 'the badge no longer follows the raw kind');
   assert.doesNotMatch(menu, /index \+ 1/, 'no per-size numbering');
   const art = strip(read('src', 'ui', 'ThemeWidgetArt.tsx'));

@@ -55,8 +55,17 @@ Create the product in **App Store Connect > Apps > Glaze > Monetization > Subscr
 - **App description:** add this last paragraph so the description itself carries the terms (Guideline 3.1.2):
   > Glaze Plus: a yearly subscription (A$2.99 a year in Australia, or your local equivalent) that unlocks every theme, new themes as they're added and all widget artwork. Ten premium themes are free. Payment is charged to your Apple Account at confirmation. The subscription renews automatically unless cancelled at least 24 hours before the end of the current year, and you can manage or cancel it in Settings. Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/ · Privacy Policy: https://merlinwerlin.github.io/App-Projects/glaze/privacy.html
 - **Privacy Policy URL:** unchanged (`https://merlinwerlin.github.io/App-Projects/glaze/privacy.html`). Apple handles payment, so App Privacy stays **Data Not Collected**.
-- **Paid Applications Agreement:** must be **Active** (Business). Until it is, StoreKit returns no product and the sheet shows the price from the app's fallback text (A$2.99), and Subscribe reports "The App Store did not return com.jared797.glaze.yearly".
+- **Paid Applications Agreement:** must be **Active** (Business). Until it is, StoreKit returns no product: since 1.0.42 the sheet then shows no price, Subscribe stays disabled and the sheet says "Couldn't load the price · Try again" (the app never shows a hard-coded price).
 - **Submit together:** the first app version that uses the subscription must be submitted with the subscription attached (App Store Connect asks for it on the version page under **In-App Purchases and Subscriptions**).
+
+## Review notes
+
+For App Review (App Store Connect > the version > App Review Information > Notes), alongside the subscription notes above:
+
+- **Icon profile.** "Install all at once" uses a configuration profile that is generated on the iPhone itself. It holds only Home Screen web clips, one per app the person picked, and each web clip just opens that app (its URL scheme). It has no MDM, VPN, certificate, restriction or account payloads. Glaze does not sign it, so iOS shows it as "Not Verified" on the install screen; that is expected for an unsigned profile. It is handed to Safari from the iPhone itself (127.0.0.1), never sent over the internet, installed by the person in Settings, and removable at any time in Settings > General > VPN & Device Management. The Shortcuts app is offered as an alternative way to make the same icons, one by one, without any profile.
+- **Theme packs.** Theme packs download from Glaze's Cloudflare storage (R2 behind Cloudflare's CDN). They are images and JSON only, never code: nothing downloaded is executed, and each file is checked against the SHA-256 in its pack manifest. Glaze has no over-the-air code updates; every change ships as a reviewed build.
+- **No account.** There is no account, sign-in or login anywhere in the app.
+- **Subscription.** Glaze Plus is the yearly auto-renewable subscription `com.jared797.glaze.yearly` (no free trial). 10 premium themes are free (the Free section, first on the Themes tab); every other theme needs Glaze Plus.
 
 ## 4. What the app does (for reference)
 

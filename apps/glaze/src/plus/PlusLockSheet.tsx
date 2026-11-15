@@ -61,6 +61,9 @@ const HERO_ART: readonly number[] = Object.values(ART_PACK_ASSETS)
 
 const FREE = ['plus.lock.freeIcons', 'plus.lock.freeInstall', 'plus.lock.freeLive'] as const;
 
+/** Development builds without the store module: Subscribe toggles the mock so locked states can be tested. */
+const DEV_MOCK = !PLUS_PURCHASABLE && typeof __DEV__ !== 'undefined' && __DEV__;
+
 /**
  * Explains Glaze Plus (1.0.41: the yearly subscription): price a year, what's included, what stays free.
  * Honest paywall (T63): a large labelled close always in view, Restore purchases always shown,
@@ -79,8 +82,10 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
   const mint = c.pastels.mint;
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
-  // T152: the App Store's localised price once loaded (fallback A$2.99).
-  const price = usePlusPrice();
+  // 1.0.42: StoreKit's localised price only. Until it loads there is no price on the sheet and Subscribe is
+  // disabled; a miss shows "Couldn't load the price · Try again".
+  const { price, state: priceState, retry: retryPrice } = usePlusPrice();
+  const canBuy = PLUS_PURCHASABLE ? price !== null : DEV_MOCK;
 
   const showFailed = (code: string) => {
     haptic('warning');
@@ -94,7 +99,7 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
   };
 
   const onUnlock = async () => {
-    if (busy) return;
+    if (busy || !canBuy) return;
     setBusy(true);
     try {
       const res = await purchase();
@@ -111,20 +116,12 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
         setMessage(t('plus.lock.pending'));
         announce(t('plus.lock.pending'));
       } else if (res === 'unavailable') {
-        // Never silent (night 23 Oct, from Linework fb-1023 "Unlock Plus did nothing"): felt, shown and spoken on every tap.
-        haptic('warning');
-        setMessage(t('plus.lock.unavailable'));
-        announce(t('plus.lock.unavailable'));
+        // Never silent (night 23 Oct, from Linework fb-1023 "Unlock Plus did nothing"): felt, shown and spoken.
+        // Only the mock returns it, and Subscribe is disabled there outside development.
+        showFailed('unavailable');
       }
     } catch {
-      haptic('warning');
-      if (PLUS_PURCHASABLE) {
-        // A native build with the store never shows the test-version line (T152).
-        showFailed('unknown');
-      } else {
-        setMessage(t('plus.lock.unavailable'));
-        announce(t('plus.lock.unavailable'));
-      }
+      showFailed('unknown');
     } finally {
       setBusy(false);
     }
@@ -143,7 +140,7 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
         </Text>
         <Text maxFontSizeMultiplier={fontScaleCap('title3')} style={[...ts('title3'), { color: c.ink }]}>
           {subject ? `${t('plus.lock.subjectIntro', { subject })} ` : ''}
-          {t('plus.lock.price', { price })}
+          {price !== null ? t('plus.lock.price', { price }) : t('plus.lock.cancelAnytime')}
         </Text>
       </View>
 
@@ -191,12 +188,32 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
 
       {/* One primary pill; the labelled Close in the sheet header is the way out (T63). */}
       <PillButton
-        label={busy ? t('plus.lock.oneMoment') : PLUS_PURCHASABLE ? t('plus.lock.unlockBuy', { price }) : t('plus.lock.unlock')}
+        label={busy ? t('plus.lock.oneMoment') : price !== null ? t('plus.lock.unlockBuy', { price }) : t('plus.lock.subscribe')}
         icon="star"
         busy={busy}
+        disabled={!canBuy}
         onPress={() => void onUnlock()}
-        accessibilityHint={PLUS_PURCHASABLE ? t('plus.lock.buyHint') : t('plus.lock.unlockHint')}
+        accessibilityHint={canBuy ? t('plus.lock.buyHint') : priceState === 'loading' ? t('plus.lock.priceLoading') : t('plus.lock.priceFailed')}
       />
+
+      {price === null && !DEV_MOCK ? (
+        priceState === 'loading' ? (
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.center, { color: c.inkSecondary }]}>
+            {t('plus.lock.priceLoading')}
+          </Text>
+        ) : (
+          <View style={styles.priceRetry}>
+            <Text accessibilityLiveRegion="polite" maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
+              {`${t('plus.lock.priceFailed')} ·`}
+            </Text>
+            <Pressable onPress={retryPrice} accessibilityRole="button" accessibilityLabel={t('plus.lock.priceRetry')} hitSlop={8}>
+              <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.link, { color: c.tint }]}>
+                {t('plus.lock.priceRetry')}
+              </Text>
+            </Pressable>
+          </View>
+        )
+      ) : null}
 
       <RestorePurchases
         variant="link"
@@ -208,9 +225,11 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
       />
 
       {/* 1.0.41 (App Review 3.1.2): how the subscription renews and is cancelled, and the legal links. */}
-      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
-        {t('plus.lock.renewal', { price })}
-      </Text>
+      {price !== null ? (
+        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
+          {t('plus.lock.renewal', { price })}
+        </Text>
+      ) : null}
       <View style={styles.legal}>
         <Pressable onPress={() => void Linking.openURL(TERMS_OF_USE_URL).catch(() => undefined)} accessibilityRole="link" hitSlop={8}>
           <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.link, { color: c.tint }]}>
@@ -277,4 +296,6 @@ const styles = StyleSheet.create({
   flex: { flex: 1, flexShrink: 1 },
   legal: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.lg, justifyContent: 'center', paddingBottom: spaceV2.sm },
   link: { fontWeight: '600' },
+  center: { textAlign: 'center' },
+  priceRetry: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: spaceV2.xs },
 });

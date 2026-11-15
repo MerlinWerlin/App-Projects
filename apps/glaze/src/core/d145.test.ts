@@ -10,16 +10,16 @@ const read = (...p: string[]) => readFileSync(join(root, ...p), 'utf8');
 const GROUP = 'group.com.jared797.glaze';
 const KEY = 'com.apple.security.application-groups';
 
-test('D145-1: Glaze Plus shows the owner price A$2.99, one-time', () => {
+test('D145-1 (1.0.42): no hard-coded Glaze Plus price in the app; the price comes from StoreKit only', () => {
   const ent = read('src', 'plus', 'entitlement.ts');
-  assert.match(ent, /export const PLUS_PRICE = 'A\$2\.99';/);
+  assert.doesNotMatch(ent, /export const PLUS_PRICE\b/);
   assert.doesNotMatch(ent, /7\.99|4\.99/);
 });
 
-test('D145-1: Unlock in a test build says plainly it cannot be bought yet and nothing was charged', () => {
+test('1.0.42: no test-version or coming-soon Plus copy is left to reach a store build', () => {
   const en = read('src', 'i18n', 'ns', 'plus', 'en.ts');
-  // 1.0.41: the subscription.
-  assert.match(en, /unavailable: '.*can.t subscribe to Glaze Plus in this test version\. It opens with the App Store release\. Nothing was charged\./);
+  assert.doesNotMatch(en, /test version|coming soon|not on sale yet/i);
+  assert.doesNotMatch(en, /^\s+(unlock|unlockHint|unavailable): /m);
 });
 
 test('D145-2: the App Group is applied to the app on every native build, not only when the widget tool is present', () => {

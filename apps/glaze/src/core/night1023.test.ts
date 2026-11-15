@@ -34,8 +34,11 @@ test('night-1023 N2: status lines are spoken on iOS (live regions are Android-on
 
 test('night-1023 N3: Unlock and Restore never fail silently (Linework fb-1023)', () => {
   const sheet = strip(read('src', 'plus', 'PlusLockSheet.tsx'));
-  assert.equal((sheet.match(/announce\(t\('plus\.lock\.unavailable'\)\)/g) ?? []).length, 2);
-  assert.match(sheet, /catch \{\s*haptic\('warning'\);/);
+  // 1.0.42: the test-version line is gone; a mock 'unavailable' and an error both go through showFailed
+  // (warning haptic, the message on screen and announced).
+  assert.match(sheet, /const showFailed = \(code: string\) => \{\s*haptic\('warning'\);\s*setMessage\(t\('plus\.lock\.failed', \{ code \}\)\);\s*announce\(t\('plus\.lock\.failed', \{ code \}\)\);/);
+  assert.match(sheet, /res === 'unavailable'\) \{\s*showFailed\('unavailable'\);/);
+  assert.match(sheet, /catch \{\s*showFailed\('unknown'\);/);
   const restore = strip(read('src', 'plus', 'RestorePurchases.tsx'));
   assert.match(restore, /announce\(t\(found \? 'plus\.lock\.restored' : 'plus\.lock\.restoreNone'\)\)/);
   assert.match(restore, /announce\(t\('plus\.lock\.restoreFailed'\)\)/);

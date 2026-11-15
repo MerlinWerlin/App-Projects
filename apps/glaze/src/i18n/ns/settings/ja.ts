@@ -92,15 +92,6 @@ export const ja: NonNullable<LocaleMessages['settings']> = {
       packUpdates: 'パックのアップデート',
     },
   },
-  updates: {
-    check: 'アップデートを確認',
-    checking: 'アップデートを確認中…',
-    hint: 'このバージョンの Glaze の最新の修正をダウンロードします',
-    none: 'Glaze は最新です',
-    downloaded: 'アップデートの準備ができました。Glaze を再起動しています…',
-    unavailable: 'アップデートは TestFlight 版と App Store 版で配信されます',
-    error: 'アップデートを確認できませんでした。後でもう一度お試しください。',
-  },
   explainer: {
     addedTitle: 'アイコンは置き換えではなく追加です',
     addedBody: 'iOS では、アプリが他のアプリのアイコンを変更することはできません。そのため Glaze は新しいデザインのショートカットをホーム画面に追加します。タップすると本物のアプリが開きます。',

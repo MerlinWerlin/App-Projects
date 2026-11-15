@@ -92,15 +92,6 @@ export const de: NonNullable<LocaleMessages['settings']> = {
       packUpdates: 'Paket-Updates',
     },
   },
-  updates: {
-    check: 'Nach Updates suchen',
-    checking: 'Suche nach Updates…',
-    hint: 'Lädt die neuesten Korrekturen für diese Glaze-Version',
-    none: 'Glaze ist aktuell',
-    downloaded: 'Update bereit. Glaze startet neu…',
-    unavailable: 'Updates kommen mit TestFlight- und App-Store-Versionen',
-    error: 'Suche nach Updates fehlgeschlagen. Versuch es später noch einmal.',
-  },
   explainer: {
     addedTitle: 'Symbole werden hinzugefügt, nicht ersetzt',
     addedBody: 'iOS lässt keine App das Symbol einer anderen App ändern. Glaze fügt stattdessen Kurzbefehle mit deinem neuen Look zum Home-Bildschirm hinzu. Ein Tipp darauf öffnet die echte App.',

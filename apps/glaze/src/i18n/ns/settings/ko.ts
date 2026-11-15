@@ -92,15 +92,6 @@ export const ko: NonNullable<LocaleMessages['settings']> = {
       packUpdates: '팩 업데이트',
     },
   },
-  updates: {
-    check: '업데이트 확인',
-    checking: '업데이트 확인 중…',
-    hint: '이 버전의 Glaze에 대한 최신 수정 사항을 다운로드합니다',
-    none: 'Glaze가 최신 상태입니다',
-    downloaded: '업데이트 준비 완료. Glaze를 다시 시작합니다…',
-    unavailable: '업데이트는 TestFlight 및 App Store 빌드에서 제공됩니다',
-    error: '업데이트를 확인할 수 없습니다. 나중에 다시 시도하세요.',
-  },
   explainer: {
     addedTitle: '아이콘은 교체가 아니라 추가됩니다',
     addedBody: 'iOS에서는 어떤 앱도 다른 앱의 아이콘을 바꿀 수 없습니다. 대신 Glaze는 새로운 디자인의 단축어를 홈 화면에 추가합니다. 탭하면 실제 앱이 열립니다.',

@@ -224,7 +224,7 @@ function plan(theme: Theme, options: WidgetOption[], targets: CountdownArtTarget
     // Owner 2026-11-13: pack art in small only; the designs above keep every size.
     sizes: THEME_PACK_ART_SIZES,
     name: (option, size) => {
-      const n = optionName(option, options);
+      const n = optionName(option, options, theme.name);
       return `${'text' in n ? n.text : tr(n.key, n.params)} · ${sizeLabel(size)}`;
     },
     aspect: (size) => {

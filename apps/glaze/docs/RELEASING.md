@@ -1,87 +1,34 @@
 # Releasing Glaze
 
-How Glaze gets from your PC to your iPhone through TestFlight, and how small fixes reach it later
-without a new build. Everything here runs on your PC from the Glaze folder. Nothing in this page
-has been tried on a real device yet; if a step behaves differently, paste the window's text into a
-Glaze Build page comment.
+How Glaze gets from the repo to your iPhone through TestFlight and the App Store.
 
-## 1. First-time setup (once)
+## 1. Builds only, no over-the-air updates
 
-Open a Command Prompt in the Glaze folder (in File Explorer, type `cmd` in the address bar and press
-Enter), then run these one at a time:
+Since 1.0.42 Glaze has **no over-the-air updates**: `expo-updates` is not installed, and `app.json`
+has no `updates` block or `runtimeVersion` (Apple Guideline 5.6, as for Backspin, Couch, Cue,
+Linework and Satchel). Every change, JavaScript or native, reaches phones only as a new build that
+goes through TestFlight and App Store review. Don't add `expo-updates`, `eas update:configure` or an
+update script back; `src/core/releasing.test.ts` fails if any of them return.
 
-1. `npx eas-cli@latest init` – do this first. It links the folder to an Expo project (sign in with
-   your free Expo account when asked) and writes the project id into the app config
-   (`extra.eas.projectId`). Let it; don't type an id by hand.
-2. `npx eas-cli@latest update:configure` – turns on EAS Update for the project and writes your
-   project's update address into `app.json` (`updates.url`). The repo deliberately ships without
-   one, so a build made before this step simply has over-the-air updates switched off (Settings
-   says updates aren't set up) instead of checking a dead address.
-3. `npm install` – fetches the app's packages (START_TRIAL.cmd also does this).
-4. Check `app.json` now has `updates.url` starting `https://u.expo.dev/` followed by your project id.
-5. `npx eas-cli@latest build -p ios --profile production` – builds the app in Expo's cloud
-   (free tier is fine; it can queue for a while). It asks for your Apple Developer sign-in the first
-   time and handles certificates for you.
-6. `npx eas-cli@latest submit -p ios` – sends the finished build to App Store Connect. It shows up in
-   TestFlight after Apple's processing (usually 10–30 minutes).
+## 2. Making a build
 
-Commit the changes `eas init` and `eas update:configure` make to `app.json`, so the repo and your PC
-copy stay the same.
+Builds run on GitHub (ship.yml / ship-mac.yml) when `RELEASE.json` changes on main with mode
+`build`; they upload to App Store Connect and appear in TestFlight after Apple's processing (usually
+10–30 minutes). Mode `update` is refused for Glaze because it has no expo-updates.
 
-(The commands in short form – `eas init`, `eas update:configure`, `eas build`, `eas submit` – are
-the same thing; `npx eas-cli@latest` in front just means you don't need to install anything.)
+To build by hand on a PC instead: `npx eas-cli@latest init` once (links the Expo project and writes
+`extra.eas.projectId`), then `npx eas-cli@latest build -p ios --profile production` and
+`npx eas-cli@latest submit -p ios`. TESTFLIGHT_GLAZE.cmd runs those steps.
 
-## 2. Update or new build?
+## 3. Versions
 
-Each build listens on an update channel that matches its profile in `eas.json`
-(development / preview / production). The TestFlight build is `production`.
-
-**An over-the-air update is enough** when you only changed JavaScript and bundled files:
-
-- screens, layout, colours and wording
-- themes, icon styles and wallpapers bundled with the app
-- app logic and bug fixes in `app/` or `src/`
-- translations
-
-**A new TestFlight build is needed** when you changed anything native:
-
-- native code (`modules/`, `targets/`, the widget, `native-plugins/`)
-- permissions or anything else in `ios.infoPlist` / entitlements
-- the app icon or splash screen
-- a new package that has native code (adding or upgrading an `expo-*` or `react-native-*` package
-  usually counts)
-- the app version
-
-Why the version matters: `runtimeVersion` follows the app version (`"policy": "appVersion"` in
-`app.json`). An update only reaches builds with the same runtime version. So when you bump
-`version` in `app.json` (say 0.1.0 to 0.2.0) you must make a new build, and updates you push after
-that go only to 0.2.0 builds. Leave the version alone for update-only fixes. (The build number goes
-up by itself on each production build; that does not change the runtime version.)
-
-## 3. Pushing an update
-
-1. Make sure the folder has the changes you want (pull the latest code).
-2. Double-click **PUSH_UPDATE.cmd**.
-3. Type a short note, like `Fix theme picker crash`, and press Enter.
-4. Wait for it to finish, then press any key to close the window.
-
-Phones pick the update up the next time Glaze is opened: it downloads in the background and is used
-on the following launch. To get it straight away, open Settings › About › **Check for updates**; if
-one is found Glaze restarts into it. Expo Go never uses updates – the trial always runs the code
-from your PC.
+Bump `version` in `app.json` for each App Store release. Build numbers rise by themselves
+(`eas.json` uses `appVersionSource: remote` with `autoIncrement`), so `ios.buildNumber` stays "1".
 
 ## 4. Rolling back
 
-If an update makes things worse:
-
-- **Republish the previous update:** run `npx eas-cli@latest update:list --branch production` to
-  see recent updates, then `npx eas-cli@latest update:republish --group <id of the good one>`.
-  Phones switch back on their next launch.
-- **Or push the previous code:** go back to the last good commit (`git checkout <commit>` or revert
-  the bad one), then double-click PUSH_UPDATE.cmd again.
-
-If a bad update stops the app from opening at all, the safe fix is the same: republish the last good
-update, then open Glaze twice.
+There is nothing to republish: a bad build is replaced by a new build with the fix (or with the
+previous good code), submitted the same way.
 
 ## 5. First dev build checks (widgets)
 

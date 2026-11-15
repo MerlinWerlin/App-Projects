@@ -10,8 +10,7 @@ echo.
 echo [2/4] Linking Glaze to your Expo account (already done - it just confirms)...
 call npx --yes eas-cli@latest init
 echo.
-echo [3/4] Setting up instant updates (lets PUSH_UPDATE.cmd send changes to the TestFlight app later)...
-call npx --yes eas-cli@latest update:configure
+echo [3/4] No over-the-air updates (Apple Guideline 5.6): every change ships as a new build.
 echo.
 echo [4/4] Building and sending to TestFlight. Sign in to Apple if asked; answer Y to let it manage certificates.
 call npx --yes eas-cli@latest build --platform ios --profile production --auto-submit

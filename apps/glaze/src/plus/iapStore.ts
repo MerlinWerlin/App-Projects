@@ -72,10 +72,17 @@ export function createSubscriptionPlusStore(store: GlazeStoreAdapter, onChange: 
     lastFailureCode: () => lastCode,
     displayPrice() {
       if (!price) {
-        price = store.getProduct(YEARLY_SKU).then((p) => {
-          if (!p) price = null;
-          return p ? p.displayPrice : null;
-        });
+        // A miss or an error is asked again on the next call (the sheet's Try again).
+        price = store.getProduct(YEARLY_SKU).then(
+          (p) => {
+            if (!p) price = null;
+            return p ? p.displayPrice : null;
+          },
+          () => {
+            price = null;
+            return null;
+          },
+        );
       }
       return price;
     },

@@ -428,16 +428,37 @@ export function heroNameKey(size: HomeOptionSize): string {
   return `tabs.widgetsTab.art.heroNames.${size}`;
 }
 
+/** Placeholder ids that are no name: one or two letters, or art / piece / widget / image + a number. */
+const GENERIC_OPTION_ID = /^(?:[a-z]{1,2}\d*|(?:art|piece|widget|image|option)-?\d*)$/;
+
+/** 1.0.42: a readable title from a descriptive option id ("lapis-dune-scarab" -> "Lapis dune scarab"), else null. */
+export function titleFromOptionId(id: string): string | null {
+  if (GENERIC_OPTION_ID.test(id) || /^hero-/.test(id)) return null;
+  const words = id.split('-').filter(Boolean);
+  if (!words.some((w) => /[a-z]{3,}/.test(w))) return null;
+  const s = words.join(' ');
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
 /**
  * T209 (run 208 sheets showed "Art 1, Art 3, Art 2" and the same piece numbered differently per
- * size): the menu name of an option, the same in every size. The pack's label; else a derived v1
- * piece is named after its shape (heroNameKey); else "Art n" with n its place in the pack (stable).
+ * size): the menu name of an option, the same in every size. The pack's label; else a hero piece
+ * (hero-small / -medium / -large: the theme's own art, derived from v1 or listed by the pack
+ * builder) is named after the theme (its metadata name) or, without one, after its shape
+ * (heroNameKey); else a title from a descriptive id. "Art n" (n its place in the pack) is only the
+ * last resort for a placeholder id. 1.0.42 (rows read "Art 6 · Small" on Cobalt Caravan and Cloud
+ * Atelier: those were the unlabelled hero-small pieces): no shipped piece reaches it.
  */
 export type OptionName = { text: string } | { key: string; params?: Record<string, number> };
-export function optionName(option: WidgetOption, options: readonly WidgetOption[]): OptionName {
+export function optionName(option: WidgetOption, options: readonly WidgetOption[], themeName?: string | null): OptionName {
   if (option.label) return { text: option.label };
   const hero = /^hero-(small|medium|large)$/.exec(option.id);
-  if (option.derived && hero) return { key: heroNameKey(hero[1] as HomeOptionSize) };
+  if (hero) {
+    const name = typeof themeName === 'string' ? themeName.trim() : '';
+    return name ? { text: name } : { key: heroNameKey(hero[1] as HomeOptionSize) };
+  }
+  const fromId = titleFromOptionId(option.id);
+  if (fromId) return { text: fromId };
   const i = options.findIndex((o) => o.id === option.id);
   return { key: 'tabs.widgetsTab.art.numbered', params: { n: (i < 0 ? 0 : i) + 1 } };
 }

@@ -19,6 +19,10 @@ copy may say: it saves your clip to Photos as a Live Photo that moves when you p
 moves on the Lock Screen, when the phone wakes, or that it is a "live wallpaper" on iPhone. Android's looping live
 wallpaper is real and may be described on Google Play.
 
+**Current listing (1.0.42):** the App Store Connect copy for the first review is in `store/LISTING.md`; the yearly
+subscription's App Store Connect fields and the review notes are in `store/SUBSCRIPTION.md`. This page keeps the
+listing rules, counts and screenshot plan.
+
 **No pets, no Live Activities (T198, 1 Nov 2026):** never mention or show them in the listing, keywords or What's New.
 Tabs are Themes · Widgets · Icons · Wallpapers.
 
@@ -74,13 +78,13 @@ SIMPLE AND PRIVATE
 - Available in 11 languages.
 
 GLAZE PLUS
-Glaze Plus is an optional Yearly subscription (A$2.99 a year, no free trial; 10 premium themes free). Renews automatically; cancel anytime in Settings. Details: store/SUBSCRIPTION.md. Restore it any time from Settings.
+Glaze Plus is an optional yearly subscription (A$2.99 a year, no free trial; 10 premium themes free). It unlocks every theme, new themes as they're added and all widget artwork. Renews automatically; cancel anytime in Settings. Restore it any time from Settings.
 ```
 <!-- description:end -->
 
-The "GLAZE PLUS" paragraph deliberately names no contents: what Plus adds is still the owner's decision
-(`docs/RELEASE_CHECKLIST.md` §2b). Once decided, add one plain sentence such as "It adds N extra themes." If the owner
-picks option B (ship 1.0.1 without Plus), delete the paragraph.
+The "GLAZE PLUS" paragraph states the subscription as sold since 1.0.41 (`com.jared797.glaze.yearly`, one yearly
+plan, no free trial, ten premium themes free). The full terms paragraph for the end of the description (Guideline
+3.1.2) and every subscription field are in `store/SUBSCRIPTION.md`; the listing copy itself is in `store/LISTING.md`.
 
 ### Other fields
 
@@ -94,7 +98,7 @@ picks option B (ship 1.0.1 without Plus), delete the paragraph.
 | Primary category | **Lifestyle** |
 | Secondary category | Utilities |
 | Age rating | 4+ (answers in `docs/RELEASE_CHECKLIST.md` §5) |
-| Price | Free download; Glaze Plus in-app purchase (`docs/IAP_SANDBOX.md`) |
+| Price | Free download; Glaze Plus yearly auto-renewable subscription (`store/SUBSCRIPTION.md`) |
 
 **Why Lifestyle:** people choose a Home Screen "look" the way they choose decor or fashion; that is a lifestyle
 purchase, and the pitch (themes first, widgets and icons that match) is about taste, not a tool. Utilities is crowded
@@ -124,9 +128,10 @@ asked for on some accounts. Flattened RGB PNG, no transparency.
 | 5 | Widgets tab / Widget Studio: small, medium and large widgets in the theme's art | Widgets in your theme's colours | 31 |
 | 6 | Wallpapers tab: still wallpapers and a Lock + Home pair | Wallpapers and Lock Screen pairs | 32 |
 
-Caption 1 is the owner's decision ("Themes, icons and widgets that match. Ten premium themes free. Glaze Plus: every theme, A$2.99 a year."); "One
-price" stays true under every Plus option in the checklist (one-time unlock, or no purchase at all). Shot captions are
-image text, not a listing field, so there is no character limit; keep them on two lines at the shot's headline size.
+Caption 1 is the owner's decision ("Themes, icons and widgets that match. Ten premium themes free. Glaze Plus: every theme, A$2.99 a year."). It
+stays true because Glaze sells one plan only, the yearly subscription (no weekly or monthly plan, no trial, no intro
+offer); if the price in App Store Connect changes, change the caption with it. Shot captions are image text, not a
+listing field, so there is no character limit; keep them on two lines at the shot's headline size.
 
 ### Honesty checks for the shots
 

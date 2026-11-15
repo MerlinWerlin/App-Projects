@@ -92,15 +92,6 @@ export const zhHans: NonNullable<LocaleMessages['settings']> = {
       packUpdates: '主题包更新',
     },
   },
-  updates: {
-    check: '检查更新',
-    checking: '正在检查更新…',
-    hint: '下载此版本 Glaze 的最新修复',
-    none: 'Glaze 已是最新版本',
-    downloaded: '更新已就绪。正在重启 Glaze…',
-    unavailable: '更新将随 TestFlight 和 App Store 版本提供',
-    error: '无法检查更新。请稍后再试。',
-  },
   explainer: {
     addedTitle: '图标是添加的，而不是替换',
     addedBody: 'iOS 不允许任何应用更改其他应用的图标。因此 Glaze 会在主屏幕上添加带有新外观的快捷方式。轻点即可打开真正的应用。',

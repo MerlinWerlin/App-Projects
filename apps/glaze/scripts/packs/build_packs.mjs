@@ -344,9 +344,10 @@ export function readWidgetEditions(dir, themesDir) {
 
 /**
  * Encode the editions as `widget-art` files and return { outs, widgets } where widgets is the
- * manifest list (asset paths filled in), with the v1 hero pieces appended.
+ * manifest list (asset paths filled in), with the v1 hero pieces appended. 1.0.42: the hero pieces
+ * carry `heroLabel` (the theme's name) as their label, so no piece reaches the app unnamed ("Art 6").
  */
-export async function encodeWidgetEditions(encoder, editions, heroAssets) {
+export async function encodeWidgetEditions(encoder, editions, heroAssets, heroLabel = null) {
   const sized = editions.items.map((it) => ({ ...it, size: fitInside(it.width, it.height, WIDGET_ART_MAX) }));
   let bufs;
   if (encoder.kind === 'png') bufs = sized.map((it) => readFileSync(it.src));
@@ -365,7 +366,8 @@ export async function encodeWidgetEditions(encoder, editions, heroAssets) {
   // Keep the pack's v1 hero art on offer (a v2 list replaces the derived v1 options).
   for (const o of wopt.widgetOptionsFromV1(heroAssets)) {
     if (widgets.some((w) => w.id === o.id)) continue;
-    widgets.push({ id: o.id, kind: o.kind, image: o.image, sizes: o.sizes, fit: o.fit, background: o.background });
+    const label = typeof heroLabel === 'string' && heroLabel.trim() ? heroLabel.trim().slice(0, wopt.WIDGET_OPTION_LABEL_MAX) : null;
+    widgets.push({ id: o.id, kind: o.kind, image: o.image, sizes: o.sizes, fit: o.fit, background: o.background, ...(label ? { label } : {}) });
   }
   return { outs, widgets };
 }
@@ -555,7 +557,7 @@ async function buildOne({ id, dir, report, encoder, plus, minAppVersion, edition
   const thumbhash = Buffer.from(rgbaToThumbHash(px.width, px.height, px.rgba)).toString('base64');
 
   // T275: clock editions and other widget exports (null = none: the v1 manifest is unchanged).
-  const ed = editions && editions.items.length ? await encodeWidgetEditions(encoder, editions, outs.map((o) => ({ path: assetName(o.role, o.longEdge, o.bytes, o.ext), role: o.role, width: o.width, height: o.height }))) : null;
+  const ed = editions && editions.items.length ? await encodeWidgetEditions(encoder, editions, outs.map((o) => ({ path: assetName(o.role, o.longEdge, o.bytes, o.ext), role: o.role, width: o.width, height: o.height })), pack.meta.name) : null;
   if (ed) outs.push(...ed.outs);
 
   const faceFile = join(dir, 'clock-face.png');
