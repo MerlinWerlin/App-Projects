@@ -183,6 +183,43 @@ test('cache verifies existing bytes and re-fetches corruption using pinned asset
   } finally { f.cleanup(); }
 });
 
+test('cache reuses retained source bytes and hash-verified original mirrors; rejects corrupt mirror bytes', async () => {
+  const f = fixture();
+  try {
+    const id = 'artwork-example', m = f.originals.get(id), urls = [], mirrors = {};
+    const lock = JSON.parse(readFileSync(join(f.base, 'baseline-lock.json')));
+    lock.catalogUrl = 'https://pub-example.r2.dev/catalog.json'; save(join(f.base, 'baseline-lock.json'), lock);
+    const local = join(f.root, 'local', id, 'widgets'); mkdirSync(local, { recursive: true });
+    writeFileSync(join(local, m.assets[0].path), readFileSync(join(f.base, `art/${id}/v7`, m.assets[0].path)));
+    for (const a of m.assets.slice(1)) mirrors[a.sha256] = `https://github.com/MerlinWerlin/App-Projects/releases/download/glaze-packs-v16/art__${id}__v7__${a.path}`;
+    save(join(f.base, 'asset-mirrors.json'), { bySha256: mirrors });
+    const fetcher = async (url) => {
+      urls.push(url); const name = url.split('/').at(-1).split('__').at(-1);
+      const bytes = name === m.assets[1].path && url.includes('github.com') ? Buffer.from('corrupt mirror') : readFileSync(join(f.base, `art/${id}/v7`, name));
+      return { ok: true, arrayBuffer: async () => bytes };
+    };
+    const out = join(f.root, 'cache');
+    const r = await cacheArtworkBaseline({ snapshotDir: f.base, outDir: out, localArtDir: join(f.root, 'local'), fetcher, wait: async () => {}, log: () => {} });
+    assert.equal(r.assets, 6); assert.equal(r.downloaded, 5);
+    assert.ok(!urls.some((u) => u.endsWith(m.assets[0].path)), 'retained source avoids a request');
+    assert.equal(urls.filter((u) => u.includes('github.com') && u.endsWith(m.assets[1].path)).length, 4);
+    for (const a of m.assets) assert.deepEqual(readFileSync(join(out, `art/${id}/v7`, a.path)), readFileSync(join(f.base, `art/${id}/v7`, a.path)));
+  } finally { f.cleanup(); }
+});
+
+test('cache honors a rate-limit retry delay before verifying downloaded bytes', async () => {
+  const f = fixture();
+  try {
+    const delays = []; let first = true;
+    const fetcher = async (url) => {
+      if (first) { first = false; return { ok: false, status: 429, headers: new Map([['retry-after', '40']]) }; }
+      return { ok: true, arrayBuffer: async () => readFileSync(join(f.base, 'art/artwork-example/v7', url.slice(url.lastIndexOf('__') + 2))) };
+    };
+    const r = await cacheArtworkBaseline({ snapshotDir: f.base, outDir: join(f.root, 'cache'), concurrency: 1, fetcher, wait: async (ms) => delays.push(ms), log: () => {} });
+    assert.equal(r.assets, 6); assert.deepEqual(delays, [40000]);
+  } finally { f.cleanup(); }
+});
+
 test('independent output audit detects damaged bytes, original metadata edits and missing themes', async () => {
   const f = fixture();
   try {

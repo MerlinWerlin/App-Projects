@@ -22,6 +22,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - uses: actions/cache@v4
+        with:
+          path: apps/glaze/dist/published-cache
+          key: glaze-artwork-baseline-${{ runner.os }}-${{ hashFiles('apps/glaze/scripts/packs/artwork-baseline/baseline-lock.json', 'apps/glaze/scripts/packs/artwork-baseline/asset-mirrors.json') }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
