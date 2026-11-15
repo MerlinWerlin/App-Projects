@@ -1,7 +1,7 @@
-// T158: store listing checker. Reads docs/STORE.md, pulls out every paste-ready field (table rows with a
+// T158: store listing checker. Reads store/LISTING.md (1.0.0; was docs/STORE.md), pulls out every paste-ready field (table rows with a
 // "n / limit" column, and the fenced block under each "### ... (N limit)" heading) and checks it against its
 // store limit, the keyword rules and the banned-claims list. Used by src/core/storelimits.test.ts (npm test).
-// Usage: node tools/store/limits.mjs [path/to/STORE.md]   (prints each field with its count; exit 1 on a problem)
+// Usage: node tools/store/limits.mjs [path/to/LISTING.md]   (prints each field with its count; exit 1 on a problem)
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
@@ -15,10 +15,6 @@ export const REQUIRED = {
   'ios:Keywords': 100,
   'ios:Promotional text': 170,
   'ios:Description': 4000,
-  "ios:What's New in 0.1.0": 4000,
-  'play:App name': 30,
-  'play:Short description': 80,
-  'play:Full description': 4000,
 };
 
 /** Competitor, travel-app, map, airline, ride and phone-maker names: none of them belong in store copy. */
@@ -33,8 +29,7 @@ export const BANNED_CLAIMS = [
   { name: 'guarantee', re: /\bguarantee[ds]?\b|\b100 ?%|\bcertified\b|\balways (accurate|correct|up to date)\b/i },
   { name: 'medical or legal advice', re: /\b(medical|legal) advice\b|\bdiagnos|\bcures?\b|\bprescri/i },
   { name: 'official emergency numbers', re: /\bofficial (emergency )?numbers?\b/i },
-  { name: 'offline maps (not live yet)', re: /\boffline (city )?maps?\b|\bcity maps?\b|\bmap packs?\b|\bdownload(ed|s)? (a |your |the )?(cit(y|ies)|maps?)\b/i },
-  { name: 'Satchel Plus (only unlocks offline cities, not live yet)', re: /\bsatchel plus\b|\bin-app purchase\b|\bupgrade\b|\bpremium\b/i },
+  { name: 'Satchel Plus (removed in 1.0.0; the app is free with no purchases)', re: /\bsatchel plus\b|\bin-app purchase\b|\bupgrade\b|\bpremium\b/i },
   { name: 'unbuilt sync or widgets', re: /\b(icloud|cloud sync|sync(s|ed)? across|widgets?|lock screen)\b/i },
   { name: 'ads wording other than "no ads"', re: /(?<!\bno )\bads\b/i },
 ];
@@ -146,7 +141,7 @@ export function storeProblems(fields) {
   return problems;
 }
 
-/** Screenshot captions listed in STORE.md ("1. **Caption** — note"), in order. */
+/** Screenshot captions listed in LISTING.md ("1. **Caption** — note"), in order. */
 export function storeCaptions(md) {
   return [...md.matchAll(/^\d+\.\s+\*\*(.+?)\*\*/gm)].map((m) => m[1]);
 }
@@ -162,7 +157,7 @@ export function screenshotCaptions(md) {
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const path = process.argv[2] ?? new URL('../../docs/STORE.md', import.meta.url);
+  const path = process.argv[2] ?? new URL('../../store/LISTING.md', import.meta.url);
   const fields = parseStore(readFileSync(path, 'utf8'));
   for (const f of fields) console.log(`${f.store.padEnd(4)} ${f.field.padEnd(24)} ${String(chars(f.text)).padStart(5)} / ${f.limit}`);
   const problems = storeProblems(fields);

@@ -16,8 +16,9 @@ import { CoverPicker } from '../src/ui/TripCover.tsx';
 import { CoverPhotoSection } from '../src/ui/CoverPhotoSection.tsx';
 import { Body, Button, Screen, TextField } from '../src/ui/kit.tsx';
 import { ZoneField } from '../src/ui/ZonePicker.tsx';
+import { RequireUnlock } from '../src/ui/RequireUnlock.tsx';
 
-export default function TripEditScreen() {
+function TripEditScreen() {
   const { id } = useLocalSearchParams<{ id?: string }>();
   const { t } = useApp();
   const { trips, saveTrip, deleteTrip } = useTrips();
@@ -99,5 +100,14 @@ export default function TripEditScreen() {
       <Button label={t('common.cancel')} hint={t('spec.tripEdit.cancelHint')} kind="quiet" onPress={() => router.back()} />
       {prev ? <Button label={t('tripEdit.delete')} hint={t('spec.tripEdit.deleteHint')} kind="quiet" onPress={remove} /> : null}
     </Screen>
+  );
+}
+
+// 1.0.0: creating and editing need the free trial or the unlock (src/ui/RequireUnlock.tsx).
+export default function GatedTripEditScreen() {
+  return (
+    <RequireUnlock>
+      <TripEditScreen />
+    </RequireUnlock>
   );
 }

@@ -20,8 +20,9 @@ import { fonts, radius, space, TOUCH, typeScale } from '../../src/theme/tokens.t
 import { FadeInView, HeroHeader, SectionCard } from '../../src/ui/hero.tsx';
 import { KIND_ICON, kindKey } from '../../src/ui/kinds.tsx';
 import { Body, Button, Chip, EmptyState, PressableScale, Screen, Warning } from '../../src/ui/kit.tsx';
+import { RequireUnlock } from '../../src/ui/RequireUnlock.tsx';
 
-export default function OpenInAddScreen() {
+function OpenInAddScreen() {
   const params = useLocalSearchParams<{ file?: string; name?: string; kind?: string }>();
   const { t, theme, lang } = useApp();
   const { trips } = useTrips();
@@ -173,5 +174,14 @@ export default function OpenInAddScreen() {
         <Button label={t('openin.add.cancel')} hint={t('openin.add.cancelHint')} kind="quiet" onPress={cancel} />
       </FadeInView>
     </Screen>
+  );
+}
+
+// 1.0.0: creating and editing need the free trial or the unlock (src/ui/RequireUnlock.tsx).
+export default function GatedOpenInAddScreen() {
+  return (
+    <RequireUnlock>
+      <OpenInAddScreen />
+    </RequireUnlock>
   );
 }

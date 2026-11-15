@@ -53,7 +53,6 @@ From `package.json` `dependencies`. All are open source; none is an analytics, a
 | react-native-screens | MIT |
 | react-native-svg | MIT |
 | react-native-webview (in-app PDF ticket viewer, T28) | MIT |
-| expo-iap (Satchel Plus purchase, T16) | MIT |
 | @react-native-async-storage/async-storage | MIT |
 | @react-native-community/datetimepicker | MIT |
 

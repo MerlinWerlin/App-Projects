@@ -8,7 +8,7 @@
 //   stampLabels    place name / date / mark text for a stamp in the app's language
 import { memo, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
 import { Animated, Text, View, type StyleProp, type ViewStyle } from 'react-native';
-import Svg, { Circle, Defs, G, Path, Pattern, Rect, Text as SvgText } from 'react-native-svg';
+import Svg, { Circle, G, Path, Rect, Text as SvgText } from 'react-native-svg';
 import { deviceZone, todayIn } from '../core/format.ts';
 import { recapToday } from '../core/followups91.ts';
 import {
@@ -159,28 +159,31 @@ export function Stamp({ stamp, size = 132, first, onPress, delay = 0 }: { stamp:
   );
 }
 
-/** Paper texture (pure SVG pattern) filling its parent. Decorative. */
+/**
+ * Paper texture filling its parent. Decorative. 1.0.0: drawn with plain shapes, no SVG pattern fill (a pattern fill drew
+ * as an opaque block on the new architecture): a few fibre hairlines and grain dots across the page on the paper colour.
+ */
 const PaperTexture = memo(function PaperTexture({ dark }: { dark: boolean }) {
   const { theme } = useApp();
   const p = stampPaper(theme);
   const uid = useId().replace(/[^A-Za-z0-9]/g, '');
   return (
     <Svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
-      <Defs>
-        <Pattern id={`paper${uid}${dark ? 'd' : 'l'}`} x={0} y={0} width={36} height={36} patternUnits="userSpaceOnUse">
-          <Rect x={0} y={0} width={36} height={36} fill={p.paper} />
-          <Path d="M0 9 Q9 7 18 9 T36 9 M0 27 Q9 29 18 27 T36 27" fill="none" stroke={p.fibre} strokeWidth={1} />
-          <Path d="M6 0 Q5 9 7 18 M25 18 Q27 27 25 36" fill="none" stroke={p.fibre} strokeWidth={0.6} />
-          <Circle cx={4} cy={4} r={0.9} fill={p.grain} />
-          <Circle cx={21} cy={14} r={0.7} fill={p.grain} />
-          <Circle cx={30} cy={31} r={1} fill={p.grain} />
-          <Circle cx={12} cy={22} r={0.6} fill={p.grain} />
-        </Pattern>
-      </Defs>
-      <Rect x={0} y={0} width="100%" height="100%" fill={`url(#paper${uid}${dark ? 'd' : 'l'})`} />
+      <Rect x={0} y={0} width="100%" height="100%" fill={p.paper} />
+      <G key={uid + (dark ? 'd' : 'l')}>
+        {FIBRES.map((y) => (
+          <Rect key={`f${y}`} x="0" y={`${y}%`} width="100%" height={1} fill={p.fibre} opacity={0.6} />
+        ))}
+        {GRAIN.map(([x, y]) => (
+          <Circle key={`g${x}-${y}`} cx={`${x}%`} cy={`${y}%`} r={0.9} fill={p.grain} />
+        ))}
+      </G>
     </Svg>
   );
 });
+
+const FIBRES = [9, 27, 46, 63, 81];
+const GRAIN: readonly (readonly [number, number])[] = [[4, 6], [21, 14], [37, 31], [52, 8], [66, 22], [83, 12], [12, 44], [29, 57], [47, 49], [71, 61], [90, 38], [8, 77], [33, 86], [58, 74], [79, 92], [94, 70]];
 
 /** A passport page: paper texture, an edge, a page label and the stamps laid out two (or more) to a row. */
 export function PaperPage({ label, children, footer, style }: { label?: string; children: ReactNode; footer?: ReactNode; style?: StyleProp<ViewStyle> }) {

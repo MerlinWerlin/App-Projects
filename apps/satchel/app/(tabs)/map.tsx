@@ -72,7 +72,6 @@ import { mapAvailable, SatchelMap, type MapFocus, type MapLine, type MapPin } fr
 import { useNetworkStatus } from '../../src/native/network.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
-import { PlusCityNote, useCityGate } from '../../src/plus/PlusCityNote.tsx';
 import { fonts, radius, rhythm, space, typeScale } from '../../src/theme/tokens.ts';
 import { HeroHeader, IconBadge, ProgressBar, SectionCard, SectionHeader } from '../../src/ui/hero.tsx';
 import { kindKey } from '../../src/ui/kinds.tsx';
@@ -154,10 +153,9 @@ const NO_TOGGLES: unknown = null;
 type CatalogState = { s: 'loading' } | { s: 'ok'; catalog: CityCatalog; stale?: CatalogFailure } | { s: 'failed'; reason: CatalogFailure };
 type Job = { id: string; phase: DownloadPhase; pct: number; dark?: boolean };
 
-function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { installed: InstalledCity[]; refreshInstalled: () => Promise<void>; onShow: (city: CityMap) => void; tripCount: number }) {
+function OfflineMaps({ installed, refreshInstalled, onShow }: { installed: InstalledCity[]; refreshInstalled: () => Promise<void>; onShow: (city: CityMap) => void }) {
   const { t, theme } = useApp();
-  // T16: one offline city per trip is free; more need Satchel Plus (unlocked while purchases are unavailable).
-  const gate = useCityGate(installed.length, tripCount);
+  // 1.0.0: every offline city is free (Satchel Plus was removed before the first App Store release).
   const net = useNetworkStatus();
   const [cat, setCat] = useState<CatalogState>({ s: 'loading' });
   const [job, setJob] = useState<Job | null>(null);
@@ -191,7 +189,7 @@ function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { insta
   const size = (c: CityMap) => formatSize(c.bytes);
 
   const start = async (city: CityMap) => {
-    if (jobRef.current || gate === 'locked') return;
+    if (jobRef.current) return;
     setMsg(null);
     setJob({ id: city.id, phase: 'download', pct: 0 });
     const j = downloadCity(city, (phase, f) => {
@@ -353,8 +351,6 @@ function OfflineMaps({ installed, refreshInstalled, onShow, tripCount }: { insta
               </>
             ) : job ? (
               <Body muted>{t('citymaps.oneAtATime')}</Body>
-            ) : gate === 'locked' ? (
-              <PlusCityNote city={city.name} />
             ) : (
               <PressableScale
                 accessibilityRole="button"
@@ -857,7 +853,7 @@ export default function MapScreen() {
           onFocus={() => setTimeout(() => listRef.current?.scrollToOffset({ offset: searchY.current, animated: !reduceMotion }), 250)}
         />
         <Body muted>{t('map.online')}</Body>
-        <OfflineMaps installed={installed} refreshInstalled={refreshInstalled} onShow={showCity} tripCount={trips.length} />
+        <OfflineMaps installed={installed} refreshInstalled={refreshInstalled} onShow={showCity} />
       </View>
 
       <View style={{ gap: rhythm.tight }}>

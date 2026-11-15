@@ -1,4 +1,4 @@
-// T159: every internet host the app's own code calls or builds a URL for must be named in docs/privacy.html.
+// T159: every internet host the app's own code calls or builds a URL for must be named in the public privacy policy (docs/satchel/privacy.html at the repo root, served by GitHub Pages).
 // Scans app/ and src/ (not src/content, whose source links only open in the browser when tapped, and not tests),
 // strips comments, and collects the host of every http(s) URL literal. Attribution / licence links and the demo
 // sample link are listed below as not runtime calls. A second check pins the set of files that touch the network,
@@ -21,7 +21,7 @@ const NOT_RUNTIME = new Set([
 ]);
 
 /** Files that hold attribution / licence text: their links open in the browser only when tapped. */
-const LINK_ONLY_FILES = new Set(['src/core/licences.ts', 'src/core/fontlicence.ts']);
+const LINK_ONLY_FILES = new Set(['src/core/licences.ts', 'src/core/fontlicence.ts', 'src/core/storeLinks.ts']);
 
 /** Files that call the network themselves (fetch or a file download). Update docs/privacy.html when this changes. */
 const NETWORK_FILES = ['src/native/cityMaps.ts', 'src/native/help.ts', 'src/native/toilets.ts', 'src/native/weather.ts'];
@@ -49,7 +49,7 @@ export function hostsIn(code: string): string[] {
 }
 
 const files = [...walk(join(ROOT, 'app')), ...walk(join(ROOT, 'src'))];
-const privacy = readFileSync(join(ROOT, 'docs/privacy.html'), 'utf8').toLowerCase();
+const privacy = readFileSync(join(ROOT, '../../docs/satchel/privacy.html'), 'utf8').toLowerCase();
 
 test('comment stripping keeps URL literals and drops comment URLs', () => {
   const code = "const a = 'https://api.example.net/x'; // see https://docs.example.net\n/** https://block.example.net */\nconst b = 1;";

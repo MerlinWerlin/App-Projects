@@ -35,9 +35,8 @@ export const emergency = {
   'emergency.missingCovered': 'No separate {services} number listed. Use {number}.',
   'emergency.missingNone': 'No {services} number listed. Use a number above, try 112 from a mobile, or ask your hotel or embassy.',
   'emergency.verifyLocally': 'Verify locally. Numbers can change, so check with your hotel, a local official source or your embassy.',
-  'emergency.sourcePending': 'Source pending. This bundled number has not yet been checked against an official source.',
+  'emergency.sourcePending': 'Not yet checked against an official source.',
   'emergency.sourceChecked': 'Source: {host}, checked {date}',
-  'emergency.tableNote': 'Note from the bundled table: {note}',
 
   // Insurance
   'emergency.insuranceHeading': 'Travel insurance',

@@ -65,7 +65,7 @@ test('sha256Hex matches node crypto (empty, block edges, long)', () => {
 });
 
 test('transient keys are listed and never backed up; other apps keys neither', () => {
-  assert.deepEqual([...TRANSIENT_KEYS].sort(), ['satchel.backup.v1', 'satchel.trips.v1.unreadable']);
+  assert.deepEqual([...TRANSIENT_KEYS].sort(), ['satchel.access.v1', 'satchel.backup.v1', 'satchel.trips.v1.unreadable']);
   assert.deepEqual(TRANSIENT_PREFIXES, ['satchel.weather.v1.']);
   for (const k of ['satchel.weather.v1.1,2', 'satchel.trips.v1.unreadable', BACKUP_STATE_KEY, 'other.app.key']) assert.equal(shouldBackUpKey(k, true), false, k);
   for (const k of ['satchel.trips.v1', 'satchel.weather.stop.v1', 'satchel.tempUnit.v1', 'satchel.kids.v1.t1']) assert.equal(shouldBackUpKey(k, false), true, k);

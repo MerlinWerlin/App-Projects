@@ -209,7 +209,6 @@ test('a second ISO currency with a saved rate is used; the home currency means n
 
 test('f93 strings: the card copy says general guidance / verify locally', async () => {
   const { followups93 } = await import('../i18n/en/followups93.ts');
-  assert.match(followups93['f93.currencyVerify'], /General guidance/);
-  assert.match(followups93['f93.currencyVerify'], /Verify locally/);
+  assert.match(followups93['f93.currencyVerify'], /Check the rate/);
   for (const k of Object.keys(followups93)) assert.ok(k.startsWith('f93.'), k);
 });

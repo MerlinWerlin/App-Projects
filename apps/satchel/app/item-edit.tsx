@@ -49,8 +49,9 @@ import { PositionField } from '../src/ui/PositionField.tsx';
 import { DateField, TimeField } from '../src/ui/DateTimeField.tsx';
 import { Body, Button, Chip, EmptyState, Label, Screen, TextField, Warning } from '../src/ui/kit.tsx';
 import { ZoneField } from '../src/ui/ZonePicker.tsx';
+import { RequireUnlock } from '../src/ui/RequireUnlock.tsx';
 
-export default function ItemEditScreen() {
+function ItemEditScreen() {
   const params = useLocalSearchParams<{ tripId: string; id?: string; kind?: string; date?: string; paste?: string; until?: string; tz?: string; openin?: string }>();
   const { t, theme, lang } = useApp();
   const { trips, saveItem } = useTrips();
@@ -237,5 +238,14 @@ export default function ItemEditScreen() {
       <Button label={t('itemEdit.save')} hint={t('spec.itemEdit.saveHint')} onPress={save} />
       <Button label={t('common.cancel')} hint={t('spec.itemEdit.cancelHint')} kind="quiet" onPress={() => router.back()} />
     </Screen>
+  );
+}
+
+// 1.0.0: creating and editing need the free trial or the unlock (src/ui/RequireUnlock.tsx).
+export default function GatedItemEditScreen() {
+  return (
+    <RequireUnlock>
+      <ItemEditScreen />
+    </RequireUnlock>
   );
 }

@@ -24,6 +24,7 @@ import { icsWords } from './AddToCalendar.tsx';
 import { IconBadge, type Tone } from './hero.tsx';
 import { Body, Button, Chip, Label, PressableScale, ToggleRow, Warning } from './kit.tsx';
 import { itineraryWords } from './SharePlan.tsx';
+import { useShareGate } from './RequireUnlock.tsx';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 type Way = 'calendar' | 'satchel' | 'text';
@@ -46,7 +47,9 @@ export function ShareItinerary({ trip, day, compact }: { trip: Trip; day?: strin
   const icsScope: IcsScope = whole ? { kind: 'trip' } : { kind: 'day', date: oneDay };
   const hasCodes = trip.items.some((i) => (i.ref ?? '').trim());
 
+  const shareOk = useShareGate();
   const show = () => {
+    if (!shareOk()) return;
     setWhole(true);
     setPickedDay(null);
     setCodes(true);

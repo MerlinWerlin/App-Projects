@@ -1,7 +1,7 @@
-# App privacy answers (T159, 1 Nov 2026)
+# App privacy answers (T159, 1 Nov 2026; re-checked for 1.0.0, 15 Nov 2026)
 
 What to enter in App Store Connect "App Privacy" and Google Play "Data safety", worked out from the code (runtime
-inventory below). Public page: docs/privacy.html. src/core/privacyhosts.test.ts fails if code gains a host that
+inventory below). Public page: docs/satchel/privacy.html at the repo root (GitHub Pages). src/core/privacyhosts.test.ts fails if code gains a host that
 docs/privacy.html does not name, or a new file starts using the network.
 
 ## Runtime inventory (what the app touches)
@@ -14,7 +14,6 @@ docs/privacy.html does not name, or a new file starts using the network.
 | `api.met.no` (MET Norway Locationforecast) | src/core/weather.ts `MET_URL`, src/native/weather.ts | Trip weather card, online, forecast range covers the trip | Coordinates of the trip's stay or saved place, rounded to 4 decimals; User-Agent `Satchel/<version> github.com/MerlinWerlin/App-Projects`. Never the phone's location |
 | `overpass-api.de` (OpenStreetMap Overpass) | src/native/toilets.ts `OVERPASS_URL`, src/native/help.ts | "Find toilets / help near me" or "Near my hotel" when no installed city pack covers the spot | That spot (6 decimals) and a radius |
 | `github.com` releases (`satchel-maps-v1`) | src/core/citymaps.ts `MAPS_BASE_URL`, src/native/cityMaps.ts | Opening the city map list; downloading a city | File names only (catalog.json, the city pack) |
-| App Store / Google Play billing | src/plus/store.ts (expo-iap) | Unlock / Restore in Settings > Satchel Plus | Handled by the OS store; the app gets only the purchase result |
 
 Not runtime calls: source-citation URLs in src/content/*.json and the licences screen open in the browser only when
 tapped ("links you choose to open in your browser"); idea links the user saves, likewise. No WebView loads remote
@@ -53,7 +52,7 @@ analytics, ads, crash reporting or attribution, and no account. Per Apple data t
 | User Content (photos, documents, other) | Not collected | Attachments, journal, vault copies are local; backups/trip files go only where the user sends them |
 | Browsing / Search History | Not collected | Map search runs over local city packs; no search terms go online |
 | Identifiers (user ID, device ID) | Not collected | None created or sent; MET User-Agent names the app, not the user |
-| Purchases | Not collected | expo-iap result stays on the phone; Apple handles the transaction |
+| Purchases | Not collected | The free trial and the one-time unlock go through Apple (StoreKit 2, modules/satchel-store); the result stays on the phone, nothing is sent to us |
 | Usage Data, Diagnostics | Not collected | No analytics, no crash reporter |
 | Other Data | Not collected | |
 
