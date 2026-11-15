@@ -42,7 +42,8 @@ ALLOWED = {
 # 1.0.40 artwork follow-up: data loading only; the restored renderer and widget layout stay intact.
 for file in ('src/ui/ThemeWidgetArt.tsx', 'src/store/themeWidgetArt.ts'):
     ALLOWED[file] += ' 1.0.40 (15 Nov distinct-artwork brief): consume the shared generated bundled artwork list, including four new WebPs per original theme; preserve WebP extensions in cached source URIs. Existing composition and UI layout remain unchanged.'
-ALLOWED['src/store/widgetArtRecovery.ts'] = '1.0.40: advance the existing one-time recovery data key from v6 to v7 so an active bundled theme includes its four added artworks after upgrade. Recovery behavior is unchanged.'
+# widgetArtRecovery.ts was introduced after BASE. Its 1.0.40 change advances only the one-time
+# data key from v6 to v7 so an active bundled theme includes its four additions after upgrade.
 
 rows = []
 for file in EXACT:
