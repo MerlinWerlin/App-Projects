@@ -1,7 +1,7 @@
 """A full-resolution Home Screen in one Glaze theme, for the App Store shots.
 
 The simulator cannot install the icon profile or place widgets, so this draws the Home Screen from the
-theme's real files: its full-size wallpaper and its first Artwork pieces (as Small Glaze widgets), with icons
+theme's real files: its full-size wallpaper and its Artwork 1-5 pieces (as Small Glaze widgets), with icons
 in the theme's icon style as the app draws it: Feather glyphs on the theme's tile colour, with a starfield
 on night themes and a fine grain on the rest (src/core/iconLook.ts), matched to the in-app previews in the
 captures. App labels are generic words; no brand logos.
@@ -29,8 +29,8 @@ COLS = [round(x * PT) for x in (64, 170, 270, 376)]  # icon centres
 ROW0 = 78 * PT  # first row top
 PITCH = 102 * PT
 
-# Alpine Starlight's Artwork 1-4, in the order the Widgets tab lists them.
-ART = ['copper-eclipse', 'jupiter-polar', 'saturn-rings', 'silver-moon']
+# Alpine Starlight's Artwork 1-5, in the order the Widgets tab lists them.
+ART = ['copper-eclipse', 'jupiter-polar', 'saturn-rings', 'silver-moon', 'spiral-galaxy']
 APPS_ROW = [('camera', 'Camera'), ('image', 'Photos'), ('clock', 'Clock'), ('sun', 'Weather')]
 APPS_ROW2 = [('mail', 'Mail'), ('map', 'Maps'), ('music', 'Music'), ('calendar', 'Calendar')]
 APPS_SIDE = [('book-open', 'Books'), ('edit-3', 'Notes'), ('folder', 'Files'), ('settings', 'Settings')]
@@ -56,7 +56,11 @@ def remote_theme(theme_id):
     base = f"{R2}/{entry['manifest'].rsplit('/', 1)[0]}"
     man = json.loads(fetch(f"{R2}/{entry['manifest']}"))
     wall = next(a['path'] for a in man['assets'] if a['role'] == 'wallpaper' and a['height'] >= 2796)
-    arts = [Image.open(io.BytesIO(fetch(f"{base}/{w['image']}"))).convert('RGB') for w in man['widgets'] if w.get('kind') == 'art'][:3]
+    # Artwork 1-5 exactly as the app picks them (scripts/packs/artwork-coverage.json, the same rule as
+    # src/core/artworkCoverage.ts), never simply the manifest's first art pieces (those can repeat a motif).
+    cov = json.loads((GLAZE / 'scripts/packs/artwork-coverage.json').read_text(encoding='utf8'))['perTheme'][theme_id]
+    art_base = f"{R2}/{cov['manifest'].rsplit('/', 1)[0]}"
+    arts = [Image.open(io.BytesIO(fetch(f'{art_base}/{img}'))).convert('RGB') for img in cov['images'][:5]]
     pal = man['palette']
     look = {'tile': hexc(pal['tile']), 'glyph': hexc(pal['glyph']),
             'texture': 'stars' if entry.get('category') == 'Space & Night' else 'grain'}
@@ -174,11 +178,12 @@ def build(img, arts, look, fonts, feather):
     # Rows 1-2: Artwork 1 and Artwork 2.
     widget(img, arts[0], left, ROW0, wsize)
     widget(img, arts[1], right, ROW0, wsize)
+    # All five Artwork widgets: 1-2, a row of apps, 3-4, then 5 beside four apps.
     row(APPS_ROW, ROW0 + 2 * PITCH)
-    row(APPS_ROW2, ROW0 + 3 * PITCH)
-    # Rows 5-6: Artwork 3 on the left, four apps on the right; Artwork 4 under them would crowd the dock.
-    top = ROW0 + 4 * PITCH
-    widget(img, arts[2], left, top, wsize)
+    widget(img, arts[2], left, ROW0 + 3 * PITCH, wsize)
+    widget(img, arts[3], right, ROW0 + 3 * PITCH, wsize)
+    top = ROW0 + 5 * PITCH
+    widget(img, arts[4], left, top, wsize)
     for i, (g, name) in enumerate(APPS_SIDE):
         cx, t = COLS[2 + i % 2], top + (i // 2) * PITCH
         img.alpha_composite(icon(g, feather, seed, look), (cx - ICON // 2, t))
