@@ -1,0 +1,76 @@
+{
+  "theme": "starry-night",
+  "tool": "built-in image_gen",
+  "created": "2026-11-15",
+  "artworks": [
+    {
+      "theme": "starry-night",
+      "id": "ringed-planet",
+      "label": "Ringed Planet",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze starry-night pure decorative artwork, square1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: one majestic softly banded lavender and copper planet with a broad thin tilted ring of warm ivory stardust, seen at a three-quarter angle; clear complete ellipse and globe, gentle amber rimlight, distinct from the original plain copper moon. Style: soft refined3D astronomical illustration with smooth sculptural forms, subtle realistic surface details and gentle gradients, midnight-purple, lavender, copper and warm ivory palette, restrained cosmic glow. Transparent background. Isolate the whole main subject in the central70% of the square, with broad clear margins; all extremities comfortably inside. No photo scene or full backdrop, card, border, text, letters, numerals, clocks, hands, dials, calendar, progress bars, logos or watermark. New subject and composition, never copy, crop or recolor the references.",
+      "ref": "themes/starry-night/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-f8d81ed5-199d-423c-9531-d32efcb2efab.png",
+      "image": "widget-ringed-planet.3c64b5e6.webp",
+      "sha256": "3c64b5e6655e920681ac5502c3ec09c1d9e3203aa8684a7c3c127ca7d0a612b5",
+      "bytes": 168148,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "starry-night",
+      "id": "copper-telescope",
+      "label": "Copper Telescope",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze starry-night pure decorative artwork, square1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: one elegant small copper telescope with a deep midnight-purple barrel, warm brass rims and a simple three-legged dark tripod, angled gently upward. Complete scope and all three feet visible. No scale markings or adjustment dial faces. Style: soft refined3D astronomical illustration with smooth sculptural forms, subtle realistic surface details and gentle gradients, midnight-purple, lavender, copper and warm ivory palette, restrained cosmic glow. Transparent background. Isolate the whole main subject in the central70% of the square, with broad clear margins; all extremities comfortably inside. No photo scene or full backdrop, card, border, text, letters, numerals, clocks, hands, dials, calendar, progress bars, logos or watermark. New subject and composition, never copy, crop or recolor the references.",
+      "ref": "themes/starry-night/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-be29d580-98a4-4819-bfcb-c7f71502bb92.png",
+      "image": "widget-copper-telescope.953152ed.webp",
+      "sha256": "953152edf08cc765bb6f677aca5deed4e9225ea3886efed0e9d9cfa17e06642c",
+      "bytes": 76430,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "starry-night",
+      "id": "ember-comet",
+      "label": "Ember Comet",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze starry-night pure decorative artwork, square1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: one small luminous faceted copper-and-ice comet nucleus with a long graceful tapering lavender and warm amber dust tail curling behind it, diagonally across the central60% of the canvas; the entire fading tail and nucleus fully visible with generous clear space on all sides, no moon, planet or telescope. Style: soft refined3D astronomical illustration with smooth sculptural forms, subtle realistic surface details and gentle gradients, midnight-purple, lavender, copper and warm ivory palette, restrained cosmic glow. Transparent background. Isolate the whole main subject in the central70% of the square, with broad clear margins; all extremities comfortably inside. No photo scene or full backdrop, card, border, text, letters, numerals, clocks, hands, dials, calendar, progress bars, logos or watermark. New subject and composition, never copy, crop or recolor the references.",
+      "ref": "themes/starry-night/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-f1352491-1bb3-473b-9afd-f5fd314985fb.png",
+      "image": "widget-ember-comet.dd51ca5d.webp",
+      "sha256": "dd51ca5d2388241c165b66d46ce6dd0e150e2f497b2e4b1d1dc751de96948a43",
+      "bytes": 176142,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "starry-night",
+      "id": "spiral-galaxy",
+      "label": "Spiral Galaxy",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze starry-night pure decorative artwork, square1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: one beautiful compact spiral galaxy seen obliquely, warm copper-gold central glow and two graceful lavender-blue spiral arms dotted with tiny ivory stars; complete clear spiral silhouette, refined cosmic illustration, no planetary globe, comet tail or telescope. Style: soft refined3D astronomical illustration with smooth sculptural forms, subtle realistic surface details and gentle gradients, midnight-purple, lavender, copper and warm ivory palette, restrained cosmic glow. Transparent background. Isolate the whole main subject in the central70% of the square, with broad clear margins; all extremities comfortably inside. No photo scene or full backdrop, card, border, text, letters, numerals, clocks, hands, dials, calendar, progress bars, logos or watermark. New subject and composition, never copy, crop or recolor the references.",
+      "ref": "themes/starry-night/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-d30a9a3f-7f93-45b4-a8e0-d35425c8be98.png",
+      "image": "widget-spiral-galaxy.23e6d758.webp",
+      "sha256": "23e6d7589785238273505690e3e10f49e46338537918be7534847310b51c4ebb",
+      "bytes": 184294,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    }
+  ],
+  "updated": "2026-11-15"
+}

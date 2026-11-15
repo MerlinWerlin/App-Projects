@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 727450,
       "opaquePixels": 417
+    },
+    {
+      "theme": "ochre-bend",
+      "id": "billabong-lizard",
+      "label": "Billabong Lizard",
+      "ref": "art/ochre-bend/v7/widget-eucalyptus-capsule.24f5d9de.webp",
+      "subject": "one small Australian water dragon lizard in warm ochre and sandy brown, poised side-on on a smooth red-earth riverbank stone with its long elegant tail curving fully into view. Restrained sage accents in a single small background reed, warm peach outback dusk and soft billabong bokeh. Fine realistic scales and natural anatomy, quiet refined photographic illustration. No bird, eucalyptus branch, gumnuts, bark curl or lone rock study",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze ochre-bend decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one small Australian water dragon lizard in warm ochre and sandy brown, poised side-on on a smooth red-earth riverbank stone with its long elegant tail curving fully into view. Restrained sage accents in a single small background reed, warm peach outback dusk and soft billabong bokeh. Fine realistic scales and natural anatomy, quiet refined photographic illustration. No bird, eucalyptus branch, gumnuts, bark curl or lone rock study. Entire subject inside generous margins, readable at small widget size. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-a9db16fd-0b9b-4dd3-88b8-dbb20c9dffd3.png",
+      "image": "widget-billabong-lizard.30e0d9de.webp",
+      "sha256": "30e0d9deba93151a4020896d807da03401f63807a74f0a18f3ea950df7a2d109",
+      "bytes": 274938,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

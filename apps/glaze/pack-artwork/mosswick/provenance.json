@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 667489,
       "opaquePixels": 537
+    },
+    {
+      "theme": "mosswick",
+      "id": "mushroom-mailbox",
+      "label": "Mushroom Mailbox",
+      "ref": "art/mosswick/v7/widget-moss-tower.462a4a4b.webp",
+      "subject": "a whimsical tiny mushroom mailbox on a curved twig post: red-brown softly speckled mushroom cap over a hollow bark mail cubby with a little brass horizontal slot and hinged wooden flap, one small ivy leaf and lush moss around its base. A curled empty leaf envelope leans beside it, with no writing or stamps. Tactile fairy-garden miniature craftsmanship, warm glowing honey accents and soft sage textured backdrop. No snail, house, tower, cart or book",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze mosswick decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: a whimsical tiny mushroom mailbox on a curved twig post: red-brown softly speckled mushroom cap over a hollow bark mail cubby with a little brass horizontal slot and hinged wooden flap, one small ivy leaf and lush moss around its base. A curled empty leaf envelope leans beside it, with no writing or stamps. Tactile fairy-garden miniature craftsmanship, warm glowing honey accents and soft sage textured backdrop. No snail, house, tower, cart or book. Entire subject inside generous margins, readable at small widget size. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-ac54d760-3e2d-4d2d-85e7-3bbda5188722.png",
+      "image": "widget-mushroom-mailbox.ee08b5db.webp",
+      "sha256": "ee08b5db17ba9617b8e0e5f7b2e8d107abcb29bea606a07858fdbcb19021d3bd",
+      "bytes": 346916,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

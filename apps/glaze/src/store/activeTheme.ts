@@ -27,7 +27,8 @@ import { widgets as nativeWidgets } from '../native/widgets';
 import { registerDeferred, requestDeferred } from './deferredWork';
 import { applyThemeIcons, loadStudio } from './studio';
 import { findAnyThemeById } from './themeLookup';
-import { supersedeThemeWidgetArt, syncThemeWidgetArt } from './themeWidgetArt';
+import { markThemeArtPending, supersedeThemeWidgetArt, syncThemeWidgetArt } from './themeWidgetArt';
+import { setPackInstalledListener } from '../native/packs';
 import { queueThemeWrite, rememberWidgetTheme } from './widgetTheme';
 
 type Listener = (id: string | null) => void;
@@ -72,6 +73,9 @@ export async function applyThemeEverywhere(theme: Theme): Promise<ApplyResult> {
       }
     }
     try {
+      // 1.0.39 (owner TestFlight 1.0.37: "it needs to just use everything straight away"): every way
+      // of choosing a theme runs the widget-art sync; the Widgets tab shows Preparing until it is done.
+      markThemeArtPending(theme.id);
       requestDeferred(DEFERRED_STEPS.widgetTheme);
       requestDeferred(DEFERRED_STEPS.themeArt);
       requestDeferred(DEFERRED_STEPS.installedProbe, 'apply');
@@ -136,6 +140,37 @@ async function themeArtStep(): Promise<void> {
 }
 
 registerDeferred(DEFERRED_STEPS.themeArt, { priority: 30, run: themeArtStep });
+
+// 1.0.39 (owner TestFlight 1.0.37: the art appeared only after "Use everything" or after placing a
+// widget): when the pack of the theme in use finishes installing (a first download, an update, a
+// bundled starter), its widget art is made straight away.
+setPackInstalledListener((id) => {
+  void loadActiveThemeId()
+    .then((active) => {
+      if (active !== id) return;
+      markThemeArtPending(id);
+      requestDeferred(DEFERRED_STEPS.themeArt);
+    })
+    .catch(() => undefined);
+});
+
+/**
+ * 1.0.39 (owner: "when I first selected a new theme, there was no widget until I put one down"): on
+ * launch, when My widget art holds nothing of the theme in use (a fresh install, an interrupted or
+ * empty sync), make it now rather than waiting for a Home Screen widget. Never rejects.
+ */
+export async function ensureActiveThemeArt(): Promise<void> {
+  try {
+    const id = await loadActiveThemeId();
+    if (!id) return;
+    const lib = await nativeWidgets.artLibrary();
+    if (!lib.available || !lib.ok) return;
+    if (lib.pieces.some((p) => p.source !== 'photo' && p.themeId === id)) return;
+    requestDeferred(DEFERRED_STEPS.themeArt);
+  } catch {
+    // Retried on the next launch.
+  }
+}
 
 /** Metadata-only upgrade of already configured functional pieces; called in the deferred queue. */
 export async function upgradeActiveDesignedWidgets(): Promise<void> {

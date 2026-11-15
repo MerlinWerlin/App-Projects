@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Velvet seedpods"
+  },
+  {
+    "id": "wisteria-carpenter-bee",
+    "kind": "art",
+    "image": "widget-wisteria-carpenter-bee.2a8cd6ec.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Carpenter Bee"
   }
 ]

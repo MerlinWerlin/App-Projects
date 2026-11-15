@@ -22,5 +22,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Brass cup mute"
+  },
+  {
+    "id": "brass-ribbon-microphone",
+    "kind": "art",
+    "image": "widget-brass-ribbon-microphone.d8eec00a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Brass Ribbon Microphone"
   }
 ]

@@ -59,6 +59,36 @@ test('append build preserves old bytes, metadata and slot order; increments once
   } finally { f.cleanup(); }
 });
 
+test('a later published baseline retains earlier sources and appends only its replacement', async () => {
+  const f = fixture();
+  try {
+    const first = await buildPacks(f.opts), p = first.catalog.packs[0];
+    const old = JSON.parse(readFileSync(join(f.out, p.manifest)));
+    save(join(f.out, 'baseline-lock.json'), {
+      catalogUrl: 'https://example.invalid/catalog.json', catalogSha256: digest(readFileSync(join(f.out, 'catalog.json'))),
+      packs: [{ id: p.id, manifest: p.manifest, packVersion: p.packVersion, release: p.release,
+        sha256: digest(readFileSync(join(f.out, p.manifest))), artwork: old.widgets.map((w) => w.id) }],
+    });
+    const next = { ...f.opts, basePacksDir: f.out, outDir: join(f.root, 'next') };
+    assert.equal((await buildPacks(next)).built.length, 0, 'published sources do not bump a pack again');
+    const file = join(f.add, p.id, 'widgets/widget-options.json'), list = JSON.parse(readFileSync(file));
+    const image = `widget-second-piece.${digest(SECOND_WEBP).slice(0, 8)}.webp`;
+    save(file, [...list, { ...list[0], id: 'second-piece', image, label: 'Second piece' }]);
+    writeFileSync(join(dirname(file), image), SECOND_WEBP);
+    const result = await buildPacks({ ...next, corrections: { [p.id]: { options: { 'piece-0': 'photo' } } } });
+    assert.deepEqual(result.built[0].added, ['second-piece']);
+    const m = JSON.parse(readFileSync(join(next.outDir, `art/${p.id}/v9/manifest.json`)));
+    assert.equal(m.packVersion, 9); assert.equal(m.widgets[0].kind, 'photo');
+    assert.deepEqual(m.widgets[4], old.widgets[4], 'earlier source metadata stays intact');
+    assert.deepEqual(plannedArtworkOptionIds(p.id, parseWidgetOptions(m.widgets, m.assets).options), ['piece-1', 'piece-2', 'piece-3', 'new-piece', 'second-piece']);
+    for (const a of old.assets) assert.deepEqual(readFileSync(join(next.outDir, `art/${p.id}/v9`, a.path)), readFileSync(join(f.out, `art/${p.id}/v8`, a.path)));
+    save(file, [{ ...list[0], label: 'Changed historical label' }]);
+    assert.throws(() => readArtworkAdditions(f.add, p.id, old), /differs from published source/);
+    save(file, [{ ...list[0], kind: 'photo' }]);
+    assert.throws(() => readArtworkAdditions(f.add, p.id, old), /invalid artwork/);
+  } finally { f.cleanup(); }
+});
+
 test('future release layout shards whole packs below the 1000-asset cap', async () => {
   const f = fixture(['artwork-one', 'artwork-two']);
   try {
@@ -153,6 +183,30 @@ test('cache verifies existing bytes and re-fetches corruption using pinned asset
   } finally { f.cleanup(); }
 });
 
+// 1.0.40: the r2.dev host answers HTTP 429 when CI downloads the baseline quickly; the cache backs off
+// (Retry-After honoured) and still verifies every byte, instead of failing the build.
+test('cache retries a rate-limited host (429) with backoff and still verifies the bytes', async () => {
+  const f = fixture();
+  try {
+    const out = join(f.root, 'cache');
+    let limited = 4;
+    const fetcher = async (url) => {
+      if (limited-- > 0) return { ok: false, status: 429, headers: { get: (h) => (h === 'retry-after' ? '0' : null) } };
+      const name = url.slice(url.lastIndexOf('__') + 2);
+      const bytes = readFileSync(join(f.base, 'art/artwork-example/v7', name));
+      return { ok: true, arrayBuffer: async () => bytes };
+    };
+    const r = await cacheArtworkBaseline({ snapshotDir: f.base, outDir: out, fetcher, backoffMs: 1, log: () => {} });
+    assert.equal(r.downloaded, 6);
+    let always = 0;
+    await assert.rejects(
+      cacheArtworkBaseline({ snapshotDir: f.base, outDir: join(f.root, 'cache2'), fetcher: async () => (always++, { ok: false, status: 429 }), attempts: 3, backoffMs: 1, log: () => {} }),
+      /HTTP 429/,
+    );
+    assert.ok(always >= 3);
+  } finally { f.cleanup(); }
+});
+
 test('independent output audit detects damaged bytes, original metadata edits and missing themes', async () => {
   const f = fixture();
   try {
@@ -187,18 +241,25 @@ test('independent audit permits an unchanged partial pack but rejects incomplete
   } finally { f.cleanup(); }
 });
 
-test('committed baseline matches the actual consumer and retains 84 formerly omitted illustrations', () => {
+test('committed R2 baseline retains all published artworks and pins each reviewed replacement', () => {
   const baseline = loadBaseline(fileURLToPath(new URL('./artwork-baseline', import.meta.url)));
-  assert.equal(baseline.manifests.size, 141); assert.equal(baseline.lock.additionsNeeded, 177);
-  assert.deepEqual(baseline.lock.baselineCounts, { 2: 3, 3: 35, 4: 98, 5: 5 });
+  assert.equal(baseline.manifests.size, 141); assert.equal(baseline.lock.additionsNeeded, 0);
+  assert.deepEqual(baseline.lock.baselineCounts, { 5: 141 });
+  assert.equal(baseline.lock.catalogUrl, 'https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev/catalog.json');
+  assert.equal([...baseline.manifests.values()].reduce((n, m) => n + m.assets.length, 0), 2158);
   const airmail = baseline.manifests.get('airmail-daydream');
   assert.ok(airmail.widgets.some((w) => w.id === 'art-20261106-paper-swallow'));
   const corrections = JSON.parse(readFileSync(new URL('./artwork-corrections.json', import.meta.url), 'utf8'));
-  assert.equal(Object.keys(corrections).length, 22);
+  const review = JSON.parse(readFileSync(new URL('./artwork-distinctness.json', import.meta.url), 'utf8')).rows;
+  for (const row of review) for (const id of row.replaced) {
+    assert.equal(corrections[row.theme].options[id], 'photo');
+    assert.ok(baseline.manifests.get(row.theme).widgets.some((w) => w.id === id && w.kind === 'art'));
+  }
   const counts = [...baseline.manifests.values()].map((m) => {
     const corrected = applyArtworkCorrections(m, corrections);
     return plannedArtworkOptionIds(m.id, parseWidgetOptions(corrected.widgets, corrected.assets).options).length;
   });
-  assert.equal(counts.filter((n) => n < 5).length, 139);
-  assert.equal(counts.reduce((n, count) => n + 5 - count, 0), 199);
+  assert.equal(counts.filter((n) => n < 5).length, review.length);
+  assert.equal(counts.reduce((n, count) => n + 5 - count, 0), review.reduce((n, row) => n + row.replaced.length, 0));
+  for (const m of baseline.manifests.values()) assert.deepEqual(applyArtworkCorrections(applyArtworkCorrections(m, corrections), corrections), applyArtworkCorrections(m, corrections));
 });

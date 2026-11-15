@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { CUSTOM_ART_MAX_PIXELS, CUSTOM_ART_SLOT_COUNT, EMPTY_CUSTOM_ART, isCustomArtSlot, normaliseCustomArtList } from './customArtSlots.ts';
 
-const R = (...p: string[]) => readFileSync(join(process.cwd(), ...p), 'utf8');
+const R = (...p: string[]) => readFileSync(join(process.cwd(), ...p), 'utf8').replace(/\r\n/g, '\n');
 const widget = R('targets', 'widget', 'CustomArtWidgets.swift');
 const bridge = R('modules', 'glaze-widget-bridge', 'ios', 'CustomArtSlots.swift');
 const LANGS = ['en', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt-BR', 'zh-Hans'];

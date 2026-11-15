@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ringed-planet",
+    "kind": "art",
+    "image": "widget-ringed-planet.3c64b5e6.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ringed Planet"
+  },
+  {
+    "id": "copper-telescope",
+    "kind": "art",
+    "image": "widget-copper-telescope.953152ed.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Copper Telescope"
+  },
+  {
+    "id": "ember-comet",
+    "kind": "art",
+    "image": "widget-ember-comet.dd51ca5d.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ember Comet"
+  },
+  {
+    "id": "spiral-galaxy",
+    "kind": "art",
+    "image": "widget-spiral-galaxy.23e6d758.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Spiral Galaxy"
+  }
+]

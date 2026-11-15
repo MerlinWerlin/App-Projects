@@ -10,5 +10,29 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Peach stone seedling"
+  },
+  {
+    "id": "peach-blossom-teapot",
+    "kind": "art",
+    "image": "widget-peach-blossom-teapot.5e30a51f.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Peach Blossom Teapot"
+  },
+  {
+    "id": "peach-orchard-butterfly",
+    "kind": "art",
+    "image": "widget-peach-orchard-butterfly.e738893f.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Orchard Butterfly"
   }
 ]

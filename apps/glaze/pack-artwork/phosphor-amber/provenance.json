@@ -37,6 +37,24 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "phosphor-amber",
+      "id": "amber-cassette-tape",
+      "label": "Amber Cassette Tape",
+      "ref": "art/phosphor-amber/v2/widget-terminal-desk.3ebf95ff.webp",
+      "subject": "one beautifully detailed unbranded vintage audio cassette tape, warm cream plastic case with a translucent amber window revealing two small dark tape reels, perfectly blank matte ivory label area and a short loose curl of brown magnetic tape beside it. Three-quarter view, restrained amber sidelight, tactile aged plastic on uniform matte charcoal #202426. No visible lettering, numbers or reel markings. No monitor, keyboard, floppy disk, joystick, shell or landscape",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze phosphor-amber decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one beautifully detailed unbranded vintage audio cassette tape, warm cream plastic case with a translucent amber window revealing two small dark tape reels, perfectly blank matte ivory label area and a short loose curl of brown magnetic tape beside it. Three-quarter view, restrained amber sidelight, tactile aged plastic on uniform matte charcoal #202426. No visible lettering, numbers or reel markings. No monitor, keyboard, floppy disk, joystick, shell or landscape. Entire object inside generous margins, readable at small widget size. Own theme backdrop. No card border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-76509ed1-81fa-4fca-a49e-77a806d4b412.png",
+      "image": "widget-amber-cassette-tape.2f0b7aaa.webp",
+      "sha256": "2f0b7aaaf173f89c7c786e9879dfdb0b4c467715634af931bc8fe9dee682f415",
+      "bytes": 148444,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

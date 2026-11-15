@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Opal Butterfly"
+  },
+  {
+    "id": "opal-orchard-rabbit",
+    "kind": "art",
+    "image": "widget-opal-orchard-rabbit.725d50b0.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Opal Orchard Rabbit"
   }
 ]

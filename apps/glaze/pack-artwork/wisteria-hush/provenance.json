@@ -18,6 +18,23 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "wisteria-hush",
+      "id": "wisteria-carpenter-bee",
+      "label": "Carpenter Bee",
+      "ref": "art/wisteria-hush/v8/widget-wisteria-lacewing.0450b0e6.webp",
+      "prompt": "Use case: stylized-concept. ONE original square 1024\u00d71024 Glaze Wisteria Hush widget artwork. Reference is ONLY for natural photographic illustration medium, pale lilac palette and soft diffuse morning light. New subject: a large gentle carpenter bee with a velvety black body, subtly violet iridescent wings spread apart and fine natural legs, hovering beside a small curled fresh sage-green wisteria tendril with one leaf. Bee is the clear main subject, all wings, antennae and legs fully contained in broad margins on a calm pale lilac background. Fine macro detail and restrained lilac reflections, no full flower sprig, bell, snail or seedpod. No text, numbers, clock, dial, calendar, progress, border, logo or watermark. Completely original composition.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-2a0187d3-3ced-4d73-b677-adb4a6f322a7.png",
+      "image": "widget-wisteria-carpenter-bee.2a8cd6ec.webp",
+      "sha256": "2a8cd6ec596e91e40ca0e126fd4e7c53d2ef8053be4fe7f77d2d820339fcb516",
+      "bytes": 120348,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

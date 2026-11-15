@@ -33,6 +33,26 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 684622,
       "opaquePixels": 145
+    },
+    {
+      "theme": "jellylight",
+      "id": "opal-seahorse",
+      "label": "Opal Seahorse",
+      "optionalRow": 28,
+      "replacedOption": "hero-small",
+      "replacedSlot": 4,
+      "prompt": "Use case: stylized-concept. ONE original square1024\u00d71024 Glaze jellylight pure decorative artwork. Reference is STYLE, PALETTE AND LIGHTING ONLY. New subject: one delicate curled-tail seahorse sculpted from translucent blue opal glass, softly iridescent violet ridges and tiny cyan points of light, floating gracefully against deep midnight ocean-blue water with restrained soft haze. Entire elegant seahorse clearly visible. Luminous realistic fantasy glass illustration. No jellyfish, oval comb jelly, round anemone orb, stingray or sea slug. Whole main object completely inside broad12% margins, strong silhouette readable on a small widget, same theme world and cohesive full-bleed backdrop. Never copy, crop or recolor an existing piece. No text, letters, numbers, clock hands, dials, calendars, values, progress, card border, logos or watermark.",
+      "ref": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze-3\\work\\distinct-20261115\\baseline\\art\\jellylight\\v7\\widget-opal-stingray.6101c6ed.webp",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-59c868a0-df8b-4226-8953-e6045c4c39ae.png",
+      "image": "widget-opal-seahorse.2ad85cb7.webp",
+      "sha256": "2ad85cb78ea45efb2af2a86f0caa3c875610dc60d5b6a615226a1e8f355957a8",
+      "bytes": 127308,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

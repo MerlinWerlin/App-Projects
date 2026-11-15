@@ -22,5 +22,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Brass watering can"
+  },
+  {
+    "id": "brass-garden-trowel",
+    "kind": "art",
+    "image": "widget-brass-garden-trowel.6280560e.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Brass Garden Trowel"
   }
 ]

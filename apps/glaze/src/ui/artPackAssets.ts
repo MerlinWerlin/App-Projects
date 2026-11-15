@@ -8,17 +8,35 @@ export const ART_PACK_ASSETS: ArtPackAssetMap = {
     small: require('../../themes/deep-sea/widget-small.png'),
     medium: require('../../themes/deep-sea/widget-medium.png'),
     large: require('../../themes/deep-sea/widget-large.png'),
+    artworks: {
+      'widget-luminous-nautilus.51a10d0f.webp': require('../../themes/deep-sea/widget-luminous-nautilus.51a10d0f.webp'),
+      'widget-glowing-anglerfish.b15b920a.webp': require('../../themes/deep-sea/widget-glowing-anglerfish.b15b920a.webp'),
+      'widget-bioluminescent-coral-fan.5137fec8.webp': require('../../themes/deep-sea/widget-bioluminescent-coral-fan.5137fec8.webp'),
+      'widget-abyssal-diving-helmet.4bda679c.webp': require('../../themes/deep-sea/widget-abyssal-diving-helmet.4bda679c.webp'),
+    },
   },
   'starry-night': {
     wallpaper: require('../../themes/starry-night/wallpaper.png'),
     small: require('../../themes/starry-night/widget-small.png'),
     medium: require('../../themes/starry-night/widget-medium.png'),
     large: require('../../themes/starry-night/widget-large.png'),
+    artworks: {
+      'widget-ringed-planet.3c64b5e6.webp': require('../../themes/starry-night/widget-ringed-planet.3c64b5e6.webp'),
+      'widget-copper-telescope.953152ed.webp': require('../../themes/starry-night/widget-copper-telescope.953152ed.webp'),
+      'widget-ember-comet.dd51ca5d.webp': require('../../themes/starry-night/widget-ember-comet.dd51ca5d.webp'),
+      'widget-spiral-galaxy.23e6d758.webp': require('../../themes/starry-night/widget-spiral-galaxy.23e6d758.webp'),
+    },
   },
   'sunset-dunes': {
     wallpaper: require('../../themes/sunset-dunes/wallpaper.png'),
     small: require('../../themes/sunset-dunes/widget-small.png'),
     medium: require('../../themes/sunset-dunes/widget-medium.png'),
     large: require('../../themes/sunset-dunes/widget-large.png'),
+    artworks: {
+      'widget-desert-camel.9666fb2c.webp': require('../../themes/sunset-dunes/widget-desert-camel.9666fb2c.webp'),
+      'widget-desert-rose-mineral.bd9db73f.webp': require('../../themes/sunset-dunes/widget-desert-rose-mineral.bd9db73f.webp'),
+      'widget-dusk-lantern.ac60ea5f.webp': require('../../themes/sunset-dunes/widget-dusk-lantern.ac60ea5f.webp'),
+      'widget-date-palm.85661b3a.webp': require('../../themes/sunset-dunes/widget-date-palm.85661b3a.webp'),
+    },
   },
 };

@@ -1,9 +1,10 @@
 {
   "agate-apricot": {
     "options": {
-      "crystal-progress": "habits"
+      "crystal-progress": "habits",
+      "druzy-center": "photo"
     },
-    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5. 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
   },
   "amber-archive": {
     "options": {
@@ -61,9 +62,10 @@
   },
   "phosphor-amber": {
     "options": {
-      "buffer-progress-v2": "habits"
+      "buffer-progress-v2": "habits",
+      "pixel-landscape": "photo"
     },
-    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+    "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5. 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
   },
   "protea-blush": {
     "options": {
@@ -130,5 +132,198 @@
       "woven-progress": "habits"
     },
     "reason": "Existing picture contains a baked-in goal, progress fraction or score; preserve it as a functional option and exclude it from Artwork 1-5."
+  },
+  "bellbat-bloom": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "carbon-velocity": {
+    "options": {
+      "art-20261107-track-helmet": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "cloudwash": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "copper-circuit": {
+    "options": {
+      "trace-flow": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "glacier-quiet": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "kingfisher-blue": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "lotus-drift": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "manta-silk": {
+    "options": {
+      "sand-rays": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "meadowglow": {
+    "options": {
+      "morning-grass": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "moonpatch": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "mosswick": {
+    "options": {
+      "travelling-cottage": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "ochre-bend": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "pebblekin-grove": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "summit-line": {
+    "options": {
+      "art-20261107-signal-gondola": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "wisteria-hush": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "bluewing": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "ginkgo-hour": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "juniper-mist": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "peachskin": {
+    "options": {
+      "hero-small": "photo",
+      "art-20261106-peach-slice": "photo"
+    },
+    "reason": " 15 Nov visual review: retain the listed duplicate subject or cropped wallpaper as a static photo option outside Artwork 1\u20135; preserve its id, file and every other field."
+  },
+  "brass-afterhours": {
+    "options": {
+      "key-rhythm": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "curlfin-cove": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "fern-and-brass": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "jellylight": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "labradorite-hush": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "midnight-conservatory": {
+    "options": {
+      "night-orchid": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "peach-puddle": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "prism-orchard": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "silver-orchard": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "stellar-cradle": {
+    "options": {
+      "stellar-nursery": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "sundew-ember": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "dunesilk": {
+    "options": {
+      "hero-small": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
+  },
+  "saltveil": {
+    "options": {
+      "art-20261106-pink-halite": "photo"
+    },
+    "reason": "15 Nov visual review: retain the older similar composition as a static photo option outside Artwork1\u20135, keeping its id, image and every other field unchanged."
   }
 }

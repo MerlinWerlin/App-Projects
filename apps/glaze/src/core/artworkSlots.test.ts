@@ -30,23 +30,27 @@ test('Artwork widgets: numbered names, small only, five in the gallery', () => {
   }
 });
 
-test('Artwork n: small plain art (no live pictures, no designs), cycling so no slot is blank', () => {
+test('Artwork n: small plain art (no live pictures, no designs); past the count the theme design, never a repeat', () => {
   const pieces = code.slice(code.indexOf('static func pieces(family:'), code.indexOf('static func piece(slot:'));
   assert.match(pieces, /\$0\.size == "small" && !\$0\.design/);
   assert.match(pieces, /small\.filter \{ !\$0\.live \}/);
   assert.match(pieces, /\(art\.isEmpty \? small : art\)/);
   const piece = code.slice(code.indexOf('static func piece(slot:'), code.indexOf('struct ThemeArtEntry'));
-  assert.match(piece, /list\[\(slot - 1\) % list\.count\]/);
+  // 1.0.39: no cycling; nil draws ThemedFallbackArt in the theme's colours.
+  assert.match(piece, /guard slot >= 1, slot <= list\.count else \{ return nil \}\s*return list\[slot - 1\]/);
+  assert.doesNotMatch(piece, /% list\.count/);
   assert.match(W('WidgetArtLibrary.swift'), /live: LiveArtSpec\.parse\(p\["live"\]\) != nil/);
 });
 
-test('cycling model: every slot 1-5 gets a piece for any theme with 1-5 pieces', () => {
-  const piece = (slot: number, list: string[]) => (slot >= 1 && list.length ? list[(slot - 1) % list.length] : null);
-  for (let n = 1; n <= 5; n++) {
+test('slot model (1.0.39): slot n shows piece n once; slots past the count show the theme design (nil)', () => {
+  const piece = (slot: number, list: string[]) => (slot >= 1 && slot <= list.length ? list[slot - 1] : null);
+  for (let n = 0; n <= 5; n++) {
     const list = Array.from({ length: n }, (_, i) => `p${i + 1}`);
-    for (let s = 1; s <= 5; s++) assert.equal(piece(s, list), `p${((s - 1) % n) + 1}`);
+    const shown = [1, 2, 3, 4, 5].map((s) => piece(s, list));
+    assert.deepEqual(shown, [1, 2, 3, 4, 5].map((s) => (s <= n ? `p${s}` : null)));
+    const real = shown.filter(Boolean);
+    assert.equal(new Set(real).size, real.length, 'never the same piece twice');
   }
-  assert.equal(piece(1, []), null);
 });
 
 // Owner 2026-11-12 ("like colour code them"): one colour per slot, the same in the widget and the app.
@@ -80,17 +84,17 @@ test('gallery Artwork tiles: the slot colour and a big number, never theme art',
   assert.doesNotMatch(tile, /ThemeStore|WidgetArtStore|UIImage/);
 });
 
-test('app numbering matches the widget: current theme, small plain art in shelf order, cycling', () => {
+test('app numbering matches the widget: current theme, small plain art in shelf order, one slot each', () => {
   const p = (id: string, o: Partial<WidgetArtPiece>): WidgetArtPiece => ({ id, name: id, themeName: 'T', themeId: 't', source: 'theme', file: `${id}.jpg`, created: 1, aspect: 1, size: 'small', ...o });
   const pieces = [
     p('b', { slot: 1 }), p('a', { slot: 0 }), p('clock', { slot: 2, live: { kind: 'clock' } as never }),
     p('large', { size: 'large', slot: 0 }), p('other', { themeId: 'x', slot: 0 }), p('photo', { source: 'photo', themeId: null }),
   ];
   const n = artworkNumbers(pieces, 't');
-  assert.deepEqual(Object.fromEntries(n), { a: [1, 3, 5], b: [2, 4] });
+  assert.deepEqual(Object.fromEntries(n), { a: [1], b: [2] });
   assert.equal(artworkNumbers(pieces, null).size, 0);
   // No plain art: the other small pictures fill the slots.
-  assert.deepEqual(Object.fromEntries(artworkNumbers([pieces[2]], 't')), { clock: [1, 2, 3, 4, 5] });
+  assert.deepEqual(Object.fromEntries(artworkNumbers([pieces[2]], 't')), { clock: [1] });
   // The art list shows the badges.
   const list = readFileSync(join(process.cwd(), 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
   assert.match(list, /artworkPieces\(pieces, activeThemeId, artwork\)/);

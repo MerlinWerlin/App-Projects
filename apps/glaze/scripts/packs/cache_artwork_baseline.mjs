@@ -6,7 +6,7 @@ import { pathToFileURL } from 'node:url';
 import { checkedPath, digest, loadBaseline } from './append_artwork.mjs';
 import { packObjectUrl, packReleaseBase } from '../../src/core/packHost.ts';
 
-export async function cacheArtworkBaseline({ snapshotDir, outDir, concurrency = 6, fetcher = fetch, log = console.log }) {
+export async function cacheArtworkBaseline({ snapshotDir, outDir, concurrency = 3, attempts = 9, backoffMs = 1000, fetcher = fetch, log = console.log }) {
   const source = resolve(snapshotDir), out = resolve(outDir);
   if (source === out) throw new Error('cache must be separate from the committed snapshot');
   const baseline = loadBaseline(source), jobs = [];
@@ -24,14 +24,21 @@ export async function cacheArtworkBaseline({ snapshotDir, outDir, concurrency = 
       const valid = (bytes) => bytes.length === job.bytes && digest(bytes) === job.sha256;
       if (!existsSync(path) || !valid(readFileSync(path))) {
         let error;
-        for (let attempt = 0; attempt < 4; attempt++) {
+        // 1.0.40: the r2.dev host is rate-limited (HTTP 429 after ~100 quick downloads in CI). Back off
+        // exponentially (honouring Retry-After) on 429 / 5xx / network errors instead of failing the build.
+        for (let attempt = 0; attempt < attempts; attempt++) {
+          let wait = backoffMs * 2 ** Math.min(attempt, 6);
           try {
             const response = await fetcher(job.url, { signal: AbortSignal.timeout(90000) });
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            if (!response.ok) {
+              const retryAfter = Number(response.headers?.get?.('retry-after'));
+              if (Number.isFinite(retryAfter) && retryAfter > 0) wait = Math.max(wait, Math.min(retryAfter, 60) * 1000);
+              throw new Error(`HTTP ${response.status}`);
+            }
             const bytes = Buffer.from(await response.arrayBuffer());
             if (!valid(bytes)) throw new Error('asset SHA256/length mismatch');
             mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, bytes); downloaded++; error = null; break;
-          } catch (e) { error = e; if (attempt < 3) await new Promise((r) => setTimeout(r, 1000 * (attempt + 1))); }
+          } catch (e) { error = e; if (attempt < attempts - 1) await new Promise((r) => setTimeout(r, wait)); }
         }
         if (error) throw new Error(`${job.url}: ${error.message}`);
       }

@@ -465,6 +465,8 @@ function WidgetsTab() {
   const theme: Theme = applied ?? THEMES[0];
   // 1.0.37 (owner 2026-11-15): Medium and Large are gone from the tab for now; it always shows Small.
   const size: WidgetTabSize = 'small';
+  // 1.0.39: the colours of the design My widget art shows in a slot the theme has no piece for.
+  const artPalette = useMemo(() => ({ bg: theme.palette.bg, accent: theme.palette.accent, ink: theme.palette.ink }), [theme.palette.bg, theme.palette.accent, theme.palette.ink]);
   // T146: link check on focus (no theme picks here any more, so the nonce stays 0).
   const pickNonce = 0;
   // T221: bumped when a piece is added to "My widget art", so the list below the menu re-reads it.
@@ -605,7 +607,7 @@ function WidgetsTab() {
       {/* Owner 2026-11-14 ("not separate"): the theme's art picker is gone; My widget art below is the
           one list, Artwork 1-5 with a big number and the large artwork side by side. */}
       {/* T221: "My widget art"; hidden without the native library. */}
-      <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} />
+      <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} palette={artPalette} />
 
       {/* Owner 2026-11-15 ("make your own theme, be creative"): Your artwork, five slots of the
           person's own pictures for the Custom 1-5 widgets; on this device only. */}

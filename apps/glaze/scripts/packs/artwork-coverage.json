@@ -2,1161 +2,3465 @@
   "generated": "scripts/packs/artwork-coverage.mjs",
   "themes": 141,
   "byArtworkCount": {
-    "2": 45,
-    "3": 35,
-    "4": 56,
-    "5": 5
+    "5": 141
   },
   "problems": [],
   "perTheme": {
     "agate-apricot": {
-      "manifest": "glaze-packs-v2/art__agate-apricot__v1__manifest.json",
+      "manifest": "art/agate-apricot/v3/manifest.json",
       "artwork": [
         "agate-slice",
         "band-rhythm",
-        "crystal-progress",
-        "druzy-center"
+        "scalloped-agate-bowl",
+        "agate-shell-carving",
+        "agate-pendant"
+      ],
+      "images": [
+        "widget-agate-slice.572cbc2b.webp",
+        "widget-band-rhythm.633ff6d3.webp",
+        "widget-scalloped-agate-bowl.31ce98ab.webp",
+        "widget-agate-shell-carving.1a70b23b.webp",
+        "widget-agate-pendant.88e322bc.webp"
+      ],
+      "hashes": [
+        "572cbc2bad59c58cf41b334c0386c22908eede4d1fe910dbb9f64c03f640de4c",
+        "633ff6d36040ea8c4b0dc101f93bbc21bcc7d87adc1e4c8c7dea46406567f4bd",
+        "31ce98ab7a6ef4864d0e2f3e2f3451616eb8091efafa956219fe9b553567996c",
+        "1a70b23b392bb788ed36787126986d4d58910763a0b62239d7ac9a85e183e125",
+        "88e322bce0a2636aa806913366a326438ea382d6e151bcfff97dabcc2f6ef47b"
       ]
     },
     "airmail-daydream": {
-      "manifest": "glaze-packs-v11/art__airmail-daydream__v6__manifest.json",
+      "manifest": "art/airmail-daydream/v8/manifest.json",
       "artwork": [
         "stamp-terrarium",
-        "hero-small"
+        "hero-small",
+        "art-20261106-mail-balloon",
+        "art-20261106-paper-swallow",
+        "postal-satchel"
+      ],
+      "images": [
+        "widget-stamp-terrarium.2ed43af0.webp",
+        "widget-small.087506d0.webp",
+        "widget-mail-balloon.1c5bafe7.webp",
+        "widget-paper-swallow.a4909d4e.webp",
+        "widget-postal-satchel.c00ef70b.webp"
+      ],
+      "hashes": [
+        "2ed43af07cb5ab470e4c4f1a007c99208e51c7735d92752c540161cd3f6878cb",
+        "087506d00565195a1504a03201f466e70a01d2baf4852a7d0448b63d7b1db192",
+        "1c5bafe73dd0d443c19db5b0209493eada1ee8062f6f089ebf795c3e2291a040",
+        "a4909d4e4c2b8a5e8ddc159e894bf9ecac3358705022aca20ef63d273cd6cd45",
+        "c00ef70b21812883f57a19575da72583a26881029abf54dbed44ac2ab92320ec"
       ]
     },
     "alpine-starlight": {
-      "manifest": "glaze-packs-v11/art__alpine-starlight__v6__manifest.json",
+      "manifest": "art/alpine-starlight/v6/manifest.json",
       "artwork": [
         "copper-eclipse",
         "jupiter-polar",
         "saturn-rings",
         "silver-moon",
         "spiral-galaxy"
+      ],
+      "images": [
+        "widget-copper-eclipse.f9863caf.webp",
+        "widget-jupiter-polar.6964ebd9.webp",
+        "widget-saturn-rings.bff27786.webp",
+        "widget-silver-moon.7fd39f0d.webp",
+        "widget-spiral-galaxy.60057f70.webp"
+      ],
+      "hashes": [
+        "f9863caf52666eccfa24118ba53176f4fdf6aa2719d86801ecf2ea5dd137d7a4",
+        "6964ebd94c071752e7ae17b46e22902c44a006a6e008723b101393edb80dc380",
+        "bff27786725e75077a3ed83f21286b99aa65a3c2a3bbbc228442b798a0cf2fe4",
+        "7fd39f0d80252c77e9253134f8ab513b0aaf57b0df2d3ec9b5b2ac06807455b5",
+        "60057f70be1a0f005bd1098f126231354731b1b51d6e07324ee0484c193175aa"
       ]
     },
     "amber-archive": {
-      "manifest": "glaze-packs-v11/art__amber-archive__v6__manifest.json",
+      "manifest": "art/amber-archive/v7/manifest.json",
       "artwork": [
         "archive-wax-seal",
         "pressed-leaf-bookmark",
-        "reading-chapters",
         "paper-owl",
-        "hero-small"
+        "hero-small",
+        "folded-paper-fox"
+      ],
+      "images": [
+        "widget-archive-wax-seal.253a57d2.webp",
+        "widget-pressed-leaf-bookmark.32eb52eb.webp",
+        "widget-paper-owl.a1aa6a2f.webp",
+        "widget-small.bce73cf5.webp",
+        "widget-folded-paper-fox.db598801.webp"
+      ],
+      "hashes": [
+        "253a57d26fed6fe10a7b356a7b9ffbbd54c8b9721ccd29c1cada7db277b2dca5",
+        "32eb52ebaa83d55fde3c3db162d5a8eb959248b50ec47a9e67cc8d2b95ec6c5f",
+        "a1aa6a2f0291000118bf6ac3ff7ea0fd63aa340c535909c6e86328e027a66306",
+        "bce73cf57756eee87c6bb5f7b9bc73e072b19396bd74f73be8448d68842fa10d",
+        "db598801382ca8a435bba506e8d1b6dcbe3826acdec8471055a5a4a10e9bcb08"
       ]
     },
     "apricot-fm": {
-      "manifest": "glaze-packs-v11/art__apricot-fm__v6__manifest.json",
+      "manifest": "art/apricot-fm/v7/manifest.json",
       "artwork": [
         "apricot-headphones",
         "pocket-radio",
         "vinyl-cat",
-        "hero-small"
+        "hero-small",
+        "apricot-studio-mic"
+      ],
+      "images": [
+        "widget-apricot-headphones.f1891ebd.webp",
+        "widget-pocket-radio.8c020b36.webp",
+        "widget-vinyl-cat.d38f34f4.webp",
+        "widget-small.b0208d50.webp",
+        "widget-apricot-studio-mic.d058b3fa.webp"
+      ],
+      "hashes": [
+        "f1891ebd7e84000e6bf8a44414871c80f4c88426aacc57cd72724aed5180fcff",
+        "8c020b3666da574b65c5ebbd88b0ee13eb7aefe1f68eab7c40a31fec4f348b40",
+        "d38f34f4ce79ac97c42cddedbf967b6883fc5b3eaa3101231bf3855fc0fe3f3e",
+        "b0208d509889ff50094e54e84a57fff37b362d6c9d1700b0290ed34fcc085614",
+        "d058b3fa4d36d661b41383c120e76589efd153eb6d0493a6d86cb2505afa08be"
       ]
     },
     "aurora-haven": {
-      "manifest": "glaze-packs-v11/art__aurora-haven__v6__manifest.json",
+      "manifest": "art/aurora-haven/v8/manifest.json",
       "artwork": [
         "snow-mushrooms",
-        "hero-small"
+        "hero-small",
+        "art-20261106-aurora-fox",
+        "art-20261106-aurora-prism",
+        "aurora-seal"
+      ],
+      "images": [
+        "widget-snow-mushrooms.3628bf90.webp",
+        "widget-small.aee45991.webp",
+        "widget-aurora-fox.c8dd8d9d.webp",
+        "widget-aurora-prism.cdb1173a.webp",
+        "widget-aurora-seal.1362fa0a.webp"
+      ],
+      "hashes": [
+        "3628bf90bdb3829f733fd6ac4ee7a1a97d6d72fd78bc9125fcace8e595d02e62",
+        "aee4599188cd11f39122ae06ca40602288986ee158297cbb9b16e98e69cac0a5",
+        "c8dd8d9d3dd564610d3b431028ed64a6a49f7635aaafd73cbee1c97c644949b3",
+        "cdb1173aa33eb90fa4c0edf8595937c5206cff1a36e4284776d8a0079300d9a6",
+        "1362fa0af126de38ebdab7de07e64afeb2212d88af440d5cc4bbe222064ec060"
       ]
     },
     "bamboo-ink": {
-      "manifest": "glaze-packs-v11/art__bamboo-ink__v4__manifest.json",
+      "manifest": "art/bamboo-ink/v5/manifest.json",
       "artwork": [
         "ink-wash",
         "leaf-fan",
-        "hero-small"
+        "hero-small",
+        "resting-crane",
+        "reed-skiff"
+      ],
+      "images": [
+        "widget-ink-wash.434999e5.webp",
+        "widget-leaf-fan.0ccdf00a.webp",
+        "widget-small.2cf5817e.webp",
+        "widget-resting-crane.2da7eb69.webp",
+        "widget-reed-skiff.fc0af3b6.webp"
+      ],
+      "hashes": [
+        "434999e52aaa20572ab2790cae6bffd017af5e0cabd60fecc344944c31d312f4",
+        "0ccdf00a0db8ede748d278952d5f67abc5348a46d818e2899136d8ff4d7e7b7a",
+        "2cf5817e316168301e4f219a3d9f428c0414450a38cde1b10f9206bf814d473b",
+        "2da7eb69f39875a9f56a1066a382f00562e6677fccead4246604c1d27d238056",
+        "fc0af3b664d449a3fe4cd7e121a941251b859fab784333c7b257292dd9bbfac6"
       ]
     },
     "bellbat-bloom": {
-      "manifest": "glaze-packs-v11/art__bellbat-bloom__v6__manifest.json",
+      "manifest": "art/bellbat-bloom/v8/manifest.json",
       "artwork": [
         "bellflower-basket",
         "velvet-wing-bow",
         "seedpod-swing",
-        "hero-small"
+        "velvet-acorn-lantern",
+        "felt-luna-moth"
+      ],
+      "images": [
+        "widget-bellflower-basket.8c16184b.webp",
+        "widget-velvet-wing-bow.112d0152.webp",
+        "widget-seedpod-swing.01460c99.webp",
+        "widget-velvet-acorn-lantern.2864cf38.webp",
+        "widget-felt-luna-moth.b07604c6.webp"
+      ],
+      "hashes": [
+        "8c16184bef3e68e974486d46b3ccc59c3321722e0a756f97e17fe99e4524d277",
+        "112d0152d42b6bdd032e191cf6d806fb439861ef1fea8ca76458bca7a95dc0a2",
+        "01460c997f2d40bfc8eb1ef3e02b496d2f04bbeff3b8528309a9c13be163c918",
+        "2864cf38eb6dc82e3d42d169c8c8288e99aa36800e6a51db7061b3bae637d43c",
+        "b07604c61698c33f659b5857ec7c80582023453ea194cf8ed5796fb75248c1a1"
       ]
     },
     "berry-stitch": {
-      "manifest": "glaze-packs-v11/art__berry-stitch__v6__manifest.json",
+      "manifest": "art/berry-stitch/v8/manifest.json",
       "artwork": [
         "stitched-berry-basket",
-        "hero-small"
+        "hero-small",
+        "art-20261107-bilberry-pincushion",
+        "art-20261107-thread-spool-finch",
+        "berry-yarn-teapot"
+      ],
+      "images": [
+        "widget-stitched-berry-basket.6486a4b6.webp",
+        "widget-small.ec4dffb0.webp",
+        "widget-bilberry-pincushion.7698bbae.webp",
+        "widget-thread-spool-finch.46ae3c6a.webp",
+        "widget-berry-yarn-teapot.1fec9d4c.webp"
+      ],
+      "hashes": [
+        "6486a4b62fe5d34f9c8114983022083602ad9245b24509750a45806528f3e0b1",
+        "ec4dffb0409350dea6b8c53bbe114c5d68cfa6d551b2861c291bf142b98ef8b7",
+        "7698bbae3b9a1062b9090e3cada2e60176dbe3174baf4f2caf4d499ddaf7ac67",
+        "46ae3c6ab060f6771532b32549e6a3cb86ac9d719bc682802cb2c85d806f5dce",
+        "1fec9d4c21fcd21bdd842fcd16067debde170ddbdb4103d5c621feb11c4d218c"
       ]
     },
     "billabong-clay": {
-      "manifest": "glaze-packs-v2/art__billabong-clay__v1__manifest.json",
+      "manifest": "art/billabong-clay/v2/manifest.json",
       "artwork": [
         "clay-platypus",
-        "drop-progress",
         "eucalyptus-sprig",
-        "river-ripples"
+        "river-ripples",
+        "clay-water-lily",
+        "clay-river-turtle"
+      ],
+      "images": [
+        "widget-clay-platypus.c4b8d7c0.webp",
+        "widget-eucalyptus-sprig.bdfe1ee3.webp",
+        "widget-river-ripples.0c17f26d.webp",
+        "widget-clay-water-lily.20f56c24.webp",
+        "widget-clay-river-turtle.d578e68c.webp"
+      ],
+      "hashes": [
+        "c4b8d7c0a1de7688b76384d784fda508757ecdcb252ef01daccd7c29731f8510",
+        "bdfe1ee32d602f9d71cb30a6c5b7dc2fe5685ef08b24bcc13854acb9881c954f",
+        "0c17f26de515e36c2e1d2293e747d830266e037f1330366af414a43b624856b6",
+        "20f56c248e8907d123943276f2a97beedc174a3ec0f2af8c3032459cb40bac19",
+        "d578e68ca9da19d1ce4c9a6d441cf210d8c258737017ef34149666507e62cccc"
       ]
     },
     "birchlight": {
-      "manifest": "glaze-packs-v11/art__birchlight__v6__manifest.json",
+      "manifest": "art/birchlight/v7/manifest.json",
       "artwork": [
         "amber-fern-frame",
         "birch-seedpod",
         "golden-leaf",
-        "hero-small"
+        "hero-small",
+        "amber-birch-mushroom"
+      ],
+      "images": [
+        "widget-amber-fern-frame.d6cc25fc.webp",
+        "widget-birch-seedpod.8c4e71f2.webp",
+        "widget-golden-leaf.af1b6a6e.webp",
+        "widget-small.96017b57.webp",
+        "widget-amber-birch-mushroom.3f1f7c15.webp"
+      ],
+      "hashes": [
+        "d6cc25fc7fa8f4ac00d58919cf9a5d881119c05a4a8688ca4f0145514515ec90",
+        "8c4e71f2f9c25ae4bf2aa54b5638477fd45db440e7fa031fe83d07c593fced83",
+        "af1b6a6e529b546388599cf39693215e2300cbd49345f67754cee255abbe6d55",
+        "96017b5798c44e9ed38fa9b538d65993afbd94b8c2253d4388a4bca09da25e70",
+        "3f1f7c15616959fe2f1e6cdbd7d2e3da0f2afec010b4384b13c1d84e13575db8"
       ]
     },
     "blueprint-bureau": {
-      "manifest": "glaze-packs-v14/art__blueprint-bureau__v7__manifest.json",
+      "manifest": "art/blueprint-bureau/v9/manifest.json",
       "artwork": [
         "compass-beetle",
-        "hero-small"
+        "hero-small",
+        "art-20261107-optical-lantern",
+        "art-20261107-mechanical-nautilus",
+        "articulated-seahorse"
+      ],
+      "images": [
+        "widget-compass-beetle.4c6ea18a.webp",
+        "widget-small.1186a85a.webp",
+        "widget-optical-lantern.cde82ce8.webp",
+        "widget-mechanical-nautilus.a1971d27.webp",
+        "widget-articulated-seahorse.bd715abf.webp"
+      ],
+      "hashes": [
+        "4c6ea18a0fef65c8d04675e66647c881b47419431eb2e834c3658385dd08e7f9",
+        "1186a85a521d5a276e1fbd519fb25965161f425b1a69f9c2b2665e0067d59817",
+        "cde82ce86f111bc6d8ac84b0a899a11b5ce5f7e83c17db8cea21a4f07361a31e",
+        "a1971d2745ae5ca57c77bf6782af10c356c21f2824e6f8cecdc2aaec32ea86d9",
+        "bd715abf1346da645cc52da8d72919496ef5e35dca97fc7ec43ec41fb565a3f4"
       ]
     },
     "bluewing": {
-      "manifest": "glaze-packs-v11/art__bluewing__v6__manifest.json",
+      "manifest": "art/bluewing/v9/manifest.json",
       "artwork": [
         "production-20261101-wing-study",
-        "hero-small"
+        "art-20261106-sapphire-chrysalis",
+        "art-20261106-filigree-wing",
+        "sapphire-bluebell",
+        "sapphire-stag-beetle"
+      ],
+      "images": [
+        "widget-production-20261101-wing-study.a22e0dd6.webp",
+        "widget-sapphire-chrysalis.4a87397a.webp",
+        "widget-filigree-wing.c399a07b.webp",
+        "widget-sapphire-bluebell.dec917b9.webp",
+        "widget-sapphire-stag-beetle.9eb7c1b2.webp"
+      ],
+      "hashes": [
+        "a22e0dd6e40254e9f7957a8a34d3d2d1fb01036db5a0ff878282f4193d6ac138",
+        "4a87397aa84fe2973c9ac50fe9e12402fefd61d6ef4b5bcca3f92cbca8c0a515",
+        "c399a07bf8bcdcd4096f668b175df787b7a612eeb0785ac4f56fc2068caccc53",
+        "dec917b9de24c713a6e74f2e0a63acaadf42f18daa7e6ada1b624100e52f9c3f",
+        "9eb7c1b2a964f401459ba401ed07fbc5041d106fc1b509018bfe34bd845ff1c9"
       ]
     },
     "boba-bear-club": {
-      "manifest": "glaze-packs-v11/art__boba-bear-club__v6__manifest.json",
+      "manifest": "art/boba-bear-club/v8/manifest.json",
       "artwork": [
         "tapioca-planet",
-        "hero-small"
+        "hero-small",
+        "art-20261107-caramel-pudding",
+        "art-20261107-strawberry-milk-carton",
+        "strawberry-pancake-stack"
+      ],
+      "images": [
+        "widget-tapioca-planet.1c8a5752.webp",
+        "widget-small.f3a6c2d5.webp",
+        "widget-caramel-pudding.1ffc2e94.webp",
+        "widget-strawberry-milk-carton.bdb65f3d.webp",
+        "widget-strawberry-pancake-stack.e6d626a5.webp"
+      ],
+      "hashes": [
+        "1c8a5752649d534a09b553123d0caccc249b6a1052fdf6615c9e37c5b25f2d89",
+        "f3a6c2d502ecc898339be4e14de68eb64b060b33fe81cdb8e57953c2cacdf54f",
+        "1ffc2e94fafadef3147dd722e18c76b7824651ddf21c123c6d2c24e23c750269",
+        "bdb65f3d7ad5ebd0daa7d28271ef468852b1fc1dc095ccd42ddde6b2a8c6fca7",
+        "e6d626a52ed49314925fe63ed1c6e4e4e5e4c97f589ccd397de898e22f8bddb6"
       ]
     },
     "brass-afterhours": {
-      "manifest": "glaze-packs-v2/art__brass-afterhours__v1__manifest.json",
+      "manifest": "art/brass-afterhours/v3/manifest.json",
       "artwork": [
-        "key-rhythm",
         "reed-study",
-        "sax-bell"
+        "sax-bell",
+        "velvet-instrument-case",
+        "brass-cup-mute",
+        "brass-ribbon-microphone"
+      ],
+      "images": [
+        "widget-reed-study.95a3e23a.webp",
+        "widget-sax-bell.e90077c5.webp",
+        "widget-velvet-instrument-case.c2cb73fc.webp",
+        "widget-brass-cup-mute.3ac494c0.webp",
+        "widget-brass-ribbon-microphone.d8eec00a.webp"
+      ],
+      "hashes": [
+        "95a3e23a43db5ec81810fe60e9a82d96ff6a6e83d3de8449d65d249f4493040d",
+        "e90077c5b875ce2503103a928ae94d091ffd3bab59c74932514c73c55eaee07f",
+        "c2cb73fcbbe49151b6119f8e5073b855cc9d141a777551910016ec830554a164",
+        "3ac494c0bcd86be54760d950538a8e9aae01326eba420b4ae554f7d151ec60da",
+        "d8eec00a6a1a70d73a25c084079ae16b68da952158a66b0e9f9e9c300bcde14e"
       ]
     },
     "cacao-velvet": {
-      "manifest": "glaze-packs-v2/art__cacao-velvet__v1__manifest.json",
+      "manifest": "art/cacao-velvet/v2/manifest.json",
       "artwork": [
         "cacao-leaf",
         "cacao-pod",
-        "roast-beans"
+        "roast-beans",
+        "chocolate-curls",
+        "cacao-blossom"
+      ],
+      "images": [
+        "widget-cacao-leaf.c7fecbdf.webp",
+        "widget-cacao-pod.ab74ed6f.webp",
+        "widget-roast-beans.8bf39d6c.webp",
+        "widget-chocolate-curls.28406efa.webp",
+        "widget-cacao-blossom.5b5ae1f4.webp"
+      ],
+      "hashes": [
+        "c7fecbdfb1d3747b16f901a259a86654135a8ba4b1256be45c07effa3800ebf7",
+        "ab74ed6ffe7b01d63a2d490e7434b01c89e2d57f70a305732199420097181328",
+        "8bf39d6c375b69f22aed87245c15acfe16b4f9241d1f6531e74433be4f48fd35",
+        "28406efae50970c8a64f59623c32af31c299db137ce8cd24336d95d0d6d23bed",
+        "5b5ae1f44d1b4a51106342bdbf9ae019185bd8feadd984d086acfa1cae1752df"
       ]
     },
     "calla-obscura": {
-      "manifest": "glaze-packs-v2/art__calla-obscura__v1__manifest.json",
+      "manifest": "art/calla-obscura/v2/manifest.json",
       "artwork": [
         "calla-pair",
         "dew-leaf",
-        "pearl-vase"
+        "pearl-vase",
+        "silver-moth",
+        "pearl-garden-snail"
+      ],
+      "images": [
+        "widget-calla-pair.39444fb9.webp",
+        "widget-dew-leaf.c4995fe9.webp",
+        "widget-pearl-vase.88208682.webp",
+        "widget-silver-moth.f153e3a0.webp",
+        "widget-pearl-garden-snail.5f5dd19f.webp"
+      ],
+      "hashes": [
+        "39444fb9365d12ca85c2fd91f4a6ddf126ca953922105254a973d4a9d8c7d31d",
+        "c4995fe9adc0509023baf5b48c21ae42f0b1340a93ebdda22a245dd2d11461be",
+        "882086827160eedd4da30e8a5f2ffebdbb0b7298d2372bce3ac9527a9835289b",
+        "f153e3a0303f867931dd98aac5e97ae9ae91c9c62d32ce3060b05d6f219e1397",
+        "5f5dd19f8acdd29134d87998eff08fcbf03da4ae0117d364cfdb94ccf9e8bafc"
       ]
     },
     "canopy-glaze": {
-      "manifest": "glaze-packs-v2/art__canopy-glaze__v1__manifest.json",
+      "manifest": "art/canopy-glaze/v2/manifest.json",
       "artwork": [
         "jade-climber",
         "leaf-relief",
-        "tail-medallion"
+        "tail-medallion",
+        "canopy-orchid",
+        "jade-tree-frog"
+      ],
+      "images": [
+        "widget-jade-climber.b5f05903.webp",
+        "widget-leaf-relief.21dbb394.webp",
+        "widget-tail-medallion.ea5097e9.webp",
+        "widget-canopy-orchid.8b56ff54.webp",
+        "widget-jade-tree-frog.cc0bb31b.webp"
+      ],
+      "hashes": [
+        "b5f059039292652fa2eff06c9313e468f01d6a7713da7b4fc7eb39263b9ce54c",
+        "21dbb39449bb3bb6f22f0bfd5ce65f528d9c926b25417940121cf2d340be96bf",
+        "ea5097e936e8adf7dbd6d197b982c92127764368206f81081af105ff302f5641",
+        "8b56ff54593d721850035e15fc7896bd11fbbe2395689c7baf6898b28a84ae21",
+        "cc0bb31b7dc3b684af542b186377024ef3574457512fe84f238b9035d0a25bd5"
       ]
     },
     "carbon-velocity": {
-      "manifest": "glaze-packs-v11/art__carbon-velocity__v6__manifest.json",
+      "manifest": "art/carbon-velocity/v9/manifest.json",
       "artwork": [
         "titanium-turbine",
-        "hero-small"
+        "hero-small",
+        "art-20261107-carbon-gear",
+        "titanium-damper",
+        "carbon-steering-wheel"
+      ],
+      "images": [
+        "widget-titanium-turbine.74f960f1.webp",
+        "widget-small.6995b576.webp",
+        "widget-carbon-gear.e6357245.webp",
+        "widget-titanium-damper.4dd56911.webp",
+        "widget-carbon-steering-wheel.abd68897.webp"
+      ],
+      "hashes": [
+        "74f960f1e64e29d6fb2542827be83cc91f00308126989803adbb24604cc1acda",
+        "6995b57642b1492e25b7420344763951d2b5fd0ef22b514b0ea8bb893f552525",
+        "e6357245e0bfba48ac15c07b659d3e081948f50f9b88b6cd1ba8b67863fc6776",
+        "4dd569117c707736880fe30c17e1901c08215efc7961299f9b3b519dd47e745b",
+        "abd68897dec4e94e93cc29501f1b687e9362c9213f050af9d9fd5187ec6b5029"
       ]
     },
     "carrom-cedar": {
-      "manifest": "glaze-packs-v2/art__carrom-cedar__v1__manifest.json",
+      "manifest": "art/carrom-cedar/v2/manifest.json",
       "artwork": [
         "cedar-board",
         "disc-stack",
-        "red-striker"
+        "red-striker",
+        "cedar-powder-brush",
+        "cotton-disc-pouch"
+      ],
+      "images": [
+        "widget-cedar-board.57aa2681.webp",
+        "widget-disc-stack.ed50f4b0.webp",
+        "widget-red-striker.be21df74.webp",
+        "widget-cedar-powder-brush.4be5a83f.webp",
+        "widget-cotton-disc-pouch.16265846.webp"
+      ],
+      "hashes": [
+        "57aa2681dd40bd8da2677e4a6185bc79991163833cac13675a8803084d073880",
+        "ed50f4b0c0fd4039b91fe4ea260520febb1cff31b01c237295525c8bd7f4e63c",
+        "be21df74ce046e8379e18f9d6c71110d74894ee6fdb281f0a9cebdd5f1539b11",
+        "4be5a83f2704c53add72ccf2c563e6ce5939af4d2f0eaee4ca86676a9e18766a",
+        "16265846f6a93b0c28c8437884a1dcf3cd7fa240b576bdc713a9d75558001c9b"
       ]
     },
     "cherry-arcade": {
-      "manifest": "glaze-packs-v14/art__cherry-arcade__v7__manifest.json",
+      "manifest": "art/cherry-arcade/v8/manifest.json",
       "artwork": [
-        "arcade-goals",
-        "pixel-cherry-star"
+        "pixel-cherry-star",
+        "cherry-claw-cabinet",
+        "mint-gamepad",
+        "pixel-dragon",
+        "mint-game-cartridge"
+      ],
+      "images": [
+        "widget-pixel-cherry-star.91842c59.webp",
+        "widget-cherry-claw-cabinet.0275dfad.webp",
+        "widget-mint-gamepad.8156d1c0.webp",
+        "widget-pixel-dragon.da54e017.webp",
+        "widget-mint-game-cartridge.90aeace0.webp"
+      ],
+      "hashes": [
+        "91842c590b0e6744b4f34cc5508f38aa208efdf9fc17acb91c728d39dd2ed785",
+        "0275dfad5989f5062ea8681d685f02e582d715659a861e254690e4a9e6033e55",
+        "8156d1c06827e52f9d27069b90fab1064197ddb9e934329e7eaf59df0cf4736c",
+        "da54e0178135275b29df00b15e20c23f23ce40858f61ec6007f32a265157a1d6",
+        "90aeace06360a809a26dc837488442c25e8a4f93a3b984dffd8b2d5108310dde"
       ]
     },
     "cherry-ribbon": {
-      "manifest": "glaze-packs-v11/art__cherry-ribbon__v6__manifest.json",
+      "manifest": "art/cherry-ribbon/v8/manifest.json",
       "artwork": [
         "ribbon-locket",
-        "hero-small"
+        "hero-small",
+        "art-20261107-cherry-needlebook",
+        "art-20261107-ribbon-brooch",
+        "cherry-ballet-slippers"
+      ],
+      "images": [
+        "widget-ribbon-locket.e88c8d14.webp",
+        "widget-small.3ad8ea5d.webp",
+        "widget-cherry-needlebook.57fcb7d3.webp",
+        "widget-ribbon-brooch.ba15bdb7.webp",
+        "widget-cherry-ballet-slippers.d521bdb0.webp"
+      ],
+      "hashes": [
+        "e88c8d14e59484298150a8aa3a90103a62471608070aec3704c745a83a01f8b7",
+        "3ad8ea5de950ed57414c2c666d710bcd9635178104ae91c9f73758dcf74d88ab",
+        "57fcb7d3c1754b457e01882b18c087eab4b9eba17b8a51f93c2fef21b278a145",
+        "ba15bdb70aa08bb74d4a5accd89ca073bfaac92283e89e9fac7129b821992342",
+        "d521bdb0ded7400452ae10de8123a296f2986811fff311ce62252b548b9651fa"
       ]
     },
     "chromatic-lab": {
-      "manifest": "glaze-packs-v11/art__chromatic-lab__v6__manifest.json",
+      "manifest": "art/chromatic-lab/v7/manifest.json",
       "artwork": [
         "molecular-butterfly",
         "prism-beaker-garden",
         "spiral-glass",
-        "hero-small"
+        "hero-small",
+        "prism-microscope"
+      ],
+      "images": [
+        "widget-molecular-butterfly.6c1a553b.webp",
+        "widget-prism-beaker-garden.513390be.webp",
+        "widget-spiral-glass.8fb4d7f3.webp",
+        "widget-small.cff91391.webp",
+        "widget-prism-microscope.e7a4ba02.webp"
+      ],
+      "hashes": [
+        "6c1a553b41da26bf6dbe7f4d5fd447df22efa4ab665e229c63fe3b4de347bd65",
+        "513390be4cd5fb9d6edcfdb0394a8eb63e9696d27be79f9c0e8512d2f14f3998",
+        "8fb4d7f3ef9ff2c2fb91b1823eda4020c4ef44bcbd60888064da400e8cf61198",
+        "cff9139118f0b5301a88cbf524c0c0057db10e22732f9d865eb0b35a6210fe8e",
+        "e7a4ba02b62c74f00e45645e95facb2d65dbad689d3fc8c64d3ee470ab4fcba0"
       ]
     },
     "cicada-linen": {
-      "manifest": "glaze-packs-v11/art__cicada-linen__v4__manifest.json",
+      "manifest": "art/cicada-linen/v5/manifest.json",
       "artwork": [
         "cicada-portrait",
         "wing-venation",
-        "hero-small"
+        "hero-small",
+        "lichen-bark-curl",
+        "fern-fiddlehead"
+      ],
+      "images": [
+        "widget-cicada-portrait.ab0db0ad.webp",
+        "widget-wing-venation.ba32f99f.webp",
+        "widget-small.582657b0.webp",
+        "widget-lichen-bark-curl.e482ace4.webp",
+        "widget-fern-fiddlehead.a42d6edc.webp"
+      ],
+      "hashes": [
+        "ab0db0ad9b2f8705320ea178298d237b6aa1adf51f6b593813b44fa617f6b6db",
+        "ba32f99f6d082a3aeb8a0c79aecd997a61ea5a834c987b6078bf3b6c5a98cf0e",
+        "582657b0752f560ac0183dadb884613a7c10ca25f670533fe2685e68083c3908",
+        "e482ace413f025738afff53dfaee3832435314e3ca65f9e466870c071685d0fe",
+        "a42d6edcf29aaf33c1d74a77b054a31417ba6043cc26aeef1b786f74ed19afcc"
       ]
     },
     "cloud-atelier": {
-      "manifest": "glaze-packs-v11/art__cloud-atelier__v6__manifest.json",
+      "manifest": "art/cloud-atelier/v7/manifest.json",
       "artwork": [
         "balloon-skiff",
         "cloud-kite",
         "paper-boat",
-        "hero-small"
+        "hero-small",
+        "origami-cloud-swan"
+      ],
+      "images": [
+        "widget-balloon-skiff.4784ae87.webp",
+        "widget-cloud-kite.27ce3e95.webp",
+        "widget-paper-boat.27dcb9cd.webp",
+        "widget-small.ca139b9f.webp",
+        "widget-origami-cloud-swan.b0d895ec.webp"
+      ],
+      "hashes": [
+        "4784ae87b8f671208101c6cf44621c3d5784591d5b96bf858acafd059ecb8132",
+        "27ce3e95bd59c2a04ea8f040eb8979ef2135e6f6e0820dad4467d92bda68d6f3",
+        "27dcb9cdfdd6e421ac4652464469c10213a8629be384330a0db85d7ac3ee110d",
+        "ca139b9ffb166fb0bc608d1a4db51100e2b7f573c3fd969dc90107f123630f14",
+        "b0d895ec35eb02c4a03f0931259b9d67703d17d7be65a9dac997e425ba66c489"
       ]
     },
     "cloudwash": {
-      "manifest": "glaze-packs-v11/art__cloudwash__v6__manifest.json",
+      "manifest": "art/cloudwash/v8/manifest.json",
       "artwork": [
         "clothespin-bird",
         "cloud-laundry-basket",
         "star-wash",
-        "hero-small"
+        "blue-laundry-iron",
+        "cloud-soap-dish"
+      ],
+      "images": [
+        "widget-clothespin-bird.424c32a2.webp",
+        "widget-cloud-laundry-basket.b2ae0508.webp",
+        "widget-star-wash.2b34bf02.webp",
+        "widget-blue-laundry-iron.b0e0287b.webp",
+        "widget-cloud-soap-dish.c04a8a6e.webp"
+      ],
+      "hashes": [
+        "424c32a2c160b9d3e67a74656c44ec15633737372d645e038b7e56c68128d3ff",
+        "b2ae0508a0ac6a9e0c15f448d8e2c5416e2435270dca70a5271295df1c334497",
+        "2b34bf0272fe5cbf6a586dd4f388d1cfb5f87a54b6d13f1c9b152310c4c3ce64",
+        "b0e0287be2d1bf671d8b204f466c33be63e5668ef98839e23b8e9068b629ac38",
+        "c04a8a6e0163f8190b151de8817d531e75f1412301d3a1172791fb73a181de29"
       ]
     },
     "clover-nap": {
-      "manifest": "glaze-packs-v11/art__clover-nap__v6__manifest.json",
+      "manifest": "art/clover-nap/v8/manifest.json",
       "artwork": [
         "daisy-ladybird",
-        "hero-small"
+        "hero-small",
+        "art-20261107-acorn-teacup",
+        "art-20261107-clover-nest",
+        "clover-snail-parasol"
+      ],
+      "images": [
+        "widget-daisy-ladybird.c95b5f93.webp",
+        "widget-small.fa370305.webp",
+        "widget-acorn-teacup.8f3912cd.webp",
+        "widget-clover-nest.28a4dae7.webp",
+        "widget-clover-snail-parasol.beab03ee.webp"
+      ],
+      "hashes": [
+        "c95b5f93b962047c27f2ffa74adb27a2fdedef2d3ea515388883b634c6393cfd",
+        "fa370305cadc8a87c077707615f950b7723a9974389667574dded123bda60a15",
+        "8f3912cd8c41a6b843e5d27ec180c7053975240b89665bfbfd19f22da3f4dff2",
+        "28a4dae7c9db0a840a0711406c57cc400257e347ced0c6e432e64064c7b4cde6",
+        "beab03eeb141fa193478f31443b8bd57106bf2057a19d056ff5ca433d2bd625c"
       ]
     },
     "cobalt-caravan": {
-      "manifest": "glaze-packs-v11/art__cobalt-caravan__v6__manifest.json",
+      "manifest": "art/cobalt-caravan/v7/manifest.json",
       "artwork": [
         "lapis-compass",
         "oasis-bird",
         "sand-cat",
-        "hero-small"
+        "hero-small",
+        "lapis-dune-scarab"
+      ],
+      "images": [
+        "widget-lapis-compass.529ff43b.webp",
+        "widget-oasis-bird.6a06c2c3.webp",
+        "widget-sand-cat.e189ed45.webp",
+        "widget-small.c090a4cb.webp",
+        "widget-lapis-dune-scarab.cb0909ba.webp"
+      ],
+      "hashes": [
+        "529ff43b394eec6999d1e5d437482fea887a688b4ebf74c9b72d906634c9199a",
+        "6a06c2c3b52cdb0ca1fc473a9578dff4a201d4c01132c04480c19829feea0292",
+        "e189ed4579fb02d61af772fe723c56469a9994d3f1dbf98b7fd3310013743398",
+        "c090a4cb20ba8c1323de70c4f944212eafc37c3c51bc407a0fa22b8a33b98686",
+        "cb0909ba05570feb1a3b8be006246b52ac53a883139764642ed5ba49a7e23b48"
       ]
     },
     "cobalt-ribbon": {
-      "manifest": "glaze-packs-v2/art__cobalt-ribbon__v1__manifest.json",
+      "manifest": "art/cobalt-ribbon/v2/manifest.json",
       "artwork": [
         "brushed-blue",
         "folded-fan",
-        "ribbon-loop"
+        "ribbon-loop",
+        "metal-feather",
+        "cobalt-cairn"
+      ],
+      "images": [
+        "widget-brushed-blue.8b8f2052.webp",
+        "widget-folded-fan.0fdb2603.webp",
+        "widget-ribbon-loop.8f16ef65.webp",
+        "widget-metal-feather.1636c830.webp",
+        "widget-cobalt-cairn.2f26bdaa.webp"
+      ],
+      "hashes": [
+        "8b8f2052cfc754e2acbf3134fdf5d794ff5d50d20527d5fbbb35b7d759ba9f3d",
+        "0fdb26039cee5a5ecb79463e52104233c1219df894039c68a9d6bc94c3c0c1eb",
+        "8f16ef656c0ed053d61e66599fbdc18a139549b15d96955001f071b6cf1f3a17",
+        "1636c830bf565868c0bbccb9304c337c212316488928f325c1a9ec513f8fcd69",
+        "2f26bdaaaf3b7d143bca071fb29484b973daf2a2687726c3e808647a441114ed"
       ]
     },
     "concertina-rose": {
-      "manifest": "glaze-packs-v2/art__concertina-rose__v1__manifest.json",
+      "manifest": "art/concertina-rose/v2/manifest.json",
       "artwork": [
         "bellows-fold",
         "pearl-buttons",
-        "rosewood-concertina"
+        "rosewood-concertina",
+        "leather-handstrap",
+        "brass-tuning-fork"
+      ],
+      "images": [
+        "widget-bellows-fold.b4ed9f2e.webp",
+        "widget-pearl-buttons.1de25f45.webp",
+        "widget-rosewood-concertina.5b4f3ac8.webp",
+        "widget-leather-handstrap.439a7182.webp",
+        "widget-brass-tuning-fork.011b9c51.webp"
+      ],
+      "hashes": [
+        "b4ed9f2e061d9cbd357282ea81290a47e8831db4fdc1a4353aa20fbe0342f24a",
+        "1de25f451cde7e192a72a4577b1a3b0a028610c4f39868c5f156aaf53eec4339",
+        "5b4f3ac8d1d36bebd32a74b7146987c3f64a986784fd916c01ffdfcb2c71f6cb",
+        "439a7182d2afff590798e4c7b38e7d11086c224ff2613ef72118eda8dc752d3a",
+        "011b9c516272baae994fb870a1d3d693d13a26ba3a6087c454e21c1841d4bdbc"
       ]
     },
     "copper-circuit": {
-      "manifest": "glaze-packs-v2/art__copper-circuit__v1__manifest.json",
+      "manifest": "art/copper-circuit/v3/manifest.json",
       "artwork": [
         "chip-island",
         "copper-coil",
-        "trace-flow"
+        "copper-fin-array",
+        "ceramic-transistor",
+        "copper-vacuum-tube"
+      ],
+      "images": [
+        "widget-chip-island.f7acf499.webp",
+        "widget-copper-coil.1bfbbc83.webp",
+        "widget-copper-fin-array.b911c243.webp",
+        "widget-ceramic-transistor.b3e3dfd4.webp",
+        "widget-copper-vacuum-tube.1a095551.webp"
+      ],
+      "hashes": [
+        "f7acf499165e27f98510769f261f9c9c60ed8eaf8d90f4b2df84ef6b71704ff1",
+        "1bfbbc8320a7602745f53394cf771ff7ddb764d877ce700f8969903ba6bc3b74",
+        "b911c243f62e30cf0621341432c3167d3451047f087fd5b647550b797749f4b8",
+        "b3e3dfd48842647f441fb60ea9824745acee3c6ea517a9313d92d83efd2205e0",
+        "1a0955512caebd0edf579ae199f6ec5584097f8abef3a7c9982946bbeb78a94f"
       ]
     },
     "crimson-reverie": {
-      "manifest": "glaze-packs-v11/art__crimson-reverie__v6__manifest.json",
+      "manifest": "art/crimson-reverie/v7/manifest.json",
       "artwork": [
         "crimson-fan",
         "silk-crane",
         "silk-dragon",
-        "hero-small"
+        "hero-small",
+        "crimson-silk-koi"
+      ],
+      "images": [
+        "widget-crimson-fan.ed2ff03b.webp",
+        "widget-silk-crane.cc874af2.webp",
+        "widget-silk-dragon.2b6c968b.webp",
+        "widget-small.767e4b93.webp",
+        "widget-crimson-silk-koi.92f1ea37.webp"
+      ],
+      "hashes": [
+        "ed2ff03b19fd5e4188a1f01dd0386151a39048add7fff3df79c2ec18010f26dc",
+        "cc874af2f71d423a92388394e306bf94f609dc71420399f90db9ca80aa0746b5",
+        "2b6c968b4a63e1f72d74e2db339d8915b9325d857be862687bfc5ed6a47b4819",
+        "767e4b934f2c01a01e526e91db4fead2af01bd9f45ab4ef81b4411f3e34f9f8c",
+        "92f1ea371866b9d1304643f85556d1fe336f4b7212220ebd8d2316a4dada2c21"
       ]
     },
     "crumbkin": {
-      "manifest": "glaze-packs-v11/art__crumbkin__v6__manifest.json",
+      "manifest": "art/crumbkin/v7/manifest.json",
       "artwork": [
-        "crumb-goals",
-        "nougat-flowerpot"
+        "nougat-flowerpot",
+        "croissant-sailboat",
+        "biscuit-windmill",
+        "marzipan-squirrel",
+        "biscuit-treasure-chest"
+      ],
+      "images": [
+        "widget-nougat-flowerpot.cc66f541.webp",
+        "widget-croissant-sailboat.7e2ae57b.webp",
+        "widget-biscuit-windmill.62df35a5.webp",
+        "widget-marzipan-squirrel.a6cfdba3.webp",
+        "widget-biscuit-treasure-chest.2b6520db.webp"
+      ],
+      "hashes": [
+        "cc66f5411eb109d9e7eff0caeb6ff3acd4bcf4e807f5736c6790c65cc2a2071e",
+        "7e2ae57be84d4441ea81b6da82bae2557f71b9cc0d40555dc0c9cf2210919834",
+        "62df35a5b2fa22688587d7ad64fddaa8f187672f041b25806c3796703793b413",
+        "a6cfdba3b1cff0da7c5d10fbca5f35df9152381de3cd3ded932b86066212a48a",
+        "2b6520db1330db524c58ccaab6b9bb2c150eaf61d85a618a829f56f8dede7032"
       ]
     },
     "curlfin-cove": {
-      "manifest": "glaze-packs-v11/art__curlfin-cove__v6__manifest.json",
+      "manifest": "art/curlfin-cove/v8/manifest.json",
       "artwork": [
         "paper-starfish",
         "quilled-nautilus",
         "shell-nap",
-        "hero-small"
+        "quilled-coral-crab",
+        "quilled-sea-turtle"
+      ],
+      "images": [
+        "widget-paper-starfish.6e87e8b5.webp",
+        "widget-quilled-nautilus.1e41b3f1.webp",
+        "widget-shell-nap.fece485d.webp",
+        "widget-quilled-coral-crab.7cfc252e.webp",
+        "widget-quilled-sea-turtle.25a31ab1.webp"
+      ],
+      "hashes": [
+        "6e87e8b54aebe60f711bc9f096d817ee85eddfbe384749c8759b39906bb96563",
+        "1e41b3f1ef9d095aaa4ebb4956cf0b244ae7f04be076b409098b3f78d19f5ac0",
+        "fece485da24cdaef550813bdc31907c89f3fc1648161bfb48eb083cb59ce0aa2",
+        "7cfc252ed6288043e975983f8aa3b7ede2e8a254c69562618be31933f32cb4f7",
+        "25a31ab1b8cd9e91ad0538fd7cd8cbfca3ed6282f42e92707795fe26ed1cbd49"
       ]
     },
     "curling-frost": {
-      "manifest": "glaze-packs-v2/art__curling-frost__v1__manifest.json",
+      "manifest": "art/curling-frost/v2/manifest.json",
       "artwork": [
         "granite-stone",
         "house-rings",
-        "sweep-brush"
+        "sweep-brush",
+        "pine-green-glove",
+        "ice-rosette"
+      ],
+      "images": [
+        "widget-granite-stone.55a7234e.webp",
+        "widget-house-rings.cf9a43ae.webp",
+        "widget-sweep-brush.5bdf00a2.webp",
+        "widget-pine-green-glove.b5a3cb21.webp",
+        "widget-ice-rosette.06335dd0.webp"
+      ],
+      "hashes": [
+        "55a7234e7ad8f85ad5ae34246e9de05611aeb0afddaff80915a632ae39a37b90",
+        "cf9a43aed5971a8fad95e64fd9ad2a4517c9cee76ec3babbbc6f735a99e87671",
+        "5bdf00a2f8b356b6409b955a39d98629d105a7f6d1355d4819a1685a05ae8dbb",
+        "b5a3cb21cd64017ec4ed39855022767a5536f8a56c9c630fa1a41b5d3ed7d315",
+        "06335dd0ec123ebcafbf7de3932ed2ac97b7be6295d8a19e70e6c2fe7ff1f00d"
       ]
     },
     "desert-afterglow": {
-      "manifest": "glaze-packs-v11/art__desert-afterglow__v6__manifest.json",
+      "manifest": "art/desert-afterglow/v6/manifest.json",
       "artwork": [
         "crescent-moon",
         "desert-scarab",
         "sandstone-arch",
         "pyramid",
         "solstice-seal"
+      ],
+      "images": [
+        "widget-crescent-moon.bd9ad406.webp",
+        "widget-desert-scarab.ce7b90e0.webp",
+        "widget-sandstone-arch.60c2e33d.webp",
+        "widget-pyramid.3bd50f14.webp",
+        "widget-solstice-seal.d86ce31c.webp"
+      ],
+      "hashes": [
+        "bd9ad406e97fc27f8a0bed06f8e5f1be574f85e14e8a970db79b70c1bd6fa856",
+        "ce7b90e012b8e921dcf1a9395639f3c18dfab94fdee2aeeb9077660bec2fca59",
+        "60c2e33d303816ffaf46985087e227243fc80b5fd002b9519f5f8d1a468ed7a2",
+        "3bd50f143108145fb18400228e730495f0401c7d42972d02d4f6c76832d65ed0",
+        "d86ce31cc437754ef3b7bdc086d35bb26e539d1392b8dae7bbba15b22ecde967"
       ]
     },
     "dewdrop-den": {
-      "manifest": "glaze-packs-v11/art__dewdrop-den__v6__manifest.json",
+      "manifest": "art/dewdrop-den/v7/manifest.json",
       "artwork": [
         "fern-dew-bead",
         "moss-lantern-ball",
         "raindrop-den",
-        "hero-small"
+        "hero-small",
+        "opal-glass-snail"
+      ],
+      "images": [
+        "widget-fern-dew-bead.afccf5b9.webp",
+        "widget-moss-lantern-ball.dd91bd13.webp",
+        "widget-raindrop-den.a0755213.webp",
+        "widget-small.152fdcd3.webp",
+        "widget-opal-glass-snail.1a070417.webp"
+      ],
+      "hashes": [
+        "afccf5b9beb3e96814484023dca4a94b8c6aeac21e0fef2b04dc21cbe6e17f3a",
+        "dd91bd13b156b386515ac6289709a54c2e7297cb0d169f33e08601a238a93c79",
+        "a075521357472089e9c0e2edad2b40120c0493490b9f8e9f3ff4683a6163a366",
+        "152fdcd3fc107e56813341c48eb8c947ea4dbf4c6bf289c6edd6b2c6d99616b5",
+        "1a0704170a440c7eef5d8785f69ee5b09725577273e7bbb1cfa40b90c5fb95ef"
       ]
     },
     "disco-drift": {
-      "manifest": "glaze-packs-v11/art__disco-drift__v6__manifest.json",
+      "manifest": "art/disco-drift/v8/manifest.json",
       "artwork": [
         "mirror-snapshot",
-        "hero-small"
+        "hero-small",
+        "art-20261107-disco-cassette",
+        "art-20261107-prism-headphones",
+        "mirror-tambourine"
+      ],
+      "images": [
+        "widget-mirror-snapshot.c55f10e6.webp",
+        "widget-small.922aeb9a.webp",
+        "widget-disco-cassette.116e255a.webp",
+        "widget-prism-headphones.2de162fc.webp",
+        "widget-mirror-tambourine.9f0f180b.webp"
+      ],
+      "hashes": [
+        "c55f10e6ea78faa5ee56e68006d16f0d04390e2d38560fe42dcf730a163b0fd4",
+        "922aeb9ac6305e938295b348c2dacb89759beb41e28f2bc4b9d6329911630307",
+        "116e255abd5466deb12a19e04605a16457db3fce49b5a200c2b1e88e7dd4869d",
+        "2de162fc06c9b16c607b0ca4b7bfcd355bb2e6fa7c4e31286045943d82360672",
+        "9f0f180ba8b2dbb8e3efa99c5056556fa5b794c9b7b7e8862929214af48deffd"
       ]
     },
     "dunesilk": {
-      "manifest": "glaze-packs-v11/art__dunesilk__v6__manifest.json",
+      "manifest": "art/dunesilk/v9/manifest.json",
       "artwork": [
         "wind-lines",
-        "hero-small"
+        "art-20261106-desert-rose",
+        "art-20261106-dune-shell",
+        "wind-carved-arch",
+        "sandstone-fennec"
+      ],
+      "images": [
+        "widget-wind-lines.7ee03f14.webp",
+        "widget-desert-rose.b227929b.webp",
+        "widget-dune-shell.b59b7690.webp",
+        "widget-wind-carved-arch.2fce4abd.webp",
+        "widget-sandstone-fennec.f5a4a4cf.webp"
+      ],
+      "hashes": [
+        "7ee03f141291fc62a1e13f400b84ae47f12f24b3f368860c6d4bbb68bb824e9f",
+        "b227929b59a73185a44a42ea2932261c84521b69fb60c945a565a7b74d5a4d71",
+        "b59b769009c7cc1a3bc7cf08927b7ff69e8240cfa90a8c12e7c04693478d6b0f",
+        "2fce4abd7bee57dbb4dc932971a9d171ded425dd82db9687432d3b3844a8efaa",
+        "f5a4a4cfeb1ea15be8db9e522773a93b930fc8626a34c7d2d74b8c6ac4008e67"
       ]
     },
     "ember-rift": {
-      "manifest": "glaze-packs-v11/art__ember-rift__v6__manifest.json",
+      "manifest": "art/ember-rift/v8/manifest.json",
       "artwork": [
         "cooling-lava",
-        "hero-small"
+        "hero-small",
+        "art-20261106-ember-geode",
+        "art-20261106-basalt-spires",
+        "obsidian-arrowhead"
+      ],
+      "images": [
+        "widget-cooling-lava.9ee0a84b.webp",
+        "widget-small.a7bfd27e.webp",
+        "widget-ember-geode.d193c494.webp",
+        "widget-basalt-spires.6e2c2f37.webp",
+        "widget-obsidian-arrowhead.c1ebb175.webp"
+      ],
+      "hashes": [
+        "9ee0a84bf2c3aae5b199df871492789aa1c63cc4674aece2a30d99d1580a157a",
+        "a7bfd27eb1c5e9133f3fe8d69a00bc6233faf528292dc9c392799b6982b20a6d",
+        "d193c49476733d1beb734326b82a3b03fbc65860993e889a144c247e518e5c66",
+        "6e2c2f373467fbb530a0f1410fe3c2403bcb1d3cf2ea3b2f373a077a277afc9a",
+        "c1ebb17536706706863a9fa8e912132631465fe6946122acf6c57696b65f1337"
       ]
     },
     "ember-workshop": {
-      "manifest": "glaze-packs-v11/art__ember-workshop__v6__manifest.json",
+      "manifest": "art/ember-workshop/v7/manifest.json",
       "artwork": [
         "ember-lizard",
         "tin-workshop-robot",
         "pocket-railway",
-        "hero-small"
+        "hero-small",
+        "copper-forge-anvil"
+      ],
+      "images": [
+        "widget-ember-lizard.7f4e27c2.webp",
+        "widget-tin-workshop-robot.f3ab8e48.webp",
+        "widget-pocket-railway.532bda46.webp",
+        "widget-small.ad6ae303.webp",
+        "widget-copper-forge-anvil.269b8789.webp"
+      ],
+      "hashes": [
+        "7f4e27c25b4612b12f7e3cf946bb85440f23c8e0978c3b42940bc522555987c6",
+        "f3ab8e48410011ee8da870488bde51d0079c024193b17cfdb8d8934d7a95374c",
+        "532bda464b3d643ede75679fb7ace7d5b2b9859ade64965a1fa319544b855772",
+        "ad6ae303eb95519a84aea5986a1ba44b96ec5bacf40b44d50db6b1f4a0b4da83",
+        "269b8789303f0b1c6d0240830b1dd701bd81057f4d2ec30ceb16fdd0611541d3"
       ]
     },
     "emerald-curio": {
-      "manifest": "glaze-packs-v11/art__emerald-curio__v6__manifest.json",
+      "manifest": "art/emerald-curio/v8/manifest.json",
       "artwork": [
         "fern-curio-orb",
-        "hero-small"
+        "hero-small",
+        "art-20261107-emerald-moth",
+        "art-20261107-antique-key",
+        "filigree-thimble"
+      ],
+      "images": [
+        "widget-fern-curio-orb.a47e0e84.webp",
+        "widget-small.f6a53438.webp",
+        "widget-emerald-moth.41587543.webp",
+        "widget-antique-key.27a61085.webp",
+        "widget-filigree-thimble.9adcb7a0.webp"
+      ],
+      "hashes": [
+        "a47e0e84c7ddac5d5d1ed6ff9dc65547f9eb163b3ef7d3a1c9e7df98336fbdfa",
+        "f6a53438f2506bb470b235c9c1baeaeef668ce74fca6fff069a184ec7ec9999a",
+        "41587543125e0ffe45d3a21a6ef1e99d697aeb7f7f90fe2fcf82c1c8aff9c993",
+        "27a61085dd0f414ea0ae1cb2046cf5db1bd818b262b90d128ff399ee3fd1e4d0",
+        "9adcb7a053a1722b203ed19b678bce76ffa5fcb7883324d6d546d84cbd9120f1"
       ]
     },
     "espresso-hour": {
-      "manifest": "glaze-packs-v14/art__espresso-hour__v7__manifest.json",
+      "manifest": "art/espresso-hour/v9/manifest.json",
       "artwork": [
         "coffee-plant-glass",
-        "hero-small"
+        "hero-small",
+        "art-20261107-copper-grinder",
+        "art-20261107-moka-tiramisu",
+        "walnut-portafilter"
+      ],
+      "images": [
+        "widget-coffee-plant-glass.a19df771.webp",
+        "widget-small.e5b40e68.webp",
+        "widget-copper-grinder.f4f8ab43.webp",
+        "widget-moka-tiramisu.fb78f49f.webp",
+        "widget-walnut-portafilter.bea2552d.webp"
+      ],
+      "hashes": [
+        "a19df7711121b2bb65e3cf50145548822b3b970f234233bf89db67e406b31c18",
+        "e5b40e68ecce38f83feba496b2dfadab6af178a063bd5e0803f23bf2e21b4cf0",
+        "f4f8ab43bdc22ec588f47cb84ac079901971d7b92eab89208b65276f1f153446",
+        "fb78f49fbd1ffdb3c92df5e2c0b00dcaa8089eb304b2f6cd62aab8d8ee6f2270",
+        "bea2552dfb461628d7cd74ecdf9e0b142c5ee9113119bc3efd5e86abf68e0f42"
       ]
     },
     "event-horizon": {
-      "manifest": "glaze-packs-v11/art__event-horizon__v6__manifest.json",
+      "manifest": "art/event-horizon/v7/manifest.json",
       "artwork": [
         "gravity-hourglass",
         "orbit-diamond",
         "lensing-study",
-        "hero-small"
+        "hero-small",
+        "photon-ribbon-helix"
+      ],
+      "images": [
+        "widget-gravity-hourglass.31652c4a.webp",
+        "widget-orbit-diamond.e06377b3.webp",
+        "widget-lensing-study.8d533096.webp",
+        "widget-small.7f167591.webp",
+        "widget-photon-ribbon-helix.e148e924.webp"
+      ],
+      "hashes": [
+        "31652c4a649dea8f67b9c96b67b2500e61f29474bf6bbb0339e495c9a7551060",
+        "e06377b3c8af0cb7133e2d24eb03d5f1352d0c839d84882a61eff589b447b4b9",
+        "8d533096b43e96beac1f143f5166f8a1f6efc7728b96b1ccc13408b623d8d943",
+        "7f167591ea7d99487f1359590ffbcde7cf7595ad97688b277207086efbfbfd26",
+        "e148e924cc6731ec1e746738ba260e89a437cfff8b2dd65e8284d12f924d1525"
       ]
     },
     "fern-and-brass": {
-      "manifest": "glaze-packs-v14/art__fern-and-brass__v7__manifest.json",
+      "manifest": "art/fern-and-brass/v9/manifest.json",
       "artwork": [
         "brass-leaf-beetle",
         "fern-glasshouse",
-        "hero-small"
+        "brass-acorn",
+        "brass-watering-can",
+        "brass-garden-trowel"
+      ],
+      "images": [
+        "widget-brass-leaf-beetle.78dc3cc0.webp",
+        "widget-fern-glasshouse.25659d29.webp",
+        "widget-brass-acorn.274ede4b.webp",
+        "widget-brass-watering-can.1a0b9adf.webp",
+        "widget-brass-garden-trowel.6280560e.webp"
+      ],
+      "hashes": [
+        "78dc3cc0a760dede45cd85e6d0985837dbb60c63bd6e348b44102eb2c78bcd21",
+        "25659d294beac074d5dfc81f5272dfa3be31e2f3c12a376ee6ec6db02f545961",
+        "274ede4bcd03ddb707a20e605b7b231aad65a50c0692ed934bbbb534d3497dbf",
+        "1a0b9adf5505234e82eb20ae81d90272bfe521c8a224c0966ba7a24c0d0d828a",
+        "6280560e7136bfaec0133bd89b808b536fd7cdbe707925fe433a9edfea2c7dc8"
       ]
     },
     "fig-nocturne": {
-      "manifest": "glaze-packs-v11/art__fig-nocturne__v4__manifest.json",
+      "manifest": "art/fig-nocturne/v5/manifest.json",
       "artwork": [
         "fig-pair",
         "rose-seeds",
-        "hero-small"
+        "hero-small",
+        "fig-wasp",
+        "fig-preserve-jar"
+      ],
+      "images": [
+        "widget-fig-pair.d9998af2.webp",
+        "widget-rose-seeds.0c18f551.webp",
+        "widget-small.61e63ac0.webp",
+        "widget-fig-wasp.f6f38814.webp",
+        "widget-fig-preserve-jar.d2028849.webp"
+      ],
+      "hashes": [
+        "d9998af251867a15204fbf3f3c6c82b8713ab59874abefc58c2d4afe9097c5bd",
+        "0c18f5515e4d6f753a31964e5ff3287d06315d8b52fff10f05ee7d988896a764",
+        "61e63ac0bb36604f6583f9621bdd88f40b61c2470e28d9c0b26534d946c553b3",
+        "f6f3881402c55123ae1477312e4dbe2c92c30004ba11ebdd1538533cbd9e2423",
+        "d2028849487db02e432a429828fdf2488892225d125f5f8ca0703c2cadd356c0"
       ]
     },
     "firefly-grove": {
-      "manifest": "glaze-packs-v11/art__firefly-grove__v6__manifest.json",
+      "manifest": "art/firefly-grove/v7/manifest.json",
       "artwork": [
         "firefly-jar",
         "mosswood-door",
         "sleeping-fox",
-        "hero-small"
+        "hero-small",
+        "mossy-hedgehog"
+      ],
+      "images": [
+        "widget-firefly-jar.af5adc05.webp",
+        "widget-mosswood-door.2f87b60d.webp",
+        "widget-sleeping-fox.abe6b02a.webp",
+        "widget-small.c427fe3d.webp",
+        "widget-mossy-hedgehog.99811653.webp"
+      ],
+      "hashes": [
+        "af5adc05f55e924f2338391367ea9a8ab0da41d4783283c841e93f41df261414",
+        "2f87b60d78a439bf3e545b0e7b227fa288335094980af46bafa4885378bd053c",
+        "abe6b02a68e5cf573f4c88d8833619515e49004768710889b9def761dc706b61",
+        "c427fe3d13f8eb1654c388f5cdd24de1f8d424c54adb9a7e5dcc54654e018160",
+        "9981165351f35d42c6cc150a2d410efb451fbbeede9e08173421067259a6e23b"
       ]
     },
     "floatplane-blue": {
-      "manifest": "glaze-packs-v2/art__floatplane-blue__v1__manifest.json",
+      "manifest": "art/floatplane-blue/v2/manifest.json",
       "artwork": [
         "floatplane-model",
         "pontoon-study",
-        "wood-propeller"
+        "wood-propeller",
+        "mooring-cleat",
+        "aviator-goggles"
+      ],
+      "images": [
+        "widget-floatplane-model.3ba24518.webp",
+        "widget-pontoon-study.a88808b4.webp",
+        "widget-wood-propeller.a6a5830a.webp",
+        "widget-mooring-cleat.32eb6796.webp",
+        "widget-aviator-goggles.13ef94cb.webp"
+      ],
+      "hashes": [
+        "3ba24518175506d9c122e016f591264d6c0258ac10d0512c2ba06b4d317b0703",
+        "a88808b4710888c323d94d806380c693ecb3d7754613123a10b4f665e305c376",
+        "a6a5830a8aa37c335bffe262bb0702ce44f1e19c5f07851054e4f00b6df4c0b0",
+        "32eb6796baf074cc467e8d64e52ed04c5e221e38d5aa3a09361c78b58e2e9c45",
+        "13ef94cbfd633ab8a51170cf6344ad7452a4026a636676da0d4723800804e3c8"
       ]
     },
     "fossil-cove": {
-      "manifest": "glaze-packs-v11/art__fossil-cove__v6__manifest.json",
+      "manifest": "art/fossil-cove/v8/manifest.json",
       "artwork": [
         "fossil-ammonite",
-        "hero-small"
+        "hero-small",
+        "art-20261107-amber-inclusion",
+        "art-20261107-mosaic-trilobite",
+        "sandstone-shark-tooth"
+      ],
+      "images": [
+        "widget-fossil-ammonite.00c38063.webp",
+        "widget-small.5bde6cf5.webp",
+        "widget-amber-inclusion.93d30d10.webp",
+        "widget-mosaic-trilobite.c8b62de9.webp",
+        "widget-sandstone-shark-tooth.38a709e6.webp"
+      ],
+      "hashes": [
+        "00c38063c56a4372cbb54097134691a1c0bee82c16b087728276475ea6d72d19",
+        "5bde6cf5e98a455d56c0ecd57fabf759e7f4ff9634b705985c9abee98450d71a",
+        "93d30d10a0e9c0af7889b6c4782cc48c410c73e52983b75e9c03de9399b2f280",
+        "c8b62de9a8ee20c6dcd8ca21d83be5f30341fd45930152b3226572582348eaf9",
+        "38a709e6791bc55c66b4b07666ff2cbe28a2182d2e2a2cf947f4b5b4612152e9"
       ]
     },
     "froggy-picnic": {
-      "manifest": "glaze-packs-v11/art__froggy-picnic__v6__manifest.json",
+      "manifest": "art/froggy-picnic/v8/manifest.json",
       "artwork": [
         "strawberry-basket",
-        "hero-small"
+        "hero-small",
+        "art-20261107-lily-teapot",
+        "art-20261107-dewdrop-sandwich",
+        "lily-picnic-chair"
+      ],
+      "images": [
+        "widget-strawberry-basket.425136d4.webp",
+        "widget-small.526a81d6.webp",
+        "widget-lily-teapot.ec1b0dff.webp",
+        "widget-dewdrop-sandwich.aab24fd6.webp",
+        "widget-lily-picnic-chair.5c9f5375.webp"
+      ],
+      "hashes": [
+        "425136d4a99dba36529a869372f5032715772a1db3cc2f657219175e10afe01a",
+        "526a81d62003da57122760376297f0baa2376f179317b244519c3ba4233d77c1",
+        "ec1b0dfff0b10efaa04f12281cb643677947176c20fde408250ee08730b8940e",
+        "aab24fd626e08ef33b1796233921b27289799a83ef8820bbb7720e6eae17bc2f",
+        "5c9f537508fab278bfe2b3dd05474c755546eab20bdf95eedcc0a386ac4ccdee"
       ]
     },
     "frostglass-passage": {
-      "manifest": "glaze-packs-v11/art__frostglass-passage__v6__manifest.json",
+      "manifest": "art/frostglass-passage/v7/manifest.json",
       "artwork": [
         "glacier-pebble",
         "ice-lantern",
         "frost-fox",
-        "hero-small"
+        "hero-small",
+        "frostglass-pinecone"
+      ],
+      "images": [
+        "widget-glacier-pebble.c0d83cc8.webp",
+        "widget-ice-lantern.5985bcd1.webp",
+        "widget-frost-fox.a661798b.webp",
+        "widget-small.460634e4.webp",
+        "widget-frostglass-pinecone.7d5516dc.webp"
+      ],
+      "hashes": [
+        "c0d83cc89a81abbf41f51fcf97f40eab0d29d3557de4761e4264214940123b9b",
+        "5985bcd1aee7e5644dcbcb249246c721be7d32277245008e1a4c40bf017735a0",
+        "a661798bc3b09c1a2886c26ee7a7741a87d88f62895bbb0929b278812b62f976",
+        "460634e4d3efb61cbf976b561974e7c8bb746d8e97c539cec3891e6d97993854",
+        "7d5516dc1ccab40cfe01ca470f7bf98979fa88e3e8312f6edb78130ac834782e"
       ]
     },
     "gambit-house": {
-      "manifest": "glaze-packs-v11/art__gambit-house__v6__manifest.json",
+      "manifest": "art/gambit-house/v7/manifest.json",
       "artwork": [
         "onyx-rook",
         "pawn-pair",
         "oxblood-knight",
-        "hero-small"
+        "hero-small",
+        "ivory-bishop"
+      ],
+      "images": [
+        "widget-onyx-rook.69d0f856.webp",
+        "widget-pawn-pair.61a51a48.webp",
+        "widget-oxblood-knight.d5dece21.webp",
+        "widget-small.54d87768.webp",
+        "widget-ivory-bishop.cdaa7960.webp"
+      ],
+      "hashes": [
+        "69d0f85667d398f57365bc3f4196c1c847b19adba2b774b43c52a0515fedf87e",
+        "61a51a48a143268ea1eaaf78af9571ba556d6eec9d80f775bf61745bb95d83d3",
+        "d5dece2147872ad56ffa892d5ab06dbbea9a42ca0feaf19bf4a3d4dddf0952df",
+        "54d87768e3fda7438a916d7eccf6dde513d8c7edd31a45ee03c09e171d6ab679",
+        "cdaa7960dc59dbadfcf72f4fce6b519191db373bd10fcd98953acad830a42377"
       ]
     },
     "ginkgo-hour": {
-      "manifest": "glaze-packs-v11/art__ginkgo-hour__v6__manifest.json",
+      "manifest": "art/ginkgo-hour/v9/manifest.json",
       "artwork": [
         "production-20261101-fan-leaf",
-        "hero-small"
+        "art-20261106-ginkgo-ink",
+        "art-20261106-golden-leaf-mobile",
+        "golden-ginkgo-fruit",
+        "pressed-ginkgo-bookmark"
+      ],
+      "images": [
+        "widget-production-20261101-fan-leaf.b123eb23.webp",
+        "widget-ginkgo-ink.e4ccbf02.webp",
+        "widget-golden-leaf-mobile.5f40a92b.webp",
+        "widget-golden-ginkgo-fruit.eab88e34.webp",
+        "widget-pressed-ginkgo-bookmark.41a27d2a.webp"
+      ],
+      "hashes": [
+        "b123eb23f7e170ea6ab60dea5c6417e47e5cf8116f098b1b5ddf0924e2483503",
+        "e4ccbf02db92195dbca36c4656f0afe34c74802deea6f0dcd83157032c7c9e86",
+        "5f40a92bc6dfbea1c6fc486eaceb98acaf0b7b688600c45f823a45959d58e9a7",
+        "eab88e34cbd90783d5f520f295793338750c585bb92cbc412921b3046f978255",
+        "41a27d2a4b6b7912d893503f7104f038edae18f889b1f72e4f81ad424e676581"
       ]
     },
     "glacier-quiet": {
-      "manifest": "glaze-packs-v11/art__glacier-quiet__v6__manifest.json",
+      "manifest": "art/glacier-quiet/v8/manifest.json",
       "artwork": [
         "frost-feather",
         "glacial-iceberg",
         "frozen-bubbles",
-        "hero-small"
+        "dendritic-snow-crystal",
+        "glacial-cave-arch"
+      ],
+      "images": [
+        "widget-frost-feather.c0226a56.webp",
+        "widget-glacial-iceberg.e46a964e.webp",
+        "widget-frozen-bubbles.c109808d.webp",
+        "widget-dendritic-snow-crystal.5a3e2617.webp",
+        "widget-glacial-cave-arch.cbe4a197.webp"
+      ],
+      "hashes": [
+        "c0226a5636ca21afa2f14bf1a8ec0351412761f43095af155f6bd8ec397b7e41",
+        "e46a964eb9d50f3bad20273c7bd16c616fb74e85452c379c31e371eb6c5feaf3",
+        "c109808dc981bdb48598b5eead810c78680e69dbe1673f4e873e24493895f46f",
+        "5a3e2617775722b72310165239c5c9e07cdfe9e141653ea76e7844d0ec034110",
+        "cbe4a1971794b92f36536ff8e206e7634247558d74270d3269df4e8316c1f74e"
       ]
     },
     "glider-nook": {
-      "manifest": "glaze-packs-v3/art__glider-nook__v1__manifest.json",
+      "manifest": "art/glider-nook/v2/manifest.json",
       "artwork": [
         "felt-leaves",
-        "leaf-progress",
         "seed-keeper",
-        "winglet"
+        "winglet",
+        "felt-acorn-cradle",
+        "felt-toadstool-stool"
+      ],
+      "images": [
+        "widget-felt-leaves.d828f003.webp",
+        "widget-seed-keeper.18bb0117.webp",
+        "widget-winglet.0f022531.webp",
+        "widget-felt-acorn-cradle.b13d650e.webp",
+        "widget-felt-toadstool-stool.48ed80e6.webp"
+      ],
+      "hashes": [
+        "d828f00348c5af9429b8dc3cb96e2b19fcf21626147b804e8bba0249132c8f20",
+        "18bb0117301f3370af66613ec3c6c8a53c50e952bd7e6c598fef46879f063e9d",
+        "0f02253189516c952f8e507f463705f5bd2c50d87671d43c42f21c3885955814",
+        "b13d650e102b565b547898f7e4dc03e63d6e233a95a3d7189abad83469513116",
+        "48ed80e635dca3aff4fdf7a9eb0931e006e1900135f0d8f10edd3a98e31e55ce"
       ]
     },
     "heirloom-rouge": {
-      "manifest": "glaze-packs-v11/art__heirloom-rouge__v4__manifest.json",
+      "manifest": "art/heirloom-rouge/v5/manifest.json",
       "artwork": [
         "seed-crosscut",
         "vine-trio",
-        "hero-small"
+        "hero-small",
+        "garden-snips",
+        "tomato-blossom-truss"
+      ],
+      "images": [
+        "widget-seed-crosscut.0a1c7c63.webp",
+        "widget-vine-trio.3f107c3e.webp",
+        "widget-small.209d17cc.webp",
+        "widget-garden-snips.497d971b.webp",
+        "widget-tomato-blossom-truss.ac336d8e.webp"
+      ],
+      "hashes": [
+        "0a1c7c63b2c0358e5451cb23e16da7601d1d11fe065eda5137b123ab1acae743",
+        "3f107c3e2885f1012f8d27ca9ef1e86161f0a5a41647113fd39f5226588af9dd",
+        "209d17cc24c630c4e97bec912deeaa96955509599955bc840c4dcc70aa5d6e69",
+        "497d971b1cfe4f1189e427c5369f45b52ea418ffa1a1c02b69dcdb905f0852f3",
+        "ac336d8e15ccbba4230b1194c6d8d00c0ce224ba08016394d7aca05a9c7cc566"
       ]
     },
     "heron-reed": {
-      "manifest": "glaze-packs-v11/art__heron-reed__v4__manifest.json",
+      "manifest": "art/heron-reed/v5/manifest.json",
       "artwork": [
         "heron-still",
         "reed-rhythm",
-        "hero-small"
+        "hero-small",
+        "reed-nest",
+        "marsh-lily-bud"
+      ],
+      "images": [
+        "widget-heron-still.6324ab16.webp",
+        "widget-reed-rhythm.004b8c07.webp",
+        "widget-small.67227169.webp",
+        "widget-reed-nest.0b794e8b.webp",
+        "widget-marsh-lily-bud.c835c60f.webp"
+      ],
+      "hashes": [
+        "6324ab16b66ce91decd819b3de5d835f5ad2884995b18de1751ce0b1561260d9",
+        "004b8c079e4bc840b4a9eb532b8da6ab6671a0893b0b1d65af9097c18a3f2052",
+        "6722716948febf04324bde43e83102970ddce8ade1606e4fc9386a4e685c300a",
+        "0b794e8b0f281c4b74bdd68deace2d8b865f75288bf2668966942beeb08842e5",
+        "c835c60fa3c3e0cf6e2c1289a70bdfcda2828f26a5e40b8bf3d69b9298cefa20"
       ]
     },
     "honeywood": {
-      "manifest": "glaze-packs-v14/art__honeywood__v7__manifest.json",
+      "manifest": "art/honeywood/v9/manifest.json",
       "artwork": [
         "wool-moth",
-        "hero-small"
+        "hero-small",
+        "art-20261107-wax-lantern",
+        "art-20261107-honey-spoon",
+        "amber-hedgehog"
+      ],
+      "images": [
+        "widget-wool-moth.e4c27022.webp",
+        "widget-small.abd22da2.webp",
+        "widget-wax-lantern.22582b53.webp",
+        "widget-honey-spoon.3d92f141.webp",
+        "widget-amber-hedgehog.2d00dee3.webp"
+      ],
+      "hashes": [
+        "e4c270223768ca399ae20795ad7a63a500fb46b9c3a59110d6857c93392663fe",
+        "abd22da2fd05dd2b933c3ae9b37746c6147c57ff4330844eccc87193c052c630",
+        "22582b5395b8f14e1ea80fe21f4621c3bb9e751a3731d407112d3044313efa82",
+        "3d92f141034771fc3e01aafb33eea0a8e32f00f204bf6314df13af7b1610872a",
+        "2d00dee3030aa932baef3d1f09250f788474dc5d9d7dbbb6e0724529bd77392f"
       ]
     },
     "indigo-current": {
-      "manifest": "glaze-packs-v11/art__indigo-current__v6__manifest.json",
+      "manifest": "art/indigo-current/v7/manifest.json",
       "artwork": [
         "ink-stingray",
         "paper-lighthouse",
         "paper-harbour",
-        "hero-small"
+        "hero-small",
+        "paper-octopus"
+      ],
+      "images": [
+        "widget-ink-stingray.52c7ea9c.webp",
+        "widget-paper-lighthouse.1881cd47.webp",
+        "widget-paper-harbour.0d11a46e.webp",
+        "widget-small.b18b749a.webp",
+        "widget-paper-octopus.89acebad.webp"
+      ],
+      "hashes": [
+        "52c7ea9c5beebe22715541dda85e827e53d0e7139a74bda0f5f28148d621f8f0",
+        "1881cd472ee770a60d0cebcbf0811f06b5655f86ce6d89660fe62ef72fded27a",
+        "0d11a46e2eb0f8afb27628e7dcd88f94d42694963baab88630ecbd73a2872dc6",
+        "b18b749a36724bd4be1dc881372fe6b3c9bc7b292ca18b9aae17dd0147f86657",
+        "89acebad4ef6ae4153af6614bed369a7750155af605a555c22fffba0f524317f"
       ]
     },
     "jade-meridian": {
-      "manifest": "glaze-packs-v11/art__jade-meridian__v6__manifest.json",
+      "manifest": "art/jade-meridian/v7/manifest.json",
       "artwork": [
         "jade-bonsai",
         "mountain-crane",
         "valley-disc",
-        "hero-small"
+        "hero-small",
+        "jade-cloud-tortoise"
+      ],
+      "images": [
+        "widget-jade-bonsai.f7d72e61.webp",
+        "widget-mountain-crane.df44e688.webp",
+        "widget-valley-disc.b7e1ce0f.webp",
+        "widget-small.71282922.webp",
+        "widget-jade-cloud-tortoise.02164a33.webp"
+      ],
+      "hashes": [
+        "f7d72e613a2b3c5d17001ac694332fe9381bd7cc22ffefa98fddb5e3762ba247",
+        "df44e6887701defc9aee77f7240840534d547d92976191da5101809195d88797",
+        "b7e1ce0f00173d92a4b11b9893a89df41841c3bc019672cb0af81641540dac06",
+        "7128292232b6f644360bb32db52622b93df587058985e69c8d7ab19cc6aace7f",
+        "02164a33c5c8db705db23f71fbaa003d6535d463d838eaa4410c8a590bf43a57"
       ]
     },
     "jellylight": {
-      "manifest": "glaze-packs-v11/art__jellylight__v6__manifest.json",
+      "manifest": "art/jellylight/v8/manifest.json",
       "artwork": [
         "glass-anemone",
         "opal-stingray",
         "prism-drifter",
-        "hero-small"
+        "opal-sea-slug",
+        "opal-seahorse"
+      ],
+      "images": [
+        "widget-glass-anemone.0376a5e8.webp",
+        "widget-opal-stingray.6101c6ed.webp",
+        "widget-prism-drifter.30dd486a.webp",
+        "widget-opal-sea-slug.27753804.webp",
+        "widget-opal-seahorse.2ad85cb7.webp"
+      ],
+      "hashes": [
+        "0376a5e831462ccd052e99243680b899d879595091b4b61baf073f3a628c9e1a",
+        "6101c6ed4b7340a29716e942eb6a5b26196b6d7ea48aea52412301253c4678e1",
+        "30dd486a60d75ee8c44b3a0f2687f1994624adb0da58495966d1aeb248949f10",
+        "27753804e4940c935179dd577d3527c81063f0f9006fee234e3e1fc58b79b889",
+        "2ad85cb78ea45efb2af2a86f0caa3c875610dc60d5b6a615226a1e8f355957a8"
       ]
     },
     "juniper-mist": {
-      "manifest": "glaze-packs-v12/art__juniper-mist__v6__manifest.json",
+      "manifest": "art/juniper-mist/v9/manifest.json",
       "artwork": [
         "production-20261101-needle-study",
-        "hero-small"
+        "art-20261106-frosted-juniper",
+        "art-20261106-winter-terrarium",
+        "winter-wren",
+        "juniper-mortar-pestle"
+      ],
+      "images": [
+        "widget-production-20261101-needle-study.35091594.webp",
+        "widget-frosted-juniper.b97022af.webp",
+        "widget-winter-terrarium.dba50cb7.webp",
+        "widget-winter-wren.abd10c58.webp",
+        "widget-juniper-mortar-pestle.2238890a.webp"
+      ],
+      "hashes": [
+        "350915945b0e1ea58abb0302e7c980638005be852114184ab2cb626c075f7e93",
+        "b97022afa5853c6aec4fc4dd88f45b61ad99eee60ada5a59d2345a35f41ef8da",
+        "dba50cb7a1e8a62d0e478f86185450e4f63eb3ab9f211dc279a48a1166d24ec1",
+        "abd10c58f8fbf45ab53c4b5dacdf50b9fd0d830fe9ee834219e45a80de9fa9f8",
+        "2238890a34e7246ffdf9ccc31cf5837621c1ada3c01a19f83b5d7de3032636f8"
       ]
     },
     "kaleido-cobalt": {
-      "manifest": "glaze-packs-v3/art__kaleido-cobalt__v1__manifest.json",
+      "manifest": "art/kaleido-cobalt/v2/manifest.json",
       "artwork": [
         "cobalt-kaleidoscope",
         "mirror-triad",
-        "optical-rosette"
+        "optical-rosette",
+        "optical-spinning-top",
+        "glass-kingfisher"
+      ],
+      "images": [
+        "widget-cobalt-kaleidoscope.5e5fc1b3.webp",
+        "widget-mirror-triad.d8c3b7ab.webp",
+        "widget-optical-rosette.5168b0ae.webp",
+        "widget-optical-spinning-top.dfedb092.webp",
+        "widget-glass-kingfisher.b150f36d.webp"
+      ],
+      "hashes": [
+        "5e5fc1b3eeeee48ee74570c95973d1592cf1cca96b1e7ef772ff730c1a740c7d",
+        "d8c3b7ab526e74a6bcd1102ea512ffa560d9ed8fd99bfe2b4b62953bcfe06b61",
+        "5168b0ae05c8c3075fb7110d9ef4ecc7e09e15b19ccd0c0462410353b8cf0716",
+        "dfedb0925dfb7e23d90dea74e3cfcecee9ba891a3e3acae84e955f5b88c9d288",
+        "b150f36dde3a8f3ff69409ac942afcf1370b593c9b3fc6a825506c2fec150cf9"
       ]
     },
     "kingfisher-blue": {
-      "manifest": "glaze-packs-v12/art__kingfisher-blue__v6__manifest.json",
+      "manifest": "art/kingfisher-blue/v9/manifest.json",
       "artwork": [
         "production-20261101-reed-perch",
-        "hero-small"
+        "art-20261106-kingfisher-dive",
+        "art-20261106-river-feather",
+        "river-reed-nest",
+        "reed-bed-dragonfly"
+      ],
+      "images": [
+        "widget-production-20261101-reed-perch.5ff8cbc5.webp",
+        "widget-kingfisher-dive.a67ceba5.webp",
+        "widget-river-feather.a998b304.webp",
+        "widget-river-reed-nest.84b040c6.webp",
+        "widget-reed-bed-dragonfly.3cd1da16.webp"
+      ],
+      "hashes": [
+        "5ff8cbc5e76461d824f539e76ab4d61597436f0dc1a05dea9aa6f282ba671eb3",
+        "a67ceba5827f97b70d58aa640ecd054624c9b340ad356e327f66c7c7448bb034",
+        "a998b30443a1dc5baf768d01873a8ee548989a7e94b7ae64bcc4e60cea036098",
+        "84b040c675591b4fb95480c2fb747f082b355980e56edbdb929d6110a99d1592",
+        "3cd1da164fce5986c5e6c14468924e1cbd14832b963535bbec39aeab44bb5738"
       ]
     },
     "labradorite-hush": {
-      "manifest": "glaze-packs-v12/art__labradorite-hush__v4__manifest.json",
+      "manifest": "art/labradorite-hush/v6/manifest.json",
       "artwork": [
         "cleavage-lines",
         "stone-pair",
-        "hero-small"
+        "mineral-mortar",
+        "carved-mineral-leaf",
+        "labradorite-owl"
+      ],
+      "images": [
+        "widget-cleavage-lines.bd104ad5.webp",
+        "widget-stone-pair.f8478e24.webp",
+        "widget-mineral-mortar.ef872cd1.webp",
+        "widget-carved-mineral-leaf.e7cb9f8b.webp",
+        "widget-labradorite-owl.1e99d1b5.webp"
+      ],
+      "hashes": [
+        "bd104ad5583a3568603c01b137fc20b9f0d5b5d2eab25d40791a628b5b2a8aba",
+        "f8478e240ce3e0ff1f769d28e946353c61f2972dbfd9ebbcc3fe3660c6045796",
+        "ef872cd1cafd060105c15feefc75319233102ea8aa828ec87acc6c424b4b3bb3",
+        "e7cb9f8b0093457876a4fdff5239164e6a8de8f11d42eed1f26bf1d1fc028f6c",
+        "1e99d1b5e24e6625e43e312c7594d0761532ca3ed6c8dcd66a66c74b56d20af1"
       ]
     },
     "lavender-nocturne": {
-      "manifest": "glaze-packs-v12/art__lavender-nocturne__v6__manifest.json",
+      "manifest": "art/lavender-nocturne/v7/manifest.json",
       "artwork": [
         "lavender-butterfly",
         "lavender-dream-jar",
         "teacup-village",
-        "hero-small"
+        "hero-small",
+        "lavender-embroidered-harp"
+      ],
+      "images": [
+        "widget-lavender-butterfly.4b103393.webp",
+        "widget-lavender-dream-jar.b985f1be.webp",
+        "widget-teacup-village.6ccf6e75.webp",
+        "widget-small.366b1f2a.webp",
+        "widget-lavender-embroidered-harp.0bcfb135.webp"
+      ],
+      "hashes": [
+        "4b103393d7b0f147b896feb7e5fcf0d53f52611d63650385c2e1181e41709768",
+        "b985f1bec8f9fe3e67c592fa9987d720854840341415977deb9f3776ae298d83",
+        "6ccf6e75e43f0702ba52abf568f2f232e2528364601a79b46f93cd28157e7d83",
+        "366b1f2a4b3c16b9266f3175540de899245124f07b8ba08382e6716e6605ad6b",
+        "0bcfb1357c965deb1d46ff108359511996974d7f8fcd413109e78de69dda95a2"
       ]
     },
     "lemon-lagoon": {
-      "manifest": "glaze-packs-v12/art__lemon-lagoon__v6__manifest.json",
+      "manifest": "art/lemon-lagoon/v8/manifest.json",
       "artwork": [
         "lemon-sailboat",
-        "hero-small"
+        "hero-small",
+        "art-20261107-pool-float",
+        "art-20261107-lagoon-tile",
+        "cobalt-lemon-juicer"
+      ],
+      "images": [
+        "widget-lemon-sailboat.b0b902b8.webp",
+        "widget-small.f203c3c9.webp",
+        "widget-pool-float.ce3c1209.webp",
+        "widget-lagoon-tile.70100da1.webp",
+        "widget-cobalt-lemon-juicer.9e35de14.webp"
+      ],
+      "hashes": [
+        "b0b902b8e99531c239d91b7fd522ebc365a10df946633976a8b80c9d197d1de4",
+        "f203c3c93bb6cac1114707236ca3da571c6aed65b3a7bbc43026a60c392bfc47",
+        "ce3c120952974bfa71c21c85b8923766cecf080211560de244479392f42240e2",
+        "70100da131a0906ab98dc4727d61c52a5806be397032a6363e82d73eecda1d0a",
+        "9e35de143f5b5cb5cfc84586b2dd3f55690f9e1b8576752910da4abf043d9787"
       ]
     },
     "lotus-drift": {
-      "manifest": "glaze-packs-v12/art__lotus-drift__v6__manifest.json",
+      "manifest": "art/lotus-drift/v9/manifest.json",
       "artwork": [
         "pond-dragonfly",
-        "hero-small"
+        "art-20261107-lotus-tea-bowl",
+        "art-20261107-pond-minnow",
+        "pond-water-strider",
+        "pond-paper-boat"
+      ],
+      "images": [
+        "widget-pond-dragonfly.63d8b43c.webp",
+        "widget-lotus-tea-bowl.7367abb7.webp",
+        "widget-pond-minnow.f48a01b8.webp",
+        "widget-pond-water-strider.90f186ac.webp",
+        "widget-pond-paper-boat.85edd7e2.webp"
+      ],
+      "hashes": [
+        "63d8b43c320afa7ded4286cde3f0b0c458d9d5e8d873317cb80d11f47ce883e2",
+        "7367abb7564f7472c48d7ea15c9dbef862ccca82c8153e0fdc96183d35e3c3e3",
+        "f48a01b804d891c2f8e4c914578e0adff1cfc3d086aa1dd6c70f1325a3abe605",
+        "90f186acdb8c002da2c716d909624b0b458be51876bea9032a03d36345480019",
+        "85edd7e24c6bffc4ba699e23c5b917ca177b8b9ecc6d2081fc6fb93f3b4fbd70"
       ]
     },
     "lumen-mosaic": {
-      "manifest": "glaze-packs-v12/art__lumen-mosaic__v6__manifest.json",
+      "manifest": "art/lumen-mosaic/v8/manifest.json",
       "artwork": [
         "tessellated-sunbird",
-        "hero-small"
+        "hero-small",
+        "art-20261107-mosaic-pomegranate",
+        "art-20261107-jewel-window",
+        "stained-glass-iris"
+      ],
+      "images": [
+        "widget-tessellated-sunbird.81d4eab9.webp",
+        "widget-small.a0d46a3f.webp",
+        "widget-mosaic-pomegranate.95e71503.webp",
+        "widget-jewel-window.4ddf81a5.webp",
+        "widget-stained-glass-iris.b4fa5f9e.webp"
+      ],
+      "hashes": [
+        "81d4eab99cc1ad6482949706585c38f7511070afb1990d416716b27b1a2b239c",
+        "a0d46a3faab58da3e2cf75b520423ff846e8a8fda0ee3a35e4770d26c8c2003e",
+        "95e71503abc1809848b3d349db3948718b1e87f3fae96ff3a48322507bf9ab13",
+        "4ddf81a5ee979e56eefba471eac49a9e9a4c2f4d421f7ef8dc58a2b3f1515264",
+        "b4fa5f9e4b9d22a38fde9bb651ec141412c8893c6fc56d9646a6b0249321d17e"
       ]
     },
     "madder-fold": {
-      "manifest": "glaze-packs-v3/art__madder-fold__v1__manifest.json",
+      "manifest": "art/madder-fold/v2/manifest.json",
       "artwork": [
         "folded-cotton",
         "pleat-study",
-        "resist-ring"
+        "resist-ring",
+        "dyed-thread-skein",
+        "stitched-cotton-pod"
+      ],
+      "images": [
+        "widget-folded-cotton.18628665.webp",
+        "widget-pleat-study.98be07d9.webp",
+        "widget-resist-ring.5b6f67b1.webp",
+        "widget-dyed-thread-skein.114d88ad.webp",
+        "widget-stitched-cotton-pod.08bb8be8.webp"
+      ],
+      "hashes": [
+        "1862866568c6fd25887967839a271768f9e2aab3f7e8357429b794907ac26316",
+        "98be07d9d141f1f330b7848ddedef2613e725c576df737db509fe3529e92e581",
+        "5b6f67b1374e4284c3f50e1cffc01a1f40a9a233c07d2cdc1cee81a508554afb",
+        "114d88adce80c05b162c8656afff6438d8ed187a1bf27194b65177a0bebd1031",
+        "08bb8be8d7035245ceb31d9726567f933b69310fd9e8662eb926d9d6b6a34413"
       ]
     },
     "magnolia-veil": {
-      "manifest": "glaze-packs-v12/art__magnolia-veil__v4__manifest.json",
+      "manifest": "art/magnolia-veil/v5/manifest.json",
       "artwork": [
-        "gentle-progress",
         "ivory-bloom",
         "petal-fold",
-        "hero-small"
+        "hero-small",
+        "magnolia-seedpod",
+        "magnolia-skeleton-leaf"
+      ],
+      "images": [
+        "widget-ivory-bloom.f9e3d957.webp",
+        "widget-petal-fold.54a18c30.webp",
+        "widget-small.adc2e953.webp",
+        "widget-magnolia-seedpod.bd586d13.webp",
+        "widget-magnolia-skeleton-leaf.b118391c.webp"
+      ],
+      "hashes": [
+        "f9e3d957d6074fb780ffffe86ee85574bf7a2665a80bb284b69f9d193d08957c",
+        "54a18c30160087c5cc79c2a4330bcd4ff78b23d53d3ff2ba78d38055b60c4345",
+        "adc2e953a59b1e4958a0453531bbdc2cdf5fa2f0ef41b580910fdba0faf7ed37",
+        "bd586d134d9b77b7fb981a9153dec94b9b9bf749838a11e20b2a578c0c3e2089",
+        "b118391c9c955788f9e9ca3770333261bc41270461995ebee602109e3e3f6073"
       ]
     },
     "manta-silk": {
-      "manifest": "glaze-packs-v12/art__manta-silk__v4__manifest.json",
+      "manifest": "art/manta-silk/v6/manifest.json",
       "artwork": [
         "ripple-caustic",
-        "sand-rays"
+        "silver-flying-fish",
+        "ivory-sea-fan",
+        "aqua-pearl-oyster",
+        "silken-manta-ray"
+      ],
+      "images": [
+        "widget-ripple-caustic.5cd69043.webp",
+        "widget-silver-flying-fish.9fef40d5.webp",
+        "widget-ivory-sea-fan.2a03bcb7.webp",
+        "widget-aqua-pearl-oyster.35bec9fa.webp",
+        "widget-silken-manta-ray.7e1d11bd.webp"
+      ],
+      "hashes": [
+        "5cd690431ecaa623ca8f39804f75d34b4fead0723865b3af720835e5d014b9df",
+        "9fef40d595fc296896bf1d0c55d445b585772015831d3688a4e5b33e63c43f76",
+        "2a03bcb755e3a83f50d21d0bd425a73f127b63bd1e03cffb750964b5460a508d",
+        "35bec9fa7a495b87f0289b1879b6591a750dc7aa04f1585cc7466342343a70da",
+        "7e1d11bd893c4c0c567faf683f4d357008d74fba91a435e6e94096acd4c77a4c"
       ]
     },
     "marigold-miles": {
-      "manifest": "glaze-packs-v3/art__marigold-miles__v1__manifest.json",
+      "manifest": "art/marigold-miles/v2/manifest.json",
       "artwork": [
         "chrome-headlamp",
         "ivory-helmet",
-        "marigold-scooter"
+        "marigold-scooter",
+        "marigold-key-fob",
+        "navy-scooter-saddle"
+      ],
+      "images": [
+        "widget-chrome-headlamp.a223e1f6.webp",
+        "widget-ivory-helmet.4ea7a270.webp",
+        "widget-marigold-scooter.4d3db20b.webp",
+        "widget-marigold-key-fob.810413d4.webp",
+        "widget-navy-scooter-saddle.3dbac92d.webp"
+      ],
+      "hashes": [
+        "a223e1f6e4ef0d5c0e3481f5038c5ff1dbdf294420ba39a57a60a3264500d6eb",
+        "4ea7a27004f058f64cff69c732e548980a706f9a236257b6d4bcc8ea225f9bf2",
+        "4d3db20b05a873afbc4d676564371efa2d9b0c74e2916aeae4df647f41395346",
+        "810413d4cafdc105df6cc77a1ce646bd1f3da47611287f7204f628a46bc22274",
+        "3dbac92d12e6b4d2db33c29246d02821b2b9513764cad26a70a3bdeae6bc721e"
       ]
     },
     "marquetry-arc": {
-      "manifest": "glaze-packs-v3/art__marquetry-arc__v1__manifest.json",
+      "manifest": "art/marquetry-arc/v2/manifest.json",
       "artwork": [
         "chevron-grain",
         "nested-arch",
-        "veneer-sun"
+        "veneer-sun",
+        "bowtie-inlay",
+        "veneer-wave"
+      ],
+      "images": [
+        "widget-chevron-grain.94c0c565.webp",
+        "widget-nested-arch.20144052.webp",
+        "widget-veneer-sun.1fc211fe.webp",
+        "widget-bowtie-inlay.bc521627.webp",
+        "widget-veneer-wave.8fdca9e0.webp"
+      ],
+      "hashes": [
+        "94c0c565d9d81ac90edbee1e7b55561ec4877d0ad38f26600f4f12882d852bbc",
+        "20144052b035119259194e5cae696eb1bcd80ee3e2447de6b04c3b4f4cf26096",
+        "1fc211fe9992e89e0900f1c4ea9f17054f4c15a0a33820eb2cc118b0beab2543",
+        "bc5216271b5cb3aa5cfa04346b4a6e066cf2e96d000346804bb5c742bbed4677",
+        "8fdca9e0cda4113e7c9c116a314ffc4a8c0d0947bcc08794da4703f361116750"
       ]
     },
     "match-point": {
-      "manifest": "glaze-packs-v12/art__match-point__v6__manifest.json",
+      "manifest": "art/match-point/v7/manifest.json",
       "artwork": [
         "racket-butterfly",
         "tennis-planter",
         "racket-study",
-        "hero-small"
+        "hero-small",
+        "clay-court-tennis-shoe"
+      ],
+      "images": [
+        "widget-racket-butterfly.ad8137a3.webp",
+        "widget-tennis-planter.32ebd7db.webp",
+        "widget-racket-study.d1a11295.webp",
+        "widget-small.0c8af7cf.webp",
+        "widget-clay-court-tennis-shoe.b960bfe3.webp"
+      ],
+      "hashes": [
+        "ad8137a3d5a365a0798b2bd52d3891db9584aa97f574b6058b5c56d9708c93f2",
+        "32ebd7db7605d81735e31dee9bc701a7de31382fc062c5ed8c7cd3a24ae8c2ec",
+        "d1a112952ec1487512e100f061dd3b6429d3be66544cca073d1992a17e336fd5",
+        "0c8af7cf39a2db53969459c6d3560db8cb94f7c9d301fef63e842062e1be5412",
+        "b960bfe3c694507d3b846bcec00dcb87dc2fad42e1741583f0319218622fde7c"
       ]
     },
     "matcha-mews": {
-      "manifest": "glaze-packs-v12/art__matcha-mews__v6__manifest.json",
+      "manifest": "art/matcha-mews/v8/manifest.json",
       "artwork": [
         "teacup-fern",
-        "hero-small"
+        "hero-small",
+        "art-20261107-matcha-kitten",
+        "art-20261107-whisk-bowl",
+        "felt-matcha-dango"
+      ],
+      "images": [
+        "widget-teacup-fern.d19da77f.webp",
+        "widget-small.e172118c.webp",
+        "widget-matcha-kitten.6139cf90.webp",
+        "widget-whisk-bowl.c2f0e83b.webp",
+        "widget-felt-matcha-dango.6485e477.webp"
+      ],
+      "hashes": [
+        "d19da77f576555abc69dc29e8b9e4038db610c2466a4a9e88daa5d10836cd87f",
+        "e172118c878e0e5b635170ec751050c1446657e1cbb4e3f6f46d18201cac473c",
+        "6139cf909a2ad2a87631093d51af4258feb33f4c7faead20ae55f91d075fe649",
+        "c2f0e83b68dd69cf923a10f2aa9691e365414ccd9c8fa9ea7592b3c27c4d5184",
+        "6485e47784917e4250fed19c6d73e400252defe1d134714dd99761b636b89135"
       ]
     },
     "matcha-riso-garden": {
-      "manifest": "glaze-packs-v12/art__matcha-riso-garden__v6__manifest.json",
+      "manifest": "art/matcha-riso-garden/v8/manifest.json",
       "artwork": [
         "riso-butterfly",
-        "hero-small"
+        "hero-small",
+        "art-20261107-riso-foxglove",
+        "art-20261107-seed-packet",
+        "riso-watering-can"
+      ],
+      "images": [
+        "widget-riso-butterfly.f87b5650.webp",
+        "widget-small.49c06d90.webp",
+        "widget-riso-foxglove.c2c5b1ee.webp",
+        "widget-seed-packet.c90aa63d.webp",
+        "widget-riso-watering-can.25409f9b.webp"
+      ],
+      "hashes": [
+        "f87b56503fe18f937dfd40c12fe90f6e987f264c4bfabbda12c9ea38fdeb7c6e",
+        "49c06d905ec9a49fbdd5d5d558736931dabd800fb712e663eed39bf5cb3ad613",
+        "c2c5b1ee4326849b75ba17e897368d3afa13006cf903f3a755bafce0e6f9eb84",
+        "c90aa63d57c905fa13057551da8ef6bc008730cfec192a47e049f306cfd84973",
+        "25409f9bb8d144d25eeb242f43f33a1ba13f0d773f4a9c1f012f68f8d5ee5a7a"
       ]
     },
     "meadowglow": {
-      "manifest": "glaze-packs-v12/art__meadowglow__v6__manifest.json",
+      "manifest": "art/meadowglow/v8/manifest.json",
       "artwork": [
         "dew-grass-orb",
         "sunlit-dandelion",
-        "morning-grass",
-        "hero-small"
+        "hero-small",
+        "morning-dew-web",
+        "meadow-harvest-mouse"
+      ],
+      "images": [
+        "widget-dew-grass-orb.ab598b91.webp",
+        "widget-sunlit-dandelion.d099e95f.webp",
+        "widget-small.6e971e17.webp",
+        "widget-morning-dew-web.bcffe4d7.webp",
+        "widget-meadow-harvest-mouse.cc797f45.webp"
+      ],
+      "hashes": [
+        "ab598b9169e5dfb508dd8446fd1aca74ef61d1f7dd8c4a4feb0647f45a265f1c",
+        "d099e95f864c456f491ac36e54572d10ca8c4b4578401c63f5e15d99da1195f7",
+        "6e971e17ad8ddfb30432c2243733dac48c5479aaaf49348f8510ec7756a2eaa6",
+        "bcffe4d7489871ad03a67daf2fac6901acc2ce2d873fd13917f14cd0c03d76e2",
+        "cc797f4581905c6e6c8b7d9ea0532af2ce54ca6574ef0c228ce8d607dd661d11"
       ]
     },
     "midnight-conservatory": {
-      "manifest": "glaze-packs-v12/art__midnight-conservatory__v6__manifest.json",
+      "manifest": "art/midnight-conservatory/v8/manifest.json",
       "artwork": [
         "dew-capsule",
-        "night-orchid",
         "hanging-garden",
-        "hero-small"
+        "hero-small",
+        "moonlit-pitcher-plant",
+        "moonlit-garden-shears"
+      ],
+      "images": [
+        "widget-dew-capsule.eee37a31.webp",
+        "widget-hanging-garden.3dd7fa50.webp",
+        "widget-small.f60d8251.webp",
+        "widget-moonlit-pitcher-plant.183c82be.webp",
+        "widget-moonlit-garden-shears.c6be44ae.webp"
+      ],
+      "hashes": [
+        "eee37a31d42ceab6818a361b8d81be135a5f5774fc1684d46b6ef1347975b507",
+        "3dd7fa500a4ad582bb94f45bcb41861f0d7f21eb5fe8087c921db265ff9796cb",
+        "f60d82513b80836dcd773f26be67f1b436b23d23aae5dcff3262e6ac502e880b",
+        "183c82be973d640ce6cc0e101ea9cfcffe1200ecb3a63ae6b04caac81a7182db",
+        "c6be44ae766dc1997524042f574f0abb277066c60438f6b9da1b4fd5dd3cf0be"
       ]
     },
     "midnight-matinee": {
-      "manifest": "glaze-packs-v12/art__midnight-matinee__v6__manifest.json",
+      "manifest": "art/midnight-matinee/v7/manifest.json",
       "artwork": [
         "popcorn-planet",
         "velvet-cinema-bat",
         "velvet-moth",
-        "hero-small"
+        "hero-small",
+        "brass-film-projector"
+      ],
+      "images": [
+        "widget-popcorn-planet.aa23ec72.webp",
+        "widget-velvet-cinema-bat.07ddad2d.webp",
+        "widget-velvet-moth.a3e004ad.webp",
+        "widget-small.5b3cb4cf.webp",
+        "widget-brass-film-projector.4545fd16.webp"
+      ],
+      "hashes": [
+        "aa23ec72ac791b1ecff68043785140cb4332181b8be1f06f577a9704575a09eb",
+        "07ddad2d5d06563a2fc55e604fd5a4a81248d3fb0244b5b6e86afe3031d05ac5",
+        "a3e004ade3cc62035e7bdd059bf9c129faf71574478e833cf49db374a8e82208",
+        "5b3cb4cf69a7bdfed2bbf73821f3c21574ccbdc4ddea4c09e8e6f32a2e08730f",
+        "4545fd16f6f68c710153bfb842324223e79ac9434632c517cf0d01640aaccdf8"
       ]
     },
     "millrace-mist": {
-      "manifest": "glaze-packs-v3/art__millrace-mist__v1__manifest.json",
+      "manifest": "art/millrace-mist/v2/manifest.json",
       "artwork": [
         "oak-waterwheel",
         "ripple-study",
-        "timber-bucket"
+        "timber-bucket",
+        "moss-footbridge",
+        "oak-sluice-gate"
+      ],
+      "images": [
+        "widget-oak-waterwheel.ee8cd38a.webp",
+        "widget-ripple-study.dbc4f5e0.webp",
+        "widget-timber-bucket.e049dcb2.webp",
+        "widget-moss-footbridge.0fabed9c.webp",
+        "widget-oak-sluice-gate.97511227.webp"
+      ],
+      "hashes": [
+        "ee8cd38abbc6d61b94992dcadb2eb01583b53a50823475f91aa8c66acd10c967",
+        "dbc4f5e0c48f6a22e17969fbb8014523ac6b8b12ca7f2c2f2fc580b25616ef44",
+        "e049dcb27bd66c451799f89de376d83e23dc74e796bd524dbe492e05b85efb0b",
+        "0fabed9ceebd584f20cd62557da6a921473ffc568e7352aeb699dae204e2edec",
+        "975112279b54d94a60f4c77df95ccb68391814ae15d16e29d1f8e7b04bbff207"
       ]
     },
     "mochi-sleepover": {
-      "manifest": "glaze-packs-v12/art__mochi-sleepover__v6__manifest.json",
+      "manifest": "art/mochi-sleepover/v8/manifest.json",
       "artwork": [
         "star-hot-water-bottle",
-        "hero-small"
+        "hero-small",
+        "art-20261107-pillow-fort",
+        "art-20261107-sleepover-lantern",
+        "cloud-sleep-mask"
+      ],
+      "images": [
+        "widget-star-hot-water-bottle.0c51b022.webp",
+        "widget-small.6a5e342c.webp",
+        "widget-pillow-fort.e659fe7e.webp",
+        "widget-sleepover-lantern.831189af.webp",
+        "widget-cloud-sleep-mask.20aa5a8d.webp"
+      ],
+      "hashes": [
+        "0c51b0227afa3780d62cb29e3f79ead6f3721a6081b15b34bad7ff32db3c1e3b",
+        "6a5e342c50b80d2032aa4a4c5ab4b9fa6007d9540b3a1a87110a8e365c031dee",
+        "e659fe7e342a6d805d0cb11cb6998dc31641ab8b07c31bf8b71b465fc5416a69",
+        "831189af5d9ee39f5d55fa056c814acf466386e0685f2ad4ec6eb425259851fe",
+        "20aa5a8d2b4b100ba8b39bd73e44aeac0cab2fecdf88c504d1681070f7694faa"
       ]
     },
     "moonmallow": {
-      "manifest": "glaze-packs-v12/art__moonmallow__v6__manifest.json",
+      "manifest": "art/moonmallow/v8/manifest.json",
       "artwork": [
         "wool-cloud-swing",
-        "hero-small"
+        "hero-small",
+        "art-20261107-wool-comet",
+        "art-20261107-koala-nest",
+        "tufted-saturn-pillow"
+      ],
+      "images": [
+        "widget-wool-cloud-swing.a410e4ec.webp",
+        "widget-small.b830aa83.webp",
+        "widget-wool-comet.a8dc46f6.webp",
+        "widget-koala-nest.db0d34a3.webp",
+        "widget-tufted-saturn-pillow.ec801954.webp"
+      ],
+      "hashes": [
+        "a410e4ec624817db42c8d8f8f2613aa43d050cba5026fe0312fabd531e7c7126",
+        "b830aa83f68e09bb4443491f47c3d8c0034b27adb9df9a6e09d8ffd1b5fdf49c",
+        "a8dc46f6a56f1ffa7ccc0436b6290d141a7c1117bb466cf5dfe826c4c8819ac2",
+        "db0d34a3ed0f121a839416898b1b78ded0d44c8490bef543694181b443f8441c",
+        "ec801954264974b3881ea38a313ca91e08451fb9841ea35eaca3be865f35aadb"
       ]
     },
     "moonpatch": {
-      "manifest": "glaze-packs-v12/art__moonpatch__v6__manifest.json",
+      "manifest": "art/moonpatch/v8/manifest.json",
       "artwork": [
         "patchwork-kite",
         "quilted-rocket",
         "star-catcher",
-        "hero-small"
+        "patchwork-moon-rover",
+        "stitched-satellite"
+      ],
+      "images": [
+        "widget-patchwork-kite.647a4340.webp",
+        "widget-quilted-rocket.bd026b99.webp",
+        "widget-star-catcher.b7b5d2a9.webp",
+        "widget-patchwork-moon-rover.3f1e2dbf.webp",
+        "widget-stitched-satellite.af8a9633.webp"
+      ],
+      "hashes": [
+        "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac",
+        "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657",
+        "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8",
+        "3f1e2dbf833e5f299bc08db44ec52cf382a3beadcd407e3bd720d3849b914163",
+        "af8a9633b75e328f5bc75a2ab7b9a754a7198e6c66e836f27080c98016b927f2"
       ]
     },
     "mosswick": {
-      "manifest": "glaze-packs-v12/art__mosswick__v6__manifest.json",
+      "manifest": "art/mosswick/v8/manifest.json",
       "artwork": [
         "bark-snail",
         "moss-tower",
-        "travelling-cottage",
-        "hero-small"
+        "hero-small",
+        "mosswood-storybook",
+        "mushroom-mailbox"
+      ],
+      "images": [
+        "widget-bark-snail.06eb2ab1.webp",
+        "widget-moss-tower.462a4a4b.webp",
+        "widget-small.d11ebbc6.webp",
+        "widget-mosswood-storybook.e6e80e3a.webp",
+        "widget-mushroom-mailbox.ee08b5db.webp"
+      ],
+      "hashes": [
+        "06eb2ab1889f8778f84c7fdd9a9762303b64f80fd196fd91555d45aa747026bc",
+        "462a4a4b03dce6059bb4dce3b33644ef2dd8c6ff19e65504ba233c83de87887a",
+        "d11ebbc63971c7de9fcb262f794b36a2b1d0c7e39abc6ba4badffc91a59f831b",
+        "e6e80e3a230489bba6a08f8d9cf1169b62b92b8213865e97c012765ac79e22b7",
+        "ee08b5db17ba9617b8e0e5f7b2e8d107abcb29bea606a07858fdbcb19021d3bd"
       ]
     },
     "nebula-veil": {
-      "manifest": "glaze-packs-v14/art__nebula-veil__v7__manifest.json",
+      "manifest": "art/nebula-veil/v8/manifest.json",
       "artwork": [
         "glass-satellite",
         "nebula-quill",
         "nebula-aperture",
-        "hero-small"
+        "hero-small",
+        "nebula-hummingbird"
+      ],
+      "images": [
+        "widget-glass-satellite.cdebc99e.webp",
+        "widget-nebula-quill.7320aa7d.webp",
+        "widget-nebula-aperture.325cb7d7.webp",
+        "widget-small.78a38b9f.webp",
+        "widget-nebula-hummingbird.2af5911c.webp"
+      ],
+      "hashes": [
+        "cdebc99e78e3fbaa5c03d0fe0ef27e9cdfe84b1b23de1c60c07abcddb4ed971b",
+        "7320aa7dca87fb3fd520c3b781395cb94fafcf87fb3c03305879ac4db4fbf417",
+        "325cb7d7265dfb323ea4187b63a0b6bd3b0fe674910ff6544b11f0edc9e265d4",
+        "78a38b9ff75d915a98575d944b925c77306e0444713213df8312e5ade54cceb8",
+        "2af5911c54af42feaa9d47872e581e7f7e80f04f11cb5962adb2e22376d4654e"
       ]
     },
     "neon-monsoon": {
-      "manifest": "glaze-packs-v12/art__neon-monsoon__v6__manifest.json",
+      "manifest": "art/neon-monsoon/v7/manifest.json",
       "artwork": [
         "neon-paper-fish",
         "rain-capsule",
         "midnight-ramen",
-        "hero-small"
+        "hero-small",
+        "neon-origami-fox"
+      ],
+      "images": [
+        "widget-neon-paper-fish.a2fb26fa.webp",
+        "widget-rain-capsule.e16cd9ab.webp",
+        "widget-midnight-ramen.c3c850cb.webp",
+        "widget-small.a9dfac6d.webp",
+        "widget-neon-origami-fox.a23ee949.webp"
+      ],
+      "hashes": [
+        "a2fb26fa3bee10648139f6a9a6df58a8e1d57f92a42c94f26b8b5f5b512db4eb",
+        "e16cd9ab084f256c9fba7993237234d72320273dfd887a94e3a1a2767c651a13",
+        "c3c850cb11176dfdf15f0f2c80490dfc8b9570815722b5706f2c266cf874ab69",
+        "a9dfac6da4be90f3a75ff16d23d8657a2b0a76ef45ea9c0eed783503f2804016",
+        "a23ee9492ac6dc2137bb354fd349aa532aaa98afa19cb30e71f847f4838fccc2"
       ]
     },
     "obsidian-tide": {
-      "manifest": "glaze-packs-v12/art__obsidian-tide__v6__manifest.json",
+      "manifest": "art/obsidian-tide/v7/manifest.json",
       "artwork": [
         "audit-20261101-shoreline-shell",
         "audit-20261101-tidal-eye",
         "foam-pebble-garden",
-        "sea-glass-wave-sculpture"
+        "sea-glass-wave-sculpture",
+        "tidal-sea-urchin"
+      ],
+      "images": [
+        "widget-audit-20261101-shoreline-shell.2f651da2.webp",
+        "widget-audit-20261101-tidal-eye.ceda0c08.webp",
+        "widget-foam-pebble-garden.cc81b622.webp",
+        "widget-sea-glass-wave-sculpture.a61fce4c.webp",
+        "widget-tidal-sea-urchin.c4001526.webp"
+      ],
+      "hashes": [
+        "2f651da2f1b7410611a3fd6e2186b235091e4536ff29b0782fd7bea8108d63bf",
+        "ceda0c08d9a1d999839cb1eea530331b5a13a08bdfc6afe9ff0d7a5b4dc379c4",
+        "cc81b6224a6f9179d61ba1759e0bc127e095046ee1d0588ab42576cbc1f93a8f",
+        "a61fce4c0664688e7fc2bb3b2777e9ffd5e995472896e646dbf5793400075ab8",
+        "c40015268fc5f4adfae0c63efb3622783f448c975ed51ac63a39e092d61a39c3"
       ]
     },
     "ochre-bend": {
-      "manifest": "glaze-packs-v12/art__ochre-bend__v6__manifest.json",
+      "manifest": "art/ochre-bend/v8/manifest.json",
       "artwork": [
         "eucalyptus-capsule",
         "sandstone-kingfisher",
         "ochre-stone",
-        "hero-small"
+        "eucalyptus-bark-curl",
+        "billabong-lizard"
+      ],
+      "images": [
+        "widget-eucalyptus-capsule.24f5d9de.webp",
+        "widget-sandstone-kingfisher.ef39382a.webp",
+        "widget-ochre-stone.9735cff1.webp",
+        "widget-eucalyptus-bark-curl.6f714d75.webp",
+        "widget-billabong-lizard.30e0d9de.webp"
+      ],
+      "hashes": [
+        "24f5d9de3182f90643c86796bd381909af97861d2bb455b082fe7fc85f5352c2",
+        "ef39382a48df9ce4686280adeeb55102e8b49adf2361eb413886c9960af35956",
+        "9735cff14f4b63e6e31840f89c448b2a720f6665ac4598e0de38adc2412984eb",
+        "6f714d75ca93faae7acd7dfe9e655c019de370e734bdc4f1a404d5a883eae880",
+        "30e0d9deba93151a4020896d807da03401f63807a74f0a18f3ea950df7a2d109"
       ]
     },
     "olive-outpost": {
-      "manifest": "glaze-packs-v12/art__olive-outpost__v6__manifest.json",
+      "manifest": "art/olive-outpost/v8/manifest.json",
       "artwork": [
         "olive-field-radio",
-        "hero-small"
+        "hero-small",
+        "art-20261107-canvas-canteen",
+        "art-20261107-field-stove",
+        "canvas-field-binoculars"
+      ],
+      "images": [
+        "widget-olive-field-radio.f70b3b2a.webp",
+        "widget-small.487f1ce6.webp",
+        "widget-canvas-canteen.4f8886b7.webp",
+        "widget-field-stove.53152ec4.webp",
+        "widget-canvas-field-binoculars.9e3bbfd7.webp"
+      ],
+      "hashes": [
+        "f70b3b2abda080a9423093e38c46b596c9e07b74edbd84b9a557161f4bc4d0b3",
+        "487f1ce6e7572d71b6934b34937b81311d4e58bbb5786818ff3d837fabd59419",
+        "4f8886b751a15ce24b100fc074c46438b4b7a7a86ebc236929033ab533b85cd3",
+        "53152ec4cfb4794b5fde4abc8d7a57fab1f7428608f22f33602267089b78eebb",
+        "9e3bbfd7953b5ffe43ebf6fc96e9d0a9829aa2e0b3ab76a64c2865e56ab6dbb7"
       ]
     },
     "opal-abyss": {
-      "manifest": "glaze-packs-v12/art__opal-abyss__v6__manifest.json",
+      "manifest": "art/opal-abyss/v7/manifest.json",
       "artwork": [
         "moon-jelly-window",
         "pearl-shell",
         "nautilus",
-        "hero-small"
+        "hero-small",
+        "opal-starfish"
+      ],
+      "images": [
+        "widget-moon-jelly-window.5717c9c6.webp",
+        "widget-pearl-shell.4f3e2b0c.webp",
+        "widget-nautilus.7e22e68c.webp",
+        "widget-small.0069ba04.webp",
+        "widget-opal-starfish.5297d351.webp"
+      ],
+      "hashes": [
+        "5717c9c61a8a9908fa36c4460572fbf7f6f59b09eeabe3504a153f1ffdac8ab3",
+        "4f3e2b0cb9495248e698a128e70cc91250293736bcdf179edd788627a51f0c48",
+        "7e22e68cdb0c72c70b3ed186908a87b853a0563a910bc8f75e25e43eead18fa7",
+        "0069ba0482e4ce5979014d6bc4c3042c609f478659c429bda463b94e30b6d043",
+        "5297d351e55ba3bcf5f8b27ad8d8a7d41d1a6743bc56e40224f2e21ee0f316ce"
       ]
     },
     "otter-wash": {
-      "manifest": "glaze-packs-v3/art__otter-wash__v1__manifest.json",
+      "manifest": "art/otter-wash/v2/manifest.json",
       "artwork": [
         "kelp-wash",
         "pebble-study",
         "shell-keeper",
-        "shell-progress"
+        "tidepool-anemone",
+        "driftwood-buoy"
+      ],
+      "images": [
+        "widget-kelp-wash.16befa11.webp",
+        "widget-pebble-study.a1135535.webp",
+        "widget-shell-keeper.0e5a8f9e.webp",
+        "widget-tidepool-anemone.31e56b89.webp",
+        "widget-driftwood-buoy.a4200b23.webp"
+      ],
+      "hashes": [
+        "16befa114a59740308f7c62fe01b248c410f73cd2e434be7d81ae93a724fa0ae",
+        "a1135535237645b3eb17a52e80041fb8d34e16969e3c483f1677e004e2d2de6f",
+        "0e5a8f9e63d75a24b4f6610ceffe265a0bf60b21c0fcf08ec13e175896540493",
+        "31e56b89038607054451bd183bc622eb6a06382681c5b123952e12d112784b10",
+        "a4200b23bd91c25d478ba81448e6378fc22123ce2e135952cff58dc233d721d5"
       ]
     },
     "papaya-punch": {
-      "manifest": "glaze-packs-v3/art__papaya-punch__v1__manifest.json",
+      "manifest": "art/papaya-punch/v2/manifest.json",
       "artwork": [
         "palmate-leaf",
         "papaya-half",
         "seed-rosette",
-        "sun-study"
+        "papaya-blossom-spray",
+        "papaya-nursery-pot"
+      ],
+      "images": [
+        "widget-palmate-leaf.c6da44dc.webp",
+        "widget-papaya-half.447ec8ff.webp",
+        "widget-seed-rosette.2f37dcb3.webp",
+        "widget-papaya-blossom-spray.40b571de.webp",
+        "widget-papaya-nursery-pot.2fa5cd0b.webp"
+      ],
+      "hashes": [
+        "c6da44dc3f625f94ecbf1e3e9af763242d62c50290a0b5b38797057f290b4713",
+        "447ec8ff353fd170ac3f1e33a0d86093b528f228002ed394be77f1ad0390b979",
+        "2f37dcb310b4541f234bb2c4703ef8ba7be191b646fd5e35faf977a513ae3a19",
+        "40b571dea98d8f160a4dab93bbb87bc4425c8aa5a84a4be4c99d56051d8d4583",
+        "2fa5cd0b08ad820614ee9fd0880807a67011d9d3690ffd896e11d820beb0f6f2"
       ]
     },
     "paper-carnival": {
-      "manifest": "glaze-packs-v12/art__paper-carnival__v6__manifest.json",
+      "manifest": "art/paper-carnival/v7/manifest.json",
       "artwork": [
         "confetti-snail",
         "paper-dragon-kite",
         "pinwheel-trio",
-        "hero-small"
+        "hero-small",
+        "paper-carousel"
+      ],
+      "images": [
+        "widget-confetti-snail.dd3b1238.webp",
+        "widget-paper-dragon-kite.980cf85e.webp",
+        "widget-pinwheel-trio.d4ea7b9c.webp",
+        "widget-small.2b91da39.webp",
+        "widget-paper-carousel.f0d88dd9.webp"
+      ],
+      "hashes": [
+        "dd3b1238cc61215ba1d78588cbd37aae8882e2fcc6c107dd3048e24d4388a7fc",
+        "980cf85ef4abbb33c5a0d199a5a1f1b7ddfdd5303e9cdbbb1db99f95d714e503",
+        "d4ea7b9c10f94216a9bff5325e81e4b3f430a87c7e7ffc3e380a1066dc52de0c",
+        "2b91da39c453375575464c02a7aa1fedee19351bdc5958d9f48e09bb9159362d",
+        "f0d88dd9525319d5d9425b28484209804716c571f8ce7b1254e7b527fec21547"
       ]
     },
     "peach-puddle": {
-      "manifest": "glaze-packs-v12/art__peach-puddle__v6__manifest.json",
+      "manifest": "art/peach-puddle/v9/manifest.json",
       "artwork": [
         "peach-umbrella-snail",
-        "hero-small"
+        "art-20261107-rain-boots",
+        "art-20261107-duckling-raft",
+        "peach-raincoat",
+        "peach-paper-pinwheel"
+      ],
+      "images": [
+        "widget-peach-umbrella-snail.44a1b298.webp",
+        "widget-rain-boots.99aa2395.webp",
+        "widget-duckling-raft.c8db65bf.webp",
+        "widget-peach-raincoat.bfbf2082.webp",
+        "widget-peach-paper-pinwheel.7589b8ec.webp"
+      ],
+      "hashes": [
+        "44a1b298dad448b8087862b76ce2fa0000cb66769800079b457c03580d41a84f",
+        "99aa23958bf92e6580edc110865f84e3389b19c437d3020667ab68a9e26d26ae",
+        "c8db65bfd3cff38bfb80a5e757a4909f55d98f6de51401405eb4c99842826b3a",
+        "bfbf2082050168b3640d0f459c2974d67864832986856bcf4f52caa83e073236",
+        "7589b8ec75716f0002e62317e2fb732cd9fe53333b1a5b6f66ac6cce16ecbaa3"
       ]
     },
     "peachskin": {
-      "manifest": "glaze-packs-v12/art__peachskin__v6__manifest.json",
+      "manifest": "art/peachskin/v9/manifest.json",
       "artwork": [
         "production-20261101-velvet-peach",
-        "hero-small"
+        "art-20261106-peach-blossom",
+        "peach-stone-seedling",
+        "peach-blossom-teapot",
+        "peach-orchard-butterfly"
+      ],
+      "images": [
+        "widget-production-20261101-velvet-peach.ca35d047.webp",
+        "widget-peach-blossom.300d54f4.webp",
+        "widget-peach-stone-seedling.9aa7fdc1.webp",
+        "widget-peach-blossom-teapot.5e30a51f.webp",
+        "widget-peach-orchard-butterfly.e738893f.webp"
+      ],
+      "hashes": [
+        "ca35d047f2595788dc57debecbf6eb3dce24c4b463c4705a9f8d3b530388b5dd",
+        "300d54f423b01af4a3211f1b0df027c80bd83e783c73c17cfff3473e69fce871",
+        "9aa7fdc113f2697409f8098dbeb46d95204ed6bf1981a725b815fad8c5cff97a",
+        "5e30a51f09ff0ddf678476ad41bc9a1a1690db5fc402e93d3ac27924456e3f0c",
+        "e738893f39cd155560c08ad82e43ec14527a2ad729626738daf4adb7b1f29691"
       ]
     },
     "pebblekin-grove": {
-      "manifest": "glaze-packs-v12/art__pebblekin-grove__v6__manifest.json",
+      "manifest": "art/pebblekin-grove/v8/manifest.json",
       "artwork": [
         "fern-altar",
         "pebble-moth",
         "sprout-keeper",
-        "hero-small"
+        "mossback-tortoise",
+        "pebble-owl"
+      ],
+      "images": [
+        "widget-fern-altar.9011bc9d.webp",
+        "widget-pebble-moth.58194985.webp",
+        "widget-sprout-keeper.b72f099a.webp",
+        "widget-mossback-tortoise.1e55ef6d.webp",
+        "widget-pebble-owl.b39e1535.webp"
+      ],
+      "hashes": [
+        "9011bc9d38846d33a3d9733b6cc2478a034c7c23e23fd1307f2bf6864a95ea52",
+        "581949858ce75027e0d495c659b838910deca9933d5efeffd57cbb68cf0e1320",
+        "b72f099a8f1f717c71ed233f23cea7439a20a898bda6199504fc67d9c050cc6a",
+        "1e55ef6d8aaf4f5684bd98f98c4d0ef478065ab275d04ce73f0952333ebe1bcc",
+        "b39e15352e841485593062b8f11a891c4818226f0dce15a4a07563c41891f3fb"
       ]
     },
     "persimmon-press": {
-      "manifest": "glaze-packs-v4/art__persimmon-press__v1__manifest.json",
+      "manifest": "art/persimmon-press/v2/manifest.json",
       "artwork": [
         "calyx-star",
         "carved-grain",
         "persimmon-pair",
-        "seed-progress"
+        "harvest-basket",
+        "orchard-songbird"
+      ],
+      "images": [
+        "widget-calyx-star.03c4b550.webp",
+        "widget-carved-grain.fff645ba.webp",
+        "widget-persimmon-pair.50a1cc0d.webp",
+        "widget-harvest-basket.d46fa736.webp",
+        "widget-orchard-songbird.80c2c739.webp"
+      ],
+      "hashes": [
+        "03c4b550c2f4497e10a9ff8b697312ef652f58355dfd66a8cd8bc94d4425af1a",
+        "fff645ba9e6dcdb273baf200db4edfc4d6a31ffd391ee203c1826f727a6ffb1a",
+        "50a1cc0d1fcade11b419846621bd43eeb665a956d2cecfe04f8b57df7bde2dbe",
+        "d46fa7367059bbf563732758d7be8263b347f5a3952a3bd9d9e184b81dfa0db8",
+        "80c2c7396f2002cb53c93583312b296afe8b11b1f480722248225eda43939a89"
       ]
     },
     "phosphor-amber": {
-      "manifest": "glaze-packs-v4/art__phosphor-amber__v1__manifest.json",
+      "manifest": "art/phosphor-amber/v3/manifest.json",
       "artwork": [
-        "buffer-progress-v2",
         "floppy-study",
-        "pixel-landscape",
-        "terminal-desk"
+        "terminal-desk",
+        "phosphor-nautilus",
+        "cream-joystick",
+        "amber-cassette-tape"
+      ],
+      "images": [
+        "widget-floppy-study.7ef5380d.webp",
+        "widget-terminal-desk.3ebf95ff.webp",
+        "widget-phosphor-nautilus.01a34e58.webp",
+        "widget-cream-joystick.9411c952.webp",
+        "widget-amber-cassette-tape.2f0b7aaa.webp"
+      ],
+      "hashes": [
+        "7ef5380db0e363dc798338068ade1154ee09c3f3920abdfc707fb477ce247199",
+        "3ebf95ff4e1c9e590a32f2d8741d7a4facd3df07927c0c798762affda3f124ae",
+        "01a34e58734a8cb1c69d82e2529b61673bd9193b90761d09cfba58b68b2eefcd",
+        "9411c952a0f401f94b6f568d581c636a572d6e290d914a0637670d3ccae5b278",
+        "2f0b7aaaf173f89c7c786e9879dfdb0b4c467715634af931bc8fe9dee682f415"
       ]
     },
     "pistachio-parlour": {
-      "manifest": "glaze-packs-v12/art__pistachio-parlour__v6__manifest.json",
+      "manifest": "art/pistachio-parlour/v8/manifest.json",
       "artwork": [
         "pistachio-sundae",
-        "hero-small"
+        "hero-small",
+        "art-20261107-pistachio-macaron",
+        "art-20261107-pastry-whisk",
+        "pistachio-eclair"
+      ],
+      "images": [
+        "widget-pistachio-sundae.7ca4fa13.webp",
+        "widget-small.ed8a0c7e.webp",
+        "widget-pistachio-macaron.20b78adc.webp",
+        "widget-pastry-whisk.2101bdd4.webp",
+        "widget-pistachio-eclair.6cd42da2.webp"
+      ],
+      "hashes": [
+        "7ca4fa13cb36786a481e7e63e0a74a6b6aa41805b06c18a9b5355f08f0919c96",
+        "ed8a0c7eda16445a1c112b75dec670657829d87a370df15f3ca18aa4b4fe92bb",
+        "20b78adc25ceba44af32f82dd629125e4704b3c89a80bc48d5b4604f2b6054e6",
+        "2101bdd4d9fb58ce50e051d6965babed7884eb11716913270703646d97cb15ad",
+        "6cd42da286b708afd56fff52428fd2ee46f47887e3372d49ab4271ec5208f4af"
       ]
     },
     "pitaya-pop": {
-      "manifest": "glaze-packs-v4/art__pitaya-pop__v1__manifest.json",
+      "manifest": "art/pitaya-pop/v2/manifest.json",
       "artwork": [
         "bract-rosette",
         "seeded-slice",
-        "whole-pitaya"
+        "whole-pitaya",
+        "paper-hummingbird",
+        "paper-cactus-blossom"
+      ],
+      "images": [
+        "widget-bract-rosette.daed54e1.webp",
+        "widget-seeded-slice.8c1bca36.webp",
+        "widget-whole-pitaya.d0068820.webp",
+        "widget-paper-hummingbird.be4a31f2.webp",
+        "widget-paper-cactus-blossom.6068dcc1.webp"
+      ],
+      "hashes": [
+        "daed54e1f5ba84e015dad8b6ec4c7bc7f110a86e3871cd3ae1e9d608f350d0e2",
+        "8c1bca36f2a0b6ba7f69c4837c3bc192e691a9e8378da04237c4cccd7fc38b85",
+        "d0068820d7814f13c9202d69ab32489a21a4a8504d94921198e551edba63dbf9",
+        "be4a31f2951796f3968e5b7b4184913b29dfcd1bb4e1474fbd786e5ec3680eab",
+        "6068dcc18cfb441ddb30b2bc025fdd4f8d31dd22e8ac334a8859cf9691994de0"
       ]
     },
     "plume-court": {
-      "manifest": "glaze-packs-v12/art__plume-court__v6__manifest.json",
+      "manifest": "art/plume-court/v8/manifest.json",
       "artwork": [
         "porcelain-quail",
-        "hero-small"
+        "hero-small",
+        "art-20261107-jade-plume",
+        "art-20261107-garden-fountain",
+        "jade-court-coffer"
+      ],
+      "images": [
+        "widget-porcelain-quail.ae5d0161.webp",
+        "widget-small.126c7ee0.webp",
+        "widget-jade-plume.343f37e3.webp",
+        "widget-garden-fountain.7a92c726.webp",
+        "widget-jade-court-coffer.765652ea.webp"
+      ],
+      "hashes": [
+        "ae5d01615da65ab483e5f1db808e6e899b0025c5e722fd6daf4585d39a64ff1e",
+        "126c7ee05c528687718df74f69353e53cc3738946d651bad5560aee0ba4e6015",
+        "343f37e34061462281794a83d015445297d80a66d54feb1523bd0676dd068b96",
+        "7a92c726fe824231a5d25dff86c3771578d970c918028e5f9207b821c281154c",
+        "765652ea63a5d18393c6a56593ad2caefb69ae5eb993d1bc0fee76b5133dcb15"
       ]
     },
     "pocket-pup": {
-      "manifest": "glaze-packs-v12/art__pocket-pup__v6__manifest.json",
+      "manifest": "art/pocket-pup/v8/manifest.json",
       "artwork": [
         "pocket-mailbox",
-        "hero-small"
+        "hero-small",
+        "art-20261107-corgi-slipper",
+        "art-20261107-biscuit-tin",
+        "cloud-puppy-leash"
+      ],
+      "images": [
+        "widget-pocket-mailbox.0a0b59ef.webp",
+        "widget-small.7a10a7b9.webp",
+        "widget-corgi-slipper.0be565b1.webp",
+        "widget-biscuit-tin.9624f1c3.webp",
+        "widget-cloud-puppy-leash.82d776cc.webp"
+      ],
+      "hashes": [
+        "0a0b59ef7344da26a6fe75cd5ad91788f53a106ea0d2a4b3eaa48ef9b689e930",
+        "7a10a7b9ff61452fa10db72ffec9fac6a44f6072443f2709f97bcaad3ee071e7",
+        "0be565b1a2c4a4fdc8f3935ce6cb3e8cd1dc75fcbee6072af916a63319b59ae5",
+        "9624f1c30bb8bb744282abcb16770c0a0982361a44d016bc75fcdd75baf1393d",
+        "82d776ccb0fbacb5d6fe205db79f7714783dc942b19a808ce0891d896d44c007"
       ]
     },
     "porcelain-tide": {
-      "manifest": "glaze-packs-v14/art__porcelain-tide__v7__manifest.json",
+      "manifest": "art/porcelain-tide/v8/manifest.json",
       "artwork": [
         "blue-lotus-bowl",
         "porcelain-crane",
         "koi-medallion",
-        "hero-small"
+        "hero-small",
+        "cobalt-seahorse"
+      ],
+      "images": [
+        "widget-blue-lotus-bowl.fa9e3a09.webp",
+        "widget-porcelain-crane.7d0ad798.webp",
+        "widget-koi-medallion.8d9dfc8a.webp",
+        "widget-small.69bf45d6.webp",
+        "widget-cobalt-seahorse.76ce2d29.webp"
+      ],
+      "hashes": [
+        "fa9e3a0901526e94ed9d0f4a951040f6924a8560ba4f82bda3108e141c1f516b",
+        "7d0ad79844adf8ecba2d3614d606370284507c64ecdd78561c070fd5e7b8558f",
+        "8d9dfc8a14c612040536e79e7a6cca41cd004ad07656646ae50b01a8f3340d8a",
+        "69bf45d6786261a772d28af2dda32e1632aead57842b27e7464cd9e03422de79",
+        "76ce2d29cd0fd4e4e97571f6610fb5b517125f58bfea5c0cb3fb70eeeebc2128"
       ]
     },
     "portico-dawn": {
-      "manifest": "glaze-packs-v4/art__portico-dawn__v1__manifest.json",
+      "manifest": "art/portico-dawn/v2/manifest.json",
       "artwork": [
         "curved-stair",
         "fluted-column",
-        "three-arch-portico"
+        "three-arch-portico",
+        "travertine-urn",
+        "stone-lattice-screen"
+      ],
+      "images": [
+        "widget-curved-stair.efde5f9d.webp",
+        "widget-fluted-column.cd0a8424.webp",
+        "widget-three-arch-portico.34195cd7.webp",
+        "widget-travertine-urn.5630ffd5.webp",
+        "widget-stone-lattice-screen.007d66e4.webp"
+      ],
+      "hashes": [
+        "efde5f9d7d3352aff1d7755218911a92709ec0a19615892d91d2a8656fbdba53",
+        "cd0a8424f5e2268ccccbca5c3a6f9d05fd70813a07a17b6242c526f7c1ccb267",
+        "34195cd75a84d8575dc52407bc44ca3494e4d160fed3aafcd104712a2e61d866",
+        "5630ffd536546d2db89ffd3e11ce8eb5105d882f6d3affd9d1dfa5a10b19ac8c",
+        "007d66e4afa6145914f4b3f492035809575932d8956eaba043e6778daf9be0a2"
       ]
     },
     "prism-orchard": {
-      "manifest": "glaze-packs-v12/art__prism-orchard__v6__manifest.json",
+      "manifest": "art/prism-orchard/v8/manifest.json",
       "artwork": [
         "glass-plum",
         "opal-tree-frog",
         "petal-hummingbird",
-        "hero-small"
+        "opal-butterfly",
+        "opal-orchard-rabbit"
+      ],
+      "images": [
+        "widget-glass-plum.df948b64.webp",
+        "widget-opal-tree-frog.87be490c.webp",
+        "widget-petal-hummingbird.2e0c34fc.webp",
+        "widget-opal-butterfly.444dc4ac.webp",
+        "widget-opal-orchard-rabbit.725d50b0.webp"
+      ],
+      "hashes": [
+        "df948b647b05e17044f06ca92bbab84594235cbdd28704213e3e6dfeb297d51f",
+        "87be490cd80633af054b45a06aa8ceb6a32fdb525ceff5160ff388e0ad9407a3",
+        "2e0c34fc637a1eedad6ca0f7a77c4e067ced252725b4e9a1a99b78f1a08cd085",
+        "444dc4acb555b63aaf4aa1d63af8e013c76194a746b9a36ab118c686be80aaa8",
+        "725d50b0bc4ff2afb21b98cb81a96dbfcbca29731004052056ff731fd47b8fc6"
       ]
     },
     "protea-blush": {
-      "manifest": "glaze-packs-v12/art__protea-blush__v4__manifest.json",
+      "manifest": "art/protea-blush/v5/manifest.json",
       "artwork": [
-        "bloom-progress",
         "king-protea",
-        "silver-leaf"
+        "silver-leaf",
+        "blush-rose-chafer",
+        "blush-satin-moth",
+        "protea-sugarbird"
+      ],
+      "images": [
+        "widget-king-protea.2782c4e4.webp",
+        "widget-silver-leaf.168f32d6.webp",
+        "widget-blush-rose-chafer.56c8fe66.webp",
+        "widget-blush-satin-moth.70c4f5d5.webp",
+        "widget-protea-sugarbird.3cc5d3c0.webp"
+      ],
+      "hashes": [
+        "2782c4e41ec7e39907cbcee479a3ff212d22de2d7b1b5646025add648f5b1180",
+        "168f32d64e001606ab9488c6b831a42038ea4f470c68411c54cf55cad9fc5685",
+        "56c8fe66e1ef767b0105937bfc6f8e006cd8ab245fb37b6d8302f981fbc524c1",
+        "70c4f5d539f1181638578a5bf4bcf1c2b5deedf9f8ff69e50cfcde3eeb26f5cb",
+        "3cc5d3c05fc04b2e71a619ca0d39712213368d739f038248909656bbc6c0fe98"
       ]
     },
     "puffin-fold": {
-      "manifest": "glaze-packs-v4/art__puffin-fold__v1__manifest.json",
+      "manifest": "art/puffin-fold/v2/manifest.json",
       "artwork": [
         "cliff-strata",
-        "egg-progress",
         "paper-flight",
-        "puffin-perch"
+        "puffin-perch",
+        "paper-lighthouse",
+        "paper-fishing-boat"
+      ],
+      "images": [
+        "widget-cliff-strata.3514833f.webp",
+        "widget-paper-flight.310ee665.webp",
+        "widget-puffin-perch.3993576f.webp",
+        "widget-paper-lighthouse.b36f7e52.webp",
+        "widget-paper-fishing-boat.48436bd7.webp"
+      ],
+      "hashes": [
+        "3514833fde31a0f69b513a2c4c405cc45f64f2096d416eea295a735c5a096e74",
+        "310ee66592fd1074a62f4ac3d414c3187137f80b535dda039379de4773130b63",
+        "3993576fbf0bbd689bd40988a615fb70b33d2f1b0a7224502230c6dbcbca6b5a",
+        "b36f7e52fb6e3e56be7dfaa6fedf34bc36534528cbbb86943dde62e3682203f3",
+        "48436bd7222477368b6d9f2b0f79f46c3c133421a4ca3de237e1256ae08d27a4"
       ]
     },
     "quince-foil": {
-      "manifest": "glaze-packs-v4/art__quince-foil__v1__manifest.json",
+      "manifest": "art/quince-foil/v2/manifest.json",
       "artwork": [
         "folded-leaf",
         "gilded-quince",
-        "ivory-blossom"
+        "ivory-blossom",
+        "gilded-seed-capsule",
+        "gilded-dragonfly"
+      ],
+      "images": [
+        "widget-folded-leaf.a72a6f7c.webp",
+        "widget-gilded-quince.b6c94c32.webp",
+        "widget-ivory-blossom.06123a3a.webp",
+        "widget-gilded-seed-capsule.595caf5d.webp",
+        "widget-gilded-dragonfly.bf47be59.webp"
+      ],
+      "hashes": [
+        "a72a6f7c9bbdc05b5a351361fd6f39016a7adc2b3d2bfc29682b93da1a2088d2",
+        "b6c94c328f8eb806b9ca996d06584c0e0ebe96633bd08aeed888c48fe86a937e",
+        "06123a3aba3cafa64f62baf24f1de391fc5baeaa66f3261c7f1d185ae1e81c75",
+        "595caf5db1741ada23acf08984b7c5ec28afb9223a78fe2a28dd8ef2bcc349bf",
+        "bf47be596f5e6bfc5d3e9533fd1abe28996988739ad85754d49ef2212c63dbc2"
       ]
     },
     "rainleaf": {
-      "manifest": "glaze-packs-v12/art__rainleaf__v6__manifest.json",
+      "manifest": "art/rainleaf/v7/manifest.json",
       "artwork": [
         "jade-rain-frog",
         "rain-bamboo",
         "fern-unfurl",
-        "hero-small"
+        "hero-small",
+        "emerald-mushrooms"
+      ],
+      "images": [
+        "widget-jade-rain-frog.ba8d48f9.webp",
+        "widget-rain-bamboo.19b64eec.webp",
+        "widget-fern-unfurl.b500c090.webp",
+        "widget-small.3276089c.webp",
+        "widget-emerald-mushrooms.329641ed.webp"
+      ],
+      "hashes": [
+        "ba8d48f9a6a4939d774ba34f9090619580ff0e2679596c1fac64a13e61d98eed",
+        "19b64eec77391383ec948e341ce49cacd96305b78d64cf9927ae420157dd4722",
+        "b500c0900699bf1b998a5a4cd0b2d5433c1d15b324d766cc0b0bc9b391f45766",
+        "3276089cbda7c42b92780b071ddaf6e3966f965d9743e875c9e258fd2076c68b",
+        "329641ed44fb4d509a02660c3b3f26c61c2dde1fce438adcb1738ddaf48d444c"
       ]
     },
     "rainlight": {
-      "manifest": "glaze-packs-v14/art__rainlight__v7__manifest.json",
+      "manifest": "art/rainlight/v8/manifest.json",
       "artwork": [
-        "audit-20261101-after-hours",
         "audit-20261101-rain-window",
         "glass-umbrella",
         "rain-leaf",
-        "koi"
+        "koi",
+        "rain-dragonfly"
+      ],
+      "images": [
+        "widget-audit-20261101-rain-window.9e53aca4.webp",
+        "widget-glass-umbrella.4fc714e5.webp",
+        "widget-rain-leaf.761fc7df.webp",
+        "widget-koi.3736d776.webp",
+        "widget-rain-dragonfly.ab89f6bf.webp"
+      ],
+      "hashes": [
+        "9e53aca4693aacfb9127f99cbdbf48191652af40b767eb9a92a414887d7762cc",
+        "4fc714e508cc49edf203f9e7af3ec294e053bb9bc806cc552764901474ce154c",
+        "761fc7df8a20a8806bc9d287e3b8986c49cdf8d14ed09765d88b0fbd0cd8d212",
+        "3736d776b2888eeae84905ede92fa0d48e896abbdccbb1c4229682287e637fbc",
+        "ab89f6bf592159e1decf18b46114e47cc73bcc3715bd82e330af062801e6d64e"
       ]
     },
     "regatta-blue": {
-      "manifest": "glaze-packs-v12/art__regatta-blue__v6__manifest.json",
+      "manifest": "art/regatta-blue/v8/manifest.json",
       "artwork": [
         "sail-glass-bottle",
-        "hero-small"
+        "hero-small",
+        "art-20261107-brass-sextant",
+        "art-20261107-sail-knot",
+        "brass-yacht-anchor"
+      ],
+      "images": [
+        "widget-sail-glass-bottle.a4380d22.webp",
+        "widget-small.5325c72c.webp",
+        "widget-brass-sextant.8af89e69.webp",
+        "widget-sail-knot.b67e87e0.webp",
+        "widget-brass-yacht-anchor.13c9d46b.webp"
+      ],
+      "hashes": [
+        "a4380d22e60d6d019066427570a63a613630f126b2dc8bec7923d116af696682",
+        "5325c72c683894dfb7bfd373020555c457bda23444da152a042faa943e7c9b2a",
+        "8af89e699f27b57d072944ec1029328be00b0a1706948d32da816d438b9ffc05",
+        "b67e87e0c36b623636b1fe08b44a87d63456122cbc32a836cfa61071c9fb25b5",
+        "13c9d46b188a3a93c5a867f6735aa863020eff2193e34ff20eed8afd4e619c42"
       ]
     },
     "rosewater-reverie": {
-      "manifest": "glaze-packs-v12/art__rosewater-reverie__v6__manifest.json",
+      "manifest": "art/rosewater-reverie/v7/manifest.json",
       "artwork": [
-        "audit-20261101-pearl-pendulum",
         "glass-rose",
         "pearl-ballet-brooch",
         "satin-swan",
-        "hero-small"
+        "hero-small",
+        "pearl-shell"
+      ],
+      "images": [
+        "widget-glass-rose.fff58ab0.webp",
+        "widget-pearl-ballet-brooch.6dfadda6.webp",
+        "widget-satin-swan.15bca733.webp",
+        "widget-small.66b748a9.webp",
+        "widget-pearl-shell.b3fcd6a1.webp"
+      ],
+      "hashes": [
+        "fff58ab0f179a0a54f05ec5bbf5877539880e468e05ab0c7dd2aff08f059d116",
+        "6dfadda6d978ac65491075b23245d212c02df20ceeb6ff4f7142dc2adcba89c8",
+        "15bca7331b9b80525ac751a0db902fb8537c311f523009e2ae35ac5044823299",
+        "66b748a9a3344c961f74bd8bc1d1dd45a4a28e1ce5624026f0a14b18e41fe215",
+        "b3fcd6a15133cfd6558f929c1cc8c2eca96f228134fc45af992940133b707a6c"
       ]
     },
     "saddlewood": {
-      "manifest": "glaze-packs-v12/art__saddlewood__v6__manifest.json",
+      "manifest": "art/saddlewood/v8/manifest.json",
       "artwork": [
         "leather-compass",
-        "hero-small"
+        "hero-small",
+        "art-20261107-brass-stirrup",
+        "art-20261107-braided-rosette",
+        "chestnut-saddle"
+      ],
+      "images": [
+        "widget-leather-compass.df12997d.webp",
+        "widget-small.c57ce4f3.webp",
+        "widget-brass-stirrup.04ce5b40.webp",
+        "widget-braided-rosette.5d3dc6f8.webp",
+        "widget-chestnut-saddle.b60ab58c.webp"
+      ],
+      "hashes": [
+        "df12997d4a1ae815bdd6802995d4feab3680480acc967d4ffc0099a474c64127",
+        "c57ce4f344e5290f537d4b5dbff9e6375f5b1318ed8ca9206163f6023a9017b4",
+        "04ce5b40922c17a94f757be080a701c483942d9889319ba05f220c4ccc76841c",
+        "5d3dc6f8f254287760c4a34061dd5bc04f27dec3c956aa76327282b02b039d09",
+        "b60ab58cdb0632ec57033972f88008a911397a562dc2dd02780ca6f9d05cf3f9"
       ]
     },
     "saffron-courtyard": {
-      "manifest": "glaze-packs-v12/art__saffron-courtyard__v6__manifest.json",
+      "manifest": "art/saffron-courtyard/v7/manifest.json",
       "artwork": [
         "glazed-lemons",
         "mosaic-sunbird",
         "pomegranate-court",
-        "hero-small"
+        "hero-small",
+        "mosaic-carafe"
+      ],
+      "images": [
+        "widget-glazed-lemons.408010c8.webp",
+        "widget-mosaic-sunbird.1cdd845f.webp",
+        "widget-pomegranate-court.07ac6777.webp",
+        "widget-small.fa3df649.webp",
+        "widget-mosaic-carafe.0054b4df.webp"
+      ],
+      "hashes": [
+        "408010c8d45878880761ffcd0c45245774e4b8f86df547451e0f140dcd2841d1",
+        "1cdd845f5fb065408b92824ec1ccb1156f2f1994426548cdfecb542b0e7bdc96",
+        "07ac6777aa2afc6b2257aca389aea795fc595c5025e34cb43cc3555b744d5de0",
+        "fa3df649d48ad94333db045035d6b3756e2151748a26b26961fe44a6a024e088",
+        "0054b4df03235562a288056697774edb2f3092f5a15c8817900190a860238b57"
       ]
     },
     "saguaro-siesta": {
-      "manifest": "glaze-packs-v12/art__saguaro-siesta__v6__manifest.json",
+      "manifest": "art/saguaro-siesta/v8/manifest.json",
       "artwork": [
         "terracotta-snake",
-        "hero-small"
+        "hero-small",
+        "art-20261107-turquoise-agave",
+        "art-20261107-desert-quail",
+        "terracotta-armadillo"
+      ],
+      "images": [
+        "widget-terracotta-snake.e0eb8f4e.webp",
+        "widget-small.dfb799dd.webp",
+        "widget-turquoise-agave.544d6fc6.webp",
+        "widget-desert-quail.abe2c792.webp",
+        "widget-terracotta-armadillo.8ec526df.webp"
+      ],
+      "hashes": [
+        "e0eb8f4e64d7f26c8674ad79578d2e30be728c5e55b60679232537497938d43f",
+        "dfb799ddfc91757e96a8759223c495636290348b360f4b561c24c464a52f33ed",
+        "544d6fc67784ff3f321924390c6bb43aba7b637610a345a06b63682d11ffd2a4",
+        "abe2c79294d0143f5d92c0e134930ca812c111fbe9374db3612aa9ebe0887e51",
+        "8ec526df27a1722f884b11e71d183b7d6f6775c244e716d6a0e5a75b4279b23f"
       ]
     },
     "saltveil": {
-      "manifest": "glaze-packs-v12/art__saltveil__v6__manifest.json",
+      "manifest": "art/saltveil/v9/manifest.json",
       "artwork": [
         "salt-crystal",
-        "hero-small"
+        "hero-small",
+        "art-20261106-sea-glass-shell",
+        "halite-feather",
+        "rose-glass-sailboat"
+      ],
+      "images": [
+        "widget-salt-crystal.a68920a7.webp",
+        "widget-small.c09f7282.webp",
+        "widget-sea-glass-shell.90468f4b.webp",
+        "widget-halite-feather.f7fe1ac5.webp",
+        "widget-rose-glass-sailboat.31a5ea2e.webp"
+      ],
+      "hashes": [
+        "a68920a735e352dcc6ece702a74820b64021c794f3c1a6c4fc2650fffd2ea66f",
+        "c09f7282eddfb3fab8870637a436c9ba8c07931037d83d2819a76206130cd476",
+        "90468f4b28c70650c9778d94cb6629bb1e58df15868ba76bbc60e7ab478a4f2f",
+        "f7fe1ac50900c4499a490c00839801b107085220e7cf8c69c8aeb66858ee7db9",
+        "31a5ea2ea7ededbb77316cd5beb9c0d918431bb48dc3dc5eb4f31da54001d6d2"
       ]
     },
     "sea-glass-sunday": {
-      "manifest": "glaze-packs-v12/art__sea-glass-sunday__v6__manifest.json",
+      "manifest": "art/sea-glass-sunday/v8/manifest.json",
       "artwork": [
         "sea-glass-bottle",
-        "hero-small"
+        "hero-small",
+        "art-20261107-tidepool-charm",
+        "art-20261107-shell-wind-chime",
+        "sea-glass-crab"
+      ],
+      "images": [
+        "widget-sea-glass-bottle.72804a7b.webp",
+        "widget-small.68634812.webp",
+        "widget-tidepool-charm.778e0e0d.webp",
+        "widget-shell-wind-chime.213f592e.webp",
+        "widget-sea-glass-crab.1abec885.webp"
+      ],
+      "hashes": [
+        "72804a7b9f6e16e4021d4b6bb87a92b61c3d8b630d1e9daf03a91c674a3194a3",
+        "68634812599ee2824a39f0e443e41ae824b2ce3f839e436f5f931473d898f313",
+        "778e0e0d5a45b1230693329cd06d7230f82187da1f7c93f2627cdc6132526dfc",
+        "213f592ef983a5082dad9967e30e39ab2ed0e0294be92cf171325577f49a30ed",
+        "1abec8852e6b049060bcaa0c6b724d244664ceff50f05e3259b7925c10af8af5"
       ]
     },
     "shuttle-sage": {
-      "manifest": "glaze-packs-v4/art__shuttle-sage__v1__manifest.json",
+      "manifest": "art/shuttle-sage/v2/manifest.json",
       "artwork": [
         "feather-fan",
         "feather-shuttle",
-        "racket-study"
+        "racket-study",
+        "ivory-court-shoe",
+        "wooden-net-post"
+      ],
+      "images": [
+        "widget-feather-fan.5290c627.webp",
+        "widget-feather-shuttle.ad70cd65.webp",
+        "widget-racket-study.57341858.webp",
+        "widget-ivory-court-shoe.3dbe627a.webp",
+        "widget-wooden-net-post.8d12935a.webp"
+      ],
+      "hashes": [
+        "5290c627f246db23ed5e5d75997738326cde03a0a9d27329754ce9ab9d274a45",
+        "ad70cd65f0d5678669dee201e6449f7a0154db4848c901922e5c6929dd2f36c7",
+        "57341858c5ae8a084ae30ccd099b2feb604e61bc6daf32ce311864cd0c7ba24a",
+        "3dbe627af552a0d314536991509f9a421b86b5dfed291dcf7446cadd31c8f7bf",
+        "8d12935a9d99c2069ba8f4a66f22b78aee2676e30012100f536cfd130c7e3087"
       ]
     },
     "signal-yellow": {
-      "manifest": "glaze-packs-v12/art__signal-yellow__v6__manifest.json",
+      "manifest": "art/signal-yellow/v7/manifest.json",
       "artwork": [
         "signal-lantern",
         "transit-ticket-fold",
         "platform-slice",
-        "hero-small"
+        "hero-small",
+        "platform-bench"
+      ],
+      "images": [
+        "widget-signal-lantern.4ca883f4.webp",
+        "widget-transit-ticket-fold.60eb656b.webp",
+        "widget-platform-slice.8c78d32f.webp",
+        "widget-small.d0cb2226.webp",
+        "widget-platform-bench.802ce0da.webp"
+      ],
+      "hashes": [
+        "4ca883f4a345916034e55c143f8c4534ff455f1f3414e0e4929fb7525031212e",
+        "60eb656b9ebb12b53b5a3748f381dca01d5ca65fbd3942ee8d3dd8bfacbe28f9",
+        "8c78d32f1b97961f68f3df16699840551d88033aa42db59e1b70160f2f96f15d",
+        "d0cb2226575902eb9df921b3564bf921de0944a1c934788badba5a4ccf15e0d0",
+        "802ce0da8fa0a7e6178b3715fdecd0ea1c46815a4cf4a478fdf16c8bf2686892"
       ]
     },
     "silver-orchard": {
-      "manifest": "glaze-packs-v12/art__silver-orchard__v6__manifest.json",
+      "manifest": "art/silver-orchard/v8/manifest.json",
       "artwork": [
         "glass-orchard-snail",
         "silver-leaf-lantern",
         "silver-dormouse",
-        "hero-small"
+        "silver-pear-blossom",
+        "silver-orchard-key"
+      ],
+      "images": [
+        "widget-glass-orchard-snail.10df11be.webp",
+        "widget-silver-leaf-lantern.0e3e56b7.webp",
+        "widget-silver-dormouse.9881d967.webp",
+        "widget-silver-pear-blossom.885b3b43.webp",
+        "widget-silver-orchard-key.d55931b2.webp"
+      ],
+      "hashes": [
+        "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025",
+        "0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c",
+        "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694",
+        "885b3b43228dd4d1e86fc6bbda5e320ce001928e421aeb1deec40470e6f0f75b",
+        "d55931b2c76fc6d6cf4f4517ecf1a85d63b18b2d49cb0503353609a085feb393"
       ]
     },
     "sonata-house": {
-      "manifest": "glaze-packs-v12/art__sonata-house__v6__manifest.json",
+      "manifest": "art/sonata-house/v7/manifest.json",
       "artwork": [
-        "practice-chapters",
         "string-butterfly",
-        "hero-small"
+        "hero-small",
+        "walnut-cello",
+        "chamber-french-horn",
+        "walnut-music-stand"
+      ],
+      "images": [
+        "widget-string-butterfly.7ef3bab5.webp",
+        "widget-small.20939f9b.webp",
+        "widget-walnut-cello.583d3fe5.webp",
+        "widget-chamber-french-horn.fa4e49cd.webp",
+        "widget-walnut-music-stand.3c17bbd8.webp"
+      ],
+      "hashes": [
+        "7ef3bab57cc57f52fce734b6b120c517ae9bf8fb578f2b9367a308d36604bf38",
+        "20939f9be022ba266c42988c312c9fca44428d52c8b5510042d636d88624bf5b",
+        "583d3fe5dcddbf81ee881bdab48717e5c614f7a26dde8c333efdfb0174a24ae9",
+        "fa4e49cdb52752f427ec26e6932cb828d2f65ab71c61b516061104d3882e96d4",
+        "3c17bbd8e5278705be456ec2500102547dee710df22fba3853c3365df7d3500f"
       ]
     },
     "spare-time": {
-      "manifest": "glaze-packs-v12/art__spare-time__v6__manifest.json",
+      "manifest": "art/spare-time/v7/manifest.json",
       "artwork": [
         "bowling-satellite",
-        "spare-goals",
-        "hero-small"
+        "hero-small",
+        "coral-bowling-shoes",
+        "retro-bowling-bag",
+        "maple-pin-rack"
+      ],
+      "images": [
+        "widget-bowling-satellite.026a2933.webp",
+        "widget-small.b84af80a.webp",
+        "widget-coral-bowling-shoes.cdc6149b.webp",
+        "widget-retro-bowling-bag.54b23117.webp",
+        "widget-maple-pin-rack.a00e80fd.webp"
+      ],
+      "hashes": [
+        "026a2933d175cc549bd423d74d2bdd4adda880a4e05e25966ba52b73963a2b24",
+        "b84af80ae897cb14c4417085513b76fb72b6f0120e987b5daec278fe42bd2759",
+        "cdc6149bccf7a6764f38845bd2508072727dbf14f07a583a184e451f8b92c9f0",
+        "54b23117de17c209e89d86f870b50acfa03962abd428b714e0c38a8e4c0ad754",
+        "a00e80fd6389e4a811b99e155a83ede3b2fefe5f12583aac2a2c7b6916906bbb"
       ]
     },
     "steam-and-sage": {
-      "manifest": "glaze-packs-v4/art__steam-and-sage__v1__manifest.json",
+      "manifest": "art/steam-and-sage/v2/manifest.json",
       "artwork": [
         "bamboo-steamer",
         "pleated-dumpling",
-        "woven-lid"
+        "woven-lid",
+        "bamboo-chopstick-rest",
+        "ginger-fan"
+      ],
+      "images": [
+        "widget-bamboo-steamer.a42775d4.webp",
+        "widget-pleated-dumpling.a484899b.webp",
+        "widget-woven-lid.e2f950b9.webp",
+        "widget-bamboo-chopstick-rest.bf64ccd1.webp",
+        "widget-ginger-fan.03e806ea.webp"
+      ],
+      "hashes": [
+        "a42775d4bf07dd8c19330ea4cdfe951a342ec2ddc5b8a867af5ed8766971bc48",
+        "a484899bfdaeac6afb4b5185a71ffc19561434b983c7264125907240bc517bd9",
+        "e2f950b95e7fadb312a470971fec1c1c8e3e5c7192e589a444223325cb9ed575",
+        "bf64ccd17ee938bab33a4e62ddb672ee326df436589342b08d367a1d40be9b2c",
+        "03e806ea05b7903e23d201e0849c827f14f585544ae87813e3703e3edfa478c2"
       ]
     },
     "stellar-cradle": {
-      "manifest": "glaze-packs-v13/art__stellar-cradle__v6__manifest.json",
+      "manifest": "art/stellar-cradle/v8/manifest.json",
       "artwork": [
         "nebula-egg",
         "star-seedling",
-        "stellar-nursery",
-        "hero-small"
+        "hero-small",
+        "starforming-spire",
+        "stellar-ringed-world"
+      ],
+      "images": [
+        "widget-nebula-egg.4054a8c9.webp",
+        "widget-star-seedling.a3f9a3bc.webp",
+        "widget-small.f60d378b.webp",
+        "widget-starforming-spire.83886f32.webp",
+        "widget-stellar-ringed-world.9fc5e2fc.webp"
+      ],
+      "hashes": [
+        "4054a8c9f6976f8c30f6203cd8d1934fcf00e84e85186868b675d9ccb9c84a20",
+        "a3f9a3bc637334cc5abf4ebb01a3bd1a2e0cd98dc2d581fa604fc19573124010",
+        "f60d378ba2128732fe20526aafc3c7c64606d18e73ef16d2a47be58e51b8c871",
+        "83886f320782bd5d049b77174591e641a8d60c33cf380d76aea39c9135a2c613",
+        "9fc5e2fcef5d18c32b3e6598720b2d4277a02568670418009e87d747493f8524"
       ]
     },
     "summit-line": {
-      "manifest": "glaze-packs-v13/art__summit-line__v6__manifest.json",
+      "manifest": "art/summit-line/v9/manifest.json",
       "artwork": [
         "pine-rope-pendant",
-        "hero-small"
+        "hero-small",
+        "art-20261107-snowshoe-pair",
+        "alpine-ice-axe",
+        "alpine-mountain-hut"
+      ],
+      "images": [
+        "widget-pine-rope-pendant.38e56c1c.webp",
+        "widget-small.73fa8577.webp",
+        "widget-snowshoe-pair.befa228a.webp",
+        "widget-alpine-ice-axe.6210dbd7.webp",
+        "widget-alpine-mountain-hut.be2a271b.webp"
+      ],
+      "hashes": [
+        "38e56c1c0fd6c7f6d56124256addc6fc0b80aa3122929c48ada4b5470b4c0a63",
+        "73fa8577d5ae2b4147a8177b3832c10bb9a7b79cb20fcdc66fa85145a2e94f99",
+        "befa228a5529421775a577dd7027aa5ccb099ce7c689766878f0543c1bd193d0",
+        "6210dbd79d95a1547032d0b298ada050abecb7f5e7e179845f548b6a009a6f5a",
+        "be2a271be4a6fa4f977b89e17255c0bf49f04bbb7b716c4b5229cb2121a541e4"
       ]
     },
     "sundew-ember": {
-      "manifest": "glaze-packs-v13/art__sundew-ember__v4__manifest.json",
+      "manifest": "art/sundew-ember/v6/manifest.json",
       "artwork": [
         "dew-orbit",
         "sundew-crown",
-        "hero-small"
+        "ember-seed-capsule",
+        "sundew-blossom",
+        "ruby-garden-beetle"
+      ],
+      "images": [
+        "widget-dew-orbit.8dd77a90.webp",
+        "widget-sundew-crown.9abc93d3.webp",
+        "widget-ember-seed-capsule.4f6066c1.webp",
+        "widget-sundew-blossom.c8f85045.webp",
+        "widget-ruby-garden-beetle.09690fa0.webp"
+      ],
+      "hashes": [
+        "8dd77a90e4b58eefccfc93cffd7dc8babe983acc169dc613c8adee0dedabebb3",
+        "9abc93d315fd50e2f5f3ef3a6b8f1c84732e8fa0c9a9608ea2a365d9e57d3545",
+        "4f6066c1297aab5daaf1d68a0079b8b96c42a96000ef82ef081c632ca31fd2ad",
+        "c8f850459e4adf9091f9479b46a4eb32a1ef82a41eaa5399f32de763be7ed605",
+        "09690fa04748faff175737c5e59dce2727a078678ebd58d79e570d61f315aa18"
       ]
     },
     "tapir-terracotta": {
-      "manifest": "glaze-packs-v4/art__tapir-terracotta__v1__manifest.json",
+      "manifest": "art/tapir-terracotta/v2/manifest.json",
       "artwork": [
         "ceramic-tapir",
         "clay-pebbles",
         "sage-leaf",
-        "water-drops"
+        "speckled-clay-pitcher",
+        "ceramic-bromeliad"
+      ],
+      "images": [
+        "widget-ceramic-tapir.f0dc6a47.webp",
+        "widget-clay-pebbles.a1c437e8.webp",
+        "widget-sage-leaf.4c51fed0.webp",
+        "widget-speckled-clay-pitcher.4760e44a.webp",
+        "widget-ceramic-bromeliad.93e6cd9a.webp"
+      ],
+      "hashes": [
+        "f0dc6a47dbbe77292ee66c93b18fdb69a57c0bd9bb51b22303ead77eae0b9ee3",
+        "a1c437e88692400b46ea889fc6f69c307f7906504ec0148e812aa2be1ffeabae",
+        "4c51fed0bfcf310dc34f03ead36ff98500dea6f60a5737095453f0a24e5573b6",
+        "4760e44a1d30b2cdb179e8c27c8061a9f51e08b963550796aaeaa2f4740f7bf1",
+        "93e6cd9a72eea941cbbaa6a68e32149bf0bfdcc9f31f057ac721473675fe3f68"
       ]
     },
     "tempest-noir": {
-      "manifest": "glaze-packs-v13/art__tempest-noir__v6__manifest.json",
+      "manifest": "art/tempest-noir/v8/manifest.json",
       "artwork": [
         "storm-glass",
-        "hero-small"
+        "hero-small",
+        "art-20261107-lightning-coil",
+        "art-20261107-rain-gauge",
+        "copper-storm-lantern"
+      ],
+      "images": [
+        "widget-storm-glass.b04819ef.webp",
+        "widget-small.aa04b469.webp",
+        "widget-lightning-coil.a37ae3f9.webp",
+        "widget-rain-gauge.13cfae2d.webp",
+        "widget-copper-storm-lantern.59a743f2.webp"
+      ],
+      "hashes": [
+        "b04819ef024ef4718b51851b24991a0c87e875bc05dc3f09b06b13bfcd828f80",
+        "aa04b46975b9d9cac6ed83e85737900cd77ad7c4ff177324b605761822d384fe",
+        "a37ae3f9b6850a69bfea7115743be77d3165efd744e8223c40a07be43e0f345f",
+        "13cfae2df6a73cae30fe78117f2f007dc2e36eb54723c9b9e6ee1a69e1d1ee1a",
+        "59a743f241223ab59930e5d99b07e62bbfcfbbd984b37a9da398bf1ba8b2dcb3"
       ]
     },
     "tessera-tempo": {
-      "manifest": "glaze-packs-v4/art__tessera-tempo__v1__manifest.json",
+      "manifest": "art/tessera-tempo/v2/manifest.json",
       "artwork": [
         "arc-current",
-        "dot-progress",
         "quadrant-rosette",
-        "tile-weave"
+        "tile-weave",
+        "ceramic-mountain-mosaic",
+        "glazed-ceramic-fan"
+      ],
+      "images": [
+        "widget-arc-current.9365c670.webp",
+        "widget-quadrant-rosette.cbd11b86.webp",
+        "widget-tile-weave.d3e0eac2.webp",
+        "widget-ceramic-mountain-mosaic.75a06843.webp",
+        "widget-glazed-ceramic-fan.0f082106.webp"
+      ],
+      "hashes": [
+        "9365c6707b49746626f3684855aafb2089cde8317837cb590b04fd85f92d3bbe",
+        "cbd11b8686bdd06dcb2e0237628ebf212c3d740d7bad212a4cf3e15a72bcb936",
+        "d3e0eac2eba43b662a7c334c3e111f4d9dadedc412c1c4173e3eca2bbd3cbe84",
+        "75a068436b05c439dbc80e04caffeaff74c7030e58eae94bcc51d0ba963dcd8c",
+        "0f08210633709a271100b799cba0880d1c9aa50b31ec9f18c5783792bc54160d"
       ]
     },
     "thistle-etch": {
-      "manifest": "glaze-packs-v4/art__thistle-etch__v1__manifest.json",
+      "manifest": "art/thistle-etch/v2/manifest.json",
       "artwork": [
         "seed-tuft",
         "silver-leaf",
-        "thistle-head"
+        "thistle-head",
+        "lavender-pollen-bee",
+        "thistle-goldfinch"
+      ],
+      "images": [
+        "widget-seed-tuft.b1694133.webp",
+        "widget-silver-leaf.fd22a998.webp",
+        "widget-thistle-head.d79ef931.webp",
+        "widget-lavender-pollen-bee.febdaa8a.webp",
+        "widget-thistle-goldfinch.1dbe66a7.webp"
+      ],
+      "hashes": [
+        "b16941334658bce55fa6408bf4416656c52acf4e469d9126d331b3eaf6baf2f8",
+        "fd22a998f8e92c9f20e3f2b7d5c8600314e1062ee52bd9460f3dc0bb6b352c94",
+        "d79ef93190e7b8ed5ec6d2533a03aa431362dea13bfe14bfdf2b99ef927dc6b8",
+        "febdaa8adee688cdfc092196482cd22020229e1e056a5ffee4dadad558c682ac",
+        "1dbe66a797d26ab53437e3dcc87112b534f00e95bc48c101e89637b34f8f41e1"
       ]
     },
     "toucan-loom": {
-      "manifest": "glaze-packs-v4/art__toucan-loom__v1__manifest.json",
+      "manifest": "art/toucan-loom/v2/manifest.json",
       "artwork": [
         "canopy-leaf",
-        "tuft-progress",
         "tufted-toucan",
-        "woven-feather"
+        "woven-feather",
+        "tufted-heliconia",
+        "woven-pineapple"
+      ],
+      "images": [
+        "widget-canopy-leaf.006791f0.webp",
+        "widget-tufted-toucan.c8a00426.webp",
+        "widget-woven-feather.d58c0127.webp",
+        "widget-tufted-heliconia.9a980030.webp",
+        "widget-woven-pineapple.06546f7c.webp"
+      ],
+      "hashes": [
+        "006791f0137d086b2a9dc007132443c1d1a520c14eb400c38e644e2d59bb5273",
+        "c8a004262a7e9edd0e9189415d7090ecb2ad35d3a44f6f2c14558277927c6e5a",
+        "d58c0127ede48be3fd4d5dbd8d3600a2f5cc951e6a472562ecaa56e0476a3b35",
+        "9a98003092abd56396af3614c2764ba139e2a0e40bac8421ebb7d00d24e007ad",
+        "06546f7c5a1e07767b1d351c7802a12b528a1e1aa47337cb1fc86646d63440ba"
       ]
     },
     "tryline-russet": {
-      "manifest": "glaze-packs-v4/art__tryline-russet__v1__manifest.json",
+      "manifest": "art/tryline-russet/v2/manifest.json",
       "artwork": [
         "ivory-posts",
         "russet-ball",
-        "stitched-boot"
+        "stitched-boot",
+        "brass-referee-whistle",
+        "heritage-scrum-cap"
+      ],
+      "images": [
+        "widget-ivory-posts.7d9aca8b.webp",
+        "widget-russet-ball.bc81905a.webp",
+        "widget-stitched-boot.11396c91.webp",
+        "widget-brass-referee-whistle.d5b06789.webp",
+        "widget-heritage-scrum-cap.0f7fee58.webp"
+      ],
+      "hashes": [
+        "7d9aca8b82dac4c84d4773ef159651912a7985ee439b808f4bf0098450c01926",
+        "bc81905acf47d2939c9e8a459da8d5f10c118c0c7d70dfa427ebce2f04fbad92",
+        "11396c91231b67e96425ef00942e5eaf20f661bc0059506939b38401fe885c43",
+        "d5b067892b710f619749fcb30dc4a36c20c84f3a4d09c5594c30d9a46ac0ff17",
+        "0f7fee589a1e699a1b7d9a63000b0d5e54983fd3a8184145017cf80e397e3835"
       ]
     },
     "typecase-ivory": {
-      "manifest": "glaze-packs-v4/art__typecase-ivory__v1__manifest.json",
+      "manifest": "art/typecase-ivory/v2/manifest.json",
       "artwork": [
         "ampersand-block",
         "ink-brayer",
-        "typecase-grid"
+        "typecase-grid",
+        "miniature-letterpress",
+        "empty-composing-stick"
+      ],
+      "images": [
+        "widget-ampersand-block.e59fe69d.webp",
+        "widget-ink-brayer.4987caf7.webp",
+        "widget-typecase-grid.89a99bca.webp",
+        "widget-miniature-letterpress.738dd0e9.webp",
+        "widget-empty-composing-stick.fb755465.webp"
+      ],
+      "hashes": [
+        "e59fe69d6a2f2673129b79b173a665b2466213ad166ef0ac7092a8cc754f1c1d",
+        "4987caf7088218c325d1587a5080d9748926e18e653391e2eb037353053d8777",
+        "89a99bca3bc6832ea63dbda0cf87d81cda08d51206e670e9aee119243ae4c50a",
+        "738dd0e9add392a807810d16cae86d7c0ae730d0ec16d04d37f0e25c8142f0d9",
+        "fb755465556941d262c9526d8679b52ded5d0dc1a6ac2f75036447ab1ea17f59"
       ]
     },
     "velvet-observatory": {
-      "manifest": "glaze-packs-v13/art__velvet-observatory__v6__manifest.json",
+      "manifest": "art/velvet-observatory/v7/manifest.json",
       "artwork": [
         "brass-telescope",
         "lunar-moth",
         "pearl-orrery",
-        "hero-small"
+        "hero-small",
+        "ivory-brass-comet"
+      ],
+      "images": [
+        "widget-brass-telescope.17d5066c.webp",
+        "widget-lunar-moth.84af2610.webp",
+        "widget-pearl-orrery.41325969.webp",
+        "widget-small.584f2445.webp",
+        "widget-ivory-brass-comet.87a79035.webp"
+      ],
+      "hashes": [
+        "17d5066c047dd1f6bbdbe42b05a211a0beae2a05ba31f888a7ee5c492fbbe7fc",
+        "84af26102e294060fdc4198a127145ec224059d3e9982fd96dd3679a29aa0588",
+        "41325969aab1d540a2f2dba22b2c6f48a8ce86de976173e9af3b8621d7b78825",
+        "584f244592a989961d07dec79f1f316eebfddc0d96ebaa8f3629071d757e9bf1",
+        "87a79035605dec0315db955c01c65b5c81251f1e97ddbebaad1a455d481f3dfb"
       ]
     },
     "verdigris-voyage": {
-      "manifest": "glaze-packs-v13/art__verdigris-voyage__v6__manifest.json",
+      "manifest": "art/verdigris-voyage/v7/manifest.json",
       "artwork": [
         "copper-seed-capsule",
         "terrarium-sailboat",
-        "greenhouse-airship"
+        "greenhouse-airship",
+        "botanical-diving-bell",
+        "glasswing-dragonfly-craft"
+      ],
+      "images": [
+        "widget-copper-seed-capsule.8fd67f50.webp",
+        "widget-terrarium-sailboat.05c1e006.webp",
+        "widget-greenhouse-airship.4731de75.webp",
+        "widget-botanical-diving-bell.468a7bef.webp",
+        "widget-glasswing-dragonfly-craft.419c072b.webp"
+      ],
+      "hashes": [
+        "8fd67f5047b41b40966aebf2b0d2ad888f08112f0382cef724ece61c3c174f8b",
+        "05c1e00629d0dd500b84807f11d733cda91ae53e25fc8eb5364ded24f54cbd09",
+        "4731de75067ee0b80f95032e522d3765a5cebcb170b4925b194b355ac328d14b",
+        "468a7befd3e75aa6e00dc50bb724ecccf766fee63bd0df46f8eef99d0fddc182",
+        "419c072b64ba705eaab0d6ad37e6b6b7ea2ae283de6a607c833379a63c1a3f6a"
       ]
     },
     "wickling-hollow": {
-      "manifest": "glaze-packs-v13/art__wickling-hollow__v6__manifest.json",
+      "manifest": "art/wickling-hollow/v7/manifest.json",
       "artwork": [
         "candle-lantern-beetle",
         "hollow-key-door",
         "moth-lantern",
-        "hero-small"
+        "hero-small",
+        "beeswax-walnut-mouse"
+      ],
+      "images": [
+        "widget-candle-lantern-beetle.438f3415.webp",
+        "widget-hollow-key-door.3f300ef5.webp",
+        "widget-moth-lantern.f0118ef0.webp",
+        "widget-small.2a9ea6c9.webp",
+        "widget-beeswax-walnut-mouse.ab283022.webp"
+      ],
+      "hashes": [
+        "438f3415c697828ea76740009dbe46428f3bdbb9afd6c42baaf0324746e9801d",
+        "3f300ef56bae0344cc3a06f3d30d24212bb4676c9848ba35de24d0c85558e8d5",
+        "f0118ef0b3cd487c9047aac725d5cdb6c67ead4aa3e511ce7afe76b85dff4ec0",
+        "2a9ea6c96472ac84bfd2252e3602aa54e85c7b405ccdb8ec9dad353f4595913f",
+        "ab283022eb3c1328cbcc8c81632fd7530c09725dcd686dd92677d8c7d7f8b587"
       ]
     },
     "willow-wicket": {
-      "manifest": "glaze-packs-v4/art__willow-wicket__v1__manifest.json",
+      "manifest": "art/willow-wicket/v2/manifest.json",
       "artwork": [
-        "innings-score",
         "stitched-ball",
         "wicket-study",
-        "willow-bat"
+        "willow-bat",
+        "vintage-batting-glove",
+        "ivory-cricket-sunhat"
+      ],
+      "images": [
+        "widget-stitched-ball.1575cd34.webp",
+        "widget-wicket-study.16e35d09.webp",
+        "widget-willow-bat.b8639385.webp",
+        "widget-vintage-batting-glove.0b54ae47.webp",
+        "widget-ivory-cricket-sunhat.06f05360.webp"
+      ],
+      "hashes": [
+        "1575cd34d388bcac9acc7e6bb3d3a6fbb27817e1cafaba1deb503ebee5775e5a",
+        "16e35d093e0519a414c3c564fc317a8be3bcd93b71e97f1ac8e944cbc66c016d",
+        "b86393856af936f70afb86afb2e36e8e992f23cf41034b27596f851b4726bb14",
+        "0b54ae4751173bb037c54339118bb9ddf43223d410dbf1df7186a4ea29315ea6",
+        "06f05360f3a9067df78f0ff0eff5d19d8fbba4bb4cccbacf0db33f291c3803d5"
       ]
     },
     "wisteria-hush": {
-      "manifest": "glaze-packs-v13/art__wisteria-hush__v6__manifest.json",
+      "manifest": "art/wisteria-hush/v9/manifest.json",
       "artwork": [
         "wisteria-lacewing",
-        "hero-small"
+        "art-20261107-wisteria-bell",
+        "art-20261107-dew-snail",
+        "wisteria-seedpods",
+        "wisteria-carpenter-bee"
+      ],
+      "images": [
+        "widget-wisteria-lacewing.0450b0e6.webp",
+        "widget-wisteria-bell.d9e18259.webp",
+        "widget-dew-snail.40f74c93.webp",
+        "widget-wisteria-seedpods.2b95b40a.webp",
+        "widget-wisteria-carpenter-bee.2a8cd6ec.webp"
+      ],
+      "hashes": [
+        "0450b0e60793c99c462728bd9ccc6f15a280603413d9077f205b93e7b238a705",
+        "d9e18259cbf480bd0a9c975c42002ab8c817822e890478853f9288564cfc087e",
+        "40f74c9362919ff701bcbb90d9d17bd79285a66bd6e6234a8e4e511e07b1f566",
+        "2b95b40a769a121c3e538135e4b2a8238d428f9560aec6e17f54cfb2c31be06d",
+        "2a8cd6ec596e91e40ca0e126fd4e7c53d2ef8053be4fe7f77d2d820339fcb516"
       ]
     },
     "woven-wander": {
-      "manifest": "glaze-packs-v4/art__woven-wander__v1__manifest.json",
+      "manifest": "art/woven-wander/v2/manifest.json",
       "artwork": [
         "coil-basket",
         "plaited-fern",
         "woven-pangolin",
-        "woven-progress"
+        "raffia-chameleon",
+        "plaited-dragonfly"
+      ],
+      "images": [
+        "widget-coil-basket.8ad7188e.webp",
+        "widget-plaited-fern.dfcffa9b.webp",
+        "widget-woven-pangolin.475a386c.webp",
+        "widget-raffia-chameleon.095fc198.webp",
+        "widget-plaited-dragonfly.7bede0e3.webp"
+      ],
+      "hashes": [
+        "8ad7188ea7fe595ee7c1a585bba87b25a503a81b78816c712d7fcb357ddf92d8",
+        "dfcffa9b8c915cee645595b4d59027f235e3fdadc54b3bf70162537957052841",
+        "475a386cddf726fcf20593be2d50d95c0eee3120e10dc557dbc3e0c13dcee29e",
+        "095fc1987742d245035c629c469e10ba0c3eb52b3ad5f06d0edbab72e828a2c0",
+        "7bede0e377de93b1d54bd6420debbb3baf85e24e1f22bcdd413dcbcb654cf624"
       ]
     },
     "yuzu-soak": {
-      "manifest": "glaze-packs-v13/art__yuzu-soak__v6__manifest.json",
+      "manifest": "art/yuzu-soak/v8/manifest.json",
       "artwork": [
         "yuzu-pond-bowl",
-        "hero-small"
+        "hero-small",
+        "art-20261107-yuzu-soap-dish",
+        "art-20261107-capybara-towel",
+        "citrus-steam-kettle"
+      ],
+      "images": [
+        "widget-yuzu-pond-bowl.0c88e614.webp",
+        "widget-small.729961e5.webp",
+        "widget-yuzu-soap-dish.f655be5a.webp",
+        "widget-capybara-towel.2830aeb4.webp",
+        "widget-citrus-steam-kettle.d858b96b.webp"
+      ],
+      "hashes": [
+        "0c88e6147402df781800ea7168d8a566489a6bd598fbf1c44e8531a85f94e427",
+        "729961e5f925c042250868bb8be7b9754bdb0b3597f0f0fbe25f280759f0ac52",
+        "f655be5a7b8fd4990fb3de770930338d0c8e28f534463101ef3befde1bdbdb20",
+        "2830aeb4d21e8aefd58a5e924770c4fc809c26416344dd9c0d473c6abe708456",
+        "d858b96b0c2745b3c2cc67415986fdfa7d78e75552fd173f0aa8ca3648c69caa"
       ]
     }
-  }
+  },
+  "bundled": {
+    "deep-sea": {
+      "artwork": [
+        "hero-small",
+        "luminous-nautilus",
+        "glowing-anglerfish",
+        "bioluminescent-coral-fan",
+        "abyssal-diving-helmet"
+      ],
+      "images": [
+        "widget-small.png",
+        "widget-luminous-nautilus.51a10d0f.webp",
+        "widget-glowing-anglerfish.b15b920a.webp",
+        "widget-bioluminescent-coral-fan.5137fec8.webp",
+        "widget-abyssal-diving-helmet.4bda679c.webp"
+      ],
+      "hashes": [
+        "40a8d06c28970e2ee7b32239a9cd5a3bf99d8270f05a3deabdfaed09251e9012",
+        "51a10d0fc276de894f29fd9ded6696b07b30ed57ac591830ca7b0f9802d01d04",
+        "b15b920abbca27c7b6f40aaa1b1bcdd6c53003526d1c87d8ef84af54773b1d67",
+        "5137fec85f47424b1be45ddaacdca9efd6a5e9e2cf6de076aacbc1b387af8cf8",
+        "4bda679cc88b8d90f0dcbb5054bc591064930214674240d1a2599ade3ea81a29"
+      ]
+    },
+    "starry-night": {
+      "artwork": [
+        "hero-small",
+        "ringed-planet",
+        "copper-telescope",
+        "ember-comet",
+        "spiral-galaxy"
+      ],
+      "images": [
+        "widget-small.png",
+        "widget-ringed-planet.3c64b5e6.webp",
+        "widget-copper-telescope.953152ed.webp",
+        "widget-ember-comet.dd51ca5d.webp",
+        "widget-spiral-galaxy.23e6d758.webp"
+      ],
+      "hashes": [
+        "8a4dc55064e7ec389b290d84e1b14b39aee182c50686e5fa2e1a0b8bb979cf61",
+        "3c64b5e6655e920681ac5502c3ec09c1d9e3203aa8684a7c3c127ca7d0a612b5",
+        "953152edf08cc765bb6f677aca5deed4e9225ea3886efed0e9d9cfa17e06642c",
+        "dd51ca5d2388241c165b66d46ce6dd0e150e2f497b2e4b1d1dc751de96948a43",
+        "23e6d7589785238273505690e3e10f49e46338537918be7534847310b51c4ebb"
+      ]
+    },
+    "sunset-dunes": {
+      "artwork": [
+        "hero-small",
+        "desert-camel",
+        "desert-rose-mineral",
+        "dusk-lantern",
+        "date-palm"
+      ],
+      "images": [
+        "widget-small.png",
+        "widget-desert-camel.9666fb2c.webp",
+        "widget-desert-rose-mineral.bd9db73f.webp",
+        "widget-dusk-lantern.ac60ea5f.webp",
+        "widget-date-palm.85661b3a.webp"
+      ],
+      "hashes": [
+        "456152b12f34c2c41d0bcb4356b5e8ddf0778b0145fe6923432657c3d9a073e5",
+        "9666fb2c8563b4eedbc652de4a2b074b11cbf8b20fc7c2fc19e53df97c7a6c24",
+        "bd9db73f5ad71c4a1348b5396df7179e37f70b8c548ac8f8b569ce2dcad5e830",
+        "ac60ea5fe91dacc67bcce28cabbe2b559c69efb04b73ef1241d6725e61007de7",
+        "85661b3af0dac76ea98f3f015bdbaff8bddbcf46376f1c633a6972e372c090d8"
+      ]
+    }
+  },
+  "galleryThemes": 144
 }

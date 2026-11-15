@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 790281,
       "opaquePixels": 1350
+    },
+    {
+      "theme": "bluewing",
+      "id": "sapphire-stag-beetle",
+      "label": "Sapphire Beetle",
+      "ref": "art/bluewing/v8/widget-production-20261101-wing-study.a22e0dd6.webp",
+      "subject": "one elegant sapphire-blue stag beetle with iridescent cobalt wing covers, delicate dark legs and small graceful curved mandibles, resting on a short charcoal twig. Whole insect seen at three-quarter angle, jewel-like fine natural detail, restrained blue highlights and a quiet dark navy backdrop. Sophisticated macro photographic illustration. No butterfly, wing-only texture, chrysalis or bluebell",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze bluewing decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one elegant sapphire-blue stag beetle with iridescent cobalt wing covers, delicate dark legs and small graceful curved mandibles, resting on a short charcoal twig. Whole insect seen at three-quarter angle, jewel-like fine natural detail, restrained blue highlights and a quiet dark navy backdrop. Sophisticated macro photographic illustration. No butterfly, wing-only texture, chrysalis or bluebell. Entire subject inside generous margins, readable at small widget size. Own theme backdrop. No card border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-2d067190-ce94-45fb-8c0b-7839f5b58e3d.png",
+      "image": "widget-sapphire-stag-beetle.9eb7c1b2.webp",
+      "sha256": "9eb7c1b2a964f401459ba401ed07fbc5041d106fc1b509018bfe34bd845ff1c9",
+      "bytes": 142830,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

@@ -3,7 +3,10 @@
 // T185 (owner-1101 item 3): the button is "Use this theme" (the base for every tab; "In use ✓"
 // when it already is), and Wallpaper, Icons and Widgets are three separate entry points, each its
 // own clean screen: /theme/[id]?step=wallpaper, /theme/[id]?step=icons and (T201)
-// /theme/[id]?step=widgets (practical pieces, then art, then the standard set → Widget Studio).
+// /theme/[id]?step=widgets (1.0.39: that step now opens the Widgets tab; see openWidgetsTab).
+// 1.0.39 (owner TestFlight build 88): one flow. "Use this theme?" puts the theme in use (widgets,
+// Artwork 1-5, icon style), then a short next-steps checklist: Add the wallpaper (until saved), View
+// icons with this theme, View widgets with this theme. No live-widget choices on this page for now.
 // The old one-run Apply checklist is gone.
 // T173 premium slice (docs/PREMIUM_UI.md §3.3): the hero phone sits large and centred on a soft
 // surface with a quiet Home / Lock pill under it; the rest reads as editorial blocks (eyebrow +
@@ -65,6 +68,7 @@ import { IconCanvas } from '../../src/render/IconCanvas';
 import { usePackTheme } from '../../src/render/usePackTheme';
 import { useToast } from '../../src/ui/Toast';
 import { Sheet } from '../../src/ui/Sheet';
+import { ArtworkNote } from '../../src/ui/ArtworkNote';
 import { tickStoredChecklist } from '../../src/store/applyChecklist';
 import { applyThemeEverywhere, rememberWallpaperSaved, useActiveThemeId, wasWallpaperSaved } from '../../src/store/activeTheme';
 import { iconsAfterUseEverything } from '../../src/core/iconsIntro';
@@ -300,6 +304,10 @@ function ThemeDetail({
   const reduced = useMotionReduced();
   // T265: the guided Wallpaper / Icons / Widgets flow that opens after "Use this theme".
   const setup = useThemeSetup(theme.id);
+  // 1.0.39: an old /theme/<id>?step=widgets link opens the real Widgets tab (the theme's widgets screen is gone).
+  useEffect(() => {
+    if (step === 'widgets') router.replace('/widgets');
+  }, [step, router]);
 
   // T55: the phone preview is sized from the window (large), with a real phone outline: a bezel
   // around a screen that clips the Home / Lock mock to rounded corners.
@@ -436,6 +444,12 @@ function ThemeDetail({
    * (Icons tab), the widget theme (Widgets tab + the Home Screen widgets) and the theme in use
    * (wallpaper maker, "In use ✓"). Saving wallpaper and installing icons stay separate screens.
    */
+  /**
+   * 1.0.39 (owner's flow, TestFlight build 88): "Use this theme?" accepted puts the theme in use: widgets
+   * (Artwork 1-5 made at once) and the icon style ready to install. Then the same sheet lists the next
+   * steps, one tap each: Add the wallpaper (until it is saved), View icons, View widgets. No separate
+   * "Use this theme" / "Use everything" buttons any more.
+   */
   const putInUse = async (checkLock = true) => {
     if (usePending.current) return;
     if (checkLock && locked) {
@@ -446,18 +460,11 @@ function ThemeDetail({
     }
     usePending.current = true;
     const focus = themeFocus.current;
-    setThemeChoiceOpen(false);
     setUseBusy(true);
     setUseError(false);
     try {
-      // Owner 2026-11-08 ("swapping themes is no longer swapping it across to widgets"): the theme
-      // goes on the widgets FIRST. 1.0.15 saved the wallpaper first and applied nothing when that
-      // save failed or Photos was declined. A failed wallpaper save is only a note now.
-      if (!await selectTheme(focus)) return;
-      if (!await onSaveWallpaper()) toast.show(t('theme.setup.wallpaper.saveError'), 'warning');
-      // Owner 2026-11-14: Use everything always sets up icons: the gentle walkthrough the first
-      // time (it ends on the install screen), the install screen straight away every later time.
-      if (themeFocus.current === focus) await openIconSetup();
+      // Owner 2026-11-08: the theme goes on the widgets first; a left page applies nothing.
+      if (await selectTheme(focus) && themeFocus.current === focus) setThemeChoiceOpen(true);
     } catch (e) {
       // T264 (owner-1101i #2): an apply that throws shows the calm "couldn't apply" note, never a crash.
       console.warn('[Theme] apply failed', e);
@@ -490,6 +497,18 @@ function ThemeDetail({
    */
   const selectTheme = async (focus = themeFocus.current): Promise<boolean> => {
     if (themeFocus.current !== focus) return false;
+    // 1.0.39 (owner TestFlight 1.0.37: "when I hit use the theme, it doesn't do anything because I
+    // haven't hit use everything"): a pack theme not on the phone yet is downloaded FIRST, so the
+    // widget-art sync that the apply starts finds its pieces. Offline, the theme is still applied and
+    // its art follows as soon as the pack arrives (setPackInstalledListener in src/store/activeTheme.ts).
+    if (remoteArt && !pack.usable && !locked) {
+      try {
+        await pack.download();
+      } catch {
+        // Applied anyway below.
+      }
+      if (themeFocus.current !== focus) return false;
+    }
     try {
       const res = await applyThemeEverywhere(theme);
       if (!res.icons || !res.widgets) {
@@ -517,10 +536,11 @@ function ThemeDetail({
     void selectTheme();
   };
   const onUseTheme = (checkLock = true) => {
-    setThemeChoiceOpen(true);
-    if ((checkLock && locked) || inUse || usePending.current) return;
-    setUseError(false);
-    void selectTheme();
+    if (inUse) {
+      setThemeChoiceOpen(true);
+      return;
+    }
+    void putInUse(checkLock);
   };
   const onAddWallpaper = (checkLock = true) => {
     setThemeChoiceOpen(false);
@@ -556,8 +576,27 @@ function ThemeDetail({
     setup.leaveFor('icons', () => router.push({ pathname: '/install', params: { theme: theme.id, auto: '1' } }));
   };
 
+  /**
+   * 1.0.39 (owner: "View widgets with this theme: opens the Widgets tab, already showing the five artworks"):
+   * the theme is put in use first (its art is then made at once), then the Widgets tab opens.
+   */
+  const openWidgetsTab = async (checkLock = true) => {
+    setThemeChoiceOpen(false);
+    if (checkLock && locked) {
+      lockFor.current = 'widgets';
+      setLockOpen(true);
+      return;
+    }
+    if (!inUse && !(await selectTheme())) return;
+    router.navigate('/widgets');
+  };
+
   /** T185: the three separate entry points, each its own clean screen. */
   const openPart = async (part: 'wallpaper' | 'icons' | 'widgets', checkLock = true) => {
+    if (part === 'widgets') {
+      await openWidgetsTab(checkLock);
+      return;
+    }
     if (checkLock && locked) {
       lockFor.current = part;
       setLockOpen(true);
@@ -1055,33 +1094,12 @@ function ThemeDetail({
           </View>
         ) : null}
 
-        {/* T201 (owner-1101d #4): the Widgets screen, in the shelf order every widgets screen uses
-            (src/core/widgetOptions.ts widgetShelf / WIDGET_SHELF_ORDER): (a) the theme's practical
-            pieces (habits, countdown, calendar, clock, battery… with Make it live), (b) its art
-            pieces (any piece in any size, fitted), then (c) the standard widgets in its palette.
-            The overview keeps only (c) as a teaser; the Widgets card opens this screen. */}
-        {step === 'widgets' ? <ThemeWidgetsShelf theme={theme} /> : null}
-        {/* 1.0.34 (owner 2026-11-14: "theres an option to go like top right middle right bottom right etc and then
-            save the widget to the home screen - i dont believe we can do this so remove it"): the Seamless card (size,
-            Home Screen spot, nudge, "Use for my Glaze widget") is gone; iOS doesn't let an app place a widget. In its
-            place, the honest way: the steps to add a Glaze widget from the Add Widget list, and Watch how. */}
-        {step === 'widgets' ? (
-          <View style={styles.block}>
-            <SectionHeader title={t('theme.howTo.titles.widgets')} body={t('theme.howTo.captions.widgets')} style={styles.sectionHead} />
-            {widgetsHow.button(styles.side)}
-          </View>
-        ) : null}
-        {overview || step === 'widgets' ? (
-          <View style={styles.block}>
-            <SectionHeader
-              eyebrow={t('theme.section.widgets.eyebrow')}
-              title={t('theme.widgetPreviews.title')}
-              body={t('theme.widgetPreviews.body')}
-              style={styles.sectionHead}
-            />
-            <WidgetPreviews theme={theme} palette={palette} />
-          </View>
-        ) : null}
+        {/* 1.0.39 (owner 2026-11-15): the five-artworks note on the theme page. */}
+        {overview ? <ArtworkNote style={styles.artworkNote} /> : null}
+        {/* 1.0.39 (owner TestFlight build 88: "we removed Medium/Large and the extras from the Widgets TAB, but the THEME
+            PAGE's View widgets screen still has all of it"): the theme's widgets screen (practical / live pieces, the art
+            menu with "Save to my widget art", Widget Studio links) and the matching-widgets previews are gone. View widgets
+            opens the real Widgets tab with this theme in use (openWidgetsTab), the one place Artwork 1-5 are shown. */}
 
         {/* Make it yours (Wallpaper screen): quiet rows for the photo and the wallpaper editor. */}
         {step === 'wallpaper' ? (
@@ -1132,7 +1150,7 @@ function ThemeDetail({
             style={[styles.barInner, { paddingBottom: insets.bottom + spaceV2.sm }]}
           >
             <PillButton
-              label={useBusy ? t('common.loading') : inUse ? t('theme.use.inUse') : t('theme.use.cta')}
+              label={useBusy ? t('common.loading') : inUse ? t('theme.use.inUse') : t('theme.use.prompt')}
               icon={locked ? 'lock' : 'check-circle'}
               block
               busy={useBusy}
@@ -1194,20 +1212,30 @@ function ThemeDetail({
 
       {wallpaperHow.sheet}
       {widgetsHow.sheet}
-      <Sheet visible={themeChoiceOpen} onClose={() => setThemeChoiceOpen(false)} title={theme.name}>
+      <Sheet visible={themeChoiceOpen} onClose={() => setThemeChoiceOpen(false)} title={inUse ? t('theme.use.nextTitle') : t('theme.use.prompt')}>
         <View style={styles.themeChoices}>
-          <PillButton label={t('theme.use.viewWidgets')} block variant="plain" onPress={() => {
-            setThemeChoiceOpen(false);
-            ensureSelected();
-            openPart('widgets', false);
-          }} />
-          <PillButton label={t('theme.use.viewIcons')} block variant="plain" onPress={() => {
-            setThemeChoiceOpen(false);
-            ensureSelected();
-            openPart('icons', false);
-          }} />
-          <PillButton label={t('theme.use.addWallpaper')} block variant="tinted" onPress={() => { ensureSelected(); onAddWallpaper(); }} />
-          <PillButton label={t('theme.use.useEverything')} block onPress={() => void putInUse()} />
+          {/* 1.0.39 (owner 2026-11-15): every theme has its own five artworks; others go on Custom widgets. */}
+          <ArtworkNote />
+          {inUse ? (
+            <>
+              {savedBefore || saveState === 'saved' ? null : (
+                <PillButton label={t('theme.use.addWallpaper')} icon="image" block variant="tinted" onPress={() => {
+                  setThemeChoiceOpen(false);
+                  void openPart('wallpaper');
+                }} />
+              )}
+              <PillButton label={t('theme.use.viewIcons')} icon="grid" block variant="plain" onPress={() => {
+                setThemeChoiceOpen(false);
+                void openIconSetup();
+              }} />
+              <PillButton label={t('theme.use.viewWidgets')} icon="layout" block onPress={() => void openWidgetsTab()} />
+            </>
+          ) : (
+            <>
+              <PillButton label={useBusy ? t('common.loading') : t('theme.use.yes')} icon="check-circle" block busy={useBusy} onPress={() => void putInUse()} />
+              <PillButton label={t('theme.use.notNow')} block variant="plain" onPress={() => setThemeChoiceOpen(false)} />
+            </>
+          )}
         </View>
       </Sheet>
 
@@ -1241,105 +1269,9 @@ function ThemeDetail({
   );
 }
 
-/**
- * T59: the theme's matching widgets (one per kind, small size when it has one), drawn in-app so
- * they work in Expo Go. Tapping one opens Widget Studio on that widget. Kinds come from the
- * generated set, so new widget kinds appear here automatically.
- */
-function WidgetPreviews({ theme, palette }: { theme: Theme; palette: readonly (readonly [string, string])[] }) {
-  const { c } = useColorsV2();
-  const router = useRouter();
-  const { t, script } = useT();
-  const tl = t as unknown as (key: string) => string;
-  const set = useMemo(() => generateWidgetSet(theme), [theme]);
-  // T80: show what the person made in Widget Studio (reloaded on every focus, so a save there
-  // shows up when they come back). Until it loads, the plain set is shown.
-  const [saved, setSaved] = useState<StudioState | null>(null);
-  useFocusEffect(
-    useCallback(() => {
-      let alive = true;
-      loadStudio(set)
-        .then((s) => {
-          if (alive) setSaved(s);
-        })
-        .catch(() => undefined);
-      return () => {
-        alive = false;
-      };
-    }, [set]),
-  );
-  const items = useMemo(() => studioPreviews(set, saved), [set, saved]);
-  const open = (kind?: string, size?: string) => {
-    haptic('select');
-    router.push({ pathname: '/widget-studio', params: { theme: theme.id, ...(kind ? { kind } : {}), ...(size ? { size } : {}) } });
-  };
-  return (
-    <SquircleCard style={styles.side}>
-      <View style={styles.stack}>
-        {/* T173: the title and body moved into the Widgets block's SectionHeader. */}
-        {/* T200: the theme's palette lives here, with the widgets it colours. */}
-        <View style={styles.paletteRow}>
-          {palette.map(([name, hex]) => (
-            <View
-              key={name}
-              accessible
-              accessibilityLabel={t('theme.a11y.swatch', { name, hex })}
-              style={[styles.paletteDot, { backgroundColor: hex, borderColor: c.separator }]}
-            />
-          ))}
-        </View>
-        <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...typeFor(script, 'footnote'), { color: c.inkSecondary }]}>
-          {t('theme.widgetPreviews.palette')}
-        </Text>
-        <ScrollView bounces={false} overScrollMode="never" horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.widgetRow}>
-          {items.map(({ spec, photoUri }) => (
-            <Pressable
-              key={spec.id}
-              accessibilityRole="button"
-              accessibilityLabel={t('theme.widgetPreviews.itemA11y', { kind: tl(widgetKindKey(spec.kind)), size: tl(widgetSizeKey(spec.size)) })}
-              accessibilityHint={t('theme.widgetPreviews.hint')}
-              onPress={() => open(spec.kind, spec.size)}
-              style={({ pressed }) => [styles.widgetItem, { opacity: pressed ? 0.75 : 1 }]}
-            >
-              <WidgetPreview spec={spec} width={WIDGET_PREVIEW_W} photoUri={photoUri} />
-              <Text maxFontSizeMultiplier={fontScaleCap('caption1')} style={[...typeFor(script, 'caption1'), { color: c.ink }]} numberOfLines={2}>
-                {tl(widgetKindKey(spec.kind))}
-              </Text>
-            </Pressable>
-          ))}
-        </ScrollView>
-        <PillButton label={t('theme.widgetPreviews.open')} icon="edit-3" variant="tinted" size="small" onPress={() => open()} />
-      </View>
-    </SquircleCard>
-  );
-}
 
 const SHELF_SIZES: readonly HomeOptionSize[] = ['small', 'medium', 'large'];
 
-/**
- * T201: the theme's practical pieces then its art pieces (ThemeWidgetArt → WidgetArtMenu, ordered by
- * src/core/widgetOptions.ts widgetShelf), for a Home Screen size picked here. Every piece is offered
- * in every size, fitted. "Use on my widget" writes the App Group and reloads the widgets (bridge).
- * Draws nothing for a theme with no widget art (its standard widgets follow below).
- */
-function ThemeWidgetsShelf({ theme }: { theme: Theme }) {
-  const { t } = useT();
-  const tl = t as unknown as (key: string) => string;
-  const window = useWindowDimensions();
-  const [size, setSize] = useState<HomeOptionSize>('small');
-  const width = window.width - spaceV2.lg * 2;
-  return (
-    <View style={[styles.side, styles.shelf]}>
-      <Segmented<HomeOptionSize>
-        label={t('tabs.widgetsTab.sizes')}
-        options={SHELF_SIZES.map((s) => ({ value: s, label: tl(widgetTabSizeKey(s)) }))}
-        value={size}
-        onChange={setSize}
-      />
-      <ThemeWidgetArt theme={theme} size={size} width={width} />
-    </View>
-  );
-}
 
 const WIDGET_PREVIEW_W = 112;
 /** T173 §3.3: width of the wallpaper-save skeleton (height follows the phone aspect). */
@@ -1653,6 +1585,7 @@ const styles = StyleSheet.create({
   missingText: { textAlign: 'center' },
   side: { marginHorizontal: spaceV2.lg },
   themeChoices: { gap: spaceV2.sm },
+  artworkNote: { paddingHorizontal: spaceV2.inset, marginTop: spaceV2.lg },
   shelf: { gap: spaceV2.lg, paddingTop: spaceV2.lg },
   headWrap: {
     paddingHorizontal: spaceV2.inset,

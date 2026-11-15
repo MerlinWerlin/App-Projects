@@ -1,0 +1,420 @@
+{
+  "reviewedAt": "2026-11-15",
+  "baselineCatalogSha256": "91f3f261ec9d9cad8fcd9d9354ca217dce5aefe10885940a9ba6da0c9ccc2c6c",
+  "rows": [
+    {
+      "row": 1,
+      "theme": "agate-apricot",
+      "replaced": [
+        "druzy-center"
+      ],
+      "required": true,
+      "added": [
+        "agate-pendant"
+      ]
+    },
+    {
+      "row": 2,
+      "theme": "bellbat-bloom",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "felt-luna-moth"
+      ]
+    },
+    {
+      "row": 3,
+      "theme": "carbon-velocity",
+      "replaced": [
+        "art-20261107-track-helmet"
+      ],
+      "required": true,
+      "added": [
+        "carbon-steering-wheel"
+      ]
+    },
+    {
+      "row": 4,
+      "theme": "cloudwash",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "cloud-soap-dish"
+      ]
+    },
+    {
+      "row": 5,
+      "theme": "copper-circuit",
+      "replaced": [
+        "trace-flow"
+      ],
+      "required": true,
+      "added": [
+        "copper-vacuum-tube"
+      ]
+    },
+    {
+      "row": 6,
+      "theme": "glacier-quiet",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "glacial-cave-arch"
+      ]
+    },
+    {
+      "row": 7,
+      "theme": "kingfisher-blue",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "reed-bed-dragonfly"
+      ]
+    },
+    {
+      "row": 8,
+      "theme": "lotus-drift",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "pond-paper-boat"
+      ]
+    },
+    {
+      "row": 9,
+      "theme": "manta-silk",
+      "replaced": [
+        "sand-rays"
+      ],
+      "required": true,
+      "added": [
+        "silken-manta-ray"
+      ]
+    },
+    {
+      "row": 10,
+      "theme": "meadowglow",
+      "replaced": [
+        "morning-grass"
+      ],
+      "required": true,
+      "added": [
+        "meadow-harvest-mouse"
+      ]
+    },
+    {
+      "row": 11,
+      "theme": "moonpatch",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "stitched-satellite"
+      ]
+    },
+    {
+      "row": 12,
+      "theme": "mosswick",
+      "replaced": [
+        "travelling-cottage"
+      ],
+      "required": true,
+      "added": [
+        "mushroom-mailbox"
+      ]
+    },
+    {
+      "row": 13,
+      "theme": "ochre-bend",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "billabong-lizard"
+      ]
+    },
+    {
+      "row": 14,
+      "theme": "pebblekin-grove",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "pebble-owl"
+      ]
+    },
+    {
+      "row": 15,
+      "theme": "summit-line",
+      "replaced": [
+        "art-20261107-signal-gondola"
+      ],
+      "required": true,
+      "added": [
+        "alpine-mountain-hut"
+      ]
+    },
+    {
+      "row": 16,
+      "theme": "wisteria-hush",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "wisteria-carpenter-bee"
+      ]
+    },
+    {
+      "row": 17,
+      "theme": "bluewing",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "sapphire-stag-beetle"
+      ]
+    },
+    {
+      "row": 18,
+      "theme": "ginkgo-hour",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "pressed-ginkgo-bookmark"
+      ]
+    },
+    {
+      "row": 19,
+      "theme": "juniper-mist",
+      "replaced": [
+        "hero-small"
+      ],
+      "required": true,
+      "added": [
+        "juniper-mortar-pestle"
+      ]
+    },
+    {
+      "row": 20,
+      "theme": "peachskin",
+      "replaced": [
+        "hero-small",
+        "art-20261106-peach-slice"
+      ],
+      "required": true,
+      "added": [
+        "peach-blossom-teapot",
+        "peach-orchard-butterfly"
+      ]
+    },
+    {
+      "row": 21,
+      "theme": "phosphor-amber",
+      "replaced": [
+        "pixel-landscape"
+      ],
+      "required": true,
+      "added": [
+        "amber-cassette-tape"
+      ]
+    },
+    {
+      "row": 25,
+      "theme": "brass-afterhours",
+      "replaced": [
+        "key-rhythm"
+      ],
+      "added": [
+        "brass-ribbon-microphone"
+      ],
+      "required": false
+    },
+    {
+      "row": 26,
+      "theme": "curlfin-cove",
+      "replaced": [
+        "hero-small"
+      ],
+      "added": [
+        "quilled-sea-turtle"
+      ],
+      "required": false
+    },
+    {
+      "row": 27,
+      "theme": "fern-and-brass",
+      "replaced": [
+        "hero-small"
+      ],
+      "added": [
+        "brass-garden-trowel"
+      ],
+      "required": false
+    },
+    {
+      "row": 28,
+      "theme": "jellylight",
+      "replaced": [
+        "hero-small"
+      ],
+      "added": [
+        "opal-seahorse"
+      ],
+      "required": false
+    },
+    {
+      "row": 29,
+      "theme": "labradorite-hush",
+      "replaced": [
+        "hero-small"
+      ],
+      "added": [
+        "labradorite-owl"
+      ],
+      "required": false
+    },
+    {
+      "row": 30,
+      "theme": "midnight-conservatory",
+      "replaced": [
+        "night-orchid"
+      ],
+      "added": [
+        "moonlit-garden-shears"
+      ],
+      "required": false
+    },
+    {
+      "row": 31,
+      "theme": "peach-puddle",
+      "replaced": [
+        "hero-small"
+      ],
+      "added": [
+        "peach-paper-pinwheel"
+      ],
+      "required": false
+    },
+    {
+      "row": 32,
+      "theme": "prism-orchard",
+      "replaced": [
+        "hero-small"
+      ],
+      "added": [
+        "opal-orchard-rabbit"
+      ],
+      "required": false
+    },
+    {
+      "row": 33,
+      "theme": "silver-orchard",
+      "replaced": [
+        "hero-small"
+      ],
+      "added": [
+        "silver-orchard-key"
+      ],
+      "required": false
+    },
+    {
+      "row": 34,
+      "theme": "stellar-cradle",
+      "replaced": [
+        "stellar-nursery"
+      ],
+      "added": [
+        "stellar-ringed-world"
+      ],
+      "required": false
+    },
+    {
+      "row": 35,
+      "theme": "sundew-ember",
+      "replaced": [
+        "hero-small"
+      ],
+      "added": [
+        "ruby-garden-beetle"
+      ],
+      "required": false
+    },
+    {
+      "row": 36,
+      "theme": "dunesilk",
+      "replaced": [
+        "hero-small"
+      ],
+      "added": [
+        "sandstone-fennec"
+      ],
+      "required": false
+    },
+    {
+      "row": 37,
+      "theme": "saltveil",
+      "replaced": [
+        "art-20261106-pink-halite"
+      ],
+      "added": [
+        "rose-glass-sailboat"
+      ],
+      "required": false
+    }
+  ],
+  "bundledRows": [
+    {
+      "row": 22,
+      "theme": "deep-sea",
+      "required": true,
+      "retained": "hero-small",
+      "added": [
+        "luminous-nautilus",
+        "glowing-anglerfish",
+        "bioluminescent-coral-fan",
+        "abyssal-diving-helmet"
+      ]
+    },
+    {
+      "row": 23,
+      "theme": "starry-night",
+      "required": true,
+      "retained": "hero-small",
+      "added": [
+        "ringed-planet",
+        "copper-telescope",
+        "ember-comet",
+        "spiral-galaxy"
+      ]
+    },
+    {
+      "row": 24,
+      "theme": "sunset-dunes",
+      "required": true,
+      "retained": "hero-small",
+      "added": [
+        "desert-camel",
+        "desert-rose-mineral",
+        "dusk-lantern",
+        "date-palm"
+      ]
+    }
+  ]
+}

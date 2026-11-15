@@ -63,7 +63,7 @@ export function artworkPieces(
   return art.length ? art : small;
 }
 
-/** Piece id → the Artwork slot numbers (1..count) that show it. A piece can fill several slots. */
+/** Piece id → the Artwork slot number (1..count) that shows it. 1.0.39: one slot per piece, never a repeat. */
 export function artworkNumbers(
   pieces: readonly WidgetArtPiece[],
   currentThemeId: string | null,
@@ -72,8 +72,8 @@ export function artworkNumbers(
   const list = artworkPieces(pieces, currentThemeId);
   const out = new Map<string, number[]>();
   if (!list.length) return out;
-  for (let slot = 1; slot <= count; slot++) {
-    const id = list[(slot - 1) % list.length].id;
+  for (let slot = 1; slot <= Math.min(count, list.length); slot++) {
+    const id = list[slot - 1].id;
     out.set(id, [...(out.get(id) ?? []), slot]);
   }
   return out;

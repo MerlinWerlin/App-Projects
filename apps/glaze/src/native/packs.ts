@@ -657,6 +657,12 @@ export async function downloadRemoteArtToDevice(id: string): Promise<string | nu
     });
     await saveIndex(cacheIndexAdd(state.index, remoteArtCacheEntry(r.manifest, new Date())));
     void saveUpdateState();
+    // 1.0.39 (owner TestFlight 1.0.37): the theme in use gets its widget art as soon as its pack is here.
+    try {
+      packInstalledListener?.(id);
+    } catch {
+      // A listener never fails the download.
+    }
     return null;
   } catch (e) {
     const msg = messageFor(e);
@@ -670,6 +676,16 @@ export async function downloadRemoteArtToDevice(id: string): Promise<string | nu
     const { [id]: _done, ...rest } = state.busy;
     set({ busy: rest });
   }
+}
+
+// ------------------------------------------------------------ 1.0.39: pack installed hook
+
+/** 1.0.39: told the id of every pack that finished installing (download, update or starter). */
+let packInstalledListener: ((id: string) => void) | null = null;
+
+/** Set by src/store/activeTheme.ts (a setter, so this adapter never imports the store). */
+export function setPackInstalledListener(fn: ((id: string) => void) | null): void {
+  packInstalledListener = fn;
 }
 
 // ------------------------------------------------------------ 1.0.38: bundled starter packs

@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Stellar Spire"
+  },
+  {
+    "id": "stellar-ringed-world",
+    "kind": "art",
+    "image": "widget-stellar-ringed-world.9fc5e2fc.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Stellar Ringed World"
   }
 ]

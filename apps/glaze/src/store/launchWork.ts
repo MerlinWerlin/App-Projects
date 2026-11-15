@@ -16,7 +16,7 @@ import './activeTheme';
 import { registerDeferred, requestDeferred, startDeferred, yieldToUi } from './deferredWork';
 import { runInstalledProbeStep } from './installedProbe';
 import { pushStoredWidgetTheme } from './widgetTheme';
-import { upgradeActiveDesignedWidgets } from './activeTheme';
+import { ensureActiveThemeArt, upgradeActiveDesignedWidgets } from './activeTheme';
 
 /** Wait after the first screen laid out (the intro fade) before the first step. */
 const AFTER_FIRST_SCREEN_MS = 900;
@@ -57,6 +57,8 @@ registerDeferred(DEFERRED_STEPS.widgetTheme, {
     // Metadata-only migration, deferred until after the first screen: existing configured
     // functional pieces keep their ids and photos/art remain untouched. No download or reapply.
     await upgradeActiveDesignedWidgets();
+    // 1.0.39: My widget art follows the theme in use from the first launch (no widget needed first).
+    await ensureActiveThemeArt();
   },
 });
 

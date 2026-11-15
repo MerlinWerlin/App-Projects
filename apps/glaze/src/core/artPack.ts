@@ -21,6 +21,7 @@ import { contrastRatio, mix, relativeLuminance } from './colour.ts';
 import { inflateRaw } from './inflate.ts';
 import type { Theme, ThemeCategoryId } from './themes.ts';
 import { parseBrowseCategory, type BrowseCategoryId } from './themeBrowse.ts';
+import { parseWidgetOptions, widgetOptionsFromV1, type WidgetOption } from './widgetOptions.ts';
 
 // ------------------------------------------------------------------ format constants
 
@@ -32,6 +33,9 @@ export const ART_PACK_DIR = 'themes';
 export const WALLPAPER_FILE = 'wallpaper.png';
 export const PALETTE_FILE = 'palette.json';
 export const META_FILE = 'meta.json';
+/** Optional additional pure-art pieces; the original size-specific heroes stay unchanged. */
+export const ARTWORK_OPTIONS_FILE = 'artwork-options.json';
+export const ARTWORK_PROVENANCE_FILE = 'artwork-provenance.json';
 
 export type HeroSize = 'small' | 'medium' | 'large';
 export const HERO_SIZES: readonly HeroSize[] = Object.freeze(['small', 'medium', 'large'] as HeroSize[]);
@@ -129,6 +133,7 @@ export type ArtPackData = {
   heroes: Record<HeroSize, PixelSize>;
   /** File sizes in bytes, by file name. */
   bytes: Record<string, number>;
+  artworks?: WidgetOption[];
 };
 
 export type ArtPackReport = {
@@ -140,7 +145,7 @@ export type ArtPackReport = {
 };
 
 /** Generated static require() map (src/ui/artPackAssets.ts): Metro needs literal paths. */
-export type ArtPackAssetSet = { wallpaper: number } & Record<HeroSize, number>;
+export type ArtPackAssetSet = { wallpaper: number; artworks?: Readonly<Record<string, number>> } & Record<HeroSize, number>;
 export type ArtPackAssetMap = Readonly<Record<string, Readonly<ArtPackAssetSet>>>;
 
 // ------------------------------------------------------------------ small helpers
@@ -493,7 +498,10 @@ export function validateArtPack(id: string, files: ArtPackFiles, opts: ValidateO
   try {
     if (!isArtPackId(id)) errors.push(`pack id "${id}" must be a lower-case slug (a-z, 0-9, single hyphens, 3–40 characters)`);
     for (const f of ART_PACK_FILES) if (!files[f]) errors.push(`missing ${f}`);
-    for (const f of Object.keys(files)) if (!ART_PACK_FILES.includes(f) && !f.startsWith('.')) warnings.push(`extra file ${f} is ignored`);
+    const extraNames = new Set([ARTWORK_OPTIONS_FILE, ARTWORK_PROVENANCE_FILE]);
+    const extraRaw = files[ARTWORK_OPTIONS_FILE] ? parseJsonFile(ARTWORK_OPTIONS_FILE, files[ARTWORK_OPTIONS_FILE], errors) : undefined;
+    if (Array.isArray(extraRaw)) for (const o of extraRaw) if (isObj(o) && typeof o.image === 'string' && /^widget-[a-z0-9-]+\.[a-f0-9]{8}\.webp$/.test(o.image)) extraNames.add(o.image);
+    for (const f of Object.keys(files)) if (!ART_PACK_FILES.includes(f) && !extraNames.has(f) && !f.startsWith('.')) warnings.push(`extra file ${f} is ignored`);
     const bytes: Record<string, number> = {};
     for (const f of ART_PACK_FILES) if (files[f]) bytes[f] = files[f]!.length;
 
@@ -563,8 +571,26 @@ export function validateArtPack(id: string, files: ArtPackFiles, opts: ValidateO
       warnings.push(...met.warnings);
     }
 
+    let artworks: WidgetOption[] | undefined;
+    if (files[ARTWORK_OPTIONS_FILE]) {
+      const assets = [];
+      for (const name of extraNames) {
+        const b = files[name];
+        if (b) bytes[name] = b.length;
+        if (!name.endsWith('.webp')) continue;
+        const size = b ? readArtWebpSize(b) : null;
+        if (!size || size.width !== 1024 || size.height !== 1024) errors.push(`${name}: expected one 1024 x 1024 WebP`);
+        else assets.push({ path: name, role: 'widget-art', ...size });
+        if (b && b.length > ART_BYTE_LIMIT.hero) errors.push(`${name}: over the artwork byte limit`);
+      }
+      const parsed = parseWidgetOptions(extraRaw, assets);
+      errors.push(...parsed.errors);
+      if (parsed.options.length !== 4 || parsed.options.some((o) => o.kind !== 'art' || o.fit !== 'fit' || o.background !== 'wallpaper' || !o.sizes.includes('small'))) errors.push(`${ARTWORK_OPTIONS_FILE}: expected four fitted pure artworks including small`);
+      if (parsed.options.some((o) => HERO_SIZES.some((s) => o.id === `hero-${s}`))) errors.push(`${ARTWORK_OPTIONS_FILE}: id conflicts with an original hero`);
+      artworks = parsed.options;
+    }
     if (errors.length || !wallpaper || !pal.palette || !met.meta || HERO_SIZES.some((s) => !heroes[s])) return fail();
-    return { ok: true, errors, warnings, pack: { id, palette: pal.palette, meta: met.meta, wallpaper, heroes, bytes } };
+    return { ok: true, errors, warnings, pack: { id, palette: pal.palette, meta: met.meta, wallpaper, heroes, bytes, ...(artworks ? { artworks } : {}) } };
   } catch (e) {
     errors.push(`could not read the pack (${e instanceof Error ? e.message : String(e)})`);
     return fail();
@@ -687,6 +713,28 @@ export function artPackCreditParams(ref: Pick<ArtPackRef, 'credits' | 'licence'>
 export const ART_LIBRARY_PATH = 'src/core/artPackLibrary.ts';
 export const ART_ASSETS_PATH = 'src/ui/artPackAssets.ts';
 
+/** Shared by preview and native composition: one original small piece plus the four additions. */
+export function artPackWidgetOptions(pack: ArtPackData): WidgetOption[] {
+  const heroes = widgetOptionsFromV1(HERO_SIZES.map((size) => ({ path: HERO_FILES[size], role: `widget-${size}`, ...pack.heroes[size] })));
+  return [...heroes, ...(pack.artworks ?? [])];
+}
+
+/** Small pure header reader; full payload decoding and content hashes are checked in asset QA. */
+export function readArtWebpSize(b: Uint8Array): PixelSize | null {
+  const ascii = (p: number, n: number) => String.fromCharCode(...b.slice(p, p + n));
+  const le = (p: number, n: number) => Array.from(b.slice(p, p + n)).reduce((v, x, i) => v + x * 2 ** (8 * i), 0);
+  if (b.length < 20 || ascii(0, 4) !== 'RIFF' || ascii(8, 4) !== 'WEBP' || le(4, 4) + 8 !== b.length) return null;
+  for (let p = 12; p + 8 <= b.length;) {
+    const kind = ascii(p, 4), n = le(p + 4, 4), q = p + 8;
+    if (q + n > b.length) return null;
+    if (kind === 'VP8X' && n >= 10) return b[q] & 2 ? null : { width: le(q + 4, 3) + 1, height: le(q + 7, 3) + 1 };
+    if (kind === 'VP8L' && n >= 5 && b[q] === 0x2f) { const v = le(q + 1, 4); return { width: (v & 0x3fff) + 1, height: ((v >>> 14) & 0x3fff) + 1 }; }
+    if (kind === 'VP8 ' && n >= 10 && b[q + 3] === 0x9d && b[q + 4] === 1 && b[q + 5] === 0x2a) return { width: le(q + 6, 2) & 0x3fff, height: le(q + 8, 2) & 0x3fff };
+    p = q + n + (n & 1);
+  }
+  return null;
+}
+
 /** How src/ui imports this module (Metro resolves it without the .ts extension). */
 const UI_CORE_IMPORT = '../core/artPack';
 
@@ -706,7 +754,7 @@ export function artPackLibrarySource(packs: readonly ArtPackData[]): string {
 }
 
 /** Source of src/ui/artPackAssets.ts: literal require() paths for Metro, sorted by id. */
-export function artPackAssetsSource(ids: readonly string[]): string {
+export function artPackAssetsSource(ids: readonly string[], packs: readonly ArtPackData[] = []): string {
   const sorted = [...ids].sort();
   const lines = [
     GENERATED,
@@ -721,6 +769,12 @@ export function artPackAssetsSource(ids: readonly string[]): string {
     lines.push(`  '${id}': {`);
     lines.push(`    wallpaper: ${req(`${id}/${WALLPAPER_FILE}`)},`);
     for (const s of HERO_SIZES) lines.push(`    ${s}: ${req(`${id}/${HERO_FILES[s]}`)},`);
+    const artworks = packs.find((p) => p.id === id)?.artworks ?? [];
+    if (artworks.length) {
+      lines.push('    artworks: {');
+      for (const a of artworks) lines.push(`      '${a.image}': ${req(`${id}/${a.image}`)},`);
+      lines.push('    },');
+    }
     lines.push('  },');
   }
   lines.push('};', '');

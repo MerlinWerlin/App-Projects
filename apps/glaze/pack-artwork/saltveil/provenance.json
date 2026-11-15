@@ -33,6 +33,26 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 700639,
       "opaquePixels": 102
+    },
+    {
+      "theme": "saltveil",
+      "id": "rose-glass-sailboat",
+      "label": "Rose Glass Sailboat",
+      "optionalRow": 37,
+      "replacedOption": "art-20261106-pink-halite",
+      "replacedSlot": 3,
+      "prompt": "Use case: stylized-concept. ONE original square1024\u00d71024 Glaze saltveil pure decorative artwork. Reference is STYLE, PALETTE AND LIGHTING ONLY. New subject: one small elegant sailboat sculpted entirely from translucent pale rose glass, a clear triangular frosted-glass sail, slender mast and delicate curved hull resting on a shallow blush-pink pool with one restrained ripple. Fine crystalline salt sparkle along the hull rim, sophisticated mineral and glass still-life photography in a dusty rose palette. No rock cluster, salt-crystal pile, shell, feather or empty water study. Whole main object completely inside broad12% margins, strong silhouette readable on a small widget, same theme world and cohesive full-bleed backdrop. Never copy, crop or recolor an existing piece. No text, letters, numbers, clock hands, dials, calendars, values, progress, card border, logos or watermark.",
+      "ref": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze-3\\work\\distinct-20261115\\baseline\\art\\saltveil\\v8\\widget-salt-crystal.a68920a7.webp",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-b8c6105f-749d-48dc-8837-5b02a6730726.png",
+      "image": "widget-rose-glass-sailboat.31a5ea2e.webp",
+      "sha256": "31a5ea2ea7ededbb77316cd5beb9c0d918431bb48dc3dc5eb4f31da54001d6d2",
+      "bytes": 144632,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

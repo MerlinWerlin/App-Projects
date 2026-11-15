@@ -7,7 +7,7 @@ import { downloadRemoteArtPack, readLocalRemoteArt, type Transport } from './pac
 import { STARTER_BASE, starterCatalog, starterFor, starterInstallPlan, starterRequest, starterThumb, starterTransport, type StarterPackData } from './starterPacks.ts';
 
 const ROOT = process.cwd();
-const GENERATED = readFileSync(join(ROOT, 'src', 'generated', 'starterPacks.ts'), 'utf8');
+const GENERATED = readFileSync(join(ROOT, 'src', 'generated', 'starterPacks.ts'), 'utf8').replace(/\r\n/g, '\n');
 const SCREEN = Number(/STARTER_SCREEN_PX = (\d+);/.exec(GENERATED)![1]);
 
 /** The generated starters, with each file's "module" standing for its path in assets/starter-packs. */

@@ -35,6 +35,26 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "fern-and-brass",
+      "id": "brass-garden-trowel",
+      "label": "Brass Garden Trowel",
+      "optionalRow": 27,
+      "replacedOption": "hero-small",
+      "replacedSlot": 3,
+      "prompt": "Use case: stylized-concept. ONE original square1024\u00d71024 Glaze fern-and-brass pure decorative artwork. Reference is STYLE, PALETTE AND LIGHTING ONLY. New subject: one small beautifully crafted garden trowel with an antique brass scoop blade, dark walnut handle and a short curved hanging cord. Resting diagonally on a tiny moss patch, a few soil crumbs and soft dark forest bokeh. Fine realistic polished metal, warm brass glow and deep fern-green palette. Complete hand tool is the clear main subject. No watering can, beetle, acorn, terrarium or fern-only composition. Whole main object completely inside broad12% margins, strong silhouette readable on a small widget, same theme world and cohesive full-bleed backdrop. Never copy, crop or recolor an existing piece. No text, letters, numbers, clock hands, dials, calendars, values, progress, card border, logos or watermark.",
+      "ref": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze-3\\work\\distinct-20261115\\baseline\\art\\fern-and-brass\\v8\\widget-brass-leaf-beetle.78dc3cc0.webp",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-2f670009-2a74-44bd-b45a-f2f424112af8.png",
+      "image": "widget-brass-garden-trowel.6280560e.webp",
+      "sha256": "6280560e7136bfaec0133bd89b808b536fd7cdbe707925fe433a9edfea2c7dc8",
+      "bytes": 259656,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

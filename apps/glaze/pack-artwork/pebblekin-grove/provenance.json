@@ -20,6 +20,24 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "pebblekin-grove",
+      "id": "pebble-owl",
+      "label": "Pebble Owl",
+      "ref": "art/pebblekin-grove/v7/widget-pebble-moth.58194985.webp",
+      "subject": "one charming upright owl assembled from smooth pale gray river pebbles, large circular flat-stone facial discs, tiny dark bead eyes and a warm small ochre stone beak. Overlapping pebble wings at its sides, little stone toes, one moss tuft and fern sprig at the base. Quiet sage-green textured surface, tactile handmade stone-garden sculpture and soft diffuse light. No house, doorway, moth, standing stone person or tortoise",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze pebblekin-grove decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one charming upright owl assembled from smooth pale gray river pebbles, large circular flat-stone facial discs, tiny dark bead eyes and a warm small ochre stone beak. Overlapping pebble wings at its sides, little stone toes, one moss tuft and fern sprig at the base. Quiet sage-green textured surface, tactile handmade stone-garden sculpture and soft diffuse light. No house, doorway, moth, standing stone person or tortoise. Entire subject inside generous margins, readable at small widget size. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-01e20348-1387-433e-b80c-26b09494c7c4.png",
+      "image": "widget-pebble-owl.b39e1535.webp",
+      "sha256": "b39e15352e841485593062b8f11a891c4818226f0dce15a4a07563c41891f3fb",
+      "bytes": 364316,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

@@ -22,6 +22,7 @@ import {
   artPackCreditParams,
   artPackLibrarySource,
   artPackTheme,
+  artPackWidgetOptions,
   heroSizeOk,
   isArtPackId,
   isArtPackTheme,
@@ -39,6 +40,7 @@ import { isFreeMarked } from './freeMarks.ts';
 import { crc32 } from './inflate.ts';
 import { ALL_THEMES, getAnyTheme } from './plusThemes.ts';
 import { SPACE_THEMES } from './spacePack.ts';
+import { plannedArtworkOptionIds, artworkSlotSources } from './artworkCoverage.ts';
 import { THEMES, previewSpecs } from './themes.ts';
 
 const root = process.cwd();
@@ -490,9 +492,9 @@ test('T132: the three starter packs ship and validate with no errors or warnings
     assert.match(report.pack!.meta.credits, /Glaze/);
     total += Object.values(b).reduce((a, n) => a + n, 0);
     // Only the format's files are in the folder.
-    assert.deepEqual(readdirSync(join(root, ART_PACK_DIR, id)).sort(), [...ART_PACK_FILES].sort(), id);
+    assert.deepEqual(readdirSync(join(root, ART_PACK_DIR, id)).sort(), Object.keys(report.pack!.bytes).sort(), id);
   }
-  assert.ok(total <= 1_800_000, `all packs ${total} bytes`);
+  assert.ok(total <= 3_500_000, `all packs including twelve additional WebPs ${total} bytes`);
 });
 
 test('the generated library and asset map are in sync with themes/ (run node scripts/import-theme-packs.mjs --regenerate)', () => {
@@ -500,12 +502,39 @@ test('the generated library and asset map are in sync with themes/ (run node scr
   assert.equal(readFileSync(join(root, ART_LIBRARY_PATH), 'utf8').replace(/\r\n/g, '\n'), artPackLibrarySource(packs), `${ART_LIBRARY_PATH} is stale`);
   assert.equal(
     readFileSync(join(root, ART_ASSETS_PATH), 'utf8').replace(/\r\n/g, '\n'),
-    artPackAssetsSource(packs.map((p) => p.id)),
+    artPackAssetsSource(packs.map((p) => p.id), packs),
     `${ART_ASSETS_PATH} is stale`,
   );
   // Every require() path in the asset map exists.
   const assets = readFileSync(join(root, ART_ASSETS_PATH), 'utf8');
   for (const m of assets.matchAll(/require\('\.\.\/\.\.\/([^']+)'\)/g)) assert.ok(existsSync(join(root, m[1])), m[1]);
+});
+
+test('each bundled gallery theme plans five different pure artworks, with no repeated slot', () => {
+  for (const { id, report } of SHIPPED) {
+    assert.equal(report.ok, true, id);
+    assert.equal(report.pack!.artworks?.length, 4, id);
+    const options = artPackWidgetOptions(report.pack!);
+    const selected = plannedArtworkOptionIds(id, options);
+    assert.equal(selected.length, 5, id);
+    assert.equal(new Set(selected.map((key) => options.find((o) => o.id === key)!.image)).size, 5, id);
+    assert.ok(artworkSlotSources(selected).every((s) => s.source === 'artwork'), id);
+    assert.equal(selected[0], 'hero-small', 'retain the original small artwork first');
+  }
+});
+
+test('bundled artwork options reject missing or mislabeled image files', () => {
+  const deep = SHIPPED.find((p) => p.id === 'deep-sea')!;
+  const files = readPack('deep-sea');
+  const name = deep.report.pack!.artworks![0].image;
+  const missing = validateArtPack('deep-sea', { ...files, [name]: undefined });
+  assert.equal(missing.ok, false);
+  assert.ok(missing.errors.some((e) => e.includes(name)));
+  const raw = JSON.parse(new TextDecoder().decode(files['artwork-options.json']));
+  raw[0].kind = 'clock';
+  const wrongKind = validateArtPack('deep-sea', { ...files, 'artwork-options.json': new TextEncoder().encode(JSON.stringify(raw)) });
+  assert.equal(wrongKind.ok, false);
+  assert.ok(wrongKind.errors.some((e) => e.includes('pure artworks')));
 });
 
 test('art-pack themes resolve everywhere: getAnyTheme, free marks, no clashes with built-in ids', () => {
