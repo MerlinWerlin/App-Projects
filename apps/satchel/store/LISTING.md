@@ -111,12 +111,12 @@ Try it straight away with the sample trip.
 Shots and how they are made: `store/screenshots/README.md` (6.9" iPhone, 1320 x 2868). docs/SCREENSHOTS.md uses
 these captions in this order (the test checks it).
 
-1. **Your itinerary, day by day** — Itinerary tab: Today and the day strip on a realistic Japan trip.
-2. **Paste your plans, check, save** — Add your itinerary: plans found in pasted text, ticked, ready to save.
+1. **Your itinerary, day by day** — Itinerary tab: Today, the day strip and the timetable of an invented Tokyo trip.
+2. **Paste your plans, check, save** — Add your itinerary: five pasted plans found, ticked, Add 5 plans.
 3. **Tickets ready at the gate** — a boarding pass full screen with the code big.
-4. **Your whole trip in one place** — the trip screen with its cover, Next up and the timeline.
-5. **Help, one tap away** — emergency card, numbers marked "verify locally".
-6. **Maps that work in flight mode** — the Map tab with the trip's pins on a downloaded city.
+4. **Show a local, in 12 languages** — phrase cards, Japanese picked from the trip.
+5. **Help, one tap away** — emergency card for Japan, numbers marked "verify locally".
+6. **Your trip on the map** — the Map tab with the trip's pins in Tokyo.
 
 ## Other App Store Connect fields
 

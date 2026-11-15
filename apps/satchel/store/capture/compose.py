@@ -61,7 +61,7 @@ def wrap(draw, text, f, max_w):
 
 def captions(img, shot, pal, fonts):
     d = ImageDraw.Draw(img)
-    head = font(fonts, 'SpaceGrotesk_700Bold.ttf', shot.get('titleSize', 112))
+    head = font(fonts, 'SpaceGrotesk_700Bold.ttf', shot.get('titleSize', 104))
     sub = font(fonts, 'Inter_400Regular.ttf', 50)
     y = 200
     d.rounded_rectangle(((W - 120) // 2, y, (W + 120) // 2, y + 14), 7, fill=ACCENT)
@@ -114,8 +114,10 @@ def render(shot, raw, fonts):
     pal = DARK if shot.get('dark') else LIGHT
     bg = background(pal)
     y = captions(bg, shot, pal, fonts)
-    ph, pad = phone(load(raw, shot['raw']), shot.get('phoneWidth', 1010))
-    bg.alpha_composite(ph, ((W - ph.size[0]) // 2, y + 80 - pad))
+    # Same phone size and position on every shot (fits fully below a two-line title and subtitle).
+    ph, pad = phone(load(raw, shot['raw']), shot.get('phoneWidth', 930))
+    top = max(y + 60, shot.get('phoneTop', 740))
+    bg.alpha_composite(ph, ((W - ph.size[0]) // 2, top - pad))
     return bg.convert('RGB')
 
 

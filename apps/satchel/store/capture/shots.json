@@ -1,0 +1,49 @@
+{
+  "note": "Satchel 1.0.0 App Store screenshots, 6.9-inch (1320 x 2868). raw = a capture from satchel-store-capture.yml build B (invented trip, seed.py). Captions = store/LISTING.md, in order.",
+  "shots": [
+    {
+      "n": 1,
+      "slug": "itinerary",
+      "raw": "01-itinerary-light",
+      "title": "Your itinerary, day by day",
+      "sub": "Today, tomorrow and every plan, ready in flight mode."
+    },
+    {
+      "n": 2,
+      "slug": "paste-plans",
+      "raw": "08c-paste-scrolled-light",
+      "title": "Paste your plans, check, save",
+      "sub": "Copy the format, or let your own AI fill it in."
+    },
+    {
+      "n": 3,
+      "slug": "tickets",
+      "raw": "03-ticket-dark",
+      "dark": true,
+      "title": "Tickets ready at the gate",
+      "sub": "Full screen and full brightness, with the code big."
+    },
+    {
+      "n": 4,
+      "slug": "show-a-local",
+      "raw": "07-phrases-dark",
+      "dark": true,
+      "title": "Show a local, in 12 languages",
+      "sub": "Phrase cards, signs and menus that work offline."
+    },
+    {
+      "n": 5,
+      "slug": "emergency",
+      "raw": "05-emergency-light",
+      "title": "Help, one tap away",
+      "sub": "Local emergency numbers, your insurer and contacts."
+    },
+    {
+      "n": 6,
+      "slug": "map",
+      "raw": "06-map-light",
+      "title": "Your trip on the map",
+      "sub": "Bookings and places together; download a city for offline."
+    }
+  ]
+}

@@ -102,8 +102,8 @@ jobs:
           INBOX_URI=$(python3 -c 'import sys,urllib.parse,pathlib; u=pathlib.Path(sys.argv[1]).as_uri(); print(urllib.parse.quote(u, safe=""))' "$DATA/Documents/Inbox/Lisbon long weekend.satchel")
           (cd store/capture && for TRY in 1 2; do
             maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" -e INBOX_URI="$INBOX_URI" --test-output-dir "$OUT/maestro-verify" verify.yaml || echo "maestro reported a failure (optional steps may have missed)"
-            ls ./v*.png > /dev/null 2>&1 && break
-          done; mv ./v*.png "$OUT/verify/" 2>/dev/null || true)
+            find "$OUT/maestro-verify" -name 'v*.png' | grep -q . && break
+          done; find "$OUT/maestro-verify" -name 'v*.png' -exec cp {} "$OUT/verify/" \;)
           python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); t=json.loads(m.get("satchel.trips.v1") or "[]"); print("trips after import:", [x["name"] for x in t])' "$DATA/Library/Application Support/$BUNDLE/RCTAsyncLocalStorage_V1/manifest.json" || echo "trips list is stored in a separate file (large value)"
           ls "$DATA/Library/Application Support/$BUNDLE/RCTAsyncLocalStorage_V1/" || true
           xcrun simctl uninstall "$DEVICE" "$BUNDLE"
@@ -119,11 +119,12 @@ jobs:
             python3 paste.py | xcrun simctl pbcopy "$DEVICE"
             for TRY in 1 2; do
               maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" -e MODE="$MODE" --test-output-dir "$OUT/maestro-$MODE" store-flow.yaml || echo "maestro reported a failure (optional steps may have missed)"
-              ls ./*-"$MODE".png > /dev/null 2>&1 && break
+              find "$OUT/maestro-$MODE" -name "*-$MODE.png" | grep -q . && break
               echo "No $MODE captures on try $TRY (driver start-up?); retrying once"
             done
           done
-          find . -maxdepth 1 -name '*.png' -exec cp {} "$OUT/raw/" \;
+          # Maestro writes takeScreenshot files under its --test-output-dir (<run>/<flow>/takeScreenshot/).
+          find "$OUT"/maestro-light "$OUT"/maestro-dark -name '*.png' -path '*takeScreenshot*' -exec cp {} "$OUT/raw/" \;
           ls -la "$OUT/raw" "$OUT/verify"
           python3 contact.py --raw "$OUT/raw" --out "$OUT/contact-sheet.jpg" || echo "contact sheet failed"
           python3 contact.py --raw "$OUT/verify" --out "$OUT/verify-sheet.jpg" --cols 6 || echo "verify sheet failed"

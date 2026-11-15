@@ -19,12 +19,12 @@ iPhone only (`supportsTablet: false`), so no iPad shots.
 
 | # | Screen | State | Caption |
 |---|---|---|---|
-| 1 | Itinerary tab | Day 2 of the Japan trip, Today with the day strip | Your itinerary, day by day |
-| 2 | Add your itinerary > Paste it here | Pasted plans found and ticked, Check and save | Paste your plans, check, save |
-| 3 | Ticket full screen | Boarding pass for the outbound flight, code big | Tickets ready at the gate |
-| 4 | Trip screen | Cover, Next up and the timeline | Your whole trip in one place |
-| 5 | Emergency tab | Japan, "verify locally" in view | Help, one tap away |
-| 6 | Map tab | Trip pins on the downloaded Tokyo map | Maps that work in flight mode |
+| 1 | Itinerary tab | Day 2 of the trip, Today with the day strip (raw 01-itinerary-light) | Your itinerary, day by day |
+| 2 | Add your itinerary > Check and save | Five pasted plans found and ticked (raw 08c-paste-scrolled-light) | Paste your plans, check, save |
+| 3 | Ticket full screen | SK 21 boarding pass, code big (raw 03-ticket-dark) | Tickets ready at the gate |
+| 4 | Show a local | Phrase languages, Japanese picked from the trip (raw 07-phrases-dark) | Show a local, in 12 languages |
+| 5 | Emergency tab | Japan, "verify locally" in view (raw 05-emergency-light) | Help, one tap away |
+| 6 | Map tab | Trip pins in Tokyo (raw 06-map-light) | Your trip on the map |
 
 ## Rules
 
