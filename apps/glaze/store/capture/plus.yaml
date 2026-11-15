@@ -23,3 +23,8 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 51-plus-scrolled
+- tapOn:
+    text: "Close"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000

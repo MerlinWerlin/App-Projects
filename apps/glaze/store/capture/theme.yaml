@@ -45,6 +45,11 @@ appId: ${APP_ID}
     text: "Got it"
     optional: true
 - waitForAnimationToEnd:
+    timeout: 2000
+- tapOn:
+    text: "Got it"
+    optional: true
+- waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 13-${THEME}-page
 - scroll:
