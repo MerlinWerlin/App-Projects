@@ -76,7 +76,7 @@ test('Themes tab: the Free section comes first (featured rail, then the rest) an
   const themes = [t('a'), t('alpine-starlight'), t('cloud-atelier'), t('deep-sea')];
   const rows = browseHomeRows({ themes, columns: 3, free: freeThemesIn(themes as { id: string }[]) as never, featured: FEATURED_FREE_IDS });
   assert.deepEqual(rows.slice(0, 3).map((r) => r.key), ['head:free', 'rail:featured', 'rail:free']);
-  const featured = rows[1] as { themes: { id: string }[] };
+  const featured = rows[1] as unknown as { themes: { id: string }[] };
   assert.deepEqual(featured.themes.map((x) => x.id), ['alpine-starlight', 'cloud-atelier']);
   const subscribed = browseHomeRows({ themes, columns: 3 });
   assert.ok(!subscribed.some((r) => r.key.includes('free') || r.key.includes('featured')));
