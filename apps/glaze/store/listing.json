@@ -1,6 +1,6 @@
 {
   "locale": "en-AU",
-  "version": "1.0.41",
+  "version": "1.0.42",
   "name": "Glaze: Icon Themes & Widgets",
   "subtitle": "Aesthetic Home Screen Makeover",
   "promotionalText": "Over 140 original themes, each with a wallpaper, matching icons and five artworks for your widgets. 10 premium themes are free; Glaze Plus unlocks the rest.",
@@ -17,5 +17,8 @@
   "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
   "screenshots": {
     "APP_IPHONE_67": "apps/glaze/store/screenshots/6.9"
-  }
+  },
+  "price": "free",
+  "reviewContactFromApp": "couch",
+  "reviewNotes": "No account or sign-in is needed.\n\nSubscription: Glaze Plus Yearly (com.jared797.glaze.yearly), auto-renewing, 1 year, no free trial. Ten premium themes are free (the \"Free\" section at the top of Themes). To see the paywall, open any other theme (for example Lavender Nocturne) and tap \"Use this theme?\". Restore Purchases is on the paywall and in Settings.\n\nIcons: Glaze can add themed Home Screen icons in two ways. (1) One at a time with Apple's Shortcuts app. (2) All at once with a configuration profile that the app generates on the device. The profile contains only Home Screen web clips that open the user's chosen apps; it is unsigned, so iOS shows \"Not Verified\", and the app explains this before install. It changes no other settings and can be removed in Settings > General > VPN & Device Management. The original apps are not changed.\n\nTheme packs: extra themes download from our Cloudflare storage as images and JSON data only. No code is downloaded or executed.\n\nWeather widget: uses an approximate location (rounded to about 1 km) sent to Open-Meteo only to fetch the forecast; nothing is linked to the user."
 }
