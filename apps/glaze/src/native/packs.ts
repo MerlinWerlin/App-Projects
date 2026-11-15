@@ -69,6 +69,9 @@ import {
 import type { Theme } from '../core/themes';
 import { t } from '../i18n';
 import * as fs from './fs';
+import { STARTER_BASE, starterCatalog, starterFor, starterInstallPlan, starterTransport } from '../core/starterPacks';
+import { STARTER_SCREEN_PX } from '../generated/starterPacks';
+import { STARTERS, readStarterModule } from './starterPacks';
 
 const ROOT = fs.documentDirectory ? `${fs.documentDirectory}packs/` : null;
 const INDEX = ROOT ? `${ROOT}index.json` : null;
@@ -516,6 +519,12 @@ export function refreshCatalog(force = false): Promise<void> {
       const stamp = catalogStamp();
       // Show the cached copy at once; a fetch (if due) replaces it when it arrives.
       if (!state.catalog && cached) set({ catalog: decideCatalog(cached, null, now).catalog });
+      // 1.0.38: no catalogue on the phone yet (first launch): list the bundled starters straight away.
+      // Never saved; the real catalogue replaces it, and if the host can't be reached it stays.
+      else if (!state.catalog && !cached) {
+        const seed = starterCatalog(STARTERS);
+        if (seed) set({ catalog: seed });
+      }
       let fetched: CatalogFetch = null;
       if (catalogNeedsFetch(cached, now, force, { stamp, lastAttemptAt: lastAttempt })) {
         catalogRunFetches = true;
@@ -613,22 +622,27 @@ export function remoteArtOnDevice(id: string): Promise<RemoteArtManifest | null>
 export async function downloadRemoteArtToDevice(id: string): Promise<string | null> {
   await loadPackIndex();
   if (id in state.busy) return null;
-  const entry = catalogPack(id);
+  // 1.0.38: a bundled starter is installable before (or without) any catalogue.
+  const entry = catalogPack(id) ?? STARTERS.find((s) => s.entry.id === id)?.entry ?? null;
   if (!entry) return t('plus.packErrors.generic');
+  // 1.0.38: the catalogue lists the version bundled in the app: install it from the bundle through the
+  // same downloader (same checks, same files and manifest), with no network request.
+  const starter = starterFor(STARTERS, id, entry.packVersion);
   // T222: with a copy already on the phone this is an update: staged, the old copy stays usable,
   // and a failure is recorded as an update failure (retried later), not as a download error.
   const updating = state.index.packs.some((p) => p.id === id);
   set({ busy: { ...state.busy, [id]: 0 }, errors: { ...state.errors, [id]: '' } });
   try {
     const r = await downloadRemoteArtPack({
-      baseUrl: PACK_BASE,
+      baseUrl: starter ? STARTER_BASE : PACK_BASE,
       id,
       packVersion: entry.packVersion,
       // T274: the pack's own release (glaze-packs-v2+); absent = glaze-packs-v1.
-      ...(entry.release ? { release: entry.release } : {}),
-      transport: deviceTransport,
+      ...(entry.release && !starter ? { release: entry.release } : {}),
+      transport: starter ? starterTransport(STARTERS, deviceTransport, readStarterModule) : deviceTransport,
       appVersion: appVersion(),
-      screenLongEdgePx: screenLongEdgePx(),
+      // A starter carries one wallpaper size (the one this screen size downloads).
+      screenLongEdgePx: starter ? STARTER_SCREEN_PX : screenLongEdgePx(),
       onProgress: (p) => set({ busy: { ...state.busy, [id]: p.totalBytes ? p.doneBytes / p.totalBytes : 0 } }),
     });
     // Everything derived from the old manifest (widget art list, hero files, wallpaper URI,
@@ -655,6 +669,54 @@ export async function downloadRemoteArtToDevice(id: string): Promise<string | nu
   } finally {
     const { [id]: _done, ...rest } = state.busy;
     set({ busy: rest });
+  }
+}
+
+// ------------------------------------------------------------ 1.0.38: bundled starter packs
+
+/** Starters installed once already (a starter the person removed is not put back). */
+const STARTERS_FILE = ROOT ? `${ROOT}starters.json` : null;
+/** Starters that failed this run (retried on a later launch, not in a loop). */
+const starterFailedThisRun = new Set<string>();
+
+async function readOfferedStarters(): Promise<Set<string>> {
+  try {
+    if (!STARTERS_FILE) return new Set();
+    const info = await fs.getInfoAsync(STARTERS_FILE);
+    const raw = info.exists ? JSON.parse(await fs.readAsStringAsync(STARTERS_FILE)) : [];
+    return new Set(Array.isArray(raw) ? raw.filter((x): x is string => typeof x === 'string') : []);
+  } catch {
+    return new Set();
+  }
+}
+
+/**
+ * 1.0.38: install the next bundled starter pack that is not on the phone yet (from the app bundle,
+ * no network). One pack per call so a deferred-queue step stays short; returns true while more
+ * remain. Never rejects.
+ */
+export async function installNextStarterPack(): Promise<boolean> {
+  try {
+    if (!ROOT || !STARTERS.length) return false;
+    await loadPackIndex();
+    const offered = await readOfferedStarters();
+    const onPhone = new Set(state.index.packs.map((p) => p.id));
+    const todo = starterInstallPlan(STARTERS, onPhone, offered).filter((id) => !starterFailedThisRun.has(id));
+    const id = todo[0];
+    if (!id) return false;
+    const err = await downloadRemoteArtToDevice(id);
+    if (err === null) {
+      offered.add(id);
+      try {
+        await fs.makeDirectoryAsync(ROOT, { intermediates: true }).catch(() => undefined);
+        await fs.writeAsStringAsync(STARTERS_FILE!, JSON.stringify([...offered].sort()));
+      } catch {
+        // Re-checked next launch: it is on the phone now, so it is skipped anyway.
+      }
+    } else starterFailedThisRun.add(id);
+    return todo.length > 1;
+  } catch {
+    return false;
   }
 }
 

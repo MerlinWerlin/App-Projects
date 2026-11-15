@@ -10,7 +10,7 @@ import { prepareWidgetArtRecovery } from './widgetArtRecovery';
 import { DEFERRED_STEPS } from '../core/deferredWork';
 import type { ProbeReason } from '../core/installedProbe';
 import { whenFirstScreen } from '../core/startupHandoff';
-import { restoreDownloadedPacks, runPackUpdates, setPackUpdateScheduler } from '../native/packs';
+import { installNextStarterPack, restoreDownloadedPacks, runPackUpdates, setPackUpdateScheduler } from '../native/packs';
 // Registers the 'themeArt' step (it lives next to applyThemeEverywhere, which requests it).
 import './activeTheme';
 import { registerDeferred, requestDeferred, startDeferred, yieldToUi } from './deferredWork';
@@ -36,6 +36,17 @@ registerDeferred(DEFERRED_STEPS.packRestore, {
   persist: false,
   budgetMs: 400,
   run: () => restoreDownloadedPacks(),
+});
+
+// 1.0.38 (owner 2026-11-15): the bundled starter packs are installed like downloads, from the app
+// itself (no network), one pack per run so a step stays short; it queues itself again until done.
+// A run the app was killed in resumes on the next launch (persisted step).
+registerDeferred(DEFERRED_STEPS.starterPacks, {
+  priority: 15,
+  budgetMs: 2000,
+  run: async () => {
+    if (await installNextStarterPack()) requestDeferred(DEFERRED_STEPS.starterPacks);
+  },
 });
 
 registerDeferred(DEFERRED_STEPS.widgetTheme, {
@@ -78,6 +89,7 @@ export function startLaunchWork(): void {
   begun = true;
   try {
     requestDeferred(DEFERRED_STEPS.packRestore);
+    requestDeferred(DEFERRED_STEPS.starterPacks);
     requestDeferred(DEFERRED_STEPS.widgetTheme);
     const reason: ProbeReason = 'launch';
     requestDeferred(DEFERRED_STEPS.installedProbe, reason);

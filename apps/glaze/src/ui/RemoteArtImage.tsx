@@ -6,6 +6,8 @@
 import { Image } from 'expo-image';
 import { memo } from 'react';
 import type { RemoteArtTheme } from '../core/remoteCatalog';
+import { starterThumb } from '../core/starterPacks';
+import { STARTERS } from '../native/starterPacks';
 
 type Props = {
   theme: RemoteArtTheme;
@@ -17,9 +19,11 @@ type Props = {
 
 export const RemoteArtImage = memo(function RemoteArtImage({ theme, width, height, localUri }: Props) {
   const uri = localUri ?? theme.remoteArt.thumbUrl;
+  // 1.0.38: a bundled starter at the listed version shows its thumbnail from the app (offline too).
+  const bundled = localUri ? null : starterThumb(STARTERS, theme.remoteArt.packId, theme.remoteArt.packVersion);
   return (
     <Image
-      source={uri ? { uri } : undefined}
+      source={bundled ?? (uri ? { uri } : undefined)}
       placeholder={theme.remoteArt.thumbhash ? { thumbhash: theme.remoteArt.thumbhash } : undefined}
       placeholderContentFit="cover"
       contentFit="cover"

@@ -44,6 +44,13 @@ curl -fsSI https://pub-cffeea0b1da4434db6daadc18078e71c.r2.dev/art/deep-sea/v1/m
 
 **Next pack changes.** New artwork from here on should be built on top of the R2 catalogue. The baseline snapshot in `scripts/packs/artwork-baseline/` is still the GitHub v5 catalogue, which is what this first R2 publish was built from. Re-baseline from the R2 catalogue before the next pack change.
 
+## Bundled starter packs (1.0.38+)
+
+Eight complete free themes ship inside the app, so Glaze looks complete on first launch and works offline even if R2 can't be reached: `alpine-starlight`, `aurora-haven`, `cobalt-caravan`, `cherry-arcade`, `boba-bear-club`, `espresso-hour`, `lemon-lagoon` and `honeywood` (10.56 MB).
+- **Build:** `node scripts/packs/bundle_starters.mjs --base <R2 public URL> <ids…>` reads the live catalogue entry and manifest of each id, keeps the files a 2796-px phone downloads, checks sizes and SHA-256, and writes `assets/starter-packs/<id>/` plus `src/generated/starterPacks.ts`. Re-run it after a starter pack changes on R2, or the starter simply updates from R2 like any downloaded pack.
+- **Install:** `downloadRemoteArtToDevice` uses the bundle-reading transport (`starterTransport`, base `STARTER_BASE`) whenever the catalogue lists the bundled version. It runs the same downloader, SHA-256 checks, files and local manifest as a download, but makes no request. The `starterPacks` launch step installs the starters one per run. `packs/starters.json` remembers the installed ones, so a starter the person removes is not put back.
+- **Catalogue:** with no cached catalogue (first launch) the starters are listed at once (`starterCatalog`, never saved), and the real catalogue replaces the list when it arrives. Starter thumbnails come from the app.
+
 # GitHub Release hosting (T169; builds up to 1.0.36)
 
 Until 1.0.37, Glaze's downloadable theme packs were hosted as **release assets on the public repo `MerlinWerlin/App-Projects`** (Jared's instruction, 30 Oct 2026). They stay published for older builds. Nothing here needs an account, a card or a secret: the workflow uses the built-in `GITHUB_TOKEN`.
