@@ -54,5 +54,6 @@
       "reviewScreenshot": "apps/satchel/store/iap/paywall.jpg",
       "availability": "all"
     }
-  ]
+  ],
+  "attachBuild": "latest"
 }
