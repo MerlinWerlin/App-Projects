@@ -1,7 +1,7 @@
 # App Store listing: final copy and screenshots
 
 T266 (owner-1101i #3, 1 Nov 2026) replaces the T67 draft. Paste the fields below into App Store Connect > Apps >
-Glaze > iOS App > version 1.0.1 > App Store tab (English (Australia) is the primary language; copy the same text to
+Glaze > iOS App > version 1.0.41 > App Store tab (English (Australia) is the primary language; copy the same text to
 English (U.S.) and English (U.K.) if those localisations are added). Character counts are checked by
 `src/core/t266Release.test.ts`.
 
@@ -28,8 +28,8 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
 |---|---|---|---|
 | Name | `Glaze: Icon Themes & Widgets` | 28 | 30 |
 | Subtitle | `Aesthetic Home Screen Makeover` | 30 | 30 |
-| Keywords | `wallpaper,lock,custom,shortcut,cute,pastel,kawaii,cozy,dark,color,clock,calendar,photo,matching` | 95 | 100 |
-| Promotional text | `Over 90 original themes, each with matching icons, wallpapers and widgets. Pick a look and Glaze walks you through setting it up, step by step. No account, no ads.` | 163 | 170 |
+| Keywords | `wallpaper,lock,custom,cute,pastel,kawaii,cozy,dark,color,photo,matching,artwork,shortcut,style,art` | 98 | 100 |
+| Promotional text | `Over 140 original themes, each with a wallpaper, matching icons and five artworks for your widgets. 10 premium themes are free; Glaze Plus unlocks the rest.` | 156 | 170 |
 
 - **Name:** "Glaze" first; "Icon Themes & Widgets" are the two most-searched outcome nouns. Fallback if the name is
   taken in App Store Connect: `Glaze: Themes & Widgets` (23).
@@ -39,34 +39,33 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
   aesthetic, home, screen, makeover, glaze). Singular forms only (Apple matches plurals). No brand or app names.
 - **Promotional text** can be changed at any time without a new review.
 
-### Description (1,865 characters; limit 4,000)
+### Description (2,714 characters; limit 4,000)
 
 <!-- description:start -->
 ```text
-Glaze gives your iPhone a look that fits together: a wallpaper, matching app icons and widgets in the same colours, all from one theme.
+Glaze gives your iPhone a look that fits together: a wallpaper, matching app icons and widget art in the same style, all from one theme.
 
 THEMES
-- Over 90 original themes drawn for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
-- Every theme comes with a wallpaper, an icon style and widget art that match.
-- Themes download when you open them and stay on your iPhone, so they keep working offline.
+- Over 140 original themes drawn for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
+- Every theme comes with a wallpaper, an icon style and five artworks for your widgets.
+- 10 premium themes are free, including Alpine Starlight and Cloud Atelier. Glaze Plus unlocks every other theme.
+- Starter themes are built into the app and work offline. Other themes download once, then stay on your iPhone.
+
+ONE TAP TO START
+Tap a theme and answer "Use this theme?". Your Glaze widgets switch to its art straight away. Then Glaze lists the next steps: add the wallpaper, add the icons, add the widgets. Skip any step and come back later.
+
+WIDGETS: FIVE ARTWORKS AND FIVE OF YOUR OWN
+- Small Home Screen widgets. Put Artwork 1 to 5 on your Home Screen: each shows a different piece from the theme you use, and they change when you change theme.
+- Make it yours with Custom 1 to 5: add your own pictures, or a favourite artwork from a theme.
 
 MATCHING ICONS
-- Glaze makes icons for the apps you choose, in the theme's colours and symbols.
-- Install them all at once, or one at a time with Apple's Shortcuts app. Glaze walks you through every step and shows how to undo it.
-- Make your own icons from hundreds of symbols and letters.
-
-WIDGETS THAT WORK
-- Clock, calendar, photo, countdown, quote and battery widgets in small, medium and large.
-- Use the theme's art, or make a widget your own in the Widget Studio with your photo, colours and fonts.
-- Moon phase, word clock, big clock and habit streak widgets, plus Lock Screen clock, date, battery, countdown and moon widgets.
-- Next event and weather widgets in your theme. They ask for calendar or location access only when you set them up. Weather data by Open-Meteo.com.
+- Glaze makes icons for the apps you choose, in the theme's colours and symbols. They are Home Screen shortcuts that open your apps; your original apps are not changed.
+- Add them all at once with one install in Settings, or one at a time with Apple's Shortcuts app. Glaze shows every step, and how to undo it.
+- Change the shape, colours and symbol of any icon.
 
 WALLPAPERS
-- Still wallpapers and matching Lock Screen and Home Screen pairs.
+- Save a theme's wallpaper to Photos and set it for your Home Screen and Lock Screen.
 - Extra: the Live Photo maker turns a short clip of your own into a Live Photo that moves when you press it in Photos.
-
-GUIDED SET-UP
-Tap "Use this theme" and Glaze shows you what to do, one short step at a time: wallpaper, then icons, then widgets. Skip any step and come back later.
 
 SIMPLE AND PRIVATE
 - No account, no ads, no tracking.
@@ -74,27 +73,32 @@ SIMPLE AND PRIVATE
 - Available in 11 languages.
 
 GLAZE PLUS
-Glaze Plus is an optional Yearly subscription (A$2.99 a year, no free trial; 10 premium themes free). Renews automatically; cancel anytime in Settings. Details: store/SUBSCRIPTION.md. Restore it any time from Settings.
+Glaze Plus: a yearly subscription (A$2.99 a year in Australia, or your local equivalent) that unlocks every theme, new themes as they're added and all widget artwork. Ten premium themes are free, and there is no free trial: the free themes are yours to try. Payment is charged to your Apple Account at confirmation. The subscription renews automatically unless cancelled at least 24 hours before the end of the current year, and you can manage or cancel it in Settings > your name > Subscriptions. Without Plus you keep the 10 free themes, your own icons, Custom 1 to 5 with your own pictures and the Live Photo maker, and a theme you already applied keeps working.
+
+Terms of Use: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Privacy Policy: https://merlinwerlin.github.io/App-Projects/glaze/privacy.html
 ```
 <!-- description:end -->
 
-The "GLAZE PLUS" paragraph deliberately names no contents: what Plus adds is still the owner's decision
-(`docs/RELEASE_CHECKLIST.md` §2b). Once decided, add one plain sentence such as "It adds N extra themes." If the owner
-picks option B (ship 1.0.1 without Plus), delete the paragraph.
+**1.0.41 (15 Nov 2026):** `store/listing.json` is now the source for every field above (the store workflow pushes it);
+this file mirrors it. Glaze Plus is a yearly auto-renewing subscription (about A$2.99 a year, no trial) and 10
+themes are free. Guideline 3.1.2 needs the subscription's name, length and price plus a Terms of Use and Privacy
+Policy link in the description, so the "GLAZE PLUS" paragraph states them. If the final price tier changes, change
+"A$2.99" in listing.json, here and in the paywall shot. Apple's standard EULA is the Terms of Use.
 
 ### Other fields
 
 | Field | Value |
 |---|---|
-| What's New | Not shown for a first release (App Store Connect only asks from the second version). For 1.0.2: `Smoother set-up, new themes and fixes. Thanks for using Glaze!` |
-| Support URL | `https://merlinwerlin.github.io/App-Projects/apps/glaze/docs/site/` (page `docs/site/index.html`; needs GitHub Pages, owner step) |
-| Privacy Policy URL | `https://merlinwerlin.github.io/App-Projects/glaze/privacy.html` (the repo-root `docs/glaze/privacy.html`, a copy of `apps/glaze/docs/privacy.html`, served by GitHub Pages from `docs/`) |
+| What's New | `Welcome to Glaze! Pick a theme, tap Use this theme, and your widgets switch to its five artworks. Then add the wallpaper and matching icons, one short step at a time.` (App Store Connect may not ask for it on a first release) |
+| Support URL | `https://merlinwerlin.github.io/App-Projects/glaze/support.html` (repo `docs/glaze/support.html`; the old `apps/glaze/docs/site/` address was never served by Pages) |
+| Privacy Policy URL | `https://merlinwerlin.github.io/App-Projects/glaze/privacy.html` (repo `docs/glaze/privacy.html`, copy of `apps/glaze/docs/privacy.html`) |
 | Marketing URL | leave empty |
 | Copyright | `2026 Jared Bradley` (App Store Connect adds the © sign; use the seller name shown under Business if it differs) |
 | Primary category | **Lifestyle** |
 | Secondary category | Utilities |
 | Age rating | 4+ (answers in `docs/RELEASE_CHECKLIST.md` §5) |
-| Price | Free download; Glaze Plus in-app purchase (`docs/IAP_SANDBOX.md`) |
+| Price | Free download; Glaze Plus yearly subscription (about A$2.99 a year, no trial) |
 
 **Why Lifestyle:** people choose a Home Screen "look" the way they choose decor or fashion; that is a lifestyle
 purchase, and the pitch (themes first, widgets and icons that match) is about taste, not a tool. Utilities is crowded
@@ -102,45 +106,33 @@ with practical tools (scanners, VPNs, calculators, file managers), so a theme ap
 chart places there and its pastel screenshots look out of place. Utilities stays as the secondary category so the
 widget side is still found. The category can be changed with any later version.
 
-## Screenshots (T266 plan; rendered by T267)
+## Screenshots (1.0.41, first release)
 
-Six portrait shots, one set per size. The renders go on the build page under `store-screens/` (not in the repo
-bundle):
+Eight 6.9-inch shots (1320 x 2868) in `store/screenshots/6.9/`, made by `.github/workflows/glaze-store-capture.yml`
+(real simulator captures of 1.0.41, plus Home Screens drawn from the themes' own files for shots 1 and 3). How they are made, and how to re-make them:
+`store/screenshots/README.md`. Glaze is iPhone-only, so there is no iPad set, and the 6.9-inch set covers every
+smaller iPhone.
 
-| Size | Pixels | Folder |
+| # | Headline | Subline |
 |---|---|---|
-| 6.9" (iPhone 16/17 Pro Max) | 1320 x 2868 | `store-screens/6.9/01-home-hook.jpg` … `06-make-your-own.jpg` |
-| 6.5" (iPhone 11 Pro Max class) | 1284 x 2778 | `store-screens/6.5/01-home-hook.jpg` … `06-make-your-own.jpg` |
-
-App Store Connect scales the 6.9" set down for smaller iPhones; the 6.5" set is uploaded too because it is still
-asked for on some accounts. Flattened RGB PNG, no transparency.
-
-| # | Shows | Caption | Chars |
-|---|---|---|---|
-| 1 | Hook: a finished Home Screen in one theme (wallpaper, matching icons, clock + calendar + photo widgets in the theme's art) | Themes, icons and widgets that match. Ten premium themes free. Glaze Plus: every theme, A$2.99 a year. | 72 |
-| 2 | Themes tab: art-led cards from the remote catalogue with category sections | Over 90 original themes | 23 |
-| 3 | Theme page > "Use this theme": the guided steps with progress dots 1-2-3 (T265) | Set it up in three easy steps | 29 |
-| 4 | Icons: the install screen with "Install all icons" and the themed icon grid | Icons that match, all at once | 29 |
-| 5 | Widgets tab / Widget Studio: small, medium and large widgets in the theme's art | Widgets in your theme's colours | 31 |
-| 6 | Wallpapers tab: still wallpapers and a Lock + Home pair | Wallpapers and Lock Screen pairs | 32 |
-
-Caption 1 is the owner's decision ("Themes, icons and widgets that match. Ten premium themes free. Glaze Plus: every theme, A$2.99 a year."); "One
-price" stays true under every Plus option in the checklist (one-time unlock, or no purchase at all). Shot captions are
-image text, not a listing field, so there is no character limit; keep them on two lines at the shot's headline size.
+| 1 | Your whole Home Screen, one tap | Wallpaper, icons and widgets that match, from one theme. |
+| 2 | Five artworks with every theme | Artwork 1 to 5 widgets follow the theme you use. |
+| 3 | A look for every mood | Desert Afterglow, Cloud Atelier and Cobalt Caravan. |
+| 4 | Tap a theme, then tap Yes | Glaze puts it on your widgets, then shows the next steps. |
+| 5 | Make it yours with Custom widgets | Add your own pictures, or a favourite artwork. |
+| 6 | Over 140 original themes | Start with 10 free, including Alpine Starlight and Cloud Atelier. |
+| 7 | Matching icons for your apps | Every theme styles your icons to match. |
+| 8 | Every theme with Glaze Plus | One small yearly price. Cancel anytime. |
 
 ### Honesty checks for the shots
 
-- **Theme count:** "Over 90" comes from the live catalogue `glaze-packs-v1` (`catalog.json` generated
-  2026-11-01T06:42Z: 95 packs, all free) plus 3 bundled starters (`themes/`) = 98 themes. Recount before upload; if
-  the catalogue ever drops to 90 or fewer, change the promotional text, description and shot 2.
-- **Widgets:** sample contents (9:41, 76 %, dates) are illustrative mock data. Interactive habit widgets are not
-  device-tested, so no shot or line of copy shows or promises them.
-- **Live Photo maker:** not in the six shots. If it is ever shown, show it in the Photos view with the caption "your
-  clip as a Live Photo that moves when you press it in Photos", never framed as a moving Lock Screen.
-- **Icons:** draw generic app labels (Camera, Photos, Music, Chat…), never real brand logos.
-- **No price on the shots** (the price is localised by the store and is the owner's call).
-- The old 8-shot T67 set in `assets/store/` (1290 x 2796, "50 original themes · 18 free") is out of date: the
-  catalogue changed in T177 and all gallery themes are free. Do not upload it.
+- **Theme count:** "Over 140" = 141 themes in the live catalogue on Cloudflare R2 (15 Nov 2026) + 3 bundled. Recount
+  before upload; if it ever drops to 140 or fewer, change the promotional text, description and shot 6.
+- **Free themes:** "10 free" = `FREE_THEME_IDS` in `src/core/freeThemes.ts` (1.0.41).
+- **No price on the captions** (the store localises it). The Plus sheet in shot 8 shows the app's fallback A$2.99,
+  which is the Australian price.
+- **Icons:** generic app labels and Glaze's own glyphs, never brand logos. The phone frame is a plain rounded rectangle.
+- The older sets (`assets/store/` 1290 x 2796, and the T267 HTML compositions) are out of date: do not upload them.
 
 ## Where the facts come from
 

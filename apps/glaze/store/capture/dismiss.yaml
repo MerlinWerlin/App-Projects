@@ -1,0 +1,12 @@
+# Clears what is not part of Glaze's own screens: the simulator's system notification banner.
+appId: ${APP_ID}
+---
+- runFlow:
+    when:
+      visible: ".*Apple Intelligence.*"
+    commands:
+      - swipe:
+          start: "50%,9%"
+          end: "50%,1%"
+      - waitForAnimationToEnd:
+          timeout: 3000
