@@ -44,7 +44,8 @@ test('Plus sheet: thick glass sheet, art-collage hero from bundled theme art, th
   assert.match(sheet, /accessibilityElementsHidden importantForAccessibility="no-hide-descendants"/, 'hero is decorative');
   const benefits = /const BENEFITS[^=]*= \[([\s\S]*?)\];/.exec(sheet)?.[1] ?? '';
   assert.equal((benefits.match(/\{ icon: '/g) ?? []).length, 3, 'exactly three benefit rows');
-  for (const k of ['themes', 'widgets', 'symbols']) assert.ok(benefits.includes(`'plus.lock.${k}'`), k);
+  // 1.0.41: every theme, new themes as they're added, all widget artwork.
+  for (const k of ['themes', 'newThemes', 'widgets']) assert.ok(benefits.includes(`'plus.lock.${k}'`), k);
   assert.match(sheet, /<Feather name=\{b\.icon\}/, 'line (Feather) icons');
 });
 
@@ -72,8 +73,9 @@ test('Plus sheet: no pressure patterns, and the free promises stay', () => {
   const sheet = read(...SHEET);
   for (const k of ['plus.lock.freeIcons', 'plus.lock.freeInstall', 'plus.lock.freeLive', 'plus.lock.freeThemes']) assert.ok(sheet.includes(`'${k}'`), k);
   const en = read('src', 'i18n', 'ns', 'plus', 'en.ts');
-  assert.match(en, /price: 'One-time \{price\}\. No subscription, ever\.'/, 'one-time unlock, never a subscription');
-  assert.match(en, /eyebrow: 'One-time unlock'/);
+  // 1.0.41 (owner): a yearly subscription, cancel anytime, no free trial.
+  assert.match(en, /price: '\{price\} a year\. Cancel anytime in Settings\.'/);
+  assert.match(en, /eyebrow: 'Yearly subscription'/);
 });
 
 test('Settings: inset groups only, with editorial titles', () => {
@@ -167,13 +169,18 @@ test('T175: the unused plus.lock.notNow string is gone from every locale (the sh
   assert.ok(!strip(read(...SHEET)).includes('plus.lock.notNow'), 'PlusLockSheet does not use plus.lock.notNow');
 });
 
-test('D211-1: the Plus sheet promises no gallery themes it no longer has (no counts, "more coming" line)', () => {
+test('1.0.41: the sheet lists what the subscription opens and links the Terms of Use and Privacy Policy (3.1.2)', () => {
   const sheet = strip(read(...SHEET));
   assert.ok(!sheet.includes('PLUS_THEMES') && !sheet.includes('PLUS_PACKS'), 'no Plus theme counts');
-  assert.ok(!/plus\.lock\.freeThemes', \{/.test(sheet), 'free row has no starter count');
+  assert.match(sheet, /t\('plus\.lock\.renewal', \{ price \}\)/);
+  assert.match(sheet, /Linking\.openURL\(TERMS_OF_USE_URL\)/);
+  assert.match(sheet, /Linking\.openURL\(PRIVACY_POLICY_URL\)/);
+  const raw = read(...SHEET);
+  assert.match(raw, /TERMS_OF_USE_URL = 'https:\/\/www\.apple\.com\/legal\/internet-services\/itunes\/dev\/stdeula\/'/);
+  assert.match(raw, /PRIVACY_POLICY_URL = 'https:\/\/merlinwerlin\.github\.io\/App-Projects\/apps\/glaze\/docs\/site\/privacy\.html'/);
   const en = read('src', 'i18n', 'ns', 'plus', 'en.ts');
-  assert.match(en, /themes: 'More Plus themes are on the way'/);
-  assert.match(en, /freeThemes: 'Every theme in the gallery and the wallpaper maker'/);
+  assert.match(en, /themes: 'Every theme in the gallery'/);
+  assert.match(en, /freeThemes: '10 premium themes, free'/);
 });
 
 // ---- T210: Settings after the owner-1101d brief (Install all at once main, Clean up old icons). ----

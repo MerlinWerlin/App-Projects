@@ -69,7 +69,9 @@ test('T152: the module is a StoreKit 2 Expo module of its own', () => {
     ['AppStore.sync', /try await AppStore\.sync\(\)/],
     ['Transaction.updates', /for await update in Transaction\.updates/],
     ['verified only', /case \.verified\(let transaction\)/],
-    ['revocation', /revocationDate == nil/],
+    ['revocation', /revocationDate != nil \{ return false \}/],
+    // 1.0.41: an expired subscription is not an entitlement.
+    ['expiry', /if let expires = transaction\.expirationDate, expires <= Date\(\) \{ return false \}/],
     ['userCancelled', /case \.userCancelled:/],
     ['pending', /case \.pending:/],
     ['event', /Events\("onEntitlementChange"\)/],
@@ -100,8 +102,10 @@ test('T152: adapter loads the module optionally, iOS only, and never throws', ()
 
 test('T152: Plus uses the real store where the module exists, the mock elsewhere', () => {
   const ent = read('src', 'plus', 'entitlement.ts');
-  assert.match(ent, /glazeStore\.available\(\)\s*\?\s*createStoreKitPlusStore\(glazeStore, \(v\) => notify\(v\), PLUS_PRODUCT_ID\)\s*:\s*createMockPlusStore\(DEV\)/);
+  // 1.0.41: the yearly subscription store.
+  assert.match(ent, /glazeStore\.available\(\)\s*\?\s*createSubscriptionPlusStore\(glazeStore, \(v\) => notify\(v\)\)\s*:\s*createMockPlusStore\(DEV\)/);
   const store = read('src', 'plus', 'iapStore.ts');
+  assert.match(store, /export function createSubscriptionPlusStore\(/);
   assert.match(store, /export function createStoreKitPlusStore\(/);
   assert.match(store, /purchasable: true/);
   assert.match(store, /if \(!r\.ok\) throw new Error\(r\.code\)/, 'restore failure reaches restoreFailed');

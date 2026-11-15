@@ -74,7 +74,7 @@ SIMPLE AND PRIVATE
 - Available in 11 languages.
 
 GLAZE PLUS
-Glaze Plus is an optional one-time purchase. No subscription, ever. Restore it any time from Settings.
+Glaze Plus is an optional Yearly subscription (A$2.99 a year, no free trial; 10 premium themes free). Renews automatically; cancel anytime in Settings. Details: store/SUBSCRIPTION.md. Restore it any time from Settings.
 ```
 <!-- description:end -->
 
@@ -117,14 +117,14 @@ asked for on some accounts. Flattened RGB PNG, no transparency.
 
 | # | Shows | Caption | Chars |
 |---|---|---|---|
-| 1 | Hook: a finished Home Screen in one theme (wallpaper, matching icons, clock + calendar + photo widgets in the theme's art) | Themes, icons and widgets that match. One price. No weekly subscription. | 72 |
+| 1 | Hook: a finished Home Screen in one theme (wallpaper, matching icons, clock + calendar + photo widgets in the theme's art) | Themes, icons and widgets that match. Ten premium themes free. Glaze Plus: every theme, A$2.99 a year. | 72 |
 | 2 | Themes tab: art-led cards from the remote catalogue with category sections | Over 90 original themes | 23 |
 | 3 | Theme page > "Use this theme": the guided steps with progress dots 1-2-3 (T265) | Set it up in three easy steps | 29 |
 | 4 | Icons: the install screen with "Install all icons" and the themed icon grid | Icons that match, all at once | 29 |
 | 5 | Widgets tab / Widget Studio: small, medium and large widgets in the theme's art | Widgets in your theme's colours | 31 |
 | 6 | Wallpapers tab: still wallpapers and a Lock + Home pair | Wallpapers and Lock Screen pairs | 32 |
 
-Caption 1 is the owner's decision ("Themes, icons and widgets that match. One price. No weekly subscription."); "One
+Caption 1 is the owner's decision ("Themes, icons and widgets that match. Ten premium themes free. Glaze Plus: every theme, A$2.99 a year."); "One
 price" stays true under every Plus option in the checklist (one-time unlock, or no purchase at all). Shot captions are
 image text, not a listing field, so there is no character limit; keep them on two lines at the shot's headline size.
 

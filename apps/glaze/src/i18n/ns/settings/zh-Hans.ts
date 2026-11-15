@@ -55,14 +55,14 @@ export const zhHans: NonNullable<LocaleMessages['settings']> = {
     feedbackHint: '用你自己的邮件应用联系 Glaze 团队',
   },
   plus: {
-    body: '一次性付费。永不订阅。自制图标、两种安装方式以及用你自己的视频制作实况照片始终免费。',
+    body: 'Glaze Plus 是解锁所有主题的年度订阅。10 个高级主题保持免费，自制图标、两种安装方式、使用你自己图片的自定 1-5 以及实况照片制作也都免费。可随时在“设置”中取消。',
     more: 'Glaze Plus 包含什么',
-    moreHint: '说明一次性解锁及其包含的内容',
+    moreHint: '介绍年度订阅及其包含的内容',
   },
   privacy: {
     title: '隐私',
     heading: '不收集数据',
-    body: '没有账户、分析、广告或跟踪。你的照片和视频绝不会离开你的手机。主题包以普通文件的形式从 GitHub 下载，Glaze 不会发送任何个人数据、账户或标识符。',
+    body: '没有账户、分析、广告或追踪。你的照片和视频不会离开手机。主题包以普通文件形式从 Cloudflare 下载；Glaze 不发送任何个人数据、账户或标识符。',
     installedTitle: "这台 iPhone 上的应用",
     installedBody: "为了替你勾选应用，Glaze 只会询问 iOS 是否安装了 {count} 个特定的热门应用。结果只用于为这些应用设置主题，任何信息都不会离开你的手机。",
   },

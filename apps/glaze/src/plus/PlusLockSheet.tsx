@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { Image as ExpoImage } from 'expo-image';
 import { useState } from 'react';
-import { StyleSheet, Text, View, type TextStyle } from 'react-native';
+import { Linking, Pressable, StyleSheet, Text, View, type TextStyle } from 'react-native';
 import { useT } from '../i18n';
 import {
   circleRadius,
@@ -37,18 +37,22 @@ type Props = {
 
 const BRAND = 'Glaze Plus'; // i18n-ignore (product name)
 
-// D211-1 (31 Oct): every gallery theme is free now and the old Plus packs left the gallery, so the themes row
-// says more Plus themes are coming (no count) and the free card says every gallery theme is free. Owner decides
-// what Plus adds (Workboard glaze-plus-content); do not mark packs plus:true or change price/paywall copy before then.
-// Release standard §2: only what this build has. "Theme clips for Live Photos" (plus.lock.loops) is off the list
-// until theme clips exist (the Live tab only makes Live Photos from the person's own video, which stays free).
+// Glaze 1.0.41 (owner 2026-11-15: "$3 a year ... no free trial, the 10 free ones are the free trial"): Glaze Plus
+// is a yearly auto-renewable subscription. Ten themes are free (src/core/freeThemes.ts); Plus opens every other
+// theme. App Review 3.1.2: the sheet names the subscription, its length and price, what it includes, how to
+// cancel, Restore, and links to the Terms of Use (Apple's standard EULA) and the Privacy Policy.
 // T173 §3.6: exactly three benefit rows, each a line icon in a soft tint circle.
-type BenefitKey = 'plus.lock.themes' | 'plus.lock.widgets' | 'plus.lock.symbols';
+type BenefitKey = 'plus.lock.themes' | 'plus.lock.newThemes' | 'plus.lock.widgets';
 const BENEFITS: readonly { icon: FeatherName; key: BenefitKey }[] = [
-  { icon: 'clock', key: 'plus.lock.themes' },
+  { icon: 'image', key: 'plus.lock.themes' },
+  { icon: 'plus-circle', key: 'plus.lock.newThemes' },
   { icon: 'grid', key: 'plus.lock.widgets' },
-  { icon: 'feather', key: 'plus.lock.symbols' },
 ];
+
+/** Apple's standard Licensed Application End User License Agreement (the app uses it as its Terms of Use). */
+export const TERMS_OF_USE_URL = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
+/** Glaze's privacy policy (docs/site/privacy.html, the App Store Connect Privacy Policy URL). */
+export const PRIVACY_POLICY_URL = 'https://merlinwerlin.github.io/App-Projects/apps/glaze/docs/site/privacy.html';
 
 /** Up to three bundled wallpapers for the hero collage (art already in the repo, no network). */
 const HERO_ART: readonly number[] = Object.values(ART_PACK_ASSETS)
@@ -58,7 +62,7 @@ const HERO_ART: readonly number[] = Object.values(ART_PACK_ASSETS)
 const FREE = ['plus.lock.freeIcons', 'plus.lock.freeInstall', 'plus.lock.freeLive'] as const;
 
 /**
- * Explains Glaze Plus: one-time price, no subscription, what's included and what stays free.
+ * Explains Glaze Plus (1.0.41: the yearly subscription): price a year, what's included, what stays free.
  * Honest paywall (T63): a large labelled close always in view, Restore purchases always shown,
  * opened only when the person taps something Plus (never at launch). T173 premium pass
  * (docs/PREMIUM_UI.md §3.6): the shared thick-glass Sheet, an art-collage hero, three benefit rows
@@ -202,6 +206,23 @@ export function PlusLockSheet({ visible, onClose, subject, onUnlocked }: Props) 
           onClose();
         }}
       />
+
+      {/* 1.0.41 (App Review 3.1.2): how the subscription renews and is cancelled, and the legal links. */}
+      <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
+        {t('plus.lock.renewal', { price })}
+      </Text>
+      <View style={styles.legal}>
+        <Pressable onPress={() => void Linking.openURL(TERMS_OF_USE_URL).catch(() => undefined)} accessibilityRole="link" hitSlop={8}>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.link, { color: c.tint }]}>
+            {t('plus.lock.terms')}
+          </Text>
+        </Pressable>
+        <Pressable onPress={() => void Linking.openURL(PRIVACY_POLICY_URL).catch(() => undefined)} accessibilityRole="link" hitSlop={8}>
+          <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), styles.link, { color: c.tint }]}>
+            {t('plus.lock.privacy')}
+          </Text>
+        </Pressable>
+      </View>
     </Sheet>
   );
 }
@@ -254,4 +275,6 @@ const styles = StyleSheet.create({
   free: { borderRadius: radiusV2.card, padding: spaceV2.lg, gap: spaceV2.xs },
   freeRow: { flexDirection: 'row', alignItems: 'center', gap: spaceV2.sm },
   flex: { flex: 1, flexShrink: 1 },
+  legal: { flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.lg, justifyContent: 'center', paddingBottom: spaceV2.sm },
+  link: { fontWeight: '600' },
 });

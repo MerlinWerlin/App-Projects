@@ -19,6 +19,12 @@ export const ja: NonNullable<LocaleMessages['themes']> = {
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'アート · オリジナル壁紙', body: '無料。オリジナルのアート壁紙に、合わせたアイコンと浮かぶウィジェットアート付き。ダウンロード不要です。' },
   plusNote: 'Glaze Plus。',
+  freeBadge: 'プレミアム · 無料',
+  freeNote: 'プレミアムテーマ、無料',
+  free: {
+    title: '無料',
+    body: '10 個のプレミアムテーマを無料で。Glaze Plus でほかのすべてのテーマが使えます。',
+  },
   feedback: 'フィードバックを送る',
   feedbackHint: 'メールアプリからテーマの提案や問題の報告ができます',
   empty: {

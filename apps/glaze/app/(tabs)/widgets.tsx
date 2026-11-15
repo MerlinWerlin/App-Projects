@@ -85,6 +85,8 @@ import { LargeTitleFlatList, PillButton, SectionHeader, Skeleton, SquircleCard }
 import { CatalogueWidgetPreview } from '../../src/ui/CatalogueWidgetPreview';
 import { WidgetPreview } from '../../src/ui/WidgetPreview';
 import { useWallpaperPalette } from '../../src/ui/useWallpaperPalette';
+import { PlusLockSheet } from '../../src/plus/PlusLockSheet';
+import { useLocked } from '../../src/plus/useLocked';
 import { WidgetArtLibraryList } from '../../src/ui/WidgetArtLibraryList';
 import { CustomArtSlots } from '../../src/ui/CustomArtSlots';
 import { useHowTo, WatchHowButton } from '../../src/ui/HowToSheet';
@@ -466,6 +468,9 @@ function WidgetsTab() {
   // 1.0.37 (owner 2026-11-15): Medium and Large are gone from the tab for now; it always shows Small.
   const size: WidgetTabSize = 'small';
   // 1.0.39: the colours of the design My widget art shows in a slot the theme has no piece for.
+  // 1.0.41: putting a premium theme's artwork on a Custom widget needs Glaze Plus (your own photos stay free).
+  const customLocked = useLocked(theme.plus === true);
+  const [plusOpen, setPlusOpen] = useState(false);
   const artPalette = useMemo(() => ({ bg: theme.palette.bg, accent: theme.palette.accent, ink: theme.palette.ink }), [theme.palette.bg, theme.palette.accent, theme.palette.ink]);
   // T146: link check on focus (no theme picks here any more, so the nonce stays 0).
   const pickNonce = 0;
@@ -607,7 +612,7 @@ function WidgetsTab() {
       {/* Owner 2026-11-14 ("not separate"): the theme's art picker is gone; My widget art below is the
           one list, Artwork 1-5 with a big number and the large artwork side by side. */}
       {/* T221: "My widget art"; hidden without the native library. */}
-      <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} palette={artPalette} />
+      <WidgetArtLibraryList refreshKey={artLibKey} style={styles.art} palette={artPalette} customLocked={customLocked} onCustomLocked={() => setPlusOpen(true)} />
 
       {/* Owner 2026-11-15 ("make your own theme, be creative"): Your artwork, five slots of the
           person's own pictures for the Custom 1-5 widgets; on this device only. */}
@@ -621,6 +626,7 @@ function WidgetsTab() {
   return (
     <>
     {how.sheet}
+    <PlusLockSheet visible={plusOpen} onClose={() => setPlusOpen(false)} subject={theme.name} onUnlocked={() => setPlusOpen(false)} />
     <LargeTitleFlatList
       title={t('tabs.widgets')}
       subtitle={t('tabs.widgetsTab.subtitle')}

@@ -54,14 +54,14 @@ export const en = {
     feedbackHint: 'Write to the Glaze team from your own Mail app',
   },
   plus: {
-    body: 'One-time price. No subscription, ever. Making your own icons, both install methods and the Live Photo maker with your own video stay free.',
+    body: 'Glaze Plus is a yearly subscription that opens every theme. 10 premium themes stay free, and so do your own icons, both install methods, Custom 1-5 with your own pictures and the Live Photo maker. Cancel anytime in Settings.',
     more: 'What’s in Glaze Plus',
-    moreHint: 'Explains the one-time unlock and what it includes',
+    moreHint: 'Explains the yearly subscription and what it includes',
   },
   privacy: {
     title: 'Privacy',
     heading: 'Data Not Collected',
-    body: 'No accounts, analytics, ads or tracking. Your photos and videos never leave your phone. Theme packs download from GitHub as plain files; Glaze sends no personal data, account or identifier.',
+    body: 'No accounts, analytics, ads or tracking. Your photos and videos never leave your phone. Theme packs download from Cloudflare as plain files; Glaze sends no personal data, account or identifier.',
     installedTitle: 'Apps on this iPhone',
     installedBody: 'To tick your apps for you, Glaze asks iOS only whether {count} specific popular apps are installed. The answer is used only to theme those apps, and nothing leaves your phone.',
   },

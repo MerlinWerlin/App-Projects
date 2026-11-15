@@ -1,3 +1,5 @@
+> **Superseded in 1.0.41:** Glaze Plus is the yearly subscription `com.jared797.glaze.yearly`; set it up from `store/SUBSCRIPTION.md`. The one-time `com.jared797.glaze.plus` below is never sold (only still honoured for sandbox / TestFlight accounts that bought it).
+
 # Glaze Plus: buying it in TestFlight (sandbox)
 
 T152. Glaze Plus is one **non-consumable** in-app purchase, **A$2.99 one-time**, bought with StoreKit 2

@@ -18,7 +18,8 @@ test('D145-1: Glaze Plus shows the owner price A$2.99, one-time', () => {
 
 test('D145-1: Unlock in a test build says plainly it cannot be bought yet and nothing was charged', () => {
   const en = read('src', 'i18n', 'ns', 'plus', 'en.ts');
-  assert.match(en, /unavailable: "?'?You can\\?'t buy Glaze Plus in this test version\. Buying opens with the App Store release\. Nothing was charged\./);
+  // 1.0.41: the subscription.
+  assert.match(en, /unavailable: '.*can.t subscribe to Glaze Plus in this test version\. It opens with the App Store release\. Nothing was charged\./);
 });
 
 test('D145-2: the App Group is applied to the app on every native build, not only when the widget tool is present', () => {

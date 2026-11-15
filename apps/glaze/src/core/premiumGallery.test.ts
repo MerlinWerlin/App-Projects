@@ -20,6 +20,7 @@
 //  - premiumOnboarding "title, bubbles, section" -> title, quiet controls, New collection;
 //  - premiumThemesBrowse seasonal banner + showcase feature flag on the tab -> retired;
 //  - premiumUi eyebrows starters / art / space / plus -> collection / starters.
+import { isFreeTheme } from './freeThemes.ts';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -61,7 +62,7 @@ test('the real catalogue fixture gives 10 free remote themes with thumb URLs and
   assert.ok(catalog);
   assert.equal(REMOTE.length, 10);
   for (const t of REMOTE) {
-    assert.equal(t.plus, false, t.id);
+    assert.equal(t.plus, !isFreeTheme(t.id), t.id);
     assert.ok(t.remoteArt.thumbUrl?.startsWith(BASE), t.id);
     assert.ok(t.remoteArt.thumbhash.length > 0, t.id);
     assert.ok(t.name.length > 0 && t.tagline.length > 0, `${t.id} has a name and a mood line`);
@@ -170,7 +171,7 @@ test('the Themes tab is built from themeBrowse over useRemoteArtThemes + starter
   assert.match(SCREEN, /const remote = useRemoteArtThemes\(\);/);
   // T264: malformed catalogue entries are filtered first (`drawable`).
   assert.match(SCREEN, /browseThemes<GalleryTheme, GalleryTheme>\(\(remote \?\? \[\]\)\.filter\(drawable\), STARTERS\)/);
-  assert.match(SCREEN, /browseHomeRows<GalleryTheme>\(\{ themes, columns, waiting \}\)/);
+  assert.match(SCREEN, /browseHomeRows<GalleryTheme>\(\{ themes, columns, waiting, \.\.\.\(subscribed \? \{\} : \{ free: freeThemesIn\(themes\), featured: FEATURED_FREE_IDS \}\) \}\)/);
   assert.match(SCREEN, /browseGridThemes<GalleryTheme>\(\{ themes, view, query, filter, liked \}\)/);
   assert.match(SCREEN, /const STARTERS: readonly GalleryTheme\[\] = galleryStarters\(\);/);
   assert.match(SCREEN, /data=\{rows\}/);

@@ -19,6 +19,12 @@ export const es: NonNullable<LocaleMessages['themes']> = {
   // T130: the free art-pack themes (themes/<id>/).
   art: { title: 'Arte · fondos originales', body: 'Gratis. Fondos de arte originales con iconos a juego y arte flotante para widgets. Nada que descargar.' },
   plusNote: 'Glaze Plus.',
+  freeBadge: 'Premium · Gratis',
+  freeNote: 'Tema premium, gratis',
+  free: {
+    title: 'Gratis',
+    body: 'Diez temas premium, gratis para ti. Glaze Plus desbloquea todos los demás.',
+  },
   feedback: 'Enviar comentarios',
   feedbackHint: 'Sugiere un tema o informa de un problema desde tu app Mail',
   empty: {

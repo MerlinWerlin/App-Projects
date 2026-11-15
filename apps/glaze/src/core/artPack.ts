@@ -16,6 +16,7 @@
 // Pure TS (no React Native / Expo): the validator reads PNG headers and decodes IDAT with the
 // repo's own inflater (src/core/inflate.ts), so Node tests and scripts/import-theme-packs.mjs run it.
 
+import { isFreeTheme } from './freeThemes.ts';
 import { iconArtOf, wallpaperArtOf, type ThemeArt } from './artwork.ts';
 import { contrastRatio, mix, relativeLuminance } from './colour.ts';
 import { inflateRaw } from './inflate.ts';
@@ -613,7 +614,8 @@ export type ArtPackRef = {
 };
 
 /** T253: `browseCategory` is the Themes front-page category (src/core/themeBrowse.ts). */
-export type ArtPackTheme = Theme & { plus: false; artPack: ArtPackRef; browseCategory: BrowseCategoryId };
+// 1.0.41: plus is true for every gallery theme outside the free ten (src/core/freeThemes.ts).
+export type ArtPackTheme = Theme & { plus: boolean; artPack: ArtPackRef; browseCategory: BrowseCategoryId };
 
 export function isArtPackTheme(t: unknown): t is ArtPackTheme {
   return isObj(t) && isObj(t.artPack) && t.artPack.wallpaperImage === true && typeof t.artPack.id === 'string';
@@ -685,7 +687,8 @@ export function artPackTheme(pack: ArtPackData): ArtPackTheme {
       art: wallpaperArtOf(art),
     },
     widget: { style: relativeLuminance(p.tile) < 0.25 ? 'glass' : 'solid', font: 'display', accent: p.accent },
-    plus: false,
+    // 1.0.41: free only for the ten free themes; every other theme needs Glaze Plus (yearly).
+    plus: !isFreeTheme(pack.id),
     art,
     categories: Object.freeze(artPackCategories(pack)),
     tags: Object.freeze(['art', ...pack.meta.tags.filter((t) => t !== 'art')]),
