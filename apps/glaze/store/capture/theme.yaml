@@ -2,6 +2,8 @@
 appId: ${APP_ID}
 ---
 - openLink: glaze://theme/${THEME}
+- runFlow:
+    file: dismiss.yaml
 - extendedWaitUntil:
     visible: "Use this theme?|Next steps"
     timeout: 30000
@@ -39,6 +41,11 @@ appId: ${APP_ID}
     optional: true
 - waitForAnimationToEnd:
     timeout: 4000
+- tapOn:
+    text: "Got it"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000
 - takeScreenshot: 13-${THEME}-page
 - scroll:
     optional: true

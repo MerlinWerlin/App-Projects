@@ -88,6 +88,7 @@ jobs:
           find . "$OUT/maestro" -name '*.png' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
           ls -la "$OUT/raw"
           python3 -c 'import sys; from PIL import Image' 2>/dev/null || pip3 install --quiet --break-system-packages pillow
+          python3 home.py --out "$OUT/raw/00-home-alpine-starlight.png" || echo "home failed"
           python3 compose.py --raw "$OUT/raw" --out "$OUT/6.9" || echo "compose failed"
           printf 'Source: %s\nSimulator captures (%s), Maestro. Not a physical device; no purchase claim.\n' "$GITHUB_SHA" "$DEVICE" > "$OUT/README.txt"
           ls -R "$OUT" | head -80
