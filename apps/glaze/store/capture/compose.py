@@ -2,7 +2,7 @@
 
 python compose.py --raw <captures dir> --out <dir> [--fonts <dir with Inter TTFs>] [--only 1,3]
 
-Reads shots.json next to this file. Every shot is 1320 x 2868 (6.9-inch iPhone), flattened RGB PNG.
+Reads shots.json next to this file. Every shot is 1320 x 2868 (6.9-inch iPhone), RGB JPEG (quality 93, 4:4:4).
 The phone is a plain rounded rectangle (no Apple device art). Fonts: Inter / Inter Display (SIL OFL);
 pass --fonts, or the script looks in ./fonts and downloads Inter 4.1 from its GitHub release if needed.
 """
@@ -209,8 +209,9 @@ def main():
             print(f"shot {shot['n']}: missing capture ({e.filename})", file=sys.stderr)
             continue
         assert img.size == (W, H)
-        p = out / f"{shot['n']:02d}-{shot['slug']}.png"
-        img.save(p, optimize=True)
+        # JPEG at quality 93 with full-resolution colour (4:4:4): visually lossless, about half the size of PNG.
+        p = out / f"{shot['n']:02d}-{shot['slug']}.jpg"
+        img.save(p, quality=93, subsampling=0, optimize=True)
         print(p, os.path.getsize(p) // 1024, 'KB')
 
 

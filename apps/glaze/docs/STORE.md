@@ -109,7 +109,7 @@ widget side is still found. The category can be changed with any later version.
 ## Screenshots (1.0.41, first release)
 
 Eight 6.9-inch shots (1320 x 2868) in `store/screenshots/6.9/`, made by `.github/workflows/glaze-store-capture.yml`
-(real simulator captures of 1.0.41, plus a drawn Home Screen for shot 1). How they are made, and how to re-make them:
+(real simulator captures of 1.0.41, plus Home Screens drawn from the themes' own files for shots 1 and 3). How they are made, and how to re-make them:
 `store/screenshots/README.md`. Glaze is iPhone-only, so there is no iPad set, and the 6.9-inch set covers every
 smaller iPhone.
 
@@ -117,11 +117,11 @@ smaller iPhone.
 |---|---|---|
 | 1 | Your whole Home Screen, one tap | Wallpaper, icons and widgets that match, from one theme. |
 | 2 | Five artworks with every theme | Artwork 1 to 5 widgets follow the theme you use. |
-| 3 | A look for every mood | Porcelain Tide, Desert Afterglow and Cobalt Caravan. |
+| 3 | A look for every mood | Desert Afterglow, Cloud Atelier and Cobalt Caravan. |
 | 4 | Tap a theme, then tap Yes | Glaze puts it on your widgets, then shows the next steps. |
 | 5 | Make it yours with Custom widgets | Add your own pictures, or a favourite artwork. |
 | 6 | Over 140 original themes | Start with 10 free, including Alpine Starlight and Cloud Atelier. |
-| 7 | Matching icons for your apps | Add them all at once, with a guide for every step. |
+| 7 | Matching icons for your apps | Every theme styles your icons to match. |
 | 8 | Every theme with Glaze Plus | One small yearly price. Cancel anytime. |
 
 ### Honesty checks for the shots
