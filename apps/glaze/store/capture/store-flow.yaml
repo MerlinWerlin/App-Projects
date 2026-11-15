@@ -1,0 +1,100 @@
+# App Store captures for Glaze (Maestro, iOS simulator). Run by .github/workflows/glaze-store-capture.yml.
+# Every step that depends on a tap is optional, so one miss never loses the other screens.
+# Screens: Themes tab, theme pages with "Use this theme?", the next steps, the Widgets tab (Artwork 1-5 and
+# Custom 1-5) for each theme, the icons step and the Glaze Plus sheet.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+- waitForAnimationToEnd:
+    timeout: 15000
+
+# Themes tab, top of the page (Free section first in 1.0.41).
+- openLink: glaze://themes
+- waitForAnimationToEnd:
+    timeout: 10000
+- takeScreenshot: 01-themes
+- scroll:
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 02-themes-scrolled
+
+# Each featured theme: prompt, use it (remote packs download first), next steps, its Widgets tab, then the plain page.
+- runFlow:
+    file: theme.yaml
+    env:
+      THEME: alpine-starlight
+- runFlow:
+    file: theme.yaml
+    env:
+      THEME: cobalt-caravan
+- runFlow:
+    file: theme.yaml
+    env:
+      THEME: desert-afterglow
+- runFlow:
+    file: theme.yaml
+    env:
+      THEME: porcelain-tide
+# Alpine Starlight (the hero) runs again last, so the Widgets, icons and Plus screens below are in it.
+- runFlow:
+    file: theme.yaml
+    env:
+      THEME: cloud-atelier
+- runFlow:
+    file: theme.yaml
+    env:
+      THEME: alpine-starlight
+
+# Widgets tab with the in-use theme, scrolled to the Custom slots.
+- openLink: glaze://widgets
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: 30-widgets
+- scrollUntilVisible:
+    element:
+      text: "Custom 1"
+    direction: DOWN
+    timeout: 15000
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 31-widgets-custom
+- scroll:
+    optional: true
+- takeScreenshot: 32-widgets-custom-more
+
+# Icons step for the in-use theme, and the install screen.
+- openLink: glaze://theme/alpine-starlight?step=icons
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: 40-icons-step
+- openLink: glaze://install?theme=alpine-starlight
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: 41-install
+- openLink: glaze://icons
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: 42-icons-tab
+
+# Glaze Plus sheet from Settings.
+- openLink: glaze://settings
+- waitForAnimationToEnd:
+    timeout: 8000
+- scrollUntilVisible:
+    element:
+      text: ".*Glaze Plus.*"
+    direction: DOWN
+    timeout: 15000
+    optional: true
+- tapOn:
+    text: "What’s in Glaze Plus"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 50-plus
+- scroll:
+    optional: true
+- takeScreenshot: 51-plus-scrolled

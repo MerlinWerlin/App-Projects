@@ -1,0 +1,47 @@
+# One theme: the "Use this theme?" prompt, Yes (downloads a remote pack first), Next steps, its widgets, its page.
+appId: ${APP_ID}
+---
+- openLink: glaze://theme/${THEME}
+- extendedWaitUntil:
+    visible: "Use this theme?|Next steps"
+    timeout: 30000
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 10-${THEME}-prompt
+- tapOn:
+    text: "Yes, use it"
+    optional: true
+- extendedWaitUntil:
+    visible: "Next steps"
+    timeout: 120000
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 11-${THEME}-next
+- tapOn:
+    text: "View widgets with this theme"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 10000
+# Artwork is made after the theme is applied; give it time to finish.
+- extendedWaitUntil:
+    notVisible: "Preparing.*"
+    timeout: 60000
+    optional: true
+- takeScreenshot: 12-${THEME}-widgets
+# The plain theme page (Home Screen preview), with the sheet closed.
+- openLink: glaze://theme/${THEME}
+- waitForAnimationToEnd:
+    timeout: 8000
+- tapOn:
+    point: "50%,8%"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 13-${THEME}-page
+- scroll:
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: 14-${THEME}-page-scrolled
