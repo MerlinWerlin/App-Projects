@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Patchwork moon rover"
+  },
+  {
+    "id": "stitched-satellite",
+    "kind": "art",
+    "image": "widget-stitched-satellite.af8a9633.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Stitched Satellite"
   }
 ]

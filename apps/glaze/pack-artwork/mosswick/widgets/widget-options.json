@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Mosswood storybook"
+  },
+  {
+    "id": "mushroom-mailbox",
+    "kind": "art",
+    "image": "widget-mushroom-mailbox.ee08b5db.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mushroom Mailbox"
   }
 ]

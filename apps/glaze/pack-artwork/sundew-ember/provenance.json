@@ -35,6 +35,26 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "sundew-ember",
+      "id": "ruby-garden-beetle",
+      "label": "Ruby Garden Beetle",
+      "optionalRow": 35,
+      "replacedOption": "hero-small",
+      "replacedSlot": 3,
+      "prompt": "Use case: stylized-concept. ONE original square1024\u00d71024 Glaze sundew-ember pure decorative artwork. Reference is STYLE, PALETTE AND LIGHTING ONLY. New subject: one small beautiful ruby-red garden beetle with subtly bronzed wing covers, delicate dark legs and short antennae, resting on a tiny curved maroon stem. Crisp glassy dew beads sparkle on the smooth shell. Sophisticated natural macro photographic illustration, warm amber side light and a deep burgundy bokeh backdrop. Whole beetle clearly visible. No sundew leaf, curled leaf, seed capsule, blossom or isolated dew-droplet study. Whole main object completely inside broad12% margins, strong silhouette readable on a small widget, same theme world and cohesive full-bleed backdrop. Never copy, crop or recolor an existing piece. No text, letters, numbers, clock hands, dials, calendars, values, progress, card border, logos or watermark.",
+      "ref": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze-3\\work\\distinct-20261115\\baseline\\art\\sundew-ember\\v5\\widget-sundew-crown.9abc93d3.webp",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-84492e2f-f35e-4df3-ae60-a793b58556a5.png",
+      "image": "widget-ruby-garden-beetle.09690fa0.webp",
+      "sha256": "09690fa04748faff175737c5e59dce2727a078678ebd58d79e570d61f315aa18",
+      "bytes": 161176,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

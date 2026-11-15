@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Winter wren"
+  },
+  {
+    "id": "juniper-mortar-pestle",
+    "kind": "art",
+    "image": "widget-juniper-mortar-pestle.2238890a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Juniper Mortar"
   }
 ]

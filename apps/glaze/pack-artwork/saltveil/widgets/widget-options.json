@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Halite feather"
+  },
+  {
+    "id": "rose-glass-sailboat",
+    "kind": "art",
+    "image": "widget-rose-glass-sailboat.31a5ea2e.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Rose Glass Sailboat"
   }
 ]

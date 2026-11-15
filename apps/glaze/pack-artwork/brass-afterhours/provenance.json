@@ -37,6 +37,26 @@
         1024,
         1024
       ]
+    },
+    {
+      "theme": "brass-afterhours",
+      "id": "brass-ribbon-microphone",
+      "label": "Brass Ribbon Microphone",
+      "optionalRow": 25,
+      "replacedOption": "key-rhythm",
+      "replacedSlot": 1,
+      "prompt": "Use case: stylized-concept. ONE original square1024\u00d71024 Glaze brass-afterhours pure decorative artwork. Reference is STYLE, PALETTE AND LIGHTING ONLY. New subject: one elegant vintage brass ribbon microphone with a tall rounded rectangular fine-mesh grille, slim polished brass stem and small round weighted base, a fold of deep oxblood velvet beside the foot. Warm brushed-gold highlights against a quiet deep navy backdrop, refined after-hours jazz still-life photography. No saxophone, keys close-up, reed, case, mute or labels. Whole main object completely inside broad12% margins, strong silhouette readable on a small widget, same theme world and cohesive full-bleed backdrop. Never copy, crop or recolor an existing piece. No text, letters, numbers, clock hands, dials, calendars, values, progress, card border, logos or watermark.",
+      "ref": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze-3\\work\\distinct-20261115\\baseline\\art\\brass-afterhours\\v2\\widget-reed-study.95a3e23a.webp",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-c7959b42-9366-47e6-bb5e-bf6e50b218d2.png",
+      "image": "widget-brass-ribbon-microphone.d8eec00a.webp",
+      "sha256": "d8eec00a6a1a70d73a25c084079ae16b68da952158a66b0e9f9e9c300bcde14e",
+      "bytes": 121808,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

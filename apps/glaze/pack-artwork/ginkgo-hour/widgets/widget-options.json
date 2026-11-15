@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Golden ginkgo fruit"
+  },
+  {
+    "id": "pressed-ginkgo-bookmark",
+    "kind": "art",
+    "image": "widget-pressed-ginkgo-bookmark.41a27d2a.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ginkgo Bookmark"
   }
 ]

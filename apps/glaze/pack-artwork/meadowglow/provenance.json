@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 502742,
       "opaquePixels": 67
+    },
+    {
+      "theme": "meadowglow",
+      "id": "meadow-harvest-mouse",
+      "label": "Meadow Harvest Mouse",
+      "ref": "art/meadowglow/v7/widget-sunlit-dandelion.d099e95f.webp",
+      "subject": "one tiny warm golden-brown harvest mouse with a soft cream belly, rounded ears and long curled tail, gently holding a bent oat stem at dawn. Fine realistic fur, soft peach sunrise backlight and misty pale gold meadow bokeh, a few restrained dew beads. The complete little mouse is the main subject with clear silhouette. No grass-only study, dandelion, daisy or spiderweb",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze meadowglow decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one tiny warm golden-brown harvest mouse with a soft cream belly, rounded ears and long curled tail, gently holding a bent oat stem at dawn. Fine realistic fur, soft peach sunrise backlight and misty pale gold meadow bokeh, a few restrained dew beads. The complete little mouse is the main subject with clear silhouette. No grass-only study, dandelion, daisy or spiderweb. Main subject whole inside 12% margins, clear silhouette for small widget. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-7d4ade0a-c342-4a5c-8269-74d59ebe2690.png",
+      "image": "widget-meadow-harvest-mouse.cc797f45.webp",
+      "sha256": "cc797f4581905c6e6c8b7d9ea0532af2ce54ca6574ef0c228ce8d607dd661d11",
+      "bytes": 158176,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

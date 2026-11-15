@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 649346,
       "opaquePixels": 227
+    },
+    {
+      "theme": "kingfisher-blue",
+      "id": "reed-bed-dragonfly",
+      "label": "Reed Bed Dragonfly",
+      "ref": "art/kingfisher-blue/v8/widget-production-20261101-reed-perch.5ff8cbc5.webp",
+      "subject": "a delicate blue damselfly with a slender turquoise body and four transparent wings perched diagonally on a curved golden reed. Two glistening dew beads, one gently unfurling reed blade. Calm powder-blue river backdrop, fine natural macro photographic detail, restrained kingfisher-blue and amber palette. Entire insect and reed tip inside frame. No bird, feather, nest or eggs",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze kingfisher-blue decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: a delicate blue damselfly with a slender turquoise body and four transparent wings perched diagonally on a curved golden reed. Two glistening dew beads, one gently unfurling reed blade. Calm powder-blue river backdrop, fine natural macro photographic detail, restrained kingfisher-blue and amber palette. Entire insect and reed tip inside frame. No bird, feather, nest or eggs. Main subject whole inside 12% margins, clear silhouette for small widget. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-ecd0cb67-7e62-4923-8f67-2b0b693c634f.png",
+      "image": "widget-reed-bed-dragonfly.3cd1da16.webp",
+      "sha256": "3cd1da164fce5986c5e6c14468924e1cbd14832b963535bbec39aeab44bb5738",
+      "bytes": 139664,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

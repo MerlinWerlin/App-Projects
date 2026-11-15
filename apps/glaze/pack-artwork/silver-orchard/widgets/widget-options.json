@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Silver Pear Blossom"
+  },
+  {
+    "id": "silver-orchard-key",
+    "kind": "art",
+    "image": "widget-silver-orchard-key.d55931b2.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Silver Orchard Key"
   }
 ]

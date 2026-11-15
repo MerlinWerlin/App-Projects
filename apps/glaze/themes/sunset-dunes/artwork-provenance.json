@@ -1,0 +1,76 @@
+{
+  "theme": "sunset-dunes",
+  "tool": "built-in image_gen",
+  "created": "2026-11-15",
+  "artworks": [
+    {
+      "theme": "sunset-dunes",
+      "id": "desert-camel",
+      "label": "Desert Camel",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze sunset-dunes pure decorative artwork, square1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: one graceful single-humped camel standing in side view, warm sand-gold body with soft coral and muted plum reflected shadows, elegant curved neck, all four legs and feet fully visible, calm natural anatomy and no saddle or rider. A tiny soft sand-colored contact shadow only, no full dune scene. Style: soft refined3D illustration with smooth elegant sculptural forms, gentle gradient shading and warm desert-dusk rimlight, sand-gold, coral, dusty rose and muted plum palette, calm quiet mood. Transparent background. Isolate the whole main subject in the central70% of the square, with broad clear margins; all extremities comfortably inside. No photo scene or full backdrop, card, border, text, letters, numerals, clocks, hands, dials, calendar, progress bars, logos or watermark. New subject and composition, never copy, crop or recolor the references.",
+      "ref": "themes/sunset-dunes/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-7354dbc6-c9ab-4a17-888d-2916d2d4ac19.png",
+      "image": "widget-desert-camel.9666fb2c.webp",
+      "sha256": "9666fb2c8563b4eedbc652de4a2b074b11cbf8b20fc7c2fc19e53df97c7a6c24",
+      "bytes": 104368,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "sunset-dunes",
+      "id": "desert-rose-mineral",
+      "label": "Desert Rose Mineral",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze sunset-dunes pure decorative artwork, square1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: one elegant desert rose mineral rosette made from overlapping translucent warm sand-gold and dusty rose crystal blades, a small plum-toned crystalline base and delicate amber edge glow, sculptural natural mineral still life. No literal flower plant, camel, palm or lantern. Style: soft refined3D illustration with smooth elegant sculptural forms, gentle gradient shading and warm desert-dusk rimlight, sand-gold, coral, dusty rose and muted plum palette, calm quiet mood. Transparent background. Isolate the whole main subject in the central70% of the square, with broad clear margins; all extremities comfortably inside. No photo scene or full backdrop, card, border, text, letters, numerals, clocks, hands, dials, calendar, progress bars, logos or watermark. New subject and composition, never copy, crop or recolor the references.",
+      "ref": "themes/sunset-dunes/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-c5b3fc75-df57-4cd1-a8a2-04263f4a5fc6.png",
+      "image": "widget-desert-rose-mineral.bd9db73f.webp",
+      "sha256": "bd9db73f5ad71c4a1348b5396df7179e37f70b8c548ac8f8b569ce2dcad5e830",
+      "bytes": 100280,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "sunset-dunes",
+      "id": "dusk-lantern",
+      "label": "Dusk Lantern",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze sunset-dunes pure decorative artwork, square1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: one beautiful complete traditional desert lantern, warm antique brass frame, softly glowing pale amber glass panels and a gentle arched carrying loop. Simple ornamental star-shaped cutouts with no symbols or lettering, restrained coral and plum reflected light, no clock face, gauge or dial. Style: soft refined3D illustration with smooth elegant sculptural forms, gentle gradient shading and warm desert-dusk rimlight, sand-gold, coral, dusty rose and muted plum palette, calm quiet mood. Transparent background. Isolate the whole main subject in the central70% of the square, with broad clear margins; all extremities comfortably inside. No photo scene or full backdrop, card, border, text, letters, numerals, clocks, hands, dials, calendar, progress bars, logos or watermark. New subject and composition, never copy, crop or recolor the references.",
+      "ref": "themes/sunset-dunes/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-92678a74-2bfa-4d34-9b09-6752b622a57a.png",
+      "image": "widget-dusk-lantern.ac60ea5f.webp",
+      "sha256": "ac60ea5fe91dacc67bcce28cabbe2b559c69efb04b73ef1241d6725e61007de7",
+      "bytes": 84964,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "sunset-dunes",
+      "id": "date-palm",
+      "label": "Date Palm",
+      "bundled": true,
+      "prompt": "Use case: stylized-concept. ONE original Glaze sunset-dunes pure decorative artwork, square1024\u00d71024. Input1 wallpaper is PALETTE AND MOOD ONLY; input2 original widget is MEDIUM ONLY. NEW subject: one graceful miniature date palm with a gently curved warm rust-brown trunk, long sweeping fronds in muted plum and warm sand-gold sunset light, two small clusters of amber dates tucked under the crown. Complete tree from leaf tips to a tiny sandy root mound fully visible, no camel, lantern, mineral or moon. Style: soft refined3D illustration with smooth elegant sculptural forms, gentle gradient shading and warm desert-dusk rimlight, sand-gold, coral, dusty rose and muted plum palette, calm quiet mood. Transparent background. Isolate the whole main subject in the central70% of the square, with broad clear margins; all extremities comfortably inside. No photo scene or full backdrop, card, border, text, letters, numerals, clocks, hands, dials, calendar, progress bars, logos or watermark. New subject and composition, never copy, crop or recolor the references.",
+      "ref": "themes/sunset-dunes/wallpaper.png + widget-small.png",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-a9dda668-8614-452b-88c2-eab65015e4bd.png",
+      "image": "widget-date-palm.85661b3a.webp",
+      "sha256": "85661b3af0dac76ea98f3f015bdbaff8bddbcf46376f1c633a6972e372c090d8",
+      "bytes": 231066,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    }
+  ],
+  "updated": "2026-11-15"
+}

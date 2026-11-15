@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 638721,
       "opaquePixels": 320
+    },
+    {
+      "theme": "moonpatch",
+      "id": "stitched-satellite",
+      "label": "Stitched Satellite",
+      "ref": "art/moonpatch/v7/widget-quilted-rocket.bd026b99.webp",
+      "subject": "one charming hand-stitched orbital satellite with a little ivory padded cuboid body, a curved brass-wire-like thread antenna and two square indigo quilted solar panels with warm gold stitched grid seams. Dusty terracotta felt accents and soft blanket-stitch edges. Floating diagonally against deep navy linen with three tiny stitched gold stars. Sophisticated textile craft miniature, warm gentle light. No rocket, astronaut, moon, rover, cloud kite or readable marks",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze moonpatch decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one charming hand-stitched orbital satellite with a little ivory padded cuboid body, a curved brass-wire-like thread antenna and two square indigo quilted solar panels with warm gold stitched grid seams. Dusty terracotta felt accents and soft blanket-stitch edges. Floating diagonally against deep navy linen with three tiny stitched gold stars. Sophisticated textile craft miniature, warm gentle light. No rocket, astronaut, moon, rover, cloud kite or readable marks. Whole subject clearly framed, generous margins, readable at small widget size. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-af93ff61-c1e4-4b51-a617-3a888f8a2d66.png",
+      "image": "widget-stitched-satellite.af8a9633.webp",
+      "sha256": "af8a9633b75e328f5bc75a2ab7b9a754a7198e6c66e836f27080c98016b927f2",
+      "bytes": 502504,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

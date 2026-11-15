@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 414817,
       "opaquePixels": 6
+    },
+    {
+      "theme": "glacier-quiet",
+      "id": "glacial-cave-arch",
+      "label": "Glacial Cave Arch",
+      "ref": "art/glacier-quiet/v7/widget-glacial-iceberg.e46a964e.webp",
+      "subject": "a complete sculptural arched opening in a thick wall of translucent blue glacier ice, seen from a quiet snowy cave floor looking out toward soft pale arctic mist. Graceful frozen fluting and a few thin icicles, a restrained luminous blue center, detailed frosted ice and snow. Minimal cool blue-gray atmospheric photographic illustration. Clear arch silhouette contained in the square. No iceberg on open water, feather, bubble or snowflake",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze glacier-quiet decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: a complete sculptural arched opening in a thick wall of translucent blue glacier ice, seen from a quiet snowy cave floor looking out toward soft pale arctic mist. Graceful frozen fluting and a few thin icicles, a restrained luminous blue center, detailed frosted ice and snow. Minimal cool blue-gray atmospheric photographic illustration. Clear arch silhouette contained in the square. No iceberg on open water, feather, bubble or snowflake. Main subject whole inside 12% margins, clear silhouette for small widget. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-5da46eea-6ffc-4de3-b117-ea4571e87f95.png",
+      "image": "widget-glacial-cave-arch.cbe4a197.webp",
+      "sha256": "cbe4a1971794b92f36536ff8e206e7634247558d74270d3269df4e8316c1f74e",
+      "bytes": 278180,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

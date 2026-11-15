@@ -1,7 +1,7 @@
 // Glaze 1.0.39 (owner TestFlight 1.0.37: Starry Night showed the same copper moon in all five Artwork
 // slots): no theme the gallery shows may put the same image in two Artwork slots. Artwork n is the n-th
 // planned piece, else the theme design (artworkSlotSources: no cycling). Packs must have five
-// different pieces; the three original bundled themes have one each until their new art lands.
+// different pieces; since 1.0.40 the three original bundled themes have five too.
 //  - bundled art themes in GALLERY_STARTER_IDS: their pieces as the art sync plans them;
 //  - bundled starter packs (1.0.38, src/generated/starterPacks.ts): from their manifests;
 //  - catalogue themes on R2: the snapshot scripts/packs/r2-artwork.json, written by
@@ -11,7 +11,8 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
-import { HERO_REFERENCE_SIZES, HERO_SIZES } from './artPack.ts';
+import { artPackWidgetOptions } from './artPack.ts';
+import { createHash } from 'node:crypto';
 import { ART_PACK_LIBRARY } from './artPackLibrary.ts';
 import { ARTWORK_SLOTS, artworkSlotSources, plannedArtworkOptionIds } from './artworkCoverage.ts';
 import { GALLERY_STARTER_IDS } from './gallery.ts';
@@ -28,24 +29,31 @@ function slotImages(themeId: string, options: readonly WidgetOption[], hashOf: (
 
 const repeats = (images: readonly string[]) => images.filter((x, i) => images.indexOf(x) !== i);
 
-/** A bundled art theme's pieces exactly as src/store/themeWidgetArt.ts themeArt lists them (its heroes). */
+/** A bundled art theme's pieces exactly as src/store/themeWidgetArt.ts themeArt lists them (1.0.40: artPackWidgetOptions). */
 function bundledOptions(id: string): WidgetOption[] {
   const data = ART_PACK_LIBRARY.find((d) => d.id === id);
-  if (!data) return [];
-  const assets = HERO_SIZES.filter((s) => data.heroes && s in data.heroes).map((s) => ({ path: `bundled-${s}`, role: `widget-${s}`, width: HERO_REFERENCE_SIZES[s].width, height: HERO_REFERENCE_SIZES[s].height }));
-  return widgetOptionsFromV1(assets);
+  return data ? artPackWidgetOptions(data) : [];
 }
 
+/** SHA-256 of a bundled theme's image file (themes/<id>/<file>), so two names for one picture still count as one. */
+const bundledHash = (id: string) => (image: string) => {
+  try {
+    return createHash('sha256').update(readFileSync(join(ROOT, 'themes', id, image))).digest('hex');
+  } catch {
+    return `missing:${image}`;
+  }
+};
+
 test('no bundled art theme the gallery lists shows the same image in two Artwork slots', () => {
-  for (const id of GALLERY_STARTER_IDS) assert.deepEqual(repeats(slotImages(id, bundledOptions(id))), [], id);
+  for (const id of GALLERY_STARTER_IDS) assert.deepEqual(repeats(slotImages(id, bundledOptions(id), bundledHash(id))), [], id);
 });
 
-test('themes with fewer pieces show each once and the theme design in the rest (owner 2026-11-15: keep every theme)', () => {
+test('1.0.40: the three original in-app themes fill Artwork 1-5 with five different images (by SHA-256)', () => {
   for (const id of ['deep-sea', 'starry-night', 'sunset-dunes']) {
     assert.ok(GALLERY_STARTER_IDS.includes(id), `${id} stays in the gallery`);
-    const images = slotImages(id, bundledOptions(id));
+    const images = slotImages(id, bundledOptions(id), bundledHash(id));
     assert.deepEqual(repeats(images), [], id);
-    assert.ok(images.some((x) => x.startsWith('fallback:')), `${id} has fewer than ${ARTWORK_SLOTS} pieces until its new art lands`);
+    assert.ok(images.every((x) => !x.startsWith('fallback:') && !x.startsWith('missing:')), `${id}: ${images.join(', ')}`);
   }
 });
 

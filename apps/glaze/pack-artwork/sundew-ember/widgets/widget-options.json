@@ -22,5 +22,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Sundew blossom"
+  },
+  {
+    "id": "ruby-garden-beetle",
+    "kind": "art",
+    "image": "widget-ruby-garden-beetle.09690fa0.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ruby Garden Beetle"
   }
 ]

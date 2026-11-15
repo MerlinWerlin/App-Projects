@@ -22,5 +22,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Carved mineral leaf"
+  },
+  {
+    "id": "labradorite-owl",
+    "kind": "art",
+    "image": "widget-labradorite-owl.1e99d1b5.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Labradorite Owl"
   }
 ]

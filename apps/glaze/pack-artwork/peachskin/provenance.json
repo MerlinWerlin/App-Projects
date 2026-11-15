@@ -33,6 +33,41 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 836264,
       "opaquePixels": 480
+    },
+    {
+      "theme": "peachskin",
+      "id": "peach-blossom-teapot",
+      "label": "Peach Blossom Teapot",
+      "ref": "art/peachskin/v8/widget-production-20261101-velvet-peach.ca35d047.webp",
+      "subject": "one elegant small porcelain teapot with a softly faceted peach-pink body, cream lid, curved short spout and graceful celadon handle. A tiny hand-painted peach-blossom design on the side, not a fruit-shaped body. Two loose blossom petals alongside. Complete refined ceramic still life on a warm cream-peach backdrop, soft natural light, delicate porcelain glaze. No whole peach, half peach on a dish, bowl, seedling or branch crop",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze peachskin decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one elegant small porcelain teapot with a softly faceted peach-pink body, cream lid, curved short spout and graceful celadon handle. A tiny hand-painted peach-blossom design on the side, not a fruit-shaped body. Two loose blossom petals alongside. Complete refined ceramic still life on a warm cream-peach backdrop, soft natural light, delicate porcelain glaze. No whole peach, half peach on a dish, bowl, seedling or branch crop. Entire object inside generous margins, readable at small widget size. Own theme backdrop. No card border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-1fa5ffe2-15e7-4adb-bb81-f51caec5a858.png",
+      "image": "widget-peach-blossom-teapot.5e30a51f.webp",
+      "sha256": "5e30a51f09ff0ddf678476ad41bc9a1a1690db5fc402e93d3ac27924456e3f0c",
+      "bytes": 100266,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
+    },
+    {
+      "theme": "peachskin",
+      "id": "peach-orchard-butterfly",
+      "label": "Orchard Butterfly",
+      "ref": "art/peachskin/v8/widget-production-20261101-velvet-peach.ca35d047.webp",
+      "subject": "one delicate orchard butterfly with soft peach-pink and ivory open wings, fine warm brown veins and restrained tiny pale gold accents, resting on a single loose peach-blossom petal with two small green leaf tips. Realistic gentle macro photographic illustration, translucent wing detail and velvety soft warm cream-peach studio atmosphere. Entire butterfly and antennae fully visible. No peach fruit, bowl, teapot, seedling or cropped flower branch",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze peachskin decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: one delicate orchard butterfly with soft peach-pink and ivory open wings, fine warm brown veins and restrained tiny pale gold accents, resting on a single loose peach-blossom petal with two small green leaf tips. Realistic gentle macro photographic illustration, translucent wing detail and velvety soft warm cream-peach studio atmosphere. Entire butterfly and antennae fully visible. No peach fruit, bowl, teapot, seedling or cropped flower branch. Entire object inside generous margins, readable at small widget size. Own theme backdrop. No card border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-b5ae6e3c-090f-4599-b2df-0cd480694fa7.png",
+      "image": "widget-peach-orchard-butterfly.e738893f.webp",
+      "sha256": "e738893f39cd155560c08ad82e43ec14527a2ad729626738daf4adb7b1f29691",
+      "bytes": 164414,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

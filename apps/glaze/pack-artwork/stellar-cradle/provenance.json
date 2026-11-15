@@ -33,6 +33,26 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 702957,
       "opaquePixels": 10
+    },
+    {
+      "theme": "stellar-cradle",
+      "id": "stellar-ringed-world",
+      "label": "Stellar Ringed World",
+      "optionalRow": 34,
+      "replacedOption": "stellar-nursery",
+      "replacedSlot": 3,
+      "prompt": "Use case: stylized-concept. ONE original square1024\u00d71024 Glaze stellar-cradle pure decorative artwork. Reference is STYLE, PALETTE AND LIGHTING ONLY. New subject: one complete majestic dark-blue ringed exoplanet, a warm orange illuminated rim and thin concentric dusty rings with icy electric-blue highlights. A few restrained ember-orange atmospheric clouds on the globe, deep midnight starfield and soft cinematic cosmic light. Clear entire globe and rings framed in generous space, natural astronomical illustration in the theme's orange/blue palette. No nebula burst, star jet, cracked egg, galaxy spiral or vertical gas spire. Whole main object completely inside broad12% margins, strong silhouette readable on a small widget, same theme world and cohesive full-bleed backdrop. Never copy, crop or recolor an existing piece. No text, letters, numbers, clock hands, dials, calendars, values, progress, card border, logos or watermark.",
+      "ref": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze-3\\work\\distinct-20261115\\baseline\\art\\stellar-cradle\\v7\\widget-star-seedling.a3f9a3bc.webp",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-ac2231cb-c687-4050-abd0-030dd42d9b72.png",
+      "image": "widget-stellar-ringed-world.9fc5e2fc.webp",
+      "sha256": "9fc5e2fcef5d18c32b3e6598720b2d4277a02568670418009e87d747493f8524",
+      "bytes": 169968,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

@@ -34,5 +34,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Aqua pearl oyster"
+  },
+  {
+    "id": "silken-manta-ray",
+    "kind": "art",
+    "image": "widget-silken-manta-ray.7e1d11bd.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Silken Manta Ray"
   }
 ]

@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 706645,
       "opaquePixels": 260
+    },
+    {
+      "theme": "juniper-mist",
+      "id": "juniper-mortar-pestle",
+      "label": "Juniper Mortar",
+      "ref": "art/juniper-mist/v8/widget-production-20261101-needle-study.35091594.webp",
+      "subject": "a small hand-turned pale juniper-wood mortar and smooth matching pestle, holding a few dusty blue juniper berries, one tiny berry and needle sprig resting beside it. Complete herbal still-life object, soft pale sage mist backdrop, subtle cool diffuse winter light, realistic warm muted woodgrain and fine matte berry bloom. No glass dome, terrarium, jar, nest or bird, and no branch-only close-up",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze juniper-mist decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: a small hand-turned pale juniper-wood mortar and smooth matching pestle, holding a few dusty blue juniper berries, one tiny berry and needle sprig resting beside it. Complete herbal still-life object, soft pale sage mist backdrop, subtle cool diffuse winter light, realistic warm muted woodgrain and fine matte berry bloom. No glass dome, terrarium, jar, nest or bird, and no branch-only close-up. Entire object inside generous margins, readable at small widget size. Own theme backdrop. No card border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-42958c46-fd7c-45f3-9905-7c296cb5182e.png",
+      "image": "widget-juniper-mortar-pestle.2238890a.webp",
+      "sha256": "2238890a34e7246ffdf9ccc31cf5837621c1ada3c01a19f83b5d7de3032636f8",
+      "bytes": 133548,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

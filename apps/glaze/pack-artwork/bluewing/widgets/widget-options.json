@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Sapphire bluebell"
+  },
+  {
+    "id": "sapphire-stag-beetle",
+    "kind": "art",
+    "image": "widget-sapphire-stag-beetle.9eb7c1b2.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sapphire Beetle"
   }
 ]

@@ -1,7 +1,7 @@
 name: Publish Glaze packs to Cloudflare R2
 
 # Manual only. Rebuilds the complete current pack set exactly as glaze-publish-packs.yml does
-# (verified GitHub baseline + the reviewed pack-artwork additions), then uploads it to the R2
+# (verified R2 baseline + the reviewed pack-artwork additions), then uploads it to the R2
 # bucket in the normal folder layout (catalog.json, art/<id>/v<n>/...). Order: immutable hashed
 # files, then manifests, then catalog.json last. Objects already in the bucket with the same bytes
 # are skipped, so re-running is safe. Every object is then HEAD- and SHA-256-checked over the
@@ -46,7 +46,7 @@ jobs:
           node --test "scripts/packs/*.test.mjs"
           node scripts/packs/artwork_progress.mjs --complete --markdown
           python scripts/packs/verify_artwork_images.py
-      - name: The verified baseline is still the live GitHub catalogue
+      - name: The verified baseline is still the live R2 catalogue
         run: |
           node --input-type=module <<'NODE'
           import {readFileSync} from 'node:fs';
@@ -56,14 +56,21 @@ jobs:
           const response=await fetch(url,{signal:AbortSignal.timeout(90000)});
           if(!response.ok)throw Error(`Live catalogue HTTP ${response.status}`);
           const sha=createHash('sha256').update(Buffer.from(await response.arrayBuffer())).digest('hex');
-          if(sha!==lock.catalogSha256)throw Error('Live GitHub catalogue changed. Reconcile the new packs before publishing.');
-          console.log('Live GitHub catalogue matches the reviewed baseline');
+          if(sha!==lock.catalogSha256)throw Error('Live R2 catalogue changed. Reconcile the new packs before publishing.');
+          console.log('Live R2 catalogue matches the reviewed baseline');
           NODE
+      # 1.0.40: keep the verified baseline between runs; r2.dev rate-limits fast downloads (HTTP 429).
+      # cache_artwork_baseline.mjs re-verifies every cached file's SHA-256 and re-fetches any mismatch.
+      - name: Cache the verified pack baseline
+        uses: actions/cache@v4
+        with:
+          path: apps/glaze/dist/published-cache
+          key: glaze-baseline-${{ hashFiles('apps/glaze/scripts/packs/artwork-baseline/baseline-lock.json') }}
       - name: Download and verify original pack bytes
         run: node scripts/packs/cache_artwork_baseline.mjs --snapshot scripts/packs/artwork-baseline --out dist/published-cache
       - name: Offline complete rebuild (baseline + new artwork)
         run: |
-          node scripts/packs/build_packs.mjs --base-packs dist/published-cache --add-art pack-artwork --out "$OUT" --release glaze-packs-v18 --complete
+          node scripts/packs/build_packs.mjs --base-packs dist/published-cache --add-art pack-artwork --out "$OUT" --release glaze-packs-v21 --complete
           node scripts/packs/verify_artwork_build.mjs --dir "$OUT" --complete --output "$OUT/artwork-preservation.json"
       - name: Plan and size check (free tier is 10 GB)
         run: |

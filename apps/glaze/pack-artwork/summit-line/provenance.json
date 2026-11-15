@@ -33,6 +33,24 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 836564,
       "opaquePixels": 917
+    },
+    {
+      "theme": "summit-line",
+      "id": "alpine-mountain-hut",
+      "label": "Alpine Mountain Hut",
+      "ref": "art/summit-line/v8/widget-pine-rope-pendant.38e56c1c.webp",
+      "subject": "a small rustic alpine refuge hut with dark timber walls, a deep red snow-capped roof, warmly lit square windows and a little stone chimney, resting on a compact snowy rocky ledge beside one small spruce. Whole miniature hut clearly centered on a quiet deep evergreen atmospheric background with soft snow mist. Refined handcrafted photoreal diorama, restrained charcoal, ivory and red palette. No cable car, pendant, snowshoe, axe, compass or signs",
+      "prompt": "Use case: stylized-concept. ONE original square Glaze summit-line decorative artwork, 1024\u00d71024. Reference ONLY for medium, palette and lighting. New subject: a small rustic alpine refuge hut with dark timber walls, a deep red snow-capped roof, warmly lit square windows and a little stone chimney, resting on a compact snowy rocky ledge beside one small spruce. Whole miniature hut clearly centered on a quiet deep evergreen atmospheric background with soft snow mist. Refined handcrafted photoreal diorama, restrained charcoal, ivory and red palette. No cable car, pendant, snowshoe, axe, compass or signs. Entire subject inside generous margins, readable at small widget size. Own theme backdrop. No card, border, text, letters, numbers, hands, dials, calendar, progress, logos or watermark. Never copy, crop or recolor reference.",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-41b32c84-59b0-4909-a7d2-4c1b0d33d3e1.png",
+      "image": "widget-alpine-mountain-hut.be2a271b.webp",
+      "sha256": "be2a271be4a6fa4f977b89e17255c0bf49f04bbb7b716c4b5229cb2121a541e4",
+      "bytes": 161112,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

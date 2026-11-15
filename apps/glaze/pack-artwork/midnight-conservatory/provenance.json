@@ -33,6 +33,26 @@
       "visualReview": "Reviewed against wallpaper and all current pure-art subjects; distinct subject, matching style/palette, no text or live-value imagery.",
       "transparentPixels": 587802,
       "opaquePixels": 372
+    },
+    {
+      "theme": "midnight-conservatory",
+      "id": "moonlit-garden-shears",
+      "label": "Moonlit Garden Shears",
+      "optionalRow": 30,
+      "replacedOption": "night-orchid",
+      "replacedSlot": 2,
+      "prompt": "Use case: stylized-concept. ONE original square1024\u00d71024 Glaze midnight-conservatory pure decorative artwork. Reference is STYLE, PALETTE AND LIGHTING ONLY. New subject: one elegant pair of antique silver garden pruning shears lying diagonally on a small patch of dark green moss, graceful oval finger loops, polished curved blades with a few delicate engraved vine details and tiny dew beads. Soft moonlit blue greenhouse reflections, dark teal and deep forest-green photographic fantasy atmosphere. Complete shears clearly visible, no dial or markings. No glass terrarium, orchid, butterfly or pitcher plant. Whole main object completely inside broad12% margins, strong silhouette readable on a small widget, same theme world and cohesive full-bleed backdrop. Never copy, crop or recolor an existing piece. No text, letters, numbers, clock hands, dials, calendars, values, progress, card border, logos or watermark.",
+      "ref": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze-3\\work\\distinct-20261115\\baseline\\art\\midnight-conservatory\\v7\\widget-hanging-garden.3dd7fa50.webp",
+      "original": "C:\\Users\\jared\\.codex\\generated_images\\01a1d971-2120-7c11-ae85-ba0dded4a374\\exec-9a01f96e-1473-4f04-8eb8-e8797d3ce18f.png",
+      "image": "widget-moonlit-garden-shears.c6be44ae.webp",
+      "sha256": "c6be44ae766dc1997524042f574f0abb277066c60438f6b9da1b4fd5dd3cf0be",
+      "bytes": 371028,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "review": "New subject checked against all five current app-selected pieces; complete subject; no text, values or time imagery."
     }
-  ]
+  ],
+  "updated": "2026-11-15"
 }

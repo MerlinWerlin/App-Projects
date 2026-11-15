@@ -10,5 +10,17 @@
     "fit": "fit",
     "background": "wallpaper",
     "label": "Titanium damper"
+  },
+  {
+    "id": "carbon-steering-wheel",
+    "kind": "art",
+    "image": "widget-carbon-steering-wheel.abd68897.webp",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Carbon Steering Wheel"
   }
 ]
