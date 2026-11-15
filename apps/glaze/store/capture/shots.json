@@ -33,12 +33,12 @@
       "slug": "every-mood",
       "kind": "trio",
       "raw": [
-        "13-porcelain-tide-page",
         "13-desert-afterglow-page",
+        "13-porcelain-tide-page",
         "13-cobalt-caravan-page"
       ],
       "title": "A look for every mood",
-      "sub": "Porcelain Tide, Desert Afterglow and Cobalt Caravan.",
+      "sub": "Desert Afterglow, Porcelain Tide and Cobalt Caravan.",
       "bg": [
         "#FFE7DA",
         "#E2ECFA"
@@ -62,7 +62,7 @@
       "n": 5,
       "slug": "custom-widgets",
       "kind": "phone",
-      "raw": "31-widgets-custom",
+      "raw": "32-widgets-custom-top",
       "title": "Make it yours with Custom widgets",
       "sub": "Add your own pictures, or a favourite artwork.",
       "bg": [
@@ -75,7 +75,7 @@
       "n": 6,
       "slug": "themes",
       "kind": "phone",
-      "raw": "01-themes",
+      "raw": "02-themes-scrolled",
       "title": "Over 140 original themes",
       "sub": "Start with 10 free, including Alpine Starlight and Cloud Atelier.",
       "bg": [

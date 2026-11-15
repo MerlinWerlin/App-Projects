@@ -4,12 +4,14 @@ appId: ${APP_ID}
 - openLink: glaze://widgets
 - waitForAnimationToEnd:
     timeout: 6000
+# The row is one accessibility element ("Artwork N"); its "..." button is hidden from accessibility, so it is
+# tapped by position (measured on the 1320 x 2868 capture: x 91%, rows at 39.5 / 55.8 / 72.2 %).
 - extendedWaitUntil:
-    visible: "More for Artwork ${ART}"
+    visible: "Artwork ${ART}"
     timeout: 60000
     optional: true
 - tapOn:
-    text: "More for Artwork ${ART}"
+    point: ${POINT}
     optional: true
 - waitForAnimationToEnd:
     timeout: 3000
