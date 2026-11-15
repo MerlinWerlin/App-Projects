@@ -121,9 +121,11 @@ new terms; anything like that goes to Jared.
   both platforms. An app opener may use AI only for a 1-2 s lifestyle shot, never for the app's screens.
 - **Trial so far (15 Nov):**
   - The waterfall table push-in and the man-with-mug clip were made on Veo 3.1 Fast for 40 credits, with no warping.
-  - The reels are in `marketing/woodwork/media/2026-11-15/`.
-  - The arbour bench clip and the app opener aren't made yet.
-  - After 7 live days, compare views, likes and saves against the slideshow reels (campaign `flow-trial` in posts.csv).
+  - The reels are in `marketing/woodwork/media/2026-11-15/`. They are **trial only, not for posting**.
+  - Jared's verdict (15 Nov): the clips look good, but there's no AI video "just for the sake of it". They were too short, didn't show the table
+    off, and jumped straight to branding. Keep Flow in reserve for a specific job, e.g. a first-frame/last-frame morph between two real photos
+    where a plain transition looks flat (Omni 1.2 Flash, one 4-6 s clip).
+  - Woodwork reels are made from photos and PDF pages instead (`marketing/woodwork/reel_template.py`).
 
 ## Downloads watch
 Every daily run reads Play Console (signed in) and App Store Connect (signed in on 10 Nov but it signs itself out
