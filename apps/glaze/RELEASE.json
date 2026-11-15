@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.41: Glaze Plus is now a simple yearly subscription (A$2.99 a year in Australia, no free trial), and ten premium themes are free. The Themes tab opens on the Free section: Alpine Starlight and Cloud Atelier first, then Aurora Haven, Cobalt Caravan, Cherry Arcade, Boba Bear Club, Espresso Hour, Lemon Lagoon, Honeywood and Deep Sea, each marked Premium · Free and all working offline. Every other theme shows the Plus badge: browse and preview any theme, and subscribe to use it. A theme you already use keeps working if your subscription ends. Subscribing unlocks every theme, new themes and all widget artwork, and the Free section steps aside. The subscription sheet shows the price per year, renewal and cancel terms, Restore purchases, Terms of Use and Privacy Policy.",
+  "note": "Glaze 1.0.42: ready for App Review: no over-the-air updates, price only from the App Store with Try again, privacy manifests, no camera/mic permission, debug rows hidden, every widget art named.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
