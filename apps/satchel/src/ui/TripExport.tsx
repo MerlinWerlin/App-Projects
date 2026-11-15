@@ -12,12 +12,14 @@ import { exportTrip, shareAgain } from '../state/tripTransfer.ts';
 import { space } from '../theme/tokens.ts';
 import { ErrorNotice } from './ErrorNotice.tsx';
 import { Body, Button, Card, Label, ToggleRow } from './kit.tsx';
+import { useShareGate } from './RequireUnlock.tsx';
 
 type State = { kind: 'idle' } | { kind: 'busy' } | { kind: 'done'; skipped: number; photosSkipped: number } | { kind: 'write' } | { kind: 'share'; uri: string } | { kind: 'unavailable' };
 
 export function TripExport({ trip }: { trip: Trip }) {
   const { t } = useApp();
   const [state, setState] = useState<State>({ kind: 'idle' });
+  const shareOk = useShareGate();
   const title = t('tripfile.shareTitle', { name: trip.name });
   const [withPhotos, setWithPhotos] = useState(false);
   const photoSize = useMemo(() => journalPhotoSize(trip), [trip]);
@@ -44,6 +46,7 @@ export function TripExport({ trip }: { trip: Trip }) {
   };
   const run = async () => {
     if (state.kind === 'busy') return;
+    if (!shareOk()) return;
     setState({ kind: 'busy' });
     AccessibilityInfo.announceForAccessibility(t('loading.export.title'));
     finish(await exportTrip(trip, title, { includePhotos: withPhotos && photoSize.count > 0 }));

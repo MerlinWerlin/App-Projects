@@ -1,13 +1,18 @@
 name: Satchel store capture
-# App Store screenshots for Satchel 1.0.0: builds the Release simulator app, puts an invented Tokyo & Kyoto trip on a
-# 6.9-inch iPhone simulator (apps/satchel/store/capture/seed.py, before first launch), captures the screens with
-# Maestro in light and dark (store-flow.yaml), makes a contact sheet of every raw capture and, when shots.json exists,
-# lays the captions over the picked ones (compose.py). Simulator only: no signing, nothing shipped.
+# Satchel 1.0.0 on a 6.9-inch iPhone simulator, in two Release builds of the same commit:
+#  A. the real StoreKit build (modules/satchel-store compiled in): checks the paywall before the trial (no App Store
+#     products on a simulator, so no price and Try again), Settings > Satchel Full Unlock, viewing without a trial,
+#     and a received .satchel trip file opening through app/openin (store/capture/verify.yaml).
+#  B. the same build with EXPO_PUBLIC_SATCHEL_CAPTURE=1 at bundle time (the app as it is during the trial or once
+#     unlocked) for the App Store screenshots in light and dark, with an invented Tokyo & Kyoto trip seeded before
+#     first launch (seed.py), plus Share itinerary handing a .satchel file to the share sheet (store-flow.yaml).
+# Then a contact sheet of every raw capture, and the captioned set when store/capture/shots.json exists.
+# Simulator only: no signing, nothing shipped.
 on:
   workflow_dispatch:
   push:
     branches: ['claude/satchel-1.0-release', 'claude/satchel-store-*']
-    paths: ['.github/workflows/satchel-store-capture.yml', 'apps/satchel/store/capture/**']
+    paths: ['.github/workflows/satchel-store-capture.yml', 'apps/satchel/store/capture/**', 'apps/satchel/modules/**', 'apps/satchel/src/native/store.ts', 'apps/satchel/src/ui/Paywall.tsx', 'apps/satchel/src/ui/RequireUnlock.tsx']
 concurrency:
   group: satchel-store-capture-${{ github.ref }}
   cancel-in-progress: true
@@ -16,7 +21,7 @@ permissions:
 jobs:
   capture:
     runs-on: macos-latest
-    timeout-minutes: 80
+    timeout-minutes: 100
     defaults:
       run:
         working-directory: apps/satchel
@@ -43,41 +48,71 @@ jobs:
           npx expo prebuild --platform ios --no-install > "$RUNNER_TEMP/satchel-prebuild.log" 2>&1 || { tail -120 "$RUNNER_TEMP/satchel-prebuild.log"; exit 1; }
           cd ios
           pod install > "$RUNNER_TEMP/satchel-pods.log" 2>&1 || { tail -120 "$RUNNER_TEMP/satchel-pods.log"; exit 1; }
-      - name: Build unsigned Release simulator app with bundled JavaScript
+          grep -q "SatchelStore" Podfile.lock && echo "SatchelStore module is linked"
+      - name: Build A (StoreKit) unsigned Release simulator app
         run: |
           set -euo pipefail
           WORKSPACE=$(python3 -c 'from pathlib import Path; print(next(Path("ios").glob("*.xcworkspace")))')
           SCHEME=$(basename "$WORKSPACE" .xcworkspace)
-          xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/satchel-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO build > "$RUNNER_TEMP/satchel-build.log" 2>&1 || { tail -160 "$RUNNER_TEMP/satchel-build.log"; exit 1; }
+          xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/satchel-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO build > "$RUNNER_TEMP/satchel-build.log" 2>&1 || { grep -E "error:" "$RUNNER_TEMP/satchel-build.log" | head -40; tail -160 "$RUNNER_TEMP/satchel-build.log"; exit 1; }
+          APP=$(python3 -c 'import os; from pathlib import Path; print(next((Path(os.environ["RUNNER_TEMP"])/"satchel-build/Build/Products/Release-iphonesimulator").glob("*.app")))')
+          rm -rf "$RUNNER_TEMP/app-a" && mkdir -p "$RUNNER_TEMP/app-a" && cp -R "$APP" "$RUNNER_TEMP/app-a/"
+      - name: Build B (capture flag) unsigned Release simulator app
+        env:
+          EXPO_PUBLIC_SATCHEL_CAPTURE: '1'
+        run: |
+          set -euo pipefail
+          WORKSPACE=$(python3 -c 'from pathlib import Path; print(next(Path("ios").glob("*.xcworkspace")))')
+          SCHEME=$(basename "$WORKSPACE" .xcworkspace)
+          xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/satchel-build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO build > "$RUNNER_TEMP/satchel-build-b.log" 2>&1 || { tail -160 "$RUNNER_TEMP/satchel-build-b.log"; exit 1; }
+          APP=$(python3 -c 'import os; from pathlib import Path; print(next((Path(os.environ["RUNNER_TEMP"])/"satchel-build/Build/Products/Release-iphonesimulator").glob("*.app")))')
+          rm -rf "$RUNNER_TEMP/app-b" && mkdir -p "$RUNNER_TEMP/app-b" && cp -R "$APP" "$RUNNER_TEMP/app-b/"
+          grep -c "EXPO_PUBLIC_SATCHEL_CAPTURE" "$RUNNER_TEMP"/app-b/*.app/main.jsbundle || echo "flag inlined (name not left in the bundle)"
       - name: Install Maestro and Python tools
         run: |
           set -euo pipefail
           curl -Ls "https://get.maestro.mobile.dev" | bash
           echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
           pip3 install --quiet --break-system-packages pillow qrcode
-      - name: Capture on a 6.9-inch iPhone (light and dark)
-        timeout-minutes: 45
+      - name: Simulator checks (A) and store captures (B), light and dark
+        timeout-minutes: 50
         run: |
           set -uo pipefail
-          OUT="$RUNNER_TEMP/satchel-store-captures"; mkdir -p "$OUT/raw"
-          APP=$(python3 -c 'import os; from pathlib import Path; print(next((Path(os.environ["RUNNER_TEMP"])/"satchel-build/Build/Products/Release-iphonesimulator").glob("*.app")))')
-          BUNDLE=$(python3 -c 'import plistlib,sys,pathlib; print(plistlib.loads((pathlib.Path(sys.argv[1])/"Info.plist").read_bytes())["CFBundleIdentifier"])' "$APP")
+          OUT="$RUNNER_TEMP/satchel-store-captures"; mkdir -p "$OUT/raw" "$OUT/verify"
+          APP_A=$(ls -d "$RUNNER_TEMP"/app-a/*.app); APP_B=$(ls -d "$RUNNER_TEMP"/app-b/*.app)
+          BUNDLE=$(python3 -c 'import plistlib,sys,pathlib; print(plistlib.loads((pathlib.Path(sys.argv[1])/"Info.plist").read_bytes())["CFBundleIdentifier"])' "$APP_A")
           DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); xs=[x for k,v in sorted(d["devices"].items(),reverse=True) if "iOS" in k for x in v]; print(next(x["udid"] for x in xs if "Pro Max" in x["name"]))')
           xcrun simctl list devices available | grep "$DEVICE"
-          codesign --force --deep --sign - "$APP"
+          codesign --force --deep --sign - "$APP_A"; codesign --force --deep --sign - "$APP_B"
           xcrun simctl shutdown "$DEVICE" 2>/dev/null || true
           PREFS="$HOME/Library/Developer/CoreSimulator/Devices/$DEVICE/data/Library/Preferences"
           mkdir -p "$PREFS"
           /usr/libexec/PlistBuddy -c "Add :com.apple.CoreSimulator.CoreSimulatorBridge-->satchel string $BUNDLE" "$PREFS/com.apple.launchservices.schemeapproval.plist" || true
           xcrun simctl boot "$DEVICE" || true
           xcrun simctl bootstatus "$DEVICE" -b
-          xcrun simctl install "$DEVICE" "$APP"
+          xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100 || true
+          xcrun simctl ui "$DEVICE" appearance light
+          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
+
+          # ---- A: StoreKit build, fresh install (sample trip, no trial) ----
+          xcrun simctl install "$DEVICE" "$APP_A"
+          DATA=$(xcrun simctl get_app_container "$DEVICE" "$BUNDLE" data)
+          mkdir -p "$DATA/Documents/Inbox"
+          node store/capture/tripfile.ts "$DATA/Documents/Inbox/Lisbon long weekend.satchel"
+          INBOX_URI=$(python3 -c 'import sys,urllib.parse,pathlib; u=pathlib.Path(sys.argv[1]).as_uri(); print(urllib.parse.quote(u, safe=""))' "$DATA/Documents/Inbox/Lisbon long weekend.satchel")
+          (cd store/capture && for TRY in 1 2; do
+            maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" -e INBOX_URI="$INBOX_URI" --test-output-dir "$OUT/maestro-verify" verify.yaml || echo "maestro reported a failure (optional steps may have missed)"
+            ls ./v*.png > /dev/null 2>&1 && break
+          done; mv ./v*.png "$OUT/verify/" 2>/dev/null || true)
+          python3 -c 'import json,sys; m=json.load(open(sys.argv[1])); t=json.loads(m.get("satchel.trips.v1") or "[]"); print("trips after import:", [x["name"] for x in t])' "$DATA/Library/Application Support/$BUNDLE/RCTAsyncLocalStorage_V1/manifest.json" || echo "trips list is stored in a separate file (large value)"
+          ls "$DATA/Library/Application Support/$BUNDLE/RCTAsyncLocalStorage_V1/" || true
+          xcrun simctl uninstall "$DEVICE" "$BUNDLE"
+
+          # ---- B: capture build, seeded trip ----
+          xcrun simctl install "$DEVICE" "$APP_B"
           DATA=$(xcrun simctl get_app_container "$DEVICE" "$BUNDLE" data)
           python3 store/capture/seed.py --data "$DATA" --bundle "$BUNDLE"
-          python3 store/capture/paste.py | xcrun simctl pbcopy "$DEVICE"
-          xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100 || true
           cd store/capture
-          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
           for MODE in light dark; do
             xcrun simctl ui "$DEVICE" appearance "$MODE"
             xcrun simctl terminate "$DEVICE" "$BUNDLE" 2>/dev/null || true
@@ -89,11 +124,12 @@ jobs:
             done
           done
           find . -maxdepth 1 -name '*.png' -exec cp {} "$OUT/raw/" \;
-          ls -la "$OUT/raw"
+          ls -la "$OUT/raw" "$OUT/verify"
           python3 contact.py --raw "$OUT/raw" --out "$OUT/contact-sheet.jpg" || echo "contact sheet failed"
+          python3 contact.py --raw "$OUT/verify" --out "$OUT/verify-sheet.jpg" --cols 6 || echo "verify sheet failed"
           if [ -f shots.json ]; then python3 compose.py --raw "$OUT/raw" --out "$OUT/6.9" || echo "compose failed"; fi
-          printf 'Source: %s\nSimulator captures (%s), Maestro, seeded with store/capture/seed.py (invented trip).\n' "$GITHUB_SHA" "$DEVICE" > "$OUT/README.txt"
-          ls -R "$OUT" | head -80
+          printf 'Source: %s\nSimulator captures (%s), Maestro. Store shots: build B seeded with store/capture/seed.py (invented trip). Checks: build A (StoreKit).\n' "$GITHUB_SHA" "$DEVICE" > "$OUT/README.txt"
+          ls -R "$OUT" | head -100
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -101,4 +137,5 @@ jobs:
           path: |
             ${{ runner.temp }}/satchel-store-captures
             ${{ runner.temp }}/satchel-build.log
+            ${{ runner.temp }}/satchel-build-b.log
           retention-days: 14

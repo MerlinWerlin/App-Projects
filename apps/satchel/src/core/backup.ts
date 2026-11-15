@@ -36,6 +36,7 @@ export const VAULT_KEY = 'satchel.vault.v1';
 export const TRANSIENT_KEYS: readonly string[] = [
   'satchel.trips.v1.unreadable', // recovery copy of a damaged list, this phone only
   BACKUP_STATE_KEY,
+  'satchel.access.v1', // 1.0.0 trial / unlock cache (src/core/access.ts): StoreKit is the source, per Apple ID
 ];
 /** Key prefixes never backed up (downloaded or re-fetchable caches). */
 export const TRANSIENT_PREFIXES: readonly string[] = [

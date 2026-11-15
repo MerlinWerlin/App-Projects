@@ -45,6 +45,7 @@ import { elevated, fonts, radius, shadowOf, space, TOUCH, typeScale } from '../s
 import { FadeInView, IconBadge, toneColours, type Tone } from '../src/ui/hero.tsx';
 import { Body, Button, Chip, Label, PressableScale, Warning } from '../src/ui/kit.tsx';
 import { LOOK_ICON, LOOK_TONE, lookKey } from '../src/ui/timetable.tsx';
+import { RequireUnlock } from '../src/ui/RequireUnlock.tsx';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -85,7 +86,7 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
   );
 }
 
-export default function ItineraryScreen() {
+function ItineraryScreen() {
   const params = useLocalSearchParams<{ tripId?: string; day?: string; incoming?: string; name?: string; start?: string }>();
   const { t, theme, lang } = useApp();
   const { trips, saveTrip } = useTrips();
@@ -424,5 +425,14 @@ export default function ItineraryScreen() {
 
       <Button label={t('itin.pathB.instead')} hint={t('itin.pathB.body')} kind="quiet" icon="create-outline" onPress={addMyself} />
     </ScrollView>
+  );
+}
+
+// 1.0.0: creating and editing need the free trial or the unlock (src/ui/RequireUnlock.tsx).
+export default function GatedItineraryScreen() {
+  return (
+    <RequireUnlock>
+      <ItineraryScreen />
+    </RequireUnlock>
   );
 }

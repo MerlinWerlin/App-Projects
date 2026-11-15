@@ -1,8 +1,8 @@
 # Satchel 1.0.0: App Store listing (first release)
 
 Copy-paste text for App Store Connect > Satchel (app id 6826958413) > iOS App > 1.0 > App Store tab, primary
-language English (Australia). Satchel 1.0.0 is free, iPhone only (`supportsTablet: false`), with no in-app
-purchase, no account, no ads and no tracking.
+language English (Australia). Satchel 1.0.0 is a free download with a 7-day free trial, then a one-time A$2.99 unlock (two non-consumables,
+`store/IAP.md`). iPhone only (`supportsTablet: false`), no account, no ads and no tracking.
 
 **Checked by a script.** `node tools/store/limits.mjs` reads the table and the fenced blocks under each "(N limit)"
 heading in the "App Store" section below, prints each field's character count and fails on a field over its limit, a
@@ -36,7 +36,7 @@ wallet, itinerary, tickets, documents) are left out, and so are brand names.
 Can change without review.
 
 ```text
-Your itinerary, tickets, documents and emergency card in one calm place, saved on your phone and ready in flight mode. Free, with no ads, no account and no tracking.
+Your itinerary, tickets, documents and emergency card in one calm place, saved on your phone and ready in flight mode. No ads, no account and no tracking.
 ```
 
 ### Description (4000 limit)
@@ -58,7 +58,6 @@ PLAN THE TRIP
 - A Ready to go? check for passport dates, plus flags for missing stays, clashes, tight connections and check-in times.
 - Places to go, Plan my day, trip to-dos, public holidays, jet lag tips and a Call home planner.
 - Sunrise, sunset and golden hour for every day, plus a saved forecast and a rainy-day Plan B.
-- Illustrated trip covers or your own photo. Add to Calendar, or plan a trip again.
 
 TICKETS AND WALLET
 - Tickets full screen at full brightness, with the code cropped big. PDFs open inside the app.
@@ -89,7 +88,6 @@ PACKING
 
 MEMORIES
 - A trip journal with photos, a recap of each trip, passport stamps and Your travels: countries, cities and days away.
-- An In the air card while you fly.
 
 DOCUMENTS AND LOW BATTERY
 - Document vault for passport, visa and licence copies, with expiry warnings and a Face ID or passcode lock.
@@ -99,6 +97,9 @@ PRIVATE BY DESIGN
 - No account. No ads. No tracking. Your trips, documents and notes stay on your phone.
 - Back up everything to one file and restore it on a new phone. Send a trip to a friend as a file.
 - Light and dark mode.
+
+FREE TRIAL
+Free 7-day trial, then a one-time A$2.99 unlock. No subscription. After the trial, every trip you saved stays viewable and trip files friends send you always open.
 
 Weather data: MET Norway.
 
@@ -123,7 +124,7 @@ these captions in this order (the test checks it).
 |---|---|
 | Primary category | Travel |
 | Secondary category | Productivity |
-| Price | Free (no in-app purchases) |
+| Price | Free download; in-app purchases `com.jared797.satchel.trial7` (free) and `com.jared797.satchel.unlock` (A$2.99), see `store/IAP.md` |
 | Support URL | `https://merlinwerlin.github.io/App-Projects/satchel/support.html` |
 | Privacy Policy URL | `https://merlinwerlin.github.io/App-Projects/satchel/privacy.html` |
 | Marketing URL | leave empty |
@@ -137,9 +138,11 @@ these captions in this order (the test checks it).
 ## App Review notes (paste into App Review Information > Notes)
 
 ```text
-Satchel is an offline travel wallet and itinerary planner for travellers. It needs no account and no login, and it has no in-app purchases.
+Satchel is an offline travel wallet and itinerary planner for travellers. It needs no account and no login.
 
 On first launch the app adds a sample trip so every screen has something to show; it can be deleted from the trip screen.
+
+In-app purchases: a free 7-day trial (com.jared797.satchel.trial7, a free non-consumable the user starts, Guideline 3.1.1) and a one-time unlock (com.jared797.satchel.unlock). Both are in Settings > Satchel Full Unlock, with Restore purchases; tapping + to add a trip before the trial starts shows the same screen. After the trial without the unlock, saved trips stay viewable and received trip files still open; creating, editing and sharing ask for the unlock.
 
 Where to look:
 - Itinerary tab (middle): Today / Tomorrow, the day strip, Share itinerary (top right). With no plans, "Add your itinerary" offers: copy a format and paste your plans (optionally filled in by an AI chat app the user already uses; Satchel itself sends nothing to any AI service), open a calendar file, or add plans by hand.

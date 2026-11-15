@@ -32,6 +32,7 @@ import { elevated, fonts, radius, space, TOUCH, typeScale } from '../src/theme/t
 import { FadeInView, HeroHeader, IconBadge, SectionCard, toneColours } from '../src/ui/hero.tsx';
 import { KIND_ICON, KIND_TONE, kindKey } from '../src/ui/kinds.tsx';
 import { Body, Button, Chip, Label, ToggleRow, Warning } from '../src/ui/kit.tsx';
+import { RequireUnlock } from '../src/ui/RequireUnlock.tsx';
 
 const NO_SAVED: unknown[] = [];
 const NUMERIC_DATE = /\b\d{1,2}[/.]\d{1,2}[/.]\d{2,4}\b/;
@@ -43,7 +44,7 @@ function fieldKey(f: PasteField, kind: ItemKind): Key {
   return `paste.field.${f}` as Key;
 }
 
-export default function PasteBookingScreen() {
+function PasteBookingScreen() {
   const params = useLocalSearchParams<{ tripId?: string; incoming?: string }>();
   const { t, theme, lang } = useApp();
   const { trips } = useTrips();
@@ -417,5 +418,14 @@ function SavedPill() {
       <Ionicons name="checkmark" size={14} color={theme.ok} />
       <Text style={[typeScale.small, { color: theme.ok, fontFamily: fonts.bodyBold }]}>{t('f89.paste.saved')}</Text>
     </View>
+  );
+}
+
+// 1.0.0: creating and editing need the free trial or the unlock (src/ui/RequireUnlock.tsx).
+export default function GatedPasteBookingScreen() {
+  return (
+    <RequireUnlock>
+      <PasteBookingScreen />
+    </RequireUnlock>
   );
 }

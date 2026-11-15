@@ -1,0 +1,52 @@
+# Checks on the real StoreKit build (no capture flag), before the trial starts ("new" state), on a simulator with no
+# App Store products: the paywall on a create screen (no price, Try again), Settings > Satchel Full Unlock, viewing
+# still works, and a received .satchel trip file (dropped in Documents/Inbox by the workflow, like AirDrop or Open
+# in) opens and imports through app/openin without any trial or unlock. ${INBOX_URI} is that file's URL, encoded.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+- waitForAnimationToEnd:
+    timeout: 15000
+
+- openLink: satchel://trip-edit
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: v1-paywall-on-new-trip
+- extendedWaitUntil:
+    visible: ".*Start your free trial.*"
+    timeout: 8000
+    optional: true
+
+- openLink: satchel://settings
+- waitForAnimationToEnd:
+    timeout: 6000
+- scrollUntilVisible:
+    element: "Satchel Full Unlock"
+    direction: DOWN
+    timeout: 20000
+    optional: true
+- takeScreenshot: v2-settings-unlock
+- scroll:
+    optional: true
+- takeScreenshot: v3-settings-unlock-scrolled
+
+# viewing never needs the trial
+- openLink: satchel://schedule
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: v4-itinerary-view-without-trial
+
+# a friend's trip file arrives
+- openLink: satchel://openin?uri=${INBOX_URI}
+- waitForAnimationToEnd:
+    timeout: 10000
+- extendedWaitUntil:
+    visible: ".*Lisbon long weekend.*"
+    timeout: 15000
+    optional: true
+- takeScreenshot: v5-received-trip-file
+- openLink: satchel://
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: v6-trips-after-import

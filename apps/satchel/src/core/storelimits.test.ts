@@ -36,9 +36,10 @@ test('store listing: the copy says no ads, no tracking, no account, and says ver
   }
 });
 
-test('store listing: 1.0.0 is free, with no purchase, and credits the map and weather data', () => {
+test('store listing: 1.0.0 states the free trial and one-time unlock, and credits the map and weather data', () => {
   const d = get('ios:Description').text;
-  assert.doesNotMatch(STORE, /Satchel Plus|in-app purchase available|Restore purchases/);
+  assert.match(d, /Free 7-day trial, then a one-time A\$2\.99 unlock\. No subscription\./);
+  assert.doesNotMatch(STORE, /Satchel Plus/);
   assert.match(d, /© OpenStreetMap contributors/);
   assert.match(d, /MET Norway/);
 });

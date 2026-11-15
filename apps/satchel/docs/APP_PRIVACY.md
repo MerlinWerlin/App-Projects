@@ -45,14 +45,14 @@ analytics, ads, crash reporting or attribution, and no account. Per Apple data t
 |---|---|---|
 | Contact Info (name, email, phone, address) | Not collected | Contacts picked for the emergency card / help cards / trusted contacts stay in AsyncStorage on the phone. No sign-up |
 | Health & Fitness | Not collected | Medical notes and medicine times are local only, never in trip files |
-| Financial Info | Not collected | Spending and receipts are local. 1.0.0 has no purchases |
+| Financial Info | Not collected | Spending and receipts are local; purchases go through Apple, the app never sees payment info |
 | Location (precise / coarse) | Not collected | Location is used on device. The one case it leaves the phone (Overpass near-me search without a city pack) is sent straight to a third-party service to answer that request, not stored or linked by us: Apple's "service the request in real time" case. The MET forecast uses a booking's place, not the device location |
 | Sensitive Info | Not collected | Nothing leaves the phone |
 | Contacts (address book) | Not collected | System picker, one contact at a time, stored locally |
 | User Content (photos, documents, other) | Not collected | Attachments, journal, vault copies are local; backups/trip files go only where the user sends them |
 | Browsing / Search History | Not collected | Map search runs over local city packs; no search terms go online |
 | Identifiers (user ID, device ID) | Not collected | None created or sent; MET User-Agent names the app, not the user |
-| Purchases | Not collected | 1.0.0 has no in-app purchase (Satchel Plus and expo-iap removed) |
+| Purchases | Not collected | The free trial and the one-time unlock go through Apple (StoreKit 2, modules/satchel-store); the result stays on the phone, nothing is sent to us |
 | Usage Data, Diagnostics | Not collected | No analytics, no crash reporter |
 | Other Data | Not collected | |
 

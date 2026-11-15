@@ -22,13 +22,14 @@ import { radius, space, TOUCH, typeScale } from '../src/theme/tokens.ts';
 import { toneColours, type Tone } from '../src/ui/hero.tsx';
 import { Button, EmptyState, PressableScale, Screen, TextField } from '../src/ui/kit.tsx';
 import { TimeField } from '../src/ui/DateTimeField.tsx';
+import { RequireUnlock } from '../src/ui/RequireUnlock.tsx';
 
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
 const TYPE_ICON: Record<PlanType, IconName> = { flight: 'airplane', stay: 'bed', tour: 'flag', food: 'restaurant', transport: 'bus', free: 'sunny', other: 'ellipsis-horizontal' };
 const TYPE_TONE: Record<PlanType, Tone> = { flight: 'sea', stay: 'accent', tour: 'teal', food: 'warn', transport: 'ok', free: 'ok', other: 'ink' };
 
-export default function PlanEditScreen() {
+function PlanEditScreen() {
   const params = useLocalSearchParams<{ tripId: string; day?: string; itemId?: string }>();
   const { t, theme, lang } = useApp();
   const { trips, saveTrip, deleteItem } = useTrips();
@@ -270,5 +271,14 @@ function DayChips({ days, value, onPick }: { days: string[]; value: string; onPi
         );
       })}
     </ScrollView>
+  );
+}
+
+// 1.0.0: creating and editing need the free trial or the unlock (src/ui/RequireUnlock.tsx).
+export default function GatedPlanEditScreen() {
+  return (
+    <RequireUnlock>
+      <PlanEditScreen />
+    </RequireUnlock>
   );
 }

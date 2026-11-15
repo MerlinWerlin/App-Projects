@@ -82,3 +82,20 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 4000
 - takeScreenshot: 08c-paste-scrolled-${MODE}
+
+# Share itinerary: the sheet, then "Satchel trip file" hands a .satchel file to the system share sheet.
+- openLink: satchel://schedule
+- waitForAnimationToEnd:
+    timeout: 6000
+- tapOn:
+    text: "Share itinerary"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: 09-share-sheet-${MODE}
+- tapOn:
+    text: "Satchel trip file"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: 09b-share-satchel-file-${MODE}

@@ -30,6 +30,7 @@ import { useTempUnit } from '../src/ui/WeatherCard.tsx';
 import { FadeInView, HeroHeader, SectionHeader, type IconName, type Tone } from '../src/ui/hero.tsx';
 import { Body, Button, Card, Chip, PressableScale, Screen, ToggleRow } from '../src/ui/kit.tsx';
 import { StepFreeEntry } from '../src/ui/stepfree.tsx';
+import { UnlockSection } from '../src/ui/UnlockSection.tsx';
 
 const LIST_DATE = typeof (table as { imported?: unknown }).imported === 'string' ? (table as { imported: string }).imported : null;
 
@@ -219,6 +220,9 @@ export default function SettingsScreen() {
       <AirportSettings />
       {/* T131: tight / long limits for a change between journeys. */}
       <LayoverSettings />
+
+      {/* 1.0.0: free trial and one-time unlock, with Restore purchases. */}
+      <UnlockSection />
 
       {/* T14: how to use Save to Satchel (Open in / Copy to Satchel from the share sheet). */}
       <Section title={t('openin.settings.title')} icon="share-outline" tone="sea">
