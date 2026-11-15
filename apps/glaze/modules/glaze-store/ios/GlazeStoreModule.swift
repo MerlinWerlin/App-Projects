@@ -182,7 +182,7 @@ enum GlazeStoreKit {
   }
 
   /// Glaze 1.0.41: an entitlement counts while it is not revoked and (a subscription) has not expired.
-  static func isActive(_ transaction: Transaction) -> Bool {
+  static func isActive(_ transaction: StoreKit.Transaction) -> Bool {
     if transaction.revocationDate != nil { return false }
     if let expires = transaction.expirationDate, expires <= Date() { return false }
     return true
