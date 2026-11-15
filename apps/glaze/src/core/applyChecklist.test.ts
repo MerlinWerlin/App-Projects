@@ -142,7 +142,8 @@ test('theme detail ticks the stored checklist from its own wallpaper and icon sc
   assert.doesNotMatch(src, /CHECKLIST_ROWS/);
   assert.match(src, /tickStoredChecklist\(theme\.id, 'wallpaper'\)/);
   assert.match(src, /tickStoredChecklist\(theme\.id, 'iconStyle'\)/);
-  assert.match(src, /\/widget-studio/);
+  // 1.0.39 (owner: no live-widget choices in the app for now): the theme page links no Widget Studio.
+  assert.doesNotMatch(src, /\/widget-studio/);
   assert.doesNotMatch(src, /STEP_KEYS/);
   const store = readFileSync(new URL('../store/applyChecklist.ts', import.meta.url), 'utf8');
   assert.match(store, /CHECKLIST_STORAGE_KEY/);

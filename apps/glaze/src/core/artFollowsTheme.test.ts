@@ -55,7 +55,7 @@ test('artwork menu: Save to Photos (add-only) and Add to Custom 1-5, confirming 
 
 test('the five-artworks note is on the theme page and in the theme chooser', () => {
   const page = read('app', 'theme', '[id].tsx');
-  assert.match(page, /\{overview \|\| step === 'widgets' \? <ArtworkNote style=\{styles\.artworkNote\} \/> : null\}/);
+  assert.match(page, /\{overview \? <ArtworkNote style=\{styles\.artworkNote\} \/> : null\}/);
   const sheet = page.slice(page.indexOf('<Sheet visible={themeChoiceOpen}'));
   assert.ok(sheet.indexOf('<ArtworkNote />') > 0 && sheet.indexOf('<ArtworkNote />') < sheet.indexOf('</Sheet>'));
   const en = read('src', 'i18n', 'ns', 'theme', 'en.ts');
@@ -67,4 +67,21 @@ test('the Home Screen widget never repeats a piece: past the count it draws the 
   const swift = read('targets', 'widget', 'ThemeArtWidgets.swift');
   assert.match(swift, /guard slot >= 1, slot <= list\.count else \{ return nil \}/);
   assert.match(swift, /ThemedFallbackArt\(theme: entry\.theme, variant: entry\.sample\)/);
+});
+
+// 1.0.39 (owner's flow, TestFlight build 88): "Use this theme?" -> accept -> a short checklist.
+test('theme sheet: the "Use this theme?" prompt, then next steps (wallpaper only until saved, icons, widgets)', () => {
+  const page = read('app', 'theme', '[id].tsx');
+  const sheet = page.slice(page.indexOf('<Sheet visible={themeChoiceOpen}'), page.indexOf('</Sheet>', page.indexOf('<Sheet visible={themeChoiceOpen}')));
+  assert.match(sheet, /title=\{inUse \? t\('theme\.use\.nextTitle'\) : t\('theme\.use\.prompt'\)\}/);
+  assert.match(sheet, /\{savedBefore \|\| saveState === 'saved' \? null : \(\s*<PillButton label=\{t\('theme\.use\.addWallpaper'\)\}/);
+  assert.match(sheet, /t\('theme\.use\.viewIcons'\)[\s\S]*void openIconSetup\(\);/);
+  assert.match(sheet, /t\('theme\.use\.viewWidgets'\)[\s\S]*onPress=\{\(\) => void openWidgetsTab\(\)\}/);
+  assert.match(sheet, /t\('theme\.use\.yes'\)[\s\S]*onPress=\{\(\) => void putInUse\(\)\}/);
+  assert.doesNotMatch(sheet, /theme\.use\.useEverything/, 'no separate "Use everything" button');
+  assert.match(page, /inUse \? t\('theme\.use\.inUse'\) : t\('theme\.use\.prompt'\)/);
+  // Accepting applies the theme and opens the checklist; it no longer saves the wallpaper or jumps to icons.
+  const put = page.slice(page.indexOf('const putInUse = async'), page.indexOf('const openIconSetup = async'));
+  assert.match(put, /if \(await selectTheme\(focus\) && themeFocus\.current === focus\) setThemeChoiceOpen\(true\);/);
+  assert.doesNotMatch(put, /onSaveWallpaper|openIconSetup\(\)/);
 });

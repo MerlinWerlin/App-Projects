@@ -24,19 +24,33 @@ const nothing = () => undefined;
 const theme = { id: 'B', wallpaper: { kind: 'gradient' } };
 function forbiddenApply() { throw new Error('Preview or wallpaper-only action changed the active theme'); }
 
-test('view widgets and view icons route to B without changing active theme A', async () => {
+test('view icons routes to B without changing active theme A; view widgets goes through openWidgetsTab', async () => {
   const routes: unknown[] = [];
+  const tabs: unknown[] = [];
   const open = handler('openPart', {
     theme, remoteArt: null, locked: false, lockFor: { current: '' }, setLockOpen: nothing,
     router: { push: (route: unknown) => routes.push(route) },
+    // 1.0.39: View widgets opens the real Widgets tab (with the theme put in use first).
+    openWidgetsTab: async (checkLock: boolean) => { tabs.push(checkLock); },
     applyWidgetTheme: forbiddenApply, applyThemeEverywhere: forbiddenApply,
   });
   await open('widgets', false);
   await open('icons', false);
-  assert.equal(JSON.stringify(routes), JSON.stringify([
-    { pathname: '/theme/[id]', params: { id: 'B', step: 'widgets' } },
-    { pathname: '/theme/[id]', params: { id: 'B', step: 'icons' } },
-  ]));
+  assert.deepEqual(tabs, [false]);
+  assert.equal(JSON.stringify(routes), JSON.stringify([{ pathname: '/theme/[id]', params: { id: 'B', step: 'icons' } }]));
+});
+
+test('View widgets with this theme: puts a theme not in use in use, then opens the Widgets tab', async () => {
+  for (const inUse of [false, true]) {
+    const events: string[] = [];
+    const go = handler('openWidgetsTab', {
+      setThemeChoiceOpen: nothing, locked: false, inUse, lockFor: { current: '' }, setLockOpen: nothing,
+      selectTheme: async () => { events.push('select'); return true; },
+      router: { navigate: (route: string) => events.push(route) },
+    });
+    await go();
+    assert.deepEqual(events, inUse ? ['/widgets'] : ['select', '/widgets'], String(inUse));
+  }
 });
 
 test('Add the wallpaper saves B and records its checklist without publishing B as the widget theme', async () => {
@@ -80,33 +94,33 @@ const selectScope = (events: string[], focus = { current: 1 }) => ({
   applyThemeEverywhere: async (value: typeof theme) => { events.push(value.id); return { icons: true, widgets: true }; },
 });
 
-test('Use everything publishes B first, then saves the wallpaper, then opens its icon setup', async () => {
+test('"Use this theme?" accepted publishes B, then shows the next-steps checklist (no wallpaper save, no icon jump)', async () => {
   const events: string[] = [];
+  const opened: boolean[] = [];
   const select = handler('selectTheme', selectScope(events));
   const use = handler('putInUse', {
     usePending: { current: false }, locked: false, themeFocus: { current: 1 }, theme,
-    setThemeChoiceOpen: nothing, setUseBusy: nothing, setUseError: nothing, selectTheme: select,
+    setThemeChoiceOpen: (v: boolean) => opened.push(v), setUseBusy: nothing, setUseError: nothing, selectTheme: select,
     onSaveWallpaper: async () => { events.push('wallpaper'); return true; },
-    toast: { show: nothing }, t: (key: string) => key,
-    // Owner 2026-11-14: the walkthrough the first time, then the install screen, every time.
     openIconSetup: async () => { events.push('icons'); },
-  });
-  await use();
-  assert.deepEqual(events, ['B', 'wallpaper', 'icons']);
-});
-
-test('Use everything still swaps the widgets when the wallpaper save is declined', async () => {
-  const events: string[] = [], notes: unknown[] = [];
-  const select = handler('selectTheme', selectScope(events));
-  const use = handler('putInUse', {
-    usePending: { current: false }, locked: false, themeFocus: { current: 1 }, theme,
-    setThemeChoiceOpen: nothing, setUseBusy: nothing, setUseError: nothing, selectTheme: select,
-    onSaveWallpaper: async () => false, toast: { show: (m: unknown) => notes.push(m) }, t: (key: string) => key,
-    openIconSetup: async () => undefined,
+    console,
   });
   await use();
   assert.deepEqual(events, ['B']);
-  assert.equal(notes.length, 1);
+  assert.deepEqual(opened, [true]);
+});
+
+test('a failed apply shows the calm error and no checklist', async () => {
+  const opened: boolean[] = [];
+  let error = false;
+  const use = handler('putInUse', {
+    usePending: { current: false }, locked: false, themeFocus: { current: 1 }, theme,
+    setThemeChoiceOpen: (v: boolean) => opened.push(v), setUseBusy: nothing, setUseError: (v: boolean) => { error = v || error; },
+    selectTheme: async () => { throw new Error('bridge'); }, console: { warn: nothing },
+  });
+  await use();
+  assert.deepEqual(opened, []);
+  assert.equal(error, true);
 });
 
 test('a theme screen the person already left publishes nothing', async () => {
@@ -130,18 +144,22 @@ test('each theme choice puts an unlocked theme that is not in use on the widgets
   assert.deepEqual(events, ['B']);
 });
 
-test('Use this theme opens the choices and swaps the widgets at once', async () => {
+test('the bar button: not in use, it applies at once; in use, it reopens the next steps', async () => {
   const events: string[] = [];
   let open = false;
   const select = handler('selectTheme', selectScope(events));
-  const use = handler('onUseTheme', {
-    setThemeChoiceOpen: (v: boolean) => { open = v; }, locked: false, inUse: false,
-    usePending: { current: false }, setUseError: nothing, selectTheme: select,
+  const put = handler('putInUse', {
+    usePending: { current: false }, locked: false, themeFocus: { current: 1 }, theme,
+    setThemeChoiceOpen: (v: boolean) => { open = v; }, setUseBusy: nothing, setUseError: nothing, selectTheme: select, console,
   });
-  use();
-  await new Promise((r) => setTimeout(r, 0));
+  handler('onUseTheme', { inUse: false, putInUse: put, setThemeChoiceOpen: (v: boolean) => { open = v; } })();
+  await new Promise((r) => setTimeout(r, 5));
   assert.equal(open, true);
   assert.deepEqual(events, ['B']);
+  open = false;
+  handler('onUseTheme', { inUse: true, putInUse: put, setThemeChoiceOpen: (v: boolean) => { open = v; } })();
+  assert.equal(open, true);
+  assert.deepEqual(events, ['B'], 'already in use: nothing applied again');
 });
 
 // 1.0.39 (owner TestFlight 1.0.37: "when I hit use the theme, it doesn't do anything because I haven't

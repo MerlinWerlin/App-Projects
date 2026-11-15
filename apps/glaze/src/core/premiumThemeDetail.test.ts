@@ -18,14 +18,15 @@ test('theme detail reads as editorial blocks: Icons, Widgets, Wallpaper, Credits
   const d = strip(read(...DETAIL_PATH));
   // (Plain substring checks: an import-shaped regex here would trip guard.test.ts's import scan.)
   assert.ok(d.includes(' SectionHeader, SquircleCard }'), 'SectionHeader comes from src/ui/v2');
-  const order = ['icons', 'widgets', 'wallpaper', 'credits'].map((k) => d.indexOf(`t('theme.section.${k}.eyebrow')`));
+  // 1.0.39: the Widgets block (live designs -> Widget Studio) is gone; the Widgets tab shows Artwork 1-5.
+  const order = ['icons', 'wallpaper', 'credits'].map((k) => d.indexOf(`t('theme.section.${k}.eyebrow')`));
   for (const at of order) assert.ok(at > 0, 'every block has its eyebrow');
   assert.deepEqual([...order].sort((a, b) => a - b), order, 'blocks in the planned order');
   // T200: no "What's inside" block (its palette moved to the widgets block).
   assert.ok(!d.includes("theme.section.inside"), "no What's inside block");
   assert.ok(!d.includes("t('theme.iconStyle')") && !d.includes('theme.summary.') && !d.includes("t('theme.widgets.line'"), 'no style summary');
   // 1.0.34: plus the Widgets step's "Add a widget" steps header (where the Seamless card was).
-  assert.equal((d.match(/<SectionHeader\b/g) ?? []).length, 5);
+  assert.equal((d.match(/<SectionHeader\b/g) ?? []).length, 3);
   // Credits only when there is something to credit.
   assert.match(d, /\{hasCredits \? \(/);
 });
@@ -44,13 +45,11 @@ test('T200: "Set it up" is a bold title1 section header with a subtitle, above t
   assert.ok(!d.includes('theme.parts.eyebrow'));
 });
 
-test('T200: the palette is shown in the matching-widgets block with its caption', () => {
+test('1.0.39: no matching-widgets block (live designs opening Widget Studio) on the theme page', () => {
   const d = strip(read(...DETAIL_PATH));
-  assert.match(d, /<WidgetPreviews theme=\{theme\} palette=\{palette\} \/>/);
-  const fn = d.slice(d.indexOf('function WidgetPreviews('), d.indexOf('const WIDGET_PREVIEW_W'));
-  assert.match(fn, /palette\.map\(/);
-  assert.match(fn, /t\('theme\.a11y\.swatch', \{ name, hex \}\)/);
-  assert.match(fn, /t\('theme\.widgetPreviews\.palette'\)/);
+  assert.ok(!d.includes('<WidgetPreviews'), 'no live widget previews');
+  assert.ok(!d.includes('function WidgetPreviews'), 'component removed');
+  assert.ok(!d.includes("t('theme.section.widgets.eyebrow')"));
 });
 
 test('every locale has the theme detail section strings (and none of the retired ones)', () => {

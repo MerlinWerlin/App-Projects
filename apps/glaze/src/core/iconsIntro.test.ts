@@ -15,7 +15,8 @@ test('walkthrough: four one-idea cards, first time only, then the inline row', (
   assert.equal(iconsAfterUseEverything(true), 'inline');
   const page = read('app', 'theme', '[id].tsx');
   assert.match(page, /iconsAfterUseEverything\(await iconsIntroSeen\(\)\) === 'intro'\) openIconsIntro\(false\);\s*else \{\s*setIconsSeen\(true\);\s*addThemeIcons\(\);/);
-  assert.match(page, /if \(themeFocus\.current === focus\) await openIconSetup\(\);/);
+  // 1.0.39: "View icons with this theme" in the next-steps checklist opens the icon setup.
+  assert.match(page, /setThemeChoiceOpen\(false\);\s*void openIconSetup\(\);/);
   assert.match(page, /theme\.iconsIntro\.setUp/);
   assert.match(page, /openIconsIntro\(true\)/);
   const screen = read('app', 'icons-intro.tsx');

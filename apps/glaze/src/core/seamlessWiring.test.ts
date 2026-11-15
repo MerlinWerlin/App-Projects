@@ -17,9 +17,9 @@ test('1.0.34: no Home Screen spot picker on the theme page; the honest add-a-wid
   assert.doesNotMatch(detail, /<SeamlessCard\b|function SeamlessCard\b|<SeamlessWidgetControls\b|<SeamlessWidgetPreview\b/);
   assert.doesNotMatch(detail, /'ui\.seamless\.slots\.|'ui\.seamless\.nudge\.|widgets\.setSeamless\(/);
   assert.match(detail, /const widgetsHow = useHowTo\('widgets'\);/);
-  assert.match(detail, /\{step === 'widgets' \? \(\s*<View style=\{styles\.block\}>\s*<SectionHeader title=\{t\('theme\.howTo\.titles\.widgets'\)\} body=\{t\('theme\.howTo\.captions\.widgets'\)\}/);
-  assert.match(detail, /\{widgetsHow\.button\(styles\.side\)\}/);
   assert.match(detail, /\{widgetsHow\.sheet\}/);
+  // 1.0.39: the widgets step is gone (View widgets opens the Widgets tab, which has its own Watch how).
+  assert.match(detail, /if \(step === 'widgets'\) router\.replace\('\/widgets'\);/);
 });
 
 test('local asset helper downloads only http(s) URIs, through the fs adapter', () => {

@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.39: choosing a theme now puts its widget art in place straight away. Use this theme (or any theme choice) downloads the theme if needed and fills Artwork 1-5. The Widgets tab shows Preparing, then the pieces, with no need for Use everything or a Home Screen widget first. A slot never shows the same artwork twice: a theme still waiting for new art shows a calm design in its colours there. Every artwork in My widget art has a menu to Save to Photos or Add to Custom 1-5, and the theme page notes that every theme comes with its own five artworks.",
+  "note": "Glaze 1.0.39: one simple flow. Tap a theme and answer Use this theme? It goes on your widgets with its own Artwork 1-5 straight away and your icons are ready, then a short list of next steps: Add the wallpaper, View icons and View widgets. View widgets opens the Widgets tab showing the theme's artworks. Live widget pickers (clocks, countdown, battery and so on) are hidden for now. A slot never shows the same artwork twice (a calm design in the theme's colours until new art arrives), and each artwork has Save to Photos and Add to Custom 1-5.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

@@ -77,3 +77,32 @@ test('every catalogue theme on R2 fills Artwork 1-5 with five different pieces (
     assert.ok(hashes.every((h) => /^[0-9a-f]{64}$/.test(h)), id);
   }
 });
+
+// 1.0.39 (owner TestFlight build 88: Cobalt Caravan showed SIX artworks on the theme's widgets screen, one a
+// "29 October" lantern): every artwork list uses the ONE shared pure-artwork selection
+// (planThemePieces' `artwork` flag: small, kind 'art', not live), the list the art sync writes to the index
+// and My widget art + the Home Screen read. Never date, calendar, clock or focus pictures.
+test('Cobalt Caravan: its date and clock options are never Artwork; exactly five pure pieces', () => {
+  const gen = readFileSync(join(ROOT, 'src', 'generated', 'starterPacks.ts'), 'utf8');
+  const m = [...gen.matchAll(/manifest: (\{.*\}) as RemoteArtManifest,/g)].map((x) => JSON.parse(x[1])).find((x) => x.id === 'cobalt-caravan');
+  assert.ok(m, 'Cobalt Caravan is a bundled starter');
+  const parsed = parseWidgetOptions(m.widgets ?? null, m.assets ?? []);
+  const kinds = new Map(parsed.options.map((o) => [o.id, o.kind]));
+  assert.equal(kinds.get('caravan-date'), 'calendar', 'the "29 October" lantern is a calendar picture');
+  const planned = plannedArtworkOptionIds(m.id, parsed.options);
+  assert.deepEqual(planned, ['lapis-compass', 'oasis-bird', 'sand-cat', 'hero-small', 'lapis-dune-scarab']);
+  for (const id of planned) assert.equal(kinds.get(id), 'art', id);
+});
+
+test('no screen lists a theme\'s art outside the shared selection (the old all-options lists are not rendered)', () => {
+  const files = ['app/theme/[id].tsx', 'app/(tabs)/widgets.tsx', 'app/(tabs)/themes.tsx', 'app/install.tsx'];
+  for (const f of files) {
+    const src = readFileSync(join(ROOT, f), 'utf8');
+    assert.doesNotMatch(src, /<ThemeWidgetArt\b|<WidgetArtMenu\b|<DesignedThemeWidgets\b/, f);
+  }
+  const list = readFileSync(join(ROOT, 'src', 'ui', 'WidgetArtLibraryList.tsx'), 'utf8');
+  assert.match(list, /artworkPieces\(pieces, activeThemeId, artwork\)/, 'My widget art reads the shared index list');
+  const sync = readFileSync(join(ROOT, 'src', 'core', 'themeArtSync.ts'), 'utf8');
+  assert.match(sync, /size === 'small' && option\.kind === 'art' && !live \? \{ artwork: true \}/);
+  assert.match(sync, /next\.artwork = planned\.filter\(\(p\) => p\.artwork === true/);
+});

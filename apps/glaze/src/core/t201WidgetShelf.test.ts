@@ -23,21 +23,13 @@ test('the menu both screens share orders by widgetShelf (practical kinds, then a
   assert.match(art, /selectedOption\(/);
 });
 
-test('theme page > Widgets: practical + art (ThemeWidgetArt) first, then the standard set; overview keeps the standard teaser', () => {
-  const d = strip(read('app', 'theme', '[id].tsx'));
-  // The Widgets card opens the theme's own widgets step (it used to jump straight to Widget Studio,
-  // which only had the standard types, while the overview showed the art: no practical pieces).
-  assert.match(d, /router\.push\(\{ pathname: '\/theme\/\[id\]', params: \{ id: theme\.id, step: part \} \}\)/);
-  const shelf = d.indexOf("{step === 'widgets' ? <ThemeWidgetsShelf theme={theme} /> : null}");
-  // 1.0.34: the Seamless card's place holds the honest "Add a widget" steps + Watch how (seamlessWiring.test.ts).
-  const howTo = d.indexOf("<SectionHeader title={t('theme.howTo.titles.widgets')}");
-  const standard = d.indexOf("{overview || step === 'widgets' ? (");
-  assert.ok(shelf > 0 && howTo > shelf && standard > howTo, 'practical + art, then how to add one, then standard');
-  assert.ok(d.slice(standard).indexOf('<WidgetPreviews theme={theme} palette={palette} />') > 0);
-  const fn = d.slice(d.indexOf('function ThemeWidgetsShelf('), d.indexOf('const WIDGET_PREVIEW_W'));
-  assert.match(fn, /<ThemeWidgetArt theme=\{theme\} size=\{size\} width=\{width\} \/>/);
-  assert.match(fn, /<Segmented<HomeOptionSize>/, 'pick the Home Screen size here');
-  assert.match(d, /step === 'widgets'\s*\? t\('theme\.parts\.widgets'\)/);
+test('1.0.39: View widgets opens the Widgets tab with the theme in use; no theme widgets screen', () => {
+  const d = read('app', 'theme', '[id].tsx');
+  const open = d.slice(d.indexOf('const openWidgetsTab = async'), d.indexOf('const openPart = async'));
+  assert.match(open, /if \(!inUse && !\(await selectTheme\(\)\)\) return;\s*router\.navigate\('\/widgets'\);/);
+  assert.match(d, /if \(part === 'widgets'\) \{\s*await openWidgetsTab\(checkLock\);/);
+  assert.doesNotMatch(d, /<ThemeWidgetsShelf\b|function ThemeWidgetsShelf|<ThemeWidgetArt\b/);
+  assert.match(d, /if \(step === 'widgets'\) router\.replace\('\/widgets'\);/);
 });
 
 test('Widgets tab: the theme widget menu (practical, art) sits above the standard grid', () => {

@@ -22,7 +22,7 @@ ALLOWED = {
     'src/ui/WidgetArtLibraryList.tsx': 'Owner 2026-11-12 ("colour code them"): each piece that fills an Artwork slot shows the colour and number badge of that slot (src/core/artworkSlots.ts). Listing, removing and managing unchanged. Owned by Claude. 1.0.37 (owner TestFlight 1.0.36): re-reads on an active-theme change and after each theme art sync index write; placeholder rows (never pieces of the previous theme) while the art is being made. 1.0.39 (owner 2026-11-15): each piece once, the theme-colour design in a slot without one (never a repeat); a More menu per piece (Save to Photos, Add to Custom 1-5) via src/ui/artworkActions.ts.',
     'src/core/widgetOptions.ts': 'Inherited PR252: authored-size filtering, owned by Claude.',
     'src/core/themeArtSync.ts': 'Inherited PR252: plan only authored sizes; owner 2026-11-08: art pieces planned first in each size. Owned by Claude.',
-    'app/theme/[id].tsx': 'Owner-directed four actions; restored ThemeWidgetArt section and composer remain intact. 1.0.34 (owner 2026-11-14): the SeamlessCard spot picker is removed (iOS does not let apps place widgets); honest add-a-widget steps + Watch how in its place. 1.0.39 (owner TestFlight 1.0.37): selectTheme downloads a pack theme that is not on the phone before applying it, so its widget art is made at once.',
+    'app/theme/[id].tsx': 'Owner-directed four actions; restored ThemeWidgetArt section and composer remain intact. 1.0.34 (owner 2026-11-14): the SeamlessCard spot picker is removed (iOS does not let apps place widgets); honest add-a-widget steps + Watch how in its place. 1.0.39 (owner TestFlight 1.0.37): selectTheme downloads a pack theme that is not on the phone before applying it, so its widget art is made at once. 1.0.39 (owner build 88): one flow, Use this theme? then a next-steps checklist (wallpaper until saved, icons, widgets); View widgets opens the Widgets tab; the widgets step, the theme widget shelf and the Widget Studio previews are no longer shown.',
     'targets/widget/HabitStreakWidget.swift': 'Owner-directed larger completion square and 44-point tap target, with compact large-family spacing.',
     'src/ui/StepCard.tsx': 'Owner-directed completion glyph increases from20 to28 points.',
     'app/install.tsx': 'Preview/export requested theme without persisting the global selection; larger completion glyph.',
@@ -57,7 +57,14 @@ print(json.dumps({'base': BASE, 'files': rows}, indent=2))
 # 1.0.34 (owner 2026-11-14: "theres an option to go like top right middle right bottom right etc and then save the
 # widget to the home screen - i dont believe we can do this so remove it"): the SeamlessCard (spot picker) is removed
 # on purpose; the widget art shelf (ThemeWidgetsShelf / ThemeWidgetArt) stays.
+# 1.0.39 (owner TestFlight build 88: "we removed Medium/Large and the extras from the Widgets TAB, but the THEME PAGE's
+# View widgets screen still has all of it"; hide every live-widget choice for now): the theme page no longer renders the
+# shelf. View widgets opens the Widgets tab (Artwork 1-5 only). The restored components themselves stay in the repo,
+# unchanged (checked above), ready for when live widgets come back (docs/FUTURE.md).
 file = 'app/theme/[id].tsx'
 current = (ROOT / file).read_text(encoding='utf-8')
 assert 'function SeamlessCard(' not in current and '<SeamlessCard' not in current, 'Seamless spot picker is back'
-assert '<ThemeWidgetsShelf theme={theme} />' in current
+assert '<ThemeWidgetsShelf' not in current and '<ThemeWidgetArt' not in current, 'live widget choices are back on the theme page'
+assert "router.navigate('/widgets')" in current, 'View widgets must open the Widgets tab'
+for kept in ['src/ui/ThemeWidgetArt.tsx', 'src/ui/WidgetArtMenu.tsx', 'src/ui/DesignedThemeWidgets.tsx']:
+    assert (ROOT / kept).exists(), f'{kept} must stay in the repo'

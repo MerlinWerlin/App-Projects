@@ -48,9 +48,8 @@ test('a studio saved for another theme is ignored', () => {
   assert.ok(studioPreviews(SET, other).every((p) => !p.edited && p.photoUri === null));
 });
 
-test('theme page reads saved studio drafts on focus and passes the photo to the preview', () => {
+test('1.0.39: the theme page shows no Widget Studio previews (live widgets are hidden for now)', () => {
   const src = readFileSync(new URL('../../app/theme/[id].tsx', import.meta.url), 'utf8');
-  assert.match(src, /studioPreviews\(set, saved\)/);
-  assert.match(src, /loadStudio\(set\)/);
-  assert.match(src, /photoUri=\{photoUri\}/);
+  assert.doesNotMatch(src, /studioPreviews\(set, saved\)/);
+  assert.doesNotMatch(src, /pathname: '\/widget-studio'/);
 });

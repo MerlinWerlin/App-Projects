@@ -30,6 +30,11 @@ the bottom of their section with the date and who asked; move an item to "Done" 
 
 - **Patchwork theme: rocket pieces not distinct enough; refresh art** (owner TestFlight 1.0.37, 15 Nov 2026). The five
   pieces pass the SHA-256 check but two rocket pieces read as near-duplicates on the phone; give it new, clearly different art.
+- **Live widgets (year progress, countdown, clocks, battery, steps)** (owner TestFlight build 88, 15 Nov 2026). Hidden
+  from every in-app entry point in 1.0.39 (the theme page's widgets screen and matching-widgets previews, Widget Studio
+  links): picked from the app they did not work as gallery choices. The widget extension code is untouched, so widgets
+  already placed keep working. Bring back with one clear picker; the shelf components stay in src/ui
+  (ThemeWidgetArt, WidgetArtMenu, DesignedThemeWidgets) and app/widget-studio.tsx is still routed.
 - **New art for themes with fewer than five distinct pieces** (owner 2026-11-15): Deep Sea, Starry Night and Sunset Dunes
   need 4 new pieces each, and 21 R2 themes need a replacement for a duplicate-looking or mostly empty "hero-small" piece
   (prompt written by the master session). Until then each piece shows once and the other slots show the theme design (1.0.39).
