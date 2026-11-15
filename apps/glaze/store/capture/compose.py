@@ -169,13 +169,14 @@ def render(shot, raw, F):
     elif kind == 'trio':
         y = captions(bg, shot, F)
         names = shot['raw']
-        side_w, mid_w = 720, 900
-        sides = [phone(load(raw, n), side_w) for n in (names[0], names[2])]
+        side_w, mid_w = 700, 820
         mid = phone(load(raw, names[1]), mid_w)
-        top = y + 80
-        (l, lp), (r, rp) = sides
-        bg.alpha_composite(l, (-190 - lp, top + 300 - lp))
-        bg.alpha_composite(r, (W + 190 - side_w - rp, top + 300 - rp))
+        top = y + 110
+        for name, sign in ((names[0], -1), (names[2], 1)):
+            ph, pad = phone(load(raw, name), side_w)
+            ph = ph.rotate(-sign * 7, resample=Image.BICUBIC, expand=True)
+            cx = W // 2 + sign * 455
+            bg.alpha_composite(ph, (cx - ph.size[0] // 2, top + 200 - pad))
         bg.alpha_composite(mid[0], ((W - mid[0].size[0]) // 2, top - mid[1]))
     else:
         raise SystemExit(f'unknown kind {kind}')
