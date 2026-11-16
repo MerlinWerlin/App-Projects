@@ -317,11 +317,11 @@ export function HeroHeader({
   return (
     <View style={[{ borderRadius: radius.xl, overflow: 'hidden', backgroundColor: theme.hero[tone][0] }, shadowOf(theme, 'mid'), style]}>
       <GradientFill tone={tone} />
-      {country ? <CountryHeroArt pick={country} compact={compact} scene={!!scene || !!mascot} motif={!!scene || !!mascot || plainArt} topInset={topInset} /> : null}
+      {country ? <CountryHeroArt pick={country} compact={compact} scene={!!scene || !!mascot} motif={!mascot && (!!scene || plainArt)} topInset={topInset} /> : null}
       {mascot ? (
         <View pointerEvents="none" style={{ position: 'absolute', right: space.xs, bottom: compact ? 0 : space.xs, top: topInset, justifyContent: compact ? 'center' : 'flex-end' }}>
           <FocusEntrance from="right" delay={duration.fast}>
-            <Mascot pose={mascot} size={compact ? 84 : 128} />
+            <Mascot pose={mascot} size={compact ? 64 : 128} />
           </FocusEntrance>
         </View>
       ) : scene ? (
