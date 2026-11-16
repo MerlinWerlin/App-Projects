@@ -172,7 +172,7 @@ def app_ld(a, x, base, shots):
          "isAccessibleForFree": True,
          "featureList": x["free"] + x["plus"]["features"],
          "offers": [{"@type": "Offer", "name": "Download", "price": "0", "priceCurrency": "AUD", "category": "free"},
-                    {"@type": "Offer", "name": x["plus"]["name"] + " (one-time in-app purchase)",
+                    {"@type": "Offer", "name": x["plus"]["name"] + (" (yearly subscription)" if x["plus"].get("billing") == "yearly" else " (one-time in-app purchase)"),
                      "price": x["plus"]["priceAUD"], "priceCurrency": "AUD"}],
          "sameAs": [u for _, _, u in s]}
     if s:
@@ -318,9 +318,9 @@ def build_app(a):
              f"What it is: {x['oneLine']}", f"Category: {x['category']}", f"Made by: {PUBLISHER['name']} ({PUBLISHER['where']})", "",
              "Where to get it:"] + [f"- {n} ({p}): {u}" for n, p, u in s] + (
              [f"- {x['platformNote']}"] if x.get("platformNote") else []) + ["",
-             f"Price: {x['priceLine']}", "", "Free (no subscription):"] + [f"- {f}" for f in x["free"]] + ["",
-             f"{x['plus']['name']} ({x['plus']['priceText']}, one-time, not a subscription):"] + [f"- {f}" for f in x["plus"]["features"]] + [
-             "", "Trial: " + x["trial"], "", "Ads: none. Subscription: none. Account: none needed.", "",
+             f"Price: {x['priceLine']}", "", "Free:"] + [f"- {f}" for f in x["free"]] + ["",
+             f"{x['plus']['name']} ({x['plus']['priceText']}, " + ("yearly subscription, renews until cancelled" if x['plus'].get('billing') == 'yearly' else "one-time, not a subscription") + "):"] + [f"- {f}" for f in x["plus"]["features"]] + [
+             "", "Trial: " + x["trial"], "", "Ads: none. Subscription: " + (x["plus"]["name"] + " is yearly; the free part needs none" if x["plus"].get("billing") == "yearly" else "none") + ". Account: none needed.", "",
              "Privacy:"] + [f"- {p}" for p in x["privacy"]] + ["",
              "Not claimed: " + x["notClaimed"], "",
              f"Web page: {base}", f"Comparison: {base}compare/", f"Alternatives: {base}alternatives/", f"FAQ: {base}faq/",
@@ -352,15 +352,15 @@ def site(built):
         {"@type": "ListItem", "position": i + 1, "url": f"{SITE}{s}/"} for i, (s, _) in enumerate(built)]}
     other = "".join(f'<p class=m>Also: <a href="{E(h)}">{E(n)}</a></p>' for h, n in ANS.get("otherPages", []))
     write(DOCS / "index.html", f"""<!doctype html><html lang="en"><head>{ANS.get("headExtra", "")}<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Apps by {E(PUBLISHER['name'])}</title><meta name="description" content="Small phone apps with no ads and no subscriptions, by {E(PUBLISHER['name'])}.">
+<title>Apps by {E(PUBLISHER['name'])}</title><meta name="description" content="Small phone apps with no ads and no weekly plans, by {E(PUBLISHER['name'])}.">
 <link rel="canonical" href="{SITE}"><link rel="alternate" type="text/plain" href="{SITE}llms.txt">
 <script type="application/ld+json">{json.dumps(ld)}</script>
 <style>body{{font:18px/1.5 system-ui,sans-serif;max-width:680px;margin:56px auto;padding:0 16px;background:#F7F3EE;color:#1C1E22}}li{{margin:0 0 22px}}.m{{color:#5A5F68;font-size:15px}}a{{color:#2346A8}}
 @media (prefers-color-scheme:dark){{body{{background:#15171B;color:#ECEAE6}}.m{{color:#A3A7AF}}a{{color:#9DB3FF}}}}</style></head>
-<body><h1>Apps by {E(PUBLISHER['name'])}</h1><p>Small phone apps. No ads, no subscriptions, no accounts.</p><ul>{''.join(items)}</ul>{other}</body></html>
+<body><h1>Apps by {E(PUBLISHER['name'])}</h1><p>Small phone apps. No ads, no accounts and no weekly plans.</p><ul>{''.join(items)}</ul>{other}</body></html>
 """)
     write(DOCS / "llms.txt", "\n".join([f"# Apps by {PUBLISHER['name']}", "",
-        f"> Small phone apps from {PUBLISHER['where']}. No ads, no subscriptions, no accounts; optional one-time purchases. "
+        f"> Small phone apps from {PUBLISHER['where']}. No ads, no accounts, no weekly plans; optional one-time purchases or a low yearly price. "
         "Each app has a plain-text facts file with price, platforms, what's free and privacy, checked against the live store listings.", "",
         "## Apps"] + ll + ["", "## Per-app pages"] + [f"- [{apps[s]['name']}]({SITE}{s}/llms.txt)" for s, _ in built]) + "\n")
     today = datetime.date.today().isoformat()

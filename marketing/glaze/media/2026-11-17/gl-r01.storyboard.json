@@ -1,0 +1,16 @@
+{
+ "id": "gl-r01",
+ "app": "glaze",
+ "title": "Launch reel: a whole Home Screen from one theme",
+ "source": "real store screenshots (no AI video)",
+ "shots": [
+  {"fit": "contain", "image": "../../../../apps/glaze/store/screenshots/6.9/01-home-screen.jpg", "caption": "New Home Screen, one theme", "seconds": 3, "motion": "in"},
+  {"fit": "contain", "image": "../../../../apps/glaze/store/screenshots/6.9/03-every-mood.jpg", "caption": "140+ original themes", "seconds": 2.6, "motion": "up"},
+  {"fit": "contain", "image": "../../../../apps/glaze/store/screenshots/6.9/04-use-this-theme.jpg", "caption": "Tap a theme, tap Yes", "seconds": 2.6, "motion": "in"},
+  {"fit": "contain", "image": "../../../../apps/glaze/store/screenshots/6.9/02-five-artworks.jpg", "caption": "Five widget artworks", "seconds": 2.6, "motion": "down"},
+  {"fit": "contain", "image": "../../../../apps/glaze/store/screenshots/6.9/07-matching-icons.jpg", "caption": "Matching icons", "sub": "10 themes free. No ads.", "seconds": 2.6, "motion": "in"}
+ ],
+ "end": {"title": "Glaze", "line": "On iPhone", "sub": "Icon themes & widgets"},
+ "accent": "#B9A2FF",
+ "branded": true
+}

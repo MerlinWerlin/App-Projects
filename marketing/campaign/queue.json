@@ -84,6 +84,27 @@
    "instagram": {
     "status": "queued"
    }
+  },
+  {
+   "id": "gl-r01",
+   "app": "glaze",
+   "file": "marketing/glaze/media/2026-11-17/gl-r01.mp4",
+   "caption": "Your whole iPhone Home Screen from one theme: Glaze gives you the wallpaper, matching app icons and five artworks for your widgets. Over 140 original themes, and 10 premium themes are free to keep. Glaze: Icon Themes & Widgets, new on iPhone. No ads, no account.",
+   "hashtags": [
+    "#homescreen",
+    "#iphonehomescreen",
+    "#aesthetic",
+    "#iphonetips"
+   ],
+   "tiktok": {
+    "status": "queued",
+    "note": "17 Nov: scheduling for 18 Nov 19:30 failed (TikTok Studio's Schedule button did nothing after 3 tries, no error shown). Post it next, before co-r01."
+   },
+   "instagram": {
+    "status": "live",
+    "url": "https://www.instagram.com/fernandfableau/reel/Df0Vxr2MPCE/",
+    "posted": "2026-11-17"
+   }
   }
  ],
  "pins_next": [

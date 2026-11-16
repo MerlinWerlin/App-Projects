@@ -40,8 +40,11 @@ from the apps' real store screenshots, so no AI label (TikTok gets the "Your bra
 | 2026-11-30 12:00 | Woodwork plan: zigzag-record-tower | WW-P18 | Zigzag Record Tower Plan: Diamond Vinyl LP Shelf (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
 | 2026-12-01 12:00 | Woodwork plan: record-console | WW-P19 | Record Console Plan: DIY Vinyl Storage & Turntable Stand (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
 | 2026-12-02 12:00 | Woodwork plan: king-bed-slat-headboard | WW-P20 | King Bed Plans: DIY Platform Bed With Slat Headboard (PDF) | Etsy listing | scheduled (board DIY Woodworking Plans, AI-modified on) | (URL once live) |
+| 2026-11-17 19:00 | Glaze | GL-T01 | Aesthetic iPhone Home Screen Idea: Space Theme With Matching Icons and Widgets | App Store | scheduled | (URL once live) |
+| 2026-11-19 19:00 | Glaze | GL-T02 | Pastel Pink Cloud iPhone Home Screen: Aesthetic Theme With Widgets | App Store | scheduled | (URL once live) |
+| 2026-11-20 19:00 | Glaze | GL-T03 | How to Get Matching App Icons on iPhone (and Undo Them Later) | App Store | scheduled | (URL once live) |
 
-Open app-pin days to fill: 14, 16, 17, 19, 20, 21 Nov onward (the daily run fills them, rotating Cue and Backspin first
+Open app-pin days to fill: 21 Nov onward (17, 19 and 20 Nov went to the Glaze launch) (the daily run fills them, rotating Cue and Backspin first
 because Linework already has five queued).
 
 ## TikTok
@@ -50,6 +53,7 @@ because Linework already has five queued).
 | 2026-11-10 | Linework | lw-r01 | Trace any photo onto real paper… | live | https://www.tiktok.com/@fernandfableau/video/7706258992498052373 |
 | 2026-11-10 | Cue | cu-r01 | Read your script right by the lens… | live | https://www.tiktok.com/@fernandfableau/video/7706268997020290324 |
 | 2026-11-10 | Backspin | bs-r01 | Say a line, hear it backwards… | live | https://www.tiktok.com/@fernandfableau/video/7706269324368989461 |
+| 2026-11-17 | Glaze | gl-r01 | Your whole iPhone Home Screen from one theme… | failed (Schedule button did nothing; still queued) | |
 
 ## Instagram (Reels)
 | Date (Sydney) | App | Item | Caption start | Status | URL |
@@ -57,6 +61,7 @@ because Linework already has five queued).
 | 2026-11-10 | Linework | lw-r01 | Trace any photo onto real paper… | live | https://www.instagram.com/fernandfableau/reel/DfiLjXXhZU8/ |
 | 2026-11-10 | Cue | cu-r01 | Read your script right by the lens… | live | https://www.instagram.com/fernandfableau/reel/DfiLxa9voa7/ |
 | 2026-11-10 | Backspin | bs-r01 | Say a line, hear it backwards… | live | https://www.instagram.com/fernandfableau/reel/DfiL_9jNbWw/ |
+| 2026-11-17 | Glaze | gl-r01 | Your whole iPhone Home Screen from one theme… | live | https://www.instagram.com/fernandfableau/reel/Df0Vxr2MPCE/ |
 
 ## Other sites
 | Date | Site | App | What | Status | URL |

@@ -12,9 +12,13 @@ Apps in rotation (from `apps.json`, stage `live`):
 | Cue: Teleprompter | **Android only** | https://play.google.com/store/apps/details?id=com.jared797.cue |
 | Backspin: Reverse Your Voice | **Android only** | https://play.google.com/store/apps/details?id=com.jared797.backspin |
 | Couch: TV Remote | **iPhone only** (added 12 Nov 2026) | https://apps.apple.com/au/app/couch-tv-remote/id6826135134 |
+| Glaze: Icon Themes & Widgets | **iPhone only** (live 16 Nov, added 17 Nov 2026) | https://apps.apple.com/au/app/glaze-icon-themes-widgets/id6826415074 |
 
 Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUrl` is set in `apps.json`. Couch posts
 always say "on iPhone" / "App Store" (no `playUrl`). Couch pins: `marketing/pins/couch-live-2026-11.json`; reel `co-r01`.
+Glaze is the same (iPhone only). Glaze pins: `marketing/pins/glaze-live-2026-11.json` (images from
+`apps/glaze/store/screenshots/6.9/`); reel `gl-r01`. Glaze is a Pinterest-first app: aesthetic Home Screen ideas are
+a big Pinterest topic, so give it every other open 19:00 slot through November.
 
 ## Channels (checked 10 Nov 2026 in Jared's Chrome)
 | Channel | Account | State | Use |
@@ -73,6 +77,12 @@ always say "on iPhone" / "App Store" (no `playUrl`). Couch pins: `marketing/pins
   phone keyboard, volume, channels, app launcher, casting photos/videos, switch TVs in one tap, Simple mode, Wake-on-LAN;
   7-day free trial that never charges, then Couch Plus A$3.99 once with Family Sharing; finding and adding TVs stays
   free; no ads, no subscription, no account, Data Not Collected. Not: infrared, Android, "every button free" (outdated).
+- Glaze: over 140 original themes, each with a wallpaper, matching icons and five artworks for widgets; one tap to
+  use a theme, then Glaze lists the next steps; small Home Screen widgets (Artwork 1-5 follow the theme, Custom 1-5 show
+  your own pictures); icons are Home Screen shortcuts, originals unchanged, every step and the undo shown; Live Photo
+  maker; 10 premium themes free to keep (e.g. Alpine Starlight, Cloud Atelier); Glaze Plus is a yearly subscription,
+  A$2.99 a year, no free trial; no account, no ads, no tracking, photos never leave the iPhone; 11 languages.
+  Not: "no subscription", "one-time", Medium/Large/Lock Screen widgets, live wallpapers, "free trial".
 - Never: "best", "only", "#1", "never drifts", competitor or franchise names, song lyrics, plain "free" without the
   trial/Plus wording. App content is not marked AI-made (it's real screenshots). On TikTok tick "Disclose post
   content > Your brand".
@@ -144,6 +154,21 @@ Full notes, research and every draft: `marketing/discovery/DISCOVERY.md`.
   (holiday TV nights, 20 Dec-5 Jan, may be rejected as not a real event) and Backspin on Play (Christmas party, if eligible).
 - **AlternativeTo**: Linework and Couch listings drafted; account needs Jared's yes.
 - **Pins**: every third 19:00 app pin links to the app's compare page (`utm_campaign=compare-2026-11`).
+
+## Glaze launch (Jared, 17 Nov 2026: "glaze was released within one day lol - can you start the marketing campaign")
+Glaze 1.0.42 went live on the App Store on 16 Nov 2026 (approved within a day).
+- **Site**: `docs/glaze/` product, compare, alternatives and FAQ pages plus `facts.txt`/`llms.txt`, built by
+  `marketing/site/build.py` from `marketing/site/answers.json` (the builder now handles a yearly Plus: `plus.billing`).
+  Live once the PR merges and GitHub Pages deploys.
+- **Pinterest**: GL-T01..06 rendered from the real store screenshots; GL-T01, T02 and T03 scheduled for 17, 19 and 20
+  Nov at 19:00 on Fun & Useful Phone Apps (AI label off). GL-T04..06 are next. Once `docs/glaze/` is live, a Glaze pin can
+  link to `glaze/compare/` per the compare-page rule.
+- **Instagram**: reel `gl-r01` live 17 Nov (https://www.instagram.com/fernandfableau/reel/Df0Vxr2MPCE/), Facebook
+  share off.
+- **TikTok**: `gl-r01` uploaded but TikTok Studio's Schedule button did nothing (3 tries, no error, 17 Nov). It is first
+  in the queue for the next TikTok slot.
+- Glaze's own Pinterest boards idea (`apps.json` boards: Aesthetic Lock Screens, iPhone Home Screen Ideas) is not done:
+  app pins stay on Fun & Useful Phone Apps until Jared wants more boards.
 
 ## Downloads watch
 Every daily run reads Play Console (signed in) and App Store Connect (signed in on 10 Nov but it signs itself out
