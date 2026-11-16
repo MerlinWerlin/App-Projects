@@ -3,6 +3,7 @@
 // Feature strings live in ./en/<feature>.ts (one file per backlog task, so parallel builds don't collide) and are
 // spread in below. Keys stay globally unique: prefix them with the feature (ticket., emergency., vault., packing.).
 import { emergency } from './en/emergency.ts';
+import { countrythemes } from './en/countrythemes.ts';
 import { packing } from './en/packing.ts';
 import { tickets } from './en/tickets.ts';
 import { vault } from './en/vault.ts';
@@ -126,6 +127,7 @@ import { openin } from './en/openin.ts';
 import { backup } from './en/backup.ts';
 import { t154 } from './en/t154.ts';
 import { followups89 } from './en/followups89.ts';
+import { reminders } from './en/reminders.ts';
 
 const base = {
   'app.name': 'Satchel',
@@ -303,6 +305,6 @@ const base = {
   'itemEdit.attachmentFromPhotos': 'Choose from Photos',
 } as const;
 
-export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design, ...privacy, ...essentials, ...phrases, ...spending, ...help, ...readiness, ...convert, ...followups85, ...travels, ...jetlag, ...journal, ...followups86, ...triproute, ...weather, ...plan, ...position, ...licences, ...wayback, ...airport, ...smartpack, ...pastebooking, ...troubles, ...toiletplus, ...followups88, ...ideas, ...together, ...covers, ...followups89, ...recap, ...loyalty, ...followups90, ...calendar, ...units, ...look, ...followups91, ...todos, ...mapsearch, ...arrival, ...followups92, ...safecheck, ...dayplan, ...bags, ...followups93, ...meds, ...cash, ...stamps, ...followups94, ...tipping, ...holidays, ...gifts, ...followups95, ...stay, ...menu, ...insights, ...followups96, ...inflight, ...callhome, ...customs, ...followups97, ...maplayers, ...tripcopy, ...look2, ...followups98, ...helpcards, ...driving, ...followups99, ...leavehome, ...followups100, ...lostbag, ...comehome, ...followups101, ...layovers, ...getaround, ...followups102, ...gaps, ...outfits, ...followups103, ...photolight, ...rainplan, ...followups104, ...checkin, ...signs, ...followups105, ...postcards, ...numbers, ...kids, ...followups106, ...covers2, ...openin, ...backup, ...t154, ...packpois, ...ticketpolish, ...followups107, ...followups109, ...stepfree, ...followups110, ...e2e, ...demo2, ...itinerary, ...about, ...access } as const;
+export const en = { ...base, ...tickets, ...emergency, ...vault, ...packing, ...battery, ...map, ...brand, ...permissions, ...trial, ...spec, ...followups27, ...followups29, ...release, ...pickers, ...sources, ...followups31, ...language, ...spec41, ...tripfile, ...citymaps, ...toilets, ...design, ...privacy, ...essentials, ...phrases, ...spending, ...help, ...readiness, ...convert, ...followups85, ...travels, ...jetlag, ...journal, ...followups86, ...triproute, ...weather, ...plan, ...position, ...licences, ...wayback, ...airport, ...smartpack, ...pastebooking, ...troubles, ...toiletplus, ...followups88, ...ideas, ...together, ...covers, ...followups89, ...recap, ...loyalty, ...followups90, ...calendar, ...units, ...look, ...followups91, ...todos, ...mapsearch, ...arrival, ...followups92, ...safecheck, ...dayplan, ...bags, ...followups93, ...meds, ...cash, ...stamps, ...followups94, ...tipping, ...holidays, ...gifts, ...followups95, ...stay, ...menu, ...insights, ...followups96, ...inflight, ...callhome, ...customs, ...followups97, ...maplayers, ...tripcopy, ...look2, ...followups98, ...helpcards, ...driving, ...followups99, ...leavehome, ...followups100, ...lostbag, ...comehome, ...followups101, ...layovers, ...getaround, ...followups102, ...gaps, ...outfits, ...followups103, ...photolight, ...rainplan, ...followups104, ...checkin, ...signs, ...followups105, ...postcards, ...numbers, ...kids, ...followups106, ...covers2, ...openin, ...backup, ...t154, ...packpois, ...ticketpolish, ...followups107, ...followups109, ...stepfree, ...followups110, ...e2e, ...demo2, ...itinerary, ...about, ...access, ...reminders, ...countrythemes } as const;
 
 export type Key = keyof typeof en;

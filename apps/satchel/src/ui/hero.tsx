@@ -21,9 +21,13 @@ import { memo, useCallback, useEffect, useId, useRef, useState, type ComponentPr
 import { Animated, Text, View, type ColorValue, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Defs, G, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
 import { useApp } from '../state/app.tsx';
+import { useCountryPick } from '../state/countryTheme.tsx';
+import { THEMED_TONES } from '../theme/countryTheme.ts';
 import { duration, easeOut, RISE, timed, useFadeRise } from '../theme/motion.ts';
 import { elevated, radius, shadowOf, space, TOUCH, typeScale, type HeroTone, type Theme } from '../theme/tokens.ts';
+import { CountryHeroArt } from './CountryHeroArt.tsx';
 import { PressableScale } from './kit.tsx';
+import { Mascot, type MascotPose } from './Mascot.tsx';
 import { SCENE_TONE, TabScene, type SceneKind } from './scenes.tsx';
 
 export type IconName = ComponentProps<typeof Ionicons>['name'];
@@ -272,6 +276,7 @@ export function HeroHeader({
   subtitle,
   eyebrow,
   illustration = 'route',
+  mascot,
   topInset = 0,
   compact = false,
   children,
@@ -285,6 +290,8 @@ export function HeroHeader({
   subtitle?: string;
   eyebrow?: string;
   illustration?: Illustration;
+  /** The mascot in this tab's pose, on the right in place of the scene or illustration. */
+  mascot?: MascotPose;
   topInset?: number;
   /** Shorter banner (smaller title, tighter padding, smaller art) for screens whose main content needs the room. */
   compact?: boolean;
@@ -294,25 +301,36 @@ export function HeroHeader({
   const { theme } = useApp();
   const tone: HeroTone = toneProp ?? (scene ? SCENE_TONE[scene] : 'trips');
   const pad = compact ? space.l : space.xl;
+  // Destination themes: the country's motif and ambient particles on the Trips, Map and Wallet banners.
+  const pick = useCountryPick();
+  const country = pick && THEMED_TONES.includes(tone) ? pick : null;
+  const plainArt = illustration === 'route' || illustration === 'none';
   const text = (
     <>
       {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{eyebrow}</Text> : null}
-      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayL, { color: theme.heroInk, maxWidth: scene ? '64%' : '78%' }]}>
+      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayL, { color: theme.heroInk, maxWidth: scene || mascot ? '64%' : '78%' }]}>
         {title}
       </Text>
-      {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: scene ? '66%' : '82%' }]}>{subtitle}</Text> : null}
+      {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: scene || mascot ? '66%' : '82%' }]}>{subtitle}</Text> : null}
     </>
   );
   return (
     <View style={[{ borderRadius: radius.xl, overflow: 'hidden', backgroundColor: theme.hero[tone][0] }, shadowOf(theme, 'mid'), style]}>
       <GradientFill tone={tone} />
-      {scene ? (
+      {country ? <CountryHeroArt pick={country} compact={compact} scene={!!scene || !!mascot} motif={!mascot && (!!scene || plainArt)} topInset={topInset} /> : null}
+      {mascot ? (
+        <View pointerEvents="none" style={{ position: 'absolute', right: space.xs, bottom: compact ? 0 : space.xs, top: topInset, justifyContent: compact ? 'center' : 'flex-end' }}>
+          <FocusEntrance from="right" delay={duration.fast}>
+            <Mascot pose={mascot} size={compact ? 64 : 128} />
+          </FocusEntrance>
+        </View>
+      ) : scene ? (
         <View pointerEvents="none" style={{ position: 'absolute', right: -space.xs, bottom: 0, top: topInset, justifyContent: compact ? 'center' : 'flex-end' }}>
           <FocusEntrance from="right" delay={duration.fast}>
             <TabScene kind={scene} width={compact ? 92 : 176} />
           </FocusEntrance>
         </View>
-      ) : (
+      ) : country && plainArt ? null : (
         <View pointerEvents="none" style={{ position: 'absolute', right: -8, top: topInset + space.s, opacity: 0.95 }}>
           <HeroIllustration kind={illustration} width={compact ? 120 : 160} height={compact ? 90 : 120} />
         </View>

@@ -200,6 +200,18 @@
         }
       ],
       "@react-native-community/datetimepicker",
+      "./plugins/with-local-notifications-only",
+      [
+        "expo-notifications",
+        {
+          "enableRemoteNotifications": false,
+          "sounds": [
+            "./assets/sounds/satchel_chime.wav",
+            "./assets/sounds/satchel_depart.wav",
+            "./assets/sounds/satchel_checkin.wav"
+          ]
+        }
+      ],
       "./plugins/with-open-in"
     ],
     "experiments": {

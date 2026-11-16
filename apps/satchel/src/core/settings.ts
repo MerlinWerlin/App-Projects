@@ -61,7 +61,8 @@ export function nativeScheme(pref: unknown): 'light' | 'dark' | 'unspecified' {
 // language: 'system' follows the phone (T35). languageHintSeen: the first-launch language line has had its one session.
 // sleepBed / sleepWake (T68): usual sleep, 'HH:mm' on whatever clock the traveller is on; used by the jet lag plan and
 // the good-time-to-call finder (awake hours run from wake to bed).
-export type AppPrefs = { haptics: boolean; appearance: AppearancePref; language: LanguagePref; languageHintSeen: boolean; sleepBed: string; sleepWake: string };
+// reminders (docs/REMINDERS.md): trip reminder notifications, off until the traveller turns them on.
+export type AppPrefs = { haptics: boolean; appearance: AppearancePref; language: LanguagePref; languageHintSeen: boolean; sleepBed: string; sleepWake: string; reminders: boolean; countryThemes: boolean };
 export const DEFAULT_APP_PREFS: AppPrefs = {
   haptics: true,
   appearance: 'system',
@@ -69,6 +70,9 @@ export const DEFAULT_APP_PREFS: AppPrefs = {
   languageHintSeen: false,
   sleepBed: DEFAULT_BED,
   sleepWake: DEFAULT_WAKE,
+  reminders: false,
+  // Destination themes (src/core/countrytheme.ts): on unless turned off in Settings.
+  countryThemes: true,
 };
 
 // ---- Usual sleep (T68) ----
@@ -141,6 +145,8 @@ export function normaliseAppPrefs(raw: unknown): AppPrefs {
     language: isLanguagePref(o.language) ? o.language : DEFAULT_APP_PREFS.language,
     languageHintSeen: o.languageHintSeen === true,
     ...normaliseSleep(o.sleepBed, o.sleepWake),
+    reminders: o.reminders === true,
+    countryThemes: typeof o.countryThemes === 'boolean' ? o.countryThemes : DEFAULT_APP_PREFS.countryThemes,
   };
 }
 

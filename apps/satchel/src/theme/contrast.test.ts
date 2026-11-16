@@ -11,6 +11,8 @@ import { STAMP_INKS } from '../core/stamps.ts';
 import { coverScrim, dark, elevated, elevation, essentials, light, stampInks, stampPapers, surfaces, type HeroTone, type Theme } from './tokens.ts';
 import { toHsl, tripAccent } from './tripAccent.ts';
 import { LAYER_SPECS, MAP_LAYERS } from '../core/maplayers.ts';
+import { COUNTRY_THEMES } from '../core/countrytheme.ts';
+import { countryTheme, THEMED_TONES } from './countryTheme.ts';
 
 type Pair = { fg: string; bg: string; min: number; what: string };
 type ColourKey = { [K in keyof Theme]: Theme[K] extends string ? K : never }[keyof Theme];
@@ -266,4 +268,47 @@ test('pair list covers every surface and tint in both themes', () => {
   const n = usedPairs(light).length;
   assert.ok(n >= 50, String(n));
   assert.equal(usedPairs(dark).length, n);
+});
+
+test('destination themes: every country in both modes passes every pair the base theme is checked for', () => {
+  const fails: string[] = [];
+  const hueGap = (a: string, b: string) => {
+    const d = Math.abs(toHsl(a).h - toHsl(b).h) % 360;
+    return Math.min(d, 360 - d);
+  };
+  for (const base of [light, dark]) {
+    const mode = base.dark ? 'dark' : 'light';
+    for (const spec of Object.values(COUNTRY_THEMES)) {
+      const th = countryTheme(base, spec);
+      const name = `${spec.iso2} ${mode}`;
+      fails.push(...check(name, th));
+      // the hero scene paper and the deep stop of every tone (the T119 checks)
+      for (const tone of HERO_TONES) {
+        for (const stop of th.hero[tone]) if (contrast(th.heroPaper, stop) < AA_LARGE) fails.push(`${name} heroPaper on hero.${tone}`);
+        if (contrast(th.hero[tone][0], th.heroPaper) < AA_LARGE) fails.push(`${name} hero.${tone} deep stop on heroPaper`);
+        if (contrast(th.hero[tone][0], over(th.heroChip, th.heroPaper)) < AA_LARGE) fails.push(`${name} hero.${tone} deep stop on shaded heroPaper`);
+      }
+      // accent ink on every elevation level
+      for (const level of Object.keys(elevation) as (keyof typeof elevation)[]) {
+        const r = contrast(th.accentInk, elevated(th, level).backgroundColor);
+        if (r < AA_TEXT) fails.push(`${name} accentInk on ${level}: ${r.toFixed(2)}`);
+      }
+      // the map's plan and way-back pins keep their own hue against the themed accent layers
+      for (const key of ['accent', 'accentInk', 'accentStrong'] as const) {
+        for (const pin of ['mapPlan', 'mapWayback'] as const) {
+          if (toHsl(th[key]).s >= 0.25 && hueGap(th[key], th[pin]) < 25) fails.push(`${name} ${key} hue too close to ${pin}`);
+        }
+      }
+      // only the accent family and the themed hero tones change; emergency and toilets stay the base tones
+      assert.deepEqual(th.hero.emergency, base.hero.emergency, name);
+      assert.deepEqual(th.hero.toilets, base.hero.toilets, name);
+      assert.equal(th.danger, base.danger);
+      for (const tone of THEMED_TONES) for (const c of th.hero[tone]) assert.match(c, /^#[0-9A-F]{6}$/, `${name} ${tone}`);
+      assert.notDeepEqual(th.hero.trips, base.hero.trips, `${name} trips banner is themed`);
+      assert.notEqual(th.accentInk, base.accentInk, `${name} accent is themed`);
+      assert.equal(countryTheme(base, spec), th, 'memoised');
+    }
+  }
+  assert.deepEqual(fails, []);
+  assert.equal(countryTheme(light, null), light);
 });

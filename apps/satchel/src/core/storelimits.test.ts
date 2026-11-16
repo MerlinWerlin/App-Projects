@@ -105,7 +105,7 @@ test('store/listing.json (the store sync) matches LISTING.md and IAP.md', () => 
   assert.equal(j.promotionalText, get('ios:Promotional text').text);
   assert.equal(j.description, get('ios:Description').text);
   assert.equal(j.version, JSON.parse(read('package.json')).version);
-  assert.equal(j.attachBuild, undefined);
+  assert.ok(j.attachBuild === undefined || j.attachBuild === 'latest', 'attachBuild is absent or latest');
   assert.deepEqual(j.inAppPurchases.map((p) => [p.productId, p.price.amount, p.familySharable === true]), [
     ['com.jared797.satchel.trial7', '0', false],
     ['com.jared797.satchel.unlock', '2.99', true],

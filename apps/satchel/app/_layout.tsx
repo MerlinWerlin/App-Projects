@@ -9,7 +9,9 @@ import { useEffect } from 'react';
 import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppProvider, useApp } from '../src/state/app.tsx';
+import { CountryThemeProvider } from '../src/state/countryTheme.tsx';
 import { usePrivacyGuarded } from '../src/state/privacyGuard.ts';
+import { useTripReminders } from '../src/state/reminders.ts';
 import { TripsProvider, useTrips } from '../src/state/trips.tsx';
 import { fonts } from '../src/theme/tokens.ts';
 import { PrivacyCover } from '../src/ui/PrivacyCover.tsx';
@@ -26,7 +28,9 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <AppProvider>
         <TripsProvider>
-          <Shell />
+          <CountryThemeProvider>
+            <Shell />
+          </CountryThemeProvider>
         </TripsProvider>
       </AppProvider>
     </SafeAreaProvider>
@@ -42,6 +46,8 @@ function Shell() {
   // A font that fails to load falls back to the system font rather than holding the splash.
   const fontsDone = (bodyLoaded || !!bodyError) && (displayLoaded || !!displayError);
   const show = ready && loaded && fontsDone;
+  // Trip reminders (docs/REMINDERS.md): re-planned when trips or the setting change; a tapped one opens its plan.
+  useTripReminders(show);
 
   useEffect(() => {
     if (show) SplashScreen.hideAsync().catch(() => {});

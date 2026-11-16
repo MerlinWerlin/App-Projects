@@ -169,7 +169,7 @@ export default function WalletScreen() {
       windowSize={7}
       ListHeaderComponent={
         <View style={{ gap: rhythm.section, marginBottom: rhythm.tight }}>
-          <HeroHeader scene="wallet" eyebrow={heroCount} title={t('wallet.title')} subtitle={t('design.wallet.subtitle')} />
+          <HeroHeader scene="wallet" mascot="wallet" eyebrow={heroCount} title={t('wallet.title')} subtitle={t('design.wallet.subtitle')} />
           <FocusEntrance delay={60} style={{ gap: rhythm.tight }}>
             <SectionHeader title={t('design.wallet.quick')} icon="flash-outline" tone="accent" />
             <View style={{ flexDirection: 'row', gap: space.s }}>

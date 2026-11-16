@@ -51,6 +51,8 @@ import { PostcardsTripCard } from '../../src/ui/postcards.tsx';
 import { KidsTripCard } from '../../src/ui/kids.tsx';
 import { InflightTripCard } from '../../src/ui/InflightCard.tsx';
 import { TripCoverHero } from '../../src/ui/TripCover.tsx';
+import { TripCoverAmbient } from '../../src/ui/CountryHeroArt.tsx';
+import { TripCountryScope } from '../../src/state/countryTheme.tsx';
 import { useCoverPhoto } from '../../src/state/coverPhotos.ts';
 import { TripExport } from '../../src/ui/TripExport.tsx';
 import { canExportTrip } from '../../src/core/sampletravels.ts';
@@ -137,7 +139,18 @@ function TripPlaces({ trip }: { trip: Trip }) {
   );
 }
 
+/** Destination themes: a trip's own screen wears its country's colours and particles (or the usual look), whatever its dates. */
 export default function TripScreen() {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  const { trips } = useTrips();
+  return (
+    <TripCountryScope trip={trips.find((x) => x.id === id)}>
+      <TripScreenBody />
+    </TripCountryScope>
+  );
+}
+
+function TripScreenBody() {
   // `day` (T71): open scrolled to that day's section, e.g. today from the "Your day" card on the Trips tab.
   // `arrival` (T134): open with that stop's arrival card (ISO country code) at the top, e.g. from a long layover.
   const { id, photosLeftOut, day: focusDay, arrival: arrivalParam } = useLocalSearchParams<{ id: string; photosLeftOut?: string; day?: string; arrival?: string }>();
@@ -310,7 +323,12 @@ export default function TripScreen() {
         ListHeaderComponent={
           <View style={{ gap: space.s, marginBottom: space.s }}>
             {/* T83: the trip's illustrated cover with its name and dates. */}
-            {cover ? <TripCoverHero scene={cover} photo={coverPhoto} title={trip.name} subtitle={formatRange(trip.startDate, trip.endDate, lang)} /> : null}
+            {cover ? (
+              <View>
+                <TripCoverHero scene={cover} photo={coverPhoto} title={trip.name} subtitle={formatRange(trip.startDate, trip.endDate, lang)} />
+                <TripCoverAmbient />
+              </View>
+            ) : null}
             {/* T113: "In the air" for this trip's flight (24 h before to 6 h after). */}
             {past ? null : <InflightTripCard trip={trip} />}
             {past ? (
