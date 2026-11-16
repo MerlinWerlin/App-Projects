@@ -1,7 +1,8 @@
 """A full-resolution Home Screen in one Glaze theme, for the App Store shots.
 
 The simulator cannot install the icon profile or place widgets, so this draws the Home Screen from the
-theme's real files: its full-size wallpaper and its Artwork 1-5 pieces (as Small Glaze widgets), with icons
+theme's real files: its full-size wallpaper and ONE of its artworks as a Small Glaze widget up in a top corner (Jared,
+17 Nov: "one art work per page", "only the apps in the top half"), the wallpaper left clear below, with icons
 in the theme's icon style as the app draws it: Feather glyphs on the theme's tile colour, with a starfield
 on night themes and a fine grain on the rest (src/core/iconLook.ts), matched to the in-app previews in the
 captures. App labels are generic words; no brand logos.
@@ -31,6 +32,9 @@ PITCH = 102 * PT
 
 # Alpine Starlight's Artwork 1-5, in the order the Widgets tab lists them.
 ART = ['copper-eclipse', 'jupiter-polar', 'saturn-rings', 'silver-moon', 'spiral-galaxy']
+# The one artwork each store Home Screen shows (top corner). Any other theme: its Artwork 1.
+HERO = {'alpine-starlight': 'saturn-rings', 'desert-afterglow': 'crescent-moon',
+        'cloud-atelier': 'balloon-skiff', 'cobalt-caravan': 'oasis-bird'}
 APPS_ROW = [('camera', 'Camera'), ('image', 'Photos'), ('clock', 'Clock'), ('sun', 'Weather')]
 APPS_ROW2 = [('mail', 'Mail'), ('map', 'Maps'), ('music', 'Music'), ('calendar', 'Calendar')]
 APPS_SIDE = [('book-open', 'Books'), ('edit-3', 'Notes'), ('folder', 'Files'), ('settings', 'Settings')]
@@ -49,8 +53,8 @@ def hexc(s):
     return tuple(int(s[i:i + 2], 16) for i in (0, 2, 4))
 
 
-def remote_theme(theme_id):
-    """(wallpaper, [art pieces], look) of a catalogue theme, from its pack manifest."""
+def remote_theme(theme_id, art=None):
+    """(wallpaper, [the one art piece], look) of a catalogue theme, from its pack manifest."""
     cat = json.loads(fetch(f'{R2}/catalog.json'))
     entry = next(p for p in cat['packs'] if p['id'] == theme_id)
     base = f"{R2}/{entry['manifest'].rsplit('/', 1)[0]}"
@@ -60,7 +64,9 @@ def remote_theme(theme_id):
     # src/core/artworkCoverage.ts), never simply the manifest's first art pieces (those can repeat a motif).
     cov = json.loads((GLAZE / 'scripts/packs/artwork-coverage.json').read_text(encoding='utf8'))['perTheme'][theme_id]
     art_base = f"{R2}/{cov['manifest'].rsplit('/', 1)[0]}"
-    arts = [Image.open(io.BytesIO(fetch(f'{art_base}/{img}'))).convert('RGB') for img in cov['images'][:5]]
+    want = art or HERO.get(theme_id)
+    pick = next((i for i in cov['images'] if want and i.startswith(f'widget-{want}.')), cov['images'][0])
+    arts = [Image.open(io.BytesIO(fetch(f'{art_base}/{pick}'))).convert('RGB')]
     pal = man['palette']
     look = {'tile': hexc(pal['tile']), 'glyph': hexc(pal['glyph']),
             'texture': 'stars' if entry.get('category') == 'Space & Night' else 'grain'}
@@ -130,7 +136,31 @@ def light_under(img, box):
     return img.crop(tuple(round(v) for v in box)).convert('L').resize((1, 1), Image.BOX).getpixel((0, 0)) > 175
 
 
+def blended(art):
+    """The artwork as the phone shows it (src/core/artBlend.ts via scripts/packs/blend-audit.py): a plain backdrop
+    is keyed or feathered away so the subject floats on the wallpaper; a full scene keeps its rounded tile."""
+    try:
+        import importlib.util
+        import numpy as np
+        spec = importlib.util.spec_from_file_location('blend', GLAZE / 'scripts/packs/blend-audit.py')
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        rgba = np.asarray(art.convert('RGBA'), dtype=np.uint8).copy()
+        d = m.decide(m.measure(rgba))
+        if d.get('mode') in (None, 'none', 'tile', 'opaque'):
+            return None
+        return Image.fromarray(m.apply_blend(rgba, d, fill_interior=True), 'RGBA')
+    except Exception as e:  # numpy missing or an odd piece: fall back to the rounded tile
+        print('blend skipped:', e)
+        return None
+
+
 def widget(img, art, x, y, size):
+    b = blended(art)
+    if b is not None:
+        b = b.resize((size, size), Image.LANCZOS)
+        img.alpha_composite(b, (x, y))
+        return
     a = art.resize((size, size), Image.LANCZOS).convert('RGBA')
     sh = Image.new('RGBA', img.size, (0, 0, 0, 0))
     ImageDraw.Draw(sh).rounded_rectangle((x, y + 10, x + size, y + size + 10), round(size * 0.13), fill=(0, 0, 0, 110))
@@ -157,7 +187,7 @@ def status_bar(img, font):
     d.rounded_rectangle((bx + 26 * PT, 28 * PT, bx + 27.5 * PT, 32 * PT), 2, fill=ink + (140,))
 
 
-def build(img, arts, look, fonts, feather):
+def build(img, arts, look, fonts, feather, corner='left'):
     scale = max(W / img.size[0], H / img.size[1])
     img = img.resize((round(img.size[0] * scale), round(img.size[1] * scale)), Image.LANCZOS)
     img = img.crop(((img.size[0] - W) // 2, (img.size[1] - H) // 2, (img.size[0] - W) // 2 + W, (img.size[1] - H) // 2 + H)).convert('RGBA')
@@ -175,20 +205,16 @@ def build(img, arts, look, fonts, feather):
             label(img, name, cx, top + ICON + 5 * PT, lab)
             seed += 1
 
-    # Rows 1-2: Artwork 1 and Artwork 2.
-    widget(img, arts[0], left, ROW0, wsize)
-    widget(img, arts[1], right, ROW0, wsize)
-    # All five Artwork widgets: 1-2, a row of apps, 3-4, then 5 beside four apps.
-    row(APPS_ROW, ROW0 + 2 * PITCH)
-    widget(img, arts[2], left, ROW0 + 3 * PITCH, wsize)
-    widget(img, arts[3], right, ROW0 + 3 * PITCH, wsize)
-    top = ROW0 + 5 * PITCH
-    widget(img, arts[4], left, top, wsize)
-    for i, (g, name) in enumerate(APPS_SIDE):
-        cx, t = COLS[2 + i % 2], top + (i // 2) * PITCH
+    # One artwork, up in a top corner (a Small widget over two icon columns and two rows); four apps beside it
+    # and one more row of four under it. Everything below stays clear so the wallpaper does the talking.
+    art_x, apps_cols = (left, COLS[2:]) if corner == 'left' else (right, COLS[:2])
+    widget(img, arts[0], art_x, ROW0, wsize)
+    for i, (g, name) in enumerate(APPS_ROW):
+        cx, t = apps_cols[i % 2], ROW0 + (i // 2) * PITCH
         img.alpha_composite(icon(g, feather, seed, look), (cx - ICON // 2, t))
         label(img, name, cx, t + ICON + 5 * PT, lab)
         seed += 1
+    row(APPS_ROW2, ROW0 + 2 * PITCH)
     # Search pill and dock.
     d = ImageDraw.Draw(img)
     pill = Image.new('RGBA', img.size, (0, 0, 0, 0))
@@ -216,17 +242,19 @@ def main():
     ap.add_argument('--pack', default=str(GLAZE / 'assets/starter-packs/alpine-starlight'))
     ap.add_argument('--theme', help='a catalogue theme id (downloaded from the pack host)')
     ap.add_argument('--out', required=True)
+    ap.add_argument('--art', help='which artwork goes in the corner (e.g. saturn-rings); default HERO[theme]')
+    ap.add_argument('--corner', choices=['left', 'right'], default='left')
     ap.add_argument('--fonts')
     ap.add_argument('--vector-icons', default=str(GLAZE / VI))
     a = ap.parse_args()
     GLYPHS.update(json.loads((Path(a.vector_icons) / 'glyphmaps/Feather.json').read_text()))
     from compose import fonts_dir
     if a.theme:
-        wall, arts, look = remote_theme(a.theme)
+        wall, arts, look = remote_theme(a.theme, a.art)
     else:
         wall = Image.open(glob.glob(str(Path(a.pack) / 'wallpaper-*.webp'))[0]).convert('RGB')
-        arts, look = [piece(a.pack, n) for n in ART], STARS
-    img = build(wall, arts, look, str(fonts_dir(a.fonts)), str(Path(a.vector_icons) / 'Fonts/Feather.ttf'))
+        arts, look = [piece(a.pack, a.art or HERO['alpine-starlight'])], STARS
+    img = build(wall, arts, look, str(fonts_dir(a.fonts)), str(Path(a.vector_icons) / 'Fonts/Feather.ttf'), a.corner)
     img.save(a.out)
     print(a.out, img.size)
 
