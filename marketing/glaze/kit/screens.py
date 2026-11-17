@@ -11,7 +11,9 @@ glaze-packs-v1 release by fetch.py. Each theme gives:
 Icons use Glaze's own glyph set and tile maths (apps/glaze/assets/store/src/art.js, original art).
 Nothing here is fetched; fonts are local.
 """
-import base64, json, pathlib, sys
+import base64, json, os, pathlib, sys
+# Layouts (env GLAZE_LAYOUT): pair (two widgets, default); corner (one artwork in a top corner, GLAZE_CORNER=left|right,
+# GLAZE_WIDGET=<part of the file name> picks the artwork; Jared, 17 Nov 2026); apps (apps only, in the top half).
 from playwright.sync_api import sync_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]
@@ -64,11 +66,22 @@ function screenHome(){
   let h=`<div class="screen"><div class="wall" style="background-image:url(${T.wall})"></div>`;
   const sb = GA.home(T,[],{noDock:true}).match(/<div class="status"[\s\S]*?<\/div>/)[0].replace(/color:[^;"]+/,'color:'+ink).replace(/fill="[^"]+"/g,'fill="'+ink+'"').replace(/stroke="(?!none)[^"]+"/g,'stroke="'+ink+'"');
   h+=sb;
-  const W=T.widgets;
-  if(W[0]) h+=`<div class="wart" style="left:18px;top:60px;width:167px;height:167px;background-image:url(${W[0]})"></div>`;
-  if(W[1]) h+=`<div class="wart" style="left:205px;top:60px;width:167px;height:167px;background-image:url(${W[1]})"></div>`;
-  let y=246, k=0;
-  for(const n of [4,4]){ for(let i=0;i<n;i++){ const [g,l]=GA.APPS[k++]; h+=`<div class="abs app" style="left:${24+i*93.3}px;top:${y}px">${gtile(g)}<div class="lbl" style="color:${ink}">${l}</div></div>`;} y+=100; }
+  const W=T.widgets, app=(i,y,k)=>{ const [g,l]=GA.APPS[k%%GA.APPS.length]; return `<div class="abs app" style="left:${24+i*93.3}px;top:${y}px">${gtile(g)}<div class="lbl" style="color:${ink}">${l}</div></div>`; };
+  if(T.layout==='corner'){
+    // one small artwork widget in a top corner (2x2 icon slots), apps beside and below it; the rest is wallpaper
+    const right=T.corner==='right', wx=right?205:18; let k=0;
+    if(W[0]) h+=`<div class="wart" style="left:${wx}px;top:62px;width:167px;height:167px;background-image:url(${W[0]})"></div>`;
+    for(const y of [66,166]) for(const i of (right?[0,1]:[2,3])) h+=app(i,y,k++);
+    for(let i=0;i<4;i++) h+=app(i,266,k++);
+  } else if(T.layout==='apps'){
+    // apps only, in the top half
+    let k=0; for(const y of [66,166,266]) for(let i=0;i<4;i++) h+=app(i,y,k++);
+  } else {
+    if(W[0]) h+=`<div class="wart" style="left:18px;top:60px;width:167px;height:167px;background-image:url(${W[0]})"></div>`;
+    if(W[1]) h+=`<div class="wart" style="left:205px;top:60px;width:167px;height:167px;background-image:url(${W[1]})"></div>`;
+    let y=246, k=0;
+    for(const n of [4,4]){ for(let i=0;i<n;i++) h+=app(i,y,k++); y+=100; }
+  }
   const dock=`<div class="dock" style="background:rgba(255,255,255,${T.wallDark?0.12:0.28})">${['chat','image','music','compass'].map(g=>gtile(g)).join('')}</div>`;
   const dots=`<div class="pdots"><span style="background:${ink}"></span><span style="background:${ink};opacity:.4"></span><span style="background:${ink};opacity:.4"></span></div>`;
   return h+dots+dock+'</div>';
@@ -120,10 +133,14 @@ with sync_playwright() as pw:
         wall = d / "wallpaper.webp"
         order = [w["image"] for w in m.get("widgets", []) if w.get("kind") == "art"]
         files = [d / ("w-" + f) for f in order if (d / ("w-" + f)).exists()] or sorted(d.glob("w-*"))
+        pick = os.environ.get("GLAZE_WIDGET")  # e.g. saturn-rings: put that artwork first
+        if pick:
+            files = sorted(files, key=lambda f: pick not in f.name)
         t = {"id": tid, "name": m["name"],
              "palette": {"bg": pal["bg"], "surface": pal["tile"], "accent": pal["tile"], "ink": pal["text"], "glyph": pal["glyph"]},
              "widget": {"style": "solid", "font": "body", "accent": pal["accent"]}, "categories": [], "displayFont": "rounded", "plus": False,
-             "wall": data_uri(wall), "wallDark": wall_is_dark(wall), "widgets": [blended_uri(f) for f in files[:3]], "wmEdge": edge_colour(files[2] if len(files) > 2 else files[0])}
+             "wall": data_uri(wall), "wallDark": wall_is_dark(wall), "widgets": [blended_uri(f) for f in files[:3]], "wmEdge": edge_colour(files[2] if len(files) > 2 else files[0]),
+             "layout": os.environ.get("GLAZE_LAYOUT", "pair"), "corner": os.environ.get("GLAZE_CORNER", "left")}
         html = PAGE % (css, glaze_data, art_js, json.dumps(t))
         for kind in ("home", "lock"):
             pg.set_content(html.replace("location.hash==='#lock'", "true" if kind == "lock" else "false"))

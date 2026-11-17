@@ -16,9 +16,8 @@ Apps in rotation (from `apps.json`, stage `live`):
 
 Cue and Backspin posts always say "on Android" / "Google Play" until `appStoreUrl` is set in `apps.json`. Couch posts
 always say "on iPhone" / "App Store" (no `playUrl`). Couch pins: `marketing/pins/couch-live-2026-11.json`; reel `co-r01`.
-Glaze is the same (iPhone only). Glaze pins: `marketing/pins/glaze-live-2026-11.json` (images from
-`apps/glaze/store/screenshots/6.9/`); reel `gl-r01`. Glaze is a Pinterest-first app: aesthetic Home Screen ideas are
-a big Pinterest topic, so give it every other open 19:00 slot through November.
+Glaze is the same (iPhone only). Glaze pins: `marketing/pins/glaze-live-2026-11.json`; pins come from Home Screens rendered from the real theme art (marketing/glaze/kit/screens.py, GLAZE_LAYOUT=corner or apps: one artwork in a top corner or apps only in the top half), never from apps/glaze/store/screenshots/6.9/ (Jared, 17 Nov: those don't show the themes properly). Reel `gl-r01`
+is held. Glaze is a Pinterest-first app: give it every other open 19:00 slot through November.
 
 ## Channels (checked 10 Nov 2026 in Jared's Chrome)
 | Channel | Account | State | Use |
@@ -160,10 +159,14 @@ Glaze 1.0.42 went live on the App Store on 16 Nov 2026 (approved within a day).
 - **Site**: `docs/glaze/` product, compare, alternatives and FAQ pages plus `facts.txt`/`llms.txt`, built by
   `marketing/site/build.py` from `marketing/site/answers.json` (the builder now handles a yearly Plus: `plus.billing`).
   Live once the PR merges and GitHub Pages deploys.
-- **Pinterest**: GL-T01..06 rendered from the real store screenshots; GL-T01, T02 and T03 scheduled for 17, 19 and 20
+- **Images redone (Jared, 17 Nov: "the art works are ment to be one up in the corner and then like only the apps in the top half")**:
+  the store screenshots were pulled. The 3 scheduled pins were deleted and re-scheduled with new Home Screens
+  (Alpine Starlight with one Saturn artwork in the corner, Cloud Atelier apps only, Cobalt Caravan with the compass in
+  the corner), in `marketing/glaze/media/2026-11-17/screens/`. The Instagram reel was deleted. GL-T04..06 need new images.
+- **Pinterest**: GL-T01..06 first rendered from the store screenshots; GL-T01, T02 and T03 scheduled for 17, 19 and 20
   Nov at 19:00 on Fun & Useful Phone Apps (AI label off). GL-T04..06 are next. Once `docs/glaze/` is live, a Glaze pin can
   link to `glaze/compare/` per the compare-page rule.
-- **Instagram**: reel `gl-r01` live 17 Nov (https://www.instagram.com/fernandfableau/reel/Df0Vxr2MPCE/), Facebook
+- **Instagram**: reel `gl-r01` posted 17 Nov, deleted the same day at Jared's request (wrong images), Facebook
   share off.
 - **TikTok**: `gl-r01` uploaded but TikTok Studio's Schedule button did nothing (3 tries, no error, 17 Nov). It is first
   in the queue for the next TikTok slot.

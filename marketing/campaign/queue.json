@@ -97,13 +97,14 @@
     "#iphonetips"
    ],
    "tiktok": {
-    "status": "queued",
-    "note": "17 Nov: scheduling for 18 Nov 19:30 failed (TikTok Studio's Schedule button did nothing after 3 tries, no error shown). Post it next, before co-r01."
+    "status": "held",
+    "note": "Jared, 17 Nov: the store-screenshot images are wrong. Don't post gl-r01; re-make the reel from kit Home Screens first."
    },
    "instagram": {
-    "status": "live",
+    "status": "deleted",
     "url": "https://www.instagram.com/fernandfableau/reel/Df0Vxr2MPCE/",
-    "posted": "2026-11-17"
+    "posted": "2026-11-17",
+    "deleted": "2026-11-17"
    }
   }
  ],

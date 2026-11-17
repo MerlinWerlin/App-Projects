@@ -2,7 +2,7 @@
  {
   "id": "GL-T01",
   "style": "shot",
-  "image": "apps/glaze/store/screenshots/6.9/01-home-screen.jpg",
+  "image": "marketing/glaze/media/2026-11-17/screens/alpine-starlight-corner.jpg",
   "palette": "lilac",
   "kicker": "New on iPhone",
   "title": "A whole Home Screen from one theme",
@@ -19,7 +19,7 @@
  {
   "id": "GL-T02",
   "style": "shot",
-  "image": "apps/glaze/store/screenshots/6.9/03-every-mood.jpg",
+  "image": "marketing/glaze/media/2026-11-17/screens/cloud-atelier-apps.jpg",
   "palette": "peach",
   "kicker": "Home Screen ideas",
   "title": "A look for every mood",
@@ -36,7 +36,7 @@
  {
   "id": "GL-T03",
   "style": "shot",
-  "image": "apps/glaze/store/screenshots/6.9/07-matching-icons.jpg",
+  "image": "marketing/glaze/media/2026-11-17/screens/cobalt-caravan-corner.jpg",
   "palette": "sky",
   "kicker": "iPhone tip",
   "title": "Matching icons for your apps",
@@ -64,7 +64,8 @@
   "hs": 76,
   "link": "https://apps.apple.com/au/app/glaze-icon-themes-widgets/id6826415074?ct=pinterest-live-2026-11",
   "pin_title": "Aesthetic iPhone Widget Ideas: Artwork Widgets That Match Your Wallpaper",
-  "desc": "Put Artwork 1 to 5 on your iPhone Home Screen: each small widget shows a different piece from your Glaze theme, and they all change when you change theme. Every theme has a wallpaper and matching icons too. 10 premium themes free; Glaze Plus A$2.99 a year. No ads, no tracking."
+  "desc": "Put Artwork 1 to 5 on your iPhone Home Screen: each small widget shows a different piece from your Glaze theme, and they all change when you change theme. Every theme has a wallpaper and matching icons too. 10 premium themes free; Glaze Plus A$2.99 a year. No ads, no tracking.",
+  "note": "Needs a new image before use: the store screenshots are out (Jared, 17 Nov)."
  },
  {
   "id": "GL-T05",
@@ -80,7 +81,8 @@
   "hs": 76,
   "link": "https://apps.apple.com/au/app/glaze-icon-themes-widgets/id6826415074?ct=pinterest-live-2026-11",
   "pin_title": "Photo Widgets for iPhone: Put Your Own Pictures on Your Home Screen",
-  "desc": "Glaze's Custom 1 to 5 widgets show your own pictures, or a favourite artwork from a theme, and they're free without Glaze Plus. Your photos never leave your iPhone. Pair them with one of 140+ original themes for a wallpaper and icons that match. No ads, no account."
+  "desc": "Glaze's Custom 1 to 5 widgets show your own pictures, or a favourite artwork from a theme, and they're free without Glaze Plus. Your photos never leave your iPhone. Pair them with one of 140+ original themes for a wallpaper and icons that match. No ads, no account.",
+  "note": "Needs a new image before use: the store screenshots are out (Jared, 17 Nov)."
  },
  {
   "id": "GL-T06",
@@ -96,6 +98,7 @@
   "hs": 76,
   "link": "https://merlinwerlin.github.io/App-Projects/glaze/?utm_source=pinterest&utm_medium=pin&utm_campaign=live-2026-11",
   "pin_title": "Change Your Whole iPhone Look in One Tap: Glaze Home Screen Themes",
-  "desc": "Tap a theme, answer Use this theme?, and your Glaze widgets switch to its art straight away. Then Glaze lists the next steps: add the wallpaper, the matching icons and the widgets, and you can skip any step and come back later. Over 140 original themes, 10 premium themes free to keep."
+  "desc": "Tap a theme, answer Use this theme?, and your Glaze widgets switch to its art straight away. Then Glaze lists the next steps: add the wallpaper, the matching icons and the widgets, and you can skip any step and come back later. Over 140 original themes, 10 premium themes free to keep.",
+  "note": "Needs a new image before use: the store screenshots are out (Jared, 17 Nov)."
  }
 ]
