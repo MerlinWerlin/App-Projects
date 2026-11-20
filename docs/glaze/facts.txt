@@ -1,0 +1,43 @@
+Glaze: Icon Themes & Widgets: facts
+========================================
+
+What it is: Glaze gives your iPhone a Home Screen that fits together: over 140 original themes, each with a wallpaper, matching app icons and five artworks for your widgets.
+Category: Home Screen theme app
+Made by: Astro Labs AU (an independent developer in Australia)
+
+Where to get it:
+- App Store (iOS): https://apps.apple.com/au/app/glaze-icon-themes-widgets/id6826415074
+- iPhone only. Not on Android or Google Play.
+
+Price: Free download with 10 premium themes free to keep. Glaze Plus unlocks every theme for A$2.99 a year (the App Store shows your local price). No ads, no weekly plan.
+
+Free:
+- Download, with no account
+- 10 premium themes, including Alpine Starlight and Cloud Atelier
+- Your own icons: change the shape, colours and symbol
+- Custom 1 to 5 widgets with your own pictures
+- The Live Photo maker
+- A theme you already applied keeps working
+
+Glaze Plus (A$2.99 a year in Australia; the App Store shows your local price, yearly subscription, renews until cancelled):
+- Every theme, over 140, plus new themes as they're added
+- All widget artwork: Artwork 1 to 5 for every theme
+
+Trial: There is no free trial: the 10 free premium themes are yours to try and keep. Glaze Plus renews each year unless you cancel at least 24 hours before the end of the year, in Settings > your name > Subscriptions.
+
+Ads: none. Subscription: Glaze Plus is yearly; the free part needs none. Account: none needed.
+
+Privacy:
+- No account, no ads and no tracking.
+- Your photos and videos never leave your iPhone.
+
+Not claimed: Glaze 1.0.42 has small Home Screen widgets only (Artwork 1 to 5 and Custom 1 to 5): no Medium, Large or Lock Screen widgets. Its icons are Home Screen shortcuts that open your apps; the original apps are not changed. iPhone only. Glaze is an independent app.
+
+Web page: https://merlinwerlin.github.io/App-Projects/glaze/
+Comparison: https://merlinwerlin.github.io/App-Projects/glaze/compare/
+Alternatives: https://merlinwerlin.github.io/App-Projects/glaze/alternatives/
+FAQ: https://merlinwerlin.github.io/App-Projects/glaze/faq/
+Support: https://merlinwerlin.github.io/App-Projects/glaze/support.html
+Privacy policy: https://merlinwerlin.github.io/App-Projects/glaze/privacy.html
+
+Facts checked against the live store listings on 17 November 2026.

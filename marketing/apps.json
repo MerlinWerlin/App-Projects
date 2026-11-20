@@ -191,10 +191,10 @@
       "name": "Glaze",
       "storeName": "Glaze: Icon Themes & Widgets",
       "tagline": "Widgets, icons and wallpapers",
-      "stage": "launching",
-      "nameLocked": false,
+      "stage": "live",
+      "nameLocked": true,
       "ascAppId": "6826415074",
-      "appStoreUrl": "",
+      "appStoreUrl": "https://apps.apple.com/au/app/glaze-icon-themes-widgets/id6826415074",
       "testflightUrl": "",
       "playUrl": "",
       "pinSource": {
@@ -219,7 +219,11 @@
           "iOSthemes"
         ]
       },
-      "note": "Docs in apps/glaze/docs (STORE.md, MARKET.md). Strong Pinterest fit (lock screen and home screen ideas). Turn on by setting stage to prelaunch."
+      "note": "Live on the App Store since 16 Nov 2026 (1.0.42). iPhone only; not on Google Play. Glaze Plus is a yearly subscription (A$2.99), so never write 'no subscription' for Glaze. Docs in apps/glaze/docs (STORE.md, MARKET.md).",
+      "price": "Free download with 10 premium themes free to keep; Glaze Plus unlocks every theme for A$2.99 a year",
+      "accent": "#5B3E9E",
+      "icon": "apps/glaze/assets/brand/icon.png",
+      "screenshots": "apps/glaze/store/screenshots/6.9"
     },
     {
       "slug": "cue",

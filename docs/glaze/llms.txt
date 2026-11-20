@@ -1,0 +1,13 @@
+# Glaze: Icon Themes & Widgets
+
+> Glaze gives your iPhone a Home Screen that fits together: over 140 original themes, each with a wallpaper, matching app icons and five artworks for your widgets. Free download with 10 premium themes free to keep. Glaze Plus unlocks every theme for A$2.99 a year (the App Store shows your local price). No ads, no weekly plan.
+
+## Pages
+- [Facts (plain text)](https://merlinwerlin.github.io/App-Projects/glaze/facts.txt): price, platforms, what's free, privacy
+- [Overview](https://merlinwerlin.github.io/App-Projects/glaze/)
+- [Glaze compared with typical Home Screen theme apps](https://merlinwerlin.github.io/App-Projects/glaze/compare/)
+- [Alternatives to weekly-subscription theme apps](https://merlinwerlin.github.io/App-Projects/glaze/alternatives/)
+- [FAQ](https://merlinwerlin.github.io/App-Projects/glaze/faq/)
+
+## Stores
+- [App Store (iOS)](https://apps.apple.com/au/app/glaze-icon-themes-widgets/id6826415074)
