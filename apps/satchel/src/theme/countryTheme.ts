@@ -30,7 +30,8 @@ function heroPair(theme: Theme, hues: readonly [number, number], sat: number, to
   const [deepFrom, brightFrom] = theme.dark ? [0.16, 0.24] : [0.26, 0.4];
   const deep = walk(hues[0], s, deepFrom, -0.01, (c) => heroStopOk(theme, c, true));
   const bright = walk(hues[1], s, brightFrom, -0.01, (c) => heroStopOk(theme, c, false));
-  return deep && bright ? [deep, bright] : theme.hero[tone];
+  // Design pass 3: tab heads are solid ticket stock, so the country's deep colour fills the whole head (no gradient).
+  return deep && bright ? [deep, deep] : theme.hero[tone];
 }
 
 function derive(base: Theme, spec: CountryThemeSpec): Theme {

@@ -8,6 +8,8 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 15000
 
+- takeScreenshot: 00-trips-${MODE}
+
 - openLink: satchel://schedule
 - waitForAnimationToEnd:
     timeout: 8000

@@ -35,9 +35,10 @@ function DayPage({ trip, date, now, width, inTab }: { trip: Trip; date: string; 
     <ScrollView style={{ width }} contentContainerStyle={{ paddingHorizontal: space.l, paddingTop: space.m, paddingBottom: (inTab ? 0 : insets.bottom) + space.xxl, gap: space.m }}>
       {/* Day heading */}
       <View accessible accessibilityRole="header" style={{ gap: 2 }}>
-        {rel ? <Text style={[typeScale.caption, { color: theme.accentInk }]}>{rel}</Text> : null}
+        {/* Design pass 3: no label above the date; "Today" / "Tomorrow" leads the line under it, in the red overprint. */}
         <Text style={[typeScale.displayM, { color: theme.ink }]}>{formatDay(date, lang)}</Text>
         <Text style={[typeScale.small, { color: theme.muted }]}>
+          {rel ? <Text style={{ fontFamily: typeScale.bodyStrong.fontFamily, color: theme.accentInk }}>{`${rel} · `}</Text> : null}
           {[s.dayNumber ? t('today.dayOf', { n: s.dayNumber, total: s.totalDays }) : t('today.outside'), t('today.zoneTime', { city: zoneCity(s.zone) })].join(' · ')}
         </Text>
       </View>
@@ -165,12 +166,12 @@ export function TripDays({ trip, initialDay, inTab }: { trip: Trip; initialDay?:
               disabled={!q.date}
               onPress={() => q.date && go(q.date)}
               style={{
-                flex: 1,
                 minHeight: TOUCH,
-                borderRadius: radius.pill,
+                paddingHorizontal: space.l,
+                borderRadius: radius.m,
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: on ? theme.ink : theme.card,
+                backgroundColor: on ? theme.ink : 'transparent',
                 borderWidth: 1,
                 borderColor: on ? theme.ink : theme.line,
                 opacity: q.date ? 1 : 0.45,
@@ -185,7 +186,7 @@ export function TripDays({ trip, initialDay, inTab }: { trip: Trip; initialDay?:
           accessibilityLabel={t('today.import')}
           accessibilityHint={t('today.importHint')}
           onPress={() => router.push({ pathname: '/itinerary', params: { tripId: trip.id, day: current } })}
-          style={{ width: TOUCH, minHeight: TOUCH, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.accentStrong }}
+          style={{ width: TOUCH, minHeight: TOUCH, borderRadius: radius.m, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.accentStrong }}
         >
           <Text style={[typeScale.title, { color: theme.onAccent }]} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
             +
