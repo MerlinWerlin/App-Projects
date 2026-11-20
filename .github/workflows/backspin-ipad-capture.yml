@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: backspin-ipad-capture
+  group: backspin-ipad-capture-${{ inputs.set }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -157,10 +157,11 @@ jobs:
           PY
           }
           shot() { xcrun simctl io "$UDID" screenshot "$OUT/$1.png"; }
-          route() {  # $1 name, $2 url path
+          route() {  # $1 name, $2 route path. openurl now stops at an "Open in Backspin?" prompt, so the route goes in as
+            # a launch argument the app reads once at startup (app/_layout.tsx, backspinCaptureRoute).
             xcrun simctl terminate "$UDID" $BID 2>/dev/null || true
-            xcrun simctl launch "$UDID" $BID; sleep 9
-            if [ -n "$2" ]; then xcrun simctl openurl "$UDID" "backspin://$2"; sleep 5; fi
+            if [ -n "$2" ]; then xcrun simctl launch "$UDID" $BID -backspinCaptureRoute "/$2"; else xcrun simctl launch "$UDID" $BID; fi
+            sleep 11
             shot "$1"
           }
           xcrun simctl ui "$UDID" appearance dark
