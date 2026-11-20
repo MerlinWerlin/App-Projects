@@ -1,5 +1,5 @@
 // A round from anywhere: quick play, a pack line, freestyle, the daily, or challenge-a-friend.
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
 import { canSaveMore, dailyShareText, dayKey, FREE_SAVES, findLine, liveStreak, randomLine } from '../src/core/game.ts';
 import { PACKS } from '../src/content/index.ts';
@@ -67,6 +67,8 @@ export default function Round() {
 
   return (
     <Screen header>
+      {/* Where this line came from (pack, daily, freestyle) is the navigation title, not a label over the step. */}
+      <Stack.Screen options={{ title: heading }} />
       <RoundEngine
         key={key}
         line={pick?.line.t ?? null}

@@ -50,26 +50,38 @@ export type Theme = Palette & {
   font: Skin['font'];
   radius: Skin['radius'];
   cardFinish: Skin['card'];
+  /** Where the forwards ink (rec) and the backwards ink (rew) overprint: the "match" colour. */
+  overprint: string;
+  /** How the two inks combine when printed over each other: multiply on paper, screen on black stock. */
+  blend: 'multiply' | 'screen';
+  /** Light tints of each ink, for selected rows and quiet fills (a riso screen tint, never a gradient). */
+  recTint: string;
+  rewTint: string;
 };
 
+/**
+ * The default look, "Print" (id stays 'booth' so saved settings carry over). Two spot inks on paper, the way a
+ * risograph party flyer is printed: fluoro pink is your voice going forwards, blue is it played backwards, and where
+ * the two overprint they make the deep violet "match" colour. Flat inks only: no gradients, no glow. See DESIGN.md.
+ */
 export const BOOTH: Skin = {
   id: 'booth',
-  name: 'Booth',
-  vibe: 'The original late-night record booth.',
-  font: { heading: 'System', body: 'System', number: 'System', headingWeight: '800', headingTracking: -0.4 },
-  radius: { s: 10, m: 16, l: 24 },
-  card: { borderWidth: 0.5, shadowOpacity: 0, shadowRadius: 0 },
+  name: 'Print',
+  vibe: 'Two inks on paper: pink for your voice, blue for it backwards.',
+  font: { heading: 'BackspinDisplay', body: 'System', number: 'BackspinDisplay', headingWeight: '800', headingTracking: 0 },
+  radius: { s: 8, m: 14, l: 20 },
+  card: { borderWidth: 0, shadowOpacity: 0, shadowRadius: 0 },
   dark: {
-    bg: '#14111F', card: '#1F1B2E', cardHi: '#2A2540', ink: '#F6F1FF', sub: '#B8AFD0', faint: '#7D7499', line: '#352F4D',
-    rec: '#D63A2F', recInk: '#FFFFFF', rew: '#2FD6C2', rewInk: '#06201D', gold: '#FFC94A', good: '#5BE38B', bad: '#FF8A80',
-    overlay: 'rgba(8,6,14,0.72)', bgGradient: ['#14111F', '#14111F'], recGradient: ['#E5483C', '#C8321F'], glow: '#FF5A4E',
-    cardBorder: '#352F4D', shadow: '#000000', discBody: '#0B0912', discGroove: '#26213A', labelForward: '#FF5A4E', labelBack: '#2FD6C2', score: '#FFC94A',
+    bg: '#131217', card: '#1D1B22', cardHi: '#27252D', ink: '#F3F1EB', sub: '#B4AFBD', faint: '#7E7987', line: '#34313B',
+    rec: '#FF5FB1', recInk: '#131217', rew: '#7A97F0', rewInk: '#131217', gold: '#FF5FB1', good: '#4FD08A', bad: '#FF7A73',
+    overlay: 'rgba(8,7,10,0.72)', bgGradient: ['#131217', '#131217'], recGradient: ['#FF5FB1', '#FF5FB1'], glow: '#FF5FB1',
+    cardBorder: '#34313B', shadow: '#000000', discBody: '#F3F1EB', discGroove: '#131217', labelForward: '#FF5FB1', labelBack: '#7A97F0', score: '#F3F1EB',
   },
   light: {
-    bg: '#FBF7F2', card: '#FFFFFF', cardHi: '#F2ECF8', ink: '#1A1726', sub: '#5A5370', faint: '#8C85A0', line: '#E6DFEE',
-    rec: '#CC3A2A', recInk: '#FFFFFF', rew: '#0B7A6F', rewInk: '#FFFFFF', gold: '#B07A00', good: '#1E8E4E', bad: '#C62828',
-    overlay: 'rgba(20,17,31,0.45)', bgGradient: ['#FBF7F2', '#FBF7F2'], recGradient: ['#D63A2F', '#BA2F1E'], glow: '#E8402F',
-    cardBorder: '#E6DFEE', shadow: '#1A1726', discBody: '#211C30', discGroove: '#3A3350', labelForward: '#E8402F', labelBack: '#0E8C7F', score: '#B07A00',
+    bg: '#F3F1EB', card: '#E8E5DC', cardHi: '#DDD9CD', ink: '#17151C', sub: '#55515E', faint: '#8A8693', line: '#D3CFC4',
+    rec: '#FF4FA8', recInk: '#17151C', rew: '#3255A4', rewInk: '#FFFFFF', gold: '#D81F7F', good: '#0F7A45', bad: '#C2272D',
+    overlay: 'rgba(23,21,28,0.45)', bgGradient: ['#F3F1EB', '#F3F1EB'], recGradient: ['#FF4FA8', '#FF4FA8'], glow: '#FF4FA8',
+    cardBorder: '#D3CFC4', shadow: '#17151C', discBody: '#17151C', discGroove: '#F3F1EB', labelForward: '#FF4FA8', labelBack: '#3255A4', score: '#17151C',
   },
 };
 
@@ -96,6 +108,17 @@ const mix = (a: string, b: string, t: number) => {
   return '#' + c.map((v) => v.toString(16).padStart(2, '0')).join('').toUpperCase();
 };
 
+/** Two inks printed over each other: multiply on paper (light), screen on black stock (dark). */
+export function overprint(a: string, b: string, dark: boolean): string {
+  if (!/^#[0-9a-fA-F]{6}$/.test(a) || !/^#[0-9a-fA-F]{6}$/.test(b)) return a;
+  const x = parseInt(a.slice(1), 16), y = parseInt(b.slice(1), 16);
+  const c = [16, 8, 0].map((sh) => {
+    const p = ((x >> sh) & 255) / 255, q = ((y >> sh) & 255) / 255;
+    return Math.round((dark ? 1 - (1 - p) * (1 - q) : p * q) * 255);
+  });
+  return '#' + c.map((v) => v.toString(16).padStart(2, '0')).join('').toUpperCase();
+}
+
 /** Record red that is readable as small text on bg, card and cardHi (the red fill itself is often only ~3.5:1). */
 export function readableRec(p: Palette): string {
   const ok = (c: string) => /^#[0-9a-fA-F]{6}$/.test(c) && [p.bg, p.card, p.cardHi].every((b) => contrastRatio(c, b) >= 4.5);
@@ -106,7 +129,11 @@ export function readableRec(p: Palette): string {
 export function makeTheme(skinId: string, dark: boolean): Theme {
   const s = SKINS.find((k) => k.id === skinId) ?? BOOTH;
   const p = dark ? s.dark : s.light;
-  return { ...p, recText: readableRec(p), dark, skin: s.id, font: s.font, radius: s.radius, cardFinish: s.card };
+  return {
+    ...p, recText: readableRec(p), dark, skin: s.id, font: s.font, radius: s.radius, cardFinish: s.card,
+    overprint: overprint(p.rec, p.rew, dark), blend: dark ? 'screen' : 'multiply',
+    recTint: mix(p.rec, p.bg, dark ? 0.8 : 0.78), rewTint: mix(p.rew, p.bg, dark ? 0.8 : 0.82),
+  };
 }
 
 export const DARK: Theme = makeTheme('booth', true);
@@ -115,16 +142,25 @@ export const LIGHT: Theme = makeTheme('booth', false);
 /** React Native font family for a skin font name ('System' = the default San Francisco). */
 export const fam = (f: string) => (f === 'System' ? undefined : f);
 
-export const R = { s: 10, m: 16, l: 24, xl: 32, pill: 999 };
+/** Corner radii: slips of paper are gently rounded; controls are pills. */
+export const R = { s: 8, m: 14, l: 20, xl: 28, pill: 999 };
+/** 4-point spacing grid. */
 export const SP = (n: number) => n * 4;
+/**
+ * Type. Display sizes (hero, title, h, line, num) use the skin's heading face (Print: Backspin Display, a condensed
+ * extra-bold grotesque); body sizes follow iOS text styles in the system face. Tracking tightens as size grows.
+ */
 export const TYPE = {
-  hero: { fontSize: 34, fontWeight: '800' as const, letterSpacing: -0.5 },
-  title: { fontSize: 24, fontWeight: '800' as const, letterSpacing: -0.3 },
-  h: { fontSize: 18, fontWeight: '700' as const },
-  body: { fontSize: 16, fontWeight: '400' as const, lineHeight: 22 },
-  bodyB: { fontSize: 16, fontWeight: '700' as const },
-  small: { fontSize: 13, fontWeight: '500' as const },
-  line: { fontSize: 26, fontWeight: '800' as const, lineHeight: 32, letterSpacing: -0.2 },
-  num: { fontSize: 64, fontWeight: '900' as const, letterSpacing: -2, fontVariant: ['tabular-nums' as const] },
+  hero: { fontSize: 44, fontWeight: '800' as const, lineHeight: 46, letterSpacing: -0.6 },
+  title: { fontSize: 30, fontWeight: '800' as const, lineHeight: 32, letterSpacing: -0.3 },
+  h: { fontSize: 22, fontWeight: '800' as const, lineHeight: 26, letterSpacing: -0.1 },
+  body: { fontSize: 17, fontWeight: '400' as const, lineHeight: 24 },
+  bodyB: { fontSize: 17, fontWeight: '600' as const, lineHeight: 22 },
+  small: { fontSize: 15, fontWeight: '400' as const, lineHeight: 20 },
+  line: { fontSize: 40, fontWeight: '800' as const, lineHeight: 42, letterSpacing: -0.4 },
+  num: { fontSize: 112, fontWeight: '800' as const, lineHeight: 112, letterSpacing: -2, fontVariant: ['tabular-nums' as const] },
 };
 export const HEADING_KINDS = new Set<keyof typeof TYPE>(['hero', 'title', 'h', 'line']);
+
+/** Motion tokens (ms). Press feedback is instant-feeling; nothing UI-level runs past 300 ms except the flip reveal. */
+export const MOTION = { press: 120, quick: 180, base: 240, reveal: 420 };

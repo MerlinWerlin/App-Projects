@@ -84,8 +84,8 @@ export default function Settings() {
       </Card>
 
       <View style={{ gap: SP(3), marginTop: SP(6) }}>
-        <Button kind="quiet" icon="✉️" title={t('settings.feedback')} onPress={() => openMail(t('feedback.subject'), `\n\n—\nBackspin ${version} · ${Platform.OS} ${Platform.Version} · ${stats.rounds} rounds`)} />
-        <Button kind="quiet" icon="❓" title={t('settings.replayIntro')} onPress={() => router.push('/intro')} />
+        <Button kind="quiet" icon="mail" title={t('settings.feedback')} onPress={() => openMail(t('feedback.subject'), `\n\n—\nBackspin ${version} · ${Platform.OS} ${Platform.Version} · ${stats.rounds} rounds`)} />
+        <Button kind="quiet" icon="help" title={t('settings.replayIntro')} onPress={() => router.push('/intro')} />
       </View>
       <T kind="small" color={theme.sub} style={{ marginTop: SP(6) }}>
         {t('settings.privacy')}

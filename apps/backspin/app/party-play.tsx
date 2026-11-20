@@ -75,7 +75,7 @@ export default function PartyPlay() {
         ) : null}
         <Button
           title={t('party.again')}
-          icon="🔁"
+          icon="loop"
           style={{ marginTop: SP(6) }}
           onPress={() => {
             save({ ...party, players: party.players.map((p) => ({ ...p, score: 0, rounds: 0 })), round: 1, turn: 0, seed: party.seed + 101 });
@@ -114,7 +114,7 @@ export default function PartyPlay() {
           <T kind="title" center style={{ marginTop: SP(6) }}>
             {t('party.handTo', { name: player.name })}
           </T>
-          <Button title={t('party.ready')} icon="👍" style={{ marginTop: SP(6), alignSelf: 'stretch' }} onPress={() => (haptic.press(), setHandoff(false))} />
+          <Button title={t('party.ready')} icon="check" style={{ marginTop: SP(6), alignSelf: 'stretch' }} onPress={() => (haptic.press(), setHandoff(false))} />
         </View>
       ) : party.mode === 'copy' ? (
         <View style={{ marginTop: SP(3) }}>
@@ -203,7 +203,7 @@ function GuessTurn({ party, line, onDone }: { party: Party; line: string; onDone
           </Card>
           <Button
             title={rec.phase === 'recording' ? t('round.stop') : t('round.tap')}
-            icon={rec.phase === 'recording' ? '⏹' : '🎙'}
+            icon={rec.phase === 'recording' ? 'stop' : 'mic'}
             style={{ marginTop: SP(6) }}
             onPress={() => (rec.phase === 'recording' ? rec.finish() : recordSecret())}
           />
@@ -217,7 +217,7 @@ function GuessTurn({ party, line, onDone }: { party: Party; line: string; onDone
           <T kind="bodyB" center style={{ marginTop: SP(3) }}>
             {t('party.guessPrompt')}
           </T>
-          <Button kind="rewind" icon="▶︎" title={t('round.playReversed')} style={{ marginTop: SP(4) }} onPress={() => playIt(revUri)} />
+          <Button kind="rewind" icon="play" title={t('round.playReversed')} style={{ marginTop: SP(4) }} onPress={() => playIt(revUri)} />
           <Button title={t('party.checkGuess')} style={{ marginTop: SP(3) }} onPress={() => (stop(), setStage('reveal'), prefs.autoplay && playIt(origUri))} />
         </>
       )}
@@ -228,7 +228,7 @@ function GuessTurn({ party, line, onDone }: { party: Party; line: string; onDone
               {t('round.playOriginal')}
             </T>
             <T style={[TYPE.line, { textAlign: 'center', marginTop: SP(2) }]}>{line}</T>
-            <Button kind="quiet" small icon="▶︎" title={t('round.play')} style={{ marginTop: SP(3) }} onPress={() => playIt(origUri)} />
+            <Button kind="quiet" small icon="play" title={t('round.play')} style={{ marginTop: SP(3) }} onPress={() => playIt(origUri)} />
           </Card>
           <T kind="bodyB" style={{ marginTop: SP(5) }}>
             {t('party.whoGuessed')}

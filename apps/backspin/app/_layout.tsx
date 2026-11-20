@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppProvider, useApp } from '../src/state/app.tsx';
+import { fam } from '../src/ui/theme.ts';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 try {
@@ -39,7 +40,14 @@ function Shell() {
     const id = setTimeout(() => SplashScreen.hideAsync().catch(() => {}), 4000);
     return () => clearTimeout(id);
   }, []);
-  const header = { headerShown: true, headerStyle: { backgroundColor: theme.bg }, headerTintColor: theme.ink, headerShadowVisible: false } as const;
+  const header = {
+    headerShown: true,
+    headerStyle: { backgroundColor: theme.bg },
+    headerTintColor: theme.ink,
+    headerShadowVisible: false,
+    headerTitleStyle: { fontFamily: fam(theme.font.heading), fontWeight: theme.font.headingWeight, fontSize: 20 },
+    headerBackButtonDisplayMode: 'minimal',
+  } as const;
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
       <StatusBar style={theme.dark ? 'light' : 'dark'} />

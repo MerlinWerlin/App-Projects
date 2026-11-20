@@ -37,7 +37,7 @@ export default function PackScreen() {
         ListHeaderComponent={
           <View style={{ marginBottom: SP(4) }}>
             <T color={theme.sub}>{t(`pack.${pack.id}.sub` as Key)}</T>
-            <Button title={t('packs.shuffle')} icon="🎲" style={{ marginTop: SP(4) }} onPress={random} />
+            <Button title={t('packs.shuffle')} icon="shuffle" style={{ marginTop: SP(4) }} onPress={random} />
             <View style={{ flexDirection: 'row', gap: SP(2), marginTop: SP(4), flexWrap: 'wrap' }}>
               {(['packs.all', 'packs.easy', 'packs.medium', 'packs.hard'] as const).map((k, i) => (
                 <Chip key={k} label={t(k)} on={d === i} onPress={() => setD(i as 0 | 1 | 2 | 3)} />

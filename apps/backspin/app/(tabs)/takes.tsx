@@ -33,7 +33,7 @@ export default function Takes() {
             {t('takes.emptyBody')}
           </T>
           {/* Not a dead end: the empty state leads straight into a round. */}
-          <Button title={t('home.quick')} icon="🎙" style={{ marginTop: SP(6), alignSelf: 'stretch' }} onPress={() => router.push({ pathname: '/round', params: { mode: 'quick', seed: String(Date.now()) } })} />
+          <Button title={t('home.quick')} icon="mic" style={{ marginTop: SP(6), alignSelf: 'stretch' }} onPress={() => router.push({ pathname: '/round', params: { mode: 'quick', seed: String(Date.now()) } })} />
         </View>
       </Screen>
     );

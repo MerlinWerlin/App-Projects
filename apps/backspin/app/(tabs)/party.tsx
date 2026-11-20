@@ -73,7 +73,7 @@ export default function PartySetup() {
         ))}
       </View>
       {names.length < max ? (
-        <Button kind="ghost" small icon="＋" title={t('party.addPlayer')} style={{ marginTop: SP(3), alignSelf: 'flex-start' }} onPress={() => setNames((x) => [...x, ''])} />
+        <Button kind="ghost" small icon="plus" title={t('party.addPlayer')} style={{ marginTop: SP(3), alignSelf: 'flex-start' }} onPress={() => setNames((x) => [...x, ''])} />
       ) : !owned ? (
         <Press label={t('party.morePlus')} onPress={() => router.push('/plus')}>
           <T kind="small" color={theme.gold} style={{ marginTop: SP(3), fontWeight: '700' }}>
@@ -89,7 +89,7 @@ export default function PartySetup() {
         ))}
       </View>
 
-      <Button title={t('party.start')} icon="🎉" style={{ marginTop: SP(8) }} onPress={start} />
+      <Button title={t('party.start')} icon="party" style={{ marginTop: SP(8) }} onPress={start} />
       <Toastish text={msg} />
     </Screen>
   );
