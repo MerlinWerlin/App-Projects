@@ -71,7 +71,7 @@ export default function Settings() {
 
       <SectionTitle>{t('settings.plus')}</SectionTitle>
       <Card>
-        <T kind="bodyB">{plus ? `✓ ${t('plus.owned')}` : t('plus.headline')}</T>
+        <T kind="bodyB">{plus ? t('plus.owned') : t('plus.headline')}</T>
         {!plus ? <Button title={t('plus.buyNoPrice')} style={{ marginTop: SP(3) }} onPress={() => router.push('/plus')} /> : null}
         <Button
           kind="ghost"

@@ -50,7 +50,7 @@ export default function Round() {
     setResult(r);
     setSaved(null);
     const { newBest } = recordRound(r.score.score, mode === 'daily' ? today : undefined);
-    if (newBest) setSaved(`🏆 ${t('round.newBest')}`);
+    if (newBest) setSaved(t('round.newBest'));
   };
 
   const onSave = async (r: RoundResult) => {
@@ -59,7 +59,7 @@ export default function Round() {
     try {
       const files = await saveTakeFiles(id, r.originalUri, r.copyUri);
       addTake({ id, at: Date.now(), line: pick?.line.t ?? t('round.freestyle'), pack: pick?.pack ?? null, score: r.score.score, ...files });
-      setSaved(`✓ ${t('round.saved')}`);
+      setSaved(t('round.saved'));
     } catch (e) {
       setSaved(t('share.error', { detail: e instanceof Error ? e.message : String(e) }));
     }

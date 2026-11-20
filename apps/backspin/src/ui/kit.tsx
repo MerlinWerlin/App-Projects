@@ -86,7 +86,8 @@ export function Emoji({ children, size = 28, style }: { children: string; size?:
 
 /**
  * A slip of paper: one flat tint of the ground, no border, no shadow. `hi` is a deeper slip; `selected` is printed
- * in a pink tint with a pink rule, so the chosen option reads without a checkmark.
+ * in a pink tint with a pink rule, so the chosen option reads without a checkmark. Every skin renders flat: skin
+ * shadow settings are ignored (DESIGN.md, Elevation).
  */
 export function Card({ children, style, onPress, label, hi, selected }: {
   children: ReactNode; style?: StyleProp<ViewStyle>; onPress?: () => void; label?: string; hi?: boolean; selected?: boolean;
@@ -100,10 +101,6 @@ export function Card({ children, style, onPress, label, hi, selected }: {
       padding: SP(4),
       borderWidth: selected ? 2 : f.borderWidth,
       borderColor: selected ? theme.rec : theme.cardBorder,
-      shadowColor: theme.shadow,
-      shadowOpacity: f.shadowOpacity,
-      shadowRadius: f.shadowRadius,
-      shadowOffset: { width: 0, height: Math.round(f.shadowRadius / 3) },
     },
     style,
   ];
