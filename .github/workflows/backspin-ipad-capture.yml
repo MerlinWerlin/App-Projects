@@ -2,6 +2,12 @@ name: Backspin iPad release captures
 
 on:
   workflow_dispatch:
+    inputs:
+      set:
+        description: 'ipad = release captures; iphone-design = every main screen on an iPhone, dark and light, seeded data'
+        type: choice
+        options: [ipad, iphone-design]
+        default: ipad
 
 permissions:
   contents: read
@@ -12,6 +18,7 @@ concurrency:
 
 jobs:
   capture:
+    if: inputs.set != 'iphone-design'
     runs-on: macos-latest
     timeout-minutes: 90
     defaults:
@@ -81,3 +88,101 @@ jobs:
             ${{ runner.temp }}/backspin-simulator.log
             ${{ runner.temp }}/backspin-pods.log
           retention-days: 30
+
+  # Design review captures: real simulator renders of every main screen, dark and light, with seeded play data so
+  # Home, Takes and the free-goes chip show real states. Storage is seeded by writing AsyncStorage's manifest.
+  design:
+    if: inputs.set == 'iphone-design'
+    runs-on: macos-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: apps/backspin
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Select Xcode
+        run: |
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+      - run: npm ci --no-audit --no-fund
+      - name: Prebuild
+        run: |
+          npx expo prebuild --platform ios --no-install
+          cd ios
+          pod install > "$RUNNER_TEMP/backspin-pods.log" 2>&1 || { tail -100 "$RUNNER_TEMP/backspin-pods.log"; exit 1; }
+      - name: Boot an iPhone Pro
+        run: |
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
+          python3 - <<'PY'
+          import json,os,re
+          devices=json.load(open(os.environ['RUNNER_TEMP']+'/devices.json'))['devices']
+          c=[d for r,ds in devices.items() if 'iOS' in r for d in ds if re.fullmatch(r'iPhone 1[5-9] Pro',d['name'])]
+          if not c: raise SystemExit('No iPhone Pro simulator')
+          c.sort(key=lambda d:d['name']); d=c[-1]
+          open(os.environ['GITHUB_ENV'],'a').write('UDID='+d['udid']+'\n'); print('Capture device:',d['name'])
+          PY
+      - name: Build
+        run: |
+          xcrun simctl boot "$UDID"; xcrun simctl bootstatus "$UDID" -b
+          xcodebuild -workspace ios/Backspin.xcworkspace -scheme Backspin -configuration Release \
+            -sdk iphonesimulator -destination "id=$UDID" -derivedDataPath "$RUNNER_TEMP/dd" \
+            CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/build.log" 2>&1 \
+            || { tail -180 "$RUNNER_TEMP/build.log"; exit 1; }
+      - name: Capture
+        run: |
+          OUT="$RUNNER_TEMP/shots"; mkdir -p "$OUT"
+          BID=com.jared797.backspin
+          xcrun simctl install "$UDID" "$RUNNER_TEMP/dd/Build/Products/Release-iphonesimulator/Backspin.app"
+          xcrun simctl status_bar "$UDID" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+          xcrun simctl privacy "$UDID" grant microphone $BID
+          DATA=$(xcrun simctl get_app_container "$UDID" $BID data)
+          seed() {  # $1 = theme, $2 = introSeen
+            python3 - "$DATA" "$1" "$2" <<'PY'
+          import json,os,sys,datetime
+          data,theme,intro=sys.argv[1],sys.argv[2],sys.argv[3]=='1'
+          today=datetime.date.today().isoformat()
+          prefs=dict(haptics=True,countdown=True,holdToRecord=False,autoplay=True,calm=False,theme=theme,lang='en',introSeen=intro,skin='booth')
+          stats=dict(rounds=4,best=78,streak=dict(current=3,best=3,last=today),daily={})
+          now=int(datetime.datetime.now().timestamp()*1000)
+          takes=[dict(id='a1',at=now-3600e3,line='banana',pack='warmup',score=78,original='x',copy='x'),
+                 dict(id='a2',at=now-86400e3,line='peanut butter sandwich',pack='warmup',score=61,original='x',copy='x'),
+                 dict(id='a3',at=now-2*86400e3,line='Freestyle',pack=None,score=44,original='x',copy='x')]
+          m={'backspin.prefs.v1':json.dumps(prefs),'backspin.stats.v1':json.dumps(stats),'backspin.takes.v1':json.dumps(takes),
+             'backspin.langHint.v1':'"done"'}
+          for d in [f'{data}/Library/Application Support/com.jared797.backspin/RCTAsyncLocalStorage_V1',f'{data}/Documents/RCTAsyncLocalStorage_V1',f'{data}/Library/Application Support/RCTAsyncLocalStorage_V1']:
+            os.makedirs(d,exist_ok=True); json.dump(m,open(d+'/manifest.json','w'))
+          PY
+          }
+          shot() { xcrun simctl io "$UDID" screenshot "$OUT/$1.png"; }
+          route() {  # $1 name, $2 url path
+            xcrun simctl terminate "$UDID" $BID 2>/dev/null || true
+            xcrun simctl launch "$UDID" $BID; sleep 9
+            if [ -n "$2" ]; then xcrun simctl openurl "$UDID" "backspin://$2"; sleep 5; fi
+            shot "$1"
+          }
+          xcrun simctl ui "$UDID" appearance dark
+          seed dark 0; route dark-00-intro ""
+          for MODE in dark light; do
+            xcrun simctl ui "$UDID" appearance $MODE
+            seed $MODE 1
+            route $MODE-01-home ""
+            route $MODE-02-round "round?mode=pack&line=wa72b302"
+            route $MODE-03-packs "packs"
+            route $MODE-04-pack "pack/warmup"
+            route $MODE-05-party "party"
+            route $MODE-06-takes "takes"
+            route $MODE-07-settings "settings"
+            route $MODE-08-plus "plus"
+          done
+          printf 'Source: %s\nSimulator captures for design review.\n' "$GITHUB_SHA" > "$OUT/README.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backspin-iphone-design
+          path: |
+            ${{ runner.temp }}/shots
+            ${{ runner.temp }}/build.log
+          retention-days: 14
