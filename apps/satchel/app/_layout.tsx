@@ -151,6 +151,8 @@ function Shell() {
           <Stack.Screen name="openin/add" options={{ ...header, title: t('openin.add.route') }} />
           <Stack.Screen name="+not-found" options={{ ...header, title: t('openin.notFound.route') }} />
           <Stack.Screen name="essentials" options={{ headerShown: false, presentation: 'fullScreenModal', animation: 'none' }} />
+          {/* Screenshot builds only: every destination theme head (app/theme-gallery.tsx). */}
+          <Stack.Screen name="theme-gallery" options={{ headerShown: false }} />
         </Stack>
       ) : null}
       {/* T57: covers the stack (and its headers) in the app switcher while the vault or a document is open. */}

@@ -29,12 +29,14 @@ function Flower({ x, y, r, fill, centre, opacity = 1 }: { x: number; y: number; 
 /** The country's header art, viewBox 160 x 120, drawn toward the top right of a hero banner. */
 export const CountryMotif = memo(function CountryMotif({ motif, paints, width = 160, height = 120 }: { motif: MotifId; paints: readonly [string, string]; width?: number; height?: number }) {
   const { theme } = useApp();
-  const wash = theme.heroWash;
+  // Follow-up to design pass 3 (Jared: "couldn't tell it was a Japan theme"): the landmark is drawn solid enough to
+  // read at a glance, a pale silhouette with full-strength paints, still behind the banner text.
+  const wash = theme.heroMotif;
   const line = theme.heroMuted;
   const [p0, p1] = paints;
-  const soft = { fill: p0, fillOpacity: 0.55 } as const;
-  const soft1 = { fill: p1, fillOpacity: 0.5 } as const;
-  const stroke = { stroke: line, strokeOpacity: 0.55, strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', fill: 'none' } as const;
+  const soft = { fill: p0, fillOpacity: 0.9 } as const;
+  const soft1 = { fill: p1, fillOpacity: 0.85 } as const;
+  const stroke = { stroke: line, strokeOpacity: 0.9, strokeWidth: 2.4, strokeLinecap: 'round', strokeLinejoin: 'round', fill: 'none' } as const;
   return (
     <Svg width={width} height={height} viewBox="0 0 160 120" accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
       {motif === 'fuji' ? (

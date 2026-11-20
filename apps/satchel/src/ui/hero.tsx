@@ -332,11 +332,11 @@ export function HeroHeader({
   // still passes one, closes the block as a small line under the subtitle.
   const text = (
     <>
-      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayXL, { color: theme.heroInk, maxWidth: scene || mascot ? '64%' : '78%' }]}>
+      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayXL, { color: theme.heroInk, maxWidth: mascot && !compact ? '56%' : scene || mascot ? '64%' : '78%' }]}>
         {title}
       </Text>
-      {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: scene || mascot ? '66%' : '82%' }]}>{subtitle}</Text> : null}
-      {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted, maxWidth: scene || mascot ? '66%' : '82%' }]}>{eyebrow}</Text> : null}
+      {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: mascot && !compact ? '56%' : scene || mascot ? '66%' : '82%' }]}>{subtitle}</Text> : null}
+      {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted, maxWidth: mascot && !compact ? '56%' : scene || mascot ? '66%' : '82%' }]}>{eyebrow}</Text> : null}
     </>
   );
   return (
@@ -344,11 +344,12 @@ export function HeroHeader({
       {/* A solid deep ticket stock (no gradient, no glow), torn off along a perforated bottom edge. */}
       <View style={{ borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.hero[tone][0] }}>
       <GradientFill tone={tone} />
-      {country ? <CountryHeroArt pick={country} compact={compact} scene={!!scene || !!mascot} motif={!mascot && (!!scene || plainArt)} topInset={topInset} /> : null}
+      {/* The country's landmark always shows on a themed head (behind the mascot or scene), so the theme reads at a glance. */}
+      {country ? <CountryHeroArt pick={country} compact={compact} scene={!!scene && !mascot} motif={!!scene || !!mascot || plainArt} topInset={topInset} /> : null}
       {mascot ? (
         <View pointerEvents="none" style={{ position: 'absolute', right: space.xs, bottom: compact ? 0 : space.xs, top: topInset, justifyContent: compact ? 'center' : 'flex-end' }}>
           <FocusEntrance from="right" delay={duration.fast}>
-            <Mascot pose={mascot} size={compact ? 64 : 128} />
+            <Mascot pose={mascot} size={compact ? 84 : 172} />
           </FocusEntrance>
         </View>
       ) : scene ? (
@@ -364,7 +365,8 @@ export function HeroHeader({
       )}
       <View style={{ paddingTop: topInset + pad, paddingBottom: pad + space.xs, paddingHorizontal: space.l, gap: compact ? space.xs : space.s }}>
         {scene ? <FocusEntrance style={{ gap: compact ? space.xs : space.s }}>{text}</FocusEntrance> : text}
-        {children ? <View style={{ marginTop: space.s, gap: space.s }}>{children}</View> : null}
+        {/* With the mascot standing on the right, extras (a progress bar...) keep clear of him. */}
+        {children ? <View style={{ marginTop: space.s, gap: space.s, maxWidth: mascot && !compact ? '56%' : undefined }}>{children}</View> : null}
       </View>
       </View>
       <Perforation color={theme.paper} />

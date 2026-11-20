@@ -11,6 +11,7 @@
 //    evening after an early last one, on that day's own clock. A day with nothing planned is all free.
 //  - Tonight: the stay whose nights include this day (a check-in today counts).
 // Items whose zone this phone can't read (T43) are left off the timetable (the trip screen still lists them).
+import { countdown, type Countdown } from './glance.ts';
 import { mainZone } from './itinerarytext.ts';
 import { tripZoneAt } from './journal.ts';
 import { isTransport, type Item, type LocalDate, type LocalDateTime, type Stamp, type Trip } from './model.ts';
@@ -147,6 +148,14 @@ export function scheduleDays(trip: Trip): LocalDate[] {
 /** The date "today" is on this trip: today where the traveller is (the zone their last booking left them in). */
 export function tripToday(trip: Trip, now: number): LocalDate {
   return localDate(fromUtc(now, tripZoneAt(trip, now)));
+}
+
+/**
+ * The trip's countdown ("Day 3 of 9", "In 12 days") counted on the trip's own calendar: today where the traveller is
+ * (the same day the Itinerary tab shows), not the phone's zone. The Trips hero and every trip pass use this.
+ */
+export function tripCountdown(trip: Trip, now: number): Countdown {
+  return countdown(trip, tripToday(trip, now));
 }
 
 /** The day the timetable opens on: today when it's a trip day, else the first day (before) or last day (after). */

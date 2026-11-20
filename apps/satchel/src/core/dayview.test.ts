@@ -1,7 +1,8 @@
 // T170 Today timetable: day bucketing, now / next, free time, stays, zones. Every name below is invented.
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { daySchedule, dayStrip, headline, lookOf, openingDay, stayTonight, todayTomorrow, tripToday, type Block, type FreeBlock } from './dayview.ts';
+import { daySchedule, dayStrip, headline, lookOf, openingDay, stayTonight, todayTomorrow, tripCountdown, tripToday, type Block, type FreeBlock } from './dayview.ts';
+import { countdown } from './glance.ts';
 import type { Item, Trip } from './model.ts';
 import { toUtc } from './tz.ts';
 
@@ -175,4 +176,15 @@ test('the Itinerary tab opens on the trip on now, else the next, else the last o
   assert.equal(scheduleTrip([past, later, soon], at('2027-03-05T10:00'))?.id, 'soon');
   assert.equal(scheduleTrip([past, mk('older', '2026-01-01', '2026-01-05')], at('2027-03-05T10:00'))?.id, 'past');
   assert.equal(scheduleTrip([], at('2027-03-05T10:00')), null);
+});
+
+test("the trip countdown counts on the trip's calendar, like the Itinerary tab (not the phone's zone)", () => {
+  const trip = paris();
+  // 23:30 in Paris on 3 Mar is already 4 Mar at home in Sydney. The trip is on day 2 (it started 2 Mar).
+  const now = at('2027-03-03T23:30');
+  assert.equal(tripToday(trip, now), '2027-03-03');
+  assert.deepEqual(tripCountdown(trip, now), countdown(trip, '2027-03-03'));
+  assert.equal((tripCountdown(trip, now) as { day: number }).day, 2);
+  // Counting on the home phone's date would wrongly say day 3.
+  assert.equal((countdown(trip, '2027-03-04') as { day: number }).day, 3);
 });

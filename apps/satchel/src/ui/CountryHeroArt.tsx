@@ -24,7 +24,8 @@ export const CountryHeroArt = memo(function CountryHeroArt({
   motif?: boolean;
   topInset?: number;
 }) {
-  const width = compact ? 120 : 160;
+  // Big enough to read at a glance: the landmark fills the right of the head, behind the mascot or scene.
+  const width = compact ? 150 : 230;
   return (
     <>
       {motif ? (
@@ -33,7 +34,7 @@ export const CountryHeroArt = memo(function CountryHeroArt({
         accessibilityElementsHidden
         importantForAccessibility="no-hide-descendants"
         // Behind a tab scene the motif is a softer backdrop; on its own it takes the illustration's place.
-        style={{ position: 'absolute', right: -space.s, top: topInset + (compact ? 0 : space.xs), opacity: scene ? 0.6 : 0.95 }}
+        style={{ position: 'absolute', right: -space.s, top: topInset + (compact ? 0 : space.xs), opacity: scene ? 0.75 : 1 }}
       >
         <CountryMotif motif={pick.spec.motif} paints={pick.spec.paints} width={width} height={width * 0.75} />
       </View>
