@@ -52,14 +52,15 @@ test('onboarding first screen and Themes browse show no spinners', () => {
   assert.match(read('src', 'ui', 'ShowcaseGrid.tsx'), /<Skeleton\b/, 'showcase placeholders are skeletons');
 });
 
-test('Themes browse uses editorial section headers with eyebrows from i18n', () => {
+test('Themes browse section headers set the theme count after the title, never as an eyebrow', () => {
   const themes = strip(read('app', '(tabs)', 'themes.tsx'));
   assert.match(themes, /<SectionHeader\b/);
-  // T253 (owner-1101h): one section per category plus All themes; the eyebrow is the theme count.
-  assert.match(themes, /eyebrow=\{t\('themes\.browse\.count', \{ count \}\)\}/);
+  // T253 (owner-1101h): one section per category plus All themes; DESIGN.md §3: the count follows the title.
+  assert.match(themes, /meta=\{String\(count\)\}/);
+  assert.doesNotMatch(themes, /eyebrow=/);
   const header = strip(read('src', 'ui', 'SectionHeader.tsx'));
   assert.match(header, /accessibilityRole="header"/);
-  assert.match(header, /eyebrowCaseFor\(script\)/);
+  assert.doesNotMatch(header, /eyebrowCaseFor|textTransform: 'uppercase'/);
 });
 
 test('every Text on the Themes browse path and the first screen carries a Dynamic Type cap', () => {

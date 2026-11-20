@@ -109,8 +109,10 @@ test('type scale follows the iOS sizes and every line height fits its size', () 
   assert.deepEqual([...sizes].sort((a, b) => b - a), sizes);
 });
 
-test('radii, sizes and spacing respect the brief (cards 22-28, pill 999, 48 pt targets)', () => {
-  for (const r of [radiusV2.group, radiusV2.card, radiusV2.cardLarge]) assert.ok(r >= 22 && r <= 28, String(r));
+test('radii, sizes and spacing respect the brief (White Cube prints 12-16, pill 999, 48 pt targets)', () => {
+  // DESIGN.md §4: small print corners, not bubbly 22-28 pt cards.
+  for (const r of [radiusV2.group, radiusV2.card, radiusV2.cardLarge]) assert.ok(r >= 12 && r <= 16, String(r));
+  assert.ok(radiusV2.control < radiusV2.card);
   assert.equal(radiusV2.pill, 999);
   for (const [k, v] of Object.entries(sizeV2)) if (k !== 'rowIcon') assert.ok(v >= 48, k);
   for (const v of Object.values(spaceV2)) assert.equal(v % 2, 0);
@@ -124,13 +126,16 @@ test('iconTileRadius gives the superellipse ratio, rounded to half points', () =
   assert.equal(iconTileRadius(Number.NaN), 0);
 });
 
-test('elevation levels are layered, monotonic and render as box-shadow lists', () => {
+test('elevation: resting cards are flat; floating levels grow and render as box-shadow lists', () => {
   for (const s of ['light', 'dark'] as const) {
     assert.deepEqual(elevationV2[s].flat, []);
+    // DESIGN.md §1.5 / §8: no shadow on resting cards; depth comes from colour steps.
+    assert.deepEqual(elevationV2[s].card, []);
     let prevBlur = 0;
-    for (const lvl of ELEVATION_LEVELS.slice(1)) {
+    for (const lvl of ELEVATION_LEVELS.slice(2)) {
       const layers = elevationV2[s][lvl];
-      assert.equal(layers.length, 2, `${s}.${lvl} has a contact + ambient layer`);
+      assert.equal(layers.length, 1, `${s}.${lvl} has one neutral layer`);
+      assert.ok(layers.every((l) => l.color === '#000000'), `${s}.${lvl} is neutral (no tinted glow)`);
       const blur = Math.max(...layers.map((l) => l.blur));
       assert.ok(blur > prevBlur, `${s}.${lvl} grows`);
       prevBlur = blur;
@@ -138,10 +143,8 @@ test('elevation levels are layered, monotonic and render as box-shadow lists', (
     }
   }
   assert.equal(boxShadowFor('flat', 'light'), '');
-  assert.equal(
-    boxShadowFor('card', 'light'),
-    '0px 1px 2px 0px rgba(59, 31, 56, 0.06), 0px 6px 16px -2px rgba(59, 31, 56, 0.08)',
-  );
+  assert.equal(boxShadowFor('card', 'light'), '');
+  assert.equal(boxShadowFor('raised', 'light'), '0px 2px 8px 0px rgba(0, 0, 0, 0.08)');
 });
 
 test('interpolateClamp matches clamped piecewise-linear interpolation', () => {

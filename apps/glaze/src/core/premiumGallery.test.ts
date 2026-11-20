@@ -226,8 +226,10 @@ test('gallery cards are art-led: remote thumb via expo-image with ThumbHash, nam
   assert.match(CARD, /<HeartButton\b/);
   assert.match(CARD, /card: \{ minHeight: sizeV2\.touch/);
   assert.match(CARD, /accessibilityHint=\{t\('themeUi\.card\.hint'\)\}/);
-  assert.match(CARD, /scheme === 'dark' \? c\.surfaceRaised : c\.surface/);
-  assert.doesNotMatch(CARD, /borderWidth|hairlineWidth/, 'surfaces, not hairlines');
+  // White Cube (DESIGN.md §5): a print on the wall: hairline edge, no surface box, no shadow.
+  assert.match(CARD, /borderWidth: StyleSheet\.hairlineWidth/);
+  assert.match(CARD, /borderColor: c\.separator/);
+  assert.doesNotMatch(CARD, /shadowV2|c\.surfaceRaised|c\.surface/, 'no card box or shadow around the art');
   assert.match(SCREEN, /router\.push\(`\/theme\/\$\{id\}`\)/);
   assert.match(SCREEN, /<GalleryArtCard\b/);
 });

@@ -218,8 +218,8 @@ export default function CollageScreen() {
               accessibilityHint={t('wallpaper.save.openLibraryHint')}
               style={({ pressed }) => [styles.empty, { width: screenW, height: screenH, opacity: pressed ? 0.7 : 1 }]}
             >
-              <View style={[styles.emptyIcon, { backgroundColor: c.tintSoft }]}>
-                <Feather name="grid" size={26} color={c.onTintSoft} />
+              <View style={[styles.emptyIcon]}>
+                <Feather name="grid" size={28} color={c.inkTertiary} />
               </View>
             </Pressable>
           )}

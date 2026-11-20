@@ -101,7 +101,7 @@ import { tickStoredChecklist } from '../src/store/applyChecklist';
 import { applyWidgetTheme } from '../src/store/widgetTheme';
 import { useWidgetHabits, widgetHabitGoal, widgetHabitValue } from '../src/store/widgetHabits';
 import { loadStudio, saveStudio } from '../src/store/widgetStudio';
-import { chromeRadiusV2, circleRadius, continuous, eyebrowCaseFor, fontScaleCap, sizeV2, spaceV2, textV2 } from '../src/theme/tokensV2';
+import { chromeRadiusV2, circleRadius, continuous, fontScaleCap, sizeV2, spaceV2, textV2 } from '../src/theme/tokensV2';
 import { useColorsV2 } from '../src/theme/useTokens';
 import type { FeatherName } from '../src/ui/featherName';
 import { haptic } from '../src/ui/haptics';
@@ -409,8 +409,7 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
   };
 
   const body = (k: TextStyle) => [k, textStyleFor(script, k)];
-  const eyebrow = eyebrowCaseFor(script);
-  // T173: the preview's eyebrow line ("LIVE PREVIEW  Clock · Small"), read as one heading.
+  // The preview's label line ("Live preview  Clock · Small"), read as one heading; no caps eyebrow.
   const previewSubject = [kindName, sizeName].join(' · ');
   const previewHeading = [t('tabs.widgetsTab.studioPreview'), kindName, sizeName].join(', ');
 
@@ -421,12 +420,12 @@ function WidgetStudio({ theme, kind, size }: { theme: Theme; kind: string | null
       <ScrollView bounces={false} overScrollMode="never" stickyHeaderIndices={[0]} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         {/* Live preview, pinned on top. */}
         <View style={[styles.previewWrap, { backgroundColor: c.bg }]}>
-          <SquircleCard size="large" elevation="raised" tone="raised" outline={false} style={styles.previewCard}>
-            {/* T173: a small eyebrow over the stage; VoiceOver hears "Live preview, Clock, Small" once. */}
+          <SquircleCard size="large" elevation="flat" tone="raised" outline={false} style={styles.previewCard}>
+            {/* A plain label over the stage; VoiceOver hears "Live preview, Clock, Small" once. */}
             <View accessible accessibilityRole="header" accessibilityLabel={previewHeading} style={styles.previewHead}>
               <Text
-                maxFontSizeMultiplier={fontScaleCap('eyebrow')}
-                style={[...body(textV2.eyebrow), { letterSpacing: eyebrow.letterSpacing, color: c.tint }, eyebrow.upper ? styles.upper : null]}
+                maxFontSizeMultiplier={fontScaleCap('headline')}
+                style={[...body(textV2.headline), { color: c.ink }]}
               >
                 {t('tabs.widgetsTab.studioPreview')}
               </Text>

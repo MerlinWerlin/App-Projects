@@ -144,7 +144,7 @@ function EditorSkeleton() {
       style={[styles.skeletonRoot, styles.content, { backgroundColor: c.bg }]}
     >
       <Skeleton width="100%" height={sizeV2.rowMin} radius={chromeRadiusV2.control} />
-      <SquircleCard size="large" elevation="raised" tone="raised" outline={false} haptic={false}>
+      <SquircleCard size="large" elevation="flat" tone="raised" outline={false} haptic={false}>
         <View style={styles.frame}>
           <Skeleton width={phoneW} height={outerH} radius={radiusV2.cardLarge} />
         </View>
@@ -338,7 +338,7 @@ function Editor({ initial }: EditorProps) {
       />
       {/* Preview on a soft raised surface (no hairline): the whole source, positioned so the frame
           shows the crop, with the Lock Screen on top; the zoom controls and guide note sit with it. */}
-      <SquircleCard size="large" elevation="raised" tone="raised" outline={false} haptic={false}>
+      <SquircleCard size="large" elevation="flat" tone="raised" outline={false} haptic={false}>
         <View style={styles.previewStack}>
           <GestureDetector gesture={gesture}>
             <View

@@ -21,8 +21,8 @@ export function TipJar() {
     <InsetGroup title={t('plus.tipJar.title')} footer={t('plus.tipJar.soon')}>
       <View accessible accessibilityLabel={t('plus.tipJar.a11y')} style={styles.body}>
         <View style={styles.head}>
-          <View style={[styles.tile, { backgroundColor: c.pastels.butter.fill }]}>
-            <Feather name="coffee" size={17} color={c.pastels.butter.ink} />
+          <View style={styles.tile}>
+            <Feather name="coffee" size={20} color={c.inkSecondary} />
           </View>
           <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), styles.flex, { color: c.inkSecondary }]}>
             {t('plus.tipJar.body')}

@@ -310,7 +310,7 @@ export const elevationV2: Record<'light' | 'dark', Record<ElevationLevel, Shadow
     card: [],
     raised: [{ x: 0, y: 2, blur: 8, spread: 0, color: '#000000', opacity: 0.4 }],
     floating: [{ x: 0, y: 8, blur: 24, spread: -4, color: '#000000', opacity: 0.5 }],
-    overlay: [{ x: 0, y: 12, blur: 40, spread: -8, color: '#000000', opacity: 0.55 }],
+    overlay: [{ x: 0, y: 12, blur: 40, spread: -8, color: '#000000', opacity: 0.5 }],
   },
 };
 

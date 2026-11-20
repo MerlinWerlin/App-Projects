@@ -59,8 +59,8 @@ export function ThemeOverrideRow({ theme }: { theme: Theme }) {
         }}
         style={({ pressed }) => [styles.row, { opacity: pressed ? 0.6 : 1 }]}
       >
-        <View style={[styles.tile, continuous, { backgroundColor: c.pastels.lilac.fill }]}>
-          <Feather name="edit-3" size={17} color={c.pastels.lilac.ink} />
+        <View style={[styles.tile]}>
+          <Feather name="edit-3" size={20} color={c.inkSecondary} />
         </View>
         <View style={styles.flex}>
           <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...headline, { color: c.ink }]}>{t('themeUi.override.title')}</Text>

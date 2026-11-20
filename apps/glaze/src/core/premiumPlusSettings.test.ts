@@ -83,7 +83,8 @@ test('Settings: inset groups only, with editorial titles', () => {
   assert.doesNotMatch(s, /<SquircleCard\b/, 'no free-standing cards');
   assert.doesNotMatch(s, /<InsetGroup\b[^>]*\bheader=/, 'editorial titles, not the small header');
   assert.ok((s.match(/<InsetGroup\b[^>]*\btitle=/g) ?? []).length >= 6);
-  assert.match(s, /<InsetGroup eyebrow=\{t\('plus\.lock\.eyebrow'\)\} title=\{PLUS_NAME\}/);
+  assert.match(s, /<InsetGroup title=\{PLUS_NAME\}/);
+  assert.doesNotMatch(s, /eyebrow=/, 'no eyebrow labels (DESIGN.md §8)');
   assert.match(s, /<RestorePurchases variant="row"/);
   assert.match(s, /\{__DEV__ \? <TipJar \/> : null\}/);
   for (const f of [STORAGE, ['src', 'ui', 'LanguageSection.tsx'], ['src', 'plus', 'TipJar.tsx']]) {
@@ -92,18 +93,18 @@ test('Settings: inset groups only, with editorial titles', () => {
     assert.match(src, /<InsetGroup\b[^>]*\btitle=/, f.join('/'));
   }
   const group = strip(read('src', 'ui', 'InsetGroup.tsx'));
-  assert.match(group, /<SectionHeader level="group" flushTop eyebrow=\{eyebrow\} title=\{title\}/);
+  assert.match(group, /<SectionHeader level="group" flushTop meta=\{meta\} title=\{title\}/);
   // The version is a value, read in inkSecondary.
   assert.match(s, /title=\{t\('settings\.about\.versionRow'\)\}\s+value=\{version\}/);
   assert.match(group, /styles\.value, \{ color: c\.inkSecondary \}/);
 });
 
-test('Settings: row icons sit in pastel circles', () => {
+test('Settings: row icons are bare glyphs, never in a tinted circle (DESIGN.md §8)', () => {
   for (const f of [['src', 'ui', 'InsetGroup.tsx'], ['src', 'ui', 'SwitchInsetRow.tsx'], STORAGE, ['src', 'plus', 'TipJar.tsx']]) {
     const src = strip(read(...f));
     assert.doesNotMatch(src, /iconTileRadius/, `${f.join('/')}: no squircle tiles`);
-    assert.match(src, /borderRadius: circleRadius\((tile|sizeV2\.rowIcon)\)/, f.join('/'));
-    assert.match(src, /pastels(\[iconTone\]|\.\w+)\.fill/, f.join('/'));
+    assert.doesNotMatch(src, /backgroundColor: c\.(pastels|tintSoft)/, `${f.join('/')}: no tinted tile behind a glyph`);
+    assert.match(src, /<Feather name=\{?[^}]*\}? size=\{20\} color=\{(c\.inkSecondary|destructive \? c\.danger : c\.inkSecondary)\}/, f.join('/'));
   }
 });
 

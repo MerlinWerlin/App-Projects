@@ -157,23 +157,6 @@ const previewModes = (t: TFunction) =>
     { value: 'lock', label: t('theme.mode.lock') },
   ] as const;
 
-/**
- * G6 header tint: the strongest mix of the theme's accent into the page background that still
- * keeps both header text colours (ink and secondary) at WCAG AA (4.5:1). Falls back to no tint.
- */
-function headerTint(page: string, accent: string, ink: string, muted: string): string {
-  for (const t of [0.32, 0.24, 0.16, 0.1, 0.05]) {
-    let tint: string;
-    try {
-      tint = mix(page, accent, t);
-    } catch {
-      return page;
-    }
-    if (contrastRatio(ink, tint) >= 4.5 && contrastRatio(muted, tint) >= 4.5) return tint;
-  }
-  return page;
-}
-
 type SaveState = 'idle' | 'saved' | 'denied' | 'error';
 
 function ThemeDetailScreen() {
@@ -333,16 +316,7 @@ function ThemeDetail({
   const homeStyle = useAnimatedStyle(() => ({ opacity: homeShown.value }));
   const lockStyle = useAnimatedStyle(() => ({ opacity: 1 - homeShown.value }));
 
-  // G6: the top band fades from transparent to a soft tint of the theme's palette.
-  const tint = useMemo(
-    () => headerTint(c.bg, theme.palette.accent, c.ink, c.inkSecondary),
-    [c.bg, c.ink, c.inkSecondary, theme.palette.accent],
-  );
-  const tintIn = useSharedValue(0);
-  useEffect(() => {
-    tintIn.value = withTiming(1, { duration: reduced ? durations.fast : durations.slow, easing: easeOutCurve });
-  }, [theme.id, reduced, tintIn]);
-  const tintStyle = useAnimatedStyle(() => ({ opacity: tintIn.value }));
+  // White Cube (DESIGN.md §8): no tinted gradient wash behind the title; the art carries the colour.
 
   // G3: using the theme ripples the icons into the Home mock, then a light haptic and a single
   // sheen across "Install icons". Reduced motion: HomeMock skips the ripple and settles at once,
@@ -775,23 +749,6 @@ function ThemeDetail({
         contentContainerStyle={[styles.content, { paddingBottom: (showBar || showDownloadBar ? barH : insets.bottom) + spaceV2.xxl }]}
       >
         <View style={styles.headWrap}>
-          <Animated.View
-            pointerEvents="none"
-            accessibilityElementsHidden
-            importantForAccessibility="no-hide-descendants"
-            style={[StyleSheet.absoluteFill, tintStyle]}
-          >
-            <Svg width="100%" height="100%">
-              <Defs>
-                <LinearGradient id="themeHeadTint" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <Stop offset="0" stopColor={tint} stopOpacity={1} />
-                  <Stop offset="0.7" stopColor={tint} stopOpacity={1} />
-                  <Stop offset="1" stopColor={tint} stopOpacity={0} />
-                </LinearGradient>
-              </Defs>
-              <Rect x={0} y={0} width="100%" height="100%" fill="url(#themeHeadTint)" />
-            </Svg>
-          </Animated.View>
           <View style={styles.head}>
             <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title1')} style={[...ts('title1'), { color: c.ink }]}>
               {theme.name}
@@ -946,7 +903,7 @@ function ThemeDetail({
         {/* T185: the Wallpaper screen. "Saved to Photos ✓" once saved, and Save again always offered
             (someone who deleted it from Photos gets it back). */}
         {step === 'wallpaper' ? (
-          <SquircleCard size="large" elevation="raised" style={styles.side}>
+          <SquircleCard size="large" elevation="flat" style={styles.side}>
             <View style={styles.stack}>
               <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
                 {photo
@@ -1040,7 +997,7 @@ function ThemeDetail({
 
         {/* T185: the Icons screen: the style (with the shape choice), then install. */}
         {step === 'icons' ? (
-          <SquircleCard size="large" elevation="raised" style={styles.side}>
+          <SquircleCard size="large" elevation="flat" style={styles.side}>
             <View style={styles.stack}>
               {/* T240 (owner-1101g #5): the icon look is always visible here, first, as a segmented
                   selector with live previews of the person's own apps (never behind a menu). */}

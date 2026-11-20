@@ -19,8 +19,9 @@ test('theme detail reads as editorial blocks: Icons, Widgets, Wallpaper, Credits
   // (Plain substring checks: an import-shaped regex here would trip guard.test.ts's import scan.)
   assert.ok(d.includes(' SectionHeader, SquircleCard }'), 'SectionHeader comes from src/ui/v2');
   // 1.0.39: the Widgets block (live designs -> Widget Studio) is gone; the Widgets tab shows Artwork 1-5.
-  const order = ['icons', 'wallpaper', 'credits'].map((k) => d.indexOf(`t('theme.section.${k}.eyebrow')`));
-  for (const at of order) assert.ok(at > 0, 'every block has its eyebrow');
+  const order = ["t('theme.section.icons.title')", "t('theme.customise')", "t('theme.section.credits.title')"].map((k) => d.indexOf(k));
+  for (const at of order) assert.ok(at > 0, 'every block has its title');
+  assert.doesNotMatch(d, /eyebrow=/, 'no eyebrow labels (DESIGN.md §8)');
   assert.deepEqual([...order].sort((a, b) => a - b), order, 'blocks in the planned order');
   // T200: no "What's inside" block (its palette moved to the widgets block).
   assert.ok(!d.includes("theme.section.inside"), "no What's inside block");
