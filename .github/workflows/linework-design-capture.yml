@@ -1,0 +1,78 @@
+name: Linework design captures
+# Simulator screenshots of Linework's main screens in light and dark, for design before/after reviews.
+# Runs on demand, or on a push to a `linework-capture/**` branch (so a branch can be captured before this file is on main).
+on:
+  workflow_dispatch:
+  push:
+    branches: ['linework-capture/**']
+permissions:
+  contents: read
+concurrency:
+  group: linework-design-capture-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  capture:
+    runs-on: macos-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: apps/linework
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Select Xcode and install Maestro
+        run: |
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          curl -fLsS https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.12.0/maestro.zip -o "$RUNNER_TEMP/maestro.zip"
+          curl -fLsS https://github.com/mobile-dev-inc/Maestro/releases/download/cli-2.12.0/checksums_sha256.txt -o "$RUNNER_TEMP/checksums_sha256.txt"
+          (cd "$RUNNER_TEMP" && grep 'maestro.zip' checksums_sha256.txt | shasum -a 256 -c -)
+          unzip -q "$RUNNER_TEMP/maestro.zip" -d "$RUNNER_TEMP/lw-maestro"
+          echo "$RUNNER_TEMP/lw-maestro/maestro/bin" >> "$GITHUB_PATH"
+      - run: npm ci --no-audit --no-fund
+      - name: Prebuild
+        run: |
+          node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("app.json"));if(p.expo.updates)p.expo.updates.enabled=false;fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
+          npx expo prebuild --platform ios --no-install
+          cd ios
+          pod install > "$RUNNER_TEMP/lw-pods.log" 2>&1 || { tail -100 "$RUNNER_TEMP/lw-pods.log"; exit 1; }
+      - name: Build the simulator app
+        run: |
+          WS=$(ls -d ios/*.xcworkspace | head -1); SCHEME=$(basename "$WS" .xcworkspace)
+          xcodebuild -workspace "$WS" -scheme "$SCHEME" -configuration Release \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/lw-derived" \
+            CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/lw-simulator.log" 2>&1 \
+            || { tail -180 "$RUNNER_TEMP/lw-simulator.log"; exit 1; }
+      - name: Capture light and dark
+        timeout-minutes: 40
+        run: |
+          APP=$(ls -d "$RUNNER_TEMP"/lw-derived/Build/Products/Release-iphonesimulator/*.app | head -1)
+          DEVICE=$(xcrun simctl list devices available --json | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];a=[x for r,xs in sorted(d.items(),reverse=True) if "iOS" in r for x in xs];p=next((x for x in a if x["name"]=="iPhone 16 Pro"),None) or next(x for x in a if x["name"].startswith("iPhone") and "Pro" in x["name"] and "Max" not in x["name"]);print(p["udid"])')
+          xcrun simctl boot "$DEVICE"
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl install "$DEVICE" "$APP"
+          xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+          RESULT=0
+          for MODE in light dark; do
+            xcrun simctl ui "$DEVICE" appearance "$MODE"
+            mkdir -p "$RUNNER_TEMP/lw-captures/$MODE"
+            MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=240000 \
+              maestro --device "$DEVICE" test --test-output-dir "$RUNNER_TEMP/lw-captures/$MODE" scripts/design-capture-flow.yaml || RESULT=1
+          done
+          find "$RUNNER_TEMP/lw-captures" -name '*.png' | sort
+          printf 'Source: %s\nSimulator captures (iPhone, light + dark), not physical-device QA.\n' "$GITHUB_SHA" > "$RUNNER_TEMP/lw-captures/README.txt"
+          exit "$RESULT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linework-design-captures
+          path: |
+            ${{ runner.temp }}/lw-captures
+            ${{ runner.temp }}/lw-simulator.log
+          retention-days: 14

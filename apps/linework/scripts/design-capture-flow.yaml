@@ -1,0 +1,48 @@
+appId: com.jared797.linework
+---
+# Design captures (linework-design-capture.yml): main tabs + Plus, on a clean install. Simulator only.
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: Skip
+    timeout: 90000
+- tapOn: Skip
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 01-home
+- scroll
+- waitForAnimationToEnd:
+    timeout: 2000
+- takeScreenshot: 02-home-scrolled
+- tapOn:
+    text: Templates
+    index: 0
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 03-templates
+- tapOn:
+    text: Workshop
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: 04-workshop
+- tapOn:
+    text: My drawings
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: 05-drawings
+- tapOn:
+    text: Settings
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: 06-settings
+- tapOn:
+    text: Linework Plus
+    index: 0
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: 07-plus
