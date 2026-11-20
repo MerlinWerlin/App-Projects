@@ -927,7 +927,7 @@ function ThemeDetail({
               ) : null}
               {saveView.badge ? (
                 <View style={[styles.note, continuous, { backgroundColor: c.pastels.mint.fill }]} accessibilityLiveRegion="polite">
-                  <Feather name="check" size={18} color={c.pastels.mint.ink} />
+                  <Feather name="check" size={18} color={c.ok} />
                   <View style={[styles.flex, styles.gap]}>
                     <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.pastels.mint.ink }]}>
                       {t('theme.save.savedBadge')}

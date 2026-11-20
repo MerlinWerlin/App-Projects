@@ -98,9 +98,9 @@ export const darkV2: PaletteV2 = {
   ink: '#F2F2EF',
   inkSecondary: '#ABABA5',
   inkTertiary: '#7E7E79',
-  tint: '#8FAAEE',
+  tint: '#80AEF5',
   onTint: '#0D1730',
-  tintSoft: '#1D2842',
+  tintSoft: '#1A2A44',
   onTintSoft: '#D6E0F8',
   ok: '#72D3A0',
   warn: '#F0BE62',
@@ -273,8 +273,11 @@ export const artFontsV2 = {
   bodyBold: 'Manrope_700Bold',
 } as const;
 
-/** The v1 brand glaze gradient the home mock paints when a theme has no wallpaper (v1 light.glazeA/B). */
-export const brandGlazeV2 = { from: '#7A2E6B', to: '#E0794F' } as const;
+/**
+ * The flat graphite the home mock paints when no theme wallpaper is set (White Cube, DESIGN.md §8:
+ * was a plum-to-orange gradient). `from` and `to` are equal: a flat colour, never a gradient.
+ */
+export const brandGlazeV2 = { from: '#2F2F2D', to: '#2F2F2D' } as const;
 
 /**
  * Ink drawn over photos, wallpapers and artwork: the same in light and dark mode, because the

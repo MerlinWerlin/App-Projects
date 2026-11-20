@@ -41,9 +41,9 @@ One accent (cobalt, the classic ceramic underglaze blue). Selection uses ink, no
 | `ink` | `#161616` | `#F2F2EF` | Primary text; selected chip fill |
 | `inkSecondary` | `#5C5C58` | `#ABABA5` | Labels under art, subtitles, values, footers |
 | `inkTertiary` | `#84847F` | `#7E7E79` | Chevrons, placeholders, counts (large/icon only) |
-| `tint` | `#2B4EA2` | `#8FAAEE` | Cobalt: primary button, links, toggles, checks |
+| `tint` | `#2B4EA2` | `#80AEF5` | Cobalt: primary button, links, toggles, checks |
 | `onTint` | `#FFFFFF` | `#0D1730` | Text on cobalt |
-| `tintSoft` / `onTintSoft` | `#E5EAF5` / `#1F3C82` | `#1D2842` / `#D6E0F8` | Secondary (tinted) button |
+| `tintSoft` / `onTintSoft` | `#E5EAF5` / `#1F3C82` | `#1A2A44` / `#D6E0F8` | Secondary (tinted) button |
 | `ok` / `warn` / `danger` | `#1F7247` / `#8F5A06` / `#B42335` | `#72D3A0` / `#F0BE62` / `#FF8A98` | Status |
 
 `pastels.*` remain as API but are all neutral (fill = `fill`, ink = `ink`-ish): chrome never
