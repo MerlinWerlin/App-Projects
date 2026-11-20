@@ -11,7 +11,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { isRemoteArtTheme } from '../core/remoteCatalog';
 import type { Theme } from '../core/themes';
 import { useT } from '../i18n';
-import { continuous, fontScaleCap, pressV2, radiusV2, shadowV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
+import { continuous, fontScaleCap, pressV2, radiusV2, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { HeartButton } from './HeartButton';
 import { PressableScale } from './PressableScale';
@@ -35,7 +35,7 @@ type Props = {
 };
 
 export const ThemeThumbCard = memo(function ThemeThumbCard({ theme, width, artHeight, onOpen, badge, accessibilityNote, liked, onToggleLike }: Props) {
-  const { c, scheme } = useColorsV2();
+  const { c } = useColorsV2();
   const { t, script } = useT();
   const label = [t('themeUi.card.a11y', { name: theme.name, tagline: theme.tagline }), accessibilityNote ?? null].filter(Boolean).join(' ');
   return (
@@ -47,11 +47,11 @@ export const ThemeThumbCard = memo(function ThemeThumbCard({ theme, width, artHe
         accessibilityRole="button"
         accessibilityLabel={label}
         accessibilityHint={t('themeUi.card.hint')}
-        style={[styles.card, continuous, shadowV2('card', scheme), { width }]}
+        style={[styles.card, { width }]}
       >
-        <View style={[styles.inner, continuous, { backgroundColor: scheme === 'dark' ? c.surfaceRaised : c.surface }]}>
+        <View>
           <View
-            style={[styles.art, noMirror, { width, height: artHeight, backgroundColor: theme.palette.bg }]}
+            style={[styles.art, continuous, noMirror, { width, height: artHeight, backgroundColor: theme.palette.bg, borderColor: c.separator }]}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
             pointerEvents="none"
@@ -80,11 +80,10 @@ export const ThemeThumbCard = memo(function ThemeThumbCard({ theme, width, artHe
 });
 
 const styles = StyleSheet.create({
-  card: { minHeight: sizeV2.touch, borderRadius: radiusV2.card },
-  inner: { borderRadius: radiusV2.card, overflow: 'hidden' },
-  art: { overflow: 'hidden' },
+  card: { minHeight: sizeV2.touch },
+  art: { overflow: 'hidden', borderRadius: radiusV2.card, borderWidth: StyleSheet.hairlineWidth },
   badge: { position: 'absolute', top: spaceV2.xs, end: spaceV2.xs },
-  label: { height: THUMB_LABEL_HEIGHT, justifyContent: 'center', paddingStart: spaceV2.sm, paddingEnd: sizeV2.touch },
+  label: { height: THUMB_LABEL_HEIGHT, justifyContent: 'center', paddingEnd: sizeV2.touch - spaceV2.sm },
   name: { fontWeight: '600' },
   /** Placement only; HeartButton is the ≥ 48 pt target. */
   heart: { position: 'absolute', bottom: 0, end: 0 },

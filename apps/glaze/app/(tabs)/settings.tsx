@@ -241,7 +241,7 @@ function SettingsScreen() {
       </InsetGroup>
 
       {/* Plus as an inset group (T173): one row opens the sheet, Restore purchases is always a row under it. */}
-      <InsetGroup eyebrow={t('plus.lock.eyebrow')} title={PLUS_NAME} footer={t('settings.plus.body')}>
+      <InsetGroup title={PLUS_NAME} footer={t('settings.plus.body')}>
         <InsetRow
           icon="star"
           iconTone="berry"

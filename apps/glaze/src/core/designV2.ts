@@ -48,60 +48,66 @@ export type PaletteV2 = {
   glaze: [string, string];
 };
 
+// White Cube (apps/glaze/DESIGN.md): neutral gallery-wall chrome, one cobalt accent, no pastel
+// chrome. The theme art is the only colour on screen. `pastels` and `glaze` stay as API, neutral.
+const neutralPastelsLight: Record<PastelName, Pastel> = {
+  berry: { fill: '#E8E8E5', ink: '#2E2E2B' },
+  lilac: { fill: '#E8E8E5', ink: '#2E2E2B' },
+  mint: { fill: '#E8E8E5', ink: '#2E2E2B' },
+  butter: { fill: '#E8E8E5', ink: '#2E2E2B' },
+  peach: { fill: '#E8E8E5', ink: '#2E2E2B' },
+  sky: { fill: '#E8E8E5', ink: '#2E2E2B' },
+};
+
+const neutralPastelsDark: Record<PastelName, Pastel> = {
+  berry: { fill: '#2A2A28', ink: '#E6E6E2' },
+  lilac: { fill: '#2A2A28', ink: '#E6E6E2' },
+  mint: { fill: '#2A2A28', ink: '#E6E6E2' },
+  butter: { fill: '#2A2A28', ink: '#E6E6E2' },
+  peach: { fill: '#2A2A28', ink: '#E6E6E2' },
+  sky: { fill: '#2A2A28', ink: '#E6E6E2' },
+};
+
 export const lightV2: PaletteV2 = {
-  bg: '#F4F1F7',
+  bg: '#F3F3F1',
   surface: '#FFFFFF',
   surfaceRaised: '#FFFFFF',
-  fill: '#ECE7F1',
-  separator: '#E2DBE8',
-  ink: '#1D1A21',
-  inkSecondary: '#5E5766',
-  inkTertiary: '#8A8292',
-  tint: '#A2337F',
+  fill: '#E8E8E5',
+  separator: '#DADAD6',
+  ink: '#161616',
+  inkSecondary: '#5C5C58',
+  inkTertiary: '#84847F',
+  tint: '#2B4EA2',
   onTint: '#FFFFFF',
-  tintSoft: '#FBE1F1',
-  onTintSoft: '#7A1F5E',
-  ok: '#22784F',
-  warn: '#9A5B06',
-  danger: '#C2273D',
+  tintSoft: '#E5EAF5',
+  onTintSoft: '#1F3C82',
+  ok: '#1F7247',
+  warn: '#8F5A06',
+  danger: '#B42335',
   onDanger: '#FFFFFF',
-  pastels: {
-    berry: { fill: '#FFD3EA', ink: '#7A1F5E' },
-    lilac: { fill: '#E3D9FF', ink: '#4B2F9A' },
-    mint: { fill: '#C9F1DE', ink: '#16633F' },
-    butter: { fill: '#FFEDB0', ink: '#6E4D00' },
-    peach: { fill: '#FFDCCB', ink: '#8A3413' },
-    sky: { fill: '#CFE7FF', ink: '#174D86' },
-  },
-  glaze: ['#F7A8D8', '#FFC9A3'],
+  pastels: neutralPastelsLight,
+  glaze: ['#E8E8E5', '#E8E8E5'],
 };
 
 export const darkV2: PaletteV2 = {
-  bg: '#0F0D12',
-  surface: '#1C1A20',
-  surfaceRaised: '#27242C',
-  fill: '#2F2B35',
-  separator: '#3A3541',
-  ink: '#F5F0F7',
-  inkSecondary: '#B3AABB',
-  inkTertiary: '#857D8E',
-  tint: '#F5A3DA',
-  onTint: '#2B0E22',
-  tintSoft: '#4A2140',
-  onTintSoft: '#FFD6EF',
+  bg: '#0E0E0D',
+  surface: '#1A1A19',
+  surfaceRaised: '#242422',
+  fill: '#2A2A28',
+  separator: '#363633',
+  ink: '#F2F2EF',
+  inkSecondary: '#ABABA5',
+  inkTertiary: '#7E7E79',
+  tint: '#8FAAEE',
+  onTint: '#0D1730',
+  tintSoft: '#1D2842',
+  onTintSoft: '#D6E0F8',
   ok: '#72D3A0',
   warn: '#F0BE62',
   danger: '#FF8A98',
   onDanger: '#2A0B10',
-  pastels: {
-    berry: { fill: '#4E2343', ink: '#FFD3EA' },
-    lilac: { fill: '#352B5C', ink: '#E3D9FF' },
-    mint: { fill: '#1D4636', ink: '#C9F1DE' },
-    butter: { fill: '#4A3B12', ink: '#FFEDB0' },
-    peach: { fill: '#52291A', ink: '#FFDCCB' },
-    sky: { fill: '#1C3A5A', ink: '#CFE7FF' },
-  },
-  glaze: ['#B8488F', '#E07D55'],
+  pastels: neutralPastelsDark,
+  glaze: ['#2A2A28', '#2A2A28'],
 };
 
 export function paletteV2(scheme: 'light' | 'dark' | null | undefined): PaletteV2 {
@@ -116,9 +122,9 @@ export type TypeStyleV2 = { fontSize: number; lineHeight: number; fontWeight: Fo
 
 /** iOS Dynamic Type "Large" sizes with matching weights and tracking (points). */
 export const typeV2 = {
-  largeTitle: { fontSize: 34, lineHeight: 41, fontWeight: '800', letterSpacing: 0.37 },
+  largeTitle: { fontSize: 34, lineHeight: 41, fontWeight: '700', letterSpacing: 0.37 },
   title1: { fontSize: 28, lineHeight: 34, fontWeight: '700', letterSpacing: 0.36 },
-  title2: { fontSize: 22, lineHeight: 28, fontWeight: '700', letterSpacing: 0.35 },
+  title2: { fontSize: 22, lineHeight: 28, fontWeight: '600', letterSpacing: 0.35 },
   title3: { fontSize: 20, lineHeight: 25, fontWeight: '600', letterSpacing: 0.38 },
   headline: { fontSize: 17, lineHeight: 22, fontWeight: '600', letterSpacing: -0.41 },
   body: { fontSize: 17, lineHeight: 22, fontWeight: '400', letterSpacing: -0.41 },
@@ -197,15 +203,15 @@ export const editorialV2 = {
 /** Corner radii. Every rounded rect is drawn with continuous (squircle) corners. */
 export const radiusV2 = {
   /** Small chips, badges, text fields. */
-  control: 14,
+  control: 10,
   /** Inset-grouped list sections. */
-  group: 22,
-  /** Default card. */
-  card: 24,
-  /** Hero / showcase cards and category bubbles. */
-  cardLarge: 28,
+  group: 14,
+  /** Default card; art prints (thumbnails, rail art). */
+  card: 12,
+  /** Large art prints and category bubbles. */
+  cardLarge: 16,
   /** Bottom sheets (top corners). */
-  sheet: 32,
+  sheet: 28,
   /** Capsules: pill buttons, segmented thumbs, search fields. */
   pill: 999,
 } as const;
@@ -290,43 +296,21 @@ export type ElevationLevel = (typeof ELEVATION_LEVELS)[number];
  * in feel but higher in opacity (they sit on a near-black background).
  */
 export const elevationV2: Record<'light' | 'dark', Record<ElevationLevel, ShadowLayer[]>> = {
+  // White Cube (DESIGN.md §1.5): resting cards are flat; depth comes from colour steps. Only
+  // floating things (raised controls over content, toasts, popovers, sheets) cast a neutral shadow.
   light: {
     flat: [],
-    card: [
-      { x: 0, y: 1, blur: 2, spread: 0, color: '#3B1F38', opacity: 0.06 },
-      { x: 0, y: 6, blur: 16, spread: -2, color: '#3B1F38', opacity: 0.08 },
-    ],
-    raised: [
-      { x: 0, y: 2, blur: 4, spread: 0, color: '#3B1F38', opacity: 0.07 },
-      { x: 0, y: 12, blur: 28, spread: -4, color: '#3B1F38', opacity: 0.12 },
-    ],
-    floating: [
-      { x: 0, y: 4, blur: 8, spread: 0, color: '#3B1F38', opacity: 0.08 },
-      { x: 0, y: 18, blur: 40, spread: -6, color: '#3B1F38', opacity: 0.16 },
-    ],
-    overlay: [
-      { x: 0, y: 6, blur: 12, spread: 0, color: '#3B1F38', opacity: 0.1 },
-      { x: 0, y: 28, blur: 64, spread: -8, color: '#3B1F38', opacity: 0.22 },
-    ],
+    card: [],
+    raised: [{ x: 0, y: 2, blur: 8, spread: 0, color: '#000000', opacity: 0.08 }],
+    floating: [{ x: 0, y: 8, blur: 24, spread: -4, color: '#000000', opacity: 0.14 }],
+    overlay: [{ x: 0, y: 12, blur: 40, spread: -8, color: '#000000', opacity: 0.2 }],
   },
   dark: {
     flat: [],
-    card: [
-      { x: 0, y: 1, blur: 2, spread: 0, color: '#000000', opacity: 0.3 },
-      { x: 0, y: 6, blur: 16, spread: -2, color: '#000000', opacity: 0.28 },
-    ],
-    raised: [
-      { x: 0, y: 2, blur: 4, spread: 0, color: '#000000', opacity: 0.34 },
-      { x: 0, y: 12, blur: 28, spread: -4, color: '#000000', opacity: 0.36 },
-    ],
-    floating: [
-      { x: 0, y: 4, blur: 8, spread: 0, color: '#000000', opacity: 0.38 },
-      { x: 0, y: 18, blur: 40, spread: -6, color: '#000000', opacity: 0.42 },
-    ],
-    overlay: [
-      { x: 0, y: 6, blur: 12, spread: 0, color: '#000000', opacity: 0.42 },
-      { x: 0, y: 28, blur: 64, spread: -8, color: '#000000', opacity: 0.5 },
-    ],
+    card: [],
+    raised: [{ x: 0, y: 2, blur: 8, spread: 0, color: '#000000', opacity: 0.4 }],
+    floating: [{ x: 0, y: 8, blur: 24, spread: -4, color: '#000000', opacity: 0.5 }],
+    overlay: [{ x: 0, y: 12, blur: 40, spread: -8, color: '#000000', opacity: 0.55 }],
   },
 };
 
@@ -347,7 +331,7 @@ export function boxShadowFor(level: ElevationLevel, scheme: 'light' | 'dark'): s
 }
 
 /** Android `elevation` equivalent (dp) for platforms that ignore box-shadow. */
-export const androidElevationV2: Record<ElevationLevel, number> = { flat: 0, card: 2, raised: 6, floating: 10, overlay: 16 };
+export const androidElevationV2: Record<ElevationLevel, number> = { flat: 0, card: 0, raised: 4, floating: 10, overlay: 16 };
 
 // ---------------------------------------------------------------- materials
 
@@ -364,16 +348,16 @@ export type MaterialName = (typeof MATERIAL_NAMES)[number];
 export const materialsV2: Record<'light' | 'dark', Record<MaterialName, Material>> = {
   light: {
     /** Navigation / tab bars once content scrolls under them. */
-    bar: { tint: '#F8F6FA', alpha: 0.9, blurIntensity: 60, fallback: '#F8F6FA' },
+    bar: { tint: '#F3F3F1', alpha: 0.9, blurIntensity: 60, fallback: '#F3F3F1' },
     /** Sheets and popovers. */
     thick: { tint: '#FFFFFF', alpha: 0.92, blurIntensity: 80, fallback: '#FFFFFF' },
     /** Floating controls over photos/wallpapers (a pill bar over a preview). */
     chrome: { tint: '#FFFFFF', alpha: 0.88, blurIntensity: 50, fallback: '#FFFFFF' },
   },
   dark: {
-    bar: { tint: '#1C1A20', alpha: 0.9, blurIntensity: 60, fallback: '#1C1A20' },
-    thick: { tint: '#27242C', alpha: 0.92, blurIntensity: 80, fallback: '#27242C' },
-    chrome: { tint: '#1C1A20', alpha: 0.88, blurIntensity: 50, fallback: '#1C1A20' },
+    bar: { tint: '#0E0E0D', alpha: 0.9, blurIntensity: 60, fallback: '#0E0E0D' },
+    thick: { tint: '#242422', alpha: 0.92, blurIntensity: 80, fallback: '#242422' },
+    chrome: { tint: '#1A1A19', alpha: 0.88, blurIntensity: 50, fallback: '#1A1A19' },
   },
 };
 
@@ -403,7 +387,7 @@ export function materialColour(m: Material): string {
  * near-black in dark mode, so the content behind recedes without looking grey.
  */
 export const scrimV2: Record<'light' | 'dark', { tint: string; alpha: number }> = {
-  light: { tint: '#3B1F38', alpha: 0.4 },
+  light: { tint: '#000000', alpha: 0.32 },
   dark: { tint: '#000000', alpha: 0.6 },
 };
 

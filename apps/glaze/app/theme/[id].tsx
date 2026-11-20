@@ -1088,7 +1088,7 @@ function ThemeDetail({
             screen since T185), with the "How it looks on iPhone" switch inside. */}
         {step === 'icons' ? (
           <View style={styles.block}>
-            <SectionHeader eyebrow={t('theme.section.icons.eyebrow')} title={t('theme.section.icons.title')} style={styles.sectionHead} />
+            <SectionHeader title={t('theme.section.icons.title')} style={styles.sectionHead} />
             {/* 1.0.35 (owner 2026-11-14: "we can't do blob, square, rounded, circles... that needs to go"): no shape picker;
             every icon uses the one shape (studio.ts ONE_ICON_SHAPE). Colours and symbol size stay. */}
             {locked || !canApply ? null : (
@@ -1109,7 +1109,7 @@ function ThemeDetail({
         {/* Make it yours (Wallpaper screen): quiet rows for the photo and the wallpaper editor. */}
         {step === 'wallpaper' ? (
           <View style={styles.block}>
-            <SectionHeader eyebrow={t('theme.section.wallpaper.eyebrow')} title={t('theme.customise')} style={styles.sectionHead} />
+            <SectionHeader title={t('theme.customise')} style={styles.sectionHead} />
             <InsetGroup footer={photo ? t('theme.photo.yours', { name: theme.name }) : t('theme.photo.prompt')}>
               <InsetRow
                 title={photoLabel}
@@ -1134,7 +1134,7 @@ function ThemeDetail({
 
         {hasCredits ? (
           <View style={styles.block}>
-            <SectionHeader eyebrow={t('theme.section.credits.eyebrow')} title={t('theme.section.credits.title')} style={styles.sectionHead} />
+            <SectionHeader title={t('theme.section.credits.title')} style={styles.sectionHead} />
             {/* T103 (fb-1022 G5a): credit + licence for a Webb photo, with Download / Remove (on a tap only). */}
             {spacePhoto.photo ? <PhotoCredit theme={theme} style={styles.side} /> : null}
             {/* T130: credit + licence for an art-pack theme (from its meta.json). */}

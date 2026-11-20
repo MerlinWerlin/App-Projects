@@ -182,7 +182,6 @@ function WallpapersTab() {
       <View>
         <SectionHeader
           flushTop
-          eyebrow={t('tabs.wallpapersTab.liveEntry.eyebrow')}
           title={t('tabs.wallpapersTab.liveEntry.title')}
           body={t('tabs.wallpapersTab.liveEntry.body')}
         />
@@ -198,7 +197,6 @@ function WallpapersTab() {
       {/* 2. T76: the photo collage maker. */}
       <View>
         <SectionHeader
-          eyebrow={t('tabs.wallpapersTab.collageEntry.eyebrow')}
           title={t('tabs.wallpapersTab.collageEntry.title')}
           body={t('tabs.wallpapersTab.collageEntry.body')}
         />
@@ -215,7 +213,6 @@ function WallpapersTab() {
           themes downloaded to this phone, one tap from their theme's Wallpaper step (save to Photos, then set it). */}
       <View>
         <SectionHeader
-          eyebrow={t('tabs.wallpapersTab.themes.eyebrow')}
           title={t('tabs.wallpapersTab.themes.title')}
           body={t('tabs.wallpapersTab.themes.body')}
         />
@@ -251,7 +248,6 @@ function WallpapersTab() {
       {/* 3. My wallpapers: the header here, the thumbnails are the list rows below. */}
       <View>
         <SectionHeader
-          eyebrow={t('tabs.wallpapersTab.mine.eyebrow')}
           title={t('tabs.wallpapersTab.mine.title')}
           body={t('tabs.wallpapersTab.mine.body')}
         />

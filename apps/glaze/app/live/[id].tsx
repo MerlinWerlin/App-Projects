@@ -333,7 +333,6 @@ function Editor({ initial }: EditorProps) {
       {/* T176: editorial sections (Frame it / Trim / Speed / Save it) on the 16 pt rhythm. */}
       <SectionHeader
         flushTop
-        eyebrow={t('live.editor.sections.frame.eyebrow')}
         title={t('live.editor.sections.frame.title')}
         style={styles.sectionHead}
       />
@@ -424,7 +423,6 @@ function Editor({ initial }: EditorProps) {
 
       <SectionHeader
         flushTop
-        eyebrow={t('live.editor.sections.clip.eyebrow')}
         title={t('live.editor.trim')}
         style={[styles.sectionHead, styles.sectionNext]}
       />
@@ -474,7 +472,6 @@ function Editor({ initial }: EditorProps) {
 
       <SectionHeader
         flushTop
-        eyebrow={t('live.editor.sections.finish.eyebrow')}
         title={t('live.editor.sections.finish.title')}
         body={t('live.editor.sections.finish.body')}
         style={[styles.sectionHead, styles.sectionNext]}

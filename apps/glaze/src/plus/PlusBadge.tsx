@@ -18,12 +18,12 @@ export function PlusBadge({ showLock = true }: Props) {
   const locked = showLock && plus !== true;
   return (
     <View
-      style={[styles.pill, { backgroundColor: c.tint }]}
+      style={[styles.pill, { backgroundColor: c.ink }]}
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
     >
-      <Feather name={locked ? 'lock' : 'star'} size={11} color={c.onTint} />
-      <Text style={[textV2.caption1, styles.text, { color: c.onTint }]}>{PLUS_LABEL}</Text>
+      <Feather name={locked ? 'lock' : 'star'} size={11} color={c.bg} />
+      <Text style={[textV2.caption1, styles.text, { color: c.bg }]}>{PLUS_LABEL}</Text>
     </View>
   );
 }

@@ -63,7 +63,7 @@ import { useLocked } from '../../src/plus/useLocked';
 import { FreeBadge } from '../../src/ui/FreeBadge';
 import { FEATURED_FREE_IDS, freeThemesIn, isFreeTheme } from '../../src/core/freeThemes';
 import { useFavourites } from '../../src/store/favourites';
-import { circleRadius, continuous, editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, typeV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import { continuous, editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, typeV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { CategoryChipRow } from '../../src/ui/CategoryChipRow';
 import { GalleryArtCard, GalleryCardSkeleton } from '../../src/ui/GalleryArtCard';
@@ -76,7 +76,7 @@ import { PHONE_ASPECT } from '../../src/ui/ThemeCard';
 import { THUMB_LABEL_HEIGHT, ThemeThumbCard } from '../../src/ui/ThemeThumbCard';
 import { haptic } from '../../src/ui/haptics';
 import { textStyleFor } from '../../src/ui/i18nLayout';
-import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
+import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SectionHeader } from '../../src/ui/v2';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 type FeatherName = ComponentProps<typeof Feather>['name'];
@@ -185,7 +185,7 @@ const BrowseHead = memo(function BrowseHead({ section, count, onSeeAll }: { sect
   return (
     <View style={styles.headRow}>
       <SectionHeader
-        eyebrow={t('themes.browse.count', { count })}
+        meta={String(count)}
         title={label}
         body={section === 'all' ? t('themes.browse.allThemesBody') : section === 'free' ? t('themes.free.body') : undefined}
         style={styles.headText}
@@ -257,12 +257,12 @@ const SkeletonCardRow = memo(function SkeletonCardRow({ count, cardWidth }: { co
   );
 });
 
-/** Pastel circle with a glyph, used by the empty states. */
+/** A bare glyph for the empty states (DESIGN.md §5: no tinted circle). */
 function EmptyIcon({ icon }: { icon: FeatherName }) {
   const { c } = useColorsV2();
   return (
-    <View style={[styles.emptyIcon, { backgroundColor: c.pastels.berry.fill }]}>
-      <Feather name={icon} size={24} color={c.pastels.berry.ink} />
+    <View style={styles.emptyIcon}>
+      <Feather name={icon} size={28} color={c.inkTertiary} />
     </View>
   );
 }
@@ -313,7 +313,7 @@ const GalleryEmpty = memo(function GalleryEmpty({ reason, onReset }: { reason: '
   const body = liked ? t('themes.discover.likedEmptyBody') : t('themes.search.empty.body');
   return (
     <View style={styles.emptyRow}>
-      <SquircleCard accessibilityLabel={[title, body].join(' ')}>
+      <View accessible={false} accessibilityLabel={[title, body].join(' ')}>
         <View style={styles.empty}>
           <EmptyIcon icon={liked ? 'heart' : 'search'} />
           <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), styles.center, { color: c.ink }]}>{title}</Text>
@@ -321,7 +321,7 @@ const GalleryEmpty = memo(function GalleryEmpty({ reason, onReset }: { reason: '
           {/* Release standard §1: an empty filtered list offers a one-tap way back to everything. */}
           <PillButton label={liked ? t('common.showAll') : t('themes.search.empty.reset')} variant="plain" onPress={onReset} style={styles.selfCenter} />
         </View>
-      </SquircleCard>
+      </View>
     </View>
   );
 });
@@ -522,7 +522,7 @@ function ThemesScreen() {
         </View>
         {gridTitle ? (
           <View style={styles.headRow}>
-            <SectionHeader eyebrow={t('themes.browse.count', { count: matchCount })} title={gridTitle} style={styles.headText} />
+            <SectionHeader meta={String(matchCount)} title={gridTitle} style={styles.headText} />
             <PillButton
               label={t('themes.browse.backHome')}
               size="small"
@@ -652,7 +652,7 @@ const styles = StyleSheet.create({
   },
   searchInput: { flex: 1, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm },
   empty: { alignItems: 'center', gap: spaceV2.sm },
-  emptyIcon: { width: 48, height: 48, borderRadius: circleRadius(48), alignItems: 'center', justifyContent: 'center' },
+  emptyIcon: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center' },
 });
 
 // T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.

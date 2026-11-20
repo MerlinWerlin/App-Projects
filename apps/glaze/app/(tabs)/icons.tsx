@@ -386,7 +386,6 @@ function IconsScreen() {
 
       {/* Your apps */}
       <SectionHeader
-        eyebrow={t('icons.sections.appsEyebrow')}
         title={t('icons.yourApps')}
         body={t('icons.sections.appsBody')}
         style={styles.sectionHeader}
@@ -443,7 +442,6 @@ function IconsScreen() {
 
       {/* Add apps */}
       <SectionHeader
-        eyebrow={t('icons.sections.addEyebrow')}
         title={t('icons.addApps')}
         body={t('icons.sections.addBody')}
         style={styles.sectionHeader}
@@ -560,7 +558,6 @@ function IconsScreen() {
 
         {/* Style */}
         <SectionHeader
-          eyebrow={t('icons.sections.styleEyebrow')}
           title={t('icons.styleTitle')}
           body={t('icons.sections.styleBody')}
           style={styles.sectionHeader}

@@ -45,7 +45,7 @@ export function PillTabs<T extends string>({ label, options, value, onChange, st
             accessibilityRole="tab"
             accessibilityLabel={t('ui.segmentedOptionA11y', { group: label, option: o.label })}
             accessibilityState={{ selected }}
-            style={[styles.pill, continuous, { backgroundColor: selected ? c.tint : c.fill }]}
+            style={[styles.pill, continuous, { backgroundColor: selected ? c.ink : c.fill }]}
           >
             <Text
               numberOfLines={1}
@@ -53,7 +53,7 @@ export function PillTabs<T extends string>({ label, options, value, onChange, st
                 textV2.subhead,
                 textStyleFor(script, textV2.subhead),
                 styles.text,
-                { color: selected ? c.onTint : c.ink },
+                { color: selected ? c.bg : c.ink },
               ]}
             >
               {o.label}

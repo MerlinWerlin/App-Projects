@@ -1,19 +1,17 @@
-// T177 (owner brief 31 Oct, docs/OWNER_1031.md): the art-led gallery card of the Themes tab. The
-// theme's artwork fills the top of the card edge to edge at phone aspect (no mock chrome over it),
-// then the name and the mood line on a soft surface. A catalogue theme (remote art pack) draws its
-// remote thumbnail through expo-image with the catalogue ThumbHash as the instant placeholder
-// (RemoteArtImage: memory-disk cache, so a seen thumbnail still shows offline); a bundled starter
-// draws its bundled wallpaper (ThemeWallpaper). The whole card is one ≥ 48 pt button; the heart is
-// a sibling so screen readers reach it on its own.
-// docs/PREMIUM_UI.md §1-2: tokens only, depth from `surfaceRaised` in dark mode (no hairline), the
-// one soft card shadow in light mode, Dynamic Type caps on every Text, a timed press (PressableScale,
-// no spring). GalleryCardSkeleton is the same card while the catalogue is still empty.
+// T177 (owner brief 31 Oct, docs/OWNER_1031.md): the art-led gallery card of the Themes tab.
+// White Cube (DESIGN.md §5 "Art print"): the theme's artwork hangs on the wall as a print (phone
+// aspect, small continuous corner, hairline edge, no surface and no shadow), and its name and mood
+// sit under it on the wall like a gallery label. A catalogue theme draws its remote thumbnail
+// through expo-image with the ThumbHash placeholder (RemoteArtImage); a bundled starter draws its
+// bundled wallpaper (ThemeWallpaper). The whole card is one ≥ 48 pt button; the heart is a sibling
+// so screen readers reach it on its own. GalleryCardSkeleton is the same print while the catalogue
+// is still empty.
 import { memo, type ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { isRemoteArtTheme } from '../core/remoteCatalog';
 import type { Theme } from '../core/themes';
 import { useT } from '../i18n';
-import { continuous, fontScaleCap, pressV2, radiusV2, shadowV2, sizeV2, spaceV2, textV2, typeV2 } from '../theme/tokensV2';
+import { continuous, fontScaleCap, pressV2, radiusV2, sizeV2, spaceV2, textV2, typeV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { HeartButton } from './HeartButton';
 import { PressableScale } from './PressableScale';
@@ -42,7 +40,7 @@ type Props = {
 };
 
 export const GalleryArtCard = memo(function GalleryArtCard({ theme, width, onOpen, badge, accessibilityNote, liked, onToggleLike }: Props) {
-  const { c, scheme } = useColorsV2();
+  const { c } = useColorsV2();
   const { t, script } = useT();
   const artH = galleryArtHeight(width);
   const label = [t('themeUi.card.a11y', { name: theme.name, tagline: theme.tagline }), accessibilityNote ?? null].filter(Boolean).join(' ');
@@ -55,11 +53,11 @@ export const GalleryArtCard = memo(function GalleryArtCard({ theme, width, onOpe
         accessibilityRole="button"
         accessibilityLabel={label}
         accessibilityHint={t('themeUi.card.hint')}
-        style={[styles.card, continuous, shadowV2('card', scheme), { width }]}
+        style={[styles.card, { width }]}
       >
-        <View style={[styles.inner, continuous, { backgroundColor: scheme === 'dark' ? c.surfaceRaised : c.surface }]}>
+        <View>
           <View
-            style={[styles.art, noMirror, { width, height: artH, backgroundColor: theme.palette.bg }]}
+            style={[styles.art, continuous, noMirror, { width, height: artH, backgroundColor: theme.palette.bg, borderColor: c.separator }]}
             accessibilityElementsHidden
             importantForAccessibility="no-hide-descendants"
             pointerEvents="none"
@@ -88,15 +86,10 @@ export const GalleryArtCard = memo(function GalleryArtCard({ theme, width, onOpe
 
 /** The same card while the catalogue is still empty: art block and two text lines, calm pulse. */
 export const GalleryCardSkeleton = memo(function GalleryCardSkeleton({ width }: { width: number }) {
-  const { c, scheme } = useColorsV2();
   const artH = galleryArtHeight(width);
   return (
-    <View
-      style={[styles.card, styles.inner, continuous, shadowV2('card', scheme), { width, backgroundColor: scheme === 'dark' ? c.surfaceRaised : c.surface }]}
-      accessibilityElementsHidden
-      importantForAccessibility="no-hide-descendants"
-    >
-      <Skeleton width={width} height={artH} radius={0} />
+    <View style={[styles.card, { width }]} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+      <Skeleton width={width} height={artH} radius={radiusV2.card} />
       <View style={styles.text}>
         <Skeleton width="70%" height={typeV2.headline.lineHeight} />
         <Skeleton width="90%" height={typeV2.footnote.lineHeight} />
@@ -107,11 +100,10 @@ export const GalleryCardSkeleton = memo(function GalleryCardSkeleton({ width }: 
 
 const styles = StyleSheet.create({
   wrap: {},
-  card: { minHeight: sizeV2.touch, borderRadius: radiusV2.cardLarge },
-  inner: { borderRadius: radiusV2.cardLarge, overflow: 'hidden' },
-  art: { overflow: 'hidden' },
+  card: { minHeight: sizeV2.touch },
+  art: { overflow: 'hidden', borderRadius: radiusV2.card, borderWidth: StyleSheet.hairlineWidth },
   badge: { position: 'absolute', top: spaceV2.sm, end: spaceV2.sm },
-  text: { gap: spaceV2.xs, paddingHorizontal: spaceV2.md, paddingTop: spaceV2.md, paddingBottom: spaceV2.md, paddingEnd: sizeV2.touch },
+  text: { gap: spaceV2.xxs, paddingTop: spaceV2.sm + spaceV2.xxs, paddingBottom: spaceV2.xs, paddingEnd: sizeV2.touch },
   /** Placement only; HeartButton is the ≥ 48 pt target. */
   heart: { position: 'absolute', bottom: 0, end: 0 },
 });
