@@ -10,7 +10,7 @@ permissions:
   contents: read
   actions: read
 concurrency:
-  group: cue-release-capture
+  group: cue-release-capture-${{ github.ref }}
   cancel-in-progress: false
 jobs:
   capture:
