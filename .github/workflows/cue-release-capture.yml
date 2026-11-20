@@ -86,7 +86,7 @@ jobs:
           phone=next((d for d in all_devices if d['name']=='iPhone 16 Pro Max'),None) or next(d for d in all_devices if 'Pro Max' in d['name'])
           tablet=next(d for d in all_devices if 'iPad Pro 13' in d['name'] or 'iPad Pro (12.9-inch)' in d['name'])
           with open(os.environ['RUNNER_TEMP']+'/cue-targets.txt','w') as f:
-              for name,d in [('iphone',phone),('ipad',tablet)]:
+              for name,d in [('iphone',phone)]:
                   f.write(name+' '+d['udid']+'\n')
                   print(name,d['name'],d['udid'])
           PY
@@ -96,9 +96,11 @@ jobs:
             xcrun simctl boot "$DEVICE"
             python3 -c 'import subprocess,sys; subprocess.run(["xcrun","simctl","bootstatus",sys.argv[1],"-b"],check=True,timeout=480)' "$DEVICE" || { RESULT=1; xcrun simctl shutdown "$DEVICE" || true; continue; }
             xcrun simctl install "$DEVICE" "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator/Cue.app"
-            xcrun simctl ui "$DEVICE" appearance dark
+            for APPEAR in dark light; do
+            mkdir -p "$RUNNER_TEMP/cue-captures/$KIND-$APPEAR"
+            xcrun simctl ui "$DEVICE" appearance "$APPEAR"
             xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
-            MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=240000 python3 - "$DEVICE" "$RUNNER_TEMP/cue-captures/$KIND" <<'PY' || RESULT=1
+            MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=240000 python3 - "$DEVICE" "$RUNNER_TEMP/cue-captures/$KIND-$APPEAR" <<'PY' || RESULT=1
           import os,signal,subprocess,sys
           command=['maestro','--device',sys.argv[1],'test','--test-output-dir',sys.argv[2],'--debug-output',sys.argv[2],'scripts/capture-flow.yaml']
           process=subprocess.Popen(command,start_new_session=True)
@@ -113,6 +115,7 @@ jobs:
               raise SystemExit('Capture timed out after 7 minutes; partial evidence preserved.')
           raise SystemExit(result)
           PY
+            done
             xcrun simctl shutdown "$DEVICE"
           done < "$RUNNER_TEMP/cue-targets.txt"
           printf 'App source: %s\nCapture workflow: %s\nActual simulator captures; OTA disabled only for reproducible captures. No physical-device or sandbox-purchase claim. Inspect every image before store use.\n' "$(cat "$RUNNER_TEMP/cue-app-source.txt")" "$GITHUB_SHA" > "$RUNNER_TEMP/cue-captures/README.txt"

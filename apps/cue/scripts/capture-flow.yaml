@@ -20,14 +20,17 @@ appId: com.jared797.cue
     visible: Scripts
     timeout: 60000
 - tapOn: Settings
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: 04-settings
 - tapOn:
     text: Cue Plus
     index: 1
 - assertVisible: One payment. Yours for good. No subscription.
-- takeScreenshot: 04-plus
+- takeScreenshot: 05-plus
 - scrollUntilVisible:
     element:
       text: Restore purchase
     direction: DOWN
     timeout: 20000
-- takeScreenshot: 05-purchase-actions
+- takeScreenshot: 06-purchase-actions
