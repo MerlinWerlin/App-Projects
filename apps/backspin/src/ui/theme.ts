@@ -79,7 +79,7 @@ export const BOOTH: Skin = {
   },
   light: {
     bg: '#F3F1EB', card: '#E8E5DC', cardHi: '#DDD9CD', ink: '#17151C', sub: '#55515E', faint: '#8A8693', line: '#D3CFC4',
-    rec: '#FF4FA8', recInk: '#17151C', rew: '#3255A4', rewInk: '#FFFFFF', gold: '#D81F7F', good: '#0F7A45', bad: '#C2272D',
+    rec: '#FF4FA8', recInk: '#17151C', rew: '#3255A4', rewInk: '#FFFFFF', gold: '#D81F7F', good: '#0B6A3B', bad: '#C2272D',
     overlay: 'rgba(23,21,28,0.45)', bgGradient: ['#F3F1EB', '#F3F1EB'], recGradient: ['#FF4FA8', '#FF4FA8'], glow: '#FF4FA8',
     cardBorder: '#D3CFC4', shadow: '#17151C', discBody: '#17151C', discGroove: '#F3F1EB', labelForward: '#FF4FA8', labelBack: '#3255A4', score: '#17151C',
   },
@@ -151,14 +151,14 @@ export const SP = (n: number) => n * 4;
  * extra-bold grotesque); body sizes follow iOS text styles in the system face. Tracking tightens as size grows.
  */
 export const TYPE = {
-  hero: { fontSize: 44, fontWeight: '800' as const, lineHeight: 46, letterSpacing: -0.6 },
+  hero: { fontSize: 40, fontWeight: '800' as const, lineHeight: 43, letterSpacing: -0.6 },
   title: { fontSize: 30, fontWeight: '800' as const, lineHeight: 32, letterSpacing: -0.3 },
   h: { fontSize: 22, fontWeight: '800' as const, lineHeight: 26, letterSpacing: -0.1 },
   body: { fontSize: 17, fontWeight: '400' as const, lineHeight: 24 },
   bodyB: { fontSize: 17, fontWeight: '600' as const, lineHeight: 22 },
   small: { fontSize: 15, fontWeight: '400' as const, lineHeight: 20 },
-  line: { fontSize: 40, fontWeight: '800' as const, lineHeight: 42, letterSpacing: -0.4 },
-  num: { fontSize: 112, fontWeight: '800' as const, lineHeight: 112, letterSpacing: -2, fontVariant: ['tabular-nums' as const] },
+  line: { fontSize: 36, fontWeight: '800' as const, lineHeight: 39, letterSpacing: -0.4 },
+  num: { fontSize: 104, fontWeight: '800' as const, lineHeight: 104, letterSpacing: -2, fontVariant: ['tabular-nums' as const] },
 };
 export const HEADING_KINDS = new Set<keyof typeof TYPE>(['hero', 'title', 'h', 'line']);
 

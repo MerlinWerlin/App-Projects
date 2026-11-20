@@ -4,7 +4,7 @@ import { TextInput, View } from 'react-native';
 import { MAX_FREE_PLAYERS, MAX_PLAYERS, newParty, type PartyMode } from '../../src/core/game.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { partyStore } from '../../src/state/party.ts';
-import { Button, Card, Chip, Emoji, Press, Screen, SectionTitle, T, Toastish } from '../../src/ui/kit.tsx';
+import { Button, Card, Chip, Icon, Press, Screen, SectionTitle, T, Toastish } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 export default function PartySetup() {
@@ -35,12 +35,12 @@ export default function PartySetup() {
 
       <View style={{ flexDirection: 'row', gap: SP(3), marginTop: SP(5) }}>
         {(['copy', 'guess'] as const).map((m) => (
-          <Card key={m} hi={mode === m} selected={mode === m} label={t(m === 'copy' ? 'party.copy' : 'party.guess')} onPress={() => setMode(m)} style={{ flex: 1, borderColor: mode === m ? theme.rec : theme.line, borderWidth: 2 }}>
-            <Emoji size={26}>{m === 'copy' ? '🎙' : '🕵️'}</Emoji>
-            <T kind="bodyB" style={{ marginTop: SP(2) }}>
+          <Card key={m} selected={mode === m} label={t(m === 'copy' ? 'party.copy' : 'party.guess')} onPress={() => setMode(m)} style={{ flex: 1 }}>
+            <Icon name={m === 'copy' ? 'mic' : 'help'} size={26} color={theme.ink} />
+            <T kind="h" style={{ marginTop: SP(3) }}>
               {t(m === 'copy' ? 'party.copy' : 'party.guess')}
             </T>
-            <T kind="small" color={theme.sub}>
+            <T kind="small" color={theme.sub} style={{ marginTop: SP(1) }}>
               {t(m === 'copy' ? 'party.copySub' : 'party.guessSub')}
             </T>
           </Card>
@@ -55,18 +55,18 @@ export default function PartySetup() {
               value={n}
               onChangeText={(v) => update(i, v)}
               placeholder={t('party.playerN', { n: i + 1 })}
-              placeholderTextColor={theme.faint}
+              placeholderTextColor={theme.sub}
               accessibilityLabel={t('party.playerN', { n: i + 1 })}
               maxLength={18}
               autoCapitalize="words"
               autoCorrect={false}
               textContentType="nickname"
               returnKeyType="done"
-              style={{ flex: 1, minHeight: 50, borderRadius: R.m, backgroundColor: theme.card, color: theme.ink, paddingHorizontal: SP(4), fontSize: 17, fontWeight: '600' }}
+              style={{ flex: 1, minHeight: 52, borderRadius: R.m, backgroundColor: theme.card, color: theme.ink, paddingHorizontal: SP(4), fontSize: 17 }}
             />
             {names.length > 2 ? (
               <Press label={`${t('takes.delete')} ${i + 1}`} onPress={() => setNames((x) => x.filter((_, k) => k !== i))} style={{ width: 44, height: 44, alignItems: 'center', justifyContent: 'center' }}>
-                <T color={theme.faint}>✕</T>
+                <Icon name="close" size={18} color={theme.sub} />
               </Press>
             ) : null}
           </View>
@@ -76,9 +76,12 @@ export default function PartySetup() {
         <Button kind="ghost" small icon="plus" title={t('party.addPlayer')} style={{ marginTop: SP(3), alignSelf: 'flex-start' }} onPress={() => setNames((x) => [...x, ''])} />
       ) : !owned ? (
         <Press label={t('party.morePlus')} onPress={() => router.push('/plus')}>
-          <T kind="small" color={theme.gold} style={{ marginTop: SP(3), fontWeight: '700' }}>
-            🔒 {t('party.morePlus')}
-          </T>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: SP(1.5), marginTop: SP(3), minHeight: 44 }}>
+            <Icon name="lock" size={15} color={theme.sub} />
+            <T kind="small" color={theme.sub} style={{ fontWeight: '600' }}>
+              {t('party.morePlus')}
+            </T>
+          </View>
         </Press>
       ) : null}
 

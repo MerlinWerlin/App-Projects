@@ -200,6 +200,12 @@ export function RoundEngine(props: {
 
   return (
     <View>
+      {/* Party turns name the player here; solo rounds put the heading in the navigation bar instead (round.tsx). */}
+      {props.heading ? (
+        <T kind="title" style={{ marginBottom: SP(4) }}>
+          {props.heading}
+        </T>
+      ) : null}
       {/* Where you are in the round: four rules, done ones in ink, the current one in the step's own ink. */}
       <View style={{ flexDirection: 'row', gap: SP(1.5) }} accessible accessibilityLabel={stepLabel(step)}>
         {order.map((s, i) => (

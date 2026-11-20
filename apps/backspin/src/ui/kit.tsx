@@ -284,9 +284,9 @@ export function Toastish({ text }: { text: string | null }) {
 }
 
 /** A group heading: a real heading in the display face, never a small tracked label. */
-export function SectionTitle({ children }: { children: ReactNode }) {
+export function SectionTitle({ children, first }: { children: ReactNode; first?: boolean }) {
   return (
-    <T kind="h" style={{ marginTop: SP(8), marginBottom: SP(3) }}>
+    <T kind="h" style={{ marginTop: first ? SP(2) : SP(8), marginBottom: SP(3) }}>
       {children}
     </T>
   );

@@ -14,7 +14,7 @@ import { useApp } from '../src/state/app.tsx';
 import { partyStore } from '../src/state/party.ts';
 import { Button, Card, Chip, Disc, Screen, T, Toastish, Wave } from '../src/ui/kit.tsx';
 import { RoundEngine } from '../src/ui/RoundEngine.tsx';
-import { SP, TYPE } from '../src/ui/theme.ts';
+import { SP } from '../src/ui/theme.ts';
 import { useRecorder } from '../src/ui/useRecorder.ts';
 
 export default function PartyPlay() {
@@ -44,16 +44,14 @@ export default function PartyPlay() {
     const loser = st[st.length - 1];
     return (
       <Screen header>
-        <T kind="small" color={theme.sub} center>
+        <T kind="hero">{t('party.winner', { name: st[0].name })}</T>
+        <T kind="h" color={theme.sub} style={{ marginTop: SP(6) }}>
           {t('party.scoreboard')}
         </T>
-        <T kind="hero" center style={{ marginTop: SP(2) }}>
-          🏆 {t('party.winner', { name: st[0].name })}
-        </T>
-        <View style={{ gap: SP(2), marginTop: SP(6) }}>
+        <View style={{ gap: SP(2), marginTop: SP(3) }}>
           {st.map((p, i) => (
-            <Card key={p.name + i} hi={i === 0} style={{ flexDirection: 'row', alignItems: 'center', gap: SP(3) }}>
-              <T kind="title" color={i === 0 ? theme.gold : theme.sub}>
+            <Card key={p.name + i} selected={i === 0} style={{ flexDirection: 'row', alignItems: 'center', gap: SP(4) }}>
+              <T kind="title" color={i === 0 ? theme.ink : theme.sub} style={{ width: 28 }}>
                 {i + 1}
               </T>
               <T kind="bodyB" style={{ flex: 1 }}>
@@ -64,14 +62,12 @@ export default function PartyPlay() {
           ))}
         </View>
         {st.length > 1 ? (
-          <Card style={{ marginTop: SP(5) }}>
-            <T kind="small" color={theme.sub}>
-              {t('party.dare', { name: loser.name })}
+          <View style={{ marginTop: SP(8) }}>
+            <T kind="h">{t('party.dare', { name: loser.name })}</T>
+            <T kind="title" color={theme.recText} style={{ marginTop: SP(2) }}>
+              {dareFor(QUIPS, party.seed)}
             </T>
-            <T kind="bodyB" style={{ marginTop: SP(2) }}>
-              🎲 {dareFor(QUIPS, party.seed)}
-            </T>
-          </Card>
+          </View>
         ) : null}
         <Button
           title={t('party.again')}
@@ -99,11 +95,11 @@ export default function PartyPlay() {
 
   return (
     <Screen header>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <T kind="small" color={theme.sub}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: SP(3) }}>
+        <T kind="small" color={theme.sub} style={{ fontWeight: '600' }}>
           {t('party.roundOf', { round: party.round, rounds: party.rounds })}
         </T>
-        <T kind="small" color={theme.sub}>
+        <T kind="small" color={theme.sub} style={{ flex: 1, textAlign: 'right' }} lines={2}>
           {party.players.map((p) => `${p.name} ${p.score}`).join(' · ')}
         </T>
       </View>
@@ -111,7 +107,7 @@ export default function PartyPlay() {
       {handoff ? (
         <View style={{ marginTop: SP(12), alignItems: 'center' }}>
           <Disc size={160} />
-          <T kind="title" center style={{ marginTop: SP(6) }}>
+          <T kind="hero" center style={{ marginTop: SP(8) }}>
             {t('party.handTo', { name: player.name })}
           </T>
           <Button title={t('party.ready')} icon="check" style={{ marginTop: SP(6), alignSelf: 'stretch' }} onPress={() => (haptic.press(), setHandoff(false))} />
@@ -188,19 +184,15 @@ function GuessTurn({ party, line, onDone }: { party: Party; line: string; onDone
 
   return (
     <View style={{ marginTop: SP(4) }}>
-      <T kind="small" color={theme.sub}>
-        {t('party.turn', { name: player.name })}
-      </T>
+      <T kind="title">{t('party.turn', { name: player.name })}</T>
       {stage === 'secret' && (
         <>
-          <Card style={{ marginTop: SP(3) }}>
-            <T kind="small" color={theme.sub}>
-              {t('party.secret', { name: player.name })}
-            </T>
+          <View style={{ marginTop: SP(5) }}>
+            <T color={theme.sub}>{t('party.secret', { name: player.name })}</T>
             <T kind="line" style={{ marginTop: SP(2) }}>
               {line}
             </T>
-          </Card>
+          </View>
           <Button
             title={rec.phase === 'recording' ? t('round.stop') : t('round.tap')}
             icon={rec.phase === 'recording' ? 'stop' : 'mic'}
@@ -212,8 +204,12 @@ function GuessTurn({ party, line, onDone }: { party: Party; line: string; onDone
       )}
       {stage === 'listen' && (
         <>
-          <Disc size={150} spin={playing ? -1 : 0} />
-          <Wave peaks={peaks} color={theme.rew} dim={theme.line} />
+          <View style={{ marginTop: SP(8) }}>
+            <Disc size={150} spin={playing ? -1 : 0} />
+          </View>
+          <View style={{ marginTop: SP(6) }}>
+            <Wave peaks={peaks} color={theme.rew} dim={theme.line} height={48} />
+          </View>
           <T kind="bodyB" center style={{ marginTop: SP(3) }}>
             {t('party.guessPrompt')}
           </T>
@@ -223,14 +219,11 @@ function GuessTurn({ party, line, onDone }: { party: Party; line: string; onDone
       )}
       {stage === 'reveal' && (
         <>
-          <Card hi style={{ marginTop: SP(3), alignItems: 'center' }}>
-            <T kind="small" color={theme.sub}>
-              {t('round.playOriginal')}
-            </T>
-            <T style={[TYPE.line, { textAlign: 'center', marginTop: SP(2) }]}>{line}</T>
-            <Button kind="quiet" small icon="play" title={t('round.play')} style={{ marginTop: SP(3) }} onPress={() => playIt(origUri)} />
-          </Card>
-          <T kind="bodyB" style={{ marginTop: SP(5) }}>
+          <View style={{ marginTop: SP(5) }}>
+            <T kind="line">{line}</T>
+            <Button kind="quiet" small icon="play" title={t('round.playOriginal')} style={{ marginTop: SP(4), alignSelf: 'flex-start' }} onPress={() => playIt(origUri)} />
+          </View>
+          <T kind="h" style={{ marginTop: SP(8) }}>
             {t('party.whoGuessed')}
           </T>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: SP(2), marginTop: SP(3) }}>

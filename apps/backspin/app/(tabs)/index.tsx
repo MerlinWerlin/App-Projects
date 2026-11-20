@@ -4,9 +4,11 @@ import { dailyLine, dayKey, liveStreak, titleFor } from '../../src/core/game.ts'
 import { PACKS, QUIPS } from '../../src/content/index.ts';
 import { LANG_NAMES } from '../../src/i18n/core.ts';
 import { useApp } from '../../src/state/app.tsx';
-import { Card, Disc, Emoji, Press, Screen, T } from '../../src/ui/kit.tsx';
+import { Button, Divider, Icon, Press, Screen, T, type IconName } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
+// Home: the daily line printed big on a pink slip, one pink Quick play button, then the other ways to play as a
+// plain list. No tiles, no stat cards.
 export default function Home() {
   const { t, theme, stats, freeLeft, lang, langHint, hideLangHint } = useApp();
   const router = useRouter();
@@ -17,15 +19,15 @@ export default function Home() {
 
   return (
     <Screen>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <View style={{ flex: 1 }}>
           <T kind="hero">Backspin</T>
-          <T kind="small" color={theme.sub}>
+          <T kind="small" color={theme.sub} style={{ marginTop: SP(1) }}>
             {t('home.rank', { title: titleFor(QUIPS, stats.rounds, stats.best) })}
           </T>
         </View>
-        <Press label={t('settings.title')} onPress={() => router.push('/settings')} style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: theme.card, alignItems: 'center', justifyContent: 'center' }}>
-          <T>⚙︎</T>
+        <Press label={t('settings.title')} onPress={() => router.push('/settings')} style={{ width: 44, height: 44, alignItems: 'center', justifyContent: 'center', marginRight: -SP(2) }}>
+          <Icon name="settings" size={24} color={theme.ink} />
         </Press>
       </View>
 
@@ -45,91 +47,88 @@ export default function Home() {
             }}
             style={{ minHeight: 44, justifyContent: 'center', paddingHorizontal: SP(1) }}
           >
-            <T kind="small" color={theme.recText} style={{ fontWeight: '800' }}>
+            <T kind="small" color={theme.recText} style={{ fontWeight: '600' }}>
               {t('home.languageChange')}
             </T>
           </Press>
         </View>
       ) : null}
 
+      {/* Daily: the one featured slip on the screen. */}
+      {daily ? (
+        <Press
+          label={t('home.dailyPlay')}
+          onPress={() => router.push({ pathname: '/round', params: { mode: 'daily', line: daily.line.id } })}
+          style={{ marginTop: SP(6), backgroundColor: theme.recTint, borderRadius: theme.radius.l, padding: SP(5) }}
+        >
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: SP(3) }}>
+            <T kind="h">{t('home.daily')}</T>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: SP(1) }}>
+              {streak ? <Icon name="flame" size={16} color={theme.ink} /> : null}
+              <T kind="small" style={{ fontWeight: '600' }}>
+                {streak ? t('home.streak', { n: streak }) : t('home.streakNone')}
+              </T>
+            </View>
+          </View>
+          <T kind="line" style={{ marginTop: SP(4) }}>
+            {daily.line.t}
+          </T>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: SP(2), marginTop: SP(5) }}>
+            {doneToday != null ? <Icon name="check" size={18} color={theme.good} /> : null}
+            <T kind="bodyB" color={doneToday != null ? theme.good : theme.ink}>
+              {doneToday != null ? t('home.dailyDone', { score: doneToday }) : t('home.dailyPlay')}
+            </T>
+            {doneToday == null ? <Icon name="next" size={18} color={theme.ink} /> : null}
+          </View>
+        </Press>
+      ) : null}
+
+      <Button title={t('home.quick')} icon="mic" style={{ marginTop: SP(4) }} onPress={() => router.push({ pathname: '/round', params: { mode: 'quick', seed: String(Date.now()) } })} />
+
       {freeLeft != null ? (
-        <Press label={freeLeft > 0 ? t('home.freeLeft', { n: freeLeft }) : t('home.freeDone')} onPress={() => router.push('/plus')} style={{ marginTop: SP(4), alignSelf: 'flex-start', backgroundColor: freeLeft > 0 ? theme.cardHi : theme.rec, borderRadius: R.pill, paddingHorizontal: SP(4), paddingVertical: SP(2) }}>
-          <T kind="small" color={freeLeft > 0 ? theme.ink : theme.recInk} style={{ fontWeight: '800' }}>
-            {freeLeft > 0 ? `🎟 ${t('home.freeLeft', { n: freeLeft })}` : `🔓 ${t('home.freeDone')}`}
+        <Press label={freeLeft > 0 ? t('home.freeLeft', { n: freeLeft }) : t('home.freeDone')} onPress={() => router.push('/plus')} style={{ marginTop: SP(3), minHeight: 44, alignSelf: 'center', justifyContent: 'center', paddingHorizontal: SP(3) }}>
+          <T kind="small" color={freeLeft > 0 ? theme.sub : theme.recText} center style={{ fontWeight: '600' }}>
+            {freeLeft > 0 ? t('home.freeLeft', { n: freeLeft }) : t('home.freeDone')}
           </T>
         </Press>
       ) : null}
 
-      {/* Daily */}
-      {daily ? (
-        <Card
-          hi
-          style={{ marginTop: SP(5), padding: SP(5) }}
-          label={t('home.dailyPlay')}
-          onPress={() => router.push({ pathname: '/round', params: { mode: 'daily', line: daily.line.id } })}
-        >
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <T kind="small" color={theme.sub}>
-              {t('home.daily')}
-            </T>
-            <View style={{ backgroundColor: streak ? theme.rec : theme.line, borderRadius: R.pill, paddingHorizontal: SP(3), paddingVertical: SP(1) }}>
-              <T kind="small" color={streak ? theme.recInk : theme.sub} style={{ fontWeight: '800' }}>
-                {streak ? `🔥 ${t('home.streak', { n: streak })}` : t('home.streakNone')}
-              </T>
-            </View>
-          </View>
-          <T kind="line" style={{ marginTop: SP(3) }}>
-            {daily.line.t}
-          </T>
-          <T kind="bodyB" color={doneToday != null ? theme.good : theme.recText} style={{ marginTop: SP(3) }}>
-            {doneToday != null ? `✓ ${t('home.dailyDone', { score: doneToday })}` : `${t('home.dailyPlay')} ➜`}
-          </T>
-        </Card>
-      ) : null}
-
-      {/* Quick play */}
-      <Card style={{ marginTop: SP(4), flexDirection: 'row', alignItems: 'center', gap: SP(4), padding: SP(5) }} label={t('home.quick')} onPress={() => router.push({ pathname: '/round', params: { mode: 'quick', seed: String(Date.now()) } })}>
-        <Disc size={72} spin={0} />
-        <View style={{ flex: 1 }}>
-          <T kind="title">{t('home.quick')}</T>
-          <T kind="small" color={theme.sub}>
-            {t('home.quickSub')}
-          </T>
-        </View>
-      </Card>
-
-      <View style={{ flexDirection: 'row', gap: SP(3), marginTop: SP(3) }}>
-        <Card style={{ flex: 1, padding: SP(4) }} label={t('home.free')} onPress={() => router.push({ pathname: '/round', params: { mode: 'free' } })}>
-          <Emoji size={28}>🗣</Emoji>
-          <T kind="bodyB" style={{ marginTop: SP(2) }}>
-            {t('home.free')}
-          </T>
-          <T kind="small" color={theme.sub}>
-            {t('home.freeSub')}
-          </T>
-        </Card>
-        <Card style={{ flex: 1, padding: SP(4) }} label={t('home.friend')} onPress={() => router.push({ pathname: '/round', params: { mode: 'friend', seed: String(Date.now()) } })}>
-          <Emoji size={28}>🤝</Emoji>
-          <T kind="bodyB" style={{ marginTop: SP(2) }}>
-            {t('home.friend')}
-          </T>
-          <T kind="small" color={theme.sub}>
-            {t('home.friendSub')}
-          </T>
-        </Card>
+      {/* Other ways to play: a plain list, like a running order. */}
+      <View style={{ marginTop: SP(6) }}>
+        <Divider />
+        <ModeRow icon="takes" title={t('home.free')} sub={t('home.freeSub')} onPress={() => router.push({ pathname: '/round', params: { mode: 'free' } })} />
+        <Divider />
+        <ModeRow icon="party" title={t('home.friend')} sub={t('home.friendSub')} onPress={() => router.push({ pathname: '/round', params: { mode: 'friend', seed: String(Date.now()) } })} />
+        <Divider />
       </View>
 
-      <Card style={{ marginTop: SP(6) }}>
-        <T kind="bodyB">{t('home.how')}</T>
-        <T color={theme.sub} style={{ marginTop: SP(2) }}>
-          {t('home.howBody')}
+      <T kind="h" style={{ marginTop: SP(10) }}>
+        {t('home.how')}
+      </T>
+      <T color={theme.sub} style={{ marginTop: SP(2) }}>
+        {t('home.howBody')}
+      </T>
+      {stats.rounds > 0 ? (
+        <T kind="small" color={theme.sub} style={{ marginTop: SP(4) }}>
+          {t('home.stats', { rounds: stats.rounds, best: stats.best })}
         </T>
-        {stats.rounds > 0 ? (
-          <T kind="small" color={theme.sub} style={{ marginTop: SP(3) }}>
-            {t('home.stats', { rounds: stats.rounds, best: stats.best })}
-          </T>
-        ) : null}
-      </Card>
+      ) : null}
     </Screen>
+  );
+}
+
+function ModeRow({ icon, title, sub, onPress }: { icon: IconName; title: string; sub: string; onPress: () => void }) {
+  const { theme } = useApp();
+  return (
+    <Press label={title} hint={sub} onPress={onPress} style={{ flexDirection: 'row', alignItems: 'center', gap: SP(4), paddingVertical: SP(4), borderRadius: R.s }}>
+      <Icon name={icon} size={24} color={theme.ink} />
+      <View style={{ flex: 1 }}>
+        <T kind="bodyB">{title}</T>
+        <T kind="small" color={theme.sub}>
+          {sub}
+        </T>
+      </View>
+      <Icon name="chevron" size={18} color={theme.sub} />
+    </Press>
   );
 }

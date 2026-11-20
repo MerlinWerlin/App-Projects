@@ -73,7 +73,7 @@ export default function Round() {
         key={key}
         line={pick?.line.t ?? null}
         note={pick?.pack === 'songs' || pick?.pack === 'aussie' ? pick.line.n : undefined}
-        heading={heading}
+        heading=""
         friend={mode === 'friend'}
         onScored={onScored}
         onSave={onSave}
