@@ -1,8 +1,7 @@
 /**
  * Launch intro (~1.35 s, once per cold start): picks up from the splash colour, the word "Cue" rolls up
- * into a reading-line band like prompter text, a soft light sweeps across it, then everything fades
- * to the app. Tap anywhere to skip. Not shown at all with Reduce Motion (the caller decides).
- * Reanimated only (already a dependency); the gradients reuse expo-linear-gradient.
+ * into the reading-line band like prompter text, then everything fades to the app. Tap anywhere to skip. Not shown at all with Reduce Motion (the caller decides).
+ * Reanimated only; the two edge masks reuse expo-linear-gradient (same colour to transparent, as on the prompter).
  */
 import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect, useRef } from 'react';
@@ -16,18 +15,15 @@ const WINDOW_W = 260;
 const WINDOW_H = 168;
 const ROLL_FROM = 120;
 const ROLL_MS = 620;
-const SWEEP_AT = 480;
-const SWEEP_MS = 520;
-const FADE_AT = 1040;
+const FADE_AT = 960;
 const FADE_MS = 300;
-export const INTRO_TOTAL_MS = FADE_AT + FADE_MS; // 1340 ms, under the 1.5 s budget
+export const INTRO_TOTAL_MS = FADE_AT + FADE_MS; // 1260 ms, under the 1.5 s budget
 
 const GHOST = 'rgba(241,238,230,0.10)';
 
 export function LaunchIntro({ onDone }: { onDone: () => void }) {
   const roll = useSharedValue(ROLL_FROM);
   const ink = useSharedValue(0);
-  const sweep = useSharedValue(0);
   const fade = useSharedValue(1);
   const finished = useRef(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -45,7 +41,6 @@ export function LaunchIntro({ onDone }: { onDone: () => void }) {
     const ease = Easing.out(Easing.cubic);
     roll.value = withTiming(0, { duration: ROLL_MS, easing: ease });
     ink.value = withTiming(1, { duration: ROLL_MS * 0.8, easing: ease });
-    sweep.value = withDelay(SWEEP_AT, withTiming(1, { duration: SWEEP_MS, easing: Easing.inOut(Easing.quad) }));
     fade.value = withDelay(FADE_AT, withTiming(0, { duration: FADE_MS, easing: Easing.in(Easing.quad) }));
     finish(INTRO_TOTAL_MS + 20);
     return () => {
@@ -65,10 +60,6 @@ export function LaunchIntro({ onDone }: { onDone: () => void }) {
   const columnStyle = useAnimatedStyle(() => ({ transform: [{ translateY: roll.value }] }));
   const wordStyle = useAnimatedStyle(() => ({ opacity: 0.25 + 0.75 * ink.value }));
   const bandStyle = useAnimatedStyle(() => ({ opacity: ink.value }));
-  const sweepStyle = useAnimatedStyle(() => ({
-    opacity: sweep.value > 0 && sweep.value < 1 ? 1 : 0,
-    transform: [{ translateX: -WINDOW_W * 0.75 + sweep.value * WINDOW_W * 1.5 }, { rotate: '18deg' }],
-  }));
 
   return (
     <Animated.View style={[StyleSheet.absoluteFill, st.root, rootStyle]}>
@@ -80,7 +71,7 @@ export function LaunchIntro({ onDone }: { onDone: () => void }) {
         accessibilityHint={t('intro.skipHint')}
       >
         <View style={st.window}>
-          {/* Reading-line band and brass marker, as on the prompter. */}
+          {/* Reading-line band and standby marker, as on the prompter. */}
           <Animated.View style={[st.band, bandStyle]}>
             <View style={st.marker} />
           </Animated.View>
@@ -93,14 +84,6 @@ export function LaunchIntro({ onDone }: { onDone: () => void }) {
                 <Text style={st.word} allowFontScaling={false}>
                   Cue
                 </Text>
-              </Animated.View>
-              <Animated.View style={[st.sweep, sweepStyle]} pointerEvents="none">
-                <LinearGradient
-                  start={{ x: 0, y: 0.5 }}
-                  end={{ x: 1, y: 0.5 }}
-                  colors={['rgba(255,236,200,0)', 'rgba(255,236,200,0.28)', 'rgba(255,236,200,0)']}
-                  style={StyleSheet.absoluteFill}
-                />
               </Animated.View>
             </View>
             <View style={[st.ghost, { width: '70%' }]} />
@@ -128,7 +111,6 @@ const st = StyleSheet.create({
     top: (WINDOW_H - WORD_SIZE * 1.25) / 2,
     height: WORD_SIZE * 1.25,
     backgroundColor: PROMPTER.classic.band,
-    borderRadius: 14,
     justifyContent: 'center',
   },
   marker: {
@@ -146,6 +128,5 @@ const st = StyleSheet.create({
   ghost: { height: 9, borderRadius: 5, backgroundColor: GHOST },
   wordClip: { overflow: 'hidden', paddingHorizontal: 18, borderRadius: 12 },
   word: { fontFamily: FONT.scriptBold, fontSize: WORD_SIZE, lineHeight: WORD_SIZE * 1.15, color: DARK.ink, letterSpacing: 0.5, textAlign: 'center' },
-  sweep: { position: 'absolute', top: -40, bottom: -40, left: '50%', width: 56, marginLeft: -28 },
   edge: { position: 'absolute', left: 0, right: 0, height: 34 },
 });

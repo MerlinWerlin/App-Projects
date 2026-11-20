@@ -7,7 +7,7 @@ import { FONT_MAX, FONT_MIN, type PrompterColors } from '../src/core/prefs';
 import { t } from '../src/i18n';
 import { trialLabel, trialState } from '../src/plus/trial';
 import { useApp } from '../src/state/AppState';
-import { PROMPTER, FONT } from '../src/theme/theme';
+import { FONT, PROMPTER, RADIUS, SPACE, TYPE } from '../src/theme/theme';
 import { Row, Section, Segmented, Stepper, SwitchRow } from '../src/ui/kit';
 
 export default function Settings() {
@@ -20,12 +20,11 @@ export default function Settings() {
   const trial = app.tier === 'plus' ? null : trialLabel(app.trial);
 
   return (
-    <ScrollView style={{ backgroundColor: theme.ground }} contentContainerStyle={{ paddingBottom: insets.bottom + 40, paddingTop: 4 }}>
+    <ScrollView style={{ backgroundColor: theme.ground }} contentContainerStyle={{ paddingBottom: insets.bottom + SPACE.xl, paddingTop: SPACE.xxs }}>
       <Section title={t('settings.plus')} footer={trial ? t(trial.key, { n: trial.n }) : undefined}>
         <Row label={t('settings.plus')} value={app.tier === 'plus' ? t('plus.active') : undefined} onPress={() => router.push('/plus')} />
         <Row
           label={t('settings.restore')}
-         
           last
           onPress={async () => {
             const r = await app.restorePlus();
@@ -72,11 +71,12 @@ export default function Settings() {
                 style={st.swatchWrap}
               >
                 <View style={[st.swatch, { backgroundColor: pal.bg, borderColor: on ? theme.go : theme.rule, borderWidth: on ? 2 : StyleSheet.hairlineWidth }]}>
-                  <Text style={{ color: pal.ink, fontFamily: FONT.scriptBold, fontSize: 20 }}>Aa</Text>
-                  <View style={[st.swatchLine, { backgroundColor: pal.cue }]} />
-                  {locked ? <Ionicons name="sparkles" size={12} color={theme.goText} style={st.swatchLock} /> : null}
+                  <View style={[st.swatchBand, { backgroundColor: pal.band }]}>
+                    <Text style={{ color: pal.ink, fontFamily: FONT.scriptBold, fontSize: 20 }}>Aa</Text>
+                  </View>
+                  {locked ? <Ionicons name="lock-closed" size={12} color={pal.dim} style={st.swatchLock} /> : null}
                 </View>
-                <Text style={{ color: on ? theme.ink : theme.ink2, fontFamily: on ? FONT.scriptBold : FONT.script, fontSize: 12.5 }} numberOfLines={1}>
+                <Text style={[TYPE.footnote, { color: on ? theme.ink : theme.ink2, fontWeight: on ? '600' : '400' }]} numberOfLines={1}>
                   {t(`settings.colors.${c}`)}
                 </Text>
               </Pressable>
@@ -120,9 +120,9 @@ export default function Settings() {
 }
 
 const st = StyleSheet.create({
-  swatches: { flexDirection: 'row', padding: 14, gap: 10 },
-  swatchWrap: { flex: 1, alignItems: 'center', gap: 6 },
-  swatch: { alignSelf: 'stretch', aspectRatio: 0.9, borderRadius: 14, alignItems: 'center', justifyContent: 'center', gap: 6 },
-  swatchLine: { width: '50%', height: 3, borderRadius: 2, opacity: 0.8 },
+  swatches: { flexDirection: 'row', padding: SPACE.md, gap: SPACE.sm },
+  swatchWrap: { flex: 1, alignItems: 'center', gap: SPACE.xs, minHeight: SPACE.touch },
+  swatch: { alignSelf: 'stretch', aspectRatio: 0.9, borderRadius: RADIUS.chip, justifyContent: 'center', overflow: 'hidden' },
+  swatchBand: { alignItems: 'center', paddingVertical: SPACE.xs },
   swatchLock: { position: 'absolute', top: 6, right: 6 },
 });

@@ -2,13 +2,13 @@
 import { ScrollView, Text, View } from 'react-native';
 import type { Prefs } from '../core/prefs';
 import type { ParsedScript } from '../core/script';
-import { FONT, RADIUS, type PrompterPalette } from '../theme/theme';
+import { FONT, RADIUS, SPACE, type PrompterPalette } from '../theme/theme';
 
 export function ScriptPreview({ parsed, palette, prefs }: { parsed: ParsedScript; palette: PrompterPalette; prefs: Prefs }) {
   const fs = Math.max(18, Math.round(prefs.fontSize * 0.6));
   const lh = Math.round(fs * prefs.lineHeight);
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: palette.bg, marginHorizontal: 16, marginTop: 8, borderRadius: RADIUS.group }} contentContainerStyle={{ padding: 22 }}>
+    <ScrollView style={{ flex: 1, backgroundColor: palette.bg, marginHorizontal: SPACE.gutter, marginTop: SPACE.xs, borderRadius: RADIUS.group }} contentContainerStyle={{ padding: SPACE.lg }}>
       {parsed.blocks.map((b, i) => {
         if (b.kind === 'break') return <View key={i} style={{ borderTopWidth: 2, borderStyle: 'dashed', borderTopColor: palette.dim, marginVertical: 18 }} />;
         if (b.kind === 'heading')

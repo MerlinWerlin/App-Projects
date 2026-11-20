@@ -4,7 +4,7 @@ import { Redirect } from 'expo-router';
 import { t } from '../src/i18n';
 import { useApp } from '../src/state/AppState';
 import { Btn, Txt } from '../src/ui/kit';
-import { FONT } from '../src/theme/theme';
+import { RADIUS, SPACE, TYPE } from '../src/theme/theme';
 
 export default function AccessCode() {
   const app = useApp();
@@ -23,16 +23,16 @@ export default function AccessCode() {
       if (ok) setCode('');
     } finally { working.current = false; setBusy(false); }
   };
-  return <ScrollView style={{ backgroundColor: app.theme.ground }} contentContainerStyle={{ padding: 24, gap: 20 }} keyboardShouldPersistTaps="handled">
-    <Txt v="scriptTitle">{t(app.codeAccess ? 'access.active' : 'access.title')}</Txt>
+  return <ScrollView style={{ backgroundColor: app.theme.ground }} contentContainerStyle={{ padding: SPACE.lg, gap: SPACE.md }} keyboardShouldPersistTaps="handled">
+    <Txt v="headline">{t(app.codeAccess ? 'access.active' : 'access.title')}</Txt>
     <Txt tone="ink2">{t(app.codeAccess ? 'access.activeBody' : 'access.body')}</Txt>
     {!app.codeAccess ? <TextInput
       testID="access-code-input"
       accessibilityLabel={t('access.title')} placeholder={t('access.title')}
-      placeholderTextColor={app.theme.ink2} value={code} onChangeText={(value) => { setCode(value); setError(false); }}
+      placeholderTextColor={app.theme.ink3} selectionColor={app.theme.go} value={code} onChangeText={(value) => { setCode(value); setError(false); }}
       autoCapitalize="characters" autoCorrect={false} maxLength={128} editable={!busy}
       secureTextEntry
-      style={{ color: app.theme.ink, backgroundColor: app.theme.sheet, borderColor: app.theme.rule, borderWidth: 1, borderRadius: 12, padding: 16, fontFamily: FONT.script, fontSize: 17 }}
+      style={[TYPE.body, { color: app.theme.ink, backgroundColor: app.theme.field, borderRadius: RADIUS.field, padding: SPACE.md }]}
     /> : null}
     {error ? <Txt tone="danger" accessibilityLiveRegion="polite">{t('access.failed')}</Txt> : null}
     <Btn label={t(app.codeAccess ? 'access.remove' : 'access.redeem')} onPress={() => { void act(); }} disabled={busy || (!app.codeAccess && !code.trim())} />

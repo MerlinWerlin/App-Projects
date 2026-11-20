@@ -209,7 +209,7 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
     fontFamily: prefs.bold ? FONT.scriptBold : FONT.script,
     textAlign: prefs.align,
   };
-  const bandH = lh * 1.9;
+  const bandH = lh * 1.5;
   const bandTop = lineY + lh * 0.5 - bandH / 2;
 
   return (
@@ -223,15 +223,8 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
         accessibilityHint="Tap to pause or resume. Drag to scroll. Pinch to resize text."
       >
         <View style={[st.fill, { transform: [{ scaleX: prefs.mirrorH ? -1 : 1 }, { scaleY: flipY }] }]}>
-          {/* The reading line: a soft brass glow behind the line you are on (the one bold element of the design). */}
-          {prefs.highlightLine && viewport > 0 ? (
-            <LinearGradient
-              pointerEvents="none"
-              colors={[alpha(palette.band, 0), palette.band, alpha(palette.band, 0)]}
-              locations={[0, 0.5, 1]}
-              style={[st.band, { top: bandTop, height: bandH }]}
-            />
-          ) : null}
+          {/* The reading line: a flat band with hard edges behind the line you are on. */}
+          {prefs.highlightLine && viewport > 0 ? <View pointerEvents="none" style={[st.band, { top: bandTop, height: bandH, backgroundColor: palette.band }]} /> : null}
           <Animated.View style={[{ paddingTop: lineY, paddingBottom: viewport * 0.5, paddingHorizontal: prefs.margin + 16 }, contentStyle]} onLayout={onContentLayout}>
             {parsed.blocks.map((b, i) => (
               <View
@@ -244,7 +237,7 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
               </View>
             ))}
           </Animated.View>
-          {/* Prompter-glass fades: text arrives softly from below and leaves softly above. */}
+          {/* Scroll-edge masks (to the same colour, never decoration): words arrive from below and leave above. */}
           {!p.transparent && viewport > 0 ? (
             <>
               <LinearGradient pointerEvents="none" colors={[palette.bg, alpha(palette.bg, 0)]} style={[st.fade, { top: 0, height: Math.max(40, lineY * 0.8) }]} />
@@ -314,7 +307,7 @@ const st = StyleSheet.create({
   fill: { flex: 1, overflow: 'hidden' },
   band: { position: 'absolute', left: 0, right: 0 },
   fade: { position: 'absolute', left: 0, right: 0 },
-  tick: { position: 'absolute', width: 4, height: 28, borderRadius: 2 },
+  tick: { position: 'absolute', width: 4, height: 28 },
   breakRow: { flexDirection: 'row', justifyContent: 'center', gap: 10, marginVertical: 30 },
   breakDot: { width: 6, height: 6, borderRadius: 3, opacity: 0.7 },
 });
