@@ -83,8 +83,8 @@ export function DriveSideBanner({ trip }: { trip: Trip }) {
                 paddingVertical: space.m,
                 borderRadius: radius.l,
                 backgroundColor: theme.warnSoft,
-                borderLeftWidth: 4,
-                borderLeftColor: theme.warn,
+                borderWidth: 1,
+                borderColor: theme.warn,
               }}
             >
               <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ flexDirection: 'row', gap: 2 }}>

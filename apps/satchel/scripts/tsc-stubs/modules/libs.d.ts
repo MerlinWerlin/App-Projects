@@ -400,6 +400,18 @@ declare module '@expo-google-fonts/space-grotesk' {
   export const SpaceGrotesk_700Bold: number;
 }
 
+declare module '@expo-google-fonts/barlow-condensed' {
+  export function useFonts(map: Record<string, number | string>): [boolean, Error | null];
+  export const BarlowCondensed_600SemiBold: number;
+  export const BarlowCondensed_700Bold: number;
+}
+
+declare module '@expo-google-fonts/libre-franklin' {
+  export function useFonts(map: Record<string, number | string>): [boolean, Error | null];
+  export const LibreFranklin_400Regular: number;
+  export const LibreFranklin_600SemiBold: number;
+}
+
 declare module '@react-native-async-storage/async-storage' {
   type Callback = (error?: Error | null) => void;
   type CallbackWithResult<T> = (error?: Error | null, result?: T | null) => void;

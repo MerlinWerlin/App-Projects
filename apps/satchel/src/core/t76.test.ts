@@ -262,7 +262,7 @@ test('licences: each main licence has a short summary in the catalogue, and the 
   for (const k of licenceKeys()) assert.ok(k in en, k);
   const libs = LICENCE_SECTIONS.find((s) => s.id === 'libraries');
   for (const e of libs?.entries ?? []) assert.ok(summaryKey(e), `${e.name} (${e.licence}) has a summary`);
-  for (const id of ['osm', 'metno', 'inter']) {
+  for (const id of ['osm', 'metno', 'librefranklin']) {
     const e = LICENCE_SECTIONS.flatMap((s) => s.entries).find((x) => x.id === id);
     assert.ok(e && summaryKey(e), id);
   }

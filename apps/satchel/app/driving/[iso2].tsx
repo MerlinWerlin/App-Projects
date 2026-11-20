@@ -211,7 +211,7 @@ function Guide({ row, trip }: { row: DrivingRow; trip: Trip | null }) {
         accessible
         accessibilityRole="header"
         accessibilityLabel={`${sideTitle}. ${sideBody}`}
-        style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, padding: space.l, borderRadius: radius.l, backgroundColor: theme.warnSoft, borderLeftWidth: 4, borderLeftColor: theme.warn }}
+        style={{ flexDirection: 'row', alignItems: 'center', gap: space.m, padding: space.l, borderRadius: radius.l, backgroundColor: theme.warnSoft, borderWidth: 1, borderColor: theme.warn }}
       >
         <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ flexDirection: 'row', gap: 2 }}>
           <Ionicons name={sideIcon(row.side)} size={28} color={theme.warn} />

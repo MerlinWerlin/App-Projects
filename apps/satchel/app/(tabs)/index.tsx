@@ -9,7 +9,7 @@ import { AccessibilityInfo, FlatList, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { tripCover } from '../../src/core/covers.ts';
 import { deviceZone, formatRange, todayIn } from '../../src/core/format.ts';
-import { countdown, dayPart, destinationZone, focusTrip, quickStats } from '../../src/core/glance.ts';
+import { countdown, destinationZone, focusTrip } from '../../src/core/glance.ts';
 import type { Trip } from '../../src/core/model.ts';
 import { tripPhase } from '../../src/core/timeline.ts';
 import { orderTrips } from '../../src/core/trips.ts';
@@ -23,7 +23,7 @@ import { ArrivalHomeCard } from '../../src/ui/ArrivalCard.tsx';
 import { DayBriefCard } from '../../src/ui/DayBriefCard.tsx';
 import { ErrorNotice } from '../../src/ui/ErrorNotice.tsx';
 import { InflightHomeCard } from '../../src/ui/InflightCard.tsx';
-import { FadeInView, HeroHeader, ProgressBar, StatTile } from '../../src/ui/hero.tsx';
+import { FadeInView, HeroHeader, ProgressBar } from '../../src/ui/hero.tsx';
 import { Button, EmptyState, Label, PressableScale } from '../../src/ui/kit.tsx';
 import { NextUpCard } from '../../src/ui/NextUpCard.tsx';
 import { TimetableEntry, timetableTrip } from '../../src/ui/timetable.tsx';
@@ -63,11 +63,9 @@ export default function TripsScreen() {
   const today = todayIn(deviceZone());
   const list = useMemo(() => orderTrips(trips, today), [trips, today]);
   const focus = useMemo(() => focusTrip(trips, today), [trips, today]);
-  const stats = useMemo(() => quickStats(trips, today), [trips, today]);
   const dest = useMemo(() => (focus ? destinationZone(focus) : null), [focus]);
   // T170: the trip on now (or starting within a week) gets a way into its Today timetable.
   const timetable = useMemo(() => timetableTrip(trips, today), [trips, today]);
-  const greeting = t(`design.greeting.${dayPart(new Date().getHours())}`);
 
   const renderTrip = useCallback(
     ({ item: trip, index }: { item: Trip; index: number }) => {
@@ -115,7 +113,6 @@ export default function TripsScreen() {
               tone="trips"
               illustration="route"
               mascot="home"
-              eyebrow={greeting}
               title={focus && c ? countdownHeadline(t, c, place) : t('design.trips.heroNone')}
               subtitle={
                 focus ? t('design.trips.countdownBody', { trip: focus.name, range: formatRange(focus.startDate, focus.endDate, lang) }) : t('design.trips.heroNoneBody')
@@ -153,13 +150,8 @@ export default function TripsScreen() {
           <ComeHomeHomeCard trips={trips} />
           {/* T95: the arrival card for the first trip in the list reaching a new country. */}
           <ArrivalHomeCard trips={list} />
-          {trips.length ? (
-            <View style={{ flexDirection: 'row', gap: space.s }}>
-              <StatTile value={stats.trips} label={t('design.stats.trips')} icon="airplane" tone="sea" />
-              <StatTile value={stats.bookings} label={t('design.stats.bookings')} icon="ticket" tone="accent" />
-              <StatTile value={stats.daysAway} label={t('design.stats.daysAway')} icon="sunny" tone="teal" />
-            </View>
-          ) : null}
+          {/* Design pass 3 dropped the three count-up stat tiles (trips, bookings, days away): Your travels and each
+              trip's pass already carry those numbers. */}
           <TravelsCard />
           <RecapHeroCard trips={trips} />
           <NextUpCard trips={trips} />

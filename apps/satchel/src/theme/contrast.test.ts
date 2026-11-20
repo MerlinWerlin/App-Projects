@@ -143,8 +143,8 @@ test('T119 elevation audit: every surface level carries the text pairs, and dark
         if (r < AA_TEXT) fails.push(`${name} ${fg} on ${level} surface: ${r.toFixed(2)}`);
       }
       const s = elevated(th, level);
-      // dark mode: the edge is what separates a card from the page; light mode: the shadow does, so no edge
-      assert.equal(s.borderWidth, th.dark ? 1 : 0, `${name} ${level} edge`);
+      // design pass 3: flat ticket stock, so a hairline edge separates every card from the board in both themes
+      assert.equal(s.borderWidth, 1, `${name} ${level} edge`);
       assert.ok(s.shadowOpacity <= 0.4, `${name} ${level} shadow too heavy`);
     }
   }
@@ -311,4 +311,20 @@ test('destination themes: every country in both modes passes every pair the base
   }
   assert.deepEqual(fails, []);
   assert.equal(countryTheme(light, null), light);
+});
+
+test('design pass 3 ticket stocks: ink, muted and the red overprint text read on every stock; the live edge shows', () => {
+  const fails: string[] = [];
+  for (const th of [light, dark]) {
+    const name = th.dark ? 'dark' : 'light';
+    for (const [stock, bg] of Object.entries(th.stock)) {
+      for (const fg of ['ink', 'muted', 'accentInk'] as const) {
+        const r = contrast(th[fg], bg);
+        if (r < AA_TEXT) fails.push(`${name} ${fg} on stock ${stock}: ${r.toFixed(2)}`);
+      }
+      const edge = contrast(th.accent, bg);
+      if (edge < AA_LARGE) fails.push(`${name} accent edge on stock ${stock}: ${edge.toFixed(2)}`);
+    }
+  }
+  assert.deepEqual(fails, []);
 });

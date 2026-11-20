@@ -1,7 +1,7 @@
 // Root: the splash stays up until fonts, prefs and trips have loaded, so the first screen never flashes a raw route
 // name or a white frame (App Factory starter standard). Every route below has headerShown:false or a real title.
-import { Inter_400Regular, Inter_600SemiBold, useFonts } from '@expo-google-fonts/inter';
-import { SpaceGrotesk_500Medium, SpaceGrotesk_700Bold, useFonts as useDisplayFonts } from '@expo-google-fonts/space-grotesk';
+import { BarlowCondensed_600SemiBold, BarlowCondensed_700Bold, useFonts as useDisplayFonts } from '@expo-google-fonts/barlow-condensed';
+import { LibreFranklin_400Regular, LibreFranklin_600SemiBold, useFonts } from '@expo-google-fonts/libre-franklin';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -41,8 +41,8 @@ function Shell() {
   const { ready, theme, t } = useApp();
   const { loaded } = useTrips();
   const privateOnScreen = usePrivacyGuarded();
-  const [bodyLoaded, bodyError] = useFonts({ Inter_400Regular, Inter_600SemiBold });
-  const [displayLoaded, displayError] = useDisplayFonts({ SpaceGrotesk_500Medium, SpaceGrotesk_700Bold });
+  const [bodyLoaded, bodyError] = useFonts({ LibreFranklin_400Regular, LibreFranklin_600SemiBold });
+  const [displayLoaded, displayError] = useDisplayFonts({ BarlowCondensed_600SemiBold, BarlowCondensed_700Bold });
   // A font that fails to load falls back to the system font rather than holding the splash.
   const fontsDone = (bodyLoaded || !!bodyError) && (displayLoaded || !!displayError);
   const show = ready && loaded && fontsDone;

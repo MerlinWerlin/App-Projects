@@ -55,35 +55,60 @@ export function toneColours(theme: Theme, tone: Tone): { fg: string; bg: string 
   }
 }
 
-/** Ionicons glyph in a tinted circle. Decorative: hidden from screen readers (the row it sits in names itself). */
+/**
+ * A glyph in its tone's colour, printed straight on the card (design pass 3: no tinted circle behind it).
+ * Decorative: hidden from screen readers (the row it sits in names itself).
+ */
 export const IconBadge = memo(function IconBadge({ name, tone = 'sea', size = 'm' }: { name: IconName; tone?: Tone; size?: 's' | 'm' | 'l' }) {
   const { theme } = useApp();
-  const { fg, bg } = toneColours(theme, tone);
-  const box = size === 's' ? 32 : size === 'l' ? 52 : 42;
+  const { fg } = toneColours(theme, tone);
+  const glyph = size === 's' ? 20 : size === 'l' ? 32 : 24;
   return (
     <View
       accessibilityElementsHidden
       importantForAccessibility="no-hide-descendants"
-      style={{ width: box, height: box, borderRadius: box / 2, backgroundColor: bg, alignItems: 'center', justifyContent: 'center' }}
+      style={{ width: glyph + 4, height: glyph + 4, alignItems: 'center', justifyContent: 'center' }}
     >
-      <Ionicons name={name} size={Math.round(box * 0.5)} color={fg} />
+      <Ionicons name={name} size={glyph} color={fg} />
     </View>
   );
 });
 
 /**
- * T91: the one section header look (Settings, Licences, Vault...): a small icon badge and a small-caps title in muted
- * ink. The row is a single screen-reader header; the badge is decorative.
+ * The one section header look: a condensed title in ink, sentence case, with room above it. The icon prop is kept
+ * for callers but no longer drawn (a heading carries its own weight). A single screen-reader header.
  */
-export function SectionHeader({ title, icon, tone = 'sea' }: { title: string; icon?: IconName; tone?: Tone }) {
+export function SectionHeader({ title }: { title: string; icon?: IconName; tone?: Tone }) {
   const { theme } = useApp();
   return (
-    <View accessible accessibilityRole="header" accessibilityLabel={title} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s, minHeight: 32 }}>
-      {icon ? <IconBadge name={icon} tone={tone} size="s" /> : null}
-      <Text style={[typeScale.caption, { fontSize: 13, color: theme.muted, flex: 1 }]}>{title}</Text>
+    <View accessible accessibilityRole="header" accessibilityLabel={title} style={{ minHeight: 32, justifyContent: 'flex-end', marginTop: space.s }}>
+      <Text style={[typeScale.title, { color: theme.ink }]}>{title}</Text>
     </View>
   );
 }
+
+/**
+ * The tear edge of a ticket: a row of half-punched holes in the page colour along a stub's edge. Decorative.
+ * `edge` picks the side; `color` is the page the stub sits on.
+ */
+export const Perforation = memo(function Perforation({ color, edge = 'bottom', size = 10 }: { color: string; edge?: 'top' | 'bottom'; size?: number }) {
+  const [w, setW] = useState(0);
+  const gap = size * 0.9;
+  const n = w ? Math.floor((w + gap) / (size + gap)) : 0;
+  return (
+    <View
+      pointerEvents="none"
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      onLayout={(e) => setW(e.nativeEvent.layout.width)}
+      style={{ position: 'absolute', left: 0, right: 0, [edge]: -size / 2, height: size, flexDirection: 'row', justifyContent: 'center', gap }}
+    >
+      {Array.from({ length: n }, (_, i) => (
+        <View key={i} style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: color }} />
+      ))}
+    </View>
+  );
+});
 
 /** Fades in and rises a little on mount (timed, ease-out). With Reduce Motion it is simply there. */
 export function FadeInView({ children, delay = 0, style }: { children: ReactNode; delay?: number; style?: StyleProp<ViewStyle> }) {
@@ -93,23 +118,21 @@ export function FadeInView({ children, delay = 0, style }: { children: ReactNode
 }
 
 /**
- * T119: a 0 -> 1 progress that replays (timed, ease-out, no overshoot) every time the screen comes into focus, after
- * `delay` ms. With Reduce Motion it stays at 1 and nothing moves.
+ * T119: a 0 -> 1 progress (timed, ease-out, no overshoot) after `delay` ms. Design pass 3: it plays once when the
+ * screen first mounts, not on every tab switch (tabs are visited dozens of times a day; replaying made them feel
+ * slow). With Reduce Motion it stays at 1 and nothing moves.
  */
 export function useFocusEntrance(reduceMotion: boolean, delay = 0, ms: number = duration.slow) {
   const progress = useRef(new Animated.Value(reduceMotion ? 1 : 0)).current;
-  useFocusEffect(
-    useCallback(() => {
-      if (reduceMotion) {
-        progress.setValue(1);
-        return;
-      }
-      progress.setValue(0);
-      const a = timed(progress, 1, ms, false, delay);
-      a.start();
-      return () => a.stop();
-    }, [progress, reduceMotion, delay, ms]),
-  );
+  useEffect(() => {
+    if (reduceMotion) {
+      progress.setValue(1);
+      return;
+    }
+    const a = timed(progress, 1, ms, false, delay);
+    a.start();
+    return () => a.stop();
+  }, [progress, reduceMotion, delay, ms]);
   return progress;
 }
 
@@ -305,17 +328,21 @@ export function HeroHeader({
   const pick = useCountryPick();
   const country = pick && THEMED_TONES.includes(tone) ? pick : null;
   const plainArt = illustration === 'route' || illustration === 'none';
+  // Design pass 3: no eyebrow above the title (a heading carries its own weight). The old eyebrow text, when a screen
+  // still passes one, closes the block as a small line under the subtitle.
   const text = (
     <>
-      {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{eyebrow}</Text> : null}
-      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayL, { color: theme.heroInk, maxWidth: scene || mascot ? '64%' : '78%' }]}>
+      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayXL, { color: theme.heroInk, maxWidth: scene || mascot ? '64%' : '78%' }]}>
         {title}
       </Text>
       {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: scene || mascot ? '66%' : '82%' }]}>{subtitle}</Text> : null}
+      {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted, maxWidth: scene || mascot ? '66%' : '82%' }]}>{eyebrow}</Text> : null}
     </>
   );
   return (
-    <View style={[{ borderRadius: radius.xl, overflow: 'hidden', backgroundColor: theme.hero[tone][0] }, shadowOf(theme, 'mid'), style]}>
+    <View style={style}>
+      {/* A solid deep ticket stock (no gradient, no glow), torn off along a perforated bottom edge. */}
+      <View style={{ borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.hero[tone][0] }}>
       <GradientFill tone={tone} />
       {country ? <CountryHeroArt pick={country} compact={compact} scene={!!scene || !!mascot} motif={!mascot && (!!scene || plainArt)} topInset={topInset} /> : null}
       {mascot ? (
@@ -335,10 +362,12 @@ export function HeroHeader({
           <HeroIllustration kind={illustration} width={compact ? 120 : 160} height={compact ? 90 : 120} />
         </View>
       )}
-      <View style={{ paddingTop: topInset + pad, paddingBottom: pad, paddingHorizontal: space.l, gap: compact ? space.xs : space.s }}>
+      <View style={{ paddingTop: topInset + pad, paddingBottom: pad + space.xs, paddingHorizontal: space.l, gap: compact ? space.xs : space.s }}>
         {scene ? <FocusEntrance style={{ gap: compact ? space.xs : space.s }}>{text}</FocusEntrance> : text}
         {children ? <View style={{ marginTop: space.s, gap: space.s }}>{children}</View> : null}
       </View>
+      </View>
+      <Perforation color={theme.paper} />
     </View>
   );
 }
@@ -472,17 +501,18 @@ export const QuickAction = memo(function QuickAction({
         style={[
           {
             alignItems: 'center',
-            gap: space.s,
+            gap: space.xs,
             paddingVertical: space.m,
             paddingHorizontal: space.xs,
             minHeight: TOUCH + space.xl,
-            borderRadius: radius.l,
+            borderRadius: radius.m,
+            borderWidth: 1,
+            borderColor: theme.line,
             opacity: disabled ? 0.5 : 1,
           },
-          elevated(theme, 'low'),
         ]}
       >
-        <IconBadge name={icon} tone={tone} />
+        <IconBadge name={icon} tone="ink" />
         <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.7} style={[typeScale.small, { fontFamily: typeScale.bodyStrong.fontFamily, color: theme.ink }]}>
           {label}
         </Text>
@@ -530,9 +560,8 @@ export const ProgressBar = memo(function ProgressBar({ progress, label, tone = '
  * tab is focused and the `-outline` glyph otherwise. Use it for every Tabs.Screen so new tabs match.
  */
 export const tabIcon =
-  (base: string, pill: string) =>
+  // Design pass 3: the iOS tab bar convention, filled glyph when selected and outline otherwise; no tinted pill.
+  (base: string, _pill?: string) =>
   ({ focused, color, size }: { focused: boolean; color: ColorValue; size: number }) => (
-    <View style={{ width: 52, height: 30, borderRadius: radius.pill, alignItems: 'center', justifyContent: 'center', backgroundColor: focused ? pill : 'transparent' }}>
-      <Ionicons name={(focused ? base : `${base}-outline`) as IconName} size={size - 2} color={typeof color === 'string' ? color : undefined} />
-    </View>
+    <Ionicons name={(focused ? base : `${base}-outline`) as IconName} size={size} color={typeof color === 'string' ? color : undefined} />
   );
