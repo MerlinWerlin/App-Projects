@@ -12,27 +12,28 @@ export type Palette = {
   onInk: string;
 };
 
+// Same values as the v2 "Drawing table" palette (DESIGN.md §2), so v1 and v2 screens match.
 export const light: Palette = {
-  paper: '#F5F1EA',
-  card: '#FFFFFF',
-  line: '#DDD5C8',
-  graphite: '#22201C',
-  muted: '#6E675D',
-  ink: '#2346A8',
-  inkSoft: '#E3E8F7',
-  ok: '#2C7A54',
-  warn: '#A2620F',
+  paper: '#F6F2EB',
+  card: '#FFFDF9',
+  line: '#E2DACE',
+  graphite: '#1E1B18',
+  muted: '#6B645A',
+  ink: '#B23A1F',
+  inkSoft: '#F6E3DC',
+  ok: '#2C6E4F',
+  warn: '#8F540A',
   onInk: '#FFFFFF',
 };
 
 export const dark: Palette = {
-  paper: '#14130F',
-  card: '#1D1B17',
-  line: '#34302A',
-  graphite: '#EEE8DE',
-  muted: '#A39B8F',
-  ink: '#8FA8FF',
-  inkSoft: '#1E2846',
+  paper: '#141210',
+  card: '#1D1A17',
+  line: '#36312B',
+  graphite: '#F2EDE5',
+  muted: '#B1A99E',
+  ink: '#FF8E6B',
+  inkSoft: '#3A221B',
   ok: '#6CC796',
   warn: '#E5B35A',
   onInk: '#14130F',

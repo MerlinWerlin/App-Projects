@@ -1,4 +1,5 @@
-// Pill button (docs/DESIGN_V2.md §6): primary (ink fill), secondary (inkSoft), plain. At least 50 pt tall; long
+// Button (DESIGN.md §5): primary (red-pencil fill), secondary (card + hairline border, ink label), plain (label
+// only). Rounded rectangle, radius lg (12), at least 50 pt tall; long
 // translations wrap onto more lines and the pill grows: the label is never truncated (no numberOfLines).
 import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { Feather } from '@expo/vector-icons';
@@ -39,7 +40,7 @@ export function PillButton({
   style,
 }: PillButtonProps) {
   const { c, text } = useThemeV2();
-  const fill = variant === 'primary' ? c.ink : variant === 'secondary' ? c.inkSoft : 'transparent';
+  const fill = variant === 'primary' ? c.ink : variant === 'secondary' ? c.card : 'transparent';
   const fg = variant === 'primary' ? c.onInk : c.ink;
   const stretch = block ?? variant === 'primary';
   return (
@@ -48,8 +49,6 @@ export function PillButton({
       disabled={disabled}
       haptic={haptic ?? (variant === 'primary' ? 'tap' : 'select')}
       scaleTo={pressScaleV2}
-      // T84: concentric tap ripple on the primary action only.
-      ripple={variant === 'primary' && !disabled ? c.onInk : undefined}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel ?? title}
       accessibilityHint={accessibilityHint}
@@ -59,8 +58,10 @@ export function PillButton({
         {
           alignSelf: stretch ? 'stretch' : 'flex-start',
           minHeight: sizeV2.pill,
-          borderRadius: radiusV2.pill,
+          borderRadius: radiusV2.lg,
           backgroundColor: fill,
+          borderWidth: variant === 'secondary' ? 1 : 0,
+          borderColor: c.line,
           paddingHorizontal: spaceV2.x6,
           paddingVertical: spaceV2.x3,
           justifyContent: 'center',

@@ -1,6 +1,6 @@
-// Home (PLAN §3 /, DESIGN_V2 §7): large title, two big BubbleCards (Trace a photo / Templates), category bubbles,
-// recent templates and favourites on a soft pastel panel, recent photos, progress as StatPills and My drawings as
-// an InsetRow. Every flow from v1 stays: photo / camera pick with friendly errors, recents (long press to remove),
+// Home (PLAN §3 /, DESIGN.md "Drawing table"): serif large title, one primary action (Trace a photo) with Take a
+// photo and Templates beside it, a quiet progress line, My drawings as an InsetRow, category tiles, recent templates
+// and favourites, recent photos. Every flow from v1 stays: photo / camera pick with friendly errors, recents (long press to remove),
 // template quick links, first-run setup guide. After the setup guide, a one-time, dismissable free-trial offer card
 // (guideline 3.1.1, docs/OWNER_1024.md) for someone who hasn't started the trial; it never blocks tracing.
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -30,12 +30,10 @@ import {
   BubbleCard,
   CategoryBubble,
   EmptyStateV2,
-  IconBubble,
   InsetGroup,
   InsetRow,
   PillButton,
   ScreenV2,
-  Sparkle,
   StatPill,
 } from '../../src/ui/v2';
 import { squircle } from '../../src/ui/v2/shared';
@@ -314,35 +312,36 @@ export default function HomeScreen() {
           {t('home.tagline')}
         </Text>
 
-        {/* Two big ways in */}
-        <View style={{ flexDirection: 'row', gap: spaceV2.x3 }}>
-          <HeroCard
-            title={t('home.tracePhoto')}
-            hint={t('home.tracePhotoHint')}
-            icon="image"
-            tone="ink"
-            onPress={tracePhoto}
-          />
-          <HeroCard
-            title={t('common.nav.templates')}
-            hint={t('home.seeAllTemplates')}
-            icon="grid"
-            tone="pastel"
-            onPress={openTemplates}
-          />
-        </View>
+        {/* One clear way in (Trace a photo), with the camera and the template library beside it */}
         <PillButton
-          title={t('home.takePhoto')}
-          variant="secondary"
-          icon="camera"
-          accessibilityHint={t('home.takePhotoHint')}
-          onPress={takePhoto}
+          title={t('home.tracePhoto')}
+          icon="image"
+          accessibilityHint={t('home.tracePhotoHint')}
+          onPress={tracePhoto}
           disabled={busy}
           block
-          style={{ marginTop: spaceV2.x3 }}
         />
+        <View style={{ flexDirection: 'row', gap: spaceV2.x3, marginTop: spaceV2.x3 }}>
+          <PillButton
+            title={t('home.takePhoto')}
+            variant="secondary"
+            icon="camera"
+            accessibilityHint={t('home.takePhotoHint')}
+            onPress={takePhoto}
+            disabled={busy}
+            style={{ flex: 1 }}
+          />
+          <PillButton
+            title={t('common.nav.templates')}
+            variant="secondary"
+            icon="grid"
+            accessibilityHint={t('home.seeAllTemplates')}
+            onPress={openTemplates}
+            style={{ flex: 1 }}
+          />
+        </View>
         {cameraDenied ? (
-          <BubbleCard elevation="e1" style={{ marginTop: spaceV2.x3 }}>
+          <BubbleCard style={{ marginTop: spaceV2.x3 }}>
             <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('subhead'), { color: c.graphite }]}>
               {t('home.cameraDenied')}
             </Text>
@@ -360,7 +359,7 @@ export default function HomeScreen() {
 
         {/* One-time free-trial offer (3.1.1 disclosure before it starts); "Not now" hides it for good. */}
         {tipsChecked && !showTips && plus.offerSeen === false && canStartTrial(access) ? (
-          <BubbleCard fill={c.pastels[4]} padding={spaceV2.x5} style={{ marginTop: spaceV2.x4 }}>
+          <BubbleCard padding={spaceV2.x5} style={{ marginTop: spaceV2.x5 }}>
             <TrialOfferText price={plus.price ?? PLUS_PRICE} />
             <PillButton
               title={t('plus.startTrial')}
@@ -393,7 +392,6 @@ export default function HomeScreen() {
               title={t('drawings.title')}
               subtitle={t('drawings.count', { count: drawingCount })}
               icon="book-open"
-              iconFill={c.pastels[3]}
               onPress={() => router.push('/drawings')}
               accessibilityLabel={t('drawings.homeLabel', { count: drawingCount })}
               accessibilityHint={t('drawings.homeHint')}
@@ -458,19 +456,7 @@ export default function HomeScreen() {
           />
         </ScrollView>
         {hasMiniRows ? (
-          <View
-            style={[
-              squircle,
-              {
-                marginTop: spaceV2.x4,
-                paddingVertical: spaceV2.x4,
-                paddingHorizontal: spaceV2.x4,
-                borderRadius: radiusV2.xl,
-                backgroundColor: c.pastels[2],
-                gap: spaceV2.x4,
-              },
-            ]}
-          >
+          <View style={{ marginTop: spaceV2.x5, gap: spaceV2.x4 }}>
             {recentTemplates.length > 0 ? (
               <TemplateMiniRow
                 title={t('home.recentTemplates')}
@@ -553,43 +539,7 @@ export default function HomeScreen() {
   );
 }
 
-// One of the two big entry cards: ink hero or a pastel one, each with a sparkle. Text wraps for long translations.
-function HeroCard({
-  title,
-  hint,
-  icon,
-  tone,
-  onPress,
-}: {
-  title: string;
-  hint: string;
-  icon: 'image' | 'grid';
-  tone: 'ink' | 'pastel';
-  onPress: () => void;
-}) {
-  const { c, text } = useThemeV2();
-  const ink = tone === 'ink';
-  return (
-    <BubbleCard
-      fill={ink ? c.ink : c.pastels[1]}
-      sparkle
-      sparkleColor={ink ? c.sunny : c.bubblegum}
-      radius="xl"
-      padding={spaceV2.x5}
-      onPress={onPress}
-      accessibilityLabel={title}
-      accessibilityHint={hint}
-      style={{ flex: 1, minHeight: 156, justifyContent: 'space-between' }}
-    >
-      <IconBubble icon={icon} size={44} fill={ink ? c.onInk : c.card} color={c.ink} />
-      <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('title3'), { color: ink ? c.onInk : c.graphite, marginTop: spaceV2.x4 }]}>
-        {title}
-      </Text>
-    </BubbleCard>
-  );
-}
-
-// T69 / T80: calm, local-only progress as stat pills. It counts trace sessions (My drawings counts saved
+// T69 / T80: calm, local-only progress as one quiet line of figures (DESIGN.md: no stat tiles). It counts trace sessions (My drawings counts saved
 // drawings), so the wording says "sessions". The streak shows only while it is running. One spoken label.
 function ProgressPills({ progress }: { progress: ProgressSummary }) {
   const { t, num } = useT();
@@ -603,28 +553,11 @@ function ProgressPills({ progress }: { progress: ProgressSummary }) {
     <View
       accessible
       accessibilityLabel={label}
-      style={{ flexDirection: 'row', flexWrap: 'wrap', gap: spaceV2.x2, marginTop: spaceV2.x5 }}
+      style={{ flexDirection: 'row', flexWrap: 'wrap', columnGap: spaceV2.x5, rowGap: spaceV2.x1, marginTop: spaceV2.x6 }}
     >
-      <StatPill
-        icon="edit-2"
-        tone="ink"
-        value={num(progress.sessions)}
-        label={t('home.stat.sessions', { count: progress.sessions })}
-      />
-      <StatPill
-        icon="clock"
-        tone="mint"
-        value={num(progress.minutes)}
-        label={t('home.stat.minutes', { count: progress.minutes })}
-      />
-      {streak ? (
-        <StatPill
-          icon="star"
-          tone="sunny"
-          value={num(progress.streak)}
-          label={t('home.stat.streak', { count: progress.streak })}
-        />
-      ) : null}
+      <StatPill value={num(progress.sessions)} label={t('home.stat.sessions', { count: progress.sessions })} />
+      <StatPill value={num(progress.minutes)} label={t('home.stat.minutes', { count: progress.minutes })} />
+      {streak ? <StatPill value={num(progress.streak)} label={t('home.stat.streak', { count: progress.streak })} /> : null}
     </View>
   );
 }
@@ -647,6 +580,7 @@ function TemplateMiniRow({
 }) {
   const { c, text } = useThemeV2();
   const { t, tDynamic } = useT();
+  const gutter = gutterFor(useWindowDimensions().width);
   return (
     <View>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', minHeight: sizeV2.touch }}>
@@ -673,14 +607,13 @@ function TemplateMiniRow({
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        style={{ marginHorizontal: -spaceV2.x4 }}
-        contentContainerStyle={{ paddingHorizontal: spaceV2.x4, gap: spaceV2.x3, paddingVertical: spaceV2.x2 }}
+        style={{ marginHorizontal: -gutter }}
+        contentContainerStyle={{ paddingHorizontal: gutter, gap: spaceV2.x3, paddingVertical: spaceV2.x1 }}
       >
         {items.map((tpl, n) => (
           <StaggerIn key={tpl.id} index={n}>
             <BubbleCard
               radius="md"
-              elevation="e1"
               padding={spaceV2.x2}
               onPress={() => onOpen(tpl)}
               haptic="select"
@@ -725,12 +658,9 @@ function SectionHeader({
         minHeight: sizeV2.touch,
       }}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: spaceV2.x2, flexShrink: 1 }}>
-        <Text accessibilityRole="header" maxFontSizeMultiplier={maxFontScaleV2} style={[text('title2'), { color: c.graphite, flexShrink: 1 }]}>
-          {title}
-        </Text>
-        <Sparkle size={16} />
-      </View>
+      <Text accessibilityRole="header" maxFontSizeMultiplier={maxFontScaleV2} style={[text('title2'), { color: c.graphite, flexShrink: 1 }]}>
+        {title}
+      </Text>
       {action && onAction ? (
         <Pressable
           onPress={onAction}
@@ -738,7 +668,7 @@ function SectionHeader({
           accessibilityLabel={actionLabel ?? action}
           style={{ minHeight: sizeV2.touch, minWidth: sizeV2.touch, justifyContent: 'center', alignItems: 'flex-end', paddingStart: spaceV2.x2 }}
         >
-          <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('headline'), { color: c.ink }]}>
+          <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('body'), { color: c.ink }]}>
             {action}
           </Text>
         </Pressable>

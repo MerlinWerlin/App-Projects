@@ -178,7 +178,7 @@ export function InsetRow({
             onValueChange?.(v);
           }}
           disabled={disabled}
-          trackColor={{ true: c.mint, false: c.line }}
+          trackColor={{ true: c.ink, false: c.line }}
           // the row is the accessible switch; hide the inner control so it is not announced twice
           accessibilityElementsHidden
           importantForAccessibility="no-hide-descendants"

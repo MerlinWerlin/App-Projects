@@ -96,7 +96,9 @@ export type LargeTitleProps = { title: string; scrollY: Animated.Value };
 
 /** The large title inside the scroll content (place it first). */
 export function LargeTitle({ title, scrollY }: LargeTitleProps) {
-  const { c, text } = useThemeV2();
+  const { c, text, typo } = useThemeV2();
+  // DESIGN.md §3: Fraunces for the large title in Latin scripts; other scripts get the system font from typo.
+  const serif = typo.family('display') !== undefined;
   const reduce = useReduceMotion();
   const cfg = collapseInterpolation(reduce);
   const scale = scrollY.interpolate({ ...cfg.largeScale, extrapolate: 'clamp' });
@@ -107,6 +109,7 @@ export function LargeTitle({ title, scrollY }: LargeTitleProps) {
       maxFontSizeMultiplier={maxFontScaleV2}
       style={[
         text('largeTitle'),
+        serif ? { ...typo.face('display'), fontWeight: undefined, letterSpacing: -0.4 } : null,
         {
           color: c.graphite,
           alignSelf: 'flex-start',

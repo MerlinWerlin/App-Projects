@@ -1,17 +1,16 @@
 // Bottom tab bar (T81, DESIGN_V2 §4 materials, MARKET "Design reference 18 Oct" §2): a frosted GlassBar with a
 // hairline on top, five tabs (Trace / Templates / Workshop / My drawings / Settings, src/core/tabs.ts) as Feather icons with a
-// catalogue label under each. The active tab sits in a rounded inkSoft pill and pops; presses scale with the spring
-// and tick a selection haptic (Haptics setting respected). Each tab is a ≥ 44 pt target with role "tab" and its
+// catalogue label under each. The active tab is tinted red pencil, as on a standard iOS tab bar (DESIGN.md: no
+// tinted shape behind icons); presses scale with the spring and tick a selection haptic (Haptics setting respected). Each tab is a ≥ 44 pt target with role "tab" and its
 // selected state. The row uses flexDirection 'row' only, so it mirrors by itself for right-to-left languages.
 // The bar stays in the layout flow (the navigator puts the screens above it) and pads for the bottom safe area
 // (tab screens therefore skip that inset themselves, T92). It hides while the keyboard is open (T92).
-import { useEffect, useRef, useState } from 'react';
-import { Animated, Keyboard, Platform, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Keyboard, Platform, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useThemeV2 } from '../../theme/useTheme';
-import { radiusV2, sizeV2, spaceV2 } from '../../theme/tokensV2';
-import { popTo, useReduceMotion } from '../../theme/motion';
+import { sizeV2, spaceV2 } from '../../theme/tokensV2';
 import { PressableScale } from '../PressableScale';
 import { useT } from '../../i18n';
 import { TAB_BAR_HEIGHT, keyboardEvents, tabFor, type TabSpec } from '../../core/tabs';
@@ -34,8 +33,7 @@ export type TabBarV2Props = {
 
 /** Maximum Dynamic Type scale for tab labels (bars stay compact; Settings → larger text still reads). */
 const LABEL_MAX_SCALE = 1.3;
-const PILL_W = 60;
-const PILL_H = 32;
+const ICON_BOX = 30;
 
 /**
  * T92: true while the software keyboard is up. The navigator's tabBarHideOnKeyboard only covers its default bar,
@@ -101,21 +99,6 @@ type TabItemProps = {
 
 function TabItem({ spec, label, focused, onPress, onLongPress }: TabItemProps) {
   const { c, text } = useThemeV2();
-  const reduce = useReduceMotion();
-  const pop = useRef(new Animated.Value(1)).current;
-  const first = useRef(true);
-  useEffect(() => {
-    // Selection pop on the pill when a tab becomes active (not on first mount; Reduce Motion: none).
-    if (first.current) {
-      first.current = false;
-      return;
-    }
-    if (!focused || reduce) return;
-    const a = popTo(pop, false);
-    a.start();
-    return () => a.stop();
-  }, [focused, reduce, pop]);
-
   const color = focused ? c.ink : c.muted;
   return (
     <PressableScale
@@ -127,19 +110,9 @@ function TabItem({ spec, label, focused, onPress, onLongPress }: TabItemProps) {
       accessibilityLabel={label}
       style={{ flex: 1, minHeight: sizeV2.touch + spaceV2.x2, alignItems: 'center', justifyContent: 'center', paddingVertical: spaceV2.x1 }}
     >
-      <Animated.View
-        style={{
-          width: PILL_W,
-          height: PILL_H,
-          borderRadius: radiusV2.pill,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: focused ? c.inkSoft : 'transparent',
-          transform: [{ scale: pop }],
-        }}
-      >
-        <Feather name={spec.icon} size={22} color={color} />
-      </Animated.View>
+      <View style={{ height: ICON_BOX, alignItems: 'center', justifyContent: 'center' }}>
+        <Feather name={spec.icon} size={23} color={color} />
+      </View>
       <Text
         maxFontSizeMultiplier={LABEL_MAX_SCALE}
         // Five tabs since 24 Oct 2026 (Workshop): long labels shrink to one line instead of wrapping.

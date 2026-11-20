@@ -1,19 +1,19 @@
-// Squircle card (docs/DESIGN_V2.md §6): radius lg, e2 shadow (dark: top highlight), optional pastel fill and a
-// sparkle accent in the top end corner. With onPress it becomes a button with the v2 press scale.
+// Flat paper card (DESIGN.md §5): card fill, 1 px hairline border, radius lg (12), no shadow by default. The old
+// `sparkle` props are accepted and ignored (sparkles are retired). With onPress it becomes a button with the press
+// scale.
 import type { ReactNode } from 'react';
 import { View, type AccessibilityActionEvent, type AccessibilityActionInfo, type AccessibilityRole, type StyleProp, type ViewStyle } from 'react-native';
 import { PressableScale, type PressHaptic } from '../PressableScale';
 import { useThemeV2 } from '../../theme/useTheme';
 import { elevationV2, radiusV2, spaceV2, type ElevationLevel } from '../../theme/tokensV2';
 import { pressScaleV2 } from '../../theme/motion';
-import { Sparkle } from './Sparkle';
 import { squircle } from './shared';
 
 export type BubbleCardProps = {
   children: ReactNode;
   /** Fill colour (a pastel from c.pastels, c.ink for a hero); default card. */
   fill?: string;
-  /** Show a small sparkle cluster in the top end corner. */
+  /** Retired (DESIGN.md §7): accepted for compatibility, draws nothing. */
   sparkle?: boolean;
   sparkleColor?: string;
   radius?: keyof typeof radiusV2;
@@ -34,10 +34,8 @@ export type BubbleCardProps = {
 export function BubbleCard({
   children,
   fill,
-  sparkle = false,
-  sparkleColor,
   radius = 'lg',
-  elevation = 'e2',
+  elevation = 'none',
   padding = spaceV2.x4,
   onPress,
   onLongPress,
@@ -53,12 +51,16 @@ export function BubbleCard({
   const box: StyleProp<ViewStyle> = [
     squircle,
     elevationV2(elevation, isDark),
-    { backgroundColor: fill ?? c.card, borderRadius: radiusV2[radius], padding },
+    {
+      backgroundColor: fill ?? c.card,
+      borderRadius: radiusV2[radius],
+      padding,
+      // hairline edge on paper-coloured cards; a filled (ink) card needs none
+      borderWidth: fill === undefined || fill === c.card || fill === c.card2 || c.pastels.includes(fill) ? 1 : 0,
+      borderColor: c.line,
+    },
     style,
   ];
-  const accent = sparkle ? (
-    <Sparkle variant="cluster" size={22} color={sparkleColor} style={{ position: 'absolute', top: spaceV2.x3, end: spaceV2.x3 }} />
-  ) : null;
   if (onPress) {
     return (
       <PressableScale
@@ -67,8 +69,6 @@ export function BubbleCard({
         delayLongPress={onLongPress ? 400 : undefined}
         haptic={haptic}
         scaleTo={pressScaleV2}
-        // T84: tap ripple; light rings on an ink hero card, ink rings on light cards.
-        ripple={fill === c.ink ? c.onInk : c.ink}
         accessibilityRole={accessibilityRole ?? 'button'}
         accessibilityLabel={accessibilityLabel}
         accessibilityHint={accessibilityHint}
@@ -77,14 +77,12 @@ export function BubbleCard({
         style={box}
       >
         {children}
-        {accent}
       </PressableScale>
     );
   }
   return (
     <View style={box} accessibilityRole={accessibilityRole} accessibilityLabel={accessibilityLabel} accessibilityHint={accessibilityHint}>
       {children}
-      {accent}
     </View>
   );
 }
