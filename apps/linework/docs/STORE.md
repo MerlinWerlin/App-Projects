@@ -35,9 +35,9 @@ Fallback names if Apple refuses the name or you want a cleaner one. A web search
 Linework: Trace & Sketch
 ```
 
-### Subtitle (≤30) [28]
+### Subtitle (≤30) [29]
 ```text
-Trace photos onto real paper
+AR tracing & drawing on paper
 ```
 
 ### Promotional text (≤170) [158]
@@ -45,10 +45,10 @@ Trace photos onto real paper
 New: Workshop, exact angles, joints and layouts for trades, plus letters in 16 styles. Free for 14 days, then unlock once for A$2.99. No ads, no subscription.
 ```
 
-### Keywords (≤100) [97]
+### Keywords (≤100) [94]
 Comma separated, no spaces after commas, no word that is already in the name or subtitle (Apple indexes those anyway), no other app's name.
 ```text
-tracing,stencil,template,workshop,angle,carpentry,lettering,calligraphy,font,scrapbook,mural,kids
+draw,photo,camera,lightbox,stencil,outline,lettering,calligraphy,template,learn,art,mural,kids
 ```
 
 ### Description (≤4000) [3426]

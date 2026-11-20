@@ -31,7 +31,8 @@ always say "on iPhone" / "App Store" (no `playUrl`). Couch pins: `marketing/pins
 
 ### Other free places worth using (Jared creates the accounts, Claude does the rest)
 1. **AlternativeTo**: free account, then add each app as an alternative under "teleprompter", "tracing / lightbox"
-   and "voice reverse" categories. Lasting search traffic. Claude can fill the listings once signed in.
+   and "voice reverse" categories. Lasting search traffic. Claude can fill the listings once signed in. Linework and
+   Couch listing text is drafted in `marketing/discovery/DISCOVERY.md` (16 Nov); waiting on Jared's yes to the account.
 2. **Product Hunt**: one launch per app (Cue and Linework fit best). Needs a maker account; launches go best on a
    weekday with a gallery of the store screenshots (ready in `apps/<slug>/store/jpg`).
 3. **Threads**: log in with the Instagram account once; then the daily run posts the same reel or a screenshot + one
@@ -131,6 +132,18 @@ new terms; anything like that goes to Jared.
     - No slow zooms or close push-ins on the AI plan photos. Zooming exposes the flaws in the AI images.
     - Don't spend Flow credits on demos to show Jared.
   - Everything else carries on: the 12:00 woodwork pins (still images) and the app reels made from real store screenshots.
+
+## App discovery beyond Google (Jared, 16 Nov 2026: "start pushing some of these autonomously")
+Full notes, research and every draft: `marketing/discovery/DISCOVERY.md`.
+- **App Store keywords/subtitles** (in `apps/<app>/store/listing.json`, go live with each app's next submitted version;
+  never submit a build just for this): Linework subtitle "AR tracing & drawing on paper" + new keywords; Couch and
+  Backspin new keywords. No brand names in Apple keywords (guideline 2.3.7).
+- **Google Play** (Backspin and Linework short + full descriptions): saved in Play Console 16 Nov, waiting in Publishing
+  overview for Jared to press Submit/Send for review (Claude's send click was blocked by the PC's permission check).
+- **In-App Events / Promotional Content**: drafts for Linework (Christmas cards, 1-24 Dec, submit by ~22 Nov), Couch
+  (holiday TV nights, 20 Dec-5 Jan, may be rejected as not a real event) and Backspin on Play (Christmas party, if eligible).
+- **AlternativeTo**: Linework and Couch listings drafted; account needs Jared's yes.
+- **Pins**: every third 19:00 app pin links to the app's compare page (`utm_campaign=compare-2026-11`).
 
 ## Downloads watch
 Every daily run reads Play Console (signed in) and App Store Connect (signed in on 10 Nov but it signs itself out
