@@ -9,7 +9,7 @@ import { useEffect, useRef } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
 import { t } from '../i18n';
-import { DARK, FONT } from '../theme/theme';
+import { DARK, FONT, PROMPTER, STAGE } from '../theme/theme';
 
 const BG = '#10131C'; // = splash backgroundColor in app.json, so the hand-off is seamless
 const WINDOW_W = 260;
@@ -127,7 +127,7 @@ const st = StyleSheet.create({
     right: 0,
     top: (WINDOW_H - WORD_SIZE * 1.25) / 2,
     height: WORD_SIZE * 1.25,
-    backgroundColor: DARK.accentWash,
+    backgroundColor: PROMPTER.classic.band,
     borderRadius: 14,
     justifyContent: 'center',
   },
@@ -140,12 +140,12 @@ const st = StyleSheet.create({
     borderLeftWidth: 11,
     borderTopColor: 'transparent',
     borderBottomColor: 'transparent',
-    borderLeftColor: DARK.accent,
+    borderLeftColor: STAGE.standby,
   },
   column: { alignItems: 'center', gap: 14 },
   ghost: { height: 9, borderRadius: 5, backgroundColor: GHOST },
   wordClip: { overflow: 'hidden', paddingHorizontal: 18, borderRadius: 12 },
-  word: { fontFamily: FONT.display, fontSize: WORD_SIZE, lineHeight: WORD_SIZE * 1.15, color: DARK.ink, letterSpacing: 0.5, textAlign: 'center' },
+  word: { fontFamily: FONT.scriptBold, fontSize: WORD_SIZE, lineHeight: WORD_SIZE * 1.15, color: DARK.ink, letterSpacing: 0.5, textAlign: 'center' },
   sweep: { position: 'absolute', top: -40, bottom: -40, left: '50%', width: 56, marginLeft: -28 },
   edge: { position: 'absolute', left: 0, right: 0, height: 34 },
 });

@@ -1,5 +1,4 @@
 import { AtkinsonHyperlegible_400Regular, AtkinsonHyperlegible_700Bold } from '@expo-google-fonts/atkinson-hyperlegible';
-import { BricolageGrotesque_600SemiBold, BricolageGrotesque_700Bold } from '@expo-google-fonts/bricolage-grotesque';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as ScreenOrientation from 'expo-screen-orientation';
@@ -25,8 +24,6 @@ export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
     AtkinsonHyperlegible_400Regular,
     AtkinsonHyperlegible_700Bold,
-    BricolageGrotesque_600SemiBold,
-    BricolageGrotesque_700Bold,
   });
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -68,10 +65,10 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
   if (!ready) return null;
   const header = {
     headerShown: true,
-    headerStyle: { backgroundColor: theme.bg },
-    headerTintColor: theme.accentText,
-    headerTitleStyle: { fontFamily: FONT.displaySemi, color: theme.ink, fontSize: 17 },
-    headerLargeTitleStyle: { fontFamily: FONT.display, color: theme.ink },
+    headerStyle: { backgroundColor: theme.ground },
+    headerTintColor: theme.goText,
+    headerTitleStyle: { color: theme.ink, fontSize: 17, fontWeight: '600' },
+    headerLargeTitleStyle: { fontFamily: FONT.scriptBold, color: theme.ink },
     headerShadowVisible: false,
     headerBackButtonDisplayMode: 'minimal',
   } as const;
@@ -81,7 +78,7 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
       <Stack
         screenOptions={{
           headerShown: false,
-          contentStyle: { backgroundColor: theme.bg },
+          contentStyle: { backgroundColor: theme.ground },
           animation: reduceMotion ? 'fade' : 'default',
         }}
       >

@@ -70,10 +70,10 @@ export default function Plus() {
   };
 
   return (
-    <ScrollView style={{ backgroundColor: theme.bg }} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: insets.bottom + 30 }}>
+    <ScrollView style={{ backgroundColor: theme.ground }} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: insets.bottom + 30 }}>
       <Stack.Screen
         options={{
-          headerRight: () => (router.canGoBack() ? <IconBtn icon="close" label={t('plus.close')} onPress={() => router.back()} bg={theme.chip} size={20} /> : null),
+          headerRight: () => (router.canGoBack() ? <IconBtn icon="close" label={t('plus.close')} onPress={() => router.back()} bg={theme.field} size={20} /> : null),
         }}
       />
       <View style={st.hero}>
@@ -84,28 +84,28 @@ export default function Plus() {
         <Txt v="largeTitle" style={{ textAlign: 'center' }}>
           {t('plus.title')}
         </Txt>
-        <Txt tone="sub" style={{ textAlign: 'center', maxWidth: 320 }}>
+        <Txt tone="ink2" style={{ textAlign: 'center', maxWidth: 320 }}>
           {t('plus.lead')}
         </Txt>
         {trial ? (
-          <View style={[st.trial, { backgroundColor: theme.accentWash }]} accessibilityRole="text">
-            <Ionicons name="hourglass-outline" size={14} color={theme.accentText} />
-            <Txt v="callout" tone="accent">
+          <View style={[st.trial, { backgroundColor: theme.field }]} accessibilityRole="text">
+            <Ionicons name="hourglass-outline" size={14} color={theme.goText} />
+            <Txt v="subhead" tone="go">
               {t(trial.key, { n: trial.n })}
             </Txt>
           </View>
         ) : null}
       </View>
 
-      <View style={[st.card, { backgroundColor: theme.card, borderColor: theme.line }, theme.shadow]}>
+      <View style={[st.card, { backgroundColor: theme.sheet, borderColor: theme.rule }]}>
         {FEATURES.map(([icon, title, body], i) => (
-          <View key={title} style={[st.feat, i < FEATURES.length - 1 && { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.line }]}>
-            <View style={[st.featIcon, { backgroundColor: theme.accentWash }]}>
-              <Ionicons name={icon} size={18} color={theme.accentText} />
+          <View key={title} style={[st.feat, i < FEATURES.length - 1 && { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.rule }]}>
+            <View style={[st.featIcon, { backgroundColor: theme.field }]}>
+              <Ionicons name={icon} size={18} color={theme.goText} />
             </View>
             <View style={{ flex: 1, gap: 2 }}>
               <Txt v="headline">{t(title)}</Txt>
-              <Txt v="callout" tone="sub">
+              <Txt v="subhead" tone="ink2">
                 {t(body)}
               </Txt>
             </View>
@@ -113,36 +113,36 @@ export default function Plus() {
         ))}
       </View>
 
-      <View style={[st.free, { borderColor: theme.line }]}>
-        <Ionicons name="lock-open-outline" size={18} color={theme.sub} />
+      <View style={[st.free, { borderColor: theme.rule }]}>
+        <Ionicons name="lock-open-outline" size={18} color={theme.ink2} />
         <View style={{ flex: 1 }}>
           <Txt v="headline">{t('plus.free.title')}</Txt>
-          <Txt v="callout" tone="sub">
+          <Txt v="subhead" tone="ink2">
             {t('plus.free.body')}
           </Txt>
         </View>
       </View>
 
       {app.tier === 'plus' ? (
-        <Txt v="title" tone="accent" style={{ textAlign: 'center', marginTop: 24 }}>
+        <Txt v="scriptTitle" tone="go" style={{ textAlign: 'center', marginTop: 24 }}>
           {t('plus.thanks')}
         </Txt>
       ) : (
         <View style={{ marginTop: 22, gap: 10 }}>
           {/* Sits above the buttons: the copy says "at the price shown below". */}
-          <Txt v="callout" tone="sub" style={{ textAlign: 'center', marginBottom: 6 }}>
+          <Txt v="subhead" tone="ink2" style={{ textAlign: 'center', marginBottom: 6 }}>
             {t('plus.trial.body')}
           </Txt>
-          {!app.trial.started ? <Btn label={t('plus.trial.start')} icon="hourglass-outline" kind="secondary" onPress={() => void act('trial')} disabled={busy || (Platform.OS !== 'android' && price === null)} /> : null}
+          {!app.trial.started ? <Btn label={t('plus.trial.start')} icon="hourglass-outline" kind="plain" onPress={() => void act('trial')} disabled={busy || (Platform.OS !== 'android' && price === null)} /> : null}
           <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
-          {price === null ? <Btn label={t('plus.reloadPrice')} kind="secondary" onPress={() => void reloadPrice()} disabled={busy} /> : null}
-          <Txt v="caption" tone="faint" style={{ textAlign: 'center' }}>
+          {price === null ? <Btn label={t('plus.reloadPrice')} kind="plain" onPress={() => void reloadPrice()} disabled={busy} /> : null}
+          <Txt v="caption" tone="ink3" style={{ textAlign: 'center' }}>
             {t('plus.once')}
           </Txt>
         </View>
       )}
       <View style={{ marginTop: 12 }}>
-        <Btn label={t('plus.restore')} kind="secondary" onPress={() => void act('restore')} disabled={busy} />
+        <Btn label={t('plus.restore')} kind="plain" onPress={() => void act('restore')} disabled={busy} />
       </View>
     </ScrollView>
   );
@@ -152,8 +152,8 @@ const st = StyleSheet.create({
   hero: { alignItems: 'center', gap: 10, paddingTop: 4, paddingBottom: 24 },
   trial: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, marginTop: 4 },
   mark: { width: 76, height: 76, borderRadius: 26, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', marginBottom: 6 },
-  card: { borderRadius: RADIUS.card, borderWidth: StyleSheet.hairlineWidth },
+  card: { borderRadius: RADIUS.group, borderWidth: StyleSheet.hairlineWidth },
   feat: { flexDirection: 'row', gap: 14, alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14 },
   featIcon: { width: 36, height: 36, borderRadius: 11, alignItems: 'center', justifyContent: 'center' },
-  free: { flexDirection: 'row', gap: 12, alignItems: 'flex-start', marginTop: 14, padding: 16, borderRadius: RADIUS.card, borderWidth: 1, borderStyle: 'dashed' },
+  free: { flexDirection: 'row', gap: 12, alignItems: 'flex-start', marginTop: 14, padding: 16, borderRadius: RADIUS.group, borderWidth: 1, borderStyle: 'dashed' },
 });

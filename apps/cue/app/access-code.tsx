@@ -23,16 +23,16 @@ export default function AccessCode() {
       if (ok) setCode('');
     } finally { working.current = false; setBusy(false); }
   };
-  return <ScrollView style={{ backgroundColor: app.theme.bg }} contentContainerStyle={{ padding: 24, gap: 20 }} keyboardShouldPersistTaps="handled">
-    <Txt v="title">{t(app.codeAccess ? 'access.active' : 'access.title')}</Txt>
-    <Txt tone="sub">{t(app.codeAccess ? 'access.activeBody' : 'access.body')}</Txt>
+  return <ScrollView style={{ backgroundColor: app.theme.ground }} contentContainerStyle={{ padding: 24, gap: 20 }} keyboardShouldPersistTaps="handled">
+    <Txt v="scriptTitle">{t(app.codeAccess ? 'access.active' : 'access.title')}</Txt>
+    <Txt tone="ink2">{t(app.codeAccess ? 'access.activeBody' : 'access.body')}</Txt>
     {!app.codeAccess ? <TextInput
       testID="access-code-input"
       accessibilityLabel={t('access.title')} placeholder={t('access.title')}
-      placeholderTextColor={app.theme.sub} value={code} onChangeText={(value) => { setCode(value); setError(false); }}
+      placeholderTextColor={app.theme.ink2} value={code} onChangeText={(value) => { setCode(value); setError(false); }}
       autoCapitalize="characters" autoCorrect={false} maxLength={128} editable={!busy}
       secureTextEntry
-      style={{ color: app.theme.ink, backgroundColor: app.theme.card, borderColor: app.theme.line, borderWidth: 1, borderRadius: 12, padding: 16, fontFamily: FONT.body, fontSize: 17 }}
+      style={{ color: app.theme.ink, backgroundColor: app.theme.sheet, borderColor: app.theme.rule, borderWidth: 1, borderRadius: 12, padding: 16, fontFamily: FONT.script, fontSize: 17 }}
     /> : null}
     {error ? <Txt tone="danger" accessibilityLiveRegion="polite">{t('access.failed')}</Txt> : null}
     <Btn label={t(app.codeAccess ? 'access.remove' : 'access.redeem')} onPress={() => { void act(); }} disabled={busy || (!app.codeAccess && !code.trim())} />

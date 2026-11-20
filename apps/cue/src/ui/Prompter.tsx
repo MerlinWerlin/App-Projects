@@ -206,7 +206,7 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
     fontSize: fs,
     lineHeight: lh,
     color: palette.ink,
-    fontFamily: prefs.bold ? FONT.bodyBold : FONT.body,
+    fontFamily: prefs.bold ? FONT.scriptBold : FONT.script,
     textAlign: prefs.align,
   };
   const bandH = lh * 1.9;
@@ -294,7 +294,7 @@ function BlockView({
   }
   if (block.kind === 'heading') {
     return (
-      <Text style={[textBase, { fontFamily: FONT.displaySemi, fontSize: textBase.fontSize * 0.5, lineHeight: textBase.fontSize * 0.72, color: palette.cue, marginTop: textBase.fontSize * 0.7, marginBottom: textBase.fontSize * 0.15 }]} accessibilityRole="header">
+      <Text style={[textBase, { fontFamily: FONT.scriptBold, fontSize: textBase.fontSize * 0.5, lineHeight: textBase.fontSize * 0.72, color: palette.cue, marginTop: textBase.fontSize * 0.7, marginBottom: textBase.fontSize * 0.15 }]} accessibilityRole="header">
         {block.text}
       </Text>
     );
@@ -302,8 +302,8 @@ function BlockView({
   return (
     <Text style={[textBase, { marginBottom: textBase.lineHeight * 0.6 }]}>
       {block.segments.map((s, i) => {
-        if (s.kind === 'text') return s.emph ? <Text key={i} style={{ color: palette.emph, fontFamily: FONT.bodyBold }}>{s.text}</Text> : <Text key={i}>{s.text}</Text>;
-        if (s.kind === 'cue') return <Text key={i} style={{ color: palette.cue, fontSize: textBase.fontSize * 0.55, fontFamily: FONT.bodyBold }}>{`  ‖ ${s.label}  `}</Text>;
+        if (s.kind === 'text') return s.emph ? <Text key={i} style={{ color: palette.emph, fontFamily: FONT.scriptBold }}>{s.text}</Text> : <Text key={i}>{s.text}</Text>;
+        if (s.kind === 'cue') return <Text key={i} style={{ color: palette.cue, fontSize: textBase.fontSize * 0.55, fontFamily: FONT.scriptBold }}>{`  ‖ ${s.label}  `}</Text>;
         return showNotes ? <Text key={i} style={{ color: palette.dim, fontStyle: 'italic', fontSize: textBase.fontSize * 0.55 }}>{` (${s.text}) `}</Text> : null;
       })}
     </Text>
