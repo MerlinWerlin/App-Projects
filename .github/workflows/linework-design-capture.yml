@@ -35,7 +35,7 @@ jobs:
           (cd "$RUNNER_TEMP" && grep 'maestro.zip' checksums_sha256.txt | shasum -a 256 -c -)
           unzip -q "$RUNNER_TEMP/maestro.zip" -d "$RUNNER_TEMP/lw-maestro"
           echo "$RUNNER_TEMP/lw-maestro/maestro/bin" >> "$GITHUB_PATH"
-      - run: npm ci --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
       - name: Prebuild
         run: |
           node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("app.json"));if(p.expo.updates)p.expo.updates.enabled=false;fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
