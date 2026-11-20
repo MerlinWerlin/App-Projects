@@ -7,7 +7,7 @@
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/icon.png",
-    "backgroundColor": "#F4F1EA",
+    "backgroundColor": "#E9EAE4",
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.jared797.satchel",
@@ -152,7 +152,7 @@
       "package": "com.jared797.satchel",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#F4F1EA"
+        "backgroundColor": "#E9EAE4"
       },
       "permissions": [
         "android.permission.ACCESS_COARSE_LOCATION",
@@ -172,10 +172,10 @@
           "image": "./assets/splash-icon.png",
           "imageWidth": 180,
           "resizeMode": "contain",
-          "backgroundColor": "#F4F1EA",
+          "backgroundColor": "#E9EAE4",
           "dark": {
             "image": "./assets/splash-icon-dark.png",
-            "backgroundColor": "#0E1320"
+            "backgroundColor": "#111315"
           }
         }
       ],

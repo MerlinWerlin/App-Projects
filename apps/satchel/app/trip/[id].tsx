@@ -246,7 +246,7 @@ function TripScreenBody() {
 
   const renderDay = useCallback(
     ({ item: day }: { item: Day }) => (
-      <Card style={accent ? { borderLeftWidth: 4, borderLeftColor: accent.strong } : undefined}>
+      <Card style={accent ? { borderColor: accent.strong } : undefined}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <View style={{ flex: 1 }}>
             <View accessible accessibilityRole="header">

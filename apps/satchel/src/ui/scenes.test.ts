@@ -51,10 +51,11 @@ test('the four tool tabs show their scene; Wallet, Emergency and Toilets use Sec
   }
 });
 
-test('focus entrance is timed and static under Reduce Motion', () => {
+test('focus entrance is timed, plays once on mount (not on every tab switch) and is static under Reduce Motion', () => {
   const hero = read('src/ui/hero.tsx');
   const body = hero.slice(hero.indexOf('export function useFocusEntrance'), hero.indexOf('export function FocusEntrance'));
-  assert.match(body, /useFocusEffect/);
+  assert.doesNotMatch(body, /useFocusEffect\(/);
+  assert.match(body, /useEffect\(/);
   assert.match(body, /if \(reduceMotion\) \{\s*progress\.setValue\(1\);/);
   assert.match(body, /timed\(progress, 1,/);
 });

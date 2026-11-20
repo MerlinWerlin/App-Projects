@@ -240,7 +240,7 @@ export function Disclaimer() {
   const { t, theme } = useApp();
   const { bed, wake } = useSleep();
   return (
-    <View accessible style={{ backgroundColor: theme.warnSoft, borderRadius: radius.m, borderLeftWidth: 4, borderLeftColor: theme.warn, padding: space.m, gap: space.xs }}>
+    <View accessible style={{ backgroundColor: theme.warnSoft, borderRadius: radius.m, borderWidth: 1, borderColor: theme.warn, padding: space.m, gap: space.xs }}>
       <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{t('jetlag.plan.disclaimer')}</Text>
       <Text style={[typeScale.small, { color: theme.ink }]}>{t('jetlag.plan.basis', { bed, wake })}</Text>
     </View>

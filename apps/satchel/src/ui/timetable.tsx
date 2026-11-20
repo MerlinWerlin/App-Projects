@@ -12,7 +12,7 @@ import { tripPhase } from '../core/timeline.ts';
 import { daysBetween, localDate } from '../core/tz.ts';
 import type { Key } from '../i18n/en.ts';
 import { useApp } from '../state/app.tsx';
-import { elevated, fonts, radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { elevated, fonts, radius, space, TOUCH, typeScale, type Stock } from '../theme/tokens.ts';
 import { IconBadge, toneColours, type Tone } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
 import { useMinute } from './TripPass.tsx';
@@ -53,6 +53,25 @@ export const LOOK_TONE: Record<BlockLook, Tone> = {
   activity: 'accent',
   free: 'ok',
   note: 'ink',
+};
+
+/** Design pass 3: the ticket stock each block is printed on (flat; ink and muted text are AA on every stock). */
+export const LOOK_STOCK: Record<BlockLook, Stock> = {
+  flight: 'buff',
+  train: 'mint',
+  ferry: 'aqua',
+  bus: 'mint',
+  transfer: 'mint',
+  car: 'sky',
+  carPickup: 'sky',
+  carReturn: 'sky',
+  checkin: 'salmon',
+  checkout: 'salmon',
+  food: 'buff',
+  tour: 'aqua',
+  activity: 'sky',
+  free: 'white',
+  note: 'white',
 };
 
 export const lookKey = (l: BlockLook): Key => `today.look.${l}` as Key;
@@ -108,8 +127,9 @@ export const TimetableBlock = memo(function TimetableBlock({ b, onPress, last }:
   return (
     <View style={{ flexDirection: 'row', gap: space.m }}>
       {/* Time column */}
-      <View style={{ width: 58, paddingTop: space.m }} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
-        <Text style={[typeScale.bodyStrong, { color: done ? theme.muted : theme.ink, fontVariant: ['tabular-nums'] }]}>{formatTime(shownStart.local)}</Text>
+      {/* Time column: ticket numerals, right-aligned against the rail like a printed timetable. */}
+      <View style={{ width: 58, paddingTop: space.m - 2, alignItems: 'flex-end' }} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+        <Text style={[typeScale.title, { color: done ? theme.muted : live ? theme.accentInk : theme.ink, fontVariant: ['tabular-nums'] }]}>{formatTime(shownStart.local)}</Text>
         {endText && !endZoneOther ? <Text style={[typeScale.small, { color: theme.muted, fontVariant: ['tabular-nums'] }]}>{endText}</Text> : null}
       </View>
       {/* Rail */}
@@ -121,9 +141,9 @@ export const TimetableBlock = memo(function TimetableBlock({ b, onPress, last }:
             width: live ? 16 : 12,
             height: live ? 16 : 12,
             borderRadius: 8,
-            backgroundColor: live ? theme.accentStrong : done ? theme.line : theme.card,
+            backgroundColor: live ? theme.accent : done ? theme.line : theme.paper,
             borderWidth: live ? 3 : 2,
-            borderColor: live ? theme.accentSoft : next ? theme.accentStrong : done ? theme.line : tone.fg,
+            borderColor: live ? theme.accentSoft : next ? theme.ink : done ? theme.line : theme.muted,
           }}
         />
       </View>
@@ -141,28 +161,27 @@ export const TimetableBlock = memo(function TimetableBlock({ b, onPress, last }:
               padding: space.m,
               gap: space.xs,
               justifyContent: 'flex-start',
-              backgroundColor: done ? theme.card : tone.bg,
-              borderWidth: live || next ? 2 : 1,
-              borderColor: live ? theme.accentStrong : next ? tone.fg : theme.line,
+              // A stub on its kind's ticket stock; "now" gets the red overprint edge, "next" an ink edge.
+              backgroundColor: done ? theme.card : theme.stock[LOOK_STOCK[b.look]],
+              borderWidth: live || next ? 2 : 0,
+              borderColor: live ? theme.accent : next ? theme.ink : 'transparent',
               opacity: done ? 0.72 : 1,
-              borderLeftWidth: 5,
-              borderLeftColor: tone.fg,
             },
           ]}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
-            <Ionicons name={LOOK_ICON[b.look]} size={18} color={tone.fg} />
-            <Text style={[typeScale.caption, { color: tone.fg, flex: 1 }]} numberOfLines={1} adjustsFontSizeToFit>
+            <Ionicons name={LOOK_ICON[b.look]} size={16} color={theme.ink} />
+            <Text style={[typeScale.caption, { color: theme.muted, flex: 1 }]} numberOfLines={1} adjustsFontSizeToFit>
               {kindLabel}
             </Text>
             {stateWord && !done ? (
-              <View style={{ backgroundColor: live ? theme.accentStrong : theme.card, borderRadius: radius.pill, paddingHorizontal: space.s, paddingVertical: 2 }}>
-                <Text style={[typeScale.caption, { color: live ? theme.onAccent : theme.accentInk }]}>{stateWord}</Text>
+              <View style={{ borderWidth: 1.5, borderColor: live ? theme.accentInk : theme.ink, borderRadius: radius.s, paddingHorizontal: space.s, paddingVertical: 1 }}>
+                <Text style={[typeScale.caption, { color: live ? theme.accentInk : theme.ink }]}>{stateWord}</Text>
               </View>
             ) : null}
             {done ? <Ionicons name="checkmark-circle" size={18} color={theme.ok} /> : null}
           </View>
-          <Text style={[typeScale.bodyStrong, { color: theme.ink, fontSize: 17 }]}>{title}</Text>
+          <Text style={[typeScale.title, { color: theme.ink }]}>{title}</Text>
           {detail ? <Text style={[typeScale.small, { color: theme.muted }]}>{detail}</Text> : null}
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s, marginTop: 2 }}>
             {b.otherZone || shownStart.tz !== b.start.tz ? <Meta icon="globe-outline" text={startText} /> : null}
@@ -180,7 +199,7 @@ export const TimetableBlock = memo(function TimetableBlock({ b, onPress, last }:
 function Meta({ icon, text, mono }: { icon: IconName; text: string; mono?: boolean }) {
   const { theme } = useApp();
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: theme.card, borderRadius: radius.pill, paddingHorizontal: space.s, paddingVertical: 2 }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderWidth: 1, borderColor: theme.muted, borderRadius: radius.s, paddingHorizontal: space.s, paddingVertical: 1 }}>
       <Ionicons name={icon} size={12} color={theme.muted} />
       <Text style={[typeScale.small, { fontSize: 13, color: theme.ink, fontFamily: mono ? fonts.bodyBold : fonts.body, letterSpacing: mono ? 0.6 : 0 }]}>{text}</Text>
     </View>

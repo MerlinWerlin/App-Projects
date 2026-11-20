@@ -375,7 +375,7 @@ function ItineraryScreen() {
                       accessibilityLabel={[t('itin.rowA11y', { day: dayLabel, time: p.draft.startTime, kind: t(lookKey(look)), title: p.draft.title }), sub, ...flags, on ? t('itin.rowOn') : t('itin.rowOff')].filter(Boolean).join('. ')}
                       accessibilityHint={t('itin.rowHint')}
                       onPress={() => toggle(p)}
-                      style={{ backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, borderRadius: radius.m, padding: space.m, flexDirection: 'row', alignItems: 'center', gap: space.m, opacity: on ? 1 : 0.6, borderLeftWidth: 5, borderLeftColor: tone.fg }}
+                      style={{ backgroundColor: theme.card, borderWidth: 1, borderColor: theme.line, borderRadius: radius.m, padding: space.m, flexDirection: 'row', alignItems: 'center', gap: space.m, opacity: on ? 1 : 0.6 }}
                     >
                       <Text style={[typeScale.bodyStrong, { color: theme.ink, width: 48, fontVariant: ['tabular-nums'] }]}>{p.draft.startTime}</Text>
                       <Ionicons name={LOOK_ICON[look]} size={20} color={tone.fg} />

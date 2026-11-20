@@ -31,8 +31,8 @@ Sunrise, sunset and civil twilight are computed on the phone (`src/core/sun.ts`,
 
 | Font | Weights used | Source | Licence |
 |---|---|---|---|
-| Inter | 400 Regular, 600 SemiBold | `@expo-google-fonts/inter` (font files from Google Fonts) | SIL OFL 1.1 |
-| Space Grotesk | 500 Medium, 700 Bold | `@expo-google-fonts/space-grotesk` (font files from Google Fonts) | SIL OFL 1.1 |
+| Libre Franklin | 400 Regular, 600 SemiBold | `@expo-google-fonts/libre-franklin` (font files from Google Fonts) | SIL OFL 1.1 |
+| Barlow Condensed | 600 SemiBold, 700 Bold | `@expo-google-fonts/barlow-condensed` (font files from Google Fonts) | SIL OFL 1.1 |
 | Ionicons (icon font) | as used in `app/` and `src/ui/` | `@expo/vector-icons` | MIT |
 
 OFL obligations: the fonts are bundled inside the app (allowed); don't sell the font files on their own; keep the copyright and licence notice with any redistributed font files; a modified font may not use the reserved font name. Fonts are bundled, never downloaded at run time. The `@expo-google-fonts/*` wrapper code is MIT. The release build should include the OFL text in the in-app licences screen.
@@ -45,7 +45,7 @@ From `package.json` `dependencies`. All are open source; none is an analytics, a
 |---|---|
 | expo, expo-router, expo-asset, expo-battery, expo-brightness, expo-clipboard, expo-constants, expo-contacts, expo-document-picker, expo-file-system, expo-font, expo-haptics, expo-image-picker, expo-keep-awake, expo-linking, expo-local-authentication, expo-localization, expo-location, expo-network, expo-notifications, expo-sharing, expo-splash-screen, expo-status-bar | MIT (Expo) |
 | @expo/vector-icons | MIT (only the Ionicons set is used: MIT) |
-| @expo-google-fonts/inter, @expo-google-fonts/space-grotesk | MIT (code); fonts SIL OFL 1.1 (§2) |
+| @expo-google-fonts/libre-franklin, @expo-google-fonts/barlow-condensed | MIT (code); fonts SIL OFL 1.1 (§2) |
 | react, react-dom | MIT |
 | react-native | MIT |
 | react-native-maps | MIT |

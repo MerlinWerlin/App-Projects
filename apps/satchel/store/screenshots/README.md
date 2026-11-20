@@ -4,14 +4,14 @@ Upload these six, in this order, to App Store Connect > Satchel > 1.0 > iPhone 6
 
 | # | File | Caption | Raw capture (satchel-store-capture.yml) |
 |---|---|---|---|
-| 1 | 6.9/01-itinerary.jpg | Your itinerary, day by day | 01-itinerary-light, run 43711999817 |
-| 2 | 6.9/02-paste-plans.jpg | Paste your plans, check, save | 08c-paste-scrolled-light, run 43706673082 (same screen, unchanged since; the later run's scroll cut the heading) |
-| 3 | 6.9/03-tickets.jpg | Tickets ready at the gate | 03-ticket-dark, run 43711999817 |
-| 4 | 6.9/04-show-a-local.jpg | Show a local, in 12 languages | 07-phrases-dark, run 43711999817 |
-| 5 | 6.9/05-emergency.jpg | Help, one tap away | 05-emergency-light, run 43711999817 |
-| 6 | 6.9/06-map.jpg | Your trip on the map | 06-map-light, run 43711999817 |
+| 1 | 6.9/01-itinerary.jpg | Your itinerary, day by day | 01-itinerary-light, run 44830827911 |
+| 2 | 6.9/02-paste-plans.jpg | Paste your plans, check, save | 08c-paste-scrolled-light, run 44830827911 |
+| 3 | 6.9/03-tickets.jpg | Tickets ready at the gate | 03-ticket-dark, run 44830827911 |
+| 4 | 6.9/04-show-a-local.jpg | Show a local, in 12 languages | 07-phrases-dark, run 44830827911 |
+| 5 | 6.9/05-emergency.jpg | Help, one tap away | 05-emergency-light, run 44830827911 |
+| 6 | 6.9/06-map.jpg | Your trip on the map | 06-map-light, run 44830827911 |
 
 Real Release simulator captures (build B, capture flag: the app as during the trial), with an invented Tokyo & Kyoto
 trip seeded by `store/capture/seed.py` (invented carrier, hotels, passenger, insurer, fiction-range phone numbers).
-Captions and layout: `store/capture/shots.json` and `compose.py` (Space Grotesk / Inter, SIL OFL; plain rounded
-frame, no device maker's art). RGB JPEG, quality 93.
+Captions and layout: `store/capture/shots.json` and `compose.py` (Barlow Condensed / Libre Franklin, SIL OFL, on the
+app's flat board colour; plain rounded frame, no device maker's art). Design pass 3 (paper ticket stock), Nov 2026. RGB JPEG, quality 93.

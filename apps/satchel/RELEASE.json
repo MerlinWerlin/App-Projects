@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Satchel 1.0.0: trip reminders with three original sounds (off until turned on), destination country themes for 25 countries with Reduce Motion support, and the new rubber-hose satchel mascot on every tab and in reminders. Keeps the 7-day free trial then one-time A$2.99 unlock and the App Review fixes.",
+  "note": "Satchel 1.0.0 design pass: new paper-ticket look (ticket-stock plans, condensed ticket type, flat paper, carbon-ink buttons), with the mascot, country themes, reminder sounds, trial/unlock and App Review fixes unchanged.",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

@@ -32,6 +32,18 @@ export function KindIcon({ kind, color, size = 22 }: { kind: ItemKind; color: st
   return <Ionicons name={KIND_ICON[kind]} size={size} color={color} />;
 }
 
+/** Design pass 3: the ticket stock each kind of plan is printed on (flat fill; ink text is AA on every stock). */
+export const KIND_STOCK: Record<ItemKind, 'buff' | 'mint' | 'salmon' | 'sky' | 'aqua' | 'white'> = {
+  flight: 'buff',
+  train: 'mint',
+  ferry: 'aqua',
+  bus: 'mint',
+  hotel: 'salmon',
+  car: 'sky',
+  activity: 'sky',
+  note: 'white',
+};
+
 /** T50: colour family per booking kind (stripe and icon badge tint on tickets and agenda rows). */
 export const KIND_TONE: Record<ItemKind, 'sea' | 'teal' | 'ok' | 'warn' | 'accent' | 'ink'> = {
   flight: 'sea',
