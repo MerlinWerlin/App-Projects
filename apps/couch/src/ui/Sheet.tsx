@@ -15,7 +15,7 @@ import { Text } from './Text';
 import { RemoteIcon } from './icons/RemoteIcon';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { easeOut, spring } from '../theme/motion';
-import { backdropOpacity, elevation, fonts, type Palette } from '../theme/tokens';
+import { backdropOpacity, elevation, type Palette } from '../theme/tokens';
 import { continuous, radii } from '../theme/design';
 import { useReducedMotion } from '../theme/useReducedMotion';
 import { useTheme } from '../theme/useTheme';
@@ -273,6 +273,6 @@ const styles = StyleSheet.create({
   body: { gap: 14 },
   grabber: { alignSelf: 'center', width: 36, height: 5, borderRadius: 3, opacity: 0.35, marginBottom: -4 },
   hd: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 10 },
-  h2: { fontFamily: fonts.display, fontSize: 17, flexShrink: 1 },
+  h2: { fontSize: 17, lineHeight: 22, fontWeight: '600', flexShrink: 1 },
   x: { width: 36, height: 36, borderRadius: radii.pill, ...continuous, alignItems: 'center', justifyContent: 'center' },
 });

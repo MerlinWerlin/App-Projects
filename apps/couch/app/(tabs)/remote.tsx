@@ -1,9 +1,12 @@
 import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, useWindowDimensions, View } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
+import { setStatusBarStyle } from 'expo-status-bar';
 import { isCastOnlyDriver } from '../../src/core/drivers/castOnly';
 import type { Key } from '../../src/core/keys';
-import { oneHandedAlign } from '../../src/core/prefs';
+import { oneHandedAlign, statusBarStyle } from '../../src/core/prefs';
+import { luminance } from '../../src/theme/remoteThemes';
+import { useScheme } from '../../src/theme/useTheme';
 import { minKeyHeight, remoteContentWidth, rowOrStack } from '../../src/core/textScale';
 import { useT } from '../../src/i18n/react';
 import { usePrefs } from '../../src/state/prefs';
@@ -43,9 +46,11 @@ import {
 } from '../../src/ui/remote/controls';
 import { ColorKeys } from '../../src/ui/remote/ColorKeys';
 import { DPad } from '../../src/ui/remote/DPad';
+import { capColors } from '../../src/ui/remote/machined';
+import { PanelFinish } from '../../src/ui/remote/PanelFinish';
 import { RemoteTexture } from '../../src/ui/remote/RemoteTexture';
 import { tap } from '../../src/ui/remote/haptics';
-import { RemoteButton, RemoteKey, Rocker } from '../../src/ui/remote/RemoteKey';
+import { RemoteButton, RemoteKey, Rocker, SOCKET } from '../../src/ui/remote/RemoteKey';
 import { SimpleRemote } from '../../src/ui/remote/SimpleRemote';
 import { Touchpad } from '../../src/ui/remote/Touchpad';
 import { TvHeader } from '../../src/ui/remote/TvHeader';
@@ -110,6 +115,17 @@ export default function RemoteScreen() {
   // the active saved TV; demo gets amber. The stage behind the remote comes from the theme.
   const glow = glowColor(prefs.glow, snap.demo ? null : (tv?.id ?? null), theme.glow);
   const stage = remoteStage(theme, glow);
+  const socket = capColors(theme);
+  // The status bar sits on the remote's stage, not the app background: a light phone with the charcoal remote
+  // needs light status-bar text (it was dark on dark). Restored to the app's style when the tab loses focus.
+  const appScheme = useScheme();
+  const stageDark = luminance(stage.bg) < 0.18;
+  useFocusEffect(
+    useCallback(() => {
+      setStatusBarStyle(stageDark ? 'light' : 'dark');
+      return () => setStatusBarStyle(statusBarStyle(appScheme));
+    }, [stageDark, appScheme]),
+  );
 
   // session.sendKey never throws; failures surface as snap.lastError.
   const onKey = useCallback(
@@ -232,7 +248,8 @@ export default function RemoteScreen() {
               <SimpleRemote onKey={onKey} width={avail} />
             ) : (
               <View style={[styles.remote, { backgroundColor: theme.body }, haloStyle(glow)]}>
-                {/* Generated texture (gradient / stripes / edge light), decoration only, behind the keys. */}
+                {/* The icon's panel finish in the theme's body colour, then any theme texture, behind the keys. */}
+                <PanelFinish body={theme.body} radius={radius.remote} />
                 <RemoteTexture texture={theme.texture} radius={radius.remote} />
                 <View style={topLayout === 'row' ? styles.row : styles.stack}>
                   {TOP_ROW_KEYS.map((c) => (
@@ -246,7 +263,7 @@ export default function RemoteScreen() {
                     style={[
                       styles.seg,
                       segLayout === 'stack' ? styles.segStack : null,
-                      { backgroundColor: theme.key, shadowColor: theme.keyEdge },
+                      { backgroundColor: socket.socket, borderBottomColor: socket.socketLip },
                     ]}
                   >
                     {NAV_MODES.map((m) => {
@@ -275,13 +292,14 @@ export default function RemoteScreen() {
 
                 {mode === 'pad' ? <DPad onKey={onKey} /> : <Touchpad onKey={onKey} />}
 
-                <VoiceButton onNote={setNote} onOpenKeyboard={() => session.allowed() && setKbOpen(true)} />
-
-                <View style={styles.row}>
+                {/* Back, Home and Menu: the three round keys under the pad, as on the Couch icon. */}
+                <View style={[styles.row, styles.navRow]}>
                   {NAV_ROW.map((c) => (
-                    <RemoteKey key={c.key} control={c} onKey={onKey} />
+                    <RemoteKey key={c.key} control={c} onKey={onKey} shape="round" size={NAV_KEY} />
                   ))}
                 </View>
+
+                <VoiceButton onNote={setNote} onOpenKeyboard={() => session.allowed() && setKbOpen(true)} />
 
                 {/* Volume and channel rockers keep their physical sides in right-to-left languages. */}
                 <NeverMirror style={styles.row}>
@@ -289,9 +307,9 @@ export default function RemoteScreen() {
                   <View style={styles.mid}>
                     {MID.map((c) =>
                       c.kind === 'key' ? (
-                        <RemoteKey key={c.key} control={c} onKey={onKey} style={styles.midKey} />
+                        <RemoteKey key={c.key} control={c} onKey={onKey} shape="round" size={MID_KEY} />
                       ) : (
-                        <RemoteButton key={c.action} label={c.label} onPress={() => onAction(c.action)} style={styles.midKey}>
+                        <RemoteButton key={c.action} label={c.label} onPress={() => onAction(c.action)} round size={MID_KEY}>
                           <RemoteIcon name={c.icon} size={22} color={theme.ink} />
                         </RemoteButton>
                       ),
@@ -353,6 +371,10 @@ export default function RemoteScreen() {
   );
 }
 
+/** Round key sizes on the remote (pt): Back / Home / Menu, and the 2x2 keys between the rockers. */
+const NAV_KEY = 64;
+const MID_KEY = 48;
+
 const styles = StyleSheet.create({
   root: { flex: 1 },
   glow: { top: -36, bottom: -48, start: -16, end: -16 },
@@ -365,21 +387,19 @@ const styles = StyleSheet.create({
   /** Larger Text (T74): the labelled top keys one per line, full width, when they no longer fit a row. */
   stack: { flexDirection: 'column', alignItems: 'stretch', gap: 10 },
   center: { justifyContent: 'center' },
+  /** D-pad / Touchpad switch: a slot recessed into the body like the key sockets; the chosen side is lit. */
   seg: {
     flexDirection: 'row',
     borderRadius: 99,
     padding: 3,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 0,
-    elevation: 2,
+    borderBottomWidth: 1,
   },
   segBtn: { borderRadius: 99, paddingVertical: 5, paddingHorizontal: 12, minHeight: 32, justifyContent: 'center', alignItems: 'center' },
   segText: { fontFamily: fonts.textSemi, fontSize: 12.5, textAlign: 'center' },
   /** Larger Text (T74): D-pad / Touchpad one above the other, full width. */
   segStack: { flexDirection: 'column', width: '100%', borderRadius: 22 },
-  mid: { flexDirection: 'row', flexWrap: 'wrap', width: 114, gap: 10 },
-  midKey: { width: 52, height: 52 },
+  mid: { flexDirection: 'row', flexWrap: 'wrap', width: 2 * (MID_KEY + 2 * SOCKET) + 10, gap: 10 },
+  navRow: { justifyContent: 'space-around', paddingHorizontal: 4 },
   // Wraps at larger text sizes so the sent-key note and the latency never overlap.
   log: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', gap: 8, minHeight: 18 },
   logText: { fontFamily: fonts.mono, fontSize: 11.5, flexShrink: 1 },

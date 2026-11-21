@@ -36,26 +36,24 @@ describe('OK key (fb-1017-ok)', () => {
   });
 
   it('press scale runs on a face the same size as the key (scales from its own centre)', () => {
-    expect(dpad).toMatch(/width: k\.size,\s*height: k\.size,\s*borderRadius: k\.radius,\s*borderWidth: k\.border/);
+    expect(dpad).toMatch(/width: k\.size,\s*height: k\.size,\s*borderRadius: k\.radius/);
     expect(dpad).toContain('transform: [{ scale: okScale }]');
   });
 
-  it('OK key is raised: bevel face from theme tokens and a keyEdge drop shadow (fb-1017b H1)', () => {
-    expect(dpad).toContain('<OkBevel g={g} theme={t} />');
-    expect(dpad).toMatch(/export function OkBevel\(/);
-    expect(dpad).toContain('fill={theme.accent}');
-    expect(dpad).toContain('stopColor={theme.keyEdge}');
-    expect(dpad).toContain('g.bevel.highlightEnd');
-    expect(dpad).toContain('g.bevel.shadeStart');
-    expect(dpad).toMatch(/shadowColor: t\.keyEdge,\s*opacity: reduce && pressed/);
+  it('OK key is the logo remote raised disc: its art from the shared model, a keyEdge drop shadow (fb-1017b H1)', () => {
+    expect(dpad).toContain('okModel(t, g.key.size)');
+    expect(dpad).toMatch(/export function OkDisc\(/);
     expect(dpad).toMatch(/okFace: \{[\s\S]*?shadowRadius: \d/);
-    expect(themes).toContain('<OkBevel g={MINI} theme={theme} />');
+    expect(dpad).toContain('shadowColor: t.keyEdge');
+    // The theme picker's mini remote draws the same disc and pad face.
+    expect(themes).toContain('<OkDisc g={MINI} theme={theme} />');
+    expect(themes).toContain('<PadFace g={MINI} theme={theme} />');
   });
 
-  it('arrows are Couch vector icons sized from the geometry, not text glyphs', () => {
-    expect(dpad).toContain('<RemoteIcon name={side} size={g.arrowIcon.size}');
+  it('arrows are the logo remote nubs drawn from the geometry, with full-size labelled hit areas', () => {
+    expect(dpad).toContain('rect(g.arrows[side])');
+    expect(dpad).toContain('accessibilityLabel={c.label}');
     expect(dpad).not.toContain('c.glyph');
-    for (const d of ['up', 'down', 'left', 'right']) expect(themes).toContain(`<RemoteIcon name="${d}"`);
     expect(themes).not.toMatch(/\{(c|DPAD\.\w+)\.glyph\}/);
   });
 

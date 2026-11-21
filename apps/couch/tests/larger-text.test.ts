@@ -57,7 +57,7 @@ const NO_SCALING_OK: Record<string, string> = {
 const FIXED_HEIGHT_OK: Record<string, Record<string, string>> = {
   'src/ui/remote/DPad.tsx': { '*': 'every size comes from dpadGeometry(); the OK label is capped and shrinks to fit' },
   'src/ui/remote/RemoteKey.tsx': {
-    round: 'round icon / glyph key (52 pt): glyphs are capped at roleCap(glyph), which fits (textScale.test.ts)',
+    roundCap: 'round icon / glyph key cap (48-64 pt): glyphs are capped at roleCap(glyph), which fits (textScale.test.ts)',
     rockerBtn: 'rocker half: icon only, no text',
   },
   'src/ui/remote/ColorKeys.tsx': { pill: 'colour pill: no text, hitSlop makes it 48 pt' },
@@ -73,7 +73,6 @@ const FIXED_HEIGHT_OK: Record<string, Record<string, string>> = {
     grabber: 'grabber bar: decoration',
     x: 'close icon button (36 pt + 6 pt hitSlop = 48 pt): icon only',
   },
-  'app/(tabs)/remote.tsx': { midKey: 'Mute / 123 / Keyboard / Apps: icon-only keys' },
 };
 
 interface HeightHit {

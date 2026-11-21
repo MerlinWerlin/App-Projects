@@ -1,6 +1,6 @@
 /**
- * Design tokens copied from prototype/index.html :root (light) and the dark override.
- * Keep in sync with the prototype; it is the source of truth for look and copy.
+ * App palette (light and dark) for screens that read useTheme(). Same values as the v2 roles in design.ts
+ * (DESIGN.md, Nov 2026 overhaul); the prototype no longer sets the app's look.
  */
 export interface Palette {
   bg: string;
@@ -17,29 +17,29 @@ export interface Palette {
 }
 
 export const light: Palette = {
-  bg: '#E4E8EC',
-  body: '#F6F7F9',
+  bg: '#ECEAE5',
+  body: '#FBFAF8',
   key: '#FFFFFF',
-  keyEdge: '#CDD3DA',
-  ink: '#1C232B',
-  muted: '#5D6873',
-  accent: '#2F5BD3',
-  accentSoft: '#E3EAFB',
-  power: '#C43D3D',
+  keyEdge: '#D6D2CA',
+  ink: '#1A1917',
+  muted: '#5C5850',
+  accent: '#7E5518',
+  accentSoft: '#F0E5D1',
+  power: '#B0382C',
   ok: '#2C7A54',
-  warn: '#9B6A12',
+  warn: '#8A5E10',
 };
 
 export const dark: Palette = {
-  bg: '#0E1115',
-  body: '#171B21',
-  key: '#222831',
-  keyEdge: '#0A0C0F',
-  ink: '#E6EAEF',
-  muted: '#98A3AF',
-  accent: '#86A6FF',
-  accentSoft: '#1E2A47',
-  power: '#FF7A72',
+  bg: '#0E0E0F',
+  body: '#1C1C1B',
+  key: '#292927',
+  keyEdge: '#060606',
+  ink: '#F4EEE3',
+  muted: '#B3ACA0',
+  accent: '#D2AB72',
+  accentSoft: '#3A2E1C',
+  power: '#FF8A7E',
   ok: '#6CC796',
   warn: '#E5B35A',
 };
@@ -64,7 +64,7 @@ export const minTarget = 48;
  * key: remote keys (crisp 2 px edge, as the prototype); card: TV/app cards; sheet: bottom sheets; hud: floating HUD/toasts.
  */
 export const elevation = {
-  key: { shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 0, elevation: 2 },
+  key: { shadowOffset: { width: 0, height: 1.5 }, shadowOpacity: 0.55, shadowRadius: 1.5, elevation: 2 },
   card: { shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.18, shadowRadius: 8, elevation: 3 },
   sheet: { shadowOffset: { width: 0, height: -4 }, shadowOpacity: 0.22, shadowRadius: 16, elevation: 12 },
   hud: { shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.28, shadowRadius: 18, elevation: 16 },

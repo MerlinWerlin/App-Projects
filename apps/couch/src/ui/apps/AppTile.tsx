@@ -6,7 +6,7 @@ import { DEMO_ART_H, DEMO_ART_W, type DemoArt } from '../../core/demo';
 import type { TvApp } from '../../core/types';
 import { useT } from '../../i18n/react';
 import { duration, easeOut } from '../../theme/motion';
-import { boxShadow, continuous, radii, textStyle } from '../../theme/design';
+import { continuous, radii, textStyle } from '../../theme/design';
 import { fonts } from '../../theme/tokens';
 import { useReducedMotion } from '../../theme/useReducedMotion';
 import { SkeletonBlock } from '../motion/Skeleton';
@@ -138,7 +138,6 @@ export function AppTile({
         continuous,
         {
           backgroundColor: pressed ? p.surfacePressed : p.card,
-          boxShadow: boxShadow('low', p.scheme),
           borderColor: p.cardEdge,
           borderWidth: p.cardEdge === 'transparent' ? 0 : StyleSheet.hairlineWidth,
         },

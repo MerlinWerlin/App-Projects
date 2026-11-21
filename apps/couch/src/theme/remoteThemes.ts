@@ -89,9 +89,11 @@ export const REMOTE_THEMES: Record<RemoteThemeId, RemoteTheme> = {
     id: 'charcoal', nameKey: 'ui.themes.name.charcoal', tier: 'free', scheme: 'dark',
     bg: '#0E0E0F', stage: '#080809', body: '#1C1C1D', key: '#2B2B2C', keyEdge: '#060606',
     ink: '#F4EEE3', muted: '#BDB5A8', accent: '#D2AB72', accentSoft: '#5C4626', accentInk: '#1A1208',
-    power: '#FF9C8F', ring: '#C9A26C', ringLit: '#2A1A08', ringInk: '#2A1D0C', glow: '#C9A26C',
+    // Nov 2026 design overhaul (DESIGN.md): no glow and no texture by default; the matte body and the gold pad carry
+    // it. The Cinema glow setting still lights it (Amber, Blue, Match TV).
+    power: '#FF9C8F', ring: '#C9A26C', ringLit: '#2A1A08', ringInk: '#2A1D0C', glow: null,
     press: 'firm', radius: 14, ...darkStatus,
-    texture: { kind: 'brushed', colors: ['#2A2A2B', '#1C1C1D'], opacity: 0.35 },
+    texture: { kind: 'none', colors: [], opacity: 0 },
   },
   midnight: {
     id: 'midnight', nameKey: 'ui.themes.name.midnight', tier: 'free', scheme: 'dark',

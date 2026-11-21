@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, useSyncExternalStore, type ReactNode } from 'react';
+import { createDemoSession } from '../core/demo';
 import { connectRestored, restoreSaved } from '../core/restore';
 import { RemoteSession, type SessionSnapshot } from '../core/session';
 import { appTransport } from '../native/transport';
@@ -25,6 +26,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       if (r.tvs.length > 0) {
         session.load(r.tvs, r.drivers, { demo: false });
         void connectRestored(r.drivers);
+      } else if (process.env.EXPO_PUBLIC_COUCH_CAPTURE === '1') {
+        // Simulator screenshots only (.github/workflows/couch-design-capture.yml sets this at bundle time): load
+        // the mock demo TVs so every screen has something to show. No shipping build sets the flag.
+        const demo = await createDemoSession();
+        if (!cancelled && session.getSnapshot().tvs.length === 0) session.load(demo.tvs, demo.drivers, { demo: true });
       }
     })()
       .catch(() => {})

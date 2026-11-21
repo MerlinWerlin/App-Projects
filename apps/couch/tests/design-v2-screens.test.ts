@@ -239,7 +239,9 @@ describe('Apps on design v2 (T68 step 7)', () => {
       expect(f).toContain('useDesign()');
       expect(f).not.toMatch(/useTheme/);
     }
-    expect(tile).toContain("boxShadow('low', p.scheme)");
+    // DESIGN.md (Nov 2026): tiles are flat cushions on the ground, no drop shadow.
+    expect(tile).toContain('p.card');
+    expect(tile).not.toContain('boxShadow(');
   });
 
   it('keeps TV icons, the house tile, shimmer and the favourites editing', () => {

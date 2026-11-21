@@ -5,7 +5,8 @@ import { useRemoteTheme } from '../../theme/useRemoteTheme';
 import { useT } from '../../i18n/react';
 import { COLOR_ROW, COLOR_ROW_LABEL_KEY } from './controls';
 import { PressableScale } from '../motion/PressableScale';
-import type { KeyPress } from './RemoteKey';
+import { KeyFace } from '../icons/KeyFace';
+import { Socket, type KeyPress } from './RemoteKey';
 
 /**
  * Red / green / yellow / blue pill buttons (prototype v2 .colors). The remote screen only
@@ -18,7 +19,7 @@ export function ColorKeys({ onKey }: { onKey: KeyPress }) {
   return (
     <View accessibilityLabel={tr(COLOR_ROW_LABEL_KEY)} style={[styles.row, NEVER_MIRROR_STYLE]}>
       {COLOR_ROW.map((c) => (
-        <View key={c.key} style={styles.cell}>
+        <Socket key={c.key} radius={15} style={styles.cell}>
           <PressableScale
             accessibilityRole="button"
             accessibilityLabel={c.label}
@@ -27,9 +28,10 @@ export function ColorKeys({ onKey }: { onKey: KeyPress }) {
             onPress={() => onKey(c.key, c.label)}
             style={[styles.pill, { backgroundColor: c.color, shadowColor: t.keyEdge }]}
           >
-            {null}
+            {/* Domed cap in the key's own colour, lit like every other key. */}
+            <KeyFace keyColor={c.color} edgeColor={t.keyEdge} radius={15} />
           </PressableScale>
-        </View>
+        </Socket>
       ))}
     </View>
   );
@@ -38,10 +40,11 @@ export function ColorKeys({ onKey }: { onKey: KeyPress }) {
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', gap: 8 },
   /** PressableScale styles its inner view, so the flexing cell is a wrapper. */
-  cell: { flex: 1 },
+  cell: { flex: 1, alignItems: 'stretch' },
   pill: {
     height: 30,
-    borderRadius: 99,
+    borderRadius: 15,
+    overflow: 'hidden',
     ...elevation.key,
   },
 });

@@ -2,6 +2,12 @@ import type { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useMemo } from 'react';
+import { usePrefs } from '../state/prefs';
+import { useSession } from '../state/session';
+import { continuous, remoteDesignPalette } from '../theme/design';
+import { useRemoteTheme } from '../theme/useRemoteTheme';
+import { glowColor, remoteStage } from './fx/glow';
 import { fonts } from '../theme/tokens';
 import type { IconName } from './icons/names';
 import { RemoteIcon } from './icons/RemoteIcon';
@@ -17,19 +23,30 @@ const TAB_ICON: Record<string, IconName> = { remote: 'remote', cast: 'cast', app
 
 /**
  * Bottom tab bar (owner TestFlight feedback 1 Nov 2026: "the writing's small, there's no defined box
- * between each of them, it looks tacky"). Each tab is its own rounded tile with an icon over a 13 pt
- * semibold label; the current tab is a filled tile in the accent colour, the others sit on the card
- * colour with a hairline edge, so every tab reads as a separate button. Tiles are at least 56 pt tall
- * (44 pt touch target plus label). Labels shrink to fit long translations instead of wrapping.
+ * between each of them, it looks tacky"). DESIGN.md signature: the tabs are a row of cushions on the ground,
+ * each in its own box with a hairline edge (no shadows); the current tab is the brass cushion. Icon over a 14 pt
+ * semibold label; tiles at least 56 pt tall (44 pt touch target plus label). Labels shrink to fit long
+ * translations instead of wrapping.
  */
 export function TabBar({ state, descriptors, navigation }: TabBarProps) {
-  const p = useDesign();
+  const app = useDesign();
+  const theme = useRemoteTheme();
+  const { prefs } = usePrefs();
+  const { snap } = useSession();
+  const onRemote = state.routes[state.index]?.name === 'remote';
+  // On the Remote tab the bar sits on the remote's stage and takes the remote theme's roles, so a light phone
+  // never puts white cushions under the charcoal remote (DESIGN.md). Other tabs follow the app palette.
+  const remoteP = useMemo(() => remoteDesignPalette(theme), [theme]);
+  const p = onRemote ? remoteP : app;
+  const ground = onRemote
+    ? remoteStage(theme, glowColor(prefs.glow, snap.demo ? null : snap.activeId, theme.glow)).bg
+    : app.background;
   const insets = useSafeAreaInsets();
   return (
     <View
       style={[
         styles.bar,
-        { backgroundColor: p.background, borderTopColor: p.separator, paddingBottom: Math.max(insets.bottom, 10) },
+        { backgroundColor: ground, paddingBottom: Math.max(insets.bottom, 10) },
       ]}
       accessibilityRole="tablist"
     >
@@ -55,10 +72,11 @@ export function TabBar({ state, descriptors, navigation }: TabBarProps) {
             accessibilityLabel={opts?.tabBarAccessibilityLabel ?? label}
             style={({ pressed }) => [
               styles.tile,
+              continuous,
               {
-                backgroundColor: focused ? p.tint : p.card,
+                backgroundColor: focused ? p.tint : pressed ? p.surfacePressed : p.surface,
+                // Owner (1 Nov): each tab its own defined box, so every cushion carries an edge.
                 borderColor: focused ? p.tint : p.separator,
-                opacity: pressed && !focused ? 0.7 : 1,
               },
             ]}
           >
@@ -76,15 +94,14 @@ export function TabBar({ state, descriptors, navigation }: TabBarProps) {
 const styles = StyleSheet.create({
   bar: {
     flexDirection: 'row',
-    gap: 8,
+    gap: 6,
     paddingHorizontal: 12,
-    paddingTop: 10,
-    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: 8,
   },
   tile: {
     flex: 1,
-    minHeight: 56,
-    borderRadius: 14,
+    minHeight: 58,
+    borderRadius: 16,
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -92,5 +109,5 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 4,
   },
-  label: { fontFamily: fonts.textSemi, fontSize: 13, lineHeight: 16 },
+  label: { fontFamily: fonts.textSemi, fontSize: 14, lineHeight: 17 },
 });

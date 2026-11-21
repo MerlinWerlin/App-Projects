@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   neck: { width: 4, height: 7 },
   base: { width: 28, height: 3.5, borderRadius: 2 },
   copy: { alignItems: 'center', gap: 4, maxWidth: 300 },
-  title: { fontFamily: fonts.display, fontSize: 16, textAlign: 'center' },
+  title: { fontSize: 17, lineHeight: 22, fontWeight: '600', textAlign: 'center' },
   body: { fontFamily: fonts.text, fontSize: 13.5, lineHeight: 19, textAlign: 'center' },
   btn: {
     minHeight: minTarget,

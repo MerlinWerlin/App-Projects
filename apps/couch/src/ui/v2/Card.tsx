@@ -6,8 +6,8 @@ import { PressableScale } from '../motion/PressableScale';
 import { useDesign } from './useDesign';
 
 /**
- * Raised content card (market-1018 M3): continuous (squircle) corners, layered shadow in light,
- * lighter surface + hairline edge in dark. With onPress it springs on press (PressableScale, Reduce
+ * Content card, a "cushion" in DESIGN.md: continuous (squircle) corners, a flat surface one step off the
+ * ground in both schemes, no shadow unless it floats (elevation 'high'). With onPress it springs on press (PressableScale, Reduce
  * Motion = dim only) and plays a light haptic. Copy comes from the caller (accessibilityLabel prop).
  */
 export function Card({
@@ -42,7 +42,8 @@ export function Card({
     continuous,
     {
       backgroundColor: p.card,
-      boxShadow: boxShadow(elevation, p.scheme),
+      // DESIGN.md: cushions sit flat on the ground; only a floating layer ('high') casts a shadow.
+      boxShadow: elevation === 'high' ? boxShadow('high', p.scheme) : undefined,
       borderColor: p.cardEdge,
       borderWidth: p.cardEdge === 'transparent' ? 0 : StyleSheet.hairlineWidth,
     },

@@ -35,7 +35,7 @@ const REMOTE_FILES = [
   'src/ui/fx/VolumeHud.tsx',
   'src/ui/fx/StatusPill.tsx',
 ];
-const PROP_THEMED = new Set(['src/ui/remote/RemoteTexture.tsx']);
+const PROP_THEMED = new Set(['src/ui/remote/RemoteTexture.tsx', 'src/ui/remote/ModelSvg.tsx', 'src/ui/remote/PanelFinish.tsx']);
 
 describe('every remote surface reads the remote theme', () => {
   it('scans the remote files', () => {
@@ -76,8 +76,9 @@ describe('d-pad and controls: themes change colours only', () => {
   it('every d-pad size still comes from dpadGeometry; no theme geometry', () => {
     expect(dpad).toContain('dpadGeometry(');
     expect(code(dpad)).not.toMatch(/\bt\.radius\b/);
-    expect(dpad).toContain('backgroundColor: t.ring');
-    expect(dpad).toContain('borderTopColor: t.ringLit');
+    // Nov 2026 overhaul: the pad is the logo remote, drawn from the theme's ring / accent / ringInk by machined.ts.
+    expect(dpad).toContain('padModel(t, g.diameter, g.key.size)');
+    expect(dpad).toContain('okModel(t, g.key.size)');
     expect(dpad).toContain('color: t.accentInk');
   });
 
@@ -85,7 +86,7 @@ describe('d-pad and controls: themes change colours only', () => {
     const key = read('src/ui/remote/RemoteKey.tsx');
     expect(key).toContain('scaleTo={keyPressScale(t.press)}');
     expect(key).toContain('themedHaptic(kind, t.press)');
-    expect(key).toContain('borderRadius: t.radius');
+    expect(key).toContain('round ? 999 : t.radius');
     expect(dpad).toContain("themedHaptic('medium', t.press)");
     for (const s of ['soft', 'firm', 'click'] as const) expect(keyPressScale(s)).toBe(PRESS_SCALE[s]);
     expect(themedHaptic('light', 'firm')).toBe('light');

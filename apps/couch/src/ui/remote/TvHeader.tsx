@@ -4,7 +4,7 @@ import { Text } from '../Text';
 import { RemoteIcon } from '../icons/RemoteIcon';
 import type { ConnectionState, Tv } from '../../core/types';
 import { duration, easeOut } from '../../theme/motion';
-import { fonts, tabular } from '../../theme/tokens';
+import { tabular } from '../../theme/tokens';
 import { continuous, radii, remoteDesignPalette, textStyle } from '../../theme/design';
 import { useRemoteTheme } from '../../theme/useRemoteTheme';
 import { pillVisual } from '../fx/connection';
@@ -127,8 +127,8 @@ const styles = StyleSheet.create({
   bar: { flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: radii.group, ...continuous, borderWidth: 1, padding: 12, minHeight: 56 },
   text: { flex: 1, minWidth: 0 },
   // The TV name keeps the brand display font (DESIGN_V2 Type); the status line is system footnote.
-  nm: { fontFamily: fonts.display, fontSize: 17, lineHeight: 22 },
+  nm: textStyle('headline'),
   out: { position: 'absolute', start: 0, end: 0, top: 0 },
   sub: textStyle('footnote'),
-  ms: { fontFamily: fonts.mono, fontSize: 12, ...tabular },
+  ms: { ...textStyle('footnote'), ...tabular },
 });

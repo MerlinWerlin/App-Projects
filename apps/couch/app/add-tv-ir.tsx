@@ -14,6 +14,7 @@ import { Callout, StepField, StepText, StepTitle } from '../src/ui/addTv/parts';
 import { RemoteIcon } from '../src/ui/icons/RemoteIcon';
 import { Text } from '../src/ui/Text';
 import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } from '../src/ui/v2';
+import { useModalStatusBar } from '../src/ui/useModalStatusBar';
 
 /** Splits a `...Rich` message around its {slot} so the slot can be a nested styled element. */
 function splitRich(text: string, slot: string): [string, string] {
@@ -31,6 +32,7 @@ function splitRich(text: string, slot: string): [string, string] {
  * IR codes are UNVERIFIED on real TVs.
  */
 export default function AddTvIrScreen() {
+  useModalStatusBar();
   const p = useDesign();
   const t = useT();
   const router = useRouter();

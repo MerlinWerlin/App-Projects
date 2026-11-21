@@ -7,7 +7,7 @@ import { PLUS_FEATURE_COPY, plusPromise } from '../src/plus/copy';
 import { PLUS_FEATURES, PLUS_PRICE } from '../src/plus/entitlement';
 import { setPaywallShown } from '../src/plus/paywall';
 import { usePlus } from '../src/plus/usePlus';
-import { continuous, list, radii, space, textStyle } from '../src/theme/design';
+import { list, space, textStyle } from '../src/theme/design';
 import { RemoteIcon } from '../src/ui/icons/RemoteIcon';
 import { FreePromise } from '../src/ui/Screen';
 import { Text } from '../src/ui/Text';
@@ -106,7 +106,7 @@ export default function PlusScreen() {
         title={t('app.plus.title')}
         leading={<PillButton variant="plain" label={t('app.common.back')} onPress={() => router.back()} />}
       >
-        <Card elevation="mid" style={styles.card}>
+        <Card style={styles.card}>
           <Text style={[textStyle('title2'), { color: p.label }]} accessibilityRole="header">
             {plusPromise()}
           </Text>
@@ -119,13 +119,9 @@ export default function PlusScreen() {
                 accessible
                 accessibilityLabel={t('app.plus.featureLabel', { title: PLUS_FEATURE_COPY[f].title, hint: PLUS_FEATURE_COPY[f].hint })}
               >
-                {/* Decorative tick in the Plus tint, like the TVs list's icon tiles; VoiceOver reads the row label. */}
-                <View
-                  style={[styles.tick, continuous, { backgroundColor: p.tintedFill }]}
-                  accessibilityElementsHidden
-                  importantForAccessibility="no-hide-descendants"
-                >
-                  <RemoteIcon name="check" size={16} color={p.tintedLabel} />
+                {/* Decorative tick in the tint (no tile, DESIGN.md); VoiceOver reads the row label. */}
+                <View style={styles.tick} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+                  <RemoteIcon name="check" size={18} color={p.tintLabel} />
                 </View>
                 <View style={styles.featureText}>
                   <Text style={[textStyle('headline'), { color: p.label }]}>{PLUS_FEATURE_COPY[f].title}</Text>
@@ -204,7 +200,7 @@ const styles = StyleSheet.create({
   features: { gap: space.md, marginTop: space.sm, marginBottom: space.sm },
   feature: { flexDirection: 'row', alignItems: 'flex-start', gap: space.md },
   featureText: { flex: 1, gap: space.xxs },
-  tick: { width: 28, height: 28, borderRadius: radii.sm, alignItems: 'center', justifyContent: 'center', marginTop: 1 },
+  tick: { width: 22, alignItems: 'center', paddingTop: 2 },
   centerText: { textAlign: 'center' },
   actions: { marginHorizontal: list.inset, marginBottom: list.groupGap, gap: space.sm },
   center: { alignSelf: 'center' },

@@ -37,6 +37,7 @@ import { DemoNote } from '../src/ui/Screen';
 import { Sheet } from '../src/ui/Sheet';
 import { Text } from '../src/ui/Text';
 import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } from '../src/ui/v2';
+import { useModalStatusBar } from '../src/ui/useModalStatusBar';
 
 /**
  * Add a TV, design v2 (market-1018 M3, docs/DESIGN_V2.md): "Add a TV" large title with a Cancel pill;
@@ -58,6 +59,7 @@ import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } 
  * photos and videos", which saves the TV cast-only and ends on "Go to Cast".
  */
 export default function AddTvScreen() {
+  useModalStatusBar();
   const p = useDesign();
   const t = useT();
   const router = useRouter();
