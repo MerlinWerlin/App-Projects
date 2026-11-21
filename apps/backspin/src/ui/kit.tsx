@@ -355,7 +355,7 @@ export function Wordmark({ size = 64 }: { size?: number }) {
   return (
     <View accessible accessibilityRole="header" accessibilityLabel="Backspin" style={{ alignSelf: 'flex-start' }}>
       <Text allowFontScaling={false} style={[f, { color: theme.ink }]}>Backspin</Text>
-      <View style={{ marginTop: -Math.round(size * 0.42), transform: [{ scaleX: -1 }], mixBlendMode: theme.blend }}>
+      <View style={{ marginTop: -Math.round(size * 0.3), transform: [{ scaleX: -1 }], mixBlendMode: theme.blend }}>
         <Text allowFontScaling={false} style={[f, { color: theme.rew }]}>Backspin</Text>
       </View>
     </View>
