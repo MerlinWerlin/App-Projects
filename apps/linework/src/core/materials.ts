@@ -16,5 +16,6 @@ export function blurMaterial(isDark: boolean): { tint: string; intensity: number
  */
 export function glassBackground(blur: boolean, isDark: boolean, fallback: string): string {
   if (!blur) return fallback;
-  return isDark ? 'rgba(30,28,26,0.55)' : 'rgba(255,255,255,0.55)';
+  // DESIGN.md: a heavier paper-tinted wash, so bright content (the red-pencil button) does not bleed through as a glow.
+  return isDark ? 'rgba(20,18,16,0.8)' : 'rgba(246,242,235,0.8)';
 }

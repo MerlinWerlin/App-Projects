@@ -156,7 +156,7 @@ export function InsetRow({
         ) : null}
       </View>
       {detail ? (
-        <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('body'), { color: c.muted, flexShrink: 1, textAlign: 'auto' }]}>
+        <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('body'), { color: c.muted, flexShrink: 1, maxWidth: '55%', textAlign: 'auto' }]}>
           {detail}
         </Text>
       ) : null}

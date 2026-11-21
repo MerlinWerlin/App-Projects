@@ -24,6 +24,8 @@ export type PillButtonProps = {
   haptic?: PressHaptic;
   /** Stretch to the container width (default true for primary). */
   block?: boolean;
+  /** Icon above the label (for side-by-side buttons, so short labels don't wrap beside the icon). */
+  stacked?: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -37,6 +39,7 @@ export function PillButton({
   accessibilityHint,
   haptic,
   block,
+  stacked = false,
   style,
 }: PillButtonProps) {
   const { c, text } = useThemeV2();
@@ -70,8 +73,8 @@ export function PillButton({
         style,
       ]}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spaceV2.x2 }}>
-        {icon ? <Feather name={icon} size={18} color={fg} /> : null}
+      <View style={{ flexDirection: stacked ? 'column' : 'row', alignItems: 'center', justifyContent: 'center', gap: stacked ? spaceV2.x1 : spaceV2.x2 }}>
+        {icon ? <Feather name={icon} size={stacked ? 20 : 18} color={fg} /> : null}
         <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('headline'), { color: fg, textAlign: 'center', flexShrink: 1 }]}>
           {title}
         </Text>

@@ -321,24 +321,33 @@ export default function HomeScreen() {
           disabled={busy}
           block
         />
+        {/* Two equal halves; each button fills its half (block) and stacks its icon over the label. */}
         <View style={{ flexDirection: 'row', gap: spaceV2.x3, marginTop: spaceV2.x3 }}>
-          <PillButton
-            title={t('home.takePhoto')}
-            variant="secondary"
-            icon="camera"
-            accessibilityHint={t('home.takePhotoHint')}
-            onPress={takePhoto}
-            disabled={busy}
-            style={{ flex: 1 }}
-          />
-          <PillButton
-            title={t('common.nav.templates')}
-            variant="secondary"
-            icon="grid"
-            accessibilityHint={t('home.seeAllTemplates')}
-            onPress={openTemplates}
-            style={{ flex: 1 }}
-          />
+          <View style={{ flex: 1 }}>
+            <PillButton
+              title={t('home.takePhoto')}
+              variant="secondary"
+              icon="camera"
+              accessibilityHint={t('home.takePhotoHint')}
+              onPress={takePhoto}
+              disabled={busy}
+              stacked
+              block
+              style={{ flexGrow: 1 }}
+            />
+          </View>
+          <View style={{ flex: 1 }}>
+            <PillButton
+              title={t('common.nav.templates')}
+              variant="secondary"
+              icon="grid"
+              accessibilityHint={t('home.seeAllTemplates')}
+              onPress={openTemplates}
+              stacked
+              block
+              style={{ flexGrow: 1 }}
+            />
+          </View>
         </View>
         {cameraDenied ? (
           <BubbleCard style={{ marginTop: spaceV2.x3 }}>
