@@ -14,6 +14,7 @@ export const CountryHeroArt = memo(function CountryHeroArt({
   compact = false,
   scene = false,
   motif = true,
+  big = false,
   topInset = 0,
 }: {
   pick: CountryPick;
@@ -22,10 +23,12 @@ export const CountryHeroArt = memo(function CountryHeroArt({
   scene?: boolean;
   /** false keeps the banner's own illustration and adds only the particles. */
   motif?: boolean;
+  /** The mascot stands in front: the landmark can be big, he covers its middle. Without him it stays clear of the text. */
+  big?: boolean;
   topInset?: number;
 }) {
   // Big enough to read at a glance: the landmark fills the right of the head, behind the mascot or scene.
-  const width = compact ? 150 : 230;
+  const width = big ? (compact ? 150 : 230) : compact ? 120 : 170;
   return (
     <>
       {motif ? (

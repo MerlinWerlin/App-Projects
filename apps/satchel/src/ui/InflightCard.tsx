@@ -269,7 +269,7 @@ export function HeroPill({ label, hint, icon, onPress }: { label: string; hint: 
       accessibilityLabel={label}
       accessibilityHint={hint}
       onPress={onPress}
-      style={{ minHeight: TOUCH, flexDirection: 'row', alignItems: 'center', gap: space.s, paddingHorizontal: space.l, borderRadius: radius.pill, backgroundColor: theme.heroChip, borderWidth: 1, borderColor: theme.heroWash }}
+      style={{ minHeight: TOUCH, flexDirection: 'row', alignItems: 'center', gap: space.s, paddingHorizontal: space.l, borderRadius: radius.m, backgroundColor: theme.heroChip, borderWidth: 1, borderColor: theme.heroWash }}
     >
       <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
         <Ionicons name={icon} size={18} color={theme.heroInk} />
