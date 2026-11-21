@@ -92,8 +92,6 @@ export const appEn = {
   'app.addTv.title': 'Add a TV',
   'app.addTv.platformTv': '{platform} TV',
   'app.addTv.candidateLabel': '{title}, {host}, {platform}',
-  'app.addTv.candidateLabelBeta': '{title}, {host}, {platform} beta',
-  'app.addTv.chipBeta': '{platform} · beta',
   'app.addTv.scanning': 'Looking for TVs on your Wi-Fi…',
   'app.addTv.report': 'Scan report: phone {ip} · checked {count} addresses · casting check {cast}',
   'app.addTv.reportCastOn': 'on',

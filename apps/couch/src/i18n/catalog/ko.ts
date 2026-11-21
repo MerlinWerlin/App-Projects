@@ -475,8 +475,6 @@ export const ko: Catalogue = {
   'app.addTv.title': 'TV 추가',
   'app.addTv.platformTv': '{platform} TV',
   'app.addTv.candidateLabel': '{title}, {host}, {platform}',
-  'app.addTv.candidateLabelBeta': '{title}, {host}, {platform} 베타',
-  'app.addTv.chipBeta': '{platform} · 베타',
   'app.addTv.scanning': 'Wi-Fi에서 TV를 찾는 중…',
   'app.addTv.report': '검색 보고서: 휴대폰 {ip} · 주소 {count}개 확인 · 캐스트 확인 {cast}',
   'app.addTv.reportCastOn': '켜짐',

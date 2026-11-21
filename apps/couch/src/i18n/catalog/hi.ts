@@ -475,8 +475,6 @@ export const hi: Catalogue = {
   'app.addTv.title': 'TV जोड़ें',
   'app.addTv.platformTv': '{platform} TV',
   'app.addTv.candidateLabel': '{title}, {host}, {platform}',
-  'app.addTv.candidateLabelBeta': '{title}, {host}, {platform} बीटा',
-  'app.addTv.chipBeta': '{platform} · बीटा',
   'app.addTv.scanning': 'आपके Wi-Fi पर TV ढूँढे जा रहे हैं…',
   'app.addTv.report': 'स्कैन रिपोर्ट: फ़ोन {ip} · {count} पते जाँचे · कास्ट जाँच {cast}',
   'app.addTv.reportCastOn': 'चालू',

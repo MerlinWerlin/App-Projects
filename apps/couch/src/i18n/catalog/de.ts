@@ -486,8 +486,6 @@ export const de: Catalogue = {
   'app.addTv.title': 'Fernseher hinzufügen',
   'app.addTv.platformTv': '{platform}-Fernseher',
   'app.addTv.candidateLabel': '{title}, {host}, {platform}',
-  'app.addTv.candidateLabelBeta': '{title}, {host}, {platform} Beta',
-  'app.addTv.chipBeta': '{platform} · Beta',
   'app.addTv.scanning': 'Suche nach Fernsehern in deinem Wi-Fi…',
   'app.addTv.report': 'Scan-Bericht: Telefon {ip} · {count} Adressen geprüft · Cast-Prüfung {cast}',
   'app.addTv.reportCastOn': 'an',

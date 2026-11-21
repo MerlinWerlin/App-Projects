@@ -476,8 +476,6 @@ export const es: Catalogue = {
   'app.addTv.title': 'Añadir un TV',
   'app.addTv.platformTv': 'TV {platform}',
   'app.addTv.candidateLabel': '{title}, {host}, {platform}',
-  'app.addTv.candidateLabelBeta': '{title}, {host}, {platform} beta',
-  'app.addTv.chipBeta': '{platform} · beta',
   'app.addTv.scanning': 'Buscando TV en tu Wi-Fi…',
   'app.addTv.report': 'Informe: teléfono {ip} · {count} direcciones revisadas · comprobación de Cast {cast}',
   'app.addTv.reportCastOn': 'activada',

@@ -459,8 +459,6 @@ export const zhHans: Catalogue = {
   'app.addTv.title': '添加电视',
   'app.addTv.platformTv': '{platform} 电视',
   'app.addTv.candidateLabel': '{title}，{host}，{platform}',
-  'app.addTv.candidateLabelBeta': '{title}，{host}，{platform} 测试版',
-  'app.addTv.chipBeta': '{platform} · 测试版',
   'app.addTv.scanning': '正在查找你 Wi-Fi 上的电视…',
   'app.addTv.report': '扫描报告：手机 {ip} · 已检查 {count} 个地址 · 投屏检查{cast}',
   'app.addTv.reportCastOn': '已开启',

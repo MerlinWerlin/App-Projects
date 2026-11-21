@@ -488,8 +488,6 @@ export const ptBR: Catalogue = {
   'app.addTv.title': 'Adicionar TV',
   'app.addTv.platformTv': 'TV {platform}',
   'app.addTv.candidateLabel': '{title}, {host}, {platform}',
-  'app.addTv.candidateLabelBeta': '{title}, {host}, {platform} beta',
-  'app.addTv.chipBeta': '{platform} · beta',
   'app.addTv.scanning': 'Procurando TVs no seu Wi-Fi…',
   'app.addTv.report': 'Relatório: celular {ip} · {count} endereços verificados · verificação de Cast {cast}',
   'app.addTv.reportCastOn': 'ativa',

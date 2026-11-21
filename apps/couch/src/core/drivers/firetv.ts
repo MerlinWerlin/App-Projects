@@ -29,7 +29,7 @@ import { DriverError, type Capability, type PairState, type TvApp } from '../typ
 import type { MessageKey } from '../../i18n/core';
 import { driverError, asDriverError } from './errors';
 
-/** Shown with a "beta" chip (see BETA_PLATFORMS). */
+/** Unverified on hardware: Fire TV is not in SUPPORTED_PLATFORMS, so Add a TV says plainly that Couch can't control it. */
 export const FIRETV_BETA = true;
 
 /** What the add-TV flow shows: a 4-digit PIN on the TV. */

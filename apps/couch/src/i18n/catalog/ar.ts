@@ -517,8 +517,6 @@ export const ar: Catalogue = {
   'app.addTv.title': 'إضافة تلفزيون',
   'app.addTv.platformTv': 'تلفزيون {platform}',
   'app.addTv.candidateLabel': '‏{title}، {host}، {platform}',
-  'app.addTv.candidateLabelBeta': '‏{title}، {host}، {platform} تجريبي',
-  'app.addTv.chipBeta': '‏{platform} · تجريبي',
   'app.addTv.scanning': 'جارٍ البحث عن أجهزة تلفزيون على شبكة Wi-Fi…',
   'app.addTv.report': 'تقرير البحث: الهاتف {ip} · تم فحص {count} عنوانًا · فحص البث {cast}',
   'app.addTv.reportCastOn': 'مفعّل',

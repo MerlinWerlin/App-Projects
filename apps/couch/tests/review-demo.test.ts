@@ -48,3 +48,28 @@ describe('in-app demo for App Review', () => {
     expect(btn).toMatch(/canTalk \? VOICE_BUTTON\.icon : 'search'/);
   });
 });
+
+describe('no beta claims, honest content rights (App Review 2.2, 2.3)', () => {
+  const listing = JSON.parse(read('store/listing.json')) as { description: string; contentRights: string };
+
+  it('declares third-party content (real TV app icons from the TV or iTunes Search)', () => {
+    expect(listing.contentRights).toBe('USES_THIRD_PARTY_CONTENT');
+  });
+
+  it('has no "beta" wording or Fire TV claim in the listing, Add a TV or the English catalog', () => {
+    expect(JSON.stringify(listing)).not.toMatch(/\bbeta\b/i);
+    expect(listing.description).not.toMatch(/Fire TV/);
+    expect(read('app/add-tv.tsx')).not.toMatch(/beta/i);
+    for (const f of ['app', 'core', 'ui']) {
+      const src = read(`src/i18n/catalog/en/${f}.ts`).replace(/^\s*\/\/.*$/gm, '');
+      expect({ f, beta: /\bbeta\b/i.test(src) }).toEqual({ f, beta: false });
+    }
+  });
+
+  it('the Couch website makes no beta or Android TV claims', () => {
+    for (const f of ['index.html', 'faq/index.html', 'compare/index.html', 'alternatives/index.html', 'facts.txt']) {
+      const html = read(`../../docs/couch/${f}`);
+      expect({ f, hit: /\bbeta\b|Android TV/i.test(html) }).toEqual({ f, hit: false });
+    }
+  });
+});

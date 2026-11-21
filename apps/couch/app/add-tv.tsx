@@ -23,7 +23,7 @@ import { createInAppDemoSession } from '../src/core/demo';
 import { discoverTvs } from '../src/core/discoveryService';
 import { candidateNotice, lostRemoteHelp, platformList, type PairingNotice } from '../src/core/pairingNotice';
 import { probeHost } from '../src/core/probe';
-import { BETA_PLATFORMS, PLATFORM_LABEL } from '../src/core/types';
+import { PLATFORM_LABEL } from '../src/core/types';
 import { LOCALES } from '../src/i18n/locales';
 import { useLocale, useT } from '../src/i18n/react';
 import { useSession } from '../src/state/session';
@@ -247,15 +247,14 @@ export default function AddTvScreen() {
 
   const candidateRow = (c: AddCandidate) => {
     const label = PLATFORM_LABEL[c.platform];
-    const beta = BETA_PLATFORMS.has(c.platform);
     const title = c.model ?? c.name ?? t('app.addTv.platformTv', { platform: label });
     return (
       <Row
         key={c.host}
         title={title}
         subtitle={c.host}
-        accessory={{ type: 'value', value: beta ? t('app.addTv.chipBeta', { platform: label }) : label, chevron: true }}
-        accessibilityLabel={t(beta ? 'app.addTv.candidateLabelBeta' : 'app.addTv.candidateLabel', { title, host: c.host, platform: label })}
+        accessory={{ type: 'value', value: label, chevron: true }}
+        accessibilityLabel={t('app.addTv.candidateLabel', { title, host: c.host, platform: label })}
         onPress={() => dispatch({ type: 'pick', host: c.host })}
       />
     );

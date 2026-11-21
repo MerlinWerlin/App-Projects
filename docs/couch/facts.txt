@@ -33,7 +33,7 @@ Privacy:
 - Your button presses and typing go straight from your phone to your TV over your home network, not through a server.
 - Couch asks for Photos access only when you tap to pick something to cast.
 
-Not claimed: Couch needs the phone and TV on the same Wi-Fi; it is not an infrared remote. Supported: Roku, Samsung Tizen, LG webOS and Google TV / Android TV, with Fire TV in beta. Some TVs ask you to press Allow or enter a code on the TV the first time, which can need the physical remote. Couch is an independent app, not affiliated with any TV maker. It is designed for iPhone and is not on Android.
+Not claimed: Couch needs the phone and TV on the same Wi-Fi; it is not an infrared remote. Supported: Roku, Samsung Tizen, LG webOS and Google TV. Some TVs ask you to press Allow or enter a code on the TV the first time, which can need the physical remote. Couch is an independent app, not affiliated with any TV maker. It is designed for iPhone and is not on Android.
 
 Web page: https://merlinwerlin.github.io/App-Projects/couch/
 Comparison: https://merlinwerlin.github.io/App-Projects/couch/compare/

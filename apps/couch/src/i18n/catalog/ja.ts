@@ -475,8 +475,6 @@ export const ja: Catalogue = {
   'app.addTv.title': 'テレビを追加',
   'app.addTv.platformTv': '{platform}テレビ',
   'app.addTv.candidateLabel': '{title}、{host}、{platform}',
-  'app.addTv.candidateLabelBeta': '{title}、{host}、{platform}ベータ',
-  'app.addTv.chipBeta': '{platform} · ベータ',
   'app.addTv.scanning': 'Wi-Fi上のテレビを探しています…',
   'app.addTv.report': 'スキャン結果：電話 {ip} ・ {count} 件のアドレスを確認 ・ キャスト確認 {cast}',
   'app.addTv.reportCastOn': 'オン',
