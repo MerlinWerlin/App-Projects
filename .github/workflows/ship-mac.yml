@@ -11,6 +11,11 @@ on:
         description: 'App folder (cue, backspin, couch, glaze, linework)'
         required: true
         type: string
+      runner:
+        description: 'Mac runner image. xcode-27 builds with the iOS 27 SDK that Apple requires from April 2027 (ITMS-90725).'
+        required: false
+        default: 'xcode-27'
+        type: string
 
 concurrency:
   group: ship-mac-${{ inputs.app }}
@@ -18,7 +23,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ${{ inputs.runner || 'xcode-27' }}
     timeout-minutes: 150
     permissions:
       contents: write
@@ -47,6 +52,10 @@ jobs:
           X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
           sudo xcode-select -s "$X/Contents/Developer"
           xcodebuild -version | tee "$RUNNER_TEMP/ship.log"
+          SDK=$(xcrun --sdk iphoneos --show-sdk-version)
+          echo "iOS SDK $SDK" | tee -a "$RUNNER_TEMP/ship.log"
+          # Apple (ITMS-90725): from April 2027 uploads must be built with the iOS 27 SDK or later.
+          if [ "${SDK%%.*}" -lt 27 ]; then echo "::error::iOS SDK $SDK is older than 27; Apple requires the iOS 27 SDK (Xcode 27)"; exit 1; fi
           pod --version || sudo gem install cocoapods
           fastlane --version | tail -1 || brew install fastlane
 
