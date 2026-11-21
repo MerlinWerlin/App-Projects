@@ -82,8 +82,10 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
           animation: reduceMotion ? 'fade' : 'default',
         }}
       >
-        {/* The library draws its own header (title, import, settings) above the sign band. */}
-        <Stack.Screen name="index" options={{ title: t('library.title') }} />
+        <Stack.Screen
+          name="index"
+          options={{ ...header, title: t('library.title'), headerLargeTitle: true, headerLargeTitleShadowVisible: false, headerLargeTitleStyle: { fontFamily: FONT.scriptBold, color: theme.ink } }}
+        />
         <Stack.Screen name="edit/[id]" options={{ ...header, title: '' }} />
         <Stack.Screen
           name="prompt/[id]"
