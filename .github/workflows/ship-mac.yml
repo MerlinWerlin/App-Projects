@@ -12,9 +12,9 @@ on:
         required: true
         type: string
       runner:
-        description: 'Mac runner image. xcode-27 builds with the iOS 27 SDK that Apple requires from April 2027 (ITMS-90725).'
+        description: 'Mac runner image. macos-latest = Xcode 26 (works today). xcode-27 = iOS 27 SDK, required by Apple from April 2027 (ITMS-90725), but an app must adopt the UIScene life cycle first or it crashes at launch on iOS 27.'
         required: false
-        default: 'xcode-27'
+        default: 'macos-latest'
         type: string
 
 concurrency:
@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ${{ inputs.runner || 'xcode-27' }}
+    runs-on: ${{ inputs.runner || 'macos-latest' }}
     timeout-minutes: 150
     permissions:
       contents: write
@@ -54,8 +54,10 @@ jobs:
           xcodebuild -version | tee "$RUNNER_TEMP/ship.log"
           SDK=$(xcrun --sdk iphoneos --show-sdk-version)
           echo "iOS SDK $SDK" | tee -a "$RUNNER_TEMP/ship.log"
-          # Apple (ITMS-90725): from April 2027 uploads must be built with the iOS 27 SDK or later.
-          if [ "${SDK%%.*}" -lt 27 ]; then echo "::error::iOS SDK $SDK is older than 27; Apple requires the iOS 27 SDK (Xcode 27)"; exit 1; fi
+          # Apple (ITMS-90725) wants the iOS 27 SDK from April 2027, but an iOS 27 SDK build of an app without the
+          # UIScene life cycle crashes at launch (Linework 1.0.4 build 21, 21 Nov 2026). Stay on Xcode 26 until each
+          # app adopts scenes and is tested on iOS 27; then ship it with runner xcode-27.
+          if [ "${SDK%%.*}" -ge 27 ] && [ ! -f "SCENE_LIFECYCLE_OK" ]; then echo "::error::iOS SDK $SDK needs the UIScene life cycle; add apps/<app>/SCENE_LIFECYCLE_OK only after testing a launch on iOS 27"; exit 1; fi
           pod --version || sudo gem install cocoapods
           fastlane --version | tail -1 || brew install fastlane
 
