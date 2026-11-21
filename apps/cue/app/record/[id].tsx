@@ -9,7 +9,6 @@ import { CameraView, useCameraPermissions, useMicrophonePermissions } from 'expo
 import { useKeepAwake } from 'expo-keep-awake';
 import * as MediaLibrary from 'expo-media-library/legacy';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSharedValue } from 'react-native-reanimated';
@@ -19,8 +18,8 @@ import { t } from '../../src/i18n';
 import { reason } from '../../src/native/errors';
 import { success, thud } from '../../src/native/haptics';
 import { useApp } from '../../src/state/AppState';
-import { FONT, PROMPTER, RADIUS } from '../../src/theme/theme';
-import { Btn, Glass, IconBtn, Txt } from '../../src/ui/kit';
+import { FONT, PROMPTER, RADIUS, SPACE, STAGE, TYPE } from '../../src/theme/theme';
+import { Btn, Bar, IconBtn, Txt } from '../../src/ui/kit';
 import { Prompter, type PrompterHandle } from '../../src/ui/Prompter';
 
 export default function RecordScreen() {
@@ -82,22 +81,14 @@ export default function RecordScreen() {
     const denied = (camPerm && !camPerm.granted && !camPerm.canAskAgain) || (micPerm && !micPerm.granted && !micPerm.canAskAgain);
     const th = app.theme;
     return (
-      <ScrollView style={{ backgroundColor: th.bg }} contentContainerStyle={[st.perm, { paddingTop: insets.top + 48, paddingBottom: insets.bottom + 24 }]}>
-        <View style={[st.permMark, { backgroundColor: th.accentWash }]}>
-          <Ionicons name="videocam-outline" size={34} color={th.accentText} />
+      <ScrollView style={{ backgroundColor: th.ground }} contentContainerStyle={[st.perm, { paddingTop: insets.top + 48, paddingBottom: insets.bottom + 24 }]}>
+        <Txt v="display" accessibilityRole="header">{t('perm.camera.title')}</Txt>
+        <Txt tone="ink2">{t('perm.camera.body')}</Txt>
+        <View style={[st.permCard, { backgroundColor: th.sheet }]}>
+          <Txt v="headline">{t('perm.mic.title')}</Txt>
+          <Txt v="subhead" tone="ink2">{t('perm.mic.body')}</Txt>
         </View>
-        <Txt v="largeTitle" style={{ textAlign: 'center' }}>{t('perm.camera.title')}</Txt>
-        <Txt tone="sub" style={st.permBody}>{t('perm.camera.body')}</Txt>
-        <View style={[st.permCard, { backgroundColor: th.card, borderColor: th.line }]}>
-          <View style={st.permRow}>
-            <Ionicons name="mic-outline" size={20} color={th.accentText} />
-            <View style={{ flex: 1 }}>
-              <Txt v="headline">{t('perm.mic.title')}</Txt>
-              <Txt v="callout" tone="sub">{t('perm.mic.body')}</Txt>
-            </View>
-          </View>
-        </View>
-        {denied ? <Txt v="callout" tone="danger" style={st.permBody}>{t('perm.denied')}</Txt> : null}
+        {denied ? <Txt v="subhead" tone="danger">{t('perm.denied')}</Txt> : null}
         <Btn
           label={denied ? t('perm.openSettings') : t('perm.allow')}
           onPress={async () => {
@@ -105,9 +96,9 @@ export default function RecordScreen() {
             if (!camPerm?.granted) await askCam();
             if (!micPerm?.granted) await askMic();
           }}
-          style={{ alignSelf: 'stretch', marginTop: 20 }}
+          style={{ alignSelf: 'stretch', marginTop: SPACE.md }}
         />
-        <Btn label={t('common.cancel')} kind="secondary" onPress={() => router.back()} style={{ alignSelf: 'stretch', marginTop: 10 }} />
+        <Btn label={t('common.cancel')} kind="plain" onPress={() => router.back()} style={{ alignSelf: 'stretch' }} />
       </ScrollView>
     );
   }
@@ -156,9 +147,8 @@ export default function RecordScreen() {
 
   return (
     <View style={st.fill}>
-      <StatusBar hidden />
       <CameraView ref={cam} style={StyleSheet.absoluteFill} facing={facing} mode="video" onCameraReady={() => setReady(true)} />
-      <View style={[st.scriptBox, { top: insets.top + 60, backgroundColor: `rgba(7,8,12,${prefs.scriptOpacity})`, borderColor: recording ? TALLY : 'rgba(255,255,255,0.08)' }]}>
+      <View style={[st.scriptBox, { top: insets.top + 60, backgroundColor: `rgba(${STAGE.scrim},${prefs.scriptOpacity})`, borderColor: recording ? STAGE.onAir : STAGE.hairline }]}>
         <Prompter
           ref={prompter}
           parsed={parsed}
@@ -179,42 +169,42 @@ export default function RecordScreen() {
       </View>
       {count !== null ? (
         <View pointerEvents="none" style={st.center}>
-          <Text style={st.count}>{count}</Text>
+          <Text maxFontSizeMultiplier={1} style={st.count}>{count}</Text>
         </View>
       ) : null}
       <View style={[st.top, { paddingTop: insets.top + 8 }]}>
-        <Glass tint="dark" style={st.round}>
-          <IconBtn icon="close" label={t('prompt.close')} onPress={() => (recording ? cam.current?.stopRecording() : router.back())} color="#F1EEE6" />
-        </Glass>
+        <Bar tint="dark" style={st.round}>
+          <IconBtn icon="close" label={t('prompt.close')} onPress={() => (recording ? cam.current?.stopRecording() : router.back())} color={STAGE.ink} />
+        </Bar>
         <View style={{ flex: 1 }} />
         {recording ? (
-          <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
+          <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
             <View style={st.recDot} />
-            <Text style={st.recText}>{formatDuration(secs)}</Text>
-          </Glass>
+            <Text maxFontSizeMultiplier={1.4} style={st.recText}>{formatDuration(secs)}</Text>
+          </Bar>
         ) : null}
-        <Glass tint="dark" style={[st.round, { opacity: recording ? 0.4 : 1 }]}>
-          <IconBtn icon="camera-reverse-outline" label={t('record.flipCamera')} onPress={() => !recording && app.setPrefs({ recordCamera: facing === 'front' ? 'back' : 'front' })} color="#F1EEE6" />
-        </Glass>
+        <Bar tint="dark" style={[st.round, { opacity: recording ? 0.4 : 1 }]}>
+          <IconBtn icon="camera-reverse-outline" label={t('record.flipCamera')} onPress={() => !recording && app.setPrefs({ recordCamera: facing === 'front' ? 'back' : 'front' })} color={STAGE.ink} />
+        </Bar>
       </View>
       <View style={[st.bottom, { paddingBottom: insets.bottom + 22 }]}>
         <Pressable onPress={pickSection} disabled={recording || !parsed.sections.length} accessibilityRole="button" accessibilityLabel={`${t('record.section')}: ${section === null ? t('record.wholeScript') : parsed.sections[section]?.title ?? ''}`} style={{ width: 120 }}>
-          <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 4, opacity: recording ? 0.5 : 1 }]}>
-            <Text style={[st.chipText, { flexShrink: 1 }]} numberOfLines={1}>
+          <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 4, opacity: recording ? 0.5 : 1 }]}>
+            <Text maxFontSizeMultiplier={1.4} style={[st.chipText, { flexShrink: 1 }]} numberOfLines={1}>
               {section === null ? t('record.wholeScript') : parsed.sections[section]?.title}
             </Text>
-            {parsed.sections.length ? <Ionicons name="chevron-down" size={13} color="#C9CCD6" /> : null}
-          </Glass>
+            {parsed.sections.length ? <Ionicons name="chevron-down" size={13} color={STAGE.ink2} /> : null}
+          </Bar>
         </Pressable>
         <Pressable onPress={toggle} disabled={!ready} accessibilityRole="button" accessibilityLabel={recording ? t('record.stop') : t('record.start')} style={({ pressed }) => [st.shutter, { transform: [{ scale: pressed ? 0.94 : 1 }] }]}>
           <View style={[st.shutterInner, recording && st.shutterStop]} />
         </Pressable>
         <View style={{ width: 120, alignItems: 'center' }}>
           {takes ? (
-            <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
-              <Ionicons name="checkmark-circle" size={15} color="#D9AD5E" />
-              <Text style={st.chipText} accessibilityLiveRegion="polite">{takes === 1 ? t('record.takesOne') : t('record.takes', { n: takes })}</Text>
-            </Glass>
+            <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
+              <Ionicons name="checkmark" size={15} color={STAGE.sign} />
+              <Text maxFontSizeMultiplier={1.4} style={st.chipText} accessibilityLiveRegion="polite">{takes === 1 ? t('record.takesOne') : t('record.takes', { n: takes })}</Text>
+            </Bar>
           ) : null}
         </View>
       </View>
@@ -222,26 +212,21 @@ export default function RecordScreen() {
   );
 }
 
-const TALLY = '#E2463B';
-
 const st = StyleSheet.create({
   fill: { flex: 1, backgroundColor: '#000' },
-  perm: { paddingHorizontal: 28, alignItems: 'center', gap: 12 },
-  permMark: { width: 76, height: 76, borderRadius: 26, alignItems: 'center', justifyContent: 'center', marginBottom: 8 },
-  permBody: { textAlign: 'center' },
-  permCard: { alignSelf: 'stretch', borderRadius: RADIUS.card, borderWidth: StyleSheet.hairlineWidth, padding: 16, marginTop: 10 },
-  permRow: { flexDirection: 'row', gap: 12, alignItems: 'flex-start' },
-  scriptBox: { position: 'absolute', left: 12, right: 12, height: '38%', borderRadius: RADIUS.card, overflow: 'hidden', borderWidth: 1.5 },
+  perm: { paddingHorizontal: SPACE.lg, gap: SPACE.sm },
+  permCard: { alignSelf: 'stretch', borderRadius: RADIUS.panel, paddingHorizontal: SPACE.md, paddingVertical: SPACE.sm, marginTop: SPACE.xs, gap: 2 },
+  scriptBox: { position: 'absolute', left: SPACE.sm, right: SPACE.sm, height: '38%', borderRadius: RADIUS.panel, overflow: 'hidden', borderWidth: 1.5 },
   center: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, alignItems: 'center', justifyContent: 'center' },
-  count: { fontFamily: FONT.display, fontSize: 150, color: '#F1EEE6', fontVariant: ['tabular-nums'] },
-  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: 8 },
-  round: { borderRadius: 22 },
-  chip: { borderRadius: RADIUS.pill, paddingHorizontal: 14, minHeight: 44, alignItems: 'center', justifyContent: 'center' },
-  chipText: { fontFamily: FONT.bodyBold, fontSize: 13.5, color: '#F1EEE6' },
-  recDot: { width: 9, height: 9, borderRadius: 5, backgroundColor: TALLY },
-  recText: { fontFamily: FONT.display, fontSize: 16, color: '#F1EEE6', fontVariant: ['tabular-nums'] },
+  count: { fontFamily: FONT.scriptBold, fontSize: 150, color: STAGE.ink, fontVariant: ['tabular-nums'] },
+  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: SPACE.xs },
+  round: { borderRadius: RADIUS.control },
+  chip: { borderRadius: RADIUS.control, paddingHorizontal: 14, minHeight: SPACE.touch, alignItems: 'center', justifyContent: 'center' },
+  chipText: { ...TYPE.footnote, fontWeight: '600', color: STAGE.ink },
+  recDot: { width: 9, height: 9, borderRadius: 5, backgroundColor: STAGE.onAir },
+  recText: { ...TYPE.time, color: STAGE.ink },
   bottom: { position: 'absolute', bottom: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' },
-  shutter: { width: 82, height: 82, borderRadius: 41, borderWidth: 4, borderColor: 'rgba(241,238,230,0.95)', alignItems: 'center', justifyContent: 'center' },
-  shutterInner: { width: 64, height: 64, borderRadius: 32, backgroundColor: TALLY },
+  shutter: { width: 82, height: 82, borderRadius: 41, borderWidth: 4, borderColor: STAGE.ink, alignItems: 'center', justifyContent: 'center' },
+  shutterInner: { width: 64, height: 64, borderRadius: 32, backgroundColor: STAGE.onAir },
   shutterStop: { width: 30, height: 30, borderRadius: 8 },
 });

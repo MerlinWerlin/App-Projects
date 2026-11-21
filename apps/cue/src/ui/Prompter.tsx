@@ -206,10 +206,10 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
     fontSize: fs,
     lineHeight: lh,
     color: palette.ink,
-    fontFamily: prefs.bold ? FONT.bodyBold : FONT.body,
+    fontFamily: prefs.bold ? FONT.scriptBold : FONT.script,
     textAlign: prefs.align,
   };
-  const bandH = lh * 1.9;
+  const bandH = lh * 1.5;
   const bandTop = lineY + lh * 0.5 - bandH / 2;
 
   return (
@@ -223,15 +223,8 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
         accessibilityHint="Tap to pause or resume. Drag to scroll. Pinch to resize text."
       >
         <View style={[st.fill, { transform: [{ scaleX: prefs.mirrorH ? -1 : 1 }, { scaleY: flipY }] }]}>
-          {/* The reading line: a soft brass glow behind the line you are on (the one bold element of the design). */}
-          {prefs.highlightLine && viewport > 0 ? (
-            <LinearGradient
-              pointerEvents="none"
-              colors={[alpha(palette.band, 0), palette.band, alpha(palette.band, 0)]}
-              locations={[0, 0.5, 1]}
-              style={[st.band, { top: bandTop, height: bandH }]}
-            />
-          ) : null}
+          {/* The reading line: a flat band with hard edges behind the line you are on. */}
+          {prefs.highlightLine && viewport > 0 ? <View pointerEvents="none" style={[st.band, { top: bandTop, height: bandH, backgroundColor: palette.band }]} /> : null}
           <Animated.View style={[{ paddingTop: lineY, paddingBottom: viewport * 0.5, paddingHorizontal: prefs.margin + 16 }, contentStyle]} onLayout={onContentLayout}>
             {parsed.blocks.map((b, i) => (
               <View
@@ -244,7 +237,7 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
               </View>
             ))}
           </Animated.View>
-          {/* Prompter-glass fades: text arrives softly from below and leaves softly above. */}
+          {/* Scroll-edge masks (to the same colour, never decoration): words arrive from below and leave above. */}
           {!p.transparent && viewport > 0 ? (
             <>
               <LinearGradient pointerEvents="none" colors={[palette.bg, alpha(palette.bg, 0)]} style={[st.fade, { top: 0, height: Math.max(40, lineY * 0.8) }]} />
@@ -253,8 +246,9 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
           ) : null}
           {viewport > 0 ? (
             <>
-              <View pointerEvents="none" style={[st.tick, { left: 0, top: lineY + lh * 0.5 - 14, backgroundColor: palette.cue }]} />
-              <View pointerEvents="none" style={[st.tick, { right: 0, top: lineY + lh * 0.5 - 14, backgroundColor: palette.cue }]} />
+              {/* Wayfinding arrows locked to both edges, pointing at the line you read. */}
+              <View pointerEvents="none" style={[st.arrow, { left: 0, top: lineY + lh * 0.5 - 12, borderLeftColor: palette.cue, borderLeftWidth: 14 }]} />
+              <View pointerEvents="none" style={[st.arrow, { right: 0, top: lineY + lh * 0.5 - 12, borderRightColor: palette.cue, borderRightWidth: 14 }]} />
             </>
           ) : null}
         </View>
@@ -294,7 +288,7 @@ function BlockView({
   }
   if (block.kind === 'heading') {
     return (
-      <Text style={[textBase, { fontFamily: FONT.displaySemi, fontSize: textBase.fontSize * 0.5, lineHeight: textBase.fontSize * 0.72, color: palette.cue, marginTop: textBase.fontSize * 0.7, marginBottom: textBase.fontSize * 0.15 }]} accessibilityRole="header">
+      <Text style={[textBase, { fontFamily: FONT.scriptBold, fontSize: textBase.fontSize * 0.5, lineHeight: textBase.fontSize * 0.72, color: palette.cue, marginTop: textBase.fontSize * 0.7, marginBottom: textBase.fontSize * 0.15 }]} accessibilityRole="header">
         {block.text}
       </Text>
     );
@@ -302,8 +296,8 @@ function BlockView({
   return (
     <Text style={[textBase, { marginBottom: textBase.lineHeight * 0.6 }]}>
       {block.segments.map((s, i) => {
-        if (s.kind === 'text') return s.emph ? <Text key={i} style={{ color: palette.emph, fontFamily: FONT.bodyBold }}>{s.text}</Text> : <Text key={i}>{s.text}</Text>;
-        if (s.kind === 'cue') return <Text key={i} style={{ color: palette.cue, fontSize: textBase.fontSize * 0.55, fontFamily: FONT.bodyBold }}>{`  ‖ ${s.label}  `}</Text>;
+        if (s.kind === 'text') return s.emph ? <Text key={i} style={{ color: palette.emph, fontFamily: FONT.scriptBold }}>{s.text}</Text> : <Text key={i}>{s.text}</Text>;
+        if (s.kind === 'cue') return <Text key={i} style={{ color: palette.cue, fontSize: textBase.fontSize * 0.55, fontFamily: FONT.scriptBold }}>{`  ‖ ${s.label}  `}</Text>;
         return showNotes ? <Text key={i} style={{ color: palette.dim, fontStyle: 'italic', fontSize: textBase.fontSize * 0.55 }}>{` (${s.text}) `}</Text> : null;
       })}
     </Text>
@@ -314,7 +308,7 @@ const st = StyleSheet.create({
   fill: { flex: 1, overflow: 'hidden' },
   band: { position: 'absolute', left: 0, right: 0 },
   fade: { position: 'absolute', left: 0, right: 0 },
-  tick: { position: 'absolute', width: 4, height: 28, borderRadius: 2 },
+  arrow: { position: 'absolute', width: 0, height: 0, borderTopWidth: 12, borderBottomWidth: 12, borderTopColor: 'transparent', borderBottomColor: 'transparent' },
   breakRow: { flexDirection: 'row', justifyContent: 'center', gap: 10, marginVertical: 30 },
   breakDot: { width: 6, height: 6, borderRadius: 3, opacity: 0.7 },
 });

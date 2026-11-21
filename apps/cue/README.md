@@ -15,11 +15,11 @@ Use TestFlight on your iPhone. The release candidate includes real Apple sandbox
 - **Voice Follow** (word tracking): native on-device recognition in supported device languages, with tested alignment (`src/core/follow.ts`) and regional-locale recovery (`src/native/speech.ts`). Included in the TestFlight/release build.
 - Record: script over the camera near the lens, each take saved to Photos, no watermark, **record one section at a time** (stops at the section end).
 - Plus (one-time, A$2.99): Voice Pace/Follow, caption export (.srt/.vtt timed to your WPM), prompter colours, Word import, rehearsal stats. **7-day free trial of every Plus feature**, started explicitly through Apple's free `7-day Trial` non-consumable. Its original transaction date is restored across reinstalls; the earlier automatic testing preview does not grant store access (`src/plus/trial.ts`).
-- Launch intro: "Cue" rolls up like prompter text with a light sweep (~1.3 s, tap to skip, off with Reduce Motion).
+- Launch intro: "Cue" rolls up into the reading band like prompter text (~1.3 s, tap to skip, off with Reduce Motion).
 - Standard kit: no index flash, haptics setting, reduce motion, dark mode, accessibility labels, all text in `src/i18n/en.ts`, plain-words permission screen, real error messages, no ads/tracking/account.
 
 ## Layout
 - `src/core/` pure TS, tested (`npm test`, or `bun test src`).
 - `src/native/` guarded adapters (storage, Keychain/secure store, speech seam, import, haptics).
-- `app/` screens. `docs/STORE.md` listing copy. `docs/FEATURES.md` competitor scan and the feature map.
+- `app/` screens; `src/theme/theme.ts` holds every design token. Read `DESIGN.md` (the "Signal" design system) and `PRODUCT.md` before changing UI. `docs/STORE.md` listing copy. `docs/FEATURES.md` competitor scan and the feature map.
 - `.github/workflows/check.yml` installs, aligns Expo versions, typechecks, tests and bundles on every branch push.

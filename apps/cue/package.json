@@ -27,7 +27,7 @@
     "@expo/vector-icons": "~15.1.1",
     "@noble/hashes": "1.8.0",
     "@react-native-async-storage/async-storage": "2.2.0",
-    "expo": "~58.0.25",
+    "expo": "~58.0.26",
     "expo-asset": "~58.0.18",
     "expo-audio": "~58.0.12",
     "expo-blur": "~58.0.6",
@@ -42,7 +42,7 @@
     "expo-linear-gradient": "~58.0.4",
     "expo-linking": "~58.0.17",
     "expo-media-library": "~58.0.14",
-    "expo-router": "~58.0.31",
+    "expo-router": "~58.0.32",
     "expo-screen-orientation": "~58.0.4",
     "expo-secure-store": "~58.0.3",
     "expo-sharing": "~58.0.23",
@@ -66,7 +66,7 @@
     "eslint": "^9.25.0",
     "eslint-config-expo": "~58.0.4",
     "jest": "~30.5.2",
-    "jest-expo": "~58.0.14",
+    "jest-expo": "~58.0.15",
     "typescript": "~6.0.3"
   }
 }

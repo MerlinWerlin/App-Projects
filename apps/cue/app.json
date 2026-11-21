@@ -3,7 +3,7 @@
     "name": "Cue",
     "slug": "cue-teleprompter",
     "scheme": "cue",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "default",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/brand/icon.png",
@@ -18,6 +18,7 @@
         "NSMicrophoneUsageDescription": "Cue records sound with your videos, and listens while you read so the words can follow your voice. Nothing is uploaded.",
         "NSPhotoLibraryAddUsageDescription": "Cue saves each take to your Photos. It can't see your other photos.",
         "CFBundleAllowMixedLocalizations": true,
+        "UIViewControllerBasedStatusBarAppearance": true,
         "NSSpeechRecognitionUsageDescription": "Voice Follow uses on-device speech recognition to keep your place in the script as you talk. Audio never leaves your phone."
       },
       "config": {

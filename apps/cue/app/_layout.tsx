@@ -1,17 +1,15 @@
 import { AtkinsonHyperlegible_400Regular, AtkinsonHyperlegible_700Bold } from '@expo-google-fonts/atkinson-hyperlegible';
-import { BricolageGrotesque_600SemiBold, BricolageGrotesque_700Bold } from '@expo-google-fonts/bricolage-grotesque';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useReducedMotion } from 'react-native-reanimated';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { t } from '../src/i18n';
 import { AppStateProvider, useApp } from '../src/state/AppState';
-import { FONT } from '../src/theme/theme';
+import { FONT, PROMPTER } from '../src/theme/theme';
 import { LaunchIntro } from '../src/ui/LaunchIntro';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
@@ -25,8 +23,6 @@ export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
     AtkinsonHyperlegible_400Regular,
     AtkinsonHyperlegible_700Bold,
-    BricolageGrotesque_600SemiBold,
-    BricolageGrotesque_700Bold,
   });
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -44,7 +40,7 @@ export default function RootLayout() {
  * nothing renders behind it until then (2.5 s safety net: never an endless splash; system fonts until loaded).
  */
 function Shell({ fontsReady }: { fontsReady: boolean }) {
-  const { loaded, theme, reduceMotion, prefs } = useApp();
+  const { loaded, theme, reduceMotion, prefs, can } = useApp();
   const [timedOut, setTimedOut] = useState(false);
   const [introDone, setIntroDone] = useState(false);
   // Read synchronously at startup, so the intro never flashes before the async Reduce Motion check lands.
@@ -68,30 +64,38 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
   if (!ready) return null;
   const header = {
     headerShown: true,
-    headerStyle: { backgroundColor: theme.bg },
-    headerTintColor: theme.accentText,
-    headerTitleStyle: { fontFamily: FONT.displaySemi, color: theme.ink, fontSize: 17 },
-    headerLargeTitleStyle: { fontFamily: FONT.display, color: theme.ink },
+    headerStyle: { backgroundColor: theme.ground },
+    headerTintColor: theme.ink,
+    headerTitleStyle: { color: theme.ink, fontSize: 17, fontFamily: FONT.scriptBold },
     headerShadowVisible: false,
     headerBackButtonDisplayMode: 'minimal',
   } as const;
   return (
     <>
-      <StatusBar style={theme.dark ? 'light' : 'dark'} />
       <Stack
         screenOptions={{
           headerShown: false,
-          contentStyle: { backgroundColor: theme.bg },
+          contentStyle: { backgroundColor: theme.ground },
+          // Per-screen status bar (Info.plist opts into view-controller-based appearance), so the in-app
+          // theme override and the always-dark stage screens each get readable content.
+          statusBarStyle: theme.dark ? 'light' : 'dark',
           animation: reduceMotion ? 'fade' : 'default',
         }}
       >
-        <Stack.Screen name="index" options={{ ...header, title: t('library.title'), headerLargeTitle: true, headerLargeTitleShadowVisible: false }} />
+        <Stack.Screen
+          name="index"
+          options={{ ...header, title: t('library.title'), headerLargeTitle: true, headerLargeTitleShadowVisible: false, headerLargeTitleStyle: { fontFamily: FONT.scriptBold, color: theme.ink } }}
+        />
         <Stack.Screen name="edit/[id]" options={{ ...header, title: '' }} />
-        <Stack.Screen name="prompt/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom' }} />
-        <Stack.Screen name="record/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom' }} />
+        <Stack.Screen
+          name="prompt/[id]"
+          options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom', statusBarHidden: true, statusBarStyle: can('colors') && PROMPTER[prefs.colors] === PROMPTER.paper ? 'dark' : 'light' }}
+        />
+        <Stack.Screen name="record/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom', statusBarHidden: true, statusBarStyle: 'light' }} />
         <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
         <Stack.Screen name="access-code" options={{ ...header, title: t('access.title') }} />
-        <Stack.Screen name="plus" options={{ ...header, presentation: 'modal', title: '' }} />
+        {/* The paywall opens on a full-bleed sign band with its own close button. */}
+        <Stack.Screen name="plus" options={{ presentation: 'modal', title: t('plus.title') }} />
       </Stack>
       {!introDone && !skipIntro ? <LaunchIntro onDone={() => setIntroDone(true)} /> : null}
     </>
