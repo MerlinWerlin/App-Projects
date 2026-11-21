@@ -1,15 +1,14 @@
 // Designed "nothing here yet" state (T86, docs/MARKET.md "Design reference 18 Oct" §2, DESIGN_V2 §1.3): an
-// original line-art doodle on a soft pastel card with static Sparkle accents, a title, an optional body line and
+// original line-art doodle on a plain paper card (DESIGN.md), a title, an optional body line and
 // exactly ONE clear action (a primary PillButton). Art variants: drawings, favourites, search, recents (pastel and
 // accent per variant in src/core/emptyState.ts). The doodle is decorative and hidden from screen readers.
 import Svg, { Circle, G, Path, Rect } from 'react-native-svg';
 import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useThemeV2 } from '../../theme/useTheme';
-import { maxFontScaleV2, pastelAt, spaceV2 } from '../../theme/tokensV2';
+import { maxFontScaleV2, spaceV2 } from '../../theme/tokensV2';
 import { emptyArtStyle, type EmptyArt } from '../../core/emptyState';
 import { BubbleCard } from './BubbleCard';
 import { PillButton } from './PillButton';
-import { Sparkle } from './Sparkle';
 import type { FeatherName } from './shared';
 import type { PressHaptic } from '../PressableScale';
 
@@ -91,14 +90,11 @@ export function EmptyArtSvg({ art, width = ART_W }: { art: EmptyArt; width?: num
 
 export function EmptyStateV2({ art, title, body, action, style }: EmptyStateV2Props) {
   const { c, text } = useThemeV2();
-  const look = emptyArtStyle(art);
   return (
-    <BubbleCard fill={pastelAt(c, look.pastel)} elevation="none" radius="xl" padding={spaceV2.x6} style={style}>
+    <BubbleCard radius="xl" padding={spaceV2.x6} style={style}>
       <View style={{ alignItems: 'center' }}>
         <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ paddingVertical: spaceV2.x2 }}>
           <EmptyArtSvg art={art} />
-          <Sparkle variant="cluster" size={26} color={c[look.accent]} style={{ position: 'absolute', top: 0, end: -spaceV2.x4 }} />
-          <Sparkle size={14} color={c.sunny} style={{ position: 'absolute', bottom: spaceV2.x3, start: -spaceV2.x3 }} />
         </View>
         <Text
           accessibilityRole="header"

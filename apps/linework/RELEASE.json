@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Linework 1.0.3: design polish (My drawings on the large-title shell, Language as its own screen, no duplicate Settings gear on Home, clearer Workshop Plus badge). TestFlight build only; 1.0.2 stays in App Review.",
+  "note": "Linework 1.0.4: \"Drawing table\" redesign (paper, graphite, one red-pencil accent; drafting-grid tab screens, Home title block, serif headings, flat cards, standard tab bar). Features and purchases unchanged. TestFlight build only.",
   "ascAppId": "6826041969"
 }

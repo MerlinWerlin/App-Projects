@@ -72,11 +72,10 @@ import {
   BAR_HEIGHT,
   BubbleCard,
   CategoryBubble,
+  DraftingGrid,
   EmptyStateV2,
-  IconBubble,
   LargeTitle,
   LargeTitleHeader,
-  Sparkle,
   useLargeTitleScroll,
 } from '../../src/ui/v2';
 import { PillSegmented, type PillSegment } from '../../src/ui/v2/PillSegmented';
@@ -323,7 +322,8 @@ export default function TemplatesScreen() {
   const shelves = shelfBubbles(TEMPLATES, shelf);
   const shownCollections = COLLECTIONS.filter((col) => LIBRARY.collections[col.id] > 0 || col.id === collection);
   const total = counts.total;
-  const pastel = c.pastels[2];
+  // DESIGN.md: the grid sits straight on the paper (the old pastel panel is retired).
+  const pastel = 'transparent';
 
   const shelfLabel = (s: Shelf) =>
     s === 'all' ? t('templates.allCategories') : s === 'new' ? t('templates.shelf.new') : categoryName(s);
@@ -342,13 +342,7 @@ export default function TemplatesScreen() {
     ) : (
       <Feather name="feather" size={28} color={c.ink} />
     );
-    if (s !== 'new') return art;
-    return (
-      <View>
-        {art}
-        <Sparkle variant="cluster" size={20} color={c.bubblegum} style={{ position: 'absolute', top: -8, end: -10 }} />
-      </View>
-    );
+    return art;
   };
 
   const header = (
@@ -589,10 +583,10 @@ export default function TemplatesScreen() {
       />
       {/* F5 (owner 17 Oct): where to find more pictures to trace. */}
       <View accessible accessibilityLabel={`${t('templates.tip.title')}. ${t('templates.tip.body')}`} style={{ marginTop: spaceV2.section }}>
-        <BubbleCard fill={c.pastels[4]} elevation="none" sparkle sparkleColor={c.lilac} padding={spaceV2.x5}>
+        <BubbleCard padding={spaceV2.x5}>
           <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: spaceV2.x3 }}>
-            <IconBubble icon="image" size={36} fill={c.card} color={c.ink} />
-            <View style={{ flex: 1, paddingEnd: spaceV2.x5 }}>
+            <Feather name="image" size={22} color={c.graphite} style={{ marginTop: 1 }} />
+            <View style={{ flex: 1 }}>
               <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('headline'), { color: c.graphite }]}>
                 {t('templates.tip.title')}
               </Text>
@@ -608,6 +602,7 @@ export default function TemplatesScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: c.paper }}>
+      <DraftingGrid />
       <Stack.Screen options={{ headerShown: false }} />
       <Animated.FlatList
         ref={listRef}

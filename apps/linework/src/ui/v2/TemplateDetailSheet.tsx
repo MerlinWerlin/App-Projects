@@ -18,7 +18,6 @@ import { LevelBadge } from '../TemplateCard';
 import { GlassSheet } from './Glass';
 import { PillButton } from './PillButton';
 import { PillSegmented, type PillSegment } from './PillSegmented';
-import { Sparkle } from './Sparkle';
 import { squircle } from './shared';
 
 export type TemplateDetailSheetProps = {
@@ -127,9 +126,6 @@ export function TemplateDetailSheet({ template, favorite, onToggleFavorite, onSt
             color={c.graphite}
             strokeWidth={templateStroke(tpl, weight) * PREVIEW_STROKE_SCALE}
           />
-          <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: 'absolute', top: spaceV2.x3, start: spaceV2.x3 }}>
-            <Sparkle variant="cluster" size={22} color={c.bubblegum} />
-          </View>
         </View>
 
         {/* Name, level and favourite */}

@@ -2,7 +2,7 @@ import type { ComponentProps } from 'react';
 import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useTheme } from '../theme/useTheme';
-import { elevation, radius, space, touch } from '../theme/tokens';
+import { radius, space, touch } from '../theme/tokens';
 import { PressableScale } from './PressableScale';
 import { useTypography } from '../theme/typography';
 
@@ -56,7 +56,6 @@ export function Button({
           justifyContent: 'center',
           opacity: disabled ? 0.5 : 1,
         },
-        primary && !disabled ? elevation.card : null,
         style,
       ]}
     >

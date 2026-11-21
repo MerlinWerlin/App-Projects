@@ -1,4 +1,5 @@
-// Pill button (docs/DESIGN_V2.md §6): primary (ink fill), secondary (inkSoft), plain. At least 50 pt tall; long
+// Button (DESIGN.md §5): primary (red-pencil fill), secondary (card + hairline border, ink label), plain (label
+// only). Rounded rectangle, radius lg (12), at least 50 pt tall; long
 // translations wrap onto more lines and the pill grows: the label is never truncated (no numberOfLines).
 import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { Feather } from '@expo/vector-icons';
@@ -23,6 +24,8 @@ export type PillButtonProps = {
   haptic?: PressHaptic;
   /** Stretch to the container width (default true for primary). */
   block?: boolean;
+  /** Icon above the label (for side-by-side buttons, so short labels don't wrap beside the icon). */
+  stacked?: boolean;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -36,10 +39,11 @@ export function PillButton({
   accessibilityHint,
   haptic,
   block,
+  stacked = false,
   style,
 }: PillButtonProps) {
   const { c, text } = useThemeV2();
-  const fill = variant === 'primary' ? c.ink : variant === 'secondary' ? c.inkSoft : 'transparent';
+  const fill = variant === 'primary' ? c.ink : variant === 'secondary' ? c.card : 'transparent';
   const fg = variant === 'primary' ? c.onInk : c.ink;
   const stretch = block ?? variant === 'primary';
   return (
@@ -48,8 +52,6 @@ export function PillButton({
       disabled={disabled}
       haptic={haptic ?? (variant === 'primary' ? 'tap' : 'select')}
       scaleTo={pressScaleV2}
-      // T84: concentric tap ripple on the primary action only.
-      ripple={variant === 'primary' && !disabled ? c.onInk : undefined}
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel ?? title}
       accessibilityHint={accessibilityHint}
@@ -59,8 +61,10 @@ export function PillButton({
         {
           alignSelf: stretch ? 'stretch' : 'flex-start',
           minHeight: sizeV2.pill,
-          borderRadius: radiusV2.pill,
+          borderRadius: radiusV2.lg,
           backgroundColor: fill,
+          borderWidth: variant === 'secondary' ? 1 : 0,
+          borderColor: c.line,
           paddingHorizontal: spaceV2.x6,
           paddingVertical: spaceV2.x3,
           justifyContent: 'center',
@@ -69,8 +73,8 @@ export function PillButton({
         style,
       ]}
     >
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: spaceV2.x2 }}>
-        {icon ? <Feather name={icon} size={18} color={fg} /> : null}
+      <View style={{ flexDirection: stacked ? 'column' : 'row', alignItems: 'center', justifyContent: 'center', gap: stacked ? spaceV2.x1 : spaceV2.x2 }}>
+        {icon ? <Feather name={icon} size={stacked ? 20 : 18} color={fg} /> : null}
         <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('headline'), { color: fg, textAlign: 'center', flexShrink: 1 }]}>
           {title}
         </Text>

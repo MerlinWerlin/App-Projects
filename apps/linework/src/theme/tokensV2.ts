@@ -1,4 +1,4 @@
-// Design v2 tokens ("bubbly iOS", docs/DESIGN_V2.md §2–§4). Light + dark.
+// Design tokens, light + dark. Look: apps/linework/DESIGN.md ("Drawing table"); structure from docs/DESIGN_V2.md.
 // Pure data with no imports, so node tests (src/core/contrast.test.ts) can load it directly. The React hook is
 // `useThemeV2()` in src/theme/useTheme.ts, next to the v1 `useTheme()` (v1 tokens in tokens.ts are untouched).
 //
@@ -35,58 +35,53 @@ export type PaletteV2 = {
   scrim: string;
 };
 
+// "Drawing table" palette (DESIGN.md §2): warm paper, graphite, one red-pencil accent. The v2 accent and pastel
+// names stay so every screen keeps compiling, but they now resolve to paper neutrals / the one accent: the old
+// candy colours are retired.
 export const lightV2: PaletteV2 = {
-  paper: '#F7F3EE',
-  card: '#FFFFFF',
-  card2: '#FBF8F4',
-  line: '#E7E0D6',
-  graphite: '#1F1D1A',
-  muted: '#6F685E',
-  ink: '#3B5BDB',
-  inkSoft: '#E6EBFC',
-  ok: '#2C7A54',
-  warn: '#9C5B0B',
+  paper: '#F6F2EB',
+  card: '#FFFDF9',
+  card2: '#EFE9E0',
+  line: '#E2DACE',
+  graphite: '#1E1B18',
+  muted: '#6B645A',
+  ink: '#B23A1F',
+  inkSoft: '#F6E3DC',
+  ok: '#2C6E4F',
+  warn: '#8F540A',
   onInk: '#FFFFFF',
-  bubblegum: '#FF7AA2',
-  sunny: '#FFC94D',
-  mint: '#4CC9A0',
-  lilac: '#A78BFA',
-  sky: '#4DABF7',
-  pastels: ['#E6EBFC', '#FFE3EC', '#FFF2CC', '#DDF6EC', '#EEE8FF', '#E3F4FF'],
+  bubblegum: '#B23A1F',
+  sunny: '#6B645A',
+  mint: '#2C6E4F',
+  lilac: '#6B645A',
+  sky: '#6B645A',
+  pastels: ['#EFE9E0', '#EFE9E0', '#EFE9E0', '#EFE9E0', '#EFE9E0', '#EFE9E0'],
   highlight: 'transparent',
-  glassFallback: 'rgba(255,255,255,0.92)',
-  scrim: 'rgba(0,0,0,0.3)',
+  glassFallback: 'rgba(246,242,235,0.94)',
+  scrim: 'rgba(20,18,16,0.32)',
 };
 
 export const darkV2: PaletteV2 = {
-  paper: '#121110',
-  card: '#1E1C1A',
-  card2: '#262320',
-  line: '#35312C',
-  graphite: '#F1ECE4',
-  muted: '#B4ACA1',
-  ink: '#91A7FF',
-  inkSoft: '#1F2747',
+  paper: '#141210',
+  card: '#1D1A17',
+  card2: '#272320',
+  line: '#36312B',
+  graphite: '#F2EDE5',
+  muted: '#B1A99E',
+  ink: '#FF8E6B',
+  inkSoft: '#3A221B',
   ok: '#6CC796',
   warn: '#E5B35A',
-  onInk: '#121110',
-  bubblegum: '#FF8FB1',
-  sunny: '#FFD36E',
-  mint: '#6ED8B4',
-  lilac: '#B9A2FF',
-  sky: '#74C0FC',
-  // 18% alpha of the matching accent (inkSoft stays opaque, as in the spec)
-  pastels: [
-    '#1F2747',
-    'rgba(255,143,177,0.18)',
-    'rgba(255,211,110,0.18)',
-    'rgba(110,216,180,0.18)',
-    'rgba(185,162,255,0.18)',
-    'rgba(116,192,252,0.18)',
-  ],
-  highlight: 'rgba(255,255,255,0.06)',
-  glassFallback: 'rgba(30,28,26,0.92)',
-  scrim: 'rgba(0,0,0,0.3)',
+  onInk: '#141210',
+  bubblegum: '#FF8E6B',
+  sunny: '#B1A99E',
+  mint: '#6CC796',
+  lilac: '#B1A99E',
+  sky: '#B1A99E',
+  pastels: ['#272320', '#272320', '#272320', '#272320', '#272320', '#272320'],
+  highlight: 'transparent',
+  glassFallback: 'rgba(20,18,16,0.94)',
+  scrim: 'rgba(0,0,0,0.45)',
 };
 
 /** Pastel for category index `i` (wraps around). */
@@ -96,8 +91,8 @@ export function pastelAt(p: PaletteV2, i: number): string {
   return p.pastels[k];
 }
 
-/** Radii (§4). Use with `borderCurve: 'continuous'` (iOS; ignored elsewhere). */
-export const radiusV2 = { xs: 10, sm: 14, md: 20, lg: 28, xl: 36, pill: 999 } as const;
+/** Radii (DESIGN.md §4: small, drafting-tool corners). Use with `borderCurve: 'continuous'` (iOS; ignored elsewhere). */
+export const radiusV2 = { xs: 6, sm: 8, md: 10, lg: 12, xl: 14, pill: 999 } as const;
 
 /** 4-pt spacing grid, screen gutter (16; 20 on ≥ 400 pt wide) and section gap (§4). */
 export const spaceV2 = { x1: 4, x2: 8, x3: 12, x4: 16, x5: 20, x6: 24, x7: 28, x8: 32, section: 28 } as const;
@@ -131,7 +126,8 @@ export type ElevationLevel = 'none' | 'e1' | 'e2' | 'e3';
 
 export function elevationV2(level: ElevationLevel, isDark: boolean): Partial<ShadowStyle> & { borderTopWidth?: number; borderTopColor?: string } {
   if (level === 'none') return {};
-  if (isDark) return { borderTopWidth: 1, borderTopColor: darkV2.highlight };
+  // DESIGN.md §4: flat paper in dark mode: no shadow and no top highlight.
+  if (isDark) return {};
   return shadowV2[level];
 }
 
@@ -139,7 +135,7 @@ export function elevationV2(level: ElevationLevel, isDark: boolean): Partial<Sha
 export type TypeStyleV2 = { fontSize: number; lineHeight: number; fontWeight: '400' | '500' | '600' | '700' };
 export const typeV2 = {
   largeTitle: { fontSize: 34, lineHeight: 41, fontWeight: '700' },
-  title2: { fontSize: 22, lineHeight: 28, fontWeight: '700' },
+  title2: { fontSize: 22, lineHeight: 28, fontWeight: '600' },
   title3: { fontSize: 20, lineHeight: 25, fontWeight: '600' },
   headline: { fontSize: 17, lineHeight: 22, fontWeight: '600' },
   body: { fontSize: 17, lineHeight: 22, fontWeight: '400' },

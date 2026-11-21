@@ -145,7 +145,8 @@ export function InsetRow({
         />
       ) : null}
       {icon ? <IconBubble icon={icon} fill={iconFill} color={iconColor} /> : null}
-      <View style={{ flex: 1, flexShrink: 1 }}>
+      {/* minWidth: a long detail ("Phone language (English)") wraps instead of squeezing the title mid-word */}
+      <View style={{ flex: 1, flexShrink: 1, minWidth: '40%' }}>
         <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('body'), { color: c.graphite }]}>
           {title}
         </Text>
@@ -178,7 +179,7 @@ export function InsetRow({
             onValueChange?.(v);
           }}
           disabled={disabled}
-          trackColor={{ true: c.mint, false: c.line }}
+          trackColor={{ true: c.ink, false: c.line }}
           // the row is the accessible switch; hide the inner control so it is not announced twice
           accessibilityElementsHidden
           importantForAccessibility="no-hide-descendants"

@@ -1,11 +1,11 @@
-// Category bubble (docs/DESIGN_V2.md §6): a 76 pt round pastel bubble with an original line-art glyph and the label
-// under it. Selected = ink ring + a selection pop (motion tokens; none under Reduce Motion) + selection haptic
+// Category tile (DESIGN.md §5): a 76 pt square paper tile (hairline border, radius md) with an original line-art
+// glyph and the label under it. Selected = 2 pt red-pencil border + bold ink label + a selection pop (motion tokens; none under Reduce Motion) + selection haptic
 // (through src/native/haptics via PressableScale, so the Haptics setting is respected).
 import { useEffect, useRef, type ReactNode } from 'react';
 import { Animated, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { PressableScale } from '../PressableScale';
 import { useThemeV2 } from '../../theme/useTheme';
-import { maxFontScaleV2, pastelAt, sizeV2, spaceV2 } from '../../theme/tokensV2';
+import { maxFontScaleV2, radiusV2, sizeV2, spaceV2 } from '../../theme/tokensV2';
 import { popTo, pressScaleV2, useReduceMotion } from '../../theme/motion';
 
 export type CategoryBubbleProps = {
@@ -14,7 +14,7 @@ export type CategoryBubbleProps = {
   glyph: ReactNode;
   selected?: boolean;
   onPress: () => void;
-  /** Picks the pastel fill (wraps around the six pastels). */
+  /** Kept for compatibility (pastel fills are retired). */
   index?: number;
   /** Explicit fill instead of the indexed pastel. */
   fill?: string;
@@ -27,14 +27,13 @@ export type CategoryBubbleProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-const RING = 3;
+const RING = 2;
 
 export function CategoryBubble({
   label,
   glyph,
   selected = false,
   onPress,
-  index = 0,
   fill,
   size = sizeV2.categoryBubble,
   accessibilityLabel,
@@ -57,7 +56,7 @@ export function CategoryBubble({
     return () => a.stop();
   }, [selected, reduce, pop]);
 
-  const outer = size + RING * 4;
+  const outer = size;
   return (
     <PressableScale
       onPress={onPress}
@@ -73,11 +72,14 @@ export function CategoryBubble({
         style={{
           width: outer,
           height: outer,
-          borderRadius: outer / 2,
-          borderWidth: RING,
-          borderColor: selected ? c.ink : 'transparent',
+          borderRadius: radiusV2.md,
+          borderCurve: 'continuous',
+          borderWidth: selected ? RING : 1,
+          borderColor: selected ? c.ink : c.line,
+          backgroundColor: fill ?? c.card,
           alignItems: 'center',
           justifyContent: 'center',
+          overflow: 'hidden',
           transform: [{ scale: pop }],
         }}
       >
@@ -85,10 +87,8 @@ export function CategoryBubble({
           accessibilityElementsHidden
           importantForAccessibility="no-hide-descendants"
           style={{
-            width: size,
-            height: size,
-            borderRadius: size / 2,
-            backgroundColor: fill ?? pastelAt(c, index),
+            width: size - RING * 2,
+            height: size - RING * 2,
             alignItems: 'center',
             justifyContent: 'center',
             overflow: 'hidden',
