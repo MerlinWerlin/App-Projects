@@ -8,13 +8,22 @@ node store/render.mjs --locale de        # headlines from src/i18n/catalog/de.ts
 node store/render.mjs --size 1320x2868   # one size only
 ```
 
-## App Store set (`--ios`)
+## App Store set (store/jpg/ios)
 
-```sh
-node store/render.mjs --ios              # -> store/jpg/ios/ (committed; store/listing.json points at it)
-```
+`store/listing.json` points at `store/jpg/ios/`: six 1320x2868 JPEGs (APP_IPHONE_67, no alpha). Since 1.0.6 they are real screenshots of the app, not prototype renders, so the store shows exactly what the TestFlight build looks like (App Review 2.3.3):
 
-Six 1320x2868 JPEGs (APP_IPHONE_67, no alpha) for App Store Connect: the same headlines and order minus the themes fan, using only the four free themes (Couch Plus is not on sale yet), an iPhone-style frame with a Dynamic Island, and no infrared rows (iPhones have no IR blaster).
+| File | Capture |
+|---|---|
+| 01-remote.jpg | remote-dark |
+| 02-remote-keys.jpg | remote-lower-dark |
+| 03-apps.jpg | apps-light (abstract demo tiles, no service names or logos) |
+| 04-cast.jpg | cast-dark |
+| 05-tvs.jpg | tvs-light |
+| 06-themes.jpg | themes-light |
+
+To refresh them, run the `Couch design capture` workflow with device `Pro Max`, download the `couch-captures-png` artifact and convert those PNGs to JPEG (flatten onto black, quality 90). Don't use the plus capture: the simulator shows a US price.
+
+`node store/render.mjs --ios` still renders the older prototype set; don't commit its output over the real captures.
 
 It needs Playwright and sharp to be installed already (globally is fine) and uses the preinstalled Chromium (`PLAYWRIGHT_BROWSERS_PATH`). It never downloads a browser or installs packages. Web fonts are blocked during rendering, so it falls back to local fonts (Inter where installed).
 
