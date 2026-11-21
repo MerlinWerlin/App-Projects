@@ -14,8 +14,14 @@ appId: com.jared797.linework
 - waitForAnimationToEnd:
     timeout: 2000
 - takeScreenshot: 02-home-scrolled
+- waitForAnimationToEnd:
+    timeout: 3000
 - tapOn:
-    point: '30%,95%'
+    point: '30%,93%'
+- waitForAnimationToEnd:
+    timeout: 2000
+- tapOn:
+    point: '30%,93%'
 - waitForAnimationToEnd:
     timeout: 4000
 - takeScreenshot: 03-templates
@@ -37,6 +43,10 @@ appId: com.jared797.linework
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 06-settings
+- scroll
+- waitForAnimationToEnd:
+    timeout: 2000
+- takeScreenshot: 06b-settings-scrolled
 - scroll
 - tapOn:
     text: '.*Linework Plus.*'
