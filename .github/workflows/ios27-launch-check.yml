@@ -1,0 +1,73 @@
+name: iOS 27 launch check
+# Builds an app with the newest Xcode 27 (iOS 27 SDK) for the simulator, launches it on an iOS 27 iPhone simulator and
+# fails if it is not still running 30 s later. iOS 27 asserts at launch when an app linked against the iOS 27 SDK has
+# not adopted the UIScene life cycle (Linework 1.0.4 build 21 crash, 21 Nov 2026). Run this before adding
+# apps/<app>/SCENE_LIFECYCLE_OK, which lets ship-mac build that app on Xcode 27.
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: 'App folder (backspin, couch, cue, glaze, linework, satchel)'
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: ios27-launch-check-${{ inputs.app }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  launch:
+    runs-on: xcode-27
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: apps/${{ inputs.app }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Select Xcode 27
+        run: |
+          X=$(ls -d /Applications/Xcode_27*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version
+          echo "iOS SDK $(xcrun --sdk iphoneos --show-sdk-version)"
+      - run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+      - name: Prebuild
+        run: |
+          node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync("app.json"));if(p.expo&&p.expo.updates)p.expo.updates.enabled=false;fs.writeFileSync("app.json",JSON.stringify(p,null,2));'
+          npx expo prebuild --platform ios --no-install
+          echo "----- AppDelegate.swift -----"; find ios -maxdepth 2 -name AppDelegate.swift -exec cat {} \;
+          echo "----- Scene keys in Info.plist -----"; for f in $(find ios -maxdepth 2 -name Info.plist); do echo "$f"; /usr/libexec/PlistBuddy -c 'Print :UIApplicationSceneManifest' "$f" 2>&1 || true; done
+          cd ios
+          pod install > "$RUNNER_TEMP/pods.log" 2>&1 || { tail -100 "$RUNNER_TEMP/pods.log"; exit 1; }
+      - name: Build the simulator app
+        run: |
+          WS=$(ls -d ios/*.xcworkspace | head -1); SCHEME=$(basename "$WS" .xcworkspace)
+          xcodebuild -workspace "$WS" -scheme "$SCHEME" -configuration Release \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/derived" \
+            CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/build.log" 2>&1 \
+            || { tail -180 "$RUNNER_TEMP/build.log"; exit 1; }
+      - name: Launch on an iOS 27 simulator
+        run: |
+          APP=$(ls -d "$RUNNER_TEMP"/derived/Build/Products/Release-iphonesimulator/*.app | head -1)
+          BID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
+          DEVICE=$(xcrun simctl list devices available --json | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];a=[x for r,xs in sorted(d.items(),reverse=True) if "iOS-27" in r for x in xs if x["name"].startswith("iPhone")];print(a[0]["udid"])')
+          xcrun simctl list devices available | grep "$DEVICE"
+          xcrun simctl boot "$DEVICE"; xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl install "$DEVICE" "$APP"
+          mkdir -p "$RUNNER_TEMP/out"
+          xcrun simctl spawn "$DEVICE" log stream --level error --predicate 'process == "'"$(basename "$APP" .app)"'"' > "$RUNNER_TEMP/out/app-errors.log" 2>&1 &
+          OUT=$(xcrun simctl launch "$DEVICE" "$BID"); echo "$OUT"; PID=${OUT##* }
+          sleep 30
+          xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/out/after-30s.png" || true
+          find ~/Library/Logs/DiagnosticReports -newer "$APP" -name '*.ips' -exec cp {} "$RUNNER_TEMP/out/" \; 2>/dev/null || true
+          if kill -0 "$PID" 2>/dev/null; then echo "PASS: $BID is still running 30 s after launch on iOS 27"; else
+            echo "::error::$BID is not running 30 s after launch on iOS 27 (crashed)"; ls "$RUNNER_TEMP/out"; head -c 6000 "$RUNNER_TEMP"/out/*.ips 2>/dev/null; exit 1; fi
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios27-launch-${{ inputs.app }}
+          path: ${{ runner.temp }}/out
+          if-no-files-found: ignore
