@@ -148,6 +148,27 @@ export const typeV2 = {
 export type TypeRoleV2 = keyof typeof typeV2;
 
 /**
+ * Dreamroom display type (DESIGN.md §3): Unbounded, a soft, wide display face that suits the
+ * surreal pastel art, for screen titles, section titles, theme names and the stage. Sizes run a
+ * step smaller than the system roles they replace because Unbounded is wide; tracking is tight.
+ * Latin scripts only: other scripts keep the system role (src/ui/displayType.ts).
+ */
+export const displayFamilyV2 = { bold: 'Unbounded_700Bold', medium: 'Unbounded_500Medium' } as const;
+
+export const displayV2 = {
+  /** Screen titles (the collapsing large title). */
+  masthead: { fontSize: 31, lineHeight: 38, letterSpacing: -0.8 },
+  /** A theme's name on its own page. */
+  title: { fontSize: 28, lineHeight: 34, letterSpacing: -0.6 },
+  /** Theme names on the Themes stage. */
+  stage: { fontSize: 22, lineHeight: 28, letterSpacing: -0.4 },
+  /** Section titles on browse screens. */
+  section: { fontSize: 19, lineHeight: 25, letterSpacing: -0.3 },
+} as const;
+
+export type DisplayRoleV2 = keyof typeof displayV2;
+
+/**
  * T173 Dynamic Type: the largest text-size multiplier each role honours (RN `maxFontSizeMultiplier`).
  * Reading text (body ... caption) grows the most; titles grow less because they are already large
  * and sit in fixed-height chrome (the large-title block, card name rows). Never below 1.2, so

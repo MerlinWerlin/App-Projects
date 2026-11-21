@@ -31,6 +31,7 @@ import { durations, useMotionReduced } from '../theme/motion';
 import { fontScaleCap, largeTitleRanges, largeTitleSnapAt, sizeV2, spaceV2, textV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import { GlassBar } from './GlassBar';
+import { displayStyle } from './displayType';
 import { textStyleFor } from './i18nLayout';
 
 const BLOCK = sizeV2.largeTitleBlock;
@@ -174,7 +175,7 @@ export function LargeTitle({ title, subtitle, scrollY }: TitleProps) {
           adjustsFontSizeToFit
           minimumFontScale={0.7}
           maxFontSizeMultiplier={fontScaleCap('largeTitle')}
-          style={[textV2.largeTitle, textStyleFor(script, textV2.largeTitle), { color: c.ink }]}
+          style={[textV2.largeTitle, textStyleFor(script, textV2.largeTitle), displayStyle(script, 'masthead'), { color: c.ink }]}
         >
           {title}
         </Text>

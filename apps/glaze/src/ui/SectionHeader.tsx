@@ -7,6 +7,7 @@ import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-na
 import { useT } from '../i18n';
 import { editorialV2, fontScaleCap, spaceV2, tabularV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
+import { displayStyle } from './displayType';
 import { textStyleFor } from './i18nLayout';
 
 type Props = {
@@ -27,13 +28,16 @@ export const SectionHeader = memo(function SectionHeader({ meta, title, body, le
   const titleRole: TypeRoleV2 = level === 'section' ? 'title2' : 'title3';
   const bodyRole: TypeRoleV2 = level === 'section' ? 'subhead' : 'footnote';
   const label = meta ? `${title}, ${meta}` : title;
+  // Dreamroom: browse-section titles are set in the display face; group titles stay system.
+  const display = level === 'section' ? displayStyle(script, 'section') : null;
+  const metaFace = level === 'section' ? displayStyle(script, 'section', 'medium') : null;
   return (
     <View style={[styles.wrap, flushTop ? styles.flushTop : level === 'group' ? styles.groupTop : styles.sectionTop, style]}>
       <View accessible accessibilityRole="header" accessibilityLabel={label} style={styles.heading}>
-        <Text maxFontSizeMultiplier={fontScaleCap(titleRole)} style={[textV2[titleRole], textStyleFor(script, textV2[titleRole]), styles.title, { color: c.ink }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap(titleRole)} style={[textV2[titleRole], textStyleFor(script, textV2[titleRole]), display, styles.title, { color: c.ink }]}>
           {title}
           {meta ? (
-            <Text maxFontSizeMultiplier={fontScaleCap(titleRole)} style={[tabularV2, styles.meta, { color: c.inkTertiary }]}>
+            <Text maxFontSizeMultiplier={fontScaleCap(titleRole)} style={[tabularV2, styles.meta, metaFace, { color: c.inkTertiary }]}>
               {`  ${meta}`}
             </Text>
           ) : null}

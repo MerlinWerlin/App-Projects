@@ -117,6 +117,7 @@ import { PACKS_ENABLED } from '../../src/native/packs';
 import { downloadedRemoteWallpaper, useCatalogSettled } from '../../src/native/useAnyTheme';
 import { remoteHeroArt, remotePrimary, themePageState, type RemotePrimary } from '../../src/core/remoteThemePage';
 import { RemoteArtImage } from '../../src/ui/RemoteArtImage';
+import { displayStyle } from '../../src/ui/displayType';
 import { FIRST_RUN_TIP_IDS, type TipId as AnyTipId } from '../../src/core/tips';
 import { tipsForInstallMode } from '../../src/core/installMethods';
 import { PROFILE_INSTALL_ENABLED } from '../../src/config/install';
@@ -302,6 +303,30 @@ function ThemeDetail({
   const frameH = Math.max(screenH, Math.round(screenW * HOME_ASPECT));
   const screenRadius = Math.round(screenW * 0.12);
   const bezelColour = scheme === 'dark' ? c.surfaceRaised : c.ink;
+
+  // Dreamroom (DESIGN.md §5 "Exhibit band"): the head and the preview sit in the theme's own room
+  // colour (its palette bg, with its ink for the name), so opening a theme feels like stepping into
+  // it. Both pairs must keep WCAG AA; otherwise the page keeps the app's own wall and ink.
+  const room = useMemo(() => {
+    try {
+      // Dark mode: a deep tint of the theme's accent instead of its (often pale) room colour, so
+      // the band never glares at night; the app's own ink stays on it.
+      if (scheme === 'dark') {
+        const deep = mix(c.bg, theme.palette.accent, 0.2);
+        if (contrastRatio(c.ink, deep) < 4.5 || contrastRatio(c.inkSecondary, deep) < 4.5) return null;
+        return { bg: deep, ink: c.ink, soft: c.inkSecondary };
+      }
+      const bg = theme.palette.bg;
+      const ink = theme.palette.ink;
+      if (contrastRatio(ink, bg) < 4.5) return null;
+      const soft = mix(bg, ink, 0.78);
+      return { bg, ink, soft: contrastRatio(soft, bg) >= 4.5 ? soft : ink };
+    } catch {
+      return null;
+    }
+  }, [scheme, c.bg, c.ink, c.inkSecondary, theme.palette.accent, theme.palette.bg, theme.palette.ink]);
+  const headInk = room?.ink ?? c.ink;
+  const headSoft = room?.soft ?? c.inkSecondary;
 
   // G6: Home / Lock mocks share one frame and cross-fade (both stay mounted). The Wallpaper screen
   // opens on the Lock Screen.
@@ -748,12 +773,12 @@ function ThemeDetail({
       <ScrollView bounces={false} overScrollMode="never"
         contentContainerStyle={[styles.content, { paddingBottom: (showBar || showDownloadBar ? barH : insets.bottom) + spaceV2.xxl }]}
       >
-        <View style={styles.headWrap}>
+        <View style={[styles.headWrap, room ? { backgroundColor: room.bg } : null]}>
           <View style={styles.head}>
-            <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title1')} style={[...ts('title1'), { color: c.ink }]}>
+            <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title1')} style={[...ts('title1'), displayStyle(script, 'title'), { color: headInk }]}>
               {theme.name}
             </Text>
-            <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
+            <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: headSoft }]}>
               {overview
                 ? theme.tagline
                 : step === 'wallpaper'
@@ -784,7 +809,7 @@ function ThemeDetail({
 
         {/* L2 + T173 hero: one large phone-shaped preview, centred on a soft surface (layered
             shadow, no border), with a quiet Home / Lock pill under it. */}
-        <SquircleCard size="large" elevation="card" padding={spaceV2.xl} style={styles.side}>
+        <SquircleCard size="large" elevation="card" padding={spaceV2.xl} fill={room?.bg} style={styles.side}>
           <View style={styles.previewCol}>
             <View
               style={[
@@ -1559,7 +1584,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: spaceV2.inset,
     paddingTop: spaceV2.lg,
     paddingBottom: spaceV2.xl,
-    marginBottom: -spaceV2.md,
   },
   head: { gap: spaceV2.xs },
   stack: { gap: spaceV2.md },

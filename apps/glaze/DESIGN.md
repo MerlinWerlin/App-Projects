@@ -1,30 +1,31 @@
 # Glaze — DESIGN.md
 
-Direction: **White Cube.** Glaze's chrome is the gallery wall, not a second artwork. The painterly
-pastel themes hang on it as prints; everything else (titles, buttons, lists) behaves like the
-wall label beside them: neutral, exact, small, and always secondary to the picture.
+Direction: **Dreamroom.** Glaze is a surreal exhibition you walk through. The painterly pastel
+themes are the exhibits: they open the app at full size on a stage, and each theme's page takes on
+that theme's own room colour. Around them the building is quiet (a neutral wall, one cobalt accent),
+and the type is a soft, wide display face, Unbounded, that sounds like the art looks.
 
-Mode: **Operate** (an iPhone tool for theming the Home Screen) with **Experience** moments where a
-theme's art fills the screen. Platform: iOS first (Expo / React Native), Android second.
+Mode: **Experience** where art is shown (the Themes stage, a theme's page), **Operate** everywhere
+else (installing, widgets, settings). Platform: iOS first (Expo / React Native), Android second.
 
-Supersedes the "bubbly" v2 look in `docs/DESIGN_V2.md` (lilac neutrals, berry tint, six pastel
-accents, glaze gradient, eyebrows, soft plum shadows). The token *names* in
-`src/core/designV2.ts` stay, so every screen moved with them; the values and the rules below are new.
+Supersedes the "bubbly" v2 look in `docs/DESIGN_V2.md` and the first White Cube pass. Token *names*
+in `src/core/designV2.ts` stay, so every screen moved with them.
 
 ## 1. Principles
 
-1. **The art is the only colour.** Theme art is painterly and pastel. Chrome is neutral grey,
-   white and near-black, plus one cobalt accent for what you can tap. No pastel fills in chrome.
-2. **Prints, not cards.** Artwork sits directly on the wall with a small corner and a hairline
-   edge. Its name and mood sit under it as a label, on the wall, never inside a white box.
-3. **Label, then title — never label over title.** Headings stand alone. Counts and metadata sit
-   after or under a title in secondary text, the way a museum label lists medium and year.
-4. **Native first.** Large titles, inset-grouped lists, capsule buttons, sheets, system font,
-   SF-style glyphs, Dynamic Type, swipe back. Nothing replaces a standard iOS control.
-5. **Flat by default.** Depth comes from colour steps (wall → surface → raised), not shadows.
-   Shadows exist only for things that genuinely float (toasts, popovers, sheets).
-6. **Motion confirms, never performs.** Short timed ease-outs, no springs, no bounce, no stagger
-   cascades on revisits; Reduce Motion swaps movement for a fade.
+1. **Exhibits, not thumbnails.** The first thing on the Themes tab is a stage of large prints you
+   swipe through; art is never shrunk to fit chrome around it.
+2. **Step into the room.** Opening a theme fills its head and preview with the theme's own colour,
+   and its name is set large in that theme's ink.
+3. **The art is the only bright colour.** Chrome is neutral wall, white and near-black, plus one
+   cobalt for what you can tap. No pastel or gradient chrome competes with the paintings.
+4. **A voice in the type.** Titles, section names and theme names are set in Unbounded, tight and
+   large. Reading text stays in the system font, which also covers every non-Latin script.
+5. **Motion that breathes.** Prints on the stage grow to full size and strength as they reach the
+   centre and settle back as they leave, following the finger. Everything else is short and timed;
+   Reduce Motion turns movement into stillness or a fade.
+6. **The plumbing stays native.** Back swipes, sheets, tab bar, switches, Dynamic Type: the
+   exhibition is new, the doors and stairs are the ones people know.
 
 ## 2. Colour
 
@@ -52,23 +53,19 @@ Every pair is still checked for WCAG AA by `paletteChecks()` / `materialChecks()
 
 ## 3. Type
 
-System font (SF Pro / Roboto) only; it covers every script Glaze ships in. Hierarchy from size and
-weight together, tracking per Apple's tables (negative at body size, slightly open at titles).
+Two faces. **Unbounded** (bundled, Latin only) for display; the **system font** (SF Pro / Roboto)
+for everything people read. `displayStyle(script, role)` (`src/ui/displayType.ts`) goes last in a
+style array: in other scripts it returns nothing and the system role stays.
 
-| Role | Size / line | Weight | Use |
+| Display role | Size / line | Tracking | Use |
 |---|---|---|---|
-| `largeTitle` | 34 / 41 | 700 | Screen title (collapses into the bar) |
-| `title1` | 28 / 34 | 700 | Theme name on its detail page |
-| `title2` | 22 / 28 | 600 | Section title on browse screens |
-| `title3` | 20 / 25 | 600 | Group title, sheet title |
-| `headline` | 17 / 22 | 600 | Art label name, emphasised rows |
-| `body` | 17 / 22 | 400 | Rows, paragraphs |
-| `subhead` | 15 / 20 | 400 | Chips, small buttons, mood lines |
-| `footnote` | 13 / 18 | 400 | Group headers/footers, art mood line |
-| `caption1/2` | 12 / 16, 11 / 13 | 400 / 500 | Badges, icon labels |
+| `masthead` | 31 / 38 | -0.8 | Screen titles (the collapsing large title) |
+| `title` | 28 / 34 | -0.6 | A theme's name on its page |
+| `stage` | 22 / 28 | -0.4 | Theme names on the stage |
+| `section` | 19 / 25 | -0.3 | Browse section titles (count after it in Unbounded Medium) |
 
-No eyebrows: the `eyebrow` role is retired from chrome. Section counts are set in `inkTertiary`
-tabular figures after the title ("Space & Night  24").
+System roles (`typeV2`) for the rest: headline 17/600 art labels and rows, body 17, subhead 15,
+footnote 13, caption 12/11. No eyebrows: counts follow titles ("Free  10").
 
 ## 4. Space and shape
 
@@ -88,26 +85,29 @@ so pale art never dissolves into the wall.
 
 ## 5. Components
 
+- **Stage** (`ThemeStage`): opens the Themes overview. Prints 74% of the screen wide, 1.3× as tall,
+  radius `cardLarge`, hairline edge, snapping to the centre. The centre print is full size and
+  strength; neighbours sit at 0.9 scale and 55% opacity, driven by the scroll on the UI thread.
+  Art is the bundled starters' full-size wallpaper (crisp, offline), never an upscaled thumbnail.
+  Name in display `stage`, mood in subhead under it. Plus / Free badge on the art.
+- **Exhibit band** (theme page): the head (name in display `title`, mood) and the live preview
+  panel take the theme's palette `bg` with its `ink`; both must pass WCAG AA or the page keeps the
+  wall. Dark mode uses a deep tint of the theme's accent with the app's ink, never a pale glare.
 - **Art print** (`GalleryArtCard`, `ThemeThumbCard`): art at phone aspect, radius `card`, hairline
-  edge, no surface, no shadow. Below it on the wall: name (`headline`/`footnote` 600, `ink`) and
-  mood (`footnote`, `inkSecondary`). Badges (Plus, Free) are small solid capsules on the art's
-  corner. Heart stays a ≥ 48 pt target beside the label.
-- **Section header**: title (`title2`) + optional count in `inkTertiary` on the same baseline,
-  optional one-line body under it. "See all" is a plain cobalt text button on the title line.
+  edge, no surface, no shadow; name and mood under it on the wall like a gallery label.
+- **Section header**: display `section` title + count; optional body line; "See all" is plain cobalt.
 - **Chips / pill tabs**: capsule, 48 pt; unselected `fill` + `ink`; selected `ink` + `bg`.
-- **Buttons** (`PillButton`): filled cobalt (one per screen), tinted, plain, glass (over art),
-  destructive. Capsules, 52 / 48 pt.
-- **Inset groups**: `surface` on the wall, radius `group`, hairline separators. Row glyphs are
-  bare 20 pt line icons in `inkSecondary` — no tinted circle behind them.
-- **Panels** (`SquircleCard`): flat `surface`, radius `card`, no shadow; dark mode adds a hairline.
+- **Buttons** (`PillButton`): filled cobalt (one per screen), tinted, plain, glass, destructive.
+  The corner "Watch how" stays filled (owner request, 1.0.34).
+- **Inset groups**: `surface` on the wall, radius `group`, hairlines; bare 20 pt line glyphs.
+- **Panels** (`SquircleCard`): flat, radius `card`, no shadow; `fill` for an exact colour.
 - **Empty states**: one bare glyph in `inkTertiary`, a headline, a line, one plain action.
-- **Bars and sheets**: clear at rest, `bar` material once content scrolls under; sheets use the
-  system-like 28 pt corner and a neutral scrim (black 32% light / 60% dark).
 
 ## 6. Motion
 
 Tokens in `src/core/motion.ts` / `src/theme/motion.ts`: 120 / 200 / 320 ms, one strong ease-out,
-press scale 0.97 (cards) / 0.96 (pills), no springs. Lists may fade items in on first mount only
+press scale 0.97 (cards) / 0.96 (pills), no springs. The stage's breathing is scroll-driven
+(interpolated from the scroll offset), so it is exactly as fast as the finger and can be caught. Lists may fade items in on first mount only
 (30 ms stagger, max 8). `useMotionReduced()` (Glaze setting or system) turns every movement into a
 short fade. Haptics: selection on chips and rows, light on primary actions, success on finish.
 
@@ -116,7 +116,9 @@ short fade. Haptics: selection on chips and rows, light on primary actions, succ
 - Let a theme's art be the largest, most colourful thing on every screen it appears on.
 - Put names and moods *under* art, on the wall, in two lines of text.
 - Use cobalt only for things that act; use ink for selected state.
-- Keep standard iOS navigation: large titles, back chevron, sheets with Cancel/Done.
+- Lead with art at full size: the stage on Themes, the room colour on a theme's page.
+- Set titles and theme names in Unbounded; keep reading text in the system font.
+- Keep the native plumbing: back chevron and swipe, sheets with Cancel/Done, tab bar.
 - Check light, dark and the largest text size for every screen you touch.
 
 ## 8. Don't (the AI tells)
@@ -130,3 +132,4 @@ short fade. Haptics: selection on chips and rows, light on primary actions, succ
   text; a panel exists only when it groups controls.
 - No pastel or violet chrome, no emoji as icons, no decorative illustrations competing with art.
 - No bounce, spring overshoot, or animation on things tapped dozens of times a day.
+- No upscaled thumbnails at stage size; no display face on body copy or in non-Latin scripts.

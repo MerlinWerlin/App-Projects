@@ -7,7 +7,7 @@ from the cloud. No store submission is made from the cloud.
 
 ## 0. Version decision (T266)
 
-**21 November 2026 design update: `1.0.43`.** The White Cube design overhaul of the app chrome (`DESIGN.md`): neutral colours with one cobalt accent, art shown as plain prints, no eyebrow labels, gradients or tinted icon circles. No purchase, pack or store-metadata changes. `RELEASE.json` mode build.
+**21 November 2026 design update: `1.0.43`.** The Dreamroom redesign (`DESIGN.md`): a stage of large theme art opens Themes, theme pages take their own room colour, Unbounded display type, neutral chrome with one cobalt accent. No purchase, pack or store-metadata changes. `RELEASE.json` mode build.
 
 **15 November 2026 first App Store review: `1.0.42`.** No over-the-air updates (expo-updates, `updates` and `runtimeVersion` removed, Guideline 5.6); the paywall shows StoreKit's price only and keeps Subscribe disabled until the product loads ("Couldn't load the price · Try again"); app and widget privacy manifests; no camera / microphone strings; Startup and Widget diagnostics rows only in development; the theme's own hero widget art is named after the theme (no "Art n"); review notes in `store/SUBSCRIPTION.md`. `RELEASE.json` is bumped separately, after the owner's purchase test in build 90.
 

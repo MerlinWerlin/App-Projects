@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.43: White Cube design overhaul of the app chrome (DESIGN.md): neutral wall colours with one cobalt accent so the theme art is the only colour, art shown as plain prints, no eyebrow labels, gradients or tinted icon circles.",
+  "note": "Glaze 1.0.43: Dreamroom redesign (DESIGN.md): a stage of large theme art opens Themes, each theme page takes its own room colour, Unbounded display type, neutral chrome with one cobalt accent, no gradients, eyebrows or tinted icon circles.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

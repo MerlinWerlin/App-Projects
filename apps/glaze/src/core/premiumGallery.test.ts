@@ -171,7 +171,7 @@ test('the Themes tab is built from themeBrowse over useRemoteArtThemes + starter
   assert.match(SCREEN, /const remote = useRemoteArtThemes\(\);/);
   // T264: malformed catalogue entries are filtered first (`drawable`).
   assert.match(SCREEN, /browseThemes<GalleryTheme, GalleryTheme>\(\(remote \?\? \[\]\)\.filter\(drawable\), STARTERS\)/);
-  assert.match(SCREEN, /browseHomeRows<GalleryTheme>\(\{ themes, columns, waiting, \.\.\.\(subscribed \? \{\} : \{ free: freeThemesIn\(themes\), featured: FEATURED_FREE_IDS \}\) \}\)/);
+  assert.match(SCREEN, /browseHomeRows<GalleryTheme>\(\{ themes, columns, waiting, stage, \.\.\.\(subscribed \? \{\} : \{ free: freeThemesIn\(themes\), featured: FEATURED_FREE_IDS \}\) \}\)/);
   assert.match(SCREEN, /browseGridThemes<GalleryTheme>\(\{ themes, view, query, filter, liked \}\)/);
   assert.match(SCREEN, /const STARTERS: readonly GalleryTheme\[\] = galleryStarters\(\);/);
   assert.match(SCREEN, /data=\{rows\}/);

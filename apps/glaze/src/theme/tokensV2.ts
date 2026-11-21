@@ -32,6 +32,8 @@ export {
   chromeRadiusV2,
   circleRadius,
   darkV2,
+  displayFamilyV2,
+  displayV2,
   editorialV2,
   elevationV2,
   eyebrowCaseFor,
@@ -51,7 +53,7 @@ export {
   spaceV2,
   typeV2,
 } from '../core/designV2';
-export type { ElevationLevel, MaterialName, PaletteV2, Pastel, PastelName, TypeRoleV2 } from '../core/designV2';
+export type { DisplayRoleV2, ElevationLevel, MaterialName, PaletteV2, Pastel, PastelName, TypeRoleV2 } from '../core/designV2';
 
 export type Scheme = 'light' | 'dark';
 

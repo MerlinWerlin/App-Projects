@@ -73,6 +73,25 @@ export function starterThumb(starters: readonly StarterPackData[], id: string, p
 }
 
 /**
+ * Dreamroom stage (DESIGN.md §5): a starter's bundled full-size wallpaper module (the widest one
+ * bundled) for a catalogue theme at the bundled version, else null. The stage shows art far larger
+ * than the 240 px thumbnails, so it only uses art the app carries at full size.
+ */
+export function starterWallpaper(starters: readonly StarterPackData[], id: string, packVersion: number | null | undefined): number | null {
+  const s = starterFor(starters, id, packVersion);
+  if (!s) return null;
+  let best: { width: number; mod: number } | null = null;
+  for (const a of s.manifest.assets) {
+    if (a.role !== 'wallpaper') continue;
+    const mod = s.files[a.path];
+    if (typeof mod !== 'number') continue;
+    const width = typeof a.width === 'number' ? a.width : 0;
+    if (!best || width > best.width) best = { width, mod };
+  }
+  return best ? best.mod : null;
+}
+
+/**
  * The downloader transport for installing a starter: GETs under STARTER_BASE are answered from the app
  * bundle (`readModule` reads a bundled file's bytes; the manifest is the bundled copy), everything else
  * (writes, reads, moves of the pack store) goes to the phone's own transport. Any other URL rejects,
