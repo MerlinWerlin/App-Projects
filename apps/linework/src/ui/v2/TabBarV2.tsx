@@ -110,6 +110,12 @@ function TabItem({ spec, label, focused, onPress, onLongPress }: TabItemProps) {
       accessibilityLabel={label}
       style={{ flex: 1, minHeight: sizeV2.touch + spaceV2.x2, alignItems: 'center', justifyContent: 'center', paddingVertical: spaceV2.x1 }}
     >
+      {/* DESIGN.md: the active tab gets a short red-pencil stroke above its icon */}
+      <View
+        accessibilityElementsHidden
+        importantForAccessibility="no-hide-descendants"
+        style={{ width: 18, height: 3, borderRadius: 1.5, marginBottom: 3, backgroundColor: focused ? c.ink : 'transparent' }}
+      />
       <View style={{ height: ICON_BOX, alignItems: 'center', justifyContent: 'center' }}>
         <Feather name={spec.icon} size={23} color={color} />
       </View>

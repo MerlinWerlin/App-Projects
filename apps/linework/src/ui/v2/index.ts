@@ -9,6 +9,8 @@ export { IconBubble, type IconBubbleProps } from './IconBubble';
 export { GlassBar, GlassSheet, type GlassBarProps, type GlassSheetProps } from './Glass';
 export { Sparkle, sparklePath, type SparkleProps } from './Sparkle';
 export { StatPill, type StatPillProps } from './StatPill';
+export { DraftingGrid } from './DraftingGrid';
+export { CropMarks } from './CropMarks';
 export { StepIndicator, type StepIndicatorProps } from './StepIndicator';
 // T86: designed empty states
 export { EmptyStateV2, EmptyArtSvg, type EmptyStateV2Props, type EmptyArt } from './EmptyStateV2';

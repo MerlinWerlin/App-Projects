@@ -10,6 +10,7 @@ import { useThemeV2 } from '../../theme/useTheme';
 import { gutterFor, spaceV2 } from '../../theme/tokensV2';
 import { sceneBottomPad } from '../../core/tabs';
 import { BAR_HEIGHT, LargeTitle, LargeTitleHeader, useLargeTitleScroll } from './LargeTitleHeader';
+import { DraftingGrid } from './DraftingGrid';
 
 export type ScreenV2Props = {
   /** Large title; omit for a screen without a header. */
@@ -56,6 +57,8 @@ export function ScreenV2({
   ];
   return (
     <View style={[{ flex: 1, backgroundColor: c.paper }, style]}>
+      {/* DESIGN.md: tab roots sit on drafting-grid paper; pushed screens stay plain */}
+      {inTabs ? <DraftingGrid /> : null}
       {scroll ? (
         <Animated.ScrollView
           onScroll={onScroll}

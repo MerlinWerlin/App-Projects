@@ -72,6 +72,7 @@ import {
   BAR_HEIGHT,
   BubbleCard,
   CategoryBubble,
+  DraftingGrid,
   EmptyStateV2,
   LargeTitle,
   LargeTitleHeader,
@@ -322,7 +323,7 @@ export default function TemplatesScreen() {
   const shownCollections = COLLECTIONS.filter((col) => LIBRARY.collections[col.id] > 0 || col.id === collection);
   const total = counts.total;
   // DESIGN.md: the grid sits straight on the paper (the old pastel panel is retired).
-  const pastel = c.paper;
+  const pastel = 'transparent';
 
   const shelfLabel = (s: Shelf) =>
     s === 'all' ? t('templates.allCategories') : s === 'new' ? t('templates.shelf.new') : categoryName(s);
@@ -601,6 +602,7 @@ export default function TemplatesScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: c.paper }}>
+      <DraftingGrid />
       <Stack.Screen options={{ headerShown: false }} />
       <Animated.FlatList
         ref={listRef}

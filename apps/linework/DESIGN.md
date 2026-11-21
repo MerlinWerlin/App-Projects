@@ -16,6 +16,10 @@ the quiet sheet they sit on.
 - **Paper, not plastic:** flat surfaces separated by hairlines and spacing. No floating shadows on content.
 - **One accent:** red pencil (`ink`) marks what you can tap and what is selected. Everything else is graphite and
   paper.
+- **Drafting sheet details:** tab screens sit on a faint drafting grid (8 pt minor / 32 pt major, graphite at 4–7%),
+  Home opens with a title-block sheet showing one of Linework's own drawings inside red registration (crop) marks,
+  section headings sit under a full-width graphite rule, and the active tab gets a short red-pencil stroke. These
+  are the brand; they come from the tracing table, not from decoration.
 
 ## 2. Colour (src/theme/tokensV2.ts)
 
@@ -69,6 +73,10 @@ Do not add new uses of them.
 | `Sparkle`, `Ripple` | retired (render nothing). |
 | `EmptyStateV2` | the existing line drawings in graphite on a plain bordered card, one action. |
 | `LargeTitleHeader` | Fraunces large title collapsing to a system inline title on the frosted bar. |
+| `DraftingGrid` | static SVG grid behind tab roots (`ScreenV2 inTabs`, Templates). |
+| `CropMarks` | four red L-marks just outside a sheet's corners (Home title block). |
+| Home `SectionHeader` | 1.5 pt graphite rule, then a Fraunces 24 heading; "See all" in ink. |
+| Tab bar | standard tint; active tab adds an 18 × 3 pt red-pencil stroke above the icon. |
 
 ## 6. Motion
 

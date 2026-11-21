@@ -33,6 +33,7 @@ import {
   InsetGroup,
   InsetRow,
   PillButton,
+  CropMarks,
   ScreenV2,
   StatPill,
 } from '../../src/ui/v2';
@@ -64,6 +65,11 @@ import { TrialOfferText } from '../../src/plus/TrialOffer';
 import { startTrialWithAlerts } from '../../src/plus/trialFlow';
 
 const HOME_STARTERS = starterIds(TEMPLATES, STARTER_TEMPLATE_COUNT);
+// The sheet on Home shows one free starter drawing (a flower when there is one): Linework's own line art.
+const HERO: Template | undefined =
+  TEMPLATES.find((tpl) => HOME_STARTERS.has(tpl.id) && tpl.category === 'flowers') ??
+  TEMPLATES.find((tpl) => HOME_STARTERS.has(tpl.id));
+const HERO_ART = 168;
 
 // Home's quick ways into the library: a few occasions/styles and categories, then "See all".
 // Labels are translated at render time ('templates.collectionShort.<id>' / 'templates.categoryShort.<id>').
@@ -311,6 +317,40 @@ export default function HomeScreen() {
         <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('callout'), { color: c.muted, marginBottom: spaceV2.x6 }]}>
           {t('home.tagline')}
         </Text>
+
+        {/* Title block: a sheet of paper with one of our drawings on it and red registration marks. Tapping it opens
+            the template library (the same as the Templates button). */}
+        {HERO ? (
+          <PressableScale
+            onPress={openTemplates}
+            haptic="select"
+            scaleTo={pressScaleV2}
+            accessibilityRole="button"
+            accessibilityLabel={t('home.seeAllTemplates')}
+            style={[
+              squircle,
+              {
+                marginHorizontal: spaceV2.x2,
+                marginBottom: spaceV2.x6,
+                height: HERO_ART + spaceV2.x8 * 2,
+                borderRadius: radiusV2.xs,
+                backgroundColor: c.card,
+                borderWidth: 1,
+                borderColor: c.line,
+                alignItems: 'center',
+                justifyContent: 'center',
+              },
+            ]}
+          >
+            <TemplateSvg
+              template={HERO}
+              size={HERO_ART}
+              color={c.graphite}
+              strokeWidth={(HERO.strokeWidth ?? DEFAULT_STROKE_WIDTH) * 2.2}
+            />
+            <CropMarks />
+          </PressableScale>
+        ) : null}
 
         {/* One clear way in (Trace a photo), with the camera and the template library beside it */}
         <PillButton
@@ -644,6 +684,7 @@ function TemplateMiniRow({
   );
 }
 
+// Section heading in the sketchbook style: a graphite rule across the page, then a serif heading (DESIGN.md §3).
 function SectionHeader({
   title,
   action,
@@ -655,7 +696,8 @@ function SectionHeader({
   actionLabel?: string;
   onAction?: () => void;
 }) {
-  const { c, text } = useThemeV2();
+  const { c, text, typo } = useThemeV2();
+  const serif = typo.family('display') !== undefined;
   return (
     <View
       style={{
@@ -664,10 +706,21 @@ function SectionHeader({
         justifyContent: 'space-between',
         marginTop: spaceV2.section + spaceV2.x2,
         marginBottom: spaceV2.x2,
+        paddingTop: spaceV2.x3,
+        borderTopWidth: 1.5,
+        borderTopColor: c.graphite,
         minHeight: sizeV2.touch,
       }}
     >
-      <Text accessibilityRole="header" maxFontSizeMultiplier={maxFontScaleV2} style={[text('title2'), { color: c.graphite, flexShrink: 1 }]}>
+      <Text
+        accessibilityRole="header"
+        maxFontSizeMultiplier={maxFontScaleV2}
+        style={[
+          text('title2'),
+          serif ? { ...typo.face('display'), fontWeight: undefined, fontSize: 24, letterSpacing: -0.3 } : null,
+          { color: c.graphite, flexShrink: 1 },
+        ]}
+      >
         {title}
       </Text>
       {action && onAction ? (
