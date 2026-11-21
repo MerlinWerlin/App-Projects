@@ -288,7 +288,8 @@ def upsert_ver_loc(ver_id, locale, fields):
 
 
 BOOL_AGE = {"gambling", "unrestrictedWebAccess", "seventeenPlus", "lootBox", "messagingAndChat", "userGeneratedContent",
-            "advertising", "ageAssurance", "healthOrWellnessTopics", "parentalControls", "socialMedia", "socialMediaAgeRestricted"}
+            "advertising", "ageAssurance", "healthOrWellnessTopics", "parentalControls", "socialMedia", "socialMediaAgeRestricted",
+            "sharedLocation", "datingAndRelationships"}  # yes/no questions Apple added in 2026
 AGE_SKIP = {"kidsAgeBand", "gracRatingClassificationNumber", "developerAgeRatingInfoUrl", "socialMedia", "socialMediaAgeRestricted"}
 
 
