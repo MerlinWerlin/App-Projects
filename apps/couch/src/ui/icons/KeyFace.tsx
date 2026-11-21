@@ -24,7 +24,8 @@ export function KeyFace({
   const c = capColors({ key: keyColor, keyEdge: edgeColor, body: keyColor });
   const dome = `kf-dome-${id}`;
   // Wide caps (voice, playback, colour keys) take straight top-to-bottom light; a round dome's light stretched across a
-  // wide key reads as a curved streak.
+  // wide key reads as a curved streak. Each gradient has its own id: react-native-svg keeps the first one registered
+  // under an id, so swapping the element under the same id would not take effect.
   const [wide, setWide] = useState(false);
   return (
     <View
@@ -42,7 +43,7 @@ export function KeyFace({
     <Svg style={StyleSheet.absoluteFill} width="100%" height="100%">
       <Defs>
         {wide ? (
-          <LinearGradient id={dome} x1="0" y1="0" x2="0" y2="1">
+          <LinearGradient id={`${dome}-wide`} x1="0" y1="0" x2="0" y2="1">
             <Stop offset="0" stopColor={c.hi} />
             <Stop offset="0.5" stopColor={c.mid} />
             <Stop offset="1" stopColor={c.lo} />
@@ -55,7 +56,7 @@ export function KeyFace({
           </RadialGradient>
         )}
       </Defs>
-      <Rect x="0" y="0" width="100%" height="100%" rx={radius} ry={radius} fill={`url(#${dome})`} />
+      <Rect x="0" y="0" width="100%" height="100%" rx={radius} ry={radius} fill={`url(#${wide ? `${dome}-wide` : dome})`} />
     </Svg>
     {/* The rim: light along the top edge, shadow along the bottom, exact at any width (a View border, not an SVG stroke). */}
     <View
