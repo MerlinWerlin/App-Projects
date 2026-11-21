@@ -3,12 +3,12 @@
 // its address card when an address is saved) and a heads-up for an early start tomorrow. Tapping the card opens the
 // trip at today's section. Logic in src/core/daybrief.ts; renders nothing when no trip is on today.
 import { useRouter } from 'expo-router';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { Text, View } from 'react-native';
 import { dayBrief } from '../core/daybrief.ts';
 import { formatDuration, formatTime, zoneCity } from '../core/format.ts';
 import type { Item, Trip } from '../core/model.ts';
-import { useApp } from '../state/app.tsx';
+import { ThemeOverride, useApp } from '../state/app.tsx';
 import { radius, space, typeScale } from '../theme/tokens.ts';
 import { KindIcon, kindKey } from './kinds.tsx';
 import { PressableScale } from './kit.tsx';
@@ -46,6 +46,12 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
   const b = dayBrief(trips, now);
   // T101: next medicine dose under the trip's saved plan (empty with no medicines saved). Hook before the early return.
   const dose = useNextDoseLine(b?.trip ?? null, b?.zone ?? '', now);
+  // The card is printed on buff ticket stock, so the brief rows (stay, golden hour, check-in, call home...) that were
+  // drawn for a dark banner get ink-on-paper colours here: their hero text tokens map to ink and muted.
+  const paperTheme = useMemo(
+    () => ({ ...theme, heroInk: theme.ink, heroMuted: theme.muted, heroAccent: theme.ink, heroWash: theme.line, heroChip: theme.line }),
+    [theme],
+  );
   if (!b) return null;
   // T109: stay details for the stay you're in right now on this trip (by real instants, across zones).
   const stay = currentStay([b.trip], now);
@@ -80,6 +86,7 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
   const muted = [typeScale.body, { color: theme.muted }];
 
   return (
+    <ThemeOverride theme={paperTheme}>
     <View style={{ borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.stock.buff }}>
       <PressableScale
         accessibilityRole="button"
@@ -166,5 +173,6 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
           while the Trips tab's Heading home card shows this trip (same `trips`). */}
       <ComeHomeBriefRow trip={b.trip} trips={trips} now={now} />
     </View>
+    </ThemeOverride>
   );
 });
