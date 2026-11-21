@@ -100,7 +100,7 @@ export default function EmergencyScreen() {
               maxFontSizeMultiplier={TITLE_MAX_FONT_MULTIPLIER}
               style={{ ...typeScale.title, color: theme.heroInk, maxWidth: '64%' }}
             />
-            {origin ? <Text style={[typeScale.small, { color: theme.heroMuted, maxWidth: '64%' }]}>{origin}</Text> : null}
+            {origin ? <FitWordsText key={`o-${origin}`} text={origin} style={{ ...typeScale.small, color: theme.heroMuted, maxWidth: '64%' }} /> : null}
           </View>
         ) : null}
       </HeroHeader>

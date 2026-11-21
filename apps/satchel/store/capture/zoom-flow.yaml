@@ -33,7 +33,7 @@ appId: ${APP_ID}
     timeout: 6000
 - takeScreenshot: z2-kyoto-zoomed-max
 - tapOn:
-    text: "Show Sydney \(city\) on the map"
+    text: 'Show Sydney.* on the map'
     optional: true
 - waitForAnimationToEnd:
     timeout: 8000

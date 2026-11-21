@@ -372,7 +372,7 @@ export function HeroHeader({
     <>
       <FitWordsText key={title} header text={title} maxFontSizeMultiplier={TITLE_MAX_FONT_MULTIPLIER} style={{ ...(compact ? typeScale.displayM : typeScale.displayXL), color: theme.heroInk, maxWidth: titleW }} />
       {subtitle ? <FitWordsText key={`s-${subtitle}`} text={subtitle} style={{ ...typeScale.body, color: theme.heroMuted, maxWidth: textW }} /> : null}
-      {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted, maxWidth: textW }]}>{eyebrow}</Text> : null}
+      {eyebrow ? <FitWordsText key={`e-${eyebrow}`} text={eyebrow} style={{ ...typeScale.caption, color: theme.heroMuted, maxWidth: textW }} /> : null}
     </>
   );
   return (
