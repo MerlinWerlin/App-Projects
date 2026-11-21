@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.42: ready for App Review: no over-the-air updates, price only from the App Store with Try again, privacy manifests, no camera/mic permission, debug rows hidden, every widget art named.",
+  "note": "Glaze 1.0.43: White Cube design overhaul of the app chrome (DESIGN.md): neutral wall colours with one cobalt accent so the theme art is the only colour, art shown as plain prints, no eyebrow labels, gradients or tinted icon circles.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
