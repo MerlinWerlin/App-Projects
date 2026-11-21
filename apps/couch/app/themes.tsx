@@ -19,7 +19,10 @@ import type { Key } from '../src/core/keys';
 import { RemoteIcon } from '../src/ui/icons/RemoteIcon';
 import type { IconName } from '../src/ui/icons/names';
 import { NAV_ROW, TOP_ROW_KEYS } from '../src/ui/remote/controls';
+import { KeyFace } from '../src/ui/icons/KeyFace';
 import { OkDisc, PadFace } from '../src/ui/remote/DPad';
+import { capColors } from '../src/ui/remote/machined';
+import { PanelFinish } from '../src/ui/remote/PanelFinish';
 import { RemoteTexture } from '../src/ui/remote/RemoteTexture';
 import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } from '../src/ui/v2';
 
@@ -173,7 +176,9 @@ function MiniIcon({ k, color }: { k: Key; color: string }) {
 function MiniRemote({ theme }: { theme: RemoteTheme }) {
   const t = useT();
   const k = MINI.key;
-  const keyStyle = [styles.miniKey, { backgroundColor: theme.key, shadowColor: theme.keyEdge, borderRadius: theme.radius }];
+  // Round caps in their sockets, like the real remote (DESIGN.md "The logo remote").
+  const cap = capColors(theme);
+  const keyStyle = [styles.miniKey, { backgroundColor: theme.key, shadowColor: theme.keyEdge, borderColor: cap.socket }];
   return (
     <View
       style={[styles.mini, { backgroundColor: theme.body }]}
@@ -181,10 +186,12 @@ function MiniRemote({ theme }: { theme: RemoteTheme }) {
       accessibilityElementsHidden
       pointerEvents="none"
     >
+      <PanelFinish body={theme.body} radius={radius.panel + 8} />
       <RemoteTexture texture={theme.texture} radius={radius.panel + 8} />
       <View style={styles.miniRow}>
         {TOP_ROW_KEYS.slice(0, 3).map((c) => (
           <View key={c.key} style={keyStyle}>
+            <KeyFace keyColor={theme.key} edgeColor={theme.keyEdge} radius={MINI_KEY / 2} />
             <MiniIcon k={c.key} color={c.variant === 'power' ? theme.power : theme.ink} />
           </View>
         ))}
@@ -204,6 +211,7 @@ function MiniRemote({ theme }: { theme: RemoteTheme }) {
       <View style={styles.miniRow}>
         {NAV_ROW.slice(0, 3).map((c) => (
           <View key={c.key} style={keyStyle}>
+            <KeyFace keyColor={theme.key} edgeColor={theme.keyEdge} radius={MINI_KEY / 2} />
             <MiniIcon k={c.key} color={theme.ink} />
           </View>
         ))}
@@ -211,6 +219,9 @@ function MiniRemote({ theme }: { theme: RemoteTheme }) {
     </View>
   );
 }
+
+/** Mini preview key cap diameter (pt). */
+const MINI_KEY = 36;
 
 const styles = StyleSheet.create({
   intro: { marginHorizontal: list.inset, paddingHorizontal: list.rowPadding, marginTop: space.sm, marginBottom: space.lg },
@@ -223,7 +234,7 @@ const styles = StyleSheet.create({
   dot: { width: 8, height: 8, borderRadius: 4 },
   mini: { width: 220, borderRadius: radius.panel + 8, padding: 16, gap: 14 },
   miniRow: { flexDirection: 'row', justifyContent: 'space-between' },
-  miniKey: { width: 48, height: 40, alignItems: 'center', justifyContent: 'center', ...elevation.key },
+  miniKey: { width: MINI_KEY + 6, height: MINI_KEY + 6, borderRadius: MINI_KEY / 2 + 3, borderWidth: 3, overflow: 'hidden', alignItems: 'center', justifyContent: 'center' },
   center: { alignItems: 'center' },
   miniPad: { alignItems: 'center', justifyContent: 'space-evenly', ...elevation.key },
   miniMid: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', alignSelf: 'stretch' },

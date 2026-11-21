@@ -1,0 +1,15 @@
+# Simulator design capture (.github/workflows/couch-design-capture.yml): the lower half of the remote
+# (rockers, number / keyboard / apps keys, playback, colour keys), scrolled into view.
+appId: ${APP_ID}
+---
+- launchApp:
+    stopApp: true
+- extendedWaitUntil:
+    visible: "Living room"
+    timeout: 20000
+- swipe:
+    start: 50%, 80%
+    end: 50%, 25%
+    duration: 600
+- waitForAnimationToEnd
+- takeScreenshot: remote-lower-${MODE}

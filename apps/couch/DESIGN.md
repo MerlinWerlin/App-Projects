@@ -72,12 +72,12 @@ components:
     backgroundColor: "{colors.cushion-paper}"
     textColor: "{colors.ink}"
     rounded: "{rounded.tab}"
-    height: "56pt"
+    height: "58pt"
   tab-cushion-selected:
     backgroundColor: "{colors.bronze}"
     textColor: "{colors.cushion-paper}"
     rounded: "{rounded.tab}"
-    height: "56pt"
+    height: "58pt"
   row-group:
     backgroundColor: "{colors.cushion-paper}"
     textColor: "{colors.ink}"
@@ -99,25 +99,29 @@ components:
 
 ## Overview
 
-**Creative North Star: "Upholstery and brass"**
+**Creative North Star: "Upholstery and brass", with the logo remote at its centre**
 
 Couch is the remote that lives on the sofa, so its screens are built like the sofa: soft, matte surfaces grouped
-like cushions, separated by their gaps rather than by lines or shadows, with one warm metal for the thing your
-thumb reaches for next. The remote itself keeps its identity from the app icon and opening animation: a matte
-charcoal body and a gold d-pad. Everything around it gets quieter so the remote reads first.
+like cushions, with one warm metal for the thing your thumb reaches for next. The remote itself is the object in the
+app icon and opening animation, made real and full size: a charcoal panel lit from the top left, a spun-gold d-pad
+sunk in a dark well, dark triangular arrow nubs, a big round OK disc in a black groove, and every key a domed cap
+sitting in its own socket. The chrome around it stays quiet so the remote reads first.
 
 Dark is the evening scene: the app icon's near-black ground (#0E0E0F), charcoal cushions and the icon's brass. Light
 is daytime linen with paper cushions and a deep bronze that holds AA contrast as text. Both follow the phone's
 appearance setting.
 
-What this replaces: the stock iOS settings greys with a generic system-ish blue tint, a cinema glow and gradient
-texture behind the default remote, drop-shadowed cards, boxed tab tiles with edges, icons sitting in tinted tiles,
-and a monospace latency readout dressed as "technical".
+What this replaces: the stock iOS settings greys with a generic system-ish blue tint, a flat gold disc with chevrons
+and rectangular keys that only gestured at the icon, a cinema glow and gradient texture behind the default remote,
+drop-shadowed cards, icons sitting in tinted tiles, and a monospace latency readout dressed as "technical".
 
 **Key Characteristics:**
 - Warm neutrals with one accent: bronze in light, brass in dark. The accent only marks the current selection and the
   primary action, never decoration.
-- Flat cushions on a ground. No drop shadows except a floating layer (sheets, toasts, the volume HUD).
+- Flat cushions on a ground in the app's lists and cards. No drop shadows there except a floating layer (sheets,
+  toasts, the volume HUD).
+- The remote is the one place with material: lit metal, wells, sockets and domed caps, all drawn from the opening
+  animation's own shape generators (`src/core/introRemote.ts`) so remote, splash and icon match.
 - iOS structure: tab bar of four sections, large titles that collapse, inset-grouped lists, native switches and
   sheets, swipe back.
 - SF Pro for everything you read in a list; Sora only for large titles and a few remote key faces.
@@ -185,15 +189,26 @@ current item.
 
 ## Components
 
-- **Tab cushions** (`src/ui/TabBar.tsx`): the signature. Four flat cushions; the current one is brass/bronze with
-  dark/white ink. No borders, no shadow.
+- **Tab cushions** (`src/ui/TabBar.tsx`): four flat cushions, each in its own box with a hairline edge and a 14 pt label (owner, 1 Nov); the current one is brass/bronze with
+  dark/white ink. No shadow.
 - **Inset-grouped list** (`src/ui/v2/InsetGroupedList.tsx`): paper/charcoal group, seams between rows, chevrons in
   tertiary ink, native Switch with the brass track.
 - **Card** (`src/ui/v2/Card.tsx`): a cushion; no shadow unless `elevation="high"`.
 - **Pill button** (`src/ui/v2/PillButton.tsx`): filled (primary), tinted, plain. Springs on press; dims only under
   Reduce Motion.
-- **Remote**: owned by the remote theme (`src/theme/remoteThemes.ts`). Default Charcoal & Gold: no glow, no texture,
-  gold d-pad face. The Cinema glow setting can still turn a glow on.
+- **The logo remote** (`src/ui/remote/machined.ts`, `DPad.tsx`, `RemoteKey.tsx`, `PanelFinish.tsx`): the signature.
+  - D-pad: spun-metal ring (the icon's own gold samples on Charcoal & Gold; the same light pattern in the theme's
+    colour on Brushed Aluminium; a smooth ring on the other themes) in a dark well, four arrow nubs, an OK disc about
+    52% of the ring (owner fb-1017b) in a black groove. Hit areas and sizes still come from `dpadGeometry`.
+  - Press feel: the pad rocks 5 degrees toward the pressed arrow on the motion spring and a glint of light runs over
+    the metal on that side; OK sinks and shades with a medium haptic; keys sink into their sockets and shade. Reduce
+    Motion keeps the light and shade, drops the movement.
+  - Keys: domed caps lit from the top left with a rim, each in a recessed socket. Power, Source and Settings are round
+    caps with their name under them on the body; Back, Home and Menu are the icon's three big round keys under the
+    pad; volume and channel are tall rocker caps; the voice key is a long cap with the mic in the accent.
+  - Body: the icon's panel finish in the theme's body colour (lit top left, falling off bottom right, a rim along the
+    top). Themes still change colours, texture, glow, radius and press feel only. The Cinema glow setting still works;
+    Charcoal & Gold has no glow by default.
 - **Sheets** (`src/ui/Sheet.tsx`): grabber, SF headline title, close button, the only shadowed surface.
 
 ## Do's and Don'ts
@@ -206,7 +221,8 @@ current item.
 - **Do** check light, dark and an accessibility text size on a simulator before calling a screen done.
 
 ### Don't:
-- **Don't** use gradients, glows, glass as decoration, or drop shadows on cards.
+- **Don't** use gradients, glows, glass or drop shadows as decoration in the app's lists, cards and chrome. Light
+  and shade belong to the remote's material only, and only where they describe a real surface (metal, a well, a cap).
 - **Don't** put icons in tinted circles or tiles.
 - **Don't** put a small label above a heading, or build count-up stat tiles.
 - **Don't** use a monospace face for numbers that are not code.

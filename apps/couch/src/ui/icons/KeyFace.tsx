@@ -1,6 +1,6 @@
 import { useId } from 'react';
-import { StyleSheet } from 'react-native';
-import Svg, { Defs, LinearGradient, RadialGradient, Rect, Stop } from 'react-native-svg';
+import { StyleSheet, View } from 'react-native';
+import Svg, { Defs, RadialGradient, Rect, Stop } from 'react-native-svg';
 import { capColors } from '../remote/machined';
 
 /**
@@ -23,31 +23,31 @@ export function KeyFace({
   const id = useId().replace(/[^a-zA-Z0-9_-]/g, '');
   const c = capColors({ key: keyColor, keyEdge: edgeColor, body: keyColor });
   const dome = `kf-dome-${id}`;
-  const rim = `kf-rim-${id}`;
   return (
-    <Svg
+    <View
       style={StyleSheet.absoluteFill}
-      width="100%"
-      height="100%"
       pointerEvents="none"
       accessible={false}
       importantForAccessibility="no-hide-descendants"
       accessibilityElementsHidden
     >
+    <Svg style={StyleSheet.absoluteFill} width="100%" height="100%">
       <Defs>
         <RadialGradient id={dome} cx="0.36" cy="0.22" rx="0.95" ry="1.05" fx="0.36" fy="0.22">
           <Stop offset="0" stopColor={c.hi} />
           <Stop offset="0.55" stopColor={c.mid} />
           <Stop offset="1" stopColor={c.lo} />
         </RadialGradient>
-        <LinearGradient id={rim} x1="0" y1="0" x2="0" y2="1">
-          <Stop offset="0" stopColor={c.rimTop} stopOpacity={0.9} />
-          <Stop offset="0.45" stopColor={c.mid} stopOpacity={0.15} />
-          <Stop offset="1" stopColor={c.rimBottom} stopOpacity={0.7} />
-        </LinearGradient>
       </Defs>
       <Rect x="0" y="0" width="100%" height="100%" rx={radius} ry={radius} fill={`url(#${dome})`} />
-      <Rect x="0.75" y="0.75" width="99%" height="99%" rx={radius} ry={radius} fill="none" stroke={`url(#${rim})`} strokeWidth={1.5} />
     </Svg>
+    {/* The rim: light along the top edge, shadow along the bottom, exact at any width (a View border, not an SVG stroke). */}
+    <View
+      style={[
+        StyleSheet.absoluteFill,
+        { borderRadius: radius, borderWidth: 1, borderTopColor: c.rimTop, borderBottomColor: c.rimBottom, borderStartColor: c.mid, borderEndColor: c.mid },
+      ]}
+    />
+    </View>
   );
 }

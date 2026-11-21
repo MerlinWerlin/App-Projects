@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: ['claude/couch-design-*']
-    paths: ['.github/workflows/couch-design-capture.yml', 'apps/couch/app/**', 'apps/couch/src/**']
+    paths: ['.github/workflows/couch-design-capture.yml', 'apps/couch/app/**', 'apps/couch/src/**', 'apps/couch/tools/capture/**']
 concurrency:
   group: couch-design-capture-${{ github.ref }}
   cancel-in-progress: true
@@ -78,6 +78,15 @@ jobs:
               xcrun simctl io "$DEVICE" screenshot "$OUT/$R-$MODE.png" > /dev/null 2>&1
             done
           done
+          # The lower half of the remote, scrolled into view (Maestro), in both appearances.
+          curl -Ls "https://get.maestro.mobile.dev" | bash > /dev/null 2>&1 || true
+          export PATH="$HOME/.maestro/bin:$PATH"
+          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
+          for MODE in light dark; do
+            xcrun simctl ui "$DEVICE" appearance "$MODE"
+            (cd "$OUT" && maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" -e MODE="$MODE" "$GITHUB_WORKSPACE/apps/couch/tools/capture/remote-lower.yaml") || echo "maestro failed for $MODE"
+          done
+          find "$OUT" -maxdepth 3 -name 'remote-lower-*.png' -exec cp {} "$OUT/" \; 2>/dev/null || true
           mkdir -p "$OUT/jpg"
           for F in "$OUT"/*.png; do sips -s format jpeg -s formatOptions 78 -Z 1300 "$F" --out "$OUT/jpg/$(basename "${F%.png}").jpg" > /dev/null; done
           printf 'Source: %s\nSimulator captures (%s), demo TVs via EXPO_PUBLIC_COUCH_CAPTURE=1.\n' "$GITHUB_SHA" "$DEVICE" > "$OUT/jpg/README.txt"
