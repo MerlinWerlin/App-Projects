@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Backspin 1.0.2: the daily card's streak label wraps inside the card instead of running past it (TestFlight feedback); button, chip and score-tile labels wrap at large text sizes; display type scales within limits. Version stays 1.0.2, new build number",
+  "note": "Backspin 1.0.2 App Store build: three challenge lines reworded for the 4+ rating and to avoid a brand name (bloody oath -> my oath, bloody ripper -> you little ripper, Milo -> pillow). Otherwise identical to the streak-fit build. Version stays 1.0.2, new build number",
   "ascAppId": "6826553963"
 }
