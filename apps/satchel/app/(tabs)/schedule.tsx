@@ -35,7 +35,7 @@ export default function ScheduleTab() {
           <Text style={[typeScale.displayL, { color: theme.ink }]}>{t('tab.itinerary')}</Text>
           {trip ? <Text style={[typeScale.small, { color: theme.muted }]}>{`${trip.name} · ${formatRange(trip.startDate, trip.endDate, lang)}`}</Text> : null}
         </View>
-        <Mascot pose="itinerary" size={56} />
+        <Mascot pose="itinerary" size={88} />
         {/* T174: share the itinerary to another phone (calendar file, Satchel file or text). */}
         {trip && trip.items.length ? <ShareItinerary trip={trip} compact /> : null}
       </View>

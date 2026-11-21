@@ -9,7 +9,8 @@ import { AccessibilityInfo, FlatList, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { tripCover } from '../../src/core/covers.ts';
 import { deviceZone, formatRange, todayIn } from '../../src/core/format.ts';
-import { countdown, destinationZone, focusTrip } from '../../src/core/glance.ts';
+import { destinationZone, focusTrip } from '../../src/core/glance.ts';
+import { tripCountdown } from '../../src/core/dayview.ts';
 import type { Trip } from '../../src/core/model.ts';
 import { tripPhase } from '../../src/core/timeline.ts';
 import { orderTrips } from '../../src/core/trips.ts';
@@ -94,7 +95,8 @@ export default function TripsScreen() {
     [t, lang, today, router, homeIso],
   );
 
-  const c = focus ? countdown(focus, today) : null;
+  // Counted on the trip's own calendar (where the traveller is), the same day the Itinerary tab and Your day show.
+  const c = focus ? tripCountdown(focus, Date.now()) : null;
   const place = focus ? (dest ? cityOf(dest) : focus.name) : '';
 
   return (

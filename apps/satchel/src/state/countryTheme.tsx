@@ -84,3 +84,17 @@ export function TripCountryScope({ trip, children }: { trip: Trip | null | undef
 export function useCountryPick(): CountryPick | null {
   return useContext(PickCtx);
 }
+
+/**
+ * Screenshot builds only (app/theme-gallery.tsx): what's inside wears one country's theme for a given month,
+ * whatever the trips say. Not used by any screen a traveller reaches.
+ */
+export function CountryPreviewScope({ pick, children }: { pick: CountryPick; children: ReactNode }) {
+  const { theme } = useApp();
+  const base = useContext(BaseCtx) ?? theme;
+  return (
+    <Themed base={base} pick={pick}>
+      {children}
+    </Themed>
+  );
+}

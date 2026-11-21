@@ -4,12 +4,12 @@ Upload these six, in this order, to App Store Connect > Satchel > 1.0 > iPhone 6
 
 | # | File | Caption | Raw capture (satchel-store-capture.yml) |
 |---|---|---|---|
-| 1 | 6.9/01-itinerary.jpg | Your itinerary, day by day | 01-itinerary-light, run 44830827911 |
-| 2 | 6.9/02-paste-plans.jpg | Paste your plans, check, save | 08c-paste-scrolled-light, run 44830827911 |
-| 3 | 6.9/03-tickets.jpg | Tickets ready at the gate | 03-ticket-dark, run 44830827911 |
-| 4 | 6.9/04-show-a-local.jpg | Show a local, in 12 languages | 07-phrases-dark, run 44830827911 |
-| 5 | 6.9/05-emergency.jpg | Help, one tap away | 05-emergency-light, run 44830827911 |
-| 6 | 6.9/06-map.jpg | Your trip on the map | 06-map-light, run 44830827911 |
+| 1 | 6.9/01-itinerary.jpg | Your itinerary, day by day | 01-itinerary-light, run 44847968970 |
+| 2 | 6.9/02-paste-plans.jpg | Paste your plans, check, save | 08c-paste-scrolled-light, run 44847968970 |
+| 3 | 6.9/03-tickets.jpg | Tickets ready at the gate | 03-ticket-dark, run 44847968970 |
+| 4 | 6.9/04-show-a-local.jpg | Show a local, in 12 languages | 07-phrases-dark, run 44847968970 |
+| 5 | 6.9/05-emergency.jpg | Help, one tap away | 05-emergency-light, run 44847968970 |
+| 6 | 6.9/06-map.jpg | Your trip on the map | 06-map-light, run 44847968970 |
 
 Real Release simulator captures (build B, capture flag: the app as during the trial), with an invented Tokyo & Kyoto
 trip seeded by `store/capture/seed.py` (invented carrier, hotels, passenger, insurer, fiction-range phone numbers).

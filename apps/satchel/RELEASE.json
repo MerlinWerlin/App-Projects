@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Satchel 1.0.0 design pass: new paper-ticket look (ticket-stock plans, condensed ticket type, flat paper, carbon-ink buttons), with the mascot, country themes, reminder sounds, trial/unlock and App Review fixes unchanged.",
+  "note": "Satchel 1.0.0: destination themes you can see at a glance (big landmark and blossoms, leaves or lanterns), a bigger mascot on Home and Itinerary, and the Home day count now matches the Itinerary (trip time zone).",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

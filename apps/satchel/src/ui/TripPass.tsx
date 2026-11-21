@@ -7,7 +7,8 @@ import { memo, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { formatRange, formatTime, zoneCity } from '../core/format.ts';
 import { agendaBesideBrief } from '../core/daybrief.ts';
-import { clockPair, countdown, formatOffset, tripDays, tripRoute, type Countdown } from '../core/glance.ts';
+import { clockPair, formatOffset, tripDays, tripRoute, type Countdown } from '../core/glance.ts';
+import { tripCountdown } from '../core/dayview.ts';
 import type { CoverId } from '../core/covers.ts';
 import type { DrivingBanner } from '../core/driving.ts';
 import type { Trip } from '../core/model.ts';
@@ -76,7 +77,10 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
   const { theme, t, lang } = useApp();
   // T152: the trip's own cover photo (phone-only) wins over the illustration.
   const photo = useCoverPhoto(cover ? trip.id : undefined);
-  const c = countdown(trip, today);
+  // The trip's own calendar (where the traveller is), like the Itinerary tab; `today` (the phone's date) is kept for
+  // callers but no longer decides the day number.
+  const c = tripCountdown(trip, Date.now());
+  void today;
   const route = tripRoute(trip);
   const tone = PHASE_TONE[c.kind];
   const stamp = c.kind === 'past' ? theme.muted : c.kind === 'today' || c.kind === 'active' ? theme.accentInk : theme.ink;

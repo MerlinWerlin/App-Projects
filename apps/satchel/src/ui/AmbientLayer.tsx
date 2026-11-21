@@ -16,7 +16,7 @@ const rand = (i: number, k: number) => {
 };
 
 /** How many particles run, and how many stay drawn (still) with Reduce Motion. */
-export const AMBIENT_COUNT = { full: 12, compact: 8, still: 5 } as const;
+export const AMBIENT_COUNT = { full: 11, compact: 7, still: 6 } as const;
 
 type Spec = { i: number; x: number; y: number; size: number; ms: number; delay: number; sway: number; spin: number; opacity: number; still: number };
 
@@ -95,7 +95,9 @@ export const AmbientLayer = memo(function AmbientLayer({ kind, compact = false }
     const n = reduceMotion ? AMBIENT_COUNT.still : compact ? AMBIENT_COUNT.compact : AMBIENT_COUNT.full;
     const twinkle = motion === 'twinkle';
     return Array.from({ length: n }, (_, i) => {
-      const size = Math.round((twinkle ? 8 : 11) + rand(i, 1) * (twinkle ? 8 : 8));
+      // Big enough to read at a glance (a maple leaf, a blossom, a lantern), smaller in a compact banner.
+      const base = twinkle ? 12 : compact ? 16 : 22;
+      const size = Math.round(base + rand(i, 1) * (twinkle ? 10 : compact ? 8 : 14));
       // Keep to the right 65% of the banner, where the art is, away from the start of the title.
       const x = box.w * (0.35 + 0.65 * ((i + rand(i, 2)) / n)) - size / 2;
       const ms = twinkle ? 2400 + rand(i, 3) * 2200 : (motion === 'rise' ? 11000 : 9000) + rand(i, 3) * 7000;
@@ -108,7 +110,7 @@ export const AmbientLayer = memo(function AmbientLayer({ kind, compact = false }
         delay: Math.round((i / n) * ms * 0.9),
         sway: 8 + rand(i, 5) * 14,
         spin: (rand(i, 6) > 0.5 ? 1 : -1) * (120 + rand(i, 7) * 200),
-        opacity: 0.55 + rand(i, 8) * 0.3,
+        opacity: 0.8 + rand(i, 8) * 0.2,
         still: 0.15 + 0.7 * ((i + 0.5) / n),
       };
     });

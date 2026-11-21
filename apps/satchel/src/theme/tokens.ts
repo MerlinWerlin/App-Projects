@@ -46,6 +46,8 @@ export type Theme = {
   heroWash: string;
   /** T91: translucent dark glass for text pills on a hero gradient (heroInk / heroMuted on it are AA over every stop). */
   heroChip: string;
+  /** The country landmark's silhouette on a tab head: pale and solid enough to read at a glance (art only, no text). */
+  heroMotif: string;
   /**
    * T119: opaque "paper" for the tab hero scenes (tickets, map panels, signboards, the compass face) drawn on a hero
    * gradient. It reads at 3:1 on every gradient stop, and the deep stop of each tone reads at 3:1 on it (contrast test).
@@ -104,6 +106,7 @@ export const light: Theme = {
   heroAccent: '#F4D58A',
   heroWash: 'rgba(255, 255, 255, 0.12)',
   heroChip: 'rgba(0, 0, 0, 0.22)',
+  heroMotif: 'rgba(255, 255, 255, 0.30)',
   heroPaper: '#F3EBD3',
   mapPlan: '#6B3FA0',
   mapWayback: '#A3306A',
@@ -147,6 +150,7 @@ export const dark: Theme = {
   heroAccent: '#E9CD86',
   heroWash: 'rgba(255, 255, 255, 0.10)',
   heroChip: 'rgba(0, 0, 0, 0.28)',
+  heroMotif: 'rgba(255, 255, 255, 0.24)',
   heroPaper: '#D9CFB4',
   mapPlan: '#C4A2F2',
   mapWayback: '#F28DBF',

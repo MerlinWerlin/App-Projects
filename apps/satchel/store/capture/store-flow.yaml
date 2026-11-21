@@ -91,6 +91,33 @@ appId: ${APP_ID}
     timeout: 6000
 - takeScreenshot: 10-passport-${MODE}
 
+# Every destination theme's Trips head (capture-only screen app/theme-gallery.tsx), three screens of scrolling.
+- openLink: satchel://theme-gallery
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 11a-themes-${MODE}
+- scroll:
+    optional: true
+- takeScreenshot: 11b-themes-${MODE}
+- scroll:
+    optional: true
+- takeScreenshot: 11c-themes-${MODE}
+- scroll:
+    optional: true
+- takeScreenshot: 11d-themes-${MODE}
+- scroll:
+    optional: true
+- takeScreenshot: 11e-themes-${MODE}
+- scroll:
+    optional: true
+- takeScreenshot: 11f-themes-${MODE}
+- scroll:
+    optional: true
+- takeScreenshot: 11g-themes-${MODE}
+- scroll:
+    optional: true
+- takeScreenshot: 11h-themes-${MODE}
+
 # Share itinerary: the sheet, then "Satchel trip file" hands a .satchel file to the system share sheet.
 - openLink: satchel://schedule
 - waitForAnimationToEnd:
