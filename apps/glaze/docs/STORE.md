@@ -50,7 +50,7 @@ Tabs are Themes · Widgets · Icons · Wallpapers.
 Glaze gives your iPhone a look that fits together: a wallpaper, matching app icons and widget art in the same style, all from one theme.
 
 THEMES
-- Over 140 original themes drawn for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
+- Over 140 original themes made for Glaze: starry nights, nature, ocean, cute and cosy, sweets, dreamy pastels, moody darks, art, seasons and city retro.
 - Every theme comes with a wallpaper, an icon style and five artworks for your widgets.
 - 10 premium themes are free, including Alpine Starlight and Cloud Atelier. Glaze Plus unlocks every other theme.
 - Starter themes are built into the app and work offline. Other themes download once, then stay on your iPhone.

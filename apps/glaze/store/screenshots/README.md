@@ -1,4 +1,6 @@
-# Glaze App Store screenshots (1.0.41, first release)
+# Glaze App Store screenshots (1.0.43, first release)
+
+**21 Nov 2026 (1.0.43, App Review pass):** shots 1-7 are from the 1.0.43 (Dreamroom) build via `glaze-store-capture.yml`. Shot 5 is the `31-widgets-custom` frame (Custom 1-5 whole) placed into the composed caption frame with `compose.phone()`, because the Maestro scroll lands differently from run to run. Shot 8 (Glaze Plus) is still the 1.0.41 capture on purpose: the simulator's StoreKit returns the US price ($1.99), and the en-AU listing must show the real A$2.99. The sheet's content and terms are unchanged.
 
 Eight portrait shots for the **6.9-inch iPhone** display (1320 x 2868, RGB JPEG, quality 93, no chroma subsampling) in `6.9/`.
 Glaze is iPhone-only (`supportsTablet: false`), so no iPad set is needed, and App Store Connect scales the
