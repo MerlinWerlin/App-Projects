@@ -657,7 +657,7 @@ function PrepareScreen() {
           />
         )}
 
-        {/* Outline controls on a soft pastel panel behind white cards */}
+        {/* Outline controls in a neutral paper well behind the cards (DESIGN.md) */}
         {outlineMode ? (
           <View style={[squircle, { marginTop: spaceV2.x5, padding: PANEL, borderRadius: radiusV2.lg, backgroundColor: c.pastels[0] }]}>
             <Text accessibilityRole="header" maxFontSizeMultiplier={maxFontScaleV2} style={sectionLabel}>
