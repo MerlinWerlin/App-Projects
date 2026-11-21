@@ -1,6 +1,6 @@
 import { AtkinsonHyperlegible_400Regular, AtkinsonHyperlegible_700Bold } from '@expo-google-fonts/atkinson-hyperlegible';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, usePathname } from 'expo-router';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -10,7 +10,7 @@ import { useReducedMotion } from 'react-native-reanimated';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { t } from '../src/i18n';
 import { AppStateProvider, useApp } from '../src/state/AppState';
-import { FONT } from '../src/theme/theme';
+import { FONT, PROMPTER } from '../src/theme/theme';
 import { LaunchIntro } from '../src/ui/LaunchIntro';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
@@ -41,7 +41,8 @@ export default function RootLayout() {
  * nothing renders behind it until then (2.5 s safety net: never an endless splash; system fonts until loaded).
  */
 function Shell({ fontsReady }: { fontsReady: boolean }) {
-  const { loaded, theme, reduceMotion, prefs } = useApp();
+  const { loaded, theme, reduceMotion, prefs, can } = useApp();
+  const path = usePathname();
   const [timedOut, setTimedOut] = useState(false);
   const [introDone, setIntroDone] = useState(false);
   // Read synchronously at startup, so the intro never flashes before the async Reduce Motion check lands.
@@ -74,7 +75,15 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
   } as const;
   return (
     <>
-      <StatusBar style={theme.dark ? 'light' : 'dark'} />
+      {/* One status bar for the whole app. The prompter and camera are always dark (except the Paper palette),
+          so they hide it and force matching content in case the system keeps it on screen. */}
+      {path.startsWith('/prompt') ? (
+        <StatusBar hidden style={can('colors') && PROMPTER[prefs.colors] === PROMPTER.paper ? 'dark' : 'light'} />
+      ) : path.startsWith('/record') ? (
+        <StatusBar hidden style="light" />
+      ) : (
+        <StatusBar style={theme.dark ? 'light' : 'dark'} />
+      )}
       <Stack
         screenOptions={{
           headerShown: false,
