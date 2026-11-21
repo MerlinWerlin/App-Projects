@@ -146,8 +146,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           # No Expo cloud build: the owner does not pay for it, and the free plan's iOS builds run out.
-          gh api -X POST "repos/${{ github.repository }}/actions/workflows/ship-mac.yml/dispatches" -f ref=main -f "inputs[app]=${{ matrix.app }}"
-          echo "Started ship-mac for ${{ matrix.app }}" | tee "$RUNNER_TEMP/ship.log"
+          # Apps that adopt the UIScene life cycle (apps/<app>/SCENE_LIFECYCLE_OK, added after a passing
+          # "iOS 27 launch check") build on Xcode 27 / the iOS 27 SDK that Apple requires from April 2027 (ITMS-90725).
+          RUNNER=macos-latest; [ -f "$GITHUB_WORKSPACE/apps/${{ matrix.app }}/SCENE_LIFECYCLE_OK" ] && RUNNER=xcode-27
+          gh api -X POST "repos/${{ github.repository }}/actions/workflows/ship-mac.yml/dispatches" -f ref=main -f "inputs[app]=${{ matrix.app }}" -f "inputs[runner]=$RUNNER"
+          echo "Started ship-mac for ${{ matrix.app }} on $RUNNER" | tee "$RUNNER_TEMP/ship.log"
           echo "Started ship-mac for ${{ matrix.app }}: Actions > ship-mac shows the build and TestFlight upload." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Publish an over-the-air update
