@@ -1,11 +1,12 @@
 appId: com.jared797.linework
 ---
 # Store captures, part 2: the 14-day trial is running (its start date is written to the app's storage before
-# launch, the same value the App Store trial purchase stores), so the library and outline mode are open.
+# launch, the same value the App Store trial purchase stores), so the library and outline mode are open. The
+# first-run guide is marked done in the same storage, so it does not cover the screens.
 - launchApp
-- tapOn:
-    text: 'Skip.*'
-    optional: true
+- extendedWaitUntil:
+    visible: 'Linework'
+    timeout: 60000
 - waitForAnimationToEnd:
     timeout: 5000
 - takeScreenshot: trial-home

@@ -58,15 +58,13 @@ def grid(img, pal):
 
 
 def wrap_center(d, text, font, y, fill, max_w, gap):
-    words, lines, cur = text.split(), [], ''
-    for w in words:
-        t = (cur + ' ' + w).strip()
-        if d.textlength(t, font=font) <= max_w or not cur:
-            cur = t
-        else:
-            lines.append(cur)
-            cur = w
-    lines.append(cur)
+    words = text.split()
+    if d.textlength(text, font=font) <= max_w or len(words) < 2:
+        lines = [text]
+    else:
+        # Two balanced lines (no lone word on the second line): the split with the narrowest longer line.
+        splits = [(' '.join(words[:i]), ' '.join(words[i:])) for i in range(1, len(words))]
+        lines = list(min(splits, key=lambda s: max(d.textlength(s[0], font=font), d.textlength(s[1], font=font))))
     for ln in lines:
         d.text(((W - d.textlength(ln, font=font)) / 2, y), ln, font=font, fill=fill)
         y += gap
