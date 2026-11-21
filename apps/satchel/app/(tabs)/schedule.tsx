@@ -3,6 +3,7 @@
 // otherwise the trip's timetable (Today / Tomorrow, the day strip, swipe between days; src/ui/TripDays.tsx). With
 // more than one trip a switcher sits at the top, opening on the trip on now, else the next, else the last
 // (src/core/dayview.ts scheduleTrip). The choice lasts while the app is open. Offline.
+// 1.0 feedback: the whole tab scrolls as one page (header included), so the last day's last plan is reachable.
 import { useMemo, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -28,8 +29,9 @@ export default function ScheduleTab() {
   const fallback = useMemo(() => scheduleTrip(trips, now), [trips, now]);
   const trip = sorted.find((x) => x.id === picked) ?? fallback;
 
-  return (
-    <View style={{ flex: 1, backgroundColor: theme.paper, paddingTop: insets.top + space.m }}>
+  // 1.0 feedback (scroll): the title, the trip switcher and the reminders offer scroll with the day, as one page.
+  const head = (
+    <View style={{ gap: space.s }}>
       <View style={{ paddingHorizontal: space.l, flexDirection: 'row', alignItems: 'center', gap: space.m }}>
         <View style={{ flex: 1, gap: 2 }} accessible accessibilityRole="header">
           <Text style={[typeScale.displayL, { color: theme.ink }]}>{t('tab.itinerary')}</Text>
@@ -43,7 +45,7 @@ export default function ScheduleTab() {
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
-          style={{ flexGrow: 0, marginTop: space.s }}
+          style={{ flexGrow: 0 }}
           contentContainerStyle={{ gap: space.s, paddingHorizontal: space.l }}
           accessibilityRole="radiogroup"
           accessibilityLabel={t('schedule.switcher')}
@@ -54,12 +56,20 @@ export default function ScheduleTab() {
         </ScrollView>
       ) : null}
       {/* Trip reminders: a quiet one-time offer while they're off and a real trip has plans coming up. */}
-      {trip && trip.items.length ? <RemindersOffer now={now} style={{ marginHorizontal: space.l, marginTop: space.s }} /> : null}
+      {trip && trip.items.length ? <RemindersOffer now={now} style={{ marginHorizontal: space.l }} /> : null}
+    </View>
+  );
+
+  return (
+    <View style={{ flex: 1, backgroundColor: theme.paper, paddingTop: insets.top + space.m }}>
       {trip && trip.items.length ? (
-        <TripDays key={trip.id} trip={trip} inTab />
+        <TripDays key={trip.id} trip={trip} inTab header={head} />
       ) : (
-        <ScrollView contentContainerStyle={{ padding: space.l, paddingBottom: space.xxl }}>
-          <ItineraryStart trip={trip ?? undefined} />
+        <ScrollView contentContainerStyle={{ paddingBottom: space.xxl }}>
+          {head}
+          <View style={{ padding: space.l }}>
+            <ItineraryStart trip={trip ?? undefined} />
+          </View>
         </ScrollView>
       )}
     </View>

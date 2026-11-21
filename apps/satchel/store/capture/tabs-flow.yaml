@@ -11,3 +11,15 @@ appId: ${APP_ID}
 - waitForAnimationToEnd:
     timeout: 8000
 - takeScreenshot: z5-emergency-largest-text
+- scroll
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: z6-emergency-largest-text-2
+- scroll
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: z7-emergency-largest-text-3
+- scroll
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: z8-emergency-largest-text-4
