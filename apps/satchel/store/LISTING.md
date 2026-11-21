@@ -57,6 +57,7 @@ YOUR ITINERARY
 - Share your itinerary to another phone as a calendar file, a Satchel file or text, so a travel companion has a copy if your battery runs flat.
 
 PLAN THE TRIP
+- Several trips side by side, each with its own title (say, Girls trip). Switch between them from Home.
 - Flights, trains, ferries, buses, stays, car hire, activities and notes, each in its own time zone, with a Next up card and a Your day brief each morning.
 - A Ready to go? check for passport dates, plus flags for missing stays, clashes, tight connections and check-in times.
 - Places to go, Plan my day, trip to-dos, public holidays, jet lag tips and a Call home planner.
@@ -70,10 +71,10 @@ TICKETS AND WALLET
 
 SAFETY
 - Emergency card: local emergency numbers (verify locally), your insurance, contacts and private medical notes.
-- Step-by-step guides for a lost passport, lost cards, lost luggage and more.
+- Guides for a lost passport, cards or luggage, and more.
 - I'm safe: share where you are with one location check, only when you tap.
 - Medicine times that follow you across time zones.
-- Help cards for children and companions, and a step-free card for access needs, in the local language.
+- Help cards for kids and companions, and a step-free card, in the local language.
 - Local customs, plugs and voltage, driving abroad with a rental car checklist, and getting around guides.
 
 WORDS AND SIGNS
@@ -99,14 +100,11 @@ DOCUMENTS AND LOW BATTERY
 PRIVATE BY DESIGN
 - No account. No ads. No tracking. Your trips, documents and notes stay on your phone.
 - Back up everything to one file and restore it on a new phone. Send a trip to a friend as a file.
-- Light and dark mode.
 
 FREE TRIAL
 Free 7-day trial, then a one-time unlock. No subscription. After the trial, every trip you saved stays viewable and trip files friends send you always open.
 
 Weather data: MET Norway.
-
-Try it straight away with the sample trip.
 ```
 
 ### Screenshot captions

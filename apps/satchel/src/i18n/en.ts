@@ -141,6 +141,9 @@ const base = {
   'tab.emergencyShort': 'SOS',
 
   'trips.title': 'Your trips',
+  'tripSwitch.title': 'Your trips',
+  'tripSwitch.hint': 'Shows this trip on Home and in the Itinerary tab',
+  'tripSwitch.new': 'New trip',
   'trips.empty': 'No trips yet',
   'trips.emptyBody': 'Add a trip to keep your plans and travel details together, or add the demo trip to look around first.',
   'trips.add': 'Add trip',

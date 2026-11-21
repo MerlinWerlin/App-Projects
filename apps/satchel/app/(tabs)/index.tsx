@@ -19,6 +19,9 @@ import { homeCountryFor } from '../../src/core/arrival.ts';
 import { tripDrivingBanners } from '../../src/core/driving.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
+import { usePersisted } from '../../src/state/persisted.ts';
+import { chosenTrip, FOCUS_TRIP_KEY, NO_FOCUS } from '../../src/core/tripfocus.ts';
+import { TripSwitcher } from '../../src/ui/TripSwitcher.tsx';
 import { space } from '../../src/theme/tokens.ts';
 import { ArrivalHomeCard } from '../../src/ui/ArrivalCard.tsx';
 import { DayBriefCard } from '../../src/ui/DayBriefCard.tsx';
@@ -65,7 +68,9 @@ export default function TripsScreen() {
   const insets = useSafeAreaInsets();
   const today = todayIn(deviceZone());
   const list = useMemo(() => orderTrips(trips, today), [trips, today]);
-  const focus = useMemo(() => focusTrip(trips, today), [trips, today]);
+  // 1.0 feedback (multiple trips): the trip picked in Your trips, else the one on now or next.
+  const [pickedTrip, setPickedTrip] = usePersisted<string | null>(FOCUS_TRIP_KEY, NO_FOCUS);
+  const focus = useMemo(() => chosenTrip(trips, pickedTrip, focusTrip(trips, today)), [trips, pickedTrip, today]);
   const dest = useMemo(() => (focus ? destinationZone(focus) : null), [focus]);
   // T170: the trip on now (or starting within a week) gets a way into its Today timetable.
   const timetable = useMemo(() => timetableTrip(trips, today), [trips, today]);
@@ -136,6 +141,7 @@ export default function TripsScreen() {
               ) : null}
             </HeroHeader>
           </FadeInView>
+          <TripSwitcher trips={list} currentId={focus?.id ?? null} onPick={setPickedTrip} />
           <LanguageHintSlot />
           {loadError ? (
             <ErrorNotice

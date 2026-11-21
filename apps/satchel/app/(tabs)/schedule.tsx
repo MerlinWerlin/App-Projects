@@ -4,13 +4,15 @@
 // more than one trip a switcher sits at the top, opening on the trip on now, else the next, else the last
 // (src/core/dayview.ts scheduleTrip). The choice lasts while the app is open. Offline.
 // 1.0 feedback: the whole tab scrolls as one page (header included), so the last day's last plan is reachable.
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { scheduleTrip } from '../../src/core/dayview.ts';
 import { formatRange } from '../../src/core/format.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
+import { usePersisted } from '../../src/state/persisted.ts';
+import { chosenTrip, FOCUS_TRIP_KEY, NO_FOCUS } from '../../src/core/tripfocus.ts';
 import { space, typeScale } from '../../src/theme/tokens.ts';
 import { Chip } from '../../src/ui/kit.tsx';
 import { ItineraryStart, TripDays } from '../../src/ui/TripDays.tsx';
@@ -24,10 +26,11 @@ export default function ScheduleTab() {
   const { trips } = useTrips();
   const insets = useSafeAreaInsets();
   const now = useMinute();
-  const [picked, setPicked] = useState<string | null>(null);
+  // 1.0 feedback (multiple trips): the same pick as Home's Your trips row, kept on the phone.
+  const [picked, setPicked] = usePersisted<string | null>(FOCUS_TRIP_KEY, NO_FOCUS);
   const sorted = useMemo(() => [...trips].sort((a, b) => (a.startDate < b.startDate ? -1 : a.startDate > b.startDate ? 1 : 0)), [trips]);
   const fallback = useMemo(() => scheduleTrip(trips, now), [trips, now]);
-  const trip = sorted.find((x) => x.id === picked) ?? fallback;
+  const trip = chosenTrip(sorted, picked, fallback);
 
   // 1.0 feedback (scroll): the title, the trip switcher and the reminders offer scroll with the day, as one page.
   const head = (
