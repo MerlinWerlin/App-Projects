@@ -17,4 +17,4 @@ appId: ${APP_ID}
     end: 50%, 25%
     duration: 600
 - waitForAnimationToEnd
-- takeScreenshot: remote-lower-${MODE}
+- takeScreenshot: remote-lower

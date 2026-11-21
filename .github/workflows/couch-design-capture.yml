@@ -84,9 +84,11 @@ jobs:
           export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
           for MODE in light dark; do
             xcrun simctl ui "$DEVICE" appearance "$MODE"
-            (cd "$OUT" && maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" -e MODE="$MODE" "$GITHUB_WORKSPACE/apps/couch/tools/capture/remote-lower.yaml") || echo "maestro failed for $MODE"
+            (cd "$OUT" && maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" "$GITHUB_WORKSPACE/apps/couch/tools/capture/remote-lower.yaml") || echo "maestro failed for $MODE"
+            # Maestro writes the shot next to the flow or in the working folder, depending on version.
+            SHOT=$(find "$OUT" "$GITHUB_WORKSPACE/apps/couch/tools/capture" "$HOME/.maestro/tests" -name 'remote-lower*.png' -newer "$OUT/remote-light.png" 2>/dev/null | head -1)
+            if [ -n "$SHOT" ]; then mv "$SHOT" "$OUT/remote-lower-$MODE.png"; else echo "no remote-lower shot for $MODE"; fi
           done
-          find "$OUT" -maxdepth 3 -name 'remote-lower-*.png' -exec cp {} "$OUT/" \; 2>/dev/null || true
           mkdir -p "$OUT/jpg"
           for F in "$OUT"/*.png; do sips -s format jpeg -s formatOptions 78 -Z 1300 "$F" --out "$OUT/jpg/$(basename "${F%.png}").jpg" > /dev/null; done
           printf 'Source: %s\nSimulator captures (%s), demo TVs via EXPO_PUBLIC_COUCH_CAPTURE=1.\n' "$GITHUB_SHA" "$DEVICE" > "$OUT/jpg/README.txt"
