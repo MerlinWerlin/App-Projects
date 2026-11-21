@@ -18,10 +18,9 @@ appId: com.jared797.linework
 - waitForAnimationToEnd:
     timeout: 5000
 - takeScreenshot: trial-templates
+# The Letters category bubble (third in the row under the search field).
 - tapOn:
-    text: 'Letters'
-    index: 0
-    optional: true
+    point: '51%,26%'
 - waitForAnimationToEnd:
     timeout: 5000
 - takeScreenshot: trial-letters
@@ -41,6 +40,11 @@ appId: com.jared797.linework
 - tapOn: 'Outline'
 - waitForAnimationToEnd:
     timeout: 15000
+- tapOn:
+    text: 'Line art'
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 20000
 - takeScreenshot: trial-prepare
 - openLink: linework://lightbox?template=owl
 - tapOn:
