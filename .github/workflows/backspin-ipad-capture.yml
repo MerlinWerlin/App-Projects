@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       set:
-        description: 'ipad = release captures; iphone-design = every main screen on an iPhone, dark and light; iphone-fit = small and Pro Max iPhones plus the largest text size'
+        description: 'ipad = release captures; iphone-design = every main screen on an iPhone, dark and light; iphone-fit = small and Pro Max iPhones plus the largest text size; store = App Store screenshots on the Pro Max and 13-inch iPad'
         type: choice
-        options: [ipad, iphone-design, iphone-fit]
+        options: [ipad, iphone-design, iphone-fit, store]
         default: ipad
 
 permissions:
@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   capture:
-    if: inputs.set != 'iphone-design' && inputs.set != 'iphone-fit'
+    if: inputs.set == 'ipad' || inputs.set == ''
     runs-on: macos-latest
     timeout-minutes: 90
     defaults:
@@ -92,7 +92,7 @@ jobs:
   # Design review captures: real simulator renders of every main screen, dark and light, with seeded play data so
   # Home, Takes and the free-goes chip show real states. Storage is seeded by writing AsyncStorage's manifest.
   design:
-    if: inputs.set == 'iphone-design' || inputs.set == 'iphone-fit'
+    if: inputs.set == 'iphone-design' || inputs.set == 'iphone-fit' || inputs.set == 'store'
     runs-on: macos-latest
     timeout-minutes: 90
     defaults:
@@ -131,6 +131,8 @@ jobs:
           big=sorted([x for x in ph if re.fullmatch(r'iPhone 1[5-9] Pro Max',x['name'])],key=lambda x:x['name'])
           if small: env.write('SMALL='+small[0]['udid']+'\n'); print('Small:',small[0]['name'])
           if big: env.write('BIG='+big[-1]['udid']+'\n'); print('Pro Max:',big[-1]['name'])
+          pads=sorted([x for r,ds in devices.items() if 'iOS' in r for x in ds if 'iPad Pro 13' in x['name']],key=lambda x:x['name'])
+          if pads: env.write('IPAD='+pads[-1]['udid']+'\n'); print('iPad:',pads[-1]['name'])
           PY
       - name: Build
         run: |
@@ -140,7 +142,7 @@ jobs:
             CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/build.log" 2>&1 \
             || { tail -180 "$RUNNER_TEMP/build.log"; exit 1; }
       - name: Fit check (small iPhone, Pro Max, largest text size)
-        if: inputs.set == 'iphone-fit'
+        if: inputs.set == 'iphone-fit' || inputs.set == 'store'
         run: |
           # Light mode, no streak yet (the long "Start a streak today" label), on the narrowest iPhone, the Pro Max,
           # and the Pro at the largest accessibility text size. The same app build goes on every device.
@@ -169,28 +171,50 @@ jobs:
             sleep 11
             xcrun simctl io "$DEV" screenshot "$OUT/$1.png"
           }
-          for PAIR in "${SMALL:-}:small" "${BIG:-}:promax" "$UDID:pro-largest-text"; do
-            DEV=${PAIR%%:*}; L=${PAIR#*:}
-            if [ -z "$DEV" ]; then echo "No simulator for $L"; continue; fi
-            xcrun simctl boot "$DEV" 2>/dev/null || true; xcrun simctl bootstatus "$DEV" -b
-            xcrun simctl install "$DEV" "$APP"
-            xcrun simctl status_bar "$DEV" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
-            xcrun simctl ui "$DEV" appearance light
-            if [ "$L" = "pro-largest-text" ]; then xcrun simctl ui "$DEV" content_size accessibility-extra-extra-extra-large; fi
-            seed 0
-            route "$L-01-home-start-a-streak" ""
-            route "$L-02-round" "round?mode=pack&line=wa72b302"
-            route "$L-03-packs" "packs"
-            route "$L-05-party" "party"
-            route "$L-06-takes" "takes"
-            route "$L-07-settings" "settings"
-            route "$L-08-plus" "plus"
-            route "$L-09-listen" "round?mode=pack&line=wa72b302&preview=listen"
-            route "$L-11-score" "round?mode=pack&line=wa72b302&preview=reveal"
-            seed 3
-            route "$L-01-home-streak" ""
-            xcrun simctl shutdown "$DEV" 2>/dev/null || true
-          done
+          if [ "${{ inputs.set }}" = "store" ]; then
+            # App Store screenshots: light mode, a 4-day streak, on the 6.9-inch iPhone (1320x2868) and 13-inch iPad.
+            for PAIR in "${BIG:-}:iphone" "${IPAD:-}:ipad"; do
+              DEV=${PAIR%%:*}; L=${PAIR#*:}
+              if [ -z "$DEV" ]; then echo "No simulator for $L"; exit 1; fi
+              xcrun simctl boot "$DEV" 2>/dev/null || true; xcrun simctl bootstatus "$DEV" -b
+              xcrun simctl install "$DEV" "$APP"
+              xcrun simctl status_bar "$DEV" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+              xcrun simctl ui "$DEV" appearance light
+              seed 4
+              route "$L-01-score" "round?mode=pack&line=twbd3749&preview=reveal"
+              route "$L-02-say" "round?mode=pack&line=twbd3749"
+              route "$L-03-listen" "round?mode=pack&line=twbd3749&preview=listen"
+              route "$L-04-copy" "round?mode=pack&line=twbd3749&preview=copy"
+              route "$L-05-party" "party"
+              route "$L-06-home" ""
+              route "$L-07-packs" "packs"
+              route "$L-08-plus" "plus"
+              xcrun simctl shutdown "$DEV" 2>/dev/null || true
+            done
+          else
+            for PAIR in "${SMALL:-}:small" "${BIG:-}:promax" "$UDID:pro-largest-text"; do
+              DEV=${PAIR%%:*}; L=${PAIR#*:}
+              if [ -z "$DEV" ]; then echo "No simulator for $L"; continue; fi
+              xcrun simctl boot "$DEV" 2>/dev/null || true; xcrun simctl bootstatus "$DEV" -b
+              xcrun simctl install "$DEV" "$APP"
+              xcrun simctl status_bar "$DEV" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+              xcrun simctl ui "$DEV" appearance light
+              if [ "$L" = "pro-largest-text" ]; then xcrun simctl ui "$DEV" content_size accessibility-extra-extra-extra-large; fi
+              seed 0
+              route "$L-01-home-start-a-streak" ""
+              route "$L-02-round" "round?mode=pack&line=wa72b302"
+              route "$L-03-packs" "packs"
+              route "$L-05-party" "party"
+              route "$L-06-takes" "takes"
+              route "$L-07-settings" "settings"
+              route "$L-08-plus" "plus"
+              route "$L-09-listen" "round?mode=pack&line=wa72b302&preview=listen"
+              route "$L-11-score" "round?mode=pack&line=wa72b302&preview=reveal"
+              seed 3
+              route "$L-01-home-streak" ""
+              xcrun simctl shutdown "$DEV" 2>/dev/null || true
+            done
+          fi
           printf 'Source: %s\nFit check captures.\n' "$GITHUB_SHA" > "$OUT/README.txt"
       - name: Capture
         if: inputs.set == 'iphone-design'
