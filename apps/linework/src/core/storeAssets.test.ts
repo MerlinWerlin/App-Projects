@@ -1,5 +1,6 @@
-// T77: store screenshot set (store/). Checks sizes, captions in every app locale, and listing rules
-// (no other apps' names, no ranking claims, no store badges) across every text file in store/.
+// Store screenshot set (store/README.md). From 1.0.4 every phone screen is a real capture of the app
+// (store/capture/), framed by store/src/build.py. Checks sizes, captions in every app locale, that each shot has its
+// capture, and listing rules (no other apps' names, no ranking claims, no store badges) across store/ text files.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
@@ -22,29 +23,32 @@ function walk(dir: string): string[] {
     return statSync(p).isDirectory() ? walk(p) : [p];
   });
 }
-const svgs = (style: string) => readdirSync(join(STORE, 'svg', style)).filter((f) => f.endsWith('.svg')).sort();
+const shots = (dir: string) => readdirSync(join(STORE, 'jpg', dir)).filter((f) => f.endsWith('.jpg')).sort();
 
-// v2 (owner 24 Oct 2026): one pastel style (a); renders for the 6.9" and 6.5" iPhone slots; no hands anywhere.
-test('style a has 8 shots at 1320x2868', () => {
-  for (const style of ['a']) {
-    const files = svgs(style);
-    assert.ok(files.length >= 6, `style ${style} has ${files.length} shots`);
-    for (const f of files) {
-      const head = readFileSync(join(STORE, 'svg', style, f), 'utf8').slice(0, 400);
-      assert.match(head, /<svg[^>]*\swidth="1320"/, `${style}/${f} width`);
-      assert.match(head, /<svg[^>]*\sheight="2868"/, `${style}/${f} height`);
-      assert.match(head, /viewBox="0 0 1320 2868"/, `${style}/${f} viewBox`);
-    }
+/** [width, height] of a baseline or progressive JPEG. */
+function jpegSize(buf: Buffer): [number, number] | null {
+  let i = 2;
+  while (i < buf.length) {
+    const marker = buf[i + 1];
+    const len = buf.readUInt16BE(i + 2);
+    if (marker === 0xc0 || marker === 0xc2) return [buf.readUInt16BE(i + 7), buf.readUInt16BE(i + 5)];
+    i += 2 + len;
   }
-  assert.equal(svgs('a').length, 8);
-  assert.ok(!existsSync(join(STORE, 'svg', 'b')), 'style b was dropped');
+  return null;
+}
+
+/** [width, height] of a PNG (IHDR). */
+const pngSize = (buf: Buffer): [number, number] => [buf.readUInt32BE(16), buf.readUInt32BE(20)];
+
+test('8 shots in each size, the same names in both', () => {
+  assert.equal(shots('a').length, 8);
+  assert.deepEqual(shots('a-6.5'), shots('a'));
 });
 
 test('captions cover every shot in all 11 locales', () => {
   const c = JSON.parse(readFileSync(join(STORE, 'captions.json'), 'utf8')) as Captions;
   assert.deepEqual([...c.locales].sort(), [...LOCALES].sort());
-  const ids = svgs('a').map((f) => f.replace(/\.svg$/, ''));
-  assert.deepEqual(c.shots.map((s) => s.id).sort(), ids);
+  assert.deepEqual(c.shots.map((s) => `${s.id}.jpg`), shots('a'));
   for (const s of c.shots) {
     for (const l of LOCALES) {
       assert.ok(s.headline[l]?.trim(), `${s.id} headline ${l}`);
@@ -54,33 +58,41 @@ test('captions cover every shot in all 11 locales', () => {
   }
   for (const l of LOCALES) assert.equal(c.localeInfo[l].status, l === 'en' ? 'source' : 'machine', l);
   assert.equal(c.localeInfo.ar.dir, 'rtl');
-  assert.ok(c.localeInfo.ar.mirroring && c.localeInfo.ar.mirroring.length > 20, 'Arabic mirroring note');
 });
 
-test('renders, when present, are exactly 1320x2868 and the set stays small', () => {
+test('renders are exactly 1320x2868 and 1284x2778 and the set stays small', () => {
   let total = 0;
   const SIZES: Record<string, [number, number]> = { a: [1320, 2868], 'a-6.5': [1284, 2778] };
   for (const style of Object.keys(SIZES)) {
-    const dir = join(STORE, 'jpg', style);
-    if (!existsSync(dir)) continue;
-    for (const f of readdirSync(dir)) {
-      const buf = readFileSync(join(dir, f));
+    for (const f of shots(style)) {
+      const buf = readFileSync(join(STORE, 'jpg', style, f));
       total += buf.length;
       assert.equal(buf[0], 0xff, `${f} is a JPEG`);
-      // Find the SOF0/SOF2 marker and read height then width.
-      let i = 2, size: [number, number] | null = null;
-      while (i < buf.length) {
-        const marker = buf[i + 1];
-        const len = buf.readUInt16BE(i + 2);
-        if (marker === 0xc0 || marker === 0xc2) { size = [buf.readUInt16BE(i + 7), buf.readUInt16BE(i + 5)]; break; }
-        i += 2 + len;
-      }
-      assert.deepEqual(size, SIZES[style], `${style}/${f} size`);
+      assert.deepEqual(jpegSize(buf), SIZES[style], `${style}/${f} size`);
     }
   }
   const sheet = join(STORE, 'contact-sheet.png');
   if (existsSync(sheet)) assert.ok(statSync(sheet).size <= 600 * 1024, 'contact sheet <= 600 KB');
   assert.ok(total < 8 * 1024 * 1024, `renders total ${total} bytes`);
+});
+
+test('every shot is built from a real capture of the app (2.3.3)', () => {
+  const build = readFileSync(join(STORE, 'src', 'build.py'), 'utf8');
+  const captures = [...build.matchAll(/\('(\d\d-[a-z-]+)', '([a-z-]+)', (?:LIGHT|DARK)\)/g)];
+  assert.deepEqual(captures.map((m) => `${m[1]}.jpg`), shots('a'));
+  for (const [, , cap] of captures) {
+    const p = join(STORE, 'capture', 'shots', `${cap}.png`);
+    assert.ok(existsSync(p), `capture ${cap}.png`);
+    assert.deepEqual(pngSize(readFileSync(p)), [1320, 2868], `${cap}.png is a full Pro Max screen`);
+  }
+  assert.ok(!existsSync(join(STORE, 'svg')), 'the drawn mockups are gone');
+  assert.match(readFileSync(join(STORE, 'README.md'), 'utf8'), /real capture/i);
+});
+
+test('the listing uploads this set', () => {
+  const listing = JSON.parse(readFileSync(join(STORE, 'listing.json'), 'utf8'));
+  assert.equal(listing.screenshots.APP_IPHONE_67, 'apps/linework/store/jpg/a');
+  for (const iap of listing.inAppPurchases) assert.ok(existsSync(join(ROOT, '..', '..', iap.reviewScreenshot)), iap.productId);
 });
 
 test('no other apps, ranking claims or store badges in store/', () => {
@@ -90,40 +102,16 @@ test('no other apps, ranking claims or store badges in store/', () => {
     [/best[- ]?sell/i, 'ranking'], [/\branked\b/i, 'ranking'], [/\bdownload/i, 'badge'], [/App\s*Store/i, 'badge'],
     [/Google\s*Play/i, 'badge'], [/get it on/i, 'badge'], [/editor'?s choice/i, 'ranking'],
   ];
-  const text = walk(STORE).filter((p) => ['.svg', '.json', '.md', '.mjs'].includes(extname(p)));
-  assert.ok(text.length > 12);
+  const text = walk(STORE).filter((p) => ['.svg', '.json', '.md', '.mjs', '.py', '.yaml'].includes(extname(p)));
+  assert.ok(text.length > 8);
   for (const p of text) {
     const body = readFileSync(p, 'utf8');
-    // Platform names in channel metadata/provenance are not graphic badges.
-    // Keep the badge ban on rendered art, its builder and customer captions;
-    // competitor and ranking checks still cover every text file.
-    const promoSource = ['.svg', '.mjs'].includes(extname(p)) || p === join(STORE, 'captions.json');
+    // Platform names in channel metadata/provenance are not graphic badges. Keep the badge ban on the captions
+    // drawn into the shots; competitor and ranking checks still cover every text file.
+    const promoSource = p === join(STORE, 'captions.json');
     for (const [re, kind] of banned) {
       if (kind === 'badge' && !promoSource) continue;
       assert.ok(!re.test(body), `${kind} ${re} in ${p.slice(ROOT.length + 1)}`);
     }
-  }
-});
-
-test('shots draw no hands, fingers or pencil-holding hands (owner 24 Oct 2026)', () => {
-  const build = readFileSync(join(STORE, 'src', 'build.mjs'), 'utf8');
-  assert.ok(!/pencilHand|finger\(|function finger/.test(build), 'hand drawing helpers are gone');
-  for (const f of svgs('a')) {
-    const svg = readFileSync(join(STORE, 'svg', 'a', f), 'utf8');
-    for (const c of ['#EDBE9C', '#D79F7B', '#B97F5C', '#F6D7C6']) assert.ok(!svg.includes(c), `${f} uses skin colour ${c}`);
-  }
-});
-
-test('the phone is an iPhone-style frame (Dynamic Island, no punch-hole camera)', () => {
-  for (const f of svgs('a')) {
-    const svg = readFileSync(join(STORE, 'svg', 'a', f), 'utf8');
-    assert.ok(svg.includes('width="128" height="38" rx="19"'), `${f} has the island`);
-    assert.ok(!svg.includes('cx="300" cy="34" r="13"'), `${f} has no punch-hole`);
-  }
-});
-
-test('every SVG says it is an illustrative mockup', () => {
-  for (const style of ['a']) for (const f of svgs(style)) {
-    assert.match(readFileSync(join(STORE, 'svg', style, f), 'utf8'), /Illustrative mockup, not a real-device capture/);
   }
 });

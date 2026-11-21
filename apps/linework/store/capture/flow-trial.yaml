@@ -1,0 +1,56 @@
+appId: com.jared797.linework
+---
+# Store captures, part 2: the 14-day trial is running (its start date is written to the app's storage before
+# launch, the same value the App Store trial purchase stores), so the library and outline mode are open. The
+# first-run guide is marked done in the same storage, so it does not cover the screens.
+- launchApp
+- extendedWaitUntil:
+    visible: 'Linework'
+    timeout: 60000
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: trial-home
+- tapOn:
+    point: '30%,93%'
+- waitForAnimationToEnd:
+    timeout: 2000
+- tapOn:
+    point: '30%,93%'
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: trial-templates
+# The Letters category bubble (third in the row under the search field).
+- tapOn:
+    point: '51%,26%'
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: trial-letters
+- tapOn:
+    text: Workshop
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: trial-workshop
+- openLink: linework://prepare?uri=${PHOTO}&w=1200&h=1400
+- tapOn:
+    text: 'Open'
+    optional: true
+- extendedWaitUntil:
+    visible: 'Outline'
+    timeout: 30000
+- tapOn: 'Outline'
+- waitForAnimationToEnd:
+    timeout: 15000
+- tapOn:
+    text: 'Line art'
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 20000
+- takeScreenshot: trial-prepare
+- openLink: linework://lightbox?template=owl
+- tapOn:
+    text: 'Open'
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: trial-lightbox
