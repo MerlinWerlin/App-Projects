@@ -21,5 +21,5 @@ Use TestFlight on your iPhone. The release candidate includes real Apple sandbox
 ## Layout
 - `src/core/` pure TS, tested (`npm test`, or `bun test src`).
 - `src/native/` guarded adapters (storage, Keychain/secure store, speech seam, import, haptics).
-- `app/` screens; `src/theme/theme.ts` holds every design token. Read `DESIGN.md` (the "Running order" design system) and `PRODUCT.md` before changing UI. `docs/STORE.md` listing copy. `docs/FEATURES.md` competitor scan and the feature map.
+- `app/` screens; `src/theme/theme.ts` holds every design token. Read `DESIGN.md` (the "Signal" design system) and `PRODUCT.md` before changing UI. `docs/STORE.md` listing copy. `docs/FEATURES.md` competitor scan and the feature map.
 - `.github/workflows/check.yml` installs, aligns Expo versions, typechecks, tests and bundles on every branch push.

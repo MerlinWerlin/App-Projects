@@ -192,18 +192,20 @@ function NextBand({ script, onOpen, onPrompt, onMenu }: { script: Script; onOpen
         ) : null}
       </Pressable>
       <View style={st.bandFoot}>
-        <View style={{ flex: 1 }} accessible accessibilityLabel={t('library.meta', { words, time })}>
-          <Text style={[TYPE.monument, { color: SIGN_INK }]} maxFontSizeMultiplier={1.2}>
+        <View style={st.bandTime} accessible accessibilityLabel={t('library.meta', { words, time })}>
+          <Text style={[TYPE.monument, { color: SIGN_INK }]} maxFontSizeMultiplier={1.2} numberOfLines={1}>
             {time}
           </Text>
           <Text style={[TYPE.footnote, st.bandPreview]} maxFontSizeMultiplier={1.5}>
             {t('library.words', { n: words })}
           </Text>
         </View>
-        <Btn label={t('library.menu.prompt')} icon="play" kind="onSign" onPress={() => onPrompt(script)} style={{ paddingHorizontal: SPACE.md }} />
-        <Pressable onPress={() => onMenu(script)} accessibilityRole="button" accessibilityLabel={t('library.more', { title })} hitSlop={6} style={({ pressed }) => [st.more, { opacity: pressed ? 0.5 : 1 }]}>
-          <Ionicons name="ellipsis-horizontal" size={22} color={SIGN_INK} />
-        </Pressable>
+        <View style={st.bandActions}>
+          <Btn label={t('library.menu.prompt')} icon="play" kind="onSign" onPress={() => onPrompt(script)} style={{ paddingHorizontal: SPACE.md, flexShrink: 1 }} />
+          <Pressable onPress={() => onMenu(script)} accessibilityRole="button" accessibilityLabel={t('library.more', { title })} hitSlop={6} style={({ pressed }) => [st.more, { opacity: pressed ? 0.5 : 1 }]}>
+            <Ionicons name="ellipsis-horizontal" size={22} color={SIGN_INK} />
+          </Pressable>
+        </View>
       </View>
     </Animated.View>
   );
@@ -258,7 +260,9 @@ const st = StyleSheet.create({
   bandTap: { paddingHorizontal: SPACE.gutter, gap: SPACE.xs },
   bandTitleRow: { flexDirection: 'row', alignItems: 'flex-start', gap: SPACE.sm },
   bandPreview: { color: '#3D3A2E' },
-  bandFoot: { flexDirection: 'row', alignItems: 'flex-end', gap: SPACE.xs, paddingLeft: SPACE.gutter, paddingRight: SPACE.sm, marginTop: SPACE.md },
+  bandFoot: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-end', columnGap: SPACE.xs, rowGap: SPACE.sm, paddingLeft: SPACE.gutter, paddingRight: SPACE.sm, marginTop: SPACE.md },
+  bandTime: { flexGrow: 1, flexShrink: 0 },
+  bandActions: { flexDirection: 'row', alignItems: 'center', gap: SPACE.xs },
   row: { paddingVertical: SPACE.md, paddingLeft: SPACE.gutter, paddingRight: SPACE.xxs, flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, minHeight: 72, borderBottomWidth: StyleSheet.hairlineWidth },
   titleLine: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   timeCol: { alignItems: 'flex-end', minWidth: 64, gap: 1 },
