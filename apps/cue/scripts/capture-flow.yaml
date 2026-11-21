@@ -32,5 +32,5 @@ appId: com.jared797.cue
     element:
       text: Restore purchase
     direction: DOWN
-    timeout: 20000
+    timeout: 90000
 - takeScreenshot: 06-purchase-actions
