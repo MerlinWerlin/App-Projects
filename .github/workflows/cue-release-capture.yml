@@ -101,12 +101,12 @@ jobs:
             xcrun simctl ui "$DEVICE" appearance "$APPEAR"
             xcrun simctl ui "$DEVICE" content_size "$SIZE"
             xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
-            MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=240000 python3 - "$DEVICE" "$RUNNER_TEMP/cue-captures/$KIND-$APPEAR" <<'PY' || RESULT=1
+            MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=480000 python3 - "$DEVICE" "$RUNNER_TEMP/cue-captures/$KIND-$APPEAR" <<'PY' || RESULT=1
           import os,signal,subprocess,sys
           command=['maestro','--device',sys.argv[1],'test','--test-output-dir',sys.argv[2],'--debug-output',sys.argv[2],'scripts/capture-flow.yaml']
           process=subprocess.Popen(command,start_new_session=True)
           try:
-              result=process.wait(timeout=420)
+              result=process.wait(timeout=720)
           except subprocess.TimeoutExpired:
               os.killpg(process.pid,signal.SIGTERM)
               try:
