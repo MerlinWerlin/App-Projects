@@ -98,8 +98,8 @@ export const AmbientLayer = memo(function AmbientLayer({ kind, compact = false }
       // Big enough to read at a glance (a maple leaf, a blossom, a lantern), smaller in a compact banner.
       const base = twinkle ? 12 : compact ? 16 : 22;
       const size = Math.round(base + rand(i, 1) * (twinkle ? 10 : compact ? 8 : 14));
-      // Keep to the right 65% of the banner, where the art is, away from the start of the title.
-      const x = box.w * (0.35 + 0.65 * ((i + rand(i, 2)) / n)) - size / 2;
+      // Keep to the right half of the banner, where the art is, so the bigger particles stay off most of the text.
+      const x = box.w * (0.48 + 0.52 * ((i + rand(i, 2)) / n)) - size / 2;
       const ms = twinkle ? 2400 + rand(i, 3) * 2200 : (motion === 'rise' ? 11000 : 9000) + rand(i, 3) * 7000;
       return {
         i,
