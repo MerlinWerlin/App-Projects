@@ -1,0 +1,23 @@
+appId: com.jared797.linework
+---
+# Store captures, part 1 (store/README.md): a clean install, so Home shows the trial offer and Plus shows the
+# offer with the App Store price. Run by the capture branch's workflow on an iPhone Pro Max simulator (1320x2868).
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: 'Skip.*'
+    timeout: 90000
+- tapOn: 'Skip.*'
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: clean-home
+- openLink: linework://plus
+- tapOn:
+    text: 'Open'
+    optional: true
+- extendedWaitUntil:
+    visible: 'Restore purchases'
+    timeout: 20000
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: clean-plus

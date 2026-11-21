@@ -1,0 +1,51 @@
+appId: com.jared797.linework
+---
+# Store captures, part 2: the 14-day trial is running (its start date is written to the app's storage before
+# launch, the same value the App Store trial purchase stores), so the library and outline mode are open.
+- launchApp
+- tapOn:
+    text: 'Skip.*'
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: trial-home
+- tapOn:
+    point: '30%,93%'
+- waitForAnimationToEnd:
+    timeout: 2000
+- tapOn:
+    point: '30%,93%'
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: trial-templates
+- tapOn:
+    text: 'Letters'
+    index: 0
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 5000
+- takeScreenshot: trial-letters
+- tapOn:
+    text: Workshop
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 4000
+- takeScreenshot: trial-workshop
+- openLink: linework://prepare?uri=${PHOTO}&w=1200&h=1400
+- tapOn:
+    text: 'Open'
+    optional: true
+- extendedWaitUntil:
+    visible: 'Outline'
+    timeout: 30000
+- tapOn: 'Outline'
+- waitForAnimationToEnd:
+    timeout: 15000
+- takeScreenshot: trial-prepare
+- openLink: linework://lightbox?template=owl
+- tapOn:
+    text: 'Open'
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: trial-lightbox

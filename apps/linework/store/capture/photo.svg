@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1400" viewBox="0 0 1200 1400">
+  <!-- Original still life drawn for Linework's store captures (a teapot, a cup and a lemon). Not a photograph. -->
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9DCC8"/><stop offset="1" stop-color="#D8C6AC"/></linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9C6B45"/><stop offset="1" stop-color="#6E4528"/></linearGradient>
+    <radialGradient id="pot" cx="0.35" cy="0.35" r="0.8"><stop offset="0" stop-color="#7FB3C9"/><stop offset="0.6" stop-color="#3F7E99"/><stop offset="1" stop-color="#244F63"/></radialGradient>
+    <radialGradient id="cup" cx="0.35" cy="0.3" r="0.9"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.7" stop-color="#E8E3DA"/><stop offset="1" stop-color="#B9B1A4"/></radialGradient>
+    <radialGradient id="lemon" cx="0.35" cy="0.35" r="0.75"><stop offset="0" stop-color="#FFF2A0"/><stop offset="0.6" stop-color="#F2C531"/><stop offset="1" stop-color="#C79312"/></radialGradient>
+    <radialGradient id="leaf" cx="0.3" cy="0.3" r="0.9"><stop offset="0" stop-color="#8CC26E"/><stop offset="1" stop-color="#3E7330"/></radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="1200" height="1400" fill="url(#wall)"/>
+  <rect y="980" width="1200" height="420" fill="url(#table)"/>
+  <rect y="980" width="1200" height="14" fill="#B7845A"/>
+  <ellipse cx="520" cy="1100" rx="330" ry="46" fill="#3A2414" opacity="0.45" filter="url(#soft)"/>
+  <ellipse cx="930" cy="1120" rx="150" ry="28" fill="#3A2414" opacity="0.45" filter="url(#soft)"/>
+  <ellipse cx="300" cy="1180" rx="120" ry="24" fill="#3A2414" opacity="0.45" filter="url(#soft)"/>
+  <!-- teapot -->
+  <path d="M760 760 C 880 700, 930 640, 960 560 L 985 575 C 960 680, 900 760, 800 820 Z" fill="url(#pot)"/>
+  <path d="M290 700 C 200 690, 170 820, 250 880 C 280 900, 310 900, 330 890 L 320 860 C 260 870, 230 800, 280 760 Z" fill="#2E6378"/>
+  <ellipse cx="530" cy="830" rx="290" ry="270" fill="url(#pot)"/>
+  <ellipse cx="530" cy="600" rx="170" ry="40" fill="#2B5C71"/>
+  <path d="M400 590 C 420 520, 640 520, 660 590 Z" fill="url(#pot)"/>
+  <circle cx="530" cy="510" r="34" fill="url(#pot)"/>
+  <ellipse cx="430" cy="720" rx="70" ry="110" fill="#FFFFFF" opacity="0.22" transform="rotate(-25 430 720)"/>
+  <path d="M300 860 Q 530 940 760 860" stroke="#E9DCC8" stroke-width="10" fill="none" opacity="0.7"/>
+  <rect x="400" y="1070" width="260" height="30" rx="14" fill="#244F63"/>
+  <!-- cup and saucer -->
+  <ellipse cx="930" cy="1100" rx="160" ry="34" fill="url(#cup)"/>
+  <path d="M830 960 L 1030 960 C 1025 1060, 980 1090, 930 1090 C 880 1090, 835 1060, 830 960 Z" fill="url(#cup)"/>
+  <ellipse cx="930" cy="960" rx="100" ry="22" fill="#7A4A26"/>
+  <path d="M1030 985 C 1090 980, 1090 1050, 1020 1050" stroke="#D9D2C6" stroke-width="16" fill="none"/>
+  <!-- lemon and leaf -->
+  <path d="M215 1110 C 230 1020, 380 1010, 400 1100 C 410 1160, 240 1190, 215 1110 Z" fill="url(#lemon)"/>
+  <path d="M390 1095 l 22 -8 l -10 20 Z" fill="#B88710"/>
+  <path d="M300 1040 C 300 960, 380 930, 430 950 C 410 1010, 360 1045, 300 1040 Z" fill="url(#leaf)"/>
+  <path d="M300 1040 C 340 1000, 380 975, 430 950" stroke="#2C5A22" stroke-width="5" fill="none"/>
+</svg>
