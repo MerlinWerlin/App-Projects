@@ -145,7 +145,8 @@ export function InsetRow({
         />
       ) : null}
       {icon ? <IconBubble icon={icon} fill={iconFill} color={iconColor} /> : null}
-      <View style={{ flex: 1, flexShrink: 1 }}>
+      {/* minWidth: a long detail ("Phone language (English)") wraps instead of squeezing the title mid-word */}
+      <View style={{ flex: 1, flexShrink: 1, minWidth: '40%' }}>
         <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('body'), { color: c.graphite }]}>
           {title}
         </Text>
@@ -156,7 +157,7 @@ export function InsetRow({
         ) : null}
       </View>
       {detail ? (
-        <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('body'), { color: c.muted, flexShrink: 1, maxWidth: '55%', textAlign: 'auto' }]}>
+        <Text maxFontSizeMultiplier={maxFontScaleV2} style={[text('body'), { color: c.muted, flexShrink: 1, textAlign: 'auto' }]}>
           {detail}
         </Text>
       ) : null}
