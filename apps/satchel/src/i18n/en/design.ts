@@ -11,6 +11,7 @@ export const design = {
   'design.trips.countdownTomorrow': '{place} tomorrow',
   'design.trips.countdownToday': 'Today: {place}',
   'design.trips.countdownActive': 'Day {day} of {total} in {place}',
+  'design.trips.countdownActiveTitle': 'Day {day} of {total}: {place}',
   'design.trips.countdownBody': '{trip} · {range}',
   'design.trips.more': 'More',
 

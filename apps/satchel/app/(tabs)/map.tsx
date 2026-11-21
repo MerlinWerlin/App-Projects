@@ -1025,7 +1025,6 @@ export default function MapScreen() {
           fallbackTitle={t('map.noMapTitle')}
           fallbackBody={t('map.noMapBody')}
           offlineTiles={offlineTiles}
-          limitZoom={net === 'offline'}
           onRegionChange={onRegionChange}
           lines={isShown(layers.prefs, 'route') ? layer.lines : NO_LINES}
           fit={layer.fit}

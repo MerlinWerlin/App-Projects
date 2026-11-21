@@ -1,0 +1,37 @@
+# Proof for Jared's 1.0 feedback (Satchel), at the largest text size (set by the workflow with simctl ui
+# content_size): every tab label, SOS included, on one line; no split words on the Emergency tab; and the Itinerary
+# tab scrolls as one page to the end of a busy day (it used to scroll only in a thin box under a fixed header).
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+- waitForAnimationToEnd:
+    timeout: 15000
+- takeScreenshot: z4-tabs-largest-text
+- openLink: satchel://emergency
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: z5-emergency-largest-text
+- scroll
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: z6-emergency-largest-text-2
+- scroll
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: z7-emergency-largest-text-3
+- scroll
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: z8-emergency-largest-text-4
+- openLink: satchel://schedule
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: s0-itinerary-largest-text
+- repeat:
+    times: 8
+    commands:
+      - scroll
+- waitForAnimationToEnd:
+    timeout: 3000
+- takeScreenshot: s1-itinerary-largest-text-end

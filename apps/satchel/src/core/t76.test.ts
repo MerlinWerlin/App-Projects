@@ -31,7 +31,10 @@ test('position picker draws the downloaded city tiles the Map tab uses, picked b
   assert.match(src, /pickCityFor\(view\.lat, view\.lon, installed\)/);
   assert.match(src, /offlineTilesFor\(offlineCity\)/);
   assert.match(src, /offlineTiles=\{offlineTiles\}/);
-  assert.match(src, /limitZoom=\{net === 'offline'\}/);
+  // 1.0 feedback: the zoom cap applies whenever city tiles are drawn (they replace the system map), so no flag.
+  assert.doesNotMatch(src, /limitZoom/);
+  assert.match(read('../native/maps.tsx'), /cameraZoomRange=\{tiles && zoomCap/);
+  assert.match(read('../native/maps.tsx'), /maxZoomLevel=\{tiles \? tiles\.maxZoom : undefined\}/);
   assert.match(src, /onRegionChange=/);
   assert.match(src, /cityMapsChanged\.subscribe\(load\)/, 'a city downloaded or deleted meanwhile is picked up');
   // the map adapter is what turns offlineTiles into a LocalTile overlay

@@ -14,7 +14,7 @@ import type { Key } from '../i18n/en.ts';
 import { callNumber } from '../native/contacts.ts';
 import { useApp } from '../state/app.tsx';
 import { essentials, fonts, radius, shadowOf, space, type Theme } from '../theme/tokens.ts';
-import { IconBadge, type IconName, type Tone } from './hero.tsx';
+import { IconBadge, type IconName, type Tone, FitWordsText } from './hero.tsx';
 import { PressableScale } from './kit.tsx';
 
 export type CardVariant = 'themed' | 'essentials';
@@ -104,7 +104,7 @@ export function EmergencyCardView({ variant, row, card, onCall, medicalShown, on
         <IconBadge name={icon} tone="danger" />
         <View style={{ flex: 1, gap: 2 }}>
           <Text style={{ fontFamily: fonts.display, fontSize: 36, color: c.onStrong, fontVariant: ['tabular-nums'] }}>{number}</Text>
-          <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: c.onStrong }}>{label}</Text>
+          <FitWordsText key={label} text={label} style={{ fontFamily: fonts.bodyBold, fontSize: 16, lineHeight: 21, color: c.onStrong }} />
           {extra}
         </View>
         <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
@@ -114,7 +114,7 @@ export function EmergencyCardView({ variant, row, card, onCall, medicalShown, on
     ) : (
       <>
         <Text style={{ fontFamily: fonts.display, fontSize: 36, color: c.onStrong, fontVariant: ['tabular-nums'] }}>{number}</Text>
-        <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: c.onStrong }}>{label}</Text>
+        <FitWordsText key={label} text={label} style={{ fontFamily: fonts.bodyBold, fontSize: 16, lineHeight: 21, color: c.onStrong }} />
         {extra}
       </>
     );

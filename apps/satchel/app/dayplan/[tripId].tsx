@@ -41,7 +41,6 @@ import { routeToday } from '../../src/core/triproute.ts';
 import { listInstalled, offlineTilesFor } from '../../src/native/cityMaps.ts';
 import { locateOnce } from '../../src/native/location.ts';
 import { SatchelMap, type MapFit, type MapLine, type MapPin } from '../../src/native/maps.tsx';
-import { useNetworkStatus } from '../../src/native/network.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
@@ -78,7 +77,6 @@ function DayPlanView({ trip, day }: { trip: Trip; day: string }) {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const { saveTrip } = useTrips();
-  const net = useNetworkStatus();
   const [storedPrefs] = usePersisted<AirportPrefs>(AIRPORT_PREFS_KEY, DEFAULT_AIRPORT_PREFS);
   const airportPrefs = useMemo(() => normaliseAirportPrefs(storedPrefs), [storedPrefs]);
   const [mode, setMode] = useState<'hotel' | 'here'>('hotel');
@@ -272,7 +270,6 @@ function DayPlanView({ trip, day }: { trip: Trip; day: string }) {
                 fallbackTitle={t('dayplan.map.noMapTitle')}
                 fallbackBody={t('dayplan.map.noMapBody')}
                 offlineTiles={offlineTiles}
-                limitZoom={net === 'offline'}
                 lines={lines}
                 fit={fit}
               />

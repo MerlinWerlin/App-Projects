@@ -38,7 +38,9 @@ test('store listing: the copy says no ads, no tracking, no account, and says ver
 
 test('store listing: 1.0.0 states the free trial and one-time unlock, and credits the map and weather data', () => {
   const d = get('ios:Description').text;
-  assert.match(d, /Free 7-day trial, then a one-time A\$2\.99 unlock\. No subscription\./);
+  // App Review pass: no price in the text (every storefront shows its own local price on the page).
+  assert.match(d, /Free 7-day trial, then a one-time unlock\. No subscription\./);
+  assert.doesNotMatch(d, /\$\s?\d|AUD|USD/);
   assert.doesNotMatch(STORE, /Satchel Plus/);
   assert.match(d, /© OpenStreetMap contributors/);
   assert.match(d, /MET Norway/);

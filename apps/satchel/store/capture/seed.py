@@ -79,10 +79,27 @@ def trip(start, now):
     it(id='f2', kind='flight', title='Osaka Kansai → Sydney', carrier='Southern Skies', number='SK 6', seat='41A', ref='K7Q4XT',
        start=st(7, '21:30', KYOTO), end=st(8, '08:50', 'Australia/Sydney'), **{'from': KIX, 'to': SYD})
     return {
-        'id': TRIP, 'name': 'Tokyo & Kyoto', 'startDate': d(0), 'endDate': d(8), 'homeTz': 'Australia/Sydney',
+        'id': TRIP, 'name': 'Girls trip', 'startDate': d(0), 'endDate': d(8), 'homeTz': 'Australia/Sydney',
         'items': items, 'createdAt': now,
         'budget': {'currency': 'AUD', 'amount': 450000}, 'rates': {'JPY': 0.0102},
     }
+
+
+
+def second_trip(start, now):
+    """1.0 feedback (multiple trips): a later, invented second trip, so Home's Your trips row and the Itinerary
+    switcher have two trips to show."""
+    tid = 'bali-mum'
+    d = lambda n: (start + dt.timedelta(days=n)).isoformat()
+    st = lambda n, hm, tz='Asia/Makassar': {'local': f'{d(n)}T{hm}', 'tz': tz}
+    items = [
+        {'id': 'b1', 'tripId': tid, 'kind': 'flight', 'title': 'Sydney → Denpasar', 'carrier': 'Southern Skies', 'number': 'SK 44',
+         'start': st(0, '10:15', 'Australia/Sydney'), 'end': st(0, '14:05'), 'attachments': []},
+        {'id': 'b2', 'tripId': tid, 'kind': 'hotel', 'title': 'Ubud Ricefield Villas', 'start': st(0, '16:00'), 'end': st(6, '11:00'), 'attachments': []},
+        {'id': 'b3', 'tripId': tid, 'kind': 'flight', 'title': 'Denpasar → Sydney', 'carrier': 'Southern Skies', 'number': 'SK 45',
+         'start': st(6, '15:30'), 'end': st(7, '00:40', 'Australia/Sydney'), 'attachments': []},
+    ]
+    return {'id': tid, 'name': 'Bali with Mum', 'startDate': d(0), 'endDate': d(7), 'homeTz': 'Australia/Sydney', 'items': items, 'createdAt': now}
 
 
 def boarding_pass(path):
@@ -136,7 +153,7 @@ def main():
         'medicalNotes': 'No known allergies. Blood type O+.',
     }
     keys = {
-        'satchel.trips.v1': json.dumps([t], ensure_ascii=False),
+        'satchel.trips.v1': json.dumps([t, second_trip(start + dt.timedelta(days=96), now)], ensure_ascii=False),
         'satchel.seeded.v1': '1',
         'satchel.demoJournal.v1': '1',
         'satchel.welcome.done.v1': 'true',

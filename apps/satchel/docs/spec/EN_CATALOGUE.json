@@ -6362,5 +6362,6 @@
  "citymaps.jumpA11y": "Show {city} on the map",
  "citymaps.jumpHint": "Moves the map to your downloaded {city} map",
  "licences.libreFranklin.what": "The body text.",
- "licences.barlowCondensed.what": "The headings and ticket numbers."
+ "licences.barlowCondensed.what": "The headings and ticket numbers.",
+ "design.trips.countdownActiveTitle": "Day {day} of {total}: {place}"
 }

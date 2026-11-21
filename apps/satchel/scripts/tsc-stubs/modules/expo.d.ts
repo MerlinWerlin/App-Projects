@@ -90,7 +90,7 @@ declare module 'expo-router' {
     headerTitleStyle?: { fontFamily?: string; fontWeight?: TextStyle['fontWeight']; fontSize?: number; color?: string };
     headerShadowVisible?: boolean;
     sceneStyle?: StyleProp<ViewStyle>;
-    tabBarLabel?: string;
+    tabBarLabel?: string | ((props: { focused: boolean; color: string; position?: string; children?: string }) => ReactNode);
     tabBarAccessibilityLabel?: string;
     tabBarHideOnKeyboard?: boolean;
     tabBarActiveTintColor?: string;

@@ -3,8 +3,12 @@
 // (swipe sideways) with the day as a timetable (time column, rail, blocks sized by length, free time, Now and Next)
 // and tonight's stay. `ItineraryStart` is the friendly "Add your itinerary" state with every way to bring plans in.
 // Logic in src/core/dayview.ts; offline.
+// 1.0 feedback ("I can't scroll down... the tiniest box"): the whole screen is one vertical scroll. The header the
+// screen passes in, Today / Tomorrow, the day strip and the day all move together; the day pages still swipe
+// sideways, and the pager is as tall as the day on show (each page measures itself), so the last plan is always
+// reachable on any phone. Before, only the day scrolled, in whatever space the fixed header left.
 import { useRouter } from 'expo-router';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState, type ReactNode } from 'react';
 import { AccessibilityInfo, FlatList, ScrollView, Text, useWindowDimensions, View, type NativeScrollEvent, type NativeSyntheticEvent } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { dayStrip, daySchedule, openingDay, todayTomorrow, tripToday } from '../core/dayview.ts';
@@ -19,10 +23,9 @@ import { Body, Button, EmptyState, PressableScale } from './kit.tsx';
 import { DayStrip, FreeRow, lookKey, TimetableBlock } from './timetable.tsx';
 import { useMinute } from './TripPass.tsx';
 
-function DayPage({ trip, date, now, width, inTab }: { trip: Trip; date: string; now: number; width: number; inTab?: boolean }) {
+function DayPage({ trip, date, now, width, onHeight }: { trip: Trip; date: string; now: number; width: number; onHeight: (date: string, h: number) => void }) {
   const { t, theme, lang } = useApp();
   const router = useRouter();
-  const insets = useSafeAreaInsets();
   const s = useMemo(() => daySchedule(trip, date, now), [trip, date, now]);
   const today = tripToday(trip, now);
   const rel = date === today ? t('today.heading.today') : date === addDays(today, 1) ? t('today.heading.tomorrow') : date === addDays(today, -1) ? t('today.heading.yesterday') : '';
@@ -32,7 +35,11 @@ function DayPage({ trip, date, now, width, inTab }: { trip: Trip; date: string; 
   const lastKey = blocks.length ? blocks[blocks.length - 1].key : '';
   const onlyFree = s.rows.length === 1 && s.rows[0].type === 'free' && s.rows[0].where === 'day';
   return (
-    <ScrollView style={{ width }} contentContainerStyle={{ paddingHorizontal: space.l, paddingTop: space.m, paddingBottom: (inTab ? 0 : insets.bottom) + space.xxl, gap: space.m }}>
+    <View
+      // flex-start: the page takes its own height (not the pager's), so it can measure itself.
+      style={{ width, alignSelf: 'flex-start', paddingHorizontal: space.l, paddingTop: space.m, paddingBottom: space.l, gap: space.m }}
+      onLayout={(e) => onHeight(date, e.nativeEvent.layout.height)}
+    >
       {/* Day heading */}
       <View accessible accessibilityRole="header" style={{ gap: 2 }}>
         {/* Design pass 3: no label above the date; "Today" / "Tomorrow" leads the line under it, in the red overprint. */}
@@ -109,16 +116,22 @@ function DayPage({ trip, date, now, width, inTab }: { trip: Trip; date: string; 
         icon="add"
         onPress={() => router.push({ pathname: '/itinerary', params: { tripId: trip.id, day: date } })}
       />
-    </ScrollView>
+    </View>
   );
 }
 
 /** Today / Tomorrow, the day strip and the swipeable day pages for one trip that has plans. */
-export function TripDays({ trip, initialDay, inTab }: { trip: Trip; initialDay?: string; inTab?: boolean }) {
+export function TripDays({ trip, initialDay, inTab, header }: { trip: Trip; initialDay?: string; inTab?: boolean; header?: ReactNode }) {
   const { t, theme, lang, reduceMotion } = useApp();
   const router = useRouter();
-  const { width } = useWindowDimensions();
+  const { width, height: screenH } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
   const now = useMinute();
+  // Each day page's own height, so the pager is exactly as tall as the day on show.
+  const [heights, setHeights] = useState<Record<string, number>>({});
+  const onHeight = useCallback((date: string, h: number) => {
+    setHeights((cur) => (Math.abs((cur[date] ?? 0) - h) < 1 ? cur : { ...cur, [date]: h }));
+  }, []);
   const strip = useMemo(() => dayStrip(trip, now), [trip, now]);
   const dates = useMemo(() => strip.map((d) => d.date), [strip]);
   const [selected, setSelected] = useState<string | null>(initialDay || null);
@@ -151,7 +164,11 @@ export function TripDays({ trip, initialDay, inTab }: { trip: Trip; initialDay?:
   ];
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.paper }}>
+    <ScrollView
+      style={{ flex: 1, backgroundColor: theme.paper }}
+      contentContainerStyle={{ paddingBottom: (inTab ? 0 : insets.bottom) + space.xxl }}
+    >
+      {header}
       {/* Today / Tomorrow */}
       <View style={{ flexDirection: 'row', gap: space.s, paddingHorizontal: space.l, paddingTop: space.m }} accessibilityRole="tablist">
         {quick.map((q) => {
@@ -201,6 +218,7 @@ export function TripDays({ trip, initialDay, inTab }: { trip: Trip; initialDay?:
       <FlatList
         key={trip.id}
         ref={pager}
+        style={{ height: heights[current] ?? screenH, flexGrow: 0 }}
         data={dates}
         keyExtractor={(d) => d}
         horizontal
@@ -213,9 +231,9 @@ export function TripDays({ trip, initialDay, inTab }: { trip: Trip; initialDay?:
         initialNumToRender={1}
         maxToRenderPerBatch={2}
         extraData={now}
-        renderItem={({ item: date }) => <DayPage trip={trip} date={date} now={now} width={width} inTab={inTab} />}
+        renderItem={({ item: date }) => <DayPage trip={trip} date={date} now={now} width={width} onHeight={onHeight} />}
       />
-    </View>
+    </ScrollView>
   );
 }
 

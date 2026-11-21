@@ -21,7 +21,7 @@ permissions:
 jobs:
   capture:
     runs-on: macos-latest
-    timeout-minutes: 100
+    timeout-minutes: 150
     defaults:
       run:
         working-directory: apps/satchel
@@ -75,7 +75,8 @@ jobs:
           echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
           pip3 install --quiet --break-system-packages pillow qrcode
       - name: Simulator checks (A) and store captures (B), light and dark
-        timeout-minutes: 50
+        # 1.0 proof flows (city zoom, largest text, two trips) plus the Xcode 27 build need more than 50.
+        timeout-minutes: 110
         run: |
           set -uo pipefail
           OUT="$RUNNER_TEMP/satchel-store-captures"; mkdir -p "$OUT/raw" "$OUT/verify"
@@ -123,8 +124,19 @@ jobs:
               echo "No $MODE captures on try $TRY (driver start-up?); retrying once"
             done
           done
+          # Proof runs after the store shots (they don't change those): the three offline city packs zoomed as far as
+          # the map allows, then the tab bar at the largest text size.
+          xcrun simctl ui "$DEVICE" appearance light
+          xcrun simctl terminate "$DEVICE" "$BUNDLE" 2>/dev/null || true
+          if python3 maps.py --data "$DATA"; then
+            maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro-zoom" zoom-flow.yaml || echo "zoom flow reported a failure"
+          else echo "city packs not installed; zoom proof skipped"; fi
+          xcrun simctl terminate "$DEVICE" "$BUNDLE" 2>/dev/null || true
+          xcrun simctl ui "$DEVICE" content_size accessibility-extra-extra-extra-large || true
+          maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro-tabs" tabs-flow.yaml || echo "tabs flow reported a failure"
+          xcrun simctl ui "$DEVICE" content_size large || true
           # Maestro writes takeScreenshot files under its --test-output-dir (<run>/<flow>/takeScreenshot/).
-          find "$OUT"/maestro-light "$OUT"/maestro-dark -name '*.png' -path '*takeScreenshot*' -exec cp {} "$OUT/raw/" \;
+          find "$OUT"/maestro-light "$OUT"/maestro-dark "$OUT"/maestro-zoom "$OUT"/maestro-tabs -name '*.png' -path '*takeScreenshot*' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
           ls -la "$OUT/raw" "$OUT/verify"
           python3 contact.py --raw "$OUT/raw" --out "$OUT/contact-sheet.jpg" || echo "contact sheet failed"
           python3 contact.py --raw "$OUT/verify" --out "$OUT/verify-sheet.jpg" --cols 6 || echo "verify sheet failed"

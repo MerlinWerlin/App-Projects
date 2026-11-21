@@ -286,8 +286,14 @@ export function DayStrip({ days, selected, onPick }: { days: StripDay[]; selecte
               borderColor: d.today && !on ? theme.accentStrong : on ? theme.accentStrong : theme.line,
             }}
           >
-            <Text style={[typeScale.caption, { fontSize: 11, color: fg }]}>{wd}</Text>
-            <Text style={[typeScale.title, { color: fg, fontVariant: ['tabular-nums'] }]}>{num}</Text>
+            {/* 1.0 feedback: each label stays on one line in its fixed-width cell at any text size (it shrinks to fit;
+                VoiceOver reads the full date from the cell's label). */}
+            <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.6} maxFontSizeMultiplier={1.5} style={[typeScale.caption, { fontSize: 11, color: fg }]}>
+              {wd}
+            </Text>
+            <Text numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.6} maxFontSizeMultiplier={1.5} style={[typeScale.title, { color: fg, fontVariant: ['tabular-nums'] }]}>
+              {num}
+            </Text>
             {d.lead ? <Ionicons name={LOOK_ICON[d.lead]} size={14} color={on ? theme.onAccent : toneColours(theme, LOOK_TONE[d.lead]).fg} /> : <View style={{ height: 14 }} />}
           </PressableScale>
         );
