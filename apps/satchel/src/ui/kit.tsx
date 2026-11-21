@@ -1,15 +1,16 @@
 // Shared building blocks: Screen, Title, Body, Card, PressableScale, Button, EmptyState, ToggleRow.
 // Every control names itself to screen readers; touch targets are at least 48 pt; colours come from tokens.
-// T50: richer look (elevated cards with soft shadows, pill chips, display type scale, warm primary buttons with an
-// optional icon). Props are unchanged; new props are optional.
+// Design pass 3 ("paper ticket stock"): flat cards with a hairline edge, die-cut corners, carbon-ink primary buttons,
+// chips that fill like a punched ticket when chosen, the iOS switch for toggles. Haptics only where something commits
+// or a value ticks (selection), never on every tap. Props are unchanged; new props are optional.
 import { Ionicons } from '@expo/vector-icons';
 import { useRef, type ComponentProps, type ReactNode } from 'react';
-import { Animated, Pressable, ScrollView, Text, TextInput, View, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
+import { Animated, Pressable, ScrollView, Switch, Text, TextInput, View, type PressableProps, type StyleProp, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { haptic } from '../native/device.ts';
 import { useApp } from '../state/app.tsx';
-import { duration, pressScale } from '../theme/motion.ts';
-import { elevated, fonts, radius, shadowOf, space, TOUCH, typeScale } from '../theme/tokens.ts';
+import { duration, easeOut, pressScale } from '../theme/motion.ts';
+import { elevated, fonts, radius, space, TOUCH, typeScale } from '../theme/tokens.ts';
 import { SpotArt, type SpotKind } from './illustrations/index.tsx';
 import { Mascot, type MascotPose } from './Mascot.tsx';
 
@@ -58,27 +59,38 @@ export function Card({ children, style }: { children: ReactNode; style?: StylePr
 }
 
 /**
- * Pressable that scales gently on press (skipped with Reduce Motion) and taps a haptic.
- * `animate={false}` turns the scale off (low-battery essentials: no animation at all).
+ * Pressable that answers on press-in: scales to 0.97 in 120 ms ease-out (with Reduce Motion it dims instead of
+ * moving) and commits on release. `feedback` adds one haptic for a press that commits ('press') or a value that ticks
+ * ('selection'); plain navigation taps stay silent. `animate={false}` turns the press look off (low-battery
+ * essentials: no animation at all).
  */
-export function PressableScale(props: PressableProps & { children: ReactNode; animate?: boolean }) {
+export function PressableScale(props: PressableProps & { children: ReactNode; animate?: boolean; feedback?: 'press' | 'selection' }) {
   const { reduceMotion } = useApp();
   const scale = useRef(new Animated.Value(1)).current;
-  const { children, style, onPress, animate = true, ...rest } = props;
-  const to = (v: number) =>
-    reduceMotion || !animate ? undefined : Animated.timing(scale, { toValue: v, duration: duration.fast, useNativeDriver: true }).start();
+  const dim = useRef(new Animated.Value(1)).current;
+  const { children, style, onPress, animate = true, feedback, ...rest } = props;
+  const to = (v: number) => {
+    if (!animate) return;
+    if (reduceMotion) {
+      dim.setValue(v === 1 ? 1 : 0.7);
+      return;
+    }
+    Animated.timing(scale, { toValue: v, duration: duration.fast, easing: easeOut, useNativeDriver: true }).start();
+  };
   return (
     <Pressable
       {...rest}
       onPressIn={() => to(pressScale)}
       onPressOut={() => to(1)}
       onPress={(e) => {
-        haptic.tap();
+        if (feedback === 'press') haptic.press();
+        else if (feedback === 'selection') haptic.tap();
         onPress?.(e);
       }}
       hitSlop={8}
+      pressRetentionOffset={16}
     >
-      <Animated.View style={[{ minHeight: TOUCH, justifyContent: 'center', transform: [{ scale }] }, style as StyleProp<ViewStyle>]}>{children}</Animated.View>
+      <Animated.View style={[{ minHeight: TOUCH, justifyContent: 'center', opacity: dim, transform: [{ scale }] }, style as StyleProp<ViewStyle>]}>{children}</Animated.View>
     </Pressable>
   );
 }
@@ -86,8 +98,8 @@ export function PressableScale(props: PressableProps & { children: ReactNode; an
 type IconName = ComponentProps<typeof Ionicons>['name'];
 
 /**
- * primary: warm filled (accentStrong, AA with onAccent) with a soft shadow. secondary: sea tint. quiet: outlined card.
- * `icon` puts an Ionicons glyph before the label.
+ * primary: carbon ink fill (accentStrong, AA with onAccent; a destination theme tints it). secondary: ink outline.
+ * quiet: hairline outline. Die-cut corners, not pills. `icon` puts an Ionicons glyph before the label.
  */
 export function Button({
   label,
@@ -105,41 +117,41 @@ export function Button({
   const { theme } = useApp();
   const primary = kind === 'primary';
   const secondary = kind === 'secondary';
-  const fg = primary ? theme.onAccent : secondary ? theme.sea : theme.ink;
+  const fg = primary ? theme.onAccent : theme.ink;
   return (
     <PressableScale
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityHint={hint}
       onPress={onPress}
-      style={[
-        {
-          flexDirection: 'row',
-          gap: space.s,
-          backgroundColor: primary ? theme.accentStrong : secondary ? theme.seaSoft : theme.card,
-          borderRadius: radius.pill,
-          paddingHorizontal: space.xl,
-          borderWidth: primary || secondary ? 0 : 1,
-          borderColor: theme.line,
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-        primary ? shadowOf(theme, 'low') : null,
-      ]}
+      feedback={primary ? 'press' : undefined}
+      style={{
+        flexDirection: 'row',
+        gap: space.s,
+        minHeight: 50,
+        backgroundColor: primary ? theme.accentStrong : 'transparent',
+        borderRadius: radius.m,
+        paddingHorizontal: space.xl,
+        borderWidth: primary ? 0 : secondary ? 1.5 : 1,
+        borderColor: secondary ? theme.ink : theme.line,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
     >
       {icon ? (
         <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
           <Ionicons name={icon} size={18} color={fg} />
         </View>
       ) : null}
-      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, letterSpacing: 0.2, color: fg }}>{label}</Text>
+      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: fg }}>{label}</Text>
     </PressableScale>
   );
 }
 
 /**
- * Empty or nothing-found state: an illustration (T91 `art`, original spot art, decorative) or an icon badge, a title
- * (screen-reader header), a body with the next step, and an optional action. `art` wins over `icon`.
+ * Empty or nothing-found state, straight on the page (no box): the mascot, an illustration (T91 `art`, original spot
+ * art, decorative) or a plain glyph; a title (screen-reader header), a body with the next step, and an optional
+ * action. `mascot` wins over `art`, `art` over `icon`.
  */
 export function EmptyState({
   title,
@@ -159,45 +171,58 @@ export function EmptyState({
 }) {
   const { theme } = useApp();
   return (
-    <Card style={{ alignItems: 'flex-start', gap: space.m }}>
+    <View style={{ alignItems: 'flex-start', gap: space.s, paddingVertical: space.l }}>
       {mascot ? (
-        <Mascot pose={mascot} size={140} style={{ alignSelf: 'center' }} />
+        <Mascot pose={mascot} size={140} style={{ alignSelf: 'center', marginBottom: space.s }} />
       ) : art ? (
-        <View style={{ alignSelf: 'center' }}>
+        <View style={{ alignSelf: 'center', marginBottom: space.s }}>
           <SpotArt kind={art} size={132} />
         </View>
       ) : icon ? (
-        <View
-          accessibilityElementsHidden
-          importantForAccessibility="no-hide-descendants"
-          style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: theme.seaSoft, alignItems: 'center', justifyContent: 'center' }}
-        >
-          <Ionicons name={icon} size={26} color={theme.sea} />
+        <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+          <Ionicons name={icon} size={30} color={theme.muted} />
         </View>
       ) : null}
-      <Text accessibilityRole="header" style={[typeScale.title, { color: theme.ink }]}>
+      <Text accessibilityRole="header" style={[typeScale.displayM, { color: theme.ink }]}>
         {title}
       </Text>
       <Body muted>{body}</Body>
-      {action}
-    </Card>
+      {action ? <View style={{ alignSelf: 'stretch', marginTop: space.s }}>{action}</View> : null}
+    </View>
   );
 }
 
 export function ToggleRow({ label, hint, value, onChange }: { label: string; hint?: string; value: boolean; onChange: (v: boolean) => void }) {
   const { theme, t } = useApp();
   return (
-    <PressableScale
+    <Pressable
       accessibilityRole="switch"
       accessibilityLabel={label}
       accessibilityHint={hint}
       accessibilityState={{ checked: value }}
-      onPress={() => onChange(!value)}
-      style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}
+      accessibilityValue={{ text: value ? t('common.on') : t('common.off') }}
+      onPress={() => {
+        haptic.tap();
+        onChange(!value);
+      }}
+      style={{ minHeight: TOUCH, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.m }}
     >
-      <Body>{label}</Body>
-      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 16, color: value ? theme.ok : theme.muted }}>{value ? t('common.on') : t('common.off')}</Text>
-    </PressableScale>
+      <View style={{ flex: 1 }}>
+        <Body>{label}</Body>
+      </View>
+      {/* The iOS switch itself; the row is the one control screen readers hear. */}
+      <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+        <Switch
+          value={value}
+          onValueChange={(v) => {
+            haptic.tap();
+            onChange(v);
+          }}
+          trackColor={{ true: theme.ok, false: theme.line }}
+          ios_backgroundColor={theme.line}
+        />
+      </View>
+    </Pressable>
   );
 }
 
@@ -276,19 +301,20 @@ export function Chip({ label, selected, onPress, icon, a11yLabel, hint }: { labe
       accessibilityHint={hint}
       accessibilityState={{ selected, checked: selected }}
       onPress={onPress}
+      feedback="selection"
       style={{
         flexDirection: 'row',
         alignItems: 'center',
         gap: space.xs,
-        paddingHorizontal: space.l,
-        borderRadius: radius.pill,
-        borderWidth: selected ? 1.5 : 1,
-        borderColor: selected ? theme.accent : theme.line,
-        backgroundColor: selected ? theme.accentSoft : theme.cardRaised,
+        paddingHorizontal: space.m,
+        borderRadius: radius.s,
+        borderWidth: 1,
+        borderColor: selected ? theme.accentStrong : theme.line,
+        backgroundColor: selected ? theme.accentStrong : 'transparent',
       }}
     >
       {icon}
-      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: selected ? theme.accentInk : theme.ink }}>{label}</Text>
+      <Text style={{ fontFamily: fonts.bodyBold, fontSize: 15, color: selected ? theme.onAccent : theme.ink }}>{label}</Text>
     </PressableScale>
   );
 }
@@ -298,7 +324,7 @@ export function Warning({ text }: { text: string }) {
   return (
     <View
       accessibilityRole="alert"
-      style={{ flexDirection: 'row', gap: space.s, backgroundColor: theme.warnSoft, borderRadius: radius.m, borderLeftWidth: 4, borderLeftColor: theme.warn, padding: space.m }}
+      style={{ flexDirection: 'row', gap: space.s, backgroundColor: theme.warnSoft, borderRadius: radius.m, borderWidth: 1, borderColor: theme.warn, padding: space.m }}
     >
       <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
         <Ionicons name="alert-circle" size={20} color={theme.warn} />
@@ -310,5 +336,5 @@ export function Warning({ text }: { text: string }) {
 
 export function Label({ children }: { children: ReactNode }) {
   const { theme } = useApp();
-  return <Text style={[typeScale.caption, { fontSize: 13, color: theme.muted }]}>{children}</Text>;
+  return <Text style={[typeScale.caption, { color: theme.muted }]}>{children}</Text>;
 }

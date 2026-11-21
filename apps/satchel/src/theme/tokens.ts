@@ -61,93 +61,103 @@ export type Theme = {
   mapWayback: string;
   /** Hero gradients per tab: [top-left, bottom-right]. */
   hero: Record<HeroTone, readonly [string, string]>;
+  /** Ticket stocks: flat fills for ticket stubs (plans by kind, trip passes). ink and muted text are AA on each. */
+  stock: Record<Stock, string>;
 };
+
+export type Stock = 'buff' | 'mint' | 'salmon' | 'sky' | 'aqua' | 'white';
 
 /** Which hero gradient a screen uses. */
 export type HeroTone = 'trips' | 'wallet' | 'map' | 'emergency' | 'toilets';
 
+// Design pass 3 (Nov 2026, "paper ticket stock"): a cool grey board ground, flat ticket stocks, carbon ink and one
+// carbon-red overprint. Tab heads are solid deep stocks (no gradients: both stops are the same colour). Every pair
+// stays AA (src/theme/contrast.test.ts). Primary buttons are carbon ink (accentStrong), so red is left for the tint,
+// "now" and danger.
 export const light: Theme = {
   dark: false,
-  paper: '#F4F1EA',
-  card: '#FFFFFF',
-  line: '#DED8CC',
-  ink: '#14213D',
-  muted: '#5F6675',
-  accent: '#CC6A26',
-  accentSoft: '#FBE7D6',
-  sea: '#2A6F97',
-  ok: '#28714E',
-  warn: '#8F560B',
-  danger: '#B42318',
+  paper: '#E9EAE4',
+  card: '#F7F7F3',
+  line: '#C9CBC1',
+  ink: '#16191D',
+  muted: '#545961',
+  accent: '#C2301F',
+  accentSoft: '#F6DDD7',
+  sea: '#1D5A86',
+  ok: '#24663F',
+  warn: '#844F0A',
+  danger: '#B0251B',
   onAccent: '#FFFFFF',
-  scrim: 'rgba(20, 33, 61, 0.45)',
-  accentInk: '#9A4A14',
-  accentStrong: '#B4561C',
-  seaSoft: '#E3EEF5',
-  okSoft: '#E2F1E8',
-  dangerSoft: '#FBE4E1',
-  warnSoft: '#FBEFD9',
-  teal: '#17766F',
-  tealSoft: '#DDF0EC',
+  scrim: 'rgba(22, 25, 29, 0.45)',
+  accentInk: '#A12819',
+  accentStrong: '#16191D',
+  seaSoft: '#D9E5EF',
+  okSoft: '#D8E9DC',
+  dangerSoft: '#F7DCD8',
+  warnSoft: '#F3E4C4',
+  teal: '#12635C',
+  tealSoft: '#D3E8E3',
   cardRaised: '#FFFFFF',
-  shadow: '#14213D',
+  shadow: '#16191D',
   heroInk: '#FFFFFF',
-  heroMuted: '#EEF3F8',
-  heroAccent: '#FFC796',
-  heroWash: 'rgba(255, 255, 255, 0.14)',
-  heroChip: 'rgba(8, 16, 36, 0.24)',
-  heroPaper: '#FBF6EC',
+  heroMuted: '#E6EBE4',
+  heroAccent: '#F4D58A',
+  heroWash: 'rgba(255, 255, 255, 0.12)',
+  heroChip: 'rgba(0, 0, 0, 0.22)',
+  heroPaper: '#F3EBD3',
   mapPlan: '#6B3FA0',
   mapWayback: '#A3306A',
   hero: {
-    trips: ['#14213D', '#2A6F97'],
-    wallet: ['#7A3A10', '#A34D18'],
-    map: ['#1F5F86', '#17766F'],
-    emergency: ['#7A160E', '#B42318'],
-    toilets: ['#0F6A63', '#17766F'],
+    trips: ['#1F4A3A', '#1F4A3A'],
+    wallet: ['#6E2A1E', '#6E2A1E'],
+    map: ['#1C3F5E', '#1C3F5E'],
+    emergency: ['#9E1F17', '#9E1F17'],
+    toilets: ['#165A53', '#165A53'],
   },
+  stock: { buff: '#F1E2B8', mint: '#D3E7D0', salmon: '#F3D3C8', sky: '#D3E1F0', aqua: '#CDE6E2', white: '#FAFAF6' },
 };
 
 export const dark: Theme = {
   dark: true,
-  paper: '#0E1320',
-  card: '#161C2C',
-  line: '#2A3247',
-  ink: '#EEF1F7',
-  muted: '#A3ABBD',
-  accent: '#F29A5C',
-  accentSoft: '#3A2516',
-  sea: '#7DB7DA',
-  ok: '#5FBF8C',
-  warn: '#E0A050',
-  danger: '#F07167',
-  onAccent: '#14213D',
+  paper: '#111315',
+  card: '#1A1D20',
+  line: '#33373D',
+  ink: '#EDEEE8',
+  muted: '#A3A8AE',
+  accent: '#F06A55',
+  accentSoft: '#3A1F1A',
+  sea: '#82B6DB',
+  ok: '#6CC08F',
+  warn: '#E2A653',
+  danger: '#F2766B',
+  onAccent: '#111315',
   scrim: 'rgba(0, 0, 0, 0.6)',
-  accentInk: '#F29A5C',
-  accentStrong: '#F29A5C',
-  seaSoft: '#13293A',
-  okSoft: '#12291E',
-  dangerSoft: '#3A1614',
-  warnSoft: '#33240F',
-  teal: '#5CC8B8',
-  tealSoft: '#0F2A27',
-  cardRaised: '#1C2336',
+  accentInk: '#F58B79',
+  accentStrong: '#EDEEE8',
+  seaSoft: '#16283A',
+  okSoft: '#14281D',
+  dangerSoft: '#3A1714',
+  warnSoft: '#30240F',
+  teal: '#62C6B6',
+  tealSoft: '#11292A',
+  cardRaised: '#212428',
   shadow: '#000000',
   heroInk: '#FFFFFF',
-  heroMuted: '#C9D3E0',
-  heroAccent: '#F29A5C',
+  heroMuted: '#D5DAD3',
+  heroAccent: '#E9CD86',
   heroWash: 'rgba(255, 255, 255, 0.10)',
   heroChip: 'rgba(0, 0, 0, 0.28)',
-  heroPaper: '#D8D1C2',
+  heroPaper: '#D9CFB4',
   mapPlan: '#C4A2F2',
   mapWayback: '#F28DBF',
   hero: {
-    trips: ['#0B1428', '#1B4A66'],
-    wallet: ['#3A1C08', '#8A4214'],
-    map: ['#0E2C40', '#11534D'],
-    emergency: ['#3D0C08', '#8E1B12'],
-    toilets: ['#06302C', '#11554D'],
+    trips: ['#163528', '#163528'],
+    wallet: ['#4E1D14', '#4E1D14'],
+    map: ['#142D45', '#142D45'],
+    emergency: ['#6E140E', '#6E140E'],
+    toilets: ['#0F3F3A', '#0F3F3A'],
   },
+  stock: { buff: '#39321F', mint: '#20332A', salmon: '#3B2924', sky: '#202F40', aqua: '#1D3532', white: '#24272B' },
 };
 
 /** Low-battery essentials mode: pure black with white text, whatever the theme. */
@@ -163,11 +173,13 @@ export const brand = {
   dark: { bg: dark.paper, body: light.paper, flap: dark.accent, detail: dark.paper },
 } as const;
 
+// Barlow Condensed for titles and ticket numerals (printed-ticket figures), Libre Franklin (Franklin Gothic, the
+// railway and ticket face of the mascot's era) for text. Both SIL OFL.
 export const fonts = {
-  display: 'SpaceGrotesk_700Bold',
-  displayMedium: 'SpaceGrotesk_500Medium',
-  body: 'Inter_400Regular',
-  bodyBold: 'Inter_600SemiBold',
+  display: 'BarlowCondensed_700Bold',
+  displayMedium: 'BarlowCondensed_600SemiBold',
+  body: 'LibreFranklin_400Regular',
+  bodyBold: 'LibreFranklin_600SemiBold',
 } as const;
 
 /**
@@ -175,21 +187,24 @@ export const fonts = {
  * Display sizes use Space Grotesk with slightly tight tracking; captions are spaced out for small caps labels.
  */
 export const typeScale = {
-  displayXL: { fontFamily: fonts.display, fontSize: 40, lineHeight: 44, letterSpacing: -0.8 },
-  displayL: { fontFamily: fonts.display, fontSize: 32, lineHeight: 38, letterSpacing: -0.5 },
-  displayM: { fontFamily: fonts.display, fontSize: 24, lineHeight: 30, letterSpacing: -0.2 },
-  title: { fontFamily: fonts.displayMedium, fontSize: 20, lineHeight: 26, letterSpacing: 0 },
+  displayXL: { fontFamily: fonts.display, fontSize: 48, lineHeight: 50, letterSpacing: -0.6 },
+  displayL: { fontFamily: fonts.display, fontSize: 38, lineHeight: 42, letterSpacing: -0.4 },
+  displayM: { fontFamily: fonts.display, fontSize: 28, lineHeight: 32, letterSpacing: -0.2 },
+  title: { fontFamily: fonts.displayMedium, fontSize: 22, lineHeight: 26, letterSpacing: 0 },
   bodyStrong: { fontFamily: fonts.bodyBold, fontSize: 16, lineHeight: 22, letterSpacing: 0 },
   body: { fontFamily: fonts.body, fontSize: 16, lineHeight: 23, letterSpacing: 0 },
   small: { fontFamily: fonts.body, fontSize: 14, lineHeight: 20, letterSpacing: 0 },
-  caption: { fontFamily: fonts.bodyBold, fontSize: 12, lineHeight: 16, letterSpacing: 0.8, textTransform: 'uppercase' },
+  // Small labels: sentence case, no tracked small caps (design pass 3 retired the eyebrow look).
+  caption: { fontFamily: fonts.bodyBold, fontSize: 13, lineHeight: 17, letterSpacing: 0.1 },
 } as const;
 
 /** Elevated card shadows (iOS shadow* + Android elevation). Pair with theme.shadow as shadowColor. */
+// Design pass 3: ticket stock is flat paper. Cards stand off the board by a hairline edge; only things that float
+// (sheets, the map's panels) keep a soft offset shadow.
 export const elevation = {
-  low: { shadowOpacity: 0.08, shadowRadius: 6, shadowOffset: { width: 0, height: 2 }, elevation: 2 },
-  mid: { shadowOpacity: 0.12, shadowRadius: 14, shadowOffset: { width: 0, height: 6 }, elevation: 5 },
-  high: { shadowOpacity: 0.18, shadowRadius: 24, shadowOffset: { width: 0, height: 12 }, elevation: 10 },
+  low: { shadowOpacity: 0, shadowRadius: 0, shadowOffset: { width: 0, height: 0 }, elevation: 0 },
+  mid: { shadowOpacity: 0.06, shadowRadius: 8, shadowOffset: { width: 0, height: 3 }, elevation: 2 },
+  high: { shadowOpacity: 0.14, shadowRadius: 20, shadowOffset: { width: 0, height: 10 }, elevation: 8 },
 } as const;
 /** Shadow style for a level in the current theme (dark mode leans on the lighter cardRaised surface, so it shadows less). */
 export const shadowOf = (theme: Theme, level: keyof typeof elevation) => ({
@@ -205,12 +220,12 @@ export const shadowOf = (theme: Theme, level: keyof typeof elevation) => ({
  */
 export const surfaces: { light: Record<keyof typeof elevation, string>; dark: Record<keyof typeof elevation, string> } = {
   light: { low: '#FFFFFF', mid: '#FFFFFF', high: '#FFFFFF' },
-  dark: { low: '#1C2336', mid: '#212A40', high: '#262F48' },
+  dark: { low: '#212428', mid: '#272A2F', high: '#2D3136' },
 };
 /** Background, edge and shadow for a card at an elevation level, in the current theme. Spread into a View style. */
 export const elevated = (theme: Theme, level: keyof typeof elevation) => ({
   backgroundColor: (theme.dark ? surfaces.dark : surfaces.light)[level],
-  borderWidth: theme.dark ? 1 : 0,
+  borderWidth: 1,
   borderColor: theme.line,
   ...shadowOf(theme, level),
 });
@@ -221,7 +236,8 @@ export const space = { xs: 4, s: 8, m: 12, l: 16, xl: 24, xxl: 32 } as const;
  * group, `tight` between a header and its first card or between related controls, `hair` inside a text block.
  */
 export const rhythm = { section: space.xl, stack: space.m, tight: space.s, hair: 2 } as const;
-export const radius = { s: 8, m: 14, l: 20, xl: 28, pill: 999 } as const;
+// Small radii: die-cut ticket corners, not soft app tiles.
+export const radius = { s: 6, m: 10, l: 12, xl: 16, pill: 999 } as const;
 /** Minimum touch target (points). */
 export const TOUCH = 48;
 

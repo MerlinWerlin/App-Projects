@@ -3,9 +3,10 @@
 python3 compose.py --raw <captures dir> --out <dir> [--fonts <dir>] [--only 1,3]
 
 Reads shots.json next to this file. Every shot is 1320 x 2868 (6.9-inch iPhone), RGB JPEG (quality 93, 4:4:4).
-The phone is a plain rounded rectangle (no device maker's art). Captions use Space Grotesk Bold and Inter (SIL OFL,
-the same fonts the app bundles); the script finds them in node_modules/@expo-google-fonts or --fonts.
-Palette from the app: paper #F4F1EA with navy #14213D text, night #0E1320 with #EEF1F7, accent #E07A2F.
+The phone is a plain rounded rectangle (no device maker's art). Captions use Barlow Condensed Bold and Libre Franklin
+(SIL OFL, the same fonts the app bundles); the script finds them in node_modules/@expo-google-fonts or --fonts.
+Palette from the app (design pass 3, paper ticket stock): a flat board #E9EAE4 with carbon ink #16191D, night #111315
+with #EDEEE8. No glow, no gradient: the app's own flat ground.
 """
 import argparse
 import json
@@ -18,10 +19,9 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 HERE = Path(__file__).resolve().parent
 APP = HERE.parent.parent
 W, H = 1320, 2868
-LIGHT = {'bg': (244, 241, 234), 'ink': (20, 33, 61), 'muted': (92, 100, 118), 'glow': (251, 231, 214)}
-DARK = {'bg': (14, 19, 32), 'ink': (238, 241, 247), 'muted': (163, 171, 189), 'glow': (42, 60, 96)}
-ACCENT = (224, 122, 47)
-BEZEL = (24, 28, 38)
+LIGHT = {'bg': (233, 234, 228), 'ink': (22, 25, 29), 'muted': (84, 89, 97)}
+DARK = {'bg': (17, 19, 21), 'ink': (237, 238, 232), 'muted': (163, 168, 174)}
+BEZEL = (22, 25, 29)
 
 
 def font(fonts, name, size):
@@ -34,13 +34,7 @@ def font(fonts, name, size):
 
 
 def background(pal):
-    bg = Image.new('RGBA', (W, H), pal['bg'] + (255,))
-    layer = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(layer)
-    d.ellipse((-380, -300, 900, 900), fill=pal['glow'] + (200,))
-    d.ellipse((560, 1900, 1800, 3100), fill=pal['glow'] + (150,))
-    bg.alpha_composite(layer.filter(ImageFilter.GaussianBlur(240)))
-    return bg
+    return Image.new('RGBA', (W, H), pal['bg'] + (255,))
 
 
 def wrap(draw, text, f, max_w):
@@ -61,11 +55,9 @@ def wrap(draw, text, f, max_w):
 
 def captions(img, shot, pal, fonts):
     d = ImageDraw.Draw(img)
-    head = font(fonts, 'SpaceGrotesk_700Bold.ttf', shot.get('titleSize', 104))
-    sub = font(fonts, 'Inter_400Regular.ttf', 50)
-    y = 200
-    d.rounded_rectangle(((W - 120) // 2, y, (W + 120) // 2, y + 14), 7, fill=ACCENT)
-    y += 70
+    head = font(fonts, 'BarlowCondensed_700Bold.ttf', shot.get('titleSize', 128))
+    sub = font(fonts, 'LibreFranklin_400Regular.ttf', 48)
+    y = 250
     for line in wrap(d, shot['title'], head, 1160):
         w = d.textlength(line, font=head)
         d.text(((W - w) / 2, y), line, font=head, fill=pal['ink'])

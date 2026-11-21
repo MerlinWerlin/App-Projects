@@ -79,8 +79,8 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
   const c = countdown(trip, today);
   const route = tripRoute(trip);
   const tone = PHASE_TONE[c.kind];
-  const { fg, bg } = toneColours(theme, tone);
-  const stripe = c.kind === 'past' ? theme.muted : fg;
+  const stamp = c.kind === 'past' ? theme.muted : c.kind === 'today' || c.kind === 'active' ? theme.accentInk : theme.ink;
+  void tone;
   const bookings = trip.items.filter((i) => i.kind !== 'note').length;
   const notch = { position: 'absolute' as const, top: -11, width: 22, height: 22, borderRadius: 11, backgroundColor: theme.paper };
   return (
@@ -88,8 +88,8 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
       importantForAccessibility="no-hide-descendants"
       accessibilityElementsHidden
       style={[
-        elevated(theme, 'low'),
-        { borderRadius: radius.l, opacity: c.kind === 'past' ? 0.78 : 1 },
+        // Design pass 3: the pass is printed on buff ticket stock (flat, no shadow); a finished trip goes plain white.
+        { backgroundColor: c.kind === 'past' ? theme.stock.white : theme.stock.buff, borderRadius: radius.l, opacity: c.kind === 'past' ? 0.85 : 1 },
       ]}
     >
       {cover ? (
@@ -97,19 +97,19 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
           <TripCover scene={cover} photo={photo} aspectRatio={3.4} rounded={0} label={null} />
         </View>
       ) : null}
-      <View style={{ height: 6, backgroundColor: stripe, borderTopLeftRadius: cover ? 0 : radius.l, borderTopRightRadius: cover ? 0 : radius.l }} />
       <View style={{ padding: space.l, gap: space.m }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
           <Text numberOfLines={2} style={[typeScale.title, { color: theme.ink, flex: 1 }]}>
             {trip.name}
           </Text>
           {trip.demo ? (
-            <View style={{ borderRadius: radius.pill, borderWidth: 1, borderColor: theme.line, paddingHorizontal: space.s, paddingVertical: 2 }}>
+            <View style={{ borderRadius: radius.s, borderWidth: 1, borderColor: theme.muted, paddingHorizontal: space.s, paddingVertical: 2 }}>
               <Text style={[typeScale.caption, { color: theme.muted }]}>{isSampleTravel(trip) ? t('demo2.chip') : t('trips.demoBadge')}</Text>
             </View>
           ) : null}
-          <View style={{ borderRadius: radius.pill, backgroundColor: bg, paddingHorizontal: space.m, paddingVertical: space.xs }}>
-            <Text style={[typeScale.caption, { color: fg, fontVariant: ['tabular-nums'] }]}>{countdownShort(t, c)}</Text>
+          {/* The status as a rubber stamp: ink outline, red while the trip is on today. */}
+          <View style={{ borderRadius: radius.s, borderWidth: 1.5, borderColor: stamp, paddingHorizontal: space.s, paddingVertical: 2 }}>
+            <Text style={[typeScale.caption, { color: stamp, fontVariant: ['tabular-nums'] }]}>{countdownShort(t, c)}</Text>
           </View>
         </View>
         {route ? (
@@ -122,9 +122,9 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
               </Text>
             </View>
             <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
-              <View style={{ flex: 1, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.line }} />
+              <View style={{ flex: 1, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.muted, opacity: 0.5 }} />
               <Ionicons name="airplane" size={20} color={c.kind === 'past' ? theme.muted : theme.accent} />
-              <View style={{ flex: 1, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.line }} />
+              <View style={{ flex: 1, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.muted, opacity: 0.5 }} />
             </View>
             <View style={{ minWidth: 72, alignItems: 'flex-end' }}>
               <Text style={[typeScale.caption, { color: theme.muted }]}>{t('design.pass.to')}</Text>
@@ -141,7 +141,7 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
         {c.kind === 'active' ? <ProgressBar progress={c.progress} tone="ok" label={t('design.pass.progressA11y', { day: c.day, total: c.total })} /> : null}
       </View>
       {/* Perforation with a notch cut out of each edge, like a torn-off stub. */}
-      <View style={{ height: 0, marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.line }}>
+      <View style={{ height: 0, marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.muted, opacity: 0.5 }}>
         <View style={[notch, { left: -space.l - 11 }]} />
         <View style={[notch, { right: -space.l - 11 }]} />
       </View>

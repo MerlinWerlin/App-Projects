@@ -217,7 +217,7 @@ test('licences list covers every app dependency in package.json, and docs/THIRD_
   for (const dep of Object.keys(pkg.dependencies)) assert.ok(covered.has(dep), `${dep} has no row in src/core/licences.ts`);
   for (const p of covered) assert.ok(p in pkg.dependencies, `${p} is listed but not a dependency`);
   const doc = read('../../docs/THIRD_PARTY.md');
-  for (const name of ['OpenStreetMap', 'Protomaps', 'MET Norway', 'NOAA', 'Inter', 'Space Grotesk', 'Ionicons', 'react-native-maps', 'datetimepicker']) assert.ok(doc.includes(name), name);
+  for (const name of ['OpenStreetMap', 'Protomaps', 'MET Norway', 'NOAA', 'Libre Franklin', 'Barlow Condensed', 'Ionicons', 'react-native-maps', 'datetimepicker']) assert.ok(doc.includes(name), name);
   assert.match(read('../../app/settings.tsx'), /router\.push\('\/licences'\)/);
 });
 

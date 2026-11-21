@@ -10,16 +10,16 @@ export type BundledFont = { family: string; weights: readonly string[]; copyrigh
 
 export const BUNDLED_FONTS: readonly BundledFont[] = [
   {
-    family: 'Inter',
+    family: 'Libre Franklin',
     weights: ['400 Regular', '600 SemiBold'],
-    copyright: 'Copyright (c) 2016 The Inter Project Authors (https://github.com/rsms/inter)',
-    packageName: '@expo-google-fonts/inter',
+    copyright: 'Copyright 2015 The Libre Franklin Project Authors (https://github.com/impallari/Libre-Franklin)',
+    packageName: '@expo-google-fonts/libre-franklin',
   },
   {
-    family: 'Space Grotesk',
-    weights: ['500 Medium', '700 Bold'],
-    copyright: 'Copyright 2020 The Space Grotesk Project Authors (https://github.com/floriankarsten/space-grotesk)',
-    packageName: '@expo-google-fonts/space-grotesk',
+    family: 'Barlow Condensed',
+    weights: ['600 SemiBold', '700 Bold'],
+    copyright: 'Copyright 2017 The Barlow Project Authors (https://github.com/jpt/barlow)',
+    packageName: '@expo-google-fonts/barlow-condensed',
   },
 ];
 

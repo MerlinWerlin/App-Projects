@@ -131,7 +131,7 @@ export default function Library() {
         renderItem={({ item, index }) => <ScriptRow script={item} theme={theme} first={index === 0} onOpen={open} onMenu={menu} />}
       />
       <Bar style={[st.footer, { paddingBottom: insets.bottom + SPACE.xs, borderTopColor: theme.rule }]}>
-        <Txt v="footnote" tone="ink2" style={{ flex: 1 }} accessibilityLiveRegion="polite">
+        <Txt v="footnote" tone="ink2" max={1.6} style={{ flex: 1 }} accessibilityLiveRegion="polite">
           {scripts.length === 1 ? t('library.countOne') : t('library.count', { n: scripts.length })}
         </Txt>
         <Btn label={t('library.new')} icon="add" onPress={newScript} style={{ paddingHorizontal: SPACE.lg - 4 }} />
@@ -176,8 +176,8 @@ const ScriptRow = memo(function ScriptRow({ script, theme, first, onOpen, onMenu
         ) : null}
       </View>
       <View style={st.timeCol}>
-        <Text style={[TYPE.time, { color: theme.ink }]}>{time}</Text>
-        <Text style={[TYPE.footnote, { color: theme.ink3, fontVariant: ['tabular-nums'] }]}>{t('library.words', { n: words })}</Text>
+        <Text style={[TYPE.time, { color: theme.ink }]} maxFontSizeMultiplier={1.6}>{time}</Text>
+        <Text style={[TYPE.footnote, { color: theme.ink3, fontVariant: ['tabular-nums'] }]} maxFontSizeMultiplier={1.6}>{t('library.words', { n: words })}</Text>
       </View>
       <Pressable onPress={() => onMenu(script)} accessibilityRole="button" accessibilityLabel={t('library.more', { title })} hitSlop={6} style={({ pressed }) => [st.more, { opacity: pressed ? 0.5 : 1 }]}>
         <Ionicons name="ellipsis-horizontal" size={18} color={theme.ink3} />

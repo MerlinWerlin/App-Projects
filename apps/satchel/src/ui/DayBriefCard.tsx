@@ -9,8 +9,7 @@ import { dayBrief } from '../core/daybrief.ts';
 import { formatDuration, formatTime, zoneCity } from '../core/format.ts';
 import type { Item, Trip } from '../core/model.ts';
 import { useApp } from '../state/app.tsx';
-import { radius, shadowOf, space, typeScale } from '../theme/tokens.ts';
-import { GradientFill } from './hero.tsx';
+import { radius, space, typeScale } from '../theme/tokens.ts';
 import { KindIcon, kindKey } from './kinds.tsx';
 import { PressableScale } from './kit.tsx';
 import { useAirportPrefs } from './AirportFields.tsx';
@@ -78,11 +77,10 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
   // T106: today is a public holiday where you are (the brief's zone, its own calendar).
   const holiday = holidayTodayLine(t, holidayTodayIn(b.zone, now));
   const spoken = [eyebrow, headline, holiday ?? '', ...lines, flight?.line ?? '', flight?.guidance ?? '', b.tonight && !b.tonight.hasAddress ? tonight : '', early, due, dose].filter(Boolean).join('. ');
-  const muted = [typeScale.body, { color: theme.heroMuted }];
+  const muted = [typeScale.body, { color: theme.muted }];
 
   return (
-    <View style={[{ borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.hero.map[0] }, shadowOf(theme, 'mid')]}>
-      <GradientFill tone="map" />
+    <View style={{ borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.stock.buff }}>
       <PressableScale
         accessibilityRole="button"
         accessibilityLabel={spoken}
@@ -90,14 +88,13 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
         onPress={() => router.push({ pathname: '/trip/[id]', params: { id: b.trip.id, day: b.today } })}
         style={{ padding: space.l, gap: space.s }}
       >
+        {/* Design pass 3: printed on buff ticket stock; the headline leads, the "Your day" line follows it. */}
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
-          <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: theme.heroWash, alignItems: 'center', justifyContent: 'center' }}>
-            <KindIcon kind={n?.item.kind ?? b.first?.kind ?? 'activity'} color={theme.heroAccent} size={18} />
-          </View>
-          <Text style={[typeScale.caption, { color: theme.heroMuted, flex: 1 }]}>{eyebrow}</Text>
+          <KindIcon kind={n?.item.kind ?? b.first?.kind ?? 'activity'} color={theme.ink} size={22} />
+          <Text style={[typeScale.displayM, { color: theme.ink, flex: 1, fontVariant: ['tabular-nums'] }]}>{headline}</Text>
         </View>
-        <Text style={[typeScale.displayM, { color: theme.heroInk, fontVariant: ['tabular-nums'] }]}>{headline}</Text>
-        {holiday ? <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{holiday}</Text> : null}
+        <Text style={[typeScale.caption, { color: theme.muted }]}>{eyebrow}</Text>
+        {holiday ? <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{holiday}</Text> : null}
         {lines.map((l) => (
           <Text key={l} style={muted}>
             {l}
@@ -105,18 +102,18 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
         ))}
         {flight ? (
           <View style={{ gap: 2 }}>
-            <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{flight.line}</Text>
-            <Text style={[typeScale.caption, { color: theme.heroMuted }]}>{flight.guidance}</Text>
+            <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{flight.line}</Text>
+            <Text style={[typeScale.caption, { color: theme.muted }]}>{flight.guidance}</Text>
           </View>
         ) : null}
         {b.tonight && !b.tonight.hasAddress ? <Text style={muted}>{tonight}</Text> : null}
-        {early ? <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{early}</Text> : null}
-        {due ? <Text style={[typeScale.bodyStrong, { color: theme.heroInk }]}>{due}</Text> : null}
+        {early ? <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{early}</Text> : null}
+        {due ? <Text style={[typeScale.bodyStrong, { color: theme.ink }]}>{due}</Text> : null}
         {dose ? <Text style={muted}>{dose}</Text> : null}
       </PressableScale>
       {b.tonight && b.tonight.hasAddress ? (
         <>
-          <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.heroMuted, opacity: 0.6 }} />
+          <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.muted, opacity: 0.6 }} />
           <PressableScale
             accessibilityRole="button"
             accessibilityLabel={t('brief.tonightOpen', { name: hotelName })}
@@ -124,8 +121,8 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
             onPress={() => b.tonight && router.push({ pathname: '/address/[id]', params: { id: b.tonight.item.id } })}
             style={{ paddingHorizontal: space.l, paddingVertical: space.s, flexDirection: 'row', alignItems: 'center', gap: space.s }}
           >
-            <KindIcon kind="hotel" color={theme.heroAccent} size={18} />
-            <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.heroInk, flex: 1 }]}>
+            <KindIcon kind="hotel" color={theme.ink} size={18} />
+            <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: theme.ink, flex: 1 }]}>
               {tonight}
             </Text>
           </PressableScale>
@@ -135,13 +132,13 @@ export const DayBriefCard = memo(function DayBriefCard({ trips }: { trips: Trip[
       {b.tonight ? null : <GapsBriefRow trip={b.trip} today={b.today} />}
       {stay ? (
         <>
-          <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.heroMuted, opacity: 0.6 }} />
+          <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.muted, opacity: 0.6 }} />
           <StayBriefRow item={stay.item} />
         </>
       ) : null}
       {car ? (
         <>
-          <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.heroMuted, opacity: 0.6 }} />
+          <View style={{ marginHorizontal: space.l, borderTopWidth: 1.5, borderStyle: 'dashed', borderColor: theme.muted, opacity: 0.6 }} />
           <RentalBriefRow item={car} zone={b.zone} />
         </>
       ) : null}

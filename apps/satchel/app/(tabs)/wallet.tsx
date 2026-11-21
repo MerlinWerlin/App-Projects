@@ -24,7 +24,7 @@ import { useTrips } from '../../src/state/trips.tsx';
 import { elevated, radius, rhythm, space, typeScale } from '../../src/theme/tokens.ts';
 import { tripAccent, type TripAccent } from '../../src/theme/tripAccent.ts';
 import { FocusEntrance, HeroHeader, IconBadge, QuickAction, SectionHeader, toneColours } from '../../src/ui/hero.tsx';
-import { KIND_ICON, KIND_TONE, kindKey } from '../../src/ui/kinds.tsx';
+import { KIND_ICON, KIND_STOCK, kindKey } from '../../src/ui/kinds.tsx';
 import { Button, EmptyState, PressableScale } from '../../src/ui/kit.tsx';
 import { CashCard } from '../../src/ui/CashCard.tsx';
 import { WalletCards } from '../../src/ui/loyaltyCards.tsx';
@@ -39,28 +39,26 @@ const TicketCard = memo(function TicketCard({ entry, past }: { entry: WalletEntr
   const { t, theme, lang } = useApp();
   const router = useRouter();
   const { item, tripName, ticket } = entry;
-  const tone = KIND_TONE[item.kind];
-  const stripe = past ? theme.line : toneColours(theme, tone).fg;
   const whenText = `${formatDay(item.start.local.slice(0, 10), lang)} · ${formatTime(item.start.local)} ${zoneCity(item.start.tz)}`;
   const label = `${t('wallet.open', { kind: t(kindKey(item.kind)), title: item.title, when: whenText, trip: tripName })}, ${t('design.wallet.offlineA11y')}`;
   return (
     <PressableScale accessibilityRole="button" accessibilityLabel={label} accessibilityHint={t('wallet.openHint')} onPress={() => router.push(`/ticket/${item.id}`)}>
       <View
         style={[
+          // Design pass 3: the ticket printed on its kind's stock, flat, no side stripe; a used ticket goes plain.
           {
             flexDirection: 'row',
             borderRadius: radius.l,
             overflow: 'hidden',
             opacity: past ? 0.72 : 1,
+            backgroundColor: past ? theme.card : theme.stock[KIND_STOCK[item.kind]],
           },
-          elevated(theme, 'low'),
         ]}
       >
-        <View style={{ width: 6, backgroundColor: stripe }} />
         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.m, padding: space.l }}>
-          <IconBadge name={KIND_ICON[item.kind]} tone={past ? 'ink' : tone} />
+          <IconBadge name={KIND_ICON[item.kind]} tone="ink" />
           <View style={{ flex: 1, gap: rhythm.hair }}>
-            <Text numberOfLines={2} style={[typeScale.bodyStrong, { fontSize: 17, color: theme.ink }]}>
+            <Text numberOfLines={2} style={[typeScale.title, { color: theme.ink }]}>
               {item.title}
             </Text>
             <Text style={[typeScale.small, { color: theme.muted, fontVariant: ['tabular-nums'] }]}>{whenText}</Text>
@@ -75,9 +73,9 @@ const TicketCard = memo(function TicketCard({ entry, past }: { entry: WalletEntr
             ) : null}
           </View>
           {ticket.qrCropUri || hasCropRect(ticket) ? (
-            <View style={{ alignItems: 'center', gap: rhythm.hair, backgroundColor: theme.accentSoft, borderRadius: radius.m, padding: space.s }}>
-              <Ionicons name="qr-code" size={22} color={theme.accentInk} />
-              <Text style={[typeScale.caption, { color: theme.accentInk }]}>{t('wallet.qrBadge')}</Text>
+            <View style={{ alignItems: 'center', gap: rhythm.hair, borderWidth: 1.5, borderColor: theme.ink, borderRadius: radius.s, padding: space.s }}>
+              <Ionicons name="qr-code" size={22} color={theme.ink} />
+              <Text style={[typeScale.caption, { color: theme.ink }]}>{t('wallet.qrBadge')}</Text>
             </View>
           ) : (
             <Ionicons name="chevron-forward" size={20} color={theme.muted} />
@@ -143,7 +141,6 @@ export default function WalletScreen() {
         const accent = accents.get(row.tripId);
         return (
           <View accessible accessibilityRole="header" accessibilityLabel={row.label} style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
-            <View style={{ width: 4, alignSelf: 'stretch', borderRadius: radius.pill, backgroundColor: accent?.strong ?? theme.line }} />
             <Ionicons name="briefcase-outline" size={16} color={accent?.ink ?? theme.muted} />
             <Text numberOfLines={2} style={[typeScale.bodyStrong, { color: accent?.ink ?? theme.ink, flex: 1 }]}>
               {row.label}

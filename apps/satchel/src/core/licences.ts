@@ -76,8 +76,8 @@ export const LICENCE_SECTIONS: readonly LicenceSection[] = [
     id: 'fonts',
     title: 'licences.sectionFonts',
     entries: [
-      { id: 'inter', name: 'Inter', licence: 'SIL OFL 1.1', url: 'https://openfontlicense.org', what: 'licences.inter.what', packages: ['@expo-google-fonts/inter'] },
-      { id: 'spacegrotesk', name: 'Space Grotesk', licence: 'SIL OFL 1.1', url: 'https://openfontlicense.org', what: 'licences.spaceGrotesk.what', packages: ['@expo-google-fonts/space-grotesk'] },
+      { id: 'librefranklin', name: 'Libre Franklin', licence: 'SIL OFL 1.1', url: 'https://openfontlicense.org', what: 'licences.libreFranklin.what', packages: ['@expo-google-fonts/libre-franklin'] },
+      { id: 'barlowcondensed', name: 'Barlow Condensed', licence: 'SIL OFL 1.1', url: 'https://openfontlicense.org', what: 'licences.barlowCondensed.what', packages: ['@expo-google-fonts/barlow-condensed'] },
       { id: 'ionicons', name: 'Ionicons (@expo/vector-icons)', licence: 'MIT', url: 'https://github.com/ionic-team/ionicons/blob/main/LICENSE', what: 'licences.ionicons.what', packages: ['@expo/vector-icons'] },
     ],
   },

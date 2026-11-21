@@ -7,7 +7,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { useKeepAwake } from 'expo-keep-awake';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import * as ScreenOrientation from 'expo-screen-orientation';
-import { StatusBar } from 'expo-status-bar';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
@@ -281,7 +280,6 @@ export default function PromptScreen() {
 
   return (
     <View style={[st.fill, { backgroundColor: palette.bg }]}>
-      <StatusBar hidden />
       <Prompter
         ref={ref}
         parsed={parsed}
@@ -301,19 +299,9 @@ export default function PromptScreen() {
 
       {count !== null ? (
         <View pointerEvents="none" style={st.center}>
-          <Text style={[st.count, { color: palette.cue }]} accessibilityLiveRegion="assertive">
+          <Text maxFontSizeMultiplier={1} style={[st.count, { color: palette.cue }]} accessibilityLiveRegion="assertive">
             {count}
           </Text>
-        </View>
-      ) : null}
-
-      {!running && count === null ? (
-        <View pointerEvents="none" style={[st.center, { top: undefined, bottom: insets.bottom + 168 }]}>
-          <Bar tint="dark" style={st.hintChip}>
-            <Text style={st.hint}>
-              {done !== null ? t('prompt.finished', { time: formatDuration(done) }) : elapsed > 0 ? t('prompt.paused') : t('prompt.tapToStart')}
-            </Text>
-          </Bar>
         </View>
       ) : null}
 
@@ -325,13 +313,13 @@ export default function PromptScreen() {
           <View style={{ flex: 1 }} />
           {prefs.showTimer ? (
             <Bar tint="dark" style={st.chip}>
-              <Text style={st.timer}>{formatDuration(elapsed)}</Text>
+              <Text maxFontSizeMultiplier={1.4} style={st.timer}>{formatDuration(elapsed)}</Text>
             </Bar>
           ) : null}
           <Pressable onPress={chooseMode} accessibilityRole="button" accessibilityLabel={t('prompt.changeMode', { mode: t(`prompt.mode.${mode}`) })}>
             <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
               <Ionicons name={mode === 'steady' ? 'speedometer-outline' : 'mic-outline'} size={15} color={STAGE.ink2} />
-              <Text style={st.chipText}>{t(`prompt.mode.${mode}`)}</Text>
+              <Text maxFontSizeMultiplier={1.4} style={st.chipText}>{t(`prompt.mode.${mode}`)}</Text>
             </Bar>
           </Pressable>
         </Animated.View>
@@ -341,7 +329,7 @@ export default function PromptScreen() {
         <View pointerEvents="none" style={[st.listen, { top: insets.top + 64 }]}>
           <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
             <View style={[st.dot, { backgroundColor: hearing ? STAGE.go : STAGE.standby }]} />
-            <Text style={st.chipText}>{hearing ? t('prompt.listening') : t('prompt.waiting')}</Text>
+            <Text maxFontSizeMultiplier={1.4} style={st.chipText}>{hearing ? t('prompt.listening') : t('prompt.waiting')}</Text>
           </Bar>
         </View>
       ) : null}
@@ -349,10 +337,21 @@ export default function PromptScreen() {
       {chrome ? (
         <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(200)} exiting={app.reduceMotion ? undefined : FadeOut.duration(260)} style={[st.bottom, { paddingBottom: insets.bottom + 12 }]} pointerEvents="box-none">
           <Bar tint="dark" style={st.dock}>
+            {/* State line lives inside the dock, so it never sits on the script. Cue-light colours: amber paused, green done. */}
+            {!running && count === null ? (
+              <Text
+                style={[st.hint, { color: done !== null ? STAGE.go : elapsed > 0 ? STAGE.standby : STAGE.ink2 }]}
+                accessibilityLiveRegion="polite"
+                maxFontSizeMultiplier={1.4}
+                numberOfLines={1}
+              >
+                {done !== null ? t('prompt.finished', { time: formatDuration(done) }) : elapsed > 0 ? t('prompt.paused') : t('prompt.tapToStart')}
+              </Text>
+            ) : null}
             <View style={st.dockRow}>
               <IconBtn icon="play-skip-back-outline" label={t('prompt.restart')} onPress={restart} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
               <IconBtn icon="list-outline" label={t('prompt.sections')} onPress={sections} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
-              <Text style={st.speed} accessibilityLabel={t('prompt.speed', { pct: Math.round(speed * 100) })} accessibilityLiveRegion="polite">
+              <Text maxFontSizeMultiplier={1.4} style={st.speed} accessibilityLabel={t('prompt.speed', { pct: Math.round(speed * 100) })} accessibilityLiveRegion="polite">
                 {Math.round(speed * 100)}%
               </Text>
               <IconBtn icon="swap-horizontal" label={t('prompt.mirror')} active={prefs.mirrorH} onPress={() => app.setPrefs({ mirrorH: !prefs.mirrorH })} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
@@ -376,8 +375,7 @@ const st = StyleSheet.create({
   fill: { flex: 1 },
   center: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, alignItems: 'center', justifyContent: 'center' },
   count: { fontFamily: FONT.scriptBold, fontSize: 168, lineHeight: 180, fontVariant: ['tabular-nums'] },
-  hintChip: { borderRadius: RADIUS.round, paddingHorizontal: SPACE.md, paddingVertical: 10 },
-  hint: { ...TYPE.subhead, fontWeight: '600', color: STAGE.ink },
+  hint: { ...TYPE.footnote, fontWeight: '600', textAlign: 'center', paddingTop: SPACE.xxs, paddingBottom: 2 },
   top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: SPACE.xs },
   round: { borderRadius: SPACE.touch / 2 },
   chip: { borderRadius: RADIUS.round, paddingHorizontal: 14, minHeight: SPACE.touch, alignItems: 'center', justifyContent: 'center' },

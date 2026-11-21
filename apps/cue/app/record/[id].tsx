@@ -9,7 +9,6 @@ import { CameraView, useCameraPermissions, useMicrophonePermissions } from 'expo
 import { useKeepAwake } from 'expo-keep-awake';
 import * as MediaLibrary from 'expo-media-library/legacy';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSharedValue } from 'react-native-reanimated';
@@ -148,7 +147,6 @@ export default function RecordScreen() {
 
   return (
     <View style={st.fill}>
-      <StatusBar hidden />
       <CameraView ref={cam} style={StyleSheet.absoluteFill} facing={facing} mode="video" onCameraReady={() => setReady(true)} />
       <View style={[st.scriptBox, { top: insets.top + 60, backgroundColor: `rgba(${STAGE.scrim},${prefs.scriptOpacity})`, borderColor: recording ? STAGE.onAir : STAGE.hairline }]}>
         <Prompter
@@ -171,7 +169,7 @@ export default function RecordScreen() {
       </View>
       {count !== null ? (
         <View pointerEvents="none" style={st.center}>
-          <Text style={st.count}>{count}</Text>
+          <Text maxFontSizeMultiplier={1} style={st.count}>{count}</Text>
         </View>
       ) : null}
       <View style={[st.top, { paddingTop: insets.top + 8 }]}>
@@ -182,7 +180,7 @@ export default function RecordScreen() {
         {recording ? (
           <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
             <View style={st.recDot} />
-            <Text style={st.recText}>{formatDuration(secs)}</Text>
+            <Text maxFontSizeMultiplier={1.4} style={st.recText}>{formatDuration(secs)}</Text>
           </Bar>
         ) : null}
         <Bar tint="dark" style={[st.round, { opacity: recording ? 0.4 : 1 }]}>
@@ -192,7 +190,7 @@ export default function RecordScreen() {
       <View style={[st.bottom, { paddingBottom: insets.bottom + 22 }]}>
         <Pressable onPress={pickSection} disabled={recording || !parsed.sections.length} accessibilityRole="button" accessibilityLabel={`${t('record.section')}: ${section === null ? t('record.wholeScript') : parsed.sections[section]?.title ?? ''}`} style={{ width: 120 }}>
           <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 4, opacity: recording ? 0.5 : 1 }]}>
-            <Text style={[st.chipText, { flexShrink: 1 }]} numberOfLines={1}>
+            <Text maxFontSizeMultiplier={1.4} style={[st.chipText, { flexShrink: 1 }]} numberOfLines={1}>
               {section === null ? t('record.wholeScript') : parsed.sections[section]?.title}
             </Text>
             {parsed.sections.length ? <Ionicons name="chevron-down" size={13} color={STAGE.ink2} /> : null}
@@ -205,7 +203,7 @@ export default function RecordScreen() {
           {takes ? (
             <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
               <Ionicons name="checkmark" size={15} color={STAGE.go} />
-              <Text style={st.chipText} accessibilityLiveRegion="polite">{takes === 1 ? t('record.takesOne') : t('record.takes', { n: takes })}</Text>
+              <Text maxFontSizeMultiplier={1.4} style={st.chipText} accessibilityLiveRegion="polite">{takes === 1 ? t('record.takesOne') : t('record.takes', { n: takes })}</Text>
             </Bar>
           ) : null}
         </View>

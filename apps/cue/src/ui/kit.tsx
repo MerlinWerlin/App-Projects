@@ -21,6 +21,7 @@ export function Txt({
   style,
   children,
   lines,
+  max,
   ...rest
 }: {
   v?: keyof typeof TYPE;
@@ -28,13 +29,15 @@ export function Txt({
   style?: StyleProp<TextStyle>;
   children: ReactNode;
   lines?: number;
+  /** Dynamic Type ceiling for dense chrome (bars, columns). Body copy leaves it unset. */
+  max?: number;
   accessibilityRole?: 'header' | 'text';
   accessibilityLiveRegion?: 'polite' | 'assertive' | 'none';
 }) {
   const { theme } = useApp();
   const color = { ink: theme.ink, ink2: theme.ink2, ink3: theme.ink3, go: theme.goText, standby: theme.standby, danger: theme.danger, onGo: theme.onGo }[tone];
   return (
-    <Text style={[TYPE[v], { color }, style]} numberOfLines={lines} {...rest}>
+    <Text style={[TYPE[v], { color }, style]} numberOfLines={lines} maxFontSizeMultiplier={max} {...rest}>
       {children}
     </Text>
   );
@@ -92,7 +95,7 @@ export function Btn({
       style={({ pressed }) => [s.btn, { backgroundColor: kind === 'go' ? theme.go : theme.field }, press(pressed), disabled && { opacity: 0.4 }, style]}
     >
       {icon ? <Ionicons name={icon} size={18} color={fg} /> : null}
-      <Text style={[TYPE.headline, { color: fg }]} numberOfLines={1}>
+      <Text style={[TYPE.headline, { color: fg }]} numberOfLines={1} maxFontSizeMultiplier={1.5}>
         {label}
       </Text>
     </Pressable>
@@ -251,7 +254,7 @@ export function Segmented<T extends string | number>({
             }}
             style={[s.segItem, compact && { minHeight: 32, paddingHorizontal: SPACE.xs }, on && { backgroundColor: theme.dark ? theme.pressed : theme.sheet }]}
           >
-            <Text style={[TYPE.subhead, { color: on ? theme.ink : theme.ink2, fontWeight: on ? '600' : '400' }]} numberOfLines={1}>
+            <Text style={[TYPE.subhead, { color: on ? theme.ink : theme.ink2, fontWeight: on ? '600' : '400' }]} numberOfLines={1} maxFontSizeMultiplier={1.3}>
               {o.label}
             </Text>
             {o.locked ? <Ionicons name="lock-closed" size={11} color={theme.ink3} style={{ marginLeft: 4 }} /> : null}
@@ -271,7 +274,7 @@ export function Stepper({ label, value, onMinus, onPlus, last }: { label: string
       right={
         <View style={[s.stepper, { backgroundColor: theme.field }]}>
           <IconBtn icon="remove" label={`${label}, less`} onPress={onMinus} size={18} color={theme.ink} />
-          <Text style={[TYPE.time, { color: theme.ink, minWidth: 48, textAlign: 'center' }]}>{value}</Text>
+          <Text style={[TYPE.time, { color: theme.ink, minWidth: 48, textAlign: 'center' }]} maxFontSizeMultiplier={1.4}>{value}</Text>
           <IconBtn icon="add" label={`${label}, more`} onPress={onPlus} size={18} color={theme.ink} />
         </View>
       }
@@ -284,7 +287,7 @@ export function Tag({ label = 'Plus' }: { label?: string }) {
   const { theme } = useApp();
   return (
     <View style={[s.tag, { borderColor: theme.rule }]}>
-      <Text style={[TYPE.caption, { color: theme.ink2, fontWeight: '600' }]}>{label}</Text>
+      <Text style={[TYPE.caption, { color: theme.ink2, fontWeight: '600' }]} maxFontSizeMultiplier={1.4}>{label}</Text>
     </View>
   );
 }

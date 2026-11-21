@@ -119,7 +119,7 @@ const EntryCard = memo(function EntryCard({ trip, entry, date, onPress }: { trip
     .filter(Boolean)
     .join('. ');
   return (
-    <View style={[elevated(theme, 'low'), { borderRadius: radius.l, overflow: 'hidden', borderLeftWidth: 4, borderLeftColor: accent.strong }]}>
+    <View style={[elevated(theme, 'low'), { borderRadius: radius.l, overflow: 'hidden' }]}>
       <PressableScale
         accessibilityRole="button"
         accessibilityLabel={t('journal.entry.open', { day: date, summary })}

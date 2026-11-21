@@ -32,7 +32,7 @@ export default function ScheduleTab() {
     <View style={{ flex: 1, backgroundColor: theme.paper, paddingTop: insets.top + space.m }}>
       <View style={{ paddingHorizontal: space.l, flexDirection: 'row', alignItems: 'center', gap: space.m }}>
         <View style={{ flex: 1, gap: 2 }} accessible accessibilityRole="header">
-          <Text style={[typeScale.displayM, { color: theme.ink }]}>{t('tab.itinerary')}</Text>
+          <Text style={[typeScale.displayL, { color: theme.ink }]}>{t('tab.itinerary')}</Text>
           {trip ? <Text style={[typeScale.small, { color: theme.muted }]}>{`${trip.name} · ${formatRange(trip.startDate, trip.endDate, lang)}`}</Text> : null}
         </View>
         <Mascot pose="itinerary" size={56} />
