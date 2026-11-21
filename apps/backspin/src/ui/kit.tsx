@@ -22,6 +22,11 @@ export function fontFor(theme: Theme, kind: keyof typeof TYPE): TextStyle {
   return { fontFamily: fam(theme.font.body) };
 }
 
+/** True when the person's text size is large enough that side-by-side tiles should stack instead (about AX1 up). */
+export function useBigText(): boolean {
+  return useWindowDimensions().fontScale >= 1.35;
+}
+
 /** Widest content column, in points. Wider than any iPhone, so it only matters on iPad. */
 export const CONTENT_MAX = 640;
 
