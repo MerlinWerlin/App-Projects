@@ -5,9 +5,9 @@
  */
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
-import type { ComponentProps, ReactNode } from 'react';
+import { useEffect, useState, type ComponentProps, type ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Switch, Text, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
-import Animated, { FadeIn, FadeOut, LayoutAnimationConfig, SlideInDown, SlideOutUp } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeOut, SlideInDown, SlideOutUp } from 'react-native-reanimated';
 import { tap } from '../native/haptics';
 import { useApp } from '../state/AppState';
 import { MOTION, RADIUS, SIGN, SIGN_INK, SPACE, TYPE } from '../theme/theme';
@@ -159,20 +159,27 @@ export function IconBtn({
 /**
  * Digits that flip like a departures board when the value changes: each character sits in its own cell,
  * the old one leaves upward and the new one arrives from below. Instant under Reduce Motion.
+ * Layout animations arm only once the screen has settled, so nothing animates during the push that
+ * mounts it (an early layout animation there left the editor's text view scrolled).
  */
 export function FlapText({ value, style, max = 1.3, label }: { value: string; style: StyleProp<TextStyle>; max?: number; label?: string }) {
   const { reduceMotion } = useApp();
+  const [armed, setArmed] = useState(false);
+  useEffect(() => {
+    const id = setTimeout(() => setArmed(true), 700);
+    return () => clearTimeout(id);
+  }, []);
+  const animate = armed && !reduceMotion;
   const flat = StyleSheet.flatten(style) ?? {};
   const h = (flat.lineHeight ?? flat.fontSize ?? 20) as number;
   return (
-    <LayoutAnimationConfig skipEntering>
     <View style={{ flexDirection: 'row', overflow: 'hidden' }} accessible accessibilityLabel={label ?? value}>
       {value.split('').map((ch, i) => (
         <View key={i} style={{ height: h, overflow: 'hidden' }}>
           <Animated.Text
             key={ch}
-            entering={reduceMotion ? undefined : SlideInDown.duration(MOTION.flap)}
-            exiting={reduceMotion ? undefined : SlideOutUp.duration(MOTION.flap)}
+            entering={animate ? SlideInDown.duration(MOTION.flap) : undefined}
+            exiting={animate ? SlideOutUp.duration(MOTION.flap) : undefined}
             style={style}
             maxFontSizeMultiplier={max}
             importantForAccessibility="no"
@@ -182,7 +189,6 @@ export function FlapText({ value, style, max = 1.3, label }: { value: string; st
         </View>
       ))}
     </View>
-    </LayoutAnimationConfig>
   );
 }
 

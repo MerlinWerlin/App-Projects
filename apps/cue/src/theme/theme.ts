@@ -156,7 +156,7 @@ export const TYPE: Record<TypeKey, TextStyle> = {
   subhead: { fontFamily: FONT.script, fontSize: 15, lineHeight: 20 },
   footnote: { fontFamily: FONT.script, fontSize: 13, lineHeight: 18 },
   caption: { fontFamily: FONT.script, fontSize: 12, lineHeight: 16 },
-  scriptBody: { fontFamily: FONT.script, fontSize: 20, lineHeight: 30 },
+  scriptBody: { fontFamily: FONT.script, fontSize: 19, lineHeight: 29 },
   time: { fontFamily: FONT.scriptBold, fontSize: 22, lineHeight: 26, letterSpacing: -0.3 },
   timeLarge: { fontFamily: FONT.scriptBold, fontSize: 40, lineHeight: 44, letterSpacing: -1 },
 };
