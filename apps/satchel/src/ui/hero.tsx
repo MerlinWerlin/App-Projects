@@ -294,23 +294,34 @@ export const GradientFill = memo(function GradientFill({ tone }: { tone: HeroTon
  * The title is the screen's header for screen readers.
  */
 /**
- * 1.0 feedback ("Emergency is wrapping"): the head's big title never splits a word across lines. It grows with the
- * phone's text size up to TITLE_MAX_FONT_MULTIPLIER, and if a word still doesn't fit its column it shrinks a step
- * at a time until every word is whole (src/core/titlefit.ts). Keyed by title, so a new title starts full size.
+ * 1.0 feedback ("Emergency is wrapping"): big head text never splits a word across lines ("Emergenc / y"). It grows
+ * with the phone's text size (up to `maxFontSizeMultiplier` when given), and if a word still doesn't fit its column
+ * it shrinks a step at a time until every word is whole (src/core/titlefit.ts). Key it by its text so new text starts
+ * at full size.
  */
-function HeroTitle({ title, type, color, maxWidth }: { title: string; type: { fontFamily: string; fontSize: number; lineHeight: number; letterSpacing?: number }; color: string; maxWidth: number | `${number}%` }) {
+export function FitWordsText({
+  text,
+  style,
+  maxFontSizeMultiplier,
+  header,
+}: {
+  text: string;
+  style: { fontFamily: string; fontSize: number; lineHeight: number; letterSpacing?: number; color: string; maxWidth?: number | `${number}%` };
+  maxFontSizeMultiplier?: number;
+  header?: boolean;
+}) {
   const [scale, setScale] = useState(1);
   return (
     <Text
-      accessibilityRole="header"
-      maxFontSizeMultiplier={TITLE_MAX_FONT_MULTIPLIER}
+      accessibilityRole={header ? 'header' : undefined}
+      maxFontSizeMultiplier={maxFontSizeMultiplier}
       onTextLayout={(e) => {
         const next = nextTitleScale(scale, e.nativeEvent.lines.map((l) => l.text));
         if (next !== scale) setScale(next);
       }}
-      style={[type, { color, maxWidth, fontSize: type.fontSize * scale, lineHeight: type.lineHeight * scale }]}
+      style={[style, { fontSize: style.fontSize * scale, lineHeight: style.lineHeight * scale }]}
     >
-      {title}
+      {text}
     </Text>
   );
 }
@@ -359,8 +370,8 @@ export function HeroHeader({
   // still passes one, closes the block as a small line under the subtitle.
   const text = (
     <>
-      <HeroTitle key={title} title={title} type={compact ? typeScale.displayM : typeScale.displayXL} color={theme.heroInk} maxWidth={titleW} />
-      {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: textW }]}>{subtitle}</Text> : null}
+      <FitWordsText key={title} header text={title} maxFontSizeMultiplier={TITLE_MAX_FONT_MULTIPLIER} style={{ ...(compact ? typeScale.displayM : typeScale.displayXL), color: theme.heroInk, maxWidth: titleW }} />
+      {subtitle ? <FitWordsText key={`s-${subtitle}`} text={subtitle} style={{ ...typeScale.body, color: theme.heroMuted, maxWidth: textW }} /> : null}
       {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted, maxWidth: textW }]}>{eyebrow}</Text> : null}
     </>
   );

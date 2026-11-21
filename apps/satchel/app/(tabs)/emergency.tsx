@@ -27,7 +27,8 @@ import { elevated, fonts, radius, rhythm, space, TOUCH, typeScale } from '../../
 import { CountryEssentialsCard } from '../../src/ui/CountryEssentialsCard.tsx';
 import { CustomsLink } from '../../src/ui/CustomsLink.tsx';
 import { callAndExplain, EmergencyCardView } from '../../src/ui/EmergencyCardView.tsx';
-import { FocusEntrance, HeroHeader, IconBadge, SectionHeader } from '../../src/ui/hero.tsx';
+import { FitWordsText, FocusEntrance, HeroHeader, IconBadge, SectionHeader } from '../../src/ui/hero.tsx';
+import { TITLE_MAX_FONT_MULTIPLIER } from '../../src/core/titlefit.ts';
 import { HelpCardsCard } from '../../src/ui/HelpCardsCard.tsx';
 import { Body, Button, EmptyState, PressableScale, Screen, TextField } from '../../src/ui/kit.tsx';
 import { NearestHelpCard } from '../../src/ui/NearestHelpCard.tsx';
@@ -91,9 +92,14 @@ export default function EmergencyScreen() {
       <HeroHeader scene="emergency" mascot="emergency" title={t('emergency.title')}>
         {display ? (
           <View style={{ gap: space.xs }}>
-            <Text accessibilityRole="header" style={[typeScale.title, { color: theme.heroInk, maxWidth: '64%' }]}>
-              {t('emergency.numbersFor', { country: display.country })}
-            </Text>
+            {/* 1.0 feedback ("Emergency is wrapping"): never split a word, at any text size. */}
+            <FitWordsText
+              key={display.country}
+              header
+              text={t('emergency.numbersFor', { country: display.country })}
+              maxFontSizeMultiplier={TITLE_MAX_FONT_MULTIPLIER}
+              style={{ ...typeScale.title, color: theme.heroInk, maxWidth: '64%' }}
+            />
             {origin ? <Text style={[typeScale.small, { color: theme.heroMuted, maxWidth: '64%' }]}>{origin}</Text> : null}
           </View>
         ) : null}
