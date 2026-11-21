@@ -1,6 +1,6 @@
 {
   "locale": "en-AU",
-  "version": "1.0.3", "releaseType": "AFTER_APPROVAL",
+  "version": "1.0.3", "releaseType": "AFTER_APPROVAL", "attachBuild": "latest",
   "name": "Cue: Voice-Paced Prompter",
   "subtitle": "Script reader & video recorder",
   "promotionalText": "No subscription, no watermark. Voice Pace scrolls while you talk and stops when you pause, so you never chase the words.",
