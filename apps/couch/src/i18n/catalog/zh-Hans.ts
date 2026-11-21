@@ -125,7 +125,7 @@ export const zhHans: Catalogue = {
   'core.addTv.enterCode': '请输入电视上显示的代码。',
   'core.addTv.enterPin': '请输入电视上显示的 PIN。',
   'core.addTv.castOnlyIntro': "Google TV 的遥控功能将在下次更新中推出。现在已可用这台电视投放照片和视频。",
-  'core.addTv.comingSoon': '{platform} 电视的控制功能即将推出。已找到该电视，但暂时无法控制。',
+  'core.addTv.comingSoon': "Couch 找到了这台 {platform} 电视，但无法控制 {platform} 电视。",
   'core.addTv.platformTv': '{platform} 电视',
   'core.addTv.noAnswer': '该地址没有电视响应。请确认电视已开机并连接同一 Wi-Fi。',
   'core.addTv.pskEmpty': '请输入你在电视上设置的预共享密钥。',

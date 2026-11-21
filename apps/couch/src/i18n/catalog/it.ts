@@ -118,7 +118,7 @@ export const it: Catalogue = {
   'core.addTv.enterCode': 'Inserisci il codice mostrato sulla TV.',
   'core.addTv.enterPin': 'Inserisci il PIN mostrato sulla TV.',
   'core.addTv.castOnlyIntro': "Il telecomando per Google TV arriverà con il prossimo aggiornamento. Puoi già usare questa TV per trasmettere foto e video.",
-  'core.addTv.comingSoon': "Il controllo delle TV {platform} arriverà presto. L'abbiamo trovata, ma non possiamo ancora controllarla.",
+  'core.addTv.comingSoon': "Couch ha trovato questa TV {platform}, ma non può controllare le TV {platform}.",
   'core.addTv.platformTv': 'TV {platform}',
   'core.addTv.noAnswer': 'Nessuna TV ha risposto a questo indirizzo. Controlla che sia accesa e sullo stesso Wi-Fi.',
   'core.addTv.pskEmpty': 'Inserisci la chiave precondivisa impostata sulla TV.',

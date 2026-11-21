@@ -260,7 +260,7 @@ export const ja: Catalogue = {
   'core.addTv.enterCode': 'テレビに表示されているコードを入力してください。',
   'core.addTv.enterPin': 'テレビに表示されているPINを入力してください。',
   'core.addTv.castOnlyIntro': "Google TV のリモコン操作は次のアップデートで対応予定です。このテレビには今すぐ写真や動画をキャストできます。",
-  'core.addTv.comingSoon': '{platform}テレビの操作は近日対応予定です。テレビは見つかりましたが、まだ操作できません。',
+  'core.addTv.comingSoon': "この{platform}テレビは見つかりましたが、Couchは{platform}テレビを操作できません。",
   'core.addTv.platformTv': '{platform}テレビ',
   'core.addTv.noAnswer': 'このアドレスで応答するテレビはありませんでした。テレビの電源が入っていて同じWi-Fiにあるか確認してください。',
   'core.addTv.pskEmpty': 'テレビで設定した事前共有キーを入力してください。',

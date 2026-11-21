@@ -135,7 +135,7 @@ export const ar: Catalogue = {
   'core.addTv.enterCode': 'أدخل الرمز الظاهر على تلفزيونك.',
   'core.addTv.enterPin': 'أدخل رمز PIN الظاهر على تلفزيونك.',
   'core.addTv.castOnlyIntro': "التحكم عن بُعد في Google TV قادم في التحديث القادم. يمكنك الآن استخدام هذا التلفزيون لبث الصور ومقاطع الفيديو.",
-  'core.addTv.comingSoon': 'التحكم بأجهزة تلفزيون {platform} قادم قريبًا. عثرنا عليه، لكن لا يمكننا التحكم به بعد.',
+  'core.addTv.comingSoon': "عثر Couch على تلفزيون {platform} هذا، لكنه لا يستطيع التحكم بأجهزة تلفزيون {platform}.",
   'core.addTv.platformTv': 'تلفزيون {platform}',
   'core.addTv.noAnswer': 'لم يستجب أي تلفزيون على هذا العنوان. تأكد من أن التلفزيون يعمل وعلى شبكة Wi-Fi نفسها.',
   'core.addTv.pskEmpty': 'اكتب المفتاح المشترك مسبقًا الذي عيّنته على التلفزيون.',

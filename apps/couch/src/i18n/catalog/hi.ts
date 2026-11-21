@@ -127,7 +127,7 @@ export const hi: Catalogue = {
   'core.addTv.enterCode': 'अपने TV पर दिख रहा कोड डालें।',
   'core.addTv.enterPin': 'अपने TV पर दिख रहा PIN डालें।',
   'core.addTv.castOnlyIntro': "Google TV के लिए रिमोट कंट्रोल अगले अपडेट में आ रहा है। आप अभी से इस TV पर फ़ोटो और वीडियो कास्ट कर सकते हैं।",
-  'core.addTv.comingSoon': '{platform} TV का कंट्रोल जल्द आ रहा है। TV मिल गया, पर अभी उसे कंट्रोल नहीं कर सकते।',
+  'core.addTv.comingSoon': "Couch को यह {platform} TV मिला, पर Couch {platform} TV कंट्रोल नहीं कर सकता।",
   'core.addTv.platformTv': '{platform} TV',
   'core.addTv.noAnswer': 'उस पते पर किसी TV ने जवाब नहीं दिया। देखें कि TV चालू है और उसी Wi-Fi पर है।',
   'core.addTv.pskEmpty': 'TV पर सेट की गई प्री-शेयर्ड की टाइप करें।',

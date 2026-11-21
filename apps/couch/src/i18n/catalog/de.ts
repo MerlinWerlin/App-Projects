@@ -119,8 +119,7 @@ export const de: Catalogue = {
   'core.addTv.enterCode': 'Gib den Code ein, der auf deinem Fernseher angezeigt wird.',
   'core.addTv.enterPin': 'Gib die PIN ein, die auf deinem Fernseher angezeigt wird.',
   'core.addTv.castOnlyIntro': "Die Fernbedienung für Google TV kommt mit dem nächsten Update. Du kannst diesen Fernseher schon jetzt für Fotos und Videos nutzen.",
-  'core.addTv.comingSoon':
-    'Steuerung für {platform}-Fernseher kommt bald. Wir haben ihn gefunden, können ihn aber noch nicht steuern.',
+  'core.addTv.comingSoon': "Couch hat diesen {platform}-Fernseher gefunden, kann {platform}-Fernseher aber nicht steuern.",
   'core.addTv.platformTv': '{platform}-Fernseher',
   'core.addTv.noAnswer': 'Unter dieser Adresse hat kein Fernseher geantwortet. Prüfe, ob er an und im selben Wi-Fi ist.',
   'core.addTv.pskEmpty': 'Gib den Pre-Shared Key ein, den du am Fernseher festgelegt hast.',

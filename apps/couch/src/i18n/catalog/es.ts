@@ -118,7 +118,7 @@ export const es: Catalogue = {
   'core.addTv.enterCode': 'Introduce el código que aparece en tu TV.',
   'core.addTv.enterPin': 'Introduce el PIN que aparece en tu TV.',
   'core.addTv.castOnlyIntro': "El control remoto para Google TV llegará en la próxima actualización. Ya puedes usar este TV para enviar fotos y vídeos.",
-  'core.addTv.comingSoon': 'El control de TV {platform} llegará pronto. Lo hemos encontrado, pero aún no podemos controlarlo.',
+  'core.addTv.comingSoon': "Couch encontró esta TV {platform}, pero no puede controlar TV {platform}.",
   'core.addTv.platformTv': 'TV {platform}',
   'core.addTv.noAnswer': 'Ningún TV ha respondido en esa dirección. Comprueba que esté encendido y en la misma Wi-Fi.',
   'core.addTv.pskEmpty': 'Escribe la clave precompartida que definiste en el TV.',

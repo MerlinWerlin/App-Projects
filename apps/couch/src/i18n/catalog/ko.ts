@@ -260,7 +260,7 @@ export const ko: Catalogue = {
   'core.addTv.enterCode': 'TV에 표시된 코드를 입력하세요.',
   'core.addTv.enterPin': 'TV에 표시된 PIN을 입력하세요.',
   'core.addTv.castOnlyIntro': "Google TV 리모컨 기능은 다음 업데이트에서 제공돼요. 지금은 이 TV로 사진과 동영상을 전송할 수 있어요.",
-  'core.addTv.comingSoon': '{platform} TV 제어는 곧 지원돼요. TV를 찾았지만 아직 제어할 수 없어요.',
+  'core.addTv.comingSoon': "이 {platform} TV를 찾았지만 Couch는 {platform} TV를 제어할 수 없어요.",
   'core.addTv.platformTv': '{platform} TV',
   'core.addTv.noAnswer': '이 주소에서 응답한 TV가 없어요. TV가 켜져 있고 같은 Wi-Fi에 있는지 확인하세요.',
   'core.addTv.pskEmpty': 'TV에서 설정한 사전 공유 키를 입력하세요.',
