@@ -328,24 +328,29 @@ export function HeroHeader({
   const pick = useCountryPick();
   const country = pick && THEMED_TONES.includes(tone) ? pick : null;
   const plainArt = illustration === 'route' || illustration === 'none';
+  // Art on the right (a scene, an illustration or a country landmark) keeps the text to the left of it.
+  const sideArt = !!scene || !plainArt || !!country;
+  const titleW = mascot && !compact ? '56%' : scene || mascot || sideArt ? '64%' : '78%';
+  const textW = mascot && !compact ? '56%' : scene || mascot || sideArt ? '64%' : '82%';
   // Design pass 3: no eyebrow above the title (a heading carries its own weight). The old eyebrow text, when a screen
   // still passes one, closes the block as a small line under the subtitle.
   const text = (
     <>
-      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayXL, { color: theme.heroInk, maxWidth: mascot && !compact ? '56%' : scene || mascot ? '64%' : '78%' }]}>
+      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayXL, { color: theme.heroInk, maxWidth: titleW }]}>
         {title}
       </Text>
-      {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: mascot && !compact ? '56%' : scene || mascot ? '66%' : '82%' }]}>{subtitle}</Text> : null}
-      {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted, maxWidth: mascot && !compact ? '56%' : scene || mascot ? '66%' : '82%' }]}>{eyebrow}</Text> : null}
+      {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: textW }]}>{subtitle}</Text> : null}
+      {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted, maxWidth: textW }]}>{eyebrow}</Text> : null}
     </>
   );
   return (
     <View style={style}>
       {/* A solid deep ticket stock (no gradient, no glow), torn off along a perforated bottom edge. */}
-      <View style={{ borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.hero[tone][0] }}>
+      {/* A compact head with the mascot is tall enough to show all of him. */}
+      <View style={{ borderRadius: radius.l, overflow: 'hidden', backgroundColor: theme.hero[tone][0], minHeight: compact && mascot ? 100 : undefined }}>
       <GradientFill tone={tone} />
       {/* The country's landmark always shows on a themed head (behind the mascot or scene), so the theme reads at a glance. */}
-      {country ? <CountryHeroArt pick={country} compact={compact} scene={!!scene && !mascot} motif={!!scene || !!mascot || plainArt} topInset={topInset} /> : null}
+      {country ? <CountryHeroArt pick={country} compact={compact} scene={!!scene && !mascot} big={!!mascot} motif={!!scene || !!mascot || plainArt} topInset={topInset} /> : null}
       {mascot ? (
         <View pointerEvents="none" style={{ position: 'absolute', right: space.xs, bottom: compact ? 0 : space.xs, top: topInset, justifyContent: compact ? 'center' : 'flex-end' }}>
           <FocusEntrance from="right" delay={duration.fast}>
