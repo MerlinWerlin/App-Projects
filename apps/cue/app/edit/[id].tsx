@@ -166,21 +166,35 @@ export default function Edit() {
               </Pressable>
             ))}
           </ScrollView>
-          <TextInput
-            value={body}
-            onChangeText={setBody}
-            onSelectionChange={(e) => {
-              sel.current = e.nativeEvent.selection;
-            }}
-            multiline
-            placeholder={t('edit.bodyPlaceholder')}
-            placeholderTextColor={theme.ink3}
-            selectionColor={theme.ink}
-            style={[TYPE.scriptBody, st.body, { color: theme.ink }]}
-            textAlignVertical="top"
-            accessibilityLabel={t('edit.bodyPlaceholder')}
-            autoFocus={!body}
-          />
+          {/* The text view does not scroll itself: an outer ScrollView with no automatic insets owns
+              scrolling, so the script always opens at its first line (a scrolling UITextView picked up
+              a stale safe-area inset during the push and opened part-way down). UIKit still scrolls
+              the outer view to keep the caret visible while typing. */}
+          <ScrollView
+            style={{ flex: 1 }}
+            contentContainerStyle={{ flexGrow: 1 }}
+            contentInsetAdjustmentBehavior="never"
+            automaticallyAdjustKeyboardInsets
+            keyboardDismissMode="interactive"
+            keyboardShouldPersistTaps="handled"
+          >
+            <TextInput
+              value={body}
+              onChangeText={setBody}
+              onSelectionChange={(e) => {
+                sel.current = e.nativeEvent.selection;
+              }}
+              multiline
+              scrollEnabled={false}
+              placeholder={t('edit.bodyPlaceholder')}
+              placeholderTextColor={theme.ink3}
+              selectionColor={theme.ink}
+              style={[TYPE.scriptBody, st.body, { color: theme.ink }]}
+              textAlignVertical="top"
+              accessibilityLabel={t('edit.bodyPlaceholder')}
+              autoFocus={!body}
+            />
+          </ScrollView>
         </>
       ) : (
         <ScriptPreview parsed={parsed} palette={app.can('colors') ? PROMPTER[prefs.colors] : PROMPTER.classic} prefs={prefs} />
@@ -255,7 +269,7 @@ const st = StyleSheet.create({
   title: { fontSize: 34, lineHeight: 40, paddingVertical: 2 },
   tools: { paddingHorizontal: SPACE.gutter, gap: SPACE.xs, paddingVertical: SPACE.xs },
   tool: { minHeight: 36, paddingHorizontal: SPACE.sm, borderRadius: RADIUS.chip, flexDirection: 'row', alignItems: 'center', gap: 6 },
-  body: { flex: 1, paddingHorizontal: SPACE.gutter, paddingTop: SPACE.xs },
+  body: { flexGrow: 1, paddingHorizontal: SPACE.gutter, paddingTop: SPACE.xs, paddingBottom: SPACE.lg },
   dock: { paddingHorizontal: SPACE.gutter, paddingTop: SPACE.md },
   meta: { flexDirection: 'row', alignItems: 'center', gap: SPACE.xs },
   subRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: SPACE.sm },
