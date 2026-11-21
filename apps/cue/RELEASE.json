@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Cue 1.0.3: Running order redesign (flat native look, cue-light colours, tokens in one theme file, prompter state line in the dock, light status bar on the prompter); background audio stays off (Guideline 2.5.4)",
+  "note": "Cue 1.0.3: Signal redesign (wayfinding sign bands, one typeface, inline prompter modes, state line in the dock, light status bar on the prompter); background audio stays off (Guideline 2.5.4)",
   "ascAppId": "6826554677"
 }
