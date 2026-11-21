@@ -2,7 +2,12 @@ import type { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { continuous } from '../theme/design';
+import { useMemo } from 'react';
+import { usePrefs } from '../state/prefs';
+import { useSession } from '../state/session';
+import { continuous, remoteDesignPalette } from '../theme/design';
+import { useRemoteTheme } from '../theme/useRemoteTheme';
+import { glowColor, remoteStage } from './fx/glow';
 import { fonts } from '../theme/tokens';
 import type { IconName } from './icons/names';
 import { RemoteIcon } from './icons/RemoteIcon';
@@ -24,13 +29,24 @@ const TAB_ICON: Record<string, IconName> = { remote: 'remote', cast: 'cast', app
  * translations instead of wrapping.
  */
 export function TabBar({ state, descriptors, navigation }: TabBarProps) {
-  const p = useDesign();
+  const app = useDesign();
+  const theme = useRemoteTheme();
+  const { prefs } = usePrefs();
+  const { snap } = useSession();
+  const onRemote = state.routes[state.index]?.name === 'remote';
+  // On the Remote tab the bar sits on the remote's stage and takes the remote theme's roles, so a light phone
+  // never puts white cushions under the charcoal remote (DESIGN.md). Other tabs follow the app palette.
+  const remoteP = useMemo(() => remoteDesignPalette(theme), [theme]);
+  const p = onRemote ? remoteP : app;
+  const ground = onRemote
+    ? remoteStage(theme, glowColor(prefs.glow, snap.demo ? null : snap.activeId, theme.glow)).bg
+    : app.background;
   const insets = useSafeAreaInsets();
   return (
     <View
       style={[
         styles.bar,
-        { backgroundColor: p.background, paddingBottom: Math.max(insets.bottom, 10) },
+        { backgroundColor: ground, paddingBottom: Math.max(insets.bottom, 10) },
       ]}
       accessibilityRole="tablist"
     >

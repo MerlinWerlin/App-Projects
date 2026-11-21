@@ -133,7 +133,8 @@ export default function ThemesScreen() {
               <Row
                 key={id}
                 title={name}
-                subtitle={tier}
+                // Every theme is free today, so "Free" under each name says nothing; only a Plus theme is marked.
+                subtitle={badge === 'free' ? undefined : tier}
                 icon={<Swatch theme={th} />}
                 accessory={{ type: 'check', checked: on }}
                 accessibilityLabel={t('app.themes.tileLabel', { name, tier })}
