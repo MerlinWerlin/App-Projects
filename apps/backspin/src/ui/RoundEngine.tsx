@@ -319,7 +319,7 @@ export function RoundEngine(props: {
               <Press key={id} label={t(k)} onPress={() => playUri(id, take.uri)} style={{ width: '48%', flexGrow: 1, backgroundColor: theme.card, borderRadius: R.m, padding: SP(3), borderWidth: 2, borderColor: playing === id ? col : theme.card }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: SP(1.5) }}>
                   <Icon name={playing === id ? 'pause' : 'play'} size={14} color={theme.ink} />
-                  <T kind="small" style={{ fontWeight: '600' }}>
+                  <T kind="small" style={{ fontWeight: '600', flexShrink: 1 }}>
                     {t(k)}
                   </T>
                 </View>

@@ -3,7 +3,7 @@
 // into a dim (no movement) under calm motion / Reduce Motion.
 import { useEffect, useRef, type ReactNode } from 'react';
 import {
-  ActivityIndicator, Animated, Easing, Pressable, ScrollView, StyleSheet, Switch, Text, View,
+  ActivityIndicator, Animated, Easing, Pressable, ScrollView, StyleSheet, Switch, Text, useWindowDimensions, View,
   type StyleProp, type TextStyle, type ViewStyle,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -64,11 +64,17 @@ export function T({ children, style, kind = 'body', color, center, lines }: {
   const tight = kind === 'num' || HEADING_KINDS.has(kind);
   const roomy = lh != null && lh < size * (tight ? 0.98 : 1.2) ? { lineHeight: Math.ceil(size * (tight ? 1.05 : 1.25)) } : null;
   return (
-    <Text numberOfLines={lines} style={[TYPE[kind], fontFor(theme, kind), { color: color ?? theme.ink, textAlign: center ? 'center' : undefined }, style, roomy]}>
+    <Text numberOfLines={lines} maxFontSizeMultiplier={MAX_SCALE[kind]} style={[TYPE[kind], fontFor(theme, kind), { color: color ?? theme.ink, textAlign: center ? 'center' : undefined }, style, roomy]}>
       {children}
     </Text>
   );
 }
+
+/**
+ * How far each text kind follows the system text size. Body text grows to twice its size; the big display sizes
+ * (already 22-104 pt) grow a little, so a word like "Challenge" never breaks across lines at the largest sizes.
+ */
+export const MAX_SCALE: Record<keyof typeof TYPE, number> = { hero: 1.25, title: 1.35, h: 1.5, line: 1.35, num: 1.1, body: 2, bodyB: 2, small: 2 };
 
 /** An emoji shown as content (never as an icon): sized box, never clipped, hidden from screen readers. */
 export function Emoji({ children, size = 28, style }: { children: string; size?: number; style?: StyleProp<TextStyle> }) {
@@ -209,7 +215,7 @@ export function Button({ title, onPress, kind = 'primary', icon, disabled, busy,
       ]}
     >
       {busy ? <ActivityIndicator color={fg} /> : icon ? <Icon name={icon} size={small ? 18 : 20} color={fg} /> : null}
-      <Text style={[small ? TYPE.small : TYPE.bodyB, fontFor(theme, 'bodyB'), { color: fg, fontWeight: '600' }]}>{title}</Text>
+      <Text maxFontSizeMultiplier={2} style={[small ? TYPE.small : TYPE.bodyB, fontFor(theme, 'bodyB'), { color: fg, fontWeight: '600', flexShrink: 1, textAlign: 'center' }]}>{title}</Text>
     </Press>
   );
 }
@@ -247,10 +253,10 @@ export function Chip({ label, on, onPress, locked, tone, icon }: { label: string
         haptic.tap();
         onPress();
       }}
-      style={{ paddingHorizontal: SP(4), minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: SP(1.5), borderRadius: R.pill, backgroundColor: on ? theme.ink : 'transparent', borderWidth: 1.5, borderColor: on ? theme.ink : theme.line }}
+      style={{ paddingHorizontal: SP(4), paddingVertical: SP(1), maxWidth: '100%', minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: SP(1.5), borderRadius: R.pill, backgroundColor: on ? theme.ink : 'transparent', borderWidth: 1.5, borderColor: on ? theme.ink : theme.line }}
     >
       {locked ? <Icon name="lock" size={15} color={fg} /> : icon ? <Icon name={icon} size={16} color={fg} /> : null}
-      <Text style={[TYPE.small, fontFor(theme, 'small'), { color: fg, fontWeight: '600' }]}>{label}</Text>
+      <Text maxFontSizeMultiplier={2} style={[TYPE.small, fontFor(theme, 'small'), { color: fg, fontWeight: '600', flexShrink: 1 }]}>{label}</Text>
     </Press>
   );
 }
@@ -349,8 +355,11 @@ export function Enter({ children, from = 1, delay = 0, style }: { children: Reac
  * The wordmark as a print: "Backspin" in ink, and under it the same word run backwards in blue, overlapping it so
  * the two inks overprint. Read once as one word by VoiceOver.
  */
-export function Wordmark({ size = 64 }: { size?: number }) {
+export function Wordmark({ size: wanted = 64 }: { size?: number }) {
   const { theme } = useApp();
+  // Never wider than the space beside the settings button: the word is about 3.9 em wide.
+  const { width } = useWindowDimensions();
+  const size = Math.min(wanted, Math.floor((Math.min(width, CONTENT_MAX) - SP(10) - 52) / 4.1));
   const f = { fontFamily: fam(theme.font.heading), fontWeight: theme.font.headingWeight, fontSize: size, lineHeight: Math.round(size * 1.02), letterSpacing: -size * 0.03 };
   return (
     <View accessible accessibilityRole="header" accessibilityLabel="Backspin" style={{ alignSelf: 'flex-start' }}>

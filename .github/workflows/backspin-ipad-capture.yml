@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       set:
-        description: 'ipad = release captures; iphone-design = every main screen on an iPhone, dark and light, seeded data'
+        description: 'ipad = release captures; iphone-design = every main screen on an iPhone, dark and light; iphone-fit = small and Pro Max iPhones plus the largest text size'
         type: choice
-        options: [ipad, iphone-design]
+        options: [ipad, iphone-design, iphone-fit]
         default: ipad
 
 permissions:
@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   capture:
-    if: inputs.set != 'iphone-design'
+    if: inputs.set != 'iphone-design' && inputs.set != 'iphone-fit'
     runs-on: macos-latest
     timeout-minutes: 90
     defaults:
@@ -92,7 +92,7 @@ jobs:
   # Design review captures: real simulator renders of every main screen, dark and light, with seeded play data so
   # Home, Takes and the free-goes chip show real states. Storage is seeded by writing AsyncStorage's manifest.
   design:
-    if: inputs.set == 'iphone-design'
+    if: inputs.set == 'iphone-design' || inputs.set == 'iphone-fit'
     runs-on: macos-latest
     timeout-minutes: 90
     defaults:
@@ -122,7 +122,15 @@ jobs:
           c=[d for r,ds in devices.items() if 'iOS' in r for d in ds if re.fullmatch(r'iPhone 1[5-9] Pro',d['name'])]
           if not c: raise SystemExit('No iPhone Pro simulator')
           c.sort(key=lambda d:d['name']); d=c[-1]
-          open(os.environ['GITHUB_ENV'],'a').write('UDID='+d['udid']+'\n'); print('Capture device:',d['name'])
+          env=open(os.environ['GITHUB_ENV'],'a')
+          env.write('UDID='+d['udid']+'\n'); print('Capture device:',d['name'])
+          # Fit check devices: the narrowest iPhone installed and the largest Pro Max.
+          ph=[x for r,ds in devices.items() if 'iOS' in r for x in ds if x['name'].startswith('iPhone')]
+          rank=lambda n:0 if 'SE' in n else 1 if 'mini' in n else 2 if '16e' in n else 9
+          small=sorted([x for x in ph if rank(x['name'])<9],key=lambda x:(rank(x['name']),x['name']))
+          big=sorted([x for x in ph if re.fullmatch(r'iPhone 1[5-9] Pro Max',x['name'])],key=lambda x:x['name'])
+          if small: env.write('SMALL='+small[0]['udid']+'\n'); print('Small:',small[0]['name'])
+          if big: env.write('BIG='+big[-1]['udid']+'\n'); print('Pro Max:',big[-1]['name'])
           PY
       - name: Build
         run: |
@@ -131,7 +139,61 @@ jobs:
             -sdk iphonesimulator -destination "id=$UDID" -derivedDataPath "$RUNNER_TEMP/dd" \
             CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/build.log" 2>&1 \
             || { tail -180 "$RUNNER_TEMP/build.log"; exit 1; }
+      - name: Fit check (small iPhone, Pro Max, largest text size)
+        if: inputs.set == 'iphone-fit'
+        run: |
+          # Light mode, no streak yet (the long "Start a streak today" label), on the narrowest iPhone, the Pro Max,
+          # and the Pro at the largest accessibility text size. The same app build goes on every device.
+          OUT="$RUNNER_TEMP/shots"; mkdir -p "$OUT"
+          BID=com.jared797.backspin
+          APP="$RUNNER_TEMP/dd/Build/Products/Release-iphonesimulator/Backspin.app"
+          seed() {  # $1 = streak days
+            DATA=$(xcrun simctl get_app_container "$DEV" $BID data)
+            python3 - "$DATA" "$1" <<'PY'
+          import json,os,sys,datetime
+          data,days=sys.argv[1],int(sys.argv[2])
+          today=datetime.date.today().isoformat()
+          prefs=dict(haptics=True,countdown=True,holdToRecord=False,autoplay=True,calm=False,theme='light',lang='en',introSeen=True,skin='booth')
+          stats=dict(rounds=4,best=78,streak=dict(current=days,best=3,last=today if days else None),daily={})
+          now=int(datetime.datetime.now().timestamp()*1000)
+          takes=[dict(id='a1',at=now-3600e3,line='banana',pack='warmup',score=78,original='x',copy='x'),
+                 dict(id='a2',at=now-86400e3,line='peanut butter sandwich',pack='warmup',score=61,original='x',copy='x')]
+          m={'backspin.prefs.v1':json.dumps(prefs),'backspin.stats.v1':json.dumps(stats),'backspin.takes.v1':json.dumps(takes),'backspin.langHint.v1':'"done"'}
+          for d in [f'{data}/Library/Application Support/com.jared797.backspin/RCTAsyncLocalStorage_V1',f'{data}/Documents/RCTAsyncLocalStorage_V1',f'{data}/Library/Application Support/RCTAsyncLocalStorage_V1']:
+            os.makedirs(d,exist_ok=True); json.dump(m,open(d+'/manifest.json','w'))
+          PY
+          }
+          route() {  # $1 name, $2 route path
+            xcrun simctl terminate "$DEV" $BID 2>/dev/null || true
+            if [ -n "$2" ]; then xcrun simctl launch "$DEV" $BID -backspinCaptureRoute "/$2"; else xcrun simctl launch "$DEV" $BID; fi
+            sleep 11
+            xcrun simctl io "$DEV" screenshot "$OUT/$1.png"
+          }
+          for PAIR in "${SMALL:-}:small" "${BIG:-}:promax" "$UDID:pro-largest-text"; do
+            DEV=${PAIR%%:*}; L=${PAIR#*:}
+            if [ -z "$DEV" ]; then echo "No simulator for $L"; continue; fi
+            xcrun simctl boot "$DEV" 2>/dev/null || true; xcrun simctl bootstatus "$DEV" -b
+            xcrun simctl install "$DEV" "$APP"
+            xcrun simctl status_bar "$DEV" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+            xcrun simctl ui "$DEV" appearance light
+            if [ "$L" = "pro-largest-text" ]; then xcrun simctl ui "$DEV" content_size accessibility-extra-extra-extra-large; fi
+            seed 0
+            route "$L-01-home-start-a-streak" ""
+            route "$L-02-round" "round?mode=pack&line=wa72b302"
+            route "$L-03-packs" "packs"
+            route "$L-05-party" "party"
+            route "$L-06-takes" "takes"
+            route "$L-07-settings" "settings"
+            route "$L-08-plus" "plus"
+            route "$L-09-listen" "round?mode=pack&line=wa72b302&preview=listen"
+            route "$L-11-score" "round?mode=pack&line=wa72b302&preview=reveal"
+            seed 3
+            route "$L-01-home-streak" ""
+            xcrun simctl shutdown "$DEV" 2>/dev/null || true
+          done
+          printf 'Source: %s\nFit check captures.\n' "$GITHUB_SHA" > "$OUT/README.txt"
       - name: Capture
+        if: inputs.set == 'iphone-design'
         run: |
           OUT="$RUNNER_TEMP/shots"; mkdir -p "$OUT"
           BID=com.jared797.backspin
