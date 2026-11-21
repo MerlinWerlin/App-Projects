@@ -20,6 +20,7 @@ import { useFocusEffect } from 'expo-router';
 import { memo, useCallback, useEffect, useId, useRef, useState, type ComponentProps, type ReactNode } from 'react';
 import { Animated, Text, View, type ColorValue, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Defs, G, LinearGradient, Path, Rect, Stop } from 'react-native-svg';
+import { nextTitleScale, TITLE_MAX_FONT_MULTIPLIER } from '../core/titlefit.ts';
 import { useApp } from '../state/app.tsx';
 import { useCountryPick } from '../state/countryTheme.tsx';
 import { THEMED_TONES } from '../theme/countryTheme.ts';
@@ -292,6 +293,28 @@ export const GradientFill = memo(function GradientFill({ tone }: { tone: HeroTon
  * sits below (stats, a countdown chip...). `topInset` adds the safe-area top so the gradient runs under the status bar.
  * The title is the screen's header for screen readers.
  */
+/**
+ * 1.0 feedback ("Emergency is wrapping"): the head's big title never splits a word across lines. It grows with the
+ * phone's text size up to TITLE_MAX_FONT_MULTIPLIER, and if a word still doesn't fit its column it shrinks a step
+ * at a time until every word is whole (src/core/titlefit.ts). Keyed by title, so a new title starts full size.
+ */
+function HeroTitle({ title, type, color, maxWidth }: { title: string; type: { fontFamily: string; fontSize: number; lineHeight: number; letterSpacing?: number }; color: string; maxWidth: number | `${number}%` }) {
+  const [scale, setScale] = useState(1);
+  return (
+    <Text
+      accessibilityRole="header"
+      maxFontSizeMultiplier={TITLE_MAX_FONT_MULTIPLIER}
+      onTextLayout={(e) => {
+        const next = nextTitleScale(scale, e.nativeEvent.lines.map((l) => l.text));
+        if (next !== scale) setScale(next);
+      }}
+      style={[type, { color, maxWidth, fontSize: type.fontSize * scale, lineHeight: type.lineHeight * scale }]}
+    >
+      {title}
+    </Text>
+  );
+}
+
 export function HeroHeader({
   tone: toneProp,
   scene,
@@ -336,9 +359,7 @@ export function HeroHeader({
   // still passes one, closes the block as a small line under the subtitle.
   const text = (
     <>
-      <Text accessibilityRole="header" style={[compact ? typeScale.displayM : typeScale.displayXL, { color: theme.heroInk, maxWidth: titleW }]}>
-        {title}
-      </Text>
+      <HeroTitle key={title} title={title} type={compact ? typeScale.displayM : typeScale.displayXL} color={theme.heroInk} maxWidth={titleW} />
       {subtitle ? <Text style={[typeScale.body, { color: theme.heroMuted, maxWidth: textW }]}>{subtitle}</Text> : null}
       {eyebrow ? <Text style={[typeScale.caption, { color: theme.heroMuted, maxWidth: textW }]}>{eyebrow}</Text> : null}
     </>
