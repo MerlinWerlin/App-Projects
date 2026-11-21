@@ -124,8 +124,13 @@ export function Press({ children, onPress, onPressIn, onPressOut, style, label, 
     calm
       ? Animated.timing(o, { toValue: down ? 0.6 : 1, duration: MOTION.press, useNativeDriver: true }).start()
       : Animated.spring(s, { toValue: down ? 0.97 : 1, useNativeDriver: true, speed: 50, bounciness: 0 }).start();
+  // How the control sits in its parent (flex, width, margins, alignSelf) belongs on the touchable itself; only the
+  // look goes on the inner view that scales. Otherwise `flex: 1` or `width: '48%'` never reach the layout (the second
+  // party-mode card was pushed off screen).
+  const { outer, inner } = splitLayout(style);
   return (
     <Pressable
+      style={outer}
       accessibilityRole="button"
       accessibilityLabel={label}
       accessibilityHint={hint}
@@ -142,9 +147,23 @@ export function Press({ children, onPress, onPressIn, onPressOut, style, label, 
       }}
       hitSlop={6}
     >
-      <Animated.View style={[style, { transform: [{ scale: s }], opacity: disabled ? 0.4 : o }]}>{children}</Animated.View>
+      <Animated.View style={[inner, { transform: [{ scale: s }], opacity: disabled ? 0.4 : o }]}>{children}</Animated.View>
     </Pressable>
   );
+}
+
+const OUTER_KEYS = new Set([
+  'flex', 'flexGrow', 'flexShrink', 'flexBasis', 'alignSelf', 'width', 'minWidth', 'maxWidth',
+  'margin', 'marginTop', 'marginBottom', 'marginLeft', 'marginRight', 'marginHorizontal', 'marginVertical', 'marginStart', 'marginEnd',
+]);
+
+/** Splits a style into the part that places a control (outer) and the part that draws it (inner). */
+export function splitLayout(style: StyleProp<ViewStyle>): { outer: ViewStyle; inner: ViewStyle } {
+  const flat = (StyleSheet.flatten(style) ?? {}) as Record<string, unknown>;
+  const outer: Record<string, unknown> = {};
+  const inner: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(flat)) (OUTER_KEYS.has(k) ? outer : inner)[k] = v;
+  return { outer: outer as ViewStyle, inner: inner as ViewStyle };
 }
 
 /**

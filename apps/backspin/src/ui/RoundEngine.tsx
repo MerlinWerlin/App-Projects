@@ -368,7 +368,7 @@ function RecordArea({ phase, count, seconds, levels, busy, hold, onStart, onStop
   return (
     <View style={{ alignItems: 'center', marginTop: SP(10) }}>
       <View style={{ width: '100%', marginBottom: SP(8) }}>
-        <Wave peaks={bars} color={theme.rec} dim={theme.line} height={44} gap={3} />
+        <Wave peaks={bars} color={levels.length ? theme.rec : theme.line} dim={theme.line} height={44} gap={3} />
       </View>
       <Press
         label={label}
