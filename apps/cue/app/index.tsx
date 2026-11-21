@@ -3,7 +3,7 @@
  * read time set like a gate number; the rest form the board below. Memoised rows (no lag in long lists).
  */
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { ActionSheetIOS, Alert, Platform, Pressable, Share, StyleSheet, Text, TextInput, View } from 'react-native';
 import Animated, { FadeInDown, LinearTransition } from 'react-native-reanimated';
@@ -86,6 +86,18 @@ export default function Library() {
 
   return (
     <View style={{ flex: 1, backgroundColor: theme.ground }}>
+      {/* A native large-title bar (not a drawn header): pushing into the editor keeps the same nav bar,
+          so the editor's text view is not left scrolled by a safe-area inset change mid-transition. */}
+      <Stack.Screen
+        options={{
+          headerRight: () => (
+            <View style={{ flexDirection: 'row' }}>
+              <IconBtn icon="download-outline" label={t('library.import')} onPress={doImport} square />
+              <IconBtn icon="settings-outline" label={t('library.settings')} onPress={() => router.push('/settings')} square />
+            </View>
+          ),
+        }}
+      />
       <Animated.FlatList
         data={board}
         keyExtractor={(s) => s.id}
@@ -94,16 +106,10 @@ export default function Library() {
         initialNumToRender={10}
         windowSize={7}
         itemLayoutAnimation={app.reduceMotion ? undefined : LinearTransition.duration(240)}
-        contentContainerStyle={{ paddingTop: insets.top + SPACE.xs, paddingBottom: insets.bottom + 108 }}
+        contentInsetAdjustmentBehavior="automatic"
+        contentContainerStyle={{ paddingBottom: insets.bottom + 108 }}
         ListHeaderComponent={
           <View>
-            <View style={st.top}>
-              <Txt v="display" accessibilityRole="header" max={1.3} style={{ flex: 1 }}>
-                {t('library.title')}
-              </Txt>
-              <IconBtn icon="download-outline" label={t('library.import')} onPress={doImport} square />
-              <IconBtn icon="settings-outline" label={t('library.settings')} onPress={() => router.push('/settings')} square />
-            </View>
             <View style={[st.search, { backgroundColor: theme.field }]}>
               <Ionicons name="search" size={18} color={theme.ink3} />
               <TextInput
@@ -253,7 +259,6 @@ const BoardRow = memo(function BoardRow({ script, theme, onOpen, onMenu }: { scr
 });
 
 const st = StyleSheet.create({
-  top: { flexDirection: 'row', alignItems: 'center', paddingLeft: SPACE.gutter, paddingRight: SPACE.sm, gap: 2, minHeight: 56 },
   search: { marginHorizontal: SPACE.gutter, marginTop: SPACE.xs, marginBottom: SPACE.lg, borderRadius: RADIUS.control, paddingHorizontal: SPACE.sm, minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: SPACE.xs },
   searchInput: { flex: 1, paddingVertical: 10 },
   band: { paddingTop: SPACE.lg, paddingBottom: SPACE.md, marginBottom: SPACE.xs },
