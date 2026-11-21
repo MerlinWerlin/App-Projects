@@ -15,7 +15,7 @@ concurrency:
 jobs:
   capture:
     runs-on: macos-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     defaults:
       run:
         working-directory: apps/cue
@@ -75,7 +75,7 @@ jobs:
             CODE_SIGNING_ALLOWED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO > "$RUNNER_TEMP/cue-simulator.log" 2>&1 \
             || { tail -180 "$RUNNER_TEMP/cue-simulator.log"; exit 1; }
       - name: Capture iPhone and iPad screens
-        timeout-minutes: 35
+        timeout-minutes: 75
         run: |
           mkdir -p "$RUNNER_TEMP/cue-captures"
           xcrun simctl list devices available --json > "$RUNNER_TEMP/cue-devices.json"
@@ -84,21 +84,22 @@ jobs:
           devices=json.load(open(os.environ['RUNNER_TEMP']+'/cue-devices.json'))['devices']
           all_devices=[d for runtime,ds in sorted(devices.items(),reverse=True) if 'iOS' in runtime for d in ds]
           phone=next((d for d in all_devices if d['name']=='iPhone 16 Pro Max'),None) or next(d for d in all_devices if 'Pro Max' in d['name'])
-          tablet=next(d for d in all_devices if 'iPad Pro 13' in d['name'] or 'iPad Pro (12.9-inch)' in d['name'])
+          small=next((d for d in all_devices if d['name'].startswith('iPhone SE')),None) or next((d for d in all_devices if d['name'] in ('iPhone 16e','iPhone 17e','iPhone 13 mini','iPhone 12 mini')),None)
           with open(os.environ['RUNNER_TEMP']+'/cue-targets.txt','w') as f:
-              for name,d in [('iphone',phone)]:
-                  f.write(name+' '+d['udid']+'\n')
-                  print(name,d['name'],d['udid'])
+              rows=[('iphone',phone,'dark','large'),('iphone',phone,'light','large'),('iphone-ax',phone,'light','accessibility-extra-extra-extra-large')]
+              if small: rows.append(('small',small,'light','large'))
+              for name,d,ap,size in rows:
+                  f.write(' '.join([name,d['udid'],ap,size])+'\n')
+                  print(name,d['name'],ap,size)
           PY
           RESULT=0
-          while read -r KIND DEVICE; do
-            mkdir -p "$RUNNER_TEMP/cue-captures/$KIND"
+          while read -r KIND DEVICE APPEAR SIZE; do
             xcrun simctl boot "$DEVICE"
             python3 -c 'import subprocess,sys; subprocess.run(["xcrun","simctl","bootstatus",sys.argv[1],"-b"],check=True,timeout=480)' "$DEVICE" || { RESULT=1; xcrun simctl shutdown "$DEVICE" || true; continue; }
             xcrun simctl install "$DEVICE" "$RUNNER_TEMP/cue-derived/Build/Products/Release-iphonesimulator/Cue.app"
-            for APPEAR in dark light; do
             mkdir -p "$RUNNER_TEMP/cue-captures/$KIND-$APPEAR"
             xcrun simctl ui "$DEVICE" appearance "$APPEAR"
+            xcrun simctl ui "$DEVICE" content_size "$SIZE"
             xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
             MAESTRO_CLI_NO_ANALYTICS=1 MAESTRO_DRIVER_STARTUP_TIMEOUT=240000 python3 - "$DEVICE" "$RUNNER_TEMP/cue-captures/$KIND-$APPEAR" <<'PY' || RESULT=1
           import os,signal,subprocess,sys
@@ -115,7 +116,6 @@ jobs:
               raise SystemExit('Capture timed out after 7 minutes; partial evidence preserved.')
           raise SystemExit(result)
           PY
-            done
             xcrun simctl shutdown "$DEVICE"
           done < "$RUNNER_TEMP/cue-targets.txt"
           printf 'App source: %s\nCapture workflow: %s\nActual simulator captures; OTA disabled only for reproducible captures. No physical-device or sandbox-purchase claim. Inspect every image before store use.\n' "$(cat "$RUNNER_TEMP/cue-app-source.txt")" "$GITHUB_SHA" > "$RUNNER_TEMP/cue-captures/README.txt"
