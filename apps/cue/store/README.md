@@ -6,7 +6,7 @@ Plus is the non-consumable `com.jared797.cue.plus`, Australia A$2.99. The user-s
 
 The older `jpg/ios/` and `src/render.mjs` assets are retained historical illustrative mockups. Their old orange palette and trial wording are superseded and must not be reused for this release. The release checklist records the actual native capture workflow and source revision; visually inspect every replacement before uploading.
 
-The current `native/` folders contain inspected simulator captures of build 13 source `d73a869`: three iPhone screenshots, two iPad screenshots and one complete paywall image for both purchase reviews. Capture run 40476615975 succeeded using the compiled app preserved by run 40472424782. The public website uses the same iPhone images. The iPad library capture caught the launch animation and is intentionally excluded. Each folder records its provenance and purpose; the review image's USD $1.99 label is the US storefront, separate from the verified Australian A$2.99 schedule.
+The current `native/` folders contain inspected simulator captures of Cue 1.0.3 (source `e790aa6d`, Signal design): four iPhone screenshots, three iPad screenshots and one complete iPad paywall image for purchase review.
 
 ## Android Google Play listing preparation
 
