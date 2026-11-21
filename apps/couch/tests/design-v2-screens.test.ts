@@ -185,7 +185,7 @@ describe('Add TV on design v2 (T68 step 6)', () => {
   });
 
   it('keeps scan first, pairing steps, the lost-remote sheet and the v1 accessibility labels', () => {
-    for (const key of ['candidateLabel', 'candidateLabelBeta', 'irRowLabel', 'notListed', 'ipLabel', 'psk', 'pairingCode', 'pin', 'room', 'lostRemote']) {
+    for (const key of ['candidateLabel', 'irRowLabel', 'notListed', 'ipLabel', 'psk', 'pairingCode', 'pin', 'room', 'lostRemote']) {
       expect(src).toContain(`'app.addTv.${key}'`);
     }
     expect(src).toContain("dispatch({ type: 'pick', host: c.host })");

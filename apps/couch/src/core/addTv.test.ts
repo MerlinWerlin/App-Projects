@@ -102,11 +102,14 @@ describe('addTvReducer', () => {
     expect(addTvReducer(code, { type: 'back' }).step).toBe('pair');
   });
 
-  it('unsupported platforms say coming soon', () => {
+  it('unsupported platforms say Couch cannot control them (no "coming soon", guideline 2.1)', () => {
     const sam: AddCandidate = { platform: 'samsung', host: '192.168.1.80', model: 'Q80', source: 'ssdp' };
     const s = run(initialAddTvState, { type: 'found', candidate: sam }, { type: 'scanDone' }, { type: 'pick', host: '192.168.1.80' });
     expect(s.step).toBe('unsupported');
-    if (s.step === 'unsupported') expect(s.message).toMatch(/coming soon/);
+    if (s.step === 'unsupported') {
+      expect(s.message).toMatch(/can't control/);
+      expect(s.message).not.toMatch(/coming soon/i);
+    }
     expect(addTvReducer(s, { type: 'back' }).step).toBe('list');
   });
 

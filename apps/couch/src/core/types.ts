@@ -34,8 +34,6 @@ export const PLATFORM_LABEL: Record<Platform, string> = withCopy(
   { ir: 'core.platform.ir', mock: 'core.platform.demo' },
 );
 
-/** Platforms shown with a "beta" chip. */
-export const BETA_PLATFORMS: ReadonlySet<Platform> = new Set<Platform>(['firetv']);
 
 export type Capability =
   | 'keys'

@@ -5,7 +5,7 @@ import { KeyFace } from '../icons/KeyFace';
 import { RemoteIcon } from '../icons/RemoteIcon';
 import { Socket } from './RemoteKey';
 import { VOICE_BUTTON } from './controls';
-import { VoiceController, VOICE_NOTES, type VoiceState } from '../../core/voice';
+import { VoiceController, VOICE_NOTES, voiceMode, type VoiceState } from '../../core/voice';
 import { loadSpeechToText } from '../../native/speech';
 import { useSession } from '../../state/session';
 import { fonts } from '../../theme/tokens';
@@ -35,8 +35,13 @@ const BREATH_MS = 1400;
 export function VoiceButton({ onNote, onOpenKeyboard }: VoiceButtonProps) {
   const t = useRemoteTheme();
   const tr = useT();
-  const { session } = useSession();
+  const { session, snap } = useSession();
   const [state, setState] = useState<VoiceState>('idle');
+  // App Review 2.3.1: say what the key really does. No real TV has voice yet and the phone has no speech-to-text,
+  // so on those TVs the key reads "Search on the TV" with a search icon and opens the keyboard (the controller's
+  // 'keyboard' mode). It reads "Hold to talk" only where it can listen. `snap` re-renders this on a TV switch.
+  const stt = useMemo(() => loadSpeechToText(), []);
+  const canTalk = snap.activeId !== null && voiceMode(session.activeDriver(), stt !== null) !== 'keyboard';
   // Lock the page ScrollView while holding, so a small drag cannot steal the touch and send early
   // (QA run 3 risk 3; same pattern as the touchpad).
   const setScrollLock = useScrollLock();
@@ -51,12 +56,12 @@ export function VoiceButton({ onNote, onOpenKeyboard }: VoiceButtonProps) {
     () =>
       new VoiceController({
         getDriver: () => session.activeDriver(),
-        stt: loadSpeechToText(),
+        stt,
         onNote: (n) => cb.current.onNote(n),
         onOpenKeyboard: () => cb.current.onOpenKeyboard(),
         onState: setState,
       }),
-    [session],
+    [session, stt],
   );
 
   // Leaving the screen mid-hold must not send anything.
@@ -108,8 +113,8 @@ export function VoiceButton({ onNote, onOpenKeyboard }: VoiceButtonProps) {
     <Socket radius={99} style={styles.socket}>
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={tr('ui.remote.holdToTalkLabel')}
-      accessibilityHint={tr('ui.remote.holdToTalkHint')}
+      accessibilityLabel={tr(canTalk ? 'ui.remote.holdToTalkLabel' : 'ui.remote.searchTvLabel')}
+      accessibilityHint={tr(canTalk ? 'ui.remote.holdToTalkHint' : 'ui.remote.searchTvHint')}
       accessibilityState={{ busy: state === 'sending' }}
       onPressIn={() => {
         // Couch Plus gate (src/plus/gate.tsx): locked -> the paywall opens and nothing listens or sends.
@@ -129,7 +134,7 @@ export function VoiceButton({ onNote, onOpenKeyboard }: VoiceButtonProps) {
         {listening ? (
           <Animated.View pointerEvents="none" style={[styles.ring, { borderColor: t.accentInk }, ringStyle]} />
         ) : null}
-        <RemoteIcon name={VOICE_BUTTON.icon} size={22} color={on ? t.accentInk : t.accent} />
+        <RemoteIcon name={canTalk ? VOICE_BUTTON.icon : 'search'} size={22} color={on ? t.accentInk : t.accent} />
       </View>
       <Text
         scaleRole="label"
@@ -137,7 +142,7 @@ export function VoiceButton({ onNote, onOpenKeyboard }: VoiceButtonProps) {
         importantForAccessibility="no"
         accessibilityElementsHidden
       >
-        {on ? VOICE_NOTES.listening : tr('ui.remote.holdToTalk')}
+        {on && canTalk ? VOICE_NOTES.listening : tr(canTalk ? 'ui.remote.holdToTalk' : 'ui.remote.searchTv')}
       </Text>
     </Pressable>
     </Socket>

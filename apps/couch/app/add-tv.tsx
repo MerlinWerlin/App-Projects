@@ -19,10 +19,11 @@ import {
   type AddTvState,
 } from '../src/core/addTv';
 import type { AndroidTvDriver } from '../src/core/drivers/androidtv/driver';
+import { createInAppDemoSession } from '../src/core/demo';
 import { discoverTvs } from '../src/core/discoveryService';
 import { candidateNotice, lostRemoteHelp, platformList, type PairingNotice } from '../src/core/pairingNotice';
 import { probeHost } from '../src/core/probe';
-import { BETA_PLATFORMS, PLATFORM_LABEL } from '../src/core/types';
+import { PLATFORM_LABEL } from '../src/core/types';
 import { LOCALES } from '../src/i18n/locales';
 import { useLocale, useT } from '../src/i18n/react';
 import { useSession } from '../src/state/session';
@@ -230,6 +231,15 @@ export default function AddTvScreen() {
   const goRemote = (): void => {
     router.dismissTo('/remote');
   };
+  const tryDemo = (): void => {
+    createInAppDemoSession()
+      .then((demoSession) => {
+        if (session.getSnapshot().tvs.length > 0) return;
+        session.load(demoSession.tvs, demoSession.drivers, { demo: true });
+        goRemote();
+      })
+      .catch(() => {});
+  };
   // A Google TV saved for casting: straight to the Cast tab.
   const goCast = (): void => {
     router.dismissTo('/cast');
@@ -237,15 +247,14 @@ export default function AddTvScreen() {
 
   const candidateRow = (c: AddCandidate) => {
     const label = PLATFORM_LABEL[c.platform];
-    const beta = BETA_PLATFORMS.has(c.platform);
     const title = c.model ?? c.name ?? t('app.addTv.platformTv', { platform: label });
     return (
       <Row
         key={c.host}
         title={title}
         subtitle={c.host}
-        accessory={{ type: 'value', value: beta ? t('app.addTv.chipBeta', { platform: label }) : label, chevron: true }}
-        accessibilityLabel={t(beta ? 'app.addTv.candidateLabelBeta' : 'app.addTv.candidateLabel', { title, host: c.host, platform: label })}
+        accessory={{ type: 'value', value: label, chevron: true }}
+        accessibilityLabel={t('app.addTv.candidateLabel', { title, host: c.host, platform: label })}
         onPress={() => dispatch({ type: 'pick', host: c.host })}
       />
     );
@@ -295,6 +304,16 @@ export default function AddTvScreen() {
               accessibilityLabel={t('app.addTv.notListed')}
               onPress={() => dispatch({ type: 'manual' })}
             />
+            {/* App Review 2.1: try Couch without a TV. Only while no TV is saved; adding a real TV ends the demo. */}
+            {snap.tvs.length === 0 ? (
+              <Row
+                title={t('app.addTv.demoTitle')}
+                subtitle={t('app.addTv.demoBody')}
+                accessory={{ type: 'chevron' }}
+                accessibilityLabel={`${t('app.addTv.demoTitle')} ${t('app.addTv.demoBody')}`}
+                onPress={tryDemo}
+              />
+            ) : null}
           </InsetGroupedList>
         </>
       );

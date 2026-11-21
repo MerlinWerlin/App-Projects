@@ -266,7 +266,7 @@ export const coreEn = {
   'core.addTv.enterCode': 'Enter the code showing on your TV.',
   'core.addTv.enterPin': 'Enter the PIN showing on your TV.',
   'core.addTv.castOnlyIntro': "Remote control for Google TV is coming in the next update. You can already use this TV for casting photos and videos.",
-  'core.addTv.comingSoon': "Control for {platform} TVs is coming soon. We found it, but can't control it yet.",
+  'core.addTv.comingSoon': "Couch found this {platform} TV, but it can't control {platform} TVs.",
   'core.addTv.platformTv': '{platform} TV',
   'core.addTv.noAnswer': 'No TV answered at that address. Check the TV is on and on the same Wi-Fi.',
   'core.addTv.pskEmpty': 'Type the Pre-Shared Key you set on the TV.',
@@ -317,7 +317,7 @@ export const coreEn = {
   // Couch Plus: the remote and casting are the paid unlock (owner 7 Nov 2026)
   "core.plus.promise": "Unlock the remote and casting.",
   "core.plus.feature.remote.title": "The whole remote",
-  "core.plus.feature.remote.hint": "Every button, the touchpad, keyboard, voice, numbers, inputs and opening apps",
+  "core.plus.feature.remote.hint": "Every button, the touchpad, keyboard, numbers, inputs and opening apps",
   "core.plus.feature.cast.title": "Casting",
   "core.plus.feature.cast.hint": "Your photos and videos on the TV",
   "core.plus.unavailable": "Purchases aren't available right now. Check your internet connection and try again.",

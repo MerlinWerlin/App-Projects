@@ -45,7 +45,7 @@ guide, feedback and diagnostics sit above them.
 - Voice: plain, short, kind; says what will happen.
 
 ## Evidence on Hand
-Store screenshots in store/jpg/ios (rendered from the prototype, not the app). No testimonials, ratings or press may
+Store screenshots in store/jpg/ios (real Pro Max simulator captures of the app since 1.0.6; see store/README.md). No testimonials, ratings or press may
 be invented.
 
 ## Product Principles
