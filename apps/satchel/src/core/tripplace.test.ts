@@ -15,7 +15,7 @@ function trip(name: string, items: Item[]): Trip {
 const more = (n: number) => `+${n}`;
 
 test('tripPlace: countries from the bookings in visit order, home left out, never from the title', () => {
-  const p = tripPlace(trip('Girls trip', [stay('a', 'Asia/Tokyo', '2026-11-20'), stay('a2', 'Asia/Tokyo', '2026-11-21'), stay('b', 'Asia/Seoul', '2026-11-24'), stay('c', 'Australia/Sydney', '2026-11-28')]), 'AU', nameOf);
+  const p = tripPlace(trip('Girls trip', [{ ...stay('a', 'Asia/Tokyo', '2026-11-20'), title: 'Tokyo Station Hotel' }, stay('a2', 'Asia/Tokyo', '2026-11-21'), stay('b', 'Asia/Seoul', '2026-11-24'), stay('c', 'Australia/Sydney', '2026-11-28')]), 'AU', nameOf);
   assert.deepEqual(p.countries, ['Japan', 'South Korea']);
   assert.equal(p.city, 'Tokyo');
   assert.equal(destinationLine(p, more), 'Japan · South Korea');
@@ -41,4 +41,13 @@ test('titleNamesPlace: a title that names the place is not repeated, any case or
   assert.equal(titleNamesPlace('tokyo & kyoto', p), true);
   assert.equal(titleNamesPlace('Girls trip', p), false);
   assert.equal(titleNamesPlace('Café crawl', { countries: ['Cafe'], city: null }), true);
+});
+
+test('tripPlace: the zone city is used only when the bookings mention it (Bali is in the Asia/Makassar zone)', () => {
+  const bali = trip('Bali with Mum', [stay('u', 'Asia/Makassar', '2026-11-20'), stay('u2', 'Asia/Makassar', '2026-11-21')]);
+  const p = tripPlace(bali, 'AU', (iso) => (iso === 'ID' ? 'Indonesia' : iso));
+  assert.equal(p.city, null);
+  assert.equal(headlinePlace(p), 'Indonesia');
+  const named = trip('Bali with Mum', [{ ...stay('m', 'Asia/Makassar', '2026-11-20'), title: 'Makassar harbour hotel' }]);
+  assert.equal(tripPlace(named, 'AU', nameOf).city, 'Makassar');
 });

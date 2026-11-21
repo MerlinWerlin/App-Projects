@@ -16,12 +16,24 @@ export type TripPlace = {
   city: string | null;
 };
 
+const norm = (s: string) => s.toLocaleLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
 const zoneCity = (tz: string) => (tz.split('/').pop() ?? tz).replace(/_/g, ' ');
+
+function bookingsMention(trip: Trip, city: string): boolean {
+  const want = norm(city);
+  return trip.items.some((i) => {
+    const r = i as unknown as Record<string, unknown>;
+    const texts: unknown[] = [i.title, r.from, r.to, r.place].flatMap((v) => (v && typeof v === 'object' ? [(v as Record<string, unknown>).name, (v as Record<string, unknown>).address] : [v]));
+    return texts.some((x) => typeof x === 'string' && norm(x).includes(want));
+  });
+}
 
 export function tripPlace(trip: Trip, home: string | null, countryName: (iso2: string) => string): TripPlace {
   const countries = tripCountries(trip, home).map((c) => countryName(c.iso2)).filter((n, i, all) => n && all.indexOf(n) === i);
   const dest = destinationZone(trip);
-  return { countries, city: dest ? zoneCity(dest) : null };
+  const city = dest ? zoneCity(dest) : null;
+  // A time zone is named after one city (Bali is "Asia/Makassar"): use that name only when the bookings mention it.
+  return { countries, city: city && bookingsMention(trip, city) ? city : null };
 }
 
 /** "Japan", "Japan · South Korea", "Japan · Korea · Taiwan +2"; '' when the bookings name no country abroad. */
@@ -31,7 +43,6 @@ export function destinationLine(place: TripPlace, more: (n: number) => string): 
   return extra > 0 ? `${shown} ${more(extra)}` : shown;
 }
 
-const norm = (s: string) => s.toLocaleLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
 
 /** True when the title already names one of the trip's countries or its destination city. */
 export function titleNamesPlace(title: string, place: TripPlace): boolean {
