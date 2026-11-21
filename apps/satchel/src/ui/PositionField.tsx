@@ -15,7 +15,6 @@ import { decodePos, encodePos, formatPos, pickerRegion, positionChoices, roundPo
 import { cityMapsChanged } from '../core/signal.ts';
 import { listInstalled, offlineTilesFor } from '../native/cityMaps.ts';
 import { SatchelMap, type MapPin } from '../native/maps.tsx';
-import { useNetworkStatus } from '../native/network.ts';
 import { useApp } from '../state/app.tsx';
 import { fonts, radius, space, typeScale } from '../theme/tokens.ts';
 import { Body, Button, PressableScale } from './kit.tsx';
@@ -32,7 +31,6 @@ function MapSheet({ field, value, choices, onUse, onClose }: { field: string; va
   const [chosen, setChosen] = useState<Chosen | null>(value ? { at: value, name: null } : null);
   const [initialRegion] = useState<Region>(() => pickerRegion(value, choices) ?? WORLD);
   // T76: a downloaded city's tiles are drawn under the pins, as on the Map tab, so the picker works offline there.
-  const net = useNetworkStatus();
   const [installed, setInstalled] = useState<CityMap[]>([]);
   useEffect(() => {
     let live = true;
@@ -92,7 +90,6 @@ function MapSheet({ field, value, choices, onUse, onClose }: { field: string; va
         fallbackTitle={t('position.mapFallbackTitle')}
         fallbackBody={t('position.mapFallbackBody')}
         offlineTiles={offlineTiles}
-        limitZoom={net === 'offline'}
         onRegionChange={(r) => setView({ lat: r.latitude, lon: r.longitude })}
       />
       {offlineCity && offlineTiles ? <Text style={[typeScale.small, { color: theme.muted }]}>{t('f88.position.offlineCity', { city: offlineCity.name })}</Text> : null}

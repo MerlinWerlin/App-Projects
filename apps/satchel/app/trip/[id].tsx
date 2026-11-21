@@ -20,6 +20,7 @@ import { groupByDay, overlaps, tripPhase, type Day } from '../../src/core/timeli
 import { connectionAfter, connectionDay, connections } from '../../src/core/layovers.ts';
 import { arrivalFocusDelay } from '../../src/core/followups104.ts';
 import { useApp } from '../../src/state/app.tsx';
+import { destinationUnderTitle, useTripPlace } from '../../src/ui/tripPlace.ts';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { useTrips } from '../../src/state/trips.tsx';
 import { fonts, space, TOUCH, typeScale } from '../../src/theme/tokens.ts';
@@ -180,6 +181,9 @@ function TripScreenBody() {
   const cover = useMemo(() => (trip ? tripCover(trip) : null), [trip]);
   // T152: the trip's own cover photo (phone-only) wins over the illustration.
   const coverPhoto = useCoverPhoto(trip?.id);
+  // 1.0 feedback: under a title like "Girls trip", the head still says where the trip goes.
+  const tripWhere = useTripPlace(trip);
+  const where = trip ? destinationUnderTitle(t, trip.name, tripWhere) : '';
   const accent = useMemo(() => (cover ? tripAccent(cover, theme) : null), [cover, theme]);
   // T106: public holidays at the trip's stops, for the day-header badges.
   const holidays = useTripHolidays(trip);
@@ -325,7 +329,7 @@ function TripScreenBody() {
             {/* T83: the trip's illustrated cover with its name and dates. */}
             {cover ? (
               <View>
-                <TripCoverHero scene={cover} photo={coverPhoto} title={trip.name} subtitle={formatRange(trip.startDate, trip.endDate, lang)} />
+                <TripCoverHero scene={cover} photo={coverPhoto} title={trip.name} subtitle={[where, formatRange(trip.startDate, trip.endDate, lang)].filter(Boolean).join(' · ')} />
                 <TripCoverAmbient />
               </View>
             ) : null}

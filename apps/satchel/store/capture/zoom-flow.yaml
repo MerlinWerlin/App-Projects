@@ -1,0 +1,47 @@
+# Proof for Jared's 1.0 feedback (Satchel): with the Tokyo, Kyoto and Sydney packs installed (maps.py), each city is
+# zoomed in as far as the map allows (double taps on an empty spot). Every shot must still show street tiles, never a
+# blank map. Then the tab bar is captured. Run by .github/workflows/satchel-store-capture.yml after the store shots.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+- waitForAnimationToEnd:
+    timeout: 15000
+- openLink: satchel://map
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: z0-tokyo-start
+- repeat:
+    times: 10
+    commands:
+      - doubleTapOn:
+          point: "80%,26%"
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: z1-tokyo-zoomed-max
+- tapOn:
+    text: "^Kyoto$"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 8000
+- repeat:
+    times: 10
+    commands:
+      - doubleTapOn:
+          point: "60%,30%"
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: z2-kyoto-zoomed-max
+- tapOn:
+    text: "^Sydney.*"
+    optional: true
+- waitForAnimationToEnd:
+    timeout: 8000
+- repeat:
+    times: 10
+    commands:
+      - doubleTapOn:
+          point: "60%,30%"
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: z3-sydney-zoomed-max

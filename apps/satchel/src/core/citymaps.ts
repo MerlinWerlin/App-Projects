@@ -277,6 +277,31 @@ export function cityDiskBytes(city: Pick<CityMap, 'bytes' | 'dark'>, darkInstall
   return city.bytes + (darkInstalled && city.dark ? city.dark.bytes : 0);
 }
 
+/**
+ * Jared's 1.0 feedback ("zooming in too far on offline maps doesn't work"): the city's tiles replace the system map
+ * (LocalTile draws with canReplaceMapContent), so past the pack's deepest level there is nothing to draw, online or
+ * offline. The map's old maxZoomLevel cap only snapped back after the pinch ended, so the map went blank mid-gesture.
+ * MapKit's cameraZoomRange stops the pinch itself, but it is set as a camera distance, not a zoom level. This turns
+ * one reading of the camera (its altitude in metres while `lonDelta` degrees of longitude fill `widthPts` points)
+ * into the closest distance that still shows `maxZoom` tiles, with a small margin so the map never asks for a deeper
+ * level. Null when the reading is unusable.
+ */
+export const ZOOM_CAP_MARGIN = 1.04;
+export function minCameraDistance(altitude: number, lonDelta: number, widthPts: number, maxZoom: number): number | null {
+  if (!(altitude > 0) || !(lonDelta > 0) || !(widthPts > 0) || !Number.isFinite(maxZoom)) return null;
+  // The camera distance scales with the span shown; zoom z shows 360 * widthPts / (256 * 2^z) degrees.
+  const zoomNow = Math.log2((360 * widthPts) / (256 * lonDelta));
+  const d = altitude * 2 ** (zoomNow - maxZoom) * ZOOM_CAP_MARGIN;
+  return Number.isFinite(d) && d > 0 ? d : null;
+}
+
+/** True when a new cap differs enough from the current one to be worth applying (avoids re-render loops). */
+export function zoomCapChanged(current: number | null, next: number | null): boolean {
+  if (next === null) return false;
+  if (current === null) return true;
+  return Math.abs(next - current) / current > 0.03;
+}
+
 /** The zoom levels a city pack has tiles for. */
 export function zoomsOf(city: Pick<CityMap, 'minzoom' | 'maxzoom'>): number[] {
   const out: number[] = [];

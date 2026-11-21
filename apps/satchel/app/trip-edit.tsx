@@ -85,7 +85,8 @@ function TripEditScreen() {
   return (
     <Screen>
       <Stack.Screen options={{ title: prev ? t('tripEdit.title') : t('tripEdit.newTitle'), gestureEnabled }} />
-      <TextField label={t('tripEdit.name')} value={d.name} onChange={set('name')} placeholder={t('tripEdit.namePlaceholder')} error={err('name')} />
+      <TextField label={t('tripEdit.name')} value={d.name} onChange={set('name')} placeholder={t('tripEdit.namePlaceholder')} error={err('name')} autoCapitalize="sentences" />
+      <Body muted>{t('tripEdit.nameNote')}</Body>
       <DateField label={t('pickers.trip.start')} typedLabel={t('tripEdit.start')} value={d.startDate} onChange={set('startDate')} hint={t('pickers.hint.tripStart')} fallbackDay={todayIn(deviceZone())} error={err('startDate')} />
       <DateField label={t('pickers.trip.end')} typedLabel={t('tripEdit.end')} value={d.endDate} onChange={set('endDate')} hint={t('pickers.hint.tripEnd')} fallbackDay={d.startDate} minimumDay={d.startDate} error={err('endDate') ?? err('endBeforeStart')} />
       <ZoneField label={t('tripEdit.homeTz')} value={d.homeTz} onChange={set('homeTz')} hint={t('pickers.hint.homeZone')} error={err('homeTz')} suggestions={[deviceZone()]} chipLabel={(city) => t('itemEdit.useZone', { city })} />

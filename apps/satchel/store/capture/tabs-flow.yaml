@@ -1,0 +1,13 @@
+# Proof for Jared's 1.0 feedback (Satchel): the tab bar at the largest text size (set by the workflow with
+# simctl ui content_size). Every label, SOS included, must sit on one line.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+- waitForAnimationToEnd:
+    timeout: 15000
+- takeScreenshot: z4-tabs-largest-text
+- openLink: satchel://emergency
+- waitForAnimationToEnd:
+    timeout: 8000
+- takeScreenshot: z5-emergency-largest-text

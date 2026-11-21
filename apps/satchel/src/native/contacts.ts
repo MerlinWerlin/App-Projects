@@ -1,10 +1,11 @@
 // Phone adapters for the emergency card: pick ONE contact with the system picker, and open the call screen.
 // Never throws to the UI; returns a reason instead. Satchel never reads the whole address book: if the system
 // picker is unavailable we return 'unavailable' and the UI falls back to typing. Picked details stay on the phone.
+// The picker needs no permission, so none is asked ('denied' stays in the result type for older callers).
 import * as Contacts from 'expo-contacts';
 import { Linking } from 'react-native';
 import { pickPhone, telUri } from '../core/emergency.ts';
-import { permissionState, type PermissionState } from '../core/permissions.ts';
+import type { PermissionState } from '../core/permissions.ts';
 
 export type PickedContact = { name: string; phone: string | null };
 export type PickResult =
@@ -18,12 +19,8 @@ export async function pickContact(): Promise<PickResult> {
       const available = await Contacts.isAvailableAsync().catch(() => false);
       if (!available) return { ok: false, reason: 'unavailable', permission: 'unavailable' };
     }
-    if (typeof Contacts.requestPermissionsAsync === 'function') {
-      const perm = await Contacts.requestPermissionsAsync();
-      const state = permissionState(perm);
-      // 'limited' (iOS 18 shared-contacts access) still lets the system picker run.
-      if (state !== 'granted' && state !== 'limited') return { ok: false, reason: 'denied', canAskAgain: perm.canAskAgain, permission: state };
-    }
+    // App Review pass (5.1.1): no Contacts permission is asked. The system picker (CNContactPickerViewController)
+    // runs out of process and hands back only the one person picked, so Satchel never needs address-book access.
     const c = await Contacts.presentContactPickerAsync();
     if (!c) return { ok: false, reason: 'cancelled' };
     const name = (c.name || [c.firstName, c.lastName].filter(Boolean).join(' ') || '').trim();

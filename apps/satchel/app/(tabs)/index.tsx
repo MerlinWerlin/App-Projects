@@ -40,13 +40,15 @@ import { comeNudge } from '../../src/core/comehome.ts';
 import { ComeHomeHomeCard, comePillA11y } from '../../src/ui/comehome.tsx';
 import { useHomeCountry } from '../../src/ui/HomeCountryPicker.tsx';
 import { ClockCard, countdownHeadline, TodayCard, TripPass } from '../../src/ui/TripPass.tsx';
+import { headlinePlace } from '../../src/core/tripplace.ts';
+import { destinationUnderTitle, useTripPlace } from '../../src/ui/tripPlace.ts';
+import { tripPlace } from '../../src/core/tripplace.ts';
+import { holidayCountryName } from '../../src/ui/HolidaysCard.tsx';
 import { BatteryBannerSlot } from '../../src/ui/slots/BatteryBannerSlot.tsx';
 import { EmergencyShortcutSlot } from '../../src/ui/slots/EmergencyShortcutSlot.tsx';
 import { LanguageHintSlot } from '../../src/ui/slots/LanguageHintSlot.tsx';
 import { OfflineBannerSlot } from '../../src/ui/slots/OfflineBannerSlot.tsx';
 import { WelcomeSlot } from '../../src/ui/slots/WelcomeSlot.tsx';
-
-const cityOf = (tz: string) => (tz.split('/').pop() ?? tz).replace(/_/g, ' ');
 
 export default function TripsScreen() {
   const { t, theme, lang } = useApp();
@@ -67,6 +69,8 @@ export default function TripsScreen() {
   const dest = useMemo(() => (focus ? destinationZone(focus) : null), [focus]);
   // T170: the trip on now (or starting within a week) gets a way into its Today timetable.
   const timetable = useMemo(() => timetableTrip(trips, today), [trips, today]);
+  // 1.0 feedback: the headline's place comes from the bookings, never the trip's own title ("Girls trip").
+  const focusPlace = useTripPlace(focus);
 
   const renderTrip = useCallback(
     ({ item: trip, index }: { item: Trip; index: number }) => {
@@ -83,7 +87,7 @@ export default function TripsScreen() {
         <FadeInView delay={Math.min(index, 4) * 40}>
           <PressableScale
             accessibilityRole="button"
-            accessibilityLabel={[t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range }), drivingLine, leavePillA11y(t, leaving), comePillA11y(t, coming)].filter(Boolean).join('. ')}
+            accessibilityLabel={[t('spec41.trips.rowA11y', { name: trip.name, phase: t(`trips.phase.${phase}`), range }), destinationUnderTitle(t, trip.name, tripPlace(trip, homeCountryFor(trip, homeIso), holidayCountryName)), drivingLine, leavePillA11y(t, leaving), comePillA11y(t, coming)].filter(Boolean).join('. ')}
             accessibilityHint={t('spec41.trips.rowHint')}
             onPress={() => router.push(`/trip/${trip.id}`)}
           >
@@ -97,7 +101,14 @@ export default function TripsScreen() {
 
   // Counted on the trip's own calendar (where the traveller is), the same day the Itinerary tab and Your day show.
   const c = focus ? tripCountdown(focus, Date.now()) : null;
-  const place = focus ? (dest ? cityOf(dest) : focus.name) : '';
+  const realPlace = focusPlace ? headlinePlace(focusPlace) : null;
+  const place = focus ? (realPlace ?? focus.name) : '';
+  const headline =
+    focus && c
+      ? !realPlace && c.kind === 'active'
+        ? t('design.trips.countdownActiveTitle', { day: c.day, total: c.total, place })
+        : countdownHeadline(t, c, place)
+      : t('design.trips.heroNone');
 
   return (
     <FlatList
@@ -115,7 +126,7 @@ export default function TripsScreen() {
               tone="trips"
               illustration="route"
               mascot="home"
-              title={focus && c ? countdownHeadline(t, c, place) : t('design.trips.heroNone')}
+              title={headline}
               subtitle={
                 focus ? t('design.trips.countdownBody', { trip: focus.name, range: formatRange(focus.startDate, focus.endDate, lang) }) : t('design.trips.heroNoneBody')
               }

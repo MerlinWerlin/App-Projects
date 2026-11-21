@@ -79,7 +79,7 @@ def trip(start, now):
     it(id='f2', kind='flight', title='Osaka Kansai → Sydney', carrier='Southern Skies', number='SK 6', seat='41A', ref='K7Q4XT',
        start=st(7, '21:30', KYOTO), end=st(8, '08:50', 'Australia/Sydney'), **{'from': KIX, 'to': SYD})
     return {
-        'id': TRIP, 'name': 'Tokyo & Kyoto', 'startDate': d(0), 'endDate': d(8), 'homeTz': 'Australia/Sydney',
+        'id': TRIP, 'name': 'Girls trip', 'startDate': d(0), 'endDate': d(8), 'homeTz': 'Australia/Sydney',
         'items': items, 'createdAt': now,
         'budget': {'currency': 'AUD', 'amount': 450000}, 'rates': {'JPY': 0.0102},
     }

@@ -4,7 +4,7 @@
 `store/ASC_REQUEST.json` changes on main).
 
 Copy-paste text for App Store Connect > Satchel (app id 6826958413) > iOS App > 1.0 > App Store tab, primary
-language English (Australia). Satchel 1.0.0 is a free download with a 7-day free trial, then a one-time A$2.99 unlock (two non-consumables,
+language English (Australia). Satchel 1.0.0 is a free download with a 7-day free trial, then a one-time unlock (two non-consumables,
 `store/IAP.md`). iPhone only (`supportsTablet: false`), no account, no ads and no tracking.
 
 **Checked by a script.** `node tools/store/limits.mjs` reads the table and the fenced blocks under each "(N limit)"
@@ -77,11 +77,11 @@ SAFETY
 - Local customs, plugs and voltage, driving abroad with a rental car checklist, and getting around guides.
 
 WORDS AND SIGNS
-- Show-a-local phrase cards, a sign reader and a numbers and prices trainer in 12 languages, plus a menu helper.
+- Show-a-local phrase cards, a sign guide and a numbers and prices trainer in 12 languages, plus a menu helper.
 
 MAP AND TOILETS
 - Your bookings, saved places and each day's stops on the map, with search and a compass back to your hotel.
-- Download a city before you fly (Tokyo, Kyoto and Sydney to start) and its streets, toilets and places work in flight mode. Elsewhere the map background needs a signal. Map data © OpenStreetMap contributors.
+- Download a city before you fly (central Tokyo, Kyoto and Sydney to start) and its streets, toilets and places work in flight mode. Elsewhere the map background needs a signal. Map data © OpenStreetMap contributors.
 - Find public toilets near you or your hotel, with filters for free, wheelchair, changing table and open now.
 
 PACKING
@@ -102,7 +102,7 @@ PRIVATE BY DESIGN
 - Light and dark mode.
 
 FREE TRIAL
-Free 7-day trial, then a one-time A$2.99 unlock. No subscription. After the trial, every trip you saved stays viewable and trip files friends send you always open.
+Free 7-day trial, then a one-time unlock. No subscription. After the trial, every trip you saved stays viewable and trip files friends send you always open.
 
 Weather data: MET Norway.
 
@@ -135,7 +135,7 @@ these captions in this order (the test checks it).
 | Version | 1.0.0 (the store sync renames the 1.0 version record to match the build) |
 | What's New | not shown for a first version; leave empty |
 | Age rating | 4+: every questionnaire answer "None" / "No" (no user-generated content shared with others, no web browsing inside the app, no gambling, no medical treatment information beyond the traveller's own notes) |
-| Content rights | Does not contain, show or access third-party content that needs rights (OpenStreetMap data is ODbL with attribution in the app; MET Norway weather is CC BY 4.0 with attribution) |
+| Content rights | Uses third-party content, with the rights to it (App Review pass: Apple's question is whether the app shows or accesses any third-party content, and it does): OpenStreetMap data (ODbL) and MET Norway weather (CC BY 4.0), both credited in the app; the public emergency-number list, marked Verify locally with its source |
 | Encryption | `ITSAppUsesNonExemptEncryption = false` is set in the build (HTTPS only) |
 
 ## App Review notes (paste into App Review Information > Notes)

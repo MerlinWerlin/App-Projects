@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Satchel 1.0.0: audit fixes on the themes build: whole mascot on the Map header, text kept clear of country landmarks, leaves off titles, matching ticket-cut buttons on dark cards.",
+  "note": "Satchel 1.0.0: Jared's TestFlight feedback: offline maps hold at their deepest level at any zoom (Tokyo, Kyoto, Sydney), trips take a title like \"Girls trip\" with the destination kept beside it, the Emergency tab reads SOS on one line at every text size; plus App Review fixes (no Contacts permission for the picker, content-rights answer, listing wording).",
   "ascAppId": "6826958413",
   "ascKeyAuth": true
 }

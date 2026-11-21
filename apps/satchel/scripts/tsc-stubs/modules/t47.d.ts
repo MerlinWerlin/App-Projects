@@ -18,6 +18,8 @@ declare module 'react-native-maps' {
   export interface MapViewProps {
     minZoomLevel?: number;
     maxZoomLevel?: number;
+    /** Apple Maps: hard camera-distance limits (MKMapCameraZoomRange), held during the gesture. */
+    cameraZoomRange?: { minCenterCoordinateDistance?: number; maxCenterCoordinateDistance?: number; animated?: boolean };
   }
 }
 

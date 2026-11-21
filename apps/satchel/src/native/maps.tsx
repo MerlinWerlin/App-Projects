@@ -13,11 +13,15 @@
 // T166: when the city's dark tiles are installed (offlineTiles.darkPathTemplate) and the phone is in dark mode, the
 // LocalTile reads those instead of the light ones (src/core/citymaps.ts tilePathForScheme); keyed by path so the
 // overlay redraws when the appearance changes.
+// 1.0 feedback (zoom): the city tiles replace the system map, online or offline, so whenever they are drawn the
+// pinch stops at their deepest level. MapKit's cameraZoomRange holds it during the gesture (the old maxZoomLevel
+// only snapped back afterwards, showing a blank map meanwhile); it is measured from the live camera
+// (src/core/citymaps.ts minCameraDistance) after the map is ready and after each move. maxZoomLevel stays as a backup.
 import { Ionicons } from '@expo/vector-icons';
 import { Component, useCallback, useEffect, useRef, useState, type ComponentProps, type ReactNode } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import type MapViewType from 'react-native-maps';
-import { tilePathForScheme, type OfflineTiles } from '../core/citymaps.ts';
+import { minCameraDistance, tilePathForScheme, zoomCapChanged, type OfflineTiles } from '../core/citymaps.ts';
 import { validLatLon, type LatLon, type Region } from '../core/poi.ts';
 import { useApp } from '../state/app.tsx';
 import { duration, dur } from '../theme/motion.ts';
@@ -88,8 +92,6 @@ type Props = {
   onMapPress?: (at: LatLon) => void;
   /** A downloaded city's raster tiles (plain file path with {z}/{x}/{y}), drawn over the system map; T166: plus its dark tiles when installed. */
   offlineTiles?: OfflineTiles | null;
-  /** Stop zooming in past the offline tiles' deepest level (used while the phone is offline, where nothing else draws). */
-  limitZoom?: boolean;
   /** Called after the user moves the map. */
   onRegionChange?: (region: Region) => void;
   lines?: MapLine[];
@@ -97,6 +99,8 @@ type Props = {
 };
 
 const FIT_PADDING = 48;
+/** Furthest camera distance (metres) when the zoom is capped: far enough to never limit zooming out. */
+const MAX_CAMERA_DISTANCE = 40_000_000;
 /** Span (degrees) shown around a single framed spot. */
 const ONE_SPOT_DELTA = 0.012;
 
@@ -232,11 +236,38 @@ function BadgeMarker({ Marker, pin, onPress }: { Marker: MapsModule['Marker']; p
   );
 }
 
-export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, label, fallbackTitle, fallbackBody, onMapPress, offlineTiles, limitZoom, onRegionChange, lines, fit }: Props) {
+export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, label, fallbackTitle, fallbackBody, onMapPress, offlineTiles, onRegionChange, lines, fit }: Props) {
   const { theme, t, reduceMotion } = useApp();
   const ref = useRef<MapViewType | null>(null);
   const ready = useRef(false);
   const maps = loadMaps();
+  const widthPts = useRef(0);
+  const [zoomCap, setZoomCap] = useState<number | null>(null);
+  const capMaxZoom = offlineTiles ? offlineTiles.maxZoom : null;
+
+  // Measure the camera distance that shows the tiles' deepest level, so the pinch can't go past it.
+  const measureZoomCap = useCallback(() => {
+    const map = ref.current as (MapViewType & {
+      getCamera?: () => Promise<{ altitude?: number }>;
+      getMapBoundaries?: () => Promise<{ northEast: { longitude: number }; southWest: { longitude: number } }>;
+    }) | null;
+    if (capMaxZoom === null || !map || typeof map.getCamera !== 'function' || typeof map.getMapBoundaries !== 'function') return;
+    Promise.all([map.getCamera(), map.getMapBoundaries()])
+      .then(([cam, b]) => {
+        let lonDelta = b.northEast.longitude - b.southWest.longitude;
+        if (lonDelta < 0) lonDelta += 360;
+        const next = minCameraDistance(cam.altitude ?? 0, lonDelta, widthPts.current, capMaxZoom);
+        setZoomCap((cur) => (zoomCapChanged(cur, next) ? next : cur));
+      })
+      .catch(() => {
+        // camera not readable yet; the maxZoomLevel backup still applies
+      });
+  }, [capMaxZoom]);
+
+  useEffect(() => {
+    setZoomCap(null);
+    if (ready.current) measureZoomCap();
+  }, [measureZoomCap]);
 
   const applyFit = useCallback(
     (f: MapFit) => {
@@ -284,7 +315,12 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
   const tilePath = tiles ? tilePathForScheme(tiles, theme.dark) : null;
   return (
     <Boundary fallback={fallback}>
-      <View style={{ height, borderRadius: radius.m, overflow: 'hidden', borderWidth: 1, borderColor: theme.line }}>
+      <View
+        style={{ height, borderRadius: radius.m, overflow: 'hidden', borderWidth: 1, borderColor: theme.line }}
+        onLayout={(e) => {
+          widthPts.current = e.nativeEvent.layout.width;
+        }}
+      >
         <MapView
           ref={ref}
           style={{ flex: 1 }}
@@ -295,10 +331,15 @@ export function SatchelMap({ pins, initialRegion, focus, onPinPress, height, lab
           toolbarEnabled={false}
           pitchEnabled={false}
           userInterfaceStyle={theme.dark ? 'dark' : 'light'}
-          maxZoomLevel={tiles && limitZoom ? tiles.maxZoom : undefined}
-          onRegionChangeComplete={onRegionChange ? (r) => onRegionChange(r) : undefined}
+          maxZoomLevel={tiles ? tiles.maxZoom : undefined}
+          cameraZoomRange={tiles && zoomCap ? { minCenterCoordinateDistance: zoomCap, maxCenterCoordinateDistance: MAX_CAMERA_DISTANCE, animated: false } : undefined}
+          onRegionChangeComplete={(r) => {
+            if (tiles) measureZoomCap();
+            if (onRegionChange) onRegionChange(r);
+          }}
           onMapReady={() => {
             ready.current = true;
+            if (tiles) measureZoomCap();
             if (fit) applyFit(fit);
           }}
           onPress={

@@ -10,6 +10,9 @@ import {
   darkPackUrl,
   formatSize,
   latToTileY,
+  minCameraDistance,
+  zoomCapChanged,
+  ZOOM_CAP_MARGIN,
   lonToTileX,
   overallProgress,
   packEntryPath,
@@ -278,4 +281,29 @@ test('T169: a stored map view is read back only when it is a real region', () =>
   assert.equal(parseMapView({ ...r, latitude: 120 }), null);
   assert.equal(parseMapView({ ...r, latitudeDelta: 0 }), null);
   assert.equal(parseMapView('x'), null);
+});
+
+test('minCameraDistance: the cap sits at the deepest tile level, from any reading', () => {
+  // 393-pt wide map showing zoom 14 exactly at 1,000 m: zoom 16 is 4x closer, plus the margin.
+  const width = 393;
+  const lonAt = (z: number) => (360 * width) / (256 * 2 ** z);
+  const d = minCameraDistance(1000, lonAt(14), width, 16);
+  assert.ok(d !== null);
+  assert.ok(Math.abs(d - 250 * ZOOM_CAP_MARGIN) < 1e-6);
+  // The same camera read at another zoom gives the same cap (distance scales with the span).
+  const d2 = minCameraDistance(4000, lonAt(12), width, 16);
+  assert.ok(d2 !== null && Math.abs(d2 - d) < 1e-6);
+  // Already past the deepest level (blank tiles): the cap is further out than the camera.
+  const d3 = minCameraDistance(100, lonAt(17.5), width, 16);
+  assert.ok(d3 !== null && d3 > 100);
+  assert.equal(minCameraDistance(0, 0.01, width, 16), null);
+  assert.equal(minCameraDistance(1000, 0, width, 16), null);
+  assert.equal(minCameraDistance(1000, 0.01, 0, 16), null);
+});
+
+test('zoomCapChanged: only a real change re-applies the cap', () => {
+  assert.equal(zoomCapChanged(null, 250), true);
+  assert.equal(zoomCapChanged(250, 252), false);
+  assert.equal(zoomCapChanged(250, 300), true);
+  assert.equal(zoomCapChanged(250, null), false);
 });

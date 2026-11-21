@@ -25,6 +25,7 @@ import type { LeaveDue } from '../core/leavehome.ts';
 import { LeaveHomePill } from './leavehome.tsx';
 import type { ComeDue } from '../core/comehome.ts';
 import { ComeHomePill } from './comehome.tsx';
+import { destinationUnderTitle, useTripPlace } from './tripPlace.ts';
 
 /** Short status for a trip: "In 12 days", "Tomorrow", "Starts today", "Day 3 of 9", "Finished". */
 export function countdownShort(t: T, c: Countdown): string {
@@ -86,6 +87,8 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
   const stamp = c.kind === 'past' ? theme.muted : c.kind === 'today' || c.kind === 'active' ? theme.accentInk : theme.ink;
   void tone;
   const bookings = trip.items.filter((i) => i.kind !== 'note').length;
+  // 1.0 feedback: the title is the traveller's own ("Girls trip"); where it goes stays on the pass beneath it.
+  const where = destinationUnderTitle(t, trip.name, useTripPlace(trip));
   const notch = { position: 'absolute' as const, top: -11, width: 22, height: 22, borderRadius: 11, backgroundColor: theme.paper };
   return (
     <View
@@ -103,9 +106,19 @@ export const TripPass = memo(function TripPass({ trip, today, cover, driving, le
       ) : null}
       <View style={{ padding: space.l, gap: space.m }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.s }}>
-          <Text numberOfLines={2} style={[typeScale.title, { color: theme.ink, flex: 1 }]}>
-            {trip.name}
-          </Text>
+          <View style={{ flex: 1, gap: 2 }}>
+            <Text numberOfLines={2} style={[typeScale.title, { color: theme.ink }]}>
+              {trip.name}
+            </Text>
+            {where ? (
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                <Ionicons name="location-outline" size={14} color={theme.muted} />
+                <Text numberOfLines={1} style={[typeScale.small, { color: theme.muted, flexShrink: 1 }]}>
+                  {where}
+                </Text>
+              </View>
+            ) : null}
+          </View>
           {trip.demo ? (
             <View style={{ borderRadius: radius.s, borderWidth: 1, borderColor: theme.muted, paddingHorizontal: space.s, paddingVertical: 2 }}>
               <Text style={[typeScale.caption, { color: theme.muted }]}>{isSampleTravel(trip) ? t('demo2.chip') : t('trips.demoBadge')}</Text>

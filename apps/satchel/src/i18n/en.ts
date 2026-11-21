@@ -137,6 +137,8 @@ const base = {
   'tab.map': 'Map',
   'tab.wallet': 'Wallet',
   'tab.emergency': 'Emergency',
+  /** The tab bar's own label: one short word that never wraps (VoiceOver still says Emergency). */
+  'tab.emergencyShort': 'SOS',
 
   'trips.title': 'Your trips',
   'trips.empty': 'No trips yet',
@@ -181,8 +183,10 @@ const base = {
 
   'tripEdit.newTitle': 'New trip',
   'tripEdit.title': 'Edit trip',
-  'tripEdit.name': 'Trip name',
-  'tripEdit.namePlaceholder': 'Japan in spring',
+  'tripEdit.name': 'Trip title',
+  'tripEdit.namePlaceholder': 'Girls trip',
+  'tripEdit.nameNote': 'Call it anything. Where you’re going comes from your bookings and shows beside the title.',
+  'tripPlace.more': '+{n} more',
   'tripEdit.start': 'First day (YYYY-MM-DD)',
   'tripEdit.end': 'Last day (YYYY-MM-DD)',
   'tripEdit.homeTz': 'Home time zone',
