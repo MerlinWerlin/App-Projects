@@ -4,9 +4,10 @@ import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { View } from 'react-native';
+import { Platform, Settings, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppProvider, useApp } from '../src/state/app.tsx';
+import { fam } from '../src/ui/theme.ts';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 try {
@@ -32,6 +33,11 @@ function Shell() {
     if (!ready) return;
     SplashScreen.hideAsync().catch(() => {});
     if (!prefs.introSeen) setTimeout(() => router.push('/intro'), 50);
+    // Simulator design captures only (.github/workflows/backspin-ipad-capture.yml): `simctl launch … -backspinCaptureRoute
+    // /packs` opens a screen directly, because `simctl openurl` now stops at an "Open in Backspin?" prompt. Launch
+    // arguments land in NSUserDefaults for that launch only; a normal launch never has this key.
+    const route = Platform.OS === 'ios' ? Settings.get('backspinCaptureRoute') : null;
+    if (typeof route === 'string' && route.startsWith('/')) setTimeout(() => router.push(route as never), 80);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready]);
   // Never an endless splash: hide after 4 s even if storage is slow.
@@ -39,7 +45,14 @@ function Shell() {
     const id = setTimeout(() => SplashScreen.hideAsync().catch(() => {}), 4000);
     return () => clearTimeout(id);
   }, []);
-  const header = { headerShown: true, headerStyle: { backgroundColor: theme.bg }, headerTintColor: theme.ink, headerShadowVisible: false } as const;
+  const header = {
+    headerShown: true,
+    headerStyle: { backgroundColor: theme.bg },
+    headerTintColor: theme.ink,
+    headerShadowVisible: false,
+    headerTitleStyle: { fontFamily: fam(theme.font.heading), fontWeight: theme.font.headingWeight, fontSize: 20 },
+    headerBackButtonDisplayMode: 'minimal',
+  } as const;
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
       <StatusBar style={theme.dark ? 'light' : 'dark'} />

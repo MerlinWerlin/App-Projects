@@ -8,6 +8,7 @@ import { CATALOGS } from '../i18n/catalogs.ts';
 import { deleteTakeFiles } from '../native/files.ts';
 import { loadJson, loadList, phoneLanguages, saveJson, setHapticsEnabled, storage } from '../native/device.ts';
 import Constants, { ExecutionEnvironment } from 'expo-constants';
+import * as Font from 'expo-font';
 import { claimLangHint, dismissLangHint } from '../core/langHint.ts';
 import { guardTestStore } from '../plus/guard.ts';
 import { createStore, type BuyResult, type PlusStore } from '../plus/store.ts';
@@ -107,6 +108,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         loadJson('backspin.stats.v1', DEFAULT_STATS),
         loadList<Take>('backspin.takes.v1'),
         store.owned().catch(() => false),
+        // The Print look's display face. If it fails to load, headings fall back to the system face.
+        Font.loadAsync({ BackspinDisplay: require('../../assets/fonts/BackspinDisplay.ttf') }).catch(() => {}),
       ]);
       const hint = await claimLangHint(storage, !p.introSeen && s.rounds === 0);
       if (!alive) return;

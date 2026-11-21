@@ -5,7 +5,7 @@ import { Platform, Text, View } from 'react-native';
 import { LANG_NAMES, SUPPORTED, type Lang } from '../src/i18n/core.ts';
 import { openMail } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
-import { Button, Card, Chip, Divider, Press, Screen, SectionTitle, T, Toastish, ToggleRow } from '../src/ui/kit.tsx';
+import { Button, Card, Chip, Divider, Icon, Press, Screen, SectionTitle, T, Toastish, ToggleRow } from '../src/ui/kit.tsx';
 import { fam, SKINS, SP } from '../src/ui/theme.ts';
 
 export default function Settings() {
@@ -16,7 +16,7 @@ export default function Settings() {
   return (
     <Screen header>
       {/* Language stays at the top of Settings (release standard §1); Home's first-launch line opens here. */}
-      <SectionTitle>{t('settings.language')}</SectionTitle>
+      <SectionTitle first>{t('settings.language')}</SectionTitle>
       <View style={{ flexDirection: 'row', gap: SP(2), flexWrap: 'wrap', marginBottom: SP(4) }}>
         <Chip label={`${t('settings.languageSystem')} (${LANG_NAMES[lang]})`} on={prefs.lang === 'system'} onPress={() => setPref('lang', 'system')} />
         {SUPPORTED.map((l: Lang) => (
@@ -46,7 +46,7 @@ export default function Settings() {
           const p = theme.dark ? k.dark : k.light;
           const on = (prefs.skin ?? 'booth') === k.id;
           return (
-            <Press key={k.id} label={k.name} selected={on} onPress={() => setPref('skin', k.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: SP(3), padding: SP(3), borderRadius: k.radius.m, backgroundColor: p.card, borderWidth: on ? 2 : 1, borderColor: on ? p.rec : p.cardBorder }}>
+            <Press key={k.id} label={k.name} selected={on} onPress={() => setPref('skin', k.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: SP(3), padding: SP(3), borderRadius: k.radius.m, backgroundColor: p.card, borderWidth: 2, borderColor: on ? p.ink : p.card }}>
               <View style={{ flexDirection: 'row' }}>
                 {[p.bg, p.rec, p.rew, p.score].map((c, i) => (
                   <View key={i} style={{ width: 22, height: 22, borderRadius: 11, backgroundColor: c, marginLeft: i ? -6 : 0, borderWidth: 1.5, borderColor: p.card }} />
@@ -56,14 +56,14 @@ export default function Settings() {
                 <Text style={{ color: p.ink, fontFamily: fam(k.font.heading), fontWeight: k.font.headingWeight, fontSize: 16 }}>{k.name}</Text>
                 <Text numberOfLines={2} style={{ color: p.sub, fontFamily: fam(k.font.body), fontSize: 12 }}>{k.vibe}</Text>
               </View>
-              {on ? <Text style={{ color: p.rec, fontSize: 18 }}>✓</Text> : null}
+              {on ? <Icon name="check" size={20} color={p.ink} /> : null}
             </Press>
           );
         })}
       </View>
 
       <SectionTitle>{t('settings.theme')}</SectionTitle>
-      <View style={{ flexDirection: 'row', gap: SP(2) }}>
+      <View style={{ flexDirection: 'row', gap: SP(2), flexWrap: 'wrap' }}>
         {(['system', 'light', 'dark'] as const).map((m) => (
           <Chip key={m} label={t(m === 'system' ? 'settings.themeSystem' : m === 'light' ? 'settings.themeLight' : 'settings.themeDark')} on={prefs.theme === m} onPress={() => setPref('theme', m)} />
         ))}
@@ -71,7 +71,7 @@ export default function Settings() {
 
       <SectionTitle>{t('settings.plus')}</SectionTitle>
       <Card>
-        <T kind="bodyB">{plus ? `✓ ${t('plus.owned')}` : t('plus.headline')}</T>
+        <T kind="bodyB">{plus ? t('plus.owned') : t('plus.headline')}</T>
         {!plus ? <Button title={t('plus.buyNoPrice')} style={{ marginTop: SP(3) }} onPress={() => router.push('/plus')} /> : null}
         <Button
           kind="ghost"
@@ -84,8 +84,8 @@ export default function Settings() {
       </Card>
 
       <View style={{ gap: SP(3), marginTop: SP(6) }}>
-        <Button kind="quiet" icon="✉️" title={t('settings.feedback')} onPress={() => openMail(t('feedback.subject'), `\n\n—\nBackspin ${version} · ${Platform.OS} ${Platform.Version} · ${stats.rounds} rounds`)} />
-        <Button kind="quiet" icon="❓" title={t('settings.replayIntro')} onPress={() => router.push('/intro')} />
+        <Button kind="quiet" icon="mail" title={t('settings.feedback')} onPress={() => openMail(t('feedback.subject'), `\n\n—\nBackspin ${version} · ${Platform.OS} ${Platform.Version} · ${stats.rounds} rounds`)} />
+        <Button kind="quiet" icon="help" title={t('settings.replayIntro')} onPress={() => router.push('/intro')} />
       </View>
       <T kind="small" color={theme.sub} style={{ marginTop: SP(6) }}>
         {t('settings.privacy')}

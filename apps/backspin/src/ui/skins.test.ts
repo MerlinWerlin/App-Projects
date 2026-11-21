@@ -40,3 +40,21 @@ test('every skin is complete and readable in dark and light', () => {
     assert.equal(makeTheme(s.id, true).skin, s.id);
   }
 });
+
+test('Print look: text stays readable on its ink tints, and the inks overprint to a darker (light) / lighter (dark) match', () => {
+  for (const dark of [false, true]) {
+    const th = makeTheme('booth', dark);
+    const where = dark ? 'dark' : 'light';
+    for (const bg of [th.recTint, th.rewTint]) {
+      assert.ok(contrast(th.ink, bg) >= 7, `${where} ink on tint`);
+      assert.ok(contrast(th.sub, bg) >= 4.5, `${where} sub on tint`);
+    }
+    assert.ok(contrast(th.good, th.recTint) >= 4.5, `${where} good on daily slip`);
+    assert.ok(contrast(th.recText, th.bg) >= 4.5, `${where} recText on bg`);
+    assert.ok(contrast(th.sub, th.bg) >= 4.5, `${where} sub on bg`);
+    const lumOf = (h: string) => lum(h);
+    if (dark) assert.ok(lumOf(th.overprint) > lumOf(th.rew), 'screen overprint lighter');
+    else assert.ok(lumOf(th.overprint) < lumOf(th.rew), 'multiply overprint darker');
+    assert.equal(th.blend, dark ? 'screen' : 'multiply');
+  }
+});

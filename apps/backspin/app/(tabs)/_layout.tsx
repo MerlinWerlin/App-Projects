@@ -1,10 +1,8 @@
 import { Tabs } from 'expo-router';
-import { Text } from 'react-native';
 import { useApp } from '../../src/state/app.tsx';
+import { Icon, type IconName } from '../../src/ui/icons.tsx';
 
-const icon = (e: string) => ({ focused }: { focused: boolean }) => (
-  <Text allowFontScaling={false} style={{ fontSize: 22, lineHeight: 28, includeFontPadding: false, opacity: focused ? 1 : 0.55 }}>{e}</Text>
-);
+const icon = (name: IconName) => ({ color }: { color: unknown }) => <Icon name={name} size={24} color={typeof color === 'string' ? color : '#888888'} />;
 
 export default function TabsLayout() {
   const { t, theme } = useApp();
@@ -12,16 +10,16 @@ export default function TabsLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: theme.rec,
-        tabBarInactiveTintColor: theme.faint,
-        tabBarStyle: { backgroundColor: theme.card, borderTopColor: theme.line },
-        tabBarLabelStyle: { fontWeight: '700' },
+        tabBarActiveTintColor: theme.recText,
+        tabBarInactiveTintColor: theme.sub,
+        tabBarStyle: { backgroundColor: theme.bg, borderTopColor: theme.line },
+        tabBarLabelStyle: { fontWeight: '600' },
       }}
     >
-      <Tabs.Screen name="index" options={{ title: t('tab.play'), tabBarIcon: icon('🎙') }} />
-      <Tabs.Screen name="packs" options={{ title: t('tab.packs'), tabBarIcon: icon('🗂') }} />
-      <Tabs.Screen name="party" options={{ title: t('tab.party'), tabBarIcon: icon('🎉') }} />
-      <Tabs.Screen name="takes" options={{ title: t('tab.takes'), tabBarIcon: icon('💾') }} />
+      <Tabs.Screen name="index" options={{ title: t('tab.play'), tabBarIcon: icon('mic') }} />
+      <Tabs.Screen name="packs" options={{ title: t('tab.packs'), tabBarIcon: icon('packs') }} />
+      <Tabs.Screen name="party" options={{ title: t('tab.party'), tabBarIcon: icon('party') }} />
+      <Tabs.Screen name="takes" options={{ title: t('tab.takes'), tabBarIcon: icon('takes') }} />
     </Tabs>
   );
 }

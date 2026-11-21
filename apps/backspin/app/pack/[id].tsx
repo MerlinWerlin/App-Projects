@@ -1,13 +1,13 @@
 // A pack's lines. FlatList with fixed-height rows so long packs scroll without lag (App Factory lesson).
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { canPlayLine, rng } from '../../src/core/game.ts';
 import { PACKS } from '../../src/content/index.ts';
 import type { Key } from '../../src/i18n/en.ts';
 import { useApp } from '../../src/state/app.tsx';
-import { Button, Chip, CONTENT_MAX, Press, T } from '../../src/ui/kit.tsx';
-import { R, SP } from '../../src/ui/theme.ts';
+import { Button, Chip, CONTENT_MAX, Icon, Press, T } from '../../src/ui/kit.tsx';
+import { SP } from '../../src/ui/theme.ts';
 
 const ROW = 76;
 
@@ -23,7 +23,6 @@ export default function PackScreen() {
     const ok = rows.filter((r) => r.ok);
     if (ok.length) go(ok[Math.floor(rng(Date.now())() * ok.length)].l.id, true);
   };
-  const dots = (n: number) => '●'.repeat(n) + '○'.repeat(3 - n);
   return (
     <View style={{ flex: 1, backgroundColor: theme.bg }}>
       <Stack.Screen options={{ title: t(`pack.${pack.id}` as Key) }} />
@@ -33,11 +32,11 @@ export default function PackScreen() {
         getItemLayout={(_, index) => ({ length: ROW, offset: ROW * index, index })}
         initialNumToRender={14}
         windowSize={7}
-        contentContainerStyle={{ padding: SP(5), paddingBottom: SP(12), width: '100%', maxWidth: CONTENT_MAX + SP(10), alignSelf: 'center' }}
+        contentContainerStyle={{ padding: SP(5), paddingTop: SP(2), paddingBottom: SP(12), width: '100%', maxWidth: CONTENT_MAX + SP(10), alignSelf: 'center' }}
         ListHeaderComponent={
-          <View style={{ marginBottom: SP(4) }}>
+          <View style={{ marginBottom: SP(4), borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.line, paddingBottom: SP(4) }}>
             <T color={theme.sub}>{t(`pack.${pack.id}.sub` as Key)}</T>
-            <Button title={t('packs.shuffle')} icon="🎲" style={{ marginTop: SP(4) }} onPress={random} />
+            <Button title={t('packs.shuffle')} icon="shuffle" style={{ marginTop: SP(4) }} onPress={random} />
             <View style={{ flexDirection: 'row', gap: SP(2), marginTop: SP(4), flexWrap: 'wrap' }}>
               {(['packs.all', 'packs.easy', 'packs.medium', 'packs.hard'] as const).map((k, i) => (
                 <Chip key={k} label={t(k)} on={d === i} onPress={() => setD(i as 0 | 1 | 2 | 3)} />
@@ -57,9 +56,9 @@ export default function PackScreen() {
           ) : undefined
         }
         renderItem={({ item }) => (
-          <Press label={item.l.t} onPress={() => go(item.l.id, item.ok)} style={{ height: ROW - SP(2), marginBottom: SP(2), backgroundColor: theme.card, borderRadius: R.m, paddingHorizontal: SP(4), flexDirection: 'row', alignItems: 'center', gap: SP(3) }}>
+          <Press label={item.l.t} onPress={() => go(item.l.id, item.ok)} style={{ height: ROW, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.line, flexDirection: 'row', alignItems: 'center', gap: SP(3) }}>
             <View style={{ flex: 1 }}>
-              <T kind="bodyB" lines={2} color={item.ok ? theme.ink : theme.faint}>
+              <T kind="bodyB" lines={2} color={item.ok ? theme.ink : theme.sub}>
                 {item.l.t}
               </T>
               {item.l.n && (pack.id === 'songs' || pack.id === 'aussie') ? (
@@ -68,9 +67,16 @@ export default function PackScreen() {
                 </T>
               ) : null}
             </View>
-            <T kind="small" color={theme.sub}>
-              {item.ok ? dots(item.l.d) : '🔒'}
-            </T>
+            {item.ok ? (
+              // Difficulty: one to three ink dots.
+              <View style={{ flexDirection: 'row', gap: 3 }} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+                {[1, 2, 3].map((n) => (
+                  <View key={n} style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: n <= item.l.d ? theme.ink : theme.line }} />
+                ))}
+              </View>
+            ) : (
+              <Icon name="lock" size={16} color={theme.sub} />
+            )}
           </Press>
         )}
       />

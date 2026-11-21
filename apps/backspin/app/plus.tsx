@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import { haptic } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
-import { Button, Card, Disc, Press, Screen, T, Toastish } from '../src/ui/kit.tsx';
+import { Button, Disc, Divider, Icon, Press, Screen, T, Toastish } from '../src/ui/kit.tsx';
 import { SP } from '../src/ui/theme.ts';
 
 export default function Plus() {
@@ -40,29 +40,34 @@ export default function Plus() {
           ),
         }}
       />
-      <Disc size={120} spin={1} />
-      <T kind="title" center style={{ marginTop: SP(5) }}>
+      <Disc size={112} />
+      <T kind="hero" center style={{ marginTop: SP(6) }}>
         {t('plus.headline')}
       </T>
-      <T color={theme.sub} center style={{ marginTop: SP(2) }}>
+      <T color={theme.sub} center style={{ marginTop: SP(3) }}>
         {t('plus.body')}
       </T>
       {freeLeft != null ? (
-        <T kind="bodyB" color={freeLeft > 0 ? theme.rew : theme.rec} center style={{ marginTop: SP(2) }}>
+        <T kind="bodyB" color={freeLeft > 0 ? theme.ink : theme.recText} center style={{ marginTop: SP(3) }}>
           {freeLeft > 0 ? t('home.freeLeft', { n: freeLeft }) : t('home.freeDone')}
         </T>
       ) : null}
-      <Card style={{ marginTop: SP(5), gap: SP(3) }}>
+      {/* What you get: a plain checked list, ruled like a receipt. */}
+      <View style={{ marginTop: SP(6) }}>
+        <Divider />
         {(['plus.f1', 'plus.f2', 'plus.f3', 'plus.f4', 'plus.f5'] as const).map((k) => (
-          <View key={k} style={{ flexDirection: 'row', gap: SP(3) }}>
-            <T color={theme.good}>✓</T>
-            <T style={{ flex: 1 }}>{t(k)}</T>
+          <View key={k}>
+            <View style={{ flexDirection: 'row', gap: SP(3), paddingVertical: SP(3), alignItems: 'flex-start' }}>
+              <Icon name="check" size={20} color={theme.ink} />
+              <T style={{ flex: 1 }}>{t(k)}</T>
+            </View>
+            <Divider />
           </View>
         ))}
-      </Card>
+      </View>
       {plus ? (
         <T kind="bodyB" color={theme.good} center style={{ marginTop: SP(6) }}>
-          ✓ {t('plus.owned')}
+          {t('plus.owned')}
         </T>
       ) : (
         <Button title={plusPrice ? t('plus.buy', { price: plusPrice }) : t('plus.buyNoPrice')} style={{ marginTop: SP(6) }} busy={busy} onPress={buy} />
@@ -71,7 +76,7 @@ export default function Plus() {
         {t('plus.note')}
       </T>
       {plusKind === 'test' ? (
-        <T kind="small" color={theme.gold} center style={{ marginTop: SP(2) }}>
+        <T kind="small" color={theme.recText} center style={{ marginTop: SP(2) }}>
           {t('plus.expoGo')}
         </T>
       ) : null}

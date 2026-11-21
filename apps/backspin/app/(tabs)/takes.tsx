@@ -8,7 +8,8 @@ import { play, stop } from '../../src/native/audio.ts';
 import { shareFile } from '../../src/native/device.ts';
 import { readPcm, writeScratch, writeShareFile } from '../../src/native/files.ts';
 import { useApp, type Take } from '../../src/state/app.tsx';
-import { Button, Chip, CONTENT_MAX, Emoji, Press, Screen, T, Toastish } from '../../src/ui/kit.tsx';
+import { Button, Chip, CONTENT_MAX, Disc, Icon, Press, Screen, T, Toastish } from '../../src/ui/kit.tsx';
+import { StyleSheet } from 'react-native';
 import { R, SP } from '../../src/ui/theme.ts';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -25,15 +26,15 @@ export default function Takes() {
       <Screen>
         <T kind="hero">{t('takes.title')}</T>
         <View style={{ alignItems: 'center', marginTop: SP(16) }}>
-          <Emoji size={56}>💿</Emoji>
-          <T kind="title" center style={{ marginTop: SP(4) }}>
+          <Disc size={96} />
+          <T kind="title" center style={{ marginTop: SP(6) }}>
             {t('takes.empty')}
           </T>
           <T color={theme.sub} center style={{ marginTop: SP(2), maxWidth: 300 }}>
             {t('takes.emptyBody')}
           </T>
           {/* Not a dead end: the empty state leads straight into a round. */}
-          <Button title={t('home.quick')} icon="🎙" style={{ marginTop: SP(6), alignSelf: 'stretch' }} onPress={() => router.push({ pathname: '/round', params: { mode: 'quick', seed: String(Date.now()) } })} />
+          <Button title={t('home.quick')} icon="mic" style={{ marginTop: SP(6), alignSelf: 'stretch' }} onPress={() => router.push({ pathname: '/round', params: { mode: 'quick', seed: String(Date.now()) } })} />
         </View>
       </Screen>
     );
@@ -72,9 +73,9 @@ export default function Takes() {
       <FlatList
         data={takes}
         keyExtractor={(x) => x.id}
-        contentContainerStyle={{ padding: SP(5), paddingTop: ins.top + SP(3), paddingBottom: SP(12), width: '100%', maxWidth: CONTENT_MAX + SP(10), alignSelf: 'center' }}
+        contentContainerStyle={{ padding: SP(5), paddingTop: ins.top + SP(4), paddingBottom: SP(12), width: '100%', maxWidth: CONTENT_MAX + SP(10), alignSelf: 'center' }}
         ListHeaderComponent={
-          <View style={{ marginBottom: SP(4) }}>
+          <View style={{ marginBottom: SP(4), paddingBottom: SP(4), borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.line }}>
             <T kind="hero">{t('takes.title')}</T>
             <T kind="small" color={theme.sub}>
               {plus ? t('takes.count', { n: takes.length }) : t('takes.countFree', { n: takes.length, max: FREE_SAVES })}
@@ -83,13 +84,12 @@ export default function Takes() {
           </View>
         }
         renderItem={({ item }) => (
-          <View style={{ backgroundColor: theme.card, borderRadius: R.l, padding: SP(4), marginBottom: SP(3) }}>
+          <View style={{ borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.line, paddingVertical: SP(4) }}>
             <Press label={`${item.line}, ${item.score}`} onPress={() => setOpen(open === item.id ? null : item.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: SP(3) }}>
-              <View style={{ width: 52, height: 52, borderRadius: 26, backgroundColor: theme.cardHi, alignItems: 'center', justifyContent: 'center' }}>
-                <T kind="bodyB" color={theme.gold}>
-                  {item.score}
-                </T>
-              </View>
+              {/* The score, printed in the display face: no badge around it. */}
+              <T kind="title" style={{ width: 52, fontVariant: ['tabular-nums'] }}>
+                {item.score}
+              </T>
               <View style={{ flex: 1 }}>
                 <T kind="bodyB" lines={2}>
                   {item.line}
@@ -98,16 +98,16 @@ export default function Takes() {
                   {new Date(item.at).toLocaleDateString()}
                 </T>
               </View>
-              <T color={theme.faint}>{open === item.id ? '▾' : '▸'}</T>
+              <Icon name={open === item.id ? 'down' : 'chevron'} size={18} color={theme.sub} />
             </Press>
             {open === item.id ? (
               <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: SP(2), marginTop: SP(3) }}>
-                <Chip label={`▶︎ ${t('round.playOriginal')}`} onPress={() => playPart(item, 'orig')} />
-                <Chip label={`▶︎ ${t('round.playReversed')}`} onPress={() => playPart(item, 'rev')} />
-                <Chip label={`▶︎ ${t('round.playCopy')}`} onPress={() => playPart(item, 'copy')} />
-                <Chip label={`▶︎ ${t('round.playFlipped')}`} onPress={() => playPart(item, 'flip')} />
-                <Chip label={`⤴︎ ${t('round.share')}`} onPress={() => share(item)} />
-                <Chip label={`🗑 ${t('takes.delete')}`} tone="danger" onPress={() => del(item)} />
+                <Chip icon="play" label={t('round.playOriginal')} onPress={() => playPart(item, 'orig')} />
+                <Chip icon="rewind" label={t('round.playReversed')} onPress={() => playPart(item, 'rev')} />
+                <Chip icon="play" label={t('round.playCopy')} onPress={() => playPart(item, 'copy')} />
+                <Chip icon="play" label={t('round.playFlipped')} onPress={() => playPart(item, 'flip')} />
+                <Chip icon="share" label={t('round.share')} onPress={() => share(item)} />
+                <Chip icon="trash" label={t('takes.delete')} tone="danger" onPress={() => del(item)} />
               </View>
             ) : null}
           </View>
