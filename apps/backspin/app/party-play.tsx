@@ -12,7 +12,7 @@ import { haptic } from '../src/native/device.ts';
 import { clearScratch, readPcm, writeScratch } from '../src/native/files.ts';
 import { useApp } from '../src/state/app.tsx';
 import { partyStore } from '../src/state/party.ts';
-import { Button, Card, Chip, Disc, Screen, T, Toastish, Wave } from '../src/ui/kit.tsx';
+import { Button, Card, Chip, Disc, Enter, Screen, T, Toastish, Wave } from '../src/ui/kit.tsx';
 import { RoundEngine } from '../src/ui/RoundEngine.tsx';
 import { SP } from '../src/ui/theme.ts';
 import { useRecorder } from '../src/ui/useRecorder.ts';
@@ -44,7 +44,12 @@ export default function PartyPlay() {
     const loser = st[st.length - 1];
     return (
       <Screen header>
-        <T kind="hero">{t('party.winner', { name: st[0].name })}</T>
+        {/* The winner, stamped on at an angle. */}
+        <Enter>
+          <View style={{ alignSelf: 'flex-start', backgroundColor: theme.rec, borderRadius: theme.radius.m, paddingHorizontal: SP(4), paddingVertical: SP(3), transform: [{ rotate: '-2.5deg' }] }}>
+            <T kind="hero" color={theme.recInk}>{t('party.winner', { name: st[0].name })}</T>
+          </View>
+        </Enter>
         <T kind="h" color={theme.sub} style={{ marginTop: SP(6) }}>
           {t('party.scoreboard')}
         </T>

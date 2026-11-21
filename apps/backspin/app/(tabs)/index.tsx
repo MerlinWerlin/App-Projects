@@ -4,7 +4,7 @@ import { dailyLine, dayKey, liveStreak, titleFor } from '../../src/core/game.ts'
 import { PACKS, QUIPS } from '../../src/content/index.ts';
 import { LANG_NAMES } from '../../src/i18n/core.ts';
 import { useApp } from '../../src/state/app.tsx';
-import { Button, Divider, Icon, Press, Screen, T, type IconName } from '../../src/ui/kit.tsx';
+import { Button, Divider, Enter, Icon, Press, Screen, T, Wordmark, type IconName } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 // Home: the daily line printed big on a pink slip, one pink Quick play button, then the other ways to play as a
@@ -21,8 +21,8 @@ export default function Home() {
     <Screen>
       <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <View style={{ flex: 1 }}>
-          <T kind="hero">Backspin</T>
-          <T kind="small" color={theme.sub} style={{ marginTop: SP(1) }}>
+          <Wordmark />
+          <T kind="small" color={theme.sub} style={{ marginTop: SP(2) }}>
             {t('home.rank', { title: titleFor(QUIPS, stats.rounds, stats.best) })}
           </T>
         </View>
@@ -56,10 +56,11 @@ export default function Home() {
 
       {/* Daily: the one featured slip on the screen. */}
       {daily ? (
+        <Enter>
         <Press
           label={t('home.dailyPlay')}
           onPress={() => router.push({ pathname: '/round', params: { mode: 'daily', line: daily.line.id } })}
-          style={{ marginTop: SP(6), backgroundColor: theme.recTint, borderRadius: theme.radius.l, padding: SP(5) }}
+          style={{ marginTop: SP(7), backgroundColor: theme.recTint, borderRadius: theme.radius.l, padding: SP(5), transform: [{ rotate: '-1.2deg' }] }}
         >
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: SP(3) }}>
             <T kind="h">{t('home.daily')}</T>
@@ -81,9 +82,10 @@ export default function Home() {
             {doneToday == null ? <Icon name="next" size={18} color={theme.ink} /> : null}
           </View>
         </Press>
+        </Enter>
       ) : null}
 
-      <Button title={t('home.quick')} icon="mic" style={{ marginTop: SP(4) }} onPress={() => router.push({ pathname: '/round', params: { mode: 'quick', seed: String(Date.now()) } })} />
+      <Button title={t('home.quick')} icon="mic" style={{ marginTop: SP(6) }} onPress={() => router.push({ pathname: '/round', params: { mode: 'quick', seed: String(Date.now()) } })} />
 
       {freeLeft != null ? (
         <Press label={freeLeft > 0 ? t('home.freeLeft', { n: freeLeft }) : t('home.freeDone')} onPress={() => router.push('/plus')} style={{ marginTop: SP(3), minHeight: 44, alignSelf: 'center', justifyContent: 'center', paddingHorizontal: SP(3) }}>

@@ -14,7 +14,8 @@ import { canReverseHere, play, stop } from '../native/audio.ts';
 import { haptic, openSettings, shareFile } from '../native/device.ts';
 import { readPcm, writeScratch, writeShareFile } from '../native/files.ts';
 import { useApp } from '../state/app.tsx';
-import { Button, Card, Chip, Disc, Icon, Press, T, Toastish, Wave } from './kit.tsx';
+import { Button, Card, Chip, Disc, Enter, Icon, Mirrored, Press, T, Toastish, Wave } from './kit.tsx';
+import Svg, { Circle } from 'react-native-svg';
 import { MOTION, R, SP } from './theme.ts';
 import { useRecorder } from './useRecorder.ts';
 
@@ -36,15 +37,18 @@ export function RoundEngine(props: {
   extraReveal?: ReactNode;
   shareLabel?: string;
   onShareResult?: (score: number) => void;
+  /** Design captures only (app/round.tsx, behind the capture launch argument): start on a step with sample takes. */
+  preview?: 'listen' | 'copy' | 'reveal';
 }) {
   useKeepAwake();
   const { t, theme, prefs, plus, calm } = useApp();
-  const [step, setStep] = useState<Step>('say');
-  const [orig, setOrig] = useState<Take | null>(null);
-  const [rev, setRev] = useState<Take | null>(null);
-  const [copy, setCopy] = useState<Take | null>(null);
-  const [flip, setFlip] = useState<Take | null>(null);
-  const [score, setScore] = useState<ScoreBreakdown | null>(null);
+  const demo = props.preview ? previewTakes() : null;
+  const [step, setStep] = useState<Step>(props.preview ?? 'say');
+  const [orig, setOrig] = useState<Take | null>(demo?.orig ?? null);
+  const [rev, setRev] = useState<Take | null>(demo?.rev ?? null);
+  const [copy, setCopy] = useState<Take | null>(demo?.copy ?? null);
+  const [flip, setFlip] = useState<Take | null>(demo?.flip ?? null);
+  const [score, setScore] = useState<ScoreBreakdown | null>(props.preview === 'reveal' ? { score: 78, sound: 74, rhythm: 81, length: 88 } : null);
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const [playing, setPlaying] = useState<string | null>(null);
@@ -212,18 +216,20 @@ export function RoundEngine(props: {
           <View key={s} style={{ flex: 1, height: 4, borderRadius: 2, backgroundColor: i < at ? theme.ink : i === at ? (step === 'listen' ? theme.rew : theme.rec) : theme.line }} />
         ))}
       </View>
+      {/* Each step slides in: from the right going forwards, from the left while you hear it backwards. */}
+      <Enter key={step} from={step === 'listen' || step === 'copy' ? -1 : 1}>
       <T kind="h" style={{ marginTop: SP(4) }}>
         {stepLabel(step)}
       </T>
 
-      {/* The line, printed big. No box around it: it is the page. */}
-      {step !== 'reveal' && (
+      {/* The line, printed big. No box around it: it is the page. Once it has been said, it prints backwards. */}
+      {step === 'say' && (
         <View style={{ marginTop: SP(5) }}>
           <T color={theme.sub}>
-            {props.line ? (props.friend && step === 'say' ? t('round.friendSay') : t('round.say')) : t('round.sayFree')}
+            {props.line ? (props.friend ? t('round.friendSay') : t('round.say')) : t('round.sayFree')}
           </T>
           {props.line ? (
-            <T kind="line" style={{ marginTop: SP(2) }}>
+            <T kind="line" style={{ marginTop: SP(2), fontSize: props.line.length > 40 ? 30 : 36 }}>
               {props.line}
             </T>
           ) : null}
@@ -234,6 +240,11 @@ export function RoundEngine(props: {
           ) : null}
         </View>
       )}
+      {(step === 'listen' || step === 'copy') && props.line ? (
+        <View style={{ marginTop: SP(5) }}>
+          <Mirrored style={{ fontSize: props.line.length > 40 ? 30 : 36 }}>{props.line}</Mirrored>
+        </View>
+      ) : null}
 
       {step === 'say' && (
         <RecordArea
@@ -347,6 +358,8 @@ export function RoundEngine(props: {
         </View>
       )}
 
+      </Enter>
+
       <Toastish text={msg} />
       {msg === t('mic.denied') ? <Button kind="ghost" small title={t('mic.openSettings')} style={{ marginTop: SP(2) }} onPress={openSettings} /> : null}
     </View>
@@ -360,8 +373,19 @@ export function RoundEngine(props: {
 function RecordArea({ phase, count, seconds, levels, busy, hold, onStart, onStop }: {
   phase: string; count: number; seconds: number; levels: number[]; busy: boolean; hold: boolean; onStart: () => void; onStop: () => void;
 }) {
-  const { t, theme } = useApp();
+  const { t, theme, calm } = useApp();
   const live = phase === 'recording';
+  const spin = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    if (!live || calm) {
+      spin.stopAnimation();
+      return;
+    }
+    const l = Animated.loop(Animated.timing(spin, { toValue: 1, duration: 6000, easing: Easing.linear, useNativeDriver: true }));
+    l.start();
+    return () => l.stop();
+  }, [live, calm, spin]);
+  const turn = spin.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
   const label = busy ? t('round.processing') : phase === 'countdown' ? t('round.countdown') : live ? (hold ? t('round.recording', { s: seconds }) : t('round.stop')) : hold ? t('round.hold') : t('round.tap');
   const bars = levels.length ? [...new Array(Math.max(0, 40 - levels.length)).fill(0.04), ...levels.slice(-40)] : new Array(40).fill(0.04);
   const size = 148;
@@ -377,9 +401,16 @@ function RecordArea({ phase, count, seconds, levels, busy, hold, onStart, onStop
         onPressIn={hold ? () => phase === 'idle' && onStart() : undefined}
         onPressOut={hold ? onStop : undefined}
         onPress={hold ? undefined : () => (phase === 'idle' ? onStart() : onStop())}
-        style={{ width: size + 16, height: size + 16, borderRadius: (size + 16) / 2, alignItems: 'center', justifyContent: 'center', borderWidth: 3, borderColor: live ? theme.ink : 'transparent' }}
+        style={{ width: size + 28, height: size + 28, borderRadius: (size + 28) / 2, alignItems: 'center', justifyContent: 'center' }}
       >
-        <View style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: theme.rec, alignItems: 'center', justifyContent: 'center' }}>
+        {/* A dashed ink ring: still when idle, turning while it records (never under calm motion). */}
+        <Animated.View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, transform: [{ rotate: turn }] }}>
+          <Svg width={size + 28} height={size + 28}>
+            <Circle cx={(size + 28) / 2} cy={(size + 28) / 2} r={(size + 28) / 2 - 2} stroke={live ? theme.ink : theme.line} strokeWidth={3} strokeDasharray="10 8" fill="none" />
+          </Svg>
+        </Animated.View>
+        <View style={{ position: 'absolute', width: size, height: size, borderRadius: size / 2, backgroundColor: theme.rew, transform: [{ translateX: 5 }, { translateY: 5 }] }} />
+        <View style={{ width: size, height: size, borderRadius: size / 2, backgroundColor: theme.rec, alignItems: 'center', justifyContent: 'center', transform: [{ translateX: live ? 3 : 0 }, { translateY: live ? 3 : 0 }] }}>
           {phase === 'countdown' ? (
             <T kind="num" style={{ fontSize: 64, lineHeight: 68 }} color={theme.recInk}>{count}</T>
           ) : live ? (
@@ -417,14 +448,14 @@ function ScoreCard({ score, quip, calm, line, original, flipped }: { score: Scor
   return (
     <View>
       <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: SP(3) }}>
-        <Animated.View style={{ opacity: stamp, transform: [{ scale: stamp.interpolate({ inputRange: [0, 1], outputRange: [1.08, 1] }) }] }}>
+        <Animated.View style={{ opacity: stamp, transform: [{ scale: stamp.interpolate({ inputRange: [0, 1], outputRange: [1.35, 1] }) }, { rotate: stamp.interpolate({ inputRange: [0, 1], outputRange: ['-9deg', '-4deg'] }) }] }}>
           <T kind="num" color={theme.score} style={{ marginBottom: -SP(3) }}>{score.score}</T>
         </Animated.View>
         <View style={{ flex: 1, paddingBottom: SP(1) }}>
           <T kind="small" color={theme.sub}>{t('round.score')}</T>
           <View accessible accessibilityLabel={`${stars} / 5`} style={{ flexDirection: 'row', gap: 2, marginTop: SP(1) }}>
             {[0, 1, 2, 3, 4].map((i) => (
-              <View key={i} style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: i < stars ? theme.rec : 'transparent', borderWidth: 1.5, borderColor: i < stars ? theme.rec : theme.line }} />
+              <Dot key={i} on={i < stars} index={i} calm={calm} />
             ))}
           </View>
         </View>
@@ -463,4 +494,25 @@ function ScoreCard({ score, quip, calm, line, original, flipped }: { score: Scor
       </View>
     </View>
   );
+}
+
+/** One star on the score: pops in after the stamp lands, one after another. */
+function Dot({ on, index, calm }: { on: boolean; index: number; calm: boolean }) {
+  const { theme } = useApp();
+  const v = useRef(new Animated.Value(calm || !on ? 1 : 0)).current;
+  useEffect(() => {
+    if (calm || !on) return;
+    Animated.spring(v, { toValue: 1, delay: 260 + index * 70, useNativeDriver: true, speed: 18, bounciness: 12 }).start();
+  }, [calm, on, index, v]);
+  return (
+    <Animated.View style={{ width: 16, height: 16, borderRadius: 8, backgroundColor: on ? theme.rec : 'transparent', borderWidth: 1.5, borderColor: on ? theme.rec : theme.line, transform: [{ scale: v.interpolate({ inputRange: [0, 1], outputRange: [0.4, 1] }) }] }} />
+  );
+}
+
+/** Sample takes for design captures: a made-up waveform and a copy that nearly matches it. Never used in play. */
+function previewTakes(): { orig: Take; rev: Take; copy: Take; flip: Take } {
+  const peaks = Array.from({ length: 48 }, (_, i) => 0.15 + 0.8 * Math.abs(Math.sin(i * 0.37) * Math.sin(i * 0.11 + 1)));
+  const near = peaks.map((p, i) => Math.max(0.05, Math.min(1, p * (0.85 + 0.3 * Math.abs(Math.sin(i * 1.7))))));
+  const take = (pk: number[]): Take => ({ pcm: { sampleRate: 16000, samples: new Float32Array(16000) }, uri: '', peaks: pk });
+  return { orig: take(peaks), rev: take([...peaks].reverse()), copy: take([...near].reverse()), flip: take(near) };
 }

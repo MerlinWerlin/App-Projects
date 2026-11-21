@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { micPermission, requestMic } from '../src/native/audio.ts';
 import { openSettings } from '../src/native/device.ts';
 import { useApp } from '../src/state/app.tsx';
-import { Button, Disc, Icon, Screen, T } from '../src/ui/kit.tsx';
+import { Button, Disc, Enter, Icon, Mirrored, Screen, T } from '../src/ui/kit.tsx';
 import { SP } from '../src/ui/theme.ts';
 
 export default function Intro() {
@@ -55,9 +55,19 @@ export default function Intro() {
     <Screen scroll={false}>
       <View style={{ flex: 1, justifyContent: 'center' }}>
         <Disc size={200} spin={c.spin} />
+        <Enter key={i}>
         <T kind="hero" center style={{ marginTop: SP(10) }}>
           {t(`${c.k}.title` as 'intro.1.title')}
         </T>
+        {/* The backwards card says its own title backwards, in the backwards ink. */}
+        {c.spin < 0 ? (
+          <View accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+            <Mirrored kind="hero" style={{ textAlign: 'center' }}>
+              {t(`${c.k}.title` as 'intro.1.title')}
+            </Mirrored>
+          </View>
+        ) : null}
+        </Enter>
         <T color={theme.sub} center style={{ marginTop: SP(3), fontSize: 18, lineHeight: 26 }}>
           {t(`${c.k}.body` as 'intro.1.body')}
         </T>

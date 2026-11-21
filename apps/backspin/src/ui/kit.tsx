@@ -112,22 +112,34 @@ export function Card({ children, style, onPress, label, hi, selected }: {
   );
 }
 
-export function Press({ children, onPress, onPressIn, onPressOut, style, label, disabled, hint, selected }: {
+/** How far a misregistered ink plate sits behind a control (pt). */
+export const PLATE = 4;
+
+export function Press({ children, onPress, onPressIn, onPressOut, style, label, disabled, hint, selected, plate }: {
   children: ReactNode; onPress?: () => void; onPressIn?: () => void; onPressOut?: () => void;
   style?: StyleProp<ViewStyle>; label?: string; disabled?: boolean; hint?: string; selected?: boolean;
+  /** Second ink printed out of register behind the control; pressing pushes the control down into register. */
+  plate?: string;
 }) {
   const { calm } = useApp();
   const s = useRef(new Animated.Value(1)).current;
   const o = useRef(new Animated.Value(1)).current;
-  // Feedback on touch-down. Full motion: a critically damped press to 0.97. Calm motion: a dim instead of a move.
+  const d = useRef(new Animated.Value(0)).current;
+  // Feedback on touch-down. Full motion: a critically damped press to 0.97, or for a plated control a press down
+  // into register with its plate. Calm motion: a dim instead of a move.
   const to = (down: boolean) =>
     calm
       ? Animated.timing(o, { toValue: down ? 0.6 : 1, duration: MOTION.press, useNativeDriver: true }).start()
-      : Animated.spring(s, { toValue: down ? 0.97 : 1, useNativeDriver: true, speed: 50, bounciness: 0 }).start();
+      : plate
+        ? Animated.spring(d, { toValue: down ? 1 : 0, useNativeDriver: true, speed: 60, bounciness: down ? 0 : 8 }).start()
+        : Animated.spring(s, { toValue: down ? 0.97 : 1, useNativeDriver: true, speed: 50, bounciness: 0 }).start();
+  const shift = d.interpolate({ inputRange: [0, 1], outputRange: [0, PLATE - 1] });
   // How the control sits in its parent (flex, width, margins, alignSelf) belongs on the touchable itself; only the
   // look goes on the inner view that scales. Otherwise `flex: 1` or `width: '48%'` never reach the layout (the second
   // party-mode card was pushed off screen).
   const { outer, inner } = splitLayout(style);
+  // A caller's own transform (a tilted slip) is kept; the press transform is added after it.
+  const tilt = (Array.isArray(inner.transform) ? inner.transform : []) as Exclude<ViewStyle['transform'], string | undefined>;
   return (
     <Pressable
       style={outer}
@@ -147,7 +159,10 @@ export function Press({ children, onPress, onPressIn, onPressOut, style, label, 
       }}
       hitSlop={6}
     >
-      <Animated.View style={[inner, { transform: [{ scale: s }], opacity: disabled ? 0.4 : o }]}>{children}</Animated.View>
+      {plate ? (
+        <View pointerEvents="none" style={{ position: 'absolute', top: PLATE, left: PLATE, right: -PLATE, bottom: -PLATE, borderRadius: (inner.borderRadius as number) ?? 0, backgroundColor: plate, opacity: disabled ? 0.4 : 1 }} />
+      ) : null}
+      <Animated.View style={[inner, { transform: [...tilt, ...(plate ? [{ translateX: shift }, { translateY: shift }] : [{ scale: s }])], opacity: disabled ? 0.4 : o }]}>{children}</Animated.View>
     </Pressable>
   );
 }
@@ -176,8 +191,11 @@ export function Button({ title, onPress, kind = 'primary', icon, disabled, busy,
   const { theme } = useApp();
   const bg = kind === 'primary' ? theme.rec : kind === 'rewind' ? theme.rew : kind === 'ghost' ? 'transparent' : theme.cardHi;
   const fg = kind === 'primary' ? theme.recInk : kind === 'rewind' ? theme.rewInk : theme.ink;
+  // Big ink buttons are printed slightly out of register: the other ink peeks out behind them.
+  const plate = !small && !disabled && (kind === 'primary' || kind === 'rewind') ? (kind === 'primary' ? theme.rew : theme.rec) : undefined;
   return (
     <Press
+      plate={plate}
       label={title}
       disabled={disabled || busy}
       onPress={() => {
@@ -295,6 +313,51 @@ export function Toastish({ text }: { text: string | null }) {
   return (
     <View accessibilityLiveRegion="polite" style={{ backgroundColor: theme.cardHi, borderRadius: R.m, paddingVertical: SP(3), paddingHorizontal: SP(4), marginTop: SP(3) }}>
       <T kind="small">{text}</T>
+    </View>
+  );
+}
+
+/**
+ * Words printed backwards: the same text mirrored, in the backwards ink. VoiceOver still reads the words normally.
+ */
+export function Mirrored({ children, kind = 'line', color, style }: { children: string; kind?: keyof typeof TYPE; color?: string; style?: StyleProp<TextStyle> }) {
+  const { theme } = useApp();
+  return (
+    <View style={{ transform: [{ scaleX: -1 }] }}>
+      <T kind={kind} color={color ?? theme.rew} style={[{ textAlign: 'right' }, style]}>
+        {children}
+      </T>
+    </View>
+  );
+}
+
+/**
+ * Slides content in once when it mounts: from the right for forwards steps, from the left for backwards ones.
+ * Calm motion: a short fade only.
+ */
+export function Enter({ children, from = 1, delay = 0, style }: { children: ReactNode; from?: 1 | -1; delay?: number; style?: StyleProp<ViewStyle> }) {
+  const { calm } = useApp();
+  const v = useRef(new Animated.Value(0)).current;
+  useEffect(() => {
+    Animated.timing(v, { toValue: 1, duration: calm ? 160 : 320, delay: calm ? 0 : delay, easing: Easing.out(Easing.exp), useNativeDriver: true }).start();
+  }, [calm, delay, v]);
+  const x = v.interpolate({ inputRange: [0, 1], outputRange: [calm ? 0 : 28 * from, 0] });
+  return <Animated.View style={[style, { opacity: v, transform: [{ translateX: x }] }]}>{children}</Animated.View>;
+}
+
+/**
+ * The wordmark as a print: "Backspin" in ink, and under it the same word run backwards in blue, overlapping it so
+ * the two inks overprint. Read once as one word by VoiceOver.
+ */
+export function Wordmark({ size = 64 }: { size?: number }) {
+  const { theme } = useApp();
+  const f = { fontFamily: fam(theme.font.heading), fontWeight: theme.font.headingWeight, fontSize: size, lineHeight: Math.round(size * 1.02), letterSpacing: -size * 0.03 };
+  return (
+    <View accessible accessibilityRole="header" accessibilityLabel="Backspin" style={{ alignSelf: 'flex-start' }}>
+      <Text allowFontScaling={false} style={[f, { color: theme.ink }]}>Backspin</Text>
+      <View style={{ marginTop: -Math.round(size * 0.42), transform: [{ scaleX: -1 }], mixBlendMode: theme.blend }}>
+        <Text allowFontScaling={false} style={[f, { color: theme.rew }]}>Backspin</Text>
+      </View>
     </View>
   );
 }

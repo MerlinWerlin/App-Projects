@@ -177,6 +177,9 @@ jobs:
             route $MODE-06-takes "takes"
             route $MODE-07-settings "settings"
             route $MODE-08-plus "plus"
+            route $MODE-09-listen "round?mode=pack&line=wa72b302&preview=listen"
+            route $MODE-10-copy "round?mode=pack&line=wa72b302&preview=copy"
+            route $MODE-11-score "round?mode=pack&line=wa72b302&preview=reveal"
           done
           printf 'Source: %s\nSimulator captures for design review.\n' "$GITHUB_SHA" > "$OUT/README.txt"
       - uses: actions/upload-artifact@v4

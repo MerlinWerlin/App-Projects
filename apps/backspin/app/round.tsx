@@ -1,6 +1,7 @@
 // A round from anywhere: quick play, a pack line, freestyle, the daily, or challenge-a-friend.
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
+import { Platform, Settings } from 'react-native';
 import { canSaveMore, dailyShareText, dayKey, FREE_SAVES, findLine, liveStreak, randomLine } from '../src/core/game.ts';
 import { PACKS } from '../src/content/index.ts';
 import type { Key } from '../src/i18n/en.ts';
@@ -13,7 +14,11 @@ import { RoundEngine, type RoundResult } from '../src/ui/RoundEngine.tsx';
 import { SP } from '../src/ui/theme.ts';
 
 export default function Round() {
-  const { mode = 'quick', line: lineId, seed: seedParam } = useLocalSearchParams<{ mode?: string; line?: string; seed?: string }>();
+  const { mode = 'quick', line: lineId, seed: seedParam, preview: previewParam } = useLocalSearchParams<{ mode?: string; line?: string; seed?: string; preview?: string }>();
+  // Design captures may open a round on a later step with sample takes, but only when launched with the capture
+  // argument (app/_layout.tsx); a normal link with ?preview= is ignored.
+  const capture = Platform.OS === 'ios' && typeof Settings.get('backspinCaptureRoute') === 'string';
+  const preview = capture && (previewParam === 'listen' || previewParam === 'copy' || previewParam === 'reveal') ? previewParam : undefined;
   const { t, plus, takes, addTake, recordRound, stats } = useApp();
   const router = useRouter();
   const [seed, setSeed] = useState(Number(seedParam) || Date.now());
@@ -71,6 +76,7 @@ export default function Round() {
       <Stack.Screen options={{ title: heading }} />
       <RoundEngine
         key={key}
+        preview={preview}
         line={pick?.line.t ?? null}
         note={pick?.pack === 'songs' || pick?.pack === 'aussie' ? pick.line.n : undefined}
         heading=""
