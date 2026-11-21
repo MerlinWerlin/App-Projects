@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Couch 1.0.5 TestFlight build: design polish (paywall hierarchy and result colours, Settings Plus card chevron, remote add-TV notice, Cast controls order). No purchase, permission or service changes. 1.0.4 stays in App Review.",
+  "note": "Couch 1.0.6 TestFlight build: design overhaul. The remote is now the logo remote (spun-gold d-pad in a well, arrow nubs, big round OK disc, domed keys in sockets, the pad rocks toward a pressed arrow); charcoal and brass in dark, linen and bronze in light; bigger tab labels in defined boxes; readable status bar on the remote and modals. No feature, purchase, permission or service changes.",
   "ascAppId": "6826135134"
 }
