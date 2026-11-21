@@ -10,3 +10,5 @@ The new mascot is included in native build 7; an OTA update cannot replace the i
 
 
 **1.0.1 (10 Nov 2026):** 1.0 was rejected under Guideline 5.6. 1.0.1 removes expo-updates, so no OTA update can change the reviewed build. Before resubmitting, Jared applies `APP_PRIVACY_1_0_1.md` (App Privacy: Data Not Collected; iOS policy page) and pastes `REVIEW_REPLY_5_6.md` into the review reply. `listing.json` already holds the 1.0.1 review notes.
+
+**1.0.2 (21 Nov 2026):** Store screenshots in `jpg/ios` (1320x2868) and `ipad` (2064x2752) are real simulator captures of the 1.0.2 Print design (capture workflow set=store, run 44888305180), framed by `src/compose.py`. The iOS privacy and support pages no longer mention the update service, matching App Privacy "Data Not Collected". The marketing URL is the iOS support page.
