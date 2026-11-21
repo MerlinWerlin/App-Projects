@@ -1,9 +1,8 @@
 import { AtkinsonHyperlegible_400Regular, AtkinsonHyperlegible_700Bold } from '@expo-google-fonts/atkinson-hyperlegible';
 import { useFonts } from 'expo-font';
-import { Stack, usePathname } from 'expo-router';
+import { Stack } from 'expo-router';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useReducedMotion } from 'react-native-reanimated';
@@ -42,7 +41,6 @@ export default function RootLayout() {
  */
 function Shell({ fontsReady }: { fontsReady: boolean }) {
   const { loaded, theme, reduceMotion, prefs, can } = useApp();
-  const path = usePathname();
   const [timedOut, setTimedOut] = useState(false);
   const [introDone, setIntroDone] = useState(false);
   // Read synchronously at startup, so the intro never flashes before the async Reduce Motion check lands.
@@ -74,27 +72,24 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
   } as const;
   return (
     <>
-      {/* One status bar for the whole app. The prompter and camera are always dark (except the Paper palette),
-          so they hide it and force matching content in case the system keeps it on screen. */}
-      {path.startsWith('/prompt') ? (
-        <StatusBar hidden style={can('colors') && PROMPTER[prefs.colors] === PROMPTER.paper ? 'dark' : 'light'} />
-      ) : path.startsWith('/record') ? (
-        <StatusBar hidden style="light" />
-      ) : (
-        <StatusBar style={theme.dark ? 'light' : 'dark'} />
-      )}
       <Stack
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: theme.ground },
+          // Per-screen status bar (Info.plist opts into view-controller-based appearance), so the in-app
+          // theme override and the always-dark stage screens each get readable content.
+          statusBarStyle: theme.dark ? 'light' : 'dark',
           animation: reduceMotion ? 'fade' : 'default',
         }}
       >
         {/* The library draws its own header (title, import, settings) above the sign band. */}
         <Stack.Screen name="index" options={{ title: t('library.title') }} />
         <Stack.Screen name="edit/[id]" options={{ ...header, title: '' }} />
-        <Stack.Screen name="prompt/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom' }} />
-        <Stack.Screen name="record/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom' }} />
+        <Stack.Screen
+          name="prompt/[id]"
+          options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom', statusBarHidden: true, statusBarStyle: can('colors') && PROMPTER[prefs.colors] === PROMPTER.paper ? 'dark' : 'light' }}
+        />
+        <Stack.Screen name="record/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom', statusBarHidden: true, statusBarStyle: 'light' }} />
         <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
         <Stack.Screen name="access-code" options={{ ...header, title: t('access.title') }} />
         {/* The paywall opens on a full-bleed sign band with its own close button. */}
