@@ -11,6 +11,10 @@ appId: com.jared797.cue
 - tapOn: 'Welcome to Cue.*'
 - assertVisible: Prompt
 - takeScreenshot: 02-editor
+- swipe:
+    start: 50%, 45%
+    end: 50%, 70%
+- takeScreenshot: 02b-editor-after-swipe-down
 - tapOn: Prompt
 - assertVisible: '.*Steady.*'
 - takeScreenshot: 03-prompter
