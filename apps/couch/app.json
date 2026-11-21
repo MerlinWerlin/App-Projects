@@ -60,7 +60,8 @@
           "cameraPermission": false,
           "microphonePermission": false
         }
-      ]
+      ],
+      "../../scripts/expo-plugins/withSceneLifecycle.js"
     ],
     "experiments": {
       "typedRoutes": true

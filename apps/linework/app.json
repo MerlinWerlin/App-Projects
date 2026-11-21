@@ -73,7 +73,8 @@
           }
         }
       ],
-      "expo-status-bar"
+      "expo-status-bar",
+      "../../scripts/expo-plugins/withSceneLifecycle.js"
     ],
     "web": {
       "favicon": "./assets/favicon.png"

@@ -95,7 +95,8 @@
             "backgroundColor": "#0E0E0D"
           }
         }
-      ]
+      ],
+      "../../scripts/expo-plugins/withSceneLifecycle.js"
     ],
     "experiments": {
       "typedRoutes": false
