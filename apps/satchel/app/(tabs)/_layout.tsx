@@ -14,13 +14,14 @@ export default function TabsLayout() {
   const icon = (base: string) => tabIcon(base, theme.accentSoft);
   const label =
     (text: string) =>
-    ({ color }: { color: string }) => (
+    // `color` is a ColorValue from the navigator; Text takes it as is.
+    ({ color }: { color: unknown }) => (
       <Text
         numberOfLines={1}
         adjustsFontSizeToFit
         minimumFontScale={0.7}
         maxFontSizeMultiplier={1.3}
-        style={{ color, fontFamily: fonts.bodyBold, fontSize: 11, textAlign: 'center' }}
+        style={{ color: color as string, fontFamily: fonts.bodyBold, fontSize: 11, textAlign: 'center' }}
       >
         {text}
       </Text>
