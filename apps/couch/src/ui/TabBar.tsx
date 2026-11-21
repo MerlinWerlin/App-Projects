@@ -2,6 +2,7 @@ import type { Tabs } from 'expo-router';
 import type { ComponentProps } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { continuous } from '../theme/design';
 import { fonts } from '../theme/tokens';
 import type { IconName } from './icons/names';
 import { RemoteIcon } from './icons/RemoteIcon';
@@ -17,10 +18,10 @@ const TAB_ICON: Record<string, IconName> = { remote: 'remote', cast: 'cast', app
 
 /**
  * Bottom tab bar (owner TestFlight feedback 1 Nov 2026: "the writing's small, there's no defined box
- * between each of them, it looks tacky"). Each tab is its own rounded tile with an icon over a 13 pt
- * semibold label; the current tab is a filled tile in the accent colour, the others sit on the card
- * colour with a hairline edge, so every tab reads as a separate button. Tiles are at least 56 pt tall
- * (44 pt touch target plus label). Labels shrink to fit long translations instead of wrapping.
+ * between each of them, it looks tacky"). DESIGN.md signature: the tabs are a row of cushions on the ground,
+ * separated by their gaps (no edges or shadows); the current tab is the brass cushion. Icon over a 13 pt
+ * semibold label; tiles at least 56 pt tall (44 pt touch target plus label). Labels shrink to fit long
+ * translations instead of wrapping.
  */
 export function TabBar({ state, descriptors, navigation }: TabBarProps) {
   const p = useDesign();
@@ -29,7 +30,7 @@ export function TabBar({ state, descriptors, navigation }: TabBarProps) {
     <View
       style={[
         styles.bar,
-        { backgroundColor: p.background, borderTopColor: p.separator, paddingBottom: Math.max(insets.bottom, 10) },
+        { backgroundColor: p.background, paddingBottom: Math.max(insets.bottom, 10) },
       ]}
       accessibilityRole="tablist"
     >
@@ -55,11 +56,8 @@ export function TabBar({ state, descriptors, navigation }: TabBarProps) {
             accessibilityLabel={opts?.tabBarAccessibilityLabel ?? label}
             style={({ pressed }) => [
               styles.tile,
-              {
-                backgroundColor: focused ? p.tint : p.card,
-                borderColor: focused ? p.tint : p.separator,
-                opacity: pressed && !focused ? 0.7 : 1,
-              },
+              continuous,
+              { backgroundColor: focused ? p.tint : pressed ? p.surfacePressed : p.surface },
             ]}
           >
             <RemoteIcon name={TAB_ICON[route.name] ?? 'tv'} size={22} color={ink} />
@@ -76,16 +74,14 @@ export function TabBar({ state, descriptors, navigation }: TabBarProps) {
 const styles = StyleSheet.create({
   bar: {
     flexDirection: 'row',
-    gap: 8,
+    gap: 6,
     paddingHorizontal: 12,
-    paddingTop: 10,
-    borderTopWidth: StyleSheet.hairlineWidth,
+    paddingTop: 8,
   },
   tile: {
     flex: 1,
     minHeight: 56,
-    borderRadius: 14,
-    borderWidth: 1,
+    borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
     gap: 3,

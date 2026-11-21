@@ -21,7 +21,7 @@ import { SkeletonBlock, WithSkeleton } from '../../src/ui/motion/Skeleton';
 import { DemoNote } from '../../src/ui/Screen';
 import { Text } from '../../src/ui/Text';
 import { useAnnounce } from '../../src/ui/useAnnounce';
-import { boxShadow, continuous, list, radii, space, textStyle } from '../../src/theme/design';
+import { continuous, list, radii, space, textStyle } from '../../src/theme/design';
 import { useReducedMotion } from '../../src/theme/useReducedMotion';
 import { Card, LargeTitleHeader, PillButton, useDesign } from '../../src/ui/v2';
 
@@ -314,12 +314,12 @@ export default function AppsScreen() {
       <FadeIn key={emptyKind}>
         <Card style={styles.empty}>
           <View
-            style={[styles.emptyIcon, continuous, { backgroundColor: p.tintedFill }]}
+            style={styles.emptyIcon}
             accessible={false}
             importantForAccessibility="no-hide-descendants"
             accessibilityElementsHidden
           >
-            <RemoteIcon name="tv" size={30} color={p.tintedLabel} />
+            <RemoteIcon name="tv" size={36} color={p.secondaryLabel} />
           </View>
           <View style={styles.emptyCopy} accessible accessibilityLiveRegion={emptyKind === 'error' ? 'polite' : 'none'}>
             <Text style={[textStyle('title3'), styles.center, { color: p.label }]} accessibilityRole="header">
@@ -415,7 +415,7 @@ export default function AppsScreen() {
           {row.map((k) => (
             <View
               key={k}
-              style={[styles.cell, styles.skTile, continuous, { backgroundColor: p.card, boxShadow: boxShadow('low', p.scheme) }]}
+              style={[styles.cell, styles.skTile, continuous, { backgroundColor: p.card }]}
             >
               <SkeletonBlock style={styles.skIcon} />
               <View style={styles.skCaption}>
@@ -499,7 +499,7 @@ const styles = StyleSheet.create({
   h3: { flexShrink: 1 },
   note: { paddingHorizontal: space.xs },
   empty: { alignItems: 'center', gap: space.md, paddingVertical: space.xxl },
-  emptyIcon: { width: 56, height: 56, borderRadius: radii.md, alignItems: 'center', justifyContent: 'center' },
+  emptyIcon: { alignItems: 'center', justifyContent: 'center' },
   emptyCopy: { alignItems: 'center', gap: space.xs },
   emptyPill: { alignSelf: 'center' },
   center: { textAlign: 'center' },

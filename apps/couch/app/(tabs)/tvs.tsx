@@ -7,7 +7,7 @@ import { useT } from '../../src/i18n/react';
 import { loadPhoneIp } from '../../src/native/network';
 import { loadUdpFactory } from '../../src/native/udp';
 import { useSession } from '../../src/state/session';
-import { continuous, list, radii, space, textStyle } from '../../src/theme/design';
+import { list, space, textStyle } from '../../src/theme/design';
 import { useReducedMotion } from '../../src/theme/useReducedMotion';
 import { RemoteIcon } from '../../src/ui/icons/RemoteIcon';
 import { FadeIn, animateNextLayout } from '../../src/ui/motion/FadeIn';
@@ -99,8 +99,8 @@ export default function TvsScreen() {
       {snap.tvs.length === 0 ? (
         <FadeIn style={styles.emptyWrap}>
           <Card style={styles.empty}>
-            <View style={[styles.emptyIcon, continuous, { backgroundColor: p.tintedFill }]}>
-              <RemoteIcon name="tv" size={30} color={p.tintedLabel} />
+            <View style={styles.emptyIcon}>
+              <RemoteIcon name="tv" size={36} color={p.secondaryLabel} />
             </View>
             <Text style={[textStyle('title3'), styles.center, { color: p.label }]} accessibilityRole="header">
               {t('app.tvs.emptyTitle')}
@@ -125,8 +125,7 @@ export default function TvsScreen() {
                     ? t('app.tvs.detailCastOnly', { detail, platform: PLATFORM_LABEL[tv.platform] })
                     : t('app.tvs.detailPlatform', { detail, platform: PLATFORM_LABEL[tv.platform] })
                 }
-                icon={<RemoteIcon name="tv" size={20} color={p.tintInk} />}
-                iconBackground={p.tint}
+                icon={<RemoteIcon name="tv" size={22} color={inUse ? p.tintLabel : p.secondaryLabel} />}
                 accessory={inUse ? { type: 'check', checked: true } : { type: 'chevron' }}
                 accessibilityLabel={
                   tv.room
@@ -145,8 +144,7 @@ export default function TvsScreen() {
                 <Row
                   key={`${tv.id}-wake`}
                   title={waking === tv.id ? t('app.tvs.waking') : t('app.tvs.wake')}
-                  icon={<RemoteIcon name="power" size={18} color={p.tintLabel} />}
-                  iconBackground={p.tintedFill}
+                  icon={<RemoteIcon name="power" size={20} color={p.tintLabel} />}
                   accessory={{ type: 'none' }}
                   accessibilityLabel={t('app.tvs.wakeLabel', { name: tv.name })}
                   disabled={waking !== null}
@@ -167,8 +165,7 @@ export default function TvsScreen() {
       <InsetGroupedList>
         <Row
           title={t('app.tvs.settings')}
-          icon={<RemoteIcon name="settings" size={20} color={p.tintInk} />}
-          iconBackground={p.tint}
+          icon={<RemoteIcon name="settings" size={22} color={p.secondaryLabel} />}
           accessory={{ type: 'chevron' }}
           accessibilityLabel={t('app.tvs.settings')}
           onPress={() => router.push('/settings')}
@@ -181,7 +178,7 @@ export default function TvsScreen() {
 const styles = StyleSheet.create({
   emptyWrap: { marginHorizontal: list.inset, marginBottom: list.groupGap, gap: space.sm },
   empty: { alignItems: 'center', gap: space.md, paddingVertical: space.xxl },
-  emptyIcon: { width: 56, height: 56, borderRadius: radii.md, alignItems: 'center', justifyContent: 'center' },
+  emptyIcon: { alignItems: 'center', justifyContent: 'center' },
   emptyNote: { paddingHorizontal: list.rowPadding },
   emptyPill: { alignSelf: 'center' },
   center: { textAlign: 'center' },

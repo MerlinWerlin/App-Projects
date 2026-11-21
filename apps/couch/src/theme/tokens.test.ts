@@ -1,11 +1,14 @@
+import { designDark, designLight } from './design';
 import { dark, light, palette } from './tokens';
 
 describe('tokens', () => {
-  it('matches the prototype :root values', () => {
-    expect(light.bg).toBe('#E4E8EC');
-    expect(light.accent).toBe('#2F5BD3');
-    expect(dark.bg).toBe('#0E1115');
-    expect(dark.accent).toBe('#86A6FF');
+  it('matches the v2 roles (DESIGN.md) so old and new screens share one palette', () => {
+    expect(light.bg).toBe(designLight.background);
+    expect(light.accent).toBe(designLight.tint);
+    expect(dark.bg).toBe(designDark.background);
+    expect(dark.accent).toBe(designDark.tint);
+    // Dark ground is the app icon's and opening animation's near-black.
+    expect(dark.bg).toBe('#0E0E0F');
   });
 
   it('light and dark define the same keys', () => {

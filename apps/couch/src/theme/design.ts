@@ -58,44 +58,46 @@ export interface DesignPalette {
 
 export const designLight: DesignPalette = {
   scheme: 'light',
-  background: '#F2F2F7',
-  surface: '#FFFFFF',
-  surfacePressed: '#E5E5EA',
-  card: '#FFFFFF',
+  // DESIGN.md "Upholstery & brass": warm linen ground, paper-white cushions, bronze for what you touch next.
+  background: '#ECEAE5',
+  surface: '#FBFAF8',
+  surfacePressed: '#E4E1DA',
+  card: '#FBFAF8',
   cardEdge: 'transparent',
-  label: '#111418',
-  secondaryLabel: '#5C5F66',
-  tertiaryLabel: '#8A8A8F',
-  separator: '#C6C6C8',
-  fill: '#E9E9EE',
-  tint: '#2F5BD3',
+  label: '#1A1917',
+  secondaryLabel: '#5C5850',
+  tertiaryLabel: '#8A857B',
+  separator: '#DDD9D1',
+  fill: '#E2DFD8',
+  tint: '#7E5518',
   tintInk: '#FFFFFF',
-  tintedFill: '#E3EAFB',
-  tintedLabel: '#2448B0',
-  tintLabel: '#2F5BD3',
-  destructive: '#B83434',
+  tintedFill: '#F0E5D1',
+  tintedLabel: '#6A4511',
+  tintLabel: '#7E5518',
+  destructive: '#B0382C',
   success: '#2C7A54',
   warning: '#8A5E10',
 };
 
 export const designDark: DesignPalette = {
   scheme: 'dark',
-  background: '#000000',
-  surface: '#1C1C1E',
-  surfacePressed: '#2C2C2E',
-  card: '#1C1C1E',
-  cardEdge: '#2C2C2E',
-  label: '#F5F5F7',
-  secondaryLabel: '#AEAEB2',
-  tertiaryLabel: '#7C7C80',
-  separator: '#38383A',
-  fill: '#2C2C2E',
-  tint: '#86A6FF',
-  tintInk: '#0B1020',
-  tintedFill: '#1E2A47',
-  tintedLabel: '#A9C0FF',
-  tintLabel: '#86A6FF',
-  destructive: '#FF7A72',
+  // DESIGN.md: the app icon's near-black (#0E0E0F) as the ground, charcoal cushions, the icon's brass as the tint.
+  background: '#0E0E0F',
+  surface: '#1C1C1B',
+  surfacePressed: '#292927',
+  card: '#1C1C1B',
+  cardEdge: 'transparent',
+  label: '#F4EEE3',
+  secondaryLabel: '#B3ACA0',
+  tertiaryLabel: '#827C72',
+  separator: '#30302D',
+  fill: '#2B2A28',
+  tint: '#D2AB72',
+  tintInk: '#1A1208',
+  tintedFill: '#3A2E1C',
+  tintedLabel: '#E6C796',
+  tintLabel: '#D9B47C',
+  destructive: '#FF8A7E',
   success: '#6CC796',
   warning: '#E5B35A',
 };
@@ -244,7 +246,7 @@ export function textStyle(role: TypeRole): TextStyleSpec {
 // ---- Shape and spacing ---------------------------------------------------------------------------
 
 /** Corner radii. Always paired with `continuous` (borderCurve) so corners are squircles on iOS. */
-export const radii = { xs: 6, sm: 10, md: 14, group: 16, card: 22, sheet: 28, pill: 999 } as const;
+export const radii = { xs: 6, sm: 10, md: 14, group: 18, card: 20, sheet: 28, pill: 999 } as const;
 export const continuous = { borderCurve: 'continuous' } as const;
 
 /** 4-pt spacing grid. */

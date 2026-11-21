@@ -51,9 +51,7 @@ export default function AirPlayGuideScreen() {
                     accessibilityLabel={t('app.airplay.stepLabel', { n, total: STEPS.length, text })}
                     style={styles.step}
                   >
-                    <View style={[styles.badge, { backgroundColor: p.tint }]}>
-                      <Text style={[textStyle('headline'), { color: p.tintInk }]}>{String(n)}</Text>
-                    </View>
+                    <Text style={[textStyle('headline'), styles.num, { color: p.tintLabel }]}>{String(n)}</Text>
                     <Text style={[textStyle('body'), styles.stepText, { color: p.label }]}>{text}</Text>
                   </View>
                 );
@@ -83,6 +81,6 @@ const styles = StyleSheet.create({
   body: { marginHorizontal: list.inset, gap: space.md, paddingBottom: space.xl },
   steps: { gap: space.md },
   step: { flexDirection: 'row', alignItems: 'flex-start', gap: space.md },
-  badge: { width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center' },
-  stepText: { flex: 1, paddingTop: space.xs },
+  num: { minWidth: 18, fontVariant: ['tabular-nums'] },
+  stepText: { flex: 1 },
 });
