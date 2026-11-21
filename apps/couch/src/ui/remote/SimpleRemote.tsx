@@ -4,7 +4,9 @@ import { RemoteIcon } from '../icons/RemoteIcon';
 import { elevation, fonts } from '../../theme/tokens';
 import { useRemoteTheme } from '../../theme/useRemoteTheme';
 import { PressableScale } from '../motion/PressableScale';
-import type { KeyPress } from './RemoteKey';
+import { KeyFace } from '../icons/KeyFace';
+import { PanelFinish } from './PanelFinish';
+import { Socket, type KeyPress } from './RemoteKey';
 import { useT } from '../../i18n/react';
 import { NeverMirror } from '../NeverMirror';
 import { keyPressScale, themedHaptic } from './press';
@@ -31,6 +33,7 @@ export function SimpleRemote({ onKey, width }: { onKey: KeyPress; /** Content wi
   );
   return (
     <View style={[styles.remote, { backgroundColor: t.body }]}>
+      <PanelFinish body={t.body} radius={28} />
       <RemoteTexture texture={t.texture} radius={28} />
       <NeverMirror style={styles.grid}>
         {simpleRows(SIMPLE_CONTROLS, columns).map((row, i) => (
@@ -55,21 +58,28 @@ function SimpleKey({ control: c, onKey }: { control: SimpleControl; onKey: KeyPr
   const color = c.power ? t.power : t.ink;
   const hold = useHoldPress(c.key, c.label, onKey, c.power ? 'heavy' : themedHaptic('light', t.press));
   return (
-    <View style={styles.cell}>
+    // A big cap in its socket, like every key on the remote (DESIGN.md "The logo remote").
+    <Socket radius={20} style={styles.cell}>
       <PressableScale
         accessibilityRole="button"
         accessibilityLabel={c.label}
         haptic="none"
         scaleTo={keyPressScale(t.press)}
         {...hold}
-        style={({ pressed }) => [styles.key, { backgroundColor: pressed ? t.accentSoft : t.key, shadowColor: t.keyEdge }]}
+        style={[styles.key, { backgroundColor: t.key, shadowColor: t.keyEdge }]}
       >
-        <RemoteIcon name={c.icon} size={30} color={color} />
-        <Text scaleRole="label" style={[styles.caption, { color }]}>
-          {c.caption}
-        </Text>
+        {({ pressed }) => (
+          <>
+            <KeyFace keyColor={t.key} edgeColor={t.keyEdge} radius={20} />
+            <RemoteIcon name={c.icon} size={30} color={color} />
+            <Text scaleRole="label" style={[styles.caption, { color }]}>
+              {c.caption}
+            </Text>
+            {pressed ? <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.sink]} /> : null}
+          </>
+        )}
       </PressableScale>
-    </View>
+    </Socket>
   );
 }
 
@@ -84,10 +94,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 4,
     paddingHorizontal: 8,
+    overflow: 'hidden',
     ...elevation.key,
   },
-  /** PressableScale styles its inner view, so the flexing cell is a wrapper. */
-  cell: { flex: 1 },
+  /** PressableScale styles its inner view, so the flexing socket is the wrapper. */
+  cell: { flex: 1, alignItems: 'stretch' },
+  sink: { backgroundColor: '#000000', opacity: 0.2, borderRadius: 20 },
   caption: { fontFamily: fonts.textSemi, fontSize: 17, textAlign: 'center' },
   log: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', gap: 8, minHeight: 18, marginTop: 6 },
   logText: { fontFamily: fonts.mono, fontSize: 11.5, flexShrink: 1 },

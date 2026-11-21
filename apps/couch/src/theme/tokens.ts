@@ -64,7 +64,7 @@ export const minTarget = 48;
  * key: remote keys (crisp 2 px edge, as the prototype); card: TV/app cards; sheet: bottom sheets; hud: floating HUD/toasts.
  */
 export const elevation = {
-  key: { shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.5, shadowRadius: 0, elevation: 2 },
+  key: { shadowOffset: { width: 0, height: 1.5 }, shadowOpacity: 0.55, shadowRadius: 1.5, elevation: 2 },
   card: { shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.18, shadowRadius: 8, elevation: 3 },
   sheet: { shadowOffset: { width: 0, height: -4 }, shadowOpacity: 0.22, shadowRadius: 16, elevation: 12 },
   hud: { shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.28, shadowRadius: 18, elevation: 16 },

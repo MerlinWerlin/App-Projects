@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Pressable, StyleSheet, View } from 'react-native';
 import { Text } from '../Text';
+import { KeyFace } from '../icons/KeyFace';
 import { RemoteIcon } from '../icons/RemoteIcon';
+import { Socket } from './RemoteKey';
 import { VOICE_BUTTON } from './controls';
 import { VoiceController, VOICE_NOTES, type VoiceState } from '../../core/voice';
 import { loadSpeechToText } from '../../native/speech';
@@ -101,6 +103,9 @@ export function VoiceButton({ onNote, onOpenKeyboard }: VoiceButtonProps) {
         transform: [{ scale: breath.interpolate({ inputRange: [0, 1], outputRange: [1, 1.12] }) }],
       };
   return (
+    // A long cap in its socket like every key (DESIGN.md "The logo remote"); the mic is in the theme's accent, and
+    // the whole cap lights in the accent while listening.
+    <Socket radius={99} style={styles.socket}>
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={tr('ui.remote.holdToTalkLabel')}
@@ -117,13 +122,14 @@ export function VoiceButton({ onNote, onOpenKeyboard }: VoiceButtonProps) {
         lockRef.current(false);
         void controller.release();
       }}
-      style={[styles.pill, { backgroundColor: on ? t.accent : t.accentSoft }]}
+      style={({ pressed }) => [styles.pill, { backgroundColor: on ? t.accent : t.key, shadowColor: t.keyEdge, opacity: pressed && !on ? 0.9 : 1 }]}
     >
+      {on ? null : <KeyFace keyColor={t.key} edgeColor={t.keyEdge} radius={99} />}
       <View style={styles.mic} importantForAccessibility="no-hide-descendants" accessibilityElementsHidden>
         {listening ? (
           <Animated.View pointerEvents="none" style={[styles.ring, { borderColor: t.accentInk }, ringStyle]} />
         ) : null}
-        <RemoteIcon name={VOICE_BUTTON.icon} size={22} color={on ? t.accentInk : t.ink} />
+        <RemoteIcon name={VOICE_BUTTON.icon} size={22} color={on ? t.accentInk : t.accent} />
       </View>
       <Text
         scaleRole="label"
@@ -134,14 +140,20 @@ export function VoiceButton({ onNote, onOpenKeyboard }: VoiceButtonProps) {
         {on ? VOICE_NOTES.listening : tr('ui.remote.holdToTalk')}
       </Text>
     </Pressable>
+    </Socket>
   );
 }
 
 const styles = StyleSheet.create({
+  socket: { alignSelf: 'stretch' },
   pill: {
     width: '100%',
     minHeight: 52,
     borderRadius: 99,
+    overflow: 'hidden',
+    shadowOffset: { width: 0, height: 1.5 },
+    shadowOpacity: 0.55,
+    shadowRadius: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',

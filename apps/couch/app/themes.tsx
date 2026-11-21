@@ -19,7 +19,7 @@ import type { Key } from '../src/core/keys';
 import { RemoteIcon } from '../src/ui/icons/RemoteIcon';
 import type { IconName } from '../src/ui/icons/names';
 import { NAV_ROW, TOP_ROW_KEYS } from '../src/ui/remote/controls';
-import { OkBevel } from '../src/ui/remote/DPad';
+import { OkDisc, PadFace } from '../src/ui/remote/DPad';
 import { RemoteTexture } from '../src/ui/remote/RemoteTexture';
 import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } from '../src/ui/v2';
 
@@ -27,7 +27,6 @@ import { Card, InsetGroupedList, LargeTitleHeader, PillButton, Row, useDesign } 
 const MINI = dpadGeometry(132, 1);
 /** Icon box of the mini preview's keys and arrows (pt). */
 const MINI_ICON = 20;
-const MINI_ARROW = Math.max(16, MINI.arrowIcon.size);
 
 /** Key → Couch icon id for the preview (fb-1017b H2 icon set; controls.ts gains the same table). */
 const KEY_ICON: Partial<Record<Key, IconName>> = {
@@ -192,24 +191,14 @@ function MiniRemote({ theme }: { theme: RemoteTheme }) {
       </View>
       {/* Arrows keep their physical sides, as on the real d-pad. */}
       <NeverMirror style={styles.center}>
-        <View
-          style={[
-            styles.miniPad,
-            { width: MINI.diameter, height: MINI.diameter, borderRadius: MINI.diameter / 2, backgroundColor: theme.ring, shadowColor: theme.keyEdge, borderTopColor: theme.ringLit, borderTopWidth: MINI.ringStroke },
-          ]}
-        >
-          <RemoteIcon name="up" size={MINI_ARROW} color={theme.muted} />
-          <View style={styles.miniMid}>
-            <RemoteIcon name="left" size={MINI_ARROW} color={theme.muted} />
-            <View style={[styles.miniOk, { width: k.size, height: k.size, borderRadius: k.radius, borderWidth: k.border, backgroundColor: theme.accent, borderColor: theme.accentSoft, shadowColor: theme.keyEdge }]}>
-              <OkBevel g={MINI} theme={theme} />
-              <Text tight style={[styles.miniOkText, { color: theme.accentInk, fontSize: MINI.label.fontSize }]} allowFontScaling={false}>
-                {t('ui.common.ok')}
-              </Text>
-            </View>
-            <RemoteIcon name="right" size={MINI_ARROW} color={theme.muted} />
+        <View style={{ width: MINI.diameter, height: MINI.diameter }}>
+          <PadFace g={MINI} theme={theme} />
+          <View style={[styles.miniOk, { start: k.offset, top: k.offset, width: k.size, height: k.size, borderRadius: k.radius, shadowColor: theme.keyEdge }]}>
+            <OkDisc g={MINI} theme={theme} />
+            <Text tight style={[styles.miniOkText, { color: theme.accentInk, fontSize: MINI.label.fontSize }]} allowFontScaling={false}>
+              {t('ui.common.ok')}
+            </Text>
           </View>
-          <RemoteIcon name="down" size={MINI_ARROW} color={theme.muted} />
         </View>
       </NeverMirror>
       <View style={styles.miniRow}>
@@ -238,6 +227,6 @@ const styles = StyleSheet.create({
   center: { alignItems: 'center' },
   miniPad: { alignItems: 'center', justifyContent: 'space-evenly', ...elevation.key },
   miniMid: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly', alignSelf: 'stretch' },
-  miniOk: { alignItems: 'center', justifyContent: 'center', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.45, shadowRadius: 4, elevation: 4 },
+  miniOk: { position: 'absolute', alignItems: 'center', justifyContent: 'center', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.45, shadowRadius: 4, elevation: 4 },
   miniOkText: { fontFamily: fonts.displayBold },
 });

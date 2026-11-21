@@ -24,7 +24,7 @@ const TAB_ICON: Record<string, IconName> = { remote: 'remote', cast: 'cast', app
 /**
  * Bottom tab bar (owner TestFlight feedback 1 Nov 2026: "the writing's small, there's no defined box
  * between each of them, it looks tacky"). DESIGN.md signature: the tabs are a row of cushions on the ground,
- * separated by their gaps (no edges or shadows); the current tab is the brass cushion. Icon over a 13 pt
+ * each in its own box with a hairline edge (no shadows); the current tab is the brass cushion. Icon over a 14 pt
  * semibold label; tiles at least 56 pt tall (44 pt touch target plus label). Labels shrink to fit long
  * translations instead of wrapping.
  */
@@ -73,7 +73,11 @@ export function TabBar({ state, descriptors, navigation }: TabBarProps) {
             style={({ pressed }) => [
               styles.tile,
               continuous,
-              { backgroundColor: focused ? p.tint : pressed ? p.surfacePressed : p.surface },
+              {
+                backgroundColor: focused ? p.tint : pressed ? p.surfacePressed : p.surface,
+                // Owner (1 Nov): each tab its own defined box, so every cushion carries an edge.
+                borderColor: focused ? p.tint : p.separator,
+              },
             ]}
           >
             <RemoteIcon name={TAB_ICON[route.name] ?? 'tv'} size={22} color={ink} />
@@ -96,13 +100,14 @@ const styles = StyleSheet.create({
   },
   tile: {
     flex: 1,
-    minHeight: 56,
+    minHeight: 58,
     borderRadius: 16,
+    borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
     gap: 3,
     paddingVertical: 6,
     paddingHorizontal: 4,
   },
-  label: { fontFamily: fonts.textSemi, fontSize: 13, lineHeight: 16 },
+  label: { fontFamily: fonts.textSemi, fontSize: 14, lineHeight: 17 },
 });

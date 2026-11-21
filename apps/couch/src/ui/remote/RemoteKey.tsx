@@ -10,6 +10,7 @@ import { PressableScale } from '../motion/PressableScale';
 import { NEVER_MIRROR_STYLE, NeverMirror } from '../NeverMirror';
 import type { KeyControl, Rocker as RockerData } from './controls';
 import type { HapticKind } from './haptics';
+import { capColors } from './machined';
 import { keyPressScale, themedHaptic } from './press';
 import { useHoldPress } from './repeatHold';
 
@@ -17,11 +18,35 @@ export interface KeyPress {
   (key: Key, label: string): void;
 }
 
+/** Depth of the recessed socket around every key (pt): the dark ring the cap sits in, like the icon's buttons. */
+export const SOCKET = 3;
+
 /**
- * Generic remote button (prototype .key): >= 48pt, labelled, spring press-scale + haptic
- * (PressableScale; light by default, heavy for Power). Draws a physical key face (KeyFace:
- * gradient, top highlight, soft inner shadow from the theme's key / keyEdge) that drops away while
- * pressed so the press colour shows, as if the key sank.
+ * The recess a key sits in (Nov 2026 overhaul, DESIGN.md "The logo remote"): a dark well a few points wider than the
+ * cap, with a faint lit lip along its lower edge. Static: only the cap inside moves when pressed.
+ */
+export function Socket({
+  radius: r,
+  style,
+  children,
+}: {
+  radius: number;
+  style?: StyleProp<ViewStyle>;
+  children: ReactNode;
+}) {
+  const t = useRemoteTheme();
+  const c = capColors(t);
+  return (
+    <View style={[styles.socket, { borderRadius: r + SOCKET, backgroundColor: c.socket, borderBottomColor: c.socketLip }, style]}>
+      {children}
+    </View>
+  );
+}
+
+/**
+ * Generic remote button: a domed cap (KeyFace) in a socket. >= 48pt, labelled, haptic per theme. Pressing sinks the
+ * cap (spring scale from PressableScale, so it stays inside its socket) and shades it, as a real key goes down;
+ * Reduce Motion keeps the shade only.
  */
 export function RemoteButton({
   label,
@@ -31,6 +56,7 @@ export function RemoteButton({
   children,
   round,
   wide,
+  size,
   style,
   haptic: kind = 'light',
 }: {
@@ -42,38 +68,40 @@ export function RemoteButton({
   children: ReactNode;
   round?: boolean;
   wide?: boolean;
+  /** Round keys: cap diameter (pt). Default 52. */
+  size?: number;
   style?: StyleProp<ViewStyle>;
   haptic?: HapticKind;
 }) {
   const t = useRemoteTheme();
-  const button = (
-    <PressableScale
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      hitSlop={4}
-      haptic={themedHaptic(kind, t.press)}
-      scaleTo={keyPressScale(t.press)}
-      onPress={onPress}
-      onPressIn={onPressIn}
-      onPressOut={onPressOut}
-      style={({ pressed }) => [
-        styles.key,
-        // Theme: corner radius, key face, press colour (round keys stay round).
-        { borderRadius: t.radius, backgroundColor: pressed ? t.accentSoft : t.key, shadowColor: t.keyEdge },
-        round ? styles.round : null,
-        style,
-      ]}
-    >
-      {({ pressed }) => (
-        <>
-          {pressed ? null : <KeyFace keyColor={t.key} edgeColor={t.keyEdge} radius={round ? 999 : t.radius} />}
-          {children}
-        </>
-      )}
-    </PressableScale>
+  const r = round ? 999 : t.radius;
+  const d = size ?? ROUND_KEY;
+  const sized = {
+    roundCap: { width: d, height: d },
+  };
+  return (
+    <Socket radius={round ? d / 2 : t.radius} style={[wide ? styles.wide : null, style]}>
+      <PressableScale
+        accessibilityRole="button"
+        accessibilityLabel={label}
+        hitSlop={4 + SOCKET}
+        haptic={themedHaptic(kind, t.press)}
+        scaleTo={keyPressScale(t.press)}
+        onPress={onPress}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        style={[styles.key, { borderRadius: r, backgroundColor: t.key, shadowColor: t.keyEdge }, round ? sized.roundCap : styles.fill]}
+      >
+        {({ pressed }) => (
+          <>
+            <KeyFace keyColor={t.key} edgeColor={t.keyEdge} radius={round ? d / 2 : t.radius} />
+            {children}
+            {pressed ? <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.sink, { borderRadius: r }]} /> : null}
+          </>
+        )}
+      </PressableScale>
+    </Socket>
   );
-  // PressableScale styles its inner view, so a flexing (wide) key needs a flexing wrapper.
-  return wide ? <View style={styles.wide}>{button}</View> : button;
 }
 
 /** The key's artwork: its vector icon, or its text (digits / OK) when it has none. */
@@ -96,10 +124,16 @@ export function RemoteKey({
   control,
   onKey,
   style,
+  shape,
+  size,
 }: {
   control: KeyControl;
   onKey: KeyPress;
   style?: StyleProp<ViewStyle>;
+  /** Override the layout data's shape (the remote draws Back / Home / Menu as the icon's round keys). */
+  shape?: 'round';
+  /** Round keys: cap diameter (pt). */
+  size?: number;
 }) {
   const t = useRemoteTheme();
   const power = control.variant === 'power';
@@ -109,18 +143,16 @@ export function RemoteKey({
   const hold = useHoldPress(control.key, control.label, onKey, themedHaptic(kind, t.press));
   // Labelled variant (prototype .key.lbl): icon above a small visible caption, min width 64.
   if (control.caption) {
+    // Labelled keys (Power, Source, Settings): a round cap with its name engraved on the body underneath.
     return (
-      <RemoteButton
-        label={control.label}
-        haptic="none"
-        {...hold}
-        style={[styles.lbl, style]}
-      >
-        <KeyArt control={control} color={color} size={20} textStyle={styles.lblGlyph} />
-        <Text scaleRole="caption" style={[styles.lblText, { color }]} importantForAccessibility="no">
+      <View style={[styles.lbl, style]}>
+        <RemoteButton label={control.label} haptic="none" {...hold} round size={LABELLED_KEY}>
+          <KeyArt control={control} color={color} size={22} textStyle={styles.lblGlyph} />
+        </RemoteButton>
+        <Text scaleRole="caption" style={[styles.lblText, { color: t.muted }]} importantForAccessibility="no">
           {control.caption}
         </Text>
-      </RemoteButton>
+      </View>
     );
   }
   return (
@@ -128,11 +160,12 @@ export function RemoteKey({
       label={control.label}
       haptic="none"
       {...hold}
-      round={power || control.variant === 'round'}
-      wide={control.variant === 'wide'}
+      round={shape === 'round' || (shape === undefined && (power || control.variant === 'round'))}
+      wide={shape === undefined && control.variant === 'wide'}
+      size={size}
       style={style}
     >
-      <KeyArt control={control} color={color} size={22} textStyle={styles.glyph} />
+      <KeyArt control={control} color={color} size={size && size >= 60 ? 24 : 22} textStyle={styles.glyph} />
     </RemoteButton>
   );
 }
@@ -153,9 +186,14 @@ function RockerHalf({ control, onKey }: { control: KeyControl; onKey: KeyPress }
       haptic="none"
       scaleTo={keyPressScale(t.press)}
       {...hold}
-      style={({ pressed }) => [styles.rockerBtn, pressed ? { backgroundColor: t.accentSoft } : null]}
+      style={styles.rockerBtn}
     >
-      <KeyArt control={control} color={t.ink} size={22} textStyle={styles.glyph} />
+      {({ pressed }) => (
+        <>
+          <KeyArt control={control} color={t.ink} size={22} textStyle={styles.glyph} />
+          {pressed ? <View pointerEvents="none" style={[StyleSheet.absoluteFill, styles.sink, styles.rockerSink]} /> : null}
+        </>
+      )}
     </PressableScale>
   );
 }
@@ -167,26 +205,28 @@ function RockerHalf({ control, onKey }: { control: KeyControl; onKey: KeyPress }
 export function Rocker({ data, onKey }: { data: RockerData; onKey: KeyPress }) {
   const t = useRemoteTheme();
   return (
-    <View
-      accessibilityRole="none"
-      accessibilityLabel={data.label}
-      style={[NEVER_MIRROR_STYLE, styles.rocker, { backgroundColor: t.key, shadowColor: t.keyEdge }]}
-    >
-      <KeyFace keyColor={t.key} edgeColor={t.keyEdge} radius={24} />
-      <RockerHalf control={data.up} onKey={onKey} />
-      {/* The rocker is a fixed 60 pt physical control: its short caption shrinks to fit rather than clip. */}
-      <Text
-        scaleRole="caption"
-        numberOfLines={1}
-        adjustsFontSizeToFit
-        minimumFontScale={0.6}
-        style={[styles.caption, { color: t.muted }]}
-        importantForAccessibility="no"
+    <Socket radius={ROCKER_W / 2} style={NEVER_MIRROR_STYLE}>
+      <View
+        accessibilityRole="none"
+        accessibilityLabel={data.label}
+        style={[styles.rocker, { backgroundColor: t.key, shadowColor: t.keyEdge }]}
       >
-        {data.caption.toUpperCase()}
-      </Text>
-      <RockerHalf control={data.down} onKey={onKey} />
-    </View>
+        <KeyFace keyColor={t.key} edgeColor={t.keyEdge} radius={ROCKER_W / 2} />
+        <RockerHalf control={data.up} onKey={onKey} />
+        {/* The rocker is a fixed-width physical control: its short caption shrinks to fit rather than clip. */}
+        <Text
+          scaleRole="caption"
+          numberOfLines={1}
+          adjustsFontSizeToFit
+          minimumFontScale={0.6}
+          style={[styles.caption, { color: t.muted }]}
+          importantForAccessibility="no"
+        >
+          {data.caption.toUpperCase()}
+        </Text>
+        <RockerHalf control={data.down} onKey={onKey} />
+      </View>
+    </Socket>
   );
 }
 
@@ -212,23 +252,33 @@ export function PlaybackRow({
   );
 }
 
+/** Round key cap diameters (pt). */
+const ROUND_KEY = 52;
+const LABELLED_KEY = 54;
+/** Rocker cap width (pt). */
+const ROCKER_W = 58;
+
 const styles = StyleSheet.create({
   playRow: { flexDirection: 'row' },
+  socket: { padding: SOCKET, borderBottomWidth: 1, alignItems: 'center', justifyContent: 'center' },
   key: {
     minHeight: minTarget,
     minWidth: minTarget,
     borderRadius: radius.key,
     alignItems: 'center',
     justifyContent: 'center',
+    overflow: 'hidden',
     ...elevation.key,
   },
-  round: { borderRadius: 999, width: 52, height: 52 },
+  fill: { alignSelf: 'stretch' },
   wide: { flex: 1 },
+  sink: { backgroundColor: '#000000', opacity: 0.2 },
   glyph: { fontFamily: fonts.textSemi, fontSize: 20, textAlign: 'center' },
-  lbl: { minWidth: 64, paddingVertical: 6, paddingHorizontal: 10, gap: 2 },
+  lbl: { alignItems: 'center', gap: 6, minWidth: 64 },
   lblGlyph: { fontFamily: fonts.textSemi, fontSize: 18, textAlign: 'center' },
   lblText: { fontFamily: fonts.textSemi, fontSize: 11.5, textAlign: 'center' },
-  rocker: { width: 60, borderRadius: 24, alignItems: 'center', ...elevation.key },
-  rockerBtn: { height: 52, width: 60, borderRadius: 24, alignItems: 'center', justifyContent: 'center' },
-  caption: { fontFamily: fonts.textBold, fontSize: 11, letterSpacing: 0.9, maxWidth: 56, textAlign: 'center' },
+  rocker: { width: ROCKER_W, borderRadius: ROCKER_W / 2, alignItems: 'center', overflow: 'hidden', ...elevation.key },
+  rockerBtn: { height: 54, width: ROCKER_W, alignItems: 'center', justifyContent: 'center' },
+  rockerSink: { borderRadius: ROCKER_W / 2 },
+  caption: { fontFamily: fonts.textBold, fontSize: 11, letterSpacing: 0.9, maxWidth: ROCKER_W - 6, textAlign: 'center' },
 });
