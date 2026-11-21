@@ -718,7 +718,6 @@ export const ar: Translation = {
   'trace.camera.askTitle': 'الكاميرا مطلوبة للتتبّع',
   'trace.camera.askBody':
     'يعرض Linework صورة الكاميرا خلف الصورة لتتمكن من تتبّعها على الورق. لا يتم التسجيل إلا عند الضغط على «تسجيل»، ويبقى التسجيل على جهازك. لا يُرفع أي شيء.',
-  'trace.camera.allow': 'السماح بالكاميرا',
   'trace.camera.useLightbox': 'استخدام لوح الإضاءة بدلًا من ذلك',
   'trace.camera.offTitle': 'الكاميرا متوقفة',
   'trace.camera.offBody':

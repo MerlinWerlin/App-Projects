@@ -196,7 +196,8 @@ export default function TraceScreen() {
           body={t('trace.camera.askBody')}
           actions={[
             {
-              label: t('trace.camera.allow'),
+              // 5.1.1(iv): the button before the system prompt says Next, never Allow.
+              label: t('common.next'),
               primary: true,
               onPress: () => {
                 tap();

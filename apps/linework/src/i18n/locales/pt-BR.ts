@@ -686,7 +686,6 @@ export const ptBR: Translation = {
   'trace.camera.askTitle': 'A câmera é necessária para decalcar',
   'trace.camera.askBody':
     'O Linework mostra a visão da câmera atrás da imagem para você decalcá-la no papel. A gravação só acontece quando você toca em Gravar e fica no seu aparelho. Nada é enviado.',
-  'trace.camera.allow': 'Permitir câmera',
   'trace.camera.useLightbox': 'Usar a mesa de luz',
   'trace.camera.offTitle': 'A câmera está desativada',
   'trace.camera.offBody':

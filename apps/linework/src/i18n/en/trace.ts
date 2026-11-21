@@ -9,7 +9,6 @@ export const trace = {
   'trace.camera.askTitle': 'Camera needed to trace',
   'trace.camera.askBody':
     'Linework shows your camera view behind the image so you can trace it onto paper. Recording only happens when you tap Record, and stays on your device. Nothing is uploaded.',
-  'trace.camera.allow': 'Allow camera',
   'trace.camera.useLightbox': 'Use Lightbox instead',
   'trace.camera.offTitle': 'Camera is turned off',
   'trace.camera.offBody':

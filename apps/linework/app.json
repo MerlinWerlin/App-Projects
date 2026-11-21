@@ -16,7 +16,8 @@
       "infoPlist": {
         "NSCameraUsageDescription": "Linework shows your camera view behind the image so you can trace it onto paper. Recording only happens when you tap Record, and stays on your device. Nothing is uploaded.",
         "NSPhotoLibraryUsageDescription": "Linework lets you pick a photo to trace. Your photos stay on this device.",
-        "NSPhotoLibraryAddUsageDescription": "Linework saves your timelapse to Photos. Nothing is uploaded."
+        "NSPhotoLibraryAddUsageDescription": "Linework saves your timelapse to Photos. Nothing is uploaded.",
+        "NSMicrophoneUsageDescription": "Linework never records sound. Timelapse videos are always silent, so the microphone is not used."
       }
     },
     "android": {
@@ -39,7 +40,8 @@
         "expo-camera",
         {
           "cameraPermission": "Linework shows your camera view behind the image so you can trace it onto paper. Recording only happens when you tap Record, and stays on your device. Nothing is uploaded.",
-          "recordAudioAndroid": false
+          "recordAudioAndroid": false,
+          "microphonePermission": "Linework never records sound. Timelapse videos are always silent, so the microphone is not used."
         }
       ],
       [
@@ -54,7 +56,8 @@
         "expo-image-picker",
         {
           "photosPermission": "Linework lets you pick a photo to trace. Your photos stay on this device.",
-          "cameraPermission": "Linework can take a photo for you to trace. Nothing is uploaded."
+          "cameraPermission": "Linework can take a photo for you to trace. Nothing is uploaded.",
+          "microphonePermission": "Linework never records sound. Timelapse videos are always silent, so the microphone is not used."
         }
       ],
       [

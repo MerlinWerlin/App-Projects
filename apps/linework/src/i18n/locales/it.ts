@@ -693,7 +693,6 @@ export const it: Translation = {
   'trace.camera.askTitle': 'Serve la fotocamera per ricalcare',
   'trace.camera.askBody':
     'Linework mostra l’inquadratura della fotocamera dietro l’immagine, così puoi ricalcarla sul foglio. La registrazione avviene solo quando tocchi Registra e resta sul dispositivo. Non viene caricato nulla.',
-  'trace.camera.allow': 'Consenti fotocamera',
   'trace.camera.useLightbox': 'Usa il tavolo luminoso',
   'trace.camera.offTitle': 'La fotocamera è disattivata',
   'trace.camera.offBody':
