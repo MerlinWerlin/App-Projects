@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Cue 1.0.3: Signal redesign (wayfinding sign bands, one typeface, inline prompter modes, state line in the dock, light status bar on the prompter); background audio stays off (Guideline 2.5.4)",
+  "note": "Cue 1.0.3 App Review pass: specific Photos purpose string in place of the Expo default (Guideline 5.1.1); Signal redesign unchanged; background audio stays off (2.5.4)",
   "ascAppId": "6826554677"
 }
