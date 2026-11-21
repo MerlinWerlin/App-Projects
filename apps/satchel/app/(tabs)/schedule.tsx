@@ -11,6 +11,8 @@ import { scheduleTrip } from '../../src/core/dayview.ts';
 import { formatRange } from '../../src/core/format.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { useTrips } from '../../src/state/trips.tsx';
+import { FitWordsText } from '../../src/ui/hero.tsx';
+import { TITLE_MAX_FONT_MULTIPLIER } from '../../src/core/titlefit.ts';
 import { usePersisted } from '../../src/state/persisted.ts';
 import { chosenTrip, FOCUS_TRIP_KEY, NO_FOCUS } from '../../src/core/tripfocus.ts';
 import { space, typeScale } from '../../src/theme/tokens.ts';
@@ -37,7 +39,8 @@ export default function ScheduleTab() {
     <View style={{ gap: space.s }}>
       <View style={{ paddingHorizontal: space.l, flexDirection: 'row', alignItems: 'center', gap: space.m }}>
         <View style={{ flex: 1, gap: 2 }} accessible accessibilityRole="header">
-          <Text style={[typeScale.displayL, { color: theme.ink }]}>{t('tab.itinerary')}</Text>
+          {/* 1.0 feedback: never "Itine / rary" at the largest text size. */}
+          <FitWordsText text={t('tab.itinerary')} maxFontSizeMultiplier={TITLE_MAX_FONT_MULTIPLIER} style={{ ...typeScale.displayL, color: theme.ink }} />
           {trip ? <Text style={[typeScale.small, { color: theme.muted }]}>{`${trip.name} · ${formatRange(trip.startDate, trip.endDate, lang)}`}</Text> : null}
         </View>
         <Mascot pose="itinerary" size={88} />

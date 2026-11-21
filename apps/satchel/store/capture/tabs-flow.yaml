@@ -29,7 +29,7 @@ appId: ${APP_ID}
     timeout: 8000
 - takeScreenshot: s0-itinerary-largest-text
 - repeat:
-    times: 12
+    times: 8
     commands:
       - scroll
 - waitForAnimationToEnd:
