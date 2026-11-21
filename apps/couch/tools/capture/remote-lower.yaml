@@ -4,9 +4,14 @@ appId: ${APP_ID}
 ---
 - launchApp:
     stopApp: true
+# The TV bar's text is part of its button label (VoiceOver), so wait for the intro and the demo TVs instead.
+- waitForAnimationToEnd:
+    timeout: 15000
 - extendedWaitUntil:
-    visible: "Living room"
-    timeout: 20000
+    visible:
+      id: "never-present"
+    timeout: 9000
+    optional: true
 - swipe:
     start: 50%, 80%
     end: 50%, 25%
