@@ -1,6 +1,4 @@
 /** Paywall without dark patterns: what stays free first, one clear one-time price, restore, close always visible. */
-import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Stack, useRouter } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Alert, AppState, Platform, ScrollView, StyleSheet, View } from 'react-native';
@@ -9,15 +7,15 @@ import { t, type MessageKey } from '../src/i18n';
 import { success } from '../src/native/haptics';
 import { trialLabel, trialState } from '../src/plus/trial';
 import { useApp } from '../src/state/AppState';
-import { RADIUS } from '../src/theme/theme';
-import { Btn, IconBtn, Txt, type IconName } from '../src/ui/kit';
+import { RADIUS, SPACE } from '../src/theme/theme';
+import { Btn, IconBtn, Row, Txt } from '../src/ui/kit';
 
-const FEATURES: [IconName, MessageKey, MessageKey][] = [
-  ['mic-outline', 'plus.f.voice', 'plus.f.voice.body'],
-  ['text-outline', 'plus.f.captions', 'plus.f.captions.body'],
-  ['color-palette-outline', 'plus.f.colors', 'plus.f.colors.body'],
-  ['document-outline', 'plus.f.import', 'plus.f.import.body'],
-  ['stats-chart-outline', 'plus.f.stats', 'plus.f.stats.body'],
+const FEATURES: [MessageKey, MessageKey][] = [
+  ['plus.f.voice', 'plus.f.voice.body'],
+  ['plus.f.captions', 'plus.f.captions.body'],
+  ['plus.f.colors', 'plus.f.colors.body'],
+  ['plus.f.import', 'plus.f.import.body'],
+  ['plus.f.stats', 'plus.f.stats.body'],
 ];
 
 export default function Plus() {
@@ -70,90 +68,72 @@ export default function Plus() {
   };
 
   return (
-    <ScrollView style={{ backgroundColor: theme.bg }} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: insets.bottom + 30 }}>
+    <ScrollView style={{ backgroundColor: theme.ground }} contentContainerStyle={{ paddingHorizontal: SPACE.gutter, paddingBottom: insets.bottom + SPACE.xl }}>
       <Stack.Screen
         options={{
-          headerRight: () => (router.canGoBack() ? <IconBtn icon="close" label={t('plus.close')} onPress={() => router.back()} bg={theme.chip} size={20} /> : null),
+          headerRight: () => (router.canGoBack() ? <IconBtn icon="close" label={t('plus.close')} onPress={() => router.back()} bg={theme.field} color={theme.ink2} size={20} /> : null),
         }}
       />
       <View style={st.hero}>
-        <View style={st.mark}>
-          <LinearGradient colors={['#DDB063', '#C9973F', '#9C7028']} style={StyleSheet.absoluteFill} />
-          <Ionicons name="sparkles" size={30} color="#1A1408" />
-        </View>
-        <Txt v="largeTitle" style={{ textAlign: 'center' }}>
+        <Txt v="largeTitle" accessibilityRole="header">
           {t('plus.title')}
         </Txt>
-        <Txt tone="sub" style={{ textAlign: 'center', maxWidth: 320 }}>
-          {t('plus.lead')}
-        </Txt>
+        <Txt tone="ink2">{t('plus.lead')}</Txt>
         {trial ? (
-          <View style={[st.trial, { backgroundColor: theme.accentWash }]} accessibilityRole="text">
-            <Ionicons name="hourglass-outline" size={14} color={theme.accentText} />
-            <Txt v="callout" tone="accent">
+          <View style={st.trial} accessibilityRole="text">
+            <View style={[st.dot, { backgroundColor: theme.standby }]} />
+            <Txt v="subhead" tone="standby" style={{ fontWeight: '600' }}>
               {t(trial.key, { n: trial.n })}
             </Txt>
           </View>
         ) : null}
       </View>
 
-      <View style={[st.card, { backgroundColor: theme.card, borderColor: theme.line }, theme.shadow]}>
-        {FEATURES.map(([icon, title, body], i) => (
-          <View key={title} style={[st.feat, i < FEATURES.length - 1 && { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.line }]}>
-            <View style={[st.featIcon, { backgroundColor: theme.accentWash }]}>
-              <Ionicons name={icon} size={18} color={theme.accentText} />
-            </View>
-            <View style={{ flex: 1, gap: 2 }}>
-              <Txt v="headline">{t(title)}</Txt>
-              <Txt v="callout" tone="sub">
-                {t(body)}
-              </Txt>
-            </View>
-          </View>
+      <View style={[st.group, { backgroundColor: theme.sheet }]}>
+        {FEATURES.map(([title, body], i) => (
+          <Row key={title} label={t(title)} sub={t(body)} last={i === FEATURES.length - 1} />
         ))}
       </View>
 
-      <View style={[st.free, { borderColor: theme.line }]}>
-        <Ionicons name="lock-open-outline" size={18} color={theme.sub} />
-        <View style={{ flex: 1 }}>
-          <Txt v="headline">{t('plus.free.title')}</Txt>
-          <Txt v="callout" tone="sub">
-            {t('plus.free.body')}
-          </Txt>
-        </View>
+      <Txt v="footnote" tone="ink2" style={st.groupTitle} accessibilityRole="header">
+        {t('plus.free.title')}
+      </Txt>
+      <View style={[st.group, st.free, { backgroundColor: theme.sheet }]}>
+        <Txt v="subhead" tone="ink2">
+          {t('plus.free.body')}
+        </Txt>
       </View>
 
       {app.tier === 'plus' ? (
-        <Txt v="title" tone="accent" style={{ textAlign: 'center', marginTop: 24 }}>
+        <Txt v="headline" tone="go" style={{ textAlign: 'center', marginTop: SPACE.lg }}>
           {t('plus.thanks')}
         </Txt>
       ) : (
-        <View style={{ marginTop: 22, gap: 10 }}>
+        <View style={{ marginTop: SPACE.lg, gap: SPACE.xs + 2 }}>
           {/* Sits above the buttons: the copy says "at the price shown below". */}
-          <Txt v="callout" tone="sub" style={{ textAlign: 'center', marginBottom: 6 }}>
+          <Txt v="footnote" tone="ink2" style={{ marginBottom: SPACE.xxs }}>
             {t('plus.trial.body')}
           </Txt>
-          {!app.trial.started ? <Btn label={t('plus.trial.start')} icon="hourglass-outline" kind="secondary" onPress={() => void act('trial')} disabled={busy || (Platform.OS !== 'android' && price === null)} /> : null}
-          <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} icon="sparkles" onPress={() => void act('buy')} disabled={busy} />
-          {price === null ? <Btn label={t('plus.reloadPrice')} kind="secondary" onPress={() => void reloadPrice()} disabled={busy} /> : null}
-          <Txt v="caption" tone="faint" style={{ textAlign: 'center' }}>
+          {!app.trial.started ? <Btn label={t('plus.trial.start')} kind="plain" onPress={() => void act('trial')} disabled={busy || (Platform.OS !== 'android' && price === null)} /> : null}
+          <Btn label={price ? t('plus.buy', { price }) : t('plus.buyNoPrice')} onPress={() => void act('buy')} disabled={busy} />
+          {price === null ? <Btn label={t('plus.reloadPrice')} kind="plain" onPress={() => void reloadPrice()} disabled={busy} /> : null}
+          <Txt v="caption" tone="ink3" style={{ textAlign: 'center' }}>
             {t('plus.once')}
           </Txt>
         </View>
       )}
-      <View style={{ marginTop: 12 }}>
-        <Btn label={t('plus.restore')} kind="secondary" onPress={() => void act('restore')} disabled={busy} />
+      <View style={{ marginTop: SPACE.xs + 2 }}>
+        <Btn label={t('plus.restore')} kind="plain" onPress={() => void act('restore')} disabled={busy} />
       </View>
     </ScrollView>
   );
 }
 
 const st = StyleSheet.create({
-  hero: { alignItems: 'center', gap: 10, paddingTop: 4, paddingBottom: 24 },
-  trial: { flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, marginTop: 4 },
-  mark: { width: 76, height: 76, borderRadius: 26, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', marginBottom: 6 },
-  card: { borderRadius: RADIUS.card, borderWidth: StyleSheet.hairlineWidth },
-  feat: { flexDirection: 'row', gap: 14, alignItems: 'center', paddingHorizontal: 16, paddingVertical: 14 },
-  featIcon: { width: 36, height: 36, borderRadius: 11, alignItems: 'center', justifyContent: 'center' },
-  free: { flexDirection: 'row', gap: 12, alignItems: 'flex-start', marginTop: 14, padding: 16, borderRadius: RADIUS.card, borderWidth: 1, borderStyle: 'dashed' },
+  hero: { gap: SPACE.xs, paddingTop: SPACE.xxs, paddingBottom: SPACE.lg, paddingHorizontal: SPACE.xxs },
+  trial: { flexDirection: 'row', alignItems: 'center', gap: SPACE.xs, marginTop: SPACE.xxs },
+  dot: { width: 8, height: 8, borderRadius: 4 },
+  group: { borderRadius: RADIUS.group, overflow: 'hidden' },
+  groupTitle: { marginTop: SPACE.lg + 4, marginBottom: 6, marginLeft: SPACE.md },
+  free: { paddingHorizontal: SPACE.md, paddingVertical: SPACE.sm },
 });

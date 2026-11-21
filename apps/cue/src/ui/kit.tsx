@@ -1,17 +1,18 @@
 /**
- * Shared UI kit ("Studio" look). 44pt+ targets and VoiceOver labels everywhere.
- * Brass is spent on the primary action and selected states only; everything else stays quiet.
+ * Shared UI kit ("Running order", see apps/cue/DESIGN.md). Platform-shaped controls, 44 pt targets and
+ * VoiceOver labels everywhere. Green (go) is spent on one primary action per screen and on selection only.
  */
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
-import { LinearGradient } from 'expo-linear-gradient';
 import type { ComponentProps, ReactNode } from 'react';
 import { Platform, Pressable, StyleSheet, Switch, Text, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 import { tap } from '../native/haptics';
 import { useApp } from '../state/AppState';
-import { FONT, RADIUS, TYPE } from '../theme/theme';
+import { MOTION, RADIUS, SPACE, TYPE } from '../theme/theme';
 
 export type IconName = ComponentProps<typeof Ionicons>['name'];
+
+type Tone = 'ink' | 'ink2' | 'ink3' | 'go' | 'standby' | 'danger' | 'onGo';
 
 /** Text in the app's type scale and colours. */
 export function Txt({
@@ -23,7 +24,7 @@ export function Txt({
   ...rest
 }: {
   v?: keyof typeof TYPE;
-  tone?: 'ink' | 'sub' | 'faint' | 'accent' | 'danger' | 'onAccent';
+  tone?: Tone;
   style?: StyleProp<TextStyle>;
   children: ReactNode;
   lines?: number;
@@ -31,7 +32,7 @@ export function Txt({
   accessibilityLiveRegion?: 'polite' | 'assertive' | 'none';
 }) {
   const { theme } = useApp();
-  const color = { ink: theme.ink, sub: theme.sub, faint: theme.faint, accent: theme.accentText, danger: theme.danger, onAccent: theme.accentInk }[tone];
+  const color = { ink: theme.ink, ink2: theme.ink2, ink3: theme.ink3, go: theme.goText, standby: theme.standby, danger: theme.danger, onGo: theme.onGo }[tone];
   return (
     <Text style={[TYPE[v], { color }, style]} numberOfLines={lines} {...rest}>
       {children}
@@ -39,37 +40,45 @@ export function Txt({
   );
 }
 
-/** Frosted glass panel (real blur where available, solid fallback on Android). */
-export function Glass({ children, style, tint, intensity = 40 }: { children: ReactNode; style?: StyleProp<ViewStyle>; tint?: 'light' | 'dark'; intensity?: number }) {
+/** The system bar material (real blur on iOS, solid on Android). Used for bars and docks only. */
+export function Bar({ children, style, tint }: { children: ReactNode; style?: StyleProp<ViewStyle>; tint?: 'light' | 'dark' }) {
   const { theme } = useApp();
-  const t = tint ?? theme.blurTint;
+  const t = tint ?? theme.material;
   if (Platform.OS === 'android') {
-    return <View style={[{ backgroundColor: t === 'dark' ? 'rgba(16,19,28,0.92)' : 'rgba(255,255,255,0.94)', overflow: 'hidden' }, style]}>{children}</View>;
+    return <View style={[{ backgroundColor: t === 'dark' ? 'rgba(18,18,20,0.96)' : 'rgba(250,250,248,0.97)', overflow: 'hidden' }, style]}>{children}</View>;
   }
   return (
-    <BlurView tint={t === 'dark' ? 'systemChromeMaterialDark' : 'systemChromeMaterialLight'} intensity={intensity} style={[{ overflow: 'hidden' }, style]}>
+    <BlurView tint={t === 'dark' ? 'systemChromeMaterialDark' : 'systemChromeMaterialLight'} intensity={80} style={[{ overflow: 'hidden' }, style]}>
       {children}
     </BlurView>
   );
 }
 
+/** Press feedback shared by every custom pressable: a small scale (dropped under Reduce Motion) and a dim. */
+export function usePressStyle() {
+  const { reduceMotion } = useApp();
+  return (pressed: boolean): ViewStyle => ({ opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed && !reduceMotion ? MOTION.press : 1 }] });
+}
+
 export function Btn({
   label,
   onPress,
-  kind = 'primary',
+  kind = 'go',
   icon,
   disabled,
   style,
 }: {
   label: string;
   onPress: () => void;
-  kind?: 'primary' | 'secondary' | 'danger';
+  /** go: the screen's one primary action. plain: everything else. */
+  kind?: 'go' | 'plain';
   icon?: IconName;
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
 }) {
   const { theme, prefs } = useApp();
-  const fg = kind === 'primary' ? theme.accentInk : kind === 'danger' ? '#fff' : theme.ink;
+  const press = usePressStyle();
+  const fg = kind === 'go' ? theme.onGo : theme.ink;
   return (
     <Pressable
       accessibilityRole="button"
@@ -80,20 +89,10 @@ export function Btn({
         tap(prefs.haptics);
         onPress();
       }}
-      style={({ pressed }) => [
-        s.btn,
-        kind === 'primary' && theme.shadow,
-        kind === 'secondary' && { backgroundColor: theme.card, borderWidth: StyleSheet.hairlineWidth, borderColor: theme.line },
-        kind === 'danger' && { backgroundColor: theme.danger },
-        { opacity: disabled ? 0.4 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] },
-        style,
-      ]}
+      style={({ pressed }) => [s.btn, { backgroundColor: kind === 'go' ? theme.go : theme.field }, press(pressed), disabled && { opacity: 0.4 }, style]}
     >
-      {kind === 'primary' ? (
-        <LinearGradient colors={['#DDB063', '#C9973F', '#B4832F']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={[StyleSheet.absoluteFill, { borderRadius: RADIUS.control }]} />
-      ) : null}
       {icon ? <Ionicons name={icon} size={18} color={fg} /> : null}
-      <Text style={[s.btnText, { color: fg }]} numberOfLines={1}>
+      <Text style={[TYPE.headline, { color: fg }]} numberOfLines={1}>
         {label}
       </Text>
     </Pressable>
@@ -107,6 +106,8 @@ export function IconBtn({
   color,
   size = 22,
   active,
+  activeFill,
+  activeInk,
   bg,
 }: {
   icon: IconName;
@@ -114,7 +115,10 @@ export function IconBtn({
   onPress: () => void;
   color?: string;
   size?: number;
+  /** A toggled-on state (mirror, flip): drawn as a filled circle. */
   active?: boolean;
+  activeFill?: string;
+  activeInk?: string;
   bg?: string;
 }) {
   const { theme, prefs } = useApp();
@@ -122,31 +126,32 @@ export function IconBtn({
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
-      accessibilityState={{ selected: !!active }}
+      accessibilityState={active === undefined ? undefined : { selected: active }}
       hitSlop={6}
       onPress={() => {
         tap(prefs.haptics);
         onPress();
       }}
-      style={({ pressed }) => [s.icon, { backgroundColor: active ? theme.accent : (bg ?? 'transparent'), opacity: pressed ? 0.55 : 1 }]}
+      style={({ pressed }) => [s.icon, { backgroundColor: active ? (activeFill ?? theme.ink) : (bg ?? 'transparent'), opacity: pressed ? 0.5 : 1 }]}
     >
-      <Ionicons name={icon} size={size} color={active ? theme.accentInk : (color ?? theme.ink)} />
+      <Ionicons name={icon} size={size} color={active ? (activeInk ?? theme.ground) : (color ?? theme.goText)} />
     </Pressable>
   );
 }
 
+/** An inset grouped list section (iOS Settings shape): footnote header, rows on a sheet, optional footer. */
 export function Section({ title, footer, children }: { title?: string; footer?: string; children: ReactNode }) {
   const { theme } = useApp();
   return (
     <View style={s.section}>
       {title ? (
-        <Txt v="headline" style={s.sectionTitle} accessibilityRole="header">
+        <Txt v="footnote" tone="ink2" style={s.sectionTitle} accessibilityRole="header">
           {title}
         </Txt>
       ) : null}
-      <View style={[s.card, { backgroundColor: theme.card, borderColor: theme.line }]}>{children}</View>
+      <View style={[s.group, { backgroundColor: theme.sheet }]}>{children}</View>
       {footer ? (
-        <Txt v="caption" tone="faint" style={s.footer}>
+        <Txt v="footnote" tone="ink3" style={s.footer}>
           {footer}
         </Txt>
       ) : null}
@@ -160,39 +165,37 @@ export function Row({
   onPress,
   right,
   badge,
-  icon,
   last,
+  sub,
 }: {
   label: string;
   value?: string;
   onPress?: () => void;
   right?: ReactNode;
   badge?: string;
-  icon?: IconName;
   last?: boolean;
+  /** A second line under the label (paywall features). */
+  sub?: string;
 }) {
   const { theme, prefs } = useApp();
   const body = (
-    <View style={[s.row, !last && { borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.line }]}>
-      {icon ? (
-        <View style={[s.rowIcon, { backgroundColor: theme.accentWash }]}>
-          <Ionicons name={icon} size={16} color={theme.accentText} />
+    <View style={[s.row, sub ? s.rowTall : null]}>
+      <View style={{ flexShrink: 1, gap: 2 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: SPACE.xs }}>
+          <Txt style={{ flexShrink: 1 }}>{label}</Txt>
+          {badge ? <Tag label={badge} /> : null}
         </View>
-      ) : null}
-      <Txt style={{ flexShrink: 1 }}>{label}</Txt>
-      {badge ? (
-        <View style={[s.badge, { borderColor: theme.accent }]}>
-          <Text style={[s.badgeText, { color: theme.accentText }]}>{badge}</Text>
-        </View>
-      ) : null}
+        {sub ? (
+          <Txt v="subhead" tone="ink2">
+            {sub}
+          </Txt>
+        ) : null}
+      </View>
       <View style={{ flex: 1 }} />
-      {value ? (
-        <Txt v="callout" tone="sub">
-          {value}
-        </Txt>
-      ) : null}
+      {value ? <Txt tone="ink2">{value}</Txt> : null}
       {right}
-      {onPress && !right ? <Ionicons name="chevron-forward" size={17} color={theme.faint} /> : null}
+      {onPress && !right ? <Ionicons name="chevron-forward" size={16} color={theme.ink3} /> : null}
+      {!last ? <View style={[s.sep, { backgroundColor: theme.rule }]} /> : null}
     </View>
   );
   if (!onPress) return body;
@@ -204,26 +207,19 @@ export function Row({
         tap(prefs.haptics);
         onPress();
       }}
-      style={({ pressed }) => ({ backgroundColor: pressed ? theme.chip : 'transparent' })}
+      style={({ pressed }) => ({ backgroundColor: pressed ? theme.pressed : 'transparent' })}
     >
       {body}
     </Pressable>
   );
 }
 
-export function SwitchRow({ label, value, onChange, badge, icon, last }: { label: string; value: boolean; onChange: (v: boolean) => void; badge?: string; icon?: IconName; last?: boolean }) {
+export function SwitchRow({ label, value, onChange, badge, last }: { label: string; value: boolean; onChange: (v: boolean) => void; badge?: string; last?: boolean }) {
   const { theme } = useApp();
-  return (
-    <Row
-      label={label}
-      badge={badge}
-      icon={icon}
-      last={last}
-      right={<Switch accessibilityLabel={label} value={value} onValueChange={onChange} trackColor={{ true: theme.accent, false: theme.chip }} ios_backgroundColor={theme.chip} />}
-    />
-  );
+  return <Row label={label} badge={badge} last={last} right={<Switch accessibilityLabel={label} value={value} onValueChange={onChange} trackColor={{ true: theme.go, false: theme.field }} ios_backgroundColor={theme.field} />} />;
 }
 
+/** iOS-shaped segmented control: field track, the selected segment raised on the sheet colour. */
 export function Segmented<T extends string | number>({
   options,
   value,
@@ -239,7 +235,7 @@ export function Segmented<T extends string | number>({
 }) {
   const { theme, prefs } = useApp();
   return (
-    <View style={[s.seg, { backgroundColor: theme.chip }]} accessibilityRole="radiogroup" accessibilityLabel={label}>
+    <View style={[s.seg, { backgroundColor: theme.field }]} accessibilityRole="radiogroup" accessibilityLabel={label}>
       {options.map((o) => {
         const on = o.value === value;
         return (
@@ -253,12 +249,12 @@ export function Segmented<T extends string | number>({
               tap(prefs.haptics);
               onChange(o.value);
             }}
-            style={[s.segItem, compact && { minHeight: 32, paddingHorizontal: 8 }, on && [{ backgroundColor: theme.card }, theme.shadow, { shadowOpacity: theme.dark ? 0.3 : 0.06 }]]}
+            style={[s.segItem, compact && { minHeight: 32, paddingHorizontal: SPACE.xs }, on && { backgroundColor: theme.dark ? theme.pressed : theme.sheet }]}
           >
-            <Text style={{ color: on ? theme.ink : theme.sub, fontFamily: on ? FONT.bodyBold : FONT.body, fontSize: 14 }} numberOfLines={1}>
+            <Text style={[TYPE.subhead, { color: on ? theme.ink : theme.ink2, fontWeight: on ? '600' : '400' }]} numberOfLines={1}>
               {o.label}
             </Text>
-            {o.locked ? <Ionicons name="sparkles" size={11} color={theme.accentText} style={{ marginLeft: 3 }} /> : null}
+            {o.locked ? <Ionicons name="lock-closed" size={11} color={theme.ink3} style={{ marginLeft: 4 }} /> : null}
           </Pressable>
         );
       })}
@@ -266,47 +262,45 @@ export function Segmented<T extends string | number>({
   );
 }
 
-export function Stepper({ label, value, onMinus, onPlus, icon }: { label: string; value: string; onMinus: () => void; onPlus: () => void; icon?: IconName }) {
+export function Stepper({ label, value, onMinus, onPlus, last }: { label: string; value: string; onMinus: () => void; onPlus: () => void; last?: boolean }) {
   const { theme } = useApp();
   return (
     <Row
       label={label}
-      icon={icon}
+      last={last}
       right={
-        <View style={[s.stepper, { backgroundColor: theme.chip }]}>
-          <IconBtn icon="remove" label={`${label}, less`} onPress={onMinus} size={18} />
-          <Text style={{ color: theme.ink, minWidth: 46, textAlign: 'center', fontFamily: FONT.bodyBold, fontVariant: ['tabular-nums'] }}>{value}</Text>
-          <IconBtn icon="add" label={`${label}, more`} onPress={onPlus} size={18} />
+        <View style={[s.stepper, { backgroundColor: theme.field }]}>
+          <IconBtn icon="remove" label={`${label}, less`} onPress={onMinus} size={18} color={theme.ink} />
+          <Text style={[TYPE.time, { color: theme.ink, minWidth: 48, textAlign: 'center' }]}>{value}</Text>
+          <IconBtn icon="add" label={`${label}, more`} onPress={onPlus} size={18} color={theme.ink} />
         </View>
       }
     />
   );
 }
 
-/** Small brass "Plus" mark used on locked features. */
-export function PlusMark() {
+/** The word "Plus" on locked features: plain text in a hairline capsule, no ornament. */
+export function Tag({ label = 'Plus' }: { label?: string }) {
   const { theme } = useApp();
   return (
-    <View style={[s.badge, { borderColor: theme.accent, flexDirection: 'row', gap: 3, alignItems: 'center' }]}>
-      <Ionicons name="sparkles" size={10} color={theme.accentText} />
-      <Text style={[s.badgeText, { color: theme.accentText }]}>Plus</Text>
+    <View style={[s.tag, { borderColor: theme.rule }]}>
+      <Text style={[TYPE.caption, { color: theme.ink2, fontWeight: '600' }]}>{label}</Text>
     </View>
   );
 }
 
 const s = StyleSheet.create({
-  btn: { minHeight: 52, borderRadius: RADIUS.control, paddingHorizontal: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, overflow: 'visible' },
-  btnText: { fontFamily: FONT.bodyBold, fontSize: 16.5, letterSpacing: 0.1 },
-  icon: { width: 44, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
-  section: { marginTop: 26, paddingHorizontal: 16 },
-  sectionTitle: { marginBottom: 8, marginLeft: 4 },
-  footer: { marginTop: 8, marginHorizontal: 6 },
-  card: { borderRadius: RADIUS.card, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden' },
-  row: { minHeight: 54, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center', gap: 12 },
-  rowIcon: { width: 30, height: 30, borderRadius: 9, alignItems: 'center', justifyContent: 'center' },
-  badge: { borderRadius: RADIUS.pill, borderWidth: 1, paddingHorizontal: 7, paddingVertical: 1 },
-  badgeText: { fontFamily: FONT.bodyBold, fontSize: 11 },
-  seg: { flexDirection: 'row', borderRadius: RADIUS.chip + 2, padding: 3, gap: 3 },
-  segItem: { flex: 1, minHeight: 36, borderRadius: RADIUS.chip, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 10, flexDirection: 'row' },
-  stepper: { flexDirection: 'row', alignItems: 'center', borderRadius: RADIUS.pill },
+  btn: { minHeight: 50, borderRadius: RADIUS.control, paddingHorizontal: SPACE.md, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: SPACE.xs },
+  icon: { width: SPACE.touch, height: SPACE.touch, borderRadius: SPACE.touch / 2, alignItems: 'center', justifyContent: 'center' },
+  section: { marginTop: SPACE.lg + 4, paddingHorizontal: SPACE.gutter },
+  sectionTitle: { marginBottom: 6, marginLeft: SPACE.md },
+  footer: { marginTop: 6, marginHorizontal: SPACE.md },
+  group: { borderRadius: RADIUS.group, overflow: 'hidden' },
+  row: { minHeight: SPACE.touch, paddingHorizontal: SPACE.md, paddingVertical: 11, flexDirection: 'row', alignItems: 'center', gap: SPACE.sm },
+  rowTall: { paddingVertical: SPACE.sm },
+  sep: { position: 'absolute', left: SPACE.md, right: 0, bottom: 0, height: StyleSheet.hairlineWidth },
+  tag: { borderRadius: RADIUS.round, borderWidth: StyleSheet.hairlineWidth, paddingHorizontal: 6, paddingVertical: 1 },
+  seg: { flexDirection: 'row', borderRadius: 9, padding: 2, gap: 2 },
+  segItem: { flex: 1, minHeight: 32, borderRadius: 7, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 10, flexDirection: 'row' },
+  stepper: { flexDirection: 'row', alignItems: 'center', borderRadius: RADIUS.round },
 });

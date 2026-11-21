@@ -5,7 +5,6 @@
  */
 import { Ionicons } from '@expo/vector-icons';
 import { useKeepAwake } from 'expo-keep-awake';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { StatusBar } from 'expo-status-bar';
@@ -21,8 +20,8 @@ import { t } from '../../src/i18n';
 import { success, tap, thud } from '../../src/native/haptics';
 import { loadSpeech, type SpeechSession } from '../../src/native/speech';
 import { useApp } from '../../src/state/AppState';
-import { Glass, IconBtn } from '../../src/ui/kit';
-import { FONT, PROMPTER, RADIUS } from '../../src/theme/theme';
+import { Bar, IconBtn } from '../../src/ui/kit';
+import { FONT, PROMPTER, RADIUS, SPACE, STAGE, TYPE } from '../../src/theme/theme';
 import { Prompter, type PrompterHandle } from '../../src/ui/Prompter';
 import { useVoiceGate } from '../../src/ui/useVoiceGate';
 
@@ -310,89 +309,86 @@ export default function PromptScreen() {
 
       {!running && count === null ? (
         <View pointerEvents="none" style={[st.center, { top: undefined, bottom: insets.bottom + 168 }]}>
-          <Glass tint="dark" style={st.hintChip}>
+          <Bar tint="dark" style={st.hintChip}>
             <Text style={st.hint}>
               {done !== null ? t('prompt.finished', { time: formatDuration(done) }) : elapsed > 0 ? t('prompt.paused') : t('prompt.tapToStart')}
             </Text>
-          </Glass>
+          </Bar>
         </View>
       ) : null}
 
       {chrome ? (
         <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(200)} exiting={app.reduceMotion ? undefined : FadeOut.duration(260)} style={[st.top, { paddingTop: insets.top + 8 }]} pointerEvents="box-none">
-          <Glass tint="dark" style={st.round}>
-            <IconBtn icon="close" label={t('prompt.close')} onPress={close} color="#F1EEE6" />
-          </Glass>
+          <Bar tint="dark" style={st.round}>
+            <IconBtn icon="close" label={t('prompt.close')} onPress={close} color={STAGE.ink} />
+          </Bar>
           <View style={{ flex: 1 }} />
           {prefs.showTimer ? (
-            <Glass tint="dark" style={st.chip}>
+            <Bar tint="dark" style={st.chip}>
               <Text style={st.timer}>{formatDuration(elapsed)}</Text>
-            </Glass>
+            </Bar>
           ) : null}
           <Pressable onPress={chooseMode} accessibilityRole="button" accessibilityLabel={t('prompt.changeMode', { mode: t(`prompt.mode.${mode}`) })}>
-            <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
-              <Ionicons name={mode === 'steady' ? 'speedometer-outline' : 'mic-outline'} size={15} color={BRASS} />
+            <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
+              <Ionicons name={mode === 'steady' ? 'speedometer-outline' : 'mic-outline'} size={15} color={STAGE.ink2} />
               <Text style={st.chipText}>{t(`prompt.mode.${mode}`)}</Text>
-            </Glass>
+            </Bar>
           </Pressable>
         </Animated.View>
       ) : null}
 
       {listening ? (
         <View pointerEvents="none" style={[st.listen, { top: insets.top + 64 }]}>
-          <Glass tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
-            <View style={[st.dot, { backgroundColor: hearing ? BRASS : '#6E7486' }]} />
+          <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
+            <View style={[st.dot, { backgroundColor: hearing ? STAGE.go : STAGE.standby }]} />
             <Text style={st.chipText}>{hearing ? t('prompt.listening') : t('prompt.waiting')}</Text>
-          </Glass>
+          </Bar>
         </View>
       ) : null}
 
       {chrome ? (
         <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(200)} exiting={app.reduceMotion ? undefined : FadeOut.duration(260)} style={[st.bottom, { paddingBottom: insets.bottom + 12 }]} pointerEvents="box-none">
-          <Glass tint="dark" style={st.dock}>
+          <Bar tint="dark" style={st.dock}>
             <View style={st.dockRow}>
-              <IconBtn icon="play-skip-back-outline" label={t('prompt.restart')} onPress={restart} color="#C9CCD6" />
-              <IconBtn icon="list-outline" label={t('prompt.sections')} onPress={sections} color="#C9CCD6" />
+              <IconBtn icon="play-skip-back-outline" label={t('prompt.restart')} onPress={restart} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
+              <IconBtn icon="list-outline" label={t('prompt.sections')} onPress={sections} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
               <Text style={st.speed} accessibilityLabel={t('prompt.speed', { pct: Math.round(speed * 100) })} accessibilityLiveRegion="polite">
                 {Math.round(speed * 100)}%
               </Text>
-              <IconBtn icon="swap-horizontal" label={t('prompt.mirror')} active={prefs.mirrorH} onPress={() => app.setPrefs({ mirrorH: !prefs.mirrorH })} color="#C9CCD6" />
-              <IconBtn icon="swap-vertical" label={t('prompt.flip')} active={prefs.mirrorV} onPress={() => app.setPrefs({ mirrorV: !prefs.mirrorV })} color="#C9CCD6" />
+              <IconBtn icon="swap-horizontal" label={t('prompt.mirror')} active={prefs.mirrorH} onPress={() => app.setPrefs({ mirrorH: !prefs.mirrorH })} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
+              <IconBtn icon="swap-vertical" label={t('prompt.flip')} active={prefs.mirrorV} onPress={() => app.setPrefs({ mirrorV: !prefs.mirrorV })} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
             </View>
             <View style={st.dockMain}>
-              <IconBtn icon="remove" label={t('prompt.slower')} onPress={() => setSpeed((s) => nudgeSpeed(s, -1))} color="#F1EEE6" size={24} />
-              <Pressable onPress={toggle} accessibilityRole="button" accessibilityLabel={running ? t('prompt.pause') : t('prompt.play')} style={({ pressed }) => [st.play, { transform: [{ scale: pressed ? 0.94 : 1 }] }]}>
-                <LinearGradient colors={['#DDB063', '#C9973F', '#B4832F']} style={StyleSheet.absoluteFill} />
-                <Ionicons name={running ? 'pause' : 'play'} size={28} color="#1A1408" style={running ? undefined : { marginLeft: 3 }} />
+              <IconBtn icon="remove" label={t('prompt.slower')} onPress={() => setSpeed((s) => nudgeSpeed(s, -1))} color={STAGE.ink} size={24} />
+              <Pressable onPress={toggle} accessibilityRole="button" accessibilityLabel={running ? t('prompt.pause') : t('prompt.play')} style={({ pressed }) => [st.play, { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed && !app.reduceMotion ? 0.96 : 1 }] }]}>
+                <Ionicons name={running ? 'pause' : 'play'} size={28} color={STAGE.onGo} style={running ? undefined : { marginLeft: 3 }} />
               </Pressable>
-              <IconBtn icon="add" label={t('prompt.faster')} onPress={() => setSpeed((s) => nudgeSpeed(s, 1))} color="#F1EEE6" size={24} />
+              <IconBtn icon="add" label={t('prompt.faster')} onPress={() => setSpeed((s) => nudgeSpeed(s, 1))} color={STAGE.ink} size={24} />
             </View>
-          </Glass>
+          </Bar>
         </Animated.View>
       ) : null}
     </View>
   );
 }
 
-const BRASS = '#D9AD5E';
-
 const st = StyleSheet.create({
   fill: { flex: 1 },
   center: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, alignItems: 'center', justifyContent: 'center' },
-  count: { fontFamily: FONT.display, fontSize: 168, lineHeight: 180, fontVariant: ['tabular-nums'] },
-  hintChip: { borderRadius: RADIUS.pill, paddingHorizontal: 16, paddingVertical: 9 },
-  hint: { fontFamily: FONT.bodyBold, fontSize: 15, color: '#F1EEE6' },
-  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: 8 },
-  round: { borderRadius: 22 },
-  chip: { borderRadius: RADIUS.pill, paddingHorizontal: 14, minHeight: 44, alignItems: 'center', justifyContent: 'center' },
-  chipText: { fontFamily: FONT.bodyBold, fontSize: 13.5, color: '#F1EEE6' },
-  timer: { fontFamily: FONT.display, fontSize: 16, color: '#F1EEE6', fontVariant: ['tabular-nums'] },
+  count: { fontFamily: FONT.scriptBold, fontSize: 168, lineHeight: 180, fontVariant: ['tabular-nums'] },
+  hintChip: { borderRadius: RADIUS.round, paddingHorizontal: SPACE.md, paddingVertical: 10 },
+  hint: { ...TYPE.subhead, fontWeight: '600', color: STAGE.ink },
+  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: SPACE.xs },
+  round: { borderRadius: SPACE.touch / 2 },
+  chip: { borderRadius: RADIUS.round, paddingHorizontal: 14, minHeight: SPACE.touch, alignItems: 'center', justifyContent: 'center' },
+  chipText: { ...TYPE.footnote, fontWeight: '600', color: STAGE.ink },
+  timer: { ...TYPE.time, color: STAGE.ink },
   listen: { position: 'absolute', right: 14 },
   dot: { width: 8, height: 8, borderRadius: 4 },
-  bottom: { position: 'absolute', bottom: 0, left: 0, right: 0, alignItems: 'center', paddingHorizontal: 12 },
-  dock: { borderRadius: 30, paddingHorizontal: 10, paddingVertical: 8, width: '100%', maxWidth: 460 },
+  bottom: { position: 'absolute', bottom: 0, left: 0, right: 0, alignItems: 'center', paddingHorizontal: SPACE.sm },
+  dock: { borderRadius: RADIUS.dock, paddingHorizontal: 10, paddingVertical: SPACE.xs, width: '100%', maxWidth: 460, borderWidth: StyleSheet.hairlineWidth, borderColor: STAGE.hairline },
   dockRow: { flexDirection: 'row', alignItems: 'center' },
-  dockMain: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 20, paddingTop: 2, paddingBottom: 4 },
-  play: { width: 68, height: 68, borderRadius: 34, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', marginHorizontal: 10 },
-  speed: { flex: 1, fontFamily: FONT.display, fontSize: 17, color: '#F1EEE6', textAlign: 'center', fontVariant: ['tabular-nums'] },
+  dockMain: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: SPACE.lg - 4, paddingTop: 2, paddingBottom: SPACE.xxs },
+  play: { width: 64, height: 64, borderRadius: 32, backgroundColor: STAGE.go, alignItems: 'center', justifyContent: 'center', marginHorizontal: 10 },
+  speed: { flex: 1, ...TYPE.time, color: STAGE.ink, textAlign: 'center' },
 });

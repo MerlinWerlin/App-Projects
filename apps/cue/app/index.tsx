@@ -11,8 +11,8 @@ import { tap, thud } from '../src/native/haptics';
 import { reason } from '../src/native/errors';
 import { importScriptFile } from '../src/native/importFile';
 import { useApp } from '../src/state/AppState';
-import { Btn, Glass, IconBtn, Txt } from '../src/ui/kit';
-import { FONT, RADIUS, TYPE, type Theme } from '../src/theme/theme';
+import { Bar, Btn, IconBtn, Txt } from '../src/ui/kit';
+import { RADIUS, SPACE, TYPE, type Theme } from '../src/theme/theme';
 
 export default function Library() {
   const app = useApp();
@@ -51,14 +51,14 @@ export default function Library() {
       ];
       if (Platform.OS === 'ios') {
         ActionSheetIOS.showActionSheetWithOptions(
-          { title, options: [...actions.map((a) => a.label), t('common.cancel')], cancelButtonIndex: actions.length, destructiveButtonIndex: actions.findIndex((a) => a.destructive), tintColor: theme.accentText },
+          { title, options: [...actions.map((a) => a.label), t('common.cancel')], cancelButtonIndex: actions.length, destructiveButtonIndex: actions.findIndex((a) => a.destructive), tintColor: theme.goText },
           (i) => actions[i]?.run(),
         );
       } else {
         Alert.alert(title, undefined, [...actions.map((a) => ({ text: a.label, onPress: a.run, style: a.destructive ? ('destructive' as const) : ('default' as const) })), { text: t('common.cancel'), style: 'cancel' }]);
       }
     },
-    [app, router, theme.accentText],
+    [app, router, theme.goText],
   );
 
   const newScript = () => {
@@ -77,13 +77,13 @@ export default function Library() {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: theme.bg }}>
+    <View style={{ flex: 1, backgroundColor: theme.ground }}>
       <Stack.Screen
         options={{
           headerRight: () => (
             <View style={{ flexDirection: 'row' }}>
-              <IconBtn icon="download-outline" label={t('library.import')} onPress={doImport} color={theme.accentText} />
-              <IconBtn icon="options-outline" label={t('library.settings')} onPress={() => router.push('/settings')} color={theme.accentText} />
+              <IconBtn icon="download-outline" label={t('library.import')} onPress={doImport} />
+              <IconBtn icon="settings-outline" label={t('library.settings')} onPress={() => router.push('/settings')} />
             </View>
           ),
         }}
@@ -95,57 +95,53 @@ export default function Library() {
         keyboardDismissMode="on-drag"
         initialNumToRender={10}
         windowSize={7}
-        contentContainerStyle={{ paddingBottom: insets.bottom + 120 }}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 96 }}
         ListHeaderComponent={
-          <View>
-            <View style={[st.search, { backgroundColor: theme.chip }]}>
-              <Ionicons name="search" size={17} color={theme.faint} />
-              <TextInput
-                value={q}
-                onChangeText={setQ}
-                placeholder={t('library.search')}
-                placeholderTextColor={theme.faint}
-                selectionColor={theme.accent}
-                style={[st.searchInput, { color: theme.ink }]}
-                accessibilityLabel={t('library.search')}
-                clearButtonMode="while-editing"
-                returnKeyType="search"
-              />
-            </View>
-            {scripts.length > 0 && !q ? (
-              <Txt v="caption" tone="faint" style={st.count}>
-                {scripts.length === 1 ? t('library.countOne') : t('library.count', { n: scripts.length })}
-              </Txt>
-            ) : null}
+          <View style={[st.search, { backgroundColor: theme.field }]}>
+            <Ionicons name="search" size={17} color={theme.ink3} />
+            <TextInput
+              value={q}
+              onChangeText={setQ}
+              placeholder={t('library.search')}
+              placeholderTextColor={theme.ink3}
+              selectionColor={theme.go}
+              style={[TYPE.body, st.searchInput, { color: theme.ink }]}
+              accessibilityLabel={t('library.search')}
+              clearButtonMode="while-editing"
+              returnKeyType="search"
+            />
           </View>
         }
         ListEmptyComponent={
           q ? (
-            <Txt tone="sub" style={st.empty}>
+            <Txt tone="ink2" style={st.empty}>
               {t('library.noMatches', { q })}
             </Txt>
           ) : (
             <View style={st.emptyBox}>
-              <View style={[st.emptyMark, { backgroundColor: theme.accentWash }]}>
-                <Ionicons name="reader-outline" size={30} color={theme.accentText} />
-              </View>
-              <Txt v="title">{t('library.empty.title')}</Txt>
-              <Txt tone="sub" style={{ textAlign: 'center' }}>
+              <Txt v="scriptTitle" style={{ textAlign: 'center' }} accessibilityRole="header">
+                {t('library.empty.title')}
+              </Txt>
+              <Txt tone="ink2" style={{ textAlign: 'center' }}>
                 {t('library.empty.body')}
               </Txt>
             </View>
           )
         }
-        renderItem={({ item }) => <ScriptCard script={item} theme={theme} onOpen={open} onMenu={menu} />}
+        renderItem={({ item, index }) => <ScriptRow script={item} theme={theme} first={index === 0} onOpen={open} onMenu={menu} />}
       />
-      <Glass style={[st.footer, { paddingBottom: insets.bottom + 12, borderTopColor: theme.line }]}>
-        <Btn label={t('library.new')} icon="add" onPress={newScript} />
-      </Glass>
+      <Bar style={[st.footer, { paddingBottom: insets.bottom + SPACE.xs, borderTopColor: theme.rule }]}>
+        <Txt v="footnote" tone="ink2" style={{ flex: 1 }} accessibilityLiveRegion="polite">
+          {scripts.length === 1 ? t('library.countOne') : t('library.count', { n: scripts.length })}
+        </Txt>
+        <Btn label={t('library.new')} icon="add" onPress={newScript} style={{ paddingHorizontal: SPACE.lg - 4 }} />
+      </Bar>
     </View>
   );
 }
 
-const ScriptCard = memo(function ScriptCard({ script, theme, onOpen, onMenu }: { script: Script; theme: Theme; onOpen: (s: Script) => void; onMenu: (s: Script) => void }) {
+/** One running-order line: the script on the left, its read time in the right-hand time column. */
+const ScriptRow = memo(function ScriptRow({ script, theme, first, onOpen, onMenu }: { script: Script; theme: Theme; first: boolean; onOpen: (s: Script) => void; onMenu: (s: Script) => void }) {
   const { words, time } = useMemo(() => {
     const p = parseScript(script.body);
     return { words: p.words.length, time: formatDuration(readSeconds(p, script.wpm)) };
@@ -163,57 +159,43 @@ const ScriptCard = memo(function ScriptCard({ script, theme, onOpen, onMenu }: {
       accessibilityRole="button"
       accessibilityLabel={`${title}${script.pinned ? `, ${t('library.pinned')}` : ''}. ${t('library.meta', { words, time })}`}
       accessibilityHint={t('library.openHint')}
-      style={({ pressed }) => [st.card, theme.shadow, { backgroundColor: theme.card, borderColor: theme.line, transform: [{ scale: pressed ? 0.985 : 1 }] }]}
+      style={({ pressed }) => [st.row, { backgroundColor: pressed ? theme.pressed : 'transparent' }]}
     >
-      {script.pinned ? <View style={[st.pinEdge, { backgroundColor: theme.accent }]} /> : null}
-      <View style={{ flex: 1, gap: 6 }}>
-        <Text style={[TYPE.headline, { color: theme.ink }]} numberOfLines={1}>
-          {title}
-        </Text>
+      {first ? <View style={[st.rule, { top: 0, backgroundColor: theme.rule }]} /> : null}
+      <View style={{ flex: 1, gap: 3 }}>
+        <View style={st.titleLine}>
+          {script.pinned ? <Ionicons name="pin" size={13} color={theme.ink2} /> : null}
+          <Text style={[TYPE.scriptHeading, { color: theme.ink, flexShrink: 1 }]} numberOfLines={1}>
+            {title}
+          </Text>
+        </View>
         {preview ? (
-          <Text style={[TYPE.callout, { color: theme.sub }]} numberOfLines={2}>
+          <Text style={[TYPE.subhead, { color: theme.ink2 }]} numberOfLines={2}>
             {preview}
           </Text>
         ) : null}
-        <View style={st.metaRow}>
-          {script.pinned ? <Ionicons name="pin" size={12} color={theme.accentText} /> : null}
-          <Text style={[TYPE.caption, { color: theme.faint }]}>{t('library.words', { n: words })}</Text>
-        </View>
       </View>
       <View style={st.timeCol}>
-        <Text style={[TYPE.numeral, { color: theme.ink }]}>{time}</Text>
-        <Text style={[TYPE.caption, { color: theme.faint }]}>{t('library.readTime')}</Text>
+        <Text style={[TYPE.time, { color: theme.ink }]}>{time}</Text>
+        <Text style={[TYPE.footnote, { color: theme.ink3, fontVariant: ['tabular-nums'] }]}>{t('library.words', { n: words })}</Text>
       </View>
-      <Pressable onPress={() => onMenu(script)} accessibilityRole="button" accessibilityLabel={t('library.more', { title })} hitSlop={6} style={st.more}>
-        <Ionicons name="ellipsis-horizontal" size={18} color={theme.faint} />
+      <Pressable onPress={() => onMenu(script)} accessibilityRole="button" accessibilityLabel={t('library.more', { title })} hitSlop={6} style={({ pressed }) => [st.more, { opacity: pressed ? 0.5 : 1 }]}>
+        <Ionicons name="ellipsis-horizontal" size={18} color={theme.ink3} />
       </Pressable>
+      <View style={[st.rule, { bottom: 0, left: SPACE.gutter, backgroundColor: theme.rule }]} />
     </Pressable>
   );
 });
 
 const st = StyleSheet.create({
-  search: { marginHorizontal: 16, marginTop: 6, borderRadius: RADIUS.chip + 2, paddingHorizontal: 12, minHeight: 44, flexDirection: 'row', alignItems: 'center', gap: 8 },
-  searchInput: { flex: 1, fontSize: 16, paddingVertical: 10, fontFamily: FONT.body },
-  count: { marginHorizontal: 22, marginTop: 14, marginBottom: 2 },
-  card: {
-    marginHorizontal: 16,
-    marginTop: 12,
-    borderRadius: RADIUS.card,
-    borderWidth: StyleSheet.hairlineWidth,
-    paddingVertical: 16,
-    paddingLeft: 18,
-    paddingRight: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    overflow: 'visible',
-  },
-  pinEdge: { position: 'absolute', left: 0, top: 18, bottom: 18, width: 3, borderTopRightRadius: 3, borderBottomRightRadius: 3 },
-  metaRow: { flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 2 },
-  timeCol: { alignItems: 'flex-end', minWidth: 56 },
-  more: { width: 44, height: 44, alignItems: 'center', justifyContent: 'center' },
-  emptyBox: { alignItems: 'center', paddingTop: 72, paddingHorizontal: 40, gap: 10 },
-  emptyMark: { width: 72, height: 72, borderRadius: 24, alignItems: 'center', justifyContent: 'center', marginBottom: 6 },
-  empty: { textAlign: 'center', marginTop: 32, paddingHorizontal: 24 },
-  footer: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: 16, paddingTop: 12, borderTopWidth: StyleSheet.hairlineWidth },
+  search: { marginHorizontal: SPACE.gutter, marginTop: SPACE.xxs, marginBottom: SPACE.sm, borderRadius: RADIUS.field, paddingHorizontal: 10, minHeight: 40, flexDirection: 'row', alignItems: 'center', gap: 6 },
+  searchInput: { flex: 1, paddingVertical: 8 },
+  row: { paddingVertical: SPACE.sm + 2, paddingLeft: SPACE.gutter, paddingRight: SPACE.xxs, flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, minHeight: 72 },
+  rule: { position: 'absolute', left: 0, right: 0, height: StyleSheet.hairlineWidth },
+  titleLine: { flexDirection: 'row', alignItems: 'center', gap: 5 },
+  timeCol: { alignItems: 'flex-end', minWidth: 60, gap: 1 },
+  more: { width: SPACE.touch, height: SPACE.touch, alignItems: 'center', justifyContent: 'center' },
+  emptyBox: { alignItems: 'center', paddingTop: 96, paddingHorizontal: 40, gap: SPACE.xs },
+  empty: { textAlign: 'center', marginTop: SPACE.xl, paddingHorizontal: SPACE.lg },
+  footer: { position: 'absolute', left: 0, right: 0, bottom: 0, paddingHorizontal: SPACE.gutter, paddingTop: SPACE.xs, borderTopWidth: StyleSheet.hairlineWidth, flexDirection: 'row', alignItems: 'center', gap: SPACE.sm },
 });
