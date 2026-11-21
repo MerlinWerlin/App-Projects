@@ -53,7 +53,7 @@ jobs:
         run: |
           APP=$(ls -d "$RUNNER_TEMP"/derived/Build/Products/Release-iphonesimulator/*.app | head -1)
           BID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
-          DEVICE=$(xcrun simctl list devices available --json | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];a=[x for r,xs in sorted(d.items(),reverse=True) if "iOS-27" in r for x in xs if x["name"].startswith("iPhone")];print(a[0]["udid"])')
+          DEVICE=$(xcrun simctl list devices available --json | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];a=[x for r,xs in sorted(d.items(),reverse=True) if "iOS-27" in r for x in xs if x["name"].startswith("iPhone") and not any(w in x["name"] for w in ("Duo","Fold","Flip"))];p=next((x for x in a if " Pro" in x["name"] and "Max" not in x["name"]),a[0]);print(p["udid"])')
           xcrun simctl list devices available | grep "$DEVICE"
           xcrun simctl boot "$DEVICE"; xcrun simctl bootstatus "$DEVICE" -b
           xcrun simctl install "$DEVICE" "$APP"
@@ -61,7 +61,7 @@ jobs:
           xcrun simctl spawn "$DEVICE" log stream --level error --predicate 'process == "'"$(basename "$APP" .app)"'"' > "$RUNNER_TEMP/out/app-errors.log" 2>&1 &
           OUT=$(xcrun simctl launch "$DEVICE" "$BID"); echo "$OUT"; PID=${OUT##* }
           sleep 30
-          xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/out/after-30s.png" || true
+          xcrun simctl io "$DEVICE" screenshot "$RUNNER_TEMP/out/after-30s.png" || xcrun simctl io "$DEVICE" screenshot --display=1 "$RUNNER_TEMP/out/after-30s.png" || true
           find ~/Library/Logs/DiagnosticReports -newer "$APP" -name '*.ips' -exec cp {} "$RUNNER_TEMP/out/" \; 2>/dev/null || true
           if kill -0 "$PID" 2>/dev/null; then echo "PASS: $BID is still running 30 s after launch on iOS 27"; else
             echo "::error::$BID is not running 30 s after launch on iOS 27 (crashed)"; ls "$RUNNER_TEMP/out"; head -c 6000 "$RUNNER_TEMP"/out/*.ips 2>/dev/null; exit 1; fi
