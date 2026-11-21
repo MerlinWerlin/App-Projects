@@ -83,7 +83,14 @@ Gradients · glows or coloured halos · icons inside tinted circles or squares �
 count-up or big-number stat tiles · sparkles and confetti as decoration · pastel candy fills · generic floating
 cards with soft shadows · more than one accent colour on a screen · emoji as icons.
 
-## 8. Unchanged rules
+## 8. Deliberate exceptions
+
+- **Workshop tab** keeps its blueprint look (navy, cyan grid, monospace labels). Jared asked for it to feel unlike
+  the rest of the app (24 Oct 2026), so it stays as it is.
+- **Trace (camera) screen** keeps its dark camera glass controls: they sit over a live camera image, not paper.
+- **Lightbox** stays pure white with black line art: it is a light table, not a page.
+
+## 9. Unchanged rules
 
 i18n (every string from the catalogue, wrapping not truncating, start/end not left/right, mirrored chevrons),
 44 pt targets (48 on the camera), labels on every control, AA contrast, and no camera / image / outline mirroring.

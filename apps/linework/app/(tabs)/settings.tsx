@@ -7,7 +7,7 @@ import { Alert, Linking, Platform, StyleSheet, TextInput, View } from 'react-nat
 import Constants from 'expo-constants';
 import { Stack, useRouter } from 'expo-router';
 import { useThemeV2 } from '../../src/theme/useTheme';
-import { maxFontScaleV2, spaceV2 } from '../../src/theme/tokensV2';
+import { maxFontScaleV2, spaceV2, radiusV2 } from '../../src/theme/tokensV2';
 import { DEFAULT_SETTINGS, loadSettings, saveSettings, type GridDefault, type Settings } from '../../src/native/settings';
 import { select, setHapticsEnabled } from '../../src/native/haptics';
 import { LabeledSlider } from '../../src/ui/LabeledSlider';
@@ -263,7 +263,7 @@ function ReviewAccessSection() {
             autoCapitalize="characters"
             autoCorrect={false}
             secureTextEntry
-            style={[text('body'), { color: c.ink, backgroundColor: c.inkSoft, padding: spaceV2.x3 }]}
+            style={[text('body'), { color: c.graphite, backgroundColor: c.card, borderWidth: 1, borderColor: c.line, borderRadius: radiusV2.md, padding: spaceV2.x3 }]}
           />
           <PillButton title={t('settings.review.apply')} disabled={busy || !code.trim()} onPress={() => { void activate(); }} />
         </View>
