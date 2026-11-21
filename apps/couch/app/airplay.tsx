@@ -6,6 +6,7 @@ import { hasRoutePicker, showRoutePicker } from '../src/native/routePicker';
 import { list, space, textStyle } from '../src/theme/design';
 import { Text } from '../src/ui/Text';
 import { Card, LargeTitleHeader, PillButton, useDesign } from '../src/ui/v2';
+import { useModalStatusBar } from '../src/ui/useModalStatusBar';
 
 const STEPS = ['app.airplay.step1', 'app.airplay.step2', 'app.airplay.step3'] as const;
 
@@ -17,6 +18,7 @@ const STEPS = ['app.airplay.step1', 'app.airplay.step2', 'app.airplay.step3'] as
  * when app/_layout.tsx registers it so; it draws its own large title either way. No brand names.
  */
 export default function AirPlayGuideScreen() {
+  useModalStatusBar();
   const p = useDesign();
   const t = useT();
   const router = useRouter();

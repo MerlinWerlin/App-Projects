@@ -1,9 +1,12 @@
 import { useCallback, useState } from 'react';
 import { Pressable, StyleSheet, useWindowDimensions, View } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useFocusEffect, useRouter } from 'expo-router';
+import { setStatusBarStyle } from 'expo-status-bar';
 import { isCastOnlyDriver } from '../../src/core/drivers/castOnly';
 import type { Key } from '../../src/core/keys';
-import { oneHandedAlign } from '../../src/core/prefs';
+import { oneHandedAlign, statusBarStyle } from '../../src/core/prefs';
+import { luminance } from '../../src/theme/remoteThemes';
+import { useScheme } from '../../src/theme/useTheme';
 import { minKeyHeight, remoteContentWidth, rowOrStack } from '../../src/core/textScale';
 import { useT } from '../../src/i18n/react';
 import { usePrefs } from '../../src/state/prefs';
@@ -110,6 +113,16 @@ export default function RemoteScreen() {
   // the active saved TV; demo gets amber. The stage behind the remote comes from the theme.
   const glow = glowColor(prefs.glow, snap.demo ? null : (tv?.id ?? null), theme.glow);
   const stage = remoteStage(theme, glow);
+  // The status bar sits on the remote's stage, not the app background: a light phone with the charcoal remote
+  // needs light status-bar text (it was dark on dark). Restored to the app's style when the tab loses focus.
+  const appScheme = useScheme();
+  const stageDark = luminance(stage.bg) < 0.18;
+  useFocusEffect(
+    useCallback(() => {
+      setStatusBarStyle(stageDark ? 'light' : 'dark');
+      return () => setStatusBarStyle(statusBarStyle(appScheme));
+    }, [stageDark, appScheme]),
+  );
 
   // session.sendKey never throws; failures surface as snap.lastError.
   const onKey = useCallback(

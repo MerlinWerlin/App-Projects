@@ -74,6 +74,7 @@ jobs:
               xcrun simctl launch "$DEVICE" "$BUNDLE" > /dev/null
               sleep 9
               if [ "$R" != "remote" ]; then xcrun simctl openurl "$DEVICE" "couch://$R" || true; sleep 4; fi
+              if [ "$R" = "apps" ]; then sleep 8; fi
               xcrun simctl io "$DEVICE" screenshot "$OUT/$R-$MODE.png" > /dev/null 2>&1
             done
           done

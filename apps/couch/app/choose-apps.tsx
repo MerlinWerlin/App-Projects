@@ -159,8 +159,8 @@ function AppIcon({ app }: { app: TvApp }) {
     return <Image source={{ uri }} style={styles.icon} onError={() => setFailed(true)} accessibilityIgnoresInvertColors />;
   }
   return (
-    <View style={[styles.icon, styles.iconFallback, { backgroundColor: p.tintedFill }]}>
-      <RemoteIcon name="tv" size={16} color={p.tintedLabel} />
+    <View style={[styles.icon, styles.iconFallback, { backgroundColor: p.fill }]}>
+      <RemoteIcon name="tv" size={16} color={p.secondaryLabel} />
     </View>
   );
 }
