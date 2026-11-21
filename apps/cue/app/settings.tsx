@@ -76,7 +76,7 @@ export default function Settings() {
                   </View>
                   {locked ? <Ionicons name="lock-closed" size={12} color={pal.dim} style={st.swatchLock} /> : null}
                 </View>
-                <Text style={[TYPE.footnote, { color: on ? theme.ink : theme.ink2, fontWeight: on ? '600' : '400' }]} numberOfLines={1}>
+                <Text style={[TYPE.footnote, { color: on ? theme.ink : theme.ink2, fontWeight: on ? '600' : '400' }]} numberOfLines={1} maxFontSizeMultiplier={1.3}>
                   {t(`settings.colors.${c}`)}
                 </Text>
               </Pressable>

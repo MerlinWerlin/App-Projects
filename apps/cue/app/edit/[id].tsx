@@ -158,8 +158,8 @@ export default function Edit() {
                 hitSlop={{ top: 4, bottom: 4 }}
                 style={({ pressed }) => [st.tool, { backgroundColor: pressed ? theme.pressed : theme.field }]}
               >
-                <Text style={[TYPE.subhead, st.token, { color: theme.ink2 }]}>{token}</Text>
-                <Text style={[TYPE.subhead, { color: theme.ink, fontWeight: '500' }]}>{t(k)}</Text>
+                <Text style={[TYPE.subhead, st.token, { color: theme.ink2 }]} maxFontSizeMultiplier={1.4}>{token}</Text>
+                <Text style={[TYPE.subhead, { color: theme.ink, fontWeight: '500' }]} maxFontSizeMultiplier={1.4}>{t(k)}</Text>
               </Pressable>
             ))}
           </ScrollView>
@@ -187,10 +187,10 @@ export default function Edit() {
         <View style={st.meta}>
           <View style={{ flex: 1 }} accessible accessibilityLabel={t('edit.readTime', { time: formatDuration(readSeconds(parsed, wpm)), wpm })} accessibilityLiveRegion="polite">
             <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 6 }}>
-              <Text style={[TYPE.timeLarge, { color: theme.ink }]}>{formatDuration(readSeconds(parsed, wpm))}</Text>
-              <Txt v="footnote" tone="ink2">{t('edit.toRead')}</Txt>
+              <Text style={[TYPE.timeLarge, { color: theme.ink }]} maxFontSizeMultiplier={1.3}>{formatDuration(readSeconds(parsed, wpm))}</Text>
+              <Txt v="footnote" tone="ink2" max={1.6}>{t('edit.toRead')}</Txt>
             </View>
-            <Txt v="footnote" tone="ink3" style={{ fontVariant: ['tabular-nums'] }}>{t('edit.wpm', { wpm })}</Txt>
+            <Txt v="footnote" tone="ink3" max={1.6} style={{ fontVariant: ['tabular-nums'] }}>{t('edit.wpm', { wpm })}</Txt>
           </View>
           <View style={[st.stepper, { backgroundColor: theme.field }]}>
             <IconBtn icon="remove" label={t('edit.slower')} onPress={() => setWpm((w) => clampWpm(w - 5))} size={18} color={theme.ink} />
@@ -198,7 +198,7 @@ export default function Edit() {
             <IconBtn icon="add" label={t('edit.faster')} onPress={() => setWpm((w) => clampWpm(w + 5))} size={18} color={theme.ink} />
           </View>
           <Pressable onPress={fit} accessibilityRole="button" accessibilityLabel={t('edit.fit')} hitSlop={4} style={({ pressed }) => [st.fit, press(pressed)]}>
-            <Text style={[TYPE.subhead, { color: theme.goText, fontWeight: '600' }]}>{t('edit.fit')}</Text>
+            <Text style={[TYPE.subhead, { color: theme.goText, fontWeight: '600' }]} maxFontSizeMultiplier={1.4}>{t('edit.fit')}</Text>
           </Pressable>
         </View>
         {takes.length && app.can('stats') ? (
@@ -232,7 +232,7 @@ function RecordBtn({ label, onPress, disabled }: { label: string; onPress: () =>
       style={({ pressed }) => [st.record, { backgroundColor: theme.field }, press(pressed), disabled && { opacity: 0.4 }]}
     >
       <View style={[st.recDot, { backgroundColor: theme.onAir }]} />
-      <Text style={[TYPE.headline, { color: theme.ink }]}>{label}</Text>
+      <Text style={[TYPE.headline, { color: theme.ink }]} maxFontSizeMultiplier={1.5}>{label}</Text>
     </Pressable>
   );
 }
