@@ -4,9 +4,9 @@ appId: com.jared797.linework
 - launchApp:
     clearState: true
 - extendedWaitUntil:
-    visible: Skip
+    visible: 'Skip.*'
     timeout: 90000
-- tapOn: Skip
+- tapOn: 'Skip.*'
 - waitForAnimationToEnd:
     timeout: 4000
 - takeScreenshot: 01-home
@@ -15,7 +15,7 @@ appId: com.jared797.linework
     timeout: 2000
 - takeScreenshot: 02-home-scrolled
 - tapOn:
-    text: Templates
+    text: 'Templates.*'
     index: 0
     optional: true
 - waitForAnimationToEnd:
@@ -39,8 +39,9 @@ appId: com.jared797.linework
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 06-settings
+- scroll
 - tapOn:
-    text: Linework Plus
+    text: '.*Linework Plus.*'
     index: 0
     optional: true
 - waitForAnimationToEnd:
