@@ -54,9 +54,9 @@ typography:
     lineHeight: 1.35
   script:
     fontFamily: "Atkinson Hyperlegible"
-    fontSize: "20px"
+    fontSize: "19px"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.53
 rounded:
   chip: "4px"
   control: "6px"
@@ -126,7 +126,7 @@ Scene: a person alone with a phone on a stand, arm's length away, often in a dim
 ## Typography
 
 - **Atkinson Hyperlegible for everything** (it was drawn for legibility at a distance, which is the whole job). Regular for reading, Bold for every heading, label and number. Bricolage Grotesque is retired.
-- Scale: monument 56, display 40, title 26, headline 17 bold, body 17, subhead 15, footnote 13, caption 12, script 20/30. Big sizes take negative tracking (-0.8 to -1.5 px); body sits at 0.
+- Scale: monument 56, display 40, title 26, headline 17 bold, body 17, subhead 15, footnote 13, caption 12, script 19/29. Big sizes take negative tracking (-0.8 to -1.5 px); body sits at 0.
 - Sentence case everywhere. No uppercase tracked labels, no eyebrows above headings.
 - Dynamic Type: everything scales. Dense chrome caps its growth (`maxFontSizeMultiplier` 1.2 to 1.6 on bands, docks, time columns, segmented controls and steppers; the countdown never scales) so the largest sizes cannot clip it.
 
@@ -158,7 +158,7 @@ Signage corners: 6 for buttons, keys and panels; 4 for chips. Icon keys are squa
 ## Motion
 
 - The next-script band rises 12 pt and fades in when it changes (320 ms). Board rows slide to their new place when pinned or edited instead of jumping.
-- Digits flip in 220 ms on read-time changes; the first render does not animate.
+- Digits flip in 220 ms on read-time changes; nothing animates until the screen has settled (about 0.7 s), so the push stays clean.
 - Prompter chrome fades in 180 ms and out 240 ms. Press feedback: 0.97 scale with a dim.
 - Reduce Motion (system or the in-app switch): no movement at all; band, rows and digits just change, chrome cross-fades, and the launch intro is skipped.
 
