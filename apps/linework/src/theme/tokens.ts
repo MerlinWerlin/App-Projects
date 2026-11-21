@@ -52,7 +52,7 @@ export const fonts = {
 };
 
 export const space = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 };
-export const radius = { sm: 8, md: 14, lg: 20, pill: 999 };
+export const radius = { sm: 8, md: 10, lg: 12, pill: 999 };
 // Minimum touch target in points (PLAN §4).
 export const touch = 48;
 

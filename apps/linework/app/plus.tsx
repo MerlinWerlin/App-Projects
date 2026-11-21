@@ -12,7 +12,7 @@ import { maxFontScaleV2, radiusV2, sizeV2, spaceV2 } from '../src/theme/tokensV2
 import { pressScaleV2 } from '../src/theme/motion';
 import { select, tap } from '../src/native/haptics';
 import { PressableScale } from '../src/ui/PressableScale';
-import { BubbleCard, IconBubble, InsetGroup, InsetRow, PillButton, ScreenV2 } from '../src/ui/v2';
+import { BubbleCard, InsetGroup, InsetRow, PillButton, ScreenV2 } from '../src/ui/v2';
 import { squircle } from '../src/ui/v2/shared';
 import {
   FREE_FOREVER_ITEMS,
@@ -150,20 +150,16 @@ export default function PlusScreen() {
               key={item.id}
               title={t(FREE_KEYS[item.id], { count: STARTER_TEMPLATE_COUNT })}
               icon="check"
-              iconFill={c.pastels[3]}
               iconColor={c.ok}
             />
           ))}
         </InsetGroup>
 
-        {/* The one-time extra: a pastel hero card */}
-        <BubbleCard fill={c.pastels[4]} sparkle sparkleColor={c.lilac} padding={spaceV2.x5} style={{ marginBottom: spaceV2.section }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: spaceV2.x3, paddingEnd: spaceV2.x6 }}>
-            <IconBubble icon="gift" size={40} fill={c.card} color={c.ink} />
-            <Text accessibilityRole="header" maxFontSizeMultiplier={maxFontScaleV2} style={[text('title2'), { color: c.graphite, flexShrink: 1 }]}>
-              {t('plus.addsTitle')}
-            </Text>
-          </View>
+        {/* The one-time extra: a plain card with what Plus adds */}
+        <BubbleCard padding={spaceV2.x5} style={{ marginBottom: spaceV2.section }}>
+          <Text accessibilityRole="header" maxFontSizeMultiplier={maxFontScaleV2} style={[text('title2'), { color: c.graphite }]}>
+            {t('plus.addsTitle')}
+          </Text>
           <View style={{ marginTop: spaceV2.x4, gap: spaceV2.x2 }}>
             {PLUS_FEATURE_ITEMS.map((item) => (
               <View key={item.id} style={{ flexDirection: 'row', alignItems: 'center', gap: spaceV2.x2 }}>

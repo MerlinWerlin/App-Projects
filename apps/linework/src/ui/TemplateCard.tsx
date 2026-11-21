@@ -87,12 +87,12 @@ function NewBadge() {
           alignSelf: 'flex-start',
           paddingHorizontal: spaceV2.x2,
           paddingVertical: 2,
-          borderRadius: radiusV2.pill,
-          backgroundColor: c.pastels[1],
+          borderRadius: radiusV2.xs,
+          backgroundColor: c.inkSoft,
         },
       ]}
     >
-      <Text maxFontSizeMultiplier={1.3} style={[text('caption'), { color: c.graphite, fontWeight: '700' }]}>
+      <Text maxFontSizeMultiplier={1.3} style={[text('caption'), { color: c.ink, fontWeight: '700' }]}>
         {t('templates.card.new')}
       </Text>
     </View>
@@ -211,7 +211,6 @@ function TemplateCardBase({
         }
         haptic="tap"
         radius="lg"
-        elevation="e2"
         padding={PAD}
         // T92: with onQuickTrace the tap opens the detail sheet (T82), so the spoken name says so.
         accessibilityLabel={

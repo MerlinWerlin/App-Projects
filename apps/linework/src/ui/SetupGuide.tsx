@@ -104,7 +104,9 @@ export function SetupGuide({ visible, onDone }: SetupGuideProps) {
           <Animated.View style={{ opacity: fade, transform: [{ translateX: shift }] }}>
             <View
               style={{
-                backgroundColor: c.inkSoft,
+                backgroundColor: c.card,
+                borderWidth: 1,
+                borderColor: c.line,
                 borderRadius: radius.md,
                 paddingVertical: space.sm,
                 marginTop: space.sm,
@@ -183,7 +185,6 @@ export function SetupGuide({ visible, onDone }: SetupGuideProps) {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-                ...elevation.card,
               }}
             >
               <Text style={{ ...ty.face('bodyBold'), fontSize: 18, color: c.onInk, flexShrink: 1, textAlign: 'center' }}>
