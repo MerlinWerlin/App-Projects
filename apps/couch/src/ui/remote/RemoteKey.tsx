@@ -80,7 +80,7 @@ export function RemoteButton({
     roundCap: { width: d, height: d },
   };
   return (
-    <Socket radius={round ? d / 2 : t.radius} style={[wide ? styles.wide : null, style]}>
+    <Socket radius={round ? d / 2 : t.radius} style={[wide ? styles.wide : null, round ? null : styles.stretch, style]}>
       <PressableScale
         accessibilityRole="button"
         accessibilityLabel={label}
@@ -272,6 +272,8 @@ const styles = StyleSheet.create({
   },
   fill: { alignSelf: 'stretch' },
   wide: { flex: 1 },
+  /** Non-round caps fill their socket (the Pressable stretches, then its face). */
+  stretch: { alignItems: 'stretch' },
   sink: { backgroundColor: '#000000', opacity: 0.2 },
   glyph: { fontFamily: fonts.textSemi, fontSize: 20, textAlign: 'center' },
   lbl: { alignItems: 'center', gap: 6, minWidth: 64 },
