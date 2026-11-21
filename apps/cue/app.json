@@ -57,6 +57,7 @@
       [
         "expo-media-library",
         {
+          "photosPermission": "Cue only adds the videos you record to Photos. It never opens or reads your photo library.",
           "savePhotosPermission": "Cue saves each take to your Photos. It can't see your other photos.",
           "isAccessMediaLocationEnabled": false
         }
