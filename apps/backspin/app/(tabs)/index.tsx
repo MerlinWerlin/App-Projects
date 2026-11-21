@@ -62,11 +62,13 @@ export default function Home() {
           onPress={() => router.push({ pathname: '/round', params: { mode: 'daily', line: daily.line.id } })}
           style={{ marginTop: SP(7), backgroundColor: theme.recTint, borderRadius: theme.radius.l, padding: SP(5), transform: [{ rotate: '-1.2deg' }] }}
         >
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: SP(3) }}>
-            <T kind="h">{t('home.daily')}</T>
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: SP(1) }}>
+          {/* Title and streak share a line when they fit and wrap onto two lines when they don't (long streak text,
+              small phones, large text sizes), so nothing ever runs past the slip's edge. */}
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', columnGap: SP(3), rowGap: SP(1) }}>
+            <T kind="h" style={{ flexShrink: 1 }}>{t('home.daily')}</T>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: SP(1), flexShrink: 1 }}>
               {streak ? <Icon name="flame" size={16} color={theme.ink} /> : null}
-              <T kind="small" style={{ fontWeight: '600' }}>
+              <T kind="small" style={{ fontWeight: '600', flexShrink: 1 }}>
                 {streak ? t('home.streak', { n: streak }) : t('home.streakNone')}
               </T>
             </View>
@@ -76,7 +78,7 @@ export default function Home() {
           </T>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: SP(2), marginTop: SP(5) }}>
             {doneToday != null ? <Icon name="check" size={18} color={theme.good} /> : null}
-            <T kind="bodyB" color={doneToday != null ? theme.good : theme.ink}>
+            <T kind="bodyB" color={doneToday != null ? theme.good : theme.ink} style={{ flexShrink: 1 }}>
               {doneToday != null ? t('home.dailyDone', { score: doneToday }) : t('home.dailyPlay')}
             </T>
             {doneToday == null ? <Icon name="next" size={18} color={theme.ink} /> : null}

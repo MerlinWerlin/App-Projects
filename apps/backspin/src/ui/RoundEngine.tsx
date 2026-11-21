@@ -14,7 +14,7 @@ import { canReverseHere, play, stop } from '../native/audio.ts';
 import { haptic, openSettings, shareFile } from '../native/device.ts';
 import { readPcm, writeScratch, writeShareFile } from '../native/files.ts';
 import { useApp } from '../state/app.tsx';
-import { Button, Card, Chip, Disc, Enter, Icon, Mirrored, Press, T, Toastish, Wave } from './kit.tsx';
+import { Button, Card, Chip, Disc, Enter, Icon, Mirrored, Press, T, Toastish, useBigText, Wave } from './kit.tsx';
 import Svg, { Circle } from 'react-native-svg';
 import { MOTION, R, SP } from './theme.ts';
 import { useRecorder } from './useRecorder.ts';
@@ -42,6 +42,7 @@ export function RoundEngine(props: {
 }) {
   useKeepAwake();
   const { t, theme, prefs, plus, calm } = useApp();
+  const big = useBigText();
   const demo = props.preview ? previewTakes() : null;
   const [step, setStep] = useState<Step>(props.preview ?? 'say');
   const [orig, setOrig] = useState<Take | null>(demo?.orig ?? null);
@@ -316,10 +317,10 @@ export function RoundEngine(props: {
                 ['flip', 'round.playFlipped', flip, theme.overprint],
               ] as const
             ).map(([id, k, take, col]) => (
-              <Press key={id} label={t(k)} onPress={() => playUri(id, take.uri)} style={{ width: '48%', flexGrow: 1, backgroundColor: theme.card, borderRadius: R.m, padding: SP(3), borderWidth: 2, borderColor: playing === id ? col : theme.card }}>
+              <Press key={id} label={t(k)} onPress={() => playUri(id, take.uri)} style={{ width: big ? '100%' : '48%', flexGrow: 1, backgroundColor: theme.card, borderRadius: R.m, padding: SP(3), borderWidth: 2, borderColor: playing === id ? col : theme.card }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: SP(1.5) }}>
                   <Icon name={playing === id ? 'pause' : 'play'} size={14} color={theme.ink} />
-                  <T kind="small" style={{ fontWeight: '600' }}>
+                  <T kind="small" style={{ fontWeight: '600', flexShrink: 1 }}>
                     {t(k)}
                   </T>
                 </View>
@@ -479,7 +480,7 @@ function ScoreCard({ score, quip, calm, line, original, flipped }: { score: Scor
         </Animated.View>
       </View>
 
-      <View style={{ flexDirection: 'row', gap: SP(6), marginTop: SP(4) }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', columnGap: SP(6), rowGap: SP(1), marginTop: SP(4) }}>
         {(
           [
             ['round.sound', score.sound],

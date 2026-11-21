@@ -4,11 +4,12 @@ import { TextInput, View } from 'react-native';
 import { MAX_FREE_PLAYERS, MAX_PLAYERS, newParty, type PartyMode } from '../../src/core/game.ts';
 import { useApp } from '../../src/state/app.tsx';
 import { partyStore } from '../../src/state/party.ts';
-import { Button, Card, Chip, Icon, Press, Screen, SectionTitle, T, Toastish } from '../../src/ui/kit.tsx';
+import { Button, Card, Chip, Icon, Press, Screen, SectionTitle, T, Toastish, useBigText } from '../../src/ui/kit.tsx';
 import { R, SP } from '../../src/ui/theme.ts';
 
 export default function PartySetup() {
   const { t, theme, plus, owned } = useApp();
+  const big = useBigText();
   const router = useRouter();
   const [names, setNames] = useState<string[]>(partyStore.names());
   const [mode, setMode] = useState<PartyMode>('copy');
@@ -33,9 +34,10 @@ export default function PartySetup() {
         {t('party.sub')}
       </T>
 
-      <View style={{ flexDirection: 'row', gap: SP(3), marginTop: SP(5) }}>
+      {/* Two modes side by side; stacked at large text sizes so neither card gets too narrow to read. */}
+      <View style={{ flexDirection: big ? 'column' : 'row', gap: SP(3), marginTop: SP(5) }}>
         {(['copy', 'guess'] as const).map((m) => (
-          <Card key={m} selected={mode === m} label={t(m === 'copy' ? 'party.copy' : 'party.guess')} onPress={() => setMode(m)} style={{ flex: 1 }}>
+          <Card key={m} selected={mode === m} label={t(m === 'copy' ? 'party.copy' : 'party.guess')} onPress={() => setMode(m)} style={big ? undefined : { flex: 1 }}>
             <Icon name={m === 'copy' ? 'mic' : 'help'} size={26} color={theme.ink} />
             <T kind="h" style={{ marginTop: SP(3) }}>
               {t(m === 'copy' ? 'party.copy' : 'party.guess')}
