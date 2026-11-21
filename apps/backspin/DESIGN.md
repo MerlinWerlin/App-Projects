@@ -136,11 +136,13 @@ uncoated paper, two spot inks, chunky type. The two inks are the game. **Fluoro 
 (record, your copy, the main action). **Riso blue is that voice played backwards** (the reversed clip, its play
 button, its waveform). When the two are printed over each other they make a third colour, the deep overprint
 violet, and that is what a good copy looks like: on the score screen your flipped copy (pink) is printed over the
-original (blue), and where they line up the inks overprint. That is the one signature move. Everything else is
-plain, native iOS: tab bar, navigation bar with a back chevron, sheets, switches, lists.
+original (blue), and where they line up the inks overprint. Backwards is shown, not described: once a line has been
+said it prints mirrored in blue, the wordmark carries its own backwards echo, and big buttons sit slightly out of
+register over a plate of the other ink and press down into register. It should feel like a game you hold, not a
+utility. The tab bar, back chevron, switches and alerts stay native, so nobody has to learn the controls.
 
-Mood: a loud room, one phone passed hand to hand. Playful in colour and type, calm in layout. Big targets, one
-obvious next step per screen.
+Mood: a loud room, one phone passed hand to hand. Loud in colour, type and motion; one obvious next step per
+screen; big targets.
 
 Anti-references: the old "late-night record booth" (purple night, neon red glow, gradient buttons, emoji icons,
 tiles of icon + title + subtitle). Also not Satchel's ticket-stock look: no ticket stubs, perforations, condensed
@@ -216,6 +218,15 @@ The only stacked surfaces are iOS's own (sheets, alerts).
   countdown shows the number in the display face. The live level meter above it (pink bars) is the feedback.
 - **Step rule**: four 4 pt rules at the top of a round; done in ink, current in the step's ink (blue while listening
   backwards, pink otherwise).
+- **Ink plate (misregistration)**: big primary and rewind buttons have a plate of the other ink 4 pt down-right
+  behind them; pressing moves the button 3 pt into register, and it springs back with a small bounce. The record
+  button has the same blue plate and sits in register while recording.
+- **Wordmark**: "Backspin" in ink with the same word mirrored in blue overlapping its lower half (blend overprint).
+- **Mirrored line**: in the listen and copy steps the challenge line is printed backwards (scaleX -1) in blue.
+  VoiceOver reads it normally. The intro's "Hear it backwards" card echoes its title the same way.
+- **Stickers**: the daily slip (-1.2°), pack flyers (alternating pink tint, blue tint, plain stock at ±1°), the
+  party winner on a pink stamp (-2.5°) and the score (-4°) sit at an angle. Body text never rotates more than 1.2°.
+- **Record ring**: a dashed ink ring around the record button, line-coloured when idle; it turns while recording.
 - **Disc**: the record, printed flat in ink with knocked-out grooves and a pink (forwards) or blue (backwards) label.
   Turns only while sound plays.
 - **Waveforms**: rounded bars in the ink of what they show. The overprint pair on the score screen uses
@@ -225,15 +236,18 @@ The only stacked surfaces are iOS's own (sheets, alerts).
 
 ## Motion
 
-Restrained and functional; durations from `MOTION` in theme.ts.
+Motion is part of the game, and each move means something. Durations are from `MOTION` in theme.ts.
 
-- Press: a critically damped spring to 0.97 on touch-down (no bounce).
-- The disc turns while audio plays (forwards or backwards).
-- The flip reveal is the one authored moment: the score stamps in (opacity + 1.08 to 1 scale, 240 ms, exponential
-  ease-out) and the pink copy slides 14 pt into register over the blue original (420 ms).
+- Press: plated buttons press into register (spring, slight bounce on release); everything else presses to 0.97,
+  critically damped.
+- Steps of a round slide in once: from the right going forwards (say, flip), from the left for the backwards steps
+  (listen, copy). Pack flyers and the daily slip enter the same way, staggered by 40 ms.
+- The disc turns while audio plays, forwards or backwards; the record ring turns while recording.
+- The flip: the score is rubber-stamped (1.35 to 1, -9° to -4°, 240 ms, exponential ease-out), the pink copy slides
+  14 pt into register over the blue original (420 ms), then the star dots pop in one by one (70 ms apart).
 - Screens use the standard iOS push and modal transitions.
-- **Reduce Motion / Calm motion**: no scale, no slide and no spin. Presses dim instead; the score and the overprint
-  simply appear.
+- **Reduce Motion / Calm motion**: no slides, stamps, spins, bounces or pops. Presses dim instead, steps fade in
+  over 160 ms, and the score, stars and overprint simply appear.
 
 ## Do's and Don'ts
 
@@ -250,6 +264,7 @@ Don't (each of these is a tell that made the old look read as AI-made):
 - No icons in tinted circles or rounded squares; no emoji standing in for icons.
 - No small uppercase labels above headings (eyebrows), and no "1 / 3" counters above titles.
 - No count-up numbers and no stat tiles: the score is stamped once; stats are a sentence.
+- No motion without a meaning: things move forwards or backwards, press into register, or get stamped.
 - No generic cards (icon + title + subtitle tiles in a grid); use a ruled list or print the content itself.
 - No white text on pink, no pink text on paper (use `recText`).
 - No new colours per feature; a third ink only appears as the overprint.
