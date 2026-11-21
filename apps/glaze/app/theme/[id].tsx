@@ -117,6 +117,7 @@ import { PACKS_ENABLED } from '../../src/native/packs';
 import { downloadedRemoteWallpaper, useCatalogSettled } from '../../src/native/useAnyTheme';
 import { remoteHeroArt, remotePrimary, themePageState, type RemotePrimary } from '../../src/core/remoteThemePage';
 import { RemoteArtImage } from '../../src/ui/RemoteArtImage';
+import { displayStyle } from '../../src/ui/displayType';
 import { FIRST_RUN_TIP_IDS, type TipId as AnyTipId } from '../../src/core/tips';
 import { tipsForInstallMode } from '../../src/core/installMethods';
 import { PROFILE_INSTALL_ENABLED } from '../../src/config/install';
@@ -156,23 +157,6 @@ const previewModes = (t: TFunction) =>
     { value: 'home', label: t('theme.mode.home') },
     { value: 'lock', label: t('theme.mode.lock') },
   ] as const;
-
-/**
- * G6 header tint: the strongest mix of the theme's accent into the page background that still
- * keeps both header text colours (ink and secondary) at WCAG AA (4.5:1). Falls back to no tint.
- */
-function headerTint(page: string, accent: string, ink: string, muted: string): string {
-  for (const t of [0.32, 0.24, 0.16, 0.1, 0.05]) {
-    let tint: string;
-    try {
-      tint = mix(page, accent, t);
-    } catch {
-      return page;
-    }
-    if (contrastRatio(ink, tint) >= 4.5 && contrastRatio(muted, tint) >= 4.5) return tint;
-  }
-  return page;
-}
 
 type SaveState = 'idle' | 'saved' | 'denied' | 'error';
 
@@ -320,6 +304,30 @@ function ThemeDetail({
   const screenRadius = Math.round(screenW * 0.12);
   const bezelColour = scheme === 'dark' ? c.surfaceRaised : c.ink;
 
+  // Dreamroom (DESIGN.md §5 "Exhibit band"): the head and the preview sit in the theme's own room
+  // colour (its palette bg, with its ink for the name), so opening a theme feels like stepping into
+  // it. Both pairs must keep WCAG AA; otherwise the page keeps the app's own wall and ink.
+  const room = useMemo(() => {
+    try {
+      // Dark mode: a deep tint of the theme's accent instead of its (often pale) room colour, so
+      // the band never glares at night; the app's own ink stays on it.
+      if (scheme === 'dark') {
+        const deep = mix(c.bg, theme.palette.accent, 0.2);
+        if (contrastRatio(c.ink, deep) < 4.5 || contrastRatio(c.inkSecondary, deep) < 4.5) return null;
+        return { bg: deep, ink: c.ink, soft: c.inkSecondary };
+      }
+      const bg = theme.palette.bg;
+      const ink = theme.palette.ink;
+      if (contrastRatio(ink, bg) < 4.5) return null;
+      const soft = mix(bg, ink, 0.78);
+      return { bg, ink, soft: contrastRatio(soft, bg) >= 4.5 ? soft : ink };
+    } catch {
+      return null;
+    }
+  }, [scheme, c.bg, c.ink, c.inkSecondary, theme.palette.accent, theme.palette.bg, theme.palette.ink]);
+  const headInk = room?.ink ?? c.ink;
+  const headSoft = room?.soft ?? c.inkSecondary;
+
   // G6: Home / Lock mocks share one frame and cross-fade (both stay mounted). The Wallpaper screen
   // opens on the Lock Screen.
   const [mode, setMode] = useState<PreviewMode>(step === 'wallpaper' ? 'lock' : 'home');
@@ -333,16 +341,7 @@ function ThemeDetail({
   const homeStyle = useAnimatedStyle(() => ({ opacity: homeShown.value }));
   const lockStyle = useAnimatedStyle(() => ({ opacity: 1 - homeShown.value }));
 
-  // G6: the top band fades from transparent to a soft tint of the theme's palette.
-  const tint = useMemo(
-    () => headerTint(c.bg, theme.palette.accent, c.ink, c.inkSecondary),
-    [c.bg, c.ink, c.inkSecondary, theme.palette.accent],
-  );
-  const tintIn = useSharedValue(0);
-  useEffect(() => {
-    tintIn.value = withTiming(1, { duration: reduced ? durations.fast : durations.slow, easing: easeOutCurve });
-  }, [theme.id, reduced, tintIn]);
-  const tintStyle = useAnimatedStyle(() => ({ opacity: tintIn.value }));
+  // White Cube (DESIGN.md §8): no tinted gradient wash behind the title; the art carries the colour.
 
   // G3: using the theme ripples the icons into the Home mock, then a light haptic and a single
   // sheen across "Install icons". Reduced motion: HomeMock skips the ripple and settles at once,
@@ -774,29 +773,12 @@ function ThemeDetail({
       <ScrollView bounces={false} overScrollMode="never"
         contentContainerStyle={[styles.content, { paddingBottom: (showBar || showDownloadBar ? barH : insets.bottom) + spaceV2.xxl }]}
       >
-        <View style={styles.headWrap}>
-          <Animated.View
-            pointerEvents="none"
-            accessibilityElementsHidden
-            importantForAccessibility="no-hide-descendants"
-            style={[StyleSheet.absoluteFill, tintStyle]}
-          >
-            <Svg width="100%" height="100%">
-              <Defs>
-                <LinearGradient id="themeHeadTint" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <Stop offset="0" stopColor={tint} stopOpacity={1} />
-                  <Stop offset="0.7" stopColor={tint} stopOpacity={1} />
-                  <Stop offset="1" stopColor={tint} stopOpacity={0} />
-                </LinearGradient>
-              </Defs>
-              <Rect x={0} y={0} width="100%" height="100%" fill="url(#themeHeadTint)" />
-            </Svg>
-          </Animated.View>
+        <View style={[styles.headWrap, room ? { backgroundColor: room.bg } : null]}>
           <View style={styles.head}>
-            <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title1')} style={[...ts('title1'), { color: c.ink }]}>
+            <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('title1')} style={[...ts('title1'), displayStyle(script, 'title'), { color: headInk }]}>
               {theme.name}
             </Text>
-            <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: c.inkSecondary }]}>
+            <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), { color: headSoft }]}>
               {overview
                 ? theme.tagline
                 : step === 'wallpaper'
@@ -827,7 +809,7 @@ function ThemeDetail({
 
         {/* L2 + T173 hero: one large phone-shaped preview, centred on a soft surface (layered
             shadow, no border), with a quiet Home / Lock pill under it. */}
-        <SquircleCard size="large" elevation="card" padding={spaceV2.xl} style={styles.side}>
+        <SquircleCard size="large" elevation="card" padding={spaceV2.xl} fill={room?.bg} style={styles.side}>
           <View style={styles.previewCol}>
             <View
               style={[
@@ -946,7 +928,7 @@ function ThemeDetail({
         {/* T185: the Wallpaper screen. "Saved to Photos ✓" once saved, and Save again always offered
             (someone who deleted it from Photos gets it back). */}
         {step === 'wallpaper' ? (
-          <SquircleCard size="large" elevation="raised" style={styles.side}>
+          <SquircleCard size="large" elevation="flat" style={styles.side}>
             <View style={styles.stack}>
               <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), { color: c.ink }]}>
                 {photo
@@ -970,7 +952,7 @@ function ThemeDetail({
               ) : null}
               {saveView.badge ? (
                 <View style={[styles.note, continuous, { backgroundColor: c.pastels.mint.fill }]} accessibilityLiveRegion="polite">
-                  <Feather name="check" size={18} color={c.pastels.mint.ink} />
+                  <Feather name="check" size={18} color={c.ok} />
                   <View style={[styles.flex, styles.gap]}>
                     <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), { color: c.pastels.mint.ink }]}>
                       {t('theme.save.savedBadge')}
@@ -1040,7 +1022,7 @@ function ThemeDetail({
 
         {/* T185: the Icons screen: the style (with the shape choice), then install. */}
         {step === 'icons' ? (
-          <SquircleCard size="large" elevation="raised" style={styles.side}>
+          <SquircleCard size="large" elevation="flat" style={styles.side}>
             <View style={styles.stack}>
               {/* T240 (owner-1101g #5): the icon look is always visible here, first, as a segmented
                   selector with live previews of the person's own apps (never behind a menu). */}
@@ -1088,7 +1070,7 @@ function ThemeDetail({
             screen since T185), with the "How it looks on iPhone" switch inside. */}
         {step === 'icons' ? (
           <View style={styles.block}>
-            <SectionHeader eyebrow={t('theme.section.icons.eyebrow')} title={t('theme.section.icons.title')} style={styles.sectionHead} />
+            <SectionHeader title={t('theme.section.icons.title')} style={styles.sectionHead} />
             {/* 1.0.35 (owner 2026-11-14: "we can't do blob, square, rounded, circles... that needs to go"): no shape picker;
             every icon uses the one shape (studio.ts ONE_ICON_SHAPE). Colours and symbol size stay. */}
             {locked || !canApply ? null : (
@@ -1109,7 +1091,7 @@ function ThemeDetail({
         {/* Make it yours (Wallpaper screen): quiet rows for the photo and the wallpaper editor. */}
         {step === 'wallpaper' ? (
           <View style={styles.block}>
-            <SectionHeader eyebrow={t('theme.section.wallpaper.eyebrow')} title={t('theme.customise')} style={styles.sectionHead} />
+            <SectionHeader title={t('theme.customise')} style={styles.sectionHead} />
             <InsetGroup footer={photo ? t('theme.photo.yours', { name: theme.name }) : t('theme.photo.prompt')}>
               <InsetRow
                 title={photoLabel}
@@ -1134,7 +1116,7 @@ function ThemeDetail({
 
         {hasCredits ? (
           <View style={styles.block}>
-            <SectionHeader eyebrow={t('theme.section.credits.eyebrow')} title={t('theme.section.credits.title')} style={styles.sectionHead} />
+            <SectionHeader title={t('theme.section.credits.title')} style={styles.sectionHead} />
             {/* T103 (fb-1022 G5a): credit + licence for a Webb photo, with Download / Remove (on a tap only). */}
             {spacePhoto.photo ? <PhotoCredit theme={theme} style={styles.side} /> : null}
             {/* T130: credit + licence for an art-pack theme (from its meta.json). */}
@@ -1602,7 +1584,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: spaceV2.inset,
     paddingTop: spaceV2.lg,
     paddingBottom: spaceV2.xl,
-    marginBottom: -spaceV2.md,
   },
   head: { gap: spaceV2.xs },
   stack: { gap: spaceV2.md },

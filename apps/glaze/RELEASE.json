@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.42: ready for App Review: no over-the-air updates, price only from the App Store with Try again, privacy manifests, no camera/mic permission, debug rows hidden, every widget art named.",
+  "note": "Glaze 1.0.43: Dreamroom redesign (DESIGN.md): a stage of large theme art opens Themes, each theme page takes its own room colour, Unbounded display type, neutral chrome with one cobalt accent, no gradients, eyebrows or tinted icon circles.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true

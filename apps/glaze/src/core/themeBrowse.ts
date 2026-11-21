@@ -246,6 +246,8 @@ export function nextBrowseView(current: BrowseView, chip: 'all' | BrowseCategory
 
 /** A list row of the home view. */
 export type BrowseRow<T> =
+  /** Dreamroom: the stage of large featured art that opens the overview. */
+  | { kind: 'stage'; key: string; themes: readonly T[] }
   | { kind: 'head'; key: string; section: BrowseCategoryId | 'all' | 'free'; count: number }
   | { kind: 'rail'; key: string; section: BrowseCategoryId | 'free' | 'featured'; themes: readonly T[] }
   | { kind: 'cards'; key: string; themes: readonly T[] }
@@ -265,6 +267,8 @@ export type BrowseHomeInput<T> = {
   free?: readonly T[];
   /** Ids of the free themes to feature (their own rail at the top of the Free section). */
   featured?: readonly string[];
+  /** Dreamroom: themes for the stage of large art that opens the overview (omit for none). */
+  stage?: readonly T[];
 };
 
 /**
@@ -276,6 +280,7 @@ export function browseHomeRows<T extends Browsable>(input: BrowseHomeInput<T>): 
   const columns = Math.max(1, Math.floor(input.columns) || 1);
   const railMax = Math.max(1, Math.floor(input.railMax ?? RAIL_MAX));
   const rows: BrowseRow<T>[] = [];
+  if (input.stage && input.stage.length > 0) rows.push({ kind: 'stage', key: 'stage', themes: input.stage });
   const free = input.free ?? [];
   if (free.length > 0) {
     const featuredIds = new Set(input.featured ?? []);

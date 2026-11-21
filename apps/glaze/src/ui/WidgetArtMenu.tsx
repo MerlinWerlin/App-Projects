@@ -190,7 +190,7 @@ export function WidgetArtMenu({ options, size, width, themeColour, themeInk = on
   const kindHeaders = sections.length !== 1 || sections[0].kind !== 'art';
   return (
     <View style={style}>
-      <SectionHeader eyebrow={t('tabs.widgetsTab.art.eyebrow')} title={t('tabs.widgetsTab.art.title')} body={t('tabs.widgetsTab.art.body')} flushTop />
+      <SectionHeader title={t('tabs.widgetsTab.art.title')} body={t('tabs.widgetsTab.art.body')} flushTop />
       {sections.map((s) => (
         <View key={s.kind} style={styles.section}>
           {kindHeaders ? <SectionHeader level="group" title={tl(widgetOptionKindKey(s.kind))} flushTop={s === sections[0]} /> : null}

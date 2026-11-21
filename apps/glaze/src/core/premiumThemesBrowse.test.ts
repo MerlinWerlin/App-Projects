@@ -65,17 +65,16 @@ test('feature card lives inside the one showcase grid (no new list rows, same re
   assert.match(THEMES, /gridItemLayout\(geo\.rowHeight, listTop, index\)/);
 });
 
-test('Live hero: raised surface without a hairline, an eyebrow, caps on every Text, label and hint kept', () => {
+test('Live hero: a flat panel with no gradient tile or eyebrow, caps on every Text, label and hint kept', () => {
   assert.match(HERO, /<SquircleCard\b/);
   assert.match(HERO, /tone=\{scheme === 'dark' \? 'raised' : 'surface'\}/);
-  assert.match(HERO, /outline=\{false\}/);
-  assert.match(HERO, /eyebrowCaseFor\(script\)/);
-  assert.match(HERO, /t\('liveUi\.lock\.title'\)/);
+  assert.doesNotMatch(HERO, /LinearGradient|eyebrowCaseFor|c\.glaze/, 'DESIGN.md §8: no gradient, no eyebrow');
+  assert.match(HERO, /t\('liveUi\.hero\.title'\)/);
   assert.match(HERO, /accessibilityLabel=\{t\('liveUi\.hero\.a11y'/);
   assert.match(HERO, /accessibilityHint=\{t\('liveUi\.hero\.hint'\)\}/);
   assert.match(HERO, /cta: \{[^}]*minHeight: sizeV2\.touch/);
   const tags = [...HERO.matchAll(/<Text\b[^>]*>/g)].map((m) => m[0]);
-  assert.ok(tags.length >= 4);
+  assert.ok(tags.length >= 3);
   assert.deepEqual(tags.filter((x) => !/maxFontSizeMultiplier=/.test(x)), []);
 });
 

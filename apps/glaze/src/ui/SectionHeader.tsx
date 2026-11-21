@@ -1,19 +1,18 @@
-// Editorial section header (T173, docs/PREMIUM_UI.md): a small eyebrow label, a title and an
-// optional line of body, with generous space above. Used on browse screens instead of a bare title,
-// so long galleries read like a magazine: "START HERE / Starter themes / ...".
-// Type comes from tokensV2 (eyebrow / title2 / subhead), each with its Dynamic Type cap; the eyebrow
-// is upper-case only in Latin scripts (eyebrowCaseFor). The title is the accessibility header; the
-// eyebrow is read as part of it, so VoiceOver hears one heading, not three fragments.
+// Section header (DESIGN.md §5, White Cube): a title, an optional count set after it on the same
+// line in tertiary tabular figures ("Space & Night  24"), and an optional line of body under it.
+// No eyebrow label above the title (an AI tell, DESIGN.md §8). The title and count are read as one
+// accessibility header.
 import { memo } from 'react';
 import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useT } from '../i18n';
-import { editorialV2, eyebrowCaseFor, fontScaleCap, spaceV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
+import { editorialV2, fontScaleCap, spaceV2, tabularV2, textV2, type TypeRoleV2 } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
+import { displayStyle } from './displayType';
 import { textStyleFor } from './i18nLayout';
 
 type Props = {
-  /** Short label above the title (a few words). Optional. */
-  eyebrow?: string;
+  /** A count or short fact set after the title in tertiary text (e.g. how many themes). Optional. */
+  meta?: string;
   title: string;
   body?: string;
   /** `section` (title2) for a gallery section, `group` (title3) for a pack inside one. */
@@ -23,31 +22,25 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-export const SectionHeader = memo(function SectionHeader({ eyebrow, title, body, level = 'section', flushTop = false, style }: Props) {
+export const SectionHeader = memo(function SectionHeader({ meta, title, body, level = 'section', flushTop = false, style }: Props) {
   const { c } = useColorsV2();
   const { script } = useT();
   const titleRole: TypeRoleV2 = level === 'section' ? 'title2' : 'title3';
   const bodyRole: TypeRoleV2 = level === 'section' ? 'subhead' : 'footnote';
-  const ey = eyebrowCaseFor(script);
-  const label = eyebrow ? `${eyebrow}, ${title}` : title;
+  const label = meta ? `${title}, ${meta}` : title;
+  // Dreamroom: browse-section titles are set in the display face; group titles stay system.
+  const display = level === 'section' ? displayStyle(script, 'section') : null;
+  const metaFace = level === 'section' ? displayStyle(script, 'section', 'medium') : null;
   return (
     <View style={[styles.wrap, flushTop ? styles.flushTop : level === 'group' ? styles.groupTop : styles.sectionTop, style]}>
       <View accessible accessibilityRole="header" accessibilityLabel={label} style={styles.heading}>
-        {eyebrow ? (
-          <Text
-            maxFontSizeMultiplier={fontScaleCap('eyebrow')}
-            style={[
-              textV2.eyebrow,
-              textStyleFor(script, textV2.eyebrow),
-              { letterSpacing: ey.letterSpacing, color: c.tint },
-              ey.upper ? styles.upper : null,
-            ]}
-          >
-            {eyebrow}
-          </Text>
-        ) : null}
-        <Text maxFontSizeMultiplier={fontScaleCap(titleRole)} style={[textV2[titleRole], textStyleFor(script, textV2[titleRole]), { color: c.ink }]}>
+        <Text maxFontSizeMultiplier={fontScaleCap(titleRole)} style={[textV2[titleRole], textStyleFor(script, textV2[titleRole]), display, styles.title, { color: c.ink }]}>
           {title}
+          {meta ? (
+            <Text maxFontSizeMultiplier={fontScaleCap(titleRole)} style={[tabularV2, styles.meta, metaFace, { color: c.inkTertiary }]}>
+              {`  ${meta}`}
+            </Text>
+          ) : null}
         </Text>
       </View>
       {body ? (
@@ -65,5 +58,6 @@ const styles = StyleSheet.create({
   sectionTop: { paddingTop: editorialV2.sectionTop },
   groupTop: { paddingTop: spaceV2.lg },
   flushTop: { paddingTop: 0 },
-  upper: { textTransform: 'uppercase' },
+  title: { flexShrink: 1 },
+  meta: { fontWeight: '400' },
 });

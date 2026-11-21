@@ -84,9 +84,10 @@ test('Widgets tab: editorial family headers, 16-pt rhythm, skeleton waits, lifte
   }
 });
 
-test('Widget Studio: preview on a raised surface without a hairline, eyebrow heading, controls in inset groups', () => {
+test('Widget Studio: preview on a flat raised panel, plain label heading, controls in inset groups', () => {
   const studio = strip(read('app', 'widget-studio.tsx'));
-  assert.match(studio, /<SquircleCard size="large" elevation="raised" tone="raised" outline=\{false\}/);
+  assert.match(studio, /<SquircleCard size="large" elevation="flat" tone="raised" outline=\{false\}/);
+  assert.doesNotMatch(studio, /eyebrowCaseFor/);
   assert.match(studio, /t\('tabs\.widgetsTab\.studioPreview'\)/);
   assert.match(studio, /accessibilityRole="header"/);
   assert.ok((studio.match(/<InsetGroup\b/g) ?? []).length >= 6, 'controls are inset groups');

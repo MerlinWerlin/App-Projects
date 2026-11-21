@@ -22,19 +22,20 @@ test('Icons tab: editorial SectionHeaders for Your apps, Add apps and Style, in 
   const headers = [...tab.matchAll(/<SectionHeader\b[\s\S]*?\/>/g)].map((m) => m[0]);
   assert.equal(headers.length, 3);
   const want = [
-    ['icons.sections.appsEyebrow', 'icons.yourApps', 'icons.sections.appsBody'],
-    ['icons.sections.addEyebrow', 'icons.addApps', 'icons.sections.addBody'],
-    ['icons.sections.styleEyebrow', 'icons.styleTitle', 'icons.sections.styleBody'],
+    ['icons.yourApps', 'icons.sections.appsBody'],
+    ['icons.addApps', 'icons.sections.addBody'],
+    ['icons.styleTitle', 'icons.sections.styleBody'],
   ];
   headers.forEach((h, i) => {
-    const [eyebrow, title, body] = want[i];
-    assert.ok(h.includes(`eyebrow={t('${eyebrow}')}`), `${title}: eyebrow`);
+    const [title, body] = want[i];
+    assert.doesNotMatch(h, /eyebrow=/, `${title}: no eyebrow (DESIGN.md §8)`);
     assert.ok(h.includes(`title={t('${title}')}`), `${title}: title`);
     assert.ok(h.includes(`body={t('${body}')}`), `${title}: body`);
     assert.match(h, /style=\{styles\.sectionHeader\}/);
   });
-  // The preview card carries a quiet eyebrow, read as a heading.
+  // The preview card carries a quiet sentence-case label, read as a heading (no caps eyebrow).
   assert.match(tab, /accessibilityRole="header"[\s\S]{0,400}t\('icons\.sections\.previewEyebrow'\)/);
+  assert.doesNotMatch(tab, /eyebrowCaseFor|ts\('eyebrow'\)/);
 });
 
 test('Icons tab: inset groups use editorial group titles, not the small grey header', () => {

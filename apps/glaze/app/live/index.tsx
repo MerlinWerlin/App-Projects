@@ -186,7 +186,6 @@ export default function LiveScreen() {
       <View style={styles.section}>
         <SectionHeader
           flushTop
-          eyebrow={t('live.tab.sections.make.eyebrow')}
           title={t('live.tab.sections.make.title')}
           body={t('live.tab.sections.make.body')}
           style={styles.sectionHead}
@@ -207,7 +206,6 @@ export default function LiveScreen() {
       <View style={styles.section}>
         <SectionHeader
           flushTop
-          eyebrow={t('live.tab.sections.loops.eyebrow')}
           title={t('live.tab.yourLoops')}
           style={[styles.sectionHead, styles.sectionNext]}
         />

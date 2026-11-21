@@ -18,7 +18,7 @@ type Props = {
 };
 
 export function ContextTip({ id, ids, style }: Props) {
-  // Design v2 (T56): a tinted (tintSoft / onTintSoft, AA 7.8:1) squircle card, system type.
+  // White Cube (DESIGN.md §5): a quiet note on the surface colour, ink text, cobalt "Got it".
   const { c } = useColorsV2();
   const { t, script } = useT();
   const body1 = [textV2.subhead, textStyleFor(script, textV2.subhead)];
@@ -30,15 +30,15 @@ export function ContextTip({ id, ids, style }: Props) {
   const body = t(`themeUi.tips.${tip.id}.body`);
 
   return (
-    <View style={[styles.card, continuous, { backgroundColor: c.tintSoft }, style]}>
+    <View style={[styles.card, continuous, { backgroundColor: c.surface }, style]}>
       <View
         style={styles.text}
         accessible
         accessibilityRole="text"
         accessibilityLabel={t('themeUi.tip.a11y', { title, body })}
       >
-        <Feather name="info" size={18} color={c.onTintSoft} style={styles.icon} />
-        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...body1, styles.flex, { color: c.onTintSoft }]}>
+        <Feather name="info" size={18} color={c.inkSecondary} style={styles.icon} />
+        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...body1, styles.flex, { color: c.ink }]}>
           <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={styles.semibold}>{tipLead(title, (x) => t('themeUi.tip.lead', { title: x }))}</Text>
           {body}
         </Text>
@@ -54,7 +54,7 @@ export function ContextTip({ id, ids, style }: Props) {
         hitSlop={4}
         style={({ pressed }) => [styles.got, { opacity: pressed ? 0.6 : 1 }]}
       >
-        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label, { color: c.onTintSoft }]}>{t('themeUi.tip.gotIt')}</Text>
+        <Text maxFontSizeMultiplier={fontScaleCap('subhead')} style={[...label, { color: c.tint }]}>{t('themeUi.tip.gotIt')}</Text>
       </Pressable>
     </View>
   );

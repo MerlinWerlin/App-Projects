@@ -9,7 +9,7 @@ import { Children, Fragment, isValidElement, type ReactElement, type ReactNode }
 import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { useT } from '../i18n';
 import { separatorInset } from '../core/designV2';
-import { circleRadius, continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type PastelName } from '../theme/tokensV2';
+import { continuous, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, type PastelName } from '../theme/tokensV2';
 import { useColorsV2 } from '../theme/useTokens';
 import type { FeatherName } from './featherName';
 import type { HapticKind } from './haptics';
@@ -23,20 +23,20 @@ type GroupProps = {
   header?: string;
   /** Editorial group title (SectionHeader, title3) above the card; wins over `header`. */
   title?: string;
-  /** Small label above `title` (read with it as one heading). */
-  eyebrow?: string;
+  /** Count or short fact set after `title` (SectionHeader meta). */
+  meta?: string;
   /** Explanatory footnote below the card. */
   footer?: string;
   style?: StyleProp<ViewStyle>;
 };
 
-export function InsetGroup({ children, header, title, eyebrow, footer, style }: GroupProps) {
+export function InsetGroup({ children, header, title, meta, footer, style }: GroupProps) {
   const { c } = useColorsV2();
   const { script } = useT();
   const rows = Children.toArray(children).filter(isValidElement) as ReactElement<{ icon?: unknown }>[];
   return (
     <View style={[styles.group, style]}>
-      {title ? <SectionHeader level="group" flushTop eyebrow={eyebrow} title={title} style={styles.editorial} /> : null}
+      {title ? <SectionHeader level="group" flushTop meta={meta} title={title} style={styles.editorial} /> : null}
       {!title && header ? (
         <Text accessibilityRole="header" maxFontSizeMultiplier={fontScaleCap('footnote')} style={[textV2.footnote, textStyleFor(script, textV2.footnote), styles.header, { color: c.inkSecondary }]}>
           {header}
@@ -68,7 +68,7 @@ type RowProps = {
   subtitle?: string;
   /** Trailing secondary text (current value), e.g. a chosen language. */
   value?: string;
-  /** Leading glyph in a small pastel circle. */
+  /** Leading bare line glyph (no tile behind it). */
   icon?: FeatherName;
   iconTone?: PastelName;
   /** chevron: opens a screen · check: selected option in a picker list · none. */
@@ -107,14 +107,9 @@ export function InsetRow({
   const content = (
     <>
       {icon ? (
-        <View
-          style={[
-            styles.tile,
-            continuous,
-            { width: tile, height: tile, borderRadius: circleRadius(tile), backgroundColor: c.pastels[iconTone].fill },
-          ]}
-        >
-          <Feather name={icon} size={17} color={c.pastels[iconTone].ink} />
+        // White Cube (DESIGN.md §8): a bare line glyph, never a tinted circle behind it.
+        <View style={[styles.tile, { width: tile, height: tile }]}>
+          <Feather name={icon} size={20} color={destructive ? c.danger : c.inkSecondary} />
         </View>
       ) : null}
       <View style={styles.texts}>

@@ -34,7 +34,7 @@ type Props<T extends string> = {
 export function Segmented<T extends string>({ label, options, value, onChange, style, vertical = false, grid = false }: Props<T>) {
   const { c, scheme } = useColorsV2();
   const { t, script } = useT();
-  const raised = shadowV2('card', scheme);
+  const raised = shadowV2('raised', scheme);
   return (
     <View
       accessibilityRole="radiogroup"

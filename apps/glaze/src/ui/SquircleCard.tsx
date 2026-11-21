@@ -28,6 +28,8 @@ type Props = {
   children?: ReactNode;
   onPress?: () => void;
   onLongPress?: () => void;
+  /** Exact fill colour (wins over `tone`), e.g. a theme's own room colour on its page. */
+  fill?: string;
   /** surface (default), raised, or one of the six pastel fills. */
   tone?: 'surface' | 'raised' | PastelName;
   size?: 'regular' | 'large';
@@ -45,6 +47,7 @@ type Props = {
 
 export function SquircleCard({
   children,
+  fill,
   onPress,
   onLongPress,
   tone = 'surface',
@@ -73,7 +76,7 @@ export function SquircleCard({
   const popStyle = useAnimatedStyle(() => ({ transform: [{ scale: pop.value }] }));
 
   const radius = size === 'large' ? radiusV2.cardLarge : radiusV2.card;
-  const bg = tone === 'surface' ? c.surface : tone === 'raised' ? c.surfaceRaised : c.pastels[tone].fill;
+  const bg = fill ?? (tone === 'surface' ? c.surface : tone === 'raised' ? c.surfaceRaised : c.pastels[tone].fill);
   // The shadow sits on the outer view; the inner view clips content to the continuous corners.
   const outer: StyleProp<ViewStyle> = [{ borderRadius: radius }, continuous, shadowV2(elevation, scheme)];
   const inner: StyleProp<ViewStyle> = [

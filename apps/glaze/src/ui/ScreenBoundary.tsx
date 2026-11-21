@@ -23,8 +23,8 @@ export function ScreenErrorCard({ onRetry }: { onRetry: () => void }) {
     <View style={[styles.root, { backgroundColor: c.bg }]}>
       <SquircleCard accessibilityLabel={[title, body].join(' ')}>
         <View style={styles.card}>
-          <View style={[styles.badge, { backgroundColor: c.pastels.peach.fill }]}>
-            <Feather name="alert-circle" size={24} color={c.pastels.peach.ink} />
+          <View style={[styles.badge]}>
+            <Feather name="alert-circle" size={28} color={c.inkTertiary} />
           </View>
           <Text
             accessibilityRole="header"

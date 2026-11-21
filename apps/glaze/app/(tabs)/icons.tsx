@@ -59,7 +59,6 @@ import {
   circleRadius,
   continuous,
   editorialV2,
-  eyebrowCaseFor,
   fontScaleCap,
   iconTileRadius,
   radiusV2,
@@ -157,7 +156,6 @@ function IconsScreen() {
   const how = useHowTo('icons');
   const ts = (role: TypeRoleV2): TextStyle[] => typeFor(script, role);
   const installedFound = useInstalledFound(); // T229
-  const eyebrowCase = eyebrowCaseFor(script);
   const { width } = useWindowDimensions();
   const { scrollY, onScroll } = useLargeTitleScroll();
   const { state, update } = useStudio();
@@ -268,7 +266,7 @@ function IconsScreen() {
       <View style={[styles.root, { backgroundColor: c.bg, paddingTop: insets.top + sizeV2.navBar }]}>
         <View style={styles.loading}>
           <Skeleton width="45%" height={typeV2.largeTitle.lineHeight} style={styles.loadingTitle} />
-          <SquircleCard size="large" elevation="raised" tone={cardTone} outline={false} style={styles.side}>
+          <SquircleCard size="large" elevation="flat" tone={cardTone} outline={false} style={styles.side}>
             <IconGridSkeleton count={8} />
           </SquircleCard>
           <View style={[styles.side, styles.loadingSection]}>
@@ -348,13 +346,13 @@ function IconsScreen() {
       <LargeTitle title={t('icons.title')} subtitle={t('icons.intro')} scrollY={scrollY} />
       <ContextTip ids={['missing-app', 'icon-override']} style={styles.side} />
 
-      {/* Preview: the live Home Screen stays on top, on a raised surface with a quiet eyebrow. */}
-      <SquircleCard size="large" elevation="raised" tone={cardTone} outline={false} style={styles.side}>
+      {/* Preview: the live Home Screen stays on top, on a flat panel with a quiet label (DESIGN.md §5). */}
+      <SquircleCard size="large" elevation="flat" tone={cardTone} outline={false} style={styles.side}>
         <View style={styles.previewWrap}>
           <Text
             accessibilityRole="header"
-            maxFontSizeMultiplier={fontScaleCap('eyebrow')}
-            style={[...ts('eyebrow'), styles.eyebrow, { letterSpacing: eyebrowCase.letterSpacing, color: c.tint }, eyebrowCase.upper ? styles.upper : null]}
+            maxFontSizeMultiplier={fontScaleCap('footnote')}
+            style={[...ts('footnote'), styles.eyebrow, styles.previewLabel, { color: c.inkSecondary }]}
           >
             {t('icons.sections.previewEyebrow')}
           </Text>
@@ -386,7 +384,6 @@ function IconsScreen() {
 
       {/* Your apps */}
       <SectionHeader
-        eyebrow={t('icons.sections.appsEyebrow')}
         title={t('icons.yourApps')}
         body={t('icons.sections.appsBody')}
         style={styles.sectionHeader}
@@ -394,8 +391,8 @@ function IconsScreen() {
       {count === 0 ? (
         <SquircleCard tone={cardTone} outline={false} style={styles.side}>
           <View style={styles.empty}>
-            <View style={[styles.emptyIcon, { backgroundColor: c.tintSoft }]}>
-              <Feather name="grid" size={28} color={c.onTintSoft} />
+            <View style={[styles.emptyIcon]}>
+              <Feather name="grid" size={28} color={c.inkTertiary} />
             </View>
             <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...ts('headline'), styles.centerText, { color: c.ink }]}>{t('icons.emptyTitle')}</Text>
             <Text maxFontSizeMultiplier={fontScaleCap('callout')} style={[...ts('callout'), styles.centerText, { color: c.inkSecondary }]}>{t('icons.emptyBody')}</Text>
@@ -443,7 +440,6 @@ function IconsScreen() {
 
       {/* Add apps */}
       <SectionHeader
-        eyebrow={t('icons.sections.addEyebrow')}
         title={t('icons.addApps')}
         body={t('icons.sections.addBody')}
         style={styles.sectionHeader}
@@ -560,7 +556,6 @@ function IconsScreen() {
 
         {/* Style */}
         <SectionHeader
-          eyebrow={t('icons.sections.styleEyebrow')}
           title={t('icons.styleTitle')}
           body={t('icons.sections.styleBody')}
           style={styles.sectionHeader}
@@ -819,8 +814,8 @@ const MissingRow = memo(function MissingRow({ onPress }: { onPress: () => void }
         onPress={onPress}
         style={({ pressed }) => [styles.missingRow, { opacity: pressed ? 0.6 : 1 }]}
       >
-        <View style={[styles.tile, continuous, { backgroundColor: c.tintSoft }]}>
-          <Feather name="plus" size={17} color={c.onTintSoft} />
+        <View style={[styles.tile]}>
+          <Feather name="plus" size={20} color={c.tint} />
         </View>
         <View style={styles.flex}>
           <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...typeFor(script, 'body'), { color: c.tint }]}>
@@ -911,6 +906,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spaceV2.inset,
   },
   eyebrow: { alignSelf: 'stretch', textAlign: 'center' },
+  previewLabel: { fontWeight: '600' },
   upper: { textTransform: 'uppercase' },
   loading: { gap: editorialV2.cardGap, paddingTop: spaceV2.sm },
   loadingTitle: { marginHorizontal: spaceV2.inset },

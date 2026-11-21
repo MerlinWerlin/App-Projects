@@ -144,7 +144,7 @@ function EditorSkeleton() {
       style={[styles.skeletonRoot, styles.content, { backgroundColor: c.bg }]}
     >
       <Skeleton width="100%" height={sizeV2.rowMin} radius={chromeRadiusV2.control} />
-      <SquircleCard size="large" elevation="raised" tone="raised" outline={false} haptic={false}>
+      <SquircleCard size="large" elevation="flat" tone="raised" outline={false} haptic={false}>
         <View style={styles.frame}>
           <Skeleton width={phoneW} height={outerH} radius={radiusV2.cardLarge} />
         </View>
@@ -333,13 +333,12 @@ function Editor({ initial }: EditorProps) {
       {/* T176: editorial sections (Frame it / Trim / Speed / Save it) on the 16 pt rhythm. */}
       <SectionHeader
         flushTop
-        eyebrow={t('live.editor.sections.frame.eyebrow')}
         title={t('live.editor.sections.frame.title')}
         style={styles.sectionHead}
       />
       {/* Preview on a soft raised surface (no hairline): the whole source, positioned so the frame
           shows the crop, with the Lock Screen on top; the zoom controls and guide note sit with it. */}
-      <SquircleCard size="large" elevation="raised" tone="raised" outline={false} haptic={false}>
+      <SquircleCard size="large" elevation="flat" tone="raised" outline={false} haptic={false}>
         <View style={styles.previewStack}>
           <GestureDetector gesture={gesture}>
             <View
@@ -424,7 +423,6 @@ function Editor({ initial }: EditorProps) {
 
       <SectionHeader
         flushTop
-        eyebrow={t('live.editor.sections.clip.eyebrow')}
         title={t('live.editor.trim')}
         style={[styles.sectionHead, styles.sectionNext]}
       />
@@ -474,7 +472,6 @@ function Editor({ initial }: EditorProps) {
 
       <SectionHeader
         flushTop
-        eyebrow={t('live.editor.sections.finish.eyebrow')}
         title={t('live.editor.sections.finish.title')}
         body={t('live.editor.sections.finish.body')}
         style={[styles.sectionHead, styles.sectionNext]}

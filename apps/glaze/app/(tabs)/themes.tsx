@@ -29,6 +29,9 @@ import Animated, { runOnJS, useAnimatedScrollHandler, useSharedValue } from 'rea
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { galleryStarters } from '../../src/core/gallery';
 import { isRemoteArtTheme } from '../../src/core/remoteCatalog';
+import { starterWallpaper } from '../../src/core/starterPacks';
+import { STARTERS as STARTER_DATA } from '../../src/native/starterPacks';
+import { ThemeStage, type StageTheme } from '../../src/ui/ThemeStage';
 import {
   BROWSE_FILTERS,
   RAIL_WINDOW,
@@ -63,7 +66,7 @@ import { useLocked } from '../../src/plus/useLocked';
 import { FreeBadge } from '../../src/ui/FreeBadge';
 import { FEATURED_FREE_IDS, freeThemesIn, isFreeTheme } from '../../src/core/freeThemes';
 import { useFavourites } from '../../src/store/favourites';
-import { circleRadius, continuous, editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, typeV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
+import { continuous, editorialV2, fontScaleCap, radiusV2, sizeV2, spaceV2, textV2, typeV2, type TypeRoleV2 } from '../../src/theme/tokensV2';
 import { useColorsV2 } from '../../src/theme/useTokens';
 import { CategoryChipRow } from '../../src/ui/CategoryChipRow';
 import { GalleryArtCard, GalleryCardSkeleton } from '../../src/ui/GalleryArtCard';
@@ -76,7 +79,7 @@ import { PHONE_ASPECT } from '../../src/ui/ThemeCard';
 import { THUMB_LABEL_HEIGHT, ThemeThumbCard } from '../../src/ui/ThemeThumbCard';
 import { haptic } from '../../src/ui/haptics';
 import { textStyleFor } from '../../src/ui/i18nLayout';
-import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SectionHeader, SquircleCard } from '../../src/ui/v2';
+import { BarIconButton, InsetGroup, InsetRow, LargeTitle, LargeTitleHeader, LIST_WINDOW, PillButton, SectionHeader } from '../../src/ui/v2';
 import { withScreenBoundary } from '../../src/ui/ScreenBoundary';
 
 type FeatherName = ComponentProps<typeof Feather>['name'];
@@ -88,6 +91,8 @@ const PLUS_BADGE = <PlusBadge />; // i18n-ignore (code after a JSX element)
 const FREE_BADGE = <FreeBadge />; // i18n-ignore (code after a JSX element)
 /** The bundled starters, once (each with its category from themes/<id>/meta.json). */
 const STARTERS: readonly GalleryTheme[] = galleryStarters();
+/** Dreamroom stage: at most this many large prints open the overview. */
+const STAGE_MAX = 8;
 /** Panels below the gallery take no props; memoised so a filter change skips them. */
 const LiveHeroCardM = memo(LiveHeroCard);
 const YourLookPanelM = memo(YourLookPanel);
@@ -185,7 +190,7 @@ const BrowseHead = memo(function BrowseHead({ section, count, onSeeAll }: { sect
   return (
     <View style={styles.headRow}>
       <SectionHeader
-        eyebrow={t('themes.browse.count', { count })}
+        meta={String(count)}
         title={label}
         body={section === 'all' ? t('themes.browse.allThemesBody') : section === 'free' ? t('themes.free.body') : undefined}
         style={styles.headText}
@@ -257,12 +262,12 @@ const SkeletonCardRow = memo(function SkeletonCardRow({ count, cardWidth }: { co
   );
 });
 
-/** Pastel circle with a glyph, used by the empty states. */
+/** A bare glyph for the empty states (DESIGN.md §5: no tinted circle). */
 function EmptyIcon({ icon }: { icon: FeatherName }) {
   const { c } = useColorsV2();
   return (
-    <View style={[styles.emptyIcon, { backgroundColor: c.pastels.berry.fill }]}>
-      <Feather name={icon} size={24} color={c.pastels.berry.ink} />
+    <View style={styles.emptyIcon}>
+      <Feather name={icon} size={28} color={c.inkTertiary} />
     </View>
   );
 }
@@ -313,7 +318,7 @@ const GalleryEmpty = memo(function GalleryEmpty({ reason, onReset }: { reason: '
   const body = liked ? t('themes.discover.likedEmptyBody') : t('themes.search.empty.body');
   return (
     <View style={styles.emptyRow}>
-      <SquircleCard accessibilityLabel={[title, body].join(' ')}>
+      <View accessible={false} accessibilityLabel={[title, body].join(' ')}>
         <View style={styles.empty}>
           <EmptyIcon icon={liked ? 'heart' : 'search'} />
           <Text maxFontSizeMultiplier={fontScaleCap('headline')} style={[...typeFor(script, 'headline'), styles.center, { color: c.ink }]}>{title}</Text>
@@ -321,7 +326,7 @@ const GalleryEmpty = memo(function GalleryEmpty({ reason, onReset }: { reason: '
           {/* Release standard §1: an empty filtered list offers a one-tap way back to everything. */}
           <PillButton label={liked ? t('common.showAll') : t('themes.search.empty.reset')} variant="plain" onPress={onReset} style={styles.selfCenter} />
         </View>
-      </SquircleCard>
+      </View>
     </View>
   );
 });
@@ -358,6 +363,21 @@ function ThemesScreen() {
   const subscribed = !useLocked(true);
   const chips = useMemo(() => browseChips(sections, themes.length), [sections, themes.length]);
   const waiting = status === 'loading' && remote.length === 0;
+  // Dreamroom stage: the themes whose full-size wallpaper ships in the app (the bundled starters).
+  const stage: readonly StageTheme[] = useMemo(() => {
+    const out: StageTheme[] = [];
+    for (const theme of themes) {
+      if (out.length >= STAGE_MAX) break;
+      if (!isRemoteArtTheme(theme)) continue;
+      try {
+        const art = starterWallpaper(STARTER_DATA, theme.remoteArt.packId, theme.remoteArt.packVersion);
+        if (typeof art === 'number') out.push({ ...theme, stageArt: art });
+      } catch {
+        // A malformed starter entry: no stage print for it.
+      }
+    }
+    return out;
+  }, [themes]);
 
   // Fixed card geometry: rails show ~2.3 art cards, the grid 3 thumbnails per row on phones.
   const columns = gridColumns(width);
@@ -380,9 +400,9 @@ function ThemesScreen() {
   const rows: readonly Row[] = useMemo(
     () =>
       mode === 'home'
-        ? browseHomeRows<GalleryTheme>({ themes, columns, waiting, ...(subscribed ? {} : { free: freeThemesIn(themes), featured: FEATURED_FREE_IDS }) })
+        ? browseHomeRows<GalleryTheme>({ themes, columns, waiting, stage, ...(subscribed ? {} : { free: freeThemesIn(themes), featured: FEATURED_FREE_IDS }) })
         : browseGridRows<GalleryTheme>(gridThemes, columns),
-    [mode, themes, columns, waiting, gridThemes, subscribed],
+    [mode, themes, columns, waiting, stage, gridThemes, subscribed],
   );
 
   const onOpen = useCallback(
@@ -402,6 +422,10 @@ function ThemesScreen() {
     setFilter('all');
     setView('home');
   }, []);
+  const stageBadge = useCallback(
+    (theme: StageTheme) => (subscribed ? undefined : theme.plus === true ? PLUS_BADGE : isFreeTheme(theme.id) ? FREE_BADGE : undefined),
+    [subscribed],
+  );
   const shared: CardShared = useMemo(
     () => ({ railWidth, thumbWidth: geo.cardWidth, thumbArt: geo.artHeight, showTiers: !subscribed, onOpen, likedIds, onToggleLike: toggleLike }),
     [railWidth, geo.cardWidth, geo.artHeight, subscribed, onOpen, likedIds, toggleLike],
@@ -449,12 +473,13 @@ function ThemesScreen() {
   const renderRow: ListRenderItem<Row> = useCallback(
     ({ item }) => {
       if (!item) return null; // T264: a hole in the rows draws nothing
+      if (item.kind === 'stage') return <ThemeStage themes={item.themes as readonly StageTheme[]} width={width} onOpen={onOpen} badgeFor={stageBadge} />; // i18n-ignore (code after a JSX element)
       if (item.kind === 'head') return <BrowseHead section={item.section} count={item.count} onSeeAll={seeAll} />; // i18n-ignore (code after a JSX element)
       if (item.kind === 'rail') return <CategoryRail themes={item.themes} shared={shared} />; // i18n-ignore (code after a JSX element)
       if (item.kind === 'skeleton') return <SkeletonCardRow count={Math.min(item.count, columns)} cardWidth={geo.cardWidth} />; // i18n-ignore (code after a JSX element)
       return <GalleryCardRow themes={item.themes} shared={shared} />; // i18n-ignore (code after a JSX element)
     },
-    [seeAll, shared, columns, geo.cardWidth],
+    [seeAll, shared, columns, geo.cardWidth, width, onOpen, stageBadge],
   );
 
   // Where the grid's first row starts: the content inset above the header plus the header's
@@ -522,7 +547,7 @@ function ThemesScreen() {
         </View>
         {gridTitle ? (
           <View style={styles.headRow}>
-            <SectionHeader eyebrow={t('themes.browse.count', { count: matchCount })} title={gridTitle} style={styles.headText} />
+            <SectionHeader meta={String(matchCount)} title={gridTitle} style={styles.headText} />
             <PillButton
               label={t('themes.browse.backHome')}
               size="small"
@@ -652,7 +677,7 @@ const styles = StyleSheet.create({
   },
   searchInput: { flex: 1, minHeight: sizeV2.touch, paddingVertical: spaceV2.sm },
   empty: { alignItems: 'center', gap: spaceV2.sm },
-  emptyIcon: { width: 48, height: 48, borderRadius: circleRadius(48), alignItems: 'center', justifyContent: 'center' },
+  emptyIcon: { width: 48, height: 48, alignItems: 'center', justifyContent: 'center' },
 });
 
 // T264 (owner-1101i #2): this screen fails on its own: a calm card + Retry, never a closed app.

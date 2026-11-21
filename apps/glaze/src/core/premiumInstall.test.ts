@@ -20,11 +20,12 @@ function block(src: string, name: string): string {
   return new RegExp(`\\n {2}${name}: \\{\\n([\\s\\S]*?)\\n {2}\\},\\n`).exec(src)?.[1] ?? '';
 }
 
-test('install screen headings are editorial SectionHeaders, the steps one with an eyebrow', () => {
+test('install screen headings are SectionHeaders with no eyebrow labels (DESIGN.md §8)', () => {
   const d = strip(read(...INSTALL_PATH));
   assert.ok(d.includes(' SectionHeader, Skeleton, SquircleCard }'), 'SectionHeader and Skeleton come from src/ui/v2');
   assert.ok((d.match(/<SectionHeader\b/g) ?? []).length >= 5);
-  assert.ok(d.includes("eyebrow={t('install.sequence.eyebrow')}"));
+  assert.ok(d.includes("title={t('install.sequence.title')}"));
+  assert.doesNotMatch(d, /eyebrow=/);
   // No bare title2 headers left in the scrolling screen (the empty state keeps its own).
   assert.equal((d.match(/accessibilityRole="header" style=\{\[\.\.\.ts\('title2'\)/g) ?? []).length, 1);
 });
@@ -36,7 +37,7 @@ test('profile steps read as one numbered sequence with exactly one current step'
   assert.match(d, /index=\{i \+ 1\}/);
   assert.match(d, /total=\{cards\.length\}/);
   // The sequence sits on one lifted card, not an inset group with separators.
-  const seq = d.slice(d.indexOf("eyebrow={t('install.sequence.eyebrow')}"), d.indexOf('</SquircleCard>', d.indexOf("eyebrow={t('install.sequence.eyebrow')}")));
+  const seq = d.slice(d.indexOf("title={t('install.sequence.title')}"), d.indexOf('</SquircleCard>', d.indexOf("title={t('install.sequence.title')}")));
   assert.ok(seq.includes('outline={false}'));
   assert.ok(!seq.includes('<InsetGroup'));
   // Current: filled tint number and the "Current step" label; others muted.
@@ -138,13 +139,13 @@ test('T210: install cards lift by surface (raised in dark), never a hairline', (
   assert.match(d, /styles\.fileRow, continuous, \{ backgroundColor: c\.fill \}/);
 });
 
-test('T210: the summary is the hero: icons on a soft well, one editorial heading with an eyebrow', () => {
+test('T210: the summary is the hero: icons on a soft well, one plain heading (no eyebrow)', () => {
   const d = strip(read(...INSTALL_PATH));
   const at = d.indexOf('<SquircleCard size="large" tone={cardTone}');
   assert.ok(at > 0);
   const card = d.slice(at, d.indexOf('</SquircleCard>', at));
   assert.match(card, /styles\.well, continuous, \{ backgroundColor: c\.fill \}/);
-  assert.match(card, /<SectionHeader level="group" flushTop eyebrow=\{t\('install\.summary\.eyebrow'\)\} title=\{summary\}/);
+  assert.match(card, /<SectionHeader level="group" flushTop title=\{summary\}/);
   assert.ok(!card.includes('accessibilityRole="header"'), 'no bare header Text left in the summary');
 });
 
@@ -152,9 +153,9 @@ test('T210: Install all at once is an editorial header; Prefer Shortcuts stays a
   const d = strip(read(...INSTALL_PATH));
   assert.match(
     d,
-    /<SectionHeader\s+eyebrow=\{t\('install\.method\.bulkEyebrow'\)\}\s+title=\{t\('install\.method\.bulk'\)\}\s+body=\{t\('install\.method\.bulkBody', \{ count: plan\.profile\.length \}\)\}/,
+    /<SectionHeader\s+title=\{t\('install\.method\.bulk'\)\}\s+body=\{t\('install\.method\.bulkBody', \{ count: plan\.profile\.length \}\)\}/,
   );
-  const card = d.slice(d.indexOf("title={t('install.method.bulk')}"), d.indexOf("eyebrow={t('install.sequence.eyebrow')}"));
+  const card = d.slice(d.indexOf("title={t('install.method.bulk')}"), d.indexOf("title={t('install.sequence.title')}"));
   const link = card.indexOf("label={t('install.method.shortcutsFallback')}");
   const main = card.indexOf("t('install.bulk.generate')");
   assert.ok(main > 0 && link > main, 'the fallback link comes after the main pill');

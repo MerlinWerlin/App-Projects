@@ -683,7 +683,7 @@ export default function InstallScreen() {
                 <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>{t('install.summary.more', { count: specs.length - 6 })}</Text>
               ) : null}
             </View>
-            <SectionHeader level="group" flushTop eyebrow={t('install.summary.eyebrow')} title={summary} style={styles.headerFlush} />
+            <SectionHeader level="group" flushTop title={summary} style={styles.headerFlush} />
             {!PROFILE_INSTALL_ENABLED || choice !== 'bulk' ? null : noScheme.length > 0 ? (
               <Text maxFontSizeMultiplier={fontScaleCap('footnote')} style={[...ts('footnote'), { color: c.inkSecondary }]}>
                 {t('install.summary.noScheme', { count: noScheme.length, apps: noScheme.join(', ') })}
@@ -763,7 +763,6 @@ export default function InstallScreen() {
             {/* T210: the main method reads as one editorial heading (eyebrow + title + the count
                 line as its body), so the card under it starts with the facts and the pill. */}
             <SectionHeader
-              eyebrow={t('install.method.bulkEyebrow')}
               title={t('install.method.bulk')}
               body={t('install.method.bulkBody', { count: plan.profile.length })}
               style={[styles.sideText, styles.headerTight]}
@@ -919,7 +918,6 @@ export default function InstallScreen() {
 
             {/* T173: the steps as one calm numbered sequence; the first step not done is current. */}
             <SectionHeader
-              eyebrow={t('install.sequence.eyebrow')}
               title={t('install.sequence.title')}
               body={t('install.shortcuts.progress', { done: stepsDone, total: cards.length })}
               style={[styles.sideText, styles.headerTight]}

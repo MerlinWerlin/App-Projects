@@ -8,10 +8,9 @@
 // specs array. A gallery card used to register ~24 animated styles just to sit still.
 
 import { Feather } from '@expo/vector-icons';
-import { memo, useEffect, useId, useMemo, type ReactNode } from 'react';
+import { memo, useEffect, useMemo, type ReactNode } from 'react';
 import { StyleSheet, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
-import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { fitDelays, rippleDelays, staggerDelay } from '../core/motion';
 import { withMonogram, type IconSpec } from '../core/iconspec';
 import { weakMemo } from '../core/perfCache';
@@ -95,8 +94,6 @@ export const HomeMock = memo(function HomeMock({
   const reduced = useMotionReduced();
   const animate = animateIcons && !reduced && !still ? animateIcons : false;
   const Cell = still ? StillCell : PopCell;
-  const rawId = useId();
-  const gid = `home${rawId.replace(/[^A-Za-z0-9_-]/g, '')}`;
   const w = Math.max(120, width);
   const h = Math.round(w * HOME_ASPECT);
   const dockN = Math.max(0, Math.min(COLS, Math.floor(dockCount)));
@@ -152,17 +149,8 @@ export const HomeMock = memo(function HomeMock({
       style={[styles.phone, noMirror, { width: w, height: h, borderRadius: corner, backgroundColor: backgroundColour ?? brandGlazeV2.from }]}
     >
       <View style={StyleSheet.absoluteFill} pointerEvents="none">
-        {background ?? (backgroundColour ? null : (
-          <Svg width={w} height={h}>
-            <Defs>
-              <LinearGradient id={gid} x1="0%" y1="0%" x2="100%" y2="100%">
-                <Stop offset="0" stopColor={brandGlazeV2.from} stopOpacity={1} />
-                <Stop offset="1" stopColor={brandGlazeV2.to} stopOpacity={1} />
-              </LinearGradient>
-            </Defs>
-            <Rect x={0} y={0} width={w} height={h} fill={`url(#${gid})`} />
-          </Svg>
-        ))}
+        {/* No wallpaper: the container's flat graphite shows (DESIGN.md §8, no gradient). */}
+        {background ?? null}
       </View>
 
       {/* Status bar */}

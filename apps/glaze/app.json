@@ -3,7 +3,7 @@
     "name": "Glaze",
     "slug": "glaze",
     "scheme": "glaze",
-    "version": "1.0.42",
+    "version": "1.0.43",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
     "ios": {
@@ -89,10 +89,10 @@
           "image": "./assets/brand/splash-icon.png",
           "imageWidth": 240,
           "resizeMode": "contain",
-          "backgroundColor": "#0F0D12",
+          "backgroundColor": "#0E0E0D",
           "dark": {
             "image": "./assets/brand/splash-icon-dark.png",
-            "backgroundColor": "#0F0D12"
+            "backgroundColor": "#0E0E0D"
           }
         }
       ]

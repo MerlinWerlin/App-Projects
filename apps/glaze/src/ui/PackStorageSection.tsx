@@ -68,8 +68,8 @@ export function PackStorageSection() {
       <InsetGroup title={t('ui.storage.title')} footer={t('ui.storage.note')}>
         {measuring ? (
           <View key="measuring" style={styles.packHeadRow} accessible accessibilityLabel={t('ui.storage.measuring')}>
-            <View style={[styles.tile, { backgroundColor: c.pastels.lilac.fill }]}>
-              <Feather name="package" size={17} color={c.pastels.lilac.ink} />
+            <View style={[styles.tile]}>
+              <Feather name="package" size={20} color={c.inkSecondary} />
             </View>
             <View style={styles.flex}>
               <Skeleton width="55%" height={textV2.body.lineHeight ?? spaceV2.xl} />
@@ -98,8 +98,8 @@ export function PackStorageSection() {
           return (
             <View key={p.id} style={styles.pack}>
               <View style={styles.packHead} accessible accessibilityLabel={t('ui.storage.packA11y', { name: p.name, count: p.themeIds.length, size })}>
-                <View style={[styles.tile, { backgroundColor: c.pastels.lilac.fill }]}>
-                  <Feather name="package" size={17} color={c.pastels.lilac.ink} />
+                <View style={[styles.tile]}>
+                  <Feather name="package" size={20} color={c.inkSecondary} />
                 </View>
                 <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.flex, { color: c.ink }]}>
                   {p.name}
@@ -180,8 +180,8 @@ export function PackStorageSection() {
           return (
             <View key={r.themeId} style={styles.pack}>
               <View style={styles.packHead} accessible accessibilityLabel={t('ui.storage.photoA11y', { name: r.name, size })}>
-                <View style={[styles.tile, { backgroundColor: c.pastels.lilac.fill }]}>
-                  <Feather name="image" size={17} color={c.pastels.lilac.ink} />
+                <View style={[styles.tile]}>
+                  <Feather name="image" size={20} color={c.inkSecondary} />
                 </View>
                 <Text maxFontSizeMultiplier={fontScaleCap('body')} style={[...ts('body'), styles.flex, { color: c.ink }]}>
                   {r.name}

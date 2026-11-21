@@ -35,8 +35,8 @@ export function ErrorFallback({ error, onRetry }: { error: unknown; onRetry: () 
   return (
     <SafeAreaView style={[styles.root, { backgroundColor: c.bg }]}>
       <ScrollView bounces={false} overScrollMode="never" contentContainerStyle={styles.body}>
-        <View style={[styles.badge, { backgroundColor: c.pastels.peach.fill }]}>
-          <Feather name="alert-circle" size={28} color={c.pastels.peach.ink} />
+        <View style={[styles.badge]}>
+          <Feather name="alert-circle" size={28} color={c.inkTertiary} />
         </View>
         <Text accessibilityRole="header" style={[...title, styles.center, { color: c.ink }]}>
           {t('common.error')}

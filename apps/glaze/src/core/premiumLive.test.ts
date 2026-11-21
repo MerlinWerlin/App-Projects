@@ -60,8 +60,9 @@ test('the new Live copy is honest: no constant-loop promise, 3 seconds, saved to
 test('Live tab: editorial headers, 16-pt rhythm, lifted loop cards, skeleton loop card, no hairlines', () => {
   const tab = strip(read(...TAB));
   assert.equal((tab.match(/<SectionHeader\b/g) ?? []).length, 2, 'two editorial sections');
-  assert.match(tab, /t\('live\.tab\.sections\.make\.eyebrow'\)/);
-  assert.match(tab, /eyebrow=\{t\('live\.tab\.sections\.loops\.eyebrow'\)\}\s*title=\{t\('live\.tab\.yourLoops'\)\}/);
+  assert.match(tab, /title=\{t\('live\.tab\.sections\.make\.title'\)\}/);
+  assert.match(tab, /flushTop\s*title=\{t\('live\.tab\.yourLoops'\)\}/);
+  assert.doesNotMatch(tab, /eyebrow=/, 'no eyebrow labels (DESIGN.md §8)');
   assert.match(tab, /section: \{ marginHorizontal: spaceV2\.lg, gap: editorialV2\.cardGap \}/);
   assert.match(tab, /cards: \{ gap: editorialV2\.cardGap \}/);
   assert.match(tab, /const cardTone = scheme === 'dark' \? 'raised' : 'surface';/);
@@ -79,9 +80,10 @@ test('loop editor: skeleton in the editor shape, preview on a raised surface, ed
   assert.match(skel, /<Skeleton width="100%" height=\{sizeV2\.rowMin\}/, 'name field');
   assert.match(skel, /<Skeleton width=\{phoneW\} height=\{outerH\}/, 'phone-shaped preview');
   assert.match(skel, /accessibilityLabel=\{t\('live\.editor\.loading'\)\}/);
-  assert.match(ed, /<SquircleCard size="large" elevation="raised" tone="raised" outline=\{false\}/);
+  assert.match(ed, /<SquircleCard size="large" elevation="flat" tone="raised" outline=\{false\}/);
   assert.match(ed, /const \{ aspect, phoneW, screenSize \} = useEditorPhone\(\);/, 'skeleton and editor share one phone size');
-  for (const k of ['frame.eyebrow', 'frame.title', 'clip.eyebrow', 'finish.eyebrow', 'finish.title', 'finish.body']) {
+  assert.doesNotMatch(ed, /eyebrow=/, 'no eyebrow labels (DESIGN.md §8)');
+  for (const k of ['frame.title', 'finish.title', 'finish.body']) {
     assert.ok(ed.includes(`t('live.editor.sections.${k}')`), k);
   }
   assert.match(ed, /<SectionHeader level="group" flushTop title=\{t\('live\.editor\.speed'\)\}/);

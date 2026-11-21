@@ -11,9 +11,9 @@ export function FreeBadge() {
   const { c } = useColorsV2();
   const { t } = useT();
   return (
-    <View style={[styles.pill, { backgroundColor: c.tint }]} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
-      <Feather name="gift" size={11} color={c.onTint} />
-      <Text style={[textV2.caption1, styles.text, { color: c.onTint }]} maxFontSizeMultiplier={1.2}>
+    <View style={[styles.pill, { backgroundColor: c.ink }]} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
+      <Feather name="gift" size={11} color={c.bg} />
+      <Text style={[textV2.caption1, styles.text, { color: c.bg }]} maxFontSizeMultiplier={1.2}>
         {t('themes.freeBadge')}
       </Text>
     </View>

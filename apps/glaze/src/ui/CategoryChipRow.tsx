@@ -44,12 +44,12 @@ export const CategoryChipRow = memo(function CategoryChipRow({ chips, view, onPi
             accessibilityLabel={t('themes.browse.chipA11y', { label, count: chip.count })}
             accessibilityHint={t('themes.browse.chipHint')}
             accessibilityState={{ selected }}
-            style={[styles.chip, continuous, { backgroundColor: selected ? c.tint : c.fill }]}
+            style={[styles.chip, continuous, { backgroundColor: selected ? c.ink : c.fill }]}
           >
             <Text
               numberOfLines={1}
               maxFontSizeMultiplier={fontScaleCap('subhead')}
-              style={[textV2.subhead, textStyleFor(script, textV2.subhead), styles.text, { color: selected ? c.onTint : c.ink }]}
+              style={[textV2.subhead, textStyleFor(script, textV2.subhead), styles.text, { color: selected ? c.bg : c.ink }]}
             >
               {label}
             </Text>

@@ -52,8 +52,9 @@ export function SwitchInsetRow({
       style={[styles.row, disabled ? styles.disabled : null]}
     >
       {icon ? (
-        <View style={[styles.tile, { backgroundColor: c.pastels[iconTone].fill }]}>
-          <Feather name={icon} size={17} color={c.pastels[iconTone].ink} />
+        // White Cube (DESIGN.md §8): a bare glyph, no tinted circle.
+        <View style={styles.tile}>
+          <Feather name={icon} size={20} color={c.inkSecondary} />
         </View>
       ) : null}
       <View style={styles.flex}>
