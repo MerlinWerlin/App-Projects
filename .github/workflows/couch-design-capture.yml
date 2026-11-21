@@ -4,6 +4,10 @@ name: Couch design capture
 # remote, Apps and TVs screens have something to show. Simulator only: no signing, nothing shipped.
 on:
   workflow_dispatch:
+    inputs:
+      device:
+        description: 'Simulator whose name ends with this (Pro: design review; Pro Max: 1320x2868 App Store screenshots)'
+        default: 'Pro'
   push:
     branches: ['claude/couch-design-*']
     paths: ['.github/workflows/couch-design-capture.yml', 'apps/couch/app/**', 'apps/couch/src/**', 'apps/couch/tools/capture/**']
@@ -50,12 +54,14 @@ jobs:
           xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO build > "$RUNNER_TEMP/build.log" 2>&1 || { grep -E "error:" "$RUNNER_TEMP/build.log" | head -40; tail -160 "$RUNNER_TEMP/build.log"; exit 1; }
       - name: Capture every screen, light and dark
         timeout-minutes: 30
+        env:
+          DEVICE_SUFFIX: ${{ inputs.device || 'Pro' }}
         run: |
           set -uo pipefail
           OUT="$RUNNER_TEMP/couch-captures"; mkdir -p "$OUT"
           APP=$(ls -d "$RUNNER_TEMP"/build/Build/Products/Release-iphonesimulator/*.app | head -1)
           BUNDLE=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
-          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); xs=[x for k,v in sorted(d["devices"].items(),reverse=True) if "iOS" in k for x in v]; print(next(x["udid"] for x in xs if x["name"].endswith("Pro")))')
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); xs=[x for k,v in sorted(d["devices"].items(),reverse=True) if "iOS" in k for x in v]; print(next(x["udid"] for x in xs if x["name"].endswith(sys.argv[1])))' "${DEVICE_SUFFIX}")
           xcrun simctl list devices available | grep "$DEVICE"
           codesign --force --deep --sign - "$APP"
           PREFS="$HOME/Library/Developer/CoreSimulator/Devices/$DEVICE/data/Library/Preferences"
@@ -100,4 +106,11 @@ jobs:
           path: |
             ${{ runner.temp }}/couch-captures/jpg
             ${{ runner.temp }}/build.log
+          retention-days: 14
+      # Full-size PNGs from the simulator, for App Store screenshots (run with device "Pro Max" for 1320x2868).
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: couch-captures-png
+          path: ${{ runner.temp }}/couch-captures/*.png
           retention-days: 14

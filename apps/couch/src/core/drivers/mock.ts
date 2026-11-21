@@ -24,6 +24,11 @@ export interface MockTvOptions {
   on?: boolean;
   volume?: number;
   apps?: TvApp[];
+  /**
+   * Advertise demo voice (default true; driver tests use it). The in-app demo passes false so it behaves like
+   * real TVs, none of which has voice yet: the voice key opens the keyboard instead of pretending to listen.
+   */
+  voice?: boolean;
 }
 
 /** Fallback demo apps for a bare MockTv: the real services (owner decision 22 Oct 2026); icons are
@@ -64,7 +69,8 @@ const defaultSleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms))
  */
 export class MockTv implements TvDriver {
   readonly platform = 'mock' as const;
-  readonly capabilities: ReadonlySet<Capability> = new Set<Capability>([
+  readonly capabilities: ReadonlySet<Capability>;
+  private static readonly ALL: readonly Capability[] = [
     'keys',
     'text',
     'apps',
@@ -76,7 +82,7 @@ export class MockTv implements TvDriver {
     'numbers',
     'colorKeys',
     'voice',
-  ]);
+  ];
 
   readonly log: MockLogEntry[] = [];
   connected = false;
@@ -106,6 +112,7 @@ export class MockTv implements TvDriver {
     this.isOn = opts.on ?? true;
     this.vol = opts.volume ?? 14;
     this.apps = (opts.apps ?? DEMO_APPS).map((a) => ({ ...a }));
+    this.capabilities = new Set(opts.voice === false ? MockTv.ALL.filter((c) => c !== 'voice') : MockTv.ALL);
   }
 
   on(cb: (e: DriverEvent) => void): () => void {

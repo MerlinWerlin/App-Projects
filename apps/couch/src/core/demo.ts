@@ -167,7 +167,16 @@ export interface DemoSession {
 }
 
 /** Build the demo session: one MockTv per demo TV, already connected. */
-export async function createDemoSession(opts: { sleep?: (ms: number) => Promise<void>; random?: () => number } = {}): Promise<DemoSession> {
+export async function createDemoSession(
+  opts: {
+    sleep?: (ms: number) => Promise<void>;
+    random?: () => number;
+    /** The demo TVs' apps. Default: the real services (screenshots). The in-app demo passes SCREENSHOT_DEMO_APPS. */
+    apps?: readonly TvApp[];
+    /** Demo voice (default true). The in-app demo turns it off, like real TVs. */
+    voice?: boolean;
+  } = {},
+): Promise<DemoSession> {
   const drivers = new Map<string, MockTv>();
   for (const t of DEMO_TVS) {
     const d = new MockTv({
@@ -176,12 +185,24 @@ export async function createDemoSession(opts: { sleep?: (ms: number) => Promise<
       sleep: opts.sleep,
       random: opts.random,
       // Spread now so names are copied in the active language (withCopy getters).
-      apps: DEMO_TV_APPS.map((a) => ({ ...a })),
+      apps: (opts.apps ?? DEMO_TV_APPS).map((a) => ({ ...a })),
+      voice: opts.voice,
     });
     await d.connect();
     drivers.set(t.id, d);
   }
   return { tvs: DEMO_TVS.map(({ baseMs: _b, on: _o, ...tv }) => ({ ...tv })), drivers };
+}
+
+/**
+ * The in-app demo (App Review guideline 2.1: a reviewer without a TV can try every screen). Opt-in only, from
+ * "Try a demo TV" on Add a TV while no TV is saved; Couch never starts in it (owner 7 Nov 2026). Its apps are
+ * the invented ones with original abstract art, so no streaming service's name or icon appears (guideline 5.2), and
+ * it has no pretend voice: no real TV supports voice yet, so the voice key opens the keyboard here too (2.3.1).
+ * Simulator store/design captures use the same session.
+ */
+export function createInAppDemoSession(): Promise<DemoSession> {
+  return createDemoSession({ apps: SCREENSHOT_DEMO_APPS, voice: false });
 }
 
 /** Demo mode is chosen automatically when no saved TV exists, or explicitly by the user. */

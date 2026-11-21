@@ -105,6 +105,8 @@ export const appEn = {
   'app.addTv.irBody': 'Use infrared on Android phones that have it. Find the right code by testing volume.',
   'app.addTv.irRowLabel': '{title} {body}',
   'app.addTv.notListed': 'Still not listed? Enter its address',
+  'app.addTv.demoTitle': 'Try a demo TV',
+  'app.addTv.demoBody': 'No TV nearby? See how Couch works. Nothing is sent to a real TV.',
   'app.addTv.enterAddress': 'Enter its address',
   'app.addTv.ipLabel': 'TV IP address',
   'app.addTv.findIp': 'Find it on the TV under Settings › Network › Status.',

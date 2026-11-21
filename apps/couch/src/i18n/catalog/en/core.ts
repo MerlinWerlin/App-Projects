@@ -317,7 +317,7 @@ export const coreEn = {
   // Couch Plus: the remote and casting are the paid unlock (owner 7 Nov 2026)
   "core.plus.promise": "Unlock the remote and casting.",
   "core.plus.feature.remote.title": "The whole remote",
-  "core.plus.feature.remote.hint": "Every button, the touchpad, keyboard, voice, numbers, inputs and opening apps",
+  "core.plus.feature.remote.hint": "Every button, the touchpad, keyboard, numbers, inputs and opening apps",
   "core.plus.feature.cast.title": "Casting",
   "core.plus.feature.cast.hint": "Your photos and videos on the TV",
   "core.plus.unavailable": "Purchases aren't available right now. Check your internet connection and try again.",

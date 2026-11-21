@@ -59,7 +59,8 @@ describe('hold to talk in Expo Go', () => {
 
   it('VoiceButton feeds the guarded speech loader into the controller and locks scrolling while held', () => {
     const src = read('src/ui/remote/VoiceButton.tsx');
-    expect(src).toMatch(/stt:\s*loadSpeechToText\(\)/);
+    expect(src).toMatch(/const stt = useMemo\(\(\) => loadSpeechToText\(\), \[\]\)/);
+    expect(src).toMatch(/\n\s+stt,\n/);
     expect(src).toMatch(/onOpenKeyboard/);
     expect(src).toMatch(/lockRef\.current\(true\)/);
     expect(src).toMatch(/lockRef\.current\(false\)/);
