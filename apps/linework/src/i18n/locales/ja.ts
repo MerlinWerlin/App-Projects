@@ -678,7 +678,6 @@ export const ja: Translation = {
   'trace.camera.askTitle': 'トレースにはカメラが必要です',
   'trace.camera.askBody':
     'Lineworkは画像の背後にカメラの映像を表示し、紙にトレースできるようにします。録画は「録画」をタップしたときだけ行われ、端末内に保存されます。何もアップロードされません。',
-  'trace.camera.allow': 'カメラを許可',
   'trace.camera.useLightbox': '代わりにライトボックスを使う',
   'trace.camera.offTitle': 'カメラがオフになっています',
   'trace.camera.offBody':

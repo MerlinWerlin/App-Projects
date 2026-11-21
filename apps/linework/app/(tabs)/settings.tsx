@@ -22,6 +22,8 @@ import type { MessageKey } from '../../src/i18n/en';
 import { STARTER_TEMPLATE_COUNT } from '../../src/plus/entitlement';
 
 const PLAY_PRIVACY_URL = 'https://merlinwerlin.github.io/App-Projects/linework/play-privacy.html';
+// 5.1.1(i): the privacy policy is linked inside the app as well as on the store page.
+const PRIVACY_URL = 'https://merlinwerlin.github.io/App-Projects/linework/privacy.html';
 
 const GRID_OPTIONS: { value: GridDefault; label: MessageKey }[] = [
   { value: 'off', label: 'settings.tracing.grid.off' },
@@ -187,12 +189,12 @@ export default function SettingsScreen() {
             iconFill={c.pastels[1]}
           />
           <InsetRow
-            title={t(Platform.OS === 'android' ? 'settings.free.playPlusLink' : 'settings.free.plusLink')}
+            title={t(Platform.OS === 'android' ? 'settings.free.playPlusLink' : 'common.nav.plus')}
             subtitle={t(Platform.OS === 'android' ? 'settings.free.playPlusHint' : 'settings.free.plusHint')}
             icon="gift"
             iconFill={c.pastels[4]}
             onPress={() => router.push('/plus')}
-            accessibilityLabel={t(Platform.OS === 'android' ? 'settings.free.playPlusLink' : 'settings.free.plusLink')}
+            accessibilityLabel={t(Platform.OS === 'android' ? 'settings.free.playPlusLink' : 'common.nav.plus')}
             accessibilityHint={t(Platform.OS === 'android' ? 'settings.free.playPlusHint' : 'settings.free.plusHint')}
           />
           <InsetRow
@@ -209,12 +211,13 @@ export default function SettingsScreen() {
             subtitle={t(Platform.OS === 'android' ? 'settings.privacy.playBody' : 'settings.privacy.body')}
             icon="shield"
             iconFill={c.pastels[3]}
-            onPress={Platform.OS === 'android' ? () => {
-              void Linking.openURL(PLAY_PRIVACY_URL).catch(() => {
-                Alert.alert(t('settings.privacy.title'), t('settings.privacy.openFailed', { url: PLAY_PRIVACY_URL }));
+            onPress={() => {
+              const url = Platform.OS === 'android' ? PLAY_PRIVACY_URL : PRIVACY_URL;
+              void Linking.openURL(url).catch(() => {
+                Alert.alert(t('settings.privacy.title'), t('settings.privacy.openFailed', { url }));
               });
-            } : undefined}
-            accessibilityHint={Platform.OS === 'android' ? t('settings.privacy.openHint') : undefined}
+            }}
+            accessibilityHint={t('settings.privacy.openHint')}
           />
         </InsetGroup>
         {reviewAccessAvailable ? <ReviewAccessSection /> : null}

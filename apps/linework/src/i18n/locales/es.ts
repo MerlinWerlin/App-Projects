@@ -686,7 +686,6 @@ export const es: Translation = {
   'trace.camera.askTitle': 'Se necesita la cámara para calcar',
   'trace.camera.askBody':
     'Linework muestra la imagen de la cámara detrás de la imagen para que puedas calcarla en papel. Solo se graba cuando tocas Grabar, y la grabación se queda en tu dispositivo. No se sube nada.',
-  'trace.camera.allow': 'Permitir cámara',
   'trace.camera.useLightbox': 'Usar la mesa de luz',
   'trace.camera.offTitle': 'La cámara está desactivada',
   'trace.camera.offBody':

@@ -669,7 +669,6 @@ export const zhHans: Translation = {
   'trace.camera.askTitle': '描摹需要使用相机',
   'trace.camera.askBody':
     'Linework 会在图像后面显示相机画面，方便你把它描摹到纸上。只有轻点“录制”时才会录像，且视频只保存在你的设备上。不会上传任何内容。',
-  'trace.camera.allow': '允许使用相机',
   'trace.camera.useLightbox': '改用拷贝台',
   'trace.camera.offTitle': '相机已关闭',
   'trace.camera.offBody':

@@ -678,7 +678,6 @@ export const hi: Translation = {
   'trace.camera.askTitle': 'ट्रेस करने के लिए कैमरा चाहिए',
   'trace.camera.askBody':
     'Linework इमेज के पीछे आपका कैमरा व्यू दिखाता है, ताकि आप उसे काग़ज़ पर ट्रेस कर सकें। रिकॉर्डिंग सिर्फ़ तभी होती है जब आप रिकॉर्ड पर टैप करते हैं, और वह आपके डिवाइस पर ही रहती है। कुछ भी अपलोड नहीं होता।',
-  'trace.camera.allow': 'कैमरा की अनुमति दें',
   'trace.camera.useLightbox': 'इसके बजाय लाइटबॉक्स इस्तेमाल करें',
   'trace.camera.offTitle': 'कैमरा बंद है',
   'trace.camera.offBody':

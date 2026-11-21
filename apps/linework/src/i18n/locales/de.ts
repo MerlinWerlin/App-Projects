@@ -678,7 +678,6 @@ export const de: Translation = {
   'trace.camera.askTitle': 'Kamera zum Nachzeichnen nötig',
   'trace.camera.askBody':
     'Linework zeigt das Kamerabild hinter dem Bild, damit du es auf Papier nachzeichnen kannst. Aufgenommen wird nur, wenn du auf „Aufnehmen“ tippst, und die Aufnahme bleibt auf deinem Gerät. Nichts wird hochgeladen.',
-  'trace.camera.allow': 'Kamera erlauben',
   'trace.camera.useLightbox': 'Stattdessen Leuchttisch',
   'trace.camera.offTitle': 'Kamera ist deaktiviert',
   'trace.camera.offBody':

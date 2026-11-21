@@ -96,5 +96,8 @@ test('Google Play privacy policy matches its in-app link and listing, and covers
   assert.doesNotMatch(policy, /Data Not Collected|<script\b|<link\b|\bsrc\s*=/i);
   assert.equal(listing.appContent.privacyPolicyUrl, 'https://merlinwerlin.github.io/App-Projects/linework/play-privacy.html');
   assert.ok(settings.includes(listing.appContent.privacyPolicyUrl));
-  assert.match(settings, /Linking\.openURL\(PLAY_PRIVACY_URL\)/);
+  // Android opens the Play policy; iOS opens the App Store policy (5.1.1(i)).
+  assert.match(settings, /Platform\.OS === 'android' \? PLAY_PRIVACY_URL : PRIVACY_URL/);
+  assert.match(settings, /Linking\.openURL\(url\)/);
+  assert.ok(settings.includes('https://merlinwerlin.github.io/App-Projects/linework/privacy.html'));
 });

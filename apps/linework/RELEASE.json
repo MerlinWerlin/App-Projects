@@ -1,5 +1,5 @@
 {
   "mode": "build",
-  "note": "Linework 1.0.4: \"Drawing table\" redesign (paper, graphite, one red-pencil accent; drafting-grid tab screens, Home title block, serif headings, flat cards, standard tab bar). Features and purchases unchanged. TestFlight build only.",
+  "note": "Linework 1.0.4 App Review pass: the camera pre-prompt button says Next (5.1.1(iv)), Settings links the privacy policy on iOS (5.1.1(i)), the Plus row no longer mentions a tip jar, and the microphone purpose string is specific. Store build for App Review.",
   "ascAppId": "6826041969"
 }

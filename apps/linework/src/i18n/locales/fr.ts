@@ -693,7 +693,6 @@ export const fr: Translation = {
   'trace.camera.askTitle': 'Appareil photo nécessaire pour calquer',
   'trace.camera.askBody':
     'Linework affiche la vue de l’appareil photo derrière l’image pour que vous puissiez la calquer sur papier. L’enregistrement ne démarre que si vous touchez Enregistrer, et reste sur votre appareil. Rien n’est envoyé.',
-  'trace.camera.allow': 'Autoriser l’appareil photo',
   'trace.camera.useLightbox': 'Utiliser la table lumineuse',
   'trace.camera.offTitle': 'L’appareil photo est désactivé',
   'trace.camera.offBody':

@@ -678,7 +678,6 @@ export const ko: Translation = {
   'trace.camera.askTitle': '따라 그리려면 카메라가 필요합니다',
   'trace.camera.askBody':
     'Linework는 이미지 뒤에 카메라 화면을 보여 주어 종이에 따라 그릴 수 있게 합니다. 녹화는 녹화를 탭할 때만 진행되며 기기에만 저장됩니다. 아무것도 업로드되지 않습니다.',
-  'trace.camera.allow': '카메라 허용',
   'trace.camera.useLightbox': '대신 라이트박스 사용',
   'trace.camera.offTitle': '카메라가 꺼져 있습니다',
   'trace.camera.offBody':
