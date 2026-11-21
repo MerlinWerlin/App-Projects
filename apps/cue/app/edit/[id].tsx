@@ -3,6 +3,7 @@
  * prompter (competitor complaint: the editor never shows what the prompter will), captions export.
  * Autosaves (debounced) so nothing is ever lost.
  */
+import { Ionicons } from '@expo/vector-icons';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { File, Paths } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
@@ -16,8 +17,8 @@ import { t } from '../../src/i18n';
 import { reason } from '../../src/native/errors';
 import { success, tap } from '../../src/native/haptics';
 import { useApp } from '../../src/state/AppState';
-import { PROMPTER, RADIUS, SPACE, TYPE } from '../../src/theme/theme';
-import { Bar, Btn, IconBtn, Segmented, Txt, usePressStyle } from '../../src/ui/kit';
+import { PROMPTER, RADIUS, SIGN, SIGN_INK, SPACE, TYPE } from '../../src/theme/theme';
+import { Btn, FlapText, IconBtn, Segmented, usePressStyle } from '../../src/ui/kit';
 import { ScriptPreview } from '../../src/ui/ScriptPreview';
 
 export default function Edit() {
@@ -103,6 +104,7 @@ export default function Edit() {
   };
 
   const takes = script.takes ?? [];
+  const readTime = formatDuration(readSeconds(parsed, wpm));
   const go = (path: '/prompt/[id]' | '/record/[id]') => {
     flush();
     router.push({ pathname: path, params: { id: script.id } });
@@ -121,8 +123,9 @@ export default function Edit() {
           onChangeText={setTitle}
           placeholder={displayTitle({ title: '', body }, t('edit.titlePlaceholder'))}
           placeholderTextColor={theme.ink3}
-          style={[TYPE.scriptTitle, st.title, { color: theme.ink }]}
-          selectionColor={theme.go}
+          style={[TYPE.display, st.title, { color: theme.ink }]}
+          selectionColor={theme.ink}
+          maxFontSizeMultiplier={1.4}
           accessibilityLabel={t('edit.titlePlaceholder')}
           returnKeyType="next"
         />
@@ -158,8 +161,8 @@ export default function Edit() {
                 hitSlop={{ top: 4, bottom: 4 }}
                 style={({ pressed }) => [st.tool, { backgroundColor: pressed ? theme.pressed : theme.field }]}
               >
-                <Text style={[TYPE.subhead, st.token, { color: theme.ink2 }]} maxFontSizeMultiplier={1.4}>{token}</Text>
-                <Text style={[TYPE.subhead, { color: theme.ink, fontWeight: '500' }]} maxFontSizeMultiplier={1.4}>{t(k)}</Text>
+                <Text style={[TYPE.headline, { color: theme.ink2 }]} maxFontSizeMultiplier={1.4}>{token}</Text>
+                <Text style={[TYPE.subhead, { color: theme.ink }]} maxFontSizeMultiplier={1.4}>{t(k)}</Text>
               </Pressable>
             ))}
           </ScrollView>
@@ -172,7 +175,7 @@ export default function Edit() {
             multiline
             placeholder={t('edit.bodyPlaceholder')}
             placeholderTextColor={theme.ink3}
-            selectionColor={theme.go}
+            selectionColor={theme.ink}
             style={[TYPE.scriptBody, st.body, { color: theme.ink }]}
             textAlignVertical="top"
             accessibilityLabel={t('edit.bodyPlaceholder')}
@@ -183,39 +186,46 @@ export default function Edit() {
         <ScriptPreview parsed={parsed} palette={app.can('colors') ? PROMPTER[prefs.colors] : PROMPTER.classic} prefs={prefs} />
       )}
 
-      <Bar style={[st.bar, { borderTopColor: theme.rule, paddingBottom: insets.bottom + SPACE.xs }]}>
+      {/* The sign dock: read time set like a gate number, speed, and the way forward. */}
+      <View style={[st.dock, { backgroundColor: SIGN, paddingBottom: insets.bottom + SPACE.xs }]}>
         <View style={st.meta}>
-          <View style={{ flex: 1 }} accessible accessibilityLabel={t('edit.readTime', { time: formatDuration(readSeconds(parsed, wpm)), wpm })} accessibilityLiveRegion="polite">
-            <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 6 }}>
-              <Text style={[TYPE.timeLarge, { color: theme.ink }]} maxFontSizeMultiplier={1.3}>{formatDuration(readSeconds(parsed, wpm))}</Text>
-              <Txt v="footnote" tone="ink2" max={1.6}>{t('edit.toRead')}</Txt>
+          <View style={{ flex: 1 }} accessible accessibilityLabel={t('edit.readTime', { time: readTime, wpm })} accessibilityLiveRegion="polite">
+            <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: SPACE.xs }}>
+              <FlapText value={readTime} style={[TYPE.timeLarge, { color: SIGN_INK }]} max={1.2} />
+              <Text style={[TYPE.footnote, st.onSignSoft]} maxFontSizeMultiplier={1.5}>
+                {t('edit.toRead')}
+              </Text>
             </View>
-            <Txt v="footnote" tone="ink3" max={1.6} style={{ fontVariant: ['tabular-nums'] }}>{t('edit.wpm', { wpm })}</Txt>
+            <Text style={[TYPE.footnote, st.onSignSoft]} maxFontSizeMultiplier={1.5}>
+              {t('edit.wpm', { wpm })}
+            </Text>
           </View>
-          <View style={[st.stepper, { backgroundColor: theme.field }]}>
-            <IconBtn icon="remove" label={t('edit.slower')} onPress={() => setWpm((w) => clampWpm(w - 5))} size={18} color={theme.ink} />
-            <View style={[st.stepRule, { backgroundColor: theme.rule }]} />
-            <IconBtn icon="add" label={t('edit.faster')} onPress={() => setWpm((w) => clampWpm(w + 5))} size={18} color={theme.ink} />
-          </View>
-          <Pressable onPress={fit} accessibilityRole="button" accessibilityLabel={t('edit.fit')} hitSlop={4} style={({ pressed }) => [st.fit, press(pressed)]}>
-            <Text style={[TYPE.subhead, { color: theme.goText, fontWeight: '600' }]} maxFontSizeMultiplier={1.4}>{t('edit.fit')}</Text>
-          </Pressable>
+          <IconBtn icon="remove" label={t('edit.slower')} onPress={() => setWpm((w) => clampWpm(w - 5))} size={20} color={SIGN} bg={SIGN_INK} square />
+          <IconBtn icon="add" label={t('edit.faster')} onPress={() => setWpm((w) => clampWpm(w + 5))} size={20} color={SIGN} bg={SIGN_INK} square />
         </View>
-        {takes.length && app.can('stats') ? (
-          <Txt v="footnote" tone="ink2" style={{ marginTop: SPACE.xxs, fontVariant: ['tabular-nums'] }}>
-            {t('edit.takes', { count: takes.length, best: formatDuration(Math.min(...takes)) })}
-          </Txt>
-        ) : null}
+        <View style={st.subRow}>
+          <Pressable onPress={fit} accessibilityRole="button" accessibilityLabel={t('edit.fit')} hitSlop={4} style={({ pressed }) => [st.fit, press(pressed)]}>
+            <Ionicons name="timer-outline" size={17} color={SIGN_INK} />
+            <Text style={[TYPE.headline, st.fitText]} maxFontSizeMultiplier={1.4}>
+              {t('edit.fit')}
+            </Text>
+          </Pressable>
+          {takes.length && app.can('stats') ? (
+            <Text style={[TYPE.footnote, st.onSignSoft, { flexShrink: 1, textAlign: 'right' }]} maxFontSizeMultiplier={1.4}>
+              {t('edit.takes', { count: takes.length, best: formatDuration(Math.min(...takes)) })}
+            </Text>
+          ) : null}
+        </View>
         <View style={{ flexDirection: 'row', gap: SPACE.xs, marginTop: SPACE.sm }}>
-          <Btn label={t('edit.prompt')} icon="play" onPress={() => go('/prompt/[id]')} style={{ flex: 1.4 }} disabled={!parsed.words.length} />
+          <Btn label={t('edit.prompt')} icon="play" kind="onSign" onPress={() => go('/prompt/[id]')} style={{ flex: 1.4 }} disabled={!parsed.words.length} />
           <RecordBtn label={t('edit.record')} onPress={() => go('/record/[id]')} disabled={!parsed.words.length} />
         </View>
-      </Bar>
+      </View>
     </KeyboardAvoidingView>
   );
 }
 
-/** Record: a plain button whose dot is the on-air red, the only red before recording starts. */
+/** Record on the sign dock: an outlined black button whose dot is the on-air red. */
 function RecordBtn({ label, onPress, disabled }: { label: string; onPress: () => void; disabled?: boolean }) {
   const { theme, prefs } = useApp();
   const press = usePressStyle();
@@ -229,10 +239,12 @@ function RecordBtn({ label, onPress, disabled }: { label: string; onPress: () =>
         tap(prefs.haptics);
         onPress();
       }}
-      style={({ pressed }) => [st.record, { backgroundColor: theme.field }, press(pressed), disabled && { opacity: 0.4 }]}
+      style={({ pressed }) => [st.record, press(pressed), disabled && { opacity: 0.4 }]}
     >
       <View style={[st.recDot, { backgroundColor: theme.onAir }]} />
-      <Text style={[TYPE.headline, { color: theme.ink }]} maxFontSizeMultiplier={1.5}>{label}</Text>
+      <Text style={[TYPE.headline, { color: SIGN_INK }]} maxFontSizeMultiplier={1.5}>
+        {label}
+      </Text>
     </Pressable>
   );
 }
@@ -240,16 +252,16 @@ function RecordBtn({ label, onPress, disabled }: { label: string; onPress: () =>
 const st = StyleSheet.create({
   missing: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   top: { paddingHorizontal: SPACE.gutter, gap: SPACE.sm, paddingBottom: SPACE.xxs },
-  title: { paddingVertical: 2 },
-  tools: { paddingHorizontal: SPACE.gutter, gap: SPACE.xs, paddingVertical: SPACE.xs },
+  title: { fontSize: 34, lineHeight: 40, paddingVertical: 2 },
+  tools: { paddingHorizontal: SPACE.gutter, gap: SPACE.xs, paddingVertical: SPACE.sm },
   tool: { minHeight: 36, paddingHorizontal: SPACE.sm, borderRadius: RADIUS.chip, flexDirection: 'row', alignItems: 'center', gap: 6 },
-  token: { fontWeight: '600' },
-  body: { flex: 1, paddingHorizontal: SPACE.gutter + 2, paddingTop: SPACE.xs },
-  bar: { borderTopWidth: StyleSheet.hairlineWidth, paddingHorizontal: SPACE.gutter, paddingTop: SPACE.sm },
+  body: { flex: 1, paddingHorizontal: SPACE.gutter, paddingTop: SPACE.xxs },
+  dock: { paddingHorizontal: SPACE.gutter, paddingTop: SPACE.md },
   meta: { flexDirection: 'row', alignItems: 'center', gap: SPACE.xs },
-  stepper: { flexDirection: 'row', alignItems: 'center', borderRadius: RADIUS.round },
-  stepRule: { width: StyleSheet.hairlineWidth, height: 18 },
-  fit: { minHeight: SPACE.touch, paddingHorizontal: SPACE.xs, justifyContent: 'center' },
-  record: { flex: 1, minHeight: 50, borderRadius: RADIUS.control, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: SPACE.xs },
+  subRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: SPACE.sm },
+  onSignSoft: { color: '#3D3A2E' },
+  fit: { minHeight: SPACE.touch, flexDirection: 'row', alignItems: 'center', gap: 6 },
+  fitText: { color: SIGN_INK, textDecorationLine: 'underline' },
+  record: { flex: 1, minHeight: 52, borderRadius: RADIUS.control, borderWidth: 2, borderColor: SIGN_INK, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: SPACE.xs },
   recDot: { width: 12, height: 12, borderRadius: 6 },
 });

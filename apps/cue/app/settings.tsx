@@ -70,7 +70,7 @@ export default function Settings() {
                 onPress={() => (locked ? router.push('/plus') : setPrefs({ colors: c as PrompterColors }))}
                 style={st.swatchWrap}
               >
-                <View style={[st.swatch, { backgroundColor: pal.bg, borderColor: on ? theme.go : theme.rule, borderWidth: on ? 2 : StyleSheet.hairlineWidth }]}>
+                <View style={[st.swatch, { backgroundColor: pal.bg, borderColor: on ? theme.ink : theme.rule, borderWidth: on ? 2 : StyleSheet.hairlineWidth }]}>
                   <View style={[st.swatchBand, { backgroundColor: pal.band }]}>
                     <Text style={{ color: pal.ink, fontFamily: FONT.scriptBold, fontSize: 20 }}>Aa</Text>
                   </View>

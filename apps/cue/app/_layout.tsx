@@ -67,9 +67,8 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
   const header = {
     headerShown: true,
     headerStyle: { backgroundColor: theme.ground },
-    headerTintColor: theme.goText,
-    headerTitleStyle: { color: theme.ink, fontSize: 17, fontWeight: '600' },
-    headerLargeTitleStyle: { fontFamily: FONT.scriptBold, color: theme.ink },
+    headerTintColor: theme.ink,
+    headerTitleStyle: { color: theme.ink, fontSize: 17, fontFamily: FONT.scriptBold },
     headerShadowVisible: false,
     headerBackButtonDisplayMode: 'minimal',
   } as const;
@@ -91,13 +90,15 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
           animation: reduceMotion ? 'fade' : 'default',
         }}
       >
-        <Stack.Screen name="index" options={{ ...header, title: t('library.title'), headerLargeTitle: true, headerLargeTitleShadowVisible: false }} />
+        {/* The library draws its own header (title, import, settings) above the sign band. */}
+        <Stack.Screen name="index" options={{ title: t('library.title') }} />
         <Stack.Screen name="edit/[id]" options={{ ...header, title: '' }} />
         <Stack.Screen name="prompt/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom' }} />
         <Stack.Screen name="record/[id]" options={{ presentation: 'fullScreenModal', animation: reduceMotion ? 'fade' : 'fade_from_bottom' }} />
         <Stack.Screen name="settings" options={{ ...header, title: t('settings.title') }} />
         <Stack.Screen name="access-code" options={{ ...header, title: t('access.title') }} />
-        <Stack.Screen name="plus" options={{ ...header, presentation: 'modal', title: '' }} />
+        {/* The paywall opens on a full-bleed sign band with its own close button. */}
+        <Stack.Screen name="plus" options={{ presentation: 'modal', title: t('plus.title') }} />
       </Stack>
       {!introDone && !skipIntro ? <LaunchIntro onDone={() => setIntroDone(true)} /> : null}
     </>

@@ -82,7 +82,7 @@ export default function RecordScreen() {
     const th = app.theme;
     return (
       <ScrollView style={{ backgroundColor: th.ground }} contentContainerStyle={[st.perm, { paddingTop: insets.top + 48, paddingBottom: insets.bottom + 24 }]}>
-        <Txt v="largeTitle" accessibilityRole="header">{t('perm.camera.title')}</Txt>
+        <Txt v="display" accessibilityRole="header">{t('perm.camera.title')}</Txt>
         <Txt tone="ink2">{t('perm.camera.body')}</Txt>
         <View style={[st.permCard, { backgroundColor: th.sheet }]}>
           <Txt v="headline">{t('perm.mic.title')}</Txt>
@@ -202,7 +202,7 @@ export default function RecordScreen() {
         <View style={{ width: 120, alignItems: 'center' }}>
           {takes ? (
             <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
-              <Ionicons name="checkmark" size={15} color={STAGE.go} />
+              <Ionicons name="checkmark" size={15} color={STAGE.sign} />
               <Text maxFontSizeMultiplier={1.4} style={st.chipText} accessibilityLiveRegion="polite">{takes === 1 ? t('record.takesOne') : t('record.takes', { n: takes })}</Text>
             </Bar>
           ) : null}
@@ -215,13 +215,13 @@ export default function RecordScreen() {
 const st = StyleSheet.create({
   fill: { flex: 1, backgroundColor: '#000' },
   perm: { paddingHorizontal: SPACE.lg, gap: SPACE.sm },
-  permCard: { alignSelf: 'stretch', borderRadius: RADIUS.group, paddingHorizontal: SPACE.md, paddingVertical: SPACE.sm, marginTop: SPACE.xs, gap: 2 },
-  scriptBox: { position: 'absolute', left: SPACE.sm, right: SPACE.sm, height: '38%', borderRadius: RADIUS.group, overflow: 'hidden', borderWidth: 1.5 },
+  permCard: { alignSelf: 'stretch', borderRadius: RADIUS.panel, paddingHorizontal: SPACE.md, paddingVertical: SPACE.sm, marginTop: SPACE.xs, gap: 2 },
+  scriptBox: { position: 'absolute', left: SPACE.sm, right: SPACE.sm, height: '38%', borderRadius: RADIUS.panel, overflow: 'hidden', borderWidth: 1.5 },
   center: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, alignItems: 'center', justifyContent: 'center' },
   count: { fontFamily: FONT.scriptBold, fontSize: 150, color: STAGE.ink, fontVariant: ['tabular-nums'] },
   top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: SPACE.xs },
-  round: { borderRadius: SPACE.touch / 2 },
-  chip: { borderRadius: RADIUS.round, paddingHorizontal: 14, minHeight: SPACE.touch, alignItems: 'center', justifyContent: 'center' },
+  round: { borderRadius: RADIUS.control },
+  chip: { borderRadius: RADIUS.control, paddingHorizontal: 14, minHeight: SPACE.touch, alignItems: 'center', justifyContent: 'center' },
   chipText: { ...TYPE.footnote, fontWeight: '600', color: STAGE.ink },
   recDot: { width: 9, height: 9, borderRadius: 5, backgroundColor: STAGE.onAir },
   recText: { ...TYPE.time, color: STAGE.ink },

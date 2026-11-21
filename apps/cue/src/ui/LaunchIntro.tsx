@@ -122,7 +122,7 @@ const st = StyleSheet.create({
     borderLeftWidth: 11,
     borderTopColor: 'transparent',
     borderBottomColor: 'transparent',
-    borderLeftColor: STAGE.standby,
+    borderLeftColor: STAGE.sign,
   },
   column: { alignItems: 'center', gap: 14 },
   ghost: { height: 9, borderRadius: 5, backgroundColor: GHOST },
