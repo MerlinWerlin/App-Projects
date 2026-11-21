@@ -19,7 +19,7 @@ import { t } from '../../src/i18n';
 import { success, tap, thud } from '../../src/native/haptics';
 import { loadSpeech, type SpeechSession } from '../../src/native/speech';
 import { useApp } from '../../src/state/AppState';
-import { Bar, IconBtn } from '../../src/ui/kit';
+import { IconBtn, Segmented } from '../../src/ui/kit';
 import { FONT, PROMPTER, RADIUS, SPACE, STAGE, TYPE } from '../../src/theme/theme';
 import { Prompter, type PrompterHandle } from '../../src/ui/Prompter';
 import { useVoiceGate } from '../../src/ui/useVoiceGate';
@@ -241,20 +241,13 @@ export default function PromptScreen() {
     router.back();
   };
 
-  const chooseMode = () => {
-    const follow = !!loadSpeech();
-    Alert.alert(t('prompt.modeTitle'), undefined, [
-      { text: t('prompt.mode.steady'), onPress: () => setMode('steady') },
-      {
-        text: t('prompt.mode.voice'),
-        onPress: () => voiceAllowed ? setMode('voice') : router.push('/plus'),
-      },
-      {
-        text: t('prompt.mode.follow'),
-        onPress: () => !voiceAllowed ? router.push('/plus') : follow ? setMode('follow') : Alert.alert(t('voice.followNeedsBuild')),
-      },
-      { text: t('common.cancel'), style: 'cancel' },
-    ]);
+  // Same rules as the old mode alert: locked voice modes open Plus; Voice Follow needs the installed build.
+  const pickMode = (m: PaceMode) => {
+    if (m === 'steady') return setMode('steady');
+    if (!voiceAllowed) return router.push('/plus');
+    if (m === 'voice') return setMode('voice');
+    if (loadSpeech()) setMode('follow');
+    else Alert.alert(t('voice.followNeedsBuild'));
   };
 
   const sections = () => {
@@ -306,41 +299,35 @@ export default function PromptScreen() {
       ) : null}
 
       {chrome ? (
-        <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(200)} exiting={app.reduceMotion ? undefined : FadeOut.duration(260)} style={[st.top, { paddingTop: insets.top + 8 }]} pointerEvents="box-none">
-          <Bar tint="dark" style={st.round}>
-            <IconBtn icon="close" label={t('prompt.close')} onPress={close} color={STAGE.ink} />
-          </Bar>
+        <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(180)} exiting={app.reduceMotion ? undefined : FadeOut.duration(240)} style={[st.top, { paddingTop: insets.top + SPACE.xs }]} pointerEvents="box-none">
+          <IconBtn icon="close" label={t('prompt.close')} onPress={close} color={STAGE.ink} bg={STAGE.panel} square />
           <View style={{ flex: 1 }} />
           {prefs.showTimer ? (
-            <Bar tint="dark" style={st.chip}>
-              <Text maxFontSizeMultiplier={1.4} style={st.timer}>{formatDuration(elapsed)}</Text>
-            </Bar>
+            <View style={st.timerBox}>
+              <Text maxFontSizeMultiplier={1.3} style={st.timer}>
+                {formatDuration(elapsed)}
+              </Text>
+            </View>
           ) : null}
-          <Pressable onPress={chooseMode} accessibilityRole="button" accessibilityLabel={t('prompt.changeMode', { mode: t(`prompt.mode.${mode}`) })}>
-            <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 6 }]}>
-              <Ionicons name={mode === 'steady' ? 'speedometer-outline' : 'mic-outline'} size={15} color={STAGE.ink2} />
-              <Text maxFontSizeMultiplier={1.4} style={st.chipText}>{t(`prompt.mode.${mode}`)}</Text>
-            </Bar>
-          </Pressable>
         </Animated.View>
       ) : null}
 
       {listening ? (
-        <View pointerEvents="none" style={[st.listen, { top: insets.top + 64 }]}>
-          <Bar tint="dark" style={[st.chip, { flexDirection: 'row', gap: 7 }]}>
-            <View style={[st.dot, { backgroundColor: hearing ? STAGE.go : STAGE.standby }]} />
-            <Text maxFontSizeMultiplier={1.4} style={st.chipText}>{hearing ? t('prompt.listening') : t('prompt.waiting')}</Text>
-          </Bar>
+        <View pointerEvents="none" style={[st.listen, { top: insets.top + SPACE.xs + 52 }]}>
+          <View style={[st.dot, { backgroundColor: hearing ? STAGE.sign : STAGE.dim }]} />
+          <Text maxFontSizeMultiplier={1.4} style={st.chipText}>
+            {hearing ? t('prompt.listening') : t('prompt.waiting')}
+          </Text>
         </View>
       ) : null}
 
       {chrome ? (
-        <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(200)} exiting={app.reduceMotion ? undefined : FadeOut.duration(260)} style={[st.bottom, { paddingBottom: insets.bottom + 12 }]} pointerEvents="box-none">
-          <Bar tint="dark" style={st.dock}>
-            {/* State line lives inside the dock, so it never sits on the script. Cue-light colours: amber paused, green done. */}
+        <Animated.View entering={app.reduceMotion ? undefined : FadeIn.duration(180)} exiting={app.reduceMotion ? undefined : FadeOut.duration(240)} style={[st.dock, { paddingBottom: insets.bottom + SPACE.xs }]}>
+          <View style={st.dockInner}>
+            {/* State line lives inside the dock, so it never sits on the script. */}
             {!running && count === null ? (
               <Text
-                style={[st.hint, { color: done !== null ? STAGE.go : elapsed > 0 ? STAGE.standby : STAGE.ink2 }]}
+                style={[st.hint, { color: done !== null || elapsed > 0 ? STAGE.sign : STAGE.ink2 }]}
                 accessibilityLiveRegion="polite"
                 maxFontSizeMultiplier={1.4}
                 numberOfLines={1}
@@ -348,23 +335,42 @@ export default function PromptScreen() {
                 {done !== null ? t('prompt.finished', { time: formatDuration(done) }) : elapsed > 0 ? t('prompt.paused') : t('prompt.tapToStart')}
               </Text>
             ) : null}
-            <View style={st.dockRow}>
-              <IconBtn icon="play-skip-back-outline" label={t('prompt.restart')} onPress={restart} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
-              <IconBtn icon="list-outline" label={t('prompt.sections')} onPress={sections} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
-              <Text maxFontSizeMultiplier={1.4} style={st.speed} accessibilityLabel={t('prompt.speed', { pct: Math.round(speed * 100) })} accessibilityLiveRegion="polite">
-                {Math.round(speed * 100)}%
-              </Text>
-              <IconBtn icon="swap-horizontal" label={t('prompt.mirror')} active={prefs.mirrorH} onPress={() => app.setPrefs({ mirrorH: !prefs.mirrorH })} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
-              <IconBtn icon="swap-vertical" label={t('prompt.flip')} active={prefs.mirrorV} onPress={() => app.setPrefs({ mirrorV: !prefs.mirrorV })} color={STAGE.ink2} activeFill={STAGE.activeFill} activeInk={STAGE.activeInk} />
+            <Segmented
+              dark
+              compact
+              label={t('prompt.modeTitle')}
+              value={mode}
+              onChange={pickMode}
+              options={[
+                { value: 'steady', label: t('prompt.mode.steady') },
+                { value: 'voice', label: t('prompt.mode.voice'), locked: !voiceAllowed },
+                { value: 'follow', label: t('prompt.mode.follow'), locked: !voiceAllowed },
+              ]}
+            />
+            <View style={st.transport}>
+              <IconBtn icon="play-skip-back" label={t('prompt.restart')} onPress={restart} color={STAGE.ink2} square />
+              <IconBtn icon="list" label={t('prompt.sections')} onPress={sections} color={STAGE.ink2} square />
+              <View style={{ flex: 1 }} />
+              <IconBtn icon="remove" label={t('prompt.slower')} onPress={() => setSpeed((s) => nudgeSpeed(s, -1))} color={STAGE.ink} size={24} square />
+              <View style={st.playCol}>
+                <Pressable
+                  onPress={toggle}
+                  accessibilityRole="button"
+                  accessibilityLabel={running ? t('prompt.pause') : t('prompt.play')}
+                  style={({ pressed }) => [st.play, { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed && !app.reduceMotion ? 0.96 : 1 }] }]}
+                >
+                  <Ionicons name={running ? 'pause' : 'play'} size={30} color={STAGE.onSign} style={running ? undefined : { marginLeft: 3 }} />
+                </Pressable>
+                <Text style={st.speed} maxFontSizeMultiplier={1.3} accessibilityLabel={t('prompt.speed', { pct: Math.round(speed * 100) })} accessibilityLiveRegion="polite">
+                  {Math.round(speed * 100)}%
+                </Text>
+              </View>
+              <IconBtn icon="add" label={t('prompt.faster')} onPress={() => setSpeed((s) => nudgeSpeed(s, 1))} color={STAGE.ink} size={24} square />
+              <View style={{ flex: 1 }} />
+              <IconBtn icon="swap-horizontal" label={t('prompt.mirror')} active={prefs.mirrorH} onPress={() => app.setPrefs({ mirrorH: !prefs.mirrorH })} color={STAGE.ink2} activeFill={STAGE.sign} activeInk={STAGE.onSign} square />
+              <IconBtn icon="swap-vertical" label={t('prompt.flip')} active={prefs.mirrorV} onPress={() => app.setPrefs({ mirrorV: !prefs.mirrorV })} color={STAGE.ink2} activeFill={STAGE.sign} activeInk={STAGE.onSign} square />
             </View>
-            <View style={st.dockMain}>
-              <IconBtn icon="remove" label={t('prompt.slower')} onPress={() => setSpeed((s) => nudgeSpeed(s, -1))} color={STAGE.ink} size={24} />
-              <Pressable onPress={toggle} accessibilityRole="button" accessibilityLabel={running ? t('prompt.pause') : t('prompt.play')} style={({ pressed }) => [st.play, { opacity: pressed ? 0.85 : 1, transform: [{ scale: pressed && !app.reduceMotion ? 0.96 : 1 }] }]}>
-                <Ionicons name={running ? 'pause' : 'play'} size={28} color={STAGE.onGo} style={running ? undefined : { marginLeft: 3 }} />
-              </Pressable>
-              <IconBtn icon="add" label={t('prompt.faster')} onPress={() => setSpeed((s) => nudgeSpeed(s, 1))} color={STAGE.ink} size={24} />
-            </View>
-          </Bar>
+          </View>
         </Animated.View>
       ) : null}
     </View>
@@ -374,19 +380,18 @@ export default function PromptScreen() {
 const st = StyleSheet.create({
   fill: { flex: 1 },
   center: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, alignItems: 'center', justifyContent: 'center' },
-  count: { fontFamily: FONT.scriptBold, fontSize: 168, lineHeight: 180, fontVariant: ['tabular-nums'] },
-  hint: { ...TYPE.footnote, fontWeight: '600', textAlign: 'center', paddingTop: SPACE.xxs, paddingBottom: 2 },
-  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 14, gap: SPACE.xs },
-  round: { borderRadius: SPACE.touch / 2 },
-  chip: { borderRadius: RADIUS.round, paddingHorizontal: 14, minHeight: SPACE.touch, alignItems: 'center', justifyContent: 'center' },
-  chipText: { ...TYPE.footnote, fontWeight: '600', color: STAGE.ink },
+  count: { fontFamily: FONT.scriptBold, fontSize: 180, lineHeight: 190, letterSpacing: -4 },
+  hint: { ...TYPE.headline, textAlign: 'center', paddingBottom: SPACE.xs },
+  top: { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: SPACE.sm, gap: SPACE.xs },
+  timerBox: { backgroundColor: STAGE.panel, borderRadius: RADIUS.control, paddingHorizontal: SPACE.sm, minHeight: SPACE.touch, justifyContent: 'center' },
   timer: { ...TYPE.time, color: STAGE.ink },
-  listen: { position: 'absolute', right: 14 },
-  dot: { width: 8, height: 8, borderRadius: 4 },
-  bottom: { position: 'absolute', bottom: 0, left: 0, right: 0, alignItems: 'center', paddingHorizontal: SPACE.sm },
-  dock: { borderRadius: RADIUS.dock, paddingHorizontal: 10, paddingVertical: SPACE.xs, width: '100%', maxWidth: 460, borderWidth: StyleSheet.hairlineWidth, borderColor: STAGE.hairline },
-  dockRow: { flexDirection: 'row', alignItems: 'center' },
-  dockMain: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: SPACE.lg - 4, paddingTop: 2, paddingBottom: SPACE.xxs },
-  play: { width: 64, height: 64, borderRadius: 32, backgroundColor: STAGE.go, alignItems: 'center', justifyContent: 'center', marginHorizontal: 10 },
-  speed: { flex: 1, ...TYPE.time, color: STAGE.ink, textAlign: 'center' },
+  listen: { position: 'absolute', right: SPACE.sm, flexDirection: 'row', alignItems: 'center', gap: SPACE.xs, backgroundColor: STAGE.panel, borderRadius: RADIUS.control, paddingHorizontal: SPACE.sm, minHeight: 36 },
+  chipText: { ...TYPE.footnote, fontFamily: FONT.scriptBold, color: STAGE.ink },
+  dot: { width: 10, height: 10, borderRadius: 5 },
+  dock: { position: 'absolute', left: 0, right: 0, bottom: 0, backgroundColor: STAGE.panel, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: STAGE.hairline, alignItems: 'center' },
+  dockInner: { width: '100%', maxWidth: 520, paddingHorizontal: SPACE.sm, paddingTop: SPACE.sm, gap: SPACE.sm },
+  transport: { flexDirection: 'row', alignItems: 'center', gap: 2 },
+  playCol: { alignItems: 'center', gap: 2, marginHorizontal: SPACE.xxs },
+  play: { width: 64, height: 64, borderRadius: RADIUS.control, backgroundColor: STAGE.sign, alignItems: 'center', justifyContent: 'center' },
+  speed: { ...TYPE.footnote, fontFamily: FONT.scriptBold, color: STAGE.ink2 },
 });

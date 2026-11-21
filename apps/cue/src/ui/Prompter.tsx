@@ -246,8 +246,9 @@ export const Prompter = forwardRef<PrompterHandle, Props>(function Prompter(p, r
           ) : null}
           {viewport > 0 ? (
             <>
-              <View pointerEvents="none" style={[st.tick, { left: 0, top: lineY + lh * 0.5 - 14, backgroundColor: palette.cue }]} />
-              <View pointerEvents="none" style={[st.tick, { right: 0, top: lineY + lh * 0.5 - 14, backgroundColor: palette.cue }]} />
+              {/* Wayfinding arrows locked to both edges, pointing at the line you read. */}
+              <View pointerEvents="none" style={[st.arrow, { left: 0, top: lineY + lh * 0.5 - 12, borderLeftColor: palette.cue, borderLeftWidth: 14 }]} />
+              <View pointerEvents="none" style={[st.arrow, { right: 0, top: lineY + lh * 0.5 - 12, borderRightColor: palette.cue, borderRightWidth: 14 }]} />
             </>
           ) : null}
         </View>
@@ -307,7 +308,7 @@ const st = StyleSheet.create({
   fill: { flex: 1, overflow: 'hidden' },
   band: { position: 'absolute', left: 0, right: 0 },
   fade: { position: 'absolute', left: 0, right: 0 },
-  tick: { position: 'absolute', width: 4, height: 28 },
+  arrow: { position: 'absolute', width: 0, height: 0, borderTopWidth: 12, borderBottomWidth: 12, borderTopColor: 'transparent', borderBottomColor: 'transparent' },
   breakRow: { flexDirection: 'row', justifyContent: 'center', gap: 10, marginVertical: 30 },
   breakDot: { width: 6, height: 6, borderRadius: 3, opacity: 0.7 },
 });

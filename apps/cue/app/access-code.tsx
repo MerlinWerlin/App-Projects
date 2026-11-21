@@ -24,15 +24,15 @@ export default function AccessCode() {
     } finally { working.current = false; setBusy(false); }
   };
   return <ScrollView style={{ backgroundColor: app.theme.ground }} contentContainerStyle={{ padding: SPACE.lg, gap: SPACE.md }} keyboardShouldPersistTaps="handled">
-    <Txt v="headline">{t(app.codeAccess ? 'access.active' : 'access.title')}</Txt>
+    <Txt v="title">{t(app.codeAccess ? 'access.active' : 'access.title')}</Txt>
     <Txt tone="ink2">{t(app.codeAccess ? 'access.activeBody' : 'access.body')}</Txt>
     {!app.codeAccess ? <TextInput
       testID="access-code-input"
       accessibilityLabel={t('access.title')} placeholder={t('access.title')}
-      placeholderTextColor={app.theme.ink3} selectionColor={app.theme.go} value={code} onChangeText={(value) => { setCode(value); setError(false); }}
+      placeholderTextColor={app.theme.ink3} selectionColor={app.theme.ink} value={code} onChangeText={(value) => { setCode(value); setError(false); }}
       autoCapitalize="characters" autoCorrect={false} maxLength={128} editable={!busy}
       secureTextEntry
-      style={[TYPE.body, { color: app.theme.ink, backgroundColor: app.theme.field, borderRadius: RADIUS.field, padding: SPACE.md }]}
+      style={[TYPE.body, { color: app.theme.ink, backgroundColor: app.theme.field, borderRadius: RADIUS.control, padding: SPACE.md }]}
     /> : null}
     {error ? <Txt tone="danger" accessibilityLiveRegion="polite">{t('access.failed')}</Txt> : null}
     <Btn label={t(app.codeAccess ? 'access.remove' : 'access.redeem')} onPress={() => { void act(); }} disabled={busy || (!app.codeAccess && !code.trim())} />

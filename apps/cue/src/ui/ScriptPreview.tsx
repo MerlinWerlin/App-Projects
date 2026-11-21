@@ -8,7 +8,7 @@ export function ScriptPreview({ parsed, palette, prefs }: { parsed: ParsedScript
   const fs = Math.max(18, Math.round(prefs.fontSize * 0.6));
   const lh = Math.round(fs * prefs.lineHeight);
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: palette.bg, marginHorizontal: SPACE.gutter, marginTop: SPACE.xs, borderRadius: RADIUS.group }} contentContainerStyle={{ padding: SPACE.lg }}>
+    <ScrollView style={{ flex: 1, backgroundColor: palette.bg, marginHorizontal: SPACE.gutter, marginTop: SPACE.xs, borderRadius: RADIUS.panel }} contentContainerStyle={{ padding: SPACE.lg }}>
       {parsed.blocks.map((b, i) => {
         if (b.kind === 'break') return <View key={i} style={{ borderTopWidth: 2, borderStyle: 'dashed', borderTopColor: palette.dim, marginVertical: 18 }} />;
         if (b.kind === 'heading')
