@@ -1,0 +1,17 @@
+{
+  "themeId": "burr-hinterland",
+  "recipe": [
+    "square",
+    "burrPortal",
+    "burrScrape",
+    "dash",
+    "sword",
+    "trail",
+    "ticket"
+  ],
+  "art": {
+    "burrPortal": "M 11 88 L 11 27 L 38 12 L 38 45 L 63 31 L 89 48 L 89 88 Z M 11 27 L 38 45 L 38 88 M 38 45 L 63 60 L 89 48 M 63 60 L 63 88 M 19 51 L 29 56 L 29 72 L 19 67 Z M 48 64 L 55 69 L 55 82 L 48 78 Z M 71 67 L 82 61 L 82 78 L 71 84 Z",
+    "burrScrape": "M 10 20 Q 37 8 63 20 T 91 20 M 10 30 Q 37 18 63 30 T 91 30 M 10 40 Q 37 28 63 40 T 91 40 M 10 60 Q 37 48 63 60 T 91 60 M 10 70 Q 37 58 63 70 T 91 70 M 10 80 Q 37 68 63 80 T 91 80 M 10 90 Q 37 78 63 90 T 91 90"
+  },
+  "direction": "Broken portal and scraped curved reserve lines; squared plate dial, dashed incisions, sword hands, trail charge gauge and ticket calendar on warm paper."
+}

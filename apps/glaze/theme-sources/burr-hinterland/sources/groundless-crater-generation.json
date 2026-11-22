@@ -1,0 +1,18 @@
+{
+  "id": "groundless-crater",
+  "prompt": "Edit this one mezzotint pure-art asset into an impossible crater that cannot be confused with an envelope or stationery. Retain the beautiful velvety rocked-burr black ink, scraped luminous warm ivory mezzotint print texture, flat print reproduction quality, tiny vermilion accent, and genuine transparent alpha outside the form. Crucial changes: DELETE the entire raised flap on the upper right. Change the big triangular white inner surface into a deep asymmetrical LONG OVAL HOLE with a sheer black-and-ivory banded vertical wall, so it is clearly a bottomless excavated cavity rather than folded paper. Inside this hole suspend three tiny matte black cubes at different heights above one small vermilion rectangle. Make the broad low outer silhouette an irregular blunt six-sided ink slab, with one side split open by a narrow ivory seam. Preserve obvious carbon-black granular mezzotint tones, no crosshatching, no glossy3D material. Whole form complete, comfortably within square1024 canvas with20% empty transparent margins. No text, letters, numbers, signature, clock/date/battery readings, UI, logo, face/eyes/smile, real object, frame or contact sheet.",
+  "tool": "built-in image_gen",
+  "source": "sources/groundless-crater.a301f595.png",
+  "sourceSha256": "a301f59544e6bdb75975f767535463deb48a3f5084dc619deb58d9fbf8aabdfc",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/groundless-crater.d50db955.png",
+  "sha256": "d50db9552130ab966f833e3daff504c5862d5a60d1d41af686eb04aba02802a8",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

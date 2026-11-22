@@ -1,0 +1,129 @@
+{
+  "theme": "burr-hinterland",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Hand-pulled copperplate mezzotint, scraped reserves and vermilion chine-colle",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Make ONE astonishingly strange original 1290:2796 portrait wallpaper as a traditional hand-pulled MEZZOTINT print, entirely flat ink on warm ecru cotton-rag paper. The main lower-half image MUST BE a visibly impossible INK MONOLITH, not scenery: a large very black stepped vertical rectangular mass is cut open by THREE huge sharp white square apertures that interlock at right angles, an enormous white curled paper-like bridge passes THROUGH one aperture and comes out upside down, two small detached black cubes float inside the white void. At its base the mass dissolves into narrow velvety ink tendrils; a single restrained vermilion chine-colle rectangle is wedged inside an aperture, no more colored areas. Brutally clear bold abstract silhouette, weird topology obvious even small. The medium is scraped and burnished copperplate mezzotint: velvety carbon black, granular rocked burr stipple, scraped white luminous transitions, warm paper fibers, faint plate impression; no crosshatching, no glossy3D material, no real architecture, no organic living substance. Upper45% is quiet blank ivory paper #F1E8D5 with subtle fibers for icons; lower55% dense print composition with monolith anchored slightly right of centre, generous surrounding paper. Black #1E2023 and tiny vermilion #BB4937 only. No hills, dunes, ordinary landscape, trees, animals, household objects, signatures, handwriting, edition numerals, text, clocks, dates, batteries, logos, UI, mockup or border. One continuous artwork.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.ab257e16.png",
+      "sourceSha256": "ab257e162929473e4dbd4ffc8a36c0226d605a9d6f42eaf61b7669a10921e806",
+      "sourceDimensions": [
+        851,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "91c798ecf3198cded07e71677b285caa933b89e36ed2d130565f9591873ecc65",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "underside-vault",
+      "prompt": "ONE original standalone square1024x1024 pure artwork for BURR HINTERLAND, traditional copperplate MEZZOTINT print language. THE UNDERSIDE VAULT: a large asymmetrical charcoal-black upside-down teardrop-shaped hollow is scraped into an impossible open amphitheatre; three broad ivory stepped terraces cling to its INNER ceiling and curve down into a tiny white rectangular portal near the pointed bottom. One small muted vermilion paper triangle is trapped behind a terrace. The world is carved out of velvety ink, no actual building, animal or ordinary object. Fine granular rocker burr, deep pooled carbon ink, burnished scraped white transitions, small rag-paper fibers inside the white areas, absolutely no crosshatching or pencil lines. Flat fine-art print reproduction, NOT photoreal3D sculpture or glossy material. Bold compact high contrast silhouette with generous18% fully transparent alpha margins; transparent outside the irregular ink perimeter, opaque warm ivory #F1E8D5 negative-space shapes inside. Whole composition central65%, no paper sheet, ground, background tile, border, frame, base or pedestal. No text, signature, edition number, letters, numerals, labels, clock, time/date/battery values, logos or UI. One independent artwork, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/underside-vault.22c6825f.png",
+      "sourceSha256": "22c6825f456a71de8b835244c97d5cc0243180b95c9094760d9187bedeabb483",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/underside-vault.9a878715.png",
+      "sha256": "9a87871577e3c266ca017abbf70d5aa763e7f08fbfb52685a5fbe60ee79cac21",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "upstream-stair",
+      "prompt": "ONE separate original square1024x1024 pure artwork for Glaze BURR HINTERLAND. A sharply ANGULAR mezzotint print called UPSTREAM STAIR: a wide zigzag carbon-black form with a broken square outer silhouette is cut by an ivory stairway that rises leftward, folds THROUGH its own underside and emerges downwards at the right. Three crisp square ivory slots pierce the thick black zigzag at different heights; one thin vermilion chine-colle strip lies diagonally behind the lowest opening. Impossible circulation and bold right angles, NO curved ribbons, teardrops, rounded shell, hills or natural landscape. Traditional fine-art copperplate mezzotint, deep velvety black rocked burr grain with burnished scraped white gradients, faint warm rag-paper texture in the ivory negative spaces, no hatching/pencil lines, flat printed ink not3D metal/clay sculpture. Entire strange abstract form central65% with18% transparent alpha margin; opacity retained inside ivory openings, outside contour genuinely transparent. No paper rectangle, tile, backdrop, floor, frame, pedestal. No text, letters, edition numbers, signature, numerals, clocks, time/date/battery reading, UI, logo. One individual production asset, no collage/contact sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/upstream-stair.791602f2.png",
+      "sourceSha256": "791602f2c15b2c9c68cb1b0bc16694952a984cd324133d98840f3fd558951455",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/upstream-stair.d82e7e1a.png",
+      "sha256": "d82e7e1a08b98c825cfb244107d82febb0eaacafabaaad52e5ee839fb6bbced9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "hanging-tide",
+      "prompt": "ONE original standalone1024x1024 square artwork for BURR HINTERLAND, mezzotint print. HANGING TIDE: an impossible narrow vertical ink landform, a black rectangular crown floats above seven long parallel black tapering streamers that curve upward at their ends; a single wide luminous IVORY channel passes horizontally through the middle of all streamers without severing them, so gravity feels reversed. One small offset vermilion square sits near the very upper-left black crown. Long thin jagged hanging silhouette, emphatically NOT stairs, oval shell, ribbon loop, real waterfall, curtain or household object. Material language is flat fine-art MEZZOTINT copperplate print: velvety charcoal rocked-burr stipple, dense granular black ink, burnished white gradients, warm ivory paper fibers in white printed reserves, no outlines/hatching, no3D sculpture, glossy texture or photograph. Whole form central65%,18% genuinely transparent alpha margin, no square paper sheet, backdrop, floor, frame, border or pedestal. Ink perimeter soft irregularly scraped edges, bold legible small-widget shapes. No text, letters, signature, edition numbers, logos, UI, dates, clock, dial, time or battery. ONE separate image, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/hanging-tide.ac51b3b6.png",
+      "sourceSha256": "ac51b3b61b711ffafc85edeaf50e550f10c8637fd43fd7ed29a99df7c4fa678c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hanging-tide.5338380f.png",
+      "sha256": "5338380f9e9fdd13b2784149333b5bc379bb4a026614f2ebf6d197188a72a728",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "groundless-crater",
+      "prompt": "Edit this one mezzotint pure-art asset into an impossible crater that cannot be confused with an envelope or stationery. Retain the beautiful velvety rocked-burr black ink, scraped luminous warm ivory mezzotint print texture, flat print reproduction quality, tiny vermilion accent, and genuine transparent alpha outside the form. Crucial changes: DELETE the entire raised flap on the upper right. Change the big triangular white inner surface into a deep asymmetrical LONG OVAL HOLE with a sheer black-and-ivory banded vertical wall, so it is clearly a bottomless excavated cavity rather than folded paper. Inside this hole suspend three tiny matte black cubes at different heights above one small vermilion rectangle. Make the broad low outer silhouette an irregular blunt six-sided ink slab, with one side split open by a narrow ivory seam. Preserve obvious carbon-black granular mezzotint tones, no crosshatching, no glossy3D material. Whole form complete, comfortably within square1024 canvas with20% empty transparent margins. No text, letters, numbers, signature, clock/date/battery readings, UI, logo, face/eyes/smile, real object, frame or contact sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/groundless-crater.a301f595.png",
+      "sourceSha256": "a301f59544e6bdb75975f767535463deb48a3f5084dc619deb58d9fbf8aabdfc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/groundless-crater.d50db955.png",
+      "sha256": "d50db9552130ab966f833e3daff504c5862d5a60d1d41af686eb04aba02802a8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "editReference": {
+        "file": "sources/groundless-crater.ac1d9b02.png",
+        "sha256": "ac1d9b0225dd3a2e65eb984f5adfb18e037722b491026af8e58327d004d2ccee",
+        "role": "Original independent generated crater image, edited via built-in image_gen to remove envelope-like flap."
+      }
+    },
+    {
+      "id": "forked-night",
+      "prompt": "ONE new individual original1024x1024 square pure artwork for BURR HINTERLAND, a flat copperplate MEZZOTINT image titled FORKED NIGHT. Two thick black ink branches climb from a very narrow single stem, separate into radically different heights and terminate in hard diagonal flat cuts. A small free-floating ivory trapezoid sits BETWEEN them; three small rectangular white windows descend through only the taller branch. At the branching joint a tiny vermilion triangular underprint peeks out. An invented abstract split territory carved from velvety ink; tall asymmetrical fork silhouette, emphatically not a tree, antler, person, letterform, animal, household object, stairs, shell or hanging drips. Rocked burr gives the black ink very fine granular velvety stipple, scraped/burnished ivory highlights, warm cotton rag fibers in white reserves, no outlines, crosshatching, pencil lines, glossy3D texture or physical sculpture photography. Whole shape middle65% with18% fully transparent alpha margins outside contour, ivory interior windows remain opaque warm #F1E8D5. No paper sheet, tile, backdrop, floor, stand or frame. No signature, words, numbers, edition marks, labels, logos, UI, clocks, time/date/battery live readings. One artwork only, no variants or contact sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/forked-night.24e8f70d.png",
+      "sourceSha256": "24e8f70d855fcd9a7f82f59b0994534eb4600d6968d6744a83a7fa5f9ba16df4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/forked-night.e8324568.png",
+      "sha256": "e832456890a555c2d4d6face62864058417a75ce05b50fa3623acdd15be4bb83",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim.",
+  "rejectedExperiments": {
+    "wallpaper": "qa/rejected/burr-wallpaper-rejected.json",
+    "crater": "qa/rejected/burr-art4-rejected.json",
+    "reason": "Initial wallpaper too ordinary; initial crater too like an envelope; replacement void layout too like a face. Selected final edit visibly resolves these."
+  }
+}

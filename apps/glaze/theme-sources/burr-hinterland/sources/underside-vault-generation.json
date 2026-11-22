@@ -1,0 +1,18 @@
+{
+  "id": "underside-vault",
+  "prompt": "ONE original standalone square1024x1024 pure artwork for BURR HINTERLAND, traditional copperplate MEZZOTINT print language. THE UNDERSIDE VAULT: a large asymmetrical charcoal-black upside-down teardrop-shaped hollow is scraped into an impossible open amphitheatre; three broad ivory stepped terraces cling to its INNER ceiling and curve down into a tiny white rectangular portal near the pointed bottom. One small muted vermilion paper triangle is trapped behind a terrace. The world is carved out of velvety ink, no actual building, animal or ordinary object. Fine granular rocker burr, deep pooled carbon ink, burnished scraped white transitions, small rag-paper fibers inside the white areas, absolutely no crosshatching or pencil lines. Flat fine-art print reproduction, NOT photoreal3D sculpture or glossy material. Bold compact high contrast silhouette with generous18% fully transparent alpha margins; transparent outside the irregular ink perimeter, opaque warm ivory #F1E8D5 negative-space shapes inside. Whole composition central65%, no paper sheet, ground, background tile, border, frame, base or pedestal. No text, signature, edition number, letters, numerals, labels, clock, time/date/battery values, logos or UI. One independent artwork, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/underside-vault.22c6825f.png",
+  "sourceSha256": "22c6825f456a71de8b835244c97d5cc0243180b95c9094760d9187bedeabb483",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/underside-vault.9a878715.png",
+  "sha256": "9a87871577e3c266ca017abbf70d5aa763e7f08fbfb52685a5fbe60ee79cac21",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
