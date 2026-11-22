@@ -115,5 +115,19 @@
     "sourceFraming": "High-opacity subject bounds are inside all five source frames; maximum edge alpha is 1 or 2 out of 255.",
     "ownerSteering": "Applies Jared 22 November tangible-subject direction while preserving a distinct scientific image process."
   },
-  "packTestEvidence": "Unchanged pipeline: 47 distinct pack test cases passed across the initial suite and the two Pillow-enabled WebP reruns. This theme separately passed the real builder, full decoding, hashes, provenance and actual app planner/renderer checks."
+  "packTestEvidence": "Unchanged pipeline: 47 distinct pack test cases passed across the initial suite and the two Pillow-enabled WebP reruns. This theme separately passed the real builder, full decoding, hashes, provenance and actual app planner/renderer checks.",
+  "ornamentRefinement": {
+    "optionalField": "ornament",
+    "heroPathsUnchanged": true,
+    "rasterAssetsUnchanged": true,
+    "pathVocabulary": "M/L/Q/T/C/Z",
+    "canvas": [
+      100,
+      100
+    ],
+    "pathBoundsChecked": true,
+    "pathLength": 287,
+    "previewScope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
+    "runtimeSupport": "Coordinator implementing actual TS/Swift parsing and rendering; native integration checks pending."
+  }
 }

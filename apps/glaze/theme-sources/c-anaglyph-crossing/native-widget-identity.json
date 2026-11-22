@@ -15,5 +15,8 @@
   },
   "direction": "Light-ground anaglyph migration world. Tall shield-headed stiltshell and three-rocker-foot keel-skater silhouettes match the new creatures. Faceted dial with dash markers/baton hands, cyan tile charge gauge and ticket calendar; existing renderer uses supported theme colours.",
   "values": "Existing live Clock/Battery/Calendar mechanisms. Raster art has no readings; artistic anaglyph language carries no calibrated stereo claim.",
-  "registryIntegration": "Coordinator integrates original data-only native identity descriptor."
+  "registryIntegration": "Coordinator integrates original data-only native identity descriptor.",
+  "ornament": "M 20 70 L 66 24 Q 76 16 80 26 L 63 69 Q 43 79 20 70 Z M 12 65 L 58 18 Q 72 6 74 18 L 58 62 Q 40 74 12 65 Z M 24 82 L 63 82",
+  "ornamentDirection": "two offset fin contours echo the artistic red/cyan registration geometry using the supported native theme colours.",
+  "ornamentProvenance": "Original authored 100x100 SVG path, 22 November 2026, responding to Jared corner-composition steering. Existing native hero paths and all raster assets unchanged."
 }

@@ -116,5 +116,19 @@
     "sourceFraming": "All high-opacity subject bounds inside source frames. Edge alpha max: ray/crab/bell 1, siphon 2, eel 5 out of 255. All extremities complete.",
     "scope": "Scratch-only native identity insertion for local real app planner/renderer. Actual coordinator registry integration and device qualification remain separate."
   },
-  "packTestEvidence": "Unchanged builder pipeline has 47 distinct pack test cases passed across initial suite and Pillow-enabled WebP reruns. This theme independently passes real builder, actual app parsers/planner/renderer, all image decoding, hashes/provenance and no selected orphan checks."
+  "packTestEvidence": "Unchanged builder pipeline has 47 distinct pack test cases passed across initial suite and Pillow-enabled WebP reruns. This theme independently passes real builder, actual app parsers/planner/renderer, all image decoding, hashes/provenance and no selected orphan checks.",
+  "ornamentRefinement": {
+    "optionalField": "ornament",
+    "heroPathsUnchanged": true,
+    "rasterAssetsUnchanged": true,
+    "pathVocabulary": "M/L/Q/T/C/Z",
+    "canvas": [
+      100,
+      100
+    ],
+    "pathBoundsChecked": true,
+    "pathLength": 235,
+    "previewScope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
+    "runtimeSupport": "Coordinator implementing actual TS/Swift parsing and rendering; native integration checks pending."
+  }
 }

@@ -15,5 +15,8 @@
   },
   "direction": "Recognizable sail-carriage with unequal spoke wheels and long-snouted courier. Shield survey bezel, sampled pin markers/wedge hands, return-cell charge tiles and station board calendar.",
   "values": "Existing live native Clock/Battery/Calendar mechanisms only; all scan artwork number-free.",
-  "registryIntegration": "Coordinator integrates original data-only descriptor."
+  "registryIntegration": "Coordinator integrates original data-only descriptor.",
+  "ornament": "M 18 56 L 50 24 L 84 49 L 56 81 Z M 18 56 L 54 55 L 50 24 M 54 55 L 84 49 M 54 55 L 56 81 M 13 40 L 13 40.1 M 34 17 L 34 17.1 M 69 20 L 69 20.1 M 90 37 L 90 37.1 M 90 69 L 90 69.1 M 72 89 L 72 89.1 M 35 88 L 35 88.1 M 12 73 L 12 73.1 M 39 46 L 39 46.1 M 65 42 L 65 42.1 M 64 65 L 64 65.1",
+  "ornamentDirection": "a simple sampled spatial facet and sparse return points.",
+  "ornamentProvenance": "Original authored 100x100 SVG path, 22 November 2026, responding to Jared corner-composition steering. Existing native hero paths and all raster assets unchanged."
 }

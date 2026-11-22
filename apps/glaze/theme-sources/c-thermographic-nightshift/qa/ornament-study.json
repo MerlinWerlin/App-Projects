@@ -1,0 +1,7 @@
+{
+  "theme": "c-thermographic-nightshift",
+  "ornament": "M 50 73 Q 22 63 21 28 Q 43 29 50 55 Q 57 29 79 28 Q 78 63 50 73 Z M 50 56 Q 34 36 50 20 Q 66 36 50 56 Z M 50 73 L 50 83 M 15 67 Q 50 90 85 67 M 11 79 Q 50 100 89 79",
+  "ornamentDirection": "Native companion ornaments: one open warm seed pod with two quiet heat arcs. Full gardener/auger/glider/bloom/walker remain Artwork. Rounded warm contour vocabulary complements infrared imagery without miniaturizing an entire creature.",
+  "scope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
+  "runtimeSupport": "Coordinator implementing optional TS/Swift ornament field."
+}

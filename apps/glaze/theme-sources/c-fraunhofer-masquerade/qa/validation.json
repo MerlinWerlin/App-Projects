@@ -116,5 +116,19 @@
     "framing": "Source alpha edge maxima1or2; all high-opacity figure bounds inside source frame; original clipped trefoil retained as rejected evidence.",
     "native": "All9app renderer candidates reviewed: pavilion/ferry paths, petal-contoured dial with pearl markers/baton hands, light-trail battery and ticket calendar. Readable native values remain dynamic."
   },
-  "packTestEvidence": "Unchanged pipeline47existing cases covered by45initial passes and2encoder follow-up passes."
+  "packTestEvidence": "Unchanged pipeline47existing cases covered by45initial passes and2encoder follow-up passes.",
+  "ornamentRefinement": {
+    "optionalField": "ornament",
+    "heroPathsUnchanged": true,
+    "rasterAssetsUnchanged": true,
+    "pathVocabulary": "M/L/Q/T/C/Z",
+    "canvas": [
+      100,
+      100
+    ],
+    "pathBoundsChecked": true,
+    "pathLength": 199,
+    "previewScope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
+    "runtimeSupport": "Coordinator implementing actual TS/Swift parsing and rendering; native integration checks pending."
+  }
 }
