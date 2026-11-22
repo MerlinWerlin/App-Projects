@@ -1,0 +1,22 @@
+{
+  "result": "passed",
+  "bytes": 1477308,
+  "clips": [
+    "Nap_to_ready",
+    "Chips_to_ready",
+    "Idle",
+    "Greeting",
+    "Listening",
+    "Speaking"
+  ],
+  "paws": [
+    "paw_fore_left",
+    "paw_fore_right",
+    "paw_hind_left",
+    "paw_hind_right"
+  ],
+  "meshes": 102,
+  "skinnedMeshes": 1,
+  "sampledFrames": 126,
+  "note": "Independently reloads exported GLB and samples every clip. Does not establish visual quality or physical iPhone performance."
+}

@@ -1,0 +1,19 @@
+{
+  "source": "docs/frame-animation-proof/meow-2d-preview.webm",
+  "sha256": "d18c0ce1b83c47f25da6de1f25603e3d77c1fe41a2d80880b8d31599896929d1",
+  "width": 780,
+  "height": 1688,
+  "duration": 7.143632,
+  "audio": false,
+  "bodyROI": {
+    "samples": 205,
+    "meanLumaDifference": 0.2610659776926829,
+    "maxFrameMeanDifference": 7.12251
+  },
+  "eyeROI": {
+    "samples": 205,
+    "meanLumaDifference": 0.9956648220634146,
+    "maxFrameMeanDifference": 11.2465
+  },
+  "note": "Decoded lossy recording measurements: fixed lower-body region versus changing facial region. This does not certify naturalness, final art or physical iPhone playback."
+}

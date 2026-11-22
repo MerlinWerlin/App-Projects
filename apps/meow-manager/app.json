@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "Meow Manager",
+    "slug": "meow-manager",
+    "scheme": "meowmanager",
+    "version": "0.1.0",
+    "owner": "jared797",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jared797.meowmanager",
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true
+      },
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "privacyManifests": {
+        "NSPrivacyTracking": false,
+        "NSPrivacyTrackingDomains": [],
+        "NSPrivacyCollectedDataTypes": [],
+        "NSPrivacyAccessedAPITypes": [
+          {
+            "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults",
+            "NSPrivacyAccessedAPITypeReasons": ["CA92.1"]
+          }
+        ]
+      }
+    },
+    "android": {
+      "package": "com.jared797.meowmanager"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      "expo-notifications",
+      [
+        "expo-calendar",
+        {
+          "calendarPermission": "Meow Manager reads your calendar to leave room around your appointments. Your calendar stays on your device."
+        }
+      ]
+    ],
+    "web": {
+      "bundler": "metro",
+      "output": "single"
+    },
+    "experiments": {
+      "typedRoutes": false
+    }
+  }
+}
