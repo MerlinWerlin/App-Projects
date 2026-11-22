@@ -1,0 +1,18 @@
+{
+  "id": "whisper-collector",
+  "prompt": "LIMECUT RELAY for Glaze. ONE original 1024x1024 separate pure artwork, a tangible useful object/character from an invented seaside town's message network. True LAYERED LIME-PLASTER SGRAFFITO wall illustration: thin matte sea-teal mineral topcoat over warm terracotta and chalk underlayers, strong FLAT colour fields CUT BACK through the topcoat, shallow stepped incision channels, tiny irregular white chipped cut lips, sand/lime aggregate, porous rubbed patches and a few hairline shrink cracks. Every component is flat graphic wall art, no 3D sculpture, clay toy, paper cutout, soft wax paint, loose coloured sand, polished metal or realistic model. Teal #3B6F69, deep teal #204D49, terracotta #C87556, chalk #E8E2CF only. Clear bold silhouette, simplified readable construction and genuine transparent open gaps. Entire complete subject central65% with at least16% real alpha margins on all sides. No rectangular plaster board/backing, scenery/floor/extra platform, framing, shadows outside subject, text, labels, letters, symbols/numbers, clock/date/battery/weather values, electronics, UI, logos or signatures. Subject WHISPER COLLECTOR: a very BROAD LOW OPEN KIOSK with a small terracotta hipped roof, two thick ivory arch supports and an open front counter holding ONE large plain ribbon reel on an axle. Rising from its roof is a magnificent oversized SPIRAL LISTENING HORN: thick tapered tube curves in one complete coil from narrow roof inlet at left to a very wide upward-right mouth, with alternating chalk/terracotta bands cut into the plaster. A short visible pipe connects narrow horn end down to the ribbon axle, explaining recording town whispers as blank ribbon. Keep roof supports and arch opening clearly readable. Strong low house plus gigantic circular upper horn silhouette, friendly imaginative listening station, not gramophone still life or ordinary music equipment. No person, table/floor tile, notes, words, labels, instrument keys, clock or dial. Whole horn coil, mouth, roof tips, kiosk supports and reel inside generous alpha. Rough flat cut-back lime layers with sharp chipped ivory incision edges and mineral pores throughout.",
+  "tool": "built-in image_gen",
+  "source": "sources/whisper-collector.1c5d3ecb.png",
+  "sourceSha256": "1c5d3ecb94a1a95a813b08b7337516ff4c2f40777344677acac829b668769ff8",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/whisper-collector.21d1da37.png",
+  "sha256": "21d1da37e7c45eb9e66332a32bdaeb23bd3c8aaf5bb6270f59be3e0379ab35ba",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

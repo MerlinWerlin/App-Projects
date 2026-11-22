@@ -1,0 +1,62 @@
+[
+  {
+    "id": "folding-signal-tree",
+    "kind": "art",
+    "image": "folding-signal-tree.f16a6e35.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folding Signal Tree"
+  },
+  {
+    "id": "whisper-collector",
+    "kind": "art",
+    "image": "whisper-collector.21d1da37.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Whisper Collector"
+  },
+  {
+    "id": "ribbon-post-runner",
+    "kind": "art",
+    "image": "ribbon-post-runner.4feb79fb.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ribbon Post Runner"
+  },
+  {
+    "id": "bridge-message-crane",
+    "kind": "art",
+    "image": "bridge-message-crane.fe926861.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bridge Message Crane"
+  },
+  {
+    "id": "echo-vault",
+    "kind": "art",
+    "image": "echo-vault.75af7fa8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Echo Vault"
+  }
+]

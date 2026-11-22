@@ -1,0 +1,18 @@
+{
+  "id": "folding-signal-tree",
+  "prompt": "LIMECUT RELAY for Glaze. ONE original 1024x1024 separate pure artwork, a tangible useful object/character from an invented seaside town's message network. True LAYERED LIME-PLASTER SGRAFFITO wall illustration: thin matte sea-teal mineral topcoat over warm terracotta and chalk underlayers, strong FLAT colour fields CUT BACK through the topcoat, shallow stepped incision channels, tiny irregular white chipped cut lips, sand/lime aggregate, porous rubbed patches and a few hairline shrink cracks. Every component is flat graphic wall art, no 3D sculpture, clay toy, paper cutout, soft wax paint, loose coloured sand, polished metal or realistic model. Teal #3B6F69, deep teal #204D49, terracotta #C87556, chalk #E8E2CF only. Clear bold silhouette, simplified readable construction and genuine transparent open gaps. Entire complete subject central65% with at least16% real alpha margins on all sides. No rectangular plaster board/backing, scenery/floor/extra platform, framing, shadows outside subject, text, labels, letters, symbols/numbers, clock/date/battery/weather values, electronics, UI, logos or signatures. Subject FOLDING SIGNAL TREE: one tall slender tapered chalk mast on three compact terracotta buttress feet, with FOUR ARTICULATED FLAG-BRANCH ARMS emerging from alternate sides at different heights. Each arm has one clear round pivot, two rigid linked sections and one broad asymmetric two-tone terracotta/ivory flag panel, staggered at four genuinely different angles as a mechanical town semaphore. A simple vertical pull cable with a small low handle links the pivots; tiny plain blank finial at top. No nautical code, inscriptions, numbers, birds, leaves, tree bark, people or extra buildings. Tall open asymmetric ladderlike silhouette and obvious purposeful folding mechanism; no conventional tree or generic row of flags. All arm tips, flag corners, mast top and feet fully inside alpha. Visible incised plaster layers/chipped lips along every large form, drawn straight-on.",
+  "tool": "built-in image_gen",
+  "source": "sources/folding-signal-tree.32025f9e.png",
+  "sourceSha256": "32025f9e788eff9c7f379682fcba3038a1aaa6033be16d19ac060db231c8acb2",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folding-signal-tree.f16a6e35.png",
+  "sha256": "f16a6e35ec2734c74d536eefd89334b663883be24d438d518e88a6ec91dbeecf",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
