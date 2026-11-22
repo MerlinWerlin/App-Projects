@@ -1,0 +1,62 @@
+[
+  {
+    "id": "seadragon",
+    "label": "Leafy Sea Dragon",
+    "kind": "art",
+    "image": "seadragon.5743037c00cf.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "dumbo-octopus",
+    "label": "Dumbo Octopus",
+    "kind": "art",
+    "image": "dumbo-octopus.38025fb8725d.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "chambered-argonaut",
+    "label": "Chambered Argonaut",
+    "kind": "art",
+    "image": "chambered-argonaut.3a936d1d6d11.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "sailfin-ray",
+    "label": "Sailfin Ray",
+    "kind": "art",
+    "image": "sailfin-ray.aa94b502aa5a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "ribbon-flatworm",
+    "label": "Ribbon Flatworm",
+    "kind": "art",
+    "image": "ribbon-flatworm.e85cfe171f8f.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

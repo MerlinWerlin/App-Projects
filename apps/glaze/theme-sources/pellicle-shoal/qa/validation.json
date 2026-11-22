@@ -1,0 +1,135 @@
+{
+  "theme": "pellicle-shoal",
+  "integratedBatchThemes": 54,
+  "actualAppAudit": {
+    "id": "pellicle-shoal",
+    "name": "Pellicle Shoal",
+    "packVersion": 1,
+    "artworks": [
+      "seadragon",
+      "dumbo-octopus",
+      "chambered-argonaut",
+      "sailfin-ray",
+      "ribbon-flatworm"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 1122602,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "allSelectedSourceAndOutputImagesFullyDecoded": true,
+  "selectedArtworks": 5,
+  "largeArtworkSelections": 5,
+  "nativePlans": 9,
+  "allNineChangeWithLiveReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "actualEncodedAssets": {
+    "wallpaper-2796.687763a1.webp": "687763a1b0d8036b169d75b5a9b5718e1e9ef3ba73efdcbccdafeef6bbe167a5",
+    "wallpaper-2556.ea178a8f.webp": "ea178a8f4fc9cb0a9e1c7ed66bc7e900025b4fce634b2b2f1a6b39b2eba562c5",
+    "wallpaper-1334.d42d5fe6.webp": "d42d5fe602531251a9057c1f55dc41671419a31d1a693deb70fdaff7192cbf16",
+    "thumb.00a6abbe.webp": "00a6abbe317e0ec18d15e2a8285317f06f6af7a4c9304ce529111451fa0e040e",
+    "widget-seadragon.6197535e.webp": "6197535e8f734ef33f89c16ad7747cd2495198b336d2464840e2d7af81ba5c94",
+    "widget-dumbo-octopus.dba48d4f.webp": "dba48d4f1ed621b91705b62572e535f2e7fbcca9d3fd4eb3d60bebda0b6175d9",
+    "widget-chambered-argonaut.d007b146.webp": "d007b146ee1ca087a3cde24c4683dbc2b5dadc641e048fb270c7e2395470e6ac",
+    "widget-sailfin-ray.1aa3ce8b.webp": "1aa3ce8bc816ad8200663a7a9bec629313c6636200495e09fce1b0ca56a7ae7c",
+    "widget-ribbon-flatworm.e3c3452c.webp": "e3c3452c1c9dac06eb60021a1d8f9a112d18f098efc332f2e5c40bca624ae2df"
+  },
+  "compactCompanion": {
+    "id": "pellicle-shoal",
+    "name": "Pellicle Shoal",
+    "retainedHeroLayouts": 5,
+    "compactLayouts": 4
+  },
+  "roundedArtwork": {
+    "id": "pellicle-shoal",
+    "name": "Pellicle Shoal",
+    "gradient": [
+      "#503F55",
+      "#4D3D52"
+    ],
+    "artifacts": [
+      {
+        "id": "seadragon",
+        "label": "Leafy Sea Dragon",
+        "blend": "transparent",
+        "corePixels": 41018,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "seadragon-170.png",
+        "tiny": "seadragon-85.png"
+      },
+      {
+        "id": "dumbo-octopus",
+        "label": "Dumbo Octopus",
+        "blend": "transparent",
+        "corePixels": 58800,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "dumbo-octopus-170.png",
+        "tiny": "dumbo-octopus-85.png"
+      },
+      {
+        "id": "chambered-argonaut",
+        "label": "Chambered Argonaut",
+        "blend": "transparent",
+        "corePixels": 60040,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "chambered-argonaut-170.png",
+        "tiny": "chambered-argonaut-85.png"
+      },
+      {
+        "id": "sailfin-ray",
+        "label": "Sailfin Ray",
+        "blend": "transparent",
+        "corePixels": 44008,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "sailfin-ray-170.png",
+        "tiny": "sailfin-ray-85.png"
+      },
+      {
+        "id": "ribbon-flatworm",
+        "label": "Ribbon Flatworm",
+        "blend": "transparent",
+        "corePixels": 27642,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "ribbon-flatworm-170.png",
+        "tiny": "ribbon-flatworm-85.png"
+      }
+    ]
+  },
+  "nativeDescriptorSha256": "105a49b563ad64a7409172cf4e81ef48bd88257a96a9f749d74f25a7d6b27cca",
+  "nativeSvgPreviews": [
+    "clock-small.svg",
+    "clock-medium.svg",
+    "clock-large.svg",
+    "battery-small.svg",
+    "battery-medium.svg",
+    "battery-large.svg",
+    "calendar-small.svg",
+    "calendar-medium.svg",
+    "calendar-large.svg"
+  ],
+  "actualRuntimeSourceHashes": {
+    "src/core/widgetIdentity.ts": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "src/core/themedWidgetPreview.ts": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888",
+    "targets/widget/ThemedWidgetDrawing.swift": "7c092d15412cfb89f8aa26f80a0caefde335541c02011c9c91c9b84928fe4774"
+  },
+  "category": "Nature",
+  "actualBrowseCategory": "nature",
+  "selectedArtProcessing": "Whole original Fit, no subject crop/recolour/artistic edits. Built-in habitat framing edit has retained exact original/edit lineage.",
+  "visualReview": "Five full and85px encoded rounded tiles, all9actual native layouts and all3actual phone exports inspected; focal tips/claws/tails complete.",
+  "published": false,
+  "installedDeviceVerified": false
+}

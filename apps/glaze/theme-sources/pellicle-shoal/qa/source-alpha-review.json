@@ -1,0 +1,126 @@
+{
+  "images": [
+    {
+      "id": "seadragon",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        117,
+        24,
+        1122,
+        1237
+      ],
+      "coreAlpha96Bounds": [
+        118,
+        24,
+        1121,
+        1236
+      ]
+    },
+    {
+      "id": "dumbo-octopus",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        69,
+        159,
+        1165,
+        1072
+      ],
+      "coreAlpha96Bounds": [
+        71,
+        160,
+        1164,
+        1071
+      ]
+    },
+    {
+      "id": "chambered-argonaut",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        126,
+        168,
+        1131,
+        1089
+      ],
+      "coreAlpha96Bounds": [
+        126,
+        169,
+        1131,
+        1089
+      ]
+    },
+    {
+      "id": "sailfin-ray",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 0,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        53,
+        121,
+        1163,
+        1128
+      ],
+      "coreAlpha96Bounds": [
+        54,
+        122,
+        1162,
+        1126
+      ]
+    },
+    {
+      "id": "ribbon-flatworm",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        14,
+        347,
+        1233,
+        850
+      ],
+      "coreAlpha96Bounds": [
+        15,
+        348,
+        1233,
+        849
+      ]
+    }
+  ],
+  "allVisibleOriginalSilhouettesInsideBounds": true,
+  "installedDeviceVerified": false
+}

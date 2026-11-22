@@ -1,0 +1,26 @@
+{
+  "id": "dumbo-octopus",
+  "label": "Dumbo Octopus",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One independent square transparent Glaze artwork. PELLICLE SHOAL, fictional sea organisms sculpted entirely from WET BACTERIAL-CELLULOSE PELLICLES. Our own reference sea-dragon supplies only the physical material and soft lighting; create a different subject. Very thin cloudy translucent amber/tea/ivory bio-fibre membranes, densely visible fine cellulose fibrils, irregular torn fibrous edges, doubled opaque fold lips and a few water beads at seams. Diffuse light through cloudy fibre with loose folded laminae and genuine gaps, convincing macro craft photograph. No smooth solid core, glass, glossy resin, gelatin candy, plastic, ordinary animal skin, woven fabric, wood shavings, paper quilling, metal or thread. Entire subject inside central70% with generous true transparent margins; every projecting arm, fin or tail whole. No environment, exterior glow, external bubbles, floor, cast shadow, backing panel, frame, typography, UI or clock/battery/calendar symbols. One readable singular silhouette at85px, no sheet/collage. SUBJECT: one complete DUMBO OCTOPUS, floating front three-quarter view, with a broad rounded but softly folded mantle made of overlapping thin cloudy cellulose, TWO clear large ear-like fins extending sideways, two tiny recessed dark eyes and EIGHT distinct gently curled short arms. A thin ruffled web connects the upper portions of the eight arms but their separate tips remain clearly visible around the lower silhouette. Folded thick opaque ridges define the mantle, with thinner translucent panels between them and tiny fibrils across each film. No extra eyes or faces, no tentacle bouquet, no seahorse or shell.",
+  "source": "sources/dumbo-octopus.61c5efbb98f5.png",
+  "sourceSha256": "61c5efbb98f590cb4df4790fb8c406f6599865989a3dff997009021e1a71c415",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/dumbo-octopus.38025fb8725d.png",
+  "sha256": "38025fb8725d7a6f6f2f8aa708ef43eb9eaf0734239a72a0cc46fc9001a65e8f",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Entire original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/seadragon.8b72684483bd.png",
+      "sha256": "8b72684483bdc2c68893520aa5c201a75b9c57ffee7c4ab2842c54e326512c4a",
+      "purpose": "Own first artwork supplies wet fibrous membrane material and lighting only; distinct new subject."
+    }
+  ]
+}

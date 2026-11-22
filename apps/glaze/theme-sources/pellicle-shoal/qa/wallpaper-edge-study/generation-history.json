@@ -1,0 +1,56 @@
+{
+  "initial": {
+    "prompt": "Use case: stylized-concept. Matching PELLICLE SHOAL phone wallpaper. Portrait1290x2796, smartphone aspect9:19.5. Inputs1-5 are our exact own sea-dragon, dumbo octopus, chambered argonaut, sailfin ray and ribbon flatworm sculptures. Preserve those FIVE identities, their exact silhouettes/anatomy, cloudy amber/ivory wet-cellulose membranes, irregular thin torn lips, fine dense bio-fibre fibrils, thicker folded ribs and tiny seam water beads. This is a coherent magical shallow-sea habitat photographed as a tactile membrane sculpture, not an arranged row or collection sheet. Sea-dragon floats upright behind at left, complete broad-winged ray glides behind at right with its whole curling tail, octopus floats centre with both ear fins and arms visible, argonaut rests low-left with shell lip and living head clear, ribbon flatworm glides low-right as one continuous ruffled S. Separate all faces, major forms and appendages, with mild natural depth and contact shadows. Quiet low reef ground is made from pale folded cellulose ledges with a few small membrane ripples, not wood wool or dense plants. Cool muted PLUM-SLATE water backdrop, approximately#30283B, upper40% very quiet empty soft water; gentle diffuse illumination on warm membranes, no theatrical glow or caustic spotlights. The entire five-subject habitat grouping occupies ONLY central70% of image width and between45% and74% of image height. Leave at least15% width of quiet water on BOTH sides, and26% quiet low ground/water below the lowest arm, root or tail. No tips, fins, arms, shell edges or leaf flaps approach any canvas edge. Important: a short-phone crop removing outer9% top/bottom must keep every organism complete with ample breathing room near rounded screen corners. Maintain their exact physical cloudy fibrous membrane language; no smooth glass/jelly/clear resin surfaces, solid plastic skin, fabric, metal, paper quilling, wood, architectural props, clothing, new animals or extra faces. No typography, logos, numbers, readings, clock/battery/calendar pictures, frame, border, panel, collage or UI. Full-bleed fully opaque portrait wallpaper, five subjects only.",
+    "file": "qa/wallpaper-edge-study/initial-wallpaper.4bc5e13afa05.png",
+    "sha256": "4bc5e13afa05cd567b6abf15f44054715ad078bb2e9b6a162dbae36d93ab68e9",
+    "references": [
+      {
+        "file": "sources/seadragon.8b72684483bd.png",
+        "sha256": "8b72684483bdc2c68893520aa5c201a75b9c57ffee7c4ab2842c54e326512c4a"
+      },
+      {
+        "file": "sources/dumbo-octopus.61c5efbb98f5.png",
+        "sha256": "61c5efbb98f590cb4df4790fb8c406f6599865989a3dff997009021e1a71c415"
+      },
+      {
+        "file": "sources/chambered-argonaut.5b45711aec0b.png",
+        "sha256": "5b45711aec0b4e8590a81e299ff23221d95ed3b7a7c0b8beea4ccd800db0c6d1"
+      },
+      {
+        "file": "sources/sailfin-ray.3a9d135cc161.png",
+        "sha256": "3a9d135cc16117f775ebbb02cc0433e1808405c8e2aa7fd05fc66737c28f7e6e"
+      },
+      {
+        "file": "sources/ribbon-flatworm.1c5bb3fdd726.png",
+        "sha256": "1c5bb3fdd7260ab0f4b123baa4f84c822d222bcec46296932d5ebab85ba28f4f"
+      }
+    ]
+  },
+  "selectedLayoutEdit": {
+    "id": "wallpaper",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. LAYOUT-ONLY breathing-room edit of our own PELLICLE SHOAL habitat. Preserve exactly these FIVE organisms, every identity, pose, anatomy, cloudy translucent amber/ivory wet-cellulose membrane, visible bio-fibre texture, torn fold lips and seam beads. Preserve relative arrangement: sea-dragon behind left, whole broad-winged ray behind right, octopus centre, argonaut low-left, ribbon flatworm low-right. Keep all five and only five. Uniformly REDUCE the entire five-subject gathering to76% of its current scale; centre it horizontally and arrange the whole reduced gathering a little lower, with topmost sea-dragon leaf and ray wing no higher than42% of image height, lowest shell lip/tentacle/tail no lower than75%. Extend the SAME quiet plum-slate water and low pale cellulose reef around it. Entire gathering must fit within central74% width, leaving at least13% completely quiet water at BOTH sides, and25% quiet ground/water below every body part. All arm tips, frills, ray wings/long tail, argonaut shell lip and dragon leaves/tail remain fully whole. These are framing changes only: do not redesign, smooth, recolour, regrow or remove any form. Maintain same tactile physical material, diffuse lighting and coherent depth. Upper40% quiet plum-slate water, no added objects or foreground growth. No panels, added borders, blank bands, collage, text, UI, new animals, new faces or opaque boxes. Continuous full-bleed opaque portrait phone wallpaper. The centred shorter phone crop removing9% of top/bottom must still show all five forms comfortably inside its edges.",
+    "source": "sources/wallpaper.3724f5a64a73.png",
+    "sourceSha256": "3724f5a64a7369733e408a22f6c52a95ebe814aefe68707003066dd4ae5c0951",
+    "sourceDimensions": [
+      759,
+      2071
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "37f32c80c20cd63ebcbcf983b62db2c4082298bfeb5ee614c9130508486022a9",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Own layout-only habitat pullback, then central aspect export at1290x2796. All five independent artworks/native subject unchanged.",
+    "references": [
+      {
+        "file": "qa/wallpaper-edge-study/initial-wallpaper.4bc5e13afa05.png",
+        "sha256": "4bc5e13afa05cd567b6abf15f44054715ad078bb2e9b6a162dbae36d93ab68e9",
+        "purpose": "Own separately generated habitat; layout-only breathing-room edit."
+      }
+    ],
+    "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+  },
+  "reason": "Keep all shell lips, folded fins, arms and sea-dragon leaves comfortably inside phone crops and rounded screen corners."
+}
