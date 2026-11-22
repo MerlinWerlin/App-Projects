@@ -1,0 +1,1 @@
+Initial coherent wallpaper used own approved unchanged plover as first material/anatomy reference and own selected whole seal as second, in that exact order. Selected final source is a uniform whole-habitat layout-only pullback, initial wallpaper sole input. Initial source, exact two requests and ordered initial source hashes retained.

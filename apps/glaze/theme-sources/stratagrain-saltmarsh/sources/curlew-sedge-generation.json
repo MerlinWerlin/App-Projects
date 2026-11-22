@@ -1,0 +1,18 @@
+{
+  "id": "curlew-sedge",
+  "prompt": "STRATAGRAIN SALTMARSH, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL saltmarsh flora/fauna with natural recognizable anatomy FIRST. Unmistakable physical MOKUME-GANE mixed-metal craft: COPPER, PALE BRASS, SILVER and DARK SHAKUDO alloy sheets heat/pressure BONDED into ONE CONTINUOUS METAL LAMINATE, forged and cut back to reveal a FEW BROAD FLOWING WAVY alternating layer contours and occasional deformed ring-eye sections. Band boundaries are FLUSH actual interleaved metal layers through the solid body, NOT carved/additive channels, raised wire or painted surface woodgrain. Thin curved cut lips expose a STACKED alternating colored-metal cross-section through thickness. Soft satin metallic highlights differ across copper/silver/brass bands, tiny restrained hand-planishing ripples and subtle dark-alloy oxidation, no mirror chrome bling. Low shallow forged relief with strong natural silhouettes. NO carved wood/pores/fibers, stone/gem veins, ceramic marbling/glaze, smooth single-metal casting, separate flush silver inlay stripes, woven metallic warp/weft, goldwire embroidery/coil tubes, glass/enamel, jewellery/clasp/bail/gems. Natural subjects remain clear; broad metal strata, not allover decorative filigree. Whole complete subject inside central64percent, generous18percent TRUE ALPHA margin on every side. All exterior and open anatomy gaps genuinely transparent; no ground/scenery/plinth/backing plaque/sheet/frame/badge/ring, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. All feet/toes/bills/tails/leaves/flower tips whole, no clipped extremity. One familiar natural curlew in left-facing side profile, slender natural shorebird body, modest narrow head and tiny dark eye, one LONG slender downward-curving bill, natural folded wing and exactly TWO long coherent legs with complete delicate toes. A single short sedge sprig beside feet. Low continuous forged mixed-metal body with broad copper/brass/silver/dark-alloy flowing laminate strata, visible alternating layer stack at wing/feather cut lips. Natural feather/body silhouette supports material, no literal painted brown feather pattern or gemstones. No egret S neck, chibi eyes or extra feet. Entire long curved bill, tail, both complete feet and sedge tips inside generous margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/curlew-sedge.6d1dc8d5.png",
+  "sourceSha256": "6d1dc8d5b3a1896ae74532aef809aa1236b365ae1a450162ea9cfdfdcbc0ee57",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/curlew-sedge.f1aa7344.png",
+  "sha256": "f1aa7344b76c084d05f9bd8dc9cc970cd791575c83a0f7cd404c77de3647c2ec",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
