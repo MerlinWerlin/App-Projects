@@ -1,0 +1,204 @@
+{
+  "themeId": "porcelain-umbra",
+  "scope": "Geometry proof using actual encoded WebP assets, production theme-to-widget background, scaledToFit and Swift Fit6% rule. Conservative24% corner radius stress check; device corner radius varies, no installed-iOS screenshot claim.",
+  "swiftSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\targets\\widget\\SeamlessWidget.swift",
+  "swiftSha256": "00f8f7b122e06f51ea9bdceb20b4dfa1753ca09d936f7f796212ee3184042477",
+  "backgroundStops": [
+    "#101B30",
+    "#15233D"
+  ],
+  "artworkOptions": 5,
+  "layouts": [
+    {
+      "option": "shadow-sluice",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        32,
+        29,
+        136,
+        143
+      ],
+      "asset": "widget-shadow-sluice.8ca896c0.webp",
+      "assetSha256": "8ca896c064d7b21638e4fd514e088f6327ff4833fb2fa25818950824e1cb7d7d"
+    },
+    {
+      "option": "shadow-sluice",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        69,
+        71,
+        291,
+        315
+      ],
+      "asset": "widget-shadow-sluice.8ca896c0.webp",
+      "assetSha256": "8ca896c064d7b21638e4fd514e088f6327ff4833fb2fa25818950824e1cb7d7d"
+    },
+    {
+      "option": "four-way-stair-knot",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        28,
+        32,
+        141,
+        138
+      ],
+      "asset": "widget-four-way-stair-knot.b5b1a2e0.webp",
+      "assetSha256": "b5b1a2e03e3cca4aa66c953d2f0cae0153a46243ac92c49cd24cfbbca883be19"
+    },
+    {
+      "option": "four-way-stair-knot",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        61,
+        79,
+        302,
+        305
+      ],
+      "asset": "widget-four-way-stair-knot.b5b1a2e0.webp",
+      "assetSha256": "b5b1a2e03e3cca4aa66c953d2f0cae0153a46243ac92c49cd24cfbbca883be19"
+    },
+    {
+      "option": "folding-eclipse-theatre",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        54,
+        144,
+        125
+      ],
+      "asset": "widget-folding-eclipse-theatre.3d414046.webp",
+      "assetSha256": "3d41404639a869e14095f1cbc0971ac704acc5409971fc5609d0e8d39521efd0"
+    },
+    {
+      "option": "folding-eclipse-theatre",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        54,
+        126,
+        309,
+        278
+      ],
+      "asset": "widget-folding-eclipse-theatre.3d414046.webp",
+      "assetSha256": "3d41404639a869e14095f1cbc0971ac704acc5409971fc5609d0e8d39521efd0"
+    },
+    {
+      "option": "hanging-rain-vault",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        34,
+        144,
+        136
+      ],
+      "asset": "widget-hanging-rain-vault.9e42f3ac.webp",
+      "assetSha256": "9e42f3acb0fa46be32b4d7726f6218878cd5df69602c9a73c214bd00f6f798fb"
+    },
+    {
+      "option": "hanging-rain-vault",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        54,
+        82,
+        309,
+        300
+      ],
+      "asset": "widget-hanging-rain-vault.9e42f3ac.webp",
+      "assetSha256": "9e42f3acb0fa46be32b4d7726f6218878cd5df69602c9a73c214bd00f6f798fb"
+    },
+    {
+      "option": "labyrinth-seed",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        50,
+        30,
+        117,
+        138
+      ],
+      "asset": "widget-labyrinth-seed.6c39ffee.webp",
+      "assetSha256": "6c39ffeef62eab47bd8b4219aba8e94705a42181d017e4b3e2fc56e14be5b007"
+    },
+    {
+      "option": "labyrinth-seed",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        107,
+        75,
+        251,
+        305
+      ],
+      "asset": "widget-labyrinth-seed.6c39ffee.webp",
+      "assetSha256": "6c39ffeef62eab47bd8b4219aba8e94705a42181d017e4b3e2fc56e14be5b007"
+    }
+  ],
+  "clippedForegroundPixels": 0
+}
