@@ -1,0 +1,40 @@
+{
+  "themeId": "cuttlecast-kelpwood",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.0d0f0c99.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "0d0f0c99b11ad562baaf8a1828d5f03bb277ea226838faaee4da6960ec0ed7cb",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.b4599e0c.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "b4599e0c0cf2bfa50a8a9f7cb8345104ed8a8bf5dabf7ea612cbdc56b02cb350",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.9cc849ad.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "9cc849adb9f096b037bcb73b9d3b76da7629103841d359d1adef619a1c666997",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedAllThreeEncodedVariants": true,
+    "completeExtremitiesAndTerrainEdges": true,
+    "automaticPullbackApplied": false,
+    "finding": "Five separate familiar marine forms in single satin pewter, broad coarse continuous mould-ridge impressions visible at85; approved first seahorse remains exact. Cuttlefish has coherent8short arms and2long clubbed tentacles, shorecrab4walking legs per side+2claws; distinct radial anemone/kelp and whole wrasse fins/tail. Actual ink-indigo alpha composites clean, all10encodedrounded layouts whole. Full tall WP uses own unchanged seahorse/selected wrasse/selected kelp references in that exact order; three actual encoded phone crops have complete kelp tips, seahorse snout/tail/fin, wrasse fins/tail and seafloor edges. No pullback or source repairs needed. Oval native rim chosen for organic cast form, open asymmetric wavy kelp tip/3short mould-grain fragments stays clear in4uniform compact placements; no full animal in calendar headers. All9native/live and288same-size bold-today pixel cases pass12/12/19points. Actual26baseline app selections/6own process neighbors viewed with hashes verified, no external neighbor input or current-liveR2claim."
+  }
+}

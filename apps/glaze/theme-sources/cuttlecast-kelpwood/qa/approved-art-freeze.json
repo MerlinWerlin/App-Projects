@@ -1,0 +1,163 @@
+{
+  "themeId": "cuttlecast-kelpwood",
+  "scope": "Completed selected5artwork/raw/options/palette/meta exact byte snapshot after full build/material/visual QA. First approved seahorse raw hash retained unchanged. Future revisions must preserve these approved art bytes.",
+  "files": {
+    "widgets/corkwing-wrasse.ace108d5.png": "ace108d574dbde9a92b818c64049bbc4e9002624e631633f9bfc9d47a01d82e2",
+    "widgets/cuttlefish-eelgrass.e8bd6047.png": "e8bd6047cf40b51d428ab70412084d04067aa6cc5c6eebd765bd90ee062f73aa",
+    "widgets/kelp-anemone.8c966e19.png": "8c966e1966dfc5dd38997003b82c30a9e3e741b5b15fdbaa59f299fc5d86e8f9",
+    "widgets/README.md": "0324dbb7e4318bf9d0646aa3189fe6a34b6cf23d30565bc01a7f18f4155efa77",
+    "widgets/seahorse-strapkelp.12fcb964.png": "12fcb964e280593812890ec95e33b8d37a6e9323d20f7c010411710a7e30a3a7",
+    "widgets/shorecrab-rockweed.ad7b7bbc.png": "ad7b7bbca80bcc8e1ca0ab83714cbb3a6911a3e82a2eff7f8ec5dce9d3410007",
+    "widgets/widget-options.json": "1b0665a1371c22b034251909d65d953bd6f992a864b2143bf403591ffff8001f",
+    "sources/corkwing-wrasse-generation.json": "60f1ab45dae6edd32cde2092ee2c210a5a835d78c2300cc99066e85cde3f3829",
+    "sources/corkwing-wrasse.c1648bc1.png": "c1648bc16308b64d6a86a6ff420471b682b9f9f3043b5ab86f7ca9a51a8aa0dd",
+    "sources/cuttlefish-eelgrass-generation.json": "c971b1cce80568cde6234631f18694ca6b8c2a342e67028495ea428dc13eea8b",
+    "sources/cuttlefish-eelgrass.0b6a1509.png": "0b6a1509b9d1bd00fc3cdccc56173d6f3989ae4ca22b179156d8a8ecf0a556ee",
+    "sources/kelp-anemone-generation.json": "028fc17948b01e29ba69dd722f51327fad790b9221b57bb27f5a761cc70d5ae5",
+    "sources/kelp-anemone.c919cf66.png": "c919cf6679ed4addbff12547b2b3734db1320cdd02a3a21689dcd77269b412a4",
+    "sources/README.md": "37fb033bbd2b19036277f10678220d7e48f855cd6c037582c5d2bc28ca58bd51",
+    "sources/seahorse-strapkelp-generation.json": "388c6789be7a1bb472f8c64792ec3922e8dd270810eb82ee5363e26c19d9d7c7",
+    "sources/seahorse-strapkelp.a4e78d62.png": "a4e78d6284d51587085d4ef01c0fef9160df5033019392b1af157b17f1fff5c7",
+    "sources/shorecrab-rockweed-generation.json": "a61722855d786464e2cc02aa8b2e3b61578d51c120eeb60cf36db3f7d396185f",
+    "sources/shorecrab-rockweed.4034d1f8.png": "4034d1f82f35b0e47edd2d26133e6e69ed10c5e674e99277a629bbbc2eda8e78",
+    "palette.json": "792349c862cdd2c4f5905fc3a6d2f2e5186988b1fb314904150179ccbf6a2438",
+    "meta.json": "a8b8e335bed40c9577f653dddd30d5b68e8225690f49460ee306f26ff91c44eb"
+  },
+  "firstApprovedSourceSha256": "a4e78d6284d51587085d4ef01c0fef9160df5033019392b1af157b17f1fff5c7",
+  "artworkProvenance": [
+    {
+      "id": "seahorse-strapkelp",
+      "prompt": "CUTTLECAST KELPWOOD, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL kelp-forest flora/fauna with recognizable natural anatomy FIRST. Unmistakable physical CUTTLEFISH-BONE MOULD CASTING IN ONE SATIN PEWTER: a solid but SHALLOW cast relief about4to7mm thick, soft integral cast lip around silhouette, COARSE IRREGULAR PARALLEL WAVY natural cuttlebone ridges impressed continuously across broad surfaces. Broad ridges and troughs must be readable at85px, not microscopic generic noise. Slight natural irregularity in ridge spacing and height; only soft silver-gray/taupe-gray pewter highlights and darker same-metal grooves, no colored decoration. Real cast thickness at edges and one tiny cleanly filed former-gate mark in an unobtrusive edge, no protruding sprue/tool. Warm soft studio light reveals mould grain, no glossy chrome. Clear natural subject silhouette dominates; ridges follow ONE broad wave field crossing anatomical parts, not a fur/feather/scale engraving. No hammered tin dimples, thin folded sheet edges or chased veins; no copper/brass laminate/inlay, flush silver channels in black zinc, wire springs, beads, fabric, paper, clay, wood veneer, painted marble or carved bone material. No jewellery hook/bail/coin/brooch pin, gemstones, ring, enclosing plaque, mold/tool/hand, display base, scenery, floor, shadow/halo/glow. Whole subject central64percent of canvas with18percent real empty alpha on EACH side, all extremities complete. No text/letters/numbers/UI/logo/signature or baked-in clock/date/battery/weather values. FIRST MATERIAL SAMPLE. One familiar natural short-snouted seahorse in calm side view facing LEFT: modest horse-like head with short tubular snout, one small dark natural eye cast as a shallow recess, coherent arched neck, rounded narrow belly, short dorsal fin and ONE complete prehensile tail making one open inward curl at its end. No horns, limbs, dragon spikes, chibi eye or decorated harness. A single short broad strap-kelp blade grows to its right, with one short stalk and modest branching holdfast close below the tail; no surrounding wreath, rocks or plinth. Seahorse and blade cast as one low-relief pewter object, all open silhouette gaps alpha transparent. The most conspicuous surface feature is COARSE PARALLEL WAVY CUTTLEBONE-MOULD RIDGE IMPRESSIONS continuing across snout, belly, neck, tail and blade: 8 to14 broad gently undulating irregular spaced ridges, satin highlights on crests and charcoal-gray grooves of the SAME metal, not natural armor rings or engraved filigree. Preserve readable natural horse head/body/tail silhouette first. Whole snout/fin/tail tip/kelp/holdfast ends inside central64percent.",
+      "tool": "built-in image_gen",
+      "source": "sources/seahorse-strapkelp.a4e78d62.png",
+      "sourceSha256": "a4e78d6284d51587085d4ef01c0fef9160df5033019392b1af157b17f1fff5c7",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/seahorse-strapkelp.12fcb964.png",
+      "sha256": "12fcb964e280593812890ec95e33b8d37a6e9323d20f7c010411710a7e30a3a7",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "cuttlefish-eelgrass",
+      "prompt": "CUTTLECAST KELPWOOD, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL kelp-forest flora/fauna with recognizable natural anatomy FIRST. Unmistakable physical CUTTLEFISH-BONE MOULD CASTING IN ONE SATIN PEWTER: a solid but SHALLOW cast relief about4to7mm thick, soft integral cast lip around silhouette, COARSE IRREGULAR PARALLEL WAVY natural cuttlebone ridges impressed continuously across broad surfaces. Broad ridges and troughs must be readable at85px, not microscopic generic noise. Slight natural irregularity in ridge spacing and height; only soft silver-gray/taupe-gray pewter highlights and darker same-metal grooves, no colored decoration. Real cast thickness at edges and one tiny cleanly filed former-gate mark in an unobtrusive edge, no protruding sprue/tool. Warm soft studio light reveals mould grain, no glossy chrome. Clear natural subject silhouette dominates; ridges follow ONE broad wave field crossing anatomical parts, not a fur/feather/scale engraving. No hammered tin dimples, thin folded sheet edges or chased veins; no copper/brass laminate/inlay, flush silver channels in black zinc, wire springs, beads, fabric, paper, clay, wood veneer, painted marble or carved bone material. No jewellery hook/bail/coin/brooch pin, gemstones, ring, enclosing plaque, mold/tool/hand, display base, scenery, floor, shadow/halo/glow. Whole subject central64percent of canvas with18percent real empty alpha on EACH side, all extremities complete. No text/letters/numbers/UI/logo/signature or baked-in clock/date/battery/weather values. One recognizable natural common cuttlefish viewed three-quarter diagonally, broad oval mantle, one continuous modest undulating fin fringe on either mantle side, coherent small head with two natural modest lateral eyes. Eight short arms form one coherent loose bundle in front, two longer feeding tentacles extend as two graceful distinct complete slim curves with modest flattened clubs; every tip inside margins. No octopus head, nautilus shell, fins made into feather wings or enormous squid triangle. Two short familiar eelgrass blades behind lower side, no ground/base. Same single satin pewter shallow casting, coarse parallel wavy mould-grain crosses mantle/head/arms/blades continuously; no hammered dimples, enamels or colored metal inlays. INPUT1 is OWN APPROVED seahorse raw original, MATERIAL-ONLY REFERENCE for the single satin pewter and conspicuous continuous irregular parallel wavy cuttlebone mould grain. Generate the requested NEW subject and composition independently; do not copy the seahorse/leaf/holdfast/pose or add it to this artwork. Preserve same shallow integral cast thickness and same-gray ridge highlights/troughs across the new anatomy. No external neighbor image is supplied.",
+      "tool": "built-in image_gen",
+      "source": "sources/cuttlefish-eelgrass.0b6a1509.png",
+      "sourceSha256": "0b6a1509b9d1bd00fc3cdccc56173d6f3989ae4ca22b179156d8a8ecf0a556ee",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/cuttlefish-eelgrass.e8bd6047.png",
+      "sha256": "e8bd6047cf40b51d428ab70412084d04067aa6cc5c6eebd765bd90ee062f73aa",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "seahorse-strapkelp",
+          "file": "sources/seahorse-strapkelp.a4e78d62.png",
+          "sha256": "a4e78d6284d51587085d4ef01c0fef9160df5033019392b1af157b17f1fff5c7",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/cuttlefish-eelgrass-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/cuttlefish-eelgrass-exact-tool-result.json"
+    },
+    {
+      "id": "shorecrab-rockweed",
+      "prompt": "CUTTLECAST KELPWOOD, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL kelp-forest flora/fauna with recognizable natural anatomy FIRST. Unmistakable physical CUTTLEFISH-BONE MOULD CASTING IN ONE SATIN PEWTER: a solid but SHALLOW cast relief about4to7mm thick, soft integral cast lip around silhouette, COARSE IRREGULAR PARALLEL WAVY natural cuttlebone ridges impressed continuously across broad surfaces. Broad ridges and troughs must be readable at85px, not microscopic generic noise. Slight natural irregularity in ridge spacing and height; only soft silver-gray/taupe-gray pewter highlights and darker same-metal grooves, no colored decoration. Real cast thickness at edges and one tiny cleanly filed former-gate mark in an unobtrusive edge, no protruding sprue/tool. Warm soft studio light reveals mould grain, no glossy chrome. Clear natural subject silhouette dominates; ridges follow ONE broad wave field crossing anatomical parts, not a fur/feather/scale engraving. No hammered tin dimples, thin folded sheet edges or chased veins; no copper/brass laminate/inlay, flush silver channels in black zinc, wire springs, beads, fabric, paper, clay, wood veneer, painted marble or carved bone material. No jewellery hook/bail/coin/brooch pin, gemstones, ring, enclosing plaque, mold/tool/hand, display base, scenery, floor, shadow/halo/glow. Whole subject central64percent of canvas with18percent real empty alpha on EACH side, all extremities complete. No text/letters/numbers/UI/logo/signature or baked-in clock/date/battery/weather values. One familiar natural common shore crab in slight three-quarter top view: broad low shield-shaped carapace, two modest small natural stalked eyes, EXACTLY EIGHT coherent slender jointed walking legs, FOUR per side, plus TWO front claw-bearing arms with two complete modest pincers, ten appendages total. Two small loose rockweed frond forks nearby, no rocks or added terrain/plaque. Familiar whole crab silhouette, no many-legged fantasy creature, armor robot or jewellery brooch. Entire crab/leg/claw/eye/frond tips within margins. Same one-metal satin pewter shallow cast relief with broad parallel wavy natural mould grain across carapace/claws and fronds. INPUT1 is OWN APPROVED seahorse raw original, MATERIAL-ONLY REFERENCE for the single satin pewter and conspicuous continuous irregular parallel wavy cuttlebone mould grain. Generate the requested NEW subject and composition independently; do not copy the seahorse/leaf/holdfast/pose or add it to this artwork. Preserve same shallow integral cast thickness and same-gray ridge highlights/troughs across the new anatomy. No external neighbor image is supplied.",
+      "tool": "built-in image_gen",
+      "source": "sources/shorecrab-rockweed.4034d1f8.png",
+      "sourceSha256": "4034d1f82f35b0e47edd2d26133e6e69ed10c5e674e99277a629bbbc2eda8e78",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/shorecrab-rockweed.ad7b7bbc.png",
+      "sha256": "ad7b7bbca80bcc8e1ca0ab83714cbb3a6911a3e82a2eff7f8ec5dce9d3410007",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "seahorse-strapkelp",
+          "file": "sources/seahorse-strapkelp.a4e78d62.png",
+          "sha256": "a4e78d6284d51587085d4ef01c0fef9160df5033019392b1af157b17f1fff5c7",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/shorecrab-rockweed-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/shorecrab-rockweed-exact-tool-result.json"
+    },
+    {
+      "id": "kelp-anemone",
+      "prompt": "CUTTLECAST KELPWOOD, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL kelp-forest flora/fauna with recognizable natural anatomy FIRST. Unmistakable physical CUTTLEFISH-BONE MOULD CASTING IN ONE SATIN PEWTER: a solid but SHALLOW cast relief about4to7mm thick, soft integral cast lip around silhouette, COARSE IRREGULAR PARALLEL WAVY natural cuttlebone ridges impressed continuously across broad surfaces. Broad ridges and troughs must be readable at85px, not microscopic generic noise. Slight natural irregularity in ridge spacing and height; only soft silver-gray/taupe-gray pewter highlights and darker same-metal grooves, no colored decoration. Real cast thickness at edges and one tiny cleanly filed former-gate mark in an unobtrusive edge, no protruding sprue/tool. Warm soft studio light reveals mould grain, no glossy chrome. Clear natural subject silhouette dominates; ridges follow ONE broad wave field crossing anatomical parts, not a fur/feather/scale engraving. No hammered tin dimples, thin folded sheet edges or chased veins; no copper/brass laminate/inlay, flush silver channels in black zinc, wire springs, beads, fabric, paper, clay, wood veneer, painted marble or carved bone material. No jewellery hook/bail/coin/brooch pin, gemstones, ring, enclosing plaque, mold/tool/hand, display base, scenery, floor, shadow/halo/glow. Whole subject central64percent of canvas with18percent real empty alpha on EACH side, all extremities complete. No text/letters/numbers/UI/logo/signature or baked-in clock/date/battery/weather values. One recognizable natural modest sea anemone with a short cylindrical column and ONE radial crown of about14 modest simple tapering tentacles around a shallow central mouth disk, a whole blade of strap kelp rising behind in one tall gentle S curve with a short holdfast. Natural marine forms, not a rose/flower vase, feather tree, bowl, spiral shell or round medallion. Tentacles varied but all whole and open, gaps true alpha. One integral satin pewter shallow casting, broad parallel wavy mould ridges across solid kelp blade/anemone column and tentacles, no bright enamel, gemstones or separate sheet metal. INPUT1 is OWN APPROVED seahorse raw original, MATERIAL-ONLY REFERENCE for the single satin pewter and conspicuous continuous irregular parallel wavy cuttlebone mould grain. Generate the requested NEW subject and composition independently; do not copy the seahorse/leaf/holdfast/pose or add it to this artwork. Preserve same shallow integral cast thickness and same-gray ridge highlights/troughs across the new anatomy. No external neighbor image is supplied.",
+      "tool": "built-in image_gen",
+      "source": "sources/kelp-anemone.c919cf66.png",
+      "sourceSha256": "c919cf6679ed4addbff12547b2b3734db1320cdd02a3a21689dcd77269b412a4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/kelp-anemone.8c966e19.png",
+      "sha256": "8c966e1966dfc5dd38997003b82c30a9e3e741b5b15fdbaa59f299fc5d86e8f9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "seahorse-strapkelp",
+          "file": "sources/seahorse-strapkelp.a4e78d62.png",
+          "sha256": "a4e78d6284d51587085d4ef01c0fef9160df5033019392b1af157b17f1fff5c7",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/kelp-anemone-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/kelp-anemone-exact-tool-result.json"
+    },
+    {
+      "id": "corkwing-wrasse",
+      "prompt": "CUTTLECAST KELPWOOD, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL kelp-forest flora/fauna with recognizable natural anatomy FIRST. Unmistakable physical CUTTLEFISH-BONE MOULD CASTING IN ONE SATIN PEWTER: a solid but SHALLOW cast relief about4to7mm thick, soft integral cast lip around silhouette, COARSE IRREGULAR PARALLEL WAVY natural cuttlebone ridges impressed continuously across broad surfaces. Broad ridges and troughs must be readable at85px, not microscopic generic noise. Slight natural irregularity in ridge spacing and height; only soft silver-gray/taupe-gray pewter highlights and darker same-metal grooves, no colored decoration. Real cast thickness at edges and one tiny cleanly filed former-gate mark in an unobtrusive edge, no protruding sprue/tool. Warm soft studio light reveals mould grain, no glossy chrome. Clear natural subject silhouette dominates; ridges follow ONE broad wave field crossing anatomical parts, not a fur/feather/scale engraving. No hammered tin dimples, thin folded sheet edges or chased veins; no copper/brass laminate/inlay, flush silver channels in black zinc, wire springs, beads, fabric, paper, clay, wood veneer, painted marble or carved bone material. No jewellery hook/bail/coin/brooch pin, gemstones, ring, enclosing plaque, mold/tool/hand, display base, scenery, floor, shadow/halo/glow. Whole subject central64percent of canvas with18percent real empty alpha on EACH side, all extremities complete. No text/letters/numbers/UI/logo/signature or baked-in clock/date/battery/weather values. One recognizable natural corkwing wrasse in whole side view swimming diagonally up-right: oval tapered fish body, modest short rounded snout and small natural eye, closed mouth, coherent gill plate, ONE long low dorsal fin with delicate coherent rays, one modest pectoral fin, one anal fin and a whole gently rounded fan tail. Small rounded body and naturally tapering peduncle, not shark, angelfish, flying fish or abstract fish icon. One short fork of kelp at lower-left, no terrain. Same satin pewter low casting, wide irregular parallel wavy mould-ridge impressions across the entire body and fin planes, no scales copied as tile mosaic, blue/gold painted bands or multimetal woodgrain. Whole nose/fins/tail/kelp ends inside generous margins. INPUT1 is OWN APPROVED seahorse raw original, MATERIAL-ONLY REFERENCE for the single satin pewter and conspicuous continuous irregular parallel wavy cuttlebone mould grain. Generate the requested NEW subject and composition independently; do not copy the seahorse/leaf/holdfast/pose or add it to this artwork. Preserve same shallow integral cast thickness and same-gray ridge highlights/troughs across the new anatomy. No external neighbor image is supplied.",
+      "tool": "built-in image_gen",
+      "source": "sources/corkwing-wrasse.c1648bc1.png",
+      "sourceSha256": "c1648bc16308b64d6a86a6ff420471b682b9f9f3043b5ab86f7ca9a51a8aa0dd",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/corkwing-wrasse.ace108d5.png",
+      "sha256": "ace108d574dbde9a92b818c64049bbc4e9002624e631633f9bfc9d47a01d82e2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "seahorse-strapkelp",
+          "file": "sources/seahorse-strapkelp.a4e78d62.png",
+          "sha256": "a4e78d6284d51587085d4ef01c0fef9160df5033019392b1af157b17f1fff5c7",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/corkwing-wrasse-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/corkwing-wrasse-exact-tool-result.json"
+    }
+  ]
+}
