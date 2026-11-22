@@ -1,0 +1,18 @@
+{
+  "id": "folding-road-layer",
+  "prompt": "NACRE NOMADS for Glaze. ONE separate original1024x1024 square production artwork. Meticulous FLAT saw-cut mother-of-pearl wafer INLAY in polished black lacquer, each tiny shell piece visibly has nacre growth bands and cream/sea-green/soft-rose/pale-silver iridescence, hair-thin uneven dark joints, occasional saw kerf. Low-relief lacquer-panel illustration viewed straight on, not actual3D metal/crystal sculptures, no brass cloisonne/enamel. Isolated complete silhouette central65%,18% real transparent alpha margins, transparent exterior and open gaps; black lacquer retained only within the illustration's structure. No backing rectangle, frame, floor, pedestal, text, numerals, signature, labels, UI, logo, clock/date/battery/live readings, no collage. TANGIBLE SUBJECT: FOLDING ROAD-LAYER, a low articulated desert machine with three linked open-frame chassis sections, six broad small wheels and a large segmented drum at the rear. The drum UNROLLS AN ENTIRE ROAD: a broad ribbon of curved paving slabs feeds visibly through two large guide rollers and lays a flat path behind; one section rises into a tiny temporary arch before settling. At front, a broad adjustable grading blade hangs from two arms, above a compact driver cab. Clearly road-building machinery with a readable material route, not a tank, excavator toy, paper stationery roll, house, boat or creature. Strong low diagonal outline, road ribbon and drum easily readable at small size. Entire construction flat saw-cut shell wafer inlay with pearl growth bands and irregular lacquer joints, not actual3D metal. Complete machine/path within transparent margins, no signs or numbers.",
+  "tool": "built-in image_gen",
+  "source": "sources/folding-road-layer.10d6982a.png",
+  "sourceSha256": "10d6982a29257cba8e551c4e430593e006b53a0944143832f3e4470c4ffee806",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folding-road-layer.e7a53b04.png",
+  "sha256": "e7a53b0435fef73d1c8f299159c9fd1890451ff104f51bc3cf0c7e048f1dbf3c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

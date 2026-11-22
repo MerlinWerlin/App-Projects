@@ -1,0 +1,119 @@
+{
+  "theme": "nacre-nomads",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Saw-cut mother-of-pearl wafer inlay in black lacquer",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 production wallpaper for Glaze NACRE NOMADS. A tangible travelling desert settlement depicted as meticulous FLAT MOTHER-OF-PEARL INLAY in deep black lacquer: small saw-cut iridescent shell wafers fit together with hair-thin uneven black joints, each wafer has visible nacre growth bands, pearly cream/sea-green/soft rose/pale silver directional sheen, occasional saw kerfs, polished lacquer under broad quiet reflections. In the lower45% a tracked orchard caravan carries three terraced living trees and an arched shelter, near a very tall walking waterwell with broad articulated feet, a kite-sailed tent market wagon and a vaulted bathhouse on a sled; all clearly recognisable useful inhabited constructions. Curving shell-inlaid dune paths connect this movable village; no real modern vehicles or brand forms. This is an artisan lacquer PANEL, very shallow shell-inlay relief only, straight overhead view; NOT3D metal/crystal specimens, not stained-glass/brass-cell enamel, not loose separate objects. Upper55% nearly empty deep black-green #0D1D21 lacquer with subtle hand-rubbed texture and very few tiny shell flecks, legible icon space. Large high-contrast pearl silhouettes below, consistent irregular saw-cut shell material throughout. No text, signature, letters, numerals, labels, clocks/dates/battery/weather readings, logos, UI, phone mockup, frame, border or collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.263f5da9.png",
+      "sourceSha256": "263f5da9a858209c0702b8cfec86cde7d8c0d72fb9abc43d60abcf2d30fda0ae",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "036966efe6893863733906801eef211f1481a924cf2205bac00582da38008151",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "orchard-caravan",
+      "prompt": "NACRE NOMADS for Glaze. ONE separate original1024x1024 square production artwork. Meticulous FLAT saw-cut mother-of-pearl wafer INLAY in polished black lacquer, each tiny shell piece visibly has nacre growth bands and cream/sea-green/soft-rose/pale-silver iridescence, hair-thin uneven dark joints, occasional saw kerf. Low-relief lacquer-panel illustration viewed straight on, not actual3D metal/crystal sculptures, no brass cloisonne/enamel. Isolated complete silhouette central65%,18% real transparent alpha margins, transparent exterior and open gaps; black lacquer retained only within the illustration's structure. No backing rectangle, frame, floor, pedestal, text, numerals, signature, labels, UI, logo, clock/date/battery/live readings, no collage. TANGIBLE SUBJECT: ORCHARD CARAVAN, a long low agricultural carrier on two visible caterpillar tracks. Its open upper deck carries three terraced circular growing beds with fruit trees rooted inside; below the beds an arched maintenance gallery shows irrigation tanks, coiled hoses and a small driver cab with a clear door. One hinged ramp descends from rear, and folding rain awnings protect the lower terrace. A useful travelling orchard for a desert settlement, recognisable machinery/horticulture rather than a decorative house, tree alone or abstract form. Broad low silhouette with distinct tree crowns, tracks and ramp, complete in frame.",
+      "tool": "built-in image_gen",
+      "source": "sources/orchard-caravan.05db2952.png",
+      "sourceSha256": "05db2952a1d26dde4eda45d02b4fe52bacc4816d76de1e786dcffb18d4d370a9",
+      "sourceDimensions": [
+        1672,
+        941
+      ],
+      "selectedFile": "widgets/orchard-caravan.56097594.png",
+      "sha256": "5609759490be5f16693abd3c87977f1df4db8052d0ec3574f98818b6c0eab6cb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "walking-waterwell",
+      "prompt": "NACRE NOMADS for Glaze. ONE separate original1024x1024 square production artwork. Meticulous FLAT saw-cut mother-of-pearl wafer INLAY in polished black lacquer, each tiny shell piece visibly has nacre growth bands and cream/sea-green/soft-rose/pale-silver iridescence, hair-thin uneven dark joints, occasional saw kerf. Low-relief lacquer-panel illustration viewed straight on, not actual3D metal/crystal sculptures, no brass cloisonne/enamel. Isolated complete silhouette central65%,18% real transparent alpha margins, transparent exterior and open gaps; black lacquer retained only within the illustration's structure. No backing rectangle, frame, floor, pedestal, text, numerals, signature, labels, UI, logo, clock/date/battery/live readings, no collage. TANGIBLE SUBJECT: WALKING WATERWELL, a tall portable desert well built around a large open cylindrical cistern, on FOUR broadly splayed articulated stilt legs ending in broad sand shoes. A slender peaked open canopy and long hinged lifting beam stand above the cistern, lowering a single bucket through a visible pulley into its centre. Include one compact pump housing, side tap, maintenance ladder and a suspended crescent balance weight. No house body or windows, a clearly useful water-harvesting machine, not an abstract tower or creature. One leg slightly lifted, strong airy tall silhouette with wide four-foot base. Each part entirely saw-cut iridescent shell in lacquer with obvious nacre wafer seams, graphically flat construction, not metal or gemstone model. Full canopy/feet/beam fit with transparent margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/walking-waterwell.f64799e2.png",
+      "sourceSha256": "f64799e28166641abbecb9b61b845054c0c5a8a445d639d0cde6d7f054b9fd45",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/walking-waterwell.efb365c7.png",
+      "sha256": "efb365c7352b1ea4a56b109847043b06c4764e153618c7e980348390eae33eb8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "kite-market-wagon",
+      "prompt": "NACRE NOMADS for Glaze. ONE separate original1024x1024 square production artwork. Meticulous FLAT saw-cut mother-of-pearl wafer INLAY in polished black lacquer, each tiny shell piece visibly has nacre growth bands and cream/sea-green/soft-rose/pale-silver iridescence, hair-thin uneven dark joints, occasional saw kerf. Low-relief lacquer-panel illustration viewed straight on, not actual3D metal/crystal sculptures, no brass cloisonne/enamel. Isolated complete silhouette central65%,18% real transparent alpha margins, transparent exterior and open gaps; black lacquer retained only within the illustration's structure. No backing rectangle, frame, floor, pedestal, text, numerals, signature, labels, UI, logo, clock/date/battery/live readings, no collage. TANGIBLE SUBJECT: KITE-SAIL MARKET WAGON, an open mobile desert bazaar on a long three-wheeled chassis with a broad steering runner at the front. Two low striped scalloped canopies cover baskets and tiny produce jars, a fold-down trading counter and rear storage racks. Above, one enormous asymmetric diamond kite-sail is visibly rigged to a tall leaning mast with fine lines and a pulley so wind pulls the wagon. A strong tall-kite-over-low-open-stall silhouette, no house walls, no boat hull, no orchard or well duplicate. Clear chassis/rigging/market function, strange but usable community trade machine. All carved as tiny wafer-shaped nacre inlays, irregular saw-cut seams, black lacquer joints; graphic low relief, do not render as an actual3D model. Entire kite/lines/wheels complete with alpha margins. No signs, price labels, numbers or text.",
+      "tool": "built-in image_gen",
+      "source": "sources/kite-market-wagon.a4075a02.png",
+      "sourceSha256": "a4075a0248f63da1a1221f1b6218b2626f66500edeae344321e514336ea81546",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/kite-market-wagon.e24eb809.png",
+      "sha256": "e24eb809000c79bfabc504293fc5c1da0592781606459ed9ca1116c6265e2c63",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "folding-road-layer",
+      "prompt": "NACRE NOMADS for Glaze. ONE separate original1024x1024 square production artwork. Meticulous FLAT saw-cut mother-of-pearl wafer INLAY in polished black lacquer, each tiny shell piece visibly has nacre growth bands and cream/sea-green/soft-rose/pale-silver iridescence, hair-thin uneven dark joints, occasional saw kerf. Low-relief lacquer-panel illustration viewed straight on, not actual3D metal/crystal sculptures, no brass cloisonne/enamel. Isolated complete silhouette central65%,18% real transparent alpha margins, transparent exterior and open gaps; black lacquer retained only within the illustration's structure. No backing rectangle, frame, floor, pedestal, text, numerals, signature, labels, UI, logo, clock/date/battery/live readings, no collage. TANGIBLE SUBJECT: FOLDING ROAD-LAYER, a low articulated desert machine with three linked open-frame chassis sections, six broad small wheels and a large segmented drum at the rear. The drum UNROLLS AN ENTIRE ROAD: a broad ribbon of curved paving slabs feeds visibly through two large guide rollers and lays a flat path behind; one section rises into a tiny temporary arch before settling. At front, a broad adjustable grading blade hangs from two arms, above a compact driver cab. Clearly road-building machinery with a readable material route, not a tank, excavator toy, paper stationery roll, house, boat or creature. Strong low diagonal outline, road ribbon and drum easily readable at small size. Entire construction flat saw-cut shell wafer inlay with pearl growth bands and irregular lacquer joints, not actual3D metal. Complete machine/path within transparent margins, no signs or numbers.",
+      "tool": "built-in image_gen",
+      "source": "sources/folding-road-layer.10d6982a.png",
+      "sourceSha256": "10d6982a29257cba8e551c4e430593e006b53a0944143832f3e4470c4ffee806",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folding-road-layer.e7a53b04.png",
+      "sha256": "e7a53b0435fef73d1c8f299159c9fd1890451ff104f51bc3cf0c7e048f1dbf3c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "mobile-bathhouse",
+      "prompt": "NACRE NOMADS for Glaze. ONE separate original1024x1024 square production artwork. Meticulous FLAT saw-cut mother-of-pearl wafer INLAY in polished black lacquer, each tiny shell piece visibly has nacre growth bands and cream/sea-green/soft-rose/pale-silver iridescence, hair-thin uneven dark joints, occasional saw kerf. Low-relief lacquer-panel illustration viewed straight on, not actual3D metal/crystal sculptures, no brass cloisonne/enamel. Isolated complete silhouette central65%,18% real transparent alpha margins, transparent exterior and open gaps; black lacquer retained only within the illustration's structure. No backing rectangle, frame, floor, pedestal, text, numerals, signature, labels, UI, logo, clock/date/battery/live readings, no collage. TANGIBLE SUBJECT: MOBILE DESERT BATHHOUSE, a wide low barrel-vaulted public wash pavilion carried on two broad visibly curved SLED RUNNERS, no boat hull or wheels. Three open arched bays reveal shallow pools and stepping platforms, a clear central entrance with fold-down steps, patterned side screens, two small roof vent chimneys and a compact exterior water-recycling tank connected by visible pipes. A few slender curling steam wisps rise above the vault as cut shell curls. Purposeful communal bathing service that travels with the nomads; complete constructed building on a sled, warm inhabited atmosphere without people, clearly different silhouette from tracked orchard, high well and kite-market. Build every arch/tile/pipe/runners from iridescent nacre wafers with visible black-lacquer joins, flat artisan inlay panel language, not a polished3D gemstone toy. Whole pavilion/steam/runners fits inside transparent margins. No text, readings or labels.",
+      "tool": "built-in image_gen",
+      "source": "sources/mobile-bathhouse.65b934d6.png",
+      "sourceSha256": "65b934d69e7e555747b0b4a80d40907a15d3b9cb8ec925c582320f84919eeb4f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/mobile-bathhouse.713f3fe8.png",
+      "sha256": "713f3fe8b81ceb1ac73155548d6e9a42921ce9e5bc384c2215de2769dbe64bb9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

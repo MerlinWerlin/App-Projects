@@ -1,0 +1,18 @@
+{
+  "id": "kite-market-wagon",
+  "prompt": "NACRE NOMADS for Glaze. ONE separate original1024x1024 square production artwork. Meticulous FLAT saw-cut mother-of-pearl wafer INLAY in polished black lacquer, each tiny shell piece visibly has nacre growth bands and cream/sea-green/soft-rose/pale-silver iridescence, hair-thin uneven dark joints, occasional saw kerf. Low-relief lacquer-panel illustration viewed straight on, not actual3D metal/crystal sculptures, no brass cloisonne/enamel. Isolated complete silhouette central65%,18% real transparent alpha margins, transparent exterior and open gaps; black lacquer retained only within the illustration's structure. No backing rectangle, frame, floor, pedestal, text, numerals, signature, labels, UI, logo, clock/date/battery/live readings, no collage. TANGIBLE SUBJECT: KITE-SAIL MARKET WAGON, an open mobile desert bazaar on a long three-wheeled chassis with a broad steering runner at the front. Two low striped scalloped canopies cover baskets and tiny produce jars, a fold-down trading counter and rear storage racks. Above, one enormous asymmetric diamond kite-sail is visibly rigged to a tall leaning mast with fine lines and a pulley so wind pulls the wagon. A strong tall-kite-over-low-open-stall silhouette, no house walls, no boat hull, no orchard or well duplicate. Clear chassis/rigging/market function, strange but usable community trade machine. All carved as tiny wafer-shaped nacre inlays, irregular saw-cut seams, black lacquer joints; graphic low relief, do not render as an actual3D model. Entire kite/lines/wheels complete with alpha margins. No signs, price labels, numbers or text.",
+  "tool": "built-in image_gen",
+  "source": "sources/kite-market-wagon.a4075a02.png",
+  "sourceSha256": "a4075a0248f63da1a1221f1b6218b2626f66500edeae344321e514336ea81546",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/kite-market-wagon.e24eb809.png",
+  "sha256": "e24eb809000c79bfabc504293fc5c1da0592781606459ed9ca1116c6265e2c63",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

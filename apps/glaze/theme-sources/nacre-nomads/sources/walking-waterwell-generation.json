@@ -1,0 +1,18 @@
+{
+  "id": "walking-waterwell",
+  "prompt": "NACRE NOMADS for Glaze. ONE separate original1024x1024 square production artwork. Meticulous FLAT saw-cut mother-of-pearl wafer INLAY in polished black lacquer, each tiny shell piece visibly has nacre growth bands and cream/sea-green/soft-rose/pale-silver iridescence, hair-thin uneven dark joints, occasional saw kerf. Low-relief lacquer-panel illustration viewed straight on, not actual3D metal/crystal sculptures, no brass cloisonne/enamel. Isolated complete silhouette central65%,18% real transparent alpha margins, transparent exterior and open gaps; black lacquer retained only within the illustration's structure. No backing rectangle, frame, floor, pedestal, text, numerals, signature, labels, UI, logo, clock/date/battery/live readings, no collage. TANGIBLE SUBJECT: WALKING WATERWELL, a tall portable desert well built around a large open cylindrical cistern, on FOUR broadly splayed articulated stilt legs ending in broad sand shoes. A slender peaked open canopy and long hinged lifting beam stand above the cistern, lowering a single bucket through a visible pulley into its centre. Include one compact pump housing, side tap, maintenance ladder and a suspended crescent balance weight. No house body or windows, a clearly useful water-harvesting machine, not an abstract tower or creature. One leg slightly lifted, strong airy tall silhouette with wide four-foot base. Each part entirely saw-cut iridescent shell in lacquer with obvious nacre wafer seams, graphically flat construction, not metal or gemstone model. Full canopy/feet/beam fit with transparent margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/walking-waterwell.f64799e2.png",
+  "sourceSha256": "f64799e28166641abbecb9b61b845054c0c5a8a445d639d0cde6d7f054b9fd45",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/walking-waterwell.efb365c7.png",
+  "sha256": "efb365c7352b1ea4a56b109847043b06c4764e153618c7e980348390eae33eb8",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
