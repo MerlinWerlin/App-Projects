@@ -1,0 +1,19 @@
+{
+  "themeId": "pithcurl-orchard",
+  "recipe": [
+    "square",
+    "pithMouse",
+    "pithCurls",
+    "beads",
+    "sword",
+    "basin",
+    "band"
+  ],
+  "art": {
+    "pithMouse": "M 43 31 C 26 14 40 4 49 22 C 58 5 77 10 68 31 L 86 41 L 75 47 Q 80 59 74 73 Q 74 81 65 85 L 70 90 L 59 91 L 54 86 L 41 88 L 35 93 L 25 91 L 30 84 Q 18 75 25 57 Q 29 40 43 31 Z M 46 27 Q 35 18 41 13 M 61 25 Q 66 12 70 16 M 68 35 L 69 35 M 84 41 L 88 42 M 70 54 Q 60 51 55 58 L 63 62 M 52 65 Q 42 61 39 67 L 47 71 M 28 77 Q 9 88 7 69 Q 5 51 19 53 Q 32 57 23 67 Q 16 73 14 64 Q 13 60 19 60",
+    "pithCurls": "M 27 53 Q 41 40 66 43 Q 79 48 76 54 M 27 60 Q 46 49 73 53 M 27 71 Q 43 60 67 65 Q 74 69 69 76 M 31 80 Q 46 71 61 75 M 38 31 Q 48 26 62 29"
+  },
+  "ornament": "M 16 74 C 9 51 30 36 46 50 C 59 63 43 81 31 69 C 24 62 31 54 37 59 M 18 73 Q 33 89 52 75 Q 66 63 78 29 M 65 52 Q 48 42 57 28 Q 69 15 84 18 Q 86 38 65 52 Z M 63 45 L 77 25",
+  "direction": "Whole round-eared seated mouse with a pointed nose, two small forepaws, two back feet and an open long spiral tail; broad overlapping peel-fold curves. Rounded-square dial retains12pt today type; bead marks, sword hands, basin charge and band calendar remain live.",
+  "ornamentDirection": "One open peel tendril curl and a single folded leaf gives narrow clock/calendar headers quiet matching material context. No whole miniature animal or food bowl."
+}

@@ -1,0 +1,46 @@
+{
+  "theme": {
+    "id": "pithcurl-orchard",
+    "name": "Pithcurl Orchard",
+    "packVersion": 1,
+    "minAppVersion": "1.0.44",
+    "artworks": [
+      "dormouse",
+      "robin-twig",
+      "garden-snail",
+      "walking-fox",
+      "apple-blossom"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 985260,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "globalCounts": {
+    "themes": 80,
+    "artworks": 400,
+    "nativePlans": 720
+  },
+  "scopedTests": {
+    "pass": 63,
+    "fail": 0,
+    "skip": 0
+  },
+  "fullCoreTests": {
+    "pass": 2024,
+    "fail": 0,
+    "skip": 0
+  },
+  "typechecks": "core and node pass",
+  "fiveArtworksSeparateOriginals": true,
+  "nativePlansRealAndChanging": true,
+  "batteryNullZeroAndFull": true,
+  "roundedArtworkCoreSilhouettesRetained": true,
+  "actualNativeCompanionsRetainedInRoundedStress": true,
+  "compactPlacements": 4,
+  "largeHeroLayoutsByteIdenticalWithAndWithoutCompanion": 5,
+  "minimumAppVersion": "1.0.44",
+  "previewRendererSha256": "5b683c9581bef7344d89b4bd4b71b97b40ae71cd09f84ad60263f016b3fc714c",
+  "physicalDeviceTest": false,
+  "published": false
+}
