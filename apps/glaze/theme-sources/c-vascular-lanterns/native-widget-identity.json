@@ -1,0 +1,22 @@
+{
+  "theme": "c-vascular-lanterns",
+  "recipe": [
+    "lozenge",
+    "cVeinlightCalyx",
+    "cVeinlightRibs",
+    "beads",
+    "leaf",
+    "column",
+    "folio"
+  ],
+  "art": {
+    "cVeinlightCalyx": "M 50 20 Q 49 8 68 4 M 50 20 C 27 11 8 35 17 58 Q 26 79 50 97 Q 76 78 84 57 C 94 34 74 11 50 20 Z",
+    "cVeinlightRibs": "M 50 20 Q 25 46 50 97 M 50 20 Q 75 45 50 97 M 50 20 L 50 97 M 25 35 Q 38 41 49 35 M 50 35 Q 65 40 76 34 M 19 52 Q 30 58 36 51 L 49 56 L 63 49 Q 74 55 84 50 M 29 73 L 39 66 L 50 75 L 62 67 L 73 73 M 40 60 Q 41 50 51 51 Q 62 53 61 63 Q 59 74 49 73 Q 39 71 40 60 Z"
+  },
+  "ornament": "M 29 88 Q 47 67 60 26 M 42 66 Q 24 68 22 49 Q 37 47 47 58 M 51 48 Q 68 47 76 29 Q 59 25 55 38 M 60 26 Q 53 15 66 10 M 29 55 L 42 62 M 63 34 L 53 45",
+  "ornamentDirection": "Small original natural forked dry twig with two open leaf-vein fragments and complete curved tip. Generous open space, no tiny cage/berry portrait or enclosing mesh in headers.",
+  "direction": "Tapered lozenge face follows the whole pointed calyx, with sparse original natural ribs and one small berry form in larger native fields. Beads, leaf hands, column battery and folio calendar. Date marker adapts independently; same point size as ordinary dates, bold at every size.",
+  "values": "Existing live native Clock/Battery/Calendar; no raster readings.",
+  "registryIntegration": "Source-only lane; coordinator owns canonical registry/shared SVG/Swift/runtime and installed-device qualification. Candidate floor1.0.44.",
+  "ornamentProvenance": "Original authored100x100 SVG paths,23November2026,following natural botanical vein structure and both-corner steering."
+}

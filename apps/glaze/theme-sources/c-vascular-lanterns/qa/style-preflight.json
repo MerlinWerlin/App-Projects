@@ -1,0 +1,124 @@
+{
+  "theme": "c-vascular-lanterns",
+  "status": "Root accepted cleaned first prototype920cec30 after actual full17085 and anatomy-neighbor comparison; four/WP/native expansion authorized.",
+  "sample": {
+    "id": "lantern-vein-cage",
+    "selected": true,
+    "sourceSha256": "920cec30caeac0c8781b4625e708d2cdc789dab1c7eea9b00073c42de0887832",
+    "prompt": "BACKGROUND AND EMPTY-CELL EXTRACTION ONLY of this EXACT OWN botanical vein-cage/berry image. Keep the COMPLETE exact existing object: every coarse dry matte tan primary rib, all fine irregular branching/rejoining secondary veins, every visible far-side vein, every original junction/rough brown fleck/tiny natural plant fibre, the entire curved pedicel, whole calyx outline/lower tip and the ONE orange berry with its exact skin/highlight. Preserve original topology, proportions, layout, colour, natural vein thickness and shading on actual solid veins/fruit. DO NOT redraw, thicken, smooth, simplify, weave or replace any vein, alter the berry, add structures or crop any part.\nREMOVE ONLY the unwanted pale cream/white/grey BACKGROUND HAZE that currently lies IN THE EMPTY CELLS BETWEEN VEINS and outside/above/around the actual cage. These pale partly transparent patches are BACKDROP, not plant tissue. Replace ALL of that interveinal and exterior backdrop with GENUINE COMPLETE ALPHAZERO TRANSPARENCY, including the open cells above the berry, at the sides, below it and between the pedicel and cage rim. Keep every actual near-side and far-side rib crossing those holes visible and unchanged. Where an opening is not occluded by a solid vein or berry, it must be completely empty true alpha, with no cream/grey film, faint white fog, translucent membrane, tinted fill, opaque painted background, halo or shadow. Do not erase actual beige veins just because the unwanted haze is also pale; keep their full continuous branching structure. Berry and actual solid veins stay opaque. Outer canvas corners/edges and empty exterior also fully transparent. Natural anti-aliased edges on real veins only; NO broad milky fringe around the cage. Exact whole hollow vascular cage and berry cutout, simply remove its residual backdrop throughout all holes and exterior. No new floor, field, text, ruler, frame, label, UI or object. Preserve the entire original composition and every endpoint inside frame, no zoom/crop/rearrangement.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        194,
+        66,
+        1060,
+        1203
+      ],
+      "96": [
+        195,
+        67,
+        1059,
+        1202
+      ]
+    },
+    "edgeAlphaMaximum": 1,
+    "directEditReference": {
+      "sourceImage": "intermediate-first-sample/lantern-cage-pending.81773eddefc4.png",
+      "sha256": "81773eddefc46129cf5fa92f0523f2f64a7fc4a81f50ea9c4e34a64d4dbc88ff",
+      "role": "Exact own first whole calyx/berry; remove only residual backdrop in empty cells and exterior"
+    }
+  },
+  "neighbors": [
+    {
+      "theme": "c-transmitted-seedbank",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-transmitted-seedbank\\widgets\\physalis-lantern.17f71bd31b76.png",
+      "sha256": "17f71bd31b7622cc9c1e042a2a52df97065d4e1cfd0b7cbba90815432024f482"
+    },
+    {
+      "theme": "bobbinbound-meadow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\bobbinbound-meadow\\widgets\\foxglove-bumble.2eec2e1e.png",
+      "sha256": "2eec2e1e85f89b016770eefb7435641f8bc541bde3d16f6b2705b9fd678d92a1"
+    },
+    {
+      "theme": "c-diaphanized-marsh",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-diaphanized-marsh\\widgets\\common-frog.7e81676fc236.png",
+      "sha256": "7e81676fc2366997f687384a07681a4285cabcfa36bd36f621e1f490cc1a5075"
+    },
+    {
+      "theme": "rimebranch-tundra",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\rimebranch-tundra\\widgets\\arctic-poppy.7c282cc9.png",
+      "sha256": "7c282cc9d2083a45b2dfe5c2884fda12f1f9a14707b2dae76fecb1d2f7c80fc3"
+    },
+    {
+      "theme": "pithcurl-orchard",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\pithcurl-orchard\\widgets\\apple-blossom.e0bfe1b3.png",
+      "sha256": "e0bfe1b3784922c0524b586621c8081704d994262ea6a6936c4b9f1bcab6f382"
+    },
+    {
+      "theme": "guilloche-copse",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\guilloche-copse\\widgets\\lady-fern.cd5e227c.png",
+      "sha256": "cd5e227c619b58f1f3b3bff392d49743117ac1f8657bafec546614e5a798c658"
+    },
+    {
+      "theme": "persimmon-press",
+      "optionId": "persimmon-pair",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\widget-persimmon-pair.50a1cc0d.webp",
+      "sha256": "50a1cc0d1fcade11b419846621bd43eeb665a956d2cecfe04f8b57df7bde2dbe",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\manifest.json",
+      "selectorProof": "outputs/vascular-scout-published-neighbor-selections.json"
+    },
+    {
+      "theme": "persimmon-press",
+      "optionId": "calyx-star",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\widget-calyx-star.03c4b550.webp",
+      "sha256": "03c4b550c2f4497e10a9ff8b697312ef652f58355dfd66a8cd8bc94d4425af1a",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\persimmon-press\\v2\\manifest.json",
+      "selectorProof": "outputs/vascular-scout-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "Same whole matte dry irregular vascular cage, berry and complete pedicel remain. Background/empty-cell extraction removes pale haze to actual open alpha; identical-canvas corrected cell probes compare before/after in prototype-extraction-framing.json. No woven thread knots, regular mesh, opaque membrane, metal sheen or code alpha cleanup. Needs coordinator actual85/material verdict before otherfour/WP.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "anatomy",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\vascular-extracted-anatomy-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "material",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\vascular-extracted-material-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "print",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\vascular-extracted-print-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    }
+  ],
+  "coordinatorGate": "Root accepted cleaned920cec30 after viewing full17085 and actual anatomy neighbors: dry open biological veins read clearly at85 and differ from C26 intact papery calyx. Expand four independent biologically plausible organs with different silhouettes and genuine empty cells; no more Physalis variants/generic lace/metal. Fuller/taller own-reference WP and lozenge/compact direction accepted; actual3crop checks required."
+}

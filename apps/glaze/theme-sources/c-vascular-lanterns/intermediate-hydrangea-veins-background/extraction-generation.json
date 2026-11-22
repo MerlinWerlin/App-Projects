@@ -1,0 +1,18 @@
+{
+  "selected": true,
+  "reason": "Selected after full-source/allfive/170/85/whole anatomy and actual open-alpha review. One own-source background extraction; first original retained unselected. No creative code editing.",
+  "sourceImage": "sources/hydrangea-veins.cd2b75b2afbf.png",
+  "sourceSha256": "cd2b75b2afbf1f84235f33b6e79796e3d2c236669dd4fb0868986e41b0281889",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "prompt": "BACKGROUND / EMPTY-CELL EXTRACTION ONLY of this EXACT OWN botanical vascular artwork. Preserve EXACTLY the entire three-floret hydrangea sprig, all broad four-sepal flower outlines, every fine vascular vein, tiny centres and all connected forked stems. Keep original anatomical topology, full silhouette, proportions, layout, all dry matte warm-ivory/tan vein/fibre material, natural rough flecks and lighting/shading on actual solid tissue. Do NOT crop, zoom, stretch, redraw, thicken, simplify, weave or delete the plant veins, change the organ, add branches or turn this into regular mesh/textile/metal. REMOVE ONLY the residual pale cream/white/grey/tan backdrop or film currently filling the EMPTY SPACES BETWEEN VEINS/FIBRES and any hazy field OUTSIDE the actual plant perimeter. Replace all these EMPTY CELLS and exterior with genuine complete ALPHAZERO transparency. These are open gaps after soft interveinal tissue is absent; they must not contain an opaque or translucent membrane, pale skin, creamy fill, coloured field, smoky haze, floor or external shadow. Preserve every actual near/far-side vein crossing a gap; where no solid vein/seed overlaps, the opening is truly transparent. Keep actual fine dry veins opaque and continuous, do not erase pale plant fibres along with the backdrop. Natural antialiasing confined to real edges, no broad halo. Same exact whole organism and all endpoints within frame, generous empty transparent corners. No new object, border, frame, label, writing, UI or readings. One own-source transparency correction only.",
+  "directEditReference": {
+    "sourceImage": "intermediate-hydrangea-veins-background/hydrangea-veins-first-unselected.c583bde72d00.png",
+    "sha256": "c583bde72d00e1c11532b51864ad842610bb1aca8f6461180d15d8b894b2c8c1",
+    "role": "Exact own independent botanical original; remove only empty-cell and exterior residual backdrop"
+  },
+  "generationTool": "built-in image_gen",
+  "externalVisualInputs": []
+}

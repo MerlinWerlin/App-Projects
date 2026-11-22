@@ -1,0 +1,1 @@
+Opaque1290x2796 structural resize of the single original own-five-reference fuller/taller botanical still life. Builder supplies1290x2796,1179x2556,750x1334 phone crops and240x520 thumbnail. No creative code image editing; source/actual crop verification in qa.

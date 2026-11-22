@@ -1,0 +1,59 @@
+{
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sourceSha256": "920cec30caeac0c8781b4625e708d2cdc789dab1c7eea9b00073c42de0887832",
+  "sourceBoundsByAlphaThreshold": {
+    "16": [
+      194,
+      66,
+      1060,
+      1203
+    ],
+    "96": [
+      195,
+      67,
+      1059,
+      1202
+    ]
+  },
+  "edgeAlphaMaximum": 1,
+  "outsideProbes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "wholeCageBerryPedicelInside": true,
+  "sameOriginalCanvasDimensions": true,
+  "exactOwnSourceLinkVerified": true,
+  "sameCellAlphaBeforeAfter": {
+    "leftOpenCell": {
+      "xy": [
+        500,
+        500
+      ],
+      "before": 65,
+      "after": 0
+    },
+    "middleOpenCell": {
+      "xy": [
+        700,
+        500
+      ],
+      "before": 69,
+      "after": 1
+    },
+    "rightOpenCell": {
+      "xy": [
+        900,
+        500
+      ],
+      "before": 59,
+      "after": 0
+    }
+  },
+  "centralCageRectangleAlphaBelow16Percent": 54.0102,
+  "centralRectangleScope": "Same fixed650x500 rectangle with veins/berry and open cells; descriptive fraction, not segmented mask."
+}

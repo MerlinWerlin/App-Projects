@@ -1,0 +1,100 @@
+{
+  "review": "All selected art originals preserved whole and uniformly contained900within1024 RGBA; four1254square plus landscape milkweed1536x1024, each framealpha1. No crop/stretch/creative code art changes or alpha cleanup. Five own-source extractions retain initial originals and exact prompts/hashes. Cleaned first calyx same cell probes65->0,69->1,59->0, and same fixed cage rectangle alpha<16 from0.3948 to54.0102percent; fixed regions are observations, not segmented tissue masks. First initial probe correction (veins vs cells) retained transparently in QA. Every actual encoded alpha16 pixel remains inside the rounded mask. Single own-five-reference opaque portrait wallpaper; all three actual phone crops keep every complete organ and endpoint.",
+  "assets": [
+    {
+      "id": "lantern-vein-cage",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          194,
+          66,
+          1060,
+          1203
+        ],
+        "96": [
+          195,
+          67,
+          1059,
+          1202
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "magnolia-veins",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          53,
+          41,
+          1209,
+          1217
+        ],
+        "96": [
+          53,
+          42,
+          1209,
+          1216
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "hydrangea-veins",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          53,
+          42,
+          1188,
+          1224
+        ],
+        "96": [
+          53,
+          43,
+          1188,
+          1224
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "luffa-veins",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          42,
+          371,
+          1211,
+          923
+        ],
+        "96": [
+          43,
+          372,
+          1211,
+          922
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "milkweed-veins",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          66,
+          168,
+          1470,
+          867
+        ],
+        "96": [
+          66,
+          169,
+          1470,
+          866
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}
