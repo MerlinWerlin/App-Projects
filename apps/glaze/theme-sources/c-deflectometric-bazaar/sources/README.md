@@ -1,0 +1,1 @@
+Six selected unmodified built-in outputs:five independent artworks and final layout-edited own-reference market wallpaper. Exact prompts/raw dimensions/hashes/own-reference lineage in provenance.json. Rejected first mannequin and unselected first wallpaper outside selected sources. No external image inputs.
