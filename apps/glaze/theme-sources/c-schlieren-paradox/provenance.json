@@ -1,0 +1,142 @@
+{
+  "theme": "c-schlieren-paradox",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.16fc21751cf7.png",
+      "sourceSha256": "16fc21751cf74bb0af81a348ad4765d13c699a49b6457cce108852be8a1ab21f",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "28bffc4e6468310106d7ad7b225a68b4f0e3c58732634e858408cd3dbbed982b",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2826143,
+      "processing": "Whole composition fitted to 1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE SCHLIEREN PARADOX. STRICT MEDIUM: flat monochrome high-speed schlieren wind-tunnel exposure, optical density-gradient measurement image. Photographic black shock boundaries, milky white rarefaction zones and finely speckled grey turbulence in invisible air. Slight amber edge dispersion ONLY. Grainy planar scientific exposure, sharp shock cones and irregular ruffled wavefronts with diffuse low-contrast internal vortices. Absolutely NO 3D object, thickness, layered solid strips, stacked rings, metallic rim, bronze, gold, material, shiny surface, highlights, reflections, embossing, ribbons, sculpture, sketch, printmaking, engraving, rainbow, particle tracks or sparkles. No labels, text, numbers, axes, UI, fixed values, logo or watermark. Imagined optical events, not actual scientific records. Asset: ONE original portrait phone wallpaper, composition1290x2796. Warm luminous chalk-ivory field. In the lower two-thirds an enormous asymmetric saddle-shaped shockfront intersects a staircase of separated wave edges; one small detached refractive iris hovers lower left. Crisp dark edges tracing invisible air, with paper-thin bright gaps between contours, amber only at a few crests. Upper third mostly quiet uniform warm ivory, middle right spacious for widgets. No objects, no horizon or landscape, no paper texture, no border. Opaque full-bleed composition, no mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    },
+    {
+      "id": "mach-saddle",
+      "sourceImage": "sources/mach-saddle.ea3b8dc605a5.png",
+      "sourceSha256": "ea3b8dc605a5c018b3abaf49b331bd2823706c6ecb3da45be8c3329640805fdf",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/mach-saddle.b71b5b3e499f.png",
+      "sha256": "b71b5b3e499f38c98c89d39a2934f5fa228fa258e2619cd1650b81fdfc2c022e",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 509200,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE SCHLIEREN PARADOX. STRICT MEDIUM: flat monochrome high-speed schlieren wind-tunnel exposure, optical density-gradient measurement image. Photographic black shock boundaries, milky white rarefaction zones and finely speckled grey turbulence in invisible air. Slight amber edge dispersion ONLY. Grainy planar scientific exposure, sharp shock cones and irregular ruffled wavefronts with diffuse low-contrast internal vortices. Absolutely NO 3D object, thickness, layered solid strips, stacked rings, metallic rim, bronze, gold, material, shiny surface, highlights, reflections, embossing, ribbons, sculpture, sketch, printmaking, engraving, rainbow, particle tracks or sparkles. No labels, text, numbers, axes, UI, fixed values, logo or watermark. Imagined optical events, not actual scientific records. Asset: ONE separate square1024x1024 pure-art widget. Subject MACH SADDLE: a broad skew triangular shock envelope folding once at its middle into an asymmetric saddle; an irregular family of flat black shock boundaries wrap the front, three separated cusp rays extend from its narrow right tip. Low wide triangular silhouette with an open central bite, entirely optical density gradients, no solid wedge. Centre whole event with15%clear margins. True transparent alpha outside and between open contours; black boundary lines and milky-grey refraction zones remain visible. No opaque tile, backdrop, ground, shadow, chart or axes.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 857085
+    },
+    {
+      "id": "vortex-rook",
+      "sourceImage": "sources/vortex-rook.9d1ce4941043.png",
+      "sourceSha256": "9d1ce494104343a25c3f5e1bdfb0265cd61e4bad738ac6ae5ff6940ada927dde",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/vortex-rook.2c45f35c9ae0.png",
+      "sha256": "2c45f35c9ae079e86086a99df9dac3cda87ca934227a35a87577ef3267085684",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 928894,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE SCHLIEREN PARADOX. STRICT MEDIUM: flat monochrome high-speed schlieren wind-tunnel exposure, optical density-gradient measurement image. Photographic black shock boundaries, milky white rarefaction zones and finely speckled grey turbulence in invisible air. Slight amber edge dispersion ONLY. Grainy planar scientific exposure, sharp shock cones and irregular ruffled wavefronts with diffuse low-contrast internal vortices. Absolutely NO 3D object, thickness, layered solid strips, stacked rings, metallic rim, bronze, gold, material, shiny surface, highlights, reflections, embossing, ribbons, sculpture, sketch, printmaking, engraving, rainbow, particle tracks or sparkles. No labels, text, numbers, axes, UI, fixed values, logo or watermark. Imagined optical events, not actual scientific records. Asset: ONE separate square1024x1024 pure-art widget. Subject VORTEX ROOK: five unequal elliptical shock loops stacked vertically around a kinked invisible axis, the lowest loop opens sideways into a short hooked tail, top loop is tiny and tilted. Each loop is resolved into diffuse grainy density bands with one sharp dark leading edge; distinct open spaces between them. Tall stepped silhouette, no actual rook, tower, object or vessel. Full optical event centred with15%clear margins. True transparent alpha outside and through loops; no tile, backdrop, floor, chart or axes.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 749814
+    },
+    {
+      "id": "caustic-iris",
+      "sourceImage": "sources/caustic-iris.8594dc47831b.png",
+      "sourceSha256": "8594dc47831bc4ee0b6b43dd4d4b98e18d23e71d9af3aa4889ecc3205a9cab49",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/caustic-iris.a906e5c1a764.png",
+      "sha256": "a906e5c1a7642e1841f98e1510c3664e98ec1ced207e5d7489cc34570f8136f5",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 786645,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE SCHLIEREN PARADOX. STRICT MEDIUM: flat monochrome high-speed schlieren wind-tunnel exposure, optical density-gradient measurement image. Photographic black shock boundaries, milky white rarefaction zones and finely speckled grey turbulence in invisible air. Slight amber edge dispersion ONLY. Grainy planar scientific exposure, sharp shock cones and irregular ruffled wavefronts with diffuse low-contrast internal vortices. Absolutely NO 3D object, thickness, layered solid strips, stacked rings, metallic rim, bronze, gold, material, shiny surface, highlights, reflections, embossing, ribbons, sculpture, sketch, printmaking, engraving, rainbow, particle tracks or sparkles. No labels, text, numbers, axes, UI, fixed values, logo or watermark. Imagined optical events, not actual scientific records. Asset: ONE separate square1024x1024 pure-art widget. Subject CAUSTIC IRIS: a lopsided radial burst of six concave shockfront cusps around a broad genuinely empty hexagonal centre; the cusps are short on one side and long on the other, each has irregular grainy shadow-front echoes. Three-quarter tilted star aperture silhouette, no conventional flower, shell or material. Full event centred with15%clear margins. Real transparent alpha around and through the empty centre and gaps; no backdrop, tile, floor, chart or axes.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 795800
+    },
+    {
+      "id": "split-front",
+      "sourceImage": "sources/split-front.6119951b129d.png",
+      "sourceSha256": "6119951b129d6a5b24cb02ee34d451c5ea03ff1c1166fa9ee024d832a773768f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/split-front.945f9df2c6b7.png",
+      "sha256": "945f9df2c6b7db34a6b0dd4a9cb3d3ff9831c1ebe8f51e086b0af93ec02642a1",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 905209,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE SCHLIEREN PARADOX. STRICT MEDIUM: flat monochrome high-speed schlieren wind-tunnel exposure, optical density-gradient measurement image. Photographic black shock boundaries, milky white rarefaction zones and finely speckled grey turbulence in invisible air. Slight amber edge dispersion ONLY. Grainy planar scientific exposure, sharp shock cones and irregular ruffled wavefronts with diffuse low-contrast internal vortices. Absolutely NO 3D object, thickness, layered solid strips, stacked rings, metallic rim, bronze, gold, material, shiny surface, highlights, reflections, embossing, ribbons, sculpture, sketch, printmaking, engraving, rainbow, particle tracks or sparkles. No labels, text, numbers, axes, UI, fixed values, logo or watermark. Imagined optical events, not actual scientific records. Asset: ONE separate square1024x1024 pure-art widget. Subject SPLIT FRONT: two broad horizontal families of parallel schlieren edges fold in opposite directions and interlock as an angular off-balance Z; the top family ends in a crisp upward hook while the lower breaks into three separated short bars. Strong wide zigzag silhouette, not an actual ribbon, stair, letter or object; no filled solid areas. Entire optical event centred with15%clear margins. Real transparent alpha between and around contour bands; no tile, backdrop, ground, chart or axes.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixels": 720872
+    },
+    {
+      "id": "bowshock-comb",
+      "sourceImage": "sources/bowshock-comb.8ef8b5e501e6.png",
+      "sourceSha256": "8ef8b5e501e6427ffc1754b2098a65c0161b82a73812ab60ee4201552d219b8c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/bowshock-comb.5d05b6fd8199.png",
+      "sha256": "5d05b6fd8199ae73ee96d9813341aa9684314b409c04ad75598353581f29ec47",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 397602,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE SCHLIEREN PARADOX. STRICT MEDIUM: flat monochrome high-speed schlieren wind-tunnel exposure, optical density-gradient measurement image. Photographic black shock boundaries, milky white rarefaction zones and finely speckled grey turbulence in invisible air. Slight amber edge dispersion ONLY. Grainy planar scientific exposure, sharp shock cones and irregular ruffled wavefronts with diffuse low-contrast internal vortices. Absolutely NO 3D object, thickness, layered solid strips, stacked rings, metallic rim, bronze, gold, material, shiny surface, highlights, reflections, embossing, ribbons, sculpture, sketch, printmaking, engraving, rainbow, particle tracks or sparkles. No labels, text, numbers, axes, UI, fixed values, logo or watermark. Imagined optical events, not actual scientific records. Asset: ONE separate square1024x1024 pure-art widget. Subject BOWSHOCK COMB: a narrow crescent-shaped primary shock boundary sweeps from low left to upper right; eight staggered inward-curving echo spines extend from only its convex side and stop before touching, plus one small detached teardrop caustic near the short tip. Elegant hooked comb silhouette with strong empty gaps, no leaf, animal, material or actual comb. Complete event centred with15%clear margins. True transparent alpha outside and between wavefronts; no backdrop, tile, floor, chart or axes.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 916069
+    }
+  ],
+  "published": false
+}

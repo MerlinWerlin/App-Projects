@@ -1,0 +1,1 @@
+Lane C original knife-edge schlieren/shadowgraph optical art for APPS A2. Six separate model generations create a warm light wallpaper and five geometrically distinct imaginary shockfronts. Exact prompts, selected originals, provenance and native identity descriptor are retained. Coordinator owns shared registry integration. No publication.

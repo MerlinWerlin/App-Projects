@@ -1,0 +1,19 @@
+{
+  "theme": "c-schlieren-paradox",
+  "recipe": [
+    "lozenge",
+    "cSchlierenMach",
+    "cSchlierenVortex",
+    "dash",
+    "wedge",
+    "column",
+    "folio"
+  ],
+  "art": {
+    "cSchlierenMach": "M 6 79 Q 13 50 17 14 Q 39 37 62 48 Q 77 55 94 51 M 6 79 Q 36 77 62 61 Q 81 49 95 34 M 6 79 Q 29 61 40 49 Q 47 41 52 38 M 13 70 Q 24 51 24 29 Q 45 48 65 51 M 15 75 Q 35 71 53 61 Q 77 48 92 66 M 28 57 Q 33 45 40 49 Q 48 54 41 61 Q 32 66 28 57 Z",
+    "cSchlierenVortex": "M 31 14 Q 46 5 55 13 Q 61 20 46 23 Q 31 26 31 14 Z M 24 31 Q 48 18 68 30 Q 74 39 50 43 Q 25 47 24 31 Z M 16 52 Q 48 38 81 50 Q 89 62 51 66 Q 16 70 16 52 Z M 9 78 Q 49 65 91 79 Q 96 89 54 93 Q 12 95 9 78 Z"
+  },
+  "direction": "Slanted shockfront boundary and stacked density-vortex paths; lozenge bezel with dash markers and wedge hands, density-column charge gauge and folio calendar.",
+  "values": "Existing native live Clock/Battery/Calendar mechanisms only.",
+  "registryIntegration": "Coordinator integrates original data descriptor into existing registries."
+}
