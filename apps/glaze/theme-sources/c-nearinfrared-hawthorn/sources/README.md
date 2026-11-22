@@ -1,0 +1,1 @@
+Six selected unmodified built-in image outputs: five distinct independent natural woodland artworks and final own-reference habitat wallpaper. Exact generation prompts, raw dimensions, hashes and wallpaper reference lineage in provenance.json. Initial close wallpaper retained outside selected sources with selected:false. No external or neighbor image inputs.

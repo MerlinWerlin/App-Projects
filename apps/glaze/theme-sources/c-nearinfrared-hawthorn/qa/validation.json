@@ -1,0 +1,171 @@
+{
+  "id": "c-nearinfrared-hawthorn",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "hawthorn-sprig",
+    "red-squirrel-hazel",
+    "wood-sorrel",
+    "song-thrush",
+    "comma-butterfly-leaf"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.24a201e5.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 12558,
+    "sha256": "24a201e5ac2971ca16ebb5391893df8b279f8f0af29bedd5bb80573c4ce1b70f",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed all five full selected originals together and actual encoded85px. Familiar hawthorn, squirrel holding nut, sorrel, spotted thrush and comma butterfly remain distinct and readable. Smooth continuous pale leaf tissue with normal veins/folds and natural silver/graphite fur/feather/wing texture, no frost/crystal/coating or data-body construction. Actual nine-neighbor botanical/optical full170/85 comparisons accepted before expansion. Three published assets matched preserved manifest hashes/bytes and six canonical source neighbors recorded; none fed to generation.",
+    "wallpaper": "Viewed all three actual encoded phone variants. Exact-own-five-reference woodland habitat followed by own-scene35percent pullback/upperfield cleanup withfour own-art supports. Three hawthorn leaves/four dark haws/thorn/twig, whole squirrel/long tail/paws/nut/feet/hazel leaf, sorrel leaflets, whole thrush/beak/tail/feet/two leaves, and butterfly/antennae/ragged wings/legs/whole leaf all fit every crop with room. Upper field quiet defocused slate woodland; bottom soft low-contrast pale grass. One squirrel, one bird, one butterfly only. Ten own-reference uses/six distinct images and unselected close-scene hash verified.",
+    "native": "Viewed all nine actual coordinator renderer layouts. Original three-leaf/four-haw branch with thorn/vein paths, oval dial/cut markers/leaf hands, column battery and folio calendar. Natural open-at-base lobed hawthorn leaf/midrib/three veins incompact Clockmedium/Calendar headers with breathing room. Full botanical twig stays readable behind live values. All nine change with readings, battery null/0/100 and ornament roundtrip pass. No raster readings.",
+    "roundedArtworkCorners": "Viewed all five actual encoded artworks using real app gradients, Fit6percent inset and conservative20percent roundedmask. Every visible alpha16 retained across28themes/140artworks, including squirrel ear tufts/tail/leaf and fine thrush/butterfly extremities. Quiet slate corners suit pale foliage/neutral wildlife. No original raster edits. UI layout simulation, not installed-device proof."
+  },
+  "ownerSteeringReview": "Less abstract recognizable real Nature. Actual woodland plants and animals retain continuous natural tissue and anatomy. Reflected-infrared-inspired pale foliage, neutral photographic wildlife, quiet cool slate Artwork corners and a small natural lobed hawthorn leaf native fragment. Artistic interpretation, not measured species response.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-nearinfrared-hawthorn",
+    "backgroundStops": [
+      "#233948",
+      "#3E5764"
+    ],
+    "pieces": [
+      {
+        "id": "hawthorn-sprig",
+        "sha256": "85130eb8c990a4d9793465d3ae20270a1d7d056456fbfa48cfe0ea89ff86b096",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "red-squirrel-hazel",
+        "sha256": "ab531fc43349b90e41a281e294bbf6f2f61452f5aaa505cefef582c6255736c5",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "wood-sorrel",
+        "sha256": "3e3b4882d855d1d392fe9b6ff40ac8340f1be71a9d246137d1f04e946d7e932c",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "song-thrush",
+        "sha256": "3dde504f82e214528e095fe4ff5f8fd9320f8f5baa742e628d37fcb972ebf6db",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "comma-butterfly-leaf",
+        "sha256": "7d6969b5d846051bcec97e63637c0958300ac13a31a0c504060fd3240533ad19",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 10,
+  "wallpaperDistinctReferenceImages": 6,
+  "artworkOwnStudyReferenceHashesMatched": 0,
+  "packTestEvidence": "Actual offline builder v1:9assets/1.02MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and10own wallpaper reference hashes pass. Common47 pipeline checks previously passed;no shared runtime edits."
+}

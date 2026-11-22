@@ -1,0 +1,82 @@
+{
+  "theme": "c-nearinfrared-hawthorn",
+  "status": "Coordinator accepted actual botanical/optical neighbor boards/full170/85 before remainingfour generations",
+  "sample": {
+    "id": "hawthorn-sprig",
+    "selected": true,
+    "sourceSha256": "71aba60e9a46942cfd0a69823c1884f33a687076750a52d4f3eec36aea0b992d",
+    "prompt": "Use case: recognizable real nature artwork. GLAZE PALELEAF THICKET. ONE familiar natural woodland subject with actual real anatomy, photographed in a REFLECTED NEAR-INFRARED WHITE-FOLIAGE image language. Healthy actual leaf tissue appears bright IVORY/PALE SILVER in this infrared-inspired photographic interpretation, with full continuous natural surfaces, real folds and fine veins. Woody stems and seeds remain contrasting neutral charcoal/soft brown-grey; animal fur/feathers/wings use natural continuous silver/graphite tones with clear real texture and dark ordinary eyes. Very restrained cool/warm split tone, otherwise almost monochrome. Crisp calm reflected-light photographic detail, luminous pale foliage INSIDE its actual boundaries, moderate natural contrast and real surface modelling. Foliage is bright because of the photographic spectral treatment, not snow/frost/fungus/white paint or a coating. This is reflected-light photography, NOT emitted-heat thermography, false-colour heat blobs, broad hyperspectral maps, data cells or scientific diagrams. Real subjects retain familiar silhouettes and natural tissue. Not electron micrograph surface pores, paired optical phase edge offsets, X-ray skeletons, abstract organisms, white moss topiary, clay/glass/plastic sculptures, metal, craft, ink illustration, engraving, coarse grain, diffraction bands, neon, fluorescence, magical aura or artificial external glow. No text, labels, scale bars, measurements, clock, reading, UI, watermark or logo. Subject: ONE complete real HAWTHORN SPRIG with exactly THREE distinct lobed hawthorn leaves at different natural angles, FOUR small haws in one loose cluster, a gently curved slender woody twig and one short natural thorn. The actual leaf tissue is pale ivory/silver from the reflected-infrared treatment; the leaf lobes, small serrations, central veins and subtle real folds remain unmistakably botanical. Haws are dark muted graphite berries with tiny actual blossom tips, not luminous pearls. Twig charcoal-brown, normal botanical attachment points. Whole three leaves/all lobes, four berries, thorn and twig ends. No additional plant, animal, root mass or ground. Asset:ONE separate square1024x1024 pure-art widget. Whole complete subject andall fine extremities safely inside central68percent with generous empty margins. TRUE ALPHA ZERO outside the subject and through every natural gap. Foreground has crisp natural photographic boundaries; pale tissue brightness remains only INSIDE actual leaf/body pixels. No hazy white background behind or around the plant, no soft grey matte veil, no bloom cloud, no shadow, no background rectangle, terrain, ground patch, snow, ice, photograph border, plate, frame, contact sheet or phone mockup. No creative transformation of anatomy. Strong familiar natural silhouette readable at85px.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        211,
+        172,
+        1010,
+        1136
+      ],
+      "96": [
+        212,
+        173,
+        1009,
+        1135
+      ]
+    },
+    "edgeAlphaMaximum": 1,
+    "sourceImage": "sources/hawthorn-sprig.71aba60e9a46.png"
+  },
+  "neighbors": [
+    {
+      "theme": "juniper-mist",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\juniper-mist\\v7\\widget-frosted-juniper.b97022af.webp",
+      "sha256": "b97022afa5853c6aec4fc4dd88f45b61ad99eee60ada5a59d2345a35f41ef8da",
+      "bytes": 222314,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\juniper-mist\\v8\\manifest.json"
+    },
+    {
+      "theme": "thistle-etch",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\thistle-etch\\v1\\widget-silver-leaf.fd22a998.webp",
+      "sha256": "fd22a998f8e92c9f20e3f2b7d5c8600314e1062ee52bd9460f3dc0bb6b352c94",
+      "bytes": 82578,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\thistle-etch\\v2\\manifest.json"
+    },
+    {
+      "theme": "thistle-etch",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\thistle-etch\\v1\\widget-thistle-head.d79ef931.webp",
+      "sha256": "d79ef93190e7b8ed5ec6d2533a03aa431362dea13bfe14bfdf2b99ef927dc6b8",
+      "bytes": 136676,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\thistle-etch\\v2\\manifest.json"
+    },
+    {
+      "theme": "c-fluorescent-meadow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fluorescent-meadow\\widgets\\oxeye-daisy.fcd0c55675e9.png",
+      "sha256": "fcd0c55675e94fb87e922e2909213e4c8c9c957225a8185a411e69101ac62960"
+    },
+    {
+      "theme": "c-autochrome-orchard",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-autochrome-orchard\\widgets\\wildrose-sprig.febd158886b7.png",
+      "sha256": "febd158886b713eb476ff6810c6d65f8814236e440b18ebf3b01e14f5203dcf0"
+    },
+    {
+      "theme": "c-hyperspectral-dominion",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-hyperspectral-dominion\\widgets\\oxbow-labyrinth.334c3ebbade1.png",
+      "sha256": "334c3ebbade1426a83619b95f502525a5db0df2f8331c8fd2c90ae109e6f699d"
+    },
+    {
+      "theme": "c-thermographic-nightshift",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-thermographic-nightshift\\widgets\\heat-gardener.be4fbf938451.png",
+      "sha256": "be4fbf93845150999255d381e3a37e9e0bef87eb0ab865a954287dd2ab5e9d79"
+    },
+    {
+      "theme": "c-electron-mossbank",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-electron-mossbank\\widgets\\split-pollen.b5ed54841689.png",
+      "sha256": "b5ed54841689c9255ad3110da13552d0fef05a2af5d5afc91edb51e3661a59e2"
+    },
+    {
+      "theme": "c-nomarski-dunefield",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-nomarski-dunefield\\widgets\\saltbush-lantern.9294b959a750.png",
+      "sha256": "9294b959a750484ad25eafaf5239896f856f91964c5a5efcee86021b003a5707"
+    }
+  ],
+  "assessment": "Three whole actual lobed hawthorn leaves,four dark haws,woody twig andone thorn. Smooth continuous opaque pale leaf tissue/real veins/folds,neutral dark fruit/wood. Reflected-NIR-inspired white-foliage photographic rendering,not frost coating,metal leaf,SEM pores,emitted heat map,hyperspectral fields,paired DIC edge offsets or coloured film grain. Closest actual pale botanical assets andown optical/photo neighbors compared before expansion.",
+  "neighborImageInputsToGeneration": [],
+  "coordinatorVerdict": "Pale continuous lobed tissue with normal folds/veins and dark haws/wood clearly separates from frosted Juniper needles,reflective silverleaf,emitted thermal maps,SEM poregrain andC23phaseedge relief. Proceed otherfour withreflected-NIR whitefoliage/natural animaltexture;alltipswhole/quietcorners. Artistic photographic interpretation,not measured species response."
+}
