@@ -1,0 +1,18 @@
+{
+  "id": "chough-juniper",
+  "prompt": "VANELEAF HIGHLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical artisanal CUT-AND-LAID FEATHER MOSAIC: natural form assembled as a THIN FLAT mosaic from individually CLIPPED FEATHER-VANE PIECES, each piece has a narrow subtle central shaft, actual fine parallel BARBS running diagonally on each side, soft fragile clipped feather edge and slight overlapping edge lift. Vane pieces laid as purposefully shaped panels to construct flora/fauna, not an animal with random fluffy feathers glued over its skin. Quiet sage #A9BFA6, oyster cream #EEE2CC, pale apricot #D89A79, slate blue #6A818A and restrained dark ink #342D3F. Matte feather fibres with gentle edge sheen only; recognisable natural silhouette first and feather detail second. Clearly flat featherwork craft, not thread/lace/knots/pins, woven fabric/embroidery, shaved wood, quilling strips, stuffed felt/fluffy pile, smooth3D plastic/clay or optical/scientific images. Major spaces and openings truly transparent, no supporting backing. Entire complete highland organism/group SMALL central64%, at least18% true alpha margins EVERY side, no clipped horn/tail/antenna/leaf. No feathers floating loose around subject, whole scenery/floor, frame/backing sheet/rectangle/halo/glow/shadow, text/lettering/numbers, clocks/calendar/battery/weather values, UI, logo or signature. No machines, clothing or human character. Subject CHOUGH JUNIPER: one recognisable natural alpine CHOUGH in side profile perched on a short diagonal JUNIPER BRANCH, head faces left, natural gently downcurved ochre beak, small dark eye, TWO clawed feet gripping twig, folded wing and long rounded tail angled down-right. Bird plumage and whole branch/leaves/berries are a THIN FLAT ASSEMBLAGE of purposefully CLIPPED FEATHER-VANE PANELS: dark ink-plum/slate blue pieces for body, sage/cream wing panels, each clearly visible little central shaft and fine diagonal parallel barbs; not an ordinary photograph of a bird or fluffy3Dcreature. Juniper has two sparse short side branches, tiny sharply pointed sage feather-piece leaves and just3small blue-grey berry circles made of clipped vanes. No tree trunk/terrain/backing. Tall elegant diagonal bird-and-twig silhouette distinct from ibex and rounded marmot. Full beak/head, both feet, tail tip, branch ends, every leaf and berry contained with ample true alpha margin.",
+  "tool": "built-in image_gen",
+  "source": "sources/chough-juniper.2bc29bbf.png",
+  "sourceSha256": "2bc29bbf0f9ca26c4030221f158cb7aedf52aeddf8829bd70a53d45ba4c32678",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/chough-juniper.cbe06c5b.png",
+  "sha256": "cbe06c5b14f74401d9a5047270928ece4d96b92ef2c7b135f8df0769a3cbc69c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

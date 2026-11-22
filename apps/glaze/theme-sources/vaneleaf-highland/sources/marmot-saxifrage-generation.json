@@ -1,0 +1,18 @@
+{
+  "id": "marmot-saxifrage",
+  "prompt": "VANELEAF HIGHLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical artisanal CUT-AND-LAID FEATHER MOSAIC: natural form assembled as a THIN FLAT mosaic from individually CLIPPED FEATHER-VANE PIECES, each piece has a narrow subtle central shaft, actual fine parallel BARBS running diagonally on each side, soft fragile clipped feather edge and slight overlapping edge lift. Vane pieces laid as purposefully shaped panels to construct flora/fauna, not an animal with random fluffy feathers glued over its skin. Quiet sage #A9BFA6, oyster cream #EEE2CC, pale apricot #D89A79, slate blue #6A818A and restrained dark ink #342D3F. Matte feather fibres with gentle edge sheen only; recognisable natural silhouette first and feather detail second. Clearly flat featherwork craft, not thread/lace/knots/pins, woven fabric/embroidery, shaved wood, quilling strips, stuffed felt/fluffy pile, smooth3D plastic/clay or optical/scientific images. Major spaces and openings truly transparent, no supporting backing. Entire complete highland organism/group SMALL central64%, at least18% true alpha margins EVERY side, no clipped horn/tail/antenna/leaf. No feathers floating loose around subject, whole scenery/floor, frame/backing sheet/rectangle/halo/glow/shadow, text/lettering/numbers, clocks/calendar/battery/weather values, UI, logo or signature. No machines, clothing or human character. Subject MARMOT SAXIFRAGE: one natural plump MARMOT sits upright with body leaning slightly left, tiny round ears, short broad muzzle with natural small dark eyes, TWO small forepaws held close at chest, TWO hindfeet beneath body, one short thick tail curves toward right. Entire shape is a THIN FLAT MOSAIC of broad clipped FEATHER-VANE PANELS, each with fine parallel barbs and narrow shaft, apricot/cream/sage/slate pieces intentionally laid to define belly, cheek and back; NOT furry3Dsculpture, living feathered hybrid or fluffy pile. A small low SAXIFRAGE SPRIG with five tiny cream/apricot star flowers and sparse rounded sage leaves curves below-left, no soil/rock/pedestal. Low rounded upright triangular silhouette contrasts tall horned ibex and bird. Clear full animal anatomy, all4paws/feet and tail visible, no extra limbs. Whole ears, tail, feet and outer flower tips inside actual generous transparent margins; no halo/shadow/backing.",
+  "tool": "built-in image_gen",
+  "source": "sources/marmot-saxifrage.1dd8d573.png",
+  "sourceSha256": "1dd8d5734d9893a29bf3e5fe8f3c162f3c0004e6ff9a58f7d631d4368e4f8c07",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/marmot-saxifrage.25ae9cb9.png",
+  "sha256": "25ae9cb920ab90d93249312de0d6f3d8238dfdf4a2384a25f880d60c3a5296e4",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
