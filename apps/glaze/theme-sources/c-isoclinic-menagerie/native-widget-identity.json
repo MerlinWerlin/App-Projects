@@ -1,0 +1,19 @@
+{
+  "theme": "c-isoclinic-menagerie",
+  "recipe": [
+    "wave",
+    "cIsoclinicSifter",
+    "cIsoclinicApertures",
+    "cut",
+    "needle",
+    "basin",
+    "band"
+  ],
+  "art": {
+    "cIsoclinicSifter": "M 8 60 Q 25 53 39 50 Q 44 30 64 10 Q 61 32 66 43 Q 81 44 93 61 Q 75 58 66 65 Q 61 83 45 94 Q 50 75 45 63 Q 26 72 8 60 Z M 17 60 Q 35 61 46 53 Q 52 35 59 26 M 31 62 Q 44 62 50 56 Q 59 52 76 56 M 49 68 Q 55 74 50 85 M 48 50 Q 52 43 58 48 Q 64 54 56 59 Q 48 61 48 50 Z",
+    "cIsoclinicApertures": "M 11 76 C 16 57 37 56 37 69 C 37 82 14 87 11 76 Z M 24 52 C 27 38 45 33 48 44 C 50 55 26 65 24 52 Z M 43 31 C 47 19 63 16 66 25 C 68 36 47 43 43 31 Z M 64 17 Q 76 8 82 17 Q 85 24 75 28 Q 65 28 64 17 Z M 82 18 Q 92 15 95 23"
+  },
+  "direction": "Photoelastic sifter silhouette with internal stress contours and aperture-chain detail. Wave-contoured dial, cut markers, needle hands, basin charge gauge and band calendar.",
+  "values": "Existing app native Clock/Battery/Calendar live mechanisms; no raster values.",
+  "registryIntegration": "Coordinator merges these original paths and recipe into existing registries."
+}

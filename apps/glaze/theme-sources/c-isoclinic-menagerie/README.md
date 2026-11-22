@@ -1,0 +1,1 @@
+Lane C original photoelastic interference theme for APPS A2. Build with the existing review-layout pack builder; native-widget-identity.json supplies original paths and the native recipe for coordinator integration. Exact generation prompts and selected originals are retained. No publication.

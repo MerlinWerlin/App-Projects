@@ -1,0 +1,142 @@
+{
+  "theme": "c-isoclinic-menagerie",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.67a8848bb729.png",
+      "sourceSha256": "67a8848bb72902f2551d4c2e60653d925f8bc859d473dc80c3ba7a0801e5a232",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "f3609bf23ee915c23f171224738e947212a27af95d1400e92a7f21094e34665d",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2892808,
+      "processing": "Whole composition fitted to 1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze theme Isoclinic Menagerie. Visual medium: cross-polarized photoelastic transmission imaging, impossible biological silhouettes made ONLY of precisely resolved luminous interference fringes. The contours are saturated cyan, citron, hot coral and ultramarine bands separated by thin near-black isoclinic lines; crisp optical-image detail and unusual flat translucent anatomy. It must visibly resemble an extraordinary polarisation experiment, not a normal 3D render, glossy glass object, crystal, fluid sculpture, drawing or rainbow gradient. No text, digits, symbols, UI, clock hands, dates, readings, frame, logos or watermark. Asset: ONE tall portrait phone wallpaper, 1290x2796 composition. Near-black ink-navy optical field. A huge asymmetric three-lobed stress membrane, an arched perforated optical lattice and one open spoked interference crown interact across the lower two-thirds; distinct scales, negative spaces and translucent overlaps. Microscopically thin coloured fringe trails connect them without clutter. Keep the top quarter and central left region mostly quiet near-black so phone widgets remain readable. Edge-to-edge artwork, no phone mockup. Opaque background.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    },
+    {
+      "id": "trifurcate-sifter",
+      "sourceImage": "sources/trifurcate-sifter.98c415e06950.png",
+      "sourceSha256": "98c415e06950c6301a35b8cb983ce5a5d1a176337dc36d66bd7bf777eca2c616",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/trifurcate-sifter.bb8e8be196b0.png",
+      "sha256": "bb8e8be196b0fc5518d03d02cf109b4ce481d6273ca8ffddea1894486e11dc42",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 852953,
+      "processing": "Entire square resized to 1024x1024, RGBA alpha preserved; no cropping or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze theme Isoclinic Menagerie. Visual medium: cross-polarized photoelastic transmission imaging, impossible biological silhouettes made ONLY of precisely resolved luminous interference fringes. The contours are saturated cyan, citron, hot coral and ultramarine bands separated by thin near-black isoclinic lines; crisp optical-image detail and unusual flat translucent anatomy. It must visibly resemble an extraordinary polarisation experiment, not a normal 3D render, glossy glass object, crystal, fluid sculpture, drawing or rainbow gradient. No text, digits, symbols, UI, clock hands, dates, readings, frame, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget illustration. Subject: an impossible TRIFURCATE SIFTER: three unequal broad triangular membranes joining at an off-centre hollow lens, each membrane opening into fine sawtooth gill edges, one bent feeler tucked below. Bold asymmetric three-blade silhouette, seen face-on with a small oblique fold. No butterfly, bird or conventional animal. Centre the complete single specimen with 14% clear margins. Real transparent alpha background, no square tile, no black backing, no floor or cast shadow. Preserve dark internal lines but exterior must be empty alpha.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 761246
+    },
+    {
+      "id": "aperture-colony",
+      "sourceImage": "sources/aperture-colony.8564afaba60e.png",
+      "sourceSha256": "8564afaba60e842ca638cea7d84b25de5de9870850fd29727dfa99bf83cd72c0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/aperture-colony.90d73face9a9.png",
+      "sha256": "90d73face9a94bc774378ed1a01a4523531f545d3727ba9000a681351f53620e",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 440499,
+      "processing": "Entire square resized to 1024x1024, RGBA alpha preserved; no cropping or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze theme Isoclinic Menagerie. Visual medium: cross-polarized photoelastic transmission imaging, impossible biological silhouettes made ONLY of precisely resolved luminous interference fringes. The contours are saturated cyan, citron, hot coral and ultramarine bands separated by thin near-black isoclinic lines; crisp optical-image detail and unusual flat translucent anatomy. It must visibly resemble an extraordinary polarisation experiment, not a normal 3D render, glossy glass object, crystal, fluid sculpture, drawing or rainbow gradient. No text, digits, symbols, UI, clock hands, dates, readings, frame, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget illustration. Subject: an APERTURE COLONY, a leaning crescent of seven connected oval optical windows climbing in a serpentine arc, the windows shrink toward the curled tip, each cell has one thick stress-fringe rim and a truly empty aperture. A low forked anchoring form at bottom balances the arc. Strong open crescent silhouette, no disk, wings or flower. Single complete specimen with 14% clear margins. Real transparent alpha background, including open holes, no tile, black backing, floor or cast shadow.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 924158
+    },
+    {
+      "id": "inversion-crown",
+      "sourceImage": "sources/inversion-crown.5b353bf93f88.png",
+      "sourceSha256": "5b353bf93f88efa544dd3d7015d772433541db7ab3f62c58c69a6058bfb14f3f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/inversion-crown.644ae06396e6.png",
+      "sha256": "644ae06396e60f5c8d6e8af17957ca4d44ab7174e4379e1c1be10e9501b89afa",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 776158,
+      "processing": "Entire square resized to 1024x1024, RGBA alpha preserved; no cropping or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze theme Isoclinic Menagerie. Visual medium: cross-polarized photoelastic transmission imaging, impossible biological silhouettes made ONLY of precisely resolved luminous interference fringes. The contours are saturated cyan, citron, hot coral and ultramarine bands separated by thin near-black isoclinic lines; crisp optical-image detail and unusual flat translucent anatomy. It must visibly resemble an extraordinary polarisation experiment, not a normal 3D render, glossy glass object, crystal, fluid sculpture, drawing or rainbow gradient. No text, digits, symbols, UI, clock hands, dates, readings, frame, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget illustration. Subject: an INVERSION CROWN: a radially splayed crown of five unequal concave fan wedges surrounding a pentagonal empty centre; each wedge bends back on itself, traced by vivid stress fringes and narrow dark contour seams; five small inward-pointing optical prongs. Tilted three-quarter orientation, strong open star silhouette, no conventional petals, shell or mandala symmetry. Complete single specimen with 14% clear margins. Real transparent alpha background and true empty central hole; no tile, black backing, floor or cast shadow.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 779834
+    },
+    {
+      "id": "folded-ladder",
+      "sourceImage": "sources/folded-ladder.18f6554d7dc9.png",
+      "sourceSha256": "18f6554d7dc98e6bc0eaccc998f3c1d1f8ad554518f09a55ceac60a9ed0d06b4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/folded-ladder.47122d021ba2.png",
+      "sha256": "47122d021ba244ce6aa3655fef5e3f4a99b4bee07cc38c6ec19bc9381c6d979a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 619273,
+      "processing": "Entire square resized to 1024x1024, RGBA alpha preserved; no cropping or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze theme Isoclinic Menagerie. Visual medium: cross-polarized photoelastic transmission imaging, impossible biological silhouettes made ONLY of precisely resolved luminous interference fringes. The contours are saturated cyan, citron, hot coral and ultramarine bands separated by thin near-black isoclinic lines; crisp optical-image detail and unusual flat translucent anatomy. It must visibly resemble an extraordinary polarisation experiment, not a normal 3D render, glossy glass object, crystal, fluid sculpture, drawing or rainbow gradient. No text, digits, symbols, UI, clock hands, dates, readings, frame, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget illustration. Subject: a FOLDED LADDER WANDERER, two sinuous rails joined by nine offset translucent rungs; the long structure doubles back into a tall narrow impossible loop, with a single broad split paddle at one end and two dangling whisker fringes at the other. Vertical dancing S silhouette, strong negative-space openings, no helix, shell, jellyfish, butterfly or crown. Complete single specimen with 14% clear margins. Real transparent alpha background and empty holes; no tile, black backing, floor or cast shadow.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 879266
+    },
+    {
+      "id": "bifocal-drifter",
+      "sourceImage": "sources/bifocal-drifter.58fc7e7a0906.png",
+      "sourceSha256": "58fc7e7a09061fe7ece67f9a43401e6764df04ef468202ae9b85be72b5441a24",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "file": "widgets/bifocal-drifter.a3bfe46c2ea0.png",
+      "sha256": "a3bfe46c2ea0fd32194a07c6486a1f28290e35ec2433c8266af82db7d16642ed",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 453677,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze theme Isoclinic Menagerie. Visual medium: cross-polarized photoelastic transmission imaging, impossible biological silhouettes made ONLY of precisely resolved luminous interference fringes. The contours are saturated cyan, citron, hot coral and ultramarine bands separated by thin near-black isoclinic lines; crisp optical-image detail and unusual flat translucent anatomy. It must visibly resemble an extraordinary polarisation experiment, not a normal 3D render, glossy glass object, crystal, fluid sculpture, drawing or rainbow gradient. No text, digits, symbols, UI, clock hands, dates, readings, frame, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget illustration. Subject: a BIFOCAL DRIFTER: two radically unequal flattened lens sacs joined by a thin zigzag stalk, the large sac has three offset internal crescent cavities, the small one is slotted like a fan; a short comb-shaped sensory fringe projects sideways. Wide low asymmetric silhouette seen side-on. Neither a creature face nor spectacles; no eyes, wings, crown or loops. Complete single specimen with 14% clear margins. Real transparent alpha background and holes; no tile, black backing, floor or cast shadow.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 890246
+    }
+  ],
+  "published": false
+}
