@@ -8,9 +8,64 @@ import { parseLiveArtSpec } from './liveArt.ts';
 import { minContrast } from './colour.ts';
 import { parseLibrary, resolveWidgetPiece, serializeLibrary, themePieceId } from './widgetArtLibrary.ts';
 import { designedWidgetSvg, localeFirstWeekday } from './designedWidgetPreview.ts';
+import { parseWidgetIdentity } from './widgetIdentity.ts';
 
 const fixture = JSON.parse(readFileSync(new URL('../../docs/designed-widget-fixtures.json', import.meta.url), 'utf8')) as { catalogueThemes: number; themes: { id: string; designs: ReturnType<typeof designedWidget>[] }[] };
 for (const theme of fixture.themes) theme.designs = theme.designs.map(design => withWidgetIdentity(theme.id, design));
+
+const companionOrnament = 'M 12 64 L 50 18 L 88 64 M 28 64 Q 50 84 72 64';
+const ornamentReadings = { date: new Date(2026, 10, 22, 10, 8), battery: 73, locale: 'en-AU' };
+
+test('calendar companions replace crowded miniature heroes and preserve their proportions at every size', () => {
+  const calendar = fixture.themes.find(t => t.id !== 'alpine-starlight')!.designs.find(d => d.kind === 'calendar')!;
+  const identity = { ...calendar.identity!, ornament: companionOrnament };
+  const bounds = { small: [120, 5, 42, 36], medium: [37, 8, 70, 42], large: [226, 5, 106, 78] };
+  for (const size of ['small', 'medium', 'large'] as const) {
+    const svg = designedWidgetSvg({ ...calendar, identity }, size, ornamentReadings);
+    assert.equal(svg.split(`d="${companionOrnament}"`).length - 1, 1);
+    assert.ok(!svg.includes(`d="${identity.subject}"`), size);
+    assert.ok(!svg.includes(`d="${identity.detail}"`), size);
+    const tag = svg.slice(svg.indexOf(`d="${companionOrnament}"`)).split('/>')[0];
+    const transform = tag.match(/translate\(([^ ]+) ([^)]+)\) scale\(([^ ]+) ([^)]+)\)/)!;
+    const [x, y, sx, sy] = transform.slice(1).map(Number);
+    assert.equal(sx, sy, `${size}: companion must not stretch into a rectangle`);
+    const [bx, by, width, height] = bounds[size];
+    assert.ok(x > bx && y > by && x + 100 * sx < bx + width && y + 100 * sy < by + height, `${size}: leave room around the ornament`);
+    const legacy = designedWidgetSvg(calendar, size, ornamentReadings);
+    assert.ok(legacy.includes(`d="${identity.subject}"`) && legacy.includes(`d="${identity.detail}"`));
+  }
+});
+
+test('clock headers use one companion while dial and battery hero compositions stay unchanged', () => {
+  const designs = fixture.themes.find(t => t.id !== 'alpine-starlight')!.designs;
+  for (const design of designs.filter(d => d.kind !== 'calendar')) {
+    const decorated = { ...design, identity: { ...design.identity!, ornament: companionOrnament } };
+    for (const size of ['small', 'medium', 'large'] as const) {
+      const old = designedWidgetSvg(design, size, ornamentReadings);
+      const svg = designedWidgetSvg(decorated, size, ornamentReadings);
+      if (design.kind === 'clock' && size === 'medium') {
+        assert.equal(svg.split(`d="${companionOrnament}"`).length - 1, 1);
+        assert.equal(svg.split(`d="${design.identity!.subject}"`).length - 1, 1);
+        assert.equal(svg.split(`d="${design.identity!.detail}"`).length - 1, 1);
+      } else assert.equal(svg, old, `${design.kind}/${size}: larger artwork must be retained`);
+    }
+  }
+});
+
+test('optional companion paths survive saved live designs and reject unsupported native path data', () => {
+  const theme = ALL_THEMES[0], plan = plannedDesignedWidgets(theme, (kind, size) => `${kind} ${size}`);
+  const pieces = plan.map(({ optionId, ...p }) => ({ ...p, file: p.id + '.jpg', created: 1,
+    live: { ...p.live!, design: { ...p.live!.design!, identity: { ...p.live!.design!.identity!, ornament: companionOrnament } } } }));
+  const decoded = parseLibrary(serializeLibrary({ v: 1, pieces }));
+  assert.equal(decoded.pieces.length, 9);
+  for (const piece of decoded.pieces) assert.equal(piece.live?.design?.identity?.ornament, companionOrnament);
+  const identity = pieces[0].live.design.identity;
+  for (const ornament of [null, '', 'M 1 2 L3 4', 'M 1 2 3 4', 'M 1 2 C 3 4', 'M 126 1 L 2 3', 'M 1 2 A 3 4', '<script>', 'M ' + '1 '.repeat(1300)]) {
+    assert.equal(parseWidgetIdentity({ ...identity, ornament }), null, String(ornament).slice(0, 50));
+  }
+  const { ornament: _ornament, ...legacy } = identity;
+  assert.deepEqual(parseWidgetIdentity(legacy), legacy);
+});
 
 test('every catalogue and bundled theme has authored, readable clock, battery and calendar artwork', () => {
   assert.equal(fixture.catalogueThemes, 141);

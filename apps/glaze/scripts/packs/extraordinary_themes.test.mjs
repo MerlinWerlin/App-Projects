@@ -19,7 +19,7 @@ test('new themes keep recognized browse categories instead of silently falling i
 
 test('new native identity paths reject broken commands, unsupported instructions and out-of-canvas geometry', () => {
   validateNewIdentityPath('M 1 2 C 4 5 6 7 8 9 L 20 30 Q 4 5 6 7 Z');
-  for (const path of ['M 1 2 C 3 4', 'M 1 2 A 3 4 5', 'M 1 2 L 900 1', 'M 1 2 Q ... 3', 'M 1 2 Z 3 4', 'M 1 2 <script>']) assert.throws(() => validateNewIdentityPath(path));
+  for (const path of ['M 1 2 C 3 4', 'M 1 2 A 3 4 5', 'M 1 2 L 900 1', 'M 1 2 Q ... 3', 'M 1 2 Z 3 4', 'M 1 2 <script>', 'M 1 2 3 4']) assert.throws(() => validateNewIdentityPath(path));
 });
 
 test('new theme directions cannot overwrite published illustration keys or share new keys', () => {

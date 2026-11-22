@@ -1,7 +1,7 @@
 name: Glaze widget contract
 on:
   pull_request:
-    paths: ['apps/glaze/targets/widget/**', 'apps/glaze/src/core/widget*.ts', 'apps/glaze/scripts/widget-design-*', '.github/workflows/glaze-widgets-check.yml']
+    paths: ['apps/glaze/targets/widget/**', 'apps/glaze/src/core/widget*.ts', 'apps/glaze/src/core/extraordinaryThemeIdentities.ts', 'apps/glaze/theme-sources/**/native-widget-identity.json', 'apps/glaze/scripts/widget-design-*', 'apps/glaze/scripts/widget-ornament-*', '.github/workflows/glaze-widgets-check.yml']
   push:
     branches: ['codex/glaze-theme-retest-20261026']
     paths: ['apps/glaze/**', '.github/workflows/glaze-widgets-check.yml']
@@ -29,3 +29,15 @@ jobs:
         run: |
           SDK=$(xcrun --sdk iphonesimulator --show-sdk-path)
           xcrun swiftc -typecheck -parse-as-library -sdk "$SDK" -target arm64-apple-ios17.0-simulator targets/widget/*.swift
+      - name: Decode real theme companions with the actual Swift identity parser
+        working-directory: apps/glaze
+        run: |
+          node --no-warnings scripts/widget-ornament-fixture.mjs "$RUNNER_TEMP/widget-ornaments.json"
+          python3 - <<'PY'
+          import os,pathlib
+          source=pathlib.Path('targets/widget/ThemedWidgetDrawing.swift').read_text()
+          parser=source.split('struct WidgetIdentity {',1)[1].split('\nenum ThemedClockArtwork',1)[0]
+          (pathlib.Path(os.environ['RUNNER_TEMP'])/'WidgetIdentity.swift').write_text('import Foundation\nimport SwiftUI\nstruct WidgetIdentity {'+parser)
+          PY
+          swiftc "$RUNNER_TEMP/WidgetIdentity.swift" scripts/widget-ornament-check.swift -o "$RUNNER_TEMP/widget-ornament-check"
+          "$RUNNER_TEMP/widget-ornament-check" "$RUNNER_TEMP/widget-ornaments.json"

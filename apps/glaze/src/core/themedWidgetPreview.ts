@@ -33,6 +33,10 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
   const elements: string[] = [], definitions: string[] = [];
   const box = (x: number, y: number, width: number, height = width): Box => ({ x, y, w: width, h: height });
   const transform = (b: Box) => `translate(${b.x} ${b.y}) scale(${b.w / 100} ${b.h / 100})`;
+  const ornamentBox = (b: Box): Box => {
+    const side = Math.min(b.w, b.h) * .86;
+    return box(b.x + (b.w - side) / 2, b.y + (b.h - side) / 2, side);
+  };
   const path = (data: string, b: Box, colour: string, opacity = 1, stroke?: number) => {
     const paint = stroke === undefined ? `fill="${colour}"` : `fill="none" stroke="${colour}" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round"`;
     elements.push(`<path d="${data}" transform="${transform(b)}" ${paint} opacity="${opacity}"/>`);
@@ -85,7 +89,8 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
     if (wide) {
       path(identity.outline, box(179, 13, 178, 144), d.ink, .052);
       path(identity.inner, box(179, 13, 178, 144), d.accent, .35, .6);
-      path(identity.detail, box(244, 21, 47, 35), d.secondary, .62, 2.6);
+      if (identity.ornament) path(identity.ornament, ornamentBox(box(244, 21, 47, 35)), d.secondary, .62, 2.6);
+      else path(identity.detail, box(244, 21, 47, 35), d.secondary, .62, 2.6);
       const parts = new Intl.DateTimeFormat(locale, { hour: 'numeric', minute: '2-digit' }).formatToParts(date);
       const period = parts.find(p => p.type === 'dayPeriod')?.value;
       const time = parts.filter(p => p.type === 'hour' || p.type === 'minute' || p.type === 'literal' && p.value.includes(':')).map(p => p.value).join('');
@@ -191,8 +196,11 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
       for (let i = 0; i < 7; i++) line(gridX, top + row * (.65 + i), gridX + gridW, top + row * (.65 + i), d.secondary, identity.calendar === 'board' ? .24 : .30, .65);
       if (identity.calendar === 'board') for (let i = 0; i <= 7; i++) line(gridX + i * col, top - row * .47, gridX + i * col, top + row * 6.65, d.secondary, .21, .65);
     }
-    path(identity.detail, motifBox, d.accent, .22, 1.3);
-    path(identity.subject, motifBox, d.secondary, .65, wide ? 2 : 2.6);
+    if (identity.ornament) path(identity.ornament, ornamentBox(motifBox), d.secondary, .65, wide ? 2 : 2.6);
+    else {
+      path(identity.detail, motifBox, d.accent, .22, 1.3);
+      path(identity.subject, motifBox, d.secondary, .65, wide ? 2 : 2.6);
+    }
     if (wide) {
       text(fmt({ weekday: 'short' }), 72, 60, 14, 108, d.secondary);
       text(number(month.today), 72, 99, 49, 102, d.ink, 700);
