@@ -1,0 +1,17 @@
+{
+  "name": "Cellbloom Orchard",
+  "mood": "Familiar botanical forms reveal delicate crimson and green cell walls in pale thin sections.",
+  "tags": [
+    "brightfield",
+    "plant-section",
+    "cell-wall-stain",
+    "botanical",
+    "nature"
+  ],
+  "credits": "Glaze original built-in image_gen artwork. Artistic enlarged botanical thin-section interpretation, not authentic specimens, exact species anatomy, measured cell maps or diagnostic imagery.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Single flat botanical thin sections in brightfield-style transmitted light, positive crimson/green cell walls and pale cell lumens within whole recognizable natural organ outlines. No external visual input or analytical claim.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

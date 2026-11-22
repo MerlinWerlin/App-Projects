@@ -79,26 +79,6 @@ struct WidgetIdentity {
   }
 }
 
-// Today's label uses the ordinary grid point size, in bold. Only a narrow date
-// badge adapts; its clock bezel and every already-fitting badge stay unchanged.
-enum CalendarBadgeShape {
-  static func path(outline: Path, value: String, font: CGFloat, diameter: CGFloat) -> Path {
-    guard value.count > 1 else { return outline }
-    let half = (CGFloat(value.count) * font * 0.60 / 2 + 0.2) * 100 / diameter
-    let top = (-font * 0.43 - 0.2) * 100 / diameter
-    let bottom = (font * 0.41 + 0.2) * 100 / diameter
-    let fits = (0...8).allSatisfy { i in
-      let x = -half + half * 2 * CGFloat(i) / 8
-      let y = top + (bottom - top) * CGFloat(i) / 8
-      return outline.contains(CGPoint(x: 50 + x, y: 50 + top))
-          && outline.contains(CGPoint(x: 50 + x, y: 50 + bottom))
-          && outline.contains(CGPoint(x: 50 - half, y: 50 + y))
-          && outline.contains(CGPoint(x: 50 + half, y: 50 + y))
-    }
-    return fits ? outline : Path(roundedRect: CGRect(x: 0, y: 0, width: 100, height: 100), cornerRadius: 20)
-  }
-}
-
 enum ThemedClockArtwork {
   private static let source = UIImage(named: "AlpineClockFace") ?? Bundle.main.url(forResource: "AlpineClockFace", withExtension: "jpg").flatMap { UIImage(contentsOfFile: $0.path) }
   private static let thumbnails: NSCache<NSNumber, UIImage> = {
@@ -381,9 +361,8 @@ extension DesignedDrawing {
       let x = gridX + (CGFloat(rtl ? 6 - column : column) + 0.5) * col
       let y = top + row * (CGFloat(i / 7) + 1.18)
       let today = day == month.today, diameter: CGFloat = large ? 31 : 18
-      let value = number(day), nominal: CGFloat = large ? 19 : 12
-      if today { shape(CalendarBadgeShape.path(outline: design.outline, value: value, font: nominal, diameter: diameter), in: themedBox(x - diameter / 2, y - diameter / 2, diameter), color: accent) }
-      calendarDate(value, x: x, y: y, large: large, width: col - 1, color: today ? Color(hex: spec.onAccent) : ink, today: today)
+      if today { shape(design.outline, in: themedBox(x - diameter / 2, y - diameter / 2, diameter), color: accent) }
+      text(number(day), x: x, y: y, font: large ? 19 : 12, width: col - 1, color: today ? Color(hex: spec.onAccent) : ink, weight: today ? .bold : .medium)
     }
   }
 }

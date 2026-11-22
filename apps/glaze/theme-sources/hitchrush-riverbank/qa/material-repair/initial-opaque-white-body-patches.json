@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only pixel evidence for near-white opaque body patches; actual material/window classification requires visual review, no raster edit.",
+  "components": [
+    {
+      "opaqueNeutralPixels": 343,
+      "bounds": [
+        721,
+        570,
+        762,
+        595
+      ],
+      "representativePoint": [
+        751,
+        587
+      ],
+      "rgba": [
+        249,
+        249,
+        248,
+        253
+      ]
+    },
+    {
+      "opaqueNeutralPixels": 259,
+      "bounds": [
+        492,
+        540,
+        519,
+        563
+      ],
+      "representativePoint": [
+        508,
+        553
+      ],
+      "rgba": [
+        249,
+        251,
+        252,
+        253
+      ]
+    },
+    {
+      "opaqueNeutralPixels": 237,
+      "bounds": [
+        753,
+        471,
+        793,
+        491
+      ],
+      "representativePoint": [
+        783,
+        479
+      ],
+      "rgba": [
+        255,
+        255,
+        255,
+        253
+      ]
+    },
+    {
+      "opaqueNeutralPixels": 189,
+      "bounds": [
+        597,
+        606,
+        615,
+        624
+      ],
+      "representativePoint": [
+        605,
+        613
+      ],
+      "rgba": [
+        250,
+        250,
+        250,
+        253
+      ]
+    },
+    {
+      "opaqueNeutralPixels": 186,
+      "bounds": [
+        617,
+        505,
+        654,
+        525
+      ],
+      "representativePoint": [
+        653,
+        505
+      ],
+      "rgba": [
+        252,
+        251,
+        252,
+        252
+      ]
+    }
+  ]
+}

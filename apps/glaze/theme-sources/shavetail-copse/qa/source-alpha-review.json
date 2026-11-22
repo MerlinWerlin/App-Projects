@@ -1,0 +1,92 @@
+[
+  {
+    "id": "blue-tit-twig",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      117,
+      214,
+      1069,
+      1024
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "squirrel-acorn",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      244,
+      165,
+      1014,
+      1022
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "fan-butterfly",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      121,
+      286,
+      1076,
+      935
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "fern-fiddlehead",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      208,
+      139,
+      814,
+      1099
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "wood-anemones",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      199,
+      184,
+      1013,
+      1022
+    ],
+    "wholeOriginalContained": true
+  }
+]

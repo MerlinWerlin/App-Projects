@@ -17,12 +17,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Check equal-size dates and serif gauge clearance for old and new themes
+      - name: Check Georgia battery gauge clearance for old and new themes
         working-directory: apps/glaze
         run: |
           npm install --prefix "$RUNNER_TEMP/serif-render" --no-save sharp@0.35.5
           GLAZE_RENDER_MODULES="$RUNNER_TEMP/serif-render" node --no-warnings scripts/widget-serif-preview-check.mjs "$RUNNER_TEMP/serif-review"
-      - name: Check actual Apple date sizes and independent badge bounds
+      - name: Check actual Apple New York battery gauge clearance
         working-directory: apps/glaze
         run: |
           node scripts/widget-serif-native-probe.mjs "$RUNNER_TEMP/NativeTextProbe.swift"

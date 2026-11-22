@@ -1,0 +1,204 @@
+{
+  "themeId": "scaleseam-fens",
+  "scope": "Geometry proof using actual encoded WebP assets, production theme-to-widget background, scaledToFit and Swift Fit6% rule. Conservative24% corner radius stress check; device corner radius varies, no installed-iOS screenshot claim.",
+  "swiftSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\targets\\widget\\SeamlessWidget.swift",
+  "swiftSha256": "00f8f7b122e06f51ea9bdceb20b4dfa1753ca09d936f7f796212ee3184042477",
+  "backgroundStops": [
+    "#293F56",
+    "#43515C"
+  ],
+  "artworkOptions": 5,
+  "layouts": [
+    {
+      "option": "moorhen-rushes",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        28,
+        42,
+        143,
+        131
+      ],
+      "asset": "widget-moorhen-rushes.18fe36f5.webp",
+      "assetSha256": "18fe36f500a6c3c46a540de2e7e567b56beeaffb3fec26a9b2d2c18c767919a2"
+    },
+    {
+      "option": "moorhen-rushes",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        62,
+        100,
+        307,
+        290
+      ],
+      "asset": "widget-moorhen-rushes.18fe36f5.webp",
+      "assetSha256": "18fe36f500a6c3c46a540de2e7e567b56beeaffb3fec26a9b2d2c18c767919a2"
+    },
+    {
+      "option": "perch-pondweed",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        26,
+        48,
+        144,
+        119
+      ],
+      "asset": "widget-perch-pondweed.8e81909d.webp",
+      "assetSha256": "8e81909de20be2e2c604d715f21db215b8955a7174ee46c8d841905ab0ec29f9"
+    },
+    {
+      "option": "perch-pondweed",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        56,
+        112,
+        309,
+        265
+      ],
+      "asset": "widget-perch-pondweed.8e81909d.webp",
+      "assetSha256": "8e81909de20be2e2c604d715f21db215b8955a7174ee46c8d841905ab0ec29f9"
+    },
+    {
+      "option": "grass-snake-sedge",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        32,
+        40,
+        138,
+        133
+      ],
+      "asset": "widget-grass-snake-sedge.9e9f0be6.webp",
+      "assetSha256": "9e9f0be6ecd2ea9298321b5b100c9d6ef2a9f3e73c27269ebc8d489431be1c2e"
+    },
+    {
+      "option": "grass-snake-sedge",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        68,
+        96,
+        295,
+        295
+      ],
+      "asset": "widget-grass-snake-sedge.9e9f0be6.webp",
+      "assetSha256": "9e9f0be6ecd2ea9298321b5b100c9d6ef2a9f3e73c27269ebc8d489431be1c2e"
+    },
+    {
+      "option": "yellowflag-iris",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        29,
+        24,
+        137,
+        144
+      ],
+      "asset": "widget-yellowflag-iris.b569e153.webp",
+      "assetSha256": "b569e153dbb3b60957abd27e62ee8d877efc8f36cce9e4d224396b78648f073d"
+    },
+    {
+      "option": "yellowflag-iris",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        62,
+        60,
+        293,
+        319
+      ],
+      "asset": "widget-yellowflag-iris.b569e153.webp",
+      "assetSha256": "b569e153dbb3b60957abd27e62ee8d877efc8f36cce9e4d224396b78648f073d"
+    },
+    {
+      "option": "marsh-marigold",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        31,
+        28,
+        136,
+        144
+      ],
+      "asset": "widget-marsh-marigold.949ef3bb.webp",
+      "assetSha256": "949ef3bb4b322e3767d6af74a847b5c50f245e6331a7d1e1aa579cabcbedd3ee"
+    },
+    {
+      "option": "marsh-marigold",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        67,
+        69,
+        291,
+        318
+      ],
+      "asset": "widget-marsh-marigold.949ef3bb.webp",
+      "assetSha256": "949ef3bb4b322e3767d6af74a847b5c50f245e6331a7d1e1aa579cabcbedd3ee"
+    }
+  ],
+  "clippedForegroundPixels": 0
+}

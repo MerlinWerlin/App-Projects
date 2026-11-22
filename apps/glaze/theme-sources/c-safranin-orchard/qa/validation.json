@@ -1,0 +1,195 @@
+{
+  "id": "c-safranin-orchard",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "strawberry-section",
+    "pea-pod-section",
+    "daffodil-bud-section",
+    "fern-crozier-section",
+    "samara-section"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.7ffff871.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 19432,
+    "sha256": "7ffff8712dadab2a77b24b8c9aef7e9398519c8864131a3679f0c3edb885e89b",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "b449a47325934d5b060904b15cff3c8cf0cf1ea7b76d523a41ab096e84b47920"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed all five full selected originals together at full17085 and all five actual encoded85px assets. Whole strawberry/crown/stalk/point, curved pod/five pea chambers/both ends/pedicel, daffodil bud/folded tissues/basal leaf/stem, fern crozier/open spiral/whole stalk and single winged samara/seed/pedicel/wing tip have distinct recognizable natural silhouettes. Single flat pale FILLED tissue plane, unequal positive green/turquoise cell walls and crimson conducting/seed traces; larger lumens and strands read at85 while finer walls stay delicate. Firstbb68 accepted unchanged by root after actual material comparisons. Four additional subjects generated independently, no creative raster edits or code alpha cleanup. Artistic enlarged histology, no real specimen/exact anatomy/data claim.",
+    "wallpaper": "Viewed all three actual encoded1290x2796,1179x2556,750x1334 phone crops. Single coherent fuller/taller airy five-section arrangement on continuous sage field. Every whole section endpoint, berry crown/point, pod tips, bud/leaf/stem, fern spiral/stalk and samara wing/pedicel remains inside all three. Stems approach/touch in the common arrangement; no key endpoint hidden or cut. Generator group roughly93percent width/67percent height/top17percent, taller/larger than prompt target; actual placement disclosed. Five exact own references/five distinct original images, no framing edit or pullback. All5sections stay flat filled tissue, no lab cards/diagram or small island.",
+    "native": "Viewed all nine actual current coordinator SVG native layouts from the complete candidate pack. Shield follows broad berry shoulders and tapered point, original whole strawberry/branching strands in larger fields, cut marks, leaf hands, basin battery and folio calendar. Separate quiet small naturally serrated leaf/stalk in compact headers, no miniature cell chart or microscope. Pale sage/plum native background and dark ink remain readable. All nine change with readings; battery null0/100 and ornament roundtrip pass. Today ordinary date pointsize/bold and independent marker use current coordinator renderer, no contour-driven shrink or automatic square requirement. Windows SVG evidence, no Apple New York or installed-device claim.",
+    "roundedArtworkCorners": "All34Cthemes/170actual encoded artworks retain every visible alpha16 pixel with actual app gradient/Fit6percent inset/conservative20percent rounded mask, original rasters unchanged. Own five whole originals uniformly contained900within1024 with source alpha preserved; rounded tiles viewed and whole organ tips retained. Quiet pale sage corners complement the cell sections. UI layout simulation only."
+  },
+  "ownerSteeringReview": "Less abstract familiar Nature: whole recognizable fruit, pod, flower bud, fern growth and wind seed in one visibly different flat stained plant-cell language. Larger pale lumens and positive conducting strands preserve small-size readability. Fuller/taller wallpaper, quiet matching Artwork backgrounds and small natural leaf native-header companion. Artistic enlarged histology, no authentic specimen, exact anatomy, measured cell map, diagnostic or experimental-data claim.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-safranin-orchard",
+    "backgroundStops": [
+      "#D9E4DD",
+      "#C6D6CC"
+    ],
+    "pieces": [
+      {
+        "id": "strawberry-section",
+        "sha256": "9dbf7acd401fd7f58334318e6012c054dfd596b5a1f9df26329741d3bbf2d9c4",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "pea-pod-section",
+        "sha256": "cb12e6b999c9c3c1ed60995cfe12d3e0adc80438c0b5c40d89e9532730210118",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "daffodil-bud-section",
+        "sha256": "409f6120fee11c596ae5c68863dce72573d25146f189a91a0ce2dad745c2bee6",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "fern-crozier-section",
+        "sha256": "b354bd5d7456d69831c39dce72e9ff32a706626c6abff69ee8ac96b29af13205",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "samara-section",
+        "sha256": "e9bd53eb0119ea7000cc6b0e3793468763b449074ce26e6cb4691db1dfe97fbb",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "artworkOwnStudyReferenceHashesMatched": 0,
+  "packTestEvidence": "Actual offline builderv1:9assets/1570244bytes/minApp1.0.44. Actual manifest/catalogue parsers,5pure-art/9changingnative,ornament roundtrip,battery null0/100,Nature resolver,full selectedsource+normalized+encoded decode/dimensions/hashes,6selected/noorphans,5ownWP refs/5distinct pass. All5full17085/actualencoded85/9native/3phonecrops/own5rounded viewed;34C/170encodedart retain alpha16. No shared runtime edits; combined Swift/device qualification coordinator-owned.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "selectedFirstPrototypeSha256": "bb68f7a6d45cba774753dae8819f5d706150aa0cff3af1e39942e31a848e6b75",
+  "acceptedFirstRawUnchanged": true,
+  "fullSelectedSourceDecode": true,
+  "sourceOutputCount": 6,
+  "unselectedGenerations": 0,
+  "creativeRasterEdits": 0,
+  "wholeOriginalContainment": {
+    "targetSquare": 1024,
+    "containLimit": 900,
+    "crop": false,
+    "stretch": false,
+    "creativeCodeEditing": false,
+    "rawAlphaPreserved": true
+  },
+  "newThemePaletteContrast": {
+    "glyph": "#23382E",
+    "tile": "#C6D6CC",
+    "actualCoreRatio": 8.285712501175459,
+    "minimum": 4.5
+  },
+  "firstEncodedMatchesPriorCodecStudy": "9dbf7acd401fd7f58334318e6012c054dfd596b5a1f9df26329741d3bbf2d9c4",
+  "scope": "Actual source/encoded pack validation, current coordinator SVG previews and rounded-layout simulation. No shared/canonical/Swift/Apple or installed-device qualification claim. No publication."
+}

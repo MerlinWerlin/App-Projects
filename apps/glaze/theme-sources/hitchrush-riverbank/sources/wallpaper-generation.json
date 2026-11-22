@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "HITCHRUSH RIVERBANK. Use case: illustration-story. ONE coherent portrait1290x2796 Nature WALLPAPER, full opaque smooth smoky berry-brown #5A3F42 matching field. INPUT1 own APPROVED REFINED3a otter, INPUT2 own selected kingfisher, INPUT3 own selected watermint are MATERIAL and NATURAL ANATOMY refs only; never change these standalone art assets. ENTIRE scene visibly hand-tied COARSE MACRAME THREE-PLY MATTE COTTON: bulky separate SQUARE-KNOT collars, curved DIAGONAL BIGHTS, short turned cord ends, true open negative knot windows showing matching background. No regular basket warp-weft grid, woven raffia, tiny crochet/knit/lace fill, padded toy, satin ribbon or metal coil. A substantial TALL familiar riverbank habitat: THREE unequal tall narrow rush blades at right/back, ONE gently curving willow stem rising left/back with THREE whole narrow leaves and a short twig, TWO modest rounded lilac watermint flowerheads on a paired-leaf stem near center. ONE whole natural streamlined low-bodied OTTER walks lower-left facingLEFT, tiny ears/modest whiskered muzzle/four coherent short webbed paws and complete long tapering tail curling towardCENTER, not toward frame edge. Whole otter about53percent canvasWIDTH and19percent HEIGHT. ONE whole familiar KINGFISHER perches coherently on willow twig at upper-middle-right, natural long straight bill/short tail/two wholefeet, about20percent full canvasHEIGHT, petrol-blue/sage cords at back, mutedterracotta breast, ivory throat. NO OTHER FAUNA, no frog/dragonfly/insect. Connect willow/rush/mint roots through a natural low irregular shallow riverbank edge with a small curved quiet water ribbon, all made of same knotted cotton, not enclosed oval plaque/tray/rope hoop, display base, macrame wallhanging rod or rectangular framed picture. All scene forms broad legible knot groups, ecru/ivory/taupe/sage/petrol and restrained terracotta/lilac only, no real skin/fur/feathers. Entire connected habitat about80percent WIDTH and50to55percent HEIGHT, from about26percent to79percent canvasHEIGHT. ABSOLUTE SIDE RULE: leftmost bill/whisker/plant/otter/bank tip NO EARLIER than10percent WIDTH; rightmost tip NO LATER than90percent WIDTH. Every birdbill/tail/toe, otterwhisker/paw/taperedtail, branch/leaf/rush/flower/wholegroundedge visible inside those margins. Tall natural vertical plant presence, not tiny low island/sticker. Atleast25percent quiet matching background above,20percent below,10percent each side. No background rectangles/white backing behind open knots, frame/cornerflourishes/hoop, text/UI/numbers/labels, dates/clock/battery/weather readings, logo/signature, people/buildings or castshadow halo. Full opaque matching background.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.6d90630a.png",
+  "sourceSha256": "6d90630a62da69cfadcd9697385f4de1668b9f630a189847bde21c1f433bfc7d",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "f890a1abb6c03dbf72f439638c97b9dffdd868de5f374a239cfc25ec2989d0eb",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "otter-rushes",
+      "file": "sources/otter-rushes.3a4856da.png",
+      "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 2,
+      "id": "kingfisher-willow",
+      "file": "sources/kingfisher-willow.5531a413.png",
+      "sha256": "5531a413981d42e3b5e72c11c70dd0d18b124074696804cb529c5f0216a1face",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 3,
+      "id": "watermint",
+      "file": "sources/watermint.31b56661.png",
+      "sha256": "31b566610c3a7d1005711b63b5fe13b0e38bbe0bef12868c21ddfcb8269d960a",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}
