@@ -1,0 +1,62 @@
+[
+  {
+    "id": "archive-tortoise",
+    "kind": "art",
+    "image": "archive-tortoise.94d6a3bd3b0c.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Archive Tortoise"
+  },
+  {
+    "id": "lantern-heron",
+    "kind": "art",
+    "image": "lantern-heron.43accb8efceb.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lantern Heron"
+  },
+  {
+    "id": "switchback-ferry",
+    "kind": "art",
+    "image": "switchback-ferry.6527a7fafaec.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Switchback Ferry"
+  },
+  {
+    "id": "storm-mill",
+    "kind": "art",
+    "image": "storm-mill.a892901058e4.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Storm Mill"
+  },
+  {
+    "id": "parcel-porter",
+    "kind": "art",
+    "image": "parcel-porter.e608852ab652.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Parcel Porter"
+  }
+]

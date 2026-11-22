@@ -1,0 +1,98 @@
+{
+  "themeId": "bismuth-anomaly",
+  "lane": "A",
+  "published": false,
+  "style": "Iridescent hopper-crystal macro photography: a tangible travelling world of archive creatures, lantern guides, a ferry, mill and parcel automaton.",
+  "direction": "Jared22Nov: keep the approved unusual art styles and bridge them into something tangible.",
+  "artworks": [
+    {
+      "id": "archive-tortoise",
+      "prompt": "Create a NEW separate tangible subject for Glaze BISMUTH ANOMALY, using the reference image ONLY for its extraordinary iridescent hopper-crystal material and macro-photographic finish, not its abstract silhouette. Subject: ARCHIVE TORTOISE, a recognizable stout tortoise carrying a compact travelling library grown into its shell. Three-quarter side view facing left. Clear small angular beaked head, four broad short stepped feet, heavy low domed shell. The shell consists of nested terraced metallic bismuth chambers with two tiny recessed book galleries and one squat lookout window, making its role as a walking keeper of archives tangible. Books are small dark slits and stepped spines, no words. The tortoise body and shell are made from crisp right-angle bismuth hopper terraces, iridescent magenta, petrol teal, violet and thin gold rims, NOT smooth biology or glass. Sophisticated real-material macro studio photograph, fine metallic growth striations and angular hollow terraces; surreal constructed creature with a purposeful inhabited world, charming but not cartoon mascot. Strong recognizable tortoise silhouette at widget size, broad horizontal composition contained entirely within central 80 percent of a square canvas. Genuinely transparent alpha background, no ground or baseplate, no cast shadow, no text/logo/border/collage. No abstract zigzag, floating rings, spheres, normal grey rocks, ordinary crystal pile, inflated shape or generic cute animal illustration. Preserve the material's crisp physical identity while making the creature and library instantly understandable.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/archive-tortoise.9f6d24ea16c1.png",
+      "sourceSha256": "9f6d24ea16c1089f4e78ef510730053620ba82e3b6a00d297454be58ddf089cc",
+      "referenceSources": [
+        "sources/cantilever-oracle.51d43bdb5282.png"
+      ],
+      "image": "widgets/archive-tortoise.94d6a3bd3b0c.png",
+      "sha256": "94d6a3bd3b0ca34e8d5081f6bc387788bf45478dce56b66bbb5c0c5fb5aea54d",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "lantern-heron",
+      "prompt": "Create a NEW original Glaze BISMUTH ANOMALY tangible-world artwork: LANTERN HERON. Use the reference solely for iridescent terraced bismuth metal macro-photographic material, NEVER copy its tortoise shape. A recognizable elegant long-legged heron serves as a travelling night guide: tall kinked neck, long narrow pointed beak, compact angular body, two jointed stilt legs and a broad stepped feather tail. From its beak hangs ONE tiny square open-frame lantern, a softly glowing gold hopper-crystal chamber with no glass; the bird's purpose reads clearly. Pose facing right with one foot slightly raised and neck curving back toward the lantern, entire bird and feet in frame. Everything is grown from crisp rectangular bismuth hopper terraces and finely striated metallic blades, oil-iridescent petrol teal, magenta, violet and gold edges, refined studio macro photography; no smooth feathers, cartoon outline or ordinary gemstone pile. A clean tall airy silhouette very different from the broad reference tortoise. Center in a SQUARE canvas, object occupies central 78 percent; generous clear margin on all sides. Genuine transparent alpha background including every gap between legs and neck; no halo, ground, pedestal, background shadow, text, numbers, logo or frame. Tangible whimsical constructed guide creature, credible metallic surface with sharp terrace highlights, sophisticated miniature world.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/lantern-heron.9937fcf948dc.png",
+      "sourceSha256": "9937fcf948dc5b203de3500a4907efd63e16666f932784e89cbe03e4e64f347a",
+      "referenceSources": [
+        "sources/archive-tortoise.9f6d24ea16c1.png"
+      ],
+      "image": "widgets/lantern-heron.43accb8efceb.png",
+      "sha256": "43accb8efceb13b219e9ad7ed0a9d12e65d9640cfb570b7cd10ed7956781f5ba",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "switchback-ferry",
+      "prompt": "Create ONE NEW separate Glaze BISMUTH ANOMALY artwork called SWITCHBACK FERRY. Reference image is ONLY the style/material reference for macro-photographed iridescent bismuth hopper crystals; no tortoise or animal copied. Subject is a recognizable little working passenger ferry built entirely of stepped bismuth metal, shown whole in a three-quarter side view facing left. A long pointed angular hull with crisp stepped gunwales, an open boarding stair descending along one side, a tiny low cabin with two recessed dark doorways, and ONE offset tall folded rectangular sail grown as a very thin terraced crystalline fan; one small cargo crate on its aft deck. Clear physically legible boat construction and purpose, transformed into an impossible iridescent crystalline craft, no water and no floating disconnected shapes. Strong broad boat-and-sail silhouette readable at 85px, intentionally different from bird or turtle silhouettes. Real studio macro photograph with complex metallic growth striations, nested right-angle hopper cavities, thin gold terrace lips, saturated petrol teal/magenta/violet oxidation, restrained warm highlights. Square composition, entire hull, bow and sail within central 80 percent with generous transparent margin. Genuinely transparent alpha background; no water, ground, baseplate, background glow, cast shadow, text, logos, border, normal wood, glass, plastic, smooth liquid or glossy latex. Make it a tangible vehicle in a crystal travelling world, not an abstract zigzag sculpture.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/switchback-ferry.1fba744b0c08.png",
+      "sourceSha256": "1fba744b0c08842c0fa3a216453ea7382b554830c59fb281f3630ae775519d7d",
+      "referenceSources": [
+        "sources/archive-tortoise.9f6d24ea16c1.png"
+      ],
+      "image": "widgets/switchback-ferry.6527a7fafaec.png",
+      "sha256": "6527a7fafaec040708e6010cc176e7b19cd2854bbc940dce40c59ef0af711c7c",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "storm-mill",
+      "prompt": "ONE NEW original Glaze BISMUTH ANOMALY artwork: STORM MILL, a tangible small inhabited machine-building in the same crystal travelling world. Use reference ONLY for the real iridescent terraced bismuth metal texture and macro-photographic craft, not its tortoise form. Recognizable windmill: a short broad asymmetric stepped mill house with tiny open doorway and two dark shutter windows, one offset tower carrying FOUR broad unequal rectangular terraced vanes at diagonal angles; a small exposed gear and grain chute show its purpose. It must clearly be a working mill, grown as impossible hopper-crystal architecture rather than a conventional wooden windmill ornament. All structure, vanes and machinery made of sharp right-angle bismuth terraces with hollow rectangular recesses, metallic striations, petrol teal/magenta/violet oxidation and thin gold rims. Physical three-quarter studio macro photograph with careful metallic highlights, no plastic or cartoon smoothing. Clean compact starburst-and-house silhouette, entire vanes and house in frame, centered in a square transparent canvas with at least 12 percent margin. No platform slab or ground, no glow behind the subject or background cast shadow, genuine transparent alpha in all gaps. No words, clocks, numbers, logos, frame, collage, floating crystal pile, bird, boat or tortoise. Make the inhabited purpose readable at small size while preserving the extraordinary material.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/storm-mill.a86e0807fa7e.png",
+      "sourceSha256": "a86e0807fa7e8e12227527eebfc3cd9a914ce41356874c4ba46b1a3390f68554",
+      "referenceSources": [
+        "sources/archive-tortoise.9f6d24ea16c1.png"
+      ],
+      "image": "widgets/storm-mill.a892901058e4.png",
+      "sha256": "a892901058e4f07a7f1a95bdecb756c07728369ca7ce5ee195523da496427bd8",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "parcel-porter",
+      "prompt": "Create ONE NEW tangible Glaze BISMUTH ANOMALY artwork: PARCEL PORTER. Reference image is ONLY a material/style reference: macro-photographed iridescent rectangular bismuth hopper terraces with magenta, petrol teal, violet and thin gold edges. Do NOT copy its tortoise/house anatomy. Subject is a friendly purposeful two-legged walking postal automaton: small angular head with a single recessed square eye window, squat stepped torso like a hollow crystal drawer, two bent articulated arms holding ONE oversized terraced parcel, two broad sturdy offset feet in a walking pose and a small folded satchel tucked at its side. Every limb and the parcel is built from crisp nested rectangular crystal steps and thin interlocking metallic plates; no smooth tubes. Clear recognizable robot carrier with parcel and visible joints, sophisticated surreal-world craft, not generic toy/emoji/mascot. Pose three-quarter toward right with a slight forward lean, very different silhouette from a mill, boat, tall bird or broad turtle. Real fine metallic growth striations, dark hopper cavities and raked warm highlights. Entire figure and feet isolated in central 78 percent of a SQUARE canvas; genuinely transparent background and every gap, no ground, platform, halo, background cast shadow, text, address, logos, numbers, border or collage. Maintain physical crystalline material and tangible function.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/parcel-porter.3bfdd98d4f10.png",
+      "sourceSha256": "3bfdd98d4f1014dfc8e5baae0a5f3858fae2b94e8379d934f555b1f7cb900d20",
+      "referenceSources": [
+        "sources/archive-tortoise.9f6d24ea16c1.png"
+      ],
+      "image": "widgets/parcel-porter.e608852ab652.png",
+      "sha256": "e608852ab6524f72e552f20f6cce0feabdb65f7caf4c0127c3fdfff5a9ea254d",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "wallpaper",
+      "prompt": "Create ONE original portrait wallpaper for Glaze BISMUTH ANOMALY, a coherent tangible travelling world made of iridescent terraced bismuth hopper crystals. Use both references only to establish the unusual crisp real-metal material and invented world's archive-tortoise and small ferry. Tall portrait composition, approximately1290:2796. Upper55 percent is a beautiful quiet very dark olive-black field with extremely restrained soft studio falloff, plenty of uncluttered space for app icons, no stars or particles. In the lower40 percent, construct a small connected crystalline estuary settlement: a low stepped quay, one compact four-vane storm mill to the right, a little metal sail ferry at a narrow inlet to the left, a small recognizable archive tortoise travelling across the lower foreground, and one slender lantern heron perched near the quay. These are miniature inhabitants in a physically coherent landscape, not giant scattered stickers and not a contact sheet. The land and architecture consist of nested rectangular bismuth hopper terraces, vivid petrol teal/magenta/violet oxidation and very thin glowing gold edge reflections, realistic delicate metallic growth striations; high-end staged macro photograph, precise sharp terrace detail, dramatic but controlled raking light. Keep the skyline low with generous negative space above, and make the lower scene a single graceful uneven diagonal, not a full-width hard straight band. Genuinely opaque wallpaper; no transparency, text, numbers, clockface, battery, calendar, logo, border, device mockup, letter, abstract-only zigzag, normal wood, smooth plastic, foam or latex.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/wallpaper.b64b8c57e77c.png",
+      "sourceSha256": "b64b8c57e77c305281d1f2e926e916aeb8797fd8f71d1102ef65dcef59fc84cd",
+      "referenceSources": [
+        "sources/archive-tortoise.9f6d24ea16c1.png",
+        "sources/switchback-ferry.1fba744b0c08.png"
+      ],
+      "image": "wallpapers/wallpaper.png",
+      "sha256": "b64b8c57e77c305281d1f2e926e916aeb8797fd8f71d1102ef65dcef59fc84cd",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "cantilever-oracle",
+      "prompt": "Create one original collectible Glaze widget artwork called Cantilever Oracle for a new visual world BISMUTH ANOMALY. It is an impossible metallic organism grown entirely from iridescent bismuth hopper crystals. Scientific studio macro photography, physically vivid machined-looking crystalline terraces, sharp right-angle hollow steps, very thin gold margins, oily magenta to petrol-teal to violet metal oxidation. Invent a strongly asymmetrical, tall, open negative-space silhouette: one squat terraced foot rises into a single long angular cantilever leaning far to the left, its open squared gorge suspended above a much smaller offset stepped anchor; several tiny rectangular galleries grow backwards through its thickness. The subject is ONE coherent invented formation, not a castle, building, animal, letter, tool, decorative gemstone pile or ordinary crystal specimen. Asymmetrical and structurally improbable; intriguing clean silhouette readable at 85px. Entire object in frame at three-quarter angle, central 78 percent of a SQUARE canvas with generous transparent margin. Soft raking studio lighting from upper left, dark reflections internal to metal, no ground plane and no cast background shadow. Genuinely transparent alpha background, no checkerboard, text, frame, logos, collage, sphere, ring, smooth blob, glass, liquid, foam, fur or latex. This must look like crisp angular real metal macro photography, visibly different from magnetic-fluid creatures, foam miniatures and inflated sculpture.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/cantilever-oracle.51d43bdb5282.png",
+      "sourceSha256": "51d43bdb5282bb0c63cdf125552734e3a9450abb94f6f29de5fa1cdf4ac553fd",
+      "rejection": "Retained abstract material study; Jared's subsequent direction asks for tangible subjects in these art styles."
+    }
+  ]
+}
