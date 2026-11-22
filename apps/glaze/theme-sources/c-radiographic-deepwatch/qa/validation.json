@@ -53,6 +53,12 @@
   "published": false,
   "deviceValidation": false,
   "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
   "previews": [
     {
       "kind": "clock",
@@ -114,7 +120,8 @@
     "transparency": "Viewed first ray at full production size composited on palette tile, and all five on palette in the combination sheet. No opaque backing or visible frame. Faint source alpha haze does not obscure silhouettes.",
     "nativeCombination": "Viewed all nine actual app-renderer native previews. Observatory and lantern-ray identities remain legible; live hands, charge column and calendar readings are clear in all sizes.",
     "sourceFraming": "All high-opacity subject bounds inside source frames. Edge alpha max: ray/crab/bell 1, siphon 2, eel 5 out of 255. All extremities complete.",
-    "scope": "Scratch-only native identity insertion for local real app planner/renderer. Actual coordinator registry integration and device qualification remain separate."
+    "scope": "Scratch-only native identity insertion for local real app planner/renderer. Actual coordinator registry integration and device qualification remain separate.",
+    "actualCornerRefinement": "Reviewed actual coordinator renderer output in all four affected placements; old Clock-face/Battery SVGs verified byte-identical. Prototype studies retained as design history."
   },
   "packTestEvidence": "Unchanged builder pipeline has 47 distinct pack test cases passed across initial suite and Pillow-enabled WebP reruns. This theme independently passes real builder, actual app parsers/planner/renderer, all image decoding, hashes/provenance and no selected orphan checks.",
   "ornamentRefinement": {
@@ -129,6 +136,16 @@
     "pathBoundsChecked": true,
     "pathLength": 235,
     "previewScope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
-    "runtimeSupport": "Coordinator implementing actual TS/Swift parsing and rendering; native integration checks pending."
+    "runtimeSupport": "Verified with actual coordinator TS parser/renderer, copied unchanged into scratch. All nine plans round-trip optional ornament; actual shared source registry integration remains coordinator-owned.",
+    "actualParserRetainsOrnament": true,
+    "nativeLayouts": 9,
+    "readingChangesAllNine": true,
+    "heroSvgUnchanged": true,
+    "visualReview": "Viewed actual-renderer small/medium/large Calendar and medium Clock corner sheet, alongside unchanged larger hero placements. Single aspect-fitted motif is clear, proportionate and separate from live readings.",
+    "nativeRendererSource": {
+      "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+      "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+      "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+    }
   }
 }

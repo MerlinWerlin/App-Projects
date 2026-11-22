@@ -53,6 +53,12 @@
   "published": false,
   "deviceValidation": false,
   "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
   "previews": [
     {
       "kind": "clock",
@@ -114,7 +120,8 @@
     "encoded85px": "Viewed qa/encoded-art-85px.jpg made from the actual built WebP art assets at exactly 85 pixels. All five silhouettes and red/cyan displacement remain visible without stereo viewing.",
     "nativeCombination": "Viewed nine actual app renderer previews. Original stiltshell and keel-skater motifs, faceted live dial, cyan tile charge gauge and ticket calendar are readable in small, medium and large.",
     "sourceFraming": "High-opacity subjects fully inside every source frame. Edge alpha is 1 on four sources and 30 on forkbill. Forkbill additionally viewed composited at full production size on palette tile; no clipped subject or visible background frame.",
-    "scope": "Artistic anaglyph language only; no calibrated stereo viewing claim. Scratch-only native descriptor insertion; actual shared registry integration and installed-device qualification remain separate."
+    "scope": "Artistic anaglyph language only; no calibrated stereo viewing claim. Scratch-only native descriptor insertion; actual shared registry integration and installed-device qualification remain separate.",
+    "actualCornerRefinement": "Reviewed actual coordinator renderer output in all four affected placements; old Clock-face/Battery SVGs verified byte-identical. Prototype studies retained as design history."
   },
   "packTestEvidence": "Unchanged pipeline: 47 distinct pack tests passed across initial suite and Pillow-enabled WebP reruns. This theme independently passes the real builder, actual app parser/planner/native renderer, full image decoding, unique hashes, source provenance and no selected orphan checks.",
   "ornamentRefinement": {
@@ -129,6 +136,16 @@
     "pathBoundsChecked": true,
     "pathLength": 122,
     "previewScope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
-    "runtimeSupport": "Coordinator implementing actual TS/Swift parsing and rendering; native integration checks pending."
+    "runtimeSupport": "Verified with actual coordinator TS parser/renderer, copied unchanged into scratch. All nine plans round-trip optional ornament; actual shared source registry integration remains coordinator-owned.",
+    "actualParserRetainsOrnament": true,
+    "nativeLayouts": 9,
+    "readingChangesAllNine": true,
+    "heroSvgUnchanged": true,
+    "visualReview": "Viewed actual-renderer small/medium/large Calendar and medium Clock corner sheet, alongside unchanged larger hero placements. Single aspect-fitted motif is clear, proportionate and separate from live readings.",
+    "nativeRendererSource": {
+      "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+      "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+      "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+    }
   }
 }
