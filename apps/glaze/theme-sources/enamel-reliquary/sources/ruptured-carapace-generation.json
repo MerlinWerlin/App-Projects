@@ -1,0 +1,18 @@
+{
+  "id": "ruptured-carapace",
+  "prompt": "ONE original standalone1024x1024 square art asset for ENAMEL RELIQUARY. RUPTURED CARAPACE: the flat cross-section of an imaginary extinct armoured organism, a compact wide asymmetrical oval with one deep V-shaped break at the upper-right edge, exposing three offset nested hexagonal chambers. An arched sulphur-yellow spinal band runs across the upper left, turquoise enamel forms broad irregular outer plates, dark oxblood inner void-cells contrast orange glass lobules. NO branching, stems, fins, shell spiral, fan, face, eyes or recognisable modern animal. A sculpted furnace-fired CLOISONNE ENAMEL MOSAIC with very thin uneven raised brass partition wires, glistening pooled enamel, micro firing bubbles, crackle crazing, orange-peel pits, scorched black copper edges. Physical kiln-crafted surface photographed directly above, shallow relief with precise warm glints, not a gemstone or painting. Whole closed heavy silhouette central65%,18% fully transparent alpha margin, no backdrop, floor, slab, base, border, jewellery attachment or hardware. No words, numbers, labels, dates, clocks/dials/hands, battery readings, UI or logos. ONE artwork only, no contact sheet.",
+  "tool": "built-in image_gen",
+  "source": "sources/ruptured-carapace.cd45892f.png",
+  "sourceSha256": "cd45892f0e44a062b99ca40911ddf7f71a54dcbdf81828e522277bdd45dc2041",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/ruptured-carapace.90e7d9ca.png",
+  "sha256": "90e7d9ca43e208ffebdf28f9777b9cf3c2545dd829ca1ec0c0f7355451b3b8c1",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

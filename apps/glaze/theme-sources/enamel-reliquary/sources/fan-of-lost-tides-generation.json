@@ -1,0 +1,18 @@
+{
+  "id": "fan-of-lost-tides",
+  "prompt": "ONE new individual original square1024x1024 Glaze ENAMEL RELIQUARY artwork. Subject: FAN OF LOST TIDES, an imaginary extinct sessile lifeform cross-section with a broad offset flared silhouette. Eight unequal broad enamel vanes rise from a short forked base, three of them turn through a half twist so their internal layered anatomy shows; the resulting contour resembles a broken asymmetric sail, NOT a flower, real shell, coral, leaf, butterfly or jewellery brooch. Made as a FLAT physical furnace-fired cloisonne enamel mosaic, hand-bent thin uneven brass wires outline organic cells; broad pools of turquoise #4BC1B0 fade into sulphur yellow and dark oxblood along each vane, with isolated orange cells. Distinct glass firing bubbles, orange-peel pits, crackled crazing, blackened copper edges, shallow physical relief, precise low angle reflections, museum jewellery-craft macro photography from directly above. Entire irregular specimen central65%,18% alpha-transparent margin, no backing plate/slab, ground, floor, background, frame, hanging loop or hardware. No text/numerals/labels/logos/UI, date, time, dial or battery readings. Only ONE pure-art asset, no collage or five-panel sheet.",
+  "tool": "built-in image_gen",
+  "source": "sources/fan-of-lost-tides.37caaf64.png",
+  "sourceSha256": "37caaf648833a0a9a29be503f1d59b7c2cfcb1fec4b0c7a3d9a725a66f9ae35b",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fan-of-lost-tides.15778b57.png",
+  "sha256": "15778b57b8ef614b80a2aa4ee512d8489130543e19b0881e9ef13412a220abc6",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
