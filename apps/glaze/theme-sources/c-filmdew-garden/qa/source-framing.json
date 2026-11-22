@@ -1,0 +1,100 @@
+{
+  "review": "Five1254square selectedraws have alpha16and96 wholeinsideframe; rawframealpha atmost1. Dragonflywidest rawwingtipmargin33pixels is narrowerthanrequested15percent; no false numericpromptcomplianceclaim. Entire rawuniformly900within1024RGBA, no cropstretch/codealpha cleanup, actualroundedretainsallvisiblepixels. Firstraw2f47aed2/normalizeda51e4c50 unchanged. One ownfoxmaterialedit/oneunselectedinitial/twoexactowninputs. Wallpaperoneopaque852x1846original fitted1290x2796; actual3phonecrops keepallkeyorganismswhole, wide96percentgroup/contextbankedges disclosed. No wallpaper framingedit.",
+  "assets": [
+    {
+      "id": "clover-thinfilm",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          148,
+          168,
+          1082,
+          1118
+        ],
+        "96": [
+          150,
+          169,
+          1081,
+          1117
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "dragonfly-thinfilm",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          33,
+          314,
+          1220,
+          1060
+        ],
+        "96": [
+          34,
+          314,
+          1219,
+          1060
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "frog-thinfilm",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          136,
+          391,
+          1117,
+          994
+        ],
+        "96": [
+          137,
+          392,
+          1116,
+          994
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "fox-thinfilm",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          220,
+          104,
+          1079,
+          1163
+        ],
+        "96": [
+          221,
+          104,
+          1078,
+          1162
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "cowslip-thinfilm",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          124,
+          159,
+          1109,
+          1163
+        ],
+        "96": [
+          125,
+          160,
+          1108,
+          1162
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

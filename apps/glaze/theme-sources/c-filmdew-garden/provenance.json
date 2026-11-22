@@ -1,0 +1,267 @@
+{
+  "theme": "c-filmdew-garden",
+  "lane": "C",
+  "created": "2026-11-23",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "clover-thinfilm",
+      "sourceImage": "sources/clover-thinfilm.2f47aed2b77c.png",
+      "sourceSha256": "2f47aed2b77c3723af267b8db76b97656595a433787e15b9db8546e7e78b9a2e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/clover-thinfilm.a51e4c501471.png",
+      "sha256": "a51e4c501471bec90d0f4ab4f0fd9c5dbe24cd97ca30aa60bb283b6356f45db9",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 523249,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, FILMDEW GARDEN. A whole instantly recognizable THREE-LEAF CLOVER: exactlyTHREE broad softly heart-shaped leaflets meet at one small central join, one upper leaflet and one pointing down-left and one down-right. Each leaflet has two gently rounded outer lobes and a modest central notch, with a smooth natural edge. ONE full slender gently curved stalk descends below the join. Plant appears intact and natural, not a radial abstract blob or three disconnected hearts. Whole clover and stalk comfortably inside central70percent square, minimum15percent truly transparent empty exterior on all four sides. Familiar botanical form first.\nIMAGE MEDIUM: original reflected-light THIN-FILM DRAINAGE INTERFERENCE IMAGE. Each leaflet is a SINGLE almost planar continuous optical film, negligible thickness. Broad smooth pearly colour CURTAINS descend from paler thinning upper areas into saturated magenta, cyan, violet and pale gold lower regions. Only FOURtoSIX very broad irregular sweeping colour regions per leaflet, not dense repeated rainbow stripes. Gentle finite boundaries between interference orders, a few soft hooked drainage fingers. At the upper/side of each leaflet ONE or TWO unequal almost BLACK thin-film WINDOWS interrupt the colour curtains; these are opaque near-black optical image values, NOT alpha cutout holes. Black islands are softly rounded asymmetric flat patches with a narrow pale/silver transition, no bubbles/droplets/lenses. The irregular colour curtains bend gently around those dark windows, then descend, not concentric nested mineral rings around a centre. Smooth low-amplitude reflected-light intensity, subtle fine exposure grain only. A tiny thin bright meniscus trace follows parts of the complete outer edge, never a thick wire/metal rim. Stalk plain dark silvery-green and whole. Whole leaves read as nearly FLAT optical colour images, NOT three shiny volumetric leaves, folded plastic cellophane, glossy silk ribbon, metallic foil, motherofpearl inlay or glass sculpture. No cast shadow, solid thickness, petal ridges, veins, natural tissue texture, specular globe reflections or embossed edges. Optical-film drainage curtains/dark windows supply image language, no normal leaf photograph with iridescent filter.\nAvoid polarised stress-isoclinic fine repeated rainbowfringes, diffractionhalo rings/radialcomb, projected3Dstripes, fine inkmarbling/combedveins, thick swirls of paint, capillary paperfronts/fibres, crystal/mineralterraces, interlocking shelltiles, fluorescent cellwalls, neonoutline/wireframe or glowing fairy plant. Do not show a hoop/frame/sheet rectangle, bubblewand, sphere, soapdish, lab apparatus or floor. No labels/ruler, text/numbers, molecular data, clock/date/battery/weather values, UI/logo/frame/watermark. This is ORIGINAL STATIC ARTISTIC thin-film image interpretation of a familiar clover silhouette, NOT a real leaf-shaped soap experiment, measured thickness/color map, authentic data or validated simulation. No chemical recipe/procedure, no external visual input, no named artist. All image areas inside leaflets remain opaque or nearlyopaque so darkwindows remain dark; TRUEalphaZERO only OUTSIDE exact whole clover/stalk. Transparent empty exterior, no background haze, glow or cast shadow beyond silhouette.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 808410
+    },
+    {
+      "id": "dragonfly-thinfilm",
+      "sourceImage": "sources/dragonfly-thinfilm.5615009c1a83.png",
+      "sourceSha256": "5615009c1a83e722004f9f5f4f1bc44fcd72d6f668667e26e0738373f6a0c15f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/dragonfly-thinfilm.e94bbabc970c.png",
+      "sha256": "e94bbabc970cd5dd2181dd83c4f50f9e36345314b790eefbb6fec46385dae288",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 354382,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, FILMDEW GARDEN. Subject: One WHOLE instantly familiar DRAGONFLY in overhead view. ExactlyFOUR long narrow gently tapered wings in two unequal pairs spread in a shallowX, all four fullwingtips separate. Natural slender segmented abdomen/tail descends below, fulltailtip; small rounded thorax/head, TWO restrained small dark eyes, TWO short plain antennae, SIX small coherent legs arranged3each side ofthorax, tucked inward without tangling or hiding wingroots. Wings are broad enough to hold pearly film colourcurtains and one darkwindow each, no intricate wingvenation. Flat animal image, no glossy toy/inflatedabdomen. Complete tail/wings/antennae/feet with clear margins.\nMEDIUM throughout broad parts: nearly FLAT reflected-light thin-film DRAINAGE INTERFERENCE IMAGE, single continuous negligible-thickness optical plane. Only FOURtoSIX broad smooth pearly colour curtains per major area, pale silvery upper thinning areas descending into cyan/magenta/violet/palegold below; a few soft hooked drainage fingers. ONE or TWO irregular near-black flat thin-film windows in off-centre regions of each broad major part, with narrow pale transition, not alpha holes. Colour curtains gently bend around black-film islands then descend. Broad reflected-light fields and dark windows remain readable at85px, no dense repeated rainbowfringes or nested mineralrings. Fine low-amplitude exposuregrain and tiny bright meniscus trace on selected outeredges only, no thick rim/wire. All broad parts opaque filled optical images. Narrow stems/legs/antennae plain dark silverygreen/mutedplum with no busy pattern. No normal animal/plant tissue or fur, no 3Dvolume/specular globe, inflated bubble/plastic, embossed muscle, folded cellophane/silk, glass/foil/metal sculpture, shellinlay, veins/paint/marbling or paperfibres. Simple structural contour cues within the flattened silhouette can separate limbs/petals, but no sculpted shading. Image language is film colourcurtains/darkwindows, not a normal naturephoto with iridescent filter. Original static artistic thin-film interpretation, not real leaf/animal-shaped soapfilm, experiment, thickness/colourcalibration, actualanatomy or validated simulation.\nONE full familiar natural form, all endpoints intact. Fit entire composition inside central70percent square, minimum15percent truly transparent exterior each side. TRUEalphaZERO only OUTSIDE the exact complete form; dark-filmwindows remain opaque nearblack. No background rectangle/sheet/slab, wirehoop/frame, bubblewand/soapdish, floor/ground/castshadow, glow/hazeoutside silhouette, text/numbers/labels/ruler/actualdata, clocks/dates/battery/weather/UI/logos/watermark. No C1polarisedstress stripes, diffractionrings/radialcomb, projected3Dstripes, chemical spiralfronts, marbledink swirls, capillarypaperfronts, hoppercrystals, fluorescentcellwalls or neonwireframe. No external visual input or namedartist. One independent new asset, not a panel/contactsheet.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 910931
+    },
+    {
+      "id": "frog-thinfilm",
+      "sourceImage": "sources/frog-thinfilm.0344c2a85ca9.png",
+      "sourceSha256": "0344c2a85ca96857e4304e01b1261c8558cbd544efa89ee05225b4f1020dc3ae",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/frog-thinfilm.3a0ccdab5f77.png",
+      "sha256": "3a0ccdab5f7723a8c470a6fda8ec30e7537d9f419bdcd161849d589e9cab73b0",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 438987,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, FILMDEW GARDEN. Subject: One WHOLE familiar small FROG resting in squat three-quarter SIDE profile facingLEFT. Broad low rounded head, one visible small darkeye and subtle far-eye bump, short closedmouth contour, compact oval trunk, TWO folded rearhindlegs with broad feet and three/four coherent distinct toe tips, TWOshortforelegs bracing underhead with clearly separate toe tips. Allfour limbs attached coherently, folded legs can overlap naturally but feet remain visible and whole. No tail, no extra legs, no human face, no cartoon smile. Flattened frog silhouette and restrained dark contour at foldedknee, NOT sculpted skin/muscle or a glossyglass frog. Broad head/body/hindlegplanes hold thinfilm colourcurtains, darkfilmwindows off-centre away fromeye so windowdoesnotbecomeextraeye.\nMEDIUM throughout broad parts: nearly FLAT reflected-light thin-film DRAINAGE INTERFERENCE IMAGE, single continuous negligible-thickness optical plane. Only FOURtoSIX broad smooth pearly colour curtains per major area, pale silvery upper thinning areas descending into cyan/magenta/violet/palegold below; a few soft hooked drainage fingers. ONE or TWO irregular near-black flat thin-film windows in off-centre regions of each broad major part, with narrow pale transition, not alpha holes. Colour curtains gently bend around black-film islands then descend. Broad reflected-light fields and dark windows remain readable at85px, no dense repeated rainbowfringes or nested mineralrings. Fine low-amplitude exposuregrain and tiny bright meniscus trace on selected outeredges only, no thick rim/wire. All broad parts opaque filled optical images. Narrow stems/legs/antennae plain dark silverygreen/mutedplum with no busy pattern. No normal animal/plant tissue or fur, no 3Dvolume/specular globe, inflated bubble/plastic, embossed muscle, folded cellophane/silk, glass/foil/metal sculpture, shellinlay, veins/paint/marbling or paperfibres. Simple structural contour cues within the flattened silhouette can separate limbs/petals, but no sculpted shading. Image language is film colourcurtains/darkwindows, not a normal naturephoto with iridescent filter. Original static artistic thin-film interpretation, not real leaf/animal-shaped soapfilm, experiment, thickness/colourcalibration, actualanatomy or validated simulation.\nONE full familiar natural form, all endpoints intact. Fit entire composition inside central70percent square, minimum15percent truly transparent exterior each side. TRUEalphaZERO only OUTSIDE the exact complete form; dark-filmwindows remain opaque nearblack. No background rectangle/sheet/slab, wirehoop/frame, bubblewand/soapdish, floor/ground/castshadow, glow/hazeoutside silhouette, text/numbers/labels/ruler/actualdata, clocks/dates/battery/weather/UI/logos/watermark. No C1polarisedstress stripes, diffractionrings/radialcomb, projected3Dstripes, chemical spiralfronts, marbledink swirls, capillarypaperfronts, hoppercrystals, fluorescentcellwalls or neonwireframe. No external visual input or namedartist. One independent new asset, not a panel/contactsheet.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 853035
+    },
+    {
+      "id": "fox-thinfilm",
+      "sourceImage": "sources/fox-thinfilm.72a9bb008ea2.png",
+      "sourceSha256": "72a9bb008ea2e2cddef749571dac0262b5273bedec4295ee419d44c008099704",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/fox-thinfilm.5265b4122f1d.png",
+      "sha256": "5265b4122f1dc972e2efb046e49531479f77713b964d4bacb7775963193ecde6",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 356640,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: style-transfer / precise-object-edit. ExactlyTWO OWN inputs. IMAGE1 is the OWN fox edit target, preserve its recognizable seated sideprofile silhouette, two complete pointed ears, snout/nose/small eye, two frontlegs/fullfrontpaws, coherent seatedhaunch/rearpaw, and one long whole curledbushytail/fulltip. IMAGE2 is ONLY the OWN unchanged clover surface reference: copy its nearly FLAT soapfilm-drainage optical appearance, not its clover geometry. Change ONLY IMAGE1's over-sculpted material into that flat optical image plane.\nRemove all volumetric anatomical shading, 3Dfacets/forehead/muzzle bevels, layered cheekfur, sculptedchest, raisedhaunch/paw/tailrounding, contact/occlusion shadows, glossy pearl/metal/glass/foilskin. Entire fox is a continuous NEGLIGIBLE-THICKNESS FLAT SILHOUETTE image, with at most a restrained dark line separating overlappingtail/haunch/forelegs; no silhouette layers or shadows at that line. No opaque furred body underneath. The silhouette remains a fox, not a folded physical statue or plasticsticker.\nInside broad torso/haunch/tail/head put the EXACT broad soft pearly colourcurtains and almostblack filmwindows of IMAGE2: pale silvery thin upper fields descending into cyan/magenta/violet/palegold below, only4to6broad flowing colourregions per mainarea, a few soft hookeddrainage fingers, softly bounded blackfilm islands with narrow pale transition. Do not use shadedraisedgradienttubes or rimgloss to fakevolume. Blackwindows stay dark flat image values and must not look like holes cut through material. Very tiny bright outermeniscustrace only in a few portions, no thickrim/wire. Narrow legs plain mutedplum/silverygreen, not 3Dsculpted paws. Keep small plain black eye/nose and natural whole foxoutline, modest outlinepoints at cheek/chest only. No normalfur, neonrays, dense rainbowstressfringes, nestedrings, paintmarbling or paperfibres.\nKeep whole fox with every endpoint inside generous transparent margins, no crop/stretch/repose or extra objects. TRUEalphaZERO outside exact whole fox, no halo/haze/shadow/background/rectangle/floor/frame, text/numbers/labels/livevalues/UI/logo. ORIGINAL STATIC ARTISTIC thin-film image, not an actual animal/experiment/thicknessmeasurement or validatedsimulation. Only the two exact OWN inputs, no externalimages.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 865855,
+      "directEditReference": {
+        "sourceImage": "intermediate-material-studies/fox-first.78f6128781d8.png",
+        "sha256": "78f6128781d8f1155e159aeccbb88369f275896a8c6225a4884305bf01f95f2e"
+      },
+      "ownMaterialStyleReference": {
+        "sourceImage": "sources/clover-thinfilm.2f47aed2b77c.png",
+        "sha256": "2f47aed2b77c3723af267b8db76b97656595a433787e15b9db8546e7e78b9a2e"
+      },
+      "generationStages": [
+        {
+          "stage": "Unselected initial too-sculpted fox",
+          "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, FILMDEW GARDEN. Subject: One WHOLE immediately familiar seated FOX in sideprofile facingRIGHT. Two upright pointed full ears, narrow tapering snout/darknose, one small darkeye, compact chest, coherent seated hindquarters, TWOstraightfrontlegs with two separate fullfrontpaws, rearhaunch and at least one visible foldedrear paw. One long full bushy curvedTAIL curls around the left-side base and stays separate from frontpaws, fulltailtip visible. Natural restrained proportions, no humanclothes/cartoonface. Outerfur implied only by few modest silhouettepoints at cheek/chest/tail, no renderedfur texture or3Dmaterial. Broad whole body/tail are almost planar thinfilm images, no inflated plastic/metallicsculpture; darkfilmwindows placed on shoulder/haunch/tail away from smallplain eye.\nMEDIUM throughout broad parts: nearly FLAT reflected-light thin-film DRAINAGE INTERFERENCE IMAGE, single continuous negligible-thickness optical plane. Only FOURtoSIX broad smooth pearly colour curtains per major area, pale silvery upper thinning areas descending into cyan/magenta/violet/palegold below; a few soft hooked drainage fingers. ONE or TWO irregular near-black flat thin-film windows in off-centre regions of each broad major part, with narrow pale transition, not alpha holes. Colour curtains gently bend around black-film islands then descend. Broad reflected-light fields and dark windows remain readable at85px, no dense repeated rainbowfringes or nested mineralrings. Fine low-amplitude exposuregrain and tiny bright meniscus trace on selected outeredges only, no thick rim/wire. All broad parts opaque filled optical images. Narrow stems/legs/antennae plain dark silverygreen/mutedplum with no busy pattern. No normal animal/plant tissue or fur, no 3Dvolume/specular globe, inflated bubble/plastic, embossed muscle, folded cellophane/silk, glass/foil/metal sculpture, shellinlay, veins/paint/marbling or paperfibres. Simple structural contour cues within the flattened silhouette can separate limbs/petals, but no sculpted shading. Image language is film colourcurtains/darkwindows, not a normal naturephoto with iridescent filter. Original static artistic thin-film interpretation, not real leaf/animal-shaped soapfilm, experiment, thickness/colourcalibration, actualanatomy or validated simulation.\nONE full familiar natural form, all endpoints intact. Fit entire composition inside central70percent square, minimum15percent truly transparent exterior each side. TRUEalphaZERO only OUTSIDE the exact complete form; dark-filmwindows remain opaque nearblack. No background rectangle/sheet/slab, wirehoop/frame, bubblewand/soapdish, floor/ground/castshadow, glow/hazeoutside silhouette, text/numbers/labels/ruler/actualdata, clocks/dates/battery/weather/UI/logos/watermark. No C1polarisedstress stripes, diffractionrings/radialcomb, projected3Dstripes, chemical spiralfronts, marbledink swirls, capillarypaperfronts, hoppercrystals, fluorescentcellwalls or neonwireframe. No external visual input or namedartist. One independent new asset, not a panel/contactsheet.",
+          "sourceImage": "intermediate-material-studies/fox-first.78f6128781d8.png",
+          "sha256": "78f6128781d8f1155e159aeccbb88369f275896a8c6225a4884305bf01f95f2e"
+        },
+        {
+          "stage": "One own fox material flattening, own clover optical style",
+          "prompt": "Use case: style-transfer / precise-object-edit. ExactlyTWO OWN inputs. IMAGE1 is the OWN fox edit target, preserve its recognizable seated sideprofile silhouette, two complete pointed ears, snout/nose/small eye, two frontlegs/fullfrontpaws, coherent seatedhaunch/rearpaw, and one long whole curledbushytail/fulltip. IMAGE2 is ONLY the OWN unchanged clover surface reference: copy its nearly FLAT soapfilm-drainage optical appearance, not its clover geometry. Change ONLY IMAGE1's over-sculpted material into that flat optical image plane.\nRemove all volumetric anatomical shading, 3Dfacets/forehead/muzzle bevels, layered cheekfur, sculptedchest, raisedhaunch/paw/tailrounding, contact/occlusion shadows, glossy pearl/metal/glass/foilskin. Entire fox is a continuous NEGLIGIBLE-THICKNESS FLAT SILHOUETTE image, with at most a restrained dark line separating overlappingtail/haunch/forelegs; no silhouette layers or shadows at that line. No opaque furred body underneath. The silhouette remains a fox, not a folded physical statue or plasticsticker.\nInside broad torso/haunch/tail/head put the EXACT broad soft pearly colourcurtains and almostblack filmwindows of IMAGE2: pale silvery thin upper fields descending into cyan/magenta/violet/palegold below, only4to6broad flowing colourregions per mainarea, a few soft hookeddrainage fingers, softly bounded blackfilm islands with narrow pale transition. Do not use shadedraisedgradienttubes or rimgloss to fakevolume. Blackwindows stay dark flat image values and must not look like holes cut through material. Very tiny bright outermeniscustrace only in a few portions, no thickrim/wire. Narrow legs plain mutedplum/silverygreen, not 3Dsculpted paws. Keep small plain black eye/nose and natural whole foxoutline, modest outlinepoints at cheek/chest only. No normalfur, neonrays, dense rainbowstressfringes, nestedrings, paintmarbling or paperfibres.\nKeep whole fox with every endpoint inside generous transparent margins, no crop/stretch/repose or extra objects. TRUEalphaZERO outside exact whole fox, no halo/haze/shadow/background/rectangle/floor/frame, text/numbers/labels/livevalues/UI/logo. ORIGINAL STATIC ARTISTIC thin-film image, not an actual animal/experiment/thicknessmeasurement or validatedsimulation. Only the two exact OWN inputs, no externalimages.",
+          "references": [
+            {
+              "sourceImage": "intermediate-material-studies/fox-first.78f6128781d8.png",
+              "sha256": "78f6128781d8f1155e159aeccbb88369f275896a8c6225a4884305bf01f95f2e"
+            },
+            {
+              "sourceImage": "sources/clover-thinfilm.2f47aed2b77c.png",
+              "sha256": "2f47aed2b77c3723af267b8db76b97656595a433787e15b9db8546e7e78b9a2e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cowslip-thinfilm",
+      "sourceImage": "sources/cowslip-thinfilm.3da727acfe94.png",
+      "sourceSha256": "3da727acfe942e30a5787fcef831a0a8943cd75fa2a4138433d7257ea10849cc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/cowslip-thinfilm.33cfdbcd7989.png",
+      "sha256": "33cfdbcd79893f27a439d920ef9690f102f0b93c5052cd417dc775e607482804",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 356054,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, FILMDEW GARDEN. Subject: One WHOLE recognizable COWSLIP wildflower plant: ONE gently curving tall slender stalk branches into TWOunequal hanging bell-shaped blossoms at the top, one slightly larger lower-left and one smaller upper-right. Each intact bell has softly rounded trumpetbody and FIVEsmall scalloped lobes at its openlower rim; full blossomshapes attached naturally, not floating hearts/bubbles. TWOwhole broad wrinkled-outline oval basal leaves on shortpetioles fan lowerleft/lowerright, full tips and stalkbase. Only silhouetteundulation implies natural leaf, no actual veins/tissuetexture. Broad bellpetals and leaves hold the flat pearly film colourcurtains/darkwindows, stalk plain muted silverygreen. Familiar natural plant, no vase/ground or extra flowers.\nMEDIUM throughout broad parts: nearly FLAT reflected-light thin-film DRAINAGE INTERFERENCE IMAGE, single continuous negligible-thickness optical plane. Only FOURtoSIX broad smooth pearly colour curtains per major area, pale silvery upper thinning areas descending into cyan/magenta/violet/palegold below; a few soft hooked drainage fingers. ONE or TWO irregular near-black flat thin-film windows in off-centre regions of each broad major part, with narrow pale transition, not alpha holes. Colour curtains gently bend around black-film islands then descend. Broad reflected-light fields and dark windows remain readable at85px, no dense repeated rainbowfringes or nested mineralrings. Fine low-amplitude exposuregrain and tiny bright meniscus trace on selected outeredges only, no thick rim/wire. All broad parts opaque filled optical images. Narrow stems/legs/antennae plain dark silverygreen/mutedplum with no busy pattern. No normal animal/plant tissue or fur, no 3Dvolume/specular globe, inflated bubble/plastic, embossed muscle, folded cellophane/silk, glass/foil/metal sculpture, shellinlay, veins/paint/marbling or paperfibres. Simple structural contour cues within the flattened silhouette can separate limbs/petals, but no sculpted shading. Image language is film colourcurtains/darkwindows, not a normal naturephoto with iridescent filter. Original static artistic thin-film interpretation, not real leaf/animal-shaped soapfilm, experiment, thickness/colourcalibration, actualanatomy or validated simulation.\nONE full familiar natural form, all endpoints intact. Fit entire composition inside central70percent square, minimum15percent truly transparent exterior each side. TRUEalphaZERO only OUTSIDE the exact complete form; dark-filmwindows remain opaque nearblack. No background rectangle/sheet/slab, wirehoop/frame, bubblewand/soapdish, floor/ground/castshadow, glow/hazeoutside silhouette, text/numbers/labels/ruler/actualdata, clocks/dates/battery/weather/UI/logos/watermark. No C1polarisedstress stripes, diffractionrings/radialcomb, projected3Dstripes, chemical spiralfronts, marbledink swirls, capillarypaperfronts, hoppercrystals, fluorescentcellwalls or neonwireframe. No external visual input or namedartist. One independent new asset, not a panel/contactsheet.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 891099
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.f5346684b014.png",
+      "sourceSha256": "f5346684b014c7407c820f51fcdeb70dcbde448e044dc573d2ea9fc6900302b7",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "30bd116e0bcd865d75bf2836acb61dea4086591889280e8f1771ef3ce04ad33f",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 1882665,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Compose FIVE exact OWN subject/material references into ONE original OPAQUE PORTRAIT1290x2796 Glaze phone wallpaper, FILMDEW GARDEN. Inputs:1whole threeleafclover/stalk,2whole dragonfly/fourfullwings/abdomen/legs/antennae,3whole restingfrog/feet,4whole seatedfox/twoears/fullpaws/longcurledtail,5whole cowslip/twohangingbells/stalk/twobasalleaves. Keep their familiar complete silhouettes and distinctive broad SOFT THIN-FILM DRAINAGE optical-image surfaces. Pale silvery thinning upperfields descend into smooth cyan/magenta/violet/palegold curtains, few soft hookeddrainage fingers, irregular off-centre almostblack flat-filmwindows with pale transition. FourtoSix broadcolourregions per majorpart, tinyselected outermeniscustrace, negligiblethickness. Flat imageplanes, not inflatedglossy glass/pearl/metal/plastic animals, no sculptedfur/muscle/ridges or 3Dpetals. Preserve especially correctedFOX's flat surface fromIMAGE4, not its older sculptedstate. Small bodysegmentation/eye/simpleanatomical contours may remain, but no physical carvedmodels, normalfur/feathers/tissue, dense rainbowstressstripes, diffractionrings, paintedmarbling, shellinlay or neonwireframes. Darkfilmwindows stay opaque imagevalues, not holes cutthroughfigures. Static artistic optical interpretation, no actual soap/animalexperiment, filmthickness/data calibration or validatedsimulation.\nONE coherent calm garden POND-EDGE HABITAT: whole squatfrog rests lowerLEFT, seatedfox whole at lowerRIGHT facing inward/left or gently forward with full longcurledtail visible, tall two-bellcowslip rises behindleft/centre with fullbasalleaves/stalkbase. Whole threeleafclover with fullstalk near lowercentre besidefrog, not pasted onbody. Whole dragonfly with exactlyFOURseparated fullwings and fulltail hovers higheraboveleft/middle, never touches foxears/flowerbells. A restrained gently curved low mutedplum bank line and two plain silverygreen stems relate figures as one habitat; a very small untextured pondcurve belowfrog, no splash/sparkle, no extraorganisms/flowers/trees/debris. Natural varied scales/angles, tangiblewholeforms, no five separate floatingcards or equal-icon collage. No object overlaps another's defining endpoints: complete cloverleaflobes/stalk, dragonflywing/tail/antenna/leg tips, frogfeet/toes, foxears/nose/paws/tailtip, both cowslipbells/leaftips/stalkbase visible with clearnegativegaps.\nQuiet uniform darkPLUMGREY #3A3544 background with restrained smoothdepth, no backgroundtextures, glows, stars/bokeh, sky/horizon, realisticlandscape, solidpedestal/platform/table, castshadows or brightcornerdecoration. Fuller/taller coherent central group intended84to88percentwidth/58to64percentheight, aroundy23to85percent. Upper20percent quiet,6to8percent side breathingroom and12percent belowallkeyendpoints. All threeactualphonecentre-crops later must preservewholeorganisms. Connecting bank canbe softsubtledarkline, not cuttingoffbodies. Every key subject large enough forphone, no tinybottomisland. OPAQUE entirebackground, no rectangleframes/panels/soaphoops/labapparatus/labels/rulers/text/numbers/readings/clock/date/battery/weather/UI/logos/watermark/phone mockup. Only these FIVE exact OWN selected references, no external images.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "clover-thinfilm",
+          "sourceImage": "sources/clover-thinfilm.2f47aed2b77c.png",
+          "sha256": "2f47aed2b77c3723af267b8db76b97656595a433787e15b9db8546e7e78b9a2e"
+        },
+        {
+          "id": "dragonfly-thinfilm",
+          "sourceImage": "sources/dragonfly-thinfilm.5615009c1a83.png",
+          "sha256": "5615009c1a83e722004f9f5f4f1bc44fcd72d6f668667e26e0738373f6a0c15f"
+        },
+        {
+          "id": "frog-thinfilm",
+          "sourceImage": "sources/frog-thinfilm.0344c2a85ca9.png",
+          "sha256": "0344c2a85ca96857e4304e01b1261c8558cbd544efa89ee05225b4f1020dc3ae"
+        },
+        {
+          "id": "fox-thinfilm",
+          "sourceImage": "sources/fox-thinfilm.72a9bb008ea2.png",
+          "sha256": "72a9bb008ea2e2cddef749571dac0262b5273bedec4295ee419d44c008099704"
+        },
+        {
+          "id": "cowslip-thinfilm",
+          "sourceImage": "sources/cowslip-thinfilm.3da727acfe94.png",
+          "sha256": "3da727acfe942e30a5787fcef831a0a8943cd75fa2a4138433d7257ea10849cc"
+        }
+      ],
+      "generationStages": [
+        {
+          "stage": "One coherent own-five-reference pond-edge habitat",
+          "prompt": "Use case: stylized-concept. Compose FIVE exact OWN subject/material references into ONE original OPAQUE PORTRAIT1290x2796 Glaze phone wallpaper, FILMDEW GARDEN. Inputs:1whole threeleafclover/stalk,2whole dragonfly/fourfullwings/abdomen/legs/antennae,3whole restingfrog/feet,4whole seatedfox/twoears/fullpaws/longcurledtail,5whole cowslip/twohangingbells/stalk/twobasalleaves. Keep their familiar complete silhouettes and distinctive broad SOFT THIN-FILM DRAINAGE optical-image surfaces. Pale silvery thinning upperfields descend into smooth cyan/magenta/violet/palegold curtains, few soft hookeddrainage fingers, irregular off-centre almostblack flat-filmwindows with pale transition. FourtoSix broadcolourregions per majorpart, tinyselected outermeniscustrace, negligiblethickness. Flat imageplanes, not inflatedglossy glass/pearl/metal/plastic animals, no sculptedfur/muscle/ridges or 3Dpetals. Preserve especially correctedFOX's flat surface fromIMAGE4, not its older sculptedstate. Small bodysegmentation/eye/simpleanatomical contours may remain, but no physical carvedmodels, normalfur/feathers/tissue, dense rainbowstressstripes, diffractionrings, paintedmarbling, shellinlay or neonwireframes. Darkfilmwindows stay opaque imagevalues, not holes cutthroughfigures. Static artistic optical interpretation, no actual soap/animalexperiment, filmthickness/data calibration or validatedsimulation.\nONE coherent calm garden POND-EDGE HABITAT: whole squatfrog rests lowerLEFT, seatedfox whole at lowerRIGHT facing inward/left or gently forward with full longcurledtail visible, tall two-bellcowslip rises behindleft/centre with fullbasalleaves/stalkbase. Whole threeleafclover with fullstalk near lowercentre besidefrog, not pasted onbody. Whole dragonfly with exactlyFOURseparated fullwings and fulltail hovers higheraboveleft/middle, never touches foxears/flowerbells. A restrained gently curved low mutedplum bank line and two plain silverygreen stems relate figures as one habitat; a very small untextured pondcurve belowfrog, no splash/sparkle, no extraorganisms/flowers/trees/debris. Natural varied scales/angles, tangiblewholeforms, no five separate floatingcards or equal-icon collage. No object overlaps another's defining endpoints: complete cloverleaflobes/stalk, dragonflywing/tail/antenna/leg tips, frogfeet/toes, foxears/nose/paws/tailtip, both cowslipbells/leaftips/stalkbase visible with clearnegativegaps.\nQuiet uniform darkPLUMGREY #3A3544 background with restrained smoothdepth, no backgroundtextures, glows, stars/bokeh, sky/horizon, realisticlandscape, solidpedestal/platform/table, castshadows or brightcornerdecoration. Fuller/taller coherent central group intended84to88percentwidth/58to64percentheight, aroundy23to85percent. Upper20percent quiet,6to8percent side breathingroom and12percent belowallkeyendpoints. All threeactualphonecentre-crops later must preservewholeorganisms. Connecting bank canbe softsubtledarkline, not cuttingoffbodies. Every key subject large enough forphone, no tinybottomisland. OPAQUE entirebackground, no rectangleframes/panels/soaphoops/labapparatus/labels/rulers/text/numbers/readings/clock/date/battery/weather/UI/logos/watermark/phone mockup. Only these FIVE exact OWN selected references, no external images.",
+          "references": [
+            {
+              "id": "clover-thinfilm",
+              "sourceImage": "sources/clover-thinfilm.2f47aed2b77c.png",
+              "sha256": "2f47aed2b77c3723af267b8db76b97656595a433787e15b9db8546e7e78b9a2e"
+            },
+            {
+              "id": "dragonfly-thinfilm",
+              "sourceImage": "sources/dragonfly-thinfilm.5615009c1a83.png",
+              "sha256": "5615009c1a83e722004f9f5f4f1bc44fcd72d6f668667e26e0738373f6a0c15f"
+            },
+            {
+              "id": "frog-thinfilm",
+              "sourceImage": "sources/frog-thinfilm.0344c2a85ca9.png",
+              "sha256": "0344c2a85ca96857e4304e01b1261c8558cbd544efa89ee05225b4f1020dc3ae"
+            },
+            {
+              "id": "fox-thinfilm",
+              "sourceImage": "sources/fox-thinfilm.72a9bb008ea2.png",
+              "sha256": "72a9bb008ea2e2cddef749571dac0262b5273bedec4295ee419d44c008099704"
+            },
+            {
+              "id": "cowslip-thinfilm",
+              "sourceImage": "sources/cowslip-thinfilm.3da727acfe94.png",
+              "sha256": "3da727acfe942e30a5787fcef831a0a8943cd75fa2a4138433d7257ea10849cc"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Whole recognizable less abstract garden Nature: three-leafclover/stalk, dragonfly/fourwings/abdomen, restingfrog/feet, seatedfox/fulltail/paws and two-bellcowslip/stalk/twoleaves. Broad pearly thin-film drainage curtains and irregular darkfilmwindows in nearplanar optical imagefields, tiny rimtraces. Familiar whole forms first. Dragonfly smallbody/frog limb/head contours retain minor junctionvolume cues, broad fields remain nearlyflat; fox initial physicalshading corrected once with exactown initial+ownclovermaterial, history retained. Whole900within1024RGBA, no creativecode crop/stretch/alphacleanup. Quietplum Artwork field and small plainclovernativeheader. One coherent ownfive-reference pond-edge wallpaper, actual~96percentwidth/56height/top22, keysubjectswhole. Static artistic optical image, not actual experiment/thicknessdata/anatomicalorvalidatedsimulation claim. OriginalHUMAN messaging-unavailablefallback authorizes isolated strictC source after lane actualmaterialreview; peer material/integration pending, no Jaredartworkapproval/publication implied.",
+  "conceptReferences": [
+    {
+      "url": "https://annex.exploratorium.edu/xref/exhibits/soap_film_painting.html",
+      "scope": "Exploratorium institutional exhibit body directly read on thinning/flow/interference colours and dark appearance. Generic image concept only, no figure, actual recipe/procedure or experimental claim used."
+    },
+    {
+      "url": "https://www.rigb.org/explore-science/explore/collection/exploring-colours-soap-films-motion",
+      "scope": "Royal Institution collection description body directly read on reflected interference colour patterns and black condition. No film still/video/image used or reproduced; no specific experimental procedure executed."
+    }
+  ],
+  "conceptReferenceScope": "Exploratorium exhibit and RoyalInstitution collection description body text directly read, generic thinning-film interference colours/black condition only. No external image/video/still, actual film calibration, recipe or experiment used. Actual9root-source/15publishedselector union viewed plus own C35completed source,16closest actual firstcomparisons. Not currentR2 proof.",
+  "selectedFirstPrototypeSha256": "2f47aed2b77c3723af267b8db76b97656595a433787e15b9db8546e7e78b9a2e",
+  "unselectedHistory": [
+    {
+      "record": "intermediate-material-studies/fox-first-generation.json",
+      "sourceImage": "intermediate-material-studies/fox-first.78f6128781d8.png",
+      "sourceSha256": "78f6128781d8f1155e159aeccbb88369f275896a8c6225a4884305bf01f95f2e",
+      "selected": false,
+      "reason": "Initial fox has sculpted head/haunch/tail/paw shading and layered cheek fur, too much physical iridescent statue reading. One exact-own material flattening using own unchanged clover style; no third attempt."
+    }
+  ],
+  "unselectedHistoryHashesMatched": 1,
+  "newImageOutputs": 7,
+  "creativeRasterEdits": 1,
+  "unselectedGenerations": 1,
+  "artworkOwnStudyReferenceUses": 2,
+  "artworkOwnStudyDistinctReferenceImages": 2,
+  "artworkOwnStudyReferenceHashesMatched": 2,
+  "wallpaperReferenceUsesAcrossStages": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "intendedMinAppVersion": "1.0.44",
+  "coordinatorMaterialAccepted": false,
+  "coordinatorIntegrationPending": true,
+  "sourceCompletionAuthority": "IntendedID/process notice attempted before first; Codex app messaging still fails. Original HUMAN fallback authorizes collision-checked strictlaneC isolated work while messaging unavailable. ONE first then actual lane full17085/material/corner review before expansion, at most1own targeted material correction. Peer material/canonical/integration/device review remains pending; no root/Jared artwork approval or publication implied."
+}

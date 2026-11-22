@@ -1,0 +1,1 @@
+Six exact selected built-in PNGs, five whole nature subjects and single ownfive-reference opaque habitatwallpaper. Unselected firstfox stored separately, one ownsubject+ownclover surfacecorrection with exactlineage.
