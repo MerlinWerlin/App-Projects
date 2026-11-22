@@ -1,6 +1,6 @@
 {
   "id": "c-chronophotographic-ensemble",
-  "packVersion": 1,
+  "packVersion": 2,
   "assets": 9,
   "fullImageDecode": true,
   "uniqueHashes": 9,
@@ -41,12 +41,12 @@
     ]
   ],
   "thumb": {
-    "path": "thumb.41b33436.webp",
+    "path": "thumb.58fac35a.webp",
     "role": "thumb",
     "width": 240,
     "height": 520,
-    "bytes": 10642,
-    "sha256": "41b33436a8536b976c44cb4f391e11f0124f8a1fdfde831e920627c3abdac1bf",
+    "bytes": 8118,
+    "sha256": "58fac35a115e788032cf05022306ca4d6c50d254c564c08c0a7a8eee71d300d7",
     "mime": "image/webp"
   },
   "sharedRuntimeChanged": false,
@@ -120,7 +120,34 @@
     "encoded85px": "Viewed all five actual encoded WebP artworks at exactly85pixels. Main figures and repeated motion positions remain readable. Labels resized for clear QA-sheet spacing; image pixels remain85x85.",
     "sourceFraming": "Checked alpha16 and96 bounds to include dim ghost positions, not only the opaque main subject. All five complete motion studies fully inside source frames; edge alpha1 on four sources and2 on reed-crown.",
     "nativeCombination": "Viewed all nine actual app renderer previews and all affected corner sizes. Large bellows hero and motion echoes match the art; a separate compact hinge-and-sweep ornament keeps small calendar/medium-clock headers clear. Live readings stay readable.",
-    "scope": "Current actual coordinator TS parser/renderer copied unchanged to scratch; source descriptor/ornament data inserted only there. Nine app plans and schema round-trips preserve the ornament; actual combined registry integration and device qualification remain coordinator-owned."
+    "scope": "Current actual coordinator TS parser/renderer copied unchanged to scratch; source descriptor/ornament data inserted only there. Nine app plans and schema round-trips preserve the ornament; actual combined registry integration and device qualification remain coordinator-owned.",
+    "wallpaperEdgeRefinement": "Viewed all three final actual encoded variants: Conductor elbow/hands/antennae and right chest-resonator have clear side breathing room; all five performers and motion echoes remain whole. Ground/terrain continues naturally; no demand to frame every scenery detail."
   },
-  "packTestEvidence": "Unchanged pack pipeline:47distinct cases passed across original suite and Pillow-enabled WebP reruns. This theme independently passed real builder, current actual app parsers/planner/native renderer, full image decoding, unique hashes, six matched provenance records and no selected orphan checks. New ornament parser retention and all nine changing readings verified."
+  "packTestEvidence": "Unchanged pack pipeline:47distinct cases passed across original suite and Pillow-enabled WebP reruns. This theme independently passed real builder, current actual app parsers/planner/native renderer, full image decoding, unique hashes, six matched provenance records and no selected orphan checks. New ornament parser retention and all nine changing readings verified.",
+  "wallpaperEdgeRefinement": {
+    "reason": "Jared clarified both native and Artwork corners; primary wallpaper figures also need breathing room across device crops.",
+    "change": "Conductor elbow/hands/antennae and right chest-resonator have clear side breathing room; all five performers and motion echoes remain whole.",
+    "generationTool": "built-in image_gen layout-only edit",
+    "actualDeviceVariantsReviewed": [
+      [
+        1290,
+        2796
+      ],
+      [
+        1179,
+        2556
+      ],
+      [
+        750,
+        1334
+      ]
+    ],
+    "fiveOriginalArtworksUnchanged": true,
+    "nativeIdentityAndPaletteUnchanged": true,
+    "allNineNativeSvgByteIdentical": true,
+    "priorImagesAndPromptsRetained": true,
+    "landscapeCanBleed": true,
+    "installedDeviceValidation": false
+  },
+  "localPackIteration": "v2 after layout-only wallpaper edge refinement; all catalogue/version/release outputs only in ignored dist/lane-c."
 }
