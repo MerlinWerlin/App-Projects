@@ -1,0 +1,1 @@
+Unselected first coarse raised-grain arbor retained with exact prompt/rawhash. One built-in targeted variant flattens construction to finer loose sand nodal bands,preserving whole3pod/3branch/3root identity. No neighbor images fed.

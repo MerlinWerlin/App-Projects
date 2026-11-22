@@ -1,0 +1,67 @@
+[
+  {
+    "id": "bellpod-arbor",
+    "kind": "art",
+    "image": "bellpod-arbor.6879efbb7a1f.png",
+    "sha256": "6879efbb7a1fed464a1b6608675948942c2b3611b6c478d709a8079fa12d8e07",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bellpod Arbor"
+  },
+  {
+    "id": "orbit-tender",
+    "kind": "art",
+    "image": "orbit-tender.4bba389610bd.png",
+    "sha256": "4bba389610bd6371780fd69ddf5896036d4db0d3c9ee8756a0e258efba13a866",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Orbit Tender"
+  },
+  {
+    "id": "threefin-grazer",
+    "kind": "art",
+    "image": "threefin-grazer.5582969fab75.png",
+    "sha256": "5582969fab7545ba782aca679eeafbd8fed3a6d06e3e8495989ec91ea1d773e2",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Threefin Grazer"
+  },
+  {
+    "id": "splitseed-sailer",
+    "kind": "art",
+    "image": "splitseed-sailer.dad9dca4a755.png",
+    "sha256": "dad9dca4a755f521002298dcc659f3771e65b381a5a30c55ef6cafb43d048400",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Splitseed Sailer"
+  },
+  {
+    "id": "cantilever-cradle",
+    "kind": "art",
+    "image": "cantilever-cradle.94c935da1d3c.png",
+    "sha256": "94c935da1d3c349b7294a5a8abcf5f5bfd2bdae3edb49f506f6589ba37548151",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cantilever Cradle"
+  }
+]
