@@ -1,0 +1,18 @@
+{
+  "id": "labyrinth-seed",
+  "prompt": "ONE original standalone square 1024x1024 pure artwork, PORCELAIN UMBRA craft-world. Subject is a LANTERN LABYRINTH SEED: a compact hollow asymmetrical polyhedral ceramic chamber, roughly a tall pentagonal prism, composed of three offset ivory porcelain walls with nested square doorway cutouts that recede diagonally into the core; the roof is open and split into a jagged crown of five small blades. A narrow stepped cantilever emerges from one low aperture. Bold compact enclosed silhouette, a miniature impossible shadow theatre, no ordinary lantern or candle and no light bulb; fundamentally different from a helix, stair knot, fan or suspended rain roof. Hand-pierced eggshell thin matte ivory bisque, translucent edge light, tiny tooling ridges, restrained warm amber illumination from outside through apertures and midnight indigo cavities. Gallery craft photography three-quarter front angle, whole sculpture central 65% surrounded by 18% genuinely alpha-transparent margins. No floor, background, base, pedestal, cords or hands. No text, numbers, writing, logo, UI, time, date, battery reading, clocks, dials, figures or animals. One asset, no collage or sheet.",
+  "tool": "built-in image_gen",
+  "source": "sources/labyrinth-seed.ae5b4531.png",
+  "sourceSha256": "ae5b4531fd71c5d00b90f4c19855f2353a25bc509c3ff5da079965fa3ca4011d",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/labyrinth-seed.951d63e1.png",
+  "sha256": "951d63e188b5c1c4c68104826bab3a49edee81ad762330d099413a75df4294d5",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

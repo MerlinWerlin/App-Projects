@@ -1,0 +1,64 @@
+Artwork build: 1 themes, 1 additions; {"5":1}
+Artwork build: 1 themes, 1 additions; {"5":1}
+Artwork build: 1 themes, 1 additions; {"5":1}
+Artwork build: 0 themes, 0 additions; {"5":1}
+Artwork build: 1 themes, 1 additions; {"5":1}
+Artwork build: 1 themes, 1 additions; {"4":1,"5":1}
+Artwork build: 2 themes, 2 additions; {"5":2}
+✔ append build preserves old bytes, metadata and slot order; increments once and repeats deterministically (230.2326ms)
+✔ a later published baseline retains earlier sources and appends only its replacement (138.4136ms)
+✔ future release layout shards whole packs below the 1000-asset cap (106.2983ms)
+✔ baked-in functional images are retained as habits and replaced by additional real artwork (46.6861ms)
+✔ partial builds retain untouched packs; --complete refuses a short pack before output writes (158.2937ms)
+✔ corrupt catalogues, manifests and old assets are refused without replacing output (48.7918ms)
+✔ new art contract rejects live metadata, wrong size, bad hash, duplicate ids and overfilling (32.8847ms)
+✔ WebP dimensions and path traversal boundaries are validated (0.4379ms)
+✔ cache verifies existing bytes and re-fetches corruption using pinned asset URLs (62.543ms)
+Artwork build: 1 themes, 1 additions; {"5":1}
+Artwork build: 1 themes, 1 additions; {"4":1,"5":1}
+✔ cache retries a rate-limited host (429) with backoff and still verifies the bytes (65.7629ms)
+✔ independent output audit detects damaged bytes, original metadata edits and missing themes (108.027ms)
+✔ independent audit permits an unchanged partial pack but rejects incomplete final output (112.0321ms)
+✔ committed R2 baseline retains all published artworks and pins each reviewed replacement (206.6629ms)
+✔ clock editions: themed clock retained, retired fallback clock omitted, v2 manifest that parses (660.4594ms)
+✔ clock editions: the profile image resolves via the theme folder; missing / changed images are skipped with a warning (91.3188ms)
+✔ A4: widget-options.json kind aliases are written as canonical kinds; an unknown kind fails only that pack (482.2097ms)
+✔ clock editions: a theme with no export files builds byte-identical output to before (816.957ms)
+✔ clock editions: the WebP encoder writes widget-art at source size (when Pillow or sharp is present) (1290.7876ms)
+✔ build: the 3 bundled themes with the best available encoder (7430.5214ms)
+✔ build: PNG fallback (no sharp, no Pillow) still meets the contract (617.0023ms)
+✔ nextVersion: same hash keeps, new hash bumps (0.4507ms)
+✔ png + thumbhash: round trip and average colour (2.0889ms)
+✔ publish: dry-run plan order and cache headers, no env needed (609.2686ms)
+✔ parseEnv: comments, quotes, export (0.3705ms)
+✔ publish: uploads in order to a mock S3, verifies, is idempotent, never logs secrets (818.8238ms)
+✔ imageStem drops the content hash and extension (0.7804ms)
+✔ nextManifest: nothing fixed -> null; fixed -> +1 version, new name, wallpaper background (13.9364ms)
+✔ rebuild writes a parseable v3 pack + catalog and leaves v2 alone (png encoder, offline) (31.722ms)
+✔ release assets: flat names, same bytes, catalog last, and every app URL resolves to a file (1122.8298ms)
+✔ release assets: --existing skips files already on the release, always re-sends catalog.json, guards manifests (779.4029ms)
+✔ release assets: refuses names GitHub would rewrite and a missing catalogue (679.9672ms)
+✔ releaseFor / readReleases / tagOrder (16.3927ms)
+✔ build: existing packs keep their release, new packs get --release; catalogue says so only off v1 (2325.0582ms)
+✔ release sets: one folder per tag, catalog.json only (and last) on v1, every app URL resolves on its tag (754.9442ms)
+✔ T275b: helpers mirror prepare-reviewed-packs.mjs (option ids, meta) (1.0908ms)
+✔ T275b: --themes <reviews root> builds review folders directly; normal folders unchanged (737.0216ms)
+✔ T275b: review folders with the WebP encoder (when Pillow or sharp is present) (670.2817ms)
+✔ AWS vector: GET Object with Range (3.972ms)
+✔ AWS vector: GET Bucket lifecycle (empty-valued query parameter) (0.4619ms)
+✔ AWS vector: GET Bucket list objects (sorted query) (0.3626ms)
+✔ AWS vector: PUT Object (encoded key, extra headers) (0.3192ms)
+✔ uriEncode keeps unreserved characters and slashes only when asked (0.1453ms)
+✔ preflight protects existing immutable bytes; postflight checks uploads including the catalogue (14.8528ms)
+✔ publication workflow is manual, defaults to dry run and never clobbers immutable files (1.0092ms)
+✔ publicUrl: folder layout, catalogue cache-busted (1.0594ms)
+✔ verifyPublic: every object HEAD + sha256 checked, catalogue last, retries 429 (209.4156ms)
+✔ verifyPublic: refuses changed bytes and missing objects (65.0929ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 47
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10228.9077
