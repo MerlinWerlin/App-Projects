@@ -79,6 +79,31 @@ struct WidgetIdentity {
   }
 }
 
+// Actual New York glyphs can cross a decorative marker's narrow waist even when
+// their rectangular bounds fit. Fit only today's text; keep the authored contour.
+enum CalendarBadgeText {
+  static func font(outline: Path, value: String, nominal: CGFloat, diameter: CGFloat) -> CGFloat {
+    guard value.count > 1 else { return nominal }
+    var pointSize = nominal
+    while pointSize >= nominal * 0.64 {
+      let half = (CGFloat(value.count) * pointSize * 0.64 / 2 + 0.2) * 100 / diameter
+      let top = (-pointSize * 0.48 - 0.2) * 100 / diameter
+      let bottom = (pointSize * 0.46 + 0.2) * 100 / diameter
+      let fits = (0...8).allSatisfy { i in
+        let x = -half + half * 2 * CGFloat(i) / 8
+        let y = top + (bottom - top) * CGFloat(i) / 8
+        return outline.contains(CGPoint(x: 50 + x, y: 50 + top))
+          && outline.contains(CGPoint(x: 50 + x, y: 50 + bottom))
+          && outline.contains(CGPoint(x: 50 - half, y: 50 + y))
+          && outline.contains(CGPoint(x: 50 + half, y: 50 + y))
+      }
+      if fits { return pointSize }
+      pointSize -= 0.25
+    }
+    return nominal * 0.64
+  }
+}
+
 enum ThemedClockArtwork {
   private static let source = UIImage(named: "AlpineClockFace") ?? Bundle.main.url(forResource: "AlpineClockFace", withExtension: "jpg").flatMap { UIImage(contentsOfFile: $0.path) }
   private static let thumbnails: NSCache<NSNumber, UIImage> = {
@@ -362,7 +387,9 @@ extension DesignedDrawing {
       let y = top + row * (CGFloat(i / 7) + 1.18)
       let today = day == month.today, diameter: CGFloat = large ? 31 : 18
       if today { shape(design.outline, in: themedBox(x - diameter / 2, y - diameter / 2, diameter), color: accent) }
-      text(number(day), x: x, y: y, font: large ? 19 : 12, width: col - 1, color: today ? Color(hex: spec.onAccent) : ink, weight: today ? .bold : .medium)
+      let value = number(day), nominal: CGFloat = large ? 19 : 12
+      let dayFont = today && spec.font == "serif" ? CalendarBadgeText.font(outline: design.outline, value: value, nominal: nominal, diameter: diameter) : nominal
+      text(value, x: x, y: y, font: dayFont, width: col - 1, color: today ? Color(hex: spec.onAccent) : ink, weight: today ? .bold : .medium)
     }
   }
 }
