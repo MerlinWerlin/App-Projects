@@ -1,0 +1,27 @@
+{
+  "theme": "strawglint-mere",
+  "builtFrom": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "sourceArtworks": 5,
+  "actualSmallArtworkSelections": [
+    "frog-lilypad",
+    "waterlily-bloom",
+    "bittern-reeds",
+    "waterbeetle-curl",
+    "willow-catkins"
+  ],
+  "largeArtOptions": 5,
+  "assetsDecoded": 9,
+  "uniqueAssetHashes": 9,
+  "originalsVerified": 6,
+  "orphanArtworks": 0,
+  "designedWidgetPlans": 9,
+  "nativeComponents": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeLayoutsRendered": 9,
+  "liveValueChangesVerified": 9,
+  "registryStatus": "Proposed identity verified via in-memory registry injection; coordinator must integrate shared registry.",
+  "publication": "held for Jared explicit OK"
+}

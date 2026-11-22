@@ -1,0 +1,34 @@
+{
+  "themeId": "strawglint-mere",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.8ae2b1a1.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "8ae2b1a19b27f1d5ca743528f7c612f448e6f2ce6002e098132b1eef88b79d8c",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.0d6d6f07.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "0d6d6f075b11dbd5fdfe55874c1d6431ade1b318d119b1c191b9acbc9a765d69",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.27ab614a.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "27ab614ae2f0961058c361b83117e298e326a4a437d69c9df50563026cf744d8",
+      "labelX": 550
+    }
+  ],
+  "visualReview": "Passed all three actual encoded phone crops: all five complete natural subjects, reed/leaf/flower tips, toes and beetle antennae remain whole; quiet blue upper/bottom paper. Selected wallpaper flattened to accepted construction and pulled inward via exact three-input imagegen edit, with old target and selected frog/bittern lineage preserved."
+}

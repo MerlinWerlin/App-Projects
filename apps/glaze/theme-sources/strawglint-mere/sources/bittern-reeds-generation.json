@@ -1,0 +1,29 @@
+{
+  "id": "bittern-reeds",
+  "prompt": "Edit INPUT1 bittern/reeds only; INPUT2 approved flat straw frog is MATERIAL/FLAT-CONSTRUCTION REFERENCE ONLY, do not add/copy frog, leaf, pose or composition. Preserve input1 natural bittern silhouette, bill/head/eye, long neck, folded wing/tail, exactly two coherent legs/complete toes, reeds and seedhead, all tips whole. Refine the craft into the same ABSOLUTELY FLAT laid split-straw intarsia picture as input2. Remove the tiny short shard/feather-like chips, layered raised feather edges and dense irregular little neck tiles. Replace each broad organic body region with FEW LONG FLAT PARALLEL STRAW RIBBONS glued FLUSH edge-to-edge, regular broad uniform-width stalk bands and a few straight transverse butt joints. Neck consists of SIX TO EIGHT VERY LONG nearly continuous vertical stalk ribbons from cheek to lower chest, not short chips; wing is ONE broad field of five to seven long diagonal ribbons, not separate overlapping feathers. All ribbon faces in one plane, no wrapped bands/over-under weave, curled/rolled edges, 3D carved volume, wire, metal, woodgrain rings or feather shafts/barbs. Preserve visible fine straight LONGITUDINAL VASCULAR STRAW FIBRES and alternating natural satin glints along the flat ribbon faces, occasional fine node scar, natural honey/ivory/olive straw colors. Thin flat cutout picture of a natural bird, perfectly overhead view, no perspective depth or bead eye. True alpha outside and between toes/reeds, generous margins; no backing, ground, glow, shadow, frame, text or UI.",
+  "tool": "built-in image_gen",
+  "source": "sources/bittern-reeds.23525bc3.png",
+  "sourceSha256": "23525bc3901ade67bd13ea839c3e932066c93db72dadc42b8f137f0a108a9d32",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/bittern-reeds.96a9b3f8.png",
+  "sha256": "96a9b3f8112023cb1f4edc5f1422fca5844bbc03f519797e4f19e98b1ad0eef2",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/material-repair/bittern-reeds-history.json",
+  "referencedImage": {
+    "file": "qa/material-repair/bittern-reeds.original.1cd964c9.png",
+    "sha256": "1cd964c9c144294f357383e513583c0660b3f11fdacca508eab9b13da6bddfa6"
+  },
+  "materialReference": {
+    "id": "frog-lilypad",
+    "source": "sources/frog-lilypad.b6735d96.png",
+    "sourceSha256": "b6735d96ddaa72506ac0a8ab2863c17073ea4d2fbbea3bf409919260886a3d8a",
+    "role": "Material reference only; target subject/geometry retained."
+  }
+}
