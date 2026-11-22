@@ -1,0 +1,18 @@
+{
+  "id": "counterpoise-lockhouse",
+  "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject COUNTERPOISE LOCKHOUSE: a compact raised OPEN GATEHOUSE on two tall heavy piers straddles one empty canal opening. A shallow sweeping tiled roof sits above two open side arches and a huge exposed balance BEAM. The beam pivots visibly in the centre; left end supports a stacked counterweight on two ropes, right end suspends a broad barred LOCK LEAF lifted halfway UP out of the canal. A short stepped pedestrian bridge curves around the right pier so operators can reach the beam, single small handwheel at foot of that pier. The raised gate's bottom edge and every bar visible, no water scenery/background or enclosed cottage. Strong asymmetric rectangular frame with hanging weight high-left and lifted vertical leaf low-right, tangible intelligible canal control station, different from spiral cylinder, low bath pavilion or folding aqueduct. Whole roof ends, weight, ropes, lifted leaf, access stairs and both pier feet fully visible inside broad alpha. Deeply carved lacquer wave patterns and layered V-cut strata on gatehouse piers; same polished vermilion throughout, no other materials or text.",
+  "tool": "built-in image_gen",
+  "source": "sources/counterpoise-lockhouse.83cabfc8.png",
+  "sourceSha256": "83cabfc89e8b0436430c5db835c0a117b4506e40b4cf59aefe489b43d074ce59",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/counterpoise-lockhouse.98364d5b.png",
+  "sha256": "98364d5b0eb21c18cf44e1565465833876247839b069438d09be971bc56ec80a",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

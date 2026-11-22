@@ -1,0 +1,119 @@
+{
+  "theme": "redcut-watercourt",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Deep hand-carved vermilion lacquer relief with exposed fine strata, V-cut wave tooling and polished ridges",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 phone wallpaper for GLAZE REDCUT WATERCOURT. A tangible invented canal-court in lower42% only: a hinged zigzag aqueduct crosses two channels, a tall hollow spiral cistern has an exterior winding ramp, a low open bath sits beneath a broad fluted bell-shaped rain canopy, a counterbalanced lockhouse lifts a heavy sluice leaf, and a low stair-water mill has two offset paddle wheels lifting water between step basins. Each utility has an intelligible different structure, access and water path; one coherent beautiful inhabited water-engineering world, no collage or ordinary object collection. Medium is DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated thin hard lacquer strata visible along stepped V-cut grooves, crisp polished red ridges, matte dark oxblood recesses, delicate carved wave/diaper pattern tooling, slightly uneven artisan tool facets and tiny warm sheen on edges. All structures and water cut from the SAME RED LACQUER relief image plane, no woodgrain, mother-of-pearl inlay, ceramic/glaze, soft leather, metal, plastic/resin toys or CGI product render. Saturated vermilion #C64133, deep wine #3C2029, warm red-orange lacquer edge #E97E55 and darkest oxblood #2A1720, monochrome red family. Straight-on artisan relief view with little actual depth, readable bold silhouettes and open water gaps. Upper55% nearly empty very dark rubbed oxblood lacquer with quiet fine texture, no figures or objects, excellent pale icon space. Important complete canal structures in lower45%, graceful spacing. No text, calligraphy, letters, numerals, signatures, symbols, clocks/gauges/readings, time/date/battery/weather values, UI, logos, frame, border or mockup.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.45036d89.png",
+      "sourceSha256": "45036d89b1f6ca030b4177a1e753831f440552b2d2ce77dafb4b932b412b8d12",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "46b83b6f9ddf4cbef6947bb55a4873629015b4f2d9636fad3f5254ed40d71bd2",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "folding-aqueduct",
+      "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject FOLDING AQUEDUCT: one WIDE ZIGZAG OPEN WATER CHANNEL of three rigid trough sections joined by two large visible round hinge pivots. Trough rises and falls in a gentle broken W profile; left section high, middle lower, right high again. Three tall pierced arch supports carry the channel and leave huge open alpha voids under it. A small toothed locking pawl at each hinge and one short open handrail on the near edge explain folding/locking. A coherent carved ripple ribbon of water runs along the inner trough and pours from right end into a small integrated round catch bowl. No detached floating water, tower, bathhouse, wheels, canopy or boat. Strong long open angular silhouette, visibly useful folding irrigation crossing, not generic bridge. Whole trough lips, pouring ribbon, catch bowl and support feet fully contained with broad alpha. Deep cut lacquer layer bands especially clear on trough edges and arch cutouts.",
+      "tool": "built-in image_gen",
+      "source": "sources/folding-aqueduct.1c1245d8.png",
+      "sourceSha256": "1c1245d8f0245bfb3031858d86f6d2dd5278e9978d8035f73ef6244bcd1b5ac3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folding-aqueduct.9c2aef7b.png",
+      "sha256": "9c2aef7ba48dcbf3de4d5c06538c6bf38a98cca5cb9903aec54e033c37fc437d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "spiral-cistern",
+      "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject SPIRAL CISTERN: a TALL NARROW cylindrical reservoir tower with a completely OPEN HOLLOW TOP BOWL, thick layered rim and simple carved concentric water ripples visible inside. A single wide WALKABLE SPIRAL ACCESS RAMP with low pierced rail winds around the tower exactly one-and-a-half turns, joining a broad open arch entrance at bottom to the top rim. The cylinder wall has two tall recessed arch slots so hollow depth and large gaps are readable. A short slender intake trough projects into the top from upper-left, pouring one small connected carved water ribbon, while one controlled outlet lip projects from low right. Heavy round base integral to the tower only, no surrounding ground tile. Clear tall corkscrew silhouette, useful public water store rather than generic lighthouse, castle or decorative column. Put the complete tower, all ramp rail tips, intake and outlet SMALL enough within central60%, with a broad transparent band above bowl and below entrance step. Red lacquer layer strata conspicuous at rim/ramp cuts; no text or markings.",
+      "tool": "built-in image_gen",
+      "source": "sources/spiral-cistern.130f7453.png",
+      "sourceSha256": "130f74538802a4ee063373ded28d54c14e7d30d0d99894019b9f25d18ffbc967",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/spiral-cistern.93446f18.png",
+      "sha256": "93446f189f0d77bb82a850769343e7748bc026d426a1b8871988a2c4fd53f6fd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "bell-canopy-bath",
+      "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject BELL CANOPY BATH: one LOW BROAD SHARED BATH PAVILION with a large shallow round open basin and wide front entry stairs. FOUR SLENDER PIERCED POSTS support an oversized low FLUTED BELL-SHAPED RAIN CANOPY, its thick rim scalloped into six large shallow arcs. Narrow roof channels visibly converge into two small downspouts connected to the basin rim; a single carved water sheet drops from the front roof lip into the inner pool, and concentric lacquer ripples follow the bowl. A low open safety rail encircles only the back half, front entry wide and welcoming. Large air gaps between posts, no enclosed house walls, tower, machinery wheels, people or statues. Strong wide umbrella-over-bowl silhouette, useful rain-fed communal bath, not ordinary umbrella or gazebo ornament. Put all canopy flutes, posts, downspouts, stairs and bowl edge well inside generous alpha. Layered hard red lacquer bands exposed at roof scallops/basin cuts and deeply carved wave patterns underneath.",
+      "tool": "built-in image_gen",
+      "source": "sources/bell-canopy-bath.a9ff14a3.png",
+      "sourceSha256": "a9ff14a32bcd95bf3746b797258863ffff61532813c5060a103f4e865d71775f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bell-canopy-bath.828ec2ae.png",
+      "sha256": "828ec2aeff3092b06f8f8b6cddec0c4f9b3b67fcf84377849a67a6f16ff4b269",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "counterpoise-lockhouse",
+      "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject COUNTERPOISE LOCKHOUSE: a compact raised OPEN GATEHOUSE on two tall heavy piers straddles one empty canal opening. A shallow sweeping tiled roof sits above two open side arches and a huge exposed balance BEAM. The beam pivots visibly in the centre; left end supports a stacked counterweight on two ropes, right end suspends a broad barred LOCK LEAF lifted halfway UP out of the canal. A short stepped pedestrian bridge curves around the right pier so operators can reach the beam, single small handwheel at foot of that pier. The raised gate's bottom edge and every bar visible, no water scenery/background or enclosed cottage. Strong asymmetric rectangular frame with hanging weight high-left and lifted vertical leaf low-right, tangible intelligible canal control station, different from spiral cylinder, low bath pavilion or folding aqueduct. Whole roof ends, weight, ropes, lifted leaf, access stairs and both pier feet fully visible inside broad alpha. Deeply carved lacquer wave patterns and layered V-cut strata on gatehouse piers; same polished vermilion throughout, no other materials or text.",
+      "tool": "built-in image_gen",
+      "source": "sources/counterpoise-lockhouse.83cabfc8.png",
+      "sourceSha256": "83cabfc89e8b0436430c5db835c0a117b4506e40b4cf59aefe489b43d074ce59",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/counterpoise-lockhouse.98364d5b.png",
+      "sha256": "98364d5b0eb21c18cf44e1565465833876247839b069438d09be971bc56ec80a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "canal-stair-mill",
+      "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject CANAL STAIR MILL: one LOW HORIZONTAL THREE-STEP WATER-LIFT INSTALLATION with two offset broad PADDLE WHEELS, large wheel at low left and smaller wheel raised at right, clearly joined by a short visible gearing shaft. Each wheel has eight thick broad paddles, not a clock. The wheels feed three open rectangular water basins ascending left-to-right, linked by short stepped chutes and coherent carved ripple ribbons so the lifting path is readable. A small open four-post maintenance shelter covers only the middle shaft, shallow roof and no enclosed rooms, with a narrow stair along right edge for access. Strong low stepped asymmetrical footprint, useful water management mill rather than generic factory or train, entirely carved from red lacquer including ripples. No scenic canal, ground rectangle, floor, people, tower or bath pool. Whole wheel paddles, raised basin lips, roof ends, chutes and steps inside broad real alpha margin. Dense deep-cut wave/diaper tooling on mill body and obvious fine red lacquer strata at stepped basin edges.",
+      "tool": "built-in image_gen",
+      "source": "sources/canal-stair-mill.bf4314b4.png",
+      "sourceSha256": "bf4314b46750cbe682530ea282fa1eb51a87ae0f4248e36ff2415b939da55512",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/canal-stair-mill.1e515c48.png",
+      "sha256": "1e515c48b1878261063a3a257856a606e5cebd47d404cfa284e8cbaa786560ff",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

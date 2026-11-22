@@ -1,0 +1,18 @@
+{
+  "id": "folding-aqueduct",
+  "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject FOLDING AQUEDUCT: one WIDE ZIGZAG OPEN WATER CHANNEL of three rigid trough sections joined by two large visible round hinge pivots. Trough rises and falls in a gentle broken W profile; left section high, middle lower, right high again. Three tall pierced arch supports carry the channel and leave huge open alpha voids under it. A small toothed locking pawl at each hinge and one short open handrail on the near edge explain folding/locking. A coherent carved ripple ribbon of water runs along the inner trough and pours from right end into a small integrated round catch bowl. No detached floating water, tower, bathhouse, wheels, canopy or boat. Strong long open angular silhouette, visibly useful folding irrigation crossing, not generic bridge. Whole trough lips, pouring ribbon, catch bowl and support feet fully contained with broad alpha. Deep cut lacquer layer bands especially clear on trough edges and arch cutouts.",
+  "tool": "built-in image_gen",
+  "source": "sources/folding-aqueduct.1c1245d8.png",
+  "sourceSha256": "1c1245d8f0245bfb3031858d86f6d2dd5278e9978d8035f73ef6244bcd1b5ac3",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folding-aqueduct.9c2aef7b.png",
+  "sha256": "9c2aef7ba48dcbf3de4d5c06538c6bf38a98cca5cb9903aec54e033c37fc437d",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

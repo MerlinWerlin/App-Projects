@@ -1,0 +1,18 @@
+{
+  "id": "canal-stair-mill",
+  "prompt": "REDCUT WATERCOURT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented canal utility. DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated very thin hard lacquer strata explicitly exposed as parallel red bands along deep V-cut grooves, crisp polished ridges, matte dark oxblood recesses, carved wave/diaper tooling, delicate irregular artisan facets. All elements, including water, are the same red lacquer craft image, not woodgrain/marquetry, shell inlay, ceramics/glaze, soft leather, metal, plastic/resin toy, paper or CGI product model. Monochrome vermilion #C64133, deep wine #3C2029, warm red-orange polished edge #E97E55, darkest oxblood #2A1720. Shallow relief artisan illustration, useful engineering readable at small size, strong clear silhouette and transparent through large openings. Entire complete subject SMALL in central65% with at least16% genuinely empty alpha on all four sides; do not fill the square. No rectangular lacquer backing, scenery/floor, platform outside structure, framing, lettering, numerals, signs, symbols, clocks/gauges, date/battery/weather values, UI, logos or people. Subject CANAL STAIR MILL: one LOW HORIZONTAL THREE-STEP WATER-LIFT INSTALLATION with two offset broad PADDLE WHEELS, large wheel at low left and smaller wheel raised at right, clearly joined by a short visible gearing shaft. Each wheel has eight thick broad paddles, not a clock. The wheels feed three open rectangular water basins ascending left-to-right, linked by short stepped chutes and coherent carved ripple ribbons so the lifting path is readable. A small open four-post maintenance shelter covers only the middle shaft, shallow roof and no enclosed rooms, with a narrow stair along right edge for access. Strong low stepped asymmetrical footprint, useful water management mill rather than generic factory or train, entirely carved from red lacquer including ripples. No scenic canal, ground rectangle, floor, people, tower or bath pool. Whole wheel paddles, raised basin lips, roof ends, chutes and steps inside broad real alpha margin. Dense deep-cut wave/diaper tooling on mill body and obvious fine red lacquer strata at stepped basin edges.",
+  "tool": "built-in image_gen",
+  "source": "sources/canal-stair-mill.bf4314b4.png",
+  "sourceSha256": "bf4314b46750cbe682530ea282fa1eb51a87ae0f4248e36ff2415b939da55512",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/canal-stair-mill.1e515c48.png",
+  "sha256": "1e515c48b1878261063a3a257856a606e5cebd47d404cfa284e8cbaa786560ff",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
