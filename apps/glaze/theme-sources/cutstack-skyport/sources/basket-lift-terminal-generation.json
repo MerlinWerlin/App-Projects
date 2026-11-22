@@ -1,0 +1,18 @@
+{
+  "id": "basket-lift-terminal",
+  "prompt": "CUTSTACK SKYPORT for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented aerial public-transit utility. FLAT LAYERED REVERSE-APPLIQUE COTTON: thin saturated cloth layers CUT BACK to reveal underlayers as nested colour contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave and fibres, very slight edge lift, completely UNPADDED. A thin2mm stitched fabric silhouette, not stuffed/quilted/plush toys, crochet, filled embroidery, leather, paper cutout, resin or CGI3D model. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2 only. Bold readable flat construction, genuine alpha through large openings, useful access/hinges/cables clear. Put whole subject SMALL inside central60% of square, at least18% true transparent alpha on all sides. No rectangular cloth backing, patch border, floor/scenery, halo, shadow, writing, letters/numbers/signs, clock/gauge/date/battery/weather values, logos or UI. Subject BASKET LIFT TERMINAL: one SQUAT WIDE INVERTED-BASKET TRANSIT HALL, a broad circular rim at top tapering to a narrower rounded underside with flat layered cotton rib strips. Four open arch waiting bays run around the rim, with a low pierced passenger rail above. THREE SMALL OPEN PASSENGER LIFT CAGES hang below the hall at staggered heights from paired straight cords, connected through three visible rim pulley discs; each cage has one short bench and no people. Two stout side buttresses join the hall to a small arched boarding bridge at rear-left, leaving a large clear open central gap under the basket and between cages. No tower body, hot-air balloon, hot air flame, round sculpture, space vehicle or scenery. Strong broad upper basket and three dangling small cage silhouettes, understandable useful public lift terminal, not ordinary picnic basket collection. All hall rim tips, pulley cords, cage bottoms and bridge end fully contained with alpha. Every rib/cage/cord interpreted as thin reverse-applique cotton colour fields with tiny stitches and rolled edges, no padded quilt body.",
+  "tool": "built-in image_gen",
+  "source": "sources/basket-lift-terminal.6a59010c.png",
+  "sourceSha256": "6a59010c7b545ca851df0d90aff6ccae23056eb40a7890dfe4dcf588ea2c126e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/basket-lift-terminal.8845effd.png",
+  "sha256": "8845effd9bd0b83b6bcbcd483f8397e6c8b0326ae27e520e7ce934783f65cc38",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
