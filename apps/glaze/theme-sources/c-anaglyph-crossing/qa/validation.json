@@ -1,0 +1,120 @@
+{
+  "id": "c-anaglyph-crossing",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "stiltshell",
+    "drumback",
+    "forkbill",
+    "keel-skater",
+    "crest-tumbler"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.da30df54.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 14380,
+    "sha256": "da30df546aec6c0d50fb14222ab7127c69de72118e1bdb9dc68d0adc564e8770",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "artworkCombination": "Viewed wallpaper and five artworks at two widget-like sizes. Five distinct body plans: tall two-legged stiltshell, low six-legged drumback, three-foot crawling forkbill, three-rocker keel-skater and fan-crested tumbler. Pale neutral volumes and clearly displaced red/cyan contours unify the set.",
+    "encoded85px": "Viewed qa/encoded-art-85px.jpg made from the actual built WebP art assets at exactly 85 pixels. All five silhouettes and red/cyan displacement remain visible without stereo viewing.",
+    "nativeCombination": "Viewed nine actual app renderer previews. Original stiltshell and keel-skater motifs, faceted live dial, cyan tile charge gauge and ticket calendar are readable in small, medium and large.",
+    "sourceFraming": "High-opacity subjects fully inside every source frame. Edge alpha is 1 on four sources and 30 on forkbill. Forkbill additionally viewed composited at full production size on palette tile; no clipped subject or visible background frame.",
+    "scope": "Artistic anaglyph language only; no calibrated stereo viewing claim. Scratch-only native descriptor insertion; actual shared registry integration and installed-device qualification remain separate."
+  },
+  "packTestEvidence": "Unchanged pipeline: 47 distinct pack tests passed across initial suite and Pillow-enabled WebP reruns. This theme independently passes the real builder, actual app parser/planner/native renderer, full image decoding, unique hashes, source provenance and no selected orphan checks."
+}
