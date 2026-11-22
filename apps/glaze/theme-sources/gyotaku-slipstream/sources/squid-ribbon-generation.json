@@ -1,0 +1,18 @@
+{
+  "id": "squid-ribbon",
+  "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject SQUID RIBBON: one recognisable natural SQUID oriented vertically but gently leaning LEFT, elongated tapered mantle uppermost with TWO triangular side fins, small coherent head below mantle with one simple dark printed eye, a compact crown of short curling arms and TWO much longer feeding tentacles sweeping down-right in an open loose S. Natural soft-body silhouette, not octopus/bellflower/alien, no cartoonface. Mantle has dry directly transferred fine SKIN-CONTACT MOTTLES and irregular pressure skip patches, fins show thin combed FIN-RAY-LIKE CONTACT TRACES, arm/tentacle underside has a few broken SUCKER-RIDGE INK TRACES, all uneven print transfer, NOT soft watercolor volume shading or X-ray skeleton/engraved technical hatch. Prussian-blue ink with one tiny vermilion dry accent at fin base. A vertical ribbon-like silhouette and open curling arm negative spaces very different from winged fish, radial lionfish, round puffer or shield crab. Every mantle fin tip, short arm end and BOTH long tentacle tips must be complete and contained central64% with generous actual alpha margins, no clipped curls. No plant/ground/scenery/backing/pale fill/halo, only printed ink and true transparent unprinted gaps.",
+  "tool": "built-in image_gen",
+  "source": "sources/squid-ribbon.5af58b1a.png",
+  "sourceSha256": "5af58b1a5d29c1ea579865bcedeba59bef8f5ee64688c7c856abd0570f26c269",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/squid-ribbon.88d4003c.png",
+  "sha256": "88d4003c529efbfa768ffe88016077f7688fbd3bd57a7098a98d2de5ff75eb20",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

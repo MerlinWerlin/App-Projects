@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1290x2796 tall portrait Nature phone wallpaper: an airy coherent MARINE INK-IMPRESSION PANORAMA across one gently curving band of sparse seagrass. Five recognisable natural organisms: a long flyingfish with two wide pectoral fin fans upper-left, a broad lionfish with a tall radial crown of dorsal spines upper-right, a round puffer with short fins and tiny prickles lower-left beside one small spiral shell, a low horseshoe crab with complete long tapered telson beside tidegrass lower-centre, and one elongated squid at right with triangular fins/short arm crown/two long curved tentacles. Preserve clear natural anatomy, no invented machines/hybrids. Physical DIRECT INK-RUBBED SPECIMEN IMPRESSION PRINT: natural scale/scute ridge transfers, comb-like fin-ray ink traces, dry contact skips, broken pressure edges, small ink pools and paper fibres, dry Prussian-blue #173B4B ink dominant with a few tiny muted vermilion #B65B48 contact accents. Not brush-painted watercolor, warm plant-pigment sun-print silhouettes, mezzotint crosshatch, technical cyanotype lines, X-ray skeletons or glossy3Danimals. Quiet warm ivory fibrous paper #E2D9BC ground for dark phone icons. ENTIRE COMPLETE MARINE GROUP confined inside CENTRAL60%WIDTH andBETWEEN36%AND72%HEIGHT, including all fins/spines/tails/tentacles and seagrass ends. Upper33% and bottom24% completely quiet matching paper. Very small central natural print band with open unprinted spaces, no enclosing frame/rectangle/backing panel or5separate tiles/contact-sheet layout. No underwater photographic scenery, sea floor/border, calligraphy/stamps/seals/signatures, typography/letters/numbers/labels/measurement marks, clocks/date/battery/weather values, UI or logos. Wholly original image; no external specimen image inputs.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.1cd32b5e.png",
+  "sourceSha256": "1cd32b5eb012d358bc532a33ac63c58881575e7a5c12eac3749ec5a3d0cde485",
+  "sourceDimensions": [
+    759,
+    2072
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "395dafc86221fff95eb6a26c4d5c719004727d4a3f0c3bbff2fcfac89651534a",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

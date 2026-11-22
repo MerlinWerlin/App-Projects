@@ -1,0 +1,38 @@
+{
+  "themeId": "gyotaku-slipstream",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.92b33355.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "92b33355d3038c5d372615ef2e3b8b2779e9c028fcefb7c3e424e49578bf43d5",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.85b3ab5e.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "85b3ab5e31fa9e3c63e29662b526f8acb4519c3e847f26b4d64ab30c0bdac041",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.8d1c7f06.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "8d1c7f061b391ef549dda614759cc446ee407077b4fb325dcc7aaea1c4f5de35",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedVariants": 3,
+    "finding": "Complete flyingfish fin/tail tips, lionfish spines, puffer fins/shell, horseshoe telson/legs and squid arms/long tentacles plus outer grass tips preserved in all actual encoded wallpaper variants including750x1334. Quiet warm fibrous paper above/below."
+  }
+}
