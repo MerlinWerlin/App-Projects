@@ -1,0 +1,134 @@
+{
+  "theme": "burnishhide-procession",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Shallow hand-tooled leather cameo relief with bevelled incisions, stamped rosettes and saddle stitches",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 production wallpaper for GLAZE BURNISHHIDE PROCESSION. An original tangible festival guild performs across a quiet courtyard in lower42%: a broad crouched gate-drummer carries a double-arched drum frame, an adult dancer balances on one foot inside an enormous open fan-panel mantle, a tall antler-crowned lamplighter carries hanging little lanterns, a striding herald wears a huge seven-spoke ceremonial face mask and curved speaking horn, and a kneeling standard-bearer operates pleated bellows that lift a narrow blank wind banner. Each figure clearly humanlike ADULT with different purposeful equipment/pose/costume, no generic animal collection, readable charming theatre. Entire world is FLAT SHALLOW HAND-TOOLED LEATHER RELIEF illustration: clean curved tooling cuts, compressed bevelled contour edges, fine pebbled hide pores, warm burnished tan highlights, stamped crosshatch and rosette impressions, sparse visible saddle stitches, uneven hand-rubbed matte wax finish. Oxblood #6A303B, tan #D6A775, muted turquoise #559A98, dark inkblue #162434. Little flat incised shadows only; not 3D dolls/toys, CGI, paper, embroidery, shiny metal or real equestrian equipment. No horses, saddles, bags, shoes still life or ordinary leather products. Upper55% calm very dark inkblue dyed hide with subtle grain and few sparse tool impressions only, no figures there, excellent icon space. One coherent stage courtyard etched into hide, broad open negative spaces. No text, lettering, numbers, insignia, signatures, clocks/dials, dates, battery/weather values, UI, logos, border, frame or phone mockup.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.f95878c3.png",
+      "sourceSha256": "f95878c302a4959764bc2b1d5f73be2c2f5d879123cba86092f0953b1a7eb59a",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "817365f937fc20465d5611f8e0522fd5759663bc3706ecdc0bdd82488877ec82",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "gate-drummer",
+      "prompt": "Repair this benign festival guild illustration as one FLAT SHALLOW DIE-TOOLED LEATHER CAMEO. Retain the same broad bearded adult gate drummer, squat pose, two drums, two hands/mallets, two feet, ornate three-arch portable frame, oxblood/tan/turquoise hide palette and embossed rosette/stitch patterns. Flatten the rounded human-body shading into shallow incised leather colour fields, matching a2mm-thick decorated wall panel rather than a3D figurine. More importantly, expand the true transparent canvas: place the WHOLE composition inside the central70% of a square, leaving minimum15% empty alpha on every side. Reconstruct the currently clipped top crown/rosette arc so its full outer outline is visible, and keep all toes, frame sides and mallets entirely contained. Preserve all open arch gaps and existing transparency. No background, plaque, halo, floor, shadow, text, numbers or new prop.",
+      "tool": "built-in image_gen",
+      "source": "sources/gate-drummer.9bbdfb5e.png",
+      "sourceSha256": "9bbdfb5eb2323bdf600e7a67a585c1a0f9a818fadfb53c4e4725a3dfb0d53cd7",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/gate-drummer.fa12a08f.png",
+      "sha256": "fa12a08f83d762322187f4689b95665e9a1dd0f79f56f6635606014ac5d7e600",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/crop-repair/gate-drummer-history.json",
+      "referencedImage": {
+        "file": "qa/crop-repair/gate-drummer.original.fa9e9c66.png",
+        "sha256": "fa9e9c6624f3a1fe818690f408eaf541ddaee9caf507b1eac113fd9d093f68f3"
+      }
+    },
+    {
+      "id": "fan-mantle-dancer",
+      "prompt": "Composition repair for this benign tooled-leather fan-mantle dancer illustration. Keep the same adult dancer, raised knee, two outstretched arms and hands holding the five-panel mantle, planted foot, scarf, headdress and oxblood/tan/turquoise flat die-pressed leather cameo style. Expand the transparent canvas and scale the ENTIRE artwork down to fit central70% of a square, leaving15% or more truly empty alpha margin on EVERY side. Reconstruct the small clipped top headdress plume and the outermost left/right mantle rims so the entire fan outline is complete and all contours have visible empty margin. Keep every internal gap transparent. Do not alter the pose, palette, stamped rosette/hatch patterns, stitching or shallow bevel details. No backing, halo, floor, scenery, rectangular panel, border, text, numbers or added props.",
+      "tool": "built-in image_gen",
+      "source": "sources/fan-mantle-dancer.1b524ccd.png",
+      "sourceSha256": "1b524ccd39932af2fdc715fd98d06f61793454340a01971a742cc7746379c47a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fan-mantle-dancer.d90fae45.png",
+      "sha256": "d90fae4504ce69b794acb32b8f043f892c03f81c7d517c89fe12a1d07753457c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/crop-repair/fan-mantle-dancer-history.json",
+      "referencedImage": {
+        "file": "qa/crop-repair/fan-mantle-dancer.original.0286c8c0.png",
+        "sha256": "0286c8c0068c7c564263a75799c05a6607dc217eaf0d58d7ed5010d02c3ebbef"
+      }
+    },
+    {
+      "id": "antler-lamplighter",
+      "prompt": "BURNISHHIDE PROCESSION for Glaze. ONE original 1024x1024 separate pure artwork of a tangible ADULT performer from an invented festival guild. FLAT SHALLOW HAND-TOOLED LEATHER RELIEF illustration: clean curved tooling incisions, compressed bevelled contour edges, fine pebbled hide pores, warm burnished tan highlights, stamped hatch/rosette impressions and sparse saddle stitches. Every skin/costume/prop field is dyed hide art with an uneven hand-rubbed matte finish. Oxblood #6A303B, tan #D6A775, muted turquoise #559A98, dark inkblue #162434. Illustrated artisan low relief, not3D dolls/toys, photo of live person, shiny metal, paper or textile embroidery. Original theatrical costumes, friendly adult expressions, no modern brands or specific real-world uniform. Exactly two arms and two legs with coherent hands/feet. Whole figure and equipment central65%, at least16% genuine transparent alpha all sides, transparent through open gaps. No rectangular leather backing, floor/scenery, extra pedestal, border, writing, letters, numerals, signs, clocks/dials, date/battery/weather values, UI or logos. Important visual construction: ONE FLAT DIE-PRESSED DECORATED HIDE CAMEO, a2mm-thick leather-panel silhouette bearing an incised drawing of the performer. Very shallow compressed tooling marks and colour fields, orthographic mural illustration with no volumetric human anatomy rendering, no round statuette, no toy sculpture. Subject ANTLER LAMPLIGHTER: one very TALL SLENDER adult in a long split oxblood coat and turquoise under-tunic, standing upright with feet in a narrow staggered stance. The performer wears an asymmetric branching ANTLER-SHAPED LEATHER HEADDRESS with four short upcurved branches and open gaps, no realistic deer head. Two arms hold one long curved lantern-yoke pole diagonally across the shoulders, one hand high and the other steadying its lower end. THREE SMALL TAN LANTERNS hang at staggered heights on short straps from the upper end, each with a simple punched rosette opening and no flames/readings. Calm mature profile turns toward lanterns. No weapon, animal body, ordinary lamp post, wings, wheels or drums. Clear long vertical silhouette, costume split exposes two slim legs/boots, purposeful role lighting the procession. Place this whole slender character SMALLER in central60% of square, with a very broad empty transparent band above antler tips and around pole/lanterns/feet. Do not fill the square or clip any headdress/lantern contour. Flat2mm pressed-hide cameo with incised colour fields, not round3D human sculpture.",
+      "tool": "built-in image_gen",
+      "source": "sources/antler-lamplighter.44625c87.png",
+      "sourceSha256": "44625c87408fa4ffe124b748115b50b60212c6d9ecd977188925291bebd2ffe0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/antler-lamplighter.23eaf9a1.png",
+      "sha256": "23eaf9a15acf0e43da7823b327373de0cbdb8a4680e1fe69e6825e61a4e0e759",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "wheel-mask-herald",
+      "prompt": "Remove the pale irregular background/halo behind this benign ceremonial herald illustration. Preserve the exact adult performer, profile stride, spoke crown, hands holding curved speaking horn, scarf, costume, shoes, oxblood/tan/turquoise tooled-leather material, shallow incisions and all fine patterns. EVERYTHING outside the actual figure, crown, scarf and horn must become genuinely alpha-transparent, including every gap between the crown spokes and the face/horn space. No off-white board, glow, shadow or pale mat. Expand canvas and fit the complete performer within the central70% of a square with15% empty alpha margin on all four sides. Keep every spoke, horn rim, scarf and both feet completely visible. No pose, style, palette or prop change and no new objects or writing.",
+      "tool": "built-in image_gen",
+      "source": "sources/wheel-mask-herald.4a5b698a.png",
+      "sourceSha256": "4a5b698a2b7c3eb64ad1412a119957ea55f85624cdbc287976336b51849c54a0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/wheel-mask-herald.8c4e81d9.png",
+      "sha256": "8c4e81d9b166e477a8d15faf58f27009d60f2bed1bcfc5e43009932781f08dea",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/crop-repair/wheel-mask-herald-history.json",
+      "referencedImage": {
+        "file": "qa/crop-repair/wheel-mask-herald.original.80efd9cc.png",
+        "sha256": "80efd9cc9bc5d2a89ef33a6dbd1a6bf5e6f4c6909fd4c62415e2db196d15f0b5"
+      }
+    },
+    {
+      "id": "bellows-standard-bearer",
+      "prompt": "BURNISHHIDE PROCESSION for Glaze. ONE original 1024x1024 separate pure artwork of a tangible ADULT performer from an invented festival guild. FLAT SHALLOW HAND-TOOLED LEATHER RELIEF illustration: clean curved tooling incisions, compressed bevelled contour edges, fine pebbled hide pores, warm burnished tan highlights, stamped hatch/rosette impressions and sparse saddle stitches. Every skin/costume/prop field is dyed hide art with an uneven hand-rubbed matte finish. Oxblood #6A303B, tan #D6A775, muted turquoise #559A98, dark inkblue #162434. Illustrated artisan low relief, not3D dolls/toys, photo of live person, shiny metal, paper or textile embroidery. Original theatrical costumes, friendly adult expressions, no modern brands or specific real-world uniform. Exactly two arms and two legs with coherent hands/feet. Whole figure and equipment central65%, at least16% genuine transparent alpha all sides, transparent through open gaps. No rectangular leather backing, floor/scenery, extra pedestal, border, writing, letters, numerals, signs, clocks/dials, date/battery/weather values, UI or logos. Important visual construction: ONE FLAT DIE-PRESSED DECORATED HIDE CAMEO, a2mm-thick leather-panel silhouette bearing an incised drawing of the performer. Very shallow compressed tooling marks and colour fields, orthographic mural illustration with no volumetric human anatomy rendering, no round statuette, no toy sculpture. Subject BELLOWS STANDARD BEARER: one adult kneels on RIGHT knee with left foot planted forward, shown three-quarter toward left, in a long split turquoise/oxblood festival coat. TWO HANDS operate a large tan-and-oxblood pleated BELLOWS at knee height: left hand presses upper handle and right hand grips the lower board. A short curving conduit connects bellows to the base of a tall slender wind-standard pole just to the left, where a long narrow BLANK tan leather ribbon banner rises and curls backward at its top. Banner has a stamped rosette at its lower hem and stitched edge only, no markings or symbols. Figure leans into the purposeful pumping action, focused mature face, three open accordion valleys visible. Overall asymmetrical L silhouette, low kneeling person on right and tall open pole/banner on left. No ordinary bag, guitar, musical keyboard, fire, flames, clock or data. Make whole composition small enough for broad transparent space above flag curl and below bent knee/boot, all equipment connected and fully visible. Every area that is not the performer, pole, banner, conduit or bellows must be fully transparent: no pale halo, coloured backing, paper mat, glow, floor or shadow.",
+      "tool": "built-in image_gen",
+      "source": "sources/bellows-standard-bearer.30bc37ee.png",
+      "sourceSha256": "30bc37ee9d19d9ed21fdc3f951511c9b03ae60631b4c963de21e3d1d3ea1ec74",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bellows-standard-bearer.d5582146.png",
+      "sha256": "d5582146ba34ab5bc7c2a7a8a5fbb70c36c4e7166853943175a08be6014f2aa4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

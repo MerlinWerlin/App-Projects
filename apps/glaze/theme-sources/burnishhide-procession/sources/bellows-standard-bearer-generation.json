@@ -1,0 +1,18 @@
+{
+  "id": "bellows-standard-bearer",
+  "prompt": "BURNISHHIDE PROCESSION for Glaze. ONE original 1024x1024 separate pure artwork of a tangible ADULT performer from an invented festival guild. FLAT SHALLOW HAND-TOOLED LEATHER RELIEF illustration: clean curved tooling incisions, compressed bevelled contour edges, fine pebbled hide pores, warm burnished tan highlights, stamped hatch/rosette impressions and sparse saddle stitches. Every skin/costume/prop field is dyed hide art with an uneven hand-rubbed matte finish. Oxblood #6A303B, tan #D6A775, muted turquoise #559A98, dark inkblue #162434. Illustrated artisan low relief, not3D dolls/toys, photo of live person, shiny metal, paper or textile embroidery. Original theatrical costumes, friendly adult expressions, no modern brands or specific real-world uniform. Exactly two arms and two legs with coherent hands/feet. Whole figure and equipment central65%, at least16% genuine transparent alpha all sides, transparent through open gaps. No rectangular leather backing, floor/scenery, extra pedestal, border, writing, letters, numerals, signs, clocks/dials, date/battery/weather values, UI or logos. Important visual construction: ONE FLAT DIE-PRESSED DECORATED HIDE CAMEO, a2mm-thick leather-panel silhouette bearing an incised drawing of the performer. Very shallow compressed tooling marks and colour fields, orthographic mural illustration with no volumetric human anatomy rendering, no round statuette, no toy sculpture. Subject BELLOWS STANDARD BEARER: one adult kneels on RIGHT knee with left foot planted forward, shown three-quarter toward left, in a long split turquoise/oxblood festival coat. TWO HANDS operate a large tan-and-oxblood pleated BELLOWS at knee height: left hand presses upper handle and right hand grips the lower board. A short curving conduit connects bellows to the base of a tall slender wind-standard pole just to the left, where a long narrow BLANK tan leather ribbon banner rises and curls backward at its top. Banner has a stamped rosette at its lower hem and stitched edge only, no markings or symbols. Figure leans into the purposeful pumping action, focused mature face, three open accordion valleys visible. Overall asymmetrical L silhouette, low kneeling person on right and tall open pole/banner on left. No ordinary bag, guitar, musical keyboard, fire, flames, clock or data. Make whole composition small enough for broad transparent space above flag curl and below bent knee/boot, all equipment connected and fully visible. Every area that is not the performer, pole, banner, conduit or bellows must be fully transparent: no pale halo, coloured backing, paper mat, glow, floor or shadow.",
+  "tool": "built-in image_gen",
+  "source": "sources/bellows-standard-bearer.30bc37ee.png",
+  "sourceSha256": "30bc37ee9d19d9ed21fdc3f951511c9b03ae60631b4c963de21e3d1d3ea1ec74",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/bellows-standard-bearer.d5582146.png",
+  "sha256": "d5582146ba34ab5bc7c2a7a8a5fbb70c36c4e7166853943175a08be6014f2aa4",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
