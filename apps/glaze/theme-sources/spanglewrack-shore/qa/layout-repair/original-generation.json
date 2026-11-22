@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "SPANGLEWRACK SHORE, Glaze Nature. Use case: stylized-concept. ONE original1290x2796 VERY TALL PORTRAIT PHONE WALLPAPER, aspect about0.4614. ONE coherent recognizable QUIETSHORE scene handcrafted in SHALLOW PUNCHED SHEET-METAL PAILLETTE EMBROIDERY, broad thin FILLED silver/tin/brass/oxidizedbronze/copperrose discs withtinycentralpunch/oneanchoringthreadstitch,2to4staggered overlappingFISH-SCALE rows followinganatomy. Gentlycuppedfaces, thinrimoverlaps, fainttoolscuffs andsmallrealmetalglints; naturalmetalcolors, no glitter/starbursts/enamel/dichroicplastic. InputImage1 ownplover is bird/materialreference, Image2 ownseaholly is botanical/materialreference, Image3 ownseal is animal/materialreference. Integrate intoONEneworiginalcoherentshorecomposition, nocollage/panels. A whole naturally proportioned RINGED PLOVER stands atmidLEFT facinginwardRIGHT, shortstraightbill/darkcap/darkbreastband/palesilverbelly, TWOwholebrasslegs/feet/toes onalow gentlyrising shoreline lip. ONE natural GREY SEAL reclines lowerRIGHT inopenCcurve, smallearlesshead/longmodestmuzzle/2nostrils/fewshortthreadwhiskers, exactly4wholeflippers(2foreflippersnearshoulders+2separatehindflippersatrear), nofishtail/dogears; broad filledsilverdiscrows andsmokedbronzeareas. A tall SEA HOLLY sprig rises behindatupperRIGHT with TWO wholeegg-shapeddiscflowerheads surroundedbypointedthinmetalbracts,2deeplylobedspinybasalleaves andshortnaturalbranchingstem. Two shortthinwrackfronds andlowASYMMETRICALcurving shorelip madeof2or3overlappingbroadermetalfields connectbottomsubjects, no ovalisland/pedestal/medallion/frame/enclosingwreath. Entireforegroundliteralhandsewnmetalpaillettesandstampedthinmetalparts, tinycenterholes/1stitch onfilledfaces, no realfur/feathers/plant tissue/coatedliveanimalsunderneath. Underlyingfabriccontourhiddenexacttosubject, noextra textilepatch/rectangle. No OPENWIRE RINGS/chainmail/hoops, helicalpurltubes, seedbeadclusters/glassbeads, wovenmetalstrips/enamelcells, singlecarvedmetalfigurine, shelliridescence/eggshellchips/mineralveins. Quiet UNIFORM smokyBLUEGREY #3B4C58 background withbarelyvisiblematte texture, no photographicsand/water/sky/busypattern. Fuller substantialTALL scene spans about78to84percentWIDTH and58to62percentHEIGHT, allforeground fromroughly23percentto83percentcanvasheight. IMPORTANT ALLLOWEST shorelip/wrack/animal/flipper/plant ends at orABOVE83percentcanvasheight, leaving17percentquietbackground BELOW ALLFOREGROUND forshortphonecrop. Upper22percentquietforicons,8to11percentSIDEmargins aroundeverybill/foot/flipper/whisker/bract/leaf/shorepoint. Wholeploverbill/feet/toes/tail, sealall4flippers/face/whiskers, hollyflowerhead/bract/leafspines andbankends COMPLETELY retained, no croppedextremity. Substantiallegibleanimalsandtallplant, not tinyislandinexcessiveblankborder. Softdiffuseside light revealscupfaces/rimoverlaps, no castshadow/halo/glow. No text/letters/numbers, dates/time/clockfaces/battery/weatherreadings, UI/phonemockup/logo/signature. Deliver onlyfinishedtallwallpaper.",
+  "tool": "built-in image_gen",
+  "source": "qa/layout-repair/wallpaper.original.e42e0b42.png",
+  "sourceSha256": "e42e0b421f6c64e64a03d6dc8bc19c996bbab9116d75c61ed524b810d1ae3592",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "d28c92090afa2daed2b631e8e2dd7b9a9bdee418350be6ec6b7359822bd1095f",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "ringed-plover",
+      "file": "sources/ringed-plover.16a8493a.png",
+      "sha256": "16a8493a83fdb6239ceab15ca4430ad98c15300dd810fa861ccc2dcae220a726",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 2,
+      "id": "sea-holly",
+      "file": "sources/sea-holly.6aa00d97.png",
+      "sha256": "6aa00d977de745f42e7eef694d47a81841d83e1dbe471b469aedb713f14f525c",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 3,
+      "id": "grey-seal",
+      "file": "sources/grey-seal.308d068a.png",
+      "sha256": "308d068ae8fa70c5db175b6f932a3f7f2791519468cf6f553ee5dbec601a45c5",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/layout-repair/wallpaper-initial-request.json",
+  "exactToolResult": "qa/layout-repair/wallpaper-layout-original.json"
+}

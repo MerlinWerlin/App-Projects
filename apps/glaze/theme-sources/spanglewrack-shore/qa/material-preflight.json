@@ -1,0 +1,43 @@
+{
+  "id": "spanglewrack-shore",
+  "lane": "B44",
+  "category": "Nature",
+  "process": "Fish-scale embroidery of broad thin punched sheet-metal paillettes: shallow cupped silver, brass and oxidized-bronze discs, tiny central holes and single anchoring stitches",
+  "status": "Firstactualmaterial/full/85/neighbor/native studies passedlane-localreview. Coordinatorintent+gate dispatches failed, deliveryunknown. Isolatedexpansion underoriginalhumanfallback; coordinator material/integration review pending.",
+  "subjects": [
+    "ringed-plover",
+    "shore-crab",
+    "cockle-shell",
+    "grey-seal",
+    "sea-holly"
+  ],
+  "world": "Shore wildlife sewn from overlapping silver and brass paillettes, with shallow cupped faces and tiny anchoring stitches.",
+  "cornerCompanion": "Natural ringed plover and shallow overlapping punched-metal disc embroidery. Circle clock rim recalls solid stamped disc perimeter, bead markers tiny center punches and needle hands anchoring stitches. Trail charge traces a curved anchoring-thread path; ledger calendar keeps simple row rules. Compact companion is only two shallow overlapping cup arcs plus two short anchoring stitches, open and sparse; no whole bird, dense scales/rosette, bead outline or open wire-ring chainmail. Retain shipped calendar/date/highlight/identity outline behavior, no date-containment gate.",
+  "baselineSearch": "Exactspanglewrack/paillette-tidemark absent currentRootsource/catalogue. Onlyspangle keyword sourcehit Purlwake is exclusion text, actualmediumcutpurlhelices. No sequin/paillette/spangle historical/acceptedbaseline manifesthits. Filledthinpuncheddiscs distinctfromA19Linkmere OPENwire rings; all5actualsourceimages compare beforefirst.",
+  "firstGateCriterion": "Actual85mustshowbroad shallow FILLED metaldisc faces, tinycentralpunch/stitch andoverlappingrims, not openmailhoops, purlcoils, beadclusters, enamelcells or smoothsolidmetalbird. Naturalwholeplover2legs/feet/bill/tail.",
+  "coordinationAttempts": [
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 B43readyhandoff+B44intent dispatch failed",
+      "delivery": "unknown"
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 B44actual firstmaterial-gate dispatch failed",
+      "delivery": "unknown"
+    }
+  ],
+  "coordinationFallbackAuthority": "Original human lane brief: If messaging is unavailable, stay strictly inside your assigned territory and use new, collision-checked IDs.",
+  "reviewAuthority": "lane-local; coordinator review pending",
+  "technicalReferences": [
+    {
+      "url": "https://www.metmuseum.org/essays/the-materials-and-techniques-of-english-embroidery-of-the-late-tudor-and-stuart-eras",
+      "scope": "PrimaryMetconservationtext only: punchedsheetmetalspangles, reflective metal surfaces and securingstitches. No artwork/object/image/pattern input."
+    },
+    {
+      "url": "https://rsnstitchbank.org/ajax/modal_stitchbasic/spangles-held-on-with-purls-goldwork",
+      "scope": "PrimaryRoyalSchoolofNeedleworktext only: overlappingfishscalestitching; distinguishes flattenedwire spangles from punchedsheetmetal sequins thatmaybeflat/domed/faceted. Thiscandidate specificallyuses punchedsheetmetal paillettes, not wire-ring spangles or purltubes; no historicreplica/artifactcopy."
+    }
+  ],
+  "neighborReview": "../outputs/spanglewrack-shore-candidate-neighbor-review.json"
+}

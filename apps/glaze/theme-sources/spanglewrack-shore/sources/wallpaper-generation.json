@@ -1,0 +1,30 @@
+{
+  "id": "wallpaper",
+  "prompt": "ONE precise LAYOUT-ONLY edit of our OWN METAL-PAILLETTE SHORE WALLPAPER, Image1 EDIT TARGET. Keep1290x2796 verytallportrait0.4614aspect, quietsmokybluegrey#3B4C58background, samehandsewnFILLEDsilver/brass/bronze/copperrose thinshallowcuppedmetaldiscs/tinycentralpunch/shortanchoringstitches/toolscuffs/rimoverlaps, allmaterials/colors andnaturalforms. CurrentLEFTSHORELIP is cutbycanvasleftedge andseal/plantoutertipsaretooclosetotheright. Change ONLY HORIZONTALCOMPOSITION: shorten/reshape BOTH OUTERENDSofthelowshorelip soleftendstarts9percentinfromleftedge andrightendends9percentbeforetherightedge, BOTH wholecurvedleaflike ends visiblycomplete surroundedbybackground, no clippedflatcutatcanvas. Move WHOLE PLOVER about4percentcanvaswidth RIGHTward, preservingoriginalsize/bill/whole2legs/feet/toes/tail. Move WHOLE SEAL about5percentcanvaswidth LEFTward, preservingoriginalsize/smallearedlesshead/muzzle/whiskers/2foreflippers/2separatehindflippers andcurvedbody. Move WHOLE TALL SEA-HOLLY SPRIG about5percentcanvaswidth LEFTward, keeporiginalsize/2wholeeggflowerheads/allpointedbracts/2spinybasalleaves, alltipscomplete. Maintain clear recognizablesubjects; no coveredbirdface/bill/feet orsealface/flippers. Preserveforegroundverticalpositions/tallpresence, doNOTscaleallsubjectsdownorcompressstretch theiranatomy. Naturallyadjustonlybranch/shorelipconnections andwrackfrondplacement asneededtojoin scene. ALL outermostforegroundendtips mustnow haveatleast8percent genuinelyemptyBLUEGREY SIDEmargins bothsides, includingallhollyspines/shorelip/whiskers/tail/flippers/wrackfronds. Keep currentgenerousquietBOTTOMspace(atleast17percentcanvasheight) andquietupperbackground, no newobjects/border/pedestal/frame/wreath. No stylisticredesign, no realanimalfur/feathers/skin, openwirechainmail/purlcoils/beads/enamel/gems. No shadows/halo/glow/text/numbers/UI/logo. Deliver only finishedtallcoherentwallpaper, fullscene substantial and wholeleft/rightendscomfortablyinset.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.adb22a9d.png",
+  "sourceSha256": "adb22a9dbf679cc89c64e3f31193f276b2a58264ed164e20b740223943439554",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "f9bc7c1597dc29fece311e2eb495f04fe2ab169230b70d9221c8c30e69cf088c",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.e42e0b42.png",
+      "sha256": "e42e0b421f6c64e64a03d6dc8bc19c996bbab9116d75c61ed524b810d1ae3592",
+      "role": "Own original scene EDIT TARGET for documented layout-only correction; exact original retained unchanged."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ringed-plover",
+    "kind": "art",
+    "image": "ringed-plover.fbff75ff.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ringed Plover"
+  },
+  {
+    "id": "shore-crab",
+    "kind": "art",
+    "image": "shore-crab.c7ef63b9.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Shore Crab"
+  },
+  {
+    "id": "cockle-shell",
+    "kind": "art",
+    "image": "cockle-shell.78c93a2b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cockle Shell"
+  },
+  {
+    "id": "grey-seal",
+    "kind": "art",
+    "image": "grey-seal.08ab6b85.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Grey Seal"
+  },
+  {
+    "id": "sea-holly",
+    "kind": "art",
+    "image": "sea-holly.6c23fef8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sea Holly"
+  }
+]
