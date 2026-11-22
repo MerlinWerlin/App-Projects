@@ -7,7 +7,7 @@
   "originalSha256": "ea767ab14ad976afc88b621b60949f6d6317dba0783e36ac5575529fac7869a9",
   "repairPrompt": "Edit INPUT1 pond wallpaper. INPUT2 is the approved FLAT frog intarsia construction and INPUT3 the selected FLAT bittern intarsia construction; these are OWN material/organism references. Preserve the coherent natural pond arrangement and all five subjects (frog, bittern, waterlily/bud, diving beetle/pondweed, willow/catkins). TWO REQUIRED CORRECTIONS. 1) FLATTEN THE CRAFT: replace input1 rounded wrapped frog and tiny feather-chip bittern with the same natural silhouettes and ABSOLUTELY FLAT LAID SPLIT-STRAW INTARSIA as inputs2and3. Broad long parallel flattened stalk ribbons glued FLUSH edge-to-edge in ONE PLANE, straight buttjoints, fine longitudinal vascular fibres and alternating satin straw glints; long uninterrupted neck/wing/body fields, not short feather tiles. Frog eyes tiny flush dark inlay marks, no beads. Every reed/leaf/petal/beetle/current also a flat intarsia picture. No wrapped/over-under bands, basket joints, 3D rounding/carving, overlap loops, woodgrain, featherbarbs, nacre or metal. 2) PHONE-SAFE LAYOUT: shrink the ENTIRE complete habitat grouping to72PERCENT OF ITS CURRENT SIZE, recenter horizontally at54percent imageheight. Whole grouping within central62percent width x19to81percent and y37to71percent. Keep every beak, foot/toe, reed, willow leaf/catkin, lily petal and beetle antenna whole. Extend existing quiet matte deep muted pond-blue paper #284C5C naturally around smaller group; upper33percent, bottom25percent and side margins empty and calm. No new plants, objects, tree canopy, frame, badge, text, logo, UI or live values. Opaque portrait wallpaper; flat straw intarsia, no relief cast shadows or glow.",
   "referencedImage": "qa/layout-repair/wallpaper.original.ea767ab1.png",
-  "selectedSource": "sources/wallpaper.48e4321b.png",
+  "selectedSource": "qa/layout-pullback/wallpaper.previous-flat.48e4321b.png",
   "selectedSourceSha256": "48e4321b91c9759a55dc9a118436871cb5da0a8758c0dd0093dbbdc53e3f0e5b",
   "materialReferences": [
     {
@@ -28,5 +28,6 @@
     "sources/frog-lilypad.b6735d96.png",
     "sources/bittern-reeds.23525bc3.png"
   ],
-  "exactToolRequest": "qa/layout-repair/exact-three-input-wallpaper-edit-request.json"
+  "exactToolRequest": "qa/layout-repair/exact-three-input-wallpaper-edit-request.json",
+  "selectedSourceLocationNote": "Retained as unselected QA input after a later layout-only pullback; exact source hash unchanged."
 }

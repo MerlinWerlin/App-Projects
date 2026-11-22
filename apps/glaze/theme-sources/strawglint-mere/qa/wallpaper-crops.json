@@ -3,32 +3,32 @@
   "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
   "variants": [
     {
-      "path": "wallpaper-2796.8ae2b1a1.webp",
+      "path": "wallpaper-2796.00aa8b1a.webp",
       "dimensions": [
         1290,
         2796
       ],
-      "sha256": "8ae2b1a19b27f1d5ca743528f7c612f448e6f2ce6002e098132b1eef88b79d8c",
+      "sha256": "00aa8b1af0544a25407e6ff478ddcd2e56d1946f866728cd431f8d6411d0a9a3",
       "labelX": 20
     },
     {
-      "path": "wallpaper-2556.0d6d6f07.webp",
+      "path": "wallpaper-2556.9c51c13a.webp",
       "dimensions": [
         1179,
         2556
       ],
-      "sha256": "0d6d6f075b11dbd5fdfe55874c1d6431ade1b318d119b1c191b9acbc9a765d69",
+      "sha256": "9c51c13a4fe645e8538a8a90f95e17587e38671711eb8f100e616fc89387bac8",
       "labelX": 285
     },
     {
-      "path": "wallpaper-1334.27ab614a.webp",
+      "path": "wallpaper-1334.97f47643.webp",
       "dimensions": [
         750,
         1334
       ],
-      "sha256": "27ab614ae2f0961058c361b83117e298e326a4a437d69c9df50563026cf744d8",
+      "sha256": "97f4764345978d7c6c13cc3bf6287de187d8826cc1d4e2daeaa908067806a1d0",
       "labelX": 550
     }
   ],
-  "visualReview": "Passed all three actual encoded phone crops: all five complete natural subjects, reed/leaf/flower tips, toes and beetle antennae remain whole; quiet blue upper/bottom paper. Selected wallpaper flattened to accepted construction and pulled inward via exact three-input imagegen edit, with old target and selected frog/bittern lineage preserved."
+  "visualReview": "Final layout-only pullback passed all three actual encoded crops: complete already-flat habitat has broad blue side and lower margins, every frog/bird/leaf/reed/petal/antenna/tip intact. Previous selected flat wallpaper and exact own-scene request preserved in qa/layout-pullback; five art/native files unchanged."
 }

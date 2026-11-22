@@ -7,40 +7,26 @@
   "artworks": [
     {
       "id": "wallpaper",
-      "prompt": "Edit INPUT1 pond wallpaper. INPUT2 is the approved FLAT frog intarsia construction and INPUT3 the selected FLAT bittern intarsia construction; these are OWN material/organism references. Preserve the coherent natural pond arrangement and all five subjects (frog, bittern, waterlily/bud, diving beetle/pondweed, willow/catkins). TWO REQUIRED CORRECTIONS. 1) FLATTEN THE CRAFT: replace input1 rounded wrapped frog and tiny feather-chip bittern with the same natural silhouettes and ABSOLUTELY FLAT LAID SPLIT-STRAW INTARSIA as inputs2and3. Broad long parallel flattened stalk ribbons glued FLUSH edge-to-edge in ONE PLANE, straight buttjoints, fine longitudinal vascular fibres and alternating satin straw glints; long uninterrupted neck/wing/body fields, not short feather tiles. Frog eyes tiny flush dark inlay marks, no beads. Every reed/leaf/petal/beetle/current also a flat intarsia picture. No wrapped/over-under bands, basket joints, 3D rounding/carving, overlap loops, woodgrain, featherbarbs, nacre or metal. 2) PHONE-SAFE LAYOUT: shrink the ENTIRE complete habitat grouping to72PERCENT OF ITS CURRENT SIZE, recenter horizontally at54percent imageheight. Whole grouping within central62percent width x19to81percent and y37to71percent. Keep every beak, foot/toe, reed, willow leaf/catkin, lily petal and beetle antenna whole. Extend existing quiet matte deep muted pond-blue paper #284C5C naturally around smaller group; upper33percent, bottom25percent and side margins empty and calm. No new plants, objects, tree canopy, frame, badge, text, logo, UI or live values. Opaque portrait wallpaper; flat straw intarsia, no relief cast shadows or glow.",
+      "prompt": "Edit this EXACT already-correct FLAT straw-intarsia pond wallpaper. LAYOUT ONLY: preserve every material, color, joined flat straw ribbon field, fine longitudinal fibre, straight butt seam and directional satin glint exactly. Do not redraw organisms, change anatomy or return to rounded/wrapped bodies. Uniformly scale the ENTIRE COMPLETE EXISTING HABITAT GROUP to75PERCENT OF ITS CURRENT WIDTH AND HEIGHT, including frog, lilypad, bittern, all toes, reeds, waterlily, bud, leaves, willow/catkins, diving beetle, pondweed, all foreground/current ribbons and supporting pads. All parts move and shrink together, no individual resizing, deletion or additions. Centre the smaller COMPLETE GROUP horizontally and at57PERCENT imageheight; keep ALL group contents inside central70percent width and between y43and72percent height. Create clearly WIDER QUIET BLUE MARGINS on BOTH SIDES and BELOW by naturally extending the existing matching matte muted pond-blue paper. Preserve every beak, leaf/petal tip, toe, stem, reed and antenna whole. Upper area stays quiet too. No new plants/scene/background motifs, shadow/glow, lettering, numbers, clock/date/battery values, frame, UI or logo. Opaque portrait wallpaper, same exact flat-intarsia material and natural scene, just a single uniform pulled-back group.",
       "tool": "built-in image_gen",
-      "source": "sources/wallpaper.48e4321b.png",
-      "sourceSha256": "48e4321b91c9759a55dc9a118436871cb5da0a8758c0dd0093dbbdc53e3f0e5b",
+      "source": "sources/wallpaper.0f076268.png",
+      "sourceSha256": "0f076268502c3a124123a3a5a884c7e5b29c19c57e8008fc9e6ba73d21771105",
       "sourceDimensions": [
         941,
         1672
       ],
       "selectedFile": "wallpapers/wallpaper.png",
-      "sha256": "9318131d4455a187d1edb5081e15c7777bcab224431cd4c331a90d4aba12f078",
+      "sha256": "34d70e106b410d4c89158d20f9a7aad725ddd667723d664e7342677b98b63dc1",
       "dimensions": [
         1290,
         2796
       ],
       "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
-      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "generationHistory": "qa/layout-pullback/wallpaper-history.json",
       "referencedImage": {
-        "file": "qa/layout-repair/wallpaper.original.ea767ab1.png",
-        "sha256": "ea767ab14ad976afc88b621b60949f6d6317dba0783e36ac5575529fac7869a9"
-      },
-      "materialReferences": [
-        {
-          "id": "frog-lilypad",
-          "source": "sources/frog-lilypad.b6735d96.png",
-          "sourceSha256": "b6735d96ddaa72506ac0a8ab2863c17073ea4d2fbbea3bf409919260886a3d8a",
-          "role": "Own selected flat-intarsia organism/material reference; exact input used by wallpaper edit."
-        },
-        {
-          "id": "bittern-reeds",
-          "source": "sources/bittern-reeds.23525bc3.png",
-          "sourceSha256": "23525bc3901ade67bd13ea839c3e932066c93db72dadc42b8f137f0a108a9d32",
-          "role": "Own selected flat-intarsia organism/material reference; exact input used by wallpaper edit."
-        }
-      ]
+        "file": "qa/layout-pullback/wallpaper.previous-flat.48e4321b.png",
+        "sha256": "48e4321b91c9759a55dc9a118436871cb5da0a8758c0dd0093dbbdc53e3f0e5b"
+      }
     },
     {
       "id": "frog-lilypad",
