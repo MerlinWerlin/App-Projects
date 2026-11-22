@@ -1,0 +1,89 @@
+{
+  "artworks": 5,
+  "encodedAssets": true,
+  "actualBlendMath": true,
+  "actualThemeGradient": true,
+  "fitInset": 0.06,
+  "stressCornerRadius": 0.24,
+  "installedDeviceVerified": false,
+  "allCoreSilhouettesRetained": true,
+  "batchThemesReviewed": 32,
+  "encodedAssetHashes": {
+    "bellows-pangolin": "6b3f615be18bb4d3d32e35b26d41db52799e9f73f9fdf6f17e39a1e4d43e30a5",
+    "dew-distiller": "deb459ca1626567311528723fa4f9052f286c8a3b74516b3a07a79fa6e1a2e65",
+    "spore-trolley": "856e0c47d74ad12cbaf0856167a8bc984a8058b1461d1a33a7cec23271560a91",
+    "canopy-snug": "c4973e543bb5e465896a094508152d7d9c3da41f0c854af67550daf7cf359ec9",
+    "vent-crab": "86bf1297eca5457286f8b76958da6e4296f316c46d5a9f4caeaa1d38222c6742"
+  },
+  "theme": "lamellar-commons",
+  "sourceHashes": {
+    "bellows-pangolin": "65b1496aa7dc4fd50efa3db37395ae36193905fb63fb51a05e5b02474155d664",
+    "dew-distiller": "6d1cb20cb906c6dbe4d2d457c568e3893ab53399f4b18fd0a6f95c8533e2180e",
+    "spore-trolley": "9f837067a19882f3270b485b0dc7f7c7a026712412e01e8ca4f5416ec4ee3582",
+    "canopy-snug": "2292e94870725fdc363d0db65930f19b7c1cb8b3a3d106a031105c26e4e5907d",
+    "vent-crab": "116b08794a4b3130bffd648117feab3f17b21dcd0b0d4771ab815cae04d57d32"
+  },
+  "reviewed": true,
+  "perArtwork": [
+    {
+      "id": "bellows-pangolin",
+      "label": "Bellows Pangolin",
+      "blend": "transparent",
+      "corePixels": 78997,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "bellows-pangolin-170.png",
+      "tiny": "bellows-pangolin-85.png"
+    },
+    {
+      "id": "dew-distiller",
+      "label": "Dew Distiller",
+      "blend": "transparent",
+      "corePixels": 57134,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "dew-distiller-170.png",
+      "tiny": "dew-distiller-85.png"
+    },
+    {
+      "id": "spore-trolley",
+      "label": "Spore Trolley",
+      "blend": "transparent",
+      "corePixels": 74273,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "spore-trolley-170.png",
+      "tiny": "spore-trolley-85.png"
+    },
+    {
+      "id": "canopy-snug",
+      "label": "Canopy Snug",
+      "blend": "transparent",
+      "corePixels": 77791,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "canopy-snug-170.png",
+      "tiny": "canopy-snug-85.png"
+    },
+    {
+      "id": "vent-crab",
+      "label": "Vent Crab",
+      "blend": "transparent",
+      "corePixels": 75501,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "vent-crab-170.png",
+      "tiny": "vent-crab-85.png"
+    }
+  ],
+  "gradient": [
+    "#C5D6C4",
+    "#C5D6C4"
+  ],
+  "note": "Quiet theme backgrounds and whole silhouettes inspected at170px and85px. Radius24% is a deliberate UI clipping stress model, not installed-device evidence."
+}

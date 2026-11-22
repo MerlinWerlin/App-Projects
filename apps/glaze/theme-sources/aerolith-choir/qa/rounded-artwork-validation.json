@@ -1,0 +1,89 @@
+{
+  "artworks": 5,
+  "encodedAssets": true,
+  "actualBlendMath": true,
+  "actualThemeGradient": true,
+  "fitInset": 0.06,
+  "stressCornerRadius": 0.24,
+  "installedDeviceVerified": false,
+  "allCoreSilhouettesRetained": true,
+  "batchThemesReviewed": 32,
+  "encodedAssetHashes": {
+    "cavity-cathedral": "ebd0ec4238a9b147079f3da2e6476bac94c10331673a373947638455ee9ee431",
+    "bellows-bloom": "144713840070279e7566a34ad31005d02714a94eeb2ebb293a66d2f1bdcda1c8",
+    "pore-shelled-nomad": "d0ae93ba32fe639ff7cde437a824d0519c5cb32a1d943644ffd76900825c84fc",
+    "thread-tail-comet": "e8b34c76f1214a9d4715eea26f4a0d651aa6322f873bcfbfb9938b5126c8e28f",
+    "levitating-seed-engine": "0454154d789b3a8c6444bf4c7e7a9bd0681d42e2bd03a9d543b56975746a2f18"
+  },
+  "theme": "aerolith-choir",
+  "sourceHashes": {
+    "cavity-cathedral": "01259ac29fe8bed05ac80a49ea45fd296b7ec6dddffc3bab3a24d54903a15e38",
+    "bellows-bloom": "05c2c6a107f5e13d011b5bec1c20f8f10703f598e4385395b80d876f1478109f",
+    "pore-shelled-nomad": "fef339cc2b88ebd982eda4d38eae6fde8064302a5eaefa2abdb13570cb64d14b",
+    "thread-tail-comet": "e1bcc5d1b96994d4e7f113148072956754099ca8c3e590f22cc1f0891c94cc39",
+    "levitating-seed-engine": "2405877e43ab6a7508209b501f54df75bb47ea9edd69c9041bc5afd9b3472fcc"
+  },
+  "reviewed": true,
+  "perArtwork": [
+    {
+      "id": "cavity-cathedral",
+      "label": "Cavity Cathedral",
+      "blend": "transparent",
+      "corePixels": 82900,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "cavity-cathedral-170.png",
+      "tiny": "cavity-cathedral-85.png"
+    },
+    {
+      "id": "bellows-bloom",
+      "label": "Bellows Bloom",
+      "blend": "transparent",
+      "corePixels": 62180,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "bellows-bloom-170.png",
+      "tiny": "bellows-bloom-85.png"
+    },
+    {
+      "id": "pore-shelled-nomad",
+      "label": "Pore Shelled Nomad",
+      "blend": "transparent",
+      "corePixels": 50919,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "pore-shelled-nomad-170.png",
+      "tiny": "pore-shelled-nomad-85.png"
+    },
+    {
+      "id": "thread-tail-comet",
+      "label": "Thread Tail Comet",
+      "blend": "transparent",
+      "corePixels": 43750,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 8.322993379013209e-05,
+      "fringeReviewFlag": false,
+      "preview": "thread-tail-comet-170.png",
+      "tiny": "thread-tail-comet-85.png"
+    },
+    {
+      "id": "levitating-seed-engine",
+      "label": "Levitating Seed Engine",
+      "blend": "transparent",
+      "corePixels": 89594,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "levitating-seed-engine-170.png",
+      "tiny": "levitating-seed-engine-85.png"
+    }
+  ],
+  "gradient": [
+    "#273536",
+    "#273536"
+  ],
+  "note": "Quiet theme backgrounds and whole silhouettes inspected at170px and85px. Radius24% is a deliberate UI clipping stress model, not installed-device evidence."
+}

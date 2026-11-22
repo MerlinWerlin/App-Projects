@@ -1,0 +1,89 @@
+{
+  "artworks": 5,
+  "encodedAssets": true,
+  "actualBlendMath": true,
+  "actualThemeGradient": true,
+  "fitInset": 0.06,
+  "stressCornerRadius": 0.24,
+  "installedDeviceVerified": false,
+  "allCoreSilhouettesRetained": true,
+  "batchThemesReviewed": 32,
+  "encodedAssetHashes": {
+    "thorn-sail-drifter": "7dab61155a6a5f472eecb22144c96d21b8e5a0d8651261e11fd6b6a120fc5e62",
+    "crown-grazer": "0643e92093b102322507811b6e161056da79ae38e90755a16ed8421e98e2d796",
+    "orbital-root-knot": "cb9068d45cf1bfb33438f3916c40e4bc91ecb4da9f3220a84af6912c5f6ff5c6",
+    "levitating-needle-reef": "47843842bdc359576662b02455d469b617a0ef64063e498a27f36f511c950ce6",
+    "lightning-chrysalis": "4c8b7f912e014e74905d176201618e48f84741e5ab8abdda8e95b37d4e583a7b"
+  },
+  "theme": "ferroflora",
+  "sourceHashes": {
+    "thorn-sail-drifter": "e09ae4c4a39bb242ceb0ed3fc750aef0cc0c85def81596ffdcc75b8892eca923",
+    "crown-grazer": "17f77df63ad4f12786a4f2ce5654d9b705dc1c5d9d08dba5321d1ab69a1db3d6",
+    "orbital-root-knot": "1b2b2481c59745477d9780f275f6fa9f48af02ecd327b8dc2bceba2704332077",
+    "levitating-needle-reef": "a6396467ff6f4ec30b1cbb818ab90b215adcf69bb235a12d09cb953e223b85fc",
+    "lightning-chrysalis": "7801a84942bf9ceb071c5de7666b468b5af6ab8e0e61934925c7b6cb3465bf8b"
+  },
+  "reviewed": true,
+  "perArtwork": [
+    {
+      "id": "thorn-sail-drifter",
+      "label": "Thorn Sail Drifter",
+      "blend": "transparent",
+      "corePixels": 29906,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "thorn-sail-drifter-170.png",
+      "tiny": "thorn-sail-drifter-85.png"
+    },
+    {
+      "id": "crown-grazer",
+      "label": "Crown Grazer",
+      "blend": "transparent",
+      "corePixels": 42587,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 3.44779030251319e-06,
+      "fringeReviewFlag": false,
+      "preview": "crown-grazer-170.png",
+      "tiny": "crown-grazer-85.png"
+    },
+    {
+      "id": "orbital-root-knot",
+      "label": "Orbital Root Knot",
+      "blend": "transparent",
+      "corePixels": 40070,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "orbital-root-knot-170.png",
+      "tiny": "orbital-root-knot-85.png"
+    },
+    {
+      "id": "levitating-needle-reef",
+      "label": "Levitating Needle Reef",
+      "blend": "transparent",
+      "corePixels": 15243,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "levitating-needle-reef-170.png",
+      "tiny": "levitating-needle-reef-85.png"
+    },
+    {
+      "id": "lightning-chrysalis",
+      "label": "Lightning Chrysalis",
+      "blend": "transparent",
+      "corePixels": 31028,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "lightning-chrysalis-170.png",
+      "tiny": "lightning-chrysalis-85.png"
+    }
+  ],
+  "gradient": [
+    "#E8E2D5",
+    "#E8E2D5"
+  ],
+  "note": "Quiet theme backgrounds and whole silhouettes inspected at170px and85px. Radius24% is a deliberate UI clipping stress model, not installed-device evidence."
+}
