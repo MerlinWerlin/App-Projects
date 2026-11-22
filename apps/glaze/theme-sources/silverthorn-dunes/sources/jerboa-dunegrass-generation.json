@@ -1,0 +1,18 @@
+{
+  "id": "jerboa-dunegrass",
+  "prompt": "SILVERTHORN DUNES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real desert flora/fauna, natural recognizable proportions and coherent anatomy FIRST. Visibly physical BIDRI-INSPIRED handcraft: shallow solid BLACKENED ZINC-ALLOY low relief, satin matte charcoal-black patina with subtle uneven burnished metal surface; FEW BROAD TAPERED PURE SILVER WIRE/FOIL STRIPS hammered FLUSH into hand-cut channels, tiny bright metallic seams/hammer traces. Broad smooth uninterrupted black-metal reserves over80percent, no dense fine hairlike scratches, hatching, papergrain or white fur texture. Only a few broad silver strips per anatomical region, with hammered silver highlights. Inlay follows real fur directions, anatomical contours, natural scales, leaf veins and petals. BLACK METAL MUST DOMINATE at least75% of subject surface; restrained silver detailing no all-silver body. Thin cast metal edge visible in modest three-quarter relief, not chrome mirror, jewelry/charm, pin/brooch, porcelain/enamel, shell/nacre, wire cage, tin-sheet repousse, woven metal, glitter, beads, wood, plastic, ink/print/scratchboard/engraved paper or white outline drawing. No generic floral scrollwork plastered across bodies; keep animal identity immediate. Real gaps between limbs/branches alpha transparent. Whole complete composition central64%, minimum18% true alpha margin each side, no cut feet/ears/tail/leaf. No ground, scenery, backing plaque, frame, plinth, medallion, hanging ring/bail, cast shadow, halo, text, letters, numbers, clock/date/battery values, UI, logo or signature. Subject JERBOA DUNEGRASS: one natural adult jerboa in a gentle low hop toward upper-left, giant natural hind feet and long thin hind shanks, exactly TWO short forelegs held near chest and TWO long hindlegs with complete feet, coherent little rounded head with natural long ears and small eyes, single long thin tail curving in an open arc toward right with a small brush tip. No kangaroo body, costume, wings or artificial springs. A separate compact tuft of three arching dune grasses near the lower left, not scenery or a ground pad. Satin-black zinc body with few broad tapered silver inlays following cheeks, haunch and tail, narrow flush silver inner-ear patches, only two broad cheek and haunch strips; black-grass leaves with broad flush silver midribs. Entire ears, four limbs/feet, long tail and all grass tips fully contained with generous true alpha margins. Keep instantly recognizable real jerboa anatomy; no extra legs, tail loop ring or ornate floral overlay. CRITICAL APPROVED MATERIAL: smooth satin-black metal over80percent; only sparse BROAD tapered flush-hammered silver strips, 5to10times wider than scratch marks. No dense hairlike lines/hatching/scales or repeated tiny marks; emphasize black negative reserves and few bright embedded strips.",
+  "tool": "built-in image_gen",
+  "source": "sources/jerboa-dunegrass.8f1a15c3.png",
+  "sourceSha256": "8f1a15c33761bfe74988d5fb0058bcc4f49dce946aab32063f77d263cd3f719a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/jerboa-dunegrass.46c66651.png",
+  "sha256": "46c66651804091231dae4e483f6d45e69d24673782e559dd7b606ff703d5c5dd",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

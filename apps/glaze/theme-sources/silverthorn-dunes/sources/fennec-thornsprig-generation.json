@@ -1,0 +1,23 @@
+{
+  "id": "fennec-thornsprig",
+  "prompt": "Edit this EXACT fennec fox and acacia twig artwork. Preserve natural pose, coherent four legs/paws, giant natural ears, pointed muzzle, long bushy tail, whole twig and generous true alpha margins. MATERIAL CORRECTION ONLY: remove the dense fine hairlike pale scratches from the black body entirely. Make most body surfaces SMOOTH UNINTERRUPTED SATIN BLACKENED ZINC METAL with broad gentle curved metal planes, no paper grain, scratched fur, hatching or white pointillism. Replace those many thin lines with ONLY A FEW VISIBLY BROAD TAPERED FLUSH SILVER INLAY STRIPS: two smooth broad inner-ear rim strips, three short broad cheek/chest strips, two curved shoulder strips, two short flank strips and three broad tapering strips at tail tip. Each silver strip is FLAT HAMMERED INTO A CUT CHANNEL level with the black metal surface, 5 to10 times broader than the old fine scratches, with tiny irregular hammered seams and restrained directional metallic reflections. More than80percent of body remains uninterrupted satin-black metal reserve, clearly worked METAL rather than flat white-on-black scratchboard, ink etching, silver fur photo, raised wire/cloisonne or glossy lacquer. Inlay lines follow anatomical contours, no flowers, scrollwork, jewelry or extra decoration. Twig retains only a few broad flush silver midrib strips on black leaves. Keep all anatomy and alpha exterior/open limb gaps intact; no ground, shadow, backing, halo, frame, text or UI.",
+  "tool": "built-in image_gen",
+  "source": "sources/fennec-thornsprig.af76a26e.png",
+  "sourceSha256": "af76a26e1ae9d326c9814ad5e5c46fa86fbf9f54f89dd0d91137455b4b6d7b44",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fennec-thornsprig.a748c3cb.png",
+  "sha256": "a748c3cbde43771387023d6a285b7b6508afe0d2c829c154319aeb768f8bd3ef",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/material-repair/fennec-thornsprig-history.json",
+  "referencedImage": {
+    "file": "qa/material-repair/fennec-thornsprig.original.f8ea23a6.png",
+    "sha256": "f8ea23a642fff85bbad36d121c0d76d560a295905c199a849384b4a70ea64590"
+  }
+}

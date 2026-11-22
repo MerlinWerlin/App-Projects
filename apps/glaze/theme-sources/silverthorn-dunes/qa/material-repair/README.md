@@ -1,0 +1,1 @@
+Unselected original and exact built-in material repair lineage. Replaced held dense pale hair scratches with smooth satin-black metal reserves and sparse broad tapered hammered silver flush inlays; selected revised gate source preserved unchanged. Selected repaired original retained without subject edits by packaging tools.
