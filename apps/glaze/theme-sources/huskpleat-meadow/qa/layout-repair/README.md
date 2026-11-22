@@ -1,0 +1,1 @@
+One wallpaper-only lowerhabitat repositioning after actual750x1334crop clippedbottomleafbank. Originalraw/exactinitial3ownreferences and exacteditrequest/result retained. All5standaloneart/native/palette unchanged by hash; finalactualcropreview inparentqa. No standaloneartchange or coordinator/Jaredapproval.

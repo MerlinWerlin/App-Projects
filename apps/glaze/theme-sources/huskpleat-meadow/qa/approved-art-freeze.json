@@ -1,0 +1,172 @@
+{
+  "themeId": "huskpleat-meadow",
+  "scope": "Lane-local selected5artwork/raw/options/palette/meta byte snapshot after build/visual QA. Filename is existing QA convention; coordinator material review PENDING. First selected source unchanged. Lane-local candidate quality review. Coordinator material/integration review PENDING because messaging failed MCP-32000; deliveryunknown. Original human brief explicitly permits isolated collision-checked lane work during messaging outage. No coordinator/Jared approval, publication or installed-device claim.",
+  "reviewAuthority": "lane-local; coordinator review pending",
+  "files": {
+    "widgets/barn-owl.09c8c219.png": "09c8c2196fe1139e39a12d9b7108f3e34b87658a7a4640d759dfbe64fe939b8b",
+    "widgets/bumblebee.777d2379.png": "777d2379b4ad206747d2105411acd4102fd55f8b17c5b6c6bf7bcb15ce8a6cf4",
+    "widgets/dog-rose.88cf32a3.png": "88cf32a3131e6a7d02c72185e127ae9dbe87c8bb7b1ad30669b5b7876b774486",
+    "widgets/harvest-mouse.35288a0e.png": "35288a0ecb16781461d603046c5c9cc99eadd5b8ae5494fcc8abc751b7d7bba2",
+    "widgets/hedgehog.ea7a269b.png": "ea7a269ba0ebf41d146a58ac4d9d4b39e6155c8bd9d222eacba38f9fd65c0d74",
+    "widgets/README.md": "0324dbb7e4318bf9d0646aa3189fe6a34b6cf23d30565bc01a7f18f4155efa77",
+    "widgets/widget-options.json": "2bdb1a61880ae7de88da86a73f6887e7874f38175fae3e1a693f7f8492a937b1",
+    "sources/barn-owl-generation.json": "678a2947ba6bce4513ca8cf818d5134bb093d0437eabac7b74bed57c36619aa0",
+    "sources/barn-owl.467770ba.png": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+    "sources/bumblebee-generation.json": "522df0da56143b11b520179ac381fc1362ec31a6a3d7fe110dac783afb7085d1",
+    "sources/bumblebee.63021405.png": "63021405e57bc735da116c1731739a51e212f877193914cbe383f87d69620faa",
+    "sources/dog-rose-generation.json": "1dfb83c683c177b2fe9d5cfb7a05056f064a7f9c06bf8a918ecbd65c64145589",
+    "sources/dog-rose.243572b5.png": "243572b5311a79490637ccbe1d501d0494266188bd0ef5a09b7e30e7063bbe5f",
+    "sources/harvest-mouse-generation.json": "19aebeb7f9a29b5eb0f3040c330e090c96320530412e729fda6449e915d9c6ea",
+    "sources/harvest-mouse.3494bad6.png": "3494bad681b180c3b6ed71d13abb9e188303072ed9313f5629733078c18c9659",
+    "sources/hedgehog-generation.json": "35e90bfb437de2ff12579767438893f443ba47f838cc0a3a05d416650f3b5264",
+    "sources/hedgehog.ee86f902.png": "ee86f902edc134985bfd1b52ad5aedb4a6d1e77bb46725e0de5f91797dbdcb24",
+    "sources/README.md": "37fb033bbd2b19036277f10678220d7e48f855cd6c037582c5d2bc28ca58bd51",
+    "palette.json": "0d88c3f16599cbe83ee7b5b60cde61bab802985ec701a1cd2a4efb27d42442a5",
+    "meta.json": "dec05b4e4036757fdbdf0d0a7ab13e3993ac99a1221d72c851de61ac74d7fa75"
+  },
+  "firstSelectedSourceSha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+  "artworkProvenance": [
+    {
+      "id": "barn-owl",
+      "prompt": "HUSKPLEAT MEADOW, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real meadow fauna/plants with natural clear anatomy and whole strong silhouette FIRST. Distinct physical craft: broad actual dried CORN-HUSK LEAF SHEETS, softened then hand-FAN-PLEATED, pinched/gathered at narrow joints, rolled lengthwise for slender stems/limbs and secured by ONE or TWO thin twisted HUSK bindings. Broad creamy straw and warm ochre leaves with restrained russet-brown dyed areas; all remains matte dry plant material. Distinct fine LONGITUDINAL parallel plant ribs run over each broad sheet, scattered thin dry wrinkles/vein ridges and curled papery edges, irregular small tapered splits only at free leaf tips. Large broad sheet regions and3to5clear shallow pleats per wing/petal/bodyfield stay visibly readable at85. Mild dimensional relief from FOLDED/TUCKED/GATHERED actual husk, not rigid carved solid body. Fine leaf fibres remain plant-like and dry, not silk sheen/ribbon texture or printed fakewoodgrain. Broad gathered leaf surface with pinched root/fan-tip expansion is central, NOT a surface coating over living fur/feathers/skin. No wicker basket/coiling/plaiting/over-under weave, knots/macrame/braidedcord body, flat split-straw intarsia stripes, satin ribbon embroidery/tiny stitches, woolfelt/fur/flock, paper pulp/clay, cardboardflutes, cooked/uncookedpasta, pencil-shaving serratedpaintedrims, solidwoodgrain/chips/excelsior, plastic/resin/porcelain/metal/gems. No origami geometric facetedpaper planes or fabrictoy seam. Tiny dark details are small dark-dyed HUSK inserts, not glassbeads/gemeyes. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Open limb/stalk gaps truealpha. No detachedhusk debris, foliage wreath/frame/medallion/base/ground/scenery, background castshadow/halo/glow, jewellery/clasp/displaymount. No letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. FIRST MATERIAL SAMPLE: ONE whole recognizable natural BARN OWL perched on ONE short slightly sloping rolled-husk stalk. Body slightly three-quarter facingLEFT, head turns front with a clear HEART-SHAPED FACE formed from TWO broad cream fan-pleated husk half-panels meeting at a tiny rolled triangular darkochre beak. Exactly2small dark-brown husk-insert eyes set naturally within facialheart, no giant cartoon eyes, no ear tufts. Upperhead and back warmochre broad foldedleaf sheets, long folded wings are two broad rust-ochre fan-pleated husk panels over palecream softly gathered breast;3to5coarse pleatfolds and longitudinal plant ribs, NO many feather tiles or furry fine fibres. Modest whole short tail. Exactly2coherent rolled-husk legs and2feet with complete smalltoes grip shortstalk; ONE small binding collar visible at bodybase andone atstalkfork. Whole heartface/wing/tail/toes/stalktips insidegenerous alpha, natural birdanatomy and quiet compactpose; no nest/extraanimal/flowers/plaque.",
+      "tool": "built-in image_gen",
+      "source": "sources/barn-owl.467770ba.png",
+      "sourceSha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/barn-owl.09c8c219.png",
+      "sha256": "09c8c2196fe1139e39a12d9b7108f3e34b87658a7a4640d759dfbe64fe939b8b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "harvest-mouse",
+      "prompt": "HUSKPLEAT MEADOW, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real meadow fauna/plants with natural clear anatomy and whole strong silhouette FIRST. Distinct physical craft: broad actual dried CORN-HUSK LEAF SHEETS, softened then hand-FAN-PLEATED, pinched/gathered at narrow joints, rolled lengthwise for slender stems/limbs and secured by ONE or TWO thin twisted HUSK bindings. Broad creamy straw and warm ochre leaves with restrained russet-brown dyed areas; all remains matte dry plant material. Distinct fine LONGITUDINAL parallel plant ribs run over each broad sheet, scattered thin dry wrinkles/vein ridges and curled papery edges, irregular small tapered splits only at free leaf tips. Large broad sheet regions and3to5clear shallow pleats per wing/petal/bodyfield stay visibly readable at85. Mild dimensional relief from FOLDED/TUCKED/GATHERED actual husk, not rigid carved solid body. Fine leaf fibres remain plant-like and dry, not silk sheen/ribbon texture or printed fakewoodgrain. Broad gathered leaf surface with pinched root/fan-tip expansion is central, NOT a surface coating over living fur/feathers/skin. No wicker basket/coiling/plaiting/over-under weave, knots/macrame/braidedcord body, flat split-straw intarsia stripes, satin ribbon embroidery/tiny stitches, woolfelt/fur/flock, paper pulp/clay, cardboardflutes, cooked/uncookedpasta, pencil-shaving serratedpaintedrims, solidwoodgrain/chips/excelsior, plastic/resin/porcelain/metal/gems. No origami geometric facetedpaper planes or fabrictoy seam. Tiny dark details are small dark-dyed HUSK inserts, not glassbeads/gemeyes. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Open limb/stalk gaps truealpha. No detachedhusk debris, foliage wreath/frame/medallion/base/ground/scenery, background castshadow/halo/glow, jewellery/clasp/displaymount. No letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: ONE whole recognizable HARVEST MOUSE climbing on ONE short diagonal rolled-husk grassstalk. Mouse side-on facingLEFT/UP, smallslenderbody with warmochre broad gatheredleaf back, cream pleatedbelly, naturalpointedsnout, exactly2round upright ears made of broad shallow folded creamhusk discs with russet interiors,2small darkhusk-insert eyes. Exactly4coherent legs/paws grip stalk at different heights, alltoes simplified but complete. ONE long thin rolled-husk prehensile TAIL wraps once around lowerstalk then curves openly outward to a whole taperingtip; no detached rope loop or secondtail. Body is few broad dryhusk pleats/gathers, NO fur/excelsior or narrow woven strips. Head naturally small, no cartoon plushface. Shortstalk has ONE slender leaf andONE compactseedhead, allwhole inalpha, no nest/ground/wreath. Input Image1 ONLY own selected barnowl as material/craft reference: preserve drybroad cornleaf sheets, longitudinalplant ribs, gatheredpleats/curledthinlips. Create this different subject/composition, nevercopy owlpose oraddowl.",
+      "tool": "built-in image_gen",
+      "source": "sources/harvest-mouse.3494bad6.png",
+      "sourceSha256": "3494bad681b180c3b6ed71d13abb9e188303072ed9313f5629733078c18c9659",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/harvest-mouse.35288a0e.png",
+      "sha256": "35288a0ecb16781461d603046c5c9cc99eadd5b8ae5494fcc8abc751b7d7bba2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "barn-owl",
+          "file": "sources/barn-owl.467770ba.png",
+          "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/harvest-mouse-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/harvest-mouse-exact-tool-result.json"
+    },
+    {
+      "id": "hedgehog",
+      "prompt": "HUSKPLEAT MEADOW, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real meadow fauna/plants with natural clear anatomy and whole strong silhouette FIRST. Distinct physical craft: broad actual dried CORN-HUSK LEAF SHEETS, softened then hand-FAN-PLEATED, pinched/gathered at narrow joints, rolled lengthwise for slender stems/limbs and secured by ONE or TWO thin twisted HUSK bindings. Broad creamy straw and warm ochre leaves with restrained russet-brown dyed areas; all remains matte dry plant material. Distinct fine LONGITUDINAL parallel plant ribs run over each broad sheet, scattered thin dry wrinkles/vein ridges and curled papery edges, irregular small tapered splits only at free leaf tips. Large broad sheet regions and3to5clear shallow pleats per wing/petal/bodyfield stay visibly readable at85. Mild dimensional relief from FOLDED/TUCKED/GATHERED actual husk, not rigid carved solid body. Fine leaf fibres remain plant-like and dry, not silk sheen/ribbon texture or printed fakewoodgrain. Broad gathered leaf surface with pinched root/fan-tip expansion is central, NOT a surface coating over living fur/feathers/skin. No wicker basket/coiling/plaiting/over-under weave, knots/macrame/braidedcord body, flat split-straw intarsia stripes, satin ribbon embroidery/tiny stitches, woolfelt/fur/flock, paper pulp/clay, cardboardflutes, cooked/uncookedpasta, pencil-shaving serratedpaintedrims, solidwoodgrain/chips/excelsior, plastic/resin/porcelain/metal/gems. No origami geometric facetedpaper planes or fabrictoy seam. Tiny dark details are small dark-dyed HUSK inserts, not glassbeads/gemeyes. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Open limb/stalk gaps truealpha. No detachedhusk debris, foliage wreath/frame/medallion/base/ground/scenery, background castshadow/halo/glow, jewellery/clasp/displaymount. No letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: ONE whole naturally proportioned EUROPEAN HEDGEHOG walking side-on towardRIGHT. Low oval domedback, narrow pointed facingsnout, tiny darkdyedhusk eye/nose, small roundedear, exactly4short coherent legs withwholefoot/toetips visible beneathbody. Its prickly back is a cluster of about12to18short broad drycornhusk pieces PINCH-FOLDED lengthwise into tapering stiffleafspines, eachtriangular pleatedtip with longitudinalplant ribs and curledthinlip; coarsewhole spines, NOT hundreds fuzzy fibres, timbertoothpicks, porcupine quills, feathers, pinecone scales or wovenbasket. Lowerbelly ONE broad cream gatheredhusk sheet with smallbinding atrear, head smoothrolled/tuckedwarmochrehusk. Everyspinetip/snout/ear/foot whole in generousalpha, no leaves/fruit/base/ground/extraanimal. Input Image1 ONLY own selected barnowl as material/craft reference: preserve drybroad cornleaf sheets, longitudinalplant ribs, gatheredpleats/curledthinlips. Create this different subject/composition, nevercopy owlpose oraddowl.",
+      "tool": "built-in image_gen",
+      "source": "sources/hedgehog.ee86f902.png",
+      "sourceSha256": "ee86f902edc134985bfd1b52ad5aedb4a6d1e77bb46725e0de5f91797dbdcb24",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hedgehog.ea7a269b.png",
+      "sha256": "ea7a269ba0ebf41d146a58ac4d9d4b39e6155c8bd9d222eacba38f9fd65c0d74",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "barn-owl",
+          "file": "sources/barn-owl.467770ba.png",
+          "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/hedgehog-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/hedgehog-exact-tool-result.json"
+    },
+    {
+      "id": "dog-rose",
+      "prompt": "HUSKPLEAT MEADOW, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real meadow fauna/plants with natural clear anatomy and whole strong silhouette FIRST. Distinct physical craft: broad actual dried CORN-HUSK LEAF SHEETS, softened then hand-FAN-PLEATED, pinched/gathered at narrow joints, rolled lengthwise for slender stems/limbs and secured by ONE or TWO thin twisted HUSK bindings. Broad creamy straw and warm ochre leaves with restrained russet-brown dyed areas; all remains matte dry plant material. Distinct fine LONGITUDINAL parallel plant ribs run over each broad sheet, scattered thin dry wrinkles/vein ridges and curled papery edges, irregular small tapered splits only at free leaf tips. Large broad sheet regions and3to5clear shallow pleats per wing/petal/bodyfield stay visibly readable at85. Mild dimensional relief from FOLDED/TUCKED/GATHERED actual husk, not rigid carved solid body. Fine leaf fibres remain plant-like and dry, not silk sheen/ribbon texture or printed fakewoodgrain. Broad gathered leaf surface with pinched root/fan-tip expansion is central, NOT a surface coating over living fur/feathers/skin. No wicker basket/coiling/plaiting/over-under weave, knots/macrame/braidedcord body, flat split-straw intarsia stripes, satin ribbon embroidery/tiny stitches, woolfelt/fur/flock, paper pulp/clay, cardboardflutes, cooked/uncookedpasta, pencil-shaving serratedpaintedrims, solidwoodgrain/chips/excelsior, plastic/resin/porcelain/metal/gems. No origami geometric facetedpaper planes or fabrictoy seam. Tiny dark details are small dark-dyed HUSK inserts, not glassbeads/gemeyes. Whole subject central64percent with18percent genuinely empty ALPHA every side, all extremities complete. Open limb/stalk gaps truealpha. No detachedhusk debris, foliage wreath/frame/medallion/base/ground/scenery, background castshadow/halo/glow, jewellery/clasp/displaymount. No letters/numbers/text, live clock/date/battery/weather values, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: A plant-only natural DOG ROSE sprig with TWO openfive-petal flowers atdifferentheights, ONE whole closed pointedbud, THREE serrated compoundleaflet groups, a short slenderbranch with2tinycurvedthorns. Each bloom exactlyFIVE broad roundedcream-to-palerussetpink CORNHUSK PETALS, individual broad thin dryplant leaves gathered/pinchedatpetalbase into3or4gentlefanpleats withcurledirregularedges and longitudinalplant ribs. Darkochre small foldedhusk stamencluster atcenters, no glossybeads. Leaflets broad matte mutedolive-dyedhusk panels withclearnatural serrations androlledstemjoins, not narrow wovenstrips or satinribbonstitches. TWOflowers/bud/branch/leaflet/thorntips allwhole generouslyinsidealpha; naturalbotanicalbranching. PlantONLY, no owl/mouse/bee/eyes/berries/letters, no wreath/ground/base. Input Image1 ONLY own selected barnowl as material/craft reference: preserve drybroad cornleaf sheets, longitudinalplant ribs, gatheredpleats/curledthinlips. Create this different subject/composition, nevercopy owlpose oraddowl.",
+      "tool": "built-in image_gen",
+      "source": "sources/dog-rose.243572b5.png",
+      "sourceSha256": "243572b5311a79490637ccbe1d501d0494266188bd0ef5a09b7e30e7063bbe5f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/dog-rose.88cf32a3.png",
+      "sha256": "88cf32a3131e6a7d02c72185e127ae9dbe87c8bb7b1ad30669b5b7876b774486",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "barn-owl",
+          "file": "sources/barn-owl.467770ba.png",
+          "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/dog-rose-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/dog-rose-exact-tool-result.json"
+    },
+    {
+      "id": "bumblebee",
+      "prompt": "ONE LAST PRECISE ANATOMY EDIT. IMAGE1 EDIT TARGET is our dry corn-husk bee after a first anatomy correction; it currently has FIVE clearly visible legs. IMAGE2 is our own first owl material reference only. Keep all existing target pixels/shape/material/color/pose/FOURwings/TWOantennae/stripedabdomen/FIVEexistinglegs as close as possible. ADD ONLY ONE MISSING RIGHT FRONT LEG to make EXACTLY SIX whole visible legs. The existingthree legs on viewersLEFT andtwo legs on viewersRIGHT stay. The new sixth leg originates on the FRONT RIGHT SIDE OF THORAX just behindhead. Bring it UPWARD and outward into the LARGE OPEN ALPHA GAP between HEAD/ANTENNAE and the upperRIGHT FOREWING LEADING EDGE: thin rolledhusk uppersegment emerges fromthorax near head, bends up/right in emptygap, then a shortsegment ending tiny2clawfoot clearly visible ABOVE the head-right and LEFT of the largeupperrightwing. Do nothide this leg behindwing/body; wholeleg/clawend must be unambiguously visible and separate from2antennae. All6legs attachedtothorax, nolegfromabdomen, no detachedseventh/eighthleg or newantenna. Newleg is dry warmochre rolled CORNHUSK withsamefineplantfibres andtinyjointbinding as existinglegs. ChangeONLYthis oneleg; preserve the4broadpleatedcreamwings, broad dryleaf longitudinalribs/curledlips and naturalbee silhouette. Wholeall4wings/6legs/2antennae/abdomenfitcentral70percent withtruealpha exterior; tinyextentadjustmentonlyifneeded tocontainnewfoot. TRUEtransparentalpha insideallopenings/outside. No background/shadow/halo, text/numbers/logo/UI, no wholeowl or materialredesign. DeliverONEcorrectedwholebee.",
+      "tool": "built-in image_gen",
+      "source": "sources/bumblebee.63021405.png",
+      "sourceSha256": "63021405e57bc735da116c1731739a51e212f877193914cbe383f87d69620faa",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bumblebee.777d2379.png",
+      "sha256": "777d2379b4ad206747d2105411acd4102fd55f8b17c5b6c6bf7bcb15ce8a6cf4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/anatomy-repair/bumblebee-history.json",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "bumblebee-unselected-original",
+          "file": "qa/anatomy-repair/bumblebee.first-repair.d413e63e.png",
+          "sha256": "d413e63ea096c86d9794aa6759c3bd9676591b448640c2bb8089d828caeedc3f",
+          "role": "Own unselected animal EDIT TARGET for documented anatomy-only correction; exact input retained unchanged."
+        },
+        {
+          "order": 2,
+          "id": "barn-owl",
+          "file": "sources/barn-owl.467770ba.png",
+          "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/bumblebee-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/bumblebee-exact-tool-result.json"
+    }
+  ]
+}

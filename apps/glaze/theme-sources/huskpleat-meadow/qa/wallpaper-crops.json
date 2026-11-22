@@ -1,0 +1,38 @@
+{
+  "themeId": "huskpleat-meadow",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.5b62e5c1.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "5b62e5c173ad207329629fbee578a94860286cc8484072d8e21c60c963bc4a8e",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.5d3fc97e.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "5d3fc97e9833172f486062dd3672ef1f2f4569428010ed71c078e4926f6b996d",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.a85d3cf5.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "a85d3cf5e777d86911b5a8a5b386daab1166becfc55a9e6f16bf7e876ca775c2",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "Final1290x2796/1179x2556/750x1334 encodedphone crops allviewed whole. Lowerbank hasquietspaceunderallleafpoints, owlbeak/feet/toes/tail/stalkends, mouseears/paws/tail/seedhead, rosepetals/bud/serratedleaflets/thorns andgrass/groundleaftips allretained. Originalclipped750crop andone layout-onlyedit preserved; no fiveart/nativechange."
+  }
+}
