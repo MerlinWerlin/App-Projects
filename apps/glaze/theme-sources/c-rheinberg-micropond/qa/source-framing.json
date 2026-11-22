@@ -1,0 +1,100 @@
+{
+  "review": "All5 complete organisms/colony,lobes,ciliary crowns,toes,claws,rootlets and chain ends within original alpha16/96 bounds;edgealpha maximum1/2/1/1/1.",
+  "assets": [
+    {
+      "id": "radiating-desmid",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          113,
+          87,
+          1135,
+          1147
+        ],
+        "96": [
+          114,
+          89,
+          1134,
+          1146
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "stalked-rotifer",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          243,
+          51,
+          850,
+          1218
+        ],
+        "96": [
+          274,
+          69,
+          849,
+          1217
+        ]
+      },
+      "edgeAlphaMaximum": 2,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "waterbear",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          58,
+          301,
+          1201,
+          924
+        ],
+        "96": [
+          58,
+          302,
+          1201,
+          923
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "chain-diatom",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          90,
+          179,
+          1172,
+          1079
+        ],
+        "96": [
+          90,
+          179,
+          1172,
+          1078
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "duckweed-raft",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          120,
+          177,
+          1115,
+          1128
+        ],
+        "96": [
+          121,
+          178,
+          1114,
+          1127
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

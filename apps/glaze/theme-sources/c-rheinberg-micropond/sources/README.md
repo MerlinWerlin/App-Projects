@@ -1,0 +1,1 @@
+Six selected unmodified built-in model outputs: five independent genuine-alpha artwork generations and separately generated own-five-reference habitat wallpaper. Exact prompts/source hashes/internal reference lineage in provenance.json.
