@@ -1,0 +1,17 @@
+{
+  "themeId": "ghostpress",
+  "recipe": [
+    "hex",
+    "pressVessel",
+    "pressSluice",
+    "cut",
+    "baton",
+    "basin",
+    "ledger"
+  ],
+  "art": {
+    "pressVessel": "M 8 63 L 92 63 L 83 84 Q 49 98 18 82 Z M 18 63 L 18 54 L 68 54 M 68 63 L 68 37 L 87 37 L 87 63 M 72 43 L 80 43 L 80 51 L 72 51 Z M 77 37 L 74 25 L 82 22 L 85 37 M 23 53 C 33 47 30 33 43 28 C 59 19 70 28 62 39 C 65 28 53 30 49 40 L 42 53 M 19 72 L 81 72",
+    "pressSluice": "M 10 89 L 10 46 L 30 46 L 30 89 M 39 89 L 39 39 L 61 39 L 61 89 M 70 89 L 70 46 L 90 46 L 90 89 M 7 89 L 94 89 M 10 60 L 30 60 M 10 76 L 30 76 M 39 53 L 61 53 M 39 69 L 61 69 M 70 60 L 90 60 M 70 76 L 90 76 M 34 39 L 34 23 L 50 10 L 67 23 L 67 39 M 28 25 L 50 6 L 73 25 M 46 20 L 55 20 L 55 28 L 46 28 Z"
+  },
+  "direction": "Folded-sea carrier hull and crest as subject; lock-gate house and sluice leaves as detail; hexagonal die-plate dial, cut marks, baton hands, basin charge gauge and ledger calendar."
+}

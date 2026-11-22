@@ -1,0 +1,18 @@
+{
+  "id": "counterweight-drawbridge",
+  "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: COUNTERWEIGHT DRAWBRIDGE of the paper harbour. One complete compact bridge with two arched masonry-like piers, an off-centre hinged central span raised at a steep bent angle, a narrow walking deck with fine railings, two gantry struts holding large unequal suspended square balance blocks, visible rigid linkages to the pivot and one little keeper's alcove built into the left pier. The right half of the raised deck folds impossibly back to form a small sheltered landing, but its function and bridge construction remain obvious. Broad low asymmetric side-three-quarter view, legs/piers/balance weights all visible. An inhabited useful place rather than abstract geometry; no vehicle, house roof or tower duplicate. Same inkless embossed graphite rag-paper relief, shallow die impressions, compressed fibrous edges and ivory raking highlights. No ink, printed values, signs, clock, dates or numerals. Full complete asset in transparent margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/counterweight-drawbridge.fdaad125.png",
+  "sourceSha256": "fdaad125454c23514e623e5b9845185928dd8ed1a8da0c604c5ab1bce34ed1f7",
+  "sourceDimensions": [
+    1398,
+    1125
+  ],
+  "selectedFile": "widgets/counterweight-drawbridge.337873e8.png",
+  "sha256": "337873e8859674c18a2d4a163ae601f6adf9a42ca7c78a2ea2039faafed4cf0d",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

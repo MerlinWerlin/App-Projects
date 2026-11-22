@@ -1,0 +1,18 @@
+{
+  "id": "walking-archive",
+  "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: WALKING ARCHIVE, a squat travelling harbour library with a pitched split roof, a readable front door and two big bay windows showing tiny recessed book spines WITHOUT writing. Its body stands on FOUR distinctly jointed mechanical legs, each ending in a folded little flight of stairs as a broad walking foot; one foot lifted mid-step. A counterweight drawer projects behind, and a narrow balcony wraps one side. Coherent constructed inhabited machine with clear joints/hinges and supporting structure, compact low heavy archive body over four spread stair-feet, not a normal house on stilts and not an abstract shape. Make it an original inkless embossed graphite rag-paper illustration: shallow pressed planes, fibrous edges and ivory grazing highlights, no ink/metal/plastic/foam material or freestanding toy. Entire legs/roof fit in view, generous transparent margin.",
+  "tool": "built-in image_gen",
+  "source": "sources/walking-archive.f36b6c4b.png",
+  "sourceSha256": "f36b6c4b5db3fa43053ca1affc5ae1454a75a812dcf7803aacd6a0148cabb998",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/walking-archive.6586b2eb.png",
+  "sha256": "6586b2eb8c2d1f0740e63464e2503a3efd648fc7019acb5e84541c622ddf4982",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
