@@ -41,8 +41,7 @@ struct SerifNativeCheck {
     var x0 = w, y0 = h, x1 = -1, y1 = -1
     try pixels.withUnsafeMutableBytes { buffer in
       guard let cg = CGContext(data: buffer.baseAddress, width: w, height: h, bitsPerComponent: 8, bytesPerRow: stride, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { throw Failure.message("RGBA context missing") }
-      // Match image top-left coordinates before measuring the ink.
-      cg.translateBy(x: 0, y: CGFloat(h)); cg.scaleBy(x: 1, y: -1)
+      // Raw CGImage scanlines already match the PNG's top-to-bottom pixel order.
       cg.draw(image, in: CGRect(x: 0, y: 0, width: w, height: h))
       for py in 0..<h { for px in 0..<w where buffer[py * stride + px * 4 + 3] >= 16 {
         x0 = min(x0, px); y0 = min(y0, py); x1 = max(x1, px); y1 = max(y1, py)
