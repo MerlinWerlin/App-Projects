@@ -1,0 +1,18 @@
+{
+  "id": "iris-waterbeetle",
+  "prompt": "BEADWEFT ESTUARY for Glaze. ONE original1024x1024 separate pure NATURE artwork, OFF-LOOM HAND-STITCHED GLASS SEED-BEADWORK. Natural recognisable flora/fauna, no architecture, machines or costume. Every form consists of individual SHORT CYLINDRICAL GLASS SEED BEADS in staggered brick rows, clearly visible drilled axial HOLES, raised bead rims, tiny stitch threads bridging holes, narrow open gaps and slight handmade irregularity; matte beads plus restrained translucent edge glints. A flat shallow stitched bead silhouette, not pixel art, painted dots, enamel/glaze cells, mineral orientation grains, fabric weaving/filled embroidery, resin toy or smooth3D sculpture. Ink teal #102C31, sea-glass teal #3B928C, burnt coral #D5715B, oyster cream #E3D4B5, kelp gold #A9955C, umber #49362D with sparse muted lavender flower beads. Strong whole natural silhouette, bead detail subordinate to form. Entire subject central65% with16% or more TRUE transparent alpha margins on every side, all major openings genuinely transparent. No fabric backing, rectangular bead mat, floor/scenery, pale halo/glow/shadow, frame/border, text/letters/numbers, labels, clocks/gauges/time/date/battery/weather values, logos or UI. Subject IRIS WATERBEETLE: one tall graceful IRIS PLANT with one fully open large lavender/oyster-cream bloom, three upright inner petals and three arched falling petals with tiny kelp-gold bead accents, plus one closed bud on a shorter side stem. THREE long swordlike teal/green leaves fan from a single small open bead root crown, one leaf bows far left and one curves right. A small oval dark teal WATER BEETLE climbs the right leaf near its middle, coherent paired wing cases, six fine stitch-thread legs and two short antennae; no comic face or jewellery gemstones. Each petal/leaf is a thin shaped sheet of individually cylindrical beads with open axial holes and thread joins, the plant has natural structure rather than a stamped generic flower. Strong tall asymmetrical botanical silhouette, tiny insect provides a different scale. No vase, pot, scenery/water rectangle, bird, mammal or human object. Complete petal tips, bud, all leaf ends, root crown and insect legs fit generous alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/iris-waterbeetle.aa51de2a.png",
+  "sourceSha256": "aa51de2a81c27e9767dd58dbd64b8bd328a0fd6b7a548ae7579fde1f05a12c4f",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/iris-waterbeetle.906987fb.png",
+  "sha256": "906987fb94a1003c4315c43f79677f5b87c4d28ab1a482bef5b611f9653f0b3b",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

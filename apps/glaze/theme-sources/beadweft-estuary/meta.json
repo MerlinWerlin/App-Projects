@@ -1,0 +1,18 @@
+{
+  "name": "Beadweft Estuary",
+  "mood": "A sea-glass and coral estuary of kingfishers, otters, iris, tidepool creatures and saltmarsh moths.",
+  "tags": [
+    "seed-beadwork",
+    "stitched-glass",
+    "estuary",
+    "wildlife",
+    "tidepool",
+    "saltmarsh"
+  ],
+  "credits": "Glaze original artwork, built-in OpenAI image generation; original native widget geometry by lane B.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Composition/layout adjustment ONLY for this beadwork nature wallpaper. Preserve exactly the same kingfisher/reeds, otter/kelp, iris/beetle, hermit crab/tidepool, moth/sea-lavender, natural anatomy, individually cylindrical glass seed beads with holes/thread bridges and all existing colours/detail. Keep1290x2796 portrait wallpaper intent. Scale the ENTIRE HABITAT GROUP down and reposition it as one coherent coastal vignette inside CENTRAL75% WIDTH and BETWEEN50% AND80% CANVAS HEIGHT. All beaks, feet, tails, wing tips, flower/reed tips and habitat edges must be completely contained in that safe area. Upper50% and bottom18% should be quiet uninterrupted dark ink-teal bead-ground texture matching the existing ground, no added motifs or border. This safety must preserve the whole nature scene under both1290x2796 and shorter750x1334 centre crops. Do not crop any part of the habitat to force the fit. No new plants/animals, text, frame, panel, glow or UI; only improve the relative scale/position and continue the same subtle dark ground.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

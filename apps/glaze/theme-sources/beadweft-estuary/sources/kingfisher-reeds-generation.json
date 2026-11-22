@@ -1,0 +1,18 @@
+{
+  "id": "kingfisher-reeds",
+  "prompt": "BEADWEFT ESTUARY for Glaze. ONE original1024x1024 separate pure NATURE artwork, OFF-LOOM HAND-STITCHED GLASS SEED-BEADWORK. Natural recognisable flora/fauna, no architecture, machines or costume. Every form consists of individual SHORT CYLINDRICAL GLASS SEED BEADS in staggered brick rows, clearly visible drilled axial HOLES, raised bead rims, tiny stitch threads bridging holes, narrow open gaps and slight handmade irregularity; matte beads plus restrained translucent edge glints. A flat shallow stitched bead silhouette, not pixel art, painted dots, enamel/glaze cells, mineral orientation grains, fabric weaving/filled embroidery, resin toy or smooth3D sculpture. Ink teal #102C31, sea-glass teal #3B928C, burnt coral #D5715B, oyster cream #E3D4B5, kelp gold #A9955C, umber #49362D with sparse muted lavender flower beads. Strong whole natural silhouette, bead detail subordinate to form. Entire subject central65% with16% or more TRUE transparent alpha margins on every side, all major openings genuinely transparent. No fabric backing, rectangular bead mat, floor/scenery, pale halo/glow/shadow, frame/border, text/letters/numbers, labels, clocks/gauges/time/date/battery/weather values, logos or UI. Subject KINGFISHER REEDS: one naturally proportioned kingfisher in three-quarter RIGHT profile perches on a short gently curved reed-side branch, both small feet gripping it, long straight beak extends right and tail points down-left. Teal/blue bead back and folded wing, coral-orange breast, one oyster-cream cheek stripe, one small dark round bead for eye, naturally sleek rather than plush/chubby. Two slender reed stalks with gold/ivory seed heads arc around the LEFT and lower-right of bird without enclosing it; three narrow teal leaf blades cross below branch. The beads follow feather contours in staggered rows while their individual holes and connecting thread remain unmistakable. No water rectangle, extra bird, fish held in beak, tools, scenery or human objects. Whole beak, crown, tail, claws, branch ends, all reed tops and leaves fully visible inside generous alpha margins. A tangible nature beadwork motif, no isolated solid jewel/metal figurine.",
+  "tool": "built-in image_gen",
+  "source": "sources/kingfisher-reeds.04b565a8.png",
+  "sourceSha256": "04b565a850bd0e8c9049d00beafad87c603ef81818cb3dac494b4b901855bf61",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/kingfisher-reeds.769e09df.png",
+  "sha256": "769e09df2554142a36eb6ecb6700a328bf6b724008ef0c97bd8dbd3455a321e5",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

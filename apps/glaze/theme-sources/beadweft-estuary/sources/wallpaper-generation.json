@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Composition/layout adjustment ONLY for this beadwork nature wallpaper. Preserve exactly the same kingfisher/reeds, otter/kelp, iris/beetle, hermit crab/tidepool, moth/sea-lavender, natural anatomy, individually cylindrical glass seed beads with holes/thread bridges and all existing colours/detail. Keep1290x2796 portrait wallpaper intent. Scale the ENTIRE HABITAT GROUP down and reposition it as one coherent coastal vignette inside CENTRAL75% WIDTH and BETWEEN50% AND80% CANVAS HEIGHT. All beaks, feet, tails, wing tips, flower/reed tips and habitat edges must be completely contained in that safe area. Upper50% and bottom18% should be quiet uninterrupted dark ink-teal bead-ground texture matching the existing ground, no added motifs or border. This safety must preserve the whole nature scene under both1290x2796 and shorter750x1334 centre crops. Do not crop any part of the habitat to force the fit. No new plants/animals, text, frame, panel, glow or UI; only improve the relative scale/position and continue the same subtle dark ground.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.4c65a5a7.png",
+  "sourceSha256": "4c65a5a77120a0603b6ed4a7363f815fd9beafed9c32d39c7a1dbcf72bd56c3f",
+  "sourceDimensions": [
+    759,
+    2072
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "394d27f9b9461a73728551fdc1994fb2c7712f7138cd26f9f5aaf0e2874a595e",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.c5f23d91.png",
+    "sha256": "c5f23d919ffef681a9f16dad15c1b37bb84db9752b616bb5ff91a88fce8335de"
+  }
+}
