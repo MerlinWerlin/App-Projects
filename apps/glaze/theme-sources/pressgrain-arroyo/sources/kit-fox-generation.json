@@ -1,0 +1,29 @@
+{
+  "id": "kit-fox",
+  "prompt": "PRESSGRAIN ARROYO, Glaze Nature. Use case: stylized-concept. One original separate square artwork, real transparent alpha outside the entire silhouette. Create a FLAT HAND-PULLED COLLOGRAPH PRINT impression, as if a relief and intaglio hybrid printed from a single built-up plate with at least three DISTINCT attached textures. A coarse BOOKCLOTH mesh imprint creates a clear regular OPEN CROSSED GRID in one main anatomical field, with small pale square cells, broken printed threads and a few uneven contact skips. A second continuous anatomical field has coarse RANDOM grit-stipple ink transfer, visibly different from the cloth grid. A third field has a BROAD TORN BOARD EDGE leaving a jagged pressure fringe and intermittent ink pooling, next to one larger smooth flat ink reserve. Texture fields meet at visible hard-to-torn seams set by the edges of the plate's glued patches. Most of the silhouette stays strong and continuous. Rim ink accumulation is fine and irregular. Palette is matte rust red, dusty indigo and a light ochre-cream reserve inside the subject, with occasional dark plum pooled ink. At 85 pixels the three main material zones should still read as open grid, irregular grit and torn-edge smooth field. Show the actual flat transferred result straight on in ONE plane. No depth, cast shadows or actual paper, textile, thread, grit or cardboard pieces visible above the print surface. No illustration drawn over the textures, black scratchboard hatching, carved linocut gouges, continuous stipple shading, woodgrain, embossed cutout, stippled photo, watercolor brushwork, metallic glints or thin guilloche loop geometry. The entire creature or plant must be recognizable and fully inside the square, with generous true alpha on each side. Every limb, bill, tail, leaf or stem tip is complete. No rectangular paper sheet, backing tint, border, ground, scenery, stray grain outside the silhouette, signage, numerals, clock, date, battery or weather readings, logo, signature, lettering or other UI. NEW SEPARATE SUBJECT. One whole KIT FOX quietly standing in three-quarter profile facing left. Slender low body, large upright triangular ears, small pointed muzzle with a single visible natural eye, exactly four attached slender legs and whole paws, one bushy tail with dark tip curving back to the right. Indigo open cloth grid prints across the large tail panel, rust grit is concentrated on the back and one haunch, and the pale throat and cheek are a smooth reserve edged by a ragged torn-board pressure band. All tips complete and clearly separated from the square edges. The input is our own roadrunner craft reference only. It supplies the transferred cloth grid, coarse grit, torn plate boundaries and flat ink language. Make a new composition without a bird.",
+  "tool": "built-in image_gen",
+  "source": "sources/kit-fox.98944bc7.png",
+  "sourceSha256": "98944bc7f87f33c3aefe3ae40050ef5cf722a31f578975c2bfdf5acccc343210",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/kit-fox.8bc31446.png",
+  "sha256": "8bc3144640107ce08b7ead89831338ca8f21489c319f81f5a673f86c573c6188",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "greater-roadrunner",
+      "file": "sources/greater-roadrunner.0893abca.png",
+      "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/kit-fox-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/kit-fox-exact-tool-result.json"
+}

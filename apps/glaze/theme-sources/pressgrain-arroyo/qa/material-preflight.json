@@ -1,0 +1,26 @@
+{
+  "id": "pressgrain-arroyo",
+  "lane": "B46",
+  "category": "Nature",
+  "process": "Collograph print impressions from a built-up plate of open bookcloth mesh, coarse grit, torn board and smooth ink reserves.",
+  "status": "Coordinator confirmed reservation. First and only raster sample delivered for actual coordinator material review.",
+  "subjects": [
+    "greater-roadrunner",
+    "kit-fox",
+    "collared-lizard",
+    "prickly-pear",
+    "yucca-moth"
+  ],
+  "cornerCompanion": "Wave rim follows an arroyo bank, staple marks recall coarse cloth crossbars, and needle hands echo the pulled edge of the print. Tiles and board layouts echo the plate's texture patches. The compact companion uses one fragment of broken cloth grid and two grit dots.",
+  "firstGateCriterion": "At small size at least three unmistakable flat transferred textures follow anatomy: coarse crossed cloth grid, random grit and torn board edge against the smooth reserve.",
+  "technicalReferences": [
+    {
+      "url": "https://www.metmuseum.org/exhibitions/listings/2014/ps-art-2014/works-of-art",
+      "scope": "Met educator text describes constructing a textured printing plate and transferring the resulting image. No artwork, reference image or historical composition used as input."
+    }
+  ],
+  "reviewAuthority": "Coordinator's material review pending. No publication authority.",
+  "sourceSha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+  "neighborReview": "../outputs/pressgrain-arroyo-candidate-neighbor-review.json",
+  "collisionReview": "No exact collograph/collagraph or Pressgrain term in current coordinator theme source metadata or historical and accepted pack manifests. Actual image comparisons completed as recorded."
+}

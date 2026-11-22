@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "greater-roadrunner",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-068c4dfa-56b3-44fc-921e-fd8969b5d681.png",
+      "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        23,
+        1253,
+        1254
+      ]
+    },
+    {
+      "id": "kit-fox",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-6d826449-e961-4242-9c67-51d5545f889d.png",
+      "sha256": "98944bc7f87f33c3aefe3ae40050ef5cf722a31f578975c2bfdf5acccc343210",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        13,
+        1240,
+        1254
+      ]
+    },
+    {
+      "id": "collared-lizard",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-43250edc-ce09-45fa-aca5-a235266b77c6.png",
+      "sha256": "d0ab755df131404eeee62201aeeaad4279e88dc3169f1d31fce468dba5a6cc3b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        21,
+        1240,
+        1254
+      ]
+    },
+    {
+      "id": "prickly-pear",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-33c0b856-7517-4418-866c-16c462892150.png",
+      "sha256": "fd73d86952277730e41c35e191bfa908d2e78b940dac9a7bad6c3893dafe890b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1236,
+        1254
+      ]
+    },
+    {
+      "id": "yucca-moth",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-c4d813c8-4c13-4a67-aed2-fc33007c06eb.png",
+      "sha256": "6091ef2af9ddfd849d81a11bcb578f46b1520a7b39dd5f7d49348e9f1c9396b3",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        23,
+        1243,
+        1228
+      ]
+    }
+  ]
+}

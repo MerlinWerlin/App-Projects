@@ -1,0 +1,62 @@
+[
+  {
+    "id": "greater-roadrunner",
+    "kind": "art",
+    "image": "greater-roadrunner.152afe7b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Greater Roadrunner"
+  },
+  {
+    "id": "kit-fox",
+    "kind": "art",
+    "image": "kit-fox.8bc31446.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Kit Fox"
+  },
+  {
+    "id": "collared-lizard",
+    "kind": "art",
+    "image": "collared-lizard.0ddda3cc.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Collared Lizard"
+  },
+  {
+    "id": "prickly-pear",
+    "kind": "art",
+    "image": "prickly-pear.13cbc497.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Prickly Pear"
+  },
+  {
+    "id": "yucca-moth",
+    "kind": "art",
+    "image": "yucca-moth.1bd996bc.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Yucca Moth"
+  }
+]

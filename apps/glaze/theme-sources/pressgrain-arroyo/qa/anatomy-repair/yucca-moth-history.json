@@ -1,0 +1,45 @@
+{
+  "id": "yucca-moth",
+  "tool": "built-in image_gen",
+  "reason": "Added two visibly attached forelegs while preserving the four wings and planar ink impression.",
+  "originalPrompt": "PRESSGRAIN ARROYO, Glaze Nature. Use case: stylized-concept. One original separate square artwork, real transparent alpha outside the entire silhouette. Create a FLAT HAND-PULLED COLLOGRAPH PRINT impression, as if a relief and intaglio hybrid printed from a single built-up plate with at least three DISTINCT attached textures. A coarse BOOKCLOTH mesh imprint creates a clear regular OPEN CROSSED GRID in one main anatomical field, with small pale square cells, broken printed threads and a few uneven contact skips. A second continuous anatomical field has coarse RANDOM grit-stipple ink transfer, visibly different from the cloth grid. A third field has a BROAD TORN BOARD EDGE leaving a jagged pressure fringe and intermittent ink pooling, next to one larger smooth flat ink reserve. Texture fields meet at visible hard-to-torn seams set by the edges of the plate's glued patches. Most of the silhouette stays strong and continuous. Rim ink accumulation is fine and irregular. Palette is matte rust red, dusty indigo and a light ochre-cream reserve inside the subject, with occasional dark plum pooled ink. At 85 pixels the three main material zones should still read as open grid, irregular grit and torn-edge smooth field. Show the actual flat transferred result straight on in ONE plane. No depth, cast shadows or actual paper, textile, thread, grit or cardboard pieces visible above the print surface. No illustration drawn over the textures, black scratchboard hatching, carved linocut gouges, continuous stipple shading, woodgrain, embossed cutout, stippled photo, watercolor brushwork, metallic glints or thin guilloche loop geometry. The entire creature or plant must be recognizable and fully inside the square, with generous true alpha on each side. Every limb, bill, tail, leaf or stem tip is complete. No rectangular paper sheet, backing tint, border, ground, scenery, stray grain outside the silhouette, signage, numerals, clock, date, battery or weather readings, logo, signature, lettering or other UI. NEW SEPARATE SUBJECT. One whole small pale YUCCA MOTH from above, with two clear narrow tapered forewings and two modest rounded lower hindwings, a natural narrow body, two short threadlike antennae and six small attached legs. Display all four intact wings and all six legs, with the four wings and legs arranged with clear silhouette gaps and slight natural asymmetry. A broad indigo cloth imprint fills one opposing wing field and repeats in a smaller one, pale cream smooth ink reserve occupies most of the broad faces, and shallow rust grit forms a distinct inset shoulder field with a broken board-edge pressure line. Recognizably a pale yucca moth despite limited inks, no eyespots or detached grit. The input is our own roadrunner craft reference only. It supplies the transferred cloth grid, coarse grit, torn plate boundaries and flat ink language. Make a new composition without a bird.",
+  "originalSource": "qa/anatomy-repair/yucca-moth.original.5b40a4e3.png",
+  "originalSha256": "5b40a4e3463de715f07f9cab20552ea015bb49ec060dd1a8c4de0a3101561194",
+  "repairPrompt": "Make a precise anatomy correction to Image 1, our existing original yucca moth artwork. Image 2 is our own collograph reference for the original flat print textures only. Image 1 already has the correct four complete wings, two antennae, and four visible legs below the thorax. Keep these intact. Add the missing foreleg pair. Draw one fine three-joint rust ink leg from the front left thorax just below the base of the left antenna, extending out and up-left into the open transparent gap between that antenna and the top edge of the left wing. Draw its matching front right leg from the front right thorax into the open space between the right antenna and right wing. Both new legs must attach to the thorax below the head and end in a short angled tarsus, just wide enough to count, with clean alpha between them, the antennae and the wings. Exactly six total visible attached legs, four wings and two original antennae. Preserve existing wing shapes, cloth grid, rust grit transfer, cream reserve and torn plate edges. Keep the full moth, all legs, wings and antennae inside the square and the true alpha background perfectly empty. No text or detached marks.",
+  "referencedImage": "qa/anatomy-repair/yucca-moth.original.5b40a4e3.png",
+  "selectedSource": "sources/yucca-moth.6091ef2a.png",
+  "selectedSourceSha256": "6091ef2af9ddfd849d81a11bcb578f46b1520a7b39dd5f7d49348e9f1c9396b3",
+  "materialReference": {
+    "id": "greater-roadrunner",
+    "source": "sources/greater-roadrunner.0893abca.png",
+    "sourceSha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+    "role": "Material reference only; target subject/geometry retained."
+  },
+  "referencedImageOrder": [
+    "qa/anatomy-repair/yucca-moth.original.5b40a4e3.png",
+    "sources/greater-roadrunner.0893abca.png"
+  ],
+  "exactToolRequest": "qa/anatomy-repair/yucca-moth-anatomy-repair-request.json",
+  "exactInitialToolRequest": "qa/anatomy-repair/yucca-moth-initial-request.json",
+  "exactInitialToolResult": "qa/anatomy-repair/yucca-moth-original.json",
+  "exactToolResult": "qa/anatomy-repair/yucca-moth-anatomy-repair-result.json",
+  "initialGenerationReferences": [
+    {
+      "order": 1,
+      "file": "sources/greater-roadrunner.0893abca.png",
+      "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467"
+    }
+  ],
+  "selectedGenerationReferences": [
+    {
+      "order": 1,
+      "file": "qa/anatomy-repair/yucca-moth.original.5b40a4e3.png",
+      "sha256": "5b40a4e3463de715f07f9cab20552ea015bb49ec060dd1a8c4de0a3101561194"
+    },
+    {
+      "order": 2,
+      "file": "sources/greater-roadrunner.0893abca.png",
+      "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467"
+    }
+  ]
+}

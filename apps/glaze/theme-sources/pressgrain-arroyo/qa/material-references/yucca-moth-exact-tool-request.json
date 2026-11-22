@@ -1,0 +1,9 @@
+{
+  "id": "yucca-moth",
+  "prompt": "Make a precise anatomy correction to Image 1, our existing original yucca moth artwork. Image 2 is our own collograph reference for the original flat print textures only. Image 1 already has the correct four complete wings, two antennae, and four visible legs below the thorax. Keep these intact. Add the missing foreleg pair. Draw one fine three-joint rust ink leg from the front left thorax just below the base of the left antenna, extending out and up-left into the open transparent gap between that antenna and the top edge of the left wing. Draw its matching front right leg from the front right thorax into the open space between the right antenna and right wing. Both new legs must attach to the thorax below the head and end in a short angled tarsus, just wide enough to count, with clean alpha between them, the antennae and the wings. Exactly six total visible attached legs, four wings and two original antennae. Preserve existing wing shapes, cloth grid, rust grit transfer, cream reserve and torn plate edges. Keep the full moth, all legs, wings and antennae inside the square and the true alpha background perfectly empty. No text or detached marks.",
+  "referenced_image_paths": [
+    "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-7c9b063d-bd10-4b5c-acf4-f6baff025cf9.png",
+    "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-068c4dfa-56b3-44fc-921e-fd8969b5d681.png"
+  ],
+  "transparent_background": true
+}
