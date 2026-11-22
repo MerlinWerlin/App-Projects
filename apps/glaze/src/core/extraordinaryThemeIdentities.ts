@@ -3,20 +3,34 @@
 export const EXTRAORDINARY_ART = {
   "aerolithVault": "M 9 91 L 12 43 Q 15 14 36 10 Q 43 9 48 28 Q 76 16 90 44 Q 99 62 90 91 Z M 23 86 L 24 51 Q 24 31 38 30 Q 52 33 49 58 L 46 86 M 49 86 Q 53 45 73 41 Q 88 46 82 72 L 77 86 M 14 66 Q 48 58 90 66 M 18 78 Q 52 69 87 78 M 24 21 C 18 22 19 29 24 29 C 30 28 29 21 24 21 Z",
   "aerolithPores": "M 12 44 C 8 23 34 17 36 37 C 38 56 16 60 12 44 Z M 49 17 C 46 5 65 5 66 17 C 67 31 50 32 49 17 Z M 59 54 C 59 35 88 33 91 53 C 93 73 62 77 59 54 Z M 26 83 C 23 67 45 63 46 80 C 47 95 28 97 26 83 Z M 76 87 C 76 77 89 75 91 86 C 93 96 78 99 76 87 Z",
+  "burrPortal": "M 11 88 L 11 27 L 38 12 L 38 45 L 63 31 L 89 48 L 89 88 Z M 11 27 L 38 45 L 38 88 M 38 45 L 63 60 L 89 48 M 63 60 L 63 88 M 19 51 L 29 56 L 29 72 L 19 67 Z M 48 64 L 55 69 L 55 82 L 48 78 Z M 71 67 L 82 61 L 82 78 L 71 84 Z",
+  "burrScrape": "M 10 20 Q 37 8 63 20 T 91 20 M 10 30 Q 37 18 63 30 T 91 30 M 10 40 Q 37 28 63 40 T 91 40 M 10 60 Q 37 48 63 60 T 91 60 M 10 70 Q 37 58 63 70 T 91 70 M 10 80 Q 37 68 63 80 T 91 80 M 10 90 Q 37 78 63 90 T 91 90",
+  "cDopplerVault": "M 6 80 C 10 28 38 14 57 23 Q 83 26 94 79 L 81 83 C 74 54 65 46 54 56 Q 48 67 42 75 Q 24 58 16 84 Z M 21 61 Q 22 39 36 37 Q 49 39 44 54 Q 36 65 21 61 Z M 56 43 Q 61 33 72 41 Q 79 50 73 57 Q 61 58 56 43 Z M 24 24 Q 52 4 76 24",
+  "cDopplerEchoes": "M 16 13 Q 50 28 84 13 M 12 24 Q 50 43 88 24 M 9 38 Q 50 59 91 38 M 7 54 Q 50 75 93 54 M 5 72 Q 50 94 95 72 M 20 29 Q 28 27 32 35 Q 35 42 27 45 M 64 49 Q 74 44 78 53 Q 82 61 73 65",
+  "cHyperspectralBasin": "M 12 41 Q 8 27 25 21 Q 39 12 46 28 Q 60 18 75 24 Q 91 24 87 40 Q 96 50 84 62 Q 85 79 65 80 Q 53 91 43 76 Q 25 86 19 70 Q 5 61 12 41 Z M 21 43 Q 17 32 30 28 Q 39 24 43 36 Q 59 27 71 32 Q 81 34 76 46 Q 87 53 75 59 Q 75 73 61 70 Q 49 82 43 67 Q 29 75 26 62 Q 15 56 21 43 Z M 33 46 Q 26 36 38 38 Q 46 44 50 39 Q 65 31 67 43 Q 62 51 70 57 Q 71 65 59 61 Q 48 70 44 59 Q 31 64 33 46 Z",
+  "cHyperspectralDelta": "M 49 93 Q 51 70 48 52 Q 41 31 51 9 M 49 70 Q 35 55 17 53 M 48 57 Q 65 43 87 42 M 45 40 Q 30 33 19 17 M 49 28 Q 67 20 78 9 M 35 57 L 31 42 M 27 53 L 15 40 M 65 49 L 69 32 M 73 44 L 88 28 M 30 28 L 34 15 M 61 20 L 61 7",
   "cIsoclinicSifter": "M 8 60 Q 25 53 39 50 Q 44 30 64 10 Q 61 32 66 43 Q 81 44 93 61 Q 75 58 66 65 Q 61 83 45 94 Q 50 75 45 63 Q 26 72 8 60 Z M 17 60 Q 35 61 46 53 Q 52 35 59 26 M 31 62 Q 44 62 50 56 Q 59 52 76 56 M 49 68 Q 55 74 50 85 M 48 50 Q 52 43 58 48 Q 64 54 56 59 Q 48 61 48 50 Z",
   "cIsoclinicApertures": "M 11 76 C 16 57 37 56 37 69 C 37 82 14 87 11 76 Z M 24 52 C 27 38 45 33 48 44 C 50 55 26 65 24 52 Z M 43 31 C 47 19 63 16 66 25 C 68 36 47 43 43 31 Z M 64 17 Q 76 8 82 17 Q 85 24 75 28 Q 65 28 64 17 Z M 82 18 Q 92 15 95 23",
   "cNeutrinoCascade": "M 8 83 Q 22 57 32 26 Q 39 8 52 21 Q 64 35 57 65 Q 52 85 67 91 M 14 84 Q 30 50 39 26 Q 45 14 51 25 Q 62 49 57 71 M 25 78 Q 38 48 43 31 M 34 58 Q 48 36 63 20 Q 76 6 88 25 M 35 58 Q 52 44 76 37 Q 94 34 90 51 M 35 58 Q 59 56 83 70 M 32 55 L 38 61 M 32 61 L 38 55",
   "cNeutrinoPair": "M 8 21 L 44 56 C 61 78 93 68 87 43 C 81 19 49 29 55 49 C 60 65 80 56 74 43 Q 68 34 63 42 M 44 56 C 31 75 11 65 17 48 Q 22 38 30 45 Q 36 54 26 57 M 45 57 L 56 85 M 47 57 L 71 91 M 49 57 L 87 85",
   "cSchlierenMach": "M 6 79 Q 13 50 17 14 Q 39 37 62 48 Q 77 55 94 51 M 6 79 Q 36 77 62 61 Q 81 49 95 34 M 6 79 Q 29 61 40 49 Q 47 41 52 38 M 13 70 Q 24 51 24 29 Q 45 48 65 51 M 15 75 Q 35 71 53 61 Q 77 48 92 66 M 28 57 Q 33 45 40 49 Q 48 54 41 61 Q 32 66 28 57 Z",
   "cSchlierenVortex": "M 31 14 Q 46 5 55 13 Q 61 20 46 23 Q 31 26 31 14 Z M 24 31 Q 48 18 68 30 Q 74 39 50 43 Q 25 47 24 31 Z M 16 52 Q 48 38 81 50 Q 89 62 51 66 Q 16 70 16 52 Z M 9 78 Q 49 65 91 79 Q 96 89 54 93 Q 12 95 9 78 Z",
+  "cSpectrogramCitadel": "M 13 86 L 13 26 L 31 26 L 31 12 L 58 12 L 58 22 L 84 22 L 84 85 L 70 85 L 70 43 L 57 43 L 57 86 L 44 86 L 44 34 L 31 34 L 31 86 Z M 17 36 L 26 36 M 17 43 L 26 43 M 17 51 L 26 51 M 17 60 L 26 60 M 17 69 L 26 69 M 17 77 L 26 77 M 36 23 L 53 23 M 36 29 L 53 29 M 48 39 L 53 39 M 48 47 L 53 47 M 48 56 L 53 56 M 48 66 L 53 66 M 48 76 L 53 76 M 63 31 L 80 31 M 74 50 L 80 50 M 74 60 L 80 60 M 74 70 L 80 70 M 74 79 L 80 79",
+  "cSpectrogramChirp": "M 12 82 L 28 82 M 18 73 L 35 73 M 24 64 L 41 64 M 30 55 L 47 55 M 36 46 L 53 46 M 42 37 L 59 37 M 48 28 L 65 28 M 54 19 L 71 19 M 47 78 L 65 78 M 52 68 L 70 68 M 57 58 L 75 58 M 62 48 L 80 48 M 67 38 L 85 38 M 72 28 L 90 28",
   "selvedgeFold": "M 7 53 L 28 17 L 48 34 L 70 10 L 94 47 L 73 89 L 51 73 L 29 94 Z M 7 53 L 29 39 L 48 55 L 70 31 L 94 47 M 29 39 L 28 17 M 48 55 L 48 34 M 70 31 L 70 10 M 29 39 L 29 94 M 48 55 L 51 73 M 70 31 L 73 89 M 17 58 L 37 45 M 35 73 L 58 47 M 57 67 L 83 42",
   "selvedgeWeft": "M 12 10 L 12 29 M 12 40 L 12 59 M 12 70 L 12 90 M 30 10 L 30 20 M 30 31 L 30 49 M 30 60 L 30 79 M 30 89 L 30 95 M 48 7 L 48 29 M 48 40 L 48 59 M 48 70 L 48 90 M 66 10 L 66 20 M 66 31 L 66 49 M 66 60 L 66 79 M 66 89 L 66 95 M 84 10 L 84 29 M 84 40 L 84 59 M 84 70 L 84 90 M 5 34 L 94 34 M 5 64 L 94 64 M 5 84 L 94 84",
   "reliquaryChambers": "M 11 64 C 6 41 18 14 37 14 Q 48 15 46 30 L 40 48 Q 59 41 64 17 Q 69 6 79 14 C 94 29 93 62 76 82 Q 43 103 18 82 Z M 19 58 Q 17 36 30 27 L 34 46 L 27 62 Z M 36 68 L 48 48 L 59 57 L 53 77 Z M 61 39 L 73 24 L 82 36 L 74 53 Z M 63 66 L 78 57 L 79 73 L 65 81 Z",
   "reliquaryCells": "M 12 25 Q 19 9 33 18 L 37 34 L 22 42 L 11 35 Z M 37 34 L 52 18 L 68 24 L 67 44 L 51 51 Z M 68 24 L 84 17 L 93 33 L 83 48 L 67 44 M 22 42 L 26 64 L 11 74 L 6 56 Z M 26 64 L 51 51 L 64 68 L 53 87 L 33 88 Z M 64 68 L 83 48 L 94 62 L 88 84 L 72 93 L 53 87",
   "ferrofloraDrifter": "M 9 75 Q 28 58 32 28 L 39 43 Q 52 24 84 12 L 64 38 L 94 34 L 74 52 L 90 54 L 64 64 Q 54 74 52 94 L 42 76 L 19 88 L 27 68 Z M 29 59 Q 52 52 62 42 M 37 65 Q 51 57 65 58 M 32 28 L 29 17 L 39 34 M 66 24 L 65 14 L 72 21 M 69 69 L 79 64 L 75 73",
   "ferrofloraDrops": "M 46 11 C 33 27 30 35 44 39 C 57 39 57 24 46 11 Z M 67 42 C 57 52 56 60 66 61 C 76 60 75 50 67 42 Z M 40 63 C 31 74 32 82 40 82 C 49 82 48 72 40 63 Z M 61 86 C 55 91 56 97 62 97 C 68 96 67 91 61 86 Z",
+  "flockShift": "M 8 70 L 8 28 L 35 28 L 35 11 L 86 11 L 73 30 L 92 30 L 92 69 L 72 69 L 72 88 L 22 88 L 31 70 Z M 24 57 L 24 42 L 48 42 L 48 28 L 71 28 L 71 55 L 55 55 L 55 72 L 38 72 L 38 57 Z M 6 18 L 25 14 L 36 32 L 55 26 L 70 51 L 95 48 M 83 73 L 76 90 L 89 84",
+  "flockDust": "M 12 18 L 20 12 L 26 20 L 18 27 Z M 48 9 L 55 16 L 48 23 L 41 16 Z M 78 19 L 90 17 L 85 28 Z M 9 56 L 18 42 L 25 55 Z M 42 43 L 53 40 L 56 53 L 44 57 Z M 75 49 L 90 46 L 87 58 L 76 61 Z M 19 79 L 31 69 L 37 81 L 25 89 Z M 56 73 L 66 78 L 58 92 L 48 85 Z M 80 78 L 92 74 L 90 90 L 81 93 Z",
   "umbraVault": "M 12 88 L 12 40 Q 26 8 50 12 Q 74 8 88 40 L 88 88 M 24 88 L 24 43 Q 36 21 50 25 Q 64 21 76 43 L 76 88 M 36 88 L 36 54 Q 50 33 64 54 L 64 88 M 6 89 L 94 89 M 24 69 L 36 69 M 64 69 L 76 69",
-  "umbraPiercing": "M 16 30 L 23 19 L 30 30 L 23 41 Z M 43 23 L 50 12 L 57 23 L 50 34 Z M 70 30 L 77 19 L 84 30 L 77 41 Z M 16 60 L 23 49 L 30 60 L 23 71 Z M 43 53 L 50 42 L 57 53 L 50 64 Z M 70 60 L 77 49 L 84 60 L 77 71 Z M 43 83 L 50 72 L 57 83 L 50 94 Z"
+  "umbraPiercing": "M 16 30 L 23 19 L 30 30 L 23 41 Z M 43 23 L 50 12 L 57 23 L 50 34 Z M 70 30 L 77 19 L 84 30 L 77 41 Z M 16 60 L 23 49 L 30 60 L 23 71 Z M 43 53 L 50 42 L 57 53 L 50 64 Z M 70 60 L 77 49 L 84 60 L 77 71 Z M 43 83 L 50 72 L 57 83 L 50 94 Z",
+  "turgorPressure": "M 9 68 C 1 45 15 17 32 21 C 45 24 45 9 60 12 C 77 15 68 38 86 42 C 103 47 95 75 80 84 C 63 94 55 71 40 79 C 22 91 14 82 9 68 Z M 22 61 C 18 49 23 35 31 38 C 44 42 35 62 22 61 Z M 56 47 C 47 36 62 25 68 35 C 74 46 62 57 56 47 Z M 58 70 C 54 58 73 54 77 65 C 80 77 61 81 58 70 Z",
+  "turgorSeams": "M 8 42 C 23 61 28 67 48 57 C 66 49 73 27 94 36 M 6 53 C 25 73 31 78 51 68 C 69 60 75 40 96 48 M 12 67 C 27 86 41 87 56 79 C 72 71 83 55 95 62 M 20 28 Q 30 43 31 57 M 44 19 Q 48 38 52 52 M 75 20 Q 66 31 65 42",
+  "waxCurrent": "M 9 58 C 10 23 42 9 57 20 C 75 31 54 46 35 48 C 18 51 23 75 43 73 C 64 71 60 48 80 43 C 99 39 99 72 79 86 C 53 105 8 90 9 58 Z M 21 56 C 24 36 42 29 46 33 C 48 39 31 38 21 56 M 37 61 C 43 49 58 43 67 36 M 59 82 C 71 78 80 69 82 57",
+  "waxCrackle": "M 7 14 L 28 24 L 45 16 L 63 29 L 87 17 M 28 24 L 22 43 L 39 56 L 31 77 L 42 95 M 22 43 L 6 52 M 39 56 L 58 48 L 74 61 L 94 53 M 58 48 L 63 29 M 74 61 L 68 82 L 86 96 M 68 82 L 49 79 L 42 95 M 31 77 L 9 87 M 87 17 L 92 37 L 74 61"
 } as const;
 export const EXTRAORDINARY_RECIPES = {
   "aerolith-choir": [
@@ -27,6 +41,33 @@ export const EXTRAORDINARY_RECIPES = {
     "leaf",
     "basin",
     "folio"
+  ],
+  "burr-hinterland": [
+    "square",
+    "burrPortal",
+    "burrScrape",
+    "dash",
+    "sword",
+    "trail",
+    "ticket"
+  ],
+  "c-doppler-phantasm": [
+    "arch",
+    "cDopplerVault",
+    "cDopplerEchoes",
+    "beads",
+    "leaf",
+    "column",
+    "ticket"
+  ],
+  "c-hyperspectral-dominion": [
+    "octagon",
+    "cHyperspectralBasin",
+    "cHyperspectralDelta",
+    "rays",
+    "sword",
+    "trail",
+    "ledger"
   ],
   "c-isoclinic-menagerie": [
     "wave",
@@ -55,6 +96,15 @@ export const EXTRAORDINARY_RECIPES = {
     "column",
     "folio"
   ],
+  "c-spectrogram-labyrinth": [
+    "square",
+    "cSpectrogramCitadel",
+    "cSpectrogramChirp",
+    "bars",
+    "baton",
+    "tiles",
+    "board"
+  ],
   "copper-selvedge": [
     "lozenge",
     "selvedgeFold",
@@ -82,11 +132,38 @@ export const EXTRAORDINARY_RECIPES = {
     "trail",
     "ledger"
   ],
+  "flockquake": [
+    "shield",
+    "flockShift",
+    "flockDust",
+    "pins",
+    "leaf",
+    "tiles",
+    "board"
+  ],
   "porcelain-umbra": [
     "arch",
     "umbraVault",
     "umbraPiercing",
     "cut",
+    "needle",
+    "column",
+    "folio"
+  ],
+  "turgor-tableau": [
+    "lozenge",
+    "turgorPressure",
+    "turgorSeams",
+    "beads",
+    "baton",
+    "column",
+    "board"
+  ],
+  "waxwake": [
+    "wave",
+    "waxCurrent",
+    "waxCrackle",
+    "rays",
     "needle",
     "column",
     "folio"
