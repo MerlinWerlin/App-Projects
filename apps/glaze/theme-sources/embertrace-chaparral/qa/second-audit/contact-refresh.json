@@ -1,0 +1,8 @@
+{
+  "themeId": "embertrace-chaparral",
+  "scope": "QA presentation-only refresh: contact sheet wallpaper now matches final selected second-audit wallpaper. Five artwork tiles use unchanged production PNGs; earlier contact retained exactly. No production/native/meta/palette bytes changed.",
+  "previousContactSha256": "6eea837651957e4cc69d3ca627bd0f9595848a271b355a20e66b552864052b1d",
+  "currentContactSha256": "baae85fd4662c6b98c1fcb2f39bbf5fafb2ed396556cc8a1346843eb22d19c8c",
+  "selectedWallpaperSha256": "b420826a3f5153d01855d0121a5f3a9373274099b43034cdcfa22ab88863b2f8",
+  "allTwentyFrozenFilesRemainIdentical": true
+}
