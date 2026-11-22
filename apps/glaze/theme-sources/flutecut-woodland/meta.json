@@ -1,0 +1,18 @@
+{
+  "name": "Flutecut Woodland",
+  "mood": "Familiar woodland owls, hedgehogs, squirrels, foxglove, fern and stag beetles in tactile corrugated-card panels.",
+  "tags": [
+    "corrugated-card",
+    "cut-laminated",
+    "kraft-panels",
+    "woodland-nature",
+    "clear-anatomy",
+    "wavy-flutes"
+  ],
+  "credits": "Glaze original artwork, built-in OpenAI image generation; original native widget geometry by lane B.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Edit this exact Flutecut Woodland wallpaper to fix composition only. Preserve all five recognizable natural subjects and the hand-cut corrugated cardboard broad kraft panels, coarse wavy cut-edge flutes, torn liner fibres, sage/berry accents, pale aqua matte paper and coherent woodland arrangement. SHRINK THE ENTIRE COMPLETE WOODLAND GROUP TO 68 PERCENT OF ITS CURRENT SIZE, maintaining its own relative proportions and relationships. Recenter that smaller whole group horizontally and at 54 percent image height. ALL owl, oak twig, leaves, hedgehog, squirrel, tail, foxglove, fern, brambles, beetle and log must be entirely inside the CENTRAL 62 PERCENT OF IMAGE WIDTH, no subject outside x19 to81percent. Whole group between y37 and72percent. Extend the existing pale aqua blank paper naturally above, below and on both sides, leaving generous quiet upper32percent and bottom24percent. Every twig, leaf, tail, leg and flower intact, no cropping. Do not enlarge any animal, add plants or alter the artwork. No frame, text, logo, UI, clock/date/battery marks or new decoration. Opaque portrait wallpaper.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

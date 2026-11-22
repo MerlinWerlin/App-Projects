@@ -1,0 +1,34 @@
+{
+  "themeId": "flutecut-woodland",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.b4298f23.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "b4298f2331133f67e672e8963812ca58e96f216ba6f452cbd022ce0af2c19311",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.a124a860.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "a124a8600de312533dcc937acaa288c3eeaf209dae834da4626c1870bef6a472",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.809fbba8.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "809fbba82adb293c5b7a06ddbb6fc860153fef414d0b5f8430842b1810d26f58",
+      "labelX": 550
+    }
+  ],
+  "visualReview": "Passed actual all three encoded crops: complete owl, oak, squirrel, hazel, foxglove, fern, hedgehog, bramble, beetle and log. Quiet upper/bottom paper preserved. Layout-only imagegen pullback retained with original and exact request."
+}

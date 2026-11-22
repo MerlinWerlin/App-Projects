@@ -1,0 +1,18 @@
+{
+  "id": "red-squirrel-hazel",
+  "prompt": "FLUTECUT WOODLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Familiar real woodland organism/group with natural recognizable proportions, face, body and coherent anatomy; handmade material SUPPORTS the nature subject rather than replacing it with abstract geometry. Physical handcraft HAND-CUT AND LAMINATED CORRUGATED CARDBOARD BAS-RELIEF: broad thin FLAT KRAFT PANELS, clearly visible coarse WAVY FLUTE CROSS-SECTIONS along cut edges, some outer liners peeled back to expose straight PARALLEL CORRUGATION CHANNELS, rough torn paper fibres at knife-cut lips and a few thin stacked layers. Natural kraft #AA7F4F, pale liner #D7BE8B, deep umber #5A402B, restrained sage #859976 and muted berry #A35344 accents. Unpadded thin3â€“5mm card craft, matte fibres and exposed stock construction, not smooth3Dplastic/clay/wood toy, plush/felt/fluffy wool, quilled rolled coils, loose wood shavings, film strips, feather vanes or printed faux cardboard texture. Clear whole natural silhouette first. No costumes/machines/house-shaped animals, giant cartoon eyes, abstract polygon/cube body or furniture. Major spaces and openings genuinely alpha transparent. Whole complete subject SMALL central64%, at least18% true alpha margin EVERY side, no clipped ear/tail/wing/foot/leaf. No ground/scenery/plinth/backing plaque/rectangle/frame/border, halo/glow/drop shadow, text/letters/numbers/labels, clock/date/battery/weather values, UI, logo or signature. Subject RED SQUIRREL HAZEL: one recognisable natural RED SQUIRREL sits upright in three-quarter profile facing LEFT, modest dark eye, pointed little muzzle, TWO small ear tufts, TWO forepaws holding one HAZELNUT and TWO hindfeet gripping a short HAZEL TWIG. A huge bushy natural tail curves upward right as ONE broad C-shaped CONTOUR-CUT CORRUGATED CARD PANEL with gently serrated outside edge, NOT a rolled spiral paper coil or many feather/leaf tiles. Body/chest/winglike side contours are just a few broad kraft panels, pale liner belly, muted reddish-brown outer liner, open wavy flute cross-sections at cut edges and one narrow peeled liner area exposes straight parallel channels. Natural squirrel body/limb/tail proportions, no costume or toyhouse/cartoonface. Hazel twig has TWO rounded serrated sage leaves and one small nut husk, all whole corrugated-stock shapes with visible fluted lips, no feather shafts/wood grain. Tall rounded C-tail and upright mammal silhouette distinct from owl and low hedgehog. Whole ear/tail tips, both forepaws/nut, both hindfeet and every twig/leaf end safely contained central64% with generous real alpha margin, no ground/scene/backing/halo/shadow.",
+  "tool": "built-in image_gen",
+  "source": "sources/red-squirrel-hazel.b22cf434.png",
+  "sourceSha256": "b22cf434f79788bd38f753248fae776ccc7af0bd412e621e251ce4eb039f2d55",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/red-squirrel-hazel.bf031b4d.png",
+  "sha256": "bf031b4df94e51cb0a88ed3c8794d9ae45e9c347fe750f0381a5a4a753adbf26",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

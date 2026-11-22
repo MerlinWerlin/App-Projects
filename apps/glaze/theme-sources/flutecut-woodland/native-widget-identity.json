@@ -1,0 +1,18 @@
+{
+  "themeId": "flutecut-woodland",
+  "recipe": [
+    "arch",
+    "fluteOwl",
+    "fluteChannels",
+    "staples",
+    "leaf",
+    "tiles",
+    "folio"
+  ],
+  "art": {
+    "fluteOwl": "M 27 26 Q 21 11 34 10 Q 44 8 50 18 Q 58 8 69 11 Q 82 15 74 30 L 78 62 Q 74 83 50 86 Q 25 83 23 62 Z M 27 31 Q 40 19 50 36 Q 61 19 74 31 M 33 31 Q 44 27 44 39 Q 44 50 34 48 Q 24 44 33 31 M 58 31 Q 70 27 72 39 Q 73 50 62 48 Q 52 44 58 31 M 45 47 L 50 56 L 56 47 M 27 47 Q 28 67 44 75 M 74 47 Q 72 68 57 76 M 37 63 L 42 67 L 37 71 M 48 66 L 52 70 L 48 74 M 58 62 L 63 66 L 58 70 M 40 84 L 38 92 M 58 84 L 61 92 M 12 93 Q 48 87 86 94 M 33 92 L 42 92 M 56 92 L 65 92",
+    "fluteChannels": "M 10 18 L 90 18 M 10 27 Q 20 11 30 27 Q 40 43 50 27 Q 60 11 70 27 Q 80 43 90 27 M 10 38 L 90 38 M 10 55 L 90 55 M 10 64 Q 20 48 30 64 Q 40 80 50 64 Q 60 48 70 64 Q 80 80 90 64 M 10 75 L 90 75 M 19 90 L 30 90 M 43 90 L 54 90 M 67 90 L 78 90"
+  },
+  "ornament": "M 14 31 L 86 31 M 14 42 Q 25 24 36 42 Q 47 60 58 42 Q 70 24 85 42 M 14 55 L 86 55 M 18 69 L 35 69 M 47 69 L 64 69 M 76 69 L 84 69",
+  "direction": "Recognizable perched owl as full illustration, exposed wavy corrugation channels and doubled kraft liners as craft detail. Arched layered rim, staple-like markers, leaf hands, stacked tile charge gauge and folio calendar. Compact companion is a short open paper-edge cross-section with three wavy flute channels, no full animal or enclosing button/ring."
+}
