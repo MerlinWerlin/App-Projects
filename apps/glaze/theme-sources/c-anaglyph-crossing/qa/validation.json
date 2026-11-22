@@ -1,6 +1,6 @@
 {
   "id": "c-anaglyph-crossing",
-  "packVersion": 1,
+  "packVersion": 2,
   "assets": 9,
   "fullImageDecode": true,
   "uniqueHashes": 9,
@@ -41,12 +41,12 @@
     ]
   ],
   "thumb": {
-    "path": "thumb.da30df54.webp",
+    "path": "thumb.fdcf0d0b.webp",
     "role": "thumb",
     "width": 240,
     "height": 520,
-    "bytes": 14380,
-    "sha256": "da30df546aec6c0d50fb14222ab7127c69de72118e1bdb9dc68d0adc564e8770",
+    "bytes": 11602,
+    "sha256": "fdcf0d0b289982ff41e8e70d731ded5f94e3782d547966416343138e182b27ed",
     "mime": "image/webp"
   },
   "sharedRuntimeChanged": false,
@@ -121,7 +121,8 @@
     "nativeCombination": "Viewed nine actual app renderer previews. Original stiltshell and keel-skater motifs, faceted live dial, cyan tile charge gauge and ticket calendar are readable in small, medium and large.",
     "sourceFraming": "High-opacity subjects fully inside every source frame. Edge alpha is 1 on four sources and 30 on forkbill. Forkbill additionally viewed composited at full production size on palette tile; no clipped subject or visible background frame.",
     "scope": "Artistic anaglyph language only; no calibrated stereo viewing claim. Scratch-only native descriptor insertion; actual shared registry integration and installed-device qualification remain separate.",
-    "actualCornerRefinement": "Reviewed actual coordinator renderer output in all four affected placements; old Clock-face/Battery SVGs verified byte-identical. Prototype studies retained as design history."
+    "actualCornerRefinement": "Reviewed actual coordinator renderer output in all four affected placements; old Clock-face/Battery SVGs verified byte-identical. Prototype studies retained as design history.",
+    "wallpaperEdgeRefinement": "Viewed all three final actual encoded variants: Foreground keel-skater has all three jointed legs and crescent rocker feet comfortably inside every crop; all six existing individuals/poses and red-cyan edges retained. Ground/terrain continues naturally; no demand to frame every scenery detail."
   },
   "packTestEvidence": "Unchanged pipeline: 47 distinct pack tests passed across initial suite and Pillow-enabled WebP reruns. This theme independently passes the real builder, actual app parser/planner/native renderer, full image decoding, unique hashes, source provenance and no selected orphan checks.",
   "ornamentRefinement": {
@@ -147,5 +148,31 @@
       "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
       "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
     }
-  }
+  },
+  "wallpaperEdgeRefinement": {
+    "reason": "Jared clarified both native and Artwork corners; primary wallpaper figures also need breathing room across device crops.",
+    "change": "Foreground keel-skater has all three jointed legs and crescent rocker feet comfortably inside every crop; all six existing individuals/poses and red-cyan edges retained.",
+    "generationTool": "built-in image_gen layout-only edit",
+    "actualDeviceVariantsReviewed": [
+      [
+        1290,
+        2796
+      ],
+      [
+        1179,
+        2556
+      ],
+      [
+        750,
+        1334
+      ]
+    ],
+    "fiveOriginalArtworksUnchanged": true,
+    "nativeIdentityAndPaletteUnchanged": true,
+    "allNineNativeSvgByteIdentical": true,
+    "priorImagesAndPromptsRetained": true,
+    "landscapeCanBleed": true,
+    "installedDeviceValidation": false
+  },
+  "localPackIteration": "v2 after layout-only wallpaper edge refinement; all catalogue/version/release outputs only in ignored dist/lane-c."
 }

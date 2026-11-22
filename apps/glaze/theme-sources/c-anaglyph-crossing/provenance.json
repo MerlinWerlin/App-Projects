@@ -121,21 +121,31 @@
     },
     {
       "id": "wallpaper",
-      "sourceImage": "sources/wallpaper.701f868a3950.png",
-      "sourceSha256": "701f868a3950e8c28f8ae5e3c9e39e2bf76cc759d014f98bfb7e800f7e10c3d1",
+      "sourceImage": "sources/wallpaper.73bc9956dcb6.png",
+      "sourceSha256": "73bc9956dcb633c97e0eb2f3a02c9abda169532025c914f2aa7919b59c35c97e",
       "sourceDimensions": [
         852,
-        1847
+        1846
       ],
       "file": "wallpapers/wallpaper.png",
-      "sha256": "a985bf2868666d2653327eafc6930764c99c83cf346552f246328240cdf6a6e5",
+      "sha256": "cc92e3d955a151693b698157e2418d23419d1afaecf121074490e4bce8dd552a",
       "width": 1290,
       "height": 2796,
-      "bytes": 2279534,
+      "bytes": 2212007,
       "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
-      "prompt": "Use case: stylized-concept. GLAZE ANAGLYPH CROSSING, a tangible migration of invented fauna rendered in a clean optical stereoscopic image language. MEDIUM: RED/CYAN DUAL-REGISTRATION ANAGLYPH-STYLE EXPOSURE. Two slightly different binocular projections of ONE coherent creature overlap into a single image. The left-view signal is clear vermilion red, the right-view signal is bright process cyan; shared structure becomes charcoal-blue with pale neutral white volumes. Red and cyan outer contours are visibly displaced by a few percent of the subject width, with different parallax around near and far limbs. The doubled contours and internal joint edges must be unmistakable even at thumbnail size. Clean continuous neutral tone fields, crisp bold silhouette, broad simple forms. This is an artistic optical registration image, not a calibrated stereo pair. Not two separate creatures or side-by-side panels. No paper texture, ink grain, screenprint hatching, lines filling the whole form, diffraction bands, rainbow, thermal heat gradients, glowing scan points, X-ray skeleton, physical sculpture, shiny plastic, clay, glass or chrome. No words, labels, numerals, coordinates, clock faces, readings, graphs, logos or watermark. Asset: ONE portrait phone wallpaper 1290x2796. A coherent tangible migration crossing on pale chalk-colored branching stone ledges. Lower half: a tall shield-headed stiltshell steps from one ledge to another, squat six-legged drumbacks and a fan-crested tumbler follow below; a long forkbill crawls across a low shelf and a three-rocker-foot keel-skater balances near the foreground. Each individual has only a modest red/cyan stereo offset and readable anatomy. Ledges also have subtly doubled red/cyan edges, otherwise pale neutral smooth volumes and restrained charcoal shading. Not a paper collage, engraving or craft object. Upper 45% mostly blank warm white space, no sky texture, confetti or decorative marks. Strong clean silhouettes, one coherent landscape and scale. Full bleed opaque wallpaper, no frame, text, UI or device.",
+      "prompt": "Use case: stylized-concept. GLAZE ANAGLYPH CROSSING, a tangible migration of invented fauna rendered in a clean optical stereoscopic image language. MEDIUM: RED/CYAN DUAL-REGISTRATION ANAGLYPH-STYLE EXPOSURE. Two slightly different binocular projections of ONE coherent creature overlap into a single image. The left-view signal is clear vermilion red, the right-view signal is bright process cyan; shared structure becomes charcoal-blue with pale neutral white volumes. Red and cyan outer contours are visibly displaced by a few percent of the subject width, with different parallax around near and far limbs. The doubled contours and internal joint edges must be unmistakable even at thumbnail size. Clean continuous neutral tone fields, crisp bold silhouette, broad simple forms. This is an artistic optical registration image, not a calibrated stereo pair. Not two separate creatures or side-by-side panels. No paper texture, ink grain, screenprint hatching, lines filling the whole form, diffraction bands, rainbow, thermal heat gradients, glowing scan points, X-ray skeleton, physical sculpture, shiny plastic, clay, glass or chrome. No words, labels, numerals, coordinates, clock faces, readings, graphs, logos or watermark. Edit this exact portrait wallpaper ONLY to improve creature framing in different phone crops. Preserve the exact existing creature identities, body proportions, poses, pale neutral shaded volumes, clean displaced red/cyan registration edges, chalk ledges and overall scene arrangement. Keep SIX existing individuals: tall shield-headed stiltshell, BOTH small drumbacks, fan-crested tumbler, long forkbill and the foreground three-rocker-foot keel-skater. No additions/removals or character redesign. Uniformly shrink the creature/ledge gathering modestly (about88% of its current size), move the arrangement UP a little and extend the same quiet chalk terrain around/below it. Keep generous side breathing room for faces/feet/tails. Most importantly the foreground keel-skater must have its complete head, body, THREE attached jointed legs and ALL THREE crescent rocker feet clearly inside the image, with the lowest foot no lower than84% of canvas height. The bottom16% is only quiet pale terrain, not a creature limb. Preserve sensible open spacing between the forkbill on its ledge and the foreground skater, with no anatomy tangencies or overlaps hiding a limb. Maintain the current large blank upper region (aboutone third). Terrain can naturally continue off-screen. Keep all important animal anatomy comfortably whole after a centred vertical crop removes outer10%top and10%bottom. No new props, structures, vegetation, textures, labels, numbers, borders, UI or devices. Portrait1290x2796, full bleed opaque.",
       "generationTool": "built-in image_gen",
-      "externalReferences": []
+      "externalReferences": [],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-edge-study/production-before.png",
+        "sha256": "a985bf2868666d2653327eafc6930764c99c83cf346552f246328240cdf6a6e5",
+        "inputPathAtGeneration": "wallpapers/wallpaper.png"
+      },
+      "priorGenerationSource": {
+        "sourceImage": "intermediate-wallpaper-edge-study/wallpaper.701f868a3950.png",
+        "sha256": "701f868a3950e8c28f8ae5e3c9e39e2bf76cc759d014f98bfb7e800f7e10c3d1"
+      },
+      "generationContext": "Layout-only built-in imagegen edit of the prior selected wallpaper. Whole gathering slightly reduced/recentred to give primary creature limbs/faces room and preserve complete focal anatomy in all device crops. Exact identities, poses and image style preserved. Five independent artwork assets/native paths/palette unchanged."
     }
   ],
   "published": false,
