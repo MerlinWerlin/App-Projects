@@ -1,0 +1,9 @@
+{
+  "id": "c-cherenkov-dispatch",
+  "sourceCategory": "City & Retro",
+  "builtCatalogCategory": "City & Retro",
+  "actualBrowseResolver": "city-retro",
+  "resolverSource": "C:/Users/jared/Documents/Codex/2026-11-14/files-pasted-by-the-user-glaze/work/App-Projects/apps/glaze/src/core/themeBrowse.ts",
+  "resolverSha256": "ab03e62f7803e8d8aa7fc80baf31441bd235a1f6875096e15953b3399e883a88",
+  "scope": "Actual builder catalog and actual coordinator themeBrowse resolver;no installed-device claim."
+}
