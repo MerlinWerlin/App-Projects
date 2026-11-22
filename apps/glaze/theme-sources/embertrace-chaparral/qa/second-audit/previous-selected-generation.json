@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Precise LAYOUT-ONLY edit of input1, own Embertrace Chaparral wallpaper. Preserve exact existing connected ceramic chaparral habitat: natural quail with small topknot/two feet, brush rabbit, two poppy cups, manzanita leaves, sage and complete joined dry bough, pale burnished unglazed ceramic, separated thin sinuous carbon strands with localized smoke deposits ON ceramic, restrained iron blush, soft lighting, warm sage-gray #B7B5A9 background and portrait aspect ratio. Uniformly scale the ENTIRE whole existing connected habitat to65percent of its CURRENT width and height as ONE unit. Keep every individual organism/object proportion and its relative arrangement unchanged. Center whole smaller habitat horizontally and place its overall center at57percent canvas height. Reconstruct ONLY matching quiet warm sage-gray background around it, smooth subtle compatible tone, no visible rectangular pasted edge. Final whole habitat occupies about HALF total canvas width, at least24percent quiet blank background on both left/right sides; large quiet areas above/below. Preserve every crest/ear/tail/foot/petal/leaf/branch tip complete. No crop, no added/duplicated/replaced species, no extra branches reaching screen edges, no peripheral vines/corner decorations, no enlarged rabbit/quail, no frame/text/UI or added haze. Exact original internal carbon-fired material and natural anatomy retained. Opaque full wallpaper background, no transparency.",
+  "tool": "built-in image_gen",
+  "source": "qa/second-audit/previous-selected-wallpaper.png",
+  "sourceSha256": "5dfad0fe045e6b9ef2b4f27978327e6e851754b6380b98d72c76f39dd31534eb",
+  "sourceDimensions": [
+    853,
+    1844
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "05b70327305959566bdaea23cd721b75bf20bb611f2e5abc40daefa20c88deca",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.1554e340.png",
+    "sha256": "1554e340a9425d590a38e7a8db5a05048331981bce274c290e06318ba103e979"
+  }
+}
