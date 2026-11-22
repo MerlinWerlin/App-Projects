@@ -1,0 +1,61 @@
+{
+  "scope": "First material sample; actual observed material neighbors, no images used as generation inputs.",
+  "candidateGenerated": true,
+  "shippedDormouseHashVerified": true,
+  "sources": [
+    {
+      "label": "B31 water-vole candidate",
+      "medium": "Helical cut-purl wire / sewn tubes",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-48ffa2dd-adaa-476b-86f1-eb07fcd3f6cb.png",
+      "sha256": "7085d1d870bd3875cdc73b6ea94aec5acd5605385d369a57f6105125bf632c85"
+    },
+    {
+      "label": "B2 copper loom",
+      "medium": "Woven metallic warp/weft grid",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\copper-selvedge\\widgets\\warp-fall.654200c5.png",
+      "sha256": "654200c583abf661c7e333702c349b4929123ca08995e50073f8af58ce738333"
+    },
+    {
+      "label": "B18 glass seedbeads",
+      "medium": "Discrete cylinder beads / holes / bridges",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\beadweft-estuary\\widgets\\otter-kelp-curl.3548e8ef.png",
+      "sha256": "3548e8ef4267e04db8abfef7c3583b62f792507dac7c030eb51189fa0526fc2c"
+    },
+    {
+      "label": "B22 taut cotton chords",
+      "medium": "Straight thread spans / brass pins",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\tautline-scrubland\\widgets\\tortoise-caper.372b6054.png",
+      "sha256": "372b6054bafb4931164382ee4e6cd86d9e2b529c7b774fac4e1c6193db63b024"
+    },
+    {
+      "label": "B17 linen lace",
+      "medium": "Open paired-thread mesh / picot joins",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\bobbinbound-meadow\\widgets\\clover-hare.f259aa68.png",
+      "sha256": "f259aa6810f289a3fc676f7fa8df6708ed67d15de7fec500fea3ae50f796d785"
+    },
+    {
+      "label": "B28 black-metal inlay",
+      "medium": "Smooth black alloy / flush silver strips",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\silverthorn-dunes\\widgets\\fennec-thornsprig.a748c3cb.png",
+      "sha256": "a748c3cbde43771387023d6a285b7b6508afe0d2c829c154319aeb768f8bd3ef"
+    },
+    {
+      "label": "Published Silver Orchard",
+      "medium": "Hammered silver rodent / enamel leaf",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-silver-dormouse.9881d967.webp",
+      "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694"
+    },
+    {
+      "label": "Berry Stitch actual",
+      "medium": "Crochet yarn / strawberry embroidery",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\berry-stitch\\widgets\\widget-berry-yarn-teapot.1fec9d4c.webp",
+      "sha256": "1fec9d4c21fcd21bdd842fcd16067debde170ddbdb4103d5c621feb11c4d218c"
+    },
+    {
+      "label": "Moonmallow actual",
+      "medium": "Punchneedle wool loops / fuzzy pile",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\moonmallow\\widgets\\widget-tufted-saturn-pillow.ec801954.webp",
+      "sha256": "ec801954264974b3881ea38a313ca91e08451fb9841ea35eaca3be865f35aadb"
+    }
+  ]
+}

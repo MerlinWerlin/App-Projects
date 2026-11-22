@@ -1,0 +1,19 @@
+{
+  "source": "sources/iris-damselfly.c02e774d.png",
+  "sourceSha256": "c02e774d214dab1c9466d1931da5aa6d770f9c494c3a7e330c091deab87b31f5",
+  "scope": "Actual full-source alpha composite on proposed plum field; no source edit performed.",
+  "alpha16bbox": [
+    169,
+    25,
+    1036,
+    1230
+  ],
+  "alpha240bbox": [
+    171,
+    28,
+    1033,
+    1227
+  ],
+  "finding": "Exterior and petal/wing/leaf gaps are clean transparent; no opaque pale backing or broad halo. Original invisible RGB appearance did not survive actual alpha composite.",
+  "sourceUnchanged": true
+}

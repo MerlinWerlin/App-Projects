@@ -1,0 +1,23 @@
+{
+  "id": "grebe-reeds",
+  "prompt": "Edit this EXACT goldwork great-crested grebe artwork. Preserve all short hollow HELICAL CUT-PURL GILT/SILVER WIRE TUBES, visible spiral ridges/cut mouths, sewn directional fields, entire bird swimming pose, reeds/ripples and true alpha. NATURAL ANATOMY CORRECTION ONLY: replace the TWO triangular ducklike WEBBED feet with TWO small natural GREBE FEET, each with THREE CLEAR SEPARATE LONG TOES with individual oval LOBED SIDES, no continuous webbing sheet between the toes. Keep complete toe tips, coherent attachment to the rear underside of body and quiet paddling pose. Scale the oversized head crest down modestly to TWO slim dark crest tufts with a natural short neck ruff, not giant fan plumes, while preserving pointed bill, small natural eye and recognizable grebe head. Do not alter body/wing/tail proportions or cut-purl construction. Whole beak/crest/body/tail/feet/toes/reedtips/ripples contained with generous real transparent margins. No extra limbs, ornament, smooth gold cast surface, bead/enamel/gems, backing, floor, halo/shadow, frame, text or UI. One complete refined natural grebe on transparent alpha.",
+  "tool": "built-in image_gen",
+  "source": "sources/grebe-reeds.b44ba91a.png",
+  "sourceSha256": "b44ba91ada7af65a83c55382eff9658901886dfaf67cce06720debb03443e1d4",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/grebe-reeds.6d8a6f5b.png",
+  "sha256": "6d8a6f5b936c3d1205046159d1bd577464ce0088bc0c489bc15250fbae6b4d09",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/anatomy-repair/grebe-reeds-history.json",
+  "referencedImage": {
+    "file": "qa/anatomy-repair/grebe-reeds.original.27ebfdc5.png",
+    "sha256": "27ebfdc582a5045f7948d94c375d72aa2cba6a6518a6a79de2b69c116e2eeb99"
+  }
+}

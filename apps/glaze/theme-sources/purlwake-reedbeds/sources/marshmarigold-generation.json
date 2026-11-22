@@ -1,0 +1,18 @@
+{
+  "id": "marshmarigold",
+  "prompt": "PURLWAKE REEDBEDS, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL wetland flora/fauna with natural recognizable anatomy/proportions FIRST. Unmistakable CUT-PURL GOLDWORK NEEDLEWORK: short HOLLOW HELICAL GILT-WIRE SPRING TUBES sewn THROUGH THEIR BORES and couched onto extremely thin linen cut exactly to the organism silhouette. Use COARSE LEGIBLE cut-purl segments, each about one-eighth of animal-body length with FIVE TO EIGHT DISTINCT SPIRAL TURNS, not microscopic fuzzy metal threads. Each segment shows clear SPIRAL WIRE RIDGES like a tiny metal spring, cut open coil mouths and occasional fine couching stitch joins. Dense directional fields of these short spring tubes follow natural fur/wing/scale/leaf structures. Warm antique gilt, pale champagne-silver and restrained olive silk stem accents; tiny dark stitch eyes, no gemstones. Metallic glints only on tiny spring ridges, never a smooth cast-metal body. Low shallow stitched relief, visibly actual cut-purl needlework not brooch/jewellery pin/charm, smooth gold figurine, flush foil inlay, glass seedbeads/enamel cells, woven metal warp/weft, straight string-art chords/brass pins, wire cage, wool/yarn/knit/felt/plush pile or ordinary thread embroidery. No allover floral scrollwork obscuring real animal anatomy. Shaped backing retained only directly under stitched organism; all exterior/open limb/branch gaps genuinely alpha transparent. Whole complete subject central64percent with at least18percent true alpha margin every side, no clipped foot/tail/wing/leaf. No sheet/rectangle/backing plaque/hoop/frame/badge, pin/clasp/bail/hanging ring, ground/scenery/plinth/shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI, logo or signature. Subject MARSHMARIGOLD: one recognizable natural small marsh-marigold plant clump with THREE open round golden flowers, each with FIVE broad softly rounded petal lobes around a small stamen centre, one closed bud and THREE broad round KIDNEY-SHAPED leaves with shallow notches on coherent curved stems. Airy low spreading botanical silhouette rather than a flower wreath or bouquet in a vase, no pot/ground/base/plaque. Every petal and leaf is dense short CUT-PURL GOLDWORK: coarse short hollow HELICAL GILT-WIRE SPRING TUBES sewn/couched in directional rows, exposed spiral ridges, cut mouths and fine joins, antique-gilt flowers, pale-silver leaf vein highlights and tiny olive silk stems. No glass beads, enamel/gems/sequins, long smooth gold foil, solid cast petals, fuzzy wool/thread fill or printed floral decoration. Natural botanical form first, no mandala/sun badge or measurement markings. All three blooms, bud, kidney leaf tips and stem ends whole inside generous true alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/marshmarigold.ac4d74dd.png",
+  "sourceSha256": "ac4d74ddbd4ab5d1ca2721a6e2f80aad377d9919d78cbd889b7949202e526c2d",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/marshmarigold.5bb10f61.png",
+  "sha256": "5bb10f61f6483f86a500b75958a4f504f55c01265ca7728b085e23e391a4109b",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

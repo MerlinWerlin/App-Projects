@@ -1,0 +1,204 @@
+{
+  "themeId": "purlwake-reedbeds",
+  "scope": "Geometry proof using actual encoded WebP assets, production theme-to-widget background, scaledToFit and Swift Fit6% rule. Conservative24% corner radius stress check; device corner radius varies, no installed-iOS screenshot claim.",
+  "swiftSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\targets\\widget\\SeamlessWidget.swift",
+  "swiftSha256": "00f8f7b122e06f51ea9bdceb20b4dfa1753ca09d936f7f796212ee3184042477",
+  "backgroundStops": [
+    "#343039",
+    "#403944"
+  ],
+  "artworkOptions": 5,
+  "layouts": [
+    {
+      "option": "water-vole-rush",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        27,
+        58,
+        142,
+        112
+      ],
+      "asset": "widget-water-vole-rush.ca4fce6e.webp",
+      "assetSha256": "ca4fce6e1fafb43e5d7b8ccb93caa57cad37777cbc4e6572021531656c6ccd88"
+    },
+    {
+      "option": "water-vole-rush",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        59,
+        133,
+        304,
+        250
+      ],
+      "asset": "widget-water-vole-rush.ca4fce6e.webp",
+      "assetSha256": "ca4fce6e1fafb43e5d7b8ccb93caa57cad37777cbc4e6572021531656c6ccd88"
+    },
+    {
+      "option": "grebe-reeds",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        31,
+        41,
+        141,
+        130
+      ],
+      "asset": "widget-grebe-reeds.30225427.webp",
+      "assetSha256": "30225427d2ea87e58dd1e6543d4824a8b8bfc852c0fe006fe8df203bb3600865"
+    },
+    {
+      "option": "grebe-reeds",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        68,
+        98,
+        302,
+        289
+      ],
+      "asset": "widget-grebe-reeds.30225427.webp",
+      "assetSha256": "30225427d2ea87e58dd1e6543d4824a8b8bfc852c0fe006fe8df203bb3600865"
+    },
+    {
+      "option": "pike-waterweed",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        30,
+        44,
+        138,
+        129
+      ],
+      "asset": "widget-pike-waterweed.29944e32.webp",
+      "assetSha256": "29944e32e16f669dfa0ba299c48a8c1ef3aef31335e232723ee1ac3e1507a97a"
+    },
+    {
+      "option": "pike-waterweed",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        65,
+        104,
+        295,
+        286
+      ],
+      "asset": "widget-pike-waterweed.29944e32.webp",
+      "assetSha256": "29944e32e16f669dfa0ba299c48a8c1ef3aef31335e232723ee1ac3e1507a97a"
+    },
+    {
+      "option": "iris-damselfly",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        39,
+        24,
+        125,
+        144
+      ],
+      "asset": "widget-iris-damselfly.5aaaec11.webp",
+      "assetSha256": "5aaaec1114a33ed0620c91642252710ac1e4c94920b8e5a8014fd4cc90c44a54"
+    },
+    {
+      "option": "iris-damselfly",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        83,
+        60,
+        268,
+        318
+      ],
+      "asset": "widget-iris-damselfly.5aaaec11.webp",
+      "assetSha256": "5aaaec1114a33ed0620c91642252710ac1e4c94920b8e5a8014fd4cc90c44a54"
+    },
+    {
+      "option": "marshmarigold",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        29,
+        24,
+        140,
+        143
+      ],
+      "asset": "widget-marshmarigold.3d0c471b.webp",
+      "assetSha256": "3d0c471b67d771e604cdb81dacb1ca1b5f3cdeaa705af2a15ff6c35f5aee8473"
+    },
+    {
+      "option": "marshmarigold",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        63,
+        60,
+        302,
+        315
+      ],
+      "asset": "widget-marshmarigold.3d0c471b.webp",
+      "assetSha256": "3d0c471b67d771e604cdb81dacb1ca1b5f3cdeaa705af2a15ff6c35f5aee8473"
+    }
+  ],
+  "clippedForegroundPixels": 0
+}
