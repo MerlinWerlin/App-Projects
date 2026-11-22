@@ -1,0 +1,1 @@
+Original abstract diffraction wallpaper, trefoil and comb studies retained after Jared22Nov requested tangible subjects. These remain style development evidence and are excluded from the final selected tangible-world pack.

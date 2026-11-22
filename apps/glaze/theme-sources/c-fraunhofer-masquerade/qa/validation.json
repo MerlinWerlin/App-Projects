@@ -1,0 +1,120 @@
+{
+  "id": "c-fraunhofer-masquerade",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "cusp-herald",
+    "stilt-pavilion",
+    "sidelobe-skiff",
+    "annular-strider",
+    "beam-harvester"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.709db7ec.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 27004,
+    "sha256": "709db7eca6ff0b614f5a5214bb839fd9db8ebbeb59afc445b3ce28b5c220a634",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "ownerSteering": "Jared22Nov liked the image styles and requested tangible subjects; selected set is a coherent inhabited carnival world.",
+    "wallpaper": "Quiet violet top, inhabited light-carnival waterfront below with ferry, doorway and characters; no baked values.",
+    "fiveArtworks": "All5new individual sources reviewed at210and150pixels: masked herald, inhabited pavilion, ferry, quadruped strider and purposeful harvester read immediately and have distinct silhouettes; shared fine diffraction bands. Original abstract studies retained separately, not selected.",
+    "framing": "Source alpha edge maxima1or2; all high-opacity figure bounds inside source frame; original clipped trefoil retained as rejected evidence.",
+    "native": "All9app renderer candidates reviewed: pavilion/ferry paths, petal-contoured dial with pearl markers/baton hands, light-trail battery and ticket calendar. Readable native values remain dynamic."
+  },
+  "packTestEvidence": "Unchanged pipeline47existing cases covered by45initial passes and2encoder follow-up passes."
+}

@@ -1,0 +1,20 @@
+{
+  "theme": "c-fraunhofer-masquerade",
+  "recipe": [
+    "petal",
+    "cFraunhoferPavilion",
+    "cFraunhoferSkiff",
+    "pearls",
+    "baton",
+    "trail",
+    "ticket"
+  ],
+  "art": {
+    "cFraunhoferPavilion": "M 7 41 Q 18 20 50 12 Q 82 20 93 41 Q 71 48 50 43 Q 29 48 7 41 Z M 16 44 L 18 70 Q 50 78 82 70 L 85 44 M 43 73 L 43 56 Q 50 46 57 56 L 57 73 M 24 52 L 34 52 L 34 63 L 24 63 Z M 65 52 L 75 52 L 75 63 L 65 63 Z M 23 73 L 17 89 L 9 94 L 25 94 M 38 76 L 37 93 L 31 98 L 46 98 M 64 76 L 69 92 L 63 98 L 78 98 M 78 73 L 88 88 L 96 91 L 82 94 M 22 35 Q 50 21 78 35 M 31 29 Q 50 14 69 29",
+    "cFraunhoferSkiff": "M 6 68 Q 18 88 51 86 Q 81 84 95 62 L 85 78 Q 52 100 17 84 Z M 50 60 L 50 14 M 45 20 Q 23 20 12 49 Q 28 43 45 51 Z M 56 30 Q 79 28 89 51 Q 72 47 56 54 Z M 36 65 L 38 55 L 64 55 L 69 65 M 44 60 L 53 60 M 25 88 L 17 97 M 51 91 L 49 99 M 77 85 L 86 94"
+  },
+  "direction": "Tangible light-carnival: inhabited stilt-pavilion and fan-sailed ferry paths. Petal-contoured live dial, pearl markers/baton hands, light-trail charge gauge and ticket calendar.",
+  "ownerSteering": "Jared22Nov requested tangible subjects in the liked styles; native identity follows new pavilion/ferry instead of abstract studies.",
+  "values": "Existing native live Clock/Battery/Calendar mechanisms; all artwork number-free.",
+  "registryIntegration": "Coordinator integrates original data-only descriptor."
+}
