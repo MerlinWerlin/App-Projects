@@ -1,0 +1,143 @@
+{
+  "theme": "c-thermographic-nightshift",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "heat-gardener",
+      "sourceImage": "sources/heat-gardener.7129a9c3e6c4.png",
+      "sourceSha256": "7129a9c3e6c4567bdeacc58d8650a415b08eb897b2601679cebb38cd7ae0e8f8",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/heat-gardener.be4fbf938451.png",
+      "sha256": "be4fbf93845150999255d381e3a37e9e0bef87eb0ab865a954287dd2ab5e9d79",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 595512,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE THERMOGRAPHIC NIGHTSHIFT, a tangible frozen cultivation world seen entirely by emitted infrared radiance. The invented subject must be instantly recognizable through clear anatomy or working mechanism. MEDIUM: polished fictional long-wave infrared thermography. Broad SOFT DIFFUSE temperature fields and smooth low-frequency heat gradients model the subject; localized ivory-white hot cores bleed into buttery yellow, orange, vermilion and burgundy, with cobalt blue and deep indigo on cold extremities. Visible emitted heat distribution, no reflected lighting, no directional shadows, no specular highlights, no literal physical material. A few broad fuzzy isotherm zones, never thin concentric rainbow stripes, diffraction, crisp contour bands, scan lines, point-cloud dots, sonographic speckle, particle tracks or a frequency plot. Give the subject a crisp readable outer silhouette while the internal radiance is soft. Invented thermal visualization, not real measured sensor data. No text, labels, temperature scales, numerals, coordinates, arrows, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject HEAT GARDENER: one stooped friendly invented caretaker with a small oval head under a broad hood, two dark eye apertures, long bent arms, a short padded torso, two splayed feet and one curved back fin. Its hands cradle an OPEN SEED POD with three thick petals and a brilliantly hot pale seed inside. Heat concentrates in the face, hands and living seed; sleeves, feet and hood rim are cool cobalt. Asymmetric three-quarter standing pose, complete unmistakable face, hands and feet. No tool collection. Whole subject and all extremities fully within central 75% of canvas with generous empty margins. True transparent alpha outside the subject and in open gaps. Any heat bloom stays INSIDE its silhouette; no exterior haze, background glow, floor, shadow, backing, tile, frame, diagram or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 661025
+    },
+    {
+      "id": "frost-auger",
+      "sourceImage": "sources/frost-auger.acda76250360.png",
+      "sourceSha256": "acda7625036027157e80d62706e5c2ba963917096da6a5fffa1944b4ca323b44",
+      "sourceDimensions": [
+        1448,
+        1086
+      ],
+      "file": "widgets/frost-auger.07f0318112d6.png",
+      "sha256": "07f0318112d6464ba28247fecf78c2deecfc1bd702f5bd765b06bb35d17268d4",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 430740,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE THERMOGRAPHIC NIGHTSHIFT, a tangible frozen cultivation world seen entirely by emitted infrared radiance. The invented subject must be instantly recognizable through clear anatomy or working mechanism. MEDIUM: polished fictional long-wave infrared thermography. Broad SOFT DIFFUSE temperature fields and smooth low-frequency heat gradients model the subject; localized ivory-white hot cores bleed into buttery yellow, orange, vermilion and burgundy, with cobalt blue and deep indigo on cold extremities. Visible emitted heat distribution, no reflected lighting, no directional shadows, no specular highlights, no literal physical material. A few broad fuzzy isotherm zones, never thin concentric rainbow stripes, diffraction, crisp contour bands, scan lines, point-cloud dots, sonographic speckle, particle tracks or a frequency plot. Give the subject a crisp readable outer silhouette while the internal radiance is soft. Invented thermal visualization, not real measured sensor data. No text, labels, temperature scales, numerals, coordinates, arrows, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject FROST AUGER: one low purposeful digging vehicle, a broad spiral auger nose at left, two separated squat track pods below, a compact enclosed sloped cockpit at right with one dark window and a short bent exhaust funnel. It visibly bores frozen soil. White-hot drive hub and warm motor compartment, orange auger base grading to cold blue cutting tip and cold indigo track edges. Three-quarter view, wide grounded silhouette; all machine parts connected and functional, no road or ground. Whole subject and all extremities fully within central 75% of canvas with generous empty margins. True transparent alpha outside the subject and in open gaps. Any heat bloom stays INSIDE its silhouette; no exterior haze, background glow, floor, shadow, backing, tile, frame, diagram or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 788613
+    },
+    {
+      "id": "meltwing",
+      "sourceImage": "sources/meltwing.0bdab0e10a61.png",
+      "sourceSha256": "0bdab0e10a61768368af6fea57659e432b752ff1daa1acab1bd3ddee802d34ce",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/meltwing.8788fd1568af.png",
+      "sha256": "8788fd1568af4dd038407a2ed44e8b3afa4829c1a3f0b33e38e289789faea947",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 515571,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE THERMOGRAPHIC NIGHTSHIFT, a tangible frozen cultivation world seen entirely by emitted infrared radiance. The invented subject must be instantly recognizable through clear anatomy or working mechanism. MEDIUM: polished fictional long-wave infrared thermography. Broad SOFT DIFFUSE temperature fields and smooth low-frequency heat gradients model the subject; localized ivory-white hot cores bleed into buttery yellow, orange, vermilion and burgundy, with cobalt blue and deep indigo on cold extremities. Visible emitted heat distribution, no reflected lighting, no directional shadows, no specular highlights, no literal physical material. A few broad fuzzy isotherm zones, never thin concentric rainbow stripes, diffraction, crisp contour bands, scan lines, point-cloud dots, sonographic speckle, particle tracks or a frequency plot. Give the subject a crisp readable outer silhouette while the internal radiance is soft. Invented thermal visualization, not real measured sensor data. No text, labels, temperature scales, numerals, coordinates, arrows, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject MELTWING: one invented living glider with a tiny pointed head, two dark eyes, a wide warm breast, two huge sweeping folded membrane wings and THREE distinct short landing legs with broad toes. A long forked tail curls below one wing. Wings have a continuous soft temperature gradient from warm yellow muscle roots through orange/red membranes to cold blue tips; head and breast ivory-hot. Tangible expressive creature in landing pose, not a moth, bird, bat or abstract butterfly emblem. Asymmetric three-quarter view with clear head and jointed legs. Whole subject and all extremities fully within central 75% of canvas with generous empty margins. True transparent alpha outside the subject and in open gaps. Any heat bloom stays INSIDE its silhouette; no exterior haze, background glow, floor, shadow, backing, tile, frame, diagram or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 754649
+    },
+    {
+      "id": "chimney-bloom",
+      "sourceImage": "sources/chimney-bloom.f4dc401985f6.png",
+      "sourceSha256": "f4dc401985f645b1a97d850913a435000f6cd443a09b4055ce5cd4233bb2113a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/chimney-bloom.b4563dd843a4.png",
+      "sha256": "b4563dd843a46741ff14038161427bf4ea08c6b7e524ddcdd995b6271f0a42f8",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 647769,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE THERMOGRAPHIC NIGHTSHIFT, a tangible frozen cultivation world seen entirely by emitted infrared radiance. The invented subject must be instantly recognizable through clear anatomy or working mechanism. MEDIUM: polished fictional long-wave infrared thermography. Broad SOFT DIFFUSE temperature fields and smooth low-frequency heat gradients model the subject; localized ivory-white hot cores bleed into buttery yellow, orange, vermilion and burgundy, with cobalt blue and deep indigo on cold extremities. Visible emitted heat distribution, no reflected lighting, no directional shadows, no specular highlights, no literal physical material. A few broad fuzzy isotherm zones, never thin concentric rainbow stripes, diffraction, crisp contour bands, scan lines, point-cloud dots, sonographic speckle, particle tracks or a frequency plot. Give the subject a crisp readable outer silhouette while the internal radiance is soft. Invented thermal visualization, not real measured sensor data. No text, labels, temperature scales, numerals, coordinates, arrows, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject CHIMNEY BLOOM: one alien cultivation plant with a thick crooked trunk, THREE unequal broad trumpet stalks opening upward, two curled heavy leaves and four thick ROOT FEET. Each trumpet contains a soft ivory-hot inner core, fading through orange/red fleshy stalks to cobalt leaf tips and cool root feet. A tangible biological organism with visible openings and weight, not a vase, flowers in a pot, generic mushroom or disembodied heat blobs. Three-quarter view, distinctly branching silhouette. Whole subject and all extremities fully within central 75% of canvas with generous empty margins. True transparent alpha outside the subject and in open gaps. Any heat bloom stays INSIDE its silhouette; no exterior haze, background glow, floor, shadow, backing, tile, frame, diagram or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 692513
+    },
+    {
+      "id": "nursery-walker",
+      "sourceImage": "sources/nursery-walker.28a40f0d002a.png",
+      "sourceSha256": "28a40f0d002a04318797026b4464e38ae50016c1013d66359baa01d99d990018",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/nursery-walker.2c1a8f3a6d34.png",
+      "sha256": "2c1a8f3a6d34af23710c05b798b8259273e7d36abc9334113b2f6d6123251c06",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 550470,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE THERMOGRAPHIC NIGHTSHIFT, a tangible frozen cultivation world seen entirely by emitted infrared radiance. The invented subject must be instantly recognizable through clear anatomy or working mechanism. MEDIUM: polished fictional long-wave infrared thermography. Broad SOFT DIFFUSE temperature fields and smooth low-frequency heat gradients model the subject; localized ivory-white hot cores bleed into buttery yellow, orange, vermilion and burgundy, with cobalt blue and deep indigo on cold extremities. Visible emitted heat distribution, no reflected lighting, no directional shadows, no specular highlights, no literal physical material. A few broad fuzzy isotherm zones, never thin concentric rainbow stripes, diffraction, crisp contour bands, scan lines, point-cloud dots, sonographic speckle, particle tracks or a frequency plot. Give the subject a crisp readable outer silhouette while the internal radiance is soft. Invented thermal visualization, not real measured sensor data. No text, labels, temperature scales, numerals, coordinates, arrows, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject NURSERY WALKER: one squat mobile incubation machine with a large rounded OPEN POD above, a hinged crescent hatch tilted left, a single brightly heated oval seed inside, one articulated tending arm extending right and THREE sturdy jointed feet below. The pod, hatch, arm and feet are visibly connected working mechanisms. Ivory-hot seed and warm orange chamber, burgundy shell graduating to cool cobalt hatch rim and blue feet. Three-quarter view; broad unmistakable cradle-like silhouette, not a house, clock, wheel vehicle or generic robot head. Whole subject and all extremities fully within central 75% of canvas with generous empty margins. True transparent alpha outside the subject and in open gaps. Any heat bloom stays INSIDE its silhouette; no exterior haze, background glow, floor, shadow, backing, tile, frame, diagram or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 723456
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.e2e194874a6d.png",
+      "sourceSha256": "e2e194874a6d88fcf9875fa618b01a87d60348c5e66dcda9f995e221f657f382",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "cf4d03c6590f92a53da9d947a27bd8e4894447f8827ff7ba4e603e888793f812",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2118847,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE THERMOGRAPHIC NIGHTSHIFT, a tangible frozen cultivation world seen entirely by emitted infrared radiance. The invented subject must be instantly recognizable through clear anatomy or working mechanism. MEDIUM: polished fictional long-wave infrared thermography. Broad SOFT DIFFUSE temperature fields and smooth low-frequency heat gradients model the subject; localized ivory-white hot cores bleed into buttery yellow, orange, vermilion and burgundy, with cobalt blue and deep indigo on cold extremities. Visible emitted heat distribution, no reflected lighting, no directional shadows, no specular highlights, no literal physical material. A few broad fuzzy isotherm zones, never thin concentric rainbow stripes, diffraction, crisp contour bands, scan lines, point-cloud dots, sonographic speckle, particle tracks or a frequency plot. Give the subject a crisp readable outer silhouette while the internal radiance is soft. Invented thermal visualization, not real measured sensor data. No text, labels, temperature scales, numerals, coordinates, arrows, clock faces, readings, graphs, logos or watermark. Asset: ONE portrait phone wallpaper 1290x2796. A coherent inhabited frozen cultivation clearing at night. Lower half: the caretaker tends a warm chimney-bloom beside a squat open incubation walker; a frost-auger is parked lower left and a single broad-winged meltwing glides just above the plants. Broad snow beds and low winding trenches are cold cobalt/indigo, warming diffusely around living roots; white-hot seeds and caretaking hands give small bright focal points. All things have tangible readable scale and spatial relationship. Upper 45% quiet deep indigo sky with almost no detail, room for phone UI. Scientific thermal-emission image with soft heat fields rather than visible-light illustration. Full bleed opaque wallpaper, no frame, device, UI or text.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Jared 22 November tangible-subject direction. Soft infrared emission fields define a frozen cultivation world."
+}

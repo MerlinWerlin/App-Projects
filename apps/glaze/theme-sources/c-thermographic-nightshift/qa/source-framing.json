@@ -1,0 +1,60 @@
+{
+  "review": "All five high-opacity subject bounds are fully inside original source frames.",
+  "assets": [
+    {
+      "id": "heat-gardener",
+      "sourceOpaqueBounds": [
+        185,
+        111,
+        1038,
+        1174
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "frost-auger",
+      "sourceOpaqueBounds": [
+        35,
+        200,
+        1396,
+        891
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "meltwing",
+      "sourceOpaqueBounds": [
+        77,
+        264,
+        1171,
+        1053
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "chimney-bloom",
+      "sourceOpaqueBounds": [
+        156,
+        49,
+        1065,
+        1212
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "nursery-walker",
+      "sourceOpaqueBounds": [
+        73,
+        132,
+        1148,
+        1144
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    }
+  ]
+}

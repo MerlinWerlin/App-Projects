@@ -1,0 +1,119 @@
+{
+  "id": "c-thermographic-nightshift",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "heat-gardener",
+    "frost-auger",
+    "meltwing",
+    "chimney-bloom",
+    "nursery-walker"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.9d9f01f5.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 12340,
+    "sha256": "9d9f01f5d8baafc63e2ca35465c9d04fcbd996de9f05a1e5a33cb36173799bb2",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "artworkCombination": "Viewed wallpaper and all five artworks at two widget-like sizes. Gardener, broad digging vehicle, three-legged glider, branching trumpet organism and incubation walker have clearly different readable silhouettes. Smooth soft internal emission fields with warm cores and cold extremities unify the theme.",
+    "nativeCombination": "Viewed actual app renderer Clock/Battery/Calendar previews in all three sizes. Gardener and meltwing identity paths echo the tangible world; pale text, warm gauge and date accent remain readable.",
+    "sourceFraming": "All high-opacity subject bounds are fully inside original frames. Maximum edge alpha is 1 out of 255 on all five sources.",
+    "scope": "Real app planner/renderer after scratch-only native descriptor insertion; actual coordinator registry integration and device qualification are separate."
+  },
+  "packTestEvidence": "Unchanged builder pipeline has 47 distinct pack test cases passed across initial suite and two Pillow-enabled WebP reruns. Per-theme real builder, app parsers/planner, full image decoding, hashes, provenance and native-renderer checks pass."
+}
