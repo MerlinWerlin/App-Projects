@@ -1,0 +1,19 @@
+{
+  "themeId": "rimebranch-tundra",
+  "recipe": [
+    "oval",
+    "rimePtarmigan",
+    "rimeNeedles",
+    "rays",
+    "sword",
+    "trail",
+    "folio"
+  ],
+  "art": {
+    "rimePtarmigan": "M 15 46 L 8 43 L 17 39 Q 18 26 30 24 Q 44 21 48 36 Q 65 34 78 45 Q 85 52 87 63 L 95 72 Q 90 78 80 74 Q 67 84 48 81 L 47 89 L 54 91 M 48 81 L 43 89 L 38 91 M 35 79 L 33 88 L 40 90 M 34 88 L 28 90 M 35 79 Q 22 75 19 64 Q 13 56 15 46 Z M 26 37 L 27 37 M 40 48 Q 58 40 72 54 Q 76 65 66 72 Q 48 75 38 62 M 44 54 L 63 64 M 48 62 L 58 69",
+    "rimeNeedles": "M 15 79 L 30 43 M 23 59 L 16 53 M 23 59 L 34 53 M 27 49 L 22 42 M 27 49 L 37 44 M 22 66 L 13 61 M 22 66 L 34 62 M 40 84 L 52 49 M 47 64 L 39 57 M 47 64 L 58 59 M 50 55 L 44 48 M 50 55 L 59 51 M 45 72 L 37 67 M 45 72 L 57 68 M 66 84 L 79 44 M 73 64 L 65 57 M 73 64 L 84 58 M 76 53 L 70 46 M 76 53 L 86 48 M 69 74 L 62 67 M 69 74 L 81 69"
+  },
+  "ornament": "M 24 84 Q 43 56 69 18 M 37 65 Q 20 57 22 44 Q 36 43 43 57 M 48 49 Q 63 51 77 38 Q 72 27 58 35 M 61 29 Q 54 19 61 12 Q 73 9 76 19 Q 72 27 61 29 M 28 79 L 36 78 M 43 57 L 34 49 M 59 40 L 68 36",
+  "direction": "A complete rounded ptarmigan with short beak, folded wing, two sturdy bird feet and a short broad tail. Three branching crystalline needle fans echo the hoarfrost material; oval face, ray ticks, sword hands, trail charge and folio calendar remain fully live.",
+  "ornamentDirection": "A compact open Arctic willow sprig with two curved leaves and a small catkin; natural habitat companion in the four native header placements, full bird artwork retained on larger faces."
+}
