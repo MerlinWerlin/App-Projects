@@ -1,0 +1,13 @@
+{
+  "selected": false,
+  "sourceImage": "intermediate-borage-alpha-study/alpha-edit-unselected.4d130b1ec6ee.png",
+  "sourceSha256": "4d130b1ec6ee782a458740311cb1d60a5c351eb43d9a6af2f298d87776f2083e",
+  "prompt": "BACKGROUND REMOVAL EDIT ofthis own botanical image. Preserve the exact whole natural bumblebee gripping the upper borage flower,two whole blue five-pointed flowers,curved pink bud cluster,one whole green leaf,stem andevery fine hair/antenna/wing/leg/petal/bud/leaf tip. Preserve the exact soft natural Autochrome-inspired positive colours andfine random multicoloured photographic grain INSIDE the actual subject. REMOVE ALL THE GREY/BEIGE HAZE AND MATTE BACKDROP completely. Every pixel OUTSIDE the real plant/insect andevery empty gap between petals,stems,bee legs,antennae andwings must be TRUE ALPHA ZERO TRANSPARENCY. The pale irregular photographic cloud around andbehind the subject is BACKGROUND,notpart ofthe plant. No translucent veil,no blurred outer shadow,no glow,no feathered coloured cloud. Plant andbee retain natural opaque detailed tissue except clear wings;no fine anatomy removal. Keep all whole subject endpoints within generous empty margins.1024square,transparent background,no plate/paper/frame/text/UI. Do notadd orchange any subject,pose orcolour;onlyremove exterior haze.",
+  "directEditReference": {
+    "sourceImage": "intermediate-borage-alpha-study/first-haze.0c0ee02861ab.png",
+    "sha256": "0c0ee02861ab69efe2a6e0cafcbdc7c4626b896eacd8bd7216ac6cfc1c3fe63c",
+    "role": "Own initial bee/borage output;unselected due exterior haze."
+  },
+  "reason": "Actual theme-background composite confirms faint veil remains in natural gaps. Samplealpha6at(500,100),39at(650,600). Fresh simpler single-flower arrangement required;no Python alpha edits.",
+  "diagnosticComposite": "intermediate-borage-alpha-study/alpha-studies-comparison.jpg"
+}

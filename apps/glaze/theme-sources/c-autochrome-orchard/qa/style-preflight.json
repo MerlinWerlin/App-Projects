@@ -1,0 +1,77 @@
+{
+  "theme": "c-autochrome-orchard",
+  "status": "Coordinator accepted both actual neighbor boards/full170/85/raw grain closeup before remainingfour generations",
+  "sample": {
+    "id": "wildrose-sprig",
+    "selected": true,
+    "sourceSha256": "74e3ce16e87fa36876b0f7da9e2226405395fbacc140a4cb7ee763659f4066e8",
+    "prompt": "Use case: natural botanical and wildlife artwork. GLAZE AUTOCHROME ORCHARD. ONE familiar real nature subject with true natural anatomy and tissue, photographed as a beautiful EARLY ADDITIVE-COLOUR AUTOCHROME-INSPIRED POSITIVE IMAGE. The visibly distinctive photographic language is a fine RANDOM MULTICOLOURED STARCH-SCREEN GRAIN across the actual image tones: tiny irregular red-orange, muted leaf-green and blue-violet colour-filter specks combine into a soft natural-colour photographic image. At1024resolution the irregular speckles are mostly2to6pixels, dense but fine, uneven and subtly chromatic, never a regular screen grid or large colored cells. Photographic image structure and silhouette stay fully continuous and recognisable beneath this fine additive colour screen. The optical grain is flat image texture, NOT physical grains, coloured skin patches, a coat of sand or body construction. Soft pictorial photographic focus with clearly resolved whole silhouettes, gently muted rose, faded cornflower blue, sage green, buttercream and warm amber shadows. Delicate luminous low-contrast colour-positive feel, slight honey colour bias, fine multicoloured mottled grain visible in light and midtone areas. Real natural subject, not an illustration, painterly brushstrokes, coarse print, screenprint, risograph dots, half-tone ink, pixel art, mosaic body, orientation map, beads, sand sculpture, physical film ribbons or perforated frames. No duplicated/ghost exposures, neon, fluorescence, transmitted-vein glow, glass/plastic organisms or magical aura. No heavy antique scratches, fading holes, damage, torn edges or plate rectangle. No letters, numbers, labels, reading, UI, watermark or logo. Subject: ONE real WILD DOG-ROSE sprig: ONE open flower with FIVE broad, slightly uneven pale dusty-pink petals and a natural golden-yellow stamen cluster, ONE smaller closed pink bud, and THREE real serrated muted-green leaflets on a gently curved slender reddish-brown stem. Flower seen slightly obliquely, one petal naturally tips forward. Accurate soft petal tissue and leaf veins remain visible through the fine additive-colour photographic grain. Whole flower rim, all five petal tips, bud, all leaflets and short stem end. Only the wildrose sprig, no insect, animal or other plant. Asset:ONE separate square1024x1024 pure-art widget. Fit the ENTIRE subject safely inside central68percent with generous truly empty margins around every petal, leaf, stem, feather, antenna, wing and tentacle. TRUE ALPHA ZERO outside the real subject and through every natural gap. The coloured photographic grain exists only INSIDE actual subject pixels, not in the empty alpha. No backdrop, haze, matte veil, paper, rectangular photographic plate, border, frame, scene panel, floor, ground patch, cast shadow, extra specimen, contact sheet or phone mockup. Strong readable natural silhouette at85px. Polished delicate classic colour photography, not a noisy low-quality photo.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        175,
+        214,
+        1068,
+        1093
+      ],
+      "96": [
+        176,
+        214,
+        1067,
+        1092
+      ]
+    },
+    "edgeAlphaMaximum": 1,
+    "sourceImage": "sources/wildrose-sprig.74e3ce16e87f.png"
+  },
+  "neighbors": [
+    {
+      "theme": "meadowglow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\meadowglow\\v6\\widget-sunlit-dandelion.d099e95f.webp",
+      "sha256": "d099e95f864c456f491ac36e54572d10ca8c4b4578401c63f5e15d99da1195f7",
+      "bytes": 110172,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\meadowglow\\v7\\manifest.json"
+    },
+    {
+      "theme": "silver-orchard",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-silver-dormouse.9881d967.webp",
+      "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694",
+      "bytes": 118360,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\silver-orchard\\v7\\manifest.json"
+    },
+    {
+      "theme": "matcha-riso-garden",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\matcha-riso-garden\\v7\\widget-riso-foxglove.c2c5b1ee.webp",
+      "sha256": "c2c5b1ee4326849b75ba17e897368d3afa13006cf903f3a755bafce0e6f9eb84",
+      "bytes": 138000,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\matcha-riso-garden\\v8\\manifest.json"
+    },
+    {
+      "theme": "roseghost-fen",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\roseghost-fen\\widgets\\lantern-bladderwort.a68c5c93abb8.png",
+      "sha256": "a68c5c93abb834a617b0f510740616925995419936b54f23338cfc00649e3a76"
+    },
+    {
+      "theme": "emulsion-rookery",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\emulsion-rookery\\widgets\\billowing-orchid.9588c2408fdd.png",
+      "sha256": "9588c2408fdd0bed3c4dfec147f07c499e6cb503c4e528e36e379e111d766cb7"
+    },
+    {
+      "theme": "c-chronophotographic-ensemble",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chronophotographic-ensemble\\widgets\\bellows-breather.2baf90daf94f.png",
+      "sha256": "2baf90daf94fa5fef3ec6a8260946d800909bccb899098fe4f5131bb13d2e939"
+    },
+    {
+      "theme": "c-ebsd-caravan",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-ebsd-caravan\\widgets\\saddleback-porter.5f160e27cdc5.png",
+      "sha256": "5f160e27cdc543d15ca1313e66be1c3f447a5950d8a04c58f3674c1a6d8cb774"
+    },
+    {
+      "theme": "c-fluorescent-meadow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fluorescent-meadow\\widgets\\oxeye-daisy.fcd0c55675e9.png",
+      "sha256": "fcd0c55675e94fb87e922e2909213e4c8c9c957225a8185a411e69101ac62960"
+    }
+  ],
+  "assessment": "One real five-petal dusty-pink wildrose,bud,three serrated leaflets. Fine random multicoloured optical grain across continuous photographic tissue andmuted warm positive tones. Whole silhouette distinct from A7sun-faded stains,A10perforated filmobjects,C12monochrome motionghosts,C15large angular datafields,andC25crisp cool botanical photo. Actual published natural photo/crafted silver/coarse limited-ink examples retained. Fine-grain detail crop is actual raw pixels,not a creative effect orregenerated asset.",
+  "neighborImageInputsToGeneration": [],
+  "coordinatorVerdict": "Continuous natural petal tissue withrandomfinecolour-screen grainclear inactualcloseup;full170/85recognizablemuted photographicflower,separate fromlimited-inkRiso,monochromeanthotype,largeEBSDcells,A10physicalfilm andC25crisp twilight. Proceed otherfour withexactgrain/softnaturaltones,preservefull/85difference andown-originalprompt/hash,ordinarymood/quietcorners."
+}
