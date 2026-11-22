@@ -1,0 +1,18 @@
+{
+  "id": "brushrabbit-sage",
+  "prompt": "EMBERTRACE CHAPARRAL, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL flora/fauna, natural recognizable anatomy FIRST. Unusual physical HORSEHAIR CARBON-FIRING on hand-shaped burnished UNGLAZED IVORY CERAMIC: pale warm chalk/ivory opaque clay has soft satin burnish, shallow thumb/tool shaping traces, rounded thin clay edges and subtle fired pores. On the solid ceramic surface, show only FOUR OR FIVE fine widely separated UNBRANCHED sinuous/looping BLACK CARBONIZED SINGLE-STRAND HAIR TRAILS with fading burnt ends and localized soft smoky gray deposits absorbed flush into hot clay, with very restrained pale rust/iron blush. Trails are sparse isolated wavering S curves or loose open loops, no forked branching marble vein network; NOT allover spiderweb crackle glaze, paint/ink drawn anatomy, decorative arabesque, raised wire/thread/loose literal hairs, gold veining or wood grain. Keep much pale surface quiet so natural form remains legible at small size. Low shallow hand-shaped ceramic sculpture, NO glossy glaze, metal, shell, transparent glass, fabric, wool or wood. Whole complete subject inside central64percent with generous18percent TRUE ALPHA margin every side. All exterior and open anatomy gaps genuinely transparent; no backing sheet, ceramic plaque, ground/habitat base, plinth, rectangle/tile/hoop/frame/badge, ring/clasp, cast shadow, glow/halo/smoke in background. No clipped feet/toes/ears/tail/wing/petal/leaf tips. No text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. Preserve burnt carbon directly ON ceramic only, no floating strands or smoke. One familiar natural brush rabbit sitting in relaxed right-facing side profile, modest two upright ears, small real dark eye, natural small nose, compact soft body, coherent folded hind legs and two front paws, one short whole tail. No giant toy eyes, smile, clothing or exaggerated ears. ONE small sage sprig with three slender complete leaves beside front paws. Entire rabbit is solid warm ivory unglazed burnished clay with sparse random wandering charred horsehair trails and localized soft smoky puffs across haunch and ears, not literal furry hair, painted fur or crackle glaze. All ears, feet, tail and sage tips whole.",
+  "tool": "built-in image_gen",
+  "source": "sources/brushrabbit-sage.0a2ff8b2.png",
+  "sourceSha256": "0a2ff8b2664af9298248ff190ab11d3e9b9b116910296442c1eb3b111b54e74e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/brushrabbit-sage.7f25bf75.png",
+  "sha256": "7f25bf75691d9927a8a787e9472e0bfdd671f3c601d62abb40ba27ddfb9d2375",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

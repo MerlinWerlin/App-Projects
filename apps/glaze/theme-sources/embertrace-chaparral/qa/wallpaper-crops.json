@@ -1,0 +1,34 @@
+{
+  "themeId": "embertrace-chaparral",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.d0cb6801.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "d0cb6801788823094a030a4e65af273d364135b224ff372051cb34b9c535f4b1",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.6522966f.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "6522966fc6c43a86774e76c2b2430c214a4e4e3eafdfcd2893e4b7e2e029b1f3",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.49b44fca.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "49b44fcaeddf4cc020dfe2b6927b97f01a2182e0fb13d4adaf6729cba9a2500a",
+      "labelX": 550
+    }
+  ],
+  "visualReview": "Passed all three actual encoded crops1290x2796/1179x2556/750x1334: complete connected pale carbon-fired quail/rabbit/poppy/manzanita habitat, all crest/ear/tail/toe/petal/leaf/branch tips whole, broad quiet warm sage-gray sides/top/bottom. Exact initial own approved REFINED-quail reference and single layout-only pullback lineage retained."
+}
