@@ -1,0 +1,1 @@
+Unselected originals and exact material-edit lineage for frog and bittern. Frog changed from wrapped 3D bands to accepted flat intarsia. Bittern changed from many small feather-like chips to long flat ribbon fields; ordered second input is the accepted flat frog MATERIAL ONLY. All selected generation sources retained without subject edits by packaging.

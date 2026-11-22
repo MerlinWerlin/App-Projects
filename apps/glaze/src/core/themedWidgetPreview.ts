@@ -45,9 +45,12 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
   const line = (x: number, y: number, endX: number, endY: number, colour: string, opacity: number, width = 1) => elements.push(`<line x1="${x}" y1="${y}" x2="${endX}" y2="${endY}" stroke="${colour}" opacity="${opacity}" stroke-width="${width}" stroke-linecap="round"/>`);
   const circle = (x: number, y: number, r: number, colour: string) => elements.push(`<circle cx="${x}" cy="${y}" r="${r}" fill="${colour}"/>`);
   const font = d.font === 'serif' ? 'Georgia,serif' : d.font === 'mono' ? 'Menlo,monospace' : 'ui-rounded,system-ui,sans-serif';
-  const text = (value: string, x: number, y: number, nominal: number, width: number, colour = d.ink, weight = 600, anchor = 'middle') => {
+  const text = (value: string, x: number, y: number, nominal: number, width: number, colour = d.ink, weight = 600, anchor = 'middle', serifLift = 0) => {
     const estimate = [...value].length * nominal * .62;
     const fitted = Math.min(nominal, nominal * width / Math.max(1, estimate));
+    // Georgia's old-style digits descend below SVG's central baseline. Lift the crowded
+    // numeric roles by a fraction of their fitted em; keep the authored art/gauge geometry.
+    if (d.font === 'serif') y -= fitted * serifLift;
     elements.push(`<text x="${x}" y="${y}" font-size="${fitted}" font-weight="${weight}" fill="${colour}" text-anchor="${anchor}" dominant-baseline="central" alignment-baseline="central">${esc(value)}</text>`);
   };
   const number = (value: number, digits = 1) => new Intl.NumberFormat(locale, { useGrouping: false, minimumIntegerDigits: digits }).format(value);
@@ -165,7 +168,7 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
       }
     }
     if (!wide && !isColumn) rect(box(valueX - valueWidth / 2, valueY - (large ? 47 : 27), valueWidth, large ? 94 : 54), d.background[0], .72, large ? 30 : 15);
-    text(value, valueX, valueY, large ? 85 : wide ? 67 : isColumn ? 41 : 52, valueWidth, d.ink, 700);
+    text(value, valueX, valueY, large ? 85 : wide ? 67 : isColumn ? 41 : 52, valueWidth, d.ink, 700, 'middle', wide ? .12 : 0);
     text(label, valueX, large ? (isColumn ? 234 : 327) : wide ? 144 : 148, large ? 23 : 13, valueWidth, d.secondary, 500);
   } else {
     const first = localeFirstWeekday(locale);
@@ -219,7 +222,7 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
       const y = top + row * (Math.floor(index / 7) + 1.18);
       const today = day === month.today, diameter = large ? 31 : 18;
       if (today) path(identity.outline, box(x - diameter / 2, y - diameter / 2, diameter), d.accent);
-      text(number(day), x, y, large ? 19 : 12, col - 1, today ? d.onAccent : d.ink, today ? 700 : 550);
+      text(number(day), x, y, large ? 19 : 12, col - 1, today ? d.onAccent : d.ink, today ? 700 : 550, 'middle', .1);
     });
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs><linearGradient id="paint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${d.background[0]}"/><stop offset="1" stop-color="${d.background[1]}"/></linearGradient>${definitions.join('')}</defs><rect width="${w}" height="${h}" fill="url(#paint)"/><g font-family="${font}" style="font-variant-numeric:tabular-nums">${elements.join('')}</g></svg>`;

@@ -1,0 +1,140 @@
+{
+  "theme": "strawglint-mere",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Flat split rye-straw intarsia with long flush stalk ribbons, longitudinal fibres and directional satin glints",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Edit this EXACT already-correct FLAT straw-intarsia pond wallpaper. LAYOUT ONLY: preserve every material, color, joined flat straw ribbon field, fine longitudinal fibre, straight butt seam and directional satin glint exactly. Do not redraw organisms, change anatomy or return to rounded/wrapped bodies. Uniformly scale the ENTIRE COMPLETE EXISTING HABITAT GROUP to75PERCENT OF ITS CURRENT WIDTH AND HEIGHT, including frog, lilypad, bittern, all toes, reeds, waterlily, bud, leaves, willow/catkins, diving beetle, pondweed, all foreground/current ribbons and supporting pads. All parts move and shrink together, no individual resizing, deletion or additions. Centre the smaller COMPLETE GROUP horizontally and at57PERCENT imageheight; keep ALL group contents inside central70percent width and between y43and72percent height. Create clearly WIDER QUIET BLUE MARGINS on BOTH SIDES and BELOW by naturally extending the existing matching matte muted pond-blue paper. Preserve every beak, leaf/petal tip, toe, stem, reed and antenna whole. Upper area stays quiet too. No new plants/scene/background motifs, shadow/glow, lettering, numbers, clock/date/battery values, frame, UI or logo. Opaque portrait wallpaper, same exact flat-intarsia material and natural scene, just a single uniform pulled-back group.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.0f076268.png",
+      "sourceSha256": "0f076268502c3a124123a3a5a884c7e5b29c19c57e8008fc9e6ba73d21771105",
+      "sourceDimensions": [
+        941,
+        1672
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "34d70e106b410d4c89158d20f9a7aad725ddd667723d664e7342677b98b63dc1",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-pullback/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-pullback/wallpaper.previous-flat.48e4321b.png",
+        "sha256": "48e4321b91c9759a55dc9a118436871cb5da0a8758c0dd0093dbbdc53e3f0e5b"
+      }
+    },
+    {
+      "id": "frog-lilypad",
+      "prompt": "Edit this EXACT frog and lilypad artwork. Preserve the recognizable natural frog silhouette, three-quarter drawn pose, whole head, all FOUR limbs and delicate complete toes, small eye placements, whole notched leaf and its short stem. MATERIAL/FLAT-CONSTRUCTION CORRECTION: make it an ALMOST ZERO-THICKNESS FLAT INTARSIA CUTOUT, photographed perfectly overhead. It is a FLAT PICTURE of a natural frog, NOT a sculptural 3D frog. Remove all rounded wrapped limb volume, bulging belly/head, ribbon bands curving around bodies, over-under interlacing, basket joints, curled/rolled edges, raised loops and bead-like eyes. Inside the preserved frog outline use a few BROAD FLAT ORGANIC CONTOUR FIELDS filled with LONG STRAIGHT SPLIT-RYE-STRAW RIBBONS glued FLUSH EDGE-TO-EDGE, all bands of a field lie IN THE SAME PLANE, regular straight parallel seams plus a few straight transverse butt joints. Body bands align diagonally upper-right to lower-left; belly uses vertical pale straw bands; each limb has one flat fan of parallel ribbons following its overall direction but never wrapping around it. Smooth absolutely flat surface, no deep edges/shadows, no individual ribbon overlaps. Show unmistakable STRAIGHT FINE LONGITUDINAL STRAW VASCULAR FIBRES, alternate subtle directional satin straw glints between adjacent ribbons, occasional fine stalk-node scar. Natural olive/gold/pale-pith straw; NO walnut/maple woodgrain rings, shell nacre/iridescence, gold metal, cardboard corrugation or printed paper. Eyes are tiny flush dark inlay marks, not glossy beads. Lilypad is likewise one perfectly FLAT notched cutout with long parallel stalk ribbons and flush joints, not wrapped or woven. Truly transparent alpha exterior and open limb/leaf gaps, generous margins, no ground/scene, backing plaque/tile/frame, halo/shadow, text or UI. Keep anatomy recognizable; craft construction must clearly read FLAT LAID STRAW INTARSIA.",
+      "tool": "built-in image_gen",
+      "source": "sources/frog-lilypad.b6735d96.png",
+      "sourceSha256": "b6735d96ddaa72506ac0a8ab2863c17073ea4d2fbbea3bf409919260886a3d8a",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/frog-lilypad.3b5737ec.png",
+      "sha256": "3b5737ecd1bad3e498e1628e364516722675c60d2a196f827a2508dafb200ade",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/material-repair/frog-lilypad-history.json",
+      "referencedImage": {
+        "file": "qa/material-repair/frog-lilypad.original.584f04a3.png",
+        "sha256": "584f04a3864aa796921152eef040b831c15c0b4a93751008bdfdd56851dbeffa"
+      }
+    },
+    {
+      "id": "waterlily-bloom",
+      "prompt": "STRAWGLINT MERE, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL freshwater flora/fauna, natural recognizable proportions and coherent anatomy dominate. Unmistakable FLAT SPLIT RYE-STRAW INTARSIA: stalks split lengthwise, opened and flattened into LONG BROAD PARALLEL RIBBONS, each ribbon retains fine straight LONGITUDINAL VASCULAR STRIATIONS and natural alternating SATIN GOLDEN STRAW REFLECTIONS. Ribbons glued FLUSH edge-to-edge with tiny straight butt joints to make broad organic contour fields, alternating ribbon directions create directional golden glints. Occasional transverse stalk-node scar, tiny turned cut lip exposes pale pith underside. Natural straw-gold, sunbleached flax ivory, toasted honey and restrained olive-dyed straw, tiny dark natural eye accents only. ABSOLUTELY FLAT INTARSIA CUTOUT PICTURE less than1mm thick, photographed PERFECTLY OVERHEAD. This is a flat picture OF the natural organism, NOT a rounded sculpture. Every straw ribbon face lies IN ONE FLAT PLANE, glued flush edge-to-edge, no over-under, no wrapped bands, rounded limbs, carved volume, rolled/curled edges, basket joints or raised loops. No 3D form lighting; only directional satin glints within long straight flat straw ribbons. Tiny dark eyes are flush inlay marks, never glossy beads. NOT wood veneer/woodgrain, woven/plaited raffia loops or braids, loose curled wood-wool shavings, short feather tiles/shafts/diagonal barbs, corrugated cardboard/wavy hollowflutes, folded paper/pleated fans, quilling/coils, wool/felt, shiny metal/enamel, plastic/clay or photograph of real animal skin. Clear physical long straight stalk-ribbon construction, no generic geometric toy body or costumes/machines. Every opening between limbs/leaf/stems genuinely alpha. Whole complete subject central64percent with at least18percent true transparent margins each side; no clipped toes/tail/leaf tips. No opaque backing rectangle/plaque/paper tile, frame, ground/scenery/water plane/plinth, shadow, halo/glow, text, letters, numbers, clock/date/battery/weather values, UI, logo or signature. Subject WATERLILY BLOOM: one recognizable natural open water-lily flower seen at gentle three-quarter angle, a layered radial cup of long slender pointed petals around a small dense stamen centre, one closed tapered bud on a short curved stalk beside it and two whole small notched lily leaves. Thin almost-flat organic botanical form, no pot, water surface, disc backing, badge or flower vase. Each petal is built from just TWO TO FOUR LONG PARALLEL FLATTENED STRAW RIBBONS, precise flush buttjoint seams, fine longitudinal stalk striations and directional ivory/gold straw reflections; a few olive-dyed bands on leaves with aligned straight stalk fibres. No wooden grain rings, raised feather tiles/shafts/barbs, woven raffia, straw basket mesh, accordion folds, shiny metal or plastic flower. Whole petal tips, bud, leaf notches and stalk ends fit generous true alpha margins. CRITICAL APPROVED MATERIAL: absolutely FLAT LAID SPLIT-STRAW INTARSIA CUTOUT viewed perfectly overhead, flat picture of the organism in its natural drawn pose. No rounded sculptural bodies, wrapped/interlaced/overlapping bands, bead eyes or perspective depth. Joined broad flat parallel ribbon fields, straight buttseams, fine longitudinal straw fibres and directional satin glints. All legs/leaves/petals lie flat in ONE PLANE.",
+      "tool": "built-in image_gen",
+      "source": "sources/waterlily-bloom.129b71c7.png",
+      "sourceSha256": "129b71c7d0088b2180a11a55a5bdeee8cfd45b988730e4be0b9d07fe60ea26e4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/waterlily-bloom.b858ebcf.png",
+      "sha256": "b858ebcfb36d7c02a81bfa1b69e76613e5e82b9151494e19ef6ae077cfffd9da",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "bittern-reeds",
+      "prompt": "Edit INPUT1 bittern/reeds only; INPUT2 approved flat straw frog is MATERIAL/FLAT-CONSTRUCTION REFERENCE ONLY, do not add/copy frog, leaf, pose or composition. Preserve input1 natural bittern silhouette, bill/head/eye, long neck, folded wing/tail, exactly two coherent legs/complete toes, reeds and seedhead, all tips whole. Refine the craft into the same ABSOLUTELY FLAT laid split-straw intarsia picture as input2. Remove the tiny short shard/feather-like chips, layered raised feather edges and dense irregular little neck tiles. Replace each broad organic body region with FEW LONG FLAT PARALLEL STRAW RIBBONS glued FLUSH edge-to-edge, regular broad uniform-width stalk bands and a few straight transverse butt joints. Neck consists of SIX TO EIGHT VERY LONG nearly continuous vertical stalk ribbons from cheek to lower chest, not short chips; wing is ONE broad field of five to seven long diagonal ribbons, not separate overlapping feathers. All ribbon faces in one plane, no wrapped bands/over-under weave, curled/rolled edges, 3D carved volume, wire, metal, woodgrain rings or feather shafts/barbs. Preserve visible fine straight LONGITUDINAL VASCULAR STRAW FIBRES and alternating natural satin glints along the flat ribbon faces, occasional fine node scar, natural honey/ivory/olive straw colors. Thin flat cutout picture of a natural bird, perfectly overhead view, no perspective depth or bead eye. True alpha outside and between toes/reeds, generous margins; no backing, ground, glow, shadow, frame, text or UI.",
+      "tool": "built-in image_gen",
+      "source": "sources/bittern-reeds.23525bc3.png",
+      "sourceSha256": "23525bc3901ade67bd13ea839c3e932066c93db72dadc42b8f137f0a108a9d32",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bittern-reeds.96a9b3f8.png",
+      "sha256": "96a9b3f8112023cb1f4edc5f1422fca5844bbc03f519797e4f19e98b1ad0eef2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/material-repair/bittern-reeds-history.json",
+      "referencedImage": {
+        "file": "qa/material-repair/bittern-reeds.original.1cd964c9.png",
+        "sha256": "1cd964c9c144294f357383e513583c0660b3f11fdacca508eab9b13da6bddfa6"
+      },
+      "materialReference": {
+        "id": "frog-lilypad",
+        "source": "sources/frog-lilypad.b6735d96.png",
+        "sourceSha256": "b6735d96ddaa72506ac0a8ab2863c17073ea4d2fbbea3bf409919260886a3d8a",
+        "role": "Material reference only; target subject/geometry retained."
+      }
+    },
+    {
+      "id": "waterbeetle-curl",
+      "prompt": "STRAWGLINT MERE, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL freshwater flora/fauna, natural recognizable proportions and coherent anatomy dominate. Unmistakable FLAT SPLIT RYE-STRAW INTARSIA: stalks split lengthwise, opened and flattened into LONG BROAD PARALLEL RIBBONS, each ribbon retains fine straight LONGITUDINAL VASCULAR STRIATIONS and natural alternating SATIN GOLDEN STRAW REFLECTIONS. Ribbons glued FLUSH edge-to-edge with tiny straight butt joints to make broad organic contour fields, alternating ribbon directions create directional golden glints. Occasional transverse stalk-node scar, tiny turned cut lip exposes pale pith underside. Natural straw-gold, sunbleached flax ivory, toasted honey and restrained olive-dyed straw, tiny dark natural eye accents only. ABSOLUTELY FLAT INTARSIA CUTOUT PICTURE less than1mm thick, photographed PERFECTLY OVERHEAD. This is a flat picture OF the natural organism, NOT a rounded sculpture. Every straw ribbon face lies IN ONE FLAT PLANE, glued flush edge-to-edge, no over-under, no wrapped bands, rounded limbs, carved volume, rolled/curled edges, basket joints or raised loops. No 3D form lighting; only directional satin glints within long straight flat straw ribbons. Tiny dark eyes are flush inlay marks, never glossy beads. NOT wood veneer/woodgrain, woven/plaited raffia loops or braids, loose curled wood-wool shavings, short feather tiles/shafts/diagonal barbs, corrugated cardboard/wavy hollowflutes, folded paper/pleated fans, quilling/coils, wool/felt, shiny metal/enamel, plastic/clay or photograph of real animal skin. Clear physical long straight stalk-ribbon construction, no generic geometric toy body or costumes/machines. Every opening between limbs/leaf/stems genuinely alpha. Whole complete subject central64percent with at least18percent true transparent margins each side; no clipped toes/tail/leaf tips. No opaque backing rectangle/plaque/paper tile, frame, ground/scenery/water plane/plinth, shadow, halo/glow, text, letters, numbers, clock/date/battery/weather values, UI, logo or signature. Subject WATERBEETLE CURL: one recognizable natural great diving beetle in three-quarter top view angles lower-left, TWO smooth oval closed wing cases meeting in a clear centre seam, one broad thorax, coherent little head with TWO slender antennae, EXACTLY SIX coherent visible jointed legs, three per side; rear pair broad flattened swimming legs with a few fine natural fringe points, no extra disconnected limbs. A single short narrow curling pondweed sprig sits beside the beetle, no water or ground. Whole organism natural proportions, no machine/jewellery/gem/toy. Each whole wing case is a broad FLUSH FLAT STALK-RIBBON INTARSIA field of five to seven long parallel olive/gold flattened straw bands with straight longitudinal fibres and alternating directional satin straw sheen. Thorax/legs similar broad straw bands, not raised wooden armor, short feather tiles/diagonal barbs, wovenmesh, wool, corrugated stock or shiny metal. Whole six feet, both antennae, wingcase tips and sprig end inside generous real alpha margins. CRITICAL APPROVED MATERIAL: absolutely FLAT LAID SPLIT-STRAW INTARSIA CUTOUT viewed perfectly overhead, flat picture of the organism in its natural drawn pose. No rounded sculptural bodies, wrapped/interlaced/overlapping bands, bead eyes or perspective depth. Joined broad flat parallel ribbon fields, straight buttseams, fine longitudinal straw fibres and directional satin glints. All legs/leaves/petals lie flat in ONE PLANE.",
+      "tool": "built-in image_gen",
+      "source": "sources/waterbeetle-curl.07a97383.png",
+      "sourceSha256": "07a97383056be8d1d86f09488fad9fc6bda63d105c9ac641db66497a9d561a4a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/waterbeetle-curl.2c6ffbf3.png",
+      "sha256": "2c6ffbf38123d712eed2f9a17cc9b27dd072549646266d979bda68166909eb9f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "willow-catkins",
+      "prompt": "STRAWGLINT MERE, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL freshwater flora/fauna, natural recognizable proportions and coherent anatomy dominate. Unmistakable FLAT SPLIT RYE-STRAW INTARSIA: stalks split lengthwise, opened and flattened into LONG BROAD PARALLEL RIBBONS, each ribbon retains fine straight LONGITUDINAL VASCULAR STRIATIONS and natural alternating SATIN GOLDEN STRAW REFLECTIONS. Ribbons glued FLUSH edge-to-edge with tiny straight butt joints to make broad organic contour fields, alternating ribbon directions create directional golden glints. Occasional transverse stalk-node scar, tiny turned cut lip exposes pale pith underside. Natural straw-gold, sunbleached flax ivory, toasted honey and restrained olive-dyed straw, tiny dark natural eye accents only. ABSOLUTELY FLAT INTARSIA CUTOUT PICTURE less than1mm thick, photographed PERFECTLY OVERHEAD. This is a flat picture OF the natural organism, NOT a rounded sculpture. Every straw ribbon face lies IN ONE FLAT PLANE, glued flush edge-to-edge, no over-under, no wrapped bands, rounded limbs, carved volume, rolled/curled edges, basket joints or raised loops. No 3D form lighting; only directional satin glints within long straight flat straw ribbons. Tiny dark eyes are flush inlay marks, never glossy beads. NOT wood veneer/woodgrain, woven/plaited raffia loops or braids, loose curled wood-wool shavings, short feather tiles/shafts/diagonal barbs, corrugated cardboard/wavy hollowflutes, folded paper/pleated fans, quilling/coils, wool/felt, shiny metal/enamel, plastic/clay or photograph of real animal skin. Clear physical long straight stalk-ribbon construction, no generic geometric toy body or costumes/machines. Every opening between limbs/leaf/stems genuinely alpha. Whole complete subject central64percent with at least18percent true transparent margins each side; no clipped toes/tail/leaf tips. No opaque backing rectangle/plaque/paper tile, frame, ground/scenery/water plane/plinth, shadow, halo/glow, text, letters, numbers, clock/date/battery/weather values, UI, logo or signature. Subject WILLOW CATKINS: one recognizable natural fresh willow twig arches from lower-left to upper-right, with FIVE long narrow lance-shaped leaves and THREE soft cylindrical spring catkins spaced along the stem. No butterfly, bird, pot, vase, water, landscape or plaque. Natural organic botanical proportions and open airy branching silhouette. Leaves formed from LONG BROAD FLATTENED OLIVE-DYED RYE-STRAW RIBBONS glued flush parallel to long leaf axis, fine straight longitudinal stalk striations and alternating satin straw reflections. Pale ivory/gold catkins are compact flat intarsia silhouettes built from short parallel straw band ends, restrained tiny pollen dots, not fuzzy wool/felt balls, loose wood shavings or feather tiles. Slender twig assembled from narrow but flat straw ribbons, no braided cord or basketweave. Tiny straight buttseams/node scars show real stalk construction. Whole five leaf tips, three catkins and both twig ends contained in generous true alpha margins; almost-flat craft, not woodgrain carving or deep sculptural volume. CRITICAL APPROVED MATERIAL: absolutely FLAT LAID SPLIT-STRAW INTARSIA CUTOUT viewed perfectly overhead, flat picture of the organism in its natural drawn pose. No rounded sculptural bodies, wrapped/interlaced/overlapping bands, bead eyes or perspective depth. Joined broad flat parallel ribbon fields, straight buttseams, fine longitudinal straw fibres and directional satin glints. All legs/leaves/petals lie flat in ONE PLANE.",
+      "tool": "built-in image_gen",
+      "source": "sources/willow-catkins.0d8af76a.png",
+      "sourceSha256": "0d8af76abb25003687e891f5e5dffade2ac359c31577d9a9267b9c9289113050",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/willow-catkins.892810ae.png",
+      "sha256": "892810ae433dbebd9fd9f5acb8b70c9e5dc672f9ef6c0ff7b645868f68abc271",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

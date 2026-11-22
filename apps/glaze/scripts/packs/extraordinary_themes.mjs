@@ -19,11 +19,20 @@ import { plannedDesignedWidgets } from '../../src/core/designedWidgetLibrary.ts'
 import { parseDesignedWidget } from '../../src/core/designedWidgets.ts';
 import { designedWidgetSvg } from '../../src/core/designedWidgetPreview.ts';
 import { parseBrowseCategory } from '../../src/core/themeBrowse.ts';
+import { compareVersions, isAppVersion } from '../../src/core/themePack.ts';
 
 const json = (path) => JSON.parse(readFileSync(path, 'utf8'));
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const save = (path, value) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, JSON.stringify(value, null, 2) + '\n'); };
 export const REGISTRY_FILE = 'src/core/extraordinaryThemeIdentities.ts';
+// First app release containing these native identities. Candidates can be prepared while
+// app.json still names the previous release, so keep this floor independent of it.
+export const EXTRAORDINARY_MIN_APP_VERSION = '1.0.44';
+
+export function assertExtraordinaryMinAppVersion(manifest, id = 'new theme') {
+  assert.ok(isAppVersion(manifest.minAppVersion) && compareVersions(manifest.minAppVersion, EXTRAORDINARY_MIN_APP_VERSION) >= 0,
+    `${id}: minAppVersion must be at least ${EXTRAORDINARY_MIN_APP_VERSION} for the new native identities`);
+}
 
 export function validateNewThemeBrowseCategory(category) {
   assert.ok(typeof category === 'string' && category.trim().length > 0, 'new theme needs an explicit browse category');
@@ -102,7 +111,9 @@ export function auditExtraordinaryBuild({ app = APP_ROOT, dir }) {
     assert.ok(entry, `${id}: absent from candidate catalogue`);
     const browseCategory = validateNewThemeBrowseCategory(json(join(folder, 'meta.json')).category);
     assert.equal(validateNewThemeBrowseCategory(entry.category), browseCategory, `${id}: catalogue browse category differs from source`);
-    const m = json(checkedFile(dir, entry.manifest)), parsed = parseRemoteArtManifest(m, id);
+    const m = json(checkedFile(dir, entry.manifest));
+    assertExtraordinaryMinAppVersion(m, id);
+    const parsed = parseRemoteArtManifest(m, id);
     assert.ok(parsed.ok, `${id}: candidate manifest fails the app parser`);
     const options = parseWidgetOptions(m.widgets, m.assets);
     assert.deepEqual(options.errors, [], `${id}: widget options rejected`);
@@ -158,9 +169,9 @@ export function auditExtraordinaryBuild({ app = APP_ROOT, dir }) {
       const target = join(dir, 'native-review', id, `${design.kind}-${piece.size}.svg`);
       mkdirSync(dirname(target), { recursive: true }); writeFileSync(target, svg);
     }
-    perTheme.push({ id, name: m.name, packVersion: m.packVersion, artworks: ids, nativePlans: planned.length, assetBytes: m.totalBytes, nativeIdentity: true, compactOrnament: Boolean(identity.ornament) });
+    perTheme.push({ id, name: m.name, packVersion: m.packVersion, minAppVersion: m.minAppVersion, artworks: ids, nativePlans: planned.length, assetBytes: m.totalBytes, nativeIdentity: true, compactOrnament: Boolean(identity.ornament) });
   }
-  const report = { themes: perTheme.length, artworks: perTheme.length * 5, nativePlans: perTheme.length * 9, compactOrnaments: perTheme.filter(t => t.compactOrnament).length, allChecksPassed: true, catalogueScope: 'new-theme-supplement-only', requiresAppIdentityUpdate: true, published: false, deviceValidated: false, perTheme };
+  const report = { themes: perTheme.length, artworks: perTheme.length * 5, nativePlans: perTheme.length * 9, compactOrnaments: perTheme.filter(t => t.compactOrnament).length, minimumAppVersion: EXTRAORDINARY_MIN_APP_VERSION, allChecksPassed: true, catalogueScope: 'new-theme-supplement-only', requiresAppIdentityUpdate: true, published: false, deviceValidated: false, perTheme };
   save(join(dir, 'new-theme-validation.json'), report);
   return report;
 }
@@ -174,7 +185,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     } else {
       assert.ok(readFileSync(join(APP_ROOT, REGISTRY_FILE), 'utf8').replaceAll('\r\n', '\n') === extraordinaryRegistrySource(directions), 'run --sync-identities before building new themes');
       const at = args.indexOf('--out'), dir = resolve(at >= 0 ? args[at + 1] : join(APP_ROOT, 'dist/extraordinary-packs'));
-      const minAppVersion = json(join(APP_ROOT, 'app.json')).expo.version;
+      const minAppVersion = EXTRAORDINARY_MIN_APP_VERSION;
       const result = await buildPacks({ themesDir: join(APP_ROOT, 'theme-sources'), outDir: dir, versionsFile: null, releasesFile: null, plus: new Set(directions.records.map((r) => r.id)), minAppVersion, encoder: 'pillow', log: console.log });
       assert.deepEqual(result.failed, [], 'new-theme pack build failed');
       const report = auditExtraordinaryBuild({ dir });

@@ -1,7 +1,7 @@
 name: Glaze widget contract
 on:
   pull_request:
-    paths: ['apps/glaze/targets/widget/**', 'apps/glaze/src/core/widget*.ts', 'apps/glaze/src/core/extraordinaryThemeIdentities.ts', 'apps/glaze/theme-sources/**/native-widget-identity.json', 'apps/glaze/scripts/widget-design-*', 'apps/glaze/scripts/widget-ornament-*', '.github/workflows/glaze-widgets-check.yml']
+    paths: ['apps/glaze/targets/widget/**', 'apps/glaze/src/core/widget*.ts', 'apps/glaze/src/core/themedWidgetPreview.ts', 'apps/glaze/src/core/extraordinaryThemeIdentities.ts', 'apps/glaze/theme-sources/**/native-widget-identity.json', 'apps/glaze/scripts/widget-design-*', 'apps/glaze/scripts/widget-ornament-*', 'apps/glaze/scripts/widget-serif-*', '.github/workflows/glaze-widgets-check.yml']
   push:
     branches: ['codex/glaze-theme-retest-20261026']
     paths: ['apps/glaze/**', '.github/workflows/glaze-widgets-check.yml']
@@ -17,6 +17,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - name: Check actual Georgia preview pixels for every old and new serif theme
+        working-directory: apps/glaze
+        run: |
+          npm install --prefix "$RUNNER_TEMP/serif-render" --no-save sharp@0.35.5
+          GLAZE_RENDER_MODULES="$RUNNER_TEMP/serif-render" node --no-warnings scripts/widget-serif-preview-check.mjs "$RUNNER_TEMP/serif-review"
+      - name: Check actual Apple New York pixels with the unchanged production text helper
+        working-directory: apps/glaze
+        run: |
+          node scripts/widget-serif-native-probe.mjs "$RUNNER_TEMP/NativeTextProbe.swift"
+          swiftc -parse-as-library -target "$(uname -m)-apple-macos14.0" "$RUNNER_TEMP/NativeTextProbe.swift" scripts/widget-serif-native-check.swift -o "$RUNNER_TEMP/serif-native-check"
+          "$RUNNER_TEMP/serif-native-check" "$RUNNER_TEMP/serif-review"
       - name: Decode the real editor payload in Swift
         working-directory: apps/glaze
         run: |
@@ -41,3 +52,9 @@ jobs:
           PY
           swiftc "$RUNNER_TEMP/WidgetIdentity.swift" scripts/widget-ornament-check.swift -o "$RUNNER_TEMP/widget-ornament-check"
           "$RUNNER_TEMP/widget-ornament-check" "$RUNNER_TEMP/widget-ornaments.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: glaze-serif-layout-review
+          path: ${{ runner.temp }}/serif-review
+          retention-days: 7

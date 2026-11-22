@@ -1,0 +1,59 @@
+{
+  "scope": "Actual revised flat frog, held wrapped study and seven specifically observed material neighbors. No comparison images used as generation inputs.",
+  "sources": [
+    {
+      "label": "B29 revised flat frog",
+      "medium": "Flush stalk ribbons / satin glints",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-4a632371-a29d-48a8-b74f-9eb924e3ecfa.png",
+      "sha256": "b6735d96ddaa72506ac0a8ab2863c17073ea4d2fbbea3bf409919260886a3d8a"
+    },
+    {
+      "label": "B29 held initial",
+      "medium": "Rounded wrapped straw bands",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-eaf9dce9-9039-4dfd-a0c9-b3e32cd2359b.png",
+      "sha256": "584f04a3864aa796921152eef040b831c15c0b4a93751008bdfdd56851dbeffa"
+    },
+    {
+      "label": "Marquetry Arc actual",
+      "medium": "Wood veneer / natural wood grain",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\marquetry-arc\\widgets\\widget-veneer-wave.8fdca9e0.webp",
+      "sha256": "8fdca9e0cda4113e7c9c116a314ffc4a8c0d0947bcc08794da4703f361116750"
+    },
+    {
+      "label": "Woven Wander actual",
+      "medium": "Interlaced raffia loops / braid",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\woven-wander\\widgets\\widget-raffia-chameleon.095fc198.webp",
+      "sha256": "095fc1987742d245035c629c469e10ba0c3eb52b3ad5f06d0edbab72e828a2c0"
+    },
+    {
+      "label": "A8 wood wool actual",
+      "medium": "Loose curled splintered shavings",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\raspnest-heath\\widgets\\echidna.c6a38a4b6fb3.png",
+      "sha256": "c6a38a4b6fb34920b87a01a1ea0e776b63dba33a23ccb50f70d25b4ea165e135"
+    },
+    {
+      "label": "B24 feather vanes",
+      "medium": "Short vanes / shafts / fine barbs",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\vaneleaf-highland\\widgets\\edelweiss-rosette.1ca92954.png",
+      "sha256": "1ca929549f6200a3dfca88dc305a3fc6084c6f87f014a31930c4122ab83029f8"
+    },
+    {
+      "label": "B8 nacre lacquer",
+      "medium": "Shell wafers / iridescent growth bands",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\nacre-nomads\\widgets\\orchard-caravan.56097594.png",
+      "sha256": "5609759490be5f16693abd3c87977f1df4db8052d0ec3574f98818b6c0eab6cb"
+    },
+    {
+      "label": "B27 corrugated card",
+      "medium": "Broad liners / wavy hollow flutes",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\tawny-owl-oak.cdd74878.png",
+      "sha256": "cdd748787bc5dda2c6e9369d26022935f83412353617113f8816a71aeebef7f2"
+    },
+    {
+      "label": "Heron Reed actual",
+      "medium": "Photographic natural reed nest",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\heron-reed\\widgets\\widget-reed-nest.0b794e8b.webp",
+      "sha256": "0b794e8b0f281c4b74bdd68deace2d8b865f75288bf2668966942beeb08842e5"
+    }
+  ]
+}

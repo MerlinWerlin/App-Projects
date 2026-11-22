@@ -1,0 +1,18 @@
+{
+  "themeId": "strawglint-mere",
+  "recipe": [
+    "wave",
+    "strawFrog",
+    "strawRibbons",
+    "dash",
+    "leaf",
+    "basin",
+    "band"
+  ],
+  "art": {
+    "strawFrog": "M 22 58 Q 19 39 33 34 Q 35 22 44 28 Q 52 22 59 32 Q 76 33 79 47 Q 83 54 77 63 L 87 75 L 94 76 M 77 63 L 80 81 L 89 87 M 76 65 L 70 83 L 73 91 M 33 62 Q 15 54 12 70 Q 11 82 29 81 L 21 89 L 11 89 M 29 81 L 29 91 L 23 95 M 39 66 Q 45 77 59 72 L 63 84 L 60 92 M 43 68 L 41 86 L 34 90 M 29 44 Q 37 37 47 41 Q 61 35 72 43 M 40 33 L 41 34 M 57 32 L 58 33 M 32 50 Q 50 62 72 51 M 27 56 Q 45 68 65 60",
+    "strawRibbons": "M 12 21 L 87 21 M 12 28 L 87 28 M 12 35 L 87 35 M 25 18 L 25 38 M 63 18 L 63 38 M 16 59 L 81 46 M 17 66 L 83 53 M 19 73 L 85 60 M 42 50 L 45 70 M 67 45 L 70 65 M 17 88 L 82 88 M 18 94 L 83 94"
+  },
+  "ornament": "M 22 78 L 70 23 M 29 81 L 77 26 M 36 84 L 84 29 M 42 57 L 57 70 M 47 51 L 62 64 M 66 30 L 80 43",
+  "direction": "Natural crouched frog full illustration and aligned flattened stalk-ribbon detail. Wave rim, short flat dash markers, leaf-shaped hands, shallow basin charge gauge and band calendar. Compact companion uses three open diagonal straw ribbons with short transverse node marks, no complete animal or enclosing ring."
+}

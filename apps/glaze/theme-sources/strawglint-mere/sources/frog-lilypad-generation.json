@@ -1,0 +1,23 @@
+{
+  "id": "frog-lilypad",
+  "prompt": "Edit this EXACT frog and lilypad artwork. Preserve the recognizable natural frog silhouette, three-quarter drawn pose, whole head, all FOUR limbs and delicate complete toes, small eye placements, whole notched leaf and its short stem. MATERIAL/FLAT-CONSTRUCTION CORRECTION: make it an ALMOST ZERO-THICKNESS FLAT INTARSIA CUTOUT, photographed perfectly overhead. It is a FLAT PICTURE of a natural frog, NOT a sculptural 3D frog. Remove all rounded wrapped limb volume, bulging belly/head, ribbon bands curving around bodies, over-under interlacing, basket joints, curled/rolled edges, raised loops and bead-like eyes. Inside the preserved frog outline use a few BROAD FLAT ORGANIC CONTOUR FIELDS filled with LONG STRAIGHT SPLIT-RYE-STRAW RIBBONS glued FLUSH EDGE-TO-EDGE, all bands of a field lie IN THE SAME PLANE, regular straight parallel seams plus a few straight transverse butt joints. Body bands align diagonally upper-right to lower-left; belly uses vertical pale straw bands; each limb has one flat fan of parallel ribbons following its overall direction but never wrapping around it. Smooth absolutely flat surface, no deep edges/shadows, no individual ribbon overlaps. Show unmistakable STRAIGHT FINE LONGITUDINAL STRAW VASCULAR FIBRES, alternate subtle directional satin straw glints between adjacent ribbons, occasional fine stalk-node scar. Natural olive/gold/pale-pith straw; NO walnut/maple woodgrain rings, shell nacre/iridescence, gold metal, cardboard corrugation or printed paper. Eyes are tiny flush dark inlay marks, not glossy beads. Lilypad is likewise one perfectly FLAT notched cutout with long parallel stalk ribbons and flush joints, not wrapped or woven. Truly transparent alpha exterior and open limb/leaf gaps, generous margins, no ground/scene, backing plaque/tile/frame, halo/shadow, text or UI. Keep anatomy recognizable; craft construction must clearly read FLAT LAID STRAW INTARSIA.",
+  "tool": "built-in image_gen",
+  "source": "sources/frog-lilypad.b6735d96.png",
+  "sourceSha256": "b6735d96ddaa72506ac0a8ab2863c17073ea4d2fbbea3bf409919260886a3d8a",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "selectedFile": "widgets/frog-lilypad.3b5737ec.png",
+  "sha256": "3b5737ecd1bad3e498e1628e364516722675c60d2a196f827a2508dafb200ade",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/material-repair/frog-lilypad-history.json",
+  "referencedImage": {
+    "file": "qa/material-repair/frog-lilypad.original.584f04a3.png",
+    "sha256": "584f04a3864aa796921152eef040b831c15c0b4a93751008bdfdd56851dbeffa"
+  }
+}
