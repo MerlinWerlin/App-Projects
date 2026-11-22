@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "hare-gorse",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-cd6279af-bd86-450b-b36e-38862423a0b0.png",
+      "sha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        23,
+        1246,
+        1244
+      ]
+    },
+    {
+      "id": "snipe-sedge",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-eccc9608-4c26-4e2b-9aa5-9f5fb3c44c31.png",
+      "sha256": "846e498a6e29e3a4d57f80b47823431bcfe16c144d1a2fa1f64cf6945104c00f",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1234,
+        1254
+      ]
+    },
+    {
+      "id": "adder-heather",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-7029e363-b610-4241-840f-2b039d17ea38.png",
+      "sha256": "99edb4153291dae8ac3c6ab6c9e2f4e4deda119d74c54e1436b04edd4c841c28",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        8,
+        1250,
+        1254
+      ]
+    },
+    {
+      "id": "gorse-bloom",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-97687c03-9442-4a8d-a278-eb32d5ced133.png",
+      "sha256": "797787b241e1a6727adfd319e6256ede25d6f00dca4344b06b923948af014108",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        12,
+        1238,
+        1254
+      ]
+    },
+    {
+      "id": "emperor-moth",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-ffd38a29-ce52-4d56-853b-b6b0857d54f9.png",
+      "sha256": "0fe03cd5355695a3611639ef4f9f0ad6621a70ceb9973d5578fea3a53ec385dd",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        39,
+        1243,
+        1254
+      ]
+    }
+  ]
+}

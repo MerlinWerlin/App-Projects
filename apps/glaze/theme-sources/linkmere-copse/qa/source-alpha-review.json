@@ -1,0 +1,147 @@
+[
+  {
+    "id": "kingfisher-reed",
+    "originalDimensions": [
+      1312,
+      1199
+    ],
+    "alphaBounds": {
+      "1": [
+        50,
+        110,
+        1075,
+        1089
+      ],
+      "16": [
+        89,
+        113,
+        1039,
+        1086
+      ],
+      "96": [
+        89,
+        114,
+        1038,
+        1086
+      ]
+    },
+    "wholeOriginalContained": true,
+    "noCreativeRasterOrAlphaEdits": true
+  },
+  {
+    "id": "water-vole-sedge",
+    "originalDimensions": [
+      1312,
+      1199
+    ],
+    "alphaBounds": {
+      "1": [
+        50,
+        112,
+        1122,
+        1102
+      ],
+      "16": [
+        126,
+        127,
+        1074,
+        1077
+      ],
+      "96": [
+        126,
+        127,
+        1074,
+        1076
+      ]
+    },
+    "wholeOriginalContained": true,
+    "noCreativeRasterOrAlphaEdits": true
+  },
+  {
+    "id": "open-wing-dragonfly",
+    "originalDimensions": [
+      1536,
+      1024
+    ],
+    "alphaBounds": {
+      "1": [
+        50,
+        244,
+        1136,
+        955
+      ],
+      "16": [
+        73,
+        248,
+        1110,
+        952
+      ],
+      "96": [
+        73,
+        249,
+        1110,
+        952
+      ]
+    },
+    "wholeOriginalContained": true,
+    "noCreativeRasterOrAlphaEdits": true
+  },
+  {
+    "id": "yellowflag-iris",
+    "originalDimensions": [
+      1024,
+      1536
+    ],
+    "alphaBounds": {
+      "1": [
+        267,
+        59,
+        900,
+        1139
+      ],
+      "16": [
+        272,
+        61,
+        898,
+        1136
+      ],
+      "96": [
+        273,
+        62,
+        898,
+        1135
+      ]
+    },
+    "wholeOriginalContained": true,
+    "noCreativeRasterOrAlphaEdits": true
+  },
+  {
+    "id": "willow-catkin-branch",
+    "originalDimensions": [
+      1536,
+      1024
+    ],
+    "alphaBounds": {
+      "1": [
+        76,
+        233,
+        1146,
+        962
+      ],
+      "16": [
+        96,
+        239,
+        1109,
+        960
+      ],
+      "96": [
+        96,
+        239,
+        1108,
+        959
+      ]
+    },
+    "wholeOriginalContained": true,
+    "noCreativeRasterOrAlphaEdits": true
+  }
+]

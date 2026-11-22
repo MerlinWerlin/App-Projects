@@ -1,0 +1,20 @@
+{
+  "id": "kingfisher-reed",
+  "label": "Ring Kingfisher",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: original nature artwork for one small Glaze Artwork selection. GLAZE LINKMERE COPSE. Generate ONE whole recognizable KINGFISHER perched sideways facing left on ONE short slanting reed with two narrow leaves. Complete long pointed bill, domed head with ONE visible tiny dark eye, folded wing, full short tail, both feet gripping the reed, all leaf tips and both reed ends fit fully inside the image. Beautiful precise natural silhouette and poised anatomy, not an equipment theme. Distinct foreground medium: an exquisite shallow physical sculpture MADE ENTIRELY OF COARSE INTERLINKED OPEN BLACKENED-STEEL WIRE RINGS, mail construction, photographed in soft diffuse studio macro light. Individual round rings really loop through neighboring rings, visible overlapped wire joints and alternating tilted rows. The steel wire is charcoal-black with thin worn SILVER edge glints, restrained cool gray reflections, no gold or copper. Ring holes are large, truly empty and see-through. Use only about FIVE TO SEVEN RINGS across the broad torso, not fine hundreds of tiny mesh dots; thick enough wire and big overlapping round holes must remain unmistakable at an85px thumbnail. Shape the full bird/reed/leaves out of these physical interlinked hollow rings; the folded wing changes ring-row direction. A few short tapered dark steel strips may form the bill tip and feet, but no continuous opaque animal body underneath the ring mesh. No smooth metal skin, enamel fill, cloth backing, lace threads, beads, solid coils/tubes, woven flat ribbons, sculpted feathers, stamped mesh texture printed on a solid object, armor, clothing, helmet, chain props or jewelry medallion. Real depth at each ring crossing, open air between wire loops, slight shallow sculptural roundness. No background scene, floor, pedestal, cast shadow, aura, halo, smoke, scattered fragments, text, letters, numerals, logos, frames, clock face, UI or watermark. ONE independent complete artwork, not a contact sheet or panel. Center the ENTIRE composition with generous clean transparent breathing room; all non-subject pixels and ring holes are pure alpha zero. Transparent background. Artistic invented construction, not an authentic historical object or specimen photograph.",
+  "source": "sources/kingfisher-reed.bfbd44f5a859.png",
+  "sourceSha256": "bfbd44f5a85967c5081101a2f6888408461adca320da281fbc03878560b614f5",
+  "sourceDimensions": [
+    1312,
+    1199
+  ],
+  "selectedFile": "widgets/kingfisher-reed.36a85aaf.png",
+  "sha256": "36a85aaf9ef4b189cad38312f9be7d050936e4258a213e4d37987ed26e985d06",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, stretch, recolour, alpha cleanup or creative pixel edits.",
+  "references": []
+}
