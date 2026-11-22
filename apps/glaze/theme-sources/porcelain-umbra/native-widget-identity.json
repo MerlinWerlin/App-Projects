@@ -13,5 +13,6 @@
     "umbraVault": "M 12 88 L 12 40 Q 26 8 50 12 Q 74 8 88 40 L 88 88 M 24 88 L 24 43 Q 36 21 50 25 Q 64 21 76 43 L 76 88 M 36 88 L 36 54 Q 50 33 64 54 L 64 88 M 6 89 L 94 89 M 24 69 L 36 69 M 64 69 L 76 69",
     "umbraPiercing": "M 16 30 L 23 19 L 30 30 L 23 41 Z M 43 23 L 50 12 L 57 23 L 50 34 Z M 70 30 L 77 19 L 84 30 L 77 41 Z M 16 60 L 23 49 L 30 60 L 23 71 Z M 43 53 L 50 42 L 57 53 L 50 64 Z M 70 60 L 77 49 L 84 60 L 77 71 Z M 43 83 L 50 72 L 57 83 L 50 94 Z"
   },
-  "direction": "Pierced lancet vault subject, repeated diamond apertures, arch dial, cut hour marks, fine needle hands; column charge gauge and folio calendar."
+  "direction": "Pierced lancet vault subject, repeated diamond apertures, arch dial, cut hour marks, fine needle hands; column charge gauge and folio calendar. Compact ornament: A pierced porcelain arch rim with three reserved light slots; no complete theatre or building.",
+  "ornament": "M 18 74 L 18 49 C 18 9 82 9 82 49 L 82 74 M 29 70 L 29 49 C 29 22 71 22 71 49 L 71 70 M 40 49 L 40 58 M 50 41 L 50 51 M 60 49 L 60 58 M 24 80 L 76 80"
 }

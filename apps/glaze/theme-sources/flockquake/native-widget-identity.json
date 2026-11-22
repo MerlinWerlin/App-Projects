@@ -13,5 +13,6 @@
     "flockShift": "M 8 70 L 8 28 L 35 28 L 35 11 L 86 11 L 73 30 L 92 30 L 92 69 L 72 69 L 72 88 L 22 88 L 31 70 Z M 24 57 L 24 42 L 48 42 L 48 28 L 71 28 L 71 55 L 55 55 L 55 72 L 38 72 L 38 57 Z M 6 18 L 25 14 L 36 32 L 55 26 L 70 51 L 95 48 M 83 73 L 76 90 L 89 84",
     "flockDust": "M 12 18 L 20 12 L 26 20 L 18 27 Z M 48 9 L 55 16 L 48 23 L 41 16 Z M 78 19 L 90 17 L 85 28 Z M 9 56 L 18 42 L 25 55 Z M 42 43 L 53 40 L 56 53 L 44 57 Z M 75 49 L 90 46 L 87 58 L 76 61 Z M 19 79 L 31 69 L 37 81 L 25 89 Z M 56 73 L 66 78 L 58 92 L 48 85 Z M 80 78 L 92 74 L 90 90 L 81 93 Z"
   },
-  "direction": "Shifted stencil plaques and scattered flock-grain lozenges, shield dial, pin marks, leaf hands, tiled charge gauge and board calendar."
+  "direction": "Shifted stencil plaques and scattered flock-grain lozenges, shield dial, pin marks, leaf hands, tiled charge gauge and board calendar. Compact ornament: One stepped adhesive-stencil edge with two short velour pile channels; bold cuts keep the ornament legible.",
+  "ornament": "M 16 28 L 48 28 L 48 18 L 80 18 L 80 38 L 62 38 L 62 56 L 83 56 L 83 76 L 51 76 L 51 85 L 19 85 L 19 64 L 36 64 L 36 46 L 16 46 Z M 25 36 L 55 36 L 55 26 M 44 55 L 44 72 L 71 72"
 }

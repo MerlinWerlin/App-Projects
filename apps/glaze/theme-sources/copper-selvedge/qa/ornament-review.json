@@ -1,0 +1,12 @@
+{
+  "themeId": "copper-selvedge",
+  "ornament": "M 13 35 L 38 60 L 55 43 M 45 33 L 63 15 L 87 39 L 63 63 M 87 65 L 62 40 L 45 57 M 55 67 L 37 85 L 13 61 L 37 37 M 20 30 L 30 40 M 70 60 L 80 70",
+  "direction": "Two short interlaced copper ribbon turns and clipped selvedge ends; broken crossings keep the weave open.",
+  "scope": "Standalone path review at compact-header sizes. Optional ornament placement requires the coordinator runtime; existing baseline native proof exercises full subject/detail only.",
+  "pathLength": 143,
+  "controlPointBounds": [
+    13.0,
+    87.0
+  ],
+  "publication": "not authorised"
+}
