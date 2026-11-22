@@ -1,0 +1,62 @@
+[
+  {
+    "id": "otter-rushes",
+    "kind": "art",
+    "image": "otter-rushes.f593fbc1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Otter Rushes"
+  },
+  {
+    "id": "kingfisher-willow",
+    "kind": "art",
+    "image": "kingfisher-willow.ebe506c2.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Kingfisher Willow"
+  },
+  {
+    "id": "frog-sedge",
+    "kind": "art",
+    "image": "frog-sedge.69b929f1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Frog Sedge"
+  },
+  {
+    "id": "watermint",
+    "kind": "art",
+    "image": "watermint.1df86fb1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Watermint"
+  },
+  {
+    "id": "dragonfly-loosestrife",
+    "kind": "art",
+    "image": "dragonfly-loosestrife.272b147d.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Dragonfly Loosestrife"
+  }
+]

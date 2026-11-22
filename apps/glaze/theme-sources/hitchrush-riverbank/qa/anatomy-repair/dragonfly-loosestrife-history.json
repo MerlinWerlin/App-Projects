@@ -1,0 +1,45 @@
+{
+  "id": "dragonfly-loosestrife",
+  "tool": "built-in image_gen",
+  "reason": "Unaccepted initial three-wing clipped/hazed dragonfly corrected to four distinct whole wings and six coherent legs beside whole loosestrife, same knot material; actual planned-background alpha composite clean.",
+  "originalPrompt": "HITCHRUSH RIVERBANK, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL riverbank fauna or plants with clear natural anatomy FIRST. UNMISTAKABLE COARSE HAND-TIED MACRAME, made from MATTE THREE-PLY TWISTED COTTON CORDS. Broad SQUARE-KNOT over/under crossings around paired filler cords and DOUBLE HALF-HITCH collars must be visibly discrete at85px, with small true-alpha windows between knotted groups, soft flattened crossing crests, short tucked cord ends and very short occasional turned ends. Few thick legible knot groups across main body, not microscopic generic textured CGI. Warm ivory/ecru, muted taupe, sage/petrol and tiny restrained terracotta/lilac cords; very fine cotton strand twist, not fluffy fibre pile or real animal fur. Entire organism physically tied cord; no real skin/feathers/fur hidden underneath. No woven warp-weft grid, plaited flat raffia/coil basket, linen needlelace/picot mesh, needle-crochet chain loops, knit stitches, padded patchwork/felt/plush, loose long tassel fringes, smooth broad satin ribbon stitches, sewn metal spring tubes, glass beads, pins/string-art board, paper, clay, pasta or peel. No giant cartoon eyes, costume/bow or anthropomorphic smile. Whole recognizable subject inside central64percent with18percent empty ALPHA margin EVERY side; all extremities whole. Exterior and knot/branch/anatomy gaps genuinely transparent. No hoop/rod/backing fabric/plaque/rectangle, ground/scenery/rock/display base, halo/shadow/glow, text/letters/numbers/UI/logo/signature or live clock/date/battery/weather values. One familiar natural dragonfly resting diagonally on ONE short purple-loosestrife flower spike, slim coherent segmented abdomen, modest natural head/eyes, TWO whole short antennae, SIX coherent fine cord legs, FOUR whole long narrow wings with actual alpha-open knot windows and a few broad crossing cord ribs. No butterfly wings or jewellery fairy. Sage/taupe/ivory3ply cotton square knots and double-half-hitch collars form body/wings, lilac/olive knotted cord forms a short naturally upright flower spike with three modest paired narrow leaves. All cotton actual tied knots, no thin needlelace mesh, woven basket grid, metal wire or glass bead. Whole all4wing tips/abdomen/legs/antennae/flower/leaf ends contained. INPUT1 is OWN APPROVED REFINED3a OTTER, MATERIAL ONLY for separated bulky macrame SQUARE-KNOT collars, DIAGONAL BIGHTS, short turned cord ends and matte twisted3ply cotton. Generate the requested NEW subject/composition separately; NEVER copy or include the otter/rushes. Retain conspicuous knot units and real open negative gaps at85px, no continuous regular basket warp-weft grid or crochet/knit fill. Entire new organism actual knotted cotton, no underlying real skin/fur/feathers. All visible open knot windows are TRUE TRANSPARENT ALPHA, never white/opaque backing.",
+  "originalSource": "qa/anatomy-repair/dragonfly-loosestrife.original.0f1da31e.png",
+  "originalSha256": "0f1da31edefa12e890a44f0bf92b2b3f43c7e8b9c1fc6a8155df075951d46d05",
+  "repairPrompt": "REPAIR COMPLETE FOUR-WING DRAGONFLY CUTOUT. Use case: precise-object-edit. INPUT1 is own new dragonfly/loosestrife asset with only THREE clearly visible wings, clipped right edge and unwanted opaque pale haze. Preserve its familiar slim dragonfly, fine antennae/legs and short natural loosestrife spike, matte three-ply cotton/sage/ivory/taupe/lilac palette, bulky separate square-knot collars and diagonal bights. Correct the insect to EXACTLY FOUR whole long NARROW WINGS: TWO distinct wings project LEFT from thorax at different angles, TWO distinct wings project RIGHT at different angles. Separate all four wings with genuine alpha gaps; no wing hidden behind plant, body or another wing. Move short flower spike lower-left as needed to leave LOWER-LEFT WING completely visible. Whole FOUR wing tips, slender complete abdomen/tail, TWO SHORT antennae, SIX coherent fine cord legs, all flower/leaf/stem tips fully inside central64percent of SQUARE canvas, at least18percent genuine empty alpha margin EACH side. No cut rightmost wing/tail/stem. Each wing is an OPEN tied-cotton structure of a few broad real square-knot crossing collars/diagonal bights, large EMPTY alpha-open windows, NO wing membrane, NO filled white/cream/gray backing. Remove ALL pale GRAY/WHITE HAZE and cast shadows from exterior, between wings/body/flower, and inside every open knot window; those areas must be TRUE TRANSPARENT ALPHA, not painted checkerboard or white. Keep all actual cotton intact and clean, no blurred fiber halo or recoloring. INPUT2 is own APPROVED refined3a otter MATERIAL ONLY for separate coarse knot topology and real alpha windows, never add/copy otter/rushes or another animal. Final image is one whole natural FOUR-WING dragonfly with six legs beside short loosestrife spike in same hand-tied cotton. No extra body, butterfly wing shapes, costume, backing plaque, scenery, text/UI/logo/values. Genuine transparent cutout with all four wings obvious and whole.",
+  "referencedImage": "qa/anatomy-repair/dragonfly-loosestrife.original.0f1da31e.png",
+  "selectedSource": "sources/dragonfly-loosestrife.f0aa2b77.png",
+  "selectedSourceSha256": "f0aa2b77090cfd9d6eb2e1dca83b977273e018915fe3af74b3e57225c360be3b",
+  "materialReference": {
+    "id": "otter-rushes",
+    "source": "sources/otter-rushes.3a4856da.png",
+    "sourceSha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+    "role": "Material reference only; target subject/geometry retained."
+  },
+  "referencedImageOrder": [
+    "qa/anatomy-repair/dragonfly-loosestrife.original.0f1da31e.png",
+    "sources/otter-rushes.3a4856da.png"
+  ],
+  "exactToolRequest": "qa/anatomy-repair/dragonfly-loosestrife-anatomy-repair-request.json",
+  "exactInitialToolRequest": "qa/anatomy-repair/dragonfly-loosestrife-initial-request.json",
+  "exactInitialToolResult": "qa/anatomy-repair/dragonfly-loosestrife-original.json",
+  "exactToolResult": "qa/anatomy-repair/dragonfly-loosestrife-anatomy-repair-result.json",
+  "initialGenerationReferences": [
+    {
+      "order": 1,
+      "file": "sources/otter-rushes.3a4856da.png",
+      "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c"
+    }
+  ],
+  "selectedGenerationReferences": [
+    {
+      "order": 1,
+      "file": "qa/anatomy-repair/dragonfly-loosestrife.original.0f1da31e.png",
+      "sha256": "0f1da31edefa12e890a44f0bf92b2b3f43c7e8b9c1fc6a8155df075951d46d05"
+    },
+    {
+      "order": 2,
+      "file": "sources/otter-rushes.3a4856da.png",
+      "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "themeId": "hitchrush-riverbank",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.7e1df6e2.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "7e1df6e2964cf97ea12a43cbea914edb996bc8f887fe47693ed18754feb5c14a",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.b66f3ce3.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "b66f3ce3b047ff92ebf2643527fcb0ae9501eafd994832b63ace37f1ea3e4bc6",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.cf1ee0c9.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "cf1ee0c964bd8906d49a81edbbafdfa626950489f2a511438c86bfa77c011ebe",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "All whole key animals and plant tips retained across the actual three encoded variants; large coherent tall composition. No actual clipping and no automatic pullback."
+  }
+}

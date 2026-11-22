@@ -1,0 +1,19 @@
+{
+  "prototypeSha256": "afe98cad15f2ece4642ad3f6b931b89f57d6dff03369b2b48958600dcaf011dd",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "opaqueNearWhiteBodyPixels": 1336,
+  "opaqueNearWhiteBounds": [
+    491,
+    466,
+    793,
+    625
+  ],
+  "scope": "Pixel diagnostic only; no raster edits. Body white areas seen in local visual review are being checked as possible opaque windows."
+}

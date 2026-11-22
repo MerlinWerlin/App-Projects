@@ -1,0 +1,29 @@
+{
+  "id": "watermint",
+  "prompt": "PLANTS ONLY, ZERO FAUNA. HITCHRUSH RIVERBANK WATERMINT BOTANICAL STUDY. Use case: stylized-concept. One standalone1024square artwork on genuine transparent alpha. ExactlyONE natural WATERMINT sprig with TWO short connected branching stems, THREE OPPOSED PAIRS of small OVAL SERRATED sage leaves and TWO modest ROUNDED heads of tiny LILAC flowers. No otter, animal, bird, insect, face, eyes, paws, tail, feather or seedpod. Natural watermint paired leaf growth/compact terminal flower heads, no giant bouquet/wreath/macrame wallhanging. All stems/leaves/flowers are made from COARSE HAND-TIED MATTE THREE-PLY TWISTED COTTON: each oval leaf a few conspicuous separate square-knot collars joined by diagonal bights, small actual alpha-open windows between knots, lilac flower heads a few tight small square-knot clusters. True knot over/under intersections, not basket warpweft grid, plaited flat raffia, fine needlelace, crochet chain rows, smooth satin ribbons, metal coils/beads or padded felt. Three-ply cotton twist is readable, no long fluffy fringe. Whole all stem/leaf/flower ends central64percent,18percent real alpha margins each side, exterior and open plant/knot gaps transparent. No hoop/rod/backing/rectangle/vase/base/ground, castshadow/halo/glow, text/UI/logos or live values. Final image MUST be ONLY the single watermint plant, absolutely no animal copied from material reference. INPUT1 is OWN APPROVED REFINED3a OTTER, MATERIAL ONLY for separated bulky macrame SQUARE-KNOT collars, DIAGONAL BIGHTS, short turned cord ends and matte twisted3ply cotton. Generate the requested NEW subject/composition separately; NEVER copy or include the otter/rushes. Retain conspicuous knot units and real open negative gaps at85px, no continuous regular basket warp-weft grid or crochet/knit fill. Entire new organism actual knotted cotton, no underlying real skin/fur/feathers. All visible open knot windows are TRUE TRANSPARENT ALPHA, never white/opaque backing.",
+  "tool": "built-in image_gen",
+  "source": "sources/watermint.31b56661.png",
+  "sourceSha256": "31b566610c3a7d1005711b63b5fe13b0e38bbe0bef12868c21ddfcb8269d960a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/watermint.1df86fb1.png",
+  "sha256": "1df86fb135a7ee9f8bd00471eeaad6002e81778087a60b3fa2d7a13b64fa6feb",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "otter-rushes",
+      "file": "sources/otter-rushes.3a4856da.png",
+      "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/watermint-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/watermint-exact-tool-result.json"
+}

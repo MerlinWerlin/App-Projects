@@ -1,0 +1,21 @@
+{
+  "id": "otter-rushes",
+  "prompt": "ONE targeted CONSTRUCTION correction to own INPUT1 Hitchrush Riverbank otter. Use case: precise-object-edit. Preserve EXACT whole natural otter silhouette, modest head/ears/muzzle/two tiny eyes/whiskers, FOUR short coherent legs/webbed paws and complete long tapering curved tail, same short THREE-blade rush sprig and seedhead, same ecru/taupe/sage palette, true-alpha exterior, whole pose and generous margins. CHANGE the BASKET-WEAVE GRID across TORSO ONLY into unmistakable HAND-TIED MACRAME SQUARE-KNOT UNITS. Remove continuous straight horizontal/vertical warp-weft rows. Build torso from8to12 discrete BROAD ALTERNATING SQUARE KNOTS: each visible unit has TWO thick outer working cords cross into a small central oval collar around TWO filler cords, forming a knot with bulging side loops and short curved saddle, then cords turn diagonally toward the next knot. Clear irregular staggered rounded knot units, no regular woven chessboard. Small visible true-TRANSPARENT negative windows separate the knotted groups; every apparent hole opens all the way through to alpha, NO WHITE BACKING/FILL inside body holes. Keep matte coarse THREE-PLY TWISTED COTTON strands with subtle fibers, no crochet/knit rows, lace mesh, braided raffia leaf scales or shiny metal-purl spirals. Tail/legs/neck may retain their existing legible double-half-hitch collars and turned cord ends, but no smooth filled fabric body behind knots. No extra strands as animal limbs, no loose tassel fringe beyond silhouette. Natural otter remains recognizable first, no stuffed toy padding or huge eye. Only material/construction changes on torso/open gaps; do not replace whole animal or change anatomy/pose/plants. No ground/backing/hoop/plaque/text/UI/values, no new objects or fauna. True alpha exterior AND every open knot window.",
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-fd51ef10-f219-47c4-808b-98a6da47422e.png"
+  ],
+  "source": "sources/otter-rushes.3a4856da.png",
+  "output_hint": "Generated images are saved to C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860 as C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-1f6dcb25-0260-468a-82d2-3f031f7bf6c2.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "themeId": "hitchrush-riverbank",
+  "sourceSha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "copiedOriginal": "sources/otter-rushes.3a4856da.png",
+  "preview": "qa/material-sample/approved-full-170-85-review.png",
+  "status": "Approved first sample retained unchanged as selected raw production source; full theme separately validated.",
+  "previewProcessing": "Whole source fitted to840px inside1024alpha canvas, shown with Fit6% geometry at540/170/85 and conservative rounded mask. No subject crop/recolour/paint; no actual full-pack/installed-device claim.",
+  "approval": "qa/material-sample/coordinator-material-approval.json"
+}

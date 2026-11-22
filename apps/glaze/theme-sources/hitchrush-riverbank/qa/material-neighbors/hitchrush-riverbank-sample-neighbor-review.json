@@ -1,0 +1,235 @@
+{
+  "scope": "Actual read-only images, independent bytes/hash verification; no neighbors used as generation inputs, publication or current-live-R2 claim.",
+  "ownMaterialNeighbors": [
+    {
+      "label": "B38 otter sample",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-1f6dcb25-0260-468a-82d2-3f031f7bf6c2.png",
+      "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c"
+    },
+    {
+      "label": "bobbinbound-meadow",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\bobbinbound-meadow\\widgets\\orchard-songbranch.8591b0d3.png",
+      "sha256": "8591b0d3472be18ecc935eb3cc8a2634908d687378b4fd971afd9a35600ae73a"
+    },
+    {
+      "label": "tautline-scrubland",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\tautline-scrubland\\widgets\\hoopoe-sage.26051228.png",
+      "sha256": "260512287f7eb174c18f26ed552104f3921b1ca0330321193fcbdc3ffc6cb7f5"
+    },
+    {
+      "label": "purlwake-reedbeds",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\water-vole-rush.0916c484.png",
+      "sha256": "0916c484b5f67b05a66b107a9c0a36486879f7f7606e65c1d7dc1da42bca65f0"
+    },
+    {
+      "label": "ribbonrise-hedgerow",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\widgets\\foxglove-fern.b4389d09.png",
+      "sha256": "b4389d09f4c297b1d6dca9aa0fe3abc72acc6cf61f5c7db21aa15947f652c4d3"
+    },
+    {
+      "label": "cutstack-skyport",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\cutstack-skyport\\widgets\\foldwing-mooring-tower.55992a8a.png",
+      "sha256": "55992a8ab2bfdc5be41c8dae160713279cb3f5691c107536eea1d5d7745a9322"
+    },
+    {
+      "label": "flockquake",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\flockquake\\widgets\\quake-aperture.31c804d2.png",
+      "sha256": "31c804d2306537d60e15d919464d2bae4e56f8a775b91d409d578aee8cca690d"
+    }
+  ],
+  "baselineSelectorExport": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\knot-neighbor-selections.json",
+  "selectorExportSha256": "807aec28d7b053b122c6f619327c5a3807caf9d90d2cf30a9ca97f2d431733b7",
+  "baselineGroups": [
+    {
+      "id": "woven-wander",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\manifest.json",
+      "manifestSha256": "2578a3724b6c7428140facbfc51f88307357fedb4d9c739c1dc87a5f68609b7a",
+      "selections": [
+        {
+          "optionId": "coil-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\widget-coil-basket.8ad7188e.webp",
+          "sha256": "8ad7188ea7fe595ee7c1a585bba87b25a503a81b78816c712d7fcb357ddf92d8"
+        },
+        {
+          "optionId": "plaited-fern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\widget-plaited-fern.dfcffa9b.webp",
+          "sha256": "dfcffa9b8c915cee645595b4d59027f235e3fdadc54b3bf70162537957052841"
+        },
+        {
+          "optionId": "woven-pangolin",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\widget-woven-pangolin.475a386c.webp",
+          "sha256": "475a386cddf726fcf20593be2d50d95c0eee3120e10dc557dbc3e0c13dcee29e"
+        },
+        {
+          "optionId": "woven-progress",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\widget-woven-progress.1fe515cc.webp",
+          "sha256": "1fe515cc8262579caa317d71b574aa8337d4af49ff17995eede9caf11d9a3f52"
+        }
+      ]
+    },
+    {
+      "id": "berry-stitch",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\manifest.json",
+      "manifestSha256": "b538bab9b5c38e95e3912ff104478353fe740ace8b87079a19c7fe23902879ba",
+      "selections": [
+        {
+          "optionId": "stitched-berry-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\widget-stitched-berry-basket.6486a4b6.webp",
+          "sha256": "6486a4b62fe5d34f9c8114983022083602ad9245b24509750a45806528f3e0b1"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\widget-small.ec4dffb0.webp",
+          "sha256": "ec4dffb0409350dea6b8c53bbe114c5d68cfa6d551b2861c291bf142b98ef8b7"
+        },
+        {
+          "optionId": "art-20261107-bilberry-pincushion",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\widget-bilberry-pincushion.7698bbae.webp",
+          "sha256": "7698bbae3b9a1062b9090e3cada2e60176dbe3174baf4f2caf4d499ddaf7ac67"
+        },
+        {
+          "optionId": "art-20261107-thread-spool-finch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\berry-stitch\\v7\\widget-thread-spool-finch.46ae3c6a.webp",
+          "sha256": "46ae3c6ab060f6771532b32549e6a3cb86ac9d719bc682802cb2c85d806f5dce"
+        }
+      ]
+    },
+    {
+      "id": "moonpatch",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\manifest.json",
+      "manifestSha256": "82843e8d9e176f486aad71561cbf989d11aae9f7e051de583a5fd809a1427800",
+      "selections": [
+        {
+          "optionId": "patchwork-kite",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-patchwork-kite.647a4340.webp",
+          "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac"
+        },
+        {
+          "optionId": "quilted-rocket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-quilted-rocket.bd026b99.webp",
+          "sha256": "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657"
+        },
+        {
+          "optionId": "star-catcher",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-star-catcher.b7b5d2a9.webp",
+          "sha256": "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-small.fad8004e.webp",
+          "sha256": "fad8004e8a8406ebdfc9c99cc1252f88946176000c20c123b58d4bcf7ae04848"
+        }
+      ]
+    },
+    {
+      "id": "woven-wander",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\manifest.json",
+      "manifestSha256": "1b58ab0e9d3b3373125171fadbe8b11b1b714db8d0ba64023e91d2cd139be298",
+      "selections": [
+        {
+          "optionId": "coil-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-coil-basket.8ad7188e.webp",
+          "sha256": "8ad7188ea7fe595ee7c1a585bba87b25a503a81b78816c712d7fcb357ddf92d8"
+        },
+        {
+          "optionId": "plaited-fern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-plaited-fern.dfcffa9b.webp",
+          "sha256": "dfcffa9b8c915cee645595b4d59027f235e3fdadc54b3bf70162537957052841"
+        },
+        {
+          "optionId": "woven-pangolin",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-woven-pangolin.475a386c.webp",
+          "sha256": "475a386cddf726fcf20593be2d50d95c0eee3120e10dc557dbc3e0c13dcee29e"
+        },
+        {
+          "optionId": "raffia-chameleon",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-raffia-chameleon.095fc198.webp",
+          "sha256": "095fc1987742d245035c629c469e10ba0c3eb52b3ad5f06d0edbab72e828a2c0"
+        },
+        {
+          "optionId": "plaited-dragonfly",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-plaited-dragonfly.7bede0e3.webp",
+          "sha256": "7bede0e377de93b1d54bd6420debbb3baf85e24e1f22bcdd413dcbcb654cf624"
+        }
+      ]
+    },
+    {
+      "id": "berry-stitch",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\manifest.json",
+      "manifestSha256": "05f6f7ba80ebca03d0580c8cfd0a267fcd31bb344963ff2491e76c99bb624cbd",
+      "selections": [
+        {
+          "optionId": "stitched-berry-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-stitched-berry-basket.6486a4b6.webp",
+          "sha256": "6486a4b62fe5d34f9c8114983022083602ad9245b24509750a45806528f3e0b1"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-small.ec4dffb0.webp",
+          "sha256": "ec4dffb0409350dea6b8c53bbe114c5d68cfa6d551b2861c291bf142b98ef8b7"
+        },
+        {
+          "optionId": "art-20261107-bilberry-pincushion",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-bilberry-pincushion.7698bbae.webp",
+          "sha256": "7698bbae3b9a1062b9090e3cada2e60176dbe3174baf4f2caf4d499ddaf7ac67"
+        },
+        {
+          "optionId": "art-20261107-thread-spool-finch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-thread-spool-finch.46ae3c6a.webp",
+          "sha256": "46ae3c6ab060f6771532b32549e6a3cb86ac9d719bc682802cb2c85d806f5dce"
+        },
+        {
+          "optionId": "berry-yarn-teapot",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\berry-stitch\\v8\\widget-berry-yarn-teapot.1fec9d4c.webp",
+          "sha256": "1fec9d4c21fcd21bdd842fcd16067debde170ddbdb4103d5c621feb11c4d218c"
+        }
+      ]
+    },
+    {
+      "id": "moonpatch",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\manifest.json",
+      "manifestSha256": "03a19ba9499b1f180f1b3325e7b0d611da1b1106c311829746102bc5c1ca14c7",
+      "selections": [
+        {
+          "optionId": "patchwork-kite",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-patchwork-kite.647a4340.webp",
+          "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac"
+        },
+        {
+          "optionId": "quilted-rocket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-quilted-rocket.bd026b99.webp",
+          "sha256": "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657"
+        },
+        {
+          "optionId": "star-catcher",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-star-catcher.b7b5d2a9.webp",
+          "sha256": "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-small.fad8004e.webp",
+          "sha256": "fad8004e8a8406ebdfc9c99cc1252f88946176000c20c123b58d4bcf7ae04848"
+        },
+        {
+          "optionId": "patchwork-moon-rover",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-patchwork-moon-rover.3f1e2dbf.webp",
+          "sha256": "3f1e2dbf833e5f299bc08db44ec52cf382a3beadcd407e3bd720d3849b914163"
+        }
+      ]
+    }
+  ],
+  "baselineSelections": 27,
+  "candidateGenerated": true
+}
