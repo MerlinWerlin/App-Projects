@@ -1,0 +1,18 @@
+{
+  "id": "siphon-crown",
+  "prompt": "ONE original independent square1024x1024 pure artwork for WAXWAKE. SIPHON CROWN: a tall, strongly asymmetric rust-and-ochre batik current-structure with three unequal tubular reserved channels rising from a single broad lower reservoir. Left channel terminates blunt and low, middle channel doubles back into a hollow loop, right channel forks into two sharply tapered spillways; one muted teal cavity cuts diagonally across all three. Large graphic empty spaces, impossible fluid architecture, NOT coral, tree, antler, organ, animal, letter, real map, household object or actual building. Flat WAX-RESIST BATIK dyed cotton: fine plain-weave cloth grain, expressive hand-drawn melted wax boundaries, branching dark crackle veins through ochre/rust reserves, cream dye-resist halos, irregular dye saturation. Colors midnightindigo #122E5C, rust #A54832, ochre #C48C35, cream #F3E2BC, teal #4E8B87. No embroidery, stitching, fleece, pile, stuffed3D body, raised objects or sculpture. Thin fabric edge follows outer motif, whole artwork central65%,18% actual transparent alpha margins, background transparent; opaque dyed fields within. Flat textile scan, no square cloth sheet, floor, tile, frame, pedestal, text, numerals, logo, UI, clock/time/date/battery/weather values. One separate artwork, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/siphon-crown.a2715a1f.png",
+  "sourceSha256": "a2715a1f6a1580780b2c72ea4e0b942ac12a3d5a484048c4d076b9b547305da9",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/siphon-crown.21bbee1c.png",
+  "sha256": "21bbee1c56195694d6e2cb59a786aa3ae07a5cc2d4cfa126040c3797e742272b",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,17 @@
+{
+  "themeId": "waxwake",
+  "recipe": [
+    "wave",
+    "waxCurrent",
+    "waxCrackle",
+    "rays",
+    "needle",
+    "column",
+    "folio"
+  ],
+  "art": {
+    "waxCurrent": "M 9 58 C 10 23 42 9 57 20 C 75 31 54 46 35 48 C 18 51 23 75 43 73 C 64 71 60 48 80 43 C 99 39 99 72 79 86 C 53 105 8 90 9 58 Z M 21 56 C 24 36 42 29 46 33 C 48 39 31 38 21 56 M 37 61 C 43 49 58 43 67 36 M 59 82 C 71 78 80 69 82 57",
+    "waxCrackle": "M 7 14 L 28 24 L 45 16 L 63 29 L 87 17 M 28 24 L 22 43 L 39 56 L 31 77 L 42 95 M 22 43 L 6 52 M 39 56 L 58 48 L 74 61 L 94 53 M 58 48 L 63 29 M 74 61 L 68 82 L 86 96 M 68 82 L 49 79 L 42 95 M 31 77 L 9 87 M 87 17 L 92 37 L 74 61"
+  },
+  "direction": "Reserved oxbow current and branching wax-crackle, flowing wave dial, ray hour marks, needle hands, column charge gauge and folio calendar."
+}

@@ -1,0 +1,120 @@
+{
+  "theme": "waxwake",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Hand-dyed wax-resist batik on fine cotton",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 wallpaper for Glaze WAXWAKE. An entirely original physical WAX-RESIST BATIK artwork on fine plain-weave cotton, scanned flat as an art textile. It depicts an invented stranded-current world: in the lower55%, broad warm OCHRE reserved channels twist into impossible connected reservoirs and suspended inverted estuaries; three rust-coloured tide islands are pierced by uneven cream apertures, and one very broad cream river turns back through its own dark indigo negative space. This should feel like a strange imagined world grown from the wax-resist process, never a normal river map or decorative repeating pattern. Visible dye penetration into cloth grain, uneven hand-drawn melted wax boundaries, fine branching dark crackle where dye entered fractured wax, irregular resist halos and gentle color pooling. Flat dyed fabric, no embroidery, stitching, beads, tapestry weave, raised plush material, photography of objects or glossy3D sculpture. Palette midnight indigo #122E5C, ochre #C48C35, rust #A54832, cream #F3E2BC, muted teal #4E8B87. Upper45% quiet mostly indigo dyed cotton with very subtle crackle and cloth grain, no active motifs, suitable for icons. Lower asymmetric pattern rises at right, bold flowing silhouettes with crisp reserved gaps. No ordinary objects, animals, real plants, text, lettering, glyphs, numerals, map labels/coordinates, signature, frame, UI, phone, clocks/date/battery/weather values, logo or collage. One continuous original wallpaper.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.4a4ae6f7.png",
+      "sourceSha256": "4a4ae6f7e25a0c8b937e958db89d71a33ded092e39c4369c0c99f7c3952e4e67",
+      "sourceDimensions": [
+        851,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "d6157d30fdcd7ce6ba40964fd0393b26e177fc0e5110a7ad3e73a66eb1775b1f",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "oxbow-sanctum",
+      "prompt": "ONE original standalone1024x1024 square pure artwork for Glaze WAXWAKE. OXBOW SANCTUM: an impossible shallow horizontal textile territory shaped like a broad irregular double arch, two large off-centre empty indigo channels fold back into a single OCHRE reserved band that turns through its own inside, with one little RUST tide-island trapped in a cream chamber. Completely abstract current-architecture, not a real building, animal, shell, ordinary object or actual geographical map. Entire motif is WAX-RESIST BATIK on thin fine plain-weave cotton: flat dyed textile with unmistakable branching dark wax-crackle, hand-drawn uneven melted resist boundaries, cream halos, dye penetration into fine cotton grain and subtle pooling. Ochre #C48C35 and cream #F3E2BC reserved paths, midnightindigo #122E5C and mutedteal #4E8B87 chambers, rust #A54832 island. No embroidery, seams, plush pile, raised objects or3D sculpture. Irregular outer textile edge follows motif silhouette, fully isolated in central65% with18% real alpha-transparent margins and clear transparent exterior; interior indigo fields opaque dyed cloth. Straight down flat fine-art textile scan. No square fabric sheet/backdrop, floor, frame, pedestal, writing, symbols, letters, numerals, map labels, UI, logo, clock/date/battery/weather readings. One individual production artwork, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/oxbow-sanctum.e0c538d0.png",
+      "sourceSha256": "e0c538d028083418f1f05260f34c386d1e10cb20f23ac774b5c6eceaaf4e51e1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/oxbow-sanctum.4341d69d.png",
+      "sha256": "4341d69dffd62f30121a1c48f7fa5bd2e36579cfb1bb1af1ac0ff0af92419250",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "siphon-crown",
+      "prompt": "ONE original independent square1024x1024 pure artwork for WAXWAKE. SIPHON CROWN: a tall, strongly asymmetric rust-and-ochre batik current-structure with three unequal tubular reserved channels rising from a single broad lower reservoir. Left channel terminates blunt and low, middle channel doubles back into a hollow loop, right channel forks into two sharply tapered spillways; one muted teal cavity cuts diagonally across all three. Large graphic empty spaces, impossible fluid architecture, NOT coral, tree, antler, organ, animal, letter, real map, household object or actual building. Flat WAX-RESIST BATIK dyed cotton: fine plain-weave cloth grain, expressive hand-drawn melted wax boundaries, branching dark crackle veins through ochre/rust reserves, cream dye-resist halos, irregular dye saturation. Colors midnightindigo #122E5C, rust #A54832, ochre #C48C35, cream #F3E2BC, teal #4E8B87. No embroidery, stitching, fleece, pile, stuffed3D body, raised objects or sculpture. Thin fabric edge follows outer motif, whole artwork central65%,18% actual transparent alpha margins, background transparent; opaque dyed fields within. Flat textile scan, no square cloth sheet, floor, tile, frame, pedestal, text, numerals, logo, UI, clock/time/date/battery/weather values. One separate artwork, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/siphon-crown.a2715a1f.png",
+      "sourceSha256": "a2715a1f6a1580780b2c72ea4e0b942ac12a3d5a484048c4d076b9b547305da9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/siphon-crown.21bbee1c.png",
+      "sha256": "21bbee1c56195694d6e2cb59a786aa3ae07a5cc2d4cfa126040c3797e742272b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "tide-cradle",
+      "prompt": "ONE original separate1024x1024 square pure artwork for WAXWAKE. TIDE CRADLE: a squat asymmetrical six-sided batik island, broad and compact, divided into FOUR large irregular muted-TEAL reservoirs by thick cream and ochre reserved walls; one reservoir is turned INSIDE OUT so its indigo centre extends beyond the outer border in a short hooked tongue. A single jagged rust fissure cuts diagonally from upper-left to lower-right without meeting the edges. Nonliteral impossible dye-world, no face or symmetrically placed eyes, no identifiable natural object, real map, stone, shell, leaf or animal. The entire flat artwork is hand-dyed WAX-RESIST BATIK on fine plain-weave cotton: obvious wax-crackle dark branching veins, uneven melted wax boundaries, cream halos, dye seepage and irregular cloth grain, slight dye pooling. Indigo #122E5C, ochre #C48C35, cream #F3E2BC, rust #A54832 and teal #4E8B87. No stitched applique, embroidery, raised relief, plush or3D material. Whole irregular textile edge central65% with18% genuine transparent alpha margin; dyed internal fields opaque, exterior transparent. Flat textile scan, no sheet/backdrop, tile, floor, frame or stand. No text/numerals/labels, signatures, logo, UI, clock/date/battery/weather values. One artwork, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/tide-cradle.dfdba554.png",
+      "sourceSha256": "dfdba5544e4fee0e74baaa627c10e699c31eef0480e0f26efe96625e4f993ad3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/tide-cradle.4259439c.png",
+      "sha256": "4259439cc6ca2e8f41fc7c1a4207cc2b4d567380223cd943f6a5adb40285afea",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "shattered-estuary",
+      "prompt": "ONE original square1024x1024 pure artwork for WAXWAKE, a flat wax-resist BATIK current-world. SHATTERED ESTUARY: three broad asymmetrical DIAGONAL slabs of indigo-dyed textile interlock around a single huge jagged cream negative-space channel; the channel abruptly turns ninety degrees twice, then forks into two short blunt teal reservoirs. An ochre reserved band follows only the upper edge of each indigo slab, and a broad rust lozenge is suspended in the large central cream gap. Outer contour low and extremely wide, staggered and angular, with big empty bites. Make it abstract impossible fluid terrain, definitely NOT an instrument, harp/lyre, fence, parallel strings, doorway, animal, face, letter, map or everyday object. Clearly thin flat wax-resist dyed cotton, visible fine plain-weave grain, dark branching wax-crackle, uneven melted resist boundaries and cream dye halos, slightly irregular dye saturation. Indigo #122E5C, ochre #C48C35, rust #A54832, cream #F3E2BC, teal #4E8B87. No glossy3D relief, embroidery, seam, plush pile or stuffed body. Whole motif central65%,18% actual transparent alpha margin around irregular cloth edge, opaque dyed internal fields, no backing rectangle/background/floor/pedestal/frame. No text, numerals, logos, UI, clock, date, battery/weather values. One standalone artwork, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/shattered-estuary.ffff15c3.png",
+      "sourceSha256": "ffff15c334e3a62f42657b1ebd6bf2268a619c8af9bc5fd59c25bbf8898b012d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/shattered-estuary.e42ddedf.png",
+      "sha256": "e42ddedf061046d8e8227f0287ae8f3177c17b5a2aa888564e01db9366d78aa6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "tidal-inversion",
+      "prompt": "ONE original separate1024x1024 square pure artwork for Glaze WAXWAKE. TIDAL INVERSION: four unequal angular rhombus-shaped dye reservoirs arranged as a crooked descending chain, their corners merge through one continuous wide CREAM reserved S-channel that loops back across itself exactly once. Upper reservoir mostly rust, second ochre, third indigo with teal core, smallest lower one split into two blunt tips. Three dramatically different cutout gaps between them keep a bold long diagonal silhouette. Invented impossible current-world, not jewellery, kites, banner, animal, leaves, letter, tool or real geographical map. Entire design a FLAT WAX-RESIST BATIK on thin fine plain-weave cotton: visible dye penetrating cloth, fine irregular black wax-crackle branching through warm reserves, hand-drawn melted resist boundaries with cream halos and uneven pooling. Palette indigo #122E5C, ochre #C48C35, rust #A54832, cream #F3E2BC, teal #4E8B87. Thin irregular textile edge follows shape. No sewing, embroidery, patchwork seams, raised relief, fleece or3D sculpture. Whole form central65%,18% real transparent alpha margins, exterior/gaps transparent. No square cloth backing, backdrop, floor, stand, frame, text, numerals, logos, UI, map labels, clock/date/battery/weather values. One individual artwork, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/tidal-inversion.dd24ba24.png",
+      "sourceSha256": "dd24ba24c129437c10c3f626f854c3b0e6cd320c157cb7b24a9a381a623701df",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/tidal-inversion.194a5948.png",
+      "sha256": "194a594887ca2e6d53a23cdfe32b2fba6b8c0453c4f6c45250163003cb01084c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim.",
+  "rejectedExperiment": "qa/rejected/reverse-rain-field.json"
+}

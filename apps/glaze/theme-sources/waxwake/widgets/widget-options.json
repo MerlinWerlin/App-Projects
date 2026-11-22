@@ -1,0 +1,62 @@
+[
+  {
+    "id": "oxbow-sanctum",
+    "kind": "art",
+    "image": "oxbow-sanctum.4341d69d.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Oxbow Sanctum"
+  },
+  {
+    "id": "siphon-crown",
+    "kind": "art",
+    "image": "siphon-crown.21bbee1c.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Siphon Crown"
+  },
+  {
+    "id": "tide-cradle",
+    "kind": "art",
+    "image": "tide-cradle.4259439c.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Tide Cradle"
+  },
+  {
+    "id": "shattered-estuary",
+    "kind": "art",
+    "image": "shattered-estuary.e42ddedf.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Shattered Estuary"
+  },
+  {
+    "id": "tidal-inversion",
+    "kind": "art",
+    "image": "tidal-inversion.194a5948.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Tidal Inversion"
+  }
+]

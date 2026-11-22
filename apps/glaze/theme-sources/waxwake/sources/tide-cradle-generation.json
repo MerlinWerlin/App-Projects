@@ -1,0 +1,18 @@
+{
+  "id": "tide-cradle",
+  "prompt": "ONE original separate1024x1024 square pure artwork for WAXWAKE. TIDE CRADLE: a squat asymmetrical six-sided batik island, broad and compact, divided into FOUR large irregular muted-TEAL reservoirs by thick cream and ochre reserved walls; one reservoir is turned INSIDE OUT so its indigo centre extends beyond the outer border in a short hooked tongue. A single jagged rust fissure cuts diagonally from upper-left to lower-right without meeting the edges. Nonliteral impossible dye-world, no face or symmetrically placed eyes, no identifiable natural object, real map, stone, shell, leaf or animal. The entire flat artwork is hand-dyed WAX-RESIST BATIK on fine plain-weave cotton: obvious wax-crackle dark branching veins, uneven melted wax boundaries, cream halos, dye seepage and irregular cloth grain, slight dye pooling. Indigo #122E5C, ochre #C48C35, cream #F3E2BC, rust #A54832 and teal #4E8B87. No stitched applique, embroidery, raised relief, plush or3D material. Whole irregular textile edge central65% with18% genuine transparent alpha margin; dyed internal fields opaque, exterior transparent. Flat textile scan, no sheet/backdrop, tile, floor, frame or stand. No text/numerals/labels, signatures, logo, UI, clock/date/battery/weather values. One artwork, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/tide-cradle.dfdba554.png",
+  "sourceSha256": "dfdba5544e4fee0e74baaa627c10e699c31eef0480e0f26efe96625e4f993ad3",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/tide-cradle.4259439c.png",
+  "sha256": "4259439cc6ca2e8f41fc7c1a4207cc2b4d567380223cd943f6a5adb40285afea",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

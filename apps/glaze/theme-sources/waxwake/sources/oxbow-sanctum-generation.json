@@ -1,0 +1,18 @@
+{
+  "id": "oxbow-sanctum",
+  "prompt": "ONE original standalone1024x1024 square pure artwork for Glaze WAXWAKE. OXBOW SANCTUM: an impossible shallow horizontal textile territory shaped like a broad irregular double arch, two large off-centre empty indigo channels fold back into a single OCHRE reserved band that turns through its own inside, with one little RUST tide-island trapped in a cream chamber. Completely abstract current-architecture, not a real building, animal, shell, ordinary object or actual geographical map. Entire motif is WAX-RESIST BATIK on thin fine plain-weave cotton: flat dyed textile with unmistakable branching dark wax-crackle, hand-drawn uneven melted resist boundaries, cream halos, dye penetration into fine cotton grain and subtle pooling. Ochre #C48C35 and cream #F3E2BC reserved paths, midnightindigo #122E5C and mutedteal #4E8B87 chambers, rust #A54832 island. No embroidery, seams, plush pile, raised objects or3D sculpture. Irregular outer textile edge follows motif silhouette, fully isolated in central65% with18% real alpha-transparent margins and clear transparent exterior; interior indigo fields opaque dyed cloth. Straight down flat fine-art textile scan. No square fabric sheet/backdrop, floor, frame, pedestal, writing, symbols, letters, numerals, map labels, UI, logo, clock/date/battery/weather readings. One individual production artwork, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/oxbow-sanctum.e0c538d0.png",
+  "sourceSha256": "e0c538d028083418f1f05260f34c386d1e10cb20f23ac774b5c6eceaaf4e51e1",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/oxbow-sanctum.4341d69d.png",
+  "sha256": "4341d69dffd62f30121a1c48f7fa5bd2e36579cfb1bb1af1ac0ff0af92419250",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
