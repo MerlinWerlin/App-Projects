@@ -1,0 +1,169 @@
+{
+  "id": "c-kerr-lowtide",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "brittle-star",
+    "sea-hare",
+    "crown-anemone",
+    "three-siphon-tunicate",
+    "sea-lettuce"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.d4b8b4e4.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 10894,
+    "sha256": "d4b8b4e48d2380b62d11afbd4abb1244b7908805d4554b04bcde38ba6f82a8fd",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed5 independent originals together at210/150px and actual encoded85px. Five distinct bold shore-life silhouettes:five curved star arms,earlike sea-hare head/open mantle,anemone mouth/crown/column,three unequal open tubes and broad perforated lettuce fronds. Cream/charcoal regions remain opaque and flat with slightly grainy walls,no material relief or hatching. First star viewed on real slate and pale diagnostic composites,also reviewed by root.",
+    "wallpaper": "Viewed all3 actual encoded phone variants. All5 whole organisms remain inside every crop with open silhouette gaps and quiet upper/bottom slate pool fields. First wallpaper lost sea-hare open mantle fold;built-in exact-own-support edit restored two blunt rhinophores and large open back arch. Other4 identities and low-contrast connecting pool ripples retained. No edge-clipped arm/tentacle/frond/tube/body endpoints.",
+    "native": "Viewed all9 actual coordinator renderer previews in scratch. Sea-hare outline/open mantle,seal dial,staple marks,leaf hands,trail battery and ledger calendar keep live readings clear. Dedicated compact branch/island domain-wall fragment stays within small calendar/wideclock headers with breathing room;larger areas retain the whole sea hare.",
+    "roundedArtworkCorners": "Viewed5 actual encoded artworks using real app gradient stops,Fit6%inset,conservative20%roundedmask. Full silhouettes and every visible alpha16 pixel retained;quiet slate corners support both cream and charcoal domain fields. Entire21theme/105art audit passes. UI layout simulation,not installed-device proof."
+  },
+  "ownerSteeringReview": "Continued nature mix with tangible low-tide organisms. Flat broad cream/charcoal optical domains,quiet slate Artwork corners and compact branch/island native ornament. Exact Nature category verified.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-kerr-lowtide",
+    "backgroundStops": [
+      "#262D3B",
+      "#424B59"
+    ],
+    "pieces": [
+      {
+        "id": "brittle-star",
+        "sha256": "a487a795bdffe946e90e59ec937ffa47c790794567d92110c526f8fa717d24e1",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "sea-hare",
+        "sha256": "89f50cc98e92f23609bbb9a037c5cb02a3c68a5ad9444650670ee2cc8d9ba5c6",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "crown-anemone",
+        "sha256": "e6de6e05cc943125f251fdf21107c1f4bcf7dec3dc7cf9872e70ae7f0306a86d",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "three-siphon-tunicate",
+        "sha256": "35c543eba2cae0bfa3a8fa7f638a819dd60312f24c19d328366339ccdc5c1830",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "sea-lettuce",
+        "sha256": "93af995dfae88b723f3333bce608bac6b36be37fd182ba58ca3f6f3de5299afa",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 6,
+  "packTestEvidence": "Actual offline builder v1:9assets/0.63MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and6own wallpaper reference hashes pass. Common47 pipeline checks previously passed;no shared runtime edits."
+}
