@@ -1,0 +1,235 @@
+{
+  "scope": "Actual read-only images, independent bytes/hash verification; no neighbors used as generation inputs, publication or current-live-R2 claim.",
+  "ownMaterialNeighbors": [
+    {
+      "label": "B39 moorhen sample",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-3887c758-d67c-437d-9531-e07da49ebc97.png",
+      "sha256": "886e1c4487a8c7c70bbd05d4d268e188db42b297b78e36817be115fd1efbee55"
+    },
+    {
+      "label": "burnishhide-procession",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\burnishhide-procession\\widgets\\gate-drummer.fa12a08f.png",
+      "sha256": "fa12a08f83d762322187f4689b95665e9a1dd0f79f56f6635606014ac5d7e600"
+    },
+    {
+      "label": "cutstack-skyport",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\cutstack-skyport\\widgets\\foldwing-mooring-tower.55992a8a.png",
+      "sha256": "55992a8ab2bfdc5be41c8dae160713279cb3f5691c107536eea1d5d7745a9322"
+    },
+    {
+      "label": "beadweft-estuary",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\beadweft-estuary\\widgets\\kingfisher-reeds.769e09df.png",
+      "sha256": "769e09df2554142a36eb6ecb6700a328bf6b724008ef0c97bd8dbd3455a321e5"
+    },
+    {
+      "label": "vaneleaf-highland",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\vaneleaf-highland\\widgets\\ibex-bellflower.715f4342.png",
+      "sha256": "715f43428f9ac5aa499c6263a5b19f61685229677151d2939d9e32a6554aeaa2"
+    },
+    {
+      "label": "strawglint-mere",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\strawglint-mere\\widgets\\frog-lilypad.3b5737ec.png",
+      "sha256": "3b5737ecd1bad3e498e1628e364516722675c60d2a196f827a2508dafb200ade"
+    },
+    {
+      "label": "flutecut-woodland",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\tawny-owl-oak.cdd74878.png",
+      "sha256": "cdd748787bc5dda2c6e9369d26022935f83412353617113f8816a71aeebef7f2"
+    }
+  ],
+  "baselineSelectorExport": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\fish-neighbor-selections.json",
+  "selectorExportSha256": "67e45abd33e37e6bc075762634000449ad5eb95b0f75aaea73bc13336759e568",
+  "baselineGroups": [
+    {
+      "id": "saddlewood",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\saddlewood\\v7\\manifest.json",
+      "manifestSha256": "eb193f731cc0091ba5594c9f913be9006db9d81fa8305e141af3e342609e7e51",
+      "selections": [
+        {
+          "optionId": "leather-compass",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\saddlewood\\v7\\widget-leather-compass.df12997d.webp",
+          "sha256": "df12997d4a1ae815bdd6802995d4feab3680480acc967d4ffc0099a474c64127"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\saddlewood\\v7\\widget-small.c57ce4f3.webp",
+          "sha256": "c57ce4f344e5290f537d4b5dbff9e6375f5b1318ed8ca9206163f6023a9017b4"
+        },
+        {
+          "optionId": "art-20261107-brass-stirrup",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\saddlewood\\v7\\widget-brass-stirrup.04ce5b40.webp",
+          "sha256": "04ce5b40922c17a94f757be080a701c483942d9889319ba05f220c4ccc76841c"
+        },
+        {
+          "optionId": "art-20261107-braided-rosette",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\saddlewood\\v7\\widget-braided-rosette.5d3dc6f8.webp",
+          "sha256": "5d3dc6f8f254287760c4a34061dd5bc04f27dec3c956aa76327282b02b039d09"
+        }
+      ]
+    },
+    {
+      "id": "moonpatch",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\manifest.json",
+      "manifestSha256": "82843e8d9e176f486aad71561cbf989d11aae9f7e051de583a5fd809a1427800",
+      "selections": [
+        {
+          "optionId": "patchwork-kite",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-patchwork-kite.647a4340.webp",
+          "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac"
+        },
+        {
+          "optionId": "quilted-rocket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-quilted-rocket.bd026b99.webp",
+          "sha256": "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657"
+        },
+        {
+          "optionId": "star-catcher",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-star-catcher.b7b5d2a9.webp",
+          "sha256": "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-small.fad8004e.webp",
+          "sha256": "fad8004e8a8406ebdfc9c99cc1252f88946176000c20c123b58d4bcf7ae04848"
+        }
+      ]
+    },
+    {
+      "id": "toucan-loom",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\toucan-loom\\v1\\manifest.json",
+      "manifestSha256": "02a0ea255898dbe0abb71c9d2501d0469752de9310ce3eb27c37c79500c17d59",
+      "selections": [
+        {
+          "optionId": "canopy-leaf",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\toucan-loom\\v1\\widget-canopy-leaf.006791f0.webp",
+          "sha256": "006791f0137d086b2a9dc007132443c1d1a520c14eb400c38e644e2d59bb5273"
+        },
+        {
+          "optionId": "tuft-progress",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\toucan-loom\\v1\\widget-tuft-progress.d10ee6ba.webp",
+          "sha256": "d10ee6ba91905c67e49d81e4a97b07129aebac22fca930e4232ee78d8632818c"
+        },
+        {
+          "optionId": "tufted-toucan",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\toucan-loom\\v1\\widget-tufted-toucan.c8a00426.webp",
+          "sha256": "c8a004262a7e9edd0e9189415d7090ecb2ad35d3a44f6f2c14558277927c6e5a"
+        },
+        {
+          "optionId": "woven-feather",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\toucan-loom\\v1\\widget-woven-feather.d58c0127.webp",
+          "sha256": "d58c0127ede48be3fd4d5dbd8d3600a2f5cc951e6a472562ecaa56e0476a3b35"
+        }
+      ]
+    },
+    {
+      "id": "saddlewood",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\saddlewood\\v8\\manifest.json",
+      "manifestSha256": "9e4b5fa44ac623e3836e589ca20fa9a0a52d612c7ed081cf029f44f69524991a",
+      "selections": [
+        {
+          "optionId": "leather-compass",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\saddlewood\\v8\\widget-leather-compass.df12997d.webp",
+          "sha256": "df12997d4a1ae815bdd6802995d4feab3680480acc967d4ffc0099a474c64127"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\saddlewood\\v8\\widget-small.c57ce4f3.webp",
+          "sha256": "c57ce4f344e5290f537d4b5dbff9e6375f5b1318ed8ca9206163f6023a9017b4"
+        },
+        {
+          "optionId": "art-20261107-brass-stirrup",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\saddlewood\\v8\\widget-brass-stirrup.04ce5b40.webp",
+          "sha256": "04ce5b40922c17a94f757be080a701c483942d9889319ba05f220c4ccc76841c"
+        },
+        {
+          "optionId": "art-20261107-braided-rosette",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\saddlewood\\v8\\widget-braided-rosette.5d3dc6f8.webp",
+          "sha256": "5d3dc6f8f254287760c4a34061dd5bc04f27dec3c956aa76327282b02b039d09"
+        },
+        {
+          "optionId": "chestnut-saddle",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\saddlewood\\v8\\widget-chestnut-saddle.b60ab58c.webp",
+          "sha256": "b60ab58cdb0632ec57033972f88008a911397a562dc2dd02780ca6f9d05cf3f9"
+        }
+      ]
+    },
+    {
+      "id": "moonpatch",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\manifest.json",
+      "manifestSha256": "03a19ba9499b1f180f1b3325e7b0d611da1b1106c311829746102bc5c1ca14c7",
+      "selections": [
+        {
+          "optionId": "patchwork-kite",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-patchwork-kite.647a4340.webp",
+          "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac"
+        },
+        {
+          "optionId": "quilted-rocket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-quilted-rocket.bd026b99.webp",
+          "sha256": "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657"
+        },
+        {
+          "optionId": "star-catcher",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-star-catcher.b7b5d2a9.webp",
+          "sha256": "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-small.fad8004e.webp",
+          "sha256": "fad8004e8a8406ebdfc9c99cc1252f88946176000c20c123b58d4bcf7ae04848"
+        },
+        {
+          "optionId": "patchwork-moon-rover",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-patchwork-moon-rover.3f1e2dbf.webp",
+          "sha256": "3f1e2dbf833e5f299bc08db44ec52cf382a3beadcd407e3bd720d3849b914163"
+        }
+      ]
+    },
+    {
+      "id": "toucan-loom",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\toucan-loom\\v2\\manifest.json",
+      "manifestSha256": "52b325c305300de639bb17398e55a85311361b9a70f0990196949a11af6fdb60",
+      "selections": [
+        {
+          "optionId": "canopy-leaf",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\toucan-loom\\v2\\widget-canopy-leaf.006791f0.webp",
+          "sha256": "006791f0137d086b2a9dc007132443c1d1a520c14eb400c38e644e2d59bb5273"
+        },
+        {
+          "optionId": "tufted-toucan",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\toucan-loom\\v2\\widget-tufted-toucan.c8a00426.webp",
+          "sha256": "c8a004262a7e9edd0e9189415d7090ecb2ad35d3a44f6f2c14558277927c6e5a"
+        },
+        {
+          "optionId": "woven-feather",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\toucan-loom\\v2\\widget-woven-feather.d58c0127.webp",
+          "sha256": "d58c0127ede48be3fd4d5dbd8d3600a2f5cc951e6a472562ecaa56e0476a3b35"
+        },
+        {
+          "optionId": "tufted-heliconia",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\toucan-loom\\v2\\widget-tufted-heliconia.9a980030.webp",
+          "sha256": "9a98003092abd56396af3614c2764ba139e2a0e40bac8421ebb7d00d24e007ad"
+        },
+        {
+          "optionId": "woven-pineapple",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\toucan-loom\\v2\\widget-woven-pineapple.06546f7c.webp",
+          "sha256": "06546f7c5a1e07767b1d351c7802a12b528a1e1aa47337cb1fc86646d63440ba"
+        }
+      ]
+    }
+  ],
+  "baselineSelections": 27,
+  "candidateGenerated": true
+}
