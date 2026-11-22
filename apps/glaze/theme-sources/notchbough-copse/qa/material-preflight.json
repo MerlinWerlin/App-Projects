@@ -1,0 +1,56 @@
+{
+  "id": "notchbough-copse",
+  "lane": "B40",
+  "category": "Nature",
+  "status": "Firstc05f9678 accepted unchanged by coordinator; expanding four separately and fuller/taller WP using own first material reference only.",
+  "process": "Broad solid-wood laths precisely mitered and half-lap notched into open pressure-fit triangular lattice, visible straight grain and endgrain joints",
+  "subjects": [
+    "nuthatch-hazel",
+    "dormouse-bramble",
+    "stag-beetle",
+    "hazel-catkins",
+    "pipistrelle-bat"
+  ],
+  "world": "Familiar copse wildlife and hazel branches as pale hand-notched wooden lattice over quiet moss green.",
+  "baselineSearch": "Exact kumiko absent in historical manifests and current root source style fields; broad wood/lattice/straw/cord/lace neighbors positive. Actual MarquetryArc3/5, WovenWander4/5, CallaObscura3/5 selector images exported for review, historical vs accepted-unpublished explicit. No current-liveR2 claim.",
+  "neighbors": [
+    "MarquetryArc solid thin veneer/intarsia sheets and grain, not open lath lattice.",
+    "WovenWander raffia plaits and basket coils, not rigid notched joints.",
+    "CallaObscura silver flower/leaf relief, not wood/metal confusion.",
+    "B22Tautline straight thin cotton chords held on brass pins.",
+    "B17Bobbinbound twisted fine linen lace mesh.",
+    "B12Chargrain solid wood with burnt pyrographic marks.",
+    "B29Strawglint flat flush stalk ribbons.",
+    "B38Hitchrush bulky tied cotton knot collars.",
+    "B27Flutecut corrugated kraft sheet layers.",
+    "A18Shavetail broad curved radial pencil shavings with serrated painted rims, reserved by A; no curls/fans/shavings here."
+  ],
+  "technicalReferences": [
+    {
+      "url": "https://shop.japanhouselondon.uk/product/kumiko-coaster-nejigumi/",
+      "scope": "Primary JapanHouse craft text: precisely cut wooden strips assembled without nails or glue, open structure and natural wood. No product photo or specimen pattern used."
+    },
+    {
+      "url": "https://www.japanesetools.com.au/pages/kumiko",
+      "scope": "Primary workshop text: fine timber strips precisely angled and fitted without nails/glue. Text only."
+    },
+    {
+      "url": "https://kumiko.ensin-japan.com/",
+      "scope": "Primary Kanuma craft maker: cypress strip assembly and glue-free fitting. Text only; no historical floral/star pattern copied."
+    }
+  ],
+  "cornerCompanion": "Natural whole nuthatch clings head-down on a short twig. Broad straight laths, open triangular cells and explicit short half-lap notches. Hexagonal clock rim echoes sixty-degree joint angles; cut marks and wedge hands resemble lath ends, tiled battery and ledger calendar. Compact companion is two crossed lath ends with one open half-lap notch, no complete animal, dense lattice patch, enclosing frame or flower/star pattern. Clock contour chosen for craft; retain shipped calendar date/highlight and identity-outline behavior.",
+  "firstGateCriterion": "Need distinct broad rigid wood faces, straight grain/endgrain and literal cut-lap intersections visible at85, open cells true alpha. Reject if generic thin wire/string/lace, closed veneer collage, corrugated card, geometric CGI triangles or A18 curved shaving fans. One first sample only, then hold expansion for actual material verdict.",
+  "actualBaselineSelections": 25,
+  "additionalRecentLaneNeighbor": {
+    "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\outputs\\shavetail-five-source-review.jpg",
+    "sha256": "a55df6778c0da62a2ee3c9f8b26df3b7e1a1fd6bb16b17dfee469f15c65b83c8",
+    "scope": "Actual A18 five-source review board observed read-only before first prototype; broad curved radial painted-rim shaving fans differ from rigid open lath triangles. No neighbor supplied as generation input."
+  },
+  "firstSourceSha256": "c05f96782984fac2ba2a6542a3a5624b04dc3f0c0c0821927f3b8fe6e0253fa7",
+  "selectedApprovedSourceSha256": "c05f96782984fac2ba2a6542a3a5624b04dc3f0c0c0821927f3b8fe6e0253fa7",
+  "materialApproval": "notch-generation/material-approval.json",
+  "executedCreativeCorrectionCount": 0,
+  "reviewAuthority": "Coordinator material gate; not Jared approval. Historical Claude date-containment probes are not design gates.",
+  "currentCalendarScope": "Retain shipped calendar/date/highlight/identity-outline code. Historical Claude date-containment experiments are not design gates. Coordinator owns shared runtime."
+}

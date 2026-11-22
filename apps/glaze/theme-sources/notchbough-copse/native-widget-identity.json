@@ -1,0 +1,18 @@
+{
+  "themeId": "notchbough-copse",
+  "recipe": [
+    "hex",
+    "notchNuthatch",
+    "notchLap",
+    "cut",
+    "wedge",
+    "tiles",
+    "ledger"
+  ],
+  "art": {
+    "notchNuthatch": "M 65 14 L 79 25 L 70 48 Q 61 64 42 70 L 31 77 L 21 76 L 25 65 L 33 60 Q 34 45 46 33 L 65 14 M 23 69 L 11 74 L 22 76 M 29 68 L 30 69 M 48 38 L 42 56 L 58 49 L 48 38 M 42 56 L 42 70 L 58 62 L 58 49 M 58 49 L 67 33 L 48 38 M 62 58 L 73 64 L 82 57 M 67 45 L 79 48 L 86 40 M 87 19 L 79 83 M 81 63 L 93 74 M 84 41 L 95 31",
+    "notchLap": "M 18 15 L 87 82 M 12 23 L 79 89 M 30 85 L 80 12 M 39 90 L 87 18 M 45 43 L 51 49 L 45 55 M 54 38 L 62 45 L 56 53 M 31 27 L 39 20 M 70 71 L 78 64"
+  },
+  "ornament": "M 18 72 L 74 19 M 24 79 L 81 26 M 28 20 L 76 69 M 21 27 L 69 76 M 43 43 L 49 49 L 44 55 M 52 36 L 59 43 L 54 51",
+  "direction": "Natural whole nuthatch clings head-down on a short twig. Broad straight laths, open triangular cells and explicit short half-lap notches. Hexagonal clock rim echoes sixty-degree joint angles; cut marks and wedge hands resemble lath ends, tiled battery and ledger calendar. Compact companion is two crossed lath ends with one open half-lap notch, no complete animal, dense lattice patch, enclosing frame or flower/star pattern. Clock contour chosen for craft; retain shipped calendar date/highlight and identity-outline behavior."
+}
