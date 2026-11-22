@@ -1,0 +1,62 @@
+[
+  {
+    "id": "quake-aperture",
+    "kind": "art",
+    "image": "quake-aperture.31c804d2.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Quake Aperture"
+  },
+  {
+    "id": "tilted-plume",
+    "kind": "art",
+    "image": "tilted-plume.6c581278.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Tilted Plume"
+  },
+  {
+    "id": "sunken-burst",
+    "kind": "art",
+    "image": "sunken-burst.d1d388fd.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sunken Burst"
+  },
+  {
+    "id": "fault-splice",
+    "kind": "art",
+    "image": "fault-splice.b74ae4cd.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fault Splice"
+  },
+  {
+    "id": "stacked-silence",
+    "kind": "art",
+    "image": "stacked-silence.2f2298c6.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Stacked Silence"
+  }
+]
