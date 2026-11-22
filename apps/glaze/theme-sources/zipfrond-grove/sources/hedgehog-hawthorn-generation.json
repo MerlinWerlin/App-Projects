@@ -1,0 +1,26 @@
+{
+  "id": "hedgehog-hawthorn",
+  "label": "Zip Hedgehog",
+  "tool": "built-in image_gen",
+  "prompt": "ONE entirely NEW independent Glaze Nature artwork for ZIPFROND GROVE. Our OWN kingfisher reference supplies ONLY the vintage zipper-fastener construction language. Make the described different whole natural subject, never copy the bird or twig composition. Physical miniature assembled from FEW BROAD curved or folded matte moss/olive-green COTTON ZIPPER TAPES with a few small rusty-orange cotton accents, worn dull-BRASS COARSE INTERLOCKING ZIPPER TEETH forming visibly stepped opposing rails, stitched woven selvedge edges and one small integrated functional slider/pull. Broad matte fabric planes and chunky repeating tooth interlocks must remain unmistakable at85px. Zipper teeth are blocky individual solid metal pieces with stepped necks, not thin smooth wire coils, metallic weave, golden purl tubes, seed beads, film-strip holes, corrugated paper, satin ribbon or generic jewelry. Careful real object-like macro photography with restrained light and clearly tangible cloth/metal joins; no realistic natural skin/fur/feathers merely colored green and no soft stuffed plush body. Entire subject centered in CENTRAL66percent square width/height, all wings/legs/tails/leaf/tendril tips WHOLE with at least15percent quiet true-transparent alpha margins. No backing fabric rectangle, plaque, bag, clothing, extra sliders outside subject, unrelated hardware, sewing tools, floor/cast shadow, glow, halo, background color, border, text, labels, logos, numbers, clock/date/battery/UI or mockup. True transparent alpha between open parts. Original artistic zipper-sculpture interpretation, not authentic handmade-object claim. ONE whole recognizable EUROPEAN HEDGEHOG walking gently in side profile, low elongated oval body, small pointed natural snout with tiny dark metal-stop nose and eye, one small visible rounded ear and FOUR complete small separated paws. Back is built from5short broad overlapping green zipper loops, their coarse brass rails lifted in slight radial arcs suggesting natural spines while leaving broad green tape faces visible; coherent animal silhouette, not a pinecone or gear. Low head and belly are folded green/rust tape wedges with chunky tooth seams. One short open hawthorn twig with TWO small lobed zipper-tape leaves lies beside the feet. Small slider integrated along lower flank. Whole four paws, snout, twig and leaf tips fully in frame.",
+  "source": "sources/hedgehog-hawthorn.b098b760576c.png",
+  "sourceSha256": "b098b760576c4e99467a62063752cb0b22b261f0e5a20dd5a9e5cc05d4d57091",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "selectedFile": "widgets/hedgehog-hawthorn.895dc947.png",
+  "sha256": "895dc947573d13105275d32f5d7b408480284142fdaf602a2d70174239a98b7e",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square; no crop, recolour, code alpha cleanup or creative raster edits.",
+  "references": [
+    {
+      "file": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+      "sha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+      "purpose": "Own accepted first kingfisher supplies zipper material only; independently generated natural subject."
+    }
+  ]
+}

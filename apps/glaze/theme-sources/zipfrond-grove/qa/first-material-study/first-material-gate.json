@@ -1,0 +1,76 @@
+{
+  "id": "zipfrond-grove",
+  "selected": false,
+  "source": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-e5a0104c-c637-4462-950c-a7aa6488cc5f.png",
+  "sha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+  "prompt": "ONE original standalone Glaze Nature material prototype for ZIPFROND GROVE. A complete instantly recognizable COMMON KINGFISHER bird perched on one short open alder twig with TWO whole small leaves. Natural compact bird proportions, broad head, very long straight pointed beak, dark round eye, short neck, folded wing, short tail, TWO coherent gripping bird feet, all whole. The entire bird and twig are a tangible ingenious miniature assembled ONLY from FEW BROAD STRIPS OF VINTAGE ZIPPER FASTENER: coarse dull brass interlocking teeth with clearly visible stepped block shapes along MOSS-GREEN COTTON ZIPPER TAPES, stitched woven selvedge edges, opposing toothed rails visibly meeting and separating. Body made from3broad curved paired-rail zipper loops with dark green tape planes between chunky brass teeth, an overlapping folded wing built from ONE flat wide green tape wedge with a full coarse brass-tooth border; complete long straight beak constructed from a tapering closed paired-rail strip with visible interlocks, metal-stop eye, tiny folded tape feet gripping a rolled green zipper-tape twig. One small old functional ZIPPER SLIDER with a short slotted metal pull lies integrated at lower wing seam, unmistakably showing this is a fastener, not jewelry. Thick coarse rectangular teeth must remain readable as repeating interlocks at85px, unlike thin smooth wire coils, copper textile weave, corrugated paper, seed beads or film-strip windows. Brass teeth have satin worn edges, cotton tape is matte moss green, broad sparse tape folds with tiny stitches. No ordinary painted feathers, realistic animal surface, chainmail, fabric plush toy, lace, loose draped silk, ribbons without teeth, gold purl tubes or smooth metal animal sculpture. Gentle neutral macro product-photography lighting; no glow or cast shadow outside physical object. Entire complete recognizable bird and twig centered within CENTRAL66percent SQUARE canvas width and height, ALL beak/tail/feet/leaf tips whole with generous at least15percent true transparent outer margins. Clean TRANSPARENT ALPHA background and open gaps; no backing, plaque, rectangle, display stand, clothing, bag, sewing tools, hands, loose buttons or props. No text, labels, numbers, logos, clocks, dates, battery readings, UI, frame or mockup. Original artistic fastener-construction interpretation, not an actual handmade physical artwork claim.",
+  "alphaBounds": {
+    "16": [
+      73,
+      121,
+      1144,
+      1096
+    ],
+    "96": [
+      73,
+      122,
+      1143,
+      1095
+    ]
+  },
+  "actualPalette": "Moss-green and small rusty-orange woven tape areas with dull brass teeth; photographic artistic interpretation.",
+  "neighbors": [
+    {
+      "name": "B: woven copper ribbons",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\copper-selvedge\\widgets\\warp-fall.654200c5.png",
+      "sha256": "654200c583abf661c7e333702c349b4929123ca08995e50073f8af58ce738333"
+    },
+    {
+      "name": "B: hollow helical metal purl",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\water-vole-rush.0916c484.png",
+      "sha256": "0916c484b5f67b05a66b107a9c0a36486879f7f7606e65c1d7dc1da42bca65f0"
+    },
+    {
+      "name": "B: flush broad silver inlay",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\silverthorn-dunes\\widgets\\fennec-thornsprig.a748c3cb.png",
+      "sha256": "a748c3cbde43771387023d6a285b7b6508afe0d2c829c154319aeb768f8bd3ef"
+    },
+    {
+      "name": "A: perforated film-strip sculpture",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\emulsion-rookery\\widgets\\ibis.33efdcf64000.png",
+      "sha256": "33efdcf64000c6ee570d536b84af3249010c31046813a04d394b00b5c0875652"
+    },
+    {
+      "name": "B: raw cotton reverse applique",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\cutstack-skyport\\widgets\\foldwing-mooring-tower.55992a8a.png",
+      "sha256": "55992a8ab2bfdc5be41c8dae160713279cb3f5691c107536eea1d5d7745a9322"
+    },
+    {
+      "name": "A: fresh orange/white peel curls",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\pithcurl-orchard\\widgets\\dormouse.c868a72a.png",
+      "sha256": "c868a72a1d99adcd644b2782c14f058a0c14efd2408570c91b66f55f19a966d7"
+    },
+    {
+      "name": "Published: padded fabric patchwork (accepted rebuild)",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-patchwork-kite.647a4340.webp",
+      "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac"
+    },
+    {
+      "name": "Published: broad satin bow (accepted rebuild)",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cherry-ribbon\\v8\\widget-ribbon-locket.e88c8d14.webp",
+      "sha256": "e88c8d14e59484298150a8aa3a90103a62471608070aec3704c745a83a01f8b7"
+    },
+    {
+      "name": "Published: long silk drape (accepted rebuild)",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crimson-reverie\\v7\\widget-crimson-fan.ed2ff03b.webp",
+      "sha256": "ed2ff03b19fd5e4188a1f01dd0386151a39048add7fff3df79c2ec18010f26dc"
+    },
+    {
+      "name": "B35 current: short satin ribbon folds",
+      "file": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-67f4adb7-b5db-4b5d-a9ca-692a32194815.png",
+      "sha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e"
+    }
+  ],
+  "noNeighborGenerationInputs": true,
+  "published": false
+}

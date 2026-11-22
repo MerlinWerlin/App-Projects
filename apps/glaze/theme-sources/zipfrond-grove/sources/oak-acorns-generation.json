@@ -1,0 +1,26 @@
+{
+  "id": "oak-acorns",
+  "label": "Zip Oak",
+  "tool": "built-in image_gen",
+  "prompt": "ONE entirely NEW independent Glaze Nature artwork for ZIPFROND GROVE. Our OWN kingfisher reference supplies ONLY the vintage zipper-fastener construction language. Make the described different whole natural subject, never copy the bird or twig composition. Physical miniature assembled from FEW BROAD curved or folded matte moss/olive-green COTTON ZIPPER TAPES with a few small rusty-orange cotton accents, worn dull-BRASS COARSE INTERLOCKING ZIPPER TEETH forming visibly stepped opposing rails, stitched woven selvedge edges and one small integrated functional slider/pull. Broad matte fabric planes and chunky repeating tooth interlocks must remain unmistakable at85px. Zipper teeth are blocky individual solid metal pieces with stepped necks, not thin smooth wire coils, metallic weave, golden purl tubes, seed beads, film-strip holes, corrugated paper, satin ribbon or generic jewelry. Careful real object-like macro photography with restrained light and clearly tangible cloth/metal joins; no realistic natural skin/fur/feathers merely colored green and no soft stuffed plush body. Entire subject centered in CENTRAL66percent square width/height, all wings/legs/tails/leaf/tendril tips WHOLE with at least15percent quiet true-transparent alpha margins. No backing fabric rectangle, plaque, bag, clothing, extra sliders outside subject, unrelated hardware, sewing tools, floor/cast shadow, glow, halo, background color, border, text, labels, logos, numbers, clock/date/battery/UI or mockup. True transparent alpha between open parts. Original artistic zipper-sculpture interpretation, not authentic handmade-object claim. ONE complete recognizable OAK TWIG with THREE broad naturally lobed oak leaves alternating along one short arcing branch and TWO whole hanging ACORNS with distinct cups and oval nuts. Each lobed leaf is ONE broad moss-green cotton tape plane with6rounded natural side lobes and one short complete terminal tip, its continuous lobed edge traced by coarse individual brass zipper teeth; a central closed paired rail suggests the midvein, tiny stitched entry pinch at its base. Whole acorn nuts are folded rusty-orange cotton zipper tapes, their cups formed from short joined coarse-tooth rails; small integrated slider at the branch fork. Do not add generic round leaves, flowers or geometric badges. All three leaves, both acorn tips/cups and twig ends whole inside wide transparent margins.",
+  "source": "sources/oak-acorns.7d70a9b64aff.png",
+  "sourceSha256": "7d70a9b64affb08115a229a040e61dc19173c2cca8c54b13c3c3dde499ed0e12",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/oak-acorns.2f07c5c0.png",
+  "sha256": "2f07c5c01286103cef569f7d4c61fc5bfea5b0f9fccc14e781ee286c9f9db687",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square; no crop, recolour, code alpha cleanup or creative raster edits.",
+  "references": [
+    {
+      "file": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+      "sha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+      "purpose": "Own accepted first kingfisher supplies zipper material only; independently generated natural subject."
+    }
+  ]
+}
