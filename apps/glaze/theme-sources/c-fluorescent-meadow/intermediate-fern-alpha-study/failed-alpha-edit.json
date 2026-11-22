@@ -1,0 +1,18 @@
+{
+  "selected": false,
+  "sourceImage": "intermediate-fern-alpha-study/fern-alpha-edit-unselected.9d8c7d88f9d7.png",
+  "sourceSha256": "9d8c7d88f9d7d5cd0dbf3b6c375478af78cbe9cbe9f2a88be43455083a46bf34",
+  "prompt": "Use case:precise BACKGROUND REMOVAL edit. IMAGE1 is one natural real fern with mature arching frond,young curled fiddlehead,small mossy rootbase. KEEP THAT EXACT FERN unchanged:all natural green leaflets,veins,stem/fiddlehead finehairs,moss,roots,colours,soft botanical photographic lighting andwhole anatomy. REMOVE EVERY TRACE of the white/greenish haze andall background around it,including haze in the gaps between leaflets,stems androots. The exterior must be TRUE TRANSPARENT ALPHA ZERO,not a white translucent veil,grey backdrop,green glow,gradient,shadow or blurry matte. Preserve natural translucency only INSIDE real leaf tissues andclean fine antialiased subject edges. Empty air between leaves must be transparent. Do not crop,reshape,relight,recolour,add orremove any leaflet,root,moss tuft orcurl. Keep the whole fern andevery tip fully inside the same squarecanvas with generous empty margins. No groundpatch,border,backingrectangle,text,labels,UI ornewobjects. Result:the exact real fern as a clean genuinely transparent botanical cutout,1024square.",
+  "directEditReference": {
+    "sourceImage": "intermediate-fern-alpha-study/fern-initial.d6d514a2a8bf.png",
+    "sha256": "d6d514a2a8bf02524e70b2ef9862aa7829a1e73877c80fa286824f533dcf746e"
+  },
+  "reason": "Edit reduced haze area but still left visible halo reaching topedge,alpha16/96touchy0 andedgealpha106. Reject;fresh simpler fernsprig generation avoids fuzzyroot/moss backdrop.",
+  "alpha16Bounds": [
+    256,
+    0,
+    1136,
+    1176
+  ],
+  "edgeAlphaMaximum": 106
+}

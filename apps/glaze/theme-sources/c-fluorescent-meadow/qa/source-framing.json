@@ -1,0 +1,100 @@
+{
+  "review": "All five complete natural subjects inside original alpha16/96 bounds:every daisy petal/bud/leaf,fern frond/fiddlehead/stem end,three harebells/bud/leaves,moth antenna/wing/leg/clover tips,andwren beak/tail/feet/blackberry leaves/berries/twig ends. Edgealpha maxima0or1. Full originals proportionally contained1024square without cropping. First fern/alpha edit rejected for real haze;fresh clean fern selected after actual green-background composite review.",
+  "assets": [
+    {
+      "id": "oxeye-daisy",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          184,
+          77,
+          1068,
+          1194
+        ],
+        "96": [
+          184,
+          77,
+          1067,
+          1193
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "harebell-stem",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          138,
+          111,
+          1020,
+          1188
+        ],
+        "96": [
+          138,
+          112,
+          1020,
+          1188
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "unfurling-fern",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          206,
+          109,
+          1132,
+          1150
+        ],
+        "96": [
+          207,
+          110,
+          1132,
+          1149
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "moth-on-clover",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          212,
+          179,
+          1029,
+          1155
+        ],
+        "96": [
+          213,
+          180,
+          1028,
+          1155
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "wren-on-blackberry",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          138,
+          189,
+          1149,
+          1060
+        ],
+        "96": [
+          139,
+          190,
+          1148,
+          1059
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

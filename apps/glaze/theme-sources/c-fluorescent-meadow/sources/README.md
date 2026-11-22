@@ -1,0 +1,1 @@
+Six selected unmodified built-in image outputs:five separate real nature artworks andfinal own-reference habitat wallpaper. Exact generation prompts,dimensions,hashes andown-reference lineage inprovenance.json. All haze-bearing fern studies andedge-clipped wallpaper retained outside selected sources with selected:false. No external orneighbor image inputs.

@@ -1,0 +1,98 @@
+{
+  "theme": "c-fluorescent-meadow",
+  "mode": "built-in image_gen",
+  "ownerSteering": "Latest direct user request:move to less abstract nature-inspired ones. Voxel study setaside/unselected. Real recognisable flowers,ferns,moth andwren,natural anatomy/texture with optical effect secondary. Five separate images/own-reference real habitat,quiet woodland-green corners/natural leaf/flower native companion planned.",
+  "conceptReferences": [
+    {
+      "title": "Fluorescence of chlorophyll with UV light,Mississippi State University chemistry demonstration",
+      "url": "https://smacs.chemistry.msstate.edu/demos/spinach-chlorophyll/",
+      "use": "Text-only primary background for plant fluorescence. This theme is an artistic botanical photographic interpretation with restrained colours,not a measured species-specific fluorescence record. No external visual input."
+    }
+  ],
+  "prompts": [
+    {
+      "id": "oxeye-daisy",
+      "prompt": "Use case: natural botanical artwork. GLAZE MEADOW AFTERGLOW. Jared requested LESS ABSTRACT NATURE-INSPIRED themes:show recognisable REAL flowers,ferns,moths and woodland birds with natural anatomy and believable textures. Visual medium: beautifully detailed botanical/wildlife MACRO PHOTOGRAPHY with very restrained UV-induced-visible-fluorescence-inspired twilight lighting. Nature comes first;the optical treatment is subtle. Familiar leaf greens,ivory petals,pollen gold,soft lilac flowers and warm brown feathers. A faint cool pearl/mint response in pollen or thin petal edges,and a very slight wine tint in some leaf veins,are the only unusual colour accents. Soft diffuse illumination,delicate natural tissue translucency,real botanical detail,no glitter or hard neon halo. Polished calm nature photograph,not an experiment diagram. No invented organisms,mechanical plants,geometric bodies,voxel cells,scientific maps,skeleton networks,glass/clay sculptures,metal,paper craft,fabric,cartoon face,CGI toy,fluorescent rainbow or exaggerated magical glow. Actual familiar natural shapes and textures throughout. No letters,numbers,labels,scale bar,diagram,UI,clock,reading,logo or watermark. Subject: ONE real OXEYE DAISY sprig with one fully open ivory-white flower,yellow central disc,one small closed bud,one gently curved green stem andthree elongated serrated leaves. Natural individual petals with slightly uneven lengths,subtle pollen detail and believable leaf venation. Flower seen slightly obliquely,not a flat icon. Whole bloom,petal tips,bud,leaves andshort stem end visible. Let the familiar beautiful daisy be immediately recognisable;keep the light effect understated. Asset:ONE separate square1024x1024 pure-art widget. Whole subject safely inside central seventy percent with generous truly empty margins. Genuine transparent alpha outside the subject;preserve natural fine petal/leaf/feather/antenna edges. No background rectangle,landscape,ground patch,cast shadow,extra specimen,border,frame,contact sheet or phone mockup. Strong readable natural silhouette at85px. Keep the result calm,beautiful and recognisably nature-inspired rather than abstract."
+    },
+    {
+      "id": "unfurling-fern",
+      "prompt": "Use case:photo cutout asset. ONE REAL NATURAL GREEN FERN SPRIG,clean botanical macro photograph. One graceful mature arching frond with accurate small paired green leaflets,andone shorter natural curled fiddlehead next to it. Two slim natural stems meet at a neat short lower stem end. Full real fern anatomy,subtle veins,muted fresh natural green,soft neutral diffuse light. Clean crisp botanical specimen cutout,not an illustration or sculpted object. IMPORTANT:the fern ALONE has opaque photographic detail. The ENTIRE EXTERIOR andevery gap between leaflets/stems is true ALPHA ZERO TRANSPARENCY. No white haze,green halo,atmospheric light,fog,glow,bloom,blurred shadow,studio background,backing paper,matte veil,root mass,moss,soil,terrain,plate,border orrectangular panel. Do not paint a translucent white area behind the leaves. No UV glow or special colour effects onthisfern. Fit the whole frond,all leaflet tips,the complete fiddlehead curl andshort stem ends safely inside central70%of1024square canvas,with truly empty generous margins. A simple beautiful familiar real fern,readable at85px. No text,labels,UI,watermark,extra plants or props.",
+      "generationStage": "Fresh independent natural fernsprig generation after two unselected haze-bearing studies;no image inputs. Removed fuzzyroot/moss base from subject to keep clean exterioralpha.",
+      "unselectedStudyRecords": [
+        "intermediate-fern-alpha-study/initial-generation.json",
+        "intermediate-fern-alpha-study/failed-alpha-edit.json"
+      ]
+    },
+    {
+      "id": "harebell-stem",
+      "prompt": "Use case: natural botanical artwork. GLAZE MEADOW AFTERGLOW. Jared requested LESS ABSTRACT NATURE-INSPIRED themes:show recognisable REAL flowers,ferns,moths and woodland birds with natural anatomy and believable textures. Visual medium: beautifully detailed botanical/wildlife MACRO PHOTOGRAPHY with very restrained UV-induced-visible-fluorescence-inspired twilight lighting. Nature comes first;the optical treatment is subtle. Familiar leaf greens,ivory petals,pollen gold,soft lilac flowers and warm brown feathers. A faint cool pearl/mint response in pollen or thin petal edges,and a very slight wine tint in some leaf veins,are the only unusual colour accents. Soft diffuse illumination,delicate natural tissue translucency,real botanical detail,no glitter or hard neon halo. Polished calm nature photograph,not an experiment diagram. No invented organisms,mechanical plants,geometric bodies,voxel cells,scientific maps,skeleton networks,glass/clay sculptures,metal,paper craft,fabric,cartoon face,CGI toy,fluorescent rainbow or exaggerated magical glow. Actual familiar natural shapes and textures throughout. No letters,numbers,labels,scale bar,diagram,UI,clock,reading,logo or watermark. Subject: ONE real HAREBELL sprig with THREE delicate blue-lilac bellflowers at different natural angles,one small unopened bud,one thin curved branching green stem andnarrow leaves. Distinct five-lobed bell rims andsoft botanical texture. One bell faces down-left,one opens slightly toward viewer,one hangs behind without hiding the others. Real flowers,not lamps,glass bells or invented pods. All bell rims,petal tips,bud,leaves andshort stem end whole. Asset:ONE separate square1024x1024 pure-art widget. Whole subject safely inside central seventy percent with generous truly empty margins. Genuine transparent alpha outside the subject;preserve natural fine petal/leaf/feather/antenna edges. No background rectangle,landscape,ground patch,cast shadow,extra specimen,border,frame,contact sheet or phone mockup. Strong readable natural silhouette at85px. Keep the result calm,beautiful and recognisably nature-inspired rather than abstract."
+    },
+    {
+      "id": "moth-on-clover",
+      "prompt": "Use case: natural botanical artwork. GLAZE MEADOW AFTERGLOW. Jared requested LESS ABSTRACT NATURE-INSPIRED themes:show recognisable REAL flowers,ferns,moths and woodland birds with natural anatomy and believable textures. Visual medium: beautifully detailed botanical/wildlife MACRO PHOTOGRAPHY with very restrained UV-induced-visible-fluorescence-inspired twilight lighting. Nature comes first;the optical treatment is subtle. Familiar leaf greens,ivory petals,pollen gold,soft lilac flowers and warm brown feathers. A faint cool pearl/mint response in pollen or thin petal edges,and a very slight wine tint in some leaf veins,are the only unusual colour accents. Soft diffuse illumination,delicate natural tissue translucency,real botanical detail,no glitter or hard neon halo. Polished calm nature photograph,not an experiment diagram. No invented organisms,mechanical plants,geometric bodies,voxel cells,scientific maps,skeleton networks,glass/clay sculptures,metal,paper craft,fabric,cartoon face,CGI toy,fluorescent rainbow or exaggerated magical glow. Actual familiar natural shapes and textures throughout. No letters,numbers,labels,scale bar,diagram,UI,clock,reading,logo or watermark. Subject: ONE complete natural small GARDEN MOTH resting on ONE red-clover bloom with two green leaflets anda short curved stem. The moth has warm cream/tan patterned wings,soft natural body,two fine antennae andvisible delicate legs gripping the flower;calm ordinary moth behaviour,no cartoon face or glowing body. Both wings andall antenna/wing/flower/leaf endpoints whole. Clear recognisable insect/flower composition,subtle botanical fluorescence-inspired light only on a little pollen/petal tissue. Asset:ONE separate square1024x1024 pure-art widget. Whole subject safely inside central seventy percent with generous truly empty margins. Genuine transparent alpha outside the subject;preserve natural fine petal/leaf/feather/antenna edges. No background rectangle,landscape,ground patch,cast shadow,extra specimen,border,frame,contact sheet or phone mockup. Strong readable natural silhouette at85px. Keep the result calm,beautiful and recognisably nature-inspired rather than abstract."
+    },
+    {
+      "id": "wren-on-blackberry",
+      "prompt": "Use case: natural botanical artwork. GLAZE MEADOW AFTERGLOW. Jared requested LESS ABSTRACT NATURE-INSPIRED themes:show recognisable REAL flowers,ferns,moths and woodland birds with natural anatomy and believable textures. Visual medium: beautifully detailed botanical/wildlife MACRO PHOTOGRAPHY with very restrained UV-induced-visible-fluorescence-inspired twilight lighting. Nature comes first;the optical treatment is subtle. Familiar leaf greens,ivory petals,pollen gold,soft lilac flowers and warm brown feathers. A faint cool pearl/mint response in pollen or thin petal edges,and a very slight wine tint in some leaf veins,are the only unusual colour accents. Soft diffuse illumination,delicate natural tissue translucency,real botanical detail,no glitter or hard neon halo. Polished calm nature photograph,not an experiment diagram. No invented organisms,mechanical plants,geometric bodies,voxel cells,scientific maps,skeleton networks,glass/clay sculptures,metal,paper craft,fabric,cartoon face,CGI toy,fluorescent rainbow or exaggerated magical glow. Actual familiar natural shapes and textures throughout. No letters,numbers,labels,scale bar,diagram,UI,clock,reading,logo or watermark. Subject: ONE complete real small WREN perched naturally on ONE short curved blackberry twig with TWO recognisable serrated green leaves andTWO ripe blackberries. Warm brown softly barred feathers,upright little tail,short pointed beak,normal dark eye,small feet gripping the twig. Bird anatomy andfeather texture completely natural,not a glowing creature or geometric model. Gentle cool twilight botanical light on nearby leaf edges only;bird stays believable warm brown. All head/beak/tail/wing/feet,leaves,berries andtwig ends whole. Asset:ONE separate square1024x1024 pure-art widget. Whole subject safely inside central seventy percent with generous truly empty margins. Genuine transparent alpha outside the subject;preserve natural fine petal/leaf/feather/antenna edges. No background rectangle,landscape,ground patch,cast shadow,extra specimen,border,frame,contact sheet or phone mockup. Strong readable natural silhouette at85px. Keep the result calm,beautiful and recognisably nature-inspired rather than abstract."
+    },
+    {
+      "id": "wallpaper",
+      "prompt": "EDIT IMAGE1,our own meadow scene. Preserve its beautiful REAL photographic nature,soft woodland greens,ivory daisy,lilac harebells,natural fern,brown moth on pink clover,andbrown wren with two blackberry fruits. The current scene is too close:fern is cut at LEFT edge andblackberry leaf/twig at RIGHT edge. PULL THE CAMERA BACK so the entire group is about30percent SMALLER,then centre the whole group horizontally in lower middle. Every fern leaflet/fiddlehead,flower petal/bud/stem/moth antenna/wing tip/wren beak/tail/feet/blackberry leaf/fruit/twig end must be fully inside canvas with generous background margin. Reconstruct missing fern side andtwig leaf naturally;do not just crop or add borders. The complete FIVE focal groups must all fit within x10to90percent,y46to78percent. Whole fern arch needs at least10percent space from left. Rightmost complete blackberry leaf needs at least10percent space from right. All foliage/flower stems connect naturally to mossy ground. Upper43percent is soft defocused green woodland with low contrast bokeh andno sharp flowers/branches;bottom20percent is quiet moss/grass. IMAGE2=exact clean fern frond/fiddlehead,IMAGE3=exact THREE lilac harebells andbud,IMAGE4=exact moth-on-clover,IMAGE5=exact natural wren on two-leaf/two-berry twig. Preserve the exact ivory daisy/bud/leaves already in IMAGE1. Preserve these familiar subjects andtheir natural anatomy andtexture;no extra animals,geometric or abstract bodies,neon,glitter,magical haze. Keep the wren warmbrown,flowers real anddelicate,light effect barely visible. Coherent natural habitat,not cutout collage. Entire scene portrait1290x2796,opaque,noframe,nolabels,noUI.",
+      "internalArtworkReferences": [
+        {
+          "id": "oxeye-daisy",
+          "sourceImage": "sources/oxeye-daisy.28b3e1255a78.png",
+          "sha256": "28b3e1255a780b2d1c976a95faa53a42f6555d21e7b9887b123d7b25a2e0a7d1"
+        },
+        {
+          "id": "unfurling-fern",
+          "sourceImage": "sources/unfurling-fern.45bae04a8474.png",
+          "sha256": "45bae04a8474a6724a676fc8bc44495c4610522784558b9bc141878e8b57f70a"
+        },
+        {
+          "id": "harebell-stem",
+          "sourceImage": "sources/harebell-stem.b2676ee7ca94.png",
+          "sha256": "b2676ee7ca9402b47af9de133a1f1e6dd89871636134cf1ba636094dff6931d4"
+        },
+        {
+          "id": "moth-on-clover",
+          "sourceImage": "sources/moth-on-clover.44777744f4b2.png",
+          "sha256": "44777744f4b2aa1792fa02a05602991ae9905e7afdc10e2f78839a85a5b1495f"
+        },
+        {
+          "id": "wren-on-blackberry",
+          "sourceImage": "sources/wren-on-blackberry.8de7a38fc720.png",
+          "sha256": "8de7a38fc720d818ed35ad15ecfaa2fff027fe5bb006b7b3ba0da03e6619749d"
+        }
+      ],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-framing-study/first-scene.8b2780550c32.png",
+        "sha256": "8b2780550c327db375621926c23058300156b360579bec5e1e91dacde48560ac",
+        "role": "Own first habitat scene;unselected due clipped fern/blackberry endpoints."
+      },
+      "editSupportReferences": [
+        {
+          "id": "unfurling-fern",
+          "sourceImage": "sources/unfurling-fern.45bae04a8474.png",
+          "sha256": "45bae04a8474a6724a676fc8bc44495c4610522784558b9bc141878e8b57f70a"
+        },
+        {
+          "id": "harebell-stem",
+          "sourceImage": "sources/harebell-stem.b2676ee7ca94.png",
+          "sha256": "b2676ee7ca9402b47af9de133a1f1e6dd89871636134cf1ba636094dff6931d4"
+        },
+        {
+          "id": "moth-on-clover",
+          "sourceImage": "sources/moth-on-clover.44777744f4b2.png",
+          "sha256": "44777744f4b2aa1792fa02a05602991ae9905e7afdc10e2f78839a85a5b1495f"
+        },
+        {
+          "id": "wren-on-blackberry",
+          "sourceImage": "sources/wren-on-blackberry.8de7a38fc720.png",
+          "sha256": "8de7a38fc720d818ed35ad15ecfaa2fff027fe5bb006b7b3ba0da03e6619749d"
+        }
+      ],
+      "generationStage": "One built-in own-scene pullback edit with4own-art identity supports;daisy preserved from initial own-five-reference scene. First edge-clipped scene retained unselected."
+    }
+  ]
+}
