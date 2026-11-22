@@ -1,7 +1,7 @@
 {
   "theme": "c-chlorotype-leaflight",
   "recipe": [
-    "square",
+    "petal",
     "cSunheldFig",
     "cSunheldRobinVeins",
     "rays",
@@ -16,7 +16,7 @@
   "ornament": "M 25 86 Q 43 64 60 32 M 37 67 Q 19 66 24 52 Q 12 47 21 37 L 17 28 Q 35 22 42 33 Q 38 15 52 11 Q 68 17 63 35 Q 78 25 85 33 Q 89 47 74 55 Q 77 69 58 69 M 43 61 L 31 48 M 50 50 L 67 46 M 57 38 L 52 24",
   "ornamentDirection": "A small open natural fig-leaf fragment with three gently lobed edges, curved petiole and short branching veins. No animal portrait in the compact corner, surrounding plate or frame.",
   "ornamentProvenance": "Original authored100x100 SVG paths,22November2026,following the real fig-leaf carrier and both-corner steering.",
-  "direction": "Whole fig leaf with small perched robin and continuing veins in larger native fields. Rounded-square dial, ray marks, leaf hands, column battery and folio calendar; separate natural lobed-leaf/vein fragment gives compact headers space.",
+  "direction": "Whole fig leaf with small perched robin and continuing veins in larger native fields. Petal dial, ray marks, leaf hands, column battery and folio calendar; separate natural lobed-leaf/vein fragment gives compact headers space.",
   "values": "Existing live native Clock/Battery/Calendar at all three sizes; no raster readings.",
   "registryIntegration": "Lane source-only. Coordinator owns shared registry/Swift integration and installed-device qualification. Candidate floor1.0.44."
 }
