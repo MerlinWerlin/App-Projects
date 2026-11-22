@@ -1,0 +1,3 @@
+Review evidence for the accepted five Artwork selections and native identity.
+
+Compact corner QA: native-ornament-review.jpg compares actual app Calendar/Clock previews before and after the optional companion; native-ornament-validation.json binds the source/runtime hashes and verifies five unchanged hero layouts plus four uniformly fitted compact placements. rounded-artwork-review.jpg and rounded-artwork-validation.json use actual encoded assets, app blend maths and the theme gradient at170px/85px. The24% corner-radius stress model preserves solid silhouettes. These are review simulations and actual TypeScript previews; installed-device rendering remains unverified.
