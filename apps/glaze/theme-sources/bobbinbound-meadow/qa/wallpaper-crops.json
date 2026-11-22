@@ -1,0 +1,34 @@
+{
+  "themeId": "bobbinbound-meadow",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.dc474636.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "dc47463635d76357c156894bd6d59f38bd8368d76eaf9ad8835a09f0da6c71f1",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.5189a9b8.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "5189a9b8c921b1fd3e2125e6419f62d7b24cb05afe28be49f1de7fd17147509e",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.4b476dc4.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "4b476dc4d06d704238479aeda3014e769f577ac8c1d81479f0fe0cc9bc96d21f",
+      "labelX": 550
+    }
+  ],
+  "visualReview": "All3actualencodedvariants inspected: complete bird/hare/flowers/fern/dragonfly retained; quiet linen at edges; no clipped anatomy."
+}

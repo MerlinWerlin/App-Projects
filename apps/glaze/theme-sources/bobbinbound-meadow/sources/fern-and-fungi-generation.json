@@ -1,0 +1,18 @@
+{
+  "id": "fern-and-fungi",
+  "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject FERN AND FUNGI: a real woodland-edge cluster with THREE DISTINCT FERN FRONDS emerging from one compact shared root crown. Left frond tall and unfurled with paired small leaflets, middle frond curls into a large open fiddlehead spiral, right frond arches low over TWO MUSHROOMS of unequal size. One mushroom has a broad slightly tilted cap with clear radial lace gill loops beneath, the second is small and narrow with a rounded cap. A tiny airy moss tuft connects the root crown and mushroom stems, not a rectangular ground mat. Natural botanical proportions and a wide-open C-shaped negative space inside the curled frond, different upright and arched silhouettes. Every leaflet is visibly paired twisted linen loops with picot ends, caps are bundled cord rims over open diamond grounds, sparse ivory bindings. No face, character costume, vessel, garden structure or animal. Whole frond tips, cap rims, stems and root tuft completely visible with generous alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/fern-and-fungi.db705bd2.png",
+  "sourceSha256": "db705bd2d5740f174427e6ee01fbabd2efcc3363d4b0f6e6a29dbdad4673bf49",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fern-and-fungi.01b81777.png",
+  "sha256": "01b81777adf822ecbd64a6407bfbdc1c4ae219f29512ecac8e9781d11aec708c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

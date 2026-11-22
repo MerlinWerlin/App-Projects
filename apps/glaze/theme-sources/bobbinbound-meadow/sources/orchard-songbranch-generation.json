@@ -1,0 +1,18 @@
+{
+  "id": "orchard-songbranch",
+  "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject ORCHARD SONGBRANCH: one naturally proportioned thrush perches in three-quarter LEFT profile on a single gracefully arching fruit-tree bough. Two feet visibly grip the bough, long tail angles down-right, head tilts up as if singing with slightly open beak. One folded wing has three clear rows of plum linen feather-loop lace, breast spots are small dark knots on an airy undyed-ivory ground. Three small round fruit and five broad leaves hang asymmetrically from the branch below and at right; leaf interiors are deliberate bobbin-twist diamond grounds, not natural skeletal veins. A single small blossom at left, no extra birds, nests, scenery, tools or human objects. Strong open diagonal bough, full bird silhouette and fruit make an actual orchard-edge nature scene, not an abstract ornament or stuffed bird toy. Entire beak, tail, claws, branch ends, fruit stems and leaves fully visible inside generous alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/orchard-songbranch.8f8c6f91.png",
+  "sourceSha256": "8f8c6f914a2af77557918c211c266f63e141a2fdf0591cf9fb8ec83c43b79e77",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/orchard-songbranch.8591b0d3.png",
+  "sha256": "8591b0d3472be18ecc935eb3cc8a2634908d687378b4fd971afd9a35600ae73a",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
