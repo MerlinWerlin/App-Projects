@@ -1,0 +1,18 @@
+{
+  "id": "nuthatch-hazel",
+  "prompt": "NOTCHBOUGH COPSE, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real copse fauna and plants, natural coherent anatomy and whole recognizable silhouette FIRST. An original NATURAL-SHAPED hand-built OPEN SOLID-WOOD LATH LATTICE, using precise kumiko-like pressure-fit HALF-LAP and mitered notched JOINERY. Broad rigid straight rectangular limewood/hinoki laths in pale cream/blonde honey, sparse warm cherry and dark walnut for natural markings. REAL visible fine STRAIGHT woodgrain along broad flat lath faces, small endgrain pores at cut ends, tiny square half-depth notches where laths cross, restrained side-face thickness. About8to14 LARGE open TRIANGULAR cells through main body, every cell is actual true-alpha EMPTY AIR, not a colored or white filler plane. Outline uses short joined straight laths delicately faceting the natural animal/leaf contour; no regular rectangle/hexagon frame around the subject. Some longer struts continue across2cells, clean abutting/lap joints, no tangled random matchsticks. Coarse legible strips approx15to22px thick at1024 so material remains apparent at85. A meticulously made UNVARNISHED WOODWORK object, shallow low relief, diffuse side light, not low-poly CGI wireframe or abstract geometry. Every anatomical part uses same literal broad wooden strips, no real animal flesh/feathers/fur hidden underneath. No woven warp-weft, plaiting, knots, thread, string/pins, brass fasteners, lace, peeled shavings/radial fans/curls/serrated painted rims, flat veneer-filled marquetry, straw ribbons, bamboo tubes, cardboard flutes, paper/origami, glossy resin/plastic, metal wire or gems. No existing named decorative star/flower motif or copied cultural pattern. No toy/chibi giant eye/smile/costume. Whole subject inside central64percent with18percent genuine empty ALPHA margin every side. Whole extremities and all open cells transparent; no backing fabric/sheet, plaque/hoop/frame, base/plinth/ground, scenery, shadow/glow/halo, text/letters/numbers, live clock/date/battery/weather values, UI/logo/signature. FIRST MATERIAL SAMPLE: ONE natural whole NUTHATCH clinging HEAD DOWN LEFT to one short diagonal hazel twig at right. Compact tapering bird body, short neck, small pointed head, long straight slim pointed bill aimed lower-left, short complete narrow tail aimed upper-right, TWO coherent gripping feet with complete curled toes on twig. Natural modest small walnut-dark eye, one narrow dark walnut lath stripe from bill through eye, cream head/underside, warm cherry belly edge, blonde/limewood back and wing; no blue paint. Body and main oval folded wing show only8to12 coarse OPEN triangular lath cells with literal notched lap joints, all holes true alpha. Head stays natural rounded/small through short mitered contour segments, not giant geometric triangle. One short twig fork has TWO small open-lattice hazel leaves, no log/platform. Whole bill/feet/claws/tail/leaf/twig tips complete. No hammer, tool, screen, coaster, emblem, ribbon, sunburst or whole patterned panel.",
+  "tool": "built-in image_gen",
+  "source": "sources/nuthatch-hazel.c05f9678.png",
+  "sourceSha256": "c05f96782984fac2ba2a6542a3a5624b04dc3f0c0c0821927f3b8fe6e0253fa7",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/nuthatch-hazel.e45e1e8a.png",
+  "sha256": "e45e1e8afc0cc80de7e8362d2bcaa88eef5b6882311f5bc07ddd982cee16adc7",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
