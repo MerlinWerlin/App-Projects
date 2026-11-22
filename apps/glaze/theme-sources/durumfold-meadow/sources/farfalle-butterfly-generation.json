@@ -1,0 +1,26 @@
+{
+  "id": "farfalle-butterfly",
+  "label": "Farfalle Butterfly",
+  "tool": "built-in image_gen",
+  "prompt": "ONE completely NEW independent Glaze Nature artwork for DURUMFOLD MEADOW. Our OWN accepted robin reference supplies ONLY discrete UNCOOKED TRICOLOUR DURUM PASTA construction, surface grain and palette; never copy its bird, twig or composition. Build the described whole familiar natural subject entirely from a FEW recognizable separate matte hard dry golden semolina, muted TOMATO-RED and SPINACH-GREEN PASTA PIECES: curved grooved conchiglie shell cups, rimmed orecchiette, genuinely hollow bevel-cut penne, pinched scalloped farfalle, fusilli/cavatappi and thin bent bucatini. Clear physical assembly seams; fine starchy semolina grain and broad shell grooves must survive85px. Restrained macro miniature photography, believable coherent body support. Not real feathers/fur/skin/wing membrane beneath food decorations, not generic soft dough/clay/marzipan, wax, orange peel, satin, wood, corrugated paper/card flutes, plush, cooked wet pasta or sauce. NO plate/bowl/cutlery, food pile, packaging/brand, kitchen, human hands, backdrop rectangle, display pedestal, floor/cast shadow, glow/halo, text, labels, numbers, clock/date/battery/UI or mockup. Whole subject centered in CENTRAL66percent square width/height with all tips WHOLE and at least15percent quiet TRUE TRANSPARENT alpha outer margins and real open gaps. Original artistic dry-pasta sculpture interpretation, no actual handmade-object claim. ONE whole naturally proportioned BUTTERFLY viewed from slightly above, FOUR broad spread wings. Forewing pair is ONE complete large TOMATO-RED FARFALLE bow-tie pasta with its actual central pinch/scalloped outer edges; hindwing pair is ONE smaller SPINACH-GREEN FARFALLE below it, creating4clear wings. One narrow golden fusillo forms segmented central abdomen and thorax, small orecchiette head. TWO long fine bucatini antennae with gently curved ends and SIX short golden pasta legs in3separated pairs, coherent insect body, no additional legs. All four wing tips, both antennae and six feet whole. Leave background empty, no twig or flower.",
+  "source": "sources/farfalle-butterfly.29563dd6bdbb.png",
+  "sourceSha256": "29563dd6bdbb6d334cd37bc21ce48ab93ec7e53f2dd1e1e9366f1c8e5413e61b",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/farfalle-butterfly.3a105801.png",
+  "sha256": "3a105801163fe82db6b055e9ce7db8367277c2dda34f3262d373675d3bb02a5a",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+  "references": [
+    {
+      "file": "sources/robin-twig.deab67584264.png",
+      "sha256": "deab675842643f1372376ff205bc6941abd814f152eef35cb2337134705ba52b",
+      "purpose": "Own accepted robin supplies discrete dry-pasta material only; independent different natural subject."
+    }
+  ]
+}

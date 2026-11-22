@@ -1,0 +1,92 @@
+[
+  {
+    "id": "robin-twig",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      122,
+      193,
+      1018,
+      1021
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "farfalle-butterfly",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      132,
+      206,
+      1062,
+      968
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "garden-snail",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      110,
+      332,
+      1092,
+      878
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "poppy-stems",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      210,
+      164,
+      1002,
+      1063
+    ],
+    "wholeOriginalContained": true
+  },
+  {
+    "id": "sitting-hare",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      244,
+      79,
+      957,
+      1089
+    ],
+    "wholeOriginalContained": true
+  }
+]
