@@ -1,0 +1,169 @@
+{
+  "id": "c-quiver-riffles",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "fan-root-mangrove",
+    "riffle-skipper",
+    "whorl-drift-seed",
+    "split-tail-larva",
+    "broadwing-damselfly"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.e1f032f8.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 13152,
+    "sha256": "e1f032f84d068e693bbf19946c807fb6cec767f1cc2eb56e6ea718cab1c76b4d",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed5 independent selected quiver artworks together at210/150px and actual encoded85px. Large separated opaque arrowheads form strongly different nature silhouettes,with true transparent gaps/exterior. Replacement mangrove verified on actual pale theme and dark diagnostic backings;first shaded underfill attempt rejected/archived before selection. Clear glyph scale,distinct from earlier pointclouds/long trajectories.",
+    "wallpaper": "Viewed all3 actual encoded phone crops after identity-preserving edit. All5 complete focal forms/endpoints remain inside frame;three-wing seed and broad skipper/S-larva silhouettes restored from exact own source supports. Sparse current arrows connect one pale stream/root habitat;quiet upper field,bottom streambed. Initial flower/birdlike misidentifications retained as unselected study. Five own initial refs plus direct scene and3 reused edit supports:9reference uses/6unique verified images.",
+    "native": "Viewed all9 actual coordinator renderer previews in scratch after final parallel-arrow ornament refinement. Mangrove/current arch clock,basin battery,board calendar maintain clear changing live values. Two parallel bent arrows/short flow arc fit compact headers without a loop/button-like shape.",
+    "roundedArtworkCorners": "Viewed5 actual encoded art assets with real app background stops,Fit6%inset and conservative20%roundedmask. Every visible alpha16 retained;quiet pale corners give large direction glyphs room. Whole19theme/95art audit passes. UI layout simulation,not installed-device proof."
+  },
+  "ownerSteeringReview": "Nature stream habitat in a distinctly flat large-arrow scientific quiver image process. Quiet whole Artwork silhouettes and small parallel-current-arrow native ornament. Next theme will use a different subject world for collection balance,per coordinator.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-quiver-riffles",
+    "backgroundStops": [
+      "#F0EBE0",
+      "#E4E7DB"
+    ],
+    "pieces": [
+      {
+        "id": "fan-root-mangrove",
+        "sha256": "96a5cd26050f94c8ae78b4a8099a94aa8975bf3d2a982cba7178ea12f7c3ccb5",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "riffle-skipper",
+        "sha256": "ce65e8c4c84ee6636ffa1187b608fc6ee2d2c50855cdb0e6224d80beaca8a959",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "whorl-drift-seed",
+        "sha256": "b29547019e55008f49785a1b217a50a4b66aa06ef6095161ebebc4d1e7504b33",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "split-tail-larva",
+        "sha256": "382bfc878ded97898eb9f43bda04bfad5006188905bc019c469608714d310715",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "broadwing-damselfly",
+        "sha256": "cdd0545072713a348f9f4a845a2c9c2ba67e5a5e08c81ce03e26811dc1e7754d",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 6,
+  "packTestEvidence": "Actual offline builder v1:9assets/1.22MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and6own wallpaper reference hashes pass. Common47 pipeline checks previously passed;no shared runtime edits."
+}

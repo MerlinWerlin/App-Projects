@@ -1,0 +1,1 @@
+Six selected unmodified built-in outputs:five independent artwork generations plus final identity-edited habitat wallpaper. Exact prompts/raw hashes/reference-stage lineage in provenance.json. Unselected initial mangrove/wallpaper retained outside selected sources.

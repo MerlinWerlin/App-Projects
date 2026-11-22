@@ -1,0 +1,194 @@
+{
+  "theme": "c-quiver-riffles",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "fan-root-mangrove",
+      "sourceImage": "sources/fan-root-mangrove.b6a8e2f90793.png",
+      "sourceSha256": "b6a8e2f90793ff04176cb954294569a10b0641922f83c1c4018729d883c52a84",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/fan-root-mangrove.ba37a0dac748.png",
+      "sha256": "ba37a0dac74805614dba8b83940b2567848ee93a7cf9333e00c80a8205e0d632",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 376710,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE QUIVER RIFFLES. Asset TYPE: FLAT 2D LABORATORY QUIVER-MAP ART of a tangible NATURE silhouette. Build the ENTIRE subject using ONLY60to100 LARGE SEPARATED vector-arrow glyphs. Each glyph has a short straight shaft and a clear broad V arrowhead,crisp uniform opaque flat colour. The positions/headings of these arrows define the complete recognizable silhouette;locally aligned directions curve around its organic anatomy. The ONLY nontransparent pixels in the entire artwork are the ARROW GLYPHS themselves. Every gap between every pair of arrows is alphaZERO. Nothing underneath or around them: no body fill,pastel underlay,shading,translucent skin,glow,halo,outline,floor or shadow. This is a planar vector-analysis plot,never arrows printed on a3D object. Use direction-coded muted cobalt blue,kelp green and warm coral,with a few pale-peach arrows. Large glyphs,clear spacing,roughly8to12 arrows along the longest dimension. No tiny hundreds-of-arrows texture,no dots,particles,long trails,curly streamlines,physical material,mosaic grains,projection stripes or solid nature illustration. Fictional artistic optical-flow map,not measured data. No axes,legend,scale bars,text,letters,numerals,clock/dates/readings,logos or watermark. Subject: FAN-ROOT MANGROVE: one short natural sapling with THREE broad arching PROP ROOTS descending from a bent single trunk and a low canopy of FIVE unequal thick oval paddle leaves. Two leaves overlap and one rolls slightly inward,leaving generous gaps between root arches and leaf lobes. Entire tree/silhouette made from short vector-arrow fields,all roots thick enough to contain several arrow rows. Three-quarter side view,no fine twig clutter,no pot,house or architectural gate. Asset: ONE square1024x1024 pure-art widget. All complete parts inside central72%canvas,empty margins. True transparent alpha outside and BETWEEN ALL ARROWS and through body gaps. No rectangular field,extra subjects,UI,frame,contact sheet or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 946727
+    },
+    {
+      "id": "riffle-skipper",
+      "sourceImage": "sources/riffle-skipper.e2126ce1bf00.png",
+      "sourceSha256": "e2126ce1bf005775d6bcace634879c1a35332e1dea0ee7d18d27160f81fc7372",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/riffle-skipper.bdf08d85b700.png",
+      "sha256": "bdf08d85b700365e86ebf45df83949c9772ffbff77c3781c0d9a4240ef16f53a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 542317,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE QUIVER RIFFLES. Asset TYPE: FLAT 2D LABORATORY QUIVER-MAP ART of a tangible NATURE silhouette. Build the ENTIRE subject using ONLY60to100 LARGE SEPARATED vector-arrow glyphs. Each glyph has a short straight shaft and a clear broad V arrowhead,crisp uniform opaque flat colour. The positions/headings of these arrows define the complete recognizable silhouette;locally aligned directions curve around its organic anatomy. The ONLY nontransparent pixels in the entire artwork are the ARROW GLYPHS themselves. Every gap between every pair of arrows is alphaZERO. Nothing underneath or around them: no body fill,pastel underlay,shading,translucent skin,glow,halo,outline,floor or shadow. This is a planar vector-analysis plot,never arrows printed on a3D object. Use direction-coded muted cobalt blue,kelp green and warm coral,with a few pale-peach arrows. Large glyphs,clear spacing,roughly8to12 arrows along the longest dimension. No tiny hundreds-of-arrows texture,no dots,particles,long trails,curly streamlines,physical material,mosaic grains,projection stripes or solid nature illustration. Fictional artistic optical-flow map,not measured data. No axes,legend,scale bars,text,letters,numerals,clock/dates/readings,logos or watermark. Subject: RIFFLE SKIPPER: one broad-bodied invented stream fish with TWO stout flared pectoral fins planted like little feet,a large asymmetric crescent tail,a short broad dorsal sail and a blunt forward mouth. Mid-hop pose above an invisible bank,whole body thick and readable,all fins complete. No ordinary frog,bird,mammal,robot or equipment. Local short-arrow directions curve around the torso and fan through fins without becoming scales or solid skin. Three-quarter side view,complete coherent animal. Asset: ONE square1024x1024 pure-art widget. All complete parts inside central72%canvas,empty margins. True transparent alpha outside and BETWEEN ALL ARROWS and through body gaps. No rectangular field,extra subjects,UI,frame,contact sheet or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 870068
+    },
+    {
+      "id": "whorl-drift-seed",
+      "sourceImage": "sources/whorl-drift-seed.b9fbc798e0e8.png",
+      "sourceSha256": "b9fbc798e0e86e5c0ae354c77f42d2ecb92c288cb8012f5502eb8cde7bf4b4da",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/whorl-drift-seed.5f4531de6ca9.png",
+      "sha256": "5f4531de6ca995af453f68e6adbec91adee6629142576163a4a85ecb03570838",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 328189,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE QUIVER RIFFLES. Asset TYPE: FLAT 2D LABORATORY QUIVER-MAP ART of a tangible NATURE silhouette. Build the ENTIRE subject using ONLY60to100 LARGE SEPARATED vector-arrow glyphs. Each glyph has a short straight shaft and a clear broad V arrowhead,crisp uniform opaque flat colour. The positions/headings of these arrows define the complete recognizable silhouette;locally aligned directions curve around its organic anatomy. The ONLY nontransparent pixels in the entire artwork are the ARROW GLYPHS themselves. Every gap between every pair of arrows is alphaZERO. Nothing underneath or around them: no body fill,pastel underlay,shading,translucent skin,glow,halo,outline,floor or shadow. This is a planar vector-analysis plot,never arrows printed on a3D object. Use direction-coded muted cobalt blue,kelp green and warm coral,with a few pale-peach arrows. Large glyphs,clear spacing,roughly8to12 arrows along the longest dimension. No tiny hundreds-of-arrows texture,no dots,particles,long trails,curly streamlines,physical material,mosaic grains,projection stripes or solid nature illustration. Fictional artistic optical-flow map,not measured data. No axes,legend,scale bars,text,letters,numerals,clock/dates/readings,logos or watermark. Subject: WHORL-DRIFT SEED: ONE connected wind-and-water seed with a thick central teardrop pod and THREE unequal broad curved blade wings turning around it in a loose open whorl. One wing points upward,one sweeps left,one curls down-right. Broad organic wing membranes and open gaps,not a mechanical propeller,paper pinwheel,flower or clock face. Entire pod/wings defined only by discrete short-arrow fields,three-quarter diagonal view,all blade endpoints whole. Asset: ONE square1024x1024 pure-art widget. All complete parts inside central72%canvas,empty margins. True transparent alpha outside and BETWEEN ALL ARROWS and through body gaps. No rectangular field,extra subjects,UI,frame,contact sheet or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 944036
+    },
+    {
+      "id": "split-tail-larva",
+      "sourceImage": "sources/split-tail-larva.c83aaa1cfcfc.png",
+      "sourceSha256": "c83aaa1cfcfc708100ea57a65a915ef5cc594deb3cb10feac341426e28c70718",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/split-tail-larva.8cfa91d79d10.png",
+      "sha256": "8cfa91d79d10b95685b965e17b5e4835a1af9fadb662097ba271e27554070435",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 415211,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE QUIVER RIFFLES. Asset TYPE: FLAT 2D LABORATORY QUIVER-MAP ART of a tangible NATURE silhouette. Build the ENTIRE subject using ONLY60to100 LARGE SEPARATED vector-arrow glyphs. Each glyph has a short straight shaft and a clear broad V arrowhead,crisp uniform opaque flat colour. The positions/headings of these arrows define the complete recognizable silhouette;locally aligned directions curve around its organic anatomy. The ONLY nontransparent pixels in the entire artwork are the ARROW GLYPHS themselves. Every gap between every pair of arrows is alphaZERO. Nothing underneath or around them: no body fill,pastel underlay,shading,translucent skin,glow,halo,outline,floor or shadow. This is a planar vector-analysis plot,never arrows printed on a3D object. Use direction-coded muted cobalt blue,kelp green and warm coral,with a few pale-peach arrows. Large glyphs,clear spacing,roughly8to12 arrows along the longest dimension. No tiny hundreds-of-arrows texture,no dots,particles,long trails,curly streamlines,physical material,mosaic grains,projection stripes or solid nature illustration. Fictional artistic optical-flow map,not measured data. No axes,legend,scale bars,text,letters,numerals,clock/dates/readings,logos or watermark. Subject: SPLIT-TAIL WATER LARVA: one thick elongated natural aquatic larva in a gentle S-curve,with a blunt small head,TWO broad paired side paddles near the front,THREE shallow lateral body lobes and a large split two-blade caudal fan. No legs or antennae,not an ordinary eel,fish,snake or mechanical vehicle. One complete connected soft body,transparent open gap between tail blades,all forms made from short locally aligned vector arrows. Three-quarter overhead view,unmistakable thick flowing silhouette. Asset: ONE square1024x1024 pure-art widget. All complete parts inside central72%canvas,empty margins. True transparent alpha outside and BETWEEN ALL ARROWS and through body gaps. No rectangular field,extra subjects,UI,frame,contact sheet or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 939392
+    },
+    {
+      "id": "broadwing-damselfly",
+      "sourceImage": "sources/broadwing-damselfly.b5259d65d742.png",
+      "sourceSha256": "b5259d65d742d98c9b0d4b4f254bb50da224bed800f820bbc1da5e357e229bf9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/broadwing-damselfly.90ca95c8aaf7.png",
+      "sha256": "90ca95c8aaf7dedc5666790da102671322d2c7088f2c5c5d17a09423d8b727d0",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 426364,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE QUIVER RIFFLES. Asset TYPE: FLAT 2D LABORATORY QUIVER-MAP ART of a tangible NATURE silhouette. Build the ENTIRE subject using ONLY60to100 LARGE SEPARATED vector-arrow glyphs. Each glyph has a short straight shaft and a clear broad V arrowhead,crisp uniform opaque flat colour. The positions/headings of these arrows define the complete recognizable silhouette;locally aligned directions curve around its organic anatomy. The ONLY nontransparent pixels in the entire artwork are the ARROW GLYPHS themselves. Every gap between every pair of arrows is alphaZERO. Nothing underneath or around them: no body fill,pastel underlay,shading,translucent skin,glow,halo,outline,floor or shadow. This is a planar vector-analysis plot,never arrows printed on a3D object. Use direction-coded muted cobalt blue,kelp green and warm coral,with a few pale-peach arrows. Large glyphs,clear spacing,roughly8to12 arrows along the longest dimension. No tiny hundreds-of-arrows texture,no dots,particles,long trails,curly streamlines,physical material,mosaic grains,projection stripes or solid nature illustration. Fictional artistic optical-flow map,not measured data. No axes,legend,scale bars,text,letters,numerals,clock/dates/readings,logos or watermark. Subject: BROADWING DAMSELFLY: one complete invented waterside insect with FOUR broad unequal soft-lobed wings held diagonally,two partly open near the body,six short thick tucked legs,TWO small curved antennae and a long tapering tail ending in a small two-leaf rudder. Wings are thick broad fields,not needle strips or ordinary lace wings,with a large empty notch near each outer trailing edge. Entire insect formed only from short vector arrows,no drawn veins or solid fill. Three-quarter banking flight,all tips/legs/antennae complete. Asset: ONE square1024x1024 pure-art widget. All complete parts inside central72%canvas,empty margins. True transparent alpha outside and BETWEEN ALL ARROWS and through body gaps. No rectangular field,extra subjects,UI,frame,contact sheet or mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 942027
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.106b5683bde7.png",
+      "sourceSha256": "106b5683bde74888afb796641c8a4e1bc9cb8f5df2518c74d41b67ba03b3ae68",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "8ab1c1fc39b2884e59dbadcef248ea61e552bc640440a172359fb507dfe9d98a",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2315286,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: identity-preserving compositing edit. Input IMAGE1 is the QUIVER RIFFLES wallpaper layout to edit. IMAGE2 is the exact Riffle Skipper identity. IMAGE3 is the exact THREE-WING Whorl-Drift Seed identity. IMAGE4 is the exact Split-Tail Water Larva identity. Preserve IMAGE1 pale opaque background,quiet upper44%,all current-arrow habitat lines,complete mangrove at left and small damselfly above-right. Correct ONLY THREE focal arrow clusters to match their supplied exact silhouettes. Replace the birdlike right-middle cluster with IMAGE2 whole broad fish: asymmetric crescent tail,dorsal sail,TWO flared pectoral fins,blunt forward fish mouth,no added round bird eye/beak. Keep it beside the mangrove at the same approximate scale. Replace the flowerlike lower-right cluster with IMAGE3 exact connected seed: central thick pod and EXACTLY THREE UNEQUAL long curved blade wings,one high,one left,one down-right. It is NOT a4/5petal flower or small symmetric pinwheel. Preserve all three blade endpoints. Replace the straight little lower-left swimmer with IMAGE4 exact long S-curved larva,paired front paddles,three body lobes and large split TWO-BLADE tail fan. Preserve the open Y-tail gap,whole head/paddles/body/tail;keep it just below the waterline. Every corrected body is made ONLY from large crisp separated flat cobalt/kelp/coral/peach short arrow glyphs,not solid skin or underfill. Maintain their original arrowhead scale/character and clear silhouette gaps. Do not redesign the other two identities. All five COMPLETE focal forms within horizontal8%to92%andvertical46%to79%ofcanvas,bottom18%quiet pale streambed. Current arrows can bleed at edges;focal endpoints cannot. One coherent connected vector-field stream habitat,not specimen panels. No labels,axes,text,numerals,UI or frame. Portrait1290x2796,same aspect ratio,full opaque background.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "fan-root-mangrove",
+          "sourceImage": "sources/fan-root-mangrove.b6a8e2f90793.png",
+          "sha256": "b6a8e2f90793ff04176cb954294569a10b0641922f83c1c4018729d883c52a84"
+        },
+        {
+          "id": "riffle-skipper",
+          "sourceImage": "sources/riffle-skipper.e2126ce1bf00.png",
+          "sha256": "e2126ce1bf005775d6bcace634879c1a35332e1dea0ee7d18d27160f81fc7372"
+        },
+        {
+          "id": "whorl-drift-seed",
+          "sourceImage": "sources/whorl-drift-seed.b9fbc798e0e8.png",
+          "sha256": "b9fbc798e0e86e5c0ae354c77f42d2ecb92c288cb8012f5502eb8cde7bf4b4da"
+        },
+        {
+          "id": "split-tail-larva",
+          "sourceImage": "sources/split-tail-larva.c83aaa1cfcfc.png",
+          "sha256": "c83aaa1cfcfc708100ea57a65a915ef5cc594deb3cb10feac341426e28c70718"
+        },
+        {
+          "id": "broadwing-damselfly",
+          "sourceImage": "sources/broadwing-damselfly.b5259d65d742.png",
+          "sha256": "b5259d65d742d98c9b0d4b4f254bb50da224bed800f820bbc1da5e357e229bf9"
+        }
+      ],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-identity-study/wallpaper-initial.0e3517f54a62.png",
+        "sha256": "0e3517f54a62a66da4a2eb257b6c63aab4b6cfafba6702fa69c511926882e305"
+      },
+      "editSupportReferences": [
+        {
+          "id": "riffle-skipper",
+          "sourceImage": "sources/riffle-skipper.e2126ce1bf00.png",
+          "sha256": "e2126ce1bf005775d6bcace634879c1a35332e1dea0ee7d18d27160f81fc7372"
+        },
+        {
+          "id": "whorl-drift-seed",
+          "sourceImage": "sources/whorl-drift-seed.b9fbc798e0e8.png",
+          "sha256": "b9fbc798e0e86e5c0ae354c77f42d2ecb92c288cb8012f5502eb8cde7bf4b4da"
+        },
+        {
+          "id": "split-tail-larva",
+          "sourceImage": "sources/split-tail-larva.c83aaa1cfcfc.png",
+          "sha256": "c83aaa1cfcfc708100ea57a65a915ef5cc594deb3cb10feac341426e28c70718"
+        }
+      ],
+      "generationStages": "Five independent selected artwork generations;first shaded mangrove attempt rejected before selection. Wallpaper separately generated with own five identity references,then identity-edited using3 exact own source silhouettes plus initial scene."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Nature stream world in a new visibly flat large-arrow quiver process;complete silhouettes/quiet Artwork corners and compact two-arrow native fragment. Root requests another subject world after C19 for broad balance.",
+  "wallpaperReferenceUsesAcrossStages": 9,
+  "wallpaperDistinctReferenceImages": 6
+}

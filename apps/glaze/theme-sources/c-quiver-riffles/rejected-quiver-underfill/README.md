@@ -1,0 +1,1 @@
+Unselected first attempt retained with exact prompt/hash. It has faint shaded underfill and over-dense glyphs. Selected production must be a genuinely flat sparse quiver map with transparency between every arrow. No manual raster editing;replacement uses built-in imagegen.

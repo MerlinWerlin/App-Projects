@@ -1,0 +1,67 @@
+[
+  {
+    "id": "fan-root-mangrove",
+    "kind": "art",
+    "image": "fan-root-mangrove.ba37a0dac748.png",
+    "sha256": "ba37a0dac74805614dba8b83940b2567848ee93a7cf9333e00c80a8205e0d632",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fan Root Mangrove"
+  },
+  {
+    "id": "riffle-skipper",
+    "kind": "art",
+    "image": "riffle-skipper.bdf08d85b700.png",
+    "sha256": "bdf08d85b700365e86ebf45df83949c9772ffbff77c3781c0d9a4240ef16f53a",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Riffle Skipper"
+  },
+  {
+    "id": "whorl-drift-seed",
+    "kind": "art",
+    "image": "whorl-drift-seed.5f4531de6ca9.png",
+    "sha256": "5f4531de6ca995af453f68e6adbec91adee6629142576163a4a85ecb03570838",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Whorl Drift Seed"
+  },
+  {
+    "id": "split-tail-larva",
+    "kind": "art",
+    "image": "split-tail-larva.8cfa91d79d10.png",
+    "sha256": "8cfa91d79d10b95685b965e17b5e4835a1af9fadb662097ba271e27554070435",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Split Tail Larva"
+  },
+  {
+    "id": "broadwing-damselfly",
+    "kind": "art",
+    "image": "broadwing-damselfly.90ca95c8aaf7.png",
+    "sha256": "90ca95c8aaf7dedc5666790da102671322d2c7088f2c5c5d17a09423d8b727d0",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Broadwing Damselfly"
+  }
+]
