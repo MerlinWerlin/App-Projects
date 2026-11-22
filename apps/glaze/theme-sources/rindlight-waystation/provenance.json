@@ -1,0 +1,119 @@
+{
+  "theme": "rindlight-waystation",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Hand-carved and pierced dried calabash gourd shell, amber speckled rind, scooped facets and exposed pale fibrous pith cut lips",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "RINDLIGHT WAYSTATION for Glaze. ONE original1290x2796 portrait phone wallpaper, a coherent invented practical DESERT PUBLIC WAYSTATION, assembled by artisans from hand-CARVED and PIERCED DRIED CALABASH GOURD SHELL, not living plants. Five different useful structures form one airy connected lower vignette: a tall narrow well with a crown of split-shell shade wings and visible winding bucket, a low saddle-shaped seed cart with two bulbous hinged panniers and4small wheels, a tall cluster of3waisted whistle horns on reed supports for wind signalling, a broad unfolding shell funnel above a squat rain cistern with tap, and a suspended crescent-shell rest hut with open door and short rope ladder. Hard amber/ochre outer rinds #C18A43, deep umber #59422C, tiny uneven seed-scar speckles, hand-scooped incision facets and pale IVORY FIBROUS PITH #E9DFC2 on thick cut lips, actual pierced holes, brittle matte dry-shell edges; restrained slate-blue #647B82 inner lining details and tiny reed pegs/flax joins. Unusual practical silhouettes and visible purpose, not generic houses or routine pumpkins, no animal/face/Halloween. A warm pale sandy #E7D8B7 quiet fibrous-paper ground for dark phone icons. CRITICAL CROP SAFETY: ENTIRE COMPLETE WAYSTATION, all shade tips/horns/cart wheels/funnel wings/hut ladder inside CENTRAL60% WIDTH andBETWEEN38%AND73%HEIGHT; upper35% and bottom24% completely quiet pale ground. No frame/backing panel/rectangle, outer border, terrain scenery or extra floating props. No text, labels, letters/numbers/signage/symbols, clocks/calendar/battery/weather values, UI, logos or signatures. Original physical gourd craft not wood marquetry, lacquer, pyrography, clay or plastic toy.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.83e92335.png",
+      "sourceSha256": "83e923354e838919e31822fe3167a3d5e68106e1bacd0701edccc12b3ef5592c",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "13462fa989e72aa8a4e391b134b0a95784277d6fd05cb8d58f5a5cc101c7a1ff",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "shade-crown-well",
+      "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject SHADE CROWN WELL: one tall narrow open communal WELL structure. A squat rounded hollow gourd base holds a deep OPEN WATER BASIN, THREE slim arched shell ribs rise around it supporting a crown of FOUR huge split-shell petal shade wings, curved downward and deliberately unequal heights, many actual round-to-teardrop pierced holes with pale pith edges. A crossbar carries a thick rope winding spindle and one crank to left; a small hollow cut-shell bucket hangs on a visible rope inside the OPEN CENTRAL ARCH over the basin. Slate-blue inner surfaces of shade/basin, thin dark reed pegs and flax lashings show artisan assembly. Very tall airy shade-crowned silhouette with functional well mechanism, not lamp/tree/generic house. Entire petal tips, crank, bucket, basin rim and feet complete within real alpha margin. No opaque water/ground rectangle or backdrop.",
+      "tool": "built-in image_gen",
+      "source": "sources/shade-crown-well.03627e8f.png",
+      "sourceSha256": "03627e8ffb5e360c088f587a861b3211e0bbd8eea554620e5c3cd1b4879fcbb1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/shade-crown-well.696b7777.png",
+      "sha256": "696b77778805d2dc4b44ec1e8b7680ff7a8e1cc4a1fe11f6d4fc5842d15e9816",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "saddle-seed-carrier",
+      "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject SADDLE SEED CARRIER: one low broad FOUR-WHEELED utility cart. TWO enormous bulbous dried-gourd PANNIERS hang either side of a shallow concave SADDLE-SHAPED CENTRAL LOADING CHANNEL, one near pannier's round hinged lid stands fully OPEN, the other lid shut with a small shell latch. A few large natural seed shapes visible inside only one open pannier, not spilled scenery. The channel curves upward at both ends; two dark reed cross axles support FOUR small thick pierced-shell WHEELS, visible as near pair and partial far pair. A long bent U-shaped push handle extends left/back, no animal or rider. Distinct squat horizontal asymmetrical transport silhouette, actual storage/hinges/axles clearly useful. Amber speckled hard rind, ivory fibrous cut lips around lids/wheels, slate-blue inner pannier lining and tiny flax/reed joins. Entire open lid, handle, saddle ends and all wheels centrally contained, every major gap transparent.",
+      "tool": "built-in image_gen",
+      "source": "sources/saddle-seed-carrier.a98bbfe3.png",
+      "sourceSha256": "a98bbfe3e0f8db54a83817c5842057cdb78039c962033afa0ee64801609dc9db",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/saddle-seed-carrier.4d10b687.png",
+      "sha256": "4d10b687650605b0473ff86b22dfeb0e45e6c14835fd27fb5ce4a53e3de5bac1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "reed-whistle-beacon",
+      "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject REED WHISTLE BEACON: one tall asymmetrical WIND-SIGNAL STRUCTURE made from THREE long waisted calabash whistle chambers of different height. Each hollow chamber has a broad diagonally flared open bell above and a narrow side whistle slot below, actual pierced air holes up its length, pale pith edges and restrained slate-blue inner bells. One chamber curves far left, the tallest rises near centre, shortest angles right. Three slim dry REED POSTS, visible flax lashings, TWO crossbars and a wide splayed THREE-FOOT shell brace support the chambers. A small hinged wind vane made from one long curved shell shard projects sideways midway down, plain unmarked shape, explains wind direction. Strong tall branching silhouette with open spaces between bells/posts, clearly handmade useful signal, not ordinaryvase/plant/musicalinstrumentcollection. All bell lips, vane tip, post ends and feet inside substantial transparent alpha margins, no backdrop or ground.",
+      "tool": "built-in image_gen",
+      "source": "sources/reed-whistle-beacon.662168f7.png",
+      "sourceSha256": "662168f7998a1e15c8416658f751da00e8669fbcdee3e792104b2e5fc24d8b10",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/reed-whistle-beacon.06f29128.png",
+      "sha256": "06f291284d2cc53b29b958c708e6c2cba4806b7cbfdce2b0bf4000ca4ef72c7b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "folding-rain-cistern",
+      "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject FOLDING RAIN CISTERN: one broad low squat bulbous dried-shell WATER STORAGE VESSEL on THREE short carved feet, clear small tap spout low right. Above its narrow neck a giant shallow RAIN FUNNEL UNFOLDS as FIVE large irregular fan-like split-shell wings, some spread horizontally, one partially folded upright. Each wing has a smooth slate-blue inner WATER CHANNEL running inward to an obvious central opening, pale pith rims, radial incision facets and sparse pierced holes ONLY around the outer lip so the channel itself can collect water. Visible small reed hinge pegs and flax tension ties connect wings to neck, a short3rung access ladder hugs vessel's left side. Broad crown/low belly silhouette, much wider/flatter than well or beacon; visibly useful rain collection rather than flower/tree/ordinarypot. All funnel tips, partially raised wing, tap, ladder and3feet fully contained, open alpha between wings and under vessel, no water scenery.",
+      "tool": "built-in image_gen",
+      "source": "sources/folding-rain-cistern.ebb220aa.png",
+      "sourceSha256": "ebb220aa81da7b5b84652c7a5951219c6bac680ffc177f2e45e7e36b5eab7dfb",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folding-rain-cistern.99e51cd3.png",
+      "sha256": "99e51cd3af2202c0fbe7f2a67f63494977e7d530e7fb8c1113d6fca976cd6283",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "suspended-rest-hut",
+      "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject SUSPENDED REST HUT: one round CRESCENT-SHELL REST CABIN hangs from TWO long opposing arched carved gourd SPINES that meet high above it. The cabin is a hollow dried calabash pod with a large round open doorway facing viewer-left, one curved shell door swung fully OPEN to right, a small slate-blue resting bench visible inside, pierced irregular ventilation holes along the upper rind. Two plain flax suspension ropes connect cabin top to open supporting arch, visible knots/reed pegs; a FOUR-RUNG rope ladder hangs below the doorway. The supporting spines sweep down to TWO wide splayed shell feet left/right, creating an airy open A shape around the cabin. No tree/plant, ground or people. Strong asymmetric hanging rounded cabin and arch silhouette, clear shade/rest/access purpose, not birdhouse/ornament. Entire arch tips, door lip, ladder bottom and support feet complete inside generous actual alpha margins. Warm dry speckled shell, fibrous pale pith at all cut edges, real alpha through piercings and support gaps.",
+      "tool": "built-in image_gen",
+      "source": "sources/suspended-rest-hut.daafe7e3.png",
+      "sourceSha256": "daafe7e3e29a0d1d263ed2cf1c9f50cde4d5b5292c4e858d004470b2f0bef941",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/suspended-rest-hut.3d12dbdd.png",
+      "sha256": "3d12dbdd695f2043964094d5246a20e6b66e9f132bccad189062a22842c2b3cf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "reed-whistle-beacon",
+  "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject REED WHISTLE BEACON: one tall asymmetrical WIND-SIGNAL STRUCTURE made from THREE long waisted calabash whistle chambers of different height. Each hollow chamber has a broad diagonally flared open bell above and a narrow side whistle slot below, actual pierced air holes up its length, pale pith edges and restrained slate-blue inner bells. One chamber curves far left, the tallest rises near centre, shortest angles right. Three slim dry REED POSTS, visible flax lashings, TWO crossbars and a wide splayed THREE-FOOT shell brace support the chambers. A small hinged wind vane made from one long curved shell shard projects sideways midway down, plain unmarked shape, explains wind direction. Strong tall branching silhouette with open spaces between bells/posts, clearly handmade useful signal, not ordinaryvase/plant/musicalinstrumentcollection. All bell lips, vane tip, post ends and feet inside substantial transparent alpha margins, no backdrop or ground.",
+  "tool": "built-in image_gen",
+  "source": "sources/reed-whistle-beacon.662168f7.png",
+  "sourceSha256": "662168f7998a1e15c8416658f751da00e8669fbcdee3e792104b2e5fc24d8b10",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/reed-whistle-beacon.06f29128.png",
+  "sha256": "06f291284d2cc53b29b958c708e6c2cba4806b7cbfdce2b0bf4000ca4ef72c7b",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

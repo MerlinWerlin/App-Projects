@@ -1,0 +1,62 @@
+[
+  {
+    "id": "shade-crown-well",
+    "kind": "art",
+    "image": "shade-crown-well.696b7777.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Shade Crown Well"
+  },
+  {
+    "id": "saddle-seed-carrier",
+    "kind": "art",
+    "image": "saddle-seed-carrier.4d10b687.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Saddle Seed Carrier"
+  },
+  {
+    "id": "reed-whistle-beacon",
+    "kind": "art",
+    "image": "reed-whistle-beacon.06f29128.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Reed Whistle Beacon"
+  },
+  {
+    "id": "folding-rain-cistern",
+    "kind": "art",
+    "image": "folding-rain-cistern.99e51cd3.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folding Rain Cistern"
+  },
+  {
+    "id": "suspended-rest-hut",
+    "kind": "art",
+    "image": "suspended-rest-hut.3d12dbdd.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Suspended Rest Hut"
+  }
+]

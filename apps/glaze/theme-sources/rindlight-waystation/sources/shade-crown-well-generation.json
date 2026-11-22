@@ -1,0 +1,18 @@
+{
+  "id": "shade-crown-well",
+  "prompt": "RINDLIGHT WAYSTATION for Glaze: ONE original1024x1024 standalone artwork on TRUE TRANSPARENT ALPHA. An invented useful DESERT COMMUNAL UTILITY built by artisans from DRIED CALABASH GOURD SHELL. Physical handcraft process clearly visible: hard amber/ochre outer rind, tiny uneven seed-scar speckles, hand-scooped CARVED incision facets, pale ivory FIBROUS PITH exposed on thick cut lips, round-to-teardrop PIERCED OPEN HOLES, slight dry shell brittleness and matte rubbed areas. Hollow old dried shell segments cut/joined by tiny dark reed pegs and simple flax ties, never living-grown botanical tissue, polished wood/lacquer/marquetry, pyrographic burned drawing, clay/3D plastic toys or ordinary pumpkins. Warm ochre #C18A43, deep umber #59422C, pale pith #E9DFC2, restrained slate-blue #647B82 lining details only. Whole object strong weird useful silhouette with obvious handles/hinges/access/collection/storage, details subordinate. Complete subject small central64% with18% or more TRUE alpha margins every side, large openings genuinely transparent. No whole scenery/floor/ground, outer mat/backing plaque/rectangle, enclosing border, halo/glow/shadow, lettering/numbers/signs/symbols, clock/date/battery/weather values, UI, logos or signatures. No jack-o-lantern face, Halloween motif, tribal styling, people or animals. Subject SHADE CROWN WELL: one tall narrow open communal WELL structure. A squat rounded hollow gourd base holds a deep OPEN WATER BASIN, THREE slim arched shell ribs rise around it supporting a crown of FOUR huge split-shell petal shade wings, curved downward and deliberately unequal heights, many actual round-to-teardrop pierced holes with pale pith edges. A crossbar carries a thick rope winding spindle and one crank to left; a small hollow cut-shell bucket hangs on a visible rope inside the OPEN CENTRAL ARCH over the basin. Slate-blue inner surfaces of shade/basin, thin dark reed pegs and flax lashings show artisan assembly. Very tall airy shade-crowned silhouette with functional well mechanism, not lamp/tree/generic house. Entire petal tips, crank, bucket, basin rim and feet complete within real alpha margin. No opaque water/ground rectangle or backdrop.",
+  "tool": "built-in image_gen",
+  "source": "sources/shade-crown-well.03627e8f.png",
+  "sourceSha256": "03627e8ffb5e360c088f587a861b3211e0bbd8eea554620e5c3cd1b4879fcbb1",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/shade-crown-well.696b7777.png",
+  "sha256": "696b77778805d2dc4b44ec1e8b7680ff7a8e1cc4a1fe11f6d4fc5842d15e9816",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
