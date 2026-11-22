@@ -11,23 +11,49 @@ struct SerifNativeCheck {
     try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)
     var records: [[String: Any]] = []
     for value in ["0%", "73%", "100%"] {
-      let bounds = try capture(value, font: 67, width: 183, x: 250, y: 67, canvas: CGSize(width: 364, height: 170), output: output)
+      let bounds = try capture(value, font: 67, width: 183, x: 250, y: 67, canvas: CGSize(width: 364, height: 170), output: output).bounds
       guard bounds.maxY <= 96 else { throw Failure.message("New York \(value) reaches \(bounds.maxY), too close to gauge at 98") }
       records.append(["value": value, "bounds": [bounds.minX, bounds.minY, bounds.maxX, bounds.maxY]])
     }
+    var glyphs: [Int: Raster] = [:]
+    var calendarBounds: [[String: Any]] = []
     for day in 1...31 {
-      let bounds = try capture(String(day), font: 12, width: 146 / 7 - 1, x: 85, y: 85, canvas: CGSize(width: 170, height: 170), output: day == 22 ? output : nil)
+      let raster = try capture(String(day), font: 12, width: 146 / 7 - 1, x: 85, y: 85, canvas: CGSize(width: 170, height: 170), output: output)
+      glyphs[day] = raster
+      let bounds = raster.bounds
+      calendarBounds.append(["day": day, "bounds": [bounds.minX, bounds.minY, bounds.maxX, bounds.maxY]])
       guard bounds.minX > 77, bounds.maxX < 93, bounds.minY > 77, bounds.maxY < 93 else { throw Failure.message("New York day \(day) leaves its 18pt marker: \(bounds)") }
       guard abs(bounds.midY - 85) < 2 else { throw Failure.message("New York day \(day) is not centred: \(bounds)") }
     }
-    let result: [String: Any] = ["font": "Apple system serif / New York", "productionTextHelper": true, "batteryCases": 3, "calendarCases": 31, "allChecksPassed": true, "physicalDeviceTest": false, "records": records]
+    guard let contours = try JSONSerialization.jsonObject(with: Data(contentsOf: output.appendingPathComponent("native-font-contours.json"))) as? [[String: Any]] else { throw Failure.message("Actual serif contours missing") }
+    var failures: [[String: Any]] = []
+    for row in contours {
+      guard let id = row["id"] as? String, let values = row["points"] as? [NSNumber], values.count >= 6, values.count % 2 == 0 else { throw Failure.message("Invalid actual marker contour") }
+      var path = Path()
+      for i in stride(from: 0, to: values.count, by: 2) {
+        let p = CGPoint(x: 76 + values[i].doubleValue * 0.18, y: 76 + values[i + 1].doubleValue * 0.18)
+        if i == 0 { path.move(to: p) } else { path.addLine(to: p) }
+      }
+      path.closeSubpath()
+      let mask = try capture("mask-\(id)", font: 12, width: 20, x: 85, y: 85, canvas: CGSize(width: 170, height: 170), output: output, marker: path)
+      for day in 1...31 {
+        let ink = glyphs[day]!
+        var outside = 0
+        for i in stride(from: 3, to: ink.pixels.count, by: 4) where ink.pixels[i] >= 96 && mask.pixels[i] < 128 { outside += 1 }
+        if outside > 0 { failures.append(["id": id, "day": day, "corePixelsOutside": outside]) }
+      }
+    }
+    let result: [String: Any] = ["font": "Apple system serif / New York", "productionTextHelper": true, "batteryCases": 3, "calendarCases": 31, "calendarContourCases": contours.count * 31, "calendarContourFailures": failures, "calendarBounds": calendarBounds, "actualFilledContours": true, "allChecksPassed": failures.isEmpty, "physicalDeviceTest": false, "records": records]
     try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("native-serif-validation.json"))
-    print("New York production text: 3 battery and 31 calendar pixel checks passed")
+    guard failures.isEmpty else { throw Failure.message("New York today ink leaves actual filled marker in \(failures.count) cases; inspect native-serif-validation.json before changing Swift") }
+    print("New York production text: 3 battery,31 calendar and\(contours.count * 31) filled-contour pixel checks passed")
   }
   enum Failure: Error { case message(String) }
-  static func capture(_ value: String, font: CGFloat, width: CGFloat, x: CGFloat, y: CGFloat, canvas: CGSize, output: URL?) throws -> CGRect {
+  struct Raster { let bounds: CGRect; let pixels: [UInt8] }
+  static func capture(_ value: String, font: CGFloat, width: CGFloat, x: CGFloat, y: CGFloat, canvas: CGSize, output: URL?, marker: Path? = nil) throws -> Raster {
     let view = Canvas { context, _ in
-      NativeTextProbe(context: context).text(value, x: x, y: y, font: font, width: width, weight: .bold)
+      if let marker = marker { context.fill(marker, with: .color(.white)) }
+      else { NativeTextProbe(context: context).text(value, x: x, y: y, font: font, width: width, weight: .bold) }
     }.frame(width: canvas.width, height: canvas.height)
     let renderer = ImageRenderer(content: view); renderer.scale = 4
     guard let image = renderer.cgImage else { throw Failure.message("New York raster missing") }
@@ -48,6 +74,6 @@ struct SerifNativeCheck {
       } }
     }
     guard x1 >= x0 && y1 >= y0 else { throw Failure.message("New York text must actually render") }
-    return CGRect(x: CGFloat(x0) / 4, y: CGFloat(y0) / 4, width: CGFloat(x1 + 1 - x0) / 4, height: CGFloat(y1 + 1 - y0) / 4)
+    return Raster(bounds: CGRect(x: CGFloat(x0) / 4, y: CGFloat(y0) / 4, width: CGFloat(x1 + 1 - x0) / 4, height: CGFloat(y1 + 1 - y0) / 4), pixels: pixels)
   }
 }

@@ -1,0 +1,26 @@
+{
+  "id": "lady-fern",
+  "label": "Fern Frond",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE NEW independent original standalone Nature artwork for Glaze Guilloche Copse. Use the attached OWN accepted wren only for the exact FLAT SINGLE PETROL-BLUE INK (#20536A) printed-geometry language and scale of broad bold GUILLOCHE ROSETTE arcs. Generate a different complete subject, not a crop/variation of the bird. SUBJECT: One whole natural lady-fern frond with a gently curving central rachis, many clearly separated paired tapering pinnate leaflets and one small unfurling crozier near its base. A recognizable open botanical silhouette, not an abstract mandala. Broad oscillating fan-loop intaglio lines follow each leaflet; no literal fabric, knots, yarn or 3D lighting. No bird or animal. Style: flat two-dimensional matte intaglio/engine-engraving-inspired digital print. Whole form built from broad nested offset multi-lobed elliptical/circular loops with deliberate open negative pockets and clear rhythm at85px. No regular diagonal diamond mesh, woven net, lace, stitches, fibres, raised metal wires, rough woodcut gouges, realistic feather/fur crosshatching, gradients or 3D shading. Keep natural subject anatomy clearly recognizable through the mathematical line system. Crisp clean contours with restrained ink bite. TRUE TRANSPARENT ALPHA background and negative spaces, no paper rectangle, frame, shadow, halo, background color, labels, lettering, symbols, clock or UI. SQUARE canvas, entire subject centered within central68percent width and central60percent height, quiet margins around every paw, ear, tail, root and leaf tip. Not a scientific record or authentic physical print.",
+  "source": "sources/lady-fern.622d4449d05e.png",
+  "sourceSha256": "622d4449d05ecf865a3a1daee278daa33d98c1db705551a30718dcac4ec55e21",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/lady-fern.cd5e227c.png",
+  "sha256": "cd5e227c619b58f1f3b3bff392d49743117ac1f8657bafec546614e5a798c658",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, alpha cleanup or creative raster/code edits; app adds its own Fit padding.",
+  "references": [
+    {
+      "file": "sources/wren-twig.2d8e172e0f05.png",
+      "sha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e",
+      "purpose": "Own accepted wren supplies only bold rosette ink language; an independent different natural subject is generated."
+    }
+  ]
+}

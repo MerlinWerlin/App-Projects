@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "Refine ONLY this exact OWN Guilloche Copse printed woodland wallpaper. Preserve the whole wren/twig, curled dormouse, seated fox, fern and oak/acorn arch, their recognizable anatomy, relative positions and exact flat blue guilloche rosette ink geometry. Uniformly reduce the ENTIRE existing habitat group INCLUDING the full outer oak arch, all ground/grass, every branch/leaf/tail/paw to70percent of its CURRENT size, then place the complete reduced group at the horizontal center and around55percent of canvas height. Entire group at most65percent of canvasWIDTH, with very broad warm buff paper margins on both sides, top and bottom. Keep the tall portrait aspect, the same #E5D8BE warm fine paper tooth and matte petrol-blue ink. Restore clean unprinted paper in the incidental faint gray smudges/ghost traces around and behind the fox, wren perch and fern, preserving the actual blue subject linework; no letters, symbols or new marks. Do not enlarge or reshape any individual subject. No composition crop, new animals, frames or decorative outer border. Every beak, ear, paw, leaf lobe, acorn and frond tip remains whole. This is one own-scene uniform framing/background-cleanup edit only; preserve all five separate original artwork references unchanged.",
+  "source": "sources/wallpaper.d1c1ba021453.png",
+  "sourceSha256": "d1c1ba02145370c02d7c5f615950b45d9e391adfca1f6dea5e382f8626144982",
+  "sourceDimensions": [
+    856,
+    1838
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "602935a4337a2b15e371f4301441275311b6686ef025734869778a370a084fa2",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Own-scene uniform70percent habitat pullback plus incidental background-ghost cleanup through built-in image_gen; mechanical1290x2796 export. All five independent artwork inputs stay unchanged.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/initial-scene.536ce2ea88cb.png",
+      "sha256": "536ce2ea88cb4a837b2dc4e5189982dca3ad198fdd9cc4dd7712ae8b9f48d5d2",
+      "purpose": "Own complete five-reference printed woodland scene, framing and background cleanup only."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}
