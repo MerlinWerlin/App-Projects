@@ -1,0 +1,18 @@
+{
+  "id": "toucan-bromeliad",
+  "prompt": "RAGCAST CANOPY, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL rainforest flora/fauna with natural recognizable proportions and coherent anatomy FIRST. Visibly physical HAND-CAST PIGMENTED COTTON-RAG PAPER-PULP LOW RELIEF: short flattened cellulose shreds compressed into continuous dense matte fibre mats, irregular wet-deposited colour boundaries with tiny paper flecks, faint pressed mould-screen impressions in broad fields, dry torn/deckled fibrous silhouette lips. Shallow2â€“4mm cast-paper thickness, small compressed fibre clumps clearly PAPER not fuzzy wool; subtle dry uneven pulp texture throughout the subject. Natural quiet charcoal/sage/blue/cream/rose/ochre accents, no synthetic neon. No smooth clay/plastic/ceramic/wood, fluffy felt/plush/pillow, long fuzzy pile/velour, yarn/knit/tufted loops/embroidery, cork bark/moss, folded/origami paper panels, corrugated cardboard flutes, long split-straw ribbons, fibre-weaving or plaster mineral grit. No machine/costume/jewellery or abstract geometric replacement bodies, no giant cartoon eyes. Whole natural silhouette central64percent, minimum18percent true alpha margins every side; complete toes/tail/wing/leaf ends. Real exterior and limb/branch gaps alpha transparent. No background paper rectangle/backing/plaque/frame, ground/scenery/plinth, shadow/glow/halo, text, letters, numbers, date/clock/battery/weather values, UI, logo or signature. Subject TOUCAN BROMELIAD: one recognizable natural adult toucan in relaxed three-quarter profile toward left, long coherent curved orange/ochre bill with a restrained dark tip, tiny normal dark eye, charcoal-black body/closed wings, pale cream chest and complete long tapered tail. Exactly TWO coherent short legs and natural zygodactyl toes gripping ONE short curved branch. A single compact sage bromeliad rosette with one small muted-rose bract beside the branch, no large ground base or pot. Bird natural proportions, no giant googly eyes, costume, jewel or toy. Every surface visibly dry opaque cast PIGMENTED COTTON-RAG PULP: continuous compressed short flattened cellulose shreds, tiny pressed-mesh patches, wet-deposited colour boundaries and irregular deckled cutout lips. No real feathers, layered paper feather tiles, fluffy wool/yarn, folded cardstock, velvet pile, corrugated flutes or smooth plastic/clay. Whole bill, head, tail, both feet, branch ends and all rosette tips inside generous true alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/toucan-bromeliad.a053f73e.png",
+  "sourceSha256": "a053f73eb927818269af5ce89c1cbacc17c26f1ab220286a9b71487ec67c8d19",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/toucan-bromeliad.6342eec9.png",
+  "sha256": "6342eec9906e3f306ce609c260834686a47d1df2f7f003c5c0a41a2d4204b4db",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
