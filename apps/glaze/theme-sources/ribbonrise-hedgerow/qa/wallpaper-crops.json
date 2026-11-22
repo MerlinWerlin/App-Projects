@@ -1,0 +1,39 @@
+{
+  "themeId": "ribbonrise-hedgerow",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.a888a720.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "a888a7201c3e03b43b7b480c30528c16268a6a02445643a94089c9353b8132a6",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.8fb61950.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "8fb6195044780f7498ce2e6904b7e9429c6517b792c900baa1a4ba3d3ba76ae4",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.2cbf74fc.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "2cbf74fc83f6471b24e8fc3855d5e693adef10a3652837f69dfe0a4f07f9467c",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedAllThreeEncodedVariants": true,
+    "finding": "Whole robin/bill/feet/tail and field mouse/ears/paws/long tail remain complete in all three actual encoded phone crops, below a taller foxglove/fern with whole bells/buds and low berries/dogrose. Broad tucked satin planes/curled lips remain legible. Lozenge contour echoes pointed folded ribbon leaves; hero/detail/compact botanical stitch remain exact.",
+    "automaticPullbackApplied": false
+  }
+}

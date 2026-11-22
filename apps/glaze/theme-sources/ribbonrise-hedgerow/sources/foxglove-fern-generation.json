@@ -1,0 +1,23 @@
+{
+  "id": "foxglove-fern",
+  "prompt": "Precisely MATERIAL-ONLY refine input1, own original Ribbonrise Hedgerow foxglove-and-fern. Preserve exact complete natural one-sided spike, FIVE hanging tubular pink foxglove bells with spotted ivory throats/irregular lower lips, terminal buds, fern frond, three basal leaves, stem structure, natural proportions, silhouette, overall positions/framing and true transparent exterior/gaps. REPLACE the current dense fine parallel silk-thread embroidery/shading texture throughout. It must instead be unmistakably SHORT BROAD SATIN RIBBONWORK. Each pink tubular bell is made from ONLY TWO OR THREE LARGE PLAIN SMOOTH SATIN RIBBON PLANES: a broad softly curved ribbon face, a prominent TURNED-OVER/CURLED RIBBON EDGE at the bell mouth showing lighter underside, and one small PINCHED/TUCKED ANCHORED END near its green calyx. Large flat-to-curved SATIN SHEEN HIGHLIGHTS and broad SHADOWS UNDER EDGE TURNS must remain obvious at85pixels. NO individual longitudinal embroidery threads, long-and-short silk-shading strokes, fine lined stitch fill or fuzzy/frayed fiber surface. Minute woven ribbon grain can be subtle, but broad smooth plane and rolled edge dominate. Make each basal leaf ONE broad flat sage/olive ribbon stitch with a single central fold, a clearly tucked/pierced pointed end and a tiny pinched stitch-entry pucker at its stem. Fern leaflets likewise single short broad smooth ribbon stitches with small turned lips and tucked tips, no thread-painted leaf veins. Keep ribbon segments individually anchored, no free flowing drapery, tied bows, hoop, backing cloth sheet, toy stuffing, raw applique patch seams or metal/gems. Retain spot details INSIDE existing bell throats as a few small dark stitch knots; do not spread dots across outer petals. Preserve original restrained pink/ivory/olive palette and soft lighting, natural flora first. Support linen only exactly under stitched organism, entirely invisible outside silhouette. No extra plant, added flowers/leaves, recompose, crop or subject rescale. TRUE TRANSPARENT ALPHA everywhere outside actual ribbon plant and all internal gaps, no white/gray haze, background fabric, halo, ground/shadow/frame/text/UI. Exactly one own input image.",
+  "tool": "built-in image_gen",
+  "source": "sources/foxglove-fern.adabbef6.png",
+  "sourceSha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/foxglove-fern.b4389d09.png",
+  "sha256": "b4389d09f4c297b1d6dca9aa0fe3abc72acc6cf61f5c7db21aa15947f652c4d3",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/material-repair/foxglove-fern-history.json",
+  "referencedImage": {
+    "file": "qa/material-repair/foxglove-fern.original.da702921.png",
+    "sha256": "da7029212688eeb4eebf143c8b600cd89228f2125f5910f4a315a4315e09ccd6"
+  }
+}

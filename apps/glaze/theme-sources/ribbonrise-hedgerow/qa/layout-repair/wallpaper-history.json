@@ -1,0 +1,40 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "reason": "Reduce and reposition complete habitat for all actual wallpaper crop variants.",
+  "originalPrompt": "RIBBONRISE HEDGEROW. Original Glaze Nature phone wallpaper, portrait1290x2796. Input1 is OWN approved REFINED foxglove/fern MATERIAL AND PLANT-ANATOMY reference. Input2 is OWN selected robin/dogrose MATERIAL AND BIRD-ANATOMY reference. Input3 is OWN selected mouse/blackberry MATERIAL AND MOUSE-ANATOMY reference. These are material/anatomy references only, NOT scale/layouts to paste or a three-sticker lineup. Compose ONE coherent SMALL natural hedgerow habitat in their SHORT BROAD SATIN RIBBONWORK construction: one low curved blackberry bramble with a few whole leaflets and small dark-plum berries, one modest ONE-SIDED foxglove spike of THREE hanging pink spotted tubular bells, one short fern frond and two small dogrose flowers. One TINY whole natural robin with short bill/complete two feet perches left; one TINY whole field mouse with modest ears/four coherent paws/complete slender curling tail sits quietly right. All flora/fauna connected through the natural branch growth, not floating isolated subject stickers or ornamental wreath. Broad smooth satin ribbon planes, prominent rolled/turned lips showing lighter undersides, short tucked ends and pinched stitch-entry joins; no fine thread-shaded fill, loose long drapery, tied bows, quilted stuffed toys, metal/jewels or printed flowers. All linen support only exactly under actual ribbon organism shapes; no backing cloth sheet/panel/plaque. ENTIRE whole connected habitat including every bird/tail/foot/flower/fern/branch/leaf tip occupies at most CENTRAL35percent of total canvas WIDTH and CENTRAL22percent HEIGHT, horizontalcenter50percent/verticalcenter58percent down. A genuinely SMALL motif viewed at a distance within a HUGE blank portrait field. At least30percent EMPTY quiet background on BOTH left/right sides; top45percent and bottom24percent completely quiet. Background flat calm smoky violet #463D4E with barely perceptible compatible tonal variation, no woven background texture or sparkles. No branches/plants reaching screen edges or corner decorations, no scene frame/table/plinth/people/building/machinery/sports equipment. Entire natural species/plant tips whole inside all margins, no crop. No text/letters/numbers, dates/clock/battery/weather values, UI/icons/logo/signature. Whole opaque wallpaper background, no transparency. Make habitat SMALL rather than filling the canvas.",
+  "originalSource": "qa/layout-repair/wallpaper.original.5a9c2d8a.png",
+  "originalSha256": "5a9c2d8a22dab3a81135ba9363b68648683cabfd21146a2011577aa0a699e9fa",
+  "repairPrompt": "Precise LAYOUT-ONLY edit of input1, own Ribbonrise Hedgerow wallpaper. Preserve exact whole connected natural ribbonwork hedgerow: robin/shortbill/twofeet/complete tail, whole fieldmouse/fourpaws/full curlingtail, low blackberry branch/threeberries/leaflets, three hanging spotted tubular foxglove bells/terminalbuds, fern and two dogrose flowers. Keep exact BROAD SMOOTH SATIN planes, rolled/turned lips/lightundersides, short tucked points/pinchedentry joins, material/palette/lighting/natural anatomy and every internal relative position/proportion unchanged. Uniformly scale ENTIRE existing connected habitat asONE unit to70percent of its CURRENT width and height. Center horizontally with overall habitat center at57percent canvas height. Reconstruct ONLY matching quiet smoky violet #463D4E background around it, same very subtle tonal variation, no visible rectangular paste edge. Final complete whole habitat should occupy about HALF total canvas width, with at least23percent blank quiet background on BOTH left/right sides and generous quiet above/below. Preserve every bud/leaf/flower/fern/bill/toe/ear/tail/branch/berry tip whole. No individual subject resizing, recompose, crop, new/duplicate/replaced subjects, extra foliage/corner decorations, frame/ground/plinth/clothbacking, shadow/glow, text/UI or zoom back in. Keep short ribbon construction unchanged, no fine thread-shading texture or free loose drapery. Entire opaque full portrait wallpaper background, no transparency.",
+  "referencedImage": "qa/layout-repair/wallpaper.original.5a9c2d8a.png",
+  "selectedSource": "qa/second-audit/previous-selected-wallpaper.png",
+  "selectedSourceSha256": "d0479755dee41960409dbe61d32b9df6d05348310ec9c861af34315ea68ddf13",
+  "initialMaterialAndAnatomyReferences": [
+    {
+      "id": "foxglove-fern",
+      "source": "sources/foxglove-fern.adabbef6.png",
+      "sourceSha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+      "role": "Own selected material and plant anatomy reference for initial wallpaper; first foxglove is approved refined source, not initial held thread-shaded version."
+    },
+    {
+      "id": "robin-dogrose",
+      "source": "sources/robin-dogrose.78157645.png",
+      "sourceSha256": "781576454530b5c2dc48840765f6a6c8c12680c0ac064cc8b2a2314d5f633726",
+      "role": "Own selected material and bird anatomy reference for initial wallpaper; first foxglove is approved refined source, not initial held thread-shaded version."
+    },
+    {
+      "id": "fieldmouse-blackberry",
+      "source": "sources/fieldmouse-blackberry.e36425e9.png",
+      "sourceSha256": "e36425e96a695f13416332d9ba2089109224e36ce34616bd85ec8e43fc18f3a5",
+      "role": "Own selected material and mouse anatomy reference for initial wallpaper; first foxglove is approved refined source, not initial held thread-shaded version."
+    }
+  ],
+  "initialReferencedImageOrder": [
+    "sources/foxglove-fern.adabbef6.png",
+    "sources/robin-dogrose.78157645.png",
+    "sources/fieldmouse-blackberry.e36425e9.png"
+  ],
+  "initialExactToolRequest": "qa/layout-repair/exact-initial-three-reference-request.json",
+  "exactToolRequest": "qa/layout-repair/exact-layout-only-request.json",
+  "selectedSourceLocationNote": "Exact selected raster retained here after second-audit enlargement/recomposition; generation inputs/order/hashes unchanged."
+}

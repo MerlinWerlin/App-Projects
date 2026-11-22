@@ -1,0 +1,33 @@
+{
+  "themeId": "ribbonrise-hedgerow",
+  "protectedFiles": {
+    "widgets/bumblebee-clover.8798fb97.png": "8798fb9789b120dc96fed281bad7dd1e6684c2e170063e52abdf5e117d91a648",
+    "widgets/fieldmouse-blackberry.a16ccc09.png": "a16ccc09f999aa96bb657e9feb2fc5fac419d42acc4805ceb7fa090588bd222d",
+    "widgets/foxglove-fern.b4389d09.png": "b4389d09f4c297b1d6dca9aa0fe3abc72acc6cf61f5c7db21aa15947f652c4d3",
+    "widgets/README.md": "0324dbb7e4318bf9d0646aa3189fe6a34b6cf23d30565bc01a7f18f4155efa77",
+    "widgets/redadmiral-nettle.c9e2b042.png": "c9e2b0422a3f03adcd326bd14e982d6e41f2355a55ee0302f901430168662424",
+    "widgets/robin-dogrose.1a621234.png": "1a6212341eead677e1835a05235eb159aab0ee2cdbb4ca217915b25f95e34b75",
+    "widgets/widget-options.json": "6afe9d9f136bb117fc94f844ca9673819cfc97f5c551fbfa8771840be402fa19",
+    "sources/bumblebee-clover-generation.json": "ff49dd342dcebe194ffef92c97efc08d9107fdf594e0c8d0e3190ab7178ab965",
+    "sources/bumblebee-clover.bea14228.png": "bea142284a343dc3a94aab950c9ef2e4ef838868d6ee922e91e6ba1d47168e34",
+    "sources/fieldmouse-blackberry-generation.json": "2845417a1eb2a8aa6f6922eb1e4a5c0e3c3ac6e3e4a61e2bde2fa7d9e993c249",
+    "sources/fieldmouse-blackberry.e36425e9.png": "e36425e96a695f13416332d9ba2089109224e36ce34616bd85ec8e43fc18f3a5",
+    "sources/foxglove-fern-generation.json": "472fc0d232d2162f62cc259bbb9b161cd2117011d9b83fc79fff1739c3276f30",
+    "sources/foxglove-fern.adabbef6.png": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+    "sources/README.md": "37fb033bbd2b19036277f10678220d7e48f855cd6c037582c5d2bc28ca58bd51",
+    "sources/redadmiral-nettle-generation.json": "70de0c77ececd23587806d010d8295e5765bda8debfb06939116f905cc42ad10",
+    "sources/redadmiral-nettle.4b089891.png": "4b0898910b41545426ed1f61265eb626d6bdad30beb26d40cc23bf1c6c583258",
+    "sources/robin-dogrose-generation.json": "5a3ef7e52dcaee099a226733c0ae24e1c1b6ae8647ef90bd601bd64a33b89e4c",
+    "sources/robin-dogrose.78157645.png": "781576454530b5c2dc48840765f6a6c8c12680c0ac064cc8b2a2314d5f633726",
+    "palette.json": "42895efc80af23a9f78f7955cfc05eaf5ecc9e266192a3c2263d9113fe40340a",
+    "meta.json": "1677284d98206a0f4130cfe2efcedb57682857fedc6d719444136412493ce5a7"
+  },
+  "allProtectedBytesIdentical": true,
+  "artworkProvenanceIdentical": true,
+  "nativeHeroDetailOrnamentAndOtherRecipeEntriesIdentical": true,
+  "rootFreezeMatch": null,
+  "faceBefore": "square",
+  "faceAfter": "lozenge",
+  "artisticFaceRationale": "Pointed tucked silk-ribbon leaf stitch.",
+  "scope": "Only selected wallpaper/thumbnail and its provenance plus artistic clock contour changed; palette/meta and every selected artwork/raw/options remain byte-identical."
+}

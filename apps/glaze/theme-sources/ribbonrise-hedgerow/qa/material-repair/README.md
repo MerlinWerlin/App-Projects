@@ -1,0 +1,1 @@
+Unselected original and exact built-in material repair lineage. Replaced fine thread-shaded faces with few broad smooth satin planes, curled bell lips/tucked leaf tips/pinched stitch entries while retaining whole natural one-sided plant; exact single-own-source edit. Selected repaired original retained without subject edits by packaging tools.
