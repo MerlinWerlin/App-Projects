@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "bullfinch-sprig",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-357962b8-cad3-4933-9166-a27c6f6bcdbf.png",
+      "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        21,
+        1236,
+        1254
+      ]
+    },
+    {
+      "id": "red-squirrel-acorns",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-e5966cb1-7e9c-4bde-9559-5ddbde9e9fd2.png",
+      "sha256": "893e7634d40988cabb16450fba02b1fef6d7fb8e07b58ee23ec5d26b3c245313",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        4,
+        1251,
+        1254
+      ]
+    },
+    {
+      "id": "common-toad",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-e77cc3d4-d210-421b-8427-b3ecaa791b08.png",
+      "sha256": "b4d2f0bdd2fbe83fc4e3c1cb026f5de356b23dd9e2f7b86dca05ee2a9e4957ac",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        17,
+        1240,
+        1254
+      ]
+    },
+    {
+      "id": "oak-acorns",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-2f5df6d6-205f-4442-8a1b-4ade6d47f1db.png",
+      "sha256": "fe4bd7981aa3f9a8327fae14f28a07f93be8a6e7bd0a363d13caebc0cdfae6db",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        15,
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "speckledwood-butterfly",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-f37d884b-cfd3-44ea-b92e-37066da1c2ae.png",
+      "sha256": "7ada730a65788fae89927104857d38132fe98aac9599603810507397d1df6464",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        25,
+        1238,
+        1254
+      ]
+    }
+  ]
+}

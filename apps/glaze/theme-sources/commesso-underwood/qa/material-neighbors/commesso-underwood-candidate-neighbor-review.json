@@ -1,0 +1,355 @@
+{
+  "scope": "Actual first candidate compared read-only with6own production images and44actual app-selected historical/accepted-unpublished baselines, independently decoded/hashed. No external image input. Coordinator messaging unavailable; no coordinator/Jared approval claimed.",
+  "candidateSha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+  "ownNeighbors": [
+    {
+      "id": "commesso-underwood CANDIDATE",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-357962b8-cad3-4933-9166-a27c6f6bcdbf.png",
+      "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635"
+    },
+    {
+      "id": "nacre-nomads",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\nacre-nomads\\widgets\\orchard-caravan.56097594.png",
+      "sha256": "5609759490be5f16693abd3c87977f1df4db8052d0ec3574f98818b6c0eab6cb"
+    },
+    {
+      "id": "shellspeck-blackthorn",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\shellspeck-blackthorn\\widgets\\longtailed-tit.2f5d99af.png",
+      "sha256": "2f5d99af07238f6538a9a0793ad2580e216755a21bcbfd8033567836192c3b0c"
+    },
+    {
+      "id": "enamel-reliquary",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\enamel-reliquary\\widgets\\trident-of-the-lost-sea.4ff30a41.png",
+      "sha256": "4ff30a41fb5897f8da209acc84c1aa008ab3b2e7cf0fdade99f279ca3d4ac8be"
+    },
+    {
+      "id": "strawglint-mere",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\strawglint-mere\\widgets\\frog-lilypad.3b5737ec.png",
+      "sha256": "3b5737ecd1bad3e498e1628e364516722675c60d2a196f827a2508dafb200ade"
+    },
+    {
+      "id": "stratagrain-saltmarsh",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\stratagrain-saltmarsh\\widgets\\plover-samphire.98f537e2.png",
+      "sha256": "98f537e2cb53349049a0f49c8a3d2bc5c0095dd3f2d0edef96ea10f477b40e55"
+    },
+    {
+      "id": "caneveil-mangroves",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\caneveil-mangroves\\widgets\\gecko-leaf.74db5286.png",
+      "sha256": "74db52863e6c44bbd1316ecc4600d3d2b86b00fb415536cac4aff678a99eb854"
+    }
+  ],
+  "baselineGroups": [
+    {
+      "id": "tessera-tempo",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tessera-tempo\\v1\\manifest.json",
+      "manifestSha256": "18de570832f28bb271661bf96229f993e20e6e2aed33f48af92c40c9ada22bf1",
+      "selections": [
+        {
+          "optionId": "arc-current",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tessera-tempo\\v1\\widget-arc-current.9365c670.webp",
+          "sha256": "9365c6707b49746626f3684855aafb2089cde8317837cb590b04fd85f92d3bbe"
+        },
+        {
+          "optionId": "dot-progress",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tessera-tempo\\v1\\widget-dot-progress.e60e8964.webp",
+          "sha256": "e60e8964a5867730d69b6f839c8e9ffd5b91308c7fc0d444c35ded9c81d34519"
+        },
+        {
+          "optionId": "quadrant-rosette",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tessera-tempo\\v1\\widget-quadrant-rosette.cbd11b86.webp",
+          "sha256": "cbd11b8686bdd06dcb2e0237628ebf212c3d740d7bad212a4cf3e15a72bcb936"
+        },
+        {
+          "optionId": "tile-weave",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tessera-tempo\\v1\\widget-tile-weave.d3e0eac2.webp",
+          "sha256": "d3e0eac2eba43b662a7c334c3e111f4d9dadedc412c1c4173e3eca2bbd3cbe84"
+        }
+      ]
+    },
+    {
+      "id": "jade-meridian",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\jade-meridian\\v6\\manifest.json",
+      "manifestSha256": "a6a0d569f0cb5a0cf3d25d0f02c078ade777afdd3fddab4bbfb5570e0c6aad65",
+      "selections": [
+        {
+          "optionId": "jade-bonsai",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\jade-meridian\\v6\\widget-jade-bonsai.f7d72e61.webp",
+          "sha256": "f7d72e613a2b3c5d17001ac694332fe9381bd7cc22ffefa98fddb5e3762ba247"
+        },
+        {
+          "optionId": "mountain-crane",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\jade-meridian\\v6\\widget-mountain-crane.df44e688.webp",
+          "sha256": "df44e6887701defc9aee77f7240840534d547d92976191da5101809195d88797"
+        },
+        {
+          "optionId": "valley-disc",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\jade-meridian\\v6\\widget-valley-disc.b7e1ce0f.webp",
+          "sha256": "b7e1ce0f00173d92a4b11b9893a89df41841c3bc019672cb0af81641540dac06"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\jade-meridian\\v6\\widget-small.71282922.webp",
+          "sha256": "7128292232b6f644360bb32db52622b93df587058985e69c8d7ab19cc6aace7f"
+        }
+      ]
+    },
+    {
+      "id": "agate-apricot",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\manifest.json",
+      "manifestSha256": "1fd0424713bbda40919f08b6dbeaeca83e0430fe42c0c8eec649c577e074c9dd",
+      "selections": [
+        {
+          "optionId": "agate-slice",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\widget-agate-slice.572cbc2b.webp",
+          "sha256": "572cbc2bad59c58cf41b334c0386c22908eede4d1fe910dbb9f64c03f640de4c"
+        },
+        {
+          "optionId": "band-rhythm",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\widget-band-rhythm.633ff6d3.webp",
+          "sha256": "633ff6d36040ea8c4b0dc101f93bbc21bcc7d87adc1e4c8c7dea46406567f4bd"
+        },
+        {
+          "optionId": "crystal-progress",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\widget-crystal-progress.03a5d732.webp",
+          "sha256": "03a5d732bca7a834f51abdd0217d2d108886c2ead183eefdef77248419655aac"
+        },
+        {
+          "optionId": "druzy-center",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\widget-druzy-center.f0187cb2.webp",
+          "sha256": "f0187cb2654bdf4aa651192c09624fe096fb69581682e24aa505523a8236ad89"
+        }
+      ]
+    },
+    {
+      "id": "marquetry-arc",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\manifest.json",
+      "manifestSha256": "0db1ccd4e51227cad95711f97001ed455e43958c6ee90b66a65037e6e2460a2a",
+      "selections": [
+        {
+          "optionId": "chevron-grain",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\widget-chevron-grain.94c0c565.webp",
+          "sha256": "94c0c565d9d81ac90edbee1e7b55561ec4877d0ad38f26600f4f12882d852bbc"
+        },
+        {
+          "optionId": "nested-arch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\widget-nested-arch.20144052.webp",
+          "sha256": "20144052b035119259194e5cae696eb1bcd80ee3e2447de6b04c3b4f4cf26096"
+        },
+        {
+          "optionId": "veneer-sun",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\widget-veneer-sun.1fc211fe.webp",
+          "sha256": "1fc211fe9992e89e0900f1c4ea9f17054f4c15a0a33820eb2cc118b0beab2543"
+        }
+      ]
+    },
+    {
+      "id": "lumen-mosaic",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\lumen-mosaic\\v7\\manifest.json",
+      "manifestSha256": "421704555752f56f11f699974cd2005c2145394c8eafe138689cef875ac2b07f",
+      "selections": [
+        {
+          "optionId": "tessellated-sunbird",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\lumen-mosaic\\v7\\widget-tessellated-sunbird.81d4eab9.webp",
+          "sha256": "81d4eab99cc1ad6482949706585c38f7511070afb1990d416716b27b1a2b239c"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\lumen-mosaic\\v7\\widget-small.a0d46a3f.webp",
+          "sha256": "a0d46a3faab58da3e2cf75b520423ff846e8a8fda0ee3a35e4770d26c8c2003e"
+        },
+        {
+          "optionId": "art-20261107-mosaic-pomegranate",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\lumen-mosaic\\v7\\widget-mosaic-pomegranate.95e71503.webp",
+          "sha256": "95e71503abc1809848b3d349db3948718b1e87f3fae96ff3a48322507bf9ab13"
+        },
+        {
+          "optionId": "art-20261107-jewel-window",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\lumen-mosaic\\v7\\widget-jewel-window.4ddf81a5.webp",
+          "sha256": "4ddf81a5ee979e56eefba471eac49a9e9a4c2f4d421f7ef8dc58a2b3f1515264"
+        }
+      ]
+    },
+    {
+      "id": "tessera-tempo",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tessera-tempo\\v2\\manifest.json",
+      "manifestSha256": "44259ceccfc44d60a146446f5c1e46dc2a08aab90eb9273fd67a1c609cd33efb",
+      "selections": [
+        {
+          "optionId": "arc-current",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tessera-tempo\\v2\\widget-arc-current.9365c670.webp",
+          "sha256": "9365c6707b49746626f3684855aafb2089cde8317837cb590b04fd85f92d3bbe"
+        },
+        {
+          "optionId": "quadrant-rosette",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tessera-tempo\\v2\\widget-quadrant-rosette.cbd11b86.webp",
+          "sha256": "cbd11b8686bdd06dcb2e0237628ebf212c3d740d7bad212a4cf3e15a72bcb936"
+        },
+        {
+          "optionId": "tile-weave",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tessera-tempo\\v2\\widget-tile-weave.d3e0eac2.webp",
+          "sha256": "d3e0eac2eba43b662a7c334c3e111f4d9dadedc412c1c4173e3eca2bbd3cbe84"
+        },
+        {
+          "optionId": "ceramic-mountain-mosaic",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tessera-tempo\\v2\\widget-ceramic-mountain-mosaic.75a06843.webp",
+          "sha256": "75a068436b05c439dbc80e04caffeaff74c7030e58eae94bcc51d0ba963dcd8c"
+        },
+        {
+          "optionId": "glazed-ceramic-fan",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tessera-tempo\\v2\\widget-glazed-ceramic-fan.0f082106.webp",
+          "sha256": "0f08210633709a271100b799cba0880d1c9aa50b31ec9f18c5783792bc54160d"
+        }
+      ]
+    },
+    {
+      "id": "jade-meridian",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jade-meridian\\v7\\manifest.json",
+      "manifestSha256": "56c998d1fbb8e96b7689a95f62ed54b563ba0b0bf2609c87494f5d99471e4753",
+      "selections": [
+        {
+          "optionId": "jade-bonsai",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jade-meridian\\v7\\widget-jade-bonsai.f7d72e61.webp",
+          "sha256": "f7d72e613a2b3c5d17001ac694332fe9381bd7cc22ffefa98fddb5e3762ba247"
+        },
+        {
+          "optionId": "mountain-crane",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jade-meridian\\v7\\widget-mountain-crane.df44e688.webp",
+          "sha256": "df44e6887701defc9aee77f7240840534d547d92976191da5101809195d88797"
+        },
+        {
+          "optionId": "valley-disc",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jade-meridian\\v7\\widget-valley-disc.b7e1ce0f.webp",
+          "sha256": "b7e1ce0f00173d92a4b11b9893a89df41841c3bc019672cb0af81641540dac06"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jade-meridian\\v7\\widget-small.71282922.webp",
+          "sha256": "7128292232b6f644360bb32db52622b93df587058985e69c8d7ab19cc6aace7f"
+        },
+        {
+          "optionId": "jade-cloud-tortoise",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jade-meridian\\v7\\widget-jade-cloud-tortoise.02164a33.webp",
+          "sha256": "02164a33c5c8db705db23f71fbaa003d6535d463d838eaa4410c8a590bf43a57"
+        }
+      ]
+    },
+    {
+      "id": "agate-apricot",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\manifest.json",
+      "manifestSha256": "f02f31499ab10719bde85bf1a13e89892cb2e6b824723e54419a96620f3e4caa",
+      "selections": [
+        {
+          "optionId": "agate-slice",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-agate-slice.572cbc2b.webp",
+          "sha256": "572cbc2bad59c58cf41b334c0386c22908eede4d1fe910dbb9f64c03f640de4c"
+        },
+        {
+          "optionId": "band-rhythm",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-band-rhythm.633ff6d3.webp",
+          "sha256": "633ff6d36040ea8c4b0dc101f93bbc21bcc7d87adc1e4c8c7dea46406567f4bd"
+        },
+        {
+          "optionId": "druzy-center",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-druzy-center.f0187cb2.webp",
+          "sha256": "f0187cb2654bdf4aa651192c09624fe096fb69581682e24aa505523a8236ad89"
+        },
+        {
+          "optionId": "scalloped-agate-bowl",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-scalloped-agate-bowl.31ce98ab.webp",
+          "sha256": "31ce98ab7a6ef4864d0e2f3e2f3451616eb8091efafa956219fe9b553567996c"
+        },
+        {
+          "optionId": "agate-shell-carving",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-agate-shell-carving.1a70b23b.webp",
+          "sha256": "1a70b23b392bb788ed36787126986d4d58910763a0b62239d7ac9a85e183e125"
+        }
+      ]
+    },
+    {
+      "id": "marquetry-arc",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\manifest.json",
+      "manifestSha256": "245eb3d1e5c5ca650ce1cea7cffce12d459ad84f388c8e698548fdc5fb0844e9",
+      "selections": [
+        {
+          "optionId": "chevron-grain",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-chevron-grain.94c0c565.webp",
+          "sha256": "94c0c565d9d81ac90edbee1e7b55561ec4877d0ad38f26600f4f12882d852bbc"
+        },
+        {
+          "optionId": "nested-arch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-nested-arch.20144052.webp",
+          "sha256": "20144052b035119259194e5cae696eb1bcd80ee3e2447de6b04c3b4f4cf26096"
+        },
+        {
+          "optionId": "veneer-sun",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-veneer-sun.1fc211fe.webp",
+          "sha256": "1fc211fe9992e89e0900f1c4ea9f17054f4c15a0a33820eb2cc118b0beab2543"
+        },
+        {
+          "optionId": "bowtie-inlay",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-bowtie-inlay.bc521627.webp",
+          "sha256": "bc5216271b5cb3aa5cfa04346b4a6e066cf2e96d000346804bb5c742bbed4677"
+        },
+        {
+          "optionId": "veneer-wave",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-veneer-wave.8fdca9e0.webp",
+          "sha256": "8fdca9e0cda4113e7c9c116a314ffc4a8c0d0947bcc08794da4703f361116750"
+        }
+      ]
+    },
+    {
+      "id": "lumen-mosaic",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "manifestSha256": "1d7d6a519d88285438c9a326ee6fedaca622082b2fcf2779ad023da8b002befd",
+      "selections": [
+        {
+          "optionId": "tessellated-sunbird",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-tessellated-sunbird.81d4eab9.webp",
+          "sha256": "81d4eab99cc1ad6482949706585c38f7511070afb1990d416716b27b1a2b239c"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-small.a0d46a3f.webp",
+          "sha256": "a0d46a3faab58da3e2cf75b520423ff846e8a8fda0ee3a35e4770d26c8c2003e"
+        },
+        {
+          "optionId": "art-20261107-mosaic-pomegranate",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-mosaic-pomegranate.95e71503.webp",
+          "sha256": "95e71503abc1809848b3d349db3948718b1e87f3fae96ff3a48322507bf9ab13"
+        },
+        {
+          "optionId": "art-20261107-jewel-window",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-jewel-window.4ddf81a5.webp",
+          "sha256": "4ddf81a5ee979e56eefba471eac49a9e9a4c2f4d421f7ef8dc58a2b3f1515264"
+        },
+        {
+          "optionId": "stained-glass-iris",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-stained-glass-iris.b4fa5f9e.webp",
+          "sha256": "b4fa5f9e4b9d22a38fde9bb651ec141412c8893c6fc56d9646a6b0249321d17e"
+        }
+      ]
+    }
+  ],
+  "baselineSelections": 44,
+  "visualReview": "Passed lane-local inspection full/85 plus all44actualbaseline selections. Broad flat opaque natural stonefields/mineralveins differ from carved jade volume, regular tilegrids, thin glass/metalwalls, iridescent shell, eggshellchips, strawfibers and metalstrata. Coordinator material review pending; no Jared approval."
+}

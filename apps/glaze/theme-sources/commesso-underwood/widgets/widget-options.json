@@ -1,0 +1,62 @@
+[
+  {
+    "id": "bullfinch-sprig",
+    "kind": "art",
+    "image": "bullfinch-sprig.9732bf92.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bullfinch Sprig"
+  },
+  {
+    "id": "red-squirrel-acorns",
+    "kind": "art",
+    "image": "red-squirrel-acorns.a0eee2d3.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Red Squirrel Acorns"
+  },
+  {
+    "id": "common-toad",
+    "kind": "art",
+    "image": "common-toad.b3b4f718.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Common Toad"
+  },
+  {
+    "id": "oak-acorns",
+    "kind": "art",
+    "image": "oak-acorns.73a0ff23.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Oak Acorns"
+  },
+  {
+    "id": "speckledwood-butterfly",
+    "kind": "art",
+    "image": "speckledwood-butterfly.80859ae1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Speckledwood Butterfly"
+  }
+]

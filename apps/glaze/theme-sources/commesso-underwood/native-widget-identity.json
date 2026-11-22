@@ -1,0 +1,18 @@
+{
+  "themeId": "commesso-underwood",
+  "recipe": [
+    "octagon",
+    "stoneBullfinch",
+    "stoneJoins",
+    "cut",
+    "wedge",
+    "tiles",
+    "folio"
+  ],
+  "art": {
+    "stoneBullfinch": "M 26 30 Q 17 23 17 35 L 7 40 L 18 44 Q 24 69 48 71 Q 68 73 77 60 L 91 66 L 80 49 Q 74 32 54 32 L 38 35 Q 34 29 26 30 M 23 29 Q 30 24 35 30 M 23 35 L 24 36 M 36 42 Q 55 36 70 50 L 58 62 L 39 56 Z M 45 71 L 42 84 L 32 89 M 58 71 L 61 84 L 72 88 M 15 94 L 88 79 M 79 80 Q 80 65 94 58 Q 98 73 79 80 M 62 85 Q 58 73 48 74 Q 47 85 62 85",
+    "stoneJoins": "M 11 26 Q 31 42 49 24 Q 68 6 89 23 M 49 24 Q 43 52 60 77 M 20 47 Q 29 56 37 49 M 26 52 Q 36 62 44 55 M 62 37 Q 75 45 83 37 M 62 43 Q 75 52 85 44 M 49 70 Q 36 72 31 85"
+  },
+  "ornament": "M 21 84 Q 43 71 68 29 Q 73 48 61 65 Q 43 80 21 84 M 32 74 L 57 49 M 40 63 Q 46 67 53 60 M 44 57 Q 50 61 57 54 M 52 43 L 60 38",
+  "direction": "Whole natural bullfinch on a short leafy sprig, broad coplanar stone pieces and switching coarse natural mineral veins. Octagon clock rim echoes polished lapidary cut edges, cut marks and wedge hands, tiled charge and folio calendar. Compact companion is one open half-leaf vein with two short cut-seam fragments; no full bird, mosaic tile patch, enclosing gemstone frame or jewel mount. Retain shipped calendar/date/highlight/identity-outline behavior, no date-containment design gate."
+}
