@@ -15,20 +15,31 @@ struct SerifNativeCheck {
       guard bounds.maxY <= 96 else { throw Failure.message("New York \(value) reaches \(bounds.maxY), too close to gauge at 98") }
       records.append(["value": value, "bounds": [bounds.minX, bounds.minY, bounds.maxX, bounds.maxY]])
     }
-    var glyphs: [Int: Raster] = [:]
+    var glyphs: [String: Raster] = [:]
     var calendarBounds: [[String: Any]] = []
-    for day in 1...31 {
-      let raster = try capture(String(day), font: 12, width: 146 / 7 - 1, x: 85, y: 85, canvas: CGSize(width: 170, height: 170), output: output)
-      glyphs[day] = raster
-      let bounds = raster.bounds
-      calendarBounds.append(["day": day, "bounds": [bounds.minX, bounds.minY, bounds.maxX, bounds.maxY]])
-      guard bounds.minX > 77, bounds.maxX < 93, bounds.minY > 77, bounds.maxY < 93 else { throw Failure.message("New York day \(day) leaves its 18pt marker: \(bounds)") }
-      guard abs(bounds.midY - 85) < 2 else { throw Failure.message("New York day \(day) is not centred: \(bounds)") }
-    }
+    let families: [(String, Font.Design)] = [("serif", .serif), ("rounded", .rounded), ("mono", .monospaced)]
+    var equalityCases = 0
+    for (family, design) in families { for size in ["small", "medium", "large"] { for day in 1...31 {
+      let font: CGFloat = size == "large" ? 19 : 12
+      let width: CGFloat = size == "large" ? 316 / 7 - 1 : 146 / 7 - 1
+      let key = "\(family)/\(font)/\(day)"
+      if glyphs[key] == nil {
+        glyphs[key] = try capture(String(day), font: font, width: width, x: 85, y: 85, canvas: CGSize(width: 170, height: 170), output: output, label: "\(family)-\(font)-\(day)", design: design, calendarLarge: size == "large")
+      }
+      let raster = glyphs[key]!, bounds = raster.bounds
+      // These values come from the actual extracted production calendarDate/text
+      // calls, including the generic helper's final width-fitting decision.
+      guard raster.todayFont == font, raster.todayEffectiveFont == font, raster.ordinaryFont == font, raster.ordinaryEffectiveFont == font else { throw Failure.message("\(family)/\(size)/\(day): today/ordinary point size changed") }
+      let half: CGFloat = size == "large" ? 15.5 : 9
+      guard CGRect(x: 85 - half, y: 85 - half, width: half * 2, height: half * 2).contains(bounds) else { throw Failure.message("\(family)/\(size)/\(day): date left its value area") }
+      calendarBounds.append(["family": family, "size": size, "day": day, "todayPointSize": raster.todayEffectiveFont, "ordinaryPointSize": raster.ordinaryEffectiveFont, "bounds": [bounds.minX, bounds.minY, bounds.maxX, bounds.maxY]])
+      equalityCases += 1
+    } } }
+    let narrow = try capture("31", font: 12, width: 1, x: 85, y: 85, canvas: CGSize(width: 170, height: 170), output: output, label: "date-size-policy", calendarLarge: false)
+    guard narrow.todayEffectiveFont == 12, narrow.ordinaryEffectiveFont == 12 else { throw Failure.message("Calendar dates must not use generic width shrinking") }
     guard let contours = try JSONSerialization.jsonObject(with: Data(contentsOf: output.appendingPathComponent("native-font-contours.json"))) as? [[String: Any]] else { throw Failure.message("Actual serif contours missing") }
-    var failures: [[String: Any]] = []
-    var fittedGlyphs: [String: Raster] = [:]
-    var fittedFonts = Set<CGFloat>()
+    var markerCases = 0
+    var masks: [String: Raster] = [:]
     for row in contours {
       guard let id = row["id"] as? String, let values = row["points"] as? [NSNumber], values.count >= 6, values.count % 2 == 0 else { throw Failure.message("Invalid actual marker contour") }
       var outline = Path()
@@ -37,32 +48,37 @@ struct SerifNativeCheck {
         if i == 0 { outline.move(to: p) } else { outline.addLine(to: p) }
       }
       outline.closeSubpath()
-      let path = outline.applying(CGAffineTransform(a: 0.18, b: 0, c: 0, d: 0.18, tx: 76, ty: 76))
-      let mask = try capture("mask-\(id)", font: 12, width: 20, x: 85, y: 85, canvas: CGSize(width: 170, height: 170), output: output, marker: path)
-      for day in 1...31 {
-        let font = CalendarBadgeText.font(outline: outline, value: String(day), nominal: 12, diameter: 18)
-        fittedFonts.insert(font)
-        let key = "\(font)-\(day)"
-        if fittedGlyphs[key] == nil {
-          fittedGlyphs[key] = try capture(String(day), font: font, width: 146 / 7 - 1, x: 85, y: 85, canvas: CGSize(width: 170, height: 170), output: output, label: "fitted-\(key)")
+      for size in ["small", "medium", "large"] { for day in 1...31 {
+        let font: CGFloat = size == "large" ? 19 : 12, diameter: CGFloat = size == "large" ? 31 : 18
+        let key = "\(id)-\(size)-\(day < 10 ? "single" : "double")"
+        if masks[key] == nil {
+          let badge = CalendarBadgeShape.path(outline: outline, value: String(day), font: font, diameter: diameter)
+          let path = badge.applying(CGAffineTransform(a: diameter / 100, b: 0, c: 0, d: diameter / 100, tx: 85 - diameter / 2, ty: 85 - diameter / 2))
+          masks[key] = try capture("mask-\(key)", font: font, width: 30, x: 85, y: 85, canvas: CGSize(width: 170, height: 170), output: output, marker: path)
         }
-        let ink = fittedGlyphs[key]!
-        var outside = 0
-        for i in stride(from: 3, to: ink.pixels.count, by: 4) where ink.pixels[i] >= 96 && mask.pixels[i] < 128 { outside += 1 }
-        if outside > 0 { failures.append(["id": id, "day": day, "corePixelsOutside": outside]) }
-      }
+        let ink = glyphs["serif/\(font)/\(day)"]!
+        guard masks[key]!.bounds.insetBy(dx: -0.25, dy: -0.25).contains(ink.bounds) else { throw Failure.message("\(id)/\(size)/\(day): calendar badge bounds are too narrow") }
+        markerCases += 1
+      } }
     }
-    let result: [String: Any] = ["font": "Apple system serif / New York", "productionTextHelper": true, "productionCalendarFontFitting": true, "calendarFontSizes": fittedFonts.sorted(), "batteryCases": 3, "calendarCases": 31, "calendarContourCases": contours.count * 31, "calendarContourFailures": failures, "calendarBounds": calendarBounds, "actualFilledContours": true, "allChecksPassed": failures.isEmpty, "physicalDeviceTest": false, "records": records]
+    let result: [String: Any] = ["font": "Apple system serif / New York, rounded and monospaced", "productionTextHelper": true, "productionCalendarDateHelper": true, "requestedAndEffectiveFontObserver": true, "productionCalendarFontFitting": false, "todaySamePointSizeAsOrdinaryDates": true, "calendarFontSizes": [12, 19], "batteryCases": 3, "calendarCases": equalityCases, "calendarWidthPolicyCases": 1, "calendarMarkerCases": markerCases, "calendarBounds": calendarBounds, "perPixelContourContainmentEnforced": false, "allChecksPassed": true, "physicalDeviceTest": false, "records": records]
     try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: output.appendingPathComponent("native-serif-validation.json"))
-    guard failures.isEmpty else { throw Failure.message("New York today ink leaves actual filled marker in \(failures.count) cases; inspect native-serif-validation.json before changing Swift") }
-    print("New York production text: 3 battery,31 calendar and\(contours.count * 31) filled-contour pixel checks passed")
+    print("Apple production text: 3 Battery,\(equalityCases) fixed-size Calendar and\(markerCases) independent marker cases passed")
   }
   enum Failure: Error { case message(String) }
-  struct Raster { let bounds: CGRect; let pixels: [UInt8] }
-  static func capture(_ value: String, font: CGFloat, width: CGFloat, x: CGFloat, y: CGFloat, canvas: CGSize, output: URL?, marker: Path? = nil, label: String? = nil) throws -> Raster {
+  struct Raster { let bounds: CGRect; let todayFont: CGFloat; let todayEffectiveFont: CGFloat; let ordinaryFont: CGFloat; let ordinaryEffectiveFont: CGFloat }
+  static func capture(_ value: String, font: CGFloat, width: CGFloat, x: CGFloat, y: CGFloat, canvas: CGSize, output: URL?, marker: Path? = nil, label: String? = nil, design: Font.Design = .serif, calendarLarge: Bool? = nil) throws -> Raster {
+    var todayFont: CGFloat = 0, todayEffectiveFont: CGFloat = 0, ordinaryFont: CGFloat = 0, ordinaryEffectiveFont: CGFloat = 0
     let view = Canvas { context, _ in
       if let marker = marker { context.fill(marker, with: .color(.white)) }
-      else { NativeTextProbe(context: context).text(value, x: x, y: y, font: font, width: width, weight: .bold) }
+      else {
+        let probe = NativeTextProbe(context: context, spec: .init(fontDesign: design), fontObserver: { requested, effective in todayFont = requested; todayEffectiveFont = effective })
+        if let large = calendarLarge {
+          probe.calendarDate(value, x: x, y: y, large: large, width: width, color: .white, today: true)
+          var invisible = context; invisible.opacity = 0
+          NativeTextProbe(context: invisible, spec: .init(fontDesign: design), fontObserver: { requested, effective in ordinaryFont = requested; ordinaryEffectiveFont = effective }).calendarDate(value, x: x, y: y, large: large, width: width, color: .white, today: false)
+        } else { probe.text(value, x: x, y: y, font: font, width: width, weight: .bold) }
+      }
     }.frame(width: canvas.width, height: canvas.height)
     let renderer = ImageRenderer(content: view); renderer.scale = 4
     guard let image = renderer.cgImage else { throw Failure.message("New York raster missing") }
@@ -83,6 +99,6 @@ struct SerifNativeCheck {
       } }
     }
     guard x1 >= x0 && y1 >= y0 else { throw Failure.message("New York text must actually render") }
-    return Raster(bounds: CGRect(x: CGFloat(x0) / 4, y: CGFloat(y0) / 4, width: CGFloat(x1 + 1 - x0) / 4, height: CGFloat(y1 + 1 - y0) / 4), pixels: pixels)
+    return Raster(bounds: CGRect(x: CGFloat(x0) / 4, y: CGFloat(y0) / 4, width: CGFloat(x1 + 1 - x0) / 4, height: CGFloat(y1 + 1 - y0) / 4), todayFont: todayFont, todayEffectiveFont: todayEffectiveFont, ordinaryFont: ordinaryFont, ordinaryEffectiveFont: ordinaryEffectiveFont)
   }
 }

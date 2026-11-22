@@ -312,7 +312,7 @@ export const EXTRAORDINARY_RECIPES = {
     "band"
   ],
   "c-carbonfilm-strata": [
-    "square",
+    "facet",
     "cStillleafFrond",
     "cStillleafLamina",
     "bars",
@@ -339,7 +339,7 @@ export const EXTRAORDINARY_RECIPES = {
     "band"
   ],
   "c-chlorotype-leaflight": [
-    "square",
+    "petal",
     "cSunheldFig",
     "cSunheldRobinVeins",
     "rays",
@@ -573,7 +573,7 @@ export const EXTRAORDINARY_RECIPES = {
     "ledger"
   ],
   "caneveil-mangroves": [
-    "square",
+    "petal",
     "murrGecko",
     "murrCane",
     "rays",
@@ -618,7 +618,7 @@ export const EXTRAORDINARY_RECIPES = {
     "band"
   ],
   "embertrace-chaparral": [
-    "square",
+    "pebble",
     "hairQuail",
     "hairCarbon",
     "dash",
@@ -717,7 +717,7 @@ export const EXTRAORDINARY_RECIPES = {
     "folio"
   ],
   "guilloche-copse": [
-    "square",
+    "reel",
     "guillocheFox",
     "guillocheLoops",
     "pearls",
@@ -789,7 +789,7 @@ export const EXTRAORDINARY_RECIPES = {
     "ticket"
   ],
   "pithcurl-orchard": [
-    "square",
+    "circle",
     "pithMouse",
     "pithCurls",
     "beads",
@@ -897,7 +897,7 @@ export const EXTRAORDINARY_RECIPES = {
     "board"
   ],
   "stratagrain-saltmarsh": [
-    "square",
+    "wave",
     "mokuPlover",
     "mokuStrata",
     "staples",

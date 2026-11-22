@@ -6,15 +6,15 @@ import type { WidgetIdentity } from './widgetIdentity.ts';
 const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[c]!));
 type Box = { x: number; y: number; w: number; h: number };
 
-// A clock bezel's decorative waist can be narrower than its nominal calendar badge box.
-// Fit Georgia's bold two-digit ink inside that existing contour, keeping the original
-// 12pt size wherever it fits. Only the live date text changes; authored shapes stay intact.
-function calendarBadgeFont(outline: string, value: string, nominal: number, diameter: number): number {
-  if ([...value].length < 2) return nominal;
-  if (!/^[MLZ0-9 .-]+$/.test(outline)) return nominal * .75;
+// The date label always keeps the grid's point size. A narrow clock bezel may need
+// a broader calendar-only badge; fitting bezels and the clock itself stay unchanged.
+function calendarBadgeOutline(outline: string, value: string, font: number, diameter: number): string {
+  if ([...value].length < 2) return outline;
+  const readableBadge = 'M 20 0 L 80 0 Q 100 0 100 20 L 100 80 Q 100 100 80 100 L 20 100 Q 0 100 0 80 L 0 20 Q 0 0 20 0 Z';
+  if (!/^[MLZ0-9 .-]+$/.test(outline)) return readableBadge;
   const numbers = (outline.match(/-?(?:\d+\.?\d*|\.\d+)/g) ?? []).map(Number);
   const points = Array.from({ length: Math.floor(numbers.length / 2) }, (_, i) => [numbers[i * 2], numbers[i * 2 + 1]]);
-  if (points.length < 3) return nominal * .75;
+  if (points.length < 3) return readableBadge;
   const inside = (x: number, y: number) => {
     let contained = false;
     for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
@@ -23,19 +23,13 @@ function calendarBadgeFont(outline: string, value: string, nominal: number, diam
     }
     return contained;
   };
-  for (let font = nominal; font >= nominal * .64; font -= .25) {
-    // Conservative Georgia ink bounds after the .1em baseline correction, including
-    // a small allowance for subpixel phase at the seven real calendar columns.
-    const half = ([...value].length * font * .64 / 2 + .2) * 100 / diameter;
-    const top = (-font * .48 - .2) * 100 / diameter, bottom = (font * .46 + .2) * 100 / diameter;
-    let fits = true;
-    for (let i = 0; i <= 8 && fits; i++) {
-      const x = -half + half * 2 * i / 8, y = top + (bottom - top) * i / 8;
-      fits = inside(50 + x, 50 + top) && inside(50 + x, 50 + bottom) && inside(50 - half, 50 + y) && inside(50 + half, 50 + y);
-    }
-    if (fits) return font;
+  const half = ([...value].length * font * .60 / 2 + .2) * 100 / diameter;
+  const top = (-font * .43 - .2) * 100 / diameter, bottom = (font * .41 + .2) * 100 / diameter;
+  for (let i = 0; i <= 8; i++) {
+    const x = -half + half * 2 * i / 8, y = top + (bottom - top) * i / 8;
+    if (!(inside(50 + x, 50 + top) && inside(50 + x, 50 + bottom) && inside(50 - half, 50 + y) && inside(50 + half, 50 + y))) return readableBadge;
   }
-  return nominal * .64;
+  return outline;
 }
 
 export function originalFaceBox(size: HomeOptionSize): Box {
@@ -77,9 +71,9 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
   const line = (x: number, y: number, endX: number, endY: number, colour: string, opacity: number, width = 1) => elements.push(`<line x1="${x}" y1="${y}" x2="${endX}" y2="${endY}" stroke="${colour}" opacity="${opacity}" stroke-width="${width}" stroke-linecap="round"/>`);
   const circle = (x: number, y: number, r: number, colour: string) => elements.push(`<circle cx="${x}" cy="${y}" r="${r}" fill="${colour}"/>`);
   const font = d.font === 'serif' ? 'Georgia,serif' : d.font === 'mono' ? 'Menlo,monospace' : 'ui-rounded,system-ui,sans-serif';
-  const text = (value: string, x: number, y: number, nominal: number, width: number, colour = d.ink, weight = 600, anchor = 'middle', serifLift = 0) => {
+  const text = (value: string, x: number, y: number, nominal: number, width: number, colour = d.ink, weight = 600, anchor = 'middle', serifLift = 0, keepPointSize = false) => {
     const estimate = [...value].length * nominal * .62;
-    const fitted = Math.min(nominal, nominal * width / Math.max(1, estimate));
+    const fitted = keepPointSize ? nominal : Math.min(nominal, nominal * width / Math.max(1, estimate));
     // Georgia's old-style digits descend below SVG's central baseline. Lift the crowded
     // numeric roles by a fraction of their fitted em; keep the authored art/gauge geometry.
     if (d.font === 'serif') y -= fitted * serifLift;
@@ -253,10 +247,9 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
       const column = index % 7, x = gridX + ((rtl ? 6 - column : column) + .5) * col;
       const y = top + row * (Math.floor(index / 7) + 1.18);
       const today = day === month.today, diameter = large ? 31 : 18;
-      if (today) path(identity.outline, box(x - diameter / 2, y - diameter / 2, diameter), d.accent);
       const value = number(day), nominal = large ? 19 : 12;
-      const dayFont = today && d.font === 'serif' ? calendarBadgeFont(identity.outline, value, nominal, diameter) : nominal;
-      text(value, x, y, dayFont, col - 1, today ? d.onAccent : d.ink, today ? 700 : 550, 'middle', .1);
+      if (today) path(calendarBadgeOutline(identity.outline, value, nominal, diameter), box(x - diameter / 2, y - diameter / 2, diameter), d.accent);
+      text(value, x, y, nominal, col - 1, today ? d.onAccent : d.ink, today ? 700 : 550, 'middle', .1, true);
     });
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs><linearGradient id="paint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${d.background[0]}"/><stop offset="1" stop-color="${d.background[1]}"/></linearGradient>${definitions.join('')}</defs><rect width="${w}" height="${h}" fill="url(#paint)"/><g font-family="${font}" style="font-variant-numeric:tabular-nums">${elements.join('')}</g></svg>`;

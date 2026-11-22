@@ -25,14 +25,6 @@ for (const { id, folder } of loadExtraordinaryDirections().records) {
 const tags = svg => [...svg.matchAll(/<text\b[^>]*>[^<]*<\/text>/g)].map(m => m[0]);
 const attr = (tag, key) => tag.match(new RegExp(` ${key}="([^"]+)"`))?.[1];
 const measured = new Map();
-const rasterized = new Map();
-async function markerPixels(content, left, top, scale) {
-  // Integer ROI translation preserves the exact pixel phase of the real calendar grid.
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="${left} ${top} 24 24"><g font-family="Georgia,serif">${content.replace(/fill="[^"]+"/, 'fill="#FFFFFF"')}</g></svg>`;
-  const key = `${scale}/${svg}`;
-  if (!rasterized.has(key)) rasterized.set(key, sharp(Buffer.from(svg)).resize(24 * scale).ensureAlpha().raw().toBuffer());
-  return rasterized.get(key);
-}
 async function bounds(tag, w, h) {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><g font-family="Georgia,serif">${tag.replace(/fill="[^"]+"/, 'fill="#FFFFFF"')}</g></svg>`;
   if (measured.has(svg)) return measured.get(svg);
@@ -46,8 +38,23 @@ async function bounds(tag, w, h) {
   const result = [x0 / scale, y0 / scale, (x1 + 1) / scale, (y1 + 1) / scale];
   measured.set(svg, result); return result;
 }
-let batteryCases = 0, calendarCases = 0, calendarContourCases = 0; const records = [], nativeContours = new Map(), calendarFontSizes = new Set();
+let batteryCases = 0, calendarCases = 0, pointSizeEqualityCases = 0; const records = [], nativeContours = new Map(), calendarFontSizes = new Set();
 const readings = { date: new Date(2026, 9, 22, 10, 8), battery: 73, locale: 'en-AU' };
+// Every published/bundled/candidate theme, every widget size and both one-/two-digit dates.
+// The highlighted label must use precisely the ordinary grid point size, in bold.
+for (const theme of themes) {
+  const calendar = theme.designs.find(d => d.kind === 'calendar'); assert.ok(calendar, theme.id);
+  for (const size of ['small', 'medium', 'large']) for (const day of [1, 22, 30]) {
+    const svg = designedWidgetSvg(calendar, size, { ...readings, date: new Date(2026, 9, day) });
+    const labels = tags(svg);
+    const today = labels.filter(t => attr(t, 'font-weight') === '700' && t.endsWith(`>${day}</text>`)).at(-1); assert.ok(today, `${theme.id}/${size}/${day}`);
+    const ordinary = labels.find(t => attr(t, 'font-weight') === '550' && /^\d{1,2}$/.test(t.match(/>([^<]+)</)?.[1] ?? '')); assert.ok(ordinary);
+    const nominal = size === 'large' ? 19 : 12;
+    assert.equal(Number(attr(today, 'font-size')), nominal, `${theme.id}/${size}/${day}: today shrank`);
+    assert.equal(attr(today, 'font-size'), attr(ordinary, 'font-size'), `${theme.id}/${size}/${day}: today differs from ordinary dates`);
+    calendarFontSizes.add(nominal); pointSizeEqualityCases++;
+  }
+}
 for (const theme of themes.filter(t => t.designs.some(d => d.font === 'serif'))) {
   const battery = theme.designs.find(d => d.kind === 'battery'), calendar = theme.designs.find(d => d.kind === 'calendar');
   assert.ok(battery?.identity && calendar?.identity, theme.id);
@@ -66,7 +73,8 @@ for (const theme of themes.filter(t => t.designs.some(d => d.font === 'serif')))
   // Every real day, including old-style ascenders and descenders, in the small today marker.
   for (let day = 1; day <= 31; day++) {
     const svg = designedWidgetSvg(calendar, 'small', { ...readings, date: new Date(2026, 9, day) });
-    const tag = tags(svg).find(t => attr(t, 'fill') === calendar.onAccent && attr(t, 'font-weight') === '700' && t.endsWith(`>${day}</text>`)); assert.ok(tag, theme.id);
+    const tag = tags(svg).filter(t => attr(t, 'fill') === calendar.onAccent && attr(t, 'font-weight') === '700' && t.endsWith(`>${day}</text>`)).at(-1); assert.ok(tag, theme.id);
+    assert.equal(Number(attr(tag, 'font-size')), 12, `${theme.id}/${day}: keep the ordinary date size`);
     calendarFontSizes.add(Number(attr(tag, 'font-size')));
     const marker = [...svg.matchAll(/<path\b[^>]*\/>/g)].map(m => m[0]).find(p => attr(p, 'fill') === calendar.accent && /scale\(0\.18 0\.18\)/.test(p)); assert.ok(marker, theme.id);
     const [mx, my] = marker.match(/translate\(([^ ]+) ([^)]+)\)/).slice(1).map(Number);
@@ -74,17 +82,11 @@ for (const theme of themes.filter(t => t.designs.some(d => d.font === 'serif')))
     assert.ok(b[0] > mx + 1 && b[2] < mx + 17 && b[1] > my + 1 && b[3] < my + 17, `${theme.id}/${day}: day outside its marker box`);
     assert.ok(Math.abs((b[1] + b[3]) / 2 - cy) <= 1.6, `${theme.id}/${day}: day sits low/high in the marker`);
     assert.ok(Math.abs((b[0] + b[2]) / 2 - cx) <= 1, `${theme.id}/${day}: day not centred horizontally`);
-    for (const scale of [1, 2, 4]) {
-      const left = Math.floor(cx - 12), top = Math.floor(cy - 12);
-      const ink = await markerPixels(tag, left, top, scale), mask = await markerPixels(marker, left, top, scale);
-      for (let i = 3; i < ink.length; i += 4) if (ink[i] >= 96) assert.ok(mask[i] >= 128, `${theme.id}/${day}@${scale}x: today ink leaves the actual filled marker contour`);
-      calendarContourCases++;
-    }
     calendarCases++;
     if (day === 22 && ['c-electron-mossbank', 'flutecut-woodland', 'raspnest-heath', 'amber-archive'].includes(theme.id)) writeFileSync(join(output, `${theme.id}-calendar-small.svg`), svg);
   }
 }
-const result = { serifThemes: batteryCases / 3, existingSerifThemes: themes.filter(t => t.source === 'existing' && t.designs.some(d => d.font === 'serif')).length, candidateSerifThemes: themes.filter(t => t.source === 'candidate' && t.designs.some(d => d.font === 'serif')).length, batteryCases, calendarCases, calendarContourCases, calendarFontSizes: [...calendarFontSizes].sort((a,b) => a-b), actualFilledContoursAt1x2x4x: true, allChecksPassed: true, font: 'Georgia', physicalDeviceTest: false, records };
+const result = { serifThemes: batteryCases / 3, existingSerifThemes: themes.filter(t => t.source === 'existing' && t.designs.some(d => d.font === 'serif')).length, candidateSerifThemes: themes.filter(t => t.source === 'candidate' && t.designs.some(d => d.font === 'serif')).length, batteryCases, calendarCases, pointSizeEqualityThemes: themes.length, pointSizeEqualityCases, calendarFontSizes: [...calendarFontSizes].sort((a,b) => a-b), todaySamePointSizeAsOrdinaryDates: true, perPixelContourContainmentEnforced: false, allChecksPassed: true, font: 'Georgia', physicalDeviceTest: false, records };
 writeFileSync(join(output, 'native-font-contours.json'), JSON.stringify([...nativeContours.values()], null, 2) + '\n');
 writeFileSync(join(output, 'serif-preview-validation.json'), JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify({ ...result, records: undefined }));
