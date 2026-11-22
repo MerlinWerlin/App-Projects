@@ -1,0 +1,1 @@
+Six selected unmodified built-in outputs:five independent alpha artworks plus final layout-edited habitat wallpaper. Exact prompts/raw hashes/five own identity reference hashes/direct edit reference retained in provenance.json. Initial unselected habitat archived outside selected sources.

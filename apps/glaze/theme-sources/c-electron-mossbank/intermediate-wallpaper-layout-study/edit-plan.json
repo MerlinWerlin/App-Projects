@@ -1,0 +1,35 @@
+{
+  "prompt": "Use case: identity-preserving layout edit. Preserve this exact Electron Mossbank grayscale secondary-electron micrograph habitat and all FIVE existing nature subject identities: three-lobed split-pollen capsule,two-turn coiled-awn spindle seed,curved-stem toothed moss capsule with tilted hood,six-lobed three-cup liverwort with rhizoid roots,and globular six-leg springtail with two segmented antennae/forked spring. Change framing only: pull back/reduce the entire five-subject group by about25%,keeping its relative arrangement and connected granular bank. Place ALL FIVE complete primary subjects inside horizontal10%to90%andvertical44%to78%ofcanvas. Especially reveal ALL SIX liverwort leaf lobes and root tips with space on both sides;keep full pollen capsule,seed hook/awn endpoints,springtail antennae/legs and moss hood/teeth whole. The top42%is empty very dark muted aubergine detector field,bottom20%quiet dark granular soil. Soil grains/bank can bleed through frame edges,but no focal leaves or animal limbs. Preserve fine stochastic granules,deep-focus pores,narrow bright detector edge signal,coolgreyscale bodies and dark hollows. No new objects,redesign,colourisation,blur,natural sunlight,gloss,physical craft effects,text,scale bars or UI. One continuous natural bank,not specimen panels or collage. Opaque portrait1290x2796,same aspect ratio.",
+  "reference": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-electron-mossbank\\intermediate-wallpaper-layout-study\\wallpaper-initial.6b7e89f2788e.png",
+  "directEditReference": {
+    "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.6b7e89f2788e.png",
+    "sha256": "6b7e89f2788edad2c061206ac4c38e6767ebe99fad859856373707137974779a"
+  },
+  "internalArtworkReferences": [
+    {
+      "id": "split-pollen",
+      "sourceImage": "sources/split-pollen.e5d68d47bdf3.png",
+      "sha256": "e5d68d47bdf3b0dba28c5bb274af85c9354a52516769ad4f7ffd1ca572a3accf"
+    },
+    {
+      "id": "coiled-awn-seed",
+      "sourceImage": "sources/coiled-awn-seed.2b05954c2996.png",
+      "sha256": "2b05954c2996fdfd53b252a4219497af4f080d0cd443865cb71aade6e48663c6"
+    },
+    {
+      "id": "moss-capsule",
+      "sourceImage": "sources/moss-capsule.31ebf3c1c92e.png",
+      "sha256": "31ebf3c1c92e857d1bed09b7cc9c3676b713400e2d24701d0737e4ef0140fdaf"
+    },
+    {
+      "id": "liverwort-thallus",
+      "sourceImage": "sources/liverwort-thallus.662cf370fb2b.png",
+      "sha256": "662cf370fb2b6697b55b0cd8192e209a7c70d7c564276e3df95bd2fad4600309"
+    },
+    {
+      "id": "springtail",
+      "sourceImage": "sources/springtail.d9e6086feca6.png",
+      "sha256": "d9e6086feca65bcf3f31418c62c4438f71a855710d1400f39add06b1aa4caa29"
+    }
+  ]
+}
