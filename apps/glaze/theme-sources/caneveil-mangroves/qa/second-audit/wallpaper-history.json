@@ -1,0 +1,29 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "kind": "authorized wallpaper enlargement and natural vertical recomposition",
+  "authority": "Jared via Claude/coordinator SECOND AUDIT00:47: freeze art, enlarge wallpaper75\u201390percent width with real vertical presence; clock form for ART, never for date-marker fitting.",
+  "exactToolRequest": "qa/second-audit/wallpaper-request.json",
+  "exactToolResult": "qa/second-audit/wallpaper-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "file": "qa/second-audit/previous-selected-wallpaper.png",
+      "sha256": "e1cb359240f72b7e51100632baf7d7df81cb5e3bce94d7d85da67f1b56c5761c",
+      "role": "EDIT TARGET: exact own currently selected wallpaper, to enlarge/recompose only."
+    },
+    {
+      "order": 2,
+      "file": "sources/gecko-leaf.704a800f.png",
+      "sha256": "704a800fcad7e6db40a836f3882275ee878e7e6629bee9edeb5802bc591fe6e5",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it."
+    }
+  ],
+  "selectedSource": "sources/wallpaper.2e35aa22.png",
+  "selectedSourceSha256": "2e35aa22ec6de5c35bf86214287e598c455a5e8e41fcbf9d53b86d9f03331fde",
+  "priorGenerationHistory": "qa/layout-repair/wallpaper-history.json",
+  "previousSelectedGeneration": "qa/second-audit/previous-selected-generation.json",
+  "exactPreviousHistory": "qa/second-audit/before-wallpaper-history.exact.json",
+  "previousProductionWallpaper": "qa/second-audit/previous-production-wallpaper.png",
+  "previousProductionSha256": "07ab75ed8e5108802fa358b6ef681f5f3028748f951b45175590f58d953c4777"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Precise LAYOUT-ONLY edit of input1, own original Caneveil Mangroves wallpaper. Keep exact fused murrine cane-glass mangrove habitat, gecko, leaf/branch/root arrangement, propagules, mudskipper, shallow water oval, embedded coarse colored cane flowers and longitudinal stripes, palette, lighting, subtle quiet pistachio background and portrait aspect ratio. Scale the ENTIRE existing connected habitat uniformly to65percent of its CURRENT width and height, as ONE unit, without changing any individual organism or object proportions or spacing within it. Place the uniformly smaller complete habitat horizontally centered with its overall center at57percent canvas height. Extend/reconstruct only the same quiet pale pistachio #D9DCC1 background around it; match smooth subtle background perfectly, no visible rectangular pasted edge. Final whole habitat should occupy about HALF total canvas width, with at least24percent quiet background on BOTH left/right sides. Preserve complete leaf/root/gecko tail/fins/propagule tips, no crop, no duplicate or new organism/object. No border/corner branches/extra flowers, no enlarged individual gecko, no reframing zoom, no text/UI. Keep original internal murrine material and anatomy unchanged. Opaque full wallpaper, no transparency.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.e1cb3592.png",
+  "sourceSha256": "e1cb359240f72b7e51100632baf7d7df81cb5e3bce94d7d85da67f1b56c5761c",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "07ab75ed8e5108802fa358b6ef681f5f3028748f951b45175590f58d953c4777",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.50b70662.png",
+    "sha256": "50b70662fd1a6744f203926dddd71b8e3b1e626f25450358af7ca5fd98bd07d0"
+  }
+}
