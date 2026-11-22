@@ -1,0 +1,100 @@
+{
+  "review": "All five1254square originals have whole alpha16/96 bounds inside source and framealpha maximum1or0; normalize whole uniformly900within1024RGBA without crop/stretch/codealpha cleanup. First raw030887ae/normalized61cafa0b unchanged. Wallpaper one own-five-reference opaque853x1844 original fitted1290x2796; actual3phonecrops retain key organisms with full petiole/bill/tail/petals/leaf tips. Supporting branch joins right scene edge, contextual bank crosses edges; actual width92percent disclosed, no framing edit.",
+  "assets": [
+    {
+      "id": "beech-bandlight",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          179,
+          186,
+          1087,
+          1127
+        ],
+        "96": [
+          180,
+          186,
+          1086,
+          1126
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "songbird-bandlight",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          101,
+          213,
+          1090,
+          1077
+        ],
+        "96": [
+          101,
+          213,
+          1089,
+          1076
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "mushrooms-bandlight",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          119,
+          102,
+          1140,
+          1181
+        ],
+        "96": [
+          119,
+          103,
+          1139,
+          1181
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "hedgehog-bandlight",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          171,
+          395,
+          1107,
+          944
+        ],
+        "96": [
+          172,
+          395,
+          1106,
+          943
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "primrose-bandlight",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          183,
+          123,
+          1030,
+          1154
+        ],
+        "96": [
+          184,
+          123,
+          1029,
+          1153
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

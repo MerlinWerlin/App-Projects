@@ -1,0 +1,195 @@
+{
+  "theme": "c-gelband-meadow",
+  "status": "Lane material review passed unchanged, peer material/integration review pending; original human fallback source completion.",
+  "sample": {
+    "id": "beech-bandlight",
+    "selected": true,
+    "sourceSha256": "030887aea9269f8c733d26c9864c4768cfe6d2fd4c09a06068165c007239952b",
+    "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, BANDLIGHT GROVE. Subject: one complete instantly recognizable BEECH LEAF, broad ovate natural blade, about twice as long as wide, gently pointed tip, shallow modest teeth along both margins, one whole gently bent short petiole. Diagonal from lower left petiole to upper right tip. Whole intact familiar leaf silhouette, flat continuous opaque filled blade. Leaf plus complete stalk inside central70percent square, at least15percent truly transparent empty exterior on all sides. Whole natural form FIRST, not an abstract striped blob.\nDistinctive artistic image language: a monochrome GEL-BAND FLUORESCENCE INTENSITY IMAGE supplies the entire filled blade. Continuous matte charcoal/midgrey matrix, neither black void nor natural leaf skin. Across that blade are EIGHT separate broad vertical image lanes, each carrying TWO TO FOUR discrete soft pale-silver/white horizontal bands at uneven, staggered heights. About20large bands total. Bands are short rounded irregular luminous dashes, some thicker/brighter, others faint, with soft photographic edges and restrained very short vertical smears under a few bands. Intervals in between remain opaque charcoal matrix. Bands in adjacent lanes generally DO NOT ALIGN across the leaf; no single continuous stripe crosses the whole form. A few lower bands are broad and bright, upper bands sparse; distinct lane-wise grouping reads at85px. Stalk remains a simple opaque midgrey. Image is flat, front-on, softly resolved photographic signal, not carved/embossed, not a real leaf photograph with stripes added, no veins or lit tissue. The outline alone provides botanical form; matrix and discrete white band clusters provide the process.\nMonochrome only, warmwhite to coolgrey, no rainbow heatmap, orange spectral pixels, fine regular grid, barcode, dense equal repeated stripes, projected continuous stripes wrapping3D, X-ray skeleton/veins, leaf-cell network, line art, paper/fabric/collage, metallic sculpture, plastic, glass, fluorescence halo outside the leaf, ornamental hatching, terrain or mineral rings. No gel wells, assay plate, lab equipment, numbering, molecular weights, DNA sequences, diagnostics or measurements. This is original static artistic band-image interpretation, NOT actual molecular/experimental data, a real leaf-shaped assay, scientific result or validated simulation. No external visual input or named artist.\nTRUE alpha transparency ONLY outside the whole complete leaf/petiole, retain opaque matrix everywhere inside leaf blade, no internal cutout holes. No backing square/rectangle/slab, ground, cast background shadow, fog, glow beyond silhouette, frame, UI, text, numbers, labels, scale/ruler, clock/date/battery/weather values, logo or watermark. One clean complete leaf with generous truly transparent margins.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        179,
+        186,
+        1087,
+        1127
+      ],
+      "96": [
+        180,
+        186,
+        1086,
+        1126
+      ]
+    },
+    "edgeAlphaMaximum": 1
+  },
+  "neighbors": [
+    {
+      "theme": "c-spectrogram-labyrinth",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-spectrogram-labyrinth\\widgets\\formant-citadel.3809d762945a.png",
+      "sha256": "3809d762945a9bd707c02cd4a619a30596b432065a31c71714bb1b12c104e3ad"
+    },
+    {
+      "theme": "c-fringe-projection-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fringe-projection-grove\\widgets\\split-vane-fern.15cbd4efa319.png",
+      "sha256": "15cbd4efa31911a69cadf64437da875d0d677be18f3a8137ec77172f97103ad0"
+    },
+    {
+      "theme": "c-radiographic-deepwatch",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-radiographic-deepwatch\\widgets\\lantern-ray.ed2f9e3788ed.png",
+      "sha256": "ed2f9e3788ed22d0375d2b899c5f5ccf564d02335088d1f58879173819a08390"
+    },
+    {
+      "theme": "c-confocal-bridgeworks",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-confocal-bridgeworks\\widgets\\ciliary-weir.f677428e62d8.png",
+      "sha256": "f677428e62d844e59f2de4907c46cb7bf5786629a655e5fcdc9e0c1c65273243"
+    },
+    {
+      "theme": "c-lidar-waystation",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-lidar-waystation\\widgets\\scan-postmaster.3d65ba920f57.png",
+      "sha256": "3d65ba920f574a34b45cd417626a63d6e6b8ed4f52dc9837a9febd96fdd6c804"
+    },
+    {
+      "theme": "c-doppler-phantasm",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-doppler-phantasm\\widgets\\echo-vault.38dd26debc0d.png",
+      "sha256": "38dd26debc0d97e85385e544315dabf606ff304d1f894100a013a670b811e7b8"
+    },
+    {
+      "theme": "c-chromatogram-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chromatogram-grove\\widgets\\ginkgo-chromatogram.40c63e9def48.png",
+      "sha256": "40c63e9def4862b8b7efca2f5a63e56f07a9ccc0282e54a770f3c590b0aea65c"
+    },
+    {
+      "theme": "c-nearinfrared-hawthorn",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-nearinfrared-hawthorn\\widgets\\wood-sorrel.2b7286722bf7.png",
+      "sha256": "2b7286722bf70eeec9ccb4e51ff315282b25c78b915358eff40a988df4eb7b08"
+    },
+    {
+      "theme": "c-chlorotype-leaflight",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chlorotype-leaflight\\widgets\\fig-leaf-robin.38da7049abf5.png",
+      "sha256": "38da7049abf5c24be36ac6cfe8b575d40339e2328a99046a2a5cd1a886b5ac2b"
+    },
+    {
+      "theme": "chromatic-lab",
+      "optionId": "molecular-butterfly",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\chromatic-lab\\v7\\widget-molecular-butterfly.6c1a553b.webp",
+      "sha256": "6c1a553b41da26bf6dbe7f4d5fd447df22efa4ab665e229c63fe3b4de347bd65",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\chromatic-lab\\v7\\manifest.json",
+      "selectorProof": "outputs/gelband-published-neighbor-selections.json"
+    },
+    {
+      "theme": "chromatic-lab",
+      "optionId": "prism-microscope",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\chromatic-lab\\v7\\widget-prism-microscope.e7a4ba02.webp",
+      "sha256": "e7a4ba02b62c74f00e45645e95facb2d65dbad689d3fc8c64d3ee470ab4fcba0",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\chromatic-lab\\v7\\manifest.json",
+      "selectorProof": "outputs/gelband-published-neighbor-selections.json"
+    },
+    {
+      "theme": "phosphor-amber",
+      "optionId": "pixel-landscape",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\phosphor-amber\\v2\\widget-pixel-landscape.84a30082.webp",
+      "sha256": "84a3008213af46373f5519d2851a1b75651de5e2bb096afc1c31cf45056e5eef",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\phosphor-amber\\v2\\manifest.json",
+      "selectorProof": "outputs/gelband-published-neighbor-selections.json"
+    },
+    {
+      "theme": "phosphor-amber",
+      "optionId": "phosphor-nautilus",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\phosphor-amber\\v2\\widget-phosphor-nautilus.01a34e58.webp",
+      "sha256": "01a34e58734a8cb1c69d82e2529b61673bd9193b90761d09cfba58b68b2eefcd",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\phosphor-amber\\v2\\manifest.json",
+      "selectorProof": "outputs/gelband-published-neighbor-selections.json"
+    },
+    {
+      "theme": "calla-obscura",
+      "optionId": "dew-leaf",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-dew-leaf.c4995fe9.webp",
+      "sha256": "c4995fe9adc0509023baf5b48c21ae42f0b1340a93ebdda22a245dd2d11461be",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\manifest.json",
+      "selectorProof": "outputs/gelband-published-neighbor-selections.json"
+    },
+    {
+      "theme": "calla-obscura",
+      "optionId": "silver-moth",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-silver-moth.f153e3a0.webp",
+      "sha256": "f153e3a0303f867931dd98aac5e97ae9ae91c9c62d32ce3060b05d6f219e1397",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\manifest.json",
+      "selectorProof": "outputs/gelband-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "Lane actual full170/85 review passed unchanged: broad whole serrated beech outline/petiole immediately readable, sparse soft uneven white horizontal bands grouped at staggered heights in broad lanes clearly visible. Opaque grey signal matrix distinct from C3 dense orange regular frequency tiles, C16 continuous stripes on3D, C33 four capillary paper fronts and C25/C14 fluorescent tissue/cells. Not ordinary IR plant tissue/Xray skeleton or published lab apparatus/CRT lines/Calla photo. Pale sage Artwork field improves grey silhouette separation and keeps quiet corners. No own image correction needed. Actual9source/16published union viewed plus15closest first comparisons. Coordinator unavailable, material acceptance/integration pending; original human fallback authorizes full isolated strictC source completion, no Jared artwork approval implied.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "1",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\gelband-first-1-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "2",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\gelband-first-2-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "3",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\gelband-first-3-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "4",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\gelband-first-4-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "5",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\gelband-first-5-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    }
+  ]
+}

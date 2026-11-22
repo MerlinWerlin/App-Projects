@@ -1,0 +1,16 @@
+{
+  "name": "Bandlight Grove",
+  "mood": "Whole woodland forms hold quiet silver bands on a bluegrey field.",
+  "tags": [
+    "band-intensity-image",
+    "gel-image-inspired",
+    "whole-woodland-nature",
+    "monochrome-signal"
+  ],
+  "credits": "Original built-in image_gen artwork. Artistic gel-band intensity imagery, not real experimental images, profiles, measurements or validated simulation.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Whole familiar nature forms as flat opaque grey matrix images with sparse staggered soft white bands in distinct lanes. Exact prompts retained, no external image inputs.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}
