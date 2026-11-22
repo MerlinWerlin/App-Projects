@@ -1,0 +1,19 @@
+{
+  "theme": "c-doppler-phantasm",
+  "recipe": [
+    "arch",
+    "cDopplerVault",
+    "cDopplerEchoes",
+    "beads",
+    "leaf",
+    "column",
+    "ticket"
+  ],
+  "art": {
+    "cDopplerVault": "M 6 80 C 10 28 38 14 57 23 Q 83 26 94 79 L 81 83 C 74 54 65 46 54 56 Q 48 67 42 75 Q 24 58 16 84 Z M 21 61 Q 22 39 36 37 Q 49 39 44 54 Q 36 65 21 61 Z M 56 43 Q 61 33 72 41 Q 79 50 73 57 Q 61 58 56 43 Z M 24 24 Q 52 4 76 24",
+    "cDopplerEchoes": "M 16 13 Q 50 28 84 13 M 12 24 Q 50 43 88 24 M 9 38 Q 50 59 91 38 M 7 54 Q 50 75 93 54 M 5 72 Q 50 94 95 72 M 20 29 Q 28 27 32 35 Q 35 42 27 45 M 64 49 Q 74 44 78 53 Q 82 61 73 65"
+  },
+  "direction": "Echo vault with unequal anechoic windows and curved scan paths; arch bezel, bead markers/leaf hands, echo-column charge gauge and ticket calendar.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms only. All raster imagery is fictional and number-free.",
+  "registryIntegration": "Coordinator integrates this original data-only descriptor."
+}
