@@ -52,7 +52,7 @@
   "sharedRuntimeChanged": false,
   "published": false,
   "deviceValidation": false,
-  "registryIntegration": "Coordinator pending",
+  "registryIntegration": "Coordinator import pending; approved C30-only face correction ready",
   "ornamentParsed": true,
   "nativeRendererSource": {
     "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
@@ -118,7 +118,7 @@
   "visualReview": {
     "fiveArtworks": "Viewed all five full selected images together and actual encoded85px. Five distinct plant silhouettes: five-lobed fig, round peltate nasturtium, three-leaf heart-shaped linden twig, elongated curved hosta and paired ginkgo fans. Five complete different wildlife photographs remain recognizable within those leaves. Green/straw continuous photographic tones with normal veins across bird/body/shell/wings establish intrinsic tissue without decal/photo rectangle, ink hatch, metal or glass. All five art originals are independent first-generation outputs; no artwork edits or near-duplicate fig portraits. Coordinator accepted actual first fig/whole-robin/full170/85 and six-neighbor material distinction before expansion.",
     "wallpaper": "Viewed all three actual encoded1290x2796,1179x2556 and750x1334 crops. Coherent own-five-reference leaf still life followed by one35percent own-scene pullback/four own-art supports. Every carrier lobe, petiole, full linden twig, hosta tip and two ginkgo fans retained with margins; each complete pictured animal remains inside its leaf and unobscured. Quiet warm cream upper and lower fields, soft contact shadows confined to small arrangement. No separate physical animals or leaf-shaped creatures. Ten own reference uses/six distinct images and one unselected original scene hash verified.",
-    "native": "Viewed all nine actual coordinator renderer previews with current serif-corrected sourceSHAd222a8f3b5322b3787769d9fde15f5aec22782433bed9c376b6665e8b8c493c7. Authored whole fig leaf, small perched robin and continuing veins in larger fields; petal dial/ray marks/leaf hands, column battery and folio calendar. Dedicated small open natural lobed-leaf/vein fragment sits quietly in Clockmedium and Calendar headers, no miniature portrait or surrounding plate. Values/dates readable; today-number visually centred in Windows SVG. All nine change with live inputs; battery null/0/100 and ornament roundtrip pass. Preview evidence, not installed-device qualification.",
+    "native": "Viewed all nine refreshed actual coordinator SVG previews after the approved C30-only petal-to-rounded-square face change. Whole fig leaf, perched robin, continuing veins, ray marks, leaf hands, column battery, folio calendar and small open natural leaf/vein header ornament are unchanged. Rounded-square face also gives today dates a complete filled backing. Actual current small Calendar SVG reproduced byte-for-byte; all31January dates plus exact22November at1x/2x/4x pass actual filled-contour alpha96/128 masks (96cases), with original12pt date font. Nine changing live layouts, battery null/0/100 and ornament roundtrip pass. Windows Georgia SVG and layout review, not Apple New York or installed-device qualification.",
     "roundedArtworkCorners": "Viewed all five actual encoded Artwork tiles on real app gradients with Fit6percent inset and conservative20percent rounded mask. All30Cthemes/150artworks retain every visible alpha16 pixel. Explicit900within1024 whole-source fit gives this large-leaf set extra quiet cream margins, while all five pictured animals remain readable. No original raster asset changed by review. UI layout simulation, not installed-device proof."
   },
   "ownerSteeringReview": "Recognizable real Nature. Whole photographic robin/frog/squirrel/snail/butterfly images inside intrinsic green/straw pigment of five distinct fig/nasturtium/linden/hosta/ginkgo plant carriers. Natural veins continue across images; quiet cream Artwork corners and small natural open leaf/vein native fragment. Artistic digital chlorotype interpretation, not an authentic physical print or measured plant response.",
@@ -178,5 +178,20 @@
     "creativeCodeEditing": false,
     "rawAlphaPreserved": true
   },
-  "scope": "Actual source and encoded pack validation, current coordinator SVG previews and rounded-layout simulation. No installed-device claim."
+  "scope": "Actual source and encoded pack validation, current coordinator SVG previews and rounded-layout simulation. No installed-device claim.",
+  "calendarFilledContourReview": {
+    "faceBefore": "petal",
+    "faceAfter": "square",
+    "font": "Georgia,serif",
+    "fontSize": 12,
+    "actualCurrentSvgReproduced": true,
+    "caseCount": 96,
+    "allAlpha96Inside": true,
+    "allAlpha128Inside": true,
+    "maxWeightedInkOutsidePercent": 0.005203385471255755,
+    "protectedFileCount": 30,
+    "allProtectedHashesUnchanged": true,
+    "heroDetailOrnamentUnchanged": true,
+    "method": "Isolated exact current today text and actual filled marker from coordinator SVG; original coordinates and integer ROI retain pixel phase. Jan1-31 plus exact Nov22 at1x/2x/4x; alpha96 and128 core masks. Windows SVG proof, not Apple New York or device qualification."
+  }
 }
