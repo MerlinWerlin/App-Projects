@@ -1,0 +1,10 @@
+{
+  "requestedSubject": "hare-gorse, exact original prompt retained unchanged; incorrect five-petaled gorse wording was in that prompt.",
+  "selectionLabel": "Hare and Thorn",
+  "reason": "Actual secondary sprig has generic five-petal thorn blossoms. Do not claim it is botanical gorse: RHS and WoodlandTrust describe gorse flowers as pea-like. This is a selection-label clarification only, no image or prompt edit. Future standalone gorse artwork, if gate passes, must explicitly use pea-shaped flowers and spiny stems.",
+  "primaryReferences": [
+    "https://www.rhs.org.uk/plants/18575/ulex-europaeus/details",
+    "https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/plants/wild-flowers/gorse/"
+  ],
+  "rawSha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286"
+}

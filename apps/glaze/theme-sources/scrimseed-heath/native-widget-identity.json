@@ -1,0 +1,18 @@
+{
+  "themeId": "scrimseed-heath",
+  "recipe": [
+    "oval",
+    "scrimHare",
+    "scrimCuts",
+    "cut",
+    "needle",
+    "trail",
+    "folio"
+  ],
+  "art": {
+    "scrimHare": "M 37 45 Q 29 32 40 26 L 38 8 Q 41 3 45 9 L 48 25 L 53 8 Q 58 3 59 10 L 56 30 Q 66 35 66 44 L 74 50 L 67 55 Q 61 57 57 50 Q 61 69 53 77 L 70 79 L 72 84 L 46 85 Q 27 87 23 75 Q 15 62 24 50 Q 29 44 37 45 M 57 39 L 58 40 M 58 52 L 52 68 L 60 71 M 35 63 Q 45 60 49 72 L 43 82 M 24 65 Q 12 59 12 69 Q 11 76 23 76 M 73 83 L 87 48 M 81 65 L 92 61 M 84 57 L 77 50",
+    "scrimCuts": "M 16 24 L 28 15 M 20 32 L 35 20 M 26 40 L 42 27 M 35 45 L 49 34 M 44 54 L 57 43 M 48 63 L 64 50 M 53 72 L 72 58 M 61 79 L 78 66 M 30 18 L 37 29 M 39 31 L 47 43 M 51 48 L 60 61 M 65 63 L 72 74"
+  },
+  "ornament": "M 24 83 Q 38 64 52 28 M 40 57 L 25 47 M 45 45 L 61 36 M 33 69 L 44 73 M 25 47 L 28 37 M 61 36 L 68 31 M 37 50 L 42 45 M 35 54 L 40 49 M 33 58 L 38 53",
+  "direction": "Whole natural European hare in shallow solid vegetable-ivory relief, two long ears, folded hindquarters, complete paws/tail beside a short gorse twig; black ink-filled incision details. Oval clock contour echoes polished seed-ivory, cut hour marks and needle hands reference incision tools, trail battery and folio calendar. Compact companion is one short open gorse fork with three small engraved hatch ends, no hare, oval medallion or dense fur field. Art-selected clock contour; retain shipped calendar date/highlight and identity-outline behavior."
+}

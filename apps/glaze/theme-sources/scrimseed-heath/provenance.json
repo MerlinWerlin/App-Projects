@@ -1,0 +1,188 @@
+{
+  "theme": "scrimseed-heath",
+  "created": "2026-11-23",
+  "lane": "B",
+  "medium": "Scrimshaw-inspired black ink held in fine hand-incised grooves and crossed short hatches on shaped polished tagua vegetable-ivory low relief",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "SCRIMSEED HEATH, Glaze Nature. Use case: stylized-concept. ONE original1290x2796 VERY TALL PORTRAIT PHONE WALLPAPER, aspect ratio about0.4614. ONE coherent familiar HEATHLAND EDGE physically hand-carved in shallow solid warm cream TAGUA VEGETABLE-IVORY with matte BLACK INK held in crisp shallow hand-incised V-grooves, controlled short parallel/crossed hatch clusters and sparse broad curved anatomical cuts. Same smooth continuous warm ivory faces, soft hand polish, tiny seed pores and rounded carved sidewalls as OWN references, many broad ivory fields. INPUT1 own accepted first HARE AND THORN is animal/material reference (its tiny five-petal blooms are generic thornflowers, do NOT call/copy those as gorse). INPUT2 own selected true GORSE is plant/material reference; PEA-shaped flowers with broad banner/lateral wings/folded keel and sharp spines. INPUT3 own selected SNIPE is bird/material reference. Integrate into ONE coherent original natural composition, no collage/contact sheet. A whole natural hare crouches low-LEFT, long whole ears and all coherent paws/tail visible; a whole natural snipe stands at lower-RIGHT slightly behind hare, long straight bill points inward/left, two whole slender legs/toes and full tail. A tall slender asymmetrical GORSE branch rises behind toward upper-right with THREE unmistakable PEA-FLOWERS (banner,wing,foldedkeel), two buds and sharp needle spines, not radial five-petal blossoms. Two slim sedge blades and a small seedhead rise at left. A low irregular ivory heath-bank lip with restrained short incised grass strokes visually connects fauna, no oval/rectangular slab, enclosing border/medallion or display base. Entire organisms/plants/bank literally carved seed-ivory, no real fur/feathers/scales/plant tissue underneath. Short black ink-filled hatch groups follow harefur/birdfeather/flowerfold directions and remain materially visible, not sparse sinuous horsehair trails, flat predominantly-black scratchboard silhouettes, paint/ink on paper, woodgrain pyrography, grey graphite emboss, porcelain glaze, eggshell chips, nacre/metal/gems or plastic. Background quiet UNIFORM warm UMBER #665446, very subtle matte texture only, no busy pattern/photographic scenery. Fuller/larger TALL composition spans about82to88percent WIDTH and60to64percent HEIGHT, from roughly25percent to87percent canvasheight. Substantial readable hare and snipe, tall gorse gives real vertical presence, an airy irregular open natural scene rather than an enclosing arch. All ears/bill/toes/tails/petals/keels/spines/buds/sedge/groundlip ends COMPLETELY inside real6to9percent SIDE margins and12percent BOTTOM margin; no clipped extremities. Upper22percent quiet for icons. No tiny island in excessive empty border and no giant cropped full-frame creature. Soft diffuse raking studio light reveals shallow solid carving and recessed dark grooves; no background cast shadow/glow/halo. No letters/numbers/text, dates/time/battery/weather readings, clock faces, UI/phone mockup, border/logo/signature. Deliver only finished tall wallpaper.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.3bdb72a5.png",
+      "sourceSha256": "3bdb72a5d8f6e1ca81985f7c88260e636a7ad07b3735057ff390e12c04423579",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "948972c53a8693131954ee7c973a27475831da4f30d1c881a89b71fd4d175059",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "hare-gorse",
+          "file": "sources/hare-gorse.b636064f.png",
+          "sha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        },
+        {
+          "order": 2,
+          "id": "gorse-bloom",
+          "file": "sources/gorse-bloom.797787b2.png",
+          "sha256": "797787b241e1a6727adfd319e6256ede25d6f00dca4344b06b923948af014108",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        },
+        {
+          "order": 3,
+          "id": "snipe-sedge",
+          "file": "sources/snipe-sedge.846e498a.png",
+          "sha256": "846e498a6e29e3a4d57f80b47823431bcfe16c144d1a2fa1f64cf6945104c00f",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+    },
+    {
+      "id": "hare-gorse",
+      "prompt": "SCRIMSEED HEATH, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL heathland fauna and gorse with coherent natural anatomy, natural proportions and readable WHOLE silhouette FIRST. A tangible expertly hand-carved shallow SOLID TAGUA VEGETABLE-IVORY relief object with BLACK INK-FILLED HAND-INCISIONS, an original scrimshaw-inspired physical process. Material is hard palm-SEED ivory, NOT animal ivory/bone and NOT ceramic. Warm cream/ivory smooth continuous solid faces, very fine natural ivory seed pores, restrained satin hand-polish, thin2to4mm carved thickness visible at outer sidewalls. A few tiny natural brown seed-rind slivers along TWO short side-cut lips only, not an enclosing brown frame or speckles. Main organism is carved EXACTLY to its contour, no oval seed/medallion behind it. Graphic dark details are literal crisp shallow incised V-GROOVES rubbed with matte black ink: controlled short parallel cut-hatches, a few crossed hatch patches and sparse broader curved black cut-grooves emphasize anatomy. Tiny recessed edge shadows and clean carved shoulders around ink grooves, no painted brush strokes. Broad ivory negative fields remain, no all-over engraved ornament or mechanical patterns. Hatches about3to5px wide at1024 and broad contour cuts5to7px, physically visible and readable at85, not microdetail dust. LOW RELIEF natural whole form, no inflated toy volume, smooth molded plastic/resin, glazed porcelain/china/pierced holes, plaster, paper/graphite emboss, flat ink print, charred/burned woodgrain, eggshell/chip/crackle mosaic, nacre/enamel/metal inlay/gems. No real fur/feathers/skin hidden underneath, every part is carved seed-ivory; fur/feather/leaf detail ONLY black ink-filled incisions in continuous ivory faces. Natural modest eye is tiny recessed black ink point, not glossy glass bead or cartoon eye. Soft raking diffuse studio light makes carved sidewalls/ink cuts visible without a cast background shadow. No engraving of numbers/letters or copied historic motifs. Whole organism in central64percent with18percent genuine empty ALPHA every side, all extremities whole; open anatomical/branch gaps true alpha. No backing plaque/rectangle/hoop/frame/display stand, pin/clasp/bail/jewellery mount, ground/scenery/platform, halo/glow/shadow, text/UI/live clock/date/battery/weather values, logo/signature. FIRST MATERIAL SAMPLE: ONE whole natural EUROPEAN HARE crouches calmly looking RIGHT, long slender face with small pointed muzzle/nose, modest tiny normal eye, TWO long whole ears one upright and one gently laid back, large muscular folded hindquarters, exactly FOUR coherent paws (one far front paw partly behind near front paw), complete short raised white tail at left. Natural lean hare, not cute round bunny/plush toy, no costume or smile. Solid ivory head/ears/body/legs show shallow sculpted anatomical planes; short black INCISED hatches run with fur direction in3to5 clearly bounded natural cheek/neck/shoulder/flank areas, many broad smooth ivory fields remain, a few longer black incisions mark ear interiors and folded hind-leg joint. Show subtle thin carved sidewalls at belly/paw/ear edges, not a flat paper cutout. One short nearby GORSE twig fork with THREE sharp whole spines and TWO small five-petal ivory blossoms at lower-right, all carved seed-ivory with black incised petal lines, no ground. All ears/muzzle/paws/tail/flower/spine/twig tips whole within generous alpha. No antlers, grass-snake, bird, seed shell/vessel, geometric pattern or ordinary porcelain statue.",
+      "tool": "built-in image_gen",
+      "source": "sources/hare-gorse.b636064f.png",
+      "sourceSha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hare-gorse.d71965dd.png",
+      "sha256": "d71965ddf779058232d4a2f29eb5b11cbd52075c2cdfe4b762c08bccec5cc1c8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "snipe-sedge",
+      "prompt": "SCRIMSEED HEATH, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL heathland fauna and gorse with coherent natural anatomy, natural proportions and readable WHOLE silhouette FIRST. A tangible expertly hand-carved shallow SOLID TAGUA VEGETABLE-IVORY relief object with BLACK INK-FILLED HAND-INCISIONS, an original scrimshaw-inspired physical process. Material is hard palm-SEED ivory, NOT animal ivory/bone and NOT ceramic. Warm cream/ivory smooth continuous solid faces, very fine natural ivory seed pores, restrained satin hand-polish, thin2to4mm carved thickness visible at outer sidewalls. A few tiny natural brown seed-rind slivers along TWO short side-cut lips only, not an enclosing brown frame or speckles. Main organism is carved EXACTLY to its contour, no oval seed/medallion behind it. Graphic dark details are literal crisp shallow incised V-GROOVES rubbed with matte black ink: controlled short parallel cut-hatches, a few crossed hatch patches and sparse broader curved black cut-grooves emphasize anatomy. Tiny recessed edge shadows and clean carved shoulders around ink grooves, no painted brush strokes. Broad ivory negative fields remain, no all-over engraved ornament or mechanical patterns. Hatches about3to5px wide at1024 and broad contour cuts5to7px, physically visible and readable at85, not microdetail dust. LOW RELIEF natural whole form, no inflated toy volume, smooth molded plastic/resin, glazed porcelain/china/pierced holes, plaster, paper/graphite emboss, flat ink print, charred/burned woodgrain, eggshell/chip/crackle mosaic, nacre/enamel/metal inlay/gems. No real fur/feathers/skin hidden underneath, every part is carved seed-ivory; fur/feather/leaf detail ONLY black ink-filled incisions in continuous ivory faces. Natural modest eye is tiny recessed black ink point, not glossy glass bead or cartoon eye. Soft raking diffuse studio light makes carved sidewalls/ink cuts visible without a cast background shadow. No engraving of numbers/letters or copied historic motifs. Whole organism in central64percent with18percent genuine empty ALPHA every side, all extremities whole; open anatomical/branch gaps true alpha. No backing plaque/rectangle/hoop/frame/display stand, pin/clasp/bail/jewellery mount, ground/scenery/platform, halo/glow/shadow, text/UI/live clock/date/battery/weather values, logo/signature. ONE whole natural COMMON SNIPE standing in quiet alert LEFT-FACING side profile. Compact tapering oval bird body, short slightly flexed neck, modest natural head/eye, exceptionally LONG STRAIGHT SLENDER bill aboutheadlength2times, short tail, exactly TWO coherent long slender legs with whole delicate front/back toes. Natural folded wing with its feather directions represented entirely by many SHORT DARK INCISED CUT-HATCHES in continuous warm cream tagua face, 3to5 clear hatch groups on wing/neck/flank and a few broader cut-grooves as anatomical contours; broad ivory highlight fields. Carved shallow cheek/body/leg planes and rounded thin sidewalls make a solid artisan relief, not an ink picture on paper. Two short nearby SEDGE blades and one small seedhead, all solid ivory with dark incised vein lines, no ground. Whole billtip, twofeet/toes, tail and sedge tips complete; no long rabbit ears, extra legs, flying wings, plaque or scenery. INPUT1 is OWN ACCEPTED FIRST HARE, MATERIAL ONLY: retain smooth continuous solid warm cream TAGUA SEED-IVORY faces, subtle carved rounded cut sidewalls/low relief and discrete dark INK-FILLED HAND-INCISIONS/short hatch clusters, with ample broad ivory fields. NOT flat black scratchboard/cut-paper negative, grey graphite print, clay with sparse sinuous horsehair trails, porcelain glaze, eggshell fragments or actual animal skin. New requested subject/pose/composition separately generated; do not copy/add the hare, ears, paws, tail or its generic five-petal flowering thorn sprig. ALL details are crisp shallow incised black cuts in continuous carved ivory, not actual fur/feathers/scales/plant tissue or painted brush strokes. Modest tiny black ink recess eyes, no glossy bead/chibi eye. Whole subject/extremities, true alpha outside/open anatomy gaps, no base/frame/shadow/text/UI. ",
+      "tool": "built-in image_gen",
+      "source": "sources/snipe-sedge.846e498a.png",
+      "sourceSha256": "846e498a6e29e3a4d57f80b47823431bcfe16c144d1a2fa1f64cf6945104c00f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/snipe-sedge.c89b82b5.png",
+      "sha256": "c89b82b50e1cc6c1f0b8934001e1c77d0c1c12e58c893b4c6be99ef62e163494",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "hare-gorse",
+          "file": "sources/hare-gorse.b636064f.png",
+          "sha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/snipe-sedge-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/snipe-sedge-exact-tool-result.json"
+    },
+    {
+      "id": "adder-heather",
+      "prompt": "SCRIMSEED HEATH, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL heathland fauna and gorse with coherent natural anatomy, natural proportions and readable WHOLE silhouette FIRST. A tangible expertly hand-carved shallow SOLID TAGUA VEGETABLE-IVORY relief object with BLACK INK-FILLED HAND-INCISIONS, an original scrimshaw-inspired physical process. Material is hard palm-SEED ivory, NOT animal ivory/bone and NOT ceramic. Warm cream/ivory smooth continuous solid faces, very fine natural ivory seed pores, restrained satin hand-polish, thin2to4mm carved thickness visible at outer sidewalls. A few tiny natural brown seed-rind slivers along TWO short side-cut lips only, not an enclosing brown frame or speckles. Main organism is carved EXACTLY to its contour, no oval seed/medallion behind it. Graphic dark details are literal crisp shallow incised V-GROOVES rubbed with matte black ink: controlled short parallel cut-hatches, a few crossed hatch patches and sparse broader curved black cut-grooves emphasize anatomy. Tiny recessed edge shadows and clean carved shoulders around ink grooves, no painted brush strokes. Broad ivory negative fields remain, no all-over engraved ornament or mechanical patterns. Hatches about3to5px wide at1024 and broad contour cuts5to7px, physically visible and readable at85, not microdetail dust. LOW RELIEF natural whole form, no inflated toy volume, smooth molded plastic/resin, glazed porcelain/china/pierced holes, plaster, paper/graphite emboss, flat ink print, charred/burned woodgrain, eggshell/chip/crackle mosaic, nacre/enamel/metal inlay/gems. No real fur/feathers/skin hidden underneath, every part is carved seed-ivory; fur/feather/leaf detail ONLY black ink-filled incisions in continuous ivory faces. Natural modest eye is tiny recessed black ink point, not glossy glass bead or cartoon eye. Soft raking diffuse studio light makes carved sidewalls/ink cuts visible without a cast background shadow. No engraving of numbers/letters or copied historic motifs. Whole organism in central64percent with18percent genuine empty ALPHA every side, all extremities whole; open anatomical/branch gaps true alpha. No backing plaque/rectangle/hoop/frame/display stand, pin/clasp/bail/jewellery mount, ground/scenery/platform, halo/glow/shadow, text/UI/live clock/date/battery/weather values, logo/signature. ONE whole recognizable natural EUROPEAN ADDER loosely curled in a broad open double-S with two spacious true-alpha gaps, small triangular viper head raised upper-left, natural modest tiny dark eye, closed slim mouth, continuous coherent tapering stocky body ending in a whole thin pointed tail lower-right. No legs/horns/cobra hood, open fangs, tongue, dragon wings or emblem ring. Body is continuous solid warm cream TAGUA relief with a CLEAR MATTE BLACK INKED INCISED ZIGZAG groove running along dorsal center, plus controlled short oblique/crossed hatch clusters in3to5 natural body areas. Show literal shallow carved rounded sidewalls and recessed crisp cut shoulders, no real wet reptile skin/scales, no fish-leather scale pockets/sewn seams or mosaic chips. A short separate tiny BELL-HEATHER sprig with TWO narrow needle-leaf forks and THREE little whole URN/BELL-SHAPED blossoms, solid ivory with fine black incised mouths/veins; not radial five-petal blossoms. Whole head/tail/flower/leaf tips inside generous alpha. INPUT1 is OWN ACCEPTED FIRST HARE, MATERIAL ONLY: retain smooth continuous solid warm cream TAGUA SEED-IVORY faces, subtle carved rounded cut sidewalls/low relief and discrete dark INK-FILLED HAND-INCISIONS/short hatch clusters, with ample broad ivory fields. NOT flat black scratchboard/cut-paper negative, grey graphite print, clay with sparse sinuous horsehair trails, porcelain glaze, eggshell fragments or actual animal skin. New requested subject/pose/composition separately generated; do not copy/add the hare, ears, paws, tail or its generic five-petal flowering thorn sprig. ALL details are crisp shallow incised black cuts in continuous carved ivory, not actual fur/feathers/scales/plant tissue or painted brush strokes. Modest tiny black ink recess eyes, no glossy bead/chibi eye. Whole subject/extremities, true alpha outside/open anatomy gaps, no base/frame/shadow/text/UI. ",
+      "tool": "built-in image_gen",
+      "source": "sources/adder-heather.99edb415.png",
+      "sourceSha256": "99edb4153291dae8ac3c6ab6c9e2f4e4deda119d74c54e1436b04edd4c841c28",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/adder-heather.56f10ff7.png",
+      "sha256": "56f10ff78a1feccef4a5f52c9e79d9b0b1e7036fcbcf6c9e3b8047539aeebf9e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "hare-gorse",
+          "file": "sources/hare-gorse.b636064f.png",
+          "sha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/adder-heather-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/adder-heather-exact-tool-result.json"
+    },
+    {
+      "id": "gorse-bloom",
+      "prompt": "SCRIMSEED HEATH, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL heathland fauna and gorse with coherent natural anatomy, natural proportions and readable WHOLE silhouette FIRST. A tangible expertly hand-carved shallow SOLID TAGUA VEGETABLE-IVORY relief object with BLACK INK-FILLED HAND-INCISIONS, an original scrimshaw-inspired physical process. Material is hard palm-SEED ivory, NOT animal ivory/bone and NOT ceramic. Warm cream/ivory smooth continuous solid faces, very fine natural ivory seed pores, restrained satin hand-polish, thin2to4mm carved thickness visible at outer sidewalls. A few tiny natural brown seed-rind slivers along TWO short side-cut lips only, not an enclosing brown frame or speckles. Main organism is carved EXACTLY to its contour, no oval seed/medallion behind it. Graphic dark details are literal crisp shallow incised V-GROOVES rubbed with matte black ink: controlled short parallel cut-hatches, a few crossed hatch patches and sparse broader curved black cut-grooves emphasize anatomy. Tiny recessed edge shadows and clean carved shoulders around ink grooves, no painted brush strokes. Broad ivory negative fields remain, no all-over engraved ornament or mechanical patterns. Hatches about3to5px wide at1024 and broad contour cuts5to7px, physically visible and readable at85, not microdetail dust. LOW RELIEF natural whole form, no inflated toy volume, smooth molded plastic/resin, glazed porcelain/china/pierced holes, plaster, paper/graphite emboss, flat ink print, charred/burned woodgrain, eggshell/chip/crackle mosaic, nacre/enamel/metal inlay/gems. No real fur/feathers/skin hidden underneath, every part is carved seed-ivory; fur/feather/leaf detail ONLY black ink-filled incisions in continuous ivory faces. Natural modest eye is tiny recessed black ink point, not glossy glass bead or cartoon eye. Soft raking diffuse studio light makes carved sidewalls/ink cuts visible without a cast background shadow. No engraving of numbers/letters or copied historic motifs. Whole organism in central64percent with18percent genuine empty ALPHA every side, all extremities whole; open anatomical/branch gaps true alpha. No backing plaque/rectangle/hoop/frame/display stand, pin/clasp/bail/jewellery mount, ground/scenery/platform, halo/glow/shadow, text/UI/live clock/date/battery/weather values, logo/signature. STRICT PLANTS ONLY. ONE whole recognizable COMMON GORSE flowering sprig, asymmetrical upright branching woody stem with aboutSIX sharp needle-like whole SPINES, TWO slim closed buds and THREE complete PEA-SHAPED flowers at staggered heights. CRITICAL real gorse flower structure, as a pea-family plant: each bloom has ONE broad upright rounded BANNER petal, TWO smaller lateral WING petals and a central FOLDED BOAT-SHAPED KEEL. NOT a flat radial five-petal cherry/blackthorn/dogrose flower. Entire plant hand-CARVED in solid warm cream TAGUA with smooth continuous carved petal faces, subtle shallow sidewalls, black INK-FILLED INCISION details: distinct short parallel/curved cut-hatches mark banner throat, keel folds and stem/spine junctions. Broad ivory fields, dense incision groups material-visible, not plain porcelain, paper cutout, sparse random horsehair-burn trails or natural colored plant tissue. Whole banner/wing/keel petals/buds/spines/stem ends complete in generous alpha, no pot/soil/base. NO hare/animal/bird or reference thornflowers; original plant-only composition with botanically PEA-LIKE blossoms, not radial. INPUT1 is OWN ACCEPTED FIRST HARE, MATERIAL ONLY: retain smooth continuous solid warm cream TAGUA SEED-IVORY faces, subtle carved rounded cut sidewalls/low relief and discrete dark INK-FILLED HAND-INCISIONS/short hatch clusters, with ample broad ivory fields. NOT flat black scratchboard/cut-paper negative, grey graphite print, clay with sparse sinuous horsehair trails, porcelain glaze, eggshell fragments or actual animal skin. New requested subject/pose/composition separately generated; do not copy/add the hare, ears, paws, tail or its generic five-petal flowering thorn sprig. ALL details are crisp shallow incised black cuts in continuous carved ivory, not actual fur/feathers/scales/plant tissue or painted brush strokes. Modest tiny black ink recess eyes, no glossy bead/chibi eye. Whole subject/extremities, true alpha outside/open anatomy gaps, no base/frame/shadow/text/UI. ",
+      "tool": "built-in image_gen",
+      "source": "sources/gorse-bloom.797787b2.png",
+      "sourceSha256": "797787b241e1a6727adfd319e6256ede25d6f00dca4344b06b923948af014108",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/gorse-bloom.f45f729a.png",
+      "sha256": "f45f729ae1b56c27ae1f3357731ea37b8d7133e6407f81745eb23293b9388f5e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "hare-gorse",
+          "file": "sources/hare-gorse.b636064f.png",
+          "sha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/gorse-bloom-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/gorse-bloom-exact-tool-result.json"
+    },
+    {
+      "id": "emperor-moth",
+      "prompt": "SCRIMSEED HEATH, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL heathland fauna and gorse with coherent natural anatomy, natural proportions and readable WHOLE silhouette FIRST. A tangible expertly hand-carved shallow SOLID TAGUA VEGETABLE-IVORY relief object with BLACK INK-FILLED HAND-INCISIONS, an original scrimshaw-inspired physical process. Material is hard palm-SEED ivory, NOT animal ivory/bone and NOT ceramic. Warm cream/ivory smooth continuous solid faces, very fine natural ivory seed pores, restrained satin hand-polish, thin2to4mm carved thickness visible at outer sidewalls. A few tiny natural brown seed-rind slivers along TWO short side-cut lips only, not an enclosing brown frame or speckles. Main organism is carved EXACTLY to its contour, no oval seed/medallion behind it. Graphic dark details are literal crisp shallow incised V-GROOVES rubbed with matte black ink: controlled short parallel cut-hatches, a few crossed hatch patches and sparse broader curved black cut-grooves emphasize anatomy. Tiny recessed edge shadows and clean carved shoulders around ink grooves, no painted brush strokes. Broad ivory negative fields remain, no all-over engraved ornament or mechanical patterns. Hatches about3to5px wide at1024 and broad contour cuts5to7px, physically visible and readable at85, not microdetail dust. LOW RELIEF natural whole form, no inflated toy volume, smooth molded plastic/resin, glazed porcelain/china/pierced holes, plaster, paper/graphite emboss, flat ink print, charred/burned woodgrain, eggshell/chip/crackle mosaic, nacre/enamel/metal inlay/gems. No real fur/feathers/skin hidden underneath, every part is carved seed-ivory; fur/feather/leaf detail ONLY black ink-filled incisions in continuous ivory faces. Natural modest eye is tiny recessed black ink point, not glossy glass bead or cartoon eye. Soft raking diffuse studio light makes carved sidewalls/ink cuts visible without a cast background shadow. No engraving of numbers/letters or copied historic motifs. Whole organism in central64percent with18percent genuine empty ALPHA every side, all extremities whole; open anatomical/branch gaps true alpha. No backing plaque/rectangle/hoop/frame/display stand, pin/clasp/bail/jewellery mount, ground/scenery/platform, halo/glow/shadow, text/UI/live clock/date/battery/weather values, logo/signature. ONE whole recognizable natural EMPEROR MOTH in a slightly diagonal TOP-DOWN pose with FOUR distinct complete wings spread: two broad upper triangular FOREWINGS, two smaller rounded lower HINDWINGS. One slim coherent segmented abdomen/thorax, small head with TWO whole gently feathery curved antennae represented by finely notched solid ivory stems, exactly SIX small coherent legs near body. Each of4wings has ONE natural round EYESPOT as a recessed matte dark inked incised ring with ivory center, plus restrained curved dark cut-groove bands and SHORT PARALLEL/CROSSED HAND-INCISION HATCHES following wing veins. Broad solid smooth warm cream TAGUA faces/rounded low-relief cut edges remain prominent, no actual biological membrane/fur/scales or real feathers, no black filled scratchboard silhouette, clay/carbon trails, metal/gems or porcelain glaze. Every marking is a shallow crisp black ink-filled cut in continuous seed-ivory, not printed wallpaper pattern. Natural moth silhouette, not a butterfly/badge or mechanicalclock; whole4wingtips/antennae/6smallfeet/abdomenend inside generous alpha. No leaf/flower/backing/base or extra fauna. INPUT1 is OWN ACCEPTED FIRST HARE, MATERIAL ONLY: retain smooth continuous solid warm cream TAGUA SEED-IVORY faces, subtle carved rounded cut sidewalls/low relief and discrete dark INK-FILLED HAND-INCISIONS/short hatch clusters, with ample broad ivory fields. NOT flat black scratchboard/cut-paper negative, grey graphite print, clay with sparse sinuous horsehair trails, porcelain glaze, eggshell fragments or actual animal skin. New requested subject/pose/composition separately generated; do not copy/add the hare, ears, paws, tail or its generic five-petal flowering thorn sprig. ALL details are crisp shallow incised black cuts in continuous carved ivory, not actual fur/feathers/scales/plant tissue or painted brush strokes. Modest tiny black ink recess eyes, no glossy bead/chibi eye. Whole subject/extremities, true alpha outside/open anatomy gaps, no base/frame/shadow/text/UI. ",
+      "tool": "built-in image_gen",
+      "source": "sources/emperor-moth.0fe03cd5.png",
+      "sourceSha256": "0fe03cd5355695a3611639ef4f9f0ad6621a70ceb9973d5578fea3a53ec385dd",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/emperor-moth.028df510.png",
+      "sha256": "028df510bb9417ef42b9e764597c0a7f0cef7382e75b309ce39f3e6b330b3c9d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "hare-gorse",
+          "file": "sources/hare-gorse.b636064f.png",
+          "sha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/emperor-moth-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/emperor-moth-exact-tool-result.json"
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

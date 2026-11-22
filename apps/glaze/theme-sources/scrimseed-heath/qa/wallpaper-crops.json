@@ -1,0 +1,38 @@
+{
+  "themeId": "scrimseed-heath",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.a76b49d3.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "a76b49d37695c79fc1e26c0e50f0b1e47eb0d0051f77eb02f2a411ec404221eb",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.2b0f76ab.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "2b0f76ab46611469117a357f369d5ecd6375e67b0dc48bd0849d944dfe6f122f",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.83da609b.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "83da609bb0910d8c246750b0f6a96cef997c1d55c8fe68777cb0b55c0d447fd7",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "Whole hareears/paws/tail, snipebill/toes/tail, truegorsepea-petal/spine/bud tips, sedge/grass/bank ends retained in all3actualphone variants. Fuller tall scene, no actual clipping or automatic pullback."
+  }
+}

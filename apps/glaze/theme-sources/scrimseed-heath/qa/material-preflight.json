@@ -1,0 +1,55 @@
+{
+  "id": "scrimseed-heath",
+  "lane": "B41",
+  "category": "Nature",
+  "status": "Firstb636064f accepted unchanged by coordinator actual material gate; expandingfour separately and taller/fullWP from own first reference only.",
+  "process": "Scrimshaw-inspired black ink held in fine hand-incised grooves and crossed short hatches on shaped polished tagua vegetable-ivory low relief",
+  "subjects": [
+    "hare-gorse",
+    "snipe-sedge",
+    "adder-heather",
+    "gorse-bloom",
+    "emperor-moth"
+  ],
+  "world": "Heathland wildlife and gorse carved in vegetable ivory with black ink held in fine hand-incised grooves.",
+  "baselineSearch": "Exact scrimshaw/tagua/vegetable-ivory and ID absent across current root source/catalogue text plus139historical baseline manifests; broad ivory/porcelain/print/engraving/pyrography neighbors positive and retained. Actual24selector images across ThistleEtch3/5,CallaObscura3/5,TypecaseIvory3/5, historical vs accepted-unpublished explicit. No currentliveR2 claim.",
+  "neighbors": [
+    "B1PorcelainUmbra white fired pierced porcelain/through holes, no holes/glaze here.",
+    "B7Ghostpress graphite rag-paper dry emboss, no paper fibres or grey graphite smear.",
+    "B12Chargrain solid wood pyrographic burns, no woodgrain/burnt halo.",
+    "B28Silverthorn black zinc with flush bright silver inlay, no inverse black ground or metallic glints.",
+    "B37Shellspeck actual hare: broken opaque eggshell chips/black lacquer seams, no fragment mosaic/speckles here.",
+    "B4BurrHinterland fine mezzotint ink prints, no flat paper/impression here.",
+    "ThistleEtch actual botanical flower/leaf/bee/goldfinch illustrations; no verified print technique inferred from its name.",
+    "CallaObscura smooth flower/pearl/nacre imagery, no pearls/glossy ceramic.",
+    "TypecaseIvory letterpress blocks, no type or printing equipment."
+  ],
+  "technicalReferences": [
+    {
+      "url": "https://www.si.edu/object/scrimshaw%3Achndm_a-a-813",
+      "scope": "Primary Smithsonian object catalogue: incised surface and India ink, cross-hatched band. Technique TEXT only, no historic object image/motif input. Proposed material is plant seed ivory, not animal ivory."
+    },
+    {
+      "url": "https://england.prm.ox.ac.uk/englishness-Scrimshaw-at-the-PRM.html",
+      "scope": "Primary PittRivers museum technique text: engraving and dark pigment/oil/ink. No specimen imagery or motifs input."
+    },
+    {
+      "url": "https://cameo.mfa.org/wiki/Vegetable_ivory",
+      "scope": "Primary MFA conservation material text: hard dried palm seed endosperm used for small carved objects, brown exterior/ivory interior. Text only."
+    },
+    {
+      "url": "https://www.fao.org/4/v0784e/v0784e.pdf",
+      "scope": "Primary FAO tagua species/material reference. Text only; no diagrams/photos input."
+    }
+  ],
+  "cornerCompanion": "Whole natural European hare in shallow solid vegetable-ivory relief, two long ears, folded hindquarters, complete paws/tail beside a short gorse twig; black ink-filled incision details. Oval clock contour echoes polished seed-ivory, cut hour marks and needle hands reference incision tools, trail battery and folio calendar. Compact companion is one short open gorse fork with three small engraved hatch ends, no hare, oval medallion or dense fur field. Art-selected clock contour; retain shipped calendar date/highlight and identity-outline behavior.",
+  "firstGateCriterion": "Black incised cut-grooves and broad carved solid ivory sidewalls must remain apparent at85; reject if ordinary porcelain/rubber animal, eggshell mosaic, wood pyrography or flat black ink printed on paper. Natural whole fauna first. One first material sample only, then hold four/WP for actual verdict.",
+  "currentCalendarScope": "Retain shipped calendar/date/highlight/identity-outline code. Historical Claude date-containment experiments are not design gates. Coordinator owns shared runtime.",
+  "firstSourceSha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+  "subjectLabelClarification": "scrim-generation/subject-label-clarification.json",
+  "selectedApprovedSourceSha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+  "materialApproval": "scrim-generation/material-approval.json",
+  "executedCreativeCorrectionCount": 0,
+  "additionalActualNeighborEvidence": "../outputs/scrimseed-heath-additional-neighbors.json",
+  "additionalActualNeighborImages": 10
+}
