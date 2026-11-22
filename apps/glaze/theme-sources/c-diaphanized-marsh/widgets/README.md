@@ -1,0 +1,1 @@
+Five independent complete real freshwater artworks, labelled in widget-options.json for small and large Artwork. RGBA1024-square, whole original proportionally contained without creative edits. Exact selected raw hashes and two own-study anatomy reference hashes in provenance.json.

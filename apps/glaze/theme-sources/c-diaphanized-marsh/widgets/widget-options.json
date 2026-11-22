@@ -1,0 +1,67 @@
+[
+  {
+    "id": "stickleback",
+    "kind": "art",
+    "image": "stickleback.c0d821f608a7.png",
+    "sha256": "c0d821f608a7dd520436b6be5cf7166ba5cae8b2e2e1d22f0f851dac7ae4adc2",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Three-spined Stickleback"
+  },
+  {
+    "id": "european-eel",
+    "kind": "art",
+    "image": "european-eel.184fddac01a6.png",
+    "sha256": "184fddac01a6c27e407bc2dfc5dead483d762566390e261b82f6dee2a89fdd57",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "European Eel"
+  },
+  {
+    "id": "smooth-newt",
+    "kind": "art",
+    "image": "smooth-newt.e2d8552bab82.png",
+    "sha256": "e2d8552bab82b05a86a8d865bd35b494ceeb9ce98a47bfe66ea9b15fb0d7b253",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Smooth Newt"
+  },
+  {
+    "id": "common-frog",
+    "kind": "art",
+    "image": "common-frog.7e81676fc236.png",
+    "sha256": "7e81676fc2366997f687384a07681a4285cabcfa36bd36f621e1f490cc1a5075",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Crouched Common Frog"
+  },
+  {
+    "id": "pond-turtle",
+    "kind": "art",
+    "image": "pond-turtle.c9555660fef0.png",
+    "sha256": "c9555660fef09d7fccad67a98c48534f1d136c32033c5202a859ffcac38aa76e",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "European Pond Turtle"
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "selected": false,
+  "reason": "Initial habitat too broad; reed tips and outer turtle tail need more breathing room across phone crops.",
+  "sourceImage": "intermediate-wallpaper-framing-study/first-wide-scene-unselected.4e9cdc694d56.png",
+  "sourceSha256": "4e9cdc694d5653b05511d8751ec154bf3363aac7f03befa64abbb0fb49f0e6bb",
+  "prompt": "ONE original opaque portrait1290x2796 phone wallpaper for GLAZE ROSEFIN MARSH. A beautiful quiet freshwater natural-history study, REAL recognizable stickleback, eel, newt, crouched frog and European pond turtle in ONE coherent gently connected marsh-bank vignette. Use our FIVE own images ONLY for their exact individual animal identities, faint continuous tissue and selective anatomical stain process. IMAGE1=whole three-spined stickleback, rose spine/fin rays and tiny blue supports;IMAGE2=whole eel in open S with continuous fin fringe and no pelvic fins;IMAGE3=whole smooth newt with FOUR complete limbs and long intact tapered tail;IMAGE4=whole crouched frog with folded long hind legs, short backbone and NO encircling curved rib cage;IMAGE5=whole flattened-oval pond turtle with FOUR webbed feet, extended head and long whole tail. Preserve each familiar natural silhouette and correct limbs, no added animals or duplicated body parts. Same artistic CLEARED-AND-DOUBLE-STAINED specimen photography throughout: rose/magenta bone, LOCALIZED blue cartilage at joints, faint continuous neutral pale-amber clear tissue, ordinary photographic illumination. Not X-ray noise, fluorescent glow, glass/resin/gummy figures, metal, mechanical fantasy animals, dissection, organs, blood, wounds or diagrams. Make the study a calm imaginary marsh vignette rather than a laboratory display: a FEW low-contrast slate/ivory natural reed blades and smooth small water-margin forms gently connect the animals, without trays/jars/frames or five separate panels. Botanical details remain subdued natural tissue, never given fake bones. VERY DISTANT SMALL GROUP with every animal and reed endpoint entirely within CENTRAL52PERCENT of width (x24to76percent) and BETWEEN44AND72PERCENT of height. Stickleback above-left aroundx35/y49;newt above-right aroundx62/y51;eel gentle low open S acrossx40to64/y57to66;frog front-left aroundx37/y67;turtle front-right aroundx63/y66. Keep whole tail/fin/feet/toes/spines/head tips visible and separate, generous quiet margins. Upper42percent and bottom25percent are uninterrupted very quiet deep blue-grey #293B43/#51616A marsh atmosphere, no bright plants or objects, no busy horizon or optical clouds there. All five should feel at the same natural habitat scale with enough space to read. Safe under both tall1290x2796 and shorter750x1334 centre crops. No text, numbers, labels, anatomical captions, reading, clocks, dates, battery/weather values, icons, logo, phone/UI, border or watermark. Gentle artistic specimen interpretation, not a real specimen collection or scientific reference.",
+  "internalArtworkReferences": [
+    {
+      "id": "stickleback",
+      "sourceImage": "sources/stickleback.730e8fdc3062.png",
+      "sha256": "730e8fdc30622f159684332c1fe2ee823f0368446f51485c5c88b131fa5a0f88"
+    },
+    {
+      "id": "european-eel",
+      "sourceImage": "sources/european-eel.d8112b258109.png",
+      "sha256": "d8112b2581098c7788ee28b0246947b87b3aa9a26639f72b8da3db78582a1e3d"
+    },
+    {
+      "id": "smooth-newt",
+      "sourceImage": "sources/smooth-newt.c5ca41c685f0.png",
+      "sha256": "c5ca41c685f0e7d0ba058cd8ac44c6736494de6b857bac24270b0cff9b5d7081"
+    },
+    {
+      "id": "common-frog",
+      "sourceImage": "sources/common-frog.e854dd4bbfed.png",
+      "sha256": "e854dd4bbfed593755b75e52eb7f0f201a8d99e9c84a6971c49d6c3ed2d025e8"
+    },
+    {
+      "id": "pond-turtle",
+      "sourceImage": "sources/pond-turtle.900514152174.png",
+      "sha256": "900514152174cb7c7af535cde3c3207f632d82471a6d34b6429a6082d217b79f"
+    }
+  ],
+  "generationTool": "built-in image_gen"
+}

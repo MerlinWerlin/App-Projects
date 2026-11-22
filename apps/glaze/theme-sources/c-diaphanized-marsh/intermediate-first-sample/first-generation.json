@@ -1,0 +1,15 @@
+{
+  "selected": true,
+  "selectionStatus": "Accepted by coordinator and promoted to selected production source",
+  "sourceImage": "intermediate-first-sample/first-stickleback-pending.730e8fdc3062.png",
+  "sourceSha256": "730e8fdc30622f159684332c1fe2ee823f0368446f51485c5c88b131fa5a0f88",
+  "dimensions": [
+    1536,
+    1024
+  ],
+  "prompt": "ONE whole real three-spined STICKLEBACK, lateral profile facing right in a gentle natural swimming curve. Familiar small fish anatomy: compact pointed snout, one visible eye, narrow tail peduncle, broad fan-shaped tail, THREE separate short dorsal spines followed by a small soft dorsal fin, two natural pelvic spines and small pectoral fin. Every spine, fin ray, snout and tail tip whole. Scientific-image medium is CLEARED-AND-DOUBLE-STAINED natural-history specimen photography, not an X-ray or abstract invented creature. The real continuous fish body remains nearly transparent and very faint neutral pale-amber tissue; inside it, actual connected ossified skeletal elements are visibly dyed rose/magenta: segmented vertebral column, delicate curved ribs, jaw/skull components and fine natural fin rays. LOCALIZED blue/cyan cartilage joins occur at the appropriate small anatomical joints and fin supports; not uniform blue skin, not red/cyan doubled projection outlines. Internal anatomy stays in one exact pose with natural soft photographic gradients and delicate translucent tissue continuity. Selective tissue staining is the dominant visual identity. No hard glass shell, shiny resin, hollow glass toy, metal, foil, crystal, neon rim, electric corona, X-ray noise, spectral heat map, laser dots, fluorescent optical slices, repeated exposure, paper/ink marks or fabricated mechanical body. Restrained pale-magenta and blue anatomical details with faint neutral collagen, clean transmitted photographic light, no external glow. Whole subject well inside CENTRAL70PERCENT of1024square, ample TRUE ALPHAZERO exterior, natural transparent gaps, no rectangular haze or backdrop. No other animal, plant, jar, fluid meniscus, bubbles, specimen tray, lab tools, floor, shadow, frame, text, label, diagram, UI or readings. Recognizable real nature first. Gentle non-graphic museum-study presentation with no wounds, cutting, exposed flesh or blood. Digital artistic interpretation of whole cleared-and-stained anatomical photography, not a real specimen or diagnostic/scientific reference.",
+  "generationTool": "built-in image_gen",
+  "generationReferenceImages": [],
+  "externalVisualInputs": [],
+  "selectedSourceImage": "sources/stickleback.730e8fdc3062.png"
+}

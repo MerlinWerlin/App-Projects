@@ -1,0 +1,18 @@
+{
+  "id": "treeboa-bough",
+  "prompt": "RAGCAST CANOPY, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL rainforest flora/fauna with natural recognizable proportions and coherent anatomy FIRST. Visibly physical HAND-CAST PIGMENTED COTTON-RAG PAPER-PULP LOW RELIEF: short flattened cellulose shreds compressed into continuous dense matte fibre mats, irregular wet-deposited colour boundaries with tiny paper flecks, faint pressed mould-screen impressions in broad fields, dry torn/deckled fibrous silhouette lips. Shallow2â€“4mm cast-paper thickness, small compressed fibre clumps clearly PAPER not fuzzy wool; subtle dry uneven pulp texture throughout the subject. Natural quiet charcoal/sage/blue/cream/rose/ochre accents, no synthetic neon. No smooth clay/plastic/ceramic/wood, fluffy felt/plush/pillow, long fuzzy pile/velour, yarn/knit/tufted loops/embroidery, cork bark/moss, folded/origami paper panels, corrugated cardboard flutes, long split-straw ribbons, fibre-weaving or plaster mineral grit. No machine/costume/jewellery or abstract geometric replacement bodies, no giant cartoon eyes. Whole natural silhouette central64percent, minimum18percent true alpha margins every side; complete toes/tail/wing/leaf ends. Real exterior and limb/branch gaps alpha transparent. No background paper rectangle/backing/plaque/frame, ground/scenery/plinth, shadow/glow/halo, text, letters, numbers, date/clock/battery/weather values, UI, logo or signature. Subject TREEBOA BOUGH: one recognizable natural adult emerald tree boa draped in TWO relaxed open coils over ONE short diagonal forest bough, a single continuous coherent body with natural taper to ONE complete tail end, one broad natural snake head resting on the front coil and facing lower-left, two modest natural eyes and closed mouth. No extra heads, detached body, knot, ring/medallion, legs, costume or mechanical parts. A small pair of simple whole forest leaves beside bough end. Entire boa/bough/leaves made from DRY OPAQUE CAST PIGMENTED PAPER PULP: deep sage-green continuous compressed short cellulose mats, subtle tiny cream wet-pulp flecks following a restrained natural dorsal pattern, faint local mould-screen texture and torn/deckled fibre lips. No real scales/fur, individual cut paper scale tiles, glossy clay/plastic, wool/velvet pile, woven loops, wet translucent pellicles, grown mycelium gills or foam cells. Shallow cast-paper relief supports recognizable natural snake silhouette. Whole head, both open coils, single tail tip, bough ends and leaf tips inside generous true alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/treeboa-bough.aaef55bb.png",
+  "sourceSha256": "aaef55bbeb9af2728070d41ae11f45ba2329f436f2947ae19135078d20cb44d5",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/treeboa-bough.12882811.png",
+  "sha256": "12882811c3e25b7a087469934e4df1490c20171f4389e6d5c3e8670167dc9de7",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,78 @@
+{
+  "scope": "First material sample; actual observed material neighbor sources, no neighbor image used as generation input.",
+  "candidateGenerated": true,
+  "sources": [
+    {
+      "label": "B30 candidate tapir",
+      "medium": "Dry opaque compressed rag pulp",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-cb41bd9b-8f04-4437-9f0e-c7584871baab.png",
+      "sha256": "1621eab0480bcda779419e472cd870e27d034d683dd6eafe6dad067ceaf0af94"
+    },
+    {
+      "label": "A9 wet cellulose",
+      "medium": "Translucent amber fibrils / folds / beads",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\pellicle-shoal\\widgets\\seadragon.5743037c00cf.png",
+      "sha256": "5743037c00cf5464f7d4664b66d2c76c77d23f20960e56f224e4e1bf6a92dae2"
+    },
+    {
+      "label": "A6 mycelium",
+      "medium": "Grown fungal flesh / radiating gill pleats",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\lamellar-commons\\widgets\\bellows-pangolin.65b1496aa7dc.png",
+      "sha256": "65b1496aa7dc4fd50efa3db37395ae36193905fb63fb51a05e5b02474155d664"
+    },
+    {
+      "label": "A2 cellular foam",
+      "medium": "Large open pores / thin cell membranes",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\aerolith-choir\\widgets\\cavity-cathedral.png",
+      "sha256": "01259ac29fe8bed05ac80a49ea45fd296b7ec6dddffc3bab3a24d54903a15e38"
+    },
+    {
+      "label": "Moonmallow wool",
+      "medium": "Punchneedle loops / fuzzy upright pile",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\moonmallow\\widgets\\widget-tufted-saturn-pillow.ec801954.webp",
+      "sha256": "ec801954264974b3881ea38a313ca91e08451fb9841ea35eaca3be865f35aadb"
+    },
+    {
+      "label": "Toucan Loom wool",
+      "medium": "Tufted / twisted yarn fibres and loops",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\toucan-loom\\widgets\\widget-tufted-heliconia.9a980030.webp",
+      "sha256": "9a98003092abd56396af3614c2764ba139e2a0e40bac8421ebb7d00d24e007ad"
+    },
+    {
+      "label": "B5 velour flock",
+      "medium": "Adhesive flock pile / velour nap",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\flockquake\\widgets\\quake-aperture.31c804d2.png",
+      "sha256": "31c804d2306537d60e15d919464d2bae4e56f8a775b91d409d578aee8cca690d"
+    },
+    {
+      "label": "Cloud Atelier paper",
+      "medium": "Folded paper planes / soft cotton cloud",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\cloud-atelier\\widgets\\widget-origami-cloud-swan.b0d895ec.webp",
+      "sha256": "b0d895ec35eb02c4a03f0931259b9d67703d17d7be65a9dac997e425ba66c489"
+    },
+    {
+      "label": "B27 corrugated card",
+      "medium": "Kraft liners / coarse hollow flutes",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\tawny-owl-oak.cdd74878.png",
+      "sha256": "cdd748787bc5dda2c6e9369d26022935f83412353617113f8816a71aeebef7f2"
+    },
+    {
+      "label": "B29 split straw",
+      "medium": "Long flush stalk ribbons / satin glints",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\strawglint-mere\\widgets\\frog-lilypad.3b5737ec.png",
+      "sha256": "3b5737ecd1bad3e498e1628e364516722675c60d2a196f827a2508dafb200ade"
+    },
+    {
+      "label": "B13 lime sgraffito",
+      "medium": "Mineral plaster / incised subtractive cuts",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\limecut-relay\\widgets\\folding-signal-tree.f16a6e35.png",
+      "sha256": "f16a6e35ec2734c74d536eefd89334b663883be24d438d518e88a6ec91dbeecf"
+    },
+    {
+      "label": "Mosswick actual",
+      "medium": "Cork bark / moss felt / deckled book pages",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\mosswick\\widgets\\widget-mosswood-storybook.e6e80e3a.webp",
+      "sha256": "e6e80e3a230489bba6a08f8d9cf1169b62b92b8213865e97c012765ac79e22b7"
+    }
+  ]
+}

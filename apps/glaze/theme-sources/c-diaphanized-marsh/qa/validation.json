@@ -1,0 +1,174 @@
+{
+  "id": "c-diaphanized-marsh",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "stickleback",
+    "european-eel",
+    "smooth-newt",
+    "common-frog",
+    "pond-turtle"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.16a36ad2.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 4948,
+    "sha256": "16a36ad21a440f33b78d9f9b5bb0cd22267011e0f7fbb7c915ced9c649c1ab64",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "d222a8f3b5322b3787769d9fde15f5aec22782433bed9c376b6665e8b8c493c7"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed the five selected originals together and actual encoded85px. Natural lateral stickleback, open-S eel, diagonal four-limbed newt, compact crouched frog and flattened-shell turtle have distinct readable silhouettes. Selective rose skeleton and small blue cartilage remain photographic within faint continuous neutral tissue, without glass/metal/gummy sculpture or fluorescent slices. The actual first sample and six-neighbor comparisons passed coordinator gate before expansion. Two original anatomy studies remain unselected with exact prompt/hash/reference lineage.",
+    "wallpaper": "Viewed all three actual encoded1290x2796,1179x2556 and750x1334 crops. Exact-own-five-reference coherent marsh vignette, followed by one own-scene35percent pullback with four own-art supports. All five animals, reed tips, whole tails/feet/fin endpoints and low habitat edges retained with margins; upper blue-grey field and lower water remain quiet. Newt four limbs and frog absence of long rib cage retained. Ten own reference uses/six distinct images and unselected broad-scene hash verified. Artistic specimen-inspired habitat, not a claim of a photographed real scene.",
+    "native": "Viewed all nine actual coordinator SVG renderer layouts using latest serif correction source hashd222a8f3b5322b3787769d9fde15f5aec22782433bed9c376b6665e8b8c493c7. Whole three-spined fish/connected skeletal paths in larger fields; pebble dial/pin marks/needle hands, basin battery and ledger calendar. Small natural open alder leaf with stem and short veins fits Clockmedium and Calendar headers with breathing room. Medium Battery numbers clear the gauge and small Calendar today-number is visually centred in this Windows SVG preview. All nine change with live inputs; battery null/0/100 and ornament roundtrip pass. This is preview evidence, not New York/installed-device proof.",
+    "roundedArtworkCorners": "Viewed all five actual encoded artwork tiles on real app gradients with Fit6percent inset and conservative20percent rounded mask. All29Cthemes/145artworks retain every visible alpha16 pixel, including newt/frog/turtle digits and long eel/newt/turtle tail tips. Blue-grey corners are quiet around the natural silhouettes; no raster asset changed. UI layout simulation, not installed-device qualification."
+  },
+  "ownerSteeringReview": "Recognizable real freshwater Nature: intact stickleback, eel, newt, crouched frog and pond turtle. Selective rose bone/local blue cartilage and faint continuous tissue, ordinary photographic light. Quiet matching blue-grey Artwork corners; a small open alder leaf in native headers. Artistic specimen interpretation, not a real specimen or scientific reference.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-diaphanized-marsh",
+    "backgroundStops": [
+      "#293B43",
+      "#51616A"
+    ],
+    "pieces": [
+      {
+        "id": "stickleback",
+        "sha256": "eae997db6d0f463842093e52e3debfe4fcee06f56ca99af050d7cf37db74dc47",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "european-eel",
+        "sha256": "a9afa7b108dd0e6eb4af9934876429432919740e5b449ac498b6d90e166589d6",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "smooth-newt",
+        "sha256": "ba8a91541f6019833c3063f2e528f343abf610f4a1e2aaaf1b8d0d6f7cc95265",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "common-frog",
+        "sha256": "e5f4e34889b2908348df80fc7e1a2040dfd2272848bb7eff4ba6cc5a82d95bad",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "pond-turtle",
+        "sha256": "b3481b86f6f32efdbd171e90db0e642aaf9ce4daf3a204860e10b76a7dcae771",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 10,
+  "wallpaperDistinctReferenceImages": 6,
+  "artworkOwnStudyReferenceHashesMatched": 2,
+  "packTestEvidence": "Actual offline builder v1:9assets/0.74MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and10own wallpaper reference hashes pass. Shared runtime unchanged in this lane; combined runtime qualification remains coordinator-owned.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "scope": "Actual source and encoded pack validation, current coordinator SVG previews and rounded-layout simulation. No installed-device or Apple New York rendering claim."
+}

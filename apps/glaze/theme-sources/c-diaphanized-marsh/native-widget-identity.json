@@ -1,0 +1,22 @@
+{
+  "theme": "c-diaphanized-marsh",
+  "recipe": [
+    "pebble",
+    "cRosefinStickleback",
+    "cRosefinSkeleton",
+    "pins",
+    "needle",
+    "basin",
+    "ledger"
+  ],
+  "art": {
+    "cRosefinStickleback": "M 24 45 Q 34 34 49 34 L 51 22 L 57 34 L 62 24 L 66 36 L 71 28 L 75 39 Q 88 42 95 50 Q 87 60 75 64 Q 55 71 34 61 L 24 56 L 7 72 L 11 50 L 6 28 Z M 30 40 Q 32 21 42 30 L 47 35 M 46 65 L 43 78 L 52 67 M 65 66 L 61 77 L 69 65 M 77 47 Q 71 50 72 58 Q 80 58 86 54 M 85 46 Q 85 42 89 42 Q 93 42 92 46 Q 90 49 87 47 Z",
+    "cRosefinSkeleton": "M 23 51 Q 48 46 80 49 M 33 50 Q 37 44 39 39 M 40 49 Q 44 42 46 37 M 47 48 Q 51 42 53 37 M 54 48 Q 58 43 60 39 M 61 48 Q 65 45 67 41 M 68 48 Q 72 46 73 43 M 34 51 Q 39 56 42 60 M 43 50 Q 47 57 49 63 M 52 49 Q 57 56 58 64 M 61 49 Q 66 55 67 63 M 22 51 L 10 36 M 22 51 L 9 47 M 22 51 L 10 63 M 76 50 L 83 44 M 76 50 L 84 56 M 51 34 L 54 30 M 63 36 L 64 31 M 71 38 L 72 34"
+  },
+  "ornament": "M 25 86 Q 43 65 64 28 M 39 67 Q 23 66 25 55 L 22 47 L 29 43 L 27 34 L 37 31 L 40 22 L 51 22 Q 62 11 70 17 Q 81 20 78 31 L 81 39 L 74 46 L 75 55 L 64 59 L 59 67 Q 49 74 41 68 M 43 62 L 32 53 M 50 50 L 65 48 M 57 39 L 48 31",
+  "ornamentDirection": "One small natural open alder leaf, rounded serrated edge, curved stem and three short vein branches. Leaf is open at its stem base, with breathing room and no plate or control-like crossing.",
+  "ornamentProvenance": "Original authored100x100 SVG paths,22November2026,following familiar marsh-bank alder foliage and the both-corner steering.",
+  "direction": "Whole three-spined stickleback and delicate connected skeletal lines in larger native fields. Pebble dial, pin markers, needle hands, basin battery and ledger calendar; a separate small natural alder leaf serves compact headers.",
+  "values": "Existing live native Clock/Battery/Calendar at three sizes; no raster readings.",
+  "registryIntegration": "Source-only lane handoff. Coordinator owns canonical registry/Swift integration, compatibility floor1.0.44 and installed-device qualification."
+}
