@@ -1,0 +1,100 @@
+{
+  "review": "Viewed all five complete originals at full/170/85 on the actual palette. Alpha16/96 subject bounds clear all frame edges; outer samples alpha0 and frame maxima1to4 are non-visible export fringes. Whole dorsal spines/fin rays/tails, four newt limbs, frog hands/folded hind feet, and turtle head/four webbed feet/tail retained. Newt exterior veil and missing forelimb corrected by imagegen; frog unwanted long curved ribs removed by imagegen. Complete originals proportionally contained1024square, no crop/stretch/creative alpha edits.",
+  "assets": [
+    {
+      "id": "stickleback",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          88,
+          304,
+          1444,
+          732
+        ],
+        "96": [
+          90,
+          304,
+          1443,
+          731
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "european-eel",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          105,
+          195,
+          1146,
+          1102
+        ],
+        "96": [
+          106,
+          195,
+          1145,
+          1102
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "pond-turtle",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          69,
+          219,
+          1158,
+          1087
+        ],
+        "96": [
+          70,
+          220,
+          1157,
+          1086
+        ]
+      },
+      "edgeAlphaMaximum": 4,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "smooth-newt",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          118,
+          235,
+          1168,
+          1142
+        ],
+        "96": [
+          118,
+          236,
+          1167,
+          1141
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "common-frog",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          101,
+          330,
+          1156,
+          961
+        ],
+        "96": [
+          101,
+          331,
+          1155,
+          961
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

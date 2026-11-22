@@ -1,0 +1,63 @@
+{
+  "theme": "c-diaphanized-marsh",
+  "status": "Coordinator PASSED actual first-sample/full170/85 and six-neighbor comparisons before expansion",
+  "sample": {
+    "id": "stickleback",
+    "selected": true,
+    "sourceSha256": "730e8fdc30622f159684332c1fe2ee823f0368446f51485c5c88b131fa5a0f88",
+    "prompt": "ONE whole real three-spined STICKLEBACK, lateral profile facing right in a gentle natural swimming curve. Familiar small fish anatomy: compact pointed snout, one visible eye, narrow tail peduncle, broad fan-shaped tail, THREE separate short dorsal spines followed by a small soft dorsal fin, two natural pelvic spines and small pectoral fin. Every spine, fin ray, snout and tail tip whole. Scientific-image medium is CLEARED-AND-DOUBLE-STAINED natural-history specimen photography, not an X-ray or abstract invented creature. The real continuous fish body remains nearly transparent and very faint neutral pale-amber tissue; inside it, actual connected ossified skeletal elements are visibly dyed rose/magenta: segmented vertebral column, delicate curved ribs, jaw/skull components and fine natural fin rays. LOCALIZED blue/cyan cartilage joins occur at the appropriate small anatomical joints and fin supports; not uniform blue skin, not red/cyan doubled projection outlines. Internal anatomy stays in one exact pose with natural soft photographic gradients and delicate translucent tissue continuity. Selective tissue staining is the dominant visual identity. No hard glass shell, shiny resin, hollow glass toy, metal, foil, crystal, neon rim, electric corona, X-ray noise, spectral heat map, laser dots, fluorescent optical slices, repeated exposure, paper/ink marks or fabricated mechanical body. Restrained pale-magenta and blue anatomical details with faint neutral collagen, clean transmitted photographic light, no external glow. Whole subject well inside CENTRAL70PERCENT of1024square, ample TRUE ALPHAZERO exterior, natural transparent gaps, no rectangular haze or backdrop. No other animal, plant, jar, fluid meniscus, bubbles, specimen tray, lab tools, floor, shadow, frame, text, label, diagram, UI or readings. Recognizable real nature first. Gentle non-graphic museum-study presentation with no wounds, cutting, exposed flesh or blood. Digital artistic interpretation of whole cleared-and-stained anatomical photography, not a real specimen or diagnostic/scientific reference.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        88,
+        304,
+        1444,
+        732
+      ],
+      "96": [
+        90,
+        304,
+        1443,
+        731
+      ]
+    },
+    "edgeAlphaMaximum": 1,
+    "sourceImage": "sources/stickleback.730e8fdc3062.png"
+  },
+  "neighbors": [
+    {
+      "theme": "c-radiographic-deepwatch",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-radiographic-deepwatch\\widgets\\lantern-ray.ed2f9e3788ed.png",
+      "sha256": "ed2f9e3788ed22d0375d2b899c5f5ccf564d02335088d1f58879173819a08390"
+    },
+    {
+      "theme": "c-anaglyph-crossing",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-anaglyph-crossing\\widgets\\stiltshell.7434e1508785.png",
+      "sha256": "7434e15087851decc501ece5df778348a38504f040beb4cbaa6eff458cc021a5"
+    },
+    {
+      "theme": "c-confocal-bridgeworks",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-confocal-bridgeworks\\widgets\\ciliary-weir.f677428e62d8.png",
+      "sha256": "f677428e62d844e59f2de4907c46cb7bf5786629a655e5fcdc9e0c1c65273243"
+    },
+    {
+      "theme": "c-transmitted-seedbank",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-transmitted-seedbank\\widgets\\lacewing-seedgrass.f31cc924acd8.png",
+      "sha256": "f31cc924acd818a6441595f121d0a5be0ac52932eb72e5d0ba5dce98ca8b218c"
+    },
+    {
+      "theme": "pellicle-shoal",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\pellicle-shoal\\widgets\\seadragon.5743037c00cf.png",
+      "sha256": "5743037c00cf5464f7d4664b66d2c76c77d23f20960e56f224e4e1bf6a92dae2"
+    },
+    {
+      "theme": "jellylight",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\jellylight\\v6\\widget-glass-anemone.0376a5e8.webp",
+      "sha256": "0376a5e831462ccd052e99243680b899d879595091b4b61baf073f3a628c9e1a",
+      "bytes": 100654,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\jellylight\\v7\\manifest.json"
+    }
+  ],
+  "assessment": "Recognizable intact natural stickleback; three dorsal spines, connected pink vertebral column/ribs/fin rays, localized blue supports and faint continuous neutral tissue. No metallic or glass-sculpture surface. Raw alpha1 fringe disappears in actual palette composite, alpha16/96 clear margins. Six-neighbor gate pending; unselected, no other four or wallpaper.",
+  "neighborImageInputsToGeneration": [],
+  "coordinatorVerdict": "Recognizable whole fish, selective rose skeleton and localized blue cartilage remain distinct from glass and glowing optical slices. Complete four distinct marsh subjects, wallpaper, nine live layouts and compact reed/alder ornament."
+}

@@ -1,0 +1,1 @@
+Six selected unmodified built-in image outputs: five distinct real nature artworks and final own-reference habitat. Exact prompts, dimensions, hashes and reference lineage in provenance.json. Three first anatomy/framing studies are unselected outside this selected folder. No external or neighbor visual inputs.
