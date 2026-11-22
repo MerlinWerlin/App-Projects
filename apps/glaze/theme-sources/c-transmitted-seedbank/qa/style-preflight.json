@@ -1,0 +1,60 @@
+{
+  "theme": "c-transmitted-seedbank",
+  "status": "Coordinator accepted actual six-way comparison/full170/85 before remainingfour generations",
+  "sample": {
+    "id": "honesty-seedhead",
+    "selected": true,
+    "sourceSha256": "fc1374b7e6e0cde2f2622660aaf64385e23b5903a91ea05b3e698126d3929c52",
+    "prompt": "Use case: natural botanical artwork. GLAZE SEEDLIGHT COPSE. Real familiar autumn woodland plants and one real lacewing, accurately photographed, following the request for LESS ABSTRACT NATURE. Visual process: clean TRANSMITTED-LIGHT BOTANICAL MACRO PHOTOGRAPHY. Soft warm light passes THROUGH thin real seed membranes, papery husks, leaf tissue and insect wings, showing fine natural branching veins and darker actual seeds inside softly luminous ivory, honey, copper and muted olive tissue. Keep natural shapes and colours. Thin tissue has a clear natural photographic boundary and visible delicate texture; thicker woody stems/seeds are darker and more opaque. This is real optical transillumination, not self-emitting neon, X-ray anatomy, a diagram or a synthetic transparent sculpture. The viewer should immediately recognise a real seedpod/leaf/insect. Nature and anatomy come first. No invented organisms, mechanical plants, geometric cells, data maps, crystal, glass, resin, metal, paper craft, embroidery, cartoon, CGI toy, glitter, magical aura, luminous exterior haze or hard glowing outline. No letters, numbers, labels, scale bar, axes, readings, UI, logo or watermark. Subject: ONE natural LUNARIA HONESTY seedhead: one slender branching tan stem bearing FOUR unequal oval, papery, ivory-silver seedpod membranes on short pedicels. The translucent oval septa have fine branching veins and a few natural flat brown oval seeds visible within, one or two seeds per pod, not a regular bead pattern. One pod faces slightly sideways, three at different heights, all whole and separated enough to read. Soft amber transmitted light reveals the thin tissue while the stem remains brown. A real delicate dried seedhead, not coins, lamps, medallions, circles, jewellery or a decorative mobile. Entire four pod rims, seeds, stalk and short lower stem end visible. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject fits safely inside central70percent, with generous empty margins. TRUE ALPHA ZERO outside every subject and in every natural gap. Preserve real photographic translucent tissue inside the bounded membranes and wings, but no low-opacity veil or background rectangle behind the plant. No floor, ground patch, cast shadow, soft backdrop, sunlight rays, extra specimen, frame, contact sheet or phone mockup. Strong natural silhouette readable at85px. Calm real nature, accurate organic imperfections, no abstract transformation.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        194,
+        71,
+        1023,
+        1200
+      ],
+      "96": [
+        195,
+        72,
+        1022,
+        1199
+      ]
+    },
+    "edgeAlphaMaximum": 1,
+    "sourceImage": "sources/honesty-seedhead.fc1374b7e6e0.png"
+  },
+  "neighbors": [
+    {
+      "theme": "ginkgo-hour",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\ginkgo-hour\\v7\\widget-production-20261101-fan-leaf.b123eb23.webp",
+      "sha256": "b123eb23f7e170ea6ab60dea5c6417e47e5cf8116f098b1b5ddf0924e2483503",
+      "bytes": 107208,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\ginkgo-hour\\v8\\manifest.json"
+    },
+    {
+      "theme": "birchlight",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\birchlight\\v6\\widget-birch-seedpod.8c4e71f2.webp",
+      "sha256": "8c4e71f2f9c25ae4bf2aa54b5638477fd45db440e7fa031fe83d07c593fced83",
+      "bytes": 73812,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\birchlight\\v7\\manifest.json"
+    },
+    {
+      "theme": "c-fluorescent-meadow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fluorescent-meadow\\widgets\\oxeye-daisy.fcd0c55675e9.png",
+      "sha256": "fcd0c55675e94fb87e922e2909213e4c8c9c957225a8185a411e69101ac62960"
+    },
+    {
+      "theme": "pellicle-shoal",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\pellicle-shoal\\widgets\\seadragon.5743037c00cf.png",
+      "sha256": "5743037c00cf5464f7d4664b66d2c76c77d23f20960e56f224e4e1bf6a92dae2"
+    },
+    {
+      "theme": "emulsion-rookery",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\emulsion-rookery\\widgets\\billowing-orchid.9588c2408fdd.png",
+      "sha256": "9588c2408fdd0bed3c4dfec147f07c499e6cb503c4e528e36e379e111d766cb7"
+    }
+  ],
+  "assessment": "Four real ivory Lunaria seedpod membranes with natural irregular veins andbrown seeds,slender stem,papery plant anatomy first. Warm transmitted tissue differs from solid ginkgo leaf,woody birch pod,cool daisy,wet fibrous sculpted cellulose andperforated physical film. Natural autumn overlaps acknowledged;actual comparison retained before expansion.",
+  "neighborImageInputsToGeneration": [],
+  "coordinatorVerdict": "Lunaria seed membranes accepted. Real seeds/irregular thin veins and transmitted light read clearly;no A9 wet torn fibre orA10 frame/perforation construction. Proceed other4 familiar natural specimens andhabitat;exposure readable at85px andevery grass/insect/seedwing extremity whole."
+}

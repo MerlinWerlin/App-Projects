@@ -1,0 +1,191 @@
+{
+  "theme": "c-transmitted-seedbank",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "honesty-seedhead",
+      "sourceImage": "sources/honesty-seedhead.fc1374b7e6e0.png",
+      "sourceSha256": "fc1374b7e6e0cde2f2622660aaf64385e23b5903a91ea05b3e698126d3929c52",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/honesty-seedhead.d5e2713d2f77.png",
+      "sha256": "d5e2713d2f779be7e04f600c94a3959a22720e24c7b27a64e3d350e2c1cb8e76",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 720651,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: natural botanical artwork. GLAZE SEEDLIGHT COPSE. Real familiar autumn woodland plants and one real lacewing, accurately photographed, following the request for LESS ABSTRACT NATURE. Visual process: clean TRANSMITTED-LIGHT BOTANICAL MACRO PHOTOGRAPHY. Soft warm light passes THROUGH thin real seed membranes, papery husks, leaf tissue and insect wings, showing fine natural branching veins and darker actual seeds inside softly luminous ivory, honey, copper and muted olive tissue. Keep natural shapes and colours. Thin tissue has a clear natural photographic boundary and visible delicate texture; thicker woody stems/seeds are darker and more opaque. This is real optical transillumination, not self-emitting neon, X-ray anatomy, a diagram or a synthetic transparent sculpture. The viewer should immediately recognise a real seedpod/leaf/insect. Nature and anatomy come first. No invented organisms, mechanical plants, geometric cells, data maps, crystal, glass, resin, metal, paper craft, embroidery, cartoon, CGI toy, glitter, magical aura, luminous exterior haze or hard glowing outline. No letters, numbers, labels, scale bar, axes, readings, UI, logo or watermark. Subject: ONE natural LUNARIA HONESTY seedhead: one slender branching tan stem bearing FOUR unequal oval, papery, ivory-silver seedpod membranes on short pedicels. The translucent oval septa have fine branching veins and a few natural flat brown oval seeds visible within, one or two seeds per pod, not a regular bead pattern. One pod faces slightly sideways, three at different heights, all whole and separated enough to read. Soft amber transmitted light reveals the thin tissue while the stem remains brown. A real delicate dried seedhead, not coins, lamps, medallions, circles, jewellery or a decorative mobile. Entire four pod rims, seeds, stalk and short lower stem end visible. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject fits safely inside central70percent, with generous empty margins. TRUE ALPHA ZERO outside every subject and in every natural gap. Preserve real photographic translucent tissue inside the bounded membranes and wings, but no low-opacity veil or background rectangle behind the plant. No floor, ground patch, cast shadow, soft backdrop, sunlight rays, extra specimen, frame, contact sheet or phone mockup. Strong natural silhouette readable at85px. Calm real nature, accurate organic imperfections, no abstract transformation.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 826064
+    },
+    {
+      "id": "maple-samaras",
+      "sourceImage": "sources/maple-samaras.fe250d23f0f2.png",
+      "sourceSha256": "fe250d23f0f2d3fae77144878fabbb9486e0440f3e1f1e404b8539329a41dcb4",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/maple-samaras.d1363da835b2.png",
+      "sha256": "d1363da835b20b1238da44d7e824932d97fdf025c0d88de07906516586f3ac71",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 838753,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "EDIT THIS OWN BOTANICAL PHOTO: REMOVE THE ENTIRE LACEWING INSECT from the upper-right twig,including its body,legs,antennae andall translucent wings. Leave the natural bare short twig andits small terminal bud inthat place. Preserve the exact two paired maple samara fruits/four complete papery golden wings,one copper-red maple leaf,curved natural twig,all branch attachment points,original warm transmitted-light veins/tissue andreal photographic texture. Do notadd any replacement insect,animal,flower orfruit. This artwork contains ONLY the maple twig,samaras andone maple leaf;the lacewing has a separate artwork. Keep the whole botanical subject inside generous empty margins,including all four seedwingtips,leaflobes andtwig ends. Entire exterior andall natural gaps TRUE ALPHA ZERO. No halo,haze,backgroundpanel,groundshadow,frame,text orUI.1024square. Onlyrequested change is removal ofthe extra insect;preserve every natural maple detail.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 781210,
+      "generationStages": "One built-in own-study edit removes unintended extra insect;initial image retained unselected.",
+      "directEditReference": {
+        "sourceImage": "intermediate-maple-identity-study/extra-insect.0f3e30326dd9.png",
+        "sha256": "0f3e30326dd99b804823304f2190a45be055ac97c98011c71d26b5ff7a20263c",
+        "role": "Own initial maple image withunrequested extra lacewing;unselected."
+      }
+    },
+    {
+      "id": "physalis-lantern",
+      "sourceImage": "sources/physalis-lantern.9cfb0a53e9f7.png",
+      "sourceSha256": "9cfb0a53e9f7000956e984d151216c07a088dba407e1d324d76e20bd8abc53a6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/physalis-lantern.17f71bd31b76.png",
+      "sha256": "17f71bd31b7622cc9c1e042a2a52df97065d4e1cfd0b7cbba90815432024f482",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 675729,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: natural botanical artwork. GLAZE SEEDLIGHT COPSE. Real familiar autumn woodland plants and one real lacewing, accurately photographed, following the request for LESS ABSTRACT NATURE. Visual process: clean TRANSMITTED-LIGHT BOTANICAL MACRO PHOTOGRAPHY. Soft warm light passes THROUGH thin real seed membranes, papery husks, leaf tissue and insect wings, showing fine natural branching veins and darker actual seeds inside softly luminous ivory, honey, copper and muted olive tissue. Keep natural shapes and colours. Thin tissue has a clear natural photographic boundary and visible delicate texture; thicker woody stems/seeds are darker and more opaque. This is real optical transillumination, not self-emitting neon, X-ray anatomy, a diagram or a synthetic transparent sculpture. The viewer should immediately recognise a real seedpod/leaf/insect. Nature and anatomy come first. No invented organisms, mechanical plants, geometric cells, data maps, crystal, glass, resin, metal, paper craft, embroidery, cartoon, CGI toy, glitter, magical aura, luminous exterior haze or hard glowing outline. No letters, numbers, labels, scale bar, axes, readings, UI, logo or watermark. Subject: ONE real PHYSALIS autumn sprig: TWO unequal orange-copper inflated papery calyx lanterns hanging from a forked thin brown stem, with ONE small muted olive leaf. One closed intact lantern and one slightly open natural husk reveal a single real orange berry inside. Fine irregular veins and softly translucent genuine plant tissue, warm light transmitted through thin orange calyx. Clearly a real Chinese-lantern plant, not an electric lamp, metal cage, ornament or magical glowing pod. Whole lantern bases, all tips, leaf and stem ends. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject fits safely inside central70percent, with generous empty margins. TRUE ALPHA ZERO outside every subject and in every natural gap. Preserve real photographic translucent tissue inside the bounded membranes and wings, but no low-opacity veil or background rectangle behind the plant. No floor, ground patch, cast shadow, soft backdrop, sunlight rays, extra specimen, frame, contact sheet or phone mockup. Strong natural silhouette readable at85px. Calm real nature, accurate organic imperfections, no abstract transformation.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 829953
+    },
+    {
+      "id": "beech-leaf",
+      "sourceImage": "sources/beech-leaf.7ee1b7b0040c.png",
+      "sourceSha256": "7ee1b7b0040cf7ca888319b0b6a787267dea4041764c7fd8fc8c2047a9e46b96",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/beech-leaf.f0b67dabf0ee.png",
+      "sha256": "f0b67dabf0ee1b03c5fd8fe0536508da26611d847bfa975fed93cd00117cb5ec",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 868071,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: natural botanical artwork. GLAZE SEEDLIGHT COPSE. Real familiar autumn woodland nature, accurately photographed, following the request for LESS ABSTRACT NATURE. Visual process: clean TRANSMITTED-LIGHT BOTANICAL MACRO PHOTOGRAPHY. Soft warm light passes THROUGH thin real seed membranes, papery husks, leaf tissue and insect wings, showing fine natural branching veins and darker actual seeds inside softly luminous ivory, honey, copper and muted olive tissue. Keep natural shapes and colours. Thin tissue has a clear natural photographic boundary and visible delicate texture; thicker woody stems/seeds are darker and more opaque. This is real optical transillumination, not self-emitting neon, X-ray anatomy, a diagram or a synthetic transparent sculpture. The viewer should immediately recognise a real seedpod/leaf/insect. Nature and anatomy come first. No invented organisms, mechanical plants, geometric cells, data maps, crystal, glass, resin, metal, paper craft, embroidery, cartoon, CGI toy, glitter, magical aura, luminous exterior haze or hard glowing outline. No letters, numbers, labels, scale bar, axes, readings, UI, logo or watermark. Subject: ONE short real BEECH twig with THREE unequal oval autumn leaves, two honey-gold and one muted copper. Natural gently wavy margins, pointed ends, strong central veins and fine real branching side veins revealed by warm transmitted light. One leaf turns slightly away, another curls a little naturally at the edge. A familiar botanical sprig, not a flat vector icon or skeleton-only wire leaf. All leaf tissue present, full three leaf tips/margins and twig ends. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject fits safely inside central70percent, with generous empty margins. TRUE ALPHA ZERO outside every subject and in every natural gap. Preserve real photographic translucent tissue inside the bounded membranes and wings, but no low-opacity veil or background rectangle behind the plant. No floor, ground patch, cast shadow, soft backdrop, sunlight rays, extra specimen, frame, contact sheet or phone mockup. Strong natural silhouette readable at85px. Calm real nature, accurate organic imperfections, no abstract transformation. This particular artwork is ONLY a beech twig with its three leaves. No insect,animal orother plant.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 732875
+    },
+    {
+      "id": "lacewing-seedgrass",
+      "sourceImage": "sources/lacewing-seedgrass.1acbe15553e4.png",
+      "sourceSha256": "1acbe15553e41d93c0b5206e883b5a74f85393c089e870f9c0dc0cec9ccc2b32",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/lacewing-seedgrass.f31cc924acd8.png",
+      "sha256": "f31cc924acd818a6441595f121d0a5be0ac52932eb72e5d0ba5dce98ca8b218c",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 541536,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: natural botanical artwork. GLAZE SEEDLIGHT COPSE. Real familiar autumn woodland plants and one real lacewing, accurately photographed, following the request for LESS ABSTRACT NATURE. Visual process: clean TRANSMITTED-LIGHT BOTANICAL MACRO PHOTOGRAPHY. Soft warm light passes THROUGH thin real seed membranes, papery husks, leaf tissue and insect wings, showing fine natural branching veins and darker actual seeds inside softly luminous ivory, honey, copper and muted olive tissue. Keep natural shapes and colours. Thin tissue has a clear natural photographic boundary and visible delicate texture; thicker woody stems/seeds are darker and more opaque. This is real optical transillumination, not self-emitting neon, X-ray anatomy, a diagram or a synthetic transparent sculpture. The viewer should immediately recognise a real seedpod/leaf/insect. Nature and anatomy come first. No invented organisms, mechanical plants, geometric cells, data maps, crystal, glass, resin, metal, paper craft, embroidery, cartoon, CGI toy, glitter, magical aura, luminous exterior haze or hard glowing outline. No letters, numbers, labels, scale bar, axes, readings, UI, logo or watermark. Subject: ONE complete real GREEN LACEWING perched naturally on ONE short arching meadow grass seedhead. Slender pale green body, normal small gold eyes, TWO fine long antennae, SIX natural delicate legs gripping the grass, and FOUR transparent finely veined wings held like a roof over the body. Warm transmitted light through the wings reveals accurate irregular natural vein cells, not a repeating geometric data grid. Seedhead has a few real pale straw spikelets on one curved stalk, no extra plants. Whole antennae, wing tips, legs, abdomen, spikelets and short grass stem end safely visible. Asset: ONE separate square1024x1024 pure-art widget. Entire complete subject fits safely inside central70percent, with generous empty margins. TRUE ALPHA ZERO outside every subject and in every natural gap. Preserve real photographic translucent tissue inside the bounded membranes and wings, but no low-opacity veil or background rectangle behind the plant. No floor, ground patch, cast shadow, soft backdrop, sunlight rays, extra specimen, frame, contact sheet or phone mockup. Strong natural silhouette readable at85px. Calm real nature, accurate organic imperfections, no abstract transformation.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 910261
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.65069b2f96a5.png",
+      "sourceSha256": "65069b2f96a565e4ae82378f060f92556fa4a75db0d07a4478f5db9d85824179",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "93083baf03b13eb276d3ad015ecd145f34e5ecacd34829b1162d54fe8b8a23ee",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 3131522,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: natural botanical artwork. GLAZE SEEDLIGHT COPSE. Real familiar autumn woodland plants and one real lacewing, accurately photographed, following the request for LESS ABSTRACT NATURE. Visual process: clean TRANSMITTED-LIGHT BOTANICAL MACRO PHOTOGRAPHY. Soft warm light passes THROUGH thin real seed membranes, papery husks, leaf tissue and insect wings, showing fine natural branching veins and darker actual seeds inside softly luminous ivory, honey, copper and muted olive tissue. Keep natural shapes and colours. Thin tissue has a clear natural photographic boundary and visible delicate texture; thicker woody stems/seeds are darker and more opaque. This is real optical transillumination, not self-emitting neon, X-ray anatomy, a diagram or a synthetic transparent sculpture. The viewer should immediately recognise a real seedpod/leaf/insect. Nature and anatomy come first. No invented organisms, mechanical plants, geometric cells, data maps, crystal, glass, resin, metal, paper craft, embroidery, cartoon, CGI toy, glitter, magical aura, luminous exterior haze or hard glowing outline. No letters, numbers, labels, scale bar, axes, readings, UI, logo or watermark. Asset: ONE opaque portrait phone wallpaper1290x2796. A coherent real autumn woodland-edge scene: honesty seedheads, maple samaras and copper leaf, two physalis lanterns, three beech leaves, and one lacewing on a grass seedhead. Late-afternoon backlight passes through thin actual membranes and veins; stems are rooted naturally among low moss and fallen leaves. All five exact own artwork identities will be supplied. Background is quiet smoky umber and olive woodland bokeh, upper43percent defocused and uncluttered, bottom20percent quiet moss and fallen leaves. All FIVE complete focal groups withinhorizontal10to90percent andvertical46to78percent, with generous margins around every pod, wing, antenna, leaf and twig tip. One real habitat, not a specimen collage or floating ornaments. No extra animals, extra focal plants, glass objects, invented organisms, geometric maps, big sun discs, streaks, stars, glitter, artificial glowing branches, text, UI or frame. Input order: IMAGE1=honesty seedhead,FOUR unequal ivory-silver papery seed membranes with actual brown seeds on one stem;IMAGE2=maple twig,TWO pairs of gold samaras/FOUR wings total andONE copper-red leaf,NO insect onthis twig;IMAGE3=TWO orange physalis lanterns,one intact andone partly opened around real berry,ONE olive leaf;IMAGE4=THREE beech leaves/two gold one copper onone twig;IMAGE5=ONE complete green lacewing onshort arching straw grass seedhead. Preserve these five exact natural identities andtheir familiar anatomy. Use different plausible positions inone natural scene,not separate floating cutouts. There is ONLY ONE insect inthis entire wallpaper,onits grass seedhead. No insect onmaple. Strong butsoft warm natural backlight through thin membranes/veins,woody stems darker;no electric/glass glow. Make the complete group SMALL:all five whole subjects inhorizontal12to88percent,vertical47to77percent. Suggested safe layout:honesty rearleft x15to32percent/y48to73percent;maple rearcentreleft x29to47percent/y51to74percent;beech rearright x64to84percent/y50to74percent;physalis lowcentre x45to64percent/y61to77percent;lacewing/seedgrass frontleft-centre x28to45percent/y67to76percent. Do not let plant stems,leaf tips,seed wings orlacewing antennae touch side/top/bottom edges. Keep distinct open gaps soallfour honesty membranes,allfour samara wings,both lanterns,allthree beech leaves andone whole lacewing canbe seen. Twig ends/short stems connect naturally into sparse moss/fallenleaf woodland ground. Upper43percent completely quiet defocused smoky umber/olive bokeh,no branches/leaves/sun discs;bottom20percent quiet soft fallen leaves/moss. Portrait1290x2796,opaque,no letters/numerals/labels/frame/UI.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "honesty-seedhead",
+          "sourceImage": "sources/honesty-seedhead.fc1374b7e6e0.png",
+          "sha256": "fc1374b7e6e0cde2f2622660aaf64385e23b5903a91ea05b3e698126d3929c52"
+        },
+        {
+          "id": "maple-samaras",
+          "sourceImage": "sources/maple-samaras.fe250d23f0f2.png",
+          "sha256": "fe250d23f0f2d3fae77144878fabbb9486e0440f3e1f1e404b8539329a41dcb4"
+        },
+        {
+          "id": "physalis-lantern",
+          "sourceImage": "sources/physalis-lantern.9cfb0a53e9f7.png",
+          "sha256": "9cfb0a53e9f7000956e984d151216c07a088dba407e1d324d76e20bd8abc53a6"
+        },
+        {
+          "id": "beech-leaf",
+          "sourceImage": "sources/beech-leaf.7ee1b7b0040c.png",
+          "sha256": "7ee1b7b0040cf7ca888319b0b6a787267dea4041764c7fd8fc8c2047a9e46b96"
+        },
+        {
+          "id": "lacewing-seedgrass",
+          "sourceImage": "sources/lacewing-seedgrass.1acbe15553e4.png",
+          "sha256": "1acbe15553e41d93c0b5206e883b5a74f85393c089e870f9c0dc0cec9ccc2b32"
+        }
+      ],
+      "generationStages": "Separate original habitat generation withfive exact selected own-art identity references."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Less abstract recognizable real nature. Actual seed membranes,winged seeds,lantern husks,leaves andlacewing anatomy first. Warm transmitted light through natural thin tissues,quiet umber corners andsmall open beechleaf/vein native fragment.",
+  "conceptReferences": [
+    {
+      "title": "Nikon MicroscopyU: reflected and transmitted illumination",
+      "url": "https://www.microscopyu.com/techniques/stereomicroscopy/reflected-episcopic-light-illumination",
+      "use": "Text-only primary explanation: translucent objects suit transmitted illumination. Artistic natural macro interpretation,not measured microscopy. No external visual input."
+    }
+  ],
+  "conceptReferenceScope": "Nikon primary illumination explanation,text only. Artistic natural macro transillumination,not a measured microscopy record. No external/neighbor image inputs.",
+  "artworkOwnStudyReferenceUses": 1,
+  "wallpaperReferenceUsesAcrossStages": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "unselectedHistory": [
+    "intermediate-maple-identity-study/first-generation.json"
+  ]
+}
