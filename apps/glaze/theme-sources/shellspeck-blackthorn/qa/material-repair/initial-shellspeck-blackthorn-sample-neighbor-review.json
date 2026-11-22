@@ -1,0 +1,230 @@
+{
+  "scope": "Actual read-only images, independent bytes/hash verification; no neighbors used as generation inputs, publication or current-live-R2 claim.",
+  "ownMaterialNeighbors": [
+    {
+      "label": "B37 tit sample",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-edc88d70-aaa2-40b6-9886-53264e16f5fa.png",
+      "sha256": "df83950a36c4a192fb54094ee95cb8b047eb96d6593607c1d4d1384f410f7fd1"
+    },
+    {
+      "label": "nacre-nomads",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\nacre-nomads\\widgets\\orchard-caravan.56097594.png",
+      "sha256": "5609759490be5f16693abd3c87977f1df4db8052d0ec3574f98818b6c0eab6cb"
+    },
+    {
+      "label": "porcelain-umbra",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\porcelain-umbra\\widgets\\shadow-sluice.8c3fbbb2.png",
+      "sha256": "8c3fbbb2a20a213b1c1690a699686fd7d31bb9467f47a34fae3be8f5ff37c043"
+    },
+    {
+      "label": "enamel-reliquary",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\enamel-reliquary\\widgets\\trident-of-the-lost-sea.4ff30a41.png",
+      "sha256": "4ff30a41fb5897f8da209acc84c1aa008ab3b2e7cf0fdade99f279ca3d4ac8be"
+    },
+    {
+      "label": "embertrace-chaparral",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\embertrace-chaparral\\widgets\\quail-manzanita.49be3811.png",
+      "sha256": "49be3811fdc48ec5b9922a9ecb1e8d6b2fd68d4964342ab8bcdeb3107f443f13"
+    },
+    {
+      "label": "redcut-watercourt",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\redcut-watercourt\\widgets\\folding-aqueduct.9c2aef7b.png",
+      "sha256": "9c2aef7ba48dcbf3de4d5c06538c6bf38a98cca5cb9903aec54e033c37fc437d"
+    },
+    {
+      "label": "limecut-relay",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\limecut-relay\\widgets\\folding-signal-tree.f16a6e35.png",
+      "sha256": "f16a6e35ec2734c74d536eefd89334b663883be24d438d518e88a6ec91dbeecf"
+    }
+  ],
+  "baselineSelectorExport": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\egg-neighbor-selections.json",
+  "selectorExportSha256": "d8bb1df38b346ba9e999bf3bf62ef2c576189a1cf46cb3142c0338ae594b70cd",
+  "baselineGroups": [
+    {
+      "id": "porcelain-tide",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\porcelain-tide\\v7\\manifest.json",
+      "manifestSha256": "c5f9f1505e3b0adad603fe5ebd776a27242e35b6d6a058e6d00fd8720ac763b2",
+      "selections": [
+        {
+          "optionId": "blue-lotus-bowl",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\porcelain-tide\\v7\\widget-blue-lotus-bowl.fa9e3a09.webp",
+          "sha256": "fa9e3a0901526e94ed9d0f4a951040f6924a8560ba4f82bda3108e141c1f516b"
+        },
+        {
+          "optionId": "porcelain-crane",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\porcelain-tide\\v7\\widget-porcelain-crane.7d0ad798.webp",
+          "sha256": "7d0ad79844adf8ecba2d3614d606370284507c64ecdd78561c070fd5e7b8558f"
+        },
+        {
+          "optionId": "koi-medallion",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\porcelain-tide\\v7\\widget-koi-medallion.8d9dfc8a.webp",
+          "sha256": "8d9dfc8a14c612040536e79e7a6cca41cd004ad07656646ae50b01a8f3340d8a"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\porcelain-tide\\v7\\widget-small.69bf45d6.webp",
+          "sha256": "69bf45d6786261a772d28af2dda32e1632aead57842b27e7464cd9e03422de79"
+        }
+      ]
+    },
+    {
+      "id": "silver-orchard",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\manifest.json",
+      "manifestSha256": "362c68c2e293fd4a5388a96f360d6eb719bb7b677e22750c5bd844fce73d829f",
+      "selections": [
+        {
+          "optionId": "glass-orchard-snail",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-glass-orchard-snail.10df11be.webp",
+          "sha256": "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025"
+        },
+        {
+          "optionId": "silver-leaf-lantern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-silver-leaf-lantern.0e3e56b7.webp",
+          "sha256": "0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c"
+        },
+        {
+          "optionId": "silver-dormouse",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-silver-dormouse.9881d967.webp",
+          "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-small.089da6c1.webp",
+          "sha256": "089da6c1648f56007ef17d84b1d59d34a31738957331be428ac2cb782df42ad4"
+        }
+      ]
+    },
+    {
+      "id": "calla-obscura",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\calla-obscura\\v1\\manifest.json",
+      "manifestSha256": "44d645f3f10206b405a2d228685635b5b09369db36be86593cccfa63c7d10e41",
+      "selections": [
+        {
+          "optionId": "calla-pair",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\calla-obscura\\v1\\widget-calla-pair.39444fb9.webp",
+          "sha256": "39444fb9365d12ca85c2fd91f4a6ddf126ca953922105254a973d4a9d8c7d31d"
+        },
+        {
+          "optionId": "dew-leaf",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\calla-obscura\\v1\\widget-dew-leaf.c4995fe9.webp",
+          "sha256": "c4995fe9adc0509023baf5b48c21ae42f0b1340a93ebdda22a245dd2d11461be"
+        },
+        {
+          "optionId": "pearl-vase",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\calla-obscura\\v1\\widget-pearl-vase.88208682.webp",
+          "sha256": "882086827160eedd4da30e8a5f2ffebdbb0b7298d2372bce3ac9527a9835289b"
+        }
+      ]
+    },
+    {
+      "id": "porcelain-tide",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\porcelain-tide\\v8\\manifest.json",
+      "manifestSha256": "b113e8793d326989ed085ff6e900fe30cd867a8dd1505a0f1a4f8f87f9de140c",
+      "selections": [
+        {
+          "optionId": "blue-lotus-bowl",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\porcelain-tide\\v8\\widget-blue-lotus-bowl.fa9e3a09.webp",
+          "sha256": "fa9e3a0901526e94ed9d0f4a951040f6924a8560ba4f82bda3108e141c1f516b"
+        },
+        {
+          "optionId": "porcelain-crane",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\porcelain-tide\\v8\\widget-porcelain-crane.7d0ad798.webp",
+          "sha256": "7d0ad79844adf8ecba2d3614d606370284507c64ecdd78561c070fd5e7b8558f"
+        },
+        {
+          "optionId": "koi-medallion",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\porcelain-tide\\v8\\widget-koi-medallion.8d9dfc8a.webp",
+          "sha256": "8d9dfc8a14c612040536e79e7a6cca41cd004ad07656646ae50b01a8f3340d8a"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\porcelain-tide\\v8\\widget-small.69bf45d6.webp",
+          "sha256": "69bf45d6786261a772d28af2dda32e1632aead57842b27e7464cd9e03422de79"
+        },
+        {
+          "optionId": "cobalt-seahorse",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\porcelain-tide\\v8\\widget-cobalt-seahorse.76ce2d29.webp",
+          "sha256": "76ce2d29cd0fd4e4e97571f6610fb5b517125f58bfea5c0cb3fb70eeeebc2128"
+        }
+      ]
+    },
+    {
+      "id": "silver-orchard",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\manifest.json",
+      "manifestSha256": "f0c5454848045a5b87d6477f8eedfa515a1d4ac866a53b4e737b140eb42dd0c5",
+      "selections": [
+        {
+          "optionId": "glass-orchard-snail",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-glass-orchard-snail.10df11be.webp",
+          "sha256": "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025"
+        },
+        {
+          "optionId": "silver-leaf-lantern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-silver-leaf-lantern.0e3e56b7.webp",
+          "sha256": "0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c"
+        },
+        {
+          "optionId": "silver-dormouse",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-silver-dormouse.9881d967.webp",
+          "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-small.089da6c1.webp",
+          "sha256": "089da6c1648f56007ef17d84b1d59d34a31738957331be428ac2cb782df42ad4"
+        },
+        {
+          "optionId": "silver-pear-blossom",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-silver-pear-blossom.885b3b43.webp",
+          "sha256": "885b3b43228dd4d1e86fc6bbda5e320ce001928e421aeb1deec40470e6f0f75b"
+        }
+      ]
+    },
+    {
+      "id": "calla-obscura",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\manifest.json",
+      "manifestSha256": "6b02e5531594d1d4e6d31b60d46a2ecf23b7b493f500cc16b506310192ee4a02",
+      "selections": [
+        {
+          "optionId": "calla-pair",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-calla-pair.39444fb9.webp",
+          "sha256": "39444fb9365d12ca85c2fd91f4a6ddf126ca953922105254a973d4a9d8c7d31d"
+        },
+        {
+          "optionId": "dew-leaf",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-dew-leaf.c4995fe9.webp",
+          "sha256": "c4995fe9adc0509023baf5b48c21ae42f0b1340a93ebdda22a245dd2d11461be"
+        },
+        {
+          "optionId": "pearl-vase",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-pearl-vase.88208682.webp",
+          "sha256": "882086827160eedd4da30e8a5f2ffebdbb0b7298d2372bce3ac9527a9835289b"
+        },
+        {
+          "optionId": "silver-moth",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-silver-moth.f153e3a0.webp",
+          "sha256": "f153e3a0303f867931dd98aac5e97ae9ae91c9c62d32ce3060b05d6f219e1397"
+        },
+        {
+          "optionId": "pearl-garden-snail",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\calla-obscura\\v2\\widget-pearl-garden-snail.5f5dd19f.webp",
+          "sha256": "5f5dd19f8acdd29134d87998eff08fcbf03da4ae0117d364cfdb94ccf9e8bafc"
+        }
+      ]
+    }
+  ],
+  "baselineSelections": 26,
+  "candidateGenerated": true
+}

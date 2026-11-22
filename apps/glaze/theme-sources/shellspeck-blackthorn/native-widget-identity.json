@@ -1,0 +1,18 @@
+{
+  "themeId": "shellspeck-blackthorn",
+  "recipe": [
+    "facet",
+    "eggTit",
+    "eggChips",
+    "cut",
+    "needle",
+    "tiles",
+    "band"
+  ],
+  "art": {
+    "eggTit": "M 34 22 Q 20 18 18 33 L 9 37 L 20 39 Q 20 57 39 59 L 75 85 L 89 89 L 59 54 Q 62 38 48 29 Q 43 24 34 22 M 27 32 L 28 33 M 30 42 Q 43 32 53 43 Q 51 55 40 53 L 30 42 M 34 58 L 34 66 L 28 68 M 43 59 L 45 65 L 51 66 M 13 71 L 74 60 M 65 62 L 63 52 M 23 69 L 20 60",
+    "eggChips": "M 14 28 L 27 14 L 45 22 L 39 44 L 21 46 Z M 53 19 L 73 13 L 87 31 L 78 48 L 57 42 Z M 24 63 L 46 55 L 59 72 L 45 89 L 27 84 Z M 16 31 Q 29 34 39 27 M 57 23 Q 70 27 80 22"
+  },
+  "ornament": "M 18 81 L 46 56 L 79 31 M 39 62 L 33 48 M 58 47 L 65 57 M 29 30 L 38 21 L 48 29 L 42 40 Z M 64 72 L 76 62 L 85 73 L 77 85 Z",
+  "direction": "Whole familiar long-tailed tit with short bill, round body, long complete tail and two coherent feet on a blackthorn twig; irregular shell chips with subtle curled lips as detail. Facet rim echoes the angular broken inlay pieces, cut hour marks, needle hands, tiled charge and band calendar. Compact companion is a short open thorned twig and just two small irregular shell fragments, no whole bird, mosaic medallion or flower wreath. Calendar-only badge adapts independently; date size does not determine clock face."
+}
