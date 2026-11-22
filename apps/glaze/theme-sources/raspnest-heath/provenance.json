@@ -1,0 +1,159 @@
+{
+  "theme": "raspnest-heath",
+  "created": "2026-11-22",
+  "lane": "A",
+  "medium": "Dry excelsior wood-wool sculpture macro photography",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "echidna",
+      "label": "Sliverback Echidna",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. Asset: one independent Glaze artwork, square, genuine transparent background. Theme RASPNEST HEATH: a tangible Australian-inspired heathland assembled as dry EXCELSIOR WOOD-WOOL sculpture, photographed close with exquisite physical detail. Entire animal is made from many irregular thin FLAT brittle wood shavings, tangled short ribbons and pointed splinters. Visible longitudinal pine/hardwood grain, fibrous fractured tips, subtle curled edges, small open inter-strand gaps, compressed dense bundles defining anatomical masses. Natural pale honey, russet bark and smoky brown wood only. Matte dry material, soft diffuse lighting, clear sculptural volume. No smooth solid wooden core showing, no polished carving, no plush/fur, string/thread, wire, woven fabric, clay, paper quilling, rolled rosettes, concentric coils, moss or conventional CGI toy. SUBJECT: one complete squat ECHIDNA walking toward the right in three-quarter view. Distinct long narrow down-curved snout, small dark eye, four short strong broad clawed feet, low domed body covered with a striking radiating crest of rigid pointed wood slivers; the underlying belly and face use finer compressed shavings. A few dry sheaf-like grass leaves beside its feet as one small supporting cluster, also shaved wood. Recognizable healthy animal anatomy, no clothing or tools, no generic spiky ball. Whole body, nose, every claw and every projecting spine comfortably inside central seventy percent of canvas. Generous empty transparent margins on every side, no floor plane, no exterior shadow, no backing board, no rectangular field, no atmosphere. Crisp alpha exterior and real transparent gaps around the wood strands. No typography, labels, borders, icons, UI, clock/battery/calendar symbols, watermark. One subject only; not a sheet or collage. Strong silhouette readable at 85 pixels.",
+      "source": "sources/echidna.4128cb6fa557.png",
+      "sourceSha256": "4128cb6fa557e90414dfe2763e1027bbb399434df987fd25216ead9b4ec4de5f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/echidna.c6a38a4b6fb3.png",
+      "sha256": "c6a38a4b6fb34920b87a01a1ea0e776b63dba33a23ccb50f70d25b4ea165e135",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square, alpha preserved. No subject crop, recolour or artistic edits."
+    },
+    {
+      "id": "frilled-lizard",
+      "label": "Frilled Lizard",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square Glaze artwork with true transparent background. RASPNEST HEATH, a tangible heathland formed entirely from dry EXCELSIOR WOOD-WOOL sculpture. The reference is our own echidna artwork and is used ONLY to match physical material and lighting; create a wholly different subject. Many irregular thin FLAT brittle wood shavings, tangled ribbons and pointed splinters with longitudinal grain, fibrous fractured tips, subtle curved edges, open inter-strand gaps and compressed dense anatomical bundles. Natural pale honey, russet bark and smoky brown woods, matte and dry, diffuse studio macro lighting, convincing material depth. No smooth solid wooden core, polished carving, fur/plush, string/thread, woven fabric, wire, clay, paper quilling, rolled rosettes or concentric coils. Entire subject fits into central 70% with ample truly transparent space on every side; all tips, claws and foliage comfortably inside the image. No floor or shadow outside subject, panel, backing, atmosphere, frame, text, symbols, clock/battery/calendar or UI. Strong singular silhouette readable at85px. SUBJECT: a complete alert Australian-inspired FRILLED LIZARD standing low on four splayed clawed feet, facing left in three-quarter view, with a broad fully spread circular frill around its small head. The frill is a spectacular fan of thin raw wood slivers with branching strut-like shavings and open little gaps, no solid cloth disc. Long narrow tail curls in a wide S beside the body without touching edges. Keep reptile anatomy recognizable and frill, all limbs and tail whole. No echidna or grass clump.",
+      "source": "sources/frilled-lizard.9456057af63f.png",
+      "sourceSha256": "9456057af63f0ebeb827281eec140bb70aef282b08c459e99df173458cb7a9cf",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/frilled-lizard.56d9a7335885.png",
+      "sha256": "56d9a73358858bd376fe6249ea9392c4694e1fd0cdac564430fd3c4d9eee3d3a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square, alpha preserved. No subject crop, recolour or artistic edits.",
+      "references": [
+        {
+          "file": "sources/echidna.4128cb6fa557.png",
+          "sha256": "4128cb6fa557e90414dfe2763e1027bbb399434df987fd25216ead9b4ec4de5f",
+          "purpose": "Own first artwork supplies the physical wood-shaving material and lighting only; new distinct subject."
+        }
+      ]
+    },
+    {
+      "id": "lyrebird-arch",
+      "label": "Lyrebird Arch",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square Glaze artwork with true transparent background. RASPNEST HEATH, a tangible heathland formed entirely from dry EXCELSIOR WOOD-WOOL sculpture. The reference is our own echidna artwork and is used ONLY to match physical material and lighting; create a wholly different subject. Many irregular thin FLAT brittle wood shavings, tangled ribbons and pointed splinters with longitudinal grain, fibrous fractured tips, subtle curved edges, open inter-strand gaps and compressed dense anatomical bundles. Natural pale honey, russet bark and smoky brown woods, matte and dry, diffuse studio macro lighting, convincing material depth. No smooth solid wooden core, polished carving, fur/plush, string/thread, woven fabric, wire, clay, paper quilling, rolled rosettes or concentric coils. Entire subject fits into central 70% with ample truly transparent space on every side; all tips, claws and foliage comfortably inside the image. No floor or shadow outside subject, panel, backing, atmosphere, frame, text, symbols, clock/battery/calendar or UI. Strong singular silhouette readable at85px. SUBJECT: a complete LYREBIRD standing on two delicate strongly articulated clawed feet in profile toward right, with a small plain head and short beak, compact layered wing, and extraordinary raised LYRE-SHAPED tail. Two broad long curved outer tail feathers arch above the whole body and enclose a fan of fine loose straight splinter strands; these are raw wooded feathers, not quilled coils. One clear arch-shaped tail and bird silhouette. Keep both feet, all tail tips and beak comfortably whole. No echidna or lizard.",
+      "source": "sources/lyrebird-arch.c986b99c178c.png",
+      "sourceSha256": "c986b99c178cddc763794d2dfd87044a8720e23167b4f1c13dd58fd8a8daed20",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/lyrebird-arch.c9571bd950d6.png",
+      "sha256": "c9571bd950d61acd16ef40dfb5ac54b2a0ebf0450fea464956fc5f269b549996",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square, alpha preserved. No subject crop, recolour or artistic edits.",
+      "references": [
+        {
+          "file": "sources/echidna.4128cb6fa557.png",
+          "sha256": "4128cb6fa557e90414dfe2763e1027bbb399434df987fd25216ead9b4ec4de5f",
+          "purpose": "Own first artwork supplies the physical wood-shaving material and lighting only; new distinct subject."
+        }
+      ]
+    },
+    {
+      "id": "grass-tree",
+      "label": "Spikestem Grass Tree",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square Glaze artwork with true transparent background. RASPNEST HEATH, a tangible heathland formed entirely from dry EXCELSIOR WOOD-WOOL sculpture. The reference is our own echidna artwork and is used ONLY to match physical material and lighting; create a wholly different subject. Many irregular thin FLAT brittle wood shavings, tangled ribbons and pointed splinters with longitudinal grain, fibrous fractured tips, subtle curved edges, open inter-strand gaps and compressed dense anatomical bundles. Natural pale honey, russet bark and smoky brown woods, matte and dry, diffuse studio macro lighting, convincing material depth. No smooth solid wooden core, polished carving, fur/plush, string/thread, woven fabric, wire, clay, paper quilling, rolled rosettes or concentric coils. Entire subject fits into central 70% with ample truly transparent space on every side; all tips, claws and foliage comfortably inside the image. No floor or shadow outside subject, panel, backing, atmosphere, frame, text, symbols, clock/battery/calendar or UI. Strong singular silhouette readable at85px. SUBJECT: one complete Australian-inspired GRASS-TREE, a stout charcoal-brown tapering trunk made of short darker shattered bark shavings, topped by a radiating fountain of very long narrow pointed pale-honey shaved-wood leaves. The foliage bends down at the ends in a loose spherical fountain; one single tall upright flower spike rises above it with dense little cream wood splinters at its tip. Include exposed low root toes and two tiny fallen seed pods beside the trunk. Strong upright botanical silhouette with a wide fine-leaf canopy and distinct tall spike. All leaf tips and spike comfortably inside the image. Not a palm tree, not a bird, no animals.",
+      "source": "sources/grass-tree.c50c058e88d9.png",
+      "sourceSha256": "c50c058e88d9f2b929db6d42da0c0ba603fd3ddb670b8e48c40f5cd1ff5702f0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/grass-tree.07bba94cc386.png",
+      "sha256": "07bba94cc386440246de1cbf4e0366cfff69c2f4beec9f9b72672bc17de4f369",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square, alpha preserved. No subject crop, recolour or artistic edits.",
+      "references": [
+        {
+          "file": "sources/echidna.4128cb6fa557.png",
+          "sha256": "4128cb6fa557e90414dfe2763e1027bbb399434df987fd25216ead9b4ec4de5f",
+          "purpose": "Own first artwork supplies the physical wood-shaving material and lighting only; new distinct subject."
+        }
+      ]
+    },
+    {
+      "id": "spotted-quoll",
+      "label": "Spotted Quoll",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square Glaze artwork with true transparent background. RASPNEST HEATH, a tangible heathland formed entirely from dry EXCELSIOR WOOD-WOOL sculpture. The reference is our own echidna artwork and is used ONLY to match physical material and lighting; create a wholly different subject. Many irregular thin FLAT brittle wood shavings, tangled ribbons and pointed splinters with longitudinal grain, fibrous fractured tips, subtle curved edges, open inter-strand gaps and compressed dense anatomical bundles. Natural pale honey, russet bark and smoky brown woods, matte and dry, diffuse studio macro lighting, convincing material depth. No smooth solid wooden core, polished carving, fur/plush, string/thread, woven fabric, wire, clay, paper quilling, rolled rosettes or concentric coils. Entire subject fits into central 70% with ample truly transparent space on every side; all tips, claws and foliage comfortably inside the image. No floor or shadow outside subject, panel, backing, atmosphere, frame, text, symbols, clock/battery/calendar or UI. Strong singular silhouette readable at85px. SUBJECT: one complete alert SPOTTED QUOLL, a slender low Australian-inspired marsupial standing on four small distinct clawed feet in profile facing left, with pointed snout, upright rounded ears, long gently curving tapering tail. Body made of russet and smoky-brown wood shavings, with widely separated small clusters of pale cream shavings forming conspicuous irregular natural spots along back and flank; face and legs finer straw. Recognizable living animal form, arched back and curious head. Keep every foot, nose, ears and entire tail whole. Not a fox, cat or echidna, no grass clump, no accessories.",
+      "source": "sources/spotted-quoll.402dbdeb5087.png",
+      "sourceSha256": "402dbdeb508711dbd7161f1109d436329ac6cc846ef5cd31888ef75a9ac5e5d9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/spotted-quoll.516e8f958261.png",
+      "sha256": "516e8f958261fd0edb1265edff7fa94d69be4c19e8a2012e5211438ab732a564",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square, alpha preserved. No subject crop, recolour or artistic edits.",
+      "references": [
+        {
+          "file": "sources/echidna.4128cb6fa557.png",
+          "sha256": "4128cb6fa557e90414dfe2763e1027bbb399434df987fd25216ead9b4ec4de5f",
+          "purpose": "Own first artwork supplies the physical wood-shaving material and lighting only; new distinct subject."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: precise-object-edit. This is a LAYOUT-ONLY reframing edit of our own RASPNEST HEATH wallpaper. Keep exactly the same five wood-shaving sculptures, identities, exact anatomy, poses, physical grain, dry tangled wood material, natural honey/russet colours, diffuse lighting and pale lichen-mint terrain. Preserve relative arrangement: grass-tree back-left/centre, lyrebird back-right, echidna front-left, frilled lizard centre, spotted quoll front-right. Change ONLY whole-scene scale and breathing room: uniformly reduce the ENTIRE five-subject gathering to about80% of its current size and centre it horizontally. Extend the same quiet soft mint sky/background and naturally continuous low wood-wool ground around it. Preserve every echidna spine/claw, lizard frill/tail/feet, both curved lyrebird tail feathers/beak/feet, every grass-tree leaf/spike/root, every quoll spot/claw/ear/tail. The outermost focal tips must be at least10% of image width inside BOTH left and right edges. Lowest quoll tail/claw or echidna foot must end ABOVE76% of image height, leaving at least24% quiet ground below. Keep upper40% quiet mint with no new foliage/objects. Preserve whole coherent landscape; no shrink-to-rectangle panel or blank added bands. Tall portrait wallpaper matching input aspect approximately1290x2796. A centred crop removing9% from top/bottom must leave all five organisms complete with comfortable space even near rounded phone corners. NO new creatures, new plants, scenery props, architecture, text, UI, watermarks, collage, border or frame. This is not a redesign or a change of art style.",
+      "source": "sources/wallpaper.e6bb46e81988.png",
+      "sourceSha256": "e6bb46e819885f2cc478c7118c4f008cc000d983bdcf74298b8de280a109c676",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "c69523738a3ece596df7cadad7abf2de1f0282fbc947768dd8af5eb25d1ed4e7",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Own layout-only whole-scene pullback; final portrait exported at1290x2796 with central aspect adjustment. Original five artworks/native art unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/initial-selected-wallpaper.png",
+          "sha256": "15f6f29151bd26266d1078a0e6b7c4f32db7c7728817ad1f498d81d40e4d8a24",
+          "purpose": "Exact own first selected habitat; layout-only pullback for all phone crops and rounded screen corners."
+        }
+      ],
+      "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

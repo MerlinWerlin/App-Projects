@@ -1,0 +1,135 @@
+{
+  "theme": "raspnest-heath",
+  "integratedBatchThemes": 50,
+  "actualAppAudit": {
+    "id": "raspnest-heath",
+    "name": "Raspnest Heath",
+    "packVersion": 1,
+    "artworks": [
+      "echidna",
+      "frilled-lizard",
+      "lyrebird-arch",
+      "grass-tree",
+      "spotted-quoll"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 2152148,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "allSelectedSourceAndOutputImagesFullyDecoded": true,
+  "selectedArtworks": 5,
+  "largeArtworkSelections": 5,
+  "nativePlans": 9,
+  "allNineChangeWithLiveReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "actualEncodedAssets": {
+    "wallpaper-2796.f3b643fa.webp": "f3b643fa90114d8fffefc88e930254b3b75758d173b4990cb2901a8bb9dc017c",
+    "wallpaper-2556.1af3d902.webp": "1af3d90283728300ea3b9b86a33e866e355c76b8bbd19d3c7385702af31bb53a",
+    "wallpaper-1334.bd2b336f.webp": "bd2b336f7e80612a353b46080d8fdf8edd3f78772fb32615e283f8faad75aad1",
+    "thumb.98814f19.webp": "98814f19d3550172d73be41b1fec54174eac6fc572bf5a80b69149b8e1cd3abc",
+    "widget-echidna.e88478ae.webp": "e88478aee44b1db405cd73b831162cf40c49a56f6bd95d419fdfc190abf12e91",
+    "widget-frilled-lizard.d6775236.webp": "d6775236fdd7954bf1bf75a0f2035ad46a0ae2301b8adeeb694cf59bc43599ca",
+    "widget-lyrebird-arch.cd07a1bf.webp": "cd07a1bf4304576f64aab8205091466fcc4fdc6111ecc37b627cac9cb193b2d9",
+    "widget-grass-tree.954a51dc.webp": "954a51dc470eae72e6c9e710f608dad23a80634fab9d94c0beb4bf35ef9f6189",
+    "widget-spotted-quoll.892d0481.webp": "892d048181a5bcda12f0e7aad405acace3b88b0404820bdaeb99689b380cef61"
+  },
+  "compactCompanion": {
+    "id": "raspnest-heath",
+    "name": "Raspnest Heath",
+    "retainedHeroLayouts": 5,
+    "compactLayouts": 4
+  },
+  "roundedArtwork": {
+    "id": "raspnest-heath",
+    "name": "Raspnest Heath",
+    "gradient": [
+      "#D1DDC9",
+      "#CAD5C2"
+    ],
+    "artifacts": [
+      {
+        "id": "echidna",
+        "label": "Sliverback Echidna",
+        "blend": "transparent",
+        "corePixels": 65008,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "echidna-170.png",
+        "tiny": "echidna-85.png"
+      },
+      {
+        "id": "frilled-lizard",
+        "label": "Frilled Lizard",
+        "blend": "transparent",
+        "corePixels": 53472,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "frilled-lizard-170.png",
+        "tiny": "frilled-lizard-85.png"
+      },
+      {
+        "id": "lyrebird-arch",
+        "label": "Lyrebird Arch",
+        "blend": "transparent",
+        "corePixels": 47859,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "lyrebird-arch-170.png",
+        "tiny": "lyrebird-arch-85.png"
+      },
+      {
+        "id": "grass-tree",
+        "label": "Spikestem Grass Tree",
+        "blend": "transparent",
+        "corePixels": 45889,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "grass-tree-170.png",
+        "tiny": "grass-tree-85.png"
+      },
+      {
+        "id": "spotted-quoll",
+        "label": "Spotted Quoll",
+        "blend": "transparent",
+        "corePixels": 39712,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "spotted-quoll-170.png",
+        "tiny": "spotted-quoll-85.png"
+      }
+    ]
+  },
+  "nativeDescriptorSha256": "43a16e1e296c80a0606003065b2b2179833b68e3b0c811fe193ed701b6e098b5",
+  "nativeSvgPreviews": [
+    "clock-small.svg",
+    "clock-medium.svg",
+    "clock-large.svg",
+    "battery-small.svg",
+    "battery-medium.svg",
+    "battery-large.svg",
+    "calendar-small.svg",
+    "calendar-medium.svg",
+    "calendar-large.svg"
+  ],
+  "actualRuntimeSourceHashes": {
+    "src/core/widgetIdentity.ts": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "src/core/themedWidgetPreview.ts": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888",
+    "targets/widget/ThemedWidgetDrawing.swift": "7c092d15412cfb89f8aa26f80a0caefde335541c02011c9c91c9b84928fe4774"
+  },
+  "category": "Nature",
+  "actualBrowseCategory": "nature",
+  "selectedArtProcessing": "Whole original Fit, no subject crop/recolour/artistic edits. Built-in habitat framing edit has retained exact original/edit lineage.",
+  "visualReview": "Five full and85px encoded rounded tiles, all9actual native layouts and all3actual phone exports inspected; focal tips/claws/tails complete.",
+  "published": false,
+  "installedDeviceVerified": false
+}

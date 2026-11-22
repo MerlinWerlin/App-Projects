@@ -1,0 +1,19 @@
+{
+  "name": "Raspnest Heath",
+  "mood": "Heathland wildlife and a grass-tree emerge from dry tangled wood shavings.",
+  "tags": [
+    "nature",
+    "heathland",
+    "excelsior",
+    "wood-wool",
+    "wood-shavings",
+    "wildlife",
+    "sculpture"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity. Fictional Australian-inspired habitat.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Macro photography of dry excelsior wood-wool sculpture: irregular flat brittle shavings, longitudinal grain, fractured tips and open inter-strand gaps. Full prompts and own references retained in provenance.json.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

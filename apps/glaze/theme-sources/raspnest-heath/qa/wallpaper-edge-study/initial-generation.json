@@ -1,0 +1,40 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Create the matching opaque tall phone wallpaper for RASPNEST HEATH. Output very tall PORTRAIT, 1290x2796, aspect9:19.5. Input images1\u20135 are the five exact OWN artwork subjects: wood-shaving echidna, frilled lizard, lyrebird with lyre-tail arch, grass-tree with tall flower spike, russet spotted quoll. Preserve those five recognizable subjects, identities, anatomy and distinctive natural dry-wood materials. Every organism and low ground made of tangled flat brittle EXCELSIOR WOOD-WOOL shavings with longitudinal grain, fractured tips, compressed dense bundles and open inter-strand gaps. Pale honey/russet/smoky brown woods, matte macro craft photography, soft diffuse daylight. Create ONE coherent quiet heathland habitat, not an arranged row/catalogue, sheet or collage: grass-tree grows at back centre, lyrebird behind right with full lyre arch, echidna browsing low left, quoll stepping low right, frilled lizard alert between them. Their forms are clearly separate, without hiding heads, feet, tails, frill or spike. Set on gently undulating pale LICHEN-MINT sculptural ground with sparse low shaved-wood grasses and subtle natural contact shadows. Upper45% of wallpaper is a very quiet soft lichen-mint empty background fading naturally into distant ground; no foliage arch. All five main subjects fit within CENTRAL75% width, and their entire gathering occupies only the middle-lower35% of image height, from48% to79% height. Leave at least18% quiet ground below the lowest claw/tail/roots and generous side margins. No focal forms touch any edge. The scene must survive a centered short-phone crop removing outer10% of top/bottom with every foot/tail/leaf/spike whole. Keep the echidna\u2019s radiating spines, lizard\u2019s open frill and S-tail, lyrebird\u2019s huge two-curved-feather arch, grass-tree\u2019s fine fountain and spike, and quoll\u2019s pale spots and long tail unmistakable. Landscape may naturally continue beyond edges. No buildings, props, clothing, smooth carved toys, paper quilling/rolled coils, thread, woven cloth, plastic, resin, glow, typography, reading values, UI, frame, border, icons or watermarks. Five subjects only, no extra animals. Fully opaque portrait wallpaper.",
+  "source": "qa/wallpaper-edge-study/wallpaper.93248252a07e.png",
+  "sourceSha256": "93248252a07e9742cf377091b66b9306ba0256cdd7b9faef786d9c846bf20443",
+  "sourceDimensions": [
+    759,
+    2072
+  ],
+  "selectedFile": "qa/wallpaper-edge-study/initial-selected-wallpaper.png",
+  "sha256": "15f6f29151bd26266d1078a0e6b7c4f32db7c7728817ad1f498d81d40e4d8a24",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Separately generated own-reference habitat exported at1290x2796 using central aspect Fit; actual three encoded phone crops require review.",
+  "references": [
+    {
+      "file": "sources/echidna.4128cb6fa557.png",
+      "sha256": "4128cb6fa557e90414dfe2763e1027bbb399434df987fd25216ead9b4ec4de5f"
+    },
+    {
+      "file": "sources/frilled-lizard.9456057af63f.png",
+      "sha256": "9456057af63f0ebeb827281eec140bb70aef282b08c459e99df173458cb7a9cf"
+    },
+    {
+      "file": "sources/lyrebird-arch.c986b99c178c.png",
+      "sha256": "c986b99c178cddc763794d2dfd87044a8720e23167b4f1c13dd58fd8a8daed20"
+    },
+    {
+      "file": "sources/grass-tree.c50c058e88d9.png",
+      "sha256": "c50c058e88d9f2b929db6d42da0c0ba603fd3ddb670b8e48c40f5cd1ff5702f0"
+    },
+    {
+      "file": "sources/spotted-quoll.402dbdeb5087.png",
+      "sha256": "402dbdeb508711dbd7161f1109d436329ac6cc846ef5cd31888ef75a9ac5e5d9"
+    }
+  ]
+}
