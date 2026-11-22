@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "EDIT OUR OWN attached DURUMFOLD MEADOW scene ONLY, preserving every existing pasta animal/plant and its material, color, pose, anatomy, detailed grooves and relative arrangement. ACTUAL centered1290x2796 PHONE export clips the robin's two hollow tail tubes/lefttwig, butterfly's rightwing and outer grass endpoints. Make ONE exact framing correction: uniformly scale the ENTIRE existing connected physical scene to67percent (aboutTWO THIRDS) of its CURRENT physical scene size; do NOT merely scale individual animals or remove anything. Recenter the resulting whole habitat at x50percent/y54percent of this same portrait canvas and seamlessly extend the same pale dusty-lavender background around it. Target physical habitat endpoints aboutx200..830 in1024px-wide working output, sourcey400..1245 in1536px-height; the narrow actual PHONE crop then shows a large~88percent width scene with real55percent vertical presence. This is the only needed framing correction, not a tiny-island pullback. Keep whole robin/twofeet/beak/bothhollowtailtubes/twigleaves, hare/twoears/fourpaws/tail, butterfly/fourwings/twoantennae/sixlegs, snail/wholefoot/fourfeelers, allpoppypetals/bud/leaves/stems/grass endpoints. Preserve natural distinct forms and exact dry tricolour pasta process; no redraw, no changed poses, no added creatures or props. Quiet matching lavender background on all sides, no rectangle/plate/plaque, no border/corner decoration/text/labels/UI/numbers. The five standalone artworks remain unchanged.",
+  "source": "sources/wallpaper.9ec5e408d686.png",
+  "sourceSha256": "9ec5e408d68613e86f70d8e193b308f1aafdd2ef3c4bc8039b737b272e168818",
+  "sourceDimensions": [
+    1024,
+    1536
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "d07d753fa7547ec1a1205d1c903f5a022b46a0caf1a4b8880a9968fe242e3f69",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Own five-reference connected meadow, then one own-scene uniform67percent framing correction because actual phone crops clipped bird tail, butterfly wing and grass endpoints. Mechanical aspect-preserving1290x2796 cover trims quiet lavender only. Five standalone artworks unchanged.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/initial-scene.76c91ef1d561.png",
+      "sha256": "76c91ef1d56181fcfff7f3f5c57866c66ba4903d5a20d64985f714037b890ede",
+      "purpose": "Own ordered five material/subject references or own complete scene framing."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}

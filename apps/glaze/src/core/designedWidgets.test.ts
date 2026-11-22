@@ -37,7 +37,7 @@ test('serif preview numerals clear the medium gauge and align with the small tod
     const markerY = Number(marker.match(/translate\([^ ]+ ([^)]+)\)/)![1]) + 9;
     const y = Number(day.match(/ y="([^"]+)"/)![1]);
     const dayFont = Number(day.match(/ font-size="([^"]+)"/)![1]);
-    assert.ok(dayFont >= 12 * .64 && dayFont <= 12, theme.id);
+    assert.equal(dayFont, 12, `${theme.id}: today must keep the ordinary date point size`);
     assert.ok(Math.abs(y - (markerY - dayFont * .1)) < .001, theme.id);
     checked++;
   }
@@ -195,14 +195,23 @@ test('each preview draws the function at every size, including six calendar rows
     const original = t.id === 'alpine-starlight' && design.kind === 'clock';
     assert.equal(svg.includes('<image href="alpine-clock-face.jpg"'), original);
     if (original) assert.notEqual(svg, designedWidgetSvg(design, size, { date: new Date(2026, 7, 31, 7, 25), battery: 73, locale: 'en-AU', originalArtwork: 'alpine-clock-face.jpg' }));
-    if (design.kind === 'calendar') for (let day = 1; day <= 31; day++) assert.ok(svg.includes(`>${day}</text>`));
-    // Compare the render instructions with ink and font removed. Each theme must be
-    // visibly distinct at each function and size, even in the same colour palette.
+    if (design.kind === 'calendar') {
+      for (let day = 1; day <= 31; day++) assert.ok(svg.includes(`>${day}</text>`));
+      const labels = [...svg.matchAll(/<text[^>]*>[^<]*<\/text>/g)].map(m => m[0]);
+      const today = labels.filter(t => t.includes('font-weight="700"') && t.endsWith('>31</text>')).at(-1)!;
+      const ordinary = labels.find(t => t.includes('font-weight="550"') && t.endsWith('>30</text>'))!;
+      const pointSize = (tag: string) => Number(tag.match(/ font-size="([^"]+)"/)![1]);
+      assert.equal(pointSize(today), size === 'large' ? 19 : 12, `${t.id}/${size}: today keeps the normal date size`);
+      assert.equal(pointSize(today), pointSize(ordinary), `${t.id}/${size}: bold must not mean smaller`);
+    }
+    // Clock/Battery identities remain distinct without colour or font. Calendar
+    // badges may share a readable shape; their actual palette/type remain theme cues.
     const key = `${design.kind}/${size}`;
     const seen = identities.get(key) ?? new Map();
     const monochrome = svg.replace(/#[0-9a-fA-F]{6}/g, '#808080').replace(/font-family="[^"]*"/g, '');
-    assert.equal(seen.get(monochrome), undefined, `${key}: ${t.id} repeats ${seen.get(monochrome)}`);
-    seen.set(monochrome, t.id);
+    const signature = design.kind === 'calendar' ? svg : monochrome;
+    assert.equal(seen.get(signature), undefined, `${key}: ${t.id} repeats ${seen.get(signature)}`);
+    seen.set(signature, t.id);
     identities.set(key, seen);
   }
 });

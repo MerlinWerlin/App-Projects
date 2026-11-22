@@ -1,0 +1,34 @@
+{
+  "id": "longtailed-tit",
+  "prompt": "Use case: precise-object-edit. One targeted MATERIAL correction to INPUT1, own initial Shellspeck Blackthorn tit prototype. Preserve exact whole recognizable long-tailed tit pose, head/bill/small eye, long complete graduated tail, two coherent feet/toes, short blackthorn twig, two thorns, three whole five-petaled blossoms, monochrome ivory/tan/black palette, composition, true transparency and generous margins. CHANGE ONLY stray REAL FEATHERS/FUZZ in cheek, around eye, throat and lower belly into the SAME literal opaque matte thin broken EGGSHELL CHIPS already covering the bird, seated in glossy black lacquer core. The entire bird must be an expertly handmade eggshell-inlay object; no real feather/fur/body visible anywhere under the shell. Face and throat use just5to8 broad smooth irregular opaque ivory shell chips with small tan speckles and tiny naturally chipped lips, delicately curved to coherent bird form. Lower belly uses3to5 same broad chips; thin black lacquer gaps, not a painted feather pattern. Keep modest natural eye as one tiny black lacquer recess with restrained catchlight, not bead/gem/chibi eye. Keep all already-good coarse shell fragments, black lacquer wing/tail areas, blossoms and twig exact in construction; do not add many micro-cracks, metallic cell walls, porcelain glaze, iridescent nacre, extra fauna, jewellery bail, ground/plaque or scenery. Whole bill/tail/paws/flowers/thorns/twig tips remain complete. Preserve TRUE ALPHA exterior/open branch gaps, no halo/shadow/text/UI. Output only corrected standalone bird artwork.",
+  "tool": "built-in image_gen",
+  "source": "sources/longtailed-tit.4e1af7a5.png",
+  "sourceSha256": "4e1af7a5fa580281fb05cbb6f1461f456780a8efc0c3683def7acd87eb0135e2",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/longtailed-tit.2f5d99af.png",
+  "sha256": "2f5d99af07238f6538a9a0793ad2580e216755a21bcbfd8033567836192c3b0c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/material-repair/longtailed-tit-history.json",
+  "referencedImage": {
+    "file": "qa/material-repair/longtailed-tit.original.df83950a.png",
+    "sha256": "df83950a36c4a192fb54094ee95cb8b047eb96d6593607c1d4d1384f410f7fd1"
+  },
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "longtailed-tit-unselected-original",
+      "file": "qa/material-repair/longtailed-tit.original.df83950a.png",
+      "sha256": "df83950a36c4a192fb54094ee95cb8b047eb96d6593607c1d4d1384f410f7fd1",
+      "role": "Own initial unselected prototype EDIT TARGET for one material-only correction; exact original retained unchanged."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/longtailed-tit-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/longtailed-tit-exact-tool-result.json"
+}

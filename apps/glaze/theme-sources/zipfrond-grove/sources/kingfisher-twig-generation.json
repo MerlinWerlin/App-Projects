@@ -1,0 +1,20 @@
+{
+  "id": "kingfisher-twig",
+  "label": "Zip Kingfisher",
+  "tool": "built-in image_gen",
+  "prompt": "ONE original standalone Glaze Nature material prototype for ZIPFROND GROVE. A complete instantly recognizable COMMON KINGFISHER bird perched on one short open alder twig with TWO whole small leaves. Natural compact bird proportions, broad head, very long straight pointed beak, dark round eye, short neck, folded wing, short tail, TWO coherent gripping bird feet, all whole. The entire bird and twig are a tangible ingenious miniature assembled ONLY from FEW BROAD STRIPS OF VINTAGE ZIPPER FASTENER: coarse dull brass interlocking teeth with clearly visible stepped block shapes along MOSS-GREEN COTTON ZIPPER TAPES, stitched woven selvedge edges, opposing toothed rails visibly meeting and separating. Body made from3broad curved paired-rail zipper loops with dark green tape planes between chunky brass teeth, an overlapping folded wing built from ONE flat wide green tape wedge with a full coarse brass-tooth border; complete long straight beak constructed from a tapering closed paired-rail strip with visible interlocks, metal-stop eye, tiny folded tape feet gripping a rolled green zipper-tape twig. One small old functional ZIPPER SLIDER with a short slotted metal pull lies integrated at lower wing seam, unmistakably showing this is a fastener, not jewelry. Thick coarse rectangular teeth must remain readable as repeating interlocks at85px, unlike thin smooth wire coils, copper textile weave, corrugated paper, seed beads or film-strip windows. Brass teeth have satin worn edges, cotton tape is matte moss green, broad sparse tape folds with tiny stitches. No ordinary painted feathers, realistic animal surface, chainmail, fabric plush toy, lace, loose draped silk, ribbons without teeth, gold purl tubes or smooth metal animal sculpture. Gentle neutral macro product-photography lighting; no glow or cast shadow outside physical object. Entire complete recognizable bird and twig centered within CENTRAL66percent SQUARE canvas width and height, ALL beak/tail/feet/leaf tips whole with generous at least15percent true transparent outer margins. Clean TRANSPARENT ALPHA background and open gaps; no backing, plaque, rectangle, display stand, clothing, bag, sewing tools, hands, loose buttons or props. No text, labels, numbers, logos, clocks, dates, battery readings, UI, frame or mockup. Original artistic fastener-construction interpretation, not an actual handmade physical artwork claim.",
+  "source": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+  "sourceSha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/kingfisher-twig.1ca5f0f7.png",
+  "sha256": "1ca5f0f722f34ad5587f26570907f36be9d70c1ce7c4e9511c090ff17a477fae",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square; no crop, recolour, code alpha cleanup or creative raster edits.",
+  "references": []
+}

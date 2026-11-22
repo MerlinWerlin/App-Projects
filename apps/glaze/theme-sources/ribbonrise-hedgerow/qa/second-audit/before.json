@@ -1,0 +1,236 @@
+{
+  "id": "ribbonrise-hedgerow",
+  "prefix": "silk",
+  "branchHeadBefore": "acd65356686d909884d06f3d0f5829aec53cf301",
+  "authority": "Jared via Claude/coordinator SECOND AUDIT00:47: freeze art, enlarge wallpaper75\u201390percent width with real vertical presence; clock form for ART, never for date-marker fitting.",
+  "protectedFiles": {
+    "widgets/bumblebee-clover.8798fb97.png": "8798fb9789b120dc96fed281bad7dd1e6684c2e170063e52abdf5e117d91a648",
+    "widgets/fieldmouse-blackberry.a16ccc09.png": "a16ccc09f999aa96bb657e9feb2fc5fac419d42acc4805ceb7fa090588bd222d",
+    "widgets/foxglove-fern.b4389d09.png": "b4389d09f4c297b1d6dca9aa0fe3abc72acc6cf61f5c7db21aa15947f652c4d3",
+    "widgets/README.md": "0324dbb7e4318bf9d0646aa3189fe6a34b6cf23d30565bc01a7f18f4155efa77",
+    "widgets/redadmiral-nettle.c9e2b042.png": "c9e2b0422a3f03adcd326bd14e982d6e41f2355a55ee0302f901430168662424",
+    "widgets/robin-dogrose.1a621234.png": "1a6212341eead677e1835a05235eb159aab0ee2cdbb4ca217915b25f95e34b75",
+    "widgets/widget-options.json": "6afe9d9f136bb117fc94f844ca9673819cfc97f5c551fbfa8771840be402fa19",
+    "sources/bumblebee-clover-generation.json": "ff49dd342dcebe194ffef92c97efc08d9107fdf594e0c8d0e3190ab7178ab965",
+    "sources/bumblebee-clover.bea14228.png": "bea142284a343dc3a94aab950c9ef2e4ef838868d6ee922e91e6ba1d47168e34",
+    "sources/fieldmouse-blackberry-generation.json": "2845417a1eb2a8aa6f6922eb1e4a5c0e3c3ac6e3e4a61e2bde2fa7d9e993c249",
+    "sources/fieldmouse-blackberry.e36425e9.png": "e36425e96a695f13416332d9ba2089109224e36ce34616bd85ec8e43fc18f3a5",
+    "sources/foxglove-fern-generation.json": "472fc0d232d2162f62cc259bbb9b161cd2117011d9b83fc79fff1739c3276f30",
+    "sources/foxglove-fern.adabbef6.png": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+    "sources/README.md": "37fb033bbd2b19036277f10678220d7e48f855cd6c037582c5d2bc28ca58bd51",
+    "sources/redadmiral-nettle-generation.json": "70de0c77ececd23587806d010d8295e5765bda8debfb06939116f905cc42ad10",
+    "sources/redadmiral-nettle.4b089891.png": "4b0898910b41545426ed1f61265eb626d6bdad30beb26d40cc23bf1c6c583258",
+    "sources/robin-dogrose-generation.json": "5a3ef7e52dcaee099a226733c0ae24e1c1b6ae8647ef90bd601bd64a33b89e4c",
+    "sources/robin-dogrose.78157645.png": "781576454530b5c2dc48840765f6a6c8c12680c0ac064cc8b2a2314d5f633726",
+    "palette.json": "42895efc80af23a9f78f7955cfc05eaf5ecc9e266192a3c2263d9113fe40340a",
+    "meta.json": "1677284d98206a0f4130cfe2efcedb57682857fedc6d719444136412493ce5a7"
+  },
+  "artworkProvenance": [
+    {
+      "id": "foxglove-fern",
+      "prompt": "Precisely MATERIAL-ONLY refine input1, own original Ribbonrise Hedgerow foxglove-and-fern. Preserve exact complete natural one-sided spike, FIVE hanging tubular pink foxglove bells with spotted ivory throats/irregular lower lips, terminal buds, fern frond, three basal leaves, stem structure, natural proportions, silhouette, overall positions/framing and true transparent exterior/gaps. REPLACE the current dense fine parallel silk-thread embroidery/shading texture throughout. It must instead be unmistakably SHORT BROAD SATIN RIBBONWORK. Each pink tubular bell is made from ONLY TWO OR THREE LARGE PLAIN SMOOTH SATIN RIBBON PLANES: a broad softly curved ribbon face, a prominent TURNED-OVER/CURLED RIBBON EDGE at the bell mouth showing lighter underside, and one small PINCHED/TUCKED ANCHORED END near its green calyx. Large flat-to-curved SATIN SHEEN HIGHLIGHTS and broad SHADOWS UNDER EDGE TURNS must remain obvious at85pixels. NO individual longitudinal embroidery threads, long-and-short silk-shading strokes, fine lined stitch fill or fuzzy/frayed fiber surface. Minute woven ribbon grain can be subtle, but broad smooth plane and rolled edge dominate. Make each basal leaf ONE broad flat sage/olive ribbon stitch with a single central fold, a clearly tucked/pierced pointed end and a tiny pinched stitch-entry pucker at its stem. Fern leaflets likewise single short broad smooth ribbon stitches with small turned lips and tucked tips, no thread-painted leaf veins. Keep ribbon segments individually anchored, no free flowing drapery, tied bows, hoop, backing cloth sheet, toy stuffing, raw applique patch seams or metal/gems. Retain spot details INSIDE existing bell throats as a few small dark stitch knots; do not spread dots across outer petals. Preserve original restrained pink/ivory/olive palette and soft lighting, natural flora first. Support linen only exactly under stitched organism, entirely invisible outside silhouette. No extra plant, added flowers/leaves, recompose, crop or subject rescale. TRUE TRANSPARENT ALPHA everywhere outside actual ribbon plant and all internal gaps, no white/gray haze, background fabric, halo, ground/shadow/frame/text/UI. Exactly one own input image.",
+      "tool": "built-in image_gen",
+      "source": "sources/foxglove-fern.adabbef6.png",
+      "sourceSha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/foxglove-fern.b4389d09.png",
+      "sha256": "b4389d09f4c297b1d6dca9aa0fe3abc72acc6cf61f5c7db21aa15947f652c4d3",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/material-repair/foxglove-fern-history.json",
+      "referencedImage": {
+        "file": "qa/material-repair/foxglove-fern.original.da702921.png",
+        "sha256": "da7029212688eeb4eebf143c8b600cd89228f2125f5910f4a315a4315e09ccd6"
+      }
+    },
+    {
+      "id": "robin-dogrose",
+      "prompt": "Input1 is OWN material-reference image ONLY: use its BROAD SMOOTH SATIN ribbon planes, curled lips, tucked ends and pinched stitch entries, NOT its foxglove/fern subject, scale or composition. Create a completely NEW separate subject as described below, no foxgloves/ferns copied. RIBBONRISE HEDGEROW, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL hedgerow flora/fauna with natural recognizable anatomy FIRST. Unmistakable physical SILK RIBBONWORK EMBROIDERY, NOT ordinary thread painting: SHORT BROAD SATIN RIBBONS individually pulled THROUGH very thin LINEN CUT EXACTLY TO ORGANISM SILHOUETTE. Use only a FEW LARGE BROAD SMOOTH PLAIN SATIN PLANES per body/wing/leaf, soft directional sheen and a clearly TURNED-OVER/CURLED EDGE with lighter underside, broad shadow beneath edge turn, tiny pinched STITCH ENTRY/EXIT points and tucked/pierced tips. REMOVE ALL fine longitudinal thread-shading/stitch-fill texture; no individually painted or embroidered fibers. Minute fabric grain may be faint, but a broad plane and edge turn must remain visible at85pixels. Each short broad stitch is a soft flat satin ribbon segment anchored at both ends with a slightly raised middle and tucked point. LOW SHALLOW STITCHED RELIEF, not a stuffed/quilted cloth toy, long flowing cloth figurine or free folded-ribbon bow sculpture. Restrained rose-pink, ivory/champagne, sage/olive, warm taupe/copper and dark plum colors. Natural shapes dominate over craft detail. No soft wool/yarn/knit/crochet/felt/velour/fuzzy pile, feather shafts/barbs, hard metal purl coils, glass beads/enamel, raw layered cut-applique patches, bow/rosette/jewellery sculpture or long draped silk fins. All support linen only directly underneath actual stitches, no rectangle/hoop/backing sheet/ground/plaque/frame/badge/ring. Whole complete subject inside central64percent with18percent REAL EMPTY ALPHA margin each side. Exterior and all open anatomy/branch/flower gaps truly transparent. Every foot/toe/bill/ear/tail/wing/antenna/leaf/petal/stem tip whole, no clipping. No ground/scenery/cast shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One familiar European robin perched naturally on ONE short dogrose twig, small round head, SHORT pointed bill, modest natural tiny dark eye, warm copper-rose breast and ivory/soft taupe wing ribbon stitches, one complete short tail and exactly TWO coherent fine stitched legs with complete toes clasping branch. Two small natural five-petaled pale dogrose flowers and three small compound leaflets beside it, no overgrown wreath. Body and wing formed from only a few SHORT BROAD satin ribbon stitches with pierced tucked points/entry puckers, no literal feathers, knitted wool or long draped silk fins. Whole bird bill/tail/feet and all botanical tips visible.",
+      "tool": "built-in image_gen",
+      "source": "sources/robin-dogrose.78157645.png",
+      "sourceSha256": "781576454530b5c2dc48840765f6a6c8c12680c0ac064cc8b2a2314d5f633726",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/robin-dogrose.1a621234.png",
+      "sha256": "1a6212341eead677e1835a05235eb159aab0ee2cdbb4ca217915b25f95e34b75",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "id": "foxglove-fern",
+          "source": "sources/foxglove-fern.adabbef6.png",
+          "sourceSha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+          "role": "Own approved REFINED broad-satin ribbonwork MATERIAL-ONLY reference, not subject/layout to copy."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/robin-dogrose-exact-tool-request.json"
+    },
+    {
+      "id": "fieldmouse-blackberry",
+      "prompt": "Input1 is OWN material-reference image ONLY: use its BROAD SMOOTH SATIN ribbon planes, curled lips, tucked ends and pinched stitch entries, NOT its foxglove/fern subject, scale or composition. Create a completely NEW separate subject as described below, no foxgloves/ferns copied. RIBBONRISE HEDGEROW, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL hedgerow flora/fauna with natural recognizable anatomy FIRST. Unmistakable physical SILK RIBBONWORK EMBROIDERY, NOT ordinary thread painting: SHORT BROAD SATIN RIBBONS individually pulled THROUGH very thin LINEN CUT EXACTLY TO ORGANISM SILHOUETTE. Use only a FEW LARGE BROAD SMOOTH PLAIN SATIN PLANES per body/wing/leaf, soft directional sheen and a clearly TURNED-OVER/CURLED EDGE with lighter underside, broad shadow beneath edge turn, tiny pinched STITCH ENTRY/EXIT points and tucked/pierced tips. REMOVE ALL fine longitudinal thread-shading/stitch-fill texture; no individually painted or embroidered fibers. Minute fabric grain may be faint, but a broad plane and edge turn must remain visible at85pixels. Each short broad stitch is a soft flat satin ribbon segment anchored at both ends with a slightly raised middle and tucked point. LOW SHALLOW STITCHED RELIEF, not a stuffed/quilted cloth toy, long flowing cloth figurine or free folded-ribbon bow sculpture. Restrained rose-pink, ivory/champagne, sage/olive, warm taupe/copper and dark plum colors. Natural shapes dominate over craft detail. No soft wool/yarn/knit/crochet/felt/velour/fuzzy pile, feather shafts/barbs, hard metal purl coils, glass beads/enamel, raw layered cut-applique patches, bow/rosette/jewellery sculpture or long draped silk fins. All support linen only directly underneath actual stitches, no rectangle/hoop/backing sheet/ground/plaque/frame/badge/ring. Whole complete subject inside central64percent with18percent REAL EMPTY ALPHA margin each side. Exterior and all open anatomy/branch/flower gaps truly transparent. Every foot/toe/bill/ear/tail/wing/antenna/leaf/petal/stem tip whole, no clipping. No ground/scenery/cast shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One familiar natural field mouse walking gently left on a short blackberry sprig, modest rounded ears, small natural dark eyes/nose, four coherent small legs with complete fine stitched paws and one whole long slender curved tail. One small cluster of three ripe dark-plum blackberries and two serrated sage ribbon-stitch leaves beside it, no ground/plinth. Mouse body in short champagne/taupe broad satin ribbon stitches with tiny punctured/tucked tips and stitch-entry puckers; blackberries a few small knotted ribbon loops, not glass beads. Natural proportions, no chibi eyes, costume or bow tied around it. Whole ears/muzzle/tail/paws/leaf tips inside margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/fieldmouse-blackberry.e36425e9.png",
+      "sourceSha256": "e36425e96a695f13416332d9ba2089109224e36ce34616bd85ec8e43fc18f3a5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fieldmouse-blackberry.a16ccc09.png",
+      "sha256": "a16ccc09f999aa96bb657e9feb2fc5fac419d42acc4805ceb7fa090588bd222d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "id": "foxglove-fern",
+          "source": "sources/foxglove-fern.adabbef6.png",
+          "sourceSha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+          "role": "Own approved REFINED broad-satin ribbonwork MATERIAL-ONLY reference, not subject/layout to copy."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/fieldmouse-blackberry-exact-tool-request.json"
+    },
+    {
+      "id": "redadmiral-nettle",
+      "prompt": "Input1 is OWN material-reference image ONLY: use its BROAD SMOOTH SATIN ribbon planes, curled lips, tucked ends and pinched stitch entries, NOT its foxglove/fern subject, scale or composition. Create a completely NEW separate subject as described below, no foxgloves/ferns copied. RIBBONRISE HEDGEROW, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL hedgerow flora/fauna with natural recognizable anatomy FIRST. Unmistakable physical SILK RIBBONWORK EMBROIDERY, NOT ordinary thread painting: SHORT BROAD SATIN RIBBONS individually pulled THROUGH very thin LINEN CUT EXACTLY TO ORGANISM SILHOUETTE. Use only a FEW LARGE BROAD SMOOTH PLAIN SATIN PLANES per body/wing/leaf, soft directional sheen and a clearly TURNED-OVER/CURLED EDGE with lighter underside, broad shadow beneath edge turn, tiny pinched STITCH ENTRY/EXIT points and tucked/pierced tips. REMOVE ALL fine longitudinal thread-shading/stitch-fill texture; no individually painted or embroidered fibers. Minute fabric grain may be faint, but a broad plane and edge turn must remain visible at85pixels. Each short broad stitch is a soft flat satin ribbon segment anchored at both ends with a slightly raised middle and tucked point. LOW SHALLOW STITCHED RELIEF, not a stuffed/quilted cloth toy, long flowing cloth figurine or free folded-ribbon bow sculpture. Restrained rose-pink, ivory/champagne, sage/olive, warm taupe/copper and dark plum colors. Natural shapes dominate over craft detail. No soft wool/yarn/knit/crochet/felt/velour/fuzzy pile, feather shafts/barbs, hard metal purl coils, glass beads/enamel, raw layered cut-applique patches, bow/rosette/jewellery sculpture or long draped silk fins. All support linen only directly underneath actual stitches, no rectangle/hoop/backing sheet/ground/plaque/frame/badge/ring. Whole complete subject inside central64percent with18percent REAL EMPTY ALPHA margin each side. Exterior and all open anatomy/branch/flower gaps truly transparent. Every foot/toe/bill/ear/tail/wing/antenna/leaf/petal/stem tip whole, no clipping. No ground/scenery/cast shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One recognizable red-admiral butterfly with FOUR coherent broad wings partly spread diagonally, slim body, TWO whole antennae and SIX fine coherent stitched legs resting on one short nettle sprig. Black-plum, restrained coral-red bands and ivory small ribbon-stitch accents suggest natural red-admiral wing pattern. Every broad wing is built from SHORT FLAT SATIN RIBBON STITCHES with pierced tucked tips, not broad draped silk koi fins, real feathers, wool fuzz or painted canvas. Nettle has three pointed serrated olive/sage ribbon-stitch leaves with clear natural outline, no added flowers. Whole wings/antennae/legs/stem/leaf tips inside alpha-safe margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/redadmiral-nettle.4b089891.png",
+      "sourceSha256": "4b0898910b41545426ed1f61265eb626d6bdad30beb26d40cc23bf1c6c583258",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/redadmiral-nettle.c9e2b042.png",
+      "sha256": "c9e2b0422a3f03adcd326bd14e982d6e41f2355a55ee0302f901430168662424",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "id": "foxglove-fern",
+          "source": "sources/foxglove-fern.adabbef6.png",
+          "sourceSha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+          "role": "Own approved REFINED broad-satin ribbonwork MATERIAL-ONLY reference, not subject/layout to copy."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/redadmiral-nettle-exact-tool-request.json"
+    },
+    {
+      "id": "bumblebee-clover",
+      "prompt": "Input1 is OWN material-reference image ONLY: use its BROAD SMOOTH SATIN ribbon planes, curled lips, tucked ends and pinched stitch entries, NOT its foxglove/fern subject, scale or composition. Create a completely NEW separate subject as described below, no foxgloves/ferns copied. RIBBONRISE HEDGEROW, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL hedgerow flora/fauna with natural recognizable anatomy FIRST. Unmistakable physical SILK RIBBONWORK EMBROIDERY, NOT ordinary thread painting: SHORT BROAD SATIN RIBBONS individually pulled THROUGH very thin LINEN CUT EXACTLY TO ORGANISM SILHOUETTE. Use only a FEW LARGE BROAD SMOOTH PLAIN SATIN PLANES per body/wing/leaf, soft directional sheen and a clearly TURNED-OVER/CURLED EDGE with lighter underside, broad shadow beneath edge turn, tiny pinched STITCH ENTRY/EXIT points and tucked/pierced tips. REMOVE ALL fine longitudinal thread-shading/stitch-fill texture; no individually painted or embroidered fibers. Minute fabric grain may be faint, but a broad plane and edge turn must remain visible at85pixels. Each short broad stitch is a soft flat satin ribbon segment anchored at both ends with a slightly raised middle and tucked point. LOW SHALLOW STITCHED RELIEF, not a stuffed/quilted cloth toy, long flowing cloth figurine or free folded-ribbon bow sculpture. Restrained rose-pink, ivory/champagne, sage/olive, warm taupe/copper and dark plum colors. Natural shapes dominate over craft detail. No soft wool/yarn/knit/crochet/felt/velour/fuzzy pile, feather shafts/barbs, hard metal purl coils, glass beads/enamel, raw layered cut-applique patches, bow/rosette/jewellery sculpture or long draped silk fins. All support linen only directly underneath actual stitches, no rectangle/hoop/backing sheet/ground/plaque/frame/badge/ring. Whole complete subject inside central64percent with18percent REAL EMPTY ALPHA margin each side. Exterior and all open anatomy/branch/flower gaps truly transparent. Every foot/toe/bill/ear/tail/wing/antenna/leaf/petal/stem tip whole, no clipping. No ground/scenery/cast shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One familiar natural bumblebee resting diagonally on ONE modest red-clover flower head with three whole rounded clover leaflets and short stem. Bee has coherent dark head/small eyes, two antennae, rounded alternating ivory/honey/black-plum short broad satin ribbon-stitch body bands, TWO PAIRS of delicate pale folded ribbon-loop wings and SIX fine coherent stitched legs. No wool fuzz, giant toy eyes, gemstones or extra wings. Clover flower is compact group of short pointed rose ribbon stitches, not a plastic pompom or bouquet. Actual entry puckers and tucked pierced ribbon tips on broad stitches remain visible. Whole bee/wings/legs/antennae/petals/leaflets/stem tips inside generous alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/bumblebee-clover.bea14228.png",
+      "sourceSha256": "bea142284a343dc3a94aab950c9ef2e4ef838868d6ee922e91e6ba1d47168e34",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bumblebee-clover.8798fb97.png",
+      "sha256": "8798fb9789b120dc96fed281bad7dd1e6684c2e170063e52abdf5e117d91a648",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "id": "foxglove-fern",
+          "source": "sources/foxglove-fern.adabbef6.png",
+          "sourceSha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+          "role": "Own approved REFINED broad-satin ribbonwork MATERIAL-ONLY reference, not subject/layout to copy."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/bumblebee-clover-exact-tool-request.json"
+    }
+  ],
+  "nativeIdentity": {
+    "themeId": "ribbonrise-hedgerow",
+    "recipe": [
+      "square",
+      "silkFoxglove",
+      "silkStitches",
+      "pearls",
+      "baton",
+      "tiles",
+      "ticket"
+    ],
+    "art": {
+      "silkFoxglove": "M 41 91 Q 38 61 49 27 Q 54 14 61 8 M 49 29 Q 60 27 66 35 L 67 44 Q 60 48 54 43 L 52 34 M 45 44 Q 58 43 64 53 L 64 63 Q 55 66 50 59 L 49 50 M 42 62 Q 55 61 60 71 L 59 82 Q 50 85 45 77 L 45 68 M 41 84 Q 23 84 19 68 Q 35 67 41 79 M 44 78 Q 59 84 67 89 Q 52 96 43 87 M 25 91 Q 26 69 16 49 M 24 78 L 12 72 M 23 69 L 9 62 M 21 61 L 11 54 M 25 78 L 34 71 M 23 69 L 30 62",
+      "silkStitches": "M 12 23 Q 29 8 45 24 Q 39 41 22 42 Q 15 34 12 23 M 22 42 Q 27 29 45 24 M 55 57 Q 72 40 88 58 Q 82 75 65 77 Q 58 68 55 57 M 65 77 Q 70 63 88 58 M 17 72 L 38 87 M 18 78 L 32 89"
+    },
+    "ornament": "M 24 81 Q 39 59 63 31 M 38 60 Q 20 49 29 28 Q 51 28 62 44 Q 58 58 44 61 M 44 61 Q 45 44 62 44 M 23 78 L 32 84 M 27 72 L 36 78",
+    "direction": "Natural one-sided foxglove tubular flower spike and short fern as full hero; broad pointed satin ribbon stitch folds as detail. Square rim retains12pt today digits; pearl hour markers, baton hands, tiled charge and ticket calendar. Compact companion is one small pulled-ribbon leaf with a tucked tip and two tiny entry stitches, no full foxglove stalk/bird/hoop/bow or medallion."
+  },
+  "requestedFace": "lozenge",
+  "clockArtRationale": "Pointed tucked silk-ribbon leaf stitch.",
+  "oldWallpaper": {
+    "id": "wallpaper",
+    "prompt": "Precise LAYOUT-ONLY edit of input1, own Ribbonrise Hedgerow wallpaper. Preserve exact whole connected natural ribbonwork hedgerow: robin/shortbill/twofeet/complete tail, whole fieldmouse/fourpaws/full curlingtail, low blackberry branch/threeberries/leaflets, three hanging spotted tubular foxglove bells/terminalbuds, fern and two dogrose flowers. Keep exact BROAD SMOOTH SATIN planes, rolled/turned lips/lightundersides, short tucked points/pinchedentry joins, material/palette/lighting/natural anatomy and every internal relative position/proportion unchanged. Uniformly scale ENTIRE existing connected habitat asONE unit to70percent of its CURRENT width and height. Center horizontally with overall habitat center at57percent canvas height. Reconstruct ONLY matching quiet smoky violet #463D4E background around it, same very subtle tonal variation, no visible rectangular paste edge. Final complete whole habitat should occupy about HALF total canvas width, with at least23percent blank quiet background on BOTH left/right sides and generous quiet above/below. Preserve every bud/leaf/flower/fern/bill/toe/ear/tail/branch/berry tip whole. No individual subject resizing, recompose, crop, new/duplicate/replaced subjects, extra foliage/corner decorations, frame/ground/plinth/clothbacking, shadow/glow, text/UI or zoom back in. Keep short ribbon construction unchanged, no fine thread-shading texture or free loose drapery. Entire opaque full portrait wallpaper background, no transparency.",
+    "tool": "built-in image_gen",
+    "source": "sources/wallpaper.d0479755.png",
+    "sourceSha256": "d0479755dee41960409dbe61d32b9df6d05348310ec9c861af34315ea68ddf13",
+    "sourceDimensions": [
+      852,
+      1846
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "dee387099fe75139bf6944c74747e381a0bfd23fb7ae22a0c9b6f5cb2393d2ce",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+    "generationHistory": "qa/layout-repair/wallpaper-history.json",
+    "referencedImage": {
+      "file": "qa/layout-repair/wallpaper.original.5a9c2d8a.png",
+      "sha256": "5a9c2d8a22dab3a81135ba9363b68648683cabfd21146a2011577aa0a699e9fa"
+    }
+  },
+  "oldProductionWallpaperSha256": "dee387099fe75139bf6944c74747e381a0bfd23fb7ae22a0c9b6f5cb2393d2ce",
+  "oldThumbnailSha256": "2259d7553d0f236c05d4f146473546d4c98f57da84a407c561eb7e432b9fdfe4",
+  "rootFreezeMatch": null,
+  "orderedInputs": [
+    {
+      "role": "EDIT TARGET: exact own currently selected wallpaper, to enlarge/recompose only.",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\second-audit\\ribbonrise-hedgerow\\before-selected-wallpaper.png",
+      "retainedFile": "qa/second-audit/previous-selected-wallpaper.png",
+      "sha256": "d0479755dee41960409dbe61d32b9df6d05348310ec9c861af34315ea68ddf13"
+    },
+    {
+      "id": "foxglove-fern",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it.",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\sources\\foxglove-fern.adabbef6.png",
+      "retainedFile": "sources/foxglove-fern.adabbef6.png",
+      "sha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e"
+    },
+    {
+      "id": "robin-dogrose",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it.",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\sources\\robin-dogrose.78157645.png",
+      "retainedFile": "sources/robin-dogrose.78157645.png",
+      "sha256": "781576454530b5c2dc48840765f6a6c8c12680c0ac064cc8b2a2314d5f633726"
+    },
+    {
+      "id": "fieldmouse-blackberry",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it.",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\sources\\fieldmouse-blackberry.e36425e9.png",
+      "retainedFile": "sources/fieldmouse-blackberry.e36425e9.png",
+      "sha256": "e36425e96a695f13416332d9ba2089109224e36ce34616bd85ec8e43fc18f3a5"
+    }
+  ]
+}

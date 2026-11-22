@@ -1,0 +1,53 @@
+{
+  "theme": {
+    "id": "zipfrond-grove",
+    "name": "Zipfrond Grove",
+    "packVersion": 1,
+    "minAppVersion": "1.0.44",
+    "artworks": [
+      "kingfisher-twig",
+      "hedgehog-hawthorn",
+      "moth-wings",
+      "fern-fiddlehead",
+      "oak-acorns"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 1579686,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "globalCounts": {
+    "themes": 83,
+    "artworks": 415,
+    "nativePlans": 747
+  },
+  "scopedTests": {
+    "pass": 63,
+    "fail": 0,
+    "skip": 0
+  },
+  "coreTests": {
+    "pass": 2024,
+    "fail": 0,
+    "skip": 0
+  },
+  "typechecks": "core and node pass",
+  "fiveSeparatelyGeneratedWholeOriginals": true,
+  "actualAppSelectorAndNativePlanner": true,
+  "nativePlansChangeWithLiveInput": true,
+  "batteryNullZeroAndFull": true,
+  "roundedArtworkSolidSilhouettesRetained": true,
+  "compactNativeStrokesRetainedUnderRoundedStress": true,
+  "compactPlacements": 4,
+  "minimumAppVersion": "1.0.44",
+  "todaySamePointSizeAsOrdinaryDates": true,
+  "calendarPointSizes": [
+    12,
+    19
+  ],
+  "pointSizeFixtureThemes": 298,
+  "allThreeExportedPhoneCropsViewed": true,
+  "rendererSha256": "b449a47325934d5b060904b15cff3c8cf0cf1ea7b76d523a41ab096e84b47920",
+  "physicalDeviceTest": false,
+  "published": false
+}

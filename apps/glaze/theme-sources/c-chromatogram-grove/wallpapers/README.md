@@ -1,0 +1,1 @@
+Opaque1290x2796 structural resize of the single original five-own-reference taller paper-nature arrangement. Builder supplies1290x2796,1179x2556,750x1334 crops and240x520 thumbnail. Source and actual crop review in qa. No creative code edits.

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "ginkgo-chromatogram",
+    "kind": "art",
+    "image": "ginkgo-chromatogram.40c63e9def48.png",
+    "sha256": "40c63e9def4862b8b7efca2f5a63e56f07a9ccc0282e54a770f3c590b0aea65c",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ginkgo Chromatogram"
+  },
+  {
+    "id": "butterfly-chromatogram",
+    "kind": "art",
+    "image": "butterfly-chromatogram.449e95215aa2.png",
+    "sha256": "449e95215aa25aef43c0a8a10b3db821a0e4af520497353980da0b24f9c36619",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Butterfly Chromatogram"
+  },
+  {
+    "id": "kingfisher-chromatogram",
+    "kind": "art",
+    "image": "kingfisher-chromatogram.3ce9c2a01f96.png",
+    "sha256": "3ce9c2a01f96e87f32db9ce19d87c7112dc98b03c213a73c464dc27ff1148d13",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Kingfisher Chromatogram"
+  },
+  {
+    "id": "snail-chromatogram",
+    "kind": "art",
+    "image": "snail-chromatogram.69c07e82586b.png",
+    "sha256": "69c07e82586bf75c7be3e856b202106bd06cb9efeade9b35b920206dae7651cd",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Snail Chromatogram"
+  },
+  {
+    "id": "primrose-chromatogram",
+    "kind": "art",
+    "image": "primrose-chromatogram.4779f19f9f2a.png",
+    "sha256": "4779f19f9f2ab9d569a863e7193524739378f845d56065272ca0340b82fb3afc",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Primrose Chromatogram"
+  }
+]

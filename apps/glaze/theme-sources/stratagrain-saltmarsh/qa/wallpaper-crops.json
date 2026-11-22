@@ -3,32 +3,37 @@
   "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
   "variants": [
     {
-      "path": "wallpaper-2796.185106fe.webp",
+      "path": "wallpaper-2796.ef7a8a8a.webp",
       "dimensions": [
         1290,
         2796
       ],
-      "sha256": "185106fe109b69652862acf8f4b2e83b188b67acb3114dc70555fff37db77eff",
+      "sha256": "ef7a8a8a04b290df297a8237a71f43bc4697951a22359234a6c072ad339c6c26",
       "labelX": 20
     },
     {
-      "path": "wallpaper-2556.2d610cd8.webp",
+      "path": "wallpaper-2556.ba4f2b03.webp",
       "dimensions": [
         1179,
         2556
       ],
-      "sha256": "2d610cd82debfec3e13d2cd0b21046ca74b7c03f13897f5f00ca204ad5f6b239",
+      "sha256": "ba4f2b0339f12bc459976683579f5a6c9beb161efa6232da51af39051fd511a3",
       "labelX": 285
     },
     {
-      "path": "wallpaper-1334.88d1c8fa.webp",
+      "path": "wallpaper-1334.9b74f272.webp",
       "dimensions": [
         750,
         1334
       ],
-      "sha256": "88d1c8fac9b978fe87b8032037e20ac088ddcf4fda1f6d9f6e70ccf51187b3d0",
+      "sha256": "9b74f27277cdb39f841c76a13727ce62457e4842706d8e24f4a47d5d6bfb0a69",
       "labelX": 550
     }
   ],
-  "visualReview": "Passed actual1290x2796/1179x2556/750x1334 encoded crops: complete small plover/seal/samphire/sedge/sea-lavender/tidal-bank habitat, all natural tips/bills/feet/whiskers/flippers whole, wide quiet tidal blue-green sides/top/bottom. Uniform whole-habitat layout-only pullback preserves actual two-reference initial sequence and every exact source/request/hash."
+  "visualReview": {
+    "status": "passed",
+    "reviewedAllThreeEncodedVariants": true,
+    "finding": "Whole long-billed curlew/legs/toes, plover and seal/flippers remain complete in all three actual encoded phone crops. Taller sedge and airy lavender join a flowing tidal bank/channel. Broad bonded metal strata remain legible. Wave contour echoes the tidal metal flow; hero/detail/compact marsh fragment remain exact.",
+    "automaticPullbackApplied": false
+  }
 }

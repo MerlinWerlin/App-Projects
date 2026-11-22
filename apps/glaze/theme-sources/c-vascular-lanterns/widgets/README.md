@@ -1,0 +1,1 @@
+Five separately generated pure-art1024square RGBA options, whole original uniformly contained900within1024 with source alpha preserved. Complete organ/tips retained for small/large Fit slots. Native live Clock/Battery/Calendar are code components from native-widget-identity.json, not baked raster readings.

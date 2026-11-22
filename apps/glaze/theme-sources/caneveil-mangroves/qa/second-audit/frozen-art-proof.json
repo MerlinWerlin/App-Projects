@@ -1,0 +1,38 @@
+{
+  "themeId": "caneveil-mangroves",
+  "protectedFiles": {
+    "widgets/egret-roots.14d267b0.png": "14d267b0b43589601353caf7c82076c5eb61eab05804817dab5d0d8c97f8fec3",
+    "widgets/fiddlercrab-sedge.53969b72.png": "53969b72b8adfbf33b2926df767f6344f523a8bec2dc6ec28c30a85eb161d139",
+    "widgets/gecko-leaf.74db5286.png": "74db52863e6c44bbd1316ecc4600d3d2b86b00fb415536cac4aff678a99eb854",
+    "widgets/mangrove-propagules.526f5240.png": "526f5240320889577f26969b43bf22073518f41aa5610ce18d0e37ce116cb967",
+    "widgets/mudskipper-root.166a1faf.png": "166a1faf9dbfe4e255f6fa3863f5fe678d86fb26850f779f52048a42b460f212",
+    "widgets/README.md": "0324dbb7e4318bf9d0646aa3189fe6a34b6cf23d30565bc01a7f18f4155efa77",
+    "widgets/widget-options.json": "ef139375bfb9312cc4b0f474ee9b027af742bc51258ea3fbb3f68b41149f9b3b",
+    "sources/egret-roots-generation.json": "e00db825521708f7814439c42706ca857082f2189442107386711b0facc663d3",
+    "sources/egret-roots.aeecdff4.png": "aeecdff42e6913fdc9f8403d817bc54bd1e71a62e66ecd6612087038cd61101f",
+    "sources/fiddlercrab-sedge-generation.json": "b11ed186fa1217f970d0a41001123b66875a2321a989da968fb3384ec82b683d",
+    "sources/fiddlercrab-sedge.cd99d894.png": "cd99d894ece93b78a6ddee91c95ceeca49667197793d552d6a735999620ca25b",
+    "sources/gecko-leaf-generation.json": "bc50779f764289ee96544bd6dc874d8538dab0506090fc25e021728d673236f3",
+    "sources/gecko-leaf.704a800f.png": "704a800fcad7e6db40a836f3882275ee878e7e6629bee9edeb5802bc591fe6e5",
+    "sources/mangrove-propagules-generation.json": "c7d9d9ea4086a6136b05dc6b88c255ab91275031e01f33975c53dbf897264738",
+    "sources/mangrove-propagules.e1a48cb0.png": "e1a48cb0bb00908b45c7703fcd03e331534786dc3020eef0cca1d870c50ec981",
+    "sources/mudskipper-root-generation.json": "013d188ad382b09b0ee37152f9b0055d5b5caa9adc11649213bae641ae8eb4b7",
+    "sources/mudskipper-root.53fa2b24.png": "53fa2b245aa89dab585ec95aeb8e425b0a5f82c6282d1fe5f5a2289fc6c576a5",
+    "sources/README.md": "37fb033bbd2b19036277f10678220d7e48f855cd6c037582c5d2bc28ca58bd51",
+    "palette.json": "e1c00e621238be71b698a0b3453807cd880391b24ca05f0260e36198769b3a8c",
+    "meta.json": "0472a2633239d418e20e42e72014a14aa754e2703f6a08a0f4f96b95a3a611ee"
+  },
+  "allProtectedBytesIdentical": true,
+  "artworkProvenanceIdentical": true,
+  "nativeHeroDetailOrnamentAndOtherRecipeEntriesIdentical": true,
+  "rootFreezeMatch": {
+    "rootHead": "84802d56739aaa2561e77e6595dd6eeb61a32548",
+    "rootFreezeFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\outputs\\second-audit-art-freeze-before.json",
+    "rootFreezeSha256": "16c6aa7811e73754166d3e4b55f699c63d0b2cd9c3959b15b408e7abc388b4a2",
+    "allWidgetsArtworkProvenanceOriginalsPaletteMetaMatch": true
+  },
+  "faceBefore": "square",
+  "faceAfter": "petal",
+  "artisticFaceRationale": "Cane flowers and fused rounded glass lips.",
+  "scope": "Only selected wallpaper/thumbnail and its provenance plus artistic clock contour changed; palette/meta and every selected artwork/raw/options remain byte-identical."
+}

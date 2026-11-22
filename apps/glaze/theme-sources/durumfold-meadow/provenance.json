@@ -1,0 +1,160 @@
+{
+  "theme": "durumfold-meadow",
+  "created": "2026-11-23",
+  "lane": "A",
+  "medium": "Discrete hard dry tricolour durum-pasta miniature nature sculpture",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "robin-twig",
+      "label": "Durum Robin",
+      "tool": "built-in image_gen",
+      "prompt": "ONE new original Nature material prototype for DURUMFOLD MEADOW. A whole instantly recognizable EUROPEAN ROBIN bird in natural compact side-view proportions, perched on ONE short open meadow-grass stem with two small leaves/seedheads. Build the ENTIRE bird and stem as a clever tangible miniature assembled from a SMALL NUMBER of discrete UNCOOKED TRICOLOUR DURUM-WHEAT PASTA SHAPES. The physical construction must be unmistakable at85px: matte grainy golden semolina, muted tomato-red and spinach-green pieces, visible shell-pasta longitudinal grooves, actual hollow penne openings, pinched scalloped farfalle edges and curved broad orecchiette cups. Body uses TWO overlapping broad CONCHIGLIE shell-pasta cups, one red breast and one golden belly; head one smaller golden ORECCHIETTE cup with a visible curled rim and tiny dark toasted-pasta dot eye. Folded wing is ONE broad spinach-green ridged CONCHIGLIA clearly sitting as a separate dry pasta shell over the body, not an ordinary feather or paper applique. Tail two short golden PENNE tubes with genuine hollow bevelled openings integrated behind the body, complete recognizable bird silhouette. A small pointed red dry-pasta chip forms the whole beak. TWO complete coherent gripping bird feet are each built from a few short bent golden BUCATINI pieces, gripping a slender green dry-pasta stem with two small green shell-pasta leaves. Few convincing hand-assembled dry-pasta seams, no glue strings, restrained macro miniature photography and natural soft light. Material is hard dry semolina with fine starchy grain and characteristic curved shell grooves: NOT baked bread, marzipan, wax, soft dough/clay sculpture, corrugated paper/cardboard flutes, peeling orange skin, satin ribbon, wood grain, feathers, plush, glossy wet cooked pasta, food sauce or painted real animal. All anatomy is made from recognizable discrete pasta pieces; do not hide real natural feathers beneath food decorations. Entire bird, full beak/tail/twofeet/stem/leaf tips WHOLE, centered in central66percent of a square with generous at least15percent TRUE TRANSPARENT margins and clear empty gaps. No plate/bowl/cutlery, ingredients pile, packaging/brand, kitchen, props, pedestal/backing rectangle, floor/cast shadow, glow, halo, text, labels, numbers, clock/date/battery, UI or mockup. Artistic dry-pasta sculpture interpretation, not an authentic physical handmade-object claim.",
+      "source": "sources/robin-twig.deab67584264.png",
+      "sourceSha256": "deab675842643f1372376ff205bc6941abd814f152eef35cb2337134705ba52b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/robin-twig.3a99a0a4.png",
+      "sha256": "3a99a0a4a78ea23f593c40aa67daf21fa5ad82c0af9468265fd6f6608e3f510d",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": []
+    },
+    {
+      "id": "farfalle-butterfly",
+      "label": "Farfalle Butterfly",
+      "tool": "built-in image_gen",
+      "prompt": "ONE completely NEW independent Glaze Nature artwork for DURUMFOLD MEADOW. Our OWN accepted robin reference supplies ONLY discrete UNCOOKED TRICOLOUR DURUM PASTA construction, surface grain and palette; never copy its bird, twig or composition. Build the described whole familiar natural subject entirely from a FEW recognizable separate matte hard dry golden semolina, muted TOMATO-RED and SPINACH-GREEN PASTA PIECES: curved grooved conchiglie shell cups, rimmed orecchiette, genuinely hollow bevel-cut penne, pinched scalloped farfalle, fusilli/cavatappi and thin bent bucatini. Clear physical assembly seams; fine starchy semolina grain and broad shell grooves must survive85px. Restrained macro miniature photography, believable coherent body support. Not real feathers/fur/skin/wing membrane beneath food decorations, not generic soft dough/clay/marzipan, wax, orange peel, satin, wood, corrugated paper/card flutes, plush, cooked wet pasta or sauce. NO plate/bowl/cutlery, food pile, packaging/brand, kitchen, human hands, backdrop rectangle, display pedestal, floor/cast shadow, glow/halo, text, labels, numbers, clock/date/battery/UI or mockup. Whole subject centered in CENTRAL66percent square width/height with all tips WHOLE and at least15percent quiet TRUE TRANSPARENT alpha outer margins and real open gaps. Original artistic dry-pasta sculpture interpretation, no actual handmade-object claim. ONE whole naturally proportioned BUTTERFLY viewed from slightly above, FOUR broad spread wings. Forewing pair is ONE complete large TOMATO-RED FARFALLE bow-tie pasta with its actual central pinch/scalloped outer edges; hindwing pair is ONE smaller SPINACH-GREEN FARFALLE below it, creating4clear wings. One narrow golden fusillo forms segmented central abdomen and thorax, small orecchiette head. TWO long fine bucatini antennae with gently curved ends and SIX short golden pasta legs in3separated pairs, coherent insect body, no additional legs. All four wing tips, both antennae and six feet whole. Leave background empty, no twig or flower.",
+      "source": "sources/farfalle-butterfly.29563dd6bdbb.png",
+      "sourceSha256": "29563dd6bdbb6d334cd37bc21ce48ab93ec7e53f2dd1e1e9366f1c8e5413e61b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/farfalle-butterfly.3a105801.png",
+      "sha256": "3a105801163fe82db6b055e9ce7db8367277c2dda34f3262d373675d3bb02a5a",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/robin-twig.deab67584264.png",
+          "sha256": "deab675842643f1372376ff205bc6941abd814f152eef35cb2337134705ba52b",
+          "purpose": "Own accepted robin supplies discrete dry-pasta material only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "garden-snail",
+      "label": "Lumaconi Snail",
+      "tool": "built-in image_gen",
+      "prompt": "ONE completely NEW independent Glaze Nature artwork for DURUMFOLD MEADOW. Our OWN accepted robin reference supplies ONLY discrete UNCOOKED TRICOLOUR DURUM PASTA construction, surface grain and palette; never copy its bird, twig or composition. Build the described whole familiar natural subject entirely from a FEW recognizable separate matte hard dry golden semolina, muted TOMATO-RED and SPINACH-GREEN PASTA PIECES: curved grooved conchiglie shell cups, rimmed orecchiette, genuinely hollow bevel-cut penne, pinched scalloped farfalle, fusilli/cavatappi and thin bent bucatini. Clear physical assembly seams; fine starchy semolina grain and broad shell grooves must survive85px. Restrained macro miniature photography, believable coherent body support. Not real feathers/fur/skin/wing membrane beneath food decorations, not generic soft dough/clay/marzipan, wax, orange peel, satin, wood, corrugated paper/card flutes, plush, cooked wet pasta or sauce. NO plate/bowl/cutlery, food pile, packaging/brand, kitchen, human hands, backdrop rectangle, display pedestal, floor/cast shadow, glow/halo, text, labels, numbers, clock/date/battery/UI or mockup. Whole subject centered in CENTRAL66percent square width/height with all tips WHOLE and at least15percent quiet TRUE TRANSPARENT alpha outer margins and real open gaps. Original artistic dry-pasta sculpture interpretation, no actual handmade-object claim. ONE whole recognizable GARDEN SNAIL crawling in side view, long low continuous foot, raised neck/head with TWO long upper eye stalks each ending in a tiny dark toasted-pasta dot and TWO shorter lower feelers. Shell is a single large GOLDEN ridged LUMACONI/conchiglione dry-pasta shell, clearly curved and partially coiled with a characteristic hollow mouth and semolina shell grooves; one small tomato-red pasta rim accent. Body/foot is a broad flattened SPINACH-GREEN lasagne strip with fine dry starchy texture, coherent gastropod form rather than a toy wheel/gear. Golden bent bucatini neck and four stalks integrated naturally. All shell, long foot ends and4feelers whole. One tiny green grooved shell-pasta leaf beside its foot, no bird or backing.",
+      "source": "sources/garden-snail.010c8f8d46b4.png",
+      "sourceSha256": "010c8f8d46b43858eacbb092582a043bdb3c71473b5c50d334286e17a311cd68",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/garden-snail.c2e2cbc7.png",
+      "sha256": "c2e2cbc758c45726ee664fca6118abbb2f6892633a0429404861b47087593be2",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/robin-twig.deab67584264.png",
+          "sha256": "deab675842643f1372376ff205bc6941abd814f152eef35cb2337134705ba52b",
+          "purpose": "Own accepted robin supplies discrete dry-pasta material only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "poppy-stems",
+      "label": "Shell Poppies",
+      "tool": "built-in image_gen",
+      "prompt": "ONE completely NEW independent Glaze Nature artwork for DURUMFOLD MEADOW. Our OWN accepted robin reference supplies ONLY discrete UNCOOKED TRICOLOUR DURUM PASTA construction, surface grain and palette; never copy its bird, twig or composition. Build the described whole familiar natural subject entirely from a FEW recognizable separate matte hard dry golden semolina, muted TOMATO-RED and SPINACH-GREEN PASTA PIECES: curved grooved conchiglie shell cups, rimmed orecchiette, genuinely hollow bevel-cut penne, pinched scalloped farfalle, fusilli/cavatappi and thin bent bucatini. Clear physical assembly seams; fine starchy semolina grain and broad shell grooves must survive85px. Restrained macro miniature photography, believable coherent body support. Not real feathers/fur/skin/wing membrane beneath food decorations, not generic soft dough/clay/marzipan, wax, orange peel, satin, wood, corrugated paper/card flutes, plush, cooked wet pasta or sauce. NO plate/bowl/cutlery, food pile, packaging/brand, kitchen, human hands, backdrop rectangle, display pedestal, floor/cast shadow, glow/halo, text, labels, numbers, clock/date/battery/UI or mockup. Whole subject centered in CENTRAL66percent square width/height with all tips WHOLE and at least15percent quiet TRUE TRANSPARENT alpha outer margins and real open gaps. Original artistic dry-pasta sculpture interpretation, no actual handmade-object claim. ONE complete small familiar FIELD POPPY plant with TWO red blooms on gently bowed green bucatini stems: one open flower with exactlyFOUR broad overlapping TOMATO-RED conchiglie shell-pasta petals surrounding a compact tiny dark toasted-pasta center; the second partly side-facing four-petal bloom, plus ONE closed green shell-pasta bud. Broad dry-shell grooves and rims remain obvious, no realistic tissue or paper petals. Two complete modest SPINACH-GREEN deeply lobed leaves assembled from small scalloped farfalle pieces and a short whole stem base. All petal tips, bud, leaf lobes and stem ends whole. Keep stems open, no dense bouquet, pot, ground or plaque.",
+      "source": "sources/poppy-stems.7439963480c1.png",
+      "sourceSha256": "7439963480c103ec733a33ab3cd08178581aa277b143907d741d1cfabf779839",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/poppy-stems.fcfe266a.png",
+      "sha256": "fcfe266a0a84cd8078ab2187ddb25a6fb4ad936b0336ef70c05dff363359cfe2",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/robin-twig.deab67584264.png",
+          "sha256": "deab675842643f1372376ff205bc6941abd814f152eef35cb2337134705ba52b",
+          "purpose": "Own accepted robin supplies discrete dry-pasta material only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "sitting-hare",
+      "label": "Penne Hare",
+      "tool": "built-in image_gen",
+      "prompt": "ONE completely NEW independent Glaze Nature artwork for DURUMFOLD MEADOW. Our OWN accepted robin reference supplies ONLY discrete UNCOOKED TRICOLOUR DURUM PASTA construction, surface grain and palette; never copy its bird, twig or composition. Build the described whole familiar natural subject entirely from a FEW recognizable separate matte hard dry golden semolina, muted TOMATO-RED and SPINACH-GREEN PASTA PIECES: curved grooved conchiglie shell cups, rimmed orecchiette, genuinely hollow bevel-cut penne, pinched scalloped farfalle, fusilli/cavatappi and thin bent bucatini. Clear physical assembly seams; fine starchy semolina grain and broad shell grooves must survive85px. Restrained macro miniature photography, believable coherent body support. Not real feathers/fur/skin/wing membrane beneath food decorations, not generic soft dough/clay/marzipan, wax, orange peel, satin, wood, corrugated paper/card flutes, plush, cooked wet pasta or sauce. NO plate/bowl/cutlery, food pile, packaging/brand, kitchen, human hands, backdrop rectangle, display pedestal, floor/cast shadow, glow/halo, text, labels, numbers, clock/date/battery/UI or mockup. Whole subject centered in CENTRAL66percent square width/height with all tips WHOLE and at least15percent quiet TRUE TRANSPARENT alpha outer margins and real open gaps. Original artistic dry-pasta sculpture interpretation, no actual handmade-object claim. ONE whole natural LONG-EARED BROWN HARE sitting gently in side-three-quarter view, lean upright chest, long head, TWO long complete upright ears, small dark toasted-pasta eye, small rounded tail, TWO slim forepaws and TWO strong long hindfeet visible and anatomically coherent. Body is a few overlapping large GOLDEN conchiglie shell-pasta cups with visible longitudinal shell ribs and clear separate rims; near hind haunch a broad TOMATO-RED orecchiette cup, folded green shell-pasta shoulder accent. Long ears are two tall tapered golden penne tubes split lengthwise, their red inside dry-pasta rims visible, not real fur or smooth clay. Thin bent golden bucatini forelegs, broad long dry-pasta chip hindfeet. All four paws, both ears and tail fully in frame. One small open green shell-pasta grass tuft beside feet, no bird or plate.",
+      "source": "sources/sitting-hare.9f07d83c80ae.png",
+      "sourceSha256": "9f07d83c80ae3e9e0fb2d6854d824d0f443a190acf2d40ba1e750f3b0e7eae38",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/sitting-hare.c93e67f1.png",
+      "sha256": "c93e67f1f673596bf0416dc7f2c81cfd85df1b55db034095cffb3c3a6e9a404d",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/robin-twig.deab67584264.png",
+          "sha256": "deab675842643f1372376ff205bc6941abd814f152eef35cb2337134705ba52b",
+          "purpose": "Own accepted robin supplies discrete dry-pasta material only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "EDIT OUR OWN attached DURUMFOLD MEADOW scene ONLY, preserving every existing pasta animal/plant and its material, color, pose, anatomy, detailed grooves and relative arrangement. ACTUAL centered1290x2796 PHONE export clips the robin's two hollow tail tubes/lefttwig, butterfly's rightwing and outer grass endpoints. Make ONE exact framing correction: uniformly scale the ENTIRE existing connected physical scene to67percent (aboutTWO THIRDS) of its CURRENT physical scene size; do NOT merely scale individual animals or remove anything. Recenter the resulting whole habitat at x50percent/y54percent of this same portrait canvas and seamlessly extend the same pale dusty-lavender background around it. Target physical habitat endpoints aboutx200..830 in1024px-wide working output, sourcey400..1245 in1536px-height; the narrow actual PHONE crop then shows a large~88percent width scene with real55percent vertical presence. This is the only needed framing correction, not a tiny-island pullback. Keep whole robin/twofeet/beak/bothhollowtailtubes/twigleaves, hare/twoears/fourpaws/tail, butterfly/fourwings/twoantennae/sixlegs, snail/wholefoot/fourfeelers, allpoppypetals/bud/leaves/stems/grass endpoints. Preserve natural distinct forms and exact dry tricolour pasta process; no redraw, no changed poses, no added creatures or props. Quiet matching lavender background on all sides, no rectangle/plate/plaque, no border/corner decoration/text/labels/UI/numbers. The five standalone artworks remain unchanged.",
+      "source": "sources/wallpaper.9ec5e408d686.png",
+      "sourceSha256": "9ec5e408d68613e86f70d8e193b308f1aafdd2ef3c4bc8039b737b272e168818",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "d07d753fa7547ec1a1205d1c903f5a022b46a0caf1a4b8880a9968fe242e3f69",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Own five-reference connected meadow, then one own-scene uniform67percent framing correction because actual phone crops clipped bird tail, butterfly wing and grass endpoints. Mechanical aspect-preserving1290x2796 cover trims quiet lavender only. Five standalone artworks unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/initial-scene.76c91ef1d561.png",
+          "sha256": "76c91ef1d56181fcfff7f3f5c57866c66ba4903d5a20d64985f714037b890ede",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        }
+      ],
+      "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

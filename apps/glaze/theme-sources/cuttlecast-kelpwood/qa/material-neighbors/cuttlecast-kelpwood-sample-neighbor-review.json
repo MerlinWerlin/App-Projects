@@ -1,0 +1,230 @@
+{
+  "scope": "Actual read-only images, independent bytes/hash verification; no neighbors used as generation inputs, publication or current-live-R2 claim.",
+  "ownMaterialNeighbors": [
+    {
+      "label": "B36 seahorse sample",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-6ede9c3e-0844-456d-a09b-608749233abf.png",
+      "sha256": "a4e78d6284d51587085d4ef01c0fef9160df5033019392b1af157b17f1fff5c7"
+    },
+    {
+      "label": "tinwake-understory",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\tinwake-understory\\widgets\\fern-fiddlehead.ede17d73.png",
+      "sha256": "ede17d73ef5f321409bd61b1854864705c219a6ad0183a68b03580672656245c"
+    },
+    {
+      "label": "stratagrain-saltmarsh",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\stratagrain-saltmarsh\\widgets\\plover-samphire.98f537e2.png",
+      "sha256": "98f537e2cb53349049a0f49c8a3d2bc5c0095dd3f2d0edef96ea10f477b40e55"
+    },
+    {
+      "label": "silverthorn-dunes",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\silverthorn-dunes\\widgets\\fennec-thornsprig.a748c3cb.png",
+      "sha256": "a748c3cbde43771387023d6a285b7b6508afe0d2c829c154319aeb768f8bd3ef"
+    },
+    {
+      "label": "purlwake-reedbeds",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\water-vole-rush.0916c484.png",
+      "sha256": "0916c484b5f67b05a66b107a9c0a36486879f7f7606e65c1d7dc1da42bca65f0"
+    },
+    {
+      "label": "copper-selvedge",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\copper-selvedge\\widgets\\warp-fall.654200c5.png",
+      "sha256": "654200c583abf661c7e333702c349b4929123ca08995e50073f8af58ce738333"
+    },
+    {
+      "label": "chargrain-passage",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\chargrain-passage\\widgets\\switchback-caravan.57e4dbbf.png",
+      "sha256": "57e4dbbf89c11b9acb80dea460fc1a51d6a6f2504366c8ea7f32c3575ae366af"
+    }
+  ],
+  "baselineSelectorExport": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\cuttle-neighbor-selections.json",
+  "selectorExportSha256": "8224269a99027a1fb69250d5ef918eee91b96a2609abffd1fb499911bf8aa528",
+  "baselineGroups": [
+    {
+      "id": "silver-orchard",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\manifest.json",
+      "manifestSha256": "362c68c2e293fd4a5388a96f360d6eb719bb7b677e22750c5bd844fce73d829f",
+      "selections": [
+        {
+          "optionId": "glass-orchard-snail",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-glass-orchard-snail.10df11be.webp",
+          "sha256": "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025"
+        },
+        {
+          "optionId": "silver-leaf-lantern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-silver-leaf-lantern.0e3e56b7.webp",
+          "sha256": "0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c"
+        },
+        {
+          "optionId": "silver-dormouse",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-silver-dormouse.9881d967.webp",
+          "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-small.089da6c1.webp",
+          "sha256": "089da6c1648f56007ef17d84b1d59d34a31738957331be428ac2cb782df42ad4"
+        }
+      ]
+    },
+    {
+      "id": "marquetry-arc",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\manifest.json",
+      "manifestSha256": "0db1ccd4e51227cad95711f97001ed455e43958c6ee90b66a65037e6e2460a2a",
+      "selections": [
+        {
+          "optionId": "chevron-grain",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\widget-chevron-grain.94c0c565.webp",
+          "sha256": "94c0c565d9d81ac90edbee1e7b55561ec4877d0ad38f26600f4f12882d852bbc"
+        },
+        {
+          "optionId": "nested-arch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\widget-nested-arch.20144052.webp",
+          "sha256": "20144052b035119259194e5cae696eb1bcd80ee3e2447de6b04c3b4f4cf26096"
+        },
+        {
+          "optionId": "veneer-sun",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\marquetry-arc\\v1\\widget-veneer-sun.1fc211fe.webp",
+          "sha256": "1fc211fe9992e89e0900f1c4ea9f17054f4c15a0a33820eb2cc118b0beab2543"
+        }
+      ]
+    },
+    {
+      "id": "cobalt-caravan",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cobalt-caravan\\v6\\manifest.json",
+      "manifestSha256": "3616b518b5f1391cd4b419aed97085aaaac16d915364965503ba6b9f440cbdd3",
+      "selections": [
+        {
+          "optionId": "lapis-compass",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cobalt-caravan\\v6\\widget-lapis-compass.529ff43b.webp",
+          "sha256": "529ff43b394eec6999d1e5d437482fea887a688b4ebf74c9b72d906634c9199a"
+        },
+        {
+          "optionId": "oasis-bird",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cobalt-caravan\\v6\\widget-oasis-bird.6a06c2c3.webp",
+          "sha256": "6a06c2c3b52cdb0ca1fc473a9578dff4a201d4c01132c04480c19829feea0292"
+        },
+        {
+          "optionId": "sand-cat",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cobalt-caravan\\v6\\widget-sand-cat.e189ed45.webp",
+          "sha256": "e189ed4579fb02d61af772fe723c56469a9994d3f1dbf98b7fd3310013743398"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cobalt-caravan\\v6\\widget-small.c090a4cb.webp",
+          "sha256": "c090a4cb20ba8c1323de70c4f944212eafc37c3c51bc407a0fa22b8a33b98686"
+        }
+      ]
+    },
+    {
+      "id": "silver-orchard",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\manifest.json",
+      "manifestSha256": "f0c5454848045a5b87d6477f8eedfa515a1d4ac866a53b4e737b140eb42dd0c5",
+      "selections": [
+        {
+          "optionId": "glass-orchard-snail",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-glass-orchard-snail.10df11be.webp",
+          "sha256": "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025"
+        },
+        {
+          "optionId": "silver-leaf-lantern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-silver-leaf-lantern.0e3e56b7.webp",
+          "sha256": "0e3e56b70b741ea1ad582c65d2dae2653ccc25efa6f4bfd550b5bb97ad551e6c"
+        },
+        {
+          "optionId": "silver-dormouse",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-silver-dormouse.9881d967.webp",
+          "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-small.089da6c1.webp",
+          "sha256": "089da6c1648f56007ef17d84b1d59d34a31738957331be428ac2cb782df42ad4"
+        },
+        {
+          "optionId": "silver-pear-blossom",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-silver-pear-blossom.885b3b43.webp",
+          "sha256": "885b3b43228dd4d1e86fc6bbda5e320ce001928e421aeb1deec40470e6f0f75b"
+        }
+      ]
+    },
+    {
+      "id": "marquetry-arc",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\manifest.json",
+      "manifestSha256": "245eb3d1e5c5ca650ce1cea7cffce12d459ad84f388c8e698548fdc5fb0844e9",
+      "selections": [
+        {
+          "optionId": "chevron-grain",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-chevron-grain.94c0c565.webp",
+          "sha256": "94c0c565d9d81ac90edbee1e7b55561ec4877d0ad38f26600f4f12882d852bbc"
+        },
+        {
+          "optionId": "nested-arch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-nested-arch.20144052.webp",
+          "sha256": "20144052b035119259194e5cae696eb1bcd80ee3e2447de6b04c3b4f4cf26096"
+        },
+        {
+          "optionId": "veneer-sun",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-veneer-sun.1fc211fe.webp",
+          "sha256": "1fc211fe9992e89e0900f1c4ea9f17054f4c15a0a33820eb2cc118b0beab2543"
+        },
+        {
+          "optionId": "bowtie-inlay",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-bowtie-inlay.bc521627.webp",
+          "sha256": "bc5216271b5cb3aa5cfa04346b4a6e066cf2e96d000346804bb5c742bbed4677"
+        },
+        {
+          "optionId": "veneer-wave",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\marquetry-arc\\v2\\widget-veneer-wave.8fdca9e0.webp",
+          "sha256": "8fdca9e0cda4113e7c9c116a314ffc4a8c0d0947bcc08794da4703f361116750"
+        }
+      ]
+    },
+    {
+      "id": "cobalt-caravan",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cobalt-caravan\\v7\\manifest.json",
+      "manifestSha256": "d8301128a7d2cbc01f38157262be3e4eab08af3d49e1d0eb5002829f41313147",
+      "selections": [
+        {
+          "optionId": "lapis-compass",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cobalt-caravan\\v7\\widget-lapis-compass.529ff43b.webp",
+          "sha256": "529ff43b394eec6999d1e5d437482fea887a688b4ebf74c9b72d906634c9199a"
+        },
+        {
+          "optionId": "oasis-bird",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cobalt-caravan\\v7\\widget-oasis-bird.6a06c2c3.webp",
+          "sha256": "6a06c2c3b52cdb0ca1fc473a9578dff4a201d4c01132c04480c19829feea0292"
+        },
+        {
+          "optionId": "sand-cat",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cobalt-caravan\\v7\\widget-sand-cat.e189ed45.webp",
+          "sha256": "e189ed4579fb02d61af772fe723c56469a9994d3f1dbf98b7fd3310013743398"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cobalt-caravan\\v7\\widget-small.c090a4cb.webp",
+          "sha256": "c090a4cb20ba8c1323de70c4f944212eafc37c3c51bc407a0fa22b8a33b98686"
+        },
+        {
+          "optionId": "lapis-dune-scarab",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cobalt-caravan\\v7\\widget-lapis-dune-scarab.cb0909ba.webp",
+          "sha256": "cb0909ba05570feb1a3b8be006246b52ac53a883139764642ed5ba49a7e23b48"
+        }
+      ]
+    }
+  ],
+  "baselineSelections": 26,
+  "candidateGenerated": true
+}

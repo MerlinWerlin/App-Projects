@@ -52,12 +52,12 @@
   "sharedRuntimeChanged": false,
   "published": false,
   "deviceValidation": false,
-  "registryIntegration": "Coordinator import pending; approved C30-only face correction ready",
+  "registryIntegration": "Coordinator pending",
   "ornamentParsed": true,
   "nativeRendererSource": {
     "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
     "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
-    "previewSha256": "d222a8f3b5322b3787769d9fde15f5aec22782433bed9c376b6665e8b8c493c7"
+    "previewSha256": "0b8233b631cc1898a89fe6fcc4dc398f3e100099f95944ccb85e6fc25639ed57"
   },
   "previews": [
     {
@@ -118,7 +118,7 @@
   "visualReview": {
     "fiveArtworks": "Viewed all five full selected images together and actual encoded85px. Five distinct plant silhouettes: five-lobed fig, round peltate nasturtium, three-leaf heart-shaped linden twig, elongated curved hosta and paired ginkgo fans. Five complete different wildlife photographs remain recognizable within those leaves. Green/straw continuous photographic tones with normal veins across bird/body/shell/wings establish intrinsic tissue without decal/photo rectangle, ink hatch, metal or glass. All five art originals are independent first-generation outputs; no artwork edits or near-duplicate fig portraits. Coordinator accepted actual first fig/whole-robin/full170/85 and six-neighbor material distinction before expansion.",
     "wallpaper": "Viewed all three actual encoded1290x2796,1179x2556 and750x1334 crops. Coherent own-five-reference leaf still life followed by one35percent own-scene pullback/four own-art supports. Every carrier lobe, petiole, full linden twig, hosta tip and two ginkgo fans retained with margins; each complete pictured animal remains inside its leaf and unobscured. Quiet warm cream upper and lower fields, soft contact shadows confined to small arrangement. No separate physical animals or leaf-shaped creatures. Ten own reference uses/six distinct images and one unselected original scene hash verified.",
-    "native": "Viewed all nine refreshed actual coordinator SVG previews after the approved C30-only petal-to-rounded-square face change. Whole fig leaf, perched robin, continuing veins, ray marks, leaf hands, column battery, folio calendar and small open natural leaf/vein header ornament are unchanged. Rounded-square face also gives today dates a complete filled backing. Actual current small Calendar SVG reproduced byte-for-byte; all31January dates plus exact22November at1x/2x/4x pass actual filled-contour alpha96/128 masks (96cases), with original12pt date font. Nine changing live layouts, battery null/0/100 and ornament roundtrip pass. Windows Georgia SVG and layout review, not Apple New York or installed-device qualification.",
+    "native": "Viewed all nine refreshed actual current coordinator SVG layouts with restored PETAL face. Whole fig/robin/continuing veins and quiet small leaf corner unchanged. Calendar marker is independent of the clock face; root owns cross-platform point-size equality and marker checks.",
     "roundedArtworkCorners": "Viewed all five actual encoded Artwork tiles on real app gradients with Fit6percent inset and conservative20percent rounded mask. All30Cthemes/150artworks retain every visible alpha16 pixel. Explicit900within1024 whole-source fit gives this large-leaf set extra quiet cream margins, while all five pictured animals remain readable. No original raster asset changed by review. UI layout simulation, not installed-device proof."
   },
   "ownerSteeringReview": "Recognizable real Nature. Whole photographic robin/frog/squirrel/snail/butterfly images inside intrinsic green/straw pigment of five distinct fig/nasturtium/linden/hosta/ginkgo plant carriers. Natural veins continue across images; quiet cream Artwork corners and small natural open leaf/vein native fragment. Artistic digital chlorotype interpretation, not an authentic physical print or measured plant response.",
@@ -167,7 +167,7 @@
   "wallpaperReferenceHashesMatched": 10,
   "wallpaperDistinctReferenceImages": 6,
   "artworkOwnStudyReferenceHashesMatched": 0,
-  "packTestEvidence": "Actual offline builder v1:9assets/0.96MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and10own wallpaper reference hashes pass. Shared runtime unchanged in this lane; combined runtime qualification remains coordinator-owned.",
+  "packTestEvidence": "Existing unchanged 9 encoded assets fully decode and match their hashes. Actual manifest/catalogue parsers select five pure artworks and plan nine changing native Clock/Battery/Calendar layouts; ornament roundtrip and battery null/0/100 pass. Source hashes protect all art, wallpaper, options, palette, metadata, prompts and provenance. Historical filled-contour studies do not constrain the face or text size.",
   "minAppVersion": "1.0.44",
   "candidateCompatibilityFloorVerified": true,
   "wholeOriginalContainment": {
@@ -179,19 +179,43 @@
     "rawAlphaPreserved": true
   },
   "scope": "Actual source and encoded pack validation, current coordinator SVG previews and rounded-layout simulation. No installed-device claim.",
-  "calendarFilledContourReview": {
-    "faceBefore": "petal",
-    "faceAfter": "square",
-    "font": "Georgia,serif",
-    "fontSize": 12,
-    "actualCurrentSvgReproduced": true,
-    "caseCount": 96,
-    "allAlpha96Inside": true,
-    "allAlpha128Inside": true,
-    "maxWeightedInkOutsidePercent": 0.005203385471255755,
-    "protectedFileCount": 30,
+  "secondAuditSourceCorrection": {
+    "request": "Second audit: restore PETAL clock contour; today equals normal date point size and is bold at all three sizes, marker independent of clock contour. Shared rendering qualification remains coordinator-owned.",
+    "beforeFace": "square",
+    "afterFace": "petal",
+    "protectedFileCount": 24,
+    "protectedHashes": {
+      "meta.json": "181fa63e7b611708ad4be8ba5b3c8f237275c49ac7b9d496feebe3a2f3fc6c22",
+      "palette.json": "3a61e63b46e1b8a7cf30cac934d59a82f122da92d682ce41b8ff51a2ae4bac58",
+      "prompts.json": "70d2a034b7d42920e6935db378928ec94233cf67a052bc3fa81dd207acf09438",
+      "provenance.json": "a8f8a5755a663419d059417f08674cec0523ef2f3abc3cc0cb1dcad16f450820",
+      "intermediate-first-sample/fig-robin-pending.727bfb5a466f.png": "727bfb5a466f23162b3fbed812c26d3cd9b39725bb0cd6c3243956bb99a7c9aa",
+      "intermediate-first-sample/first-generation.json": "a23e06fa7b8267913758b6a88d2b749151ffa193840913149970cc3e81fb2037",
+      "intermediate-wallpaper-framing-study/first-generation.json": "1b589f153646d4597ddf961df2be4610a57620317068d657c41fe59953824101",
+      "intermediate-wallpaper-framing-study/first-large-arrangement-unselected.88fd95e21d61.png": "88fd95e21d615a44c4b70c03435d83e8146ebe2a12a0349a9ccdf4e1a836e3ee",
+      "sources/curled-hosta-snail.cec79d1e3ed0.png": "cec79d1e3ed096ea991553c34305a508d65b1ab185be916724feb3394587279d",
+      "sources/fig-leaf-robin.727bfb5a466f.png": "727bfb5a466f23162b3fbed812c26d3cd9b39725bb0cd6c3243956bb99a7c9aa",
+      "sources/ginkgo-pair-butterfly.7d93ad0fbc39.png": "7d93ad0fbc395590c6808cbb50f42634e6337a6482b70d625dcb3b6bdb3446d6",
+      "sources/linden-sprig-squirrel.81070af56fb0.png": "81070af56fb073d83356edfee252a4ccec407b09dc38815e17d31b43b17dded8",
+      "sources/nasturtium-frog.fe023ed89286.png": "fe023ed89286b347864cbf4776105707737f3ea9d36a23536ad73d3a3e4ca8e8",
+      "sources/README.md": "9f0360dba772ce0aa4076e90fc9021e2d4159640913a6850dff5d6dd174efe02",
+      "sources/wallpaper.78e26834ff97.png": "78e26834ff97b5e4e0b99eb0f9406f8323a1e54ea759f2b469863efc8fede1c4",
+      "wallpapers/README.md": "75a1e88a10d877f3631a2012eeeb9c7a6ce1cce119b0ae5ecee1cda586d49c2b",
+      "wallpapers/wallpaper.png": "e7bdec16259d40c1d6e1be5a4c45d4500d4e71ed07de78412e9c9b5022f63696",
+      "widgets/curled-hosta-snail.fe8fd4ff41a9.png": "fe8fd4ff41a94da777156232033c624b08558210821121a0f97b8ea25becc131",
+      "widgets/fig-leaf-robin.38da7049abf5.png": "38da7049abf5c24be36ac6cfe8b575d40339e2328a99046a2a5cd1a886b5ac2b",
+      "widgets/ginkgo-pair-butterfly.6dcee51e449a.png": "6dcee51e449a13f591d6087afdb34f94fbe1a7e2e35a11524ccf7c3993e9d155",
+      "widgets/linden-sprig-squirrel.341b98244996.png": "341b98244996aa40f4b4fc379e15a343ed0eb6c61d1093d6a10199c75c0ed192",
+      "widgets/nasturtium-frog.ce57b469e02e.png": "ce57b469e02e4a0a78f9cfcbf9d23ecacce7f2ec50c32fddfce3616ef75ab111",
+      "widgets/README.md": "43450cfa0b32e86973d0f7b8e330f39025ec82a1700ec727cd9cdbc0022e7fb8",
+      "widgets/widget-options.json": "953ecb35dacc78c1371db608466fc71522380dbcf5b872397ce48c79a2a3b32b"
+    },
     "allProtectedHashesUnchanged": true,
+    "allFiveArtAndWallpaperUnchanged": true,
+    "recipeOtherSixEntriesUnchanged": true,
     "heroDetailOrnamentUnchanged": true,
-    "method": "Isolated exact current today text and actual filled marker from coordinator SVG; original coordinates and integer ROI retain pixel phase. Jan1-31 plus exact Nov22 at1x/2x/4x; alpha96 and128 core masks. Windows SVG proof, not Apple New York or device qualification."
+    "allNineActualNativePreviewsViewed": true,
+    "scope": "Lane source-only. Current coordinator SVG renderer in scratch with explicit recipe override after integrated recipes. No shared edits, installed-device or Apple New York claim.",
+    "historicalContourStudies": "Retained unchanged as historical QA only; no square-face or shrinking requirement."
   }
 }

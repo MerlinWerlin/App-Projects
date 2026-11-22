@@ -1,23 +1,37 @@
 {
   "id": "wallpaper",
-  "prompt": "Precise LAYOUT-ONLY edit of input1, own original Caneveil Mangroves wallpaper. Keep exact fused murrine cane-glass mangrove habitat, gecko, leaf/branch/root arrangement, propagules, mudskipper, shallow water oval, embedded coarse colored cane flowers and longitudinal stripes, palette, lighting, subtle quiet pistachio background and portrait aspect ratio. Scale the ENTIRE existing connected habitat uniformly to65percent of its CURRENT width and height, as ONE unit, without changing any individual organism or object proportions or spacing within it. Place the uniformly smaller complete habitat horizontally centered with its overall center at57percent canvas height. Extend/reconstruct only the same quiet pale pistachio #D9DCC1 background around it; match smooth subtle background perfectly, no visible rectangular pasted edge. Final whole habitat should occupy about HALF total canvas width, with at least24percent quiet background on BOTH left/right sides. Preserve complete leaf/root/gecko tail/fins/propagule tips, no crop, no duplicate or new organism/object. No border/corner branches/extra flowers, no enlarged individual gecko, no reframing zoom, no text/UI. Keep original internal murrine material and anatomy unchanged. Opaque full wallpaper, no transparency.",
+  "prompt": "SECOND AUDIT caneveil-mangroves. Use case: precise-object-edit, WALLPAPER COMPOSITION ONLY, portrait1290x2796. Input1 is the EXACT OWN EXISTING WALLPAPER edit target. Other ordered inputs are OWN FROZEN raw artwork MATERIAL/ANATOMY references ONLY, never edit those assets. Keep this theme material, palette, familiar natural anatomy and tangible world. Recompose the SAME recognizable mangrove habitat as a substantial full portrait illustration. Whole connected habitat occupies82\u201388percent canvas WIDTH and48\u201355percent HEIGHT, horizontally centered, from about27percent to82percent canvas height. Grow the existing curved mangrove trunk and prop-root structure TALLER naturally; lift its broad leafy cane-glass canopy upward, keep long propagules whole and roots reaching the low shallow tidal pool. Make the familiar gecko clearly visible at about18percent canvas HEIGHT on one broad leaf in the middle-left, four coherent feet and whole long curling tail. Keep whole small mudskipper fish visible beside roots low right, natural fish fins. No additional fauna. Broad true embedded cobalt/emerald/ivory/honey cane cross-sections, continuous fused glass and longitudinal cut-lip stripes must stay legible at the larger scale. Do not make a little floating island or compress all organisms into one short horizontal strip. Keep whole roots/leaves/propagules/toes/tail/fish fins inside5\u20139percent side margins, with about18percent quiet space below and25percent quiet space above. Background stays the same pale pistachio #D9DCC1. Enlarge/recompose only this wallpaper. Do NOT preserve the old tiny scale. No automatic pullback or anamorphic animal stretch; make a new natural composition with larger whole figures and more vertical plant/terrain structure. Keep all key subjects COMPLETE through both tall and shorter phone crops: all important tips between approximately25percent and84percent full canvas height, no cropped extremity. Full coherent opaque matching background, no borders/corner frills, text/letters/numbers, dates/clock/battery/weather values, icons/UI/logo/signature, people, buildings or sports equipment. Do not change any selected five artwork or native identity; output only the edited wallpaper raster.",
   "tool": "built-in image_gen",
-  "source": "sources/wallpaper.e1cb3592.png",
-  "sourceSha256": "e1cb359240f72b7e51100632baf7d7df81cb5e3bce94d7d85da67f1b56c5761c",
+  "source": "sources/wallpaper.2e35aa22.png",
+  "sourceSha256": "2e35aa22ec6de5c35bf86214287e598c455a5e8e41fcbf9d53b86d9f03331fde",
   "sourceDimensions": [
     852,
-    1846
+    1847
   ],
   "selectedFile": "wallpapers/wallpaper.png",
-  "sha256": "07ab75ed8e5108802fa358b6ef681f5f3028748f951b45175590f58d953c4777",
+  "sha256": "4f244c8904f7b751323b577e6670ba4a7d67519ab0762bd1c071bd50d4dc6365",
   "dimensions": [
     1290,
     2796
   ],
   "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
-  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "generationHistory": "qa/second-audit/wallpaper-history.json",
   "referencedImage": {
-    "file": "qa/layout-repair/wallpaper.original.50b70662.png",
-    "sha256": "50b70662fd1a6744f203926dddd71b8e3b1e626f25450358af7ca5fd98bd07d0"
-  }
+    "file": "qa/second-audit/previous-selected-wallpaper.png",
+    "sha256": "e1cb359240f72b7e51100632baf7d7df81cb5e3bce94d7d85da67f1b56c5761c"
+  },
+  "generationReferences": [
+    {
+      "order": 1,
+      "file": "qa/second-audit/previous-selected-wallpaper.png",
+      "sha256": "e1cb359240f72b7e51100632baf7d7df81cb5e3bce94d7d85da67f1b56c5761c",
+      "role": "EDIT TARGET: exact own currently selected wallpaper, to enlarge/recompose only."
+    },
+    {
+      "order": 2,
+      "file": "sources/gecko-leaf.704a800f.png",
+      "sha256": "704a800fcad7e6db40a836f3882275ee878e7e6629bee9edeb5802bc591fe6e5",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it."
+    }
+  ]
 }

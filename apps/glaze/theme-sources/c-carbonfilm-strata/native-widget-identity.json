@@ -1,7 +1,7 @@
 {
   "theme": "c-carbonfilm-strata",
   "recipe": [
-    "square",
+    "facet",
     "cStillleafFrond",
     "cStillleafLamina",
     "bars",
@@ -15,7 +15,7 @@
   },
   "ornament": "M 29 89 Q 48 71 57 16 M 38 72 Q 24 72 18 60 Q 32 62 38 72 M 44 58 Q 31 56 26 44 Q 39 48 44 58 M 50 43 Q 38 39 35 27 Q 47 33 50 43 M 57 24 Q 50 15 60 10 Q 68 17 57 24 M 38 73 Q 51 62 67 64 Q 55 76 38 73 M 44 58 Q 57 48 73 50 Q 60 63 44 58 M 50 43 Q 61 32 76 35 Q 62 47 50 43",
   "ornamentDirection": "One small naturally arcing fern sprig with three clear paired pinnae and a complete tip. Generous open space, no rock slab, miniature fossil portrait or surround in compact header.",
-  "direction": "Whole naturally pinnate fern and a few shallow lamina lines in larger fields; rounded-square dial, bar marks, needle hands, column battery and ledger calendar. Dedicated small fern sprig for compact headers.",
+  "direction": "Whole naturally pinnate fern and a few shallow lamina lines in larger fields; faceted split-shale dial, bar marks, needle hands, column battery and ledger calendar. Dedicated small fern sprig for compact headers.",
   "values": "Existing live Clock/Battery/Calendar at all three sizes, no raster readings.",
   "registryIntegration": "Source-only lane. Coordinator owns canonical registry, shared/Swift integration and installed-device qualification. Candidate floor1.0.44.",
   "ornamentProvenance": "Original authored100x100 SVG paths,23November2026,following the recognizable fern/cleaved-shale artwork and both-corner steering."

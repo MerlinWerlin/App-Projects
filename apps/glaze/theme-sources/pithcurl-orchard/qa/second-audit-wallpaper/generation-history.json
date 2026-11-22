@@ -1,0 +1,68 @@
+{
+  "previousSelected": {
+    "id": "wallpaper",
+    "tool": "built-in image_gen",
+    "prompt": "FRAMING ONLY, this OWN Pithcurl Orchard portrait scene. Preserve the same FIVE subjects and every orange/white fresh mandarin-peel construction: whole dormouse ears/tail/paws, robin beak/tail/two feet on twig, two five-petalled blossom blooms/bud/leaves, whole FOUR-legged fox with long tail and both ears, and snail full spiral/foot/four tentacles. Preserve the gentle pale sage paper texture and lighting. Uniformly reduce the ENTIRE CONNECTED HABITAT GROUP, including all ground ribbon, twigs, leaf and flower tips, to SIXTY PERCENT of its current width and height, keeping it together as one unchanged small charming group centred at50percent canvas width and57percent canvas height. Every physical subject and tip stays whole. The complete group must now fit entirely between25and75percent width and44and71percent height on tall1290:2796 canvas; upper42percent and lower25percent quiet uninterrupted sage paper. Extend only matching paper. No separately shrinking/recomposing/omitting any subject, no new flowers, no crop, no extra greenery/peel flecks, no text/labels/clock/date/battery/UI. Keep physical peel textures crisp within the now smaller vignette. A wide pulled-back wallpaper layout, not a change to any standalone artwork.",
+    "source": "qa/second-audit-wallpaper/wallpaper.3a680fc66e00.png",
+    "sourceSha256": "3a680fc66e005d6efb8eadbc11b6f53ea2f55ab8d066e68c8ec77e5097ac52d7",
+    "sourceDimensions": [
+      852,
+      1846
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "0196e628065856ddf2b197ae5e13feec4fdfa6aa331934efb8090862f296bc61",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Own complete scene uniformly pulled back to60percent through built-in image_gen. Mechanical aspect-preserving1290x2796 cover trims only a few pixels of quiet paper at sides. Five standalone artworks unchanged.",
+    "references": [
+      {
+        "file": "qa/wallpaper-edge-study/initial-scene.5073d13b629f.png",
+        "sha256": "5073d13b629fa67ed845a657c264eba591a28ba50890d137922528ed05295f64",
+        "purpose": "Own complete five-reference habitat; framing only."
+      }
+    ],
+    "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+  },
+  "previousExactRecord": "qa/second-audit-wallpaper/previous-selected-generation.json",
+  "previousExactLineage": "qa/second-audit-wallpaper/previous-lineage.json",
+  "previousNormalized": {
+    "file": "qa/second-audit-wallpaper/previous-normalized-wallpaper.png",
+    "sha256": "0196e628065856ddf2b197ae5e13feec4fdfa6aa331934efb8090862f296bc61"
+  },
+  "selectedEdit": {
+    "id": "wallpaper",
+    "tool": "built-in image_gen",
+    "prompt": "Enlarge this OWN completed Pithcurl Orchard wallpaper SCENE ONLY. Keep the same complete five-subject mandarin-peel habitat, pale sage paper, light, orange skin/white pith material, characters and coherent anatomy. The group is currently too small. Uniformly enlarge the ENTIRE connected habitat to160percent its current width and height, positioned centrally so that ALL outermost twig/leaf/flower/tail/foot tips now occupy roughly80\u00e2\u20ac\u201c85percent of the portrait width and about45percent of its height, from30to76percent height. Keep one tall natural twig with two whole five-petalled blossoms/bud at upperright, whole robin perched with two feet, whole dormouse/spiral tail on twig, whole four-legged fox below with long tail and two ears, whole spiral snail/upper eye stalks/lower feelers/full foot, complete ground ribbon. Clear recognizable large subjects with real vertical presence, NOT a tiny island or mostly empty page. All tips whole within8\u00e2\u20ac\u201c10percent side margins; upper28percent and lower20percent quiet paper. Do not pull the scene back or separately shrink subjects for extra edge space. If something would crop, gently adjust only that twig/tip inward; never cut anatomy. Keep exact portrait1290:2796 proportion and preserve the same pale sage paper/color/texture and soft lighting; no new objects, external glow, text, UI or borders. This is wallpaper recomposition only; no change to the five standalone artwork assets.",
+    "source": "sources/wallpaper.8ad39fe04c09.png",
+    "sourceSha256": "8ad39fe04c093aa3505547f35fbefb3ba96a349e17af5fe48bfe571329cea1fd",
+    "sourceDimensions": [
+      852,
+      1846
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "b2711e46572c2cbca478b9388d8650951145f45014b7828315fa71b5b992b8e8",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Second audit: own-scene enlargement to roughly90percent width with substantial vertical presence; only wallpaper recomposed. Mechanical aspect-preserving portrait export trims quiet paper only. All five art originals/selected files/options/palette/meta unchanged.",
+    "references": [
+      {
+        "file": "qa/second-audit-wallpaper/wallpaper.3a680fc66e00.png",
+        "sha256": "3a680fc66e005d6efb8eadbc11b6f53ea2f55ab8d066e68c8ec77e5097ac52d7",
+        "purpose": "Exact own previous complete five-subject wallpaper; enlarge scene only."
+      }
+    ],
+    "generationHistory": "qa/second-audit-wallpaper/generation-history.json"
+  },
+  "exactRequest": {
+    "prompt": "Enlarge this OWN completed Pithcurl Orchard wallpaper SCENE ONLY. Keep the same complete five-subject mandarin-peel habitat, pale sage paper, light, orange skin/white pith material, characters and coherent anatomy. The group is currently too small. Uniformly enlarge the ENTIRE connected habitat to160percent its current width and height, positioned centrally so that ALL outermost twig/leaf/flower/tail/foot tips now occupy roughly80\u00e2\u20ac\u201c85percent of the portrait width and about45percent of its height, from30to76percent height. Keep one tall natural twig with two whole five-petalled blossoms/bud at upperright, whole robin perched with two feet, whole dormouse/spiral tail on twig, whole four-legged fox below with long tail and two ears, whole spiral snail/upper eye stalks/lower feelers/full foot, complete ground ribbon. Clear recognizable large subjects with real vertical presence, NOT a tiny island or mostly empty page. All tips whole within8\u00e2\u20ac\u201c10percent side margins; upper28percent and lower20percent quiet paper. Do not pull the scene back or separately shrink subjects for extra edge space. If something would crop, gently adjust only that twig/tip inward; never cut anatomy. Keep exact portrait1290:2796 proportion and preserve the same pale sage paper/color/texture and soft lighting; no new objects, external glow, text, UI or borders. This is wallpaper recomposition only; no change to the five standalone artwork assets.",
+    "referenced_image_paths": [
+      "C:/Users/jared/Documents/Codex/2026-11-14/files-pasted-by-the-user-glaze/work/App-Projects/apps/glaze/theme-sources/pithcurl-orchard/sources/wallpaper.3a680fc66e00.png"
+    ],
+    "transparent_background": false
+  },
+  "reason": "Jared second audit: remove tiny-island layout; no standalone art edits."
+}

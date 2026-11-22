@@ -1,0 +1,274 @@
+{
+  "theme": "c-vascular-lanterns",
+  "lane": "C",
+  "created": "2026-11-23",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "lantern-vein-cage",
+      "sourceImage": "sources/lantern-vein-cage.920cec30caea.png",
+      "sourceSha256": "920cec30caeac0c8781b4625e708d2cdc789dab1c7eea9b00073c42de0887832",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/lantern-vein-cage.63de239a4b1b.png",
+      "sha256": "63de239a4b1bc108c9d57e0efa381a191432ca319a5a8500da04d3f920b1e671",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 665305,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "BACKGROUND AND EMPTY-CELL EXTRACTION ONLY of this EXACT OWN botanical vein-cage/berry image. Keep the COMPLETE exact existing object: every coarse dry matte tan primary rib, all fine irregular branching/rejoining secondary veins, every visible far-side vein, every original junction/rough brown fleck/tiny natural plant fibre, the entire curved pedicel, whole calyx outline/lower tip and the ONE orange berry with its exact skin/highlight. Preserve original topology, proportions, layout, colour, natural vein thickness and shading on actual solid veins/fruit. DO NOT redraw, thicken, smooth, simplify, weave or replace any vein, alter the berry, add structures or crop any part.\nREMOVE ONLY the unwanted pale cream/white/grey BACKGROUND HAZE that currently lies IN THE EMPTY CELLS BETWEEN VEINS and outside/above/around the actual cage. These pale partly transparent patches are BACKDROP, not plant tissue. Replace ALL of that interveinal and exterior backdrop with GENUINE COMPLETE ALPHAZERO TRANSPARENCY, including the open cells above the berry, at the sides, below it and between the pedicel and cage rim. Keep every actual near-side and far-side rib crossing those holes visible and unchanged. Where an opening is not occluded by a solid vein or berry, it must be completely empty true alpha, with no cream/grey film, faint white fog, translucent membrane, tinted fill, opaque painted background, halo or shadow. Do not erase actual beige veins just because the unwanted haze is also pale; keep their full continuous branching structure. Berry and actual solid veins stay opaque. Outer canvas corners/edges and empty exterior also fully transparent. Natural anti-aliased edges on real veins only; NO broad milky fringe around the cage. Exact whole hollow vascular cage and berry cutout, simply remove its residual backdrop throughout all holes and exterior. No new floor, field, text, ruler, frame, label, UI or object. Preserve the entire original composition and every endpoint inside frame, no zoom/crop/rearrangement.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 895564,
+      "directEditReference": {
+        "sourceImage": "intermediate-first-sample/lantern-cage-pending.81773eddefc4.png",
+        "sha256": "81773eddefc46129cf5fa92f0523f2f64a7fc4a81f50ea9c4e34a64d4dbc88ff",
+        "role": "Exact own first whole calyx/berry; remove only residual backdrop in empty cells and exterior"
+      },
+      "originalPrompt": "ONE original square transparent Glaze Artwork for VEINLIGHT ORCHARD. ONE WHOLE familiar CHINESE-LANTERN-TYPE botanical fruiting CALYX, its entire short gently curved dry pedicel, and ONE natural orange berry held inside it. The outer calyx retains its COMPLETE inflated roughly heart/teardrop-shaped lantern outline, gently tapering to a whole lower tip, with a small natural attachment at the top. Three-quarter natural-history view, one lantern only, no extra leaves, flowers, branch arrangement, decorative lantern hardware or second fruit. Recognizable real botanical form FIRST.\nThe distinctive FOREGROUND material/process is NATURAL BOTANICAL TISSUE SKELETONIZATION: ALL soft papery interveinal calyx tissue is PHYSICALLY ABSENT. What remains is a DRY MATTE PALE IVORY/TAN VASCULAR CAGE: roughlyTEN naturally uneven primary longitudinal vein ribs connect from the pedicel base down to the tapered tip, with thinner organically FORKING and REJOINING secondary/tertiary veins making IRREGULAR open polygonal cells of very unequal sizes. Coarse dominant ribs and several broad open cells must remain clearly legible at85px. No regular hexagon grid or engineered symmetry. The whole cage is slightly uneven and naturally dried, with thin flattened woody vein ridges, tiny dry brown flecks, restrained rough plant-fibre surface and simple continuous biological branch junctions. Finite real thin vein thickness, dry and unpolished, NO metallic wire/glints, woven thread, paired bobbin twists, knots, stitches, cloth mesh, lace textile, machine engraving, printed ink, ice crystals/needles, glass/resin or paper sheet. Do not grow an artificial cage around a normal lantern: the cage IS the original calyx vascular structure after soft tissue has gone.\nEvery space BETWEEN the natural veins is a GENUINELY EMPTY OPEN HOLE. Through holes show ALPHAZERO transparency wherever they are not occluded by another vein or the orange berry, including the broad central areas above, beside and below the berry. NO continuous opaque or translucent papery membrane/leaf flesh, smoky grey film, cream fill, satin surface, painted holes, white backing, vignette, photographic background or apparent transparency simulated by a colored fill. Some far-side natural vein ribs visible through the near-side holes establish one hollow3D botanical organ, not a flat lace applique. Keep enough large unoccluded true alpha holes for open emptiness to be obvious at85px, not a densely filled fuzz ball.\nONE intact familiar ripe orange berry sits naturally inside the lower-middle of this cage, aboutONE THIRD of calyx width, with gentle ordinary fruit skin and a tiny warm natural highlight; NOT glowing, metallic, faceted, a pearl/jewel or artificial lamp. Natural soft side daylight reveals the matte dry veins, subtle depth of the cage and the real berry. Whole calyx, all vein tips, berry and entire dry pedicel comfortably inside central72percent square with at least14percent genuinely empty transparent exterior each side. No floor, backdrop rectangle, frame, external cast shadow, loose debris, ruler, specimen label, writing/numbers, UI/clock/date/battery/weather readings, logo or watermark. Original artistic interpretation of a familiar skeletonized botanical organ, not an authentic prepared specimen or scientific evidence of a particular taxon/preparation protocol. No external visual input or named artist style."
+    },
+    {
+      "id": "magnolia-veins",
+      "sourceImage": "sources/magnolia-veins.64091f352f29.png",
+      "sourceSha256": "64091f352f2988588432058ce2b52236740a942318bf5412fd553103e19bf6b6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/magnolia-veins.25dcd29d6275.png",
+      "sha256": "25dcd29d6275b70348c5c3fa808b38b58f85adeb5704b350799969dee58def08",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 952580,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "BACKGROUND / EMPTY-CELL EXTRACTION ONLY of this EXACT OWN botanical vascular artwork. Preserve EXACTLY the entire single broad magnolia-like leaf skeleton, whole pointed apex, natural intact margin, all vein forks/midrib and full petiole. Keep original anatomical topology, full silhouette, proportions, layout, all dry matte warm-ivory/tan vein/fibre material, natural rough flecks and lighting/shading on actual solid tissue. Do NOT crop, zoom, stretch, redraw, thicken, simplify, weave or delete the plant veins, change the organ, add branches or turn this into regular mesh/textile/metal. REMOVE ONLY the residual pale cream/white/grey/tan backdrop or film currently filling the EMPTY SPACES BETWEEN VEINS/FIBRES and any hazy field OUTSIDE the actual plant perimeter. Replace all these EMPTY CELLS and exterior with genuine complete ALPHAZERO transparency. These are open gaps after soft interveinal tissue is absent; they must not contain an opaque or translucent membrane, pale skin, creamy fill, coloured field, smoky haze, floor or external shadow. Preserve every actual near/far-side vein crossing a gap; where no solid vein/seed overlaps, the opening is truly transparent. Keep actual fine dry veins opaque and continuous, do not erase pale plant fibres along with the backdrop. Natural antialiasing confined to real edges, no broad halo. Same exact whole organism and all endpoints within frame, generous empty transparent corners. No new object, border, frame, label, writing, UI or readings. One own-source transparency correction only.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 898448,
+      "directEditReference": {
+        "sourceImage": "intermediate-magnolia-veins-background/magnolia-veins-first-unselected.914a54b1a92c.png",
+        "sha256": "914a54b1a92c4efc713622fbccc2b11687de8a71754ad93806259e4b7c3cb7b3",
+        "role": "Exact own independent botanical original; remove only empty-cell and exterior residual backdrop"
+      },
+      "originalPrompt": "ONE original square transparent Glaze Artwork for VEINLIGHT ORCHARD. A WHOLE familiar natural botanical organ after soft tissue skeletonization, preserving its complete recognizable natural outline and anatomy. Foreground material is DRY MATTE IVORY/TAN BIOLOGICAL VASCULAR STRUCTURE: coarse uneven primary vein ribs plus finer organically forking/rejoining secondary veins, natural unequal irregular open cell sizes, thin flattened woody plant-fibre ridges, tiny restrained dry brown flecks and slightly imperfect continuous biological junctions. Soft interveinal tissue is PHYSICALLY ABSENT. All open spaces genuinely ALPHAZERO where no solid vein/seed/fruit overlaps them; absolutely no pale background haze, grey film, opaque or translucent membrane, cream/white cell fill, backing paper, artificial coloured transparency or exterior halo. Small coarse ribs and broad truly empty cells remain clear at85px. No regular woven mesh, paired threads, bobbin knots, stitches, wire cage, metallic glints, ice needles, printed ink lines, opaque leaf skin, glossy resin, carved wood ornament or manufactured sponge product. Whole organ and all stalk/leaf/flower/pod endpoints inside central72percent square, at least14percent genuine alpha exterior on each side, including open internal gaps. Natural soft side daylight, realistic restrained depth on actual dry vein ridges, no external floor/shadow/backdrop/frame, labels/text/ruler/UI/readings or extra organisms. Original artistic botanical preparation interpretation, not an authentic prepared specimen or scientific evidence of exact taxon/preparation. ONE entire broad MAGNOLIA-LIKE LEAF skeleton, natural elongated oval blade with a clear tapered pointed apex, gently asymmetrical intact margin, thick full curved midrib and complete petiole. Oblique diagonal composition leaning upper-right, slight natural cupping, NOT a flat printed lace design. A few strong lateral veins branch toward the margin, connected by much finer irregular reticulation with true open holes. All leaf flesh/epidermis absent; no opaque plane underneath the pale vascular network. Preserve whole original leaf shape and all major vein continuities, no insect-chewed random torn silhouette, berry or flower."
+    },
+    {
+      "id": "hydrangea-veins",
+      "sourceImage": "sources/hydrangea-veins.cd2b75b2afbf.png",
+      "sourceSha256": "cd2b75b2afbf1f84235f33b6e79796e3d2c236669dd4fb0868986e41b0281889",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/hydrangea-veins.ae068dcc7959.png",
+      "sha256": "ae068dcc7959266041b178e8fd27b8e410388365e5aaa5077b625746d4e54ea6",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 932772,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "BACKGROUND / EMPTY-CELL EXTRACTION ONLY of this EXACT OWN botanical vascular artwork. Preserve EXACTLY the entire three-floret hydrangea sprig, all broad four-sepal flower outlines, every fine vascular vein, tiny centres and all connected forked stems. Keep original anatomical topology, full silhouette, proportions, layout, all dry matte warm-ivory/tan vein/fibre material, natural rough flecks and lighting/shading on actual solid tissue. Do NOT crop, zoom, stretch, redraw, thicken, simplify, weave or delete the plant veins, change the organ, add branches or turn this into regular mesh/textile/metal. REMOVE ONLY the residual pale cream/white/grey/tan backdrop or film currently filling the EMPTY SPACES BETWEEN VEINS/FIBRES and any hazy field OUTSIDE the actual plant perimeter. Replace all these EMPTY CELLS and exterior with genuine complete ALPHAZERO transparency. These are open gaps after soft interveinal tissue is absent; they must not contain an opaque or translucent membrane, pale skin, creamy fill, coloured field, smoky haze, floor or external shadow. Preserve every actual near/far-side vein crossing a gap; where no solid vein/seed overlaps, the opening is truly transparent. Keep actual fine dry veins opaque and continuous, do not erase pale plant fibres along with the backdrop. Natural antialiasing confined to real edges, no broad halo. Same exact whole organism and all endpoints within frame, generous empty transparent corners. No new object, border, frame, label, writing, UI or readings. One own-source transparency correction only.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 826508,
+      "directEditReference": {
+        "sourceImage": "intermediate-hydrangea-veins-background/hydrangea-veins-first-unselected.c583bde72d00.png",
+        "sha256": "c583bde72d00e1c11532b51864ad842610bb1aca8f6461180d15d8b894b2c8c1",
+        "role": "Exact own independent botanical original; remove only empty-cell and exterior residual backdrop"
+      },
+      "originalPrompt": "ONE original square transparent Glaze Artwork for VEINLIGHT ORCHARD. A WHOLE familiar natural botanical organ after soft tissue skeletonization, preserving its complete recognizable natural outline and anatomy. Foreground material is DRY MATTE IVORY/TAN BIOLOGICAL VASCULAR STRUCTURE: coarse uneven primary vein ribs plus finer organically forking/rejoining secondary veins, natural unequal irregular open cell sizes, thin flattened woody plant-fibre ridges, tiny restrained dry brown flecks and slightly imperfect continuous biological junctions. Soft interveinal tissue is PHYSICALLY ABSENT. All open spaces genuinely ALPHAZERO where no solid vein/seed/fruit overlaps them; absolutely no pale background haze, grey film, opaque or translucent membrane, cream/white cell fill, backing paper, artificial coloured transparency or exterior halo. Small coarse ribs and broad truly empty cells remain clear at85px. No regular woven mesh, paired threads, bobbin knots, stitches, wire cage, metallic glints, ice needles, printed ink lines, opaque leaf skin, glossy resin, carved wood ornament or manufactured sponge product. Whole organ and all stalk/leaf/flower/pod endpoints inside central72percent square, at least14percent genuine alpha exterior on each side, including open internal gaps. Natural soft side daylight, realistic restrained depth on actual dry vein ridges, no external floor/shadow/backdrop/frame, labels/text/ruler/UI/readings or extra organisms. Original artistic botanical preparation interpretation, not an authentic prepared specimen or scientific evidence of exact taxon/preparation. ONE short complete natural HYDRANGEA-TYPE flowering sprig with THREE airy unequal dried florets, each recognizably FOUR broad petaloid SEPALS around a tiny retained centre, joined by coherent fine forked stems. Different floret orientations, one front facing, one oblique, one smaller turned sideways. Each broad sepal is a delicate dry warm-ivory natural vein skeleton with actual soft tissue absent and open holes, not opaque papery petals or a woven textile flower. Entire airy branching spray has a broad irregular triangular silhouette, no spherical bouquet, vase, leaves, butterfly or extra flowers. Natural coarse ribs and irregular vein forks remain perceptible at85; no repeated stitch motif or decorative machine lace."
+    },
+    {
+      "id": "luffa-veins",
+      "sourceImage": "sources/luffa-veins.a800f4a38d2f.png",
+      "sourceSha256": "a800f4a38d2fbeae96f49e671574d21435829855fd925909d6182514283f1263",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/luffa-veins.30e52223d922.png",
+      "sha256": "30e52223d922af93daa32b317eb5eabe4799f1dd62895744449e4bca1c74080c",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 543491,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "BACKGROUND / EMPTY-CELL EXTRACTION ONLY of this EXACT OWN botanical vascular artwork. Preserve EXACTLY the entire unsliced luffa fruit vascular skeleton, both natural tapering ends, complete pedicel, all longitudinal bundles and fine dry interconnected fibres. Keep original anatomical topology, full silhouette, proportions, layout, all dry matte warm-ivory/tan vein/fibre material, natural rough flecks and lighting/shading on actual solid tissue. Do NOT crop, zoom, stretch, redraw, thicken, simplify, weave or delete the plant veins, change the organ, add branches or turn this into regular mesh/textile/metal. REMOVE ONLY the residual pale cream/white/grey/tan backdrop or film currently filling the EMPTY SPACES BETWEEN VEINS/FIBRES and any hazy field OUTSIDE the actual plant perimeter. Replace all these EMPTY CELLS and exterior with genuine complete ALPHAZERO transparency. These are open gaps after soft interveinal tissue is absent; they must not contain an opaque or translucent membrane, pale skin, creamy fill, coloured field, smoky haze, floor or external shadow. Preserve every actual near/far-side vein crossing a gap; where no solid vein/seed overlaps, the opening is truly transparent. Keep actual fine dry veins opaque and continuous, do not erase pale plant fibres along with the backdrop. Natural antialiasing confined to real edges, no broad halo. Same exact whole organism and all endpoints within frame, generous empty transparent corners. No new object, border, frame, label, writing, UI or readings. One own-source transparency correction only.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 916167,
+      "directEditReference": {
+        "sourceImage": "intermediate-luffa-veins-background/luffa-veins-first-unselected.bd33b9ffe19c.png",
+        "sha256": "bd33b9ffe19ca050dd1fa114ef3b6e10ad4ce769acdd61cdf652a24831faff10",
+        "role": "Exact own independent botanical original; remove only empty-cell and exterior residual backdrop"
+      },
+      "originalPrompt": "ONE original square transparent Glaze Artwork for VEINLIGHT ORCHARD. A WHOLE familiar natural botanical organ after soft tissue skeletonization, preserving its complete recognizable natural outline and anatomy. Foreground material is DRY MATTE IVORY/TAN BIOLOGICAL VASCULAR STRUCTURE: coarse uneven primary vein ribs plus finer organically forking/rejoining secondary veins, natural unequal irregular open cell sizes, thin flattened woody plant-fibre ridges, tiny restrained dry brown flecks and slightly imperfect continuous biological junctions. Soft interveinal tissue is PHYSICALLY ABSENT. All open spaces genuinely ALPHAZERO where no solid vein/seed/fruit overlaps them; absolutely no pale background haze, grey film, opaque or translucent membrane, cream/white cell fill, backing paper, artificial coloured transparency or exterior halo. Small coarse ribs and broad truly empty cells remain clear at85px. No regular woven mesh, paired threads, bobbin knots, stitches, wire cage, metallic glints, ice needles, printed ink lines, opaque leaf skin, glossy resin, carved wood ornament or manufactured sponge product. Whole organ and all stalk/leaf/flower/pod endpoints inside central72percent square, at least14percent genuine alpha exterior on each side, including open internal gaps. Natural soft side daylight, realistic restrained depth on actual dry vein ridges, no external floor/shadow/backdrop/frame, labels/text/ruler/UI/readings or extra organisms. Original artistic botanical preparation interpretation, not an authentic prepared specimen or scientific evidence of exact taxon/preparation. ONE whole small mature LUFFA-TYPE FRUIT vascular skeleton, natural elongated slightly curved cucumber/gourd form with BOTH intact tapering ends and one short complete dry pedicel. Diagonal low horizontal composition, not an upright lantern or broad leaf. The skin/fleshy ground tissue has gone, exposing a dry pale-beige naturally interconnected vascular-fibre matrix, stronger longitudinal bundles and irregular coarse open cells with a few larger lengthwise seed channels visible through the open network. Entire UNSLICED natural fruit form retained; no cut discs, polished cut surface, bath sponge product, string loop, label, soap, towel or geometric cylinder. Matte compressed plant fibres, not fluffy textile/foam/coral, with genuinely empty alpha windows where no deeper fibres overlap. No artificial knit or regular honeycomb."
+    },
+    {
+      "id": "milkweed-veins",
+      "sourceImage": "sources/milkweed-veins.e38fc1d966b6.png",
+      "sourceSha256": "e38fc1d966b6b6bdb5caad19556b00e4765bfb002e4a7a8a5d5022b4e54e43ef",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "file": "widgets/milkweed-veins.69416f23637a.png",
+      "sha256": "69416f23637ab406757854729d1a40cf72071c702b4df2d9a69b568e69ddb422",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 536981,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "BACKGROUND / EMPTY-CELL EXTRACTION ONLY of this EXACT OWN botanical vascular artwork. Preserve EXACTLY the entire two-valve opened milkweed pod, whole long pointed curling valve and smaller attached opposing valve, dry ridges/prickly remnants, single small dark seed and complete curved pedicel. Keep original anatomical topology, full silhouette, proportions, layout, all dry matte warm-ivory/tan vein/fibre material, natural rough flecks and lighting/shading on actual solid tissue. Do NOT crop, zoom, stretch, redraw, thicken, simplify, weave or delete the plant veins, change the organ, add branches or turn this into regular mesh/textile/metal. REMOVE ONLY the residual pale cream/white/grey/tan backdrop or film currently filling the EMPTY SPACES BETWEEN VEINS/FIBRES and any hazy field OUTSIDE the actual plant perimeter. Replace all these EMPTY CELLS and exterior with genuine complete ALPHAZERO transparency. These are open gaps after soft interveinal tissue is absent; they must not contain an opaque or translucent membrane, pale skin, creamy fill, coloured field, smoky haze, floor or external shadow. Preserve every actual near/far-side vein crossing a gap; where no solid vein/seed overlaps, the opening is truly transparent. Keep actual fine dry veins opaque and continuous, do not erase pale plant fibres along with the backdrop. Natural antialiasing confined to real edges, no broad halo. Same exact whole organism and all endpoints within frame, generous empty transparent corners. No new object, border, frame, label, writing, UI or readings. One own-source transparency correction only.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 909954,
+      "directEditReference": {
+        "sourceImage": "intermediate-milkweed-veins-background/milkweed-veins-first-unselected.a45186dec43f.png",
+        "sha256": "a45186dec43fda56bd44d8e032b52fabe39aff64a22aaa54e8aea5695331edbc",
+        "role": "Exact own independent botanical original; remove only empty-cell and exterior residual backdrop"
+      },
+      "originalPrompt": "ONE original square transparent Glaze Artwork for VEINLIGHT ORCHARD. A WHOLE familiar natural botanical organ after soft tissue skeletonization, preserving its complete recognizable natural outline and anatomy. Foreground material is DRY MATTE IVORY/TAN BIOLOGICAL VASCULAR STRUCTURE: coarse uneven primary vein ribs plus finer organically forking/rejoining secondary veins, natural unequal irregular open cell sizes, thin flattened woody plant-fibre ridges, tiny restrained dry brown flecks and slightly imperfect continuous biological junctions. Soft interveinal tissue is PHYSICALLY ABSENT. All open spaces genuinely ALPHAZERO where no solid vein/seed/fruit overlaps them; absolutely no pale background haze, grey film, opaque or translucent membrane, cream/white cell fill, backing paper, artificial coloured transparency or exterior halo. Small coarse ribs and broad truly empty cells remain clear at85px. No regular woven mesh, paired threads, bobbin knots, stitches, wire cage, metallic glints, ice needles, printed ink lines, opaque leaf skin, glossy resin, carved wood ornament or manufactured sponge product. Whole organ and all stalk/leaf/flower/pod endpoints inside central72percent square, at least14percent genuine alpha exterior on each side, including open internal gaps. Natural soft side daylight, realistic restrained depth on actual dry vein ridges, no external floor/shadow/backdrop/frame, labels/text/ruler/UI/readings or extra organisms. Original artistic botanical preparation interpretation, not an authentic prepared specimen or scientific evidence of exact taxon/preparation. ONE entire naturally opened MILKWEED-TYPE FOLLICLE with complete short curved pedicel, one long pointed canoe-like pod valve curling open to the right, and a smaller attached opposing valve partly turned away. A low long asymmetrical empty boat silhouette, unlike the closed heart-shaped lantern cage. All soft pod wall tissue absent, leaving dry warm-tan irregular vascular ribs and finer rejoining veins with genuine empty holes through each remaining valve; few small rough prickly attachment remnants, not smooth paper or carved lattice. A single small dark natural seed may remain attached near the inner lower rib, no cotton/silk plume cloud, whole plant, leaves or background. Whole two pod tips/curved valve margins/pedicel intact and coherent. Natural slight three-dimensional curl and dry plant material, no wired basket, metal, textile lace or manufactured shell."
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.bda62860921a.png",
+      "sourceSha256": "bda62860921a1766c116f73b0b27a79448c514950c8669f32e36afd43d723220",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "a1a527eadc7c805e360b97e6e023b735d01584905acb5d65dad99b7f0dd132fe",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 3404079,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "ONE original opaque portrait1290x2796 phone wallpaper, VEINLIGHT ORCHARD. Use these FIVE OWN references to preserve the exact whole botanical forms and their DRY MATTE IVORY/TAN IRREGULAR NATURAL VASCULAR NETWORKS with truly ABSENT soft tissue. IMAGE1 one whole heart/teardrop CHINESE-LANTERN CALYX CAGE, complete curved pedicel and orange berry; IMAGE2 one broad pointed MAGNOLIA-LIKE LEAF skeleton with full midrib/petiole; IMAGE3 one three-floret HYDRANGEA-TYPE SPRIG with four-sepal florets/whole forked stems; IMAGE4 one whole elongated curved LUFFA FRUIT vascular net, both ends/pedicel; IMAGE5 one opened long canoe-shaped MILKWEED POD with smaller opposing valve, tiny dark seed and whole pedicel. Do not turn them into living opaque foliage, woven lace/thread, metal wire/gold sculpture, ice, printed illustration or normal papery leaves. All open network cells visibly show the SAME continuous scene background through them, without cream haze or tissue fill. Natural coarse woody ribs and fine irregular rejoining veins, matte rough dry plant fibres and tiny brown flecks match the five originals.\nCreate ONE coherent airy naturally arranged botanical still life, not five cards/collaged cutouts, contact sheet or equally spaced icons. A short subtle naturally curved dry twig provides a shared rising visual arc: whole lantern/berry hanging near centre-left, broad leaf angled upward behind-left, three-floret sprig rising behind-right, long luffa lying low-left, opened milkweed pod sweeping low-right. Preserve independent real plant organs; do not fuse their anatomy into an invented hybrid plant. Let only inconspicuous stems touch; no subject covers another leaf/flower/berry/pod silhouette. All five whole organs, every vein/leaf tip, both luffa ends and both milkweed tips must remain entirely inside frame. One common gentle natural side light and coherent shallow contact shading around actual stems/net ribs, no heavy stage or plinth.\nFULLER TALLER composition: the entire botanical group fills ABOUT82PERCENT WIDTH, x9to91percent, and ABOUT40PERCENT HEIGHT, y39to79percent; give it real vertical presence, not a tiny island. Leaf/flower tips rise at39percent, low pod/stalk ends stay above79percent. Minimum9percent quiet side margins. Upper37percent and bottom20percent empty smooth muted woodland-olive field #35433A/#53604D, very restrained fine natural tonal depth, no floating object or dense grain. Subtle continuous supporting field only, no horizon/table edge, picture board, backing paper/frame, vase, containers, labels, seed packets or museum tray. Soft dry ivory vein contrast against quiet olive, small natural orange berry accent only. No new plant/animal/fruit, grassy scenery, lens bokeh, decorative ribbons, glow, vignette, scattered debris, writing/numbers/UI/readings/logo or phone mockup. Preserve every complete referenced botanical organ for1290x2796,1179x2556 and750x1334 centre crops. Original artistic botanical preparation still life, not authentic collected specimens or exact taxon/laboratory evidence.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "lantern-vein-cage",
+          "sourceImage": "sources/lantern-vein-cage.920cec30caea.png",
+          "sha256": "920cec30caeac0c8781b4625e708d2cdc789dab1c7eea9b00073c42de0887832"
+        },
+        {
+          "id": "magnolia-veins",
+          "sourceImage": "sources/magnolia-veins.64091f352f29.png",
+          "sha256": "64091f352f2988588432058ce2b52236740a942318bf5412fd553103e19bf6b6"
+        },
+        {
+          "id": "hydrangea-veins",
+          "sourceImage": "sources/hydrangea-veins.cd2b75b2afbf.png",
+          "sha256": "cd2b75b2afbf1f84235f33b6e79796e3d2c236669dd4fb0868986e41b0281889"
+        },
+        {
+          "id": "luffa-veins",
+          "sourceImage": "sources/luffa-veins.a800f4a38d2f.png",
+          "sha256": "a800f4a38d2fbeae96f49e671574d21435829855fd925909d6182514283f1263"
+        },
+        {
+          "id": "milkweed-veins",
+          "sourceImage": "sources/milkweed-veins.e38fc1d966b6.png",
+          "sha256": "e38fc1d966b6b6bdb5caad19556b00e4765bfb002e4a7a8a5d5022b4e54e43ef"
+        }
+      ],
+      "generationStages": [
+        {
+          "stage": "Original coherent own-five-reference fuller botanical still life",
+          "prompt": "ONE original opaque portrait1290x2796 phone wallpaper, VEINLIGHT ORCHARD. Use these FIVE OWN references to preserve the exact whole botanical forms and their DRY MATTE IVORY/TAN IRREGULAR NATURAL VASCULAR NETWORKS with truly ABSENT soft tissue. IMAGE1 one whole heart/teardrop CHINESE-LANTERN CALYX CAGE, complete curved pedicel and orange berry; IMAGE2 one broad pointed MAGNOLIA-LIKE LEAF skeleton with full midrib/petiole; IMAGE3 one three-floret HYDRANGEA-TYPE SPRIG with four-sepal florets/whole forked stems; IMAGE4 one whole elongated curved LUFFA FRUIT vascular net, both ends/pedicel; IMAGE5 one opened long canoe-shaped MILKWEED POD with smaller opposing valve, tiny dark seed and whole pedicel. Do not turn them into living opaque foliage, woven lace/thread, metal wire/gold sculpture, ice, printed illustration or normal papery leaves. All open network cells visibly show the SAME continuous scene background through them, without cream haze or tissue fill. Natural coarse woody ribs and fine irregular rejoining veins, matte rough dry plant fibres and tiny brown flecks match the five originals.\nCreate ONE coherent airy naturally arranged botanical still life, not five cards/collaged cutouts, contact sheet or equally spaced icons. A short subtle naturally curved dry twig provides a shared rising visual arc: whole lantern/berry hanging near centre-left, broad leaf angled upward behind-left, three-floret sprig rising behind-right, long luffa lying low-left, opened milkweed pod sweeping low-right. Preserve independent real plant organs; do not fuse their anatomy into an invented hybrid plant. Let only inconspicuous stems touch; no subject covers another leaf/flower/berry/pod silhouette. All five whole organs, every vein/leaf tip, both luffa ends and both milkweed tips must remain entirely inside frame. One common gentle natural side light and coherent shallow contact shading around actual stems/net ribs, no heavy stage or plinth.\nFULLER TALLER composition: the entire botanical group fills ABOUT82PERCENT WIDTH, x9to91percent, and ABOUT40PERCENT HEIGHT, y39to79percent; give it real vertical presence, not a tiny island. Leaf/flower tips rise at39percent, low pod/stalk ends stay above79percent. Minimum9percent quiet side margins. Upper37percent and bottom20percent empty smooth muted woodland-olive field #35433A/#53604D, very restrained fine natural tonal depth, no floating object or dense grain. Subtle continuous supporting field only, no horizon/table edge, picture board, backing paper/frame, vase, containers, labels, seed packets or museum tray. Soft dry ivory vein contrast against quiet olive, small natural orange berry accent only. No new plant/animal/fruit, grassy scenery, lens bokeh, decorative ribbons, glow, vignette, scattered debris, writing/numbers/UI/readings/logo or phone mockup. Preserve every complete referenced botanical organ for1290x2796,1179x2556 and750x1334 centre crops. Original artistic botanical preparation still life, not authentic collected specimens or exact taxon/laboratory evidence.",
+          "references": [
+            {
+              "id": "lantern-vein-cage",
+              "sourceImage": "sources/lantern-vein-cage.920cec30caea.png",
+              "sha256": "920cec30caeac0c8781b4625e708d2cdc789dab1c7eea9b00073c42de0887832"
+            },
+            {
+              "id": "magnolia-veins",
+              "sourceImage": "sources/magnolia-veins.64091f352f29.png",
+              "sha256": "64091f352f2988588432058ce2b52236740a942318bf5412fd553103e19bf6b6"
+            },
+            {
+              "id": "hydrangea-veins",
+              "sourceImage": "sources/hydrangea-veins.cd2b75b2afbf.png",
+              "sha256": "cd2b75b2afbf1f84235f33b6e79796e3d2c236669dd4fb0868986e41b0281889"
+            },
+            {
+              "id": "luffa-veins",
+              "sourceImage": "sources/luffa-veins.a800f4a38d2f.png",
+              "sha256": "a800f4a38d2fbeae96f49e671574d21435829855fd925909d6182514283f1263"
+            },
+            {
+              "id": "milkweed-veins",
+              "sourceImage": "sources/milkweed-veins.e38fc1d966b6.png",
+              "sha256": "e38fc1d966b6b6bdb5caad19556b00e4765bfb002e4a7a8a5d5022b4e54e43ef"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Whole recognizable natural botanical organs after soft tissue is absent: one lantern calyx/berry, broad magnolia-like leaf, three-floret hydrangea-type sprig, whole elongated luffa vascular net and opened milkweed-type pod. Matte dry irregular biological veins/fibres and genuine open cells, no woven thread pairs, metal, opaque membrane or printed linework. Five distinct complete silhouettes, coherent fuller/taller olive-field own-reference wallpaper. All whole art originals uniformly contained900within1024, with quiet matching corners and separate small open leaf-vein native sprig. Artistic preparation interpretation, not authentic specimens or exact taxon/preparation evidence.",
+  "conceptReferences": [
+    {
+      "url": "https://www.botanic.cam.ac.uk/the-garden/plant-list/physalis-alkekengi/",
+      "scope": "University botanic garden morphology text: orange-scarlet fruit concealed in protective lantern-like calyx; no external image input."
+    },
+    {
+      "url": "https://blogs.ifas.ufl.edu/escambiaco/2022/10/05/weekly-what-is-it-coastal-groundcherry/",
+      "scope": "University extension natural-history text: dried calyx leaves brown skeleton as thin skin disintegrates; not a preparation recipe or exact species/berry-retention claim."
+    },
+    {
+      "url": "https://micro.magnet.fsu.edu/cells/leaftissue/leaftissue.html",
+      "scope": "University plant anatomy text: repeated vascular vein branches form basic leaf skeleton; no external image input."
+    },
+    {
+      "url": "https://www.rhs.org.uk/gardens/partner-gardens/articles/sculpture-gardens",
+      "scope": "Botanical observation in RHS text only: decaying orange Physalis husks reveal lace-like pattern. No sculpture/artist/image used as a style reference."
+    },
+    {
+      "url": "https://www.journals.uchicago.edu/doi/pdf/10.1086/335194",
+      "scope": "Primary Botanical Gazette research abstract: Luffa fruit net strands are modified vascular bundles in a naturally anastomosing network. Text only, no external image input."
+    },
+    {
+      "url": "https://cucurbitbreeding.wordpress.ncsu.edu/gourd-breeding/luffa-crop-information/",
+      "scope": "University cucurbit breeding text: mature fruit develops a dense cellulose network; supports botanical material idea, not a bath-product theme. Text only."
+    }
+  ],
+  "conceptReferenceScope": "Primary botanical/anatomy university and RHS TEXT only; no external visual inputs. Actual eight-neighbor first cleaned calyx gate accepted before expansion, including C26 exact Physalis and B17 lace plus actual published/rebuild selectors. A14 scratch corrected to flat single blue printed ink; accepted source untouched.",
+  "unselectedHistory": [
+    "intermediate-first-sample/first-generation.json",
+    "intermediate-magnolia-veins-background/first-generation.json",
+    "intermediate-hydrangea-veins-background/first-generation.json",
+    "intermediate-luffa-veins-background/first-generation.json",
+    "intermediate-milkweed-veins-background/first-generation.json"
+  ],
+  "unselectedHistoryHashesMatched": 5,
+  "artworkOwnStudyReferenceHashesMatched": 5,
+  "wallpaperReferenceUsesAcrossStages": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "intendedMinAppVersion": "1.0.44",
+  "selectedFirstPrototypeSha256": "920cec30caeac0c8781b4625e708d2cdc789dab1c7eea9b00073c42de0887832",
+  "newImageOutputs": 11
+}

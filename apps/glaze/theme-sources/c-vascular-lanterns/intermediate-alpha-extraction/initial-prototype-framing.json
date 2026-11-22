@@ -1,0 +1,70 @@
+{
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sourceBoundsByAlphaThreshold": {
+    "16": [
+      183,
+      69,
+      1074,
+      1198
+    ],
+    "96": [
+      195,
+      70,
+      1060,
+      1197
+    ]
+  },
+  "edgeAlphaMaximum": 1,
+  "outsideProbes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "wholeCalyxBerryPedicelInside": true,
+  "sourceSha256": "81773eddefc46129cf5fa92f0523f2f64a7fc4a81f50ea9c4e34a64d4dbc88ff",
+  "visuallyPaleOpenCellAlpha": {
+    "leftOpenCell": {
+      "xy": [
+        500,
+        500
+      ],
+      "alpha": 65,
+      "roi20MinMedianMax": [
+        64,
+        68,
+        70
+      ]
+    },
+    "middleOpenCell": {
+      "xy": [
+        700,
+        500
+      ],
+      "alpha": 69,
+      "roi20MinMedianMax": [
+        61,
+        70,
+        247
+      ]
+    },
+    "rightOpenCell": {
+      "xy": [
+        900,
+        500
+      ],
+      "alpha": 59,
+      "roi20MinMedianMax": [
+        54,
+        60,
+        244
+      ]
+    }
+  },
+  "centralCageRectangleAlphaBelow16Percent": 0.3948,
+  "centralRectangleScope": "Fixed rectangle contains veins/berry and apparently empty cells; descriptive alpha statistic, not segmented hole mask.",
+  "initialProbeCorrection": "Initial249\u2013251 samples landed on veins, not clear cell centres. Corrected cell samples show partial low-opacity cream haze; they do not show near-opaque membrane."
+}

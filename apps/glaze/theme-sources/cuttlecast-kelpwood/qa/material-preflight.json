@@ -1,0 +1,54 @@
+{
+  "id": "cuttlecast-kelpwood",
+  "lane": "B36",
+  "category": "Nature",
+  "status": "Accepted actual coordinator first-material gate; expand four separately with own approved seahorse material-only reference and fuller taller wallpaper",
+  "process": "Cuttlefish-bone mould casting in satin pewter, with coarse parallel wavy natural mould-ridge impressions across integral shallow metal relief",
+  "subjects": [
+    "seahorse-strapkelp",
+    "cuttlefish-eelgrass",
+    "shorecrab-rockweed",
+    "kelp-anemone",
+    "corkwing-wrasse"
+  ],
+  "world": "Familiar kelp-forest wildlife in soft pewter cast relief, with broad wavy mould grain over quiet ink-indigo.",
+  "baselineSearch": "Read-only139baseline+80coordinator-source provenance scan found no positive cuttlefish-bone-casting process or exact ID. Positive metal/woodgrain neighbors retained; no no-metal-neighbor claim. Coiled pine needle basketry dropped earlier because actual Woven Wander already uses basketry. Cork sculpture deferred because Mosswick includes actual cork-bark craft.",
+  "neighbors": [
+    "B19 chased tin: thin hammered sheet dimples/chased veins versus thick integral solid casting with continuous natural mould-ridge field.",
+    "B34 Stratagrain: different copper/brass/silver/dark bonded layers with exposed lamination versus ONE same-color metal with physical repeated wave relief.",
+    "B28 Bidri: black zinc and added flush silver inlays versus unpainted integral one-metal casting.",
+    "B31 goldwork: individual hollow helical sewn wire tubes versus unbroken cast surfaces.",
+    "Silver Orchard actual historical4/acceptedPR3075 selections, including hammered silver dormouse, glass snail, lantern and pear-blossom. Full selector evidence inspected, no current-live R2 claim.",
+    "Marquetry Arc historical3/accepted5 actual selected wood veneer intarsia has wave grain but no surface mould ridges in integral metal.",
+    "Cobalt Caravan historical4/accepted5 actual selected veined stone with brass mounts versus grain impressed in one cast metal."
+  ],
+  "technicalReferences": [
+    {
+      "url": "https://teaching640.makingandknowing.org/resources/student-projects/sp22_donald_maia_final-project_cuttlebone/",
+      "scope": "Primary Making and Knowing project: cuttlebone soft ridged interior produces metal casting; text only, no reference image input."
+    },
+    {
+      "url": "https://www.springwoodarts.org/post/cuttlefish-casting-workshop-20-aug-22",
+      "scope": "Primary community arts workshop: two-part cuttlebone mould, lead-free pewter and natural contoured texture; process text only."
+    },
+    {
+      "url": "https://www.silverajewelry.com/classes/w/ID/899/eventID/9348/Silver-Sea-and-Stone-Exploring-Cuttlebone-Casting/details.asp",
+      "scope": "Primary teaching school describes natural grain of cuttlebone preserved in casting; text only, no named-artist style or photo input."
+    },
+    {
+      "url": "https://www.marlin.ac.uk/species/detail/1788",
+      "scope": "Primary Marine Biological Association species account: short-snouted seahorse and prehensile tail; natural anatomy text only."
+    },
+    {
+      "url": "https://www.mbl.edu/research/research-organisms/common-cuttlefish",
+      "scope": "Primary Marine Biological Laboratory: eight arms and two feeding tentacles; natural anatomy text only."
+    },
+    {
+      "url": "https://www.marlin.ac.uk/species/detail/1497/1000",
+      "scope": "Primary Marine Biological Association shore-crab pincers and carapace; natural anatomy text only."
+    }
+  ],
+  "cornerCompanion": "Whole natural seahorse with coherent horse head, short tubular snout and curled prehensile tail, beside a narrow kelp blade. Broad parallel wavy mould grain as material detail. Oval rim echoes the seahorse body and natural cuttlebone form, short dash marks, leaf hands, trail charge and folio calendar. Compact companion is one open kelp-blade tip crossed by three short wavy mould-grain fragments; no whole animal, ring, coin, cast sprue or enclosing plaque. Calendar badge adapts independently; date sizing never determines clock face.",
+  "nativeStudy": "Provisional actual-current-renderer9/live9/4compact in-memory study prepared while material gate pending. Compact companion refined into asymmetric open wavy strap-kelp tip with three broad cast-grain fragments, distinct from pointed satin leaf/radial cane leaf. Only1raster exists; four/WP ungenerated.",
+  "materialApproval": "cuttle-generation/material-approval.json"
+}

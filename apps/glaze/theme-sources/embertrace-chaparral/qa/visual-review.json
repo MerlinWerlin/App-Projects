@@ -1,14 +1,21 @@
 {
   "status": "passed",
+  "audit": "SECOND AUDIT",
   "artworkSubjects": 5,
-  "contactAnd85pxReadability": "reviewed",
   "actualEncodedSmallAndLargeRoundedLayouts": 10,
   "clippedForegroundPixels": 0,
   "actualNativeLayouts": 9,
   "compactHeaderOrnaments": 4,
   "actualWallpaperCrops": 3,
-  "filledDateCases": 96,
-  "fontSize": 12,
-  "filledDateCoreOverflowAlpha96And128": 0,
-  "finding": "Five familiar chaparral subjects in burnished unglazed ivory ceramic with sparse separated sinuous/open-loop carbon strands and local smoke deposits: California quail/manzanita, brush rabbit/sage, fence lizard/bough, California poppies and monarch/milkweed. Approved material-refined quail retained unchanged after gate; initial forked marble-like source/prompt/hash and exact single own-source edit retained. Poppy seed capsule corrected from rounded crowned form to long slender Eschscholzia pod using primary botany text; second own-source alpha extraction removes actual faint background haze. Exact initial/anatomy/alpha sources and requests retained in actual order, no postprocess masking or subject paint. Final five actual palette alpha composites,85px/contact and encoded rounded small/large all whole and clean. Initial coherent wallpaper uses own approved REFINED quail as sole material/anatomy reference, then one uniform whole-habitat layout-only pullback; initial source/both requests/refined reference hash/order retained. Three actual encoded phone crops keep every crest/ear/tail/foot/petal/leaf/branch tip inside broad quiet sage-gray margins. Native9/live9 and four compact charred twig/leaf/carbon-curl companions reviewed, no whole bird in headers. Square face from inception retains12pt today digits; actual current filled markerJan1\u201331 plusNov22 at1x/2x/4x96cases zero core overflow atalpha96/128. Actual eight material neighbors/source hashes checked. No external artwork inputs, shared changes, Apple-font/device qualification or publication claim."
+  "allSizeSamePointSizeBoldTodayCases": 288,
+  "todayAndNormalPoints": {
+    "small": 12,
+    "medium": 12,
+    "large": 19
+  },
+  "finding": "Whole quail/crest/both feet and brush rabbit/ears/paws remain complete in all three actual encoded phone crops, with taller forked manzanita and two poppy cups. Sparse unbranched carbon trails remain visible on ivory clay. Pebble contour suits burnished irregular hand-shaped ceramic; hero/detail/compact sprig remain exact.",
+  "frozenArtProof": "qa/second-audit/frozen-art-proof.json",
+  "clockFaceRationale": "Irregular hand-burnished ceramic body.",
+  "history": "qa/second-audit/wallpaper-history.json",
+  "scope": "Actual encoded wallpaper crops/native board visually reviewed. All five art/raw/options/palette/meta and native hero/detail/ornament remain frozen. Calendar-only badge adapts independently. Windows current-renderer proof; no Apple/device/publication claim."
 }

@@ -1,0 +1,62 @@
+{
+  "initial": {
+    "file": "qa/wallpaper-edge-study/initial-scene.5073d13b629f.png",
+    "sha256": "5073d13b629fa67ed845a657c264eba591a28ba50890d137922528ed05295f64",
+    "prompt": "ONE original tall1290:2796 portrait wallpaper for GLAZE PITHCURL ORCHARD. Use our FIVE OWN reference artworks ONLY to preserve their exact distinctive physical material language and recognizable subjects, in supplied order dormouse, robin/twig, snail, walking fox, apple blossoms. Create one coherent continuous small nature scene, not five detached sticker panels: on a slim naturally curving peel twig in lower-middle, a complete orange/white peel robin perches above a whole little seated peel dormouse; below them a long complete four-legged walking peel fox and one complete spiral peel snail share a small low curved peel ribbon ground; one airy two-bloom/one-bud apple-blossom peel twig grows from right side behind the group. ENTIRE subjects assembled from few broad flexible fresh MANDARIN-PEEL curls, vivid stippled orange oil-gland skin and thick creamy white spongy pith inner lips, all broad orange/white strip constructions clearly visible. No fur, clay, paper, metal or realistic natural-colored animals. Animal anatomy stays coherent, whole fox muzzle/two ears/four paws/long tail, whole mouse ears/paws/spiral tail, whole bird beak/tail/two gripping feet, snail two upper eyes/two lower feelers and full foot, two five-petalled flowers. Warm delicate macro product photography, natural peel material under gentle soft lighting, no decorative external glow. Quiet matte pale sage-green fibrous paper background #D9DED0, very faint tasteful tactile grain, no vignette, no frame. CRITICAL composition: entire connected habitat group occupies ONLY central50percent canvas width between25and75percent and between49and72percent height, including ALL tail, feet, leaf and flower tips; upper46percent and lower25percent completely calm sage paper for phone icons and screen corners. Very wide pulled-back framing with a small charming group and generous empty space, no outside foliage or confetti. A whole continuous tangible peel-sculpture setting, no square art tiles, bowls, fruit, tools, presentation stand, border or backing rectangle. No lettering, logos, labels, numbers, symbols resembling UI, clocks, dates, battery/weather readings or mockup. Original artistic peel interpretation.",
+    "references": [
+      {
+        "file": "sources/dormouse.be0b4539037f.png",
+        "sha256": "be0b4539037fb57995a39136c0db9faee30374df8b535c59ff245bb727717980",
+        "purpose": "Own selected original; ordered five-reference scene input."
+      },
+      {
+        "file": "sources/robin-twig.84db8a019f65.png",
+        "sha256": "84db8a019f65becb7f680e681333207d7bc5440c59688810abdd48c9bde21d30",
+        "purpose": "Own selected original; ordered five-reference scene input."
+      },
+      {
+        "file": "sources/garden-snail.a7215e62fa70.png",
+        "sha256": "a7215e62fa70c8b338863499134838e6962bac12758a46b9b1f6680b2fd9a74d",
+        "purpose": "Own selected original; ordered five-reference scene input."
+      },
+      {
+        "file": "sources/walking-fox.47427fa11b4f.png",
+        "sha256": "47427fa11b4f2648d731587e299cb9bba0e219dcd2f67f8c0ee18c1ef3170883",
+        "purpose": "Own selected original; ordered five-reference scene input."
+      },
+      {
+        "file": "sources/apple-blossom.5982cef7e4f5.png",
+        "sha256": "5982cef7e4f566eaeb7a2bdc731311a764ff62428e826c4ba5a4efa7b1480136",
+        "purpose": "Own selected original; ordered five-reference scene input."
+      }
+    ],
+    "selected": false
+  },
+  "selectedEdit": {
+    "id": "wallpaper",
+    "tool": "built-in image_gen",
+    "prompt": "FRAMING ONLY, this OWN Pithcurl Orchard portrait scene. Preserve the same FIVE subjects and every orange/white fresh mandarin-peel construction: whole dormouse ears/tail/paws, robin beak/tail/two feet on twig, two five-petalled blossom blooms/bud/leaves, whole FOUR-legged fox with long tail and both ears, and snail full spiral/foot/four tentacles. Preserve the gentle pale sage paper texture and lighting. Uniformly reduce the ENTIRE CONNECTED HABITAT GROUP, including all ground ribbon, twigs, leaf and flower tips, to SIXTY PERCENT of its current width and height, keeping it together as one unchanged small charming group centred at50percent canvas width and57percent canvas height. Every physical subject and tip stays whole. The complete group must now fit entirely between25and75percent width and44and71percent height on tall1290:2796 canvas; upper42percent and lower25percent quiet uninterrupted sage paper. Extend only matching paper. No separately shrinking/recomposing/omitting any subject, no new flowers, no crop, no extra greenery/peel flecks, no text/labels/clock/date/battery/UI. Keep physical peel textures crisp within the now smaller vignette. A wide pulled-back wallpaper layout, not a change to any standalone artwork.",
+    "source": "sources/wallpaper.3a680fc66e00.png",
+    "sourceSha256": "3a680fc66e005d6efb8eadbc11b6f53ea2f55ab8d066e68c8ec77e5097ac52d7",
+    "sourceDimensions": [
+      852,
+      1846
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "0196e628065856ddf2b197ae5e13feec4fdfa6aa331934efb8090862f296bc61",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Own complete scene uniformly pulled back to60percent through built-in image_gen. Mechanical aspect-preserving1290x2796 cover trims only a few pixels of quiet paper at sides. Five standalone artworks unchanged.",
+    "references": [
+      {
+        "file": "qa/wallpaper-edge-study/initial-scene.5073d13b629f.png",
+        "sha256": "5073d13b629fa67ed845a657c264eba591a28ba50890d137922528ed05295f64",
+        "purpose": "Own complete five-reference habitat; framing only."
+      }
+    ],
+    "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+  },
+  "reason": "All whole subjects and peel tips clear actual phone-screen edges with generous quiet sage paper."
+}

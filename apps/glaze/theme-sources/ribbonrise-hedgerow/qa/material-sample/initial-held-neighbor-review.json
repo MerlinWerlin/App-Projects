@@ -1,0 +1,66 @@
+{
+  "scope": "First material sample; actual observed material neighbors; no neighbor images used as generation inputs.",
+  "candidateGenerated": true,
+  "sources": [
+    {
+      "label": "B35 foxglove candidate",
+      "medium": "Pulled broad silk ribbon stitches",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-35c9328f-9aac-46fd-8aa5-d9744facf092.png",
+      "sha256": "da7029212688eeb4eebf143c8b600cd89228f2125f5910f4a315a4315e09ccd6"
+    },
+    {
+      "label": "Cherry Ribbon actual",
+      "medium": "Long satin bow loops / linen slippers",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\cherry-ribbon\\widgets\\widget-cherry-ballet-slippers.d521bdb0.webp",
+      "sha256": "d521bdb0ded7400452ae10de8123a296f2986811fff311ce62252b548b9651fa"
+    },
+    {
+      "label": "Crimson Reverie actual",
+      "medium": "Free flowing folded silk koi",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\crimson-reverie\\widgets\\widget-crimson-silk-koi.92f1ea37.webp",
+      "sha256": "92f1ea371866b9d1304643f85556d1fe336f4b7212220ebd8d2316a4dada2c21"
+    },
+    {
+      "label": "B16 cotton applique actual",
+      "medium": "Raw cotton cuts / reverse layers",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\cutstack-skyport\\widgets\\foldwing-mooring-tower.55992a8a.png",
+      "sha256": "55992a8ab2bfdc5be41c8dae160713279cb3f5691c107536eea1d5d7745a9322"
+    },
+    {
+      "label": "B17 linen lace actual",
+      "medium": "Paired fine thread mesh / picot joins",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\bobbinbound-meadow\\widgets\\orchard-songbranch.8591b0d3.png",
+      "sha256": "8591b0d3472be18ecc935eb3cc8a2634908d687378b4fd971afd9a35600ae73a"
+    },
+    {
+      "label": "B24 feather actual",
+      "medium": "Cut shafts / feather barbs / vanes",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\vaneleaf-highland\\widgets\\ibex-bellflower.715f4342.png",
+      "sha256": "715f43428f9ac5aa499c6263a5b19f61685229677151d2939d9e32a6554aeaa2"
+    },
+    {
+      "label": "B31 goldwork actual",
+      "medium": "Hard hollow helical metal spring tubes",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\water-vole-rush.0916c484.png",
+      "sha256": "0916c484b5f67b05a66b107a9c0a36486879f7f7606e65c1d7dc1da42bca65f0"
+    },
+    {
+      "label": "Berry Stitch actual",
+      "medium": "Crochet yarn body / thread embroidery",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\berry-stitch\\widgets\\widget-berry-yarn-teapot.1fec9d4c.webp",
+      "sha256": "1fec9d4c21fcd21bdd842fcd16067debde170ddbdb4103d5c621feb11c4d218c"
+    },
+    {
+      "label": "Moonpatch actual",
+      "medium": "Padded fabric patchwork / seams",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\moonpatch\\widgets\\widget-patchwork-moon-rover.3f1e2dbf.webp",
+      "sha256": "3f1e2dbf833e5f299bc08db44ec52cf382a3beadcd407e3bd720d3849b914163"
+    },
+    {
+      "label": "B5 velour flock actual",
+      "medium": "Soft velour pile / fuzzy cut edges",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\flockquake\\widgets\\quake-aperture.31c804d2.png",
+      "sha256": "31c804d2306537d60e15d919464d2bae4e56f8a775b91d409d578aee8cca690d"
+    }
+  ]
+}

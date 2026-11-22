@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "One final small PHONE-EDGE correction to OUR OWN attached wallpaper; keep the EXACT complete existing zipper scene, poses, anatomy, cotton/brass material, colors, detailed teeth and arrangement. The current centered 1290x2796 phone crop retains source x155..865 and just clips the outermost right oak-tip atx866. Uniformly reduce the entire scene by ONLY10percent of its CURRENT SIZE (90percent scale, not a big pullback), same center, and fill exposed area seamlessly with the same plain petrol background. Final physical scene should span approximately source x201..832 in a1020px-wide output (about62percent raw width, about89percent actual narrow PHONE width). Keep its tall proportions and vertical center; do not shrink further or create a tiny island. Preserve every whole bird/beak/feet, hedgehog/paws, moth/antennae/wingtip, fern/fiddlehead, oak/acorn, twig and root endpoint with no creative redesign or duplicate objects. No text, borders, extra ornaments, UI, labels or halos. Five standalone artworks stay unchanged.",
+  "source": "sources/wallpaper.6fe87adb8adb.png",
+  "sourceSha256": "6fe87adb8adbb1abd8277a784e0a0939b4827600f110c9bc75945c190ce827e0",
+  "sourceDimensions": [
+    1021,
+    1541
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "c02cbb9ffa2a4a4832dd239937d91cfce51d7206e477094fd8762802994ae5ac",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Own five-reference connected habitat, then numeric phone-aspect framing correction and one final10percent edge correction through built-in image_gen because actual centered phone crops clipped endpoints. Mechanical aspect-preserving1290x2796 cover trims quiet background only. Five standalone artworks unchanged.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/wallpaper-phone-fit.e86cc538b1ab.png",
+      "sha256": "e86cc538b1abdd1c1ddce72941719cbf684a492310e4d7d01747a2474af2948d",
+      "purpose": "Own source only; ordered habitat materials or prior complete scene framing."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}

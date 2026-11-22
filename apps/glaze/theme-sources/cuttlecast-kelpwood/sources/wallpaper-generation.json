@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "CUTTLECAST KELPWOOD. Use case: illustration-story. Create ONE coherent portrait1290x2796 nature WALLPAPER, opaque full smooth ink-indigo #30384B background. INPUT1 own approved seahorse, INPUT2 own selected wrasse, INPUT3 own selected kelp/anemone are MATERIAL and NATURAL ANATOMY references ONLY; do not alter these three standalone art assets. SAME ONE satin pewter shallow cast relief with conspicuous coarse irregular parallel wavy CUTTLEBONE MOULD IMPRESSIONS across all broad solid surfaces, soft cast lips and subtle same-gray crest highlights/dark troughs, never mixed metal/paint/enamel/chased dimples. A substantial TALL natural KELP-FOREST habitat, not a small island/sticker: THREE unequal tall strap-kelp blades rise naturally from a low irregular seafloor bank with a small holdfast and two modest stones. Whole familiar short-snouted SEAHORSE at middle-left, about24percent full canvas HEIGHT, coherent horse-like head/short tube snout/small eye/arched neck/dorsal fin and complete inward curled tail loosely clasping one stem. Whole familiar WRASSE at lower-right about31percent canvas WIDTH, coherent low long dorsal fin/pectoral/anal fins/rounded fan tail, all tips complete. One small natural anemone low center with short column and open radial tentacle crown. No additional fauna. Seafloor is irregular natural habitat, not enclosing oval plaque, tray or jewellery base. Grow the THREE kelp blades vertically to make a generous upright composition, broad wavy material readable. Entire connected habitat occupies about80percent canvas WIDTH and50to55percent HEIGHT, from about26percent to79percent canvas height. ABSOLUTE SIDE RULE: leftmost habitat/leaf/bill/tail/fins/bank edge begins NO EARLIER than10percent canvas width; rightmost extremity NO LATER than90percent canvas width. Show COMPLETE natural outer bank edge at left and right, all animal and plant tips inside frame. Keep at least25percent quiet matching background above, about20percent below,10percent each side. No cropped terrain or extremities, no animal stretch, no tiny low horizontal strip. Full coherent matching opaque background with no pasted rectangle, UI/text/numbers/labels, clocks/dates/battery/weather values, logo/watermark, frames/corner flourishes, jewellery bails, mold/tools or people. Preserve single grayscale pewter material and calm natural recognition.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.5f5bf59b.png",
+  "sourceSha256": "5f5bf59b87d49950e81051cfec73fbbbbc246d4b7276f8f4e6e5fd6193c9f23a",
+  "sourceDimensions": [
+    759,
+    2072
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "a4d61dea2d673db02a600fd681c1d8da41899b1249050c7378d844edbe974242",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "seahorse-strapkelp",
+      "file": "sources/seahorse-strapkelp.a4e78d62.png",
+      "sha256": "a4e78d6284d51587085d4ef01c0fef9160df5033019392b1af157b17f1fff5c7",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 2,
+      "id": "corkwing-wrasse",
+      "file": "sources/corkwing-wrasse.c1648bc1.png",
+      "sha256": "c1648bc16308b64d6a86a6ff420471b682b9f9f3043b5ab86f7ca9a51a8aa0dd",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 3,
+      "id": "kelp-anemone",
+      "file": "sources/kelp-anemone.c919cf66.png",
+      "sha256": "c919cf6679ed4addbff12547b2b3734db1320cdd02a3a21689dcd77269b412a4",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

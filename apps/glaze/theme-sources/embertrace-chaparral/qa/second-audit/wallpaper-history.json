@@ -1,0 +1,35 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "kind": "authorized wallpaper enlargement and natural vertical recomposition",
+  "authority": "Jared via Claude/coordinator SECOND AUDIT00:47: freeze art, enlarge wallpaper75\u201390percent width with real vertical presence; clock form for ART, never for date-marker fitting.",
+  "exactToolRequest": "qa/second-audit/wallpaper-request.json",
+  "exactToolResult": "qa/second-audit/wallpaper-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "file": "qa/second-audit/previous-selected-wallpaper.png",
+      "sha256": "5dfad0fe045e6b9ef2b4f27978327e6e851754b6380b98d72c76f39dd31534eb",
+      "role": "EDIT TARGET: exact own currently selected wallpaper, to enlarge/recompose only."
+    },
+    {
+      "order": 2,
+      "file": "sources/quail-manzanita.25cfcc80.png",
+      "sha256": "25cfcc80efc81d0ca163aaab9945a0f45aece4074f75ac1b729b16312eea8c43",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it."
+    },
+    {
+      "order": 3,
+      "file": "sources/brushrabbit-sage.0a2ff8b2.png",
+      "sha256": "0a2ff8b2664af9298248ff190ab11d3e9b9b116910296442c1eb3b111b54e74e",
+      "role": "Own frozen selected raw artwork, MATERIAL and NATURAL ANATOMY reference only; never modify it."
+    }
+  ],
+  "selectedSource": "sources/wallpaper.fcfe1cc8.png",
+  "selectedSourceSha256": "fcfe1cc84e612e5450e2d32a72944858e100ffb278a20f818409ce8df52e42a0",
+  "priorGenerationHistory": "qa/layout-repair/wallpaper-history.json",
+  "previousSelectedGeneration": "qa/second-audit/previous-selected-generation.json",
+  "exactPreviousHistory": "qa/second-audit/before-wallpaper-history.exact.json",
+  "previousProductionWallpaper": "qa/second-audit/previous-production-wallpaper.png",
+  "previousProductionSha256": "05b70327305959566bdaea23cd721b75bf20bb611f2e5abc40daefa20c88deca"
+}

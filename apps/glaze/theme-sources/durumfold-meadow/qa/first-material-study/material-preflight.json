@@ -1,0 +1,27 @@
+{
+  "id": "durumfold-meadow",
+  "lane": "A17",
+  "status": "Text reservation and exactly one first material prototype; no other four/WP yet",
+  "medium": "Discrete uncooked tricolour durum-wheat pasta assembly: whole ridged conchiglie/orecchiette/penne/bucatini/farfalle pieces",
+  "metadataSearch": "No pasta/durum/farfalle positives in84candidate meta files or141historical baseline manifests. This does not prove visible uniqueness.",
+  "primaryTextSources": [
+    {
+      "url": "https://www.barilla.com/en-us/products/pasta/classic-blue-box/farfalle",
+      "role": "Physical pinched pasta shape and dry semolina material; text only"
+    },
+    {
+      "url": "https://www.archiviostoricobarilla.com/en/scheda-archivio/farfalle-65-2/",
+      "role": "Characteristic central pinch and shaped dough; text only"
+    }
+  ],
+  "risks": [
+    "B26 Flutecut corrugated kraft bas-relief",
+    "B35 satin folds",
+    "A15 orange peel folds",
+    "published Crumbkin marzipan and Honeywood wax",
+    "pasta grain/grooves may collapse to generic clay at85"
+  ],
+  "gate": "Full/170/85 actual matte hard pasta pieces, hollow tube ends, large shell grooves and grain must be visibly distinct from corrugated paper, peel, satin, wax and marzipan. Whole recognizable robin and two complete feet first. At most one targeted own refinement; release if still generic.",
+  "generationInputs": "New prompt only; no neighbor/external image input",
+  "published": false
+}

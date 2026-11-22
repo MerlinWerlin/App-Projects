@@ -1,0 +1,38 @@
+{
+  "themeId": "embertrace-chaparral",
+  "protectedFiles": {
+    "widgets/brushrabbit-sage.7f25bf75.png": "7f25bf75691d9927a8a787e9472e0bfdd671f3c601d62abb40ba27ddfb9d2375",
+    "widgets/california-poppies.626186df.png": "626186df65f6dd9461fafce325128aa1142d6be2ef8121aa553985d4f3f450c6",
+    "widgets/fence-lizard.327aab0a.png": "327aab0ada395a1c098e63a0331d78a740410fe8731415f9083fdc555baa4680",
+    "widgets/monarch-milkweed.8a1c5f0f.png": "8a1c5f0fbff97b42f183c6e247c35884e35fddce67d1805139308b39af7ed984",
+    "widgets/quail-manzanita.49be3811.png": "49be3811fdc48ec5b9922a9ecb1e8d6b2fd68d4964342ab8bcdeb3107f443f13",
+    "widgets/README.md": "0324dbb7e4318bf9d0646aa3189fe6a34b6cf23d30565bc01a7f18f4155efa77",
+    "widgets/widget-options.json": "779811672155c171ad76875526d37d46fc2b840a01c915ca4fa0f50deef52f16",
+    "sources/brushrabbit-sage-generation.json": "453930f967c1d7bcf62940b18bbe13cf7281ee4cd7040ae89df69eef50b19133",
+    "sources/brushrabbit-sage.0a2ff8b2.png": "0a2ff8b2664af9298248ff190ab11d3e9b9b116910296442c1eb3b111b54e74e",
+    "sources/california-poppies-generation.json": "ebf87719b11109eebf7a049e082a9c76846d5ca1f9ceb3c620e1e07ab0c343f0",
+    "sources/california-poppies.7bbce666.png": "7bbce666e0fb09f6f6f90ba90a461d2a6ae4f2d707fc651f37319b234bbc76a6",
+    "sources/fence-lizard-generation.json": "c7dd88a953969e69c5405faf9c84a16668a7723b01a85b59c6e03f3714c3ed0c",
+    "sources/fence-lizard.3225c3e5.png": "3225c3e53ab00a38d6278d208e16a679cb1999ee8d2fcd3088e746350c15eeac",
+    "sources/monarch-milkweed-generation.json": "82c8fc939f57dfb1508a4395e2756bfa99f462b4e18aa6395b80c58721a93fb6",
+    "sources/monarch-milkweed.3fe3325b.png": "3fe3325b8ee0fc8a30195c014c7f52408acdab81ec15c38bd337964b5b909965",
+    "sources/quail-manzanita-generation.json": "74241ac80c903e5ad8c74094af22ac189d6d69fc31df0dec6bd0620102885e05",
+    "sources/quail-manzanita.25cfcc80.png": "25cfcc80efc81d0ca163aaab9945a0f45aece4074f75ac1b729b16312eea8c43",
+    "sources/README.md": "37fb033bbd2b19036277f10678220d7e48f855cd6c037582c5d2bc28ca58bd51",
+    "palette.json": "c9ead5f6bd537ee29ed65ec07b5512920f5ab97795ac07ce3f3a94ceb71c9920",
+    "meta.json": "c70e85da3eacaa12ffe94f17caf430e07192af43e428fe19c2dad2d39d3c9040"
+  },
+  "allProtectedBytesIdentical": true,
+  "artworkProvenanceIdentical": true,
+  "nativeHeroDetailOrnamentAndOtherRecipeEntriesIdentical": true,
+  "rootFreezeMatch": {
+    "rootHead": "84802d56739aaa2561e77e6595dd6eeb61a32548",
+    "rootFreezeFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\outputs\\second-audit-art-freeze-before.json",
+    "rootFreezeSha256": "16c6aa7811e73754166d3e4b55f699c63d0b2cd9c3959b15b408e7abc388b4a2",
+    "allWidgetsArtworkProvenanceOriginalsPaletteMetaMatch": true
+  },
+  "faceBefore": "square",
+  "faceAfter": "pebble",
+  "artisticFaceRationale": "Irregular hand-burnished ceramic body.",
+  "scope": "Only selected wallpaper/thumbnail and its provenance plus artistic clock contour changed; palette/meta and every selected artwork/raw/options remain byte-identical."
+}

@@ -131,15 +131,19 @@ struct DesignedDrawing {
   var accent: Color { Color(hex: spec.accent) }
   var lineColor: Color { Color(hex: spec.line) }
 
-  func text(_ value: String, x: CGFloat, y: CGFloat, font: CGFloat, width: CGFloat, color: Color? = nil, weight: Font.Weight = .medium, anchor: UnitPoint = .center) {
+  func text(_ value: String, x: CGFloat, y: CGFloat, font: CGFloat, width: CGFloat, color: Color? = nil, weight: Font.Weight = .medium, anchor: UnitPoint = .center, fitWidth: Bool = true) {
     var pointSize = font
     let minimum = font * 0.64
     var resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink))
-    while resolved.measure(in: CGSize(width: 10000, height: 1000)).width > width && pointSize > minimum {
+    while fitWidth && resolved.measure(in: CGSize(width: 10000, height: 1000)).width > width && pointSize > minimum {
       pointSize -= 0.5
       resolved = context.resolve(Text(value).font(.system(size: pointSize, weight: weight, design: spec.fontDesign)).monospacedDigit().foregroundColor(color ?? ink))
     }
     context.draw(resolved, at: CGPoint(x: x, y: y), anchor: anchor)
+  }
+  func calendarDate(_ value: String, x: CGFloat, y: CGFloat, large: Bool, width: CGFloat, color: Color, today: Bool) {
+    // Highlight by weight, never by reducing the ordinary grid's point size.
+    text(value, x: x, y: y, font: large ? 19 : 12, width: width, color: color, weight: today ? .bold : .medium, fitWidth: false)
   }
   func line(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat, color: Color, width: CGFloat = 1) {
     var p = Path(); p.move(to: CGPoint(x: x1, y: y1)); p.addLine(to: CGPoint(x: x2, y: y2))
