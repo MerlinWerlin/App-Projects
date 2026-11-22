@@ -1,0 +1,197 @@
+{
+  "theme": "c-nomarski-dunefield",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "saltbush-lantern",
+      "sourceImage": "sources/saltbush-lantern.592d3a73a60e.png",
+      "sourceSha256": "592d3a73a60efb5f37a364d2e4c25fdcfc70595fdc7fb71e18ece3f3de51f8df",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/saltbush-lantern.9294b959a750.png",
+      "sha256": "9294b959a750484ad25eafaf5239896f856f91964c5a5efcee86021b003a5707",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 721961,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE NOMARSKI DUNEFIELD. An invented tangible natural dune microhabitat appears as NOMARSKI DIFFERENTIAL-INTERFERENCE-CONTRAST-inspired optical path-gradient recordings. UNMISTAKABLE DIC PSEUDO-RELIEF IMAGE,not physical matter: ONE fixed diagonal shear direction for the ENTIRE image. Every body edge and every broad internal vacuole or fold has a narrow CREAM-BRIGHT upper-left phase-gradient edge and a paired DARK OLIVE-GREY lower-right phase-gradient edge. The opposite bright/dark sides are the signature,with soft low-contrast lilac-grey/muted-olive optical interiors and a little fine detector noise. Broad smooth phase gradients,not conventional illumination shading. The image looks like an optically embossed micrograph but has no real sculpted surface or cast shadow. A few large rounded vacuoles and thick flowing internal septa show the same global bright-dark shear direction. Preserve a strong full-body silhouette and large readable structural openings. No glossy transparency,glass,wet membrane,gel,resin,metal,clay,paper,wood,fabric,ink,engraving or real embossed material. No 3D specular lighting/highlights,photorealistic skin or normal coloured plant beneath the optical image. No SEM granular pores,coated surface pitting,amber/blue Rheinberg membranes,parallel projected stripes,interlocking binary domains,checker cells,rainbow stress fringes,arrows,particle dots or multiple time exposures. Do not use red/cyan offset duplicate silhouettes. Fictional artistic optical fields,not a measured biological specimen or medical image. No text,letters,numbers,scale bar,labels,axes,graph,UI,clock,reading,logo or watermark. Subject: ONE complete SALTBUSH LANTERN growth: a low broad natural shrub with THREE thick branching stems and FIVE unequal large softly inflated TRILOBED leaves. Each leaf has three rounded lobes and a large curved internal opening near its base,so the shrub has open breathing spaces. Leaves point in different directions,one spreading left,two lifting high,one drooping right,one small forward. A stout short root crown with three thick root toes grounds the plant. No flowers,berries,decorative lanterns,pots,ordinary round tree crown or thin twig forest. All five leaves,stem forks and roots whole. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha outside the complete organism and through natural structural openings. Soft optical interiors belong only inside the body silhouette;no rectangular micrograph backing. Whole organism,all leaf/leg/antenna/wing/root endpoints safely inside central seventy percent with generous truly empty margins. No landscape,soil patch,shadow,extra organism,frame,panel,contact sheet or device mockup. Signature one-direction paired bright/dark DIC edges and bold full silhouette must remain readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 751583
+    },
+    {
+      "id": "burrow-cricket",
+      "sourceImage": "sources/burrow-cricket.4bd77f51b593.png",
+      "sourceSha256": "4bd77f51b593c08e7a07b6042c26f1f801a2bc2ee7ce6144f2c418fb8f14363a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/burrow-cricket.609ac0750c79.png",
+      "sha256": "609ac0750c79ccfca614614a7e544ab6463bfe780d3287066e66921289be1c26",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 657443,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE NOMARSKI DUNEFIELD. An invented tangible natural dune microhabitat appears as NOMARSKI DIFFERENTIAL-INTERFERENCE-CONTRAST-inspired optical path-gradient recordings. UNMISTAKABLE DIC PSEUDO-RELIEF IMAGE,not physical matter: ONE fixed diagonal shear direction for the ENTIRE image. Every body edge and every broad internal vacuole or fold has a narrow CREAM-BRIGHT upper-left phase-gradient edge and a paired DARK OLIVE-GREY lower-right phase-gradient edge. The opposite bright/dark sides are the signature,with soft low-contrast lilac-grey/muted-olive optical interiors and a little fine detector noise. Broad smooth phase gradients,not conventional illumination shading. The image looks like an optically embossed micrograph but has no real sculpted surface or cast shadow. A few large rounded vacuoles and thick flowing internal septa show the same global bright-dark shear direction. Preserve a strong full-body silhouette and large readable structural openings. No glossy transparency,glass,wet membrane,gel,resin,metal,clay,paper,wood,fabric,ink,engraving or real embossed material. No 3D specular lighting/highlights,photorealistic skin or normal coloured plant beneath the optical image. No SEM granular pores,coated surface pitting,amber/blue Rheinberg membranes,parallel projected stripes,interlocking binary domains,checker cells,rainbow stress fringes,arrows,particle dots or multiple time exposures. Do not use red/cyan offset duplicate silhouettes. Fictional artistic optical fields,not a measured biological specimen or medical image. No text,letters,numbers,scale bar,labels,axes,graph,UI,clock,reading,logo or watermark. Subject: ONE complete BURROW CRICKET in three-quarter side view. Stout broad segmented body,one rounded head,TWO short thick bent antennae,SIX legs with TWO oversized folded hind jumping legs and four shorter forward legs. Broad foreleg paddles suit burrowing. One low wing-cover ridge lies along the back;two short blunt tail prongs. All antennae,leg joints/feet,paddles and tail tips distinct and fully visible with generous gaps. No extra legs,eyes with pupils,mammal face,thin hair/spines or photorealistic insect skin. Large adult insect proportions,not a toy mascot. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha outside the complete organism and through natural structural openings. Soft optical interiors belong only inside the body silhouette;no rectangular micrograph backing. Whole organism,all leaf/leg/antenna/wing/root endpoints safely inside central seventy percent with generous truly empty margins. No landscape,soil patch,shadow,extra organism,frame,panel,contact sheet or device mockup. Signature one-direction paired bright/dark DIC edges and bold full silhouette must remain readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 775485
+    },
+    {
+      "id": "spiralroot-grass",
+      "sourceImage": "sources/spiralroot-grass.1092144ac785.png",
+      "sourceSha256": "1092144ac785ca89ca848420baeca1a85ae9d25b507fa1d41a8e8e994179b1b6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/spiralroot-grass.18088f4b3bd7.png",
+      "sha256": "18088f4b3bd78d8c042eae1ba9304204083d30e08802406d3f6a8400b0436e63",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 550816,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE NOMARSKI DUNEFIELD. An invented tangible natural dune microhabitat appears as NOMARSKI DIFFERENTIAL-INTERFERENCE-CONTRAST-inspired optical path-gradient recordings. UNMISTAKABLE DIC PSEUDO-RELIEF IMAGE,not physical matter: ONE fixed diagonal shear direction for the ENTIRE image. Every body edge and every broad internal vacuole or fold has a narrow CREAM-BRIGHT upper-left phase-gradient edge and a paired DARK OLIVE-GREY lower-right phase-gradient edge. The opposite bright/dark sides are the signature,with soft low-contrast lilac-grey/muted-olive optical interiors and a little fine detector noise. Broad smooth phase gradients,not conventional illumination shading. The image looks like an optically embossed micrograph but has no real sculpted surface or cast shadow. A few large rounded vacuoles and thick flowing internal septa show the same global bright-dark shear direction. Preserve a strong full-body silhouette and large readable structural openings. No glossy transparency,glass,wet membrane,gel,resin,metal,clay,paper,wood,fabric,ink,engraving or real embossed material. No 3D specular lighting/highlights,photorealistic skin or normal coloured plant beneath the optical image. No SEM granular pores,coated surface pitting,amber/blue Rheinberg membranes,parallel projected stripes,interlocking binary domains,checker cells,rainbow stress fringes,arrows,particle dots or multiple time exposures. Do not use red/cyan offset duplicate silhouettes. Fictional artistic optical fields,not a measured biological specimen or medical image. No text,letters,numbers,scale bar,labels,axes,graph,UI,clock,reading,logo or watermark. Subject: ONE complete SPIRALROOT GRASS tuft: exactly THREE broad unequal corkscrew leaf blades rise from one low rounded root crown. Each blade makes one open helical bend,one high-left,one high-right and one shorter forward bend. Blades are thick ribbon-like natural leaves with broad edges,not many thin grasses. THREE stout curling roots spread below the crown. Preserve open gaps through the leaf coils and between all roots;whole leaf tips/root ends. No flower,ordinary tree,wire spring,fabric ribbon or decorative bow. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha outside the complete organism and through natural structural openings. Soft optical interiors belong only inside the body silhouette;no rectangular micrograph backing. Whole organism,all leaf/leg/antenna/wing/root endpoints safely inside central seventy percent with generous truly empty margins. No landscape,soil patch,shadow,extra organism,frame,panel,contact sheet or device mockup. Signature one-direction paired bright/dark DIC edges and bold full silhouette must remain readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 843607
+    },
+    {
+      "id": "leafcockle-succulent",
+      "sourceImage": "sources/leafcockle-succulent.dd2ddfe1be5d.png",
+      "sourceSha256": "dd2ddfe1be5deb8f202907205f0b2b480194bac91ced4f19f6d763f245ba9376",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/leafcockle-succulent.e11bb0211eb1.png",
+      "sha256": "e11bb0211eb1b74afd4a3ba3afc8a7c892e2d12b244ddcdca4cfc0380cb79c76",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 658679,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE NOMARSKI DUNEFIELD. An invented tangible natural dune microhabitat appears as NOMARSKI DIFFERENTIAL-INTERFERENCE-CONTRAST-inspired optical path-gradient recordings. UNMISTAKABLE DIC PSEUDO-RELIEF IMAGE,not physical matter: ONE fixed diagonal shear direction for the ENTIRE image. Every body edge and every broad internal vacuole or fold has a narrow CREAM-BRIGHT upper-left phase-gradient edge and a paired DARK OLIVE-GREY lower-right phase-gradient edge. The opposite bright/dark sides are the signature,with soft low-contrast lilac-grey/muted-olive optical interiors and a little fine detector noise. Broad smooth phase gradients,not conventional illumination shading. The image looks like an optically embossed micrograph but has no real sculpted surface or cast shadow. A few large rounded vacuoles and thick flowing internal septa show the same global bright-dark shear direction. Preserve a strong full-body silhouette and large readable structural openings. No glossy transparency,glass,wet membrane,gel,resin,metal,clay,paper,wood,fabric,ink,engraving or real embossed material. No 3D specular lighting/highlights,photorealistic skin or normal coloured plant beneath the optical image. No SEM granular pores,coated surface pitting,amber/blue Rheinberg membranes,parallel projected stripes,interlocking binary domains,checker cells,rainbow stress fringes,arrows,particle dots or multiple time exposures. Do not use red/cyan offset duplicate silhouettes. Fictional artistic optical fields,not a measured biological specimen or medical image. No text,letters,numbers,scale bar,labels,axes,graph,UI,clock,reading,logo or watermark. Subject: ONE complete LEAFCOCKLE SUCCULENT: TWO joined thick fan-shaped fleshy leaves open like unequal cupped valves from one short shared root foot. Left leaf taller and narrow,right leaf broad and low;each has three rounded lobes with wide soft notches. A small central THREE-LEAF shoot emerges between the large leaves,showing it is a living plant. No real shell,clam,stone,bowl,flower,pot or sculpture. Broad optical interiors have only a few rounded vacuoles and phase-gradient septa. All leaf lobes,shoot tips and root foot whole. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha outside the complete organism and through natural structural openings. Soft optical interiors belong only inside the body silhouette;no rectangular micrograph backing. Whole organism,all leaf/leg/antenna/wing/root endpoints safely inside central seventy percent with generous truly empty margins. No landscape,soil patch,shadow,extra organism,frame,panel,contact sheet or device mockup. Signature one-direction paired bright/dark DIC edges and bold full silhouette must remain readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 746266
+    },
+    {
+      "id": "winged-sand-seed",
+      "sourceImage": "sources/winged-sand-seed.9d00363c41c9.png",
+      "sourceSha256": "9d00363c41c95d641c369506a940732ea55927f40707bba678d2db87ef9f916a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/winged-sand-seed.4db5ae4b40bc.png",
+      "sha256": "4db5ae4b40bc6a0dc53bb157779dd70e4ff9ca2dc5c459ec3560c1d32442094e",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 406098,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE NOMARSKI DUNEFIELD. An invented tangible natural dune microhabitat appears as NOMARSKI DIFFERENTIAL-INTERFERENCE-CONTRAST-inspired optical path-gradient recordings. UNMISTAKABLE DIC PSEUDO-RELIEF IMAGE,not physical matter: ONE fixed diagonal shear direction for the ENTIRE image. Every body edge and every broad internal vacuole or fold has a narrow CREAM-BRIGHT upper-left phase-gradient edge and a paired DARK OLIVE-GREY lower-right phase-gradient edge. The opposite bright/dark sides are the signature,with soft low-contrast lilac-grey/muted-olive optical interiors and a little fine detector noise. Broad smooth phase gradients,not conventional illumination shading. The image looks like an optically embossed micrograph but has no real sculpted surface or cast shadow. A few large rounded vacuoles and thick flowing internal septa show the same global bright-dark shear direction. Preserve a strong full-body silhouette and large readable structural openings. No glossy transparency,glass,wet membrane,gel,resin,metal,clay,paper,wood,fabric,ink,engraving or real embossed material. No 3D specular lighting/highlights,photorealistic skin or normal coloured plant beneath the optical image. No SEM granular pores,coated surface pitting,amber/blue Rheinberg membranes,parallel projected stripes,interlocking binary domains,checker cells,rainbow stress fringes,arrows,particle dots or multiple time exposures. Do not use red/cyan offset duplicate silhouettes. Fictional artistic optical fields,not a measured biological specimen or medical image. No text,letters,numbers,scale bar,labels,axes,graph,UI,clock,reading,logo or watermark. Subject: ONE complete WINGED SAND SEED: a thick curved pear-shaped central pod carries exactly TWO unequal broad wings,one long crescent wing extending left and one shorter tall curved wing rising right. One thick short germinating root curls down from the pod,ending in a blunt two-toe tip. The seed is asymmetric and purposeful,with clear gaps between pod/wings/root. No flower,three/four-blade pinwheel,bird,helicopter,toy or ordinary leaf. Whole wing tips,pod and root visible. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha outside the complete organism and through natural structural openings. Soft optical interiors belong only inside the body silhouette;no rectangular micrograph backing. Whole organism,all leaf/leg/antenna/wing/root endpoints safely inside central seventy percent with generous truly empty margins. No landscape,soil patch,shadow,extra organism,frame,panel,contact sheet or device mockup. Signature one-direction paired bright/dark DIC edges and bold full silhouette must remain readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 870150
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.84bcdda8540c.png",
+      "sourceSha256": "84bcdda8540cf9cb235bba5cbe56f57b7fd474a61a9b2d834c89bb9eb7eb56d5",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "672226ca3b422889d45284a04b5cac05b07bdc0679ed3bead793a73888d60d75",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2423907,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: layout and exact-identity image edit. IMAGE1 is the Nomarski Dunefield portrait habitat wallpaper to edit. IMAGE2 is the exact own SPIRALROOT GRASS identity. Keep all FIVE existing organism groups,their natural dune-hollow habitat,their smooth grey-lilac interiors and ONE consistent cream-bright upper-left/dark-olive lower-right optical DIC phase-edge direction. No physical material,glossy rim,surfacepores or photographic shadows. FIRST restore the grass at rear-right to exactly IMAGE2:THREE distinct unequal broad corkscrew leaf blades,one high-left,one high-right and one SHORTER FRONT-CENTRE blade,all connected to one rootcrown with THREE stout curling roots. The short third blade must be clearly visible,not hidden behind a tall blade. Preserve all open coil gaps and full root/tip endpoints. Do not add another plant. Keep the exact other FOUR identities:saltbush with5perforated trilobed leaves,cricket with2paddleforelegs+2middlelegs+2foldedjumplegs/2shortantennae/2tailprongs,2leafsucculentwithcentral3leafshoot,and seedwith2wings/pearbody/curledroot. SECOND uniformly reduce the ENTIRE FIVE-ORGANISM GROUP to about63%of its present width and height,and place the group centre at horizontal50%/vertical62%. Every whole focal organism must fit within horizontal12%to88%andvertical46%to78%. This creates a wide quiet sage upper43%andbottom20%,with generous empty margins around all leaf/wing/antenna/foot/root endpoints. Keep natural relative positions:shrub rear-left,grass rear-right,succulent middle-right,cricket front-left,seed front-centre. Do not crop,hide anatomy,redesign poses or detach body parts. Let low broad dim dune curves still connect their habitat and extend into the background,without extra plants/animals/stones/stars/props. One coherent natural habitat,not separate specimen panels. Same portrait1290x2796 aspect ratio,opaque deep-sage field. No text,scale,UI,reading,frame or watermark.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "saltbush-lantern",
+          "sourceImage": "sources/saltbush-lantern.592d3a73a60e.png",
+          "sha256": "592d3a73a60efb5f37a364d2e4c25fdcfc70595fdc7fb71e18ece3f3de51f8df"
+        },
+        {
+          "id": "burrow-cricket",
+          "sourceImage": "sources/burrow-cricket.4bd77f51b593.png",
+          "sha256": "4bd77f51b593c08e7a07b6042c26f1f801a2bc2ee7ce6144f2c418fb8f14363a"
+        },
+        {
+          "id": "spiralroot-grass",
+          "sourceImage": "sources/spiralroot-grass.1092144ac785.png",
+          "sha256": "1092144ac785ca89ca848420baeca1a85ae9d25b507fa1d41a8e8e994179b1b6"
+        },
+        {
+          "id": "leafcockle-succulent",
+          "sourceImage": "sources/leafcockle-succulent.dd2ddfe1be5d.png",
+          "sha256": "dd2ddfe1be5deb8f202907205f0b2b480194bac91ced4f19f6d763f245ba9376"
+        },
+        {
+          "id": "winged-sand-seed",
+          "sourceImage": "sources/winged-sand-seed.9d00363c41c9.png",
+          "sha256": "9d00363c41c95d641c369506a940732ea55927f40707bba678d2db87ef9f916a"
+        }
+      ],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.90c459fbac92.png",
+        "sha256": "90c459fbac92785087346d83f84d6863305242531d677e903180e92af7ec00f2"
+      },
+      "editSupportReferences": [
+        {
+          "id": "spiralroot-grass",
+          "sourceImage": "sources/spiralroot-grass.1092144ac785.png",
+          "sha256": "1092144ac785ca89ca848420baeca1a85ae9d25b507fa1d41a8e8e994179b1b6"
+        }
+      ],
+      "generationStages": "Five independently generated alpha artworks after first-sample neighbor review;separately generated exact-own-five-reference natural dune habitat. Built-in composition pullback and exact-own-grass support edit restores missing third blade,all5focal organisms retained."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Continue nature mix in a tangible dune habitat. C23 first actual saltbush compared against C18 SEM pores/C17 amber-blue membranes before expanding. Fixed diagonal paired bright/dark optical phase gradients and smooth interior;quiet sage Artwork corners and compact paired phase-edge native fragment.",
+  "conceptReferences": [
+    {
+      "title": "Nomarski differential interference contrast (DIC),Nikon Instruments glossary",
+      "url": "https://www.microscope.healthcare.nikon.com/resources/glossary/nomarski-differential-interference-contrast",
+      "use": "Text-only primary optical-manufacturer process background:beam shear/recombination and bias adjustment. No external visual input."
+    },
+    {
+      "title": "Bias Retardation Effects on Specimen Contrast,Nikon MicroscopyU",
+      "url": "https://www.microscopyu.com/tutorials/bias-retardation-effects-on-specimen-contrast",
+      "use": "Text-only primary manufacturer explanation of opposite bright/dark optical path-gradient contrast and pseudo-relief. Habitat and organism optical fields are invented art,not measured specimens. No external visual input."
+    }
+  ],
+  "conceptReferenceScope": "Primary optical-manufacturer text only. No external/neighbor image input to imagegen. Habitat,organisms and optical fields are invented art,not measured biological data.",
+  "wallpaperReferenceUsesAcrossStages": 7,
+  "wallpaperDistinctReferenceImages": 6
+}

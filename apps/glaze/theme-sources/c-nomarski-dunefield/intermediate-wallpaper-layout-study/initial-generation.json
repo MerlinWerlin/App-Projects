@@ -1,0 +1,34 @@
+{
+  "selected": false,
+  "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.90c459fbac92.png",
+  "sourceSha256": "90c459fbac92785087346d83f84d6863305242531d677e903180e92af7ec00f2",
+  "prompt": "Use case: stylized-concept. GLAZE NOMARSKI DUNEFIELD. An invented tangible natural dune microhabitat appears as NOMARSKI DIFFERENTIAL-INTERFERENCE-CONTRAST-inspired optical path-gradient recordings. UNMISTAKABLE DIC PSEUDO-RELIEF IMAGE,not physical matter: ONE fixed diagonal shear direction for the ENTIRE image. Every body edge and every broad internal vacuole or fold has a narrow CREAM-BRIGHT upper-left phase-gradient edge and a paired DARK OLIVE-GREY lower-right phase-gradient edge. The opposite bright/dark sides are the signature,with soft low-contrast lilac-grey/muted-olive optical interiors and a little fine detector noise. Broad smooth phase gradients,not conventional illumination shading. The image looks like an optically embossed micrograph but has no real sculpted surface or cast shadow. A few large rounded vacuoles and thick flowing internal septa show the same global bright-dark shear direction. Preserve a strong full-body silhouette and large readable structural openings. No glossy transparency,glass,wet membrane,gel,resin,metal,clay,paper,wood,fabric,ink,engraving or real embossed material. No 3D specular lighting/highlights,photorealistic skin or normal coloured plant beneath the optical image. No SEM granular pores,coated surface pitting,amber/blue Rheinberg membranes,parallel projected stripes,interlocking binary domains,checker cells,rainbow stress fringes,arrows,particle dots or multiple time exposures. Do not use red/cyan offset duplicate silhouettes. Fictional artistic optical fields,not a measured biological specimen or medical image. No text,letters,numbers,scale bar,labels,axes,graph,UI,clock,reading,logo or watermark. Asset: ONE opaque portrait phone wallpaper1290x2796. A coherent invented natural dune seedbed using five exact own original art identity references. Saltbush-lantern shrub shelters the burrow cricket;spiralroot grass rises behind the leafcockle succulent;winged sand seed settles near a low dune hollow. Same one-direction cream-bright/deep-olive-dark DIC phase-gradient pseudo-relief on all5organisms and a sparse connected low dune shelf. Quiet deep sage #24433E field in upper43%,all FIVE whole focal organisms inside horizontal10%to90%andvertical46%to78%. Bottom20%quiet dark sage sand field. Only a few broad low-contrast dune curves connect the habitat,no extra plants,animals,stones,stars,clouds or props. All leaf/wing/leg/antenna/root endpoints whole with generous room. Terrain may bleed,focal organisms cannot. One natural microhabitat in an invented optical-recording language,not physical clay or a specimen collage. No text,UI,frame or reading. Input identity references in exact order:IMAGE1=saltbush lantern,IMAGE2=burrow cricket,IMAGE3=spiralroot grass,IMAGE4=leafcockle succulent,IMAGE5=winged sand seed. Preserve all five exact original silhouettes,including their natural open gaps and smooth grey-lilac/olive optical interiors. Saltbush has5perforated trilobed leaves/3forkedstems/3roottoes. Cricket has2short bent antennae,2broad foreleg paddles,2short middlelegs,2large folded hind jumpinglegs and2tailprongs. Grass has3unequal broad open corkscrew blades and3stout curling roots. Succulent has2unequal fleshy three-lobed leaves and a central3leafshoot on one rootfoot. Seed has2unequal crescentwings,one thick pearpod and one short bentroot ending in2toes,not a flower or bird. Suggested habitat:shrub rear-left,grass rear-right,succulent middle-right,cricket front-left,seed front-centre. Make the cricket shelter beside the shrub rootcrown and the seed lie near a low hollow,not five separated specimen panels. Preserve exactly5organisms,no extra seedlings,bugs or background plants. All5whole focal forms within horizontal10%to90%andvertical46%to78%,upper43%quiet deep sage,bottom20%quiet dark dune field. Dune curves can bleed;all antennae,feet,leaflobes,coils,seedwing/root endpoints cannot. No photographic light/shadow,glossy rims,thick extruded borders or surfacepores;every phase edge follows ONE shared diagonal cream-bright upper-left/olive-dark lower-right shear direction.",
+  "internalArtworkReferences": [
+    {
+      "id": "saltbush-lantern",
+      "sourceImage": "sources/saltbush-lantern.592d3a73a60e.png",
+      "sha256": "592d3a73a60efb5f37a364d2e4c25fdcfc70595fdc7fb71e18ece3f3de51f8df"
+    },
+    {
+      "id": "burrow-cricket",
+      "sourceImage": "sources/burrow-cricket.4bd77f51b593.png",
+      "sha256": "4bd77f51b593c08e7a07b6042c26f1f801a2bc2ee7ce6144f2c418fb8f14363a"
+    },
+    {
+      "id": "spiralroot-grass",
+      "sourceImage": "sources/spiralroot-grass.1092144ac785.png",
+      "sha256": "1092144ac785ca89ca848420baeca1a85ae9d25b507fa1d41a8e8e994179b1b6"
+    },
+    {
+      "id": "leafcockle-succulent",
+      "sourceImage": "sources/leafcockle-succulent.dd2ddfe1be5d.png",
+      "sha256": "dd2ddfe1be5deb8f202907205f0b2b480194bac91ced4f19f6d763f245ba9376"
+    },
+    {
+      "id": "winged-sand-seed",
+      "sourceImage": "sources/winged-sand-seed.9d00363c41c9.png",
+      "sha256": "9d00363c41c95d641c369506a940732ea55927f40707bba678d2db87ef9f916a"
+    }
+  ],
+  "reason": "Focal group too large/tall,grass reaches upperquiet field,and grass lost its short third blade. Restore exact3blade/3root own identity and reduce whole focal group for margins."
+}

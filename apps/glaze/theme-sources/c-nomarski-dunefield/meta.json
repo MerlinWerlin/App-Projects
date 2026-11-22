@@ -1,0 +1,16 @@
+{
+  "name": "Nomarski Dunefield",
+  "mood": "Dune plants,a burrowing cricket and a winged seed emerge in soft paired bright-dark optical relief.",
+  "tags": [
+    "nomarski-inspired",
+    "dic-contrast",
+    "dune-habitat",
+    "phase-gradient"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity. Fictional DIC-inspired optical habitat,not measured biological data.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. GLAZE NOMARSKI DUNEFIELD. An invented tangible natural dune microhabitat appears as NOMARSKI DIFFERENTIAL-INTERFERENCE-CONTRAST-inspired optical path-gradient recordings. UNMISTAKABLE DIC PSEUDO-RELIEF IMAGE,not physical matter: ONE fixed diagonal shear direction for the ENTIRE image. Every body edge and every broad internal vacuole or fold has a narrow CREAM-BRIGHT upper-left phase-gradient edge and a paired DARK OLIVE-GREY lower-right phase-gradient edge. The opposite bright/dark sides are the signature,with soft low-contrast lilac-grey/muted-olive optical interiors and a little fine detector noise. Broad smooth phase gradients,not conventional illumination shading. The image looks like an optically embossed micrograph but has no real sculpted surface or cast shadow. A few large rounded vacuoles and thick flowing internal septa show the same global bright-dark shear direction. Preserve a strong full-body silhouette and large readable structural openings. No glossy transparency,glass,wet membrane,gel,resin,metal,clay,paper,wood,fabric,ink,engraving or real embossed material. No 3D specular lighting/highlights,photorealistic skin or normal coloured plant beneath the optical image. No SEM granular pores,coated surface pitting,amber/blue Rheinberg membranes,parallel projected stripes,interlocking binary domains,checker cells,rainbow stress fringes,arrows,particle dots or multiple time exposures. Do not use red/cyan offset duplicate silhouettes. Fictional artistic optical fields,not a measured biological specimen or medical image. No text,letters,numbers,scale bar,labels,axes,graph,UI,clock,reading,logo or watermark. ",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}
