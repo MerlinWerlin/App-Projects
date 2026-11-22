@@ -1,0 +1,89 @@
+name: cloud-companion-ios
+on:
+  push:
+    branches: ['codex/cloud-companion-*']
+    paths:
+      - 'apps/cloud-companion/App/**'
+      - 'apps/cloud-companion/Shared/**'
+      - 'apps/cloud-companion/Widget/**'
+      - 'apps/cloud-companion/Tests/**'
+      - 'apps/cloud-companion/UITests/**'
+      - 'apps/cloud-companion/project.yml'
+      - 'apps/cloud-companion/Package.swift'
+      - 'apps/cloud-companion/tools/MakeIcon.swift'
+      - 'apps/cloud-companion/tools/capture.sh'
+      - 'apps/cloud-companion/tools/verify_motion.py'
+      - '.github/workflows/cloud-companion-ios.yml'
+  pull_request:
+    paths: ['apps/cloud-companion/**', '.github/workflows/cloud-companion-ios.yml']
+permissions:
+  contents: write
+concurrency:
+  group: cloud-companion-ios-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  native:
+    if: github.event_name == 'push' || github.event.pull_request.draft == false
+    runs-on: macos-15
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: apps/cloud-companion
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Core tests
+        id: core
+        run: set -o pipefail; swift test 2>&1 | tee core-tests.log
+      - name: Generate native project and icon
+        run: |
+          swift tools/MakeIcon.swift
+          brew list xcodegen >/dev/null 2>&1 || brew install xcodegen
+          xcodegen generate
+      - name: Build app and real WidgetKit extension
+        id: build
+        run: |
+          set -o pipefail
+          xcodebuild -project CloudCompanion.xcodeproj -scheme CloudCompanion -sdk iphonesimulator -configuration Debug -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build 2>&1 | tee native-build.log
+      - name: Boot simulator
+        id: boot
+        timeout-minutes: 8
+        run: |
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); a=[x for v in d["devices"].values() for x in v if "iPhone" in x["name"]]; print(next((x["udid"] for x in a if x["name"]=="iPhone 16 Pro"),a[0]["udid"]))')
+          echo "DEVICE=$DEVICE" >> "$GITHUB_ENV"
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+      - name: Exercise actual iOS controls
+        id: ui
+        timeout-minutes: 10
+        run: |
+          set -o pipefail
+          xcodebuild -project CloudCompanion.xcodeproj -scheme CloudCompanion -destination "platform=iOS Simulator,id=$DEVICE" -derivedDataPath DerivedData -resultBundlePath "$RUNNER_TEMP/cloud-uitests.xcresult" -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test 2>&1 | tee ui-tests.log
+      - name: Capture and verify animated native screens
+        id: render
+        if: (success() || failure()) && steps.build.outcome == 'success' && steps.boot.outcome == 'success'
+        timeout-minutes: 6
+        run: |
+          python3 -m pip install --quiet pillow
+          bash tools/capture.sh
+          python3 tools/verify_motion.py
+      - name: Publish review evidence through git
+        if: always() && github.event_name == 'push'
+        env:
+          CORE_RESULT: ${{ steps.core.outcome }}
+          BUILD_RESULT: ${{ steps.build.outcome }}
+          UI_RESULT: ${{ steps.ui.outcome }}
+          RENDER_RESULT: ${{ steps.render.outcome }}
+        run: bash tools/publish_evidence.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cloud-companion-native-evidence
+          path: |
+            apps/cloud-companion/output/
+            apps/cloud-companion/*tests.log
+            apps/cloud-companion/native-build.log
+            apps/cloud-companion/DerivedData/Build/Products/Debug-iphonesimulator/CloudCompanion.app
+          retention-days: 14

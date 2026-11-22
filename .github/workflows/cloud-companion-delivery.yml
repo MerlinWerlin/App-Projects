@@ -1,0 +1,120 @@
+name: cloud-companion-delivery
+on:
+  push:
+    branches: ['codex/cloud-companion-20261104']
+    paths: ['.github/cloud-companion-delivery.json']
+permissions:
+  contents: write
+concurrency:
+  group: cloud-companion-signing
+  cancel-in-progress: false
+jobs:
+  delivery:
+    runs-on: macos-15
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: apps/cloud-companion
+    env:
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify reviewed runtime source
+        run: |
+          EXPECTED=$(python3 -c 'import json;print(json.load(open("../../.github/cloud-companion-delivery.json"))["reviewedSource"])')
+          git diff --exit-code "$EXPECTED" HEAD -- App Shared Widget project.yml
+          echo "CLOUD_BUILD_NUMBER=$(python3 -c 'import json;print(json.load(open("../../.github/cloud-companion-delivery.json"))["buildNumber"])')" >> "$GITHUB_ENV"
+      - name: Prepare existing signing credentials
+        id: preflight
+        run: |
+          python3 -m pip install --quiet pyjwt cryptography requests pyyaml
+          python3 tools/prepare_signing.py
+      - name: Generate native icon and project
+        run: |
+          swift tools/MakeIcon.swift
+          brew list xcodegen >/dev/null 2>&1 || brew install xcodegen
+          xcodegen generate --spec project-signing.yml
+      - name: Archive with automatic provisioning
+        id: archive
+        run: |
+          set -o pipefail
+          xcodebuild -project CloudCompanion.xcodeproj -scheme CloudCompanion -configuration Release -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/CloudCompanion.xcarchive" CURRENT_PROJECT_VERSION="$CLOUD_BUILD_NUMBER" archive 2>&1 | tee "$RUNNER_TEMP/cloud-archive.log"
+      - name: Verify signed app and widget entitlements
+        id: entitlements
+        run: |
+          python3 - <<'PY'
+          import subprocess,plistlib,json,os
+          from pathlib import Path
+          app=Path(os.environ['RUNNER_TEMP'])/'CloudCompanion.xcarchive/Products/Applications/CloudCompanion.app'
+          records=[]
+          for path in [app,app/'PlugIns/CloudCompanionWidget.appex']:
+              r=subprocess.run(['codesign','-d','--entitlements',':-',str(path)],capture_output=True,check=True)
+              e=plistlib.loads(r.stdout)
+              assert e.get('com.apple.developer.weatherkit') is True
+              records.append({'target':path.name,'weatherkit':True,'independent_widget_configuration':True})
+          Path('output/signed-entitlements.json').write_text(json.dumps(records,indent=2)+'\n')
+          PY
+      - name: Export signed internal prototype package
+        id: export
+        run: |
+          set -o pipefail
+          python3 - <<'PY'
+          import plistlib,os,json
+          from pathlib import Path
+          plistlib.dump({'method':'app-store-connect','destination':'export','teamID':os.environ['CLOUD_TEAM_ID'],
+            'signingStyle':'manual','signingCertificate':'Apple Distribution','provisioningProfiles':json.load(open(os.environ['CLOUD_PROFILES_PATH'])),
+            'uploadSymbols':False,'manageAppVersionAndBuildNumber':False,
+            'testFlightInternalTestingOnly':True,'generateAppStoreInformation':False},
+            open(Path(os.environ['RUNNER_TEMP'])/'cloud-export.plist','wb'))
+          PY
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/CloudCompanion.xcarchive" -exportOptionsPlist "$RUNNER_TEMP/cloud-export.plist" -exportPath "$RUNNER_TEMP/cloud-export" -allowProvisioningUpdates -authenticationKeyPath "$CLOUD_KEY_PATH" -authenticationKeyID "$CLOUD_KEY_ID" -authenticationKeyIssuerID "$CLOUD_ISSUER_ID" 2>&1 | tee "$RUNNER_TEMP/cloud-upload.log"
+      - name: Upload to internal TestFlight
+        id: upload
+        if: env.CLOUD_ASC_APP_ID != ''
+        run: |
+          set -o pipefail
+          API_PRIVATE_KEYS_DIR="$RUNNER_TEMP" xcrun altool --upload-app --type ios --file "$RUNNER_TEMP/cloud-export/CloudCompanion.ipa" --apiKey "$CLOUD_KEY_ID" --apiIssuer "$CLOUD_ISSUER_ID" 2>&1 | tee "$RUNNER_TEMP/cloud-upload.log"
+      - uses: actions/upload-artifact@v4
+        if: steps.export.outcome == 'success'
+        with:
+          name: cloud-companion-signed-iphone-prototype
+          path: ${{ runner.temp }}/cloud-export/*.ipa
+          retention-days: 7
+      - name: Publish sanitized delivery outcome
+        if: always()
+        env:
+          PREFLIGHT_RESULT: ${{ steps.preflight.outcome }}
+          ARCHIVE_RESULT: ${{ steps.archive.outcome }}
+          ENTITLEMENT_RESULT: ${{ steps.entitlements.outcome }}
+          EXPORT_RESULT: ${{ steps.export.outcome }}
+          UPLOAD_RESULT: ${{ steps.upload.outcome }}
+        run: |
+          mkdir -p output
+          python3 - <<'PY'
+          import os,json,re
+          from pathlib import Path
+          report={'source_sha':os.environ['GITHUB_SHA'],'results':{k:os.environ.get(k) for k in ['PREFLIGHT_RESULT','ARCHIVE_RESULT','ENTITLEMENT_RESULT','EXPORT_RESULT','UPLOAD_RESULT']}}
+          errors=[]
+          for name in ['cloud-archive.log','cloud-upload.log']:
+              p=Path(os.environ['RUNNER_TEMP'])/name
+              if p.exists():
+                  for line in p.read_text(errors='replace').splitlines():
+                      if 'error:' in line.lower() or 'requires a provisioning' in line.lower():
+                          line=re.sub(r'[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}','[account]',line,flags=re.I)
+                          for key in ['CLOUD_KEY_ID','CLOUD_ISSUER_ID','CLOUD_TEAM_ID','ASC_KEY_ID','ASC_ISSUER_ID','APPLE_TEAM_ID']:
+                              value=os.environ.get(key)
+                              if value: line=line.replace(value,'[redacted]')
+                          errors.append(line[:600])
+          report['errors']=errors[-12:]
+          Path('output/delivery-result.json').write_text(json.dumps(report,indent=2)+'\n')
+          PY
+          bash tools/publish_evidence.sh
