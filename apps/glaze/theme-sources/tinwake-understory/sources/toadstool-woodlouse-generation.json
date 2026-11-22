@@ -1,0 +1,18 @@
+{
+  "id": "toadstool-woodlouse",
+  "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject TOADSTOOL WOODLOUSE: three different-height natural TOADSTOOLS form an asymmetric grove. Left largest cap a broad shallow umbrella with a curled uneven rim, centre-right medium cap more conical, far-right one tiny closed button. Cool hammered tin stems with chased gills visible under largest cap, restrained rusty patina caps with irregular raised pewter spots and punch dimples. A small WOODLOUSE with7 visible overlapping segmented back plates, tiny antennae and fine legs walks beneath the arch between two stems; recognisable land isopod, not machine or jewellery. Two tiny curled moss-patina leaves connect the bases, no soil, ground disc or rectangular scene. Broad low-to-tall triangular composition, open negative space beneath caps/around stems, thin folded sheet edges throughout. All caps, full stems, woodlouse legs/feelers, leaf tips complete and centrally contained. No faces or eyes on mushrooms.",
+  "tool": "built-in image_gen",
+  "source": "sources/toadstool-woodlouse.991a884a.png",
+  "sourceSha256": "991a884a86b7a7dc4915fb11b279fe4e3df3341b078b2315a78e6e98e511814e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/toadstool-woodlouse.84443267.png",
+  "sha256": "844432670618c06de6cdb4b637a165a35132e9086e7fac764de7d8ea054617ee",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

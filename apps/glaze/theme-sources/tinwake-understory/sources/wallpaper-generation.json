@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Composition adjustment for this same Tinwake Understory wallpaper. Preserve the same hammered pewter/blue-patina thin tin-sheet fern, salamander on leaf, snail, woodpecker/birch and fungi/woodlouse woodland group and all fine chased/punched metallic details. SCALE DOWN the ENTIRE CONNECTED WOODLAND GROUP substantially, keeping ALL parts including the fern's farthest left tips inside CENTRAL62% OF CANVAS WIDTH and BETWEEN34% AND75% HEIGHT. None of the plants, leaf edges, tails or feet may touch any image edge. Add/continue the same quiet dark oxidised blue tin background around the group; upper30% and bottom22% completely quiet ground. One portrait phone wallpaper; this smaller central arrangement must keep every natural subject whole after a narrower1290x2796 phone crop and shorter750x1334 crop. Preserve the soft shallow raised metal character, exact colours and natural anatomy, no new motifs or text, no frame, plate, border, rectangle or visible inset. Change composition scale/position only; do not cut off the group to make it fit.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.8549cfa7.png",
+  "sourceSha256": "8549cfa73adba42f87899b97f6ec8e5354fd099599688ecc6cae8bcf1a1ab987",
+  "sourceDimensions": [
+    941,
+    1672
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "0137bd14a67ddabaf60c3b3ffb87c7bf415e49e9b721c416777805e3b06ce111",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.0184e619.png",
+    "sha256": "0184e61907e2309cf483bffe2a8be79277bea23314547a4b0497f70337ff5c78"
+  }
+}
