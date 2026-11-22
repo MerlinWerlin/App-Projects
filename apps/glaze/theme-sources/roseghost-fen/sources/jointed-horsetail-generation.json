@@ -1,0 +1,26 @@
+{
+  "id": "jointed-horsetail",
+  "label": "Jointed Horsetail",
+  "tool": "built-in image_gen",
+  "prompt": "ONE new separate square1024x1024 pure artwork for GLAZE ROSEGHOST FEN. Use the reference ONLY for its warm anthotype-inspired plant-pigment contact-print language and palette; create the completely different subject described below. Entirely FLAT soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale capillary-vein voids, sun-faded soft contact edges, mottled bleaching and subtle translucent overlap. Darkest muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. A strong readable tangible natural silhouette with close-up pigment detail. No outline drawing, black ink contour, glossy3D modelling, lighting shadows, paper cutout, cyan blueprint or polished sculpture. Pigment/paper grain occurs ONLY inside the subject marks; the surrounding canvas and open gaps must be true transparent alpha. No rectangular backing, floor, soil mound, halo, frame or border. Entire subject central72% with at least14% empty alpha on every side, every root/leaf/appendage whole. No text, letters, numerals, clocks/dials/readings, UI, logo, watermark or signature. One individual original asset, no collage or panels. JOINTED HORSETAIL: an invented wetland reed colony with THREE unequal thick segmented stalks rooted in one narrow branching rhizome. One stalk forks into a broad fan of short whorled needle leaves; one curls outward at its elbow; the shortest bears a compact cone-shaped pollen head. Clear rhythmic joint nodes and sparse fine radial leaf whorls, a strong tall asymmetric living plant silhouette. No bell flowers, bladder leaves, pitcher mouths, animal, mechanism or container. Flat plant-pigment contact print; the anatomy is shown through bleached tissue/vein patterns, never3D shading.",
+  "source": "sources/jointed-horsetail.1885ec276391.png",
+  "sourceSha256": "1885ec27639183e3a65cac55dc8c9a0bd58b31d4f0af3cfc5e15784c240d5a7d",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/jointed-horsetail.6007a153279e.png",
+  "sha256": "6007a153279ef3420675b790b85fbb88ec653b8a8c839d6a40aa3884058284f4",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits.",
+  "references": [
+    {
+      "file": "sources/lantern-bladderwort.8d482e372f74.png",
+      "sha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+      "purpose": "Own first artwork used only to match pigment-print language; distinct new subject."
+    }
+  ]
+}

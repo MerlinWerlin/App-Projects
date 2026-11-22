@@ -1,0 +1,127 @@
+{
+  "theme": "roseghost-fen",
+  "integratedBatchThemes": 41,
+  "actualAppParserAndSelector": true,
+  "smallArtworkSelections": [
+    "lantern-bladderwort",
+    "jointed-horsetail",
+    "cup-crown-pitcher",
+    "webtoe-reed-frog",
+    "sailwing-reed-beetle"
+  ],
+  "largeArtworkSelections": 5,
+  "nativePlans": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "allNineChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "selectedInputsFullyDecoded": 6,
+  "encodedAssetHashes": {
+    "wallpaper-2796.5602c620.webp": "5602c620f6ff60621a87812da0b241e0fef1f3c8a2057720d96de869dedf7275",
+    "wallpaper-2556.8bd4c243.webp": "8bd4c243850a25c7db0bd3224c2430968a671e1a686a1c6af640bd0cae8c5f54",
+    "wallpaper-1334.07031aaa.webp": "07031aaaf90a00a669caf590f448c961aa0480a38c1d2f0cdc7c980f40bae671",
+    "thumb.743419ac.webp": "743419acd94be60974c3398873a546e107eef24faceebfce98db2bd52755eb03",
+    "widget-lantern-bladderwort.d62e0dca.webp": "d62e0dca3df74bc50a49aa7d2a6f57bf79e127b7ef8abc10d6a788529aca2859",
+    "widget-jointed-horsetail.4fbda79e.webp": "4fbda79e2637eb0abb78a066ab4ad837942eaef230c546daf8ed0290e4bd1b7b",
+    "widget-cup-crown-pitcher.7aa518c9.webp": "7aa518c98400649825b776d40344771b4b1f9c5f9951d9380324569f1d98700f",
+    "widget-webtoe-reed-frog.782bf39c.webp": "782bf39c739cead89ed8857785cfcb1a3c614228737085118d4514a47aeb9118",
+    "widget-sailwing-reed-beetle.7f87fdcd.webp": "7f87fdcd98c3ae93845d3fc0cf9b2a8e0e8ac79d7af7c202304668192baa4871"
+  },
+  "selectedSourceHashes": {
+    "widgets/lantern-bladderwort.a68c5c93abb8.png": "a68c5c93abb834a617b0f510740616925995419936b54f23338cfc00649e3a76",
+    "widgets/jointed-horsetail.6007a153279e.png": "6007a153279ef3420675b790b85fbb88ec653b8a8c839d6a40aa3884058284f4",
+    "widgets/cup-crown-pitcher.749bdbedb532.png": "749bdbedb532228d146609507bf6d426b3e4031c283ce89c33edb96b8a262956",
+    "widgets/webtoe-reed-frog.d03664f54573.png": "d03664f54573b6fb81c9140a570feb552700d08f9bf3fe6de6ef21ffbd697f29",
+    "widgets/sailwing-reed-beetle.545c0a54afac.png": "545c0a54afac10ca15391d1f6caaafd76a27a045ad735a8a295eaaa3bcf9b06c",
+    "wallpapers/wallpaper.png": "de17568407efacf1ad4367580196ce60dd4c2cf7873486182eac8aff6eb739fc"
+  },
+  "compactCompanion": {
+    "id": "roseghost-fen",
+    "name": "Roseghost Fen",
+    "retainedHeroLayouts": 5,
+    "compactLayouts": 4
+  },
+  "roundedArt": {
+    "id": "roseghost-fen",
+    "name": "Roseghost Fen",
+    "gradient": [
+      "#F7C991",
+      "#EEC28C"
+    ],
+    "artifacts": [
+      {
+        "id": "lantern-bladderwort",
+        "label": "Lantern Bladderwort",
+        "blend": "transparent",
+        "corePixels": 37672,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "lantern-bladderwort-170.png",
+        "tiny": "lantern-bladderwort-85.png"
+      },
+      {
+        "id": "jointed-horsetail",
+        "label": "Jointed Horsetail",
+        "blend": "transparent",
+        "corePixels": 23604,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "jointed-horsetail-170.png",
+        "tiny": "jointed-horsetail-85.png"
+      },
+      {
+        "id": "cup-crown-pitcher",
+        "label": "Cup Crown Pitcher",
+        "blend": "transparent",
+        "corePixels": 60528,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "cup-crown-pitcher-170.png",
+        "tiny": "cup-crown-pitcher-85.png"
+      },
+      {
+        "id": "webtoe-reed-frog",
+        "label": "Webtoe Reed Frog",
+        "blend": "transparent",
+        "corePixels": 54698,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "webtoe-reed-frog-170.png",
+        "tiny": "webtoe-reed-frog-85.png"
+      },
+      {
+        "id": "sailwing-reed-beetle",
+        "label": "Sailwing Reed Beetle",
+        "blend": "transparent",
+        "corePixels": 48711,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "sailwing-reed-beetle-170.png",
+        "tiny": "sailwing-reed-beetle-85.png"
+      }
+    ]
+  },
+  "nativeDescriptorSha256": "cccc4448786c7a309004eb6f6816d86b0f9b64809540f9b1f2d7286b421480ba",
+  "actualRendererSourceHashes": {
+    "src/core/widgetIdentity.ts": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "src/core/themedWidgetPreview.ts": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888",
+    "targets/widget/ThemedWidgetDrawing.swift": "7c092d15412cfb89f8aa26f80a0caefde335541c02011c9c91c9b84928fe4774"
+  },
+  "category": "Nature",
+  "actualBrowseCategory": "nature",
+  "visualReview": "All five actual encoded rounded selections at170px/85px, nine integrated native previews and three actual phone wallpaper exports reviewed; focal bodies and appendages remain complete.",
+  "published": false,
+  "installedDeviceVerified": false
+}

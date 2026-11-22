@@ -1,0 +1,19 @@
+{
+  "name": "Roseghost Fen",
+  "mood": "Wild wetland plants and gentle marsh animals emerge as warm sun-faded plant-pigment imprints.",
+  "tags": [
+    "nature",
+    "wetland",
+    "anthotype",
+    "plant-pigment",
+    "sun-print",
+    "wildlife",
+    "botanical"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity. Anthotype-inspired fictional habitat.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Warm anthotype-inspired plant-pigment contact prints: flat rose/rust silhouettes, capillary-vein voids, granular deposits and sun-faded edges. Exact original generation and edit prompts retained in provenance.json.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}
