@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fan-lid-samovar",
+    "kind": "art",
+    "image": "fan-lid-samovar.16b9f737.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fan Lid Samovar"
+  },
+  {
+    "id": "hand-crank-roaster",
+    "kind": "art",
+    "image": "hand-crank-roaster.3d7a3b0d.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hand Crank Roaster"
+  },
+  {
+    "id": "folding-tea-trolley",
+    "kind": "art",
+    "image": "folding-tea-trolley.c3528ba8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folding Tea Trolley"
+  },
+  {
+    "id": "ribbon-steam-condenser",
+    "kind": "art",
+    "image": "ribbon-steam-condenser.9f786dea.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ribbon Steam Condenser"
+  },
+  {
+    "id": "accordion-bread-oven",
+    "kind": "art",
+    "image": "accordion-bread-oven.f991ebb0.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Accordion Bread Oven"
+  }
+]

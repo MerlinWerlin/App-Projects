@@ -1,0 +1,18 @@
+{
+  "themeId": "pipework-tearoom",
+  "recipe": [
+    "seal",
+    "icingSamovar",
+    "icingSwags",
+    "pearls",
+    "baton",
+    "basin",
+    "ticket"
+  ],
+  "art": {
+    "icingSamovar": "M 35 80 Q 18 70 31 52 Q 41 43 40 31 L 59 31 Q 57 43 66 51 Q 81 69 64 80 Z M 39 31 L 18 24 L 12 10 L 39 20 L 31 5 L 47 20 M 59 31 L 82 24 L 89 10 L 61 20 L 70 5 L 53 20 M 45 21 L 55 21 L 59 31 M 35 80 L 30 93 M 64 80 L 69 93 M 40 86 L 59 86 L 59 91 L 40 91 Z M 69 57 Q 84 56 85 42 Q 85 31 96 33 M 29 58 Q 12 61 15 45 Q 18 36 28 44 M 33 62 Q 47 74 66 62 M 36 55 Q 49 65 63 55",
+    "icingSwags": "M 8 20 Q 27 47 47 20 Q 66 47 87 20 M 8 29 Q 27 57 47 29 Q 66 57 87 29 M 12 61 Q 29 85 47 61 Q 66 85 84 61 M 12 70 Q 29 93 47 70 Q 66 93 84 70 M 7 15 L 9 17 M 46 15 L 48 17 M 86 15 L 88 17 M 11 56 L 13 58 M 46 56 L 48 58 M 83 56 L 85 58"
+  },
+  "ornament": "M 15 35 Q 32 61 49 35 Q 67 61 85 35 M 15 43 Q 32 69 49 43 Q 67 69 85 43 M 13 26 L 16 28 M 48 26 L 51 28 M 83 26 L 86 28 M 32 69 L 34 72 M 66 69 L 68 72",
+  "direction": "Fan-opening samovar with a curved spout and open feet as full illustration; double piped shell-swags and nozzle bead joins as craft detail. Scalloped seal bezel, pearl hour markers, baton hands, basin charge gauge and ticket calendar. Compact companion is two short double shell-swags with small nozzle beads, no complete tea engine in headers."
+}
