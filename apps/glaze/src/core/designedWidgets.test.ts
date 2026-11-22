@@ -36,7 +36,9 @@ test('serif preview numerals clear the medium gauge and align with the small tod
     const marker = [...svg.matchAll(/<path[^>]*\/>/g)].find(m => m[0].includes(`fill="${calendar.accent}"`) && m[0].includes('scale(0.18 0.18)'))![0];
     const markerY = Number(marker.match(/translate\([^ ]+ ([^)]+)\)/)![1]) + 9;
     const y = Number(day.match(/ y="([^"]+)"/)![1]);
-    assert.ok(Math.abs(y - (markerY - 1.2)) < .001, theme.id);
+    const dayFont = Number(day.match(/ font-size="([^"]+)"/)![1]);
+    assert.ok(dayFont >= 12 * .64 && dayFont <= 12, theme.id);
+    assert.ok(Math.abs(y - (markerY - dayFont * .1)) < .001, theme.id);
     checked++;
   }
   assert.ok(checked >= 60, 'cover the existing serif catalogue, not just the new examples');

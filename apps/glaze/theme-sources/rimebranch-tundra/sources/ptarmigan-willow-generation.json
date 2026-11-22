@@ -1,0 +1,26 @@
+{
+  "id": "ptarmigan-willow",
+  "label": "Ptarmigan & Willow",
+  "tool": "built-in image_gen",
+  "prompt": "Refine ONLY this same original Rimebranch Tundra ptarmigan material study. Keep the whole calm familiar ptarmigan bird, exactly two feet, small round eye/short beak, short broad tail and separate three-leaf willow sprig, the coherent pose, pure transparent alpha and clear exterior margins. The first image looks too much like a normal feathered bird with white fern-shaped icing on its feathers. Make the actual body and willow unmistakably a dry grown ICE CRYSTAL sculpture: show angular interlocking straight hexagonal hoarfrost needles and open miniature fern-branched crystal fans with bare rigid blue-clear prismatic edges and frosty opaque cores. Individual icy clusters are broad enough to read at small size, not fuzzy hair or repeating flat fern-leaf stamps. The folded wing is defined by short interlocked branching crystal clusters, not real feather layers. A few clearly straight faceted crystal tips break the contour while the entire bird remains smooth and recognizable overall. Cool white, gray and subtle pale-blue crystalline macro relief with tiny controlled ice highlights; no fur, cloth, feathers, foliage covering a bird, glitter, blue halo, fog, snow ground, glass sphere, paper, ceramic or background. Keep every crystalline tip and leaf whole, central two-thirds composition, soft controlled macro studio light. Transparent background.\n",
+  "source": "sources/ptarmigan-willow.2b44d5c2e7d4.png",
+  "sourceSha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/ptarmigan-willow.2b44d5c2.png",
+  "sha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "processing": "Exact original RGBA bytes; whole source retained with no crop, recolour, alpha cleanup or raster art manipulation. App Fit adds its own padding.",
+  "references": [
+    {
+      "file": "qa/first-material-study/initial-ptarmigan.e60492d1cc6a.png",
+      "sha256": "e60492d1cc6a02e47bd5dc014506908bccb3f3530002bcd2bcdcce677129c6fe",
+      "purpose": "Own initial ptarmigan preserves anatomy/pose while correcting a fluffy feather material reading."
+    }
+  ]
+}

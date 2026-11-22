@@ -1,0 +1,92 @@
+[
+  {
+    "id": "wren-twig",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      139,
+      152,
+      1115,
+      1017
+    ],
+    "allOriginalPixelsContained": true
+  },
+  {
+    "id": "dormouse-hazel",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      177,
+      248,
+      1023,
+      974
+    ],
+    "allOriginalPixelsContained": true
+  },
+  {
+    "id": "red-fox",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      194,
+      114,
+      954,
+      1088
+    ],
+    "allOriginalPixelsContained": true
+  },
+  {
+    "id": "lady-fern",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      214,
+      212,
+      1056,
+      1007
+    ],
+    "allOriginalPixelsContained": true
+  },
+  {
+    "id": "oak-acorns",
+    "originalDimensions": [
+      1254,
+      1254
+    ],
+    "selectedDimensions": [
+      1200,
+      1200
+    ],
+    "alpha16Bounds": [
+      172,
+      183,
+      1042,
+      974
+    ],
+    "allOriginalPixelsContained": true
+  }
+]

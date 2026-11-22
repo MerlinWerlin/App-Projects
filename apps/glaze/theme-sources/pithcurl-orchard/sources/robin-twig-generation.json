@@ -1,0 +1,26 @@
+{
+  "id": "robin-twig",
+  "label": "Peel Robin",
+  "tool": "built-in image_gen",
+  "prompt": "ONE entirely NEW independent standalone Glaze Nature artwork for PITHCURL ORCHARD. Reference is our OWN accepted dormouse, used ONLY for the material/construction language; invent the described different natural subject, never copy the mouse silhouette. Entire recognizable subject assembled solely from FEW BROAD FLEXIBLE FRESH MANDARIN-PEEL STRIPS and folded pieces: saturated tangerine orange oil-gland dimpled skin, thick spongy creamy white pith exposed in every curling underside and cut lip, loose open orange/white turns readable at85px. Restrained moist satin fruit-peel texture, not wet gloss, ceramic, paper quilling, metal, felt, dried brown gourd or a realistic animal merely painted orange. No extra materials except tiny dark citrus pips for eyes/nose and a few small pith joins. Beautiful careful tangible macro miniature, gentle warm modelling light, no floor shadow. Complete whole subject central66percent width/height, ALL natural extremities entire with at least14percent quiet transparent margins. TRUE transparent alpha background, including open gaps and curl centres; no backing rectangle, plate, plinth, assembly tools, orange fruit, bowl, border, frame, halo, dirt, stray speckles, lettering, labels, numbers, clock/calendar/battery/weather/UI or mockup. Artistic peel sculpture interpretation, no authentic physical artwork claim. A complete round European ROBIN perched naturally on ONE short curved twig made from a narrow rolled peel strip with two small folded peel leaves. Broad open rolled oval breast/body, a broad curved wing flap with thick WHITE PITH edge, a separately folded head with round dark pip eye and tiny pointed pip beak, two short coherent three-toed gripping bird feet and a complete slightly lowered long tail of two broad peel ribbons. Natural small woodland bird proportions, no huge mouse ears, no cartoon accessories. Orange/white inner curl clearly visible around wing, belly, leaf rim and tail underside; entire beak, tail, toes and leaf tips whole.",
+  "source": "sources/robin-twig.84db8a019f65.png",
+  "sourceSha256": "84db8a019f65becb7f680e681333207d7bc5440c59688810abdd48c9bde21d30",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/robin-twig.0a65033e.png",
+  "sha256": "0a65033e0c05002ce97aac647cb2138e8ef875fc318514f90b85fa549414e37d",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent canvas; no crop/recolour/code alpha cleanup or creative pixel edits.",
+  "references": [
+    {
+      "file": "sources/dormouse.be0b4539037f.png",
+      "sha256": "be0b4539037fb57995a39136c0db9faee30374df8b535c59ff245bb727717980",
+      "purpose": "Own image reference; exact original retained."
+    }
+  ]
+}

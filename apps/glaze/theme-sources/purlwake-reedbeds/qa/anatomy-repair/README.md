@@ -1,0 +1,1 @@
+Unselected original and exact built-in anatomy repair lineage. Replaced ducklike webbed feet with separate lobed grebe toes and reduced oversized crest; cut-purl construction and whole bird retained. Selected repaired original retained without subject edits by packaging tools.

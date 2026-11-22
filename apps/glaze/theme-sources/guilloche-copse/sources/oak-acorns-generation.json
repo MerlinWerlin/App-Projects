@@ -1,0 +1,26 @@
+{
+  "id": "oak-acorns",
+  "label": "Oak Acorns",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE NEW independent original standalone Nature artwork for Glaze Guilloche Copse. Use the attached OWN accepted wren only for the exact FLAT SINGLE PETROL-BLUE INK (#20536A) printed-geometry language and scale of broad bold GUILLOCHE ROSETTE arcs. Generate a different complete subject, not a crop/variation of the bird. SUBJECT: One whole short gently curved oak branch carrying THREE distinctly lobed broad oak leaves and TWO small acorns with complete caps and pointed nuts. Natural asymmetrical botanical composition, all leaf lobes whole. Dense single-ink nested rosette arcs define the rounded acorns and rhythmic curved loop fields follow each leaf lobe; no diagonal fabric lattice, separate beadwork, ornate jewelry or animal. Style: flat two-dimensional matte intaglio/engine-engraving-inspired digital print. Whole form built from broad nested offset multi-lobed elliptical/circular loops with deliberate open negative pockets and clear rhythm at85px. No regular diagonal diamond mesh, woven net, lace, stitches, fibres, raised metal wires, rough woodcut gouges, realistic feather/fur crosshatching, gradients or 3D shading. Keep natural subject anatomy clearly recognizable through the mathematical line system. Crisp clean contours with restrained ink bite. TRUE TRANSPARENT ALPHA background and negative spaces, no paper rectangle, frame, shadow, halo, background color, labels, lettering, symbols, clock or UI. SQUARE canvas, entire subject centered within central68percent width and central60percent height, quiet margins around every paw, ear, tail, root and leaf tip. Not a scientific record or authentic physical print.",
+  "source": "sources/oak-acorns.e8d187505b8e.png",
+  "sourceSha256": "e8d187505b8e434165941d1d619f9f7b9aa18e5adfd18199236eefc9762cb919",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/oak-acorns.898fe1cb.png",
+  "sha256": "898fe1cb1578f8dd58606fc45b35bf32a10a2115b91e17bc3fa5659dd1a9e884",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, alpha cleanup or creative raster/code edits; app adds its own Fit padding.",
+  "references": [
+    {
+      "file": "sources/wren-twig.2d8e172e0f05.png",
+      "sha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e",
+      "purpose": "Own accepted wren supplies only bold rosette ink language; an independent different natural subject is generated."
+    }
+  ]
+}

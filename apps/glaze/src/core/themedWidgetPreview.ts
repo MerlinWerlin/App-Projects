@@ -6,6 +6,38 @@ import type { WidgetIdentity } from './widgetIdentity.ts';
 const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[c]!));
 type Box = { x: number; y: number; w: number; h: number };
 
+// A clock bezel's decorative waist can be narrower than its nominal calendar badge box.
+// Fit Georgia's bold two-digit ink inside that existing contour, keeping the original
+// 12pt size wherever it fits. Only the live date text changes; authored shapes stay intact.
+function calendarBadgeFont(outline: string, value: string, nominal: number, diameter: number): number {
+  if ([...value].length < 2) return nominal;
+  if (!/^[MLZ0-9 .-]+$/.test(outline)) return nominal * .75;
+  const numbers = (outline.match(/-?(?:\d+\.?\d*|\.\d+)/g) ?? []).map(Number);
+  const points = Array.from({ length: Math.floor(numbers.length / 2) }, (_, i) => [numbers[i * 2], numbers[i * 2 + 1]]);
+  if (points.length < 3) return nominal * .75;
+  const inside = (x: number, y: number) => {
+    let contained = false;
+    for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
+      const [xi, yi] = points[i], [xj, yj] = points[j];
+      if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) contained = !contained;
+    }
+    return contained;
+  };
+  for (let font = nominal; font >= nominal * .64; font -= .25) {
+    // Conservative Georgia ink bounds after the .1em baseline correction, including
+    // a small allowance for subpixel phase at the seven real calendar columns.
+    const half = ([...value].length * font * .64 / 2 + .2) * 100 / diameter;
+    const top = (-font * .48 - .2) * 100 / diameter, bottom = (font * .46 + .2) * 100 / diameter;
+    let fits = true;
+    for (let i = 0; i <= 8 && fits; i++) {
+      const x = -half + half * 2 * i / 8, y = top + (bottom - top) * i / 8;
+      fits = inside(50 + x, 50 + top) && inside(50 + x, 50 + bottom) && inside(50 - half, 50 + y) && inside(50 + half, 50 + y);
+    }
+    if (fits) return font;
+  }
+  return nominal * .64;
+}
+
 export function originalFaceBox(size: HomeOptionSize): Box {
   const side = size === 'large' ? 364 : 170;
   return { x: 0, y: size === 'large' ? 9 : 0, w: side, h: side };
@@ -222,7 +254,9 @@ export function themedWidgetSvg(d: DesignedWidget, identity: WidgetIdentity, siz
       const y = top + row * (Math.floor(index / 7) + 1.18);
       const today = day === month.today, diameter = large ? 31 : 18;
       if (today) path(identity.outline, box(x - diameter / 2, y - diameter / 2, diameter), d.accent);
-      text(number(day), x, y, large ? 19 : 12, col - 1, today ? d.onAccent : d.ink, today ? 700 : 550, 'middle', .1);
+      const value = number(day), nominal = large ? 19 : 12;
+      const dayFont = today && d.font === 'serif' ? calendarBadgeFont(identity.outline, value, nominal, diameter) : nominal;
+      text(value, x, y, dayFont, col - 1, today ? d.onAccent : d.ink, today ? 700 : 550, 'middle', .1);
     });
   }
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><defs><linearGradient id="paint" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${d.background[0]}"/><stop offset="1" stop-color="${d.background[1]}"/></linearGradient>${definitions.join('')}</defs><rect width="${w}" height="${h}" fill="url(#paint)"/><g font-family="${font}" style="font-variant-numeric:tabular-nums">${elements.join('')}</g></svg>`;

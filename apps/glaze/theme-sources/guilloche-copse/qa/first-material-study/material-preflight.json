@@ -1,0 +1,55 @@
+{
+  "theme": "guilloche-copse",
+  "selected": false,
+  "source": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-30599336-d8d8-4d18-beba-0b7bd6b709ee.png",
+  "sha256": "2af1425f158b6a4141004ef973bde28be5b44793a56721b71a58638112d56c31",
+  "prompt": "ONE original standalone Glaze Nature artwork, first material/process sample for Guilloche Copse. A whole instantly recognizable Eurasian wren perched on one thin curved hawthorn twig with two small whole leaves: compact plump bird, short pointed beak, dark round eye, folded wing, longish tail held cocked upwards, TWO tiny coherent grasping bird feet. Render as a completely FLAT TWO-DIMENSIONAL SINGLE-INK INTAGLIO PRINT formed from BOLD ENGINE-ENGRAVED GUILLOCHE LINEWORK. The bird's entire form is built from interlacing nested elliptical wave loops and rhythmic rosette arcs, with wide repeated loop bands clearly visible at85px; dense loops model the rounded breast, a broad long nested-oval rosette defines the folded wing, and tightly repeating fan arcs define the raised tail. The mechanics of overlapping precise continuous curved loops must be the dominant distinctive style, not ordinary feather hatching, pencil scribble, crosshatch engraving, scratchboard cuts, woodblock gouges, stitch/thread/lace mesh, laser-projected surface stripes or a 3D metal brooch. Use only one matte deep petrol-blue ink #20536A; subtle dry print bite and tiny ink pooling in intersections, controlled open negative spaces between loops, no gradients or 3D lighting, no gold/enamel or glossy surfaces. Natural wren silhouette and anatomy remain immediately readable; the geometric line system supports a familiar real bird, never an abstract rosette in place of a body. Whole subject and twig centered occupying central68percent of SQUARE canvas width and central60percent height, all beak/tail/feet/leaf tips whole with generous margins. TRUE TRANSPARENT ALPHA background and between printed lines; no paper rectangle, no drawn border, no cast shadow, no background color, no halo, no lettering/numbers/labels, no collage, no UI or clock. Refined original graphical artwork, no referenced artist or copied design.\n",
+  "alphaBounds": {
+    "16": [
+      109,
+      123,
+      1192,
+      1092
+    ],
+    "96": [
+      109,
+      124,
+      1192,
+      1091
+    ]
+  },
+  "existingPositiveMetadataHit": "emerald-curio: guilloche beneath enamel on macro jewel brooch; inspect actual art against proposed flat matte printed-loop subject. No zero-hit claim.",
+  "neighbors": [
+    {
+      "name": "A11 ivory scratch cuts",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\hare.7326f063231c.png",
+      "sha256": "7326f063231ca7f2e5cbf5dfae7dbda3d7f8b47b664b331322de5b886875fa98"
+    },
+    {
+      "name": "B4 mezzotint grain",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\burr-hinterland\\widgets\\underside-vault.9a878715.png",
+      "sha256": "9a87871577e3c266ca017abbf70d5aa763e7f08fbfb52685a5fbe60ee79cac21"
+    },
+    {
+      "name": "B17 tied linen lace",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\bobbinbound-meadow\\widgets\\orchard-songbranch.8591b0d3.png",
+      "sha256": "8591b0d3472be18ecc935eb3cc8a2634908d687378b4fd971afd9a35600ae73a"
+    },
+    {
+      "name": "C: projected stripes",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fringe-projection-grove\\widgets\\split-vane-fern.15cbd4efa319.png",
+      "sha256": "15cbd4efa31911a69cadf64437da875d0d677be18f3a8137ec77172f97103ad0"
+    },
+    {
+      "name": "Published enamel over guilloche",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\emerald-curio\\v7\\widget-small.f6a53438.webp",
+      "sha256": "f6a53438f2506bb470b235c9c1baeaeef668ce74fca6fff069a184ec7ec9999a"
+    },
+    {
+      "name": "Published woodblock inks",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\persimmon-press\\v1\\widget-calyx-star.03c4b550.webp",
+      "sha256": "03c4b550c2f4497e10a9ff8b697312ef652f58355dfd66a8cd8bc94d4425af1a"
+    }
+  ],
+  "noNeighborImageGenerationInputs": true
+}

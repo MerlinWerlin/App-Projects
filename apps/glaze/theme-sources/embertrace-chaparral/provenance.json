@@ -1,0 +1,134 @@
+{
+  "theme": "embertrace-chaparral",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Horsehair carbon-fired burnished unglazed ivory ceramic, irregular burnt-strand trails, localized smoky plumes and restrained iron blush",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Precise LAYOUT-ONLY edit of input1, own Embertrace Chaparral wallpaper. Preserve exact existing connected ceramic chaparral habitat: natural quail with small topknot/two feet, brush rabbit, two poppy cups, manzanita leaves, sage and complete joined dry bough, pale burnished unglazed ceramic, separated thin sinuous carbon strands with localized smoke deposits ON ceramic, restrained iron blush, soft lighting, warm sage-gray #B7B5A9 background and portrait aspect ratio. Uniformly scale the ENTIRE whole existing connected habitat to65percent of its CURRENT width and height as ONE unit. Keep every individual organism/object proportion and its relative arrangement unchanged. Center whole smaller habitat horizontally and place its overall center at57percent canvas height. Reconstruct ONLY matching quiet warm sage-gray background around it, smooth subtle compatible tone, no visible rectangular pasted edge. Final whole habitat occupies about HALF total canvas width, at least24percent quiet blank background on both left/right sides; large quiet areas above/below. Preserve every crest/ear/tail/foot/petal/leaf/branch tip complete. No crop, no added/duplicated/replaced species, no extra branches reaching screen edges, no peripheral vines/corner decorations, no enlarged rabbit/quail, no frame/text/UI or added haze. Exact original internal carbon-fired material and natural anatomy retained. Opaque full wallpaper background, no transparency.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.5dfad0fe.png",
+      "sourceSha256": "5dfad0fe045e6b9ef2b4f27978327e6e851754b6380b98d72c76f39dd31534eb",
+      "sourceDimensions": [
+        853,
+        1844
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "05b70327305959566bdaea23cd721b75bf20bb611f2e5abc40daefa20c88deca",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wallpaper.original.1554e340.png",
+        "sha256": "1554e340a9425d590a38e7a8db5a05048331981bce274c290e06318ba103e979"
+      }
+    },
+    {
+      "id": "quail-manzanita",
+      "prompt": "Precise MATERIAL-ONLY refinement of input1, own original Embertrace Chaparral quail/manzanita. Preserve exact recognizable California quail, natural anatomy, pose, body volume, head/short beak/eye, modest curved topknot, folded wing and tail, exactly two complete feet/toes, small three-leaf manzanita twig, palette, lighting, scale/framing and all clean transparent margins. KEEP warm ivory hand-shaped BURNISHED UNGLAZED CERAMIC with shallow clay tool shaping traces and restrained warm iron blush. REPLACE only the current branching lightning/crackle/marble-like vein network on the ceramic surface. Remove those forked networks completely. Instead show only FIVE distinct, isolated THIN SINUOUS OR LOOPING CARBONIZED HORSEHAIR STRAND TRAILS: individual gentle S curves, one loose irregular open loop and two meandering single-filament wavering lines, widely separated on chest/wing/flank/neck. Trails must be UNBRANCHED dark charcoal and visibly fine SINGLE strands absorbed FLUSH into hot clay, with small localized soft gray smoke deposits at a few trail segments and delicate fading burnt ends. Leave most ivory ceramic quiet. Lines do not form connected marble veins, angular cracks, spiderweb, tree branches, mesh/grid, painted feather anatomy or regular decorative calligraphy. No glossy glaze, metallic veins, raised wire/thread, literal loose hairs, shaggy fur or smoke outside subject. Preserve natural facial marks and every structural silhouette unchanged. TRUE TRANSPARENT ALPHA including all leg/twig gaps, no backing/halo/ground/shadow/plaque/frame, no text/UI. Single own image input only; no external reference.",
+      "tool": "built-in image_gen",
+      "source": "sources/quail-manzanita.25cfcc80.png",
+      "sourceSha256": "25cfcc80efc81d0ca163aaab9945a0f45aece4074f75ac1b729b16312eea8c43",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/quail-manzanita.49be3811.png",
+      "sha256": "49be3811fdc48ec5b9922a9ecb1e8d6b2fd68d4964342ab8bcdeb3107f443f13",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/material-repair/quail-manzanita-history.json",
+      "referencedImage": {
+        "file": "qa/material-repair/quail-manzanita.original.2b3b2615.png",
+        "sha256": "2b3b2615bbcbd3ee7819ff6d30d9285fe3d1ffbbd24260c96aa5786b33641919"
+      }
+    },
+    {
+      "id": "brushrabbit-sage",
+      "prompt": "EMBERTRACE CHAPARRAL, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL flora/fauna, natural recognizable anatomy FIRST. Unusual physical HORSEHAIR CARBON-FIRING on hand-shaped burnished UNGLAZED IVORY CERAMIC: pale warm chalk/ivory opaque clay has soft satin burnish, shallow thumb/tool shaping traces, rounded thin clay edges and subtle fired pores. On the solid ceramic surface, show only FOUR OR FIVE fine widely separated UNBRANCHED sinuous/looping BLACK CARBONIZED SINGLE-STRAND HAIR TRAILS with fading burnt ends and localized soft smoky gray deposits absorbed flush into hot clay, with very restrained pale rust/iron blush. Trails are sparse isolated wavering S curves or loose open loops, no forked branching marble vein network; NOT allover spiderweb crackle glaze, paint/ink drawn anatomy, decorative arabesque, raised wire/thread/loose literal hairs, gold veining or wood grain. Keep much pale surface quiet so natural form remains legible at small size. Low shallow hand-shaped ceramic sculpture, NO glossy glaze, metal, shell, transparent glass, fabric, wool or wood. Whole complete subject inside central64percent with generous18percent TRUE ALPHA margin every side. All exterior and open anatomy gaps genuinely transparent; no backing sheet, ceramic plaque, ground/habitat base, plinth, rectangle/tile/hoop/frame/badge, ring/clasp, cast shadow, glow/halo/smoke in background. No clipped feet/toes/ears/tail/wing/petal/leaf tips. No text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. Preserve burnt carbon directly ON ceramic only, no floating strands or smoke. One familiar natural brush rabbit sitting in relaxed right-facing side profile, modest two upright ears, small real dark eye, natural small nose, compact soft body, coherent folded hind legs and two front paws, one short whole tail. No giant toy eyes, smile, clothing or exaggerated ears. ONE small sage sprig with three slender complete leaves beside front paws. Entire rabbit is solid warm ivory unglazed burnished clay with sparse random wandering charred horsehair trails and localized soft smoky puffs across haunch and ears, not literal furry hair, painted fur or crackle glaze. All ears, feet, tail and sage tips whole.",
+      "tool": "built-in image_gen",
+      "source": "sources/brushrabbit-sage.0a2ff8b2.png",
+      "sourceSha256": "0a2ff8b2664af9298248ff190ab11d3e9b9b116910296442c1eb3b111b54e74e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/brushrabbit-sage.7f25bf75.png",
+      "sha256": "7f25bf75691d9927a8a787e9472e0bfdd671f3c601d62abb40ba27ddfb9d2375",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "fence-lizard",
+      "prompt": "EMBERTRACE CHAPARRAL, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL flora/fauna, natural recognizable anatomy FIRST. Unusual physical HORSEHAIR CARBON-FIRING on hand-shaped burnished UNGLAZED IVORY CERAMIC: pale warm chalk/ivory opaque clay has soft satin burnish, shallow thumb/tool shaping traces, rounded thin clay edges and subtle fired pores. On the solid ceramic surface, show only FOUR OR FIVE fine widely separated UNBRANCHED sinuous/looping BLACK CARBONIZED SINGLE-STRAND HAIR TRAILS with fading burnt ends and localized soft smoky gray deposits absorbed flush into hot clay, with very restrained pale rust/iron blush. Trails are sparse isolated wavering S curves or loose open loops, no forked branching marble vein network; NOT allover spiderweb crackle glaze, paint/ink drawn anatomy, decorative arabesque, raised wire/thread/loose literal hairs, gold veining or wood grain. Keep much pale surface quiet so natural form remains legible at small size. Low shallow hand-shaped ceramic sculpture, NO glossy glaze, metal, shell, transparent glass, fabric, wool or wood. Whole complete subject inside central64percent with generous18percent TRUE ALPHA margin every side. All exterior and open anatomy gaps genuinely transparent; no backing sheet, ceramic plaque, ground/habitat base, plinth, rectangle/tile/hoop/frame/badge, ring/clasp, cast shadow, glow/halo/smoke in background. No clipped feet/toes/ears/tail/wing/petal/leaf tips. No text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. Preserve burnt carbon directly ON ceramic only, no floating strands or smoke. One familiar western fence lizard resting along ONE short complete dry chaparral twig, natural slender body with low small scale ridges modelled in clay, modest pointed head, tiny dark eye, exactly FOUR coherent splayed legs with complete delicate natural toes and one long whole gently curving tail. No chibi smile, giant eyes or extra feet. Warm ivory hand-formed unglazed clay, sparse black carbonized horsehair trails with small smoky halos across body/tail, a faint iron blush under flank, no painted scale pattern or gemstones. All four feet, toes, snout, tail and both twig ends safely inside alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/fence-lizard.3225c3e5.png",
+      "sourceSha256": "3225c3e53ab00a38d6278d208e16a679cb1999ee8d2fcd3088e746350c15eeac",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fence-lizard.327aab0a.png",
+      "sha256": "327aab0ada395a1c098e63a0331d78a740410fe8731415f9083fdc555baa4680",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "california-poppies",
+      "prompt": "BACKGROUND EXTRACTION ONLY from input1, own corrected Embertrace Chaparral California-poppy ceramic spray. Preserve EXACT complete existing ceramic subject: three four-petaled flowers, correct LONG SLENDER pointed seed pod at left, all fine divided leaves/connected stems, precise positions/proportions, pale warm burnished unglazed clay, thin black sinuous carbon trails, smoke deposits ON ceramic, warm iron blush and soft subject lighting. REMOVE ONLY the faint broad SEMITRANSPARENT WHITE-GRAY MATTE CLOUD and cast haze/shadow behind/around the subject. Every pixel outside actual ceramic silhouette must be TRUE EMPTY ALPHA0, including ALL gaps between stems, divided leaves and petals, and ALL broad surrounding canvas. No opaque white/gray background, veil, vignette, residual haze, glow or drop shadow. Retain ceramic bodies and every fine petal/leaf/stem/pod tip fully intact; do not cut/crop/recolor/recompose the subject and do not remove smoke marks that are actually ON clay. Clean natural antialiased silhouette edge only; no broad translucent fringe extending into background. Whole subject safely central with same original ample alpha margins. No added ground/backing/plaque/frame/UI/text. Single own source input only. Output genuinely transparent PNG.",
+      "tool": "built-in image_gen",
+      "source": "sources/california-poppies.7bbce666.png",
+      "sourceSha256": "7bbce666e0fb09f6f6f90ba90a461d2a6ae4f2d707fc651f37319b234bbc76a6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/california-poppies.626186df.png",
+      "sha256": "626186df65f6dd9461fafce325128aa1142d6be2ef8121aa553985d4f3f450c6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/anatomy-alpha-repair/ordered-edit-history.json",
+      "referencedImage": {
+        "file": "qa/anatomy-alpha-repair/intermediate-slender-pod-with-haze.8f0bf6cb.png",
+        "sha256": "8f0bf6cb5a48c453da874a8303d9c6d863c076e27ea96437315c87f16559fdba"
+      }
+    },
+    {
+      "id": "monarch-milkweed",
+      "prompt": "EMBERTRACE CHAPARRAL, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL flora/fauna, natural recognizable anatomy FIRST. Unusual physical HORSEHAIR CARBON-FIRING on hand-shaped burnished UNGLAZED IVORY CERAMIC: pale warm chalk/ivory opaque clay has soft satin burnish, shallow thumb/tool shaping traces, rounded thin clay edges and subtle fired pores. On the solid ceramic surface, show only FOUR OR FIVE fine widely separated UNBRANCHED sinuous/looping BLACK CARBONIZED SINGLE-STRAND HAIR TRAILS with fading burnt ends and localized soft smoky gray deposits absorbed flush into hot clay, with very restrained pale rust/iron blush. Trails are sparse isolated wavering S curves or loose open loops, no forked branching marble vein network; NOT allover spiderweb crackle glaze, paint/ink drawn anatomy, decorative arabesque, raised wire/thread/loose literal hairs, gold veining or wood grain. Keep much pale surface quiet so natural form remains legible at small size. Low shallow hand-shaped ceramic sculpture, NO glossy glaze, metal, shell, transparent glass, fabric, wool or wood. Whole complete subject inside central64percent with generous18percent TRUE ALPHA margin every side. All exterior and open anatomy gaps genuinely transparent; no backing sheet, ceramic plaque, ground/habitat base, plinth, rectangle/tile/hoop/frame/badge, ring/clasp, cast shadow, glow/halo/smoke in background. No clipped feet/toes/ears/tail/wing/petal/leaf tips. No text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. Preserve burnt carbon directly ON ceramic only, no floating strands or smoke. One familiar monarch butterfly perched diagonally on ONE small milkweed sprig with two opposite pairs of lance-shaped leaves and a single compact bud cluster. Butterfly has FOUR coherent broad wings in partly open diagonal view, slender body, two antennae and exactly SIX fine legs attached naturally beneath thorax; visible leg overlaps allowed, no extra wings. Shallow hand-modelled wing veins can suggest real butterfly structure, but no black painted monarch checkerboard. All wings/body/plant are warm ivory unglazed ceramic with several long random carbonized horsehair traces, small smoke puffs and faint iron blush on wing edges; no raised hairy filaments, yarn, mesh or allover painted pattern. Whole wing/antenna/leaf/stem tips inside margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/monarch-milkweed.3fe3325b.png",
+      "sourceSha256": "3fe3325b8ee0fc8a30195c014c7f52408acdab81ec15c38bd337964b5b909965",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/monarch-milkweed.8a1c5f0f.png",
+      "sha256": "8a1c5f0fbff97b42f183c6e247c35884e35fddce67d1805139308b39af7ed984",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

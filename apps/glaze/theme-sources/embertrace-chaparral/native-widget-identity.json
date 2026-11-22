@@ -1,0 +1,18 @@
+{
+  "themeId": "embertrace-chaparral",
+  "recipe": [
+    "square",
+    "hairQuail",
+    "hairCarbon",
+    "dash",
+    "leaf",
+    "trail",
+    "folio"
+  ],
+  "art": {
+    "hairQuail": "M 19 61 Q 12 56 8 55 L 16 48 Q 19 32 35 29 Q 44 23 58 28 Q 70 28 75 38 L 83 43 L 75 48 L 72 61 Q 64 77 45 78 L 45 88 L 53 88 M 45 88 L 41 92 M 33 75 L 30 86 L 24 89 M 30 86 L 34 91 M 19 61 Q 27 79 45 78 M 23 45 Q 42 34 58 49 Q 51 67 31 63 M 49 29 Q 43 19 50 13 Q 57 9 60 15 Q 59 21 52 21 M 65 36 L 66 37 M 36 45 Q 29 48 34 54 Q 41 60 44 52 M 53 60 Q 59 54 62 59",
+    "hairCarbon": "M 9 21 Q 27 7 35 22 Q 40 35 28 40 Q 16 44 20 55 Q 26 67 39 58 Q 51 48 55 62 Q 61 77 73 68 Q 87 59 90 74 M 21 13 Q 26 18 24 25 M 44 40 Q 52 33 58 40 Q 60 47 55 50 M 70 30 Q 59 17 71 12 Q 84 10 84 21 Q 85 28 78 25"
+  },
+  "ornament": "M 17 80 Q 35 62 62 26 M 31 64 Q 16 56 24 39 Q 39 40 44 49 M 46 47 Q 60 35 77 38 M 39 67 Q 57 58 62 68 Q 64 77 55 79 Q 47 80 49 72",
+  "direction": "Recognizable California quail profile with small curved topknot, whole feet and short bill as full hero; sparse irregular carbon strand traces as craft detail. Square rim, dash hour marks, leaf hands, trail charge gauge and folio calendar. Compact companion is one open chaparral twig with one leaf and a short burnt-strand curl; no complete bird, pottery vase or enclosing medallion."
+}

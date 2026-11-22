@@ -1,0 +1,1 @@
+Unchanged approved gecko and actual ten-way material review retained. Coarse embedded cane flowers and longitudinal bands in continuous fused glass separate from leading/enamel, plain sea glass, frosted crystals, bead holes/thread, rough frit, shell wafers and lapis veins. Observed source hashes independently rechecked. No neighbor image used as generation input.

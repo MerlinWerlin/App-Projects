@@ -1,0 +1,198 @@
+{
+  "id": "c-carbonfilm-strata",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "fern-compression",
+    "dragonfly-compression",
+    "ginkgo-compression",
+    "fish-compression",
+    "palm-compression"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.71bd003c.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 4214,
+    "sha256": "71bd003cd25519034cd683a011da28070b1e675b752246c0fe19ab60dc89a7c5",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "5b683c9581bef7344d89b4bd4b71b97b40ae71cd09f84ad60263f016b3fc714c"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed all five full generated/selected sources and all actual encoded85px artworks together. Different complete natural forms: arcing pinnate fern, four-wing dragonfly/segmented body/six legs, two connected ginkgo fans, long lateral fish/full forked tail/fins and broad radial palm fan. Flat dark residue and shallow impressions are integral to fine-grained stone; visible thin cleavage edges and different irregular flake outlines distinguish the material from ink paper and raised limestone sculpture. First fern/full170/85/six-neighbor gate passed before four independent generations. Four selected first-generation outputs; fish alone received one own-image exterior background extraction. No code artwork editing or alpha cleanup.",
+    "wallpaper": "Viewed all three actual encoded1290x2796,1179x2556 and750x1334 crops. All five whole fossils remain on one coherent continuous small exposed shale shelf; none of their wing/fin/tail/pinna/leaf/petiole endpoints is cropped or covered. Warm quiet upper/lower/side fields and soft internal layer shadows. Own-five-reference scene followed by one own-scene framing pullback/four own-art supports; ten own wallpaper reference uses/six distinct images verified. No five-card contact sheet, live creatures standing on stone or carved raised plants.",
+    "native": "Viewed all nine actual current coordinator SVG layouts using sourceSHA5b683c9581bef7344d89b4bd4b71b97b40ae71cd09f84ad60263f016b3fc714c. Authored whole fern and sparse angular sediment laminae in larger fields; rounded-square dial/bar marks/needle hands, column battery and ledger calendar. Separate small open arcing fern sprig sits quietly in compact Clockmedium/Calendar headers without a slab, portrait or surround. Values/dates readable; all nine change with live inputs, battery null/0/100 and ornament roundtrip pass. Actual square12pt today digits pass all96 filled-contour alpha96/128 date-scale cases. Windows SVG evidence, not Apple New York or installed-device qualification.",
+    "roundedArtworkCorners": "All31Cthemes/155actual encoded artworks retain every visible alpha16 pixel on actual app gradient/Fit6percent inset/conservative20percent rounded mask. C31 entire selected originals uniformly contained900within1024, no cropped stone or organism endpoints; inspected its own five rounded tiles with quiet matching corners. Layout simulation, not installed-device proof."
+  },
+  "ownerSteeringReview": "Less abstract recognizable real Nature: familiar whole plant/insect/fish forms, tactile thin laminated stone and flat dark fossil impressions. Quiet backgrounds around complete natural artifacts and a small natural fern sprig in native corners. Artistic fossil interpretation, not authentic specimens or scientific evidence.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-carbonfilm-strata",
+    "backgroundStops": [
+      "#B8B2A0",
+      "#DED6C2"
+    ],
+    "pieces": [
+      {
+        "id": "fern-compression",
+        "sha256": "72cd9fcae865650d8bd44fee590931a4d448a822480033827fd7a957f8a88d4a",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "dragonfly-compression",
+        "sha256": "79eb0777611a4b5c4e98710d854c9c4f3d6f74d6f97b250d179470e53a8a9251",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "ginkgo-compression",
+        "sha256": "385ce40268093eea963d1dab876ea72b348b875a9a85fddba8b82be193448b7f",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "fish-compression",
+        "sha256": "ee905c3773e72fe6d66d25545668197bc0f7b0914634dbe084202876a461f024",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "palm-compression",
+        "sha256": "7e690bb0ef14a6eb6faea8193a5986a2c572be916cbb6cc2cfb5eae9a21bfed6",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 10,
+  "wallpaperDistinctReferenceImages": 6,
+  "artworkOwnStudyReferenceHashesMatched": 1,
+  "packTestEvidence": "Actual offline builder v1:9assets/984758bytes. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,Nature category,full source+encoded decode/dimensions/hashes,6selected/noorphans,10own wallpaper refs/6distinct,1own fish edit and2unselected histories pass. Square12pt actual filled-contour96cases pass alpha96/128. Shared runtime unchanged in lane; combined runtime/Apple/device qualification coordinator-owned.",
+  "calendarFilledContourReview": {
+    "theme": "c-carbonfilm-strata",
+    "face": "square",
+    "font": "serif",
+    "fontFamily": "Georgia,serif",
+    "todayFontSize": 12,
+    "actualCurrentSvgReproduced": true,
+    "caseCount": 96,
+    "allAlpha96Inside": true,
+    "allAlpha128Inside": true,
+    "maxWeightedInkOutsidePercent": 0.005203385471255755,
+    "method": "Isolated exact actual today text and actual filled supported marker path, original coordinates and integer ROI/pixel phase. Jan1to31 plus exactNov22 at1x/2x/4x, alpha96/128. Windows SVG evidence, not Apple New York or installed-device qualification.",
+    "rendererSourceSha256": "5b683c9581bef7344d89b4bd4b71b97b40ae71cd09f84ad60263f016b3fc714c",
+    "sourceDescriptorSha256": "fa67ddde51146a2b133387caf1fd21788018d0787d833f754d9c356dcf9bde1c"
+  },
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "wholeOriginalContainment": {
+    "targetSquare": 1024,
+    "containLimit": 900,
+    "crop": false,
+    "stretch": false,
+    "creativeCodeEditing": false,
+    "rawAlphaPreserved": true
+  },
+  "unselectedHistoryHashesMatched": 2,
+  "scope": "Actual source/encoded pack validation, current coordinator SVG previews and rounded-layout simulation. No installed-device or Apple New York claim."
+}

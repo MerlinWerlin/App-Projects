@@ -1,0 +1,166 @@
+{
+  "theme": "rimebranch-tundra",
+  "created": "2026-11-22",
+  "lane": "A",
+  "medium": "Interlocking hoarfrost needle and fern-branched ice-crystal miniature sculpture macro photography",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "ptarmigan-willow",
+      "label": "Ptarmigan & Willow",
+      "tool": "built-in image_gen",
+      "prompt": "Refine ONLY this same original Rimebranch Tundra ptarmigan material study. Keep the whole calm familiar ptarmigan bird, exactly two feet, small round eye/short beak, short broad tail and separate three-leaf willow sprig, the coherent pose, pure transparent alpha and clear exterior margins. The first image looks too much like a normal feathered bird with white fern-shaped icing on its feathers. Make the actual body and willow unmistakably a dry grown ICE CRYSTAL sculpture: show angular interlocking straight hexagonal hoarfrost needles and open miniature fern-branched crystal fans with bare rigid blue-clear prismatic edges and frosty opaque cores. Individual icy clusters are broad enough to read at small size, not fuzzy hair or repeating flat fern-leaf stamps. The folded wing is defined by short interlocked branching crystal clusters, not real feather layers. A few clearly straight faceted crystal tips break the contour while the entire bird remains smooth and recognizable overall. Cool white, gray and subtle pale-blue crystalline macro relief with tiny controlled ice highlights; no fur, cloth, feathers, foliage covering a bird, glitter, blue halo, fog, snow ground, glass sphere, paper, ceramic or background. Keep every crystalline tip and leaf whole, central two-thirds composition, soft controlled macro studio light. Transparent background.\n",
+      "source": "sources/ptarmigan-willow.2b44d5c2e7d4.png",
+      "sourceSha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/ptarmigan-willow.2b44d5c2.png",
+      "sha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "processing": "Exact original RGBA bytes; whole source retained with no crop, recolour, alpha cleanup or raster art manipulation. App Fit adds its own padding.",
+      "references": [
+        {
+          "file": "qa/first-material-study/initial-ptarmigan.e60492d1cc6a.png",
+          "sha256": "e60492d1cc6a02e47bd5dc014506908bccb3f3530002bcd2bcdcce677129c6fe",
+          "purpose": "Own initial ptarmigan preserves anatomy/pose while correcting a fluffy feather material reading."
+        }
+      ]
+    },
+    {
+      "id": "arctic-hare",
+      "label": "Arctic Hare",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE original pure standalone artwork for Glaze Rimebranch Tundra, genuinely transparent alpha. Use the attached OWN accepted ptarmigan ONLY as reference for the unmistakable hoarfrost ice-crystal substance, cool white/ice-blue macro lighting and scale of interlocking angular crystals. Generate a new independent complete subject, not a variation or crop of the bird. SUBJECT: A whole familiar crouching Arctic hare in a natural three-quarter side pose, two long upright rounded ears, short muzzle, dark mineral eye, small tail, two strong long hind paws and two separate small front paws all clearly visible with coherent joints. A tiny ground-level sprig of arctic grass beside the hare, with three whole slender icy blades. Material is grown hoarfrost: short rigid straight hexagonal icy prisms and clearly branched crystal fans, dense milky-white cores, subtle pale-blue translucent prismatic tips and fine facet shadows. The complete subject is physically built from these ice crystals, no real fur/feathers/foliage or fern-shaped paper stamps; no glass bubble, foam, stone, wool or ceramic. Readable natural silhouette at85px, crisp macro miniature photograph, artistic material interpretation not scientific evidence. Entire subject centered in a SQUARE canvas with every horn, ear, paw, petal, leaf and crystal tip whole; occupy central68 percent width and central62percent height with quiet transparent margins. No floor, habitat, frame, halo, fog, glitter, drop-shadow rectangle, lettering, numerals, labels, clock or UI. Controlled soft top-left light. Keep the image transparent all around.",
+      "source": "sources/arctic-hare.daa98bebe5aa.png",
+      "sourceSha256": "daa98bebe5aaa0fc6011e764904819ddb71097d9c7ad0d9f183045c59fa9bb55",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/arctic-hare.daa98beb.png",
+      "sha256": "daa98bebe5aaa0fc6011e764904819ddb71097d9c7ad0d9f183045c59fa9bb55",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "processing": "Exact original RGBA bytes; whole source retained with no crop, recolour, alpha cleanup or raster art manipulation. App Fit adds its own padding.",
+      "references": [
+        {
+          "file": "sources/ptarmigan-willow.2b44d5c2e7d4.png",
+          "sha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+          "purpose": "Own accepted ptarmigan supplies crystal material and light only; independently generated different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "muskox",
+      "label": "Crystal Muskox",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE original pure standalone artwork for Glaze Rimebranch Tundra, genuinely transparent alpha. Use the attached OWN accepted ptarmigan ONLY as reference for the unmistakable hoarfrost ice-crystal substance, cool white/ice-blue macro lighting and scale of interlocking angular crystals. Generate a new independent complete subject, not a variation or crop of the bird. SUBJECT: A whole recognizable muskox in a calm three-quarter side pose, stocky broad body, short neck, low heavy head with two curved down-then-up horns and a joined horn boss, small round dark eye, broad muzzle, four separate short legs with visible cloven hooves and short tail. Its shaggy skirt is a dense arrangement of long downward INTERLOCKED ICE NEEDLES, not fur. A tiny separate tuft of tundra sedge at one hoof. Material is grown hoarfrost: short rigid straight hexagonal icy prisms and clearly branched crystal fans, dense milky-white cores, subtle pale-blue translucent prismatic tips and fine facet shadows. The complete subject is physically built from these ice crystals, no real fur/feathers/foliage or fern-shaped paper stamps; no glass bubble, foam, stone, wool or ceramic. Readable natural silhouette at85px, crisp macro miniature photograph, artistic material interpretation not scientific evidence. Entire subject centered in a SQUARE canvas with every horn, ear, paw, petal, leaf and crystal tip whole; occupy central68 percent width and central62percent height with quiet transparent margins. No floor, habitat, frame, halo, fog, glitter, drop-shadow rectangle, lettering, numerals, labels, clock or UI. Controlled soft top-left light. Keep the image transparent all around.",
+      "source": "sources/muskox.6931fdc017b9.png",
+      "sourceSha256": "6931fdc017b9b790697a4b1c7ef64bcd92f6fa3192156b11df94b17c4669677e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/muskox.6931fdc0.png",
+      "sha256": "6931fdc017b9b790697a4b1c7ef64bcd92f6fa3192156b11df94b17c4669677e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "processing": "Exact original RGBA bytes; whole source retained with no crop, recolour, alpha cleanup or raster art manipulation. App Fit adds its own padding.",
+      "references": [
+        {
+          "file": "sources/ptarmigan-willow.2b44d5c2e7d4.png",
+          "sha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+          "purpose": "Own accepted ptarmigan supplies crystal material and light only; independently generated different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "arctic-poppy",
+      "label": "Arctic Poppy",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE original pure standalone artwork for Glaze Rimebranch Tundra, genuinely transparent alpha. Use the attached OWN accepted ptarmigan ONLY as reference for the unmistakable hoarfrost ice-crystal substance, cool white/ice-blue macro lighting and scale of interlocking angular crystals. Generate a new independent complete subject, not a variation or crop of the bird. SUBJECT: One whole recognizable Arctic poppy plant: a single broad shallow open four-petal poppy bloom facing the viewer at a slight angle, visibly crystalline cup with dense tiny stamen cluster, one thinner curved upright stem and a compact basal rosette of five broad shallowly lobed leaves. One small whole unopened bud on a shorter stem. All three-dimensional botanical parts are made of ice crystals; no extra bird or animal. Material is grown hoarfrost: short rigid straight hexagonal icy prisms and clearly branched crystal fans, dense milky-white cores, subtle pale-blue translucent prismatic tips and fine facet shadows. The complete subject is physically built from these ice crystals, no real fur/feathers/foliage or fern-shaped paper stamps; no glass bubble, foam, stone, wool or ceramic. Readable natural silhouette at85px, crisp macro miniature photograph, artistic material interpretation not scientific evidence. Entire subject centered in a SQUARE canvas with every horn, ear, paw, petal, leaf and crystal tip whole; occupy central68 percent width and central62percent height with quiet transparent margins. No floor, habitat, frame, halo, fog, glitter, drop-shadow rectangle, lettering, numerals, labels, clock or UI. Controlled soft top-left light. Keep the image transparent all around.",
+      "source": "sources/arctic-poppy.7c282cc9d208.png",
+      "sourceSha256": "7c282cc9d2083a45b2dfe5c2884fda12f1f9a14707b2dae76fecb1d2f7c80fc3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/arctic-poppy.7c282cc9.png",
+      "sha256": "7c282cc9d2083a45b2dfe5c2884fda12f1f9a14707b2dae76fecb1d2f7c80fc3",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "processing": "Exact original RGBA bytes; whole source retained with no crop, recolour, alpha cleanup or raster art manipulation. App Fit adds its own padding.",
+      "references": [
+        {
+          "file": "sources/ptarmigan-willow.2b44d5c2e7d4.png",
+          "sha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+          "purpose": "Own accepted ptarmigan supplies crystal material and light only; independently generated different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "dwarf-willow",
+      "label": "Dwarf Willow",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE original pure standalone artwork for Glaze Rimebranch Tundra, genuinely transparent alpha. Use the attached OWN accepted ptarmigan ONLY as reference for the unmistakable hoarfrost ice-crystal substance, cool white/ice-blue macro lighting and scale of interlocking angular crystals. Generate a new independent complete subject, not a variation or crop of the bird. SUBJECT: One whole recognizable Arctic dwarf-willow sprig, a thin gently arching woody branch carrying five small rounded oval leaves with clear branching venation and two short upright oval fuzzy catkins, all composed of rigid crystalline ICE NEEDLES and fernlike ice fans rather than actual fur or plant tissue. A tiny thin root-like twig end is whole and visible. Natural botanical asymmetry, no wreath or frame. Material is grown hoarfrost: short rigid straight hexagonal icy prisms and clearly branched crystal fans, dense milky-white cores, subtle pale-blue translucent prismatic tips and fine facet shadows. The complete subject is physically built from these ice crystals, no real fur/feathers/foliage or fern-shaped paper stamps; no glass bubble, foam, stone, wool or ceramic. Readable natural silhouette at85px, crisp macro miniature photograph, artistic material interpretation not scientific evidence. Entire subject centered in a SQUARE canvas with every horn, ear, paw, petal, leaf and crystal tip whole; occupy central68 percent width and central62percent height with quiet transparent margins. No floor, habitat, frame, halo, fog, glitter, drop-shadow rectangle, lettering, numerals, labels, clock or UI. Controlled soft top-left light. Keep the image transparent all around.",
+      "source": "sources/dwarf-willow.658a03c8b91c.png",
+      "sourceSha256": "658a03c8b91c3e093b207714919e90ad2b40f46d38e7d9f6839a14a6f8fa60d9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/dwarf-willow.658a03c8.png",
+      "sha256": "658a03c8b91c3e093b207714919e90ad2b40f46d38e7d9f6839a14a6f8fa60d9",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "processing": "Exact original RGBA bytes; whole source retained with no crop, recolour, alpha cleanup or raster art manipulation. App Fit adds its own padding.",
+      "references": [
+        {
+          "file": "sources/ptarmigan-willow.2b44d5c2e7d4.png",
+          "sha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+          "purpose": "Own accepted ptarmigan supplies crystal material and light only; independently generated different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "Perform a LAYOUT-ONLY refinement of this exact OWN Rimebranch Tundra wallpaper. Preserve all five recognizable hoarfrost sculptures, every individual animal/plant silhouette, all anatomy, materials, lighting, ice crystal detail and their relative positions. Uniformly reduce the ENTIRE habitat group INCLUDING every icy ground shelf/stray ground branch to exactly70percent of its CURRENT size, then place the complete reduced group at the same horizontal center and around56percent of canvas height. Keep the tall portrait aspect and original glacial navy atmospheric palette. The complete habitat including all ground must now occupy at most66percent of frame WIDTH. Add broad quiet matching empty dark-blue space around BOTH sides, top and bottom, filling naturally with the same calm background. No tip, horn, wing, paw, leaf or ground edge may approach a screen edge. Do not enlarge any individual animal relative to the rest, do not change their poses, do not add or remove any subject, do not repaint the individual artwork style. In particular keep the whole horned muskox, hare, ptarmigan, poppy and dwarf-willow all exactly recognizable. No clouded white border, frame, text or UI. Preserve the exact image except for this uniform whole-group pullback and quiet background extension.",
+      "source": "sources/wallpaper.5b6def036b5d.png",
+      "sourceSha256": "5b6def036b5d92068e07e71f0cfea3669b904e70805666f23f6ac51ac220c81c",
+      "sourceDimensions": [
+        856,
+        1838
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "9144925a47e404f4d336e15a19ae6557069e4ba54ea568bbbe63583d98280202",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Built-in whole-group 70 percent layout pullback; mechanical portrait export to1290x2796. Independent art inputs and native vector art unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/initial-scene.fcca12b3b03c.png",
+          "sha256": "fcca12b3b03c27219568fbd647d54131f00ca94cd1f037ed9602c420d28231e1",
+          "purpose": "Own complete five-reference first scene; uniform framing correction only."
+        }
+      ],
+      "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

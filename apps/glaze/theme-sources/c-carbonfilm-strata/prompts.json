@@ -1,0 +1,175 @@
+{
+  "theme": "c-carbonfilm-strata",
+  "mode": "built-in image_gen",
+  "ownerSteering": "Recognizable whole fern, dragonfly, two-leaf ginkgo sprig, fish and palm fan preserved as flat matte carbonized residue and shallow impressions within thin naturally cleaved shale. Different complete subjects and irregular flake silhouettes; mineral grain/laminae visible in foreground at85. Quiet matching backgrounds around whole artifacts and a small natural fern sprig in native headers. Artistic fossil interpretation, not an authentic specimen or evidence of age/taxon/locality.",
+  "conceptReferences": [
+    {
+      "url": "https://www.nps.gov/articles/000/impressions-and-compressions.htm",
+      "scope": "Primary NPS paleontology text only: dark carbon films, shallow impressions, plants/insects/fish, fine shale. No external photograph used as generation input."
+    }
+  ],
+  "generationGate": "Coordinator PASSED actual first whole-fern/full170/85 and Fossil Cove/material-neighbor distinction. Complete four independent different subjects/flakes, own-reference wallpaper, native9/compact fern. Preserve entire originals; uniform containment appropriate. Square today face12pt and actual31days at1/2/4x required. No shared/release edits or publication.",
+  "prompts": [
+    {
+      "id": "fern-compression",
+      "type": "art",
+      "label": "Fern Compression",
+      "prompt": "Use case: stylized-concept / natural-history material study. ONE original square transparent Glaze Artwork. A COMPLETE recognizably natural PINNATE FERN FROND preserved as a CARBON COMPRESSION FOSSIL within ONE small irregular thin split SHALE FLAKE. Gently arching full central rachis, about fourteen distinct pairs of tapering narrow pinnae, fine real branching vein impressions, whole unfurled tip and complete slender petiole. Frond occupies roughly75percent of the flake height and remains immediately recognizable at85px. Single intact natural plant form, no other plant or animal.\nThe FOREGROUND process is geological compression and carbonization, not living plant photography or a drawn fern. The fern is a PAPER-THIN MATTE DARK BLACK-BROWN CARBON FILM embedded flat in the stone bedding plane, with a few shallow fine natural vein impressions. Dark continuous flattened organic residue carries the real full outline; a few tiny ochre oxidized flecks and minute mineral fractures cross it. NO raised leaf tissue, sculpted fern, carved ornamental bas-relief, ink strokes, knife hatching, stamped print or painted outlines. Stone is opaque pale olive-grey/tan fine-grained sedimentary SHALE, naturally split, with several CLEAR THIN STACKED CLEAVAGE LAMINAE exposed along its broken lower/right edges, irregular chips, tiny flaky mineral fractures and visible sediment grit. The naturally broken flake is asymmetrical and roughly hand-sized, a little broader than the entire fern; never rectangular, oval, polished, bevelled, circular or plaque-shaped. A few coarse step-cleavages and lithic chips remain evident even at85px. No rag-paper fibers, embroidery, metal, enamel, ceramic, glass, glossy resin, 3D ammonite/shell sculpture or separate rock display base.\nPhotograph almost straight down, very slightly tilted only to show the THIN laminated split edge; softly raking natural museum light reveals mineral grit and shallow bedding-plane detail without making the fern raised. Calm muted natural rock and carbon colours, crisp broad fern silhouette. WHOLE complete artifact and every frond/rock endpoint inside central74percent of the square, at least13percent true ALPHAZERO exterior on every side, transparent natural gaps outside its irregular stone perimeter. No tabletop/floor, cast shadow outside stone, backdrop/haze/glow, frame, border, plinth, scattered debris, scale ruler, diagram, letters, labels, logo, UI or baked readings. Digital artistic interpretation of a familiar whole plant compression fossil, not a real collected specimen or evidence of a particular species, geological age or locality."
+    },
+    {
+      "id": "dragonfly-compression",
+      "type": "art",
+      "label": "Dragonfly Compression",
+      "prompt": "ONE original square transparent Glaze Artwork for STILLLEAF SHALE. Create a NEW different whole natural compression-fossil subject and a NEW differently shaped irregular shale flake. Use the same precise preservation/material process: thin MATTE BLACK-BROWN integral carbonized residue, shallow real natural vein/anatomy impressions, opaque pale olive-grey/tan finely gritty sedimentary stone and visibly thin stacked broken cleavage laminations. Create the distinct complete subject and irregular natural flake described below. Foreground preservation/mineral material must be evident at85px. Subject lies FLAT WITHIN the bedding plane, not raised, living tissue, sculpted/carved bas-relief, painted/ink-stamped illustration, sharp knife scratches or a picture pasted on a backing plaque. Mineral grain and fine fractures naturally cross the residue. Natural broad contrasting silhouette, careful whole anatomy, ordinary natural-history form. No glowing/transmitted leaf, transparent tissue/X-ray, shiny enamel/glass/metal, decorative fossil sculpture, rag-paper fibers, velvet, textile, generic sepia photograph or grain filter. Photograph almost straight down with very slight tilt to reveal thin shale laminae and soft raking natural light. Entire irregular artifact plus every specimen endpoint INSIDE central74percent, at least13percent ALPHAZERO exterior each side; no opaque rectangle/oval, polished display plate, scene/base/floor, external cast shadow, scattered debris, frame, writing/label/scale, UI or readings. Artistic fossil interpretation, not an authentic specimen or scientific evidence of species, age or locality. ONE entire familiar DRAGONFLY in broad dorsal diagonal view, long slender segmented abdomen, small round head, short antennae, six thin natural legs clustered at the thorax, FOUR complete long membranous wings spread left/right in two distinct pairs, all wing tips and feet whole. Dark carbonized body with subtle brown wing-vein traces and shallow wing impressions; all four wings individually legible at85px without becoming dense black filled leaves or extra wings. The thin irregular shale flake is wide and low, roughly rhomboid with uneven chipped corners and layered lower-left edge, not the tall fern flake. No fern, twig, other insect or floating body parts."
+    },
+    {
+      "id": "ginkgo-compression",
+      "type": "art",
+      "label": "Ginkgo Compression",
+      "prompt": "ONE original square transparent Glaze Artwork for STILLLEAF SHALE. Create a NEW different whole natural compression-fossil subject and a NEW differently shaped irregular shale flake. Use the same precise preservation/material process: thin MATTE BLACK-BROWN integral carbonized residue, shallow real natural vein/anatomy impressions, opaque pale olive-grey/tan finely gritty sedimentary stone and visibly thin stacked broken cleavage laminations. Create the distinct complete subject and irregular natural flake described below. Foreground preservation/mineral material must be evident at85px. Subject lies FLAT WITHIN the bedding plane, not raised, living tissue, sculpted/carved bas-relief, painted/ink-stamped illustration, sharp knife scratches or a picture pasted on a backing plaque. Mineral grain and fine fractures naturally cross the residue. Natural broad contrasting silhouette, careful whole anatomy, ordinary natural-history form. No glowing/transmitted leaf, transparent tissue/X-ray, shiny enamel/glass/metal, decorative fossil sculpture, rag-paper fibers, velvet, textile, generic sepia photograph or grain filter. Photograph almost straight down with very slight tilt to reveal thin shale laminae and soft raking natural light. Entire irregular artifact plus every specimen endpoint INSIDE central74percent, at least13percent ALPHAZERO exterior each side; no opaque rectangle/oval, polished display plate, scene/base/floor, external cast shadow, scattered debris, frame, writing/label/scale, UI or readings. Artistic fossil interpretation, not an authentic specimen or scientific evidence of species, age or locality. ONE short complete natural GINKGO sprig with TWO distinct fan-shaped leaves on connected slender petioles. One broader foreground fan tips left, one smaller fan tips right, each with the normal shallow central notch, gently wavy fan margin and delicate dichotomously branching vein impressions. Whole twig/petiole/leaf endpoints retained; naturally flat dark carbon film, no animal picture inside leaves. Broad open forked silhouette, roughly75percent of a small irregular triangular shale fragment with thin laminae exposed along two uneven sides; not the fern curve, dragonfly wings or a row of identical leaves. No other plant/animal."
+    },
+    {
+      "id": "fish-compression",
+      "type": "art",
+      "label": "Fish Compression",
+      "prompt": "BACKGROUND EXTRACTION ONLY on this exact fish-compression artwork. Preserve the EXACT COMPLETE fish fossil, entire irregular thin shale shard, every head/fin/eye/vertebral/rib/tail detail, all stone texture/grain/cracks/lamination edges, colours, lighting WITHIN the stone and existing proportions. Remove ONLY EVERYTHING OUTSIDE the actual irregular stone perimeter: the entire gray-white hazy backdrop band, tabletop-looking field, all external cast shadows and residual exterior mist. Replace all exterior with genuine ALPHAZERO TRANSPARENCY, including every canvas edge/corner. Keep the stone and its fish fully opaque, no transparent holes through specimen/stone. Whole exact fish and stone retained with all endpoints, no crop/stretch/redraw/additions, no new halo/glow/frame/text. A clean whole irregular fossil-shale cutout on fully transparent exterior.",
+      "originalPrompt": "ONE original square transparent Glaze Artwork for STILLLEAF SHALE. Create a NEW different whole natural compression-fossil subject and a NEW differently shaped irregular shale flake. Use the same precise preservation/material process: thin MATTE BLACK-BROWN integral carbonized residue, shallow real natural vein/anatomy impressions, opaque pale olive-grey/tan finely gritty sedimentary stone and visibly thin stacked broken cleavage laminations. Create the distinct complete subject and irregular natural flake described below. Foreground preservation/mineral material must be evident at85px. Subject lies FLAT WITHIN the bedding plane, not raised, living tissue, sculpted/carved bas-relief, painted/ink-stamped illustration, sharp knife scratches or a picture pasted on a backing plaque. Mineral grain and fine fractures naturally cross the residue. Natural broad contrasting silhouette, careful whole anatomy, ordinary natural-history form. No glowing/transmitted leaf, transparent tissue/X-ray, shiny enamel/glass/metal, decorative fossil sculpture, rag-paper fibers, velvet, textile, generic sepia photograph or grain filter. Photograph almost straight down with very slight tilt to reveal thin shale laminae and soft raking natural light. Entire irregular artifact plus every specimen endpoint INSIDE central74percent, at least13percent ALPHAZERO exterior each side; no opaque rectangle/oval, polished display plate, scene/base/floor, external cast shadow, scattered debris, frame, writing/label/scale, UI or readings. Artistic fossil interpretation, not an authentic specimen or scientific evidence of species, age or locality. ONE complete small familiar HERRING-LIKE FISH compression in natural lateral profile, head toward left, slender oval trunk, clear small head/eye/gill-cover shape, narrow tail peduncle and complete forked caudal fin. Natural fine dorsal, pectoral, pelvic and lower fin traces, all fin rays and tail tips whole. Thin dark brown carbonized body outline plus subtle actual vertebral/rib/fin impressions within the SAME registered pose, no white glowing X-ray, rose/blue tissue staining, glass animal or external skeleton diagram. Long LOW HORIZONTAL natural silhouette fills roughly80percent width of one thin irregular long shale shard, visible layered cleavage on lower edge and asymmetric flaked ends. No extra fish, plants, display base or raised sculpted body.",
+      "directEditReference": {
+        "sourceImage": "intermediate-fish-background-study/fish-background-unselected.42057143cbe7.png",
+        "sha256": "42057143cbe7147062a6d34afe80084e24f06284080ab253b6322c8a433603dc",
+        "role": "Exact own fish/shale edit target; exterior background extraction only"
+      }
+    },
+    {
+      "id": "palm-compression",
+      "type": "art",
+      "label": "Palm Compression",
+      "prompt": "ONE original square transparent Glaze Artwork for STILLLEAF SHALE. Create a NEW different whole natural compression-fossil subject and a NEW differently shaped irregular shale flake. Use the same precise preservation/material process: thin MATTE BLACK-BROWN integral carbonized residue, shallow real natural vein/anatomy impressions, opaque pale olive-grey/tan finely gritty sedimentary stone and visibly thin stacked broken cleavage laminations. Create the distinct complete subject and irregular natural flake described below. Foreground preservation/mineral material must be evident at85px. Subject lies FLAT WITHIN the bedding plane, not raised, living tissue, sculpted/carved bas-relief, painted/ink-stamped illustration, sharp knife scratches or a picture pasted on a backing plaque. Mineral grain and fine fractures naturally cross the residue. Natural broad contrasting silhouette, careful whole anatomy, ordinary natural-history form. No glowing/transmitted leaf, transparent tissue/X-ray, shiny enamel/glass/metal, decorative fossil sculpture, rag-paper fibers, velvet, textile, generic sepia photograph or grain filter. Photograph almost straight down with very slight tilt to reveal thin shale laminae and soft raking natural light. Entire irregular artifact plus every specimen endpoint INSIDE central74percent, at least13percent ALPHAZERO exterior each side; no opaque rectangle/oval, polished display plate, scene/base/floor, external cast shadow, scattered debris, frame, writing/label/scale, UI or readings. Artistic fossil interpretation, not an authentic specimen or scientific evidence of species, age or locality. ONE complete broad FAN-SHAPED PALM FROND compression, a single wide fan blade divided into aboutTWELVE clear radial tapering segments and one complete gently curved petiole extending down-right. Natural radial rib/pleat impressions within flat dark carbon residue; all outer segment tips retained. Strong broad fan silhouette unlike the narrow pinnate fern, two ginkgo fans, insect or fish. Open asymmetrical almost semicircular natural shale flake with irregular chipped top and narrow thin laminae at lower/right edges; fossil leaf fills most of its broad face without touching its stone outline. No raised live palm, paper folding, carving, second leaf or animal."
+    },
+    {
+      "id": "wallpaper",
+      "type": "wallpaper",
+      "label": "Stillleaf Shale Bedding Shelf",
+      "prompt": "LAYOUT ONLY edit of IMAGE1, the exact Stillleaf Shale wallpaper scene. Preserve its exact WHOLE natural fern, four-wing dragonfly/six legs/long abdomen, two ginkgo fans and stems, complete fish/head/all fins/full forked tail, broad palm fan/all segments/full petiole, EVERY part of their ONE coherent continuous thin shale shelf, carbon-film impressions, mineral grain/fractures/cleavage layers, colours and relative layout. UNIFORMLY SHRINK THE ENTIRE COMPLETE EXISTING SHELF AND ALL FIVE FOSSILS TO60PERCENT OF ITS CURRENT WIDTH AND HEIGHT. Everything moves/scales together, including all stone-edge flakes and its subtle internal/contact shadows; no independent resizing, deletion, redraw or extra specimens. Recenter the smaller complete shelf horizontally at56PERCENT IMAGEHEIGHT. All rock/fossil endpoints inside central60percent imagewidth and between47and67percent imageheight, with WIDE QUIET MATCHING FIELD ON BOTH SIDES and BELOW. Naturally extend the same warm pale shale/linen #DED6C2/#B8B2A0 field above/below/sides. Upper43percent and bottom28percent empty quiet field, very fine restrained grain only. IMAGE2fern,IMAGE3dragonfly,IMAGE4fish,IMAGE5palm are OWN supporting material/specimen references only; do not add their separate stones or change existing scene. Keep the two ginkgo leaves already in IMAGE1. All impressions stay flat and integral, never raised/carved plants, black ink drawing, bronze, enamel/glass or separate live organisms. No new objects, rulers, backdrop panel/frame, text/logo/UI/readings, dark vignette, strong shadow or floating debris. Same exact already-correct fossil scene, only one uniform60percent pullback and matching quiet field extension. Opaque portrait wallpaper, artistic fossil interpretation, not authentic specimens.",
+      "internalArtworkReferences": [
+        {
+          "id": "fern-compression",
+          "sourceImage": "sources/fern-compression.95119f072386.png",
+          "sha256": "95119f072386a473744acd3a827cacd641ca9849829812d0d5ab0be59132e26b"
+        },
+        {
+          "id": "dragonfly-compression",
+          "sourceImage": "sources/dragonfly-compression.b7d4db160021.png",
+          "sha256": "b7d4db160021778566accee68d7c7733b782beffc789e50153dab2cbcd74efc4"
+        },
+        {
+          "id": "ginkgo-compression",
+          "sourceImage": "sources/ginkgo-compression.1ccac4e9dd61.png",
+          "sha256": "1ccac4e9dd61b2e0ef6d5710c76fe1d3beefd1029e128d37239131587809b3b3"
+        },
+        {
+          "id": "fish-compression",
+          "sourceImage": "sources/fish-compression.8acc870d59ad.png",
+          "sha256": "8acc870d59adaa88887105dda4e684ee3a5eb6ebd2bdcc5c4359f8c3c135e470"
+        },
+        {
+          "id": "palm-compression",
+          "sourceImage": "sources/palm-compression.1f4cacc2329c.png",
+          "sha256": "1f4cacc2329c2177bff5113d2cd90c3bf3208fea91c1e4104bc70758182b0195"
+        }
+      ],
+      "originalPrompt": "ONE original opaque portrait1290x2796 phone wallpaper for STILLLEAF SHALE. Use the FIVE OWN references only to preserve the exact recognizable fossil forms and their flat matte black-brown carbon-film / fine-grained thin laminated shale material: IMAGE1 whole gently arcing pinnate FERN frond; IMAGE2 whole four-wing DRAGONFLY with long segmented abdomen and six natural legs; IMAGE3 connected two-fan GINKGO sprig; IMAGE4 whole long lateral FISH, head left/full forked tail right and complete natural fin traces; IMAGE5 one broad radial PALM FAN with full curved petiole. All are FLAT preserved residue and shallow natural impressions IN stone, never live plants/animals, raised carved sculptures, painted ink marks, bronze/enamel/glass or a museum model.\nCreate ONE coherent very small naturally exposed SHALE BEDDING SHELF across lower-middle frame, an irregular pale olive/tan layered geological face with a few organically overlapping thin cleavage flakes. All five different whole fossil forms are integrated across adjacent continuous stone planes in an airy asymmetric low arc, NOT five rectangular specimen cards, equally spaced tiles, a contact sheet or collage of source images. Fine mineral grit, natural fractures and thin chipped laminae continue coherently across shelf. Every fossil has a clear unbroken visible silhouette; no leaf covers fish/wing or another fossil. Preserve every fern pinna/tip/petiole, all four dragonfly wings/legs/abdomen tip, both ginkgo fans/stems, whole fish head/fins/tail and all palm segments/petiole. Different physical orientations but same natural flat preservation process.\nVERY DISTANT SMALL COMPOSITION: ENTIRE connected shelf, all its cleavage flakes AND every fossil endpoint inside CENTRAL60PERCENT width x20to80percent and BETWEEN45AND70PERCENT imageheight. Fern at rear-left, palm at rear-right, small dragonfly left-middle, two ginkgo fans front-centre and long fish along low right; keep specimen overlaps out of the silhouettes. Broad empty space above, below and both sides. Upper43percent and bottom27percent completely quiet smooth warm shale/linen-coloured field #DED6C2/#B8B2A0, very fine restrained mineral grain only, no floating fossils/fronds/stones up there. Soft natural warm raking light, subtle internal layer shadows confined to the tiny shelf, no dramatic dark cast shadow or vignette. Entire scene much smaller than a museum closeup; safe whole composition for1290x2796 and shorter750x1334 centre crops. No extra organisms, separate standing animals, foliage sprigs, grass, pebbles, museum plinth, rectangular backing plaque/frame, rulers/labels/writing, text, numbers, UI/readings/logo or phone. Artistic compression-fossil interpretation, not an authentic specimen, real fossil site or evidence of age/taxon/locality.",
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-framing-study/first-wide-shelf-unselected.def603d46b4f.png",
+        "sha256": "def603d46b4fda7992d329db14d8e52c29e7c6cbc4b6551268954c205b9c5b3d",
+        "role": "Exact own wallpaper scene, uniform framing pullback only"
+      },
+      "editSupportReferences": [
+        {
+          "id": "fern-compression",
+          "sourceImage": "sources/fern-compression.95119f072386.png",
+          "sha256": "95119f072386a473744acd3a827cacd641ca9849829812d0d5ab0be59132e26b"
+        },
+        {
+          "id": "dragonfly-compression",
+          "sourceImage": "sources/dragonfly-compression.b7d4db160021.png",
+          "sha256": "b7d4db160021778566accee68d7c7733b782beffc789e50153dab2cbcd74efc4"
+        },
+        {
+          "id": "fish-compression",
+          "sourceImage": "sources/fish-compression.8acc870d59ad.png",
+          "sha256": "8acc870d59adaa88887105dda4e684ee3a5eb6ebd2bdcc5c4359f8c3c135e470"
+        },
+        {
+          "id": "palm-compression",
+          "sourceImage": "sources/palm-compression.1f4cacc2329c.png",
+          "sha256": "1f4cacc2329c2177bff5113d2cd90c3bf3208fea91c1e4104bc70758182b0195"
+        }
+      ],
+      "generationStages": [
+        {
+          "stage": "Original own-five-reference coherent shale shelf",
+          "prompt": "ONE original opaque portrait1290x2796 phone wallpaper for STILLLEAF SHALE. Use the FIVE OWN references only to preserve the exact recognizable fossil forms and their flat matte black-brown carbon-film / fine-grained thin laminated shale material: IMAGE1 whole gently arcing pinnate FERN frond; IMAGE2 whole four-wing DRAGONFLY with long segmented abdomen and six natural legs; IMAGE3 connected two-fan GINKGO sprig; IMAGE4 whole long lateral FISH, head left/full forked tail right and complete natural fin traces; IMAGE5 one broad radial PALM FAN with full curved petiole. All are FLAT preserved residue and shallow natural impressions IN stone, never live plants/animals, raised carved sculptures, painted ink marks, bronze/enamel/glass or a museum model.\nCreate ONE coherent very small naturally exposed SHALE BEDDING SHELF across lower-middle frame, an irregular pale olive/tan layered geological face with a few organically overlapping thin cleavage flakes. All five different whole fossil forms are integrated across adjacent continuous stone planes in an airy asymmetric low arc, NOT five rectangular specimen cards, equally spaced tiles, a contact sheet or collage of source images. Fine mineral grit, natural fractures and thin chipped laminae continue coherently across shelf. Every fossil has a clear unbroken visible silhouette; no leaf covers fish/wing or another fossil. Preserve every fern pinna/tip/petiole, all four dragonfly wings/legs/abdomen tip, both ginkgo fans/stems, whole fish head/fins/tail and all palm segments/petiole. Different physical orientations but same natural flat preservation process.\nVERY DISTANT SMALL COMPOSITION: ENTIRE connected shelf, all its cleavage flakes AND every fossil endpoint inside CENTRAL60PERCENT width x20to80percent and BETWEEN45AND70PERCENT imageheight. Fern at rear-left, palm at rear-right, small dragonfly left-middle, two ginkgo fans front-centre and long fish along low right; keep specimen overlaps out of the silhouettes. Broad empty space above, below and both sides. Upper43percent and bottom27percent completely quiet smooth warm shale/linen-coloured field #DED6C2/#B8B2A0, very fine restrained mineral grain only, no floating fossils/fronds/stones up there. Soft natural warm raking light, subtle internal layer shadows confined to the tiny shelf, no dramatic dark cast shadow or vignette. Entire scene much smaller than a museum closeup; safe whole composition for1290x2796 and shorter750x1334 centre crops. No extra organisms, separate standing animals, foliage sprigs, grass, pebbles, museum plinth, rectangular backing plaque/frame, rulers/labels/writing, text, numbers, UI/readings/logo or phone. Artistic compression-fossil interpretation, not an authentic specimen, real fossil site or evidence of age/taxon/locality.",
+          "references": [
+            {
+              "id": "fern-compression",
+              "sourceImage": "sources/fern-compression.95119f072386.png",
+              "sha256": "95119f072386a473744acd3a827cacd641ca9849829812d0d5ab0be59132e26b"
+            },
+            {
+              "id": "dragonfly-compression",
+              "sourceImage": "sources/dragonfly-compression.b7d4db160021.png",
+              "sha256": "b7d4db160021778566accee68d7c7733b782beffc789e50153dab2cbcd74efc4"
+            },
+            {
+              "id": "ginkgo-compression",
+              "sourceImage": "sources/ginkgo-compression.1ccac4e9dd61.png",
+              "sha256": "1ccac4e9dd61b2e0ef6d5710c76fe1d3beefd1029e128d37239131587809b3b3"
+            },
+            {
+              "id": "fish-compression",
+              "sourceImage": "sources/fish-compression.8acc870d59ad.png",
+              "sha256": "8acc870d59adaa88887105dda4e684ee3a5eb6ebd2bdcc5c4359f8c3c135e470"
+            },
+            {
+              "id": "palm-compression",
+              "sourceImage": "sources/palm-compression.1f4cacc2329c.png",
+              "sha256": "1f4cacc2329c2177bff5113d2cd90c3bf3208fea91c1e4104bc70758182b0195"
+            }
+          ]
+        },
+        {
+          "stage": "One own-scene uniform pullback and matching field extension",
+          "prompt": "LAYOUT ONLY edit of IMAGE1, the exact Stillleaf Shale wallpaper scene. Preserve its exact WHOLE natural fern, four-wing dragonfly/six legs/long abdomen, two ginkgo fans and stems, complete fish/head/all fins/full forked tail, broad palm fan/all segments/full petiole, EVERY part of their ONE coherent continuous thin shale shelf, carbon-film impressions, mineral grain/fractures/cleavage layers, colours and relative layout. UNIFORMLY SHRINK THE ENTIRE COMPLETE EXISTING SHELF AND ALL FIVE FOSSILS TO60PERCENT OF ITS CURRENT WIDTH AND HEIGHT. Everything moves/scales together, including all stone-edge flakes and its subtle internal/contact shadows; no independent resizing, deletion, redraw or extra specimens. Recenter the smaller complete shelf horizontally at56PERCENT IMAGEHEIGHT. All rock/fossil endpoints inside central60percent imagewidth and between47and67percent imageheight, with WIDE QUIET MATCHING FIELD ON BOTH SIDES and BELOW. Naturally extend the same warm pale shale/linen #DED6C2/#B8B2A0 field above/below/sides. Upper43percent and bottom28percent empty quiet field, very fine restrained grain only. IMAGE2fern,IMAGE3dragonfly,IMAGE4fish,IMAGE5palm are OWN supporting material/specimen references only; do not add their separate stones or change existing scene. Keep the two ginkgo leaves already in IMAGE1. All impressions stay flat and integral, never raised/carved plants, black ink drawing, bronze, enamel/glass or separate live organisms. No new objects, rulers, backdrop panel/frame, text/logo/UI/readings, dark vignette, strong shadow or floating debris. Same exact already-correct fossil scene, only one uniform60percent pullback and matching quiet field extension. Opaque portrait wallpaper, artistic fossil interpretation, not authentic specimens.",
+          "directEditReference": {
+            "sourceImage": "intermediate-wallpaper-framing-study/first-wide-shelf-unselected.def603d46b4f.png",
+            "sha256": "def603d46b4fda7992d329db14d8e52c29e7c6cbc4b6551268954c205b9c5b3d",
+            "role": "Exact own wallpaper scene, uniform framing pullback only"
+          },
+          "editSupportReferences": [
+            {
+              "id": "fern-compression",
+              "sourceImage": "sources/fern-compression.95119f072386.png",
+              "sha256": "95119f072386a473744acd3a827cacd641ca9849829812d0d5ab0be59132e26b"
+            },
+            {
+              "id": "dragonfly-compression",
+              "sourceImage": "sources/dragonfly-compression.b7d4db160021.png",
+              "sha256": "b7d4db160021778566accee68d7c7733b782beffc789e50153dab2cbcd74efc4"
+            },
+            {
+              "id": "fish-compression",
+              "sourceImage": "sources/fish-compression.8acc870d59ad.png",
+              "sha256": "8acc870d59adaa88887105dda4e684ee3a5eb6ebd2bdcc5c4359f8c3c135e470"
+            },
+            {
+              "id": "palm-compression",
+              "sourceImage": "sources/palm-compression.1f4cacc2329c.png",
+              "sha256": "1f4cacc2329c2177bff5113d2cd90c3bf3208fea91c1e4104bc70758182b0195"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

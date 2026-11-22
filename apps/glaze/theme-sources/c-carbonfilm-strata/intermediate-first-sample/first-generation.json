@@ -1,0 +1,15 @@
+{
+  "selected": true,
+  "selectionStatus": "Coordinator accepted and promoted to selected production source",
+  "sourceImage": "intermediate-first-sample/fern-compression-pending.95119f072386.png",
+  "sourceSha256": "95119f072386a473744acd3a827cacd641ca9849829812d0d5ab0be59132e26b",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "prompt": "Use case: stylized-concept / natural-history material study. ONE original square transparent Glaze Artwork. A COMPLETE recognizably natural PINNATE FERN FROND preserved as a CARBON COMPRESSION FOSSIL within ONE small irregular thin split SHALE FLAKE. Gently arching full central rachis, about fourteen distinct pairs of tapering narrow pinnae, fine real branching vein impressions, whole unfurled tip and complete slender petiole. Frond occupies roughly75percent of the flake height and remains immediately recognizable at85px. Single intact natural plant form, no other plant or animal.\nThe FOREGROUND process is geological compression and carbonization, not living plant photography or a drawn fern. The fern is a PAPER-THIN MATTE DARK BLACK-BROWN CARBON FILM embedded flat in the stone bedding plane, with a few shallow fine natural vein impressions. Dark continuous flattened organic residue carries the real full outline; a few tiny ochre oxidized flecks and minute mineral fractures cross it. NO raised leaf tissue, sculpted fern, carved ornamental bas-relief, ink strokes, knife hatching, stamped print or painted outlines. Stone is opaque pale olive-grey/tan fine-grained sedimentary SHALE, naturally split, with several CLEAR THIN STACKED CLEAVAGE LAMINAE exposed along its broken lower/right edges, irregular chips, tiny flaky mineral fractures and visible sediment grit. The naturally broken flake is asymmetrical and roughly hand-sized, a little broader than the entire fern; never rectangular, oval, polished, bevelled, circular or plaque-shaped. A few coarse step-cleavages and lithic chips remain evident even at85px. No rag-paper fibers, embroidery, metal, enamel, ceramic, glass, glossy resin, 3D ammonite/shell sculpture or separate rock display base.\nPhotograph almost straight down, very slightly tilted only to show the THIN laminated split edge; softly raking natural museum light reveals mineral grit and shallow bedding-plane detail without making the fern raised. Calm muted natural rock and carbon colours, crisp broad fern silhouette. WHOLE complete artifact and every frond/rock endpoint inside central74percent of the square, at least13percent true ALPHAZERO exterior on every side, transparent natural gaps outside its irregular stone perimeter. No tabletop/floor, cast shadow outside stone, backdrop/haze/glow, frame, border, plinth, scattered debris, scale ruler, diagram, letters, labels, logo, UI or baked readings. Digital artistic interpretation of a familiar whole plant compression fossil, not a real collected specimen or evidence of a particular species, geological age or locality.",
+  "generationTool": "built-in image_gen",
+  "generationReferenceImages": [],
+  "externalVisualInputs": [],
+  "selectedSourceImage": "sources/fern-compression.95119f072386.png"
+}

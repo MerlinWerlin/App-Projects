@@ -1,0 +1,57 @@
+{
+  "initial": {
+    "prompt": "Original tall portrait PHONE WALLPAPER for Glaze GUILLOCHE COPSE, aspectabout1024x2200. Use the FIVE attached OWN art references only for their exact natural subject silhouettes and FLAT single petrol-blue ink #20536A guilloche rosette/loop print language, in order wren/twig, curled dormouse/hazelnut, seated fox, fern, oak/acorns. Create ONE coherent small calm woodland hedgerow vignette printed on softly warm buff cotton-rag paper #E5D8BE: a slender curved low oak branch with whole lobed leaves and acorns arches over a whole familiar perched wren; beneath it a seated whole fox rests on the right, a small curled sleeping dormouse with nut at left, and a complete fern curls out of the low ground between them. All5independent subjects remain recognizable and distinct, naturally arranged together rather than a row of stickers or framed panels. Every whole creature, paw, tail, beak, leaf lobe, frond and branch tip remains safely inside the habitat group. Keep the SAME bold precise low-frequency multi-lobed nested rosette linework within bodies and rhythmic fan loops in foliage. Matte flat blue ink, visible restrained dry print bite, no raised wire, lace, thread, metal, glossy enamel, paper cut-out relief, 3D shading or photo realism. CRITICAL FRAMING: the ENTIRE complete vignette including outer branches, ground and all foliage occupies only central58percent of frameWIDTH and vertical44to66percent of frameHEIGHT, centerat55percent height. Broad quiet warm paper margins on BOTH sides and bottom. Upper40percent completely EMPTY warm buff fine paper tooth, no patterns, no illustrations or speckles. Lower frame outside the small habitat likewise quiet matching paper. No giant tree, no outer border, no abstract decorative rosette floating in corners. Do not fill the image with oversized animals. One refined original printed nature world with ample breathing room. Solid opaque full-bleed portrait wallpaper; no words, labels, date, numbers, UI, phone, signature or watermark.",
+    "file": "qa/wallpaper-edge-study/initial-scene.536ce2ea88cb.png",
+    "sha256": "536ce2ea88cb4a837b2dc4e5189982dca3ad198fdd9cc4dd7712ae8b9f48d5d2",
+    "references": [
+      {
+        "file": "sources/wren-twig.2d8e172e0f05.png",
+        "sha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e"
+      },
+      {
+        "file": "sources/dormouse-hazel.791764ea8d5a.png",
+        "sha256": "791764ea8d5ac67055025ead61e651a6026db0438ad4b82dd71d19828b05d515"
+      },
+      {
+        "file": "sources/red-fox.61fc7745326f.png",
+        "sha256": "61fc7745326f46e459949bddae3c91b38c57d73b4a600d2b52bb562845a5cb77"
+      },
+      {
+        "file": "sources/lady-fern.622d4449d05e.png",
+        "sha256": "622d4449d05ecf865a3a1daee278daa33d98c1db705551a30718dcac4ec55e21"
+      },
+      {
+        "file": "sources/oak-acorns.e8d187505b8e.png",
+        "sha256": "e8d187505b8e434165941d1d619f9f7b9aa18e5adfd18199236eefc9762cb919"
+      }
+    ],
+    "selected": false
+  },
+  "selectedEdit": {
+    "id": "wallpaper",
+    "tool": "built-in image_gen",
+    "prompt": "Refine ONLY this exact OWN Guilloche Copse printed woodland wallpaper. Preserve the whole wren/twig, curled dormouse, seated fox, fern and oak/acorn arch, their recognizable anatomy, relative positions and exact flat blue guilloche rosette ink geometry. Uniformly reduce the ENTIRE existing habitat group INCLUDING the full outer oak arch, all ground/grass, every branch/leaf/tail/paw to70percent of its CURRENT size, then place the complete reduced group at the horizontal center and around55percent of canvas height. Entire group at most65percent of canvasWIDTH, with very broad warm buff paper margins on both sides, top and bottom. Keep the tall portrait aspect, the same #E5D8BE warm fine paper tooth and matte petrol-blue ink. Restore clean unprinted paper in the incidental faint gray smudges/ghost traces around and behind the fox, wren perch and fern, preserving the actual blue subject linework; no letters, symbols or new marks. Do not enlarge or reshape any individual subject. No composition crop, new animals, frames or decorative outer border. Every beak, ear, paw, leaf lobe, acorn and frond tip remains whole. This is one own-scene uniform framing/background-cleanup edit only; preserve all five separate original artwork references unchanged.",
+    "source": "sources/wallpaper.d1c1ba021453.png",
+    "sourceSha256": "d1c1ba02145370c02d7c5f615950b45d9e391adfca1f6dea5e382f8626144982",
+    "sourceDimensions": [
+      856,
+      1838
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "602935a4337a2b15e371f4301441275311b6686ef025734869778a370a084fa2",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Own-scene uniform70percent habitat pullback plus incidental background-ghost cleanup through built-in image_gen; mechanical1290x2796 export. All five independent artwork inputs stay unchanged.",
+    "references": [
+      {
+        "file": "qa/wallpaper-edge-study/initial-scene.536ce2ea88cb.png",
+        "sha256": "536ce2ea88cb4a837b2dc4e5189982dca3ad198fdd9cc4dd7712ae8b9f48d5d2",
+        "purpose": "Own complete five-reference printed woodland scene, framing and background cleanup only."
+      }
+    ],
+    "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+  },
+  "reason": "Whole habitat and blue linework stay inside wide quiet phone-edge margins; incidental pale background smudges removed from the wallpaper only."
+}

@@ -1,0 +1,20 @@
+{
+  "id": "quail-manzanita",
+  "prompt": "Precise MATERIAL-ONLY refinement of input1, own original Embertrace Chaparral quail/manzanita. Preserve exact recognizable California quail, natural anatomy, pose, body volume, head/short beak/eye, modest curved topknot, folded wing and tail, exactly two complete feet/toes, small three-leaf manzanita twig, palette, lighting, scale/framing and all clean transparent margins. KEEP warm ivory hand-shaped BURNISHED UNGLAZED CERAMIC with shallow clay tool shaping traces and restrained warm iron blush. REPLACE only the current branching lightning/crackle/marble-like vein network on the ceramic surface. Remove those forked networks completely. Instead show only FIVE distinct, isolated THIN SINUOUS OR LOOPING CARBONIZED HORSEHAIR STRAND TRAILS: individual gentle S curves, one loose irregular open loop and two meandering single-filament wavering lines, widely separated on chest/wing/flank/neck. Trails must be UNBRANCHED dark charcoal and visibly fine SINGLE strands absorbed FLUSH into hot clay, with small localized soft gray smoke deposits at a few trail segments and delicate fading burnt ends. Leave most ivory ceramic quiet. Lines do not form connected marble veins, angular cracks, spiderweb, tree branches, mesh/grid, painted feather anatomy or regular decorative calligraphy. No glossy glaze, metallic veins, raised wire/thread, literal loose hairs, shaggy fur or smoke outside subject. Preserve natural facial marks and every structural silhouette unchanged. TRUE TRANSPARENT ALPHA including all leg/twig gaps, no backing/halo/ground/shadow/plaque/frame, no text/UI. Single own image input only; no external reference.",
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-860bba2c-b571-409d-958d-91222e510497.png"
+  ],
+  "source": "sources/quail-manzanita.25cfcc80.png",
+  "themeId": "embertrace-chaparral",
+  "sourceSha256": "25cfcc80efc81d0ca163aaab9945a0f45aece4074f75ac1b729b16312eea8c43",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "copiedOriginal": "sources/quail-manzanita.25cfcc80.png",
+  "preview": "qa/material-sample/approved-full-170-85-review.png",
+  "status": "Exact approved quail retained unchanged as selected production source after full17085 and actual eight-neighbor coordinator approval.",
+  "previewProcessing": "Whole source fitted to840px inside1024alpha canvas, shown with Fit6% geometry at540/170/85 and conservative rounded mask. No subject crop/recolour/paint; no actual full-pack/installed-device claim.",
+  "approval": "qa/material-sample/coordinator-material-approval.json"
+}

@@ -1,0 +1,47 @@
+{
+  "scope": "Whole source actual sage composite; source alpha measured, never thresholded/modified in selected art.",
+  "stages": [
+    {
+      "stage": "Intermediate anatomy edit: background haze held",
+      "sourceSha256": "8f0bf6cb5a48c453da874a8303d9c6d863c076e27ea96437315c87f16559fdba",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alpha16bbox": [
+        0,
+        18,
+        1254,
+        1254
+      ],
+      "alpha240bbox": [
+        151,
+        96,
+        1124,
+        1173
+      ]
+    },
+    {
+      "stage": "Selected alpha extraction: corrected whole spray",
+      "sourceSha256": "7bbce666e0fb09f6f6f90ba90a461d2a6ae4f2d707fc651f37319b234bbc76a6",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alpha16bbox": [
+        145,
+        85,
+        1121,
+        1180
+      ],
+      "alpha240bbox": [
+        146,
+        86,
+        1120,
+        1178
+      ]
+    }
+  ],
+  "finding": "Final background haze removed by built-in image edit; slender pod and whole flowers/fine leaves retained.",
+  "sourceProcessing": "No Python background removal or subject editing."
+}

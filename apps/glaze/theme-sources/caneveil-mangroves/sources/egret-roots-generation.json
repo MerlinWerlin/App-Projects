@@ -1,0 +1,18 @@
+{
+  "id": "egret-roots",
+  "prompt": "CANEVEIL MANGROVES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL mangrove flora/fauna with natural anatomy, not abstract creatures. Unmistakable hand-fused MURRINE/MILLEFIORI GLASS-CANE construction: large radial flower/star cross-sections of composite colored glass rods FUSED FLUSH INTO ONE CONTINUOUS VITREOUS BODY. Coarse irregular but legible ivory/honey-centered cobalt/emerald radial cane flowers occupy broad surfaces, only several LARGE cane sections across an animal torso, not tiny allover decorative confetti. Actual depth/internal stripes visible through thin clear glass casing; heat-softened joins merge neighboring cane slices with NO brass leading, grout or thick black divider outlines. At curved cut lips and narrow parts, expose LONGITUDINAL PARALLEL COLOR STRIPES of the composite rods, not flat surface decals. Soft directional glass highlights, low shallow fused relief, not a generic shiny figurine decorated with painted flowers, stained glass enamel, loose seedbeads, beads/thread holes, mosaic tiles, rough frit grains, shell nacre, crystal facets or gemstones. Underlying natural shape remains very clear. Whole subject inside central64percent with at least18percent real alpha margin each side. No clipped toes, feet, tail, bill, leaf or root tips. Entire exterior and open anatomy gaps genuinely alpha transparent; no sheet/plaque/backing/platform/stand/frame/badge/ring/bail/clasp, no ground scenery, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One familiar little egret stands naturally in right-facing profile among TWO short complete branching mangrove prop roots. Slender S-curved neck, modest narrow head, long pointed dark bill, slim natural body with folded wings, exactly TWO long slim coherent dark legs and delicate complete toes. Ivory/cobalt/honey coarse cane cross-sections embedded into continuous fused-glass feather shapes, not literal plumage ornaments, root cut lips expose colored rod stripes. Recognizable bird proportions, no giant toy eye, no extra legs or duck web feet. Whole bill, crown, tail and both feet plus roots entirely inside margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/egret-roots.aeecdff4.png",
+  "sourceSha256": "aeecdff42e6913fdc9f8403d817bc54bd1e71a62e66ecd6612087038cd61101f",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/egret-roots.14d267b0.png",
+  "sha256": "14d267b0b43589601353caf7c82076c5eb61eab05804817dab5d0d8c97f8fec3",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

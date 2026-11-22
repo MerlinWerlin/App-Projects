@@ -1,0 +1,1 @@
+Five separate1024square RGBA pure-art assets, small/large Fit selections. Whole original uniformly contained900within1024, no crop/stretch/alpha cleanup. Native Clock/Battery/Calendar are separate live code components from native-widget-identity.json.

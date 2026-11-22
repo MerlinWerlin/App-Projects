@@ -1,0 +1,28 @@
+{
+  "scope": "Prototype structural/flat-palette layout simulation, not encoded pack or installed-device proof. No original raster change.",
+  "rawSha256": "727bfb5a466f23162b3fbed812c26d3cd9b39725bb0cd6c3243956bb99a7c9aa",
+  "fitInset": 0.06,
+  "cornerRadiusFraction": 0.2,
+  "variants": [
+    {
+      "sourceContainLimit": 1024,
+      "tilePx": 300,
+      "visibleAlpha16PixelsClipped": 0
+    },
+    {
+      "sourceContainLimit": 1024,
+      "tilePx": 85,
+      "visibleAlpha16PixelsClipped": 0
+    },
+    {
+      "sourceContainLimit": 900,
+      "tilePx": 300,
+      "visibleAlpha16PixelsClipped": 0
+    },
+    {
+      "sourceContainLimit": 900,
+      "tilePx": 85,
+      "visibleAlpha16PixelsClipped": 0
+    }
+  ]
+}

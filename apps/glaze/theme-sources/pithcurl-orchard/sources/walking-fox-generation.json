@@ -1,0 +1,27 @@
+{
+  "id": "walking-fox",
+  "label": "Peel Fox",
+  "tool": "built-in image_gen",
+  "prompt": "BACKGROUND EXTRACTION ONLY on this OWN original entire fresh-mandarin-peel fox. Preserve the COMPLETE same fox, physical orange skin, thick white pith, all broad strip curls, natural anatomy, dark pip eyes/nose, paws or tentacles, and accompanying leaf if present. Remove ALL diffuse orange/brown ambient haze, glow and cast shadows OUTSIDE the physical peel object, including between legs, around tail, around shell and leaf and inside genuinely open curl gaps. Every exterior pixel and every empty gap must be clean TRUE TRANSPARENT ALPHA, including immediately beyond tiny natural pith fibres; no coloured cloud or partially opaque floor. Keep genuine soft light and shadow ON actual physical skin/pith surfaces and within physically closed shell layers. Do not recolor, smooth, redraw, re-pose, alter the material, delete or shorten any anatomy, add foliage, leave a white/grey backdrop, or create a new shadow. Whole original subject with all tip extremities remains in frame; add quiet transparent margin if necessary, never crop. No text or UI. This is the final clean reusable transparent artwork cutout.",
+  "source": "sources/walking-fox.47427fa11b4f.png",
+  "sourceSha256": "47427fa11b4f2648d731587e299cb9bba0e219dcd2f67f8c0ee18c1ef3170883",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "selectedFile": "widgets/walking-fox.6cc4e92b.png",
+  "sha256": "6cc4e92bca1c7bf03b013487169f7f29b67ad56ff949c43d3796f567e6e157de",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent canvas; no crop/recolour/code alpha cleanup or creative pixel edits.",
+  "references": [
+    {
+      "file": "qa/background-extraction/walking-fox.initial.631f5b512558.png",
+      "sha256": "631f5b5125589a22bf46532f039ffb8c3e5e92a013bd19e65ad9ed973a4025f0",
+      "purpose": "Own image reference; exact original retained."
+    }
+  ],
+  "generationHistory": "qa/background-extraction/walking-fox-history.json"
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "fern-compression",
+    "kind": "art",
+    "image": "fern-compression.aa5679e793a4.png",
+    "sha256": "aa5679e793a4de7340711244f7b8b9eff434399472b4be38ffea7cda8d302a7f",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fern Compression"
+  },
+  {
+    "id": "dragonfly-compression",
+    "kind": "art",
+    "image": "dragonfly-compression.c8cffa4ac0d8.png",
+    "sha256": "c8cffa4ac0d8780680ba509f02dec9240ac68e36bc044763e3fb501ce6a0b458",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Dragonfly Compression"
+  },
+  {
+    "id": "ginkgo-compression",
+    "kind": "art",
+    "image": "ginkgo-compression.acc5e3e539d5.png",
+    "sha256": "acc5e3e539d5f0c58ef38a5e33c65a001602f36c6df8876902a1fd668bac35fd",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ginkgo Compression"
+  },
+  {
+    "id": "fish-compression",
+    "kind": "art",
+    "image": "fish-compression.3e5b11c9bff7.png",
+    "sha256": "3e5b11c9bff7a83311addc5ec7a5109e4bd212466c3d61a2a8fb926ee33179d0",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fish Compression"
+  },
+  {
+    "id": "palm-compression",
+    "kind": "art",
+    "image": "palm-compression.4b57d25629ef.png",
+    "sha256": "4b57d25629ef94bfb050cf346a85a18cd8d1c4e51a32f9c01ae66ea7c516c7a1",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Palm Compression"
+  }
+]

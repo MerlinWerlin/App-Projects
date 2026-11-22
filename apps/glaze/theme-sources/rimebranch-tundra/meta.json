@@ -1,0 +1,20 @@
+{
+  "name": "Rimebranch Tundra",
+  "mood": "Familiar Arctic wildlife, poppy and dwarf willow formed from pale branching ice crystals in quiet blue tundra.",
+  "tags": [
+    "nature",
+    "arctic",
+    "tundra",
+    "hoarfrost",
+    "ice-crystals",
+    "wildlife",
+    "willow",
+    "sculpture"
+  ],
+  "credits": "Original Glaze built-in image_gen artwork and authored native identity. Artistic hoarfrost-sculpture interpretation of familiar nature, not documentary specimens.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Angular hexagonal ice needles and crystalline dendritic fans form recognizable whole tundra wildlife and plants. Exact original prompts, own-reference hashes and layout-only habitat pullback retained.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}
