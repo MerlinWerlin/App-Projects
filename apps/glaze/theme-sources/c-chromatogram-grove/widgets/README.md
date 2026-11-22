@@ -1,0 +1,1 @@
+Five separate pure-art1024square RGBA options, whole originals contained900within1024, alpha preserved. Full thin-paper silhouettes and endpoints retained for small/large Fit Artwork slots. Live native values come from existing code components defined by native-widget-identity.json, never baked readings.

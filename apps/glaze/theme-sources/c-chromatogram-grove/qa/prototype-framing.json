@@ -1,0 +1,53 @@
+{
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sourceSha256": "a939f613741757a335d64c06247e12affecfa5ed71f98ed628a1223588f1d467",
+  "sourceBoundsByAlphaThreshold": {
+    "16": [
+      38,
+      110,
+      1215,
+      1199
+    ],
+    "96": [
+      39,
+      110,
+      1215,
+      1199
+    ]
+  },
+  "edgeAlphaMaximum": 1,
+  "outsideProbes": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "wholeFanNotchAndCompletePetioleInside": true,
+  "paperInteriorSamples": {
+    "upperWhitePaper": {
+      "xy": [
+        600,
+        140
+      ],
+      "alpha": 251
+    },
+    "middlePaper": {
+      "xy": [
+        600,
+        450
+      ],
+      "alpha": 252
+    },
+    "lowerPaper": {
+      "xy": [
+        600,
+        700
+      ],
+      "alpha": 253
+    }
+  },
+  "sampleScope": "Fixed descriptive interior alpha points, not measured pigment/data interpretation; outside contours assessed visually."
+}

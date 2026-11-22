@@ -1,0 +1,226 @@
+{
+  "theme": "c-chromatogram-grove",
+  "lane": "C",
+  "created": "2026-11-23",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "ginkgo-chromatogram",
+      "sourceImage": "sources/ginkgo-chromatogram.a939f6137417.png",
+      "sourceSha256": "a939f613741757a335d64c06247e12affecfa5ed71f98ed628a1223588f1d467",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/ginkgo-chromatogram.40c63e9def48.png",
+      "sha256": "40c63e9def4862b8b7efca2f5a63e56f07a9ccc0282e54a770f3c590b0aea65c",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 728744,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "ONE original square transparent Glaze Artwork, PIGMENT PASSAGE. A WHOLE immediately recognizable GINKGO FAN LEAF SHAPE cut from ONE thin matte warm-white CELLULOSE CHROMATOGRAPHY PAPER sheet, with broad familiar fan, subtle shallow top notch, irregular softly scalloped outer fan margin and one COMPLETE slender curved paper petiole. This is a physical THIN PAPER cutout, not actual leaf tissue, a photograph of a leaf, folded origami, cast paper-pulp sculpture or painted leaf. Clearly visible fine porous cellulose fibres and a tiny natural paper edge thickness, no paper backing rectangle. Whole intact familiar botanical silhouette FIRST.\nDistinctive FOREGROUND IMAGE-MAKING PROCESS: PLANT-PIGMENT PAPER CHROMATOGRAPHY. From the narrow petiole wick, a dried plant-extract migration has risen and FANNED OUT over this paper, separating into FOUR BROAD UNEQUAL gently bowed coloured MIGRATION ZONES: deep blue-green, olive-green, warm yellow and a narrow amber-orange. Each separate absorbed pigment band has a concentrated slightly darker advancing front and an irregular finely feathered capillary leading edge, a few short directional wick fingers and lighter dissolved tails behind it. Distinct UNSTAINED WARM-WHITE PAPER INTERVALS separate the bands. Let the broad migration fronts and white paper gaps remain OBVIOUS AT85PX. Near the petiole remains a small darker green absorbed origin patch, no pencil baseline. Some uncoloured porous paper stays above the last front and at the fan margins. All pigment is INSIDE the same flat paper fibres; no surface paint, raised ridges, glossy ink, ordinary smooth gradient, watercolour brush wash/splatter/marbling, regular decorative stripes or a graphic bar chart. Colour sequence/shape is an ORIGINAL ARTISTIC INTERPRETATION, not an authentic analytical sample, measuredRf trace or exact pigment identification. No green leaf veins or wildlife picture inside the paper, no contact-print photographic silhouette, sun-bleached rose print, optical rainbow interference, detector pixels, fluorescence, metallic foil, thread or fibre sculpture. Photograph almost straight down with restrained soft light revealing the dry matte paper edge/porosity without shiny3D volume. Whole fan/petiole/every paper endpoint inside central70percent square, generous minimum15percent genuinely ALPHAZERO exterior each side and through natural open outside gaps. No background/table/floor, cast shadow outside cutout, lab beaker/strip/ruler/equipment, rectangle, label, writing, numbers, axes, UI/clock/date/battery/weather readings, logo, frame or other object. One whole nature-shaped chromatography-paper object on true transparent exterior. No external visual input or named artist style. The paper leaf and petiole are fully OPAQUE throughout: the white intervals are uncoloured solid paper, never alpha holes. Transparency is ONLY outside the exact whole cut-paper silhouette and in its open top notch.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 756332
+    },
+    {
+      "id": "butterfly-chromatogram",
+      "sourceImage": "sources/butterfly-chromatogram.624dff217094.png",
+      "sourceSha256": "624dff2170943298c7b44647a3f792c298b4bf3321ea57ac5f318893c92e375b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/butterfly-chromatogram.449e95215aa2.png",
+      "sha256": "449e95215aa25aef43c0a8a10b3db821a0e4af520497353980da0b24f9c36619",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 807211,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "ONE original square transparent Glaze Artwork for PIGMENT PASSAGE. A whole familiar natural silhouette cut from ONE thin matte warm-white POROUS CELLULOSE CHROMATOGRAPHY PAPER carrier, full shape and endpoints. The body is opaque dry thin paper with visible fine pores/fibres and a tiny true paper edge, no real animal/plant tissue, cast pulp, folded origami, chunky card sculpture or photograph printed on it. PLANT-PIGMENT PAPER CHROMATOGRAPHY is the distinctive process: four BROAD UNEQUAL separated blue-green/olive-green/warm-yellow/narrow-amber migration zones spread through the paper from a small darker wick origin, with concentrated irregular feathered advancing fronts, a few directional capillary fingers and lighter dissolved tails. Clear UNCOLOURED WARM-WHITE PAPER INTERVALS separate the fronts, visible at85px. Pigments are absorbed INSIDE flat paper, no surface paint/brush wash, splatter/marbling, decorative regular stripes, smooth gradient, ink illustration, sunprinted contact silhouette, optical rainbow interference, luminous scanning, detector maps or textile/ribbon/metal. Bands/sequence are artistic, not authentic analytical data/Rf traces or pigment identification. Paper stays fully opaque through its body/white intervals; only actual silhouette/cut gaps are true ALPHAZERO. Whole complete subject comfortably inside central70percent square with minimum15percent genuine transparent exterior all sides. Restrained soft almost overhead light, no tabletop/floor/backdrop/rectangle, external cast shadow, laboratory apparatus/strip/ruler, labels/writing/numbers/graphs, UI/readings/logo/frame or extra organisms. ONE complete familiar open-wing BUTTERFLY cut-paper silhouette: two broader pointed forewings above, two smaller rounded hindwings below, a coherent slender central body, TWO entire fine antennae and SIX small whole legs tucked naturally below. Symmetric natural wing anatomy, not a bow or four leaves. Paper all one connected flat shape. Plant-pigment migration from the lower body fans through both sides into clearly unequal curved fronts on the four broad wings, with uncoloured paper intervals. No painted butterfly vein network/spots or ordinary colourful real wing texture. Every wing/antenna/leg tip whole.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 738907
+    },
+    {
+      "id": "kingfisher-chromatogram",
+      "sourceImage": "sources/kingfisher-chromatogram.fc9087713434.png",
+      "sourceSha256": "fc9087713434ba92d01adda705956c9b0a45fd32e92b43d4f70b3f8c585e3bd7",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/kingfisher-chromatogram.3ce9c2a01f96.png",
+      "sha256": "3ce9c2a01f96e87f32db9ce19d87c7112dc98b03c213a73c464dc27ff1148d13",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 591713,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "ONE original square transparent Glaze Artwork for PIGMENT PASSAGE. A whole familiar natural silhouette cut from ONE thin matte warm-white POROUS CELLULOSE CHROMATOGRAPHY PAPER carrier, full shape and endpoints. The body is opaque dry thin paper with visible fine pores/fibres and a tiny true paper edge, no real animal/plant tissue, cast pulp, folded origami, chunky card sculpture or photograph printed on it. PLANT-PIGMENT PAPER CHROMATOGRAPHY is the distinctive process: four BROAD UNEQUAL separated blue-green/olive-green/warm-yellow/narrow-amber migration zones spread through the paper from a small darker wick origin, with concentrated irregular feathered advancing fronts, a few directional capillary fingers and lighter dissolved tails. Clear UNCOLOURED WARM-WHITE PAPER INTERVALS separate the fronts, visible at85px. Pigments are absorbed INSIDE flat paper, no surface paint/brush wash, splatter/marbling, decorative regular stripes, smooth gradient, ink illustration, sunprinted contact silhouette, optical rainbow interference, luminous scanning, detector maps or textile/ribbon/metal. Bands/sequence are artistic, not authentic analytical data/Rf traces or pigment identification. Paper stays fully opaque through its body/white intervals; only actual silhouette/cut gaps are true ALPHAZERO. Whole complete subject comfortably inside central70percent square with minimum15percent genuine transparent exterior all sides. Restrained soft almost overhead light, no tabletop/floor/backdrop/rectangle, external cast shadow, laboratory apparatus/strip/ruler, labels/writing/numbers/graphs, UI/readings/logo/frame or extra organisms. ONE whole familiar KINGFISHER cut-paper silhouette perched naturally on ONE short thin connected paper twig: large coherent head in profile facing right, long straight CLOSED pointed bill, compact rounded chest/body, two naturally folded wing masses, complete short wedge tail and TWO feet gripping the twig. All bill/toe/tail/twig endpoints whole, modest natural head/eye proportions, no cartoon costume. Four separated absorbed plant-pigment fronts rise from a small darker origin in the twig through feet/body into the broad head/wing fields; no separate photograph, painted feather shading or opaque real bird under paper. Whole bird/twig is one thin paper carrier, no background leaves.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 821744
+    },
+    {
+      "id": "snail-chromatogram",
+      "sourceImage": "sources/snail-chromatogram.6eb03d82d232.png",
+      "sourceSha256": "6eb03d82d2329a74b11e345e3f6db8c563f89660949099bdfa4ad901888ee60d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/snail-chromatogram.69c07e82586b.png",
+      "sha256": "69c07e82586bf75c7be3e856b202106bd06cb9efeade9b35b920206dae7651cd",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 522126,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "ONE original square transparent Glaze Artwork for PIGMENT PASSAGE. A whole familiar natural silhouette cut from ONE thin matte warm-white POROUS CELLULOSE CHROMATOGRAPHY PAPER carrier, full shape and endpoints. The body is opaque dry thin paper with visible fine pores/fibres and a tiny true paper edge, no real animal/plant tissue, cast pulp, folded origami, chunky card sculpture or photograph printed on it. PLANT-PIGMENT PAPER CHROMATOGRAPHY is the distinctive process: four BROAD UNEQUAL separated blue-green/olive-green/warm-yellow/narrow-amber migration zones spread through the paper from a small darker wick origin, with concentrated irregular feathered advancing fronts, a few directional capillary fingers and lighter dissolved tails. Clear UNCOLOURED WARM-WHITE PAPER INTERVALS separate the fronts, visible at85px. Pigments are absorbed INSIDE flat paper, no surface paint/brush wash, splatter/marbling, decorative regular stripes, smooth gradient, ink illustration, sunprinted contact silhouette, optical rainbow interference, luminous scanning, detector maps or textile/ribbon/metal. Bands/sequence are artistic, not authentic analytical data/Rf traces or pigment identification. Paper stays fully opaque through its body/white intervals; only actual silhouette/cut gaps are true ALPHAZERO. Whole complete subject comfortably inside central70percent square with minimum15percent genuine transparent exterior all sides. Restrained soft almost overhead light, no tabletop/floor/backdrop/rectangle, external cast shadow, laboratory apparatus/strip/ruler, labels/writing/numbers/graphs, UI/readings/logo/frame or extra organisms. ONE whole recognizable GARDEN SNAIL thin cut-paper silhouette in low left-facing profile: broad elongated foot, coherent small head, two long upper eye-tentacles and two shorter lower tentacles, rounded shell hump behind. A single restrained shallow curved cut line inside the paper shell hints its natural spiral, no text or graph. Small dark wick origin at tail/foot gives four unequal gently bowed absorbed pigment fronts across shell/body, white opaque paper gaps and concentrated capillary advancing edges. No real wet skin/hard shell, painted cartoon snail, metal coil, lace net, folded paper sculpture or plinth. Whole tentacles/foot/tail retained.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 846801
+    },
+    {
+      "id": "primrose-chromatogram",
+      "sourceImage": "sources/primrose-chromatogram.0bea4afe3cbf.png",
+      "sourceSha256": "0bea4afe3cbf02ab317cdf2e6ffa0ae3eec63e1e7b3743fc479316df01303076",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/primrose-chromatogram.4779f19f9f2a.png",
+      "sha256": "4779f19f9f2ab9d569a863e7193524739378f845d56065272ca0340b82fb3afc",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 699049,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "ONE original square transparent Glaze Artwork for PIGMENT PASSAGE. A whole familiar natural silhouette cut from ONE thin matte warm-white POROUS CELLULOSE CHROMATOGRAPHY PAPER carrier, full shape and endpoints. The body is opaque dry thin paper with visible fine pores/fibres and a tiny true paper edge, no real animal/plant tissue, cast pulp, folded origami, chunky card sculpture or photograph printed on it. PLANT-PIGMENT PAPER CHROMATOGRAPHY is the distinctive process: four BROAD UNEQUAL separated blue-green/olive-green/warm-yellow/narrow-amber migration zones spread through the paper from a small darker wick origin, with concentrated irregular feathered advancing fronts, a few directional capillary fingers and lighter dissolved tails. Clear UNCOLOURED WARM-WHITE PAPER INTERVALS separate the fronts, visible at85px. Pigments are absorbed INSIDE flat paper, no surface paint/brush wash, splatter/marbling, decorative regular stripes, smooth gradient, ink illustration, sunprinted contact silhouette, optical rainbow interference, luminous scanning, detector maps or textile/ribbon/metal. Bands/sequence are artistic, not authentic analytical data/Rf traces or pigment identification. Paper stays fully opaque through its body/white intervals; only actual silhouette/cut gaps are true ALPHAZERO. Whole complete subject comfortably inside central70percent square with minimum15percent genuine transparent exterior all sides. Restrained soft almost overhead light, no tabletop/floor/backdrop/rectangle, external cast shadow, laboratory apparatus/strip/ruler, labels/writing/numbers/graphs, UI/readings/logo/frame or extra organisms. ONE complete familiar PRIMROSE-TYPE flower sprig cut from thin chromatography paper: single broad FIVE softly notched petal lobes around a modest centre, one gently curving whole stem and TWO separate simple basal leaves. Natural recognisable botanical silhouette, no vase or pot. Four broad unequal pigment migration fronts fan from a darker lower stem origin through leaves/stem into the broad blossom, with obvious warm-white paper intervals; make a few coherent large fronts across the whole sprig, not dozens of tiny repeated stripes on each petal. No real petal veins/leaf skin, animal image, watercolor brush illustration or physically folded flower. Every petal/leaf/stem endpoint whole.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 780255
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.94bb5718afd9.png",
+      "sourceSha256": "94bb5718afd9ed73e37b8b491cca9573ace4ff95e7122f3b43ec79998747465f",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "6073586aaee653d26235849b0250f6b069432a0a5ddc505c492243c1612d92c3",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 3885800,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original OPAQUE PORTRAIT phone wallpaper, PIGMENT PASSAGE, aspect1290x2796. The FIVE input images are OWN SUBJECT/MATERIAL REFERENCES, not edit targets: Image1 whole ginkgo fan with complete curved petiole; Image2 whole open-wing butterfly with all antennae/legs; Image3 whole kingfisher profile and short twig; Image4 whole left-facing garden snail with four tentacles and restrained shell spiral; Image5 whole five-lobed primrose sprig with two basal leaves. Preserve all five familiar complete silhouettes and their distinctive thin dry matte warm-white porous CELLULOSE CHROMATOGRAPHY PAPER. Their four broad UNEQUAL blue-green/olive/yellow/amber absorbed pigment zones have irregular concentrated feathered advancing fronts, directional capillary fingers, lighter tails and broad UNSTAINED OPAQUE warm-white paper intervals. No real animal or plant tissue, photograph inside a leaf, watercolor brush illustration, regular painted stripes, folded origami/card sculpture, surface paint, marbling, thread/metal, rainbow interference, laboratory diagram. Pigment fronts are an artistic chromatography interpretation, not analytical results, measuredRf or pigment identification.\nCreate ONE coherent airy nature-shaped paper garden arrangement in a shared shallow plane and common restrained soft light, with gentle tiny contact shading on a continuous deep woodland teal field. Whole ginkgo fan rises upper-left, whole perched kingfisher and short twig upper-right, whole primrose sprig grows through lower-right, butterfly hangs in open middle-left, whole snail travels low across the base. Each full natural silhouette has its own breathing room; only inconspicuous stems may touch. No subject covers another wing, leaf, bill, antenna, tentacle or petal. Keep thin paper edge and cellulose pores, never make thick 3D wildlife. Do not arrange five equal icons/cards/tiles/contact-sheet panels; use differing angles, organic spacing and a rising botanical arc without fusing their anatomy into a hybrid organism.\nFULLER AND TALLER natural group occupies about84percent WIDTH x8to92percent and about46percent HEIGHT y35to81percent. Real vertical presence, no tiny central island. Every object/endpoint and shadow is wholly INSIDE the frame, at least8percent side margins. Top33percent and bottom18percent quiet empty continuous deep forest teal field #162C2A with subtle #29443E tonal depth, no gradients with bright corners, dense texture, horizon/table edge, backing rectangle, landscape scenery, stage/plinth, vase, scattered paper/debris, lab apparatus, labels, ruler/graph, new organisms, glow, vignette or bokeh. Warm paper and separated pigment fronts stay readable against muted teal. All five subjects and every endpoint retained in1290x2796,1179x2556 and750x1334 centre crops. No writing/numbers/UI/readings/logos/frame or phone mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "ginkgo-chromatogram",
+          "sourceImage": "sources/ginkgo-chromatogram.a939f6137417.png",
+          "sha256": "a939f613741757a335d64c06247e12affecfa5ed71f98ed628a1223588f1d467"
+        },
+        {
+          "id": "butterfly-chromatogram",
+          "sourceImage": "sources/butterfly-chromatogram.624dff217094.png",
+          "sha256": "624dff2170943298c7b44647a3f792c298b4bf3321ea57ac5f318893c92e375b"
+        },
+        {
+          "id": "kingfisher-chromatogram",
+          "sourceImage": "sources/kingfisher-chromatogram.fc9087713434.png",
+          "sha256": "fc9087713434ba92d01adda705956c9b0a45fd32e92b43d4f70b3f8c585e3bd7"
+        },
+        {
+          "id": "snail-chromatogram",
+          "sourceImage": "sources/snail-chromatogram.6eb03d82d232.png",
+          "sha256": "6eb03d82d2329a74b11e345e3f6db8c563f89660949099bdfa4ad901888ee60d"
+        },
+        {
+          "id": "primrose-chromatogram",
+          "sourceImage": "sources/primrose-chromatogram.0bea4afe3cbf.png",
+          "sha256": "0bea4afe3cbf02ab317cdf2e6ffa0ae3eec63e1e7b3743fc479316df01303076"
+        }
+      ],
+      "generationStages": [
+        {
+          "stage": "Original coherent own-five-reference taller nature-shaped paper arrangement",
+          "prompt": "Use case: stylized-concept. ONE original OPAQUE PORTRAIT phone wallpaper, PIGMENT PASSAGE, aspect1290x2796. The FIVE input images are OWN SUBJECT/MATERIAL REFERENCES, not edit targets: Image1 whole ginkgo fan with complete curved petiole; Image2 whole open-wing butterfly with all antennae/legs; Image3 whole kingfisher profile and short twig; Image4 whole left-facing garden snail with four tentacles and restrained shell spiral; Image5 whole five-lobed primrose sprig with two basal leaves. Preserve all five familiar complete silhouettes and their distinctive thin dry matte warm-white porous CELLULOSE CHROMATOGRAPHY PAPER. Their four broad UNEQUAL blue-green/olive/yellow/amber absorbed pigment zones have irregular concentrated feathered advancing fronts, directional capillary fingers, lighter tails and broad UNSTAINED OPAQUE warm-white paper intervals. No real animal or plant tissue, photograph inside a leaf, watercolor brush illustration, regular painted stripes, folded origami/card sculpture, surface paint, marbling, thread/metal, rainbow interference, laboratory diagram. Pigment fronts are an artistic chromatography interpretation, not analytical results, measuredRf or pigment identification.\nCreate ONE coherent airy nature-shaped paper garden arrangement in a shared shallow plane and common restrained soft light, with gentle tiny contact shading on a continuous deep woodland teal field. Whole ginkgo fan rises upper-left, whole perched kingfisher and short twig upper-right, whole primrose sprig grows through lower-right, butterfly hangs in open middle-left, whole snail travels low across the base. Each full natural silhouette has its own breathing room; only inconspicuous stems may touch. No subject covers another wing, leaf, bill, antenna, tentacle or petal. Keep thin paper edge and cellulose pores, never make thick 3D wildlife. Do not arrange five equal icons/cards/tiles/contact-sheet panels; use differing angles, organic spacing and a rising botanical arc without fusing their anatomy into a hybrid organism.\nFULLER AND TALLER natural group occupies about84percent WIDTH x8to92percent and about46percent HEIGHT y35to81percent. Real vertical presence, no tiny central island. Every object/endpoint and shadow is wholly INSIDE the frame, at least8percent side margins. Top33percent and bottom18percent quiet empty continuous deep forest teal field #162C2A with subtle #29443E tonal depth, no gradients with bright corners, dense texture, horizon/table edge, backing rectangle, landscape scenery, stage/plinth, vase, scattered paper/debris, lab apparatus, labels, ruler/graph, new organisms, glow, vignette or bokeh. Warm paper and separated pigment fronts stay readable against muted teal. All five subjects and every endpoint retained in1290x2796,1179x2556 and750x1334 centre crops. No writing/numbers/UI/readings/logos/frame or phone mockup.",
+          "references": [
+            {
+              "id": "ginkgo-chromatogram",
+              "sourceImage": "sources/ginkgo-chromatogram.a939f6137417.png",
+              "sha256": "a939f613741757a335d64c06247e12affecfa5ed71f98ed628a1223588f1d467"
+            },
+            {
+              "id": "butterfly-chromatogram",
+              "sourceImage": "sources/butterfly-chromatogram.624dff217094.png",
+              "sha256": "624dff2170943298c7b44647a3f792c298b4bf3321ea57ac5f318893c92e375b"
+            },
+            {
+              "id": "kingfisher-chromatogram",
+              "sourceImage": "sources/kingfisher-chromatogram.fc9087713434.png",
+              "sha256": "fc9087713434ba92d01adda705956c9b0a45fd32e92b43d4f70b3f8c585e3bd7"
+            },
+            {
+              "id": "snail-chromatogram",
+              "sourceImage": "sources/snail-chromatogram.6eb03d82d232.png",
+              "sha256": "6eb03d82d2329a74b11e345e3f6db8c563f89660949099bdfa4ad901888ee60d"
+            },
+            {
+              "id": "primrose-chromatogram",
+              "sourceImage": "sources/primrose-chromatogram.0bea4afe3cbf.png",
+              "sha256": "0bea4afe3cbf02ab317cdf2e6ffa0ae3eec63e1e7b3743fc479316df01303076"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Less abstract recognizable nature: whole ginkgo fan, open-wing butterfly, perched kingfisher, garden snail and primrose sprig. Five distinct familiar silhouettes cut from thin matte opaque cellulose chromatography paper, broad unequal separated pigment fronts with fine directional feathering and warm-white paper gaps. Quiet teal Artwork corners, separate small natural fan-leaf native-header detail and one fuller/taller own-five-reference wallpaper. Artistic chromatography interpretation, not authentic analytical samples, measuredRf data or pigment identification.",
+  "conceptReferences": [
+    {
+      "url": "https://www.chem.purdue.edu/teacher/table_of_contents/UVVUS/UVVIS.Plant%20Pigments_CH.pdf",
+      "scope": "Primary university teaching text: paper capillarity carries soluble plant pigments at different rates and produces separated bands. General mechanism only; no external image or experimental protocol used."
+    },
+    {
+      "url": "https://edu.rsc.org/mixtures-and-separation/leaf-chromatography/389.article",
+      "scope": "Primary RSC search text supports leaf-pigment paper chromatography. Direct page returned405; no unseen page/image used."
+    },
+    {
+      "url": "https://edu.rsc.org/in-search-of-solutions/pigments/1193.article",
+      "scope": "Primary RSC text on extracting plant pigment and differing rates of movement on paper; generic process only, no image or artist-style input."
+    }
+  ],
+  "conceptReferenceScope": "Primary Purdue/RSC TEXT only for general capillary pigment separation, no external images. Actual six-source and accepted published-selector neighbors compared at full17085; first ginkgo accepted unchanged before expansion.",
+  "unselectedHistory": [],
+  "artworkOwnStudyReferenceHashesMatched": 0,
+  "wallpaperReferenceUsesAcrossStages": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "intendedMinAppVersion": "1.0.44",
+  "selectedFirstPrototypeSha256": "a939f613741757a335d64c06247e12affecfa5ed71f98ed628a1223588f1d467",
+  "newImageOutputs": 6,
+  "noCreativeArtEdits": true
+}
