@@ -1,0 +1,142 @@
+{
+  "theme": "c-spectrogram-labyrinth",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.36d9b5f38dfe.png",
+      "sourceSha256": "36d9b5f38dfe4144e9b51a259a0f1bd0213c62261024b5d0d6de03dbda44a54c",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "9e3d4facf45fe16c9dd0639b406278f0dfb12dcc83cf0d548bde90c85dc35bb5",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2964283,
+      "processing": "Whole composition fitted to 1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze SPECTROGRAM LABYRINTH. Medium: flat raster time-frequency spectrogram imaging, impossible acoustic events reconstructed as thousands of finely resolved horizontal frequency-bin segments, staccato rectangular pixels, comb harmonics and sharply bounded silence channels. Inferno thermal palette: deep burgundy shadows, vermilion midbands, hot amber and tiny bone-white amplitude peaks. A strict two-dimensional detector-map image, subtle digital sampling grain. The bin lattice and segmented horizontal harmonic bands MUST be visible. No smooth painted lines, no curves drawn as continuous strokes, no 3D objects, material, gradients on surfaces, reflections, sculpture, interference rainbows, particle trails, smoke, textile or physical craft. No audio equipment, conventional music icon, waveform graph, text, axes, labels, digits, UI, fixed readings, logos or watermark. This is original fictional signal imagery, not an actual recording. Asset: ONE tall portrait phone wallpaper1290x2796. Near-black red-wine field, top third quiet and almost empty. Across the lower two-thirds, three enormous broken formant bands rise into impossible stepped gates and dense hanging harmonic teeth, with deep vertical silence fjords splitting the thermal raster. Brightest bone-white microbins concentrated low and right. A smaller diagonal chirp delta crosses behind the main formation, with broad unlit gaps. Full-bleed map, no borders, no mockup, opaque background.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    },
+    {
+      "id": "formant-citadel",
+      "sourceImage": "sources/formant-citadel.745697f936a3.png",
+      "sourceSha256": "745697f936a34515fbdffdcd183d02619e0e14a60fc7d7e9e4df55c43821c2c5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/formant-citadel.3809d762945a.png",
+      "sha256": "3809d762945a9bd707c02cd4a619a30596b432065a31c71714bb1b12c104e3ad",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 919198,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze SPECTROGRAM LABYRINTH. Medium: flat raster time-frequency spectrogram imaging, impossible acoustic events reconstructed as thousands of finely resolved horizontal frequency-bin segments, staccato rectangular pixels, comb harmonics and sharply bounded silence channels. Inferno thermal palette: deep burgundy shadows, vermilion midbands, hot amber and tiny bone-white amplitude peaks. A strict two-dimensional detector-map image, subtle digital sampling grain. The bin lattice and segmented horizontal harmonic bands MUST be visible. No smooth painted lines, no curves drawn as continuous strokes, no 3D objects, material, gradients on surfaces, reflections, sculpture, interference rainbows, particle trails, smoke, textile or physical craft. No audio equipment, conventional music icon, waveform graph, text, axes, labels, digits, UI, fixed readings, logos or watermark. This is original fictional signal imagery, not an actual recording. Asset: ONE separate square1024x1024 pure-art widget. Subject FORMANT CITADEL: a roughly tall stepped block of closely stacked horizontal hot frequency strips, three deep unequal vertical silence channels cut through it and one narrow detached tower floats high left. Uneven fortified skyline silhouette, entirely small raster bins, no actual building or stone. Clear blocky mass with sharply readable openings. Whole event centred with15%transparent margins. Real alpha outside and through silence channels, no black backing, tile, floor, drop shadow or rectangular image panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 588056
+    },
+    {
+      "id": "chirp-fork",
+      "sourceImage": "sources/chirp-fork.adfef75d9cb3.png",
+      "sourceSha256": "adfef75d9cb3d535db11a5c2c869a2c450a7f1946300cbc8913608a42108194c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/chirp-fork.7e903920e719.png",
+      "sha256": "7e903920e719da19d326559c40174e422420e4fcdfcc5695a56178a7c5778ba0",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 348505,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze SPECTROGRAM LABYRINTH. Medium: flat raster time-frequency spectrogram imaging, impossible acoustic events reconstructed as thousands of finely resolved horizontal frequency-bin segments, staccato rectangular pixels, comb harmonics and sharply bounded silence channels. Inferno thermal palette: deep burgundy shadows, vermilion midbands, hot amber and tiny bone-white amplitude peaks. A strict two-dimensional detector-map image, subtle digital sampling grain. The bin lattice and segmented horizontal harmonic bands MUST be visible. No smooth painted lines, no curves drawn as continuous strokes, no 3D objects, material, gradients on surfaces, reflections, sculpture, interference rainbows, particle trails, smoke, textile or physical craft. No audio equipment, conventional music icon, waveform graph, text, axes, labels, digits, UI, fixed readings, logos or watermark. This is original fictional signal imagery, not an actual recording. Asset: ONE separate square1024x1024 pure-art widget. Subject CHIRP FORK: three unequal diagonally rising fans of tiny horizontal spectrogram dashes branch from a compact low collision patch, longest fan leans right, shortest ends in two disconnected square sparks; a thin negative diagonal slice cuts through the middle fan. Broad three-pronged Y silhouette with sharp stepped edges. No actual fork, animal, feather or solid object. Complete event centred with15%transparent margins. Real alpha in all empty gaps and outside; no backing, tile, floor, shadow or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 895201
+    },
+    {
+      "id": "silence-maze",
+      "sourceImage": "sources/silence-maze.593eb8627df5.png",
+      "sourceSha256": "593eb8627df5d6c6d8ea76fbec65b443d5deff1ed4d1227a41c282b8a0c65216",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/silence-maze.c9a3b52960ae.png",
+      "sha256": "c9a3b52960aebd6f4d259e4e0487bdd8eb209d81061f82173204000317f38cbc",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 806412,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze SPECTROGRAM LABYRINTH. Medium: flat raster time-frequency spectrogram imaging, impossible acoustic events reconstructed as thousands of finely resolved horizontal frequency-bin segments, staccato rectangular pixels, comb harmonics and sharply bounded silence channels. Inferno thermal palette: deep burgundy shadows, vermilion midbands, hot amber and tiny bone-white amplitude peaks. A strict two-dimensional detector-map image, subtle digital sampling grain. The bin lattice and segmented horizontal harmonic bands MUST be visible. No smooth painted lines, no curves drawn as continuous strokes, no 3D objects, material, gradients on surfaces, reflections, sculpture, interference rainbows, particle trails, smoke, textile or physical craft. No audio equipment, conventional music icon, waveform graph, text, axes, labels, digits, UI, fixed readings, logos or watermark. This is original fictional signal imagery, not an actual recording. Asset: ONE separate square1024x1024 pure-art widget. Subject SILENCE MAZE: a compact asymmetric rectangular spiral of spectrogram bins encloses a large off-centre transparent square; the spiral is broken in two places, its lower-left arm extends outward into a short comb of five unequal harmonic teeth. Chunky open square maze silhouette, distinct sparse dark channels inside the bright band. No solid path, object or frame; visibly a noisy detector event. Complete event centred with15%transparent margins. Real alpha around and through silence; no backing, tile, floor, shadow or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 616708
+    },
+    {
+      "id": "subharmonic-delta",
+      "sourceImage": "sources/subharmonic-delta.c30347ae4408.png",
+      "sourceSha256": "c30347ae4408672a1da95ea5ac315e3bd5504052863f0c5d6c4036ee60ac0592",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/subharmonic-delta.07f5a45453e0.png",
+      "sha256": "07f5a45453e0cb378b60dd606e36968a18d3c9d8115c816f7fa13cbd76b68f38",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 608352,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze SPECTROGRAM LABYRINTH. Medium: flat raster time-frequency spectrogram imaging, impossible acoustic events reconstructed as thousands of finely resolved horizontal frequency-bin segments, staccato rectangular pixels, comb harmonics and sharply bounded silence channels. Inferno thermal palette: deep burgundy shadows, vermilion midbands, hot amber and tiny bone-white amplitude peaks. A strict two-dimensional detector-map image, subtle digital sampling grain. The bin lattice and segmented horizontal harmonic bands MUST be visible. No smooth painted lines, no curves drawn as continuous strokes, no 3D objects, material, gradients on surfaces, reflections, sculpture, interference rainbows, particle trails, smoke, textile or physical craft. No audio equipment, conventional music icon, waveform graph, text, axes, labels, digits, UI, fixed readings, logos or watermark. This is original fictional signal imagery, not an actual recording. Asset: ONE separate square1024x1024 pure-art widget. Subject SUBHARMONIC DELTA: a broad low triangular fan of densely stacked horizontal comb bands, widest at left and narrowing sharply into a single pixelated tail to the right. Four jagged silence rifts divide the fan into unequal forks; one thin detached band hovers above. Wide triangular silhouette with many sharply binned teeth, no actual sail, shell, ribbon or object. Whole event centred with15%transparent margins. Real transparent alpha around and in silence gaps; no backing, tile, floor, shadow or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 776184
+    },
+    {
+      "id": "resonance-hook",
+      "sourceImage": "sources/resonance-hook.921d05635a7c.png",
+      "sourceSha256": "921d05635a7c5e6a1cc189bd702703b7384f653fbdfe9d65bf67b5573a6dce93",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/resonance-hook.4d70053bc67d.png",
+      "sha256": "4d70053bc67d50ae6394c5d915ab73cfdc2330ee36302906c0f524cdde22e14a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 364906,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze SPECTROGRAM LABYRINTH. Medium: flat raster time-frequency spectrogram imaging, impossible acoustic events reconstructed as thousands of finely resolved horizontal frequency-bin segments, staccato rectangular pixels, comb harmonics and sharply bounded silence channels. Inferno thermal palette: deep burgundy shadows, vermilion midbands, hot amber and tiny bone-white amplitude peaks. A strict two-dimensional detector-map image, subtle digital sampling grain. The bin lattice and segmented horizontal harmonic bands MUST be visible. No smooth painted lines, no curves drawn as continuous strokes, no 3D objects, material, gradients on surfaces, reflections, sculpture, interference rainbows, particle trails, smoke, textile or physical craft. No audio equipment, conventional music icon, waveform graph, text, axes, labels, digits, UI, fixed readings, logos or watermark. This is original fictional signal imagery, not an actual recording. Asset: ONE separate square1024x1024 pure-art widget. Subject RESONANCE HOOK: a thick broken C-shaped event cluster, narrow downturned top tip, heavy rising lower hook and two short transverse harmonic bridges on only the right side. Composed entirely of horizontal frequency-bin segments arranged into a jagged bowed envelope, not a smooth drawn crescent. Big open centre and a detached three-bin echo below. No solid object, feather or animal. Whole event centred with15%transparent margins. True alpha outside and in all silence; no backing, tile, floor, shadow or image panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 872608
+    }
+  ],
+  "published": false
+}
