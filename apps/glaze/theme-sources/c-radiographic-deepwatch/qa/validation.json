@@ -1,0 +1,120 @@
+{
+  "id": "c-radiographic-deepwatch",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "lantern-ray",
+    "hinge-crab",
+    "bell-keeper",
+    "siphon-colony",
+    "coil-eel"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.0a1170d9.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 12476,
+    "sha256": "0a1170d94c563cf7f61881299fe3886a026f8823825fed93bcc0750294af628f",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "artworkCombination": "Viewed wallpaper and all five artworks together at two widget-like sizes. Kite-wing ray, compact split-shield crab, tall pressure observatory, chambered siphon colony and long open-S eel have distinct tangible silhouettes. Internal cartilage/chambers/mechanisms and soft transmission density unify the monochrome radiographic world.",
+    "transparency": "Viewed first ray at full production size composited on palette tile, and all five on palette in the combination sheet. No opaque backing or visible frame. Faint source alpha haze does not obscure silhouettes.",
+    "nativeCombination": "Viewed all nine actual app-renderer native previews. Observatory and lantern-ray identities remain legible; live hands, charge column and calendar readings are clear in all sizes.",
+    "sourceFraming": "All high-opacity subject bounds inside source frames. Edge alpha max: ray/crab/bell 1, siphon 2, eel 5 out of 255. All extremities complete.",
+    "scope": "Scratch-only native identity insertion for local real app planner/renderer. Actual coordinator registry integration and device qualification remain separate."
+  },
+  "packTestEvidence": "Unchanged builder pipeline has 47 distinct pack test cases passed across initial suite and Pillow-enabled WebP reruns. This theme independently passes real builder, actual app parsers/planner/renderer, all image decoding, hashes/provenance and no selected orphan checks."
+}

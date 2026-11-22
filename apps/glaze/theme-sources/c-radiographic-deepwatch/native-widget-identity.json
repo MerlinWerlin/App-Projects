@@ -1,0 +1,19 @@
+{
+  "theme": "c-radiographic-deepwatch",
+  "recipe": [
+    "reel",
+    "cRadioBell",
+    "cRadioRay",
+    "staples",
+    "needle",
+    "column",
+    "band"
+  ],
+  "art": {
+    "cRadioBell": "M 28 48 L 28 35 Q 28 10 51 8 Q 74 10 74 35 L 74 48 Z M 33 48 L 30 67 L 72 67 L 69 48 M 51 10 L 51 57 M 32 29 L 70 29 M 29 43 L 73 43 M 40 22 L 41 49 M 62 22 L 61 49 M 44 33 Q 51 27 58 33 L 58 42 Q 51 49 44 42 Z M 37 67 L 21 87 L 11 94 L 29 94 L 44 71 M 64 67 L 77 87 L 91 94 L 73 94 L 57 72 M 50 68 L 50 86 L 43 92 L 59 92 M 25 36 L 17 28 Q 6 35 10 48 L 24 42 Z M 76 49 Q 93 42 93 52 Q 93 61 76 57 M 76 59 Q 91 54 91 64 Q 91 70 76 67 M 77 34 L 87 26 L 96 32 L 96 40",
+    "cRadioRay": "M 44 46 Q 26 22 4 27 Q 11 47 17 66 Q 28 57 42 56 M 56 46 Q 72 10 95 10 Q 93 37 84 64 Q 72 54 58 55 M 42 41 Q 51 28 59 42 L 58 58 Q 50 67 41 57 Z M 47 45 L 47 45 M 54 44 L 54 44 M 48 38 Q 41 12 30 15 Q 22 17 23 31 M 23 30 Q 13 36 23 44 Q 33 37 23 30 Z M 49 62 Q 64 77 80 86 L 96 90 M 80 86 L 89 98 M 80 86 L 98 98 M 16 34 L 39 47 M 21 53 L 39 51 M 82 22 L 61 45 M 82 47 L 61 51"
+  },
+  "direction": "Abyssal radiographic observation ecology. Dome observatory and kite-wing lantern-ray paths echo internal braces and skeletal supports. Reel dial, staple markers, needle hands, pale column charge gauge and band calendar.",
+  "values": "Existing live Clock/Battery/Calendar mechanisms; no raster readings.",
+  "registryIntegration": "Coordinator integrates original data-only native identity descriptor."
+}

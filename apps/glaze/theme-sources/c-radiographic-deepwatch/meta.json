@@ -1,0 +1,16 @@
+{
+  "name": "Radiographic Deepwatch",
+  "mood": "Chambered creatures and a pressure observatory revealed through a quiet abyssal radiograph.",
+  "tags": [
+    "radiography",
+    "transmission",
+    "abyssal",
+    "tangible-world"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity paths. Fictional non-diagnostic transmission world.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. GLAZE RADIOGRAPHIC DEEPWATCH, a tangible invented abyssal observation ecology imaged by TRANSMITTED X-RAY ABSORPTION. MEDIUM: exquisite monochrome positive absorption radiograph, bone-ivory and silver-gray densities. Soft translucent tissue envelopes surround crisp overlapping internal cartilage struts, perforated trabecular supports, hollow chambers and articulated joints. The dense internal structures are brightest ivory; low-density tissue is a dim gray transparent haze. Overlapping structures accumulate density as in an authentic flattened transmission projection. Show the whole tangible subject with recognizable anatomy or mechanism, including readable hollow interior construction. No visible-light surface, reflected lighting, specular shine, glass material, chrome, wireframe, engraved lines, ordinary illustration, clay render or sculptural photograph. No coloured glow, emitted heat, rainbow, diffraction fringes, scanlines, point-cloud dots, particle trails, ultrasound speckle or medical text. Fictional nonhuman structures, not a real patient or measured diagnostic image. No human bones, injury or gore. No letters, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. ",
+  "addedAt": "2026-11-22",
+  "category": "Abstract & Art"
+}
