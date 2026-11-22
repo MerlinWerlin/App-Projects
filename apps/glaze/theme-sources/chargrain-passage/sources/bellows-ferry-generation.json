@@ -1,0 +1,18 @@
+{
+  "id": "bellows-ferry",
+  "prompt": "CHAR GRAIN PASSAGE / chargrain-passage for Glaze. ONE original 1024x1024 pure artwork of a tangible invented transit construction. Flat hand PYROGRAPHY burned into PALE BIRCH VENEER: dark sepia scorched contours, fine hot-point stippled shading, uneven burnt-line thickness, irregular heat-bloom halos, pale wood fibres and continuous warm horizontal grain visible THROUGH the drawing, sparse chalk-white rub highlights. Treat the entire subject as a flat burn-drawn illustration on the image plane, not carved wooden objects, marquetry/inlay, laser-cut model, paper etching, ink print, pencil drawing, CGI or3D product render. Palette pale birch #E8D9B7, deep charcoal-brown #38251D, warm scorch #93623D and chalk #F4EADB only. Strong simplified silhouette, readable useful construction and access, distinct central subject occupying central65% with at least16% genuine transparent alpha around all sides and through large voids. Woodgrain is retained only within pale illustrated subject fields; no rectangular wooden plaque or backing, no floor/scenery, border, frame, text, letters, symbols/numbers, signs, clocks/dials, date/battery/weather readings, logos, people or UI. Subject BELLOWS FERRY: a very LOW LONG BOAT with a short rounded passenger cabin at EACH END and an expandable ACCORDION HULL linking them through the middle. Five large alternating pale-birch and dark-burnt zigzag bellows pleats clearly expand fore-to-aft like a concertina, supported by visible diagonal hinged braces on the sides. The front cabin is wider and has one curved prow, open two-arch shelter and a short boarding plank; rear cabin is tiny with a single big steering sweep. A low continuous handrail connects along the tops of the bellows, simple bench visible inside forward cabin. No smoke, steam motor, sail, waves/background, instruments, wheels or walking legs. Wide stepped elongated silhouette with deep valleys between accordion folds, visibly a useful ferry that changes capacity for crowded crossings, not a generic boat or musical accordion. All prow, steering sweep, boarding plank and folds contained within true alpha margin. Entire image hand-burned contours/stipple with heat fringes and underlying birch grain, no literal carved wooden toy.",
+  "tool": "built-in image_gen",
+  "source": "sources/bellows-ferry.42c75ab6.png",
+  "sourceSha256": "42c75ab602dc6265e34c4543d4def7eec44982af1ccf1dc548a89ec31baa364e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/bellows-ferry.bbb29f8a.png",
+  "sha256": "bbb29f8a86c6b43fc0b1cb9abe4a7bba631de499e855e2cb39414255cecd7d5b",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

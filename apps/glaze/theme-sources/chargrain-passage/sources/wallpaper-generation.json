@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "ONE original tall1290:2796 wallpaper for GLAZE CHAR GRAIN PASSAGE / chargrain-passage. An elaborate tangible invented public transit crossing in lower42%: a terraced spiral-stair caravan rolls between two huge offset spoked wheels, a long articulated walking causeway approaches it across a shallow ravine, an expandable accordion-hulled ferry rests below, and a cable-trolley with an exposed counterweight hangs beside a cliff station. Coherent purposeful constructions, imaginative but structurally understandable wheels, decks, joints, access stairs, cables and hinges; no generic vehicle collection or abstract geometry. Medium: hand PYROGRAPHY burned directly onto one continuous pale BIRCH VENEER image plane. Very dark sepia scorched contours, hot-point stippled shading, irregular heat-bloom halos, varied burnt line thickness, fine warm horizontal natural wood grain passes continuously underneath the whole drawing, a few chalk-white rubbed highlights. Flat burn-drawn illustration viewed straight-on, not carved wooden sculptures, marquetry/inlay, laser-cut cutouts, pencil on paper, paper etching, ink print, digital3D render or photoreal model. Warm high-key pale birch #E8D9B7, deep charcoal-brown #38251D, warm scorch #93623D, small chalk #F4EADB. Upper55% nearly empty light birch grain surface for dark app icons, subtle natural knots/pores only, no burned objects there. Keep all important transit forms in lower45%, calm wide spacing and strong silhouettes. No text, labels, letters, numbers, rail signs, gauges/dials/readings, time/date/battery/weather values, UI, logo, watermark, border, frame, phone mockup or collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.58a2773b.png",
+  "sourceSha256": "58a2773be2f71ed7d207a7593a404acf0efd72393ddfbc4dc4eabfca646b8ca0",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "b69521ba5f7b81d577b1b43207954bfe19fe666f344fa31bcd6433a9a559cf1a",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
