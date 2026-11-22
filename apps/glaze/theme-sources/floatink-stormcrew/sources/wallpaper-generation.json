@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Layout-only composition repair to this Floatink Stormcrew wallpaper. Preserve the SAME five full adult weather-maintenance workers, poses, useful tools, marbled indigo/vermilion/ivory floating-ink paper print style and fine rice-paper fibres. SCALE DOWN and centre the ENTIRE CREW AND EVERY PROP to fit CENTRAL62%WIDTH andBETWEEN35%AND73%HEIGHT. Restore any currently edge-touching portions so both ends of the service walkway, sweeper feet/handle, kite/sail tips, courier bowls/yoke and all hands/feet are COMPLETE with generous quiet paper around. Upper32% and bottom24% clean matching pale oyster fibrous paper; no new motifs. One intact smaller connected work group safe for1290x2796 and750x1334 centre crops. Keep FLAT MATTE PRINTED PAPER, irregular fine nested ink rings/broken tide lines and ink pooling rather than glossy3D clay/marble bands. No new people, extra limbs, backdrop panel/border/frame, letters, numbers, UI or shadow. Composition scale/position correction only; never crop props to force the fit.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.8e636e19.png",
+  "sourceSha256": "8e636e194d98b701a152068ca2eb4540f63443a3efa052e479ed64f9aed16121",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "ed789e6ecdbf08ba0406e234d64bf5dc2e92a316141a27225ee945090d301d3e",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.b0c40a75.png",
+    "sha256": "b0c40a754c61ef669ca7ccece900a3cf16c91b77ff364a92c34fb6e0fc5328c6"
+  }
+}

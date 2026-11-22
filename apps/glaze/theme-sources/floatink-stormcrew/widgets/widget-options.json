@@ -1,0 +1,62 @@
+[
+  {
+    "id": "kite-rig-mender",
+    "kind": "art",
+    "image": "kite-rig-mender.549312ad.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Kite Rig Mender"
+  },
+  {
+    "id": "bellows-cloud-sweeper",
+    "kind": "art",
+    "image": "bellows-cloud-sweeper.87102b83.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bellows Cloud Sweeper"
+  },
+  {
+    "id": "rain-chain-rigger",
+    "kind": "art",
+    "image": "rain-chain-rigger.269a0d24.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Rain Chain Rigger"
+  },
+  {
+    "id": "wind-sail-tender",
+    "kind": "art",
+    "image": "wind-sail-tender.34eeadf5.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Wind Sail Tender"
+  },
+  {
+    "id": "dew-bowl-courier",
+    "kind": "art",
+    "image": "dew-bowl-courier.83c18ec5.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Dew Bowl Courier"
+  }
+]

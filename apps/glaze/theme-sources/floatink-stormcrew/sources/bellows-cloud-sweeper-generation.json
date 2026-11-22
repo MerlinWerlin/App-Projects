@@ -1,0 +1,18 @@
+{
+  "id": "bellows-cloud-sweeper",
+  "prompt": "FLOATINK STORMCREW for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA: an inventive ADULT community weather-maintenance worker, natural human proportions stylised for clear useful task, no child/toy/mascot. Physical PRINT medium SUMINAGASHI-style FLOATING-INK WATER-MARBLING transferred onto thin RICE PAPER. Every clothing/tool shape is FLAT MATTE PRINTED PAPER filled with irregular nested fine INK RINGS, blown broken tide lines, a few ink pooling edges, visible delicate paper fibres and slightly irregular dry paper contour; rings naturally bend across the garment/tool forms, no ordinary digital gradient shading. Ink indigo #3B4F67, vermilion #C5674B, oyster ivory #DFE1D5, charcoal ink #243744, restrained brass #A99568. Bold solid silhouette first with restrained ring density so pose stays readable at85px. Thin flat paper print, no3D marble stone, polished agate/mineral, smooth clay/resin figure, quilt/plush, wire/thread, wax, optical/radiographic/spectral glow or digital interference diagram. Full complete worker/props small central64%, at least18% genuine alpha margin on EVERY side; large open gaps between limbs/tools truly transparent. No rectangular paper sheet/backing/mat, layered paper collage, ground/scenery/extra props, halo/glow/shadow, text/letters/numbers/signs, clock/date/battery/weather values, UI, logo or signature. No weapons. Subject BELLOWS CLOUD SWEEPER: one short broad ADULT man in a low deeply braced pushing stance at LEFT, natural adult face with small beard, BOTH hands gripping the two handles of an enormous low WHEELED ACCORDION BELLOWS at right. The bellows has TWO open ribbed end frames,6large angular paper pleats and TWO small spoked wheels, a long soft CURVED flattened wind-guiding nozzle bends upward then down-right like a broad scoop, a practical gentle air-moving workshop tool rather than cannon/weapon. Worker wears loose indigo/vermilion marbled-paper overalls with rolled sleeves and sturdy wrapped shoes, both bent legs/feet visible. A short plain hose connects rear handles to bellows frame; no clouds/smoke hiding geometry and no separate terrain. Very wide low horizontal silhouette, clear human effort and engineering purpose. Every worker/tool shape visibly FLAT MATTE fine floating-ink rings transferred onto fibrous rice-paper, not3Dcloth/marblepottery. Entire nozzle, handles, hands, feet and wheels inside ample true alpha margin.",
+  "tool": "built-in image_gen",
+  "source": "sources/bellows-cloud-sweeper.d4e9b5ff.png",
+  "sourceSha256": "d4e9b5ffca4c3781f4e63b4348ef9679969ddd1b70cd42d1ad5d25f50e151b49",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "selectedFile": "widgets/bellows-cloud-sweeper.87102b83.png",
+  "sha256": "87102b834a8c13cf042f9f6948ab9fcace394164c8dfda2b7c25c8ee2d34198c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
