@@ -43,6 +43,32 @@ test('Android recovery never acknowledges pending, unknown, or already acknowled
   expect(await createPurchaseProvider(f.api,()=>NOW,[PLUS],'android').refresh()).toMatchObject({plus:true});
   expect(f.api.finishTransaction).not.toHaveBeenCalled();
 });
+test('Android uses the displayed lifetime offer token even when Play returns other offers first', async () => {
+  const f = fake();
+  const lifetime = { purchaseOptionIdAndroid: 'lifetime', displayPrice: '$2.99', currency: 'AUD', offerTokenAndroid: 'lifetime-token' };
+  f.api.fetchProducts = async () => [{
+    id: PLUS, displayPrice: '$1.49', currency: 'AUD', discountOffers: [
+      { ...lifetime, id: 'discount', displayPrice: '$1.49', offerTokenAndroid: 'discount-token' },
+      { ...lifetime, purchaseOptionIdAndroid: 'rental', rentalDetailsAndroid: {}, offerTokenAndroid: 'rental-token' },
+      lifetime,
+    ],
+  }];
+  f.api.requestPurchase = jest.fn(async () => ({ productId: PLUS, purchaseState: 'purchased' }));
+  const store = createPurchaseProvider(f.api, () => NOW, [PLUS], 'android');
+  expect(await store.price()).toBe('A$2.99');
+  expect(await store.buy()).toMatchObject({ ok: true, access: { plus: true } });
+  expect(f.api.requestPurchase).toHaveBeenCalledWith(expect.objectContaining({
+    request: expect.objectContaining({ google: { skus: [PLUS], offerToken: 'lifetime-token' } }),
+  }));
+});
+
+test('Android cannot launch an ambiguous purchase when Play returns a price without a lifetime token', async () => {
+  const f = fake();
+  const store = createPurchaseProvider(f.api, () => NOW, [PLUS], 'android');
+  expect(await store.price()).toBeNull();
+  expect(await store.buy()).toMatchObject({ ok: false, reason: 'unavailable' });
+  expect(f.api.requestPurchase).not.toHaveBeenCalled();
+});
 test('missing store, connection failure and missing product never unlock', async()=>{
   expect(await createPurchaseProvider(null).buy()).toMatchObject({ok:false,reason:'unavailable'});
   expect(await createPurchaseProvider(null).refresh()).toBeNull();
