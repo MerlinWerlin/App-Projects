@@ -1,0 +1,205 @@
+{
+  "id": "c-redox-meadow",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "oak-spiral-fronts",
+    "bullfinch-wavefronts",
+    "hare-wavefronts",
+    "iris-wavefronts",
+    "snail-wavefronts"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.db58dbc2.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 14400,
+    "sha256": "db58dbc28d77e8e5c4e9cc8faceb1b30d4d7b3f10f52284b04ed5c3d6d32d920",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "c9a1638ff4c4ab39ebe5fe4c47abe5bf7bc14fb4724cdd0c42af6eb32d6c5913"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed all five selected full originals together, source170/85 and all five actual encoded85px. Whole oak/petiole, compact bullfinch/bill/eye/two feet/twig/leaf, resting hare/two ears/coherent paws/tail, whole iris/three falls/standards/stalk/two leaves and garden snail/shell/two upper/two lower feelers are distinct recognizable nature silhouettes. Coherent flat filled indigo/terracotta soft concentration fields, two/three unequal open spiral cores and terminating seams. First oak unchanged. Bird/hare initial vector-like outputs retained unselected and each corrected exactly once using its own original and own oak surface reference; iris/snail independent new originals. No creative code/alpha editing. Static artistic wave imagery, no measured chemistry or actual experiment claim. Lane review under original HUMAN messaging-unavailable fallback; coordinator material review pending, no Jared artwork approval implied.",
+    "wallpaper": "Viewed all three actual encoded1290x2796,1179x2556,750x1334 phone crops. Single fuller/taller connected oak-copse edge with whole hare, bullfinch/twig, iris, snail and prominent oak leaf; all key ears/bill/toes/tails/feelers/petals/leaf/petiole/twig ends remain visible inside each crop. Narrow actual side margins and larger/taller placement than numeric prompt targets disclosed: visually about94percent key-subject width/69percentheight/top16percent, soft bank extends to scene edges. Small plain stems/leaves connect the habitat; no separate five-card collage, no framing pullback/edit. Five exact own selected references, no outside images.",
+    "native": "Viewed all nine current coordinator-source SVG native layouts from the complete local candidate pack. Petal contour follows rounded oak lobes, original oak/three-open-front motifs in large fields, pearls marks, leaf hands, basin battery and folio calendar. Quiet small plain oak/petiole in compact headers, no tiny spiral diagram. Dark forest ink and pale sage/clay gradient readable. Nine layouts change with readings, battery null0/100 and ornament parser/roundtrip pass. Current restored shipped calendar/identity.outline; no retired fitting/containment/equal-size probes. Windows SVG evidence only, no Apple or installed-device claim. Peer integration review pending.",
+    "roundedArtworkCorners": "All35C themes/175actual encoded artworks retain every visiblealpha16 pixel with actual app gradient/Fit6percent/conservative20percent rounded mask; original rasters unchanged. Own five whole sources uniformly contained900within1024, all visible endpoint pixels retained and quiet sage corners. Viewed own five rounded tiles. UI layout model only."
+  },
+  "ownerSteeringReview": "Less abstract whole recognizable Nature: oak leaf, bird, hare, iris and snail, one visibly different broad open chemical-wave image language. Quiet matching Artwork fields and small plain natural oak native-header companion. Complete isolated source under original human messaging-unavailable fallback, no root material acceptance/Jared artwork approval/publication inferred.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-redox-meadow",
+    "backgroundStops": [
+      "#D6DFD0",
+      "#BFCDB7"
+    ],
+    "pieces": [
+      {
+        "id": "oak-spiral-fronts",
+        "sha256": "dad7b2fa1e226ef38c7e2d5d233f9dc42b9fd472f47e4042d177f1a7a62c1231",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "bullfinch-wavefronts",
+        "sha256": "f83fbb93e2776b38a9469bdf0406a26efa149d548f2885b50344380910bed9ce",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "hare-wavefronts",
+        "sha256": "25e9b7649f0f7f50eb5caf884368a89e80ace433542d8669cafe265f66a194c4",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "iris-wavefronts",
+        "sha256": "56e2446a6f665d72f2a1861bedf649806ba2c91c40918ad79884ae63cf1b3b78",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "snail-wavefronts",
+        "sha256": "a2acc13263a8c9ce48b8746bd94f9d85e2c6dd1e18f20d481e12af5537f58a6e",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "artworkOwnStudyReferenceHashesMatched": 4,
+  "packTestEvidence": "Actual offline builderv1:9assets/540324bytes/minApp1.0.44. Actual parsers/selectors5pure-art/9changingnative,ornament roundtrip,battery null0/100,Nature resolver,full selectedsource+normalized+encoded decode/dimensions/hashes,6selected/noorphans,5ownWP refs/5distinct,4own artinput uses/3distinct and2unselected histories match. All5full17085/encoded85/9native/3phonecrops/own5rounded viewed;35C/175encodedart retainalpha16. No shared edits/publication; peer material/integration review pending.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "selectedFirstPrototypeSha256": "cc3e25806e98a6ba577ec634d033fb0b1c2dfcfd7ffc1f7b6dea7e4323c43fdf",
+  "selectedFirstRawUnchanged": true,
+  "firstEncodedMatchesPriorCodecStudy": "dad7b2fa1e226ef38c7e2d5d233f9dc42b9fd472f47e4042d177f1a7a62c1231",
+  "fullSelectedSourceDecode": true,
+  "sourceOutputCount": 6,
+  "newImageOutputs": 8,
+  "unselectedGenerations": 2,
+  "creativeRasterEdits": 2,
+  "artworkOwnStudyDistinctReferenceImages": 3,
+  "wholeOriginalContainment": {
+    "targetSquare": 1024,
+    "containLimit": 900,
+    "crop": false,
+    "stretch": false,
+    "creativeCodeEditing": false,
+    "rawAlphaPreserved": true
+  },
+  "newThemePaletteContrast": {
+    "glyph": "#293C30",
+    "tile": "#BFCDB7",
+    "glyphTile": 7.083234714546853,
+    "text": "#203529",
+    "bg": "#D6DFD0",
+    "textBg": 9.562205136672763,
+    "minimum": 4.5,
+    "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\src\\core\\colour.ts",
+    "sourceSha256": "f3249f098d433a4a0277fab231da14699d3958c03402c80d44b24f535815d17e"
+  },
+  "coordinatorMaterialAccepted": false,
+  "coordinatorIntegrationPending": true,
+  "sourceCompletionAuthority": "Original HUMAN USER pasted brief: \"If messaging is unavailable, stay strictly inside your assigned territory and use new, collision-checked IDs.\" The same brief requires complete local source themes and continued work; no root material-approval requirement is present in that human brief. The normal peer-coordinator pre-expansion review remains unavailable because send/wait/list and explicit-local retries all fail. Applying human-authorized fallback for reversible isolated laneC authoring only; no root acceptance/Jared artwork approval or integration/publication authority inferred.",
+  "scope": "Actual local source/encoded pack validation, current coordinator SVG previews and rounded-layout simulation. Complete isolated source under original human messaging-unavailable fallback; peer material/integration review pending. No canonical/Swift/Apple/device qualification or publication claim."
+}

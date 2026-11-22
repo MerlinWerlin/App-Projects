@@ -1,0 +1,156 @@
+{
+  "theme": "c-redox-meadow",
+  "status": "Lane material review passed unchanged under original human messaging-unavailable fallback; coordinator review pending, no peer/Jared artwork approval implied.",
+  "sample": {
+    "id": "oak-spiral-fronts",
+    "selected": true,
+    "sourceSha256": "cc3e25806e98a6ba577ec634d033fb0b1c2dfcfd7ffc1f7b6dea7e4323c43fdf",
+    "prompt": "Use case: stylized-concept. ONE original Glaze transparent square pure-art asset, TIDELEAF MEADOW. ONE complete immediately familiar OAK LEAF: a broad elongated oval natural outline, FIVE PAIRS of rounded side lobes plus one rounded terminal lobe, clear shallow sinuses between the whole lobes, a subtly irregular organic edge and one complete short gently curved petiole. One connected SOLID FILLED leaf plane, no holes or internal alpha gaps. Gently diagonal leaf, stalk lower left and tip upper right. Full leaf and petiole contained inside central70percent square, at least15percent truly empty transparent exterior every side. Whole recognizable botanical silhouette FIRST, no generic branching seaweed/coral, radial fractal or abstract lobed blob.\nThe image language INSIDE the entire solid leaf is an original artistic CHEMICAL SPIRAL-WAVE CONCENTRATION IMAGE in a thin planar excitable medium. Quiet warm TERRACOTTA fields alternate with broad DEEP INDIGO concentration fronts. THREE UNEQUAL OPEN SPIRAL CORES in different regions of the leaf emit sweeping open curved wavefronts; neighbouring wavefronts meet and TERMINATE against each other along narrow irregular collision seams. A few broad incomplete arcs continue near the margin. Spiral centres unequal/off-centre, TWO wind one direction and ONE the other. Broad repeating crests have roughly consistent width, soft but crisp concentration interfaces and a restrained narrow pale-ivory leading edge on some fronts; a little soft tonal transition follows behind. Clear large OPEN spiral arms and collision boundaries must remain visible at85px. Entire leaf stays filled opaque terracotta/indigo signal, no cutout channels through wavefronts. Petiole is plain muted terracotta/indigo and whole.\nThis is a FLAT OVERHEAD concentration-image plane, no normal leaf skin/veins, directional lighting, embossed material, 3D form, glazed clay, glass, metallic foil, fabric, paper fibres or printing relief. No multicolour rainbow spectrum, photoelastic fringes, closed nested agate/geode rings around one shared centre, crystals, mineral rinds, concentric mandala, fine combed ink marbling, arbitrary paisley decoration, thin hatch engraving, four horizontal chromatography fronts, photographic grain filter, projected stripes across a 3D leaf, microscopic cellwall network, glow/neon, bubbles or crystal cells. Keep the image broad, calm, almost matte and continuous, not noisy or psychedelic rainbow. Core/spiral geometry and terminating collision seams supply the process, not a changed palette or decorative spiral line drawing.\nSTATIC ORIGINAL GENERATED ARTISTIC WAVE INTERPRETATION, not an actually obtained leaf-shaped chemical experiment, measured frame, specified reaction condition, exact chemistry/color mapping or validated simulation. No external visual input or named artist style. All leaf-body colours remain opaque. Genuine ALPHAZERO only OUTSIDE the exact whole leaf and petiole; no backing rectangle, slab, paper carrier, dish/plate, optical screen, floor/ground, cast background shadow, glow/halo/haze, border, labels, scale bar/ruler, axes, text/numbers, clock/date/battery/weather values, logos or UI. One beautiful intact natural leaf with generous transparent margins.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        139,
+        133,
+        1118,
+        1160
+      ],
+      "96": [
+        140,
+        134,
+        1117,
+        1159
+      ]
+    },
+    "edgeAlphaMaximum": 1
+  },
+  "neighbors": [
+    {
+      "theme": "c-isoclinic-menagerie",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-isoclinic-menagerie\\widgets\\trifurcate-sifter.bb8e8be196b0.png",
+      "sha256": "bb8e8be196b0fc5518d03d02cf109b4ce481d6273ca8ffddea1894486e11dc42"
+    },
+    {
+      "theme": "c-fraunhofer-masquerade",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fraunhofer-masquerade\\widgets\\cusp-herald.86ea40d84204.png",
+      "sha256": "86ea40d84204d19cf643a2d6253de7b3508d0bcd625228e33ec8e5e08b10dfde"
+    },
+    {
+      "theme": "floatink-stormcrew",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\floatink-stormcrew\\widgets\\kite-rig-mender.549312ad.png",
+      "sha256": "549312ad520840c1abd5a9df5c509d20ea1ba9dc281c1eed9540c2a6db679f2f"
+    },
+    {
+      "theme": "c-kerr-lowtide",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-kerr-lowtide\\widgets\\sea-lettuce.3b76b9ab82db.png",
+      "sha256": "3b76b9ab82dbb491d51eed699464076ae0cfaca2d1dd2d81b7beacda40c90a82"
+    },
+    {
+      "theme": "c-chromatogram-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chromatogram-grove\\widgets\\ginkgo-chromatogram.40c63e9def48.png",
+      "sha256": "40c63e9def4862b8b7efca2f5a63e56f07a9ccc0282e54a770f3c590b0aea65c"
+    },
+    {
+      "theme": "c-spectrogram-labyrinth",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-spectrogram-labyrinth\\widgets\\formant-citadel.3809d762945a.png",
+      "sha256": "3809d762945a9bd707c02cd4a619a30596b432065a31c71714bb1b12c104e3ad"
+    },
+    {
+      "theme": "c-ebsd-caravan",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-ebsd-caravan\\widgets\\saddleback-porter.5f160e27cdc5.png",
+      "sha256": "5f160e27cdc543d15ca1313e66be1c3f447a5950d8a04c58f3674c1a6d8cb774"
+    },
+    {
+      "theme": "c-fringe-projection-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fringe-projection-grove\\widgets\\split-vane-fern.15cbd4efa319.png",
+      "sha256": "15cbd4efa31911a69cadf64437da875d0d677be18f3a8137ec77172f97103ad0"
+    },
+    {
+      "theme": "c-confocal-bridgeworks",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-confocal-bridgeworks\\widgets\\ciliary-weir.f677428e62d8.png",
+      "sha256": "f677428e62d844e59f2de4907c46cb7bf5786629a655e5fcdc9e0c1c65273243"
+    },
+    {
+      "theme": "agate-apricot",
+      "optionId": "agate-slice",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-agate-slice.572cbc2b.webp",
+      "sha256": "572cbc2bad59c58cf41b334c0386c22908eede4d1fe910dbb9f64c03f640de4c",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\manifest.json",
+      "selectorProof": "outputs/redox-published-neighbor-selections.json"
+    },
+    {
+      "theme": "lumen-mosaic",
+      "optionId": "stained-glass-iris",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-stained-glass-iris.b4fa5f9e.webp",
+      "sha256": "b4fa5f9e4b9d22a38fde9bb651ec141412c8893c6fc56d9646a6b0249321d17e",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "selectorProof": "outputs/redox-published-neighbor-selections.json"
+    },
+    {
+      "theme": "blueprint-bureau",
+      "optionId": "compass-beetle",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\blueprint-bureau\\v9\\widget-compass-beetle.4c6ea18a.webp",
+      "sha256": "4c6ea18a0fef65c8d04675e66647c881b47419431eb2e834c3658385dd08e7f9",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\blueprint-bureau\\v9\\manifest.json",
+      "selectorProof": "outputs/redox-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "Whole familiar oak/petiole and solid filled natural silhouette. Three coarse open indigo/terracotta spiral cores, pale front edges and terminating seams clearly visible, no internal alpha channels. At85 assess distinction from Agate closed mineral bands, C1rainbow fringes, Floatink marbling and C33linear capillary fronts. ONE unselected first, root material gate pending before any correction/4/WP; no exact chemistry/color or real reaction claim.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "optical",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\redox-first-optical-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "chemical",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\redox-first-chemical-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "pattern",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\redox-first-pattern-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "published",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\redox-first-published-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    }
+  ],
+  "fallbackAuthority": "Original HUMAN USER pasted brief: \"If messaging is unavailable, stay strictly inside your assigned territory and use new, collision-checked IDs.\" The same brief requires complete local source themes and continued work; no root material-approval requirement is present in that human brief. The normal peer-coordinator pre-expansion review remains unavailable because send/wait/list and explicit-local retries all fail. Applying human-authorized fallback for reversible isolated laneC authoring only; no root acceptance/Jared artwork approval or integration/publication authority inferred."
+}
