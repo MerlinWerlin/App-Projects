@@ -118,7 +118,7 @@
   "visualReview": {
     "fiveArtworks": "Viewed5 independently generated art together at210/150px and actual encoded85px. Distinct shrub,burrow cricket,3blade grass,2leaf succulent and2wing seed silhouettes. Smooth grey-lilac/olive interiors and consistent cream-bright upper-left/dark-olive lower-right optical edge polarity,no SEM pores or amber-blue granules. Actual C18liverwort/C17duckweed/C23saltbush comparison retained;coordinator accepted firstsample before expansion. Cricket visualcount2paddleforelegs+2middlelegs+2foldedjumphindlegs,2antennae/2tailprongs whole.",
     "wallpaper": "Viewed all3 actual encoded phone variants. First own-reference habitat group too large/tall and grass lost short third blade. Built-in exact-own-grass support edit restored clearly visible3blades/3roots and reduced group;all5organisms retain complete leaf/wing/antenna/foot/root endpoints in every crop. Quiet sage upper/bottom field and broad dim connected dune curves remain. Other4identities preserved.",
-    "native": "Viewed all9 actual coordinator renderer previews in scratch. Whole five-leaf saltbush/sparse paired phase arcs with oval/pearls/needle clock,column battery,ticket calendar keep live readings clear. Dedicated small oblique paired-edge/vacuole fragment fits native calendar/wideclock headers with breathing room;larger areas retain the full shrub.",
+    "native": "Viewed all9 actual coordinator renderer previews after compact ornament-only correction. Oval/pearls/needle saltbush clock,column battery,ticket calendar retain clear live readings. Closed oval replaced with short OPEN trilobed saltbush leaf edge and second offset phase contour;all4 affected header crops reviewed before/after. Full subject/detail paths/recipe unchanged,5 unaffected SVGs byte-identical,27 source/encoded input hashes unchanged. Open tiny contours fit with breathing room.",
     "roundedArtworkCorners": "Viewed5 actual encoded art using real app gradient stops,Fit6%inset,conservative20%roundedmask. Every visible alpha16 pixel and all whole focal tips retained. Quiet sage corners support soft paired phase edges. Entire23theme/115art audit passes. UI layout simulation,not installed-device proof."
   },
   "ownerSteeringReview": "Continued Nature mix with dune flora/fauna in one fixed diagonal paired bright/dark optical phase-gradient language. Actual C18/C17 comparison accepted before remaining4generations. Quiet sage Artwork corners and compact paired phase-edge native fragment. Nature category verified.",
@@ -165,5 +165,30 @@
     ]
   },
   "wallpaperReferenceHashesMatched": 6,
-  "packTestEvidence": "Actual offline builder v1:9assets/0.72MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and6own wallpaper reference hashes pass. Common47 pipeline checks previously passed;no shared runtime edits."
+  "packTestEvidence": "Actual offline builder v1:9assets/0.72MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and6own wallpaper reference hashes pass. Common47 pipeline checks previously passed;no shared runtime edits.",
+  "nativeCornerRefinement": {
+    "theme": "c-nomarski-dunefield",
+    "scope": "Only compact ornament and its direction description changed;actual app renderer source copied to scratch,no shared runtime/generated registry changes.",
+    "sourceAndEncodedInputHashesUnchanged": 27,
+    "fullSubjectDetailRecipeAndOtherDescriptorFieldsIdentical": true,
+    "allNineNativeLayoutsValidated": true,
+    "allNineChangeWithReadings": true,
+    "batteryNullZeroHundredPass": true,
+    "unchangedFullNativeSvgs": [
+      "clock-small",
+      "clock-large",
+      "battery-small",
+      "battery-medium",
+      "battery-large"
+    ],
+    "changedCompactPlacements": [
+      "clock-medium",
+      "calendar-small",
+      "calendar-medium",
+      "calendar-large"
+    ],
+    "reviewArtifact": "header-before-after.jpg",
+    "installedDeviceValidation": false,
+    "visualReview": "Viewed all9 actual native renderer layouts and before/after crops of all4 affected headers. Open3lobed leaf-edge fragment and offset second phase contour stay open and distinct at tiny size,fit native headers with clear text margins. Larger5SVGs unchanged."
+  }
 }
