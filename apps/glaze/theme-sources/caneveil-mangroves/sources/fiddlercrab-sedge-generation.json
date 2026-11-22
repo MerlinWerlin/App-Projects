@@ -1,0 +1,23 @@
+{
+  "id": "fiddlercrab-sedge",
+  "prompt": "Precise ANATOMY-ONLY correction of input1, own original Caneveil Mangroves fused murrine fiddler crab. Retain exact composition, natural broad carapace, TWO eyes, ONE large left claw and ONE small right claw, raised-claw pose, sedge, coarse embedded ivory/cobalt/emerald cane flowers, longitudinal cane bands, continuous glass material, palette, lighting and framing. Correct missing walking legs: a real fiddler crab has FOUR PAIRS of WALKING LEGS plus the TWO CLAWS, TEN coherent appendages TOTAL. Current image shows only three walking legs per side. ADD ONE coherent rear walking leg on EACH SIDE, placed behind the existing legs, splayed outward into clear available alpha space. Final has exactly FOUR separately countable segmented slim walking legs on LEFT and exactly FOUR on RIGHT, all eight complete tips visible, plus two claw-bearing arms. Keep all joints connected naturally under lateral carapace, no floating/disconnected legs or extra eyes/claws. Add only this missing walking-leg pair and adjust minimum spacing to keep all eight individually readable. Every new leg uses same clear fused glass with longitudinal colored cane stripes. Preserve all other subjects/material/position unchanged. TRUE TRANSPARENT ALPHA including between all legs, no halo/gray backing/ground/shadow/frame/text/UI. Complete whole anatomy, all eight walking feet and both claws/sedge remain within generous alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/fiddlercrab-sedge.cd99d894.png",
+  "sourceSha256": "cd99d894ece93b78a6ddee91c95ceeca49667197793d552d6a735999620ca25b",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fiddlercrab-sedge.53969b72.png",
+  "sha256": "53969b72b8adfbf33b2926df767f6344f523a8bec2dc6ec28c30a85eb161d139",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/anatomy-repair/fiddlercrab-sedge-history.json",
+  "referencedImage": {
+    "file": "qa/anatomy-repair/fiddlercrab-sedge.original.e6040ae2.png",
+    "sha256": "e6040ae2e30b3afe2d9734f42d20ec357e67054a53941648322fbb24d291084d"
+  }
+}

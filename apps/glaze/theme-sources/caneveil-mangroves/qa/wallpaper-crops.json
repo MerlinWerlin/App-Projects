@@ -1,0 +1,34 @@
+{
+  "themeId": "caneveil-mangroves",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.8a4b676f.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "8a4b676f049128a879f4ec873dcb2bd3c6e21f4c3c6eca1b7739433dd96fcaaa",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.9289c0e8.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "9289c0e8f3c00fe4ca40595bb579006a783df0061ba00c18edf7aa9064b40066",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.801f2e6b.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "801f2e6bcc284929f0e51cae150cef89a800aa41ab4cf8f8148d263383e3a081",
+      "labelX": 550
+    }
+  ],
+  "visualReview": "Passed all three actual encoded crops1290x2796,1179x2556,750x1334: complete fused-cane mangrove habitat with whole gecko/tail/toes, all leaves/root tips/propagules and small mudskipper, broad quiet pistachio sides/top/bottom. Uniform whole-habitat layout-only pullback retained original, exact requests and initial sole approved-gecko reference lineage."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "mudskipper-root",
+  "prompt": "CANEVEIL MANGROVES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL mangrove flora/fauna with natural anatomy, not abstract creatures. Unmistakable hand-fused MURRINE/MILLEFIORI GLASS-CANE construction: large radial flower/star cross-sections of composite colored glass rods FUSED FLUSH INTO ONE CONTINUOUS VITREOUS BODY. Coarse irregular but legible ivory/honey-centered cobalt/emerald radial cane flowers occupy broad surfaces, only several LARGE cane sections across an animal torso, not tiny allover decorative confetti. Actual depth/internal stripes visible through thin clear glass casing; heat-softened joins merge neighboring cane slices with NO brass leading, grout or thick black divider outlines. At curved cut lips and narrow parts, expose LONGITUDINAL PARALLEL COLOR STRIPES of the composite rods, not flat surface decals. Soft directional glass highlights, low shallow fused relief, not a generic shiny figurine decorated with painted flowers, stained glass enamel, loose seedbeads, beads/thread holes, mosaic tiles, rough frit grains, shell nacre, crystal facets or gemstones. Underlying natural shape remains very clear. Whole subject inside central64percent with at least18percent real alpha margin each side. No clipped toes, feet, tail, bill, leaf or root tips. Entire exterior and open anatomy gaps genuinely alpha transparent; no sheet/plaque/backing/platform/stand/frame/badge/ring/bail/clasp, no ground scenery, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One recognizable real mudskipper resting diagonally left on one complete short mangrove prop-root fork. Wide natural fish head, two small raised eyes at top, tapering fish body and full broad finned tail. Exactly TWO broad fanlike PECTORAL FINS support the front, one modest dorsal fin and small pelvic fin below: a fish, no four mammal legs, lizard toes or ears. Coarse honey/ivory-centered cobalt and moss-green cane cross-sections embedded in fused body; longitudinal rod bands at tail fin lip and root edge. One coherent whole fish and one root fork, no platform or aquarium.",
+  "tool": "built-in image_gen",
+  "source": "sources/mudskipper-root.53fa2b24.png",
+  "sourceSha256": "53fa2b245aa89dab585ec95aeb8e425b0a5f82c6282d1fe5f5a2289fc6c576a5",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/mudskipper-root.166a1faf.png",
+  "sha256": "166a1faf9dbfe4e255f6fa3863f5fe678d86fb26850f779f52048a42b460f212",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

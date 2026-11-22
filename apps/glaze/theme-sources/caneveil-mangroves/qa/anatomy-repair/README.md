@@ -1,0 +1,1 @@
+Original six-walking-leg crab and exact own-source anatomy correction retained. Selected corrected source has four walking legs per side plus one large and one small claw, ten appendages; material, eyes, sedge and main composition retained.
