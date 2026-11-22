@@ -1,0 +1,160 @@
+{
+  "theme": "mosswake-glade",
+  "created": "2026-11-22",
+  "lane": "A",
+  "medium": "Living cushion-moss star-shoot and branching reindeer-lichen botanical topiary macro photography",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "badger",
+      "label": "Lichenmask Badger",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. GLAZE MOSSWAKE GLADE, ONE first material prototype for a pure-art widget. Physical botanical topiary sculpture shaped as a familiar whole EURASIAN BADGER, photographed in refined natural macro daylight. Entire body constructed from dense LIVING CUSHION MOSS: tiny clearly resolved miniature star-rosette shoots, overlapping minute leaves, moist organic cushions and occasional visible little fernlike moss tips. Green is real leafy plant tissue, not fur/felt/artificial turf. Pale warm-grey REINDEER LICHEN makes the familiar two pale face stripes and little ear rims/claw tips; deep forest-green moss makes the dark eye-mask bands, olive/chartreuse moss defines broad body planes. A few sparse short reddish-brown sporophyte stems with tiny natural oval capsules rise from the back, subordinate and complete, no fantasy antlers or flowers. The actual animal anatomy comes first: low long stocky badger body in three-quarter walking side profile facing left, narrow wedge-shaped long head and pointed snout, two small rounded ears, one clear tiny dark natural eye, FOUR short sturdy legs with full broad clawed paws, short bushy tapering tail. Neutral natural posture, no cartoon smile/expressions/clothes/props. Every silhouette part must remain instantly recognizable as a badger at85px; actual leafy moss material is clearly visible atlarger size. Restrained fresh forest/mid-olive/lime greens with pale lichen, moist highlights subtle; no glitter or strong glow. Not smooth green skin decorated with moss: minute plants form entire shape. No cork/bark/stone body, fungus gills, ivory mycelium, long wood shavings, fuzzy wool/felt/fabric, quilling/paper, metal, plastic3Dtoy or glass. No ordinary real furry badger underneath, no oversized plant ears or invented limbs. Entire subject including all4paws/claws, muzzle, tail and capsule tips wholly inside central66% ofsquare, generous true transparent alpha margins on ALL sides; true transparency between legs. No moss lawn/base, rock/log/flower/ground/floor/scenery, external cast shadow/haze/glow, background plaque/rectangle/border/collage. Absolutely no text/numbers/labels/signature/logo/UI/clock/dial/battery/calendar/readings. One original natural-form botanical sculpture, not copied/cropped/recoloured from any neighbor.",
+      "source": "sources/badger.d804513a49f7.png",
+      "sourceSha256": "d804513a49f7803072a2dacd9928e6170dbecf293c496eed28df7bd8251b6365",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/badger.02b27b444765.png",
+      "sha256": "02b27b444765a9a1812ebb1dbc9c7ca3cd19b31be97af21e122dde24b0722f8e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits."
+    },
+    {
+      "id": "roe-deer",
+      "label": "Starshoot Deer",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: precise-object-edit. TRANSPARENCY CLEANUP ONLY of our own moss/lichen roe deer. Preserve EXACT whole deer, all actual moss star-leaf shoots, pale branchinglichen bib/inner ears/rump, sparse redsporophytecapsules, bothwholeantlers, two ears, natural eye/muzzle, FOUR complete slender legs/split hooves/tail and exact pose/proportions/lighting/colors. Do not redraw/anatomicallyalter/crop the deer. Remove EVERY bit of the unrequested grey/white/yellow background wash, translucent fog, exterior glow, photographic backdrop and ground haze. All pixels OUTSIDE the actual deer/individual moss/lichen/antler/capsule/hoof silhouette must be TRUE EMPTY ALPHA, including the big openings between all four legs and under jaw/antlers. No opaque rectangle, no painted checkerboard, no white background, no new shadow or coloured halos. Keep body and fine plant edges solid with smooth natural antialiasing; remove background rather than making deer transparent. Keep all extremities entire with ample genuinely transparent margins on every side. Same familiar natural animal identity, same green living-moss/pale-lichen botanical-topiary sculpture. No newobjects/text/labels/UI/border.",
+      "source": "sources/roe-deer.4fe0e9df30c0.png",
+      "sourceSha256": "4fe0e9df30c07bd62804353ca2a609c3f2cfe2ce5a51f79e46adf3bb12dbf57d",
+      "sourceDimensions": [
+        1199,
+        1312
+      ],
+      "selectedFile": "widgets/roe-deer.5ac36ad88a9f.png",
+      "sha256": "5ac36ad88a9fe3d7ccba336988a2dfdb9e9cb7d816c1c855fe192af1ff8e9f03",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "qa/deer-alpha-study/unselected-first-deer.aca1ba94dfb1.png",
+          "sha256": "aca1ba94dfb1265fd14986295151ff3eb722109b468c638b5f33669cadef327a",
+          "purpose": "Own first deer with exterior semi-transparent haze; built-in cleanup preserves whole deer/anatomy/material while correcting only transparency."
+        }
+      ],
+      "generationHistory": "qa/deer-alpha-study/generation-history.json"
+    },
+    {
+      "id": "kingfisher",
+      "label": "Mosswing Kingfisher",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. GLAZE MOSSWAKE GLADE, one independent pure-art asset on TRUE transparent alpha. Our own accepted moss badger reference supplies only the living botanical material, palette and refined natural macro daylight. Create a distinctly different familiar natural subject. Entire sculptural body constructed from dense LIVING CUSHION MOSS: tiny clearly resolved green star-rosette shoots, minute overlapping leaves and short leafy fernlike tips, moist plant tissue. Pale warm-grey REINDEER LICHEN defines restrained natural highlights and small markings. Forest/olive/chartreuse green moss cushions with occasional sparse short reddish-brown sporophyte stems/tiny oval capsules. Real leafy plant texture, not fur/felt/artificialturf, gills/mycelium, long woodshavings, cork/stone/metal/glass/paper or 3Dtoy. All anatomy arises from botanical material, no real animal hidden beneath. Real familiar anatomy and clear entire silhouette first, readable at85px. Restrained moist highlights, no glitter/glow. Whole subject and EVERY extremity inside central66% square, ample truealpha margins all sides, true transparency through major gaps. No ground/lawn/base/rocks/scenery/floor, exterior shadow/haze or opaque background/rectangle/panel/frame/collage. No labels/text/signatures/numerals/logos/clock/dial/battery/calendar/UI/readings. SUBJECT: One complete familiar KINGFISHER perched on a SHORT NATURAL FORKED WOODEN TWIG. Compact round head/body, long straight dagger beak facing left, small dark eye, short rounded tail, folded tapered wings and TWO coherent short gripping feet on twig. Dense moss forms feathers/body with pale lichen throat and small breast patch, deeper forest-green wing cushions, no real blue/orange feathers. Few tiny sporophyte capsules on upperback only. Entire long beak, both toes, tail, twig ends and capsule tips wholly inside ample alpha margins. The twig is natural subordinate support, no scenery.",
+      "source": "sources/kingfisher.6a88c16455db.png",
+      "sourceSha256": "6a88c16455dbd2aa6b60c972d0099b783f46efceff5fd1a0c8a277128d3b3add",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/kingfisher.aa10e8fd4706.png",
+      "sha256": "aa10e8fd4706c782676b578433fa4427b11973dea55a1f36c21a200f1299484f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/badger.d804513a49f7.png",
+          "sha256": "d804513a49f7803072a2dacd9928e6170dbecf293c496eed28df7bd8251b6365",
+          "purpose": "Own accepted moss badger supplies living star-shoot/lichen material, palette and light only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "fox",
+      "label": "Lichentip Fox",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. GLAZE MOSSWAKE GLADE, one independent pure-art asset on TRUE transparent alpha. Our own accepted moss badger reference supplies only the living botanical material, palette and refined natural macro daylight. Create a distinctly different familiar natural subject. Entire sculptural body constructed from dense LIVING CUSHION MOSS: tiny clearly resolved green star-rosette shoots, minute overlapping leaves and short leafy fernlike tips, moist plant tissue. Pale warm-grey REINDEER LICHEN defines restrained natural highlights and small markings. Forest/olive/chartreuse green moss cushions with occasional sparse short reddish-brown sporophyte stems/tiny oval capsules. Real leafy plant texture, not fur/felt/artificialturf, gills/mycelium, long woodshavings, cork/stone/metal/glass/paper or 3Dtoy. All anatomy arises from botanical material, no real animal hidden beneath. Real familiar anatomy and clear entire silhouette first, readable at85px. Restrained moist highlights, no glitter/glow. Whole subject and EVERY extremity inside central66% square, ample truealpha margins all sides, true transparency through major gaps. No ground/lawn/base/rocks/scenery/floor, exterior shadow/haze or opaque background/rectangle/panel/frame/collage. No labels/text/signatures/numerals/logos/clock/dial/battery/calendar/UI/readings. SUBJECT: One complete familiar RED-FOX SHAPE walking in gentle side three-quarter view facing right. Natural slim canine body, long tapered pointed muzzle, two upright triangular ears, four complete slender legs/paws and a BIG BUSHY FULL TAIL curving downward behindleft. Whole shape built from green moss star-shoot cushions, pale warm-grey branching lichen at throat/chest, inner ears and large tailtip; darker moss eye/leg edges, tiny natural darkeye. No orange/red fur, no fox underneath. Calm alert natural posture, not humanoid/mascot. Allfourfeet, beaktip-like muzzle, ear tips and bigtail wholly inside alpha margins; keep tail separated from legs.",
+      "source": "sources/fox.75878be24ce3.png",
+      "sourceSha256": "75878be24ce3f138e8cf3b2819be8c423345e312f3d3a0251d274cd53c1048b1",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/fox.8a377b430cde.png",
+      "sha256": "8a377b430cde7a13221c1cb27deb241e052a030673e2182a57cf17fea47874be",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/badger.d804513a49f7.png",
+          "sha256": "d804513a49f7803072a2dacd9928e6170dbecf293c496eed28df7bd8251b6365",
+          "purpose": "Own accepted moss badger supplies living star-shoot/lichen material, palette and light only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "fern",
+      "label": "Cushion Fern",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. GLAZE MOSSWAKE GLADE, one independent pure-art asset on TRUE transparent alpha. Our own accepted moss badger reference supplies only the living botanical material, palette and refined natural macro daylight. Create a distinctly different familiar natural subject. Entire sculptural body constructed from dense LIVING CUSHION MOSS: tiny clearly resolved green star-rosette shoots, minute overlapping leaves and short leafy fernlike tips, moist plant tissue. Pale warm-grey REINDEER LICHEN defines restrained natural highlights and small markings. Forest/olive/chartreuse green moss cushions with occasional sparse short reddish-brown sporophyte stems/tiny oval capsules. Real leafy plant texture, not fur/felt/artificialturf, gills/mycelium, long woodshavings, cork/stone/metal/glass/paper or 3Dtoy. All anatomy arises from botanical material, no real animal hidden beneath. Real familiar anatomy and clear entire silhouette first, readable at85px. Restrained moist highlights, no glitter/glow. Whole subject and EVERY extremity inside central66% square, ample truealpha margins all sides, true transparency through major gaps. No ground/lawn/base/rocks/scenery/floor, exterior shadow/haze or opaque background/rectangle/panel/frame/collage. No labels/text/signatures/numerals/logos/clock/dial/battery/calendar/UI/readings. SUBJECT: One familiar UNFURLING FERN made as a living miniature moss/lichen topiary. Three graceful arching green fronds rise from a compact visible rhizome knot, one smaller fresh spiral fiddlehead in front. Each frond has a clear natural central rachis and regular paired tapering pinnae with precise small leaflet silhouettes; the leaflets themselves built from dense minute green moss star-rosettes, not ordinary flat fern tissue. Pale branched lichen trims a few inner edges of curled fiddlehead/rhizome only, sparse reddish sporophyte capsules at base. Entire allthreefrondtip silhouettes and curledshoot/rhizome wholly inside ample alpha margins. No pot/mount/sphere/lawn/rock/stand, only whole recognizable botanical form.",
+      "source": "sources/fern.d4da37d074cf.png",
+      "sourceSha256": "d4da37d074cf29c1da1fe23d8c16f878792d21e0fb8d249a94a7422305f7a4fb",
+      "sourceDimensions": [
+        1263,
+        1245
+      ],
+      "selectedFile": "widgets/fern.5ce8bb4cbacf.png",
+      "sha256": "5ce8bb4cbacfdee8942108775f269128a0f73f26375f193968a0b01ba2d5e217",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/badger.d804513a49f7.png",
+          "sha256": "d804513a49f7803072a2dacd9928e6170dbecf293c496eed28df7bd8251b6365",
+          "purpose": "Own accepted moss badger supplies living star-shoot/lichen material, palette and light only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: precise-object-edit. LAYOUT-ONLY correction of our own MOSSWAKE GLADE botanical-topiary garden. Preserve EXACTLY the five familiar moss/lichen forms, anatomy, materials and their relative arrangement: three-frond unfurlingfern left, full roe deer centre-back withbothwholeantlers/fourhooves, kingfisher right onshortwoodbranch withwholelongbeak/twofeet/tail, four-legbadger frontleft, four-legfox frontright withwholelichen-tippedtail. Tiny real green mossstar-rosettes, pale branched lichen markings, redsporophytecapsules, sparsegravel/leaves, restrained soft natural morning light. Change ONLY whole-group framing: uniformly reduce ENTIRE grouping, branch and immediate supporting ground vignette to70%ofcurrent size. Place its combinedcentre at57%imageheight,50%width. Every antler/fernfrond/birdbeak/branchend/paw/tail/capsuletip andgroundleaf inside CENTRAL64%WIDTH,with18%quietside margins; group top near43%height andlowestground/foot above74%. Upper40%emptywarmcream air,bottom26%quietpaleground. Extend same warmbirchcream background/ground smoothlyaroundit, no newobjects/shapes/panels/bands. Keep deer/fox/badger/head/legpositions andmoss texture unchanged; do not redesignidentity or crop anything. Noordinaryfur/feathers, no cartoon/plastic/felt/mycelium/cork/stonebody, no glow. Short-phonecentre crop removing9%top/bottom mustretainall5comfortablywith quietscreen-cornerbreathingroom. No text/labels/letters/numerals/signature/logo/clock/date/battery/calendar/UI/border/frame. Full-bleedopaqueportraitwallpaper,sameaspectasinput.",
+      "source": "sources/wallpaper.b7024c0320ea.png",
+      "sourceSha256": "b7024c0320ea78868d67920e5b5d017ad9fe769cb8c4ca49c60ad8704de88e4f",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "ed1f2cdc87357f12091c6363f948da9e0b0bb1620a5d7e13562651c7160c9227",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Own layout-only glade pullback then1290x2796 export; all5independent art and native subject unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/first-scene.6c39a5fd3735.png",
+          "sha256": "6c39a5fd373579e6fae09ddc0685cd2c5f63e761f869a55e26a3293a73bba55f",
+          "purpose": "Own first five-reference illustrated habitat, uniform whole-group framing correction only."
+        }
+      ],
+      "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "badger",
+    "label": "Lichenmask Badger",
+    "kind": "art",
+    "image": "badger.02b27b444765.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "roe-deer",
+    "label": "Starshoot Deer",
+    "kind": "art",
+    "image": "roe-deer.5ac36ad88a9f.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "kingfisher",
+    "label": "Mosswing Kingfisher",
+    "kind": "art",
+    "image": "kingfisher.aa10e8fd4706.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "fox",
+    "label": "Lichentip Fox",
+    "kind": "art",
+    "image": "fox.8a377b430cde.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "fern",
+    "label": "Cushion Fern",
+    "kind": "art",
+    "image": "fern.5ce8bb4cbacf.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

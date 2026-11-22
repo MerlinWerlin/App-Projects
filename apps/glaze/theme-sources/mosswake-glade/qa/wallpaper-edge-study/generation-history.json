@@ -1,0 +1,56 @@
+{
+  "initial": {
+    "prompt": "Use case: stylized-concept. Matching MOSSWAKE GLADE opaque portrait phone wallpaper aspect1290:2796. Inputs1-5 are our own exact moss/lichen badger, roe deer, kingfisher on shorttwig, fox and unfurlingfern. Preserve their complete familiar NATURAL SHAPES, natural anatomy and physical botanical-topiary construction: dense living tiny GREEN MOSS STAR-ROSETTE SHOOTS/minute leafy cushions, pale branching warm-grey reindeer lichen facial/breast/tail markings, sparse short reddish sporophyte stems/capsules, refined moist macro detail. No real fur/feathers underneath, no smoothgreentoy/felt/woodwool/mushroomgills/cork/stonebody. Create ONE calm little forest-topiary garden in soft diffuse morning light, a distinct SMALL coherent vignette surrounded by abundant quiet air/ground. Deer stands behind-right withfourhooves and bothwholeantlers, fern behind-left with3wholefronds andcurledfiddlehead, kingfisher perches mid-right on one low bare natural branch withlongbeak/twotoes/branchendswhole. Badger walks front-left, fox walks front-right withallfourpaws andfulllichen-tailtip; no overlaps hiding heads/legs. Sparse pale woodland gravel, a few natural small leaves and tiny supporting moss patches under feet, never a dense green blanket or forest scenery atedges. Natural relative sizes: deer largest/tallest, fox/badger smaller, bird small butidentifiable, fern tallerthanbadger. CRITICAL: ENTIRE GROUP includingeveryantler/fern/capsuletip/branch/foot/tail stays INSIDE CENTRAL58%width andBETWEEN43%and72%height. Make thegroup visibly small, approximately29%ofportraitheight, centre57.5%height; leave21%quietside margins and28%quiet ground below. Upper40%empty softly blurred warmPALEBIRCHCREAM air around#E6DEC8, same warmquietground towardsallfouredges. No backgroundtrees/largemushrooms/architecture/props/otheranimals. Shorterphone centre-crop removing9%top/bottom mustkeepallfocal silhouettes comfortablyinside rounded screencorners. Keep actual moss/lichen tissue detailed and fresh withoutglow/glitter. No frame/plaque/rectangle/panel/border/darkvignette/abruptbands. No lettering/signatures/labels/numerals/logos/UI/clock/date/battery/calendar/readings. Full-bleed opaque portrait nature habitat.",
+    "file": "qa/wallpaper-edge-study/first-scene.6c39a5fd3735.png",
+    "sha256": "6c39a5fd373579e6fae09ddc0685cd2c5f63e761f869a55e26a3293a73bba55f",
+    "references": [
+      {
+        "file": "sources/badger.d804513a49f7.png",
+        "sha256": "d804513a49f7803072a2dacd9928e6170dbecf293c496eed28df7bd8251b6365"
+      },
+      {
+        "file": "qa/deer-alpha-study/unselected-first-deer.aca1ba94dfb1.png",
+        "sha256": "aca1ba94dfb1265fd14986295151ff3eb722109b468c638b5f33669cadef327a"
+      },
+      {
+        "file": "sources/kingfisher.6a88c16455db.png",
+        "sha256": "6a88c16455dbd2aa6b60c972d0099b783f46efceff5fd1a0c8a277128d3b3add"
+      },
+      {
+        "file": "sources/fox.75878be24ce3.png",
+        "sha256": "75878be24ce3f138e8cf3b2819be8c423345e312f3d3a0251d274cd53c1048b1"
+      },
+      {
+        "file": "sources/fern.d4da37d074cf.png",
+        "sha256": "d4da37d074cf29c1da1fe23d8c16f878792d21e0fb8d249a94a7422305f7a4fb"
+      }
+    ]
+  },
+  "selectedEdit": {
+    "id": "wallpaper",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. LAYOUT-ONLY correction of our own MOSSWAKE GLADE botanical-topiary garden. Preserve EXACTLY the five familiar moss/lichen forms, anatomy, materials and their relative arrangement: three-frond unfurlingfern left, full roe deer centre-back withbothwholeantlers/fourhooves, kingfisher right onshortwoodbranch withwholelongbeak/twofeet/tail, four-legbadger frontleft, four-legfox frontright withwholelichen-tippedtail. Tiny real green mossstar-rosettes, pale branched lichen markings, redsporophytecapsules, sparsegravel/leaves, restrained soft natural morning light. Change ONLY whole-group framing: uniformly reduce ENTIRE grouping, branch and immediate supporting ground vignette to70%ofcurrent size. Place its combinedcentre at57%imageheight,50%width. Every antler/fernfrond/birdbeak/branchend/paw/tail/capsuletip andgroundleaf inside CENTRAL64%WIDTH,with18%quietside margins; group top near43%height andlowestground/foot above74%. Upper40%emptywarmcream air,bottom26%quietpaleground. Extend same warmbirchcream background/ground smoothlyaroundit, no newobjects/shapes/panels/bands. Keep deer/fox/badger/head/legpositions andmoss texture unchanged; do not redesignidentity or crop anything. Noordinaryfur/feathers, no cartoon/plastic/felt/mycelium/cork/stonebody, no glow. Short-phonecentre crop removing9%top/bottom mustretainall5comfortablywith quietscreen-cornerbreathingroom. No text/labels/letters/numerals/signature/logo/clock/date/battery/calendar/UI/border/frame. Full-bleedopaqueportraitwallpaper,sameaspectasinput.",
+    "source": "sources/wallpaper.b7024c0320ea.png",
+    "sourceSha256": "b7024c0320ea78868d67920e5b5d017ad9fe769cb8c4ca49c60ad8704de88e4f",
+    "sourceDimensions": [
+      852,
+      1846
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "ed1f2cdc87357f12091c6363f948da9e0b0bb1620a5d7e13562651c7160c9227",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Own layout-only glade pullback then1290x2796 export; all5independent art and native subject unchanged.",
+    "references": [
+      {
+        "file": "qa/wallpaper-edge-study/first-scene.6c39a5fd3735.png",
+        "sha256": "6c39a5fd373579e6fae09ddc0685cd2c5f63e761f869a55e26a3293a73bba55f",
+        "purpose": "Own first five-reference illustrated habitat, uniform whole-group framing correction only."
+      }
+    ],
+    "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+  },
+  "reason": "Preserve all focal silhouettes and give phone screen corners quiet matching side/bottom margins."
+}

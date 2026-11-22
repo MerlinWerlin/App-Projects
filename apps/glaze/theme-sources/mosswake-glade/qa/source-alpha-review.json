@@ -1,0 +1,126 @@
+{
+  "images": [
+    {
+      "id": "badger",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "edgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleAlpha16Bounds": [
+        170,
+        209,
+        1377,
+        831
+      ],
+      "coreAlpha96Bounds": [
+        171,
+        209,
+        1377,
+        831
+      ]
+    },
+    {
+      "id": "roe-deer",
+      "dimensions": [
+        1199,
+        1312
+      ],
+      "edgeAlphaMax": 0,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        153,
+        47,
+        1063,
+        1241
+      ],
+      "coreAlpha96Bounds": [
+        154,
+        48,
+        1062,
+        1241
+      ]
+    },
+    {
+      "id": "kingfisher",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        121,
+        108,
+        1035,
+        1187
+      ],
+      "coreAlpha96Bounds": [
+        122,
+        109,
+        1034,
+        1186
+      ]
+    },
+    {
+      "id": "fox",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "edgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        254
+      ],
+      "visibleAlpha16Bounds": [
+        162,
+        116,
+        1368,
+        870
+      ],
+      "coreAlpha96Bounds": [
+        162,
+        117,
+        1367,
+        870
+      ]
+    },
+    {
+      "id": "fern",
+      "dimensions": [
+        1263,
+        1245
+      ],
+      "edgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        53,
+        42,
+        1211,
+        1179
+      ],
+      "coreAlpha96Bounds": [
+        53,
+        43,
+        1210,
+        1179
+      ]
+    }
+  ],
+  "allCoreSilhouettesInsideOriginalBounds": true,
+  "installedDeviceVerified": false
+}

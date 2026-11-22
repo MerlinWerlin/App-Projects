@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. LAYOUT-ONLY correction of our own MOSSWAKE GLADE botanical-topiary garden. Preserve EXACTLY the five familiar moss/lichen forms, anatomy, materials and their relative arrangement: three-frond unfurlingfern left, full roe deer centre-back withbothwholeantlers/fourhooves, kingfisher right onshortwoodbranch withwholelongbeak/twofeet/tail, four-legbadger frontleft, four-legfox frontright withwholelichen-tippedtail. Tiny real green mossstar-rosettes, pale branched lichen markings, redsporophytecapsules, sparsegravel/leaves, restrained soft natural morning light. Change ONLY whole-group framing: uniformly reduce ENTIRE grouping, branch and immediate supporting ground vignette to70%ofcurrent size. Place its combinedcentre at57%imageheight,50%width. Every antler/fernfrond/birdbeak/branchend/paw/tail/capsuletip andgroundleaf inside CENTRAL64%WIDTH,with18%quietside margins; group top near43%height andlowestground/foot above74%. Upper40%emptywarmcream air,bottom26%quietpaleground. Extend same warmbirchcream background/ground smoothlyaroundit, no newobjects/shapes/panels/bands. Keep deer/fox/badger/head/legpositions andmoss texture unchanged; do not redesignidentity or crop anything. Noordinaryfur/feathers, no cartoon/plastic/felt/mycelium/cork/stonebody, no glow. Short-phonecentre crop removing9%top/bottom mustretainall5comfortablywith quietscreen-cornerbreathingroom. No text/labels/letters/numerals/signature/logo/clock/date/battery/calendar/UI/border/frame. Full-bleedopaqueportraitwallpaper,sameaspectasinput.",
+  "source": "sources/wallpaper.b7024c0320ea.png",
+  "sourceSha256": "b7024c0320ea78868d67920e5b5d017ad9fe769cb8c4ca49c60ad8704de88e4f",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "ed1f2cdc87357f12091c6363f948da9e0b0bb1620a5d7e13562651c7160c9227",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Own layout-only glade pullback then1290x2796 export; all5independent art and native subject unchanged.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/first-scene.6c39a5fd3735.png",
+      "sha256": "6c39a5fd373579e6fae09ddc0685cd2c5f63e761f869a55e26a3293a73bba55f",
+      "purpose": "Own first five-reference illustrated habitat, uniform whole-group framing correction only."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}

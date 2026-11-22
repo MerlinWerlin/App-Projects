@@ -1,0 +1,168 @@
+{
+  "theme": "mosswake-glade",
+  "integratedBatchThemes": 66,
+  "actualAppAudit": {
+    "id": "mosswake-glade",
+    "name": "Mosswake Glade",
+    "packVersion": 1,
+    "artworks": [
+      "badger",
+      "roe-deer",
+      "kingfisher",
+      "fox",
+      "fern"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 1172948,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "allSelectedSourceAndOutputImagesFullyDecoded": true,
+  "selectedArtworks": 5,
+  "largeArtworkSelections": 5,
+  "nativePlans": 9,
+  "allNineChangeWithLiveReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "actualEncodedAssetHashes": {
+    "wallpaper-2796.07885fa1.webp": "07885fa174b52b1b70a04bd5fcbdd49bc6ccd2a7f88621a3290672419241f973",
+    "wallpaper-2556.01f61525.webp": "01f61525e1ae8e6fec56816240c8784c0807e84d8eb6cce8db4b5a74f4c3c7b1",
+    "wallpaper-1334.8cf773da.webp": "8cf773daedb0de032c2000bacdb2d1234d3d5b42790105257ef06bc1d68716ae",
+    "thumb.c7004a8c.webp": "c7004a8c49153bfbf073d3cbe0ec2704c40ab0778a7ef6f3f8546c5085fed77a",
+    "widget-badger.a7851671.webp": "a78516712be3e54cfd1977836eed76e2db805a3a68fe24d400333e46f49e8b23",
+    "widget-roe-deer.dc836b97.webp": "dc836b97371847e51770b70450a82407b4aa6221b8b2e0f4ff26f55dc2ed1dac",
+    "widget-kingfisher.62c1195a.webp": "62c1195a990c6d5a1aa6ba566b9c76535bd1cac51ceb17b36a760e131f419334",
+    "widget-fox.64e62141.webp": "64e62141fd2bb7038a465721e778c9841250262dc41fef580ff1f31f079bf920",
+    "widget-fern.e416bb6f.webp": "e416bb6f6fe8f8301e53b9d1dd80e276d2b41f2b7743f5fccb324df9151b6cbc"
+  },
+  "selectedInputHashes": {
+    "widgets/badger.02b27b444765.png": "02b27b444765a9a1812ebb1dbc9c7ca3cd19b31be97af21e122dde24b0722f8e",
+    "widgets/roe-deer.5ac36ad88a9f.png": "5ac36ad88a9fe3d7ccba336988a2dfdb9e9cb7d816c1c855fe192af1ff8e9f03",
+    "widgets/kingfisher.aa10e8fd4706.png": "aa10e8fd4706c782676b578433fa4427b11973dea55a1f36c21a200f1299484f",
+    "widgets/fox.8a377b430cde.png": "8a377b430cde7a13221c1cb27deb241e052a030673e2182a57cf17fea47874be",
+    "widgets/fern.5ce8bb4cbacf.png": "5ce8bb4cbacfdee8942108775f269128a0f73f26375f193968a0b01ba2d5e217",
+    "wallpapers/wallpaper.png": "ed1f2cdc87357f12091c6363f948da9e0b0bb1620a5d7e13562651c7160c9227"
+  },
+  "compactCompanion": {
+    "id": "mosswake-glade",
+    "name": "Mosswake Glade",
+    "retainedHeroLayouts": 5,
+    "compactLayouts": 4
+  },
+  "roundedArtwork": {
+    "id": "mosswake-glade",
+    "name": "Mosswake Glade",
+    "gradient": [
+      "#F0DBBD",
+      "#E8D3B6"
+    ],
+    "artifacts": [
+      {
+        "id": "badger",
+        "label": "Lichenmask Badger",
+        "blend": "transparent",
+        "corePixels": 30896,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "badger-170.png",
+        "tiny": "badger-85.png"
+      },
+      {
+        "id": "roe-deer",
+        "label": "Starshoot Deer",
+        "blend": "transparent",
+        "corePixels": 34327,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "roe-deer-170.png",
+        "tiny": "roe-deer-85.png"
+      },
+      {
+        "id": "kingfisher",
+        "label": "Mosswing Kingfisher",
+        "blend": "transparent",
+        "corePixels": 46300,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "kingfisher-170.png",
+        "tiny": "kingfisher-85.png"
+      },
+      {
+        "id": "fox",
+        "label": "Lichentip Fox",
+        "blend": "transparent",
+        "corePixels": 28846,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "fox-170.png",
+        "tiny": "fox-85.png"
+      },
+      {
+        "id": "fern",
+        "label": "Cushion Fern",
+        "blend": "transparent",
+        "corePixels": 42013,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "fern-170.png",
+        "tiny": "fern-85.png"
+      }
+    ]
+  },
+  "nativeDescriptorSha256": "7d3dad6bd406a5dcd0652c551fe8b493d5d645272df17dc973758e9cb07b355c",
+  "nativeSvgPreviews": [
+    {
+      "file": "clock-small.svg",
+      "sha256": "db1cfc3e02eb2909d59007734831004cdec87aeab8108187a6fe2e23c5339639"
+    },
+    {
+      "file": "clock-medium.svg",
+      "sha256": "64e26a7501ab9bd3f0d90239a6879d4bf622c4da8674aad4acef9a79979dc27e"
+    },
+    {
+      "file": "clock-large.svg",
+      "sha256": "2d885f438cb8d225757720ef392914e3f5efcc08f63055c7ae439d2e194c0901"
+    },
+    {
+      "file": "battery-small.svg",
+      "sha256": "e9f5449360ade79a44c7313e382283bee6ba2ab51b13cad8c6664f1434e0c9e1"
+    },
+    {
+      "file": "battery-medium.svg",
+      "sha256": "2e0bf5949d7937bd43673c6c22970cb2f0947d6d38e3f60714ffca4ef68af0a4"
+    },
+    {
+      "file": "battery-large.svg",
+      "sha256": "1a16b76ff0800e7a02271cd23e6afabcdf8a0eea63f43c842ab1d3b317e7505e"
+    },
+    {
+      "file": "calendar-small.svg",
+      "sha256": "cc6fb596d822709675ad227b00f1bfffaa77880d8eaa840631b70dae98d1365f"
+    },
+    {
+      "file": "calendar-medium.svg",
+      "sha256": "ebb6cd6369f81559a9d2d4096b5603c950b4f63f7afe6c7255b35eaff7489eb7"
+    },
+    {
+      "file": "calendar-large.svg",
+      "sha256": "1ae260188de2483214708a9762bf58d49eccb66cc26b51c2a4fbde08a00e3c6b"
+    }
+  ],
+  "actualRuntimeSourceHashes": {
+    "src/core/widgetIdentity.ts": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "src/core/themedWidgetPreview.ts": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888",
+    "targets/widget/ThemedWidgetDrawing.swift": "7c092d15412cfb89f8aa26f80a0caefde335541c02011c9c91c9b84928fe4774"
+  },
+  "category": "Nature",
+  "visualReview": "Coordinator inspected all5 actual encoded170/85rounded artworks,9actual native layouts and3actual phone exports. Natural focal silhouettes stay whole with quiet matching wallpaper margins and compact theme-matched native header companions.",
+  "published": false,
+  "installedDeviceVerified": false
+}
