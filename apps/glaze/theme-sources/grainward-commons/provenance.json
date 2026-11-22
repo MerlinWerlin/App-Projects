@@ -1,0 +1,119 @@
+{
+  "theme": "grainward-commons",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Stencil-poured coloured-sand painting with raked seams and raised granular edges",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall 1290:2796 phone wallpaper for GLAZE GRAINWARD COMMONS. Invented but tangible hillside canal neighbourhood in the lower42%: a tall tide-stair inn with stepped guest terraces and exterior spiral stair, a narrow cantilever seedbank with three hanging vaulted store chambers, a low open-air windcloth exchange under angular sail roofs, circular nightwater bath pools and a little working bakery built across one bridge arch. The five useful buildings have different clear silhouettes, connected by simple canal walkways, doorways and stairs; one coherent world, no collage. Artwork medium is physically SIFTED COLOURED-SAND PAINTING on flat binder board: dense opaque mineral grains poured through hand-cut stencils, crunchy little sand ridges along contours, visible granular speckles, crisp masked edges, selectively raked shallow seam lines and small loose grain spills, matte dry finish. All buildings, water and ground consist of flat areas of coloured grains; no sandcastle sculpture, photoreal sandstone, painterly wax/oil, 3D render, digital gradients, woven fabric, scientific image language, sacred motifs or geometric mandala. Very dark plum #281C32 background, mineral lavender #8A77AD, warm saffron #D49A52 and grain ivory #E7D8B1. Upper55% quiet dark-plum fine grain surface, generous app icon space, no floating objects there. Bold expressive simplified architectural shapes, warm welcoming little community, readable at phone scale. No text, letters, numbers, signage, labels, clock/dials, dates, percentages, live weather values, UI, logo, watermark, border, frame or phone mockup.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.6310e1eb.png",
+      "sourceSha256": "6310e1eb5d0cd6987e7942f34108fdc8ac15988e9edd58cf776b2558c3eff22f",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "ea09244f3697c9d8412b67de0d8412934928a678a18b79fe86dc6e8f568e39e6",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "tide-stair-inn",
+      "prompt": "GRAINWARD COMMONS for Glaze. ONE original 1024x1024 pure artwork of a tangible invented community building. Physical SIFTED COLOURED-SAND PAINTING: dense opaque mineral grains poured through hand-cut stencils onto flat binder, visibly granular fields, crunchy little sand ridges along contours, crisp masked edges, selectively raked shallow seam lines, tiny loose grain spills, dry matte finish. All forms made from FLAT coloured-grain areas and raked drawing; no sand sculpture, photoreal stone/3D architecture model, smooth CGI, oil paint, textile, sacred motifs or mandala. Dark plum #281C32, mineral lavender #8A77AD, saffron #D49A52, grain ivory #E7D8B1 only. Charming original architectural illustration with understandable access, structure and function, strong readable silhouette and open negative spaces. Complete building occupies central65% of square, at least16% genuine transparent alpha margin on every side, transparent through open archways. No background board, ground rectangle, frame, shadows/platform outside building, people, text, signs, letters, numbers, UI, clock/date/battery/weather readings or logos. Subject TIDE-STAIR INN: a tall strongly tapering guesthouse of FOUR OFFSET TERRACES climbing from lower-right to upper-left, crowned by a single sharply swept saffron roof. One complete exterior lavender SPIRAL STAIR wraps around the left side on narrow supports, visibly connecting each terrace; tiny simple ivory open-arch guest doors and low railings explain the inn. A small projecting boat-landing stair descends from the lowest terrace, no water/background. Top room narrow, bottom terrace broad, dramatic stepped triangular silhouette, open arcades in the two middle levels and small roofed lookout. Asymmetric vertical architecture, not a standard cottage/castle or ordinary object. Use the sand-pour material in all walls, stairs, roof and rails. Whole roof tip and all stairs fully visible with true empty alpha around.",
+      "tool": "built-in image_gen",
+      "source": "sources/tide-stair-inn.6b85d275.png",
+      "sourceSha256": "6b85d2752982024a9e2ef74c12c5584d31f1e26b2790ffa09e31adebe85f6f05",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/tide-stair-inn.adb594c8.png",
+      "sha256": "adb594c8b091542b1172ba91ea591f4a7bb9ac6d184d02b2bfb51cdf14c67cca",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "suspended-seedbank",
+      "prompt": "GRAINWARD COMMONS for Glaze. ONE original 1024x1024 pure artwork of a tangible invented community building. Physical SIFTED COLOURED-SAND PAINTING: dense opaque mineral grains poured through hand-cut stencils onto flat binder, visibly granular fields, crunchy little sand ridges along contours, crisp masked edges, selectively raked shallow seam lines, tiny loose grain spills, dry matte finish. All forms made from FLAT coloured-grain areas and raked drawing; no sand sculpture, photoreal stone/3D architecture model, smooth CGI, oil paint, textile, sacred motifs or mandala. Dark plum #281C32, mineral lavender #8A77AD, saffron #D49A52, grain ivory #E7D8B1 only. Charming original architectural illustration with understandable access, structure and function, strong readable silhouette and open negative spaces. Complete building occupies central65% of square, at least16% genuine transparent alpha margin on every side, transparent through open archways. No background board, ground rectangle, frame, shadows/platform outside building, people, text, signs, letters, numbers, UI, clock/date/battery/weather readings or logos. Subject SUSPENDED SEEDBANK: one narrow upright cantilever tower at far LEFT supports a long horizontal saffron beam extending far RIGHT. THREE COMPLETELY DIFFERENT suspended store chambers hang from the beam on paired thick lavender suspension rods: a tall teardrop vault, a broad hexagonal vault, and a small square ribbed vault. Each has one tiny open dark door and a shallow seed tray visible just inside. A narrow elevated walkway connects their doors; a small rope elevator platform with a simple counterweight descends along the tower for seed shipments. The left tower has two short buttress feet, the beam has a swept pointed cap; all access and suspension clear. Airy inverted-L silhouette, a big empty open gap under suspended rooms, no ground/building tile below. Not three ordinary houses on stilts; it is one coherent useful seed-preservation archive with secure hanging chambers. All beam tips, counterweight and feet contained. Entire construction depicted through poured mineral grains and shallow raked line detail, matte flat sand painting.",
+      "tool": "built-in image_gen",
+      "source": "sources/suspended-seedbank.be1e6ec1.png",
+      "sourceSha256": "be1e6ec18ddc2425add6e3df00e68e1de7115922901d24f796af209d5b4ff4ff",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/suspended-seedbank.6119fa3a.png",
+      "sha256": "6119fa3a527afcfe54dea5b8158fd8c96bf8d3a5964a03c0428bb75ee9290b58",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "windcloth-exchange",
+      "prompt": "GRAINWARD COMMONS for Glaze. ONE original 1024x1024 pure artwork of a tangible invented community building. Physical SIFTED COLOURED-SAND PAINTING: dense opaque mineral grains poured through hand-cut stencils onto flat binder, visibly granular fields, crunchy little sand ridges along contours, crisp masked edges, selectively raked shallow seam lines, tiny loose grain spills, dry matte finish. All forms made from FLAT coloured-grain areas and raked drawing; no sand sculpture, photoreal stone/3D architecture model, smooth CGI, oil paint, textile, sacred motifs or mandala. Dark plum #281C32, mineral lavender #8A77AD, saffron #D49A52, grain ivory #E7D8B1 only. Charming original architectural illustration with understandable access, structure and function, strong readable silhouette and open negative spaces. Complete building occupies central65% of square, at least16% genuine transparent alpha margin on every side, transparent through open archways. No background board, ground rectangle, frame, shadows/platform outside building, people, text, signs, letters, numbers, UI, clock/date/battery/weather readings or logos. Subject WINDCLOTH EXCHANGE: a low, very WIDE open marketplace pavilion on six splayed lavender posts. Three huge asymmetrical triangular ivory-and-saffron tensioned cloth roofs fan in DIFFERENT DIRECTIONS from two central tall spars, one high left-pointing sail, one low broad forward canopy and one narrow upright right sail. Open voids between canopies and visible crossed suspension cords explain the structure. Under the roofs are two long exchange counters with five neatly folded BLANK woven bundles, and a single short central stair. No enclosing walls, tower, conventional house roof, ships, bath pools or bridge. Clear airy zigzag angular silhouette and useful shade/wind-catching architecture, not umbrella collection or generic tent. Cloth/counters/posts are all depicted as flat stencil-poured SAND pigment, with raked seam-lines suggesting tension, not actual photographic fabric. Whole sail tips, cords, posts and stair fully inside generous alpha margin; no surrounding ground rectangle.",
+      "tool": "built-in image_gen",
+      "source": "sources/windcloth-exchange.cfd1c064.png",
+      "sourceSha256": "cfd1c0649f24d63bcd98f02bf6eb109dcdcc13e29d0af1fb79c7bd4cc5824720",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/windcloth-exchange.f5e94797.png",
+      "sha256": "f5e947973e4a06a4ff05961acd86cf2f160f09c1e58f18a86eaf1538f6e966df",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "nightwater-bath",
+      "prompt": "GRAINWARD COMMONS for Glaze. ONE original 1024x1024 pure artwork of a tangible invented community building. Physical SIFTED COLOURED-SAND PAINTING: dense opaque mineral grains poured through hand-cut stencils onto flat binder, visibly granular fields, crunchy little sand ridges along contours, crisp masked edges, selectively raked shallow seam lines, tiny loose grain spills, dry matte finish. All forms made from FLAT coloured-grain areas and raked drawing; no sand sculpture, photoreal stone/3D architecture model, smooth CGI, oil paint, textile, sacred motifs or mandala. Dark plum #281C32, mineral lavender #8A77AD, saffron #D49A52, grain ivory #E7D8B1 only. Charming original architectural illustration with understandable access, structure and function, strong readable silhouette and open negative spaces. Complete building occupies central65% of square, at least16% genuine transparent alpha margin on every side, transparent through open archways. No background board, ground rectangle, frame, shadows/platform outside building, people, text, signs, letters, numbers, UI, clock/date/battery/weather readings or logos. Subject NIGHTWATER BATH: a low, broad COMMUNITY BATH COMPLEX viewed from a high three-quarter angle, consisting of THREE DIFFERENT open circular pools joined by short curved channels in a crescent layout: one large foreground saffron-ringed pool with deep plum water and three broad descending ivory entry steps, one raised small lavender pool behind-left reached by a complete narrow zigzag stair, and one shallow kidney-shaped cooling basin on the right with an open arch spout. A crescent-shaped ivory privacy wall curves only around the rear; two blank short towel rails and little drain grooves explain use. No enclosing building, towers, canopy, trees, statues, people or ornamental vegetation. Pools contain simple raked sand-wave lines and a few small ivory reflection marks, not glowing stars or data. Distinct horizontal nested-ring silhouette with clear internal bowl voids, an actual useful bath rather than abstract circles. Entire perimeter, stairs, spout and channels fully inside alpha margins. Every wall and water field looks like poured coloured mineral grains on flat binder, no marble/ceramic 3D model.",
+      "tool": "built-in image_gen",
+      "source": "sources/nightwater-bath.ac181a2d.png",
+      "sourceSha256": "ac181a2db6520fadb2c50d584664bc4d7adadc1c998b1a45fc50dcb28f705971",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/nightwater-bath.657549ea.png",
+      "sha256": "657549ea3536dbc1fcf652e3e76f7e19ace5c00487fead1d650c828cb7417a75",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "bridgeborn-bakery",
+      "prompt": "GRAINWARD COMMONS for Glaze. ONE original 1024x1024 pure artwork of a tangible invented community building. Physical SIFTED COLOURED-SAND PAINTING: dense opaque mineral grains poured through hand-cut stencils onto flat binder, visibly granular fields, crunchy little sand ridges along contours, crisp masked edges, selectively raked shallow seam lines, tiny loose grain spills, dry matte finish. All forms made from FLAT coloured-grain areas and raked drawing; no sand sculpture, photoreal stone/3D architecture model, smooth CGI, oil paint, textile, sacred motifs or mandala. Dark plum #281C32, mineral lavender #8A77AD, saffron #D49A52, grain ivory #E7D8B1 only. Charming original architectural illustration with understandable access, structure and function, strong readable silhouette and open negative spaces. Complete building occupies central65% of square, at least16% genuine transparent alpha margin on every side, transparent through open archways. No background board, ground rectangle, frame, shadows/platform outside building, people, text, signs, letters, numbers, UI, clock/date/battery/weather readings or logos. Subject BRIDGEBORN BAKERY: a compact working bakehouse built DIRECTLY ON TOP OF A SINGLE HIGH BRIDGE ARCH, spanning an empty transparent canal gap. The bridge's two buttressed saffron ends are connected by one graceful ivory arch; a narrow lavender walkway with low railings continues past the bakehouse doors at both ends so people could cross. The bakehouse has a dramatically curled single roof with small square chimney, an open bread-window in front displaying three irregular unmarked loaves and a little arched oven visible on the left; no lettering or menu. One simple curling ivory heat wisp leaves chimney, contained near roof. Three-quarter view, iconic open upside-down-U silhouette and offcentre curled roof mass, visibly different from terraced inn, hanging vaults, sail market and open pools. No generic cottage on a ground platform: the clear empty tall BRIDGE VOID is essential. All steps, buttresses, roof tip, chimney wisp and rails fully inside alpha margin. Flat coloured-sand stencil work with raised granular edges and selective raked seams, no realistic clay/stone dollhouse.",
+      "tool": "built-in image_gen",
+      "source": "sources/bridgeborn-bakery.87d1d04c.png",
+      "sourceSha256": "87d1d04cdb479350ac741a82f122eccd74b4ff519aaa16d3e87bdfd9adc10eb5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bridgeborn-bakery.adf794e6.png",
+      "sha256": "adf794e6cfe3773c62ab462e6212cc8eae3a06b632e3550948a443b74b95de0e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

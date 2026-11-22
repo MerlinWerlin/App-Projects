@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "ONE original tall 1290:2796 phone wallpaper for GLAZE GRAINWARD COMMONS. Invented but tangible hillside canal neighbourhood in the lower42%: a tall tide-stair inn with stepped guest terraces and exterior spiral stair, a narrow cantilever seedbank with three hanging vaulted store chambers, a low open-air windcloth exchange under angular sail roofs, circular nightwater bath pools and a little working bakery built across one bridge arch. The five useful buildings have different clear silhouettes, connected by simple canal walkways, doorways and stairs; one coherent world, no collage. Artwork medium is physically SIFTED COLOURED-SAND PAINTING on flat binder board: dense opaque mineral grains poured through hand-cut stencils, crunchy little sand ridges along contours, visible granular speckles, crisp masked edges, selectively raked shallow seam lines and small loose grain spills, matte dry finish. All buildings, water and ground consist of flat areas of coloured grains; no sandcastle sculpture, photoreal sandstone, painterly wax/oil, 3D render, digital gradients, woven fabric, scientific image language, sacred motifs or geometric mandala. Very dark plum #281C32 background, mineral lavender #8A77AD, warm saffron #D49A52 and grain ivory #E7D8B1. Upper55% quiet dark-plum fine grain surface, generous app icon space, no floating objects there. Bold expressive simplified architectural shapes, warm welcoming little community, readable at phone scale. No text, letters, numbers, signage, labels, clock/dials, dates, percentages, live weather values, UI, logo, watermark, border, frame or phone mockup.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.6310e1eb.png",
+  "sourceSha256": "6310e1eb5d0cd6987e7942f34108fdc8ac15988e9edd58cf776b2558c3eff22f",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "ea09244f3697c9d8412b67de0d8412934928a678a18b79fe86dc6e8f568e39e6",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

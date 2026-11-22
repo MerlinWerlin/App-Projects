@@ -1,0 +1,62 @@
+[
+  {
+    "id": "tide-stair-inn",
+    "kind": "art",
+    "image": "tide-stair-inn.adb594c8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Tide Stair Inn"
+  },
+  {
+    "id": "suspended-seedbank",
+    "kind": "art",
+    "image": "suspended-seedbank.6119fa3a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Suspended Seedbank"
+  },
+  {
+    "id": "windcloth-exchange",
+    "kind": "art",
+    "image": "windcloth-exchange.f5e94797.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Windcloth Exchange"
+  },
+  {
+    "id": "nightwater-bath",
+    "kind": "art",
+    "image": "nightwater-bath.657549ea.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Nightwater Bath"
+  },
+  {
+    "id": "bridgeborn-bakery",
+    "kind": "art",
+    "image": "bridgeborn-bakery.adf794e6.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bridgeborn Bakery"
+  }
+]
