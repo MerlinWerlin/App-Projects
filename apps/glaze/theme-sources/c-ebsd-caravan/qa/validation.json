@@ -1,0 +1,168 @@
+{
+  "id": "c-ebsd-caravan",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "saddleback-porter",
+    "trident-grazer",
+    "bellows-glider",
+    "cairn-lifter",
+    "spindle-burrower"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.bb7ab7e2.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 12814,
+    "sha256": "bb7ab7e24e6c7781bcdb85eea8fe7765c7f40b3ce6b678bc52b367de4d79b5e8",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed separately generated double-back-arch porter, three-jaw grazer, fan-wing glider, crescent-arm lifter and coiled burrower at210/150px and actual encoded85px. Five distinct complete silhouettes, same flat saturated orientation grains/charcoal seams/sparse twin bands. Genuine transparent outside/open gaps.",
+    "wallpaper": "Viewed all3 actual encoded phone variants after composition-only edit. Every wing/jaw/scoop/foot/tail and dorsal arch retained, upper field quiet, pale segmented terrain continuous through edges. Five original creature identities preserved in one shallow valley migration scene.",
+    "native": "Viewed all9 current coordinator real renderer previews in scratch. Live readings remain clear. Dedicated irregular grain section/twin ornament fits compact headers, independently of full porter hero.",
+    "roundedArtworkCorners": "Viewed5 encoded artwork assets using real app background stops,Fit6%inset,conservative20%roundedmask. All visible alpha16 retained; pale matching corners support dense primary grains."
+  },
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-ebsd-caravan",
+    "backgroundStops": [
+      "#E9E9E2",
+      "#DCE4DC"
+    ],
+    "pieces": [
+      {
+        "id": "saddleback-porter",
+        "sha256": "562a3044037d10a8c9b785afb2d1d332509d1006cdd7e7053f6906c7f30f8729",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "trident-grazer",
+        "sha256": "ad2b130185e8a382950038c16b7c7ec0681de5abfa8fa0d64cc243e1c1e7a1f9",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "bellows-glider",
+        "sha256": "44f451c3f9b4cb470e8abd876aeddc5a6f681e95904a3b8e8039ea8f2bde4cc3",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "cairn-lifter",
+        "sha256": "fdef2f5186abad9cb374b2c4d7fdccad5e7051e496d83e771d994559872cef30",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "spindle-burrower",
+        "sha256": "9d9b06d80190339fe9b876b57d7f088819d367f3370d91ebb2dece661fb46721",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 6,
+  "packTestEvidence": "Actual offline builder v1:9assets/1.34MB. Real manifest/catalogue parsers,5pureart/9changingnative,ornament roundtrip,battery null/0/100,full decode/dimensions/source+encoded hashes,6selected provenance/noorphans pass. Common47 pipeline checks previously passed; shared runtime untouched."
+}

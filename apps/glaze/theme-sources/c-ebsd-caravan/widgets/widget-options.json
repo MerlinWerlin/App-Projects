@@ -1,0 +1,67 @@
+[
+  {
+    "id": "saddleback-porter",
+    "kind": "art",
+    "image": "saddleback-porter.5f160e27cdc5.png",
+    "sha256": "5f160e27cdc543d15ca1313e66be1c3f447a5950d8a04c58f3674c1a6d8cb774",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Saddleback Porter"
+  },
+  {
+    "id": "trident-grazer",
+    "kind": "art",
+    "image": "trident-grazer.f5e72c1a8b79.png",
+    "sha256": "f5e72c1a8b795876e59cc3b10f4293a5077f8e3c64503f18c6458cc4aa0eb3db",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Trident Grazer"
+  },
+  {
+    "id": "bellows-glider",
+    "kind": "art",
+    "image": "bellows-glider.2a3f8af137e7.png",
+    "sha256": "2a3f8af137e70d69f3ba02e94a909a00a49f1b2dfd3123e2ccaacabf662447e5",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bellows Glider"
+  },
+  {
+    "id": "cairn-lifter",
+    "kind": "art",
+    "image": "cairn-lifter.486523b8a650.png",
+    "sha256": "486523b8a650aa5fdca947b5321cd35b9afde437198003bdd7ab377126964af2",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cairn Lifter"
+  },
+  {
+    "id": "spindle-burrower",
+    "kind": "art",
+    "image": "spindle-burrower.98edcd62421a.png",
+    "sha256": "98edcd62421a0c80e684bd4297db675b80c2c2850e77a78ddde400f3b52694a7",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Spindle Burrower"
+  }
+]
