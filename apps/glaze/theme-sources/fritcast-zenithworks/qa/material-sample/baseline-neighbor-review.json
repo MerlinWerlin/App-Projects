@@ -1,0 +1,32 @@
+{
+  "status": "Distinct material accepted after actual sample gate",
+  "neighbors": [
+    {
+      "source": "theme-sources/enamel-reliquary/provenance.json",
+      "sha256": "f441a5fa88582293e6c03bfc40d05048281c148d6a3103b59d0d51ba575d864f",
+      "actualNeighborProcess": "Molten smooth cloisonne enamel in metal cell borders, no granular fused-frit faces."
+    },
+    {
+      "source": "theme-sources/beadweft-estuary/provenance.json",
+      "sha256": "7b0b4ac40645d963c3265467b54d363adb7fee0a9d373a0ff02a4c33c6876503",
+      "actualNeighborProcess": "Individually cylindrical drilled glass seed beads and thread bridges, no kiln-fused surface."
+    },
+    {
+      "source": "pack-artwork/frostglass-passage/provenance.json",
+      "sha256": "850fc29dd1bc802260f92fc0913e81fc6608a7bd2606ec7faf4859ffe6acdb05",
+      "actualNeighborProcess": "Clear frosted ice-glass pinecone with crystalline scales/silver-blue refractions, no powdered-glass grain structure."
+    },
+    {
+      "source": "pack-artwork/sea-glass-sunday/provenance.json",
+      "sha256": "ec0a1d9db86313bb396dc5eb6429c4cdadb0d08f1e0b3e5f54f761e126642b72",
+      "actualNeighborProcess": "Rounded softly sea-worn frosted sea-glass crab with pale aqua body and clear legs, no fine fused-frit faces."
+    }
+  ],
+  "selectedProcess": "Matte rough fused powdered-glass grain faces and cloudy chipped lips throughout panels/ribs/hinges, no metal enamel borders, bead holes/threads, smooth polished glass or icy refraction bodies.",
+  "coordinatorReviewedSizes": [
+    "full",
+    "170px",
+    "85px"
+  ],
+  "originalFirstSampleUnchanged": true
+}

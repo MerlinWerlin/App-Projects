@@ -1,0 +1,18 @@
+{
+  "id": "foldwing-mirror-hall",
+  "prompt": "FRITCAST ZENITHWORKS for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA, an invented useful public NOCTURNAL SKY-OBSERVATION STRUCTURE with a radically clear engineered silhouette. Physical craft PATE-DE-VERRE POWDERED-GLASS KILNCAST RELIEF: shapes formed from individually visible very small FUSED GLASS FRIT GRAINS, rough sugary matte granular faces, cloudy translucent thin lips, occasional tiny trapped pinholes and fragile chipped glass edges. Thin cast glass relief with solid structural ribs and open windows, grains subordinate to whole silhouette; no large polished3Dcrystal/gem toys, smooth ceramic/clay, marzipan/biscuit, royal-icing pipes, cylindrical seed beads/holes/threads, enamel metal-cell walls or digital optical/scientific orientation maps. Acid-lime #C9D77B, cobalt #4353A3, warm ochre #D4A145, cloudy oyster #E4E2D2, restrained ink-forest #20382F shadows. Purposeful access steps, shutters, hinges, counterweights, mirror apertures and viewing platforms clarify actual imagined observation function. No ordinary isolated telescope or routine object collection. Entire complete structure SMALL central64% with at least18% TRUE alpha margins on all4sides; open spaces genuinely transparent, no clipped roof/handle/stair/feet. No floor/terrain/scenery/pedestal, backing plaque/rectangle, enclosing border, halo/glow/drop shadow, baked light UI, letters/text/numbers/signage/symbols, clocks/date/battery/weather values or logo. No people/animals or weapons. Subject FOLDWING MIRROR HALL, FIRST MATERIAL SAMPLE: one compact nocturnal observation HALL on THREE narrow open arched stilts. Its roof splits into TWO ENORMOUS FACETED TRIANGULAR MIRROR SHUTTERS hinged upward like asymmetric wings, left wing tall/steep, right wing broader/lower. Cloudy lime/oyster rough frit outside, dark cobalt rough granular inside, thin chipped translucent cut lips show fine fused grains throughout. A large open central viewing arch reveals three small inclined plain dark mirror panels on a stepped baffle, mirrors subordinate and unmarked, no telescope. TWO short zigzag stair flights lead to an open central viewing deck with low rail; visible hinges and counterweight pins explain folding shutters, large true alpha openings under hall/stilts and between wing panels. A compact thin kilncast-glass relief, not stone/wood/metal/clay/toy; very clearly granular FUSED POWDERED GLASS with matte rough faces and cloudy edge translucency, no cylindrical beads/threads or enamel cell walls. Entire BOTH shutter tips, stair ends, rails and ALL3stilt feet central and complete inside generous transparent margins. No stars painted around it, no ground/scenery/backing/halo/shadow.",
+  "tool": "built-in image_gen",
+  "source": "sources/foldwing-mirror-hall.e9552017.png",
+  "sourceSha256": "e9552017f9077e45aeea6c712da301da6b99e11b7fa24ea1c540a1b3d1540d1b",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/foldwing-mirror-hall.378ba16f.png",
+  "sha256": "378ba16fb2e5baf329784fc3b5670c68079640b2655b577698cc9b6bfee227ee",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

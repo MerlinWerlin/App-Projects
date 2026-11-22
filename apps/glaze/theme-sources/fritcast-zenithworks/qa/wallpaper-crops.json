@@ -1,0 +1,38 @@
+{
+  "themeId": "fritcast-zenithworks",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.2aae230e.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "2aae230e6097a021fbe0a889c129702659b396c9dbe0f07da4f08a341492b214",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.0d9ccb1f.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "0d9ccb1f80f3b2ee461f3bc09bfdf9e9898d2659e60d9a1556bfcac03ec29e87",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.5e9372d6.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "5e9372d62778e49ebc692291c065d26079abffef9d01789fc30fc5bda974d9a1",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedVariants": 3,
+    "finding": "All five connected structures, full foldwing roof tips, suspended pod/arch/counterweight, well shutters, bridge/pier feet and spiral pavilion/stairs retained in all actual encoded exports including750x1334. Quiet forest ground surrounds station."
+  }
+}

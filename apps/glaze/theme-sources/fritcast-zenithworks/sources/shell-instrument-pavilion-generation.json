@@ -1,0 +1,18 @@
+{
+  "id": "shell-instrument-pavilion",
+  "prompt": "FRITCAST ZENITHWORKS for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA, an invented useful public NOCTURNAL SKY-OBSERVATION STRUCTURE with a radically clear engineered silhouette. Physical craft PATE-DE-VERRE POWDERED-GLASS KILNCAST RELIEF: shapes formed from individually visible very small FUSED GLASS FRIT GRAINS, rough sugary matte granular faces, cloudy translucent thin lips, occasional tiny trapped pinholes and fragile chipped glass edges. Thin cast glass relief with solid structural ribs and open windows, grains subordinate to whole silhouette; no large polished3Dcrystal/gem toys, smooth ceramic/clay, marzipan/biscuit, royal-icing pipes, cylindrical seed beads/holes/threads, enamel metal-cell walls or digital optical/scientific orientation maps. Acid-lime #C9D77B, cobalt #4353A3, warm ochre #D4A145, cloudy oyster #E4E2D2, restrained ink-forest #20382F shadows. Purposeful access steps, shutters, hinges, counterweights, mirror apertures and viewing platforms clarify actual imagined observation function. No ordinary isolated telescope or routine object collection. Entire complete structure SMALL central64% with at least18% TRUE alpha margins on all4sides; open spaces genuinely transparent, no clipped roof/handle/stair/feet. No floor/terrain/scenery/pedestal, backing plaque/rectangle, enclosing border, halo/glow/drop shadow, baked light UI, letters/text/numbers/signage/symbols, clocks/date/battery/weather values or logo. No people/animals or weapons. Subject SHELL INSTRUMENT PAVILION: one BROAD ASYMMETRICAL SPIRAL-SHELL CANOPY curves from high left down to low right, constructed from FIVE overlapping thick curved kilncast-glass rib panels with scalloped cloudy chipped lips, not a sea animal or living shell. Canopy shelters an OPEN VIEWING BALCONY on TWO broad pierced arch feet, a single wide four-tread FRONT STAIR and a low curved safety rail. Inside, one small ARTICULATED TRIANGULAR SIGHTING FRAME on a short pivoting stand and two tiny plain tilted mirror planes clarify sky-measurement use; no ordinary telescope, clock/dial/numbers. Very large open negative space under spiral canopy and through feet, low wide horizontal shell profile different from triangular foldwing hall, hanging pod or star well. Every canopy/rib/rail/pivot/hinge/stair including warm ochre parts is rough MATTE FUSED POWDERED GLASS FRIT, tiny visible grains/cloudy pinholes and broken translucent edges, not smooth metallic gold/cloisonne or polished3Dglass toy. Lime/oyster outer canopy, cobalt deep interior and muted ochre structural joints. Complete spiral tip, outer rim, all stairs/rails and both foot ends contained with generous true alpha margins. No scenery/ground/backing/palehalo/shadow.",
+  "tool": "built-in image_gen",
+  "source": "sources/shell-instrument-pavilion.c0b8035f.png",
+  "sourceSha256": "c0b8035fa02108f2f85dac425aa13a9b287ad46f791cf9e8d7d09e47dff1cbbd",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/shell-instrument-pavilion.f06cb139.png",
+  "sha256": "f06cb139a9c2c57d98ada22f28961ea98cb067118869ab5d0f3c24a12b5ad372",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
