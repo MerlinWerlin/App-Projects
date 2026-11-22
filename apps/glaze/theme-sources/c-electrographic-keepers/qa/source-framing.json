@@ -1,0 +1,100 @@
+{
+  "review": "Opaque bodies and dim electrical fringes checked at alpha16 and96; all fully inside original source frames.",
+  "assets": [
+    {
+      "id": "split-cowl-sentinel",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          157,
+          67,
+          1167,
+          1191
+        ],
+        "96": [
+          158,
+          68,
+          1166,
+          1189
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "mainAndFringeInsideFrame": true
+    },
+    {
+      "id": "mantle-bastion",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          36,
+          311,
+          1217,
+          1014
+        ],
+        "96": [
+          45,
+          319,
+          1208,
+          1008
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "mainAndFringeInsideFrame": true
+    },
+    {
+      "id": "latch-keeper",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          54,
+          144,
+          1189,
+          1114
+        ],
+        "96": [
+          57,
+          148,
+          1188,
+          1110
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "mainAndFringeInsideFrame": true
+    },
+    {
+      "id": "braid-crawler",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          124,
+          178,
+          1141,
+          1082
+        ],
+        "96": [
+          125,
+          179,
+          1139,
+          1080
+        ]
+      },
+      "edgeAlphaMaximum": 2,
+      "mainAndFringeInsideFrame": true
+    },
+    {
+      "id": "sailwatcher",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          60,
+          162,
+          1206,
+          1094
+        ],
+        "96": [
+          64,
+          167,
+          1200,
+          1088
+        ]
+      },
+      "edgeAlphaMaximum": 3,
+      "mainAndFringeInsideFrame": true
+    }
+  ]
+}

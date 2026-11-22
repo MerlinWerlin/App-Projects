@@ -1,0 +1,51 @@
+{
+  "selected": false,
+  "reason": "Identities/style were correct, but the smallest750x1334 centre crop trimmed foreground feet/fringes. Retained as the direct edit input for a safer composition.",
+  "priorSelectedRecord": {
+    "id": "wallpaper",
+    "sourceImage": "sources/wallpaper.7e6fddf5b584.png",
+    "sourceSha256": "7e6fddf5b5844ed09d8fc2334fbf58fcaeb59957156cb24a1073b486527f624e",
+    "sourceDimensions": [
+      852,
+      1847
+    ],
+    "file": "wallpapers/wallpaper.png",
+    "sha256": "d510e1ac9e48c58eac6361fc9bbbab01e882fb9b8e4aa1c7a9ba4b1d163af842",
+    "width": 1290,
+    "height": 2796,
+    "bytes": 3036763,
+    "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+    "prompt": "Use case: stylized-concept. GLAZE ELECTROGRAPHIC KEEPERS, a tangible invented dusk-guardian ecology shown through fictional high-voltage corona-discharge contact imaging. MEDIUM: KIRLIAN-STYLE ELECTROGRAPHIC CONTACT PHOTOGRAM. The complete recognizable dark charcoal/indigo body has a crisp readable silhouette, faint quiet surface information and clear anatomy or working mechanism. A dense irregular fringe of tiny branching electric filaments erupts ONLY along its boundary and open internal edges: icy blue-white tips, cobalt/violet roots, fine fernlike micro-branches. Uneven discharge clusters and empty breaks make the electrical process unmistakable. Keep most of the body solid matte dark blue-gray, not made of glow or transparent wire. The corona reveals the tangible silhouette rather than replacing it with an abstract energy cloud. Flat contact-imaging projection with subtle internal tonal volume, no conventional glossy3D material. No smooth concentric diffraction fringes, repeated rainbow bands, heat gradients, scan dots/lines, X-ray bones, particle trajectories, coloured double registration, hologram, laser outline, glass, chrome, shiny plastic, clay sculpture or fantasy neon armour. Fictional artistic electrical imaging, not real measured sensor data or health claims. No words, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE NEW portrait phone wallpaper1290x2796. Use the FIVE supplied original transparent artwork images as identity references; preserve their exact distinctive anatomy/mechanisms. A coherent quiet ground with ONLY these five nonhuman keepers: split-cowl sentinel with visible torso/twoarms/twolegs/hugepalms, low quadruped mantle-bastion with overlapping back plates, open clam-shield latch machine with latch/pincer/threefeet, a single six-footed braid-crawler with three interwoven necks, and a saddle-canopy sailwatcher with eyes underneath and six jointed paddle limbs. Do not turn any into a building or human. NO people, cloaks, robes, clothing, staffs, tridents, houses, huts, cabins, towers, gates, castles or conventional robots. Place the complete five bodies in the LOWER HALF in a loose natural gathering with appropriate scale: sentinel left of centre, mantle and latch machine foreground, braid-crawler behind and sailwatcher just above them. Keep full bodies/fringes away from extreme sides/bottom for alternative device crops. A few low dark indigo ground ridges with faint discharge at their edges establish a shared contact-imaged setting; otherwise opaque near-black navy. Upper45% completely quiet. Match the references matte indigo bodies and irregular tiny branching blue/violet/white boundary discharges. No smooth neon ribbons, fantasy costume scene or added objects. Whole composed world, not a collage/contactsheet, individual panels or a device mockup. Full bleed opaque wallpaper, no text or UI.",
+    "generationTool": "built-in image_gen",
+    "externalReferences": [],
+    "internalReferences": [
+      {
+        "id": "split-cowl-sentinel",
+        "sourceImage": "sources/split-cowl-sentinel.0be1d52928d7.png",
+        "sha256": "0be1d52928d778b76c3819b9da1e5d40ef0c8276751a22f108e0ac14653a6e6d"
+      },
+      {
+        "id": "mantle-bastion",
+        "sourceImage": "sources/mantle-bastion.0c3a7828f87e.png",
+        "sha256": "0c3a7828f87e805cc3b4795c33da736e7e7fd1896f463f21ac768270d17df79d"
+      },
+      {
+        "id": "latch-keeper",
+        "sourceImage": "sources/latch-keeper.f3cffc9d9898.png",
+        "sha256": "f3cffc9d98985e5301d04db9ba9c31a954a0fef2357fb7715aeaf2faccdd2ba9"
+      },
+      {
+        "id": "braid-crawler",
+        "sourceImage": "sources/braid-crawler.0eb87dab075b.png",
+        "sha256": "0eb87dab075b16793df9502988aac14321bf7d8ab5cd9c34141eddc4cf120a8c"
+      },
+      {
+        "id": "sailwatcher",
+        "sourceImage": "sources/sailwatcher.7aa921f67f4b.png",
+        "sha256": "7aa921f67f4bbfe8c1682e2f7f9dc3dc0426e4875a5c5eeee38128936d5b549b"
+      }
+    ],
+    "generationContext": "Separate new wallpaper generation using the five original selected artworks as identity references. Earlier generic scene retained as explicitly rejected evidence."
+  },
+  "referenceImage": "wallpaper.7e6fddf5b584.png"
+}
