@@ -1,14 +1,21 @@
 {
   "status": "passed",
+  "audit": "SECOND AUDIT",
   "artworkSubjects": 5,
-  "contactAnd85pxReadability": "reviewed",
   "actualEncodedSmallAndLargeRoundedLayouts": 10,
   "clippedForegroundPixels": 0,
   "actualNativeLayouts": 9,
   "compactHeaderOrnaments": 4,
   "actualWallpaperCrops": 3,
-  "filledDateCases": 96,
-  "fontSize": 12,
-  "filledDateCoreOverflowAlpha96And128": 0,
-  "finding": "Five recognizable saltmarsh subjects in broad copper/brass/silver/dark-alloy bonded flowing metal laminate: plover/samphire, harbour seal/bladderwrack, whelk/eelgrass, airy sea lavender and long-billed curlew/sedge. Approved first plover retained unchanged after material gate. Metal strata and cross-cut layered lips stay legible at85; no added jewellery/inlay plaque, metal weave, wire embroidery, wood grain or painted marble. Sea-lavender oversized rose-like blossoms refined into airy clusters of tiny five-lobed tubular flowers, original and exact single-own-source botany edit retained with primary text-only references. All actual dark-tidal alpha composites clean and all five small/large encoded rounded layouts whole. Initial coherent wallpaper uses own approved plover then own selected seal as ordered material/anatomy references; final source is one uniform60percent whole-habitat layout-only pullback, initial source/both exact requests/ordered source hashes retained. All three encoded phone crops preserve every bill/toe/whisker/flipper/leaf/flower/bank tip with broad quiet deep tidal sides/top/bottom. Actual native9/live9 and four uniformly fitted compact samphire/parallel metal-strata fragments viewed, no whole bird in small headers. Square face from inception retains12pt dates; actual current filled markerJan1\u201331+Nov22 at1x/2x/4x96cases zero core overflowalpha96/128 and exact savedSVG reproduction. Actual nine neighbors/source hashes reverified including published Silver Orchard. No external artwork inputs, shared/frozen/Swift edits, installed-device or publication claim."
+  "allSizeSamePointSizeBoldTodayCases": 288,
+  "todayAndNormalPoints": {
+    "small": 12,
+    "medium": 12,
+    "large": 19
+  },
+  "finding": "Whole long-billed curlew/legs/toes, plover and seal/flippers remain complete in all three actual encoded phone crops. Taller sedge and airy lavender join a flowing tidal bank/channel. Broad bonded metal strata remain legible. Wave contour echoes the tidal metal flow; hero/detail/compact marsh fragment remain exact.",
+  "frozenArtProof": "qa/second-audit/frozen-art-proof.json",
+  "clockFaceRationale": "Flowing bonded metal strata and tidal contours.",
+  "history": "qa/second-audit/wallpaper-history.json",
+  "scope": "Actual encoded wallpaper crops/native board visually reviewed. All five art/raw/options/palette/meta and native hero/detail/ornament remain frozen. Calendar-only badge adapts independently. Windows current-renderer proof; no Apple/device/publication claim."
 }

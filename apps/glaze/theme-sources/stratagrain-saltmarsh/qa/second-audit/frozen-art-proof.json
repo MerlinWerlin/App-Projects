@@ -1,0 +1,38 @@
+{
+  "themeId": "stratagrain-saltmarsh",
+  "protectedFiles": {
+    "widgets/curlew-sedge.f1aa7344.png": "f1aa7344b76c084d05f9bd8dc9cc970cd791575c83a0f7cd404c77de3647c2ec",
+    "widgets/harbour-seal.a6c44e12.png": "a6c44e120828752a089c62da2d94eb2bfdd911d49a3ca93ad02078fe7154caba",
+    "widgets/plover-samphire.98f537e2.png": "98f537e2cb53349049a0f49c8a3d2bc5c0095dd3f2d0edef96ea10f477b40e55",
+    "widgets/README.md": "0324dbb7e4318bf9d0646aa3189fe6a34b6cf23d30565bc01a7f18f4155efa77",
+    "widgets/sea-lavender.425aba02.png": "425aba02e36d7e40a585e887c8735d84ecc4393d68fb8e70403f11e1e758fe6b",
+    "widgets/whelk-eelgrass.5a71cc4f.png": "5a71cc4f6a1547f1dce6c5949549d752f92d773688cedff7c01d41ef3b3970d6",
+    "widgets/widget-options.json": "e93459ceda404c87ab7f6aa4571832197c5e61f9dfdc3fb87b166331e168f46b",
+    "sources/curlew-sedge-generation.json": "87a9c5f11aad46baf5237332f572ede5d185db9f8d4c2e40d8669d6294d8a30f",
+    "sources/curlew-sedge.6d1dc8d5.png": "6d1dc8d5b3a1896ae74532aef809aa1236b365ae1a450162ea9cfdfdcbc0ee57",
+    "sources/harbour-seal-generation.json": "119f3390e5c402edd10589821bf1f0aa00d03b3985fde3ce5e9bd9347a45ffe6",
+    "sources/harbour-seal.d85a4e16.png": "d85a4e1694e2e29f44673ee5abb1d0127437837e7f5c32803b4ddecc7a3e6537",
+    "sources/plover-samphire-generation.json": "d03f25583c41f2571e79f990467073ce11f229f01ce293a578dc90b7e70bbff7",
+    "sources/plover-samphire.0ef856c3.png": "0ef856c38fc986ec6c3703caa42881cabb299555f003a99e5e717a9ea40fc635",
+    "sources/README.md": "37fb033bbd2b19036277f10678220d7e48f855cd6c037582c5d2bc28ca58bd51",
+    "sources/sea-lavender-generation.json": "a5d1a4fd993b4c308d46a173d91d7a8fcc3bd23c091d94e920c91ff211905dac",
+    "sources/sea-lavender.3921df34.png": "3921df34a181726b40ddd476203d8fbbc58e4bf8b8fbb01442de8e2bdd91f9a1",
+    "sources/whelk-eelgrass-generation.json": "80ee5988d3822ba1abb905545a5ccf3409ac9c9681d1c63c101b3d4478b4c6bb",
+    "sources/whelk-eelgrass.70b5f1ff.png": "70b5f1ff05bcbebe932da833c416a2a470393fbcab7f49d569c452853afec8aa",
+    "palette.json": "7a0205aa1b3c412a429f0334493e7e460fc94807bdfbce271a58203624f26eb1",
+    "meta.json": "3fd934074a43e205d6761ac4ea9c1feb49f653cfd04a2d520d8e75c1cd43158c"
+  },
+  "allProtectedBytesIdentical": true,
+  "artworkProvenanceIdentical": true,
+  "nativeHeroDetailOrnamentAndOtherRecipeEntriesIdentical": true,
+  "rootFreezeMatch": {
+    "rootHead": "84802d56739aaa2561e77e6595dd6eeb61a32548",
+    "rootFreezeFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\outputs\\second-audit-art-freeze-before.json",
+    "rootFreezeSha256": "16c6aa7811e73754166d3e4b55f699c63d0b2cd9c3959b15b408e7abc388b4a2",
+    "allWidgetsArtworkProvenanceOriginalsPaletteMetaMatch": true
+  },
+  "faceBefore": "square",
+  "faceAfter": "wave",
+  "artisticFaceRationale": "Flowing bonded metal strata and tidal contours.",
+  "scope": "Only selected wallpaper/thumbnail and its provenance plus artistic clock contour changed; palette/meta and every selected artwork/raw/options remain byte-identical."
+}

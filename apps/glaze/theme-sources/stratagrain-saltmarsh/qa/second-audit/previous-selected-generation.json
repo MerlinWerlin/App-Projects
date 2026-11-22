@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Precise LAYOUT-ONLY edit of input1, own Stratagrain Saltmarsh wallpaper. Preserve exact coherent existing bonded mixed-metal saltmarsh habitat: complete natural plover/short bill/two feet, whole harbour seal/all flippers/whiskers, both samphire forks, sedge, airy small sea-lavender flowers, shallow tidal oval and complete flowing natural bank rim. Keep broad continuous copper/brass/silver/dark-alloy strata and ring-eye layers, satin metal lighting, real layered cut lips, all organism proportions and internal arrangement unchanged. Uniformly scale the ENTIRE whole connected habitat as ONE unit to60percent of its CURRENT width and height. Place the whole smaller habitat horizontally centered and with its overall center at57percent canvas height. Extend ONLY matching quiet deep tidal blue-green #1F383E background around it, same very subtle tonal variation, no visible rectangular paste edge. Final habitat should occupy about HALF canvas width, at least24percent blank quiet background on BOTH left/right sides, generous quiet space above/below. Preserve every bill/foot/whisker/flipper/leaf/grass/flower/bank tip inside full margins. No individual subject resizing, no pose/material changes, no crop, new/duplicate/replaced organisms, new scenery/corner plants/borders/jewellery plaques, glow/shadow/frame or text/UI. No zoom/reframe that enlarges the whole scene. Opaque full wallpaper, no transparency.",
+  "tool": "built-in image_gen",
+  "source": "qa/second-audit/previous-selected-wallpaper.png",
+  "sourceSha256": "bf0688c5f01cc373c73de8e239dbdb6da9f3c31a2ce260167b2328126f921751",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "4e2e5532e92542f4ac240e97d3d3eed9a846e3c887a94d29bb1d469a449bbcad",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.ed365c49.png",
+    "sha256": "ed365c4918938405aa2530fee2e1ac43ad133a9675b8e301033ce4828734a9e5"
+  }
+}
