@@ -1,0 +1,1 @@
+Retained original wallpaper source, selected wallpaper and thumbnail, exact original prompt and the builtin imagegen edit lineage. The approved style and five performers remain; scene layout gained breathing room for shorter device crops. These prior files are reference evidence, not selected production inputs.

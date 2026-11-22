@@ -23,5 +23,6 @@
   "nativeLayoutsRendered": 9,
   "liveValueChangesVerified": 9,
   "registryStatus": "Proposed identity verified via in-memory registry injection; coordinator must integrate shared registry.",
-  "publication": "held for Jared explicit OK"
+  "publication": "held for Jared explicit OK",
+  "wallpaperFramingFollowup": "wallpaper-edge-study/scope-validation.json"
 }
