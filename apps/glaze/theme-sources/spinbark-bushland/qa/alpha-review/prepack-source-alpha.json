@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "laughing-kookaburra",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-dfc24f68-deb0-4377-aee6-45c7228bcb5e.png",
+      "sha256": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1250,
+        1254
+      ]
+    },
+    {
+      "id": "shortbeaked-echidna",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-25c5e0c6-f0e2-4c24-b587-584c7a510a19.png",
+      "sha256": "52b7a3f736036b532dcba6a69e8c021cb4927d4dc1959cc512564b42428034a3",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1244,
+        1254
+      ]
+    },
+    {
+      "id": "eucalyptus-gumnuts",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-af0b4975-7e44-4380-949f-324c4f602b8c.png",
+      "sha256": "84a44c294a98cc8695204e17a2e11e3331d861b3eef3a6154d63ffd312cae322",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        13,
+        1226,
+        1240
+      ]
+    },
+    {
+      "id": "frilled-lizard",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-52479ca4-1e05-4ded-9994-7b22adece244.png",
+      "sha256": "68fd9142d86e41c9219cdfe8bc204d414a97e2f113fdd19527c70f2a31bd091b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1253,
+        1254
+      ]
+    },
+    {
+      "id": "banksia",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-0b8928cb-47a5-498e-8dce-c9406e6e8deb.png",
+      "sha256": "27710d8e6e9c142eb6972843e3705edce79e76d3bb78236afea7a6310c5c5bd2",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1228,
+        1236
+      ]
+    }
+  ]
+}

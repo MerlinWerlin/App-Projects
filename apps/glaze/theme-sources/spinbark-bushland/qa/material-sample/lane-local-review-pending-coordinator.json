@@ -1,0 +1,19 @@
+{
+  "status": "accepted for lane-local expansion; coordinator review pending",
+  "reviewAuthority": "lane-local; coordinator review pending",
+  "sourceSha256": "1310a212240c0edc71c7e201440629fe45ce8e53c4a6e60a2987b01414393e79",
+  "selectedSource": "C:/Users/jared/.codex/generated_images/01a20118-7a77-7d40-9d01-0342bf474860/exec-dfc24f68-deb0-4377-aee6-45c7228bcb5e.png",
+  "scope": "Actualfull540/170/85 properalpha and6own+all15Notchbough/Shavetail/Guilloche+34actualbaseline imageboards viewed. Wholekookaburra clear; broadsolidwoodovoid/spindlecomponentprofiles/coarsecircumferentialpartinggrooves/steppedshoulders, smallnecktenoncollar andcircularendgrainshoulder/branch remainvisibleat85. Differentfromopenwoodlaths/paintedpencilshavingfans, flatveneer/straw, seedivoryfineincisions, solidragpulp, fishleather, mineralstone andflatpetrol-blueguillocheprintedrosetteloops. ActualGuillocheprovenancereadcorrectly before firstgeneration; earlierdraftmislabelhistory retained. First1310a212 unchanged. Lane-local selection only, coordinator/Jared approvalnotclaimed. Originalhumanbrief explicitlypermitsisolatedcollisioncheckedlane workduringmessagingoutage.",
+  "coordinationAttempts": [
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 predecessorrelease+Spinbarkintent dispatch failed",
+      "delivery": "unknown"
+    },
+    {
+      "tool": "mcp__codex_app__send_message_to_thread",
+      "result": "MCP-32000 actualfirstmaterial-gate dispatch failed",
+      "delivery": "unknown"
+    }
+  ]
+}
