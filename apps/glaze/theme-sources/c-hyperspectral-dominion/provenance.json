@@ -1,0 +1,142 @@
+{
+  "theme": "c-hyperspectral-dominion",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.544d277d254c.png",
+      "sourceSha256": "544d277d254cb7e00b04b655f16ec2f6a6420dcc042a40e02982bdf297a8406b",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "a9fcd7f377c1c35228ec6e8f7e28f5cfd259e0e8fd4c0f4c53440a52222aefcc",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 4572923,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze HYPERSPECTRAL DOMINION. Medium: fictional nadir hyperspectral remote-sensing cartography, finely block-sampled spectral land-cover classification, intricate contour bands and dendritic river topology seen strictly from above. Flat detector-map pixels, crisp irregular region boundaries, dense fine geospatial texture. Unnatural spectral palette: seafoam mint, acid citron, coral magenta, muted violet and deep blue-green silence. Fine violet contour threads, no shaded relief. The spectral segmentation and sampled map texture MUST be visible. No 3D terrain model, perspective, miniature landscape, solid object, material, paint brushwork, print craft, glossy surface, smooth rainbow interference, particle trails, ultrasound noise or orange spectrogram combs. No real country shapes, recognizable places, map labels, borders, compass, scales, coordinates, text, numbers, UI, readings, logos or watermark. Imaginary regions only, not measured Earth data. Asset: ONE portrait phone wallpaper1290x2796. Pale quiet mint optical field. In the lower two-thirds, an immense imaginary spectral delta forms an asymmetric archipelago of tightly sampled mint/coral/violet patches, meandering dark channels and impossible nested contour basins. A thin branched estuary reaches upward from the right while the top third and upper left remain mostly quiet pale mint. A few isolated tiny spectral islands below. Edge-to-edge map composition, no paper texture, no framing or device mockup; opaque background.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    },
+    {
+      "id": "oxbow-labyrinth",
+      "sourceImage": "sources/oxbow-labyrinth.f5158791ca87.png",
+      "sourceSha256": "f5158791ca87beb12ed367524a09357739f8e0c0783a3d5cb953a398441a46ea",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "file": "widgets/oxbow-labyrinth.334c3ebbade1.png",
+      "sha256": "334c3ebbade1426a83619b95f502525a5db0df2f8331c8fd2c90ae109e6f699d",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 603109,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze HYPERSPECTRAL DOMINION. Medium: fictional nadir hyperspectral remote-sensing cartography, finely block-sampled spectral land-cover classification, intricate contour bands and dendritic river topology seen strictly from above. Flat detector-map pixels, crisp irregular region boundaries, dense fine geospatial texture. Unnatural spectral palette: seafoam mint, acid citron, coral magenta, muted violet and deep blue-green silence. Fine violet contour threads, no shaded relief. The spectral segmentation and sampled map texture MUST be visible. No 3D terrain model, perspective, miniature landscape, solid object, material, paint brushwork, print craft, glossy surface, smooth rainbow interference, particle trails, ultrasound noise or orange spectrogram combs. No real country shapes, recognizable places, map labels, borders, compass, scales, coordinates, text, numbers, UI, readings, logos or watermark. Imaginary regions only, not measured Earth data. Asset: ONE separate square1024x1024 pure-art widget. Subject OXBOW LABYRINTH: a wide low island of finely classified mint/coral/violet spectral patches with one dark meandering channel doubling back five times; a bifurcated estuary opens left while three detached tiny sampled islands sit off the narrow right tip. Irregular horizontal map silhouette with clearly open channel gaps, no conventional object or drawn letter. Whole imagined region centred with15%clear margins. Real transparent alpha outside the mapped island and through large water/silence gaps; no opaque backing, tile, floor, shadow, border or rectangular map panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 858013
+    },
+    {
+      "id": "inverted-atoll",
+      "sourceImage": "sources/inverted-atoll.f10d1c854f34.png",
+      "sourceSha256": "f10d1c854f3417d03767c52659725c7c1a6af12774c5b59b1e60d2984412755e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/inverted-atoll.d0c738af20d5.png",
+      "sha256": "d0c738af20d517ba46596e043bc462b700930c7f18a5b7ab97e1e3743ebbb732",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1126512,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze HYPERSPECTRAL DOMINION. Medium: fictional nadir hyperspectral remote-sensing cartography, finely block-sampled spectral land-cover classification, intricate contour bands and dendritic river topology seen strictly from above. Flat detector-map pixels, crisp irregular region boundaries, dense fine geospatial texture. Unnatural spectral palette: seafoam mint, acid citron, coral magenta, muted violet and deep blue-green silence. Fine violet contour threads, no shaded relief. The spectral segmentation and sampled map texture MUST be visible. No 3D terrain model, perspective, miniature landscape, solid object, material, paint brushwork, print craft, glossy surface, smooth rainbow interference, particle trails, ultrasound noise or orange spectrogram combs. No real country shapes, recognizable places, map labels, borders, compass, scales, coordinates, text, numbers, UI, readings, logos or watermark. Imaginary regions only, not measured Earth data. Asset: ONE separate square1024x1024 pure-art widget. Subject INVERTED ATOLL: an asymmetric thick horseshoe ring of sampled hyperspectral land-cover patches, enclosing a large off-centre transparent lagoon; inner margin forms four uneven concave coves, outer margin has two long thin peninsulas reaching diagonally down-left. Fine violet contour bands wander across the segmented mint/coral terrain. Strong open ring silhouette with no 3D relief or material. Entire invented region centred with15%clear margins. Real alpha in lagoon/outside, no backing, tile, floor, shadow, labels or rectangular map frame.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 679114
+    },
+    {
+      "id": "fault-staircase",
+      "sourceImage": "sources/fault-staircase.70af95d64786.png",
+      "sourceSha256": "70af95d64786f997c34c6edc6b725f4c7d35f445b83d636b0fa5fc121fc342cb",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/fault-staircase.a505f1f761cc.png",
+      "sha256": "a505f1f761cc147623564659ae073e82a76ef28d60f883df869828619c92a846",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1286449,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze HYPERSPECTRAL DOMINION. Medium: fictional nadir hyperspectral remote-sensing cartography, finely block-sampled spectral land-cover classification, intricate contour bands and dendritic river topology seen strictly from above. Flat detector-map pixels, crisp irregular region boundaries, dense fine geospatial texture. Unnatural spectral palette: seafoam mint, acid citron, coral magenta, muted violet and deep blue-green silence. Fine violet contour threads, no shaded relief. The spectral segmentation and sampled map texture MUST be visible. No 3D terrain model, perspective, miniature landscape, solid object, material, paint brushwork, print craft, glossy surface, smooth rainbow interference, particle trails, ultrasound noise or orange spectrogram combs. No real country shapes, recognizable places, map labels, borders, compass, scales, coordinates, text, numbers, UI, readings, logos or watermark. Imaginary regions only, not measured Earth data. Asset: ONE separate square1024x1024 pure-art widget. Subject FAULT STAIRCASE: a tall kinked strip of five offset spectral plateaux separated by sharply zigzagging empty rifts; each plateau has a different internal patchwork of mint/coral/violet sampled classifications and dense contour threads. A broad hooked peninsula leaves only the middle plateau. Tall broken stepped S silhouette, no actual staircase, object or shaded terrain. Whole invented map region centred with15%clear margins. Real transparent alpha outside and inside rifts, no backing, tile, floor, shadow, labels or rectangular map panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 623684
+    },
+    {
+      "id": "estuary-crown",
+      "sourceImage": "sources/estuary-crown.2dedc51a3b42.png",
+      "sourceSha256": "2dedc51a3b4272c83c3d5a73af3e5f9cf28f853d1118c552e19715edf5bed1c5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/estuary-crown.2f94324139fe.png",
+      "sha256": "2f94324139fe31da72364059b423ae0ad7209ce54783d9c44bc935b98a43f48d",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1370800,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze HYPERSPECTRAL DOMINION. Medium: fictional nadir hyperspectral remote-sensing cartography, finely block-sampled spectral land-cover classification, intricate contour bands and dendritic river topology seen strictly from above. Flat detector-map pixels, crisp irregular region boundaries, dense fine geospatial texture. Unnatural spectral palette: seafoam mint, acid citron, coral magenta, muted violet and deep blue-green silence. Fine violet contour threads, no shaded relief. The spectral segmentation and sampled map texture MUST be visible. No 3D terrain model, perspective, miniature landscape, solid object, material, paint brushwork, print craft, glossy surface, smooth rainbow interference, particle trails, ultrasound noise or orange spectrogram combs. No real country shapes, recognizable places, map labels, borders, compass, scales, coordinates, text, numbers, UI, readings, logos or watermark. Imaginary regions only, not measured Earth data. Asset: ONE separate square1024x1024 pure-art widget. Subject ESTUARY CROWN: five unequal dendritic spectral delta branches splay upward from a short braided root channel; each branch is a broad lobe of densely sampled mint/coral/violet land-cover patches with tiny deep teal tributaries. Wide open fan silhouette with long silence channels between branches, no tree, actual crown or object. Fine spectral contour filaments throughout, strictly top-down and flat. Complete invented region centred with15%clear margins. Real alpha outside and in large silence channels; no backing, tile, floor, shadow, labels or image panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 639135
+    },
+    {
+      "id": "rift-triad",
+      "sourceImage": "sources/rift-triad.a17bc3c106f1.png",
+      "sourceSha256": "a17bc3c106f131876563b0f064d70b22dca86f392d676e6f38c63b78c2a7aac9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/rift-triad.396acb21fccc.png",
+      "sha256": "396acb21fccccd1c493cd0d90545a957c45aacaaf784a7e27187300fccb9b249",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 927287,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. Original Glaze HYPERSPECTRAL DOMINION. Medium: fictional nadir hyperspectral remote-sensing cartography, finely block-sampled spectral land-cover classification, intricate contour bands and dendritic river topology seen strictly from above. Flat detector-map pixels, crisp irregular region boundaries, dense fine geospatial texture. Unnatural spectral palette: seafoam mint, acid citron, coral magenta, muted violet and deep blue-green silence. Fine violet contour threads, no shaded relief. The spectral segmentation and sampled map texture MUST be visible. No 3D terrain model, perspective, miniature landscape, solid object, material, paint brushwork, print craft, glossy surface, smooth rainbow interference, particle trails, ultrasound noise or orange spectrogram combs. No real country shapes, recognizable places, map labels, borders, compass, scales, coordinates, text, numbers, UI, readings, logos or watermark. Imaginary regions only, not measured Earth data. Asset: ONE separate square1024x1024 pure-art widget. Subject RIFT TRIAD: three radically unequal lobed spectral islands form an oblique triangular constellation connected by only two thin winding causeway-like contour necks. Largest island is long and narrow, second is a scalloped round basin, smallest is a deeply notched crescent; each carries block-sampled mint/coral/violet classifications and tiny river forks. Balanced diagonal three-island silhouette with large empty gaps, no object or real geography. Full invented region centred with15%clear margins. Real alpha outside/between islands; no backing, tile, floor, shadow, labels or rectangular map panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 766783
+    }
+  ],
+  "published": false
+}
