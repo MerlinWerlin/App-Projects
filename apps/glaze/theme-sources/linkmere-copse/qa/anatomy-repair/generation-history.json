@@ -1,0 +1,37 @@
+{
+  "initial": {
+    "file": "qa/anatomy-repair/unselected-four-visible-legs.43bb41a1daf2.png",
+    "sha256": "43bb41a1daf2c07b0e0bd646e5e24307fcfd3d52eb354d71df34fa3ebe7868ab"
+  },
+  "initialRequest": "initial-exact-tool-request.json",
+  "initialResult": "initial-exact-tool-result.json",
+  "selectedEdit": {
+    "id": "open-wing-dragonfly",
+    "label": "Ring Dragonfly",
+    "tool": "built-in image_gen",
+    "prompt": "Edit ONLY this OWN original open-steel-ring dragonfly. Preserve its four complete ring-mesh wings, long tapering ring abdomen, head, two eyes, TWO ANTENNAE, material, lighting, pose and all existing open holes. Correct the visible leg count: it currently has four visible legs (an upper pair and a lower pair). Add ONE additional distinct short bent STEEL LEG on EACH side of the thorax BETWEEN those pairs, so there are SIX clearly visible legs in THREE PAIRS. The two antennae on top of the head are not legs. Each new middle leg should attach visibly to its side of the central thorax, project a little into open air under a wing root and bend downward to a separate fine steel tip. Keep the existing upper and lower pairs. Do not add any extra wings, antennae, animals, text or props. Keep all six leg tips inside the canvas with transparent room. Keep the entire original subject and pure transparent background/holes; no floor, haze, glow, shadow or opaque membrane. Make only the needed anatomical correction, without redesigning the sculpture.",
+    "source": "sources/open-wing-dragonfly.6c371b822907.png",
+    "sourceSha256": "6c371b822907abf074c1e68e5d7bf579171c99ef115ad7ae25fa00c4b215eb80",
+    "sourceDimensions": [
+      1536,
+      1024
+    ],
+    "selectedFile": "widgets/open-wing-dragonfly.391c58ca.png",
+    "sha256": "391c58ca9858dda3c9f0643f5882d4f255e49c2532a4fb359011e1d6e145103e",
+    "dimensions": [
+      1200,
+      1200
+    ],
+    "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, stretch, recolour, alpha cleanup or creative pixel edits.",
+    "references": [
+      {
+        "file": "qa/anatomy-repair/unselected-four-visible-legs.43bb41a1daf2.png",
+        "sha256": "43bb41a1daf2c07b0e0bd646e5e24307fcfd3d52eb354d71df34fa3ebe7868ab",
+        "purpose": "Own accepted material reference or exact own anatomical-edit target; no external image."
+      }
+    ],
+    "generationHistory": "qa/anatomy-repair/generation-history.json"
+  },
+  "reason": "Actual first showed four visible legs plus two antennae. ONE exact-own tool edit adds the missing middle leg pair; selected output has six separate legs, four complete wings and two antennae. Original and first accepted kingfisher remain unchanged.",
+  "reviewAuthority": "Lane A anatomical review; not Jared approval"
+}

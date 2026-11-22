@@ -1,0 +1,70 @@
+{
+  "id": "linkmere-copse",
+  "selected": false,
+  "source": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-93ee19a6-c1fc-43f4-a72f-2fb85b8115d3.png",
+  "sha256": "bfbd44f5a85967c5081101a2f6888408461adca320da281fbc03878560b614f5",
+  "size": [
+    1312,
+    1199
+  ],
+  "prompt": "Use case: original nature artwork for one small Glaze Artwork selection. GLAZE LINKMERE COPSE. Generate ONE whole recognizable KINGFISHER perched sideways facing left on ONE short slanting reed with two narrow leaves. Complete long pointed bill, domed head with ONE visible tiny dark eye, folded wing, full short tail, both feet gripping the reed, all leaf tips and both reed ends fit fully inside the image. Beautiful precise natural silhouette and poised anatomy, not an equipment theme. Distinct foreground medium: an exquisite shallow physical sculpture MADE ENTIRELY OF COARSE INTERLINKED OPEN BLACKENED-STEEL WIRE RINGS, mail construction, photographed in soft diffuse studio macro light. Individual round rings really loop through neighboring rings, visible overlapped wire joints and alternating tilted rows. The steel wire is charcoal-black with thin worn SILVER edge glints, restrained cool gray reflections, no gold or copper. Ring holes are large, truly empty and see-through. Use only about FIVE TO SEVEN RINGS across the broad torso, not fine hundreds of tiny mesh dots; thick enough wire and big overlapping round holes must remain unmistakable at an85px thumbnail. Shape the full bird/reed/leaves out of these physical interlinked hollow rings; the folded wing changes ring-row direction. A few short tapered dark steel strips may form the bill tip and feet, but no continuous opaque animal body underneath the ring mesh. No smooth metal skin, enamel fill, cloth backing, lace threads, beads, solid coils/tubes, woven flat ribbons, sculpted feathers, stamped mesh texture printed on a solid object, armor, clothing, helmet, chain props or jewelry medallion. Real depth at each ring crossing, open air between wire loops, slight shallow sculptural roundness. No background scene, floor, pedestal, cast shadow, aura, halo, smoke, scattered fragments, text, letters, numerals, logos, frames, clock face, UI or watermark. ONE independent complete artwork, not a contact sheet or panel. Center the ENTIRE composition with generous clean transparent breathing room; all non-subject pixels and ring holes are pure alpha zero. Transparent background. Artistic invented construction, not an authentic historical object or specimen photograph.",
+  "alphaBounds": {
+    "1": [
+      0,
+      16,
+      1222,
+      1183
+    ],
+    "16": [
+      47,
+      20,
+      1179,
+      1180
+    ],
+    "96": [
+      47,
+      20,
+      1179,
+      1179
+    ]
+  },
+  "neighbors": [
+    {
+      "name": "copper-selvedge",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\copper-selvedge\\widgets\\warp-fall.654200c5.png",
+      "sha256": "654200c583abf661c7e333702c349b4929123ca08995e50073f8af58ce738333"
+    },
+    {
+      "name": "purlwake-reedbeds",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\purlwake-reedbeds\\widgets\\water-vole-rush.0916c484.png",
+      "sha256": "0916c484b5f67b05a66b107a9c0a36486879f7f7606e65c1d7dc1da42bca65f0"
+    },
+    {
+      "name": "beadweft-estuary",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\beadweft-estuary\\widgets\\kingfisher-reeds.769e09df.png",
+      "sha256": "769e09df2554142a36eb6ecb6700a328bf6b724008ef0c97bd8dbd3455a321e5"
+    },
+    {
+      "name": "bobbinbound-meadow",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\bobbinbound-meadow\\widgets\\orchard-songbranch.8591b0d3.png",
+      "sha256": "8591b0d3472be18ecc935eb3cc8a2634908d687378b4fd971afd9a35600ae73a"
+    },
+    {
+      "name": "tinwake-understory",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\tinwake-understory\\widgets\\fern-fiddlehead.ede17d73.png",
+      "sha256": "ede17d73ef5f321409bd61b1854864705c219a6ad0183a68b03580672656245c"
+    },
+    {
+      "name": "silverthorn-dunes",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\silverthorn-dunes\\widgets\\fennec-thornsprig.a748c3cb.png",
+      "sha256": "a748c3cbde43771387023d6a285b7b6508afe0d2c829c154319aeb768f8bd3ef"
+    },
+    {
+      "name": "silver-orchard / accepted rebuild",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\silver-orchard\\v7\\widget-glass-orchard-snail.10df11be.webp",
+      "sha256": "10df11be8162ec1beb6fd134e398cff302f9f5f70ba9e3bd00ed223eff853025"
+    }
+  ],
+  "noNeighborGenerationInputs": true,
+  "published": false
+}
