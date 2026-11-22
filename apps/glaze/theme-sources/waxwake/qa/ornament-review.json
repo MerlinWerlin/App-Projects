@@ -2,11 +2,12 @@
   "themeId": "waxwake",
   "ornament": "M 15 66 C 15 28 76 15 83 43 C 90 72 29 83 28 58 C 27 40 67 33 68 48 C 69 61 43 65 42 53 M 31 29 L 35 38 L 31 46 M 70 26 L 65 34 M 67 72 L 64 64 L 70 60",
   "direction": "A single resist-dyed meander and three crackled wax branches, an accent from the fabric rather than a shrunk full landscape.",
-  "scope": "Standalone path review at compact-header sizes. Optional ornament placement requires the coordinator runtime; existing baseline native proof exercises full subject/detail only.",
+  "scope": "Standalone source ornament path reviewed; actual placement separately verified using coordinator production parser and SVG renderer.",
   "pathLength": 151,
   "controlPointBounds": [
     15.0,
     90.0
   ],
-  "publication": "not authorised"
+  "publication": "not authorised",
+  "placementQA": "ornament-placement-validation.json"
 }

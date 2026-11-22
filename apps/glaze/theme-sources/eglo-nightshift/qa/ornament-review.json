@@ -2,11 +2,12 @@
   "themeId": "eglo-nightshift",
   "ornament": "M 65 18 C 27 15 13 44 25 67 C 36 89 69 90 84 68 C 60 80 39 64 39 45 C 39 32 49 22 65 18 Z M 26 49 L 36 46 L 42 60 L 32 64 Z M 52 75 L 61 67 L 70 74 M 20 29 L 27 24 M 76 42 L 83 37 M 77 50 L 87 45",
   "direction": "One repaired silver-leaf crescent with a single foil patch and three scratched glints; no miniature person in the header.",
-  "scope": "Standalone path review at compact-header sizes. Optional ornament placement requires the coordinator runtime; existing baseline native proof exercises full subject/detail only.",
+  "scope": "Standalone source ornament path reviewed; actual placement separately verified using coordinator production parser and SVG renderer.",
   "pathLength": 195,
   "controlPointBounds": [
     13.0,
     90.0
   ],
-  "publication": "not authorised"
+  "publication": "not authorised",
+  "placementQA": "ornament-placement-validation.json"
 }
