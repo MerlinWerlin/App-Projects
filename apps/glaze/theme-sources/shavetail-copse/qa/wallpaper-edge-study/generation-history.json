@@ -1,0 +1,54 @@
+{
+  "stages": [
+    {
+      "stage": "wallpaper",
+      "file": "qa/wallpaper-edge-study/initial-scene.c645e759b31a.png",
+      "sha256": "c645e759b31ab3c76c44941b09af24759ada295edfada70ab7fb2130f47040e2",
+      "prompt": "ONE original SHAVETAIL COPSE PHONE WALLPAPER. FRAMING IS THE FIRST REQUIREMENT: compose the WHOLE physical habitat within the CENTRAL60\u00e2\u20ac\u201c62percent of the working portrait canvas WIDTH, vertically from about25percent to80percent height; e.g.x200..830/y385..1230 on a1024x1536 source. The actual centered narrow1290x2796 PHONE crop then shows a generous85\u00e2\u20ac\u201c90percent PHONE WIDTH and55percent HEIGHT scene. Do not enlarge objects to fill the wider raw canvas; all tips must stay inside those sourcebounds. Quiet pale blue-grey #CED6D8 background upperquarter/bottom20percent and at both raw sides. Large/tall presence in the FINAL PHONE, not a tiny low island. Use our FIVE OWN reference artworks for their whole natural subjects and the same tangible DRY COLOURED-PENCIL-SHAVING sculpture: a few BROAD thin pale honey/ivory rawwood FAN CONES with radial cut wood grain, brittle curled edges and NARROW serrated painted OUTSIDE RIMS in teal/turquoise/cobalt/forestgreen. Warm rawwood faces dominate; not painted feathers, paper, fine woodwool, corrugatedcard, orangepeel, pasta, satin or clay. Recompose ONE connected upright woodland habitat, not five pasted stickers: tall open fern with coiled fiddlehead at left; two whole six-petalled wood-anemones and bud rising center-right; whole long-eared squirrel/fourpaws/full arched fan tail/acorn at lower-right; whole blue tit/two grippingfeet/beak/longtail on an oblique small rolled-shaving birch twig at middle-left; complete four-wing fan butterfly/two curled antennae above in an open upper-right gap. All subject/leaf/wing/ear/tail/paw/flower/bud/stem tips WHOLE, no extra animals or hidden limbs; a few short curled shavings and leaf blades connect the sparse natural lower base, not an enclosing tray/plaque. Soft minimal miniature contact shadows on the same smooth opaque matte bluegrey background, no paper/backing rectangle. Macro tangible physical thinwood/paintchip detail, gentle neutral light. Preserve reference anatomy/material/color; FIVE STANDALONE ARTWORKS STAY UNCHANGED. No complete pencils/sharpeners/tools/branding, dishes, busy props, extra decorative corners, frame, text/labels/numbers, clock/date/battery/UI or mockup. Artistic pencil-shaving sculpture interpretation, not authentic handmade-object claim.",
+      "references": [
+        {
+          "file": "sources/blue-tit-twig.d4b0c1cd0e94.png",
+          "sha256": "d4b0c1cd0e94e34a8300697b0884dea4f452c7b1ca8777f2dd1a8f056e53eb98",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        },
+        {
+          "file": "sources/squirrel-acorn.ec9b0c7c0dbb.png",
+          "sha256": "ec9b0c7c0dbb7ec44a0ce2066cd17ab3b98ba393958a9c81ae337594c778410a",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        },
+        {
+          "file": "sources/fan-butterfly.f1d8d1d2ea80.png",
+          "sha256": "f1d8d1d2ea8088218ce6e7e30ba8eb6363e399b84aa747c81bcb59a3b70fc586",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        },
+        {
+          "file": "sources/fern-fiddlehead.42607baaf2a4.png",
+          "sha256": "42607baaf2a43afb269cc09475c0f7ed7506bbcd95295b0b3d10f92565ecce6c",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        },
+        {
+          "file": "sources/wood-anemones.20b705efeb02.png",
+          "sha256": "20b705efeb02c15427b39a30a5955ab25d6cde8edf5ad6c66a99898bca228d19",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        }
+      ],
+      "selected": false
+    },
+    {
+      "stage": "wallpaper-phone-fit",
+      "file": "sources/wallpaper.21224ef17eb3.png",
+      "sha256": "21224ef17eb32fd72e7abcf59089b3bea9575008d011dec0c604e1dabe0b5e93",
+      "prompt": "EDIT ONLY OUR OWN attached SHAVETAIL COPSE wallpaper framing. Actual centered1290x2796/1179x2556/750x1334 PHONE exports crop the left fern pinnae and the right butterfly wing/squirrel tail. Preserve the exact same complete dry pencil-shaving habitat, five natural subjects, poses/anatomy, broad radial rawwood faces, thin jagged teal/cobalt/green paint rims and pale blue-grey background. Uniformly scale the ENTIRE connected existing physical scene to67percent (roughlyTWO THIRDS) of its CURRENT physical scene size, not separate subjects and not another redesign. Center the resulting group at50percent width/54percent height of this portrait working canvas, seamlessly extend only the same plain background around it. Desired resulting group is aboutx190..830,y450..1215 on1024x1536 working output: final narrow PHONE shows a large~88\u00e2\u20ac\u201c90percent width habitat with real50percent vertical presence and quiet upperclock/bottomicon space. This is ONE specific correction for observed actual cropping, no extra pullback after that. Keep WHOLE fern and every pinna/fiddlehead/stalk, blue tit/beak/longtail/twofeet/twigleaves, squirrel/acorn/twoears/fourpaws/entire archedfan tail, butterfly/fourwings/twoantennae/legs, bothsixpetalflowers/bud/leaves/stems and all ground endpoints. No new subjects, no changed poses, no duplicate leaf/tool, no whole pencil/sharpener/packaging, no rectangle/plate/plaque/frame/extra corner ornament/text/UI/numbers. Preserve all five standalone artworks unchanged. Artistic thinwood-shaving sculpture interpretation.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/initial-scene.c645e759b31a.png",
+          "sha256": "c645e759b31ab3c76c44941b09af24759ada295edfada70ab7fb2130f47040e2",
+          "purpose": "Own ordered five material/subject references or own complete scene framing."
+        }
+      ],
+      "selected": true
+    }
+  ],
+  "reason": "Actual initial three phone exports clipped endpoints; one targeted whole-scene framing adjustment makes the tall habitat fill nearly the phone width with all key subjects whole. No further generic margin pullback.",
+  "fiveStandaloneArtworksByteUnchanged": true
+}

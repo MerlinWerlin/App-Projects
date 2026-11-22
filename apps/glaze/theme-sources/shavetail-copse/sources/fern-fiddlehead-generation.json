@@ -1,0 +1,26 @@
+{
+  "id": "fern-fiddlehead",
+  "label": "Wood-fan Fern",
+  "tool": "built-in image_gen",
+  "prompt": "ONE NEW independent Nature artwork for SHAVETAIL COPSE. Our OWN accepted blue-tit reference supplies ONLY dry coloured-pencil SHARPENER-SHAVING construction, radial cut wood grain and narrow painted rims; never copy its bird/twig/pose. Make the described different whole natural subject from a FEW BROAD thin pale honey/ivory WOOD SHAVING FANS and brittle curled cone sections. Warm RAW WOOD faces with radially cut grain remain broad, color concentrated only in narrow jagged SERRATED PAINTED OUTER RIMS (cool teal/turquoise, cobalt, some forest green). Clear thin physical shaving thickness, few overlapping broad fan pieces and open curls, restrained macro miniature photography with neutral gentle light. At85px it must read as pencil-sharpener shavings with lacquer remnant edges, not fine tangled woodwool/excelsior, feathers/parallel barbs/real fur, corrugated cardboard, folded coloured paper/origami, wood intarsia/inlay, orange peel, dry pasta, satin/cloth, clay/resin/plush or a natural animal decorated with shavings. Every body/plant part is the shaving construction, tiny dark carbon-chip features permitted. Whole subject centered in CENTRAL66percent SQUARE width/height with at least15percent true TRANSPARENT alpha outer margin; all anatomy/leaf/wing/ear/tail tips fully in frame and open gaps genuinely empty. No whole pencils, sharpeners/writingtools, tool piles, paper/backing rectangle, plates/plaque/pedestal, floor/cast shadow, glow/halo, unrelated props, labels/text/numbers/branding, clocks/dates/battery/UI or mockup. Original artistic pencil-shaving sculpture interpretation, no authentic handmade-object claim. ONE complete familiar upright BRACKEN-LIKE FERN FROND and one coiled FIDDLEHEAD beside its base, whole curved slender rolled-wood stalk, aboutEIGHT well-separated opposite pinna pairs with a tapered tip. Each broad pinna is one small thin pencil-shaving FAN section with warm pale RADIAL RAW WOOD GRAIN and a narrow jagged forest-green/teal painted outer edge; no filled green natural leaf tissue, feather barbs, cardboard flutes or tiny tangled strands. Clearly separate broad fan pieces along open curved stalk. Fiddlehead a coherent single wood-shaving spiral with one painted outer rim. All pinna tips, curled fiddlehead and complete lower stalk ends whole, no ground/pot/backing.",
+  "source": "sources/fern-fiddlehead.42607baaf2a4.png",
+  "sourceSha256": "42607baaf2a43afb269cc09475c0f7ed7506bbcd95295b0b3d10f92565ecce6c",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fern-fiddlehead.da68a44c.png",
+  "sha256": "da68a44ccf92c55160ee7403f4ee29ab53e92ca5a4574d728a6aacd2d8a3e54a",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+  "references": [
+    {
+      "file": "sources/blue-tit-twig.d4b0c1cd0e94.png",
+      "sha256": "d4b0c1cd0e94e34a8300697b0884dea4f452c7b1ca8777f2dd1a8f056e53eb98",
+      "purpose": "Own accepted blue tit supplies broad pencil-shaving construction only; independent different natural subject."
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "theme": "shavetail-copse",
+  "reviewAuthority": "Lane A material review, not Jared approval",
+  "files": {
+    "meta.json": "8d11863cd145dee5ed2ca2399853871d5f9883c4a91e4197a09d42f70574a1f4",
+    "palette.json": "b34b9ab2bcdbc4792fad10b29c9f604353451b5c5ffec9c20fd6f0cebf9cafac",
+    "sources/blue-tit-twig.d4b0c1cd0e94.png": "d4b0c1cd0e94e34a8300697b0884dea4f452c7b1ca8777f2dd1a8f056e53eb98",
+    "sources/fan-butterfly.f1d8d1d2ea80.png": "f1d8d1d2ea8088218ce6e7e30ba8eb6363e399b84aa747c81bcb59a3b70fc586",
+    "sources/fern-fiddlehead.42607baaf2a4.png": "42607baaf2a43afb269cc09475c0f7ed7506bbcd95295b0b3d10f92565ecce6c",
+    "sources/squirrel-acorn.ec9b0c7c0dbb.png": "ec9b0c7c0dbb7ec44a0ce2066cd17ab3b98ba393958a9c81ae337594c778410a",
+    "sources/wallpaper.21224ef17eb3.png": "21224ef17eb32fd72e7abcf59089b3bea9575008d011dec0c604e1dabe0b5e93",
+    "sources/wood-anemones.20b705efeb02.png": "20b705efeb02c15427b39a30a5955ab25d6cde8edf5ad6c66a99898bca228d19",
+    "widgets/blue-tit-twig.f29414b6.png": "f29414b63d96fcc0153f30c410251b0b5a7a1598186532007f668fea446aab56",
+    "widgets/fan-butterfly.c8c6e20e.png": "c8c6e20e45e9e1f998a109bd40ed3da5ea9eb4a4d5e9850e026b5cea5692934e",
+    "widgets/fern-fiddlehead.da68a44c.png": "da68a44ccf92c55160ee7403f4ee29ab53e92ca5a4574d728a6aacd2d8a3e54a",
+    "widgets/squirrel-acorn.33538160.png": "33538160dac843308581cbad52e8e6f8cc3b407137b44201fed76ec15c70fcf6",
+    "widgets/widget-options.json": "78a59d8fc947417d047cd138aed707d7514af7fb2a5c45445fb21a067fbcfdc8",
+    "widgets/wood-anemones.32ca8aa6.png": "32ca8aa6f919131d85adb2707face237935c75e108a78d17cc0a53d8607ee773"
+  },
+  "fiveArtGenerationRecords": [
+    {
+      "id": "blue-tit-twig",
+      "label": "Shaving Blue Tit",
+      "tool": "built-in image_gen",
+      "prompt": "ONE new original Glaze Nature MATERIAL PROTOTYPE for SHAVETAIL COPSE. A complete instantly recognizable EUROPEAN BLUE TIT perched on ONE short open birch twig with TWO small leaves: natural compact bird proportions, round head/short pointed dark beak, dark small eye, folded wing, long narrow tail and TWO coherent gripping feet, all whole. ENTIRE subject constructed from a FEW BROAD DRY COLOURED-PENCIL SHARPENER SHAVINGS: thin natural pale honey/ivory WOOD FANS with unmistakable radially cut shaving grain, brittle curled cone/fan sections and strongly SERRATED PAINTED OUTER RIMS, lacquer remnants in cool TURQUOISE/TEAL and a little deep cobalt. Broad warm raw wood faces occupy most of each shaving; color is concentrated along narrow jagged outside paint edges, not painted over ordinary feathers. Two large overlapping C-shaped shaving fans form the round chest/body, one elongated shallow folded shaving fan makes a complete wing with a teal serrated rim and radiating woodgrain; head one small rolled wood shaving with a cobalt edge, short dark carbon-chip beak and tiny graphite-dot eye. Tail two long slender curled wood-shaving strips with teal paint edges, not whole pencils. Thin rolled rawwood curls make the short twig and two gripping feet, two broad tiny green-edged shaving fans form leaves. Careful tangible miniature macro photography, restrained neutral light, clearly visible thin wood thickness/cut grain/brittle curls and paint-rim chips. Material must remain obvious at85px: BROAD sharpener-fan shavings, NOT fine tangled excelsior/wood-wool fibres, clipped feather vanes/parallel barbs, ordinary natural feathers/fur, corrugated kraft cardboard flutes, folded coloured paper/origami, wood intarsia/inlay, orange-peel/pith curls, hard pasta ribs, satin ribbon, crochet, soft clay/resin, toy/plush or a generic wooden bird. Do not decorate a real bird with shavings; the physical shaved-wood construction forms every body part. Whole beak/tail/twofeet/twig/leaf tips within central66percent of square, generous at least15percent TRUE TRANSPARENT alpha margins and clear open gaps. No complete pencil, writing tool, sharpener, eraser, tool pile, paper sheet/backing rectangle, plaque/pedestal, floor/cast shadow, halo/glow, text/labels/numbers/branding, clock/date/battery/UI or mockup. Original artistic pencil-shaving sculpture interpretation, not an authentic physical handmade-object claim.",
+      "source": "sources/blue-tit-twig.d4b0c1cd0e94.png",
+      "sourceSha256": "d4b0c1cd0e94e34a8300697b0884dea4f452c7b1ca8777f2dd1a8f056e53eb98",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/blue-tit-twig.f29414b6.png",
+      "sha256": "f29414b63d96fcc0153f30c410251b0b5a7a1598186532007f668fea446aab56",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": []
+    },
+    {
+      "id": "squirrel-acorn",
+      "label": "Fan-tail Squirrel",
+      "tool": "built-in image_gen",
+      "prompt": "ONE NEW independent Nature artwork for SHAVETAIL COPSE. Our OWN accepted blue-tit reference supplies ONLY dry coloured-pencil SHARPENER-SHAVING construction, radial cut wood grain and narrow painted rims; never copy its bird/twig/pose. Make the described different whole natural subject from a FEW BROAD thin pale honey/ivory WOOD SHAVING FANS and brittle curled cone sections. Warm RAW WOOD faces with radially cut grain remain broad, color concentrated only in narrow jagged SERRATED PAINTED OUTER RIMS (cool teal/turquoise, cobalt, some forest green). Clear thin physical shaving thickness, few overlapping broad fan pieces and open curls, restrained macro miniature photography with neutral gentle light. At85px it must read as pencil-sharpener shavings with lacquer remnant edges, not fine tangled woodwool/excelsior, feathers/parallel barbs/real fur, corrugated cardboard, folded coloured paper/origami, wood intarsia/inlay, orange peel, dry pasta, satin/cloth, clay/resin/plush or a natural animal decorated with shavings. Every body/plant part is the shaving construction, tiny dark carbon-chip features permitted. Whole subject centered in CENTRAL66percent SQUARE width/height with at least15percent true TRANSPARENT alpha outer margin; all anatomy/leaf/wing/ear/tail tips fully in frame and open gaps genuinely empty. No whole pencils, sharpeners/writingtools, tool piles, paper/backing rectangle, plates/plaque/pedestal, floor/cast shadow, glow/halo, unrelated props, labels/text/numbers/branding, clocks/dates/battery/UI or mockup. Original artistic pencil-shaving sculpture interpretation, no authentic handmade-object claim. ONE whole familiar RED SQUIRREL sitting naturally, long slightly pointed head, TWO upright tufted ears, tiny dark carbon eye/nose, TWO forepaws holding ONE complete small acorn, TWO strong hindfeet fully visible, and a LARGE full bushy tail curving up behind and over its back. Tail is3broad overlapping curled wood-shaving FAN CONES with teal/cobalt jagged rims and radial rawwood faces, not thin fibre fur or feather plumes. Body/chest a few overlapping honeywood shaving fans; ear tufts broad triangular shaving tips, coherent natural squirrel proportions. Acorn two small rawwood cups with green-painted rim cap, no real nut inserted. All four paws, both ears, acorn and entire arched tail whole. No bird or twig.",
+      "source": "sources/squirrel-acorn.ec9b0c7c0dbb.png",
+      "sourceSha256": "ec9b0c7c0dbb7ec44a0ce2066cd17ab3b98ba393958a9c81ae337594c778410a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/squirrel-acorn.33538160.png",
+      "sha256": "33538160dac843308581cbad52e8e6f8cc3b407137b44201fed76ec15c70fcf6",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/blue-tit-twig.d4b0c1cd0e94.png",
+          "sha256": "d4b0c1cd0e94e34a8300697b0884dea4f452c7b1ca8777f2dd1a8f056e53eb98",
+          "purpose": "Own accepted blue tit supplies broad pencil-shaving construction only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "fan-butterfly",
+      "label": "Shaving Butterfly",
+      "tool": "built-in image_gen",
+      "prompt": "ONE NEW independent Nature artwork for SHAVETAIL COPSE. Our OWN accepted blue-tit reference supplies ONLY dry coloured-pencil SHARPENER-SHAVING construction, radial cut wood grain and narrow painted rims; never copy its bird/twig/pose. Make the described different whole natural subject from a FEW BROAD thin pale honey/ivory WOOD SHAVING FANS and brittle curled cone sections. Warm RAW WOOD faces with radially cut grain remain broad, color concentrated only in narrow jagged SERRATED PAINTED OUTER RIMS (cool teal/turquoise, cobalt, some forest green). Clear thin physical shaving thickness, few overlapping broad fan pieces and open curls, restrained macro miniature photography with neutral gentle light. At85px it must read as pencil-sharpener shavings with lacquer remnant edges, not fine tangled woodwool/excelsior, feathers/parallel barbs/real fur, corrugated cardboard, folded coloured paper/origami, wood intarsia/inlay, orange peel, dry pasta, satin/cloth, clay/resin/plush or a natural animal decorated with shavings. Every body/plant part is the shaving construction, tiny dark carbon-chip features permitted. Whole subject centered in CENTRAL66percent SQUARE width/height with at least15percent true TRANSPARENT alpha outer margin; all anatomy/leaf/wing/ear/tail tips fully in frame and open gaps genuinely empty. No whole pencils, sharpeners/writingtools, tool piles, paper/backing rectangle, plates/plaque/pedestal, floor/cast shadow, glow/halo, unrelated props, labels/text/numbers/branding, clocks/dates/battery/UI or mockup. Original artistic pencil-shaving sculpture interpretation, no authentic handmade-object claim. ONE whole recognizable natural BUTTERFLY with FOUR distinct broad spread wings, each made from ONE large rounded wood-shaving fan with jagged cobalt/teal painted outside rim and warm pale radial woodgrain face. Upper pair larger, lower pair smaller with gentle scalloped shape; not a single bowtie/ribbon or paper butterfly. Narrow body one softly coiled rawwood shaving strip, tiny dark carbon eye, TWO thin curled wood-shaving antennae with curved ends and SIX short coherent legs in3pairs. Natural butterfly silhouette and physical curled shaving depth, no realistic membrane/feathers. All four wing edges, both antennae and all leg ends whole; background empty.",
+      "source": "sources/fan-butterfly.f1d8d1d2ea80.png",
+      "sourceSha256": "f1d8d1d2ea8088218ce6e7e30ba8eb6363e399b84aa747c81bcb59a3b70fc586",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fan-butterfly.c8c6e20e.png",
+      "sha256": "c8c6e20e45e9e1f998a109bd40ed3da5ea9eb4a4d5e9850e026b5cea5692934e",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/blue-tit-twig.d4b0c1cd0e94.png",
+          "sha256": "d4b0c1cd0e94e34a8300697b0884dea4f452c7b1ca8777f2dd1a8f056e53eb98",
+          "purpose": "Own accepted blue tit supplies broad pencil-shaving construction only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "fern-fiddlehead",
+      "label": "Wood-fan Fern",
+      "tool": "built-in image_gen",
+      "prompt": "ONE NEW independent Nature artwork for SHAVETAIL COPSE. Our OWN accepted blue-tit reference supplies ONLY dry coloured-pencil SHARPENER-SHAVING construction, radial cut wood grain and narrow painted rims; never copy its bird/twig/pose. Make the described different whole natural subject from a FEW BROAD thin pale honey/ivory WOOD SHAVING FANS and brittle curled cone sections. Warm RAW WOOD faces with radially cut grain remain broad, color concentrated only in narrow jagged SERRATED PAINTED OUTER RIMS (cool teal/turquoise, cobalt, some forest green). Clear thin physical shaving thickness, few overlapping broad fan pieces and open curls, restrained macro miniature photography with neutral gentle light. At85px it must read as pencil-sharpener shavings with lacquer remnant edges, not fine tangled woodwool/excelsior, feathers/parallel barbs/real fur, corrugated cardboard, folded coloured paper/origami, wood intarsia/inlay, orange peel, dry pasta, satin/cloth, clay/resin/plush or a natural animal decorated with shavings. Every body/plant part is the shaving construction, tiny dark carbon-chip features permitted. Whole subject centered in CENTRAL66percent SQUARE width/height with at least15percent true TRANSPARENT alpha outer margin; all anatomy/leaf/wing/ear/tail tips fully in frame and open gaps genuinely empty. No whole pencils, sharpeners/writingtools, tool piles, paper/backing rectangle, plates/plaque/pedestal, floor/cast shadow, glow/halo, unrelated props, labels/text/numbers/branding, clocks/dates/battery/UI or mockup. Original artistic pencil-shaving sculpture interpretation, no authentic handmade-object claim. ONE complete familiar upright BRACKEN-LIKE FERN FROND and one coiled FIDDLEHEAD beside its base, whole curved slender rolled-wood stalk, aboutEIGHT well-separated opposite pinna pairs with a tapered tip. Each broad pinna is one small thin pencil-shaving FAN section with warm pale RADIAL RAW WOOD GRAIN and a narrow jagged forest-green/teal painted outer edge; no filled green natural leaf tissue, feather barbs, cardboard flutes or tiny tangled strands. Clearly separate broad fan pieces along open curved stalk. Fiddlehead a coherent single wood-shaving spiral with one painted outer rim. All pinna tips, curled fiddlehead and complete lower stalk ends whole, no ground/pot/backing.",
+      "source": "sources/fern-fiddlehead.42607baaf2a4.png",
+      "sourceSha256": "42607baaf2a43afb269cc09475c0f7ed7506bbcd95295b0b3d10f92565ecce6c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fern-fiddlehead.da68a44c.png",
+      "sha256": "da68a44ccf92c55160ee7403f4ee29ab53e92ca5a4574d728a6aacd2d8a3e54a",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/blue-tit-twig.d4b0c1cd0e94.png",
+          "sha256": "d4b0c1cd0e94e34a8300697b0884dea4f452c7b1ca8777f2dd1a8f056e53eb98",
+          "purpose": "Own accepted blue tit supplies broad pencil-shaving construction only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "wood-anemones",
+      "label": "Shaving Anemones",
+      "tool": "built-in image_gen",
+      "prompt": "ONE NEW independent Nature artwork for SHAVETAIL COPSE. Our OWN accepted blue-tit reference supplies ONLY dry coloured-pencil SHARPENER-SHAVING construction, radial cut wood grain and narrow painted rims; never copy its bird/twig/pose. Make the described different whole natural subject from a FEW BROAD thin pale honey/ivory WOOD SHAVING FANS and brittle curled cone sections. Warm RAW WOOD faces with radially cut grain remain broad, color concentrated only in narrow jagged SERRATED PAINTED OUTER RIMS (cool teal/turquoise, cobalt, some forest green). Clear thin physical shaving thickness, few overlapping broad fan pieces and open curls, restrained macro miniature photography with neutral gentle light. At85px it must read as pencil-sharpener shavings with lacquer remnant edges, not fine tangled woodwool/excelsior, feathers/parallel barbs/real fur, corrugated cardboard, folded coloured paper/origami, wood intarsia/inlay, orange peel, dry pasta, satin/cloth, clay/resin/plush or a natural animal decorated with shavings. Every body/plant part is the shaving construction, tiny dark carbon-chip features permitted. Whole subject centered in CENTRAL66percent SQUARE width/height with at least15percent true TRANSPARENT alpha outer margin; all anatomy/leaf/wing/ear/tail tips fully in frame and open gaps genuinely empty. No whole pencils, sharpeners/writingtools, tool piles, paper/backing rectangle, plates/plaque/pedestal, floor/cast shadow, glow/halo, unrelated props, labels/text/numbers/branding, clocks/dates/battery/UI or mockup. Original artistic pencil-shaving sculpture interpretation, no authentic handmade-object claim. ONE small coherent woodland WOOD-ANEMONE plant with TWO open SIX-PETALLED flowers and ONE closed rolled-shaving bud on gently bent thin rolled-wood stems. Each petal is one broad pale honey/ivory rawwood SHARPENER-SHAVING FAN with clear radial cut grain, thin curled edge and narrow serrated cobalt/teal paint remnant rim; each flower has exactly6 broad petals and a small compact dark carbon/wood-chip stamen center. Different flower angles, modest natural proportions. TWO low three-lobed leaves made from three small green-edged shaving fans each, open stems and whole short base. No paper/crayon drawing, realistic plant tissue, smooth ceramic petals, extra fauna, pots or background support. All12petals/bud/leaflobes/stem ends fully whole.",
+      "source": "sources/wood-anemones.20b705efeb02.png",
+      "sourceSha256": "20b705efeb02c15427b39a30a5955ab25d6cde8edf5ad6c66a99898bca228d19",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/wood-anemones.32ca8aa6.png",
+      "sha256": "32ca8aa6f919131d85adb2707face237935c75e108a78d17cc0a53d8607ee773",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/blue-tit-twig.d4b0c1cd0e94.png",
+          "sha256": "d4b0c1cd0e94e34a8300697b0884dea4f452c7b1ca8777f2dd1a8f056e53eb98",
+          "purpose": "Own accepted blue tit supplies broad pencil-shaving construction only; independent different natural subject."
+        }
+      ]
+    }
+  ],
+  "published": false
+}

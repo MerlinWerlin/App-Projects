@@ -1,0 +1,26 @@
+{
+  "id": "squirrel-acorn",
+  "label": "Fan-tail Squirrel",
+  "tool": "built-in image_gen",
+  "prompt": "ONE NEW independent Nature artwork for SHAVETAIL COPSE. Our OWN accepted blue-tit reference supplies ONLY dry coloured-pencil SHARPENER-SHAVING construction, radial cut wood grain and narrow painted rims; never copy its bird/twig/pose. Make the described different whole natural subject from a FEW BROAD thin pale honey/ivory WOOD SHAVING FANS and brittle curled cone sections. Warm RAW WOOD faces with radially cut grain remain broad, color concentrated only in narrow jagged SERRATED PAINTED OUTER RIMS (cool teal/turquoise, cobalt, some forest green). Clear thin physical shaving thickness, few overlapping broad fan pieces and open curls, restrained macro miniature photography with neutral gentle light. At85px it must read as pencil-sharpener shavings with lacquer remnant edges, not fine tangled woodwool/excelsior, feathers/parallel barbs/real fur, corrugated cardboard, folded coloured paper/origami, wood intarsia/inlay, orange peel, dry pasta, satin/cloth, clay/resin/plush or a natural animal decorated with shavings. Every body/plant part is the shaving construction, tiny dark carbon-chip features permitted. Whole subject centered in CENTRAL66percent SQUARE width/height with at least15percent true TRANSPARENT alpha outer margin; all anatomy/leaf/wing/ear/tail tips fully in frame and open gaps genuinely empty. No whole pencils, sharpeners/writingtools, tool piles, paper/backing rectangle, plates/plaque/pedestal, floor/cast shadow, glow/halo, unrelated props, labels/text/numbers/branding, clocks/dates/battery/UI or mockup. Original artistic pencil-shaving sculpture interpretation, no authentic handmade-object claim. ONE whole familiar RED SQUIRREL sitting naturally, long slightly pointed head, TWO upright tufted ears, tiny dark carbon eye/nose, TWO forepaws holding ONE complete small acorn, TWO strong hindfeet fully visible, and a LARGE full bushy tail curving up behind and over its back. Tail is3broad overlapping curled wood-shaving FAN CONES with teal/cobalt jagged rims and radial rawwood faces, not thin fibre fur or feather plumes. Body/chest a few overlapping honeywood shaving fans; ear tufts broad triangular shaving tips, coherent natural squirrel proportions. Acorn two small rawwood cups with green-painted rim cap, no real nut inserted. All four paws, both ears, acorn and entire arched tail whole. No bird or twig.",
+  "source": "sources/squirrel-acorn.ec9b0c7c0dbb.png",
+  "sourceSha256": "ec9b0c7c0dbb7ec44a0ce2066cd17ab3b98ba393958a9c81ae337594c778410a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/squirrel-acorn.33538160.png",
+  "sha256": "33538160dac843308581cbad52e8e6f8cc3b407137b44201fed76ec15c70fcf6",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, code alpha cleanup or creative pixel edits.",
+  "references": [
+    {
+      "file": "sources/blue-tit-twig.d4b0c1cd0e94.png",
+      "sha256": "d4b0c1cd0e94e34a8300697b0884dea4f452c7b1ca8777f2dd1a8f056e53eb98",
+      "purpose": "Own accepted blue tit supplies broad pencil-shaving construction only; independent different natural subject."
+    }
+  ]
+}

@@ -50,28 +50,8 @@ rows = []
 for file in EXACT:
     old = subprocess.check_output(['git', 'show', BASE + ':apps/glaze/' + file], cwd=ROOT).decode().splitlines()
     current = (ROOT / file).read_text(encoding='utf-8').splitlines()
-    expected = old
-    if file == 'targets/widget/DesignedWidget.swift':
-        # Owner second audit 2026-11-23: calendar dates must keep the ordinary
-        # grid's point size, bold today. Permit only this explicit opt-out from
-        # width fitting; every other restored renderer line remains exact.
-        source = '\n'.join(old)
-        replacements = [
-            ('anchor: UnitPoint = .center) {', 'anchor: UnitPoint = .center, fitWidth: Bool = true) {'),
-            ('    while resolved.measure(in:', '    while fitWidth && resolved.measure(in:'),
-            ('  func line(_ x1:', '''  func calendarDate(_ value: String, x: CGFloat, y: CGFloat, large: Bool, width: CGFloat, color: Color, today: Bool) {
-    // Highlight by weight, never by reducing the ordinary grid's point size.
-    text(value, x: x, y: y, font: large ? 19 : 12, width: width, color: color, weight: today ? .bold : .medium, fitWidth: false)
-  }
-  func line(_ x1:'''),
-        ]
-        for before, after in replacements:
-            assert source.count(before) == 1, f'{file}: ambiguous authorized edit'
-            source = source.replace(before, after, 1)
-        expected = source.splitlines()
-    assert expected == current, file
-    rows.append({'file': file, 'matches106': old == current,
-                 **({'authorizedCalendarPointSizeOnly': True} if expected != old else {})})
+    assert old == current, file
+    rows.append({'file': file, 'matches106': True})
 for file, reason in ALLOWED.items():
     old = subprocess.check_output(['git', 'show', BASE + ':apps/glaze/' + file], cwd=ROOT).decode().splitlines()
     current = (ROOT / file).read_text(encoding='utf-8').splitlines()
