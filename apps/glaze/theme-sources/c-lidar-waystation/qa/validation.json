@@ -1,0 +1,119 @@
+{
+  "id": "c-lidar-waystation",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "scan-postmaster",
+    "range-carriage",
+    "pointgate-inn",
+    "survey-hound",
+    "scan-pump"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.6d081348.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 33884,
+    "sha256": "6d081348cfc2ccad05e061e2161e63df44f8a2c4d55f549a84698b97103d1ff5",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "artworkCombination": "Viewed wallpaper and all five artworks at two widget-like sizes. Messenger, sail carriage, inhabited inn, articulated survey hound and pump have distinct readable silhouettes; height-coded spatial point texture unifies the set.",
+    "nativeCombination": "Viewed actual app renderer previews for Clock, Battery and Calendar at small, medium and large sizes. Carriage and postmaster motifs are legible and readings remain clear.",
+    "sourceFraming": "High-opacity subject bounds are inside all five source frames; maximum edge alpha is 1 or 2 out of 255.",
+    "ownerSteering": "Applies Jared 22 November tangible-subject direction while preserving a distinct scientific image process."
+  },
+  "packTestEvidence": "Unchanged pipeline: 47 distinct pack test cases passed across the initial suite and the two Pillow-enabled WebP reruns. This theme separately passed the real builder, full decoding, hashes, provenance and actual app planner/renderer checks."
+}

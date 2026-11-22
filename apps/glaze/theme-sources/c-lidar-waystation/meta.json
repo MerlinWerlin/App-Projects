@@ -1,0 +1,16 @@
+{
+  "name": "LiDAR Waystation",
+  "mood": "A tiny aerial-route rest stop resolves from luminous spatial samples.",
+  "tags": [
+    "lidar",
+    "point-cloud",
+    "waystation",
+    "tangible-world"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native paths. Fictional scan world.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. GLAZE LIDAR WAYSTATION, an inhabited rest stop on aerial travel routes. Make the tangible subject instantly recognizable with clear anatomy, architecture or mechanism. MEDIUM: dense height-coded3D LiDAR point-cloud scan, millions of individually visible luminous sampled spatial points grouped into a complete readable form, fine horizontal sweep bands, a few narrow missing scan strips and occlusion gaps. No connected lines or continuous opaque surfaces. Range-classification colours are turquoise/seafoam, pale gold, warm coral and a few ice-white returns on deep navy silence. Photographic scientific scan aesthetic, polished and legible at thumbnail size; strong silhouette built from dense points. No diffraction fringes, smooth shiny texture, particle trajectories or streaks, shock stripes, ordinary3D render, clay, glass, metal, painting or physical craft. No text, labels, numerals, coordinates, axes, clocks, readings, UI, chart, logos or watermark. Fictional mapped world, not real measured sensor data.",
+  "addedAt": "2026-11-22",
+  "category": "Abstract & Art"
+}

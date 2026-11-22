@@ -1,0 +1,143 @@
+{
+  "theme": "c-lidar-waystation",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "scan-postmaster",
+      "sourceImage": "sources/scan-postmaster.7c2b3b051f57.png",
+      "sourceSha256": "7c2b3b051f57df305808516a382af3cfd9055e6e0fb978ee4ae6479e4fd6a571",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/scan-postmaster.3d65ba920f57.png",
+      "sha256": "3d65ba920f574a34b45cd417626a63d6e6b8ed4f52dc9837a9febd96fdd6c804",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1149424,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE LIDAR WAYSTATION, an inhabited rest stop on aerial travel routes. Make the tangible subject instantly recognizable with clear anatomy, architecture or mechanism. MEDIUM: dense height-coded3D LiDAR point-cloud scan, millions of individually visible luminous sampled spatial points grouped into a complete readable form, fine horizontal sweep bands, a few narrow missing scan strips and occlusion gaps. No connected lines or continuous opaque surfaces. Range-classification colours are turquoise/seafoam, pale gold, warm coral and a few ice-white returns on deep navy silence. Photographic scientific scan aesthetic, polished and legible at thumbnail size; strong silhouette built from dense points. No diffraction fringes, smooth shiny texture, particle trajectories or streaks, shock stripes, ordinary3D render, clay, glass, metal, painting or physical craft. No text, labels, numerals, coordinates, axes, clocks, readings, UI, chart, logos or watermark. Fictional mapped world, not real measured sensor data. Asset: ONE separate square1024x1024 pure-art widget. Subject SCAN POSTMASTER, an invented long-snouted biped courier with a broad curled cowl, two clear dark eyes, compact coat-like torso, two articulated arms, a long stride and broad three-toed feet. A short scarf curls over one shoulder; one hand holds a small three-pronged route token and the other points forward. Friendly purposeful tangible traveler, not a conventional animal. Three-quarter view; full face/hands/legs must read through the dense point-cloud sampling. Slight missing scan bands make the scientific process visible. Whole figure centred with all extremities inside central75%canvas, generous truly empty margins. Real transparent alpha outside and in gaps; no black backing, floor, shadow, tile or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 730874
+    },
+    {
+      "id": "range-carriage",
+      "sourceImage": "sources/range-carriage.0be45126facb.png",
+      "sourceSha256": "0be45126facb10cd70d77775ea1b30b18f4b3a85682bfa32c139a94f6cde520f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/range-carriage.972e902881a2.png",
+      "sha256": "972e902881a26e4ab7956c22d84d7a7015dddac0d17ca500614f092d49927ddb",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1365337,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE LIDAR WAYSTATION, an inhabited rest stop on aerial travel routes. Make the tangible subject instantly recognizable with clear anatomy, architecture or mechanism. MEDIUM: dense height-coded3D LiDAR point-cloud scan, millions of individually visible luminous sampled spatial points grouped into a complete readable form, fine horizontal sweep bands, a few narrow missing scan strips and occlusion gaps. No connected lines or continuous opaque surfaces. Range-classification colours are turquoise/seafoam, pale gold, warm coral and a few ice-white returns on deep navy silence. Photographic scientific scan aesthetic, polished and legible at thumbnail size; strong silhouette built from dense points. No diffraction fringes, smooth shiny texture, particle trajectories or streaks, shock stripes, ordinary3D render, clay, glass, metal, painting or physical craft. No text, labels, numerals, coordinates, axes, clocks, readings, UI, chart, logos or watermark. Fictional mapped world, not real measured sensor data. Asset: ONE separate square1024x1024 pure-art widget. Subject RANGE CARRIAGE, a tangible asymmetrical passenger vehicle with a long low enclosed cabin, one open doorway, three differently shaped windows, two huge unequal spoke wheels, a thin forked mast and one broad bowed triangular sail. A step hangs under its door and a short steering beak projects forward. Oblique side view, immediately recognizable travel machine with readable mechanisms and unusual proportions. Entire form consists of dense individually resolved height-coded spatial scan points, with scan gaps across the sail and hull, no continuous surfaces or lines. Whole vehicle/mast/wheels fully inside central75%canvas, generous empty margins. True transparent alpha exterior/big openings; no road, backing, floor, shadow, tile or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 711338
+    },
+    {
+      "id": "pointgate-inn",
+      "sourceImage": "sources/pointgate-inn.3fb045c932d0.png",
+      "sourceSha256": "3fb045c932d0e9d6b7fdbba6d30fc895f076f31491e4e365cad1c8dd0623ecd6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/pointgate-inn.859ce2fb4cc5.png",
+      "sha256": "859ce2fb4cc5b9884475aa09e765ded5ad7b18156e4c87437db39daf4942e887",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1430403,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE LIDAR WAYSTATION, an inhabited rest stop on aerial travel routes. Make the tangible subject instantly recognizable with clear anatomy, architecture or mechanism. MEDIUM: dense height-coded3D LiDAR point-cloud scan, millions of individually visible luminous sampled spatial points grouped into a complete readable form, fine horizontal sweep bands, a few narrow missing scan strips and occlusion gaps. No connected lines or continuous opaque surfaces. Range-classification colours are turquoise/seafoam, pale gold, warm coral and a few ice-white returns on deep navy silence. Photographic scientific scan aesthetic, polished and legible at thumbnail size; strong silhouette built from dense points. No diffraction fringes, smooth shiny texture, particle trajectories or streaks, shock stripes, ordinary3D render, clay, glass, metal, painting or physical craft. No text, labels, numerals, coordinates, axes, clocks, readings, UI, chart, logos or watermark. Fictional mapped world, not real measured sensor data. Asset: ONE separate square1024x1024 pure-art widget. Subject POINTGATE INN, a tangible low crooked waystation building with a large bowed crescent canopy, one clear open arched doorway, two unequal windows, three short supporting arch feet and a bent capped chimney. A small porch with two steps and one corner awning makes it visibly inhabitable. Three-quarter architectural view, no sign or clock. Dense coloured LiDAR samples define roof/window/door/step geometry, including slight occluded voids behind the feet and two narrow missing scan strips. All points independent, no connecting lines or solid material. Whole building inside central75%canvas, full chimney/feet visible and empty margins. Real alpha around and through open doorway, no ground, backing, shadow, tile or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "transparentPixels": 677356
+    },
+    {
+      "id": "survey-hound",
+      "sourceImage": "sources/survey-hound.d96f9875c40e.png",
+      "sourceSha256": "d96f9875c40edfb77f01abcc6743f6d75b467ce5baf681eeee16ae438d901651",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/survey-hound.23662a1167d0.png",
+      "sha256": "23662a1167d0a6120d7354227bc28a89a1a1a32cb13870cfbf1665cc40e8a36e",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1070775,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE LIDAR WAYSTATION, an inhabited rest stop on aerial travel routes. Make the tangible subject instantly recognizable with clear anatomy, architecture or mechanism. MEDIUM: dense height-coded3D LiDAR point-cloud scan, millions of individually visible luminous sampled spatial points grouped into a complete readable form, fine horizontal sweep bands, a few narrow missing scan strips and occlusion gaps. No connected lines or continuous opaque surfaces. Range-classification colours are turquoise/seafoam, pale gold, warm coral and a few ice-white returns on deep navy silence. Photographic scientific scan aesthetic, polished and legible at thumbnail size; strong silhouette built from dense points. No diffraction fringes, smooth shiny texture, particle trajectories or streaks, shock stripes, ordinary3D render, clay, glass, metal, painting or physical craft. No text, labels, numerals, coordinates, axes, clocks, readings, UI, chart, logos or watermark. Fictional mapped world, not real measured sensor data. Asset: ONE separate square1024x1024 pure-art widget. Subject SURVEY HOUND, a tangible invented six-legged waystation companion with a long low body, wedge-shaped curious head, two dark eye slots, a mane of three broad curved fins, six visibly jointed short legs with split toes and one long tail curling into an open hook. Three-quarter crouching pose as if sniffing a route. Dense coloured sampled points reveal real creature anatomy and layered occlusions, with one thin missing scan band across its midbody. No ordinary fur, solid surface or connected strokes. Entire creature inside central75%canvas, complete face/feet/tail and generous empty margins. True alpha outside and between legs; no floor, backing, shadow, tile or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 756394
+    },
+    {
+      "id": "scan-pump",
+      "sourceImage": "sources/scan-pump.074412fa0509.png",
+      "sourceSha256": "074412fa0509937833aa9b9d021ec0bc9bf564b539d07893e2c9f18be059a65d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/scan-pump.c9a42f49dbf5.png",
+      "sha256": "c9a42f49dbf59704dcb115daa51e8bef9dbc81c633412653e45f74d35f407b64",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1542478,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE LIDAR WAYSTATION, an inhabited rest stop on aerial travel routes. Make the tangible subject instantly recognizable with clear anatomy, architecture or mechanism. MEDIUM: dense height-coded3D LiDAR point-cloud scan, millions of individually visible luminous sampled spatial points grouped into a complete readable form, fine horizontal sweep bands, a few narrow missing scan strips and occlusion gaps. No connected lines or continuous opaque surfaces. Range-classification colours are turquoise/seafoam, pale gold, warm coral and a few ice-white returns on deep navy silence. Photographic scientific scan aesthetic, polished and legible at thumbnail size; strong silhouette built from dense points. No diffraction fringes, smooth shiny texture, particle trajectories or streaks, shock stripes, ordinary3D render, clay, glass, metal, painting or physical craft. No text, labels, numerals, coordinates, axes, clocks, readings, UI, chart, logos or watermark. Fictional mapped world, not real measured sensor data. Asset: ONE separate square1024x1024 pure-art widget. Subject SCAN PUMP, a tangible purposeful walking service machine with a broad vertical bellows chamber, huge crescent intake above, one long curved outlet pipe ending in a flared nozzle, visible hinged maintenance hatch, two large lever arms and three sturdy jointed feet. Its lever/bellows mechanism makes the pumping purpose immediately readable. Three-quarter view, asymmetric broad silhouette, not an ordinary appliance or generic robot icon. Structure defined entirely by dense independent height-coded LiDAR points, with a few narrow unscanned gaps revealing inner mechanisms; no solid material or connected lines. Whole machine/nozzle/feet inside central75%canvas with generous empty margins. True transparent alpha around and in gaps; no ground, backing, shadow, tile or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 620901
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.a9e7eb263af6.png",
+      "sourceSha256": "a9e7eb263af6caf7f0f5ef094934c31faefe7f9e5d3c08af92c022b4c158d619",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "f421ff660eaf422875acc5b436b80db67816033aa1cba04a815b002380d3d406",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 5356406,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE LIDAR WAYSTATION, an inhabited rest stop on aerial travel routes. Make the tangible subject instantly recognizable with clear anatomy, architecture or mechanism. MEDIUM: dense height-coded3D LiDAR point-cloud scan, millions of individually visible luminous sampled spatial points grouped into a complete readable form, fine horizontal sweep bands, a few narrow missing scan strips and occlusion gaps. No connected lines or continuous opaque surfaces. Range-classification colours are turquoise/seafoam, pale gold, warm coral and a few ice-white returns on deep navy silence. Photographic scientific scan aesthetic, polished and legible at thumbnail size; strong silhouette built from dense points. No diffraction fringes, smooth shiny texture, particle trajectories or streaks, shock stripes, ordinary3D render, clay, glass, metal, painting or physical craft. No text, labels, numerals, coordinates, axes, clocks, readings, UI, chart, logos or watermark. Fictional mapped world, not real measured sensor data. Asset: ONE portrait phone wallpaper1290x2796. A populated waystation scanned as one coherent dense spatial point cloud: bowed causeway and low arched inn with visible doorway/windows at lower right, a strange sail-powered passenger carriage with two big unequal wheels parked lower left, long-snouted courier greeting a six-legged companion between them. Scan points map the ground and architectural depth in irregular coloured clusters, with thin unscanned strips crossing parts of the scene. Upper third and central left mostly quiet near-black navy, a sparse distant arc of sampled ground only below. Inhabited place and tangible scale, not floating abstract geometry. Full-bleed opaque scene, no frame or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Jared22Nov requested tangible subjects in distinctive image styles. Aerial-route world uses a new height-coded spatial point-cloud medium."
+}
