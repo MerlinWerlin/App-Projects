@@ -18,11 +18,19 @@ import { remoteArtTheme } from '../../src/core/remoteCatalog.ts';
 import { plannedDesignedWidgets } from '../../src/core/designedWidgetLibrary.ts';
 import { parseDesignedWidget } from '../../src/core/designedWidgets.ts';
 import { designedWidgetSvg } from '../../src/core/designedWidgetPreview.ts';
+import { parseBrowseCategory } from '../../src/core/themeBrowse.ts';
 
 const json = (path) => JSON.parse(readFileSync(path, 'utf8'));
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const save = (path, value) => { mkdirSync(dirname(path), { recursive: true }); writeFileSync(path, JSON.stringify(value, null, 2) + '\n'); };
 export const REGISTRY_FILE = 'src/core/extraordinaryThemeIdentities.ts';
+
+export function validateNewThemeBrowseCategory(category) {
+  assert.ok(typeof category === 'string' && category.trim().length > 0, 'new theme needs an explicit browse category');
+  const parsed = parseBrowseCategory(category);
+  assert.ok(parsed !== 'more' || category.trim().toLowerCase() === 'more', `unsupported browse category: ${category}`);
+  return parsed;
+}
 
 export function validateNewIdentityPath(path) {
   assert.ok(typeof path === 'string' && path.length <= 2400 && /^M [MLQTCZ0-9 .-]+$/.test(path), 'unsupported native drawing path');
@@ -87,6 +95,8 @@ export function auditExtraordinaryBuild({ app = APP_ROOT, dir }) {
   for (const { id, folder, descriptor } of directions.records) {
     const entry = parsedCatalog.value.packs.find((p) => p.id === id);
     assert.ok(entry, `${id}: absent from candidate catalogue`);
+    const browseCategory = validateNewThemeBrowseCategory(json(join(folder, 'meta.json')).category);
+    assert.equal(validateNewThemeBrowseCategory(entry.category), browseCategory, `${id}: catalogue browse category differs from source`);
     const m = json(checkedFile(dir, entry.manifest)), parsed = parseRemoteArtManifest(m, id);
     assert.ok(parsed.ok, `${id}: candidate manifest fails the app parser`);
     const options = parseWidgetOptions(m.widgets, m.assets);
@@ -125,6 +135,7 @@ export function auditExtraordinaryBuild({ app = APP_ROOT, dir }) {
     assert.ok(identity && parseWidgetIdentity(identity), `${id}: actual native identity registry did not resolve`);
     assert.equal(identity.subject, descriptor.art[descriptor.recipe[1]]);
     const theme = remoteArtTheme(entry, 'https://example.invalid/glaze-new-themes');
+    assert.equal(theme.browseCategory, browseCategory, `${id}: theme falls into the wrong app browse category`);
     const planned = plannedDesignedWidgets(theme, (kind, size) => `${kind} ${size}`);
     assert.equal(planned.length, 9, `${id}: expected Clock/Battery/Calendar at every Home Screen size`);
     for (const piece of planned) {

@@ -4,7 +4,18 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { APP_ROOT } from './build_packs.mjs';
-import { extraordinaryRegistrySource, loadExtraordinaryDirections, REGISTRY_FILE, validateNewIdentityPath } from './extraordinary_themes.mjs';
+import { extraordinaryRegistrySource, loadExtraordinaryDirections, REGISTRY_FILE, validateNewIdentityPath, validateNewThemeBrowseCategory } from './extraordinary_themes.mjs';
+import { BROWSE_CATEGORIES } from '../../src/core/themeBrowse.ts';
+
+test('new themes keep recognized browse categories instead of silently falling into More', () => {
+  for (const category of BROWSE_CATEGORIES) {
+    assert.equal(validateNewThemeBrowseCategory(category.id), category.id);
+    assert.equal(validateNewThemeBrowseCategory(category.name), category.id);
+  }
+  assert.equal(validateNewThemeBrowseCategory('  ABSTRACT and ART  '), 'abstract-art');
+  assert.equal(validateNewThemeBrowseCategory('More'), 'more');
+  for (const category of ['Art & Design', '', undefined, null]) assert.throws(() => validateNewThemeBrowseCategory(category));
+});
 
 test('new native identity paths reject broken commands, unsupported instructions and out-of-canvas geometry', () => {
   validateNewIdentityPath('M 1 2 C 4 5 6 7 8 9 L 20 30 Q 4 5 6 7 Z');
