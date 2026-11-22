@@ -16,6 +16,32 @@ for (const theme of fixture.themes) theme.designs = theme.designs.map(design => 
 const companionOrnament = 'M 12 64 L 50 18 L 88 64 M 28 64 Q 50 84 72 64';
 const ornamentReadings = { date: new Date(2026, 10, 22, 10, 8), battery: 73, locale: 'en-AU' };
 
+test('serif preview numerals clear the medium gauge and align with the small today marker for existing themes', () => {
+  let checked = 0;
+  for (const theme of fixture.themes) {
+    const battery = theme.designs.find(d => d.kind === 'battery')!;
+    if (battery.font !== 'serif') continue;
+    for (const level of [0, 73, 100]) {
+      const svg = designedWidgetSvg(battery, 'medium', { ...ornamentReadings, battery: level });
+      const tag = [...svg.matchAll(/<text[^>]*>[^<]*<\/text>/g)].find(m => m[0].endsWith(`>${level}%</text>`))![0];
+      const y = Number(tag.match(/ y="([^"]+)"/)![1]);
+      assert.ok(y < 60 && y > 55, `${theme.id}/${level}: Georgia's descenders need clearance above the gauge`);
+      // The correction belongs to the preview font, not the native geometry or other fonts.
+      const rounded = designedWidgetSvg({ ...battery, font: 'rounded' }, 'medium', { ...ornamentReadings, battery: level });
+      assert.ok(rounded.includes(`y="67" font-size="67"`), theme.id);
+    }
+    const calendar = theme.designs.find(d => d.kind === 'calendar')!;
+    const svg = designedWidgetSvg(calendar, 'small', ornamentReadings);
+    const day = [...svg.matchAll(/<text[^>]*>22<\/text>/g)].find(m => m[0].includes(`fill="${calendar.onAccent}"`))![0];
+    const marker = [...svg.matchAll(/<path[^>]*\/>/g)].find(m => m[0].includes(`fill="${calendar.accent}"`) && m[0].includes('scale(0.18 0.18)'))![0];
+    const markerY = Number(marker.match(/translate\([^ ]+ ([^)]+)\)/)![1]) + 9;
+    const y = Number(day.match(/ y="([^"]+)"/)![1]);
+    assert.ok(Math.abs(y - (markerY - 1.2)) < .001, theme.id);
+    checked++;
+  }
+  assert.ok(checked >= 60, 'cover the existing serif catalogue, not just the new examples');
+});
+
 test('calendar companions replace crowded miniature heroes and preserve their proportions at every size', () => {
   const calendar = fixture.themes.find(t => t.id !== 'alpine-starlight')!.designs.find(d => d.kind === 'calendar')!;
   const identity = { ...calendar.identity!, ornament: companionOrnament };
