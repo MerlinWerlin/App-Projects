@@ -1,0 +1,100 @@
+{
+  "review": "All five full 1254-square sources fit proportionally inside 900 px on a 1024-square transparent canvas. The source snail has a 46 px left margin. Its full silhouette fits the final rounded tile. The corrected fern has zero frame-edge alpha and its visible bounds start at y107, compared with y3 for the hazy initial output. The original daffodil is unchanged. The 852x1846 wallpaper fits all three phone variants with the main subjects whole.",
+  "assets": [
+    {
+      "id": "daffodil-foldpath",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          196,
+          132,
+          1062,
+          1141
+        ],
+        "96": [
+          196,
+          132,
+          1062,
+          1141
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "wren-foldpath",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          127,
+          240,
+          1121,
+          1059
+        ],
+        "96": [
+          128,
+          240,
+          1121,
+          1059
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "snail-foldpath",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          46,
+          304,
+          1204,
+          1030
+        ],
+        "96": [
+          46,
+          305,
+          1204,
+          1029
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "fern-foldpath",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          129,
+          107,
+          1071,
+          1162
+        ],
+        "96": [
+          130,
+          108,
+          1070,
+          1161
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "butterfly-foldpath",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          71,
+          236,
+          1184,
+          998
+        ],
+        "96": [
+          71,
+          237,
+          1183,
+          998
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "daffodil-foldpath",
+    "kind": "art",
+    "image": "daffodil-foldpath.a8cc90f5a893.png",
+    "sha256": "a8cc90f5a893bec4c2674b1f6dea5ca17c6876e662be1137792d583bdd648c52",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Daffodil Foldpath"
+  },
+  {
+    "id": "wren-foldpath",
+    "kind": "art",
+    "image": "wren-foldpath.e3b1a412a577.png",
+    "sha256": "e3b1a412a577405275f2beb2a0c2857c788d1d17c5e4c9c9ec9fd581be2b7dd6",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Wren Foldpath"
+  },
+  {
+    "id": "snail-foldpath",
+    "kind": "art",
+    "image": "snail-foldpath.9a0d7156d750.png",
+    "sha256": "9a0d7156d750d1a021bf4bd6134ec577bf2a202e0a4527688790b272d833d54a",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Snail Foldpath"
+  },
+  {
+    "id": "fern-foldpath",
+    "kind": "art",
+    "image": "fern-foldpath.bd951903fc15.png",
+    "sha256": "bd951903fc15df6491d7faf68f56f5ab48952fb391f6416afa01c27694465ff6",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fern Foldpath"
+  },
+  {
+    "id": "butterfly-foldpath",
+    "kind": "art",
+    "image": "butterfly-foldpath.0b07f9eb4eeb.png",
+    "sha256": "0b07f9eb4eebeb272ae6f0fdb6953fab6b4286ccb31e5be1705a73af7adb14ff",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Butterfly Foldpath"
+  }
+]
