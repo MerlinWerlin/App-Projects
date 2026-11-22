@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ibis",
+    "label": "Perforated Ibis",
+    "kind": "art",
+    "image": "ibis.33efdcf64000.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "ribbon-armadillo",
+    "label": "Ribbon Armadillo",
+    "kind": "art",
+    "image": "ribbon-armadillo.f511bc27793e.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "raptorial-mantis",
+    "label": "Raptorial Mantis",
+    "kind": "art",
+    "image": "raptorial-mantis.48b3cf937c8b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "spooltail-chameleon",
+    "label": "Spooltail Chameleon",
+    "kind": "art",
+    "image": "spooltail-chameleon.2b463cd36d8a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "billowing-orchid",
+    "label": "Billowing Orchid",
+    "kind": "art",
+    "image": "billowing-orchid.9588c2408fdd.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

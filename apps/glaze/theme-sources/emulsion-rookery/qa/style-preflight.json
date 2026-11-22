@@ -1,0 +1,15 @@
+{
+  "scope": "Published/bundled baseline, actual added artworks and all lane source metadata/provenance",
+  "terms": [
+    "filmstrip",
+    "film strip",
+    "celluloid",
+    "sprocket",
+    "perforated film",
+    "acetate"
+  ],
+  "positiveProcessMatches": [],
+  "observedNeighbor": "Midnight Matinee has a charcoal/cherry old-cinema/velvet identity and an actual antique brass projector with open-spoke reels and velvet strap. It is a thematic cinema neighbor, not continuous perforated film wildlife. Reference was inspected, not supplied to imagegen.",
+  "otherNeighbors": "Curlfin paper quilling uses rolled paper edges; Pellicle Shoal uses wet torn fibrous sheets; this medium has crisp continuous emulsion frames and paired square sprocket rows.",
+  "reservation": "A10 exclusive reservation coordinated before generation; first ibis full/170/85 accepted before expanding the other four."
+}

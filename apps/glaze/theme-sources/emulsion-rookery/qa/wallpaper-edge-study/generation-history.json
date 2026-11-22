@@ -1,0 +1,56 @@
+{
+  "initial": {
+    "prompt": "Use case: stylized-concept. Create the matching opaque portrait phone wallpaper for EMULSION ROOKERY,1290x2796 smartphone aspect9:19.5. Inputs1-5 are our exact own ibis, armadillo, praying mantis, chameleon on twig and Phalaenopsis orchid sculptures. Preserve these five familiar natural identities, clear real anatomy, complete appendages, and their continuous perforated CELLULOID FILM-STRIP construction: rectangular dye-emulsion frame windows, two rows of square sprocket holes, thin curled edges, petrol/teal/coral/copper transparencies with restrained reflections. No readable film codes or pictures inside frames. The wildlife forms must stay instantly recognizable, with no added limbs, geometric organisms or abstract data bodies. Build ONE tranquil botanically recognizable conservatory garden scene. A low natural bare branch at centre supports the chameleon, the orchid grows behind left with whole flower/bud/leaves, the ibis stands behind right on a pale flat garden stone with both feet whole, the armadillo walks low-left, and the mantis stands low-right with all legs and both antennae clear. These are coherent physical wildlife sculptures among a few REAL natural fern fronds, soft moss and quiet pale garden ground; supporting foliage is sparse and subordinate, not a film city or cinema display. Keep all five heads, flower parts and limbs separated and visible. Soft misty SILVER-SAGE backdrop approximately#DDE5E2, subdued diffuse daylight, upper42% mostly quiet softly blurred empty conservatory air. Entire five-subject grouping must fit inside CENTRAL70% width, and between44% and75% image height. Leave at least15% quiet background on BOTH sides and25% quiet pale ground below the lowest toes/tail/leaf. A short-phone centred crop removing9% top/bottom must retain all five completely with comfortable room near rounded screen corners. Keep natural poses and relaxed real-plant context, not a row of catalogue cutouts or collage. No cinema equipment, reels/projectors, architecture, new animals, extra faces or fantasy organs, no graphic light fields, sparkle or dramatic glow. No floor-panel rectangles, borders, labels, numbers, edge codes, logos, UI, clock/date/battery/calendar pictures. Full-bleed fully opaque portrait wallpaper.",
+    "file": "qa/wallpaper-edge-study/initial-wallpaper.5a4fd4f9a04d.png",
+    "sha256": "5a4fd4f9a04d76d41f8641d57baaa72a3fd003c89b7c9ab374e52f38056da448",
+    "references": [
+      {
+        "file": "sources/ibis.34b1d9dbdfc2.png",
+        "sha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671"
+      },
+      {
+        "file": "sources/ribbon-armadillo.df5fc4d23e52.png",
+        "sha256": "df5fc4d23e52a667b2eb6d2ce72678e1a52e46a0c497b33726c894fd1fb45ff1"
+      },
+      {
+        "file": "sources/raptorial-mantis.b8fa31396a21.png",
+        "sha256": "b8fa31396a2110f63e0bb87eb8a0cd1fc5a6c3fde3e18fbcaeb37196b73f7fbe"
+      },
+      {
+        "file": "sources/spooltail-chameleon.19e1a611171c.png",
+        "sha256": "19e1a611171cb40331be63a4de7ae78c9dc2c475b27973e14d198527a21258e8"
+      },
+      {
+        "file": "sources/billowing-orchid.39be66f4c7f4.png",
+        "sha256": "39be66f4c7f447afb1bddf875691696b349637508851de5e053f108033fe926c"
+      }
+    ]
+  },
+  "selectedLayoutEdit": {
+    "id": "wallpaper",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: precise-object-edit. LAYOUT-ONLY breathing-room correction of our own EMULSION ROOKERY botanical garden. Preserve exactly the five recognizable film-strip sculptures and their actual anatomy: orchid/bud/two leaves behind left, ibis behind right with whole curved beak and two feet, chameleon on low natural twig centre, armadillo front-left with all four feet and curled tail, praying mantis front-right with six limbs/two antennae. Preserve their continuous perforated celluloid material, rectangular dye-frame windows, petrol/teal/coral/copper colours and restrained reflections, with no text/codes anywhere. Keep the real natural fern/moss context, pale quiet ground and softly blurred silver-sage background. Change ONLY whole-scene framing: uniformly reduce the ENTIRE five-subject grouping, its immediate supporting branch/stone/foliage, to about66% of its current size. Centre this reduced grouping horizontally, with its combined centre around58% image height. Its topmost flower/bird/antenna tip should begin around40% height and its lowest foot/tail/leaf should end ABOVE75% height. All five must fit inside central70% width with at least15% quiet side margins, and25% quiet ground below. Extend the same natural pale garden and soft silver-sage air around it, no added objects or blank panel bands. Every toe, antenna, beak, wing loop, orchid leaf/bud and tail stays fully whole; do not redesign their poses, anatomy or identities. Preserve the exact relative arrangement and clear separation of heads/limbs. Upper38% quiet blurred empty air. The shorter phone crop removing9% top/bottom must retain all five comfortably inside rounded screen corners. No new animals, plants, equipment, architecture, faces, text, numbers, frames, borders, UI, collage or glowing effects. Full-bleed opaque portrait phone wallpaper, same aspect as input.",
+    "source": "sources/wallpaper.8eb4ad55be79.png",
+    "sourceSha256": "8eb4ad55be794ebb40281fe59e47562ece22e557484ba777e8bf71889f97fc0e",
+    "sourceDimensions": [
+      853,
+      1844
+    ],
+    "selectedFile": "wallpapers/wallpaper.png",
+    "sha256": "31c301e951116b57ae6ff1040c6c4692b82e5d2c4499dcd3f325149fb6355343",
+    "dimensions": [
+      1290,
+      2796
+    ],
+    "processing": "Own layout-only garden pullback, then central1290x2796 aspect export. Independent art and native subjects unchanged.",
+    "references": [
+      {
+        "file": "qa/wallpaper-edge-study/initial-wallpaper.5a4fd4f9a04d.png",
+        "sha256": "5a4fd4f9a04d76d41f8641d57baaa72a3fd003c89b7c9ab374e52f38056da448",
+        "purpose": "Own first five-reference garden, layout-only breathing-room correction."
+      }
+    ],
+    "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+  },
+  "reason": "All beaks, toes, tails, antennae, leaves and buds need quiet side/bottom margins in every actual phone crop."
+}
