@@ -1,0 +1,74 @@
+{
+  "themeId": "ferroflora",
+  "lane": "A",
+  "style": "Experimental magnetic-liquid macro photography, sharp conical spines and mirror-smooth organic membranes.",
+  "published": false,
+  "artworks": [
+    {
+      "id": "thorn-sail-drifter",
+      "prompt": "Use case: stylized-concept. Asset: one original isolated square artwork for the Glaze theme Ferroflora, 1024 x 1024, genuinely transparent background. Invent an extraordinary living sculpture made entirely of glossy black magnetic ferrofluid: a THORN-SAIL DRIFTER, one asymmetric suspended membrane stretched between three wildly curved hollow needle-like spars, with one elegant falling chain of liquid beads and a small hovering magnetic satellite droplet. Its silhouette suggests an impossible migrating organism, not a boat, plant, instrument or known animal. Fine conical magnetic spines grow along only the exposed edges, while broad mirror-smooth surfaces stay beautifully calm. Art process: experimental high-end macro studio material photography, intensely believable viscous liquid, razor-thin reflections, controlled shallow depth without losing silhouette. Palette: graphite black, bone-white studio highlights, tiny burnt-ochre reflected edge light; no neon, no rainbow chrome. Three-quarter view, entire single organism visible with 14 percent clear margin, refined asymmetry, highly readable at small widget size. No floor, no background colour, no cast shadow rectangle, no frame, no lettering, no numbers, no logos, no UI, no clock, no ordinary props. This must look like a new physical material lifeform, not a generic sculpture or decorative object.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-9e0c44b7-18b5-4601-8b1d-dd379e04a62f.png",
+      "sourceSha256": "e09ae4c4a39bb242ceb0ed3fc750aef0cc0c85def81596ffdcc75b8892eca923",
+      "image": "widgets/thorn-sail-drifter.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": null
+    },
+    {
+      "id": "crown-grazer",
+      "prompt": "Use case: stylized-concept. Create a completely new original isolated square Glaze widget artwork, 1024 square. Image 1 is a MATERIAL AND ART-PROCESS REFERENCE ONLY, not an edit target. Reuse the material language and palette, but invent a completely different subject and silhouette. Subject: a CROWN GRAZER, a compact invented living liquid organism walking on six long uneven tapering legs. Its body is a hollow glossy droplet shell, completely open through the middle; one massive asymmetrical crown of ten fluid spines grows upward from its back. It has no recognisable animal head, no eyes or face. A low broad silhouette with legs beneath and crown above, radically unlike the stretched triangular sail in the reference. Style: Experimental macro studio material photography: glossy graphite-black viscous ferrofluid with razor-sharp white reflections, restrained bronze edge light and fine magnetic spines, calm broad surfaces. Entire single form visible with at least 12 percent clear margin, readable at 170-pixel widget size. Truly transparent background and transparent holes. No background, no floor, no pedestal, no cast-shadow rectangle. No text, digits, logo, watermark, borders, clock or UI. Do not copy the composition or geometry of Image 1.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-6add8e76-be49-4064-82a3-300cb5052dab.png",
+      "sourceSha256": "17f77df63ad4f12786a4f2ce5654d9b705dc1c5d9d08dba5321d1ab69a1db3d6",
+      "image": "widgets/crown-grazer.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-9e0c44b7-18b5-4601-8b1d-dd379e04a62f.png"
+    },
+    {
+      "id": "orbital-root-knot",
+      "prompt": "Use case: stylized-concept. Create a completely new original isolated square Glaze widget artwork, 1024 square. Image 1 is a MATERIAL AND ART-PROCESS REFERENCE ONLY, not an edit target. Reuse the material language and palette, but invent a completely different subject and silhouette. Subject: an ORBITAL ROOT KNOT: one hovering open toroidal organism built from three thick interlocked knots of glossy black magnetic liquid. Fine conical spines point outward, long mirror-smooth roots hang down as twisting liquid ribbons and end in exactly three heavy round beads. A near-vertical annular silhouette, large central hole, dramatic asymmetrical liquid roots. No animal, plant pot, jewellery, ordinary ring or recognisable product, and nothing like the reference's broad sail membrane. Style: Experimental macro studio material photography: glossy graphite-black viscous ferrofluid with razor-sharp white reflections, restrained bronze edge light and fine magnetic spines, calm broad surfaces. Entire single form visible with at least 12 percent clear margin, readable at 170-pixel widget size. Truly transparent background and transparent holes. No background, no floor, no pedestal, no cast-shadow rectangle. No text, digits, logo, watermark, borders, clock or UI. Do not copy the composition or geometry of Image 1.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-d2a570bd-a0bd-4d0d-b528-5c1d622d4680.png",
+      "sourceSha256": "1b2b2481c59745477d9780f275f6fa9f48af02ecd327b8dc2bceba2704332077",
+      "image": "widgets/orbital-root-knot.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-9e0c44b7-18b5-4601-8b1d-dd379e04a62f.png"
+    },
+    {
+      "id": "levitating-needle-reef",
+      "prompt": "Use case: stylized-concept. One completely new original isolated square 1024 x 1024 widget artwork for ferroflora. Image 1 is a material and style reference only, not an edit target. Invent this different subject: A LEVITATING NEEDLE REEF: a tall asymmetrical branching spire of solid-looking black magnetic liquid, rising from three hovering flattened droplets. Two impossibly thin branches split and rejoin around a large teardrop-shaped void, then fracture into only a few long, elegant needle tips. Tiered tiny conical spines gather along the lower trunk. It is a strange vertical living reef suspended in air, not a tree, crown, ring, jewellery, or a copy of the triangular sail. Entire subject in frame, 12 percent margin. Experimental macro studio photography of glossy graphite-black viscous ferrofluid, razor-sharp white highlights and restrained bronze rim reflections, broad calm mirror surfaces between precise conical magnetic spines. Strong legible silhouette, truly transparent backdrop including holes. No floor, no painted background, no pedestal, no rectangular shadow. No text, numerals, clocks, UI, logo, border or ordinary props.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-ea2199e8-b2d7-4ae5-a724-ae5da993524a.png",
+      "sourceSha256": "a6396467ff6f4ec30b1cbb818ab90b215adcf69bb235a12d09cb953e223b85fc",
+      "image": "widgets/levitating-needle-reef.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-9e0c44b7-18b5-4601-8b1d-dd379e04a62f.png"
+    },
+    {
+      "id": "wallpaper",
+      "prompt": "Use case: stylized-concept. Create a premium original PORTRAIT phone wallpaper, tall 9:19.5 composition. Image 1 is only the magnetic liquid material language reference; do not reuse its silhouette. The theme is FERROFLORA, an impossible garden of glossy black ferrofluid organisms. Along ONLY the lowest quarter of the very tall frame, a tiny alien archipelago of magnetic fluid grows into branching needles, stretched liquid membranes and levitating droplets, intensely realistic specular macro material. Build a coherent low sculptural landscape, not a collage of isolated object photos. The upper three-quarters is elegant, quiet warm ivory #E8E2D5 with almost invisible curved magnetic field traces and subtle soft warm studio light, sufficient blankness for readable phone widgets. Keep all important lower scene shapes inside a narrow central column, so a tall centre crop is safe. Palette: graphite black, bone white, muted bronze reflections and the smallest burnt-ochre accent. Asymmetrical composition, exquisite detail, no neon or rainbow chrome. No text, lettering, digits, time, date, widgets, app icons, frame or mockup phone. Opaque full-bleed artwork, no transparency.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-a7c485a7-08ab-4d53-9d5f-05185635bb2e.png",
+      "sourceSha256": "0e6afff01e9560a80fbf7cf7916ec793dc8f08ba3bd5b26453b5d48c8e844b3e",
+      "image": "wallpapers/wallpaper.png",
+      "width": 852,
+      "height": 1846,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-9e0c44b7-18b5-4601-8b1d-dd379e04a62f.png"
+    },
+    {
+      "id": "lightning-chrysalis",
+      "prompt": "Use case: stylized-concept. One completely new original isolated square 1024 x 1024 widget artwork for ferroflora. Image 1 is a material and style reference only, not an edit target. Invent this different subject: A LIGHTNING CHRYSALIS: a tall narrow suspended black-liquid pod split vertically into two offset mirror-smooth lobes. Between the parted lobes hangs a single angular branching thread of liquid shaped like a miniature lightning strike, with four disconnected floating beads aligned to its branches. Small magnetic spines fray only the pod's outer lower lip; the inner opening stays calm and open. No ring, no animal, no flower, no conventional crystal or product. A poised two-part cocoon with very clear central negative space, not the reference's sail. Entire subject in frame with 12 percent margin. Experimental macro studio photography of glossy graphite-black viscous ferrofluid, razor-sharp white highlights and restrained bronze rim reflections, broad calm mirror surfaces between precise conical magnetic spines. Strong legible silhouette, truly transparent backdrop including holes. No floor, no painted background, no pedestal, no rectangular shadow. No text, numerals, clocks, UI, logo, border or ordinary props.",
+      "generator": "built-in image_gen",
+      "sourceImage": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-c4c842fd-09d2-47b1-b2d6-ee50c74b56cb.png",
+      "sourceSha256": "7801a84942bf9ceb071c5de7666b468b5af6ab8e0e61934925c7b6cb3465bf8b",
+      "image": "widgets/lightning-chrysalis.png",
+      "width": 1254,
+      "height": 1254,
+      "referenceSource": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-9e0c44b7-18b5-4601-8b1d-dd379e04a62f.png"
+    }
+  ]
+}

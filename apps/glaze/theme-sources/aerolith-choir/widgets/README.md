@@ -1,0 +1,1 @@
+Individual original generated PNG inputs for five fitted Artwork selections; widgets/widget-options.json is consumed by the existing pack builder. Native functional values are rendered separately by Glaze.

@@ -1,0 +1,1 @@
+Aerolith Choir theme source, authored by Lane A for APPS A2. Five original art images, wallpaper and native identities are complete only after validation. No publication; provenance.json retains exact prompts and source hashes.
