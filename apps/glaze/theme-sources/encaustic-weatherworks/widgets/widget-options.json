@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cumulus-kiln",
+    "kind": "art",
+    "image": "cumulus-kiln.d5ac050f.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cumulus Kiln"
+  },
+  {
+    "id": "screw-fog-press",
+    "kind": "art",
+    "image": "screw-fog-press.b92198ab.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Screw Fog Press"
+  },
+  {
+    "id": "thunder-drum-crawler",
+    "kind": "art",
+    "image": "thunder-drum-crawler.f0bc14b0.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Thunder Drum Crawler"
+  },
+  {
+    "id": "rainbow-winch",
+    "kind": "art",
+    "image": "rainbow-winch.6db2a5d1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Rainbow Winch"
+  },
+  {
+    "id": "folding-dew-collector",
+    "kind": "art",
+    "image": "folding-dew-collector.3eb9e08f.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folding Dew Collector"
+  }
+]

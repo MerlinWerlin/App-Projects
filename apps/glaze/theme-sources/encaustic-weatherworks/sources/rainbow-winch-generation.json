@@ -1,0 +1,18 @@
+{
+  "id": "rainbow-winch",
+  "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject RAINBOW WINCH: a low open tangerine A-frame gantry on four flat ivory shoes holds TWO LARGE REELS side-by-side, one above-left and one lower-right, with thick flanged cobalt drums and visible hand-crank at the right. A continuous broad THREE-STRIPE RIBBON, orange/ivory/cobalt, is drawn off the left reel, rises into a graceful high arch across the top and is wound onto the right reel. The three stripes stay together as one material rainbow ribbon, not disconnected floating arcs. Large open triangular space under the gantry, crossed drive belts, a small locking pawl and simple hubs explain how the useful device tensions and stores rainbows. No rainbow sixcolour spectrum, no clouds, cute face, engine, pipes, print, weather icon or data. Asymmetric double-spool silhouette, overall balanced width and height. Entire arch and all shoes inside genuine alpha margins. Strong opaque painted wax ridges, scraped old layers, palette knife texture, flat painted illustration.",
+  "tool": "built-in image_gen",
+  "source": "sources/rainbow-winch.1b98d4c3.png",
+  "sourceSha256": "1b98d4c32bacb283403a01d9fa3bedc42e23815e9564c13300a820df392ea65f",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/rainbow-winch.6db2a5d1.png",
+  "sha256": "6db2a5d1a0c44e04b5dd83d60d6e49188633cca851292dd72811b69da92691e1",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

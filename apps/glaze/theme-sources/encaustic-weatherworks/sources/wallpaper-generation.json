@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "ONE original tall 1290:2796 wallpaper for GLAZE ENCAUSTIC WEATHERWORKS. A tangible hand-built factory in a storybook world makes weather: at lower40%, a squat orange kiln vents a broad ivory cumulus cloud from a short chimney; beside it a tall screw press squeezes petrol-blue fog from layered plates, a low crawler carries a large thunder drum, and an open folding mesh catches dew. Each is a believable purposeful machine with obvious legs/wheels, hinges, chambers, cranks and connections, simplified enough to recognise at phone scale. An actual continuous small workshop courtyard, no collage, no abstract floating geometry. Medium is FLAT HOT-WAX ENCAUSTIC PAINTING on dark slate: torch-fused pigmented wax, scraped recesses exposing older layers, coarse palette-knife ridges, cloudy translucent wax pools, buried sgraffito linework and uneven matte satin sheen. It must visibly look painted by dragging and reheating wax, not sculpted beeswax toys, fabric batik, glass, clay, CGI or 3D render. Petrol black #122E35 with strong burnt tangerine #E8793D, dirty ivory #E6DEC5 and limited cobalt #3E69BA. Upper55% calm deep petrol wax surface with subtle scraped texture, generous quiet app icon space; machinery grounded in lower45%. Flat expressive blocky forms with tactile wax edges and scratches, charming original weather equipment, slight three-quarter illustration, minimal shadows. No text, lettering, numbers, symbols resembling UI, clocks, gauges with readings, dates, battery/weather values, logos, borders, phone mockup or frame.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.0a9ba9d1.png",
+  "sourceSha256": "0a9ba9d1baaadcfce2d4129936e1ac272b315af17b7224be8ec111f19f87d4b1",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "64abcbb516f7fc0b75e9f3d2bfa5e19803e99308d7b0742b2ec7d25baf183e55",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
