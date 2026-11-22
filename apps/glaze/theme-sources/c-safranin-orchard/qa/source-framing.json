@@ -1,0 +1,100 @@
+{
+  "review": "All five unmodified1254square art originals have alpha16/96 whole subjects inside frame and framealpha1/four fixed exterior probes0. Some raw stem/tip margins are tight but every endpoint remains whole; all sources uniformly900within1024 with Lanczos, no crop/stretch/creative code edits or alpha cleanup. All actual encoded alpha16 pixels remain inside rounded mask. Firstbb68 unchanged, normalized65c51856 and actual built first WebP9dbf7acd also match the prior standalone codec study. Single original opaque852x1846 wallpaper structurally resized1290x2796; every section endpoint remains inside all three actual crops. Actual larger/taller placement disclosed, no framing edit/pullback.",
+  "assets": [
+    {
+      "id": "strawberry-section",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          208,
+          45,
+          1038,
+          1221
+        ],
+        "96": [
+          209,
+          46,
+          1037,
+          1220
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "pea-pod-section",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          46,
+          331,
+          1206,
+          889
+        ],
+        "96": [
+          47,
+          332,
+          1205,
+          888
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "daffodil-bud-section",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          320,
+          49,
+          826,
+          1228
+        ],
+        "96": [
+          321,
+          49,
+          825,
+          1228
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "fern-crozier-section",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          374,
+          79,
+          879,
+          1200
+        ],
+        "96": [
+          374,
+          79,
+          878,
+          1199
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "samara-section",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          64,
+          211,
+          1199,
+          1098
+        ],
+        "96": [
+          64,
+          212,
+          1198,
+          1097
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}
