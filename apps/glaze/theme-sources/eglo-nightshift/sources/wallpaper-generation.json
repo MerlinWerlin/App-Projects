@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "ONE original tall1290:2796 production wallpaper for Glaze EGLO NIGHTSHIFT. Traditional reverse-painted and silver-leaf-gilded GLASS artwork, flat artisan verre-eglomise language: irregular thin mirror-SILVER LEAF seams, fine hand-scratched black contours and cross-scraped highlights, deep bottle-green reverse-painted fields, tiny age pinholes and soft tarnish at edges, no digital chrome or3D crystal objects. A coherent tangible nocturnal repair guild occupies lower45%: one broad masked porter with an arch-shaped coat carries a folded little bridge, a very tall stilt-legged worker holds a shallow cloud-shearing frame, a crouching worker repairs a crescent in a large clamp, and a squat lamp-helmet diver rests by a shallow channel of water. They work in a quiet arched workshop courtyard, humanlike invented costumes and understandable tasks, friendly mysterious rather than frightening. Upper55% largely calm bottle-green black glass #102628, slight reverse-paint brush texture and silver pinholes, excellent quiet icon space. Silver #D8DDD4, nearblack #101819, muted amber #B88952 tiny accents. Everyone and every object drawn as flat silver-leaf silhouette with scratched engraving lines and painted green inner fields, not photographic sculpture or CGI. No text, lettering, signature, numerals, edition marks, clocks/dials, dates, battery/weather values, UI, logos, frame, border, phone mockup or collage. One continuous illustrated world.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.0d935f74.png",
+  "sourceSha256": "0d935f747f083cf30336d3e672da0fd4725432b97eb4b230626b662e01f2c84f",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "7bb4136fb275cc890e4c9e35d00e3d4ebcb9df498290dffbbe5d8f88ff7f602c",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
