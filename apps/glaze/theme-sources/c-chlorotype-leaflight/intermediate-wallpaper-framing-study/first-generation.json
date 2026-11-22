@@ -1,0 +1,35 @@
+{
+  "selected": false,
+  "reason": "First arrangement too large/high for intended quiet phone icon field; preserve whole leaves/petioles/twig with broader margins.",
+  "sourceImage": "intermediate-wallpaper-framing-study/first-large-arrangement-unselected.88fd95e21d61.png",
+  "sourceSha256": "88fd95e21d615a44c4b70c03435d83e8146ebe2a12a0349a9ccdf4e1a836e3ee",
+  "prompt": "ONE original opaque portrait1290x2796 phone wallpaper for GLAZE SUNHELD LEAVES. One quiet organic still-life arrangement of FIVE DIFFERENT REAL chlorotype leaves/sprigs resting naturally on a very pale warm matte limestone-coloured field #F0E4C5/#D9D1B8. Exact own references: IMAGE1=five-lobed FIG LEAF carrying one WHOLE robin photographic image;IMAGE2=ROUND PELTATE NASTURTIUM leaf with long curved petiole carrying one WHOLE crouched frog photograph;IMAGE3=short LINDEN twig with THREE heart-shaped leaves, ONE large leaf carrying whole upright squirrel and bushy tail, two smaller plain leaves;IMAGE4=long curved HOSTA blade with gently rolled tip carrying a WHOLE snail/shell/foot/tentacle photo;IMAGE5=TWO forked GINKGO fans, foreground fan carrying one WHOLE open-wing butterfly/antennae photo and rear fan plain. These are PHOTOGRAPHS WITHIN REAL LEAF PIGMENT, flat green/straw image tones inside continuous opaque actual plant tissue. Natural veins visibly cross every animal image. Never create separate physical bird/frog/squirrel/snail/butterfly standing on the leaves, animal-shaped leaves, printed paper, panels, badges, decals, foil, metal, resin/glass, paint, engraving or skeletons. Preserve ALL pictured animals whole within their leaf surfaces, and each complete leaf/sprig edge, lobe, leaf tip, stem and petiole whole. Arrange in ONE gentle coherent asymmetric arc, not a five-image contact sheet, evenly spaced row, collage panels or specimens mounted on rectangular pages. Slightly different natural orientations, very soft shallow leaf-to-ground contact shadows confined to the small group. Animal-photo areas and leaf tips do not cover one another. VERY DISTANT SMALL COMPOSITION: the ENTIRE five-carrier arrangement and every petiole/twig/fan tip inside CENTRAL60PERCENT width (x20to80percent), BETWEEN45AND72PERCENT of image height. Fig/robin rear-left aroundx35/y51;linden/squirrel rear-right aroundx62/y51;round nasturtium/frog front-left aroundx31/y63;curled hosta/snail diagonal front-centre aroundx49/y66;paired ginkgo/butterfly front-right aroundx66/y63. Every carrier is small enough to be whole, while its photographic wildlife remains readable. Upper43percent and bottom25percent EMPTY quiet warm cream field, broad side margins, no extra leaves or busy texture there. Original green/straw botanical photo-pigment details and fine normal veins throughout, no additional animal images or plants. Calm warm natural light, no glitter/glow. Safe for tall1290x2796 and shorter750x1334 centre crops. No text, labels, signature, words, numbers, clocks/date/battery/weather values, UI, logos, frame, border or phone mockup. Digital artistic chlorotype interpretation, not an authentic physical print or measured plant response.",
+  "internalArtworkReferences": [
+    {
+      "id": "fig-leaf-robin",
+      "sourceImage": "sources/fig-leaf-robin.727bfb5a466f.png",
+      "sha256": "727bfb5a466f23162b3fbed812c26d3cd9b39725bb0cd6c3243956bb99a7c9aa"
+    },
+    {
+      "id": "nasturtium-frog",
+      "sourceImage": "sources/nasturtium-frog.fe023ed89286.png",
+      "sha256": "fe023ed89286b347864cbf4776105707737f3ea9d36a23536ad73d3a3e4ca8e8"
+    },
+    {
+      "id": "linden-sprig-squirrel",
+      "sourceImage": "sources/linden-sprig-squirrel.81070af56fb0.png",
+      "sha256": "81070af56fb073d83356edfee252a4ccec407b09dc38815e17d31b43b17dded8"
+    },
+    {
+      "id": "curled-hosta-snail",
+      "sourceImage": "sources/curled-hosta-snail.cec79d1e3ed0.png",
+      "sha256": "cec79d1e3ed096ea991553c34305a508d65b1ab185be916724feb3394587279d"
+    },
+    {
+      "id": "ginkgo-pair-butterfly",
+      "sourceImage": "sources/ginkgo-pair-butterfly.7d93ad0fbc39.png",
+      "sha256": "7d93ad0fbc395590c6808cbb50f42634e6337a6482b70d625dcb3b6bdb3446d6"
+    }
+  ],
+  "generationTool": "built-in image_gen"
+}

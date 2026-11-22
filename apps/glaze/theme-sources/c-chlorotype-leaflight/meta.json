@@ -1,0 +1,16 @@
+{
+  "name": "Sunheld Leaves",
+  "mood": "Familiar wildlife held in the green and straw tones of real leaves.",
+  "tags": [
+    "chlorotype-inspired",
+    "leaf-pigment",
+    "real-nature",
+    "photochemical-image"
+  ],
+  "credits": "Glaze original built-in image_gen nature artwork and authored live native identity. Artistic chlorotype interpretation, not an authentic physical print or measured botanical response.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Photographic wildlife image formed within actual whole leaf pigment, with natural tissue and veins continuing across green/straw photographic tones. Artistic chlorotype interpretation; no external visual inputs. Exact individual prompt retained.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}
