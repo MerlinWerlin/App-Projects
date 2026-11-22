@@ -1,0 +1,18 @@
+{
+  "name": "Tautline Scrubland",
+  "mood": "A navy scrubland of pin-thread hoopoes, geckos, thistles, tortoises and swallowtails among sage and fennel.",
+  "tags": [
+    "pin-thread",
+    "string-art",
+    "taut-chords",
+    "scrubland",
+    "wildlife",
+    "physical-cotton"
+  ],
+  "credits": "Glaze original artwork, built-in OpenAI image generation; original native widget geometry by lane B.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Composition/layout correction for this same Tautline Scrubland pin-and-thread wallpaper. Preserve the exact hoopoe/sage, gecko/thyme, thistle/bumblebee, tortoise/caper and swallowtail/fennel habitat, natural anatomy, straight cotton tension chords, dull brass pin heads, tiny wrap loops and existing colours. SCALE DOWN THE ENTIRE CONNECTED HABITAT to fit CENTRAL62% WIDTH andBETWEEN34% AND72%HEIGHT of the portrait. Fully restore/complete any sprig or thread-tip currently touching the image boundary, preserving same plant structure; all bird crest/beak/tail, gecko toes/tail, tortoise feet, butterfly antenna/wings and every outer flower/leaf tip must be contained with substantial quiet ground around. Upper30% and bottom24% quiet uninterrupted matte ink-navy ground matching existing. One intact smaller central habitat, no cut-off tips used to force fit, no added frame/panel/rectangle, new organisms, text, UI or shadow. Keep tactile cotton and physical pins, not glowing/scientific line art. Safe for narrow1290x2796 and shorter750x1334 centre crops.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

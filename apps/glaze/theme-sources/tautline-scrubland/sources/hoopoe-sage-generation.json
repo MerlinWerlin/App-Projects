@@ -1,0 +1,18 @@
+{
+  "id": "hoopoe-sage",
+  "prompt": "TAUTLINE SCRUBLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical handmade PIN-AND-THREAD STRING ART: each recognisable natural form is built from many fine STRAIGHT TAUT COTTON CHORDS wrapped between tiny DULL BRASS PIN HEADS at silhouette edges and occasional inner structural nodes. Clearly visible slightly twisted cotton fibres, tiny real thread-wrap loops on pin heads, handmade uneven pin spacing, clean open triangular and fan-shaped chord fields. No continuous braided outline: individual straight segments connect pins. Dark ink navy #202D31, bone #E5DDC9, sea sage #6E9690, restrained burnt terracotta #BB7758 and ochre #C8B270 thread. Mostly matte natural cotton, pin heads small subordinate physical details, natural silhouette first. Not bobbin lace, embroidery, woven fabric, stitched filled patch, wool/felt, quilling, metal wire sculpture, glowing optical/spectral/scientific visualisation or digital vector painting. All gaps between separate thread chords are truly alpha transparent, NO fabric/wood/backing board or translucent fill. Entire COMPLETE organism/group small central64% with18% or more REAL alpha margins on all four sides, no clipped antenna/tail/leaf. No frame, floor/scene, halo/glow/drop shadow, text/letters/numbers/symbols, time/date/battery/weather values, UI, logos or signatures. Natural flora/fauna only, no machines, houses, costumes or cartoon faces. Subject HOOPOE SAGE: one recognisable natural HOOPOE in alert side profile faces right, a large partly opened FAN CREST of terracotta/ochre straight thread rays with dark tips, long gently downcurved pointed beak, folded bone/ink barred wing, long tapered tail, TWO clawed feet gripping one diagonal SAGE BRANCH. Sage has3pairs of elongated sage-green leaves and TWO sparse short lilac-grey flower spikes; natural plant structure and a few open pin-thread stem segments, no pot. Body/wing/crest/beak all clearly hand-tensioned straight cotton chords around tiny dull brass pins with little wrap loops, not solid embroidered fill or a braided rope contour. Tall diagonal bird-and-branch silhouette, whole natural anatomy, no jewellerybeads or glass. Complete crest tips/beak/tail/feet/leaf tips inside ample actual transparent margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/hoopoe-sage.c863610f.png",
+  "sourceSha256": "c863610f1044599930b418666710da98da73f5f18409fe463b3d3f1a8012f62e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/hoopoe-sage.26051228.png",
+  "sha256": "260512287f7eb174c18f26ed552104f3921b1ca0330321193fcbdc3ffc6cb7f5",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
