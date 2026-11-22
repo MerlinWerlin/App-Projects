@@ -1,0 +1,100 @@
+{
+  "review": "Complete organic bodies,leaf tips,roots,wings,antennae,feet inside original alpha16/96 source bounds; edgealpha maximum1 for all5.",
+  "assets": [
+    {
+      "id": "split-vane-fern",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          103,
+          158,
+          1146,
+          1175
+        ],
+        "96": [
+          104,
+          159,
+          1145,
+          1175
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "cupfold-orchid",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          114,
+          11,
+          1125,
+          1236
+        ],
+        "96": [
+          115,
+          11,
+          1124,
+          1236
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "braidroot-sapling",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          78,
+          78,
+          1129,
+          1197
+        ],
+        "96": [
+          78,
+          79,
+          1128,
+          1197
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "bell-leaf-grazer",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          40,
+          190,
+          1143,
+          1052
+        ],
+        "96": [
+          40,
+          190,
+          1142,
+          1051
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "siltwing-moth",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          14,
+          112,
+          1243,
+          1039
+        ],
+        "96": [
+          14,
+          113,
+          1243,
+          1038
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}
