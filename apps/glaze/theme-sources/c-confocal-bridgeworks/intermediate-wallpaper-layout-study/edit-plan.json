@@ -1,0 +1,35 @@
+{
+  "prompt": "Use case: layout-only image edit. Preserve this exact Confocal Bridgeworks wallpaper world and all FIVE existing structure identities, membrane compartments, cyan internal fibre channels, sparse lime vesicles, relative arrangement and dark aubergine palette. Adjust scene framing so the complete double-arch bridge including BOTH WALKING DECK ENDS, all three root piers, four-mouth weir and side lips, tall two-platform lift, three-blade turnstile with both stanchions and asymmetric clamp hoist with full foot/clamp remain whole inside the composition. Slightly pull back/reduce the entire five-structure group, placing it within horizontal8%to92% and vertical42%to77%ofcanvas. Ground fibres and channel landscape may continue through frame edges, but all five focal working mechanisms must have clear breathing room around every endpoint/foot/arch/platform. Keep upper40%quiet aubergine, bottom20%quiet dark ground. Preserve the layered multichannel fluorescence optical-section language, no new structures, no redesign, no continuous physical opaque skins or corona sparks. This is a coherent interconnected infrastructure landscape, not five isolated samples or a collage. Full bleed opaque portrait1290x2796 phone wallpaper, same aspect ratio. No text, frame, numerals, UI, devices or readings.",
+  "reference": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-confocal-bridgeworks\\intermediate-wallpaper-layout-study\\wallpaper-initial.2396705368b5.png",
+  "directEditReference": {
+    "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.2396705368b5.png",
+    "sha256": "2396705368b5eabf1298cb4627ae67a99540952dc0d306849e24284b921e0d26"
+  },
+  "internalArtworkReferences": [
+    {
+      "id": "ciliary-weir",
+      "sourceImage": "sources/ciliary-weir.a39e9f4f6164.png",
+      "sha256": "a39e9f4f61643b497d9ef7aaefc7d1239710f7528f3c0b4abb216158514043c6"
+    },
+    {
+      "id": "axon-hoist",
+      "sourceImage": "sources/axon-hoist.b8e8859b6195.png",
+      "sha256": "b8e8859b6195a6f789e30acbcbed590122b4b7b7ffba0974d0bebf92556c79df"
+    },
+    {
+      "id": "vesicle-lift",
+      "sourceImage": "sources/vesicle-lift.a96b8ad982dc.png",
+      "sha256": "a96b8ad982dc2d5c4697dc8a63a13a787490453918f2d6ecd1130fadbf39b29d"
+    },
+    {
+      "id": "spindle-turnstile",
+      "sourceImage": "sources/spindle-turnstile.474ea4021628.png",
+      "sha256": "474ea4021628287797475f73b2675402e472bf1403a7d173ed689baa66a3e91b"
+    },
+    {
+      "id": "synaptic-span",
+      "sourceImage": "sources/synaptic-span.d8f089cf5a0e.png",
+      "sha256": "d8f089cf5a0eb15148695ab852faf4712d637f8dcb62ed2e71b1b9e570e5a482"
+    }
+  ]
+}

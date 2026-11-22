@@ -1,0 +1,22 @@
+{
+  "theme": "c-confocal-bridgeworks",
+  "recipe": [
+    "circle",
+    "cConfocalWeir",
+    "cConfocalFibreChannels",
+    "beads",
+    "wedge",
+    "tiles",
+    "board"
+  ],
+  "art": {
+    "cConfocalWeir": "M 8 37 Q 11 28 27 28 L 81 28 Q 93 28 95 37 L 89 42 L 84 39 L 84 67 L 91 82 L 77 82 L 74 69 L 65 69 L 65 82 L 53 82 L 52 69 L 44 69 L 42 82 L 29 82 L 30 68 L 21 68 L 17 81 L 5 81 L 12 64 L 12 39 Z M 13 33 L 87 33 M 19 28 L 19 23 M 35 28 L 35 22 M 52 28 L 52 22 M 69 28 L 69 23 M 83 28 L 83 24 M 19 44 Q 12 44 12 55 Q 12 66 21 66 Q 29 66 29 54 Q 29 43 19 44 Z M 39 41 Q 30 41 30 54 Q 30 67 40 67 Q 48 67 48 54 Q 48 41 39 41 Z M 58 42 Q 50 42 50 54 Q 50 66 59 66 Q 67 66 67 54 Q 67 42 58 42 Z M 76 45 Q 69 45 69 55 Q 69 65 77 65 Q 84 65 84 55 Q 84 45 76 45 Z",
+    "cConfocalFibreChannels": "M 12 75 Q 18 30 45 23 Q 71 19 88 39 Q 74 66 43 76 Q 25 83 12 75 Z M 20 70 Q 26 37 46 30 Q 68 27 80 40 Q 68 61 41 68 Q 28 74 20 70 Z M 25 66 Q 41 43 71 39 M 29 69 Q 45 48 76 42 M 23 61 Q 42 37 66 34 M 56 21 Q 50 17 47 22 Q 47 28 53 28 Q 59 28 56 21 Z M 79 51 Q 73 47 70 52 Q 70 58 76 58 Q 82 58 79 51 Z"
+  },
+  "ornament": "M 18 65 Q 14 37 37 25 Q 62 13 84 34 Q 90 52 72 69 Q 46 90 18 65 Z M 25 61 Q 22 40 40 32 Q 60 23 76 37 Q 80 49 66 61 Q 45 77 25 61 Z M 30 60 Q 45 43 67 37 M 35 65 Q 49 48 72 41 M 59 20 Q 54 16 50 21 Q 50 27 56 27 Q 62 27 59 20 Z M 81 55 Q 76 51 72 56 Q 72 62 78 62 Q 84 62 81 55 Z",
+  "ornamentDirection": "One small membrane section with two internal fibre trajectories and two separated vesicle dots. Compact optical-process fragment, leaving corner breathing room.",
+  "ornamentProvenance": "Original authored100x100 SVG path,22 November2026, following Jared Both-corner steering.",
+  "direction": "Four-mouth weir hero and layered membrane/fibre sections for larger native compositions. Circular dial, punctate bead marks, wedge hands, tiled charge gauge and board calendar echo discrete fluorescence channels. Dedicated compact section ornament for small headers.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms; no readings baked into raster artwork.",
+  "registryIntegration": "Coordinator integrates source descriptor/optional ornament into shared registries."
+}

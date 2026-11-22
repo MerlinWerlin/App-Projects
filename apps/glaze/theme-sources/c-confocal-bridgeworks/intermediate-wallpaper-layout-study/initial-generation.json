@@ -1,0 +1,34 @@
+{
+  "selected": false,
+  "reason": "Initial bridge deck endpoints run through side edges; keep full five focal structures inside safe area while landscape may bleed.",
+  "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.2396705368b5.png",
+  "sourceSha256": "2396705368b5eabf1298cb4627ae67a99540952dc0d306849e24284b921e0d26",
+  "prompt": "Use case: stylized-concept. GLAZE CONFOCAL BRIDGEWORKS, tangible invented living civil infrastructure revealed through fictional multichannel confocal fluorescence optical-section imagery. MEDIUM: an exquisite layer-resolved FLUORESCENCE MICROGRAPH. Three discrete labelling channels: hot MAGENTA membrane walls outlining hollow compartments, bright CYAN bundles of fine internal actin-like fibres, and sparse ACID-LIME punctate vesicles embedded at functional junctions. The membranes, fibres and puncta map a complete recognizable working structure with clear mechanical purpose, supported platforms/openings and a strong silhouette. They are optically labelled thin sections, not a continuous physical material. Several shallow optical-section layers overlap into a flattened z-stack projection; dark hollow spaces between compartments and bright internal channel separation must be visible. Crisp luminous membrane sections, delicate grouped fibres, a few clearly separated bright vesicles. No continuous opaque skin, external rim-only glow, corona lightning, reflective lighting, glossy3D sculpture, glass, jelly, plastic, foam, metal, ordinary wireframe, smooth rainbow surface, heat field, X-ray skeleton, scanline, LiDAR dot-cloud or diffraction stripes. Fictional non-anatomical bio-infrastructure; not a real medical specimen or measured microscopy dataset. No people, faces, eyes, animal heads, wounds or gore. No text, labels, coordinates, scale bar, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE portrait phone wallpaper1290x2796 showing a coherent living bridgeworks landscape, using the five selected original artwork images as identity references once available. A double-arch span crosses a low dark channel; four-mouth ciliary weir meets it at left, asymmetric hoist services the near bank, tall two-stage open-platform lift rises behind and a three-blade turnstile stands near the walkway. Preserve exact structure identities and working mechanisms. Entire scene is fluorescent optical sections: magenta membranes/cyan internal fibres/lime puncta against dark aubergine hollow space, not opaque physical buildings or a neon city. Keep all five complete structures within middle-lower region42%to80%ofcanvasheight, safe side margins and bottom20%quiet ground, so a centred crop removing outer10%top/bottom retains all supports and arches. Upper40%quiet dark aubergine with no features. One inhabited-scale infrastructure setting, no people/animals/faces/ordinary houses/ferries, no extra objects, no text, frame, UI or device. Full bleed opaque wallpaper.",
+  "internalArtworkReferences": [
+    {
+      "id": "ciliary-weir",
+      "sourceImage": "sources/ciliary-weir.a39e9f4f6164.png",
+      "sha256": "a39e9f4f61643b497d9ef7aaefc7d1239710f7528f3c0b4abb216158514043c6"
+    },
+    {
+      "id": "axon-hoist",
+      "sourceImage": "sources/axon-hoist.b8e8859b6195.png",
+      "sha256": "b8e8859b6195a6f789e30acbcbed590122b4b7b7ffba0974d0bebf92556c79df"
+    },
+    {
+      "id": "vesicle-lift",
+      "sourceImage": "sources/vesicle-lift.a96b8ad982dc.png",
+      "sha256": "a96b8ad982dc2d5c4697dc8a63a13a787490453918f2d6ecd1130fadbf39b29d"
+    },
+    {
+      "id": "spindle-turnstile",
+      "sourceImage": "sources/spindle-turnstile.474ea4021628.png",
+      "sha256": "474ea4021628287797475f73b2675402e472bf1403a7d173ed689baa66a3e91b"
+    },
+    {
+      "id": "synaptic-span",
+      "sourceImage": "sources/synaptic-span.d8f089cf5a0e.png",
+      "sha256": "d8f089cf5a0eb15148695ab852faf4712d637f8dcb62ed2e71b1b9e570e5a482"
+    }
+  ]
+}
