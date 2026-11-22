@@ -1,0 +1,22 @@
+{
+  "theme": "c-carbonfilm-strata",
+  "recipe": [
+    "square",
+    "cStillleafFrond",
+    "cStillleafLamina",
+    "bars",
+    "needle",
+    "column",
+    "ledger"
+  ],
+  "art": {
+    "cStillleafFrond": "M 24 94 Q 47 70 57 16 M 33 83 Q 15 79 20 66 Q 34 68 37 77 M 39 72 Q 20 67 27 55 Q 41 58 43 65 M 45 59 Q 28 53 34 42 Q 47 46 49 52 M 51 44 Q 37 37 43 27 Q 55 32 54 38 M 56 29 Q 46 21 53 12 Q 63 18 58 25 M 36 80 Q 51 67 65 75 Q 59 88 32 86 M 42 67 Q 58 52 71 60 Q 63 75 38 73 M 48 53 Q 64 38 76 47 Q 67 61 44 59 M 53 39 Q 66 25 76 33 Q 68 47 50 45 M 57 24 Q 65 12 72 19 Q 68 32 55 31",
+    "cStillleafLamina": "M 15 84 L 26 88 L 53 89 L 68 85 L 84 77 M 12 88 L 28 93 L 55 94 L 69 90 L 88 82 M 18 94 L 34 97 L 59 97 L 72 94 L 91 87 M 76 77 L 81 70 L 91 67"
+  },
+  "ornament": "M 29 89 Q 48 71 57 16 M 38 72 Q 24 72 18 60 Q 32 62 38 72 M 44 58 Q 31 56 26 44 Q 39 48 44 58 M 50 43 Q 38 39 35 27 Q 47 33 50 43 M 57 24 Q 50 15 60 10 Q 68 17 57 24 M 38 73 Q 51 62 67 64 Q 55 76 38 73 M 44 58 Q 57 48 73 50 Q 60 63 44 58 M 50 43 Q 61 32 76 35 Q 62 47 50 43",
+  "ornamentDirection": "One small naturally arcing fern sprig with three clear paired pinnae and a complete tip. Generous open space, no rock slab, miniature fossil portrait or surround in compact header.",
+  "direction": "Whole naturally pinnate fern and a few shallow lamina lines in larger fields; rounded-square dial, bar marks, needle hands, column battery and ledger calendar. Dedicated small fern sprig for compact headers.",
+  "values": "Existing live Clock/Battery/Calendar at all three sizes, no raster readings.",
+  "registryIntegration": "Source-only lane. Coordinator owns canonical registry, shared/Swift integration and installed-device qualification. Candidate floor1.0.44.",
+  "ornamentProvenance": "Original authored100x100 SVG paths,23November2026,following the recognizable fern/cleaved-shale artwork and both-corner steering."
+}

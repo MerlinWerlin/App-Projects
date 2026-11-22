@@ -1,0 +1,17 @@
+{
+  "name": "Stillleaf Shale",
+  "mood": "Whole fern and wildlife impressions held quietly within thin layers of natural stone.",
+  "tags": [
+    "compression-fossil",
+    "carbon-film",
+    "split-shale",
+    "botanical-impression",
+    "natural-history"
+  ],
+  "credits": "Glaze original built-in image_gen artwork. Artistic fossil interpretation, not an authentic specimen or scientific evidence of species, age or locality.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Whole recognizable nature preserved as matte thin carbonized film and shallow impressions within naturally cleaved finely laminated shale. All original prompts and exact selected source hashes retained. No external visual inputs; artistic fossil interpretation.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

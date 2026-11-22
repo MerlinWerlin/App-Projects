@@ -1,0 +1,1 @@
+Opaque1290x2796 structural resize of final built-in own-reference wallpaper. Builder supplies three actual phone sizes and thumbnail. One coherent exposed shale shelf containing all five whole fossils; quiet upper/lower/side fields.
