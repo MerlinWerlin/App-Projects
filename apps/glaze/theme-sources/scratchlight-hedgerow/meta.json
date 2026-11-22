@@ -1,0 +1,18 @@
+{
+  "name": "Soot & Bramble",
+  "mood": "Ivory scratch marks reveal familiar hedgerow wildlife against quiet pale sage.",
+  "tags": [
+    "nature",
+    "hedgerow",
+    "scratchboard",
+    "hare",
+    "bramble",
+    "wildlife"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity. Familiar wildlife and plants interpreted as black-ink scratchboard illustration.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Flat black-ink scratchboard with crisp ivory directional knife cuts, broad opaque soot-black reserves and familiar natural anatomy. All exact prompts, own-reference hashes and layout-only habitat correction retained.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

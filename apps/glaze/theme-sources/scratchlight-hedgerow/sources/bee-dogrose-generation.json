@@ -1,0 +1,26 @@
+{
+  "id": "bee-dogrose",
+  "label": "Dogrose Visitor",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE: one independent square pure-art asset on true transparent alpha. Our own accepted hare reference supplies the BLACK-INK SCRATCHBOARD medium only; create this different recognizable natural subject. Flat deep matte SOOT-BLACK INK RESERVES form the whole subject, with crisp warm-IVORY KNIFE-SCRATCHED directional strokes revealing texture and light. Every scratch has a sharp carved/chisel end, slight hand-cut line-width variation, broad opaque black areas between clusters. Exactly black and warm ivory, no color. No soft gray photographic shading, granular mezzotint burr, dark-line-on-white etching, woodblock ink patches, pencil, charcoal smudge, glossy material, 3D sculpture or paper fibres. Real natural anatomy first, illustration remains immediately recognizable at85px. Full silhouette cutout with true alpha outside and in major gaps. Whole subject inside central68% canvas, generous transparent margins around ALL extremities. No rectangular board/plaque/panel, ground/floor/scenery, cast shadow, glow, backing, border/collage. No lettering/signature/number/label/logo, no UI/clock/dial/battery/calendar/readings. SUBJECT: One familiar BUMBLEBEE resting on a SINGLE OPEN DOG-ROSE FLOWER. Five broad natural petal lobes, textured central pollen stamens, short curved stem, two small serrated leaves and ONE closed oval bud. Bumblebee has one small round dark head, dark segmented body with ivory scratch-fur bands, TWO coherent translucent-looking hatched wings, SIX fine legs resting on flower and TWO antennae. Keep actual insect/plant scale and natural anatomy, no cartoon face or invented petals. Insect and flower both clear; white scratched petal highlights over black reserves, no gray translucent painted washes. Complete wings/antennae/legs/petal edges/bud/leaf/stem ends whole.",
+  "source": "sources/bee-dogrose.11d195121176.png",
+  "sourceSha256": "11d19512117680cded1e45ca0a0fd044279a0787ba21b3aae508569f81fd0455",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/bee-dogrose.4a5518d82907.png",
+  "sha256": "4a5518d82907d9c0401e83d8af8406d42296592c532d5589c95fe072c6856fcc",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/hare.dcc38cfb5aaf.png",
+      "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+      "purpose": "Own first accepted hare supplies scratchboard marks and two-tone material only; independent different natural subject."
+    }
+  ]
+}

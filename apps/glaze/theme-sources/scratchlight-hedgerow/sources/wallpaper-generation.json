@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. LAYOUT-ONLY correction of our own SOOT & BRAMBLE scratchboard hedgerow wallpaper. Preserve all five exact familiar natural subjects, anatomy, illustration marks and relative arrangement: bramble arch/fiveblackberries upper-left, long-tailed tit withwhole tail onhawthorn upper-right, crouched hare centre-right, bumblebee onfivepetal dogrose lower-left withbud/leaves, garden snail withfourfeelers onwhole dockleaf foreground. Preserve matte opaque black reserves and crisp warm-ivory directional knife scratches, same natural sparse grass/base, same pale cool grey-sage#D8DED9 field. Change ONLY framing. Uniformly reduce the ENTIRE connected subject grouping, branches, grass and leaf base to about64% ofcurrent size; centre the smaller entire grouping at57% image height and50%width. Every part must now fit inside central62%width, with19%quiet side margins. Topmost leaf/bird should begin near40%height, lowest grass/stalk/leaf end above75%height. Upper38% quiet pale field, bottom25%quiet pale ground. Extend the same subtle neutral field smoothly around and beneath, no new plants/animals or rectangular band. Do not crop, redraw poses, change subject identities, relative arrangement or scale between subjects. Keep all ears/whiskers/beak/tail/wings/antennae/thorns/leaf tips/stem ends wholly intact; shorter-phone centre crop removing9%top/bottom should retain every silhouette with comfortable rounded-corner margins. No added realism/3D/color/softgray shading/painting, no border/panel/plate/labels/numbers/signature/UI. Full-bleed opaque portrait wallpaper, same aspect as input.",
+  "source": "sources/wallpaper.50f8061d2c58.png",
+  "sourceSha256": "50f8061d2c58ec1b8f465f4f1e00292d676db748eb769615f49b43cebf982d0b",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "fd2b0b62dedd482811d8d6e631881ec9472ac00666bf00d1a512802ed539a5ec",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Own layout-only hedgerow pullback then1290x2796 export; all5independent art and native subject unchanged.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/first-scene.30421078ddc0.png",
+      "sha256": "30421078ddc03016be89dbbaf90e80037e5887b54b6d7b5ca7a05206feda7170",
+      "purpose": "Own first five-reference illustrated habitat, uniform whole-group framing correction only."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}

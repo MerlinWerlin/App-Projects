@@ -1,0 +1,126 @@
+{
+  "images": [
+    {
+      "id": "hare",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        101,
+        135,
+        1109,
+        1123
+      ],
+      "coreAlpha96Bounds": [
+        110,
+        136,
+        1108,
+        1122
+      ]
+    },
+    {
+      "id": "longtailed-tit",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        240,
+        236,
+        1064,
+        1015
+      ],
+      "coreAlpha96Bounds": [
+        241,
+        237,
+        1064,
+        1014
+      ]
+    },
+    {
+      "id": "bramble-berries",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        176,
+        136,
+        1049,
+        1116
+      ],
+      "coreAlpha96Bounds": [
+        177,
+        137,
+        1048,
+        1115
+      ]
+    },
+    {
+      "id": "bee-dogrose",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        159,
+        155,
+        1030,
+        1131
+      ],
+      "coreAlpha96Bounds": [
+        160,
+        156,
+        1029,
+        1131
+      ]
+    },
+    {
+      "id": "snail-dock",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "edgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        101,
+        307,
+        1192,
+        1013
+      ],
+      "coreAlpha96Bounds": [
+        102,
+        308,
+        1192,
+        1012
+      ]
+    }
+  ],
+  "allCoreSilhouettesInsideOriginalBounds": true,
+  "installedDeviceVerified": false
+}

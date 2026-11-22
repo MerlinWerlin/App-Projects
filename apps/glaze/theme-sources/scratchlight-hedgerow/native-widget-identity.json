@@ -1,0 +1,19 @@
+{
+  "themeId": "scratchlight-hedgerow",
+  "recipe": [
+    "pebble",
+    "scratchlightHare",
+    "scratchlightCuts",
+    "dash",
+    "needle",
+    "column",
+    "folio"
+  ],
+  "art": {
+    "scratchlightHare": "M 30 38 Q 15 30 11 44 L 7 49 Q 11 55 22 57 Q 18 69 28 76 L 25 88 L 39 88 L 41 78 Q 50 79 57 75 Q 52 83 46 89 L 79 89 Q 88 86 84 78 Q 97 79 94 68 Q 91 63 85 67 Q 86 46 70 41 Q 54 37 44 51 Q 39 46 35 40 Q 37 18 30 6 Q 20 9 25 29 L 28 39 M 32 39 Q 43 12 48 9 Q 57 16 43 37 L 38 46 M 25 43 L 28 43 M 19 49 L 5 45 M 19 51 L 4 53 M 19 53 L 7 59 M 57 74 Q 51 59 65 54 Q 78 51 81 67 Q 82 78 70 83 M 29 75 L 29 83 M 35 77 L 35 84",
+    "scratchlightCuts": "M 29 13 L 32 27 M 45 17 L 39 31 M 26 36 L 22 39 M 25 39 L 21 42 M 32 51 L 27 54 M 35 55 L 29 58 M 36 60 L 29 63 M 37 66 L 31 69 M 45 54 L 51 49 M 49 58 L 57 51 M 56 47 L 65 44 M 65 48 L 74 46 M 71 53 L 79 51 M 75 59 L 82 57 M 62 62 L 67 58 M 59 69 L 63 65 M 65 75 L 69 71 M 72 78 L 78 73"
+  },
+  "direction": "Recognizable crouched long-eared hare with haunch, paws and whiskers. Directional short knife-cut strokes translate the two-tone scratchboard art into a live native identity; soft pebble bezel, dash ticks, needle hands, column charge gauge and folio calendar retain quiet natural forms.",
+  "ornament": "M 16 80 Q 37 57 60 26 M 29 65 L 21 49 L 35 52 L 32 35 L 45 40 L 43 20 L 59 25 M 36 57 L 54 64 L 54 50 L 68 52 L 64 37 L 78 35 M 30 65 L 38 59 M 38 55 L 46 48 M 47 43 L 53 35 M 20 75 L 13 68 L 24 70",
+  "ornamentDirection": "One open thorny bramble leaf-edge and short scratched vein strokes naturally accompany the hedgerow art in small headers. No closed button/ring or compressed full animal; larger hare heroes stay whole."
+}

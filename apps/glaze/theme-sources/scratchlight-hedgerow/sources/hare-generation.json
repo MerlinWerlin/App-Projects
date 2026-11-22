@@ -1,0 +1,19 @@
+{
+  "id": "hare",
+  "label": "Listening Hare",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE, first material prototype only. One standalone square pure-art asset on true transparent alpha. A familiar natural EUROPEAN HARE crouches in calm three-quarter profile facing left, two long upright ears with subtly dark tips, one bright natural eye, short tapered muzzle, fine whiskers, strong round haunch, folded long hind feet, two short front paws and a tiny round tail. Real unmodified animal anatomy, no clothes/props/face expression/fantasy parts. Entire silhouette and every ear/whisker/foot/tail fully whole inside central68% canvas, generous transparent margins. Distinctive medium: a traditional BLACK-INK SCRATCHBOARD illustration cut to the subject silhouette, not a rectangular board. Broad deep matte soot-black ink RESERVES form the whole animal; hundreds of precise crisp IVORY WHITE KNIFE-SCRATCHED STROKES reveal fur direction, facial planes and light, each short stroke has a sharp carved/chisel end. Clusters of white scratches vary naturally with fur, broad near-black areas between them, slight irregular hand-cut line widths. Hard clean subtractive highlights, tiny dotted knife-pricks on nose, no smooth shaded gradients. Clear bold black-and-white silhouette at85px. Flat two-tone illustration, no 3D depth/photographic fur texture or soft gray airbrush. No granular mezzotint stipple/burr, no black-line-on-white copper etching, woodblock colour patches, stippled stipplefield, pencil, charcoal smudge, painting, paper collage, paper fibres, linocut border or engraved metal. Exactly black and warm ivory only, no accent colour yet. Cutout follows animal silhouette precisely with true transparency outside and between legs/ears, keep black inside body opaque. No board/plaque/panel/ground/floor/scenery, no cast shadow, glow or backing. No lettering/signature/numbers/labels/logos/frames, no UI/clocks/dials/battery/calendar/readings. One original natural animal, not an image copied/cropped/recoloured from a neighbor.",
+  "source": "sources/hare.dcc38cfb5aaf.png",
+  "sourceSha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/hare.7326f063231c.png",
+  "sha256": "7326f063231ca7f2e5cbf5dfae7dbda3d7f8b47b664b331322de5b886875fa98",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits."
+}
