@@ -1,0 +1,17 @@
+{
+  "themeId": "copper-selvedge",
+  "recipe": [
+    "lozenge",
+    "selvedgeFold",
+    "selvedgeWeft",
+    "staples",
+    "baton",
+    "tiles",
+    "ledger"
+  ],
+  "art": {
+    "selvedgeFold": "M 7 53 L 28 17 L 48 34 L 70 10 L 94 47 L 73 89 L 51 73 L 29 94 Z M 7 53 L 29 39 L 48 55 L 70 31 L 94 47 M 29 39 L 28 17 M 48 55 L 48 34 M 70 31 L 70 10 M 29 39 L 29 94 M 48 55 L 51 73 M 70 31 L 73 89 M 17 58 L 37 45 M 35 73 L 58 47 M 57 67 L 83 42",
+    "selvedgeWeft": "M 12 10 L 12 29 M 12 40 L 12 59 M 12 70 L 12 90 M 30 10 L 30 20 M 30 31 L 30 49 M 30 60 L 30 79 M 30 89 L 30 95 M 48 7 L 48 29 M 48 40 L 48 59 M 48 70 L 48 90 M 66 10 L 66 20 M 66 31 L 66 49 M 66 60 L 66 79 M 66 89 L 66 95 M 84 10 L 84 29 M 84 40 L 84 59 M 84 70 L 84 90 M 5 34 L 94 34 M 5 64 L 94 64 M 5 84 L 94 84"
+  },
+  "direction": "Folded and interwoven diamond terrain, interrupted warp with continuous weft, lozenge dial and staple hour marks, baton hands; tiled charge gauge and ledger calendar."
+}

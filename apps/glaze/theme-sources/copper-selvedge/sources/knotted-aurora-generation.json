@@ -1,0 +1,18 @@
+{
+  "id": "knotted-aurora",
+  "prompt": "ONE original square 1024x1024 pure art asset for Glaze COPPER SELVEDGE. A KNOTTED AURORA made as a physical handwoven metal-textile bas-relief: three long extremely thin woven copper bands wind around each other into an open trefoil knot, each band is a mesh of narrow hammered copper warp strips crossed over-under by turquoise-patinated wire weft. One crossing is visibly loosened with a few long frayed verdigris threads escaping upward like a delicate auroral plume. Bold open triangular looping silhouette with three clean interior voids, no circular dial and no clock. Not a ribbon bow, gift, bracelet, ordinary object, animal or terrain slab; an invented sculptural weather phenomenon. Warm burnished copper #CE8657, verdigris turquoise #65BAA9, dark green occlusion, raking side light that reveals individual metallic weave strips, tiny tool scratches and imperfect selvedges. Museum fine craft photography, modest shallow depth. Whole piece central 65% of canvas, generous18% real transparent alpha margin, no background, floor, pedestal or backing plate. No text, writing, numbers, logo, dates, clocks, batteries, UI or baked live values. One individual artwork, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/knotted-aurora.86546adf.png",
+  "sourceSha256": "86546adf7c4b51bf7fd3271d8497e3a6b2363371070909588124a1d3059d606e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/knotted-aurora.a8434fd6.png",
+  "sha256": "a8434fd62a3180b2c5bb457ee91ffb4f91a4f84447fc5b958478e82c59c118ca",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

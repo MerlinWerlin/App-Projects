@@ -1,0 +1,119 @@
+{
+  "theme": "copper-selvedge",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Handwoven annealed copper ribbon and oxidised turquoise wire relief",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall portrait 1290:2796 wallpaper for Glaze COPPER SELVEDGE. Physical handwoven METAL TEXTILE relief, photographed flat from above with low raking light: extraordinarily thin strips of warm annealed copper woven over-under with oxidised turquoise metal filaments, raised and buckled into an impossible topographic world. The bottom half shows a diagonal tectonic fold where an aquamarine woven river turns vertically upward and frays into hanging copper warp ends, while two burnished sheet ridges fold through each other like a loose tapestry; all terrain is clearly made from intersecting ribbon warp and weft, hammered narrow strip edges, cut fringe, tiny tool scratches, local verdigris. Precise material fidelity, slight handmade irregularity, museum textile photography, tactile shallow bas-relief rather than 3D fantasy rendering. Ground is continuous very dark green-black #102925 woven metal; upper 43 percent is quiet low-contrast crossweave with generous empty space for phone icons, details accumulate low in frame. Palette rich copper #CE8657, oxidised turquoise #65BAA9, blackened green #102925, pale warm ivory accents #F5EBDD. Asymmetrical, polished, unusual woven landscape world, no animals, stationery, household objects, tools, text, numerals, lettering, logos, phone mockup, border, UI, clock, date or live values. One continuous wallpaper, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.5d4eac47.png",
+      "sourceSha256": "5d4eac471b69f386a29c03960a4b1327508215b33644b7ac401e8014400765cb",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "a7dbe859b8352fa3373dc4b482c50d056a496c2d1611e14bfe256b555ae4db12",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "warp-fall",
+      "prompt": "ONE standalone square 1024x1024 production artwork for Glaze COPPER SELVEDGE. Physical metal-textile relief called WARP FALL: a wide woven copper river bends over a sharp unsupported invisible ledge, its turquoise patinated weft breaks away so burnished copper warp ribbons hang downward in a long uneven fringe. Upper portion is a low undulating horizontal woven plane, bottom half vertical ribbon waterfall, bold inverted-T silhouette. All material visibly hand woven over-under from thin narrow annealed copper strips and verdigris aquamarine metal filaments, hammered edges, tiny scratches, fraying and slight irregularity. Museum craft photograph with low grazing light, warm copper #CE8657 and turquoise #65BAA9 against dark green inner shadows. NOT liquid, not cloth, not wood, not organic coral, no ordinary object. One complete isolated self-contained relief with actual transparent alpha background and 18% empty margin; no floor, square backing plate, pedestal or hand. Readable from thumbnail, sculpture central 65%. No text, digits, letters, clock, battery, date, UI, logos or border. No collage, panel grid or variants.",
+      "tool": "built-in image_gen",
+      "source": "sources/warp-fall.705af95c.png",
+      "sourceSha256": "705af95cc45af1aa6eb3d8950c96ddfcd33df347ec8a2fa0e0a78a0d13018f07",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/warp-fall.654200c5.png",
+      "sha256": "654200c583abf661c7e333702c349b4929123ca08995e50073f8af58ce738333",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "tectonic-envelope",
+      "prompt": "One separate original square 1024x1024 production artwork for COPPER SELVEDGE, handwoven METAL TEXTILE relief. Subject: a TECTONIC ENVELOPE, a jagged low hexagonal fragment of woven copper terrain that is split through the middle into two accordion-folded ridges, revealing an oxidised turquoise inner chasm whose woven threads bridge the gap diagonally. Distinct broad angular diamond silhouette viewed nearly top down, no dangling waterfall. The entire impossible landform is literally warp-and-weft: narrow annealed copper ribbons interlace over-under with verdigris metal filaments, each topographic plane bends as woven sheet, loose selvedge fringe at only two broken corners, hammered edges and tiny tooling scratches. Rich warm copper #CE8657 with turquoise #65BAA9 and deep dark-green shadows. Tactile museum craft photography, low grazing light, shallow bas-relief, readable bold silhouette. Whole subject isolated in central 65% with 18% empty transparent alpha margins. No flat square backing plate, no floor/pedestal, no paper, wood or cloth, no everyday object or animal. No text, numerals, writing, logo, border, UI, clocks, batteries, dates or other live-value imagery. ONE artwork, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/tectonic-envelope.50ac53cc.png",
+      "sourceSha256": "50ac53cceb2ef48fc2f51a2aa8eb826045c8e601e4061262111a38fd9035ef51",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/tectonic-envelope.0af1aeee.png",
+      "sha256": "0af1aeee1d829978e7a55599c16687bf877cc0123e4e82c222e47ecbc78f0d0e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "knotted-aurora",
+      "prompt": "ONE original square 1024x1024 pure art asset for Glaze COPPER SELVEDGE. A KNOTTED AURORA made as a physical handwoven metal-textile bas-relief: three long extremely thin woven copper bands wind around each other into an open trefoil knot, each band is a mesh of narrow hammered copper warp strips crossed over-under by turquoise-patinated wire weft. One crossing is visibly loosened with a few long frayed verdigris threads escaping upward like a delicate auroral plume. Bold open triangular looping silhouette with three clean interior voids, no circular dial and no clock. Not a ribbon bow, gift, bracelet, ordinary object, animal or terrain slab; an invented sculptural weather phenomenon. Warm burnished copper #CE8657, verdigris turquoise #65BAA9, dark green occlusion, raking side light that reveals individual metallic weave strips, tiny tool scratches and imperfect selvedges. Museum fine craft photography, modest shallow depth. Whole piece central 65% of canvas, generous18% real transparent alpha margin, no background, floor, pedestal or backing plate. No text, writing, numbers, logo, dates, clocks, batteries, UI or baked live values. One individual artwork, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/knotted-aurora.86546adf.png",
+      "sourceSha256": "86546adf7c4b51bf7fd3271d8497e3a6b2363371070909588124a1d3059d606e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/knotted-aurora.a8434fd6.png",
+      "sha256": "a8434fd62a3180b2c5bb457ee91ffb4f91a4f84447fc5b958478e82c59c118ca",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "sewn-thunderhead",
+      "prompt": "ONE individual original 1024x1024 square Glaze COPPER SELVEDGE artwork. A SEWN THUNDERHEAD in physical woven-metal relief: a compressed asymmetrical storm-cloud made of five box-pleated pillows of tightly interlaced copper ribbon, tied through its middle by a single jagged diagonal turquoise woven lightning seam. Three short angular lightning tabs emerge from lower edge; one entire side ends in fine frayed metal selvedge. The cloud is emphatically made of visible over-under thin copper warp and turquoise verdigris wire weft, not a natural puffy cloud, not a fabric toy. Bold low wide zigzag silhouette with squared lobes; no hanging waterfall or trefoil knot. Hand-hammered strip edges, scratches, warm oxidised copper and teal patina, strong low raking studio light, dark green occluded weave. Gallery craft photography, inventive meteorology woven by a metalsmith. Central 65% whole subject,18% clear genuine alpha-transparent margins; no colored backdrop, floor, pedestal or backing sheet. No letters, text, numerals, UI, clock hands/dials, battery/date/live readings, logos, animals, ordinary objects. One art asset, no grid or collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/sewn-thunderhead.b00c1285.png",
+      "sourceSha256": "b00c1285666a913d6baf7ef8760d03482180859fe85c5c8da265a01a92a10f6c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/sewn-thunderhead.10f0e987.png",
+      "sha256": "10f0e9879dfdd57abcacfc2ba6d070156dd13c5b322b8b5e6fdf3b97af864cca",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "unravelling-tetrahedron",
+      "prompt": "ONE individual original 1024x1024 pure artwork for COPPER SELVEDGE. Subject: UNRAVELLING TETRAHEDRON, a small hollow triangular metal-textile chamber. Three woven triangular copper membranes lean together to form an asymmetric pointed tetrahedral cell; the nearest triangular membrane is half-unwoven, revealing crisp turquoise crossing filaments spanning the hollow cell and loose copper strip ends extending outward horizontally. Topology is impossible: one woven skin passes through the other instead of joining at an edge. Strong tall angular triangular silhouette with one large triangular void, not a terrain slab, cloud, knot, waterfall, pyramid monument or everyday object. Literally handwoven annealed copper ribbon warp and oxidised turquoise wire weft, conspicuous over-under intersections, slightly hammered thin edges, irregular frayed selvedge, tiny patina scratches, warm copper #CE8657 and turquoise #65BAA9 with deep green shadows. Museum craft photography with grazing side light. Whole artifact central65% of canvas,18% fully transparent alpha margins, no backdrop, floor, pedestal or base. One complete sculpture only, no text, numbers, icon, logo, UI, clocks, dials, batteries, dates, animals, plants or tools. No collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/unravelling-tetrahedron.3c342ae5.png",
+      "sourceSha256": "3c342ae5eaa9d8bc0c8058c203437481fe650b625ca305a326172f77ce803f1b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/unravelling-tetrahedron.58ed5266.png",
+      "sha256": "58ed526631ead0b4ac28cd9693e7469efcd82e9d3c7b313c3c7acd25952031cc",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

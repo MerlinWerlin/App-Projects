@@ -1,0 +1,18 @@
+{
+  "id": "unravelling-tetrahedron",
+  "prompt": "ONE individual original 1024x1024 pure artwork for COPPER SELVEDGE. Subject: UNRAVELLING TETRAHEDRON, a small hollow triangular metal-textile chamber. Three woven triangular copper membranes lean together to form an asymmetric pointed tetrahedral cell; the nearest triangular membrane is half-unwoven, revealing crisp turquoise crossing filaments spanning the hollow cell and loose copper strip ends extending outward horizontally. Topology is impossible: one woven skin passes through the other instead of joining at an edge. Strong tall angular triangular silhouette with one large triangular void, not a terrain slab, cloud, knot, waterfall, pyramid monument or everyday object. Literally handwoven annealed copper ribbon warp and oxidised turquoise wire weft, conspicuous over-under intersections, slightly hammered thin edges, irregular frayed selvedge, tiny patina scratches, warm copper #CE8657 and turquoise #65BAA9 with deep green shadows. Museum craft photography with grazing side light. Whole artifact central65% of canvas,18% fully transparent alpha margins, no backdrop, floor, pedestal or base. One complete sculpture only, no text, numbers, icon, logo, UI, clocks, dials, batteries, dates, animals, plants or tools. No collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/unravelling-tetrahedron.3c342ae5.png",
+  "sourceSha256": "3c342ae5eaa9d8bc0c8058c203437481fe650b625ca305a326172f77ce803f1b",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/unravelling-tetrahedron.58ed5266.png",
+  "sha256": "58ed526631ead0b4ac28cd9693e7469efcd82e9d3c7b313c3c7acd25952031cc",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}
