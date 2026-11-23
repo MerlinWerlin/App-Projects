@@ -16,7 +16,8 @@ concurrency:
   cancel-in-progress: true
 jobs:
   capture:
-    runs-on: xcode-27
+    # GitHub's hosted Mac (Xcode 26, iOS 26 simulators): the shared xcode-27 runner takes one job at a time.
+    runs-on: macos-latest
     timeout-minutes: 100
     defaults:
       run:
@@ -28,9 +29,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Select Xcode 27
+      - name: Select the newest Xcode
         run: |
-          X=$(ls -d /Applications/Xcode_27*.app | grep -v -i beta | sort -V | tail -1)
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
           sudo xcode-select -s "$X/Contents/Developer"
           xcodebuild -version
       - run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
@@ -49,7 +50,7 @@ jobs:
         run: |
           APP=$(ls -d "$RUNNER_TEMP"/derived/Build/Products/Release-iphonesimulator/*.app | head -1)
           BID=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP/Info.plist")
-          DEVICE=$(xcrun simctl list devices available --json | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];a=[x for r,xs in sorted(d.items(),reverse=True) if "iOS-27" in r for x in xs if x["name"].startswith("iPhone") and "Pro Max" in x["name"]];print(a[0]["udid"])')
+          DEVICE=$(xcrun simctl list devices available --json | python3 -c 'import json,sys;d=json.load(sys.stdin)["devices"];a=[x for r,xs in sorted(d.items(),reverse=True) if "iOS" in r for x in xs if x["name"].startswith("iPhone") and "Pro Max" in x["name"]];print(a[0]["udid"])')
           xcrun simctl list devices available | grep "$DEVICE"
           xcrun simctl boot "$DEVICE"; xcrun simctl bootstatus "$DEVICE" -b
           xcrun simctl status_bar "$DEVICE" override --time 9:41 --dataNetwork wifi --wifiBars 3 --cellularBars 4 --batteryState charged --batteryLevel 100 || true
