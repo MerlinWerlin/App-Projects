@@ -88,8 +88,8 @@ const t = (fontFamily: string, fontSize: number, lineHeight: number, extra: Text
 
 export const TYPE = {
   hero: t(FONT.display, 56, 60, { letterSpacing: -0.5 }),
-  display: t(FONT.display, 40, 44),
-  title: t(FONT.display, 28, 32),
+  display: t(FONT.display, 40, 44, { letterSpacing: -0.4 }),
+  title: t(FONT.display, 28, 32, { letterSpacing: -0.2 }),
   title2: t(FONT.display, 22, 26),
   headline: t(FONT.bold, 17, 22),
   body: t(FONT.body, 17, 24),

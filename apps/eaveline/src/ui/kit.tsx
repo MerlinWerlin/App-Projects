@@ -74,7 +74,7 @@ export function Btn({ label, onPress, kind = 'accent', icon, disabled, style, ac
       accessibilityHint={accessibilityHint}
       onPress={onPress}
       disabled={disabled}
-      style={({ pressed }) => [st.btn, { backgroundColor: bg, borderColor: kind === 'outline' ? theme.ink : 'transparent', opacity: disabled ? 0.45 : pressed ? 0.8 : 1 }, style]}
+      style={({ pressed }) => [st.btn, { backgroundColor: bg, borderColor: kind === 'outline' ? theme.ink : 'transparent', opacity: disabled ? 0.45 : 1, transform: [{ scale: pressed ? 0.97 : 1 }] }, style]}
     >
       {icon ? <Ionicons name={icon} size={22} color={fg} /> : null}
       <Text style={[TYPE.headline, { color: fg, textAlign: 'center' }]} maxFontSizeMultiplier={1.6}>{label}</Text>
@@ -223,7 +223,7 @@ export function Picker({ label, value, choices, onPick, customLabel = 'Custom (e
     <View style={{ gap: SPACE.xxs }}>
       <Txt v="subhead" tone="ink2">{label}</Txt>
       <Pressable testID={testID} accessibilityRole="button" accessibilityLabel={`${label}: ${current?.title ?? 'choose'}`} accessibilityHint="Opens the list"
-        onPress={() => setOpen(true)} style={({ pressed }) => [st.field, st.pickRow, { backgroundColor: theme.field, borderColor: theme.fieldLine, opacity: pressed ? 0.8 : 1 }]}>
+        onPress={() => setOpen(true)} style={({ pressed }) => [st.field, st.pickRow, { backgroundColor: theme.field, borderColor: theme.fieldLine, transform: [{ scale: pressed ? 0.98 : 1 }] }]}>
         <View style={{ flex: 1, paddingVertical: SPACE.sm }}>
           <Txt v="headline">{current?.title ?? 'Choose…'}</Txt>
           {current?.sub ? <Txt v="footnote" tone="ink3">{current.sub}</Txt> : null}
@@ -341,7 +341,7 @@ export function Row({ title, sub, icon, onPress, right, testID, danger }: { titl
   const { theme } = useApp();
   return (
     <Pressable testID={testID} accessibilityRole={onPress ? 'button' : undefined} onPress={onPress} disabled={!onPress}
-      style={({ pressed }) => [st.row, { opacity: pressed ? 0.7 : 1 }]}>
+      style={({ pressed }) => [st.row, pressed && onPress ? { backgroundColor: theme.sheet2, marginHorizontal: -SPACE.md, paddingHorizontal: SPACE.md } : null]}>
       {icon ? <Ionicons name={icon} size={24} color={danger ? theme.danger : theme.ink} /> : null}
       <View style={{ flex: 1, gap: 2 }}>
         <Txt v="headline" tone={danger ? 'danger' : 'ink'}>{title}</Txt>
