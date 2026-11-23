@@ -149,7 +149,8 @@ test('settings: device region picks the country, bad storage falls back, country
   assert.equal(s.onboarded, true);
   const moved = withCountry(defaultsFor('AU'), 'US');
   assert.equal(moved.units.length, 'ft');
-  assert.equal(moved.refrigerant, 'R32', 'keeps a refrigerant that is also sold there');
+  assert.equal(moved.refrigerant, 'R32', 'keeps a refrigerant that is also common there');
+  assert.equal(withCountry(defaultsFor('US'), 'AU').refrigerant, 'R32', 'R454B is not common in AU: switch to R32');
   near(atmKpa(defaultsFor('AU')), 101.325);
 });
 

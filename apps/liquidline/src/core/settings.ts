@@ -72,7 +72,8 @@ export function parseSettings(raw: string | null | undefined, fallbackCountry: C
 /** Changing country resets the units and refrigerant to that country's defaults (the person can change them again). */
 export function withCountry(s: Settings, country: CountryCode): Settings {
   const c = profileFor(country);
-  return { ...s, country: c.code, units: { ...c.units }, refrigerant: c.refrigerants.includes(s.refrigerant) ? s.refrigerant : c.refrigerants[0] };
+  const common = c.refrigerants.slice(0, c.commonCount);
+  return { ...s, country: c.code, units: { ...c.units }, refrigerant: common.includes(s.refrigerant) ? s.refrigerant : c.refrigerants[0] };
 }
 
 export function atmKpa(s: Settings): number {

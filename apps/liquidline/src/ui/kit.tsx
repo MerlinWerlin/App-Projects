@@ -22,7 +22,7 @@ export function Screen({ title, subtitle, children, right, tab = true, footer }:
       contentContainerStyle={{ paddingTop: tab ? insets.top + SPACE.md : SPACE.lg, paddingBottom: SPACE.xxl + (tab ? 0 : insets.bottom), paddingHorizontal: SPACE.lg, gap: SPACE.lg }}
       keyboardShouldPersistTaps="handled"
       keyboardDismissMode="on-drag"
-      contentInsetAdjustmentBehavior="automatic"
+      contentInsetAdjustmentBehavior={tab ? 'never' : 'automatic'}
     >
       {title ? (
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', gap: SPACE.md }}>

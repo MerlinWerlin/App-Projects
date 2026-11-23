@@ -15,7 +15,7 @@ appId: ${APP_ID}
     id: "onboarding-agree"
 - waitForAnimationToEnd
 - assertVisible:
-    id: "pt-sat"
+    text: "Save to a job"
 - openLink: liquidline://charge
 - waitForAnimationToEnd
 - assertVisible:

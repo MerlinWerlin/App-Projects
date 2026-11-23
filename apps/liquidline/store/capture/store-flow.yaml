@@ -35,7 +35,9 @@ appId: ${APP_ID}
     id: "pt-pressure"
 - eraseText: 10
 - inputText: "450"
-- hideKeyboard
+- tapOn:
+    text: "Done"
+    optional: true
 - waitForAnimationToEnd
 - takeScreenshot: 03-glide-${MODE}
 
@@ -75,7 +77,9 @@ appId: ${APP_ID}
     id: "extra-length"
 - eraseText: 10
 - inputText: "22"
-- hideKeyboard
+- tapOn:
+    text: "Done"
+    optional: true
 - scroll:
     optional: true
 - takeScreenshot: 04-extra-${MODE}
