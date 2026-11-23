@@ -11,6 +11,11 @@ appId: ${APP_ID}
 - tapOn:
     text: "Offset depth.*, mm"
 - inputText: "100"
+- hideKeyboard:
+    optional: true
+- tapOn:
+    text: "Done"
+    optional: true
 - scrollUntilVisible:
     element:
       text: "End of conduit to obstacle, mm"

@@ -4,11 +4,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useState, type ReactNode } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import { InputAccessoryView, Keyboard, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { tap } from '../native/haptics.ts';
 import { useApp } from '../state/AppState.tsx';
 import { PHASE, RADIUS, SPACE, TARGET, TYPE } from '../theme/theme.ts';
+
+/** The number pad has no return key on iPhone: every number field shares this Done bar. */
+export const DONE_BAR_ID = 'wattle-done';
 
 export const DISCLAIMER = 'Estimate for licensed electricians. Check against AS/NZS 3000 and 3008, the manufacturer’s data and the job’s design.';
 
@@ -123,6 +126,7 @@ export function NumField({ label, value, onChange, unit, hint, placeholder, inte
           keyboardType={integer ? 'number-pad' : 'decimal-pad'}
           inputMode={integer ? 'numeric' : 'decimal'}
           returnKeyType="done"
+          inputAccessoryViewID={Platform.OS === 'ios' ? DONE_BAR_ID : undefined}
           placeholder={placeholder ?? '0'}
           placeholderTextColor={theme.dark ? '#5C616B' : '#8A8F98'}
           selectionColor={theme.accent}
@@ -135,6 +139,20 @@ export function NumField({ label, value, onChange, unit, hint, placeholder, inte
       </View>
       {hint ? <Txt v="footnote" tone="ink2">{hint}</Txt> : null}
     </View>
+  );
+}
+
+export function DoneBar() {
+  const { theme } = useApp();
+  if (Platform.OS !== 'ios') return null;
+  return (
+    <InputAccessoryView nativeID={DONE_BAR_ID}>
+      <View style={[st.doneBar, { backgroundColor: theme.card2, borderTopColor: theme.line }]}>
+        <Pressable onPress={() => Keyboard.dismiss()} accessibilityRole="button" accessibilityLabel="Done" hitSlop={8} style={st.doneBtn}>
+          <Text style={[TYPE.headline, { color: theme.accentText }]}>Done</Text>
+        </Pressable>
+      </View>
+    </InputAccessoryView>
   );
 }
 
@@ -323,5 +341,7 @@ const st = StyleSheet.create({
   answerCell: { flexGrow: 1, flexBasis: '45%', borderRadius: RADIUS.md, padding: SPACE.sm, gap: 2 },
   warn: { flexDirection: 'row', gap: SPACE.xs, alignItems: 'flex-start' },
   stepsHead: { flexDirection: 'row', alignItems: 'center', gap: SPACE.xs, minHeight: TARGET, paddingHorizontal: SPACE.md },
+  doneBar: { flexDirection: 'row', justifyContent: 'flex-end', borderTopWidth: StyleSheet.hairlineWidth, paddingHorizontal: SPACE.sm },
+  doneBtn: { minHeight: 44, minWidth: 64, alignItems: 'center', justifyContent: 'center' },
   foot: { flexDirection: 'row', alignItems: 'center', gap: SPACE.sm, padding: SPACE.md },
 });

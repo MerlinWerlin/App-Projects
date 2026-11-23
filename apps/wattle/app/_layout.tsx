@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppStateProvider, useApp } from '../src/state/AppState.tsx';
+import { DoneBar } from '../src/ui/kit.tsx';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
@@ -41,6 +42,7 @@ function Shell() {
   return (
     <>
       <StatusBar style={theme.dark ? 'light' : 'dark'} />
+      <DoneBar />
       <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: theme.ground } }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="unlock" options={{ presentation: 'modal' }} />
