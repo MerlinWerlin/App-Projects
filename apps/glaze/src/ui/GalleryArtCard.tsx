@@ -19,6 +19,7 @@ import { RemoteArtImage } from './RemoteArtImage';
 import { Skeleton } from './Skeleton';
 import { PHONE_ASPECT } from './ThemeCard';
 import { ThemeWallpaper } from './ThemeWallpaper';
+import { ThemeHomePreview } from './ThemeHomePreview';
 import { noMirror, textStyleFor } from './i18nLayout';
 
 /** Artwork height for a card of `width` (phone aspect, like the 240 x 520 catalogue thumbs). */
@@ -67,6 +68,7 @@ export const GalleryArtCard = memo(function GalleryArtCard({ theme, width, onOpe
             ) : (
               <ThemeWallpaper theme={theme} width={width} height={artH} maxGrain={120} />
             )}
+            <ThemeHomePreview theme={theme} width={width} height={artH} />
             {badge ? <View style={styles.badge}>{badge}</View> : null}
           </View>
           <View style={styles.text}>

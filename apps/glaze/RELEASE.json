@@ -1,6 +1,6 @@
 {
   "mode": "build",
-  "note": "Glaze 1.0.44: 111 new themes, each with five artworks, a wallpaper and its own Clock, Battery and Calendar designs. 1.0.44 reads catalog-v2.json (the 141 themes plus the new ones); catalog.json stays frozen for older builds.",
+  "note": "Glaze 1.0.44: 111 new themes, each with five artworks, a wallpaper and its own Clock, Battery and Calendar designs. Every theme card now previews the theme with its own Clock widget and Phone, Messages and Camera icons. 1.0.44 reads catalog-v2.json; catalog.json stays frozen for older builds.",
   "ascAppId": "6826415074",
   "profile": "production-native",
   "skipCapabilitySync": true
