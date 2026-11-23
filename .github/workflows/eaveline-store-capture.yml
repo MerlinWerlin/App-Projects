@@ -63,7 +63,7 @@ jobs:
           echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
           pip3 install --quiet --break-system-packages pillow
       - name: Checks (A) and store captures (B)
-        timeout-minutes: 70
+        timeout-minutes: 90
         run: |
           set -uo pipefail
           OUT="$RUNNER_TEMP/eaveline-captures"; mkdir -p "$OUT/raw" "$OUT/verify"
@@ -77,16 +77,8 @@ jobs:
           xcrun simctl bootstatus "$DEVICE" -b
           xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100 || true
           xcrun simctl ui "$DEVICE" appearance light
-          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
+          export MAESTRO_DRIVER_STARTUP_TIMEOUT=480000
           cd store/capture
-          VERIFY=fail
-          xcrun simctl install "$DEVICE" "$APP_A"
-          for TRY in 1 2; do
-            maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro-verify" verify.yaml && { VERIFY=pass; break; } || echo "verify try $TRY failed"
-          done
-          echo "VERIFY=$VERIFY" | tee "$OUT/verify-result.txt"
-          find "$OUT/maestro-verify" -name 'v*.png' -exec cp {} "$OUT/verify/" \;
-          xcrun simctl uninstall "$DEVICE" "$BUNDLE"
           xcrun simctl install "$DEVICE" "$APP_B"
           for MODE in light dark; do
             xcrun simctl ui "$DEVICE" appearance "$MODE"
@@ -96,6 +88,17 @@ jobs:
             done
           done
           xcrun simctl ui "$DEVICE" appearance light
+          # StoreKit build checks after the B flows: Maestro's iOS driver is warm by now (a cold first start timed out).
+          xcrun simctl uninstall "$DEVICE" "$BUNDLE"
+          xcrun simctl install "$DEVICE" "$APP_A"
+          VERIFY=fail
+          for TRY in 1 2 3; do
+            maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro-verify" verify.yaml && { VERIFY=pass; break; } || echo "verify try $TRY failed"
+          done
+          echo "VERIFY=$VERIFY" | tee "$OUT/verify-result.txt"
+          find "$OUT/maestro-verify" -name 'v*.png' -exec cp {} "$OUT/verify/" \;
+          xcrun simctl uninstall "$DEVICE" "$BUNDLE"
+          xcrun simctl install "$DEVICE" "$APP_B"
           xcrun simctl ui "$DEVICE" content_size accessibility-extra-extra-extra-large || true
           xcrun simctl terminate "$DEVICE" "$BUNDLE" 2>/dev/null || true
           xcrun simctl launch "$DEVICE" "$BUNDLE"; sleep 8; xcrun simctl io "$DEVICE" screenshot "$OUT/raw/90-largest-text.png" || true
