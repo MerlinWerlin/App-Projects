@@ -1,5 +1,5 @@
 /** Turns canonical results into what the person reads, in their unit system. Pure, tested. */
-import { fmt, FT, FT2, IN, LB, SHORT_TON_KG, YD3, type UnitSystem } from '../core/units.ts';
+import { fmt, FT, FT2, FT3, IN, LB, SHORT_TON_KG, YD3, type UnitSystem } from '../core/units.ts';
 import type { Out, OutKind } from './registry.ts';
 
 export interface Shown { value: string; unit: string }
@@ -11,6 +11,7 @@ export function show(kind: OutKind, v: number, sys: UnitSystem, dp?: number): Sh
   const metric = sys === 'metric';
   switch (kind) {
     case 'vol': return metric ? { value: fmt(v, dp ?? 2), unit: 'm³' } : { value: fmt(v / YD3, Math.max(2, dp ?? 2)), unit: 'yd³' };
+    case 'svol': return metric ? { value: fmt(v, dp ?? 4), unit: 'm³' } : { value: fmt(v / FT3, 2), unit: 'ft³' };
     case 'len': return metric ? { value: fmt(v, dp ?? 2), unit: 'm' } : { value: fmt(v / FT, Math.max(1, dp ?? 1)), unit: 'ft' };
     case 'area': return metric ? { value: fmt(v, dp ?? 2), unit: 'm²' } : { value: fmt(v / FT2, Math.max(1, dp ?? 1)), unit: 'ft²' };
     case 'kg':
@@ -21,6 +22,8 @@ export function show(kind: OutKind, v: number, sys: UnitSystem, dp?: number): Sh
     case 'pct': return { value: fmt(v, dp ?? 1), unit: '%' };
     case 'mm': return metric ? { value: fmt(v * 1000, dp ?? 0), unit: 'mm' } : { value: fmt(v / IN, 2), unit: 'in' };
     case 'ratio': return { value: fmt(v, dp ?? 0), unit: '' };
+    // grade: metres of fall per metre of run → mm per m, or inches per foot.
+    case 'grade': return metric ? { value: fmt(v * 1000, dp ?? 1), unit: 'mm/m' } : { value: fmt(v * 12, 2), unit: 'in/ft' };
     case 'kgph': return metric ? { value: fmt(v, dp ?? 2), unit: 'kg/m²/h' } : { value: fmt(v * KGPH_TO_LBPH, 2), unit: 'lb/ft²/h' };
   }
 }

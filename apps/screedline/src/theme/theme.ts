@@ -20,6 +20,7 @@ export interface Theme {
   slab: string; // result slab background (always dark)
   onSlab: string;
   onSlab2: string;
+  slabControl: string; // filled control on the slab (paywall close)
   danger: string;
   good: string;
   warn: string;
@@ -32,7 +33,7 @@ export const THEMES: Record<ThemeName, Theme> = {
     ground: '#EEECE6', card: '#FFFFFF', cardAlt: '#F6F5F1',
     ink: '#15171A', ink2: '#4B4F56', line: '#D6D2C7', fieldLine: '#A9A498',
     amber: '#FFB300', onAmber: '#15171A',
-    slab: '#15171A', onSlab: '#FFFFFF', onSlab2: '#C9C5BA',
+    slab: '#15171A', onSlab: '#FFFFFF', onSlab2: '#C9C5BA', slabControl: '#2A2D31',
     danger: '#B3261E', good: '#1E6B3A', warn: '#8A5A00',
     borderWidth: 1.5,
   },
@@ -41,7 +42,7 @@ export const THEMES: Record<ThemeName, Theme> = {
     ground: '#0E1012', card: '#191C20', cardAlt: '#22262B',
     ink: '#F3F1EA', ink2: '#B7BBC2', line: '#2F343A', fieldLine: '#4A5058',
     amber: '#FFC233', onAmber: '#15171A',
-    slab: '#000000', onSlab: '#FFFFFF', onSlab2: '#C9C5BA',
+    slab: '#000000', onSlab: '#FFFFFF', onSlab2: '#C9C5BA', slabControl: '#2A2D31',
     danger: '#FF8A80', good: '#7FD69B', warn: '#FFC233',
     borderWidth: 1.5,
   },
@@ -50,7 +51,7 @@ export const THEMES: Record<ThemeName, Theme> = {
     ground: '#FFFFFF', card: '#FFFFFF', cardAlt: '#F2F2F2',
     ink: '#000000', ink2: '#1F1F1F', line: '#000000', fieldLine: '#000000',
     amber: '#FFB300', onAmber: '#000000',
-    slab: '#000000', onSlab: '#FFFFFF', onSlab2: '#FFFFFF',
+    slab: '#000000', onSlab: '#FFFFFF', onSlab2: '#FFFFFF', slabControl: '#333333',
     danger: '#9E0000', good: '#005A1F', warn: '#6B4500',
     borderWidth: 2.5,
   },
@@ -61,9 +62,10 @@ export function resolveTheme(appearance: Appearance, system: 'light' | 'dark' | 
   return THEMES[appearance];
 }
 
+/** San Francisco carries the UI (Dynamic Type, legibility in glare); Barlow Condensed is the display voice for
+ * numbers and titles only. */
 export const FONT = {
-  body: 'AtkinsonHyperlegible_400Regular',
-  bold: 'AtkinsonHyperlegible_700Bold',
+  body: 'System',
   num: 'BarlowCondensed_600SemiBold',
   numBold: 'BarlowCondensed_700Bold',
 } as const;
@@ -73,3 +75,6 @@ export const RADIUS = { s: 8, m: 14, l: 20 } as const;
 /** Glove-friendly minimum target. Apple's minimum is 44 pt; gloves need more. */
 export const TARGET = 56;
 export const MOTION = { fast: 120, base: 200 } as const;
+
+/** Spread into a text style for semibold San Francisco. */
+export const BOLD = { fontFamily: 'System', fontWeight: '600' } as const;

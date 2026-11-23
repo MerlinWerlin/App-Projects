@@ -75,7 +75,7 @@ export function mesh(i: MeshInput): Calc<MeshResult> {
   ];
   const notes = [
     rotated ? 'Sheets run across the slab (fewer sheets that way).' : 'Sheets run along the slab.',
-    'Mesh type, laps and cover come from your engineer’s drawings (AS 3600 / AS 2870).',
+    'Mesh type, laps and cover come from your engineer’s drawings.',
   ];
   return ok({ sheets, along, across, rotated, chairs, meshLength: ml, meshWidth: mw }, steps, notes);
 }
@@ -92,6 +92,8 @@ export interface BarsInput {
   stockLength: number | null; lap: number | null;
   /** Bar diameter in mm, for mass. */
   diameter: number | null;
+  /** Local designation, e.g. N12, #4, H12, 15M. */
+  label?: string;
 }
 export interface BarsResult { piecesPerBar: number; stockBars: number; laps: number; totalBarLength: number; massKg: number }
 
@@ -117,10 +119,10 @@ export function bars(i: BarsInput): Calc<BarsResult> {
     { label: 'Lines of bar', working: `${runs} run${runs === 1 ? '' : 's'} × ${per} bar${per === 1 ? '' : 's'}`, result: `${lines}` },
     { label: 'Stock bars', working: `${pieces} × ${lines}`, result: `${stockBars}` },
     { label: 'Laps', working: `(${pieces} − 1) × ${lines}`, result: `${laps}` },
-    { label: `Mass (N${fmt(d, 0)} = ${fmt(kgm, 3)} kg/m)`, working: `${stockBars} × ${m(S)} × ${fmt(kgm, 3)} kg/m`, result: `${fmt(massKg, 1)} kg` },
+    { label: `Mass (${i.label ?? `${fmt(d, 1)} mm bar`} = ${fmt(kgm, 3)} kg/m)`, working: `${stockBars} × ${m(S)} × ${fmt(kgm, 3)} kg/m`, result: `${fmt(massKg, 1)} kg` },
   ];
   return ok({ piecesPerBar: pieces, stockBars, laps, totalBarLength, massKg }, steps, [
-    'Lap lengths come from your engineer’s drawings (AS 3600). 40 × bar diameter is only a rule of thumb.',
+    'Lap lengths come from your engineer’s drawings. 40 × bar diameter is only a rule of thumb.',
     'Bar mass assumes the full stock bars you buy, offcuts included.',
   ]);
 }
@@ -147,5 +149,5 @@ export function trenchMesh(i: TrenchMeshInput): Calc<TrenchMeshResult> {
     { label: 'Lengths per layer', working: effective <= S ? 'fits in one length' : `⌈(${m(effective)} − ${m(S)}) ÷ (${m(S)} − ${mm(lap)})⌉ + 1`, result: `${perLine}` },
     { label: 'Trench mesh lengths', working: `${perLine} × ${lines}`, result: `${pieces}` },
   ];
-  return ok({ pieces, laps: (perLine - 1) * lines }, steps, ['Trench mesh: 500 mm end laps, full-width laps at corners and T-junctions (AS 2870). Check your engineer’s footing details.']);
+  return ok({ pieces, laps: (perLine - 1) * lines }, steps, ['Full-width laps at corners and T-junctions. Check your engineer’s footing details.']);
 }

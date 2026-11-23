@@ -7,10 +7,11 @@ import { createPurchaseProvider, type PurchaseResult } from '../plus/purchases';
 import { haptic, loadKv, loadSecureStore } from '../native/store';
 import { CAPTURE, demoJobs } from './capture';
 import { type Appearance, resolveTheme, type Theme } from '../theme/theme';
-import { toolById, type Values } from '../tools/registry';
+import { type CountryCode, type CountryProfile, profile } from '../core/country';
+import { toolsForCode, type Tool, type Values } from '../tools/registry';
 
-export interface Prefs { units: UnitSystem; appearance: Appearance; haptics: boolean; waste: number; welcomeDone: boolean }
-const DEFAULT_PREFS: Prefs = { units: 'metric', appearance: 'system', haptics: true, waste: 5, welcomeDone: false };
+export interface Prefs { units: UnitSystem; appearance: Appearance; haptics: boolean; waste: number; welcomeDone: boolean; /** null until chosen at first launch. */ country: CountryCode | null }
+const DEFAULT_PREFS: Prefs = { units: 'metric', appearance: 'system', haptics: true, waste: 5, welcomeDone: false, country: null };
 const PREFS_KEY = 'screedline.prefs.v1';
 const ACCESS_KEY = 'screedline.access.v1';
 const TRIAL_KEY = 'screedline.trialStart.v1';
@@ -21,6 +22,9 @@ interface Ctx {
   theme: Theme;
   prefs: Prefs;
   setPrefs(p: Partial<Prefs>): void;
+  country: CountryProfile;
+  setCountry(code: CountryCode): void;
+  tools: Tool[];
   access: Access;
   trial: TrialState;
   isUnlocked: boolean;
@@ -141,7 +145,18 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     theme: resolveTheme(prefs.appearance, scheme),
     prefs, setPrefs,
     access, trial: trialState(access.trialStart, now), isUnlocked,
-    canUse: id => isUnlocked || !!toolById(id)?.free,
+    country: profile(prefs.country),
+    tools: toolsForCode(prefs.country),
+    setCountry(code) {
+      // The country sets units and every picker; old drafts would carry the previous country's sizes.
+      setPrefs({ country: code, units: profile(code).units });
+      setDrafts(prev => {
+        const next: Record<string, Values> = prev.checklist ? { checklist: prev.checklist } : {};
+        kv.setItem(DRAFTS_KEY, JSON.stringify(next)).catch(() => undefined);
+        return next;
+      });
+    },
+    canUse: id => isUnlocked || !!toolsForCode(prefs.country).find(t => t.id === id)?.free,
     price,
     buy: () => handle(store.buy()),
     startTrial: () => handle(store.startTrial()),

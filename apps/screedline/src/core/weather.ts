@@ -14,7 +14,7 @@ import { type Calc, type Errors, type Step, check, fail, hasErrors, ok } from '.
 import { fmt } from './units.ts';
 
 export type Risk = 'low' | 'moderate' | 'high';
-export interface WeatherInput { airC: number | null; concreteC: number | null; humidityPct: number | null; windKmh: number | null }
+export interface WeatherInput { airC: number | null; concreteC: number | null; humidityPct: number | null; windKmh: number | null; /** Delivered-temperature limits from the local ready-mix standard, e.g. AS 1379 5–35 °C. */ delivery?: { min: number; max: number; source: string } }
 export interface WeatherResult { evaporation: number; risk: Risk; warnings: string[] }
 
 export function evaporationRate(Tc: number, Ta: number, r: number, V: number): number {
@@ -39,7 +39,7 @@ export function pourWeather(i: WeatherInput): Calc<WeatherResult> {
   const warnings: string[] = [];
   if (risk === 'high') warnings.push('High risk of plastic shrinkage cracking. Use wind breaks, fog spray or aliphatic alcohol evaporation retarder, and cure straight after finishing.');
   else if (risk === 'moderate') warnings.push('Cracking risk. Have evaporation retarder and curing ready, and protect from wind.');
-  if (Tc > 35 || Tc < 5) warnings.push('AS 1379 asks for delivered concrete between 5 °C and 35 °C. Talk to the plant.');
+  if (i.delivery && (Tc > i.delivery.max || Tc < i.delivery.min)) warnings.push(`${i.delivery.source} asks for delivered concrete between ${i.delivery.min} °C and ${i.delivery.max} °C. Talk to the plant.`);
   if (Ta >= 30) warnings.push('Hot weather: pour early, dampen the sub-base and forms (no puddles), and ask about a set retarder.');
   if (Ta <= 5) warnings.push('Cold weather: keep the concrete above 5 °C while it sets, cover it, never pour on frozen ground, and ask about an accelerator.');
   return ok({ evaporation: E, risk, warnings }, steps, ['Rule-of-thumb guidance only. Your supplier can advise on mix adjustments.']);
@@ -48,13 +48,14 @@ export function pourWeather(i: WeatherInput): Calc<WeatherResult> {
 export interface CheckItem { id: string; text: string }
 export interface CheckGroup { id: string; title: string; items: CheckItem[] }
 
-/** Pour-day and curing checklist (CCAA guidance, AS 2870, AS 3600, AS 1379). */
-export const CHECKLIST: CheckGroup[] = [
+/** Pour-day and curing checklist. Standards names come from the user's country. */
+export function checklist(std: { readyMix: string; residential: string; curing: string }, dischargeMinutes?: number): CheckGroup[] {
+  return [
   {
     id: 'before', title: 'Before the truck', items: [
       { id: 'forms', text: 'Forms set to level and falls, braced and pegged' },
       { id: 'base', text: 'Sub-base compacted, level and damp (no puddles)' },
-      { id: 'membrane', text: 'Vapour barrier lapped and taped where required (AS 2870)' },
+      { id: 'membrane', text: `Vapour barrier lapped and taped where required (${std.residential})` },
       { id: 'reo', text: 'Reo on chairs at the right cover, laps tied' },
       { id: 'inspect', text: 'Inspection booked and passed if required' },
       { id: 'access', text: 'Truck and pump access clear, wash-out area set' },
@@ -65,7 +66,7 @@ export const CHECKLIST: CheckGroup[] = [
   },
   {
     id: 'pour', title: 'During the pour', items: [
-      { id: 'docket', text: 'Docket checked: mix, slump and batch time (discharge within 90 min, AS 1379)' },
+      { id: 'docket', text: dischargeMinutes ? `Docket checked: mix, slump and batch time (discharge within ${dischargeMinutes} min, ${std.readyMix})` : 'Docket checked: mix, slump and batch time' },
       { id: 'water', text: 'No extra water added on site beyond what the docket allows' },
       { id: 'vibrate', text: 'Concrete compacted around edges and reo' },
       { id: 'bleed', text: 'Bleed water gone before final finishing' },
@@ -74,9 +75,10 @@ export const CHECKLIST: CheckGroup[] = [
   {
     id: 'cure', title: 'Curing', items: [
       { id: 'start', text: 'Curing started as soon as finishing is done' },
-      { id: 'moist', text: 'Kept moist or covered for at least 7 days (AS 3600 minimums are 3 to 7 days by exposure class)' },
+      { id: 'moist', text: `Kept moist or covered for at least 7 days (check ${std.curing} for your exposure class)` },
       { id: 'joints', text: 'Control joints cut or tooled on time' },
       { id: 'traffic', text: 'Foot traffic kept off for a day or two, cars for at least 7 days' },
     ],
   },
 ];
+}

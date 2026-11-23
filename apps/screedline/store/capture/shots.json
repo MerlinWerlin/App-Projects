@@ -1,0 +1,10 @@
+[
+  { "name": "slab", "raw": "03-slab-light.png", "title": "Concrete to order, worked out", "sub": "Slabs, edge beams, footings, piers, steps and odd shapes", "dark": true },
+  { "name": "working", "raw": "04-working-light.png", "title": "Check the working", "sub": "Every answer shows its sums, with your waste allowance", "dark": false },
+  { "name": "mesh", "raw": "05-mesh-dark.png", "title": "Mesh, chairs and laps", "sub": "SL sheets turned whichever way uses fewer", "dark": true },
+  { "name": "falls", "raw": "07-falls-pegs-light.png", "title": "Falls and peg heights", "sub": "%, 1 : n and mm drop along the string line", "dark": false },
+  { "name": "pavers", "raw": "08-pavers-dark.png", "title": "Pavers, sand and road base", "sub": "Plus gravel, soil, mulch and tonnes ↔ m³", "dark": true },
+  { "name": "retaining", "raw": "09-retaining-light.png", "title": "Retaining walls", "sub": "Blocks, caps, drainage gravel and ag pipe", "dark": false },
+  { "name": "weather", "raw": "10-weather-dark.png", "title": "Pour-day weather", "sub": "Evaporation and cracking risk, plus a curing checklist", "dark": true },
+  { "name": "job", "raw": "13-job-items-light.png", "title": "Jobs and job sheets", "sub": "Saved on your phone. Share with your supplier.", "dark": false }
+]

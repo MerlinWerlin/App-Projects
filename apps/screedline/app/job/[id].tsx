@@ -4,7 +4,6 @@ import { Alert, Platform, Pressable, ScrollView, Share, TextInput, View } from '
 import { jobSheet } from '../../src/core/jobs';
 import { useApp } from '../../src/state/AppState';
 import { FONT, RADIUS, SPACE, TARGET } from '../../src/theme/theme';
-import { toolById } from '../../src/tools/registry';
 import { Button, Card, DONE_ID, Icon, T } from '../../src/ui/kit';
 
 export default function JobScreen() {
@@ -71,7 +70,7 @@ export default function JobScreen() {
 
       <T kind="caps" style={{ marginTop: SPACE.s }}>Saved calculations</T>
       {job.items.length ? job.items.map(item => {
-        const tool = toolById(item.toolId);
+        const tool = app.tools.find(t => t.id === item.toolId);
         return (
           <Card key={item.id} style={{ gap: SPACE.s }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: SPACE.m }}>

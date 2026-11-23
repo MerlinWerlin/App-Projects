@@ -27,6 +27,11 @@ export default function SettingsScreen() {
         <Text maxFontSizeMultiplier={1.4} style={{ fontFamily: FONT.numBold, fontSize: 44, lineHeight: 48, color: theme.ink }}>Settings</Text>
       </View>
 
+      <SectionHeader>Country</SectionHeader>
+      <Group>
+        <Row testID="settings-country" icon="earth" title={app.country.name} subtitle={app.country.verified ? 'Local products, units and standards' : 'Generic sizes and metric units'} onPress={() => router.push('/country')} />
+      </Group>
+
       <SectionHeader>Units</SectionHeader>
       <Choice label="Units" value={prefs.units} onChange={v => app.setPrefs({ units: v as 'metric' | 'imperial' })} options={[{ value: 'metric', label: 'Metric (m, mm)' }, { value: 'imperial', label: 'Imperial (ft, in)' }]} />
 

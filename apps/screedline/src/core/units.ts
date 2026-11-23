@@ -29,7 +29,7 @@ export const TPM3_TO_LBFT3 = (1000 * FT3) / LB;
  *  kg      [kg] metric kg, imperial lb
  *  count, pct, num: unitless
  */
-export type FieldKind = 'len' | 'thick' | 'size' | 'area' | 'vol' | 'density' | 'temp' | 'speed' | 'kg' | 'count' | 'pct' | 'num';
+export type FieldKind = 'len' | 'thick' | 'size' | 'area' | 'vol' | 'svol' | 'density' | 'temp' | 'speed' | 'kg' | 'count' | 'pct' | 'num';
 
 export function unitLabel(kind: FieldKind, sys: UnitSystem): string {
   const m = sys === 'metric';
@@ -38,6 +38,7 @@ export function unitLabel(kind: FieldKind, sys: UnitSystem): string {
     case 'thick': case 'size': return m ? 'mm' : 'in';
     case 'area': return m ? 'm²' : 'ft²';
     case 'vol': return m ? 'm³' : 'yd³';
+    case 'svol': return m ? 'm³' : 'ft³';
     case 'density': return m ? 't/m³' : 'lb/ft³';
     case 'temp': return m ? '°C' : '°F';
     case 'speed': return m ? 'km/h' : 'mph';
@@ -58,6 +59,7 @@ export function toMetric(kind: FieldKind, v: number, sys: UnitSystem): number {
     case 'thick': case 'size': return v * IN;
     case 'area': return v * FT2;
     case 'vol': return v * YD3;
+    case 'svol': return v * FT3;
     case 'density': return v / TPM3_TO_LBFT3;
     case 'temp': return ((v - 32) * 5) / 9;
     case 'speed': return v * MILE_KM;
@@ -77,6 +79,7 @@ export function fromMetric(kind: FieldKind, v: number, sys: UnitSystem): number 
     case 'thick': case 'size': return v / IN;
     case 'area': return v / FT2;
     case 'vol': return v / YD3;
+    case 'svol': return v / FT3;
     case 'density': return v * TPM3_TO_LBFT3;
     case 'temp': return (v * 9) / 5 + 32;
     case 'speed': return v / MILE_KM;

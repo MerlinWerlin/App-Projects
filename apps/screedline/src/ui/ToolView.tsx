@@ -6,7 +6,7 @@ import type { Shape, ShapeKind } from '../core/concrete';
 import { SUPPLIER_NOTE } from '../core/jobs';
 import { fmtField, fromMetric, parseNumber, toMetric, unitLabel, type FieldKind, type UnitSystem } from '../core/units';
 import { useApp } from '../state/AppState';
-import { FONT, RADIUS, SPACE, TARGET } from '../theme/theme';
+import { BOLD, FONT, RADIUS, SPACE, TARGET } from '../theme/theme';
 import { defaults, type Field, type Run, type Tool, type Values, visible } from '../tools/registry';
 import { line, showOut } from '../tools/present';
 import { Button, Card, Choice, DONE_ID, DoneBar, FieldShell, Icon, NumberInput, T } from './kit';
@@ -14,7 +14,7 @@ import { Button, Card, Choice, DONE_ID, DoneBar, FieldShell, Icon, NumberInput, 
 type Texts = Record<string, string>;
 interface UiShape { kind: ShapeKind; a: string; b: string; subtract: boolean }
 
-const dpFor = (kind: FieldKind, sys: UnitSystem) => (kind === 'count' ? 0 : sys === 'imperial' && kind !== 'num' && kind !== 'pct' ? 2 : (kind === 'thick' || kind === 'size') ? 1 : 3);
+const dpFor = (kind: FieldKind, sys: UnitSystem) => (kind === 'count' ? 0 : kind === 'svol' && sys === 'metric' ? 4 : sys === 'imperial' && kind !== 'num' && kind !== 'pct' ? 2 : (kind === 'thick' || kind === 'size') ? 1 : 3);
 const toText = (kind: FieldKind, v: unknown, sys: UnitSystem) => (typeof v === 'number' && Number.isFinite(v) ? fmtField(fromMetric(kind, v, sys), dpFor(kind, sys)) : '');
 const fromText = (kind: FieldKind, s: string, sys: UnitSystem) => {
   const x = parseNumber(s);
@@ -81,6 +81,8 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
         }
         return next;
       });
+      const choicePatch = Object.entries(patch).filter(([k, v]) => typeof v === 'string' && tool.fields.some(x => x.key === k && x.type === 'choice'));
+      if (choicePatch.length) setChoices(c => ({ ...c, ...Object.fromEntries(choicePatch) as Record<string, string> }));
     }
   };
 
@@ -209,7 +211,7 @@ export function ToolView({ tool, prefill, jobContext }: { tool: Tool; prefill?: 
                 <View style={{ paddingHorizontal: SPACE.l, paddingBottom: SPACE.l, gap: SPACE.m }}>
                   {sys === 'imperial' ? <T kind="small">Working is shown in metric. Your inputs were converted exactly (1 ft = 0.3048 m).</T> : null}
                   {run.steps.map((s, i) => (
-                    <View key={i} style={{ gap: 2, borderLeftWidth: 4, borderLeftColor: theme.amber, paddingLeft: SPACE.m }}>
+                    <View key={i} style={{ gap: 2, backgroundColor: theme.cardAlt, borderRadius: RADIUS.s, paddingHorizontal: SPACE.m, paddingVertical: SPACE.s }}>
                       <T kind="small">{s.label}</T>
                       <T style={{ fontFamily: FONT.num, fontSize: 20 }}>{s.working} = <Text style={{ fontFamily: FONT.numBold }}>{s.result}</Text></T>
                     </View>
@@ -256,11 +258,14 @@ export function ResultSlab({ run }: { run: Run | null }) {
     <View
       accessible accessibilityRole="summary" accessibilityLiveRegion="polite"
       accessibilityLabel={run.ok ? `${run.headline.label} ${shown!.value} ${shown!.unit}, ${run.headline.caption}` : 'Fill in the highlighted boxes'}
-      style={{ backgroundColor: theme.slab, borderRadius: RADIUS.l, paddingHorizontal: SPACE.l, paddingVertical: SPACE.m, borderLeftWidth: 10, borderLeftColor: toneColor ?? theme.amber, minHeight: 112, justifyContent: 'center' }}
+      style={{ backgroundColor: theme.slab, borderRadius: RADIUS.l, paddingHorizontal: SPACE.l, paddingVertical: SPACE.m, borderWidth: toneColor ? 3 : 0, borderColor: toneColor ?? 'transparent', minHeight: 112, justifyContent: 'center', gap: 2 }}
     >
       {run.ok ? (
         <>
-          <Text maxFontSizeMultiplier={1.4} style={{ fontFamily: FONT.bold, fontSize: 15, letterSpacing: 1, textTransform: 'uppercase', color: theme.onSlab2 }}>{run.headline.label}</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: SPACE.s }}>
+            <View style={{ width: 28, height: 6, borderRadius: 3, backgroundColor: toneColor ?? theme.amber }} />
+            <Text maxFontSizeMultiplier={1.4} style={{ ...BOLD, fontSize: 16, color: theme.onSlab2 }}>{run.headline.label}</Text>
+          </View>
           <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: SPACE.s, flexWrap: 'wrap' }}>
             <Text adjustsFontSizeToFit numberOfLines={1} maxFontSizeMultiplier={1.3} style={{ fontFamily: FONT.numBold, fontSize: 64, lineHeight: 68, color: theme.onSlab, fontVariant: ['tabular-nums'] }}>{shown!.value}</Text>
             {shown!.unit ? <Text maxFontSizeMultiplier={1.3} style={{ fontFamily: FONT.num, fontSize: 30, color: theme.amber }}>{shown!.unit}</Text> : null}
@@ -270,7 +275,7 @@ export function ResultSlab({ run }: { run: Run | null }) {
       ) : (
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: SPACE.m }}>
           <Icon name="alert-circle-outline" size={30} color={theme.amber} />
-          <Text maxFontSizeMultiplier={1.5} style={{ flex: 1, fontFamily: FONT.bold, fontSize: 19, color: theme.onSlab }}>Fill in the highlighted boxes to see the answer.</Text>
+          <Text maxFontSizeMultiplier={1.5} style={{ flex: 1, ...BOLD, fontSize: 19, color: theme.onSlab }}>Fill in the highlighted boxes to see the answer.</Text>
         </View>
       )}
     </View>

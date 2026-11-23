@@ -21,6 +21,8 @@ export interface WallInput {
   blockLength: number | null; blockHeight: number | null; blockDepth: number | null;
   capLength: number | null; wastePct: number | null;
   drainWidth: number | null;
+  /** Country-specific approval wording (country.ts). */
+  approvalNote?: string;
 }
 export interface WallResult {
   courses: number; perCourse: number; blocks: number; caps: number;
@@ -55,6 +57,6 @@ export function retainingWall(i: WallInput): Calc<WallResult> {
   if (dw > 0) steps.push({ label: 'Drainage aggregate', working: `${fmt(L, 2)} m × ${fmt(total, 2)} m × ${fmt(dw * 1000, 0)} mm`, result: `${fmt(drainM3, 2)} m³ (${fmt(drainM3 * 1.52, 2)} t)` });
   steps.push({ label: 'Levelling pad (road base)', working: `${fmt(L, 2)} m × (${fmt(bdp * 1000, 0)} + 300) mm × 150 mm`, result: `${fmt(padM3, 2)} m³` });
   const notes = ['Follow the block maker’s installation guide for setback, geogrid and drainage.'];
-  if (H > 0.6) notes.unshift('Walls over about 600 mm (NSW) to 1 m (Qld and elsewhere), or near boundaries, buildings or loads, may need council approval and an engineer’s design. Check with your council.');
+  if (H > 0.6) notes.unshift(i.approvalNote ?? 'Taller walls, or walls near boundaries, buildings or loads, may need approval and an engineer’s design. Check with your local council.');
   return ok({ courses, perCourse, blocks, caps, drainM3, drainT: drainM3 * 1.52, padM3, agPipe: Math.ceil(L) }, steps, notes);
 }

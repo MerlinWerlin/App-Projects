@@ -8,7 +8,6 @@ import { FULL_AUSTRALIA_PRICE } from '../src/plus/entitlement';
 import type { PurchaseResult } from '../src/plus/purchases';
 import { useApp } from '../src/state/AppState';
 import { FONT, RADIUS, SPACE } from '../src/theme/theme';
-import { TOOLS } from '../src/tools/registry';
 import { Button, Icon, T } from '../src/ui/kit';
 
 /** Paywall: close button from the start, plain price, Restore on the same screen, trial never automatic. */
@@ -18,7 +17,7 @@ export default function UnlockScreen() {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const [busy, setBusy] = useState<null | 'buy' | 'trial' | 'restore'>(null);
-  const paid = TOOLS.filter(t => !t.free);
+  const paid = app.tools.filter(t => !t.free);
   const act = async (kind: 'buy' | 'trial' | 'restore', fn: () => Promise<PurchaseResult>) => {
     setBusy(kind);
     const r = await fn();
@@ -35,8 +34,8 @@ export default function UnlockScreen() {
         <View style={{ backgroundColor: theme.slab, paddingTop: SPACE.xl, paddingHorizontal: SPACE.l, paddingBottom: SPACE.xl, gap: SPACE.m }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View style={{ width: 56, height: 6, borderRadius: 3, backgroundColor: theme.amber }} />
-            <Pressable accessibilityRole="button" accessibilityLabel="Close" onPress={() => router.back()} hitSlop={12} style={{ width: 48, height: 48, borderRadius: 24, backgroundColor: '#2A2D31', alignItems: 'center', justifyContent: 'center' }}>
-              <Icon name="close" size={26} color="#FFFFFF" />
+            <Pressable accessibilityRole="button" accessibilityLabel="Close" onPress={() => router.back()} hitSlop={12} style={{ width: 48, height: 48, borderRadius: 24, backgroundColor: theme.slabControl, alignItems: 'center', justifyContent: 'center' }}>
+              <Icon name="close" size={22} color={theme.onSlab} />
             </Pressable>
           </View>
           <Text maxFontSizeMultiplier={1.4} style={{ fontFamily: FONT.numBold, fontSize: 44, lineHeight: 48, color: theme.onSlab }}>Full Unlock</Text>

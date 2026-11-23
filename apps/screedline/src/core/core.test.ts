@@ -89,8 +89,13 @@ test('steps: 3 steps, 170 rise, 280 going, 1.2 m wide', () => {
   const c = stairs({ steps: 3, rise: 0.17, going: 0.28, width: 1.2, wastePct: 0 });
   close(value(c).net, 0.34272);
   assert.equal(c.ok && c.notes.length, 0);
-  const steep = stairs({ steps: 1, rise: 0.3, going: 0.3, width: 1, wastePct: 0 });
-  assert.ok(steep.ok && steep.notes.some(n => n.includes('550')));
+  const ncc = { riser: [0.115, 0.19] as [number, number], going: [0.24, 0.355] as [number, number], twoRG: [0.55, 0.7] as [number, number], code: 'NCC' };
+  assert.equal(stairs({ steps: 3, rise: 0.17, going: 0.28, width: 1.2, wastePct: 0, rule: ncc }).ok && (stairs({ steps: 3, rise: 0.17, going: 0.28, width: 1.2, wastePct: 0, rule: ncc }) as { notes: string[] }).notes.length, 0);
+  const steep = stairs({ steps: 1, rise: 0.3, going: 0.3, width: 1, wastePct: 0, rule: ncc });
+  assert.ok(steep.ok && steep.notes.some(n => n.includes('550')) && steep.notes.some(n => n.startsWith('Rise 300 mm')));
+  // no rule (unverified country): no code claims at all
+  const plain = stairs({ steps: 1, rise: 0.3, going: 0.3, width: 1, wastePct: 0 });
+  assert.ok(plain.ok && plain.notes.length === 0);
   assert.ok(errors(stairs({ steps: 0, rise: 0.17, going: 0.28, width: 1, wastePct: 0 })).steps);
 });
 test('custom shape: rectangle + triangle − circle', () => {
@@ -257,6 +262,7 @@ test('evaporation (Uno 1998): 30 °C, 50 % RH, 20 km/h', () => {
 test('evaporation is never negative and flags high risk', () => {
   assert.equal(evaporationRate(10, 30, 1, 10), 0);
   assert.equal(value(pourWeather({ airC: 35, concreteC: 36, humidityPct: 20, windKmh: 30 })).risk, 'high');
-  assert.ok(value(pourWeather({ airC: 3, concreteC: 4, humidityPct: 80, windKmh: 5 })).warnings.some(w => w.includes('5 °C')));
+  assert.ok(value(pourWeather({ airC: 3, concreteC: 4, humidityPct: 80, windKmh: 5, delivery: { min: 5, max: 35, source: 'AS 1379' } })).warnings.some(w => w.includes('AS 1379')));
+  assert.ok(!value(pourWeather({ airC: 3, concreteC: 4, humidityPct: 80, windKmh: 5 })).warnings.some(w => w.includes('AS 1379')));
   assert.ok(errors(pourWeather({ airC: 20, concreteC: 20, humidityPct: 120, windKmh: 5 })).humidityPct);
 });

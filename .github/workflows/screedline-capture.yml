@@ -94,13 +94,13 @@ jobs:
           done
           xcrun simctl ui "$BIG" appearance light
           xcrun simctl ui "$BIG" content_size accessibility-extra-extra-extra-large || true
-          maestro --device "$BIG" test -e APP_ID="$BUNDLE" -e TAG=bigtext --test-output-dir "$OUT/maestro-bigtext" check-flow.yaml || echo "big text flow failed"
+          maestro --device "$BIG" test -e APP_ID="$BUNDLE" -e TAG=bigtext -e COUNTRY=AU --test-output-dir "$OUT/maestro-bigtext" check-flow.yaml || echo "big text flow failed"
           xcrun simctl ui "$BIG" content_size large || true
           xcrun simctl shutdown "$BIG" || true
           if [ -n "$SMALL" ]; then
             boot "$SMALL"; xcrun simctl ui "$SMALL" appearance light
             xcrun simctl install "$SMALL" "$APP_B"
-            maestro --device "$SMALL" test -e APP_ID="$BUNDLE" -e TAG=se --test-output-dir "$OUT/maestro-se" check-flow.yaml || echo "small phone flow failed"
+            maestro --device "$SMALL" test -e APP_ID="$BUNDLE" -e TAG=se -e COUNTRY=US --test-output-dir "$OUT/maestro-se" check-flow.yaml || echo "small phone flow failed"
           fi
           find "$OUT" -name '*.png' -path '*takeScreenshot*' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
           cp ./*.png "$OUT/raw/" 2>/dev/null || true

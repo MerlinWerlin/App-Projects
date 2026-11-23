@@ -5,8 +5,17 @@ appId: ${APP_ID}
     clearState: true
 - extendedWaitUntil:
     visible:
-      id: "tool-slab"
+      id: "country-continue"
     timeout: 60000
+- takeScreenshot: c0-country-${TAG}
+- tapOn:
+    id: "country-${COUNTRY}"
+- tapOn:
+    id: "country-continue"
+- extendedWaitUntil:
+    visible:
+      id: "tool-slab"
+    timeout: 30000
 - waitForAnimationToEnd
 - takeScreenshot: c1-home-${TAG}
 - tapOn:

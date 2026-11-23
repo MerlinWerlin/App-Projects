@@ -1,10 +1,50 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { defaults, TOOLS, toolById, visible, type Values } from './registry.ts';
+import { defaults, TOOLS, toolById, toolsForCode, visible, type Values } from './registry.ts';
+import { COUNTRY_ORDER } from '../core/country.ts';
+import { SF } from '../ui/sf.ts';
 import { line, show } from './present.ts';
 import { addItem, jobSheet, makeJob, parseJobs, removeItem, updateJob } from '../core/jobs.ts';
 
-const runnable = TOOLS.filter(t => t.run);
+const everyCountry = COUNTRY_ORDER.map(code => ({ code, runnable: toolsForCode(code).filter(t => t.run) }));
+
+test('every icon has an SF Symbol', () => {
+  const used = new Set(TOOLS.map(t => t.icon));
+  for (const name of used) assert.ok(SF[name], `no SF Symbol for ${name}`);
+});
+
+test('country changes the catalogue and the notes', () => {
+  const us = toolById('bags', 'US')!;
+  const au = toolById('bags', 'AU')!;
+  assert.ok(us.fields.some(f => f.type === 'choice' && f.options.some(o => o.label === '80 lb')));
+  assert.ok(au.fields.some(f => f.type === 'choice' && f.options.every(o => o.label === '20 kg')));
+  // Quikrete 80 lb bags: 0.5 yd³ = 13.5 ft³ / 0.6 ft³ = 22.5 → 23 bags
+  const r = us.run!(defaults(us));
+  assert.ok(r.ok && r.headline.value === 23, JSON.stringify(r));
+  // US stair rule from the IRC, Ireland unverified → generic note, no code claim
+  const usSteps = toolById('steps', 'US')!.run!({ ...defaults(toolById('steps', 'US')!), rise: 0.22 });
+  assert.ok(usSteps.ok && usSteps.notes.some(n => n.includes('IRC')));
+  const ieSteps = toolById('steps', 'IE')!.run!(defaults(toolById('steps', 'IE')!));
+  assert.ok(ieSteps.ok && ieSteps.notes.some(n => n.includes('local building code')) && !ieSteps.notes.some(n => /NCC|IRC|Approved/.test(n)));
+  // UK blocks unverified → says so
+  const gbWall = toolById('retaining', 'GB')!.run!(defaults(toolById('retaining', 'GB')!));
+  assert.ok(gbWall.ok && gbWall.notes.some(n => n.includes('couldn’t confirm local block sizes')));
+  // AU ready-mix note names AS 1379; US does not invent one
+  const auOrder = toolById('order', 'AU')!.run!(defaults(toolById('order', 'AU')!));
+  assert.ok(auOrder.ok && auOrder.notes.some(n => n.includes('AS 1379')));
+  const usOrder = toolById('order', 'US')!.run!(defaults(toolById('order', 'US')!));
+  assert.ok(usOrder.ok && !usOrder.notes.some(n => n.includes('AS 1379')));
+  // US order: 3 yd³ in ½ yd³ steps = 3 yd³, one 10 yd³ truck
+  assert.ok(usOrder.ok && Math.abs(usOrder.headline.value - 3 * 0.764554857984) < 1e-6 && usOrder.headline.caption === 'one truck');
+});
+
+test('falls show mm per metre, or inches per foot', () => {
+  const t = toolById('falls', 'AU')!;
+  const r = t.run!(defaults(t, { preset: '1:100' }));
+  const per = r.ok ? r.outputs.find(o => o.kind === 'grade')! : null;
+  assert.deepEqual(per && show(per.kind, per.value, 'metric', per.dp), { value: '10.0', unit: 'mm/m' });
+  assert.deepEqual(per && show(per.kind, per.value, 'imperial', per.dp), { value: '0.12', unit: 'in/ft' });
+});
 
 test('every tool has a unique id and an icon', () => {
   assert.equal(new Set(TOOLS.map(t => t.id)).size, TOOLS.length);
@@ -12,10 +52,10 @@ test('every tool has a unique id and an icon', () => {
   assert.ok(TOOLS.some(t => t.free) && TOOLS.some(t => !t.free));
 });
 
-test('every tool works out of the box with its defaults', () => {
-  for (const t of runnable) {
+test('every tool works out of the box with its defaults, in every country', () => {
+  for (const { code, runnable } of everyCountry) for (const t of runnable) {
     const r = t.run!(defaults(t));
-    assert.equal(r.ok, true, `${t.id}: ${JSON.stringify(!r.ok && r.errors)}`);
+    assert.equal(r.ok, true, `${code} ${t.id}: ${JSON.stringify(!r.ok && r.errors)}`);
     if (r.ok) {
       assert.ok(Number.isFinite(r.headline.value), t.id);
       assert.ok(r.steps.length > 0, `${t.id} shows working`);
@@ -23,8 +63,8 @@ test('every tool works out of the box with its defaults', () => {
   }
 });
 
-test('every visible required number, when cleared, shows an error on that field', () => {
-  for (const t of runnable) {
+test('every visible required number, when cleared, shows an error on that field (every country, every choice)', () => {
+  for (const { runnable } of everyCountry) for (const t of runnable) {
     const base = defaults(t);
     // also try each choice value so conditional fields are covered
     const variants: Values[] = [base];
@@ -58,7 +98,7 @@ test('store-screenshot demo jobs are worked out by the real tools', async () => 
   // 9.5 × 5.2 × 0.125 = 6.175; edge ring 49.4 − 8.9 × 4.6 = 8.46 m² × 0.175 = 1.4805; × 1.05 = 8.038 m³
   assert.equal(slab.lines[0], 'Concrete to order: 8.04 m³ (includes 5 % waste)');
   const order = jobs[0]!.items.find(i => i.toolId === 'order')!;
-  assert.equal(order.lines[0], 'Order: 8.2 m³ (2 trucks)');
+  assert.equal(order.lines[0], 'Order: 8.20 m³ (2 trucks)');
 });
 
 test('custom formwork reports bad sides on the list', () => {

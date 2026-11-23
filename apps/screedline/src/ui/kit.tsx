@@ -1,26 +1,23 @@
 /** Shared controls. Big targets (56 pt), high contrast, Dynamic Type safe. Colours only from the theme. */
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { type ReactNode, useState } from 'react';
 import { InputAccessoryView, Keyboard, Platform, Pressable, StyleSheet, Text, TextInput, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 import { useApp } from '../state/AppState';
-import { FONT, RADIUS, SPACE, TARGET, type Theme } from '../theme/theme';
+import { BOLD, FONT, RADIUS, SPACE, TARGET, type Theme } from '../theme/theme';
 import { haptic } from '../native/store';
 
 export const DONE_ID = 'screedline-done';
-export type IconName = keyof typeof MaterialCommunityIcons.glyphMap;
 
-export function Icon({ name, size = 24, color }: { name: string; size?: number; color: string }) {
-  return <MaterialCommunityIcons name={name as IconName} size={size} color={color} />;
-}
+import { Icon } from './Icon';
+export { Icon };
 
 export function T({ style, children, kind = 'body', color, numberOfLines, max = 2 }: { style?: StyleProp<TextStyle>; children: ReactNode; kind?: 'title' | 'headline' | 'body' | 'label' | 'small' | 'caps'; color?: string; numberOfLines?: number; max?: number }) {
   const { theme } = useApp();
   const base: TextStyle =
     kind === 'title' ? { fontFamily: FONT.numBold, fontSize: 34, lineHeight: 38, letterSpacing: 0.2 }
-    : kind === 'headline' ? { fontFamily: FONT.bold, fontSize: 19, lineHeight: 25 }
-    : kind === 'label' ? { fontFamily: FONT.bold, fontSize: 17, lineHeight: 22 }
+    : kind === 'headline' ? { ...BOLD, fontSize: 19, lineHeight: 25 }
+    : kind === 'label' ? { ...BOLD, fontSize: 17, lineHeight: 22 }
     : kind === 'small' ? { fontFamily: FONT.body, fontSize: 15, lineHeight: 20 }
-    : kind === 'caps' ? { fontFamily: FONT.bold, fontSize: 13, lineHeight: 17, letterSpacing: 1.2, textTransform: 'uppercase' }
+    : kind === 'caps' ? { ...BOLD, fontSize: 13, lineHeight: 17, letterSpacing: 1.2, textTransform: 'uppercase' }
     : { fontFamily: FONT.body, fontSize: 17, lineHeight: 24 };
   return (
     <Text maxFontSizeMultiplier={max} numberOfLines={numberOfLines} style={[base, { color: color ?? (kind === 'small' || kind === 'caps' ? theme.ink2 : theme.ink) }, style]}>
@@ -34,20 +31,21 @@ export function Card({ children, style, alt }: { children: ReactNode; style?: St
   return <View style={[{ backgroundColor: alt ? theme.cardAlt : theme.card, borderRadius: RADIUS.m, padding: SPACE.l, borderWidth: theme.name === 'sun' ? theme.borderWidth : StyleSheet.hairlineWidth, borderColor: theme.line }, style]}>{children}</View>;
 }
 
-export function Button({ label, onPress, kind = 'primary', icon, disabled, a11y, style }: { label: string; onPress: () => void; kind?: 'primary' | 'secondary' | 'plain' | 'danger'; icon?: string; disabled?: boolean; a11y?: string; style?: StyleProp<ViewStyle> }) {
+export function Button({ label, onPress, kind = 'primary', icon, disabled, a11y, style, testID }: { label: string; onPress: () => void; kind?: 'primary' | 'secondary' | 'plain' | 'danger'; icon?: string; disabled?: boolean; a11y?: string; style?: StyleProp<ViewStyle>; testID?: string }) {
   const { theme } = useApp();
   const bg = kind === 'primary' ? theme.amber : 'transparent';
   const fg = kind === 'primary' ? theme.onAmber : kind === 'danger' ? theme.danger : theme.ink;
   const border = kind === 'secondary' ? theme.ink : kind === 'danger' ? theme.danger : 'transparent';
   return (
     <Pressable
+      testID={testID}
       accessibilityRole="button" accessibilityLabel={a11y ?? label} accessibilityState={{ disabled: !!disabled }}
       disabled={disabled}
       onPress={onPress}
       style={({ pressed }) => [{ minHeight: TARGET, borderRadius: RADIUS.m, backgroundColor: bg, borderWidth: kind === 'plain' ? 0 : 2, borderColor: kind === 'primary' ? theme.amber : border, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingHorizontal: SPACE.l, gap: SPACE.s, opacity: disabled ? 0.45 : pressed ? 0.8 : 1, transform: [{ scale: pressed ? 0.98 : 1 }] }, style]}
     >
       {icon ? <Icon name={icon} size={22} color={fg} /> : null}
-      <Text maxFontSizeMultiplier={1.6} style={{ fontFamily: FONT.bold, fontSize: 18, color: fg, flexShrink: 1, textAlign: 'center' }}>{label}</Text>
+      <Text maxFontSizeMultiplier={1.6} style={{ ...BOLD, fontSize: 18, color: fg, flexShrink: 1, textAlign: 'center' }}>{label}</Text>
     </Pressable>
   );
 }
@@ -60,7 +58,7 @@ export function DoneBar() {
     <InputAccessoryView nativeID={DONE_ID}>
       <View style={{ flexDirection: 'row', justifyContent: 'flex-end', backgroundColor: theme.cardAlt, borderTopWidth: StyleSheet.hairlineWidth, borderTopColor: theme.line, paddingHorizontal: SPACE.m, paddingVertical: SPACE.xs }}>
         <Pressable accessibilityRole="button" accessibilityLabel="Done" onPress={() => Keyboard.dismiss()} style={{ minHeight: 44, minWidth: 88, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.amber, borderRadius: RADIUS.s }}>
-          <Text style={{ fontFamily: FONT.bold, fontSize: 18, color: theme.onAmber }}>Done</Text>
+          <Text style={{ ...BOLD, fontSize: 18, color: theme.onAmber }}>Done</Text>
         </Pressable>
       </View>
     </InputAccessoryView>
@@ -125,7 +123,7 @@ export function Choice({ options, value, onChange, label }: { options: { value: 
               seg ? { flex: 1, backgroundColor: on ? theme.ink : 'transparent' } : { backgroundColor: on ? theme.ink : theme.card, borderWidth: theme.borderWidth, borderColor: on ? theme.ink : theme.fieldLine },
             ]}
           >
-            <Text maxFontSizeMultiplier={1.6} style={{ fontFamily: FONT.bold, fontSize: 16, color: on ? theme.ground : theme.ink, textAlign: 'center' }}>{o.label}</Text>
+            <Text maxFontSizeMultiplier={1.6} style={{ ...BOLD, fontSize: 16, color: on ? theme.ground : theme.ink, textAlign: 'center' }}>{o.label}</Text>
           </Pressable>
         );
       })}

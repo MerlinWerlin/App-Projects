@@ -126,7 +126,8 @@ export function pier(i: PierInput): Calc<VolumeResult> {
   return r ? ok(r, steps) : fail(e);
 }
 
-export interface StepsInput { steps: number | null; rise: number | null; going: number | null; width: number | null; wastePct: number | null }
+export interface StairRule { riser: [number, number]; going: [number, number]; twoRG?: [number, number]; code: string }
+export interface StepsInput { steps: number | null; rise: number | null; going: number | null; width: number | null; wastePct: number | null; rule?: StairRule }
 
 export function stairs(i: StepsInput): Calc<VolumeResult> {
   const e: Errors = {};
@@ -142,9 +143,16 @@ export function stairs(i: StepsInput): Calc<VolumeResult> {
     { label: 'Solid steps', working: `${m(W)} × ${m(R)} × ${m(G)} × ${fmt(tri, 0)}`, result: m3(net) },
   ];
   const notes: string[] = [];
-  // Comfortable domestic stairs: 2R + G between 550 and 700 mm (NCC 2022 Vol. 2 / Housing Provisions 11.2.2).
-  const rule = 2 * R + G;
-  if (rule < 0.55 || rule > 0.7) notes.push(`2 × rise + going is ${fmt(rule * 1000, 0)} mm. The NCC asks for 550–700 mm on stairs to buildings.`);
+  // Stair rules come from the user's country (country.ts), e.g. NCC Housing Provisions 11.2.2 in Australia.
+  const rule = i.rule;
+  if (rule) {
+    const mmr = (x: number) => fmt(x * 1000, 0);
+    const range = (r: [number, number]) => (r[0] <= 0 ? `at most ${mmr(r[1])} mm` : r[1] >= 5 ? `at least ${mmr(r[0])} mm` : `${mmr(r[0])}–${mmr(r[1])} mm`);
+    if (R < rule.riser[0] || R > rule.riser[1]) notes.push(`Rise ${mmr(R)} mm: ${rule.code} asks for ${range(rule.riser)}.`);
+    if (G < rule.going[0] || G > rule.going[1]) notes.push(`Going ${mmr(G)} mm: ${rule.code} asks for ${range(rule.going)}.`);
+    const two = 2 * R + G;
+    if (rule.twoRG && (two < rule.twoRG[0] || two > rule.twoRG[1])) notes.push(`2 × rise + going is ${mmr(two)} mm; ${rule.code} asks for ${mmr(rule.twoRG[0])}–${mmr(rule.twoRG[1])} mm.`);
+  }
   const r = addWaste(e, net, i.wastePct, steps);
   return r ? ok(r, steps, notes) : fail(e);
 }
@@ -212,7 +220,6 @@ export function truckOrder(i: TruckInput): Calc<TruckResult> {
   ];
   const notes: string[] = [];
   if (order < 3) notes.push('Small loads often carry a short-load fee. Ask the plant.');
-  notes.push('Ready-mix should be discharged within 90 minutes of batching (AS 1379). Check the docket time.');
   return ok({ order, loads, loadSizes, extra: order - v }, steps, notes);
 }
 

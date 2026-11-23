@@ -5,8 +5,17 @@ appId: ${APP_ID}
 - launchApp:
     clearState: true
 - extendedWaitUntil:
-    visible: "Numbers you can check on site"
+    visible: "Where do you work?"
     timeout: 60000
+- tapOn:
+    id: "country-AU"
+- waitForAnimationToEnd
+- takeScreenshot: 00-country-${MODE}
+- tapOn:
+    id: "country-continue"
+- extendedWaitUntil:
+    visible: "Numbers you can check on site"
+    timeout: 30000
 - waitForAnimationToEnd
 - takeScreenshot: 01-home-${MODE}
 - tapOn: "Got it"

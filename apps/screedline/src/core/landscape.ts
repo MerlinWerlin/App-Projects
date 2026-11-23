@@ -73,6 +73,8 @@ export function convert(i: ConvertInput): Calc<{ m3: number; t: number }> {
 export interface PaverInput {
   area: number | null; paverLength: number | null; paverWidth: number | null; joint: number | null; wastePct: number | null;
   beddingDepth: number | null; baseDepth: number | null; baseCompactPct: number | null;
+  /** Loose density of the local base material, t/m³ (default road base 1.6). */
+  baseDensity?: number;
 }
 export interface PaverResult {
   perM2: number; pavers: number; beddingM3: number; beddingT: number; baseM3: number; baseT: number;
@@ -95,7 +97,7 @@ export function pavers(i: PaverInput): Calc<PaverResult> {
   const count = ceilCount(net * (1 + w / 100));
   const beddingM3 = A * bd * 1.1; // screeded loose sand compacts about 10 % under the pavers
   const sand = 1.6;
-  const rb = 1.6;
+  const rb = i.baseDensity && i.baseDensity > 0 ? i.baseDensity : 1.6;
   const baseM3 = A * base * (1 + bc / 100);
   const steps: Step[] = [
     { label: 'Pavers per m²', working: `1 ÷ ((${fmt(pl * 1000, 0)} + ${fmt(j * 1000, 0)}) mm × (${fmt(pw * 1000, 0)} + ${fmt(j * 1000, 0)}) mm)`, result: fmt(perM2, 2) },

@@ -1,4 +1,3 @@
-import { AtkinsonHyperlegible_400Regular, AtkinsonHyperlegible_700Bold } from '@expo-google-fonts/atkinson-hyperlegible';
 import { BarlowCondensed_600SemiBold, BarlowCondensed_700Bold } from '@expo-google-fonts/barlow-condensed';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
@@ -7,11 +6,12 @@ import { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppStateProvider, useApp } from '../src/state/AppState';
 import { FONT } from '../src/theme/theme';
+import { CountryPicker } from '../src/ui/CountryPicker';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 export default function RootLayout() {
-  const [fontsLoaded, fontError] = useFonts({ AtkinsonHyperlegible_400Regular, AtkinsonHyperlegible_700Bold, BarlowCondensed_600SemiBold, BarlowCondensed_700Bold });
+  const [fontsLoaded, fontError] = useFonts({ BarlowCondensed_600SemiBold, BarlowCondensed_700Bold });
   return (
     <SafeAreaProvider>
       <AppStateProvider>
@@ -23,7 +23,7 @@ export default function RootLayout() {
 
 /** No route-name flash: the splash stays until settings and fonts are in (2.5 s safety net). */
 function Shell({ fontsReady }: { fontsReady: boolean }) {
-  const { loaded, theme } = useApp();
+  const { loaded, theme, prefs, setCountry } = useApp();
   const [timedOut, setTimedOut] = useState(false);
   const ready = loaded && (fontsReady || timedOut);
   useEffect(() => { if (ready) SplashScreen.hideAsync().catch(() => undefined); }, [ready]);
@@ -32,6 +32,7 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
     return () => clearTimeout(id);
   }, []);
   if (!ready) return null;
+  if (!prefs.country) return <CountryPicker firstRun onDone={setCountry} />;
   const header = {
     headerShown: true,
     headerStyle: { backgroundColor: theme.ground },
@@ -47,6 +48,7 @@ function Shell({ fontsReady }: { fontsReady: boolean }) {
       <Stack.Screen name="job/[id]" options={{ ...header, title: '' }} />
       <Stack.Screen name="checklist" options={{ ...header, title: 'Pour & curing checklist' }} />
       <Stack.Screen name="sources" options={{ ...header, title: 'Sources' }} />
+      <Stack.Screen name="country" options={{ ...header, title: 'Country' }} />
       <Stack.Screen name="unlock" options={{ presentation: 'modal', title: 'Full Unlock' }} />
     </Stack>
   );

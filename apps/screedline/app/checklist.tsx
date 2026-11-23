@@ -1,6 +1,6 @@
 import { Stack, router, useLocalSearchParams } from 'expo-router';
 import { Pressable, ScrollView, View } from 'react-native';
-import { CHECKLIST } from '../src/core/weather';
+import { checklist } from '../src/core/weather';
 import { useApp } from '../src/state/AppState';
 import { RADIUS, SPACE } from '../src/theme/theme';
 import { Button, Icon, T } from '../src/ui/kit';
@@ -11,6 +11,7 @@ export default function ChecklistScreen() {
   const { job: jobId } = useLocalSearchParams<{ job?: string }>();
   const app = useApp();
   const { theme, prefs } = app;
+  const CHECKLIST = checklist(app.country.standards, app.country.readyMix?.dischargeMinutes);
   const job = jobId ? app.jobs.find(j => j.id === String(jobId)) : undefined;
   const general = app.drafts.checklist ?? {};
   const ticked = (id: string) => (job ? !!job.checks[id] : general[id] === 1);
@@ -28,7 +29,7 @@ export default function ChecklistScreen() {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: theme.ground }} contentContainerStyle={{ padding: SPACE.l, gap: SPACE.m, paddingBottom: SPACE.xxl }}>
       <Stack.Screen options={{ title: job ? `Checklist · ${job.name}` : 'Pour & curing checklist' }} />
-      <T kind="small">{done} of {total} done{job ? ' for this job' : ''}. Based on CCAA guidance, AS 2870, AS 3600 and AS 1379.</T>
+      <T kind="small">{done} of {total} done{job ? ' for this job' : ''}. Check items against {app.country.standards.residential} and your engineer’s notes.</T>
       {CHECKLIST.map(g => (
         <View key={g.id} style={{ gap: SPACE.s }}>
           <T kind="caps" style={{ marginTop: SPACE.m }}>{g.title}</T>
