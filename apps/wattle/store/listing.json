@@ -1,0 +1,58 @@
+{
+  "locale": "en-AU",
+  "primaryLocale": "en-AU",
+  "version": "1.0.0",
+  "releaseType": "AFTER_APPROVAL",
+  "attachBuild": "latest",
+  "name": "Wattle: Sparky Calculator",
+  "subtitle": "Conduit bends & voltage drop",
+  "promotionalText": "Bending marks, voltage drop, conduit fill and three-phase power in one tough, sunlight-readable toolkit. Every answer shows its working. No subscription.",
+  "keywords": "electrician,sparky,conduit,bending,offset,saddle,voltage drop,cable,fill,ohms law,three phase,kva",
+  "description": "Wattle is the job-site calculator for licensed electricians. Big buttons you can hit with gloves on, big answers you can read in the sun, and the working shown for every result.\n\nCONDUIT BENDING\n• Offsets with multiplier, shrink and both marks measured from the end of the conduit\n• 3-point saddles (45°/22.5° or 60°/30°) with the centre-mark shift\n• 4-point saddles over boxes and trays\n• Kicks: angle from rise and run, or travel from the angle\n• 90° stub-ups with your bender's take-up, plus developed length and gain\n• A diagram of every bend with numbered marks. Millimetres, or inches to the nearest 1/16\"\n\nVOLTAGE DROP\n• The mV/A·m method with the value from AS/NZS 3008 or your cable maker\n• Or estimate from conductor size: copper or aluminium, conductor temperature, power factor and reactance\n• Single- and three-phase, pass/fail against your limit, the longest run that stays inside it, and the smallest size that passes\n\nCONDUIT FILL\n• Mix cable types and counts in one conduit\n• Fill percentage against the 53/31/40 % guide, how many of a cable fit, and a jam-ratio warning\n\nPOWER\n• Ohm's law: give any two of volts, amps, ohms and watts\n• Single- and three-phase kW, kVA, kvar and amps\n\nCABLE RUNS & DRUMS\n• Total cable to order with tails and waste\n• A cut plan across the drums you have, longest run first, with the offcut left on each\n\nALSO\n• Converter: mm² to AWG, kVA to amps, metres to feet, kW to hp, °C to °F\n• Save any result to a job, add notes and share it as text\n• Dark, light and Sunlight modes (pure black on white with heavy outlines)\n\nFREE, THEN ONE PAYMENT\nOffsets, Ohm's law, power and the converter are free. Start an optional free 7-day Trial from the Full Unlock screen to try everything. It starts only when you confirm the free trial item with Apple, and nothing is charged when it ends. After that, the Full Unlock is a single payment, not a subscription.\n\nFOR LICENSED ELECTRICIANS\nWattle is a calculation aid. Its results are estimates and do not replace AS/NZS 3000, AS/NZS 3008, the manufacturer's data or a qualified design, and it is not instructions for doing electrical work. Electrical work in Australia and New Zealand must be done by a licensed electrician. Wattle contains no AS/NZS table values: you enter those from your own copy or the cable maker's data.\n\nPRIVATE\nNo account, no ads, no tracking. Jobs stay on your iPhone. The app collects no data.",
+  "whatsNew": "Welcome to Wattle: conduit bending, voltage drop, conduit fill, power, cable runs and a converter for sparkies.",
+  "primaryCategory": "UTILITIES",
+  "secondaryCategory": "PRODUCTIVITY",
+  "copyright": "2026 Jared Bradley",
+  "privacyPolicyUrl": "https://merlinwerlin.github.io/App-Projects/wattle/privacy.html",
+  "supportUrl": "https://merlinwerlin.github.io/App-Projects/wattle/support.html",
+  "marketingUrl": "https://merlinwerlin.github.io/App-Projects/wattle/",
+  "price": "free",
+  "inAppPurchases": [
+    {
+      "productId": "com.jared797.wattle.unlock",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "Wattle Full Unlock",
+      "displayName": "Full Unlock",
+      "description": "Every calculator, for good",
+      "reviewNote": "One-time non-consumable. Open Tools > Full Unlock > Unlock (or tap Start the free trial on any locked calculator). Restore purchase is on the same screen. Unlocks 3- and 4-point saddles, kicks and stub-ups, voltage drop, conduit fill, cable runs and drums, and saving jobs. Offsets, Ohm's law, power and the converter stay free. No subscription.",
+      "price": { "territory": "AUS", "amount": "4.99" },
+      "availability": "all",
+      "reviewScreenshot": "apps/wattle/store/review/unlock.png",
+      "replaceReviewScreenshot": true
+    },
+    {
+      "productId": "com.jared797.wattle.trial7",
+      "type": "NON_CONSUMABLE",
+      "referenceName": "7-day Trial",
+      "displayName": "7-day Trial",
+      "description": "Try every calculator for 7 days. No charge.",
+      "reviewNote": "Free, user-started non-consumable trial under guideline 3.1.1. Tools > Full Unlock > Start free 7-day trial opens the Apple confirmation. Seven days are measured from the original store transaction date, including after Restore or reinstall. After it ends, the paid calculators need the separate Full Unlock purchase. Nothing is ever charged automatically.",
+      "price": { "territory": "AUS", "amount": "0" },
+      "availability": "all",
+      "reviewScreenshot": "apps/wattle/store/review/unlock.png",
+      "replaceReviewScreenshot": true
+    }
+  ],
+  "ageRating": "none",
+  "availability": "all",
+  "contentRights": "DOES_NOT_USE_THIRD_PARTY_CONTENT",
+  "reviewNotes": "Purpose and audience: Wattle is a calculator for licensed electricians and supervised apprentices: conduit bending marks, voltage drop, conduit fill, Ohm's law and power, cable runs and a unit converter. It is a calculation aid; in-app notices (first launch, under every result, and Tools > Safety & sources) say results are estimates that do not replace the Australian/NZ wiring standards, manufacturer data or a qualified design, and that the app is not instructions for doing electrical work.\n\nSetup: No account or login, no permissions. Open the Bend tab and enter a rise (for example 100 mm at 30 degrees) to see the offset marks; tap Show the working for each step.\n\nPurchases: Offsets, Ohm's law, power and the converter are free. Tools > Full Unlock has Start free 7-day trial (a separate free non-consumable named 7-day Trial that the user starts), Unlock (one-time non-consumable Full Unlock), and Restore purchase. Locked calculators show a Start the free trial button that opens the same screen. The trial uses the original transaction date, never charges automatically and is not restarted by Restore. Please test both products with the submitted app.\n\nData: Calculations run on the device. Saved jobs stay on the device and are shared only through the iOS share sheet when the user chooses. No server, analytics, advertising or tracking (App Privacy: Data Not Collected). No over-the-air code updates: the reviewed build is the build users get.\n\nRegulated and third-party content: no standards tables are reproduced; users enter their own mV/A·m values. Formulas and their sources are listed in Tools > Safety & sources. Regional differences: prices are localised; content is the same everywhere.",
+  "reviewContactFromApp": "backspin",
+  "ageRatingExtra": {
+    "socialMedia": false,
+    "socialMediaAgeRestricted": false
+  },
+  "screenshots": {
+    "APP_IPHONE_67": "apps/wattle/store/screenshots/6.9"
+  }
+}

@@ -1,0 +1,16 @@
+# Largest accessibility text size: Bend and Voltage drop must still read and fit.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+    stopApp: true
+- waitForAnimationToEnd:
+    timeout: 15000
+- takeScreenshot: 20-bigtext-bend
+- scroll:
+    optional: true
+- takeScreenshot: 21-bigtext-bend-result
+- openLink: wattle://drop
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 22-bigtext-drop

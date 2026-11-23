@@ -1,0 +1,117 @@
+name: Wattle store capture
+# Wattle on an iOS simulator (6.9-inch Pro Max), two unsigned Release builds of the same commit:
+#  A. the store build: fresh install, first-launch notice, free offset worked example, paid calculator locked,
+#     unlock sheet (store/capture/free-flow.yaml). Assertions fail the job if the app misbehaves.
+#  B. EXPO_PUBLIC_WATTLE_CAPTURE=1 at bundle time (every calculator open, example inputs pre-filled) for the App Store
+#     screenshots in dark and light, then the largest accessibility text size (store-flow.yaml, bigtext-flow.yaml).
+# Simulator only: no signing, nothing shipped.
+on:
+  workflow_dispatch:
+  push:
+    branches: ['claude/sparky-app']
+    paths: ['.github/workflows/wattle-store-capture.yml', 'apps/wattle/**']
+concurrency:
+  group: wattle-store-capture-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: macos-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: apps/wattle
+    env:
+      CI: '1'
+      EXPO_NO_TELEMETRY: '1'
+      RCT_NO_LAUNCH_PACKAGER: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Select current Xcode
+        run: |
+          set -euo pipefail
+          X=$(ls -d /Applications/Xcode*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$X/Contents/Developer"
+          xcodebuild -version
+      - name: Install
+        run: npm ci --no-audit --no-fund > "$RUNNER_TEMP/install.log" 2>&1 || { tail -100 "$RUNNER_TEMP/install.log"; exit 1; }
+      - name: Tests
+        run: npm test 2>&1 | tail -15
+      - name: Generate the iOS project
+        run: |
+          set -euo pipefail
+          npx expo prebuild --platform ios --no-install > "$RUNNER_TEMP/prebuild.log" 2>&1 || { tail -120 "$RUNNER_TEMP/prebuild.log"; exit 1; }
+          cd ios && pod install > "$RUNNER_TEMP/pods.log" 2>&1 || { tail -120 "$RUNNER_TEMP/pods.log"; exit 1; }
+      - name: Build A (store) and B (capture) unsigned Release simulator apps
+        run: |
+          set -euo pipefail
+          WORKSPACE=$(python3 -c 'from pathlib import Path; print(next(Path("ios").glob("*.xcworkspace")))')
+          SCHEME=$(basename "$WORKSPACE" .xcworkspace)
+          build() {
+            xcodebuild -workspace "$WORKSPACE" -scheme "$SCHEME" -configuration Release -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO ARCHS=arm64 ONLY_ACTIVE_ARCH=YES COMPILER_INDEX_STORE_ENABLE=NO build > "$RUNNER_TEMP/build-$1.log" 2>&1 || { grep -E "error:" "$RUNNER_TEMP/build-$1.log" | head -40; tail -160 "$RUNNER_TEMP/build-$1.log"; exit 1; }
+            APP=$(python3 -c 'import os; from pathlib import Path; print(next((Path(os.environ["RUNNER_TEMP"])/"build/Build/Products/Release-iphonesimulator").glob("*.app")))')
+            rm -rf "$RUNNER_TEMP/app-$1" && mkdir -p "$RUNNER_TEMP/app-$1" && cp -R "$APP" "$RUNNER_TEMP/app-$1/"
+          }
+          build a
+          EXPO_PUBLIC_WATTLE_CAPTURE=1 build b
+      - name: Install Maestro
+        run: |
+          set -euo pipefail
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+      - name: Functional pass (A) and store captures (B)
+        timeout-minutes: 60
+        run: |
+          set -uo pipefail
+          OUT="$RUNNER_TEMP/wattle-captures"; mkdir -p "$OUT/raw"
+          APP_A=$(ls -d "$RUNNER_TEMP"/app-a/*.app); APP_B=$(ls -d "$RUNNER_TEMP"/app-b/*.app)
+          BUNDLE=$(python3 -c 'import plistlib,sys,pathlib; print(plistlib.loads((pathlib.Path(sys.argv[1])/"Info.plist").read_bytes())["CFBundleIdentifier"])' "$APP_A")
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); xs=[x for k,v in sorted(d["devices"].items(),reverse=True) if "iOS" in k for x in v]; print(next(x["udid"] for x in xs if "Pro Max" in x["name"]))')
+          xcrun simctl list devices available | grep "$DEVICE"
+          codesign --force --deep --sign - "$APP_A"; codesign --force --deep --sign - "$APP_B"
+          xcrun simctl shutdown "$DEVICE" 2>/dev/null || true
+          PREFS="$HOME/Library/Developer/CoreSimulator/Devices/$DEVICE/data/Library/Preferences"
+          mkdir -p "$PREFS"
+          /usr/libexec/PlistBuddy -c "Add :com.apple.CoreSimulator.CoreSimulatorBridge-->wattle string $BUNDLE" "$PREFS/com.apple.launchservices.schemeapproval.plist" || true
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          xcrun simctl status_bar "$DEVICE" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --cellularMode active --cellularBars 4 --batteryState charged --batteryLevel 100 || true
+          export MAESTRO_DRIVER_STARTUP_TIMEOUT=240000
+          cd store/capture
+          FAIL=0
+          # ---- A: store build ----
+          xcrun simctl ui "$DEVICE" appearance dark
+          xcrun simctl install "$DEVICE" "$APP_A"
+          maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro-free" free-flow.yaml || { echo "::error::free-flow (store build) failed"; FAIL=1; }
+          xcrun simctl uninstall "$DEVICE" "$BUNDLE"
+          # ---- B: capture build ----
+          xcrun simctl install "$DEVICE" "$APP_B"
+          for MODE in dark light; do
+            xcrun simctl ui "$DEVICE" appearance "$MODE"
+            xcrun simctl terminate "$DEVICE" "$BUNDLE" 2>/dev/null || true
+            for TRY in 1 2; do
+              maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" -e MODE="$MODE" --test-output-dir "$OUT/maestro-$MODE" store-flow.yaml || echo "store-flow $MODE reported a failure"
+              find "$OUT/maestro-$MODE" -name "*-$MODE.png" | grep -q . && break
+            done
+          done
+          xcrun simctl ui "$DEVICE" appearance dark
+          xcrun simctl ui "$DEVICE" content_size accessibility-extra-extra-extra-large || true
+          maestro --device "$DEVICE" test -e APP_ID="$BUNDLE" --test-output-dir "$OUT/maestro-big" bigtext-flow.yaml || echo "bigtext flow reported a failure"
+          xcrun simctl ui "$DEVICE" content_size large || true
+          find "$OUT" -name '*.png' -path '*takeScreenshot*' -exec cp {} "$OUT/raw/" \; 2>/dev/null || true
+          find "$OUT" -maxdepth 3 -name '*.png' -not -path "$OUT/raw/*" -exec cp -n {} "$OUT/raw/" \; 2>/dev/null || true
+          ls -la "$OUT/raw"
+          printf 'Source: %s\nSimulator %s, Maestro. A = store build checks; B = capture build (EXPO_PUBLIC_WATTLE_CAPTURE=1).\n' "$GITHUB_SHA" "$DEVICE" > "$OUT/README.txt"
+          exit $FAIL
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wattle-store-captures
+          path: |
+            ${{ runner.temp }}/wattle-captures
+            ${{ runner.temp }}/build-a.log
+          retention-days: 14

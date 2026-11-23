@@ -1,0 +1,31 @@
+# Normal store build (no capture flag), fresh install: first-launch notice, free offset works, paid tabs locked.
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+- waitForAnimationToEnd:
+    timeout: 15000
+- assertVisible: "Made for licensed electricians"
+- takeScreenshot: 30-free-first-launch
+- tapOn: "Got it"
+- tapOn:
+    text: "Offset depth \(rise\), mm"
+- inputText: "100"
+- tapOn:
+    text: "End of conduit to obstacle, mm"
+- inputText: "1000"
+- hideKeyboard:
+    optional: true
+- scroll
+- assertVisible: "200 mm"
+- assertVisible: "1027 mm"
+- takeScreenshot: 31-free-offset-result
+- openLink: wattle://drop
+- waitForAnimationToEnd:
+    timeout: 6000
+- assertVisible: ".*part of the Full Unlock.*"
+- takeScreenshot: 32-free-drop-locked
+- tapOn: "Start the free trial"
+- waitForAnimationToEnd:
+    timeout: 6000
+- takeScreenshot: 33-free-unlock-sheet
