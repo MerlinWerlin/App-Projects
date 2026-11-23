@@ -1,0 +1,63 @@
+{
+  "expo": {
+    "name": "Eaveline",
+    "slug": "eaveline",
+    "scheme": "eaveline",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/brand/icon.png",
+    "backgroundColor": "#F4F1EA",
+    "owner": "jared797",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.jared797.eaveline",
+      "icon": "./assets/brand/icon.png",
+      "infoPlist": {
+        "NSMotionUsageDescription": "Eaveline reads your phone's tilt only while the Level screen is open, so you can measure a roof pitch by laying the phone on a rafter or sheet. Nothing leaves your phone.",
+        "CFBundleAllowMixedLocalizations": true,
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "privacyManifests": {
+        "NSPrivacyTracking": false,
+        "NSPrivacyTrackingDomains": [],
+        "NSPrivacyCollectedDataTypes": [],
+        "NSPrivacyAccessedAPITypes": [
+          { "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryUserDefaults", "NSPrivacyAccessedAPITypeReasons": ["CA92.1"] },
+          { "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryFileTimestamp", "NSPrivacyAccessedAPITypeReasons": ["C617.1"] },
+          { "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategorySystemBootTime", "NSPrivacyAccessedAPITypeReasons": ["35F9.1"] },
+          { "NSPrivacyAccessedAPIType": "NSPrivacyAccessedAPICategoryDiskSpace", "NSPrivacyAccessedAPITypeReasons": ["E174.1"] }
+        ]
+      }
+    },
+    "android": {
+      "package": "com.jared797.eaveline"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/brand/splash-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#F4F1EA",
+          "dark": { "image": "./assets/brand/splash-icon.png", "backgroundColor": "#15171A" }
+        }
+      ],
+      "expo-status-bar",
+      [
+        "expo-sensors",
+        { "motionPermission": "Eaveline reads your phone's tilt only while the Level screen is open, so you can measure a roof pitch by laying the phone on a rafter or sheet. Nothing leaves your phone." }
+      ],
+      "../../scripts/expo-plugins/withSceneLifecycle.js"
+    ],
+    "experiments": { "typedRoutes": false },
+    "newArchEnabled": true
+  }
+}

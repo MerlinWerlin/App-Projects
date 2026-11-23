@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="640" viewBox="0 0 880 640">
+  <!-- Empty jobs: a clipboard with a roof sketch, a tape measure and a pencil. Transparent background. Original artwork. -->
+  <rect x="250" y="70" width="380" height="500" rx="28" fill="#C9A46A" stroke="#121417" stroke-width="10"/>
+  <rect x="285" y="120" width="310" height="420" rx="10" fill="#FFFFFF" stroke="#121417" stroke-width="8"/>
+  <rect x="360" y="48" width="160" height="64" rx="14" fill="#2F3A45" stroke="#121417" stroke-width="10"/>
+  <!-- roof sketch -->
+  <polyline points="320,330 440,220 560,330" fill="none" stroke="#121417" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="306" y1="372" x2="574" y2="372" stroke="#121417" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 380 330 A 60 60 0 0 0 366 292" fill="none" stroke="#121417" stroke-width="6" stroke-linecap="round"/>
+  <line x1="320" y1="430" x2="520" y2="430" stroke="#B9B3A6" stroke-width="12" stroke-linecap="round"/>
+  <line x1="320" y1="470" x2="460" y2="470" stroke="#B9B3A6" stroke-width="12" stroke-linecap="round"/>
+  <!-- tape measure -->
+  <rect x="560" y="420" width="190" height="150" rx="34" fill="#FFD21F" stroke="#121417" stroke-width="10"/>
+  <circle cx="655" cy="495" r="34" fill="#121417"/>
+  <rect x="740" y="545" width="110" height="22" fill="#FFD21F" stroke="#121417" stroke-width="6"/>
+  <!-- pencil -->
+  <g transform="rotate(-38 180 420)">
+    <rect x="110" y="400" width="200" height="40" fill="#FFD21F" stroke="#121417" stroke-width="8"/>
+    <path d="M310 400 L350 420 L310 440 Z" fill="#F4E1C1" stroke="#121417" stroke-width="8" stroke-linejoin="round"/>
+    <rect x="80" y="400" width="30" height="40" fill="#E06A6A" stroke="#121417" stroke-width="8"/>
+  </g>
+</svg>

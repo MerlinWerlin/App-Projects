@@ -1,0 +1,36 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <!-- Onboarding hero: a row of roofs (hip, gable, skillion) in sheet and tile, under a big sun. Original artwork. -->
+  <defs>
+    <pattern id="ribs" width="22" height="22" patternUnits="userSpaceOnUse">
+      <rect width="22" height="22" fill="#2F3A45"/>
+      <rect width="7" height="22" fill="#3E4C59"/>
+    </pattern>
+    <pattern id="tiles" width="40" height="30" patternUnits="userSpaceOnUse">
+      <rect width="40" height="30" fill="#B5532E"/>
+      <path d="M0 29 H40 M20 0 V15 M0 15 H40 M10 15 V30 M30 15 V30" stroke="#8E3D20" stroke-width="3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="600" fill="#FFD21F"/>
+  <circle cx="960" cy="150" r="96" fill="#FFF3B0"/>
+  <!-- distant skyline -->
+  <path d="M0 470 L120 470 L120 420 L210 420 L210 450 L330 450 L330 400 L420 400 L420 470 L1200 470 L1200 600 L0 600 Z" fill="#E8BC12"/>
+  <!-- hip roof house (sheet) -->
+  <rect x="70" y="390" width="380" height="140" fill="#F4F1EA" stroke="#121417" stroke-width="8"/>
+  <path d="M40 395 L160 250 L360 250 L480 395 Z" fill="url(#ribs)" stroke="#121417" stroke-width="10" stroke-linejoin="round"/>
+  <rect x="120" y="430" width="70" height="60" fill="#121417"/>
+  <rect x="300" y="430" width="90" height="100" fill="#2F3A45"/>
+  <!-- gable house (tiles) -->
+  <rect x="540" y="370" width="300" height="160" fill="#F4F1EA" stroke="#121417" stroke-width="8"/>
+  <path d="M510 378 L690 210 L870 378 Z" fill="url(#tiles)" stroke="#121417" stroke-width="10" stroke-linejoin="round"/>
+  <rect x="660" y="430" width="60" height="100" fill="#121417"/>
+  <!-- skillion extension (sheet) -->
+  <rect x="880" y="420" width="250" height="110" fill="#F4F1EA" stroke="#121417" stroke-width="8"/>
+  <path d="M860 428 L860 352 L1150 400 L1150 428 Z" fill="url(#ribs)" stroke="#121417" stroke-width="10" stroke-linejoin="round"/>
+  <!-- gutters and downpipes -->
+  <line x1="34" y1="400" x2="486" y2="400" stroke="#121417" stroke-width="14" stroke-linecap="round"/>
+  <line x1="470" y1="400" x2="470" y2="530" stroke="#121417" stroke-width="10"/>
+  <line x1="504" y1="384" x2="876" y2="384" stroke="#121417" stroke-width="14" stroke-linecap="round"/>
+  <line x1="854" y1="434" x2="1156" y2="434" stroke="#121417" stroke-width="14" stroke-linecap="round"/>
+  <!-- ground -->
+  <rect x="0" y="528" width="1200" height="72" fill="#121417"/>
+</svg>

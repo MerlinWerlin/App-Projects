@@ -1,0 +1,8 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- Eaveline app icon: hi-vis yellow field, a bold gable roofline, the eave line under it and a pitch arc. Original artwork. -->
+  <rect width="1024" height="1024" fill="#FFD21F"/>
+  <!-- roofline -->
+  <polyline points="172,664 512,352 852,664" fill="none" stroke="#121417" stroke-width="96" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- the eave line -->
+  <line x1="132" y1="784" x2="892" y2="784" stroke="#121417" stroke-width="56" stroke-linecap="round"/>
+</svg>
