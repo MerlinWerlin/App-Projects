@@ -30,6 +30,7 @@ jobs:
       CI: '1'
       EXPO_NO_TELEMETRY: '1'
       RCT_NO_LAUNCH_PACKAGER: '1'
+      GLAZE_SIMULATOR_GROUP_TEST: '1'
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
@@ -70,6 +71,9 @@ jobs:
           set -euo pipefail
           npx expo prebuild --platform ios --no-install > "$OUT/prebuild.log" 2>&1 || { tail -120 "$OUT/prebuild.log"; exit 1; }
           cd ios && pod install > "$OUT/pods.log" 2>&1 || { tail -120 "$OUT/pods.log"; exit 1; }
+      - name: Enable shared App Group access in the simulator app and widget extension (signed builds have it)
+        if: env.REUSE_RUN == ''
+        run: ruby scripts/prepare-native-simulator-groups.rb ios
       - name: Build the Release simulator app (iOS 27 SDK, bundled JavaScript)
         if: env.REUSE_RUN == ''
         run: |
