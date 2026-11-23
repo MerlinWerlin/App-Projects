@@ -1,0 +1,512 @@
+{
+  "phase": "scout",
+  "candidateSha256": null,
+  "sources": [
+    {
+      "id": "limecut-relay",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "folding-signal-tree",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\limecut-relay\\widgets\\folding-signal-tree.f16a6e35.png",
+          "sha256": "f16a6e35ec2734c74d536eefd89334b663883be24d438d518e88a6ec91dbeecf"
+        }
+      ]
+    },
+    {
+      "id": "embertrace-chaparral",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "quail-manzanita",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\embertrace-chaparral\\widgets\\quail-manzanita.49be3811.png",
+          "sha256": "49be3811fdc48ec5b9922a9ecb1e8d6b2fd68d4964342ab8bcdeb3107f443f13"
+        }
+      ]
+    },
+    {
+      "id": "floatink-stormcrew",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "kite-rig-mender",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\floatink-stormcrew\\widgets\\kite-rig-mender.549312ad.png",
+          "sha256": "549312ad520840c1abd5a9df5c509d20ea1ba9dc281c1eed9540c2a6db679f2f"
+        }
+      ]
+    },
+    {
+      "id": "commesso-underwood",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "bullfinch-sprig",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\commesso-underwood\\widgets\\bullfinch-sprig.9732bf92.png",
+          "sha256": "9732bf92aac6826c5a61f98d75f9faf813f6c28b6255eb1fe7ec64d5a9a55b5d"
+        }
+      ]
+    },
+    {
+      "id": "spinbark-bushland",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "laughing-kookaburra",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\spinbark-bushland\\widgets\\laughing-kookaburra.411863de.png",
+          "sha256": "411863de2f9d95d77cf1ede6e0008677825ed6ef41c0bcbb2deac38b15445f3e"
+        }
+      ]
+    },
+    {
+      "id": "huskpleat-meadow",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "barn-owl",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\huskpleat-meadow\\widgets\\barn-owl.09c8c219.png",
+          "sha256": "09c8c2196fe1139e39a12d9b7108f3e34b87658a7a4640d759dfbe64fe939b8b"
+        }
+      ]
+    },
+    {
+      "id": "porcelain-umbra",
+      "origin": "Coordinator source images",
+      "selections": [
+        {
+          "optionId": "shadow-sluice",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\porcelain-umbra\\widgets\\shadow-sluice.8c3fbbb2.png",
+          "sha256": "8c3fbbb2a20a213b1c1690a699686fd7d31bb9467f47a34fae3be8f5ff37c043"
+        },
+        {
+          "optionId": "four-way-stair-knot",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\porcelain-umbra\\widgets\\four-way-stair-knot.81ec4636.png",
+          "sha256": "81ec46367ebd490879bc0b1b91efe5b867c210666c700e8c533a72ae68108b13"
+        },
+        {
+          "optionId": "folding-eclipse-theatre",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\porcelain-umbra\\widgets\\folding-eclipse-theatre.6f17b3e3.png",
+          "sha256": "6f17b3e33b4206402e2df818f0b2ffe82b3845c8e7be72d7c1f969f2c9a44e79"
+        },
+        {
+          "optionId": "hanging-rain-vault",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\porcelain-umbra\\widgets\\hanging-rain-vault.62bb4be1.png",
+          "sha256": "62bb4be1737b5fcf4b03c51130f7d2828fa313583f0353660202d24e21ca4b2f"
+        },
+        {
+          "optionId": "labyrinth-seed",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\porcelain-umbra\\widgets\\labyrinth-seed.951d63e1.png",
+          "sha256": "951d63e188b5c1c4c68104826bab3a49edee81ad762330d099413a75df4294d5"
+        }
+      ]
+    },
+    {
+      "id": "flutecut-woodland",
+      "origin": "Coordinator source images",
+      "selections": [
+        {
+          "optionId": "tawny-owl-oak",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\tawny-owl-oak.cdd74878.png",
+          "sha256": "cdd748787bc5dda2c6e9369d26022935f83412353617113f8816a71aeebef7f2"
+        },
+        {
+          "optionId": "hedgehog-bramble",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\hedgehog-bramble.13042cf5.png",
+          "sha256": "13042cf59943304892ed3bbc961fc08f7c3fa68ae8af00602764a6889e7350ad"
+        },
+        {
+          "optionId": "red-squirrel-hazel",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\red-squirrel-hazel.bf031b4d.png",
+          "sha256": "bf031b4df94e51cb0a88ed3c8794d9ae45e9c347fe750f0381a5a4a753adbf26"
+        },
+        {
+          "optionId": "foxglove-fern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\foxglove-fern.198c8622.png",
+          "sha256": "198c8622f2bf81ba0338db9c543ff9924cef75d4f3fe59161252b81c7cd9eabb"
+        },
+        {
+          "optionId": "stag-beetle-log",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\stag-beetle-log.08bdba7e.png",
+          "sha256": "08bdba7e6c46e8e3518b61f0070a62eec92b9c0cdd3a2a6e470f52369bae2616"
+        }
+      ]
+    },
+    {
+      "id": "billabong-clay",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\manifest.json",
+      "manifestSha256": "bee2a4f6461c446b4b99f3016464235299bbf758565dd3e34c13a384e34c958f",
+      "selections": [
+        {
+          "optionId": "clay-platypus",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\widget-clay-platypus.c4b8d7c0.webp",
+          "sha256": "c4b8d7c0a1de7688b76384d784fda508757ecdcb252ef01daccd7c29731f8510"
+        },
+        {
+          "optionId": "drop-progress",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\widget-drop-progress.041f02eb.webp",
+          "sha256": "041f02eb2570c6f52305a8a2f8215d35d45b19d1808283fb6268fe5e61c70751"
+        },
+        {
+          "optionId": "eucalyptus-sprig",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\widget-eucalyptus-sprig.bdfe1ee3.webp",
+          "sha256": "bdfe1ee32d602f9d71cb30a6c5b7dc2fe5685ef08b24bcc13854acb9881c954f"
+        },
+        {
+          "optionId": "river-ripples",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\widget-river-ripples.0c17f26d.webp",
+          "sha256": "0c17f26de515e36c2e1d2293e747d830266e037f1330366af414a43b624856b6"
+        }
+      ]
+    },
+    {
+      "id": "agate-apricot",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\manifest.json",
+      "manifestSha256": "1fd0424713bbda40919f08b6dbeaeca83e0430fe42c0c8eec649c577e074c9dd",
+      "selections": [
+        {
+          "optionId": "agate-slice",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\widget-agate-slice.572cbc2b.webp",
+          "sha256": "572cbc2bad59c58cf41b334c0386c22908eede4d1fe910dbb9f64c03f640de4c"
+        },
+        {
+          "optionId": "band-rhythm",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\widget-band-rhythm.633ff6d3.webp",
+          "sha256": "633ff6d36040ea8c4b0dc101f93bbc21bcc7d87adc1e4c8c7dea46406567f4bd"
+        },
+        {
+          "optionId": "crystal-progress",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\widget-crystal-progress.03a5d732.webp",
+          "sha256": "03a5d732bca7a834f51abdd0217d2d108886c2ead183eefdef77248419655aac"
+        },
+        {
+          "optionId": "druzy-center",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\agate-apricot\\v1\\widget-druzy-center.f0187cb2.webp",
+          "sha256": "f0187cb2654bdf4aa651192c09624fe096fb69581682e24aa505523a8236ad89"
+        }
+      ]
+    },
+    {
+      "id": "froggy-picnic",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\froggy-picnic\\v7\\manifest.json",
+      "manifestSha256": "657cc8ebede2c183a6d3a251bd5627bc0a44904155219d40c7d526aa073d7e29",
+      "selections": [
+        {
+          "optionId": "strawberry-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\froggy-picnic\\v7\\widget-strawberry-basket.425136d4.webp",
+          "sha256": "425136d4a99dba36529a869372f5032715772a1db3cc2f657219175e10afe01a"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\froggy-picnic\\v7\\widget-small.526a81d6.webp",
+          "sha256": "526a81d62003da57122760376297f0baa2376f179317b244519c3ba4233d77c1"
+        },
+        {
+          "optionId": "art-20261107-lily-teapot",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\froggy-picnic\\v7\\widget-lily-teapot.ec1b0dff.webp",
+          "sha256": "ec1b0dfff0b10efaa04f12281cb643677947176c20fde408250ee08730b8940e"
+        },
+        {
+          "optionId": "art-20261107-dewdrop-sandwich",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\froggy-picnic\\v7\\widget-dewdrop-sandwich.aab24fd6.webp",
+          "sha256": "aab24fd626e08ef33b1796233921b27289799a83ef8820bbb7720e6eae17bc2f"
+        }
+      ]
+    },
+    {
+      "id": "obsidian-tide",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\obsidian-tide\\v6\\manifest.json",
+      "manifestSha256": "5a8def6f5f54d6c90e7b0f07d81ec2852122dd001a244321cee1a8c548678f0e",
+      "selections": [
+        {
+          "optionId": "audit-20261101-shoreline-shell",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\obsidian-tide\\v6\\widget-audit-20261101-shoreline-shell.2f651da2.webp",
+          "sha256": "2f651da2f1b7410611a3fd6e2186b235091e4536ff29b0782fd7bea8108d63bf"
+        },
+        {
+          "optionId": "audit-20261101-tidal-eye",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\obsidian-tide\\v6\\widget-audit-20261101-tidal-eye.ceda0c08.webp",
+          "sha256": "ceda0c08d9a1d999839cb1eea530331b5a13a08bdfc6afe9ff0d7a5b4dc379c4"
+        },
+        {
+          "optionId": "foam-pebble-garden",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\obsidian-tide\\v6\\widget-foam-pebble-garden.cc81b622.webp",
+          "sha256": "cc81b6224a6f9179d61ba1759e0bc127e095046ee1d0588ab42576cbc1f93a8f"
+        },
+        {
+          "optionId": "sea-glass-wave-sculpture",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\obsidian-tide\\v6\\widget-sea-glass-wave-sculpture.a61fce4c.webp",
+          "sha256": "a61fce4c0664688e7fc2bb3b2777e9ffd5e995472896e646dbf5793400075ab8"
+        }
+      ]
+    },
+    {
+      "id": "canopy-glaze",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\canopy-glaze\\v1\\manifest.json",
+      "manifestSha256": "343de4304b5ed6a5bdd8171c415aa3d157eeb209e48e6d4872d795ae24c16e95",
+      "selections": [
+        {
+          "optionId": "jade-climber",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\canopy-glaze\\v1\\widget-jade-climber.b5f05903.webp",
+          "sha256": "b5f059039292652fa2eff06c9313e468f01d6a7713da7b4fc7eb39263b9ce54c"
+        },
+        {
+          "optionId": "leaf-relief",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\canopy-glaze\\v1\\widget-leaf-relief.21dbb394.webp",
+          "sha256": "21dbb39449bb3bb6f22f0bfd5ce65f528d9c926b25417940121cf2d340be96bf"
+        },
+        {
+          "optionId": "tail-medallion",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\canopy-glaze\\v1\\widget-tail-medallion.ea5097e9.webp",
+          "sha256": "ea5097e936e8adf7dbd6d197b982c92127764368206f81081af105ff302f5641"
+        }
+      ]
+    },
+    {
+      "id": "tapir-terracotta",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tapir-terracotta\\v1\\manifest.json",
+      "manifestSha256": "5789df094ec2f507b2bd9b3f52a0d6e11ae0cc433060b981cf76ba5a109ff076",
+      "selections": [
+        {
+          "optionId": "ceramic-tapir",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tapir-terracotta\\v1\\widget-ceramic-tapir.f0dc6a47.webp",
+          "sha256": "f0dc6a47dbbe77292ee66c93b18fdb69a57c0bd9bb51b22303ead77eae0b9ee3"
+        },
+        {
+          "optionId": "clay-pebbles",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tapir-terracotta\\v1\\widget-clay-pebbles.a1c437e8.webp",
+          "sha256": "a1c437e88692400b46ea889fc6f69c307f7906504ec0148e812aa2be1ffeabae"
+        },
+        {
+          "optionId": "sage-leaf",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tapir-terracotta\\v1\\widget-sage-leaf.4c51fed0.webp",
+          "sha256": "4c51fed0bfcf310dc34f03ead36ff98500dea6f60a5737095453f0a24e5573b6"
+        },
+        {
+          "optionId": "water-drops",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\tapir-terracotta\\v1\\widget-water-drops.7d353ecc.webp",
+          "sha256": "7d353ecced23edb7a0a1eddba32108e5751e7944c1dd34cb548e0dc86ba73084"
+        }
+      ]
+    },
+    {
+      "id": "billabong-clay",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\manifest.json",
+      "manifestSha256": "cdf761ab0c851ea8ef371db7e8253641c3356c7f763a3cddd1605e9cf0968e02",
+      "selections": [
+        {
+          "optionId": "clay-platypus",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-clay-platypus.c4b8d7c0.webp",
+          "sha256": "c4b8d7c0a1de7688b76384d784fda508757ecdcb252ef01daccd7c29731f8510"
+        },
+        {
+          "optionId": "eucalyptus-sprig",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-eucalyptus-sprig.bdfe1ee3.webp",
+          "sha256": "bdfe1ee32d602f9d71cb30a6c5b7dc2fe5685ef08b24bcc13854acb9881c954f"
+        },
+        {
+          "optionId": "river-ripples",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-river-ripples.0c17f26d.webp",
+          "sha256": "0c17f26de515e36c2e1d2293e747d830266e037f1330366af414a43b624856b6"
+        },
+        {
+          "optionId": "clay-water-lily",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-clay-water-lily.20f56c24.webp",
+          "sha256": "20f56c248e8907d123943276f2a97beedc174a3ec0f2af8c3032459cb40bac19"
+        },
+        {
+          "optionId": "clay-river-turtle",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-clay-river-turtle.d578e68c.webp",
+          "sha256": "d578e68ca9da19d1ce4c9a6d441cf210d8c258737017ef34149666507e62cccc"
+        }
+      ]
+    },
+    {
+      "id": "agate-apricot",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\manifest.json",
+      "manifestSha256": "f02f31499ab10719bde85bf1a13e89892cb2e6b824723e54419a96620f3e4caa",
+      "selections": [
+        {
+          "optionId": "agate-slice",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-agate-slice.572cbc2b.webp",
+          "sha256": "572cbc2bad59c58cf41b334c0386c22908eede4d1fe910dbb9f64c03f640de4c"
+        },
+        {
+          "optionId": "band-rhythm",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-band-rhythm.633ff6d3.webp",
+          "sha256": "633ff6d36040ea8c4b0dc101f93bbc21bcc7d87adc1e4c8c7dea46406567f4bd"
+        },
+        {
+          "optionId": "druzy-center",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-druzy-center.f0187cb2.webp",
+          "sha256": "f0187cb2654bdf4aa651192c09624fe096fb69581682e24aa505523a8236ad89"
+        },
+        {
+          "optionId": "scalloped-agate-bowl",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-scalloped-agate-bowl.31ce98ab.webp",
+          "sha256": "31ce98ab7a6ef4864d0e2f3e2f3451616eb8091efafa956219fe9b553567996c"
+        },
+        {
+          "optionId": "agate-shell-carving",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\agate-apricot\\v2\\widget-agate-shell-carving.1a70b23b.webp",
+          "sha256": "1a70b23b392bb788ed36787126986d4d58910763a0b62239d7ac9a85e183e125"
+        }
+      ]
+    },
+    {
+      "id": "froggy-picnic",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\froggy-picnic\\v8\\manifest.json",
+      "manifestSha256": "174a75d0b089b0fb40076b7225d2ea8ec181e089d6385348e5564e8863fd10b1",
+      "selections": [
+        {
+          "optionId": "strawberry-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\froggy-picnic\\v8\\widget-strawberry-basket.425136d4.webp",
+          "sha256": "425136d4a99dba36529a869372f5032715772a1db3cc2f657219175e10afe01a"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\froggy-picnic\\v8\\widget-small.526a81d6.webp",
+          "sha256": "526a81d62003da57122760376297f0baa2376f179317b244519c3ba4233d77c1"
+        },
+        {
+          "optionId": "art-20261107-lily-teapot",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\froggy-picnic\\v8\\widget-lily-teapot.ec1b0dff.webp",
+          "sha256": "ec1b0dfff0b10efaa04f12281cb643677947176c20fde408250ee08730b8940e"
+        },
+        {
+          "optionId": "art-20261107-dewdrop-sandwich",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\froggy-picnic\\v8\\widget-dewdrop-sandwich.aab24fd6.webp",
+          "sha256": "aab24fd626e08ef33b1796233921b27289799a83ef8820bbb7720e6eae17bc2f"
+        },
+        {
+          "optionId": "lily-picnic-chair",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\froggy-picnic\\v8\\widget-lily-picnic-chair.5c9f5375.webp",
+          "sha256": "5c9f537508fab278bfe2b3dd05474c755546eab20bdf95eedcc0a386ac4ccdee"
+        }
+      ]
+    },
+    {
+      "id": "obsidian-tide",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\obsidian-tide\\v7\\manifest.json",
+      "manifestSha256": "58c6a7963392380f7b158e212d36381d291cd94d1ae657ef5168f7a82df9e525",
+      "selections": [
+        {
+          "optionId": "audit-20261101-shoreline-shell",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\obsidian-tide\\v7\\widget-audit-20261101-shoreline-shell.2f651da2.webp",
+          "sha256": "2f651da2f1b7410611a3fd6e2186b235091e4536ff29b0782fd7bea8108d63bf"
+        },
+        {
+          "optionId": "audit-20261101-tidal-eye",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\obsidian-tide\\v7\\widget-audit-20261101-tidal-eye.ceda0c08.webp",
+          "sha256": "ceda0c08d9a1d999839cb1eea530331b5a13a08bdfc6afe9ff0d7a5b4dc379c4"
+        },
+        {
+          "optionId": "foam-pebble-garden",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\obsidian-tide\\v7\\widget-foam-pebble-garden.cc81b622.webp",
+          "sha256": "cc81b6224a6f9179d61ba1759e0bc127e095046ee1d0588ab42576cbc1f93a8f"
+        },
+        {
+          "optionId": "sea-glass-wave-sculpture",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\obsidian-tide\\v7\\widget-sea-glass-wave-sculpture.a61fce4c.webp",
+          "sha256": "a61fce4c0664688e7fc2bb3b2777e9ffd5e995472896e646dbf5793400075ab8"
+        },
+        {
+          "optionId": "tidal-sea-urchin",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\obsidian-tide\\v7\\widget-tidal-sea-urchin.c4001526.webp",
+          "sha256": "c40015268fc5f4adfae0c63efb3622783f448c975ed51ac63a39e092d61a39c3"
+        }
+      ]
+    },
+    {
+      "id": "canopy-glaze",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\canopy-glaze\\v2\\manifest.json",
+      "manifestSha256": "b1d03dc25acc90433f3b6daae2f51a90c5d6088b122120a3e5cb00f169dbc8dd",
+      "selections": [
+        {
+          "optionId": "jade-climber",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\canopy-glaze\\v2\\widget-jade-climber.b5f05903.webp",
+          "sha256": "b5f059039292652fa2eff06c9313e468f01d6a7713da7b4fc7eb39263b9ce54c"
+        },
+        {
+          "optionId": "leaf-relief",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\canopy-glaze\\v2\\widget-leaf-relief.21dbb394.webp",
+          "sha256": "21dbb39449bb3bb6f22f0bfd5ce65f528d9c926b25417940121cf2d340be96bf"
+        },
+        {
+          "optionId": "tail-medallion",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\canopy-glaze\\v2\\widget-tail-medallion.ea5097e9.webp",
+          "sha256": "ea5097e936e8adf7dbd6d197b982c92127764368206f81081af105ff302f5641"
+        },
+        {
+          "optionId": "canopy-orchid",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\canopy-glaze\\v2\\widget-canopy-orchid.8b56ff54.webp",
+          "sha256": "8b56ff54593d721850035e15fc7896bd11fbbe2395689c7baf6898b28a84ae21"
+        },
+        {
+          "optionId": "jade-tree-frog",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\canopy-glaze\\v2\\widget-jade-tree-frog.cc0bb31b.webp",
+          "sha256": "cc0bb31b7dc3b684af542b186377024ef3574457512fe84f238b9035d0a25bd5"
+        }
+      ]
+    },
+    {
+      "id": "tapir-terracotta",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tapir-terracotta\\v2\\manifest.json",
+      "manifestSha256": "390e70856856b4f505bd104cce55ee37025aace7cb14d14ea4a8f0ec9fe4fd27",
+      "selections": [
+        {
+          "optionId": "ceramic-tapir",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tapir-terracotta\\v2\\widget-ceramic-tapir.f0dc6a47.webp",
+          "sha256": "f0dc6a47dbbe77292ee66c93b18fdb69a57c0bd9bb51b22303ead77eae0b9ee3"
+        },
+        {
+          "optionId": "clay-pebbles",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tapir-terracotta\\v2\\widget-clay-pebbles.a1c437e8.webp",
+          "sha256": "a1c437e88692400b46ea889fc6f69c307f7906504ec0148e812aa2be1ffeabae"
+        },
+        {
+          "optionId": "sage-leaf",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tapir-terracotta\\v2\\widget-sage-leaf.4c51fed0.webp",
+          "sha256": "4c51fed0bfcf310dc34f03ead36ff98500dea6f60a5737095453f0a24e5573b6"
+        },
+        {
+          "optionId": "speckled-clay-pitcher",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tapir-terracotta\\v2\\widget-speckled-clay-pitcher.4760e44a.webp",
+          "sha256": "4760e44a1d30b2cdb179e8c27c8061a9f51e08b963550796aaeaa2f4740f7bf1"
+        },
+        {
+          "optionId": "ceramic-bromeliad",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\tapir-terracotta\\v2\\widget-ceramic-bromeliad.93e6cd9a.webp",
+          "sha256": "93e6cd9a72eea941cbbaa6a68e32149bf0bfdcc9f31f057ac721473675fe3f68"
+        }
+      ]
+    }
+  ],
+  "ownSourceArtworks": 6,
+  "coordinatorSourceArtworks": 10,
+  "actualSelectorArtworks": 53,
+  "scope": "Read-only existing production/source and app-selected images. No external input to generation. Cache origins are labelled per row.",
+  "visualReview": "Actual whole production art and selector boards inspected. No comparator files used as generation input."
+}

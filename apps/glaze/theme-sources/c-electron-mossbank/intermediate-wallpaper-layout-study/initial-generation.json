@@ -1,0 +1,34 @@
+{
+  "selected": false,
+  "reason": "Broad primary liverwort reaches side edges;foreground pollen and seed need more crop breathing room.",
+  "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.6b7e89f2788e.png",
+  "sourceSha256": "6b7e89f2788edad2c061206ac4c38e6767ebe99fad859856373707137974779a",
+  "prompt": "Use case: stylized-concept. GLAZE ELECTRON MOSSBANK. A tangible NATURE microhabitat imagined as a SCANNING ELECTRON MICROGRAPH,secondary-electron detector image language. Medium: neutral COOL GREYSCALE microscopy signal,exceptionally crisp fine stochastic surface GRANULES,tiny pores,pitted cell walls and minute cuticular wrinkles. Raised edges give a narrow bright secondary-electron signal;hollow pores are deep grey/black;gently graded local detector tones describe organic relief. Almost unlimited depth of field: every near/far body part sharply resolved,with a tiny authentic detector-grain texture. The anatomy feels naturally grown,soft/woody/chitinous where appropriate,not another fabricated sculpture. The visible medium is a high-magnification electron image,not natural-light macro photography. No glossy speculars,chrome,silver metal,ceramic,concrete,foam model,crystal,paper,ink hatching,carved craft,neon light,colour bands,projected stripes,fluorescence,transmitted blue/amber fields,orientation maps,X-ray bones or artificial furry plush. Black-grey-white detector signal only,no object pigment or coloured shadows. Fictional artistic electron image of an invented but nature-led ecosystem,not a real measured microscopy dataset. No labels,scale bars,coordinates,text,numerals,clock faces,readings,graphs,logos or watermark. Asset: ONE opaque portrait phone wallpaper1290x2796. Use five own selected original artwork images as identity references. ONE connected low moss-bank microhabitat: liverwort thallus grows across a soft granular bank,the moss capsule rises modestly behind,a globular springtail walks beside it,the split-pollen capsule rests in a shallow hollow and the two-turn coiled-awn seed lies across the foreground. Preserve exact five identities and grayscale secondary-electron surface signal. All FIVE complete focal subjects within horizontal10%to90%andvertical46%to78%ofcanvasheight. IMPORTANT upper43%quiet very dark muted aubergine detector field,no plants/antennae/awn loops there;bottom20%quiet dark granular ground. Habitat substrate has the same neutral-grey electron signal,not coloured dirt or natural sunlight. All limbs,teeth,awn endpoints and leaves have breathing room. Ground can bleed,primary nature subjects may not. One continuous habitat,not collage/specimen sheet. No extras,text,UI,frame or scale marks.",
+  "internalArtworkReferences": [
+    {
+      "id": "split-pollen",
+      "sourceImage": "sources/split-pollen.e5d68d47bdf3.png",
+      "sha256": "e5d68d47bdf3b0dba28c5bb274af85c9354a52516769ad4f7ffd1ca572a3accf"
+    },
+    {
+      "id": "coiled-awn-seed",
+      "sourceImage": "sources/coiled-awn-seed.2b05954c2996.png",
+      "sha256": "2b05954c2996fdfd53b252a4219497af4f080d0cd443865cb71aade6e48663c6"
+    },
+    {
+      "id": "moss-capsule",
+      "sourceImage": "sources/moss-capsule.31ebf3c1c92e.png",
+      "sha256": "31ebf3c1c92e857d1bed09b7cc9c3676b713400e2d24701d0737e4ef0140fdaf"
+    },
+    {
+      "id": "liverwort-thallus",
+      "sourceImage": "sources/liverwort-thallus.662cf370fb2b.png",
+      "sha256": "662cf370fb2b6697b55b0cd8192e209a7c70d7c564276e3df95bd2fad4600309"
+    },
+    {
+      "id": "springtail",
+      "sourceImage": "sources/springtail.d9e6086feca6.png",
+      "sha256": "d9e6086feca65bcf3f31418c62c4438f71a855710d1400f39add06b1aa4caa29"
+    }
+  ]
+}

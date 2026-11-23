@@ -1,0 +1,26 @@
+{
+  "id": "kingfisher",
+  "label": "Mosswing Kingfisher",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. GLAZE MOSSWAKE GLADE, one independent pure-art asset on TRUE transparent alpha. Our own accepted moss badger reference supplies only the living botanical material, palette and refined natural macro daylight. Create a distinctly different familiar natural subject. Entire sculptural body constructed from dense LIVING CUSHION MOSS: tiny clearly resolved green star-rosette shoots, minute overlapping leaves and short leafy fernlike tips, moist plant tissue. Pale warm-grey REINDEER LICHEN defines restrained natural highlights and small markings. Forest/olive/chartreuse green moss cushions with occasional sparse short reddish-brown sporophyte stems/tiny oval capsules. Real leafy plant texture, not fur/felt/artificialturf, gills/mycelium, long woodshavings, cork/stone/metal/glass/paper or 3Dtoy. All anatomy arises from botanical material, no real animal hidden beneath. Real familiar anatomy and clear entire silhouette first, readable at85px. Restrained moist highlights, no glitter/glow. Whole subject and EVERY extremity inside central66% square, ample truealpha margins all sides, true transparency through major gaps. No ground/lawn/base/rocks/scenery/floor, exterior shadow/haze or opaque background/rectangle/panel/frame/collage. No labels/text/signatures/numerals/logos/clock/dial/battery/calendar/UI/readings. SUBJECT: One complete familiar KINGFISHER perched on a SHORT NATURAL FORKED WOODEN TWIG. Compact round head/body, long straight dagger beak facing left, small dark eye, short rounded tail, folded tapered wings and TWO coherent short gripping feet on twig. Dense moss forms feathers/body with pale lichen throat and small breast patch, deeper forest-green wing cushions, no real blue/orange feathers. Few tiny sporophyte capsules on upperback only. Entire long beak, both toes, tail, twig ends and capsule tips wholly inside ample alpha margins. The twig is natural subordinate support, no scenery.",
+  "source": "sources/kingfisher.6a88c16455db.png",
+  "sourceSha256": "6a88c16455dbd2aa6b60c972d0099b783f46efceff5fd1a0c8a277128d3b3add",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/kingfisher.aa10e8fd4706.png",
+  "sha256": "aa10e8fd4706c782676b578433fa4427b11973dea55a1f36c21a200f1299484f",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/badger.d804513a49f7.png",
+      "sha256": "d804513a49f7803072a2dacd9928e6170dbecf293c496eed28df7bd8251b6365",
+      "purpose": "Own accepted moss badger supplies living star-shoot/lichen material, palette and light only; independent different natural subject."
+    }
+  ]
+}

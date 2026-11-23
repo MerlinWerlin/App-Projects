@@ -1,0 +1,31 @@
+{
+  "id": "wallpaper",
+  "prompt": "Use case: precise-object-edit. Edit ONLY this own enlarged Stratagrain Saltmarsh wallpaper to repair ACTUAL LEFT/RIGHT TIDAL-BANK CROPPING. Keep portrait aspect, deep blue-green field #1F383E, broad bonded copper/brass/silver/dark metal strata, SAME whole curlew with long downcurved bill/two legs/toes, SAME small plover with whole feet/tail, SAME whole seal/flippers/whiskers, same tall sedge/sea-lavender/samphire and coherent flowing natural tidal channel. Recompose the ENTIRE connected habitat so its COMPLETE organic tidal-bank perimeter is visible and occupies about84percent full canvas WIDTH, with8percent matching quiet background on BOTH sides. Reconstruct the missing natural left and right ends of the bank; neither bank, bird, bill, toe, flipper, whisker nor plant tip may touch or cross an image edge. Keep taller portrait presence: habitat extends from about26percent to77percent HEIGHT, plants naturally taller if necessary, whole curlew still tall, no squashing or animal distortion. Keep all five selected standalone artwork assets untouched; output WALLPAPER ONLY. Do not return to a tiny island; do not add fauna, vase, frame, text, UI, borders or plaque. This is a specific real-crop correction, preserve material and familiar natural anatomy.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.47c9aa18.png",
+  "sourceSha256": "47c9aa18daeafaab3f07a37de716da06459d5f924a4710cbcaf2b0f5216a9253",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "9e0bfa77bc36b7038351908795a7eaa33f745ec345aa087a4d77f06728494b77",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/second-audit/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/second-audit/previous-selected-wallpaper.png",
+    "sha256": "bf0688c5f01cc373c73de8e239dbdb6da9f3c31a2ce260167b2328126f921751"
+  },
+  "generationReferences": [
+    {
+      "order": 1,
+      "file": "qa/second-audit/enlargement-first-cropped.png",
+      "sha256": "426e62f87ec737980fb192360d6f00327b21800fe8565953c3e883ac86fad47d",
+      "role": "Own first enlarged wallpaper EDIT TARGET; actual side-bank cropping corrected only."
+    }
+  ]
+}

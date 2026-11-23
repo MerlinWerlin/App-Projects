@@ -1,0 +1,30 @@
+{
+  "referenceType": "Five prior original built-in imagegen assets from this same theme; no external references.",
+  "references": [
+    {
+      "id": "split-cowl-sentinel",
+      "sourceImage": "sources/split-cowl-sentinel.0be1d52928d7.png",
+      "sha256": "0be1d52928d778b76c3819b9da1e5d40ef0c8276751a22f108e0ac14653a6e6d"
+    },
+    {
+      "id": "mantle-bastion",
+      "sourceImage": "sources/mantle-bastion.0c3a7828f87e.png",
+      "sha256": "0c3a7828f87e805cc3b4795c33da736e7e7fd1896f463f21ac768270d17df79d"
+    },
+    {
+      "id": "latch-keeper",
+      "sourceImage": "sources/latch-keeper.f3cffc9d9898.png",
+      "sha256": "f3cffc9d98985e5301d04db9ba9c31a954a0fef2357fb7715aeaf2faccdd2ba9"
+    },
+    {
+      "id": "braid-crawler",
+      "sourceImage": "sources/braid-crawler.0eb87dab075b.png",
+      "sha256": "0eb87dab075b16793df9502988aac14321bf7d8ab5cd9c34141eddc4cf120a8c"
+    },
+    {
+      "id": "sailwatcher",
+      "sourceImage": "sources/sailwatcher.7aa921f67f4b.png",
+      "sha256": "7aa921f67f4bbfe8c1682e2f7f9dc3dc0426e4875a5c5eeee38128936d5b549b"
+    }
+  ]
+}

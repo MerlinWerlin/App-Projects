@@ -1,0 +1,18 @@
+{
+  "id": "harbour-seal",
+  "prompt": "STRATAGRAIN SALTMARSH, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL saltmarsh flora/fauna with natural recognizable anatomy FIRST. Unmistakable physical MOKUME-GANE mixed-metal craft: COPPER, PALE BRASS, SILVER and DARK SHAKUDO alloy sheets heat/pressure BONDED into ONE CONTINUOUS METAL LAMINATE, forged and cut back to reveal a FEW BROAD FLOWING WAVY alternating layer contours and occasional deformed ring-eye sections. Band boundaries are FLUSH actual interleaved metal layers through the solid body, NOT carved/additive channels, raised wire or painted surface woodgrain. Thin curved cut lips expose a STACKED alternating colored-metal cross-section through thickness. Soft satin metallic highlights differ across copper/silver/brass bands, tiny restrained hand-planishing ripples and subtle dark-alloy oxidation, no mirror chrome bling. Low shallow forged relief with strong natural silhouettes. NO carved wood/pores/fibers, stone/gem veins, ceramic marbling/glaze, smooth single-metal casting, separate flush silver inlay stripes, woven metallic warp/weft, goldwire embroidery/coil tubes, glass/enamel, jewellery/clasp/bail/gems. Natural subjects remain clear; broad metal strata, not allover decorative filigree. Whole complete subject inside central64percent, generous18percent TRUE ALPHA margin on every side. All exterior and open anatomy gaps genuinely transparent; no ground/scenery/plinth/backing plaque/sheet/frame/badge/ring, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. All feet/toes/bills/tails/leaves/flower tips whole, no clipped extremity. One familiar natural harbour seal rests in a relaxed left-facing three-quarter pose, coherent rounded head with modest eyes/nose/whiskers, smooth tapered body, TWO short front flippers and coherent paired rear flippers, no four mammal legs or giant toy eyes. One small complete bladderwrack frond curled beside front flipper. Whole seal is low forged copper/brass/silver/dark-alloy laminate with a FEW BROAD flowing interleaved wavy metal strata and occasional ring-eye layers across broad flank, cross-cut stacked layers at flipper lips. No literal fur, speckled paint, gemstone skin or wood sculpture. Whole face/whiskers/flipper and plant tips inside margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/harbour-seal.d85a4e16.png",
+  "sourceSha256": "d85a4e1694e2e29f44673ee5abb1d0127437837e7f5c32803b4ddecc7a3e6537",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/harbour-seal.a6c44e12.png",
+  "sha256": "a6c44e120828752a089c62da2d94eb2bfdd911d49a3ca93ad02078fe7154caba",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,124 @@
+{
+  "theme": "tinwake-understory",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Thin cut tin-sheet repouss\u00c3\u00a9 and chasing, with uneven hammer dimples, raised veins, folded rims and oxidised recesses",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Composition adjustment for this same Tinwake Understory wallpaper. Preserve the same hammered pewter/blue-patina thin tin-sheet fern, salamander on leaf, snail, woodpecker/birch and fungi/woodlouse woodland group and all fine chased/punched metallic details. SCALE DOWN the ENTIRE CONNECTED WOODLAND GROUP substantially, keeping ALL parts including the fern's farthest left tips inside CENTRAL62% OF CANVAS WIDTH and BETWEEN34% AND75% HEIGHT. None of the plants, leaf edges, tails or feet may touch any image edge. Add/continue the same quiet dark oxidised blue tin background around the group; upper30% and bottom22% completely quiet ground. One portrait phone wallpaper; this smaller central arrangement must keep every natural subject whole after a narrower1290x2796 phone crop and shorter750x1334 crop. Preserve the soft shallow raised metal character, exact colours and natural anatomy, no new motifs or text, no frame, plate, border, rectangle or visible inset. Change composition scale/position only; do not cut off the group to make it fit.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.8549cfa7.png",
+      "sourceSha256": "8549cfa73adba42f87899b97f6ec8e5354fd099599688ecc6cae8bcf1a1ab987",
+      "sourceDimensions": [
+        941,
+        1672
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "0137bd14a67ddabaf60c3b3ffb87c7bf415e49e9b721c416777805e3b06ce111",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wallpaper.original.0184e619.png",
+        "sha256": "0184e61907e2309cf483bffe2a8be79277bea23314547a4b0497f70337ff5c78"
+      }
+    },
+    {
+      "id": "fern-fiddlehead",
+      "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject FERN FIDDLEHEAD: one mature graceful FERN FROND arches diagonally from low left to upper right, about7 pairs of distinct lobed leaflets along a narrow midrib; each thin tin leaflet has shallow raised lengthwise vein and tiny punch dimples, crisp folded edge, blue-green patina in recesses. At its base one young fiddlehead rises as a tightly curled natural spiral, plus one tiny unrolling side leaf. A narrow open common stem/root tip, NO pot or soil clump. The arch and curled fiddlehead form a clear airy botanical silhouette. Distinct individual irregular leaflets, no generic feather or symmetrical metal wreath. Complete every leaflet tip, outer frond tip, curled spiral and root end, substantial alpha around whole group.",
+      "tool": "built-in image_gen",
+      "source": "sources/fern-fiddlehead.d2d01e0b.png",
+      "sourceSha256": "d2d01e0ba4f4c565408b7ef93c6cbb42e0feaccc5e5459a2721c398e221e63f0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/fern-fiddlehead.ede17d73.png",
+      "sha256": "ede17d73ef5f321409bd61b1854864705c219a6ad0183a68b03580672656245c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "spotted-salamander",
+      "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject SPOTTED SALAMANDER: one natural salamander seen in an elegant slightly elevated side view, head faces left, body curves into a shallow S, tapering long tail curls gently upward to the right. FOUR clearly jointed short legs with fine separated toes, small natural dark eye and rounded muzzle, smooth low body silhouette. Blue-black oxidised tin body with two irregular rows of small antique-brass raised spots and cool silver chased skin texture, subtle metal facets. It walks over ONE small folded lobed fallen leaf with narrow raised veins, leaf itself thin pewter sheet rather than ground rectangle; open gaps around legs and below belly, no thick sculpture pedestal. Complete tail tip, every toe, head and leaf tip centrally contained. Distinct low horizontal silhouette, not lizard dragon, mechanical toy, enamel pin, jewellery or stuffed animal.",
+      "tool": "built-in image_gen",
+      "source": "sources/spotted-salamander.3e19498b.png",
+      "sourceSha256": "3e19498bf894ab2698dae29986e4d716ad17342087dcc0a7442acd9d05913765",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/spotted-salamander.4b700601.png",
+      "sha256": "4b70060135a4673bbbbf66f07ea674f0e9ec5da5477b9759c1f7290bf6a7570b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "snail-bracken",
+      "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject SNAIL BRACKEN: one natural garden SNAIL travelling right, long low body, two long upper feelers and two tiny lower feelers, a large side-facing coiled spiral shell raised shallowly from thin tin sheet. The shell whorl has fine radial chased lines and deliberately uneven hammer dimples, pewter with restrained antique-brass rim and blue oxidation, no glossy jewel finish. Above its shell ONE small arch of bracken with5 pairs of short distinct leaflets curves from low left over the shell, without touching either feeler. Snail sits on one narrow curled fallen leaf blade; transparent negative space between fern, shell and body. A compact broad rounded asymmetrical vignette. Entire antennae, tail, shell whorl, fern/leaf tips complete within alpha margins. Natural animal, no home/cargo/costume, no thick pedestal or extra animals.",
+      "tool": "built-in image_gen",
+      "source": "sources/snail-bracken.c2dd41b7.png",
+      "sourceSha256": "c2dd41b72e35e149f1e05371c57707d00a5030698b1d91a9eb8c87b4fa630829",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/snail-bracken.5c8d44af.png",
+      "sha256": "5c8d44af0126c3a7de200bc6713b3c95533e8649cb3c3539e5c8c5b33379c350",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "woodpecker-birch",
+      "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject WOODPECKER BIRCH: one natural black-and-white WOODPECKER with a restrained small rust-red crown patch, clinging upright to the left side of ONE short diagonally rising BIRCH branch. Bird in clear side profile faces upper left, long pointed beak, small dark eye, folded wing with distinct pale bars, long stiff tail braced against bark, TWO clawed feet gripping the branch. All bird and branch are thin chased hammered tin relief, with pale silver bark sections, tiny curled tin bark rims, blue-black recesses and two small moss patina patches. Short branch ends fully visible, one twig with TWO delicate thin tin leaves extends right; no huge trunk or full scenery. Tall narrow asymmetrical bird-and-branch silhouette, natural anatomy, not toy/clockwork/jewellery. Whole beak, head, wing, tail, feet, bark ends and twig leaf tips inside generous alpha margin.",
+      "tool": "built-in image_gen",
+      "source": "sources/woodpecker-birch.9ebe2b1c.png",
+      "sourceSha256": "9ebe2b1ca05f44f5b6b2c8db5862d15dba8b21e50232345e933ddb6c1b9df75e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/woodpecker-birch.f579d58d.png",
+      "sha256": "f579d58d0fffbb8e8b2d47e85e3b66efe94373073f818bd7a7be0b3acf8c7500",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "toadstool-woodlouse",
+      "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject TOADSTOOL WOODLOUSE: three different-height natural TOADSTOOLS form an asymmetric grove. Left largest cap a broad shallow umbrella with a curled uneven rim, centre-right medium cap more conical, far-right one tiny closed button. Cool hammered tin stems with chased gills visible under largest cap, restrained rusty patina caps with irregular raised pewter spots and punch dimples. A small WOODLOUSE with7 visible overlapping segmented back plates, tiny antennae and fine legs walks beneath the arch between two stems; recognisable land isopod, not machine or jewellery. Two tiny curled moss-patina leaves connect the bases, no soil, ground disc or rectangular scene. Broad low-to-tall triangular composition, open negative space beneath caps/around stems, thin folded sheet edges throughout. All caps, full stems, woodlouse legs/feelers, leaf tips complete and centrally contained. No faces or eyes on mushrooms.",
+      "tool": "built-in image_gen",
+      "source": "sources/toadstool-woodlouse.991a884a.png",
+      "sourceSha256": "991a884a86b7a7dc4915fb11b279fe4e3df3341b078b2315a78e6e98e511814e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/toadstool-woodlouse.84443267.png",
+      "sha256": "844432670618c06de6cdb4b637a165a35132e9086e7fac764de7d8ea054617ee",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

@@ -1,0 +1,26 @@
+{
+  "id": "ribbon-armadillo",
+  "label": "Ribbon Armadillo",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One independent square transparent Glaze pure-art asset. EMULSION ROOKERY, physical wildlife sculptures made entirely from continuous perforated PHOTOGRAPHIC CELLULOID FILM STRIPS. Our own ibis reference supplies only the material, palette and restrained macro lighting; create a wholly different subject. Thin springy translucent strips with clearly visible RECTANGULAR EMULSION FRAME WINDOWS and paired regular rows of small SQUARE SPROCKET HOLES along every major strip edge. Petrol-blue, teal, soft coral and copper dye transparencies, subtle photographic grain inside each window, thin amber-clear edges with restrained glossy reflections. Frame windows contain abstract dye gradients only, no pictures/writing/codes. Strips bend in crisp long loops, overlapping plates and pleats to CONSTRUCT the entire body; no ordinary skin or solid toy decorated with a film pattern. Genuine alpha through gaps and perforations. No fabric/feathers, fuzzy fibres, paper quilling, metal, glass, wet cellulose, smooth plastic toys, cinema equipment or standalone reels. Whole subject and all projecting extremities inside central70%, ample transparent space on all sides. No floor, exterior cast shadow, haze, opaque backing panel, border, collage, lettering, numbers, film edge codes, logos, dates, clock/battery/calendar pictures or UI. Readable singular silhouette at85px. SUBJECT: one complete low ARMOURED ARMADILLO walking left in three-quarter profile. Long narrow pointed snout, two small upright rounded ears, one dark eye, four short sturdy legs with full splayed claws, long gently tapering segmented tail curving beside it. Its domed back is built from a sequence of broad overlapping ARCHED FILM STRIP PLATES; each plate has rectangular dye frames and rows of sprocket holes running across the back. Thinner wrapped film forms belly/face/limbs. Distinct flexible armour segmentation, no scales or solid shell underneath, no bird wings or long legs. Keep complete tail and every foot comfortably whole.",
+  "source": "sources/ribbon-armadillo.df5fc4d23e52.png",
+  "sourceSha256": "df5fc4d23e52a667b2eb6d2ce72678e1a52e46a0c497b33726c894fd1fb45ff1",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/ribbon-armadillo.f511bc27793e.png",
+  "sha256": "f511bc27793ed66c21b7f1c74a086268da3a620dae132a0f685c29ea04ea8926",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/ibis.34b1d9dbdfc2.png",
+      "sha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+      "purpose": "Own accepted ibis supplies continuous perforated film material, palette and lighting only; a distinct new natural subject."
+    }
+  ]
+}

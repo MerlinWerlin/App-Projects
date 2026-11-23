@@ -1,0 +1,38 @@
+{
+  "themeId": "smockfold-tundra",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.5e9de19a.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "5e9de19a9749d0906cb3c7753b4b5d64b8ab8f7fb00e95684a3950b404ab99e7",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.aacb13b1.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "aacb13b13cf923815bec3c66326eac105b6c2115be5eeeea6f11044ccac6925e",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.75c7f1e9.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "75c7f1e95776c864543d6727f0b93dea42caae2c15f8b3750966bfebb53e5eea",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "The three actual encoded variants show the whole foreground ptarmigan, both of its feet, both ears on the pika behind the rock, the complete willow sprig and both ends of the folded slate ridge inside a visible blue margin. The top has clear space. Original wallpaper preserved."
+  }
+}

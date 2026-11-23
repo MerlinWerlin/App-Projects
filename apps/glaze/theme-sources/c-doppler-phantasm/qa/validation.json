@@ -1,0 +1,118 @@
+{
+  "id": "c-doppler-phantasm",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "echo-vault",
+    "duplex-antler",
+    "sector-islands",
+    "anechoic-knot",
+    "pulse-rift"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.a6defb11.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 27308,
+    "sha256": "a6defb11e6b0a08f10de2d3f1d6280114faa742ac5536e9d2acec94528834065",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "wallpaper": "Cropped phone-class wallpaper inspected in combination: quiet dark upper field, large speckle vault/counterflow below; no anatomy/labels/readings.",
+    "fiveArtworks": "All5separate sources reviewed at210and150pixels. Open vault, branching duplex, fan sector, unequal double loop and broken rift are distinct, with consistent granular scan texture and red/blue patches. Alpha clean.",
+    "native": "All9app renderer candidate previews reviewed: arch echo-vault bezel, bead markers/leaf hands, echo-column gauge and ticket calendar, live values legible."
+  },
+  "packTestEvidence": "Unchanged pipeline47existing cases covered by45initial passes and2encoder follow-up passes."
+}

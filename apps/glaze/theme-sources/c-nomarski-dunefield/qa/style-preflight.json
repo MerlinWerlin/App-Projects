@@ -1,0 +1,24 @@
+{
+  "theme": "c-nomarski-dunefield",
+  "status": "Coordinator reviewed actual C18/C17/C23 comparison and accepted first sample before remaining4generations",
+  "sourceSha256": "592d3a73a60efb5f37a364d2e4c25fdcfc70595fdc7fb71e18ece3f3de51f8df",
+  "prompt": "Use case: stylized-concept. GLAZE NOMARSKI DUNEFIELD. An invented tangible natural dune microhabitat appears as NOMARSKI DIFFERENTIAL-INTERFERENCE-CONTRAST-inspired optical path-gradient recordings. UNMISTAKABLE DIC PSEUDO-RELIEF IMAGE,not physical matter: ONE fixed diagonal shear direction for the ENTIRE image. Every body edge and every broad internal vacuole or fold has a narrow CREAM-BRIGHT upper-left phase-gradient edge and a paired DARK OLIVE-GREY lower-right phase-gradient edge. The opposite bright/dark sides are the signature,with soft low-contrast lilac-grey/muted-olive optical interiors and a little fine detector noise. Broad smooth phase gradients,not conventional illumination shading. The image looks like an optically embossed micrograph but has no real sculpted surface or cast shadow. A few large rounded vacuoles and thick flowing internal septa show the same global bright-dark shear direction. Preserve a strong full-body silhouette and large readable structural openings. No glossy transparency,glass,wet membrane,gel,resin,metal,clay,paper,wood,fabric,ink,engraving or real embossed material. No 3D specular lighting/highlights,photorealistic skin or normal coloured plant beneath the optical image. No SEM granular pores,coated surface pitting,amber/blue Rheinberg membranes,parallel projected stripes,interlocking binary domains,checker cells,rainbow stress fringes,arrows,particle dots or multiple time exposures. Do not use red/cyan offset duplicate silhouettes. Fictional artistic optical fields,not a measured biological specimen or medical image. No text,letters,numbers,scale bar,labels,axes,graph,UI,clock,reading,logo or watermark. Subject: ONE complete SALTBUSH LANTERN growth: a low broad natural shrub with THREE thick branching stems and FIVE unequal large softly inflated TRILOBED leaves. Each leaf has three rounded lobes and a large curved internal opening near its base,so the shrub has open breathing spaces. Leaves point in different directions,one spreading left,two lifting high,one drooping right,one small forward. A stout short root crown with three thick root toes grounds the plant. No flowers,berries,decorative lanterns,pots,ordinary round tree crown or thin twig forest. All five leaves,stem forks and roots whole. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha outside the complete organism and through natural structural openings. Soft optical interiors belong only inside the body silhouette;no rectangular micrograph backing. Whole organism,all leaf/leg/antenna/wing/root endpoints safely inside central seventy percent with generous truly empty margins. No landscape,soil patch,shadow,extra organism,frame,panel,contact sheet or device mockup. Signature one-direction paired bright/dark DIC edges and bold full silhouette must remain readable at85px.",
+  "sourceBoundsByAlphaThreshold": {
+    "16": [
+      29,
+      159,
+      1185,
+      1125
+    ],
+    "96": [
+      30,
+      159,
+      1184,
+      1124
+    ]
+  },
+  "visualComparison": "C18 rough SEM surface pores versus C17 amber/blue membrane/granule image versus C23 smooth grey-lilac interior and globally paired cream-bright/olive-dark diagonal optical edges. C23 retains five perforated trilobed leaves/three root toes. Firstsample actual dark-sage composite/85px prototype/detail reviewed.",
+  "comparisonImageInputsToGeneration": [],
+  "coordinatorVerdict": "Smooth grey-lilac interiors and consistent paired bright/dark edges distinct from rough SEM pores and amber-blue granules,including prototype smallsize. Keep thin soft boundaries,one optical shear direction,no extruded rims/glass shine/cast shadows.",
+  "selectedSourceImage": "sources/saltbush-lantern.592d3a73a60e.png"
+}

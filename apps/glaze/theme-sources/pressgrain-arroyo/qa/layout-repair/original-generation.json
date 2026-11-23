@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "PRESSGRAIN ARROYO for Glaze. One original very tall portrait phone wallpaper, 1290 by 2796 target, width 46 percent of height. A single coherent Sonoran arroyo habitat composition printed in matte rust, dusty indigo, ochre cream and small plum ink accents. Visibly a flat collograph transferred impression from a textured built-up plate. Allocate large flat zones with materially different patterns: a visibly coarse open crossed bookcloth grid, separate irregular rust grit, and smooth ochre reserves next to torn-board edges with a little dark pressure ink. Input 1 is our own roadrunner, input 2 our own kit fox, input 3 our own prickly pear for matching print craft and recognizable subject morphology. Compose the three subjects together in a new scene of gently sloping dry banks. One whole greater roadrunner runs right through the middle left, with complete bill, crest, long wedge tail, two separated running legs and toes. A whole alert kit fox pauses at lower right facing inward, with big pointed ears, four complete legs and paws, and one bushy dark-tip tail. A tall prickly pear rises behind them toward upper right, with three joined broad pads, one yellow flower, two rust fruit and a few short attached spines. Two sparse grass tips and a short exposed arroyo ridge share a few coarse print impressions underneath. Relative scale should feel natural and one connected print. Every texture is ink in one plane, with no actual attached patches or paper relief, photorealistic shading, continuous halftone, engraved linework, strong drop shadow, ornate frame, rectangle, letters, numbers or UI. Background is muted plum #4D3B44 with an extremely quiet ink tone only. Outer 12 percent on both sides and lower 18 percent remain empty plum all the way to the edge. Highest cactus flower tip stays below the top 20 percent. The entire scene occupies roughly 76 percent of available width and the middle 60 percent of canvas height. Keep every bill, tail, ear, paw, thorn, flower, grass and ridge tip inside this safe region so a short screen crop preserves all shapes. Large coherent subject forms, quiet margins, print textures clearly visible. Output only the finished wallpaper.",
+  "tool": "built-in image_gen",
+  "source": "qa/layout-repair/wallpaper.original.92635442.png",
+  "sourceSha256": "926354423c98f65fd3f3b73a6da32109c543ec16c6844b6794e0694ecd5864c9",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "48aba2557fdf490ca737502baffa527459d2375124f53d3a7d9b2f97cb65bea0",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "greater-roadrunner",
+      "file": "sources/greater-roadrunner.0893abca.png",
+      "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 2,
+      "id": "kit-fox",
+      "file": "sources/kit-fox.98944bc7.png",
+      "sha256": "98944bc7f87f33c3aefe3ae40050ef5cf722a31f578975c2bfdf5acccc343210",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 3,
+      "id": "prickly-pear",
+      "file": "sources/prickly-pear.fd73d869.png",
+      "sha256": "fd73d86952277730e41c35e191bfa908d2e78b940dac9a7bad6c3893dafe890b",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/layout-repair/wallpaper-initial-request.json",
+  "exactToolResult": "qa/layout-repair/wallpaper-layout-original.json"
+}

@@ -1,0 +1,57 @@
+{
+  "prompt": "Use case: identity-preserving compositing edit. Input IMAGE1 is the QUIVER RIFFLES wallpaper layout to edit. IMAGE2 is the exact Riffle Skipper identity. IMAGE3 is the exact THREE-WING Whorl-Drift Seed identity. IMAGE4 is the exact Split-Tail Water Larva identity. Preserve IMAGE1 pale opaque background,quiet upper44%,all current-arrow habitat lines,complete mangrove at left and small damselfly above-right. Correct ONLY THREE focal arrow clusters to match their supplied exact silhouettes. Replace the birdlike right-middle cluster with IMAGE2 whole broad fish: asymmetric crescent tail,dorsal sail,TWO flared pectoral fins,blunt forward fish mouth,no added round bird eye/beak. Keep it beside the mangrove at the same approximate scale. Replace the flowerlike lower-right cluster with IMAGE3 exact connected seed: central thick pod and EXACTLY THREE UNEQUAL long curved blade wings,one high,one left,one down-right. It is NOT a4/5petal flower or small symmetric pinwheel. Preserve all three blade endpoints. Replace the straight little lower-left swimmer with IMAGE4 exact long S-curved larva,paired front paddles,three body lobes and large split TWO-BLADE tail fan. Preserve the open Y-tail gap,whole head/paddles/body/tail;keep it just below the waterline. Every corrected body is made ONLY from large crisp separated flat cobalt/kelp/coral/peach short arrow glyphs,not solid skin or underfill. Maintain their original arrowhead scale/character and clear silhouette gaps. Do not redesign the other two identities. All five COMPLETE focal forms within horizontal8%to92%andvertical46%to79%ofcanvas,bottom18%quiet pale streambed. Current arrows can bleed at edges;focal endpoints cannot. One coherent connected vector-field stream habitat,not specimen panels. No labels,axes,text,numerals,UI or frame. Portrait1290x2796,same aspect ratio,full opaque background.",
+  "references": [
+    "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-quiver-riffles\\intermediate-wallpaper-identity-study\\wallpaper-initial.0e3517f54a62.png",
+    "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-quiver-riffles\\sources\\riffle-skipper.e2126ce1bf00.png",
+    "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-quiver-riffles\\sources\\whorl-drift-seed.b9fbc798e0e8.png",
+    "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-quiver-riffles\\sources\\split-tail-larva.c83aaa1cfcfc.png"
+  ],
+  "directEditReference": {
+    "sourceImage": "intermediate-wallpaper-identity-study/wallpaper-initial.0e3517f54a62.png",
+    "sha256": "0e3517f54a62a66da4a2eb257b6c63aab4b6cfafba6702fa69c511926882e305"
+  },
+  "internalArtworkReferences": [
+    {
+      "id": "fan-root-mangrove",
+      "sourceImage": "sources/fan-root-mangrove.b6a8e2f90793.png",
+      "sha256": "b6a8e2f90793ff04176cb954294569a10b0641922f83c1c4018729d883c52a84"
+    },
+    {
+      "id": "riffle-skipper",
+      "sourceImage": "sources/riffle-skipper.e2126ce1bf00.png",
+      "sha256": "e2126ce1bf005775d6bcace634879c1a35332e1dea0ee7d18d27160f81fc7372"
+    },
+    {
+      "id": "whorl-drift-seed",
+      "sourceImage": "sources/whorl-drift-seed.b9fbc798e0e8.png",
+      "sha256": "b9fbc798e0e86e5c0ae354c77f42d2ecb92c288cb8012f5502eb8cde7bf4b4da"
+    },
+    {
+      "id": "split-tail-larva",
+      "sourceImage": "sources/split-tail-larva.c83aaa1cfcfc.png",
+      "sha256": "c83aaa1cfcfc708100ea57a65a915ef5cc594deb3cb10feac341426e28c70718"
+    },
+    {
+      "id": "broadwing-damselfly",
+      "sourceImage": "sources/broadwing-damselfly.b5259d65d742.png",
+      "sha256": "b5259d65d742d98c9b0d4b4f254bb50da224bed800f820bbc1da5e357e229bf9"
+    }
+  ],
+  "editSupportReferences": [
+    {
+      "id": "riffle-skipper",
+      "sourceImage": "sources/riffle-skipper.e2126ce1bf00.png",
+      "sha256": "e2126ce1bf005775d6bcace634879c1a35332e1dea0ee7d18d27160f81fc7372"
+    },
+    {
+      "id": "whorl-drift-seed",
+      "sourceImage": "sources/whorl-drift-seed.b9fbc798e0e8.png",
+      "sha256": "b9fbc798e0e86e5c0ae354c77f42d2ecb92c288cb8012f5502eb8cde7bf4b4da"
+    },
+    {
+      "id": "split-tail-larva",
+      "sourceImage": "sources/split-tail-larva.c83aaa1cfcfc.png",
+      "sha256": "c83aaa1cfcfc708100ea57a65a915ef5cc594deb3cb10feac341426e28c70718"
+    }
+  ]
+}

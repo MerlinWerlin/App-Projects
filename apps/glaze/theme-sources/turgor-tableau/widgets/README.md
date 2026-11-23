@@ -1,0 +1,1 @@
+Five fitted transparent 1024px Artwork inputs. Every original is fully preserved without cropping; widget-options.json defines exactly five small/large fit selections. Live native components use the separate identity descriptor.

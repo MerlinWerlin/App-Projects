@@ -1,0 +1,18 @@
+{
+  "id": "rain-chain-rigger",
+  "prompt": "FLOATINK STORMCREW for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA: an inventive ADULT community weather-maintenance worker, natural human proportions stylised for clear useful task, no child/toy/mascot. Physical PRINT medium SUMINAGASHI-style FLOATING-INK WATER-MARBLING transferred onto thin RICE PAPER. Every clothing/tool shape is FLAT MATTE PRINTED PAPER filled with irregular nested fine INK RINGS, blown broken tide lines, a few ink pooling edges, visible delicate paper fibres and slightly irregular dry paper contour; rings naturally bend across the garment/tool forms, no ordinary digital gradient shading. Ink indigo #3B4F67, vermilion #C5674B, oyster ivory #DFE1D5, charcoal ink #243744, restrained brass #A99568. Bold solid silhouette first with restrained ring density so pose stays readable at85px. Thin flat paper print, no3D marble stone, polished agate/mineral, smooth clay/resin figure, quilt/plush, wire/thread, wax, optical/radiographic/spectral glow or digital interference diagram. Full complete worker/props small central64%, at least18% genuine alpha margin on EVERY side; large open gaps between limbs/tools truly transparent. No rectangular paper sheet/backing/mat, layered paper collage, ground/scenery/extra props, halo/glow/shadow, text/letters/numbers/signs, clock/date/battery/weather values, UI, logo or signature. No weapons. Subject RAIN CHAIN RIGGER: one adult woman kneels in a three-quarter side pose facing right, one knee down and one foot planted, BOTH hands carefully connecting a plain short RAIN CHAIN of several small open collecting cups beside a compact THREE-RUNG FOLDING LADDER. A large FLAT REEL of spare chain rests in a curved shoulder/backpack frame behind her, its few chain loops orderly and open, not tangled across body. Her posture is a low triangular working silhouette, ladder leans inward creating an open tall diagonal at right, small tool pouch at waist. Functional rain-chain maintenance role, natural coherent TWO arms/TWO legs with hands/foot/knee distinct, adult face/hair in practical bun, loose indigo/vermilion/ivory work garments. All clothing, reel, ladder and chain rendered as thin flat matte water-marbled rice-paper prints with fine nested broken ink rings and fibres; no glossy ceramic bowls, metal3Dchain or toy. No floor/ground pad, scenic wall or extra worker. Full ladder top/feet, reel, hands, chain's lowest cup and worker shoes contained within generous transparent alpha.",
+  "tool": "built-in image_gen",
+  "source": "sources/rain-chain-rigger.dba86efb.png",
+  "sourceSha256": "dba86efb5c5827df599ca5a9490a989683af181150ad4091c94aafbaf5b4d6cf",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/rain-chain-rigger.269a0d24.png",
+  "sha256": "269a0d24623a6dfbf9d5ce78a47d1ffee63ca715958de26103595828b7e3ef1c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

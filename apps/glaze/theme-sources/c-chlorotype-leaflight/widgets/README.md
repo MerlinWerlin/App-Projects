@@ -1,0 +1,1 @@
+Five independently generated first-generation real leaf/wildlife assets. Entire originals uniformly contained900within1024 RGBA, preserving whole carriers and photos without crop, stretching or creative edits. Actual encoded85px and rounded tiles reviewed. Labels/options for small and large Artwork in widget-options.json.

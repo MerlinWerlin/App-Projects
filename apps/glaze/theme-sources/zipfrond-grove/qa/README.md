@@ -1,0 +1,1 @@
+Lane A original Zipfrond Grove Nature candidate for APPS A2. Five separate whole artworks, own-reference connected wallpaper, palette and live Clock/Battery/Calendar identity. Exact originals/prompts/ordered references and observed phone-crop correction history retained. No publication or merge without Jared OK.

@@ -1,0 +1,18 @@
+{
+  "name": "Tinwake Understory",
+  "mood": "An oxidised pewter woodland of fern curls, salamanders, spiral snails, woodpeckers and toadstools.",
+  "tags": [
+    "tin-repousse",
+    "chased-metal",
+    "hammer-dimples",
+    "woodland",
+    "fern",
+    "wildlife"
+  ],
+  "credits": "Glaze original artwork, built-in OpenAI image generation; original native widget geometry by lane B.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Composition adjustment for this same Tinwake Understory wallpaper. Preserve the same hammered pewter/blue-patina thin tin-sheet fern, salamander on leaf, snail, woodpecker/birch and fungi/woodlouse woodland group and all fine chased/punched metallic details. SCALE DOWN the ENTIRE CONNECTED WOODLAND GROUP substantially, keeping ALL parts including the fern's farthest left tips inside CENTRAL62% OF CANVAS WIDTH and BETWEEN34% AND75% HEIGHT. None of the plants, leaf edges, tails or feet may touch any image edge. Add/continue the same quiet dark oxidised blue tin background around the group; upper30% and bottom22% completely quiet ground. One portrait phone wallpaper; this smaller central arrangement must keep every natural subject whole after a narrower1290x2796 phone crop and shorter750x1334 crop. Preserve the soft shallow raised metal character, exact colours and natural anatomy, no new motifs or text, no frame, plate, border, rectangle or visible inset. Change composition scale/position only; do not cut off the group to make it fit.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

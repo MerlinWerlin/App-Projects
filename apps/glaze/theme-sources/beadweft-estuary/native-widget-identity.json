@@ -1,0 +1,18 @@
+{
+  "themeId": "beadweft-estuary",
+  "recipe": [
+    "hex",
+    "beadKingfisher",
+    "beadStitches",
+    "beads",
+    "needle",
+    "tiles",
+    "band"
+  ],
+  "art": {
+    "beadKingfisher": "M 18 82 Q 40 76 78 84 M 46 77 L 49 68 M 54 78 L 56 67 M 45 68 Q 33 63 35 48 Q 36 35 48 32 L 48 23 Q 56 13 66 22 L 71 28 L 90 33 L 69 37 Q 69 53 58 65 L 35 84 L 40 65 M 47 35 Q 54 44 48 62 L 39 69 M 60 25 L 61 26 M 18 82 Q 15 57 17 35 M 17 53 Q 7 44 9 32 Q 20 35 17 53 M 17 42 Q 26 33 24 20 Q 13 27 17 42 M 73 84 Q 82 68 85 52 M 84 64 Q 94 60 93 50",
+    "beadStitches": "M 12 17 L 29 17 L 29 33 L 12 33 Z M 17 22 L 24 22 L 24 28 L 17 28 Z M 37 17 L 54 17 L 54 33 L 37 33 Z M 42 22 L 49 22 L 49 28 L 42 28 Z M 29 25 Q 33 13 37 25 M 25 46 L 42 46 L 42 62 L 25 62 Z M 30 51 L 37 51 L 37 57 L 30 57 Z M 50 46 L 67 46 L 67 62 L 50 62 Z M 55 51 L 62 51 L 62 57 L 55 57 Z M 42 54 Q 46 42 50 54 M 20 33 Q 20 43 33 46 M 46 33 Q 46 43 58 46 M 62 75 L 79 75 L 79 91 L 62 91 Z M 67 80 L 74 80 L 74 86 L 67 86 Z M 58 62 Q 55 73 62 82"
+  },
+  "ornament": "M 15 30 L 35 30 L 35 52 L 15 52 Z M 22 37 L 28 37 L 28 45 L 22 45 Z M 48 30 L 68 30 L 68 52 L 48 52 Z M 55 37 L 61 37 L 61 45 L 55 45 Z M 35 41 Q 41 24 48 41 M 32 64 L 52 64 L 52 86 L 32 86 Z M 39 71 L 45 71 L 45 79 L 39 79 Z M 25 52 Q 25 61 41 64 M 58 52 Q 62 62 52 75",
+  "direction": "Kingfisher on an open reed branch as full illustration; staggered drilled bead cells with connecting thread joins as detail. Hexagonal stitched rim, bead hour marks, needle hands, tile charge gauge and band calendar. Compact companion contains only three hollow bead cells and short thread bridges, preserving holes and open space in small headers."
+}

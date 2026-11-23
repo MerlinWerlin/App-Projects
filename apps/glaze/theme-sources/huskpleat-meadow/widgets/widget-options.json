@@ -1,0 +1,62 @@
+[
+  {
+    "id": "barn-owl",
+    "kind": "art",
+    "image": "barn-owl.09c8c219.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Barn Owl"
+  },
+  {
+    "id": "harvest-mouse",
+    "kind": "art",
+    "image": "harvest-mouse.35288a0e.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Harvest Mouse"
+  },
+  {
+    "id": "hedgehog",
+    "kind": "art",
+    "image": "hedgehog.ea7a269b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hedgehog"
+  },
+  {
+    "id": "dog-rose",
+    "kind": "art",
+    "image": "dog-rose.88cf32a3.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Dog Rose"
+  },
+  {
+    "id": "bumblebee",
+    "kind": "art",
+    "image": "bumblebee.777d2379.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bumblebee"
+  }
+]

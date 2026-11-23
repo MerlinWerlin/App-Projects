@@ -1,0 +1,176 @@
+{
+  "theme": "c-electrographic-keepers",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "split-cowl-sentinel",
+      "sourceImage": "sources/split-cowl-sentinel.0be1d52928d7.png",
+      "sourceSha256": "0be1d52928d778b76c3819b9da1e5d40ef0c8276751a22f108e0ac14653a6e6d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/split-cowl-sentinel.52baf4976b4c.png",
+      "sha256": "52baf4976b4ce8a9e748536d0775b59ae4132365b7b20baa2e971396ac7d145a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 903728,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTROGRAPHIC KEEPERS, a tangible invented dusk-guardian ecology shown through fictional high-voltage corona-discharge contact imaging. MEDIUM: KIRLIAN-STYLE ELECTROGRAPHIC CONTACT PHOTOGRAM. The complete recognizable dark charcoal/indigo body has a crisp readable silhouette, faint quiet surface information and clear anatomy or working mechanism. A dense irregular fringe of tiny branching electric filaments erupts ONLY along its boundary and open internal edges: icy blue-white tips, cobalt/violet roots, fine fernlike micro-branches. Uneven discharge clusters and empty breaks make the electrical process unmistakable. Keep most of the body solid matte dark blue-gray, not made of glow or transparent wire. The corona reveals the tangible silhouette rather than replacing it with an abstract energy cloud. Flat contact-imaging projection with subtle internal tonal volume, no conventional glossy3D material. No smooth concentric diffraction fringes, repeated rainbow bands, heat gradients, scan dots/lines, X-ray bones, particle trajectories, coloured double registration, hologram, laser outline, glass, chrome, shiny plastic, clay sculpture or fantasy neon armour. Fictional artistic electrical imaging, not real measured sensor data or health claims. No words, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE independent square1024x1024 pure-art widget. Subject SPLIT-COWL SENTINEL: one tall invented biped with a large hood-like head split into two unequal curved shield lobes, a small visible face with two eye apertures beneath the cowl, narrow tapering torso, TWO long articulated arms with broad three-fingered palms and TWO planted legs with large splayed feet. One arm extends sideways as a lookout gesture; a short flattened balance tail curves behind. Tangible friendly guardian, not a human in a costume or mask. The cowl, palms, toes and joint gaps all carry irregular branching discharge fringes. Full body in three-quarter frontal contact-projection view. The WHOLE body AND ALL electrical micro-branches must fit within central65%canvas, ample truly empty margins. No filament cut by the frame. Real transparent alpha outside the body/corona and through open gaps; the dark body itself remains opaque. No black rectangular backing, floor, shadow, surrounding fog, background aura field, tile, frame, panel or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 773209
+    },
+    {
+      "id": "mantle-bastion",
+      "sourceImage": "sources/mantle-bastion.0c3a7828f87e.png",
+      "sourceSha256": "0c3a7828f87e805cc3b4795c33da736e7e7fd1896f463f21ac768270d17df79d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/mantle-bastion.4d86fc194793.png",
+      "sha256": "4d86fc194793a52a73887288d3bd35d4ef9fdf5d9ccd1f64747760ecc4df9d87",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 814463,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTROGRAPHIC KEEPERS, a tangible invented dusk-guardian ecology shown through fictional high-voltage corona-discharge contact imaging. MEDIUM: KIRLIAN-STYLE ELECTROGRAPHIC CONTACT PHOTOGRAM. The complete recognizable dark charcoal/indigo body has a crisp readable silhouette, faint quiet surface information and clear anatomy or working mechanism. A dense irregular fringe of tiny branching electric filaments erupts ONLY along its boundary and open internal edges: icy blue-white tips, cobalt/violet roots, fine fernlike micro-branches. Uneven discharge clusters and empty breaks make the electrical process unmistakable. Keep most of the body solid matte dark blue-gray, not made of glow or transparent wire. The corona reveals the tangible silhouette rather than replacing it with an abstract energy cloud. Flat contact-imaging projection with subtle internal tonal volume, no conventional glossy3D material. No smooth concentric diffraction fringes, repeated rainbow bands, heat gradients, scan dots/lines, X-ray bones, particle trajectories, coloured double registration, hologram, laser outline, glass, chrome, shiny plastic, clay sculpture or fantasy neon armour. Fictional artistic electrical imaging, not real measured sensor data or health claims. No words, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE independent square1024x1024 pure-art widget. Subject MANTLE BASTION: one low broad invented quadruped whose back is covered by THREE unequal overlapping curved mantle plates, a short blunt head with THREE eye apertures below the forward plate, FOUR heavy jointed legs with split pads and one long flattened tail. Crouched diagonally with head toward lower left. Broad weight-bearing body is completely connected and visibly animal, not a bunker, helmet, tank or ordinary tortoise. Discharge filaments branch around plates, face, feet and tail; central body remains quietly readable dark matte volume. The WHOLE body AND ALL electrical micro-branches must fit within central65%canvas, ample truly empty margins. No filament cut by the frame. Real transparent alpha outside the body/corona and through open gaps; the dark body itself remains opaque. No black rectangular backing, floor, shadow, surrounding fog, background aura field, tile, frame, panel or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 734007
+    },
+    {
+      "id": "latch-keeper",
+      "sourceImage": "sources/latch-keeper.f3cffc9d9898.png",
+      "sourceSha256": "f3cffc9d98985e5301d04db9ba9c31a954a0fef2357fb7715aeaf2faccdd2ba9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/latch-keeper.5813b338c5c2.png",
+      "sha256": "5813b338c5c2e59d805044a8fdad977114898fabbeb7249a903091acd5cc3835",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 916007,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTROGRAPHIC KEEPERS, a tangible invented dusk-guardian ecology shown through fictional high-voltage corona-discharge contact imaging. MEDIUM: KIRLIAN-STYLE ELECTROGRAPHIC CONTACT PHOTOGRAM. The complete recognizable dark charcoal/indigo body has a crisp readable silhouette, faint quiet surface information and clear anatomy or working mechanism. A dense irregular fringe of tiny branching electric filaments erupts ONLY along its boundary and open internal edges: icy blue-white tips, cobalt/violet roots, fine fernlike micro-branches. Uneven discharge clusters and empty breaks make the electrical process unmistakable. Keep most of the body solid matte dark blue-gray, not made of glow or transparent wire. The corona reveals the tangible silhouette rather than replacing it with an abstract energy cloud. Flat contact-imaging projection with subtle internal tonal volume, no conventional glossy3D material. No smooth concentric diffraction fringes, repeated rainbow bands, heat gradients, scan dots/lines, X-ray bones, particle trajectories, coloured double registration, hologram, laser outline, glass, chrome, shiny plastic, clay sculpture or fantasy neon armour. Fictional artistic electrical imaging, not real measured sensor data or health claims. No words, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE independent square1024x1024 pure-art widget. Subject LATCH KEEPER: one tangible standing service machine with a tall split clam-like shield body, a visible open latch mechanism at the front, ONE thick pincer arm reaching right, a short counterweight arm at left and THREE sturdy jointed feet. Two open upper shield lobes surround a small dark central spindle, giving a clear functional mechanism and large negative-space opening. Not a clock, house, vehicle, pump, generic robot head or a floating ring. The field discharge branches around open shield edges, pincer tips, latch and all feet. Full connected machine in asymmetric three-quarter contact projection. The WHOLE body AND ALL electrical micro-branches must fit within central65%canvas, ample truly empty margins. No filament cut by the frame. Real transparent alpha outside the body/corona and through open gaps; the dark body itself remains opaque. No black rectangular backing, floor, shadow, surrounding fog, background aura field, tile, frame, panel or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 758036
+    },
+    {
+      "id": "braid-crawler",
+      "sourceImage": "sources/braid-crawler.0eb87dab075b.png",
+      "sourceSha256": "0eb87dab075b16793df9502988aac14321bf7d8ab5cd9c34141eddc4cf120a8c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/braid-crawler.57a71c2573b5.png",
+      "sha256": "57a71c2573b57507c7352d1f529ec9ff0924aef16c3c73f6da0174bf96f6f224",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 910502,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTROGRAPHIC KEEPERS, a tangible invented dusk-guardian ecology shown through fictional high-voltage corona-discharge contact imaging. MEDIUM: KIRLIAN-STYLE ELECTROGRAPHIC CONTACT PHOTOGRAM. The complete recognizable dark charcoal/indigo body has a crisp readable silhouette, faint quiet surface information and clear anatomy or working mechanism. A dense irregular fringe of tiny branching electric filaments erupts ONLY along its boundary and open internal edges: icy blue-white tips, cobalt/violet roots, fine fernlike micro-branches. Uneven discharge clusters and empty breaks make the electrical process unmistakable. Keep most of the body solid matte dark blue-gray, not made of glow or transparent wire. The corona reveals the tangible silhouette rather than replacing it with an abstract energy cloud. Flat contact-imaging projection with subtle internal tonal volume, no conventional glossy3D material. No smooth concentric diffraction fringes, repeated rainbow bands, heat gradients, scan dots/lines, X-ray bones, particle trajectories, coloured double registration, hologram, laser outline, glass, chrome, shiny plastic, clay sculpture or fantasy neon armour. Fictional artistic electrical imaging, not real measured sensor data or health claims. No words, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE independent square1024x1024 pure-art widget. Subject BRAID CRAWLER: ONE connected invented creature with a low wide oval torso, SIX short jointed walking feet and THREE thick interwoven necks ending in THREE clearly separate small wedge heads. One head looks left, one upward and one right; all have two simple eye apertures. A single short broad tail anchors the other end. Necks visibly braid but do not knot into abstract loops; torso/feet carry the full weight. Not three independent animals, a snake tangle, coral or a tentacle mass. Electric micro-branches fringe the three head profiles, braided neck edges and feet, with dark quiet body surfaces. Broad three-quarter view. The WHOLE body AND ALL electrical micro-branches must fit within central65%canvas, ample truly empty margins. No filament cut by the frame. Real transparent alpha outside the body/corona and through open gaps; the dark body itself remains opaque. No black rectangular backing, floor, shadow, surrounding fog, background aura field, tile, frame, panel or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 734966
+    },
+    {
+      "id": "sailwatcher",
+      "sourceImage": "sources/sailwatcher.7aa921f67f4b.png",
+      "sourceSha256": "7aa921f67f4bbfe8c1682e2f7f9dc3dc0426e4875a5c5eeee38128936d5b549b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/sailwatcher.948a73a19494.png",
+      "sha256": "948a73a1949458f27c28ffc56f0ad78c02456fbc77eb982a00391b75de146925",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1082805,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTROGRAPHIC KEEPERS, a tangible invented dusk-guardian ecology shown through fictional high-voltage corona-discharge contact imaging. MEDIUM: KIRLIAN-STYLE ELECTROGRAPHIC CONTACT PHOTOGRAM. The complete recognizable dark charcoal/indigo body has a crisp readable silhouette, faint quiet surface information and clear anatomy or working mechanism. A dense irregular fringe of tiny branching electric filaments erupts ONLY along its boundary and open internal edges: icy blue-white tips, cobalt/violet roots, fine fernlike micro-branches. Uneven discharge clusters and empty breaks make the electrical process unmistakable. Keep most of the body solid matte dark blue-gray, not made of glow or transparent wire. The corona reveals the tangible silhouette rather than replacing it with an abstract energy cloud. Flat contact-imaging projection with subtle internal tonal volume, no conventional glossy3D material. No smooth concentric diffraction fringes, repeated rainbow bands, heat gradients, scan dots/lines, X-ray bones, particle trajectories, coloured double registration, hologram, laser outline, glass, chrome, shiny plastic, clay sculpture or fantasy neon armour. Fictional artistic electrical imaging, not real measured sensor data or health claims. No words, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE independent square1024x1024 pure-art widget. Subject SAILWATCHER: one invented broad canopy creature with a saddle-shaped living roof/head, a small face with TWO downward-looking eyes on its underside, a compact suspended torso and SIX dangling visibly JOINTED limbs ending in broad paddle tips. It is suspended in a relaxed hovering pose, canopy tilted diagonally, whole anatomy connected. Not an umbrella object, building, jellyfish with ordinary tentacles, bird, spacecraft or abstract fan. Uneven electric branches radiate from the canopy rim, joint gaps and paddle tips; the saddle-like dark body remains tangible and clear. Broad asymmetric contact projection. The WHOLE body AND ALL electrical micro-branches must fit within central65%canvas, ample truly empty margins. No filament cut by the frame. Real transparent alpha outside the body/corona and through open gaps; the dark body itself remains opaque. No black rectangular backing, floor, shadow, surrounding fog, background aura field, tile, frame, panel or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 722447
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.dc0c789a985b.png",
+      "sourceSha256": "dc0c789a985b74c39c15be389466302dbe9b6be5ec5068e621217696c954caf6",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "93f0ca1ede791c98eedbe72b2890b181979aeb2ef2c9ccac8812e67014038f98",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2432672,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ELECTROGRAPHIC KEEPERS, a tangible invented dusk-guardian ecology shown through fictional high-voltage corona-discharge contact imaging. MEDIUM: KIRLIAN-STYLE ELECTROGRAPHIC CONTACT PHOTOGRAM. The complete recognizable dark charcoal/indigo body has a crisp readable silhouette, faint quiet surface information and clear anatomy or working mechanism. A dense irregular fringe of tiny branching electric filaments erupts ONLY along its boundary and open internal edges: icy blue-white tips, cobalt/violet roots, fine fernlike micro-branches. Uneven discharge clusters and empty breaks make the electrical process unmistakable. Keep most of the body solid matte dark blue-gray, not made of glow or transparent wire. The corona reveals the tangible silhouette rather than replacing it with an abstract energy cloud. Flat contact-imaging projection with subtle internal tonal volume, no conventional glossy3D material. No smooth concentric diffraction fringes, repeated rainbow bands, heat gradients, scan dots/lines, X-ray bones, particle trajectories, coloured double registration, hologram, laser outline, glass, chrome, shiny plastic, clay sculpture or fantasy neon armour. Fictional artistic electrical imaging, not real measured sensor data or health claims. No words, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Edit this exact portrait wallpaper into a device-crop-safe composition. PRESERVE the exact FIVE creature/machine identities, poses, body anatomy, dark-indigo surfaces and fine branching electrical discharge style. Change ONLY their collective size/placement and the surrounding quiet ground. Uniformly shrink the entire five-figure gathering to about80% of its current size, move it UP slightly, and keep ALL FIVE complete bodies, toes, paddle tips, tail ends and corona branches entirely between42% and81% of the canvas height and between10% and90% of canvas width. The bottom19% is only dim quiet ground ridges, with no feet, limbs, subjects or bright electrical lines reaching the edge. Top40% remains almost empty near-black navy for phone UI. Maintain a single coherent gathering with sentinel left of centre, low mantle-bastion/latch machine foreground, three-neck crawler behind and saddle-canopy sailwatcher above. Do not replace any with people, cloaks, staffs, houses, buildings or generic robots. Keep the flat contact-image atmosphere and uneven blue/violet/white branching boundary discharge, not smooth neon lines or opaque aura clouds. Full bleed opaque portrait1290x2796, no text, border, device or UI. This must retain all five figures and electrical fringes after a centred vertical crop removes the outer10% from both top and bottom.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalReferences": [
+        {
+          "id": "split-cowl-sentinel",
+          "sourceImage": "sources/split-cowl-sentinel.0be1d52928d7.png",
+          "sha256": "0be1d52928d778b76c3819b9da1e5d40ef0c8276751a22f108e0ac14653a6e6d"
+        },
+        {
+          "id": "mantle-bastion",
+          "sourceImage": "sources/mantle-bastion.0c3a7828f87e.png",
+          "sha256": "0c3a7828f87e805cc3b4795c33da736e7e7fd1896f463f21ac768270d17df79d"
+        },
+        {
+          "id": "latch-keeper",
+          "sourceImage": "sources/latch-keeper.f3cffc9d9898.png",
+          "sha256": "f3cffc9d98985e5301d04db9ba9c31a954a0fef2357fb7715aeaf2faccdd2ba9"
+        },
+        {
+          "id": "braid-crawler",
+          "sourceImage": "sources/braid-crawler.0eb87dab075b.png",
+          "sha256": "0eb87dab075b16793df9502988aac14321bf7d8ab5cd9c34141eddc4cf120a8c"
+        },
+        {
+          "id": "sailwatcher",
+          "sourceImage": "sources/sailwatcher.7aa921f67f4b.png",
+          "sha256": "7aa921f67f4bbfe8c1682e2f7f9dc3dc0426e4875a5c5eeee38128936d5b549b"
+        }
+      ],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-crop-study/wallpaper.7e6fddf5b584.png",
+        "sha256": "7e6fddf5b5844ed09d8fc2334fbf58fcaeb59957156cb24a1073b486527f624e",
+        "lineage": "Identity-correct wallpaper generated using the five selected artwork references; moved to intermediate studies, excluded from production selection."
+      },
+      "generationContext": "Separate wallpaper generation used the five selected original art images as identity references, followed by a layout-only built-in imagegen edit to preserve full figures/fringes in the smallest device crop. All intermediate prompts/images retained outside selected sources."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Jared requested tangible subjects and suitable small corner companions. Full artworks retain their space; a separate restrained native ornament serves the small headers."
+}

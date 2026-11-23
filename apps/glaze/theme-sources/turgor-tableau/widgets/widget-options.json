@@ -1,0 +1,62 @@
+[
+  {
+    "id": "folded-lung",
+    "kind": "art",
+    "image": "folded-lung.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folded Lung"
+  },
+  {
+    "id": "clasped-horizon",
+    "kind": "art",
+    "image": "clasped-horizon.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Clasped Horizon"
+  },
+  {
+    "id": "counterweight-veil",
+    "kind": "art",
+    "image": "counterweight-veil.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Counterweight Veil"
+  },
+  {
+    "id": "borrowed-axis",
+    "kind": "art",
+    "image": "borrowed-axis.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Borrowed Axis"
+  },
+  {
+    "id": "tension-crawler",
+    "kind": "art",
+    "image": "tension-crawler.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Tension Crawler"
+  }
+]

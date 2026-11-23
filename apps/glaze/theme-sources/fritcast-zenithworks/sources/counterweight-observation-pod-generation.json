@@ -1,0 +1,18 @@
+{
+  "id": "counterweight-observation-pod",
+  "prompt": "FRITCAST ZENITHWORKS for Glaze. ONE original1024x1024 standalone pure artwork on TRUE TRANSPARENT ALPHA, an invented useful public NOCTURNAL SKY-OBSERVATION STRUCTURE with a radically clear engineered silhouette. Physical craft PATE-DE-VERRE POWDERED-GLASS KILNCAST RELIEF: shapes formed from individually visible very small FUSED GLASS FRIT GRAINS, rough sugary matte granular faces, cloudy translucent thin lips, occasional tiny trapped pinholes and fragile chipped glass edges. Thin cast glass relief with solid structural ribs and open windows, grains subordinate to whole silhouette; no large polished3Dcrystal/gem toys, smooth ceramic/clay, marzipan/biscuit, royal-icing pipes, cylindrical seed beads/holes/threads, enamel metal-cell walls or digital optical/scientific orientation maps. Acid-lime #C9D77B, cobalt #4353A3, warm ochre #D4A145, cloudy oyster #E4E2D2, restrained ink-forest #20382F shadows. Purposeful access steps, shutters, hinges, counterweights, mirror apertures and viewing platforms clarify actual imagined observation function. No ordinary isolated telescope or routine object collection. Entire complete structure SMALL central64% with at least18% TRUE alpha margins on all4sides; open spaces genuinely transparent, no clipped roof/handle/stair/feet. No floor/terrain/scenery/pedestal, backing plaque/rectangle, enclosing border, halo/glow/drop shadow, baked light UI, letters/text/numbers/signage/symbols, clocks/date/battery/weather values or logo. No people/animals or weapons. Subject COUNTERWEIGHT OBSERVATION POD: one large round-to-oval open viewing POD hangs high RIGHT inside an oversized leaning ARCH FRAME. Pod has a half-open curved shell shutter, a small balcony lip/rail and a plainly visible triangular observation aperture inside, no telescope/dial. A thick articulated cast-glass suspension link from top pivot holds pod; on far LEFT a very heavy angular low COUNTERWEIGHT hangs from paired links running over the visible upper pulley, clearly balancing the pod. The arch frame stands on FOUR splayed open foot braces, one short angled access stair rises toward lower pod balcony. Tall asymmetric seesaw-like silhouette with big circular opening versus low block weight; every link/pulley/rib/hinge/rail including warm ochre areas is visibly rough GRANULAR KILNCAST GLASS FRIT, never smooth bright gold metal/cloisonne border. Lime/cream/cloudy blue edges, cobalt recesses, fine fused grains and tiny pinholes, not glass beads or rockcandytoy. Full arch top, weight, pod shutter tip, stair and ALL feet inside generous alpha margins, no ground or backing.",
+  "tool": "built-in image_gen",
+  "source": "sources/counterweight-observation-pod.ea725547.png",
+  "sourceSha256": "ea7255474be3a16bd1a81a61860bc1764e038ff9c83f5a15d45be037ce2c2e88",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/counterweight-observation-pod.1ab48ca1.png",
+  "sha256": "1ab48ca166a5e5ff5d64863dae888a6f5853d09e1167f413947cfacb696efd49",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

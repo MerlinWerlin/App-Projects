@@ -1,0 +1,18 @@
+{
+  "id": "hanging-rain-vault",
+  "prompt": "ONE original standalone 1024x1024 square artwork for PORCELAIN UMBRA. A tiny impossible HANGING RAIN VAULT sculpted entirely of hand-pierced ivory bisque porcelain. A broad upturned saddle-shaped roof floats above seven descending staggered flat ceramic rain-blades, each perforated with fine vertical slits, blades connected by tiny porcelain bridges, no string. Their offset heights make a dramatically jagged geometric fringe and a large open hollow below the saddle. Architecture of a rainstorm translated into slip-cast sheets, emphatically unlike a spiral, staircase or concertina screen. Fine matte ceramic grain, barely warped knife-thin edges, warm amber light passing through slots, midnight indigo shaded cavities. Photograph of a physical gallery craft piece, frontal low angle, sculptural strong wide top-heavy silhouette. Entire subject central 65% of canvas with fully transparent 18% margins, real alpha, no ground, backdrop, pedestal, hands or base. All elements attached into one coherent crafted sculpture. No text, numerals, letters, icons, logos, UI, live values, clocks or dials, animals, jewellery or everyday objects. One artwork only, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/hanging-rain-vault.02fe0ace.png",
+  "sourceSha256": "02fe0ace5d11cd8e4321b65e9323727cca0c10f1a3c653b312247c5ec25cbccc",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/hanging-rain-vault.62bb4be1.png",
+  "sha256": "62bb4be1737b5fcf4b03c51130f7d2828fa313583f0353660202d24e21ca4b2f",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

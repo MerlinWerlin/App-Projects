@@ -1,0 +1,17 @@
+{
+  "name": "Veinlight Orchard",
+  "mood": "Whole autumn plants and seed cases reveal their quiet, open branching structures.",
+  "tags": [
+    "botanical-skeleton",
+    "vascular-network",
+    "open-calyx",
+    "dry-plant-tissue",
+    "natural-history"
+  ],
+  "credits": "Glaze original built-in image_gen artwork. Artistic botanical skeletonization interpretation, not an authentic prepared specimen or scientific taxon/preparation record.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Whole recognizable botanical organs after soft tissue is absent, leaving dry matte irregular naturally branching vascular networks and genuine empty open holes. No woven textile, wire cage or continuous translucent membrane. Original prompts and source hashes retained; no external visual inputs.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

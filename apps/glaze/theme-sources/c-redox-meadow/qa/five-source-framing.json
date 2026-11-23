@@ -1,0 +1,77 @@
+[
+  {
+    "id": "oak-spiral-fronts",
+    "sourceSha256": "cc3e25806e98a6ba577ec634d033fb0b1c2dfcfd7ffc1f7b6dea7e4323c43fdf",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "rawAlpha16Bounds": [
+      139,
+      133,
+      1118,
+      1160
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "bullfinch-wavefronts",
+    "sourceSha256": "2365d4b4499dda5f6d0dd45e16f24f384777c5c4c34667a139634249d1a3a989",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "rawAlpha16Bounds": [
+      213,
+      263,
+      1043,
+      1061
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "hare-wavefronts",
+    "sourceSha256": "368eb62e1e053dd711858fcd85d570fbb12b04b77e983a9c48b122a245a6f67b",
+    "sourceDimensions": [
+      1312,
+      1199
+    ],
+    "rawAlpha16Bounds": [
+      77,
+      48,
+      1200,
+      1155
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "iris-wavefronts",
+    "sourceSha256": "9f0714d84f6e153312cb00b0f25a0f26d46f5a1054d4a3434c6a43b5db4a2e1b",
+    "sourceDimensions": [
+      1254,
+      1254
+    ],
+    "rawAlpha16Bounds": [
+      131,
+      97,
+      1058,
+      1179
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "snail-wavefronts",
+    "sourceSha256": "734adeea2edbb3055f261473de70f432a261847db693e4b0cef96646a7c380b7",
+    "sourceDimensions": [
+      1312,
+      1199
+    ],
+    "rawAlpha16Bounds": [
+      133,
+      312,
+      1152,
+      936
+    ],
+    "frameAlphaMaximum": 1
+  }
+]

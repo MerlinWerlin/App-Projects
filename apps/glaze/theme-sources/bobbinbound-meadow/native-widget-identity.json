@@ -1,0 +1,18 @@
+{
+  "themeId": "bobbinbound-meadow",
+  "recipe": [
+    "arch",
+    "bobbinFern",
+    "bobbinMesh",
+    "beads",
+    "leaf",
+    "trail",
+    "folio"
+  ],
+  "art": {
+    "bobbinFern": "M 29 92 Q 43 48 64 13 M 39 67 Q 13 67 12 48 Q 32 42 43 58 M 48 49 Q 27 43 30 27 Q 48 23 54 38 M 58 31 Q 49 15 62 8 Q 75 17 65 25 M 43 61 Q 63 40 82 48 Q 78 65 48 69 M 52 43 Q 70 23 87 31 Q 84 49 58 51 M 35 79 Q 57 67 72 77 Q 61 94 32 88 M 30 88 Q 14 87 10 76 Q 24 68 35 79",
+    "bobbinMesh": "M 10 30 L 30 12 L 50 30 L 30 48 Z M 50 30 L 70 12 L 90 30 L 70 48 Z M 10 66 L 30 48 L 50 66 L 30 84 Z M 50 66 L 70 48 L 90 66 L 70 84 Z M 27 9 L 30 5 L 33 9 M 67 9 L 70 5 L 73 9 M 27 88 L 30 93 L 33 88 M 67 88 L 70 93 L 73 88"
+  },
+  "ornament": "M 29 78 Q 42 47 67 25 M 40 59 Q 23 54 25 39 Q 42 36 48 49 M 49 43 Q 45 26 58 20 Q 70 29 61 36 M 34 75 Q 19 75 18 63 Q 32 58 40 68 M 65 55 L 70 58 M 75 38 L 79 42",
+  "direction": "Unfolding fern frond as full illustration, paired-thread diamond grounds and pin-loop joins as detail; arched lace rim, knot-like bead markers, leaf hands, curved thread-trail charge gauge and folio calendar. Compact companion is one short fern tip with two picot-loop leaves and two small thread bindings, no complete animal or habitat in headers."
+}

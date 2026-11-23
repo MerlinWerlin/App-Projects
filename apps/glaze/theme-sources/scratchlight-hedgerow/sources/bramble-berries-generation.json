@@ -1,0 +1,26 @@
+{
+  "id": "bramble-berries",
+  "label": "Bramble Berries",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE: one independent square pure-art asset on true transparent alpha. Our own accepted hare reference supplies the BLACK-INK SCRATCHBOARD medium only; create this different recognizable natural subject. Flat deep matte SOOT-BLACK INK RESERVES form the whole subject, with crisp warm-IVORY KNIFE-SCRATCHED directional strokes revealing texture and light. Every scratch has a sharp carved/chisel end, slight hand-cut line-width variation, broad opaque black areas between clusters. Exactly black and warm ivory, no color. No soft gray photographic shading, granular mezzotint burr, dark-line-on-white etching, woodblock ink patches, pencil, charcoal smudge, glossy material, 3D sculpture or paper fibres. Real natural anatomy first, illustration remains immediately recognizable at85px. Full silhouette cutout with true alpha outside and in major gaps. Whole subject inside central68% canvas, generous transparent margins around ALL extremities. No rectangular board/plaque/panel, ground/floor/scenery, cast shadow, glow, backing, border/collage. No lettering/signature/number/label/logo, no UI/clock/dial/battery/calendar/readings. SUBJECT: One familiar BRAMBLE SPRAY: a gently curved thorny stem with THREE serrated compound leaf clusters and one compact cluster of FIVE ripe BLACKBERRIES. Natural knobbly fused drupelets, star-shaped calyces and a few tiny thorns, white scratch highlights on individual berries. Each compound cluster has three to five distinct serrated leaflets, directional ivory scratch veins in broad black leaves. Graceful open irregular botanical silhouette, no pot/vase/ribbon or animal. Complete stem ends, all leaflets/thorns and berry tips safely whole.",
+  "source": "sources/bramble-berries.54923310708d.png",
+  "sourceSha256": "54923310708d0d20d0cf06df33c0eb09a4fe4ebc431a08a5ca3b2a20405e09fe",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/bramble-berries.fcd765bdb4e6.png",
+  "sha256": "fcd765bdb4e62c93dc88385dec9d5eb10b45e77992974f9214062718cfb192bf",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/hare.dcc38cfb5aaf.png",
+      "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+      "purpose": "Own first accepted hare supplies scratchboard marks and two-tone material only; independent different natural subject."
+    }
+  ]
+}

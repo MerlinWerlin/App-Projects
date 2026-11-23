@@ -1,0 +1,165 @@
+{
+  "themeId": "smockfold-tundra",
+  "scope": "Five selected artworks, raw sources, options, palette and metadata after visual QA. Coordinator accepted the first material sample unchanged. Lane B validated the full source candidate and rendered the exact app selector and native layouts.",
+  "reviewAuthority": "coordinator accepted first material sample",
+  "files": {
+    "widgets/alpine-forget-me-not.432e1c2e.png": "432e1c2e98f1ece9a6bdd939de1d7a6e23311935c898bbcad59a2871410a1d60",
+    "widgets/alpine-willow.8c045612.png": "8c0456124b5c6381e97fc693081c961dc1a25bdc9271ae83010d3a46bda566a9",
+    "widgets/american-pika.facd5355.png": "facd5355b19fb339f3b9034cb64e1b411f2808fae75dbb2a51c43f4aeea5d573",
+    "widgets/mountain-goat.d500407e.png": "d500407e1805afbe753c0547dab1e0e7df8f775d535893f6083f8d60b8533bdd",
+    "widgets/README.md": "0324dbb7e4318bf9d0646aa3189fe6a34b6cf23d30565bc01a7f18f4155efa77",
+    "widgets/white-tailed-ptarmigan.5a10f65e.png": "5a10f65e47114a31cea19f9f346d57b63b44922bde884c8a5e1b055bb60aed94",
+    "widgets/widget-options.json": "62ee99e077d2fda5dd794de51fc597c3f54644f50f421befc5175e43edffa8a9",
+    "sources/alpine-forget-me-not-generation.json": "f9acd6ad858aa4fa35de96262ac57a2554af0eb436a11332a9ff74545c05260e",
+    "sources/alpine-forget-me-not.965c51bc.png": "965c51bcfca8e1054f32bc563f0c182322c118b986a00426412c5af5ff99d554",
+    "sources/alpine-willow-generation.json": "677415995c2a9c3062af8d59bce6c335f1579ae907254e7b6b82ed8cbbd2a55a",
+    "sources/alpine-willow.5735d6c6.png": "5735d6c62644a4f316397b5a6a67d31ea3c0309c6333a40d7cbaccd114ec1088",
+    "sources/american-pika-generation.json": "720e3401ff90b92a7c566e3fb87df178e4012f259237ed2f645b4d190117ab83",
+    "sources/american-pika.e336d19b.png": "e336d19b350aaafcb1d59f860befbca2bfea2640054ec8ddf7857bf6ed7faa98",
+    "sources/mountain-goat-generation.json": "e12901796c66eaadee4a9948fced2505dab6d01fca3ba252cb3c10a1ba55648e",
+    "sources/mountain-goat.d878ea71.png": "d878ea7145ddba0eda06f1cf32be486fee3e0ea2528aeee5dcfb158ae7727ec3",
+    "sources/README.md": "37fb033bbd2b19036277f10678220d7e48f855cd6c037582c5d2bc28ca58bd51",
+    "sources/white-tailed-ptarmigan-generation.json": "7200b144919674f7c777393c5b9fbac25b58b5aba471b0c2ad02bbc25a76e9e4",
+    "sources/white-tailed-ptarmigan.d3c97098.png": "d3c97098842e8430de6f32666ce1e62fbc2b7b8072f7f004bf2faf6a23ae10bb",
+    "palette.json": "a13b4aca57e8f741d155243807b173ca776bba57c443f92db1968a81829a4aff",
+    "meta.json": "0e722c0935366ddc9c9f6fc1a432763b23a91b127c0dc614299884cd94ed468e"
+  },
+  "firstSelectedSourceSha256": "d3c97098842e8430de6f32666ce1e62fbc2b7b8072f7f004bf2faf6a23ae10bb",
+  "artworkProvenance": [
+    {
+      "id": "white-tailed-ptarmigan",
+      "prompt": "SMOCKFOLD TUNDRA for Glaze. One independent original whole identifiable alpine tundra specimen rendered as a hand-sewn sculptural fine linen model, isolated on genuine transparent alpha. Treat the material pattern as the unusual physical craft of SMOCKING a single coherent sheet of close woven linen. Each broad sculpted panel contains a few large recurring loose folds: thick rounded soft cloth ridges close into a sharply pinched shared junction, a visible tiny double catch stitch locks two opposing folds, and the same cloth flares back outward to the next staggered junction. Make a forgiving interlocked tension field of actual same-sheet accordion puckers in three long staggered rows. Each flat linen sheet is pinched repeatedly into wide opposing open eye-shaped cloth pockets, with physically clear fold shadows and air in the pocket mouth. The woven linen is slow folded, fluffy at bend but crisply fine in weave. No stuffed individual cushions. Shared cloth passes continuously between recurring pinches. Tiny slate-gray threads cross only at the pinch points; thread joins have physical tension and raised fabric, no printed stitches or embroidery across flat textile. Use a visibly dimensional natural form built from mainly pale warm ecru linen, with one broad cool pale slate section in shadow. Very sparse desaturated pale ochre, warm tan or muted alpine blue on natural details only. Subtle soft side light, quiet continuous surface sections beside the big gathered area. Keep principal pattern bold enough at 85 thumbnail pixels, low count of big tufts linked by sparse fine contrast catch stitches. Avoid padded quilted diamonds, rounded beads or bubble pellets, patched components, separate leaves forming body, printed grids, origami creases, starched plant husks, rows of wool loops, cut strips or rawhide scales, synthetic velvet shine, feathers, crochet, puff jacket, craft doll or button eyes. One complete unmistakable specimen. Keep all anatomy inside wide clean transparent margins. No stand, ground shadow, cast snow, loose threads around whole canvas, badges, backdrop, outline, caption, typography or decorative accessories. FIRST SUBJECT: one whole winter WHITE-TAILED PTARMIGAN from a low slightly three-quarter side view, left facing, head raised just a little as it stands on both actual feet. A small-bodied short-necked rounded grouse, with a low smooth head, one dark small natural eye, short stout dark bill and one fully white short tail extending to the right. Both two short distinct attached legs and naturally feather-covered chunky toes visible below body, all tips and toes in frame. Natural compact heavy grouse silhouette. The tail is solid cream linen (head and tail without lattice), no crest tuft and no colorful facial markings. Across the broad visible flank and partly folded wing, color-matched WIDE ecru cotton-looking linen folds alternate into at least five sequential staggered gathered junctions, each held by a short slate twin catch stitch. Show real pinch and flare geometry and stable continuous sheet between nodes. Keep the chest a connected soft smooth linen field. Show soft continuous physically relaxed fabric, with sparse clear fold bridges and three large visible patches of lateral fold shadow. A limited slate-lavender underside is light and shading only, not a real violet feather color. No rock, leaf, snow clump, perch, fake tiny wing seams or eye embroidery. Show both feet fully so the natural stance is clear.",
+      "tool": "built-in image_gen",
+      "source": "sources/white-tailed-ptarmigan.d3c97098.png",
+      "sourceSha256": "d3c97098842e8430de6f32666ce1e62fbc2b7b8072f7f004bf2faf6a23ae10bb",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/white-tailed-ptarmigan.5a10f65e.png",
+      "sha256": "5a10f65e47114a31cea19f9f346d57b63b44922bde884c8a5e1b055bb60aed94",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "american-pika",
+      "prompt": "SMOCKFOLD TUNDRA for Glaze. One independent original whole identifiable alpine tundra specimen rendered as a hand-sewn sculptural fine linen model, isolated on genuine transparent alpha. Treat the material pattern as the unusual physical craft of SMOCKING a single coherent sheet of close woven linen. Each broad sculpted panel contains a few large recurring loose folds: thick rounded soft cloth ridges close into a sharply pinched shared junction, a visible tiny double catch stitch locks two opposing folds, and the same cloth flares back outward to the next staggered junction. Make a forgiving interlocked tension field of actual same-sheet accordion puckers in three long staggered rows. Each flat linen sheet is pinched repeatedly into wide opposing open eye-shaped cloth pockets, with physically clear fold shadows and air in the pocket mouth. The woven linen is slow folded, fluffy at bend but crisply fine in weave. No stuffed individual cushions. Shared cloth passes continuously between recurring pinches. Tiny slate-gray threads cross only at the pinch points; thread joins have physical tension and raised fabric, no printed stitches or embroidery across flat textile. Use a visibly dimensional natural form built from mainly pale warm ecru linen, with one broad cool pale slate section in shadow. Very sparse desaturated pale ochre, warm tan or muted alpine blue on natural details only. Subtle soft side light, quiet continuous surface sections beside the big gathered area. Keep principal pattern bold enough at 85 thumbnail pixels, low count of big tufts linked by sparse fine contrast catch stitches. Avoid padded quilted diamonds, rounded beads or bubble pellets, patched components, separate leaves forming body, printed grids, origami creases, starched plant husks, rows of wool loops, cut strips or rawhide scales, synthetic velvet shine, feathers, crochet, puff jacket, craft doll or button eyes. One complete unmistakable specimen. Keep all anatomy inside wide clean transparent margins. No stand, ground shadow, cast snow, loose threads around whole canvas, badges, backdrop, outline, caption, typography or decorative accessories.  NEW SEPARATE SUBJECT. One single whole AMERICAN PIKA low upright and looking to the right, near side on. Small somewhat oval high country hare relative with distinct round upright ears, short tapered muzzle, one natural dark eye, tiny short whisker suggestions, two short attached forward paws at different angles and two low padded rear feet with natural spacing, no visible tail. Warm-biscuit oat linen with one broader pale straw area and quiet ivory underside. Main broad hip and upper back run of four staggered same-sheet pinches, short dark slate catch stitches, and three big connected hollow cloth eye recesses. A compact pouch-shaped body is not a plush doll. Keep natural small ears and enough profile gap to distinguish them. Point the back sweep down toward a low broad rump. No rock or stem props. Entire paws and both ears free of the edge. The attached own ptarmigan is the MATERIAL reference only for the continuous smocked linen and paired little catches. Create an entirely new composition with the subject above.",
+      "tool": "built-in image_gen",
+      "source": "sources/american-pika.e336d19b.png",
+      "sourceSha256": "e336d19b350aaafcb1d59f860befbca2bfea2640054ec8ddf7857bf6ed7faa98",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/american-pika.facd5355.png",
+      "sha256": "facd5355b19fb339f3b9034cb64e1b411f2808fae75dbb2a51c43f4aeea5d573",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "white-tailed-ptarmigan",
+          "file": "sources/white-tailed-ptarmigan.d3c97098.png",
+          "sha256": "d3c97098842e8430de6f32666ce1e62fbc2b7b8072f7f004bf2faf6a23ae10bb",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/american-pika-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/american-pika-exact-tool-result.json"
+    },
+    {
+      "id": "mountain-goat",
+      "prompt": "SMOCKFOLD TUNDRA for Glaze. One independent original whole identifiable alpine tundra specimen rendered as a hand-sewn sculptural fine linen model, isolated on genuine transparent alpha. Treat the material pattern as the unusual physical craft of SMOCKING a single coherent sheet of close woven linen. Each broad sculpted panel contains a few large recurring loose folds: thick rounded soft cloth ridges close into a sharply pinched shared junction, a visible tiny double catch stitch locks two opposing folds, and the same cloth flares back outward to the next staggered junction. Make a forgiving interlocked tension field of actual same-sheet accordion puckers in three long staggered rows. Each flat linen sheet is pinched repeatedly into wide opposing open eye-shaped cloth pockets, with physically clear fold shadows and air in the pocket mouth. The woven linen is slow folded, fluffy at bend but crisply fine in weave. No stuffed individual cushions. Shared cloth passes continuously between recurring pinches. Tiny slate-gray threads cross only at the pinch points; thread joins have physical tension and raised fabric, no printed stitches or embroidery across flat textile. Use a visibly dimensional natural form built from mainly pale warm ecru linen, with one broad cool pale slate section in shadow. Very sparse desaturated pale ochre, warm tan or muted alpine blue on natural details only. Subtle soft side light, quiet continuous surface sections beside the big gathered area. Keep principal pattern bold enough at 85 thumbnail pixels, low count of big tufts linked by sparse fine contrast catch stitches. Avoid padded quilted diamonds, rounded beads or bubble pellets, patched components, separate leaves forming body, printed grids, origami creases, starched plant husks, rows of wool loops, cut strips or rawhide scales, synthetic velvet shine, feathers, crochet, puff jacket, craft doll or button eyes. One complete unmistakable specimen. Keep all anatomy inside wide clean transparent margins. No stand, ground shadow, cast snow, loose threads around whole canvas, badges, backdrop, outline, caption, typography or decorative accessories.  NEW SEPARATE SUBJECT. One whole NORTH AMERICAN MOUNTAIN GOAT standing in clean three-quarter left profile. Solid cream mature body, woolly neck ruff made of irregular continuous pale fabric, angular forehead, one small beard tip, two gently backward-pointing short black horns, two triangular ears and all four distinct attached sturdy legs with dark cloven hooves. Natural white mountain goat proportions and one short natural tapered tail. The broad ribcage and flank are a continuous panel of wide gathered smocked linen, with five evenly staggered tuck points and brief paired slate catch thread bridges. Make room between the hooves so the four legs read clearly. Soft folds gather into the chest, simple quiet rear leg contour. Avoid long S horns, spiral ram horns or thick stuffed cushion sections. No ledge or mountain ground. The attached own ptarmigan is the MATERIAL reference only for the continuous smocked linen and paired little catches. Create an entirely new composition with the subject above.",
+      "tool": "built-in image_gen",
+      "source": "sources/mountain-goat.d878ea71.png",
+      "sourceSha256": "d878ea7145ddba0eda06f1cf32be486fee3e0ea2528aeee5dcfb158ae7727ec3",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/mountain-goat.d500407e.png",
+      "sha256": "d500407e1805afbe753c0547dab1e0e7df8f775d535893f6083f8d60b8533bdd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "white-tailed-ptarmigan",
+          "file": "sources/white-tailed-ptarmigan.d3c97098.png",
+          "sha256": "d3c97098842e8430de6f32666ce1e62fbc2b7b8072f7f004bf2faf6a23ae10bb",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/mountain-goat-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/mountain-goat-exact-tool-result.json"
+    },
+    {
+      "id": "alpine-willow",
+      "prompt": "SMOCKFOLD TUNDRA for Glaze. One independent original whole identifiable alpine tundra specimen rendered as a hand-sewn sculptural fine linen model, isolated on genuine transparent alpha. Treat the material pattern as the unusual physical craft of SMOCKING a single coherent sheet of close woven linen. Each broad sculpted panel contains a few large recurring loose folds: thick rounded soft cloth ridges close into a sharply pinched shared junction, a visible tiny double catch stitch locks two opposing folds, and the same cloth flares back outward to the next staggered junction. Make a forgiving interlocked tension field of actual same-sheet accordion puckers in three long staggered rows. Each flat linen sheet is pinched repeatedly into wide opposing open eye-shaped cloth pockets, with physically clear fold shadows and air in the pocket mouth. The woven linen is slow folded, fluffy at bend but crisply fine in weave. No stuffed individual cushions. Shared cloth passes continuously between recurring pinches. Tiny slate-gray threads cross only at the pinch points; thread joins have physical tension and raised fabric, no printed stitches or embroidery across flat textile. Use a visibly dimensional natural form built from mainly pale warm ecru linen, with one broad cool pale slate section in shadow. Very sparse desaturated pale ochre, warm tan or muted alpine blue on natural details only. Subtle soft side light, quiet continuous surface sections beside the big gathered area. Keep principal pattern bold enough at 85 thumbnail pixels, low count of big tufts linked by sparse fine contrast catch stitches. Avoid padded quilted diamonds, rounded beads or bubble pellets, patched components, separate leaves forming body, printed grids, origami creases, starched plant husks, rows of wool loops, cut strips or rawhide scales, synthetic velvet shine, feathers, crochet, puff jacket, craft doll or button eyes. One complete unmistakable specimen. Keep all anatomy inside wide clean transparent margins. No stand, ground shadow, cast snow, loose threads around whole canvas, badges, backdrop, outline, caption, typography or decorative accessories.  NEW SEPARATE SUBJECT. One miniature WHOLE CREEPING ALPINE WILLOW SHOOT seen from a little above, roughly diagonal left to right. One conventional low branching flexible woody shoot supporting several small elliptical entire-margined leaves on short petioles and three attached narrow upright willow catkins with a soft long ovoid outline. Use desaturated sage and cream linen in the larger leaves, with one lengthwise opposing pair of same-sheet flap folds held together by small catch stitches, and shallow openings that show their continuous fabric. The three pale flax catkins use softly gathered narrow cloth pockets outlined by short sparse dark catch stitches, recognizable cylindrical catkins with a pointed short tip and no round beads. A low coherent little alpine sprig, no separate parts, snow or trailing loose threads. All stem tips and foliage comfortably within frame. The attached own ptarmigan is the MATERIAL reference only for the continuous smocked linen and paired little catches. Create an entirely new composition with the subject above.",
+      "tool": "built-in image_gen",
+      "source": "sources/alpine-willow.5735d6c6.png",
+      "sourceSha256": "5735d6c62644a4f316397b5a6a67d31ea3c0309c6333a40d7cbaccd114ec1088",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/alpine-willow.8c045612.png",
+      "sha256": "8c0456124b5c6381e97fc693081c961dc1a25bdc9271ae83010d3a46bda566a9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "white-tailed-ptarmigan",
+          "file": "sources/white-tailed-ptarmigan.d3c97098.png",
+          "sha256": "d3c97098842e8430de6f32666ce1e62fbc2b7b8072f7f004bf2faf6a23ae10bb",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/alpine-willow-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/alpine-willow-exact-tool-result.json"
+    },
+    {
+      "id": "alpine-forget-me-not",
+      "prompt": "SMOCKFOLD TUNDRA for Glaze. One independent original whole identifiable alpine tundra specimen rendered as a hand-sewn sculptural fine linen model, isolated on genuine transparent alpha. Treat the material pattern as the unusual physical craft of SMOCKING a single coherent sheet of close woven linen. Each broad sculpted panel contains a few large recurring loose folds: thick rounded soft cloth ridges close into a sharply pinched shared junction, a visible tiny double catch stitch locks two opposing folds, and the same cloth flares back outward to the next staggered junction. Make a forgiving interlocked tension field of actual same-sheet accordion puckers in three long staggered rows. Each flat linen sheet is pinched repeatedly into wide opposing open eye-shaped cloth pockets, with physically clear fold shadows and air in the pocket mouth. The woven linen is slow folded, fluffy at bend but crisply fine in weave. No stuffed individual cushions. Shared cloth passes continuously between recurring pinches. Tiny slate-gray threads cross only at the pinch points; thread joins have physical tension and raised fabric, no printed stitches or embroidery across flat textile. Use a visibly dimensional natural form built from mainly pale warm ecru linen, with one broad cool pale slate section in shadow. Very sparse desaturated pale ochre, warm tan or muted alpine blue on natural details only. Subtle soft side light, quiet continuous surface sections beside the big gathered area. Keep principal pattern bold enough at 85 thumbnail pixels, low count of big tufts linked by sparse fine contrast catch stitches. Avoid padded quilted diamonds, rounded beads or bubble pellets, patched components, separate leaves forming body, printed grids, origami creases, starched plant husks, rows of wool loops, cut strips or rawhide scales, synthetic velvet shine, feathers, crochet, puff jacket, craft doll or button eyes. One complete unmistakable specimen. Keep all anatomy inside wide clean transparent margins. No stand, ground shadow, cast snow, loose threads around whole canvas, badges, backdrop, outline, caption, typography or decorative accessories.  NEW SEPARATE SUBJECT. One deep blue ALPINE FORGET-ME-NOT cushion plant with five substantial flowers near one another, visible as a low cluster with compact narrow dark gray-green slightly hairy leaves. Use five broad round petals per fully open bloom and a small soft yellow central ring, tapered short stalks and two small side on buds part of the same plant. The larger smoky sky blue corollas are coherent folded linen pieces gathered at their centers. Each is pinched where two folds meet and then opens into big curved soft flower lobes. The short slate catches hold the cloth petals in position with actual recessed fold geometry. Use three rows of gatherings on one handful of leaves grouped under the low flowers. No embroidery patch, knitting, punched yarn, plastic, raised round knots, vase, pot, dirt or rocky pedestal. Every flower, small leaf and short base stays fully inside the transparent margin. The attached own ptarmigan is the MATERIAL reference only for the continuous smocked linen and paired little catches. Create an entirely new composition with the subject above.",
+      "tool": "built-in image_gen",
+      "source": "sources/alpine-forget-me-not.965c51bc.png",
+      "sourceSha256": "965c51bcfca8e1054f32bc563f0c182322c118b986a00426412c5af5ff99d554",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/alpine-forget-me-not.432e1c2e.png",
+      "sha256": "432e1c2e98f1ece9a6bdd939de1d7a6e23311935c898bbcad59a2871410a1d60",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "white-tailed-ptarmigan",
+          "file": "sources/white-tailed-ptarmigan.d3c97098.png",
+          "sha256": "d3c97098842e8430de6f32666ce1e62fbc2b7b8072f7f004bf2faf6a23ae10bb",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/alpine-forget-me-not-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/alpine-forget-me-not-exact-tool-result.json"
+    }
+  ],
+  "firstApprovedSourceSha256": "d3c97098842e8430de6f32666ce1e62fbc2b7b8072f7f004bf2faf6a23ae10bb"
+}

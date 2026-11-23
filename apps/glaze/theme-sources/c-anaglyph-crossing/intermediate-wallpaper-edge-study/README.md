@@ -1,0 +1,1 @@
+Prior selected anaglyph crossing wallpaper preserved for a layout-only crop-safety edit after Jared clarified both corner placements. The foreground keel-skater rocker feet are trimmed by the smallest actual device crop. Landscape may bleed; primary creature limbs should remain complete. No independent Artwork raster/native path/palette edits.

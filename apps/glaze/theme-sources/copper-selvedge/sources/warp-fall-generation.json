@@ -1,0 +1,18 @@
+{
+  "id": "warp-fall",
+  "prompt": "ONE standalone square 1024x1024 production artwork for Glaze COPPER SELVEDGE. Physical metal-textile relief called WARP FALL: a wide woven copper river bends over a sharp unsupported invisible ledge, its turquoise patinated weft breaks away so burnished copper warp ribbons hang downward in a long uneven fringe. Upper portion is a low undulating horizontal woven plane, bottom half vertical ribbon waterfall, bold inverted-T silhouette. All material visibly hand woven over-under from thin narrow annealed copper strips and verdigris aquamarine metal filaments, hammered edges, tiny scratches, fraying and slight irregularity. Museum craft photograph with low grazing light, warm copper #CE8657 and turquoise #65BAA9 against dark green inner shadows. NOT liquid, not cloth, not wood, not organic coral, no ordinary object. One complete isolated self-contained relief with actual transparent alpha background and 18% empty margin; no floor, square backing plate, pedestal or hand. Readable from thumbnail, sculpture central 65%. No text, digits, letters, clock, battery, date, UI, logos or border. No collage, panel grid or variants.",
+  "tool": "built-in image_gen",
+  "source": "sources/warp-fall.705af95c.png",
+  "sourceSha256": "705af95cc45af1aa6eb3d8950c96ddfcd33df347ec8a2fa0e0a78a0d13018f07",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/warp-fall.654200c5.png",
+  "sha256": "654200c583abf661c7e333702c349b4929123ca08995e50073f8af58ce738333",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

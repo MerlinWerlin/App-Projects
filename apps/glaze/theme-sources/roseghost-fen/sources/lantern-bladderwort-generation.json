@@ -1,0 +1,19 @@
+{
+  "id": "lantern-bladderwort",
+  "label": "Lantern Bladderwort",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept production illustration. GLAZE ROSEGHOST FEN. ONE new separate square1024x1024 pure artwork: LANTERN BLADDERWORT, an invented living wetland plant. A compact asymmetric tuft of thin curling underwater roots supports two broad droplet-shaped translucent bladder leaves, a single arching stem and three small hooded flowers, with delicate branching capillary veins inside the broad leaf forms. It must read clearly as a tangible wild flowering marsh plant, never as cups, vases, lamps, machinery or abstract symbols. The distinctive image process is a WARM ANTHOTYPE-INSPIRED PLANT-PIGMENT CONTACT PRINT: entirely flat soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale fine capillary-vein voids, gently sun-faded contact edges, mottled bleaching and subtle translucent overlap. Darkest pigment muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. Broad readable botanical silhouette and beautiful close-up pigment detail. No outline drawing, black ink contour, glossy3D modelling, lighting shadows, paper cutout, cyan-blue engineering print or polished sculpture. Paper/pigment texture belongs ONLY inside the coloured subject marks. Empty surrounding area must be TRUE TRANSPARENT ALPHA, and small open gaps/veins may be transparent. No rectangular paper backing, cream square, tile, ground, floor, halo, border or frame. Whole plant and every root/flower inside central72% of square with at least14% empty alpha on every side; no clipping. Flat contact-print artwork only, no text, letters, numerals, clocks/dials, date/battery/weather readings, UI, logo, watermark or signature. A single individual original asset, no collage/contact sheet/multiple panels.",
+  "source": "sources/lantern-bladderwort.8d482e372f74.png",
+  "sourceSha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/lantern-bladderwort.a68c5c93abb8.png",
+  "sha256": "a68c5c93abb834a617b0f510740616925995419936b54f23338cfc00649e3a76",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits."
+}

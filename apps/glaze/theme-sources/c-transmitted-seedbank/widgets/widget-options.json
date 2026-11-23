@@ -1,0 +1,67 @@
+[
+  {
+    "id": "honesty-seedhead",
+    "kind": "art",
+    "image": "honesty-seedhead.d5e2713d2f77.png",
+    "sha256": "d5e2713d2f779be7e04f600c94a3959a22720e24c7b27a64e3d350e2c1cb8e76",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Honesty Seedhead"
+  },
+  {
+    "id": "maple-samaras",
+    "kind": "art",
+    "image": "maple-samaras.d1363da835b2.png",
+    "sha256": "d1363da835b20b1238da44d7e824932d97fdf025c0d88de07906516586f3ac71",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Maple Samaras"
+  },
+  {
+    "id": "physalis-lantern",
+    "kind": "art",
+    "image": "physalis-lantern.17f71bd31b76.png",
+    "sha256": "17f71bd31b7622cc9c1e042a2a52df97065d4e1cfd0b7cbba90815432024f482",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Physalis Lantern"
+  },
+  {
+    "id": "beech-leaf",
+    "kind": "art",
+    "image": "beech-leaf.f0b67dabf0ee.png",
+    "sha256": "f0b67dabf0ee1b03c5fd8fe0536508da26611d847bfa975fed93cd00117cb5ec",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Beech Leaf"
+  },
+  {
+    "id": "lacewing-seedgrass",
+    "kind": "art",
+    "image": "lacewing-seedgrass.f31cc924acd8.png",
+    "sha256": "f31cc924acd818a6441595f121d0a5be0ac52932eb72e5d0ba5dce98ca8b218c",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lacewing Seedgrass"
+  }
+]

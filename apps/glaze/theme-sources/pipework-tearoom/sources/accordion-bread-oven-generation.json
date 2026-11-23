@@ -1,0 +1,18 @@
+{
+  "id": "accordion-bread-oven",
+  "prompt": "PIPEWORK TEAROOM for Glaze: one separately generated ORIGINAL1024x1024 artwork on true transparent alpha, an invented but useful communal TEA ENGINE, visible unusual engineering and clear function, not a collection of ordinary cups. Physical craft medium HAND-PIPED ROYAL-ICING BAS-RELIEF. EVERY surface built from individually piped close parallel ROPE RIDGES, star-nozzle ribbed lines, shell-swags and tiny bead joins; restrained matte sugar pores, irregular nozzle starts/ends and delicate brittle edges. Thin flat3â€“5mm confectionery illustration, never a smooth clay/resin/plastic toy, fabric stitching, coral, foam, blown glass, wax or digital gradient painting. Oyster-cream #EEE3C9, pistachio #A3BA97, apricot #DDA18B, caramel #CAAC6B and quiet blueberry #665772. The medium texture must be visible and subordinate to a strong readable engineered silhouette. Actual hinges, pipework, handles, access ledges and purposeful moving parts, visually weird shape yet immediately comprehensible task. All large openings transparent. Entire complete subject SMALL within central64% of square, at least18% true alpha margin on EVERY side, no clipped feet/handles/wings. No cake/cookie/backing plaque/rectangle, enclosing border, pedestal/ground/floor, scenery, pale halo or drop shadow. No ordinary teacup grouping, people, plants, lettering/numerals, signage, symbols, clocks/dates/gauges/battery/weather values, UI, logo or signature. Subject ACCORDION BREAD OVEN: one low WIDE EXPANDING OVEN whose chamber is SIX nested open arched ribs connected by pleated accordion walls. The front arch on left is wide open, revealing a shallow ribbed baking shelf and one small unmarked elongated loaf; rear arch tapers to the right. Each rib has tiny shell-swags and bead hinge joins, all surfaces matte piped royal icing rather than metal or clay. A long hinged BREAD PADDLE with fan-shaped blade swings out diagonally high right from a side pivot, its handle cradled in a little support. A small FOOT PEDAL near front left operates a visible open linkage to extend the accordion chamber. Four short splayed feet, open air under the oven, no plinth or ground. Clear unusual yet useful expanding communal bread oven, broad horizontal silhouette contrasting all other tea engines. Complete front arch, pleats, paddle/handle, pedal linkage and all feet contained inside large alpha margins; no steam or pale background/shadow/halo.",
+  "tool": "built-in image_gen",
+  "source": "sources/accordion-bread-oven.9ed86d1b.png",
+  "sourceSha256": "9ed86d1bd3b67f44de5c3259865efaabea2b591135922e4060b8af05d254c8a2",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/accordion-bread-oven.f991ebb0.png",
+  "sha256": "f991ebb07e202bb737ddfbd2a1be8ce1f0d664ef072a628aca71e1ede1576af8",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,14 @@
+{
+  "selected": false,
+  "sourceImage": "intermediate-fern-alpha-study/fern-initial.d6d514a2a8bf.png",
+  "sourceSha256": "d6d514a2a8bf02524e70b2ef9862aa7829a1e73877c80fa286824f533dcf746e",
+  "prompt": "Use case: natural botanical artwork. GLAZE MEADOW AFTERGLOW. Jared requested LESS ABSTRACT NATURE-INSPIRED themes:show recognisable REAL flowers,ferns,moths and woodland birds with natural anatomy and believable textures. Visual medium: beautifully detailed botanical/wildlife MACRO PHOTOGRAPHY with very restrained UV-induced-visible-fluorescence-inspired twilight lighting. Nature comes first;the optical treatment is subtle. Familiar leaf greens,ivory petals,pollen gold,soft lilac flowers and warm brown feathers. A faint cool pearl/mint response in pollen or thin petal edges,and a very slight wine tint in some leaf veins,are the only unusual colour accents. Soft diffuse illumination,delicate natural tissue translucency,real botanical detail,no glitter or hard neon halo. Polished calm nature photograph,not an experiment diagram. No invented organisms,mechanical plants,geometric bodies,voxel cells,scientific maps,skeleton networks,glass/clay sculptures,metal,paper craft,fabric,cartoon face,CGI toy,fluorescent rainbow or exaggerated magical glow. Actual familiar natural shapes and textures throughout. No letters,numbers,labels,scale bar,diagram,UI,clock,reading,logo or watermark. Subject: ONE real UNFURLING FERN growth:one arching mature green frond with distinct paired leaflets andone shorter curled young fiddlehead,sharing a small natural root base with a modest tuft of moss. Natural real fern anatomy,no imaginary perforated leaves or metal spirals. Soft fine surface detail and very restrained cool edge light. Entire frond tip,all leaflets,fiddlehead curl andsmall moss/rootbase whole. Asset:ONE separate square1024x1024 pure-art widget. Whole subject safely inside central seventy percent with generous truly empty margins. Genuine transparent alpha outside the subject;preserve natural fine petal/leaf/feather/antenna edges. No background rectangle,landscape,ground patch,cast shadow,extra specimen,border,frame,contact sheet or phone mockup. Strong readable natural silhouette at85px. Keep the result calm,beautiful and recognisably nature-inspired rather than abstract.",
+  "reason": "Naturalfern anatomy good,but exterior white haze alpha6to38 visible on proposed greentile andalpha16touchesfullframe. Needs genuine zeroalpha exterior for quiet corners.",
+  "beforeAlpha16Bounds": [
+    0,
+    0,
+    1254,
+    1161
+  ],
+  "beforeEdgeAlphaMaximum": 38
+}

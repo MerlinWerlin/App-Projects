@@ -1,0 +1,1 @@
+Initial original, actual anatomy-selected intermediate, exact initial/two edit requests and ordered single-input source hashes retained. First edit corrects California-poppy fruit; second removes actual broad translucent background haze. Selected source preserves whole spray and uses true alpha. No raster masking, crop or repaint outside built-in image tool.

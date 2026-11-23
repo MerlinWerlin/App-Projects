@@ -1,0 +1,18 @@
+{
+  "id": "four-way-stair-knot",
+  "prompt": "ONE new standalone square 1024x1024 pure artwork for PORCELAIN UMBRA, an invented world of hand-pierced eggshell-thin ivory bisque porcelain shadow theatres. Subject: a suspended FOUR-WAY STAIR KNOT, four flat narrow porcelain stair flights meet through a hollow square at impossible angles, two flights descending underneath and two ascending above, looking like an open folded ceramic puzzle. Wide, angular, almost cruciform silhouette, NOT a helix or tower. Each solid step has delicate pierced triangular eyelets in its riser; occasional thin lancet braces join the flights. Handmade unglazed ceramic with minute kiln warp, visible bisque grain and luminous translucent edges, dramatic low warm amber raking light and midnight indigo cavities. Gallery craft photograph at oblique overhead angle. Entire compact sculpture centrally isolated within 20 percent fully transparent empty margins, no floor, no opaque backdrop, no pedestal. Real alpha transparency. Crisp readable thumbnail shapes. Absolutely no text, numbers, logos, UI, dates, clocks, dials, clock hands, batteries, living animals or ordinary objects. Only one sculpture, no variants or contact sheet, no border.",
+  "tool": "built-in image_gen",
+  "source": "sources/four-way-stair-knot.24672c46.png",
+  "sourceSha256": "24672c46fc46162e4b2e95ada67120d0153c4ba10653609813310effa7c6514a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/four-way-stair-knot.81ec4636.png",
+  "sha256": "81ec46367ebd490879bc0b1b91efe5b867c210666c700e8c533a72ae68108b13",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

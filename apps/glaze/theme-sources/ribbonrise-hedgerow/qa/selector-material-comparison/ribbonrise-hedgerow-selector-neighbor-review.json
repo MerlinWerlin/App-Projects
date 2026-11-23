@@ -1,0 +1,353 @@
+{
+  "scope": "Read-only expanded material comparison. Coordinator export uses actual parsers/selectors; this lane independently checks all45 observed selection hashes and manifest bytes. Historical pre-PR307 cached4 and accepted PR307 rebuild unpublished5 are distinct snapshots. No current-live Cloudflare/R2 claim, publication or neighbor generation input.",
+  "selectorExport": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-neighbor-selections.json",
+  "selectorExportSha256": "f39038a6a6e1d28e39de8f8ccea4c7cb77e1481e1d43da5c612a18ce8f308621",
+  "groups": [
+    {
+      "id": "cherry-ribbon",
+      "origin": "historical_cached_live_before_PR307",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cherry-ribbon\\v7\\manifest.json",
+      "selections": [
+        {
+          "optionId": "ribbon-locket",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cherry-ribbon\\v7\\widget-ribbon-locket.e88c8d14.webp",
+          "sha256": "e88c8d14e59484298150a8aa3a90103a62471608070aec3704c745a83a01f8b7"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cherry-ribbon\\v7\\widget-small.3ad8ea5d.webp",
+          "sha256": "3ad8ea5de950ed57414c2c666d710bcd9635178104ae91c9f73758dcf74d88ab"
+        },
+        {
+          "optionId": "art-20261107-cherry-needlebook",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cherry-ribbon\\v7\\widget-cherry-needlebook.57fcb7d3.webp",
+          "sha256": "57fcb7d3c1754b457e01882b18c087eab4b9eba17b8a51f93c2fef21b278a145"
+        },
+        {
+          "optionId": "art-20261107-ribbon-brooch",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\cherry-ribbon\\v7\\widget-ribbon-brooch.ba15bdb7.webp",
+          "sha256": "ba15bdb70aa08bb74d4a5accd89ca073bfaac92283e89e9fac7129b821992342"
+        }
+      ],
+      "observedManifestSha256": "a047d12eef210f38be08815371347e329203b0699f7d351a7be561a9ce733653"
+    },
+    {
+      "id": "cherry-ribbon",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cherry-ribbon\\v8\\manifest.json",
+      "selections": [
+        {
+          "optionId": "ribbon-locket",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cherry-ribbon\\v8\\widget-ribbon-locket.e88c8d14.webp",
+          "sha256": "e88c8d14e59484298150a8aa3a90103a62471608070aec3704c745a83a01f8b7"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cherry-ribbon\\v8\\widget-small.3ad8ea5d.webp",
+          "sha256": "3ad8ea5de950ed57414c2c666d710bcd9635178104ae91c9f73758dcf74d88ab"
+        },
+        {
+          "optionId": "art-20261107-cherry-needlebook",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cherry-ribbon\\v8\\widget-cherry-needlebook.57fcb7d3.webp",
+          "sha256": "57fcb7d3c1754b457e01882b18c087eab4b9eba17b8a51f93c2fef21b278a145"
+        },
+        {
+          "optionId": "art-20261107-ribbon-brooch",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cherry-ribbon\\v8\\widget-ribbon-brooch.ba15bdb7.webp",
+          "sha256": "ba15bdb70aa08bb74d4a5accd89ca073bfaac92283e89e9fac7129b821992342"
+        },
+        {
+          "optionId": "cherry-ballet-slippers",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\cherry-ribbon\\v8\\widget-cherry-ballet-slippers.d521bdb0.webp",
+          "sha256": "d521bdb0ded7400452ae10de8123a296f2986811fff311ce62252b548b9651fa"
+        }
+      ],
+      "observedManifestSha256": "7087c47d3215e816e4d0c50c6933348f270122711273dcf4d26fe13703525d90"
+    },
+    {
+      "id": "crimson-reverie",
+      "origin": "historical_cached_live_before_PR307",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\crimson-reverie\\v6\\manifest.json",
+      "selections": [
+        {
+          "optionId": "crimson-fan",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\crimson-reverie\\v6\\widget-crimson-fan.ed2ff03b.webp",
+          "sha256": "ed2ff03b19fd5e4188a1f01dd0386151a39048add7fff3df79c2ec18010f26dc"
+        },
+        {
+          "optionId": "silk-crane",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\crimson-reverie\\v6\\widget-silk-crane.cc874af2.webp",
+          "sha256": "cc874af2f71d423a92388394e306bf94f609dc71420399f90db9ca80aa0746b5"
+        },
+        {
+          "optionId": "silk-dragon",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\crimson-reverie\\v6\\widget-silk-dragon.2b6c968b.webp",
+          "sha256": "2b6c968b4a63e1f72d74e2db339d8915b9325d857be862687bfc5ed6a47b4819"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\crimson-reverie\\v6\\widget-small.767e4b93.webp",
+          "sha256": "767e4b934f2c01a01e526e91db4fead2af01bd9f45ab4ef81b4411f3e34f9f8c"
+        }
+      ],
+      "observedManifestSha256": "206c906e8173a5d3e007d7859be3c768181cadbfca72ad5bf5be4b033140436f"
+    },
+    {
+      "id": "crimson-reverie",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crimson-reverie\\v7\\manifest.json",
+      "selections": [
+        {
+          "optionId": "crimson-fan",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crimson-reverie\\v7\\widget-crimson-fan.ed2ff03b.webp",
+          "sha256": "ed2ff03b19fd5e4188a1f01dd0386151a39048add7fff3df79c2ec18010f26dc"
+        },
+        {
+          "optionId": "silk-crane",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crimson-reverie\\v7\\widget-silk-crane.cc874af2.webp",
+          "sha256": "cc874af2f71d423a92388394e306bf94f609dc71420399f90db9ca80aa0746b5"
+        },
+        {
+          "optionId": "silk-dragon",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crimson-reverie\\v7\\widget-silk-dragon.2b6c968b.webp",
+          "sha256": "2b6c968b4a63e1f72d74e2db339d8915b9325d857be862687bfc5ed6a47b4819"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crimson-reverie\\v7\\widget-small.767e4b93.webp",
+          "sha256": "767e4b934f2c01a01e526e91db4fead2af01bd9f45ab4ef81b4411f3e34f9f8c"
+        },
+        {
+          "optionId": "crimson-silk-koi",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\crimson-reverie\\v7\\widget-crimson-silk-koi.92f1ea37.webp",
+          "sha256": "92f1ea371866b9d1304643f85556d1fe336f4b7212220ebd8d2316a4dada2c21"
+        }
+      ],
+      "observedManifestSha256": "eb0ecd929894ac466ca6cc3febf7c229a0e41e27a5a864caf5db0f95f28378ad"
+    },
+    {
+      "id": "moonpatch",
+      "origin": "historical_cached_live_before_PR307",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\manifest.json",
+      "selections": [
+        {
+          "optionId": "patchwork-kite",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-patchwork-kite.647a4340.webp",
+          "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac"
+        },
+        {
+          "optionId": "quilted-rocket",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-quilted-rocket.bd026b99.webp",
+          "sha256": "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657"
+        },
+        {
+          "optionId": "star-catcher",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-star-catcher.b7b5d2a9.webp",
+          "sha256": "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\moonpatch\\v6\\widget-small.fad8004e.webp",
+          "sha256": "fad8004e8a8406ebdfc9c99cc1252f88946176000c20c123b58d4bcf7ae04848"
+        }
+      ],
+      "observedManifestSha256": "82843e8d9e176f486aad71561cbf989d11aae9f7e051de583a5fd809a1427800"
+    },
+    {
+      "id": "moonpatch",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\manifest.json",
+      "selections": [
+        {
+          "optionId": "patchwork-kite",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-patchwork-kite.647a4340.webp",
+          "sha256": "647a434089ec3e4329424176fd1c64c9a4279810dc7af31c638c1c9aeed612ac"
+        },
+        {
+          "optionId": "quilted-rocket",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-quilted-rocket.bd026b99.webp",
+          "sha256": "bd026b9975abea444c82eaea3959ed674e1e2911c38f98ba56eb282487f8c657"
+        },
+        {
+          "optionId": "star-catcher",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-star-catcher.b7b5d2a9.webp",
+          "sha256": "b7b5d2a93e5b7c915b36c1cdc45b4d315d9aec76ca6d34425d314c5dffbb8ae8"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-small.fad8004e.webp",
+          "sha256": "fad8004e8a8406ebdfc9c99cc1252f88946176000c20c123b58d4bcf7ae04848"
+        },
+        {
+          "optionId": "patchwork-moon-rover",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\moonpatch\\v7\\widget-patchwork-moon-rover.3f1e2dbf.webp",
+          "sha256": "3f1e2dbf833e5f299bc08db44ec52cf382a3beadcd407e3bd720d3849b914163"
+        }
+      ],
+      "observedManifestSha256": "03a19ba9499b1f180f1b3325e7b0d611da1b1106c311829746102bc5c1ca14c7"
+    },
+    {
+      "id": "yuzu-soak",
+      "origin": "historical_cached_live_before_PR307",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\yuzu-soak\\v7\\manifest.json",
+      "selections": [
+        {
+          "optionId": "yuzu-pond-bowl",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\yuzu-soak\\v7\\widget-yuzu-pond-bowl.0c88e614.webp",
+          "sha256": "0c88e6147402df781800ea7168d8a566489a6bd598fbf1c44e8531a85f94e427"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\yuzu-soak\\v7\\widget-small.729961e5.webp",
+          "sha256": "729961e5f925c042250868bb8be7b9754bdb0b3597f0f0fbe25f280759f0ac52"
+        },
+        {
+          "optionId": "art-20261107-yuzu-soap-dish",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\yuzu-soak\\v7\\widget-yuzu-soap-dish.f655be5a.webp",
+          "sha256": "f655be5a7b8fd4990fb3de770930338d0c8e28f534463101ef3befde1bdbdb20"
+        },
+        {
+          "optionId": "art-20261107-capybara-towel",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\yuzu-soak\\v7\\widget-capybara-towel.2830aeb4.webp",
+          "sha256": "2830aeb4d21e8aefd58a5e924770c4fc809c26416344dd9c0d473c6abe708456"
+        }
+      ],
+      "observedManifestSha256": "6363236af07d743121973553ac6bb95ebe192bf615a6898151e4db5bf206e433"
+    },
+    {
+      "id": "yuzu-soak",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\yuzu-soak\\v8\\manifest.json",
+      "selections": [
+        {
+          "optionId": "yuzu-pond-bowl",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\yuzu-soak\\v8\\widget-yuzu-pond-bowl.0c88e614.webp",
+          "sha256": "0c88e6147402df781800ea7168d8a566489a6bd598fbf1c44e8531a85f94e427"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\yuzu-soak\\v8\\widget-small.729961e5.webp",
+          "sha256": "729961e5f925c042250868bb8be7b9754bdb0b3597f0f0fbe25f280759f0ac52"
+        },
+        {
+          "optionId": "art-20261107-yuzu-soap-dish",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\yuzu-soak\\v8\\widget-yuzu-soap-dish.f655be5a.webp",
+          "sha256": "f655be5a7b8fd4990fb3de770930338d0c8e28f534463101ef3befde1bdbdb20"
+        },
+        {
+          "optionId": "art-20261107-capybara-towel",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\yuzu-soak\\v8\\widget-capybara-towel.2830aeb4.webp",
+          "sha256": "2830aeb4d21e8aefd58a5e924770c4fc809c26416344dd9c0d473c6abe708456"
+        },
+        {
+          "optionId": "citrus-steam-kettle",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\yuzu-soak\\v8\\widget-citrus-steam-kettle.d858b96b.webp",
+          "sha256": "d858b96b0c2745b3c2cc67415986fdfa7d78e75552fd173f0aa8ca3648c69caa"
+        }
+      ],
+      "observedManifestSha256": "1fe9742dba5801f08c61ff0fe3eeb6ecd74981923504b645448df8a06401d9d0"
+    },
+    {
+      "id": "emerald-curio",
+      "origin": "historical_cached_live_before_PR307",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\emerald-curio\\v7\\manifest.json",
+      "selections": [
+        {
+          "optionId": "fern-curio-orb",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\emerald-curio\\v7\\widget-fern-curio-orb.a47e0e84.webp",
+          "sha256": "a47e0e84c7ddac5d5d1ed6ff9dc65547f9eb163b3ef7d3a1c9e7df98336fbdfa"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\emerald-curio\\v7\\widget-small.f6a53438.webp",
+          "sha256": "f6a53438f2506bb470b235c9c1baeaeef668ce74fca6fff069a184ec7ec9999a"
+        },
+        {
+          "optionId": "art-20261107-emerald-moth",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\emerald-curio\\v7\\widget-emerald-moth.41587543.webp",
+          "sha256": "41587543125e0ffe45d3a21a6ef1e99d697aeb7f7f90fe2fcf82c1c8aff9c993"
+        },
+        {
+          "optionId": "art-20261107-antique-key",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\emerald-curio\\v7\\widget-antique-key.27a61085.webp",
+          "sha256": "27a61085dd0f414ea0ae1cb2046cf5db1bd818b262b90d128ff399ee3fd1e4d0"
+        }
+      ],
+      "observedManifestSha256": "8056d10f4a5b05ee738e3ed31a0e8695c1b10ea672e7e7c3c761cb4e036ac08c"
+    },
+    {
+      "id": "emerald-curio",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "coordinatorReportedActualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\emerald-curio\\v8\\manifest.json",
+      "selections": [
+        {
+          "optionId": "fern-curio-orb",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\emerald-curio\\v8\\widget-fern-curio-orb.a47e0e84.webp",
+          "sha256": "a47e0e84c7ddac5d5d1ed6ff9dc65547f9eb163b3ef7d3a1c9e7df98336fbdfa"
+        },
+        {
+          "optionId": "hero-small",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\emerald-curio\\v8\\widget-small.f6a53438.webp",
+          "sha256": "f6a53438f2506bb470b235c9c1baeaeef668ce74fca6fff069a184ec7ec9999a"
+        },
+        {
+          "optionId": "art-20261107-emerald-moth",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\emerald-curio\\v8\\widget-emerald-moth.41587543.webp",
+          "sha256": "41587543125e0ffe45d3a21a6ef1e99d697aeb7f7f90fe2fcf82c1c8aff9c993"
+        },
+        {
+          "optionId": "art-20261107-antique-key",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\emerald-curio\\v8\\widget-antique-key.27a61085.webp",
+          "sha256": "27a61085dd0f414ea0ae1cb2046cf5db1bd818b262b90d128ff399ee3fd1e4d0"
+        },
+        {
+          "optionId": "filigree-thimble",
+          "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\emerald-curio\\v8\\widget-filigree-thimble.9adcb7a0.webp",
+          "sha256": "9adcb7a053a1722b203ed19b678bce76ffa5fcb7883324d6d546d84cbd9120f1"
+        }
+      ],
+      "observedManifestSha256": "6ff02c833971f36da9129c171bec9ee7cad7f53478930a21c5e7afded80393f9"
+    }
+  ],
+  "historicalSelections": 20,
+  "acceptedRebuildSelections": 25,
+  "candidateArtifacts": [
+    {
+      "optionId": "foxglove-fern",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\widgets\\foxglove-fern.b4389d09.png",
+      "sha256": "b4389d09f4c297b1d6dca9aa0fe3abc72acc6cf61f5c7db21aa15947f652c4d3"
+    },
+    {
+      "optionId": "robin-dogrose",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\widgets\\robin-dogrose.1a621234.png",
+      "sha256": "1a6212341eead677e1835a05235eb159aab0ee2cdbb4ca217915b25f95e34b75"
+    },
+    {
+      "optionId": "fieldmouse-blackberry",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\widgets\\fieldmouse-blackberry.a16ccc09.png",
+      "sha256": "a16ccc09f999aa96bb657e9feb2fc5fac419d42acc4805ceb7fa090588bd222d"
+    },
+    {
+      "optionId": "redadmiral-nettle",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\widgets\\redadmiral-nettle.c9e2b042.png",
+      "sha256": "c9e2b0422a3f03adcd326bd14e982d6e41f2355a55ee0302f901430168662424"
+    },
+    {
+      "optionId": "bumblebee-clover",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\widgets\\bumblebee-clover.8798fb97.png",
+      "sha256": "8798fb9789b120dc96fed281bad7dd1e6684c2e170063e52abdf5e117d91a648"
+    }
+  ],
+  "candidateStatus": "Five complete prepared source artworks, now full builder/native/crop/rounded/date QA passed; exact final evidence in qa/visual-review.json. Boards remain review-only comparisons, never generation inputs.",
+  "finding": "Reviewed all45 actual selections: historical cached4 and accepted PR307 rebuild5 for each of CherryRibbon,CrimsonReverie,Moonpatch,YuzuSoak,EmeraldCurio. Candidate short broad pulled/tucked ribbon-stitch flora/fauna differ from loose tied satin bows, free draped silk/origami, padded quilt/yarn, marbled ceramic/peel characters and brass-led jewellery. Closest actual CherryRibbon bows/embroidered butterfly and silk koi disclosed, no no-silk-neighbor claim. Accepted snapshot is not a live-R2 verification."
+}

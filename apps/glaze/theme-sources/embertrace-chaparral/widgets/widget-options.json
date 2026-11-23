@@ -1,0 +1,62 @@
+[
+  {
+    "id": "quail-manzanita",
+    "kind": "art",
+    "image": "quail-manzanita.49be3811.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Quail Manzanita"
+  },
+  {
+    "id": "brushrabbit-sage",
+    "kind": "art",
+    "image": "brushrabbit-sage.7f25bf75.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Brushrabbit Sage"
+  },
+  {
+    "id": "fence-lizard",
+    "kind": "art",
+    "image": "fence-lizard.327aab0a.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fence Lizard"
+  },
+  {
+    "id": "california-poppies",
+    "kind": "art",
+    "image": "california-poppies.626186df.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "California Poppies"
+  },
+  {
+    "id": "monarch-milkweed",
+    "kind": "art",
+    "image": "monarch-milkweed.8a1c5f0f.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Monarch Milkweed"
+  }
+]

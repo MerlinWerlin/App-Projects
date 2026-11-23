@@ -1,0 +1,30 @@
+{
+  "id": "beaver",
+  "prompt": "ASHLOOP RIVERBANK for Glaze. Isolated one separate original whole recognizable riverbank flora or fauna on genuine transparent alpha. Craft is visible broad STEAM BENT SOLID TIMBER. Each major arc is one rectangular broad ash or cedar timber ribbon that curves continuously around the outside into a shallow U, retaining unsegmented continuous natural wood grain which follows the arc. Use a small count of thick-to-moderately thick soft bows with large empty spaces between. A few near frontal thick ribbon faces, turned away darker side faces, soft end-grain at attachment and simple solid pegs. No thin wire, connected triangular lattice, radial turnings, many fine straight parts, layers of veneers, plywood stripes, parquet, rounded turned lathe objects or poles crossing chaotically. Organically believable overall shape built from sturdy open ribs with true alpha through bays, attached parts whole. A few short solid wood anatomy transitions, select rich natural tan and sage tinted wood only if necessary, kept matte. Use warm bias for face and tail structures so plank grain remains visible. Entire composition on transparent alpha with roomy safety space, everything including feet and tips inside clear margins. Photograph a tangible miniature with gentle side light. No landscape, blocks, base, ground shadow, round card, frame, graphic text, UI, sticker outline, glare or smoke. Make only one original process translation from the attached owned precursor canoe: use precisely its broad solid curved wood grain construction, actual empty see-through bays, continuous thick curved cedar bands and tiny dull join pins. Change the entire subject and silhouette into a recognizable NORTH AMERICAN BEAVER crouched at rest, with its head looking left and rounded torso beyond it. It must read at 85 pixels as an actual recognizable beaver rather than a boat or geometric frame. From a low three-quarter left view show one quietly carved short round muzzle with a small dark nose, one clear natural black eye, visible little rounded ears, two short attached front paws with toes tucked just below the near chest, both natural larger hind feet with readable gaps and one broad flat paddle tail extending to the lower right. The flat spatulate tail is low and wide, smooth dark wood, with a few shallow broad diagonal grain marks only. Keep exactly one head and one tail. The rounded back and low belly profile are traced by four to five very visibly broad continuous one-piece steam bent U-bows, with generous intervening empty bays so genuine transparent background shows through. The chest flows into broad slightly oval bent strips. A single quiet broad longitudinal rail traces the part of the spine and a short lower support follows side belly; natural pegs. No canoe stem, pointed upper ends, gunwale, bench crossbar, deck, pads, raft, paddles, outline ribs disconnected from the whole beaver form or plank-cladding. Avoid toy teeth, sunglasses, pinched half-body, triangular lath style, large patchwork inserts, logo or birch background. Make all four distinct attached paws and complete tail exactly within the frame with real alpha and ample margins. The material carry-over is exact but the entire form and pose are new.",
+  "tool": "built-in image_gen",
+  "source": "sources/beaver.6e1ae7cc.png",
+  "sourceSha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "selectedFile": "widgets/beaver.ec6b0b28.png",
+  "sha256": "ec6b0b2818d4d5ad127f1e8bb9207c6c6fbba7c1fed845f827adf728e15bb147",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/material-repair/ashloop-riverbank-lineage.json",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "beaver-unselected-original",
+      "file": "qa/material-repair/ashloop-portage-unselected.7d6cf2d0.png",
+      "sha256": "7d6cf2d085ba821f5cbaa741a8061ef37b102daae870a5be08de7c4993e192c8",
+      "role": "Own held precursor used exclusively as the physical material reference for one new Nature composition; exact unselected source retained."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/beaver-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/beaver-exact-tool-result.json"
+}

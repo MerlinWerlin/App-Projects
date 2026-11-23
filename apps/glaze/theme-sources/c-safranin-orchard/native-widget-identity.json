@@ -1,0 +1,22 @@
+{
+  "theme": "c-safranin-orchard",
+  "recipe": [
+    "shield",
+    "cCellStrawberry",
+    "cCellStrands",
+    "cut",
+    "leaf",
+    "basin",
+    "folio"
+  ],
+  "art": {
+    "cCellStrawberry": "M 50 28 Q 27 14 17 34 Q 6 52 50 91 Q 93 51 82 34 Q 71 18 50 28 M 49 27 Q 44 17 42 7 M 36 28 L 27 17 L 46 23 M 52 25 L 68 15 L 61 30 M 48 24 Q 58 8 61 7",
+    "cCellStrands": "M 50 29 Q 45 55 49 84 M 48 45 Q 30 44 24 35 M 48 56 Q 29 58 25 49 M 49 68 Q 34 73 32 65 M 51 43 Q 69 42 75 35 M 50 55 Q 69 57 73 48 M 50 68 Q 66 73 66 63"
+  },
+  "ornament": "M 30 89 Q 45 73 56 53 M 55 55 Q 35 57 22 38 L 30 35 L 26 27 L 37 29 L 38 19 Q 56 19 68 34 Q 71 47 55 55 M 55 53 L 43 33 M 48 45 L 37 43",
+  "ornamentDirection": "One small naturally serrated strawberry-like leaflet, short stalk and two quiet vein hints. No cellular chart, microscope or miniature berry portrait.",
+  "direction": "Shield contour follows broad berry shoulders and tapered whole lower point. Original strawberry and restrained branching conducting-strand hints in larger fields, cut marks, leaf hands, basin battery, folio calendar. Separate small natural serrated leaf header; no tiny cell diagram. Clock shape independent of date marker, today ordinary date pointsize/bold.",
+  "values": "Existing live Clock/Battery/Calendar, no raster readings.",
+  "registryIntegration": "Source-only lane candidate floor1.0.44. Coordinator owns canonical/shared SVG/Swift/runtime and installed-device qualification.",
+  "ornamentProvenance": "Original authored path,23November2026,after direct both-corner steering."
+}

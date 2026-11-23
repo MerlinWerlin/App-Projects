@@ -1,0 +1,60 @@
+{
+  "scope": "First material sample; actual observed material neighbors; no neighbor image used as generation input.",
+  "candidateGenerated": true,
+  "sources": [
+    {
+      "label": "B33 quail candidate",
+      "medium": "Sparse carbon trails / burnished clay",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-860bba2c-b571-409d-958d-91222e510497.png",
+      "sha256": "2b3b2615bbcbd3ee7819ff6d30d9285fe3d1ffbbd24260c96aa5786b33641919"
+    },
+    {
+      "label": "B1 pierced porcelain",
+      "medium": "Ivory porcelain / open pierced holes",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\porcelain-umbra\\widgets\\shadow-sluice.8c3fbbb2.png",
+      "sha256": "8c3fbbb2a20a213b1c1690a699686fd7d31bb9467f47a34fae3be8f5ff37c043"
+    },
+    {
+      "label": "B6 batik actual",
+      "medium": "Wax-resist fabric / dyed negative craze",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\waxwake\\widgets\\oxbow-sanctum.4341d69d.png",
+      "sha256": "4341d69dffd62f30121a1c48f7fa5bd2e36579cfb1bb1af1ac0ff0af92419250"
+    },
+    {
+      "label": "B12 pyrography actual",
+      "medium": "Birch wood grain / burned drawing",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\chargrain-passage\\widgets\\switchback-caravan.57e4dbbf.png",
+      "sha256": "57e4dbbf89c11b9acb80dea460fc1a51d6a6f2504366c8ea7f32c3575ae366af"
+    },
+    {
+      "label": "Saguaro Siesta actual",
+      "medium": "Unglazed terracotta armadillo",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\saguaro-siesta\\widgets\\widget-terracotta-armadillo.8ec526df.webp",
+      "sha256": "8ec526df27a1722f884b11e71d183b7d6f6775c244e716d6a0e5a75b4279b23f"
+    },
+    {
+      "label": "Canopy Glaze actual",
+      "medium": "Green celadon / glossy ceramic orchid",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\canopy-glaze\\widgets\\widget-canopy-orchid.8b56ff54.webp",
+      "sha256": "8b56ff54593d721850035e15fc7896bd11fbbe2395689c7baf6898b28a84ae21"
+    },
+    {
+      "label": "Tapir Terracotta actual",
+      "medium": "Speckled sage stoneware bromeliad",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\tapir-terracotta\\widgets\\widget-ceramic-bromeliad.93e6cd9a.webp",
+      "sha256": "93e6cd9a72eea941cbbaa6a68e32149bf0bfdcc9f31f057ac721473675fe3f68"
+    },
+    {
+      "label": "Yuzu Soak actual",
+      "medium": "Colored laminated nerikomi clay",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\yuzu-soak\\widgets\\widget-citrus-steam-kettle.d858b96b.webp",
+      "sha256": "d858b96b0c2745b3c2cc67415986fdfa7d78e75552fd173f0aa8ca3648c69caa"
+    },
+    {
+      "label": "B28 black-metal inlay",
+      "medium": "Smooth black alloy / flush silver strips",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\silverthorn-dunes\\widgets\\fennec-thornsprig.a748c3cb.png",
+      "sha256": "a748c3cbde43771387023d6a285b7b6508afe0d2c829c154319aeb768f8bd3ef"
+    }
+  ]
+}

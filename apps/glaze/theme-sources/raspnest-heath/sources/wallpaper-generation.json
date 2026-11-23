@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. This is a LAYOUT-ONLY reframing edit of our own RASPNEST HEATH wallpaper. Keep exactly the same five wood-shaving sculptures, identities, exact anatomy, poses, physical grain, dry tangled wood material, natural honey/russet colours, diffuse lighting and pale lichen-mint terrain. Preserve relative arrangement: grass-tree back-left/centre, lyrebird back-right, echidna front-left, frilled lizard centre, spotted quoll front-right. Change ONLY whole-scene scale and breathing room: uniformly reduce the ENTIRE five-subject gathering to about80% of its current size and centre it horizontally. Extend the same quiet soft mint sky/background and naturally continuous low wood-wool ground around it. Preserve every echidna spine/claw, lizard frill/tail/feet, both curved lyrebird tail feathers/beak/feet, every grass-tree leaf/spike/root, every quoll spot/claw/ear/tail. The outermost focal tips must be at least10% of image width inside BOTH left and right edges. Lowest quoll tail/claw or echidna foot must end ABOVE76% of image height, leaving at least24% quiet ground below. Keep upper40% quiet mint with no new foliage/objects. Preserve whole coherent landscape; no shrink-to-rectangle panel or blank added bands. Tall portrait wallpaper matching input aspect approximately1290x2796. A centred crop removing9% from top/bottom must leave all five organisms complete with comfortable space even near rounded phone corners. NO new creatures, new plants, scenery props, architecture, text, UI, watermarks, collage, border or frame. This is not a redesign or a change of art style.",
+  "source": "sources/wallpaper.e6bb46e81988.png",
+  "sourceSha256": "e6bb46e819885f2cc478c7118c4f008cc000d983bdcf74298b8de280a109c676",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "c69523738a3ece596df7cadad7abf2de1f0282fbc947768dd8af5eb25d1ed4e7",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Own layout-only whole-scene pullback; final portrait exported at1290x2796 with central aspect adjustment. Original five artworks/native art unchanged.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/initial-selected-wallpaper.png",
+      "sha256": "15f6f29151bd26266d1078a0e6b7c4f32db7c7728817ad1f498d81d40e4d8a24",
+      "purpose": "Exact own first selected habitat; layout-only pullback for all phone crops and rounded screen corners."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}

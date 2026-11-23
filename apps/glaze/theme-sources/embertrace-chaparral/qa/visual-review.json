@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "audit": "SECOND AUDIT",
+  "artworkSubjects": 5,
+  "actualEncodedSmallAndLargeRoundedLayouts": 10,
+  "clippedForegroundPixels": 0,
+  "actualNativeLayouts": 9,
+  "compactHeaderOrnaments": 4,
+  "actualWallpaperCrops": 3,
+  "allSizeSamePointSizeBoldTodayCases": 288,
+  "todayAndNormalPoints": {
+    "small": 12,
+    "medium": 12,
+    "large": 19
+  },
+  "finding": "Whole quail/crest/both feet and brush rabbit/ears/paws remain complete in all three actual encoded phone crops, with taller forked manzanita and two poppy cups. Sparse unbranched carbon trails remain visible on ivory clay. Pebble contour suits burnished irregular hand-shaped ceramic; hero/detail/compact sprig remain exact.",
+  "frozenArtProof": "qa/second-audit/frozen-art-proof.json",
+  "clockFaceRationale": "Irregular hand-burnished ceramic body.",
+  "history": "qa/second-audit/wallpaper-history.json",
+  "scope": "Actual encoded wallpaper crops/native board visually reviewed. All five art/raw/options/palette/meta and native hero/detail/ornament remain frozen. Calendar-only badge adapts independently. Windows current-renderer proof; no Apple/device/publication claim."
+}

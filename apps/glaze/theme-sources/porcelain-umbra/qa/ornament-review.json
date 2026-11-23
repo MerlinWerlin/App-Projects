@@ -1,0 +1,13 @@
+{
+  "themeId": "porcelain-umbra",
+  "ornament": "M 18 74 L 18 49 C 18 9 82 9 82 49 L 82 74 M 29 70 L 29 49 C 29 22 71 22 71 49 L 71 70 M 40 49 L 40 58 M 50 41 L 50 51 M 60 49 L 60 58 M 24 80 L 76 80",
+  "direction": "A pierced porcelain arch rim with three reserved light slots; no complete theatre or building.",
+  "scope": "Standalone source ornament path reviewed; actual placement separately verified using coordinator production parser and SVG renderer.",
+  "pathLength": 149,
+  "controlPointBounds": [
+    9.0,
+    82.0
+  ],
+  "publication": "not authorised",
+  "placementQA": "ornament-placement-validation.json"
+}

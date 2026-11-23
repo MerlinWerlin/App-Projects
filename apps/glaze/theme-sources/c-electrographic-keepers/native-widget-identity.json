@@ -1,0 +1,22 @@
+{
+  "theme": "c-electrographic-keepers",
+  "recipe": [
+    "oval",
+    "cElectroSentinel",
+    "cElectroDischargeFragments",
+    "rays",
+    "needle",
+    "column",
+    "folio"
+  ],
+  "art": {
+    "cElectroSentinel": "M 16 43 Q 17 22 46 7 Q 43 28 39 44 L 28 49 Z M 51 33 Q 48 16 64 9 Q 79 24 77 43 L 65 49 Z M 38 39 Q 37 57 51 59 Q 64 56 64 39 M 43 46 L 45 46 M 56 45 L 58 45 M 40 58 L 35 77 L 46 83 L 59 78 L 62 57 M 39 61 L 25 64 L 17 79 M 62 61 L 76 55 L 88 58 M 16 74 L 9 80 L 13 86 L 18 82 L 19 91 L 23 83 L 29 87 M 83 54 L 88 48 L 89 56 L 97 54 L 92 61 L 98 64 L 87 65 M 42 81 L 35 92 L 21 97 L 43 97 L 50 86 M 58 80 L 65 92 L 79 97 L 58 97 L 52 87 M 37 75 Q 21 96 9 84 Q 19 100 41 88",
+    "cElectroDischargeFragments": "M 9 77 L 21 60 L 14 49 M 21 60 L 33 52 M 21 60 L 21 41 M 14 49 L 6 46 M 14 49 L 10 38 M 33 52 L 39 39 M 33 52 L 45 50 M 69 82 L 76 65 L 69 53 M 76 65 L 89 59 M 76 65 L 80 46 M 69 53 L 60 49 M 89 59 L 95 47 M 89 59 L 99 64"
+  },
+  "ornament": "M 30 80 L 50 53 L 64 25 M 50 53 L 27 39 M 39 45 L 35 25 M 50 53 L 76 46 M 65 48 L 80 30 M 64 25 L 57 15 M 64 25 L 79 19 M 27 39 L 18 28 M 27 39 L 15 43 M 76 46 L 86 54 M 30 80 L 19 74 M 38 70 L 46 81",
+  "ornamentDirection": "A compact branching discharge twig with a few unequal forks. The corner carries the electrographic process rather than a miniature full guardian.",
+  "ornamentProvenance": "Original authored 100x100 SVG path, 22 November 2026, following Jared corner-composition steering.",
+  "direction": "Split-cowl sentinel and sparse irregular discharge fragments for larger native compositions. Oval dial/ray marks/needle hands, pale-blue column charge gauge and folio calendar. Separate discharge-twig ornament fits small headers without stacked hero artwork.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms. Raster art contains no live readings.",
+  "registryIntegration": "Coordinator integrates original source descriptor and optional ornament into shared registries."
+}

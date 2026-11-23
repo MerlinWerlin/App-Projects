@@ -1,0 +1,13 @@
+{
+  "themeId": "enamel-reliquary",
+  "ornament": "M 18 73 Q 7 42 28 19 Q 48 24 50 44 Q 35 62 18 73 Z M 18 73 Q 40 54 50 44 Q 70 43 83 59 Q 63 80 18 73 Z M 50 44 Q 44 24 63 17 Q 84 24 83 59 M 27 39 Q 31 44 28 51 M 58 64 Q 64 61 69 63",
+  "direction": "A three-cell cloisonne fossil fan with two tiny enamel flow seams, separate from the full fossil specimens.",
+  "scope": "Standalone source ornament path reviewed; actual placement separately verified using coordinator production parser and SVG renderer.",
+  "pathLength": 182,
+  "controlPointBounds": [
+    7.0,
+    84.0
+  ],
+  "publication": "not authorised",
+  "placementQA": "ornament-placement-validation.json"
+}

@@ -1,0 +1,19 @@
+{
+  "themeId": "mosswake-glade",
+  "recipe": [
+    "arch",
+    "mosswakeBadger",
+    "mosswakeShoots",
+    "beads",
+    "leaf",
+    "basin",
+    "ticket"
+  ],
+  "art": {
+    "mosswakeBadger": "M 7 52 Q 13 44 23 40 Q 24 31 30 33 Q 35 33 36 38 Q 47 29 65 34 Q 85 36 87 54 Q 90 58 96 61 Q 91 66 84 61 L 83 73 Q 84 81 76 81 L 68 81 Q 65 79 69 76 L 68 63 Q 58 65 51 62 L 47 77 Q 48 83 39 83 L 34 83 Q 31 80 37 77 L 38 61 Q 32 61 28 58 L 24 73 Q 27 79 19 79 L 11 79 Q 7 77 14 73 L 17 58 Q 10 59 6 55 Q 4 54 7 52 Z M 53 64 L 56 73 Q 55 80 63 79 L 68 78 M 30 37 Q 29 32 27 35 M 16 44 Q 24 43 30 38 M 12 49 Q 20 48 25 44 M 17 47 L 19 47 M 8 53 L 10 53",
+    "mosswakeShoots": "M 46 41 Q 41 35 41 39 Q 42 43 46 41 Q 51 35 52 39 Q 51 43 46 41 Q 47 47 44 46 Q 42 44 46 41 M 62 40 Q 57 34 56 38 Q 57 43 62 40 Q 67 35 68 40 Q 66 44 62 40 Q 62 46 59 45 Q 58 43 62 40 M 76 50 Q 71 44 70 48 Q 71 53 76 50 Q 81 45 82 49 Q 80 54 76 50 Q 76 57 73 55 Q 72 53 76 50 M 44 28 Q 42 18 46 12 Q 52 13 48 18 Q 44 19 44 15 M 60 31 Q 57 18 62 11 Q 67 10 67 14 Q 66 18 62 16 M 77 37 Q 76 24 81 21 Q 86 21 85 25 Q 83 28 79 25"
+  },
+  "direction": "A smooth stocky badger with wedge muzzle, rounded haunch, four short curved paws and pale-mask stripe contours. Small curved leafy rosettes and sporophyte capsules translate living moss into native artwork without abstract plus symbols. Arch bezel, bead ticks, leaf hands, basin charge gauge and ticket calendar retain the same identity; compact header sprig unchanged.",
+  "ornament": "M 22 78 Q 30 49 23 24 Q 16 21 18 15 Q 24 10 28 17 Q 29 23 23 24 M 48 83 Q 49 51 56 36 Q 51 34 54 28 Q 60 24 64 30 Q 66 36 59 39 M 72 78 Q 68 51 76 19 Q 71 16 75 11 Q 81 8 85 14 Q 86 20 79 23 M 17 81 L 26 74 M 19 73 L 25 82 M 43 84 L 50 77 M 45 77 L 51 84",
+  "ornamentDirection": "A small airy sprig of three moss sporophyte stems/capsules with short star-shoot strokes fits quiet native headers. No full creature compressed into a corner; larger badger heroes stay whole."
+}

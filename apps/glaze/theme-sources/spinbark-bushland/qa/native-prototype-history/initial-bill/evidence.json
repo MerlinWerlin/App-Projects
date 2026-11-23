@@ -1,0 +1,13 @@
+{
+  "themeId": "spinbark-bushland",
+  "scope": "Provisional own-spec native composition, current coordinator parsers/production SVG renderer; identity injected in memory only. No complete pack, Apple or installed device claim.",
+  "face": "lozenge",
+  "nativeLayouts": 9,
+  "liveChanges": 9,
+  "compactPlacements": 4,
+  "moduleHashes": {
+    "themedWidgetPreview.ts": "c9a1638ff4c4ab39ebe5fe4c47abe5bf7bc14fb4724cdd0c42af6eb32d6c5913",
+    "widgetIdentity.ts": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "widgetIdentityRecipes.ts": "dd756a6f272fe74e4126254f94eaeb2d7606e93c47f43a74cce1675623afb20e"
+  }
+}

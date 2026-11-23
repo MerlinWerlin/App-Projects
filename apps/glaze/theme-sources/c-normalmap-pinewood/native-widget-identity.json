@@ -1,0 +1,21 @@
+{
+  "theme": "c-normalmap-pinewood",
+  "art": {
+    "cFacetlightCone": "M 51 12 C 72 29 85 48 79 66 C 72 86 35 92 22 69 C 11 52 31 24 51 12 Z M 46 85 L 43 95 L 53 95 L 56 85 M 35 31 Q 51 42 68 31 M 25 46 Q 38 57 50 47 Q 66 57 75 45 M 21 60 Q 32 74 48 63 Q 64 77 80 63 M 32 76 Q 49 83 68 75",
+    "cFacetlightScales": "M 21 38 Q 49 54 77 38 M 16 56 Q 49 75 82 56 M 24 74 Q 49 89 74 74"
+  },
+  "recipe": [
+    "lozenge",
+    "cFacetlightCone",
+    "cFacetlightScales",
+    "beads",
+    "needle",
+    "tiles",
+    "folio"
+  ],
+  "ornament": "M 25 86 Q 49 62 76 19 M 39 70 Q 32 48 44 28 M 43 65 Q 53 57 76 55 M 50 55 Q 47 37 55 20 M 57 45 Q 69 40 84 38",
+  "values": "Existing live clock, battery and calendar values.",
+  "registryIntegration": "Source candidate for minApp 1.0.44. Canonical integration and on-device checks are coordinator-owned.",
+  "ornamentDirection": "A small plain pine sprig fits the compact headers. The clock outline echoes the broad pointed cone.",
+  "ornamentProvenance": "Original authored vector."
+}

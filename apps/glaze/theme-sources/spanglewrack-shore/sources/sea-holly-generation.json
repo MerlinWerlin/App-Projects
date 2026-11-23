@@ -1,0 +1,29 @@
+{
+  "id": "sea-holly",
+  "prompt": "SPANGLEWRACK SHORE, Glaze Nature. Use case: stylized-concept. ONE original separate1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL shore animal/plant with natural anatomy and whole readable silhouette FIRST. Distinct physical craft is HAND-SEWN PUNCHED SHEET-METAL PAILLETTE EMBROIDERY, shallow applique contour cut exactly to subject, NOT a volumetric wire sculpture or animal with a metallic coating. Body fields are formed from roughly25to45 BROAD thin ROUND FILLED METAL DISCS, punched from metalfoil, gently cupped into veryshallow concave faces, laid in2to4STAGGERED FISH-SCALE OVERLAPPING ROWS that follow anatomy. Eachdisc has a TINY central punchedhole about5to8percent ofdiameter with ONE shortdark or cream anchoring thread stitch passing through; disk stays morethan90percent FILLED METAL FACE, not an open ring. Fine thin raised cutlip, faint circular hammer/toolscuffs, subtle irregularhand-cupping, restrained directional mirror/satinmetalglints visible at85. Broad warm SILVER/TIN, honey BRASS and smoked dark OXIDIZED BRONZE, a few copperrosepieces; naturalmetalcolors only, no painted/enamel/plasticiridescents. Coin-like cups are deliberately LARGE/coarse, not hundreds of tiny seedbeads/dots. Thin underlying neutralcloth foundation follows EXACT organismcontour with no external fabricbacking/rectangle/plaque/patchborder. Open limb/branch gaps trulyalpha. Large clear sameplane shallowdiscs overlapneighbor rims, fewmm raisedrelief only; no paddedtoybody or roundedmetalfigurine underneath. No interlinked OPENWIRE RINGS/chainmail/hoops (tinycenterpuncture only), wovenmetallattice, cutpurl helical tubes/springcoils/bullion, beadclusters/roundedglassbeads/beadoutline, enamelcells/metalpartitionwalls, chasedsolidtinplates, gemstones/nacre/eggshellchips, stoneintarsia/mineralveins, glitterpowder/confetti, smooth chrome solidsculpture or printeddiscpattern. Thinappendages may use a few slender stampedteardropmetalpieces and tinythreadjoins, neverbraidedmetalcord. Softgentle side studio light shows shallowcupfaces/rimoverlaps; no sparklebursts/starflares/castshadow/halo/glow. Whole subject central64percent with18percent genuinely empty ALPHA every side, completeallbill/feet/toes/wing/leaf/stemtips. No detacheddiscs, jewellerypin/clasp/bail/chain, wreath/frame/medallion/base/ground/scenery. No letters/numbers/text, live clock/date/battery/weather readings, UI/logo/signature. NEW DISTINCT SEPARATE SUBJECT: A plant-only whole recognizable SEA HOLLY sprig with TWO egg-shapedpricklyflowerheads atdifferentheights, eachsurroundedby5to6wholepointedSTARLIKEBRACTS; one shortnaturalbranchingstem andTWO broaddeeplylobedspinybasalleaves. Flowerheads builtfrom8to12smallbutcoarseFILLEDwarmSILVER/oxidizedsmokyBRONZE cuppedmetalpaillettes overlappingin2or3shingledrows, tinycentralpunch/stitch ondiscs, no seedbeads/purlhelices/clusteredgems. Bracts arebroadsilvery/bronze thinpunchedteardropmetalpieces taperedtopoints withsubtletoolscuffs, fewthinanchoringstitches; basalleaves formedfrom3to5broadcuppeddiscs pluspointedpunchedleaflobes, naturallythornyholly-likeoutline, not roundrosepetals orfern. Stem thinrolled/foldedmetalstrip withsmallthreadjoins, no openwirechainmail. Naturalbranchedplant, all2flowerheads/bractpoints/lobes/leaftips/stemends containedgenerouslyintruealpha. PlantONLY, no bird/crab/seal/eyes/fruit/jewelrymount/base/medallion. InputImage1 is ONLY our own selectedplover material/craft reference: keep broad shallowFILLEDpunchedmetaldiscs, tinycenterpuncture/shortthreadanchors andshingledoverlappingrims. Create this entirelydifferent natural subject/composition, nevercopybirdbody oraddbird.",
+  "tool": "built-in image_gen",
+  "source": "sources/sea-holly.6aa00d97.png",
+  "sourceSha256": "6aa00d977de745f42e7eef694d47a81841d83e1dbe471b469aedb713f14f525c",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/sea-holly.6c23fef8.png",
+  "sha256": "6c23fef846d3bc0a6be891eb6cc2a4968fb0411a5232fac6613e70764e93c7a6",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "ringed-plover",
+      "file": "sources/ringed-plover.16a8493a.png",
+      "sha256": "16a8493a83fdb6239ceab15ca4430ad98c15300dd810fa861ccc2dcae220a726",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/sea-holly-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/sea-holly-exact-tool-result.json"
+}

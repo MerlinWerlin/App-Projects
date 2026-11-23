@@ -1,0 +1,1 @@
+Initial coherent wallpaper uses own unchanged approved quail as sole material/anatomy reference. Selected final source is a uniform whole-habitat layout pullback with initial wallpaper as sole input. Initial source, exact initial/edit requests and approved reference source hash/order retained.

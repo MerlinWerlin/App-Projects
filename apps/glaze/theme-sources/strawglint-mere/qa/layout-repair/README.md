@@ -1,0 +1,1 @@
+Unselected original wallpaper and exact three-input material/composition edit retained. Ordered inputs were old wallpaper target, selected flat frog and selected flat bittern. Flat-construction references preserve exact selected source hashes; habitat reduced/recentered for phone crops.

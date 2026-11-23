@@ -1,0 +1,1 @@
+Unselected first deer with exterior alpha haze; exact own-badger reference and prompt/hash preserved. Selected built-in transparency-only edit retains full anatomy. Original also remains an exact first habitat reference, separately recorded.

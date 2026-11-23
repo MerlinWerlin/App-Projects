@@ -1,0 +1,22 @@
+{
+  "theme": "c-autochrome-orchard",
+  "recipe": [
+    "pebble",
+    "cAutochromeRose",
+    "cAutochromeStamens",
+    "beads",
+    "needle",
+    "trail",
+    "band"
+  ],
+  "art": {
+    "cAutochromeRose": "M 33 36 Q 15 45 10 30 Q 6 16 23 14 Q 20 1 35 2 Q 51 0 50 17 Q 66 6 73 20 Q 81 34 63 39 Q 73 55 58 62 Q 44 70 37 50 Q 25 67 14 54 Q 5 43 24 36 M 33 36 Q 27 29 33 24 Q 40 20 45 26 Q 51 33 44 39 Q 38 44 33 36 Z M 40 51 Q 52 71 47 97 M 47 73 Q 59 62 73 48 M 68 46 Q 63 35 73 30 Q 86 29 84 42 Q 81 52 68 46 Z M 47 77 Q 28 76 22 59 L 28 60 L 30 55 L 36 61 L 40 60 Q 47 67 47 77 M 49 84 Q 63 68 81 70 L 75 76 L 81 77 L 71 81 L 73 86 Q 58 91 49 84 M 48 93 Q 32 96 27 84 L 34 85 L 34 80 L 41 86 Z",
+    "cAutochromeStamens": "M 33 27 L 27 20 M 37 25 L 36 15 M 41 26 L 48 17 M 44 30 L 55 27 M 44 35 L 54 39 M 39 39 L 42 49 M 34 38 L 29 47 M 30 34 L 20 35 M 26 20 L 29 19 M 35 15 L 38 15 M 47 17 L 50 18 M 54 27 L 57 29 M 53 39 L 55 41 M 41 49 L 44 49 M 27 47 L 30 49 M 19 34 L 20 37"
+  },
+  "ornament": "M 24 84 Q 43 62 65 25 M 37 67 Q 22 53 27 39 L 35 41 L 35 32 L 44 34 L 46 25 L 55 28 L 65 17 Q 80 35 70 50 L 62 49 L 61 58 L 53 57 Q 48 67 41 69 M 44 57 L 35 48 M 52 44 L 65 41",
+  "ornamentDirection": "One small natural serrated rose leaf on a short curved stem,with a midrib andtwo short branching veins. Open base andasymmetric botanical spacing retain breathing room,not a plate border orcontrol icon.",
+  "ornamentProvenance": "Original authored100x100 SVG path,22November2026,following wildrose firstsample andBoth-corner steering.",
+  "direction": "Recognizable five-petal wildrose,bud,serrated leaves andstamens inlarger native areas. Pebble dial,bead marks,needle hands,trail battery andband calendar. Dedicated naturalroseleaf fragment incompactheaders.",
+  "values": "Existing live nativeClock/Battery/Calendar mechanisms;no raster readings.",
+  "registryIntegration": "Coordinator owns shared source/Swift integration andinstalled-device qualification. Lane source-only."
+}

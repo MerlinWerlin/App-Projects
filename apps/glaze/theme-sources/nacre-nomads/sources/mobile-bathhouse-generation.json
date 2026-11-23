@@ -1,0 +1,18 @@
+{
+  "id": "mobile-bathhouse",
+  "prompt": "NACRE NOMADS for Glaze. ONE separate original1024x1024 square production artwork. Meticulous FLAT saw-cut mother-of-pearl wafer INLAY in polished black lacquer, each tiny shell piece visibly has nacre growth bands and cream/sea-green/soft-rose/pale-silver iridescence, hair-thin uneven dark joints, occasional saw kerf. Low-relief lacquer-panel illustration viewed straight on, not actual3D metal/crystal sculptures, no brass cloisonne/enamel. Isolated complete silhouette central65%,18% real transparent alpha margins, transparent exterior and open gaps; black lacquer retained only within the illustration's structure. No backing rectangle, frame, floor, pedestal, text, numerals, signature, labels, UI, logo, clock/date/battery/live readings, no collage. TANGIBLE SUBJECT: MOBILE DESERT BATHHOUSE, a wide low barrel-vaulted public wash pavilion carried on two broad visibly curved SLED RUNNERS, no boat hull or wheels. Three open arched bays reveal shallow pools and stepping platforms, a clear central entrance with fold-down steps, patterned side screens, two small roof vent chimneys and a compact exterior water-recycling tank connected by visible pipes. A few slender curling steam wisps rise above the vault as cut shell curls. Purposeful communal bathing service that travels with the nomads; complete constructed building on a sled, warm inhabited atmosphere without people, clearly different silhouette from tracked orchard, high well and kite-market. Build every arch/tile/pipe/runners from iridescent nacre wafers with visible black-lacquer joins, flat artisan inlay panel language, not a polished3D gemstone toy. Whole pavilion/steam/runners fits inside transparent margins. No text, readings or labels.",
+  "tool": "built-in image_gen",
+  "source": "sources/mobile-bathhouse.65b934d6.png",
+  "sourceSha256": "65b934d69e7e555747b0b4a80d40907a15d3b9cb8ec925c582320f84919eeb4f",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/mobile-bathhouse.713f3fe8.png",
+  "sha256": "713f3fe8b81ceb1ac73155548d6e9a42921ce9e5bc384c2215de2769dbe64bb9",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

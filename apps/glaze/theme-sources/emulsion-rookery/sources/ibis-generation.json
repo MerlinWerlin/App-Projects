@@ -1,0 +1,19 @@
+{
+  "id": "ibis",
+  "label": "Perforated Ibis",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One standalone square transparent Glaze pure-art asset. EMULSION ROOKERY: a physically assembled wildlife sculpture made entirely from continuous thin perforated PHOTOGRAPHIC CELLULOID FILM STRIPS. Real macro craft photography of springy glossy but thin translucent film: clearly visible small RECTANGULAR EMULSION FRAME WINDOWS and TWO REGULAR ROWS OF SQUARE SPROCKET HOLES along each long film edge. Deep petrol-blue, teal, soft coral and copper dye transparencies with subtle photographic grain inside the frame windows; thin amber-clear edges catch small restrained reflections. Frame windows contain only abstract dye gradients, NO pictures, NO writing or codes. Film bends in long crisp loops and overlapped pleats, showing rectangular frames and sprocket rows on every major strip. Do not make ordinary animal skin then decorate it; the strips construct the whole body. Not paper, fabric, feathers, metal wires, fuzzy fibres, wet cellulose, glass, candy or generic CGI toy. SUBJECT: one whole tall long-beaked IBIS in elegant three-quarter view facing right. Long slender down-curved beak formed from one tightly folded film strip, small compact head with a tiny dark eye, gracefully S-curved neck built from overlapping film loops, compact rounded body with layered film-ribbon wings, and two long thin clearly articulated legs with complete splayed toes. Several broad film strips fan gently from the near wing without hiding body anatomy. No cinema equipment, reel, spool, screen, props or nest. Entire beak tip, wing loops, tail tips and every toe inside central70% of canvas, with ample true transparent margins on all sides. Real transparent holes between ribbons and through the sprocket perforations. No floor, external cast shadow, haze, opaque rectangle/backing, border, frame or collage. Absolutely NO film edge text, numbers, brand marks, lettering, captions, dates, clock hands/dials, battery/calendar images or UI. One coherent recognizable bird, clear silhouette at85px.",
+  "source": "sources/ibis.34b1d9dbdfc2.png",
+  "sourceSha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/ibis.33efdcf64000.png",
+  "sha256": "33efdcf64000c6ee570d536b84af3249010c31046813a04d394b00b5c0875652",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits."
+}

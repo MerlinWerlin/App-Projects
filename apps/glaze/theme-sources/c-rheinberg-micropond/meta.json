@@ -1,0 +1,16 @@
+{
+  "name": "Rheinberg Micropond",
+  "mood": "Warm scattered light reveals tiny pond life in a quiet cobalt water world.",
+  "tags": [
+    "rheinberg-inspired",
+    "microscopy",
+    "nature",
+    "pond-life"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity. Fictional two-colour light-microscopy microcosm,not measured data.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. GLAZE RHEINBERG MICROPOND. A tangible NATURE microcosm of invented pond organisms, inspired by RHEINBERG TWO-COLOUR TRANSMITTED-LIGHT MICROSCOPY. Medium: a beautiful flat optical microscope exposure. RICH AMBER-ORANGE scattered light resolves outer membranes,ciliary rims and dense granular inclusions; DEEP COBALT/ULTRAMARINE transmitted light fills the thin watery interiors, with a few pale cream scattering peaks. Crisp thin warm contours around translucent BLUE cellular fields, tiny irregular warm grains suspended INSIDE the bodies, soft local amber/cobalt edge transitions and watery vacuoles. Broad clear silhouettes, continuous optical tones, fine real-exposure texture. Colour is an artistic illumination signal,not physical amber or blue material. Organisms are delicate hydrated natural cells/tissues,never solid glass,metal,gemstones,glossy sculpture or mechanical models. No hot-magenta membranes,cyan fibre bundles,lime vesicles,external lightning corona,neon wireframe,thermal heat gradients,uniform luminous outline drawing,polarization rainbows,LiDAR points,projected stripes,orientation-grain mosaic or X-ray skeleton. Fictional pond life with natural biological growth and believable connections,not a measured scientific dataset or literal species-identification plate. No eyes/faces added to cells,clothes,machinery or cute cartoon expressions. No text,labels,scale bars,coordinates,numerals,clock faces,readings,graphs,logos or watermark. ",
+  "addedAt": "2026-11-22",
+  "category": "Ocean & Water"
+}

@@ -1,0 +1,1 @@
+Opaque1290x2796 structural resize of one built-in own-scene enlargement/recomposition. All five whole familiar fossils integral to one taller continuous laminated shale face. Three actual phone crops and thumbnail supplied by builder, all endpoints visually verified inside. Prior selected wallpaper raw/normalized/exact prompt/own-reference history preserved. No extra pullback.

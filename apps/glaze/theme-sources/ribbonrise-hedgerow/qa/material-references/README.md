@@ -1,0 +1,1 @@
+Each remaining subject is a separate fresh built-in generation, using own selected approved refined foxglove as MATERIAL-ONLY input. Exact requests, selected material-source hash and portable relative reference preserved in each generation/provenance record. No external/neighbor input, subject copying or five-panel extraction.

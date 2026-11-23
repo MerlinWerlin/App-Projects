@@ -1,0 +1,27 @@
+{
+  "id": "fieldmouse-blackberry",
+  "prompt": "Input1 is OWN material-reference image ONLY: use its BROAD SMOOTH SATIN ribbon planes, curled lips, tucked ends and pinched stitch entries, NOT its foxglove/fern subject, scale or composition. Create a completely NEW separate subject as described below, no foxgloves/ferns copied. RIBBONRISE HEDGEROW, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL hedgerow flora/fauna with natural recognizable anatomy FIRST. Unmistakable physical SILK RIBBONWORK EMBROIDERY, NOT ordinary thread painting: SHORT BROAD SATIN RIBBONS individually pulled THROUGH very thin LINEN CUT EXACTLY TO ORGANISM SILHOUETTE. Use only a FEW LARGE BROAD SMOOTH PLAIN SATIN PLANES per body/wing/leaf, soft directional sheen and a clearly TURNED-OVER/CURLED EDGE with lighter underside, broad shadow beneath edge turn, tiny pinched STITCH ENTRY/EXIT points and tucked/pierced tips. REMOVE ALL fine longitudinal thread-shading/stitch-fill texture; no individually painted or embroidered fibers. Minute fabric grain may be faint, but a broad plane and edge turn must remain visible at85pixels. Each short broad stitch is a soft flat satin ribbon segment anchored at both ends with a slightly raised middle and tucked point. LOW SHALLOW STITCHED RELIEF, not a stuffed/quilted cloth toy, long flowing cloth figurine or free folded-ribbon bow sculpture. Restrained rose-pink, ivory/champagne, sage/olive, warm taupe/copper and dark plum colors. Natural shapes dominate over craft detail. No soft wool/yarn/knit/crochet/felt/velour/fuzzy pile, feather shafts/barbs, hard metal purl coils, glass beads/enamel, raw layered cut-applique patches, bow/rosette/jewellery sculpture or long draped silk fins. All support linen only directly underneath actual stitches, no rectangle/hoop/backing sheet/ground/plaque/frame/badge/ring. Whole complete subject inside central64percent with18percent REAL EMPTY ALPHA margin each side. Exterior and all open anatomy/branch/flower gaps truly transparent. Every foot/toe/bill/ear/tail/wing/antenna/leaf/petal/stem tip whole, no clipping. No ground/scenery/cast shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. One familiar natural field mouse walking gently left on a short blackberry sprig, modest rounded ears, small natural dark eyes/nose, four coherent small legs with complete fine stitched paws and one whole long slender curved tail. One small cluster of three ripe dark-plum blackberries and two serrated sage ribbon-stitch leaves beside it, no ground/plinth. Mouse body in short champagne/taupe broad satin ribbon stitches with tiny punctured/tucked tips and stitch-entry puckers; blackberries a few small knotted ribbon loops, not glass beads. Natural proportions, no chibi eyes, costume or bow tied around it. Whole ears/muzzle/tail/paws/leaf tips inside margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/fieldmouse-blackberry.e36425e9.png",
+  "sourceSha256": "e36425e96a695f13416332d9ba2089109224e36ce34616bd85ec8e43fc18f3a5",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fieldmouse-blackberry.a16ccc09.png",
+  "sha256": "a16ccc09f999aa96bb657e9feb2fc5fac419d42acc4805ceb7fa090588bd222d",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "id": "foxglove-fern",
+      "source": "sources/foxglove-fern.adabbef6.png",
+      "sourceSha256": "adabbef6bb808b7d282a945f3fc91ff13234793299cb3ebed46b000059ff477e",
+      "role": "Own approved REFINED broad-satin ribbonwork MATERIAL-ONLY reference, not subject/layout to copy."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/fieldmouse-blackberry-exact-tool-request.json"
+}

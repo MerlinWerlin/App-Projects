@@ -1,0 +1,29 @@
+{
+  "id": "articulated-skybridge",
+  "prompt": "EDIT FIRST IMAGE ONLY, the articulated skybridge. SECOND IMAGE is an approved FRIT GLASS MATERIAL REFERENCE ONLY, not its building shape. Repair the bridge: REMOVE ALL pale grey/cream backing, halo, drop shadow and opaque filler behind/around/between the bridge, including BOTH doorway arches, the huge gap under centre deck and every opening through rails/piers. Those gaps must be true transparent alpha. Pull the WHOLE COMPLETE bridge back to fit central66% of square with at least16% real alpha margins on all4sides, fully restoring the currently clipped far-right folding end/rail and left staircase. Preserve exact wide articulated3-flight walkway, two different pierced support piers, two hinge pivots, linkages and little centre mirror baffles; no new buildings or props. Make ALL SURFACES including ribs, warm ochre hinges/rails, cobalt piers and lime decks use the same clearly ROUGH TINY FUSED GLASS FRIT GRAINS, cloudy chipped thin lips and granular matte texture visible in second approved sample. No smooth bright gold enamel borders, metal/plastic/clay surfaces or bead holes/threads. Keep same lime/cobalt/ochre/oyster colours. Entire stair ends, rails and feet complete with true transparent openings; no background/frame/scene/text/UI.",
+  "tool": "built-in image_gen",
+  "source": "sources/articulated-skybridge.5d4b4741.png",
+  "sourceSha256": "5d4b4741f0ec0d03b953814fbe93fc845eba7c6a940b1238e29474dc2e531c12",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/articulated-skybridge.c1075b00.png",
+  "sha256": "c1075b00fd19e584e2e913d7636fb0b45fb71b20b02593d54e9baa3726522444",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/alpha-repair/articulated-skybridge-history.json",
+  "referencedImage": {
+    "file": "qa/alpha-repair/articulated-skybridge.original.94211440.png",
+    "sha256": "94211440dbeef99ce23a080ff57d306399cf56da5fd271aadd74e421772c9c69"
+  },
+  "materialReference": {
+    "id": "foldwing-mirror-hall",
+    "source": "sources/foldwing-mirror-hall.e9552017.png",
+    "sourceSha256": "e9552017f9077e45aeea6c712da301da6b99e11b7fa24ea1c540a1b3d1540d1b",
+    "role": "Material reference only; target subject/geometry retained."
+  }
+}

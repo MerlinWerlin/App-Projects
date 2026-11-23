@@ -1,0 +1,38 @@
+{
+  "themes": [
+    {
+      "theme": "thistle-etch",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\thistle-etch\\v1\\widget-thistle-head.d79ef931.webp",
+      "sha256": "d79ef93190e7b8ed5ec6d2533a03aa431362dea13bfe14bfdf2b99ef927dc6b8",
+      "authority": "Retained shipped v1 manifest and exact asset hash; a published actual selected illustration."
+    },
+    {
+      "theme": "persimmon-press",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\persimmon-press\\v1\\widget-persimmon-pair.50a1cc0d.webp",
+      "sha256": "50a1cc0d1fcade11b419846621bd43eeb665a956d2cecfe04f8b57df7bde2dbe",
+      "authority": "Retained shipped v1 manifest and exact asset hash; a published actual selected illustration."
+    },
+    {
+      "theme": "burr-hinterland",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\burr-hinterland\\widgets\\underside-vault.9a878715.png",
+      "sha256": "9a87871577e3c266ca017abbf70d5aa763e7f08fbfb52685a5fbe60ee79cac21",
+      "authority": "Current canonical independent Artwork selection."
+    },
+    {
+      "theme": "c-electron-mossbank",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-electron-mossbank\\widgets\\split-pollen.b5ed54841689.png",
+      "sha256": "b5ed54841689c9255ad3110da13552d0fef05a2af5d5afc91edb51e3661a59e2",
+      "authority": "Current canonical independent Artwork selection."
+    }
+  ],
+  "searchTerms": [
+    "scratchboard",
+    "scraperboard",
+    "scratch art",
+    "white on black",
+    "India ink"
+  ],
+  "positiveMetadataMatches": [],
+  "rejectedUnstartedAlternative": "Pine-needle coiled basketry rejected before generation after actual Woven Wander raffia/basket artwork provenance revealed a broad existing material/subject match.",
+  "proposedDifference": "Sharp directional white knife-scratched strokes through matte black ink, visible little chisel ticks and broad solid black reserves. No soft granular mezzotint, printed dark-line etch, white-paper woodblock colour patches, photoreal surface or metallic sculpture."
+}

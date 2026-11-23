@@ -1,0 +1,119 @@
+{
+  "theme": "porcelain-umbra",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Hand-pierced eggshell porcelain shadow theatres",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Create ONE original production wallpaper for Glaze theme PORCELAIN UMBRA. Tall portrait image ratio 1290:2796, no device mockup. Physical fine-art craft photography of an impossible shadow theatre made entirely from eggshell-thin unglazed ivory porcelain, hand pierced with fine narrow lancet apertures, tiny pinholes and lace-cut crenellations. In lower 58% of the composition, three nested crescent-shaped porcelain stage walls twist into an Escher-like suspended aqueduct, reverse stair and hollow folded fan; a single low raking warm amber light sends long, exquisitely sharp midnight-indigo architectural shadows through the holes across a continuous matte dark navy ceramic surface. Unmistakable actual ceramic craft: translucent thin edges, occasional kiln warping, bisque grain, minute finger tooling marks; crisp ivory silhouettes, profound negative space. Upper 42% is very quiet deep midnight blue #101B30, subtle hand rubbed ceramic grain, suitable for legible phone icons. Palette ivory #F4EDD9, midnight #101B30, subdued amber #BC8B4D; refined gallery photography, mysterious miniature world, asymmetric lower-left focal assembly with arcs to lower right. All objects and shadows belong to this one crafted world. Absolutely no animals, ordinary household objects, text, letters, numbers, UI, logo, frame, clock hands, dials, dates, percentages or live values. Not a collage; not a contact sheet; one standalone wallpaper.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.b5d4ca68.png",
+      "sourceSha256": "b5d4ca68beb307eeec9e332727c85e196883ff074a43ddd10a2f165db4df74b5",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "3440bba63264dd04dcbf0bd91e022b6ef009b93083dc4b4de40450eb3999f472",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "shadow-sluice",
+      "prompt": "ONE individual original square 1024x1024 production artwork for Glaze PORCELAIN UMBRA. A self-contained sculptural SHADOW-SLUICE: an eggshell-thin ivory bisque porcelain helix split vertically like a peeled shell, with two floating rows of tiny pointed arches facing opposite ways; its hollow central void is the unmistakable dominant silhouette, not a building facade or ordinary object. It looks handmade from thin slip-cast sheets, meticulously pierced lace holes, light passing through ivory edges, visible kiln-warp and bisque grain. A low amber grazing light makes the pierced cuts luminous. Isolated complete sculpture at three-quarter view, strong readable compact silhouette, fills central 70% with generous 15% transparent margins, no cropping. Real alpha transparent background, no floor or colored backdrop, only tiny intimate contact shadow attached to sculpture. Fine-art craft photography, ivory and subdued amber with midnight-indigo occlusion inside, physically tactile, extraordinary invented theatre architecture. No text, numerals, symbols, logos, UI, dates, clock, dial, hands, battery or baked live values. One scene, no grid, no variants. Must visibly be pierced porcelain, not paper, coral or plastic.",
+      "tool": "built-in image_gen",
+      "source": "sources/shadow-sluice.1a12f811.png",
+      "sourceSha256": "1a12f8111ffd108fdbe20cfd747707f3e5b84fc283ab2e90c6f76d3d012831e7",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/shadow-sluice.8c3fbbb2.png",
+      "sha256": "8c3fbbb2a20a213b1c1690a699686fd7d31bb9467f47a34fae3be8f5ff37c043",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "four-way-stair-knot",
+      "prompt": "ONE new standalone square 1024x1024 pure artwork for PORCELAIN UMBRA, an invented world of hand-pierced eggshell-thin ivory bisque porcelain shadow theatres. Subject: a suspended FOUR-WAY STAIR KNOT, four flat narrow porcelain stair flights meet through a hollow square at impossible angles, two flights descending underneath and two ascending above, looking like an open folded ceramic puzzle. Wide, angular, almost cruciform silhouette, NOT a helix or tower. Each solid step has delicate pierced triangular eyelets in its riser; occasional thin lancet braces join the flights. Handmade unglazed ceramic with minute kiln warp, visible bisque grain and luminous translucent edges, dramatic low warm amber raking light and midnight indigo cavities. Gallery craft photograph at oblique overhead angle. Entire compact sculpture centrally isolated within 20 percent fully transparent empty margins, no floor, no opaque backdrop, no pedestal. Real alpha transparency. Crisp readable thumbnail shapes. Absolutely no text, numbers, logos, UI, dates, clocks, dials, clock hands, batteries, living animals or ordinary objects. Only one sculpture, no variants or contact sheet, no border.",
+      "tool": "built-in image_gen",
+      "source": "sources/four-way-stair-knot.24672c46.png",
+      "sourceSha256": "24672c46fc46162e4b2e95ada67120d0153c4ba10653609813310effa7c6514a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/four-way-stair-knot.81ec4636.png",
+      "sha256": "81ec46367ebd490879bc0b1b91efe5b867c210666c700e8c533a72ae68108b13",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "folding-eclipse-theatre",
+      "prompt": "One individual original square 1024x1024 pure artwork for PORCELAIN UMBRA. Subject: a FOLDING ECLIPSE THEATRE, five thin upright fan-shaped porcelain screens arranged in a zigzag concertina around a small empty circular stage; each panel is a different curved slice, pierced with sparse crisp star-shaped and narrow crescent apertures. As a whole it forms a low wide half-sun silhouette, elegant radial folds, definitely NOT a spiral, stairs or ordinary hand fan. Hand-built ivory unglazed eggshell porcelain, chalky bisque texture, very fine translucent amber edges, minute natural kiln warp. Raking low warm amber light through apertures; shadowed inner surfaces deep midnight indigo. Fine-art ceramic craft photograph, three-quarter frontal angle, compact single complete sculptural theatre in middle 70%, 15% empty transparent margin on all sides. Isolated on genuine alpha transparency, no backdrop, floor, hand or pedestal. Extraordinary invented craft architecture; readable thumbnail. No text, numerals, signs, UI, date, percentage, clocks, dials, clock hands, animals or routine objects. No collage or contact sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/folding-eclipse-theatre.b42be9bc.png",
+      "sourceSha256": "b42be9bc40620a8431712c788456225c81e7f8484b16fc99e1f017c8b4088803",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folding-eclipse-theatre.6f17b3e3.png",
+      "sha256": "6f17b3e33b4206402e2df818f0b2ffe82b3845c8e7be72d7c1f969f2c9a44e79",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "hanging-rain-vault",
+      "prompt": "ONE original standalone 1024x1024 square artwork for PORCELAIN UMBRA. A tiny impossible HANGING RAIN VAULT sculpted entirely of hand-pierced ivory bisque porcelain. A broad upturned saddle-shaped roof floats above seven descending staggered flat ceramic rain-blades, each perforated with fine vertical slits, blades connected by tiny porcelain bridges, no string. Their offset heights make a dramatically jagged geometric fringe and a large open hollow below the saddle. Architecture of a rainstorm translated into slip-cast sheets, emphatically unlike a spiral, staircase or concertina screen. Fine matte ceramic grain, barely warped knife-thin edges, warm amber light passing through slots, midnight indigo shaded cavities. Photograph of a physical gallery craft piece, frontal low angle, sculptural strong wide top-heavy silhouette. Entire subject central 65% of canvas with fully transparent 18% margins, real alpha, no ground, backdrop, pedestal, hands or base. All elements attached into one coherent crafted sculpture. No text, numerals, letters, icons, logos, UI, live values, clocks or dials, animals, jewellery or everyday objects. One artwork only, no collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/hanging-rain-vault.02fe0ace.png",
+      "sourceSha256": "02fe0ace5d11cd8e4321b65e9323727cca0c10f1a3c653b312247c5ec25cbccc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hanging-rain-vault.62bb4be1.png",
+      "sha256": "62bb4be1737b5fcf4b03c51130f7d2828fa313583f0353660202d24e21ca4b2f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "labyrinth-seed",
+      "prompt": "ONE original standalone square 1024x1024 pure artwork, PORCELAIN UMBRA craft-world. Subject is a LANTERN LABYRINTH SEED: a compact hollow asymmetrical polyhedral ceramic chamber, roughly a tall pentagonal prism, composed of three offset ivory porcelain walls with nested square doorway cutouts that recede diagonally into the core; the roof is open and split into a jagged crown of five small blades. A narrow stepped cantilever emerges from one low aperture. Bold compact enclosed silhouette, a miniature impossible shadow theatre, no ordinary lantern or candle and no light bulb; fundamentally different from a helix, stair knot, fan or suspended rain roof. Hand-pierced eggshell thin matte ivory bisque, translucent edge light, tiny tooling ridges, restrained warm amber illumination from outside through apertures and midnight indigo cavities. Gallery craft photography three-quarter front angle, whole sculpture central 65% surrounded by 18% genuinely alpha-transparent margins. No floor, background, base, pedestal, cords or hands. No text, numbers, writing, logo, UI, time, date, battery reading, clocks, dials, figures or animals. One asset, no collage or sheet.",
+      "tool": "built-in image_gen",
+      "source": "sources/labyrinth-seed.ae5b4531.png",
+      "sourceSha256": "ae5b4531fd71c5d00b90f4c19855f2353a25bc509c3ff5da079965fa3ca4011d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/labyrinth-seed.951d63e1.png",
+      "sha256": "951d63e188b5c1c4c68104826bab3a49edee81ad762330d099413a75df4294d5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

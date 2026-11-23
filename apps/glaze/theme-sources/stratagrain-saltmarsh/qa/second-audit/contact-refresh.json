@@ -1,0 +1,8 @@
+{
+  "themeId": "stratagrain-saltmarsh",
+  "scope": "QA presentation-only refresh: contact sheet wallpaper now matches final selected second-audit wallpaper. Five artwork tiles use unchanged production PNGs; earlier contact retained exactly. No production/native/meta/palette bytes changed.",
+  "previousContactSha256": "c3efa5dbe1d5a1b29e7d74b754952caa91c6e607fc615b699a611ac2df209ce8",
+  "currentContactSha256": "411e8e76586db38f034bc0ddbce45fa9826b692ce5a33052cb7cae2ab353ee61",
+  "selectedWallpaperSha256": "9e0bfa77bc36b7038351908795a7eaa33f745ec345aa087a4d77f06728494b77",
+  "allTwentyFrozenFilesRemainIdentical": true
+}

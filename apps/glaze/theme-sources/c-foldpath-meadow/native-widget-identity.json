@@ -1,0 +1,21 @@
+{
+  "theme": "c-foldpath-meadow",
+  "art": {
+    "cFoldDaffodil": "M 49 91 Q 56 68 50 41 M 50 41 Q 37 40 21 32 Q 29 23 44 32 Q 38 22 49 11 Q 60 21 55 33 Q 66 26 79 33 Q 70 45 57 45 Q 70 50 73 62 Q 58 61 51 50 Q 48 64 35 68 Q 32 55 43 47 Q 29 52 19 45 Q 33 36 50 41 M 52 82 Q 37 80 28 70 Q 44 72 52 82 M 52 78 Q 61 65 74 64 Q 68 76 52 78",
+    "cFoldHelix": "M 43 31 C 35 24 62 19 66 29 C 71 40 37 41 41 48 C 45 57 68 47 65 58 C 62 67 42 64 43 72"
+  },
+  "recipe": [
+    "hex",
+    "cFoldDaffodil",
+    "cFoldHelix",
+    "bars",
+    "needle",
+    "column",
+    "board"
+  ],
+  "ornament": "M 37 91 Q 47 70 54 50 Q 53 27 72 11 Q 75 36 62 54 Q 54 65 48 65 M 48 65 Q 55 40 68 20",
+  "values": "Existing live Clock/Battery/Calendar, no rasterreadings.",
+  "registryIntegration": "Isolatedsource minApp1.0.44, coordinatorowns canonical/runtime/Swift/devicequalification; peer materialreviewpending.",
+  "ornamentDirection": "Small plain long narcissus leaf/stalk only in compactheaders, no arrow/helix chart. Hexclock contour echoes sixpetal geometry; currentrestoredcalendar identity.outline, no retiredbadgeprobes.",
+  "ornamentProvenance": "Original100x100vector authored23November2026 for both-cornersteering."
+}

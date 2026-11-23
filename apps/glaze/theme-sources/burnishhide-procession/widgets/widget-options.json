@@ -1,0 +1,62 @@
+[
+  {
+    "id": "gate-drummer",
+    "kind": "art",
+    "image": "gate-drummer.fa12a08f.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Gate Drummer"
+  },
+  {
+    "id": "fan-mantle-dancer",
+    "kind": "art",
+    "image": "fan-mantle-dancer.d90fae45.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fan Mantle Dancer"
+  },
+  {
+    "id": "antler-lamplighter",
+    "kind": "art",
+    "image": "antler-lamplighter.23eaf9a1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Antler Lamplighter"
+  },
+  {
+    "id": "wheel-mask-herald",
+    "kind": "art",
+    "image": "wheel-mask-herald.8c4e81d9.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Wheel Mask Herald"
+  },
+  {
+    "id": "bellows-standard-bearer",
+    "kind": "art",
+    "image": "bellows-standard-bearer.d5582146.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bellows Standard Bearer"
+  }
+]

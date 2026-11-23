@@ -1,0 +1,18 @@
+{
+  "id": "nightwater-bath",
+  "prompt": "GRAINWARD COMMONS for Glaze. ONE original 1024x1024 pure artwork of a tangible invented community building. Physical SIFTED COLOURED-SAND PAINTING: dense opaque mineral grains poured through hand-cut stencils onto flat binder, visibly granular fields, crunchy little sand ridges along contours, crisp masked edges, selectively raked shallow seam lines, tiny loose grain spills, dry matte finish. All forms made from FLAT coloured-grain areas and raked drawing; no sand sculpture, photoreal stone/3D architecture model, smooth CGI, oil paint, textile, sacred motifs or mandala. Dark plum #281C32, mineral lavender #8A77AD, saffron #D49A52, grain ivory #E7D8B1 only. Charming original architectural illustration with understandable access, structure and function, strong readable silhouette and open negative spaces. Complete building occupies central65% of square, at least16% genuine transparent alpha margin on every side, transparent through open archways. No background board, ground rectangle, frame, shadows/platform outside building, people, text, signs, letters, numbers, UI, clock/date/battery/weather readings or logos. Subject NIGHTWATER BATH: a low, broad COMMUNITY BATH COMPLEX viewed from a high three-quarter angle, consisting of THREE DIFFERENT open circular pools joined by short curved channels in a crescent layout: one large foreground saffron-ringed pool with deep plum water and three broad descending ivory entry steps, one raised small lavender pool behind-left reached by a complete narrow zigzag stair, and one shallow kidney-shaped cooling basin on the right with an open arch spout. A crescent-shaped ivory privacy wall curves only around the rear; two blank short towel rails and little drain grooves explain use. No enclosing building, towers, canopy, trees, statues, people or ornamental vegetation. Pools contain simple raked sand-wave lines and a few small ivory reflection marks, not glowing stars or data. Distinct horizontal nested-ring silhouette with clear internal bowl voids, an actual useful bath rather than abstract circles. Entire perimeter, stairs, spout and channels fully inside alpha margins. Every wall and water field looks like poured coloured mineral grains on flat binder, no marble/ceramic 3D model.",
+  "tool": "built-in image_gen",
+  "source": "sources/nightwater-bath.ac181a2d.png",
+  "sourceSha256": "ac181a2db6520fadb2c50d584664bc4d7adadc1c998b1a45fc50dcb28f705971",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/nightwater-bath.657549ea.png",
+  "sha256": "657549ea3536dbc1fcf652e3e76f7e19ace5c00487fead1d650c828cb7417a75",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

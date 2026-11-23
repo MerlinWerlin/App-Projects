@@ -1,0 +1,21 @@
+{
+  "theme": "burnishhide-procession",
+  "fiveArtworkHashesUnchanged": {
+    "antler-lamplighter.23eaf9a1.png": "23eaf9a15acf0e43da7823b327373de0cbdb8a4680e1fe69e6825e61a4e0e759",
+    "bellows-standard-bearer.d5582146.png": "d5582146ba34ab5bc7c2a7a8a5fbb70c36c4e7166853943175a08be6014f2aa4",
+    "fan-mantle-dancer.d90fae45.png": "d90fae4504ce69b794acb32b8f043f892c03f81c7d517c89fe12a1d07753457c",
+    "gate-drummer.fa12a08f.png": "fa12a08f83d762322187f4689b95665e9a1dd0f79f56f6635606014ac5d7e600",
+    "wheel-mask-herald.8c4e81d9.png": "8c4e81d9b166e477a8d15faf58f27009d60f2bed1bcfc5e43009932781f08dea"
+  },
+  "nativeIdentityUnchanged": "f152c19d0caec433348a472b0bf17c577d8bbe146bf712493417be1510d27804",
+  "wallpaperSourceSha256": "9159c65576546bb209935cb391f28f7d2dbdec6f4bc8bb12ddff3588e23b1f47",
+  "selectedWallpaperSha256": "beac3af012425202b4657d05af886486e226760b2e5ea4c066caeb1867777820",
+  "actualThreeExportReview": "Reviewed actual encoded1290x2796,1179x2556 and750x1334 exports: all five performers, including front drummer feet and left lamplighter, have space from screen boundaries.",
+  "encodedWallpaperHashes": {
+    "1290x2796": "ca56d7bdb1057b466e94b1a6a6d862bba417fd8fcd079c9e7107c842e1e78317",
+    "1179x2556": "905718a3f128f1426183ced4c4f2c92467b119b29195a1892a86e88a93a424c4",
+    "750x1334": "940bbdd4743b031f44a48709805d3a652335852038a9fa26fc59f52b5ddfed4a"
+  },
+  "reviewed": true,
+  "installedDeviceVerified": false
+}

@@ -1,0 +1,204 @@
+{
+  "themeId": "huskpleat-meadow",
+  "scope": "Geometry proof using actual encoded WebP assets, production theme-to-widget background, scaledToFit and Swift Fit6% rule. Conservative24% corner radius stress check; device corner radius varies, no installed-iOS screenshot claim.",
+  "swiftSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\targets\\widget\\SeamlessWidget.swift",
+  "swiftSha256": "00f8f7b122e06f51ea9bdceb20b4dfa1753ca09d936f7f796212ee3184042477",
+  "backgroundStops": [
+    "#514151",
+    "#5A4A59"
+  ],
+  "artworkOptions": 5,
+  "layouts": [
+    {
+      "option": "barn-owl",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        44,
+        23,
+        122,
+        146
+      ],
+      "asset": "widget-barn-owl.f60048bd.webp",
+      "assetSha256": "f60048bd890098c4a81221f0360166e807fbcba682c50f05de46c68822aaf833"
+    },
+    {
+      "option": "barn-owl",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        94,
+        60,
+        261,
+        321
+      ],
+      "asset": "widget-barn-owl.f60048bd.webp",
+      "assetSha256": "f60048bd890098c4a81221f0360166e807fbcba682c50f05de46c68822aaf833"
+    },
+    {
+      "option": "harvest-mouse",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        32,
+        24,
+        129,
+        145
+      ],
+      "asset": "widget-harvest-mouse.9e6cb111.webp",
+      "assetSha256": "9e6cb1119537a5599fc1b936cd4eced6003218034ebcb2677a723ed4ed6f4a3c"
+    },
+    {
+      "option": "harvest-mouse",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        69,
+        62,
+        277,
+        319
+      ],
+      "asset": "widget-harvest-mouse.9e6cb111.webp",
+      "assetSha256": "9e6cb1119537a5599fc1b936cd4eced6003218034ebcb2677a723ed4ed6f4a3c"
+    },
+    {
+      "option": "hedgehog",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        42,
+        142,
+        127
+      ],
+      "asset": "widget-hedgehog.49122416.webp",
+      "assetSha256": "4912241678b433ffbbcd22e4aad0e7bc9061197c825d93409beb82c027effae9"
+    },
+    {
+      "option": "hedgehog",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        54,
+        100,
+        305,
+        281
+      ],
+      "asset": "widget-hedgehog.49122416.webp",
+      "assetSha256": "4912241678b433ffbbcd22e4aad0e7bc9061197c825d93409beb82c027effae9"
+    },
+    {
+      "option": "dog-rose",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        37,
+        26,
+        130,
+        144
+      ],
+      "asset": "widget-dog-rose.9d2d403a.webp",
+      "assetSha256": "9d2d403ab6e80cc316e7bb483e76f25f40b04ab6e29881aa04b28c69dbd18306"
+    },
+    {
+      "option": "dog-rose",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        81,
+        67,
+        279,
+        317
+      ],
+      "asset": "widget-dog-rose.9d2d403a.webp",
+      "assetSha256": "9d2d403ab6e80cc316e7bb483e76f25f40b04ab6e29881aa04b28c69dbd18306"
+    },
+    {
+      "option": "bumblebee",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        26,
+        25,
+        142,
+        144
+      ],
+      "asset": "widget-bumblebee.63f43d82.webp",
+      "assetSha256": "63f43d82d423d397b15f3d54d02a442676aa4336a9aea27c3b6baf302a61de9c"
+    },
+    {
+      "option": "bumblebee",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        56,
+        65,
+        305,
+        317
+      ],
+      "asset": "widget-bumblebee.63f43d82.webp",
+      "assetSha256": "63f43d82d423d397b15f3d54d02a442676aa4336a9aea27c3b6baf302a61de9c"
+    }
+  ],
+  "clippedForegroundPixels": 0
+}

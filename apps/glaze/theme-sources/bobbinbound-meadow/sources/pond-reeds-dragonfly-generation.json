@@ -1,0 +1,18 @@
+{
+  "id": "pond-reeds-dragonfly",
+  "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject POND REEDS AND DRAGONFLY: one naturally proportioned DRAGONFLY rests diagonally across two tall curved reed stems above a small OPEN OVAL POND EDGE. Exactly FOUR long transparent diamond-lace wings, two forewings swept upper-left and upper-right, two shorter hindwings lower-left/lower-right, one long segmented braided abdomen, two small joined eye knots and six tiny leg loops grip the reeds. Three narrow reed leaves and TWO cattail-like seed heads rise asymmetrically, one tall at left and one low at right. One broad round floating pond leaf with a notch sits below, and a single curved paired-cord ripple outlines part of the pond, no opaque water/background fill or ground rectangle. Clear wide dragonfly cross/curved reed silhouette, actual wet meadow nature. All wing tips, abdomen end, reed tops, leaf edge and ripple end contained with generous alpha. Every vein is visibly twisted/braided handmade linen and picot joins, no metal wire, real insect photograph or gossamer glow.",
+  "tool": "built-in image_gen",
+  "source": "sources/pond-reeds-dragonfly.e6fd8b1e.png",
+  "sourceSha256": "e6fd8b1efcb5e9f43d0b9452ae6e80e90dde9828b521a39d8e677173cf70fa17",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/pond-reeds-dragonfly.c9d1e3b7.png",
+  "sha256": "c9d1e3b771c45a8f1cd74385d8e416127e9f9c26e1594add36cd526d3af49d9f",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

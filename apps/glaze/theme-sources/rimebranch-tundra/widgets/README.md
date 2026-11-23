@@ -1,0 +1,1 @@
+Lane A Rimebranch Tundra original Nature candidate for APPS A2. Five independently generated whole artworks, matching habitat and live native Clock/Battery/Calendar identity; exact originals, own-image references and unselected studies retained. Unpublished; release and merge require Jared OK.

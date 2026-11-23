@@ -1,0 +1,1 @@
+Exact first tawny-owl sample and full/170px/85px review retained, with coordinator approval before expansion and observed material-neighbor distinctions. Parent qa stores actual complete pack/native/rounded/crop validation. Beetle anatomy and wallpaper layout repairs retain originals and exact edit lineage in separate QA folders. No installed-device or publication claim.

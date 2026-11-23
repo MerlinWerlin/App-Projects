@@ -1,0 +1,126 @@
+{
+  "images": [
+    {
+      "id": "ibis",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        121,
+        14,
+        1112,
+        1244
+      ],
+      "coreAlpha96Bounds": [
+        122,
+        14,
+        1111,
+        1243
+      ]
+    },
+    {
+      "id": "ribbon-armadillo",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        71,
+        304,
+        1187,
+        954
+      ],
+      "coreAlpha96Bounds": [
+        72,
+        305,
+        1186,
+        953
+      ]
+    },
+    {
+      "id": "raptorial-mantis",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        110,
+        64,
+        1130,
+        1153
+      ],
+      "coreAlpha96Bounds": [
+        111,
+        65,
+        1128,
+        1152
+      ]
+    },
+    {
+      "id": "spooltail-chameleon",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        77,
+        318,
+        1150,
+        945
+      ],
+      "coreAlpha96Bounds": [
+        78,
+        318,
+        1149,
+        945
+      ]
+    },
+    {
+      "id": "billowing-orchid",
+      "originalDimensions": [
+        1254,
+        1254
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleAlpha16Bounds": [
+        119,
+        103,
+        1139,
+        1173
+      ],
+      "coreAlpha96Bounds": [
+        120,
+        104,
+        1138,
+        1173
+      ]
+    }
+  ],
+  "allCoreSilhouettesInsideOriginalBounds": true,
+  "installedDeviceVerified": false
+}

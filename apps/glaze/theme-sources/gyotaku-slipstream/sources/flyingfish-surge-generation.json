@@ -1,0 +1,18 @@
+{
+  "id": "flyingfish-surge",
+  "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject FLYINGFISH SURGE, FIRST PRINT-MATERIAL SAMPLE: one natural FLYING FISH seen in a gentle three-quarter side profile, long slender body curves diagonally upward right, small natural head and one plain dark printed eye, deep FORKED TAIL far lower left. TWO exceptionally broad PECTORAL FINS fan outward at different angles like open triangular wings, one wide upper-left and one narrower lower-right, plus two tiny lower fins, each fin consists of many individual parallel transferred FIN-RAY INK TRACES with actual unprinted alpha spaces between rays. Body clearly shows patchy paired natural SCALE-RIDGE TRANSFER IMPRESSIONS and dry rubbed print skips, dark blue ink density from pressure, ragged broken edge, no continuous clean outlined vector fish or engraved hatchwork. No bones/X-ray skeleton visible, no brush-swept watercolor shading, no3Dwetfish/photo. A SINGLE short curved eelgrass ink impression lies well below the body, separate and sparse, no water scenery or splashes. Tiny vermilion accent only on one fin edge. Pure printed INK MARKS with unprinted areas truly transparent, NO ivory paper fill/backing/halo. Whole fish, BOTH fin tips, forked tail tips and eelgrass ends safely contained central64% with18% or more transparent margin. No stamps/seals/calligraphy, measurement marks, labels, typography or signature. No external specimen reference inputs, wholly original image.",
+  "tool": "built-in image_gen",
+  "source": "sources/flyingfish-surge.71b64d8d.png",
+  "sourceSha256": "71b64d8dc65370a883ce17046669ef4d5cc425f921dc48ac78a6e39d5193c2d3",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/flyingfish-surge.d1002423.png",
+  "sha256": "d10024236cafa216953090d8c0c117b6e4640bd61fd14f9919c15c7786c55a7f",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,124 @@
+{
+  "theme": "beadweft-estuary",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Off-loom hand-stitched cylindrical glass seed-beadwork with visible axial holes, raised rims and tiny bridging threads",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Composition/layout adjustment ONLY for this beadwork nature wallpaper. Preserve exactly the same kingfisher/reeds, otter/kelp, iris/beetle, hermit crab/tidepool, moth/sea-lavender, natural anatomy, individually cylindrical glass seed beads with holes/thread bridges and all existing colours/detail. Keep1290x2796 portrait wallpaper intent. Scale the ENTIRE HABITAT GROUP down and reposition it as one coherent coastal vignette inside CENTRAL75% WIDTH and BETWEEN50% AND80% CANVAS HEIGHT. All beaks, feet, tails, wing tips, flower/reed tips and habitat edges must be completely contained in that safe area. Upper50% and bottom18% should be quiet uninterrupted dark ink-teal bead-ground texture matching the existing ground, no added motifs or border. This safety must preserve the whole nature scene under both1290x2796 and shorter750x1334 centre crops. Do not crop any part of the habitat to force the fit. No new plants/animals, text, frame, panel, glow or UI; only improve the relative scale/position and continue the same subtle dark ground.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.4c65a5a7.png",
+      "sourceSha256": "4c65a5a77120a0603b6ed4a7363f815fd9beafed9c32d39c7a1dbcf72bd56c3f",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "394d27f9b9461a73728551fdc1994fb2c7712f7138cd26f9f5aaf0e2874a595e",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "referencedImage": {
+        "file": "qa/layout-repair/wallpaper.original.c5f23d91.png",
+        "sha256": "c5f23d919ffef681a9f16dad15c1b37bb84db9752b616bb5ff91a88fce8335de"
+      }
+    },
+    {
+      "id": "kingfisher-reeds",
+      "prompt": "BEADWEFT ESTUARY for Glaze. ONE original1024x1024 separate pure NATURE artwork, OFF-LOOM HAND-STITCHED GLASS SEED-BEADWORK. Natural recognisable flora/fauna, no architecture, machines or costume. Every form consists of individual SHORT CYLINDRICAL GLASS SEED BEADS in staggered brick rows, clearly visible drilled axial HOLES, raised bead rims, tiny stitch threads bridging holes, narrow open gaps and slight handmade irregularity; matte beads plus restrained translucent edge glints. A flat shallow stitched bead silhouette, not pixel art, painted dots, enamel/glaze cells, mineral orientation grains, fabric weaving/filled embroidery, resin toy or smooth3D sculpture. Ink teal #102C31, sea-glass teal #3B928C, burnt coral #D5715B, oyster cream #E3D4B5, kelp gold #A9955C, umber #49362D with sparse muted lavender flower beads. Strong whole natural silhouette, bead detail subordinate to form. Entire subject central65% with16% or more TRUE transparent alpha margins on every side, all major openings genuinely transparent. No fabric backing, rectangular bead mat, floor/scenery, pale halo/glow/shadow, frame/border, text/letters/numbers, labels, clocks/gauges/time/date/battery/weather values, logos or UI. Subject KINGFISHER REEDS: one naturally proportioned kingfisher in three-quarter RIGHT profile perches on a short gently curved reed-side branch, both small feet gripping it, long straight beak extends right and tail points down-left. Teal/blue bead back and folded wing, coral-orange breast, one oyster-cream cheek stripe, one small dark round bead for eye, naturally sleek rather than plush/chubby. Two slender reed stalks with gold/ivory seed heads arc around the LEFT and lower-right of bird without enclosing it; three narrow teal leaf blades cross below branch. The beads follow feather contours in staggered rows while their individual holes and connecting thread remain unmistakable. No water rectangle, extra bird, fish held in beak, tools, scenery or human objects. Whole beak, crown, tail, claws, branch ends, all reed tops and leaves fully visible inside generous alpha margins. A tangible nature beadwork motif, no isolated solid jewel/metal figurine.",
+      "tool": "built-in image_gen",
+      "source": "sources/kingfisher-reeds.04b565a8.png",
+      "sourceSha256": "04b565a850bd0e8c9049d00beafad87c603ef81818cb3dac494b4b901855bf61",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/kingfisher-reeds.769e09df.png",
+      "sha256": "769e09df2554142a36eb6ecb6700a328bf6b724008ef0c97bd8dbd3455a321e5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "otter-kelp-curl",
+      "prompt": "BEADWEFT ESTUARY for Glaze. ONE original1024x1024 separate pure NATURE artwork, OFF-LOOM HAND-STITCHED GLASS SEED-BEADWORK. Natural recognisable flora/fauna, no architecture, machines or costume. Every form consists of individual SHORT CYLINDRICAL GLASS SEED BEADS in staggered brick rows, clearly visible drilled axial HOLES, raised bead rims, tiny stitch threads bridging holes, narrow open gaps and slight handmade irregularity; matte beads plus restrained translucent edge glints. A flat shallow stitched bead silhouette, not pixel art, painted dots, enamel/glaze cells, mineral orientation grains, fabric weaving/filled embroidery, resin toy or smooth3D sculpture. Ink teal #102C31, sea-glass teal #3B928C, burnt coral #D5715B, oyster cream #E3D4B5, kelp gold #A9955C, umber #49362D with sparse muted lavender flower beads. Strong whole natural silhouette, bead detail subordinate to form. Entire subject central65% with16% or more TRUE transparent alpha margins on every side, all major openings genuinely transparent. No fabric backing, rectangular bead mat, floor/scenery, pale halo/glow/shadow, frame/border, text/letters/numbers, labels, clocks/gauges/time/date/battery/weather values, logos or UI. Subject OTTER KELP CURL: one naturally proportioned ADULT OTTER floats curled on its side/back, head at upper-left, long tapered tail curling around toward lower-right into a broad open C. Umber/brown cylindrical beads form sleek body contour, oyster-cream bead muzzle/throat/belly accents, two small dark eye beads, short fine THREAD whiskers, no giant cartoon eyes or smile. One forepaw rests near chest, the other at belly, two webbed hind feet clearly visible at the right inside the tail curve; no clothes or held objects. THREE long flat kelp ribbons in teal/kelp-gold curve loosely below and behind the otter, anchored to a tiny open bead holdfast near tail, no rectangular water or scenic background. Distinct low horizontal curling mammal silhouette, genuine coastal wildlife rather than stuffed animal or jewellery charm. Whole nose, whiskers, paws, tail tip, kelp blades and holdfast inside broad real alpha margins. Beads follow fur direction in staggered rows, actual hollow ends/raised rims/thread bridges visible across body and kelp, no smooth sculpted mass.",
+      "tool": "built-in image_gen",
+      "source": "sources/otter-kelp-curl.671a6dfd.png",
+      "sourceSha256": "671a6dfdedd62ff6381a2a9a035a601efbbfa26cc01bd42f6eec389912b6b9ee",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/otter-kelp-curl.3548e8ef.png",
+      "sha256": "3548e8ef4267e04db8abfef7c3583b62f792507dac7c030eb51189fa0526fc2c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "iris-waterbeetle",
+      "prompt": "BEADWEFT ESTUARY for Glaze. ONE original1024x1024 separate pure NATURE artwork, OFF-LOOM HAND-STITCHED GLASS SEED-BEADWORK. Natural recognisable flora/fauna, no architecture, machines or costume. Every form consists of individual SHORT CYLINDRICAL GLASS SEED BEADS in staggered brick rows, clearly visible drilled axial HOLES, raised bead rims, tiny stitch threads bridging holes, narrow open gaps and slight handmade irregularity; matte beads plus restrained translucent edge glints. A flat shallow stitched bead silhouette, not pixel art, painted dots, enamel/glaze cells, mineral orientation grains, fabric weaving/filled embroidery, resin toy or smooth3D sculpture. Ink teal #102C31, sea-glass teal #3B928C, burnt coral #D5715B, oyster cream #E3D4B5, kelp gold #A9955C, umber #49362D with sparse muted lavender flower beads. Strong whole natural silhouette, bead detail subordinate to form. Entire subject central65% with16% or more TRUE transparent alpha margins on every side, all major openings genuinely transparent. No fabric backing, rectangular bead mat, floor/scenery, pale halo/glow/shadow, frame/border, text/letters/numbers, labels, clocks/gauges/time/date/battery/weather values, logos or UI. Subject IRIS WATERBEETLE: one tall graceful IRIS PLANT with one fully open large lavender/oyster-cream bloom, three upright inner petals and three arched falling petals with tiny kelp-gold bead accents, plus one closed bud on a shorter side stem. THREE long swordlike teal/green leaves fan from a single small open bead root crown, one leaf bows far left and one curves right. A small oval dark teal WATER BEETLE climbs the right leaf near its middle, coherent paired wing cases, six fine stitch-thread legs and two short antennae; no comic face or jewellery gemstones. Each petal/leaf is a thin shaped sheet of individually cylindrical beads with open axial holes and thread joins, the plant has natural structure rather than a stamped generic flower. Strong tall asymmetrical botanical silhouette, tiny insect provides a different scale. No vase, pot, scenery/water rectangle, bird, mammal or human object. Complete petal tips, bud, all leaf ends, root crown and insect legs fit generous alpha margins.",
+      "tool": "built-in image_gen",
+      "source": "sources/iris-waterbeetle.aa51de2a.png",
+      "sourceSha256": "aa51de2a81c27e9767dd58dbd64b8bd328a0fd6b7a548ae7579fde1f05a12c4f",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/iris-waterbeetle.906987fb.png",
+      "sha256": "906987fb94a1003c4315c43f79677f5b87c4d28ab1a482bef5b611f9653f0b3b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "hermit-tidepool",
+      "prompt": "BEADWEFT ESTUARY for Glaze. ONE original1024x1024 separate pure NATURE artwork, OFF-LOOM HAND-STITCHED GLASS SEED-BEADWORK. Natural recognisable flora/fauna, no architecture, machines or costume. Every form consists of individual SHORT CYLINDRICAL GLASS SEED BEADS in staggered brick rows, clearly visible drilled axial HOLES, raised bead rims, tiny stitch threads bridging holes, narrow open gaps and slight handmade irregularity; matte beads plus restrained translucent edge glints. A flat shallow stitched bead silhouette, not pixel art, painted dots, enamel/glaze cells, mineral orientation grains, fabric weaving/filled embroidery, resin toy or smooth3D sculpture. Ink teal #102C31, sea-glass teal #3B928C, burnt coral #D5715B, oyster cream #E3D4B5, kelp gold #A9955C, umber #49362D with sparse muted lavender flower beads. Strong whole natural silhouette, bead detail subordinate to form. Entire subject central65% with16% or more TRUE transparent alpha margins on every side, all major openings genuinely transparent. No fabric backing, rectangular bead mat, floor/scenery, pale halo/glow/shadow, frame/border, text/letters/numbers, labels, clocks/gauges/time/date/battery/weather values, logos or UI. Subject HERMIT TIDEPOOL: one clearly recognisable small HERMIT CRAB with a large oyster-cream and kelp-gold SPIRAL SHELL, dark umber shell opening, burnt-coral jointed walking legs, two unequal small pincers and two raised stalk eyes. Shell has a natural side-facing spiral with bead rows following its whorl, not a smooth gemstone. The crab walks left on one small irregular open teal KELP HOLDFAST and a low crescent of several bead stones; include two short seaweed blades and one tiny coral bead anemone, all connected into a low asymmetric natural tidepool silhouette. Genuine transparent gaps between legs, shell rim and seaweed; no solid pool backdrop. Low rounded composition different from upright kingfisher and iris. Readable complete body, shell, every leg and claw, no anthropomorphic face, ornamented home or machine. Entire group has generous alpha margins, no clipped shell or feet.",
+      "tool": "built-in image_gen",
+      "source": "sources/hermit-tidepool.3e22497a.png",
+      "sourceSha256": "3e22497a4d315c5b1d8d10781ec36d39abde620e100d493806165d7e21133ff1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hermit-tidepool.423ad4bf.png",
+      "sha256": "423ad4bfe34c936ed93c4f1e4f27502aa4b1e627df5a59bad16cda909cd08027",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "saltmarsh-moth",
+      "prompt": "BEADWEFT ESTUARY for Glaze. ONE original1024x1024 separate pure NATURE artwork, OFF-LOOM HAND-STITCHED GLASS SEED-BEADWORK. Natural recognisable flora/fauna, no architecture, machines or costume. Every form consists of individual SHORT CYLINDRICAL GLASS SEED BEADS in staggered brick rows, clearly visible drilled axial HOLES, raised bead rims, tiny stitch threads bridging holes, narrow open gaps and slight handmade irregularity; matte beads plus restrained translucent edge glints. A flat shallow stitched bead silhouette, not pixel art, painted dots, enamel/glaze cells, mineral orientation grains, fabric weaving/filled embroidery, resin toy or smooth3D sculpture. Ink teal #102C31, sea-glass teal #3B928C, burnt coral #D5715B, oyster cream #E3D4B5, kelp gold #A9955C, umber #49362D with sparse muted lavender flower beads. Strong whole natural silhouette, bead detail subordinate to form. Entire subject central65% with16% or more TRUE transparent alpha margins on every side, all major openings genuinely transparent. No fabric backing, rectangular bead mat, floor/scenery, pale halo/glow/shadow, frame/border, text/letters/numbers, labels, clocks/gauges/time/date/battery/weather values, logos or UI. Subject SALTMARSH MOTH: one recognisable large MOTH settled on a slender branching stem of SEA LAVENDER, its broad upper wings open in a relaxed slight downward V, two smaller rounded hindwings visible, slim dark umber segmented body and two feathery thread-and-bead antennae. Wing pattern is oyster cream with burnt coral angular bands, kelp-gold small dots and ink-teal edging, a naturally varied balanced pair, no eyes, letters or symbols. Wings constructed as thin stitched bead sheets, obvious cylindrical bead rims/holes and tiny stitch-thread bridges; no gem-like filled cells. The diagonal sea-lavender sprig runs from lower left to upper right, a few dusty lavender bead flower clusters and narrow teal leaves support the moth, no rectangle or hoop behind it. Delicate branch through open negative space, broad wing silhouette contrasted with sparse flowers. Entire moth, antennae, wing tips, flower clusters and all branch ends centrally contained with generous transparent margins, no clipping.",
+      "tool": "built-in image_gen",
+      "source": "sources/saltmarsh-moth.ec203ab6.png",
+      "sourceSha256": "ec203ab6292c55ab0df163c9d5d8c41170b5519de40d33063cffdd783a00e487",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/saltmarsh-moth.70dfa456.png",
+      "sha256": "70dfa456753a3625897e0d896014590bfbedf3ece66499fd4a0cf6db1837cefe",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

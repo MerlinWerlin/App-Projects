@@ -1,0 +1,19 @@
+{
+  "reason": "Actualencodedphonecrops showedleftshorelipcutatcanvasedge. One layout-only edit shortens/insetsoutershoreends andmovessubjectshorizontallyinward, preservingtheirsize/tallness, craft and5standaloneart/nativeunchanged.",
+  "originalGeneration": "qa/layout-repair/original-generation.json",
+  "originalSource": "qa/layout-repair/wallpaper.original.e42e0b42.png",
+  "originalSha256": "e42e0b421f6c64e64a03d6dc8bc19c996bbab9116d75c61ed524b810d1ae3592",
+  "selectedSource": "sources/wallpaper.adb22a9d.png",
+  "selectedSha256": "adb22a9dbf679cc89c64e3f31193f276b2a58264ed164e20b740223943439554",
+  "exactRequest": "qa/layout-repair/wallpaper-layout-repair-request.json",
+  "exactResult": "qa/layout-repair/wallpaper-layout-repair-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.e42e0b42.png",
+      "sha256": "e42e0b421f6c64e64a03d6dc8bc19c996bbab9116d75c61ed524b810d1ae3592",
+      "role": "Own original scene EDIT TARGET for layout-only lowerhabitat repositioning. All5standaloneart/nativeidentity unchanged."
+    }
+  ]
+}

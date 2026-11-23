@@ -1,0 +1,18 @@
+{
+  "id": "hand-crank-roaster",
+  "prompt": "PIPEWORK TEAROOM for Glaze: one separately generated ORIGINAL1024x1024 artwork on true transparent alpha, an invented but useful communal TEA ENGINE, visible unusual engineering and clear function, not a collection of ordinary cups. Physical craft medium HAND-PIPED ROYAL-ICING BAS-RELIEF. EVERY surface built from individually piped close parallel ROPE RIDGES, star-nozzle ribbed lines, shell-swags and tiny bead joins; restrained matte sugar pores, irregular nozzle starts/ends and delicate brittle edges. Thin flat3â€“5mm confectionery illustration, never a smooth clay/resin/plastic toy, fabric stitching, coral, foam, blown glass, wax or digital gradient painting. Oyster-cream #EEE3C9, pistachio #A3BA97, apricot #DDA18B, caramel #CAAC6B and quiet blueberry #665772. The medium texture must be visible and subordinate to a strong readable engineered silhouette. Actual hinges, pipework, handles, access ledges and purposeful moving parts, visually weird shape yet immediately comprehensible task. All large openings transparent. Entire complete subject SMALL within central64% of square, at least18% true alpha margin on EVERY side, no clipped feet/handles/wings. No cake/cookie/backing plaque/rectangle, enclosing border, pedestal/ground/floor, scenery, pale halo or drop shadow. No ordinary teacup grouping, people, plants, lettering/numerals, signage, symbols, clocks/dates/gauges/battery/weather values, UI, logo or signature. Subject HAND CRANK ROASTER: one large tilted TRIANGULAR PRISM ROASTING DRUM, open triangular mouth facing down-left so its three inner ribbed sides and a few tiny unmarked oval roasted-leaf pieces are visible. The drum turns on a cross axle supported by TWO tall curved open YOKE ARMS over a very small slatted cooling tray. A huge bent hand-crank with short ribbed handle extends far left; a three-spoke pivot connects it to the drum. On right one folded fan-shaped COOLING WING swings out on an obvious hinge, completely different silhouette from an ordinary barrel grill. Low frame on four short unequal-splayed feet, readable purpose is roasting and cooling tea leaves. All objects are thin matte piped royal-icing relief with star-tip ridges and nozzle bead joints, no metal or toy. Strong diagonal drum and side crank, open spaces through supports/under tray. Entire crank tip, wing, triangular mouth, supports and feet centrally contained with generous alpha.",
+  "tool": "built-in image_gen",
+  "source": "sources/hand-crank-roaster.c2b55950.png",
+  "sourceSha256": "c2b55950346015479134585abf27bb339e601b4908b8e3f1dcb5c76d62b1146f",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/hand-crank-roaster.3d7a3b0d.png",
+  "sha256": "3d7a3b0df0a79e1d02ebc5545bfd085241b8e62773d839bc02693e3327de3c38",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

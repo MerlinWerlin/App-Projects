@@ -1,0 +1,159 @@
+{
+  "theme": "emulsion-rookery",
+  "created": "2026-11-22",
+  "lane": "A",
+  "medium": "Physical continuous perforated photographic-celluloid film-strip sculpture macro photography",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "ibis",
+      "label": "Perforated Ibis",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One standalone square transparent Glaze pure-art asset. EMULSION ROOKERY: a physically assembled wildlife sculpture made entirely from continuous thin perforated PHOTOGRAPHIC CELLULOID FILM STRIPS. Real macro craft photography of springy glossy but thin translucent film: clearly visible small RECTANGULAR EMULSION FRAME WINDOWS and TWO REGULAR ROWS OF SQUARE SPROCKET HOLES along each long film edge. Deep petrol-blue, teal, soft coral and copper dye transparencies with subtle photographic grain inside the frame windows; thin amber-clear edges catch small restrained reflections. Frame windows contain only abstract dye gradients, NO pictures, NO writing or codes. Film bends in long crisp loops and overlapped pleats, showing rectangular frames and sprocket rows on every major strip. Do not make ordinary animal skin then decorate it; the strips construct the whole body. Not paper, fabric, feathers, metal wires, fuzzy fibres, wet cellulose, glass, candy or generic CGI toy. SUBJECT: one whole tall long-beaked IBIS in elegant three-quarter view facing right. Long slender down-curved beak formed from one tightly folded film strip, small compact head with a tiny dark eye, gracefully S-curved neck built from overlapping film loops, compact rounded body with layered film-ribbon wings, and two long thin clearly articulated legs with complete splayed toes. Several broad film strips fan gently from the near wing without hiding body anatomy. No cinema equipment, reel, spool, screen, props or nest. Entire beak tip, wing loops, tail tips and every toe inside central70% of canvas, with ample true transparent margins on all sides. Real transparent holes between ribbons and through the sprocket perforations. No floor, external cast shadow, haze, opaque rectangle/backing, border, frame or collage. Absolutely NO film edge text, numbers, brand marks, lettering, captions, dates, clock hands/dials, battery/calendar images or UI. One coherent recognizable bird, clear silhouette at85px.",
+      "source": "sources/ibis.34b1d9dbdfc2.png",
+      "sourceSha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/ibis.33efdcf64000.png",
+      "sha256": "33efdcf64000c6ee570d536b84af3249010c31046813a04d394b00b5c0875652",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits."
+    },
+    {
+      "id": "ribbon-armadillo",
+      "label": "Ribbon Armadillo",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square transparent Glaze pure-art asset. EMULSION ROOKERY, physical wildlife sculptures made entirely from continuous perforated PHOTOGRAPHIC CELLULOID FILM STRIPS. Our own ibis reference supplies only the material, palette and restrained macro lighting; create a wholly different subject. Thin springy translucent strips with clearly visible RECTANGULAR EMULSION FRAME WINDOWS and paired regular rows of small SQUARE SPROCKET HOLES along every major strip edge. Petrol-blue, teal, soft coral and copper dye transparencies, subtle photographic grain inside each window, thin amber-clear edges with restrained glossy reflections. Frame windows contain abstract dye gradients only, no pictures/writing/codes. Strips bend in crisp long loops, overlapping plates and pleats to CONSTRUCT the entire body; no ordinary skin or solid toy decorated with a film pattern. Genuine alpha through gaps and perforations. No fabric/feathers, fuzzy fibres, paper quilling, metal, glass, wet cellulose, smooth plastic toys, cinema equipment or standalone reels. Whole subject and all projecting extremities inside central70%, ample transparent space on all sides. No floor, exterior cast shadow, haze, opaque backing panel, border, collage, lettering, numbers, film edge codes, logos, dates, clock/battery/calendar pictures or UI. Readable singular silhouette at85px. SUBJECT: one complete low ARMOURED ARMADILLO walking left in three-quarter profile. Long narrow pointed snout, two small upright rounded ears, one dark eye, four short sturdy legs with full splayed claws, long gently tapering segmented tail curving beside it. Its domed back is built from a sequence of broad overlapping ARCHED FILM STRIP PLATES; each plate has rectangular dye frames and rows of sprocket holes running across the back. Thinner wrapped film forms belly/face/limbs. Distinct flexible armour segmentation, no scales or solid shell underneath, no bird wings or long legs. Keep complete tail and every foot comfortably whole.",
+      "source": "sources/ribbon-armadillo.df5fc4d23e52.png",
+      "sourceSha256": "df5fc4d23e52a667b2eb6d2ce72678e1a52e46a0c497b33726c894fd1fb45ff1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/ribbon-armadillo.f511bc27793e.png",
+      "sha256": "f511bc27793ed66c21b7f1c74a086268da3a620dae132a0f685c29ea04ea8926",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/ibis.34b1d9dbdfc2.png",
+          "sha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+          "purpose": "Own accepted ibis supplies continuous perforated film material, palette and lighting only; a distinct new natural subject."
+        }
+      ]
+    },
+    {
+      "id": "raptorial-mantis",
+      "label": "Raptorial Mantis",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square transparent Glaze pure-art asset. EMULSION ROOKERY, physical wildlife sculptures made entirely from continuous perforated PHOTOGRAPHIC CELLULOID FILM STRIPS. Our own ibis reference supplies only the material, palette and restrained macro lighting; create a wholly different subject. Thin springy translucent strips with clearly visible RECTANGULAR EMULSION FRAME WINDOWS and paired regular rows of small SQUARE SPROCKET HOLES along every major strip edge. Petrol-blue, teal, soft coral and copper dye transparencies, subtle photographic grain inside each window, thin amber-clear edges with restrained glossy reflections. Frame windows contain abstract dye gradients only, no pictures/writing/codes. Strips bend in crisp long loops, overlapping plates and pleats to CONSTRUCT the entire body; no ordinary skin or solid toy decorated with a film pattern. Genuine alpha through gaps and perforations. No fabric/feathers, fuzzy fibres, paper quilling, metal, glass, wet cellulose, smooth plastic toys, cinema equipment or standalone reels. Whole subject and all projecting extremities inside central70%, ample transparent space on all sides. No floor, exterior cast shadow, haze, opaque backing panel, border, collage, lettering, numbers, film edge codes, logos, dates, clock/battery/calendar pictures or UI. Readable singular silhouette at85px. SUBJECT: one complete elegant PRAYING MANTIS in upright three-quarter side pose facing right. Small triangular head with two tiny dark eyes, two long fine curved antennae, long slender neck/thorax and tapered abdomen. TWO distinct folded raptorial forearms held up in a recognisable praying pose, FOUR separately visible slender walking legs planted below with articulated bends and complete fine feet. Folded narrow film-ribbon wings run along its back. Every anatomical part constructed from curled and folded photographic film strips, rectangular frame windows and clear square sprocket-hole rows. No body skin, no insect fuzz, not a stick figure; preserve all six limbs and both antennae inside generous margins.",
+      "source": "sources/raptorial-mantis.b8fa31396a21.png",
+      "sourceSha256": "b8fa31396a2110f63e0bb87eb8a0cd1fc5a6c3fde3e18fbcaeb37196b73f7fbe",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/raptorial-mantis.48b3cf937c8b.png",
+      "sha256": "48b3cf937c8ba5c85a28d776cda2ac8ef0d89fa7dc2beaf6e88f670a2a4433f0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/ibis.34b1d9dbdfc2.png",
+          "sha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+          "purpose": "Own accepted ibis supplies continuous perforated film material, palette and lighting only; a distinct new natural subject."
+        }
+      ]
+    },
+    {
+      "id": "spooltail-chameleon",
+      "label": "Spooltail Chameleon",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square transparent Glaze pure-art asset. EMULSION ROOKERY, physical wildlife sculptures made entirely from continuous perforated PHOTOGRAPHIC CELLULOID FILM STRIPS. Our own ibis reference supplies only the material, palette and restrained macro lighting; create a wholly different subject. Thin springy translucent strips with clearly visible RECTANGULAR EMULSION FRAME WINDOWS and paired regular rows of small SQUARE SPROCKET HOLES along every major strip edge. Petrol-blue, teal, soft coral and copper dye transparencies, subtle photographic grain inside each window, thin amber-clear edges with restrained glossy reflections. Frame windows contain abstract dye gradients only, no pictures/writing/codes. Strips bend in crisp long loops, overlapping plates and pleats to CONSTRUCT the entire body; no ordinary skin or solid toy decorated with a film pattern. Genuine alpha through gaps and perforations. No fabric/feathers, fuzzy fibres, paper quilling, metal, glass, wet cellulose, smooth plastic toys, cinema equipment or standalone reels. Whole subject and all projecting extremities inside central70%, ample transparent space on all sides. No floor, exterior cast shadow, haze, opaque backing panel, border, collage, lettering, numbers, film edge codes, logos, dates, clock/battery/calendar pictures or UI. Readable singular silhouette at85px. SUBJECT: one whole recognizable CHAMELEON in natural side profile facing left, standing on a short gently bent bare twig. Low arched back, small familiar casque on its head, one tiny swivelling dark eye, long gently tapered mouth, four articulated grasping feet and an elegant complete tightly curled tail at right. Rounded body constructed from overlapping broad film strip panels that bend with the belly; thinner wrapped film forms legs and toes. Clear film frames and square perforation rows remain visible across the back, flank, head and curled tail. The plain twig is subordinate, no leaves/props. Preserve ordinary believable chameleon anatomy without extra horns, fins, eyes or fantasy organs; all toe groups, branch ends and entire curled tail inside generous transparent margins.",
+      "source": "sources/spooltail-chameleon.19e1a611171c.png",
+      "sourceSha256": "19e1a611171cb40331be63a4de7ae78c9dc2c475b27973e14d198527a21258e8",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/spooltail-chameleon.2b463cd36d8a.png",
+      "sha256": "2b463cd36d8a4a3aa561be6ac52c74144f9455fa11713409f0efc2fd20845526",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/ibis.34b1d9dbdfc2.png",
+          "sha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+          "purpose": "Own accepted ibis supplies continuous perforated film material, palette and lighting only; a distinct new natural subject."
+        }
+      ]
+    },
+    {
+      "id": "billowing-orchid",
+      "label": "Billowing Orchid",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. One independent square transparent Glaze pure-art asset. EMULSION ROOKERY, physical wildlife sculptures made entirely from continuous perforated PHOTOGRAPHIC CELLULOID FILM STRIPS. Our own ibis reference supplies only the material, palette and restrained macro lighting; create a wholly different subject. Thin springy translucent strips with clearly visible RECTANGULAR EMULSION FRAME WINDOWS and paired regular rows of small SQUARE SPROCKET HOLES along every major strip edge. Petrol-blue, teal, soft coral and copper dye transparencies, subtle photographic grain inside each window, thin amber-clear edges with restrained glossy reflections. Frame windows contain abstract dye gradients only, no pictures/writing/codes. Strips bend in crisp long loops, overlapping plates and pleats to CONSTRUCT the entire body; no ordinary skin or solid toy decorated with a film pattern. Genuine alpha through gaps and perforations. No fabric/feathers, fuzzy fibres, paper quilling, metal, glass, wet cellulose, smooth plastic toys, cinema equipment or standalone reels. Whole subject and all projecting extremities inside central70%, ample transparent space on all sides. No floor, exterior cast shadow, haze, opaque backing panel, border, collage, lettering, numbers, film edge codes, logos, dates, clock/battery/calendar pictures or UI. Readable singular silhouette at85px. SUBJECT: one complete recognizable PHALAENOPSIS ORCHID spray: one broad open familiar five-part moth-orchid flower facing slightly toward the viewer, with a clearly shaped central orchid lip, plus one smaller unopened bud on an arched stem and TWO long strap-shaped basal leaves. All petals and the lip are formed from broad thin translucent photographic film ribbons folded into natural flower anatomy; frame windows and paired square sprocket-hole rows follow the petal edges. The leaves use broad smoothly bending film strips, the stem a tightly folded narrow strip. Soft petrol/teal and coral dye tints remain consistent with our ibis reference. No insect face, animal eyes, invented limbs, geometric flower symbol, pot or vase. Keep complete stem/base/leaves/petals/bud whole with generous transparent margins.",
+      "source": "sources/billowing-orchid.39be66f4c7f4.png",
+      "sourceSha256": "39be66f4c7f447afb1bddf875691696b349637508851de5e053f108033fe926c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/billowing-orchid.9588c2408fdd.png",
+      "sha256": "9588c2408fdd0bed3c4dfec147f07c499e6cb503c4e528e36e379e111d766cb7",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/ibis.34b1d9dbdfc2.png",
+          "sha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+          "purpose": "Own accepted ibis supplies continuous perforated film material, palette and lighting only; a distinct new natural subject."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: precise-object-edit. LAYOUT-ONLY breathing-room correction of our own EMULSION ROOKERY botanical garden. Preserve exactly the five recognizable film-strip sculptures and their actual anatomy: orchid/bud/two leaves behind left, ibis behind right with whole curved beak and two feet, chameleon on low natural twig centre, armadillo front-left with all four feet and curled tail, praying mantis front-right with six limbs/two antennae. Preserve their continuous perforated celluloid material, rectangular dye-frame windows, petrol/teal/coral/copper colours and restrained reflections, with no text/codes anywhere. Keep the real natural fern/moss context, pale quiet ground and softly blurred silver-sage background. Change ONLY whole-scene framing: uniformly reduce the ENTIRE five-subject grouping, its immediate supporting branch/stone/foliage, to about66% of its current size. Centre this reduced grouping horizontally, with its combined centre around58% image height. Its topmost flower/bird/antenna tip should begin around40% height and its lowest foot/tail/leaf should end ABOVE75% height. All five must fit inside central70% width with at least15% quiet side margins, and25% quiet ground below. Extend the same natural pale garden and soft silver-sage air around it, no added objects or blank panel bands. Every toe, antenna, beak, wing loop, orchid leaf/bud and tail stays fully whole; do not redesign their poses, anatomy or identities. Preserve the exact relative arrangement and clear separation of heads/limbs. Upper38% quiet blurred empty air. The shorter phone crop removing9% top/bottom must retain all five comfortably inside rounded screen corners. No new animals, plants, equipment, architecture, faces, text, numbers, frames, borders, UI, collage or glowing effects. Full-bleed opaque portrait phone wallpaper, same aspect as input.",
+      "source": "sources/wallpaper.8eb4ad55be79.png",
+      "sourceSha256": "8eb4ad55be794ebb40281fe59e47562ece22e557484ba777e8bf71889f97fc0e",
+      "sourceDimensions": [
+        853,
+        1844
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "31c301e951116b57ae6ff1040c6c4692b82e5d2c4499dcd3f325149fb6355343",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Own layout-only garden pullback, then central1290x2796 aspect export. Independent art and native subjects unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/initial-wallpaper.5a4fd4f9a04d.png",
+          "sha256": "5a4fd4f9a04d76d41f8641d57baaa72a3fd003c89b7c9ab374e52f38056da448",
+          "purpose": "Own first five-reference garden, layout-only breathing-room correction."
+        }
+      ],
+      "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

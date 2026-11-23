@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "artworkSubjects": 5,
+  "contactAnd85pxReadability": "reviewed",
+  "actualEncodedSmallAndLargeRoundedLayouts": 10,
+  "clippedForegroundPixels": 0,
+  "actualNativeLayouts": 9,
+  "compactHeaderOrnaments": 4,
+  "actualWallpaperCrops": 3,
+  "finding": "Five recognizable mangrove subjects in fused murrine glass canes: gecko/leaf, mudskipper/prop-root, fiddlercrab/sedge, botanical flowers/propagules and egret/roots. Broad embedded colored cane flowers and longitudinal glass bands remain visible, no led enamel, seedbead threads or rough frit. Approved first gecko unchanged. Crab corrected to four walking legs per side plus large/small claws; held original and exact own-source anatomy edit retained. Actual pistachio alpha composites clean; invisible raw alpha RGB did not produce backing or halos. All five encoded small/large rounded artworks whole. Coherent initial wallpaper uses own approved gecko as sole material/anatomy reference; selected final source is uniform layout-only habitat pullback, old source and both exact requests/order/hash retained. All three encoded phone crops have complete gecko/leaf/root/fish/propagule tips and broad quiet pale pistachio space. Nine native/live layouts reviewed; compact companion refined into one mangrove leaf with short striped root end, four actual uniform placements and no whole gecko in compact headers. Actual nine material neighbors plus candidate hashes independently rechecked. No external neighbor input, installed-device validation or publication claim.",
+  "nativeFaceCorrection": {
+    "before": "petal",
+    "after": "square",
+    "scope": "Only supported B32 face token changed; full native9 refreshed and viewed. 12pt Calendar today text retained.",
+    "evidence": "qa/calendar-contour-square-correction.json",
+    "cases": 96,
+    "alpha96And128CoreOutsideFilledMarker": 0,
+    "protectedFilesByteIdentical": 35,
+    "heroDetailOrnamentUnchanged": true,
+    "originalPetalStudy": "qa/native-face-study/"
+  }
+}

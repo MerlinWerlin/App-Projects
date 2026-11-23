@@ -1,0 +1,57 @@
+[
+  {
+    "id": "daffodil-foldpath",
+    "sourceSha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2",
+    "rawAlpha16Bounds": [
+      196,
+      132,
+      1062,
+      1141
+    ],
+    "frameAlphaMaximum": 0
+  },
+  {
+    "id": "wren-foldpath",
+    "sourceSha256": "ccfa6d779fde673da6bf6f156d03b256945d80031e956fac427e024b0bb033d1",
+    "rawAlpha16Bounds": [
+      127,
+      240,
+      1121,
+      1059
+    ],
+    "frameAlphaMaximum": 0
+  },
+  {
+    "id": "snail-foldpath",
+    "sourceSha256": "887863463ce5e786ab0db10d72633df3eace89cdfdb9dd8ffdc2e686dadc36c0",
+    "rawAlpha16Bounds": [
+      46,
+      304,
+      1204,
+      1030
+    ],
+    "frameAlphaMaximum": 1
+  },
+  {
+    "id": "fern-foldpath",
+    "sourceSha256": "ce20601771d3b3c5d0544977d078b1193e03cd53cbc174e0ab18780da79b3d86",
+    "rawAlpha16Bounds": [
+      129,
+      107,
+      1071,
+      1162
+    ],
+    "frameAlphaMaximum": 0
+  },
+  {
+    "id": "butterfly-foldpath",
+    "sourceSha256": "6a1cf687eae018a451928875f0c5b3276271e150f3fceaca2da6d0cf617dfd27",
+    "rawAlpha16Bounds": [
+      71,
+      236,
+      1184,
+      998
+    ],
+    "frameAlphaMaximum": 0
+  }
+]

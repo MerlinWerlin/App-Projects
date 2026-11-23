@@ -1,0 +1,198 @@
+{
+  "theme": "pressgrain-arroyo",
+  "created": "2026-11-23",
+  "lane": "B",
+  "medium": "Collograph print impressions from a built-up plate of open bookcloth mesh, coarse grit, torn board and smooth ink reserves.",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Make one small composition edit to our existing tall Pressgrain Arroyo wallpaper. The uploaded scene is the edit target. Keep the very tall phone proportions, quiet same plum background, same single flat collograph scene, exactly the same sizes and placements of the roadrunner, kit fox and cactus, and their original texture assignments. Only shorten the low dry-bank strip on the bottom LEFT. Its cream and rust tapered tongue currently extends all the way to the left canvas edge. Pull that little ribbon of bank inward so its NEW complete tapered torn ink point ends at least 8 percent of total canvas width away from the left edge, clearly left of the grass roots but separated from the frame by an unbroken plum margin. Shorten only that landscape tip and stray grit there. Keep the full roadrunner tail, crest, bill and two running feet, the whole kit fox with two ears, four paws and bushy tail, all three cactus pads with the original flower and two fruits, both grass tufts and the rest of the terrain. Leave a visible plum margin around the other sides also. Preserve all existing large grid, thick rust grit and ragged edge around the smooth ink reserves in a single flat print plane. Maintain the existing restrained colors and tall central composition. No enlarging the animal subjects, no new shapes, no added labels, framing, power or clock values.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.c5b5771e.png",
+      "sourceSha256": "c5b5771e5727a67fd356fdc97c0ab1f62d3fec9dc175b031ca5e7a977ecab1fe",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "fb123104098bcde676cb244929b464b624b7261540a92df83135725505100898",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/layout-repair/wallpaper-history.json",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "wallpaper-unselected-original",
+          "file": "qa/layout-repair/wallpaper.original.92635442.png",
+          "sha256": "926354423c98f65fd3f3b73a6da32109c543ec16c6844b6794e0694ecd5864c9",
+          "role": "Own original scene EDIT TARGET for documented layout-only correction; exact original retained unchanged."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+    },
+    {
+      "id": "greater-roadrunner",
+      "prompt": "PRESSGRAIN ARROYO, Glaze Nature. Use case: stylized-concept. One original separate square artwork, real transparent alpha outside the entire silhouette. Create a FLAT HAND-PULLED COLLOGRAPH PRINT impression, as if a relief and intaglio hybrid printed from a single built-up plate with at least three DISTINCT attached textures. A coarse BOOKCLOTH mesh imprint creates a clear regular OPEN CROSSED GRID in one main anatomical field, with small pale square cells, broken printed threads and a few uneven contact skips. A second continuous anatomical field has coarse RANDOM grit-stipple ink transfer, visibly different from the cloth grid. A third field has a BROAD TORN BOARD EDGE leaving a jagged pressure fringe and intermittent ink pooling, next to one larger smooth flat ink reserve. Texture fields meet at visible hard-to-torn seams set by the edges of the plate's glued patches. Most of the silhouette stays strong and continuous. Rim ink accumulation is fine and irregular. Palette is matte rust red, dusty indigo and a light ochre-cream reserve inside the subject, with occasional dark plum pooled ink. At 85 pixels the three main material zones should still read as open grid, irregular grit and torn-edge smooth field. Show the actual flat transferred result straight on in ONE plane. No depth, cast shadows or actual paper, textile, thread, grit or cardboard pieces visible above the print surface. No illustration drawn over the textures, black scratchboard hatching, carved linocut gouges, continuous stipple shading, woodgrain, embossed cutout, stippled photo, watercolor brushwork, metallic glints or thin guilloche loop geometry. The entire creature or plant must be recognizable and fully inside the square, with generous true alpha on each side. Every limb, bill, tail, leaf or stem tip is complete. No rectangular paper sheet, backing tint, border, ground, scenery, stray grain outside the silhouette, signage, numerals, clock, date, battery or weather readings, logo, signature, lettering or other UI. FIRST SUBJECT: One whole GREATER ROADRUNNER in a naturally low mid-stride profile, facing RIGHT. A small raised feather crest, narrow pointed closed bill, long level body with narrow neck, elongated wedge tail trails upward LEFT, two distinct long running legs, one extended forward and one behind, simplified coherent toes fully visible. The long folded wing is one dominant dusty indigo reverse-bookcloth grid panel, with coarse crisscross cells. The rust back and wedge tail have two broad, random gritty fields. The ochre-cream breast is broad matte smooth reserve with one uneven, torn-board boundary and a slim pressure-dark ink rim where it meets the grid wing. The face has a small flush plum triangular eye and subtle short indigo crest. Whole natural bird with recognizable streamlined roadrunner posture, no anthropomorphic features, twig, rocks or extra animals. True transparent alpha outside, including between the two legs.",
+      "tool": "built-in image_gen",
+      "source": "sources/greater-roadrunner.0893abca.png",
+      "sourceSha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/greater-roadrunner.152afe7b.png",
+      "sha256": "152afe7b9a2477501522d4dd302010b2afd9c60c31fff7ba3de320727daa2c37",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "kit-fox",
+      "prompt": "PRESSGRAIN ARROYO, Glaze Nature. Use case: stylized-concept. One original separate square artwork, real transparent alpha outside the entire silhouette. Create a FLAT HAND-PULLED COLLOGRAPH PRINT impression, as if a relief and intaglio hybrid printed from a single built-up plate with at least three DISTINCT attached textures. A coarse BOOKCLOTH mesh imprint creates a clear regular OPEN CROSSED GRID in one main anatomical field, with small pale square cells, broken printed threads and a few uneven contact skips. A second continuous anatomical field has coarse RANDOM grit-stipple ink transfer, visibly different from the cloth grid. A third field has a BROAD TORN BOARD EDGE leaving a jagged pressure fringe and intermittent ink pooling, next to one larger smooth flat ink reserve. Texture fields meet at visible hard-to-torn seams set by the edges of the plate's glued patches. Most of the silhouette stays strong and continuous. Rim ink accumulation is fine and irregular. Palette is matte rust red, dusty indigo and a light ochre-cream reserve inside the subject, with occasional dark plum pooled ink. At 85 pixels the three main material zones should still read as open grid, irregular grit and torn-edge smooth field. Show the actual flat transferred result straight on in ONE plane. No depth, cast shadows or actual paper, textile, thread, grit or cardboard pieces visible above the print surface. No illustration drawn over the textures, black scratchboard hatching, carved linocut gouges, continuous stipple shading, woodgrain, embossed cutout, stippled photo, watercolor brushwork, metallic glints or thin guilloche loop geometry. The entire creature or plant must be recognizable and fully inside the square, with generous true alpha on each side. Every limb, bill, tail, leaf or stem tip is complete. No rectangular paper sheet, backing tint, border, ground, scenery, stray grain outside the silhouette, signage, numerals, clock, date, battery or weather readings, logo, signature, lettering or other UI. NEW SEPARATE SUBJECT. One whole KIT FOX quietly standing in three-quarter profile facing left. Slender low body, large upright triangular ears, small pointed muzzle with a single visible natural eye, exactly four attached slender legs and whole paws, one bushy tail with dark tip curving back to the right. Indigo open cloth grid prints across the large tail panel, rust grit is concentrated on the back and one haunch, and the pale throat and cheek are a smooth reserve edged by a ragged torn-board pressure band. All tips complete and clearly separated from the square edges. The input is our own roadrunner craft reference only. It supplies the transferred cloth grid, coarse grit, torn plate boundaries and flat ink language. Make a new composition without a bird.",
+      "tool": "built-in image_gen",
+      "source": "sources/kit-fox.98944bc7.png",
+      "sourceSha256": "98944bc7f87f33c3aefe3ae40050ef5cf722a31f578975c2bfdf5acccc343210",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/kit-fox.8bc31446.png",
+      "sha256": "8bc3144640107ce08b7ead89831338ca8f21489c319f81f5a673f86c573c6188",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "greater-roadrunner",
+          "file": "sources/greater-roadrunner.0893abca.png",
+          "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/kit-fox-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/kit-fox-exact-tool-result.json"
+    },
+    {
+      "id": "collared-lizard",
+      "prompt": "PRESSGRAIN ARROYO, Glaze Nature. Use case: stylized-concept. One original separate square artwork, real transparent alpha outside the entire silhouette. Create a FLAT HAND-PULLED COLLOGRAPH PRINT impression, as if a relief and intaglio hybrid printed from a single built-up plate with at least three DISTINCT attached textures. A coarse BOOKCLOTH mesh imprint creates a clear regular OPEN CROSSED GRID in one main anatomical field, with small pale square cells, broken printed threads and a few uneven contact skips. A second continuous anatomical field has coarse RANDOM grit-stipple ink transfer, visibly different from the cloth grid. A third field has a BROAD TORN BOARD EDGE leaving a jagged pressure fringe and intermittent ink pooling, next to one larger smooth flat ink reserve. Texture fields meet at visible hard-to-torn seams set by the edges of the plate's glued patches. Most of the silhouette stays strong and continuous. Rim ink accumulation is fine and irregular. Palette is matte rust red, dusty indigo and a light ochre-cream reserve inside the subject, with occasional dark plum pooled ink. At 85 pixels the three main material zones should still read as open grid, irregular grit and torn-edge smooth field. Show the actual flat transferred result straight on in ONE plane. No depth, cast shadows or actual paper, textile, thread, grit or cardboard pieces visible above the print surface. No illustration drawn over the textures, black scratchboard hatching, carved linocut gouges, continuous stipple shading, woodgrain, embossed cutout, stippled photo, watercolor brushwork, metallic glints or thin guilloche loop geometry. The entire creature or plant must be recognizable and fully inside the square, with generous true alpha on each side. Every limb, bill, tail, leaf or stem tip is complete. No rectangular paper sheet, backing tint, border, ground, scenery, stray grain outside the silhouette, signage, numerals, clock, date, battery or weather readings, logo, signature, lettering or other UI. NEW SEPARATE SUBJECT. One whole COLLARED LIZARD from above at a slight diagonal, head upper right and tail curving in a broad open S to the lower left. Exactly four attached coherent splayed legs with whole slender toes and complete tapered tail. Two short dark plum neck bands retain species character. A single broad coarse indigo cloth-grid panel occupies the back, rust grit covers a separate run of tail and hips, smooth ochre reserve along the flanks has a broken torn-board edge. Natural head and body proportions, all four feet and tail fit comfortably and do not touch the canvas edges. The input is our own roadrunner craft reference only. It supplies the transferred cloth grid, coarse grit, torn plate boundaries and flat ink language. Make a new composition without a bird.",
+      "tool": "built-in image_gen",
+      "source": "sources/collared-lizard.d0ab755d.png",
+      "sourceSha256": "d0ab755df131404eeee62201aeeaad4279e88dc3169f1d31fce468dba5a6cc3b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/collared-lizard.0ddda3cc.png",
+      "sha256": "0ddda3cc676309e2bb0c7bee4c5cf27ea0b0938ecdc8c7ba914e4aee01da7537",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "greater-roadrunner",
+          "file": "sources/greater-roadrunner.0893abca.png",
+          "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/collared-lizard-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/collared-lizard-exact-tool-result.json"
+    },
+    {
+      "id": "prickly-pear",
+      "prompt": "PRESSGRAIN ARROYO, Glaze Nature. Use case: stylized-concept. One original separate square artwork, real transparent alpha outside the entire silhouette. Create a FLAT HAND-PULLED COLLOGRAPH PRINT impression, as if a relief and intaglio hybrid printed from a single built-up plate with at least three DISTINCT attached textures. A coarse BOOKCLOTH mesh imprint creates a clear regular OPEN CROSSED GRID in one main anatomical field, with small pale square cells, broken printed threads and a few uneven contact skips. A second continuous anatomical field has coarse RANDOM grit-stipple ink transfer, visibly different from the cloth grid. A third field has a BROAD TORN BOARD EDGE leaving a jagged pressure fringe and intermittent ink pooling, next to one larger smooth flat ink reserve. Texture fields meet at visible hard-to-torn seams set by the edges of the plate's glued patches. Most of the silhouette stays strong and continuous. Rim ink accumulation is fine and irregular. Palette is matte rust red, dusty indigo and a light ochre-cream reserve inside the subject, with occasional dark plum pooled ink. At 85 pixels the three main material zones should still read as open grid, irregular grit and torn-edge smooth field. Show the actual flat transferred result straight on in ONE plane. No depth, cast shadows or actual paper, textile, thread, grit or cardboard pieces visible above the print surface. No illustration drawn over the textures, black scratchboard hatching, carved linocut gouges, continuous stipple shading, woodgrain, embossed cutout, stippled photo, watercolor brushwork, metallic glints or thin guilloche loop geometry. The entire creature or plant must be recognizable and fully inside the square, with generous true alpha on each side. Every limb, bill, tail, leaf or stem tip is complete. No rectangular paper sheet, backing tint, border, ground, scenery, stray grain outside the silhouette, signage, numerals, clock, date, battery or weather readings, logo, signature, lettering or other UI. NEW SEPARATE SUBJECT. One whole familiar PRICKLY PEAR branch with three broad joined paddle pads at different angles, one small yellow flower and two squat rust fruit. One large central pad is a coarse dusty-indigo open cloth-grid impression, the top pad and fruit have coherent random rust grit, and a second pale pad has a large smooth ink reserve with a torn-board boundary. Spines are very few short natural projections and no stray marks are detached. Five broad cup-like flower lobes may register as a single small flower, not a large radial centerpiece. Entire branch, pad tips, spines, flower, fruit and short basal cut stem fit with wide transparent margins. The input is our own roadrunner craft reference only. It supplies the transferred cloth grid, coarse grit, torn plate boundaries and flat ink language. Make a new composition without a bird.",
+      "tool": "built-in image_gen",
+      "source": "sources/prickly-pear.fd73d869.png",
+      "sourceSha256": "fd73d86952277730e41c35e191bfa908d2e78b940dac9a7bad6c3893dafe890b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/prickly-pear.13cbc497.png",
+      "sha256": "13cbc49799e901e9adcf98be61a30fd0a88fd93d59c1d9b79bbabfc8ebf1c00a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "greater-roadrunner",
+          "file": "sources/greater-roadrunner.0893abca.png",
+          "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/prickly-pear-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/prickly-pear-exact-tool-result.json"
+    },
+    {
+      "id": "yucca-moth",
+      "prompt": "Make a precise anatomy correction to Image 1, our existing original yucca moth artwork. Image 2 is our own collograph reference for the original flat print textures only. Image 1 already has the correct four complete wings, two antennae, and four visible legs below the thorax. Keep these intact. Add the missing foreleg pair. Draw one fine three-joint rust ink leg from the front left thorax just below the base of the left antenna, extending out and up-left into the open transparent gap between that antenna and the top edge of the left wing. Draw its matching front right leg from the front right thorax into the open space between the right antenna and right wing. Both new legs must attach to the thorax below the head and end in a short angled tarsus, just wide enough to count, with clean alpha between them, the antennae and the wings. Exactly six total visible attached legs, four wings and two original antennae. Preserve existing wing shapes, cloth grid, rust grit transfer, cream reserve and torn plate edges. Keep the full moth, all legs, wings and antennae inside the square and the true alpha background perfectly empty. No text or detached marks.",
+      "tool": "built-in image_gen",
+      "source": "sources/yucca-moth.6091ef2a.png",
+      "sourceSha256": "6091ef2af9ddfd849d81a11bcb578f46b1520a7b39dd5f7d49348e9f1c9396b3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/yucca-moth.1bd996bc.png",
+      "sha256": "1bd996bc0f0bf919029b9bdd30bc2b9e087b97979ea0761bfc39559f54fdcce6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/anatomy-repair/yucca-moth-history.json",
+      "referencedImage": {
+        "file": "qa/anatomy-repair/yucca-moth.original.5b40a4e3.png",
+        "sha256": "5b40a4e3463de715f07f9cab20552ea015bb49ec060dd1a8c4de0a3101561194"
+      },
+      "materialReference": {
+        "id": "greater-roadrunner",
+        "source": "sources/greater-roadrunner.0893abca.png",
+        "sourceSha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+        "role": "Material reference only; target subject/geometry retained."
+      },
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "yucca-moth-unselected-original",
+          "file": "qa/anatomy-repair/yucca-moth.original.5b40a4e3.png",
+          "sha256": "5b40a4e3463de715f07f9cab20552ea015bb49ec060dd1a8c4de0a3101561194",
+          "role": "Own unselected animal EDIT TARGET for documented anatomy-only correction; exact input retained unchanged."
+        },
+        {
+          "order": 2,
+          "id": "greater-roadrunner",
+          "file": "sources/greater-roadrunner.0893abca.png",
+          "sha256": "0893abca9f0fe111aed4b53fd62d7fbe6289749e8d9dc8c04b35f2bd054c1467",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/yucca-moth-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/yucca-moth-exact-tool-result.json"
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim.",
+  "materialReview": {
+    "status": "coordinator accepted first sample unchanged",
+    "record": "qa/material-sample/coordinator-material-approval.json",
+    "authority": "Coordinator accepted the first material sample unchanged. Lane B validated the full source candidate and rendered the exact app selector and native layouts."
+  }
+}

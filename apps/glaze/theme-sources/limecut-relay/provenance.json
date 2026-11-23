@@ -1,0 +1,119 @@
+{
+  "theme": "limecut-relay",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Layered wet lime-plaster sgraffito with cut-back mineral colour and chipped chalk incision lips",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 phone wallpaper for Glaze LIMECUT RELAY. The tangible message-relay courtyard of an invented seaside town, lower42% only: a tall folding signal mast has articulated flag-like branch panels; a broad spiral listening horn rises from a low open message kiosk; one striding adult courier transports large reels of blank ribbon; an elegant balanced crane lowers a little message cradle; and a squat three-chamber relay house has arched acoustic openings. Different unmistakable useful silhouettes, connected by one quiet paved courtyard, friendly handcrafted world, no ordinary electronics or abstract geometry. Medium is true LAYERED LIME-PLASTER SGRAFFITO: matte sea-teal mineral topcoat thinly covering warm terracotta and chalk-white underlayers, shapes CUT AND SCRATCHED BACK through the topcoat, strong flat graphic positive/negative fields, incised shallow stepped recesses, clean knife-cut contour channels with tiny irregular white chipped lips, visible fine sand/lime aggregate, a few shrink cracks and rubbed porous patches. Looks like an artisan made one wall mural in plaster, not wax painting, loose coloured-sand art, paper, ceramic toys, metal or3D sculpture. No perspective material models: forms are FLAT cut-back wall illustration with restrained incised contour shadows only. Teal #3B6F69, dark teal #204D49, warm terracotta #C87556, chalk #E8E2CF. Upper55% calm pale sea-teal plaster with subtle porous grain and few hairline cracks, generous readable icon space, no motifs there. Lower world bold, readable, spacious and warm. No text, handwriting, labels, letters, numerals, postal marks, envelopes with writing, clocks/gauges/dates, battery/weather readings, UI, logos, signatures, border, frame, mockup or collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.851e8702.png",
+      "sourceSha256": "851e8702333fd8bb91f4e95eb8281e864592cad7ba70f3a2d377f919a526ca67",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "b9f11ccd0650132b1f945e1be8f51aec56120d0599b1f1e44b6a9fe098d95440",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 1]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "folding-signal-tree",
+      "prompt": "LIMECUT RELAY for Glaze. ONE original 1024x1024 separate pure artwork, a tangible useful object/character from an invented seaside town's message network. True LAYERED LIME-PLASTER SGRAFFITO wall illustration: thin matte sea-teal mineral topcoat over warm terracotta and chalk underlayers, strong FLAT colour fields CUT BACK through the topcoat, shallow stepped incision channels, tiny irregular white chipped cut lips, sand/lime aggregate, porous rubbed patches and a few hairline shrink cracks. Every component is flat graphic wall art, no 3D sculpture, clay toy, paper cutout, soft wax paint, loose coloured sand, polished metal or realistic model. Teal #3B6F69, deep teal #204D49, terracotta #C87556, chalk #E8E2CF only. Clear bold silhouette, simplified readable construction and genuine transparent open gaps. Entire complete subject central65% with at least16% real alpha margins on all sides. No rectangular plaster board/backing, scenery/floor/extra platform, framing, shadows outside subject, text, labels, letters, symbols/numbers, clock/date/battery/weather values, electronics, UI, logos or signatures. Subject FOLDING SIGNAL TREE: one tall slender tapered chalk mast on three compact terracotta buttress feet, with FOUR ARTICULATED FLAG-BRANCH ARMS emerging from alternate sides at different heights. Each arm has one clear round pivot, two rigid linked sections and one broad asymmetric two-tone terracotta/ivory flag panel, staggered at four genuinely different angles as a mechanical town semaphore. A simple vertical pull cable with a small low handle links the pivots; tiny plain blank finial at top. No nautical code, inscriptions, numbers, birds, leaves, tree bark, people or extra buildings. Tall open asymmetric ladderlike silhouette and obvious purposeful folding mechanism; no conventional tree or generic row of flags. All arm tips, flag corners, mast top and feet fully inside alpha. Visible incised plaster layers/chipped lips along every large form, drawn straight-on.",
+      "tool": "built-in image_gen",
+      "source": "sources/folding-signal-tree.32025f9e.png",
+      "sourceSha256": "32025f9e788eff9c7f379682fcba3038a1aaa6033be16d19ac060db231c8acb2",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folding-signal-tree.f16a6e35.png",
+      "sha256": "f16a6e35ec2734c74d536eefd89334b663883be24d438d518e88a6ec91dbeecf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "whisper-collector",
+      "prompt": "LIMECUT RELAY for Glaze. ONE original 1024x1024 separate pure artwork, a tangible useful object/character from an invented seaside town's message network. True LAYERED LIME-PLASTER SGRAFFITO wall illustration: thin matte sea-teal mineral topcoat over warm terracotta and chalk underlayers, strong FLAT colour fields CUT BACK through the topcoat, shallow stepped incision channels, tiny irregular white chipped cut lips, sand/lime aggregate, porous rubbed patches and a few hairline shrink cracks. Every component is flat graphic wall art, no 3D sculpture, clay toy, paper cutout, soft wax paint, loose coloured sand, polished metal or realistic model. Teal #3B6F69, deep teal #204D49, terracotta #C87556, chalk #E8E2CF only. Clear bold silhouette, simplified readable construction and genuine transparent open gaps. Entire complete subject central65% with at least16% real alpha margins on all sides. No rectangular plaster board/backing, scenery/floor/extra platform, framing, shadows outside subject, text, labels, letters, symbols/numbers, clock/date/battery/weather values, electronics, UI, logos or signatures. Subject WHISPER COLLECTOR: a very BROAD LOW OPEN KIOSK with a small terracotta hipped roof, two thick ivory arch supports and an open front counter holding ONE large plain ribbon reel on an axle. Rising from its roof is a magnificent oversized SPIRAL LISTENING HORN: thick tapered tube curves in one complete coil from narrow roof inlet at left to a very wide upward-right mouth, with alternating chalk/terracotta bands cut into the plaster. A short visible pipe connects narrow horn end down to the ribbon axle, explaining recording town whispers as blank ribbon. Keep roof supports and arch opening clearly readable. Strong low house plus gigantic circular upper horn silhouette, friendly imaginative listening station, not gramophone still life or ordinary music equipment. No person, table/floor tile, notes, words, labels, instrument keys, clock or dial. Whole horn coil, mouth, roof tips, kiosk supports and reel inside generous alpha. Rough flat cut-back lime layers with sharp chipped ivory incision edges and mineral pores throughout.",
+      "tool": "built-in image_gen",
+      "source": "sources/whisper-collector.1c5d3ecb.png",
+      "sourceSha256": "1c5d3ecb94a1a95a813b08b7337516ff4c2f40777344677acac829b668769ff8",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/whisper-collector.21d1da37.png",
+      "sha256": "21d1da37e7c45eb9e66332a32bdaeb23bd3c8aaf5bb6270f59be3e0379ab35ba",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "ribbon-post-runner",
+      "prompt": "LIMECUT RELAY for Glaze. ONE original 1024x1024 separate pure artwork, a tangible useful object/character from an invented seaside town's message network. True LAYERED LIME-PLASTER SGRAFFITO wall illustration: thin matte sea-teal mineral topcoat over warm terracotta and chalk underlayers, strong FLAT colour fields CUT BACK through the topcoat, shallow stepped incision channels, tiny irregular white chipped cut lips, sand/lime aggregate, porous rubbed patches and a few hairline shrink cracks. Every component is flat graphic wall art, no 3D sculpture, clay toy, paper cutout, soft wax paint, loose coloured sand, polished metal or realistic model. Teal #3B6F69, deep teal #204D49, terracotta #C87556, chalk #E8E2CF only. Clear bold silhouette, simplified readable construction and genuine transparent open gaps. Entire complete subject central65% with at least16% real alpha margins on all sides. No rectangular plaster board/backing, scenery/floor/extra platform, framing, shadows outside subject, text, labels, letters, symbols/numbers, clock/date/battery/weather values, electronics, UI, logos or signatures. Subject RIBBON POST RUNNER: one invented ADULT COURIER striding briskly in profile to the RIGHT, wearing a simple short terracotta tunic, teal cropped trousers, ivory scarf streaming back and teal flat work shoes. Exactly TWO ARMS AND TWO LEGS. Both arms cradle a single enormous chalk-ivory BLANK MESSAGE RIBBON REEL horizontally across the chest, fingers/hands visible naturally supporting its two ends; a second smaller teal-flanged reel rides on a broad shoulder harness against the back. A short unmarked ivory ribbon tail curls backward near the scarf, not writing or a banner. Calm focused angular face in side profile, no mask, cap with small asymmetric brim. Long forward step and bent rear knee, strong open diagonal running silhouette and meaningful load, friendly original mural character, not a generic delivery driver with cardboard box. No postal logos, badges, letters, envelope icons, weapon or readable marks. Complete scarf tips, reel, face, hands and both feet fully visible inside alpha. ALL body/clothes/props depicted as flat sgraffito-cut coloured lime plaster, chipped chalk lips and scratched mineral layers, no realistic human render or ceramic doll.",
+      "tool": "built-in image_gen",
+      "source": "sources/ribbon-post-runner.4e7ce72d.png",
+      "sourceSha256": "4e7ce72d0694c0c3f59a2ed5d12777757d2e363c1684b33486eb0f9e8c89a0b8",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/ribbon-post-runner.4feb79fb.png",
+      "sha256": "4feb79fb5c8026bcd279cae542c6f941e9b9c498f84aede0c59591f3ba0754ae",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "bridge-message-crane",
+      "prompt": "LIMECUT RELAY for Glaze. ONE original 1024x1024 separate pure artwork, a tangible useful object/character from an invented seaside town's message network. True LAYERED LIME-PLASTER SGRAFFITO wall illustration: thin matte sea-teal mineral topcoat over warm terracotta and chalk underlayers, strong FLAT colour fields CUT BACK through the topcoat, shallow stepped incision channels, tiny irregular white chipped cut lips, sand/lime aggregate, porous rubbed patches and a few hairline shrink cracks. Every component is flat graphic wall art, no 3D sculpture, clay toy, paper cutout, soft wax paint, loose coloured sand, polished metal or realistic model. Teal #3B6F69, deep teal #204D49, terracotta #C87556, chalk #E8E2CF only. Clear bold silhouette, simplified readable construction and genuine transparent open gaps. Entire complete subject central65% with at least16% real alpha margins on all sides. No rectangular plaster board/backing, scenery/floor/extra platform, framing, shadows outside subject, text, labels, letters, symbols/numbers, clock/date/battery/weather values, electronics, UI, logos or signatures. Subject BRIDGE MESSAGE CRANE: one elegant VERY WIDE BALANCED COURIER JIB on a compact high arched pedestal. The long chalk/terracotta beam extends far LEFT to a small hanging open message cradle shaped like a shallow three-arch basket; a short heavy teal counterweight hangs from far RIGHT. Large visible round central pivot above the pedestal, two paired suspension cords connect cradle to jib tip. Below the jib, a small folded receiving footbridge extends forward from the pedestal arch to explain pedestrian collection; no town/ground plate around it. Beam tilts slightly up-left, cradle low-left, heavy counterweight high-right, strong asymmetric cantilever silhouette and clear useful lifting function. The cradle contains only one small unmarked rolled ribbon, no people, ordinary construction cargo, hooks resembling weapons, text or signs. All beam tips, cords, cradle, weight, footbridge and pedestal feet visible with roomy alpha margin. Depict every surface as flat cut-back mineral plaster fields and shallow incised channels with rough chalk lips, no realistic wooden/metal crane sculpture.",
+      "tool": "built-in image_gen",
+      "source": "sources/bridge-message-crane.11cdd7a7.png",
+      "sourceSha256": "11cdd7a75a9b964b6194bab61dcd9139e7a6689292063f6fb85d22ccc5244dd9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bridge-message-crane.fe926861.png",
+      "sha256": "fe92686168189d07b637f33971dd6a489448bfbff78a0a0afe8bc5234232031b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "echo-vault",
+      "prompt": "LIMECUT RELAY for Glaze. ONE original 1024x1024 separate pure artwork, a tangible useful object/character from an invented seaside town's message network. True LAYERED LIME-PLASTER SGRAFFITO wall illustration: thin matte sea-teal mineral topcoat over warm terracotta and chalk underlayers, strong FLAT colour fields CUT BACK through the topcoat, shallow stepped incision channels, tiny irregular white chipped cut lips, sand/lime aggregate, porous rubbed patches and a few hairline shrink cracks. Every component is flat graphic wall art, no 3D sculpture, clay toy, paper cutout, soft wax paint, loose coloured sand, polished metal or realistic model. Teal #3B6F69, deep teal #204D49, terracotta #C87556, chalk #E8E2CF only. Clear bold silhouette, simplified readable construction and genuine transparent open gaps. Entire complete subject central65% with at least16% real alpha margins on all sides. No rectangular plaster board/backing, scenery/floor/extra platform, framing, shadows outside subject, text, labels, letters, symbols/numbers, clock/date/battery/weather values, electronics, UI, logos or signatures. Subject ECHO VAULT: one LOW BROAD THREE-CHAMBER ACOUSTIC RELAY HOUSE, unmistakable public utility architecture. Three connected ivory arched openings of unequal height sit under a stepped terracotta barrel roof: the left is small with two short entrance steps, centre tall and broad, right narrow with an angled side buttress. Inside each opening are THREE CONCENTRIC INCISION RIBS that channel sound deeper into the vault, sculpted as flat chalk contour bands on a deep-teal cut-back field; all openings genuinely transparent through the central throat, not solid black background. A short open terracotta ribbon chute connects the chambers just above their thresholds, linking message reception; one tiny roof vent with a plain cap. No windows full of objects, doors with signs, people, ordinary mailboxes, electronic speakers, radio symbols or text. Strong low stepped triple-arch silhouette, recognisable inhabited acoustic waystation rather than abstract arch pattern or Roman ruin. Full roof line, vent, buttress and steps inside alpha margins. Flat knife-cut lime layers, exposed terracotta/chalk, rough chipped edges and incised porous plaster throughout.",
+      "tool": "built-in image_gen",
+      "source": "sources/echo-vault.868795c6.png",
+      "sourceSha256": "868795c6a1ebae33e3fdeb764baf5517ff0a7d5917b0cf4c0eb9a5d951a789a7",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/echo-vault.75af7fa8.png",
+      "sha256": "75af7fa8e756a8324edc4a1d4d8d80162214a1dea0bc253f6c0df0bca7ccebfd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

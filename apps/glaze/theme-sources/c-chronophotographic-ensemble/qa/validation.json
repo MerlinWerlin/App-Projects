@@ -1,0 +1,153 @@
+{
+  "id": "c-chronophotographic-ensemble",
+  "packVersion": 2,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "bellows-breather",
+    "gesture-conductor",
+    "hollow-strider",
+    "wing-clapper",
+    "reed-crown"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.58fac35a.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 8118,
+    "sha256": "58fac35a115e788032cf05022306ca4d6c50d254c564c08c0a7a8eee71d300d7",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "artworkCombination": "Viewed coherent rehearsal wallpaper and all five artworks together at two widget-like sizes. Bellows compression, four-armed conducting gestures, chest striking, wing clapping and reed-crown swaying give distinct bodies/actions; sharp solid main figures and dim earlier exposures unify the scientific motion-study process.",
+    "encoded85px": "Viewed all five actual encoded WebP artworks at exactly85pixels. Main figures and repeated motion positions remain readable. Labels resized for clear QA-sheet spacing; image pixels remain85x85.",
+    "sourceFraming": "Checked alpha16 and96 bounds to include dim ghost positions, not only the opaque main subject. All five complete motion studies fully inside source frames; edge alpha1 on four sources and2 on reed-crown.",
+    "nativeCombination": "Viewed all nine actual app renderer previews and all affected corner sizes. Large bellows hero and motion echoes match the art; a separate compact hinge-and-sweep ornament keeps small calendar/medium-clock headers clear. Live readings stay readable.",
+    "scope": "Current actual coordinator TS parser/renderer copied unchanged to scratch; source descriptor/ornament data inserted only there. Nine app plans and schema round-trips preserve the ornament; actual combined registry integration and device qualification remain coordinator-owned.",
+    "wallpaperEdgeRefinement": "Viewed all three final actual encoded variants: Conductor elbow/hands/antennae and right chest-resonator have clear side breathing room; all five performers and motion echoes remain whole. Ground/terrain continues naturally; no demand to frame every scenery detail."
+  },
+  "packTestEvidence": "Unchanged pack pipeline:47distinct cases passed across original suite and Pillow-enabled WebP reruns. This theme independently passed real builder, current actual app parsers/planner/native renderer, full image decoding, unique hashes, six matched provenance records and no selected orphan checks. New ornament parser retention and all nine changing readings verified.",
+  "wallpaperEdgeRefinement": {
+    "reason": "Jared clarified both native and Artwork corners; primary wallpaper figures also need breathing room across device crops.",
+    "change": "Conductor elbow/hands/antennae and right chest-resonator have clear side breathing room; all five performers and motion echoes remain whole.",
+    "generationTool": "built-in image_gen layout-only edit",
+    "actualDeviceVariantsReviewed": [
+      [
+        1290,
+        2796
+      ],
+      [
+        1179,
+        2556
+      ],
+      [
+        750,
+        1334
+      ]
+    ],
+    "fiveOriginalArtworksUnchanged": true,
+    "nativeIdentityAndPaletteUnchanged": true,
+    "allNineNativeSvgByteIdentical": true,
+    "priorImagesAndPromptsRetained": true,
+    "landscapeCanBleed": true,
+    "installedDeviceValidation": false
+  },
+  "localPackIteration": "v2 after layout-only wallpaper edge refinement; all catalogue/version/release outputs only in ignored dist/lane-c."
+}

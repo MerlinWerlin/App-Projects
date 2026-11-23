@@ -1,4 +1,5 @@
 import { IDENTITY_ART } from './widgetIdentityArt.ts';
+import { EXTRAORDINARY_ORNAMENTS } from './extraordinaryThemeIdentities.ts';
 import { CALENDARS, GAUGES, HANDS, WIDGET_IDENTITY_RECIPES, type WidgetIdentityRecipe } from './widgetIdentityRecipes.ts';
 
 export type WidgetIdentity = {
@@ -9,6 +10,8 @@ export type WidgetIdentity = {
   cardinals: [number, number, number, number];
   subject: string;
   detail: string;
+  /** A compact companion drawing for calendar and clock headers; heroes stay in larger layouts. */
+  ornament?: string;
   hands: WidgetIdentityRecipe[4];
   gauge: WidgetIdentityRecipe[5];
   calendar: WidgetIdentityRecipe[6];
@@ -42,7 +45,7 @@ function contour(face: WidgetIdentityRecipe[0], angle: number): number {
   }
 }
 
-function buildIdentity(recipe: WidgetIdentityRecipe, originalFace?: 'alpine'): WidgetIdentity {
+function buildIdentity(recipe: WidgetIdentityRecipe, originalFace?: 'alpine', ornament?: string): WidgetIdentity {
   const [face, subject, detail, mark, hands, gauge, calendar] = recipe;
   const edge = (a: number) => 45.5 * contour(face, a);
   const point = (a: number, r: number, tangent = 0) => xy(50 + Math.cos(a) * r - Math.sin(a) * tangent, 50 + Math.sin(a) * r + Math.cos(a) * tangent);
@@ -80,6 +83,7 @@ function buildIdentity(recipe: WidgetIdentityRecipe, originalFace?: 'alpine'): W
     cardinals: angles.map(a => Number(format(edge(a) - 13))) as WidgetIdentity['cardinals'],
     subject: IDENTITY_ART[subject], detail: IDENTITY_ART[detail], hands, gauge, calendar,
     ...(originalFace ? { originalFace } : {}),
+    ...(ornament ? { ornament } : {}),
   };
 }
 
@@ -89,13 +93,28 @@ export function identityForTheme(id: string): WidgetIdentity | undefined {
   if (!recipe) return undefined;
   const prior = cache.get(id);
   if (prior) return prior;
-  const identity = buildIdentity(recipe, id === 'alpine-starlight' ? 'alpine' : undefined);
+  const identity = buildIdentity(recipe, id === 'alpine-starlight' ? 'alpine' : undefined, EXTRAORDINARY_ORNAMENTS[id]);
   cache.set(id, identity);
   return identity;
 }
 
 // Paths are authored or generated internally and persisted with the live spec. Only our
 // bounded drawing vocabulary may make it from the App Group back into a preview.
+function validOrnament(path: unknown): path is string {
+  if (typeof path !== 'string' || path.length > 2400 || !/^M [MLQTCZ0-9 .-]+$/.test(path)) return false;
+  const tokens = path.split(' ').filter(Boolean), arity: Record<string, number> = { M: 2, L: 2, Q: 4, T: 2, C: 6, Z: 0 };
+  let index = 0;
+  while (index < tokens.length) {
+    const count = arity[tokens[index++]];
+    if (count === undefined || index + count > tokens.length) return false;
+    for (let n = 0; n < count; n++) {
+      const value = Number(tokens[index++]);
+      if (!Number.isFinite(value) || value < -25 || value > 125) return false;
+    }
+  }
+  return true;
+}
+
 export function parseWidgetIdentity(raw: unknown): WidgetIdentity | null {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
   const r = raw as Record<string, unknown>;
@@ -106,10 +125,12 @@ export function parseWidgetIdentity(raw: unknown): WidgetIdentity | null {
   if (!Array.isArray(r.cardinals) || r.cardinals.length !== 4 || !r.cardinals.every(n => typeof n === 'number' && n >= 17 && n <= 38)) return null;
   if (!HANDS.includes(r.hands as WidgetIdentity['hands']) || !GAUGES.includes(r.gauge as WidgetIdentity['gauge']) || !CALENDARS.includes(r.calendar as WidgetIdentity['calendar'])) return null;
   if (r.originalFace !== undefined && r.originalFace !== 'alpine') return null;
+  if (r.ornament !== undefined && !validOrnament(r.ornament)) return null;
   return {
     outline: r.outline as string, inner: r.inner as string, hours: r.hours as string, minutes: r.minutes as string,
     cardinals: r.cardinals as WidgetIdentity['cardinals'], subject: r.subject as string, detail: r.detail as string,
     hands: r.hands as WidgetIdentity['hands'], gauge: r.gauge as WidgetIdentity['gauge'], calendar: r.calendar as WidgetIdentity['calendar'],
     ...(r.originalFace === 'alpine' ? { originalFace: 'alpine' as const } : {}),
+    ...(typeof r.ornament === 'string' ? { ornament: r.ornament } : {}),
   };
 }

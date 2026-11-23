@@ -1,0 +1,1 @@
+Read-only actual whole selected source alpha composites on planned theme background at240/170/85 before packaging. All five visually clean; no alpha-only or other creative correction performed. Final encoded rounded artwork/native/wallpaper proof is in parent qa.

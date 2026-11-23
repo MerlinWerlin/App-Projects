@@ -1,0 +1,22 @@
+{
+  "id": "quail-three-shadows",
+  "selected": true,
+  "sourceImage": "sources/quail-three-shadows.76270e29abf0.png",
+  "sourcePathFromGenerator": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-952c-7b31-bf3d-c5d132645a30\\exec-a31070e5-07e6-4b3e-8b14-92b1a305eefe.png",
+  "sourceSha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "prompt": "Use case: stylized-concept. Create one original square Glaze Artwork study for Shadowlight Meadow. One complete and immediately recognizable California quail, standing quietly in profile with its head turned slightly toward the viewer. Whole rounded gray-brown body, tiny pale facial bar, small dark curved topknot with its full tip, short tail and both visible feet. Restrained natural warm gray and taupe plumage with a few broad underside scale marks and a dark eye. Real gentle wildlife proportions. A clean, quiet illustrative finish, with a little natural down and no bright unnatural color on the bird.\n\nShow a stylized colored-shadow scene. From the SAME two real foot contacts the quail casts THREE broad, flattened silhouette shadows along a single implied pale ground plane, in three progressively different directions. They stretch outward behind the visible bird in three directions: dusty cyan left and back, dusty magenta right and back, warm golden ochre diagonally forward. They are solid readable areas of shadow with very soft penumbra at each outside edge. Each shadow has a visibly flattened whole quail body projection, with its associated footprint narrowing into the shared dark origin at the actual feet. The far edge can show a short flattened topknot or bill, but the shadows are low flat cast shapes, never three upright birds. The shadows partly overlap near the feet in distinctly darker small intersection shapes, then separate into broad colored areas farther out. Keep the single opaque bird in front and its clean unfringed body clearly separate visually from the three thinner ground marks. The three shadows supply enough shape and color to read at 85 px. This is an original artistic depiction of colored cast shadows under three light colors, without an actual measurement or calibration.\n\nThe real quail, legs, crest and all three shadow endpoints are fully contained within the central 72 percent of the canvas. Only the quail and its actual colored shadows are visible, with transparency elsewhere. The ground is implied by the flattened shadows and foot contacts. Do not add a rectangular backing, floor slab, display disc, drawn horizon, dark platform, layer of fog, halo, ring of highlights, veins, halo outline, detached swirls, ornamental paint stroke, light beams, reflection, wet glossy texture, neon contours, red and cyan misregistration, unfocused duplicate figures, existing photographs, labels, text, UI, numbers, logos or watermark. Quiet edges and truly transparent empty corners. No external images.",
+  "generationTool": "built-in image_gen",
+  "externalReferences": [],
+  "alpha16Bounds": [
+    53,
+    131,
+    1218,
+    1138
+  ],
+  "edgeAlphaMaximum": 1,
+  "selectionReason": "Lane A coordinator accepted the exact first quail unchanged after full/170/85 and all seven actual comparison boards. The whole natural body and three large cast forms share the foot region and read on one ground plane. Expand four and wallpaper using this exact quail as the sole visual reference. Preserve the first raw and everything visible in the footprint."
+}

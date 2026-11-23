@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "moorhen-rushes",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-3887c758-d67c-437d-9531-e07da49ebc97.png",
+      "sha256": "886e1c4487a8c7c70bbd05d4d268e188db42b297b78e36817be115fd1efbee55",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        23,
+        1244,
+        1254
+      ]
+    },
+    {
+      "id": "perch-pondweed",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-583fd0ec-32a5-4abb-886d-a4d5541f16e6.png",
+      "sha256": "d1bc9c61fb997bd9b1ed3f1ba44ce24fd0425d11601c8ee6e2eb85cc7e3f0b57",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        23,
+        21,
+        1240,
+        1254
+      ]
+    },
+    {
+      "id": "grass-snake-sedge",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-84f5b13e-1583-4549-a890-489d1c80666a.png",
+      "sha256": "9a4e26ef1aec2f4379599b2f7263abf492e92b6b4d6c645b556f2199930f08da",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        23,
+        1244,
+        1254
+      ]
+    },
+    {
+      "id": "yellowflag-iris",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-23584a5b-a0a9-4897-b9d2-4b2304a200ed.png",
+      "sha256": "d3c291a5179d4d0eae112b4ee044beee5515495a4cba0e63714fad2ad55e853b",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1253,
+        1254
+      ]
+    },
+    {
+      "id": "marsh-marigold",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-3ee0fbfd-145a-48da-83df-0d5a3e3a0d97.png",
+      "sha256": "f72f6b85848d764062744acbebf3c73acac0b0e5d007367a36954bdfd7fa7e5e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        20,
+        1224,
+        1254
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "spotted-quoll",
+  "label": "Spotted Quoll",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One independent square Glaze artwork with true transparent background. RASPNEST HEATH, a tangible heathland formed entirely from dry EXCELSIOR WOOD-WOOL sculpture. The reference is our own echidna artwork and is used ONLY to match physical material and lighting; create a wholly different subject. Many irregular thin FLAT brittle wood shavings, tangled ribbons and pointed splinters with longitudinal grain, fibrous fractured tips, subtle curved edges, open inter-strand gaps and compressed dense anatomical bundles. Natural pale honey, russet bark and smoky brown woods, matte and dry, diffuse studio macro lighting, convincing material depth. No smooth solid wooden core, polished carving, fur/plush, string/thread, woven fabric, wire, clay, paper quilling, rolled rosettes or concentric coils. Entire subject fits into central 70% with ample truly transparent space on every side; all tips, claws and foliage comfortably inside the image. No floor or shadow outside subject, panel, backing, atmosphere, frame, text, symbols, clock/battery/calendar or UI. Strong singular silhouette readable at85px. SUBJECT: one complete alert SPOTTED QUOLL, a slender low Australian-inspired marsupial standing on four small distinct clawed feet in profile facing left, with pointed snout, upright rounded ears, long gently curving tapering tail. Body made of russet and smoky-brown wood shavings, with widely separated small clusters of pale cream shavings forming conspicuous irregular natural spots along back and flank; face and legs finer straw. Recognizable living animal form, arched back and curious head. Keep every foot, nose, ears and entire tail whole. Not a fox, cat or echidna, no grass clump, no accessories.",
+  "source": "sources/spotted-quoll.402dbdeb5087.png",
+  "sourceSha256": "402dbdeb508711dbd7161f1109d436329ac6cc846ef5cd31888ef75a9ac5e5d9",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/spotted-quoll.516e8f958261.png",
+  "sha256": "516e8f958261fd0edb1265edff7fa94d69be4c19e8a2012e5211438ab732a564",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on transparent1024square, alpha preserved. No subject crop, recolour or artistic edits.",
+  "references": [
+    {
+      "file": "sources/echidna.4128cb6fa557.png",
+      "sha256": "4128cb6fa557e90414dfe2763e1027bbb399434df987fd25216ead9b4ec4de5f",
+      "purpose": "Own first artwork supplies the physical wood-shaving material and lighting only; new distinct subject."
+    }
+  ]
+}

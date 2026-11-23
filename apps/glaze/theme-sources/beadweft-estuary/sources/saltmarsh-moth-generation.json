@@ -1,0 +1,18 @@
+{
+  "id": "saltmarsh-moth",
+  "prompt": "BEADWEFT ESTUARY for Glaze. ONE original1024x1024 separate pure NATURE artwork, OFF-LOOM HAND-STITCHED GLASS SEED-BEADWORK. Natural recognisable flora/fauna, no architecture, machines or costume. Every form consists of individual SHORT CYLINDRICAL GLASS SEED BEADS in staggered brick rows, clearly visible drilled axial HOLES, raised bead rims, tiny stitch threads bridging holes, narrow open gaps and slight handmade irregularity; matte beads plus restrained translucent edge glints. A flat shallow stitched bead silhouette, not pixel art, painted dots, enamel/glaze cells, mineral orientation grains, fabric weaving/filled embroidery, resin toy or smooth3D sculpture. Ink teal #102C31, sea-glass teal #3B928C, burnt coral #D5715B, oyster cream #E3D4B5, kelp gold #A9955C, umber #49362D with sparse muted lavender flower beads. Strong whole natural silhouette, bead detail subordinate to form. Entire subject central65% with16% or more TRUE transparent alpha margins on every side, all major openings genuinely transparent. No fabric backing, rectangular bead mat, floor/scenery, pale halo/glow/shadow, frame/border, text/letters/numbers, labels, clocks/gauges/time/date/battery/weather values, logos or UI. Subject SALTMARSH MOTH: one recognisable large MOTH settled on a slender branching stem of SEA LAVENDER, its broad upper wings open in a relaxed slight downward V, two smaller rounded hindwings visible, slim dark umber segmented body and two feathery thread-and-bead antennae. Wing pattern is oyster cream with burnt coral angular bands, kelp-gold small dots and ink-teal edging, a naturally varied balanced pair, no eyes, letters or symbols. Wings constructed as thin stitched bead sheets, obvious cylindrical bead rims/holes and tiny stitch-thread bridges; no gem-like filled cells. The diagonal sea-lavender sprig runs from lower left to upper right, a few dusty lavender bead flower clusters and narrow teal leaves support the moth, no rectangle or hoop behind it. Delicate branch through open negative space, broad wing silhouette contrasted with sparse flowers. Entire moth, antennae, wing tips, flower clusters and all branch ends centrally contained with generous transparent margins, no clipping.",
+  "tool": "built-in image_gen",
+  "source": "sources/saltmarsh-moth.ec203ab6.png",
+  "sourceSha256": "ec203ab6292c55ab0df163c9d5d8c41170b5519de40d33063cffdd783a00e487",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/saltmarsh-moth.70dfa456.png",
+  "sha256": "70dfa456753a3625897e0d896014590bfbedf3ece66499fd4a0cf6db1837cefe",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

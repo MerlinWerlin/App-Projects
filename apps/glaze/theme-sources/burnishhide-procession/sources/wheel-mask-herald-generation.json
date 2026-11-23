@@ -1,0 +1,23 @@
+{
+  "id": "wheel-mask-herald",
+  "prompt": "Remove the pale irregular background/halo behind this benign ceremonial herald illustration. Preserve the exact adult performer, profile stride, spoke crown, hands holding curved speaking horn, scarf, costume, shoes, oxblood/tan/turquoise tooled-leather material, shallow incisions and all fine patterns. EVERYTHING outside the actual figure, crown, scarf and horn must become genuinely alpha-transparent, including every gap between the crown spokes and the face/horn space. No off-white board, glow, shadow or pale mat. Expand canvas and fit the complete performer within the central70% of a square with15% empty alpha margin on all four sides. Keep every spoke, horn rim, scarf and both feet completely visible. No pose, style, palette or prop change and no new objects or writing.",
+  "tool": "built-in image_gen",
+  "source": "sources/wheel-mask-herald.4a5b698a.png",
+  "sourceSha256": "4a5b698a2b7c3eb64ad1412a119957ea55f85624cdbc287976336b51849c54a0",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/wheel-mask-herald.8c4e81d9.png",
+  "sha256": "8c4e81d9b166e477a8d15faf58f27009d60f2bed1bcfc5e43009932781f08dea",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/crop-repair/wheel-mask-herald-history.json",
+  "referencedImage": {
+    "file": "qa/crop-repair/wheel-mask-herald.original.80efd9cc.png",
+    "sha256": "80efd9cc9bc5d2a89ef33a6dbd1a6bf5e6f4c6909fd4c62415e2db196d15f0b5"
+  }
+}

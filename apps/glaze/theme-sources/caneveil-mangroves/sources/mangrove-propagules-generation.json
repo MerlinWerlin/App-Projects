@@ -1,0 +1,18 @@
+{
+  "id": "mangrove-propagules",
+  "prompt": "CANEVEIL MANGROVES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL mangrove flora/fauna with natural anatomy, not abstract creatures. Unmistakable hand-fused MURRINE/MILLEFIORI GLASS-CANE construction: large radial flower/star cross-sections of composite colored glass rods FUSED FLUSH INTO ONE CONTINUOUS VITREOUS BODY. Coarse irregular but legible ivory/honey-centered cobalt/emerald radial cane flowers occupy broad surfaces, only several LARGE cane sections across an animal torso, not tiny allover decorative confetti. Actual depth/internal stripes visible through thin clear glass casing; heat-softened joins merge neighboring cane slices with NO brass leading, grout or thick black divider outlines. At curved cut lips and narrow parts, expose LONGITUDINAL PARALLEL COLOR STRIPES of the composite rods, not flat surface decals. Soft directional glass highlights, low shallow fused relief, not a generic shiny figurine decorated with painted flowers, stained glass enamel, loose seedbeads, beads/thread holes, mosaic tiles, rough frit grains, shell nacre, crystal facets or gemstones. Underlying natural shape remains very clear. Whole subject inside central64percent with at least18percent real alpha margin each side. No clipped toes, feet, tail, bill, leaf or root tips. Entire exterior and open anatomy gaps genuinely alpha transparent; no sheet/plaque/backing/platform/stand/frame/badge/ring/bail/clasp, no ground scenery, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. A clear botanical cluster: one complete gently curving mangrove branch with TWO opposite pairs of smooth elliptical leaves, TWO long tapered pendulous propagules and THREE small recognizable ivory four-petaled mangrove flowers with small golden centers. Leaves/propagules arranged asymmetrically, natural connected branch growth, no wreath or symmetrical bouquet. Broad leaves contain coarse emerald/cobalt/honey flowerlike embedded cane sections, thin cut lips reveal parallel longitudinal cane stripes. Actual small mangrove flowers remain distinct from the larger embedded glass cane structures. No insects, vase or badge.",
+  "tool": "built-in image_gen",
+  "source": "sources/mangrove-propagules.e1a48cb0.png",
+  "sourceSha256": "e1a48cb0bb00908b45c7703fcd03e331534786dc3020eef0cca1d870c50ec981",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/mangrove-propagules.526f5240.png",
+  "sha256": "526f5240320889577f26969b43bf22073518f41aa5610ce18d0e37ce116cb967",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

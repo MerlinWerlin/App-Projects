@@ -1,0 +1,29 @@
+{
+  "id": "purple-prairie-clover",
+  "prompt": "WHITEGROOVE SANDHILLS for Glaze. One original isolated whole flat image of a recognizable Great Plains specimen in the physical print language of one hand-carved WHITE-LINE COLOR WOODBLOCK. Carving shallow broad V grooves in one block creates a connected network of cream UNINKED PAPER channels separating several broad hand-brushed pigment fields. At print stage the colored faces transfer uneven thin matte layers, while the visible negative channels remain the exact natural warm ivory paper color. Make these pale interior lines visually unmistakable and continuous across several substantial color junctions, with slight irregular gouge swelling, occasional flat chamfer or gentle tapered finish, and connected fork passages. Small count of large flat strong matte translucent watercolor or gouache fields with restrained light pressure-grain at their edges. Keep clean no dark contour. The print looks hand pulled: gentle block drag, even paper tooth, a few low-contrast blotchy ink variations inside broad color fields. No strong exposed wood grain, screenprint dots, fiber grid, gritty flecks, collage or relief buildup. The visible internal channels are continuous real pale paper among flat pigments, not white chalk outlines or gaps cut to transparent background. Only the region outside the entire recognizable subject silhouette is genuinely transparent. Avoid off-white outer sticker stroke, torn card or rag deckle silhouette. Completely planar matte surface, no material thickness, stone slabs, grout, enamel, stained glass, deep cast shadow, relief laminations, digital crisp double white strokes, ceramic shimmer, airbrush color ramps or wood texture shading. One clean whole articulated and unmistakable specimen composition, bold enough for 85 pixels. Natural lightweight aesthetic. Generous pure transparent margin. No border, rectangle, ground rectangle, lettering, maker mark, panel or UI.  NEW DISTINCT SPECIMEN. One coherent whole PURPLE PRAIRIE CLOVER sprig. Two upright slim cylindrical flower spikes with a dense rounded field of vivid violet near the lower half, upward muted sage-green tips and a few indigo periwinkle color blocks where color changes. A very small golden band of stamens is permitted. Attached thin stalks with natural airy clusters of narrow pinnate leaves along the bottom half, one short third upright budding spike at lower right. A near-flat asymmetric botanical print, with visibly broad warm cream cut seams dividing violet ring, green head, stem fields, and a few individual leaf edges. Keep purple inflorescences one simple continuous cylinder each. No repetitive individual tubes, raised texture, extra stems or text. All leaflets, stem ends and spikes included in the whole subject. Use our only attached first meadowlark as the material input only: coarse continuous warm paper channels between broad matte transfer colors and mild pressure grain. No bird contours or perch from the reference.",
+  "tool": "built-in image_gen",
+  "source": "sources/purple-prairie-clover.901078ff.png",
+  "sourceSha256": "901078ff7ba798c783e5618769cc0039392ccc25b7a348318c96463f604aef45",
+  "sourceDimensions": [
+    1024,
+    1536
+  ],
+  "selectedFile": "widgets/purple-prairie-clover.3b30d543.png",
+  "sha256": "3b30d543e4d967a487c0d17957a22e471dfebcc93fc791aac9571afd206d8609",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "western-meadowlark",
+      "file": "sources/western-meadowlark.e6a9279f.png",
+      "sha256": "e6a9279f10672d3c1705094b0910f686b6d5ab20bdffb52ed30c5956f952633c",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/purple-prairie-clover-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/purple-prairie-clover-exact-tool-result.json"
+}

@@ -1,0 +1,19 @@
+{
+  "themeId": "ferroflora",
+  "recipe": [
+    "seal",
+    "ferrofloraDrifter",
+    "ferrofloraDrops",
+    "rays",
+    "sword",
+    "trail",
+    "ledger"
+  ],
+  "art": {
+    "ferrofloraDrifter": "M 9 75 Q 28 58 32 28 L 39 43 Q 52 24 84 12 L 64 38 L 94 34 L 74 52 L 90 54 L 64 64 Q 54 74 52 94 L 42 76 L 19 88 L 27 68 Z M 29 59 Q 52 52 62 42 M 37 65 Q 51 57 65 58 M 32 28 L 29 17 L 39 34 M 66 24 L 65 14 L 72 21 M 69 69 L 79 64 L 75 73",
+    "ferrofloraDrops": "M 46 11 C 33 27 30 35 44 39 C 57 39 57 24 46 11 Z M 67 42 C 57 52 56 60 66 61 C 76 60 75 50 67 42 Z M 40 63 C 31 74 32 82 40 82 C 49 82 48 72 40 63 Z M 61 86 C 55 91 56 97 62 97 C 68 96 67 91 61 86 Z"
+  },
+  "direction": "Magnetic membrane and suspended droplets; rippled seal dial, paired ray markers and sword hands, bead-trail charge gauge and ledger calendar. No static live values.",
+  "ornament": "M 19 74 Q 32 59 35 34 L 45 45 Q 57 28 80 21 L 65 46 L 84 44 L 65 61 Q 56 69 55 83 M 37 65 Q 52 60 62 50",
+  "ornamentDirection": "A single magnetic meniscus and a few restrained teeth; no miniature organism."
+}

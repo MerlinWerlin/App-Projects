@@ -1,0 +1,18 @@
+{
+  "id": "screw-fog-press",
+  "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject SCREW FOG PRESS: a tall narrow open-frame mechanical press with two heavy petrol uprights on a four-foot ivory base and one large vertical threaded screw descending from a broad tangerine T-handle. The screw compresses four alternating cobalt and ivory absorbent plates into a shallow orange catch trough. A single deliberate ribbon of pale blue FOG is squeezed out from BETWEEN THE PLATES, descends through a curved chute on the right into a little open receiving canister. A simple big flywheel stands at lower left connected to a short shaft. Clear open negative space inside frame, readable screw and stacked plates, recognisable useful press construction, no furnace, wheels/crawler, drum, clouds or humanoid. Flat hand-painted wax pigment and scraped ridges across every beam/plate, not a metal product photograph. Whole T-handle, fog ribbon, canister and all feet visible, overall subject central65% with roomy true alpha margin.",
+  "tool": "built-in image_gen",
+  "source": "sources/screw-fog-press.70283724.png",
+  "sourceSha256": "70283724a4283a66d2574771b082b46a03c6850aa8e9d9960711104f3f1a482b",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/screw-fog-press.b92198ab.png",
+  "sha256": "b92198ab3a82a94f16fa2f474dfa2c3a1cf0659018accc6f4e2cd346a044ba90",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

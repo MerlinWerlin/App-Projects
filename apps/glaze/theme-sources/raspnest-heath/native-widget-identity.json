@@ -1,0 +1,19 @@
+{
+  "themeId": "raspnest-heath",
+  "recipe": [
+    "shield",
+    "raspnestEchidna",
+    "raspnestShavings",
+    "pins",
+    "leaf",
+    "tiles",
+    "folio"
+  ],
+  "art": {
+    "raspnestEchidna": "M 12 65 L 8 54 L 20 57 L 13 40 L 29 47 L 28 27 L 43 39 L 48 19 L 57 36 L 69 23 L 71 40 L 84 34 L 81 51 Q 88 54 92 62 L 99 71 Q 96 76 88 72 L 79 67 Q 75 79 61 81 L 61 90 L 50 90 L 50 81 L 35 81 L 30 91 L 20 91 L 25 77 Q 14 75 12 65 Z M 83 60 Q 85 57 87 60 Q 86 63 83 60 Z",
+    "raspnestShavings": "M 22 58 L 30 66 L 24 48 M 35 43 L 46 62 L 42 33 M 53 37 L 57 60 L 63 39 M 68 48 L 64 66 L 76 53 M 29 71 L 48 70 M 52 73 L 69 68 M 34 52 L 47 61 M 66 32 L 67 43"
+  },
+  "direction": "A radiating sliver-backed echidna and loose wood-grain splinters connect the real heathland sculptures to live native Clock, Battery and Calendar.",
+  "ornament": "M 28 77 L 16 26 L 40 61 Z M 47 79 L 44 16 L 60 58 Z M 64 76 L 82 30 L 76 66 Z M 25 40 L 34 65 M 49 34 L 53 66 M 75 46 L 69 66",
+  "ornamentDirection": "Three dry pointed wood slivers with short grain strokes form one compact material fragment; full echidna and grain art stay in larger hero layouts."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ibex-bellflower",
+  "prompt": "VANELEAF HIGHLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical artisanal CUT-AND-LAID FEATHER MOSAIC: natural form assembled as a THIN FLAT mosaic from individually CLIPPED FEATHER-VANE PIECES, each piece has a narrow subtle central shaft, actual fine parallel BARBS running diagonally on each side, soft fragile clipped feather edge and slight overlapping edge lift. Vane pieces laid as purposefully shaped panels to construct flora/fauna, not an animal with random fluffy feathers glued over its skin. Quiet sage #A9BFA6, oyster cream #EEE2CC, pale apricot #D89A79, slate blue #6A818A and restrained dark ink #342D3F. Matte feather fibres with gentle edge sheen only; recognisable natural silhouette first and feather detail second. Clearly flat featherwork craft, not thread/lace/knots/pins, woven fabric/embroidery, shaved wood, quilling strips, stuffed felt/fluffy pile, smooth3D plastic/clay or optical/scientific images. Major spaces and openings truly transparent, no supporting backing. Entire complete highland organism/group SMALL central64%, at least18% true alpha margins EVERY side, no clipped horn/tail/antenna/leaf. No feathers floating loose around subject, whole scenery/floor, frame/backing sheet/rectangle/halo/glow/shadow, text/lettering/numbers, clocks/calendar/battery/weather values, UI, logo or signature. No machines, clothing or human character. Subject IBEX BELLFLOWER: one recognisable natural adult IBEX in calm standing three-quarter side profile faces right. TWO long ribbed horns sweep in separate elegant backward arcs, small pointed ears, narrow natural muzzle/beard, short tail, exactly FOUR distinct jointed legs ending in coherent paired hooves, all4feet visible. The whole body including horns/legs is a THIN FLAT cut-feather mosaic, broad clipped feather-vane panels aligned to the animal shape, visible central shafts and fine parallel barbs on each panel, soft sage/cream/apricot/slate colours, not fur-coated3Danimal. One small BELLFLOWER SPRIG with3drooping blue bell blossoms and two narrow sage leaves rises beside front feet, sparse and separate, no rock/terrain/pedestal. Strong broad-horned asymmetric silhouette, full BOTH horn tips/ears, muzzle, tail, ALL4hooves and every blossom/leaf tip complete within actual generous alpha margin. No dangling feathers around subject.",
+  "tool": "built-in image_gen",
+  "source": "sources/ibex-bellflower.759979a9.png",
+  "sourceSha256": "759979a9e7e6e265ee12fb1fedf916aff470f14ee38c09e21e4e7f0a05d5c053",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/ibex-bellflower.715f4342.png",
+  "sha256": "715f43428f9ac5aa499c6263a5b19f61685229677151d2939d9e32a6554aeaa2",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

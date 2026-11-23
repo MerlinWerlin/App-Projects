@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "Make ONE astonishingly strange original 1290:2796 portrait wallpaper as a traditional hand-pulled MEZZOTINT print, entirely flat ink on warm ecru cotton-rag paper. The main lower-half image MUST BE a visibly impossible INK MONOLITH, not scenery: a large very black stepped vertical rectangular mass is cut open by THREE huge sharp white square apertures that interlock at right angles, an enormous white curled paper-like bridge passes THROUGH one aperture and comes out upside down, two small detached black cubes float inside the white void. At its base the mass dissolves into narrow velvety ink tendrils; a single restrained vermilion chine-colle rectangle is wedged inside an aperture, no more colored areas. Brutally clear bold abstract silhouette, weird topology obvious even small. The medium is scraped and burnished copperplate mezzotint: velvety carbon black, granular rocked burr stipple, scraped white luminous transitions, warm paper fibers, faint plate impression; no crosshatching, no glossy3D material, no real architecture, no organic living substance. Upper45% is quiet blank ivory paper #F1E8D5 with subtle fibers for icons; lower55% dense print composition with monolith anchored slightly right of centre, generous surrounding paper. Black #1E2023 and tiny vermilion #BB4937 only. No hills, dunes, ordinary landscape, trees, animals, household objects, signatures, handwriting, edition numerals, text, clocks, dates, batteries, logos, UI, mockup or border. One continuous artwork.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.ab257e16.png",
+  "sourceSha256": "ab257e162929473e4dbd4ffc8a36c0226d605a9d6f42eaf61b7669a10921e806",
+  "sourceDimensions": [
+    851,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "91c798ecf3198cded07e71677b285caa933b89e36ed2d130565f9591873ecc65",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

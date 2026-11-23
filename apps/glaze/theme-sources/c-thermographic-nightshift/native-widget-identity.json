@@ -1,0 +1,22 @@
+{
+  "theme": "c-thermographic-nightshift",
+  "recipe": [
+    "pebble",
+    "cThermoGardener",
+    "cThermoMeltwing",
+    "rays",
+    "leaf",
+    "basin",
+    "folio"
+  ],
+  "art": {
+    "cThermoGardener": "M 25 38 Q 24 27 35 13 Q 50 2 64 14 L 77 38 Q 51 47 25 38 Z M 37 39 Q 36 56 49 60 Q 64 56 65 39 M 43 45 L 45 45 M 56 45 L 58 45 M 30 49 Q 20 57 24 72 L 39 80 M 68 49 Q 81 60 72 75 L 59 80 M 34 59 L 30 82 L 39 87 L 35 97 L 19 97 M 64 60 L 70 83 L 60 88 L 68 97 L 82 97 M 38 80 Q 48 92 61 79 M 48 83 Q 35 74 35 64 Q 48 67 50 77 Q 52 65 66 63 Q 65 77 52 83 M 44 72 Q 49 56 55 71 M 28 57 Q 14 51 17 39 Q 28 44 30 52",
+    "cThermoMeltwing": "M 42 49 Q 25 13 5 22 Q 6 46 18 68 Q 30 59 42 57 M 58 49 Q 75 13 95 22 Q 94 46 82 68 Q 70 59 58 57 M 42 45 Q 38 27 48 24 L 61 31 L 54 38 Q 64 57 53 70 L 44 69 Q 33 60 42 45 Z M 49 30 L 50 30 M 42 66 L 32 84 L 22 88 L 38 88 M 50 70 L 49 90 L 41 95 L 57 95 M 57 66 L 69 83 L 79 88 L 63 89 M 43 68 Q 29 84 11 75 Q 14 92 32 94 L 24 99 M 17 28 Q 31 37 39 50 M 83 28 Q 69 37 61 50"
+  },
+  "direction": "Tangible infrared cultivation world: hooded seed gardener and three-legged meltwing. Pebble-contoured dial with ray markers and leaf hands, warm basin charge gauge and folio calendar.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms. Raster artwork has no readings.",
+  "registryIntegration": "Coordinator integrates original data-only native identity descriptor.",
+  "ornament": "M 50 73 Q 22 63 21 28 Q 43 29 50 55 Q 57 29 79 28 Q 78 63 50 73 Z M 50 56 Q 34 36 50 20 Q 66 36 50 56 Z M 50 73 L 50 83 M 15 67 Q 50 90 85 67 M 11 79 Q 50 100 89 79",
+  "ornamentDirection": "one open warm seed pod with two quiet heat arcs.",
+  "ornamentProvenance": "Original authored 100x100 SVG path, 22 November 2026, responding to Jared corner-composition steering. Existing native hero paths and all raster assets unchanged."
+}

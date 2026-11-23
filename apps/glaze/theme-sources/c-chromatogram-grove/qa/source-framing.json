@@ -1,0 +1,100 @@
+{
+  "review": "All five unmodified1254square raw originals are whole at alpha16/96, framealpha1. Primrose stem ends18px above raw frame; entire source uniformly contained900within1024 restores breathing room without cropping or stretching. Snail/leaf raw sides are tight but whole; all actual encoded alpha16 pixels inside rounded mask. Four fixed exterior probes are0 except primrose bottom probe178, which lies on its intact paper stem and is not an exterior test. No creative/code alpha edits. Single original opaque852x1846 wallpaper structurally resized1290x2796; all three actual phone crops retain all five subjects/endpoints, with actual fuller/taller placement disclosed.",
+  "assets": [
+    {
+      "id": "ginkgo-chromatogram",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          38,
+          110,
+          1215,
+          1199
+        ],
+        "96": [
+          39,
+          110,
+          1215,
+          1199
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "butterfly-chromatogram",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          75,
+          195,
+          1181,
+          1085
+        ],
+        "96": [
+          75,
+          195,
+          1181,
+          1085
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "kingfisher-chromatogram",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          164,
+          152,
+          1150,
+          1132
+        ],
+        "96": [
+          165,
+          153,
+          1149,
+          1132
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "snail-chromatogram",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          40,
+          383,
+          1219,
+          937
+        ],
+        "96": [
+          40,
+          384,
+          1218,
+          936
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "primrose-chromatogram",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          172,
+          26,
+          1074,
+          1236
+        ],
+        "96": [
+          173,
+          27,
+          1073,
+          1236
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

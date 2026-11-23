@@ -1,0 +1,16 @@
+{
+  "name": "Fraunhofer Masquerade",
+  "mood": "A small inhabited light-carnival of diffraction creatures, homes and machines.",
+  "tags": [
+    "diffraction",
+    "light-carnival",
+    "invented-world",
+    "tangible-subjects"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native vector paths. Imaginary optical experiments.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. GLAZE FRAUNHOFER MASQUERADE: a tangible, inhabited nocturnal carnival world expressed entirely through photographic coherent-laser diffraction intensity. FIRST make the subject immediately recognizable as a creature, building, vehicle or machine with clear anatomy, architecture and purpose. THEN resolve its whole form into finely striped sinc lobes, nested Airy fringes, dark optical zeros and aligned luminous diffraction orders. Continuous magenta-pink and ice-cyan light fields with soft bone-white intensity peaks, deep violet voids. Rich microscopic optical fringes, no ordinary painted surface or generic3D render, no clay, metal, glass, rainbow photoelastic sheet or physical craft. Subject is specific and readable, not an abstract lobe diagram. No text, labels, numerals, clocks, hands on dials, dates, readings, UI, brand or watermark. Imaginary world; not actual scientific measurement.",
+  "addedAt": "2026-11-22",
+  "category": "Abstract & Art"
+}

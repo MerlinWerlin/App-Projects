@@ -1,0 +1,26 @@
+{
+  "id": "sailfin-ray",
+  "label": "Sailfin Ray",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One independent square transparent Glaze artwork. PELLICLE SHOAL, fictional sea organisms sculpted entirely from WET BACTERIAL-CELLULOSE PELLICLES. Our own reference sea-dragon supplies only the physical material and soft lighting; create a different subject. Very thin cloudy translucent amber/tea/ivory bio-fibre membranes, densely visible fine cellulose fibrils, irregular torn fibrous edges, doubled opaque fold lips and a few water beads at seams. Diffuse light through cloudy fibre with loose folded laminae and genuine gaps, convincing macro craft photograph. No smooth solid core, glass, glossy resin, gelatin candy, plastic, ordinary animal skin, woven fabric, wood shavings, paper quilling, metal or thread. Entire subject inside central70% with generous true transparent margins; every projecting arm, fin or tail whole. No environment, exterior glow, external bubbles, floor, cast shadow, backing panel, frame, typography, UI or clock/battery/calendar symbols. One readable singular silhouette at85px, no sheet/collage. SUBJECT: one whole SAILFIN RAY seen in a gently tilted three-quarter overhead view. Broad diamond-shaped paired pectoral wings, small rounded central head with two tiny dark eyes and a low central ridge, one long slender curling tail extending below and around right. The left and right wings are broad open wet cellulose sails with visibly cloudy fibrous thin panels, crumpled radiating fold ribs, irregular softly fringed edges and slightly raised tips. Main body narrow and folded, not a smooth solid stingray model. No extra fins, not a bat; no seahorse, shell or elephant ears. Keep both wing tips and the complete long tail comfortably inside generous transparent margins.",
+  "source": "sources/sailfin-ray.3a9d135cc161.png",
+  "sourceSha256": "3a9d135cc16117f775ebbb02cc0433e1808405c8e2aa7fd05fc66737c28f7e6e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/sailfin-ray.aa94b502aa5a.png",
+  "sha256": "aa94b502aa5ae28bce4db0e526f52fbc4ad8eea14b622df49f0c488ff0498661",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Entire original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/seadragon.8b72684483bd.png",
+      "sha256": "8b72684483bdc2c68893520aa5c201a75b9c57ffee7c4ab2842c54e326512c4a",
+      "purpose": "Own first artwork supplies wet fibrous membrane material and lighting only; distinct new subject."
+    }
+  ]
+}

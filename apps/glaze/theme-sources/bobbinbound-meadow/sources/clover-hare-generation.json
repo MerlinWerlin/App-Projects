@@ -1,0 +1,18 @@
+{
+  "id": "clover-hare",
+  "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure NATURE artwork made as handmade deep-plum LINEN LACE. Actual recognisable flora/fauna/habitat, no buildings, machines or vehicles. Paired twisted and braided thread paths, thick bundled outer contour cords, small knotted joins, scalloped picot edge loops, open diamond grounds and large readable negative openings, matte visible linen fibres and tiny hand tension changes. Dark plum #332536, soft thread highlights #705568, sparse undyed ivory #F0DEC2 bindings. All natural bodies are FLAT UNPADDED handworked lace depictions, not actual leaf veins/coral, metal wire, grown living material, crochet/amigurumi/plush, cut-applique fabric fill, paper or CGI3D toy. Natural anatomy and strong whole silhouette; thread detail subordinate to readable shape. Entire subject in central65%, at least16% genuine transparent alpha on every side. All openings transparent, no apricot/white backing, rectangular textile patch, floor, halo/glow/shadow, border/frame, writing/letters/numerals, clock/gauge/time/date/battery/weather values, logo or UI. Subject CLOVER HARE: one naturally proportioned ADULT WILD HARE crouched alert in three-quarter RIGHT profile, long lean hindquarters, narrow muzzle, two very long ears with one upright and one angled back. Both forepaws visible together under chest, one long folded hind foot extends slightly forward and tiny tail remains visible at left. Calm dark eye is one small thread knot, no cartoon oversized eye, smile, clothes or accessories. Body contour is thick paired plum linen braid around an open diamond-lace flank, lean anatomy retained rather than round stuffed-bunny body; inner ears and underside have restrained ivory thread bindings. THREE broad clover leaves and two small clover flower heads grow beside the front paws, linked by one low curved stem, no grass mat or scenery. Strong low alert animal silhouette with tall asymmetrical ears, actual meadow wildlife. Entire ear tips, muzzle, whisker loops, tail, all paws and clover leaves/flowers inside generous alpha margins. Clearly flat lace depiction, not real fur, plush, knitted rabbit toy or natural skeleton specimen.",
+  "tool": "built-in image_gen",
+  "source": "sources/clover-hare.10f94034.png",
+  "sourceSha256": "10f94034e3156f3b1d656be0dc0adc67322a73cef991293dfd310ce84bb2b092",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/clover-hare.f259aa68.png",
+  "sha256": "f259aa6810f289a3fc676f7fa8df6708ed67d15de7fec500fea3ae50f796d785",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

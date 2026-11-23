@@ -1,0 +1,273 @@
+{
+  "id": "c-carbonfilm-strata",
+  "packVersion": 2,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "fern-compression",
+    "dragonfly-compression",
+    "ginkgo-compression",
+    "fish-compression",
+    "palm-compression"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.c8638614.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 11068,
+    "sha256": "c8638614ef4c90f3c8baf7eef1208152269632bab22d7f21d80ad45c470a1b97",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "0b8233b631cc1898a89fe6fcc4dc398f3e100099f95944ccb85e6fc25639ed57"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed all five full generated/selected sources and all actual encoded85px artworks together. Different complete natural forms: arcing pinnate fern, four-wing dragonfly/segmented body/six legs, two connected ginkgo fans, long lateral fish/full forked tail/fins and broad radial palm fan. Flat dark residue and shallow impressions are integral to fine-grained stone; visible thin cleavage edges and different irregular flake outlines distinguish the material from ink paper and raised limestone sculpture. First fern/full170/85/six-neighbor gate passed before four independent generations. Four selected first-generation outputs; fish alone received one own-image exterior background extraction. No code artwork editing or alpha cleanup.",
+    "wallpaper": "Viewed all three actual encoded1290x2796,1179x2556,750x1334 phone crops: enlarged taller one continuous shale face with all five whole fossils and complete stone boundaries. Generator reached roughly97percent width, above requested75\u201390percent. No extra pullback: no actual subject crop. Exact previous source, normalized wallpaper, prompt and own-reference history retained.",
+    "native": "Viewed all nine refreshed actual current coordinator SVG native layouts with FACET contour. Whole fern/lamina hero/detail and quiet small fern corner byte-identical. Root owns shared same-pointsize/bold-today and independent-marker cross-platform qualification.",
+    "roundedArtworkCorners": "All31Cthemes/155actual encoded artworks retain every visible alpha16 pixel on actual app gradient/Fit6percent inset/conservative20percent rounded mask. C31 entire selected originals uniformly contained900within1024, no cropped stone or organism endpoints; inspected its own five rounded tiles with quiet matching corners. Layout simulation, not installed-device proof."
+  },
+  "ownerSteeringReview": "Less abstract recognizable real Nature: familiar whole plant/insect/fish forms, tactile thin laminated stone and flat dark fossil impressions. Quiet backgrounds around complete natural artifacts and a small natural fern sprig in native corners. Artistic fossil interpretation, not authentic specimens or scientific evidence.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-carbonfilm-strata",
+    "backgroundStops": [
+      "#B8B2A0",
+      "#DED6C2"
+    ],
+    "pieces": [
+      {
+        "id": "fern-compression",
+        "sha256": "72cd9fcae865650d8bd44fee590931a4d448a822480033827fd7a957f8a88d4a",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "dragonfly-compression",
+        "sha256": "79eb0777611a4b5c4e98710d854c9c4f3d6f74d6f97b250d179470e53a8a9251",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "ginkgo-compression",
+        "sha256": "385ce40268093eea963d1dab876ea72b348b875a9a85fddba8b82be193448b7f",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "fish-compression",
+        "sha256": "ee905c3773e72fe6d66d25545668197bc0f7b0914634dbe084202876a461f024",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "palm-compression",
+        "sha256": "7e690bb0ef14a6eb6faea8193a5986a2c572be916cbb6cc2cfb5eae9a21bfed6",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 15,
+  "wallpaperDistinctReferenceImages": 7,
+  "artworkOwnStudyReferenceHashesMatched": 1,
+  "packTestEvidence": "Actual offline builder v2:9assets/1316262bytes/minApp1.0.44. Actual parsers5art/9changingnative,ornament roundtrip,battery null0/100,fullsource+encodeddecode/dimensions/hashes,6selected/noorphans,15own WP referenceuses/7distinct and3unselected histories verified. All5art records/raws/normalized/prompts unchanged. FACET/native9 and3actualphonecrops viewed; root owns shared today equality/marker/Swift qualification.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "wholeOriginalContainment": {
+    "targetSquare": 1024,
+    "containLimit": 900,
+    "crop": false,
+    "stretch": false,
+    "creativeCodeEditing": false,
+    "rawAlphaPreserved": true
+  },
+  "unselectedHistoryHashesMatched": 3,
+  "scope": "Actual source/encoded pack validation, current coordinator SVG previews and rounded-layout simulation. No installed-device or Apple New York claim.",
+  "secondAuditSourceCorrection": {
+    "request": "Second audit: FACET for split laminated shale; enlarged/recomposed exact own wallpaper; preserve five artworks and native art paths.",
+    "beforeFace": "square",
+    "afterFace": "facet",
+    "protectedFileCount": 20,
+    "protectedHashes": {
+      "meta.json": "8b058c7276ffadbeeef71a92233435f7451016c3ceffec9f9bd23493c765daf3",
+      "palette.json": "50e17ac206eb6991499b8efc42055cce2bbda69a3b10085e8267083023c34422",
+      "intermediate-first-sample/fern-compression-pending.95119f072386.png": "95119f072386a473744acd3a827cacd641ca9849829812d0d5ab0be59132e26b",
+      "intermediate-first-sample/first-generation.json": "77b40adb6bed9ceae091aaa438949df16781368b5fcaf49aaf5d62af1e0fba3c",
+      "intermediate-fish-background-study/first-generation.json": "55dc1dcfae61b84bc19ed5513d74993bfae6685cf7d839089f31727f69d04160",
+      "intermediate-fish-background-study/fish-background-unselected.42057143cbe7.png": "42057143cbe7147062a6d34afe80084e24f06284080ab253b6322c8a433603dc",
+      "intermediate-wallpaper-framing-study/first-generation.json": "3201cf9160aed405035602fee5b9a53efd6c71a3c206e95360751fe367efb55f",
+      "intermediate-wallpaper-framing-study/first-wide-shelf-unselected.def603d46b4f.png": "def603d46b4fda7992d329db14d8e52c29e7c6cbc4b6551268954c205b9c5b3d",
+      "sources/dragonfly-compression.b7d4db160021.png": "b7d4db160021778566accee68d7c7733b782beffc789e50153dab2cbcd74efc4",
+      "sources/fern-compression.95119f072386.png": "95119f072386a473744acd3a827cacd641ca9849829812d0d5ab0be59132e26b",
+      "sources/fish-compression.8acc870d59ad.png": "8acc870d59adaa88887105dda4e684ee3a5eb6ebd2bdcc5c4359f8c3c135e470",
+      "sources/ginkgo-compression.1ccac4e9dd61.png": "1ccac4e9dd61b2e0ef6d5710c76fe1d3beefd1029e128d37239131587809b3b3",
+      "sources/palm-compression.1f4cacc2329c.png": "1f4cacc2329c2177bff5113d2cd90c3bf3208fea91c1e4104bc70758182b0195",
+      "widgets/dragonfly-compression.c8cffa4ac0d8.png": "c8cffa4ac0d8780680ba509f02dec9240ac68e36bc044763e3fb501ce6a0b458",
+      "widgets/fern-compression.aa5679e793a4.png": "aa5679e793a4de7340711244f7b8b9eff434399472b4be38ffea7cda8d302a7f",
+      "widgets/fish-compression.3e5b11c9bff7.png": "3e5b11c9bff7a83311addc5ec7a5109e4bd212466c3d61a2a8fb926ee33179d0",
+      "widgets/ginkgo-compression.acc5e3e539d5.png": "acc5e3e539d5f0c58ef38a5e33c65a001602f36c6df8876902a1fd668bac35fd",
+      "widgets/palm-compression.4b57d25629ef.png": "4b57d25629ef94bfb050cf346a85a18cd8d1c4e51a32f9c01ae66ea7c516c7a1",
+      "widgets/README.md": "d022e896c16134f82c4157ca021d0009313c9f5a6504fcca91cd813c513c1ae2",
+      "widgets/widget-options.json": "a83690245cfbb7a029fc297d703173bff93956c43a6887190d4996f80f3f397d"
+    },
+    "allProtectedHashesUnchanged": true,
+    "allFiveArtAssetRecordsAndPromptEntriesUnchanged": true,
+    "recipeOtherSixEntriesUnchanged": true,
+    "heroDetailOrnamentUnchanged": true,
+    "wallpaper": {
+      "editOutputs": 1,
+      "sourceSha256": "9199e849bc0382dc07a10ee480cb5bda4526280c9133e9bb1b8ead07795e2b7c",
+      "normalizedSha256": "4346d045f9c60b54251ee716e6e114a39859dede4a917ad4d775bf954e3f4106",
+      "previousRawSha256": "64864b230ffdd665217385d71fbaaed5640b88b85cbb67082799066fb76a213a",
+      "previousNormalizedSha256": "95e92d323391b81223d727a8df4331ddc3c27e80fc833dc4c07aea49e12eedfd",
+      "previousSourceAndPromptAndCompleteReferenceHistoryPreserved": true,
+      "ownReferenceUsesAcrossThreeStages": 15,
+      "distinctOwnReferenceImages": 7,
+      "unselectedHistoriesVerified": 3,
+      "actualExtentReview": "Generator produced roughly97percent frame width and44percent height, exceeding the requested75\u201390percent width. All fossil endpoints and whole stone remain inside all three actual encoded phone crops. No further pullback performed.",
+      "phoneCrops": [
+        {
+          "encodedSize": [
+            1290,
+            2796
+          ],
+          "rawWindow": [
+            0.152,
+            0.0,
+            851.848,
+            1846.0
+          ],
+          "wholeFiveSubjectsVisuallyVerified": true,
+          "stoneEdgesInside": true
+        },
+        {
+          "encodedSize": [
+            1179,
+            2556
+          ],
+          "rawWindow": [
+            0.25,
+            0.0,
+            851.75,
+            1846.0
+          ],
+          "wholeFiveSubjectsVisuallyVerified": true,
+          "stoneEdgesInside": true
+        },
+        {
+          "encodedSize": [
+            750,
+            1334
+          ],
+          "rawWindow": [
+            0.0,
+            165.288,
+            852.0,
+            1680.712
+          ],
+          "wholeFiveSubjectsVisuallyVerified": true,
+          "stoneEdgesInside": true
+        }
+      ]
+    },
+    "allNineActualNativePreviewsViewed": true,
+    "scope": "Source/encoded full decode and current coordinator SVG scratch previews; no shared renderer edits, Apple New York or installed-device claim. Point-size equality, bold today and independent marker checks coordinator-owned."
+  }
+}

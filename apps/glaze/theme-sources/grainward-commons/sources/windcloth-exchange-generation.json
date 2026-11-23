@@ -1,0 +1,18 @@
+{
+  "id": "windcloth-exchange",
+  "prompt": "GRAINWARD COMMONS for Glaze. ONE original 1024x1024 pure artwork of a tangible invented community building. Physical SIFTED COLOURED-SAND PAINTING: dense opaque mineral grains poured through hand-cut stencils onto flat binder, visibly granular fields, crunchy little sand ridges along contours, crisp masked edges, selectively raked shallow seam lines, tiny loose grain spills, dry matte finish. All forms made from FLAT coloured-grain areas and raked drawing; no sand sculpture, photoreal stone/3D architecture model, smooth CGI, oil paint, textile, sacred motifs or mandala. Dark plum #281C32, mineral lavender #8A77AD, saffron #D49A52, grain ivory #E7D8B1 only. Charming original architectural illustration with understandable access, structure and function, strong readable silhouette and open negative spaces. Complete building occupies central65% of square, at least16% genuine transparent alpha margin on every side, transparent through open archways. No background board, ground rectangle, frame, shadows/platform outside building, people, text, signs, letters, numbers, UI, clock/date/battery/weather readings or logos. Subject WINDCLOTH EXCHANGE: a low, very WIDE open marketplace pavilion on six splayed lavender posts. Three huge asymmetrical triangular ivory-and-saffron tensioned cloth roofs fan in DIFFERENT DIRECTIONS from two central tall spars, one high left-pointing sail, one low broad forward canopy and one narrow upright right sail. Open voids between canopies and visible crossed suspension cords explain the structure. Under the roofs are two long exchange counters with five neatly folded BLANK woven bundles, and a single short central stair. No enclosing walls, tower, conventional house roof, ships, bath pools or bridge. Clear airy zigzag angular silhouette and useful shade/wind-catching architecture, not umbrella collection or generic tent. Cloth/counters/posts are all depicted as flat stencil-poured SAND pigment, with raked seam-lines suggesting tension, not actual photographic fabric. Whole sail tips, cords, posts and stair fully inside generous alpha margin; no surrounding ground rectangle.",
+  "tool": "built-in image_gen",
+  "source": "sources/windcloth-exchange.cfd1c064.png",
+  "sourceSha256": "cfd1c0649f24d63bcd98f02bf6eb109dcdcc13e29d0af1fb79c7bd4cc5824720",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/windcloth-exchange.f5e94797.png",
+  "sha256": "f5e947973e4a06a4ff05961acd86cf2f160f09c1e58f18a86eaf1538f6e966df",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Schlieren Paradox",
+  "mood": "Invisible shockfronts caught as crisp refraction shadows.",
+  "tags": [
+    "schlieren",
+    "shadowgraph",
+    "wavefront",
+    "experimental"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native vector paths. Imaginary density-gradient events.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. GLAZE SCHLIEREN PARADOX. STRICT MEDIUM: flat monochrome high-speed schlieren wind-tunnel exposure, optical density-gradient measurement image. Photographic black shock boundaries, milky white rarefaction zones and finely speckled grey turbulence in invisible air. Slight amber edge dispersion ONLY. Grainy planar scientific exposure, sharp shock cones and irregular ruffled wavefronts with diffuse low-contrast internal vortices. Absolutely NO 3D object, thickness, layered solid strips, stacked rings, metallic rim, bronze, gold, material, shiny surface, highlights, reflections, embossing, ribbons, sculpture, sketch, printmaking, engraving, rainbow, particle tracks or sparkles. No labels, text, numbers, axes, UI, fixed values, logo or watermark. Imagined optical events, not actual scientific records.",
+  "addedAt": "2026-11-22",
+  "category": "Abstract & Art"
+}

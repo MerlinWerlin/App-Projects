@@ -1,0 +1,34 @@
+{
+  "selected": false,
+  "sourceImage": "intermediate-wallpaper-framing-study/first-close-scene.bcac024d76db.png",
+  "sourceSha256": "bcac024d76dba84f4002937f8f979a7a821da2106ed53eed0e275a0720ec68ec",
+  "prompt": "Use case: recognizable real nature artwork. GLAZE PALELEAF THICKET. ONE familiar natural woodland subject with actual real anatomy, photographed in a REFLECTED NEAR-INFRARED WHITE-FOLIAGE image language. Healthy actual leaf tissue appears bright IVORY/PALE SILVER in this infrared-inspired photographic interpretation, with full continuous natural surfaces, real folds and fine veins. Woody stems and seeds remain contrasting neutral charcoal/soft brown-grey; animal fur/feathers/wings use natural continuous silver/graphite tones with clear real texture and dark ordinary eyes. Very restrained cool/warm split tone, otherwise almost monochrome. Crisp calm reflected-light photographic detail, luminous pale foliage INSIDE its actual boundaries, moderate natural contrast and real surface modelling. Foliage is bright because of the photographic spectral treatment, not snow/frost/fungus/white paint or a coating. This is reflected-light photography, NOT emitted-heat thermography, false-colour heat blobs, broad hyperspectral maps, data cells or scientific diagrams. Real subjects retain familiar silhouettes and natural tissue. Not electron micrograph surface pores, paired optical phase edge offsets, X-ray skeletons, abstract organisms, white moss topiary, clay/glass/plastic sculptures, metal, craft, ink illustration, engraving, coarse grain, diffraction bands, neon, fluorescence, magical aura or artificial external glow. No text, labels, scale bars, measurements, clock, reading, UI, watermark or logo. Asset:ONE opaque portrait phone wallpaper1290x2796. A coherent real woodland-edge thicket in reflected infrared-inspired photography: exact pale hawthorn sprig/four haws, one complete red squirrel/hazel twig/nut, one wood-sorrel sprig, one song thrush onhawthorn twig, one comma butterfly onleaf. Actual foliage/grass bright pale ivory/silver with fine real veins, dark muted twigs/berries, continuous neutral silver/graphite fur/feather/wing textures. One squirrel,one bird,one butterfly only;no other fauna. Quiet defocused cool slate-blue woodland fills upper43percent, bottom20percent soft low-contrast pale grass/woodlandfloor. All FIVE whole focal groups insidehorizontal15to85percent andvertical48to77percent, generous margins around every lobe, thorn, tail, beak, foot, wing and antenna. Natural connected habitat, not cutout collage or separate scene circles. No moss-body sculpture, frost, snow, ice, glass, thermal rainbow, scientific maps, fantasy light, stars, text, UI, frame or readings. Exact own identity reference order: IMAGE1=hawthorn sprig withTHREE actual pale lobedleaves,FOUR darkhaws,one thorn andwoodytwig;IMAGE2=ONE complete real squirrel withtuftedears,longbushycurvedtail,two paws holdingONEhazelnut,two hindfeet onshorttwig andONEpalehazelleaf;IMAGE3=wood-sorrel withTHREE heart-shapedleaflets,smallfoldedleaf andoneshortstem;IMAGE4=ONE complete songthrush withpalespottedbreast,fulltail/twofeet,shorttwig andTWO palelobedleaves;IMAGE5=ONE whole commabutterfly withnaturalraggedscallopedwingmargins,antennae/legs andONEwholepalehawthornleaf/stem. Preserve these exact familiar real anatomies andnatural tissue details inone shared photographic habitat. NO added animals. Foliage is smooth continuous pale ivory/silver fromreflected-infrared interpretation,notfrost/ice/snow/crystals/paint/coating. Animals retain natural neutral silver/graphite fur/feather/wings,notglowing ortranslucent models. Keep groups SMALL withbreathingroom. Suggested safe layout:hawthorn rearleft x18to34percent/y49to73percent;squirrel centre x36to61percent/y48to75percent;songthrush rearright x65to81percent/y52to74percent;sorrel frontleft x27to42percent/y66to77percent;butterfly/leaf frontright x54to70percent/y67to77percent. Allcompletegroups staywithin x15to85percent/y48to77percent. Every leaflobe/berry/thorn/branchend,ear/nose/paw/foot/nut/tail,beak/wingtip,antenna/leg/scallop visible andwhole. Natural shorttwigs/plantstems join into a low woodland thicket withpale grass/leaflitter,no floatingcutout collage. Upper43percent quiet defocused coolslate woodland shade/distanttrunks,no brightfocalleaves orbranches;bottom20percent quiet soft lowcontrast woodlandfloor. No datafields,thermalrainbow,SEMpores,phaseedgeemboss,colourgrain,plateborder,text/UI/reading. Portrait1290x2796,opaque.",
+  "internalArtworkReferences": [
+    {
+      "id": "hawthorn-sprig",
+      "sourceImage": "sources/hawthorn-sprig.71aba60e9a46.png",
+      "sha256": "71aba60e9a46942cfd0a69823c1884f33a687076750a52d4f3eec36aea0b992d"
+    },
+    {
+      "id": "red-squirrel-hazel",
+      "sourceImage": "sources/red-squirrel-hazel.5fbd31a2cdf6.png",
+      "sha256": "5fbd31a2cdf6368ce8ff7bb15e814537c5c7f11102a485c21f3ce2ae3a0d7ad3"
+    },
+    {
+      "id": "wood-sorrel",
+      "sourceImage": "sources/wood-sorrel.a3a28657c532.png",
+      "sha256": "a3a28657c53251141410d2a2802c2ef2e849bfa19971f19ef58b666e5f94f89d"
+    },
+    {
+      "id": "song-thrush",
+      "sourceImage": "sources/song-thrush.31c386f63c6c.png",
+      "sha256": "31c386f63c6c55459050cccf9d17791ee645b7d3eb3677eda90786cdff0e1d33"
+    },
+    {
+      "id": "comma-butterfly-leaf",
+      "sourceImage": "sources/comma-butterfly-leaf.8eb8f9da8346.png",
+      "sha256": "8eb8f9da83469bcf221271e7f7a2ea02eeb6cfe5563a6759ba808db03d73772d"
+    }
+  ],
+  "reason": "Exact natural subjects present,buthawthorn too high,bird/outerleaf endpoints near sides andupperbackground has sharpbranches. Pull back fullfocalgroup andquiet upperfield beforeselection."
+}

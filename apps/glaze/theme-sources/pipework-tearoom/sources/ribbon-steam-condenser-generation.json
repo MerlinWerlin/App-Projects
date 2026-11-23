@@ -1,0 +1,23 @@
+{
+  "id": "ribbon-steam-condenser",
+  "prompt": "Edit this same piped royal-icing steam condenser. REMOVE COMPLETELY the pale cream/grey background/backing/shadow/halo behind, around and BETWEEN the three serpentine cooling pipes, tripod legs, braces, valve wheel and receiving basin. Those areas must become TRUE FULLY TRANSPARENT ALPHA with no pale residue, drop shadow, glow or ground. Preserve the exact complete condenser geometry, thin icing ropes and shell-swags, pastel colours, small nozzle joins and brittle edges; do not crop or erase actual icing. All open gaps genuinely empty transparent. The ENTIRE machine including intake lip, left valve, right basin and all feet should be fully contained central70% of square with at least14% real transparent margin. Same subject only, no new props, plaques, text, values or UI. This is a transparent cutout for a dark widget background, not a scene.",
+  "tool": "built-in image_gen",
+  "source": "sources/ribbon-steam-condenser.305fd395.png",
+  "sourceSha256": "305fd3958926820d7dece4dd8c2bfaeb877238294d8e16c6e4bb64b557873c68",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/ribbon-steam-condenser.9f786dea.png",
+  "sha256": "9f786dea7bbc58375b58274118405f85628f5ceb568d68e281bae4b69a87bb0c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/alpha-repair/ribbon-steam-condenser-history.json",
+  "referencedImage": {
+    "file": "qa/alpha-repair/ribbon-steam-condenser.original.d340a18e.png",
+    "sha256": "d340a18e55115e0131a740ad58b2c42a77a08d1bf0764acd2607d8c8f0b9e6fa"
+  }
+}

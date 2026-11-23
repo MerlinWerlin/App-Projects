@@ -1,0 +1,1 @@
+One wallpaper-only correction brings the tapered left bank point inside the canvas. Originalraw/exactinitial3ownreferences and exacteditrequest/result retained. All5standaloneart/native/palette unchanged by hash; finalactualcropreview inparentqa. No standaloneartchange or coordinator/Jaredapproval.

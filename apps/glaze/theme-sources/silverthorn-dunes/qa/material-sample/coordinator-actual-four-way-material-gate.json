@@ -1,0 +1,28 @@
+{
+  "observedNeighbors": [
+    {
+      "label": "Unselected fine hair study",
+      "file": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-daa8d276-992b-4cae-83d7-2cb89b04d33a.png",
+      "sha256": "f8ea23a642fff85bbad36d121c0d76d560a295905c199a849384b4a70ea64590"
+    },
+    {
+      "label": "Revised flush silver / black metal",
+      "file": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-79c343b1-41d9-45bf-a71d-70ae0bcb8dff.png",
+      "sha256": "af76a26e1ae9d326c9814ad5e5c46fa86fbf9f54f89dd0d91137455b4b6d7b44"
+    },
+    {
+      "label": "A11 flat scratchboard hare",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\hare.7326f063231c.png",
+      "sha256": "7326f063231ca7f2e5cbf5dfae7dbda3d7f8b47b664b331322de5b886875fa98"
+    },
+    {
+      "label": "Published Silver Orchard dormouse",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\silver-orchard\\v6\\widget-silver-dormouse.9881d967.webp",
+      "sha256": "9881d967c0cefde3b67cff5d05ab5cd5e9fdcf351fce34ea5126d0b46e207694"
+    }
+  ],
+  "publishedDormouseHashVerified": true,
+  "selectedRevisedSample": "Revised flush silver / black metal",
+  "comparison": "Revised broad silver inlay strips and smooth satin-black body separate physically from A11 flat directional scratches, the unselected dense-hair study and old all-silver hammered dormouse. No neighbor images supplied to generation.",
+  "published": false
+}

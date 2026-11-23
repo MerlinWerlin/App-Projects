@@ -1,0 +1,62 @@
+[
+  {
+    "id": "laughing-kookaburra",
+    "kind": "art",
+    "image": "laughing-kookaburra.411863de.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Laughing Kookaburra"
+  },
+  {
+    "id": "shortbeaked-echidna",
+    "kind": "art",
+    "image": "shortbeaked-echidna.90be83d9.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Shortbeaked Echidna"
+  },
+  {
+    "id": "eucalyptus-gumnuts",
+    "kind": "art",
+    "image": "eucalyptus-gumnuts.7fc98036.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Eucalyptus Gumnuts"
+  },
+  {
+    "id": "frilled-lizard",
+    "kind": "art",
+    "image": "frilled-lizard.4318d8cb.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Frilled Lizard"
+  },
+  {
+    "id": "banksia",
+    "kind": "art",
+    "image": "banksia.1b0ccf83.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Banksia"
+  }
+]

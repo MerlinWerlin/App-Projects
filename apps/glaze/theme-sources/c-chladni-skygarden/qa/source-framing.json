@@ -1,0 +1,100 @@
+{
+  "review": "All5 whole arbor3pod rims/3branches/3rootfeet,tender head/arms/hands/feet/backfin/grip/scoop,grazer4feet/3fins/neck/head/tail,sailer2hulls/2sail lobes/3stabilisers/scoop,and cradle roof/2rooms/walkway/3supports lie inside original alpha16/96 bounds. Edgealpha maximum1. Full originals proportionally contained1024square without cropping,exterior and internodal cells transparent.",
+  "assets": [
+    {
+      "id": "bellpod-arbor",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          41,
+          49,
+          1213,
+          1217
+        ],
+        "96": [
+          42,
+          49,
+          1212,
+          1215
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "orbit-tender",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          146,
+          106,
+          1119,
+          1169
+        ],
+        "96": [
+          146,
+          107,
+          1118,
+          1168
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "threefin-grazer",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          66,
+          305,
+          1208,
+          1010
+        ],
+        "96": [
+          66,
+          305,
+          1207,
+          1009
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "splitseed-sailer",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          89,
+          193,
+          1180,
+          1080
+        ],
+        "96": [
+          89,
+          194,
+          1179,
+          1079
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "cantilever-cradle",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          74,
+          83,
+          1182,
+          1169
+        ],
+        "96": [
+          75,
+          84,
+          1181,
+          1168
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

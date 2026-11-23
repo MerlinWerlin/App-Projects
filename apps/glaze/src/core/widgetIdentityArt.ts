@@ -1,6 +1,9 @@
 // Original line illustrations for the theme compositions. Coordinates live on a 100×100
 // canvas so the same drawing can become an engraved dial, gauge or calendar illustration.
+import { EXTRAORDINARY_ART } from './extraordinaryThemeIdentities.ts';
+
 export const IDENTITY_ART = {
+  ...EXTRAORDINARY_ART,
   mountains: 'M 1 81 L 25 56 L 36 65 L 59 25 L 77 51 L 99 79 M 40 57 L 50 49 L 55 55 L 62 46 L 71 48 M 13 78 L 25 67 L 32 72 M 2 87 Q 50 81 98 89',
   constellation: 'M 15 72 L 34 41 L 51 58 L 68 28 L 88 43 M 11 72 L 19 72 M 15 68 L 15 76 M 29 41 L 39 41 M 34 36 L 34 46 M 64 28 L 72 28 M 68 24 L 68 32 M 84 43 L 92 43 M 88 39 L 88 47',
   moon: 'M 70 17 C 39 10 17 31 19 56 C 20 86 54 96 77 76 C 48 80 35 48 53 28 Q 60 20 70 17 Z M 81 26 L 81 42 M 73 34 L 89 34',

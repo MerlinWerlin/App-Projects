@@ -1,0 +1,26 @@
+{
+  "id": "cup-crown-pitcher",
+  "label": "Cup Crown Pitcher",
+  "tool": "built-in image_gen",
+  "prompt": "ONE new separate square1024x1024 pure artwork for GLAZE ROSEGHOST FEN. Use the reference ONLY for its warm anthotype-inspired plant-pigment contact-print language and palette; create the completely different subject described below. Entirely FLAT soft dusty mauve/rose/rust pigment shadows, granular uneven deposits, pale capillary-vein voids, sun-faded soft contact edges, mottled bleaching and subtle translucent overlap. Darkest muted plum #7D465B, rose #B56D79, rusty apricot #C88E6C. A strong readable tangible natural silhouette with close-up pigment detail. No outline drawing, black ink contour, glossy3D modelling, lighting shadows, paper cutout, cyan blueprint or polished sculpture. Pigment/paper grain occurs ONLY inside the subject marks; the surrounding canvas and open gaps must be true transparent alpha. No rectangular backing, floor, soil mound, halo, frame or border. Entire subject central72% with at least14% empty alpha on every side, every root/leaf/appendage whole. No text, letters, numerals, clocks/dials/readings, UI, logo, watermark or signature. One individual original asset, no collage or panels. CUP-CROWN PITCHER: a low wide rosette of THREE unequal carnivorous pitcher LEAVES growing from one twisting exposed rhizome. Each living leaf is a folded fluted trumpet with an organic scalloped hood, a veined rim and a pale hollow mouth; tallest rear pitcher curves over one small side pitcher, while a broad frontal pitcher opens sideways. Clearly a wild botanical plant with soft irregular membranes and branching veins, no ceramic cup/vase/handle, furniture, architecture, mechanical tubes, bell-flower stalk or bladder leaves. Distinct broad compact silhouette, all root tips and hoods complete. Entirely flat warm photobleached pigment contact image, no3D modelling.",
+  "source": "sources/cup-crown-pitcher.dfbab0dc3d36.png",
+  "sourceSha256": "dfbab0dc3d366bb9087dbded7af81ee65d206eb6cfc443f3e4ccdd343fa170df",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/cup-crown-pitcher.749bdbedb532.png",
+  "sha256": "749bdbedb532228d146609507bf6d426b3e4031c283ce89c33edb96b8a262956",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Entire original uniformly contained within960px on transparent1024square; alpha preserved. No subject crop, recolour or artistic edits.",
+  "references": [
+    {
+      "file": "sources/lantern-bladderwort.8d482e372f74.png",
+      "sha256": "8d482e372f74c34ba079514d9d60968f5931d8f136a7411d9dec09384b4ed031",
+      "purpose": "Own first artwork used only to match pigment-print language; distinct new subject."
+    }
+  ]
+}

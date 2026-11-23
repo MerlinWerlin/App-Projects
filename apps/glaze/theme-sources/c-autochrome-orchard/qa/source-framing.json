@@ -1,0 +1,100 @@
+{
+  "review": "All five full original subjects inside alpha16/96 bounds, edgealpha maximum1. Five rose petals/bud/three leaflets, blue tit beak/tail/feet/apple/two leaves/twig, two currant clusters/leaf/twig, bee antennae/wings/legs/one blue flower/two pink buds/leaf/stem, and snail shell/four tentacles/foot/tail/whole curled leaf/twig all retained. Snail composition is naturally wide; no crop applied. Two borage haze studies retained unselected; selected bee is a fresh simpler independent generation. Actual theme-background composite and outside-alpha samples confirm clean exterior.",
+  "assets": [
+    {
+      "id": "wildrose-sprig",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          175,
+          214,
+          1068,
+          1093
+        ],
+        "96": [
+          176,
+          214,
+          1067,
+          1092
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "blue-tit-apple",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          208,
+          229,
+          1028,
+          1062
+        ],
+        "96": [
+          209,
+          230,
+          1028,
+          1062
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "redcurrant-sprig",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          179,
+          161,
+          974,
+          1122
+        ],
+        "96": [
+          180,
+          162,
+          974,
+          1121
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "bumblebee-borage",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          249,
+          187,
+          1036,
+          1096
+        ],
+        "96": [
+          251,
+          188,
+          1036,
+          1095
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "garden-snail-leaf",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          28,
+          373,
+          1217,
+          951
+        ],
+        "96": [
+          29,
+          374,
+          1217,
+          950
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

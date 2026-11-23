@@ -1,0 +1,23 @@
+{
+  "id": "gecko-thyme",
+  "prompt": "Natural-anatomy correction to this same pin-and-thread GECKO artwork. The gecko currently shows only THREE splayed legs. Add the missing FOURTH LEG: a far-side FORELEG extending clearly upward into empty alpha from the shoulder just behind the head, joint bent toward upper centre, ending in a separate little splayed foot with five rounded toe pads. Final gecko must have EXACTLY FOUR distinct coherent legs attached to correct paired shoulder/hip positions: two forelegs by the head and two hindlegs near tail base, every foot separated and readable. Preserve existing head/eye, THREE existing legs, long open-C tail, thyme sprig, colours and physical straight cotton chord/pin-head/thread-wrap craft. The added leg uses the SAME sparse triangular cotton fan/chord construction between tiny dull brass pins with real transparent gaps, not smooth fill or embroidery. Keep entire whole gecko, every toe, tail and sprig inside generous transparent alpha margin. No background/backing/halo/shadow, extra fifth leg, text or UI. Only repair missing natural foreleg.",
+  "tool": "built-in image_gen",
+  "source": "sources/gecko-thyme.8147d687.png",
+  "sourceSha256": "8147d6879c0eab82160c3750aca1bf6101691d13d6904e50dd58ab9541c6502d",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/gecko-thyme.34ce9408.png",
+  "sha256": "34ce9408534f5c04fd575d2af2f5ee142cc0a271f9a277917d555590776fddc2",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/anatomy-repair/gecko-thyme-history.json",
+  "referencedImage": {
+    "file": "qa/anatomy-repair/gecko-thyme.original.c1e6c8da.png",
+    "sha256": "c1e6c8da30c45959de9df069802b1d87cf1e9a8b94dd5d0386d177b1382a7294"
+  }
+}

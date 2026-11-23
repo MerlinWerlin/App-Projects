@@ -1,0 +1,162 @@
+{
+  "theme": "pithcurl-orchard",
+  "created": "2026-11-23",
+  "lane": "A",
+  "medium": "Fresh flexible mandarin-peel curl sculpture macro interpretation",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "dormouse",
+      "label": "Peel Dormouse",
+      "tool": "built-in image_gen",
+      "prompt": "ONE original standalone Glaze Nature material prototype for PITHCURL ORCHARD. A whole recognizable HAZEL DORMOUSE, sitting in a soft three-quarter side pose with two round open ears, dark tiny eye, pointed short nose, TWO small forepaws and TWO coherent back feet, a long tail curled up beside its body and one whole tiny hazel leaf. The entire familiar animal is an ingenious physical miniature assembled ONLY from FRESH FLEXIBLE MANDARIN PEEL: saturated tangerine-orange outer skin with large recognizable oil-gland dimples, thick creamy white spongy PITH exposed on every gently curling cut edge and strip underside. Very clearly visible construction from a FEW BROAD CONTINUOUS CURLED PEEL STRIPS, not a solid carved orange mouse: one open rolled oval body shell with its white interior visible at the lower rim; separate broad folded face wedge; folded peel ear cups with white interiors; a long thin peel-strip tail coils in one open spiral with alternating orange outside and creamy pith inside; narrow folded strips make complete paws; leaf is a small folded mandarin-peel leaf silhouette. At least four bold orange/white curl transitions readable at85px. Naturally flexible torn peel edges with irregular pith fibres, moist satin oil-gland skin, no wet droplets or sticky juice. Beautiful tangible fresh-fruit-peel miniature in careful macro product photography with gentle warm modelling light. The medium and curled construction are unmistakable, not a realistic furry animal merely coloured orange, dried brown gourd, smooth clay, painted porcelain, felt, corrugated paper, goldwork or metal. No fruit bowl, orange fruit, cutting board, plate, plinth, plaque, backing rectangle, assembly tools or food props. Complete one animal and leaf centered in CENTRAL68percent canvas width and CENTRAL68percent height, all tail/ears/paw/leaf tips entirely whole with at least13percent quiet margins on a square canvas. True clean transparent alpha background and inside every open curl; no shadows, floor, background color, white halo or stray speckles. Dark eye and nose can be tiny natural dark mandarin pips. No lettering, labels, symbols, clock, date, battery readings or UI. Original artistic peel-sculpture interpretation, not a claim of a real handmade physical artwork.",
+      "source": "sources/dormouse.be0b4539037f.png",
+      "sourceSha256": "be0b4539037fb57995a39136c0db9faee30374df8b535c59ff245bb727717980",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/dormouse.c868a72a.png",
+      "sha256": "c868a72a1d99adcd644b2782c14f058a0c14efd2408570c91b66f55f19a966d7",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent canvas; no crop/recolour/code alpha cleanup or creative pixel edits.",
+      "references": []
+    },
+    {
+      "id": "robin-twig",
+      "label": "Peel Robin",
+      "tool": "built-in image_gen",
+      "prompt": "ONE entirely NEW independent standalone Glaze Nature artwork for PITHCURL ORCHARD. Reference is our OWN accepted dormouse, used ONLY for the material/construction language; invent the described different natural subject, never copy the mouse silhouette. Entire recognizable subject assembled solely from FEW BROAD FLEXIBLE FRESH MANDARIN-PEEL STRIPS and folded pieces: saturated tangerine orange oil-gland dimpled skin, thick spongy creamy white pith exposed in every curling underside and cut lip, loose open orange/white turns readable at85px. Restrained moist satin fruit-peel texture, not wet gloss, ceramic, paper quilling, metal, felt, dried brown gourd or a realistic animal merely painted orange. No extra materials except tiny dark citrus pips for eyes/nose and a few small pith joins. Beautiful careful tangible macro miniature, gentle warm modelling light, no floor shadow. Complete whole subject central66percent width/height, ALL natural extremities entire with at least14percent quiet transparent margins. TRUE transparent alpha background, including open gaps and curl centres; no backing rectangle, plate, plinth, assembly tools, orange fruit, bowl, border, frame, halo, dirt, stray speckles, lettering, labels, numbers, clock/calendar/battery/weather/UI or mockup. Artistic peel sculpture interpretation, no authentic physical artwork claim. A complete round European ROBIN perched naturally on ONE short curved twig made from a narrow rolled peel strip with two small folded peel leaves. Broad open rolled oval breast/body, a broad curved wing flap with thick WHITE PITH edge, a separately folded head with round dark pip eye and tiny pointed pip beak, two short coherent three-toed gripping bird feet and a complete slightly lowered long tail of two broad peel ribbons. Natural small woodland bird proportions, no huge mouse ears, no cartoon accessories. Orange/white inner curl clearly visible around wing, belly, leaf rim and tail underside; entire beak, tail, toes and leaf tips whole.",
+      "source": "sources/robin-twig.84db8a019f65.png",
+      "sourceSha256": "84db8a019f65becb7f680e681333207d7bc5440c59688810abdd48c9bde21d30",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/robin-twig.0a65033e.png",
+      "sha256": "0a65033e0c05002ce97aac647cb2138e8ef875fc318514f90b85fa549414e37d",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent canvas; no crop/recolour/code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/dormouse.be0b4539037f.png",
+          "sha256": "be0b4539037fb57995a39136c0db9faee30374df8b535c59ff245bb727717980",
+          "purpose": "Own image reference; exact original retained."
+        }
+      ]
+    },
+    {
+      "id": "garden-snail",
+      "label": "Peel Snail",
+      "tool": "built-in image_gen",
+      "prompt": "BACKGROUND EXTRACTION ONLY on this OWN original entire fresh-mandarin-peel snail. Preserve the COMPLETE same snail, physical orange skin, thick white pith, all broad strip curls, natural anatomy, dark pip eyes/nose, paws or tentacles, and accompanying leaf if present. Remove ALL diffuse orange/brown ambient haze, glow and cast shadows OUTSIDE the physical peel object, including between legs, around tail, around shell and leaf and inside genuinely open curl gaps. Every exterior pixel and every empty gap must be clean TRUE TRANSPARENT ALPHA, including immediately beyond tiny natural pith fibres; no coloured cloud or partially opaque floor. Keep genuine soft light and shadow ON actual physical skin/pith surfaces and within physically closed shell layers. Do not recolor, smooth, redraw, re-pose, alter the material, delete or shorten any anatomy, add foliage, leave a white/grey backdrop, or create a new shadow. Whole original subject with all tip extremities remains in frame; add quiet transparent margin if necessary, never crop. No text or UI. This is the final clean reusable transparent artwork cutout.",
+      "source": "sources/garden-snail.a7215e62fa70.png",
+      "sourceSha256": "a7215e62fa70c8b338863499134838e6962bac12758a46b9b1f6680b2fd9a74d",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/garden-snail.fe151da8.png",
+      "sha256": "fe151da862f7350948e57eefe8cb0dd6ece7a61b6ecf10c7cc947657fd585e79",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent canvas; no crop/recolour/code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "qa/background-extraction/garden-snail.initial.c4b4c0a147b5.png",
+          "sha256": "c4b4c0a147b54c4184a18d111d86efa2945ce4a95d5bfcbe49dd87a127ac90bb",
+          "purpose": "Own image reference; exact original retained."
+        }
+      ],
+      "generationHistory": "qa/background-extraction/garden-snail-history.json"
+    },
+    {
+      "id": "walking-fox",
+      "label": "Peel Fox",
+      "tool": "built-in image_gen",
+      "prompt": "BACKGROUND EXTRACTION ONLY on this OWN original entire fresh-mandarin-peel fox. Preserve the COMPLETE same fox, physical orange skin, thick white pith, all broad strip curls, natural anatomy, dark pip eyes/nose, paws or tentacles, and accompanying leaf if present. Remove ALL diffuse orange/brown ambient haze, glow and cast shadows OUTSIDE the physical peel object, including between legs, around tail, around shell and leaf and inside genuinely open curl gaps. Every exterior pixel and every empty gap must be clean TRUE TRANSPARENT ALPHA, including immediately beyond tiny natural pith fibres; no coloured cloud or partially opaque floor. Keep genuine soft light and shadow ON actual physical skin/pith surfaces and within physically closed shell layers. Do not recolor, smooth, redraw, re-pose, alter the material, delete or shorten any anatomy, add foliage, leave a white/grey backdrop, or create a new shadow. Whole original subject with all tip extremities remains in frame; add quiet transparent margin if necessary, never crop. No text or UI. This is the final clean reusable transparent artwork cutout.",
+      "source": "sources/walking-fox.47427fa11b4f.png",
+      "sourceSha256": "47427fa11b4f2648d731587e299cb9bba0e219dcd2f67f8c0ee18c1ef3170883",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/walking-fox.6cc4e92b.png",
+      "sha256": "6cc4e92bca1c7bf03b013487169f7f29b67ad56ff949c43d3796f567e6e157de",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent canvas; no crop/recolour/code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "qa/background-extraction/walking-fox.initial.631f5b512558.png",
+          "sha256": "631f5b5125589a22bf46532f039ffb8c3e5e92a013bd19e65ad9ed973a4025f0",
+          "purpose": "Own image reference; exact original retained."
+        }
+      ],
+      "generationHistory": "qa/background-extraction/walking-fox-history.json"
+    },
+    {
+      "id": "apple-blossom",
+      "label": "Pith Blossoms",
+      "tool": "built-in image_gen",
+      "prompt": "ONE entirely NEW independent standalone Glaze Nature artwork for PITHCURL ORCHARD. Reference is our OWN accepted dormouse, used ONLY for the material/construction language; invent the described different natural subject, never copy the mouse silhouette. Entire recognizable subject assembled solely from FEW BROAD FLEXIBLE FRESH MANDARIN-PEEL STRIPS and folded pieces: saturated tangerine orange oil-gland dimpled skin, thick spongy creamy white pith exposed in every curling underside and cut lip, loose open orange/white turns readable at85px. Restrained moist satin fruit-peel texture, not wet gloss, ceramic, paper quilling, metal, felt, dried brown gourd or a realistic animal merely painted orange. No extra materials except tiny dark citrus pips for eyes/nose and a few small pith joins. Beautiful careful tangible macro miniature, gentle warm modelling light, no floor shadow. Complete whole subject central66percent width/height, ALL natural extremities entire with at least14percent quiet transparent margins. TRUE transparent alpha background, including open gaps and curl centres; no backing rectangle, plate, plinth, assembly tools, orange fruit, bowl, border, frame, halo, dirt, stray speckles, lettering, labels, numbers, clock/calendar/battery/weather/UI or mockup. Artistic peel sculpture interpretation, no authentic physical artwork claim. A complete graceful APPLE BLOSSOM twig: TWO distinct open five-petalled blooms and ONE little folded bud on one short naturally branching stem, plus THREE whole broad folded oval leaves. Each bloom is made from five BROAD overlapping gently cupped mandarin-peel petals whose creamy WHITE PITH interiors face toward the viewer while saturated dimpled ORANGE outer skin forms distinct rolled petal rims and backs; small warm pith centre, a few tiny pith stamens. Rolled peel-strip stem and folded orange/pith leaves, no real flowers or painted clay. Recognizable blossom morphology, airy asymmetric botanical arrangement, all five petals per bloom visible and whole, whole leaf tips and short stem ends. No animal or flowerpot.",
+      "source": "sources/apple-blossom.5982cef7e4f5.png",
+      "sourceSha256": "5982cef7e4f566eaeb7a2bdc731311a764ff62428e826c4ba5a4efa7b1480136",
+      "sourceDimensions": [
+        1312,
+        1199
+      ],
+      "selectedFile": "widgets/apple-blossom.e0bfe1b3.png",
+      "sha256": "e0bfe1b3784922c0524b586621c8081704d994262ea6a6936c4b9f1bcab6f382",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent canvas; no crop/recolour/code alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/dormouse.be0b4539037f.png",
+          "sha256": "be0b4539037fb57995a39136c0db9faee30374df8b535c59ff245bb727717980",
+          "purpose": "Own image reference; exact original retained."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "Enlarge this OWN completed Pithcurl Orchard wallpaper SCENE ONLY. Keep the same complete five-subject mandarin-peel habitat, pale sage paper, light, orange skin/white pith material, characters and coherent anatomy. The group is currently too small. Uniformly enlarge the ENTIRE connected habitat to160percent its current width and height, positioned centrally so that ALL outermost twig/leaf/flower/tail/foot tips now occupy roughly80\u00e2\u20ac\u201c85percent of the portrait width and about45percent of its height, from30to76percent height. Keep one tall natural twig with two whole five-petalled blossoms/bud at upperright, whole robin perched with two feet, whole dormouse/spiral tail on twig, whole four-legged fox below with long tail and two ears, whole spiral snail/upper eye stalks/lower feelers/full foot, complete ground ribbon. Clear recognizable large subjects with real vertical presence, NOT a tiny island or mostly empty page. All tips whole within8\u00e2\u20ac\u201c10percent side margins; upper28percent and lower20percent quiet paper. Do not pull the scene back or separately shrink subjects for extra edge space. If something would crop, gently adjust only that twig/tip inward; never cut anatomy. Keep exact portrait1290:2796 proportion and preserve the same pale sage paper/color/texture and soft lighting; no new objects, external glow, text, UI or borders. This is wallpaper recomposition only; no change to the five standalone artwork assets.",
+      "source": "sources/wallpaper.8ad39fe04c09.png",
+      "sourceSha256": "8ad39fe04c093aa3505547f35fbefb3ba96a349e17af5fe48bfe571329cea1fd",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "b2711e46572c2cbca478b9388d8650951145f45014b7828315fa71b5b992b8e8",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Second audit: own-scene enlargement to roughly90percent width with substantial vertical presence; only wallpaper recomposed. Mechanical aspect-preserving portrait export trims quiet paper only. All five art originals/selected files/options/palette/meta unchanged.",
+      "references": [
+        {
+          "file": "qa/second-audit-wallpaper/wallpaper.3a680fc66e00.png",
+          "sha256": "3a680fc66e005d6efb8eadbc11b6f53ea2f55ab8d066e68c8ec77e5097ac52d7",
+          "purpose": "Exact own previous complete five-subject wallpaper; enlarge scene only."
+        }
+      ],
+      "generationHistory": "qa/second-audit-wallpaper/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

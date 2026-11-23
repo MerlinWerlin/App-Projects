@@ -1,0 +1,40 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "ONE original tall portrait PHONE WALLPAPER for Glaze Linkmere Copse, in a very tall1290:2796 composition. Use these FOUR OWN artwork references only for their same coarse interlinked OPEN BLACKENED-STEEL RING construction and recognizable subjects. Compose a coherent tall riverbank sculpture: one whole kingfisher perched on a long slanting linked-ring reed in the upper-middle left, a seated whole water vole with its full curved tail in the lower-right, a tall open iris with full stalk/two leaves and bud rising on the left, and an open willow twig with hanging catkins forming a loose arch in the upper-right. All things consist of real overlapping charcoal steel wire rings with worn SILVER edges and large see-through round holes. Soft diffuse studio macro detail, small restrained highlights. Quiet uniform pale blue-gray background #C3D1D1 with only the faintest broad tonal variation; no scenery/photo behind, no waterline, no horizon, ground slab, cast shadow or frame. Art is a tall airy physical composition, not objects scattered as icons. SCENE FRAMING IS CRITICAL: on the RAW portrait canvas, the complete scene occupies the CENTRAL SIXTY-TWO PERCENT of total width, from approximatelyx19% to81%, with genuinely EMPTY side fields outside it. Keep even the outermost leaf tips, bill tip, tail and reed ends within that central62% span. The scene has real vertical presence from abouty16% to87% of canvas height. Large and tall, not a tiny island and not squashed into a low band. The ring architecture remains coarse and visible. Layer the full subjects along one narrow vertical habitat spine. Leave quiet open uppermost area. All subjects, leaf tips and tails must remain COMPLETE in narrow phone crops; do not run anything off the raw edges. No duplicate kingfisher/vole, no butterfly/dragonfly, no armor, equipment, jewelry, whole ring-frame medallion, gold/copper/enamel/cloth backing, numbers, clock faces, UI, labels, text, logos or watermark. Opaque full-background portrait wallpaper. Artistic invented wire construction, no authentic handmade-object or specimen claim.",
+  "source": "sources/wallpaper.b2bc2def8337.png",
+  "sourceSha256": "b2bc2def8337dcaa715c39e9e5d81486b5dff832141f67ef84b1540303a4ab04",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "cca57c9f370b7f9b7a3d11a487c8b047cf3c29cb9a0f82bad9d378e68624af20",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Own four-reference tall riverbank habitat, mechanical aspect-preserving1290x2796 cover; no creative raster edits or generic margin pullback. All five standalone selections unchanged.",
+  "references": [
+    {
+      "file": "sources/kingfisher-reed.bfbd44f5a859.png",
+      "sha256": "bfbd44f5a85967c5081101a2f6888408461adca320da281fbc03878560b614f5",
+      "purpose": "Own ordered material/subject reference"
+    },
+    {
+      "file": "sources/water-vole-sedge.21aa385c5d82.png",
+      "sha256": "21aa385c5d822de3f0b4623ee741aeecd22a80192bd640f40af205dbeafe0032",
+      "purpose": "Own ordered material/subject reference"
+    },
+    {
+      "file": "sources/yellowflag-iris.9d873fdcfaef.png",
+      "sha256": "9d873fdcfaef9bcd6c32f41ee598db246f6f93d29d6fbc76b9961277b1fce0b9",
+      "purpose": "Own ordered material/subject reference"
+    },
+    {
+      "file": "sources/willow-catkin-branch.598ab0b9c10c.png",
+      "sha256": "598ab0b9c10c65312d958489462ceca2a3dafb01091343d33eea6f41a903906e",
+      "purpose": "Own ordered material/subject reference"
+    }
+  ]
+}

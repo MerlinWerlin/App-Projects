@@ -1,0 +1,18 @@
+{
+  "id": "spotted-salamander",
+  "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject SPOTTED SALAMANDER: one natural salamander seen in an elegant slightly elevated side view, head faces left, body curves into a shallow S, tapering long tail curls gently upward to the right. FOUR clearly jointed short legs with fine separated toes, small natural dark eye and rounded muzzle, smooth low body silhouette. Blue-black oxidised tin body with two irregular rows of small antique-brass raised spots and cool silver chased skin texture, subtle metal facets. It walks over ONE small folded lobed fallen leaf with narrow raised veins, leaf itself thin pewter sheet rather than ground rectangle; open gaps around legs and below belly, no thick sculpture pedestal. Complete tail tip, every toe, head and leaf tip centrally contained. Distinct low horizontal silhouette, not lizard dragon, mechanical toy, enamel pin, jewellery or stuffed animal.",
+  "tool": "built-in image_gen",
+  "source": "sources/spotted-salamander.3e19498b.png",
+  "sourceSha256": "3e19498bf894ab2698dae29986e4d716ad17342087dcc0a7442acd9d05913765",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/spotted-salamander.4b700601.png",
+  "sha256": "4b70060135a4673bbbbf66f07ea674f0e9ec5da5477b9759c1f7290bf6a7570b",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

@@ -1,0 +1,18 @@
+{
+  "themeId": "ribbonrise-hedgerow",
+  "recipe": [
+    "square",
+    "silkFoxglove",
+    "silkStitches",
+    "pearls",
+    "baton",
+    "tiles",
+    "ticket"
+  ],
+  "art": {
+    "silkFoxglove": "M 41 91 Q 38 61 49 27 Q 54 14 61 8 M 49 29 Q 60 27 66 35 L 67 44 Q 60 48 54 43 L 52 34 M 45 44 Q 58 43 64 53 L 64 63 Q 55 66 50 59 L 49 50 M 42 62 Q 55 61 60 71 L 59 82 Q 50 85 45 77 L 45 68 M 41 84 Q 23 84 19 68 Q 35 67 41 79 M 44 78 Q 59 84 67 89 Q 52 96 43 87 M 25 91 Q 26 69 16 49 M 24 78 L 12 72 M 23 69 L 9 62 M 21 61 L 11 54 M 25 78 L 34 71 M 23 69 L 30 62",
+    "silkStitches": "M 12 23 Q 29 8 45 24 Q 39 41 22 42 Q 15 34 12 23 M 22 42 Q 27 29 45 24 M 55 57 Q 72 40 88 58 Q 82 75 65 77 Q 58 68 55 57 M 65 77 Q 70 63 88 58 M 17 72 L 38 87 M 18 78 L 32 89"
+  },
+  "ornament": "M 24 81 Q 39 59 63 31 M 38 60 Q 20 49 29 28 Q 51 28 62 44 Q 58 58 44 61 M 44 61 Q 45 44 62 44 M 23 78 L 32 84 M 27 72 L 36 78",
+  "direction": "Natural one-sided foxglove tubular flower spike and short fern as full hero; broad pointed satin ribbon stitch folds as detail. Square rim retains12pt today digits; pearl hour markers, baton hands, tiled charge and ticket calendar. Compact companion is one small pulled-ribbon leaf with a tucked tip and two tiny entry stitches, no full foxglove stalk/bird/hoop/bow or medallion."
+}

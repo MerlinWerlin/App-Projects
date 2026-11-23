@@ -1,0 +1,40 @@
+{
+  "theme": "mosswake-glade",
+  "neighbors": [
+    {
+      "theme": "mosswick",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\mosswick\\v6\\widget-bark-snail.06eb2ab1.webp",
+      "sha256": "06eb2ab1889f8778f84c7fdd9a9762303b64f80fd196fd91555d45aa747026bc",
+      "authority": "Actual retained shipped asset hash verified against own manifest."
+    },
+    {
+      "theme": "pebblekin-grove",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\pebblekin-grove\\v6\\widget-fern-altar.9011bc9d.webp",
+      "sha256": "9011bc9d38846d33a3d9733b6cc2478a034c7c23e23fd1307f2bf6864a95ea52",
+      "authority": "Actual retained shipped asset hash verified against own manifest."
+    },
+    {
+      "theme": "lamellar-commons",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\lamellar-commons\\widgets\\bellows-pangolin.65b1496aa7dc.png",
+      "sha256": "65b1496aa7dc4fd50efa3db37395ae36193905fb63fb51a05e5b02474155d664",
+      "authority": "Actual current canonical independent Artwork selection."
+    },
+    {
+      "theme": "raspnest-heath",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\raspnest-heath\\widgets\\echidna.c6a38a4b6fb3.png",
+      "sha256": "c6a38a4b6fb34920b87a01a1ea0e776b63dba33a23ccb50f70d25b4ea165e135",
+      "authority": "Actual current canonical independent Artwork selection."
+    }
+  ],
+  "searchTerms": [
+    "topiary",
+    "kokedama",
+    "moss sculpture",
+    "living moss",
+    "bryophyte"
+  ],
+  "positiveProcessMatches": [],
+  "observedNearMatch": "Midnight Conservatory added pitcher plant sits on a dark moss cushion with silver root support; an ordinary supporting natural material, not whole topiary fauna. Mosswick uses cork/bark craft with moss accents; Pebblekin uses carved/smooth stone; A6dry opaque mycelium has gills, A8dry woodwool has grain and long splinters.",
+  "plannedDifference": "Whole familiar woodland forms built from living tiny green moss star-shoot cushions with pale natural lichen accents and sparse reddish sporophyte stems/capsules; all surface anatomy is minute leafy plants, not dry furry fibres, gills, cork or stone.",
+  "reservation": "A12conditional beforeONEbadger material sample, coordinated B/C; no other4beforeactualfirstgate."
+}

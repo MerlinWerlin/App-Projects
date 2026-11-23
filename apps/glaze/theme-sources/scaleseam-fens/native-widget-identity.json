@@ -1,0 +1,18 @@
+{
+  "themeId": "scaleseam-fens",
+  "recipe": [
+    "pebble",
+    "fishMoorhen",
+    "fishPocket",
+    "dash",
+    "leaf",
+    "basin",
+    "folio"
+  ],
+  "art": {
+    "fishMoorhen": "M 19 48 Q 9 43 10 33 Q 10 23 20 23 Q 30 24 31 35 L 34 43 Q 53 34 72 40 Q 83 45 86 56 L 94 65 L 81 63 Q 62 78 38 65 Q 24 61 19 48 M 10 31 L 2 36 L 11 38 M 17 29 L 18 30 M 41 64 L 37 82 L 25 89 M 37 82 L 42 91 M 56 69 L 59 84 L 50 92 M 59 84 L 70 89 M 40 49 Q 58 43 74 53 Q 64 66 46 61 M 74 89 Q 78 68 87 48 M 83 63 L 92 53",
+    "fishPocket": "M 14 20 Q 25 34 38 20 M 38 20 Q 50 34 64 20 M 64 20 Q 76 34 89 20 M 2 41 Q 15 55 27 41 M 27 41 Q 40 55 53 41 M 53 41 Q 66 55 79 41 M 15 63 Q 28 77 41 63 M 41 63 Q 54 77 67 63 M 67 63 Q 80 77 92 63 M 30 15 L 22 8 M 35 37 L 28 30 M 41 59 L 34 52 M 47 82 L 40 75"
+  },
+  "ornament": "M 19 85 Q 41 67 62 29 Q 61 51 52 66 Q 38 78 19 85 M 29 73 L 36 78 M 38 62 L 45 67 M 46 51 L 53 56 M 45 40 Q 49 46 55 40 M 38 52 Q 42 58 48 52",
+  "direction": "Whole familiar moorhen, modest natural eye, short bill and two coherent long-toed legs, short rush fork. Soft irregular pebble clock rim echoes a thin hand-sewn leather panel, short dash hour marks, leaf hands, basin battery and folio calendar. Compact companion is ONE open reed-leaf edge seam with three short overcast stitches and two empty crescent scale pockets; no animal, patchwork shield or enclosed plaque. Face chosen for artwork; independent calendar-only badge preserves normal date point size and bold today."
+}

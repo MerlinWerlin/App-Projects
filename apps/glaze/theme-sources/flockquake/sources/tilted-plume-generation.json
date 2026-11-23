@@ -1,0 +1,18 @@
+{
+  "id": "tilted-plume",
+  "prompt": "ONE standalone square1024x1024 original production artwork for FLOCKQUAKE. TILTED PLUME: a tall narrow CORAL electrostatic flock-print plume composed of five broad squared-off swept lobes leaning strongly to the left, divided by clean bare angular slits. A vertical ACID-LIME slim flat keystone slices through its lower half, while three COBALT trapezoidal flock tabs step upward along only the right edge. Strange wind-pressure diagram invented as a hand-cut velour stencil artwork, strong crooked rising silhouette with no enclosed arch, not a real feather, plant, animal, toy or familiar object. Material MUST be actual dense short matte upright velvet fibres electrostatically applied to adhesive stencil: directional pile, tiny loose fibre dust, compressed shallow texture, crisp cut edges with tiny shadows, 0.5mm surface relief. Straight overhead craft photography, flat graphic fields, not stuffed plush or woven/sewn felt sculpture. Palette coral #F5838C dominant, acidlime #B5E247 and cobalt #343AB5 accents. Whole motif central65%,18% genuinely alpha-transparent margin, background and slots fully transparent. No paper rectangle, tile, backdrop, floor, stand, frame, text, numerals, letters, logos, UI, clock, dates, battery/weather values. One distinct artwork, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/tilted-plume.7674a2d5.png",
+  "sourceSha256": "7674a2d597abaf307823c497b8ff5fd1ea2947ae5117f9d93fa8175583961bd0",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/tilted-plume.6c581278.png",
+  "sha256": "6c581278243cdf06d2e38d8c7842aead84e7730a23725bb0e591dc37fb7f651a",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

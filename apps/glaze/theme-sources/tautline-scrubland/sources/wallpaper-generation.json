@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Composition/layout correction for this same Tautline Scrubland pin-and-thread wallpaper. Preserve the exact hoopoe/sage, gecko/thyme, thistle/bumblebee, tortoise/caper and swallowtail/fennel habitat, natural anatomy, straight cotton tension chords, dull brass pin heads, tiny wrap loops and existing colours. SCALE DOWN THE ENTIRE CONNECTED HABITAT to fit CENTRAL62% WIDTH andBETWEEN34% AND72%HEIGHT of the portrait. Fully restore/complete any sprig or thread-tip currently touching the image boundary, preserving same plant structure; all bird crest/beak/tail, gecko toes/tail, tortoise feet, butterfly antenna/wings and every outer flower/leaf tip must be contained with substantial quiet ground around. Upper30% and bottom24% quiet uninterrupted matte ink-navy ground matching existing. One intact smaller central habitat, no cut-off tips used to force fit, no added frame/panel/rectangle, new organisms, text, UI or shadow. Keep tactile cotton and physical pins, not glowing/scientific line art. Safe for narrow1290x2796 and shorter750x1334 centre crops.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.780b0a69.png",
+  "sourceSha256": "780b0a699b6a9f58b8eb215fe3a387624756643c462e2dcc41928dab6ac888e4",
+  "sourceDimensions": [
+    759,
+    2072
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "3374b0cca66b5c6616266e21d8241f4eef21d94151e44b7721699702214b2199",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-repair/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-repair/wallpaper.original.4260c721.png",
+    "sha256": "4260c7211b654c519f57972138056e232266d7250c10ac215217737d691d3ad8"
+  }
+}

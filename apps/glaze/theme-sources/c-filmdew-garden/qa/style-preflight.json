@@ -1,0 +1,213 @@
+{
+  "theme": "c-filmdew-garden",
+  "status": "Lane actual material review passed unchanged under originalhumanfallback; peer material/integration pending.",
+  "sample": {
+    "id": "clover-thinfilm",
+    "selected": true,
+    "sourceSha256": "2f47aed2b77c3723af267b8db76b97656595a433787e15b9db8546e7e78b9a2e",
+    "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, FILMDEW GARDEN. A whole instantly recognizable THREE-LEAF CLOVER: exactlyTHREE broad softly heart-shaped leaflets meet at one small central join, one upper leaflet and one pointing down-left and one down-right. Each leaflet has two gently rounded outer lobes and a modest central notch, with a smooth natural edge. ONE full slender gently curved stalk descends below the join. Plant appears intact and natural, not a radial abstract blob or three disconnected hearts. Whole clover and stalk comfortably inside central70percent square, minimum15percent truly transparent empty exterior on all four sides. Familiar botanical form first.\nIMAGE MEDIUM: original reflected-light THIN-FILM DRAINAGE INTERFERENCE IMAGE. Each leaflet is a SINGLE almost planar continuous optical film, negligible thickness. Broad smooth pearly colour CURTAINS descend from paler thinning upper areas into saturated magenta, cyan, violet and pale gold lower regions. Only FOURtoSIX very broad irregular sweeping colour regions per leaflet, not dense repeated rainbow stripes. Gentle finite boundaries between interference orders, a few soft hooked drainage fingers. At the upper/side of each leaflet ONE or TWO unequal almost BLACK thin-film WINDOWS interrupt the colour curtains; these are opaque near-black optical image values, NOT alpha cutout holes. Black islands are softly rounded asymmetric flat patches with a narrow pale/silver transition, no bubbles/droplets/lenses. The irregular colour curtains bend gently around those dark windows, then descend, not concentric nested mineral rings around a centre. Smooth low-amplitude reflected-light intensity, subtle fine exposure grain only. A tiny thin bright meniscus trace follows parts of the complete outer edge, never a thick wire/metal rim. Stalk plain dark silvery-green and whole. Whole leaves read as nearly FLAT optical colour images, NOT three shiny volumetric leaves, folded plastic cellophane, glossy silk ribbon, metallic foil, motherofpearl inlay or glass sculpture. No cast shadow, solid thickness, petal ridges, veins, natural tissue texture, specular globe reflections or embossed edges. Optical-film drainage curtains/dark windows supply image language, no normal leaf photograph with iridescent filter.\nAvoid polarised stress-isoclinic fine repeated rainbowfringes, diffractionhalo rings/radialcomb, projected3Dstripes, fine inkmarbling/combedveins, thick swirls of paint, capillary paperfronts/fibres, crystal/mineralterraces, interlocking shelltiles, fluorescent cellwalls, neonoutline/wireframe or glowing fairy plant. Do not show a hoop/frame/sheet rectangle, bubblewand, sphere, soapdish, lab apparatus or floor. No labels/ruler, text/numbers, molecular data, clock/date/battery/weather values, UI/logo/frame/watermark. This is ORIGINAL STATIC ARTISTIC thin-film image interpretation of a familiar clover silhouette, NOT a real leaf-shaped soap experiment, measured thickness/color map, authentic data or validated simulation. No chemical recipe/procedure, no external visual input, no named artist. All image areas inside leaflets remain opaque or nearlyopaque so darkwindows remain dark; TRUEalphaZERO only OUTSIDE exact whole clover/stalk. Transparent empty exterior, no background haze, glow or cast shadow beyond silhouette.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        148,
+        168,
+        1082,
+        1118
+      ],
+      "96": [
+        150,
+        169,
+        1081,
+        1117
+      ]
+    },
+    "edgeAlphaMaximum": 1
+  },
+  "neighbors": [
+    {
+      "theme": "c-isoclinic-menagerie",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-isoclinic-menagerie\\widgets\\trifurcate-sifter.bb8e8be196b0.png",
+      "sha256": "bb8e8be196b0fc5518d03d02cf109b4ce481d6273ca8ffddea1894486e11dc42"
+    },
+    {
+      "theme": "c-fraunhofer-masquerade",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fraunhofer-masquerade\\widgets\\cusp-herald.86ea40d84204.png",
+      "sha256": "86ea40d84204d19cf643a2d6253de7b3508d0bcd625228e33ec8e5e08b10dfde"
+    },
+    {
+      "theme": "floatink-stormcrew",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\floatink-stormcrew\\widgets\\kite-rig-mender.549312ad.png",
+      "sha256": "549312ad520840c1abd5a9df5c509d20ea1ba9dc281c1eed9540c2a6db679f2f"
+    },
+    {
+      "theme": "nacre-nomads",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\nacre-nomads\\widgets\\orchard-caravan.56097594.png",
+      "sha256": "5609759490be5f16693abd3c87977f1df4db8052d0ec3574f98818b6c0eab6cb"
+    },
+    {
+      "theme": "bismuth-anomaly",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\bismuth-anomaly\\widgets\\archive-tortoise.94d6a3bd3b0c.png",
+      "sha256": "94d6a3bd3b0ca34e8d5081f6bc387788bf45478dce56b66bbb5c0c5fb5aea54d"
+    },
+    {
+      "theme": "pellicle-shoal",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\pellicle-shoal\\widgets\\seadragon.5743037c00cf.png",
+      "sha256": "5743037c00cf5464f7d4664b66d2c76c77d23f20960e56f224e4e1bf6a92dae2"
+    },
+    {
+      "theme": "c-fringe-projection-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fringe-projection-grove\\widgets\\split-vane-fern.15cbd4efa319.png",
+      "sha256": "15cbd4efa31911a69cadf64437da875d0d677be18f3a8137ec77172f97103ad0"
+    },
+    {
+      "theme": "c-chromatogram-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chromatogram-grove\\widgets\\ginkgo-chromatogram.40c63e9def48.png",
+      "sha256": "40c63e9def4862b8b7efca2f5a63e56f07a9ccc0282e54a770f3c590b0aea65c"
+    },
+    {
+      "theme": "c-confocal-bridgeworks",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-confocal-bridgeworks\\widgets\\ciliary-weir.f677428e62d8.png",
+      "sha256": "f677428e62d844e59f2de4907c46cb7bf5786629a655e5fcdc9e0c1c65273243"
+    },
+    {
+      "theme": "c-redox-meadow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-redox-meadow\\widgets\\oak-spiral-fronts.33f97832e855.png",
+      "sha256": "33f97832e85502aa79f60545bfba83e0041245fee54095630e68dc05b524c267"
+    },
+    {
+      "theme": "manta-silk",
+      "optionId": "ripple-caustic",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\manta-silk\\v5\\widget-ripple-caustic.5cd69043.webp",
+      "sha256": "5cd690431ecaa623ca8f39804f75d34b4fead0723865b3af720835e5d014b9df",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\manta-silk\\v5\\manifest.json",
+      "selectorProof": "outputs/filmdew-published-neighbor-selections.json"
+    },
+    {
+      "theme": "manta-silk",
+      "optionId": "silver-flying-fish",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\manta-silk\\v5\\widget-silver-flying-fish.9fef40d5.webp",
+      "sha256": "9fef40d595fc296896bf1d0c55d445b585772015831d3688a4e5b33e63c43f76",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\manta-silk\\v5\\manifest.json",
+      "selectorProof": "outputs/filmdew-published-neighbor-selections.json"
+    },
+    {
+      "theme": "jellylight",
+      "optionId": "opal-stingray",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jellylight\\v7\\widget-opal-stingray.6101c6ed.webp",
+      "sha256": "6101c6ed4b7340a29716e942eb6a5b26196b6d7ea48aea52412301253c4678e1",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jellylight\\v7\\manifest.json",
+      "selectorProof": "outputs/filmdew-published-neighbor-selections.json"
+    },
+    {
+      "theme": "jellylight",
+      "optionId": "opal-sea-slug",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jellylight\\v7\\widget-opal-sea-slug.27753804.webp",
+      "sha256": "27753804e4940c935179dd577d3527c81063f0f9006fee234e3e1fc58b79b889",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\jellylight\\v7\\manifest.json",
+      "selectorProof": "outputs/filmdew-published-neighbor-selections.json"
+    },
+    {
+      "theme": "labradorite-hush",
+      "optionId": "cleavage-lines",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\labradorite-hush\\v5\\widget-cleavage-lines.bd104ad5.webp",
+      "sha256": "bd104ad5583a3568603c01b137fc20b9f0d5b5d2eab25d40791a628b5b2a8aba",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\labradorite-hush\\v5\\manifest.json",
+      "selectorProof": "outputs/filmdew-published-neighbor-selections.json"
+    },
+    {
+      "theme": "labradorite-hush",
+      "optionId": "carved-mineral-leaf",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\labradorite-hush\\v5\\widget-carved-mineral-leaf.e7cb9f8b.webp",
+      "sha256": "e7cb9f8b0093457876a4fdff5239164e6a8de8f11d42eed1f26bf1d1fc028f6c",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\labradorite-hush\\v5\\manifest.json",
+      "selectorProof": "outputs/filmdew-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "Lane actual full17085/corner and16closest-control review passed unchanged. Familiar whole threeleafclover with complete stalk, broad pearly fluid colour curtains and three irregular dark-film windows read at85, tiny outerrim rather than material thickness. Different actual construction from C1dense stressfringes/C8radial diffraction, inkmarbling, physical shell/crystal/cellulose, C33paperfronts, fluorescentmesh, ownC35spiralfronts and actualpublishedcaustic/glass/roughmineral art. All9root-source/15published selector union viewed plus own completed C35 actualsource. Not relying on process label alone. Originalhuman messaging-unavailablefallback authorizes full isolated strictC source after lane review; coordinator material/integration review pending, no Jared artapproval implied.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "1",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\filmdew-first-1-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "2",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\filmdew-first-2-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "3",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\filmdew-first-3-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "4",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\filmdew-first-4-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "5",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\filmdew-first-5-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 560,
+        "width": 172,
+        "right": 732,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "6",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\filmdew-first-6-neighbor-comparison.jpg",
+      "width": 384,
+      "height": 740,
+      "candidate": {
+        "x": 192,
+        "width": 172,
+        "right": 364,
+        "boardWidth": 384,
+        "fullyInside": true
+      }
+    }
+  ]
+}

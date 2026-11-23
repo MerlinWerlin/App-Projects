@@ -1,0 +1,38 @@
+{
+  "themeId": "pressgrain-arroyo",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.95dfa4da.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "95dfa4da69151cc0b9005d44da6594940ef122aaea8c9506fa1a8ed7b3680623",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.fe44c201.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "fe44c2018524aa98c39d5c80524e1f6b477caa87deac24cadffafffa990e9183",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.79bac2e1.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "79bac2e15eb2128d9ba6798ec1f5f6e5cd9726d41e56039f394e442052a3c359",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "actualCropsViewed": 3,
+    "finding": "All three final encoded phone crops were visually inspected. The shortened left bank tip has a visible plum margin and the complete roadrunner, fox, cactus, grass and opposite bank remain in frame."
+  }
+}

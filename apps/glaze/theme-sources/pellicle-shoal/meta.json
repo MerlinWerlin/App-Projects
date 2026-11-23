@@ -1,0 +1,19 @@
+{
+  "name": "Pellicle Shoal",
+  "mood": "Warm fibrous sea creatures float above a quiet plum-slate cellulose reef.",
+  "tags": [
+    "nature",
+    "marine",
+    "cellulose",
+    "pellicle",
+    "bio-fibre",
+    "membrane",
+    "sculpture"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity. Fictional marine forms in a cellulose-inspired sculptural habitat.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Macro wet cellulose-inspired membrane sculpture: cloudy amber/ivory fibrous laminae, torn fold lips, fine fibrils and seam droplets. Exact prompts and own-reference lineage retained in provenance.json.",
+  "addedAt": "2026-11-22",
+  "category": "Ocean & Water"
+}

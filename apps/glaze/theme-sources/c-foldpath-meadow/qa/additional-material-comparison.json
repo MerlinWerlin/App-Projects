@@ -1,0 +1,58 @@
+{
+  "sourceControls": [
+    {
+      "theme": "c-foldpath-meadow",
+      "id": "daffodil-foldpath",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-foldpath-meadow\\widgets\\daffodil-foldpath.a8cc90f5a893.png",
+      "sha256": "a8cc90f5a893bec4c2674b1f6dea5ca17c6876e662be1137792d583bdd648c52"
+    },
+    {
+      "theme": "ribbonrise-hedgerow",
+      "id": "foxglove-fern",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\ribbonrise-hedgerow\\widgets\\foxglove-fern.b4389d09.png",
+      "sha256": "b4389d09f4c297b1d6dca9aa0fe3abc72acc6cf61f5c7db21aa15947f652c4d3"
+    },
+    {
+      "theme": "turgor-tableau",
+      "id": "folded-lung",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\turgor-tableau\\widgets\\folded-lung.png",
+      "sha256": "7b4f0d597d18f168a2131ff202b0c7cce6cbf1455a5a29ff49dc94352a45e163"
+    },
+    {
+      "theme": "c-filmdew-garden",
+      "id": "cowslip-thinfilm",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-filmdew-garden\\widgets\\cowslip-thinfilm.33cfdbcd7989.png",
+      "sha256": "33cfdbcd79893f27a439d920ef9690f102f0b93c5052cd417dc775e607482804"
+    },
+    {
+      "theme": "c-foldpath-meadow",
+      "id": "fern-foldpath",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-foldpath-meadow\\widgets\\fern-foldpath.bd951903fc15.png",
+      "sha256": "bd951903fc15df6491d7faf68f56f5ab48952fb391f6416afa01c27694465ff6"
+    },
+    {
+      "theme": "tinwake-understory",
+      "id": "fern-fiddlehead",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\tinwake-understory\\widgets\\fern-fiddlehead.ede17d73.png",
+      "sha256": "ede17d73ef5f321409bd61b1854864705c219a6ad0183a68b03580672656245c"
+    },
+    {
+      "theme": "c-foldpath-meadow",
+      "id": "snail-foldpath",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-foldpath-meadow\\widgets\\snail-foldpath.9a0d7156d750.png",
+      "sha256": "9a0d7156d750d1a021bf4bd6134ec577bf2a202e0a4527688790b272d833d54a"
+    },
+    {
+      "theme": "tinwake-understory",
+      "id": "snail-bracken",
+      "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\tinwake-understory\\widgets\\snail-bracken.5c8d44af.png",
+      "sha256": "5c8d44af0126c3a7de200bc6713b3c95533e8649cb3c3539e5c8c5b33379c350"
+    }
+  ],
+  "sizes": [
+    170,
+    85
+  ],
+  "scope": "Actual hash-verified source artworks on the corresponding theme palette tiles.",
+  "visualFinding": "At 85 px the broad flat teal arrows and short coral coils read as diagram elements. Ribbonrise has satin stitching, Turgor has smooth inflated volume, Filmdew has broad iridescent fields, and Tinwake has hammered metal relief. These comparisons were reviewed before the source commit."
+}

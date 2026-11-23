@@ -1,0 +1,118 @@
+{
+  "id": "c-hyperspectral-dominion",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "oxbow-labyrinth",
+    "inverted-atoll",
+    "fault-staircase",
+    "estuary-crown",
+    "rift-triad"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.b2390ec2.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 36778,
+    "sha256": "b2390ec218c90f4a4ded7f27216ee97cfe384cbf15c2324f5ac27350f0b85a81",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "wallpaper": "Pale mint quiet upper field with flat false-colour classified deltas lower; no real geography or labels.",
+    "fiveArtworks": "All5separate sources reviewed at210and150pixels: oxbow strip, open atoll, rift staircase, branching estuary and three-island constellation remain distinct; flat sampled map texture consistent, alpha clean.",
+    "native": "All9app renderer candidate previews reviewed: octagon survey bezel, original nested contour/delta paths, ray markers/sword hands, river-trail battery and ledger calendar, values legible."
+  },
+  "packTestEvidence": "Unchanged common pipeline47existing cases covered by45initial passes and2encoder follow-up passes."
+}

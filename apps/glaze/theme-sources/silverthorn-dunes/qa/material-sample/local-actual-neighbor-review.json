@@ -1,0 +1,47 @@
+{
+  "scope": "Actual selected revised/held initial fennec, actual A11 hare, local observed baseline extras and own actual material neighbors. Coordinator separately compares shipped Silver Orchard dormouse. No comparison images used as generation inputs.",
+  "sources": [
+    {
+      "label": "B28 revised",
+      "medium": "Broad flush silver inlays",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-79c343b1-41d9-45bf-a71d-70ae0bcb8dff.png",
+      "sha256": "af76a26e1ae9d326c9814ad5e5c46fa86fbf9f54f89dd0d91137455b4b6d7b44"
+    },
+    {
+      "label": "B28 initial study",
+      "medium": "Dense pale fur marks; held",
+      "observedFile": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-daa8d276-992b-4cae-83d7-2cb89b04d33a.png",
+      "sha256": "f8ea23a642fff85bbad36d121c0d76d560a295905c199a849384b4a70ea64590"
+    },
+    {
+      "label": "A11 actual hare",
+      "medium": "Flat scratchboard knife cuts",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\hare.7326f063231c.png",
+      "sha256": "7326f063231ca7f2e5cbf5dfae7dbda3d7f8b47b664b331322de5b886875fa98"
+    },
+    {
+      "label": "Silver Orchard extra",
+      "medium": "Hammered silver / nacre / enamel",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\silver-orchard\\widgets\\widget-silver-pear-blossom.885b3b43.webp",
+      "sha256": "885b3b43228dd4d1e86fc6bbda5e320ce001928e421aeb1deec40470e6f0f75b"
+    },
+    {
+      "label": "Thistle Etch actual",
+      "medium": "Natural photographic bird",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\pack-artwork\\thistle-etch\\widgets\\widget-thistle-goldfinch.1dbe66a7.webp",
+      "sha256": "1dbe66a797d26ab53437e3dcc87112b534f00e95bc48c101e89637b34f8f41e1"
+    },
+    {
+      "label": "B19 chased tin",
+      "medium": "Sheet-metal hammer dimples",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\tinwake-understory\\widgets\\spotted-salamander.4b700601.png",
+      "sha256": "4b70060135a4673bbbbf66f07ea674f0e9ec5da5477b9759c1f7290bf6a7570b"
+    },
+    {
+      "label": "B8 nacre in lacquer",
+      "medium": "Iridescent shell wafer inlays",
+      "observedFile": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\nacre-nomads\\widgets\\orchard-caravan.56097594.png",
+      "sha256": "5609759490be5f16693abd3c87977f1df4db8052d0ec3574f98818b6c0eab6cb"
+    }
+  ]
+}

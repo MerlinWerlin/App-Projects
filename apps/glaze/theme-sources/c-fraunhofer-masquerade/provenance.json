@@ -1,0 +1,143 @@
+{
+  "theme": "c-fraunhofer-masquerade",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "cusp-herald",
+      "sourceImage": "sources/cusp-herald.515bb7638e6e.png",
+      "sourceSha256": "515bb7638e6ef5b84b372096016fcdccab7bb8d21f6c44784c870390c719a021",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/cusp-herald.86ea40d84204.png",
+      "sha256": "86ea40d84204d19cf643a2d6253de7b3508d0bcd625228e33ec8e5e08b10dfde",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 863207,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRAUNHOFER MASQUERADE: a tangible, inhabited nocturnal carnival world expressed entirely through photographic coherent-laser diffraction intensity. FIRST make the subject immediately recognizable as a creature, building, vehicle or machine with clear anatomy, architecture and purpose. THEN resolve its whole form into finely striped sinc lobes, nested Airy fringes, dark optical zeros and aligned luminous diffraction orders. Continuous magenta-pink and ice-cyan light fields with soft bone-white intensity peaks, deep violet voids. Rich microscopic optical fringes, no ordinary painted surface or generic3D render, no clay, metal, glass, rainbow photoelastic sheet or physical craft. Subject is specific and readable, not an abstract lobe diagram. No text, labels, numerals, clocks, hands on dials, dates, readings, UI, brand or watermark. Imaginary world; not actual scientific measurement. Asset: ONE separate square1024x1024 pure-art widget. Subject CUSP HERALD, a tangible invented masked courier creature striding in three-quarter view: large asymmetric three-lobed fan crown, a simple mask with two clear dark oval eye openings, compact torso, two visibly articulated arms and two long thin digitigrade legs ending in broad crescent feet. One hand raised in greeting, the other rests at the hip; tail is one short curled diffraction order. Creature anatomy and walking posture read instantly at thumbnail size. Fine sinc fringes define crown/body/limbs without any conventional solid material. Single whole figure centred inside central65%canvas;20%empty margins, every foot/crown tip fully visible. Genuine transparent alpha around and in eye/gap zeros, no backing tile, floor, shadow or image panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 790259
+    },
+    {
+      "id": "stilt-pavilion",
+      "sourceImage": "sources/stilt-pavilion.d82594646206.png",
+      "sourceSha256": "d82594646206e56e521181849db5394a9825abda87688174ef5e9523db413a04",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/stilt-pavilion.cccca7684529.png",
+      "sha256": "cccca7684529ff77bf15a3e02142ca4068b6cbabd983d8b97248fad9a546ad13",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1111871,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRAUNHOFER MASQUERADE: a tangible, inhabited nocturnal carnival world expressed entirely through photographic coherent-laser diffraction intensity. FIRST make the subject immediately recognizable as a creature, building, vehicle or machine with clear anatomy, architecture and purpose. THEN resolve its whole form into finely striped sinc lobes, nested Airy fringes, dark optical zeros and aligned luminous diffraction orders. Continuous magenta-pink and ice-cyan light fields with soft bone-white intensity peaks, deep violet voids. Rich microscopic optical fringes, no ordinary painted surface or generic3D render, no clay, metal, glass, rainbow photoelastic sheet or physical craft. Subject is specific and readable, not an abstract lobe diagram. No text, labels, numerals, clocks, hands on dials, dates, readings, UI, brand or watermark. Imaginary world; not actual scientific measurement. Asset: ONE separate square1024x1024 pure-art widget. Subject STILT PAVILION, a tangible inhabited tiny carnival house with an asymmetrical domed annular roof, one open arched doorway, three unequal little windows and four thin jointed stilt-legs ending in broad hooked pads. A short curved exterior stair leads from the doorway to one stilt, while a small chimney emits one quiet diffraction fringe curl. Three-quarter architectural view, unmistakably a strange little home, no clock face. Roof/walls/stilts formed by continuous light-intensity lobes and dense optical fringes; dark zeros form windows/door. Whole building fully inside central65%canvas,20%transparent margins; all stilts visible. True transparent alpha around and through large openings; no backing, floor, cast shadow or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 692933
+    },
+    {
+      "id": "sidelobe-skiff",
+      "sourceImage": "sources/sidelobe-skiff.95e90f10a9c7.png",
+      "sourceSha256": "95e90f10a9c73f9ef02884666617698c7ff5855d3fd1bf715b8071ef9c829807",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/sidelobe-skiff.31c06e1f445e.png",
+      "sha256": "31c06e1f445e4361ef6fcab7a4099445e1702bef1b2d5679ffd3459efd08569b",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 967811,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRAUNHOFER MASQUERADE: a tangible, inhabited nocturnal carnival world expressed entirely through photographic coherent-laser diffraction intensity. FIRST make the subject immediately recognizable as a creature, building, vehicle or machine with clear anatomy, architecture and purpose. THEN resolve its whole form into finely striped sinc lobes, nested Airy fringes, dark optical zeros and aligned luminous diffraction orders. Continuous magenta-pink and ice-cyan light fields with soft bone-white intensity peaks, deep violet voids. Rich microscopic optical fringes, no ordinary painted surface or generic3D render, no clay, metal, glass, rainbow photoelastic sheet or physical craft. Subject is specific and readable, not an abstract lobe diagram. No text, labels, numerals, clocks, hands on dials, dates, readings, UI, brand or watermark. Imaginary world; not actual scientific measurement. Asset: ONE separate square1024x1024 pure-art widget. Subject SIDELOBE SKIFF, a tangible little ferry with a sharply crescent-curved hull, clearly defined upturned prow and stern, a small cabin with one dark window and two unequal fan-shaped diffraction sails on a short forked mast. Three broad paddle-like optical fins below the hull give it an invented locomotion mechanism. Oblique side view, wide boat silhouette and readable cabin/sails; no human passengers or text. All forms continuous striped magenta/cyan optical intensity and dark zeros, no painted metal or wood. Whole vehicle inside central65%canvas with20%empty margins, no clipped sail tips. Real transparent alpha around/between sails/fins; no water backing, tile, floor, shadow or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 713569
+    },
+    {
+      "id": "annular-strider",
+      "sourceImage": "sources/annular-strider.5b913b9b5b84.png",
+      "sourceSha256": "5b913b9b5b8497b8d443e39775a04d858f89f2b47d6c0f0515901e4c0cea3783",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/annular-strider.5fb6b1587b9f.png",
+      "sha256": "5fb6b1587b9fa1d05863cfa2ec019135fe743bb0227bf607d969a53d37a0d832",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1290315,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRAUNHOFER MASQUERADE: a tangible, inhabited nocturnal carnival world expressed entirely through photographic coherent-laser diffraction intensity. FIRST make the subject immediately recognizable as a creature, building, vehicle or machine with clear anatomy, architecture and purpose. THEN resolve its whole form into finely striped sinc lobes, nested Airy fringes, dark optical zeros and aligned luminous diffraction orders. Continuous magenta-pink and ice-cyan light fields with soft bone-white intensity peaks, deep violet voids. Rich microscopic optical fringes, no ordinary painted surface or generic3D render, no clay, metal, glass, rainbow photoelastic sheet or physical craft. Subject is specific and readable, not an abstract lobe diagram. No text, labels, numerals, clocks, hands on dials, dates, readings, UI, brand or watermark. Imaginary world; not actual scientific measurement. Asset: ONE separate square1024x1024 pure-art widget. Subject ANNULAR STRIDER, a tangible squat invented four-legged carnival beast: low barrel-like body, four short jointed legs ending in broad split toes, a large tilted ring-shaped aperture head at the front with two unequal dark eye-holes inside its luminous inner mask, and a long forked tail raised behind. Three-quarter view with friendly curious head tilt; recognizable quadruped anatomy, not just a portal or ring. Head/body/limbs resolved into soft continuous diffraction lobes and tiny aligned sinc fringes; magenta/cyan/white peaks. Whole beast inside central65%canvas with20%transparent margins, full feet/tail visible. Genuine alpha exterior and aperture holes; no backing, tile, ground, cast shadow or panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 611705
+    },
+    {
+      "id": "beam-harvester",
+      "sourceImage": "sources/beam-harvester.5888e79b6815.png",
+      "sourceSha256": "5888e79b6815471da56e06aa15708d7ea683655ac737e4aba0d3cdfd9cb68297",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/beam-harvester.b2d524de016a.png",
+      "sha256": "b2d524de016a1b580e9856598d9394fbd91f3f84dd979c9b702c6eaa4002c79b",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 930103,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRAUNHOFER MASQUERADE: a tangible, inhabited nocturnal carnival world expressed entirely through photographic coherent-laser diffraction intensity. FIRST make the subject immediately recognizable as a creature, building, vehicle or machine with clear anatomy, architecture and purpose. THEN resolve its whole form into finely striped sinc lobes, nested Airy fringes, dark optical zeros and aligned luminous diffraction orders. Continuous magenta-pink and ice-cyan light fields with soft bone-white intensity peaks, deep violet voids. Rich microscopic optical fringes, no ordinary painted surface or generic3D render, no clay, metal, glass, rainbow photoelastic sheet or physical craft. Subject is specific and readable, not an abstract lobe diagram. No text, labels, numerals, clocks, hands on dials, dates, readings, UI, brand or watermark. Imaginary world; not actual scientific measurement. Asset: ONE separate square1024x1024 pure-art widget. Subject BEAM HARVESTER, a tangible walking collection machine of the carnival world: large open crescent hopper on top, compact housing with one visible hinged service hatch, a long curved scoop-arm reaching forward with a three-pronged collecting claw, and three unequal jointed legs ending in broad rounded pads. A small bundle of captured light-seeds sits visibly inside the hopper. Invented purposeful machine, recognizable articulated mechanisms, strong asymmetric low-wide silhouette. Every part consists of continuous striped optical intensity lobes with dark-zero joints; no ordinary metal, glass or generic robot icon. Whole machine centred within central65%canvas,20%empty margin on every side, full claw/feet visible. Real alpha outside and in open gaps; no backing, tile, floor, shadow or image panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 755702
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.d9d64ef5529f.png",
+      "sourceSha256": "d9d64ef5529fb69bedd729aa966d923ff148429be051b1a6661d89d9b5aca1e0",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "ccd1b632921903f7aa82eeffa23e9c9b860ad7468e9fa23611ab8f59efcf1e1d",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 4104138,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE FRAUNHOFER MASQUERADE: a tangible, inhabited nocturnal carnival world expressed entirely through photographic coherent-laser diffraction intensity. FIRST make the subject immediately recognizable as a creature, building, vehicle or machine with clear anatomy, architecture and purpose. THEN resolve its whole form into finely striped sinc lobes, nested Airy fringes, dark optical zeros and aligned luminous diffraction orders. Continuous magenta-pink and ice-cyan light fields with soft bone-white intensity peaks, deep violet voids. Rich microscopic optical fringes, no ordinary painted surface or generic3D render, no clay, metal, glass, rainbow photoelastic sheet or physical craft. Subject is specific and readable, not an abstract lobe diagram. No text, labels, numerals, clocks, hands on dials, dates, readings, UI, brand or watermark. Imaginary world; not actual scientific measurement. Asset: ONE portrait phone wallpaper1290x2796. An inhabited carnival settlement beside a dark channel: one small asymmetrical stilt-pavilion with an open luminous doorway and clearly readable windows sits low right, a little crescent-hulled ferry with two unequal fan-sails glides at bottom left, and a long-legged masked light-courier stands near the doorway. All architecture and beings are formed from the same continuous diffraction intensity and finely striped lobes, with optical zeros making windows and gaps. A winding fringe-light walkway connects the village. Near-black violet upper third and centre left remain quiet for phone widgets. Polished coherent little world, not a diagram or abstract shape collection. Opaque full-bleed portrait, no device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Jared22Nov: bridge the liked art styles into tangible subjects. Earlier abstract studies retained separately; selected set now inhabits a coherent light-carnival world."
+}

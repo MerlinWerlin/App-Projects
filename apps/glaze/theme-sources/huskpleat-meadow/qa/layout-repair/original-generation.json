@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "HUSKPLEAT MEADOW, Glaze Nature. Use case: stylized-concept. ONE original1290x2796 VERY TALL PORTRAIT PHONE WALLPAPER, aspect about0.4614. One coherent recognizable MEADOW HEDGEROW EDGE handcrafted entirely from broad dried CORN-HUSK LEAF SHEETS, softened then folded/fan-pleated/pinched/gathered, rolled forslenderstalks andsecured by sparse thinhuskbindingturns. Fine LONGITUDINAL PLANT RIBS, drymattefinewrinkles, broadcreamy/ochre/russetleafareas andcurledthinlips, obvious broadgathers/3to5pleatfolds. Image1 own barnowl is bird/materialreference; Image2 own dogrose is plant/materialreference; Image3 own harvestmouse is animal/materialreference. Integrate intoONEnew unified natural scene, nocollage/panels. A whole naturally proportioned BARN OWL perches facinginwardLEFT atmidRIGHT, heartfaceoftwocream fanfolds/2smalldarkhuskeyes/pointedbeak, broadochre/russet foldedwings/cream gatheredbreast,2wholelegs/feetgrip ONE shortslopingrolledhusk drybranch, fullshorttail. AtlowerLEFT a whole small HARVEST MOUSE climbs one diagonal rolledhusk grassstalk endingonecompactseedhead, smallpointedsnout/2roundedpleatedears/4wholecoherentpaws gripstalk, long thin prehensiletail wrapsONCEaroundlowerstalk thenendsinwholeopen curve. A tall slender DOG ROSE branch rises behind towardupperRIGHT, exactlyTWO openfive-petal cream/blushrusset huskflowers, ONEclosedbud and3naturalserratedleafletgroups; fivebroadfanpleated petals each andtinyfoldedhuskstamens, no radialmanypetals. Two slendergrassblades andlow irregularbroadpleatedleafbank connectbottomsubjects, noflowerwreath/arch/plaque/frame/pedestal. Entireanimals/plants/bankdrycornhusk, no livingfur/feathers/planttissue underneath. Not wickerweave/braidedbody/macrame, no silk/satinribbonstitches, flatstrawinlay, woodgrain/pencilshaving serratedpaintededges/excelsior, rigid pasta, clay/pulp/plastic/metals/gems. Background quiet UNIFORM mutedPLUM #514151 withbarelyvisiblematte texture, no busyphotographichedgerow/scenery. Fuller/larger tallcomposition spans about80to84percentWIDTH and60to64percentHEIGHT fromroughly24to86percentheight, real8to10percentSIDEmargins and12percentBOTTOMmargin. Upper22percentquietforicons. Allowlface/bill/feet/toes/wing/tailtips, mouseears/4paws/tailtip/seedhead, rosepetaltips/bud/serratedleaflets/thorns, grass/branch/groundlipends COMPLETELY contained withroomaroundthem. No giant croppedcreature and no tinyisland inblankborder. Softdiffuselight revealsdryleafribs/folds; no externalcastshadow/halo/glow. No letters/numbers/text, dates/time/clockfaces/battery/weatherreadings, UI/phonemockup/logo/signature. Deliveronlyfinished tallwallpaper.",
+  "tool": "built-in image_gen",
+  "source": "qa/layout-repair/wallpaper.original.4eeb1b62.png",
+  "sourceSha256": "4eeb1b629b427391da4297f697d54b7b9cc2cb283143d63374e01b9df8234fb4",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "1fddc9687cc4a4899790e5397674fb391b23a431350420750b7c28ebee2abaf9",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "barn-owl",
+      "file": "sources/barn-owl.467770ba.png",
+      "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 2,
+      "id": "dog-rose",
+      "file": "sources/dog-rose.243572b5.png",
+      "sha256": "243572b5311a79490637ccbe1d501d0494266188bd0ef5a09b7e30e7063bbe5f",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 3,
+      "id": "harvest-mouse",
+      "file": "sources/harvest-mouse.3494bad6.png",
+      "sha256": "3494bad681b180c3b6ed71d13abb9e188303072ed9313f5629733078c18c9659",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/layout-repair/wallpaper-initial-request.json",
+  "exactToolResult": "qa/layout-repair/wallpaper-layout-original.json"
+}

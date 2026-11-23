@@ -1,0 +1,14 @@
+{
+  "theme": "c-chronophotographic-ensemble",
+  "recipe": ["seal", "cChronoBellows", "cChronoEchoes", "bars", "sword", "trail", "ledger"],
+  "art": {
+    "cChronoBellows": "M 33 34 Q 17 15 9 25 Q 13 38 34 40 M 66 34 Q 82 15 92 24 Q 88 38 66 40 M 34 34 Q 35 18 50 18 Q 65 18 66 34 L 65 42 M 35 42 Q 21 59 33 80 Q 50 93 67 80 Q 79 59 65 42 Z M 42 43 Q 32 61 42 83 M 50 43 L 50 86 M 58 43 Q 68 61 58 83 M 41 29 L 44 29 M 56 29 L 59 29 M 35 48 L 19 57 L 24 70 L 39 65 M 66 48 L 81 57 L 76 70 L 61 65 M 34 80 L 27 92 L 15 97 L 39 97 L 44 87 M 64 82 L 73 92 L 86 97 L 62 97 L 56 88",
+    "cChronoEchoes": "M 11 75 Q 3 47 22 27 Q 29 20 32 29 M 21 84 Q 12 53 31 34 Q 38 27 41 37 M 31 90 Q 22 61 41 42 Q 48 35 51 45 M 64 24 Q 84 38 88 65 M 57 34 Q 75 48 79 75 M 51 44 Q 66 58 70 85"
+  },
+  "ornament": "M 26 78 Q 31 72 36 78 Q 41 84 35 89 Q 29 91 26 78 Z M 31 75 Q 40 59 50 48 Q 66 31 80 20 M 38 81 Q 48 67 59 56 Q 73 42 88 35 M 22 66 Q 28 51 38 39 Q 48 27 64 17",
+  "ornamentDirection": "One small articulated hinge and three successive gesture sweeps; a restrained motion-study fragment for calendar and medium-clock headers.",
+  "ornamentProvenance": "Original authored 100x100 SVG path, 22 November 2026, following Jared corner-composition steering. Header ornament separate from large native hero paths.",
+  "direction": "Living bellows performer with repeated-motion contour echoes; seal dial/bar markers/sword hands, warm trail charge gauge and ledger calendar. Compact hinge-and-sweep ornament keeps small headers clear.",
+  "values": "Existing live Clock/Battery/Calendar mechanisms. All raster art number-free.",
+  "registryIntegration": "Coordinator integrates original source descriptor and optional ornament into shared registries."
+}

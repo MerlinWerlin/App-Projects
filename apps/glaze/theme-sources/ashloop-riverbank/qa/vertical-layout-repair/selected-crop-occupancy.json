@@ -1,0 +1,59 @@
+{
+  "scope": "Read-only warm-wood color threshold on encoded variants. Visually verified whole figures and both sides. Bounding boxes quantify group scale and show both edges clear. Shadow texture may extend beyond measured warm wood threshold.",
+  "variants": [
+    {
+      "variant": "wallpaper-2796.1615695d.webp",
+      "size": [
+        1290,
+        2796
+      ],
+      "warmWoodBoundsInclusive": [
+        10,
+        812,
+        1281,
+        2216
+      ],
+      "warmWoodClearancePixels": [
+        10,
+        8
+      ],
+      "contentHeightPercent": 50.3
+    },
+    {
+      "variant": "wallpaper-2556.9f1517d8.webp",
+      "size": [
+        1179,
+        2556
+      ],
+      "warmWoodBoundsInclusive": [
+        9,
+        742,
+        1171,
+        2026
+      ],
+      "warmWoodClearancePixels": [
+        9,
+        7
+      ],
+      "contentHeightPercent": 50.3
+    },
+    {
+      "variant": "wallpaper-1334.bf9fcd70.webp",
+      "size": [
+        750,
+        1334
+      ],
+      "warmWoodBoundsInclusive": [
+        6,
+        326,
+        744,
+        1142
+      ],
+      "warmWoodClearancePixels": [
+        6,
+        5
+      ],
+      "contentHeightPercent": 61.2
+    }
+  ]
+}

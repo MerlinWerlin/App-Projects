@@ -1,0 +1,118 @@
+{
+  "id": "c-neutrino-reliquary",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "cascade-gate",
+    "vertex-vessel",
+    "muon-harp",
+    "pair-production-knot",
+    "scintillation-keel"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.05098366.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 10378,
+    "sha256": "05098366b9216d71ceaa531500255ffbdf6299bf038ad5b99d9a902fe4ebad28",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "wallpaper": "Open aubergine upper field with large asymmetric detector event below; no fixed values.",
+    "fiveArtworks": "All5separate sources reviewed together at210and150pixels on matching purple backgrounds; clear open arch, fan, diagonal comb, two-curl event and hooked keel. Real alpha; no opaque panels.",
+    "native": "All9actual app renderer candidate previews reviewed; hex detector bezel, pin markers, sword hands, trajectory charge gauge and ledger calendar legible. Shared registry integration pending coordinator."
+  },
+  "packTestEvidence": "Common pipeline unchanged since first theme:47 existing pack cases verified,45initial passes and2encoder follow-up passes."
+}

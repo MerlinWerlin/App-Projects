@@ -1,0 +1,1 @@
+Bismuth Anomaly tangible-world candidate for APPS A2, authored by Lane A. Five individually generated artworks, wallpaper, palette and native Clock/Battery/Calendar direction. Unpublished; exact prompts, hashes and original studies retained.

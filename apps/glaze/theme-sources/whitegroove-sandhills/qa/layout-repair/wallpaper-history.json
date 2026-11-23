@@ -1,0 +1,19 @@
+{
+  "reason": "Actual phone crops clipped the fox rump, left grass and outer dune bands. The one lateral layout edit shifts the silhouette groups toward the center and shortens outer bands while retaining vertical presence.",
+  "originalGeneration": "qa/layout-repair/original-generation.json",
+  "originalSource": "qa/layout-repair/wallpaper.original.fcb82939.png",
+  "originalSha256": "fcb82939c21db169960c35201343dae0b40c2e166a67edd465aa36fecc3f7155",
+  "selectedSource": "sources/wallpaper.f5159959.png",
+  "selectedSha256": "f51599590d42d861bca5faba4c8cca6050241ca194c6a8b2c5e82d31717f3c1e",
+  "exactRequest": "qa/layout-repair/wallpaper-layout-repair-request.json",
+  "exactResult": "qa/layout-repair/wallpaper-layout-repair-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.fcb82939.png",
+      "sha256": "fcb82939c21db169960c35201343dae0b40c2e166a67edd465aa36fecc3f7155",
+      "role": "Own original scene EDIT TARGET for layout-only horizontal spacing. All five standalone artworks and native identity preserved."
+    }
+  ]
+}

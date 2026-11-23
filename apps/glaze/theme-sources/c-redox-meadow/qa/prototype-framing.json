@@ -1,0 +1,34 @@
+{
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sourceSha256": "cc3e25806e98a6ba577ec634d033fb0b1c2dfcfd7ffc1f7b6dea7e4323c43fdf",
+  "sourceBoundsByAlphaThreshold": {
+    "16": [
+      139,
+      133,
+      1118,
+      1160
+    ],
+    "96": [
+      140,
+      134,
+      1117,
+      1159
+    ]
+  },
+  "edgeAlphaMaximum": 1,
+  "fixedOutsideProbeAlpha": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "fixedBodyProbeAlpha": {
+    "upperSpiralCentre": 253,
+    "middleWaveField": 253,
+    "lowerSpiralCentre": 253
+  },
+  "probeScope": "Visually chosen descriptive points, no segmentation, real concentration data or experiment claim."
+}

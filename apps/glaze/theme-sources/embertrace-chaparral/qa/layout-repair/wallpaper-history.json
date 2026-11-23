@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "reason": "Reduce and reposition complete habitat for all actual wallpaper crop variants.",
+  "originalPrompt": "EMBERTRACE CHAPARRAL. Original Glaze Nature phone wallpaper, portrait1290x2796. Input1 is OWN quail/manzanita reference for exact hand-formed horsehair carbon-fired UNGLAZED IVORY CERAMIC material and natural quail anatomy, not a layout or sheet to paste. Build ONE connected recognizable chaparral habitat: a low gently spreading manzanita branch with a few complete oval leaves, two California poppy cups and one small sage sprig; a modest whole natural quail with one curved crest and both complete feet stands quietly left, one small natural brush rabbit rests right. All flora/fauna and short connected dry boughs made from warm pale solid burnished clay with a few separated fine UNBRANCHED sinuous/open-loop carbonized horsehair strand trails and localized soft smoke deposits, no forked branching marble/crackle network ON the ceramic, very restrained rust/iron blush. No painted feathers/fur, allover fine crackle mesh, glazed celadon, metal, wood grain, ordinary photoreal fur or loose real hair. Natural whole flora/fauna, coherent anatomy, not chibi toys, pottery vases or separate sticker collage. Entire whole connected habitat occupies only CENTRAL46percent of total canvas width and CENTRAL22percent height, horizontal center50percent and vertical center58percent. All crest/ears/tails/feet/flower/leaf/branch tips well inside habitat; at least26percent quiet margin on BOTH left/right sides. Top43percent completely quiet, bottom24percent quiet. Huge calm plain warm sage-gray #B7B5A9 background with barely perceptible compatible tone variation, no grain noise, no surrounding smoke. No branches extending toward any screen edge, no corner decorations, frame, badge, plinth, rectangular base, table or enclosing terrarium. No text, letters, numbers, dates/weather/clock/battery values, icons, UI, logos/signature. Entire opaque coherent wallpaper background, no transparency. Keep clay habitat deliberately SMALL so every actual phone crop has ample quiet space.",
+  "originalSource": "qa/layout-repair/wallpaper.original.1554e340.png",
+  "originalSha256": "1554e340a9425d590a38e7a8db5a05048331981bce274c290e06318ba103e979",
+  "repairPrompt": "Precise LAYOUT-ONLY edit of input1, own Embertrace Chaparral wallpaper. Preserve exact existing connected ceramic chaparral habitat: natural quail with small topknot/two feet, brush rabbit, two poppy cups, manzanita leaves, sage and complete joined dry bough, pale burnished unglazed ceramic, separated thin sinuous carbon strands with localized smoke deposits ON ceramic, restrained iron blush, soft lighting, warm sage-gray #B7B5A9 background and portrait aspect ratio. Uniformly scale the ENTIRE whole existing connected habitat to65percent of its CURRENT width and height as ONE unit. Keep every individual organism/object proportion and its relative arrangement unchanged. Center whole smaller habitat horizontally and place its overall center at57percent canvas height. Reconstruct ONLY matching quiet warm sage-gray background around it, smooth subtle compatible tone, no visible rectangular pasted edge. Final whole habitat occupies about HALF total canvas width, at least24percent quiet blank background on both left/right sides; large quiet areas above/below. Preserve every crest/ear/tail/foot/petal/leaf/branch tip complete. No crop, no added/duplicated/replaced species, no extra branches reaching screen edges, no peripheral vines/corner decorations, no enlarged rabbit/quail, no frame/text/UI or added haze. Exact original internal carbon-fired material and natural anatomy retained. Opaque full wallpaper background, no transparency.",
+  "referencedImage": "qa/layout-repair/wallpaper.original.1554e340.png",
+  "selectedSource": "qa/second-audit/previous-selected-wallpaper.png",
+  "selectedSourceSha256": "5dfad0fe045e6b9ef2b4f27978327e6e851754b6380b98d72c76f39dd31534eb",
+  "initialMaterialAndAnatomyReferences": [
+    {
+      "id": "quail-manzanita",
+      "source": "sources/quail-manzanita.25cfcc80.png",
+      "sourceSha256": "25cfcc80efc81d0ca163aaab9945a0f45aece4074f75ac1b729b16312eea8c43",
+      "role": "Own approved material/anatomy reference for initial wallpaper; no external or neighbor reference input."
+    }
+  ],
+  "initialReferencedImageOrder": [
+    "sources/quail-manzanita.25cfcc80.png"
+  ],
+  "initialExactToolRequest": "qa/layout-repair/exact-initial-material-request.json",
+  "exactToolRequest": "qa/layout-repair/exact-layout-only-request.json",
+  "selectedSourceLocationNote": "Exact selected raster retained here after second-audit enlargement/recomposition; generation inputs/order/hashes unchanged."
+}

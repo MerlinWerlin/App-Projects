@@ -1,0 +1,21 @@
+{
+  "source": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-3dd47692-ca4a-4c14-9260-273e071001d0.png",
+  "sha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "edgeAlphaMax": 1,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "coreAlpha96Bounds": [
+    122,
+    14,
+    1111,
+    1243
+  ],
+  "stage": "First material/silhouette prototype; not a completed pack.",
+  "published": false
+}

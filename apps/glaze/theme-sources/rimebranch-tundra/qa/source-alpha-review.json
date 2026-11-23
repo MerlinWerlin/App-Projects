@@ -1,0 +1,152 @@
+[
+  {
+    "id": "ptarmigan-willow",
+    "label": "Ptarmigan & Willow",
+    "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\rimebranch-studies\\refined-ptarmigan.png",
+    "sha256": "2b44d5c2e7d47868b35647bed1663d204d4afe15a09edca2d870e9c532fe5536",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "16": [
+        120,
+        191,
+        1169,
+        1072
+      ],
+      "96": [
+        121,
+        192,
+        1169,
+        1072
+      ]
+    },
+    "fourExteriorSamples": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "arctic-hare",
+    "label": "Arctic Hare",
+    "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\rimebranch-studies\\arctic-hare-original.png",
+    "sha256": "daa98bebe5aaa0fc6011e764904819ddb71097d9c7ad0d9f183045c59fa9bb55",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "16": [
+        154,
+        134,
+        1140,
+        1083
+      ],
+      "96": [
+        154,
+        134,
+        1139,
+        1082
+      ]
+    },
+    "fourExteriorSamples": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "muskox",
+    "label": "Crystal Muskox",
+    "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\rimebranch-studies\\muskox-original.png",
+    "sha256": "6931fdc017b9b790697a4b1c7ef64bcd92f6fa3192156b11df94b17c4669677e",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "16": [
+        100,
+        184,
+        1177,
+        1111
+      ],
+      "96": [
+        100,
+        185,
+        1176,
+        1110
+      ]
+    },
+    "fourExteriorSamples": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "arctic-poppy",
+    "label": "Arctic Poppy",
+    "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\rimebranch-studies\\arctic-poppy-original.png",
+    "sha256": "7c282cc9d2083a45b2dfe5c2884fda12f1f9a14707b2dae76fecb1d2f7c80fc3",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "16": [
+        204,
+        99,
+        1041,
+        1173
+      ],
+      "96": [
+        205,
+        100,
+        1040,
+        1173
+      ]
+    },
+    "fourExteriorSamples": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "dwarf-willow",
+    "label": "Dwarf Willow",
+    "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\rimebranch-studies\\dwarf-willow-original.png",
+    "sha256": "658a03c8b91c3e093b207714919e90ad2b40f46d38e7d9f6839a14a6f8fa60d9",
+    "size": [
+      1254,
+      1254
+    ],
+    "alphaBounds": {
+      "16": [
+        138,
+        269,
+        1135,
+        1034
+      ],
+      "96": [
+        139,
+        271,
+        1134,
+        1033
+      ]
+    },
+    "fourExteriorSamples": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+]

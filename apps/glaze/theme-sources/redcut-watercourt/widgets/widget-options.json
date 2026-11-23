@@ -1,0 +1,62 @@
+[
+  {
+    "id": "folding-aqueduct",
+    "kind": "art",
+    "image": "folding-aqueduct.9c2aef7b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Folding Aqueduct"
+  },
+  {
+    "id": "spiral-cistern",
+    "kind": "art",
+    "image": "spiral-cistern.93446f18.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Spiral Cistern"
+  },
+  {
+    "id": "bell-canopy-bath",
+    "kind": "art",
+    "image": "bell-canopy-bath.828ec2ae.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bell Canopy Bath"
+  },
+  {
+    "id": "counterpoise-lockhouse",
+    "kind": "art",
+    "image": "counterpoise-lockhouse.98364d5b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Counterpoise Lockhouse"
+  },
+  {
+    "id": "canal-stair-mill",
+    "kind": "art",
+    "image": "canal-stair-mill.1e515c48.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Canal Stair Mill"
+  }
+]

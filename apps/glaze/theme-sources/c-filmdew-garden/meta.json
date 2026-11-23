@@ -1,0 +1,16 @@
+{
+  "name": "Filmdew Garden",
+  "mood": "Whole garden leaves hold pearly light curtains and quiet dark windows.",
+  "tags": [
+    "thin-film-image",
+    "optical-drainage",
+    "whole-garden-nature",
+    "reflected-light"
+  ],
+  "credits": "Original built-in image_gen art. Static artistic thin-film imagery, not authentic soap/plant experiment, calibrated thickness/color map or simulation.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Whole familiar natural forms as nearly flat thin-film drainage images, broad pearly colour curtains and irregular dark-film windows. Exact prompts retained, no external visual inputs.",
+  "addedAt": "2026-11-23",
+  "category": "Nature"
+}

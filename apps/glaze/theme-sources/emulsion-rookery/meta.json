@@ -1,0 +1,19 @@
+{
+  "name": "Emulsion Rookery",
+  "mood": "Familiar wildlife and an orchid made from translucent film strips rest in a quiet silver-sage garden.",
+  "tags": [
+    "nature",
+    "wildlife",
+    "orchid",
+    "film-strip",
+    "celluloid",
+    "sprocket",
+    "sculpture"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity. Familiar natural forms portrayed as crafted film-strip sculptures, not documentary specimens.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Continuous thin perforated photographic film sculptures with rectangular dye-frame windows and square sprocket holes. Petrol/teal/coral/copper wildlife and orchid in a natural fern/moss garden. Exact prompts and own-reference lineage retained.",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

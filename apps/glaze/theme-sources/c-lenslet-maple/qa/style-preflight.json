@@ -1,0 +1,267 @@
+{
+  "theme": "c-lenslet-maple",
+  "status": "Coordinator accepted the exact first unchanged after full, 170 px, 85 px and all seven comparison boards. The left to overlap to right shift of the mushroom against the dark trunk reads inside the whole maple. The rows remain vertically similar. Keep an artistic multi-view illustration and preserve the first source.",
+  "sample": {
+    "id": "maple-viewpoints",
+    "selected": true,
+    "sourceSha256": "9bef9150496c0be8116cb7115303df022a6d2634c291beb15f76c347bdf3fcd9",
+    "prompt": "Use case: stylized-concept. Create one original square nature cutout for Glaze, Lensleaf Glade. The first thing someone sees at small size is one familiar whole five-lobed autumn maple leaf, facing forward on a slight clockwise tilt, with complete sharp lobe tips, a coherent copper-orange perimeter and a complete slender curved stem. The complete leaf and stem fit inside the central 76 percent of the image. True transparent alpha outside the whole leaf. The leaf is flat in the image, with a restrained amber edge and clear silhouette.\n\nInside the leaf, lay a coarse two-row, three-column register of six broad, flat, touching optical views. They all show the same tiny woodland scene in the same light and the same warm colors: ONE highly simplified pale ivory mushroom with a single broad cap and thick stalk, a spruce-green far vertical tree trunk, and one broad moss slope. No other miniature objects. Leave the edge of the leaf uninterrupted where it clips the outer windows. Keep the six views adjacent with very thin or invisible seams. Use a strong value difference between the ivory mushroom and the dark trunk so they can both be seen in a tiny preview. Give each window the same warm amber earth and dark natural evergreen. The near mushroom shifts progressively to the right relative to the far trunk as you look from left to center to right within each row. It partly overlaps the trunk in the center. The near mushroom sits slightly lower relative to the distant trunk in the second row. Preserve one clear cap in every full view. The relative positions, rather than differences in colors, let the viewer see six different directions on the same scene. This is invented artistic integral imaging, without actual capture or reconstruction.\n\nKeep the outer maple shape visibly uninterrupted and strong even at 85 px. Broad bold forms and restrained tonal detail, with two or three secondary shade transitions per window. No tile bevels, glass beads, shiny lens surfaces, metal leading, dark grid border, bright cut-paper seams, unrelated samples, checkerboard colors, photographic leaf veins sprawling over the little views, labels, text, logo, watermark, noise overlay, haze, outline glow or exterior shadows. No rectangular background, stand, frame, room or device. One square pure piece of original art with a completely transparent exterior. No external source images.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        42,
+        20,
+        1241,
+        1238
+      ],
+      "96": [
+        42,
+        21,
+        1241,
+        1238
+      ]
+    },
+    "edgeAlphaMaximum": 1
+  },
+  "neighbors": [
+    {
+      "theme": "c-chlorotype-leaflight",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chlorotype-leaflight\\widgets\\fig-leaf-robin.38da7049abf5.png",
+      "sha256": "38da7049abf5c24be36ac6cfe8b575d40339e2328a99046a2a5cd1a886b5ac2b"
+    },
+    {
+      "theme": "c-anaglyph-crossing",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-anaglyph-crossing\\widgets\\stiltshell.7434e1508785.png",
+      "sha256": "7434e15087851decc501ece5df778348a38504f040beb4cbaa6eff458cc021a5"
+    },
+    {
+      "theme": "c-chronophotographic-ensemble",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chronophotographic-ensemble\\widgets\\bellows-breather.2baf90daf94f.png",
+      "sha256": "2baf90daf94fa5fef3ec6a8260946d800909bccb899098fe4f5131bb13d2e939"
+    },
+    {
+      "theme": "c-deflectometric-bazaar",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-deflectometric-bazaar\\widgets\\counterweight-vendor.7fd244e5debe.png",
+      "sha256": "7fd244e5debecd746ddbdcbb5ad8d70efabc1753bda7959a27055fba8bcfbd3b"
+    },
+    {
+      "theme": "c-hyperspectral-dominion",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-hyperspectral-dominion\\widgets\\oxbow-labyrinth.334c3ebbade1.png",
+      "sha256": "334c3ebbade1426a83619b95f502525a5db0df2f8331c8fd2c90ae109e6f699d"
+    },
+    {
+      "theme": "c-fringe-projection-grove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-fringe-projection-grove\\widgets\\split-vane-fern.15cbd4efa319.png",
+      "sha256": "15cbd4efa31911a69cadf64437da875d0d677be18f3a8137ec77172f97103ad0"
+    },
+    {
+      "theme": "beadweft-estuary",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\beadweft-estuary\\widgets\\kingfisher-reeds.769e09df.png",
+      "sha256": "769e09df2554142a36eb6ecb6700a328bf6b724008ef0c97bd8dbd3455a321e5"
+    },
+    {
+      "theme": "commesso-underwood",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\commesso-underwood\\widgets\\bullfinch-sprig.9732bf92.png",
+      "sha256": "9732bf92aac6826c5a61f98d75f9faf813f6c28b6255eb1fe7ec64d5a9a55b5d"
+    },
+    {
+      "theme": "cutstack-skyport",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\cutstack-skyport\\widgets\\foldwing-mooring-tower.55992a8a.png",
+      "sha256": "55992a8ab2bfdc5be41c8dae160713279cb3f5691c107536eea1d5d7745a9322"
+    },
+    {
+      "theme": "c-chlorotype-leaflight",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chlorotype-leaflight\\widgets\\nasturtium-frog.ce57b469e02e.png",
+      "sha256": "ce57b469e02e4a0a78f9cfcbf9d23ecacce7f2ec50c32fddfce3616ef75ab111"
+    },
+    {
+      "theme": "c-chlorotype-leaflight",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chlorotype-leaflight\\widgets\\ginkgo-pair-butterfly.6dcee51e449a.png",
+      "sha256": "6dcee51e449a13f591d6087afdb34f94fbe1a7e2e35a11524ccf7c3993e9d155"
+    },
+    {
+      "theme": "lumen-mosaic",
+      "optionId": "tessellated-sunbird",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-tessellated-sunbird.81d4eab9.webp",
+      "sha256": "81d4eab99cc1ad6482949706585c38f7511070afb1990d416716b27b1a2b239c",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    },
+    {
+      "theme": "lumen-mosaic",
+      "optionId": "art-20261107-mosaic-pomegranate",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-mosaic-pomegranate.95e71503.webp",
+      "sha256": "95e71503abc1809848b3d349db3948718b1e87f3fae96ff3a48322507bf9ab13",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    },
+    {
+      "theme": "lumen-mosaic",
+      "optionId": "art-20261107-jewel-window",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-jewel-window.4ddf81a5.webp",
+      "sha256": "4ddf81a5ee979e56eefba471eac49a9e9a4c2f4d421f7ef8dc58a2b3f1515264",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    },
+    {
+      "theme": "lumen-mosaic",
+      "optionId": "stained-glass-iris",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\widget-stained-glass-iris.b4fa5f9e.webp",
+      "sha256": "b4fa5f9e4b9d22a38fde9bb651ec141412c8893c6fc56d9646a6b0249321d17e",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\lumen-mosaic\\v8\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    },
+    {
+      "theme": "prism-orchard",
+      "optionId": "glass-plum",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\widget-glass-plum.df948b64.webp",
+      "sha256": "df948b647b05e17044f06ca92bbab84594235cbdd28704213e3e6dfeb297d51f",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    },
+    {
+      "theme": "prism-orchard",
+      "optionId": "petal-hummingbird",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\widget-petal-hummingbird.2e0c34fc.webp",
+      "sha256": "2e0c34fc637a1eedad6ca0f7a77c4e067ced252725b4e9a1a99b78f1a08cd085",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    },
+    {
+      "theme": "prism-orchard",
+      "optionId": "opal-butterfly",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\widget-opal-butterfly.444dc4ac.webp",
+      "sha256": "444dc4acb555b63aaf4aa1d63af8e013c76194a746b9a36ab118c686be80aaa8",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\prism-orchard\\v7\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    },
+    {
+      "theme": "fern-and-brass",
+      "optionId": "brass-leaf-beetle",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\widget-brass-leaf-beetle.78dc3cc0.webp",
+      "sha256": "78dc3cc0a760dede45cd85e6d0985837dbb60c63bd6e348b44102eb2c78bcd21",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    },
+    {
+      "theme": "fern-and-brass",
+      "optionId": "fern-glasshouse",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\widget-fern-glasshouse.25659d29.webp",
+      "sha256": "25659d294beac074d5dfc81f5272dfa3be31e2f3c12a376ee6ec6db02f545961",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    },
+    {
+      "theme": "fern-and-brass",
+      "optionId": "brass-acorn",
+      "origin": "accepted_PR307_rebuild_unpublished_snapshot",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\widget-brass-acorn.274ede4b.webp",
+      "sha256": "274ede4bcd03ddb707a20e605b7b231aad65a50c0692ed934bbbb534d3497dbf",
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\fern-and-brass\\v8\\manifest.json",
+      "selectorProof": "outputs/lenslet-maple-published-neighbor-selections.json"
+    }
+  ],
+  "assessment": "The complete lobed copper maple and curved stem read at 85 px. Six bold caps and dark trunks remain legible. Each row moves the cap from the left of the trunk, to overlap, to its right. The muted moss and repeated amber light preserve one small scene, although the two rows feel more similar than the requested vertical shift. The touching windows and strong all-over profile make a decorative appearance a live question. The raw subject is substantially larger than the prompt targeted, but every tip is inside the transparent frame.",
+  "neighborImageInputsToGeneration": [],
+  "boardLayout": [
+    {
+      "board": "1",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\lenslet-maple-first-1-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "2",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\lenslet-maple-first-2-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "3",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\lenslet-maple-first-3-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "4",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\lenslet-maple-first-4-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "5",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\lenslet-maple-first-5-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "6",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\lenslet-maple-first-6-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    },
+    {
+      "board": "7",
+      "file": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\x20-y\\outputs\\lenslet-maple-first-7-neighbor-comparison.jpg",
+      "width": 752,
+      "height": 740,
+      "candidate": {
+        "x": 8,
+        "width": 172,
+        "right": 180,
+        "boardWidth": 752,
+        "fullyInside": true
+      }
+    }
+  ]
+}

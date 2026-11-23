@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "ONE original tall1290:2796 phone wallpaper for GLAZE REDCUT WATERCOURT. A tangible invented canal-court in lower42% only: a hinged zigzag aqueduct crosses two channels, a tall hollow spiral cistern has an exterior winding ramp, a low open bath sits beneath a broad fluted bell-shaped rain canopy, a counterbalanced lockhouse lifts a heavy sluice leaf, and a low stair-water mill has two offset paddle wheels lifting water between step basins. Each utility has an intelligible different structure, access and water path; one coherent beautiful inhabited water-engineering world, no collage or ordinary object collection. Medium is DEEP HAND-CARVED VERMILION LACQUER RELIEF: repeated thin hard lacquer strata visible along stepped V-cut grooves, crisp polished red ridges, matte dark oxblood recesses, delicate carved wave/diaper pattern tooling, slightly uneven artisan tool facets and tiny warm sheen on edges. All structures and water cut from the SAME RED LACQUER relief image plane, no woodgrain, mother-of-pearl inlay, ceramic/glaze, soft leather, metal, plastic/resin toys or CGI product render. Saturated vermilion #C64133, deep wine #3C2029, warm red-orange lacquer edge #E97E55 and darkest oxblood #2A1720, monochrome red family. Straight-on artisan relief view with little actual depth, readable bold silhouettes and open water gaps. Upper55% nearly empty very dark rubbed oxblood lacquer with quiet fine texture, no figures or objects, excellent pale icon space. Important complete canal structures in lower45%, graceful spacing. No text, calligraphy, letters, numerals, signatures, symbols, clocks/gauges/readings, time/date/battery/weather values, UI, logos, frame, border or mockup.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.45036d89.png",
+  "sourceSha256": "45036d89b1f6ca030b4177a1e753831f440552b2d2ce77dafb4b932b412b8d12",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "46b83b6f9ddf4cbef6947bb55a4873629015b4f2d9636fad3f5254ed40d71bd2",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

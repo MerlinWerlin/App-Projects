@@ -1,0 +1,19 @@
+{
+  "themeId": "durumfold-meadow",
+  "recipe": [
+    "seal",
+    "durumButterfly",
+    "durumRibs",
+    "cut",
+    "wedge",
+    "column",
+    "folio"
+  ],
+  "art": {
+    "durumButterfly": "M 46 42 Q 30 17 12 19 L 15 27 L 9 32 L 15 39 L 10 45 L 17 50 L 13 56 Q 31 59 45 48 M 54 42 Q 70 17 88 19 L 85 27 L 91 32 L 85 39 L 90 45 L 83 50 L 87 56 Q 69 59 55 48 M 45 53 Q 28 52 15 65 L 20 69 L 18 76 L 26 76 L 28 84 Q 40 80 47 66 M 55 53 Q 72 52 85 65 L 80 69 L 82 76 L 74 76 L 72 84 Q 60 80 53 66 M 46 30 Q 43 22 50 22 Q 57 22 54 30 L 55 66 Q 54 79 50 88 Q 46 79 45 66 Z M 47 23 Q 41 9 31 9 M 53 23 Q 59 9 69 9 M 45 44 L 37 48 L 33 55 M 45 55 L 37 60 L 34 67 M 46 65 L 40 72 L 38 80 M 55 44 L 63 48 L 67 55 M 55 55 L 63 60 L 66 67 M 54 65 L 60 72 L 62 80 M 46 39 L 54 44 M 46 49 L 54 54 M 46 59 L 54 64 M 47 69 L 53 74",
+    "durumRibs": "M 15 25 Q 29 15 43 27 M 14 33 Q 29 23 43 35 M 14 41 Q 29 31 42 43 M 58 62 Q 73 51 87 65 M 58 70 Q 73 59 87 73 M 59 78 Q 73 68 86 81"
+  },
+  "ornament": "M 24 86 Q 45 59 69 19 M 39 66 Q 18 64 20 47 Q 36 45 43 57 Q 43 62 39 66 Z M 43 58 L 28 52 M 48 52 Q 49 34 68 32 Q 80 40 72 50 Q 61 60 48 52 Z M 53 49 L 66 40 M 64 26 Q 57 16 64 10 Q 74 8 77 17 Q 74 26 64 26 Z M 64 16 L 74 16",
+  "direction": "Whole four-wing farfalle butterfly with central spiral-pasta body, two antennae and six short legs; broad curved shell ribs echo the dry durum construction. Scalloped seal face follows the farfalle edges visible across the completed set, cut marks and wedge hands echo crisp pasta cuts, column charge and folio calendar remain live. Face chosen for artwork independently of calendar badges.",
+  "ornamentDirection": "One quiet open meadow-grass sprig with two grooved shell-like leaves and a tiny closed poppy bud, appropriate for small headers; full pasta butterfly stays in larger hero fields."
+}

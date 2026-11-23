@@ -1,0 +1,62 @@
+[
+  {
+    "id": "thorn-sail-drifter",
+    "kind": "art",
+    "image": "thorn-sail-drifter.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Thorn Sail Drifter"
+  },
+  {
+    "id": "crown-grazer",
+    "kind": "art",
+    "image": "crown-grazer.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Crown Grazer"
+  },
+  {
+    "id": "orbital-root-knot",
+    "kind": "art",
+    "image": "orbital-root-knot.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Orbital Root Knot"
+  },
+  {
+    "id": "levitating-needle-reef",
+    "kind": "art",
+    "image": "levitating-needle-reef.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Levitating Needle Reef"
+  },
+  {
+    "id": "lightning-chrysalis",
+    "kind": "art",
+    "image": "lightning-chrysalis.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lightning Chrysalis"
+  }
+]

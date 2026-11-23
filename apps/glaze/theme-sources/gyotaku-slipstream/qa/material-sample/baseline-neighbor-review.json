@@ -1,0 +1,29 @@
+{
+  "status": "Exact printing neighbors explicitly compared in actual material gate",
+  "neighbors": [
+    {
+      "observedSource": "coordinator:apps/glaze/theme-sources/roseghost-fen/provenance.json",
+      "observedSourceSha256": "064cc24d72045862ef3e7711a43a665ccc9e5fdeb3c5c7e981ce35d6ed7a04d9",
+      "actualNeighborProcess": "Warm anthotype-inspired plant-pigment sun/contact prints, no direct ink-scale/fin-ridge transfer."
+    },
+    {
+      "observedSource": "pack-artwork/bamboo-ink/provenance.json",
+      "observedSourceSha256": "e691d2bbcd95c7a6996b3c0307ef35e91eec6da33b393fbb6107dd068345cc15",
+      "actualNeighborProcess": "Brush-ink with drybrush/wet-ink edges on rice paper, no physical specimen-ridge transfer."
+    },
+    {
+      "observedSource": "pack-artwork/blueprint-bureau/provenance.json",
+      "observedSourceSha256": "3d3476d8123b523551df70cdea898e86e4b0f61785ee924e19cd361399621bb3",
+      "actualNeighborProcess": "Precise cyanotype technical engraving with warm ivory lines/pale-cyan crosshatch and mechanical parts, no natural scale impressions."
+    },
+    {
+      "observedSource": "theme-sources/burr-hinterland/provenance.json",
+      "observedSourceSha256": "5c279fb3454519b6005e2784893f971803870be8f80d7cc7646ca452d09ebd92",
+      "actualNeighborProcess": "Mezzotint/chine-colle tonal burr prints, no natural rubbed scale/scute or fin-ray impression."
+    }
+  ],
+  "selectedProcess": "Direct rubbed natural scale/scute ridges and comb-like fin-ray ink traces, broken pressure edges/dry skips, dark Prussian ink/unprinted alpha gaps. No watercolor brush shading, engraved hatchwork, technical labels or X-ray bones.",
+  "externalSpecimenImagesUsedAsGenerationInputs": false,
+  "originalFirstSampleUnchanged": true,
+  "coordinatorOwnsFinalCatalogueReview": true
+}

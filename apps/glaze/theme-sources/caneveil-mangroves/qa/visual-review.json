@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "audit": "SECOND AUDIT",
+  "artworkSubjects": 5,
+  "actualEncodedSmallAndLargeRoundedLayouts": 10,
+  "clippedForegroundPixels": 0,
+  "actualNativeLayouts": 9,
+  "compactHeaderOrnaments": 4,
+  "actualWallpaperCrops": 3,
+  "allSizeSamePointSizeBoldTodayCases": 288,
+  "todayAndNormalPoints": {
+    "small": 12,
+    "medium": 12,
+    "large": 19
+  },
+  "finding": "Tall curved mangrove canopy/trunk/prop roots and whole gecko/leaf/long tail, two whole propagules and mudskipper remain complete in all three actual encoded phone crops. Enlarged fused cane-glass flowers and cut-lip stripes read clearly. Petal contour echoes the flowered cane cross-sections; compact leaf/cane ornament and hero/detail remain exact.",
+  "frozenArtProof": "qa/second-audit/frozen-art-proof.json",
+  "clockFaceRationale": "Cane flowers and fused rounded glass lips.",
+  "history": "qa/second-audit/wallpaper-history.json",
+  "scope": "Actual encoded wallpaper crops/native board visually reviewed. All five art/raw/options/palette/meta and native hero/detail/ornament remain frozen. Calendar-only badge adapts independently. Windows current-renderer proof; no Apple/device/publication claim."
+}

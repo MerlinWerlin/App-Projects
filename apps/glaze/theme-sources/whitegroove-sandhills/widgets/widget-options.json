@@ -1,0 +1,62 @@
+[
+  {
+    "id": "western-meadowlark",
+    "kind": "art",
+    "image": "western-meadowlark.fcdca0ff.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Western Meadowlark"
+  },
+  {
+    "id": "swift-fox",
+    "kind": "art",
+    "image": "swift-fox.6bf2b1c6.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Swift Fox"
+  },
+  {
+    "id": "plains-spadefoot",
+    "kind": "art",
+    "image": "plains-spadefoot.2c718db0.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Plains Spadefoot"
+  },
+  {
+    "id": "purple-prairie-clover",
+    "kind": "art",
+    "image": "purple-prairie-clover.3b30d543.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Purple Prairie Clover"
+  },
+  {
+    "id": "sand-bluestem",
+    "kind": "art",
+    "image": "sand-bluestem.4a86ca01.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sand Bluestem"
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "theme": "c-chlorotype-leaflight",
+  "status": "Coordinator passed actual first-sample/full170/85 intrinsic leaf-photo distinction before expansion",
+  "sample": {
+    "id": "fig-leaf-robin",
+    "selected": true,
+    "sourceSha256": "727bfb5a466f23162b3fbed812c26d3cd9b39725bb0cd6c3243956bb99a7c9aa",
+    "prompt": "ONE original square1024px transparent Glaze artwork. A WHOLE REAL common FIG LEAF with FIVE broad natural palmate lobes, gently irregular toothed edges, delicate tiny surface hairs, heart-shaped base and one complete short petiole. Photographed front-on with very slight natural edge curl, thin OPAQUE green plant tissue and fine pale-green branching veins. The unfamiliar photographic process must be clear: a COMPLETE REAL EUROPEAN ROBIN PHOTOGRAPH is formed INSIDE THE LEAF'S OWN PIGMENT by chlorophyll photobleaching. The bird photograph is FLAT WITHIN THE TISSUE: retained deep forest-green pigment supplies photo shadows, bleached pale straw/yellow-green pigment supplies highlights, natural green midtones supply continuous photographic volume. The robin is a whole rounded small songbird perched in side-three-quarter view on one short thin twig, short fine pointed beak, ordinary small eye, plump chest, folded wing, complete tail and TWO tiny feet visible, every endpoint wholly inside the broad central leaf area. Bird picture occupies roughly60PERCENT of the leaf height so the whole recognizable bird still reads at85px. Strong clear whole-bird photo silhouette and natural photographic feather tones, not a vague portrait smudge. The leaf's fine natural veins CONTINUE ACROSS the entire wildlife image; leaf grain and tissue remain visible in all its highlights and shadows. The photographic image has NO rectangular edge, inset panel, badge, outline, border or paper patch; it emerges seamlessly from real leaf pigment-density variations. Do NOT place a separate real/sculpted bird ON the leaf, make the leaf animal-shaped, attach a decal, add ink/paint/engraved hatching, foil, raised emboss, resin, glass or dye coating. No red painted chest: the photographic robin uses ONLY the intrinsic green/straw leaf tones. No backlit luminous membrane, X-ray, fluorescent glow, dots, grain filter, shadow theatre or abstract body construction. Leaf veins are normal tissue, not drawn circuit lines. Calm beautiful recognizable REAL nature, no fantasy creature. WHOLE leaf, all five lobe tips and petiole comfortably within CENTRAL72PERCENT of the canvas, generous TRUE ALPHAZERO exterior and natural gaps. No paper sheet, backing plate, frame, surface/floor, cast shadow, glow, exterior haze, extra leaves, other animals, text, label, logo, UI, clock/date/battery/weather value or watermark. Digital artistic chlorotype interpretation, not an authentic physical print or measured species response.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        56,
+        10,
+        1199,
+        1237
+      ],
+      "96": [
+        56,
+        11,
+        1199,
+        1236
+      ]
+    },
+    "edgeAlphaMaximum": 1,
+    "sourceImage": "sources/fig-leaf-robin.727bfb5a466f.png"
+  },
+  "neighbors": [
+    {
+      "theme": "roseghost-fen",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\roseghost-fen\\widgets\\webtoe-reed-frog.d03664f54573.png",
+      "sha256": "d03664f54573b6fb81c9140a570feb552700d08f9bf3fe6de6ef21ffbd697f29"
+    },
+    {
+      "theme": "c-transmitted-seedbank",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-transmitted-seedbank\\widgets\\beech-leaf.f0b67dabf0ee.png",
+      "sha256": "f0b67dabf0ee1b03c5fd8fe0536508da26611d847bfa975fed93cd00117cb5ec"
+    },
+    {
+      "theme": "c-autochrome-orchard",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-autochrome-orchard\\widgets\\wildrose-sprig.febd158886b7.png",
+      "sha256": "febd158886b713eb476ff6810c6d65f8814236e440b18ebf3b01e14f5203dcf0"
+    },
+    {
+      "theme": "c-nearinfrared-hawthorn",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-nearinfrared-hawthorn\\widgets\\hawthorn-sprig.447602894b18.png",
+      "sha256": "447602894b182bdd7cd1dbc1e5039b29ade8424aec09275e07f35e3ba5a64b3b"
+    },
+    {
+      "theme": "thistle-etch",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\thistle-etch\\v1\\widget-silver-leaf.fd22a998.webp",
+      "sha256": "fd22a998f8e92c9f20e3f2b7d5c8600314e1062ee52bd9460f3dc0bb6b352c94",
+      "bytes": 82578,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\thistle-etch\\v2\\manifest.json"
+    },
+    {
+      "theme": "fern-and-brass",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\fern-and-brass\\v7\\widget-brass-leaf-beetle.78dc3cc0.webp",
+      "sha256": "78dc3cc0a760dede45cd85e6d0985837dbb60c63bd6e348b44102eb2c78bcd21",
+      "bytes": 106548,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\fern-and-brass\\v8\\manifest.json"
+    }
+  ],
+  "assessment": "Visible whole leaf carrier and whole recognizable robin photo in intrinsic green/straw tones; real leaf veins continue through photo without rectangular decal or separate bird perched on the leaf. Actual85px retains a recognizable bird inside a recognizable lobed leaf. Major photobleaching family overlap with A8 remains for coordinator verdict. Whole leaf endpoints inside source but tight raw top/petiole margins10/17px need honest final framing review; actual rounded tile still pending. Alpha frame maximum1, fixed top-centre sample intersects the leaf (not exterior haze). Unselected, no other four or wallpaper.",
+  "neighborImageInputsToGeneration": [],
+  "coordinatorVerdict": "Whole robin readable at85; veins continuously crossing its image establish intrinsic-leaf distinction. Complete distinct plant/sprig carriers and wildlife, use honest full-original uniform containment and final crop/rounded review."
+}

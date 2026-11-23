@@ -1,0 +1,1 @@
+Six selected unmodified built-in PNG outputs: five whole nature artworks and one own-five-reference opaque habitat wallpaper. Two unselected initial bird/hare outputs outside sources in intermediate-material-studies, exact own correction/input histories retained. Oak first unchanged; art whole900within1024 RGBA, no creative code edits.

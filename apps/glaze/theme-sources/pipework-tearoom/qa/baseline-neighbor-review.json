@@ -1,0 +1,16 @@
+{
+  "status": "distinct craft construction retained after exact neighbor review",
+  "baselineProvenance": "pack-artwork/crumbkin/provenance.json",
+  "baselineProvenanceSha256": "827ef88e3650394ea357035a711c92171143fac35a9160c4e6d9ae5c029ad4b8",
+  "baselinePromptIds": [
+    "croissant-sailboat",
+    "biscuit-windmill",
+    "marzipan-squirrel",
+    "biscuit-treasure-chest"
+  ],
+  "baselinePhysicalProcess": "Moulded almond marzipan/almond paste plus biscuit and wafer panels, fine sugar-dusted crumbly edges; ivory cream piping only along treasure-chest edges.",
+  "selectedProcess": "Individual parallel royal-icing rope ridges and star-nozzle lines construct all surfaces, with shell swags/nozzle beads/pore texture. No biscuit panels or moulded marzipan bodies.",
+  "visualComparison": "Inspected actual widget-biscuit-treasure-chest.2b6520db.webp against selected full-size samovar and5art contact sheet. Broad smooth biscuit/paste panels versus visibly piped ribbed surfaces and unconventional working-engine silhouettes.",
+  "timing": "Coordinator neighbor warning arrived after6images and condenser alpha repair were generated. New generation paused for exact prompt/visual comparison. Source commit retains this review; initial limited-scope0match claim corrected.",
+  "coordinatorOwnsFinalCatalogueReview": true
+}

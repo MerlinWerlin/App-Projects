@@ -1,0 +1,18 @@
+{
+  "id": "folding-eclipse-theatre",
+  "prompt": "One individual original square 1024x1024 pure artwork for PORCELAIN UMBRA. Subject: a FOLDING ECLIPSE THEATRE, five thin upright fan-shaped porcelain screens arranged in a zigzag concertina around a small empty circular stage; each panel is a different curved slice, pierced with sparse crisp star-shaped and narrow crescent apertures. As a whole it forms a low wide half-sun silhouette, elegant radial folds, definitely NOT a spiral, stairs or ordinary hand fan. Hand-built ivory unglazed eggshell porcelain, chalky bisque texture, very fine translucent amber edges, minute natural kiln warp. Raking low warm amber light through apertures; shadowed inner surfaces deep midnight indigo. Fine-art ceramic craft photograph, three-quarter frontal angle, compact single complete sculptural theatre in middle 70%, 15% empty transparent margin on all sides. Isolated on genuine alpha transparency, no backdrop, floor, hand or pedestal. Extraordinary invented craft architecture; readable thumbnail. No text, numerals, signs, UI, date, percentage, clocks, dials, clock hands, animals or routine objects. No collage or contact sheet.",
+  "tool": "built-in image_gen",
+  "source": "sources/folding-eclipse-theatre.b42be9bc.png",
+  "sourceSha256": "b42be9bc40620a8431712c788456225c81e7f8484b16fc99e1f017c8b4088803",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folding-eclipse-theatre.6f17b3e3.png",
+  "sha256": "6f17b3e33b4206402e2df818f0b2ffe82b3845c8e7be72d7c1f969f2c9a44e79",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

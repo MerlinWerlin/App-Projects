@@ -1,0 +1,34 @@
+{
+  "selected": false,
+  "sourceImage": "intermediate-wallpaper-framing-study/first-scene.8b2780550c32.png",
+  "sourceSha256": "8b2780550c327db375621926c23058300156b360579bec5e1e91dacde48560ac",
+  "prompt": "Use case: natural botanical artwork. GLAZE MEADOW AFTERGLOW. Jared requested LESS ABSTRACT NATURE-INSPIRED themes:show recognisable REAL flowers,ferns,moths and woodland birds with natural anatomy and believable textures. Visual medium: beautifully detailed botanical/wildlife MACRO PHOTOGRAPHY with very restrained UV-induced-visible-fluorescence-inspired twilight lighting. Nature comes first;the optical treatment is subtle. Familiar leaf greens,ivory petals,pollen gold,soft lilac flowers and warm brown feathers. A faint cool pearl/mint response in pollen or thin petal edges,and a very slight wine tint in some leaf veins,are the only unusual colour accents. Soft diffuse illumination,delicate natural tissue translucency,real botanical detail,no glitter or hard neon halo. Polished calm nature photograph,not an experiment diagram. No invented organisms,mechanical plants,geometric bodies,voxel cells,scientific maps,skeleton networks,glass/clay sculptures,metal,paper craft,fabric,cartoon face,CGI toy,fluorescent rainbow or exaggerated magical glow. Actual familiar natural shapes and textures throughout. No letters,numbers,labels,scale bar,diagram,UI,clock,reading,logo or watermark. Asset:ONE opaque portrait phone wallpaper1290x2796. A beautiful coherent REAL meadow/woodland-edge scene at quiet blue hour,using five own original art identities:oxeye daisies andharebells among natural ferns/moss,small moth on clover infront,andwren on a low blackberry twig at right. Real natural habitat andcalm photographic composition,not a collection of separate cutout specimens. A soft defocused woodland-green backdrop fills upper43%,with low-contrast natural bokeh andno sharp distracting forms;bottom20%quiet softly focused moss/grass. All FIVE complete focal subjects within horizontal10%to90%andvertical46%to78%. Real flower petals,fronds,bird feathers,twigs andground textures;very gentle fluorescence-inspired pollen/petal light,mostly familiar natural colours. No invented shapes,scientific data pattern,magical light trails,stars,planets,extra birds or other focal animals. All main petal/frond/wing/antenna/beak/tail/twig endpoints have room. Natural background vegetation may bleed,focal subjects cannot. No text,UI,frame or readings. Reference order:IMAGE1=real ivory oxeye daisy with yellow disc,bud andserrated leaves;IMAGE2=real arching fern frond andshort fiddlehead with clean stems;IMAGE3=three real lilac harebells andbud;IMAGE4=one warm tan patterned garden moth gripping pink clover;IMAGE5=one natural brown wren with upright tail on blackberry twig,two leaves andtwo ripe blackberries. These are exact own original subject identities,not style references to be converted into abstract bodies. Keep their familiar anatomy andnatural tissue details. Compose one coherent photographic woodland-edge habitat. Suggested safe scene:fern behind-left atx15to37%/y47to73%;daisy centreleft atx29to46%/y51to74%;harebell behindcentre atx47to63%/y49to73%;moth on clover frontcentre atx42to57%/y65to77%;wren/blackberry lowright atx62to85%/y58to77%. Keep each flower,frond,fiddlehead,moth,antennae,wren,beak,tail,feet,twig andberries whole,distinct andvisible. All5focalgroups fit withinhorizontal10to90%andvertical46to78%,with quiet defocused woodland green above43%andsoft moss/grass bottom20%. Vegetation joins naturally at ground,no floating cutout specimens or separate vignette circles. No extra birds,animals,giant glow or unnatural colours. Natural familiar nature takes precedence over any light effect. Portrait1290x2796,opaque,no text/UI/frame.",
+  "internalArtworkReferences": [
+    {
+      "id": "oxeye-daisy",
+      "sourceImage": "sources/oxeye-daisy.28b3e1255a78.png",
+      "sha256": "28b3e1255a780b2d1c976a95faa53a42f6555d21e7b9887b123d7b25a2e0a7d1"
+    },
+    {
+      "id": "unfurling-fern",
+      "sourceImage": "sources/unfurling-fern.45bae04a8474.png",
+      "sha256": "45bae04a8474a6724a676fc8bc44495c4610522784558b9bc141878e8b57f70a"
+    },
+    {
+      "id": "harebell-stem",
+      "sourceImage": "sources/harebell-stem.b2676ee7ca94.png",
+      "sha256": "b2676ee7ca9402b47af9de133a1f1e6dd89871636134cf1ba636094dff6931d4"
+    },
+    {
+      "id": "moth-on-clover",
+      "sourceImage": "sources/moth-on-clover.44777744f4b2.png",
+      "sha256": "44777744f4b2aa1792fa02a05602991ae9905e7afdc10e2f78839a85a5b1495f"
+    },
+    {
+      "id": "wren-on-blackberry",
+      "sourceImage": "sources/wren-on-blackberry.8de7a38fc720.png",
+      "sha256": "8de7a38fc720d818ed35ad15ecfaa2fff027fe5bb006b7b3ba0da03e6619749d"
+    }
+  ],
+  "reason": "Recognisable natural scene,but fern side andwren twig leaf extend beyond canvas;pull back entire focal cluster before selection."
+}

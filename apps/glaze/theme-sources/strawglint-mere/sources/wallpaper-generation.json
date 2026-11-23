@@ -1,0 +1,23 @@
+{
+  "id": "wallpaper",
+  "prompt": "Edit this EXACT already-correct FLAT straw-intarsia pond wallpaper. LAYOUT ONLY: preserve every material, color, joined flat straw ribbon field, fine longitudinal fibre, straight butt seam and directional satin glint exactly. Do not redraw organisms, change anatomy or return to rounded/wrapped bodies. Uniformly scale the ENTIRE COMPLETE EXISTING HABITAT GROUP to75PERCENT OF ITS CURRENT WIDTH AND HEIGHT, including frog, lilypad, bittern, all toes, reeds, waterlily, bud, leaves, willow/catkins, diving beetle, pondweed, all foreground/current ribbons and supporting pads. All parts move and shrink together, no individual resizing, deletion or additions. Centre the smaller COMPLETE GROUP horizontally and at57PERCENT imageheight; keep ALL group contents inside central70percent width and between y43and72percent height. Create clearly WIDER QUIET BLUE MARGINS on BOTH SIDES and BELOW by naturally extending the existing matching matte muted pond-blue paper. Preserve every beak, leaf/petal tip, toe, stem, reed and antenna whole. Upper area stays quiet too. No new plants/scene/background motifs, shadow/glow, lettering, numbers, clock/date/battery values, frame, UI or logo. Opaque portrait wallpaper, same exact flat-intarsia material and natural scene, just a single uniform pulled-back group.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.0f076268.png",
+  "sourceSha256": "0f076268502c3a124123a3a5a884c7e5b29c19c57e8008fc9e6ba73d21771105",
+  "sourceDimensions": [
+    941,
+    1672
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "34d70e106b410d4c89158d20f9a7aad725ddd667723d664e7342677b98b63dc1",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/layout-pullback/wallpaper-history.json",
+  "referencedImage": {
+    "file": "qa/layout-pullback/wallpaper.previous-flat.48e4321b.png",
+    "sha256": "48e4321b91c9759a55dc9a118436871cb5da0a8758c0dd0093dbbdc53e3f0e5b"
+  }
+}

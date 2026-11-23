@@ -9,6 +9,7 @@ struct WidgetIdentity {
   let cardinals: [CGFloat]
   let subject: Path
   let detail: Path
+  let ornament: Path?
   let hands: String
   let gauge: String
   let calendar: String
@@ -26,8 +27,14 @@ struct WidgetIdentity {
       let calendar = r["calendar"] as? String, ["folio", "board", "band", "ledger", "ticket"].contains(calendar),
       r["originalFace"] == nil || r["originalFace"] as? String == "alpine"
     else { return nil }
+    var ornament: Path? = nil
+    if let rawOrnament = r["ornament"] {
+      guard let parsed = path(rawOrnament) else { return nil }
+      ornament = parsed
+    }
     return WidgetIdentity(outline: outline, inner: inner, hours: hours, minutes: minutes,
       cardinals: cardinals.map { CGFloat($0) }, subject: subject, detail: detail,
+      ornament: ornament,
       hands: hands, gauge: gauge, calendar: calendar, originalFace: r["originalFace"] as? String)
   }
 
@@ -113,6 +120,11 @@ extension DesignedDrawing {
     CGRect(x: x, y: y, width: w, height: h ?? w)
   }
 
+  private func ornamentBox(_ box: CGRect) -> CGRect {
+    let side = min(box.width, box.height) * 0.86
+    return CGRect(x: box.midX - side / 2, y: box.midY - side / 2, width: side, height: side)
+  }
+
   private func shape(_ path: Path, in box: CGRect, color: Color, stroke: CGFloat? = nil) {
     let fitted = path.placed(in: box)
     if let stroke = stroke {
@@ -188,7 +200,11 @@ extension DesignedDrawing {
       let plaque = themedBox(179, 13, 178, 144)
       shape(design.outline, in: plaque, color: ink.opacity(0.052))
       shape(design.inner, in: plaque, color: accent.opacity(0.35), stroke: 0.6)
-      shape(design.detail, in: themedBox(244, 21, 47, 35), color: secondary.opacity(0.62), stroke: 2.6)
+      if let ornament = design.ornament {
+        shape(ornament, in: ornamentBox(themedBox(244, 21, 47, 35)), color: secondary.opacity(0.62), stroke: 2.6)
+      } else {
+        shape(design.detail, in: themedBox(244, 21, 47, 35), color: secondary.opacity(0.62), stroke: 2.6)
+      }
       let parts = clockParts(date)
       text(parts.time, x: 268, y: 82, font: 49, width: 153, weight: .semibold)
       if !parts.period.isEmpty { text(parts.period, x: 268, y: 112, font: 12, width: 100, color: secondary) }
@@ -318,8 +334,12 @@ extension DesignedDrawing {
       }
     }
     let subject = wide ? themedBox(37, 8, 70, 42) : large ? themedBox(226, 5, 106, 78) : themedBox(120, 5, 42, 36)
-    shape(design.detail, in: subject, color: accent.opacity(0.22), stroke: 1.3)
-    shape(design.subject, in: subject, color: secondary.opacity(0.65), stroke: wide ? 2 : 2.6)
+    if let ornament = design.ornament {
+      shape(ornament, in: ornamentBox(subject), color: secondary.opacity(0.65), stroke: wide ? 2 : 2.6)
+    } else {
+      shape(design.detail, in: subject, color: accent.opacity(0.22), stroke: 1.3)
+      shape(design.subject, in: subject, color: secondary.opacity(0.65), stroke: wide ? 2 : 2.6)
+    }
     if wide {
       text(dateText(date, "EEE"), x: 72, y: 60, font: 14, width: 108, color: secondary)
       text(number(month.today), x: 72, y: 99, font: 49, width: 102, weight: .bold)

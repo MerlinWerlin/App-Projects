@@ -1,0 +1,38 @@
+{
+  "themeId": "vaneleaf-highland",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.d89b908c.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "d89b908c36e4dc382892a7a27d189c1861a925dc2204a10eb4113b3c56110c71",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.679c74fb.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "679c74fb4f9989991a53cbb78c454f753bb6ac058a247244cbec62ff75143dd0",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.99acc9ee.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "99acc9eef69f043bf00d725d47d1058c5bf49e820ed80fb5b1c515bf681f920e",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedVariants": 3,
+    "finding": "Complete two ibex horns/four hooves, marmot paws/tail, chough beak/tail, edelweiss outer bracts/leaves and gentian tips/beetle preserved in all actual encoded wallpaper crops including750x1334. Quiet plum ground remains above/below."
+  }
+}

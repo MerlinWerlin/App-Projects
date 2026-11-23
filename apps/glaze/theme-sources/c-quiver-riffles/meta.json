@@ -1,0 +1,16 @@
+{
+  "name": "Quiver Riffles",
+  "mood": "A living stream habitat takes shape from locally turning coloured motion arrows.",
+  "tags": [
+    "quiver-map",
+    "optical-flow-inspired",
+    "nature",
+    "stream"
+  ],
+  "credits": "Glaze original built-in image_gen artwork and authored native identity. Fictional optical-flow vector nature world,not measured fluid data.",
+  "licence": "openai-output-owned",
+  "generator": "openai-image",
+  "prompt": "Use case: stylized-concept. GLAZE QUIVER RIFFLES. Asset TYPE: FLAT 2D LABORATORY QUIVER-MAP ART of a tangible NATURE silhouette. Build the ENTIRE subject using ONLY60to100 LARGE SEPARATED vector-arrow glyphs. Each glyph has a short straight shaft and a clear broad V arrowhead,crisp uniform opaque flat colour. The positions/headings of these arrows define the complete recognizable silhouette;locally aligned directions curve around its organic anatomy. The ONLY nontransparent pixels in the entire artwork are the ARROW GLYPHS themselves. Every gap between every pair of arrows is alphaZERO. Nothing underneath or around them: no body fill,pastel underlay,shading,translucent skin,glow,halo,outline,floor or shadow. This is a planar vector-analysis plot,never arrows printed on a3D object. Use direction-coded muted cobalt blue,kelp green and warm coral,with a few pale-peach arrows. Large glyphs,clear spacing,roughly8to12 arrows along the longest dimension. No tiny hundreds-of-arrows texture,no dots,particles,long trails,curly streamlines,physical material,mosaic grains,projection stripes or solid nature illustration. Fictional artistic optical-flow map,not measured data. No axes,legend,scale bars,text,letters,numerals,clock/dates/readings,logos or watermark. ",
+  "addedAt": "2026-11-22",
+  "category": "Nature"
+}

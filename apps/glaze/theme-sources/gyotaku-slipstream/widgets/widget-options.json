@@ -1,0 +1,62 @@
+[
+  {
+    "id": "flyingfish-surge",
+    "kind": "art",
+    "image": "flyingfish-surge.d1002423.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Flyingfish Surge"
+  },
+  {
+    "id": "lionfish-fan",
+    "kind": "art",
+    "image": "lionfish-fan.d1172aa0.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lionfish Fan"
+  },
+  {
+    "id": "puffer-shellcurl",
+    "kind": "art",
+    "image": "puffer-shellcurl.0e05bab6.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Puffer Shellcurl"
+  },
+  {
+    "id": "horseshoe-tidegrass",
+    "kind": "art",
+    "image": "horseshoe-tidegrass.9e24dce5.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Horseshoe Tidegrass"
+  },
+  {
+    "id": "squid-ribbon",
+    "kind": "art",
+    "image": "squid-ribbon.88d4003c.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Squid Ribbon"
+  }
+]

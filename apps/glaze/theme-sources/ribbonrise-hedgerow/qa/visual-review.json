@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "audit": "SECOND AUDIT",
+  "artworkSubjects": 5,
+  "actualEncodedSmallAndLargeRoundedLayouts": 10,
+  "clippedForegroundPixels": 0,
+  "actualNativeLayouts": 9,
+  "compactHeaderOrnaments": 4,
+  "actualWallpaperCrops": 3,
+  "allSizeSamePointSizeBoldTodayCases": 288,
+  "todayAndNormalPoints": {
+    "small": 12,
+    "medium": 12,
+    "large": 19
+  },
+  "finding": "Whole robin/bill/feet/tail and field mouse/ears/paws/long tail remain complete in all three actual encoded phone crops, below a taller foxglove/fern with whole bells/buds and low berries/dogrose. Broad tucked satin planes/curled lips remain legible. Lozenge contour echoes pointed folded ribbon leaves; hero/detail/compact botanical stitch remain exact.",
+  "frozenArtProof": "qa/second-audit/frozen-art-proof.json",
+  "clockFaceRationale": "Pointed tucked silk-ribbon leaf stitch.",
+  "history": "qa/second-audit/wallpaper-history.json",
+  "scope": "Actual encoded wallpaper crops/native board visually reviewed. All five art/raw/options/palette/meta and native hero/detail/ornament remain frozen. Calendar-only badge adapts independently. Windows current-renderer proof; no Apple/device/publication claim."
+}

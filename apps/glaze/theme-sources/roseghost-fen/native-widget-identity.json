@@ -1,0 +1,19 @@
+{
+  "themeId": "roseghost-fen",
+  "recipe": [
+    "oval",
+    "roseghostPitcher",
+    "roseghostCapillaries",
+    "bars",
+    "needle",
+    "trail",
+    "ledger"
+  ],
+  "art": {
+    "roseghostPitcher": "M 40 82 Q 19 79 19 52 Q 20 41 12 36 Q 28 29 37 42 Q 32 45 32 53 Q 34 71 47 77 Z M 45 79 Q 50 64 52 39 Q 53 20 46 14 Q 63 6 77 19 Q 64 23 65 41 Q 64 67 53 81 Z M 52 79 Q 72 82 79 66 Q 84 55 80 45 Q 89 38 94 48 Q 91 63 85 73 Q 75 89 53 88 Z M 45 82 Q 36 90 24 92 M 47 85 L 43 95 M 51 85 Q 61 94 73 94",
+    "roseghostCapillaries": "M 21 44 Q 26 58 40 72 M 52 25 Q 59 38 57 53 M 57 53 L 49 44 M 57 53 L 65 43 M 57 53 Q 55 68 49 78 M 85 51 Q 82 66 68 75 M 68 75 L 74 61 M 33 51 Q 27 51 25 46 M 51 35 Q 56 31 62 30 M 69 21 Q 57 25 48 20"
+  },
+  "direction": "Three folded wild pitcher leaves and pale capillary traces translate the warm pigment-print fen into working native components. Values remain live.",
+  "ornament": "M 26 71 Q 10 45 30 26 Q 54 15 78 28 Q 90 52 65 72 Q 47 87 26 71 Z M 27 68 Q 49 50 74 30 M 49 50 L 43 33 M 49 50 L 69 56",
+  "ornamentDirection": "One compact seed/leaf imprint with a capillary branch repeats the plant-pigment language; the full pitchers remain in larger hero compositions."
+}

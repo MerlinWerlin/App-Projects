@@ -1,0 +1,18 @@
+{
+  "id": "fan-lid-samovar",
+  "prompt": "PIPEWORK TEAROOM for Glaze: one separately generated ORIGINAL1024x1024 artwork on true transparent alpha, an invented but useful communal TEA ENGINE, visible unusual engineering and clear function, not a collection of ordinary cups. Physical craft medium HAND-PIPED ROYAL-ICING BAS-RELIEF. EVERY surface built from individually piped close parallel ROPE RIDGES, star-nozzle ribbed lines, shell-swags and tiny bead joins; restrained matte sugar pores, irregular nozzle starts/ends and delicate brittle edges. Thin flat3â€“5mm confectionery illustration, never a smooth clay/resin/plastic toy, fabric stitching, coral, foam, blown glass, wax or digital gradient painting. Oyster-cream #EEE3C9, pistachio #A3BA97, apricot #DDA18B, caramel #CAAC6B and quiet blueberry #665772. The medium texture must be visible and subordinate to a strong readable engineered silhouette. Actual hinges, pipework, handles, access ledges and purposeful moving parts, visually weird shape yet immediately comprehensible task. All large openings transparent. Entire complete subject SMALL within central64% of square, at least18% true alpha margin on EVERY side, no clipped feet/handles/wings. No cake/cookie/backing plaque/rectangle, enclosing border, pedestal/ground/floor, scenery, pale halo or drop shadow. No ordinary teacup grouping, people, plants, lettering/numerals, signage, symbols, clocks/dates/gauges/battery/weather values, UI, logo or signature. Subject FAN LID SAMOVAR: one tall PEAR-SHAPED BOILER supported on THREE open curved legs with small star-piped feet, central belly round but narrow neck. FOUR very large triangular PLEATED FAN LID PANELS hinge out from the neck, spreading like an irregular open crown that reveals a small central steam cap. Each panel visibly thin with parallel star-nozzle icing ridges and tiny shell-swags along scalloped edge. One long rising gooseneck pouring spout arcs to the right and has a little tap lever; an offset small loop handle and thin articulated steam pipe sit left. A short3-tread access stair hangs between the front legs, open underbody. Strong tall fan-crowned silhouette, visibly useful invented communal tea boiler, no ordinary teapot or cup. Entire fan tips, spout, loop handle, stair and THREE feet safely contained with large alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/fan-lid-samovar.3ceae5a8.png",
+  "sourceSha256": "3ceae5a8282da14a43864fcf01571ca0b953a77abb20d168fe196d62a652b570",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fan-lid-samovar.16b9f737.png",
+  "sha256": "16b9f73779fd92f6d2996b214f37d1751d278df9dbf8baefcaee2a35ca96228a",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

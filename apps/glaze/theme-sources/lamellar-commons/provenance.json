@@ -1,0 +1,86 @@
+{
+  "themeId": "lamellar-commons",
+  "lane": "A",
+  "published": false,
+  "style": "Physical macro photography of dry ivory and umber mycelium, densely radiating oyster-gill lamellae and interlocked fibrous grown structures.",
+  "direction": "Jared22Nov: keep the approved unusual art styles and bridge them into something tangible.",
+  "artworks": [
+    {
+      "id": "bellows-pangolin",
+      "prompt": "Create one original Glaze LAMELLAR COMMONS artwork, BELLOWS PANGOLIN. A tangible invented community helper, a low long-tailed pangolin-like quadruped that gently pumps filtered air through its accordion body. Its whole body is GROWN FROM IVORY AND UMBER MYCELIUM AND DENSE MUSHROOM GILLS, not normal animal skin and not a mushroom cap with a face. The back consists of several overlapping broad asymmetric fan plates like oyster-mushroom brackets; each plate exposes hundreds of extremely fine crisp radiating pleated gill lamellae underneath. A long curled tail ends in a broad folded gill fan, four short sturdy feet grow from interlocked fibrous root bundles, and a tapered head has one small dark attentive eye. At its chest, two nested ribbed bellows chambers and a little natural hollow vent show how it moves air. Purposeful creature, warm and strange, sophisticated physical specimen rather than cartoon mascot. Fine-art studio MACRO PHOTOGRAPHY of a real grown mycelium sculpture: dry cream fibrous flesh, warm umber gill edges, translucent-thin ridges with soft raking shadows, entirely organic folded lamellae. Strictly no foam pores, smooth latex, stone fractures, metal, crystal, shiny plastic, ordinary mushroom, normal pangolin scales or loose pile of fungi. Broad asymmetrical three-quarter profile facing right, one complete subject, strong recognizable silhouette at85px. Entire body, all four feet and tail within central78 percent of a SQUARE genuinely transparent alpha canvas; generous margin and clear gaps. No ground, pedestal, background halo/cast shadow, text, numbers, logo, frame or collage. A new art medium that clearly separates from matte cellular foam or polished sculptures.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/bellows-pangolin.d811b10098bd.png",
+      "sourceSha256": "d811b10098bdc13d4553fd5ac410b7e1916f46c48462262d3d32779565ff58cf",
+      "image": "widgets/bellows-pangolin.65b1496aa7dc.png",
+      "sha256": "65b1496aa7dc4fd50efa3db37395ae36193905fb63fb51a05e5b02474155d664",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "dew-distiller",
+      "prompt": "One NEW original Glaze LAMELLAR COMMONS artwork: DEW DISTILLER, a tangible purposeful little water-collecting structure grown entirely from dry ivory/umber mycelium and folded mushroom-gill tissue. Reference only establishes the fibrous grown material and ultra-fine radiating pleats, not pangolin anatomy. A tall asymmetric branching column on three stout root feet supports THREE broad outward-facing oyster-gill funnels at different heights. Each funnel has hundreds of crisp radiating gills that drain through visible hollow stalks into a central ribbed bulb cistern; a small bent natural spout projects from the cistern near its bottom. Clear physical route for water collection, filtering and dispensing; an invented living utility rather than an abstract mushroom bouquet or conventional mushroom cap. Elegant vertical silhouette and visible construction, no animal head. Fine-art studio macro photograph of a real grown biological miniature, matte cream fibrous flesh, umber gill margins, translucent-thin folds and soft raking shadows. No foam cells, glazed ceramic, metal pipes, stone, smooth rubber, plastic, ordinary garden ornament or cartoon outlines. Entire object including every root foot and funnel within central78percent of a square transparent alpha canvas with generous clear margin. No ground/plinth/background glow/cast background shadow, text, logo, number, border or collage.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/dew-distiller.9db8ac78a610.png",
+      "sourceSha256": "9db8ac78a610ff92b737afc1650e5a04b8a9436722998547837f08f8126eb969",
+      "referenceSources": [
+        "sources/bellows-pangolin.d811b10098bd.png"
+      ],
+      "image": "widgets/dew-distiller.6d1cb20cb906.png",
+      "sha256": "6d1cb20cb906c6dbe4d2d457c568e3893ab53399f4b18fd0a6f95c8533e2180e",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "spore-trolley",
+      "prompt": "One NEW original Glaze LAMELLAR COMMONS artwork: SPORE TROLLEY, a tangible little community cargo vehicle grown entirely from dry ivory/umber mycelium and folded mushroom-gill tissue. Reference sets the fibrous material, fine dense radiating pleats and macro photographic finish ONLY; no pangolin body, head or tail. Clear recognisable low four-wheeled trolley with a shallow open ribbed cargo bed, two very large fan-gill wheels on the near side and two offset smaller wheels behind, a small root-bundle drawbar curling up at its front, and two little lidded pleated pods secured in the bed. Wheel hubs, axle-like root connections and boarding lip visibly explain its construction; an invented working vehicle, not an abstract fungi arrangement. The wheels are continuous radial gill discs with irregular wavy outer edges, body dry cream fibrous flesh with umber ridges, ultra-fine folded lamellae throughout. Three-quarter view facing left, broad long horizontal silhouette, whole drawbar/wheels in frame. High-end physical biological miniature macro photography, soft warm raking light reveals fine gill shadows. No ordinary mushroom caps, wood, metal, smooth plastic, latex, foam pores, stone, crystal, cartoon outlines or extra animals. Central78percent of a SQUARE genuinely transparent alpha canvas, generous margins and transparent gaps, no ground/plinth/halo/background cast shadow, text, numbers, logos, border or collage.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/spore-trolley.fc7a051807f4.png",
+      "sourceSha256": "fc7a051807f46e88a81c01807f561288cde0c9bb21c556cb5c00a3a5f215ab0d",
+      "referenceSources": [
+        "sources/bellows-pangolin.d811b10098bd.png"
+      ],
+      "image": "widgets/spore-trolley.9f837067a198.png",
+      "sha256": "9f837067a19882f3270b485b0dc7f7c7a026712412e01e8ca4f5416ec4ee3582",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "canopy-snug",
+      "prompt": "Create ONE NEW original Glaze LAMELLAR COMMONS artwork: CANOPY SNUG, a tangible inhabited community shelter grown from dry ivory-and-umber mycelium and densely pleated oyster-gill tissue. Reference is ONLY for realistic fibrous flesh, fine radiating gill lamellae and macro photograph; no animal shape. A small asymmetric two-level dwelling with ONE large open folded-fan canopy roof leaning to the left, a narrower counter-fold roof to the right, two clearly recessed oval doorway arches at ground level and two tiny upper window apertures; a short curved root stair connects a side balcony. Its rooms are built as joined folded biological membranes, with dozens of visible delicate ribs under each roof, not a conventional round mushroom cap house, not stacked mushrooms or a fantasy castle. One warm muted amber light inside a tiny window makes habitation legible. Clean compact triangular inhabited silhouette, purposeful shelter, entire roof tips/stair/root feet in frame. Fine-art studio macro photography of a physically grown mycelium sculpture: dry ivory fibrous walls, warm umber gill edges, translucent-thin ridges with soft raking shadows. No foam cells, smooth latex/plastic, metal, stone, rainbow crystals, ordinary mushroom stalk or cartoon. Central78percent of a SQUARE genuinely transparent alpha canvas with generous clear margins; no ground slab/plinth/halo/background cast shadow, text/logo/number/frame/collage or clock.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/canopy-snug.21d3f7afb155.png",
+      "sourceSha256": "21d3f7afb155f431311d6033317ec907a78e3c40ef89392c382f9c3f3f26035b",
+      "referenceSources": [
+        "sources/bellows-pangolin.d811b10098bd.png"
+      ],
+      "image": "widgets/canopy-snug.2292e9487072.png",
+      "sha256": "2292e94870725fdc363d0db65930f19b7c1cb8b3a3d106a031105c26e4e5907d",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "vent-crab",
+      "prompt": "Create ONE NEW original Glaze LAMELLAR COMMONS artwork: VENT CRAB, a tangible invented ventilation helper. Use reference ONLY to match dry ivory/umber grown mycelium, fibrous flesh and dense thin radiating mushroom-gill pleats; do not copy the pangolin form. A clearly recognizable broad low crab with SIX splayed articulated walking legs, TWO raised pincer arms and two small alert stalk eyes. Its wide shell rises into an asymmetric folded concertina hood with several exposed fan-shaped gill vents; one half-open natural louvre near its front makes it read as a living room-air filter. One pincer holds its own little folded filter flap open, the other rests lower, giving a distinct useful pose. The body and limbs are interlocked fibrous mycelial bundles, shell plates show hundreds of fine dry oyster-gill lamellae, cream flesh with warm umber ridges and subtle natural imperfections. High-end physical macro sculpture photograph with soft raking light, sophisticated and curious, not cartoon/emoji, ordinary shellfish photograph, foam pores, smooth latex, stone, metal or plastic. Strong broad angular crab silhouette, entirely in frame with every pincer/foot inside central78percent of a SQUARE genuinely transparent alpha canvas; generous margin and transparent gaps. No ground, plate, pedestal, halo, background cast shadow, text, logo, number, frame or collage.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/vent-crab.f1468f4c0ece.png",
+      "sourceSha256": "f1468f4c0eced5e0669269069695c2f8dad2e8e8d2b6c55824d024f0e1b75899",
+      "referenceSources": [
+        "sources/bellows-pangolin.d811b10098bd.png"
+      ],
+      "image": "widgets/vent-crab.116b08794a4b.png",
+      "sha256": "116b08794a4b3130bffd648117feab3f17b21dcd0b0d4771ab815cae04d57d32",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    },
+    {
+      "id": "wallpaper",
+      "prompt": "Create ONE original tall portrait Glaze LAMELLAR COMMONS wallpaper approximately1290:2796. A coherent tangible little community GROWN FROM DRY IVORY AND UMBER MYCELIUM AND DENSE OYSTER-MUSHROOM GILLS. References establish the unusual physical material and the community's bellows-pangolin and folded inhabited shelter, not a cutout collage. Upper55percent is a quiet pale muted celadon-green field (#C5D6C4 feeling), subtle soft studio falloff, almost empty and clear for app icons. In lower40percent stage one connected miniature commons: an asymmetric two-level folded-gill canopy dwelling to the right with tiny warm window apertures, a tall but lower-skyline three-funnel dew collector left-center, a little root-and-gill cargo trolley on a curved mycelial path, a low fan-backed bellows pangolin crossing the foreground and one small vent crab near the dwelling. All architecture, landform roots and inhabitants are intricately grown dry cream fibrous flesh with hundreds of fine radiating pleated gill lamellae, warm umber margins and naturally translucent-thin folds. Fine-art physical studio macro photograph, warm raking light and careful soft lower-ground shadows, extremely tactile fine gill detail; no normal mushroom forest or mushroom caps with faces. Connect the lower scene gracefully through interwoven root paths and low folds, use differing scale/depth; not a row of large isolated stickers. Single calm inhabited organic world, open clear upper field. Genuinely opaque portrait wallpaper, no text/clock/battery/date/numbers/logos/border/mockup, no metal/stone/latex/foam pores/crystal terraces/shiny plastic or cartoon outlines.",
+      "generator": "built-in image_gen",
+      "sourceImage": "sources/wallpaper.8eb078eacbc1.png",
+      "sourceSha256": "8eb078eacbc18d41dae9643d61135b9f64937d0c11bbe5327e9d688cdddd28f8",
+      "referenceSources": [
+        "sources/bellows-pangolin.d811b10098bd.png",
+        "sources/canopy-snug.21d3f7afb155.png"
+      ],
+      "image": "wallpapers/wallpaper.png",
+      "sha256": "8eb078eacbc18d41dae9643d61135b9f64937d0c11bbe5327e9d688cdddd28f8",
+      "export": "Original retained; selected artwork fitted whole within 960px on a 1024px transparent square. Wallpaper unchanged."
+    }
+  ],
+  "rejectedAttempts": []
+}

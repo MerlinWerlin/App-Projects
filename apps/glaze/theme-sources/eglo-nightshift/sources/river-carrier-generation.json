@@ -1,0 +1,18 @@
+{
+  "id": "river-carrier",
+  "prompt": "EGLO NIGHTSHIFT for Glaze. ONE separate original1024x1024 square pure artwork, a tangible imagined adult worker, friendly-mysterious storybook character. Flat traditional REVERSE-PAINTED and SILVER-LEAF-GILDED GLASS illustration: irregular mirror-silver leaf seams, tiny tarnish pinholes, fine hand-scratched black contours and cross-scraped highlights, deep bottle-green reverse-painted clothing fields with tiny muted amber details. An artisan glass panel image, not photographic sculpture,3D chrome, metal/crystal toy or ordinary digital cel shading. Whole complete figure/props central65% with18% genuine transparent alpha margins outside, no rectangular glass backing, background, floor, frame, pedestal, text, signature, numerals, logos, UI, clock/date/battery/live readings. Subject: RIVER CARRIER, a heavy adult worker shown striding three-quarter away to the right, wearing a long narrow deep-green weatherproof coat and broad silver shoulder harness. One ENORMOUS rounded silver reservoir rides high on the LEFT shoulder/back, connected by a thick visible pipe to a long curved trough held low in TWO hands, projecting forward and down. A coherent silver ribbon of water visibly runs from the tank along the trough and pours into a tiny freestanding river channel under the forward boot. Hood pushed back shows a calm masked profile, one knee bent mid-step. A tangible living utility worker transporting complete rivers, high asymmetric loaded silhouette and walking pose, not porter carrying bridge, squatting diver, stilt figure or crouching moon mender. Flat silver-leaf reverse-painted glass with scratched black lines, patchy foil seams and green fields; tiny amber valves. No tank gauges, numbers, time/date/weather values or text. Whole reservoir/trough/water/boots visible and contained within alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/river-carrier.2e772a1e.png",
+  "sourceSha256": "2e772a1e89c33de3049c76246db418fd698ab923d3786ac1925ce09fa076cfc9",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/river-carrier.51b975f9.png",
+  "sha256": "51b975f950a3c0a9d7ac25fa792193908064426548856cfc46fe35af8c7e728a",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

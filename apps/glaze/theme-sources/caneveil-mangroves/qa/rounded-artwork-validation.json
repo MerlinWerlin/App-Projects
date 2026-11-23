@@ -1,0 +1,204 @@
+{
+  "themeId": "caneveil-mangroves",
+  "scope": "Geometry proof using actual encoded WebP assets, production theme-to-widget background, scaledToFit and Swift Fit6% rule. Conservative24% corner radius stress check; device corner radius varies, no installed-iOS screenshot claim.",
+  "swiftSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\targets\\widget\\SeamlessWidget.swift",
+  "swiftSha256": "00f8f7b122e06f51ea9bdceb20b4dfa1753ca09d936f7f796212ee3184042477",
+  "backgroundStops": [
+    "#D9DCC1",
+    "#C8CFAC"
+  ],
+  "artworkOptions": 5,
+  "layouts": [
+    {
+      "option": "gecko-leaf",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        34,
+        145,
+        135
+      ],
+      "asset": "widget-gecko-leaf.e1603167.webp",
+      "assetSha256": "e16031670fc13ad068407df7dc5f536f6e599902e7e0e0985c43fc8556bfa646"
+    },
+    {
+      "option": "gecko-leaf",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        56,
+        83,
+        310,
+        299
+      ],
+      "asset": "widget-gecko-leaf.e1603167.webp",
+      "assetSha256": "e16031670fc13ad068407df7dc5f536f6e599902e7e0e0985c43fc8556bfa646"
+    },
+    {
+      "option": "mudskipper-root",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        27,
+        42,
+        142,
+        138
+      ],
+      "asset": "widget-mudskipper-root.430f5182.webp",
+      "assetSha256": "430f51828c8b393aa29481a22d05daa6a2236a26fc0f6bc87d32c7893b151c04"
+    },
+    {
+      "option": "mudskipper-root",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        58,
+        100,
+        304,
+        305
+      ],
+      "asset": "widget-mudskipper-root.430f5182.webp",
+      "assetSha256": "430f51828c8b393aa29481a22d05daa6a2236a26fc0f6bc87d32c7893b151c04"
+    },
+    {
+      "option": "fiddlercrab-sedge",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        24,
+        34,
+        145,
+        135
+      ],
+      "asset": "widget-fiddlercrab-sedge.204c3c21.webp",
+      "assetSha256": "204c3c212360491fccc58249cd3d5e533bf8e4b95bd048cc29cba596f17576d6"
+    },
+    {
+      "option": "fiddlercrab-sedge",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        52,
+        82,
+        311,
+        300
+      ],
+      "asset": "widget-fiddlercrab-sedge.204c3c21.webp",
+      "assetSha256": "204c3c212360491fccc58249cd3d5e533bf8e4b95bd048cc29cba596f17576d6"
+    },
+    {
+      "option": "mangrove-propagules",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        28,
+        33,
+        144,
+        140
+      ],
+      "asset": "widget-mangrove-propagules.714eb47f.webp",
+      "assetSha256": "714eb47f4851fec850da5c3353724e6eaf29105ad36475985523e1852d49f284"
+    },
+    {
+      "option": "mangrove-propagules",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        61,
+        80,
+        308,
+        309
+      ],
+      "asset": "widget-mangrove-propagules.714eb47f.webp",
+      "assetSha256": "714eb47f4851fec850da5c3353724e6eaf29105ad36475985523e1852d49f284"
+    },
+    {
+      "option": "egret-roots",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        35,
+        31,
+        135,
+        139
+      ],
+      "asset": "widget-egret-roots.e4ec3638.webp",
+      "assetSha256": "e4ec3638a88c39528b6b891fac853fa128fb9195f2ae49927759132593afe8ff"
+    },
+    {
+      "option": "egret-roots",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        76,
+        76,
+        289,
+        307
+      ],
+      "asset": "widget-egret-roots.e4ec3638.webp",
+      "assetSha256": "e4ec3638a88c39528b6b891fac853fa128fb9195f2ae49927759132593afe8ff"
+    }
+  ],
+  "clippedForegroundPixels": 0
+}

@@ -1,0 +1,26 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. LAYOUT-ONLY breathing-room edit of our own PELLICLE SHOAL habitat. Preserve exactly these FIVE organisms, every identity, pose, anatomy, cloudy translucent amber/ivory wet-cellulose membrane, visible bio-fibre texture, torn fold lips and seam beads. Preserve relative arrangement: sea-dragon behind left, whole broad-winged ray behind right, octopus centre, argonaut low-left, ribbon flatworm low-right. Keep all five and only five. Uniformly REDUCE the entire five-subject gathering to76% of its current scale; centre it horizontally and arrange the whole reduced gathering a little lower, with topmost sea-dragon leaf and ray wing no higher than42% of image height, lowest shell lip/tentacle/tail no lower than75%. Extend the SAME quiet plum-slate water and low pale cellulose reef around it. Entire gathering must fit within central74% width, leaving at least13% completely quiet water at BOTH sides, and25% quiet ground/water below every body part. All arm tips, frills, ray wings/long tail, argonaut shell lip and dragon leaves/tail remain fully whole. These are framing changes only: do not redesign, smooth, recolour, regrow or remove any form. Maintain same tactile physical material, diffuse lighting and coherent depth. Upper40% quiet plum-slate water, no added objects or foreground growth. No panels, added borders, blank bands, collage, text, UI, new animals, new faces or opaque boxes. Continuous full-bleed opaque portrait phone wallpaper. The centred shorter phone crop removing9% of top/bottom must still show all five forms comfortably inside its edges.",
+  "source": "sources/wallpaper.3724f5a64a73.png",
+  "sourceSha256": "3724f5a64a7369733e408a22f6c52a95ebe814aefe68707003066dd4ae5c0951",
+  "sourceDimensions": [
+    759,
+    2071
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "37f32c80c20cd63ebcbcf983b62db2c4082298bfeb5ee614c9130508486022a9",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Own layout-only habitat pullback, then central aspect export at1290x2796. All five independent artworks/native subject unchanged.",
+  "references": [
+    {
+      "file": "qa/wallpaper-edge-study/initial-wallpaper.4bc5e13afa05.png",
+      "sha256": "4bc5e13afa05cd567b6abf15f44054715ad078bb2e9b6a162dbae36d93ab68e9",
+      "purpose": "Own separately generated habitat; layout-only breathing-room edit."
+    }
+  ],
+  "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+}

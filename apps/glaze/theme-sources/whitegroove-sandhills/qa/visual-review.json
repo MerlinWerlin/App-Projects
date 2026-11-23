@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "artworkSubjects": 5,
+  "contactAnd85pxReadability": "reviewed",
+  "actualEncodedSmallAndLargeRoundedLayouts": 10,
+  "clippedForegroundPixels": 0,
+  "actualNativeLayouts": 9,
+  "compactHeaderOrnaments": 4,
+  "actualWallpaperCrops": 3,
+  "finding": "Five independently generated specimens use warm paper channels between a small number of broad, flat ink areas. The meadowlark's black V and both gripping feet, four attached fox paws and tail, spadefoot's vertical pupils and near hind spade, purple clover's two main flower spikes, and the three whole bluestem heads are readable at full size and 85 px. The far spadefoot hind limb sits behind the body. The five unmodified original art generations have true alpha, whole proportions and zero outer-edge pixels at alpha 128. A stronger dark-sage tile and lighter glyph pass the real pack contrast check. All nine live native plans and four compact placements use the forked paper-channel motif, with ten rounded artwork layouts free of clipping. One wallpaper-only spacing correction retains the source composition height and the five artworks, source prompts, and native assets by hash.",
+  "calendarScope": "Shipped calendar and identity rendering retained.",
+  "scope": "Coordinator accepted the first material sample unchanged. Lane B validated the full source candidate and rendered the exact app selector and native layouts."
+}

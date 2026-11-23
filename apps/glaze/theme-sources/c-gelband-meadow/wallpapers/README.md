@@ -1,0 +1,1 @@
+Opaque1290x2796 structural centre-fit of single own-five-reference habitat. Actual builder emits three phone variants and240x520thumbnail. Supporting branch intentionally joins right scene edge; key subjects retained, actual crops reviewed separately.

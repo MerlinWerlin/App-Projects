@@ -1,0 +1,18 @@
+{
+  "id": "fence-lizard-shadows",
+  "selected": false,
+  "sourceImage": "intermediate-art-studies/fence-lizard-shadows-first.916215278530.png",
+  "sourceSha256": "916215278530a19364af5a19ef21d2426520a7cee0d535f84f8f562c889fbe80",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "prompt": "Use case: stylized-concept. Create one original transparent square Glaze Artwork image for Shadowlight Meadow. The input is our own exact first quail and serves as a paint, shadow and framing reference only. Use subdued natural color, realistic recognizable anatomy, gentle warm diffuse detail and a clear whole profile. The distinct new natural subject is described below. Make its natural anatomy and complete outline obvious at 85 px. Use no quail parts or copied pose.\n\nProject three colored shadows in the same flat ground plane, attached exactly to the subject's ground contacts. Use the original quail's dusty cyan, dusty magenta and ochre shadow colors. Three broad shadows stretch left, right and diagonally forward so their far ends remain visibly distinct. Give each a wide opaque core and a softly graduating, compact edge. Each shadow retains the compressed silhouette of this new subject with its clear identifying parts, rather than the original quail. The three shadows partly overlap close to the real ground contacts, with a small deeper area there. No colored fringes on the main subject. Space stays quiet around the whole subject and shadows.\n\nSubject. A whole western fence lizard looking slightly upward with tan and gray scale pattern and muted blue at the throat only. Show a complete long tail curling gently toward the left, four splayed legs with coherent feet and a lifted head. Its near legs touch the implied ground. Use distinct orientations of three flat shadow silhouettes sharing those contacts. Give each projected shadow a broadly readable curved tail and narrow head taper. No spines, spikes or extra legs.\n\nFit everything including all three shadows and all natural extremities inside the central 72 percent of the canvas. Make the entire outside transparent. The shadows imply the ground. Keep only the whole natural subject and its three shadows. No scenery, horizon, framed area, floor rectangle, opaque disc, display plinth, paper border, exterior fog, loose specks, reflections, neon lines, lights, cast highlights, third physical subject, duplicate floating forms, UI, text, data, logos or watermark. This is original fictional art about colored shadows, with no real capture or measurement. No external images.",
+  "ownMaterialStyleReference": {
+    "sourceImage": "sources/quail-three-shadows.76270e29abf0.png",
+    "sha256": "76270e29abf03027afb1cb43684f58d74a9d4236576de2ff40efbd6dbdeed37a"
+  },
+  "generationTool": "built-in image_gen",
+  "externalReferences": [],
+  "reason": "A small stray fifth physical foot protrudes beneath the curled tail. The other four visible limbs and three broad shadow directions are clear."
+}

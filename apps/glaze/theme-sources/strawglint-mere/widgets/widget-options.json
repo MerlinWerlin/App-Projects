@@ -1,0 +1,62 @@
+[
+  {
+    "id": "frog-lilypad",
+    "kind": "art",
+    "image": "frog-lilypad.3b5737ec.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Frog Lilypad"
+  },
+  {
+    "id": "waterlily-bloom",
+    "kind": "art",
+    "image": "waterlily-bloom.b858ebcf.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Waterlily Bloom"
+  },
+  {
+    "id": "bittern-reeds",
+    "kind": "art",
+    "image": "bittern-reeds.96a9b3f8.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bittern Reeds"
+  },
+  {
+    "id": "waterbeetle-curl",
+    "kind": "art",
+    "image": "waterbeetle-curl.2c6ffbf3.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Waterbeetle Curl"
+  },
+  {
+    "id": "willow-catkins",
+    "kind": "art",
+    "image": "willow-catkins.892810ae.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Willow Catkins"
+  }
+]

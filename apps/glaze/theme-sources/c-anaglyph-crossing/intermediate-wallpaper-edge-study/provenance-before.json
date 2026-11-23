@@ -1,0 +1,143 @@
+{
+  "theme": "c-anaglyph-crossing",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "stiltshell",
+      "sourceImage": "sources/stiltshell.031f23ec3133.png",
+      "sourceSha256": "031f23ec3133a57847c510f504331a54e6d95e386dbe466a7afb2824fd10b2d2",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/stiltshell.7434e1508785.png",
+      "sha256": "7434e15087851decc501ece5df778348a38504f040beb4cbaa6eff458cc021a5",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 375927,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ANAGLYPH CROSSING, a tangible migration of invented fauna rendered in a clean optical stereoscopic image language. MEDIUM: RED/CYAN DUAL-REGISTRATION ANAGLYPH-STYLE EXPOSURE. Two slightly different binocular projections of ONE coherent creature overlap into a single image. The left-view signal is clear vermilion red, the right-view signal is bright process cyan; shared structure becomes charcoal-blue with pale neutral white volumes. Red and cyan outer contours are visibly displaced by a few percent of the subject width, with different parallax around near and far limbs. The doubled contours and internal joint edges must be unmistakable even at thumbnail size. Clean continuous neutral tone fields, crisp bold silhouette, broad simple forms. This is an artistic optical registration image, not a calibrated stereo pair. Not two separate creatures or side-by-side panels. No paper texture, ink grain, screenprint hatching, lines filling the whole form, diffraction bands, rainbow, thermal heat gradients, glowing scan points, X-ray skeleton, physical sculpture, shiny plastic, clay, glass or chrome. No words, labels, numerals, coordinates, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject STILTSHELL: one tall upright invented creature with a huge forward-tilted triangular shield head, two tiny recessed eye slits beneath its lower edge, a narrow tapering torso, TWO long angular stilt legs with broad forked toes, and TWO short folded fin-like arms. A small curved rear balancing tail completes the silhouette. Three-quarter stepping pose, friendly curious anatomy with clear head/arms/joints/feet. Head is a living shield structure, not a mask, robot helmet or human face. The complete animal AND BOTH colour-displaced registrations must remain inside central 75% of canvas; very generous empty margins. True transparent alpha exterior and open gaps; no white rectangular backing, ground, shadow, exterior haze, frame, tile, panel, diagram or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 874192
+    },
+    {
+      "id": "drumback",
+      "sourceImage": "sources/drumback.e85012d71048.png",
+      "sourceSha256": "e85012d71048c952a8bf39496d8f147a34b8de343696ce632d3c2710a10fc2e0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/drumback.4e2a6d3f4ef4.png",
+      "sha256": "4e2a6d3f4ef4b699b02b6cd7663fda5d017c88e6360bf8353e7e513d300e8b12",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 515649,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ANAGLYPH CROSSING, a tangible migration of invented fauna rendered in a clean optical stereoscopic image language. MEDIUM: RED/CYAN DUAL-REGISTRATION ANAGLYPH-STYLE EXPOSURE. Two slightly different binocular projections of ONE coherent creature overlap into a single image. The left-view signal is clear vermilion red, the right-view signal is bright process cyan; shared structure becomes charcoal-blue with pale neutral white volumes. Red and cyan outer contours are visibly displaced by a few percent of the subject width, with different parallax around near and far limbs. The doubled contours and internal joint edges must be unmistakable even at thumbnail size. Clean continuous neutral tone fields, crisp bold silhouette, broad simple forms. This is an artistic optical registration image, not a calibrated stereo pair. Not two separate creatures or side-by-side panels. No paper texture, ink grain, screenprint hatching, lines filling the whole form, diffraction bands, rainbow, thermal heat gradients, glowing scan points, X-ray skeleton, physical sculpture, shiny plastic, clay, glass or chrome. No words, labels, numerals, coordinates, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject DRUMBACK: one low wide six-legged invented migration animal with two unequal barrel-like back lobes fused into one continuous body, a small blunt head with THREE unequal eye apertures, SIX squat articulated legs ending in broad split pads and a short segmented paddle tail. Three-quarter crouching walking pose; deep near/far leg overlap makes optical parallax visible. No wheels, horns, shell ornaments, human face or mechanical equipment. Its compact heavy body contrasts strongly with the other long-legged fauna. The complete animal AND BOTH colour-displaced registrations must remain inside central 75% of canvas; very generous empty margins. True transparent alpha exterior and open gaps; no white rectangular backing, ground, shadow, exterior haze, frame, tile, panel, diagram or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 757563
+    },
+    {
+      "id": "forkbill",
+      "sourceImage": "sources/forkbill.cead225b8451.png",
+      "sourceSha256": "cead225b8451af436e15d68cb3f53426d9ac145fb0a166c1e89b33fe2e9f82ee",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/forkbill.eb3c1b576f58.png",
+      "sha256": "eb3c1b576f589eb8afd0ff943962adfe86a769a728f97ac6aaf3724fa118b909",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 863243,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ANAGLYPH CROSSING, a tangible migration of invented fauna rendered in a clean optical stereoscopic image language. MEDIUM: RED/CYAN DUAL-REGISTRATION ANAGLYPH-STYLE EXPOSURE. Two slightly different binocular projections of ONE coherent creature overlap into a single image. The left-view signal is clear vermilion red, the right-view signal is bright process cyan; shared structure becomes charcoal-blue with pale neutral white volumes. Red and cyan outer contours are visibly displaced by a few percent of the subject width, with different parallax around near and far limbs. The doubled contours and internal joint edges must be unmistakable even at thumbnail size. Clean continuous neutral tone fields, crisp bold silhouette, broad simple forms. This is an artistic optical registration image, not a calibrated stereo pair. Not two separate creatures or side-by-side panels. No paper texture, ink grain, screenprint hatching, lines filling the whole form, diffraction bands, rainbow, thermal heat gradients, glowing scan points, X-ray skeleton, physical sculpture, shiny plastic, clay, glass or chrome. No words, labels, numerals, coordinates, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject FORKBILL: one long low crawling invented creature with a crooked head ending in a broad THREE-PRONGED upper beak, a single smaller lower jaw, two dark eyes, a flexible low tapering body on THREE broad leaf-like fleshy foot pads, and a high split fan tail. Side-diagonal pose with head large at left and fan tail curling up at right; no wings, fur, feathers, legs like a bird, wheels or ordinary fish anatomy. Broadly readable head/feet/tail, not an abstract ribbon. The complete animal AND BOTH colour-displaced registrations must remain inside central 75% of canvas; very generous empty margins. True transparent alpha exterior and open gaps; no white rectangular backing, ground, shadow, exterior haze, frame, tile, panel, diagram or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 420556
+    },
+    {
+      "id": "keel-skater",
+      "sourceImage": "sources/keel-skater.ce328ed1e6d5.png",
+      "sourceSha256": "ce328ed1e6d57423ca36279bc4be611122a692fa63fdd3cd97f472cc1c2c72d8",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/keel-skater.71c8ab0f789f.png",
+      "sha256": "71c8ab0f789f59bae77adafb86df91845062fa7594ec99bb985f926bd392653d",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 510049,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ANAGLYPH CROSSING, a tangible migration of invented fauna rendered in a clean optical stereoscopic image language. MEDIUM: RED/CYAN DUAL-REGISTRATION ANAGLYPH-STYLE EXPOSURE. Two slightly different binocular projections of ONE coherent creature overlap into a single image. The left-view signal is clear vermilion red, the right-view signal is bright process cyan; shared structure becomes charcoal-blue with pale neutral white volumes. Red and cyan outer contours are visibly displaced by a few percent of the subject width, with different parallax around near and far limbs. The doubled contours and internal joint edges must be unmistakable even at thumbnail size. Clean continuous neutral tone fields, crisp bold silhouette, broad simple forms. This is an artistic optical registration image, not a calibrated stereo pair. Not two separate creatures or side-by-side panels. No paper texture, ink grain, screenprint hatching, lines filling the whole form, diffraction bands, rainbow, thermal heat gradients, glowing scan points, X-ray skeleton, physical sculpture, shiny plastic, clay, glass or chrome. No words, labels, numerals, coordinates, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject KEEL SKATER: one tangible invented animal with a broad inverted-keel torso, a low wedge head bearing FOUR small dark eye slits in one row, two raised triangular dorsal fins and THREE huge curved crescent rocker FEET attached by short jointed limbs. One rocker foot is lifted as it skates forward. Three-quarter forward view, unmistakable creature with weight and connected anatomy; no hull, sail, vehicle, wheels or machine parts. Broad triangular silhouette and large open gaps between curved feet. The complete animal AND BOTH colour-displaced registrations must remain inside central 75% of canvas; very generous empty margins. True transparent alpha exterior and open gaps; no white rectangular backing, ground, shadow, exterior haze, frame, tile, panel, diagram or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 764688
+    },
+    {
+      "id": "crest-tumbler",
+      "sourceImage": "sources/crest-tumbler.f61685f0dbce.png",
+      "sourceSha256": "f61685f0dbceb5171f19baa37766df3ba4e71a62b11eb0c094bf97d3f780899b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/crest-tumbler.b107f2d3de23.png",
+      "sha256": "b107f2d3de2363c4cc9003f81834534df43009a8eddf4900066bd7c5f25ceef0",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 692311,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ANAGLYPH CROSSING, a tangible migration of invented fauna rendered in a clean optical stereoscopic image language. MEDIUM: RED/CYAN DUAL-REGISTRATION ANAGLYPH-STYLE EXPOSURE. Two slightly different binocular projections of ONE coherent creature overlap into a single image. The left-view signal is clear vermilion red, the right-view signal is bright process cyan; shared structure becomes charcoal-blue with pale neutral white volumes. Red and cyan outer contours are visibly displaced by a few percent of the subject width, with different parallax around near and far limbs. The doubled contours and internal joint edges must be unmistakable even at thumbnail size. Clean continuous neutral tone fields, crisp bold silhouette, broad simple forms. This is an artistic optical registration image, not a calibrated stereo pair. Not two separate creatures or side-by-side panels. No paper texture, ink grain, screenprint hatching, lines filling the whole form, diffraction bands, rainbow, thermal heat gradients, glowing scan points, X-ray skeleton, physical sculpture, shiny plastic, clay, glass or chrome. No words, labels, numerals, coordinates, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square 1024x1024 pure-art widget. Subject CREST TUMBLER: one squat bean-bodied invented creature in a playful sideways balancing pose, a gigantic WIDE SEMICIRCULAR FAN CREST arising from its shoulders, a small protruding wedge face with two dark eyes, TWO curled grasping arms, FOUR very short broad feet and a tiny hooked tail. Crest is a single broad fleshy fin with three large scallops, not feathers or a halo. One arm and two near feet reach toward the viewer, giving strong binocular offset. A tangible friendly animal rather than a logo, mask, sculpture or abstract disk. The complete animal AND BOTH colour-displaced registrations must remain inside central 75% of canvas; very generous empty margins. True transparent alpha exterior and open gaps; no white rectangular backing, ground, shadow, exterior haze, frame, tile, panel, diagram or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 621400
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.701f868a3950.png",
+      "sourceSha256": "701f868a3950e8c28f8ae5e3c9e39e2bf76cc759d014f98bfb7e800f7e10c3d1",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "a985bf2868666d2653327eafc6930764c99c83cf346552f246328240cdf6a6e5",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2279534,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE ANAGLYPH CROSSING, a tangible migration of invented fauna rendered in a clean optical stereoscopic image language. MEDIUM: RED/CYAN DUAL-REGISTRATION ANAGLYPH-STYLE EXPOSURE. Two slightly different binocular projections of ONE coherent creature overlap into a single image. The left-view signal is clear vermilion red, the right-view signal is bright process cyan; shared structure becomes charcoal-blue with pale neutral white volumes. Red and cyan outer contours are visibly displaced by a few percent of the subject width, with different parallax around near and far limbs. The doubled contours and internal joint edges must be unmistakable even at thumbnail size. Clean continuous neutral tone fields, crisp bold silhouette, broad simple forms. This is an artistic optical registration image, not a calibrated stereo pair. Not two separate creatures or side-by-side panels. No paper texture, ink grain, screenprint hatching, lines filling the whole form, diffraction bands, rainbow, thermal heat gradients, glowing scan points, X-ray skeleton, physical sculpture, shiny plastic, clay, glass or chrome. No words, labels, numerals, coordinates, clock faces, readings, graphs, logos or watermark. Asset: ONE portrait phone wallpaper 1290x2796. A coherent tangible migration crossing on pale chalk-colored branching stone ledges. Lower half: a tall shield-headed stiltshell steps from one ledge to another, squat six-legged drumbacks and a fan-crested tumbler follow below; a long forkbill crawls across a low shelf and a three-rocker-foot keel-skater balances near the foreground. Each individual has only a modest red/cyan stereo offset and readable anatomy. Ledges also have subtly doubled red/cyan edges, otherwise pale neutral smooth volumes and restrained charcoal shading. Not a paper collage, engraving or craft object. Upper 45% mostly blank warm white space, no sky texture, confetti or decorative marks. Strong clean silhouettes, one coherent landscape and scale. Full bleed opaque wallpaper, no frame, text, UI or device.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Jared 22 November: distinctive scientific image styles bridged into tangible subjects. Artistic red/cyan optical registration makes five different migrating anatomies readable."
+}

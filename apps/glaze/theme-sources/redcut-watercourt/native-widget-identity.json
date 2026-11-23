@@ -1,0 +1,18 @@
+{
+  "themeId": "redcut-watercourt",
+  "recipe": [
+    "wave",
+    "redAqueduct",
+    "redStrata",
+    "rays",
+    "needle",
+    "basin",
+    "folio"
+  ],
+  "art": {
+    "redAqueduct": "M 8 32 L 33 48 L 56 32 L 82 44 L 92 35 M 8 39 L 33 56 L 56 40 L 82 52 L 92 43 M 13 42 L 13 83 L 23 83 L 23 60 Q 23 50 32 57 Q 40 62 40 71 L 40 83 L 50 83 L 50 55 Q 50 43 60 47 Q 69 51 69 63 L 69 83 L 80 83 L 80 55 M 8 83 L 26 83 M 37 83 L 53 83 M 66 83 L 83 83 M 90 43 Q 79 64 90 68 Q 98 70 90 76 L 83 76 M 82 75 Q 90 85 98 75 M 30 48 L 36 48 M 53 32 L 60 33",
+    "redStrata": "M 9 26 C 23 3 41 6 48 27 C 58 49 76 43 90 24 M 9 35 C 24 13 39 17 48 37 C 59 59 78 52 90 34 M 10 64 C 24 42 42 45 49 65 C 59 86 78 82 91 62 M 12 74 C 26 55 41 58 49 76 C 61 98 79 91 89 74"
+  },
+  "ornament": "M 16 57 C 28 31 45 33 54 52 Q 69 75 86 49 M 19 68 C 31 43 45 46 53 63 Q 68 86 86 61 M 23 78 Q 38 57 48 75 M 70 25 L 76 30 L 70 35",
+  "direction": "Hinged zigzag aqueduct with open arches as full illustration, parallel deeply incised lacquer wave strata as detail; wave dial, ray marks, needle hands, basin water-charge gauge and folio calendar. Compact companion is two short nested wave cuts and one tiny diagonal tooling notch, distinct from the full canal structure."
+}

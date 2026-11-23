@@ -1,0 +1,19 @@
+{
+  "reason": "Actual encoded phone crops showed the lower left bank reaching the canvas edge. The layout edit brings the tapered bank point in from the edge while retaining the texture zones and full forms.",
+  "originalGeneration": "qa/layout-repair/original-generation.json",
+  "originalSource": "qa/layout-repair/wallpaper.original.92635442.png",
+  "originalSha256": "926354423c98f65fd3f3b73a6da32109c543ec16c6844b6794e0694ecd5864c9",
+  "selectedSource": "sources/wallpaper.c5b5771e.png",
+  "selectedSha256": "c5b5771e5727a67fd356fdc97c0ab1f62d3fec9dc175b031ca5e7a977ecab1fe",
+  "exactRequest": "qa/layout-repair/wallpaper-layout-repair-request.json",
+  "exactResult": "qa/layout-repair/wallpaper-layout-repair-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.92635442.png",
+      "sha256": "926354423c98f65fd3f3b73a6da32109c543ec16c6844b6794e0694ecd5864c9",
+      "role": "Own original scene EDIT TARGET for layout-only lowerhabitat repositioning. All5standaloneart/nativeidentity unchanged."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "themeId": "rindlight-waystation",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.91e8f48b.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "91e8f48b04b89feff2d42d568e982a6703ace013131fa87fa9bd12936bcc0428",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.19863d6f.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "19863d6f224107eb2bcb45fc2bf584436a255a9bbbc74bd5c94d95237a2ce2a8",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.ff878bd0.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "ff878bd02040af436ce5f0118d31fb97b29545568d02def9a4d080ef4844ecfb",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedVariants": 3,
+    "finding": "Complete shade-wing tips/crank, beacon bells, hut/ladder, seed-cart wheels and cistern funnel/tap preserved in all actual encoded crop variants including750x1334. Quiet pale ground remains above/below."
+  }
+}

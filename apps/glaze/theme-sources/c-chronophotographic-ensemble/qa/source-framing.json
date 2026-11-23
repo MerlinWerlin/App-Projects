@@ -1,0 +1,100 @@
+{
+  "review": "Main subjects and dim ghost positions checked at alpha16 and96; all fully inside source frames.",
+  "assets": [
+    {
+      "id": "bellows-breather",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          64,
+          290,
+          1141,
+          968
+        ],
+        "96": [
+          65,
+          291,
+          1140,
+          967
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "mainAndGhostsInsideFrame": true
+    },
+    {
+      "id": "gesture-conductor",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          172,
+          65,
+          1143,
+          1202
+        ],
+        "96": [
+          173,
+          67,
+          1142,
+          1200
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "mainAndGhostsInsideFrame": true
+    },
+    {
+      "id": "hollow-strider",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          271,
+          175,
+          1036,
+          1157
+        ],
+        "96": [
+          272,
+          176,
+          1036,
+          1157
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "mainAndGhostsInsideFrame": true
+    },
+    {
+      "id": "wing-clapper",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          37,
+          245,
+          1218,
+          1097
+        ],
+        "96": [
+          195,
+          245,
+          1032,
+          1096
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "mainAndGhostsInsideFrame": true
+    },
+    {
+      "id": "reed-crown",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          168,
+          196,
+          1174,
+          1104
+        ],
+        "96": [
+          171,
+          241,
+          1174,
+          1104
+        ]
+      },
+      "edgeAlphaMaximum": 2,
+      "mainAndGhostsInsideFrame": true
+    }
+  ]
+}

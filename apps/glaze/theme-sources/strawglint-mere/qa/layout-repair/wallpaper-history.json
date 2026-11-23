@@ -1,0 +1,33 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "reason": "Flatten wallpaper organisms to accepted joined straw intarsia and reduce/reposition complete habitat for actual phone crops.",
+  "originalPrompt": "STRAWGLINT MERE, original opaque portrait9:16 phone wallpaper. ONE small coherent familiar REAL FRESHWATER POND habitat rendered as ABSOLUTELY FLAT LAID SPLIT RYE-STRAW INTARSIA, photographed perfectly overhead. This is a flat PICTURE of natural organisms in their drawn poses, not3D sculptural animals. A natural common frog crouches at centre-left beside a notched lily leaf; one upright bittern with two whole legs/toes stands near sparse reeds at centre; one open water-lily and bud at right; a tiny six-legged diving beetle near pondweed below; one small willow/catkin branch arches at right. Familiar organic anatomy, normal eyes/body/legs, complete natural flora/fauna rather than abstract geometric toys or machines. Broad organic contour fields made of LONG FLAT PARALLEL STRAW RIBBONS glued FLUSH edge-to-edge IN ONE PLANE, precise straight butt joints, fine LONGITUDINAL VASCULAR STRAW FIBRES and alternating DIRECTIONAL SATIN STRAW GLINTS. Natural golden/honey/pale-ivory and restrained olive-dyed straw. No rounded wrapped bodies, over-under interlacing, basketjoints, curled/rolled bands, raised feather scales/barbs, tiny irregular wood chips, woodgrain rings, corrugated cardboard, metal/goldleaf/chrome, nacre, felt, plastic, glossy bead eyes or heavy shadows. Very faint three flat straw current curves connect the natural pond vignette. BACKGROUND quiet matte deep muted pond-blue #284C5C with faint paper fibres only. COMPOSITION CRITICAL: distant SMALL habitat vignette occupies ONLY central52percent imagewidth x24to76percent, and y39to69percent imageheight; every bird beak/toe, reed, willow leaf, catkin, frog toe, lily petal and beetle antenna is whole inside those limits. Upper35percent and bottom27percent and broad side margins remain EMPTY uninterrupted quiet blue for phone clock/icons and tallphonecrop safety. No extra tree/canopy/plant outside compact middle grouping. No plaque/platform, badge, frame, border, panels, text, letters, numbers, logo, UI, clock/date/battery/weather values or signature. One unified flat straw-intarsia picture with recognizable calm pond life and subtle material glints.",
+  "originalSource": "qa/layout-repair/wallpaper.original.ea767ab1.png",
+  "originalSha256": "ea767ab14ad976afc88b621b60949f6d6317dba0783e36ac5575529fac7869a9",
+  "repairPrompt": "Edit INPUT1 pond wallpaper. INPUT2 is the approved FLAT frog intarsia construction and INPUT3 the selected FLAT bittern intarsia construction; these are OWN material/organism references. Preserve the coherent natural pond arrangement and all five subjects (frog, bittern, waterlily/bud, diving beetle/pondweed, willow/catkins). TWO REQUIRED CORRECTIONS. 1) FLATTEN THE CRAFT: replace input1 rounded wrapped frog and tiny feather-chip bittern with the same natural silhouettes and ABSOLUTELY FLAT LAID SPLIT-STRAW INTARSIA as inputs2and3. Broad long parallel flattened stalk ribbons glued FLUSH edge-to-edge in ONE PLANE, straight buttjoints, fine longitudinal vascular fibres and alternating satin straw glints; long uninterrupted neck/wing/body fields, not short feather tiles. Frog eyes tiny flush dark inlay marks, no beads. Every reed/leaf/petal/beetle/current also a flat intarsia picture. No wrapped/over-under bands, basket joints, 3D rounding/carving, overlap loops, woodgrain, featherbarbs, nacre or metal. 2) PHONE-SAFE LAYOUT: shrink the ENTIRE complete habitat grouping to72PERCENT OF ITS CURRENT SIZE, recenter horizontally at54percent imageheight. Whole grouping within central62percent width x19to81percent and y37to71percent. Keep every beak, foot/toe, reed, willow leaf/catkin, lily petal and beetle antenna whole. Extend existing quiet matte deep muted pond-blue paper #284C5C naturally around smaller group; upper33percent, bottom25percent and side margins empty and calm. No new plants, objects, tree canopy, frame, badge, text, logo, UI or live values. Opaque portrait wallpaper; flat straw intarsia, no relief cast shadows or glow.",
+  "referencedImage": "qa/layout-repair/wallpaper.original.ea767ab1.png",
+  "selectedSource": "qa/layout-pullback/wallpaper.previous-flat.48e4321b.png",
+  "selectedSourceSha256": "48e4321b91c9759a55dc9a118436871cb5da0a8758c0dd0093dbbdc53e3f0e5b",
+  "materialReferences": [
+    {
+      "id": "frog-lilypad",
+      "source": "sources/frog-lilypad.b6735d96.png",
+      "sourceSha256": "b6735d96ddaa72506ac0a8ab2863c17073ea4d2fbbea3bf409919260886a3d8a",
+      "role": "Own selected flat-intarsia organism/material reference; exact input used by wallpaper edit."
+    },
+    {
+      "id": "bittern-reeds",
+      "source": "sources/bittern-reeds.23525bc3.png",
+      "sourceSha256": "23525bc3901ade67bd13ea839c3e932066c93db72dadc42b8f137f0a108a9d32",
+      "role": "Own selected flat-intarsia organism/material reference; exact input used by wallpaper edit."
+    }
+  ],
+  "referencedImageOrder": [
+    "qa/layout-repair/wallpaper.original.ea767ab1.png",
+    "sources/frog-lilypad.b6735d96.png",
+    "sources/bittern-reeds.23525bc3.png"
+  ],
+  "exactToolRequest": "qa/layout-repair/exact-three-input-wallpaper-edit-request.json",
+  "selectedSourceLocationNote": "Retained as unselected QA input after a later layout-only pullback; exact source hash unchanged."
+}

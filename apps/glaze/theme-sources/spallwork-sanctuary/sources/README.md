@@ -1,0 +1,1 @@
+Unmodified original image_gen PNGs with hash filenames. All accepted tangible subjects and any earlier material study are retained; provenance.json records selection, original prompts and source hashes.

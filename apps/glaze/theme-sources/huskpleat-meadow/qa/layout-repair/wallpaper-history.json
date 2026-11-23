@@ -1,0 +1,19 @@
+{
+  "reason": "Actual750x1334encodedcrop clippedlowesthuskbanktips. One layout-only edit moveslowerbank/mouseupward; owl/flowers remain substantial, craft and5standaloneart/nativeunchanged.",
+  "originalGeneration": "qa/layout-repair/original-generation.json",
+  "originalSource": "qa/layout-repair/wallpaper.original.4eeb1b62.png",
+  "originalSha256": "4eeb1b629b427391da4297f697d54b7b9cc2cb283143d63374e01b9df8234fb4",
+  "selectedSource": "sources/wallpaper.81fbe6ab.png",
+  "selectedSha256": "81fbe6ab7906d37ca58a95ce3b69a31c7340693981c0adcc073dd4fba83cbb21",
+  "exactRequest": "qa/layout-repair/wallpaper-layout-repair-request.json",
+  "exactResult": "qa/layout-repair/wallpaper-layout-repair-result.json",
+  "orderedInputs": [
+    {
+      "order": 1,
+      "id": "wallpaper-unselected-original",
+      "file": "qa/layout-repair/wallpaper.original.4eeb1b62.png",
+      "sha256": "4eeb1b629b427391da4297f697d54b7b9cc2cb283143d63374e01b9df8234fb4",
+      "role": "Own original scene EDIT TARGET for layout-only lowerhabitat repositioning. All5standaloneart/nativeidentity unchanged."
+    }
+  ]
+}

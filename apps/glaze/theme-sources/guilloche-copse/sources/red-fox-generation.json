@@ -1,0 +1,26 @@
+{
+  "id": "red-fox",
+  "label": "Red Fox",
+  "tool": "built-in image_gen",
+  "prompt": "Create ONE NEW independent original standalone Nature artwork for Glaze Guilloche Copse. Use the attached OWN accepted wren only for the exact FLAT SINGLE PETROL-BLUE INK (#20536A) printed-geometry language and scale of broad bold GUILLOCHE ROSETTE arcs. Generate a different complete subject, not a crop/variation of the bird. SUBJECT: A whole recognizable red fox in a calm seated three-quarter side pose, long narrow muzzle, two pointed upright ears, two separate straight front paws and two tucked hind paws, plus one large whole bushy tail sweeping around its right side. Natural compact fox anatomy and a clearly visible small eye. Distinct long triangular silhouette, no clothes or human pose. Print a long multi-lobed rosette within the tail and nested smaller rosettes in body/haunch. Style: flat two-dimensional matte intaglio/engine-engraving-inspired digital print. Whole form built from broad nested offset multi-lobed elliptical/circular loops with deliberate open negative pockets and clear rhythm at85px. No regular diagonal diamond mesh, woven net, lace, stitches, fibres, raised metal wires, rough woodcut gouges, realistic feather/fur crosshatching, gradients or 3D shading. Keep natural subject anatomy clearly recognizable through the mathematical line system. Crisp clean contours with restrained ink bite. TRUE TRANSPARENT ALPHA background and negative spaces, no paper rectangle, frame, shadow, halo, background color, labels, lettering, symbols, clock or UI. SQUARE canvas, entire subject centered within central68percent width and central60percent height, quiet margins around every paw, ear, tail, root and leaf tip. Not a scientific record or authentic physical print.",
+  "source": "sources/red-fox.61fc7745326f.png",
+  "sourceSha256": "61fc7745326f46e459949bddae3c91b38c57d73b4a600d2b52bb562845a5cb77",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/red-fox.fa29ad81.png",
+  "sha256": "fa29ad81f9a8541ab7241a005415dd916ed05788cf9852f4d9e7e9205f85abf9",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, recolour, alpha cleanup or creative raster/code edits; app adds its own Fit padding.",
+  "references": [
+    {
+      "file": "sources/wren-twig.2d8e172e0f05.png",
+      "sha256": "2d8e172e0f05a4a9df3861d7378104c39de02f5300a4cdf8e89c84669a220b8e",
+      "purpose": "Own accepted wren supplies only bold rosette ink language; an independent different natural subject is generated."
+    }
+  ]
+}

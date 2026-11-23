@@ -1,0 +1,96 @@
+{
+  "images": [
+    {
+      "id": "echidna",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alpha96Bounds": [
+        25,
+        131,
+        1205,
+        1086
+      ]
+    },
+    {
+      "id": "frilled-lizard",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alpha96Bounds": [
+        27,
+        153,
+        1219,
+        1114
+      ]
+    },
+    {
+      "id": "lyrebird-arch",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alpha96Bounds": [
+        73,
+        59,
+        1170,
+        1202
+      ]
+    },
+    {
+      "id": "grass-tree",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alpha96Bounds": [
+        62,
+        17,
+        1155,
+        1234
+      ]
+    },
+    {
+      "id": "spotted-quoll",
+      "originalSize": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "originalEdgeAlphaMax": 1,
+      "alpha96Bounds": [
+        59,
+        311,
+        1219,
+        1057
+      ]
+    }
+  ],
+  "processing": "Originals retain all visible edge silhouettes; transparent display fringe evaluated separately in actual encoded tiles.",
+  "installedDeviceVerified": false
+}

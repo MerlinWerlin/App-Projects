@@ -1,0 +1,222 @@
+{
+  "theme": "hitchrush-riverbank",
+  "created": "2026-11-23",
+  "lane": "B",
+  "medium": "Coarse hand-tied macrame square knots and double half-hitch collars in matte twisted three-ply cotton cord, with open knot windows and short turned ends",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "HITCHRUSH RIVERBANK. Use case: illustration-story. ONE coherent portrait1290x2796 Nature WALLPAPER, full opaque smooth smoky berry-brown #5A3F42 matching field. INPUT1 own APPROVED REFINED3a otter, INPUT2 own selected kingfisher, INPUT3 own selected watermint are MATERIAL and NATURAL ANATOMY refs only; never change these standalone art assets. ENTIRE scene visibly hand-tied COARSE MACRAME THREE-PLY MATTE COTTON: bulky separate SQUARE-KNOT collars, curved DIAGONAL BIGHTS, short turned cord ends, true open negative knot windows showing matching background. No regular basket warp-weft grid, woven raffia, tiny crochet/knit/lace fill, padded toy, satin ribbon or metal coil. A substantial TALL familiar riverbank habitat: THREE unequal tall narrow rush blades at right/back, ONE gently curving willow stem rising left/back with THREE whole narrow leaves and a short twig, TWO modest rounded lilac watermint flowerheads on a paired-leaf stem near center. ONE whole natural streamlined low-bodied OTTER walks lower-left facingLEFT, tiny ears/modest whiskered muzzle/four coherent short webbed paws and complete long tapering tail curling towardCENTER, not toward frame edge. Whole otter about53percent canvasWIDTH and19percent HEIGHT. ONE whole familiar KINGFISHER perches coherently on willow twig at upper-middle-right, natural long straight bill/short tail/two wholefeet, about20percent full canvasHEIGHT, petrol-blue/sage cords at back, mutedterracotta breast, ivory throat. NO OTHER FAUNA, no frog/dragonfly/insect. Connect willow/rush/mint roots through a natural low irregular shallow riverbank edge with a small curved quiet water ribbon, all made of same knotted cotton, not enclosed oval plaque/tray/rope hoop, display base, macrame wallhanging rod or rectangular framed picture. All scene forms broad legible knot groups, ecru/ivory/taupe/sage/petrol and restrained terracotta/lilac only, no real skin/fur/feathers. Entire connected habitat about80percent WIDTH and50to55percent HEIGHT, from about26percent to79percent canvasHEIGHT. ABSOLUTE SIDE RULE: leftmost bill/whisker/plant/otter/bank tip NO EARLIER than10percent WIDTH; rightmost tip NO LATER than90percent WIDTH. Every birdbill/tail/toe, otterwhisker/paw/taperedtail, branch/leaf/rush/flower/wholegroundedge visible inside those margins. Tall natural vertical plant presence, not tiny low island/sticker. Atleast25percent quiet matching background above,20percent below,10percent each side. No background rectangles/white backing behind open knots, frame/cornerflourishes/hoop, text/UI/numbers/labels, dates/clock/battery/weather readings, logo/signature, people/buildings or castshadow halo. Full opaque matching background.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.6d90630a.png",
+      "sourceSha256": "6d90630a62da69cfadcd9697385f4de1668b9f630a189847bde21c1f433bfc7d",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "f890a1abb6c03dbf72f439638c97b9dffdd868de5f374a239cfc25ec2989d0eb",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "otter-rushes",
+          "file": "sources/otter-rushes.3a4856da.png",
+          "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        },
+        {
+          "order": 2,
+          "id": "kingfisher-willow",
+          "file": "sources/kingfisher-willow.5531a413.png",
+          "sha256": "5531a413981d42e3b5e72c11c70dd0d18b124074696804cb529c5f0216a1face",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        },
+        {
+          "order": 3,
+          "id": "watermint",
+          "file": "sources/watermint.31b56661.png",
+          "sha256": "31b566610c3a7d1005711b63b5fe13b0e38bbe0bef12868c21ddfcb8269d960a",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+    },
+    {
+      "id": "otter-rushes",
+      "prompt": "ONE targeted CONSTRUCTION correction to own INPUT1 Hitchrush Riverbank otter. Use case: precise-object-edit. Preserve EXACT whole natural otter silhouette, modest head/ears/muzzle/two tiny eyes/whiskers, FOUR short coherent legs/webbed paws and complete long tapering curved tail, same short THREE-blade rush sprig and seedhead, same ecru/taupe/sage palette, true-alpha exterior, whole pose and generous margins. CHANGE the BASKET-WEAVE GRID across TORSO ONLY into unmistakable HAND-TIED MACRAME SQUARE-KNOT UNITS. Remove continuous straight horizontal/vertical warp-weft rows. Build torso from8to12 discrete BROAD ALTERNATING SQUARE KNOTS: each visible unit has TWO thick outer working cords cross into a small central oval collar around TWO filler cords, forming a knot with bulging side loops and short curved saddle, then cords turn diagonally toward the next knot. Clear irregular staggered rounded knot units, no regular woven chessboard. Small visible true-TRANSPARENT negative windows separate the knotted groups; every apparent hole opens all the way through to alpha, NO WHITE BACKING/FILL inside body holes. Keep matte coarse THREE-PLY TWISTED COTTON strands with subtle fibers, no crochet/knit rows, lace mesh, braided raffia leaf scales or shiny metal-purl spirals. Tail/legs/neck may retain their existing legible double-half-hitch collars and turned cord ends, but no smooth filled fabric body behind knots. No extra strands as animal limbs, no loose tassel fringe beyond silhouette. Natural otter remains recognizable first, no stuffed toy padding or huge eye. Only material/construction changes on torso/open gaps; do not replace whole animal or change anatomy/pose/plants. No ground/backing/hoop/plaque/text/UI/values, no new objects or fauna. True alpha exterior AND every open knot window.",
+      "tool": "built-in image_gen",
+      "source": "sources/otter-rushes.3a4856da.png",
+      "sourceSha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/otter-rushes.f593fbc1.png",
+      "sha256": "f593fbc14d9df4e05cb8f4c50210f96d49901f02a4617d8beed1a3ab81713390",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/material-repair/otter-rushes-history.json",
+      "referencedImage": {
+        "file": "qa/material-repair/otter-rushes.original.afe98cad.png",
+        "sha256": "afe98cad15f2ece4642ad3f6b931b89f57d6dff03369b2b48958600dcaf011dd"
+      },
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "otter-rushes-unselected-original",
+          "file": "qa/material-repair/otter-rushes.original.afe98cad.png",
+          "sha256": "afe98cad15f2ece4642ad3f6b931b89f57d6dff03369b2b48958600dcaf011dd",
+          "role": "Own initial unselected prototype EDIT TARGET for one material-only correction; exact original retained unchanged."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/otter-rushes-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/otter-rushes-exact-tool-result.json"
+    },
+    {
+      "id": "kingfisher-willow",
+      "prompt": "HITCHRUSH RIVERBANK, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL riverbank fauna or plants with clear natural anatomy FIRST. UNMISTAKABLE COARSE HAND-TIED MACRAME, made from MATTE THREE-PLY TWISTED COTTON CORDS. Broad SQUARE-KNOT over/under crossings around paired filler cords and DOUBLE HALF-HITCH collars must be visibly discrete at85px, with small true-alpha windows between knotted groups, soft flattened crossing crests, short tucked cord ends and very short occasional turned ends. Few thick legible knot groups across main body, not microscopic generic textured CGI. Warm ivory/ecru, muted taupe, sage/petrol and tiny restrained terracotta/lilac cords; very fine cotton strand twist, not fluffy fibre pile or real animal fur. Entire organism physically tied cord; no real skin/feathers/fur hidden underneath. No woven warp-weft grid, plaited flat raffia/coil basket, linen needlelace/picot mesh, needle-crochet chain loops, knit stitches, padded patchwork/felt/plush, loose long tassel fringes, smooth broad satin ribbon stitches, sewn metal spring tubes, glass beads, pins/string-art board, paper, clay, pasta or peel. No giant cartoon eyes, costume/bow or anthropomorphic smile. Whole recognizable subject inside central64percent with18percent empty ALPHA margin EVERY side; all extremities whole. Exterior and knot/branch/anatomy gaps genuinely transparent. No hoop/rod/backing fabric/plaque/rectangle, ground/scenery/rock/display base, halo/shadow/glow, text/letters/numbers/UI/logo/signature or live clock/date/battery/weather values. One familiar natural kingfisher perched on one short willow twig, compact body, modest round head, whole LONG straight pointed bill, tiny natural dark knotted eye, coherent folded wing, short complete tail, exactlyTWO coherent fine cord legs with whole toes clasping branch. Petrol-blue and muted sage cords at back/wing, restrained warm terracotta cord breast and ivory throat. Two small narrow willow leaves beside it, no flowers/wreath. Entire bird is coarse matte3ply cotton square-knot and double-half-hitch sculpture, conspicuous crossing collars with small negative knot windows, not needle-crochet loops, woven raffia scales, shiny satin ribbon planes or real feathers. Whole bill/wing/tail/feet/leaf tips inside margins. INPUT1 is OWN APPROVED REFINED3a OTTER, MATERIAL ONLY for separated bulky macrame SQUARE-KNOT collars, DIAGONAL BIGHTS, short turned cord ends and matte twisted3ply cotton. Generate the requested NEW subject/composition separately; NEVER copy or include the otter/rushes. Retain conspicuous knot units and real open negative gaps at85px, no continuous regular basket warp-weft grid or crochet/knit fill. Entire new organism actual knotted cotton, no underlying real skin/fur/feathers. All visible open knot windows are TRUE TRANSPARENT ALPHA, never white/opaque backing.",
+      "tool": "built-in image_gen",
+      "source": "sources/kingfisher-willow.5531a413.png",
+      "sourceSha256": "5531a413981d42e3b5e72c11c70dd0d18b124074696804cb529c5f0216a1face",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/kingfisher-willow.ebe506c2.png",
+      "sha256": "ebe506c2a91eee503cdce1219a339b237eb4473d587796f814f0602c3a7aacc1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "otter-rushes",
+          "file": "sources/otter-rushes.3a4856da.png",
+          "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/kingfisher-willow-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/kingfisher-willow-exact-tool-result.json"
+    },
+    {
+      "id": "frog-sedge",
+      "prompt": "HITCHRUSH RIVERBANK, Glaze Nature. Use case: stylized-concept. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL riverbank fauna or plants with clear natural anatomy FIRST. UNMISTAKABLE COARSE HAND-TIED MACRAME, made from MATTE THREE-PLY TWISTED COTTON CORDS. Broad SQUARE-KNOT over/under crossings around paired filler cords and DOUBLE HALF-HITCH collars must be visibly discrete at85px, with small true-alpha windows between knotted groups, soft flattened crossing crests, short tucked cord ends and very short occasional turned ends. Few thick legible knot groups across main body, not microscopic generic textured CGI. Warm ivory/ecru, muted taupe, sage/petrol and tiny restrained terracotta/lilac cords; very fine cotton strand twist, not fluffy fibre pile or real animal fur. Entire organism physically tied cord; no real skin/feathers/fur hidden underneath. No woven warp-weft grid, plaited flat raffia/coil basket, linen needlelace/picot mesh, needle-crochet chain loops, knit stitches, padded patchwork/felt/plush, loose long tassel fringes, smooth broad satin ribbon stitches, sewn metal spring tubes, glass beads, pins/string-art board, paper, clay, pasta or peel. No giant cartoon eyes, costume/bow or anthropomorphic smile. Whole recognizable subject inside central64percent with18percent empty ALPHA margin EVERY side; all extremities whole. Exterior and knot/branch/anatomy gaps genuinely transparent. No hoop/rod/backing fabric/plaque/rectangle, ground/scenery/rock/display base, halo/shadow/glow, text/letters/numbers/UI/logo/signature or live clock/date/battery/weather values. One familiar natural common frog crouches gently facing slightly right, low coherent body, modest natural eyes on a small broad head, FOUR coherent limbs: two short front legs/paws and two bent longer hind legs with whole modest webbed feet. Sage/olive and ivory matte3ply cotton cords are tied into coarse square knots and double half-hitch collars following natural frog anatomy, visible over-under crossings and small open knot windows. No giant chibi eyes, smile, costume or stuffed wool frog. One short sedge fork beside it with three narrow sage knotted cord blades, no ground/base/water dish. Whole all toes/feet/legs/head/plant tips contained, no real skin under cord. INPUT1 is OWN APPROVED REFINED3a OTTER, MATERIAL ONLY for separated bulky macrame SQUARE-KNOT collars, DIAGONAL BIGHTS, short turned cord ends and matte twisted3ply cotton. Generate the requested NEW subject/composition separately; NEVER copy or include the otter/rushes. Retain conspicuous knot units and real open negative gaps at85px, no continuous regular basket warp-weft grid or crochet/knit fill. Entire new organism actual knotted cotton, no underlying real skin/fur/feathers. All visible open knot windows are TRUE TRANSPARENT ALPHA, never white/opaque backing.",
+      "tool": "built-in image_gen",
+      "source": "sources/frog-sedge.984236e0.png",
+      "sourceSha256": "984236e02e137b5320cbafbb1c5999a4eca3ad53e6fc54f58de76c5353cc11e3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/frog-sedge.69b929f1.png",
+      "sha256": "69b929f1e97ca9dba1e3835117d8d4682487813b24ee1cf018e1d9f2bba48d46",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "otter-rushes",
+          "file": "sources/otter-rushes.3a4856da.png",
+          "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/frog-sedge-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/frog-sedge-exact-tool-result.json"
+    },
+    {
+      "id": "watermint",
+      "prompt": "PLANTS ONLY, ZERO FAUNA. HITCHRUSH RIVERBANK WATERMINT BOTANICAL STUDY. Use case: stylized-concept. One standalone1024square artwork on genuine transparent alpha. ExactlyONE natural WATERMINT sprig with TWO short connected branching stems, THREE OPPOSED PAIRS of small OVAL SERRATED sage leaves and TWO modest ROUNDED heads of tiny LILAC flowers. No otter, animal, bird, insect, face, eyes, paws, tail, feather or seedpod. Natural watermint paired leaf growth/compact terminal flower heads, no giant bouquet/wreath/macrame wallhanging. All stems/leaves/flowers are made from COARSE HAND-TIED MATTE THREE-PLY TWISTED COTTON: each oval leaf a few conspicuous separate square-knot collars joined by diagonal bights, small actual alpha-open windows between knots, lilac flower heads a few tight small square-knot clusters. True knot over/under intersections, not basket warpweft grid, plaited flat raffia, fine needlelace, crochet chain rows, smooth satin ribbons, metal coils/beads or padded felt. Three-ply cotton twist is readable, no long fluffy fringe. Whole all stem/leaf/flower ends central64percent,18percent real alpha margins each side, exterior and open plant/knot gaps transparent. No hoop/rod/backing/rectangle/vase/base/ground, castshadow/halo/glow, text/UI/logos or live values. Final image MUST be ONLY the single watermint plant, absolutely no animal copied from material reference. INPUT1 is OWN APPROVED REFINED3a OTTER, MATERIAL ONLY for separated bulky macrame SQUARE-KNOT collars, DIAGONAL BIGHTS, short turned cord ends and matte twisted3ply cotton. Generate the requested NEW subject/composition separately; NEVER copy or include the otter/rushes. Retain conspicuous knot units and real open negative gaps at85px, no continuous regular basket warp-weft grid or crochet/knit fill. Entire new organism actual knotted cotton, no underlying real skin/fur/feathers. All visible open knot windows are TRUE TRANSPARENT ALPHA, never white/opaque backing.",
+      "tool": "built-in image_gen",
+      "source": "sources/watermint.31b56661.png",
+      "sourceSha256": "31b566610c3a7d1005711b63b5fe13b0e38bbe0bef12868c21ddfcb8269d960a",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/watermint.1df86fb1.png",
+      "sha256": "1df86fb135a7ee9f8bd00471eeaad6002e81778087a60b3fa2d7a13b64fa6feb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "otter-rushes",
+          "file": "sources/otter-rushes.3a4856da.png",
+          "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/watermint-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/watermint-exact-tool-result.json"
+    },
+    {
+      "id": "dragonfly-loosestrife",
+      "prompt": "REPAIR COMPLETE FOUR-WING DRAGONFLY CUTOUT. Use case: precise-object-edit. INPUT1 is own new dragonfly/loosestrife asset with only THREE clearly visible wings, clipped right edge and unwanted opaque pale haze. Preserve its familiar slim dragonfly, fine antennae/legs and short natural loosestrife spike, matte three-ply cotton/sage/ivory/taupe/lilac palette, bulky separate square-knot collars and diagonal bights. Correct the insect to EXACTLY FOUR whole long NARROW WINGS: TWO distinct wings project LEFT from thorax at different angles, TWO distinct wings project RIGHT at different angles. Separate all four wings with genuine alpha gaps; no wing hidden behind plant, body or another wing. Move short flower spike lower-left as needed to leave LOWER-LEFT WING completely visible. Whole FOUR wing tips, slender complete abdomen/tail, TWO SHORT antennae, SIX coherent fine cord legs, all flower/leaf/stem tips fully inside central64percent of SQUARE canvas, at least18percent genuine empty alpha margin EACH side. No cut rightmost wing/tail/stem. Each wing is an OPEN tied-cotton structure of a few broad real square-knot crossing collars/diagonal bights, large EMPTY alpha-open windows, NO wing membrane, NO filled white/cream/gray backing. Remove ALL pale GRAY/WHITE HAZE and cast shadows from exterior, between wings/body/flower, and inside every open knot window; those areas must be TRUE TRANSPARENT ALPHA, not painted checkerboard or white. Keep all actual cotton intact and clean, no blurred fiber halo or recoloring. INPUT2 is own APPROVED refined3a otter MATERIAL ONLY for separate coarse knot topology and real alpha windows, never add/copy otter/rushes or another animal. Final image is one whole natural FOUR-WING dragonfly with six legs beside short loosestrife spike in same hand-tied cotton. No extra body, butterfly wing shapes, costume, backing plaque, scenery, text/UI/logo/values. Genuine transparent cutout with all four wings obvious and whole.",
+      "tool": "built-in image_gen",
+      "source": "sources/dragonfly-loosestrife.f0aa2b77.png",
+      "sourceSha256": "f0aa2b77090cfd9d6eb2e1dca83b977273e018915fe3af74b3e57225c360be3b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/dragonfly-loosestrife.272b147d.png",
+      "sha256": "272b147d0116d131cce0d351e6af8f499ba9388b9e1864909ffec705fad0d64b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/anatomy-repair/dragonfly-loosestrife-history.json",
+      "referencedImage": {
+        "file": "qa/anatomy-repair/dragonfly-loosestrife.original.0f1da31e.png",
+        "sha256": "0f1da31edefa12e890a44f0bf92b2b3f43c7e8b9c1fc6a8155df075951d46d05"
+      },
+      "materialReference": {
+        "id": "otter-rushes",
+        "source": "sources/otter-rushes.3a4856da.png",
+        "sourceSha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+        "role": "Material reference only; target subject/geometry retained."
+      },
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "dragonfly-loosestrife-unselected-original",
+          "file": "qa/anatomy-repair/dragonfly-loosestrife.original.0f1da31e.png",
+          "sha256": "0f1da31edefa12e890a44f0bf92b2b3f43c7e8b9c1fc6a8155df075951d46d05",
+          "role": "Own initial unselected prototype EDIT TARGET for one material-only correction; exact original retained unchanged."
+        },
+        {
+          "order": 2,
+          "id": "otter-rushes",
+          "file": "sources/otter-rushes.3a4856da.png",
+          "sha256": "3a4856da88eeccf7ae59d436819926e38613587802ac0d2e25d40d798246be9c",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/dragonfly-loosestrife-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/dragonfly-loosestrife-exact-tool-result.json"
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

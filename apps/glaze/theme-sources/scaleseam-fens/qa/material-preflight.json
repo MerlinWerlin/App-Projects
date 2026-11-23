@@ -1,0 +1,47 @@
+{
+  "id": "scaleseam-fens",
+  "lane": "B39",
+  "category": "Nature",
+  "status": "First886e1c44 accepted unchanged by coordinator actual material review; expanding four separately and fuller/taller wallpaper. First raw frozen.",
+  "process": "Thin bark-tanned fish-skin leather panels with coarse empty crescent scale pockets, papery translucent cut lips and short linen overcast seams",
+  "subjects": [
+    "moorhen-rushes",
+    "perch-pondweed",
+    "grass-snake-sedge",
+    "yellowflag-iris",
+    "marsh-marigold"
+  ],
+  "world": "Familiar fen wildlife and flowering wetland plants made from honey, olive and russet fish-skin leather on quiet deep slate blue.",
+  "baselineSearch": "Exact fishskin/fish leather/salmon leather/scale-pocket terms absent in current root source provenances plus139historical baseline manifests. Broad leather, scales and cloth patchwork neighbors positive and retained; exact ID absent own/root source and root catalogue scan.",
+  "neighbors": [
+    "Saddlewood actual historical4/accepted-unpublished5 leather embossing and saddlery, no thick hide bevels or rosettes allowed.",
+    "Moonpatch actual historical4/accepted5 padded quilt cloth and seams, no cotton weave or padding allowed.",
+    "ToucanLoom actual historical4/accepted5 tufted/woven fibre, no fibre pile/yarn allowed.",
+    "B14Burnishhide thick smooth bevelled tooled hide, stamped rosettes and saddle stitches.",
+    "B16Cutstack raw cotton sheet layers/reverse applique.",
+    "B18Beadweft hard cylindrical glass holes and bridges.",
+    "B24Vaneleaf feather shafts/barbs.",
+    "B29Strawglint flat parallel stalk ribbons.",
+    "B27Flutecut thick corrugated cardboard flutes."
+  ],
+  "technicalReferences": [
+    {
+      "url": "https://northhouse.org/courses/fish-skin-tanning",
+      "scope": "Primary craft school: bark/oil tanning gives usable fish leather. TEXT only."
+    },
+    {
+      "url": "https://www.anchoragemuseum.org/programs/for-educators/online-resources/cultural-arts-sewing/",
+      "scope": "Primary museum sewing education: fish-skin objects and sewing techniques. TEXT only; no object/photo/pattern or cultural motif used."
+    },
+    {
+      "url": "https://slcc.ca/fishleatherworkshop/",
+      "scope": "Primary cultural centre: scales scraped away before tanning, tea-tanned rich brown and fat-tanned translucent skins. TEXT only, no specimen images or motifs used."
+    }
+  ],
+  "cornerCompanion": "Whole familiar moorhen, modest natural eye, short bill and two coherent long-toed legs, short rush fork. Soft irregular pebble clock rim echoes a thin hand-sewn leather panel, short dash hour marks, leaf hands, basin battery and folio calendar. Compact companion is ONE open reed-leaf edge seam with three short overcast stitches and two empty crescent scale pockets; no animal, patchwork shield or enclosed plaque. Face chosen for artwork; independent calendar-only badge preserves normal date point size and bold today.",
+  "firstGateCriterion": "Reject if170/85 reads as thick embossed leather, padded cloth quilt, real reptile skin/animal flesh, feather mosaic or simple fish scales. Need broad thin sewn leather panels with visibly EMPTY coarse scale pockets and papery cut lips; natural bird silhouette first.",
+  "nativeSpecCorrection": "Preflight native study exposed unsupported cushion/stitches recipe tokens silently defaulting in parser. Before packaging, changed OWN spec only to supported art-chosen pebble/dash; regenerated actual study and date proof. No raster change or shared runtime edit.",
+  "selectedApprovedSourceSha256": "886e1c4487a8c7c70bbd05d4d268e188db42b297b78e36817be115fd1efbee55",
+  "materialApproval": "fish-generation/material-approval.json",
+  "executedCreativeCorrectionCount": 0
+}

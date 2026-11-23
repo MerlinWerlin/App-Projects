@@ -1,0 +1,42 @@
+{
+  "id": "stratagrain-saltmarsh",
+  "lane": "B34",
+  "category": "Nature",
+  "status": "accepted for full-set expansion after actual full17085 and nine-neighbor coordinator review following B33 complete handoff",
+  "process": "Mokume-gane bonded mixed-metal laminate with broad copper, brass, silver and dark-alloy wavy strata and cross-cut layered lips",
+  "subjects": [
+    "plover-samphire",
+    "harbour-seal",
+    "whelk-eelgrass",
+    "sea-lavender",
+    "curlew-sedge"
+  ],
+  "world": "Recognizable saltmarsh wildlife and coastal plants in hand-forged mixed-metal layers over a quiet deep tidal field.",
+  "baselineSearch": "Exact mokume/wood-grain-metal/laminated-copper-brass-metal/damascus/damascene scan across139 baseline and current integrated provenances found no hits. Broad metal, woodgrain and marbling neighbors retained, not a no-neighbor claim.",
+  "neighbors": [
+    "B28 Silverthorn Dunes: sparse silver inlay added flush into black zinc; candidate alternating metals form entire deformed bonded laminate through thickness, no added channels.",
+    "B2 Copper Selvedge: warp/weft metal loom; no straight woven ribbon grid or loose threads here.",
+    "B19 Tinwake Understory: hammered/chased single-metal sheet; candidate has thick interleaved multi-metal cross-sections and broad continuous layer flow.",
+    "B31 Purlwake Reedbeds: sewn short helical goldwire spring tubes; no separate coils or embroidery here.",
+    "B12 Chargrain Passage: burned birch woodgrain drawing; candidate must read solid metal with silver/copper/brass reflections and cut-layer lips, no wood pores/fibers.",
+    "Marquetry Arc actual veneer wave: separate flat wood veneer pieces and wood grain, no wood or glued mosaic seams in candidate.",
+    "Yuzu Soak actual nerikomi kettle: pastel ceramic marbling, no glossy clay volume or painted waves here.",
+    "Cobalt Caravan actual lapis scarab: stone veins/gold mounts, no jewels or stone core in candidate.",
+    "Published Silver Orchard actual hammered-silver dormouse: single silvery metal skin and enamel leaf, candidate visibly alternating multi-metal layers."
+  ],
+  "technicalReferences": [
+    {
+      "url": "https://www.metmuseum.org/ja/perspectives/metalworking-mokume-gane",
+      "scope": "Primary museum text defines heat/pressure fused layers and patterned mixed-metal laminate. Process text only, no image input or artist imitation."
+    },
+    {
+      "url": "https://www.mokumegane.org/e/mokumegane.html",
+      "scope": "Japan Mokumegane Research Institute process reference, text only."
+    },
+    {
+      "url": "https://collections.craftscouncil.org.uk/object-m63",
+      "scope": "Crafts Council notes patterned layers exposed by breaking through top layer; process text only."
+    }
+  ],
+  "cornerCompanion": "Natural short-billed plover with whole slender feet as full hero; parallel deformed laminate wave bands as detail. Supported square rim retains12pt today digits, staple marks, wedge hands, column charge and board calendar. Compact companion is one open samphire fork with three short parallel metal-strata curves, no whole bird, badge, ring or jewellery frame."
+}

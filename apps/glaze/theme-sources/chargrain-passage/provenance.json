@@ -1,0 +1,129 @@
+{
+  "theme": "chargrain-passage",
+  "created": "2026-11-22",
+  "lane": "B",
+  "medium": "Hot-point pyrography on pale birch veneer, scorched contours, heat blooms and stippled shading",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "ONE original tall1290:2796 wallpaper for GLAZE CHAR GRAIN PASSAGE / chargrain-passage. An elaborate tangible invented public transit crossing in lower42%: a terraced spiral-stair caravan rolls between two huge offset spoked wheels, a long articulated walking causeway approaches it across a shallow ravine, an expandable accordion-hulled ferry rests below, and a cable-trolley with an exposed counterweight hangs beside a cliff station. Coherent purposeful constructions, imaginative but structurally understandable wheels, decks, joints, access stairs, cables and hinges; no generic vehicle collection or abstract geometry. Medium: hand PYROGRAPHY burned directly onto one continuous pale BIRCH VENEER image plane. Very dark sepia scorched contours, hot-point stippled shading, irregular heat-bloom halos, varied burnt line thickness, fine warm horizontal natural wood grain passes continuously underneath the whole drawing, a few chalk-white rubbed highlights. Flat burn-drawn illustration viewed straight-on, not carved wooden sculptures, marquetry/inlay, laser-cut cutouts, pencil on paper, paper etching, ink print, digital3D render or photoreal model. Warm high-key pale birch #E8D9B7, deep charcoal-brown #38251D, warm scorch #93623D, small chalk #F4EADB. Upper55% nearly empty light birch grain surface for dark app icons, subtle natural knots/pores only, no burned objects there. Keep all important transit forms in lower45%, calm wide spacing and strong silhouettes. No text, labels, letters, numbers, rail signs, gauges/dials/readings, time/date/battery/weather values, UI, logo, watermark, border, frame, phone mockup or collage.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.58a2773b.png",
+      "sourceSha256": "58a2773be2f71ed7d207a7593a404acf0efd72393ddfbc4dc4eabfca646b8ca0",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "b69521ba5f7b81d577b1b43207954bfe19fe666f344fa31bcd6433a9a559cf1a",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "switchback-caravan",
+      "prompt": "CHAR GRAIN PASSAGE / chargrain-passage for Glaze. ONE original 1024x1024 pure artwork of a tangible invented transit construction. Flat hand PYROGRAPHY burned into PALE BIRCH VENEER: dark sepia scorched contours, fine hot-point stippled shading, uneven burnt-line thickness, irregular heat-bloom halos, pale wood fibres and continuous warm horizontal grain visible THROUGH the drawing, sparse chalk-white rub highlights. Treat the entire subject as a flat burn-drawn illustration on the image plane, not carved wooden objects, marquetry/inlay, laser-cut model, paper etching, ink print, pencil drawing, CGI or3D product render. Palette pale birch #E8D9B7, deep charcoal-brown #38251D, warm scorch #93623D and chalk #F4EADB only. Strong simplified silhouette, readable useful construction and access, distinct central subject occupying central65% with at least16% genuine transparent alpha around all sides and through large voids. Woodgrain is retained only within pale illustrated subject fields; no rectangular wooden plaque or backing, no floor/scenery, border, frame, text, letters, symbols/numbers, signs, clocks/dials, date/battery/weather readings, logos, people or UI. Subject SWITCHBACK CARAVAN: a triangular three-level mobile passenger pavilion slung between TWO ENORMOUS OFFSET SPOKED ROAD WHEELS, left wheel tall and right wheel slightly smaller. One complete exterior SPIRAL STAIR connects the three stepped terraces; wide open arch bays and a single curled canopy at top, short projecting boarding ramp folds onto the lower deck. Visible axle connections support the pavilion between the wheels, six thick spokes per wheel, generous large open wheel gaps. No ordinary bus/train/car, animal, bridge, boat or cables. Strong tall-left/wide-bottom silhouette, physically understandable travelling hill-station with accessible decks, major wheels and stair take priority over tiny ornament. Whole wheel rims, stair rail and canopy tip fully inside alpha. Burn marks and grain are the only medium; keep all shading flat pyrographic stipple.",
+      "tool": "built-in image_gen",
+      "source": "sources/switchback-caravan.436a65d0.png",
+      "sourceSha256": "436a65d0e961cc55c03e6ae8f51e0a557e7e9038bc415fa5d75ce1d54d41f8b5",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/switchback-caravan.57e4dbbf.png",
+      "sha256": "57e4dbbf89c11b9acb80dea460fc1a51d6a6f2504366c8ea7f32c3575ae366af",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "walking-causeway",
+      "prompt": "CHAR GRAIN PASSAGE / chargrain-passage for Glaze. ONE original 1024x1024 pure artwork of a tangible invented transit construction. Flat hand PYROGRAPHY burned into PALE BIRCH VENEER: dark sepia scorched contours, fine hot-point stippled shading, uneven burnt-line thickness, irregular heat-bloom halos, pale wood fibres and continuous warm horizontal grain visible THROUGH the drawing, sparse chalk-white rub highlights. Treat the entire subject as a flat burn-drawn illustration on the image plane, not carved wooden objects, marquetry/inlay, laser-cut model, paper etching, ink print, pencil drawing, CGI or3D product render. Palette pale birch #E8D9B7, deep charcoal-brown #38251D, warm scorch #93623D and chalk #F4EADB only. Strong simplified silhouette, readable useful construction and access, distinct central subject occupying central65% with at least16% genuine transparent alpha around all sides and through large voids. Woodgrain is retained only within pale illustrated subject fields; no rectangular wooden plaque or backing, no floor/scenery, border, frame, text, letters, symbols/numbers, signs, clocks/dials, date/battery/weather readings, logos, people or UI. Subject WALKING CAUSEWAY: one long slender pedestrian BRIDGE DECK with low railings and THREE wide arch cutouts under its beam, mounted on SIX LONG ARTICULATED LEGS, three visibly on each side, that can lift the entire bridge and walk it between riverbanks. Foreground legs have clear round knee pivots and big oval flat footpads, posed in an asymmetric careful stride: one foot lifted and tilted, two planted. The deck has one short entrance stair folded down at left and a hand-cranked turning joint at right, no roof, cabins, wheels, humans or boat. Wide elevated insectlike silhouette but unmistakably a useful portable crossing, no generic bug/robot. At least two large open gaps between legs. Complete bridge ends, railings, all six legs and footpads stay in central65% with roomy alpha. Emphasise flat PYROGRAPHIC burn contour and hot-point stipple/heat halos over continuous birch grain, not literal mechanical wooden sculpture.",
+      "tool": "built-in image_gen",
+      "source": "sources/walking-causeway.f7ffe442.png",
+      "sourceSha256": "f7ffe4427711e7d79f2bc33847783796bbfe6e93acd4f943e34bc58ece75b57c",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/walking-causeway.16da2849.png",
+      "sha256": "16da2849cd09f496130d1a667195b02d6e08a7f3cfd4f0e3dae29f4308c6bd1e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "bellows-ferry",
+      "prompt": "CHAR GRAIN PASSAGE / chargrain-passage for Glaze. ONE original 1024x1024 pure artwork of a tangible invented transit construction. Flat hand PYROGRAPHY burned into PALE BIRCH VENEER: dark sepia scorched contours, fine hot-point stippled shading, uneven burnt-line thickness, irregular heat-bloom halos, pale wood fibres and continuous warm horizontal grain visible THROUGH the drawing, sparse chalk-white rub highlights. Treat the entire subject as a flat burn-drawn illustration on the image plane, not carved wooden objects, marquetry/inlay, laser-cut model, paper etching, ink print, pencil drawing, CGI or3D product render. Palette pale birch #E8D9B7, deep charcoal-brown #38251D, warm scorch #93623D and chalk #F4EADB only. Strong simplified silhouette, readable useful construction and access, distinct central subject occupying central65% with at least16% genuine transparent alpha around all sides and through large voids. Woodgrain is retained only within pale illustrated subject fields; no rectangular wooden plaque or backing, no floor/scenery, border, frame, text, letters, symbols/numbers, signs, clocks/dials, date/battery/weather readings, logos, people or UI. Subject BELLOWS FERRY: a very LOW LONG BOAT with a short rounded passenger cabin at EACH END and an expandable ACCORDION HULL linking them through the middle. Five large alternating pale-birch and dark-burnt zigzag bellows pleats clearly expand fore-to-aft like a concertina, supported by visible diagonal hinged braces on the sides. The front cabin is wider and has one curved prow, open two-arch shelter and a short boarding plank; rear cabin is tiny with a single big steering sweep. A low continuous handrail connects along the tops of the bellows, simple bench visible inside forward cabin. No smoke, steam motor, sail, waves/background, instruments, wheels or walking legs. Wide stepped elongated silhouette with deep valleys between accordion folds, visibly a useful ferry that changes capacity for crowded crossings, not a generic boat or musical accordion. All prow, steering sweep, boarding plank and folds contained within true alpha margin. Entire image hand-burned contours/stipple with heat fringes and underlying birch grain, no literal carved wooden toy.",
+      "tool": "built-in image_gen",
+      "source": "sources/bellows-ferry.42c75ab6.png",
+      "sourceSha256": "42c75ab602dc6265e34c4543d4def7eec44982af1ccf1dc548a89ec31baa364e",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bellows-ferry.bbb29f8a.png",
+      "sha256": "bbb29f8a86c6b43fc0b1cb9abe4a7bba631de499e855e2cb39414255cecd7d5b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+    },
+    {
+      "id": "suspended-climber",
+      "prompt": "Composition/crop repair ONLY for this CHAR GRAIN PASSAGE suspended-climber artwork. Preserve exactly the cabin, two-pulley trolley, diagonal double cable, both anchor clevises, right counterweight, folded step, all component relationships and delicate PYROGRAPHY style (sepia burnt outlines, hot-point stipple, pale birch grain, heat halos and chalk rub). Enlarge the transparent composition canvas and scale the ENTIRE assembly down to fit the central70% of a1024x1024 square, with minimum15% genuinely empty transparent alpha on all four sides. Reconstruct the small clipped right end of the upper-right anchor clevis completely, and any clipped edge of the lower-left anchor, so both clevis bases are fully closed shapes with visible margins. Keep all cables attached and all original transparent gaps. No new object, background board, floor, frame, scenery, text, numbers or style change. The ENTIRE cabin, weights, two anchors and all ropes must be visible and uncropped.",
+      "tool": "built-in image_gen",
+      "source": "sources/suspended-climber.73be5359.png",
+      "sourceSha256": "73be5359e3c1dfc3f28bfae93af0690cd899558e2dae491f3dca76db4110f1ec",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/suspended-climber.a7e0805a.png",
+      "sha256": "a7e0805a3213f927c8b65909b397054dcaeb8f330a37aade716f48a242cb8821",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/crop-repair/suspended-climber-history.json",
+      "referencedImage": {
+        "file": "qa/crop-repair/suspended-climber.original.0e82375a.png",
+        "sha256": "0e82375a3b27a4ec412bfac9ad9f987f20a70fa3cd83d573c4b5e5d3cdd1be01"
+      }
+    },
+    {
+      "id": "folding-tunnel-carrier",
+      "prompt": "Give this benign fantasy civil-engineering illustration more empty transparent margin on every side. It depicts an accessible temporary pedestrian tunnel: three hinged arch frames on a low transport sled, a small ramp and a hand crank. Keep the same illustration, structure, sepia pointillist woodgrain style and all transparent openings. Fit the complete image within the central70% of a square canvas, with at least15% genuinely transparent space on all four sides. Complete the small outer tip of the left sled runner and the circular tow loop on the right so their outlines are fully visible. Preserve the original composition and details. No background, scenery, writing or additional objects.",
+      "tool": "built-in image_gen",
+      "source": "sources/folding-tunnel-carrier.dfd81f93.png",
+      "sourceSha256": "dfd81f93d73f38e88aa6d2812476746154fed1408dae4b096c5e98c92ee5cf26",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/folding-tunnel-carrier.73ea7fff.png",
+      "sha256": "73ea7fffea8265d1902089ace54fd9241190e7f5d9170fa494c7a9f0e0740d24",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/crop-repair/folding-tunnel-carrier-history.json",
+      "referencedImage": {
+        "file": "qa/crop-repair/folding-tunnel-carrier.original.5da5216b.png",
+        "sha256": "5da5216bc6135f4b6127e7690c820d9cf32484db03e86130347fb356b583f18e"
+      }
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim."
+}

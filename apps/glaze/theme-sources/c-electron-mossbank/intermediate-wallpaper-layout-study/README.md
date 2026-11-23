@@ -1,0 +1,1 @@
+Unselected initial habitat retained with exact prompt and five own identity reference hashes. Layout-only built-in imagegen edit places all five complete primary nature subjects inside crop-safe margins;granular soil can bleed.

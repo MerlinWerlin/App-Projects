@@ -1,0 +1,18 @@
+{
+  "id": "sandgrouse-acacia",
+  "prompt": "SILVERTHORN DUNES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real desert flora/fauna, natural recognizable proportions and coherent anatomy FIRST. Visibly physical BIDRI-INSPIRED handcraft: shallow solid BLACKENED ZINC-ALLOY low relief, satin matte charcoal-black patina with subtle uneven burnished metal surface; FEW BROAD TAPERED PURE SILVER WIRE/FOIL STRIPS hammered FLUSH into hand-cut channels, tiny bright metallic seams/hammer traces. Broad smooth uninterrupted black-metal reserves over80percent, no dense fine hairlike scratches, hatching, papergrain or white fur texture. Only a few broad silver strips per anatomical region, with hammered silver highlights. Inlay follows real fur directions, anatomical contours, natural scales, leaf veins and petals. BLACK METAL MUST DOMINATE at least75% of subject surface; restrained silver detailing no all-silver body. Thin cast metal edge visible in modest three-quarter relief, not chrome mirror, jewelry/charm, pin/brooch, porcelain/enamel, shell/nacre, wire cage, tin-sheet repousse, woven metal, glitter, beads, wood, plastic, ink/print/scratchboard/engraved paper or white outline drawing. No generic floral scrollwork plastered across bodies; keep animal identity immediate. Real gaps between limbs/branches alpha transparent. Whole complete composition central64%, minimum18% true alpha margin each side, no cut feet/ears/tail/leaf. No ground, scenery, backing plaque, frame, plinth, medallion, hanging ring/bail, cast shadow, halo, text, letters, numbers, clock/date/battery values, UI, logo or signature. Subject SANDGROUSE ACACIA: one natural adult sandgrouse standing in relaxed three-quarter profile toward left, compact plump ground-bird body, small coherent head, short fine beak, closed folded wings, complete tapered tail and exactly TWO short coherent legs with visible three front toes and rear toe on each foot. A single low horizontal acacia twig with a few tiny paired leaflets sits alongside feet, no ground pad or perch platform. Natural bird anatomy, no long heron legs, duck bill, giant cartoon eyes, costume or machine. Satin-black zinc low relief with restrained sparse broad silver wire/foil inlay tracking actual feather shafts and scalloped wing edges, slim face line and neck specks. Broad black metal feather forms, no many layered cut feathers or all-silver body, no raised cloisonne wires, no generic floral scrollwork on bird. Entire beak, head, tail, both feet/toes and twig complete inside generous true alpha margins. CRITICAL APPROVED MATERIAL: smooth satin-black metal over80percent; only sparse BROAD tapered flush-hammered silver strips, 5to10times wider than scratch marks. No dense hairlike lines/hatching/scales or repeated tiny marks; emphasize black negative reserves and few bright embedded strips.",
+  "tool": "built-in image_gen",
+  "source": "sources/sandgrouse-acacia.6665b466.png",
+  "sourceSha256": "6665b46635e281068b314c662376239f40e9da0a26c3961fdc13bf32c51f9fcc",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/sandgrouse-acacia.892db732.png",
+  "sha256": "892db7329de8288bd2dd2c0f63e1c84e3fae69fbedaeed7d3fb609636dfd0ebf",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

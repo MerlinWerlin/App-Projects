@@ -1,0 +1,62 @@
+[
+  {
+    "id": "foldwing-mirror-hall",
+    "kind": "art",
+    "image": "foldwing-mirror-hall.378ba16f.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Foldwing Mirror Hall"
+  },
+  {
+    "id": "counterweight-observation-pod",
+    "kind": "art",
+    "image": "counterweight-observation-pod.1ab48ca1.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Counterweight Observation Pod"
+  },
+  {
+    "id": "shuttered-star-well",
+    "kind": "art",
+    "image": "shuttered-star-well.504dfd38.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Shuttered Star Well"
+  },
+  {
+    "id": "articulated-skybridge",
+    "kind": "art",
+    "image": "articulated-skybridge.c1075b00.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Articulated Skybridge"
+  },
+  {
+    "id": "shell-instrument-pavilion",
+    "kind": "art",
+    "image": "shell-instrument-pavilion.f06cb139.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Shell Instrument Pavilion"
+  }
+]

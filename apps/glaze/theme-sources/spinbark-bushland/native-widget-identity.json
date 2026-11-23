@@ -1,0 +1,18 @@
+{
+  "themeId": "spinbark-bushland",
+  "recipe": [
+    "lozenge",
+    "turnedKooka",
+    "turnRings",
+    "pins",
+    "baton",
+    "basin",
+    "band"
+  ],
+  "art": {
+    "turnedKooka": "M 70 23 Q 84 21 83 34 L 99 40 L 83 44 Q 79 65 55 69 Q 35 73 22 61 L 9 78 L 24 49 Q 32 35 52 36 L 62 39 Q 64 27 70 23 M 76 30 L 75 31 M 65 45 Q 47 36 30 50 L 43 63 L 63 58 Z M 70 48 Q 57 62 44 59 M 68 53 Q 58 66 49 64 M 57 70 L 60 85 L 69 89 M 43 70 L 41 85 L 31 89 M 15 94 L 86 85",
+    "turnRings": "M 14 26 Q 34 13 54 26 Q 74 39 86 26 M 16 33 Q 35 21 53 33 Q 72 46 86 33 M 20 40 Q 36 30 53 40 Q 69 51 83 40 M 25 66 Q 38 56 51 66 Q 65 76 79 66 M 29 73 Q 40 66 51 73 Q 62 82 74 73 M 44 20 L 44 13 M 49 20 L 49 13"
+  },
+  "ornament": "M 21 80 Q 23 46 59 27 M 29 81 Q 30 52 62 35 M 37 81 Q 38 59 65 43 M 58 27 L 66 24 L 69 31 M 62 35 L 70 32",
+  "direction": "Whole familiar laughing kookaburra, lathe-shaped ovoids/spindles/half-shell components, coarse curved parting grooves and circular endgrain, natural wood fields. Lozenge clock echoes off-axis turned silhouettes, pin marks lathe center holes, baton hands tool-rest lines. Basin charge recalls a turned hollow bowl cross-section, band calendar short parting lines. Compact companion is only three short nested quarter-turn arcs plus one small tenon shoulder; no whole bird, full turned bowl/medallion, woodlath lattice, compass dial or enclosing rings. Retain shipped calendar/date/highlight/identity outlines; no date-containment design gate."
+}

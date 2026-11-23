@@ -1,0 +1,175 @@
+{
+  "theme": "c-confocal-bridgeworks",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "ciliary-weir",
+      "sourceImage": "sources/ciliary-weir.a39e9f4f6164.png",
+      "sourceSha256": "a39e9f4f61643b497d9ef7aaefc7d1239710f7528f3c0b4abb216158514043c6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/ciliary-weir.f677428e62d8.png",
+      "sha256": "f677428e62d844e59f2de4907c46cb7bf5786629a655e5fcdc9e0c1c65273243",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 665179,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CONFOCAL BRIDGEWORKS, tangible invented living civil infrastructure revealed through fictional multichannel confocal fluorescence optical-section imagery. MEDIUM: an exquisite layer-resolved FLUORESCENCE MICROGRAPH. Three discrete labelling channels: hot MAGENTA membrane walls outlining hollow compartments, bright CYAN bundles of fine internal actin-like fibres, and sparse ACID-LIME punctate vesicles embedded at functional junctions. The membranes, fibres and puncta map a complete recognizable working structure with clear mechanical purpose, supported platforms/openings and a strong silhouette. They are optically labelled thin sections, not a continuous physical material. Several shallow optical-section layers overlap into a flattened z-stack projection; dark hollow spaces between compartments and bright internal channel separation must be visible. Crisp luminous membrane sections, delicate grouped fibres, a few clearly separated bright vesicles. No continuous opaque skin, external rim-only glow, corona lightning, reflective lighting, glossy3D sculpture, glass, jelly, plastic, foam, metal, ordinary wireframe, smooth rainbow surface, heat field, X-ray skeleton, scanline, LiDAR dot-cloud or diffraction stripes. Fictional non-anatomical bio-infrastructure; not a real medical specimen or measured microscopy dataset. No people, faces, eyes, animal heads, wounds or gore. No text, labels, coordinates, scale bar, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square1024x1024 pure-art widget. Subject CILIARY WEIR: one low broad living sluice structure with FOUR unequal funnel-like watergate mouths aligned across the front, a slim raised WALKWAY above, two bent side overflow lips and FIVE blunt vascular root supports underneath. Front mouths are round-ended tubular openings, not repeated architectural arches. Visible gates/connecting walkway/supports make the function tangible, not a jelly organism or abstract cell cluster. Three-quarter low frontal view. Magenta compartment membranes form the walls/walkway, cyan fibre bundles brace each opening, lime vesicles mark the gate junctions. No water surface or surrounding landscape. The WHOLE structure and every root/arm/blade/platform/arch must fit inside central70%canvas, generous truly empty margins. Real transparent alpha outside and through all hollow spaces; no black backing, floor, shadow, surrounding glow fog, tile, frame, panel, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 837720
+    },
+    {
+      "id": "axon-hoist",
+      "sourceImage": "sources/axon-hoist.b8e8859b6195.png",
+      "sourceSha256": "b8e8859b6195a6f789e30acbcbed590122b4b7b7ffba0974d0bebf92556c79df",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/axon-hoist.39cb24d65fe4.png",
+      "sha256": "39cb24d65fe4581ce17214a42646198180dc67f1a37b7dbd986b3ad86126a45e",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 650548,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CONFOCAL BRIDGEWORKS, tangible invented living civil infrastructure revealed through fictional multichannel confocal fluorescence optical-section imagery. MEDIUM: an exquisite layer-resolved FLUORESCENCE MICROGRAPH. Three discrete labelling channels: hot MAGENTA membrane walls outlining hollow compartments, bright CYAN bundles of fine internal actin-like fibres, and sparse ACID-LIME punctate vesicles embedded at functional junctions. The membranes, fibres and puncta map a complete recognizable working structure with clear mechanical purpose, supported platforms/openings and a strong silhouette. They are optically labelled thin sections, not a continuous physical material. Several shallow optical-section layers overlap into a flattened z-stack projection; dark hollow spaces between compartments and bright internal channel separation must be visible. Crisp luminous membrane sections, delicate grouped fibres, a few clearly separated bright vesicles. No continuous opaque skin, external rim-only glow, corona lightning, reflective lighting, glossy3D sculpture, glass, jelly, plastic, foam, metal, ordinary wireframe, smooth rainbow surface, heat field, X-ray skeleton, scanline, LiDAR dot-cloud or diffraction stripes. Fictional non-anatomical bio-infrastructure; not a real medical specimen or measured microscopy dataset. No people, faces, eyes, animal heads, wounds or gore. No text, labels, coordinates, scale bar, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square1024x1024 pure-art widget. Subject AXON HOIST: one asymmetric living cantilever crane with a broad rooted pedestal on THREE thick feet, a single long bent tissue arm rising and extending RIGHT, a visible articulated hinge and one hanging TWO-JAW CLAMP. A short swollen counterbalance projects left. Full working mechanism connected and clearly readable as a hoist, not a tree, animal, robot face, metal construction crane or ordinary held tool. Three-quarter view with large empty gap beneath the extended arm. Magenta membrane compartments define beam/foot/hinge forms; grouped cyan fibres carry tension through the arm; lime vesicles concentrate near the hinge/clamp. The WHOLE structure and every root/arm/blade/platform/arch must fit inside central70%canvas, generous truly empty margins. Real transparent alpha outside and through all hollow spaces; no black backing, floor, shadow, surrounding glow fog, tile, frame, panel, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 872582
+    },
+    {
+      "id": "vesicle-lift",
+      "sourceImage": "sources/vesicle-lift.a96b8ad982dc.png",
+      "sourceSha256": "a96b8ad982dc2d5c4697dc8a63a13a787490453918f2d6ecd1130fadbf39b29d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/vesicle-lift.90e2e6b6cc4f.png",
+      "sha256": "90e2e6b6cc4f34f6d28b31a9e0c6c6dc97eb2a1552ba3939f2406fea7404b559",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 701082,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CONFOCAL BRIDGEWORKS, tangible invented living civil infrastructure revealed through fictional multichannel confocal fluorescence optical-section imagery. MEDIUM: an exquisite layer-resolved FLUORESCENCE MICROGRAPH. Three discrete labelling channels: hot MAGENTA membrane walls outlining hollow compartments, bright CYAN bundles of fine internal actin-like fibres, and sparse ACID-LIME punctate vesicles embedded at functional junctions. The membranes, fibres and puncta map a complete recognizable working structure with clear mechanical purpose, supported platforms/openings and a strong silhouette. They are optically labelled thin sections, not a continuous physical material. Several shallow optical-section layers overlap into a flattened z-stack projection; dark hollow spaces between compartments and bright internal channel separation must be visible. Crisp luminous membrane sections, delicate grouped fibres, a few clearly separated bright vesicles. No continuous opaque skin, external rim-only glow, corona lightning, reflective lighting, glossy3D sculpture, glass, jelly, plastic, foam, metal, ordinary wireframe, smooth rainbow surface, heat field, X-ray skeleton, scanline, LiDAR dot-cloud or diffraction stripes. Fictional non-anatomical bio-infrastructure; not a real medical specimen or measured microscopy dataset. No people, faces, eyes, animal heads, wounds or gore. No text, labels, coordinates, scale bar, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square1024x1024 pure-art widget. Subject VESICLE LIFT: one tall TWO-STAGE living open-platform elevator with two unequal chambered guide columns, two clear oval open lifting platforms at different heights, a linked central flexible drive cord and four short stabilizing root feet. The platforms project visibly out from the guide columns, connected by functional guides; no enclosed building, doors, house, tower clock, nursery pod or humanoid anatomy. Three-quarter vertical view, unmistakably working lifting infrastructure. Magenta membrane walls wrap hollow column chambers and platform rims, cyan fibre bundles form guides/drive, lime punctate vesicles sit at platform junctions. The WHOLE structure and every root/arm/blade/platform/arch must fit inside central70%canvas, generous truly empty margins. Real transparent alpha outside and through all hollow spaces; no black backing, floor, shadow, surrounding glow fog, tile, frame, panel, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 850950
+    },
+    {
+      "id": "spindle-turnstile",
+      "sourceImage": "sources/spindle-turnstile.474ea4021628.png",
+      "sourceSha256": "474ea4021628287797475f73b2675402e472bf1403a7d173ed689baa66a3e91b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/spindle-turnstile.8f2c5522e266.png",
+      "sha256": "8f2c5522e26605b0a1bd3d4612b628b5c56073b77bd70fb37f1e0c93e7d7b4e6",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 739237,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CONFOCAL BRIDGEWORKS, tangible invented living civil infrastructure revealed through fictional multichannel confocal fluorescence optical-section imagery. MEDIUM: an exquisite layer-resolved FLUORESCENCE MICROGRAPH. Three discrete labelling channels: hot MAGENTA membrane walls outlining hollow compartments, bright CYAN bundles of fine internal actin-like fibres, and sparse ACID-LIME punctate vesicles embedded at functional junctions. The membranes, fibres and puncta map a complete recognizable working structure with clear mechanical purpose, supported platforms/openings and a strong silhouette. They are optically labelled thin sections, not a continuous physical material. Several shallow optical-section layers overlap into a flattened z-stack projection; dark hollow spaces between compartments and bright internal channel separation must be visible. Crisp luminous membrane sections, delicate grouped fibres, a few clearly separated bright vesicles. No continuous opaque skin, external rim-only glow, corona lightning, reflective lighting, glossy3D sculpture, glass, jelly, plastic, foam, metal, ordinary wireframe, smooth rainbow surface, heat field, X-ray skeleton, scanline, LiDAR dot-cloud or diffraction stripes. Fictional non-anatomical bio-infrastructure; not a real medical specimen or measured microscopy dataset. No people, faces, eyes, animal heads, wounds or gore. No text, labels, coordinates, scale bar, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square1024x1024 pure-art widget. Subject SPINDLE TURNSTILE: one broad low living access gate with THREE unequal thick spatulate rotating gate blades attached to a single central hinge, held between TWO curved rooted stanchions. One blade angles forward, one left and one upward, leaving a clear walk-through opening beneath. Three distinct blades, not a circular wheel, fan, flower, clock face or weapon. Full gate and root base present, visible working spindle/structural support. Three-quarter diagonal composition. Magenta membrane sections enclose the three hollow blades and curved supports; cyan tension fibres enter the spindle, sparse lime vesicles dot the hinge junctions. The WHOLE structure and every root/arm/blade/platform/arch must fit inside central70%canvas, generous truly empty margins. Real transparent alpha outside and through all hollow spaces; no black backing, floor, shadow, surrounding glow fog, tile, frame, panel, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 833907
+    },
+    {
+      "id": "synaptic-span",
+      "sourceImage": "sources/synaptic-span.d8f089cf5a0e.png",
+      "sourceSha256": "d8f089cf5a0eb15148695ab852faf4712d637f8dcb62ed2e71b1b9e570e5a482",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/synaptic-span.17513793d3c3.png",
+      "sha256": "17513793d3c3774f43a8cf346f691af9762e10a066cb640d3ded8e997c18c32b",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 526733,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CONFOCAL BRIDGEWORKS, tangible invented living civil infrastructure revealed through fictional multichannel confocal fluorescence optical-section imagery. MEDIUM: an exquisite layer-resolved FLUORESCENCE MICROGRAPH. Three discrete labelling channels: hot MAGENTA membrane walls outlining hollow compartments, bright CYAN bundles of fine internal actin-like fibres, and sparse ACID-LIME punctate vesicles embedded at functional junctions. The membranes, fibres and puncta map a complete recognizable working structure with clear mechanical purpose, supported platforms/openings and a strong silhouette. They are optically labelled thin sections, not a continuous physical material. Several shallow optical-section layers overlap into a flattened z-stack projection; dark hollow spaces between compartments and bright internal channel separation must be visible. Crisp luminous membrane sections, delicate grouped fibres, a few clearly separated bright vesicles. No continuous opaque skin, external rim-only glow, corona lightning, reflective lighting, glossy3D sculpture, glass, jelly, plastic, foam, metal, ordinary wireframe, smooth rainbow surface, heat field, X-ray skeleton, scanline, LiDAR dot-cloud or diffraction stripes. Fictional non-anatomical bio-infrastructure; not a real medical specimen or measured microscopy dataset. No people, faces, eyes, animal heads, wounds or gore. No text, labels, coordinates, scale bar, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE separate square1024x1024 pure-art widget. Subject SYNAPTIC SPAN: one broad DOUBLE-ARCH living pedestrian bridge with a distinct narrow walking DECK, two unequal sweeping arch braces, THREE chambered vascular root PIERS and tiny raised edge ribs. The two arches cross at different heights above the deck, while the piers visibly support its underside. No gate-mouth row, enclosed house, faces, vehicle or ordinary stone/metal bridge. Three-quarter elevated side view makes the open walkable span and spaces under the deck obvious. Magenta labelled membrane compartments define the arch/deck/piers, cyan fibre bundles cross-brace supports, lime vesicles cluster sparsely at the junctions. The WHOLE structure and every root/arm/blade/platform/arch must fit inside central70%canvas, generous truly empty margins. Real transparent alpha outside and through all hollow spaces; no black backing, floor, shadow, surrounding glow fog, tile, frame, panel, contact sheet or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 895946
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.c2f72bcb7589.png",
+      "sourceSha256": "c2f72bcb7589b43156c8b99af50a9474bee40412a9b4670248dcf34e01e9d629",
+      "sourceDimensions": [
+        759,
+        2072
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "c0df5c80546e7bc0896fadafb0fa0f75d2f760894f01b323f9ba98c82aebcfb4",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2225424,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: layout-only image edit. Preserve this exact Confocal Bridgeworks wallpaper world and all FIVE existing structure identities, membrane compartments, cyan internal fibre channels, sparse lime vesicles, relative arrangement and dark aubergine palette. Adjust scene framing so the complete double-arch bridge including BOTH WALKING DECK ENDS, all three root piers, four-mouth weir and side lips, tall two-platform lift, three-blade turnstile with both stanchions and asymmetric clamp hoist with full foot/clamp remain whole inside the composition. Slightly pull back/reduce the entire five-structure group, placing it within horizontal8%to92% and vertical42%to77%ofcanvas. Ground fibres and channel landscape may continue through frame edges, but all five focal working mechanisms must have clear breathing room around every endpoint/foot/arch/platform. Keep upper40%quiet aubergine, bottom20%quiet dark ground. Preserve the layered multichannel fluorescence optical-section language, no new structures, no redesign, no continuous physical opaque skins or corona sparks. This is a coherent interconnected infrastructure landscape, not five isolated samples or a collage. Full bleed opaque portrait1290x2796 phone wallpaper, same aspect ratio. No text, frame, numerals, UI, devices or readings.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.2396705368b5.png",
+        "sha256": "2396705368b5eabf1298cb4627ae67a99540952dc0d306849e24284b921e0d26"
+      },
+      "internalArtworkReferences": [
+        {
+          "id": "ciliary-weir",
+          "sourceImage": "sources/ciliary-weir.a39e9f4f6164.png",
+          "sha256": "a39e9f4f61643b497d9ef7aaefc7d1239710f7528f3c0b4abb216158514043c6"
+        },
+        {
+          "id": "axon-hoist",
+          "sourceImage": "sources/axon-hoist.b8e8859b6195.png",
+          "sha256": "b8e8859b6195a6f789e30acbcbed590122b4b7b7ffba0974d0bebf92556c79df"
+        },
+        {
+          "id": "vesicle-lift",
+          "sourceImage": "sources/vesicle-lift.a96b8ad982dc.png",
+          "sha256": "a96b8ad982dc2d5c4697dc8a63a13a787490453918f2d6ecd1130fadbf39b29d"
+        },
+        {
+          "id": "spindle-turnstile",
+          "sourceImage": "sources/spindle-turnstile.474ea4021628.png",
+          "sha256": "474ea4021628287797475f73b2675402e472bf1403a7d173ed689baa66a3e91b"
+        },
+        {
+          "id": "synaptic-span",
+          "sourceImage": "sources/synaptic-span.d8f089cf5a0e.png",
+          "sha256": "d8f089cf5a0eb15148695ab852faf4712d637f8dcb62ed2e71b1b9e570e5a482"
+        }
+      ],
+      "generationStages": "Five independent artwork generations; separately generated wallpaper using own five original identity references; layout-only edit of that scene."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Jared requested tangible subjects and suitable small corner companions. Full artworks retain their space; a separate restrained native ornament serves the small headers."
+}

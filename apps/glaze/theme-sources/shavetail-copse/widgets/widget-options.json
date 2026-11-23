@@ -1,0 +1,62 @@
+[
+  {
+    "id": "blue-tit-twig",
+    "label": "Shaving Blue Tit",
+    "kind": "art",
+    "image": "blue-tit-twig.f29414b6.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "squirrel-acorn",
+    "label": "Fan-tail Squirrel",
+    "kind": "art",
+    "image": "squirrel-acorn.33538160.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "fan-butterfly",
+    "label": "Shaving Butterfly",
+    "kind": "art",
+    "image": "fan-butterfly.c8c6e20e.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "fern-fiddlehead",
+    "label": "Wood-fan Fern",
+    "kind": "art",
+    "image": "fern-fiddlehead.da68a44c.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "wood-anemones",
+    "label": "Shaving Anemones",
+    "kind": "art",
+    "image": "wood-anemones.32ca8aa6.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

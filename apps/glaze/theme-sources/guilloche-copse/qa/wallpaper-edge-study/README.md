@@ -1,0 +1,1 @@
+Lane A original Guilloche Copse Nature candidate for APPS A2. Five independent whole artworks, matching wallpaper/palette and live native identity; exact originals, own-image references and unselected studies retained. No publication or merge without Jared OK.

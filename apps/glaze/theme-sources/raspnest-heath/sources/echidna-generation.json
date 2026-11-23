@@ -1,0 +1,19 @@
+{
+  "id": "echidna",
+  "label": "Sliverback Echidna",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset: one independent Glaze artwork, square, genuine transparent background. Theme RASPNEST HEATH: a tangible Australian-inspired heathland assembled as dry EXCELSIOR WOOD-WOOL sculpture, photographed close with exquisite physical detail. Entire animal is made from many irregular thin FLAT brittle wood shavings, tangled short ribbons and pointed splinters. Visible longitudinal pine/hardwood grain, fibrous fractured tips, subtle curled edges, small open inter-strand gaps, compressed dense bundles defining anatomical masses. Natural pale honey, russet bark and smoky brown wood only. Matte dry material, soft diffuse lighting, clear sculptural volume. No smooth solid wooden core showing, no polished carving, no plush/fur, string/thread, wire, woven fabric, clay, paper quilling, rolled rosettes, concentric coils, moss or conventional CGI toy. SUBJECT: one complete squat ECHIDNA walking toward the right in three-quarter view. Distinct long narrow down-curved snout, small dark eye, four short strong broad clawed feet, low domed body covered with a striking radiating crest of rigid pointed wood slivers; the underlying belly and face use finer compressed shavings. A few dry sheaf-like grass leaves beside its feet as one small supporting cluster, also shaved wood. Recognizable healthy animal anatomy, no clothing or tools, no generic spiky ball. Whole body, nose, every claw and every projecting spine comfortably inside central seventy percent of canvas. Generous empty transparent margins on every side, no floor plane, no exterior shadow, no backing board, no rectangular field, no atmosphere. Crisp alpha exterior and real transparent gaps around the wood strands. No typography, labels, borders, icons, UI, clock/battery/calendar symbols, watermark. One subject only; not a sheet or collage. Strong silhouette readable at 85 pixels.",
+  "source": "sources/echidna.4128cb6fa557.png",
+  "sourceSha256": "4128cb6fa557e90414dfe2763e1027bbb399434df987fd25216ead9b4ec4de5f",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/echidna.c6a38a4b6fb3.png",
+  "sha256": "c6a38a4b6fb34920b87a01a1ea0e776b63dba33a23ccb50f70d25b4ea165e135",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on transparent1024square, alpha preserved. No subject crop, recolour or artistic edits."
+}

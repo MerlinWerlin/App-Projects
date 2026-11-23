@@ -1,0 +1,18 @@
+{
+  "id": "doorway-porter",
+  "prompt": "EGLO NIGHTSHIFT for Glaze. ONE separate original1024x1024 square pure artwork, a tangible imagined adult worker, friendly-mysterious storybook character. Flat traditional REVERSE-PAINTED and SILVER-LEAF-GILDED GLASS illustration: irregular mirror-silver leaf seams, tiny tarnish pinholes, fine hand-scratched black contours and cross-scraped highlights, deep bottle-green reverse-painted clothing fields with tiny muted amber details. An artisan glass panel image, not photographic sculpture,3D chrome, metal/crystal toy or ordinary digital cel shading. Whole complete figure/props central65% with18% genuine transparent alpha margins outside, no rectangular glass backing, background, floor, frame, pedestal, text, signature, numerals, logos, UI, clock/date/battery/live readings. Subject: DOORWAY PORTER. A very broad strong masked adult figure in a long arched-front coat shaped like an inhabited doorway, tiny recessed window panels and rolled cloth arch shoulder pads. TWO arms cradle a miniature COMPLETE FOLDED DRAWBRIDGE across the chest, one hand firmly supporting each end, its little railings and hinges visible; coat hem has three open arch cutouts, two heavy wide boots. Body slightly bent to bear the weight, broad low silhouette, recognisable occupation of transporting portable crossings and doorways, not abstract geometry or a generic man holding a tool. Fine etched costume ornament and silver-leaf faces stay readable and tactile.",
+  "tool": "built-in image_gen",
+  "source": "sources/doorway-porter.b4714666.png",
+  "sourceSha256": "b4714666afacf02bd4befb7afae9e8a2fd1d3f854f1258aceb9aeee91478dd8e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/doorway-porter.8e414a0f.png",
+  "sha256": "8e414a0f878f0633616120d1329230f0248211b3eee76bb101a1c64342ecdb34",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

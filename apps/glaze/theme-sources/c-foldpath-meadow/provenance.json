@@ -1,0 +1,289 @@
+{
+  "theme": "c-foldpath-meadow",
+  "lane": "C",
+  "created": "2026-11-23",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "daffodil-foldpath",
+      "sourceImage": "sources/daffodil-foldpath.94d6761850df.png",
+      "sourceSha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/daffodil-foldpath.a8cc90f5a893.png",
+      "sha256": "a8cc90f5a893bec4c2674b1f6dea5ca17c6876e662be1137792d583bdd648c52",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 281959,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. ONE original transparent square Glaze pure-art asset, FOLDPATH MEADOW. Subject ONE WHOLE instantly familiar DAFFODIL plant: exactlySIX broad pointed petals radiate around one short open central trumpet, flower facing slightly up-right, full gently curved slender stem descends to a natural base, TWO long full pointed leaves fan lowleft/lowright. Complete blossom/petalpoints/trumpet/stalkbase/leaftips, recognizable natural plant silhouette first, no abstract molecular blob or ordinary unrelated lab object. Whole plant inside central70percent square, at least15percent empty transparent exterior every side.\nVISUAL LANGUAGE: an ARTISTIC MOLECULAR SECONDARY-STRUCTURE RIBBON-CARTOON IMAGE. Each of the SIX broad petals is ONE clean continuous slightly twisted BETA-STRAND ARROW ribbon: a broad body leading to a conspicuous flared arrow shoulder and pointed arrowhead at the natural petaltip. Few LARGE arrow sheets, not dozens of tiny arrows. The central trumpet is ONE short OPEN THREE-TURN ALPHA-HELIX ribbon segment, warmcoral/orange, clear repeated helical turns/opencoilspace visible at85px, slightly tilted so its open mouth is visible. The full narrow stem is ONE smooth continuous darkteal LOOP connector following a natural stalkcurve, with one gentle small loop bend near the base; it is not a normalplantstalk under decoration. TWOlongbasalleaves are two elegant continuous BETA-STRAND ARROW ribbons with broad pointed heads near their full tips. Smooth thin loop connectors join the sixpetal arrows and centralhelix organically at one centre, no hovering separate components. The arrows/helix/loop conventions SUPPLY the plant, no natural flower/leaf tissue beneath. Clear open transparent negative gaps between ribbonparts, no backingleafplane. Delicate natural floral gesture, coherent complete growth, no regular compass/cogwheel or diagramarrow field.\nSoftware-like CLEAN SCIENTIFIC CARTOON representation: saturated but restrained TEAL/CERULEAN beta-sheets, warm CORAL/ORANGE centralhelix, darkteal thin connectingloops. Broad nearFLAT COLOUR FIELDS with only a subtle secondtone on reverse sides to explain ribbon turns, no scene lighting or castshadows, no glossy highlights/ambientocclusion. Thin crisp darker edge definition allowed, not thick cartooninkoutline. Negligible apparent ribbonthickness. No physical satin/foil/fabric or directional sheen, stitched/tucked lips, creasedpaper, hardpasta/tubes/shells, sculptedplastic/clay/metal/glass, reflective coppercoil or plumbingfittings. No microscope/beaker/ball-and-stick atoms, DNA doublehelix, numberedsequence, actual molecule/PDB identity/atomicbonds, labels or chemistryapparatus. A GENERIC original artistic translation of scientific ribbon-cartoon conventions, NOT an actual protein structure, sequence, model/atomic data, biomolecularfunction/anatomical claim or scientificprediction. No PDBmodel/image or externalvisual inputs, no namedartist style.\nNot a regular naturalflower photograph with a filter, fine featherpanel/satinflower, fluorescentcellwall mesh, projectedstripes, many tiny short vectorarrows, rainbowinterference, flowcurves, particletracks or glowingneonoutline. TruealphaZERO outside exactwhole plant and between diagramribbons; all ribbonfields opaque. No backgroundsquare/rectangle/slab/paper/sheet, ground/floor/shadow/glow/haze/frame, text/numbers/scales/axes, bakedclock/date/battery/weather/UI/logos/watermark. One complete beautiful daffodil as a clear molecular-cartoon image, generous transparent margins.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 919223
+    },
+    {
+      "id": "wren-foldpath",
+      "sourceImage": "sources/wren-foldpath.ccfa6d779fde.png",
+      "sourceSha256": "ccfa6d779fde673da6bf6f156d03b256945d80031e956fac427e024b0bb033d1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/wren-foldpath.e3b1a412a577.png",
+      "sha256": "e3b1a412a577405275f2beb2a0c2857c788d1d17c5e4c9c9ec9fd581be2b7dd6",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 315813,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. NEW original transparent square Glaze pure-art asset, FOLDPATH MEADOW. InputIMAGE1 is ONLY the exact OWN daffodil graphic-style/convention reference; invent the specified NEWsubject/pose, do not copy its flower geometry. Same clean scientific molecular SECONDARY-STRUCTURE RIBBON-CARTOON convention: a few LARGE continuous TEAL/CERULEAN BETA-STRAND ARROW sheets with obvious broadhead/shoulders, short CORAL/ORANGE three-turn ALPHA-HELIX ribbon segments, thin darkteal smooth LOOP connectors. Nearflat opaque colourfields, restrained secondtone on reverses to explain twists, negligible thickness, crisp thin darkedges. No scenelighting/castshadows/glossyhighlight/ambientocclusion. These diagramribbons SUPPLY the whole natureform; no normal animal/plant body underneath. Clear alpha gaps between parts. Large enough arrows/coils to read at85px, no tiny isolatedarrow swarm. Familiar whole nature silhouette first.\nSubject: ONE whole recognizable small WREN perched sideprofile facingLEFT on one short gently bent twig. Smallroundedhead/fullshortpointedbill/tinydarkeye, plump compactovalbody, coherent closedwing, shortupcockedTAIL, TWOvisible legs/TWOsets oftoes aroundtwig, allendpointswhole. Three/four broadteal arrowribbons combine into body/wing/tail with two shortcoral helixsegments at back/belly; smoothlooppaths connect head/legs/twig. No naturalplumage orsolidbird under ribbons. Keep coherentwren anatomy and broad bodymass despite open diagramgaps, not a robot/springmachine or arrowfan.\nEntire complete form fits central70percent square, minimum15percent emptytransparent exterior eachside. TRUEalphaZERO outside exactwhole subject and in ribbon gaps, opaque diagramfields. No physical satin/metal/foil/fabric/paper/pasta/plastic/glass/clay, stitches/hem/skin/fur/feathertexture, 3Dobject/raisedmaterial/coiledwire toy, ballstick atoms/DNA/labapparatus, fluorescentmesh/projectedstripes/rainbow/neon. Generic original artistic scientific-cartoon CONVENTION only, not actualprotein/PDBidentity/sequence/atomicmodel/data/function/prediction or measuredanatomy. No externalimage/model or namedartist. No ground/rectangle/slab/sheet/backing/frame/haze/glow/shadow, text/numbers/labels/axes/scale/liveclock/date/battery/weather/UI/logo/watermark. One new independent whole nature asset, not a contactsheet panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 907283,
+      "ownMaterialStyleReference": {
+        "sourceImage": "sources/daffodil-foldpath.94d6761850df.png",
+        "sha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2"
+      },
+      "generationIntent": "Independent new subject with OWN first style reference only, not edit of an existing subject."
+    },
+    {
+      "id": "snail-foldpath",
+      "sourceImage": "sources/snail-foldpath.887863463ce5.png",
+      "sourceSha256": "887863463ce5e786ab0db10d72633df3eace89cdfdb9dd8ffdc2e686dadc36c0",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/snail-foldpath.9a0d7156d750.png",
+      "sha256": "9a0d7156d750d1a021bf4bd6134ec577bf2a202e0a4527688790b272d833d54a",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 292426,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. NEW original transparent square Glaze pure-art asset, FOLDPATH MEADOW. InputIMAGE1 is ONLY the exact OWN daffodil graphic-style/convention reference; invent the specified NEWsubject/pose, do not copy its flower geometry. Same clean scientific molecular SECONDARY-STRUCTURE RIBBON-CARTOON convention: a few LARGE continuous TEAL/CERULEAN BETA-STRAND ARROW sheets with obvious broadhead/shoulders, short CORAL/ORANGE three-turn ALPHA-HELIX ribbon segments, thin darkteal smooth LOOP connectors. Nearflat opaque colourfields, restrained secondtone on reverses to explain twists, negligible thickness, crisp thin darkedges. No scenelighting/castshadows/glossyhighlight/ambientocclusion. These diagramribbons SUPPLY the whole natureform; no normal animal/plant body underneath. Clear alpha gaps between parts. Large enough arrows/coils to read at85px, no tiny isolatedarrow swarm. Familiar whole nature silhouette first.\nSubject: ONE whole recognizable GARDEN SNAIL in sideprofile facingRIGHT. Low longcurvedsoftbody with fulltail/base and raisedhead, TWOlongupper feelers with tinysimpletips and TWOshortlower feelers, allintact. Large compactroundshell supplied by ONEcoral three-turn ribbonhelix viewed slightlyobliquely/end-on, not a mechanicalmetal spring. One curvedteal beta-arrow sheet wraps naturallyaround shellbase and another broad lowbeta-arrow supplies fullfoot/bodytowardhead; thinloops joinhead/feelers/shell. Few large readablediagramshapes, whole recognizablesnail, no actualshelltexture/skin, no amorphouscoilpile.\nEntire complete form fits central70percent square, minimum15percent emptytransparent exterior eachside. TRUEalphaZERO outside exactwhole subject and in ribbon gaps, opaque diagramfields. No physical satin/metal/foil/fabric/paper/pasta/plastic/glass/clay, stitches/hem/skin/fur/feathertexture, 3Dobject/raisedmaterial/coiledwire toy, ballstick atoms/DNA/labapparatus, fluorescentmesh/projectedstripes/rainbow/neon. Generic original artistic scientific-cartoon CONVENTION only, not actualprotein/PDBidentity/sequence/atomicmodel/data/function/prediction or measuredanatomy. No externalimage/model or namedartist. No ground/rectangle/slab/sheet/backing/frame/haze/glow/shadow, text/numbers/labels/axes/scale/liveclock/date/battery/weather/UI/logo/watermark. One new independent whole nature asset, not a contactsheet panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 883174,
+      "ownMaterialStyleReference": {
+        "sourceImage": "sources/daffodil-foldpath.94d6761850df.png",
+        "sha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2"
+      },
+      "generationIntent": "Independent new subject with OWN first style reference only, not edit of an existing subject."
+    },
+    {
+      "id": "fern-foldpath",
+      "sourceImage": "sources/fern-foldpath.ce20601771d3.png",
+      "sourceSha256": "ce20601771d3b3c5d0544977d078b1193e03cd53cbc174e0ab18780da79b3d86",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/fern-foldpath.bd951903fc15.png",
+      "sha256": "bd951903fc15df6491d7faf68f56f5ab48952fb391f6416afa01c27694465ff6",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 308494,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: background-extraction / precise-object-edit. ONLY input is the exact OWN FOLDPATH fern edit TARGET. Remove ONLY the palegrey/teal/coral haze, cloudy glow and tinted backing around the fern. Make the entire exterior and all negative gaps between diagramribbons truly ALPHAZERO transparent. No replacement background colour. Keep the fern artwork itself visually unchanged: same full gentlyarched frond/rachis, all existing alternating teal beta-arrow leaflets, pointedarrowheads/reversetones/loopconnectors, coralcoiled fiddlehead and complete curledstalkbase. Preserve exact scale, position, orientation, colours, thin crisp edges, nearflat scientific-cartoon style and every leaf/coil/stalk endpoint; do not redraw/repose/simplify/duplicate/add/remove leaflets or turn it into a natural leaf/physical ribbon. All actual colouredribbonfields stay opaque. Remove haze also in the open spaces under each curledarrow, between leaflets, above and around the fulltopcoil, and near the bottomstalk. The exterior is empty transparent, not a smoothblur/feathered cloud. No glow/halo/shadow, backgroundrectangle/paper/slab/frame/ground, text/UI/logo. One exactown target only, no externalvisual input. Original artistic molecular-cartoon image, not actual protein/PDB/modeldata. Preserve the whole complete fern with clear true transparent margins.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 908728,
+      "ownMaterialStyleReference": {
+        "sourceImage": "sources/daffodil-foldpath.94d6761850df.png",
+        "sha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2"
+      },
+      "directEditReference": {
+        "sourceImage": "intermediate-cutout-studies/fern-first.04c9bd31d116.png",
+        "sha256": "04c9bd31d116c8bf494bcfb47f607b09e1feb5f3476472b678d35081915c39b7"
+      },
+      "generationStages": [
+        {
+          "stage": "Initial independent fern subject with ownfirststyle",
+          "prompt": "Use case: stylized-concept. NEW original transparent square Glaze pure-art asset, FOLDPATH MEADOW. InputIMAGE1 is ONLY the exact OWN daffodil graphic-style/convention reference; invent the specified NEWsubject/pose, do not copy its flower geometry. Same clean scientific molecular SECONDARY-STRUCTURE RIBBON-CARTOON convention: a few LARGE continuous TEAL/CERULEAN BETA-STRAND ARROW sheets with obvious broadhead/shoulders, short CORAL/ORANGE three-turn ALPHA-HELIX ribbon segments, thin darkteal smooth LOOP connectors. Nearflat opaque colourfields, restrained secondtone on reverses to explain twists, negligible thickness, crisp thin darkedges. No scenelighting/castshadows/glossyhighlight/ambientocclusion. These diagramribbons SUPPLY the whole natureform; no normal animal/plant body underneath. Clear alpha gaps between parts. Large enough arrows/coils to read at85px, no tiny isolatedarrow swarm. Familiar whole nature silhouette first.\nSubject: ONE whole recognizable gently ARCING FERN FROND, longslender rachis/stalkcurve rising from fullbase and sweeping upperRIGHT. SIXunequal pairs of broad taperedleaflets alternate alongthe rachis, largest nearbasal/middle and smaller neartop. Each leaflet ONEcontinuousTEAL beta-arrow ribbon, large obviousarrowhead nearcomplete natural leaftip, not manydisconnectedvector glyphs. Rachis ONEsmooth darktealloopconnector. Tip terminates in ONEsmall CORAL three-turn alphahelix fiddlehead, fullcurl/end visible. Full naturalfern outline first, clearlyhierarchicalplant, no radialsunburst/arrowfield or physicalcutribbon/feathers.\nEntire complete form fits central70percent square, minimum15percent emptytransparent exterior eachside. TRUEalphaZERO outside exactwhole subject and in ribbon gaps, opaque diagramfields. No physical satin/metal/foil/fabric/paper/pasta/plastic/glass/clay, stitches/hem/skin/fur/feathertexture, 3Dobject/raisedmaterial/coiledwire toy, ballstick atoms/DNA/labapparatus, fluorescentmesh/projectedstripes/rainbow/neon. Generic original artistic scientific-cartoon CONVENTION only, not actualprotein/PDBidentity/sequence/atomicmodel/data/function/prediction or measuredanatomy. No externalimage/model or namedartist. No ground/rectangle/slab/sheet/backing/frame/haze/glow/shadow, text/numbers/labels/axes/scale/liveclock/date/battery/weather/UI/logo/watermark. One new independent whole nature asset, not a contactsheet panel.",
+          "sourceImage": "intermediate-cutout-studies/fern-first.04c9bd31d116.png",
+          "sha256": "04c9bd31d116c8bf494bcfb47f607b09e1feb5f3476472b678d35081915c39b7",
+          "references": [
+            {
+              "sourceImage": "sources/daffodil-foldpath.94d6761850df.png",
+              "sha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2"
+            }
+          ]
+        },
+        {
+          "stage": "One exactown cutout/haze removal",
+          "prompt": "Use case: background-extraction / precise-object-edit. ONLY input is the exact OWN FOLDPATH fern edit TARGET. Remove ONLY the palegrey/teal/coral haze, cloudy glow and tinted backing around the fern. Make the entire exterior and all negative gaps between diagramribbons truly ALPHAZERO transparent. No replacement background colour. Keep the fern artwork itself visually unchanged: same full gentlyarched frond/rachis, all existing alternating teal beta-arrow leaflets, pointedarrowheads/reversetones/loopconnectors, coralcoiled fiddlehead and complete curledstalkbase. Preserve exact scale, position, orientation, colours, thin crisp edges, nearflat scientific-cartoon style and every leaf/coil/stalk endpoint; do not redraw/repose/simplify/duplicate/add/remove leaflets or turn it into a natural leaf/physical ribbon. All actual colouredribbonfields stay opaque. Remove haze also in the open spaces under each curledarrow, between leaflets, above and around the fulltopcoil, and near the bottomstalk. The exterior is empty transparent, not a smoothblur/feathered cloud. No glow/halo/shadow, backgroundrectangle/paper/slab/frame/ground, text/UI/logo. One exactown target only, no externalvisual input. Original artistic molecular-cartoon image, not actual protein/PDB/modeldata. Preserve the whole complete fern with clear true transparent margins.",
+          "references": [
+            {
+              "sourceImage": "intermediate-cutout-studies/fern-first.04c9bd31d116.png",
+              "sha256": "04c9bd31d116c8bf494bcfb47f607b09e1feb5f3476472b678d35081915c39b7"
+            }
+          ]
+        }
+      ],
+      "ownStyleReferenceStage": "Own daffodil style input used in the INITIAL independent fern generation only; selected cutout correction takes exact own fern target only.",
+      "generationIntent": "Independent new subject with OWN first style reference only, not edit of an existing subject."
+    },
+    {
+      "id": "butterfly-foldpath",
+      "sourceImage": "sources/butterfly-foldpath.6a1cf687eae0.png",
+      "sourceSha256": "6a1cf687eae018a451928875f0c5b3276271e150f3fceaca2da6d0cf617dfd27",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/butterfly-foldpath.0b07f9eb4eeb.png",
+      "sha256": "0b07f9eb4eebeb272ae6f0fdb6953fab6b4286ccb31e5be1705a73af7adb14ff",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 358796,
+      "processing": "Entire original fitted proportionally within900x900 on1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. NEW original transparent square Glaze pure-art asset, FOLDPATH MEADOW. InputIMAGE1 is ONLY the exact OWN daffodil graphic-style/convention reference; invent the specified NEWsubject/pose, do not copy its flower geometry. Same clean scientific molecular SECONDARY-STRUCTURE RIBBON-CARTOON convention: a few LARGE continuous TEAL/CERULEAN BETA-STRAND ARROW sheets with obvious broadhead/shoulders, short CORAL/ORANGE three-turn ALPHA-HELIX ribbon segments, thin darkteal smooth LOOP connectors. Nearflat opaque colourfields, restrained secondtone on reverses to explain twists, negligible thickness, crisp thin darkedges. No scenelighting/castshadows/glossyhighlight/ambientocclusion. These diagramribbons SUPPLY the whole natureform; no normal animal/plant body underneath. Clear alpha gaps between parts. Large enough arrows/coils to read at85px, no tiny isolatedarrow swarm. Familiar whole nature silhouette first.\nSubject: ONE whole familiar BUTTERFLY in slightlydiagonal overheadview, exactlyFOURseparate fullwings, two broadupper and two smaller roundedlower wings, slendercentralbody/head/fullabdomen. Each wing ONElarge continuous teal beta-arrow sheet with a broad pointedoutertip and gentlycurvingnaturalwingbase; not fourstraightdirectionarrows aroundacog. CORAL shortthree-turnalphahelix supplies centralabdomen, smallplaintealhead. TWOwhole thinloopantennae and SIXshort coherent looplegs tuckednaturally bythorax, allwingtips/antenna/bodytip intact. Familiarbutterfly form, notmachinery/jewelledtoy or naturalwingvenation underdiagramribbons.\nEntire complete form fits central70percent square, minimum15percent emptytransparent exterior eachside. TRUEalphaZERO outside exactwhole subject and in ribbon gaps, opaque diagramfields. No physical satin/metal/foil/fabric/paper/pasta/plastic/glass/clay, stitches/hem/skin/fur/feathertexture, 3Dobject/raisedmaterial/coiledwire toy, ballstick atoms/DNA/labapparatus, fluorescentmesh/projectedstripes/rainbow/neon. Generic original artistic scientific-cartoon CONVENTION only, not actualprotein/PDBidentity/sequence/atomicmodel/data/function/prediction or measuredanatomy. No externalimage/model or namedartist. No ground/rectangle/slab/sheet/backing/frame/haze/glow/shadow, text/numbers/labels/axes/scale/liveclock/date/battery/weather/UI/logo/watermark. One new independent whole nature asset, not a contactsheet panel.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 884615,
+      "ownMaterialStyleReference": {
+        "sourceImage": "sources/daffodil-foldpath.94d6761850df.png",
+        "sha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2"
+      },
+      "generationIntent": "Independent new subject with OWN first style reference only, not edit of an existing subject."
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.2285e484f002.png",
+      "sourceSha256": "2285e484f002645333c724f2a5e08e8e994666022a3937e8df56e66fc7462284",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "a177a8320a51a846668e044a7edc433f91aebcb80a8cfc3884d4352d71c1baa1",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2198600,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. Compose FIVE exact OWN selected subject/style references into ONE original OPAQUE PORTRAIT1290x2796 Glaze phone wallpaper, FOLDPATH MEADOW. Inputs:1whole six-petaldaffodil/helixtrumpet/fullstem/twoleaves,2whole wren/twofeet/twig/upcockedtail,3whole snail/shell/foot/tail/twoupper+twolowerfeelers,4whole arcingfern/alternatingleaflets/fiddlehead/fullstalk,5whole butterfly/fourwings/body/antennae/legs. Keep familiar natural silhouettes and exact coherent scientific SECONDARY-STRUCTURE RIBBON-CARTOON image convention: few LARGE continuous teal/cerulean BETA-STRAND ARROW sheets with broadhead/shoulders, short coral/orange ALPHA-HELIX ribbon segments with clear open turns, thin darkteal smooth LOOP connectors. Nearflat opaque fields with restrained reverse-side secondtone and crisp thin edges, negligiblethickness. No scenelighting/gloss/highlights/materialtextures, physical satin/fabric/metal/foil/glass/pasta/plastic ribbons or normal wildlife tissue underneath. Four independent subjects reference OWN daffodil graphic style only, not repeated flower poses. Use correctedfern IMAGE4 without any formergrey/teal haze. A generic artistic image convention, not actual protein/PDB/sequence/atomicdata/biologicalfunction/prediction.\nONE coherent quiet MEADOW-EDGE habitat. Whole daffodil rises central-right with sixpetalpoints/fulltrumpet/stalkbase/twofullleaves. Whole fern arcs behind-left with fullfiddlehead and all existing alternatingarrowleaflets, no clippedtip. Whole compactwren perches higher-right on one short gentlycurved thin darkteallooptwig, fullbill/eye/twofeet/tail/twigends, no arrow extendingoffcanvas. Whole snail lowcentre/left with fullfoot/tail/shell/allfourfeelers. Whole four-wingbutterfly hovers aboveleft/centre, fullantennae/legs/bodytip/wingpoints and clear gap fromfern. A restrained low sinuous thinloopbank and two tiny plainleafstems connect the natural habitat, no extra animals/flowers/trees/debris. Natural variedscale/poses/angles, no equallyspaced fiveiconcards or five floatingdiagrams. No figure hides another's defining endpoint. Each natureform large and readable, not a tinybottomisland.\nPale IVORY #E6E3D8 smooth calm opaque background, restrained subtletonaldepth only. Fuller/taller central habitat intended84to88percentwidth/58to64percentheight, aroundy23to85percent. Upper20percent quiet, genuine6to8percent sidebreathingroom and12percentbeloweverykeyendpoint; actualthreephonecentrecrops later must retain allfigures whole. Avoid any twig/arrow/leaf merging into canvas boundary or curledribbon atcorners. All background opaque, no haze/fog/glow/shadow/texturefield, landscape/horizon/table/3Dpedestal, panels/backingsheet/frame, labapparatus/ballstickatoms/DNAdoublehelix, labels/ruler/text/numbers/bakedclock/date/battery/weather/UI/logos/watermark/phonemockup. No external models/images, only these FIVE exact OWN selected references. Beautiful natural meadow diagram-world as one unified composition.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "daffodil-foldpath",
+          "sourceImage": "sources/daffodil-foldpath.94d6761850df.png",
+          "sha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2"
+        },
+        {
+          "id": "wren-foldpath",
+          "sourceImage": "sources/wren-foldpath.ccfa6d779fde.png",
+          "sha256": "ccfa6d779fde673da6bf6f156d03b256945d80031e956fac427e024b0bb033d1"
+        },
+        {
+          "id": "snail-foldpath",
+          "sourceImage": "sources/snail-foldpath.887863463ce5.png",
+          "sha256": "887863463ce5e786ab0db10d72633df3eace89cdfdb9dd8ffdc2e686dadc36c0"
+        },
+        {
+          "id": "fern-foldpath",
+          "sourceImage": "sources/fern-foldpath.ce20601771d3.png",
+          "sha256": "ce20601771d3b3c5d0544977d078b1193e03cd53cbc174e0ab18780da79b3d86"
+        },
+        {
+          "id": "butterfly-foldpath",
+          "sourceImage": "sources/butterfly-foldpath.6a1cf687eae0.png",
+          "sha256": "6a1cf687eae018a451928875f0c5b3276271e150f3fceaca2da6d0cf617dfd27"
+        }
+      ],
+      "generationStages": [
+        {
+          "stage": "One own-five-reference coherent meadow edge",
+          "prompt": "Use case: stylized-concept. Compose FIVE exact OWN selected subject/style references into ONE original OPAQUE PORTRAIT1290x2796 Glaze phone wallpaper, FOLDPATH MEADOW. Inputs:1whole six-petaldaffodil/helixtrumpet/fullstem/twoleaves,2whole wren/twofeet/twig/upcockedtail,3whole snail/shell/foot/tail/twoupper+twolowerfeelers,4whole arcingfern/alternatingleaflets/fiddlehead/fullstalk,5whole butterfly/fourwings/body/antennae/legs. Keep familiar natural silhouettes and exact coherent scientific SECONDARY-STRUCTURE RIBBON-CARTOON image convention: few LARGE continuous teal/cerulean BETA-STRAND ARROW sheets with broadhead/shoulders, short coral/orange ALPHA-HELIX ribbon segments with clear open turns, thin darkteal smooth LOOP connectors. Nearflat opaque fields with restrained reverse-side secondtone and crisp thin edges, negligiblethickness. No scenelighting/gloss/highlights/materialtextures, physical satin/fabric/metal/foil/glass/pasta/plastic ribbons or normal wildlife tissue underneath. Four independent subjects reference OWN daffodil graphic style only, not repeated flower poses. Use correctedfern IMAGE4 without any formergrey/teal haze. A generic artistic image convention, not actual protein/PDB/sequence/atomicdata/biologicalfunction/prediction.\nONE coherent quiet MEADOW-EDGE habitat. Whole daffodil rises central-right with sixpetalpoints/fulltrumpet/stalkbase/twofullleaves. Whole fern arcs behind-left with fullfiddlehead and all existing alternatingarrowleaflets, no clippedtip. Whole compactwren perches higher-right on one short gentlycurved thin darkteallooptwig, fullbill/eye/twofeet/tail/twigends, no arrow extendingoffcanvas. Whole snail lowcentre/left with fullfoot/tail/shell/allfourfeelers. Whole four-wingbutterfly hovers aboveleft/centre, fullantennae/legs/bodytip/wingpoints and clear gap fromfern. A restrained low sinuous thinloopbank and two tiny plainleafstems connect the natural habitat, no extra animals/flowers/trees/debris. Natural variedscale/poses/angles, no equallyspaced fiveiconcards or five floatingdiagrams. No figure hides another's defining endpoint. Each natureform large and readable, not a tinybottomisland.\nPale IVORY #E6E3D8 smooth calm opaque background, restrained subtletonaldepth only. Fuller/taller central habitat intended84to88percentwidth/58to64percentheight, aroundy23to85percent. Upper20percent quiet, genuine6to8percent sidebreathingroom and12percentbeloweverykeyendpoint; actualthreephonecentrecrops later must retain allfigures whole. Avoid any twig/arrow/leaf merging into canvas boundary or curledribbon atcorners. All background opaque, no haze/fog/glow/shadow/texturefield, landscape/horizon/table/3Dpedestal, panels/backingsheet/frame, labapparatus/ballstickatoms/DNAdoublehelix, labels/ruler/text/numbers/bakedclock/date/battery/weather/UI/logos/watermark/phonemockup. No external models/images, only these FIVE exact OWN selected references. Beautiful natural meadow diagram-world as one unified composition.",
+          "references": [
+            {
+              "id": "daffodil-foldpath",
+              "sourceImage": "sources/daffodil-foldpath.94d6761850df.png",
+              "sha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2"
+            },
+            {
+              "id": "wren-foldpath",
+              "sourceImage": "sources/wren-foldpath.ccfa6d779fde.png",
+              "sha256": "ccfa6d779fde673da6bf6f156d03b256945d80031e956fac427e024b0bb033d1"
+            },
+            {
+              "id": "snail-foldpath",
+              "sourceImage": "sources/snail-foldpath.887863463ce5.png",
+              "sha256": "887863463ce5e786ab0db10d72633df3eace89cdfdb9dd8ffdc2e686dadc36c0"
+            },
+            {
+              "id": "fern-foldpath",
+              "sourceImage": "sources/fern-foldpath.ce20601771d3.png",
+              "sha256": "ce20601771d3b3c5d0544977d078b1193e03cd53cbc174e0ab18780da79b3d86"
+            },
+            {
+              "id": "butterfly-foldpath",
+              "sourceImage": "sources/butterfly-foldpath.6a1cf687eae0.png",
+              "sha256": "6a1cf687eae018a451928875f0c5b3276271e150f3fceaca2da6d0cf617dfd27"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Whole familiar less abstract meadow Nature: six-petal daffodil/trumpet/stem/twoleaves, wren/twofeet/twig/upcockedtail, snail/shell/foot/tail/fourfeelers, arcingfern/fiddlehead/fullstalk and four-wingbutterfly/antennae/legs. Clean molecular secondary-structure ribbon-cartoon convention, few broadteal beta-arrows/shortcoral alphahelices/thindarktealloops, nearflat fields and reverse-sidesecondtone, no physicalsatin/ribbonmaterial or actualprotein/PDB/data/functionclaim. Firstunchanged, four independentlynew subjects eachuseOWN first styleonly; ferninitialhadrealhaze/11alternatingleaflets and exactlyone own cutoutcorrection removedhaze/keptwholeform, no pixelidentityclaim. Sevenoutputs6selected1unselected1creativecutoutedit;4styleuses+1owneditinput=5uses2distinct plus5ownWPrefs. Whole900within1024RGBA/no cropstretch/codealphacleanup. Quietivory Artwork field and plainnarcissusleaf nativeheader. Coherent fuller/taller meadowwallpaper actual~96width/64height/top18, allkeysubjectswhole,0framingedits. Originalhuman messaging-unavailablefallback authorizes isolatedstrictC source after actual lane review; peer material/integration pending, no Jaredapproval/publicationimplied.",
+  "conceptReferences": [
+    {
+      "url": "https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/molecular-graphics-programs",
+      "scope": "RCSB PDB101 official molecular-graphics article body directly read, generic spring-shaped alphahelix/flat beta-strand arrow/loop convention only. No actual molecular model/data/image or namedartist style input."
+    },
+    {
+      "url": "https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/protein-hierarchical-structure",
+      "scope": "RCSB PDB101 official hierarchical-structure body directly read, generic secondary-structure/cartoon conventions only; no actual PDB identity/sequence/function claim or molecular data/image copied."
+    }
+  ],
+  "conceptReferenceScope": "RCSB PDB101 molecular-graphics/hierarchicalstructure body directly read for generic diagram conventions only, no actual PDBmodel/image/sequence/function or namedartist style used. Actual9source/15historical-rebuiltselectorunion viewed,15closestfirst materialcontrols; not currentR2proof.",
+  "selectedFirstPrototypeSha256": "94d6761850df7435042fd32d7aba8f7890c4218aa972f4ce3eb74e7bbcdab8b2",
+  "newImageOutputs": 7,
+  "creativeRasterEdits": 1,
+  "creativeEditScope": "One own fern haze/cutout extraction; four other subject requests are new generations with own first style reference, not edits of first.",
+  "unselectedGenerations": 1,
+  "unselectedHistory": [
+    {
+      "record": "intermediate-cutout-studies/fern-first-generation.json",
+      "sourceImage": "intermediate-cutout-studies/fern-first.04c9bd31d116.png",
+      "sourceSha256": "04c9bd31d116c8bf494bcfb47f607b09e1feb5f3476472b678d35081915c39b7",
+      "selected": false,
+      "reason": "Fern graphic/whole form passes but diagonal pale/teal background haze visible on actualcomposite, rawframealpha15/alpha16boundsreachy3. One built-in cutout correction, no codealphaediting."
+    }
+  ],
+  "unselectedHistoryHashesMatched": 1,
+  "artworkOwnStyleReferenceUses": 4,
+  "artworkOwnDirectEditReferenceUses": 1,
+  "artworkOwnStudyReferenceUses": 5,
+  "artworkOwnStudyDistinctReferenceImages": 2,
+  "artworkOwnStudyReferenceHashesMatched": 5,
+  "wallpaperReferenceUsesAcrossStages": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "intendedMinAppVersion": "1.0.44",
+  "coordinatorMaterialAccepted": false,
+  "coordinatorIntegrationPending": true,
+  "sourceCompletionAuthority": "IntendedID/process notice attempted before first; Codex app messaging unavailable. Original HUMAN fallback authorizes collision-checked isolated strictlaneC work. ONE first then actualfull17085/material/corner review,atmost1own correction; peer material/canonical/integration/device review pending, no root/Jared artworkapproval implied. No shared/publication actions."
+}

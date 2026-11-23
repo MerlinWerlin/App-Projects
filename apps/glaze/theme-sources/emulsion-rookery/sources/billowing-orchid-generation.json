@@ -1,0 +1,26 @@
+{
+  "id": "billowing-orchid",
+  "label": "Billowing Orchid",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One independent square transparent Glaze pure-art asset. EMULSION ROOKERY, physical wildlife sculptures made entirely from continuous perforated PHOTOGRAPHIC CELLULOID FILM STRIPS. Our own ibis reference supplies only the material, palette and restrained macro lighting; create a wholly different subject. Thin springy translucent strips with clearly visible RECTANGULAR EMULSION FRAME WINDOWS and paired regular rows of small SQUARE SPROCKET HOLES along every major strip edge. Petrol-blue, teal, soft coral and copper dye transparencies, subtle photographic grain inside each window, thin amber-clear edges with restrained glossy reflections. Frame windows contain abstract dye gradients only, no pictures/writing/codes. Strips bend in crisp long loops, overlapping plates and pleats to CONSTRUCT the entire body; no ordinary skin or solid toy decorated with a film pattern. Genuine alpha through gaps and perforations. No fabric/feathers, fuzzy fibres, paper quilling, metal, glass, wet cellulose, smooth plastic toys, cinema equipment or standalone reels. Whole subject and all projecting extremities inside central70%, ample transparent space on all sides. No floor, exterior cast shadow, haze, opaque backing panel, border, collage, lettering, numbers, film edge codes, logos, dates, clock/battery/calendar pictures or UI. Readable singular silhouette at85px. SUBJECT: one complete recognizable PHALAENOPSIS ORCHID spray: one broad open familiar five-part moth-orchid flower facing slightly toward the viewer, with a clearly shaped central orchid lip, plus one smaller unopened bud on an arched stem and TWO long strap-shaped basal leaves. All petals and the lip are formed from broad thin translucent photographic film ribbons folded into natural flower anatomy; frame windows and paired square sprocket-hole rows follow the petal edges. The leaves use broad smoothly bending film strips, the stem a tightly folded narrow strip. Soft petrol/teal and coral dye tints remain consistent with our ibis reference. No insect face, animal eyes, invented limbs, geometric flower symbol, pot or vase. Keep complete stem/base/leaves/petals/bud whole with generous transparent margins.",
+  "source": "sources/billowing-orchid.39be66f4c7f4.png",
+  "sourceSha256": "39be66f4c7f447afb1bddf875691696b349637508851de5e053f108033fe926c",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/billowing-orchid.9588c2408fdd.png",
+  "sha256": "9588c2408fdd0bed3c4dfec147f07c499e6cb503c4e528e36e379e111d766cb7",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on transparent1024square. Alpha preserved, no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/ibis.34b1d9dbdfc2.png",
+      "sha256": "34b1d9dbdfc2fad01c6190352e3c9cf38138a8382d23cf85fe558f8ea4781671",
+      "purpose": "Own accepted ibis supplies continuous perforated film material, palette and lighting only; a distinct new natural subject."
+    }
+  ]
+}

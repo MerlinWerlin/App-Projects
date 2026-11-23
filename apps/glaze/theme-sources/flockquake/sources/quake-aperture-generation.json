@@ -1,0 +1,18 @@
+{
+  "id": "quake-aperture",
+  "prompt": "ONE original separate square1024x1024 pure artwork for Glaze FLOCKQUAKE. QUAKE APERTURE: a disconnected-but-interlocking angular arch made of three broad COBALT electrostatic-flocked stencil plaques, shifted at impossible offsets around a large sharply squared empty central opening. A thick ACID-LIME serrated pressure band crosses the arch diagonally and ends in three uneven teeth; a tiny CORAL flocked square floats just inside the opening. Extremely bold odd asymmetric silhouette, a stencilled storm-geology fragment, not a real building, toy, animal, letter or ordinary object. Unmistakable PHYSICAL FLOCK PRINT craft: dense very short matte upright velvet fibres, crisp hand-cut adhesive stencil edges, tiny loose flock particles, compressed directional pile and microscopic raised edge shadows. Flat 0.5mm surface relief, photograph directly above, no weaving, sewing, plush stuffing, plastic or digital gradient. Cobalt #343AB5, lime #B5E247, coral #F5838C, deep purple occlusion. Complete motif middle65% with18% genuinely transparent alpha margins; actual empty central opening transparent too, no paper sheet, backdrop, tile, floor, pedestal or frame. No text, letters, numbers, logo, UI, clocks, dates, battery/weather readings. One standalone asset, no collage or grid.",
+  "tool": "built-in image_gen",
+  "source": "sources/quake-aperture.350bcf8b.png",
+  "sourceSha256": "350bcf8bf55bf2887d18665a1e4f74526aab675b2716d95b47d66e0828679795",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/quake-aperture.31c804d2.png",
+  "sha256": "31c804d2306537d60e15d919464d2bae4e56f8a775b91d409d578aee8cca690d",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

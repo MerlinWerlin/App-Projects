@@ -1,0 +1,17 @@
+{
+  "change": "Owned uncommitted Mosswake hero: smooth natural badger curves and leafy rosettes replace angular draft/plus marks. Header ornament and recipe unchanged.",
+  "themes": 66,
+  "allRasterInputsAndCatalogueUnchanged": true,
+  "nativeSvgCount": 594,
+  "nativeSvgByteIdentical": 588,
+  "changedNativeLayouts": [
+    "mosswake-glade/battery-large.svg",
+    "mosswake-glade/battery-medium.svg",
+    "mosswake-glade/battery-small.svg",
+    "mosswake-glade/clock-large.svg",
+    "mosswake-glade/clock-medium.svg",
+    "mosswake-glade/clock-small.svg"
+  ],
+  "other65SourceFingerprintsUnchanged": true,
+  "published": false
+}

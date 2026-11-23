@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "SCRIMSEED HEATH, Glaze Nature. Use case: stylized-concept. ONE original1290x2796 VERY TALL PORTRAIT PHONE WALLPAPER, aspect ratio about0.4614. ONE coherent familiar HEATHLAND EDGE physically hand-carved in shallow solid warm cream TAGUA VEGETABLE-IVORY with matte BLACK INK held in crisp shallow hand-incised V-grooves, controlled short parallel/crossed hatch clusters and sparse broad curved anatomical cuts. Same smooth continuous warm ivory faces, soft hand polish, tiny seed pores and rounded carved sidewalls as OWN references, many broad ivory fields. INPUT1 own accepted first HARE AND THORN is animal/material reference (its tiny five-petal blooms are generic thornflowers, do NOT call/copy those as gorse). INPUT2 own selected true GORSE is plant/material reference; PEA-shaped flowers with broad banner/lateral wings/folded keel and sharp spines. INPUT3 own selected SNIPE is bird/material reference. Integrate into ONE coherent original natural composition, no collage/contact sheet. A whole natural hare crouches low-LEFT, long whole ears and all coherent paws/tail visible; a whole natural snipe stands at lower-RIGHT slightly behind hare, long straight bill points inward/left, two whole slender legs/toes and full tail. A tall slender asymmetrical GORSE branch rises behind toward upper-right with THREE unmistakable PEA-FLOWERS (banner,wing,foldedkeel), two buds and sharp needle spines, not radial five-petal blossoms. Two slim sedge blades and a small seedhead rise at left. A low irregular ivory heath-bank lip with restrained short incised grass strokes visually connects fauna, no oval/rectangular slab, enclosing border/medallion or display base. Entire organisms/plants/bank literally carved seed-ivory, no real fur/feathers/scales/plant tissue underneath. Short black ink-filled hatch groups follow harefur/birdfeather/flowerfold directions and remain materially visible, not sparse sinuous horsehair trails, flat predominantly-black scratchboard silhouettes, paint/ink on paper, woodgrain pyrography, grey graphite emboss, porcelain glaze, eggshell chips, nacre/metal/gems or plastic. Background quiet UNIFORM warm UMBER #665446, very subtle matte texture only, no busy pattern/photographic scenery. Fuller/larger TALL composition spans about82to88percent WIDTH and60to64percent HEIGHT, from roughly25percent to87percent canvasheight. Substantial readable hare and snipe, tall gorse gives real vertical presence, an airy irregular open natural scene rather than an enclosing arch. All ears/bill/toes/tails/petals/keels/spines/buds/sedge/groundlip ends COMPLETELY inside real6to9percent SIDE margins and12percent BOTTOM margin; no clipped extremities. Upper22percent quiet for icons. No tiny island in excessive empty border and no giant cropped full-frame creature. Soft diffuse raking studio light reveals shallow solid carving and recessed dark grooves; no background cast shadow/glow/halo. No letters/numbers/text, dates/time/battery/weather readings, clock faces, UI/phone mockup, border/logo/signature. Deliver only finished tall wallpaper.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.3bdb72a5.png",
+  "sourceSha256": "3bdb72a5d8f6e1ca81985f7c88260e636a7ad07b3735057ff390e12c04423579",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "948972c53a8693131954ee7c973a27475831da4f30d1c881a89b71fd4d175059",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "hare-gorse",
+      "file": "sources/hare-gorse.b636064f.png",
+      "sha256": "b636064f685e8fb7c01c0f6dc90704b30f386cb8f7b40d6e821493ce994af286",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 2,
+      "id": "gorse-bloom",
+      "file": "sources/gorse-bloom.797787b2.png",
+      "sha256": "797787b241e1a6727adfd319e6256ede25d6f00dca4344b06b923948af014108",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 3,
+      "id": "snipe-sedge",
+      "file": "sources/snipe-sedge.846e498a.png",
+      "sha256": "846e498a6e29e3a4d57f80b47823431bcfe16c144d1a2fa1f64cf6945104c00f",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "counterweight-vendor",
+    "kind": "art",
+    "image": "counterweight-vendor.7fd244e5debe.png",
+    "sha256": "7fd244e5debecd746ddbdcbb5ad8d70efabc1753bda7959a27055fba8bcfbd3b",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Counterweight Vendor"
+  },
+  {
+    "id": "hinge-porter",
+    "kind": "art",
+    "image": "hinge-porter.8f598c8acd7e.png",
+    "sha256": "8f598c8acd7eab4f703795410a6fcc42d38f1cd1326e5b3a1314ceaf9f698626",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hinge Porter"
+  },
+  {
+    "id": "split-saddle-stall",
+    "kind": "art",
+    "image": "split-saddle-stall.ade3c8cee8dd.png",
+    "sha256": "ade3c8cee8ddc1ca421efb6779738be3376c5f2f21cf2490afaf5ba9cfafec17",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Split Saddle Stall"
+  },
+  {
+    "id": "rocker-load-carrier",
+    "kind": "art",
+    "image": "rocker-load-carrier.62afb3ddffbf.png",
+    "sha256": "62afb3ddffbf52d58794f14a95d6b6a17e7ca8b7cf8237792275aa659e3100e7",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Rocker Load Carrier"
+  },
+  {
+    "id": "pendulum-press",
+    "kind": "art",
+    "image": "pendulum-press.67e7314e4976.png",
+    "sha256": "67e7314e49762ef3a9e8a2fc0af3ae8180a93a78a04d2ed4fe54ea69b275e8dd",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pendulum Press"
+  }
+]

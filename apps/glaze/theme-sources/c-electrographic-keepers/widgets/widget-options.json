@@ -1,0 +1,67 @@
+[
+  {
+    "id": "split-cowl-sentinel",
+    "kind": "art",
+    "image": "split-cowl-sentinel.52baf4976b4c.png",
+    "sha256": "52baf4976b4ce8a9e748536d0775b59ae4132365b7b20baa2e971396ac7d145a",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Split Cowl Sentinel"
+  },
+  {
+    "id": "mantle-bastion",
+    "kind": "art",
+    "image": "mantle-bastion.4d86fc194793.png",
+    "sha256": "4d86fc194793a52a73887288d3bd35d4ef9fdf5d9ccd1f64747760ecc4df9d87",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Mantle Bastion"
+  },
+  {
+    "id": "latch-keeper",
+    "kind": "art",
+    "image": "latch-keeper.5813b338c5c2.png",
+    "sha256": "5813b338c5c2e59d805044a8fdad977114898fabbeb7249a903091acd5cc3835",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Latch Keeper"
+  },
+  {
+    "id": "braid-crawler",
+    "kind": "art",
+    "image": "braid-crawler.57a71c2573b5.png",
+    "sha256": "57a71c2573b57507c7352d1f529ec9ff0924aef16c3c73f6da0174bf96f6f224",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Braid Crawler"
+  },
+  {
+    "id": "sailwatcher",
+    "kind": "art",
+    "image": "sailwatcher.948a73a19494.png",
+    "sha256": "948a73a1949458f27c28ffc56f0ad78c02456fbc77eb982a00391b75de146925",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sailwatcher"
+  }
+]

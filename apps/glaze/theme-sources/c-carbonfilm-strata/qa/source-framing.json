@@ -1,0 +1,100 @@
+{
+  "review": "All five selected raw originals remain whole. Four square1254 originals have framealpha1; selected1774x887 landscape fish framealpha2. Entire originals, including thin raw artifact margins, uniformly contained900within1024 with source alpha retained; no crop/stretch/creative code editing. Fish first-generation exterior gray haze was removed by one built-in own-image background extraction, not code. Fixed25px left probes on dragonfly/fish intersect their actual stone (alpha151/253), not exterior haze. All visiblealpha16 retained in actual rounded-layout simulation. Wallpaper has one own-scene pullback; all three actual encoded phone crops viewed with every fossil/stone endpoint intact.",
+  "assets": [
+    {
+      "id": "fern-compression",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          80,
+          124,
+          1164,
+          1147
+        ],
+        "96": [
+          80,
+          125,
+          1163,
+          1147
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "dragonfly-compression",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          24,
+          220,
+          1219,
+          1062
+        ],
+        "96": [
+          25,
+          220,
+          1219,
+          1061
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "ginkgo-compression",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          80,
+          208,
+          1162,
+          1092
+        ],
+        "96": [
+          81,
+          209,
+          1162,
+          1092
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "fish-compression",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          10,
+          75,
+          1766,
+          784
+        ],
+        "96": [
+          10,
+          76,
+          1765,
+          783
+        ]
+      },
+      "edgeAlphaMaximum": 2,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "palm-compression",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          21,
+          79,
+          1232,
+          1203
+        ],
+        "96": [
+          22,
+          80,
+          1232,
+          1202
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

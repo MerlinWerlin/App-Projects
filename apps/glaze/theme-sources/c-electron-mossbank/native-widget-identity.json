@@ -1,0 +1,22 @@
+{
+  "theme": "c-electron-mossbank",
+  "recipe": [
+    "pebble",
+    "cElectronSpringtail",
+    "cElectronPoreRims",
+    "pins",
+    "baton",
+    "tiles",
+    "ticket"
+  ],
+  "art": {
+    "cElectronSpringtail": "M 43 44 Q 49 23 72 26 Q 94 31 93 56 Q 92 78 65 77 Q 46 76 39 63 Q 25 71 15 59 Q 8 48 17 40 Q 28 31 43 44 Z M 22 41 L 18 29 L 12 20 L 6 14 M 31 39 L 38 26 L 47 21 L 53 22 M 18 29 L 22 27 M 12 20 L 16 18 M 38 26 L 41 29 M 25 63 L 20 73 L 12 77 L 9 86 M 40 64 L 36 77 L 31 88 L 25 91 M 54 74 L 51 85 L 55 94 M 66 75 L 73 84 L 80 90 M 60 66 L 63 77 L 72 81 M 78 71 L 86 80 L 94 79 M 88 67 Q 97 77 91 83 L 98 89 M 91 83 L 96 92 M 27 47 L 28 47 M 24 50 L 25 50 M 30 50 L 31 50 M 49 36 L 45 54 M 57 31 L 55 60",
+    "cElectronPoreRims": "M 12 32 Q 9 22 19 19 Q 30 18 31 28 Q 31 39 20 40 Q 13 40 12 32 Z M 18 30 Q 16 25 21 24 Q 26 24 26 29 Q 26 34 21 35 Q 18 35 18 30 Z M 66 45 Q 63 33 74 30 Q 87 28 90 40 Q 91 53 78 55 Q 68 56 66 45 Z M 73 43 Q 72 37 78 36 Q 84 36 84 42 Q 84 48 78 49 Q 74 49 73 43 Z M 42 78 Q 39 70 47 67 Q 56 65 58 74 Q 60 83 51 86 Q 44 86 42 78 Z"
+  },
+  "ornament": "M 18 39 Q 16 24 31 21 Q 47 19 50 33 Q 52 47 36 52 Q 20 55 18 39 Z M 27 37 Q 25 29 33 28 Q 42 27 42 35 Q 42 44 34 45 Q 27 44 27 37 Z M 53 61 Q 50 46 65 42 Q 81 40 85 55 Q 87 71 71 76 Q 56 78 53 61 Z M 62 59 Q 60 51 68 50 Q 77 49 78 57 Q 80 66 71 68 Q 63 69 62 59 Z M 25 75 Q 24 67 32 65 Q 41 64 43 72 Q 45 81 36 84 Q 27 85 25 75 Z",
+  "ornamentDirection": "Three unequal microscopic pore rims in one compact cluster,with two inner hollows. Simplified detector-edge motif,not a miniature whole springtail or dense repeated texture.",
+  "ornamentProvenance": "Original authored100x100 SVG path,22 November2026,following Jared nature/Both-corner steering.",
+  "direction": "Globular springtail and sparse pore rims in larger native compositions. Pebble dial,pin marks,baton hands,tile battery,ticket calendar. Dedicated small pore cluster holds clean header margins.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms;no raster readings.",
+  "registryIntegration": "Coordinator owns shared source/Swift integration and installed-device qualification. Lane source-only."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "hanging-tide",
+  "prompt": "ONE original standalone1024x1024 square artwork for BURR HINTERLAND, mezzotint print. HANGING TIDE: an impossible narrow vertical ink landform, a black rectangular crown floats above seven long parallel black tapering streamers that curve upward at their ends; a single wide luminous IVORY channel passes horizontally through the middle of all streamers without severing them, so gravity feels reversed. One small offset vermilion square sits near the very upper-left black crown. Long thin jagged hanging silhouette, emphatically NOT stairs, oval shell, ribbon loop, real waterfall, curtain or household object. Material language is flat fine-art MEZZOTINT copperplate print: velvety charcoal rocked-burr stipple, dense granular black ink, burnished white gradients, warm ivory paper fibers in white printed reserves, no outlines/hatching, no3D sculpture, glossy texture or photograph. Whole form central65%,18% genuinely transparent alpha margin, no square paper sheet, backdrop, floor, frame, border or pedestal. Ink perimeter soft irregularly scraped edges, bold legible small-widget shapes. No text, letters, signature, edition numbers, logos, UI, dates, clock, dial, time or battery. ONE separate image, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/hanging-tide.ac51b3b6.png",
+  "sourceSha256": "ac51b3b61b711ffafc85edeaf50e550f10c8637fd43fd7ed29a99df7c4fa678c",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/hanging-tide.5338380f.png",
+  "sha256": "5338380f9e9fdd13b2784149333b5bc379bb4a026614f2ebf6d197188a72a728",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

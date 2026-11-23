@@ -1,0 +1,26 @@
+{
+  "id": "shavetail-copse",
+  "lane": "A18",
+  "status": "One first material prototype only before any four/WP expansion",
+  "medium": "Broad dry coloured-pencil sharpener shaving fans with rawwood radial grain and narrow serrated painted rims",
+  "metadataScan": "No exact pencil-shaving/sharpener-shaving matches in86candidate meta files or141historical baseline manifests. Positive broader family: Raspnest Heath excelsior wood wool; Vaneleaf's wood-shaving mention is an exclusion. These scans do not prove visible distinction.",
+  "actualNeighbors": "All five accepted artworks each for Raspnest Heath, Vaneleaf Highland, Flutecut Woodland and Pithcurl Orchard viewed;26 actual historical+acceptedPR307 selections across PaperCarnival/PuffinFold/MarquetryArc checked through current app parser/selector and SHA. Historical cache is not currentliveR2; accepted rebuild remains unpublished snapshot.",
+  "primaryTextSources": [
+    {
+      "url": "https://www.youtube.com/watch?v=ykl1m-rhyhw",
+      "role": "Official Faber-Castell generic pencil-shaving material reuse text only; no video imagery/artist style/subject reference supplied"
+    },
+    {
+      "url": "https://www.staedtler.com/us/en/products/pencils-and-accessories/sharpeners/",
+      "role": "Official generic sharpener/material context text only; no product imagery supplied"
+    }
+  ],
+  "risks": [
+    "Broad shaving fans may look like folded paper or feather-vane panels at85",
+    "Raw woodfamily overlap with excelsior/intarsia; actual narrow painted serrated rim/radial cutgrain must survive",
+    "No complete pencil/tool props; natural anatomy must be built from shaving pieces"
+  ],
+  "gate": "Actual full17085 grey/petrol composites plus close-source comparison. At most one targeted own material correction, release if still paper/feather/woodwool. Only a visibly distinct accepted first can seed four independent subjects.",
+  "generationInputs": "New prompt only; no neighbor or external image input",
+  "published": false
+}

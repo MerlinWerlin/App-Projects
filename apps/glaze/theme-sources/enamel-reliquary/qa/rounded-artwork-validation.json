@@ -1,0 +1,204 @@
+{
+  "themeId": "enamel-reliquary",
+  "scope": "Geometry proof using actual encoded WebP assets, production theme-to-widget background, scaledToFit and Swift Fit6% rule. Conservative24% corner radius stress check; device corner radius varies, no installed-iOS screenshot claim.",
+  "swiftSource": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\targets\\widget\\SeamlessWidget.swift",
+  "swiftSha256": "00f8f7b122e06f51ea9bdceb20b4dfa1753ca09d936f7f796212ee3184042477",
+  "backgroundStops": [
+    "#261422",
+    "#301B28"
+  ],
+  "artworkOptions": 5,
+  "layouts": [
+    {
+      "option": "trident-of-the-lost-sea",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        25,
+        144,
+        144
+      ],
+      "asset": "widget-trident-of-the-lost-sea.28cc7a64.webp",
+      "assetSha256": "28cc7a64d79c96c932089a322bd98972caab4814a9eb97d3995a2e1bdf3b0510"
+    },
+    {
+      "option": "trident-of-the-lost-sea",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        55,
+        63,
+        308,
+        317
+      ],
+      "asset": "widget-trident-of-the-lost-sea.28cc7a64.webp",
+      "assetSha256": "28cc7a64d79c96c932089a322bd98972caab4814a9eb97d3995a2e1bdf3b0510"
+    },
+    {
+      "option": "folded-ladder-fossil",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        31,
+        30,
+        142,
+        136
+      ],
+      "asset": "widget-folded-ladder-fossil.e2e09b76.webp",
+      "assetSha256": "e2e09b763a0b0be7ac7fe28cf4a58bc0009fc6af875dced562540042ce7e3437"
+    },
+    {
+      "option": "folded-ladder-fossil",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        68,
+        74,
+        304,
+        301
+      ],
+      "asset": "widget-folded-ladder-fossil.e2e09b76.webp",
+      "assetSha256": "e2e09b763a0b0be7ac7fe28cf4a58bc0009fc6af875dced562540042ce7e3437"
+    },
+    {
+      "option": "fan-of-lost-tides",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        26,
+        145,
+        143
+      ],
+      "asset": "widget-fan-of-lost-tides.a6551486.webp",
+      "assetSha256": "a6551486c134f0e580d9ce77d283298e5f351c431bbd522d6306538696f99635"
+    },
+    {
+      "option": "fan-of-lost-tides",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        54,
+        66,
+        310,
+        315
+      ],
+      "asset": "widget-fan-of-lost-tides.a6551486.webp",
+      "assetSha256": "a6551486c134f0e580d9ce77d283298e5f351c431bbd522d6306538696f99635"
+    },
+    {
+      "option": "ruptured-carapace",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        27,
+        37,
+        142,
+        133
+      ],
+      "asset": "widget-ruptured-carapace.0989d11b.webp",
+      "assetSha256": "0989d11bb9b32826fda505b60f6a8e491e1a835ea4730d7938bf3143a3e9213b"
+    },
+    {
+      "option": "ruptured-carapace",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        58,
+        90,
+        305,
+        295
+      ],
+      "asset": "widget-ruptured-carapace.0989d11b.webp",
+      "assetSha256": "0989d11bb9b32826fda505b60f6a8e491e1a835ea4730d7938bf3143a3e9213b"
+    },
+    {
+      "option": "drowned-light-fossil",
+      "size": "small",
+      "dimensions": [
+        170,
+        170
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        25,
+        36,
+        143,
+        133
+      ],
+      "asset": "widget-drowned-light-fossil.5a0ac373.webp",
+      "assetSha256": "5a0ac3730d8700772bd5e42fba91b8fd05fa1dc9c5cd9ddc845c30f9e4fc632e"
+    },
+    {
+      "option": "drowned-light-fossil",
+      "size": "large",
+      "dimensions": [
+        364,
+        382
+      ],
+      "fitInsetFraction": 0.06,
+      "stressCornerRadiusFraction": 0.24,
+      "clippedForegroundPixels": 0,
+      "foregroundBounds": [
+        56,
+        87,
+        307,
+        294
+      ],
+      "asset": "widget-drowned-light-fossil.5a0ac373.webp",
+      "assetSha256": "5a0ac3730d8700772bd5e42fba91b8fd05fa1dc9c5cd9ddc845c30f9e4fc632e"
+    }
+  ],
+  "clippedForegroundPixels": 0
+}

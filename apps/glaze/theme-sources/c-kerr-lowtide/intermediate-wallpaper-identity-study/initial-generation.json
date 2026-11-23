@@ -1,0 +1,34 @@
+{
+  "selected": false,
+  "sourceImage": "intermediate-wallpaper-identity-study/wallpaper-initial.a34c64333f1b.png",
+  "sourceSha256": "a34c64333f1b8fff9d444e46df14d1ceaf261162f6231ce55a1e15a6d15c693b",
+  "prompt": "Use case: stylized-concept. GLAZE KERR LOWTIDE. A tangible natural shore-life world invented in the image language of reflected-polarization KERR MAGNETIC-DOMAIN CONTRAST MAPS. STRICTLY FLAT TWO-DIMENSIONAL OPTICAL IMAGE: each entire recognizable organism is a full silhouette MASK filled with broad irregular interlocking CREAM and CHARCOAL DOMAIN REGIONS. Cream #F4ECDE occupies roughly sixty percent, charcoal #242B36 forty percent. Unequal curving labyrinth branches, rounded dead ends, occasional detached ovoid islands; domains are broad, about eight to fourteen regions across the body width, NOT hundreds of tiny strokes. The domain walls are slightly soft and finely grainy like optical magnetic contrast. Interiors are flat opaque light/dark values with no volumetric lighting. The interlocking regions ARE the optical body image, not a decorative texture printed on an animal. No separate normal body beneath them, no natural skin, no anatomical shading, no highlight, no bevel, no metallic or glossy magnetic liquid. No zebra stripes, regular parallel bands, contour hatching, etching, woodcut, engraving, pen lines, ink, paper, wood grain, craft material or physical cutout shadow. No EBSD angular polygon cells, SEM shaded pores, electron granules, quiver arrows, rainbow fringes or blue light cones. The domain-contrast recording is the visual medium. These are fictional artistic contrast fields inside nature silhouettes, not a measured magnetic property of biological organisms. No letters, labels, numbers, scales, axes, legend, clock, readings, graph, UI, logo or watermark. Asset: ONE opaque portrait phone wallpaper1290x2796. One coherent natural low-tide pool, using five own original art images as exact organism identity references. A brittle star rests over a low pool shelf at left; sea hare moves through the front centre; thick-crown anemone grows at right; three-siphon tunicate colony attaches behind the sea hare; broad sea-lettuce fronds rise at rear left. The same flat cream/charcoal magnetic-domain contrast construction makes both organisms and sparse connected tidal shelf; a very quiet slate #262D3B water field surrounds them. Maintain five distinct complete silhouettes rather than a busy all-over pattern. All FIVE whole organisms inside horizontal10%to90% and vertical46%to78% of canvas height. Upper43% is quiet low-contrast slate water, no objects; bottom20% similarly quiet dark pool field. A few broad low-contrast slate ripples connect the habitat, no intricate rock texture, bubbles, extra shells, extra animals, stars or vegetation. Shelf/water may bleed but all focal arm tips, tentacles, fronds, body/foot and tube rims must have generous room. Natural habitat in a flat scientific contrast-image language, not a specimen collage or physically inked illustration. No text, UI, frame or reading. Input identity references in exact order: IMAGE1=brittle star, IMAGE2=sea hare, IMAGE3=crown anemone, IMAGE4=three-siphon tunicate colony, IMAGE5=sea lettuce. Preserve the exact whole original silhouettes and flat opaque cream/charcoal domains. Star must retain five separated curved arms; sea hare keeps two blunt rhinophores, long ruffled foot and large open curled mantle fold; anemone keeps its broad curved tentacle crown, single open round mouth and short column with basal foot; tunicate has exactly three unequal open tubes on a joined mat; sea lettuce has three wide ruffled fronds with natural holes and shared holdfast. Do not turn the hare into a rabbit, the anemone into another star, the tunicate into pots or the lettuce into land leaves. Give every organism breathing room and separate its silhouette from the low slate shelf. Suggested layout: lettuce rear-left, tunicates rear-centre, anemone right, brittle star front-left and sea hare front-centre. All five complete organisms, without overlap that hides anatomy, fit within the stated middle-lower safe area.",
+  "internalArtworkReferences": [
+    {
+      "id": "brittle-star",
+      "sourceImage": "sources/brittle-star.de9d9a3baf99.png",
+      "sha256": "de9d9a3baf99d9b84c6601e320578e3a88edb22f9ebc0af7daedbf5fa9fe6a1d"
+    },
+    {
+      "id": "sea-hare",
+      "sourceImage": "sources/sea-hare.7b8c82a46d6f.png",
+      "sha256": "7b8c82a46d6f27be1a04c97335733bf1f04a52556c12b8833c9402346a670822"
+    },
+    {
+      "id": "crown-anemone",
+      "sourceImage": "sources/crown-anemone.1f11c9fedbea.png",
+      "sha256": "1f11c9fedbea5fad69ed35683dda3e76ae8eb3f822f1c8eb8f9dca0de331b50a"
+    },
+    {
+      "id": "three-siphon-tunicate",
+      "sourceImage": "sources/three-siphon-tunicate.a97f78023dc0.png",
+      "sha256": "a97f78023dc0f0621e2d2f7fd9d82b6d9852e240460b46dcd2e305ae6f1ec7e6"
+    },
+    {
+      "id": "sea-lettuce",
+      "sourceImage": "sources/sea-lettuce.cea1151f8d46.png",
+      "sha256": "cea1151f8d4665d8ade10538369d99da7b2c9d6b9c7c1f59c610b1c02a462335"
+    }
+  ],
+  "reason": "Five shore subjects and layout retained, but foreground sea hare lost its large open curled mantle fold. Restore exact two-rhinophore and open-mantle identity from own art."
+}

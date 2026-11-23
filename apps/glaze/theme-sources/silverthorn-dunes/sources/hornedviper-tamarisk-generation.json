@@ -1,0 +1,18 @@
+{
+  "id": "hornedviper-tamarisk",
+  "prompt": "SILVERTHORN DUNES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real desert flora/fauna, natural recognizable proportions and coherent anatomy FIRST. Visibly physical BIDRI-INSPIRED handcraft: shallow solid BLACKENED ZINC-ALLOY low relief, satin matte charcoal-black patina with subtle uneven burnished metal surface; FEW BROAD TAPERED PURE SILVER WIRE/FOIL STRIPS hammered FLUSH into hand-cut channels, tiny bright metallic seams/hammer traces. Broad smooth uninterrupted black-metal reserves over80percent, no dense fine hairlike scratches, hatching, papergrain or white fur texture. Only a few broad silver strips per anatomical region, with hammered silver highlights. Inlay follows real fur directions, anatomical contours, natural scales, leaf veins and petals. BLACK METAL MUST DOMINATE at least75% of subject surface; restrained silver detailing no all-silver body. Thin cast metal edge visible in modest three-quarter relief, not chrome mirror, jewelry/charm, pin/brooch, porcelain/enamel, shell/nacre, wire cage, tin-sheet repousse, woven metal, glitter, beads, wood, plastic, ink/print/scratchboard/engraved paper or white outline drawing. No generic floral scrollwork plastered across bodies; keep animal identity immediate. Real gaps between limbs/branches alpha transparent. Whole complete composition central64%, minimum18% true alpha margin each side, no cut feet/ears/tail/leaf. No ground, scenery, backing plaque, frame, plinth, medallion, hanging ring/bail, cast shadow, halo, text, letters, numbers, clock/date/battery values, UI, logo or signature. Subject HORNEDVIPER TAMARISK: one recognizable natural desert horned viper resting in ONE low open S-curve, continuous snake body of even natural taper, broad coherent triangular head facing left and TWO small horn scales above the eyes, single closed mouth and single pointed tail visible separately at right. No ouroboros ring, knot, split neck, multiple heads, extra tail or legs. A short upright tamarisk sprig beside the rear coil with tiny scale leaves, no ground pad. Satin matte blackened zinc low-relief snake with few broad flush-inlaid silver chevron strips and narrow bright structural contour seams; large black patina spaces between sparse silver marks, not a solid silver snake or all-over floral decoration. Twig fine black metal with silver vein inlay. Whole head, both horns, continuous S-body, tail tip and sprig complete within generous alpha margins. CRITICAL APPROVED MATERIAL: smooth satin-black metal over80percent; only sparse BROAD tapered flush-hammered silver strips, 5to10times wider than scratch marks. No dense hairlike lines/hatching/scales or repeated tiny marks; emphasize black negative reserves and few bright embedded strips.",
+  "tool": "built-in image_gen",
+  "source": "sources/hornedviper-tamarisk.5898ed77.png",
+  "sourceSha256": "5898ed776c99722c06f39dcfd42cce8ceee8e083a823dd413c496a7c86266714",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/hornedviper-tamarisk.0cdd69d2.png",
+  "sha256": "0cdd69d29eccac501711eb9a34072625e7829fca0cbcd5027742e0a951863953",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

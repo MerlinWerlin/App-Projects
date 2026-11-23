@@ -1,0 +1,14 @@
+{
+  "scope": "Primary ornithology text consulted for lobed-toe anatomy; no external photos used as generation inputs.",
+  "references": [
+    {
+      "url": "https://www.bto.org/learn/about-birds/bird-families/podicipedidae-grebes",
+      "finding": "Grebes have lobed feet and rear-set legs; selected edit separates individual lobed toes."
+    },
+    {
+      "url": "https://www.allaboutbirds.org/guide/Pied-billed_Grebe/overview",
+      "finding": "Cornell grebe overview describes lobed toes, unlike continuous ducklike webs."
+    }
+  ],
+  "originalAndExactEditRetained": true
+}

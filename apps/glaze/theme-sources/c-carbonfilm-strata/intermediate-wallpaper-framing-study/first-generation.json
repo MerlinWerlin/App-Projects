@@ -1,0 +1,40 @@
+{
+  "selected": false,
+  "reason": "All five whole fossils and coherent continuous shale shelf correct; group nearly fills width and needs one uniform pullback for quiet sides and all phone crops.",
+  "sourceImage": "intermediate-wallpaper-framing-study/first-wide-shelf-unselected.def603d46b4f.png",
+  "sourceSha256": "def603d46b4fda7992d329db14d8e52c29e7c6cbc4b6551268954c205b9c5b3d",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "prompt": "ONE original opaque portrait1290x2796 phone wallpaper for STILLLEAF SHALE. Use the FIVE OWN references only to preserve the exact recognizable fossil forms and their flat matte black-brown carbon-film / fine-grained thin laminated shale material: IMAGE1 whole gently arcing pinnate FERN frond; IMAGE2 whole four-wing DRAGONFLY with long segmented abdomen and six natural legs; IMAGE3 connected two-fan GINKGO sprig; IMAGE4 whole long lateral FISH, head left/full forked tail right and complete natural fin traces; IMAGE5 one broad radial PALM FAN with full curved petiole. All are FLAT preserved residue and shallow natural impressions IN stone, never live plants/animals, raised carved sculptures, painted ink marks, bronze/enamel/glass or a museum model.\nCreate ONE coherent very small naturally exposed SHALE BEDDING SHELF across lower-middle frame, an irregular pale olive/tan layered geological face with a few organically overlapping thin cleavage flakes. All five different whole fossil forms are integrated across adjacent continuous stone planes in an airy asymmetric low arc, NOT five rectangular specimen cards, equally spaced tiles, a contact sheet or collage of source images. Fine mineral grit, natural fractures and thin chipped laminae continue coherently across shelf. Every fossil has a clear unbroken visible silhouette; no leaf covers fish/wing or another fossil. Preserve every fern pinna/tip/petiole, all four dragonfly wings/legs/abdomen tip, both ginkgo fans/stems, whole fish head/fins/tail and all palm segments/petiole. Different physical orientations but same natural flat preservation process.\nVERY DISTANT SMALL COMPOSITION: ENTIRE connected shelf, all its cleavage flakes AND every fossil endpoint inside CENTRAL60PERCENT width x20to80percent and BETWEEN45AND70PERCENT imageheight. Fern at rear-left, palm at rear-right, small dragonfly left-middle, two ginkgo fans front-centre and long fish along low right; keep specimen overlaps out of the silhouettes. Broad empty space above, below and both sides. Upper43percent and bottom27percent completely quiet smooth warm shale/linen-coloured field #DED6C2/#B8B2A0, very fine restrained mineral grain only, no floating fossils/fronds/stones up there. Soft natural warm raking light, subtle internal layer shadows confined to the tiny shelf, no dramatic dark cast shadow or vignette. Entire scene much smaller than a museum closeup; safe whole composition for1290x2796 and shorter750x1334 centre crops. No extra organisms, separate standing animals, foliage sprigs, grass, pebbles, museum plinth, rectangular backing plaque/frame, rulers/labels/writing, text, numbers, UI/readings/logo or phone. Artistic compression-fossil interpretation, not an authentic specimen, real fossil site or evidence of age/taxon/locality.",
+  "internalArtworkReferences": [
+    {
+      "id": "fern-compression",
+      "sourceImage": "sources/fern-compression.95119f072386.png",
+      "sha256": "95119f072386a473744acd3a827cacd641ca9849829812d0d5ab0be59132e26b"
+    },
+    {
+      "id": "dragonfly-compression",
+      "sourceImage": "sources/dragonfly-compression.b7d4db160021.png",
+      "sha256": "b7d4db160021778566accee68d7c7733b782beffc789e50153dab2cbcd74efc4"
+    },
+    {
+      "id": "ginkgo-compression",
+      "sourceImage": "sources/ginkgo-compression.1ccac4e9dd61.png",
+      "sha256": "1ccac4e9dd61b2e0ef6d5710c76fe1d3beefd1029e128d37239131587809b3b3"
+    },
+    {
+      "id": "fish-compression",
+      "sourceImage": "sources/fish-compression.8acc870d59ad.png",
+      "sha256": "8acc870d59adaa88887105dda4e684ee3a5eb6ebd2bdcc5c4359f8c3c135e470"
+    },
+    {
+      "id": "palm-compression",
+      "sourceImage": "sources/palm-compression.1f4cacc2329c.png",
+      "sha256": "1f4cacc2329c2177bff5113d2cd90c3bf3208fea91c1e4104bc70758182b0195"
+    }
+  ],
+  "generationTool": "built-in image_gen",
+  "externalVisualInputs": []
+}

@@ -1,0 +1,18 @@
+{
+  "id": "horseshoe-tidegrass",
+  "prompt": "GYOTAKU SLIPSTREAM for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical DIRECT INK-RUBBED MARINE SPECIMEN IMPRESSION PRINT: one recognisable natural marine organism/group transferred as uneven PRUSSIAN-BLUE INK #173B4B, with distinct natural SCALE/SCUTE RIDGE IMPRESSIONS, thin FIN-RAY COMB TRACES, little dry ink SKIPS, ragged pressure-transfer edges, tiny ink pools and visible fibrous paper interaction. A tactile flat INK IMPRESSION, never brush-painted watercolor, broad sumi brushstrokes, mezzotint tonal burr, polished3Dsculpture, woodcut stamp blocks, marbled rings, riso dots or optical/scientific/radiographic scan. Tiny restrained vermilion #B65B48 accents only, no multicolour rainbow fills. Natural whole silhouette first, scale/ray transfer texture subordinate. The shipped image contains INK MARKS ONLY; all surrounding background and UNPRINTED GAPS truly transparent alpha, no opaque ivory paper body/rectangle or pale backing/halo/shadow. Whole COMPLETE organism/group SMALL central64% with18% or more real alpha margin ALL4sides, no clipped fin/spine/tail/antenna/tentacle. No sea scene/floor/ground/plaque/frame/border, labels, typography/letters/numbers/symbols, clock/date/battery/weather values, UI, logos or signatures. No machines, human, clothing or cartoonface. Subject HORSESHOE TIDEGRASS: one recognisable natural HORSESHOE CRAB seen from a slightly tilted top/side view. Broad gently domed HORSESHOE SHIELD faces lower-left, clear curved front rim, two small natural printed eye spots, rear hinged abdominal section with paired short side spines and one very LONG TAPERED STRAIGHT TELSON pointing upper-right. Several coherent jointed walking legs are partly visible beneath near shield rim, far legs naturally occluded, no human/cartoonface. Shield/abdomen are direct rubbed SCUTE-RIDGE INK TRANSFER, curved broken pressure traces, dry skips and irregular ink contact patches, NOT smooth watercolor modelling, engraved technical linework or X-ray skeleton. TWO sparse long TIDEGRASS BLADES curve up-left beside shell, subtle natural stem impressions, no scenery or water rectangle. Prussian-blue ink and tiny vermilion accent near hinge only. Broad low shield plus long diagonal tail silhouette unlike round puffer or fin-fanned fish. Whole telson, shield rim, all visible legs/spines and both grass tips contained with generous true alpha margins; only ink/unprinted alpha, no pale fill/backing/halo.",
+  "tool": "built-in image_gen",
+  "source": "sources/horseshoe-tidegrass.d825720c.png",
+  "sourceSha256": "d825720cf617fa0bf82b3e640ea48864d5411c4565b6cfca2dde7ffd93ca3ce1",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/horseshoe-tidegrass.9e24dce5.png",
+  "sha256": "9e24dce58b701a49237f313738097fc42318af5409e05781bc9f49b8c2f17b17",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

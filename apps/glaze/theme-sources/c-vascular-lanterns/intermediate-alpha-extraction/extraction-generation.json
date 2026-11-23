@@ -1,0 +1,18 @@
+{
+  "selected": true,
+  "reason": "Root accepted this exact cleaned original after actual full17085/anatomy-neighbor gate; promoted unchanged to selected source. First hazy original remains unselected with exact edit linkage.",
+  "sourceImage": "sources/lantern-vein-cage.920cec30caea.png",
+  "sourceSha256": "920cec30caeac0c8781b4625e708d2cdc789dab1c7eea9b00073c42de0887832",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "prompt": "BACKGROUND AND EMPTY-CELL EXTRACTION ONLY of this EXACT OWN botanical vein-cage/berry image. Keep the COMPLETE exact existing object: every coarse dry matte tan primary rib, all fine irregular branching/rejoining secondary veins, every visible far-side vein, every original junction/rough brown fleck/tiny natural plant fibre, the entire curved pedicel, whole calyx outline/lower tip and the ONE orange berry with its exact skin/highlight. Preserve original topology, proportions, layout, colour, natural vein thickness and shading on actual solid veins/fruit. DO NOT redraw, thicken, smooth, simplify, weave or replace any vein, alter the berry, add structures or crop any part.\nREMOVE ONLY the unwanted pale cream/white/grey BACKGROUND HAZE that currently lies IN THE EMPTY CELLS BETWEEN VEINS and outside/above/around the actual cage. These pale partly transparent patches are BACKDROP, not plant tissue. Replace ALL of that interveinal and exterior backdrop with GENUINE COMPLETE ALPHAZERO TRANSPARENCY, including the open cells above the berry, at the sides, below it and between the pedicel and cage rim. Keep every actual near-side and far-side rib crossing those holes visible and unchanged. Where an opening is not occluded by a solid vein or berry, it must be completely empty true alpha, with no cream/grey film, faint white fog, translucent membrane, tinted fill, opaque painted background, halo or shadow. Do not erase actual beige veins just because the unwanted haze is also pale; keep their full continuous branching structure. Berry and actual solid veins stay opaque. Outer canvas corners/edges and empty exterior also fully transparent. Natural anti-aliased edges on real veins only; NO broad milky fringe around the cage. Exact whole hollow vascular cage and berry cutout, simply remove its residual backdrop throughout all holes and exterior. No new floor, field, text, ruler, frame, label, UI or object. Preserve the entire original composition and every endpoint inside frame, no zoom/crop/rearrangement.",
+  "directEditReference": {
+    "sourceImage": "intermediate-first-sample/lantern-cage-pending.81773eddefc4.png",
+    "sha256": "81773eddefc46129cf5fa92f0523f2f64a7fc4a81f50ea9c4e34a64d4dbc88ff",
+    "role": "Exact own first whole calyx/berry; remove only residual backdrop in empty cells and exterior"
+  },
+  "generationTool": "built-in image_gen",
+  "externalVisualInputs": []
+}

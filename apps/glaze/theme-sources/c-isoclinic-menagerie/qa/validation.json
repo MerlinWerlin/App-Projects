@@ -1,0 +1,127 @@
+{
+  "id": "c-isoclinic-menagerie",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "trifurcate-sifter",
+    "aperture-colony",
+    "inversion-crown",
+    "folded-ladder",
+    "bifocal-drifter"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.5cee7013.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 23234,
+    "sha256": "5cee70137ae36d271780e92e6fbc63b550c67ca0cd396ae45cef9d63dc2006fe",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "wallpaper": "Quiet navy upper region; lower optical fringe ecosystem; no text or UI.",
+    "fiveArtworks": "All five individually generated inputs reviewed together at210px and150px; distinct asymmetric fan, crescent, radial crown, ladder and wide two-lens silhouettes; alpha composites cleanly.",
+    "native": "All nine app-renderer previews reviewed; hands/values remain legible, original sifter/aperture geometry appears on dial/gauge/calendar; blue palette fix accepted.",
+    "rejectedPreview": "Prior citron-accent green-native preview retained as native-combination-before-palette.jpg."
+  },
+  "packTestEvidence": {
+    "suiteRun": {
+      "tests": 47,
+      "passed": 45,
+      "failed": 0,
+      "skipped": 2
+    },
+    "encoderFollowup": "Both previously skipped WebP tests pass with lane-owned Pillow venv on PATH."
+  }
+}

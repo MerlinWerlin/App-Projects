@@ -1,0 +1,38 @@
+{
+  "themeId": "beadweft-estuary",
+  "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
+  "variants": [
+    {
+      "path": "wallpaper-2796.64c79138.webp",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "sha256": "64c7913868745a2d42e110e8074896bb639a4e69dc67b93d3a9efa0b9f004b44",
+      "labelX": 20
+    },
+    {
+      "path": "wallpaper-2556.7d803ea3.webp",
+      "dimensions": [
+        1179,
+        2556
+      ],
+      "sha256": "7d803ea333b8111c122a9e7bf0251dfb240f46a5e5e457cacee9558253fa9072",
+      "labelX": 285
+    },
+    {
+      "path": "wallpaper-1334.d783d981.webp",
+      "dimensions": [
+        750,
+        1334
+      ],
+      "sha256": "d783d981ac659b6f72eb75981d57adecc4ba8594c8c70e37c3c07e782abfc834",
+      "labelX": 550
+    }
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewedVariants": 3,
+    "finding": "Complete kingfisher/reed tips, otter, iris, hermit-crab tidepool and moth/sea-lavender preserved in all three actual encoded crop variants, including750x1334. Quiet upper ground retained."
+  }
+}

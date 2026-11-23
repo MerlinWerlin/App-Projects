@@ -1,0 +1,169 @@
+{
+  "id": "c-electron-mossbank",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "split-pollen",
+    "coiled-awn-seed",
+    "moss-capsule",
+    "liverwort-thallus",
+    "springtail"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.02c280d1.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 17718,
+    "sha256": "02c280d10c50b7c2ae06dab30ec1f74e7df5dcb86f15cf64840f3194382bdd65",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed5 independent split-pollen/coiled-awn-seed/moss-capsule/liverwort/springtail outputs together at210/150px and actual encoded85px. Distinct rounded,coiled,vertical,spreading and animal silhouettes;coherent crisp granules/pores/bright detector edges and deep focus. True transparent exterior/open gaps,no rectangular backing.",
+    "wallpaper": "Viewed all3 actual encoded phone variants after layout-only pullback. All5 primary subjects complete with clear side/bottom space,including all liverwort leaf lobes/roots,seed hook/awn loops,pollen capsule,springtail antennae/legs and moss hood/teeth. Dark upper field quiet;granular soil continues naturally through frame edges. Initial tight habitat retained outside selected sources.",
+    "native": "Viewed all9 real coordinator renderer previews in scratch. Pebble/pins/baton clock,tile battery,ticket calendar use springtail/pore identity with clear live values. Dedicated three-pore fragment fits compact headers with breathing room.",
+    "roundedArtworkCorners": "Viewed5 actual encoded assets with real app background stops,Fit6%inset and conservative20%roundedmask. Every visible alpha16 retained;quiet plum corners give granular grey nature forms room. UI layout simulation,not installed-device proof."
+  },
+  "ownerSteeringReview": "Nature-led tangible habitat and both corner placements per Jared. Opaque grayscale electron surface topography remains distinct from earlier hydrated microscopy/radiography/EBSD. Nature browse category verified against actual app resolver.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-electron-mossbank",
+    "backgroundStops": [
+      "#201C2C",
+      "#302B3D"
+    ],
+    "pieces": [
+      {
+        "id": "split-pollen",
+        "sha256": "550681074267ae1eea4f2a826c8a0402d19e75f419656bab2c467716168df359",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "coiled-awn-seed",
+        "sha256": "b3f6696c96086a9e29f112ecdf43bc361e4679fbc69ad51b18b7cca4fc5f7cb7",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "moss-capsule",
+        "sha256": "c822624e9862bc6a6451190120b2244da753689b25990eb74578b7ba55294f20",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "liverwort-thallus",
+        "sha256": "82e4cab5868a57f7b7f8680f2a160e7f7ba92f0384b04e1b29379c96de27ba53",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "springtail",
+        "sha256": "ccf36a5b9aa5dcc4fb148ed7fce747eec4c7d57958a29d2c1f4cff0a0c106b92",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 6,
+  "packTestEvidence": "Actual offline builder v1:9assets/1.40MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and6own wallpaper reference hashes pass. Common47 pipeline checks previously passed;no shared runtime edits."
+}

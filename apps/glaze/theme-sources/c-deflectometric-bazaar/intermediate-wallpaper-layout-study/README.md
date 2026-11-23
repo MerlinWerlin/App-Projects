@@ -1,0 +1,1 @@
+Unselected first five-own-reference wallpaper retained with exact prompt/raw/reference hashes. Built-in composition-only edit reduces cluster and raises it for generous phone margins;all five source identities preserved.

@@ -1,0 +1,615 @@
+{
+  "phase": "candidate",
+  "candidateSha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+  "sources": [
+    {
+      "id": "spinbark-bushland",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "laughing-kookaburra",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\spinbark-bushland\\widgets\\laughing-kookaburra.411863de.png",
+          "sha256": "411863de2f9d95d77cf1ede6e0008677825ed6ef41c0bcbb2deac38b15445f3e"
+        },
+        {
+          "optionId": "shortbeaked-echidna",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\spinbark-bushland\\widgets\\shortbeaked-echidna.90be83d9.png",
+          "sha256": "90be83d902a861b80b6120e07f7dce9db294c35a34df0a489cc5a42aaaf44ab6"
+        },
+        {
+          "optionId": "eucalyptus-gumnuts",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\spinbark-bushland\\widgets\\eucalyptus-gumnuts.7fc98036.png",
+          "sha256": "7fc9803690a914b1fdc2e409ef76b7e83b60884e750f4c6148cce3a524332a11"
+        },
+        {
+          "optionId": "frilled-lizard",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\spinbark-bushland\\widgets\\frilled-lizard.4318d8cb.png",
+          "sha256": "4318d8cb78234ddcde8b44b52bcb555e833cf67ff1af3adefd0e766416154cbb"
+        },
+        {
+          "optionId": "banksia",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\spinbark-bushland\\widgets\\banksia.1b0ccf83.png",
+          "sha256": "1b0ccf836fb1d4402dd0685a0c28211444506e2bbe1f76dac81758858110301c"
+        }
+      ]
+    },
+    {
+      "id": "notchbough-copse",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "nuthatch-hazel",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\notchbough-copse\\widgets\\nuthatch-hazel.e45e1e8a.png",
+          "sha256": "e45e1e8afc0cc80de7e8362d2bcaa88eef5b6882311f5bc07ddd982cee16adc7"
+        },
+        {
+          "optionId": "dormouse-bramble",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\notchbough-copse\\widgets\\dormouse-bramble.4928318d.png",
+          "sha256": "4928318d0bbb936f57bf5f414297ed11d67bd0fd0a1b12fc0b3ebef1932c1bbe"
+        },
+        {
+          "optionId": "stag-beetle",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\notchbough-copse\\widgets\\stag-beetle.2c8427eb.png",
+          "sha256": "2c8427eb78ed535eeb86fddff918ecbba4e09c11054337c1ba6ec2908e81dc17"
+        },
+        {
+          "optionId": "hazel-catkins",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\notchbough-copse\\widgets\\hazel-catkins.4eb5daed.png",
+          "sha256": "4eb5daedf50502ea7a9c72a5400355199d01882b7d4cfd76b305e1ad2dd76bd7"
+        },
+        {
+          "optionId": "pipistrelle-bat",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\notchbough-copse\\widgets\\pipistrelle-bat.521dd983.png",
+          "sha256": "521dd983ceebbc0cfd185f688392e74acd4d8bdd94dd07c6db9a12e6227bea82"
+        }
+      ]
+    },
+    {
+      "id": "chargrain-passage",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "switchback-caravan",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\chargrain-passage\\widgets\\switchback-caravan.57e4dbbf.png",
+          "sha256": "57e4dbbf89c11b9acb80dea460fc1a51d6a6f2504366c8ea7f32c3575ae366af"
+        }
+      ]
+    },
+    {
+      "id": "burnishhide-procession",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "gate-drummer",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\burnishhide-procession\\widgets\\gate-drummer.fa12a08f.png",
+          "sha256": "fa12a08f83d762322187f4689b95665e9a1dd0f79f56f6635606014ac5d7e600"
+        }
+      ]
+    },
+    {
+      "id": "hitchrush-riverbank",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "otter-rushes",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\hitchrush-riverbank\\widgets\\otter-rushes.f593fbc1.png",
+          "sha256": "f593fbc14d9df4e05cb8f4c50210f96d49901f02a4617d8beed1a3ab81713390"
+        }
+      ]
+    },
+    {
+      "id": "scaleseam-fens",
+      "origin": "Own source images",
+      "selections": [
+        {
+          "optionId": "moorhen-rushes",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-22\\yo\\work\\App-Projects\\apps\\glaze\\theme-sources\\scaleseam-fens\\widgets\\moorhen-rushes.6df8df2a.png",
+          "sha256": "6df8df2acedd20c2a7290a69ddf36d3fcb15be5680895d98da594fc43d68f9bb"
+        }
+      ]
+    },
+    {
+      "id": "lamellar-commons",
+      "origin": "Coordinator source images",
+      "selections": [
+        {
+          "optionId": "bellows-pangolin",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\lamellar-commons\\widgets\\bellows-pangolin.65b1496aa7dc.png",
+          "sha256": "65b1496aa7dc4fd50efa3db37395ae36193905fb63fb51a05e5b02474155d664"
+        },
+        {
+          "optionId": "dew-distiller",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\lamellar-commons\\widgets\\dew-distiller.6d1cb20cb906.png",
+          "sha256": "6d1cb20cb906c6dbe4d2d457c568e3893ab53399f4b18fd0a6f95c8533e2180e"
+        },
+        {
+          "optionId": "spore-trolley",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\lamellar-commons\\widgets\\spore-trolley.9f837067a198.png",
+          "sha256": "9f837067a19882f3270b485b0dc7f7c7a026712412e01e8ca4f5416ec4ee3582"
+        },
+        {
+          "optionId": "canopy-snug",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\lamellar-commons\\widgets\\canopy-snug.2292e9487072.png",
+          "sha256": "2292e94870725fdc363d0db65930f19b7c1cb8b3a3d106a031105c26e4e5907d"
+        },
+        {
+          "optionId": "vent-crab",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\lamellar-commons\\widgets\\vent-crab.116b08794a4b.png",
+          "sha256": "116b08794a4b3130bffd648117feab3f17b21dcd0b0d4771ab815cae04d57d32"
+        }
+      ]
+    },
+    {
+      "id": "flutecut-woodland",
+      "origin": "Coordinator source images",
+      "selections": [
+        {
+          "optionId": "tawny-owl-oak",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\tawny-owl-oak.cdd74878.png",
+          "sha256": "cdd748787bc5dda2c6e9369d26022935f83412353617113f8816a71aeebef7f2"
+        },
+        {
+          "optionId": "hedgehog-bramble",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\hedgehog-bramble.13042cf5.png",
+          "sha256": "13042cf59943304892ed3bbc961fc08f7c3fa68ae8af00602764a6889e7350ad"
+        },
+        {
+          "optionId": "red-squirrel-hazel",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\red-squirrel-hazel.bf031b4d.png",
+          "sha256": "bf031b4df94e51cb0a88ed3c8794d9ae45e9c347fe750f0381a5a4a753adbf26"
+        },
+        {
+          "optionId": "foxglove-fern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\foxglove-fern.198c8622.png",
+          "sha256": "198c8622f2bf81ba0338db9c543ff9924cef75d4f3fe59161252b81c7cd9eabb"
+        },
+        {
+          "optionId": "stag-beetle-log",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\flutecut-woodland\\widgets\\stag-beetle-log.08bdba7e.png",
+          "sha256": "08bdba7e6c46e8e3518b61f0070a62eec92b9c0cdd3a2a6e470f52369bae2616"
+        }
+      ]
+    },
+    {
+      "id": "woven-wander",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\manifest.json",
+      "manifestSha256": "2578a3724b6c7428140facbfc51f88307357fedb4d9c739c1dc87a5f68609b7a",
+      "selections": [
+        {
+          "optionId": "coil-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\widget-coil-basket.8ad7188e.webp",
+          "sha256": "8ad7188ea7fe595ee7c1a585bba87b25a503a81b78816c712d7fcb357ddf92d8"
+        },
+        {
+          "optionId": "plaited-fern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\widget-plaited-fern.dfcffa9b.webp",
+          "sha256": "dfcffa9b8c915cee645595b4d59027f235e3fdadc54b3bf70162537957052841"
+        },
+        {
+          "optionId": "woven-pangolin",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\widget-woven-pangolin.475a386c.webp",
+          "sha256": "475a386cddf726fcf20593be2d50d95c0eee3120e10dc557dbc3e0c13dcee29e"
+        },
+        {
+          "optionId": "woven-progress",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\woven-wander\\v1\\widget-woven-progress.1fe515cc.webp",
+          "sha256": "1fe515cc8262579caa317d71b574aa8337d4af49ff17995eede9caf11d9a3f52"
+        }
+      ]
+    },
+    {
+      "id": "billabong-clay",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\manifest.json",
+      "manifestSha256": "bee2a4f6461c446b4b99f3016464235299bbf758565dd3e34c13a384e34c958f",
+      "selections": [
+        {
+          "optionId": "clay-platypus",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\widget-clay-platypus.c4b8d7c0.webp",
+          "sha256": "c4b8d7c0a1de7688b76384d784fda508757ecdcb252ef01daccd7c29731f8510"
+        },
+        {
+          "optionId": "drop-progress",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\widget-drop-progress.041f02eb.webp",
+          "sha256": "041f02eb2570c6f52305a8a2f8215d35d45b19d1808283fb6268fe5e61c70751"
+        },
+        {
+          "optionId": "eucalyptus-sprig",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\widget-eucalyptus-sprig.bdfe1ee3.webp",
+          "sha256": "bdfe1ee32d602f9d71cb30a6c5b7dc2fe5685ef08b24bcc13854acb9881c954f"
+        },
+        {
+          "optionId": "river-ripples",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\billabong-clay\\v1\\widget-river-ripples.0c17f26d.webp",
+          "sha256": "0c17f26de515e36c2e1d2293e747d830266e037f1330366af414a43b624856b6"
+        }
+      ]
+    },
+    {
+      "id": "otter-wash",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\otter-wash\\v1\\manifest.json",
+      "manifestSha256": "31b8e57b1c0365a7b810ee5178469abf7e3fce91a344d9000aabeb9e3487e4dd",
+      "selections": [
+        {
+          "optionId": "kelp-wash",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\otter-wash\\v1\\widget-kelp-wash.16befa11.webp",
+          "sha256": "16befa114a59740308f7c62fe01b248c410f73cd2e434be7d81ae93a724fa0ae"
+        },
+        {
+          "optionId": "pebble-study",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\otter-wash\\v1\\widget-pebble-study.a1135535.webp",
+          "sha256": "a1135535237645b3eb17a52e80041fb8d34e16969e3c483f1677e004e2d2de6f"
+        },
+        {
+          "optionId": "shell-keeper",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\otter-wash\\v1\\widget-shell-keeper.0e5a8f9e.webp",
+          "sha256": "0e5a8f9e63d75a24b4f6610ceffe265a0bf60b21c0fcf08ec13e175896540493"
+        },
+        {
+          "optionId": "shell-progress",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\otter-wash\\v1\\widget-shell-progress.e67e3379.webp",
+          "sha256": "e67e3379fa19af8a77cda7eed935d4c5cb85198fdd41dfa7e7ad6978bfff3f94"
+        }
+      ]
+    },
+    {
+      "id": "heron-reed",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\heron-reed\\v4\\manifest.json",
+      "manifestSha256": "2e4a2544f23a7ecbdb80fb09db574d8d09157e8421be486feb70b927d831a6f3",
+      "selections": [
+        {
+          "optionId": "heron-still",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\heron-reed\\v4\\widget-heron-still.6324ab16.webp",
+          "sha256": "6324ab16b66ce91decd819b3de5d835f5ad2884995b18de1751ce0b1561260d9"
+        },
+        {
+          "optionId": "reed-rhythm",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\heron-reed\\v4\\widget-reed-rhythm.004b8c07.webp",
+          "sha256": "004b8c079e4bc840b4a9eb532b8da6ab6671a0893b0b1d65af9097c18a3f2052"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\heron-reed\\v4\\widget-small.67227169.webp",
+          "sha256": "6722716948febf04324bde43e83102970ddce8ade1606e4fc9386a4e685c300a"
+        }
+      ]
+    },
+    {
+      "id": "kingfisher-blue",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\manifest.json",
+      "manifestSha256": "0afb9bec0d088d3006a20521779c2a542cc5205e0eee6665ad8ca09f61a3736d",
+      "selections": [
+        {
+          "optionId": "production-20261101-reed-perch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\widget-production-20261101-reed-perch.5ff8cbc5.webp",
+          "sha256": "5ff8cbc5e76461d824f539e76ab4d61597436f0dc1a05dea9aa6f282ba671eb3"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\widget-small.a8a7097b.webp",
+          "sha256": "a8a7097ba696318ad4f03fb2d0e6e81b7aca148494e0581957cf23f2cddccfd4"
+        },
+        {
+          "optionId": "art-20261106-kingfisher-dive",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\widget-kingfisher-dive.a67ceba5.webp",
+          "sha256": "a67ceba5827f97b70d58aa640ecd054624c9b340ad356e327f66c7c7448bb034"
+        },
+        {
+          "optionId": "art-20261106-river-feather",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\kingfisher-blue\\v7\\widget-river-feather.a998b304.webp",
+          "sha256": "a998b30443a1dc5baf768d01873a8ee548989a7e94b7ae64bcc4e60cea036098"
+        }
+      ]
+    },
+    {
+      "id": "pebblekin-grove",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\pebblekin-grove\\v6\\manifest.json",
+      "manifestSha256": "d57e6d270cf5c1487d2d7c327d4e30626b7ead5fcb84e500fae80445962d4fc9",
+      "selections": [
+        {
+          "optionId": "fern-altar",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\pebblekin-grove\\v6\\widget-fern-altar.9011bc9d.webp",
+          "sha256": "9011bc9d38846d33a3d9733b6cc2478a034c7c23e23fd1307f2bf6864a95ea52"
+        },
+        {
+          "optionId": "pebble-moth",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\pebblekin-grove\\v6\\widget-pebble-moth.58194985.webp",
+          "sha256": "581949858ce75027e0d495c659b838910deca9933d5efeffd57cbb68cf0e1320"
+        },
+        {
+          "optionId": "sprout-keeper",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\pebblekin-grove\\v6\\widget-sprout-keeper.b72f099a.webp",
+          "sha256": "b72f099a8f1f717c71ed233f23cea7439a20a898bda6199504fc67d9c050cc6a"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\pebblekin-grove\\v6\\widget-small.8fc11f95.webp",
+          "sha256": "8fc11f9547cf600207c60209261d456dc82fb01b911d99c7bed07d23788261dc"
+        }
+      ]
+    },
+    {
+      "id": "willow-wicket",
+      "origin": "historical_pre_PR307_cache",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\willow-wicket\\v1\\manifest.json",
+      "manifestSha256": "5d60a6f3f5b16d9b42902058e5ac026d366a30fb4545c0527ce88ec6b6c33768",
+      "selections": [
+        {
+          "optionId": "innings-score",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\willow-wicket\\v1\\widget-innings-score.016fc890.webp",
+          "sha256": "016fc890f818e42cb7163d38518669425ca9fc972ba43a4768fe05759e1d395b"
+        },
+        {
+          "optionId": "stitched-ball",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\willow-wicket\\v1\\widget-stitched-ball.1575cd34.webp",
+          "sha256": "1575cd34d388bcac9acc7e6bb3d3a6fbb27817e1cafaba1deb503ebee5775e5a"
+        },
+        {
+          "optionId": "wicket-study",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\willow-wicket\\v1\\widget-wicket-study.16e35d09.webp",
+          "sha256": "16e35d093e0519a414c3c564fc317a8be3bcd93b71e97f1ac8e944cbc66c016d"
+        },
+        {
+          "optionId": "willow-bat",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\willow-wicket\\v1\\widget-willow-bat.b8639385.webp",
+          "sha256": "b86393856af936f70afb86afb2e36e8e992f23cf41034b27596f851b4726bb14"
+        }
+      ]
+    },
+    {
+      "id": "woven-wander",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\manifest.json",
+      "manifestSha256": "1b58ab0e9d3b3373125171fadbe8b11b1b714db8d0ba64023e91d2cd139be298",
+      "selections": [
+        {
+          "optionId": "coil-basket",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-coil-basket.8ad7188e.webp",
+          "sha256": "8ad7188ea7fe595ee7c1a585bba87b25a503a81b78816c712d7fcb357ddf92d8"
+        },
+        {
+          "optionId": "plaited-fern",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-plaited-fern.dfcffa9b.webp",
+          "sha256": "dfcffa9b8c915cee645595b4d59027f235e3fdadc54b3bf70162537957052841"
+        },
+        {
+          "optionId": "woven-pangolin",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-woven-pangolin.475a386c.webp",
+          "sha256": "475a386cddf726fcf20593be2d50d95c0eee3120e10dc557dbc3e0c13dcee29e"
+        },
+        {
+          "optionId": "raffia-chameleon",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-raffia-chameleon.095fc198.webp",
+          "sha256": "095fc1987742d245035c629c469e10ba0c3eb52b3ad5f06d0edbab72e828a2c0"
+        },
+        {
+          "optionId": "plaited-dragonfly",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\woven-wander\\v2\\widget-plaited-dragonfly.7bede0e3.webp",
+          "sha256": "7bede0e377de93b1d54bd6420debbb3baf85e24e1f22bcdd413dcbcb654cf624"
+        }
+      ]
+    },
+    {
+      "id": "billabong-clay",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\manifest.json",
+      "manifestSha256": "cdf761ab0c851ea8ef371db7e8253641c3356c7f763a3cddd1605e9cf0968e02",
+      "selections": [
+        {
+          "optionId": "clay-platypus",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-clay-platypus.c4b8d7c0.webp",
+          "sha256": "c4b8d7c0a1de7688b76384d784fda508757ecdcb252ef01daccd7c29731f8510"
+        },
+        {
+          "optionId": "eucalyptus-sprig",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-eucalyptus-sprig.bdfe1ee3.webp",
+          "sha256": "bdfe1ee32d602f9d71cb30a6c5b7dc2fe5685ef08b24bcc13854acb9881c954f"
+        },
+        {
+          "optionId": "river-ripples",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-river-ripples.0c17f26d.webp",
+          "sha256": "0c17f26de515e36c2e1d2293e747d830266e037f1330366af414a43b624856b6"
+        },
+        {
+          "optionId": "clay-water-lily",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-clay-water-lily.20f56c24.webp",
+          "sha256": "20f56c248e8907d123943276f2a97beedc174a3ec0f2af8c3032459cb40bac19"
+        },
+        {
+          "optionId": "clay-river-turtle",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\billabong-clay\\v2\\widget-clay-river-turtle.d578e68c.webp",
+          "sha256": "d578e68ca9da19d1ce4c9a6d441cf210d8c258737017ef34149666507e62cccc"
+        }
+      ]
+    },
+    {
+      "id": "otter-wash",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\otter-wash\\v2\\manifest.json",
+      "manifestSha256": "34ebb0fc1f1b2071f17ccb57e5c379177a22341171ac48182c6dfbad139722df",
+      "selections": [
+        {
+          "optionId": "kelp-wash",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\otter-wash\\v2\\widget-kelp-wash.16befa11.webp",
+          "sha256": "16befa114a59740308f7c62fe01b248c410f73cd2e434be7d81ae93a724fa0ae"
+        },
+        {
+          "optionId": "pebble-study",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\otter-wash\\v2\\widget-pebble-study.a1135535.webp",
+          "sha256": "a1135535237645b3eb17a52e80041fb8d34e16969e3c483f1677e004e2d2de6f"
+        },
+        {
+          "optionId": "shell-keeper",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\otter-wash\\v2\\widget-shell-keeper.0e5a8f9e.webp",
+          "sha256": "0e5a8f9e63d75a24b4f6610ceffe265a0bf60b21c0fcf08ec13e175896540493"
+        },
+        {
+          "optionId": "tidepool-anemone",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\otter-wash\\v2\\widget-tidepool-anemone.31e56b89.webp",
+          "sha256": "31e56b89038607054451bd183bc622eb6a06382681c5b123952e12d112784b10"
+        },
+        {
+          "optionId": "driftwood-buoy",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\otter-wash\\v2\\widget-driftwood-buoy.a4200b23.webp",
+          "sha256": "a4200b23bd91c25d478ba81448e6378fc22123ce2e135952cff58dc233d721d5"
+        }
+      ]
+    },
+    {
+      "id": "heron-reed",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\heron-reed\\v5\\manifest.json",
+      "manifestSha256": "e6d01a68d368790d2ac7ba2bb0913a28563003a68bb3328fb93ca609cf01c33c",
+      "selections": [
+        {
+          "optionId": "heron-still",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\heron-reed\\v5\\widget-heron-still.6324ab16.webp",
+          "sha256": "6324ab16b66ce91decd819b3de5d835f5ad2884995b18de1751ce0b1561260d9"
+        },
+        {
+          "optionId": "reed-rhythm",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\heron-reed\\v5\\widget-reed-rhythm.004b8c07.webp",
+          "sha256": "004b8c079e4bc840b4a9eb532b8da6ab6671a0893b0b1d65af9097c18a3f2052"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\heron-reed\\v5\\widget-small.67227169.webp",
+          "sha256": "6722716948febf04324bde43e83102970ddce8ade1606e4fc9386a4e685c300a"
+        },
+        {
+          "optionId": "reed-nest",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\heron-reed\\v5\\widget-reed-nest.0b794e8b.webp",
+          "sha256": "0b794e8b0f281c4b74bdd68deace2d8b865f75288bf2668966942beeb08842e5"
+        },
+        {
+          "optionId": "marsh-lily-bud",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\heron-reed\\v5\\widget-marsh-lily-bud.c835c60f.webp",
+          "sha256": "c835c60fa3c3e0cf6e2c1289a70bdfcda2828f26a5e40b8bf3d69b9298cefa20"
+        }
+      ]
+    },
+    {
+      "id": "kingfisher-blue",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\manifest.json",
+      "manifestSha256": "e137253905e6182b44962082bd713c2a90cbd7259cad318a5427554c85465cbf",
+      "selections": [
+        {
+          "optionId": "production-20261101-reed-perch",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-production-20261101-reed-perch.5ff8cbc5.webp",
+          "sha256": "5ff8cbc5e76461d824f539e76ab4d61597436f0dc1a05dea9aa6f282ba671eb3"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-small.a8a7097b.webp",
+          "sha256": "a8a7097ba696318ad4f03fb2d0e6e81b7aca148494e0581957cf23f2cddccfd4"
+        },
+        {
+          "optionId": "art-20261106-kingfisher-dive",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-kingfisher-dive.a67ceba5.webp",
+          "sha256": "a67ceba5827f97b70d58aa640ecd054624c9b340ad356e327f66c7c7448bb034"
+        },
+        {
+          "optionId": "art-20261106-river-feather",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-river-feather.a998b304.webp",
+          "sha256": "a998b30443a1dc5baf768d01873a8ee548989a7e94b7ae64bcc4e60cea036098"
+        },
+        {
+          "optionId": "river-reed-nest",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\kingfisher-blue\\v8\\widget-river-reed-nest.84b040c6.webp",
+          "sha256": "84b040c675591b4fb95480c2fb747f082b355980e56edbdb929d6110a99d1592"
+        }
+      ]
+    },
+    {
+      "id": "pebblekin-grove",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\pebblekin-grove\\v7\\manifest.json",
+      "manifestSha256": "672dabcc194838695ff691f063874509d028da75be231baf8941053b7c006092",
+      "selections": [
+        {
+          "optionId": "fern-altar",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\pebblekin-grove\\v7\\widget-fern-altar.9011bc9d.webp",
+          "sha256": "9011bc9d38846d33a3d9733b6cc2478a034c7c23e23fd1307f2bf6864a95ea52"
+        },
+        {
+          "optionId": "pebble-moth",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\pebblekin-grove\\v7\\widget-pebble-moth.58194985.webp",
+          "sha256": "581949858ce75027e0d495c659b838910deca9933d5efeffd57cbb68cf0e1320"
+        },
+        {
+          "optionId": "sprout-keeper",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\pebblekin-grove\\v7\\widget-sprout-keeper.b72f099a.webp",
+          "sha256": "b72f099a8f1f717c71ed233f23cea7439a20a898bda6199504fc67d9c050cc6a"
+        },
+        {
+          "optionId": "hero-small",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\pebblekin-grove\\v7\\widget-small.8fc11f95.webp",
+          "sha256": "8fc11f9547cf600207c60209261d456dc82fb01b911d99c7bed07d23788261dc"
+        },
+        {
+          "optionId": "mossback-tortoise",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\pebblekin-grove\\v7\\widget-mossback-tortoise.1e55ef6d.webp",
+          "sha256": "1e55ef6d8aaf4f5684bd98f98c4d0ef478065ab275d04ce73f0952333ebe1bcc"
+        }
+      ]
+    },
+    {
+      "id": "willow-wicket",
+      "origin": "accepted_PR307_rebuild_snapshot_unpublished",
+      "actualAppSelector": true,
+      "manifest": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\willow-wicket\\v2\\manifest.json",
+      "manifestSha256": "d2b8fbb68da900c6056d89c9cc5ff0cfb5508a064c6756f7786aee200ba42487",
+      "selections": [
+        {
+          "optionId": "stitched-ball",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\willow-wicket\\v2\\widget-stitched-ball.1575cd34.webp",
+          "sha256": "1575cd34d388bcac9acc7e6bb3d3a6fbb27817e1cafaba1deb503ebee5775e5a"
+        },
+        {
+          "optionId": "wicket-study",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\willow-wicket\\v2\\widget-wicket-study.16e35d09.webp",
+          "sha256": "16e35d093e0519a414c3c564fc317a8be3bcd93b71e97f1ac8e944cbc66c016d"
+        },
+        {
+          "optionId": "willow-bat",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\willow-wicket\\v2\\widget-willow-bat.b8639385.webp",
+          "sha256": "b86393856af936f70afb86afb2e36e8e992f23cf41034b27596f851b4726bb14"
+        },
+        {
+          "optionId": "vintage-batting-glove",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\willow-wicket\\v2\\widget-vintage-batting-glove.0b54ae47.webp",
+          "sha256": "0b54ae4751173bb037c54339118bb9ddf43223d410dbf1df7186a4ea29315ea6"
+        },
+        {
+          "optionId": "ivory-cricket-sunhat",
+          "path": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\dist\\artwork-packs\\art\\willow-wicket\\v2\\widget-ivory-cricket-sunhat.06f05360.webp",
+          "sha256": "06f05360f3a9067df78f0ff0eff5d19d8fbba4bb4cccbacf0db33f291c3803d5"
+        }
+      ]
+    }
+  ],
+  "ownSourceArtworks": 14,
+  "coordinatorSourceArtworks": 10,
+  "actualSelectorArtworks": 62,
+  "scope": "Read-only existing production/source and app-selected images. No external input to generation. Cache origins are labelled per row.",
+  "visualReview": "All four actual comparator pages inspected. Same broad bowed solid grain differs from cut straight triangulated laths, short turnings and dense woven raffia. Two front paws and one near hind foot visible, farther hind not independently resolved by this view."
+}

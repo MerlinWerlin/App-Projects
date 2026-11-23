@@ -1,0 +1,55 @@
+{
+  "review": "Visible subject bounds and alpha edges checked; no bright subject is cut at source edge.",
+  "assets": [
+    {
+      "id": "cusp-herald",
+      "sourceOpaqueBounds": [
+        150,
+        16,
+        991,
+        1212
+      ],
+      "edgeAlphaMaximum": 1
+    },
+    {
+      "id": "stilt-pavilion",
+      "sourceOpaqueBounds": [
+        97,
+        39,
+        1167,
+        1203
+      ],
+      "edgeAlphaMaximum": 2
+    },
+    {
+      "id": "sidelobe-skiff",
+      "sourceOpaqueBounds": [
+        74,
+        69,
+        1177,
+        1171
+      ],
+      "edgeAlphaMaximum": 1
+    },
+    {
+      "id": "annular-strider",
+      "sourceOpaqueBounds": [
+        82,
+        75,
+        1202,
+        1182
+      ],
+      "edgeAlphaMaximum": 1
+    },
+    {
+      "id": "beam-harvester",
+      "sourceOpaqueBounds": [
+        31,
+        144,
+        1181,
+        1098
+      ],
+      "edgeAlphaMaximum": 1
+    }
+  ]
+}

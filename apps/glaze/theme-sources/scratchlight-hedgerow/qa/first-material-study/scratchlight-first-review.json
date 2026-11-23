@@ -1,0 +1,27 @@
+{
+  "source": "C:\\Users\\jared\\.codex\\generated_images\\01a1d970-a578-73a0-914a-c0fe7c9e031e\\exec-0e43a533-3364-4076-856c-4880ca94d3f7.png",
+  "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "edgeAlphaMax": 1,
+  "alphaRange": [
+    0,
+    255
+  ],
+  "visibleAlpha16Bounds": [
+    101,
+    135,
+    1109,
+    1123
+  ],
+  "coreAlpha96Bounds": [
+    110,
+    136,
+    1108,
+    1122
+  ],
+  "stage": "ONE first material prototype before expansion.",
+  "published": false
+}

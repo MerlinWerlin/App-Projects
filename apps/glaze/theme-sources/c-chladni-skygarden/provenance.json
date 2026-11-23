@@ -1,0 +1,187 @@
+{
+  "theme": "c-chladni-skygarden",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "bellpod-arbor",
+      "sourceImage": "sources/bellpod-arbor.3ac3bfb690b1.png",
+      "sourceSha256": "3ac3bfb690b108b33a074bc2572bba588f4a1e5468c8f390e30e35392979c8ff",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/bellpod-arbor.6879efbb7a1f.png",
+      "sha256": "6879efbb7a1fed464a1b6608675948942c2b3611b6c478d709a8079fa12d8e07",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 972260,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHLADNI SKYGARDEN,STRICTLY PLANAR SAND-NODAL RECORDING. A FRONT-ON/OVERHEAD TWO-DIMENSIONAL image of a SINGLE FLAT MONOLAYER of very fine loose MATTE IVORY and PALE OCHRE sand grains. Accumulated grains form broad continuous curving/crossing nodal BANDS,with large truly empty internodal cells. Each band is a flat two-dimensional density pattern,NOT a tube,rib,wall or sculpted solid. Bands are roughly1.5%to3%ofcanvaswidth,formed from MANY tiny irregular grains roughly1to2pixels wide at1024resolution,not coarse stones or uniform beads. Grain-density intensity is even across the bands,no brighter centre/darker underside,no bevel,brown edge,rounded cross-section or smooth binder. ONLY the flat accumulated grain bands and a few small dense nodal grain patches construct the full recognizable organism/structure. The same flat light distribution and fine grain scale cover every part. No physical solid body exists underneath. Large transparent internodal spaces and sparse microgaps between loose grains remain. No perspective thickness,3D surface modelling,uniform sculptural highlights,shaded solid ribs,cast shadow,granular coating,sandcastle,stone,clay,glass,resin,metal,lace,wire,thread,embroidery or regular bead chain. No ordinary sand-painted opaque body fields,thin sparse particle tracks or spatial dot-cloud shading. Distinct flat standing-wave grain accumulation,not a craft sculpture. Fictional celestial ecology inspired by vibrating-plate nodal-grain patterns,not measured acoustic fields or a claim about sound in vacuum. No text,labels,numbers,scale,axes,plot,UI,clock,reading,logo or watermark. Subject: ONE complete BELLPOD ARBOR: a small invented tree with one short thick forked trunk,THREE broad arching branches,and THREE unequal bell-shaped open seedpods hanging from those branches. Each pod is a wide downward-opening bell with a thick flared rim and one large open mouth;left pod low and broad,centre pod tall,right pod smaller and tipped outward. THREE broad root feet curl below the trunk. The trunk/branches/pod walls are made only of nodal-grain loops and broad grain ridges,with large open internodal spaces. Read as a useful living sky-garden plant,not a lampstand,wire sculpture or ordinary leafy tree. Whole pod rims,branch tips and root ends. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha OUTSIDE the entire subject AND inside every internodal gap. No rectangular plate/background beneath the grains. Complete subject and each grain-built limb/leaf/pod/wing/roof/root/support endpoint safely inside central seventy percent with generous truly empty margins. Keep most grains close to the connected ridges,not scattered into the corners. No soil/floor patch,shadow,landscape,extra figures,frame,panel,contact sheet or device mockup. Broad nodal architecture and complete tangible silhouette legible at85px. TARGETED EDIT OF IMAGE1: preserve the exact recognizable whole THREE-BELLPOD ARBOR silhouette,three unequal open bellpod mouths,three arched branches andthree curled rootfeet. Transform ONLY the construction into the strictly flat fine-grain nodal recording described above. Flatten every rounded raised ridge into a planar loose-grain BAND with NO apparent thickness or curved sidewall. Remove all smooth solid tan/brown binder,edge shading and uniform highlights;replace coarse chunky grains by much finer matte loose sand,uniform diffuse exposure. Retain broad continuous bands and all large transparent internodal cells. Do not close holes,fill bodies or replace the tree with abstract rings. Fit whole tree inside central75%with generous transparent outer margins;all pod rims/branch/root endpoints whole. No backdrop plate,floor,shadow or extra grain spills in corners.1024square,true alpha outside/through all empty cells.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 828532,
+      "directEditReference": {
+        "sourceImage": "intermediate-flat-nodal-study/bellpod-first.1e8bc3436223.png",
+        "sha256": "1e8bc3436223cdf0c3090893389c86ad2544967bb8c499b474ef290e76d62d58"
+      },
+      "generationStages": "One targeted built-in flat/fine-grain construction variant of own first Chladni arbor study;silhouette retained."
+    },
+    {
+      "id": "orbit-tender",
+      "sourceImage": "sources/orbit-tender.71a72127e620.png",
+      "sourceSha256": "71a72127e620e2449f151ef96922db3c43e88b3d869012c4b71627dfe7f2dddd",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/orbit-tender.4bba389610bd.png",
+      "sha256": "4bba389610bd6371780fd69ddf5896036d4db0d3c9ee8756a0e258efba13a866",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 851295,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHLADNI SKYGARDEN,STRICTLY PLANAR SAND-NODAL RECORDING. A FRONT-ON/OVERHEAD TWO-DIMENSIONAL image of a SINGLE FLAT MONOLAYER of very fine loose MATTE IVORY and PALE OCHRE sand grains. Accumulated grains form broad continuous curving/crossing nodal BANDS,with large truly empty internodal cells. Each band is a flat two-dimensional density pattern,NOT a tube,rib,wall or sculpted solid. Bands are roughly1.5%to3%ofcanvaswidth,formed from MANY tiny irregular grains roughly1to2pixels wide at1024resolution,not coarse stones or uniform beads. Grain-density intensity is even across the bands,no brighter centre/darker underside,no bevel,brown edge,rounded cross-section or smooth binder. ONLY the flat accumulated grain bands and a few small dense nodal grain patches construct the full recognizable organism/structure. The same flat light distribution and fine grain scale cover every part. No physical solid body exists underneath. Large transparent internodal spaces and sparse microgaps between loose grains remain. No perspective thickness,3D surface modelling,uniform sculptural highlights,shaded solid ribs,cast shadow,granular coating,sandcastle,stone,clay,glass,resin,metal,lace,wire,thread,embroidery or regular bead chain. No ordinary sand-painted opaque body fields,thin sparse particle tracks or spatial dot-cloud shading. Distinct flat standing-wave grain accumulation,not a craft sculpture. Fictional celestial ecology inspired by vibrating-plate nodal-grain patterns,not measured acoustic fields or a claim about sound in vacuum. No text,labels,numbers,scale,axes,plot,UI,clock,reading,logo or watermark. Subject: ONE complete ADULT ORBIT TENDER,caring for the sky garden in a purposeful full-body stance. Anonymous oval head made from a broad grained nodal patch,one connected broad torso,two stout separated legs and two thick arms. One arm holds an open TWO-LOOP BRANCH GRIP at waist height,the other reaches forward with a short broad scoop for a seedpod. A single crescent balancing fin extends behind the upper back,integrated with the shoulder,not a large umbrella. Whole head,hands,feet,grip,scoop and fin endpoints. No face,eyes,skull,skeleton,bones,robot panels,conventional spacesuit or detailed clothes. Adult readable silhouette entirely made of broad connected nodal-grain networks,not a sand-coated mannequin. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha OUTSIDE the entire subject AND inside every internodal gap. No rectangular plate/background beneath the grains. Complete subject and each grain-built limb/leaf/pod/wing/roof/root/support endpoint safely inside central seventy percent with generous truly empty margins. Keep most grains close to the connected ridges,not scattered into the corners. No soil/floor patch,shadow,landscape,extra figures,frame,panel,contact sheet or device mockup. Broad nodal architecture and complete tangible silhouette legible at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 855554
+    },
+    {
+      "id": "threefin-grazer",
+      "sourceImage": "sources/threefin-grazer.8b55f5c98dea.png",
+      "sourceSha256": "8b55f5c98deaf0601273f93253d2418a849c8e3266f78eec60342b1593d646b1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/threefin-grazer.5582969fab75.png",
+      "sha256": "5582969fab7545ba782aca679eeafbd8fed3a6d06e3e8495989ec91ea1d773e2",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 582827,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHLADNI SKYGARDEN,STRICTLY PLANAR SAND-NODAL RECORDING. A FRONT-ON/OVERHEAD TWO-DIMENSIONAL image of a SINGLE FLAT MONOLAYER of very fine loose MATTE IVORY and PALE OCHRE sand grains. Accumulated grains form broad continuous curving/crossing nodal BANDS,with large truly empty internodal cells. Each band is a flat two-dimensional density pattern,NOT a tube,rib,wall or sculpted solid. Bands are roughly1.5%to3%ofcanvaswidth,formed from MANY tiny irregular grains roughly1to2pixels wide at1024resolution,not coarse stones or uniform beads. Grain-density intensity is even across the bands,no brighter centre/darker underside,no bevel,brown edge,rounded cross-section or smooth binder. ONLY the flat accumulated grain bands and a few small dense nodal grain patches construct the full recognizable organism/structure. The same flat light distribution and fine grain scale cover every part. No physical solid body exists underneath. Large transparent internodal spaces and sparse microgaps between loose grains remain. No perspective thickness,3D surface modelling,uniform sculptural highlights,shaded solid ribs,cast shadow,granular coating,sandcastle,stone,clay,glass,resin,metal,lace,wire,thread,embroidery or regular bead chain. No ordinary sand-painted opaque body fields,thin sparse particle tracks or spatial dot-cloud shading. Distinct flat standing-wave grain accumulation,not a craft sculpture. Fictional celestial ecology inspired by vibrating-plate nodal-grain patterns,not measured acoustic fields or a claim about sound in vacuum. No text,labels,numbers,scale,axes,plot,UI,clock,reading,logo or watermark. Subject: ONE complete THREEFIN GRAZER: an invented stout low garden animal with FOUR short thick separated legs,one long curved neck and a blunt small head. Exactly THREE unequal broad soft triangular dorsal fins rise along the back,each with a large open nodal cell. A short broad tail bends behind the body. Large connected oval torso,all four feet,neck/head,three fin tips and tail complete. No horns,sharp teeth,round cartoon eyes,thin spines,scales,realistic dinosaur skin or ordinary mammal. It reads as a whole living grazer,not a machine or decorative loop cluster. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha OUTSIDE the entire subject AND inside every internodal gap. No rectangular plate/background beneath the grains. Complete subject and each grain-built limb/leaf/pod/wing/roof/root/support endpoint safely inside central seventy percent with generous truly empty margins. Keep most grains close to the connected ridges,not scattered into the corners. No soil/floor patch,shadow,landscape,extra figures,frame,panel,contact sheet or device mockup. Broad nodal architecture and complete tangible silhouette legible at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 909537
+    },
+    {
+      "id": "splitseed-sailer",
+      "sourceImage": "sources/splitseed-sailer.26c3cd56f8d6.png",
+      "sourceSha256": "26c3cd56f8d6ad7c7859b9a7b14a3fe77c76dd38b8e5f541d86cccac2875c1a8",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/splitseed-sailer.dad9dca4a755.png",
+      "sha256": "dad9dca4a755f521002298dcc659f3771e65b381a5a30c55ef6cafb43d048400",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 552191,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHLADNI SKYGARDEN,STRICTLY PLANAR SAND-NODAL RECORDING. A FRONT-ON/OVERHEAD TWO-DIMENSIONAL image of a SINGLE FLAT MONOLAYER of very fine loose MATTE IVORY and PALE OCHRE sand grains. Accumulated grains form broad continuous curving/crossing nodal BANDS,with large truly empty internodal cells. Each band is a flat two-dimensional density pattern,NOT a tube,rib,wall or sculpted solid. Bands are roughly1.5%to3%ofcanvaswidth,formed from MANY tiny irregular grains roughly1to2pixels wide at1024resolution,not coarse stones or uniform beads. Grain-density intensity is even across the bands,no brighter centre/darker underside,no bevel,brown edge,rounded cross-section or smooth binder. ONLY the flat accumulated grain bands and a few small dense nodal grain patches construct the full recognizable organism/structure. The same flat light distribution and fine grain scale cover every part. No physical solid body exists underneath. Large transparent internodal spaces and sparse microgaps between loose grains remain. No perspective thickness,3D surface modelling,uniform sculptural highlights,shaded solid ribs,cast shadow,granular coating,sandcastle,stone,clay,glass,resin,metal,lace,wire,thread,embroidery or regular bead chain. No ordinary sand-painted opaque body fields,thin sparse particle tracks or spatial dot-cloud shading. Distinct flat standing-wave grain accumulation,not a craft sculpture. Fictional celestial ecology inspired by vibrating-plate nodal-grain patterns,not measured acoustic fields or a claim about sound in vacuum. No text,labels,numbers,scale,axes,plot,UI,clock,reading,logo or watermark. Subject: ONE complete SPLITSEED SAILER: a purposeful small celestial garden carrier with TWO unequal long open pod hulls joined by one broad curved crossbeam. A large split fan-sail rises above the rear hull in TWO offset wide lobes;one short forward scoop projects from the lower hull. Three broad underside stabilising fins make its direction readable. Large open gaps between hulls,beam and sail. No wheels,normal airplane,spaceship cockpit,boat deck,glass canopy or fruit still-life. Connected invented working carrier,all hull ends,sail lobes,scoop and3fins whole. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha OUTSIDE the entire subject AND inside every internodal gap. No rectangular plate/background beneath the grains. Complete subject and each grain-built limb/leaf/pod/wing/roof/root/support endpoint safely inside central seventy percent with generous truly empty margins. Keep most grains close to the connected ridges,not scattered into the corners. No soil/floor patch,shadow,landscape,extra figures,frame,panel,contact sheet or device mockup. Broad nodal architecture and complete tangible silhouette legible at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 925025
+    },
+    {
+      "id": "cantilever-cradle",
+      "sourceImage": "sources/cantilever-cradle.6835d2464a11.png",
+      "sourceSha256": "6835d2464a118a106f3602d1f09a976d5b59a65fa31b4cdcc63c3dd078e6aa14",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/cantilever-cradle.94c935da1d3c.png",
+      "sha256": "94c935da1d3c349b7294a5a8abcf5f5bfd2bdae3edb49f506f6589ba37548151",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 868531,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHLADNI SKYGARDEN,STRICTLY PLANAR SAND-NODAL RECORDING. A FRONT-ON/OVERHEAD TWO-DIMENSIONAL image of a SINGLE FLAT MONOLAYER of very fine loose MATTE IVORY and PALE OCHRE sand grains. Accumulated grains form broad continuous curving/crossing nodal BANDS,with large truly empty internodal cells. Each band is a flat two-dimensional density pattern,NOT a tube,rib,wall or sculpted solid. Bands are roughly1.5%to3%ofcanvaswidth,formed from MANY tiny irregular grains roughly1to2pixels wide at1024resolution,not coarse stones or uniform beads. Grain-density intensity is even across the bands,no brighter centre/darker underside,no bevel,brown edge,rounded cross-section or smooth binder. ONLY the flat accumulated grain bands and a few small dense nodal grain patches construct the full recognizable organism/structure. The same flat light distribution and fine grain scale cover every part. No physical solid body exists underneath. Large transparent internodal spaces and sparse microgaps between loose grains remain. No perspective thickness,3D surface modelling,uniform sculptural highlights,shaded solid ribs,cast shadow,granular coating,sandcastle,stone,clay,glass,resin,metal,lace,wire,thread,embroidery or regular bead chain. No ordinary sand-painted opaque body fields,thin sparse particle tracks or spatial dot-cloud shading. Distinct flat standing-wave grain accumulation,not a craft sculpture. Fictional celestial ecology inspired by vibrating-plate nodal-grain patterns,not measured acoustic fields or a claim about sound in vacuum. No text,labels,numbers,scale,axes,plot,UI,clock,reading,logo or watermark. Subject: ONE complete CANTILEVER CRADLE HABITAT: an invented small raised garden dwelling with TWO unequal open cupped rooms at different heights,joined by one curved walkway over a large empty central arch. THREE broad leaning rootlike supports descend to thick feet. One long asymmetrical bell-rim roof reaches over the taller room,leaving open entrances;the lower cup has a short raised garden shelf. No ordinary rectangular house,dome,temple,glass greenhouse or generic tower. Useful coherent inhabited structure in three-quarter outline,whole roof,cup rims,walkway,supports and feet. Asset: ONE independent square1024x1024 pure-art widget. Real transparent alpha OUTSIDE the entire subject AND inside every internodal gap. No rectangular plate/background beneath the grains. Complete subject and each grain-built limb/leaf/pod/wing/roof/root/support endpoint safely inside central seventy percent with generous truly empty margins. Keep most grains close to the connected ridges,not scattered into the corners. No soil/floor patch,shadow,landscape,extra figures,frame,panel,contact sheet or device mockup. Broad nodal architecture and complete tangible silhouette legible at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 867344
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.6a22a42981ba.png",
+      "sourceSha256": "6a22a42981bafd2bbb886ef7968bd7cb0993b2f5c9182c351625c18f27cdaa99",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "212936cb6ccd3d8cb301a3218417ea756f523e70f338bcc998dc2ffd1b58779f",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2064983,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHLADNI SKYGARDEN,STRICTLY PLANAR SAND-NODAL RECORDING. A FRONT-ON/OVERHEAD TWO-DIMENSIONAL image of a SINGLE FLAT MONOLAYER of very fine loose MATTE IVORY and PALE OCHRE sand grains. Accumulated grains form broad continuous curving/crossing nodal BANDS,with large truly empty internodal cells. Each band is a flat two-dimensional density pattern,NOT a tube,rib,wall or sculpted solid. Bands are roughly1.5%to3%ofcanvaswidth,formed from MANY tiny irregular grains roughly1to2pixels wide at1024resolution,not coarse stones or uniform beads. Grain-density intensity is even across the bands,no brighter centre/darker underside,no bevel,brown edge,rounded cross-section or smooth binder. ONLY the flat accumulated grain bands and a few small dense nodal grain patches construct the full recognizable organism/structure. The same flat light distribution and fine grain scale cover every part. No physical solid body exists underneath. Large transparent internodal spaces and sparse microgaps between loose grains remain. No perspective thickness,3D surface modelling,uniform sculptural highlights,shaded solid ribs,cast shadow,granular coating,sandcastle,stone,clay,glass,resin,metal,lace,wire,thread,embroidery or regular bead chain. No ordinary sand-painted opaque body fields,thin sparse particle tracks or spatial dot-cloud shading. Distinct flat standing-wave grain accumulation,not a craft sculpture. Fictional celestial ecology inspired by vibrating-plate nodal-grain patterns,not measured acoustic fields or a claim about sound in vacuum. No text,labels,numbers,scale,axes,plot,UI,clock,reading,logo or watermark. Asset: ONE opaque portrait phone wallpaper1290x2796. One coherent invented floating celestial sky-garden habitat using five exact own original art identities. Bellpod arbor grows beside the cantilever cradle dwelling;adult orbit tender works between the tree and threefin grazer;splitseed sailer rests near a low curved landing. All organisms/structures remain made only of warm ivory/ochre grain-accumulated nodal ridges,with large open internodal spaces and no ordinary solid bodies. A low sparse curved garden island is made from very dim broad nodal grain bands. Quiet MIDNIGHT PLUM #251B35 upper43%;all FIVE complete focal subjects inside horizontal10%to90%andvertical46%to78%. Bottom20%quiet dark plum field. Very few dim background grains only near the low habitat,no stars,planets,nebula clouds,extra buildings/creatures/plants,scattered glitter or ordinary ground texture. Every primary limb/fin/pod/sail/roof/root/support endpoint has generous room. Low habitat nodal curves may bleed,focal subjects cannot. One connected inhabited sky-garden,not specimen collage. No labels,text,UI,frame or reading. Input identity references in exact order:IMAGE1=accepted FLAT bellpod arbor,IMAGE2=adult orbit tender,IMAGE3=threefin grazer,IMAGE4=splitseed sailer,IMAGE5=cantilever cradle habitat. Preserve exact complete whole silhouettes and all open nodal cells. Arbor has3unequal downward-open bellpods on3arched branches and3curled rootfeet. Tender hasfulladultbody,backcrescent balancingfin,two-loop branchgrip atwaist andseed-scoop in raisedotherhand. Grazer has4shortlegs,longneck/blunthead,exactly3broad unequal dorsalfins andshorttail. Sailer has2unequal openpodhulls,curvedjoiningbeam,2lobed splitleafsail,forwardscoop and3underside stabilisers. Cradle has2cupped openrooms atdifferentheights,curvedjoiningwalkway,3rootlikefeet andone long asymmetrical bellrimroof. No extras or generic buildings/people/ordinaryvehicles. All5groups remain flat even-intensity fine loose-grain BANDS with large empty internodal cells,no rounded shaded ribs/glassshine/solidcoatedbodies/brightedgeglow. Suggested safe layout:arbor rear-left atx20to41%/y47to66%,cradle rear-right atx55to83%/y47to67%,tender centre atx40to55%/y59to76%,grazer front-left atx16to43%/y66to77%,sailer front-right atx61to86%/y66to77%. These are approximate guide regions to give WHOLE endpoints room;do not overlap/hide any root/leg/hand/foot/podrim/fin/sail/roof/support. Meaningful inhabited garden:tender tends the arbor while grazer rests nearrootfeet,sailer sits by cradle landing. Sparse very dim low garden-island nodal bands connect the scene. Upper43%andbottom20%quiet midnightplum,no objects/stars/planets/haze/loosegrainspills. All5complete focalgroups withinhorizontal10to90%andvertical46to78%. Gardenbands maybleed,whole focalendpoints cannot. Portrait1290x2796,opaque background,no text/labels/diagramaxes/UI/reading/frame.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "bellpod-arbor",
+          "sourceImage": "sources/bellpod-arbor.3ac3bfb690b1.png",
+          "sha256": "3ac3bfb690b108b33a074bc2572bba588f4a1e5468c8f390e30e35392979c8ff"
+        },
+        {
+          "id": "orbit-tender",
+          "sourceImage": "sources/orbit-tender.71a72127e620.png",
+          "sha256": "71a72127e620e2449f151ef96922db3c43e88b3d869012c4b71627dfe7f2dddd"
+        },
+        {
+          "id": "threefin-grazer",
+          "sourceImage": "sources/threefin-grazer.8b55f5c98dea.png",
+          "sha256": "8b55f5c98deaf0601273f93253d2418a849c8e3266f78eec60342b1593d646b1"
+        },
+        {
+          "id": "splitseed-sailer",
+          "sourceImage": "sources/splitseed-sailer.26c3cd56f8d6.png",
+          "sha256": "26c3cd56f8d6ad7c7859b9a7b14a3fe77c76dd38b8e5f541d86cccac2875c1a8"
+        },
+        {
+          "id": "cantilever-cradle",
+          "sourceImage": "sources/cantilever-cradle.6835d2464a11.png",
+          "sha256": "6835d2464a118a106f3602d1f09a976d5b59a65fa31b4cdcc63c3dd078e6aa14"
+        }
+      ],
+      "generationStages": "Five independent selected artwork generations after actual first-sample/neighbor review;separately generated exact-own-five-reference inhabited sky-garden wallpaper."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Tangible fictional celestial garden for subject/category balance while retaining nature elements. Chladni-inspired broad grain nodal ridges with empty internodal spaces,quiet plum Artwork corners and compact open nodal-junction native fragment. First actual comparison against B11solid sand-painted village/C2thin tracks/C8point cloud before remaining4generations.",
+  "conceptReferences": [
+    {
+      "title": "Chladni Plate,UCLA Physics and Astronomy lecture demonstration",
+      "url": "https://demoweb.physics.ucla.edu/node/59",
+      "use": "Text-only primary university demonstration background:grains form patterns on vibrating plates. Sky-garden ecology and nodal-image silhouettes are fictional art,not measured vibration fields. No external image input."
+    }
+  ],
+  "conceptReferenceScope": "UCLA primary lecture-demonstration text only;no external/neighbor image inputs to imagegen. Celestial ecology/nodal silhouettes are artistic invention,not measured acoustic fields or a claim about sound in vacuum.",
+  "artworkOwnStudyReferenceUses": 1,
+  "wallpaperReferenceUsesAcrossStages": 5,
+  "wallpaperDistinctReferenceImages": 5
+}

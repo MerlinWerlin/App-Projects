@@ -1,0 +1,100 @@
+{
+  "review": "All5 whole star arms,sea-hare rhinophores/foot/tail/mantle arch,anemone crown/column/foot,tunicate rims/mat and lettuce fronds/holdfast lie inside original alpha16/96 bounds. Edgealpha maximum1. Entire source images proportionally contained1024square without cropping.",
+  "assets": [
+    {
+      "id": "brittle-star",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          61,
+          62,
+          1201,
+          1193
+        ],
+        "96": [
+          62,
+          63,
+          1200,
+          1192
+        ]
+      },
+      "edgeAlphaMaximum": 0,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "sea-hare",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          48,
+          354,
+          1202,
+          979
+        ],
+        "96": [
+          49,
+          354,
+          1201,
+          979
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "crown-anemone",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          105,
+          144,
+          1132,
+          1166
+        ],
+        "96": [
+          106,
+          144,
+          1131,
+          1165
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "three-siphon-tunicate",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          126,
+          82,
+          1135,
+          1186
+        ],
+        "96": [
+          127,
+          83,
+          1135,
+          1185
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "sea-lettuce",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          40,
+          172,
+          1200,
+          1115
+        ],
+        "96": [
+          41,
+          173,
+          1200,
+          1114
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

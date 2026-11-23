@@ -1,0 +1,23 @@
+{
+  "id": "sea-lavender",
+  "prompt": "Precise BOTANICAL ANATOMY-ONLY refinement of input1, own Stratagrain Saltmarsh mixed-metal sea-lavender spray. Preserve exact three broad basal leaves with broad copper/brass/silver/dark-alloy flowing bonded strata and ring-eye motifs, lower stems/root join, material/palette/metal glints, proportions, overall asymmetry, framing and quiet transparent margins. Correct ONLY the upper flower heads: current large open rose-like five-petaled flowers are too large for SEA LAVENDER Limonium. Replace those nine oversized rose-like flowers with AIRY BRANCHED CLUSTERS of MANY MUCH SMALLER TINY PAPERY FIVE-LOBED FUNNEL FLOWERS, on fine wiry naturally branching stalks, with clear empty gaps between small clusters. Each tiny flower should be only about one-quarter the diameter of a current oversized flower, several groups of six to ten tiny flowers distributed naturally across existing two main upper branching stems. At this stylized readable scale show recognizable Limonium habit: broad basal leaf rosette BELOW and light frothy branched tiny flower panicles ABOVE. Do not make a dense solid bouquet, cherry blossoms, big dog roses, lavender spikes or ribbon rosettes. Tiny blossoms remain forged copper/pale silver with dark-alloy centers, no colored paint or actual lavender pigments. Keep true continuous bonded mixed-metal striation visible in the three large leaves and stems; no jewels, pins or beads. No change to the whole lower leaf/material composition. Entire upper panicle including every tiny blossom/stem tip remains whole inside at least16percent actual alpha margins; no clipped plant. TRUE TRANSPARENT ALPHA in all gaps/exterior, no haze/white backing/ground/shadow/plaque/frame/text/UI. Single own source input only.",
+  "tool": "built-in image_gen",
+  "source": "sources/sea-lavender.3921df34.png",
+  "sourceSha256": "3921df34a181726b40ddd476203d8fbbc58e4bf8b8fbb01442de8e2bdd91f9a1",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/sea-lavender.425aba02.png",
+  "sha256": "425aba02e36d7e40a585e887c8735d84ecc4393d68fb8e70403f11e1e758fe6b",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/anatomy-repair/sea-lavender-history.json",
+  "referencedImage": {
+    "file": "qa/anatomy-repair/sea-lavender.original.ee6ff4e3.png",
+    "sha256": "ee6ff4e378f96ce518e02f254d8f8bb1ce6fc6d386a5a8bf9f5582eedd0ff50c"
+  }
+}

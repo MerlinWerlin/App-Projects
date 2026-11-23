@@ -1,0 +1,1 @@
+Prior selected rehearsal wallpaper preserved for a modest whole-scene edge-breathing edit after Jared clarified both native and Artwork corners. Conductor elbow/antennae and right resonator sit close to the frame. Study is not a production selection. All five independent artwork assets/native paths remain unchanged.

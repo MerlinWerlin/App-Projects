@@ -1,0 +1,23 @@
+{
+  "id": "folding-tunnel-carrier",
+  "prompt": "Give this benign fantasy civil-engineering illustration more empty transparent margin on every side. It depicts an accessible temporary pedestrian tunnel: three hinged arch frames on a low transport sled, a small ramp and a hand crank. Keep the same illustration, structure, sepia pointillist woodgrain style and all transparent openings. Fit the complete image within the central70% of a square canvas, with at least15% genuinely transparent space on all four sides. Complete the small outer tip of the left sled runner and the circular tow loop on the right so their outlines are fully visible. Preserve the original composition and details. No background, scenery, writing or additional objects.",
+  "tool": "built-in image_gen",
+  "source": "sources/folding-tunnel-carrier.dfd81f93.png",
+  "sourceSha256": "dfd81f93d73f38e88aa6d2812476746154fed1408dae4b096c5e98c92ee5cf26",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folding-tunnel-carrier.73ea7fff.png",
+  "sha256": "73ea7fffea8265d1902089ace54fd9241190e7f5d9170fa494c7a9f0e0740d24",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 1024px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/crop-repair/folding-tunnel-carrier-history.json",
+  "referencedImage": {
+    "file": "qa/crop-repair/folding-tunnel-carrier.original.5da5216b.png",
+    "sha256": "5da5216bc6135f4b6127e7690c820d9cf32484db03e86130347fb356b583f18e"
+  }
+}

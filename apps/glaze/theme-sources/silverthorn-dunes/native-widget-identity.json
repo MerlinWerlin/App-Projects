@@ -1,0 +1,18 @@
+{
+  "themeId": "silverthorn-dunes",
+  "recipe": [
+    "oval",
+    "inlayFennec",
+    "inlayChannels",
+    "cut",
+    "needle",
+    "trail",
+    "ledger"
+  ],
+  "art": {
+    "inlayFennec": "M 28 51 Q 39 43 52 47 L 57 42 L 53 19 Q 59 17 65 39 L 69 39 L 75 12 Q 82 15 79 44 Q 83 46 84 51 L 95 57 L 86 63 L 77 65 Q 73 75 74 87 L 67 87 L 66 71 L 61 73 L 60 88 L 53 88 L 54 74 Q 46 76 40 70 L 36 86 L 29 86 L 32 68 L 27 65 Q 18 79 8 80 Q 8 67 18 59 Q 22 54 28 51 Z M 39 72 L 44 83 L 42 88 L 35 88 M 59 25 L 62 38 M 75 22 L 73 39 M 76 49 Q 79 47 81 49 M 86 62 L 90 59 M 57 54 Q 64 54 68 59 M 47 56 Q 52 54 56 56 M 35 57 Q 40 54 44 55 M 13 74 L 22 65 M 17 76 L 26 67",
+    "inlayChannels": "M 10 18 Q 35 9 58 21 Q 75 31 90 20 M 10 25 Q 35 16 58 28 Q 75 38 90 27 M 14 45 L 27 38 L 30 47 L 44 39 L 47 49 L 61 42 L 65 53 L 80 47 M 13 74 Q 40 67 63 77 Q 78 85 90 77 M 17 89 L 28 89 M 41 89 L 52 89 M 65 89 L 76 89"
+  },
+  "ornament": "M 20 77 Q 38 56 70 22 M 36 59 Q 21 57 22 43 Q 36 44 39 55 M 49 44 Q 46 28 59 24 Q 62 37 53 41 M 59 34 L 72 34 M 70 22 L 81 22 M 20 84 L 29 84 M 36 84 L 45 84 M 52 84 L 61 84",
+  "direction": "Natural large-eared fennec full subject; twin flush inlay channels as detail, oval shallow metal rim and cut channel markers, fine needle hands, trail charge and ledger calendar. Compact companion is one open inlaid twig vein with three short channel ends, no full animal, jewelry bail, ring or medallion."
+}

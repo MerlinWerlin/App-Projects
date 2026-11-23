@@ -1,0 +1,18 @@
+{
+  "id": "folded-ladder-fossil",
+  "prompt": "One new separate square1024x1024 production artwork for ENAMEL RELIQUARY: FOLDED LADDER FOSSIL, an imaginary extinct ribbon-organism cross-section preserved as a flat handmade furnace-fired cloisonne enamel mosaic. A long flattened S-shaped ribbon bent back once sharply at its middle, with broad rectangular anatomical chambers that alternate left/right and a smooth double turquoise outer rim; two short side fins folded inward leave a long dark slit through the core. Strong elongated diagonally curved silhouette, absolutely unlike a trident or shell, no eye, face or recognisable modern animal. Uneven raised thin brass partitions, translucent oxblood and tangerine pooled enamel in ladder cells, sulphur-yellow connective ribs, turquoise #4BC1B0 edge, firing bubbles, orange peel pits, fine crazing and scorched black burgundy copper rim. Jeweller's shallow physical glass relief, photographed straight down with precise metallic glints, no elaborate 3D body. Complete shape central65%,18% genuine transparent alpha empty margin; no slab or backing plate, hardware, pendant loop, floor, background, pedestal or frame. No text, numbers, writing, labels, logos, UI, clocks/dials/hands, dates or percentages. Only one artwork, no variants or contact sheet.",
+  "tool": "built-in image_gen",
+  "source": "sources/folded-ladder-fossil.556e7549.png",
+  "sourceSha256": "556e7549924af42ede4829e3776e1868490cdc69f61b7ca24886e02ead1927de",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/folded-ladder-fossil.09aed4b2.png",
+  "sha256": "09aed4b2dc378421deb65f376b68032d003aba7e396c316e01ae5500b7dc8672",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

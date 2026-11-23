@@ -1,0 +1,41 @@
+{
+  "status": "Unselected studies retained after direct Jared nature steer. No selected assets counted.",
+  "artworks": [
+    {
+      "id": "wallpaper-garden-study",
+      "source": "qa/structure-studies/wallpaper-garden-study.f1b8ed35.png",
+      "prompt": "ONE original tall1290:2796 wallpaper for GLAZE BOBBINBOUND MEADOW. A tangible invented garden community in lower42%: bell-cap seedhouse with open seed-tray bays, cantilever apiary with hanging hive chambers, a spiral orchard access stair around one trained fruit-tree frame, a low folding pollen-catching pavilion and a walking root-cellar carrier on six short articulated feet. Each useful garden structure visibly different and understandable, connecting little walkways only below, not ordinary botanical specimen collection or abstract lace doilies. Artisan physical medium is HANDMADE DEEP-PLUM BOBBIN LINEN LACE: paired twisted/braided thread paths, thick bundled contour cords outlining every major shape, knotted joins, scalloped picot edges, open diamond grounds and large clear negative openings, matte fine linen fibres and tiny hand tension variations. Everything is a FLAT unpadded lace depiction made by hand, never natural leaf veins/coral, growing biological material, wire filigree, crochet/plush, cut-applique cloth fields, paper or CGI sculpture. Pale warm apricot linen ground #E3C3A5 with deep plum lace #332536, soft plum thread highlights #705568, tiny undyed ivory thread #F0DEC2 accents only. Upper55% quiet plain warm-apricot finely woven linen with no lace motifs, excellent dark icon space. Lower structures bold enough for phone reading, airy tactile lace with large openings, no fussy all-over net texture. No text, lettering, numerals, signs, symbols, clock/gauge/date/battery/weather values, UI, logos, frames, borders or phone mockup.",
+      "sourceSha256": "f1b8ed356ce0e1d3c951d8d88135665d445507485989f2975d456d74e0aa4b60",
+      "sourceDimensions": [
+        851,
+        1847
+      ],
+      "selected": false,
+      "tool": "built-in image_gen"
+    },
+    {
+      "id": "bell-cap-seedhouse",
+      "source": "qa/structure-studies/bell-cap-seedhouse.a53328cc.png",
+      "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented garden utility, handmade linen lace depiction. DEEP PLUM BOBBIN LINEN LACE: paired twisted and braided thread paths, thick bundled outline cords for strong silhouettes, small knotted joins, scalloped picot edge loops, open diamond grounds and BIG clear negative openings, matte linen fibres and slight hand-tension variations. Mostly plum #332536 with soft thread highlights #705568 and sparse undyed-ivory #F0DEC2 bindings. FLAT unpadded lace craft, not natural leaf veins/coral, growing material, metal wire, crochet/plush, cut-applique fabric fill, paper or CGI sculpture. Keep main shapes/readable functions bold, lace detail subordinate. Whole subject SMALL in central60% of square with at least18% true transparent alpha on all sides. ALL open gaps genuinely alpha-transparent, no apricot/white backing, rectangular cloth patch, halo, floor/scenery, shadow, framing, text, letters/numbers, data/gauges/clocks, date/battery/weather readings, logos or UI. Subject BELL CAP SEEDHOUSE: one tall narrow OPEN SEED-GROWING PAVILION, a curved bell-shaped canopy made from six braided plum lace ribs joined by sparse open diamond grounds, crowned by three short picot loops. Four slim knotted structural columns enclose TWO LEVELS OF SEED TRAYS, each tray holding a few small undyed-ivory seed pockets, no readable labels. A single curved short boarding stair leads up at front, a low lace rail encircles half the base only. Big open door/arch gaps keep both tray levels and canopy ribs legible. Tall gently tapering silhouette like a useful public seed nursery rather than a doily, lampshade or plant specimen. Complete crown loops, curved roof ribs, trays, stair and feet all well within broad alpha. Braided paired thread paths and tiny pin-loop joins visible, no solid cloth fill or plastic.",
+      "sourceSha256": "a53328ccdf68c05f3ce533b195fecf7b0ffe702c9c51b38dbb6eddfa2f1a76cb",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selected": false,
+      "tool": "built-in image_gen"
+    },
+    {
+      "id": "cantilever-apiary",
+      "source": "qa/structure-studies/cantilever-apiary.f69da184.png",
+      "prompt": "BOBBINBOUND MEADOW for Glaze. ONE original1024x1024 separate pure artwork of a tangible invented garden utility, handmade linen lace depiction. DEEP PLUM BOBBIN LINEN LACE: paired twisted and braided thread paths, thick bundled outline cords for strong silhouettes, small knotted joins, scalloped picot edge loops, open diamond grounds and BIG clear negative openings, matte linen fibres and slight hand-tension variations. Mostly plum #332536 with soft thread highlights #705568 and sparse undyed-ivory #F0DEC2 bindings. FLAT unpadded lace craft, not natural leaf veins/coral, growing material, metal wire, crochet/plush, cut-applique fabric fill, paper or CGI sculpture. Keep main shapes/readable functions bold, lace detail subordinate. Whole subject SMALL in central60% of square with at least18% true transparent alpha on all sides. ALL open gaps genuinely alpha-transparent, no apricot/white backing, rectangular cloth patch, halo, floor/scenery, shadow, framing, text, letters/numbers, data/gauges/clocks, date/battery/weather readings, logos or UI. Subject CANTILEVER APIARY: one narrow upright knotted-lace support tower at LEFT holds a long gently curved upper deck reaching RIGHT, like an open garden balcony. The deck supports THREE COMPLETELY DIFFERENT HANGING HIVE CHAMBERS beneath it: broad hexagonal left hive, tall narrow teardrop middle hive and rounded-square right hive. Each chamber has a single large round entry hole, open lace wall pattern and a small landing ledge, no bees/animals or ordinary jars. A short little maintenance stair rises inside support tower to deck, two splayed foot brackets below tower. At deck right tip a small hook-and-pulley raises a fourth shallow honey tray, empty and unmarked. Clear inverted-L architecture with big air gap under the cantilever and between hives, useful public apiary rather than decorative hanging lantern set. Whole balcony tip, tray/cords, hive bottoms, tower crown and feet visible inside broad alpha. Paired braided plum linen thread supports, open diamond grounds, tiny ivory bindings, picot loops only.",
+      "sourceSha256": "f69da1848605c4bf5efeb736c4a9519e3b1e3ab16ac9539e799ad112672cdaaa",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selected": false,
+      "tool": "built-in image_gen"
+    }
+  ]
+}

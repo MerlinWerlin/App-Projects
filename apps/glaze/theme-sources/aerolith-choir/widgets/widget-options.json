@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cavity-cathedral",
+    "kind": "art",
+    "image": "cavity-cathedral.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cavity Cathedral"
+  },
+  {
+    "id": "bellows-bloom",
+    "kind": "art",
+    "image": "bellows-bloom.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bellows Bloom"
+  },
+  {
+    "id": "pore-shelled-nomad",
+    "kind": "art",
+    "image": "pore-shelled-nomad.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Pore Shelled Nomad"
+  },
+  {
+    "id": "thread-tail-comet",
+    "kind": "art",
+    "image": "thread-tail-comet.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Thread Tail Comet"
+  },
+  {
+    "id": "levitating-seed-engine",
+    "kind": "art",
+    "image": "levitating-seed-engine.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Levitating Seed Engine"
+  }
+]

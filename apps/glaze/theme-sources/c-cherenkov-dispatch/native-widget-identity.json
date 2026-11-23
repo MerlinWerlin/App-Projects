@@ -1,0 +1,22 @@
+{
+  "theme": "c-cherenkov-dispatch",
+  "recipe": [
+    "octagon",
+    "cCherenkovCourier",
+    "cCherenkovCones",
+    "rays",
+    "wedge",
+    "column",
+    "band"
+  ],
+  "art": {
+    "cCherenkovCourier": "M 28 9 Q 51 1 74 9 L 51 33 Z M 28 9 Q 51 19 74 9 M 40 31 Q 51 27 61 33 L 64 59 L 46 63 L 37 42 Z M 37 33 Q 17 41 7 66 L 32 74 L 39 48 M 39 39 L 32 53 L 42 62 L 47 57 L 40 51 L 46 42 M 61 35 L 76 42 L 89 28 M 76 42 L 78 47 L 95 34 M 89 28 L 88 20 L 92 27 L 97 24 L 96 31 L 99 31 M 47 61 L 34 78 L 19 91 L 30 94 L 51 76 L 63 91 L 76 96 L 89 94 L 72 83 L 62 60 M 33 61 L 70 55 L 83 48 L 85 57 L 75 60 L 85 65 L 82 73 L 69 62 L 34 68 Z M 38 36 L 57 55 M 58 32 L 43 59 M 37 69 L 50 77 M 63 73 L 71 86",
+    "cCherenkovCones": "M 8 30 Q 29 14 49 30 L 29 68 Z M 8 30 Q 29 45 49 30 M 59 59 Q 74 43 91 59 L 75 89 Z M 59 59 Q 75 73 91 59 M 18 28 L 29 68 L 39 28 M 67 57 L 75 89 L 83 57"
+  },
+  "ornament": "M 20 26 Q 50 9 80 26 L 50 82 Z M 20 26 Q 50 41 80 26 M 35 23 L 50 82 L 65 23 M 35 54 Q 50 44 65 54",
+  "ornamentDirection": "A single filled-cone envelope abstracted to one fan rim,apex and crossing wavefront arcs. Compact material-process fragment,not a miniature whole courier.",
+  "ornamentProvenance": "Original authored100x100 SVG path,22 November2026,following Jared Both-corner steering and civic-world balance.",
+  "direction": "Striding beacon courier and sparse conic wavefronts for larger native areas. Octagon dial,ray marks,wedge hands,column battery,band calendar. Dedicated small cone-fan fragment keeps headers quiet.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms;no raster readings.",
+  "registryIntegration": "Coordinator owns shared source/Swift integration and installed-device qualification. Lane source-only."
+}

@@ -1,0 +1,203 @@
+{
+  "id": "c-filmdew-garden",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "clover-thinfilm",
+    "dragonfly-thinfilm",
+    "frog-thinfilm",
+    "fox-thinfilm",
+    "cowslip-thinfilm"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.b27db0a9.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 10532,
+    "sha256": "b27db0a94ed491515e5851fbd5e2319efc18fdfa68183a2954e4a3f5203eb691",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "c9a1638ff4c4ab39ebe5fe4c47abe5bf7bc14fb4724cdd0c42af6eb32d6c5913"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed five full selected originals/source210and85/allfive actualencoded85. Whole threeleafclover/fullstalk, dragonfly/fourcompletewings/segmentedabdomen/legs/antennae, squatfrog/coherentfoldedlimbs/visiblefeet, seatedfox/twoears/snout/frontpaws/rearpaw/fullcurledtail, and two-bellcowslip/fullstalk/twoleaves remain recognizable and distinct. Broad pearly colourcurtains and off-centre darkfilmwindows read at85. Cloverfirst unchanged; foxinitial physicalshading retained unselected and corrected exactlyonce using its ownoriginal and ownclover opticalsurface. Minor junction/eye/segmentation cues remain on frog/dragonfly but broadfields nearflat. No externalvisuals or creative code/alpha edits. Originalhuman messaging-unavailablefallback, peer material/integration pending, no Jared artworkapproval implied.",
+    "wallpaper": "Viewed allthree actualencoded1290x2796,1179x2556,750x1334phonecrops. One coherent pondedgegarden, dragonflyaboveleft/cowslipbehindleft/froglowleft/clovercentre/foxright facinginward. Every key organism stayswhole, including allfourdragonflywingtips/tail/antennae, frogvisiblefeet, foxears/nose/paws/fulltailtip, bothflowerbells/leaftips/stalkbase, wholecloverleaflets/stalk. Plainbank/pondline contextreaches sceneedges, no figureclipped. Approx96percentgroupwidth/56height/top22, widertarget/narrowrealmargin disclosed, no framingedit. Original5ownselectedreferences, no outsideimages; matching opticalfields retained.",
+    "native": "Viewed allnine actual currentroot94restoredrenderer previews. Pebbleface follows roundedcloverleaflets, originalclover/softcurtainmotifs, pinsmarks/leafhands/tilesbattery/bandcalendar. Smallplainclover/stalk in compactnativeheaders, no mini rainbowchart. White/sage ink on darkplumgradient readable, glyphcontrast11.1376:1. Nine layouts change withreadings, batterynull0/100, ornamentparser/roundtrip pass. Restored shippedcalendar identity.outline, no retired badge-fitting/containment/equal-size probes. WindowsSVG/layout evidence only, noApple/deviceclaim; integrationpending.",
+    "roundedArtworkCorners": "Viewed ownfive actualencoded pieces on realappgradient/Fit6percent/conservative20percent roundedmask. All37C185art retain visiblealpha16, originalrastersunchanged. Whole900within1024 normalization leavesclearbreathingroom aroundcompleteforms, darkplumcornersquiet. UI layout simulation only."
+  },
+  "ownerSteeringReview": "Less abstract whole recognizable garden plants/animals first, distinctive thin-film opticalimage second. Quietdarkplum Artwork fields and plainclover nativecorner companion. Completeisolatedsource under originalhumanfallback, peer material/integration pending, no Jaredapproval/publicationinferred.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-filmdew-garden",
+    "backgroundStops": [
+      "#3A3544",
+      "#292B38"
+    ],
+    "pieces": [
+      {
+        "id": "clover-thinfilm",
+        "sha256": "83270ad3fcab81ba2a09efb46af755a5409b733b5f2afc95563d4fefbd13be49",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "dragonfly-thinfilm",
+        "sha256": "fb8d972394e4cb602dd760831feffe617ae4dc9ea0d0cc7221754a7c9d44fd63",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "frog-thinfilm",
+        "sha256": "862e08a68bcca8b408cf522c7df1dd613a6e355f43f95f0319732d5c6dd04665",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "fox-thinfilm",
+        "sha256": "45276c4337c99e12afa73ad4fe5c8cfa6ef2f7cd61aa0cda02bdadb3be7c06db",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "cowslip-thinfilm",
+        "sha256": "c84d51a0bdbecebe8bba83453f9e4ce55770ba48d373844b1c48548b54e4bc75",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 5,
+  "wallpaperDistinctReferenceImages": 5,
+  "artworkOwnStudyReferenceHashesMatched": 2,
+  "packTestEvidence": "Actual offline builderv1:9assets/581696bytes/minApp1.0.44. Actualparsers/selectors5pureart/9changingnative,ornamentroundtrip,batterynull0/100,Natureresolver,fullsource+normalized+encoded decode/dim/hash/6selected/noorphans/5ownWPrefs/2ownartinputuses/2distinct/1unselectedhistory match. All5full17085/encoded85/9native/3phonecrops/ownroundedviewed;37C185encodedart retainalpha16. Peer material/integration pending, no shared/publicationwrites.",
+  "minAppVersion": "1.0.44",
+  "candidateCompatibilityFloorVerified": true,
+  "selectedFirstPrototypeSha256": "2f47aed2b77c3723af267b8db76b97656595a433787e15b9db8546e7e78b9a2e",
+  "selectedFirstRawUnchanged": true,
+  "fullSelectedSourceDecode": true,
+  "sourceOutputCount": 6,
+  "newImageOutputs": 7,
+  "unselectedGenerations": 1,
+  "creativeRasterEdits": 1,
+  "artworkOwnStudyDistinctReferenceImages": 2,
+  "wholeOriginalContainment": {
+    "targetSquare": 1024,
+    "containLimit": 900,
+    "crop": false,
+    "stretch": false,
+    "creativeCodeEditing": false,
+    "rawAlphaPreserved": true
+  },
+  "newThemePaletteContrast": {
+    "glyph": "#E8E5DC",
+    "tile": "#292B38",
+    "glyphTile": 11.137626942658985,
+    "text": "#EFEADF",
+    "bg": "#3A3544",
+    "textBg": 9.875106287491013,
+    "minimum": 4.5,
+    "source": "C:/Users/jared/Documents/Codex/2026-11-14/files-pasted-by-the-user-glaze/work/App-Projects/apps/glaze/src/core/colour.ts"
+  },
+  "coordinatorMaterialAccepted": false,
+  "coordinatorIntegrationPending": true,
+  "sourceCompletionAuthority": "IntendedID/process notice attempted before first; Codex app messaging still fails. Original HUMAN fallback authorizes collision-checked strictlaneC isolated work while messaging unavailable. ONE first then actual lane full17085/material/corner review before expansion, at most1own targeted material correction. Peer material/canonical/integration/device review remains pending; no root/Jared artwork approval or publication implied.",
+  "scope": "Actual local source/encodedpack QA/current coordinator nativeSVG/rounded-layoutsimulation. Originalhuman messaging-unavailablefallback; peer material/canonical/integration/combinedCI/devicepending. NoApple/installed-device/publicationclaim."
+}

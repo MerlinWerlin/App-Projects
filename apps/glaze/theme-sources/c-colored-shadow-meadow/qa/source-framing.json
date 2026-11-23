@@ -1,0 +1,100 @@
+{
+  "review": "All five selected artwork originals decode as 1254-square RGBA with the main outlines and cast endpoints inside their alpha 16 and 96 bounds. Maximum raw frame alpha is 1 for the quail, rabbit, poppy and fungi and 2 for the revised lizard. All five use proportional whole-source fit within 900 px on 1024. The 852 by 1847 wallpaper is center-fit to the standard 1290 by 2796.",
+  "assets": [
+    {
+      "id": "quail-three-shadows",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          53,
+          131,
+          1218,
+          1138
+        ],
+        "96": [
+          55,
+          132,
+          1215,
+          1137
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "cottontail-shadows",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          101,
+          136,
+          1158,
+          1109
+        ],
+        "96": [
+          102,
+          137,
+          1157,
+          1108
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "poppy-shadows",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          77,
+          135,
+          1173,
+          1121
+        ],
+        "96": [
+          78,
+          136,
+          1172,
+          1120
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "fence-lizard-shadows",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          33,
+          323,
+          1219,
+          1006
+        ],
+        "96": [
+          33,
+          324,
+          1216,
+          1005
+        ]
+      },
+      "edgeAlphaMaximum": 2,
+      "completeSubjectInsideFrame": true
+    },
+    {
+      "id": "mushroom-shadows",
+      "sourceBoundsByAlphaThreshold": {
+        "16": [
+          110,
+          213,
+          1143,
+          1094
+        ],
+        "96": [
+          113,
+          214,
+          1140,
+          1092
+        ]
+      },
+      "edgeAlphaMaximum": 1,
+      "completeSubjectInsideFrame": true
+    }
+  ]
+}

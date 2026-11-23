@@ -1,0 +1,29 @@
+{
+  "id": "wallpaper",
+  "prompt": "Create one original opaque very tall portrait phone wallpaper for WHITEGROOVE SANDHILLS. A physically printed continuous single-block color woodcut of soft Nebraska dune prairie, using the exact own meadowlark as the MATERIAL reference only. Several broad calm matte hand-transferred ink areas with visible continuous pale warm paper reserve channels cut between them and medium subtle pressure and paper tooth. Flat color planes with the texture in the ink, no digital vectors, fine outline hatching, mineral veins, sharp highlights, raised relief or shadows. One cohesive tall clustered prairie composition on a softly uniform deep sage printed field. Near the left of center a single exact recognizable yellow-chested meadowlark with black V and whole bill, tail and both feet is perched naturally on a small slanted weathered simple fence stub or rigid prairie stem. The complete bird is HIGHER than the body of the small whole swift fox below and to the right, with clearly attached slim paws, pointed ears and complete dark-tipped tail curling gently inward. A short purple prairie clover lies in front of a tall thin three-pronged sand bluestem at left. A pair of modest tilted dune contours in straw and sage connects the group as a gently rising vertical composition. Their side tips taper inside the sculptural scene, with no lines stretching to the edges. Use the same continuous pale ink reserve network on bird, grass, fox and ground. Important phone geometry: whole print group is a diagonal about 41 to 52 percent of image HEIGHT, between 32 and 84 percent down. Golden scene should fill about 78 percent of width, leaving warm dark-sage breathing room at both edges. Absolutely all tail/bill/paw/perch/grass/dune tips have a margin. Enough subject height for a compelling phone wallpaper with the bird distinctly above the fox rather than a tiny horizontal strip. Keep upper 28 percent a consistent quiet desaturated spruce/sage ink field and lower scene unbroken on the same matte paper. No frame, cap text, UI, labels, borders, lettering, repeated animals, photographic light, graphic poster fade, stars, home screen sample, full bleed stock landscape. Simple elegant recognizable native habitat on one genuinely flat printed layer.",
+  "tool": "built-in image_gen",
+  "source": "qa/layout-repair/wallpaper.original.fcb82939.png",
+  "sourceSha256": "fcb82939c21db169960c35201343dae0b40c2e166a67edd465aa36fecc3f7155",
+  "sourceDimensions": [
+    941,
+    1672
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "f507bdf3a8f611e80b49de94f3e804aa3c677ca836da57c032a4a3e333fc3444",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "western-meadowlark",
+      "file": "sources/western-meadowlark.e6a9279f.png",
+      "sha256": "e6a9279f10672d3c1705094b0910f686b6d5ab20bdffb52ed30c5956f952633c",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/layout-repair/wallpaper-initial-request.json",
+  "exactToolResult": "qa/layout-repair/wallpaper-layout-original.json"
+}

@@ -1,0 +1,192 @@
+{
+  "theme": "ashloop-riverbank",
+  "created": "2026-11-23",
+  "lane": "B",
+  "medium": "Steam-bent ash and cedar wildlife sculptures made of broad unsegmented timber bows with flowing grain and visible open bays.",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "wallpaper",
+      "prompt": "Make ONE deliberate taller fine-art wallpaper recomposition of the attached own Ashloop Riverbank scene. Actual EDIT TARGET is this exact current riverbank miniature, already pulled away from the edges. The visual problem is that the entire subject forms a tiny horizontal strip. Solve it by changing depth and height and enlarging the creatures, not by further zooming out. Retain same deep olive spruce-green seamless full-bleed backdrop, same recognizable beaver, female red-crested merganser, riverbank and arrowhead foliage. A natural exact craft of broad steam-bent solid wood with grain curving through each continuous band, large open negative bays between each bow, and tiny copper tacks. Recompose into a taller unified vertical diagonal. Enlarge the complete foreground beaver LOWER LEFT. Its large rounded back, distinct ears and two forefeet are prominent, and its tapered flat wood paddle tail turns inward toward the lower center near the base so it is fully visible. Set the whole merganser HIGHER AND BEHIND TO THE RIGHT on a modest rising woody curved bank ledge, looking left, with the full crest, beak, tail and both legs and webbed feet inside the frame. The merganser profile is sharper and larger than in the source. Between and somewhat BEHIND them grow an elevated cluster of 3 tall distinctive arrowhead wood leaves following the climb of the bank, one descending outward to each side and one at center, but all entirely in frame. Its highest point is about 38 percent down from the top. Keep natural space between all heads and foliage. The sculpted vignette should span from roughly 37 percent to 82 percent of the phone image height, centered horizontally and spanning roughly the inner 76 percent of the original width. Keep fully visible on both sides with clearly visible deep-green margins so the phone crop preserves every bank tip, the beaver tail, every foot, whole bill and leaf tips. Do not merely spread the objects side-by-side, and do not add a rectangular backdrop or giant tree. Use spatial positioning and the rising bent wood bank and leaves to get a strongly vertical canvas composition. The top third remains quiet dark spruce. Maintain the original intact forms and real wood tones. No people, sports equipment, canoe, lamps, additional animals, lettering, labels, water reflection, frame, borders or UI. Visually well-filled focal scene with clear vital silhouettes and one broad warm ambient light against a restrained spruce setting.",
+      "tool": "built-in image_gen",
+      "source": "sources/wallpaper.a01a0ada.png",
+      "sourceSha256": "a01a0ada2bdb8957516dda0a5e1c4a1043fb083e6bb6707bb3562802893cc56d",
+      "sourceDimensions": [
+        887,
+        1774
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "38a5dad14d2809f12b5a90e365de773e26e48db60a387639d8b4235f7bbc2b61",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Wallpaper: Fit to 1290x2796 with centering [0.405, 0.5]. Horizontal trim bisects visible side clearance around the selected whole illustration. No retouching of the selected generation.",
+      "generationHistory": "qa/vertical-layout-repair/wallpaper-history.json",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "wallpaper-unselected-original",
+          "file": "qa/vertical-layout-repair/wallpaper.prior-pullback.c94ad5f3.png",
+          "sha256": "c94ad5f3cd8ba45f63e89933360bd6dcc0dd8b4c54324e604a4ddb2f1fcdafe0",
+          "role": "Own original scene EDIT TARGET for documented layout-only correction; exact original retained unchanged."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+    },
+    {
+      "id": "beaver",
+      "prompt": "ASHLOOP RIVERBANK for Glaze. Isolated one separate original whole recognizable riverbank flora or fauna on genuine transparent alpha. Craft is visible broad STEAM BENT SOLID TIMBER. Each major arc is one rectangular broad ash or cedar timber ribbon that curves continuously around the outside into a shallow U, retaining unsegmented continuous natural wood grain which follows the arc. Use a small count of thick-to-moderately thick soft bows with large empty spaces between. A few near frontal thick ribbon faces, turned away darker side faces, soft end-grain at attachment and simple solid pegs. No thin wire, connected triangular lattice, radial turnings, many fine straight parts, layers of veneers, plywood stripes, parquet, rounded turned lathe objects or poles crossing chaotically. Organically believable overall shape built from sturdy open ribs with true alpha through bays, attached parts whole. A few short solid wood anatomy transitions, select rich natural tan and sage tinted wood only if necessary, kept matte. Use warm bias for face and tail structures so plank grain remains visible. Entire composition on transparent alpha with roomy safety space, everything including feet and tips inside clear margins. Photograph a tangible miniature with gentle side light. No landscape, blocks, base, ground shadow, round card, frame, graphic text, UI, sticker outline, glare or smoke. Make only one original process translation from the attached owned precursor canoe: use precisely its broad solid curved wood grain construction, actual empty see-through bays, continuous thick curved cedar bands and tiny dull join pins. Change the entire subject and silhouette into a recognizable NORTH AMERICAN BEAVER crouched at rest, with its head looking left and rounded torso beyond it. It must read at 85 pixels as an actual recognizable beaver rather than a boat or geometric frame. From a low three-quarter left view show one quietly carved short round muzzle with a small dark nose, one clear natural black eye, visible little rounded ears, two short attached front paws with toes tucked just below the near chest, both natural larger hind feet with readable gaps and one broad flat paddle tail extending to the lower right. The flat spatulate tail is low and wide, smooth dark wood, with a few shallow broad diagonal grain marks only. Keep exactly one head and one tail. The rounded back and low belly profile are traced by four to five very visibly broad continuous one-piece steam bent U-bows, with generous intervening empty bays so genuine transparent background shows through. The chest flows into broad slightly oval bent strips. A single quiet broad longitudinal rail traces the part of the spine and a short lower support follows side belly; natural pegs. No canoe stem, pointed upper ends, gunwale, bench crossbar, deck, pads, raft, paddles, outline ribs disconnected from the whole beaver form or plank-cladding. Avoid toy teeth, sunglasses, pinched half-body, triangular lath style, large patchwork inserts, logo or birch background. Make all four distinct attached paws and complete tail exactly within the frame with real alpha and ample margins. The material carry-over is exact but the entire form and pose are new.",
+      "tool": "built-in image_gen",
+      "source": "sources/beaver.6e1ae7cc.png",
+      "sourceSha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/beaver.ec6b0b28.png",
+      "sha256": "ec6b0b2818d4d5ad127f1e8bb9207c6c6fbba7c1fed845f827adf728e15bb147",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationHistory": "qa/material-repair/ashloop-riverbank-lineage.json",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "beaver-unselected-original",
+          "file": "qa/material-repair/ashloop-portage-unselected.7d6cf2d0.png",
+          "sha256": "7d6cf2d085ba821f5cbaa741a8061ef37b102daae870a5be08de7c4993e192c8",
+          "role": "Own held precursor used exclusively as the physical material reference for one new Nature composition; exact unselected source retained."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/beaver-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/beaver-exact-tool-result.json"
+    },
+    {
+      "id": "common-merganser",
+      "prompt": "ASHLOOP RIVERBANK for Glaze. Isolated one separate original whole recognizable riverbank flora or fauna on genuine transparent alpha. Craft is visible broad STEAM BENT SOLID TIMBER. Each major arc is one rectangular broad ash or cedar timber ribbon that curves continuously around the outside into a shallow U, retaining unsegmented continuous natural wood grain which follows the arc. Use a small count of thick-to-moderately thick soft bows with large empty spaces between. A few near frontal thick ribbon faces, turned away darker side faces, soft end-grain at attachment and simple solid pegs. No thin wire, connected triangular lattice, radial turnings, many fine straight parts, layers of veneers, plywood stripes, parquet, rounded turned lathe objects or poles crossing chaotically. Organically believable overall shape built from sturdy open ribs with true alpha through bays, attached parts whole. A few short solid wood anatomy transitions, select rich natural tan and sage tinted wood only if necessary, kept matte. Use warm bias for face and tail structures so plank grain remains visible. Entire composition on transparent alpha with roomy safety space, everything including feet and tips inside clear margins. Photograph a tangible miniature with gentle side light. No landscape, blocks, base, ground shadow, round card, frame, graphic text, UI, sticker outline, glare or smoke.  NEW SEPARATE SUBJECT. One whole female COMMON MERGANSER standing in near side-on profile with her head toward the right. Long tapered narrower bill with dark vermilion tint, a subtle rust-brown swept head crest, pale white throat break, long low slate-tinted wood body and tail. Two whole red-brown attached webbed feet press flat with clearly defined web edges just under the rump. A quiet carved head only, and the main torso is made from four broad continuous low ash bow strips with two obviously see-through body bays and a low wide backward pointing folded wing contour. Tiny pins spaced on side rails, continuous dark grain moving around the lean shoulder-to-rear form. Clear full neck, bill, crest, tail and both feet. No water splash, pond or twig. Not a glossy duck decoy. No separate pinhead confetti. The own exact beaver supplies only the material language: wide solid unsegmented wood ribbons, curves that retain direction of grain, clear through-gaps and modest dot pegs. Use the subject and entirely different silhouette above.",
+      "tool": "built-in image_gen",
+      "source": "sources/common-merganser.ffb06e9f.png",
+      "sourceSha256": "ffb06e9f4a723e2c5b1c41404ca4267e5b18d9b6dd083d3086dd09880e54ca4f",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/common-merganser.8a540f6c.png",
+      "sha256": "8a540f6cc6ce3e49a5e1cc34349f7e7136ecea895121b8a50cf5f539de70239e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "beaver",
+          "file": "sources/beaver.6e1ae7cc.png",
+          "sha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/common-merganser-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/common-merganser-exact-tool-result.json"
+    },
+    {
+      "id": "american-mink",
+      "prompt": "ASHLOOP RIVERBANK for Glaze. Isolated one separate original whole recognizable riverbank flora or fauna on genuine transparent alpha. Craft is visible broad STEAM BENT SOLID TIMBER. Each major arc is one rectangular broad ash or cedar timber ribbon that curves continuously around the outside into a shallow U, retaining unsegmented continuous natural wood grain which follows the arc. Use a small count of thick-to-moderately thick soft bows with large empty spaces between. A few near frontal thick ribbon faces, turned away darker side faces, soft end-grain at attachment and simple solid pegs. No thin wire, connected triangular lattice, radial turnings, many fine straight parts, layers of veneers, plywood stripes, parquet, rounded turned lathe objects or poles crossing chaotically. Organically believable overall shape built from sturdy open ribs with true alpha through bays, attached parts whole. A few short solid wood anatomy transitions, select rich natural tan and sage tinted wood only if necessary, kept matte. Use warm bias for face and tail structures so plank grain remains visible. Entire composition on transparent alpha with roomy safety space, everything including feet and tips inside clear margins. Photograph a tangible miniature with gentle side light. No landscape, blocks, base, ground shadow, round card, frame, graphic text, UI, sticker outline, glare or smoke.  NEW SEPARATE SUBJECT. One whole AMERICAN MINK inquisitively leaning forward to the left, body elongated in an upward diagonal, with the forequarters lifted slightly above the back in an alert pose. Long muscular flexible dark walnut-stained body, narrow small muzzle, small low round ears, a cream chin sliver and one slender tapered tail curving back low toward right. All four paws naturally attached with toes and weight legible where visible; two front paws visibly separated. The mink is clearly longer and thinner than the beaver, with slim limbs and no broad flat tail. Four broad unsegmented steam bent wood ribbons create its elongated chest and haunches, each a separate solid-curved structural rail of moderate width with three true alpha gaps and two short well-fitted adjoining rails. Show warm grain continuous across the rounded face of each. No base, rushes, water or noise around the figure. The own exact beaver supplies only the material language: wide solid unsegmented wood ribbons, curves that retain direction of grain, clear through-gaps and modest dot pegs. Use the subject and entirely different silhouette above.",
+      "tool": "built-in image_gen",
+      "source": "sources/american-mink.a6e4a28b.png",
+      "sourceSha256": "a6e4a28b5a3286ed3cbb53aa78bc7608015a60482586c7a546e2677d01c2f60d",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/american-mink.7bb9ab7b.png",
+      "sha256": "7bb9ab7b352cc4b5da99ce4b29cb3c2a705791298694f7c50af25e472cc50e45",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "beaver",
+          "file": "sources/beaver.6e1ae7cc.png",
+          "sha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/american-mink-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/american-mink-exact-tool-result.json"
+    },
+    {
+      "id": "smallmouth-bass",
+      "prompt": "ASHLOOP RIVERBANK for Glaze. Isolated one separate original whole recognizable riverbank flora or fauna on genuine transparent alpha. Craft is visible broad STEAM BENT SOLID TIMBER. Each major arc is one rectangular broad ash or cedar timber ribbon that curves continuously around the outside into a shallow U, retaining unsegmented continuous natural wood grain which follows the arc. Use a small count of thick-to-moderately thick soft bows with large empty spaces between. A few near frontal thick ribbon faces, turned away darker side faces, soft end-grain at attachment and simple solid pegs. No thin wire, connected triangular lattice, radial turnings, many fine straight parts, layers of veneers, plywood stripes, parquet, rounded turned lathe objects or poles crossing chaotically. Organically believable overall shape built from sturdy open ribs with true alpha through bays, attached parts whole. A few short solid wood anatomy transitions, select rich natural tan and sage tinted wood only if necessary, kept matte. Use warm bias for face and tail structures so plank grain remains visible. Entire composition on transparent alpha with roomy safety space, everything including feet and tips inside clear margins. Photograph a tangible miniature with gentle side light. No landscape, blocks, base, ground shadow, round card, frame, graphic text, UI, sticker outline, glare or smoke.  NEW SEPARATE SUBJECT. One full left-facing broad SMALLMOUTH BASS suspended in side profile at a calm slight upward angle. Natural broad head and tapered body, one small clear eye, mouth corner only as far back as around mid eye, connected dorsal fin in two close lobes, one clear visible pectoral fin, low pelvic and anal fins attached and a whole mildly forked tail. The wide torso and lower flank are five opposing broad steam bent ash and cedar bows, each moving smoothly from back to belly and tapering in size toward the tail. Use natural subdued sage stain and amber wood to keep it recognizably bronzeback. Clearly visible large alpha bays through the bowed body with two natural narrow structural rails, a simple curved upper fin shape, low natural grain. No repeated fish scales, wire grate, silhouette drop shadow, shoreline or printed markings. Balanced isolated filled head and visible continuous true-alpha openings behind it. The own exact beaver supplies only the material language: wide solid unsegmented wood ribbons, curves that retain direction of grain, clear through-gaps and modest dot pegs. Use the subject and entirely different silhouette above.",
+      "tool": "built-in image_gen",
+      "source": "sources/smallmouth-bass.7d571c06.png",
+      "sourceSha256": "7d571c06cd78cad4646744ffed13fd1efd974dd68fc1340cdbf2d69b45e79ae7",
+      "sourceDimensions": [
+        1774,
+        887
+      ],
+      "selectedFile": "widgets/smallmouth-bass.348bea35.png",
+      "sha256": "348bea351f148f99f30875a84cc26b3c003ae6d5a9cc61afdec52a6931a33621",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "beaver",
+          "file": "sources/beaver.6e1ae7cc.png",
+          "sha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/smallmouth-bass-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/smallmouth-bass-exact-tool-result.json"
+    },
+    {
+      "id": "arrowhead-leaves",
+      "prompt": "ASHLOOP RIVERBANK for Glaze. Isolated one separate original whole recognizable riverbank flora or fauna on genuine transparent alpha. Craft is visible broad STEAM BENT SOLID TIMBER. Each major arc is one rectangular broad ash or cedar timber ribbon that curves continuously around the outside into a shallow U, retaining unsegmented continuous natural wood grain which follows the arc. Use a small count of thick-to-moderately thick soft bows with large empty spaces between. A few near frontal thick ribbon faces, turned away darker side faces, soft end-grain at attachment and simple solid pegs. No thin wire, connected triangular lattice, radial turnings, many fine straight parts, layers of veneers, plywood stripes, parquet, rounded turned lathe objects or poles crossing chaotically. Organically believable overall shape built from sturdy open ribs with true alpha through bays, attached parts whole. A few short solid wood anatomy transitions, select rich natural tan and sage tinted wood only if necessary, kept matte. Use warm bias for face and tail structures so plank grain remains visible. Entire composition on transparent alpha with roomy safety space, everything including feet and tips inside clear margins. Photograph a tangible miniature with gentle side light. No landscape, blocks, base, ground shadow, round card, frame, graphic text, UI, sticker outline, glare or smoke.  NEW SEPARATE SUBJECT. One complete riverbank SAGITTARIA ARROWHEAD PLANT at a slight angle. A single recognizable joined cluster with three broad raised arrowhead leaves of different sizes, their long triangular main tip and two clearly visible rear lobes, gently swept outward on stem lengths. One short bare central stalk carries three little pale three-petal blossoms spaced apart. Each big open leaf is made from a broad unsegmented bent timber outline, plus two broad curved bow veining pieces meeting jointly at one center, with big pure alpha windows between the bow bands. Seamless soft grain bends and muted sage stain on the near two leaves, exposed honey wood near edges. Leaf geometry rounded enough for actual steam bending. No random triangulated lattice, solid carved pad, wood inlay, grass clutter, clipped bases, flowerpot, water or pebbles. All attached leaf and petal tips whole. The own exact beaver supplies only the material language: wide solid unsegmented wood ribbons, curves that retain direction of grain, clear through-gaps and modest dot pegs. Use the subject and entirely different silhouette above.",
+      "tool": "built-in image_gen",
+      "source": "sources/arrowhead-leaves.0ddbb0d8.png",
+      "sourceSha256": "0ddbb0d83d7157ccdeb1def0091b039f4982607a94dae7d3484b9fb9850fab4e",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/arrowhead-leaves.96e5daba.png",
+      "sha256": "96e5daba3518d8900bf3240172e9cbffdb17b60f16d85b902c202527933408f9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+      "generationReferences": [
+        {
+          "order": 1,
+          "id": "beaver",
+          "file": "sources/beaver.6e1ae7cc.png",
+          "sha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+          "role": "Own selected material/anatomy reference only; each output separately generated."
+        }
+      ],
+      "exactToolRequest": "qa/material-references/arrowhead-leaves-exact-tool-request.json",
+      "exactToolResult": "qa/material-references/arrowhead-leaves-exact-tool-result.json"
+    }
+  ],
+  "nativeIdentity": "native-widget-identity.json",
+  "nativeStatus": "Identity data prepared for coordinator shared-registry integration; local QA injects only in memory and exercises actual app planner/preview renderer. No installed device or publication claim.",
+  "materialReview": {
+    "status": "coordinator accepted first sample unchanged",
+    "record": "qa/material-sample/coordinator-material-approval.json",
+    "authority": "Coordinator accepted the first material sample unchanged. Lane B validated the full source candidate and rendered the exact app selector and native layouts."
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "bumblebee",
+  "prompt": "ONE LAST PRECISE ANATOMY EDIT. IMAGE1 EDIT TARGET is our dry corn-husk bee after a first anatomy correction; it currently has FIVE clearly visible legs. IMAGE2 is our own first owl material reference only. Keep all existing target pixels/shape/material/color/pose/FOURwings/TWOantennae/stripedabdomen/FIVEexistinglegs as close as possible. ADD ONLY ONE MISSING RIGHT FRONT LEG to make EXACTLY SIX whole visible legs. The existingthree legs on viewersLEFT andtwo legs on viewersRIGHT stay. The new sixth leg originates on the FRONT RIGHT SIDE OF THORAX just behindhead. Bring it UPWARD and outward into the LARGE OPEN ALPHA GAP between HEAD/ANTENNAE and the upperRIGHT FOREWING LEADING EDGE: thin rolledhusk uppersegment emerges fromthorax near head, bends up/right in emptygap, then a shortsegment ending tiny2clawfoot clearly visible ABOVE the head-right and LEFT of the largeupperrightwing. Do nothide this leg behindwing/body; wholeleg/clawend must be unambiguously visible and separate from2antennae. All6legs attachedtothorax, nolegfromabdomen, no detachedseventh/eighthleg or newantenna. Newleg is dry warmochre rolled CORNHUSK withsamefineplantfibres andtinyjointbinding as existinglegs. ChangeONLYthis oneleg; preserve the4broadpleatedcreamwings, broad dryleaf longitudinalribs/curledlips and naturalbee silhouette. Wholeall4wings/6legs/2antennae/abdomenfitcentral70percent withtruealpha exterior; tinyextentadjustmentonlyifneeded tocontainnewfoot. TRUEtransparentalpha insideallopenings/outside. No background/shadow/halo, text/numbers/logo/UI, no wholeowl or materialredesign. DeliverONEcorrectedwholebee.",
+  "tool": "built-in image_gen",
+  "source": "sources/bumblebee.63021405.png",
+  "sourceSha256": "63021405e57bc735da116c1731739a51e212f877193914cbe383f87d69620faa",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/bumblebee.777d2379.png",
+  "sha256": "777d2379b4ad206747d2105411acd4102fd55f8b17c5b6c6bf7bcb15ce8a6cf4",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/anatomy-repair/bumblebee-history.json",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "bumblebee-unselected-original",
+      "file": "qa/anatomy-repair/bumblebee.first-repair.d413e63e.png",
+      "sha256": "d413e63ea096c86d9794aa6759c3bd9676591b448640c2bb8089d828caeedc3f",
+      "role": "Own unselected animal EDIT TARGET for documented anatomy-only correction; exact input retained unchanged."
+    },
+    {
+      "order": 2,
+      "id": "barn-owl",
+      "file": "sources/barn-owl.467770ba.png",
+      "sha256": "467770ba090f84c5ab13551313d41b2fd1c68dac18ebce5f8418dfb530350c60",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/bumblebee-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/bumblebee-exact-tool-result.json"
+}

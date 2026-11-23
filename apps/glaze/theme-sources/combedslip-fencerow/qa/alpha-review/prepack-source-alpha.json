@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "cedar-waxwing",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-9617f11e-111a-4831-883c-e384580b284a.png",
+      "sha256": "d7a8dc95cb4f961a1df8976f5474bb05cf38ab9d47e46c2dbede8030acda7101",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1238,
+        1254
+      ]
+    },
+    {
+      "id": "groundhog",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-8b3deffe-6478-4f23-a7d0-20b196e78095.png",
+      "sha256": "2987f0be4d457e01bc2cca7eab7a253f50a93d5523f4b85d2b82a77d4f445464",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        15,
+        1234,
+        1254
+      ]
+    },
+    {
+      "id": "striped-skunk",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-03a8e63a-f1a3-46d4-9ca1-9c49932685fe.png",
+      "sha256": "5893330067465a710b6a7cb82ca0fb400fa10bc55ce9fec74fef0f11a3d8f351",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1530,
+        1024
+      ]
+    },
+    {
+      "id": "black-swallowtail",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-e0ac248c-ae57-43cb-9df2-d19eeee05aef.png",
+      "sha256": "d0f8e3e8168c731d540ff27ce3a47f09433c07fcd44225e28cceeb76d74769a0",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        14,
+        1536,
+        1011
+      ]
+    },
+    {
+      "id": "milkweed-pods",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-21c862f9-d224-4c1c-b853-eb8026c9495b.png",
+      "sha256": "ef2f06fd71ef79af59e1c06aff3db1bf42f37f24e0cfaf4b6996b7475acaad94",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1236,
+        1254
+      ]
+    }
+  ]
+}

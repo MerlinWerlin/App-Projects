@@ -1,0 +1,62 @@
+[
+  {
+    "id": "kingfisher-reed",
+    "label": "Ring Kingfisher",
+    "kind": "art",
+    "image": "kingfisher-reed.36a85aaf.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "water-vole-sedge",
+    "label": "Marsh Vole",
+    "kind": "art",
+    "image": "water-vole-sedge.0819bb62.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "open-wing-dragonfly",
+    "label": "Ring Dragonfly",
+    "kind": "art",
+    "image": "open-wing-dragonfly.391c58ca.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "yellowflag-iris",
+    "label": "Ring Iris",
+    "kind": "art",
+    "image": "yellowflag-iris.21ff61b3.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  },
+  {
+    "id": "willow-catkin-branch",
+    "label": "Willow Catkins",
+    "kind": "art",
+    "image": "willow-catkin-branch.dab5f093.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper"
+  }
+]

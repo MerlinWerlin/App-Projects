@@ -1,0 +1,18 @@
+{
+  "id": "cloud-shearer",
+  "prompt": "Repair the cropping of this EGLO NIGHTSHIFT cloud-shearer production asset. Keep exactly the same adult worker, two jointed stilts, two arms/handgrips, cloud-harvesting frame and cloud shaving, green/silver reverse-painted scratched silver-leaf glass art process, proportions, pose and fine craft texture. Enlarge the transparent canvas around the figure so the entire TOP ARC of the cloud frame and every part of the subject are fully reconstructed and visible, including the currently clipped frame top. Fit the WHOLE composition into the central70% of a1024x1024 square with at least15% genuine alpha-transparent margin on all four sides. Preserve existing transparency and keep all gaps transparent. No background, paper tile, floor, frame, text, numbers, new props or style change. This is a composition/crop repair only.",
+  "tool": "built-in image_gen",
+  "source": "sources/cloud-shearer.a8ce6dbd.png",
+  "sourceSha256": "a8ce6dbd2f29754dbee5734a29c6e99be59ca8ca4ddac4f3ab58ea558581edde",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/cloud-shearer.8e423cf3.png",
+  "sha256": "8e423cf3b011e3dfdaf2937288c96db882d803ce46a75eb355c7250496e35ee8",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

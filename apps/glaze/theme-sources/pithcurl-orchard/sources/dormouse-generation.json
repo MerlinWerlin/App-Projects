@@ -1,0 +1,20 @@
+{
+  "id": "dormouse",
+  "label": "Peel Dormouse",
+  "tool": "built-in image_gen",
+  "prompt": "ONE original standalone Glaze Nature material prototype for PITHCURL ORCHARD. A whole recognizable HAZEL DORMOUSE, sitting in a soft three-quarter side pose with two round open ears, dark tiny eye, pointed short nose, TWO small forepaws and TWO coherent back feet, a long tail curled up beside its body and one whole tiny hazel leaf. The entire familiar animal is an ingenious physical miniature assembled ONLY from FRESH FLEXIBLE MANDARIN PEEL: saturated tangerine-orange outer skin with large recognizable oil-gland dimples, thick creamy white spongy PITH exposed on every gently curling cut edge and strip underside. Very clearly visible construction from a FEW BROAD CONTINUOUS CURLED PEEL STRIPS, not a solid carved orange mouse: one open rolled oval body shell with its white interior visible at the lower rim; separate broad folded face wedge; folded peel ear cups with white interiors; a long thin peel-strip tail coils in one open spiral with alternating orange outside and creamy pith inside; narrow folded strips make complete paws; leaf is a small folded mandarin-peel leaf silhouette. At least four bold orange/white curl transitions readable at85px. Naturally flexible torn peel edges with irregular pith fibres, moist satin oil-gland skin, no wet droplets or sticky juice. Beautiful tangible fresh-fruit-peel miniature in careful macro product photography with gentle warm modelling light. The medium and curled construction are unmistakable, not a realistic furry animal merely coloured orange, dried brown gourd, smooth clay, painted porcelain, felt, corrugated paper, goldwork or metal. No fruit bowl, orange fruit, cutting board, plate, plinth, plaque, backing rectangle, assembly tools or food props. Complete one animal and leaf centered in CENTRAL68percent canvas width and CENTRAL68percent height, all tail/ears/paw/leaf tips entirely whole with at least13percent quiet margins on a square canvas. True clean transparent alpha background and inside every open curl; no shadows, floor, background color, white halo or stray speckles. Dark eye and nose can be tiny natural dark mandarin pips. No lettering, labels, symbols, clock, date, battery readings or UI. Original artistic peel-sculpture interpretation, not a claim of a real handmade physical artwork.",
+  "source": "sources/dormouse.be0b4539037f.png",
+  "sourceSha256": "be0b4539037fb57995a39136c0db9faee30374df8b535c59ff245bb727717980",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/dormouse.c868a72a.png",
+  "sha256": "c868a72a1d99adcd644b2782c14f058a0c14efd2408570c91b66f55f19a966d7",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent canvas; no crop/recolour/code alpha cleanup or creative pixel edits.",
+  "references": []
+}

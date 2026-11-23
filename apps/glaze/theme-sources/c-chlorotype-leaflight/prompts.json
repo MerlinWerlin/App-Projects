@@ -1,0 +1,133 @@
+{
+  "theme": "c-chlorotype-leaflight",
+  "mode": "built-in image_gen",
+  "ownerSteering": "Recognizable real leaf carriers and whole wildlife photographs within intrinsic green/straw leaf pigment. Distinct fig, round nasturtium, three-leaf heart-shaped linden sprig, curved hosta and paired ginkgo silhouettes. Natural veins continue across every image. Quiet cream Artwork corners and compact natural lobed leaf/vein native fragment. Artistic interpretation, not an authentic chlorotype or measured plant response.",
+  "conceptReferences": [
+    {
+      "url": "https://www.mdpi.com/2673-5636/6/3/41",
+      "scope": "Primary experimental paper: pigment photobleaching within actual leaf tissue versus extracted-pigment anthotype on paper. Text only; no images used."
+    },
+    {
+      "url": "https://www.vam.ac.uk/event/oaJYeO4V/photographic-processes",
+      "scope": "Institutional workshop lists chlorophyll printing separately from anthotype and other photographic techniques. Text only, not proof of visual uniqueness."
+    },
+    {
+      "url": "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A852556-1/general-information",
+      "scope": "Kew botanical morphology text only: broad3to5lobed fig leaf with basal veins."
+    },
+    {
+      "url": "https://www.nhm.ac.uk/discover/robin-erithacus-rubecula.html",
+      "scope": "NHM real robin morphology text only; no photograph used as image-generation input."
+    },
+    {
+      "url": "https://plantnet.rbgsyd.nsw.gov.au/cgi-bin/NSWfl.pl?lvl=sp&name=Tropaeolum~majus&page=nswfl",
+      "scope": "NSW botanical morphology text only: round peltate nasturtium with radiating veins."
+    },
+    {
+      "url": "https://landscapeplants.oregonstate.edu/plants/tilia-cordata",
+      "scope": "University morphology text only: cordate finely serrate linden leaves."
+    },
+    {
+      "url": "https://plants.ces.ncsu.edu/plants/hosta/common-name/hosta/",
+      "scope": "University genus reference text only; no image input."
+    },
+    {
+      "url": "https://www.kew.org/plants/ginkgo-tree",
+      "scope": "Kew morphology text only: naturally lobed fan-shaped ginkgo leaves."
+    }
+  ],
+  "generationGate": "Coordinator PASSED actual fig-leaf/whole-robin full170/85 and existing-process comparisons. Complete four DISTINCT plant/sprig carriers and wildlife, wallpaper/native9/compact ornament. Whole-original uniform containment900within1024 explicitly recorded. No publication.",
+  "prompts": [
+    {
+      "id": "fig-leaf-robin",
+      "type": "art",
+      "label": "Fig Leaf Robin",
+      "prompt": "ONE original square1024px transparent Glaze artwork. A WHOLE REAL common FIG LEAF with FIVE broad natural palmate lobes, gently irregular toothed edges, delicate tiny surface hairs, heart-shaped base and one complete short petiole. Photographed front-on with very slight natural edge curl, thin OPAQUE green plant tissue and fine pale-green branching veins. The unfamiliar photographic process must be clear: a COMPLETE REAL EUROPEAN ROBIN PHOTOGRAPH is formed INSIDE THE LEAF'S OWN PIGMENT by chlorophyll photobleaching. The bird photograph is FLAT WITHIN THE TISSUE: retained deep forest-green pigment supplies photo shadows, bleached pale straw/yellow-green pigment supplies highlights, natural green midtones supply continuous photographic volume. The robin is a whole rounded small songbird perched in side-three-quarter view on one short thin twig, short fine pointed beak, ordinary small eye, plump chest, folded wing, complete tail and TWO tiny feet visible, every endpoint wholly inside the broad central leaf area. Bird picture occupies roughly60PERCENT of the leaf height so the whole recognizable bird still reads at85px. Strong clear whole-bird photo silhouette and natural photographic feather tones, not a vague portrait smudge. The leaf's fine natural veins CONTINUE ACROSS the entire wildlife image; leaf grain and tissue remain visible in all its highlights and shadows. The photographic image has NO rectangular edge, inset panel, badge, outline, border or paper patch; it emerges seamlessly from real leaf pigment-density variations. Do NOT place a separate real/sculpted bird ON the leaf, make the leaf animal-shaped, attach a decal, add ink/paint/engraved hatching, foil, raised emboss, resin, glass or dye coating. No red painted chest: the photographic robin uses ONLY the intrinsic green/straw leaf tones. No backlit luminous membrane, X-ray, fluorescent glow, dots, grain filter, shadow theatre or abstract body construction. Leaf veins are normal tissue, not drawn circuit lines. Calm beautiful recognizable REAL nature, no fantasy creature. WHOLE leaf, all five lobe tips and petiole comfortably within CENTRAL72PERCENT of the canvas, generous TRUE ALPHAZERO exterior and natural gaps. No paper sheet, backing plate, frame, surface/floor, cast shadow, glow, exterior haze, extra leaves, other animals, text, label, logo, UI, clock/date/battery/weather value or watermark. Digital artistic chlorotype interpretation, not an authentic physical print or measured species response."
+    },
+    {
+      "id": "nasturtium-frog",
+      "type": "art",
+      "label": "Nasturtium Frog",
+      "prompt": "ONE original transparent square1024px Glaze artwork, SUNHELD LEAVES. Recognizable REAL plant carrier with an entire recognizable REAL wildlife PHOTOGRAPH formed INSIDE ITS OWN PIGMENT by chlorophyll photobleaching. Carrier is normal thin OPAQUE living green leaf tissue with natural surface grain and veins. Retained deep forest-green pigment forms photo shadows; bleached pale straw/yellow-green pigment forms highlights, natural green midtones form smooth continuous photographic volume. The wildlife image is FLAT WITHIN leaf tissue, not a real creature standing on it. Leaf veins and tissue grain continue visibly ACROSS the full photograph. No rectangular photo edge, border, inset panel, badge, printed paper, ink/paint/decal, engraving/hatching, raised emboss, foil, metal, resin, glass, sculpture, backlit membrane, fluorescence, X-ray, artificial grain or magical glow. Whole wildlife photo must be large and clearly recognizable at85px with ALL its head/feet/tail/wing/antenna endpoints INSIDE the actual main leaf. It uses ONLY intrinsic green/straw tones, no separate coloured animal. The entire distinct plant carrier, each leaf edge/tip and whole petiole/stem lie inside CENTRAL74PERCENT of the square with generous true ALPHAZERO exterior and natural gaps. No floor, cast shadow, backing plate, background/haze/cloud, extra animal, text, label, diagram, number, UI or readings. Photographic natural tissue is fundamental; no leaf-shaped invented animal. Digital artistic chlorotype interpretation, not an authentic physical print or measured species-specific response. ONE whole ROUND PELTATE NASTURTIUM LEAF, slightly tilted, broad gently scalloped circular blade and a slender curved petiole emerging naturally from the underside near its centre and extending downward-left. Radiating pale-green veins, matte natural green tissue. INSIDE this one leaf pigment is the large complete photographic image of ONE familiar COMMON FROG in a broad low front-three-quarter CROUCH: rounded short trunk, two eyes, two front arms planted, two long hind legs folded, every foot/toe whole. Frog photo takes roughly65PERCENT of leaf height, clear head/body/folded hind limbs, no bones visible, no skeleton or red/blue anatomy. All tonal differences are green/straw bleaching, not frog paint or an actual frog on top of a lily pad. Outer circle is a real irregular leaf, not a coin, medallion or circular frame."
+    },
+    {
+      "id": "linden-sprig-squirrel",
+      "type": "art",
+      "label": "Linden Sprig Squirrel",
+      "prompt": "ONE original transparent square1024px Glaze artwork, SUNHELD LEAVES. Recognizable REAL plant carrier with an entire recognizable REAL wildlife PHOTOGRAPH formed INSIDE ITS OWN PIGMENT by chlorophyll photobleaching. Carrier is normal thin OPAQUE living green leaf tissue with natural surface grain and veins. Retained deep forest-green pigment forms photo shadows; bleached pale straw/yellow-green pigment forms highlights, natural green midtones form smooth continuous photographic volume. The wildlife image is FLAT WITHIN leaf tissue, not a real creature standing on it. Leaf veins and tissue grain continue visibly ACROSS the full photograph. No rectangular photo edge, border, inset panel, badge, printed paper, ink/paint/decal, engraving/hatching, raised emboss, foil, metal, resin, glass, sculpture, backlit membrane, fluorescence, X-ray, artificial grain or magical glow. Whole wildlife photo must be large and clearly recognizable at85px with ALL its head/feet/tail/wing/antenna endpoints INSIDE the actual main leaf. It uses ONLY intrinsic green/straw tones, no separate coloured animal. The entire distinct plant carrier, each leaf edge/tip and whole petiole/stem lie inside CENTRAL74PERCENT of the square with generous true ALPHAZERO exterior and natural gaps. No floor, cast shadow, backing plate, background/haze/cloud, extra animal, text, label, diagram, number, UI or readings. Photographic natural tissue is fundamental; no leaf-shaped invented animal. Digital artistic chlorotype interpretation, not an authentic physical print or measured species-specific response. ONE short natural diagonal LINDEN TWIG with THREE distinctly sized HEART-SHAPED leaves, asymmetrical heart bases, pointed tips and fine serrated margins. One large foreground leaf dominates75PERCENT of the carrier; two much smaller plain leaves overlap behind it towards upper-right, connected through real slender petioles. Do not make three equal portrait panels. INSIDE the large foreground leaf pigment is ONE complete real RED SQUIRREL photo sitting upright in side-three-quarter view, small pointed ears, normal dark eye, two small forepaws held at chest, two hind feet and ONE large bushy tail curling naturally up its side. Whole squirrel and complete tail/feet occupy roughly70PERCENT of the large leaf height, clearly distinct from a bird pose. Natural photo fur tones are intrinsic green/straw; no red paint, no separate squirrel sitting on the twig, no leaf made into a squirrel. Two smaller leaves stay naturally green with vein detail, no repeated animal image."
+    },
+    {
+      "id": "curled-hosta-snail",
+      "type": "art",
+      "label": "Curled Hosta Snail",
+      "prompt": "ONE original transparent square1024px Glaze artwork, SUNHELD LEAVES. Recognizable REAL plant carrier with an entire recognizable REAL wildlife PHOTOGRAPH formed INSIDE ITS OWN PIGMENT by chlorophyll photobleaching. Carrier is normal thin OPAQUE living green leaf tissue with natural surface grain and veins. Retained deep forest-green pigment forms photo shadows; bleached pale straw/yellow-green pigment forms highlights, natural green midtones form smooth continuous photographic volume. The wildlife image is FLAT WITHIN leaf tissue, not a real creature standing on it. Leaf veins and tissue grain continue visibly ACROSS the full photograph. No rectangular photo edge, border, inset panel, badge, printed paper, ink/paint/decal, engraving/hatching, raised emboss, foil, metal, resin, glass, sculpture, backlit membrane, fluorescence, X-ray, artificial grain or magical glow. Whole wildlife photo must be large and clearly recognizable at85px with ALL its head/feet/tail/wing/antenna endpoints INSIDE the actual main leaf. It uses ONLY intrinsic green/straw tones, no separate coloured animal. The entire distinct plant carrier, each leaf edge/tip and whole petiole/stem lie inside CENTRAL74PERCENT of the square with generous true ALPHAZERO exterior and natural gaps. No floor, cast shadow, backing plate, background/haze/cloud, extra animal, text, label, diagram, number, UI or readings. Photographic natural tissue is fundamental; no leaf-shaped invented animal. Digital artistic chlorotype interpretation, not an authentic physical print or measured species-specific response. ONE whole BROAD OBLONG HOSTA LEAF in a gently curved diagonal pose, slender complete petiole at lower-left, broad oval central blade, a long tapering tip curling gently towards upper-right. Normal arching near-parallel lateral veins, fine leaf grain and a modest natural rolled edge; no folded paper ribbon. INSIDE the widest flat central tissue area is ONE large complete garden SNAIL photographic image in side view, recognizably coiled round shell above a long natural foot, head with two long eye-bearing upper tentacles and two much shorter lower feelers, all whole. Snail photographic body runs along the leaf blade; image fills about75PERCENT of the available central width and has clear shell/head/foot shape at85px. No separate physical snail on the leaf, no slime trail outside the photo, no insect legs, no bones, no cartoon outline. Leaf veins visibly cross the photo shell and foot."
+    },
+    {
+      "id": "ginkgo-pair-butterfly",
+      "type": "art",
+      "label": "Ginkgo Pair Butterfly",
+      "prompt": "ONE original transparent square1024px Glaze artwork, SUNHELD LEAVES. Recognizable REAL plant carrier with an entire recognizable REAL wildlife PHOTOGRAPH formed INSIDE ITS OWN PIGMENT by chlorophyll photobleaching. Carrier is normal thin OPAQUE living green leaf tissue with natural surface grain and veins. Retained deep forest-green pigment forms photo shadows; bleached pale straw/yellow-green pigment forms highlights, natural green midtones form smooth continuous photographic volume. The wildlife image is FLAT WITHIN leaf tissue, not a real creature standing on it. Leaf veins and tissue grain continue visibly ACROSS the full photograph. No rectangular photo edge, border, inset panel, badge, printed paper, ink/paint/decal, engraving/hatching, raised emboss, foil, metal, resin, glass, sculpture, backlit membrane, fluorescence, X-ray, artificial grain or magical glow. Whole wildlife photo must be large and clearly recognizable at85px with ALL its head/feet/tail/wing/antenna endpoints INSIDE the actual main leaf. It uses ONLY intrinsic green/straw tones, no separate coloured animal. The entire distinct plant carrier, each leaf edge/tip and whole petiole/stem lie inside CENTRAL74PERCENT of the square with generous true ALPHAZERO exterior and natural gaps. No floor, cast shadow, backing plate, background/haze/cloud, extra animal, text, label, diagram, number, UI or readings. Photographic natural tissue is fundamental; no leaf-shaped invented animal. Digital artistic chlorotype interpretation, not an authentic physical print or measured species-specific response. TWO whole natural GINKGO LEAVES on one short forked petiole arrangement: one broad foreground fan and one smaller fan overlapping behind at upper-left. Each has naturally wavy outer fan edge, a modest central notch and fine dichotomously branching veins radiating from its petiole; not a five-lobed fig or maple. Foreground fan dominates and carries ONE entire natural small TORTOISESHELL BUTTERFLY PHOTO in full dorsal open-wing view, FOUR complete wings, narrow body, two fine antennae and whole wing margins. Clear familiar butterfly silhouette with natural softly patterned photographic wing tones, spanning roughly70PERCENT of the foreground fan width. Green/straw pigment only, fine leaf veins continue visibly through its whole photographic wings. Smaller rear fan is plain natural green tissue with no repeated butterfly. No actual insect perched in3D, extra wings, detached petiole, gilding or decorative paper fans."
+    },
+    {
+      "id": "wallpaper",
+      "type": "wallpaper",
+      "label": "Sunheld Leaves Arrangement",
+      "prompt": "COMPOSITION-ONLY pullback of our own Sunheld Leaves wallpaper. Preserve ALL FIVE EXACT leaf/sprig identities and the WHOLE photographic wildlife inside their green/straw pigment: fig/robin, round nasturtium/frog, three-leaf linden/squirrel, curled hosta/snail and paired ginkgo/butterfly. Natural veins continue through all animal photos; no separate physical wildlife. Scale the ENTIRE CONNECTED FIVE-CARRIER ARRANGEMENT down35PERCENT as ONE group and move it slightly lower. Every lobe, petiole, twig endpoint, fan edge, leaf tip and soft contact shadow must lie inside CENTRAL60PERCENT width(x20to80percent) and BETWEEN44AND72PERCENT of portrait height. Whole animals remain visible inside the leaves, no overlap hides a head/foot/tail/wing. Upper42percent and bottom25percent become quiet uninterrupted pale warm cream #F0E4C5/#D9D1B8 matching existing field, broad clear side margins too. Continue the exact subtle natural ground around the smaller arrangement; no new leaves, objects, animals, text or borders. Keep differing natural orientations and one organic still-life group, not five framed panels. Do NOT crop carriers to force fit, redraw wildlife, add pigment colours, remove branching veins, apply ink/decal/foil/engraving, or harden leaf tissue into glass/plastic/sculpture. Original thin opaque actual leaf surfaces and flat photographic images must stay intact. Four supplementary own references preserve nasturtium/frog, linden/squirrel, hosta/snail and ginkgo/butterfly; fig/robin preserved from our existing scene. Portrait1290x2796, all shapes safe in shorter750x1334 centre crop as well. No UI, clock/date/battery/weather values, labels, signature or frame. Artistic chlorotype interpretation, not a real physical print.",
+      "internalArtworkReferences": [
+        {
+          "id": "fig-leaf-robin",
+          "sourceImage": "sources/fig-leaf-robin.727bfb5a466f.png",
+          "sha256": "727bfb5a466f23162b3fbed812c26d3cd9b39725bb0cd6c3243956bb99a7c9aa"
+        },
+        {
+          "id": "nasturtium-frog",
+          "sourceImage": "sources/nasturtium-frog.fe023ed89286.png",
+          "sha256": "fe023ed89286b347864cbf4776105707737f3ea9d36a23536ad73d3a3e4ca8e8"
+        },
+        {
+          "id": "linden-sprig-squirrel",
+          "sourceImage": "sources/linden-sprig-squirrel.81070af56fb0.png",
+          "sha256": "81070af56fb073d83356edfee252a4ccec407b09dc38815e17d31b43b17dded8"
+        },
+        {
+          "id": "curled-hosta-snail",
+          "sourceImage": "sources/curled-hosta-snail.cec79d1e3ed0.png",
+          "sha256": "cec79d1e3ed096ea991553c34305a508d65b1ab185be916724feb3394587279d"
+        },
+        {
+          "id": "ginkgo-pair-butterfly",
+          "sourceImage": "sources/ginkgo-pair-butterfly.7d93ad0fbc39.png",
+          "sha256": "7d93ad0fbc395590c6808cbb50f42634e6337a6482b70d625dcb3b6bdb3446d6"
+        }
+      ],
+      "initialPrompt": "ONE original opaque portrait1290x2796 phone wallpaper for GLAZE SUNHELD LEAVES. One quiet organic still-life arrangement of FIVE DIFFERENT REAL chlorotype leaves/sprigs resting naturally on a very pale warm matte limestone-coloured field #F0E4C5/#D9D1B8. Exact own references: IMAGE1=five-lobed FIG LEAF carrying one WHOLE robin photographic image;IMAGE2=ROUND PELTATE NASTURTIUM leaf with long curved petiole carrying one WHOLE crouched frog photograph;IMAGE3=short LINDEN twig with THREE heart-shaped leaves, ONE large leaf carrying whole upright squirrel and bushy tail, two smaller plain leaves;IMAGE4=long curved HOSTA blade with gently rolled tip carrying a WHOLE snail/shell/foot/tentacle photo;IMAGE5=TWO forked GINKGO fans, foreground fan carrying one WHOLE open-wing butterfly/antennae photo and rear fan plain. These are PHOTOGRAPHS WITHIN REAL LEAF PIGMENT, flat green/straw image tones inside continuous opaque actual plant tissue. Natural veins visibly cross every animal image. Never create separate physical bird/frog/squirrel/snail/butterfly standing on the leaves, animal-shaped leaves, printed paper, panels, badges, decals, foil, metal, resin/glass, paint, engraving or skeletons. Preserve ALL pictured animals whole within their leaf surfaces, and each complete leaf/sprig edge, lobe, leaf tip, stem and petiole whole. Arrange in ONE gentle coherent asymmetric arc, not a five-image contact sheet, evenly spaced row, collage panels or specimens mounted on rectangular pages. Slightly different natural orientations, very soft shallow leaf-to-ground contact shadows confined to the small group. Animal-photo areas and leaf tips do not cover one another. VERY DISTANT SMALL COMPOSITION: the ENTIRE five-carrier arrangement and every petiole/twig/fan tip inside CENTRAL60PERCENT width (x20to80percent), BETWEEN45AND72PERCENT of image height. Fig/robin rear-left aroundx35/y51;linden/squirrel rear-right aroundx62/y51;round nasturtium/frog front-left aroundx31/y63;curled hosta/snail diagonal front-centre aroundx49/y66;paired ginkgo/butterfly front-right aroundx66/y63. Every carrier is small enough to be whole, while its photographic wildlife remains readable. Upper43percent and bottom25percent EMPTY quiet warm cream field, broad side margins, no extra leaves or busy texture there. Original green/straw botanical photo-pigment details and fine normal veins throughout, no additional animal images or plants. Calm warm natural light, no glitter/glow. Safe for tall1290x2796 and shorter750x1334 centre crops. No text, labels, signature, words, numbers, clocks/date/battery/weather values, UI, logos, frame, border or phone mockup. Digital artistic chlorotype interpretation, not an authentic physical print or measured plant response.",
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-framing-study/first-large-arrangement-unselected.88fd95e21d61.png",
+        "sha256": "88fd95e21d615a44c4b70c03435d83e8146ebe2a12a0349a9ccdf4e1a836e3ee"
+      },
+      "editSupportReferences": [
+        {
+          "id": "nasturtium-frog",
+          "sourceImage": "sources/nasturtium-frog.fe023ed89286.png",
+          "sha256": "fe023ed89286b347864cbf4776105707737f3ea9d36a23536ad73d3a3e4ca8e8"
+        },
+        {
+          "id": "linden-sprig-squirrel",
+          "sourceImage": "sources/linden-sprig-squirrel.81070af56fb0.png",
+          "sha256": "81070af56fb073d83356edfee252a4ccec407b09dc38815e17d31b43b17dded8"
+        },
+        {
+          "id": "curled-hosta-snail",
+          "sourceImage": "sources/curled-hosta-snail.cec79d1e3ed0.png",
+          "sha256": "cec79d1e3ed096ea991553c34305a508d65b1ab185be916724feb3394587279d"
+        },
+        {
+          "id": "ginkgo-pair-butterfly",
+          "sourceImage": "sources/ginkgo-pair-butterfly.7d93ad0fbc39.png",
+          "sha256": "7d93ad0fbc395590c6808cbb50f42634e6337a6482b70d625dcb3b6bdb3446d6"
+        }
+      ],
+      "generationStage": "Initial exact-own-five-reference arrangement, then one35percent own-scene pullback with four own-art supports; no creative code editing."
+    }
+  ]
+}

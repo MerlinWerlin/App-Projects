@@ -1,0 +1,1 @@
+The third wallpaper layout was requested by the coordinator after the prior scene passed clipping but occupied too little of the screen height. The exact own prior scene is retained as sole input. The original before any pullback remains in qa/layout-repair. All artwork and native assets retained by hash.

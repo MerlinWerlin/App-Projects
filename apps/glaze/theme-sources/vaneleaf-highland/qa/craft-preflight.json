@@ -1,0 +1,11 @@
+{
+  "id":"vaneleaf-highland",
+  "lane":"B24",
+  "category":"Nature",
+  "process":"Cut-and-laid feather mosaics, flat overlapping clipped feather-vane pieces with narrow shafts, actual parallel barbs and slightly lifted delicate edges",
+  "subjects":["ibex-bellflower","marmot-saxifrage","chough-juniper","edelweiss-rosette","scarab-gentian"],
+  "world":"Recognisable highland flora/fauna built by artisans as thin feather mosaics, not feather-covered living hybrid creatures or smooth rendered toys. Original marine proposal changed BEFORE images to diversify setting alongside coordinator A9 pellicle shoal.",
+  "baselineSearch":"Specific full themes/ and pack-artwork/ provenance+metadata process search returned0. Broader feather/plumage/quill search returned17neighbor files: inspected actual style/subject prompts. Cobalt Ribbon uses a sculptural cobalt-anodized METAL feather; Saltveil natural salt-crystal-encrusted feather; Juniper Mist natural wren plumage; Plume Court porcelain/metal inlaid coffer. Other hits are natural bird/insect anatomy, negative exclusions, quilled paper, yarn, raffia, mineral/glass animals or feathered-mist metaphor. No clipped-feather mosaic construction found. Coordinator independently compared broader published baseline and approved Vaneleaf Highland before generation, replacing the ungenerated Lagoon proposal.",
+  "distinctFrom":["Bobbin lace and pin-thread string art: continuous feather vanes with barbs beside shafts, no thread knots/pins/chords","Dry wood-wool: soft flat feather vanes/barbs, no brittle shaved wood or grain/splinters","Flock/felt/plush: thin unpadded clipped pieces, no upright pile or stuffed forms"],
+  "cornerCompanion":"Three short paired feather barb cuts along one little vane tip, no complete marine animal in headers."
+}

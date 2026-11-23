@@ -1,0 +1,18 @@
+{
+  "id": "tidal-inversion",
+  "prompt": "ONE original separate1024x1024 square pure artwork for Glaze WAXWAKE. TIDAL INVERSION: four unequal angular rhombus-shaped dye reservoirs arranged as a crooked descending chain, their corners merge through one continuous wide CREAM reserved S-channel that loops back across itself exactly once. Upper reservoir mostly rust, second ochre, third indigo with teal core, smallest lower one split into two blunt tips. Three dramatically different cutout gaps between them keep a bold long diagonal silhouette. Invented impossible current-world, not jewellery, kites, banner, animal, leaves, letter, tool or real geographical map. Entire design a FLAT WAX-RESIST BATIK on thin fine plain-weave cotton: visible dye penetrating cloth, fine irregular black wax-crackle branching through warm reserves, hand-drawn melted resist boundaries with cream halos and uneven pooling. Palette indigo #122E5C, ochre #C48C35, rust #A54832, cream #F3E2BC, teal #4E8B87. Thin irregular textile edge follows shape. No sewing, embroidery, patchwork seams, raised relief, fleece or3D sculpture. Whole form central65%,18% real transparent alpha margins, exterior/gaps transparent. No square cloth backing, backdrop, floor, stand, frame, text, numerals, logos, UI, map labels, clock/date/battery/weather values. One individual artwork, no collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/tidal-inversion.dd24ba24.png",
+  "sourceSha256": "dd24ba24c129437c10c3f626f854c3b0e6cd320c157cb7b24a9a381a623701df",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/tidal-inversion.194a5948.png",
+  "sha256": "194a594887ca2e6d53a23cdfe32b2fba6b8c0453c4f6c45250163003cb01084c",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

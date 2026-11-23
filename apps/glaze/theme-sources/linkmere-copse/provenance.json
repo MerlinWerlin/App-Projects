@@ -1,0 +1,175 @@
+{
+  "theme": "linkmere-copse",
+  "created": "2026-11-23",
+  "lane": "A",
+  "medium": "Coarse interlinked open blackened-steel wire-ring nature sculpture",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "kingfisher-reed",
+      "label": "Ring Kingfisher",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: original nature artwork for one small Glaze Artwork selection. GLAZE LINKMERE COPSE. Generate ONE whole recognizable KINGFISHER perched sideways facing left on ONE short slanting reed with two narrow leaves. Complete long pointed bill, domed head with ONE visible tiny dark eye, folded wing, full short tail, both feet gripping the reed, all leaf tips and both reed ends fit fully inside the image. Beautiful precise natural silhouette and poised anatomy, not an equipment theme. Distinct foreground medium: an exquisite shallow physical sculpture MADE ENTIRELY OF COARSE INTERLINKED OPEN BLACKENED-STEEL WIRE RINGS, mail construction, photographed in soft diffuse studio macro light. Individual round rings really loop through neighboring rings, visible overlapped wire joints and alternating tilted rows. The steel wire is charcoal-black with thin worn SILVER edge glints, restrained cool gray reflections, no gold or copper. Ring holes are large, truly empty and see-through. Use only about FIVE TO SEVEN RINGS across the broad torso, not fine hundreds of tiny mesh dots; thick enough wire and big overlapping round holes must remain unmistakable at an85px thumbnail. Shape the full bird/reed/leaves out of these physical interlinked hollow rings; the folded wing changes ring-row direction. A few short tapered dark steel strips may form the bill tip and feet, but no continuous opaque animal body underneath the ring mesh. No smooth metal skin, enamel fill, cloth backing, lace threads, beads, solid coils/tubes, woven flat ribbons, sculpted feathers, stamped mesh texture printed on a solid object, armor, clothing, helmet, chain props or jewelry medallion. Real depth at each ring crossing, open air between wire loops, slight shallow sculptural roundness. No background scene, floor, pedestal, cast shadow, aura, halo, smoke, scattered fragments, text, letters, numerals, logos, frames, clock face, UI or watermark. ONE independent complete artwork, not a contact sheet or panel. Center the ENTIRE composition with generous clean transparent breathing room; all non-subject pixels and ring holes are pure alpha zero. Transparent background. Artistic invented construction, not an authentic historical object or specimen photograph.",
+      "source": "sources/kingfisher-reed.bfbd44f5a859.png",
+      "sourceSha256": "bfbd44f5a85967c5081101a2f6888408461adca320da281fbc03878560b614f5",
+      "sourceDimensions": [
+        1312,
+        1199
+      ],
+      "selectedFile": "widgets/kingfisher-reed.36a85aaf.png",
+      "sha256": "36a85aaf9ef4b189cad38312f9be7d050936e4258a213e4d37987ed26e985d06",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, stretch, recolour, alpha cleanup or creative pixel edits.",
+      "references": []
+    },
+    {
+      "id": "water-vole-sedge",
+      "label": "Marsh Vole",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE brand-new independent whole NATURE artwork for Glaze Linkmere Copse. The supplied OWN first image establishes only the physical material and lighting: COARSE interlinked OPEN BLACKENED-STEEL WIRE RINGS, charcoal steel with narrow worn SILVER edge glints and softly rounded wire. Every ring genuinely loops through neighboring round rings, visible overlaps, large empty air holes, alternating tilted rows. Shallow sculptural depth, soft diffuse macro studio photograph. Only about FIVE TO SEVEN large rings across the broadest form, not fine tiny mesh. The complete subject is made of interlinked hollow rings, no continuous opaque body, skin, fabric or smooth metal backing underneath. A few short tapered steel tips may make small anatomical/plant endpoints, but no gold, copper, colored enamel, beads, filled coils/tubes, flat woven ribbons, thread lace, stamped texture, armor/equipment/jewelry or medallion. THIS IS A NEW SUBJECT, not a modification or continuation of the bird in the reference. Transparent background, truly alpha-zero ring holes and all non-subject pixels. Entire whole composition and ALL tips/endpoints fully within the canvas, centered with clean generous transparent margin. No scene, ground, floor, cast shadow, pedestal, halo, haze, debris, text, numerals, UI, frames, logos or watermark. One independent asset, no panels/contact sheet. Artistic invented material construction, no authentic physical-object or specimen claim. SUBJECT: ONE whole compact water vole seated in profile facing right beside ONE short sedge shoot. Two small rounded ears, one visible dark eye, small blunt snout, two short forepaws held near chest, both hindfeet and a medium curved tail about half its body length, entire tail tip visible. Coarse ring-row directions describe the round belly, folded haunch and head. Sedge has only two narrow leaves. No bird, wings, bill, feathers or frog parts.",
+      "source": "sources/water-vole-sedge.21aa385c5d82.png",
+      "sourceSha256": "21aa385c5d822de3f0b4623ee741aeecd22a80192bd640f40af205dbeafe0032",
+      "sourceDimensions": [
+        1312,
+        1199
+      ],
+      "selectedFile": "widgets/water-vole-sedge.0819bb62.png",
+      "sha256": "0819bb62984fc2b7be300dfdf07b52b5ab30258c1dc95b00cc9a12ab990fca2d",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, stretch, recolour, alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/kingfisher-reed.bfbd44f5a859.png",
+          "sha256": "bfbd44f5a85967c5081101a2f6888408461adca320da281fbc03878560b614f5",
+          "purpose": "Own accepted material reference or exact own anatomical-edit target; no external image."
+        }
+      ]
+    },
+    {
+      "id": "open-wing-dragonfly",
+      "label": "Ring Dragonfly",
+      "tool": "built-in image_gen",
+      "prompt": "Edit ONLY this OWN original open-steel-ring dragonfly. Preserve its four complete ring-mesh wings, long tapering ring abdomen, head, two eyes, TWO ANTENNAE, material, lighting, pose and all existing open holes. Correct the visible leg count: it currently has four visible legs (an upper pair and a lower pair). Add ONE additional distinct short bent STEEL LEG on EACH side of the thorax BETWEEN those pairs, so there are SIX clearly visible legs in THREE PAIRS. The two antennae on top of the head are not legs. Each new middle leg should attach visibly to its side of the central thorax, project a little into open air under a wing root and bend downward to a separate fine steel tip. Keep the existing upper and lower pairs. Do not add any extra wings, antennae, animals, text or props. Keep all six leg tips inside the canvas with transparent room. Keep the entire original subject and pure transparent background/holes; no floor, haze, glow, shadow or opaque membrane. Make only the needed anatomical correction, without redesigning the sculpture.",
+      "source": "sources/open-wing-dragonfly.6c371b822907.png",
+      "sourceSha256": "6c371b822907abf074c1e68e5d7bf579171c99ef115ad7ae25fa00c4b215eb80",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/open-wing-dragonfly.391c58ca.png",
+      "sha256": "391c58ca9858dda3c9f0643f5882d4f255e49c2532a4fb359011e1d6e145103e",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, stretch, recolour, alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "qa/anatomy-repair/unselected-four-visible-legs.43bb41a1daf2.png",
+          "sha256": "43bb41a1daf2c07b0e0bd646e5e24307fcfd3d52eb354d71df34fa3ebe7868ab",
+          "purpose": "Own accepted material reference or exact own anatomical-edit target; no external image."
+        }
+      ],
+      "generationHistory": "qa/anatomy-repair/generation-history.json"
+    },
+    {
+      "id": "yellowflag-iris",
+      "label": "Ring Iris",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE brand-new independent whole NATURE artwork for Glaze Linkmere Copse. The supplied OWN first image establishes only the physical material and lighting: COARSE interlinked OPEN BLACKENED-STEEL WIRE RINGS, charcoal steel with narrow worn SILVER edge glints and softly rounded wire. Every ring genuinely loops through neighboring round rings, visible overlaps, large empty air holes, alternating tilted rows. Shallow sculptural depth, soft diffuse macro studio photograph. Only about FIVE TO SEVEN large rings across the broadest form, not fine tiny mesh. The complete subject is made of interlinked hollow rings, no continuous opaque body, skin, fabric or smooth metal backing underneath. A few short tapered steel tips may make small anatomical/plant endpoints, but no gold, copper, colored enamel, beads, filled coils/tubes, flat woven ribbons, thread lace, stamped texture, armor/equipment/jewelry or medallion. THIS IS A NEW SUBJECT, not a modification or continuation of the bird in the reference. Transparent background, truly alpha-zero ring holes and all non-subject pixels. Entire whole composition and ALL tips/endpoints fully within the canvas, centered with clean generous transparent margin. No scene, ground, floor, cast shadow, pedestal, halo, haze, debris, text, numerals, UI, frames, logos or watermark. One independent asset, no panels/contact sheet. Artistic invented material construction, no authentic physical-object or specimen claim. SUBJECT: ONE whole recognizable iris plant: a single large open iris flower showing three broad drooping falls and three upright narrower standards, one closed side bud, full slender stem and TWO tall pointed sword leaves. All petals are curved OPEN STEEL RING MESH planes with clear empty ring holes and worn silver wire rims; soft bend and varied orientations describe the flower. Entire stalk bottom and every petal and leaf tip visible. This is PLANT ONLY: no animal, eye, face, bird, wings, feet or feathers.",
+      "source": "sources/yellowflag-iris.9d873fdcfaef.png",
+      "sourceSha256": "9d873fdcfaef9bcd6c32f41ee598db246f6f93d29d6fbc76b9961277b1fce0b9",
+      "sourceDimensions": [
+        1024,
+        1536
+      ],
+      "selectedFile": "widgets/yellowflag-iris.21ff61b3.png",
+      "sha256": "21ff61b3f3fe782f81c6d0dbb0232a345fc30100608e7c04983ccaf09b979a24",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, stretch, recolour, alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/kingfisher-reed.bfbd44f5a859.png",
+          "sha256": "bfbd44f5a85967c5081101a2f6888408461adca320da281fbc03878560b614f5",
+          "purpose": "Own accepted material reference or exact own anatomical-edit target; no external image."
+        }
+      ]
+    },
+    {
+      "id": "willow-catkin-branch",
+      "label": "Willow Catkins",
+      "tool": "built-in image_gen",
+      "prompt": "Create ONE brand-new independent whole NATURE artwork for Glaze Linkmere Copse. The supplied OWN first image establishes only the physical material and lighting: COARSE interlinked OPEN BLACKENED-STEEL WIRE RINGS, charcoal steel with narrow worn SILVER edge glints and softly rounded wire. Every ring genuinely loops through neighboring round rings, visible overlaps, large empty air holes, alternating tilted rows. Shallow sculptural depth, soft diffuse macro studio photograph. Only about FIVE TO SEVEN large rings across the broadest form, not fine tiny mesh. The complete subject is made of interlinked hollow rings, no continuous opaque body, skin, fabric or smooth metal backing underneath. A few short tapered steel tips may make small anatomical/plant endpoints, but no gold, copper, colored enamel, beads, filled coils/tubes, flat woven ribbons, thread lace, stamped texture, armor/equipment/jewelry or medallion. THIS IS A NEW SUBJECT, not a modification or continuation of the bird in the reference. Transparent background, truly alpha-zero ring holes and all non-subject pixels. Entire whole composition and ALL tips/endpoints fully within the canvas, centered with clean generous transparent margin. No scene, ground, floor, cast shadow, pedestal, halo, haze, debris, text, numerals, UI, frames, logos or watermark. One independent asset, no panels/contact sheet. Artistic invented material construction, no authentic physical-object or specimen claim. SUBJECT: ONE whole short gently arching willow twig carrying THREE hanging plump cylindrical catkins and FIVE long narrow pointed leaves at varied angles. Large overlapping open steel rings make the twig and hollow catkins; sparse ring-mesh planes form the leaves, with fine short steel tips only at endpoints. Distinct catkin silhouettes, all five leaf tips, both twig ends and each catkin end fully visible. PLANT ONLY: no animal, eye, face, bird, wings, feet or feathers.",
+      "source": "sources/willow-catkin-branch.598ab0b9c10c.png",
+      "sourceSha256": "598ab0b9c10c65312d958489462ceca2a3dafb01091343d33eea6f41a903906e",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "selectedFile": "widgets/willow-catkin-branch.dab5f093.png",
+      "sha256": "dab5f0932b3ca23cbe0a43d1094075678fa30851fef1a2983880ec635250c24b",
+      "dimensions": [
+        1200,
+        1200
+      ],
+      "processing": "Uniform whole-original containment within1100px on1200px transparent square. No crop, stretch, recolour, alpha cleanup or creative pixel edits.",
+      "references": [
+        {
+          "file": "sources/kingfisher-reed.bfbd44f5a859.png",
+          "sha256": "bfbd44f5a85967c5081101a2f6888408461adca320da281fbc03878560b614f5",
+          "purpose": "Own accepted material reference or exact own anatomical-edit target; no external image."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "ONE original tall portrait PHONE WALLPAPER for Glaze Linkmere Copse, in a very tall1290:2796 composition. Use these FOUR OWN artwork references only for their same coarse interlinked OPEN BLACKENED-STEEL RING construction and recognizable subjects. Compose a coherent tall riverbank sculpture: one whole kingfisher perched on a long slanting linked-ring reed in the upper-middle left, a seated whole water vole with its full curved tail in the lower-right, a tall open iris with full stalk/two leaves and bud rising on the left, and an open willow twig with hanging catkins forming a loose arch in the upper-right. All things consist of real overlapping charcoal steel wire rings with worn SILVER edges and large see-through round holes. Soft diffuse studio macro detail, small restrained highlights. Quiet uniform pale blue-gray background #C3D1D1 with only the faintest broad tonal variation; no scenery/photo behind, no waterline, no horizon, ground slab, cast shadow or frame. Art is a tall airy physical composition, not objects scattered as icons. SCENE FRAMING IS CRITICAL: on the RAW portrait canvas, the complete scene occupies the CENTRAL SIXTY-TWO PERCENT of total width, from approximatelyx19% to81%, with genuinely EMPTY side fields outside it. Keep even the outermost leaf tips, bill tip, tail and reed ends within that central62% span. The scene has real vertical presence from abouty16% to87% of canvas height. Large and tall, not a tiny island and not squashed into a low band. The ring architecture remains coarse and visible. Layer the full subjects along one narrow vertical habitat spine. Leave quiet open uppermost area. All subjects, leaf tips and tails must remain COMPLETE in narrow phone crops; do not run anything off the raw edges. No duplicate kingfisher/vole, no butterfly/dragonfly, no armor, equipment, jewelry, whole ring-frame medallion, gold/copper/enamel/cloth backing, numbers, clock faces, UI, labels, text, logos or watermark. Opaque full-background portrait wallpaper. Artistic invented wire construction, no authentic handmade-object or specimen claim.",
+      "source": "sources/wallpaper.b2bc2def8337.png",
+      "sourceSha256": "b2bc2def8337dcaa715c39e9e5d81486b5dff832141f67ef84b1540303a4ab04",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "cca57c9f370b7f9b7a3d11a487c8b047cf3c29cb9a0f82bad9d378e68624af20",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Own four-reference tall riverbank habitat, mechanical aspect-preserving1290x2796 cover; no creative raster edits or generic margin pullback. All five standalone selections unchanged.",
+      "references": [
+        {
+          "file": "sources/kingfisher-reed.bfbd44f5a859.png",
+          "sha256": "bfbd44f5a85967c5081101a2f6888408461adca320da281fbc03878560b614f5",
+          "purpose": "Own ordered material/subject reference"
+        },
+        {
+          "file": "sources/water-vole-sedge.21aa385c5d82.png",
+          "sha256": "21aa385c5d822de3f0b4623ee741aeecd22a80192bd640f40af205dbeafe0032",
+          "purpose": "Own ordered material/subject reference"
+        },
+        {
+          "file": "sources/yellowflag-iris.9d873fdcfaef.png",
+          "sha256": "9d873fdcfaef9bcd6c32f41ee598db246f6f93d29d6fbc76b9961277b1fce0b9",
+          "purpose": "Own ordered material/subject reference"
+        },
+        {
+          "file": "sources/willow-catkin-branch.598ab0b9c10c.png",
+          "sha256": "598ab0b9c10c65312d958489462ceca2a3dafb01091343d33eea6f41a903906e",
+          "purpose": "Own ordered material/subject reference"
+        }
+      ]
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

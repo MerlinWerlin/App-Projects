@@ -1,0 +1,18 @@
+{
+  "id": "monarch-milkweed",
+  "prompt": "EMBERTRACE CHAPARRAL, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL flora/fauna, natural recognizable anatomy FIRST. Unusual physical HORSEHAIR CARBON-FIRING on hand-shaped burnished UNGLAZED IVORY CERAMIC: pale warm chalk/ivory opaque clay has soft satin burnish, shallow thumb/tool shaping traces, rounded thin clay edges and subtle fired pores. On the solid ceramic surface, show only FOUR OR FIVE fine widely separated UNBRANCHED sinuous/looping BLACK CARBONIZED SINGLE-STRAND HAIR TRAILS with fading burnt ends and localized soft smoky gray deposits absorbed flush into hot clay, with very restrained pale rust/iron blush. Trails are sparse isolated wavering S curves or loose open loops, no forked branching marble vein network; NOT allover spiderweb crackle glaze, paint/ink drawn anatomy, decorative arabesque, raised wire/thread/loose literal hairs, gold veining or wood grain. Keep much pale surface quiet so natural form remains legible at small size. Low shallow hand-shaped ceramic sculpture, NO glossy glaze, metal, shell, transparent glass, fabric, wool or wood. Whole complete subject inside central64percent with generous18percent TRUE ALPHA margin every side. All exterior and open anatomy gaps genuinely transparent; no backing sheet, ceramic plaque, ground/habitat base, plinth, rectangle/tile/hoop/frame/badge, ring/clasp, cast shadow, glow/halo/smoke in background. No clipped feet/toes/ears/tail/wing/petal/leaf tips. No text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. Preserve burnt carbon directly ON ceramic only, no floating strands or smoke. One familiar monarch butterfly perched diagonally on ONE small milkweed sprig with two opposite pairs of lance-shaped leaves and a single compact bud cluster. Butterfly has FOUR coherent broad wings in partly open diagonal view, slender body, two antennae and exactly SIX fine legs attached naturally beneath thorax; visible leg overlaps allowed, no extra wings. Shallow hand-modelled wing veins can suggest real butterfly structure, but no black painted monarch checkerboard. All wings/body/plant are warm ivory unglazed ceramic with several long random carbonized horsehair traces, small smoke puffs and faint iron blush on wing edges; no raised hairy filaments, yarn, mesh or allover painted pattern. Whole wing/antenna/leaf/stem tips inside margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/monarch-milkweed.3fe3325b.png",
+  "sourceSha256": "3fe3325b8ee0fc8a30195c014c7f52408acdab81ec15c38bd337964b5b909965",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/monarch-milkweed.8a1c5f0f.png",
+  "sha256": "8a1c5f0fbff97b42f183c6e247c35884e35fddce67d1805139308b39af7ed984",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

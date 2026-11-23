@@ -1,0 +1,178 @@
+{
+  "id": "c-anaglyph-crossing",
+  "packVersion": 2,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "stiltshell",
+    "drumback",
+    "forkbill",
+    "keel-skater",
+    "crest-tumbler"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.fdcf0d0b.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 11602,
+    "sha256": "fdcf0d0b289982ff41e8e70d731ded5f94e3782d547966416343138e182b27ed",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "artworkCombination": "Viewed wallpaper and five artworks at two widget-like sizes. Five distinct body plans: tall two-legged stiltshell, low six-legged drumback, three-foot crawling forkbill, three-rocker keel-skater and fan-crested tumbler. Pale neutral volumes and clearly displaced red/cyan contours unify the set.",
+    "encoded85px": "Viewed qa/encoded-art-85px.jpg made from the actual built WebP art assets at exactly 85 pixels. All five silhouettes and red/cyan displacement remain visible without stereo viewing.",
+    "nativeCombination": "Viewed nine actual app renderer previews. Original stiltshell and keel-skater motifs, faceted live dial, cyan tile charge gauge and ticket calendar are readable in small, medium and large.",
+    "sourceFraming": "High-opacity subjects fully inside every source frame. Edge alpha is 1 on four sources and 30 on forkbill. Forkbill additionally viewed composited at full production size on palette tile; no clipped subject or visible background frame.",
+    "scope": "Artistic anaglyph language only; no calibrated stereo viewing claim. Scratch-only native descriptor insertion; actual shared registry integration and installed-device qualification remain separate.",
+    "actualCornerRefinement": "Reviewed actual coordinator renderer output in all four affected placements; old Clock-face/Battery SVGs verified byte-identical. Prototype studies retained as design history.",
+    "wallpaperEdgeRefinement": "Viewed all three final actual encoded variants: Foreground keel-skater has all three jointed legs and crescent rocker feet comfortably inside every crop; all six existing individuals/poses and red-cyan edges retained. Ground/terrain continues naturally; no demand to frame every scenery detail."
+  },
+  "packTestEvidence": "Unchanged pipeline: 47 distinct pack tests passed across initial suite and Pillow-enabled WebP reruns. This theme independently passes the real builder, actual app parser/planner/native renderer, full image decoding, unique hashes, source provenance and no selected orphan checks.",
+  "ornamentRefinement": {
+    "optionalField": "ornament",
+    "heroPathsUnchanged": true,
+    "rasterAssetsUnchanged": true,
+    "pathVocabulary": "M/L/Q/T/C/Z",
+    "canvas": [
+      100,
+      100
+    ],
+    "pathBoundsChecked": true,
+    "pathLength": 122,
+    "previewScope": "Design study: actual unchanged app SVG with only calendar and medium-clock header path tags substituted by one aspect-fitted ornament. Not a claim of implemented runtime/schema support. Original Clock face/Battery hero compositions unchanged.",
+    "runtimeSupport": "Verified with actual coordinator TS parser/renderer, copied unchanged into scratch. All nine plans round-trip optional ornament; actual shared source registry integration remains coordinator-owned.",
+    "actualParserRetainsOrnament": true,
+    "nativeLayouts": 9,
+    "readingChangesAllNine": true,
+    "heroSvgUnchanged": true,
+    "visualReview": "Viewed actual-renderer small/medium/large Calendar and medium Clock corner sheet, alongside unchanged larger hero placements. Single aspect-fitted motif is clear, proportionate and separate from live readings.",
+    "nativeRendererSource": {
+      "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+      "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+      "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+    }
+  },
+  "wallpaperEdgeRefinement": {
+    "reason": "Jared clarified both native and Artwork corners; primary wallpaper figures also need breathing room across device crops.",
+    "change": "Foreground keel-skater has all three jointed legs and crescent rocker feet comfortably inside every crop; all six existing individuals/poses and red-cyan edges retained.",
+    "generationTool": "built-in image_gen layout-only edit",
+    "actualDeviceVariantsReviewed": [
+      [
+        1290,
+        2796
+      ],
+      [
+        1179,
+        2556
+      ],
+      [
+        750,
+        1334
+      ]
+    ],
+    "fiveOriginalArtworksUnchanged": true,
+    "nativeIdentityAndPaletteUnchanged": true,
+    "allNineNativeSvgByteIdentical": true,
+    "priorImagesAndPromptsRetained": true,
+    "landscapeCanBleed": true,
+    "installedDeviceValidation": false
+  },
+  "localPackIteration": "v2 after layout-only wallpaper edge refinement; all catalogue/version/release outputs only in ignored dist/lane-c."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "lock-gate-house",
+  "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: LOCK-GATE HOUSE in an invented paper harbour. A tiny narrow three-storey dwelling perches above a visibly constructed canal sluice: pitched asymmetric roof, two little window bays, a clear front door reached by an outside zigzag stair, three broad rectangular hinged floodgate leaves below the house, one gate raised exposing the archway of water. Add a small counterweight block suspended from a rigid paper strut, one chimney and a maintenance balcony. Readable actual architecture and gate mechanism, full complete miniature place, not disconnected abstract shapes. Still one shallow inkless impressed paper illustration with tactile compressed rag fibres and ivory lit edges, NOT a separate 3D building or toy. Strong compact house-over-sluice silhouette, no baked live values, clock or text.",
+  "tool": "built-in image_gen",
+  "source": "sources/lock-gate-house.7623ae7c.png",
+  "sourceSha256": "7623ae7cde0a71837e216ceb329c2251a7bf2a479181a07d07b484725e4972e8",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/lock-gate-house.9e532331.png",
+  "sha256": "9e532331f645f6cd09e27dd6d52d2a427299f3be8771715fda627e6b0fa2271e",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

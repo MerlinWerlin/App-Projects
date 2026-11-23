@@ -1,0 +1,21 @@
+{
+  "theme": "c-filmdew-garden",
+  "art": {
+    "cFilmClover": "M 48 91 Q 55 77 52 62 M 52 62 C 32 49 28 29 39 22 Q 47 17 53 25 Q 62 14 71 22 C 83 33 71 51 52 62 M 52 62 C 30 47 13 51 15 66 Q 15 76 26 77 Q 23 88 35 90 C 48 91 53 75 52 62 M 52 62 C 69 46 87 50 86 64 Q 86 75 75 76 Q 81 86 69 91 C 56 96 51 77 52 62",
+    "cFilmCurtains": "M 25 26 C 42 32 21 45 32 59 C 40 68 36 76 28 83 M 48 20 C 66 29 43 42 53 58 C 61 70 57 77 50 88 M 72 27 C 89 34 68 48 77 63 C 83 71 81 77 73 83"
+  },
+  "recipe": [
+    "pebble",
+    "cFilmClover",
+    "cFilmCurtains",
+    "pins",
+    "leaf",
+    "tiles",
+    "band"
+  ],
+  "ornament": "M 41 91 Q 51 76 49 62 M 49 62 C 35 49 30 34 38 28 Q 44 22 50 30 Q 58 21 65 28 C 75 37 65 51 49 62 M 49 62 C 32 48 17 53 21 65 Q 23 72 31 72 Q 27 82 37 84 C 48 85 52 71 49 62 M 49 62 C 61 47 77 50 78 61 Q 79 71 70 73 Q 74 82 65 86 C 54 89 49 74 49 62",
+  "values": "Existing live Clock/Battery/Calendar, no raster readings.",
+  "registryIntegration": "Isolated source candidate minApp1.0.44; coordinator owns canonical/runtime/Swift/device qualification. Peer material acceptance pending.",
+  "ornamentDirection": "One small plain clover sprig/stalk in compact headers, no miniature rainbowfilm/soapbubble chart. Pebble face follows soft rounded clover leaflets; current restored calendar identity.outline, no retired badge probes.",
+  "ornamentProvenance": "Original authored100x100vector23November2026 for both-corner steering."
+}

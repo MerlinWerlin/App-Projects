@@ -1,0 +1,19 @@
+{
+  "themeId": "bismuth-anomaly",
+  "recipe": [
+    "facet",
+    "bismuthTortoise",
+    "bismuthTerraces",
+    "cut",
+    "sword",
+    "tiles",
+    "folio"
+  ],
+  "art": {
+    "bismuthTortoise": "M 20 64 L 22 43 L 30 43 L 30 31 L 43 31 L 43 23 L 63 23 L 63 31 L 76 31 L 76 43 L 86 43 L 86 65 L 79 65 L 79 82 L 68 82 L 68 69 L 38 69 L 38 82 L 26 82 L 26 68 L 18 68 L 18 62 L 7 62 L 7 49 L 19 49 L 19 57 M 30 43 L 76 43 M 34 47 L 49 47 L 49 60 L 34 60 Z M 57 47 L 72 47 L 72 60 L 57 60 Z M 38 49 L 38 58 M 43 49 L 43 58 M 61 49 L 61 58 M 66 49 L 66 58 M 86 57 L 94 63 L 86 65 M 11 53 L 14 53",
+    "bismuthTerraces": "M 7 72 L 7 49 L 19 49 L 19 33 L 34 33 L 34 19 L 64 19 L 64 33 L 81 33 L 81 49 L 94 49 L 94 82 L 23 82 L 23 64 L 36 64 L 36 49 L 49 49 L 49 36 L 61 36 M 13 76 L 13 55 L 25 55 L 25 39 L 40 39 L 40 25 L 58 25 M 30 76 L 87 76 L 87 55 L 75 55 L 75 40 L 69 40"
+  },
+  "direction": "Archive tortoise with recessed book galleries and angular hopper-crystal terrace detail. Faceted cut-marker clock, tiled charge indicator and folio calendar; all values remain live.",
+  "ornament": "M 16 81 L 16 35 L 32 35 L 32 19 L 81 19 L 81 66 L 66 66 L 66 81 Z M 29 70 L 29 45 L 44 45 L 44 32 L 68 32 L 68 54 L 55 54 L 55 70 Z",
+  "ornamentDirection": "A compact nested hopper-crystal corner echoes the metal terraces; tortoise and architecture stay in larger illustrations."
+}

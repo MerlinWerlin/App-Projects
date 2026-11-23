@@ -1,0 +1,29 @@
+{
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sourceSha256": "bb68f7a6d45cba774753dae8819f5d706150aa0cff3af1e39942e31a848e6b75",
+  "sourceBoundsByAlphaThreshold": {
+    "16": [
+      208,
+      45,
+      1038,
+      1221
+    ],
+    "96": [
+      209,
+      46,
+      1037,
+      1220
+    ]
+  },
+  "edgeAlphaMaximum": 1,
+  "fixedProbeAlpha": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "probeScope": "Fixed descriptive points, not segmented outside/inside tissue classification."
+}

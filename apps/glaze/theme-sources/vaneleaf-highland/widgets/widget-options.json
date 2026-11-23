@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ibex-bellflower",
+    "kind": "art",
+    "image": "ibex-bellflower.715f4342.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Ibex Bellflower"
+  },
+  {
+    "id": "marmot-saxifrage",
+    "kind": "art",
+    "image": "marmot-saxifrage.25ae9cb9.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Marmot Saxifrage"
+  },
+  {
+    "id": "chough-juniper",
+    "kind": "art",
+    "image": "chough-juniper.cbe06c5b.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Chough Juniper"
+  },
+  {
+    "id": "edelweiss-rosette",
+    "kind": "art",
+    "image": "edelweiss-rosette.1ca92954.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Edelweiss Rosette"
+  },
+  {
+    "id": "scarab-gentian",
+    "kind": "art",
+    "image": "scarab-gentian.a14592e4.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Scarab Gentian"
+  }
+]

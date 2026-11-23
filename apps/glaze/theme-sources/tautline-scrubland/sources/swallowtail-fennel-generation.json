@@ -1,0 +1,18 @@
+{
+  "id": "swallowtail-fennel",
+  "prompt": "TAUTLINE SCRUBLAND for Glaze. ONE original1024x1024 standalone pure NATURE artwork on TRUE TRANSPARENT ALPHA. Physical handmade PIN-AND-THREAD STRING ART: each recognisable natural form is built from many fine STRAIGHT TAUT COTTON CHORDS wrapped between tiny DULL BRASS PIN HEADS at silhouette edges and occasional inner structural nodes. Clearly visible slightly twisted cotton fibres, tiny real thread-wrap loops on pin heads, handmade uneven pin spacing, clean open triangular and fan-shaped chord fields. No continuous braided outline: individual straight segments connect pins. Dark ink navy #202D31, bone #E5DDC9, sea sage #6E9690, restrained burnt terracotta #BB7758 and ochre #C8B270 thread. Mostly matte natural cotton, pin heads small subordinate physical details, natural silhouette first. Not bobbin lace, embroidery, woven fabric, stitched filled patch, wool/felt, quilling, metal wire sculpture, glowing optical/spectral/scientific visualisation or digital vector painting. All gaps between separate thread chords are truly alpha transparent, NO fabric/wood/backing board or translucent fill. Entire COMPLETE organism/group small central64% with18% or more REAL alpha margins on all four sides, no clipped antenna/tail/leaf. No frame, floor/scene, halo/glow/drop shadow, text/letters/numbers/symbols, time/date/battery/weather values, UI, logos or signatures. Natural flora/fauna only, no machines, houses, costumes or cartoon faces. Subject SWALLOWTAIL FENNEL: one large natural SWALLOWTAIL BUTTERFLY rests with wings spread at slightly unequal relaxed angles, TWO broad forewings and TWO smaller scalloped hindwings with unmistakable slender tail extensions, slim dark segmented body, TWO fine antennae and tiny natural legs. Bone/ochre wings with ink border bands and restrained terracotta small spots, all SPARSE STRAIGHT COTTON FAN CHORDS anchored at tiny dull brass pins, lots of open genuinely transparent line-field gaps, no painted/embroidered opaque wing fill. One delicate FENNEL STEM crosses diagonally below/right with TWO airy UMBEL flower heads of straight radiating thread rays ending in tiny ochre pin tips and a few very fine narrow sage leaves. Broad-wing insect against sparse asymmetrical plant branch, natural anatomy, not mothface/jewellery/emblem. Entire forewing tips, BOTH hindwing tails, antennae, fennel umbels and stalk/leaf tips contained with generous real alpha margins. No scenery, backing, hoop, pale halo/shadow or extra butterfly.",
+  "tool": "built-in image_gen",
+  "source": "sources/swallowtail-fennel.644d9b02.png",
+  "sourceSha256": "644d9b021e08726239158490bf26503cb62b7243fe05f203a6a4454a3599a995",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/swallowtail-fennel.a47fc604.png",
+  "sha256": "a47fc604606bab1dd5a77601a6f91d3eb07ce2212ef1de84ea1e52b25e616a14",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

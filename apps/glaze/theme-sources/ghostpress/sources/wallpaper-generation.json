@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "ONE original tall1290:2796 Glaze GHOSTPRESS wallpaper. An inkless blind dry-embossed illustration in heavy matte GRAPHITE COTTON-RAG PAPER. In lower45% a tangible invented harbour: low canal banks lead to a tiny inhabited lock-gate house above three sluice openings at lowerleft; a narrow counterweighted raised drawbridge crosses the canal to right; a small sharp-bowed vessel carries an enormous folded paper wave in its open hold. Clear constructed miniature places, visible doors/windows, mooring cleats and gate mechanisms, all integrated in one continuous impressed-paper scene, not pasted separate icons. Keep composition calm, all architecture small and low in frame. Upper55% quiet dark graphite paper grain with only subtle long sunken canal lines near the base. No ink/foil, colours come solely from sharp grazing warm-white light on pressed fibrous ridges and plum-gray recesses. Compressed paper fibres, clear embossed outlines, shallow low relief, no separate3D foam/plastic/stone miniature materials. Palette charcoal #26252D, gray #8D8790, ivory #EAE4DE highlights. No people, text, numerals, symbols, signs, clock/date/battery/weather readings, UI, logo, frame, phone mockup or collage. One continuous art wallpaper.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.0f0ea741.png",
+  "sourceSha256": "0f0ea7414b68de6daacaf675549b931290e8924674ca3b6a12040c98db1f86ec",
+  "sourceDimensions": [
+    852,
+    1847
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "902bb09d2141fd2259bac5acea5ce2b5fde625d5738568e698a2c82411b4fc97",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

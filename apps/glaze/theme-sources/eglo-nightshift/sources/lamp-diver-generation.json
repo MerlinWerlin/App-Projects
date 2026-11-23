@@ -1,0 +1,18 @@
+{
+  "id": "lamp-diver",
+  "prompt": "EGLO NIGHTSHIFT for Glaze. ONE separate original1024x1024 square pure artwork, a tangible imagined adult worker, friendly-mysterious storybook character. Flat traditional REVERSE-PAINTED and SILVER-LEAF-GILDED GLASS illustration: irregular mirror-silver leaf seams, tiny tarnish pinholes, fine hand-scratched black contours and cross-scraped highlights, deep bottle-green reverse-painted clothing fields with tiny muted amber details. An artisan glass panel image, not photographic sculpture,3D chrome, metal/crystal toy or ordinary digital cel shading. Whole complete figure/props central65% with18% genuine transparent alpha margins outside, no rectangular glass backing, background, floor, frame, pedestal, text, signature, numerals, logos, UI, clock/date/battery/live readings. Subject: LAMP DIVER, a squat compact adult in a deep-green bulky protective diving costume, seated with knees bent and TWO hands adjusting a valve at the side of the helmet. The enormous CHANDELIER HELMET has one clear oval silver face grille, a wide scalloped brim carrying five small hanging lantern chambers and thick curved light conduits running into the shoulder yoke; its purpose is illuminating the guild's submerged tunnels. Heavy ridged boots/flippers project toward viewer, one coiled air hose rests close behind. Low rounded triangular silhouette, clearly different from tall porter or generic standing diver. Every helmet/lamp/suit detail rendered as flat reverse-painted glass and scratched silver leaf, irregular foil seams and green painted panels, no actual3D metal/plush figurine. No gauge numbers, clock dial, letters or values; whole complete compact character fits alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/lamp-diver.1a85e0c2.png",
+  "sourceSha256": "1a85e0c2a979e2f4d721855c69388ab676a5e24d4c2a8e8aa13f662eb1a06e1e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/lamp-diver.1613a9bd.png",
+  "sha256": "1613a9bd47c8e543ce849a0b1072c1ba697ae3998b026b4f62b652332a48f5c4",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

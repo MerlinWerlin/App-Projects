@@ -1,0 +1,1 @@
+Rejected original wallpaper study, excluded from selected provenance and build. It retained the corona medium but introduced cloaked humanoids and a house inconsistent with the selected five identities.

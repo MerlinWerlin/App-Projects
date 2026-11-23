@@ -1,0 +1,21 @@
+{
+  "theme": "c-lenslet-maple",
+  "art": {
+    "cLensleafMaple": "M 53 10 L 61 27 L 72 23 L 71 40 L 88 36 L 84 51 L 94 55 L 76 66 L 65 72 L 54 69 L 43 73 L 33 65 L 10 58 L 19 52 L 17 36 L 34 41 L 33 25 L 46 29 Z M 54 69 Q 52 82 42 90 M 54 69 L 53 39",
+    "cLensleafGlade": "M 19 47 Q 27 35 35 47 Z M 27 47 L 27 56 M 39 37 L 39 59 M 51 47 Q 59 35 67 47 Z M 59 47 L 59 56 M 56 35 L 56 41 M 56 54 L 56 59 M 72 36 L 72 59 M 77 47 Q 84 35 91 47 Z M 84 47 L 84 56"
+  },
+  "recipe": [
+    "arch",
+    "cLensleafMaple",
+    "cLensleafGlade",
+    "cut",
+    "leaf",
+    "trail",
+    "band"
+  ],
+  "ornament": "M 53 10 L 62 28 L 72 23 L 70 42 L 88 37 L 83 52 L 91 56 L 72 66 L 61 71 L 53 69 L 44 72 L 34 65 L 13 57 L 21 52 L 18 37 L 36 42 L 34 24 L 46 29 Z M 53 69 Q 50 81 42 90 M 53 69 L 53 39",
+  "ornamentDirection": "A small maple outline with one vein, generous room beside values. Use the wider optical motif only on larger native areas.",
+  "values": "Existing live clock, battery and calendar values.",
+  "ornamentProvenance": "Original authored vector.",
+  "registryIntegration": "Source candidate only if the theme completes; canonical integration and device review are coordinator-owned."
+}

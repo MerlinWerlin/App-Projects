@@ -1,0 +1,18 @@
+{
+  "id": "suspended-seedbank",
+  "prompt": "GRAINWARD COMMONS for Glaze. ONE original 1024x1024 pure artwork of a tangible invented community building. Physical SIFTED COLOURED-SAND PAINTING: dense opaque mineral grains poured through hand-cut stencils onto flat binder, visibly granular fields, crunchy little sand ridges along contours, crisp masked edges, selectively raked shallow seam lines, tiny loose grain spills, dry matte finish. All forms made from FLAT coloured-grain areas and raked drawing; no sand sculpture, photoreal stone/3D architecture model, smooth CGI, oil paint, textile, sacred motifs or mandala. Dark plum #281C32, mineral lavender #8A77AD, saffron #D49A52, grain ivory #E7D8B1 only. Charming original architectural illustration with understandable access, structure and function, strong readable silhouette and open negative spaces. Complete building occupies central65% of square, at least16% genuine transparent alpha margin on every side, transparent through open archways. No background board, ground rectangle, frame, shadows/platform outside building, people, text, signs, letters, numbers, UI, clock/date/battery/weather readings or logos. Subject SUSPENDED SEEDBANK: one narrow upright cantilever tower at far LEFT supports a long horizontal saffron beam extending far RIGHT. THREE COMPLETELY DIFFERENT suspended store chambers hang from the beam on paired thick lavender suspension rods: a tall teardrop vault, a broad hexagonal vault, and a small square ribbed vault. Each has one tiny open dark door and a shallow seed tray visible just inside. A narrow elevated walkway connects their doors; a small rope elevator platform with a simple counterweight descends along the tower for seed shipments. The left tower has two short buttress feet, the beam has a swept pointed cap; all access and suspension clear. Airy inverted-L silhouette, a big empty open gap under suspended rooms, no ground/building tile below. Not three ordinary houses on stilts; it is one coherent useful seed-preservation archive with secure hanging chambers. All beam tips, counterweight and feet contained. Entire construction depicted through poured mineral grains and shallow raked line detail, matte flat sand painting.",
+  "tool": "built-in image_gen",
+  "source": "sources/suspended-seedbank.be1e6ec1.png",
+  "sourceSha256": "be1e6ec18ddc2425add6e3df00e68e1de7115922901d24f796af209d5b4ff4ff",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/suspended-seedbank.6119fa3a.png",
+  "sha256": "6119fa3a527afcfe54dea5b8158fd8c96bf8d3a5964a03c0428bb75ee9290b58",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

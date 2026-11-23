@@ -1,0 +1,22 @@
+{
+  "theme": "c-quiver-riffles",
+  "recipe": [
+    "arch",
+    "cQuiverMangrove",
+    "cQuiverCurrents",
+    "cut",
+    "sword",
+    "basin",
+    "board"
+  ],
+  "art": {
+    "cQuiverMangrove": "M 52 69 Q 54 48 45 34 M 52 69 Q 35 75 20 95 M 52 69 L 52 95 M 52 69 Q 72 75 85 95 M 45 34 Q 18 38 11 23 Q 35 16 45 34 Z M 45 34 Q 27 16 39 5 Q 55 14 45 34 Z M 45 34 Q 55 4 78 6 Q 91 27 45 34 Z M 45 34 Q 76 25 92 41 Q 76 57 45 34 Z M 45 34 Q 25 45 13 44 Q 3 58 19 63 Q 41 58 45 34 Z",
+    "cQuiverCurrents": "M 8 67 Q 20 40 47 31 L 37 26 M 47 31 L 42 43 M 54 71 Q 82 76 91 45 L 79 52 M 91 45 L 96 59 M 23 78 Q 43 94 66 82 L 56 78 M 66 82 L 61 91"
+  },
+  "ornament": "M 18 70 Q 26 50 48 39 L 38 38 M 48 39 L 44 49 M 47 76 Q 58 56 80 47 L 70 45 M 80 47 L 75 58 M 23 29 Q 29 22 37 27",
+  "ornamentDirection": "Two parallel bent current arrows and one short flow arc. Compact quiver-field fragment,independent of the full mangrove hero.",
+  "ornamentProvenance": "Original authored100x100 SVG path,22 November2026,following Jared nature/Both-corner steering.",
+  "direction": "Fan-root mangrove and sparse direction arrows in larger native areas. Arch dial,cut marks,sword hands,basin battery and board calendar. Dedicated two-arrow/eddy ornament keeps small headers clean.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms;no baked readings in raster artwork.",
+  "registryIntegration": "Coordinator owns shared source/Swift integration and installed-device qualification. Lane source-only."
+}

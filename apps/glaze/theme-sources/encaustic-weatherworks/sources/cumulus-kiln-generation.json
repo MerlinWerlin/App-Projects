@@ -1,0 +1,18 @@
+{
+  "id": "cumulus-kiln",
+  "prompt": "ENCAUSTIC WEATHERWORKS for Glaze. ONE original 1024x1024 isolated pure artwork of a tangible invented weather-production MACHINE. Flat HOT-WAX ENCAUSTIC PAINTING, dragged torch-fused opaque wax pigment layers with coarse palette-knife ridges, scraped recesses, cloudy translucent wax pools, buried sgraffito lines, uneven matte satin sheen. Thick tactile hand-painted illustration, not a wax sculpture, CGI, clay, glass or fabric. Burnt tangerine #E8793D, dirty ivory #E6DEC5, petrol #122E35 and limited cobalt #3E69BA; dark scratch contours. Complete whole subject occupies central65%, at least16% genuine transparent alpha on all four sides, no square backing, scenery, floor, frame, shadow platform, text, numerals, UI, gauges with readings, time/date/battery/weather values or logos. Believable simplified mechanical construction, bold readable silhouette, clear visible purpose, charming original storybook equipment. Subject CUMULUS KILN: a squat broad orange riveted beehive-shaped furnace on three short splayed ivory feet, an open arch firebox with a warm blank ember glow, short thick chimney at upper-left releasing one big coherent ivory cumulus cloud into a shallow curved cooling cradle mounted above the furnace. A cobalt side water tank is visibly connected to kiln by one bent pipe, single handwheel at right controls the feed. Cloud clearly emerges from chimney and rests over cooling cradle. Three-quarter view. Strong rounded body, low heavy feet, tall soft cloud contrasts with hard furnace; one useful designed object, not generic steam engine. Keep all cloud, pipe and feet fully inside generous alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/cumulus-kiln.cb8a97ad.png",
+  "sourceSha256": "cb8a97adb54c859380324f28ca7c13b73efafa78acfb22fe372f162e585e1693",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/cumulus-kiln.d5ac050f.png",
+  "sha256": "d5ac050f1140369619982823a3911d715984a3ec9f8dec72aaf6ed3335385b77",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

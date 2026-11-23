@@ -1,0 +1,1 @@
+Unselected original concept with unwanted pale backing plus exact built-in alpha repair lineage. Selected repaired original retains full subject and real transparent gaps. No manual background/subject editing.

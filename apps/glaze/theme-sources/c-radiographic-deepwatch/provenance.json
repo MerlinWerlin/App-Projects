@@ -1,0 +1,143 @@
+{
+  "theme": "c-radiographic-deepwatch",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "lantern-ray",
+      "sourceImage": "sources/lantern-ray.dc40b5202273.png",
+      "sourceSha256": "dc40b52022731be26169ed4769d80c215a317e453fa2b0ab9265ff6f15082616",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/lantern-ray.ed2f9e3788ed.png",
+      "sha256": "ed2f9e3788ed22d0375d2b899c5f5ccf564d02335088d1f58879173819a08390",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 527859,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RADIOGRAPHIC DEEPWATCH, a tangible invented abyssal observation ecology imaged by TRANSMITTED X-RAY ABSORPTION. MEDIUM: exquisite monochrome positive absorption radiograph, bone-ivory and silver-gray densities. Soft translucent tissue envelopes surround crisp overlapping internal cartilage struts, perforated trabecular supports, hollow chambers and articulated joints. The dense internal structures are brightest ivory; low-density tissue is a dim gray transparent haze. Overlapping structures accumulate density as in an authentic flattened transmission projection. Show the whole tangible subject with recognizable anatomy or mechanism, including readable hollow interior construction. No visible-light surface, reflected lighting, specular shine, glass material, chrome, wireframe, engraved lines, ordinary illustration, clay render or sculptural photograph. No coloured glow, emitted heat, rainbow, diffraction fringes, scanlines, point-cloud dots, particle trails, ultrasound speckle or medical text. Fictional nonhuman structures, not a real patient or measured diagnostic image. No human bones, injury or gore. No letters, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE individual square 1024x1024 pure-art widget. Subject LANTERN RAY: a tangible invented abyssal swimming creature with two wide unequal kite-shaped wings, a compact head with two dark eye apertures, a forward arched stalk carrying a hollow pear-shaped lantern organ, and a long narrow tail splitting into three unequal prongs. Broad three-quarter view; wings anatomically attach to the central torso. The radiograph reveals branching wing cartilage, jointed stalk supports, ribbed lamp chamber and a gently curved tail spine. Entire form must read as a creature, not an abstract fan or skeleton fragment. Entire subject and all extremities fit inside central 75% of canvas, generous empty margins. Real transparent alpha exterior and open gaps, no black backing, floor, cast shadow, exterior halo, tile, frame, panel or mockup. Internal translucent tissue remains visible only within the subject silhouette.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 829243
+    },
+    {
+      "id": "hinge-crab",
+      "sourceImage": "sources/hinge-crab.b7c7e48d20f0.png",
+      "sourceSha256": "b7c7e48d20f02316edfb7ae8404a38b55e8b9110eaffddf4bedf721bdb61d5cc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/hinge-crab.7c5c51f17861.png",
+      "sha256": "7c5c51f178612c7639f3215a9ca39def92e7029436b21b75e3591d09a5e02851",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1022119,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RADIOGRAPHIC DEEPWATCH, a tangible invented abyssal observation ecology imaged by TRANSMITTED X-RAY ABSORPTION. MEDIUM: exquisite monochrome positive absorption radiograph, bone-ivory and silver-gray densities. Soft translucent tissue envelopes surround crisp overlapping internal cartilage struts, perforated trabecular supports, hollow chambers and articulated joints. The dense internal structures are brightest ivory; low-density tissue is a dim gray transparent haze. Overlapping structures accumulate density as in an authentic flattened transmission projection. Show the whole tangible subject with recognizable anatomy or mechanism, including readable hollow interior construction. No visible-light surface, reflected lighting, specular shine, glass material, chrome, wireframe, engraved lines, ordinary illustration, clay render or sculptural photograph. No coloured glow, emitted heat, rainbow, diffraction fringes, scanlines, point-cloud dots, particle trails, ultrasound speckle or medical text. Fictional nonhuman structures, not a real patient or measured diagnostic image. No human bones, injury or gore. No letters, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE individual square 1024x1024 pure-art widget. Subject HINGE CRAB: an invented low compact abyssal working animal with a high split arched shield, FOUR clearly jointed sturdy walking legs, two long asymmetrical grasping pincers, and a small face visible beneath the shield. Inside the translucent carapace is a large articulated hinge and chambered muscle lattice. Three-quarter crouching stance; all legs and pincers connect to the body. Its wide arched shell, compact head and two unequal open claws make its function readable. Not a conventional crab specimen or generic robot. Entire subject and all extremities fit inside central 75% of canvas, generous empty margins. Real transparent alpha exterior and open gaps, no black backing, floor, cast shadow, exterior halo, tile, frame, panel or mockup. Internal translucent tissue remains visible only within the subject silhouette.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 599300
+    },
+    {
+      "id": "bell-keeper",
+      "sourceImage": "sources/bell-keeper.9e82a92ddb34.png",
+      "sourceSha256": "9e82a92ddb3457f50cef426f6c0260f1fb66b253f9011b6278bb21f535b81a32",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/bell-keeper.774762dcecdd.png",
+      "sha256": "774762dcecdd4dd90973b66a5bf5ab92e0da2ca453dcf7160ee36168e9349400",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 917609,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RADIOGRAPHIC DEEPWATCH, a tangible invented abyssal observation ecology imaged by TRANSMITTED X-RAY ABSORPTION. MEDIUM: exquisite monochrome positive absorption radiograph, bone-ivory and silver-gray densities. Soft translucent tissue envelopes surround crisp overlapping internal cartilage struts, perforated trabecular supports, hollow chambers and articulated joints. The dense internal structures are brightest ivory; low-density tissue is a dim gray transparent haze. Overlapping structures accumulate density as in an authentic flattened transmission projection. Show the whole tangible subject with recognizable anatomy or mechanism, including readable hollow interior construction. No visible-light surface, reflected lighting, specular shine, glass material, chrome, wireframe, engraved lines, ordinary illustration, clay render or sculptural photograph. No coloured glow, emitted heat, rainbow, diffraction fringes, scanlines, point-cloud dots, particle trails, ultrasound speckle or medical text. Fictional nonhuman structures, not a real patient or measured diagnostic image. No human bones, injury or gore. No letters, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE individual square 1024x1024 pure-art widget. Subject BELL KEEPER: one tangible THREE-LEGGED abyssal pressure observatory machine. A broad translucent domed pressure chamber sits above a squat sealed instrument body, one flared acoustic listening dish tilts left, two thick side valve loops and a small articulated probe arm extend right. Three curved load-bearing legs end in flat splayed pads. The transmission image reveals internal ring braces, a central suspended sensor capsule, stacked valve mechanisms and support joints. It visibly stands as a working seafloor observation machine, not an abstract bell, house, ferris wheel, clock or vehicle. Entire subject and all extremities fit inside central 75% of canvas, generous empty margins. Real transparent alpha exterior and open gaps, no black backing, floor, cast shadow, exterior halo, tile, frame, panel or mockup. Internal translucent tissue remains visible only within the subject silhouette.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 648252
+    },
+    {
+      "id": "siphon-colony",
+      "sourceImage": "sources/siphon-colony.c951728eb8fa.png",
+      "sourceSha256": "c951728eb8fa93255193babe8a9982e9792ac083158ce79e0bb1470f7c5932cc",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/siphon-colony.ba5114c2ea8f.png",
+      "sha256": "ba5114c2ea8ff4f5bf35230dc71fa831485fc4c2b2921aaf2f67d110d859c8fc",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1058969,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RADIOGRAPHIC DEEPWATCH, a tangible invented abyssal observation ecology imaged by TRANSMITTED X-RAY ABSORPTION. MEDIUM: exquisite monochrome positive absorption radiograph, bone-ivory and silver-gray densities. Soft translucent tissue envelopes surround crisp overlapping internal cartilage struts, perforated trabecular supports, hollow chambers and articulated joints. The dense internal structures are brightest ivory; low-density tissue is a dim gray transparent haze. Overlapping structures accumulate density as in an authentic flattened transmission projection. Show the whole tangible subject with recognizable anatomy or mechanism, including readable hollow interior construction. No visible-light surface, reflected lighting, specular shine, glass material, chrome, wireframe, engraved lines, ordinary illustration, clay render or sculptural photograph. No coloured glow, emitted heat, rainbow, diffraction fringes, scanlines, point-cloud dots, particle trails, ultrasound speckle or medical text. Fictional nonhuman structures, not a real patient or measured diagnostic image. No human bones, injury or gore. No letters, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE individual square 1024x1024 pure-art widget. Subject SIPHON COLONY: a tangible communal abyssal organism, three large unequal curved tube mouths rise from one wide low chambered body anchored by FIVE blunt root-like feet. One mouth has an oval flared opening, one bends sideways with a small split rim, and the shortest is folded partly shut. Each tube connects to a separate hollow chamber visible through translucent tissue, with rib-like internal supports and a few linking ducts. Broad asymmetrical composition, distinctly biological and weight-bearing, not a vase, flowers, coral rock or floating geometry. Entire subject and all extremities fit inside central 75% of canvas, generous empty margins. Real transparent alpha exterior and open gaps, no black backing, floor, cast shadow, exterior halo, tile, frame, panel or mockup. Internal translucent tissue remains visible only within the subject silhouette.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 605603
+    },
+    {
+      "id": "coil-eel",
+      "sourceImage": "sources/coil-eel.d6e437b62776.png",
+      "sourceSha256": "d6e437b62776bba5d76b002c5142c5a1637691296496f89af594e7e5b6c58de6",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/coil-eel.af5d599b0b8d.png",
+      "sha256": "af5d599b0b8dcb73b650016e5ec5ced126e5d56a2109ae834a4d74def62f1c80",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1235259,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RADIOGRAPHIC DEEPWATCH, a tangible invented abyssal observation ecology imaged by TRANSMITTED X-RAY ABSORPTION. MEDIUM: exquisite monochrome positive absorption radiograph, bone-ivory and silver-gray densities. Soft translucent tissue envelopes surround crisp overlapping internal cartilage struts, perforated trabecular supports, hollow chambers and articulated joints. The dense internal structures are brightest ivory; low-density tissue is a dim gray transparent haze. Overlapping structures accumulate density as in an authentic flattened transmission projection. Show the whole tangible subject with recognizable anatomy or mechanism, including readable hollow interior construction. No visible-light surface, reflected lighting, specular shine, glass material, chrome, wireframe, engraved lines, ordinary illustration, clay render or sculptural photograph. No coloured glow, emitted heat, rainbow, diffraction fringes, scanlines, point-cloud dots, particle trails, ultrasound speckle or medical text. Fictional nonhuman structures, not a real patient or measured diagnostic image. No human bones, injury or gore. No letters, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE individual square 1024x1024 pure-art widget. Subject COIL EEL: one elongated tangible invented abyssal creature swimming in a broad OPEN S-shaped turn. A small wedge head has two dark eye apertures and a tiny split lower jaw; a continuous jointed spine runs through its thick body; THREE unequal paired ribbon fins emerge at different body positions and a broad divided tail ends the curve. Radiograph shows hollow vertebrae, radial fin supports and dim translucent soft tissue surrounding them. Whole head, fins and tail present; not a closed ring, spiral sculpture, snake skeleton photograph or abstract wave. Entire subject and all extremities fit inside central 75% of canvas, generous empty margins. Real transparent alpha exterior and open gaps, no black backing, floor, cast shadow, exterior halo, tile, frame, panel or mockup. Internal translucent tissue remains visible only within the subject silhouette.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 451642
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.078fbe172e75.png",
+      "sourceSha256": "078fbe172e750f7528929192fa837de5ce2b66927db5200a17ecf30e309bd567",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "d1d533039c2a095311cf37e81dfeb3de0bc42b06cb4e9d246b80c893ce8f22b9",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2892001,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE RADIOGRAPHIC DEEPWATCH, a tangible invented abyssal observation ecology imaged by TRANSMITTED X-RAY ABSORPTION. MEDIUM: exquisite monochrome positive absorption radiograph, bone-ivory and silver-gray densities. Soft translucent tissue envelopes surround crisp overlapping internal cartilage struts, perforated trabecular supports, hollow chambers and articulated joints. The dense internal structures are brightest ivory; low-density tissue is a dim gray transparent haze. Overlapping structures accumulate density as in an authentic flattened transmission projection. Show the whole tangible subject with recognizable anatomy or mechanism, including readable hollow interior construction. No visible-light surface, reflected lighting, specular shine, glass material, chrome, wireframe, engraved lines, ordinary illustration, clay render or sculptural photograph. No coloured glow, emitted heat, rainbow, diffraction fringes, scanlines, point-cloud dots, particle trails, ultrasound speckle or medical text. Fictional nonhuman structures, not a real patient or measured diagnostic image. No human bones, injury or gore. No letters, labels, scales, numerals, clock faces, readings, graphs, logos or watermark. Asset: ONE portrait phone wallpaper 1290x2796. A coherent tangible deep-sea watch clearing, imaged as a single monochrome absorption radiograph. Lower half: the three-legged bell-keeper observatory stands right, a hinge-crab tends its probe at lower left, chambered siphon organisms grow along a low ridge, a kite-wing lantern-ray swims above them and one long S-shaped eel passes behind. All have actual readable silhouettes and internal chambers/cartilage, appropriate scale and occlusion. Sparse low seabed slope in dim gray transmission density; distant hollow stalks fade. Upper 45% nearly empty deep charcoal-black sea, no stars, mist or particles. Bone-white internal structures and softly translucent tissue dominate the lower scene. Full bleed opaque wallpaper, no frame, device or text.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": []
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Jared 22 November tangible-subject direction. Positive absorption radiography reveals an abyssal observation ecology."
+}

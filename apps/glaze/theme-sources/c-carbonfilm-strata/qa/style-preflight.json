@@ -1,0 +1,63 @@
+{
+  "theme": "c-carbonfilm-strata",
+  "status": "Coordinator PASSED actual fern/full170/85/foreground material gate before four independent originals",
+  "sample": {
+    "id": "fern-compression",
+    "selected": true,
+    "sourceSha256": "95119f072386a473744acd3a827cacd641ca9849829812d0d5ab0be59132e26b",
+    "prompt": "Use case: stylized-concept / natural-history material study. ONE original square transparent Glaze Artwork. A COMPLETE recognizably natural PINNATE FERN FROND preserved as a CARBON COMPRESSION FOSSIL within ONE small irregular thin split SHALE FLAKE. Gently arching full central rachis, about fourteen distinct pairs of tapering narrow pinnae, fine real branching vein impressions, whole unfurled tip and complete slender petiole. Frond occupies roughly75percent of the flake height and remains immediately recognizable at85px. Single intact natural plant form, no other plant or animal.\nThe FOREGROUND process is geological compression and carbonization, not living plant photography or a drawn fern. The fern is a PAPER-THIN MATTE DARK BLACK-BROWN CARBON FILM embedded flat in the stone bedding plane, with a few shallow fine natural vein impressions. Dark continuous flattened organic residue carries the real full outline; a few tiny ochre oxidized flecks and minute mineral fractures cross it. NO raised leaf tissue, sculpted fern, carved ornamental bas-relief, ink strokes, knife hatching, stamped print or painted outlines. Stone is opaque pale olive-grey/tan fine-grained sedimentary SHALE, naturally split, with several CLEAR THIN STACKED CLEAVAGE LAMINAE exposed along its broken lower/right edges, irregular chips, tiny flaky mineral fractures and visible sediment grit. The naturally broken flake is asymmetrical and roughly hand-sized, a little broader than the entire fern; never rectangular, oval, polished, bevelled, circular or plaque-shaped. A few coarse step-cleavages and lithic chips remain evident even at85px. No rag-paper fibers, embroidery, metal, enamel, ceramic, glass, glossy resin, 3D ammonite/shell sculpture or separate rock display base.\nPhotograph almost straight down, very slightly tilted only to show the THIN laminated split edge; softly raking natural museum light reveals mineral grit and shallow bedding-plane detail without making the fern raised. Calm muted natural rock and carbon colours, crisp broad fern silhouette. WHOLE complete artifact and every frond/rock endpoint inside central74percent of the square, at least13percent true ALPHAZERO exterior on every side, transparent natural gaps outside its irregular stone perimeter. No tabletop/floor, cast shadow outside stone, backdrop/haze/glow, frame, border, plinth, scattered debris, scale ruler, diagram, letters, labels, logo, UI or baked readings. Digital artistic interpretation of a familiar whole plant compression fossil, not a real collected specimen or evidence of a particular species, geological age or locality.",
+    "sourceBoundsByAlphaThreshold": {
+      "16": [
+        80,
+        124,
+        1164,
+        1147
+      ],
+      "96": [
+        80,
+        125,
+        1163,
+        1147
+      ]
+    },
+    "edgeAlphaMaximum": 1,
+    "sourceImage": "sources/fern-compression.95119f072386.png"
+  },
+  "neighbors": [
+    {
+      "theme": "fossil-cove",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\published-cache\\art\\fossil-cove\\v7\\widget-fossil-ammonite.00c38063.webp",
+      "sha256": "00c38063c56a4372cbb54097134691a1c0bee82c16b087728276475ea6d72d19",
+      "bytes": 147990,
+      "verifiedAgainst": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\scripts\\packs\\artwork-baseline\\art\\fossil-cove\\v8\\manifest.json"
+    },
+    {
+      "theme": "enamel-reliquary",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\enamel-reliquary\\widgets\\trident-of-the-lost-sea.4ff30a41.png",
+      "sha256": "4ff30a41fb5897f8da209acc84c1aa008ab3b2e7cf0fdade99f279ca3d4ac8be"
+    },
+    {
+      "theme": "c-transmitted-seedbank",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-transmitted-seedbank\\widgets\\beech-leaf.f0b67dabf0ee.png",
+      "sha256": "f0b67dabf0ee1b03c5fd8fe0536508da26611d847bfa975fed93cd00117cb5ec"
+    },
+    {
+      "theme": "burr-hinterland",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\burr-hinterland\\widgets\\underside-vault.9a878715.png",
+      "sha256": "9a87871577e3c266ca017abbf70d5aa763e7f08fbfb52685a5fbe60ee79cac21"
+    },
+    {
+      "theme": "scratchlight-hedgerow",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\scratchlight-hedgerow\\widgets\\hare.7326f063231c.png",
+      "sha256": "7326f063231ca7f2e5cbf5dfae7dbda3d7f8b47b664b331322de5b886875fa98"
+    },
+    {
+      "theme": "c-chlorotype-leaflight",
+      "source": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze\\theme-sources\\c-chlorotype-leaflight\\widgets\\fig-leaf-robin.38da7049abf5.png",
+      "sha256": "38da7049abf5c24be36ac6cfe8b575d40339e2328a99046a2a5cd1a886b5ac2b"
+    }
+  ],
+  "assessment": "Complete recognizable natural pinnate fern, flat matte dark residue within pale fine-grained stone. All pinnae, tip and petiole retained; irregular whole flake with visibly layered lower/right cleavages. Film is not raised or carved, stone grain/fractures remain visible. Main gate is whether actual85px still reads as integral fossil/mineral material rather than ink-on-paper or a backing plaque; broad Fossil Cove family distinction openly disclosed. Raw endpoints whole but margins smaller than requested13percent, so honest whole-original uniform containment can add quiet space without editing/cropping. One unselected original, no other four or wallpaper. Artistic fossil interpretation, not an authentic specimen.",
+  "neighborImageInputsToGeneration": [],
+  "coordinatorVerdict": "Flat dark natural fern residue integral to laminated shale is clearly distinct from raised ammonite and enameled fossils. Complete independent different subjects/flakes, own-reference wallpaper, native9/quiet fern, square12pt full-fill proof. Preserve first original and add quiet margins only by uniform whole-original containment."
+}

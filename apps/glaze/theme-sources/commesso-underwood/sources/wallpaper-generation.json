@@ -1,0 +1,43 @@
+{
+  "id": "wallpaper",
+  "prompt": "COMMESSO UNDERWOOD, Glaze Nature. Use case: stylized-concept. ONE original1290x2796 VERY TALL PORTRAIT PHONE WALLPAPER, aspect about0.4614. One coherent recognizable OAK UNDERWOOD scene made as an original FLAT COMMESSO natural HARDSTONE INTARSIA picture. Broad organically contoured OPAQUE red/rosejasper, honeyochrejasper, moss-greenserpentinite, smokygraychalcedony, blackmarble and milkyquartz pieces expertly fitted flush in ONE COPLANAR polishedface, tight hairline joints, coarse intrinsic irregular mineralveins/cloudyinclusions changing direction at each field boundary. Each leaf/animalanatomical field is a broad continuous stonepiece, not tiny mosaicchips. Image1 own bullfinch is material/bird reference; Image2 own oak/acorns is botanical/material reference; Image3 own squirrel is material/mammal reference. Integrate them into a new unified composition, no collage/panels. A recognizable whole EURASIAN RED SQUIRREL seated lowLEFT facinginwardRIGHT, one large whole plume-like tail curls upward behind into an open C,2smalltuftedears,2forepaws holdingoneacorn,2wholehindfeet. A slender natural oakbranch rises fromlowercenter diagonallytoward upperRIGHT and bears4to5broad rounded-lobed oakleaves and one attachedpair ofacorns. ONE whole male BULLFINCH perches on a shortfork near upperRIGHT, facesLEFT with short thick conicalbill, rose-redjasperbreast, blackcap/wings/tail, smokygreyback,2wholefeet gripbranch. Two small groundferns and low asymmetrical ochre/greenstone woodlandbanklip visually connect bottomscene. All organisms/branches/fern/bank cutfrombroad opaque mineralfields in ONE flatplane, tinycutedgeonly, not carved3Djade animal or piledgems; no volumetricbelly/plasticroundedsculpture/fur/feathers underneath. No metalframes/goldwire/grout, stainedglass/translucency/glow, regularceramictessera grid, shelliridescence/eggshellchips, agatebands/druzy, woodgrain/straw/fabric/paint/printedveinpattern. Coarse stoneveins readable across broadflatfaces, restrained small planar polishingglints. Quiet UNIFORM deep smokyGREEN #354742 background with barely visible matte texture, no photographic trees/scenery or busyveining outsideorganisms. Fuller substantial TALL scene spans about82to88percentwidth and60to64percentheight, roughly25to87percentcanvasheight; upper22percentquietforicons. All bullfinchbill/tail/2feet, squirrel2ears/tail/2paws/2feet/acorn, oakleaflobes/acorncups/branchtips, fern/groundbank ends wholly inside real6to9percentSIDE margins and12percentBOTTOM margin. No giant croppedcreature and no tinyisland in excessiveblankborder. No enclosingoval/arch/pictureframe/rectangularplaque, pedestal/displaybase, shadows/halo/glow. No letters/numbers/text, clockfaces/livevalues/dates/battery/weather, UI/phonemockup/logo/signature. Deliver onlyfinished tallwallpaper.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.01ecf1bd.png",
+  "sourceSha256": "01ecf1bd18b4a0b9aaf7745de32cdc64ebc25eae23f8458a8773779715ab6d87",
+  "sourceDimensions": [
+    852,
+    1846
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "f5e74a2551e4c763a500232f1a1bcaf97155b1c2db558119361e291125c7b47b",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationReferences": [
+    {
+      "order": 1,
+      "id": "bullfinch-sprig",
+      "file": "sources/bullfinch-sprig.30587d72.png",
+      "sha256": "30587d7255c540aebde8a320ae3e532ba2cc1324b163a30de0aded35f80e6635",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 2,
+      "id": "oak-acorns",
+      "file": "sources/oak-acorns.fe4bd798.png",
+      "sha256": "fe4bd7981aa3f9a8327fae14f28a07f93be8a6e7bd0a363d13caebc0cdfae6db",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    },
+    {
+      "order": 3,
+      "id": "red-squirrel-acorns",
+      "file": "sources/red-squirrel-acorns.893e7634.png",
+      "sha256": "893e7634d40988cabb16450fba02b1fef6d7fb8e07b58ee23ec5d26b3c245313",
+      "role": "Own selected material/anatomy reference only; each output separately generated."
+    }
+  ],
+  "exactToolRequest": "qa/material-references/wallpaper-exact-tool-request.json",
+  "exactToolResult": "qa/material-references/wallpaper-exact-tool-result.json"
+}

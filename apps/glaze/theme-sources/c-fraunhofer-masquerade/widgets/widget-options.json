@@ -1,0 +1,67 @@
+[
+  {
+    "id": "cusp-herald",
+    "kind": "art",
+    "image": "cusp-herald.86ea40d84204.png",
+    "sha256": "86ea40d84204d19cf643a2d6253de7b3508d0bcd625228e33ec8e5e08b10dfde",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cusp Herald"
+  },
+  {
+    "id": "stilt-pavilion",
+    "kind": "art",
+    "image": "stilt-pavilion.cccca7684529.png",
+    "sha256": "cccca7684529ff77bf15a3e02142ca4068b6cbabd983d8b97248fad9a546ad13",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Stilt Pavilion"
+  },
+  {
+    "id": "sidelobe-skiff",
+    "kind": "art",
+    "image": "sidelobe-skiff.31c06e1f445e.png",
+    "sha256": "31c06e1f445e4361ef6fcab7a4099445e1702bef1b2d5679ffd3459efd08569b",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Sidelobe Skiff"
+  },
+  {
+    "id": "annular-strider",
+    "kind": "art",
+    "image": "annular-strider.5fb6b1587b9f.png",
+    "sha256": "5fb6b1587b9fa1d05863cfa2ec019135fe743bb0227bf607d969a53d37a0d832",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Annular Strider"
+  },
+  {
+    "id": "beam-harvester",
+    "kind": "art",
+    "image": "beam-harvester.b2d524de016a.png",
+    "sha256": "b2d524de016a1b580e9856598d9394fbd91f3f84dd979c9b702c6eaa4002c79b",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Beam Harvester"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "themeId": "pressgrain-arroyo",
+  "recipe": [
+    "wave",
+    "pressgrainRoadrunner",
+    "pressgrainTexture",
+    "staples",
+    "needle",
+    "tiles",
+    "board"
+  ],
+  "art": {
+    "pressgrainRoadrunner": "M 88 29 L 98 31 L 88 35 Q 83 36 80 43 Q 73 60 59 65 Q 48 69 36 61 L 8 49 L 2 43 L 37 49 Q 52 46 62 40 Q 66 31 74 29 L 76 21 L 80 26 L 83 20 L 85 27 Z M 84 30 L 85 31 M 40 53 Q 57 49 69 46 Q 63 59 47 60 Z M 56 65 L 60 77 L 76 83 L 87 82 M 43 64 L 31 78 L 22 88 L 11 90 M 76 83 L 83 88 M 22 88 L 26 93",
+    "pressgrainTexture": "M 13 22 L 42 16 L 68 20 L 86 14 M 17 30 L 40 25 L 69 30 L 83 25 M 22 51 L 44 48 M 22 58 L 44 55 M 27 47 L 28 62 M 35 46 L 36 60 M 60 45 L 62 46 M 70 49 L 72 51 M 62 59 L 64 60 M 76 60 L 78 62 M 15 82 L 37 76 L 44 79 L 59 77 L 64 73 L 84 74"
+  },
+  "ornament": "M 19 66 L 39 61 L 47 64 L 74 54 M 24 56 L 43 51 L 54 53 L 67 47 M 33 53 L 35 65 M 43 51 L 46 62 M 59 42 L 62 43 M 70 38 L 73 40",
+  "direction": "Wave rim follows an arroyo bank, staple marks recall coarse cloth crossbars, and needle hands echo the pulled edge of the print. Tiles and board layouts echo the plate's texture patches. The compact companion uses one fragment of broken cloth grid and two grit dots."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "woodpecker-birch",
+  "prompt": "TINWAKE UNDERSTORY for Glaze. One ORIGINAL1024x1024 pure NATURE illustration on TRUE TRANSPARENT ALPHA. Physical handmade medium: CUT THIN TIN SHEET, low-relief hand-hammered REPOUSSE and CHASING. Every natural form made from continuous thin metallic sheet; uneven little hammer dimples, raised pushed-out ridges, narrow scratched/chased veins, punch-tool dots, folded thin-sheet rims with dark cut edges. Cool pewter silver #B7CDD1 with oxidised blue-black recesses #172B33, restrained blue patina #416B77, moss patina #7A8D61 and occasional antique brass #B99A5D/rust #A85D4B. Clear handmade low relief, metallic specular glints only on ridges, not a glossy toy or smooth CGI sculpture; not porcelain, enamel fill, woven wire, embossed paper, metal filigree or jewellery. Strong recognisable whole flora/fauna silhouette, natural structure, individually authored composition. All major open gaps truly transparent. Whole subject central68% with16% or more actual transparent alpha margin on all4sides. No cut-off tip/foot/tail, halo, drop shadow, floor, framing plate, metal rectangle, disc, mat, border, badge, label, text, letters/numbers, UI, clock/gauge/calendar/battery/weather values or logo. Subject WOODPECKER BIRCH: one natural black-and-white WOODPECKER with a restrained small rust-red crown patch, clinging upright to the left side of ONE short diagonally rising BIRCH branch. Bird in clear side profile faces upper left, long pointed beak, small dark eye, folded wing with distinct pale bars, long stiff tail braced against bark, TWO clawed feet gripping the branch. All bird and branch are thin chased hammered tin relief, with pale silver bark sections, tiny curled tin bark rims, blue-black recesses and two small moss patina patches. Short branch ends fully visible, one twig with TWO delicate thin tin leaves extends right; no huge trunk or full scenery. Tall narrow asymmetrical bird-and-branch silhouette, natural anatomy, not toy/clockwork/jewellery. Whole beak, head, wing, tail, feet, bark ends and twig leaf tips inside generous alpha margin.",
+  "tool": "built-in image_gen",
+  "source": "sources/woodpecker-birch.9ebe2b1c.png",
+  "sourceSha256": "9ebe2b1ca05f44f5b6b2c8db5862d15dba8b21e50232345e933ddb6c1b9df75e",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/woodpecker-birch.f579d58d.png",
+  "sha256": "f579d58d0fffbb8e8b2d47e85e3b66efe94373073f818bd7a7be0b3acf8c7500",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

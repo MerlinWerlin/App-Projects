@@ -1,0 +1,1 @@
+Six selected unmodified built-in model outputs: five independent artwork generations plus final layout-edited wallpaper. Raw source hashes, exact prompts and own reference lineage in provenance.json. Unselected initial wallpaper retained outside selected sources.

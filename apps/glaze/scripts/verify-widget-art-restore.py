@@ -9,11 +9,12 @@ EXACT = [
     'src/ui/BlendedArt.tsx',
     'src/native/useRemoteCatalog.ts',
     'modules/glaze-widget-bridge/ios/ClockArtRenderer.swift',
-    'targets/widget/DesignedWidget.swift', 'targets/widget/ThemedWidgetDrawing.swift',
+    'targets/widget/DesignedWidget.swift',
     'src/ui/DesignedThemeWidgets.tsx',
 
 ]
 ALLOWED = {
+    'targets/widget/ThemedWidgetDrawing.swift': 'Owner 2026-11-22 (theme artwork feels awkward in small corners): accept an optional native ornament path and aspect-fit it only in the medium Clock header and Calendar motif boxes. Identities without it retain the restored drawing branches; larger Clock and all Battery hero compositions remain intact. The actual Swift identity parser and complete WidgetKit extension are checked by glaze-widgets-check; designedWidgets.test.ts checks legacy fallback, unchanged hero SVGs, fitted compact placement and saved identity round-trips. Owned by Codex lane A.',
     'src/native/packs.ts': 'Glaze 1.0.38 (owner 2026-11-15: keep R2 and bundle a small starter set): a starter whose bundled version the catalogue lists installs through the same downloadRemoteArtPack with a bundle-reading transport (no network); first launch with no cached catalogue lists the starters; installNextStarterPack for the launch queue. Download, update, verification and catalogue logic otherwise unchanged. Owned by Claude. 1.0.39: setPackInstalledListener, told after every successful pack install so the theme in use gets its widget art.',
     'src/ui/WidgetArtMenu.tsx': 'Design review 1.0.33 (owner TestFlight screenshots: Live art cards showed an empty frame / ring): one added overlay, <LiveArtSample> (src/ui/LiveArtSample.tsx), draws a sample date / 25:00 / time inside a number-free piece liveFrame, plus a themeInk prop. Compositing, blending, placement and every other line unchanged. Owned by Claude.',
     'app/(tabs)/widgets.tsx': 'Owner 2026-11-14 (large image and large number next to each other, not separate): the separate theme art picker is no longer shown; My widget art is the one numbered Artwork list. 1.0.36 (owner 2026-11-15, make your own theme): a Your artwork section (src/ui/CustomArtSlots.tsx) is added under it on Small; nothing above it changes. Owned by Claude. 1.0.37 (owner 2026-11-15): the Medium / Large size picker and Coming soon card are removed; the tab is Small only (My widget art and Your artwork always show). 1.0.39: passes the theme palette to My widget art for its theme-design slots.',

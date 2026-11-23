@@ -1,0 +1,60 @@
+{
+  "review": "All five high-opacity subject bounds fit inside original source frames. Forkbill additionally reviewed composited at full production size.",
+  "assets": [
+    {
+      "id": "stiltshell",
+      "sourceOpaqueBounds": [
+        256,
+        66,
+        916,
+        1214
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "drumback",
+      "sourceOpaqueBounds": [
+        50,
+        358,
+        1208,
+        1006
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "forkbill",
+      "sourceOpaqueBounds": [
+        31,
+        267,
+        1222,
+        1009
+      ],
+      "edgeAlphaMaximum": 30,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "keel-skater",
+      "sourceOpaqueBounds": [
+        36,
+        255,
+        1219,
+        1068
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    },
+    {
+      "id": "crest-tumbler",
+      "sourceOpaqueBounds": [
+        129,
+        186,
+        1141,
+        1136
+      ],
+      "edgeAlphaMaximum": 1,
+      "highOpacitySubjectInsideFrame": true
+    }
+  ]
+}

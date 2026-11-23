@@ -1,0 +1,1 @@
+Lane C sonographic speckle and Doppler-field theme for APPS A2. Six original model images portray imaginary non-anatomical acoustic spaces. Exact prompts, originals, hash provenance, native identity descriptor and QA retained. Coordinator integrates shared native registry. No publication.

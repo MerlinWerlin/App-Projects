@@ -1,0 +1,18 @@
+{
+  "id": "desertrose-bloom",
+  "prompt": "SILVERTHORN DUNES, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar real desert flora/fauna, natural recognizable proportions and coherent anatomy FIRST. Visibly physical BIDRI-INSPIRED handcraft: shallow solid BLACKENED ZINC-ALLOY low relief, satin matte charcoal-black patina with subtle uneven burnished metal surface; FEW BROAD TAPERED PURE SILVER WIRE/FOIL STRIPS hammered FLUSH into hand-cut channels, tiny bright metallic seams/hammer traces. Broad smooth uninterrupted black-metal reserves over80percent, no dense fine hairlike scratches, hatching, papergrain or white fur texture. Only a few broad silver strips per anatomical region, with hammered silver highlights. Inlay follows real fur directions, anatomical contours, natural scales, leaf veins and petals. BLACK METAL MUST DOMINATE at least75% of subject surface; restrained silver detailing no all-silver body. Thin cast metal edge visible in modest three-quarter relief, not chrome mirror, jewelry/charm, pin/brooch, porcelain/enamel, shell/nacre, wire cage, tin-sheet repousse, woven metal, glitter, beads, wood, plastic, ink/print/scratchboard/engraved paper or white outline drawing. No generic floral scrollwork plastered across bodies; keep animal identity immediate. Real gaps between limbs/branches alpha transparent. Whole complete composition central64%, minimum18% true alpha margin each side, no cut feet/ears/tail/leaf. No ground, scenery, backing plaque, frame, plinth, medallion, hanging ring/bail, cast shadow, halo, text, letters, numbers, clock/date/battery values, UI, logo or signature. Subject DESERTROSE BLOOM: a recognizable natural desert rose (Adenium) botanical sprig with exactly TWO open trumpet flowers showing FIVE broad overlapping petals each, one small closed bud and FOUR broad smooth oval pointed leaves on one slightly thick branching stem. Do not include pot, vase, soil, bonsai plaque, frame or root pedestal. Blackened zinc low-relief petals and leaves with sparse broad silver wire/foil hammered flush into cut channels: slender natural radial petal veins and thin bright petal lips, leaf central veins and a few branches. Black satin metal remains dominant in petals and leaves; no colored enamel, gemstones, nacre, white porcelain flowers or all-silver sculpture. Familiar organic floral shapes and normal botanical proportions, not a jeweled mandala or gear rosette. Whole flower lobes, bud, leaf tips and stem end visible inside generous alpha margins. CRITICAL APPROVED MATERIAL: smooth satin-black metal over80percent; only sparse BROAD tapered flush-hammered silver strips, 5to10times wider than scratch marks. No dense hairlike lines/hatching/scales or repeated tiny marks; emphasize black negative reserves and few bright embedded strips.",
+  "tool": "built-in image_gen",
+  "source": "sources/desertrose-bloom.62275fcf.png",
+  "sourceSha256": "62275fcfe2a72f64ad58c3828462f03ad8240669a2c0342f5bba9a5bf31b7c1a",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/desertrose-bloom.7e244a43.png",
+  "sha256": "7e244a43cb3e9ffd24765d397de9a1621f9ac9148ea652c89dfe40b443ee0d5e",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

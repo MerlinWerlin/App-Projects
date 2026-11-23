@@ -1,0 +1,89 @@
+{
+  "artworks": 5,
+  "encodedAssets": true,
+  "actualBlendMath": true,
+  "actualThemeGradient": true,
+  "fitInset": 0.06,
+  "stressCornerRadius": 0.24,
+  "installedDeviceVerified": false,
+  "allCoreSilhouettesRetained": true,
+  "batchThemesReviewed": 32,
+  "encodedAssetHashes": {
+    "folded-lung": "b0e039299c3f8187e8b6c7556d5e3842ceaf027976fa7ec91796e76fb8e4b0c7",
+    "clasped-horizon": "11346b38f2523fccc3de13a6cb1cf129bcfa96d09b4dcc9e12062d7fa0cd7648",
+    "counterweight-veil": "762b5fb3e93963c642eefad0a23b008129340abfe8074ccecf0fe2d19b1e24ea",
+    "borrowed-axis": "f64825b95040a6e37d17c1a1b329f2ba254c1173c816073f358eacfaa4c25f32",
+    "tension-crawler": "ba0f5f3adb536bb98b45302d68a6466f87a09ff567a87315f345387e9a12a0d6"
+  },
+  "theme": "turgor-tableau",
+  "sourceHashes": {
+    "folded-lung": "7b4f0d597d18f168a2131ff202b0c7cce6cbf1455a5a29ff49dc94352a45e163",
+    "clasped-horizon": "9057a5dd02a76c0bddedb20daa3039eaf075c4395f84949a394c6d802ddcdbc3",
+    "counterweight-veil": "faf517c26467bc9ada31bc7610aa6315fa21616390c2d8628d06878cf75a7f1c",
+    "borrowed-axis": "22fc8531c61007908afd288e5875a1a9e1dd6dfde1261cd91c1355ebc41873d0",
+    "tension-crawler": "73069d457bfd1049ea0ca04f167ff71e4ef960fdf14afbc52f2a7a02483f09e8"
+  },
+  "reviewed": true,
+  "perArtwork": [
+    {
+      "id": "folded-lung",
+      "label": "Folded Lung",
+      "blend": "transparent",
+      "corePixels": 58821,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "folded-lung-170.png",
+      "tiny": "folded-lung-85.png"
+    },
+    {
+      "id": "clasped-horizon",
+      "label": "Clasped Horizon",
+      "blend": "transparent",
+      "corePixels": 38848,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "clasped-horizon-170.png",
+      "tiny": "clasped-horizon-85.png"
+    },
+    {
+      "id": "counterweight-veil",
+      "label": "Counterweight Veil",
+      "blend": "transparent",
+      "corePixels": 29610,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "counterweight-veil-170.png",
+      "tiny": "counterweight-veil-85.png"
+    },
+    {
+      "id": "borrowed-axis",
+      "label": "Borrowed Axis",
+      "blend": "transparent",
+      "corePixels": 91416,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "borrowed-axis-170.png",
+      "tiny": "borrowed-axis-85.png"
+    },
+    {
+      "id": "tension-crawler",
+      "label": "Tension Crawler",
+      "blend": "transparent",
+      "corePixels": 35210,
+      "clippedCorePixels": 0,
+      "roundedAlphaLoss": 0,
+      "fringeReviewFlag": false,
+      "preview": "tension-crawler-170.png",
+      "tiny": "tension-crawler-85.png"
+    }
+  ],
+  "gradient": [
+    "#16367A",
+    "#16367A"
+  ],
+  "note": "Quiet theme backgrounds and whole silhouettes inspected at170px and85px. Radius24% is a deliberate UI clipping stress model, not installed-device evidence."
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "id": "oxbow-labyrinth",
+    "kind": "art",
+    "image": "oxbow-labyrinth.334c3ebbade1.png",
+    "sha256": "334c3ebbade1426a83619b95f502525a5db0df2f8331c8fd2c90ae109e6f699d",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Oxbow Labyrinth"
+  },
+  {
+    "id": "inverted-atoll",
+    "kind": "art",
+    "image": "inverted-atoll.d0c738af20d5.png",
+    "sha256": "d0c738af20d517ba46596e043bc462b700930c7f18a5b7ab97e1e3743ebbb732",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Inverted Atoll"
+  },
+  {
+    "id": "fault-staircase",
+    "kind": "art",
+    "image": "fault-staircase.a505f1f761cc.png",
+    "sha256": "a505f1f761cc147623564659ae073e82a76ef28d60f883df869828619c92a846",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Fault Staircase"
+  },
+  {
+    "id": "estuary-crown",
+    "kind": "art",
+    "image": "estuary-crown.2f94324139fe.png",
+    "sha256": "2f94324139fe31da72364059b423ae0ad7209ce54783d9c44bc935b98a43f48d",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Estuary Crown"
+  },
+  {
+    "id": "rift-triad",
+    "kind": "art",
+    "image": "rift-triad.396acb21fccc.png",
+    "sha256": "396acb21fccccd1c493cd0d90545a957c45aacaaf784a7e27187300fccb9b249",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Rift Triad"
+  }
+]

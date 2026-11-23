@@ -1,0 +1,23 @@
+{
+  "id": "quail-manzanita",
+  "prompt": "Precise MATERIAL-ONLY refinement of input1, own original Embertrace Chaparral quail/manzanita. Preserve exact recognizable California quail, natural anatomy, pose, body volume, head/short beak/eye, modest curved topknot, folded wing and tail, exactly two complete feet/toes, small three-leaf manzanita twig, palette, lighting, scale/framing and all clean transparent margins. KEEP warm ivory hand-shaped BURNISHED UNGLAZED CERAMIC with shallow clay tool shaping traces and restrained warm iron blush. REPLACE only the current branching lightning/crackle/marble-like vein network on the ceramic surface. Remove those forked networks completely. Instead show only FIVE distinct, isolated THIN SINUOUS OR LOOPING CARBONIZED HORSEHAIR STRAND TRAILS: individual gentle S curves, one loose irregular open loop and two meandering single-filament wavering lines, widely separated on chest/wing/flank/neck. Trails must be UNBRANCHED dark charcoal and visibly fine SINGLE strands absorbed FLUSH into hot clay, with small localized soft gray smoke deposits at a few trail segments and delicate fading burnt ends. Leave most ivory ceramic quiet. Lines do not form connected marble veins, angular cracks, spiderweb, tree branches, mesh/grid, painted feather anatomy or regular decorative calligraphy. No glossy glaze, metallic veins, raised wire/thread, literal loose hairs, shaggy fur or smoke outside subject. Preserve natural facial marks and every structural silhouette unchanged. TRUE TRANSPARENT ALPHA including all leg/twig gaps, no backing/halo/ground/shadow/plaque/frame, no text/UI. Single own image input only; no external reference.",
+  "tool": "built-in image_gen",
+  "source": "sources/quail-manzanita.25cfcc80.png",
+  "sourceSha256": "25cfcc80efc81d0ca163aaab9945a0f45aece4074f75ac1b729b16312eea8c43",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/quail-manzanita.49be3811.png",
+  "sha256": "49be3811fdc48ec5b9922a9ecb1e8d6b2fd68d4964342ab8bcdeb3107f443f13",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained.",
+  "generationHistory": "qa/material-repair/quail-manzanita-history.json",
+  "referencedImage": {
+    "file": "qa/material-repair/quail-manzanita.original.2b3b2615.png",
+    "sha256": "2b3b2615bbcbd3ee7819ff6d30d9285fe3d1ffbbd24260c96aa5786b33641919"
+  }
+}

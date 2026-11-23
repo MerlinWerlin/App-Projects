@@ -1,0 +1,18 @@
+{
+  "id": "rain-harvester-tower",
+  "prompt": "Glaze GHOSTPRESS. ONE separate original1024x1024 square pure artwork. INKLESS BLIND DRY-EMBOSS in heavy matte graphite cotton-rag paper: shallow0.5mm impressed/raised relief, compressed fibres along sharply impressed edges, ivory raking highlights and plum-gray sunk shadows, everything one FLAT paper surface, no ink or foil. Macro straight-on paper print, not a freestanding3D sculpture, foam/plastic, origami or ordinary object. Entire irregular paper silhouette central65%,18% real transparent alpha margins outside, no square sheet/backdrop, floor, pedestal, frame, text, numbers, logo, UI, clock/date/battery/live values, no collage. Charcoal #26252D, gray #8D8790, ivory edge gleam #EAE4DE. TANGIBLE SUBJECT: RAIN-HARVESTER TOWER for the paper harbour. A tall narrow open-framework collector stands on three broad arched feet, supporting a large faceted water tank with a clear front maintenance door and a wraparound access ladder. Above it three huge asymmetric open trumpet funnels face different directions like listening ears, connected by visible narrow chutes to the tank. One folded sheet of paper rain is being guided down a chute; a large crooked spout empties into a small attached side cistern. Clear believable assembly, platforms, supports and fluid route, strange useful architecture with a sharply branched top silhouette. No level marks, text or weather reading. Treat all material as ONE shallow inkless embossed graphite-paper illustration, fibres pressed around little window/chute edges, ivory raking light, no coloured ink or actual separate3D object. Whole funnels/tank/feet visible with generous transparent margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/rain-harvester-tower.09b641f2.png",
+  "sourceSha256": "09b641f22be2dee2de7ead5213a36cc02524ae6a53cfee1563e1ce6a629d9cfd",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/rain-harvester-tower.ba684390.png",
+  "sha256": "ba68439077def343fd2771d322a8d758f5d2c6ced751f4f0409f5da6adb8f5db",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

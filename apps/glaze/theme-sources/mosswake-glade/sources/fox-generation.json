@@ -1,0 +1,26 @@
+{
+  "id": "fox",
+  "label": "Lichentip Fox",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. GLAZE MOSSWAKE GLADE, one independent pure-art asset on TRUE transparent alpha. Our own accepted moss badger reference supplies only the living botanical material, palette and refined natural macro daylight. Create a distinctly different familiar natural subject. Entire sculptural body constructed from dense LIVING CUSHION MOSS: tiny clearly resolved green star-rosette shoots, minute overlapping leaves and short leafy fernlike tips, moist plant tissue. Pale warm-grey REINDEER LICHEN defines restrained natural highlights and small markings. Forest/olive/chartreuse green moss cushions with occasional sparse short reddish-brown sporophyte stems/tiny oval capsules. Real leafy plant texture, not fur/felt/artificialturf, gills/mycelium, long woodshavings, cork/stone/metal/glass/paper or 3Dtoy. All anatomy arises from botanical material, no real animal hidden beneath. Real familiar anatomy and clear entire silhouette first, readable at85px. Restrained moist highlights, no glitter/glow. Whole subject and EVERY extremity inside central66% square, ample truealpha margins all sides, true transparency through major gaps. No ground/lawn/base/rocks/scenery/floor, exterior shadow/haze or opaque background/rectangle/panel/frame/collage. No labels/text/signatures/numerals/logos/clock/dial/battery/calendar/UI/readings. SUBJECT: One complete familiar RED-FOX SHAPE walking in gentle side three-quarter view facing right. Natural slim canine body, long tapered pointed muzzle, two upright triangular ears, four complete slender legs/paws and a BIG BUSHY FULL TAIL curving downward behindleft. Whole shape built from green moss star-shoot cushions, pale warm-grey branching lichen at throat/chest, inner ears and large tailtip; darker moss eye/leg edges, tiny natural darkeye. No orange/red fur, no fox underneath. Calm alert natural posture, not humanoid/mascot. Allfourfeet, beaktip-like muzzle, ear tips and bigtail wholly inside alpha margins; keep tail separated from legs.",
+  "source": "sources/fox.75878be24ce3.png",
+  "sourceSha256": "75878be24ce3f138e8cf3b2819be8c423345e312f3d3a0251d274cd53c1048b1",
+  "sourceDimensions": [
+    1536,
+    1024
+  ],
+  "selectedFile": "widgets/fox.8a377b430cde.png",
+  "sha256": "8a377b430cde7a13221c1cb27deb241e052a030673e2182a57cf17fea47874be",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+  "references": [
+    {
+      "file": "sources/badger.d804513a49f7.png",
+      "sha256": "d804513a49f7803072a2dacd9928e6170dbecf293c496eed28df7bd8251b6365",
+      "purpose": "Own accepted moss badger supplies living star-shoot/lichen material, palette and light only; independent different natural subject."
+    }
+  ]
+}

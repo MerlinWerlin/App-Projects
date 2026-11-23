@@ -1,0 +1,13 @@
+{
+  "themeId": "encaustic-weatherworks",
+  "ornament": "M 18 60 C 7 59 9 43 22 41 C 21 24 43 21 50 34 C 59 19 81 27 78 42 C 93 44 92 61 79 62 L 18 62 M 24 73 Q 48 80 76 72 M 35 82 L 44 84 M 58 84 L 67 81",
+  "direction": "A broad fused-wax cloud curl above a short knife-drag seam; subtle weather workshop companion without miniature machinery.",
+  "scope": "Standalone source ornament path reviewed; actual placement separately verified using coordinator production parser and SVG renderer.",
+  "pathLength": 147,
+  "controlPointBounds": [
+    7.0,
+    93.0
+  ],
+  "publication": "not authorised",
+  "placementQA": "ornament-placement-validation.json"
+}

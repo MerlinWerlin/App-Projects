@@ -1,0 +1,169 @@
+{
+  "id": "c-deflectometric-bazaar",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "counterweight-vendor",
+    "hinge-porter",
+    "split-saddle-stall",
+    "rocker-load-carrier",
+    "pendulum-press"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.7d7b0bbd.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 9448,
+    "sha256": "7d7b0bbd5ef160e015cbaf96e805dbf98a1332fda34c757f8623a381471deded",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Viewed5 independent selected art together at210/150px and actual encoded85px. All five useful silhouettes distinct and complete. Broad nonlinear two-axis terracotta/peach checker signal fields,transparent structural gaps and sparse lost-signal slits;no glossy relief or clothing seams. Stall includes its original integrated operator,so3adults across5art groups. Actual Gambit House verified cached wallpaper/assets,Chequered Dash unchanged core composition,C16fern and rejected/revised vendor comparison retained;coordinator first-sample gate passed.",
+    "wallpaper": "Viewed all3 actual encoded phone variants. Exact five source groups/three adults remain whole in one connected pale market plaza. First scene outer vendor tray/press arm were tight and foreground low;built-in composition-only pullback reduced/raised cluster. Current exports keep complete trays,heads/hands/feet,canopies,cargo leaves,carrier handles/rockers and press arm/plunger/scoop with generous margins and quiet cream upper/bottom fields.",
+    "native": "Viewed all9 actual coordinator renderer previews in scratch. Facet/bar/sword vendor clock,basin battery,folio calendar keep live values clear. First closed grid ornament looked cubelike;replaced with open3curvedrows/2bentaxes and revalidated/rerendered all9. Current compact grid fragment fits headers with breathing room;larger areas retain whole canopy/vendor/two-tray yoke.",
+    "roundedArtworkCorners": "Viewed5 actual encoded art using actual app gradient stops,Fit6%inset,conservative20%roundedmask. All complete silhouettes and every visible alpha16 pixel retained. Quiet cream corners support both terracotta/peach optical fields. Entire22theme/110art audit passes. UI layout simulation,not installed-device proof."
+  },
+  "ownerSteeringReview": "Inventive working bazaar between the Nature sets. First conventional checker mannequin rejected;actual published/app/own visual neighbors compared and revised flat warped-grid vendor accepted by coordinator before other4generations. Quiet cream Artwork corners and compact open curved-grid native fragment. City & Retro verified.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-deflectometric-bazaar",
+    "backgroundStops": [
+      "#F4E7D8",
+      "#E8D7C7"
+    ],
+    "pieces": [
+      {
+        "id": "counterweight-vendor",
+        "sha256": "b86add60b10d8851b9efe2e4379c6b7e340696c03f51781cd47d684c531e7674",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "hinge-porter",
+        "sha256": "99bcae7ebbace2a85dababf167b794abc7769a6154a99d17f48ece0ce99d8813",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "split-saddle-stall",
+        "sha256": "e7a6c9ea305fcc734aa43873ab1532b7a04f0463ecb181f446277835e9e45ac0",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "rocker-load-carrier",
+        "sha256": "306f717598b61f13bfd25bb2290f39abad43d4d910ab06445ec98484fd4c0644",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "pendulum-press",
+        "sha256": "bd86e9ba36789f6b9659a97b42d3fef3be6861f42fc2bf7037c051cb89514dc8",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 6,
+  "packTestEvidence": "Actual offline builder v1:9assets/0.96MB. Actual manifest/catalogue parsers,5art/9changingnative,ornament roundtrip,battery null/0/100,full source+encoded decoding/dimensions/hashes,6selected provenance/noorphans and6own wallpaper reference hashes pass. Common47 pipeline checks previously passed;no shared runtime edits."
+}

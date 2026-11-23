@@ -1,0 +1,1 @@
+Read-only whole selected source composites on actual moss background at240/170/85. All five actual alpha composites visually clean; no alpha-only or other creative edit. Parent qa has final encoded/rounded/native/wallpaper proof.

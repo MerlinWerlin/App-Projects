@@ -1,0 +1,62 @@
+[
+  {
+    "id": "hollow-horn-stag",
+    "kind": "art",
+    "image": "hollow-horn-stag.2a80442de157.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Hollow Horn Stag"
+  },
+  {
+    "id": "bell-shell-mantis",
+    "kind": "art",
+    "image": "bell-shell-mantis.8424e3ee2786.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Bell Shell Mantis"
+  },
+  {
+    "id": "split-sail-newt",
+    "kind": "art",
+    "image": "split-sail-newt.fddc891aadae.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Split Sail Newt"
+  },
+  {
+    "id": "lantern-snail",
+    "kind": "art",
+    "image": "lantern-snail.595b3aaac39c.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Lantern Snail"
+  },
+  {
+    "id": "cradle-moth",
+    "kind": "art",
+    "image": "cradle-moth.2e558d3fe897.png",
+    "sizes": [
+      "small",
+      "large"
+    ],
+    "fit": "fit",
+    "background": "wallpaper",
+    "label": "Cradle Moth"
+  }
+]

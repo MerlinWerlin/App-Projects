@@ -1,0 +1,18 @@
+{
+  "id": "plover-samphire",
+  "prompt": "STRATAGRAIN SALTMARSH, Glaze Nature. ONE original standalone1024x1024 pure artwork on TRUE TRANSPARENT ALPHA. Familiar REAL saltmarsh flora/fauna with natural recognizable anatomy FIRST. Unmistakable physical MOKUME-GANE mixed-metal craft: COPPER, PALE BRASS, SILVER and DARK SHAKUDO alloy sheets heat/pressure BONDED into ONE CONTINUOUS METAL LAMINATE, forged and cut back to reveal a FEW BROAD FLOWING WAVY alternating layer contours and occasional deformed ring-eye sections. Band boundaries are FLUSH actual interleaved metal layers through the solid body, NOT carved/additive channels, raised wire or painted surface woodgrain. Thin curved cut lips expose a STACKED alternating colored-metal cross-section through thickness. Soft satin metallic highlights differ across copper/silver/brass bands, tiny restrained hand-planishing ripples and subtle dark-alloy oxidation, no mirror chrome bling. Low shallow forged relief with strong natural silhouettes. NO carved wood/pores/fibers, stone/gem veins, ceramic marbling/glaze, smooth single-metal casting, separate flush silver inlay stripes, woven metallic warp/weft, goldwire embroidery/coil tubes, glass/enamel, jewellery/clasp/bail/gems. Natural subjects remain clear; broad metal strata, not allover decorative filigree. Whole complete subject inside central64percent, generous18percent TRUE ALPHA margin on every side. All exterior and open anatomy gaps genuinely transparent; no ground/scenery/plinth/backing plaque/sheet/frame/badge/ring, shadow/glow/halo, text/letters/numbers, clock/date/battery/weather values, UI/logo/signature. All feet/toes/bills/tails/leaves/flower tips whole, no clipped extremity. FIRST MATERIAL SAMPLE: one recognizable natural RINGED PLOVER walking right in three-quarter side view, compact coastal bird body, small head, SHORT modest straight bill, small natural dark eye, one short tapered whole tail and exactly TWO coherent slender legs with complete delicate toes. One naturally folded wing with shallow forged edge, no costume or chibi toy face. A single modest whole samphire sprig with a few short jointed fleshy stems beside its feet, no ground pad. Build broad bird body as ONE CONTINUOUS low FORGED MIXED-METAL LAMINATE, only SIX TO TEN BROAD CONTINUOUS wavy/ring-eye layer contours across torso. Wavy copper/red-brown shakudo/silver/pale brass bands flow through actual metal volume; thin cut lip at folded wing/tail/leaf edge exposes STACKED alternating colored metal layers through thickness. Soft satin metallic highlights differ on silver/copper/brass, tiny tool-planishing ripples, NO brown wooden pores/grain fibers and no colored stone veins. Bands are deformed interleaved metal layers, not added separate silver twig inlays or painted woodgrain. All toes/bill/tail/samphire tips whole inside generous alpha margins.",
+  "tool": "built-in image_gen",
+  "source": "sources/plover-samphire.0ef856c3.png",
+  "sourceSha256": "0ef856c38fc986ec6c3703caa42881cabb299555f003a99e5e717a9ea40fc635",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/plover-samphire.98f537e2.png",
+  "sha256": "98f537e2cb53349049a0f49c8a3d2bc5c0095dd3f2d0edef96ea10f477b40e55",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

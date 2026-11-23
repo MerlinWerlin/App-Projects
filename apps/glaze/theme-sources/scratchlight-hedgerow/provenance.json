@@ -1,0 +1,159 @@
+{
+  "theme": "scratchlight-hedgerow",
+  "created": "2026-11-22",
+  "lane": "A",
+  "medium": "Flat black-ink scratchboard with crisp directional ivory knife-scratched strokes and broad black reserves",
+  "baseCommit": "26191d95827c73becb6da15c500eb5305f2548f1",
+  "artworks": [
+    {
+      "id": "hare",
+      "label": "Listening Hare",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE, first material prototype only. One standalone square pure-art asset on true transparent alpha. A familiar natural EUROPEAN HARE crouches in calm three-quarter profile facing left, two long upright ears with subtly dark tips, one bright natural eye, short tapered muzzle, fine whiskers, strong round haunch, folded long hind feet, two short front paws and a tiny round tail. Real unmodified animal anatomy, no clothes/props/face expression/fantasy parts. Entire silhouette and every ear/whisker/foot/tail fully whole inside central68% canvas, generous transparent margins. Distinctive medium: a traditional BLACK-INK SCRATCHBOARD illustration cut to the subject silhouette, not a rectangular board. Broad deep matte soot-black ink RESERVES form the whole animal; hundreds of precise crisp IVORY WHITE KNIFE-SCRATCHED STROKES reveal fur direction, facial planes and light, each short stroke has a sharp carved/chisel end. Clusters of white scratches vary naturally with fur, broad near-black areas between them, slight irregular hand-cut line widths. Hard clean subtractive highlights, tiny dotted knife-pricks on nose, no smooth shaded gradients. Clear bold black-and-white silhouette at85px. Flat two-tone illustration, no 3D depth/photographic fur texture or soft gray airbrush. No granular mezzotint stipple/burr, no black-line-on-white copper etching, woodblock colour patches, stippled stipplefield, pencil, charcoal smudge, painting, paper collage, paper fibres, linocut border or engraved metal. Exactly black and warm ivory only, no accent colour yet. Cutout follows animal silhouette precisely with true transparency outside and between legs/ears, keep black inside body opaque. No board/plaque/panel/ground/floor/scenery, no cast shadow, glow or backing. No lettering/signature/numbers/labels/logos/frames, no UI/clocks/dials/battery/calendar/readings. One original natural animal, not an image copied/cropped/recoloured from a neighbor.",
+      "source": "sources/hare.dcc38cfb5aaf.png",
+      "sourceSha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/hare.7326f063231c.png",
+      "sha256": "7326f063231ca7f2e5cbf5dfae7dbda3d7f8b47b664b331322de5b886875fa98",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits."
+    },
+    {
+      "id": "longtailed-tit",
+      "label": "Hawthorn Tit",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE: one independent square pure-art asset on true transparent alpha. Our own accepted hare reference supplies the BLACK-INK SCRATCHBOARD medium only; create this different recognizable natural subject. Flat deep matte SOOT-BLACK INK RESERVES form the whole subject, with crisp warm-IVORY KNIFE-SCRATCHED directional strokes revealing texture and light. Every scratch has a sharp carved/chisel end, slight hand-cut line-width variation, broad opaque black areas between clusters. Exactly black and warm ivory, no color. No soft gray photographic shading, granular mezzotint burr, dark-line-on-white etching, woodblock ink patches, pencil, charcoal smudge, glossy material, 3D sculpture or paper fibres. Real natural anatomy first, illustration remains immediately recognizable at85px. Full silhouette cutout with true alpha outside and in major gaps. Whole subject inside central68% canvas, generous transparent margins around ALL extremities. No rectangular board/plaque/panel, ground/floor/scenery, cast shadow, glow, backing, border/collage. No lettering/signature/number/label/logo, no UI/clock/dial/battery/calendar/readings. SUBJECT: One familiar LONG-TAILED TIT perched on a SHORT HAWTHORN TWIG. Tiny round pale head/body, dark eye-mask, small pointed beak, short rounded wings, extremely long narrow straight dark tail angled down-right, TWO natural feet gripping twig. Two small lobed hawthorn leaves and three round berries on twig, subordinate. Scratch ivory short feather strokes and tiny leaf veins into black reserves. Natural perched bird side three-quarter view, calm posture. Complete tail tip, beak, both toes, twig ends, leaf tips and berries all fully inside ample margins; not a blue tit/parrot, no extra bird.",
+      "source": "sources/longtailed-tit.0dfa4dabb647.png",
+      "sourceSha256": "0dfa4dabb64740268cdd8301d35770d7ab404d4ad73cad6ac623ae9ad6444e43",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/longtailed-tit.f8fb47aac4da.png",
+      "sha256": "f8fb47aac4da913314bcf8f2af45763b058bea7bd36a5dae9690d4a7966881fb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/hare.dcc38cfb5aaf.png",
+          "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+          "purpose": "Own first accepted hare supplies scratchboard marks and two-tone material only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "bramble-berries",
+      "label": "Bramble Berries",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE: one independent square pure-art asset on true transparent alpha. Our own accepted hare reference supplies the BLACK-INK SCRATCHBOARD medium only; create this different recognizable natural subject. Flat deep matte SOOT-BLACK INK RESERVES form the whole subject, with crisp warm-IVORY KNIFE-SCRATCHED directional strokes revealing texture and light. Every scratch has a sharp carved/chisel end, slight hand-cut line-width variation, broad opaque black areas between clusters. Exactly black and warm ivory, no color. No soft gray photographic shading, granular mezzotint burr, dark-line-on-white etching, woodblock ink patches, pencil, charcoal smudge, glossy material, 3D sculpture or paper fibres. Real natural anatomy first, illustration remains immediately recognizable at85px. Full silhouette cutout with true alpha outside and in major gaps. Whole subject inside central68% canvas, generous transparent margins around ALL extremities. No rectangular board/plaque/panel, ground/floor/scenery, cast shadow, glow, backing, border/collage. No lettering/signature/number/label/logo, no UI/clock/dial/battery/calendar/readings. SUBJECT: One familiar BRAMBLE SPRAY: a gently curved thorny stem with THREE serrated compound leaf clusters and one compact cluster of FIVE ripe BLACKBERRIES. Natural knobbly fused drupelets, star-shaped calyces and a few tiny thorns, white scratch highlights on individual berries. Each compound cluster has three to five distinct serrated leaflets, directional ivory scratch veins in broad black leaves. Graceful open irregular botanical silhouette, no pot/vase/ribbon or animal. Complete stem ends, all leaflets/thorns and berry tips safely whole.",
+      "source": "sources/bramble-berries.54923310708d.png",
+      "sourceSha256": "54923310708d0d20d0cf06df33c0eb09a4fe4ebc431a08a5ca3b2a20405e09fe",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bramble-berries.fcd765bdb4e6.png",
+      "sha256": "fcd765bdb4e62c93dc88385dec9d5eb10b45e77992974f9214062718cfb192bf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/hare.dcc38cfb5aaf.png",
+          "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+          "purpose": "Own first accepted hare supplies scratchboard marks and two-tone material only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "bee-dogrose",
+      "label": "Dogrose Visitor",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE: one independent square pure-art asset on true transparent alpha. Our own accepted hare reference supplies the BLACK-INK SCRATCHBOARD medium only; create this different recognizable natural subject. Flat deep matte SOOT-BLACK INK RESERVES form the whole subject, with crisp warm-IVORY KNIFE-SCRATCHED directional strokes revealing texture and light. Every scratch has a sharp carved/chisel end, slight hand-cut line-width variation, broad opaque black areas between clusters. Exactly black and warm ivory, no color. No soft gray photographic shading, granular mezzotint burr, dark-line-on-white etching, woodblock ink patches, pencil, charcoal smudge, glossy material, 3D sculpture or paper fibres. Real natural anatomy first, illustration remains immediately recognizable at85px. Full silhouette cutout with true alpha outside and in major gaps. Whole subject inside central68% canvas, generous transparent margins around ALL extremities. No rectangular board/plaque/panel, ground/floor/scenery, cast shadow, glow, backing, border/collage. No lettering/signature/number/label/logo, no UI/clock/dial/battery/calendar/readings. SUBJECT: One familiar BUMBLEBEE resting on a SINGLE OPEN DOG-ROSE FLOWER. Five broad natural petal lobes, textured central pollen stamens, short curved stem, two small serrated leaves and ONE closed oval bud. Bumblebee has one small round dark head, dark segmented body with ivory scratch-fur bands, TWO coherent translucent-looking hatched wings, SIX fine legs resting on flower and TWO antennae. Keep actual insect/plant scale and natural anatomy, no cartoon face or invented petals. Insect and flower both clear; white scratched petal highlights over black reserves, no gray translucent painted washes. Complete wings/antennae/legs/petal edges/bud/leaf/stem ends whole.",
+      "source": "sources/bee-dogrose.11d195121176.png",
+      "sourceSha256": "11d19512117680cded1e45ca0a0fd044279a0787ba21b3aae508569f81fd0455",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/bee-dogrose.4a5518d82907.png",
+      "sha256": "4a5518d82907d9c0401e83d8af8406d42296592c532d5589c95fe072c6856fcc",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/hare.dcc38cfb5aaf.png",
+          "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+          "purpose": "Own first accepted hare supplies scratchboard marks and two-tone material only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "snail-dock",
+      "label": "Dockleaf Snail",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: stylized-concept. GLAZE SOOT & BRAMBLE: one independent square pure-art asset on true transparent alpha. Our own accepted hare reference supplies the BLACK-INK SCRATCHBOARD medium only; create this different recognizable natural subject. Flat deep matte SOOT-BLACK INK RESERVES form the whole subject, with crisp warm-IVORY KNIFE-SCRATCHED directional strokes revealing texture and light. Every scratch has a sharp carved/chisel end, slight hand-cut line-width variation, broad opaque black areas between clusters. Exactly black and warm ivory, no color. No soft gray photographic shading, granular mezzotint burr, dark-line-on-white etching, woodblock ink patches, pencil, charcoal smudge, glossy material, 3D sculpture or paper fibres. Real natural anatomy first, illustration remains immediately recognizable at85px. Full silhouette cutout with true alpha outside and in major gaps. Whole subject inside central68% canvas, generous transparent margins around ALL extremities. No rectangular board/plaque/panel, ground/floor/scenery, cast shadow, glow, backing, border/collage. No lettering/signature/number/label/logo, no UI/clock/dial/battery/calendar/readings. SUBJECT: One familiar GARDEN SNAIL gliding across ONE gently cupped DOCK LEAF. Natural rounded spiral shell with clear concentric growth bands and ivory scratched ridges over broad black reserve, elongated soft pebbled body, TWO long upper eyestalks plus TWO short lower sensory feelers, all four coherent and separate. Broad lance-shaped slightly wavy leaf with midrib and lateral ivory scratch-veins, a short natural stalk, no pot/rock/ground. Side three-quarter view makes shell spiral/body/whole leaf obvious. Whole shell, tail, foot, four tentacle tips, complete leaf tip and stem inside generous alpha margins.",
+      "source": "sources/snail-dock.e0ec744bc342.png",
+      "sourceSha256": "e0ec744bc3425b1eda53823f4330734cf5afaf507837511353687619a2a53ab1",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "selectedFile": "widgets/snail-dock.3136912464ef.png",
+      "sha256": "3136912464efa40b700b89c624f9913069aea2627d9c07e9fea5156645e041fd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "processing": "Whole original uniformly contained within900px on1024square transparent canvas. Alpha preserved; no subject crop/recolour/artistic edits.",
+      "references": [
+        {
+          "file": "sources/hare.dcc38cfb5aaf.png",
+          "sha256": "dcc38cfb5aaf9d87e209f4807b5caa44ae1004536cb5ea16ede96893e582609b",
+          "purpose": "Own first accepted hare supplies scratchboard marks and two-tone material only; independent different natural subject."
+        }
+      ]
+    },
+    {
+      "id": "wallpaper",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: precise-object-edit. LAYOUT-ONLY correction of our own SOOT & BRAMBLE scratchboard hedgerow wallpaper. Preserve all five exact familiar natural subjects, anatomy, illustration marks and relative arrangement: bramble arch/fiveblackberries upper-left, long-tailed tit withwhole tail onhawthorn upper-right, crouched hare centre-right, bumblebee onfivepetal dogrose lower-left withbud/leaves, garden snail withfourfeelers onwhole dockleaf foreground. Preserve matte opaque black reserves and crisp warm-ivory directional knife scratches, same natural sparse grass/base, same pale cool grey-sage#D8DED9 field. Change ONLY framing. Uniformly reduce the ENTIRE connected subject grouping, branches, grass and leaf base to about64% ofcurrent size; centre the smaller entire grouping at57% image height and50%width. Every part must now fit inside central62%width, with19%quiet side margins. Topmost leaf/bird should begin near40%height, lowest grass/stalk/leaf end above75%height. Upper38% quiet pale field, bottom25%quiet pale ground. Extend the same subtle neutral field smoothly around and beneath, no new plants/animals or rectangular band. Do not crop, redraw poses, change subject identities, relative arrangement or scale between subjects. Keep all ears/whiskers/beak/tail/wings/antennae/thorns/leaf tips/stem ends wholly intact; shorter-phone centre crop removing9%top/bottom should retain every silhouette with comfortable rounded-corner margins. No added realism/3D/color/softgray shading/painting, no border/panel/plate/labels/numbers/signature/UI. Full-bleed opaque portrait wallpaper, same aspect as input.",
+      "source": "sources/wallpaper.50f8061d2c58.png",
+      "sourceSha256": "50f8061d2c58ec1b8f465f4f1e00292d676db748eb769615f49b43cebf982d0b",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "selectedFile": "wallpapers/wallpaper.png",
+      "sha256": "fd2b0b62dedd482811d8d6e631881ec9472ac00666bf00d1a512802ed539a5ec",
+      "dimensions": [
+        1290,
+        2796
+      ],
+      "processing": "Own layout-only hedgerow pullback then1290x2796 export; all5independent art and native subject unchanged.",
+      "references": [
+        {
+          "file": "qa/wallpaper-edge-study/first-scene.30421078ddc0.png",
+          "sha256": "30421078ddc03016be89dbbaf90e80037e5887b54b6d7b5ca7a05206feda7170",
+          "purpose": "Own first five-reference illustrated habitat, uniform whole-group framing correction only."
+        }
+      ],
+      "generationHistory": "qa/wallpaper-edge-study/generation-history.json"
+    }
+  ],
+  "publication": "Held for Jared explicit OK"
+}

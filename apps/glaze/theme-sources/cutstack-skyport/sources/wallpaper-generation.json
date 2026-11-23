@@ -1,0 +1,18 @@
+{
+  "id": "wallpaper",
+  "prompt": "ONE original tall1290:2796 phone wallpaper for GLAZE CUTSTACK SKYPORT. A tangible invented aerial public-transit port across the lower42%: one tall folding-wing mooring tower, a squat basket-shaped lift terminal with suspended passenger cages, a diagonal kite-sailed ferry carrying a little platform, a broad clam-opening cradle hangar for skyboats, and a zigzag hinged boarding stair bridge. Coherent useful transport world with obvious mooring points, cables, access stairs, deck railings and hinges, no space rockets/planets/astronauts, no ordinary toy collection. Artwork is FLAT LAYERED REVERSE-APPLIQUE COTTON: saturated thin cloth layers are CUT BACK to reveal lower colours as nested contour channels, neatly rolled-back cut edges held by close tiny irregular hand stitches, fine cotton weave/fibres and slight edge lift, all thin/UNPADDED. Incised-looking multi-colour channels are actually exposed stacked fabric edges, physically tactile stitched craft. No quilted/stuffed/plush objects, crochet/knitting, embroidery-filled surfaces, paper cutout, leather, loose sand, plastic or3D rendered models. Ink indigo #171C31, coral #E96067, saffron #EDBA48, ultramarine #4B66C0, pale aqua #81CDC2. Upper55% nearly empty dark-indigo woven cotton with very quiet weave, no stars/patterns/objects, excellent pale icon space. Bold flat aeronautical architectural silhouettes below, expressive different outlines, no blank outer mat or tile around scene. No text, lettering, numerals, labels, signage, symbols, clock/gauge/date/battery/weather readings, UI, logos, frame, border, phone mockup or collage.",
+  "tool": "built-in image_gen",
+  "source": "sources/wallpaper.d3088329.png",
+  "sourceSha256": "d30883297f51d2b18d87ebe9901769e38960bc34e366cf84636faea064f269a0",
+  "sourceDimensions": [
+    759,
+    2072
+  ],
+  "selectedFile": "wallpapers/wallpaper.png",
+  "sha256": "d23b83c02ea210f803f5fecff76cfdcff4999612fa5b950fedf95987a205311a",
+  "dimensions": [
+    1290,
+    2796
+  ],
+  "processing": "Wallpaper: fit to 1290x2796 with centering [0.5, 0.5]. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

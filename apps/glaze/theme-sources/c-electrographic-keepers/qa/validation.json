@@ -1,0 +1,131 @@
+{
+  "id": "c-electrographic-keepers",
+  "packVersion": 2,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "split-cowl-sentinel",
+    "mantle-bastion",
+    "latch-keeper",
+    "braid-crawler",
+    "sailwatcher"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.2d70e978.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 11758,
+    "sha256": "2d70e9787dd18dd97ceb6331ed1715aae48963f629f11cf5c2d34bf9d1779d82",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "artworkCombination": "Viewed five distinct tangible forms together at two widget-like sizes: tall split-cowl sentinel, low mantle-bastion, upright latch machine, three-necked braid-crawler and broad saddle-canopy sailwatcher. Matte indigo bodies and irregular branching boundary discharges unify the electrographic process; no smooth diffraction bands.",
+    "encoded85px": "Viewed all five actual built WebP artwork assets at85pixels; distinct body plans and branching luminous boundaries remain readable.",
+    "sourceFraming": "Main bodies and visible electrical fringes checked at alpha16 and96. All inside original source frames; edgeAlpha1/1/1/2/3. Genuine exterior/open-gap transparency retained.",
+    "wallpaperIdentity": "Rejected first generic cloaked-person/house scene. Separate replacement used the five selected original artworks as identity references, retaining exact body plans; layout-only imagegen edit then moved/shrank the gathering to protect alternate device crops. All prompts, raw intermediates and reference hashes retained.",
+    "wallpaperVariants": "Viewed final actual encoded1290x2796,1179x2556 and750x1334variants. All five complete figures and discharge fringes remain visible, including foreground feet. Quiet space above/below supports phone UI.",
+    "nativeCombination": "Viewed all nine actual renderer layouts. Larger sentinel/discharge compositions match the art; small Calendar/medium-clock headers use one separately authored discharge twig. Readings and ornament stay clear in all sizes.",
+    "scope": "Actual coordinator TS parser/renderer copied unchanged to scratch; descriptor/ornament data inserted only there. Nine real app plans, schema round-trips, changing readings and battery null/0/100 pass. Actual shared registry and device qualification remain coordinator-owned."
+  },
+  "referenceLineageVerified": true,
+  "rejectedStudiesExcluded": true,
+  "localPackIteration": "v2 after fixing the smallest device wallpaper crop; all version/release/catalogue outputs remain only in ignored dist/lane-c. Source integration can build fresh in the coordinator checkout.",
+  "packTestEvidence": "Unchanged pack pipeline has47distinct cases verified across original suite and Pillow-enabled WebP reruns. Per-theme final real builder/current app parsers/selectors/native renderer, full decoding, unique hashes, selected source/provenance reconciliation and no selected orphan checks pass."
+}

@@ -1,0 +1,1 @@
+Intermediate identity-correct wallpaper retained as direct edit reference. Replaced because the smallest actual device crop trimmed the foreground feet. Original prompt, five internal art references and hashes retained in provenance.json; not a selected production original.

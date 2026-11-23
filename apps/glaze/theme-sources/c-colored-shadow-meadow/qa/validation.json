@@ -1,0 +1,190 @@
+{
+  "id": "c-colored-shadow-meadow",
+  "packVersion": 1,
+  "assets": 9,
+  "fullImageDecode": true,
+  "uniqueHashes": 9,
+  "pureArtSelections": [
+    "quail-three-shadows",
+    "cottontail-shadows",
+    "poppy-shadows",
+    "fence-lizard-shadows",
+    "mushroom-shadows"
+  ],
+  "nativePlanned": 9,
+  "nativeKinds": [
+    "clock",
+    "battery",
+    "calendar"
+  ],
+  "nativeIdentityParsed": true,
+  "allNinePreviewsChangeWithReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "provenanceMatched": 6,
+  "noOrphanSelectedAssets": true,
+  "wallpaperSizes": [
+    [
+      1290,
+      2796
+    ],
+    [
+      1179,
+      2556
+    ],
+    [
+      750,
+      1334
+    ]
+  ],
+  "thumb": {
+    "path": "thumb.5d0c84a0.webp",
+    "role": "thumb",
+    "width": 240,
+    "height": 520,
+    "bytes": 13972,
+    "sha256": "5d0c84a0805b7272b1d491f58198c5619cda516a35084b1b0fdeaf6c123f38b4",
+    "mime": "image/webp"
+  },
+  "sharedRuntimeChanged": false,
+  "published": false,
+  "deviceValidation": false,
+  "registryIntegration": "Coordinator pending",
+  "ornamentParsed": true,
+  "nativeRendererSource": {
+    "root": "C:\\Users\\jared\\Documents\\Codex\\2026-11-14\\files-pasted-by-the-user-glaze\\work\\App-Projects\\apps\\glaze",
+    "identitySha256": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "previewSha256": "c9a1638ff4c4ab39ebe5fe4c47abe5bf7bc14fb4724cdd0c42af6eb32d6c5913"
+  },
+  "previews": [
+    {
+      "kind": "clock",
+      "size": "small",
+      "file": "native-clock-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "small",
+      "file": "native-battery-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "small",
+      "file": "native-calendar-small.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "medium",
+      "file": "native-clock-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "medium",
+      "file": "native-battery-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "medium",
+      "file": "native-calendar-medium.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "clock",
+      "size": "large",
+      "file": "native-clock-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "battery",
+      "size": "large",
+      "file": "native-battery-large.svg",
+      "previewOnly": true
+    },
+    {
+      "kind": "calendar",
+      "size": "large",
+      "file": "native-calendar-large.svg",
+      "previewOnly": true
+    }
+  ],
+  "visualReview": {
+    "fiveArtworks": "Reviewed the whole quail, cottontail, poppy with connected bud and leaves, corrected four-legged lizard, and pair of meadow mushrooms in the full sheet and all actual encoded 85 px tiles. Each singular subject and the three broad muted shadows remain legible against stone. The exact original quail is unchanged. One direct own-source edit removed a stray small lizard foot below the tail; four connected legs and all three cast lobes remain.",
+    "wallpaper": "Reviewed all three actual encoded phone profiles. Each shows the full quail and crest, rabbit and long ears, planted poppy and bud, lizard and complete curling tail, and whole pair of mushrooms. The quail's projected shadows are the clearest at this scale. Some companion shadow tips approach the side edges of the wide group, about 98 percent with the casts, without visually clipping the major subjects or cast shapes. The open top remains quiet. The one original wallpaper uses the exact quail as sole reference.",
+    "native": "Reviewed the small, medium and large clock, battery and calendar in the actual current app renderer. A simple round quail and muted flat projection outlines support the larger values, with a small original meadow seedhead in the compact corners. All nine previews change with the inputs. Ornament parsing and battery boundary states pass.",
+    "roundedArtworkCorners": "The fit simulation keeps the complete quail crest, rabbit ears, poppy bud, lizard and shadow tail ends, and mushroom rims in the five rounded Artwork tiles. All 205 encoded Lane C Artwork assets retain all visible alpha 16 pixels on the actual theme gradients and rounded fit model."
+  },
+  "ownerSteeringReview": "Whole recognizable plants and wildlife first, with slate teal, rose and ochre shadows anchored at real contacts. Warm stone Artwork backgrounds and a simple grass seedhead keep both corner treatments tied to the meadow.",
+  "roundedArtworkTileReview": {
+    "scope": "UI layout simulation,not installed-device proof",
+    "fitInset": 0.06,
+    "cornerRadiusFraction": 0.2,
+    "id": "c-colored-shadow-meadow",
+    "backgroundStops": [
+      "#EBE4D9",
+      "#E5DDD1"
+    ],
+    "pieces": [
+      {
+        "id": "quail-three-shadows",
+        "sha256": "cccac81a7f2cd5cc6b36fe5d8a8988a888cff46d06c583cc9967da3263e7617d",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "cottontail-shadows",
+        "sha256": "1d778ae574da6839389b56e0b2f853b7f6fe10bf15e2ce541b3718eecdf10fa7",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "poppy-shadows",
+        "sha256": "abb97dd9b2190c4e9e43ea1714306d795d9c03bfcff5100ed6098f172e442c2c",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "fence-lizard-shadows",
+        "sha256": "7015e39f5a3ca2135d4b4158ee1345a2e34f786b58676183a7ccc3563ad81194",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      },
+      {
+        "id": "mushroom-shadows",
+        "sha256": "35835bc0d73b7fb53e734f260af477ef80430732419c948fa876ca035b5d9cfa",
+        "foregroundAlphaRetained": 1.0,
+        "visibleAlpha16PixelsClipped": 0
+      }
+    ]
+  },
+  "wallpaperReferenceHashesMatched": 1,
+  "wallpaperDistinctReferenceImages": 1,
+  "artworkOwnStudyReferenceHashesMatched": 5,
+  "packTestEvidence": "Offline builder v1 produced 9 assets at minApp 1.0.44, totaling 1080872 bytes. Actual parser verifies five Artwork, nine live previews, boundary states and matching ornaments. All sources, normalized images, unselected lizard and encoded assets decoded and matched local hashes and dimensions.",
+  "encodedBytes": 1080872,
+  "minAppVersion": "1.0.44",
+  "selectedFirstRawUnchanged": true,
+  "newImageOutputs": 7,
+  "selectedSourceOriginals": 6,
+  "creativeRasterEdits": 1,
+  "unselectedGenerations": 1,
+  "artworkOriginalStyleReferenceHashesMatched": 4,
+  "artworkDirectEditReferenceHashesMatched": 1,
+  "artworkOwnStudyDistinctReferenceImages": 2,
+  "correctedLizardConnectedLimbs": 4,
+  "firstLizardUnselectedPreserved": true,
+  "fullSelectedSourceDecode": true,
+  "localNativePreviewOnly": true,
+  "all41LaneCThemes205ArtRetainVisibleAlpha16": true,
+  "paletteContrast": {
+    "glyphOnTile": 9.276623527486835,
+    "textOnBackground": 10.110428747428783
+  }
+}

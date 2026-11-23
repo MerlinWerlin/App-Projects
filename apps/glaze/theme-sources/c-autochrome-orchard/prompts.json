@@ -1,0 +1,103 @@
+{
+  "theme": "c-autochrome-orchard",
+  "mode": "built-in image_gen",
+  "ownerSteering": "Less abstract recognizable real nature. Familiar rose, blue tit/apple, bumblebee/borage, currants and snail/leaf retain natural anatomy. Fine random additive-colour photographic screen and soft muted positive tones; quiet sage-olive Artwork corners and natural rose-leaf native fragment.",
+  "conceptReferences": [
+    {
+      "title": "V&A: PERCEIVE, caring for Autochromes",
+      "url": "https://www.vam.ac.uk/blog/museum-life/perceive-caring-for-autochromes",
+      "use": "Primary conservation text about the photographic colour-screen process. Text only, no source images used. This is an artistic Autochrome-inspired digital positive,not an authentic historical plate."
+    },
+    {
+      "title": "National Science and Media Museum: history of the Autochrome",
+      "url": "https://blog.scienceandmediamuseum.org.uk/autochromes-the-dawn-of-colour-photography/",
+      "use": "Primary museum explanation of random dyed starch-screen colour photography,text only. No external visual input."
+    }
+  ],
+  "prompts": [
+    {
+      "id": "wildrose-sprig",
+      "prompt": "Use case: natural botanical and wildlife artwork. GLAZE AUTOCHROME ORCHARD. ONE familiar real nature subject with true natural anatomy and tissue, photographed as a beautiful EARLY ADDITIVE-COLOUR AUTOCHROME-INSPIRED POSITIVE IMAGE. The visibly distinctive photographic language is a fine RANDOM MULTICOLOURED STARCH-SCREEN GRAIN across the actual image tones: tiny irregular red-orange, muted leaf-green and blue-violet colour-filter specks combine into a soft natural-colour photographic image. At1024resolution the irregular speckles are mostly2to6pixels, dense but fine, uneven and subtly chromatic, never a regular screen grid or large colored cells. Photographic image structure and silhouette stay fully continuous and recognisable beneath this fine additive colour screen. The optical grain is flat image texture, NOT physical grains, coloured skin patches, a coat of sand or body construction. Soft pictorial photographic focus with clearly resolved whole silhouettes, gently muted rose, faded cornflower blue, sage green, buttercream and warm amber shadows. Delicate luminous low-contrast colour-positive feel, slight honey colour bias, fine multicoloured mottled grain visible in light and midtone areas. Real natural subject, not an illustration, painterly brushstrokes, coarse print, screenprint, risograph dots, half-tone ink, pixel art, mosaic body, orientation map, beads, sand sculpture, physical film ribbons or perforated frames. No duplicated/ghost exposures, neon, fluorescence, transmitted-vein glow, glass/plastic organisms or magical aura. No heavy antique scratches, fading holes, damage, torn edges or plate rectangle. No letters, numbers, labels, reading, UI, watermark or logo. Subject: ONE real WILD DOG-ROSE sprig: ONE open flower with FIVE broad, slightly uneven pale dusty-pink petals and a natural golden-yellow stamen cluster, ONE smaller closed pink bud, and THREE real serrated muted-green leaflets on a gently curved slender reddish-brown stem. Flower seen slightly obliquely, one petal naturally tips forward. Accurate soft petal tissue and leaf veins remain visible through the fine additive-colour photographic grain. Whole flower rim, all five petal tips, bud, all leaflets and short stem end. Only the wildrose sprig, no insect, animal or other plant. Asset:ONE separate square1024x1024 pure-art widget. Fit the ENTIRE subject safely inside central68percent with generous truly empty margins around every petal, leaf, stem, feather, antenna, wing and tentacle. TRUE ALPHA ZERO outside the real subject and through every natural gap. The coloured photographic grain exists only INSIDE actual subject pixels, not in the empty alpha. No backdrop, haze, matte veil, paper, rectangular photographic plate, border, frame, scene panel, floor, ground patch, cast shadow, extra specimen, contact sheet or phone mockup. Strong readable natural silhouette at85px. Polished delicate classic colour photography, not a noisy low-quality photo."
+    },
+    {
+      "id": "blue-tit-apple",
+      "prompt": "Use case: natural botanical and wildlife artwork. GLAZE AUTOCHROME ORCHARD. ONE familiar real nature subject with true natural anatomy and tissue, photographed as a beautiful EARLY ADDITIVE-COLOUR AUTOCHROME-INSPIRED POSITIVE IMAGE. The visibly distinctive photographic language is a fine RANDOM MULTICOLOURED STARCH-SCREEN GRAIN across the actual image tones: tiny irregular red-orange, muted leaf-green and blue-violet colour-filter specks combine into a soft natural-colour photographic image. At1024resolution the irregular speckles are mostly2to6pixels, dense but fine, uneven and subtly chromatic, never a regular screen grid or large colored cells. Photographic image structure and silhouette stay fully continuous and recognisable beneath this fine additive colour screen. The optical grain is flat image texture, NOT physical grains, coloured skin patches, a coat of sand or body construction. Soft pictorial photographic focus with clearly resolved whole silhouettes, gently muted rose, faded cornflower blue, sage green, buttercream and warm amber shadows. Delicate luminous low-contrast colour-positive feel, slight honey colour bias, fine multicoloured mottled grain visible in light and midtone areas. Real natural subject, not an illustration, painterly brushstrokes, coarse print, screenprint, risograph dots, half-tone ink, pixel art, mosaic body, orientation map, beads, sand sculpture, physical film ribbons or perforated frames. No duplicated/ghost exposures, neon, fluorescence, transmitted-vein glow, glass/plastic organisms or magical aura. No heavy antique scratches, fading holes, damage, torn edges or plate rectangle. No letters, numbers, labels, reading, UI, watermark or logo. Subject: ONE complete real BLUE TIT perched naturally on ONE short curved apple twig with ONE small unripe green apple and TWO muted green serrated apple leaves. Natural small blue cap and wings, pale yellow breast, white cheeks with a dark eye stripe, normal small beak, real dark eyes, two feet gripping the twig, complete tail. Calm real bird anatomy, not a glass bird or painted toy. Fine chromatic additive-colour photographic grain and soft muted early-colour tones cover feathers, apple and leaves consistently. All beak/head/wing/tail/feet, apple, leaf tips and twig ends whole. No extra birds, insects, fruit or props. Asset:ONE separate square1024x1024 pure-art widget. Fit the ENTIRE subject safely inside central68percent with generous truly empty margins around every petal, leaf, stem, feather, antenna, wing and tentacle. TRUE ALPHA ZERO outside the real subject and through every natural gap. The coloured photographic grain exists only INSIDE actual subject pixels, not in the empty alpha. No backdrop, haze, matte veil, paper, rectangular photographic plate, border, frame, scene panel, floor, ground patch, cast shadow, extra specimen, contact sheet or phone mockup. Strong readable natural silhouette at85px. Polished delicate classic colour photography, not a noisy low-quality photo."
+    },
+    {
+      "id": "bumblebee-borage",
+      "prompt": "ONE REAL BUMBLEBEE ON A SIMPLE REAL BORAGE SPRIG. Only ONE complete blue five-pointed borage flower, TWO tiny closed pink buds, ONE softly hairy muted-green leaf and ONE thin gently curved short stem. One natural fuzzy black/gold bee grips the flower,with2antennae,6anatomicallyattached legs and4clear veined wings withnatural overlap. All bee andplant tips complete. Natural botanical/wildlife photographic anatomy. AUTOCHROME-INSPIRED ADDITIVE-COLOUR POSITIVE PHOTO: fine dense irregular red-orange/green/blue-violet optical colour-filter speckles,mostly2to6pixels at1024,resolving continuous actual tissue. Flat fine multicolour grain andsoft muted cornflower blue/sage/buttergold natural tones,matching a delicate early colour-positive photograph. Not paint,ink print,coarse dots,beads,physical sand/mosaic body orgrain coating. Keep actual foreground edges CRISP andclean rather thanblurred. CRITICAL CUTOUT:the bumblebee andplant ALONE occupy pixels. EVERY exteriorpixel andEVERY EMPTY GAP between petals/stems/antennae/legs/wings is TRUE ALPHA ZERO TRANSPARENCY. NO white/grey/beige cloudy area behind theplant,NO matteveil,halo,fog,glow,backingplate,blurred shadow,vignette,studio background orblurred coloured wash. Do not paint atranslucent background behindtheflower. Clear wings mayretain natural translucency INSIDE their actual outline only. Finecolourgrain exists only INSIDE actualsubject pixels. Whole small sprig fitscentral65percent of1024square,withtruly empty generous margins. No otherflower,animal,prop,soil,ground,frame,text orUI.",
+      "generationStage": "Fresh independent single-flower bee/borage generation aftertwo unselected haze-bearing studies;no image inputs. Simplified botanical arrangement forclean alpha.",
+      "unselectedStudyRecords": [
+        "intermediate-borage-alpha-study/first-generation.json",
+        "intermediate-borage-alpha-study/failed-alpha-edit.json"
+      ]
+    },
+    {
+      "id": "redcurrant-sprig",
+      "prompt": "Use case: natural botanical and wildlife artwork. GLAZE AUTOCHROME ORCHARD. ONE familiar real nature subject with true natural anatomy and tissue, photographed as a beautiful EARLY ADDITIVE-COLOUR AUTOCHROME-INSPIRED POSITIVE IMAGE. The visibly distinctive photographic language is a fine RANDOM MULTICOLOURED STARCH-SCREEN GRAIN across the actual image tones: tiny irregular red-orange, muted leaf-green and blue-violet colour-filter specks combine into a soft natural-colour photographic image. At1024resolution the irregular speckles are mostly2to6pixels, dense but fine, uneven and subtly chromatic, never a regular screen grid or large colored cells. Photographic image structure and silhouette stay fully continuous and recognisable beneath this fine additive colour screen. The optical grain is flat image texture, NOT physical grains, coloured skin patches, a coat of sand or body construction. Soft pictorial photographic focus with clearly resolved whole silhouettes, gently muted rose, faded cornflower blue, sage green, buttercream and warm amber shadows. Delicate luminous low-contrast colour-positive feel, slight honey colour bias, fine multicoloured mottled grain visible in light and midtone areas. Real natural subject, not an illustration, painterly brushstrokes, coarse print, screenprint, risograph dots, half-tone ink, pixel art, mosaic body, orientation map, beads, sand sculpture, physical film ribbons or perforated frames. No duplicated/ghost exposures, neon, fluorescence, transmitted-vein glow, glass/plastic organisms or magical aura. No heavy antique scratches, fading holes, damage, torn edges or plate rectangle. No letters, numbers, labels, reading, UI, watermark or logo. Subject: ONE real REDCURRANT sprig: TWO hanging unequal small clusters of translucent natural muted ruby-red currant berries, about SEVEN berries on one strand and FIVE on the other, with ONE natural lobed sage-green currant leaf and a short branching tan twig. Natural berry stems and attachment points, tiny actual dried blossom tips and soft real highlights, no bead strings, jewelry or glass sculpture. Fine random coloured optical grain across the entire early-colour photographic image, softly muted natural reds and sage. Whole berry clusters, all leaf lobes and twig ends. No insects or animals. Asset:ONE separate square1024x1024 pure-art widget. Fit the ENTIRE subject safely inside central68percent with generous truly empty margins around every petal, leaf, stem, feather, antenna, wing and tentacle. TRUE ALPHA ZERO outside the real subject and through every natural gap. The coloured photographic grain exists only INSIDE actual subject pixels, not in the empty alpha. No backdrop, haze, matte veil, paper, rectangular photographic plate, border, frame, scene panel, floor, ground patch, cast shadow, extra specimen, contact sheet or phone mockup. Strong readable natural silhouette at85px. Polished delicate classic colour photography, not a noisy low-quality photo."
+    },
+    {
+      "id": "garden-snail-leaf",
+      "prompt": "Use case: natural botanical and wildlife artwork. GLAZE AUTOCHROME ORCHARD. ONE familiar real nature subject with true natural anatomy and tissue, photographed as a beautiful EARLY ADDITIVE-COLOUR AUTOCHROME-INSPIRED POSITIVE IMAGE. The visibly distinctive photographic language is a fine RANDOM MULTICOLOURED STARCH-SCREEN GRAIN across the actual image tones: tiny irregular red-orange, muted leaf-green and blue-violet colour-filter specks combine into a soft natural-colour photographic image. At1024resolution the irregular speckles are mostly2to6pixels, dense but fine, uneven and subtly chromatic, never a regular screen grid or large colored cells. Photographic image structure and silhouette stay fully continuous and recognisable beneath this fine additive colour screen. The optical grain is flat image texture, NOT physical grains, coloured skin patches, a coat of sand or body construction. Soft pictorial photographic focus with clearly resolved whole silhouettes, gently muted rose, faded cornflower blue, sage green, buttercream and warm amber shadows. Delicate luminous low-contrast colour-positive feel, slight honey colour bias, fine multicoloured mottled grain visible in light and midtone areas. Real natural subject, not an illustration, painterly brushstrokes, coarse print, screenprint, risograph dots, half-tone ink, pixel art, mosaic body, orientation map, beads, sand sculpture, physical film ribbons or perforated frames. No duplicated/ghost exposures, neon, fluorescence, transmitted-vein glow, glass/plastic organisms or magical aura. No heavy antique scratches, fading holes, damage, torn edges or plate rectangle. No letters, numbers, labels, reading, UI, watermark or logo. Subject: ONE complete real GARDEN SNAIL crawling on ONE gently curled natural green apple leaf attached to a short twig. Brown spiralling shell with ordinary mottled bands, soft grey-tan body, TWO long upper eyestalks and TWO shorter lower sensory tentacles, one natural broad foot gripping the leaf. Whole shell, all four tentacles, head, foot and tail tip visible; no cartoon eyes or expression. Leaf retains full tissue and natural veins. Fine multicoloured additive-screen grain, soft muted warm photographic tones, real moist natural texture without glossy glass/plastic. Complete leaf rim/tip and twig ends. Only snail and single leaf, no extra fauna or fruit. Asset:ONE separate square1024x1024 pure-art widget. Fit the ENTIRE subject safely inside central68percent with generous truly empty margins around every petal, leaf, stem, feather, antenna, wing and tentacle. TRUE ALPHA ZERO outside the real subject and through every natural gap. The coloured photographic grain exists only INSIDE actual subject pixels, not in the empty alpha. No backdrop, haze, matte veil, paper, rectangular photographic plate, border, frame, scene panel, floor, ground patch, cast shadow, extra specimen, contact sheet or phone mockup. Strong readable natural silhouette at85px. Polished delicate classic colour photography, not a noisy low-quality photo."
+    },
+    {
+      "id": "wallpaper",
+      "prompt": "EDIT IMAGE1,our own Autochrome Orchard scene. Preserve exact familiar real plants/wildlife andsoft muted natural colour-positive photography withfine random multicoloured additive-screen grain. PULL THE CAMERA BACK so ENTIRE FIVE-SUBJECT GROUP is30percent SMALLER asone connected habitat,andcentre it horizontally. Reconstruct all outercurrant andappleleaf tips;do notcrop them oradd aborder. Every single rosepetal/bud/leaf,currantberry/leaflobe/twig,blue tit beak/tail/feet/apple/twoleaves,borageflower/two pinkbuds/beeantennae/wingtips/legs,and snailtentacle/foot/tail/curledleaf rim mustbeWHOLE withgenerous room. Finalcompletegroup fitswithin x15to85percent,y48to77percent,centred nearx50percent/y63percent. Keep leftmostcurrantleaf andrightmostappleleaf atleast12percent awayfromsideedges. Preserve open naturalgaps andeach distinct group;stems/branches join naturally intomoss/grass,no floating collage. IMAGE2=exact blue tit/appletwig,IMAGE3=exact beeonONEblueborageflower/two tinyclosedpinkbuds/oneleaf,IMAGE4=exact two redcurrantclusters/oneleaf,IMAGE5=exact snailoncurledleaf. Preserve exact five-petal wildrose/bud/threeleaflets alreadyinIMAGE1. Onlyonebird,onebee,onesnail;no extras. Upper43percent quiet defocused smoky sage-olive orchard bokeh,bottom20percent quiet softmoss/grass. Keep original fine flat multicoloured optical grain andmuted rose/fadedblue/sage/honey tones;do notturn grain into coarse dots,paint,sand,bodypatches orfilmobjects. No borders,plates,antique scratches,lettering,UI orreadings. Portrait1290x2796,opaque.",
+      "internalArtworkReferences": [
+        {
+          "id": "wildrose-sprig",
+          "sourceImage": "sources/wildrose-sprig.74e3ce16e87f.png",
+          "sha256": "74e3ce16e87fa36876b0f7da9e2226405395fbacc140a4cb7ee763659f4066e8"
+        },
+        {
+          "id": "blue-tit-apple",
+          "sourceImage": "sources/blue-tit-apple.2d2aa6ad38e8.png",
+          "sha256": "2d2aa6ad38e844e634a9c4efef446a99801ee515411f8dad0d6804a645fd1e35"
+        },
+        {
+          "id": "bumblebee-borage",
+          "sourceImage": "sources/bumblebee-borage.c01f1fc919ec.png",
+          "sha256": "c01f1fc919ec008af492207273b807d1d1add5f90d1227e8486d077960736552"
+        },
+        {
+          "id": "redcurrant-sprig",
+          "sourceImage": "sources/redcurrant-sprig.b4bded9f6b41.png",
+          "sha256": "b4bded9f6b410fad288d712aafcf6daa365d63382e9526d3624eedc4d699588c"
+        },
+        {
+          "id": "garden-snail-leaf",
+          "sourceImage": "sources/garden-snail-leaf.d473fea82c06.png",
+          "sha256": "d473fea82c067bf6897164391fbc997b8a9b6be1093a8da79c1f092024e3a1c4"
+        }
+      ],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-framing-study/first-close-scene.cdbff1d5a1ca.png",
+        "sha256": "cdbff1d5a1cae3dbfe4f527bda1dca4d0d27678a136015300a0724d1714cfe38",
+        "role": "Own first five-reference orchard scene;unselected due outerleaf framing."
+      },
+      "editSupportReferences": [
+        {
+          "id": "blue-tit-apple",
+          "sourceImage": "sources/blue-tit-apple.2d2aa6ad38e8.png",
+          "sha256": "2d2aa6ad38e844e634a9c4efef446a99801ee515411f8dad0d6804a645fd1e35"
+        },
+        {
+          "id": "bumblebee-borage",
+          "sourceImage": "sources/bumblebee-borage.c01f1fc919ec.png",
+          "sha256": "c01f1fc919ec008af492207273b807d1d1add5f90d1227e8486d077960736552"
+        },
+        {
+          "id": "redcurrant-sprig",
+          "sourceImage": "sources/redcurrant-sprig.b4bded9f6b41.png",
+          "sha256": "b4bded9f6b410fad288d712aafcf6daa365d63382e9526d3624eedc4d699588c"
+        },
+        {
+          "id": "garden-snail-leaf",
+          "sourceImage": "sources/garden-snail-leaf.d473fea82c06.png",
+          "sha256": "d473fea82c067bf6897164391fbc997b8a9b6be1093a8da79c1f092024e3a1c4"
+        }
+      ],
+      "generationStage": "One built-in own-scene composition pullback withfour own-art supports;wildrose preserved frominitial own-five-reference scene. First scene retained unselected."
+    }
+  ]
+}

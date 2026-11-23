@@ -1,0 +1,32 @@
+{
+  "id": "wallpaper",
+  "tool": "built-in image_gen",
+  "reason": "Reduce and reposition complete habitat for all actual wallpaper crop variants.",
+  "originalPrompt": "PURLWAKE REEDBEDS, NEW original opaque portrait9:16 phone wallpaper. The two attached OWN approved artworks establish MATERIAL ONLY (water vole) and GREBE ANATOMY/MATERIAL ONLY (second image). Create one NEW coherent natural freshwater reedbed habitat in CUT-PURL GOLDWORK NEEDLEWORK. A natural water vole walks near rushes at left, a great-crested grebe swims quietly near tiny open ripples at upper-middle with modest two crest tufts/shortruff and natural lobed separated toes, one long natural pike in a gentle open S below, an open iris with small damselfly at right and three marshmarigold blooms/kidney leaves at lower-left. Recognizable real flora/fauna and natural anatomy/proportions, no costume, machines or geometric toy bodies. Every organism/leaf/stem is made from dense directional fields of SHORT HOLLOW HELICAL GILT-WIRE PURL SPRING TUBES, exposed repeating spiral ridges and CUT OPEN COIL MOUTHS, fine couching joins on thin shaped linen directly beneath stitched subjects. Warm antique gilt, pale champagne-silver throats/petals/bellies and tiny olive silk stems, dark tiny stitch eyes, no jewels. No smooth castgold figurines, glass seedbeads/enamel/pearls, broad goldfoil, woven metal warpweft, straight pin/string nets, wool/yarn/felt/plush or generic floral overprint. Each tube must visibly be a coiled wire spring, not a smooth bead. Compact organic habitat grouping, not five separate panels or badges. COMPOSITION: VERY DISTANT SMALL POSTAGE-STAMP-SIZE GROUP, all five organisms and supporting reeds/leaves/ripples contained within central40percent imagewidth x30to70percent, y44to68percent imageheight, centred57percentheight. The grouping is deliberately TINY within a VAST quiet smoky-plum #343039 matte cloth-paper field. Upper40percent, bottom28percent and broad side margins completely quiet for phoneclock/icons and tallphonecrop safety, only extremely faint linen texture in background. No canopy/floating petals/additional objects outside compact group. Whole every ear/tail/paw/bill/crest/toe/fin/wing/antenna/petal/leaf/twig intact. No hoop, frame, border, brooch clasp/bail, jewelring, plaque/platform, typography/letters/numbers, clock/date/battery/weather values, logo, UI, glitterhalo, exterior glow or strong cast shadows. One coherent refined gilt spring-wire needlework Nature wallpaper with large breathing room.",
+  "originalSource": "qa/layout-repair/wallpaper.original.cfd21df1.png",
+  "originalSha256": "cfd21df1c5b2ff3a28a143c997ca1f7178dff2c2ed6df3c7b62d3ff9221b179b",
+  "repairPrompt": "Edit this EXACT Purlwake Reedbeds goldwork wallpaper, LAYOUT ONLY. Preserve all five recognizable natural subjects, dense SHORT HELICAL CUT-PURL METAL TUBES, open cut mouths/spiral ridges/couching stitches, gilt/silver/olive colors and existing arrangement exactly. Uniformly shrink the ENTIRE COMPLETE EXISTING HABITAT GROUP to65PERCENT OF ITS CURRENT WIDTH AND HEIGHT, including vole/tail/paws, all rush/reed tips, grebe/bill/crest/feet/ripples, pike/fins/tail, iris/bud/leaves/damselfly and all marshmarigold flowers/kidney leaves/current/grass strokes. Everything shrinks/moves together, no independent resizing, redrawing, deletion or additions. Recenter the smaller complete group horizontally at57PERCENT imageheight. Every element inside central60percent imagewidth and y44to70percent imageheight, with clearly WIDE QUIET PLUM MARGINS ON BOTH SIDES and BELOW. Naturally extend same quiet smoky-plum #343039 matte textile-paper field above/below/sides; upper40percent and bottom28percent remain empty. Whole every ear/tail/paw/bill/crest/toe/fin/wing/antenna/petal/reed/leaf end intact. Keep purl SPRING-WIRE construction; no smooth castgold, ordinary soft-thread fill, glassbeads/enamel, wool/felt, new plants/background decorations, hoop/frame, lettering/numbers, clock/date/battery/UI, halo/glow or cast-shadow plaque. Opaque portrait phone wallpaper, same exact already-correct natural goldwork reedbed, just one uniform pulled-back composition.",
+  "referencedImage": "qa/layout-repair/wallpaper.original.cfd21df1.png",
+  "selectedSource": "sources/wallpaper.85be2d02.png",
+  "selectedSourceSha256": "85be2d0208d8b8d9a3bb8c624b97d26fc32243350d3c8324e60cbfd3e36b3995",
+  "initialMaterialAndAnatomyReferences": [
+    {
+      "id": "water-vole-rush",
+      "source": "sources/water-vole-rush.7085d1d8.png",
+      "sourceSha256": "7085d1d870bd3875cdc73b6ea94aec5acd5605385d369a57f6105125bf632c85",
+      "role": "Own approved material reference for initial wallpaper."
+    },
+    {
+      "id": "grebe-reeds",
+      "source": "sources/grebe-reeds.b44ba91a.png",
+      "sourceSha256": "b44ba91ada7af65a83c55382eff9658901886dfaf67cce06720debb03443e1d4",
+      "role": "Own selected anatomy/material reference for initial wallpaper; this is the repaired lobed-toe source, not its held original."
+    }
+  ],
+  "initialReferencedImageOrder": [
+    "sources/water-vole-rush.7085d1d8.png",
+    "sources/grebe-reeds.b44ba91a.png"
+  ],
+  "initialExactToolRequest": "qa/layout-repair/exact-initial-two-reference-request.json",
+  "exactToolRequest": "qa/layout-repair/exact-layout-only-request.json"
+}

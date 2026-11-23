@@ -1,0 +1,217 @@
+{
+  "theme": "c-nearinfrared-hawthorn",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "hawthorn-sprig",
+      "sourceImage": "sources/hawthorn-sprig.71aba60e9a46.png",
+      "sourceSha256": "71aba60e9a46942cfd0a69823c1884f33a687076750a52d4f3eec36aea0b992d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/hawthorn-sprig.447602894b18.png",
+      "sha256": "447602894b182bdd7cd1dbc1e5039b29ade8424aec09275e07f35e3ba5a64b3b",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 594280,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: recognizable real nature artwork. GLAZE PALELEAF THICKET. ONE familiar natural woodland subject with actual real anatomy, photographed in a REFLECTED NEAR-INFRARED WHITE-FOLIAGE image language. Healthy actual leaf tissue appears bright IVORY/PALE SILVER in this infrared-inspired photographic interpretation, with full continuous natural surfaces, real folds and fine veins. Woody stems and seeds remain contrasting neutral charcoal/soft brown-grey; animal fur/feathers/wings use natural continuous silver/graphite tones with clear real texture and dark ordinary eyes. Very restrained cool/warm split tone, otherwise almost monochrome. Crisp calm reflected-light photographic detail, luminous pale foliage INSIDE its actual boundaries, moderate natural contrast and real surface modelling. Foliage is bright because of the photographic spectral treatment, not snow/frost/fungus/white paint or a coating. This is reflected-light photography, NOT emitted-heat thermography, false-colour heat blobs, broad hyperspectral maps, data cells or scientific diagrams. Real subjects retain familiar silhouettes and natural tissue. Not electron micrograph surface pores, paired optical phase edge offsets, X-ray skeletons, abstract organisms, white moss topiary, clay/glass/plastic sculptures, metal, craft, ink illustration, engraving, coarse grain, diffraction bands, neon, fluorescence, magical aura or artificial external glow. No text, labels, scale bars, measurements, clock, reading, UI, watermark or logo. Subject: ONE complete real HAWTHORN SPRIG with exactly THREE distinct lobed hawthorn leaves at different natural angles, FOUR small haws in one loose cluster, a gently curved slender woody twig and one short natural thorn. The actual leaf tissue is pale ivory/silver from the reflected-infrared treatment; the leaf lobes, small serrations, central veins and subtle real folds remain unmistakably botanical. Haws are dark muted graphite berries with tiny actual blossom tips, not luminous pearls. Twig charcoal-brown, normal botanical attachment points. Whole three leaves/all lobes, four berries, thorn and twig ends. No additional plant, animal, root mass or ground. Asset:ONE separate square1024x1024 pure-art widget. Whole complete subject andall fine extremities safely inside central68percent with generous empty margins. TRUE ALPHA ZERO outside the subject and through every natural gap. Foreground has crisp natural photographic boundaries; pale tissue brightness remains only INSIDE actual leaf/body pixels. No hazy white background behind or around the plant, no soft grey matte veil, no bloom cloud, no shadow, no background rectangle, terrain, ground patch, snow, ice, photograph border, plate, frame, contact sheet or phone mockup. No creative transformation of anatomy. Strong familiar natural silhouette readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 847460
+    },
+    {
+      "id": "red-squirrel-hazel",
+      "sourceImage": "sources/red-squirrel-hazel.5fbd31a2cdf6.png",
+      "sourceSha256": "5fbd31a2cdf6368ce8ff7bb15e814537c5c7f11102a485c21f3ce2ae3a0d7ad3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/red-squirrel-hazel.1a159555b0ac.png",
+      "sha256": "1a159555b0ac34c1c98eb0b6b333d3b8d9105a08e86618ae6c08c75fd4c43760",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 1102525,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: recognizable real nature artwork. GLAZE PALELEAF THICKET. ONE familiar natural woodland subject with actual real anatomy, photographed in a REFLECTED NEAR-INFRARED WHITE-FOLIAGE image language. Healthy actual leaf tissue appears bright IVORY/PALE SILVER in this infrared-inspired photographic interpretation, with full continuous natural surfaces, real folds and fine veins. Woody stems and seeds remain contrasting neutral charcoal/soft brown-grey; animal fur/feathers/wings use natural continuous silver/graphite tones with clear real texture and dark ordinary eyes. Very restrained cool/warm split tone, otherwise almost monochrome. Crisp calm reflected-light photographic detail, luminous pale foliage INSIDE its actual boundaries, moderate natural contrast and real surface modelling. Foliage is bright because of the photographic spectral treatment, not snow/frost/fungus/white paint or a coating. This is reflected-light photography, NOT emitted-heat thermography, false-colour heat blobs, broad hyperspectral maps, data cells or scientific diagrams. Real subjects retain familiar silhouettes and natural tissue. Not electron micrograph surface pores, paired optical phase edge offsets, X-ray skeletons, abstract organisms, white moss topiary, clay/glass/plastic sculptures, metal, craft, ink illustration, engraving, coarse grain, diffraction bands, neon, fluorescence, magical aura or artificial external glow. No text, labels, scale bars, measurements, clock, reading, UI, watermark or logo. Subject: ONE complete real RED SQUIRREL sitting naturally on ONE short hazel twig, holding ONE small hazelnut between its front paws. Full natural squirrel body, fine fur in soft silver/graphite infrared-photo tones, tufted ears, normal dark eyes, small real nose, two front paws, two hind feet gripping twig and ONE long bushy curved tail fully visible. ONE pale ivory hazel leaf attaches to the twig. This is a real squirrel, not a fur sculpture, moss body or cartoon. All ear tufts, nose, paws/feet, nut, complete tail, leaf tip and twig ends whole. Asset:ONE separate square1024x1024 pure-art widget. Whole complete subject andall fine extremities safely inside central68percent with generous empty margins. TRUE ALPHA ZERO outside the subject and through every natural gap. Foreground has crisp natural photographic boundaries; pale tissue brightness remains only INSIDE actual leaf/body pixels. No hazy white background behind or around the plant, no soft grey matte veil, no bloom cloud, no shadow, no background rectangle, terrain, ground patch, snow, ice, photograph border, plate, frame, contact sheet or phone mockup. No creative transformation of anatomy. Strong familiar natural silhouette readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 661915
+    },
+    {
+      "id": "wood-sorrel",
+      "sourceImage": "sources/wood-sorrel.a3a28657c532.png",
+      "sourceSha256": "a3a28657c53251141410d2a2802c2ef2e849bfa19971f19ef58b666e5f94f89d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/wood-sorrel.2b7286722bf7.png",
+      "sha256": "2b7286722bf70eeec9ccb4e51ff315282b25c78b915358eff40a988df4eb7b08",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 476924,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: recognizable real nature artwork. GLAZE PALELEAF THICKET. ONE familiar natural woodland subject with actual real anatomy, photographed in a REFLECTED NEAR-INFRARED WHITE-FOLIAGE image language. Healthy actual leaf tissue appears bright IVORY/PALE SILVER in this infrared-inspired photographic interpretation, with full continuous natural surfaces, real folds and fine veins. Woody stems and seeds remain contrasting neutral charcoal/soft brown-grey; animal fur/feathers/wings use natural continuous silver/graphite tones with clear real texture and dark ordinary eyes. Very restrained cool/warm split tone, otherwise almost monochrome. Crisp calm reflected-light photographic detail, luminous pale foliage INSIDE its actual boundaries, moderate natural contrast and real surface modelling. Foliage is bright because of the photographic spectral treatment, not snow/frost/fungus/white paint or a coating. This is reflected-light photography, NOT emitted-heat thermography, false-colour heat blobs, broad hyperspectral maps, data cells or scientific diagrams. Real subjects retain familiar silhouettes and natural tissue. Not electron micrograph surface pores, paired optical phase edge offsets, X-ray skeletons, abstract organisms, white moss topiary, clay/glass/plastic sculptures, metal, craft, ink illustration, engraving, coarse grain, diffraction bands, neon, fluorescence, magical aura or artificial external glow. No text, labels, scale bars, measurements, clock, reading, UI, watermark or logo. Subject: ONE connected real WOOD-SORREL leaf sprig: THREE heart-shaped leaflets meeting naturally at one junction on ONE slender curved stem, with one small unopened leaf fold beside the junction. Accurate familiar trifoliate wood-sorrel anatomy, each leaf with a shallow heart notch, soft full tissue and fine veins. Reflected-infrared treatment makes real foliage pale ivory/silver, stem soft grey, subtle inner leaf shadows. No clover symbols, geometric hearts, cutout paper or metal. Whole leaflet tips/notches, junction and short lower stem end. No flower, soil, root ball, extra plant or insect. Asset:ONE separate square1024x1024 pure-art widget. Whole complete subject andall fine extremities safely inside central68percent with generous empty margins. TRUE ALPHA ZERO outside the subject and through every natural gap. Foreground has crisp natural photographic boundaries; pale tissue brightness remains only INSIDE actual leaf/body pixels. No hazy white background behind or around the plant, no soft grey matte veil, no bloom cloud, no shadow, no background rectangle, terrain, ground patch, snow, ice, photograph border, plate, frame, contact sheet or phone mockup. No creative transformation of anatomy. Strong familiar natural silhouette readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 845273
+    },
+    {
+      "id": "song-thrush",
+      "sourceImage": "sources/song-thrush.31c386f63c6c.png",
+      "sourceSha256": "31c386f63c6c55459050cccf9d17791ee645b7d3eb3677eda90786cdff0e1d33",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/song-thrush.44503058cddf.png",
+      "sha256": "44503058cddf7df0a02085884f05f85b46d0d7f2d6e1549d99c2378faa108f26",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 585232,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: recognizable real nature artwork. GLAZE PALELEAF THICKET. ONE familiar natural woodland subject with actual real anatomy, photographed in a REFLECTED NEAR-INFRARED WHITE-FOLIAGE image language. Healthy actual leaf tissue appears bright IVORY/PALE SILVER in this infrared-inspired photographic interpretation, with full continuous natural surfaces, real folds and fine veins. Woody stems and seeds remain contrasting neutral charcoal/soft brown-grey; animal fur/feathers/wings use natural continuous silver/graphite tones with clear real texture and dark ordinary eyes. Very restrained cool/warm split tone, otherwise almost monochrome. Crisp calm reflected-light photographic detail, luminous pale foliage INSIDE its actual boundaries, moderate natural contrast and real surface modelling. Foliage is bright because of the photographic spectral treatment, not snow/frost/fungus/white paint or a coating. This is reflected-light photography, NOT emitted-heat thermography, false-colour heat blobs, broad hyperspectral maps, data cells or scientific diagrams. Real subjects retain familiar silhouettes and natural tissue. Not electron micrograph surface pores, paired optical phase edge offsets, X-ray skeletons, abstract organisms, white moss topiary, clay/glass/plastic sculptures, metal, craft, ink illustration, engraving, coarse grain, diffraction bands, neon, fluorescence, magical aura or artificial external glow. No text, labels, scale bars, measurements, clock, reading, UI, watermark or logo. Subject: ONE complete real SONG THRUSH perched naturally on ONE short hawthorn twig with TWO small pale ivory lobed leaves. Familiar compact songbird anatomy, natural silver-grey feather texture, pale breast with real dark teardrop-shaped spots, short pointed beak, ordinary dark eyes, two small feet gripping the twig and full tail. Almost monochrome reflected-infrared photographic interpretation, not a glowing bird or thermal map. Real opaque feather/body surfaces. Whole beak/head/wings/tail/feet, both leaves and twig ends visible. No berries, nest, extra bird or insect. Asset:ONE separate square1024x1024 pure-art widget. Whole complete subject andall fine extremities safely inside central68percent with generous empty margins. TRUE ALPHA ZERO outside the subject and through every natural gap. Foreground has crisp natural photographic boundaries; pale tissue brightness remains only INSIDE actual leaf/body pixels. No hazy white background behind or around the plant, no soft grey matte veil, no bloom cloud, no shadow, no background rectangle, terrain, ground patch, snow, ice, photograph border, plate, frame, contact sheet or phone mockup. No creative transformation of anatomy. Strong familiar natural silhouette readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 842740
+    },
+    {
+      "id": "comma-butterfly-leaf",
+      "sourceImage": "sources/comma-butterfly-leaf.8eb8f9da8346.png",
+      "sourceSha256": "8eb8f9da83469bcf221271e7f7a2ea02eeb6cfe5563a6759ba808db03d73772d",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/comma-butterfly-leaf.bb694ad42396.png",
+      "sha256": "bb694ad423963ee09942359d55811ac99f117eba0af28f1c005c31e6cd7cf466",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 775854,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: recognizable real nature artwork. GLAZE PALELEAF THICKET. ONE familiar natural woodland subject with actual real anatomy, photographed in a REFLECTED NEAR-INFRARED WHITE-FOLIAGE image language. Healthy actual leaf tissue appears bright IVORY/PALE SILVER in this infrared-inspired photographic interpretation, with full continuous natural surfaces, real folds and fine veins. Woody stems and seeds remain contrasting neutral charcoal/soft brown-grey; animal fur/feathers/wings use natural continuous silver/graphite tones with clear real texture and dark ordinary eyes. Very restrained cool/warm split tone, otherwise almost monochrome. Crisp calm reflected-light photographic detail, luminous pale foliage INSIDE its actual boundaries, moderate natural contrast and real surface modelling. Foliage is bright because of the photographic spectral treatment, not snow/frost/fungus/white paint or a coating. This is reflected-light photography, NOT emitted-heat thermography, false-colour heat blobs, broad hyperspectral maps, data cells or scientific diagrams. Real subjects retain familiar silhouettes and natural tissue. Not electron micrograph surface pores, paired optical phase edge offsets, X-ray skeletons, abstract organisms, white moss topiary, clay/glass/plastic sculptures, metal, craft, ink illustration, engraving, coarse grain, diffraction bands, neon, fluorescence, magical aura or artificial external glow. No text, labels, scale bars, measurements, clock, reading, UI, watermark or logo. Subject: ONE complete real COMMA BUTTERFLY perched naturally on ONE hawthorn leaf with a short curved stem. Distinct natural ragged scalloped wing margins, plausible antennae, body andsix fine legs gripping the leaf. Wings in soft silver/graphite photographic tones retain actual subtle organic markings and irregular fine scales; all wing tissue continuous, no geometric cells or luminous patterns. Pale ivory hawthorn leaf shows real lobes and veins under reflected infrared. Wings partly open at a gentle oblique angle, not a flat specimen pinboard. Whole antennae, all wing tips/scallops, legs/body, leaf lobes and stem end. No additional insect, plant, flower or prop. Asset:ONE separate square1024x1024 pure-art widget. Whole complete subject andall fine extremities safely inside central68percent with generous empty margins. TRUE ALPHA ZERO outside the subject and through every natural gap. Foreground has crisp natural photographic boundaries; pale tissue brightness remains only INSIDE actual leaf/body pixels. No hazy white background behind or around the plant, no soft grey matte veil, no bloom cloud, no shadow, no background rectangle, terrain, ground patch, snow, ice, photograph border, plate, frame, contact sheet or phone mockup. No creative transformation of anatomy. Strong familiar natural silhouette readable at85px.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 773854
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.8e321599e224.png",
+      "sourceSha256": "8e321599e2243d058810fa20ef86c387981817081f898a13aec4cbaf94dce258",
+      "sourceDimensions": [
+        852,
+        1846
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "577bd7fcc9a9506d37479570877b5d87d8cbe98c0ac6502e9b3971646a866aac",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 2799271,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "EDIT IMAGE1,our own Paleleaf Thicket woodland scene. Keep the exact real hawthorn/squirrel/sorrel/songthrush/butterfly identities andnatural reflected-infrared photographic tissue. PULL THE CAMERA BACK so the ENTIRE FIVE-FOCAL-SUBJECT GROUP is35percent SMALLER asone connected lowwoodlandhabitat,then centre thatgroup horizontally andlower itinto thelower-middle. Allfive completegroups mustfitwithin x16to84percent,y49to77percent,centred nearx50percent/y63percent. Preserve all THREE hawthornleaves/FOURdarkhaws/thorn/twig alreadyinIMAGE1;bring theupper hawthorn leaves DOWN sothey startbelow48percentheight. Keep birdbeak/tail/feet/twoleaves andall otheroutertips at least12percent awayfromsideedges. IMAGE2=exact squirrel/longwholecurvedtail/tuftedears/paws/nut/feet/hazeltwig/oneleaf;IMAGE3=exact3heartleaflet sorrel/foldedleaf/stem;IMAGE4=exact whole songthrush/spottedbreast/tail/feet/twig/twoleaves;IMAGE5=exact whole comma butterfly/raggedwingmargins/antennae/legs/wholehawthornleaf. Preserve full familiar real anatomy. One squirrel,onebird,onebutterfly only,no extras. CLEAR ALL SHARP LEAVES AND BRANCHES fromthe UPPER45PERCENT:onlyquiet defocused coolslate/darkwoodlandshade andverysoft distanttrunk blurthere,no bright twigends orfocalfoliage. Bottom20percent quiet softlyfocused lowcontrast woodlandgrass/leaflitter. Let onlybackgroundvegetationbleed;allfocalleaves/animalendpoints whole anddistinct withnaturalopengaps. Keep continuous opaque paleivory/silver actualleaf surfaces,real veins/folds,neutral silver/graphite fur/feather/wings,darknormaleyes anddarkhaws/wood. No frost,snow,ice,crystals,mosscoating,paint,clay,glass,thermalcolourmaps,SEMpores,phaseedgerelief,neon orgrainfilter. Natural connectedscene,not cutoutcollage. Portrait1290x2796,opaque,no text/labels/UI/frame/reading.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "generationStages": "One built-in own-scene composition pullback/upperfield cleanup withfour own-art identity supports;hawthorn preserved frominitial own-five-reference scene. First close scene retained unselected.",
+      "internalArtworkReferences": [
+        {
+          "id": "hawthorn-sprig",
+          "sourceImage": "sources/hawthorn-sprig.71aba60e9a46.png",
+          "sha256": "71aba60e9a46942cfd0a69823c1884f33a687076750a52d4f3eec36aea0b992d"
+        },
+        {
+          "id": "red-squirrel-hazel",
+          "sourceImage": "sources/red-squirrel-hazel.5fbd31a2cdf6.png",
+          "sha256": "5fbd31a2cdf6368ce8ff7bb15e814537c5c7f11102a485c21f3ce2ae3a0d7ad3"
+        },
+        {
+          "id": "wood-sorrel",
+          "sourceImage": "sources/wood-sorrel.a3a28657c532.png",
+          "sha256": "a3a28657c53251141410d2a2802c2ef2e849bfa19971f19ef58b666e5f94f89d"
+        },
+        {
+          "id": "song-thrush",
+          "sourceImage": "sources/song-thrush.31c386f63c6c.png",
+          "sha256": "31c386f63c6c55459050cccf9d17791ee645b7d3eb3677eda90786cdff0e1d33"
+        },
+        {
+          "id": "comma-butterfly-leaf",
+          "sourceImage": "sources/comma-butterfly-leaf.8eb8f9da8346.png",
+          "sha256": "8eb8f9da83469bcf221271e7f7a2ea02eeb6cfe5563a6759ba808db03d73772d"
+        }
+      ],
+      "directEditReference": {
+        "sourceImage": "intermediate-wallpaper-framing-study/first-close-scene.bcac024d76db.png",
+        "sha256": "bcac024d76dba84f4002937f8f979a7a821da2106ed53eed0e275a0720ec68ec",
+        "role": "Own first five-reference habitat,unselected due focalgroup scale/upperfield clutter."
+      },
+      "editSupportReferences": [
+        {
+          "id": "red-squirrel-hazel",
+          "sourceImage": "sources/red-squirrel-hazel.5fbd31a2cdf6.png",
+          "sha256": "5fbd31a2cdf6368ce8ff7bb15e814537c5c7f11102a485c21f3ce2ae3a0d7ad3"
+        },
+        {
+          "id": "wood-sorrel",
+          "sourceImage": "sources/wood-sorrel.a3a28657c532.png",
+          "sha256": "a3a28657c53251141410d2a2802c2ef2e849bfa19971f19ef58b666e5f94f89d"
+        },
+        {
+          "id": "song-thrush",
+          "sourceImage": "sources/song-thrush.31c386f63c6c.png",
+          "sha256": "31c386f63c6c55459050cccf9d17791ee645b7d3eb3677eda90786cdff0e1d33"
+        },
+        {
+          "id": "comma-butterfly-leaf",
+          "sourceImage": "sources/comma-butterfly-leaf.8eb8f9da8346.png",
+          "sha256": "8eb8f9da83469bcf221271e7f7a2ea02eeb6cfe5563a6759ba808db03d73772d"
+        }
+      ]
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Less abstract recognizable real nature. Actual hawthorn, squirrel, wood sorrel, song thrush and comma butterfly retain natural anatomy and continuous tissue. Reflected-infrared-inspired pale foliage and neutral wildlife tones; quiet cool slate Artwork corners and a small natural lobed-leaf native fragment.",
+  "conceptReferences": [
+    {
+      "title": "Nikon: Photographing Nature on a Different Wavelength",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/nikon-creators/photographing-nature-on-a-different-wavelength",
+      "use": "Primary photographer/manufacturer explanation of reflected infrared foliage contrast,text only. Artistic digital spectral interpretation,not a measured species-specific infrared record;no external visual inputs."
+    },
+    {
+      "title": "University of Alabama: Infrared Photography camera guide",
+      "url": "https://guides.lib.ua.edu/infrared",
+      "use": "Primary institutional camera guide notes foliage reflects infrared strongly. Text only,no external images used."
+    }
+  ],
+  "conceptReferenceScope": "Primary Nikon photographer/manufacturer and University of Alabama camera-guide text only. Artistic digital reflected-infrared interpretation, not a measured species-specific spectral response. No external or neighbor image inputs.",
+  "unselectedHistory": [
+    "intermediate-wallpaper-framing-study/first-generation.json"
+  ],
+  "unselectedHistoryHashesMatched": 1,
+  "wallpaperReferenceUsesAcrossStages": 10,
+  "wallpaperDistinctReferenceImages": 6
+}

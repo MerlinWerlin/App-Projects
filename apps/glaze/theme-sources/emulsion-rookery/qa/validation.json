@@ -1,0 +1,134 @@
+{
+  "theme": "emulsion-rookery",
+  "integratedBatchThemes": 61,
+  "actualAppAudit": {
+    "id": "emulsion-rookery",
+    "name": "Emulsion Rookery",
+    "packVersion": 1,
+    "artworks": [
+      "ibis",
+      "ribbon-armadillo",
+      "raptorial-mantis",
+      "spooltail-chameleon",
+      "billowing-orchid"
+    ],
+    "nativePlans": 9,
+    "assetBytes": 1444724,
+    "nativeIdentity": true,
+    "compactOrnament": true
+  },
+  "allSelectedSourceAndOutputImagesFullyDecoded": true,
+  "selectedArtworks": 5,
+  "largeArtworkSelections": 5,
+  "nativePlans": 9,
+  "allNineChangeWithLiveReadings": true,
+  "batteryBoundaryStates": [
+    null,
+    0,
+    100
+  ],
+  "actualEncodedAssets": {
+    "wallpaper-2796.74aa57a9.webp": "74aa57a9730b48b185f4bd16d0d3a7608c9719b2253e296c192875d9826a1d23",
+    "wallpaper-2556.757ec5e8.webp": "757ec5e8b7a302c11fdf69b19c23228ec881a94b838db79c8244d5a0c1105d20",
+    "wallpaper-1334.3f6956db.webp": "3f6956db843596f8f6a7bfad6329f5dfd028c9cb312c33aff5901c48d15fb296",
+    "thumb.022c0380.webp": "022c0380f9366ce92ce47a28b03725a2ce9babfe913c27a50f1aa379d6e1c176",
+    "widget-ibis.4523f50f.webp": "4523f50f33db96d41bef54703fc7976ae6a6cb3956eebb7d5b5a815ba5908642",
+    "widget-ribbon-armadillo.2c9e2574.webp": "2c9e2574ee729a8dd4182d556f5a04c901465e46ca44869522b6e2b04b2710a0",
+    "widget-raptorial-mantis.b53513a1.webp": "b53513a117e3f6a8b0304e0dbcb639f91e5b023ca3f159b2fb5db0fecaa8a8ba",
+    "widget-spooltail-chameleon.e6762a3d.webp": "e6762a3d1988748b47fc0e1cd64a80f298fbbd2fa34df6abd6aad13af44cc639",
+    "widget-billowing-orchid.cfd13d6d.webp": "cfd13d6d1b57211db53a9adcaaa46f811e3df3e651e44700e0fdb3d04cb82e19"
+  },
+  "compactCompanion": {
+    "id": "emulsion-rookery",
+    "name": "Emulsion Rookery",
+    "retainedHeroLayouts": 5,
+    "compactLayouts": 4
+  },
+  "roundedArtwork": {
+    "id": "emulsion-rookery",
+    "name": "Emulsion Rookery",
+    "gradient": [
+      "#D4D9D4",
+      "#CDD1CD"
+    ],
+    "artifacts": [
+      {
+        "id": "ibis",
+        "label": "Perforated Ibis",
+        "blend": "transparent",
+        "corePixels": 34925,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "ibis-170.png",
+        "tiny": "ibis-85.png"
+      },
+      {
+        "id": "ribbon-armadillo",
+        "label": "Ribbon Armadillo",
+        "blend": "transparent",
+        "corePixels": 41075,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "ribbon-armadillo-170.png",
+        "tiny": "ribbon-armadillo-85.png"
+      },
+      {
+        "id": "raptorial-mantis",
+        "label": "Raptorial Mantis",
+        "blend": "transparent",
+        "corePixels": 23132,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "raptorial-mantis-170.png",
+        "tiny": "raptorial-mantis-85.png"
+      },
+      {
+        "id": "spooltail-chameleon",
+        "label": "Spooltail Chameleon",
+        "blend": "transparent",
+        "corePixels": 37853,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "spooltail-chameleon-170.png",
+        "tiny": "spooltail-chameleon-85.png"
+      },
+      {
+        "id": "billowing-orchid",
+        "label": "Billowing Orchid",
+        "blend": "transparent",
+        "corePixels": 45063,
+        "clippedCorePixels": 0,
+        "roundedAlphaLoss": 0,
+        "fringeReviewFlag": false,
+        "preview": "billowing-orchid-170.png",
+        "tiny": "billowing-orchid-85.png"
+      }
+    ]
+  },
+  "nativeDescriptorSha256": "c0b00dcd392b815715bdad6ba3226a2e0e40d09111af5ab68faef6ffe407f6c2",
+  "nativeSvgPreviews": [
+    "clock-small.svg",
+    "clock-medium.svg",
+    "clock-large.svg",
+    "battery-small.svg",
+    "battery-medium.svg",
+    "battery-large.svg",
+    "calendar-small.svg",
+    "calendar-medium.svg",
+    "calendar-large.svg"
+  ],
+  "actualRuntimeSourceHashes": {
+    "src/core/widgetIdentity.ts": "1557f80df38b85a1fc1cf2d40a56ccf63354e9f02339d2d26ff03fc853800f0c",
+    "src/core/themedWidgetPreview.ts": "6494c92e1274b37584d26f72f3507767d2586a4661f360f1fc34ae9226de8888",
+    "targets/widget/ThemedWidgetDrawing.swift": "7c092d15412cfb89f8aa26f80a0caefde335541c02011c9c91c9b84928fe4774"
+  },
+  "category": "Nature",
+  "actualBrowseCategory": "nature",
+  "visualReview": "Actual9 native layouts,3 encoded phone exports and all5 full/85px encoded rounded artworks visually reviewed. Native corner companion is one open bent film-strip fragment, with whole familiar wildlife retained in larger heroes.",
+  "published": false,
+  "installedDeviceVerified": false
+}

@@ -1,0 +1,34 @@
+{
+  "selected": false,
+  "sourceImage": "intermediate-wallpaper-layout-study/wallpaper-initial.a6849896721f.png",
+  "sourceSha256": "a6849896721f9d58b537102783ba0b8a581f2b30ef83c42a68164d02ea3cb362",
+  "prompt": "Use case: stylized-concept. GLAZE DEFLECTOMETRIC BAZAAR, revised strict optical recording. TWO-DIMENSIONAL RECORDED DISTORTED CHECKER REFLECTION MAP. Create the whole subject ONLY from broad alternating terracotta #B8472B and pale peach #F6D3AF curved quadrilateral OPTICAL SIGNAL REGIONS. Strong two-axis nonlinear grid deformation: cells become elongated curved saddle trapezoids,folded narrow hourglasses and very wide curved lozenges,with abrupt optical compression/expansion. Large unequal cells,six to ten across the main width. A few transparent LOST-SIGNAL SLITS interrupt the checker field between recording patches,so this reads as an optical map assembled into a whole silhouette,not a physically wrapped or checkered body. Both light and dark recorded signal regions are flat opaque;no separate normal object exists underneath. CRITICAL: absolutely ZERO conventional illustration shading,gradients,highlights,gloss,bevel,outline strokes or volumetric material. No anatomical modelling,spherical fruit,garment seams,apron,skirt,clothing folds,fabric texture,cloth,ceramic,paint,glass,metal,wood,paper,ink or sculpture. A person is an abstracted FLAT recorded full-body silhouette with readable adult proportions,no facial features or individually drawn fingers. Checker distortion provides all inner structure. No chessboard plane,regular printed checks,one-axis projected stripes,amoeba domain blobs,arrows,point clouds or blue light cones. An invented working market in a fictional optical reflection-map language,not measured metrology. No text,prices,labels,numerals,axes,legend,UI,clock,reading,logo or watermark. Asset: ONE opaque portrait1290x2796 wallpaper. Five exact own original art identities inhabit a connected inventive open-air market:counterweight vendor operates two-tray shoulder yoke beside split-saddle stall;hinge porter opens carrier leaves near the rocker load carrier;pendulum press links its receiving channel to the serving stall. No ordinary shop/cart/crank machine or pile of fruit. Preserve broad nonlinear two-axis checker distortion,flat opaque signal regions and sparse lost-signal slits. All five whole focal subjects within horizontal10%to90%andvertical46%to78%. Upper43%quiet warm cream #F4E7D8 and bottom20%quiet pale plaza. Only a few low-contrast broad plaza bands connect the meaningful workflow,no extra people/buildings/signage/props/clouds. Whole heads,hands,feet,trays,canopies,rockers,plunger/yoke/arm tips have generous room. Terrain can bleed,focal endpoints cannot. One coherent market,not specimen collage. No text,UI,reading or frame. Input identity references in exact order: IMAGE1=counterweight vendor, IMAGE2=hinge porter, IMAGE3=operated split-saddle stall, IMAGE4=rocker load carrier, IMAGE5=pendulum press. Preserve all five exact whole original silhouettes. Vendor has ONE large curved crescent canopy above its head and TWO unequal suspended trays held by both arms at shoulder level. Porter has TWO unequal open lattice cargo leaves,one high-left and one low-right,with full striding body between. Stall has TWO serving saddles,three feet,one half-covering crescent canopy and ONE integrated adult operator behind the counter:preserve that operator as part of the exact original stall group. Carrier has THREE curved rocker runners,TWO tall hinged leaves and double-prong pull handle,no wheels. Press has TWO unequal bowls,high yoke/hanging wide plunger,crescent counterweight arm,channel and low receiving scoop,no human operator. Do not turn these into ordinary umbrellas,boxes,handcarts or cylindrical presses. There are exactly THREE adult figures total:vendor,porter,and the stall source operator. No other people. Suggested clear placement:stall rear-left,carrier rear-right,vendor front-left,porter front-centre,press front-right. Connect their workflow with low-contrast pale plaza bands and a short channel from press toward stall;do not overlap or hide their complete heads,hands,feet,canopy tips,cargo-leaf ends,tray rims,handle prongs,runner tips or plunger/arm endpoints. All5 source groups whole within horizontal8%to92%andvertical46%to78%,keep quiet upper43%and bottom20%. Warm terracotta/peach warped-checker optical fields remain flat with no clothing seams,gloss,drop shadows or regular chessboard floor.",
+  "internalArtworkReferences": [
+    {
+      "id": "counterweight-vendor",
+      "sourceImage": "sources/counterweight-vendor.1799583f4e82.png",
+      "sha256": "1799583f4e823dfbc2eee230b8ade9e8de5ab8401ea8f150b0cfbacd01f931e1"
+    },
+    {
+      "id": "hinge-porter",
+      "sourceImage": "sources/hinge-porter.4febd798adee.png",
+      "sha256": "4febd798adee01f478a97a53fb36a3365a88c12bc11eac80692f58eb6461948c"
+    },
+    {
+      "id": "split-saddle-stall",
+      "sourceImage": "sources/split-saddle-stall.70aeaaf19a6c.png",
+      "sha256": "70aeaaf19a6c87e9061343034dce0e1fc8c5404f8451358a50c68e7c946cae25"
+    },
+    {
+      "id": "rocker-load-carrier",
+      "sourceImage": "sources/rocker-load-carrier.19ad62271fb7.png",
+      "sha256": "19ad62271fb76cabb04f1bd7fed147bc7a81a428d8732a62abd63f21cc5c30a5"
+    },
+    {
+      "id": "pendulum-press",
+      "sourceImage": "sources/pendulum-press.96af75edf627.png",
+      "sha256": "96af75edf6270baae2a5b98d9c707f227c066f43459ef85dc414e61b1d1d6aae"
+    }
+  ],
+  "reason": "All five identities retained,but vendor outer tray and press counterweight arm approach left/right edges,and foreground figures too low for generous phone-crop margins. Composition-only pullback."
+}

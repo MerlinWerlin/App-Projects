@@ -1,0 +1,26 @@
+{
+  "id": "fern-fiddlehead",
+  "label": "Zip Fern",
+  "tool": "built-in image_gen",
+  "prompt": "ONE entirely NEW independent Glaze Nature artwork for ZIPFROND GROVE. Our OWN kingfisher reference supplies ONLY the vintage zipper-fastener construction language. Make the described different whole natural subject, never copy the bird or twig composition. Physical miniature assembled from FEW BROAD curved or folded matte moss/olive-green COTTON ZIPPER TAPES with a few small rusty-orange cotton accents, worn dull-BRASS COARSE INTERLOCKING ZIPPER TEETH forming visibly stepped opposing rails, stitched woven selvedge edges and one small integrated functional slider/pull. Broad matte fabric planes and chunky repeating tooth interlocks must remain unmistakable at85px. Zipper teeth are blocky individual solid metal pieces with stepped necks, not thin smooth wire coils, metallic weave, golden purl tubes, seed beads, film-strip holes, corrugated paper, satin ribbon or generic jewelry. Careful real object-like macro photography with restrained light and clearly tangible cloth/metal joins; no realistic natural skin/fur/feathers merely colored green and no soft stuffed plush body. Entire subject centered in CENTRAL66percent square width/height, all wings/legs/tails/leaf/tendril tips WHOLE with at least15percent quiet true-transparent alpha margins. No backing fabric rectangle, plaque, bag, clothing, extra sliders outside subject, unrelated hardware, sewing tools, floor/cast shadow, glow, halo, background color, border, text, labels, logos, numbers, clock/date/battery/UI or mockup. True transparent alpha between open parts. Original artistic zipper-sculpture interpretation, not authentic handmade-object claim. ONE whole recognizable BOTANICAL FERN FROND, gently arcing upward with7pairs of separate broad lanceolate pinnae tapering in size towards a complete thin terminal tip, a whole curved petiole below, and ONE small natural coiled fiddlehead beside its base. Main rachis is a narrow closed moss-green zipper rail. Each pinna is a broad matte green tape leaf-plane with one complete chunky worn-brass tooth border and a clearly tucked narrow stitched base, not a smooth metal leaf or loose strip fringe; few rusty-orange tape undersides visible at gentle turns. Coiled fiddlehead uses ONE open paired-rail zipper curl with a small integrated slider, dark green cotton clear between stepped teeth. Airy familiar natural botanical shape, whole14pinnae/tip/petiole/fiddlehead without cropping.",
+  "source": "sources/fern-fiddlehead.9db112894ba6.png",
+  "sourceSha256": "9db112894ba6e5d0aeb52d6542a513865e0703abd7ef33366c9ced939ff821c7",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/fern-fiddlehead.8998107b.png",
+  "sha256": "8998107be0e5260374f8f4ff74a4ba236b894e6f09b1543e20e089222c03f031",
+  "dimensions": [
+    1200,
+    1200
+  ],
+  "processing": "Uniform whole-original containment within1100px on1200px transparent square; no crop, recolour, code alpha cleanup or creative raster edits.",
+  "references": [
+    {
+      "file": "sources/kingfisher-twig.01f4cf6f2d0e.png",
+      "sha256": "01f4cf6f2d0eec0c88cce0df4ce9c83b9388c8e73027f670c0645f0a07a1d04d",
+      "purpose": "Own accepted first kingfisher supplies zipper material only; independently generated natural subject."
+    }
+  ]
+}

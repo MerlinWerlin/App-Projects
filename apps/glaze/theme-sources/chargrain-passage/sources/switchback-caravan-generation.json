@@ -1,0 +1,18 @@
+{
+  "id": "switchback-caravan",
+  "prompt": "CHAR GRAIN PASSAGE / chargrain-passage for Glaze. ONE original 1024x1024 pure artwork of a tangible invented transit construction. Flat hand PYROGRAPHY burned into PALE BIRCH VENEER: dark sepia scorched contours, fine hot-point stippled shading, uneven burnt-line thickness, irregular heat-bloom halos, pale wood fibres and continuous warm horizontal grain visible THROUGH the drawing, sparse chalk-white rub highlights. Treat the entire subject as a flat burn-drawn illustration on the image plane, not carved wooden objects, marquetry/inlay, laser-cut model, paper etching, ink print, pencil drawing, CGI or3D product render. Palette pale birch #E8D9B7, deep charcoal-brown #38251D, warm scorch #93623D and chalk #F4EADB only. Strong simplified silhouette, readable useful construction and access, distinct central subject occupying central65% with at least16% genuine transparent alpha around all sides and through large voids. Woodgrain is retained only within pale illustrated subject fields; no rectangular wooden plaque or backing, no floor/scenery, border, frame, text, letters, symbols/numbers, signs, clocks/dials, date/battery/weather readings, logos, people or UI. Subject SWITCHBACK CARAVAN: a triangular three-level mobile passenger pavilion slung between TWO ENORMOUS OFFSET SPOKED ROAD WHEELS, left wheel tall and right wheel slightly smaller. One complete exterior SPIRAL STAIR connects the three stepped terraces; wide open arch bays and a single curled canopy at top, short projecting boarding ramp folds onto the lower deck. Visible axle connections support the pavilion between the wheels, six thick spokes per wheel, generous large open wheel gaps. No ordinary bus/train/car, animal, bridge, boat or cables. Strong tall-left/wide-bottom silhouette, physically understandable travelling hill-station with accessible decks, major wheels and stair take priority over tiny ornament. Whole wheel rims, stair rail and canopy tip fully inside alpha. Burn marks and grain are the only medium; keep all shading flat pyrographic stipple.",
+  "tool": "built-in image_gen",
+  "source": "sources/switchback-caravan.436a65d0.png",
+  "sourceSha256": "436a65d0e961cc55c03e6ae8f51e0a557e7e9038bc415fa5d75ce1d54d41f8b5",
+  "sourceDimensions": [
+    1254,
+    1254
+  ],
+  "selectedFile": "widgets/switchback-caravan.57e4dbbf.png",
+  "sha256": "57e4dbbf89c11b9acb80dea460fc1a51d6a6f2504366c8ea7f32c3575ae366af",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "processing": "Wallpaper: fit to 1290x2796. Artwork: fit entire original to 840px inside transparent 1024px canvas, no crop/recolour/subject edits; alpha retained."
+}

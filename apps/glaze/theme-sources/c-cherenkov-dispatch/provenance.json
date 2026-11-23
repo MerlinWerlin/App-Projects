@@ -1,0 +1,171 @@
+{
+  "theme": "c-cherenkov-dispatch",
+  "lane": "C",
+  "created": "2026-11-22",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "id": "keelbeam-ferry",
+      "sourceImage": "sources/keelbeam-ferry.9bb77c9ed00a.png",
+      "sourceSha256": "9bb77c9ed00ae293fafaae66cf3e04ea1ae98dc790ef7c16e754b70545580021",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "file": "widgets/keelbeam-ferry.89398e132087.png",
+      "sha256": "89398e132087a79258653d01e4a01278af5b3971575106e6ad5143971cf92d1c",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 370307,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHERENKOV DISPATCH. A tangible invented working signal-port/civic world revealed through fictional CHERENKOV-INSPIRED OPTICAL SHOCK-CONE INTENSITY EXPOSURES. Image language: each complete recognizable structure/figure consists ONLY of FOURtoEIGHT unequal overlapping luminous CONICAL RADIATION FANS. Cold saturated blue intensity fills the broad fan interiors,with blue-white peaks at sharp cone envelopes and a few curved hyperbolic intersection arcs. Visible apex-to-flared-rim geometry,hard dark optical gaps between separate cone fans,smooth optical intensity rather than physical surfaces. Shapes are made of recorded LIGHT,not illuminated matter. Broad FILLED blue light-fan fields must be visible,not just outline drawing. A little fine exposure grain,clear controlled blue-white cone boundaries,deep cyan/indigo intensity falloff inside each fan. No conventional surface shading,specular glints,metal,glass,plastic,holographic wireframe,neon tubes or opaque skin. No electrical sparks,branching lightning,corona fringe around a dark object,photoelastic rainbow,diffraction stripes/rings,schlieren grey turbulence,particle tracks,dot clouds or quiver arrows. The scientific optical-cone process must be unmistakable in the actual image. A fictional artistic radiation-image language,not a real measured experiment or device instruction. No text,labels,numerals,scales,coordinates,clock faces,readings,graphs,logos or watermark. Subject: KEELBEAM FERRY: ONE complete working passenger vessel with a broad low walking deck between TWO deep unequal conical light KEELS,a large open U-shaped passenger well/canopy formed by THREE overlapping fan rims,and TWO short broad side paddles at different angles. One high forward steering fan and a short low aft counterfan,asymmetric useful construction. No water patch,ordinary yacht,space fighter,chrome vehicle or wheels. Three-quarter side view,all keels/paddles/canopy ends whole. Asset: ONE separate square1024x1024 pure-art widget. Whole complete subject,each cone rim,hand/foot/paddle/support fully inside central70%canvas with generous truly empty margins. Real transparent alpha outside and through all open gaps;preserve luminous blue filled cone fields inside forms. No dark rectangular backing,floor,shadow,landscape,extra figures,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 871984
+    },
+    {
+      "id": "split-level-hall",
+      "sourceImage": "sources/split-level-hall.d96618311f5c.png",
+      "sourceSha256": "d96618311f5c569c3000cd9890ca3bf82a09afe0af1c2f0bea14a671b60e2bc3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/split-level-hall.af2857f419f3.png",
+      "sha256": "af2857f419f3d98b67fdc78ac33594b475f190121eba8fe11de4e78259e0afde",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 456498,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHERENKOV DISPATCH. A tangible invented working signal-port/civic world revealed through fictional CHERENKOV-INSPIRED OPTICAL SHOCK-CONE INTENSITY EXPOSURES. Image language: each complete recognizable structure/figure consists ONLY of FOURtoEIGHT unequal overlapping luminous CONICAL RADIATION FANS. Cold saturated blue intensity fills the broad fan interiors,with blue-white peaks at sharp cone envelopes and a few curved hyperbolic intersection arcs. Visible apex-to-flared-rim geometry,hard dark optical gaps between separate cone fans,smooth optical intensity rather than physical surfaces. Shapes are made of recorded LIGHT,not illuminated matter. Broad FILLED blue light-fan fields must be visible,not just outline drawing. A little fine exposure grain,clear controlled blue-white cone boundaries,deep cyan/indigo intensity falloff inside each fan. No conventional surface shading,specular glints,metal,glass,plastic,holographic wireframe,neon tubes or opaque skin. No electrical sparks,branching lightning,corona fringe around a dark object,photoelastic rainbow,diffraction stripes/rings,schlieren grey turbulence,particle tracks,dot clouds or quiver arrows. The scientific optical-cone process must be unmistakable in the actual image. A fictional artistic radiation-image language,not a real measured experiment or device instruction. No text,labels,numerals,scales,coordinates,clock faces,readings,graphs,logos or watermark. Subject: SPLIT-LEVEL SIGNAL HALL: ONE complete low civic building with TWO offset open gallery levels,a distinct inclined joining deck,THREE flared cone-pier supports and a broad scalloped conic-fan roof. Large open entrance and empty gaps beneath the raised deck make its function readable. The upper gallery cantilevers left while lower gallery extends right. No normal rectangular house,temple facade,real signage,antenna forest or generic glass skyscraper. Three-quarter view,all roof/rim/deck/support endpoints whole. Asset: ONE separate square1024x1024 pure-art widget. Whole complete subject,each cone rim,hand/foot/paddle/support fully inside central70%canvas with generous truly empty margins. Real transparent alpha outside and through all open gaps;preserve luminous blue filled cone fields inside forms. No dark rectangular backing,floor,shadow,landscape,extra figures,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 815888
+    },
+    {
+      "id": "beacon-courier",
+      "sourceImage": "sources/beacon-courier.3f902fe7b4ae.png",
+      "sourceSha256": "3f902fe7b4ae1f6acf0bb3d9f6d47a6ed01e933c4e3814a9b0104979e71081c3",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/beacon-courier.cd13064d967b.png",
+      "sha256": "cd13064d967bf70f78ab46037e43e1703f516cdf72753232e5c79c7801a87dd4",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 642898,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHERENKOV DISPATCH. A tangible invented working signal-port/civic world revealed through fictional CHERENKOV-INSPIRED OPTICAL SHOCK-CONE INTENSITY EXPOSURES. Image language: each complete recognizable structure/figure consists ONLY of FOURtoEIGHT unequal overlapping luminous CONICAL RADIATION FANS. Cold saturated blue intensity fills the broad fan interiors,with blue-white peaks at sharp cone envelopes and a few curved hyperbolic intersection arcs. Visible apex-to-flared-rim geometry,hard dark optical gaps between separate cone fans,smooth optical intensity rather than physical surfaces. Shapes are made of recorded LIGHT,not illuminated matter. Broad FILLED blue light-fan fields must be visible,not just outline drawing. A little fine exposure grain,clear controlled blue-white cone boundaries,deep cyan/indigo intensity falloff inside each fan. No conventional surface shading,specular glints,metal,glass,plastic,holographic wireframe,neon tubes or opaque skin. No electrical sparks,branching lightning,corona fringe around a dark object,photoelastic rainbow,diffraction stripes/rings,schlieren grey turbulence,particle tracks,dot clouds or quiver arrows. The scientific optical-cone process must be unmistakable in the actual image. A fictional artistic radiation-image language,not a real measured experiment or device instruction. No text,labels,numerals,scales,coordinates,clock faces,readings,graphs,logos or watermark. Subject: BEACON COURIER: ONE complete purposeful ADULT civic courier figure,standing in a long forward stride. A broad inverted-cone head/mantle is anonymous with no human face,shoulders formed by two unequal light fans,a narrow connected torso,two thick forward/rear legs and two arms. One arm carries a short FORKED ROUTING BEAM low across the body,the other gestures outward. Cape-like fan opens behind the rear shoulder,leaving a clear arm/torso gap. Read as a useful adult figure with complete hands/feet,not a monster,ghost,skeleton or ordinary sports person. Asset: ONE separate square1024x1024 pure-art widget. Whole complete subject,each cone rim,hand/foot/paddle/support fully inside central70%canvas with generous truly empty margins. Real transparent alpha outside and through all open gaps;preserve luminous blue filled cone fields inside forms. No dark rectangular backing,floor,shadow,landscape,extra figures,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 763404
+    },
+    {
+      "id": "reversing-gate",
+      "sourceImage": "sources/reversing-gate.264e6f9a9080.png",
+      "sourceSha256": "264e6f9a90801e038bdc27534f7d8dafaf8d2e97a8104d44e7ea1365841d79fd",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/reversing-gate.8dcb33f11c23.png",
+      "sha256": "8dcb33f11c23fad378765e9a8524e226433515f738268d97a5366abc8ab9cd5c",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 569080,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHERENKOV DISPATCH. A tangible invented working signal-port/civic world revealed through fictional CHERENKOV-INSPIRED OPTICAL SHOCK-CONE INTENSITY EXPOSURES. Image language: each complete recognizable structure/figure consists ONLY of FOURtoEIGHT unequal overlapping luminous CONICAL RADIATION FANS. Cold saturated blue intensity fills the broad fan interiors,with blue-white peaks at sharp cone envelopes and a few curved hyperbolic intersection arcs. Visible apex-to-flared-rim geometry,hard dark optical gaps between separate cone fans,smooth optical intensity rather than physical surfaces. Shapes are made of recorded LIGHT,not illuminated matter. Broad FILLED blue light-fan fields must be visible,not just outline drawing. A little fine exposure grain,clear controlled blue-white cone boundaries,deep cyan/indigo intensity falloff inside each fan. No conventional surface shading,specular glints,metal,glass,plastic,holographic wireframe,neon tubes or opaque skin. No electrical sparks,branching lightning,corona fringe around a dark object,photoelastic rainbow,diffraction stripes/rings,schlieren grey turbulence,particle tracks,dot clouds or quiver arrows. The scientific optical-cone process must be unmistakable in the actual image. A fictional artistic radiation-image language,not a real measured experiment or device instruction. No text,labels,numerals,scales,coordinates,clock faces,readings,graphs,logos or watermark. Subject: REVERSING CONIC GATE: ONE complete broad access structure with TWO opposed large curved fan leaves held between TWO unequal leaning cone-pylons. The fan leaves rotate in opposite directions,one rising upper-left and the other opening lower-right,leaving a wide empty walk-through gap in the centre. A low connected base threshold and thick foot supports ground it. Useful working civic gate,not a flower,decorative fan collection,clock face,ordinary door or weapon. Three-quarter view,full leaves/pylons/base. Asset: ONE separate square1024x1024 pure-art widget. Whole complete subject,each cone rim,hand/foot/paddle/support fully inside central70%canvas with generous truly empty margins. Real transparent alpha outside and through all open gaps;preserve luminous blue filled cone fields inside forms. No dark rectangular backing,floor,shadow,landscape,extra figures,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 765099
+    },
+    {
+      "id": "tripod-sorter",
+      "sourceImage": "sources/tripod-sorter.a6c89e678d7c.png",
+      "sourceSha256": "a6c89e678d7cfd0fd2a5618e75fbae68dd43ce2f8408a3f3e01045df09fc69c9",
+      "sourceDimensions": [
+        1254,
+        1254
+      ],
+      "file": "widgets/tripod-sorter.1b46d5f948f4.png",
+      "sha256": "1b46d5f948f4b8274415f53c672366a633bae7fb879fc55a6d56cb38e3fa3eb9",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 640250,
+      "processing": "Entire original fitted proportionally onto 1024x1024 transparent canvas; RGBA alpha preserved; no crop, stretching or creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHERENKOV DISPATCH. A tangible invented working signal-port/civic world revealed through fictional CHERENKOV-INSPIRED OPTICAL SHOCK-CONE INTENSITY EXPOSURES. Image language: each complete recognizable structure/figure consists ONLY of FOURtoEIGHT unequal overlapping luminous CONICAL RADIATION FANS. Cold saturated blue intensity fills the broad fan interiors,with blue-white peaks at sharp cone envelopes and a few curved hyperbolic intersection arcs. Visible apex-to-flared-rim geometry,hard dark optical gaps between separate cone fans,smooth optical intensity rather than physical surfaces. Shapes are made of recorded LIGHT,not illuminated matter. Broad FILLED blue light-fan fields must be visible,not just outline drawing. A little fine exposure grain,clear controlled blue-white cone boundaries,deep cyan/indigo intensity falloff inside each fan. No conventional surface shading,specular glints,metal,glass,plastic,holographic wireframe,neon tubes or opaque skin. No electrical sparks,branching lightning,corona fringe around a dark object,photoelastic rainbow,diffraction stripes/rings,schlieren grey turbulence,particle tracks,dot clouds or quiver arrows. The scientific optical-cone process must be unmistakable in the actual image. A fictional artistic radiation-image language,not a real measured experiment or device instruction. No text,labels,numerals,scales,coordinates,clock faces,readings,graphs,logos or watermark. Subject: TRIPOD SORTER: ONE complete squat useful civic sorting machine on THREE thick flared conical legs,with a broad sloping central sorting trough,TWO unequal curved fan arms(one lifted,one reaching forward),and a tall split-fan hood at the rear. Clear open gap under trough and between arms,body linked to all legs. No eyes/face,human anatomy,ordinary industrial crane,tool still life or robot mascot. Three-quarter view shows the channel and purposeful connected mechanism,all tips/feet/arms whole. Asset: ONE separate square1024x1024 pure-art widget. Whole complete subject,each cone rim,hand/foot/paddle/support fully inside central70%canvas with generous truly empty margins. Real transparent alpha outside and through all open gaps;preserve luminous blue filled cone fields inside forms. No dark rectangular backing,floor,shadow,landscape,extra figures,frame,panel,contact sheet,UI or device mockup.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 765855
+    },
+    {
+      "id": "wallpaper",
+      "sourceImage": "sources/wallpaper.93b954171429.png",
+      "sourceSha256": "93b9541714290c9c50722497393044a7946c596b7df5f9cb13a4b6a55914a531",
+      "sourceDimensions": [
+        852,
+        1847
+      ],
+      "file": "wallpapers/wallpaper.png",
+      "sha256": "6df3da43a0245b3e51593f5cae69f95ce701ba6492192facc251326d48387dd0",
+      "width": 1290,
+      "height": 2796,
+      "bytes": 1950677,
+      "processing": "ImageOps.fit centre-resize/crop to1290x2796; no creative changes.",
+      "prompt": "Use case: stylized-concept. GLAZE CHERENKOV DISPATCH. A tangible invented working signal-port/civic world revealed through fictional CHERENKOV-INSPIRED OPTICAL SHOCK-CONE INTENSITY EXPOSURES. Image language: each complete recognizable structure/figure consists ONLY of FOURtoEIGHT unequal overlapping luminous CONICAL RADIATION FANS. Cold saturated blue intensity fills the broad fan interiors,with blue-white peaks at sharp cone envelopes and a few curved hyperbolic intersection arcs. Visible apex-to-flared-rim geometry,hard dark optical gaps between separate cone fans,smooth optical intensity rather than physical surfaces. Shapes are made of recorded LIGHT,not illuminated matter. Broad FILLED blue light-fan fields must be visible,not just outline drawing. A little fine exposure grain,clear controlled blue-white cone boundaries,deep cyan/indigo intensity falloff inside each fan. No conventional surface shading,specular glints,metal,glass,plastic,holographic wireframe,neon tubes or opaque skin. No electrical sparks,branching lightning,corona fringe around a dark object,photoelastic rainbow,diffraction stripes/rings,schlieren grey turbulence,particle tracks,dot clouds or quiver arrows. The scientific optical-cone process must be unmistakable in the actual image. A fictional artistic radiation-image language,not a real measured experiment or device instruction. No text,labels,numerals,scales,coordinates,clock faces,readings,graphs,logos or watermark. Asset: ONE opaque portrait phone wallpaper1290x2796. Use five own selected original artwork images as identity references. One coherent invented night signal-port: split-level hall joins a low pier,the reversing gate opens beside it,keelbeam ferry rests by the quay,adult beacon courier strides across the connecting deck and tripod sorter works near the landing. Preserve exact five identities and filled blue optical shock-cone geometry,not physical glass architecture or neon wireframe. All FIVE complete focal subjects within horizontal10%to90%andvertical46%to78%ofcanvasheight. IMPORTANT upper43%quiet deep inkblue detector field,no objects there;bottom20%quiet dark quay/water. Low connected pier surfaces may carry very dim broad blue intensity,no extra buildings/people/lamps/stars. All primary feet,arms,cone rims,roof/paddles/supports have room. Terrain/water can bleed,complete focal subjects cannot. One connected working civic world,not collage/specimen sheet. No text,UI,frame or reading. Input identity references in exact order: IMAGE1=keelbeam ferry,IMAGE2=split-level signal hall,IMAGE3=beacon courier,IMAGE4=reversing conic gate,IMAGE5=tripod sorter. Preserve each exact original silhouette and visible mechanism. Courier must keep the anonymous inverted cone head,stride,full cape,hands/feet and forked routing beam. Gate has2opposed fan leaves/2pylons,not another building. Sorter has3legs/trough/2arms/split hood,not a creature. Ferry has2keels/open passenger well/paddles,not a spaceship or extra canopy hall. Hall has2offset galleries/3supports/scalloped fan roof. Keep all5 visually separate enough to read,with connected low pier/water tying them into one scene. Suggested arrangement:hall rear-left,gate rear-right,ferry front-left,courier front-centre,sorter front-right;all exact original subjects whole inside the specified safe middle-lower area.",
+      "generationTool": "built-in image_gen",
+      "externalReferences": [],
+      "internalArtworkReferences": [
+        {
+          "id": "keelbeam-ferry",
+          "sourceImage": "sources/keelbeam-ferry.9bb77c9ed00a.png",
+          "sha256": "9bb77c9ed00ae293fafaae66cf3e04ea1ae98dc790ef7c16e754b70545580021"
+        },
+        {
+          "id": "split-level-hall",
+          "sourceImage": "sources/split-level-hall.d96618311f5c.png",
+          "sha256": "d96618311f5c569c3000cd9890ca3bf82a09afe0af1c2f0bea14a671b60e2bc3"
+        },
+        {
+          "id": "beacon-courier",
+          "sourceImage": "sources/beacon-courier.3f902fe7b4ae.png",
+          "sha256": "3f902fe7b4ae1f6acf0bb3d9f6d47a6ed01e933c4e3814a9b0104979e71081c3"
+        },
+        {
+          "id": "reversing-gate",
+          "sourceImage": "sources/reversing-gate.264e6f9a9080.png",
+          "sha256": "264e6f9a90801e038bdc27534f7d8dafaf8d2e97a8104d44e7ea1365841d79fd"
+        },
+        {
+          "id": "tripod-sorter",
+          "sourceImage": "sources/tripod-sorter.a6c89e678d7c.png",
+          "sha256": "a6c89e678d7cfd0fd2a5618e75fbae68dd43ce2f8408a3f3e01045df09fc69c9"
+        }
+      ],
+      "generationStages": "Five independent artwork generations;separately generated exact-own-five-reference civic port wallpaper with explicit indexed identity roles."
+    }
+  ],
+  "published": false,
+  "ownerSteering": "Different civic subject world after four nature themes for balance. Tangible working port in filled optical shock-cone light fans,with complete silhouettes/quiet Artwork corners/compact cone native fragment. City & Retro category."
+}

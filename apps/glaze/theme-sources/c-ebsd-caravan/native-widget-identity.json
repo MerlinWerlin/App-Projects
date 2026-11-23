@@ -1,0 +1,22 @@
+{
+  "theme": "c-ebsd-caravan",
+  "recipe": [
+    "hex",
+    "cEbsdPorter",
+    "cEbsdBoundaryTwins",
+    "staples",
+    "sword",
+    "basin",
+    "ledger"
+  ],
+  "art": {
+    "cEbsdPorter": "M 9 59 L 14 46 L 25 40 Q 37 32 59 42 L 77 39 L 91 46 L 96 42 L 96 50 L 86 56 L 83 81 L 72 81 L 71 60 L 60 62 L 57 82 L 46 82 L 47 63 L 35 60 L 30 80 L 18 80 L 21 61 L 13 67 L 5 63 Z M 28 42 Q 30 24 41 23 Q 54 21 60 42 M 31 40 Q 34 28 41 28 Q 48 27 54 41 M 42 41 Q 47 3 64 11 Q 80 17 86 42 M 47 40 Q 50 12 63 17 Q 73 21 80 42 M 26 44 L 80 45 M 10 53 L 13 52 M 31 48 L 42 57 L 59 52 L 69 59 M 42 57 L 41 43 M 59 52 L 60 43",
+    "cEbsdBoundaryTwins": "M 9 29 L 25 14 L 42 22 L 39 43 L 18 47 Z M 25 14 L 25 31 L 39 43 M 25 31 L 9 29 M 68 60 L 83 49 L 96 62 L 91 82 L 71 84 Z M 83 49 L 81 69 L 71 84 M 81 69 L 96 62 M 70 70 L 78 64 M 71 75 L 79 69"
+  },
+  "ornament": "M 14 40 L 31 19 L 58 25 L 71 16 L 88 38 L 81 66 L 58 82 L 29 74 L 16 58 Z M 31 19 L 41 43 L 14 40 M 41 43 L 58 25 M 41 43 L 60 57 L 81 66 M 60 57 L 58 82 M 60 57 L 88 38 M 62 30 L 75 40 M 66 27 L 79 37",
+  "ornamentDirection": "Five unequal flat orientation grains with offset three-way junctions and one paired twin band. Irregular section edges avoid the first study appearing as a perspective cube. Compact corner process fragment; no miniature whole caravan creature.",
+  "ornamentProvenance": "Original authored100x100 SVG path,22 November2026, following Jared Both-corner steering.",
+  "direction": "Open double-arched saddleback porter and sparse grain-boundary/twin fragments for larger native areas. Hexagonal clock, staple marks, sword hands, basin battery gauge and ledger calendar. Dedicated angular grain junction stays compact in headers.",
+  "values": "Existing live native Clock/Battery/Calendar mechanisms; raster artworks contain no readings.",
+  "registryIntegration": "Coordinator owns shared source registry and Swift integration. No shared runtime edits in lane."
+}
