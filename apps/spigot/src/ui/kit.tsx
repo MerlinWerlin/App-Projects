@@ -144,7 +144,8 @@ export function readField(f: { text: string; kind?: FieldKind }, unit: UnitSyste
 export function Field({ field, onOpen, error }: { field: NumField; onOpen: () => void; error?: string | null }) {
   const c = usePalette();
   const { prefs } = useApp();
-  const suffix = field.suffix ?? ((field.kind ?? 'length') === 'length' ? unitLabel(prefs.unit) : '');
+  const typedUnit = (field.kind ?? 'length') === 'length' && /[a-z'"′″]\s*$/i.test(field.text.trim());
+  const suffix = typedUnit ? '' : field.suffix ?? ((field.kind ?? 'length') === 'length' ? unitLabel(prefs.unit) : '');
   const empty = field.text.trim() === '';
   return (
     <Pressable accessibilityRole="button" accessibilityLabel={`${field.label}${field.optional ? ', optional' : ''}`} accessibilityValue={{ text: empty ? 'empty' : `${field.text} ${suffix}` }} accessibilityHint="Opens the keypad" onPress={onOpen}
@@ -194,7 +195,7 @@ export function Keypad({ field, visible, onClose, onNext }: { field: NumField | 
     ? [['7', '8', '9', '⌫'], ['4', '5', '6', "'"], ['1', '2', '3', '/'], ['.', '0', ' ', 'C']]
     : [['7', '8', '9', '⌫'], ['4', '5', '6', 'C'], ['1', '2', '3', kind === 'length' ? 'm' : '−'], ['.', '0', '00', '']];
   const keyLabel = (k: string) => (k === ' ' ? 'space' : k === "'" ? 'ft ′' : k);
-  const suffix = field.suffix ?? (kind === 'length' ? unitLabel(prefs.unit) : '');
+  const suffix = kind === 'length' && /[a-z'"′″]\s*$/i.test(text.trim()) ? '' : field.suffix ?? (kind === 'length' ? unitLabel(prefs.unit) : '');
   return (
     <Modal visible={visible} transparent animationType="slide" onRequestClose={onClose} statusBarTranslucent>
       <Pressable accessibilityLabel="Close keypad" style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.35)' }} onPress={() => { commit(); onClose(); }} />

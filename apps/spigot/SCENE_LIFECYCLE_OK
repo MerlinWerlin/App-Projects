@@ -1,0 +1,3 @@
+This app adopts the UIScene life cycle (Expo 58) and passed a launch check on 23 Nov 2026 in the "Spigot capture"
+workflow, run 45090171342 (Xcode 27.2, iOS 27.2 SDK, iOS 27 iPhone Pro Max simulator: still running 30 s after launch, screen drawn).
+ship-mac may build it with the iOS 27 SDK (runner xcode-27). Remove this file if a launch check ever fails.
