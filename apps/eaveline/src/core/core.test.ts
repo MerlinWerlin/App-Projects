@@ -35,6 +35,10 @@ describe('units', () => {
     expect(parsePitch('abc', 'deg')).toBeNull();
     expect(parsePitch('80', 'deg')).toBeNull();
     expect(parsePitch('-5', 'deg')).toBeNull();
+    // A degree sign means degrees even in rise:12 mode (US/CA default).
+    expect(parsePitch('22.5°', 'x12')).toBe(22.5);
+    expect(parsePitch('22.5 deg', 'x12')).toBe(22.5);
+    expect(parsePitch('22.5', 'x12')).toBeCloseTo(61.93, 2);
   });
   test('parseLength metric and imperial', () => {
     expect(parseLength('4215', 'metric', 'mm')).toBe(4215);
@@ -116,6 +120,8 @@ describe('geometry', () => {
     const rise = 4000 * Math.tan(Math.PI / 6);
     expect(u.run2Mm).toBeCloseTo(rise, 6);
     expect(u.hipMm).toBeCloseTo(Math.sqrt(4000 ** 2 + rise ** 2 + rise ** 2), 6);
+    // Hip plan point: run₂ along the first eave, run₁ in from it → atan(run₁ ÷ run₂) from the first eave.
+    expect(u.planAngleDeg).toBeCloseTo((Math.atan(4000 / rise) * 180) / Math.PI, 6);
   });
   test('pitch from rise and run (imperial 6 in 12)', () => {
     expect(ok(pitchFromRiseRun({ riseMm: 152.4, runMm: 304.8 }, us)).deg).toBeCloseTo(26.565, 3);
@@ -160,6 +166,13 @@ describe('sheets', () => {
     expect(sheets({ planes: gable.planes, pitchDeg: 22.5, coverWidthMm: 0, overhangMm: 50, ridgeAllowanceMm: 0, maxSheetMm: 12000, endLapMm: 200 }, m).ok).toBe(false);
     expect(sheets({ planes: [], pitchDeg: 22.5, coverWidthMm: 762, overhangMm: 50, ridgeAllowanceMm: 0, maxSheetMm: 12000, endLapMm: 200 }, m).ok).toBe(false);
     expect(sheets({ planes: gable.planes, pitchDeg: 22.5, coverWidthMm: 762, overhangMm: 50, ridgeAllowanceMm: 0, maxSheetMm: 300, endLapMm: 200 }, m).ok).toBe(false);
+  });
+  test('tiny covers are refused; rounded cuts never pass the maximum', () => {
+    expect(sheets({ planes: gable.planes, pitchDeg: 22.5, coverWidthMm: 30, overhangMm: 50, ridgeAllowanceMm: 0, maxSheetMm: 12000, endLapMm: 200 }, m).ok).toBe(false);
+    // 4329.6 + 50 = 4379.6 → 4380 after rounding: a 4375 mm maximum must split it.
+    const r = ok(sheets({ planes: gable.planes, pitchDeg: 22.5, coverWidthMm: 762, overhangMm: 50, ridgeAllowanceMm: 0, maxSheetMm: 4375, endLapMm: 200 }, m));
+    expect(r.splitRuns).toBe(28); // every one of the 14 runs on both planes now needs two sheets
+    expect(Math.max(...r.cutList.map(c => c.lengthMm))).toBeLessThanOrEqual(4375);
   });
   test('stock pieces', () => {
     expect(stockPieces(2900, 3000, 50)).toBe(1);
@@ -257,6 +270,12 @@ describe('fixings', () => {
     expect(f.screws).toBe(28 * (10 + 16));
     expect(f.total).toBe(Math.ceil(728 * 1.05));
     expect(f.boxes).toBe(8);
+  });
+  test('side laps per plane and concealed-fix edge clips', () => {
+    // 2 planes × 14 sheets: 2 × 13 = 26 side laps, not 27.
+    const f = ok(sheetFixings({ sheets: 28, slopeMm: 4330, supportSpacingMm: 900, endPerSheet: 1, intermediatePerSheet: 1, sideLapSpacingMm: 500, sideLaps: 26, edgeClipsPerSupport: 2, wastePct: 0, boxSize: 100 }, m));
+    expect(f.stitching).toBe(26 * 9);
+    expect(f.screws).toBe(28 * 6 + 2 * 6);
   });
   test('per piece', () => {
     expect(ok(perPieceFixings(100, 4, 0, 250, 'shingles')).boxes).toBe(2);

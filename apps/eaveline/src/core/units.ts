@@ -189,7 +189,9 @@ export function lengthInputText(mm: number, sys: UnitSystem, unit: 'mm' | 'm' | 
 
 /** Parse a pitch typed as degrees ("22.5", "22.5°"), x:12 ("6:12", "6/12", "6 in 12") or percent ("25%"). */
 export function parsePitch(input: string, style: PitchStyle): number | null {
-  const s = input.trim().toLowerCase().replace('°', '').replace(/deg(rees)?/, '').trim();
+  const raw = input.trim().toLowerCase();
+  const saysDegrees = /°|deg/.test(raw);
+  const s = raw.replace('°', '').replace(/deg(rees)?/, '').trim();
   if (!s) return null;
   const ratio = /^(\d+(?:\.\d+)?)\s*(?::|\/|in)\s*(\d+(?:\.\d+)?)$/.exec(s);
   if (ratio) {
@@ -204,7 +206,7 @@ export function parsePitch(input: string, style: PitchStyle): number | null {
   }
   const n = Number(s.replace(',', '.'));
   if (!Number.isFinite(n) || n < 0) return null;
-  const deg = style === 'x12' ? degFromX12(n) : n;
+  const deg = style === 'x12' && !saysDegrees ? degFromX12(n) : n;
   return isPitch(deg) ? deg : null;
 }
 

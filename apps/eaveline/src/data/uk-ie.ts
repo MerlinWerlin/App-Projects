@@ -27,7 +27,8 @@ function sheets(v: (x: Source) => Source): SheetProfile[] {
     { id: 'fibre-cement-p6', name: 'Fibre cement Profile 6', coverMm: 1016, minPitchDeg: 5, endLapMm: 150, fixEnd: 2, fixMid: 2,
       note: 'Two fixings per sheet per purlin. Purlins up to 1375 mm. End lap 150–300 mm and sealing depend on pitch and exposure.',
       brandNote: 'Eternit / Cedral Profile 6 (Big Six)', src: v(s('Fibre cement sheet maker’s guide', 'https://cdn.shopify.com/s/files/1/0242/1053/8577/files/Eternit_Installation_Guide.pdf')) },
-    { id: 'bitumen-corrugated', name: 'Bitumen corrugated sheet (2 m)', coverMm: 855, minPitchDeg: 5, endLapMm: 170, fixEnd: null, fixMid: null,
+    { id: 'bitumen-corrugated', name: 'Bitumen corrugated sheet (2 m)', coverMm: 855, minPitchDeg: 5, endLapMm: 170, fixEnd: null, fixMid: null, maxLengthMm: 2000,
+      endLapByPitch: [{ minPitchDeg: 5, lapMm: 300 }, { minPitchDeg: 10, lapMm: 200 }, { minPitchDeg: 15, lapMm: 170 }],
       note: '20 fixings per sheet (25 at 10–15°). From 15°: purlins up to 610 mm, end lap 170 mm. 10–15°: 450 mm purlins, 200 mm lap. 5–10°: full deck, 300 mm lap.',
       brandNote: 'Onduline Classic', src: v(s('Bitumen sheet technical sheet', 'https://www.edecks.co.uk/uploads/manuals/Onduline%20Fixing%20Guide.pdf', 'secondary')) },
   ];
@@ -36,9 +37,11 @@ function sheets(v: (x: Source) => Source): SheetProfile[] {
 function tiles(v: (x: Source) => Source): TileProduct[] {
   return [
     { id: 'concrete-interlocking', name: 'Concrete interlocking tile (large format)', kind: 'tile', coverWidthMm: 292, maxGaugeMm: 345, tilesPerM2: 9.9, minPitchDeg: 17.5,
+      bands: [{ minPitchDeg: 17.5, maxGaugeMm: 320, tilesPerM2: 10.7, headlapMm: 100 }, { minPitchDeg: 22.5, maxGaugeMm: 345, tilesPerM2: 9.9, headlapMm: 75 }],
       note: 'Headlap 75 mm minimum (100 mm for 17.5°; smooth tiles 22.5° at 75 mm). 10.7 per m² at 100 mm headlap.', brandNote: 'Marley Modern',
       src: v(s('Tile maker’s product data', 'https://marley.co.uk/products/concrete-tiles/modern')) },
     { id: 'double-roman', name: 'Double Roman concrete tile', kind: 'tile', coverWidthMm: 300, maxGaugeMm: 345, tilesPerM2: 9.7, minPitchDeg: 22.5,
+      bands: [{ minPitchDeg: 22.5, maxGaugeMm: 320, tilesPerM2: 10.4, headlapMm: 100 }, { minPitchDeg: 25, maxGaugeMm: 345, tilesPerM2: 9.7, headlapMm: 75 }],
       note: '25° at 75 mm headlap, 22.5° at 100 mm. 10.4 per m² at 100 mm headlap.', src: v(s('Tile maker’s product data', 'https://www.marley.co.uk/products/concrete-tiles/double-roman')) },
     { id: 'plain-clay', name: 'Clay plain tile 265 × 165', kind: 'slate', coverWidthMm: 165, maxGaugeMm: 100, tilesPerM2: 60, lengthMm: 265, headlapMm: 65, minPitchDeg: 30,
       note: 'Double-lap: gauge = (length − headlap) ÷ 2. Many plain tiles need 35°.', brandNote: 'Marley Acme', src: v(s('Tile maker’s product data', 'https://www.marley.co.uk/products/clay-tiles/acme-single-camber')) },
@@ -87,8 +90,8 @@ export function interp(table: [number, number][], p: number): number {
 const ukDrainage = (adh: Source): Drainage => ({
   mode: 'flow',
   method: 'Approved Document H (England) effective area at 75 mm/h, outlet flow from the gutter table or maker’s BS EN 12056-3 figures',
-  // AD H Table 1: 30° ×1.29, 45° ×1.50, 60° ×1.87 — exactly plan × (1 + ½·tan θ).
-  slopeFactor: p => 1 + 0.5 * Math.tan((Math.min(Math.max(p, 0), 70) * Math.PI) / 180),
+  // AD H Table 1: 30° ×1.29, 45° ×1.50, 60° ×1.87 — exactly plan × (1 + ½·tan θ). Over 70°: half the elevation (½·tan θ × plan).
+  slopeFactor: p => (p > 70 ? 0.5 * Math.tan((p * Math.PI) / 180) : 1 + 0.5 * Math.tan((Math.max(p, 0) * Math.PI) / 180)),
   slopeFactorNote: 'Approved Document H Table 1 effective area: plan area × 1.29 at 30°, 1.50 at 45°, 1.87 at 60° (plan × (1 + ½ tan θ)). Over 70°: half the elevation.',
   fallRatio: 350, fallNote: 'AD H tables assume gutters laid level, falling towards the outlet. Gutter makers recommend about 1:350 (some rate at 1:600).', fallSrc: s('Gutter maker’s guidance', 'https://media.wickes.co.uk/is/content/wickes/GPID_1000248165_TECH_1', 'secondary'),
   designIntensityMmPerHr: 75,
@@ -101,7 +104,7 @@ const ukDrainage = (adh: Source): Drainage => ({
 const ieDrainage = (tgd: Source): Drainage => ({
   ...ukDrainage(tgd),
   method: 'TGD H (Ireland) effective area at 75 mm/h, outlet flow from Table 17 or the maker’s BS EN 12056-3 figures',
-  slopeFactor: p => interp([[0, 1], [30, 1.15], [45, 1.4], [60, 2.0], [70, 2.0]], Math.min(Math.max(p, 0), 70)),
+  slopeFactor: p => (p > 70 ? 0.5 * Math.tan((p * Math.PI) / 180) : interp([[0, 1], [30, 1.15], [45, 1.4], [60, 2.0], [70, 2.0]], Math.max(p, 0))),
   slopeFactorNote: 'TGD H Table 16 effective area: plan × 1.15 at 30°, 1.40 at 45°, 2.00 at 60° (straight-line between). Add half the area of any wall draining onto the roof.',
   intensityNote: 'TGD H 1.1.3.2: rainfall intensity is taken as 75 mm per hour for roof drainage design.',
   fallNote: 'TGD H: gutters laid with any fall towards the nearest outlet (Table 17 assumes level). Gutter makers recommend about 1:350.',

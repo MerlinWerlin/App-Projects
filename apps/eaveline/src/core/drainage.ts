@@ -47,7 +47,7 @@ export function downpipes(input: DownpipeInput, ctx: Ctx): Result<DownpipeResult
   const { catchmentPlanM2: plan, slopeFactor, intensityMmPerHr: I, capacityLps: q } = input;
   if (!(plan > 0)) return fail('Enter the roof area draining to this gutter.');
   if (plan > 100_000) return fail('That catchment is over 10 hectares. Check the units.');
-  if (!(slopeFactor >= 1) || slopeFactor > 2) return fail('The slope factor should be between 1 and 2.');
+  if (!(slopeFactor >= 1) || slopeFactor > 4) return fail('The slope factor should be between 1 and 4.');
   if (!(I > 0) || I > 1000) return fail('Enter a rainfall intensity between 1 and 1000 mm/h.');
   if (!(q > 0)) return fail(`Enter what one ${ctx.terms.downpipe} can carry (L/s).`);
   const A = plan * slopeFactor;

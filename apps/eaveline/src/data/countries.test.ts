@@ -120,6 +120,20 @@ describe('country worked examples', () => {
     const adh = downpipePlan(c, { planM2: 50, pitchDeg: 45, intensityMmPerHr: null, gutterId: 'adh-100', downpipeId: null, customCapacityLps: null, areaPerDownpipeM2: null, runMm: null }, ctx);
     expect(adh.ok && adh.value.downpipes).toBe(3); // 1.5625 ÷ 0.78
   });
+  test('GB/IE: steep roofs use half the elevation over 70°', () => {
+    const t80 = Math.tan((80 * Math.PI) / 180);
+    expect(countryFor('GB').drainage.slopeFactor(80)).toBeCloseTo(0.5 * t80, 6);
+    expect(countryFor('IE').drainage.slopeFactor(80)).toBeCloseTo(0.5 * t80, 6);
+    expect(countryFor('GB').drainage.slopeFactor(65)).toBeCloseTo(1 + 0.5 * Math.tan((65 * Math.PI) / 180), 6);
+  });
+  test('CA safety names both provinces and BC’s serious-injury rule', () => {
+    expect(countryFor('CA').safety.text).toMatch(/serious injury/);
+    expect(countryFor('CA').safety.text).toMatch(/check the province/);
+  });
+  test('UK tile headlap bands: lower pitch, tighter gauge, more tiles', () => {
+    const t = countryFor('GB').tiles.find(x => x.id === 'concrete-interlocking')!;
+    expect(t.bands!.map(b => [b.minPitchDeg, b.maxGaugeMm, b.tilesPerM2])).toEqual([[17.5, 320, 10.7], [22.5, 345, 9.9]]);
+  });
   test('IE: TGD H multipliers', () => {
     const c = countryFor('IE');
     expect(c.drainage.slopeFactor(30)).toBeCloseTo(1.15, 6);

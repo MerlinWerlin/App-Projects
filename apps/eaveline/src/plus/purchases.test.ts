@@ -147,3 +147,13 @@ test('every price read refreshes products; a failed country lookup does not assu
   f.api.fetchProducts = jest.fn(async () => [{id: PLUS, displayPrice: '$2.99', currency: 'AUD'}]);
   expect(await store.price()).toBe('A$2.99');
 });
+
+test('iOS finishes an owned, unfinished purchase once across refreshes (Ask to Buy, other devices)', async () => {
+  const f = fake();
+  f.setOwned([{ productId: PLUS, purchaseState: 'purchased', transactionId: 't-1' }]);
+  const p = createPurchaseProvider(f.api, () => NOW);
+  await p.refresh();
+  await p.refresh();
+  await new Promise(r => setTimeout(r, 0));
+  expect(f.api.finishTransaction).toHaveBeenCalledTimes(1);
+});

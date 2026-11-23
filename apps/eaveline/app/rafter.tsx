@@ -1,6 +1,6 @@
 /** True rafter lengths, and hip/valley rafters for equal or unequal pitches. */
 import { useState } from 'react';
-import { hipValley, rafter } from '../src/core/geometry';
+import { hipValley, rafter, roofGeometry } from '../src/core/geometry';
 import { useApp } from '../src/state/AppState';
 import { roofReady } from '../src/state/model';
 import { Answer, ErrorLine, Figures, LengthField, PitchField, Screen, Segmented, Steps } from '../src/ui/kit';
@@ -9,7 +9,9 @@ import { Gate, SaveToJob } from '../src/ui/parts';
 export default function Rafter() {
   const app = useApp();
   const { ctx, roof, country } = app;
-  const initialRun = roofReady(roof) ? (roof.type === 'skillion' ? roof.widthMm : roof.widthMm / 2) : null;
+  const geo = roofReady(roof) ? roofGeometry(roof, ctx) : null;
+  // The roof is sized at the fascia, so its run already includes the overhang: keep the overhang at 0 while prefilled.
+  const initialRun = geo?.ok ? geo.value.runMm : null;
   const [mode, setMode] = useState<'common' | 'hip'>('common');
   const [run, setRun] = useState<number | null>(initialRun);
   const [p, setP] = useState<number | null>(roof.pitchDeg || null);
@@ -20,11 +22,11 @@ export default function Rafter() {
   return (
     <Screen>
       <Segmented label="Rafter" value={mode} onChange={setMode} options={[{ value: 'common', label: 'Common rafter' }, { value: 'hip', label: `Hip / ${country.terms.valley}` }]} />
-      <LengthField testID="rafter-run" label={mode === 'common' ? 'Run (level, wall to ridge line)' : 'Run of the first plane'} mm={run} onMm={setRun}
-        hint={initialRun ? `From this roof: ${ctx.len(initialRun)}` : 'Half the span for a gable or hip.'} />
+      <LengthField testID="rafter-run" label={mode === 'common' ? 'Run (level, to the ridge line)' : 'Run of the first plane'} mm={run} onMm={setRun}
+        hint={initialRun && run === initialRun ? `From this roof, measured from the fascia (overhang included): ${ctx.len(initialRun)}` : 'Wall to ridge line, level. Half the span for a gable or hip.'} />
       <PitchField testID="rafter-pitch" label={mode === 'common' ? 'Pitch' : 'Pitch of the first plane'} deg={p} onDeg={setP} />
       {mode === 'common'
-        ? <LengthField testID="rafter-overhang" label="Eave overhang (level)" mm={oh} onMm={setOh} size="short" />
+        ? <LengthField testID="rafter-overhang" label="Eave overhang (level)" mm={oh} onMm={setOh} size="short" hint={initialRun && run === initialRun ? 'Already in the run from the roof sizes. Add it only if you measured the run from the wall.' : undefined} />
         : <PitchField testID="rafter-pitch2" label="Pitch of the second plane (blank = same)" deg={p2} onDeg={setP2} />}
       {r && !r.ok ? <ErrorLine text={r.error} /> : null}
       {h && !h.ok ? <ErrorLine text={h.error} /> : null}

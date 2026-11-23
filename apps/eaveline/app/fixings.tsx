@@ -13,7 +13,7 @@ import { Gate, RoofCard, SaveToJob } from '../src/ui/parts';
 export default function Fixings() {
   const app = useApp();
   const { ctx, roof, country } = app;
-  const params = useLocalSearchParams<{ sheets?: string; profile?: string }>();
+  const params = useLocalSearchParams<{ sheets?: string; profile?: string; run?: string; laps?: string; edges?: string }>();
   const [mode, setMode] = useState<'sheets' | 'pieces'>(country.sheets.length || !country.shingles.length ? 'sheets' : 'pieces');
   const [profileId, setProfileId] = useState<string>(params.profile ?? country.sheets[0]?.id ?? 'custom');
   const profile = country.sheets.find(p => p.id === profileId);
@@ -21,10 +21,16 @@ export default function Fixings() {
   // Sheets on this roof with this profile: count and average run (hip sheets are shorter than the rafter).
   const layout = (() => {
     if (!g?.ok || !profile) return null;
-    const s = sheets({ planes: g.value.planes, pitchDeg: roof.pitchDeg, coverWidthMm: profile.coverMm, overhangMm: country.defaults.overhangMm, ridgeAllowanceMm: 0, maxSheetMm: country.defaults.maxSheetMm, endLapMm: profile.endLapMm ?? 0 }, ctx);
-    return s.ok ? { sheets: s.value.sheets, avgMm: s.value.totalLinealMm / s.value.sheets } : null;
+    const s = sheets({ planes: g.value.planes, pitchDeg: roof.pitchDeg, coverWidthMm: profile.coverMm, overhangMm: country.defaults.overhangMm, ridgeAllowanceMm: 0, maxSheetMm: profile.maxLengthMm ?? country.defaults.maxSheetMm, endLapMm: profile.endLapMm ?? 0 }, ctx);
+    if (!s.ok) return null;
+    const laps = g.value.planes.reduce((n, pl) => n + Math.max(0, Math.ceil(pl.eaveMm / profile.coverMm - 1e-9) - 1) * pl.count, 0);
+    const edges = profile.edgeClip ? g.value.planes.reduce((n, pl) => n + pl.count, 0) : 0;
+    return { sheets: s.value.sheets, avgMm: s.value.totalLinealMm / s.value.sheets, laps, edges };
   })();
-  const autoSheets = params.sheets ? Number(params.sheets) || null : layout?.sheets ?? null;
+  const fromSheets = !!params.sheets && params.profile === profileId;
+  const autoSheets = fromSheets ? Number(params.sheets) || null : layout?.sheets ?? null;
+  const sideLaps = fromSheets && params.laps ? Number(params.laps) : layout?.laps;
+  const edgeClips = fromSheets && params.edges ? Number(params.edges) : layout?.edges ?? 0;
   const [count, setCount] = useState<number | null>(autoSheets);
   const [spacing, setSpacing] = useState<number | null>(country.defaults.purlinSpacingMm);
   const [end, setEnd] = useState<number | null>(profile?.fixEnd ?? null);
@@ -39,9 +45,9 @@ export default function Fixings() {
     const p = country.sheets.find(x => x.id === id);
     if (p) { setEnd(p.fixEnd); setMid(p.fixMid); }
   };
-  const slope = layout?.avgMm ?? (g?.ok ? g.value.rafterMm + country.defaults.overhangMm : null);
+  const slope = (fromSheets && params.run ? Number(params.run) : null) ?? layout?.avgMm ?? (g?.ok ? g.value.rafterMm + country.defaults.overhangMm : null);
   const res = mode === 'sheets' && count && slope && spacing && end != null && mid != null
-    ? sheetFixings({ sheets: count, slopeMm: slope, supportSpacingMm: spacing, endPerSheet: end, intermediatePerSheet: mid, sideLapSpacingMm: stitch, wastePct: waste ?? 0, boxSize: box ?? 100 }, ctx) : null;
+    ? sheetFixings({ sheets: count, slopeMm: slope, supportSpacingMm: spacing, endPerSheet: end, intermediatePerSheet: mid, sideLapSpacingMm: stitch, sideLaps, edgeClipsPerSupport: edgeClips, wastePct: waste ?? 0, boxSize: box ?? 100 }, ctx) : null;
   const res2 = mode === 'pieces' && pieces && per ? perPieceFixings(pieces, per, waste ?? 0, box ?? 100, 'pieces') : null;
   const what = profile?.id.includes('concealed') || profile?.id.includes('standing') ? 'clips' : 'screws';
   return (

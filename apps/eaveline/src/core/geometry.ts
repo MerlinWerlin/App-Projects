@@ -167,7 +167,8 @@ export function hipValley(input: HipInput, ctx: Ctx): Result<Hip> {
   const plan = Math.hypot(run, run2);
   const hip = Math.hypot(plan, rise);
   const hipPitch = toDeg(Math.atan(rise / plan));
-  const angle = toDeg(Math.atan(run2 / run));
+  // The hip runs from the corner to where the ridges meet: run₂ along the first eave and run₁ in from it.
+  const angle = toDeg(Math.atan(run / run2));
   const common = run / Math.cos(toRad(p));
   const common2 = run2 / Math.cos(toRad(p2));
   const steps: Step[] = [
@@ -178,7 +179,8 @@ export function hipValley(input: HipInput, ctx: Ctx): Result<Hip> {
     { label: 'Hip/valley in plan', formula: Math.abs(p2 - p) > 1e-9 ? '√(run₁² + run₂²)' : 'run × √2', value: ctx.len(plan) },
     { label: 'Hip/valley true length', formula: '√(plan² + rise²)', value: ctx.len(hip) },
     { label: 'Hip/valley pitch', formula: 'atan(rise ÷ plan)', value: ctx.pitch(hipPitch) },
-    { label: 'Plan angle from the first eave', formula: 'atan(run₂ ÷ run₁)', value: `${num(angle, 1)}°` },
+    { label: 'Plan angle from the first eave', formula: 'atan(run₁ ÷ run₂)', value: `${num(angle, 1)}°` },
+    { label: 'Plan angle from the second eave', formula: '90° − first', value: `${num(90 - angle, 1)}°` },
   );
   return { ok: true, value: { riseMm: rise, run2Mm: run2, commonMm: common, common2Mm: common2, hipMm: hip, hipPlanMm: plan, hipPitchDeg: hipPitch, planAngleDeg: angle }, steps,
     notes: ['Length is centreline to centreline at the ridge; allow for the ridge board and overhang when cutting.'] };

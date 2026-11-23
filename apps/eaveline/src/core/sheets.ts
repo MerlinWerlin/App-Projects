@@ -41,6 +41,7 @@ export function sheets(input: SheetInput, ctx: Ctx): Result<SheetResult> {
   if (!planes.length) return fail('Add a roof first.');
   if (!(cover > 0)) return fail('Pick a profile or enter a cover width more than zero.');
   if (cover > 2000) return fail('Cover widths are under 2 m. Check the units.');
+  if (cover < 100) return fail('That cover width is under 100 mm. Check the units.');
   if (!(overhangMm >= 0) || !(ridgeAllowanceMm >= 0)) return fail('Overhang and allowances can’t be negative.');
   if (!(maxSheetMm > 0)) return fail('Enter the longest sheet length you can get.');
   if (!(endLapMm >= 0) || endLapMm >= maxSheetMm / 2) return fail('The end lap must be less than half the longest sheet.');
@@ -69,8 +70,10 @@ export function sheets(input: SheetInput, ctx: Ctx): Result<SheetResult> {
         slope = Math.min(reach, pl.runMm) / cos;
       }
       const len = slope + overhangMm + ridgeAllowanceMm;
-      if (len <= maxSheetMm) { add(len, pl.count); count += pl.count; continue; }
-      const k = Math.ceil((len - endLapMm) / (maxSheetMm - endLapMm) - 1e-9);
+      if (ceilTo(len, step) <= maxSheetMm + 1e-6) { add(len, pl.count); count += pl.count; continue; }
+      let k = Math.ceil((len - endLapMm) / (maxSheetMm - endLapMm) - 1e-9);
+      // Rounding each piece up to the cut step must not push it past the maximum either.
+      while (ceilTo((len + (k - 1) * endLapMm) / k, step) > maxSheetMm + 1e-6) k++;
       add((len + (k - 1) * endLapMm) / k, k * pl.count);
       count += k * pl.count;
       split += pl.count;

@@ -62,6 +62,19 @@ appId: ${APP_ID}
     timeout: 8000
 - scrollUntilVisible:
     element:
+      id: "dp-perdp"
+    direction: DOWN
+    timeout: 20000
+    optional: true
+- tapOn:
+    id: "dp-perdp"
+    optional: true
+- inputText: "37"
+- tapOn:
+    text: "Done"
+    optional: true
+- scrollUntilVisible:
+    element:
       id: "downpipes-answer"
     direction: DOWN
     centerElement: true

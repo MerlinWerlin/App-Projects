@@ -17,23 +17,29 @@ export default function Downpipes() {
   const imperial = ctx.sys === 'imperial';
   const g = roofReady(roof) ? roofGeometry(roof, ctx) : null;
   const roofPlan = g?.ok ? g.value.planAreaM2 : null;
-  const [area, setArea] = useState<number | null>(roofPlan != null ? round(imperial ? roofPlan * SQFT_PER_M2 : roofPlan) : null);
+  // The roof's plan area unless the person types their own (so a changed roof never leaves a stale catchment).
+  const [areaTyped, setArea] = useState<number | null | undefined>(undefined);
+  const area = areaTyped !== undefined ? areaTyped : roofPlan != null ? round(imperial ? roofPlan * SQFT_PER_M2 : roofPlan) : null;
   const [cityId, setCityId] = useState<string>(d.cities[0] ? d.cities[0].name : 'custom');
   const city = d.cities.find(c => c.name === cityId) ?? null;
   const [customI, setCustomI] = useState<number | null>(d.designIntensityMmPerHr ? round(imperial ? d.designIntensityMmPerHr / 25.4 : d.designIntensityMmPerHr) : null);
   const [gutterId, setGutterId] = useState<string>(country.gutters[0]?.id ?? 'custom');
   const [pipeId, setPipeId] = useState<string>(country.downpipes[0]?.id ?? 'custom');
   const [cap_, setCap] = useState<number | null>(null);
-  const [perDp, setPerDp] = useState<number | null>(d.areaPerDownpipeExample?.m2 ?? null);
+  // No default: the catchment per downpipe depends on the gutter and rainfall, read from the standard's chart.
+  const [perDp, setPerDp] = useState<number | null>(null);
   const planM2 = area == null ? null : imperial ? area / SQFT_PER_M2 : area;
   const I = city ? city.mmPerHr : customI == null ? null : imperial ? customI * 25.4 : customI;
   const gutter = country.gutters.find(x => x.id === gutterId);
   const pipe = country.downpipes.find(x => x.id === pipeId);
-  const needsCap = d.mode === 'flow' && !pipe?.ruleAreaM2 && !(gutter?.capacityLps || pipe?.capacityLps);
-  const res = planM2 && roof.pitchDeg >= 0 ? downpipePlan(country, {
+  // A capacity field whenever the gutter or downpipe has no rated flow (an override, so rainfall still counts).
+  const showCap = d.mode === 'flow' && (!gutter?.capacityLps || !pipe?.capacityLps);
+  const needsPitch = d.mode === 'areaTable' && !(roof.pitchDeg > 0);
+  const res = planM2 && !needsPitch ? downpipePlan(country, {
     planM2, pitchDeg: roof.pitchDeg || 0, intensityMmPerHr: I, gutterId: gutter ? gutterId : null, downpipeId: pipe ? pipeId : null,
-    customCapacityLps: needsCap ? cap_ : null, areaPerDownpipeM2: d.mode === 'areaPerDownpipe' ? perDp : null, runMm: g?.ok ? g.value.eavesMm : null,
+    customCapacityLps: showCap ? cap_ : null, areaPerDownpipeM2: d.mode === 'areaPerDownpipe' ? perDp : null, runMm: g?.ok ? g.value.eavesMm : null,
   }, ctx) : null;
+  const tableOnly = d.mode === 'areaTable';
   return (
     <Screen>
       <Notice icon="water-outline" text={`An estimate to plan with, using ${d.method}. A plumber or designer confirms the real system and overflow.`} />
@@ -59,14 +65,20 @@ export default function Downpipes() {
         {d.mode === 'areaPerDownpipe' ? (
           <NumField testID="dp-perdp" label={`Catchment per ${t.downpipe} from the chart (m²)`} value={perDp} onValue={setPerDp} max={1000} hint={d.areaPerDownpipeExample?.text} />
         ) : null}
-        {needsCap ? <NumField testID="dp-capacity" label={`What one outlet and ${t.downpipe} carries (L/s)`} value={cap_} onValue={setCap} max={100} hint="From the maker’s data for your gutter, outlet and fall." /> : null}
+        {showCap ? <NumField testID="dp-capacity" label={`What one outlet and ${t.downpipe} carries (L/s)`} value={cap_} onValue={setCap} max={100}
+          hint={pipe?.ruleAreaM2 ? 'Optional: the maker’s flow rating. Without it the rule of thumb is used, which ignores rainfall.' : 'From the maker’s data for your gutter, outlet and fall.'} /> : null}
       </Section>
+      {needsPitch ? <ErrorLine text={`Set the roof pitch first: the ${t.downpipe} table changes with pitch.`} /> : null}
       {res && !res.ok ? <ErrorLine text={res.error} /> : null}
       <Gate tool="downpipes">
         {res?.ok ? (
           <>
-            <Answer testID="downpipes-answer" label={`${cap(t.downpipes)} (estimate)`} value={String(res.value.downpipes)}
-              lines={[res.value.flowLps != null ? `Design flow ${num(res.value.flowLps, 2)} L/s` : `For ${ctx.area(res.value.catchmentM2)}`]} />
+            <Answer testID="downpipes-answer" label={tableOnly ? `${cap(t.downpipes)} (estimate, size from Table 5)` : `${cap(t.downpipes)} (estimate)`} value={String(res.value.downpipes)}
+              lines={[
+                res.value.flowLps != null ? `Design flow ${num(res.value.flowLps, 2)} L/s` : `For ${ctx.area(res.value.catchmentM2)}`,
+                ...(tableOnly ? [`Size the ${t.gutter} separately (E1/AS1 Figure 15).`] : []),
+                ...(res.value.basis === 'rule' ? ['Rule of thumb: ignores rainfall.'] : []),
+              ]} />
             <Steps steps={res.steps} notes={[...res.notes, d.slopeFactorNote]} />
             <SaveToJob tool="downpipes" title={cap(t.downpipes)} lines={[`${res.value.downpipes} ${t.downpipes} (estimate) for ${ctx.area(planM2!)} plan`, ...(res.value.flowLps != null ? [`Design flow ${num(res.value.flowLps, 2)} L/s`] : [])]} />
           </>

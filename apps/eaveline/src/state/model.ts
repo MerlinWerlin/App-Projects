@@ -97,9 +97,15 @@ export function createJob(jobs: Job[], name: string, country: string, roof: Roof
   return { jobs: [job, ...jobs].slice(0, MAX_JOBS), job };
 }
 
+const MAX_LINES = 2000;
+/** Saved results keep up to 2000 lines and say how many more were left off. */
+export function capLines(lines: string[]): string[] {
+  return lines.length <= MAX_LINES ? lines : [...lines.slice(0, MAX_LINES - 1), `…and ${lines.length - (MAX_LINES - 1)} more`];
+}
+
 export function addEntry(jobs: Job[], jobId: string, entry: Omit<JobEntry, 'id' | 'at'>, now: number): Job[] {
   return jobs.map(j => (j.id === jobId
-    ? { ...j, updatedAt: now, entries: [{ ...entry, lines: entry.lines.slice(0, 300), id: newId(now), at: now }, ...j.entries].slice(0, MAX_ENTRIES) }
+    ? { ...j, updatedAt: now, entries: [{ ...entry, lines: capLines(entry.lines), id: newId(now), at: now }, ...j.entries].slice(0, MAX_ENTRIES) }
     : j));
 }
 

@@ -78,11 +78,22 @@ export function createPurchaseProvider(module?: IapApi | null, now: () => number
     }).catch(() => { connection = null; return false; });
     return connection;
   };
+  // iOS re-delivers unfinished transactions (bought on another device, Ask to Buy approved later): finish each once.
+  const finishedIos = new Set<string>();
+  const finishOnceIos = (purchase: StorePurchase) => {
+    if (purchase.purchaseState && purchase.purchaseState !== 'purchased') return;
+    if (!skus.some(sku => purchase.productId === sku)) return;
+    const key = String(purchase.transactionId ?? purchase.id ?? purchase.originalTransactionIdentifierIOS ?? purchase.productId);
+    if (finishedIos.has(key)) return;
+    finishedIos.add(key);
+    void Promise.resolve().then(() => iap!.finishTransaction({ purchase, isConsumable: false })).catch(() => { finishedIos.delete(key); });
+  };
   const owned = async (): Promise<StorePurchase[] | null> => {
     try {
       const list = await bounded(iap!.getAvailablePurchases(), 10_000);
       if (!Array.isArray(list)) return null;
       await Promise.all(list.map(purchase => acknowledgeAndroid(purchase, true)));
+      if (platform === 'ios') list.forEach(finishOnceIos);
       return list;
     } catch { return null; }
   };

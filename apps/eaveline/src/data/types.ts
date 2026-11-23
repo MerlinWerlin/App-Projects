@@ -19,6 +19,12 @@ export interface SheetProfile {
   endLapMm: number | null; // null: maker gives none / end laps not allowed (see note)
   fixEnd: number | null; // fasteners per sheet at end supports
   fixMid: number | null; // fasteners per sheet at intermediate supports
+  /** Concealed-fix: one extra clip line at the starting edge of every plane. */
+  edgeClip?: boolean;
+  /** A fixed sheet length (e.g. 2 m bitumen sheets) rather than cut to length. */
+  maxLengthMm?: number;
+  /** End lap by pitch band (highest band whose minPitchDeg the roof meets). */
+  endLapByPitch?: { minPitchDeg: number; lapMm: number }[];
   note?: string;
   brandNote?: string;
   src: Source;
@@ -35,6 +41,8 @@ export interface TileProduct {
   headlapMm?: number;
   minPitchDeg: number | null;
   fixingsPerTile?: number | null;
+  /** Gauge and coverage by pitch band, where the headlap changes with pitch (highest band the roof meets). */
+  bands?: { minPitchDeg: number; maxGaugeMm: number; tilesPerM2: number; headlapMm: number }[];
   note?: string;
   brandNote?: string;
   src: Source;

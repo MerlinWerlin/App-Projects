@@ -122,7 +122,7 @@ export const CA: Country = {
   ],
   safety: {
     regulator: 'Provincial OHS (e.g. Ontario Ministry of Labour, WorkSafeBC)',
-    text: 'Fall protection is required from 3 m in Ontario (over 3 m) and BC (3 m or more). Check the province on site.',
+    text: 'Ontario: fall protection over 3 m (O. Reg. 213/91 s.26). BC: 3 m or more, or lower where a fall could cause serious injury (OHS Regulation 11.2). Other provinces differ: check the province.',
     src: s('WorkSafeBC', 'https://www.worksafebc.com/en/law-policy/occupational-health-safety/searchable-ohs-regulation/ohs-guidelines/guidelines-part-11'),
   },
   sheets: [

@@ -53,6 +53,13 @@ describe('jobs', () => {
     expect(removeJob(jobs, job.id)).toEqual([]);
     expect(createJob(jobs, '', 'AU', null, 1).job.name).toBe('Job 2');
   });
+  test('long saved results are capped with a note', () => {
+    const { jobs, job } = createJob([], 'Big shed', 'AU', null, 1);
+    const lines = Array.from({ length: 2500 }, (_, i) => `line ${i}`);
+    const out = addEntry(jobs, job.id, { tool: 'sheets', title: 'Sheets', lines }, 2)[0]!.entries[0]!.lines;
+    expect(out).toHaveLength(2000);
+    expect(out[1999]).toBe('…and 501 more');
+  });
   test('corrupt storage gives an empty list', () => {
     expect(parseJobs('oops')).toEqual([]);
     expect(parseJobs(JSON.stringify({}))).toEqual([]);

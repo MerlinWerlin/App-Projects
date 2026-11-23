@@ -19,6 +19,8 @@ export interface SheetFixInput {
   endPerSheet: number;
   intermediatePerSheet: number;
   sideLapSpacingMm: number | null; // stitching screws along each side lap (null/0 = none)
+  sideLaps?: number; // side laps across the roof: Σ (sheets across a plane − 1); defaults to sheets − 1
+  edgeClipsPerSupport?: number; // concealed-fix: one extra clip line at the starting edge of each plane
   wastePct: number;
   boxSize: number;
 }
@@ -33,15 +35,15 @@ export function sheetFixings(input: SheetFixInput, ctx: Ctx): Result<{ supports:
   if (!(boxSize > 0)) return fail('Enter how many come in a box.');
   const supports = Math.ceil(slopeMm / sp - 1e-9) + 1;
   const inter = Math.max(0, supports - 2);
-  const screws = sheets * (2 * e + inter * m);
-  const laps = Math.max(0, sheets - 1);
+  const screws = sheets * (2 * e + inter * m) + (input.edgeClipsPerSupport ?? 0) * supports;
+  const laps = Math.max(0, input.sideLaps ?? sheets - 1);
   const stitching = input.sideLapSpacingMm && input.sideLapSpacingMm > 0 ? laps * Math.ceil(slopeMm / input.sideLapSpacingMm - 1e-9) : 0;
   const total = Math.ceil((screws + stitching) * (1 + wastePct / 100) - 1e-9);
   const boxes = Math.ceil(total / boxSize - 1e-9);
   const steps: Step[] = [
     { label: `Support lines per sheet (${ctx.terms.purlins})`, formula: `⌈ ${ctx.len(slopeMm)} sheet run ÷ ${ctx.len(sp)} ⌉ + 1`, value: String(supports) },
     { label: 'Fasteners per sheet', formula: `2 ends × ${e} + ${inter} intermediate × ${m}`, value: String(2 * e + inter * m) },
-    { label: 'Fasteners for all sheets', formula: `${sheets} sheets × ${2 * e + inter * m}`, value: String(screws) },
+    { label: 'Fasteners for all sheets', formula: `${sheets} sheets × ${2 * e + inter * m}${input.edgeClipsPerSupport ? ` + ${input.edgeClipsPerSupport} edge clips × ${supports} supports` : ''}`, value: String(screws) },
   ];
   if (stitching) steps.push({ label: 'Side-lap stitching', formula: `${laps} laps × ⌈ ${ctx.len(slopeMm)} ÷ ${ctx.len(input.sideLapSpacingMm!)} ⌉`, value: String(stitching) });
   steps.push({ label: 'To order', formula: `+ ${wastePct}% spare, boxes of ${boxSize}`, value: `${total} (${boxes} box${boxes === 1 ? '' : 'es'})` });

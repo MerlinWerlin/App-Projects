@@ -6,6 +6,7 @@ import { roofGeometry } from '../src/core/geometry';
 import { slateGauge, tiles } from '../src/core/tiles';
 import { grouped, num } from '../src/core/units';
 import { VERIFIED_LABEL } from '../src/data/src';
+import type { TileProduct } from '../src/data/types';
 import { useApp } from '../src/state/AppState';
 import { roofReady } from '../src/state/model';
 import { SPACE } from '../src/theme/theme';
@@ -18,9 +19,16 @@ export default function Tiles() {
   const w = country.terms;
   const [tileId, setTileId] = useState<string>(country.tiles[0]?.id ?? 'custom');
   const tile = country.tiles.find(x => x.id === tileId) ?? null;
+  /** Where the headlap changes with pitch, the band this roof's pitch falls in (or the lowest band). */
+  const bandFor = (t: TileProduct | null) => {
+    if (!t?.bands?.length) return null;
+    const sorted = [...t.bands].sort((a, b) => b.minPitchDeg - a.minPitchDeg);
+    return sorted.find(b => roof.pitchDeg >= b.minPitchDeg - 1e-9) ?? sorted[sorted.length - 1]!;
+  };
+  const band0 = bandFor(tile);
   const [cover, setCover] = useState<number | null>(tile?.coverWidthMm ?? null);
-  const [maxGauge, setMaxGauge] = useState<number | null>(tile?.maxGaugeMm ?? null);
-  const [perM2, setPerM2] = useState<number | null>(tile?.tilesPerM2 ? Math.round(tile.tilesPerM2 * 100) / 100 : null);
+  const [maxGauge, setMaxGauge] = useState<number | null>(band0?.maxGaugeMm ?? tile?.maxGaugeMm ?? null);
+  const [perM2, setPerM2] = useState<number | null>(band0?.tilesPerM2 ?? (tile?.tilesPerM2 ? Math.round(tile.tilesPerM2 * 100) / 100 : null));
   const [len, setLen] = useState<number | null>(tile?.lengthMm ?? null);
   const [headlap, setHeadlap] = useState<number | null>(tile?.headlapMm ?? null);
   const [eaves, setEaves] = useState<number | null>(country.defaults.eavesSetOutMm);
@@ -32,7 +40,8 @@ export default function Tiles() {
     setTileId(id);
     const t = country.tiles.find(x => x.id === id);
     if (!t) return;
-    setCover(t.coverWidthMm); setMaxGauge(t.maxGaugeMm); setPerM2(t.tilesPerM2 ? Math.round(t.tilesPerM2 * 100) / 100 : null);
+    const b = bandFor(t);
+    setCover(t.coverWidthMm); setMaxGauge(b?.maxGaugeMm ?? t.maxGaugeMm); setPerM2(b?.tilesPerM2 ?? (t.tilesPerM2 ? Math.round(t.tilesPerM2 * 100) / 100 : null));
     setLen(t.lengthMm ?? null); setHeadlap(t.headlapMm ?? null);
   };
   const isSlate = tile?.kind === 'slate';
@@ -73,6 +82,7 @@ export default function Tiles() {
       <Picker testID="tile-product" label="Tile or slate" value={tileId} onPick={pick}
         choices={country.tiles.map(x => ({ id: x.id, title: x.name, sub: [x.tilesPerM2 ? `${num(x.tilesPerM2, 2)} per m²` : null, x.minPitchDeg != null ? `min ${ctx.pitch(x.minPitchDeg)}` : null].filter(Boolean).join(' · '), tag: VERIFIED_LABEL[x.src.verified] }))} />
       {tile?.note ? <Notice text={tile.note} icon="information-circle-outline" /> : null}
+      {band0 ? <Notice icon="resize-outline" text={`At ${ctx.pitch(roof.pitchDeg)} this tile needs a ${ctx.len(band0.headlapMm)} headlap: gauge up to ${ctx.len(band0.maxGaugeMm)}, about ${band0.tilesPerM2} per m².`} /> : null}
       {belowMin ? <Notice tone="danger" icon="warning-outline" text={`This roof is ${ctx.pitch(roof.pitchDeg)}, below this tile’s minimum of ${ctx.pitch(tile!.minPitchDeg!)}.`} /> : null}
       {!(res?.ok && app.can('tiles')) ? inputs : null}
       {res && !res.ok ? <ErrorLine text={res.error} /> : null}

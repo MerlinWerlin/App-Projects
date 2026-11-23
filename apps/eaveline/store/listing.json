@@ -25,8 +25,8 @@
     {
       "productId": "com.jared797.eaveline.trial7",
       "type": "NON_CONSUMABLE",
-      "referenceName": "7-Day Free Trial",
-      "displayName": "7-Day Free Trial",
+      "referenceName": "7-day Trial",
+      "displayName": "7-day Trial",
       "description": "Try every Eaveline calculator free for 7 days.",
       "reviewNote": "Free non-consumable that starts the 7-day free trial (Guideline 3.1.1). Tools > Sheets (or any locked calculator) > Start free trial, or Settings > Full Unlock > Start 7-day free trial. Restore purchases brings it back with its original start date.",
       "price": { "territory": "AUS", "amount": "0" },
