@@ -31,7 +31,6 @@ jobs:
       EXPO_NO_TELEMETRY: '1'
       RCT_NO_LAUNCH_PACKAGER: '1'
       GH_TOKEN: ${{ github.token }}
-      OUT: ${{ runner.temp }}/glaze-1044-qa
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -40,6 +39,7 @@ jobs:
       - name: Select Xcode 27
         run: |
           set -euo pipefail
+          OUT="$RUNNER_TEMP/glaze-1044-qa"; echo "OUT=$OUT" >> "$GITHUB_ENV"
           mkdir -p "$OUT"
           X=$(ls -d /Applications/Xcode_27*.app | grep -v -i beta | sort -V | tail -1)
           sudo xcode-select -s "$X/Contents/Developer"
