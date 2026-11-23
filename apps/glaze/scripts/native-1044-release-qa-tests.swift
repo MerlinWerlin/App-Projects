@@ -167,9 +167,8 @@ import Darwin
     let spring = springboard()
     XCUIDevice.shared.press(.home)
     settle(12) // widget timelines reload after the theme change
-    for _ in 0..<6 { spring.swipeRight(); settle(0.4) }
-    homeShot("\(slug)-home-1")
-    for page in 2...3 { spring.swipeLeft(); settle(2); homeShot("\(slug)-home-\(page)") }
+    for _ in 0..<6 { spring.swipeRight(); settle(0.4) } // Today view
+    for page in 1...4 { spring.swipeLeft(); settle(2); homeShot("\(slug)-home-\(page)") }
     let t = XCTAttachment(string: spring.debugDescription); t.name = "tree-\(slug)-home"; t.lifetime = .keepAlways; add(t)
   }
 
@@ -205,8 +204,11 @@ import Darwin
     while Date() < ready && !next.exists && !yes.exists && !inUse.exists && !useOnly.exists { settle(2) }
     XCTAssertTrue(next.exists || yes.exists || inUse.exists || useOnly.exists, "\(name) did not finish downloading\n" + app.debugDescription)
     shot(app, "\(slug)-downloaded")
+    // The bar download opens the apply sheet by itself a moment later: let it settle first.
+    let settleBy = Date().addingTimeInterval(60)
+    while Date() < settleBy && !next.exists && !inUse.exists { settle(3) }
     if !next.exists && !inUse.exists {
-      if !yes.exists { _ = reveal(useOnly, in: app); useOnly.tap(); settle(1.5) }
+      if !yes.exists && useOnly.exists && useOnly.isHittable { useOnly.tap(); settle(1.5) }
       if yes.waitForExistence(timeout: 10) { shot(app, "\(slug)-use-prompt"); yes.tap() }
     }
     XCTAssertTrue(next.waitForExistence(timeout: 30) || inUse.waitForExistence(timeout: 30), "\(name) was not applied\n" + app.debugDescription)
