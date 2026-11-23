@@ -35,6 +35,11 @@ appId: com.jared797.spigot
 
 # Offset: 300 mm at 45° with 18 mm take-offs
 - openLink: "spigot://tool/offset"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - tapOn:
     text: "Offset \\(centre to centre\\).*"
 - tapOn: "3"
@@ -62,6 +67,11 @@ appId: com.jared797.spigot
 
 # Cut list: 1450 × 5, 875 × 7, 2210 × 3
 - openLink: "spigot://tool/cutlist"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - tapOn:
     text: "Piece length.*"
 - tapOn: "1"
@@ -107,6 +117,11 @@ appId: com.jared797.spigot
 
 # Fall: 12 m at the first common grade (1:40 in Australia) from RL 10.500
 - openLink: "spigot://tool/fall"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - tapOn:
     text: "Length of run.*"
 - tapOn: "1"
@@ -126,6 +141,11 @@ appId: com.jared797.spigot
 
 # Cut length: 1000 mm, DN100 88° bend centre to a bare end
 - openLink: "spigot://tool/cut"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - tapOn:
     text: "Measurement.*"
 - tapOn: "1"
@@ -152,6 +172,11 @@ appId: com.jared797.spigot
 
 # Volume: DN20 Type B copper, 25 m
 - openLink: "spigot://tool/flow"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - tapOn:
     text: "DN20, inside .*"
 - tapOn:
@@ -166,18 +191,38 @@ appId: com.jared797.spigot
 
 # Reference and jobs
 - openLink: "spigot://reference"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 09-reference
 - openLink: "spigot://jobs"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 10-jobs-empty
 
 # Inches: switch units in Settings, then an offset typed with a fraction key
 - openLink: "spigot://settings"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - tapOn: "Inches (ft, in)"
 - openLink: "spigot://tool/offset"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - tapOn:
     text: "Offset \\(centre to centre\\).*"
 - tapOn: "1"
@@ -188,6 +233,11 @@ appId: com.jared797.spigot
     timeout: 3000
 - takeScreenshot: 11-offset-inches
 - openLink: "spigot://settings"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - tapOn: "Millimetres (mm, m)"
 - waitForAnimationToEnd:
     timeout: 3000
@@ -195,12 +245,22 @@ appId: com.jared797.spigot
 
 # Paywall (capture build: the Australian list price, no App Store on a simulator)
 - openLink: "spigot://unlock"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - waitForAnimationToEnd:
     timeout: 3000
 - takeScreenshot: 13-unlock
 
 # Locked tool preview (capture-only link): the real sample result, blurred, with the unlock card
 - openLink: "spigot://tool/cutlist?preview=1"
+- runFlow:
+    when:
+      visible: "Open"
+    commands:
+      - tapOn: "Open"
 - extendedWaitUntil:
     visible: "CUT LIST IS IN FULL UNLOCK"
     timeout: 20000
