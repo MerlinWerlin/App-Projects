@@ -95,6 +95,7 @@ export function FittingSheet({ visible, onClose, onPick }: { visible: boolean; o
 
           <View style={{ gap: space.s }}>
             <FieldLabel>Fitting table</FieldLabel>
+            {GROUPS.length === 0 ? <Note>{country.materialsNote}</Note> : null}
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.s }}>
               {GROUPS.map(g => (
                 <Pressable key={g} accessibilityRole="radio" accessibilityState={{ selected: g === group }} onPress={() => { tap(); setGroup(g); setSize(null); }}
@@ -124,7 +125,7 @@ export function FittingSheet({ visible, onClose, onPick }: { visible: boolean; o
                 </View>
               </Pressable>
             ))}
-            <Note tone="warn">{(list[0]?.note ?? list[0]?.source ?? '') + (country.materialsVerified ? '' : ` ${country.materialsNote}`) + ' Brands differ: check your fitting, or add your own above.'}</Note>
+            {list.length ? <Note tone="warn">{(list[0]?.note ?? list[0]?.source ?? '') + (country.materialsVerified ? '' : ` ${country.materialsNote}`) + ' Brands differ: check your fitting, or add your own above.'}</Note> : null}
           </View>
         </ScrollView>
         {kp.element}

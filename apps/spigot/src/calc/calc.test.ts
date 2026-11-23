@@ -299,3 +299,19 @@ describe('cut list', () => {
     expect(cutList({ stock: 100, kerf: 0, trim: 0, pieces: [{ length: 10, qty: 0 }] }).ok).toBe(false);
   });
 });
+
+describe('imperial flow units', () => {
+  const { showVol, showFlow, showVel, showPressure, inFlow, inVel, showPerLength } = require('./flowUnits');
+  test('round trips and known values', () => {
+    expect(showVol(3.785411784, 'imperial')).toBeCloseTo(1, 12);
+    expect(showFlow(37.85411784, 'imperial')).toBeCloseTo(10, 12); // 10 gpm
+    expect(showVel(0.3048, 'imperial')).toBeCloseTo(1, 12);
+    expect(showPressure(6.894757293168, 'imperial')).toBeCloseTo(1, 12);
+    expect(inFlow(showFlow(123, 'imperial'), 'imperial')).toBeCloseTo(123, 9);
+    expect(inVel(showVel(2.5, 'imperial'), 'imperial')).toBeCloseTo(2.5, 12);
+    expect(showVol(5, 'metric')).toBe(5);
+    // 1 in nominal Type L copper holds about 0.0406 gal/ft (ID 1.025 in: π/4·1.025²·12 in³ ÷ 231)
+    const idMm = 1.025 * 25.4; const lpm = Math.PI / 4 * (idMm / 1000) ** 2 * 1000;
+    expect(showPerLength(lpm, 'imperial')).toBeCloseTo(Math.PI / 4 * 1.025 ** 2 * 12 / 231, 6);
+  });
+});

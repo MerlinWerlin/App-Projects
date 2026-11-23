@@ -77,7 +77,7 @@ export default function Reference() {
       <Section title="Water velocity limits">
         {country.maxVelocity ? (
           <>
-            <Table head={['Service', 'Max']} rows={country.maxVelocity.rules.map(v => [v.service, `${v.max} m/s`])} />
+            <Table head={['Service', 'Max']} rows={country.maxVelocity.rules.map(v => [v.service, u === 'imperial' && country.usGallons ? `${fmtNumber(v.max / 0.3048, 1)} ft/s` : `${v.max} m/s`])} />
             <Body muted style={{ fontSize: 14 }}>{country.maxVelocity.source}</Body>
           </>
         ) : <Note>Spigot couldn’t verify a velocity limit for your country. Around 3 m/s is a common upper limit for water services; check your local code.</Note>}

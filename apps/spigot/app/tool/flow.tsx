@@ -5,6 +5,7 @@ import { flow, volume } from '../../src/calc/flow';
 import { formatLength, lengthToInput } from '../../src/calc/units';
 import { HAZEN_C, pipeById, pipeId, type PipeSize } from '../../src/calc/reference';
 import { useCountry } from '../../src/country/useCountry';
+import { flowUnits, inFlow, inVel, showFlow, showPerLength, showPressure, showVel, showVol } from '../../src/calc/flowUnits';
 import { useApp } from '../../src/state/AppState';
 import { Card, CheckNote, Field, FieldLabel, Note, ResultPanel, Segmented, Working, readField, useKeypad, useTap, type NumField } from '../../src/ui/kit';
 import { ToolFrame, useOpenedRecord } from '../../src/ui/ToolFrame';
@@ -53,6 +54,8 @@ export default function FlowScreen() {
   const { prefs } = useApp();
   const country = useCountry();
   const u = prefs.unit;
+  const fu = u === 'imperial' && country.usGallons ? 'imperial' : 'metric';
+  const FU = flowUnits(fu);
   const rec = useOpenedRecord();
   const ri = rec?.inputs ?? {};
   const [mode, setMode] = useState<Mode>(ri.mode === 'flow' ? 'flow' : 'volume');
@@ -67,7 +70,7 @@ export default function FlowScreen() {
   const fields: NumField[] = [
     { label: 'Inside diameter (or pick a pipe)', text: idText, setText: s => { setIdText(s); if (s) setPipe(null); }, optional: !!chosen, hint: 'Bore of the pipe' },
     { label: mode === 'volume' ? 'Length of pipe' : 'Length (for pressure loss)', text: length, setText: setLength, optional: mode === 'flow', hint: 'Add m for metres (25m)' },
-    { label: by === 'lpm' ? 'Flow' : 'Velocity', text: rate, setText: setRate, kind: 'number', suffix: by === 'lpm' ? 'L/min' : 'm/s' },
+    { label: by === 'lpm' ? 'Flow' : 'Velocity', text: rate, setText: setRate, kind: 'number', suffix: by === 'lpm' ? FU.flow : FU.vel },
     { label: 'Hazen–Williams C', text: cText, setText: setCText, kind: 'number', optional: true, hint: chosen ? `Typical for ${chosen.material}: ${HAZEN_C[chosen.material] ?? 140}` : 'Copper 140, PVC/PE 150, new steel 120' },
   ];
   const kp = useKeypad(mode === 'volume' ? fields.slice(0, 2) : fields);
@@ -80,23 +83,24 @@ export default function FlowScreen() {
   const result = useMemo(() => {
     if (id === undefined || errs.some(Boolean)) return null;
     if (mode === 'volume') { const l = num(1); return l === undefined ? null : volume({ id, length: l }); }
-    const r = num(2);
-    if (r === undefined) return null;
+    const raw = num(2);
+    if (raw === undefined) return null;
+    const r = by === 'lpm' ? inFlow(raw, fu) : inVel(raw, fu);
     const l = num(1);
     const cold = country.maxVelocity?.rules.find(x => /cold/i.test(x.service));
-    return flow({ id, ...(by === 'lpm' ? { lpm: r } : { velocity: r }), ...(l !== undefined ? { length: l, c: cValue ?? 140 } : {}), limit: cold ? { max: cold.max, code: country.codeName } : null });
+    return flow({ id, ...(by === 'lpm' ? { lpm: r } : { velocity: r }), ...(l !== undefined ? { length: l, c: cValue ?? 140 } : {}), limit: cold && country.maxVelocity ? { max: cold.max, code: country.maxVelocity.code } : null });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, id, length, by, rate, cText, pipe, u, country.code]);
+  }, [mode, id, length, by, rate, cText, pipe, u, fu, country.code]);
 
   const vol = result && result.ok && 'litres' in result.value ? result.value : null;
   const fl = result && result.ok && 'velocity' in result.value ? result.value : null;
   const pipeName = chosen ? `${chosen.material} ${chosen.size}` : id !== undefined ? `${formatLength(id, u)} bore` : '';
   const snapshot = vol ? {
     inputs: { mode, ...(chosen ? { pipe: chosen.id } : { id }), length: num(1)! },
-    summary: `${pipeName}, ${formatLength(num(1)!, u, { metres: true })}: ${fmtNumber(vol.litres, vol.litres < 10 ? 2 : 1)} L`,
+    summary: `${pipeName}, ${formatLength(num(1)!, u, { metres: true })}: ${fmtNumber(showVol(vol.litres, fu), 2)} ${FU.vol}`,
   } : fl ? {
     inputs: { mode, ...(chosen ? { pipe: chosen.id } : { id }), by, rate: num(2)!, ...(num(1) !== undefined ? { length: num(1), c: cValue ?? 140 } : {}) },
-    summary: `${pipeName}: ${fmtNumber(fl.lpm, 1)} L/min at ${fmtNumber(fl.velocity, 2)} m/s${fl.kpa !== undefined ? `, loss ${fmtNumber(fl.kpa, 1)} kPa` : ''}`,
+    summary: `${pipeName}: ${fmtNumber(showFlow(fl.lpm, fu), 1)} ${FU.flow} at ${fmtNumber(showVel(fl.velocity, fu), 2)} ${FU.vel}${fl.kpa !== undefined ? `, loss ${fmtNumber(showPressure(fl.kpa, fu), 1)} ${FU.pressure}` : ''}`,
   } : null;
 
   return (
@@ -104,13 +108,13 @@ export default function FlowScreen() {
       <Stack.Screen options={{ title: 'Volume & flow' }} />
       <Segmented value={mode} onChange={setMode} options={[{ value: 'volume', label: 'Water in a pipe' }, { value: 'flow', label: 'Flow & velocity' }]} />
       <ResultPanel
-        main={vol ? { label: 'Water in the pipe', value: `${fmtNumber(vol.litres, vol.litres < 10 ? 2 : 1)} L` } : fl ? (by === 'lpm' ? { label: 'Velocity', value: `${fmtNumber(fl.velocity, 2)} m/s` } : { label: 'Flow', value: `${fmtNumber(fl.lpm, 1)} L/min` }) : null}
+        main={vol ? { label: 'Water in the pipe', value: `${fmtNumber(showVol(vol.litres, fu), 2)} ${FU.vol}` } : fl ? (by === 'lpm' ? { label: 'Velocity', value: `${fmtNumber(showVel(fl.velocity, fu), 2)} ${FU.vel}` } : { label: 'Flow', value: `${fmtNumber(showFlow(fl.lpm, fu), 1)} ${FU.flow}` }) : null}
         rest={vol ? [
-          { label: 'Per metre', value: `${fmtNumber(vol.litresPerMetre, 3)} L` },
-          { label: 'Weight of water', value: `${fmtNumber(vol.kg, 1)} kg` },
+          { label: FU.perLength === 'per ft' ? 'Per foot' : 'Per metre', value: `${fmtNumber(showPerLength(vol.litresPerMetre, fu), 3)} ${FU.vol}` },
+          { label: 'Weight of water', value: fu === 'imperial' ? `${fmtNumber(vol.kg * 2.20462262, 1)} lb` : `${fmtNumber(vol.kg, 1)} kg` },
         ] : fl ? [
-          { label: by === 'lpm' ? 'Flow' : 'Velocity', value: by === 'lpm' ? `${fmtNumber(fl.lps, 2)} L/s` : `${fmtNumber(fl.velocity, 2)} m/s` },
-          ...(fl.kpa !== undefined ? [{ label: 'Pressure loss', value: `${fmtNumber(fl.kpa, 1)} kPa` }, { label: 'Head loss', value: `${fmtNumber(fl.headLoss!, 2)} m` }] : []),
+          { label: by === 'lpm' ? 'Flow' : 'Velocity', value: by === 'lpm' ? (fu === 'imperial' ? `${fmtNumber(showFlow(fl.lpm, fu), 1)} gpm` : `${fmtNumber(fl.lps, 2)} L/s`) : `${fmtNumber(showVel(fl.velocity, fu), 2)} ${FU.vel}` },
+          ...(fl.kpa !== undefined ? [{ label: 'Pressure loss', value: `${fmtNumber(showPressure(fl.kpa, fu), 1)} ${FU.pressure}` }, { label: 'Head loss', value: fu === 'imperial' ? `${fmtNumber(fl.headLoss! / 0.3048, 2)} ft` : `${fmtNumber(fl.headLoss!, 2)} m` }] : []),
         ] : undefined}
         empty={result && !result.ok ? result.error : mode === 'volume' ? 'Pick a pipe and enter the length' : 'Pick a pipe and enter the flow'}
       />
@@ -124,7 +128,7 @@ export default function FlowScreen() {
         <Field field={fields[1]!} onOpen={() => kp.openAt(1)} error={errs[1]} />
         {mode === 'flow' ? (
           <>
-            <Segmented label="I know the" value={by} onChange={b => { setBy(b); setRate(''); }} options={[{ value: 'lpm', label: 'Flow (L/min)' }, { value: 'velocity', label: 'Velocity (m/s)' }]} />
+            <Segmented label="I know the" value={by} onChange={b => { setBy(b); setRate(''); }} options={[{ value: 'lpm', label: `Flow (${FU.flow})` }, { value: 'velocity', label: `Velocity (${FU.vel})` }]} />
             <Field field={fields[2]!} onOpen={() => kp.openAt(2)} error={errs[2]} />
             <Field field={fields[3]!} onOpen={() => kp.openAt(3)} error={errs[3]} />
           </>

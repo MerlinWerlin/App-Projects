@@ -78,18 +78,18 @@ export function RollingDiagram() {
 }
 
 /** Fall: a sloping pipe over a level line with the drop at the far end. */
-export function FallDiagram({ drop, length }: { drop?: string; length?: string }) {
+export function FallDiagram({ drop, length, word = 'FALL' }: { drop?: string; length?: string; word?: string }) {
   const c = usePalette();
   const W = 340, H = 130;
   return (
-    <View accessible accessibilityRole="image" accessibilityLabel={`Diagram: a drain falling along its length.${drop ? ` Total fall ${drop}.` : ''}`}>
+    <View accessible accessibilityRole="image" accessibilityLabel={`Diagram: a drain falling along its length.${drop ? ` Total ${word.toLowerCase()} ${drop}.` : ''}`}>
       <Svg width="100%" height={H} viewBox={`0 0 ${W} ${H}`}>
         <Rect x={0} y={0} width={W} height={H} rx={16} fill={c.surface2} />
         <Line x1={24} y1={40} x2={300} y2={40} stroke={c.ink3} strokeWidth={1.5} strokeDasharray="5 5" />
         <Line x1={24} y1={40} x2={300} y2={80} stroke={c.copper} strokeWidth={12} strokeLinecap="round" />
         <Line x1={318} y1={40} x2={318} y2={80} stroke={c.ink2} strokeWidth={2} />
         <Path d="M 312 48 L 318 40 L 324 48 M 312 72 L 318 80 L 324 72" stroke={c.ink2} strokeWidth={2} fill="none" />
-        <SvgText x={306} y={30} fill={c.ink} fontSize={15} fontWeight="700" textAnchor="end">{drop ? `FALL ${drop}` : 'FALL'}</SvgText>
+        <SvgText x={306} y={30} fill={c.ink} fontSize={15} fontWeight="700" textAnchor="end">{drop ? `${word} ${drop}` : word}</SvgText>
         <SvgText x={150} y={112} fill={c.ink} fontSize={15} fontWeight="700" textAnchor="middle">{length ? `LENGTH ${length}` : 'LENGTH'}</SvgText>
         <Path d="M 120 64 l 14 2 l -9 8" stroke={c.ink} strokeWidth={2} fill="none" />
       </Svg>

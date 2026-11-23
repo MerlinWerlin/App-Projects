@@ -3,6 +3,7 @@
  * always tells people to check the manufacturer's data. Rows the sources could not confirm are left out, or carry
  * verified: false and are labelled in the app. Research notes: docs/DATA_SOURCES.md.
  */
+import { COUNTRY_FITTINGS, COUNTRY_PIPES } from './countryMaterials';
 
 export interface PipeSize {
   id: string;
@@ -74,7 +75,7 @@ export const PIPES: PipeSize[] = [
   })),
 ];
 
-export const pipeById = (id: string) => PIPES.find(p => p.id === id);
+export const pipeById = (id: string) => PIPES.find(p => p.id === id) ?? COUNTRY_PIPES.find(p => p.id === id);
 
 /**
  * Hazen–Williams C, typical design values (Engineering ToolBox "Hazen-Williams Coefficients"): copper 130–140,
@@ -86,6 +87,9 @@ export const HAZEN_C: Record<string, number> = {
   'PVC DWV': 150,
   'PE-X': 140,
   Steel: 120,
+  'Copper (EN 1057)': 140, 'Copper Type K': 140, 'Copper Type L': 140, 'Copper Type M': 140,
+  'PVC Sch 40 DWV': 150, 'Solvent waste': 150, 'Soil pipe': 150, 'Underground drain': 150,
+  'PEX (CTS SDR 9)': 140, 'CPVC (CTS SDR 11)': 150,
 };
 
 /**
@@ -159,7 +163,7 @@ const STEEL_FITTINGS: FittingSpec[] = ([
 
 export const FITTINGS: FittingSpec[] = [...PVC_FITTINGS, ...COPPER_FITTINGS, ...STEEL_FITTINGS];
 
-export const fittingById = (id: string) => FITTINGS.find(f => f.id === id);
+export const fittingById = (id: string) => FITTINGS.find(f => f.id === id) ?? COUNTRY_FITTINGS.find(f => f.id === id);
 
 /**
  * Minimum grades of drains, AS/NZS 3500.2:2003 (Amdt 1–3), Clause 3.4.1, Table 3.2. That edition is superseded
