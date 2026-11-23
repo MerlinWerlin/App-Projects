@@ -27,8 +27,8 @@ export default function Settings() {
         <Segmented label="Pitch" value={prefs.pitchStyle} onChange={pitchStyle => app.setPrefs({ pitchStyle })} options={[{ value: 'deg', label: 'Degrees' }, { value: 'x12', label: 'Rise : 12' }]} />
       </Section>
       <Section title="Appearance">
-        <Segmented label="Theme" value={prefs.theme} onChange={t => app.setPrefs({ theme: t })} options={[{ value: 'system', label: 'Auto' }, { value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }, { value: 'sun', label: 'Sunlight' }]} />
-        <Txt v="footnote" tone="ink3">Sunlight is pure black on white with heavier lines, for bright sites.</Txt>
+        <Segmented label="Theme" value={prefs.theme} onChange={t => app.setPrefs({ theme: t })} options={[{ value: 'system', label: 'Auto' }, { value: 'light', label: 'Light' }, { value: 'dark', label: 'Dark' }, { value: 'sun', label: 'Sun' }]} />
+        <Txt v="footnote" tone="ink3">Sun is pure black on white with heavier lines, for bright sites.</Txt>
         <Card style={{ paddingVertical: 0 }}>
           <Row title="Haptics" sub="A tap when you change a setting or save" right={<Switch value={prefs.haptics} onValueChange={haptics => app.setPrefs({ haptics })} trackColor={{ true: theme.ink, false: theme.line }} thumbColor={theme.accent} accessibilityLabel="Haptics" />} />
         </Card>

@@ -64,9 +64,10 @@ export function feetInches(mm: number): string {
   if (frac) {
     let den = 8;
     while (frac % 2 === 0) { frac /= 2; den /= 2; }
-    fracText = ` ${frac}/${den}`;
+    fracText = ` ${frac}/${den}`;
   }
-  return ft ? `${sign}${ft}′ ${inch}${fracText}″` : `${sign}${inch}${fracText}″`;
+  // Non-breaking spaces keep a measurement on one line.
+  return ft ? `${sign}${ft}′ ${inch}${fracText}″` : `${sign}${inch}${fracText}″`;
 }
 
 export function formatLength(mm: number, sys: UnitSystem): string {

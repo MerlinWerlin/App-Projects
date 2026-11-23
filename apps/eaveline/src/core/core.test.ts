@@ -52,9 +52,9 @@ describe('units', () => {
     expect(parseLength('abc', 'imperial', 'ft')).toBeNull();
   });
   test('feet and inches to the nearest 1/8', () => {
-    expect(feetInches(3810)).toBe('12′ 6″');
-    expect(feetInches(165.1)).toBe('6 1/2″');
-    expect(feetInches(304.8 * 10 + 25.4 * 3.375)).toBe('10′ 3 3/8″');
+    expect(feetInches(3810)).toBe('12′ 6″');
+    expect(feetInches(165.1)).toBe('6 1/2″');
+    expect(feetInches(304.8 * 10 + 25.4 * 3.375)).toBe('10′ 3 3/8″');
   });
 });
 

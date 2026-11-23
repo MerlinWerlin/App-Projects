@@ -8,7 +8,8 @@ export default function TabsLayout() {
   const header = {
     headerStyle: { backgroundColor: theme.ground },
     headerTintColor: theme.ink,
-    headerTitleStyle: { color: theme.ink, fontFamily: FONT.display, fontSize: 20 },
+    headerTitleStyle: { color: theme.ink, fontFamily: FONT.display, fontSize: 30 },
+    headerTitleAlign: 'left' as const,
     headerShadowVisible: false,
   } as const;
   return (
