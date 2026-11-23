@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only whole source composites on actual planned theme background at240/170/85. No subject edit, background removal or recolouring. Visual decision separate from alpha diagnostics.",
+  "assets": [
+    {
+      "id": "white-tailed-ptarmigan",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-765acabc-fffe-41f0-acdc-4967214b39df.png",
+      "sha256": "d3c97098842e8430de6f32666ce1e62fbc2b7b8072f7f004bf2faf6a23ae10bb",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        10,
+        1524,
+        1024
+      ]
+    },
+    {
+      "id": "american-pika",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-a2ee5514-2185-410d-b84e-6c583a0a2391.png",
+      "sha256": "e336d19b350aaafcb1d59f860befbca2bfea2640054ec8ddf7857bf6ed7faa98",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1508,
+        1024
+      ]
+    },
+    {
+      "id": "mountain-goat",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-23a439a6-8182-40d8-995e-2d792f10fbe6.png",
+      "sha256": "d878ea7145ddba0eda06f1cf32be486fee3e0ea2528aeee5dcfb158ae7727ec3",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        0,
+        1533,
+        1024
+      ]
+    },
+    {
+      "id": "alpine-willow",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-9954ef5d-7651-465d-a085-7715ca95c188.png",
+      "sha256": "5735d6c62644a4f316397b5a6a67d31ea3c0309c6333a40d7cbaccd114ec1088",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        0,
+        3,
+        1536,
+        1024
+      ]
+    },
+    {
+      "id": "alpine-forget-me-not",
+      "source": "C:\\Users\\jared\\.codex\\generated_images\\01a20118-7a77-7d40-9d01-0342bf474860\\exec-3fe14528-a8cc-4715-bc00-98bcde32e22c.png",
+      "sha256": "965c51bcfca8e1054f32bc563f0c182322c118b986a00426412c5af5ff99d554",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBBox": [
+        58,
+        9,
+        1514,
+        1024
+      ]
+    }
+  ]
+}
