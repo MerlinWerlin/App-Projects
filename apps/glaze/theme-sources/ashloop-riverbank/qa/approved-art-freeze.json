@@ -22,7 +22,7 @@
     "sources/smallmouth-bass-generation.json": "b3795bc565124e88958e2402c914f50b491e2916cb63a0d41fa1a5d2ae2b2510",
     "sources/smallmouth-bass.7d571c06.png": "7d571c06cd78cad4646744ffed13fd1efd974dd68fc1340cdbf2d69b45e79ae7",
     "palette.json": "aeff3b6c68eecffc6c0dc71c47f632679450b1e39b3b4c42d9b853583726b9f9",
-    "meta.json": "42a105d20954b9f52299fcd699622307ffed45470864a34d4a12274c1455f42d"
+    "meta.json": "63d5b5ca6cf322b14b4ff5766aec433afacd185db641b42082e21845f52f05fe"
   },
   "firstSelectedSourceSha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
   "artworkProvenance": [
@@ -173,5 +173,11 @@
       "exactToolResult": "qa/material-references/arrowhead-leaves-exact-tool-result.json"
     }
   ],
-  "firstApprovedSourceSha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade"
+  "firstApprovedSourceSha256": "6e1ae7ccabe8202bfc7a1ac7c5927752a0fbc13f171639003b644fdc16899ade",
+  "wallpaperOnlyMetaUpdate": {
+    "previousMetaSha256": "42a105d20954b9f52299fcd699622307ffed45470864a34d4a12274c1455f42d",
+    "previousMeta": "qa/vertical-layout-repair/pre-recompose-meta.json",
+    "selectedMetaSha256": "63d5b5ca6cf322b14b4ff5766aec433afacd185db641b42082e21845f52f05fe",
+    "field": "prompt"
+  }
 }

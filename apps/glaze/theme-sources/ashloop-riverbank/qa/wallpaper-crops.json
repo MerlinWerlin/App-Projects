@@ -3,36 +3,36 @@
   "scope": "Actual encoded builder wallpaper variants, hashes verified; visual crop proof, no device screenshot claim.",
   "variants": [
     {
-      "path": "wallpaper-2796.a0bcfec1.webp",
+      "path": "wallpaper-2796.1615695d.webp",
       "dimensions": [
         1290,
         2796
       ],
-      "sha256": "a0bcfec1beba5ff2fa553b34e433a8cea443a4fe85fc07e625baea5098c784be",
+      "sha256": "1615695da31bdf911d969a6a6b0025cd7f4c10bf23324d92ed560b226f54abf2",
       "labelX": 20
     },
     {
-      "path": "wallpaper-2556.34221a32.webp",
+      "path": "wallpaper-2556.9f1517d8.webp",
       "dimensions": [
         1179,
         2556
       ],
-      "sha256": "34221a32d74d004219497123b0a0904197e2e061b0ab2bf988843abdb63339d1",
+      "sha256": "9f1517d8246b1a74fc696397a3b1a0f62eea6c9c3a7d3ec59895e869a5092df0",
       "labelX": 285
     },
     {
-      "path": "wallpaper-1334.a1dccb4b.webp",
+      "path": "wallpaper-1334.bf9fcd70.webp",
       "dimensions": [
         750,
         1334
       ],
-      "sha256": "a1dccb4b449f2a46694ed918fe21a63d43db3f0b516231c7e25e4c8526a2e2c0",
+      "sha256": "bf9fcd702f5aff559c54648a65c228ef24f0f2f5254e115b818924cf138a507a",
       "labelX": 550
     }
   ],
   "visualReview": {
-    "status": "passed",
+    "status": "passed lane shown; coordinator wallpaper review pending",
     "actualCropsViewed": 3,
-    "finding": "All three encoded phone frames were viewed. The revised group has the whole beaver paddle tail, both bank tips, both visible merganser feet and full beak, and the complete connected leafy plant, all within clear spruce margins. The initial crop and exact pullback lineage remain preserved."
+    "finding": "Large diagonal subject at about half of screen height. Complete beaver paddle tail, both bank tips and merganser feet, bill, tail and crest fit. Slight horizontal crop offset retains narrow dark green margin at both ends. Top quiet. Both earlier original and short pulled-back viewpoints retained."
   }
 }
